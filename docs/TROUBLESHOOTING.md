@@ -292,7 +292,7 @@ python3 -c "from components.frontmatter.research.property_researcher import Prop
 find schemas/ -name "*.json" -exec python3 -c "import json; json.load(open('{}'))" \;
 
 # Validate specific content
-python3 -c "from schemas.validator import validate_content; validate_content('content/components/frontmatter/test.md')"
+python3 -c "from schemas.validator import validate_content; validate_content('content/components/frontmatter/test.yaml')"
 ```
 
 ---

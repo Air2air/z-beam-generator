@@ -19,7 +19,7 @@ The deployment system processes components in this order:
 2. **propertiestable** - Material property tables (.md) 
 3. **bullets** - Bullet point content (.md)
 4. **author** - Author information (.yaml)
-5. **frontmatter** - Page frontmatter (.md)
+5. **frontmatter** - Page frontmatter (.yaml)
 6. **tags** - Content tags (.md)
 7. **table** - Data tables (.yaml)
 8. **metatags** - HTML meta tags (.yaml)
@@ -112,7 +112,7 @@ z-beam-test-push/content/components/{component}/
 | Component | Extension | Count |
 |-----------|-----------|-------|
 | propertiestable | .md | 109 |
-| frontmatter | .md | 109 |
+| frontmatter | .yaml | 109 |
 | text | .md | 7 |
 | jsonld | .json | 109 |
 | author | .yaml | 109 |

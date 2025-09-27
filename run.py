@@ -797,12 +797,12 @@ def main():
                 # Load frontmatter data for components that need it
                 frontmatter_data = None
                 if component_type in ['table', 'author', 'metatags', 'jsonld', 'caption', 'tags', 'settings', 'propertiestable']:
-                    # Try to load existing frontmatter - check both .md and .yaml formats
+                    # Try to load existing frontmatter - prioritize .yaml format
                     base_name = args.material.lower().replace(' ', '-').replace('_', '-')
                     frontmatter_paths = [
-                        f"content/components/frontmatter/{base_name}-laser-cleaning.md",
                         f"content/components/frontmatter/{base_name}-laser-cleaning.yaml",
-                        f"content/components/frontmatter/{base_name}.yaml"
+                        f"content/components/frontmatter/{base_name}.yaml",
+                        f"content/components/frontmatter/{base_name}-laser-cleaning.md"  # Legacy support
                     ]
                     
                     for frontmatter_path in frontmatter_paths:
@@ -942,8 +942,18 @@ def main():
                         frontmatter_data = None
                         if component_type in ['table', 'author', 'metatags', 'jsonld', 'caption', 'tags', 'settings', 'propertiestable']:
                             # Try to load existing frontmatter
-                            frontmatter_path = f"content/components/frontmatter/{material_name.lower().replace(' ', '-').replace('_', '-')}-laser-cleaning.md"
-                            if os.path.exists(frontmatter_path):
+                            material_slug = material_name.lower().replace(' ', '-').replace('_', '-')
+                            frontmatter_paths = [
+                                f"content/components/frontmatter/{material_slug}-laser-cleaning.yaml",
+                                f"content/components/frontmatter/{material_slug}.yaml",
+                                f"content/components/frontmatter/{material_slug}-laser-cleaning.md"  # Legacy support
+                            ]
+                            frontmatter_path = None
+                            for path in frontmatter_paths:
+                                if os.path.exists(path):
+                                    frontmatter_path = path
+                                    break
+                            if frontmatter_path and os.path.exists(frontmatter_path):
                                 import yaml
                                 with open(frontmatter_path, 'r') as f:
                                     content = f.read()

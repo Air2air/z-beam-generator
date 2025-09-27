@@ -305,7 +305,7 @@ result = generator.generate("Bronze", use_api=False)
 if result.success:
     print(f"Generated {len(result.content)} characters")
     # Save to file
-    with open("bronze-frontmatter.md", "w") as f:
+    with open("bronze-frontmatter.yaml", "w") as f:
         f.write(result.content)
 ```
 

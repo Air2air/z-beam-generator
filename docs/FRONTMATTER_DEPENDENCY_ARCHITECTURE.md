@@ -223,7 +223,7 @@ Tests cover:
 
 Frontmatter files must be located at:
 ```
-content/components/frontmatter/{material}-laser-cleaning.md
+content/components/frontmatter/{material}-laser-cleaning.yaml
 ```
 
 ### Required Frontmatter Structure
@@ -286,7 +286,7 @@ article_type: "material"
 
 2. Check frontmatter file:
    ```bash
-   cat content/components/frontmatter/aluminum-laser-cleaning.md
+   cat content/components/frontmatter/aluminum-laser-cleaning.yaml
    ```
 
 3. Run dependency tests:

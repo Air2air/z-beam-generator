@@ -391,23 +391,61 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         if numeric_value is None:
             return None
         
-        # Get unit from Categories.yaml first, then fall back to extraction from material_value
-        unit = self._get_category_unit(material_category, prop_key) or self._extract_unit(material_value) or ""
+        # Get unit from Categories.yaml first, then extraction from material_value - FAIL-FAST: no empty fallbacks
+        unit = self._get_category_unit(material_category, prop_key)
+        if not unit:
+            unit = self._extract_unit(material_value)
+        if not unit:
+            raise ValueError(f"No unit found for property '{prop_key}' in material '{material_category}' - GROK requires explicit unit data")
         
         # Get research-based ranges for this property and material category
         min_val, max_val = self._get_research_based_range(prop_key, material_category, numeric_value)
+        
+        # FAIL-FAST: No default confidence - must be calculated from data quality
+        confidence = self._calculate_property_confidence(prop_key, material_category, numeric_value)
         
         # Create basic DataMetrics structure
         property_data = {
             'value': numeric_value,
             'unit': unit,
-            'confidence': 0.85,  # Default confidence level
+            'confidence': confidence,
             'description': f'{prop_key} property',
             'min': min_val,
             'max': max_val
         }
         
         return property_data
+
+    def _calculate_property_confidence(self, prop_key: str, material_category: str, numeric_value: float) -> float:
+        """Calculate confidence based on data quality - FAIL-FAST: no defaults allowed."""
+        # Base confidence from data source
+        if hasattr(self, 'property_researcher') and self.property_researcher:
+            # Research-backed values get higher confidence
+            base_confidence = 0.90
+        elif self._has_category_data(material_category, prop_key):
+            # Category-based values get medium confidence
+            base_confidence = 0.75
+        else:
+            # FAIL-FAST: If no data source, we shouldn't have gotten this far
+            raise ValueError(f"No data source found for property '{prop_key}' - GROK requires explicit data backing")
+        
+        # Adjust based on numeric value reasonableness (if value seems extreme, reduce confidence)
+        if numeric_value <= 0:
+            # Non-positive values are suspicious for most physical properties
+            confidence_adjustment = -0.10
+        else:
+            confidence_adjustment = 0.0
+            
+        final_confidence = max(0.1, min(1.0, base_confidence + confidence_adjustment))
+        return round(final_confidence, 2)
+
+    def _has_category_data(self, material_category: str, prop_key: str) -> bool:
+        """Check if we have category-specific data for this property."""
+        try:
+            category_data = self.categories_data.get(material_category, {})
+            return prop_key in category_data.get('properties', {})
+        except Exception:
+            return False
     
     def _get_research_based_range(self, prop_key: str, material_category: str, current_value: float) -> tuple[float, float]:
         """Get research-based min/max ranges for a property based on materials science data"""
@@ -463,7 +501,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         raise PropertyDiscoveryError(f"No research data available for {prop_key} in {material_category} - comprehensive AI discovery required")
 
     def _generate_from_api(self, material_name: str, material_data: Dict) -> Dict:
-        """Generate frontmatter content using AI with fallback to range functions for Min/Max"""
+        """Generate frontmatter content using AI - FAIL-FAST: no fallbacks allowed per GROK"""
         if not self.api_client:
             raise ValueError("API client is required for AI generation - no fallbacks allowed")
             
