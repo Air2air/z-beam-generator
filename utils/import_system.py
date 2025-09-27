@@ -122,20 +122,11 @@ class UnifiedImportManager:
             logger.error(error_msg)
             return fallback
 
-    # ===== FALLBACK FUNCTIONALITY =====
+    # ===== FALLBACK FUNCTIONALITY DISABLED FOR GROK COMPLIANCE =====
 
     def register_fallback(self, module_name: str, fallback_module: Any) -> None:
-        """Register a fallback module for when the primary import fails."""
-        self._fallbacks[module_name] = fallback_module
-        logger.debug(f"Registered fallback for {module_name}")
-
-    def create_mock_module(self, **attributes) -> Any:
-        """Create a mock module with specified attributes."""
-        import types
-        module = types.ModuleType("mock_module")
-        for name, value in attributes.items():
-            setattr(module, name, value)
-        return module
+        """GROK COMPLIANCE: Fallbacks disabled - fail-fast architecture required."""
+        raise ValueError(f"Fallbacks are disabled for GROK compliance - cannot register fallback for {module_name}")
 
     def setup_component_fallbacks(self):
         """

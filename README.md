@@ -227,7 +227,8 @@ Major architecture improvement with comprehensive API configuration centralizati
 #### ✅ **Verified Functionality**
 - **API Connectivity**: All 3 providers connect successfully
 - **Content Generation**: Frontmatter generation working for Steel material
-- **Data Integration**: Materials loaded from `data/Materials.yaml` (109 materials, 8 categories)
+- **Data Integration**: Materials loaded from `data/Materials.yaml` (123 materials, 9 categories)
+- **Enhanced --all Flag**: Bulk processing for all materials with automatic name field population
 - **Large Prompt Support**: Successfully handles 4116+ character prompts
 
 ## �🚀 Quick Start
@@ -534,7 +535,7 @@ python3 tests/test_frontmatter_validation.py
 ## 🏗️ Architecture
 
 ### Core Components
-- **MaterialLoader**: Loads materials from `data/Materials.yaml`
+- **MaterialLoader**: Loads materials from `data/Materials.yaml` with enhanced name field population for --all flag compatibility
 - **ComponentGenerator**: Uses prompts + DeepSeek API
 - **SchemaValidator**: Validates against JSON schemas
 - **ContentWriter**: Saves to `content/` folder

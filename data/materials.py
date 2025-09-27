@@ -20,6 +20,11 @@ def load_materials():
             expanded_data = expand_optimized_materials(data)
             return expanded_data
         
+        # For non-optimized format, add material names to items for --all compatibility
+        if 'material_index' in data and 'materials' in data:
+            data_with_names = add_material_names_to_items(data)
+            return data_with_names
+        
         # Return original format as-is
         return data
     except Exception as e:
@@ -27,6 +32,77 @@ def load_materials():
         return {"materials": {}}
 
 
+def add_material_names_to_items(data):
+    """Add material names to items in non-optimized format for --all compatibility."""
+    result = data.copy()
+    material_index = data.get('material_index', {})
+    
+    # Create reverse lookup: category -> list of (material_name, index) for that category
+    category_materials = {}
+    for material_name, index_data in material_index.items():
+        category = index_data.get('category')
+        if category:
+            if category not in category_materials:
+                category_materials[category] = []
+            category_materials[category].append((material_name, index_data.get('index', 0)))
+    
+    # Sort materials by index within each category
+    for category in category_materials:
+        category_materials[category].sort(key=lambda x: x[1])
+    
+    # Add names to items
+    materials_with_names = {}
+    for category, cat_data in data['materials'].items():
+        if isinstance(cat_data, dict) and 'items' in cat_data:
+            items_with_names = []
+            category_material_list = category_materials.get(category, [])
+            
+            for idx, item in enumerate(cat_data['items']):
+                item_with_name = item.copy()
+                
+                # Add material name from the index
+                if idx < len(category_material_list):
+                    material_name = category_material_list[idx][0]
+                    item_with_name['name'] = material_name
+                
+                items_with_names.append(item_with_name)
+            
+            # Create updated category data
+            cat_data_with_names = cat_data.copy()
+            cat_data_with_names['items'] = items_with_names
+            materials_with_names[category] = cat_data_with_names
+        else:
+            materials_with_names[category] = cat_data
+    
+    result['materials'] = materials_with_names
+    
+    return result
+
+
+def find_material_case_insensitive(material_name: str, materials_data: dict = None) -> tuple:
+    """
+    Find a material by name (case-insensitive) and return its data and category.
+    
+    Args:
+        material_name: Name to search for (case-insensitive)
+        materials_data: Optional pre-loaded materials data
+    
+    Returns:
+        tuple: (material_data, category_name) or (None, None) if not found
+    """
+    if materials_data is None:
+        materials_data = load_materials()
+    
+    search_name = material_name.lower().strip()
+    
+    for category, category_data in materials_data.get('materials', {}).items():
+        items = category_data.get('items', [])
+        for item in items:
+            item_name = item.get('name', '').lower().strip()
+            if item_name == search_name:
+                return item, category
+    
+    return None, None
 def expand_optimized_materials(data):
     """Expand optimized materials format to original structure for compatibility."""
     expanded = {
@@ -39,7 +115,20 @@ def expand_optimized_materials(data):
     }
     
     parameter_templates = data.get('parameter_templates', {})
-    # No defaults variable - fail-fast architecture
+    material_index = data.get('material_index', {})
+    
+    # Create reverse lookup: category -> list of (material_name, index) for that category
+    category_materials = {}
+    for material_name, index_data in material_index.items():
+        category = index_data.get('category')
+        if category:
+            if category not in category_materials:
+                category_materials[category] = []
+            category_materials[category].append((material_name, index_data.get('index', 0)))
+    
+    # Sort materials by index within each category
+    for category in category_materials:
+        category_materials[category].sort(key=lambda x: x[1])
     
     for category, cat_data in data['materials'].items():
         # Handle both simple categories with items and complex categories with subcategories
@@ -47,8 +136,16 @@ def expand_optimized_materials(data):
             # Simple category with direct items
             expanded_items = []
             
-            for item in cat_data['items']:
+            # Get material names for this category from the index
+            category_material_list = category_materials.get(category, [])
+            
+            for idx, item in enumerate(cat_data['items']):
                 expanded_item = item.copy()
+                
+                # Add material name from the index
+                if idx < len(category_material_list):
+                    material_name = category_material_list[idx][0]
+                    expanded_item['name'] = material_name
                 
                 # Expand parameter template reference
                 if 'laser_parameters_template' in item:
@@ -70,11 +167,19 @@ def expand_optimized_materials(data):
         elif isinstance(cat_data, dict):
             # Complex category with subcategories - flatten for compatibility
             all_items = []
+            category_material_list = category_materials.get(category, [])
+            item_index = 0
             
             for subcat_name, subcat_data in cat_data.items():
                 if isinstance(subcat_data, dict) and 'items' in subcat_data:
                     for item in subcat_data['items']:
                         expanded_item = item.copy()
+                        
+                        # Add material name from the index
+                        if item_index < len(category_material_list):
+                            material_name = category_material_list[item_index][0]
+                            expanded_item['name'] = material_name
+                            item_index += 1
                         
                         # Expand parameter template reference
                         if 'laser_parameters_template' in item:

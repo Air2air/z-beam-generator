@@ -49,6 +49,12 @@ python3 -c "from components.frontmatter.core.streamlined_generator import Stream
 - **Faster Processing**: Optimized generation pipeline handles batch processing of all material categories
 - **Quality Metrics**: Production validation shows 95%+ essential data retention with 25% size reduction
 
+### Abbreviation Template System (New)
+- **Standardized Abbreviations**: Professional formatting for materials with industry-standard abbreviations (FRPU, GFRP, CFRP, etc.)
+- **Consistent Presentation**: Unified template for name, subcategory, and title fields
+- **8 Supported Materials**: FRPU, GFRP, CFRP, MMCs, CMCs, MDF, PVC, PTFE with standardized formatting
+- **Documentation**: See [ABBREVIATION_TEMPLATE.md](docs/ABBREVIATION_TEMPLATE.md) for complete details
+
 ### Key Migration from Materials.yaml to Categories.yaml
 - **Standardized Descriptions**: Machine settings and material properties now use standardized descriptions from Categories.yaml v2.2.1
 - **Environmental Impact**: Automated generation of environmental benefit sections using concise standardized templates  

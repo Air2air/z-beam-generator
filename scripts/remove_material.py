@@ -71,9 +71,22 @@ class MaterialRemover:
             raise FileNotFoundError(f"Materials file not found: {self.materials_file}")
 
         try:
-            with open(self.materials_file, "r", encoding="utf-8") as f:
-                data = yaml.safe_load(f)
+            # Use the enhanced data loader that adds name fields to materials
+            import sys
+            import os
+            sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+            from data.materials import load_materials as enhanced_load_materials
+            
+            data = enhanced_load_materials()
             return data.get("materials", {})
+        except ImportError:
+            # Fallback to direct YAML loading
+            try:
+                with open(self.materials_file, "r", encoding="utf-8") as f:
+                    data = yaml.safe_load(f)
+                return data.get("materials", {})
+            except Exception as e:
+                raise Exception(f"Error loading materials file: {e}")
         except Exception as e:
             raise Exception(f"Error loading materials file: {e}")
 
@@ -139,24 +152,27 @@ class MaterialRemover:
 
             files = []
 
-            # Look for exact matches
-            exact_file = component_dir / f"{material_slug}-laser-cleaning.md"
-            if exact_file.exists():
-                files.append(exact_file)
+            # Look for exact matches in multiple formats
+            for ext in [".md", ".yaml", ".json"]:
+                exact_file = component_dir / f"{material_slug}-laser-cleaning{ext}"
+                if exact_file.exists():
+                    files.append(exact_file)
 
             # Look for pattern matches (in case of naming variations)
-            pattern_files = list(component_dir.glob(f"{filename_base}*.md"))
-            for file in pattern_files:
-                if file not in files:
-                    files.append(file)
-
-            # Look for similar slugs (fuzzy matching)
-            all_files = list(component_dir.glob("*.md"))
-            for file in all_files:
-                file_stem = file.stem.replace("-laser-cleaning", "")
-                if self._is_similar_slug(file_stem, material_slug):
+            for ext in [".md", ".yaml", ".json"]:
+                pattern_files = list(component_dir.glob(f"{filename_base}*{ext}"))
+                for file in pattern_files:
                     if file not in files:
                         files.append(file)
+
+            # Look for similar slugs (fuzzy matching)
+            for ext in [".md", ".yaml", ".json"]:
+                all_files = list(component_dir.glob(f"*{ext}"))
+                for file in all_files:
+                    file_stem = file.stem.replace("-laser-cleaning", "")
+                    if self._is_similar_slug(file_stem, material_slug):
+                        if file not in files:
+                            files.append(file)
 
             if files:
                 found_files[component_type] = files
@@ -190,7 +206,15 @@ class MaterialRemover:
         valid_slugs = set()
         for category_data in materials.values():
             for material in category_data.get("items", []):
-                slug = create_material_slug(material)
+                # Handle both dictionary and string formats
+                if isinstance(material, dict) and 'name' in material:
+                    material_name = material['name']
+                elif isinstance(material, str):
+                    material_name = material
+                else:
+                    continue  # Skip invalid entries
+                
+                slug = create_material_slug(material_name)
                 valid_slugs.add(slug)
 
         orphaned_files = {}
@@ -309,7 +333,16 @@ class MaterialRemover:
             materials = self.load_materials()
             result = {}
             for category, category_data in materials.items():
-                result[category] = category_data.get("items", [])
+                items = category_data.get("items", [])
+                # Extract material names from dictionaries
+                material_names = []
+                for item in items:
+                    if isinstance(item, dict) and 'name' in item:
+                        material_names.append(item['name'])
+                    elif isinstance(item, str):
+                        # Handle legacy string format
+                        material_names.append(item)
+                result[category] = material_names
             return result
         except Exception as e:
             logger.error(f"Error loading materials: {e}")

@@ -39,6 +39,42 @@ class PropertyDiscoveryError(Exception):
 
 logger = logging.getLogger(__name__)
 
+# Abbreviation mappings for standardized naming
+MATERIAL_ABBREVIATIONS = {
+    'Fiber Reinforced Polyurethane FRPU': {
+        'abbreviation': 'FRPU',
+        'full_name': 'Fiber Reinforced Polyurethane'
+    },
+    'Glass Fiber Reinforced Polymers GFRP': {
+        'abbreviation': 'GFRP', 
+        'full_name': 'Glass Fiber Reinforced Polymers'
+    },
+    'Carbon Fiber Reinforced Polymer': {
+        'abbreviation': 'CFRP',
+        'full_name': 'Carbon Fiber Reinforced Polymer'
+    },
+    'Metal Matrix Composites MMCs': {
+        'abbreviation': 'MMCs',
+        'full_name': 'Metal Matrix Composites'
+    },
+    'Ceramic Matrix Composites CMCs': {
+        'abbreviation': 'CMCs', 
+        'full_name': 'Ceramic Matrix Composites'
+    },
+    'MDF': {
+        'abbreviation': 'MDF',
+        'full_name': 'Medium Density Fiberboard'
+    },
+    'Polyvinyl Chloride': {
+        'abbreviation': 'PVC',
+        'full_name': 'Polyvinyl Chloride'
+    },
+    'Polytetrafluoroethylene': {
+        'abbreviation': 'PTFE',
+        'full_name': 'Polytetrafluoroethylene'
+    }
+}
+
 # Enhanced schema validation (optional)
 try:
     from scripts.validation.enhanced_schema_validator import EnhancedSchemaValidator
@@ -235,18 +271,44 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 error_message=str(e)
             )
 
+    def _apply_abbreviation_template(self, material_name: str) -> Dict[str, str]:
+        """Apply abbreviation template formatting for materials with known abbreviations"""
+        # Check for exact matches or close matches
+        for pattern, mapping in MATERIAL_ABBREVIATIONS.items():
+            if (pattern.lower() == material_name.lower() or 
+                mapping['full_name'].lower() == material_name.lower() or
+                pattern.lower().replace(' ', '').replace('-', '') in material_name.lower().replace(' ', '').replace('-', '')):
+                
+                return {
+                    'name': mapping['abbreviation'],
+                    'subcategory': f"{mapping['full_name']} ({mapping['abbreviation']})",
+                    'title': f"{mapping['abbreviation']} Laser Cleaning",
+                    'description_suffix': f" ({mapping['abbreviation']})"
+                }
+        
+        # No abbreviation template found - use standard formatting
+        return {
+            'name': material_name.title(),
+            'subcategory': material_name.title(),
+            'title': f"{material_name.title()} Laser Cleaning",
+            'description_suffix': ''
+        }
+
     def _generate_from_yaml(self, material_name: str, material_data: Dict) -> Dict:
         """Generate frontmatter using YAML data with AI enhancement"""
         try:
             self.logger.info(f"Generating frontmatter for {material_name} using YAML data")
             
+            # Apply abbreviation template if applicable
+            abbreviation_format = self._apply_abbreviation_template(material_name)
+            
             # Build base structure from YAML with all required schema fields
             frontmatter = {
-                'name': material_name.title(),  # Capitalized for consistency
-                'title': material_data.get('title', f"{material_name.title()} Laser Cleaning"),
-                'description': material_data.get('description', f"Laser cleaning parameters for {material_name}"),
+                'name': abbreviation_format['name'],
+                'title': material_data.get('title', abbreviation_format['title']),
+                'description': material_data.get('description', f"Laser cleaning parameters for {material_data.get('name', material_name)}{abbreviation_format['description_suffix']}"),
                 'category': material_data.get('category', 'materials').title(),  # Capitalized for consistency
-                'subcategory': material_data.get('subcategory', material_name.title()),  # Capitalized for consistency
+                'subcategory': material_data.get('subcategory', abbreviation_format['subcategory']),
                 'author_id': material_data.get('author_id', 3),  # Required by schema (not authorId)
                 'applications': material_data.get('applications', ['laser cleaning', 'surface preparation']),  # Required by schema
             }

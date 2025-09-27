@@ -1,834 +1,3 @@
-machineSettingsRanges:
-  ablationThreshold:
-    max: 50 J/cm²
-    min: 0.05 J/cm²
-  fluenceThreshold:
-    max: 100 J/cm²
-    min: 0.1 J/cm²
-  powerRange:
-    max: 10000 W
-    min: 1 W
-  processingSpeed:
-    max: 120 mm/min
-    min: 8 mm/min
-  pulseDuration:
-    max: 1000000000 ns
-    min: 1 fs
-  repetitionRate:
-    max: 10000000 Hz
-    min: 1 Hz
-  scanning_speed:
-    max: 10000 mm/s
-    min: 1 mm/s
-  spotSize:
-    max: 50 mm
-    min: 0.01 mm
-  thermalDamageThreshold:
-    max: 143.9 J/cm²
-    min: 1.7 J/cm²
-  wavelength:
-    max: 10600 nm
-    min: 157 nm
-material_index:
-  Alabaster:
-    author_id: 1
-    category: stone
-    complexity: medium
-    index: 0
-    subcategory: sedimentary
-  Alumina:
-    author_id: 1
-    category: ceramic
-    complexity: medium
-    index: 0
-    subcategory: oxide
-  Aluminum:
-    author_id: 1
-    category: metal
-    complexity: medium
-    index: 0
-    subcategory: non-ferrous
-    formula: Al
-    symbol: Al
-  Ash:
-    author_id: 1
-    category: wood
-    complexity: medium
-    index: 0
-    subcategory: hardwood
-  Bamboo:
-    author_id: 1
-    category: wood
-    complexity: medium
-    index: 1
-    subcategory: grass
-  Basalt:
-    author_id: 1
-    category: stone
-    complexity: medium
-    index: 1
-    subcategory: igneous
-  Beech:
-    author_id: 1
-    category: wood
-    complexity: medium
-    index: 2
-    subcategory: hardwood
-  Beryllium:
-    author_id: 1
-    category: metal
-    complexity: medium
-    index: 1
-    subcategory: reactive
-  Birch:
-    author_id: 1
-    category: wood
-    complexity: medium
-    index: 3
-    subcategory: hardwood
-  Bluestone:
-    author_id: 1
-    category: stone
-    complexity: medium
-    index: 2
-    subcategory: architectural
-  Boron Carbide:
-    author_id: 1
-    category: ceramic
-    complexity: medium
-    index: 0
-    subcategory: carbide
-  Borosilicate Glass:
-    author_id: 1
-    category: glass
-    complexity: medium
-    index: 0
-    subcategory: borosilicate
-  Brass:
-    author_id: 1
-    category: metal
-    complexity: medium
-    index: 2
-    subcategory: non-ferrous
-    formula: CuZn
-    symbol: CuZn
-  Breccia:
-    author_id: 1
-    category: stone
-    complexity: medium
-    index: 3
-    subcategory: composite
-  Brick:
-    author_id: 1
-    category: masonry
-    complexity: medium
-    index: 0
-    subcategory: fired
-  Bronze:
-    author_id: 1
-    category: metal
-    complexity: medium
-    index: 3
-    subcategory: non-ferrous
-    formula: CuSn
-    symbol: CuSn
-  Calcite:
-    author_id: 1
-    category: stone
-    complexity: medium
-    index: 4
-    subcategory: sedimentary
-  Carbon Fiber Reinforced Polymer:
-    author_id: 1
-    category: composite
-    complexity: medium
-    index: 0
-    subcategory: fiber-reinforced
-  Cedar:
-    author_id: 1
-    category: wood
-    complexity: medium
-    index: 4
-    subcategory: softwood
-  Cement:
-    author_id: 1
-    category: masonry
-    complexity: medium
-    index: 1
-    subcategory: concrete
-  Ceramic Matrix Composites CMCs:
-    author_id: 1
-    category: composite
-    complexity: medium
-    index: 12
-    subcategory: matrix
-  Cherry:
-    author_id: 1
-    category: wood
-    complexity: medium
-    index: 5
-    subcategory: hardwood
-  Chromium:
-    author_id: 1
-    category: metal
-    complexity: medium
-    index: 0
-    subcategory: non-ferrous
-  Cobalt:
-    author_id: 1
-    category: metal
-    complexity: medium
-    index: 4
-    subcategory: specialty
-  Concrete:
-    author_id: 1
-    category: masonry
-    complexity: medium
-    index: 2
-    subcategory: concrete
-  Copper:
-    author_id: 1
-    category: metal
-    complexity: medium
-    index: 5
-    subcategory: non-ferrous
-    formula: Cu
-    symbol: Cu
-  Crown Glass:
-    author_id: 1
-    category: glass
-    complexity: medium
-    index: 0
-    subcategory: soda-lime
-  Epoxy Resin Composites:
-    author_id: 1
-    category: composite
-    complexity: medium
-    index: 1
-    subcategory: resin
-  Fiber Reinforced Polyurethane FRPU:
-    author_id: 1
-    category: composite
-    complexity: medium
-    index: 10
-    subcategory: fiber-reinforced
-  Fiberglass:
-    author_id: 1
-    category: composite
-    complexity: medium
-    index: 2
-    subcategory: fiber-reinforced
-  Fir:
-    author_id: 1
-    category: wood
-    complexity: medium
-    index: 6
-    subcategory: softwood
-  Float Glass:
-    author_id: 1
-    category: glass
-    complexity: medium
-    index: 1
-    subcategory: soda-lime
-  Fused Silica:
-    author_id: 1
-    category: glass
-    complexity: medium
-    index: 2
-    subcategory: specialty-glass
-  Gallium:
-    author_id: 1
-    category: metal
-    complexity: medium
-    index: 6
-    subcategory: specialty
-  Gallium Arsenide:
-    author_id: 1
-    category: semiconductor
-    complexity: medium
-    index: 0
-    subcategory: compound
-  Glass Fiber Reinforced Polymers GFRP:
-    author_id: 1
-    category: composite
-    complexity: medium
-    index: 9
-    subcategory: fiber-reinforced
-  Gold:
-    author_id: 1
-    category: metal
-    complexity: medium
-    index: 7
-    subcategory: precious
-  Gorilla Glass:
-    author_id: 1
-    category: glass
-    complexity: medium
-    index: 0
-    subcategory: specialty-glass
-  Granite:
-    author_id: 1
-    category: stone
-    complexity: medium
-    index: 5
-    subcategory: igneous
-  Hafnium:
-    author_id: 1
-    category: metal
-    complexity: medium
-    index: 8
-    subcategory: refractory
-  Hastelloy:
-    author_id: 1
-    category: metal
-    complexity: medium
-    index: 9
-    subcategory: specialty
-  Hickory:
-    author_id: 1
-    category: wood
-    complexity: medium
-    index: 7
-    subcategory: hardwood
-  Inconel:
-    author_id: 1
-    category: metal
-    complexity: medium
-    index: 10
-    subcategory: specialty
-  Indium:
-    author_id: 1
-    category: metal
-    complexity: medium
-    index: 11
-    subcategory: specialty
-  Iridium:
-    author_id: 1
-    category: metal
-    complexity: medium
-    index: 12
-    subcategory: precious
-  Iron:
-    author_id: 1
-    category: metal
-    complexity: medium
-    index: 13
-    subcategory: ferrous
-    formula: Fe
-    symbol: Fe
-  Kevlar-Reinforced Polymer:
-    author_id: 1
-    category: composite
-    complexity: medium
-    index: 3
-    subcategory: fiber-reinforced
-  Lead:
-    author_id: 1
-    category: metal
-    complexity: medium
-    index: 14
-    subcategory: non-ferrous
-  Lead Crystal:
-    author_id: 1
-    category: glass
-    complexity: medium
-    index: 3
-    subcategory: lead
-  Limestone:
-    author_id: 1
-    category: stone
-    complexity: medium
-    index: 6
-    subcategory: sedimentary
-  MDF:
-    author_id: 1
-    category: wood
-    complexity: medium
-    index: 10
-    subcategory: engineered
-  Magnesium:
-    author_id: 1
-    category: metal
-    complexity: medium
-    index: 15
-    subcategory: reactive
-  Mahogany:
-    author_id: 1
-    category: wood
-    complexity: medium
-    index: 8
-    subcategory: hardwood
-  Manganese:
-    author_id: 1
-    category: metal
-    complexity: medium
-    index: 0
-    subcategory: non-ferrous
-  Maple:
-    author_id: 1
-    category: wood
-    complexity: medium
-    index: 9
-    subcategory: hardwood
-  Marble:
-    author_id: 1
-    category: stone
-    complexity: medium
-    index: 8
-    subcategory: metamorphic
-  Metal Matrix Composites MMCs:
-    author_id: 1
-    category: composite
-    complexity: medium
-    index: 11
-    subcategory: matrix
-  Molybdenum:
-    author_id: 1
-    category: metal
-    complexity: medium
-    index: 16
-    subcategory: refractory
-  Mortar:
-    author_id: 1
-    category: masonry
-    complexity: medium
-    index: 3
-    subcategory: concrete
-  Nickel:
-    author_id: 1
-    category: metal
-    complexity: medium
-    index: 17
-    subcategory: specialty
-  Niobium:
-    author_id: 1
-    category: metal
-    complexity: medium
-    index: 18
-    subcategory: refractory
-  Oak:
-    author_id: 1
-    category: wood
-    complexity: medium
-    index: 11
-    subcategory: hardwood
-  Onyx:
-    author_id: 1
-    category: stone
-    complexity: medium
-    index: 9
-    subcategory: sedimentary
-  Palladium:
-    author_id: 1
-    category: metal
-    complexity: medium
-    index: 19
-    subcategory: precious
-  Phenolic Resin Composites:
-    author_id: 1
-    category: composite
-    complexity: medium
-    index: 4
-    subcategory: resin
-  Pine:
-    author_id: 1
-    category: wood
-    complexity: medium
-    index: 12
-    subcategory: softwood
-  Plaster:
-    author_id: 1
-    category: masonry
-    complexity: medium
-    index: 4
-    subcategory: fired
-  Platinum:
-    author_id: 1
-    category: metal
-    complexity: medium
-    index: 20
-    subcategory: precious
-  Plywood:
-    author_id: 1
-    category: wood
-    complexity: medium
-    index: 13
-    subcategory: engineered
-  Polycarbonate:
-    author_id: 1
-    category: plastic
-    complexity: medium
-    index: 0
-    subcategory: engineering
-  Polyester Resin Composites:
-    author_id: 1
-    category: composite
-    complexity: medium
-    index: 5
-    subcategory: resin
-  Polyethylene:
-    author_id: 1
-    category: plastic
-    complexity: medium
-    index: 1
-    subcategory: thermoplastic
-  Polypropylene:
-    author_id: 1
-    category: plastic
-    complexity: medium
-    index: 2
-    subcategory: thermoplastic
-  Polystyrene:
-    author_id: 1
-    category: plastic
-    complexity: medium
-    index: 3
-    subcategory: thermoplastic
-  Polytetrafluoroethylene:
-    author_id: 1
-    category: plastic
-    complexity: medium
-    index: 4
-    subcategory: engineering
-  Polyvinyl Chloride:
-    author_id: 1
-    category: plastic
-    complexity: medium
-    index: 5
-    subcategory: thermoplastic
-  Poplar:
-    author_id: 1
-    category: wood
-    complexity: medium
-    index: 14
-    subcategory: softwood
-  Porcelain:
-    author_id: 1
-    category: ceramic
-    complexity: medium
-    index: 1
-    subcategory: traditional
-  Porphyry:
-    author_id: 1
-    category: stone
-    complexity: medium
-    index: 7
-    subcategory: igneous
-  Pyrex:
-    author_id: 1
-    category: glass
-    complexity: medium
-    index: 4
-    subcategory: borosilicate
-  Quartz Glass:
-    author_id: 1
-    category: glass
-    complexity: medium
-    index: 5
-    subcategory: specialty-glass
-  Quartzite:
-    author_id: 1
-    category: stone
-    complexity: medium
-    index: 10
-    subcategory: metamorphic
-  Redwood:
-    author_id: 1
-    category: wood
-    complexity: medium
-    index: 15
-    subcategory: softwood
-  Rhenium:
-    author_id: 1
-    category: metal
-    complexity: medium
-    index: 21
-    subcategory: precious
-  Rhodium:
-    author_id: 1
-    category: metal
-    complexity: medium
-    index: 22
-    subcategory: precious
-  Rosewood:
-    author_id: 1
-    category: wood
-    complexity: medium
-    index: 16
-    subcategory: hardwood
-  Rubber:
-    author_id: 1
-    category: composite
-    complexity: medium
-    index: 6
-    subcategory: elastomeric
-  Ruthenium:
-    author_id: 1
-    category: metal
-    complexity: medium
-    index: 23
-    subcategory: precious
-  Sandstone:
-    author_id: 1
-    category: stone
-    complexity: medium
-    index: 11
-    subcategory: sedimentary
-  Sapphire Glass:
-    author_id: 1
-    category: glass
-    complexity: medium
-    index: 0
-    subcategory: specialty-glass
-  Schist:
-    author_id: 1
-    category: stone
-    complexity: medium
-    index: 12
-    subcategory: metamorphic
-  Serpentine:
-    author_id: 1
-    category: stone
-    complexity: medium
-    index: 13
-    subcategory: metamorphic
-  Shale:
-    author_id: 1
-    category: stone
-    complexity: medium
-    index: 14
-    subcategory: sedimentary
-  Silicon:
-    applications:
-    - 'Semiconductor: Precision cleaning of silicon wafers and removal of photoresist residues'
-    - 'Solar: Cleaning of silicon solar cells for improved efficiency'
-    - 'MEMS: Delicate cleaning of silicon microstructures without damage'
-    - 'Electronics: Removal of contaminants from silicon substrates'
-    author_id: 1
-    bandgap: 1.12 eV
-    category: semiconductor
-    compatibility:
-    - Silicon Dioxide (SiO2) layers
-    - Silicon Nitride (Si3N4) films
-    - Gallium Arsenide (GaAs) substrates
-    - Germanium (Ge) substrates
-    complexity: medium
-    crystal_structure: Diamond cubic
-    density: 2.33 g/cm³
-    difficulty_score: 3
-    electricalResistivity: 1000 Ω·cm
-    environmental_impact:
-    - benefit: No chemical waste
-      description: Eliminates need for harsh chemical etching and cleaning agents used in semiconductor processing
-    - benefit: Reduced water usage
-      description: Laser cleaning requires no water compared to traditional wet cleaning processes
-    formula: Si
-    hardness: 950 HV
-    index: 1
-    industryTags:
-    - Semiconductor
-    - Solar
-    - MEMS
-    - Electronics
-    machineSettings:
-      fluenceThreshold: 0.1–2.0 J/cm²
-      laserType: Pulsed Nd:YAG or Fiber Laser
-      powerRange: 10-100W
-      pulseDuration: 10-100ns
-      repetitionRate: 10-100kHz
-      spotSize: 0.01-1.0mm
-      wavelengthOptimal: 532 nm
-    melting_point: 1414°C
-    outcomes:
-    - metric: '>99.9% contaminant removal'
-      result: Precision cleaning efficiency
-    - metric: 0.1-2.0 m²/h processing speed
-      result: Throughput for delicate silicon components
-    - metric: Ra 0.1 μm surface roughness maintained
-      result: Preserves silicon surface quality
-    regulatoryStandards: SEMI standards for semiconductor equipment, IEC 60825 laser safety, ISO 14644 cleanroom requirements
-    subcategory: intrinsic
-    symbol: Si
-    tensileStrength: 160 MPa
-    thermalConductivity: 149 W/(m·K)
-    thermalExpansion: 2.6×10⁻⁶/K
-    youngsModulus: 130 GPa
-  Silicon Carbide:
-    author_id: 1
-    category: semiconductor
-    complexity: medium
-    index: 2
-    subcategory: compound
-  Silicon Germanium:
-    author_id: 1
-    category: semiconductor
-    complexity: medium
-    index: 3
-    subcategory: compound
-  Silicon Nitride:
-    author_id: 1
-    category: ceramic
-    complexity: medium
-    index: 2
-    subcategory: nitride
-  Silicon Oxide:
-    author_id: 1
-    category: ceramic
-    complexity: medium
-    index: 0
-    subcategory: oxide
-  Silver:
-    author_id: 1
-    category: metal
-    complexity: medium
-    index: 24
-    subcategory: precious
-  Slate:
-    author_id: 1
-    category: stone
-    complexity: medium
-    index: 15
-    subcategory: metamorphic
-  Soapstone:
-    author_id: 1
-    category: stone
-    complexity: medium
-    index: 16
-    subcategory: sedimentary
-  Soda-Lime Glass:
-    author_id: 1
-    category: glass
-    complexity: medium
-    index: 6
-    subcategory: soda-lime
-  Stainless Steel:
-    author_id: 1
-    category: metal
-    complexity: medium
-    index: 25
-    subcategory: ferrous
-  Steel:
-    author_id: 1
-    category: metal
-    complexity: medium
-    index: 26
-    subcategory: ferrous
-    formula: Fe
-    symbol: Fe
-  Stoneware:
-    author_id: 1
-    category: ceramic
-    complexity: medium
-    index: 3
-    subcategory: traditional
-  Stucco:
-    author_id: 1
-    category: masonry
-    complexity: medium
-    index: 5
-    subcategory: fired
-  Tantalum:
-    author_id: 1
-    category: metal
-    complexity: medium
-    index: 27
-    subcategory: refractory
-  Teak:
-    author_id: 1
-    category: wood
-    complexity: medium
-    index: 17
-    subcategory: hardwood
-  Tempered Glass:
-    author_id: 1
-    category: glass
-    complexity: medium
-    index: 7
-    subcategory: specialty-glass
-  Terracotta:
-    author_id: 1
-    category: masonry
-    complexity: medium
-    index: 6
-    subcategory: fired
-  Thermoplastic Elastomer:
-    author_id: 1
-    category: composite
-    complexity: medium
-    index: 7
-    subcategory: elastomeric
-  Tin:
-    author_id: 1
-    category: metal
-    complexity: medium
-    index: 28
-    subcategory: non-ferrous
-  Titanium Carbide:
-    author_id: 1
-    category: ceramic
-    complexity: medium
-    index: 0
-    subcategory: carbide
-  Travertine:
-    author_id: 1
-    category: stone
-    complexity: medium
-    index: 17
-    subcategory: sedimentary
-  Tungsten:
-    author_id: 1
-    category: metal
-    complexity: medium
-    index: 30
-    subcategory: refractory
-  Tungsten Carbide:
-    author_id: 1
-    category: ceramic
-    complexity: medium
-    index: 0
-    subcategory: carbide
-  Urethane Composites:
-    author_id: 1
-    category: composite
-    complexity: medium
-    index: 8
-    subcategory: elastomeric
-  Vanadium:
-    author_id: 1
-    category: metal
-    complexity: medium
-    index: 31
-    subcategory: specialty
-  Walnut:
-    author_id: 1
-    category: wood
-    complexity: medium
-    index: 18
-    subcategory: hardwood
-  Willow:
-    author_id: 1
-    category: wood
-    complexity: medium
-    index: 19
-    subcategory: softwood
-  Zinc:
-    author_id: 1
-    category: metal
-    complexity: medium
-    index: 32
-    subcategory: non-ferrous
-  Zirconia:
-    author_id: 1
-    category: ceramic
-    complexity: medium
-    index: 4
-    subcategory: oxide
-  Zirconium:
-    author_id: 1
-    category: metal
-    complexity: medium
-    index: 33
-    subcategory: reactive
 materials:
   ceramic:
     article_type: material
@@ -859,52 +28,7 @@ materials:
       - ASTM C848 - Standard Specification for High Alumina Refractory Brick
       - ISO 23146 - Technical Ceramics
       flexural_strength: 300-400 MPa
-    - author_id: 3
-      category: ceramic
-      hardness: 6-7 Mohs
-      compressive_strength: 500-1000 MPa
-      thermalConductivity: 1.0-1.5 W/(m·K)
-      thermalExpansion: 4.0 × 10⁻⁶ /°C
-      industryTags:
-      - Ceramics Manufacturing
-      - Restoration and Conservation
-      - Dental
-      - Tableware
-      - Electrical
-      - Art Conservation
-      regulatoryStandards:
-      - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-      - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-      - ANSI Z136.1 - Safe Use of Lasers
-      - IEC 60825 - Safety of Laser Products
-      - ASTM C373 - Standard Test Method for Water Absorption of Fired Ceramic Materials
-      flexural_strength: 50-100 MPa
-      porosity: 0-3%
-    - author_id: 1
-      category: ceramic
-      hardness: 9.0 Mohs
-      compressive_strength: 2000-4000 MPa
-      thermalConductivity: 15-85 W/(m·K)
-      thermalExpansion: 2.5×10⁻⁶/K
-      melting_point: 1900°C (decomposes)
-      dielectric_constant: 7.5
-      industryTags:
-      - Automotive
-      - Semiconductor
-      - Tooling
-      - Bearings
-      - Aerospace
-      - Medical
-      regulatoryStandards:
-      - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-      - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-      - ANSI Z136.1 - Safe Use of Lasers
-      - IEC 60825 - Safety of Laser Products
-      - ASTM F1537 - Standard Specification for Silicon Nitride Bearing Balls
-      - ISO 6474 - Implants for Surgery - Ceramic Materials
-      chemical_resistance: excellent
-      flexural_strength: 700-1000 MPa
-      fracture_toughness: 4-7 MPa·m^0.5
+      name: Alumina
     - author_id: 4
       category: ceramic
       hardness: 5-6 Mohs
@@ -928,6 +52,7 @@ materials:
       firing_temperature: 1200-1300°C
       flexural_strength: 30-80 MPa
       porosity: 2-8%
+      name: Titanium Carbide
     - author_id: 4
       category: ceramic
       hardness: 8.5 Mohs
@@ -954,6 +79,7 @@ materials:
       flexural_strength: 800-1200 MPa
       fracture_toughness: 6-10 MPa·m^0.5
       ionic_conductivity: High at elevated temperatures
+      name: Tungsten Carbide
     - author_id: 1
       category: ceramic
       hardness: 9.3 Mohs
@@ -969,6 +95,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Porcelain
     - author_id: 2
       category: ceramic
       hardness: 9.0 Mohs
@@ -984,6 +111,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Silicon Nitride
     - author_id: 3
       category: ceramic
       hardness: 9.0 Mohs
@@ -999,6 +127,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Stoneware
     - author_id: 4
       category: ceramic
       hardness: 7.0 Mohs
@@ -1014,6 +143,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Zirconia
     processing_priority: medium
   composite:
     article_type: material
@@ -1033,6 +163,7 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       operating_temperature: -40 to 200°C
+      name: Carbon Fiber Reinforced Polymer
     - author_id: 1
       category: composite
       tensileStrength: 100-1500 MPa
@@ -1047,6 +178,7 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       operating_temperature: -40 to 200°C
+      name: Epoxy Resin Composites
     - author_id: 3
       category: composite
       tensileStrength: 100-1500 MPa
@@ -1061,6 +193,7 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       operating_temperature: -40 to 200°C
+      name: Fiberglass
     - author_id: 3
       category: composite
       tensileStrength: 100-1500 MPa
@@ -1075,6 +208,7 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       operating_temperature: -40 to 200°C
+      name: Kevlar-Reinforced Polymer
     - author_id: 4
       category: composite
       tensileStrength: 100-1500 MPa
@@ -1089,6 +223,7 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       operating_temperature: -40 to 200°C
+      name: Phenolic Resin Composites
     - author_id: 1
       category: composite
       tensileStrength: 100-1500 MPa
@@ -1103,6 +238,7 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       operating_temperature: -40 to 200°C
+      name: Polyester Resin Composites
     - author_id: 4
       category: composite
       tensileStrength: 100-1500 MPa
@@ -1117,6 +253,7 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       operating_temperature: -40 to 200°C
+      name: Rubber
     - author_id: 2
       category: composite
       tensileStrength: 100-1500 MPa
@@ -1131,6 +268,7 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       operating_temperature: -40 to 200°C
+      name: Thermoplastic Elastomer
     - author_id: 3
       category: composite
       tensileStrength: 100-1500 MPa
@@ -1145,6 +283,7 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       operating_temperature: -40 to 200°C
+      name: Urethane Composites
     - author_id: 1
       category: composite
       tensileStrength: 100-1500 MPa
@@ -1159,6 +298,7 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       operating_temperature: -40 to 200°C
+      name: Glass Fiber Reinforced Polymers GFRP
     - author_id: 2
       category: composite
       tensileStrength: 100-1500 MPa
@@ -1173,6 +313,7 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       operating_temperature: -40 to 200°C
+      name: Fiber Reinforced Polyurethane FRPU
     - author_id: 4
       category: composite
       tensileStrength: 100-1500 MPa
@@ -1187,6 +328,7 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       operating_temperature: -40 to 200°C
+      name: Metal Matrix Composites MMCs
     - author_id: 4
       category: composite
       tensileStrength: 100-1500 MPa
@@ -1201,6 +343,7 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       operating_temperature: -40 to 200°C
+      name: Ceramic Matrix Composites CMCs
     processing_priority: medium
   glass:
     article_type: material
@@ -1221,6 +364,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Borosilicate Glass
     - author_id: 1
       category: glass
       hardness: 5.5-6.5 Mohs
@@ -1236,6 +380,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Crown Glass
     - author_id: 2
       category: glass
       hardness: 5.5-6.5 Mohs
@@ -1251,6 +396,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Gorilla Glass
     - author_id: 1
       category: glass
       hardness: 5.5-6.5 Mohs
@@ -1266,6 +412,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Sapphire Glass
     - author_id: 1
       category: glass
       hardness: 5.5-6.5 Mohs
@@ -1281,6 +428,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Float Glass
     - author_id: 2
       category: glass
       hardness: 5.5-6.5 Mohs
@@ -1296,6 +444,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Fused Silica
     - author_id: 1
       category: glass
       hardness: 5.5-6.5 Mohs
@@ -1311,6 +460,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Lead Crystal
     - author_id: 4
       category: glass
       hardness: 5.5-6.5 Mohs
@@ -1326,6 +476,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Pyrex
     - author_id: 1
       category: glass
       hardness: 9.0 Mohs
@@ -1338,6 +489,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Quartz Glass
     - author_id: 2
       category: glass
       hardness: 6.8 Mohs
@@ -1350,6 +502,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Soda-Lime Glass
     - author_id: 3
       category: glass
       hardness: 5.5 Mohs
@@ -1362,6 +515,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Tempered Glass
     processing_priority: medium
   masonry:
     article_type: material
@@ -1381,6 +535,7 @@ materials:
       - IEC 60825 - Safety of Laser Products
       porosity: 10-25%
       water_absorption: 5-20%
+      name: Brick
     - author_id: 3
       category: masonry
       compressive_strength: 10-100 MPa
@@ -1395,6 +550,7 @@ materials:
       - IEC 60825 - Safety of Laser Products
       porosity: 10-25%
       water_absorption: 5-20%
+      name: Cement
     - author_id: 3
       category: masonry
       compressive_strength: 10-100 MPa
@@ -1409,6 +565,7 @@ materials:
       - IEC 60825 - Safety of Laser Products
       porosity: 10-25%
       water_absorption: 5-20%
+      name: Concrete
     - author_id: 2
       category: masonry
       compressive_strength: 10-100 MPa
@@ -1423,6 +580,7 @@ materials:
       - IEC 60825 - Safety of Laser Products
       porosity: 10-25%
       water_absorption: 5-20%
+      name: Mortar
     - author_id: 2
       category: masonry
       compressive_strength: 10-100 MPa
@@ -1437,6 +595,7 @@ materials:
       - IEC 60825 - Safety of Laser Products
       porosity: 10-25%
       water_absorption: 5-20%
+      name: Plaster
     - author_id: 1
       category: masonry
       compressive_strength: 10-100 MPa
@@ -1451,6 +610,7 @@ materials:
       - IEC 60825 - Safety of Laser Products
       porosity: 10-25%
       water_absorption: 5-20%
+      name: Stucco
     - author_id: 1
       category: masonry
       compressive_strength: 10-100 MPa
@@ -1465,6 +625,7 @@ materials:
       - IEC 60825 - Safety of Laser Products
       porosity: 10-25%
       water_absorption: 5-20%
+      name: Terracotta
     processing_priority: medium
   metal:
     article_type: material
@@ -1485,6 +646,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Aluminum
     - author_id: 4
       category: metal
       tensileStrength: 200-1200 MPa
@@ -1500,6 +662,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Chromium
     - author_id: 4
       category: metal
       tensileStrength: 200-1200 MPa
@@ -1523,6 +686,7 @@ materials:
       composition: 63% Cu, 37% Zn (C26000 Cartridge Brass)
       corrosion_resistance: good
       machinability: excellent
+      name: Manganese
     - author_id: 3
       category: metal
       tensileStrength: 200-1200 MPa
@@ -1546,6 +710,7 @@ materials:
       composition: 88% Cu, 12% Sn (SAE 903 bearing bronze)
       corrosion_resistance: superior to steel
       strength: 10% denser than steel
+      name: Beryllium
     - author_id: 2
       category: metal
       tensileStrength: 1043 MPa
@@ -1568,6 +733,7 @@ materials:
       curie_temperature: 1115°C
       magnetic_properties: ferromagnetic
       yield_strength: 470-3000 MPa
+      name: Brass
     - author_id: 4
       category: metal
       tensileStrength: 200-1200 MPa
@@ -1583,6 +749,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Bronze
     - author_id: 3
       category: metal
       tensileStrength: 200-1200 MPa
@@ -1598,6 +765,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Cobalt
     - author_id: 2
       category: metal
       tensileStrength: 200-1200 MPa
@@ -1613,6 +781,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Copper
     - author_id: 4
       category: metal
       tensileStrength: 200-1200 MPa
@@ -1628,6 +797,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Gallium
     - author_id: 1
       category: metal
       tensileStrength: 200-1200 MPa
@@ -1643,6 +813,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Gold
     - author_id: 3
       category: metal
       tensileStrength: 200-1200 MPa
@@ -1658,6 +829,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Hafnium
     - author_id: 4
       category: metal
       tensileStrength: 200-1200 MPa
@@ -1673,6 +845,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Hastelloy
     - author_id: 1
       category: metal
       tensileStrength: 200-1200 MPa
@@ -1688,6 +861,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Inconel
     - author_id: 2
       category: metal
       tensileStrength: 200-1200 MPa
@@ -1703,6 +877,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Indium
     - author_id: 4
       category: metal
       tensileStrength: 200-1200 MPa
@@ -1718,6 +893,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Iridium
     - author_id: 4
       category: metal
       tensileStrength: 200-1200 MPa
@@ -1733,6 +909,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Iron
     - author_id: 1
       category: metal
       tensileStrength: 200-1200 MPa
@@ -1748,6 +925,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Lead
     - author_id: 3
       category: metal
       tensileStrength: 667-1600 MPa
@@ -1770,6 +948,7 @@ materials:
       curie_temperature: 355°C
       magnetic_properties: ferromagnetic
       yield_strength: 638 MPa
+      name: Magnesium
     - author_id: 4
       category: metal
       tensileStrength: 200-1200 MPa
@@ -1785,6 +964,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Molybdenum
     - author_id: 3
       category: metal
       tensileStrength: 200-1200 MPa
@@ -1800,6 +980,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Nickel
     - author_id: 3
       category: metal
       tensileStrength: 200-1200 MPa
@@ -1815,6 +996,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Niobium
     - author_id: 1
       category: metal
       tensileStrength: 200-1200 MPa
@@ -1830,6 +1012,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Palladium
     - author_id: 2
       category: metal
       tensileStrength: 200-1200 MPa
@@ -1845,6 +1028,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Platinum
     - author_id: 1
       category: metal
       tensileStrength: 200-1200 MPa
@@ -1860,6 +1044,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Rhenium
     - author_id: 2
       category: metal
       tensileStrength: 200-1200 MPa
@@ -1875,6 +1060,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Rhodium
     - author_id: 2
       category: metal
       tensileStrength: 515-827 MPa
@@ -1899,6 +1085,7 @@ materials:
       grades: 304, 316, 321, 347, 410, 420, 430
       magnetic_properties: Non-magnetic (304, 316), Magnetic (410, 420, 430)
       nickel_content: 0-37%
+      name: Ruthenium
     - author_id: 3
       category: metal
       tensileStrength: 200-1200 MPa
@@ -1914,6 +1101,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Silver
     - author_id: 2
       category: metal
       tensileStrength: 200-1200 MPa
@@ -1929,6 +1117,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Stainless Steel
     - author_id: 3
       category: metal
       tensileStrength: 200-1200 MPa
@@ -1944,6 +1133,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Steel
     - author_id: 2
       category: metal
       tensileStrength: 3430-4600 MPa
@@ -1962,6 +1152,7 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       yield_strength: 2000-4000 MPa
+      name: Tantalum
     - author_id: 4
       category: metal
       tensileStrength: 200-1200 MPa
@@ -1977,6 +1168,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Tin
     - author_id: 3
       category: metal
       tensileStrength: 200-1200 MPa
@@ -1992,6 +1184,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Tungsten
     - author_id: 1
       category: metal
       tensileStrength: 200-1200 MPa
@@ -2007,6 +1200,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Vanadium
     - author_id: 1
       category: metal
       hardness: 8.5 Mohs
@@ -2022,6 +1216,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Zinc
     - author_id: 2
       category: metal
       hardness: 6.0 Mohs
@@ -2037,6 +1232,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Zirconium
     processing_priority: medium
   plastic:
     article_type: material
@@ -2057,6 +1253,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Polycarbonate
     - author_id: 2
       category: plastic
       hardness: Shore D 65-75
@@ -2072,6 +1269,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Polyethylene
     - author_id: 3
       category: plastic
       hardness: Shore D 75-85
@@ -2087,6 +1285,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Polypropylene
     - author_id: 4
       category: plastic
       hardness: Shore D 70-85
@@ -2102,6 +1301,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Polystyrene
     - author_id: 1
       category: plastic
       hardness: Shore D 50-65
@@ -2117,6 +1317,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Polytetrafluoroethylene
     - author_id: 2
       category: plastic
       hardness: Shore D 80-85
@@ -2132,6 +1333,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Polyvinyl Chloride
     processing_priority: medium
   semiconductor:
     article_type: material
@@ -2154,6 +1356,7 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       bandgap: 1.42 eV
+      name: Gallium Arsenide
     - author_id: 2
       category: semiconductor
       hardness: 6.5 Mohs
@@ -2177,6 +1380,7 @@ materials:
       - IEC 60825 - Safety of Laser Products
       - ISO 14644 - Cleanroom and Associated Controlled Environments
       bandgap: 1.12 eV
+      name: Silicon
     - author_id: 3
       category: semiconductor
       hardness: 2800 HV
@@ -2195,6 +1399,7 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       bandgap: 3.3 eV
+      name: Silicon Carbide
     - author_id: 4
       category: semiconductor
       thermalConductivity: 80 W/(m·K)
@@ -2213,6 +1418,7 @@ materials:
       - IEC 60825 - Safety of Laser Products
       bandgap: 0.8-1.1 eV
       documentation_status: complete
+      name: Silicon Germanium
     processing_priority: medium
   stone:
     article_type: material
@@ -2234,6 +1440,7 @@ materials:
       - IEC 60825 - Safety of Laser Products
       mineral_composition: {}
       porosity: 5-15%
+      name: Alabaster
     - author_id: 2
       category: stone
       hardness: 6-7 Mohs
@@ -2250,6 +1457,7 @@ materials:
       - IEC 60825 - Safety of Laser Products
       mineral_composition: {}
       porosity: 5-15%
+      name: Basalt
     - author_id: 2
       category: stone
       hardness: 6-7 Mohs
@@ -2266,6 +1474,7 @@ materials:
       - IEC 60825 - Safety of Laser Products
       mineral_composition: {}
       porosity: 5-15%
+      name: Bluestone
     - author_id: 1
       category: stone
       hardness: 6-7 Mohs
@@ -2282,6 +1491,7 @@ materials:
       - IEC 60825 - Safety of Laser Products
       mineral_composition: {}
       porosity: 5-15%
+      name: Breccia
     - author_id: 4
       category: stone
       hardness: 6-7 Mohs
@@ -2298,6 +1508,7 @@ materials:
       - IEC 60825 - Safety of Laser Products
       mineral_composition: {}
       porosity: 5-15%
+      name: Calcite
     - author_id: 3
       category: stone
       hardness: 6-7 Mohs
@@ -2324,6 +1535,7 @@ materials:
         other_minerals: 5-10%
         quartz: 20-60%
       porosity: 0.4-1.5%
+      name: Granite
     - author_id: 2
       category: stone
       hardness: 2-4 Mohs
@@ -2350,6 +1562,7 @@ materials:
         organic_matter: 0-5%
         quartz: 0-10%
       porosity: 5-25%
+      name: Limestone
     - author_id: 4
       category: stone
       hardness: 6-7 Mohs
@@ -2366,6 +1579,7 @@ materials:
       - IEC 60825 - Safety of Laser Products
       mineral_composition: {}
       porosity: 5-15%
+      name: Porphyry
     - author_id: 3
       category: stone
       hardness: 3-4 Mohs
@@ -2392,6 +1606,7 @@ materials:
         dolomite: 0-10%
         impurities: 0-5%
       porosity: 0.1-2.0%
+      name: Marble
     - author_id: 2
       category: stone
       hardness: 6-7 Mohs
@@ -2408,6 +1623,7 @@ materials:
       - IEC 60825 - Safety of Laser Products
       mineral_composition: {}
       porosity: 5-15%
+      name: Onyx
     - author_id: 3
       category: stone
       hardness: 6-7 Mohs
@@ -2424,6 +1640,7 @@ materials:
       - IEC 60825 - Safety of Laser Products
       mineral_composition: {}
       porosity: 5-15%
+      name: Quartzite
     - author_id: 2
       category: stone
       hardness: 6-7 Mohs
@@ -2450,6 +1667,7 @@ materials:
         quartz: 65-95%
         rock_fragments: 0-15%
       porosity: 10-35%
+      name: Sandstone
     - author_id: 3
       category: stone
       hardness: 6-7 Mohs
@@ -2466,6 +1684,7 @@ materials:
       - IEC 60825 - Safety of Laser Products
       mineral_composition: {}
       porosity: 5-15%
+      name: Schist
     - author_id: 4
       category: stone
       hardness: 6-7 Mohs
@@ -2482,6 +1701,7 @@ materials:
       - IEC 60825 - Safety of Laser Products
       mineral_composition: {}
       porosity: 5-15%
+      name: Serpentine
     - author_id: 1
       category: stone
       hardness: 6-7 Mohs
@@ -2498,6 +1718,7 @@ materials:
       - IEC 60825 - Safety of Laser Products
       mineral_composition: {}
       porosity: 5-15%
+      name: Shale
     - author_id: 3
       category: stone
       hardness: 6-7 Mohs
@@ -2524,6 +1745,7 @@ materials:
         mica: 30-50%
         quartz: 20-40%
       porosity: 0.1-3.0%
+      name: Slate
     - author_id: 4
       category: stone
       hardness: 6-7 Mohs
@@ -2540,6 +1762,7 @@ materials:
       - IEC 60825 - Safety of Laser Products
       mineral_composition: {}
       porosity: 5-15%
+      name: Soapstone
     - author_id: 1
       category: stone
       hardness: 6-7 Mohs
@@ -2556,6 +1779,7 @@ materials:
       - IEC 60825 - Safety of Laser Products
       mineral_composition: {}
       porosity: 5-15%
+      name: Travertine
     processing_priority: medium
   wood:
     article_type: material
@@ -2583,6 +1807,7 @@ materials:
       resin_content: Low
       specific_heat: 1.2 kJ/kg·K
       tannin_content: Low
+      name: Ash
     - author_id: 1
       category: wood
       hardness: 1.4 Janka
@@ -2607,6 +1832,7 @@ materials:
       resin_content: Very low
       specific_heat: 1.3 kJ/kg·K
       tannin_content: Low
+      name: Bamboo
     - author_id: 3
       category: wood
       industryTags:
@@ -2617,6 +1843,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Beech
     - author_id: 1
       category: wood
       hardness: 4.87 Janka
@@ -2639,6 +1866,7 @@ materials:
       resin_content: Low
       specific_heat: 1.25 kJ/kg·K
       tannin_content: Low
+      name: Birch
     - author_id: 2
       category: wood
       hardness: 1.8 Janka
@@ -2662,6 +1890,7 @@ materials:
       resin_content: High
       specific_heat: 1.4 kJ/kg·K
       tannin_content: Medium
+      name: Cedar
     - author_id: 1
       category: wood
       hardness: 4.0 Janka
@@ -2684,6 +1913,7 @@ materials:
       resin_content: Low to medium
       specific_heat: 1.2 kJ/kg·K
       tannin_content: Medium
+      name: Cherry
     - author_id: 4
       category: wood
       industryTags:
@@ -2694,6 +1924,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Fir
     - author_id: 2
       category: wood
       industryTags:
@@ -2704,6 +1935,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Hickory
     - author_id: 1
       category: wood
       hardness: 2.2 Janka
@@ -2727,6 +1959,7 @@ materials:
       resin_content: Low to medium
       specific_heat: 1.25 kJ/kg·K
       tannin_content: Medium
+      name: Mahogany
     - author_id: 2
       category: wood
       hardness: 6.4 Janka
@@ -2750,6 +1983,7 @@ materials:
       resin_content: Very low
       specific_heat: 1.3 kJ/kg·K
       tannin_content: Low
+      name: Maple
     - author_id: 3
       category: wood
       industryTags:
@@ -2760,6 +1994,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: MDF
     - author_id: 1
       category: wood
       hardness: 5.9 Janka
@@ -2782,6 +2017,7 @@ materials:
       resin_content: Low
       specific_heat: 1.2 kJ/kg·K
       tannin_content: High
+      name: Oak
     - author_id: 1
       category: wood
       hardness: 2.3 (Janka hardness scale)
@@ -2798,6 +2034,7 @@ materials:
       grain_pattern: Straight grain
       moisture_content: 10-15%
       resin_content: High
+      name: Pine
     - author_id: 4
       category: wood
       industryTags:
@@ -2808,6 +2045,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Plywood
     - author_id: 2
       category: wood
       hardness: 2.3 Janka
@@ -2830,6 +2068,7 @@ materials:
       resin_content: Very low
       specific_heat: 1.35 kJ/kg·K
       tannin_content: Very low
+      name: Poplar
     - author_id: 4
       category: wood
       industryTags:
@@ -2840,6 +2079,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Redwood
     - author_id: 3
       category: wood
       industryTags:
@@ -2850,6 +2090,7 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Rosewood
     - author_id: 3
       category: wood
       hardness: 4.2 Janka
@@ -2874,6 +2115,7 @@ materials:
       resin_content: Low
       specific_heat: 1.2 kJ/kg·K
       tannin_content: High
+      name: Teak
     - author_id: 1
       category: wood
       hardness: 4.49 Janka
@@ -2896,6 +2138,7 @@ materials:
       resin_content: Low
       specific_heat: 1.2 kJ/kg·K
       tannin_content: Medium to high
+      name: Walnut
     - author_id: 2
       category: wood
       industryTags:
@@ -2906,4 +2149,10 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      name: Willow
     processing_priority: medium
+metadata:
+  total_categories: 9
+  total_materials: 121
+  last_updated: '2025-08-28'
+  format_version: '1.0'
