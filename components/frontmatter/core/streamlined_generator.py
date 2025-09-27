@@ -37,6 +37,14 @@ class PropertyDiscoveryError(Exception):
     """Raised when property discovery fails - no fallbacks allowed per GROK_INSTRUCTIONS.md"""
     pass
 
+class ConfigurationError(Exception):
+    """Raised when required configuration data is missing - fail-fast per GROK_INSTRUCTIONS.md"""
+    pass
+
+class MaterialDataError(Exception):
+    """Raised when required material data is missing - fail-fast per GROK_INSTRUCTIONS.md"""
+    pass
+
 logger = logging.getLogger(__name__)
 
 # Abbreviation mappings for standardized naming
@@ -144,8 +152,10 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             from data.materials import load_materials
             materials_data = load_materials()
             
-            # Store machine settings ranges (from Materials.yaml - machine-specific)
-            self.machine_settings_ranges = materials_data.get('machineSettingsRanges', {})
+            # Store machine settings ranges (from Materials.yaml - machine-specific) - FAIL-FAST per GROK_INSTRUCTIONS.md
+            if 'machineSettingsRanges' not in materials_data:
+                raise MaterialDataError("machineSettingsRanges section required in materials data")
+            self.machine_settings_ranges = materials_data['machineSettingsRanges']
             
             self.logger.info("Loaded materials research data for enhanced range calculations")
             
@@ -195,15 +205,31 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             self.category_enhanced_data = {}
             self.categories_data = categories_data  # Store full categories data for unified industry access
             
-            # Load standardized descriptions and templates
-            self.machine_settings_descriptions = categories_data.get('machineSettingsDescriptions', {})
-            self.material_property_descriptions = categories_data.get('materialPropertyDescriptions', {})
-            self.environmental_impact_templates = categories_data.get('environmentalImpactTemplates', {})
-            self.application_type_definitions = categories_data.get('applicationTypeDefinitions', {})
-            self.standard_outcome_metrics = categories_data.get('standardOutcomeMetrics', {})
+            # Load standardized descriptions and templates - FAIL-FAST per GROK_INSTRUCTIONS.md
+            if 'machineSettingsDescriptions' not in categories_data:
+                raise ConfigurationError("machineSettingsDescriptions section required in Categories.yaml")
+            self.machine_settings_descriptions = categories_data['machineSettingsDescriptions']
             
-            # Load universal regulatory standards (optimization v2.4.0)
-            self.universal_regulatory_standards = categories_data.get('universal_regulatory_standards', [])
+            if 'materialPropertyDescriptions' not in categories_data:
+                raise ConfigurationError("materialPropertyDescriptions section required in Categories.yaml")
+            self.material_property_descriptions = categories_data['materialPropertyDescriptions']
+            
+            if 'environmentalImpactTemplates' not in categories_data:
+                raise ConfigurationError("environmentalImpactTemplates section required in Categories.yaml")
+            self.environmental_impact_templates = categories_data['environmentalImpactTemplates']
+            
+            if 'applicationTypeDefinitions' not in categories_data:
+                raise ConfigurationError("applicationTypeDefinitions section required in Categories.yaml")
+            self.application_type_definitions = categories_data['applicationTypeDefinitions']
+            
+            if 'standardOutcomeMetrics' not in categories_data:
+                raise ConfigurationError("standardOutcomeMetrics section required in Categories.yaml")
+            self.standard_outcome_metrics = categories_data['standardOutcomeMetrics']
+            
+            # Load universal regulatory standards (optimization v2.4.0) - FAIL-FAST per GROK_INSTRUCTIONS.md
+            if 'universal_regulatory_standards' not in categories_data:
+                raise ConfigurationError("universal_regulatory_standards section required in Categories.yaml")
+            self.universal_regulatory_standards = categories_data['universal_regulatory_standards']
             
             if 'categories' in categories_data:
                 for category_name, category_info in categories_data['categories'].items():
@@ -211,15 +237,23 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                     if 'category_ranges' in category_info:
                         self.category_ranges[category_name] = category_info['category_ranges']
                     
-                    # Store enhanced category data (industry applications, electrical properties, etc.)
-                    self.category_enhanced_data[category_name] = {
-                        'industryApplications': category_info.get('industryApplications', {}),
-                        'electricalProperties': category_info.get('electricalProperties', {}),
-                        'processingParameters': category_info.get('processingParameters', {}),
-                        'chemicalProperties': category_info.get('chemicalProperties', {}),
-                        'common_applications': category_info.get('common_applications', []),
-                        'industryTags': category_info.get('industryTags', {})  # Add industryTags for unified access
-                    }
+                    # Store enhanced category data (industry applications, electrical properties, etc.) - FAIL-FAST per GROK_INSTRUCTIONS.md
+                    enhanced_data = {}
+                    
+                    if 'industryApplications' in category_info:
+                        enhanced_data['industryApplications'] = category_info['industryApplications']
+                    if 'electricalProperties' in category_info:
+                        enhanced_data['electricalProperties'] = category_info['electricalProperties']
+                    if 'processingParameters' in category_info:
+                        enhanced_data['processingParameters'] = category_info['processingParameters']
+                    if 'chemicalProperties' in category_info:
+                        enhanced_data['chemicalProperties'] = category_info['chemicalProperties']
+                    if 'common_applications' in category_info:
+                        enhanced_data['common_applications'] = category_info['common_applications']
+                    if 'industryTags' in category_info:
+                        enhanced_data['industryTags'] = category_info['industryTags']
+                    
+                    self.category_enhanced_data[category_name] = enhanced_data
             
             self.logger.info(f"Loaded Categories.yaml data: {len(self.category_ranges)} categories with enhanced properties")
             
@@ -307,15 +341,15 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             # Apply abbreviation template if applicable
             abbreviation_format = self._apply_abbreviation_template(material_name)
             
-            # Build base structure from YAML with all required schema fields
+            # Build base structure from YAML with all required schema fields - FAIL-FAST per GROK_INSTRUCTIONS.md
             frontmatter = {
                 'name': abbreviation_format['name'],
-                'title': material_data.get('title', abbreviation_format['title']),
-                'description': material_data.get('description', f"Laser cleaning parameters for {material_data.get('name', material_name)}{abbreviation_format['description_suffix']}"),
-                'category': material_data.get('category', 'materials').title(),  # Capitalized for consistency
-                'subcategory': material_data.get('subcategory', abbreviation_format['subcategory']),
-                'author_id': material_data.get('author_id', 3),  # Required by schema (not authorId)
-                'applications': self._generate_applications_from_unified_industry_data(material_name, material_data),  # Unified industry data approach
+                'title': material_data['title'] if 'title' in material_data else abbreviation_format['title'],
+                'description': material_data['description'] if 'description' in material_data else f"Laser cleaning parameters for {material_data['name'] if 'name' in material_data else material_name}{abbreviation_format['description_suffix']}",
+                'category': (material_data['category'] if 'category' in material_data else 'materials').title(),
+                'subcategory': material_data['subcategory'] if 'subcategory' in material_data else abbreviation_format['subcategory'],
+                'author_id': material_data['author_id'] if 'author_id' in material_data else 3,
+                'applications': self._generate_applications_from_unified_industry_data(material_name, material_data),
             }
             
             # Generate properties with Min/Max ranges using unified inheritance
@@ -381,8 +415,8 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                         'unit': prop_data['unit'],
                         'confidence': prop_data['confidence'],
                         'description': prop_data['description'],
-                        'min': prop_data.get('min'),
-                        'max': prop_data.get('max')
+                        'min': prop_data['min'] if 'min' in prop_data else None,
+                        'max': prop_data['max'] if 'max' in prop_data else None
                     }
                     
                     # Enhance with standardized descriptions from Categories.yaml
@@ -434,8 +468,8 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                         'unit': setting_data['unit'],
                         'confidence': setting_data['confidence'],
                         'description': setting_data['description'],
-                        'min': setting_data.get('min'),
-                        'max': setting_data.get('max')
+                        'min': setting_data['min'] if 'min' in setting_data else None,
+                        'max': setting_data['max'] if 'max' in setting_data else None
                     }
                     
                     # Enhance with standardized descriptions from Categories.yaml
@@ -518,8 +552,12 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
     def _has_category_data(self, material_category: str, prop_key: str) -> bool:
         """Check if we have category-specific data for this property."""
         try:
-            category_data = self.categories_data.get(material_category, {})
-            return prop_key in category_data.get('properties', {})
+            if material_category not in self.categories_data:
+                return False
+            category_data = self.categories_data[material_category]
+            if 'properties' not in category_data:
+                return False
+            return prop_key in category_data['properties']
         except Exception:
             return False
     
@@ -553,7 +591,8 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 category_range = self.category_ranges[material_category][range_key]
                 
                 # Handle Categories.yaml format (separate unit field) vs Materials.yaml format (inline units)
-                if isinstance(category_range.get('min'), (int, float)) and isinstance(category_range.get('max'), (int, float)):
+                if ('min' in category_range and 'max' in category_range and 
+                    isinstance(category_range['min'], (int, float)) and isinstance(category_range['max'], (int, float))):
                     # Categories.yaml format: numeric min/max with separate unit field
                     min_val = float(category_range['min'])
                     max_val = float(category_range['max'])
@@ -723,7 +762,34 @@ Return YAML format with materialProperties (not properties) and machineSettings 
     def _get_category_unit(self, material_category: str, prop_key: str) -> Optional[str]:
         """Get unit for property from Categories.yaml enhanced data"""
         try:
-            # Map frontend property keys to Categories.yaml range keys
+            # Map machine settings to machineSettingsDescriptions keys - FIX for min/max unit extraction
+            machine_settings_mapping = {
+                'powerRange': 'powerRange',
+                'wavelength': 'wavelength',
+                'spotSize': 'spotSize',
+                'repetitionRate': 'repetitionRate',
+                'fluenceThreshold': 'fluenceThreshold',
+                'pulseDuration': 'pulseDuration',
+                'scanningSpeed': 'scanningSpeed',
+                'processingSpeed': 'processingSpeed',
+                'ablationThreshold': 'ablationThreshold',
+                'thermalDamageThreshold': 'thermalDamageThreshold'
+            }
+            
+            # Check machine settings first (these come from machineSettingsDescriptions)
+            if prop_key in machine_settings_mapping:
+                desc_key = machine_settings_mapping[prop_key]
+                if (hasattr(self, 'machine_settings_descriptions') and 
+                    desc_key in self.machine_settings_descriptions and
+                    isinstance(self.machine_settings_descriptions[desc_key], dict) and
+                    'unit' in self.machine_settings_descriptions[desc_key]):
+                    unit = self.machine_settings_descriptions[desc_key]['unit']
+                    # Handle multi-unit strings like "ns, ps, fs" - take first unit
+                    if ',' in unit:
+                        unit = unit.split(',')[0].strip()
+                    return unit
+            
+            # Map material property keys to Categories.yaml range keys
             property_mapping = {
                 'density': 'density',
                 'thermalConductivity': 'thermalConductivity', 
@@ -731,12 +797,14 @@ Return YAML format with materialProperties (not properties) and machineSettings 
                 'youngsModulus': 'youngsModulus',
                 'hardness': 'hardness',
                 'electricalConductivity': 'electricalConductivity',
-                'meltingPoint': 'thermalDestructionPoint',
+                'meltingPoint': 'thermalDestructionPoint',  # Fixed mapping
+                'thermalDestructionPoint': 'thermalDestructionPoint',  # Direct mapping
                 'thermalExpansion': 'thermalExpansion',
                 'thermalDiffusivity': 'thermalDiffusivity',
                 'specificHeat': 'specificHeat',
                 'laserAbsorption': 'laserAbsorption',
-                'laserReflectivity': 'laserReflectivity'
+                'laserReflectivity': 'laserReflectivity',
+                'thermalDestructionType': 'thermalDestructionType'  # Add missing property
             }
             
             if prop_key in property_mapping:
@@ -766,7 +834,7 @@ Return YAML format with materialProperties (not properties) and machineSettings 
         try:
             from utils.core.author_manager import get_author_by_id
             
-            author_id = material_data.get('author_id', 3)
+            author_id = material_data['author_id'] if 'author_id' in material_data else 3
             author_info = get_author_by_id(author_id)
             
             if not author_info:
@@ -856,10 +924,10 @@ Return YAML format with materialProperties (not properties) and machineSettings 
             for impact_type, template in self.environmental_impact_templates.items():
                 environmental_impact.append({
                     'benefit': impact_type.replace('_', ' ').title(),
-                    'description': template.get('description', ''),
-                    'applicableIndustries': template.get('applicable_industries', []),
-                    'quantifiedBenefits': template.get('quantified_benefits', ''),
-                    'sustainabilityBenefit': template.get('sustainability_benefit', '')
+                    'description': template['description'] if 'description' in template else '',
+                    'applicableIndustries': template['applicable_industries'] if 'applicable_industries' in template else [],
+                    'quantifiedBenefits': template['quantified_benefits'] if 'quantified_benefits' in template else '',
+                    'sustainabilityBenefit': template['sustainability_benefit'] if 'sustainability_benefit' in template else ''
                 })
                 
             if environmental_impact:
@@ -880,11 +948,11 @@ Return YAML format with materialProperties (not properties) and machineSettings 
             for app_type, definition in self.application_type_definitions.items():
                 applications.append({
                     'type': app_type.replace('_', ' ').title(),
-                    'description': definition.get('description', ''),
-                    'industries': definition.get('industries', []),
-                    'qualityMetrics': definition.get('quality_metrics', []),
-                    'typicalTolerances': definition.get('typical_tolerances', ''),
-                    'objectives': definition.get('objectives', [])
+                    'description': definition['description'] if 'description' in definition else '',
+                    'industries': definition['industries'] if 'industries' in definition else [],
+                    'qualityMetrics': definition['quality_metrics'] if 'quality_metrics' in definition else [],
+                    'typicalTolerances': definition['typical_tolerances'] if 'typical_tolerances' in definition else '',
+                    'objectives': definition['objectives'] if 'objectives' in definition else []
                 })
                 
             if applications:
@@ -905,11 +973,11 @@ Return YAML format with materialProperties (not properties) and machineSettings 
             for metric_type, metric_def in self.standard_outcome_metrics.items():
                 outcome_metrics.append({
                     'metric': metric_type.replace('_', ' ').title(),
-                    'description': metric_def.get('description', ''),
-                    'measurementMethods': metric_def.get('measurement_methods', []),
-                    'typicalRanges': metric_def.get('typical_ranges', ''),
-                    'factorsAffecting': metric_def.get('factors_affecting', []),
-                    'units': metric_def.get('units', [])
+                    'description': metric_def['description'] if 'description' in metric_def else '',
+                    'measurementMethods': metric_def['measurement_methods'] if 'measurement_methods' in metric_def else [],
+                    'typicalRanges': metric_def['typical_ranges'] if 'typical_ranges' in metric_def else '',
+                    'factorsAffecting': metric_def['factors_affecting'] if 'factors_affecting' in metric_def else [],
+                    'units': metric_def['units'] if 'units' in metric_def else []
                 })
                 
             if outcome_metrics:
@@ -924,15 +992,19 @@ Return YAML format with materialProperties (not properties) and machineSettings 
         """Get material properties using unified inheritance from category definitions"""
         try:
             unified_properties = {}
-            material_category = material_data.get('category', 'unknown')
+            if 'category' not in material_data:
+                raise MaterialDataError(f"Material category required for {material_name} - no fallbacks allowed per GROK_INSTRUCTIONS.md")
+            material_category = material_data['category']
             
             # Get category property defaults from Categories.yaml
             category_property_defaults = {}
             if material_category in self.category_enhanced_data:
-                category_property_defaults = self.category_enhanced_data[material_category].get('categoryPropertyDefaults', {})
+                enhanced_data = self.category_enhanced_data[material_category]
+                if 'categoryPropertyDefaults' in enhanced_data:
+                    category_property_defaults = enhanced_data['categoryPropertyDefaults']
             
             # Property types to consolidate
-            property_types = ['thermal_properties', 'mechanical_properties', 'electrical_properties', 'processing_properties']
+            property_types = ['thermalProperties', 'mechanicalProperties', 'electricalProperties', 'processingProperties']
             
             for prop_type in property_types:
                 combined_properties = {}
@@ -960,13 +1032,18 @@ Return YAML format with materialProperties (not properties) and machineSettings 
         """Generate applications using unified industry data structure (post-consolidation)"""
         try:
             applications = []
-            material_category = material_data.get('category', 'unknown')
+            if 'category' not in material_data:
+                raise MaterialDataError(f"Material category required for industry data generation - no fallbacks allowed per GROK_INSTRUCTIONS.md")
+            material_category = material_data['category']
             
             # Get category primary industries from Categories.yaml (unified source)
             category_primary_industries = []
             if material_category in self.category_enhanced_data:
-                industry_tags_data = self.category_enhanced_data[material_category].get('industryTags', {})
-                category_primary_industries = industry_tags_data.get('primary_industries', [])
+                enhanced_data = self.category_enhanced_data[material_category]
+                if 'industryTags' in enhanced_data:
+                    industry_tags_data = enhanced_data['industryTags']
+                    if 'primary_industries' in industry_tags_data:
+                        category_primary_industries = industry_tags_data['primary_industries']
             
             # Check for material-specific industry overrides (preserved unique tags)
             material_specific_industries = []
