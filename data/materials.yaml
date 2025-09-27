@@ -3,7 +3,8 @@ materials:
     article_type: material
     description: Ceramic materials for laser cleaning applications
     items:
-    - author_id: 2
+    - name: Alumina
+      author_id: 2
       category: ceramic
       hardness: 9.0 Mohs
       compressive_strength: 2000-4000 MPa
@@ -28,8 +29,8 @@ materials:
       - ASTM C848 - Standard Specification for High Alumina Refractory Brick
       - ISO 23146 - Technical Ceramics
       flexural_strength: 300-400 MPa
-      name: Alumina
-    - author_id: 4
+    - name: Titanium Carbide
+      author_id: 4
       category: ceramic
       hardness: 5-6 Mohs
       compressive_strength: 200-600 MPa
@@ -52,8 +53,8 @@ materials:
       firing_temperature: 1200-1300°C
       flexural_strength: 30-80 MPa
       porosity: 2-8%
-      name: Titanium Carbide
-    - author_id: 4
+    - name: Tungsten Carbide
+      author_id: 4
       category: ceramic
       hardness: 8.5 Mohs
       compressive_strength: 2000-4000 MPa
@@ -79,8 +80,8 @@ materials:
       flexural_strength: 800-1200 MPa
       fracture_toughness: 6-10 MPa·m^0.5
       ionic_conductivity: High at elevated temperatures
-      name: Tungsten Carbide
-    - author_id: 1
+    - name: Porcelain
+      author_id: 1
       category: ceramic
       hardness: 9.3 Mohs
       industryTags:
@@ -95,8 +96,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Porcelain
-    - author_id: 2
+    - name: Silicon Nitride
+      author_id: 2
       category: ceramic
       hardness: 9.0 Mohs
       industryTags:
@@ -111,8 +112,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Silicon Nitride
-    - author_id: 3
+    - name: Stoneware
+      author_id: 3
       category: ceramic
       hardness: 9.0 Mohs
       industryTags:
@@ -127,8 +128,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Stoneware
-    - author_id: 4
+    - name: Zirconia
+      author_id: 4
       category: ceramic
       hardness: 7.0 Mohs
       industryTags:
@@ -143,13 +144,13 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Zirconia
     processing_priority: medium
   composite:
     article_type: material
     description: Composite materials for laser cleaning applications
     items:
-    - author_id: 1
+    - name: Carbon Fiber Reinforced Polymer
+      author_id: 1
       category: composite
       tensileStrength: 100-1500 MPa
       youngsModulus: 10-150 GPa
@@ -163,8 +164,8 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       operating_temperature: -40 to 200°C
-      name: Carbon Fiber Reinforced Polymer
-    - author_id: 1
+    - name: Epoxy Resin Composites
+      author_id: 1
       category: composite
       tensileStrength: 100-1500 MPa
       youngsModulus: 10-150 GPa
@@ -178,8 +179,8 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       operating_temperature: -40 to 200°C
-      name: Epoxy Resin Composites
-    - author_id: 3
+    - name: Fiberglass
+      author_id: 3
       category: composite
       tensileStrength: 100-1500 MPa
       youngsModulus: 10-150 GPa
@@ -193,8 +194,8 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       operating_temperature: -40 to 200°C
-      name: Fiberglass
-    - author_id: 3
+    - name: Kevlar-Reinforced Polymer
+      author_id: 3
       category: composite
       tensileStrength: 100-1500 MPa
       youngsModulus: 10-150 GPa
@@ -208,8 +209,8 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       operating_temperature: -40 to 200°C
-      name: Kevlar-Reinforced Polymer
-    - author_id: 4
+    - name: Phenolic Resin Composites
+      author_id: 4
       category: composite
       tensileStrength: 100-1500 MPa
       youngsModulus: 10-150 GPa
@@ -223,8 +224,8 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       operating_temperature: -40 to 200°C
-      name: Phenolic Resin Composites
-    - author_id: 1
+    - name: Polyester Resin Composites
+      author_id: 1
       category: composite
       tensileStrength: 100-1500 MPa
       youngsModulus: 10-150 GPa
@@ -238,8 +239,8 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       operating_temperature: -40 to 200°C
-      name: Polyester Resin Composites
-    - author_id: 4
+    - name: Rubber
+      author_id: 4
       category: composite
       tensileStrength: 100-1500 MPa
       youngsModulus: 10-150 GPa
@@ -253,8 +254,8 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       operating_temperature: -40 to 200°C
-      name: Rubber
-    - author_id: 2
+    - name: Thermoplastic Elastomer
+      author_id: 2
       category: composite
       tensileStrength: 100-1500 MPa
       youngsModulus: 10-150 GPa
@@ -268,8 +269,8 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       operating_temperature: -40 to 200°C
-      name: Thermoplastic Elastomer
-    - author_id: 3
+    - name: Urethane Composites
+      author_id: 3
       category: composite
       tensileStrength: 100-1500 MPa
       youngsModulus: 10-150 GPa
@@ -283,8 +284,8 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       operating_temperature: -40 to 200°C
-      name: Urethane Composites
-    - author_id: 1
+    - name: Glass Fiber Reinforced Polymers GFRP
+      author_id: 1
       category: composite
       tensileStrength: 100-1500 MPa
       youngsModulus: 10-150 GPa
@@ -298,8 +299,8 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       operating_temperature: -40 to 200°C
-      name: Glass Fiber Reinforced Polymers GFRP
-    - author_id: 2
+    - name: Fiber Reinforced Polyurethane FRPU
+      author_id: 2
       category: composite
       tensileStrength: 100-1500 MPa
       youngsModulus: 10-150 GPa
@@ -313,8 +314,8 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       operating_temperature: -40 to 200°C
-      name: Fiber Reinforced Polyurethane FRPU
-    - author_id: 4
+    - name: Metal Matrix Composites MMCs
+      author_id: 4
       category: composite
       tensileStrength: 100-1500 MPa
       youngsModulus: 10-150 GPa
@@ -328,8 +329,8 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       operating_temperature: -40 to 200°C
-      name: Metal Matrix Composites MMCs
-    - author_id: 4
+    - name: Ceramic Matrix Composites CMCs
+      author_id: 4
       category: composite
       tensileStrength: 100-1500 MPa
       youngsModulus: 10-150 GPa
@@ -343,13 +344,13 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       operating_temperature: -40 to 200°C
-      name: Ceramic Matrix Composites CMCs
     processing_priority: medium
   glass:
     article_type: material
     description: Glass materials for laser cleaning applications
     items:
-    - author_id: 3
+    - name: Borosilicate Glass
+      author_id: 3
       category: glass
       hardness: 5.5-6.5 Mohs
       tensileStrength: 50-100 MPa
@@ -364,8 +365,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Borosilicate Glass
-    - author_id: 1
+    - name: Crown Glass
+      author_id: 1
       category: glass
       hardness: 5.5-6.5 Mohs
       tensileStrength: 50-100 MPa
@@ -380,8 +381,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Crown Glass
-    - author_id: 2
+    - name: Gorilla Glass
+      author_id: 2
       category: glass
       hardness: 5.5-6.5 Mohs
       tensileStrength: 50-100 MPa
@@ -396,8 +397,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Gorilla Glass
-    - author_id: 1
+    - name: Sapphire Glass
+      author_id: 1
       category: glass
       hardness: 5.5-6.5 Mohs
       tensileStrength: 50-100 MPa
@@ -412,8 +413,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Sapphire Glass
-    - author_id: 1
+    - name: Float Glass
+      author_id: 1
       category: glass
       hardness: 5.5-6.5 Mohs
       tensileStrength: 50-100 MPa
@@ -428,8 +429,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Float Glass
-    - author_id: 2
+    - name: Fused Silica
+      author_id: 2
       category: glass
       hardness: 5.5-6.5 Mohs
       tensileStrength: 50-100 MPa
@@ -444,8 +445,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Fused Silica
-    - author_id: 1
+    - name: Lead Crystal
+      author_id: 1
       category: glass
       hardness: 5.5-6.5 Mohs
       tensileStrength: 50-100 MPa
@@ -460,8 +461,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Lead Crystal
-    - author_id: 4
+    - name: Pyrex
+      author_id: 4
       category: glass
       hardness: 5.5-6.5 Mohs
       tensileStrength: 50-100 MPa
@@ -476,8 +477,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Pyrex
-    - author_id: 1
+    - name: Quartz Glass
+      author_id: 1
       category: glass
       hardness: 9.0 Mohs
       industryTags:
@@ -489,8 +490,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Quartz Glass
-    - author_id: 2
+    - name: Soda-Lime Glass
+      author_id: 2
       category: glass
       hardness: 6.8 Mohs
       industryTags:
@@ -502,8 +503,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Soda-Lime Glass
-    - author_id: 3
+    - name: Tempered Glass
+      author_id: 3
       category: glass
       hardness: 5.5 Mohs
       industryTags:
@@ -515,13 +516,13 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Tempered Glass
     processing_priority: medium
   masonry:
     article_type: material
     description: Masonry materials for laser cleaning applications
     items:
-    - author_id: 2
+    - name: Brick
+      author_id: 2
       category: masonry
       compressive_strength: 10-100 MPa
       thermalConductivity: 0.5-1.5 W/m·K
@@ -535,8 +536,8 @@ materials:
       - IEC 60825 - Safety of Laser Products
       porosity: 10-25%
       water_absorption: 5-20%
-      name: Brick
-    - author_id: 3
+    - name: Cement
+      author_id: 3
       category: masonry
       compressive_strength: 10-100 MPa
       thermalConductivity: 0.5-1.5 W/m·K
@@ -550,8 +551,8 @@ materials:
       - IEC 60825 - Safety of Laser Products
       porosity: 10-25%
       water_absorption: 5-20%
-      name: Cement
-    - author_id: 3
+    - name: Concrete
+      author_id: 3
       category: masonry
       compressive_strength: 10-100 MPa
       thermalConductivity: 0.5-1.5 W/m·K
@@ -565,8 +566,8 @@ materials:
       - IEC 60825 - Safety of Laser Products
       porosity: 10-25%
       water_absorption: 5-20%
-      name: Concrete
-    - author_id: 2
+    - name: Mortar
+      author_id: 2
       category: masonry
       compressive_strength: 10-100 MPa
       thermalConductivity: 0.5-1.5 W/m·K
@@ -580,8 +581,8 @@ materials:
       - IEC 60825 - Safety of Laser Products
       porosity: 10-25%
       water_absorption: 5-20%
-      name: Mortar
-    - author_id: 2
+    - name: Plaster
+      author_id: 2
       category: masonry
       compressive_strength: 10-100 MPa
       thermalConductivity: 0.5-1.5 W/m·K
@@ -595,8 +596,8 @@ materials:
       - IEC 60825 - Safety of Laser Products
       porosity: 10-25%
       water_absorption: 5-20%
-      name: Plaster
-    - author_id: 1
+    - name: Stucco
+      author_id: 1
       category: masonry
       compressive_strength: 10-100 MPa
       thermalConductivity: 0.5-1.5 W/m·K
@@ -610,8 +611,8 @@ materials:
       - IEC 60825 - Safety of Laser Products
       porosity: 10-25%
       water_absorption: 5-20%
-      name: Stucco
-    - author_id: 1
+    - name: Terracotta
+      author_id: 1
       category: masonry
       compressive_strength: 10-100 MPa
       thermalConductivity: 0.5-1.5 W/m·K
@@ -625,13 +626,13 @@ materials:
       - IEC 60825 - Safety of Laser Products
       porosity: 10-25%
       water_absorption: 5-20%
-      name: Terracotta
     processing_priority: medium
   metal:
     article_type: material
     description: Metal materials for laser cleaning applications
     items:
-    - author_id: 3
+    - name: Aluminum
+      author_id: 3
       category: metal
       tensileStrength: 200-1200 MPa
       youngsModulus: 200-250 GPa
@@ -646,8 +647,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Aluminum
-    - author_id: 4
+    - name: Chromium
+      author_id: 4
       category: metal
       tensileStrength: 200-1200 MPa
       youngsModulus: 200-250 GPa
@@ -662,8 +663,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Chromium
-    - author_id: 4
+    - name: Manganese
+      author_id: 4
       category: metal
       tensileStrength: 200-1200 MPa
       youngsModulus: 200-250 GPa
@@ -686,8 +687,8 @@ materials:
       composition: 63% Cu, 37% Zn (C26000 Cartridge Brass)
       corrosion_resistance: good
       machinability: excellent
-      name: Manganese
-    - author_id: 3
+    - name: Beryllium
+      author_id: 3
       category: metal
       tensileStrength: 200-1200 MPa
       youngsModulus: 200-250 GPa
@@ -710,8 +711,8 @@ materials:
       composition: 88% Cu, 12% Sn (SAE 903 bearing bronze)
       corrosion_resistance: superior to steel
       strength: 10% denser than steel
-      name: Beryllium
-    - author_id: 2
+    - name: Brass
+      author_id: 2
       category: metal
       tensileStrength: 1043 MPa
       youngsModulus: 200-250 GPa
@@ -733,8 +734,8 @@ materials:
       curie_temperature: 1115°C
       magnetic_properties: ferromagnetic
       yield_strength: 470-3000 MPa
-      name: Brass
-    - author_id: 4
+    - name: Bronze
+      author_id: 4
       category: metal
       tensileStrength: 200-1200 MPa
       youngsModulus: 200-250 GPa
@@ -749,8 +750,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Bronze
-    - author_id: 3
+    - name: Cobalt
+      author_id: 3
       category: metal
       tensileStrength: 200-1200 MPa
       youngsModulus: 200-250 GPa
@@ -765,8 +766,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Cobalt
-    - author_id: 2
+    - name: Copper
+      author_id: 2
       category: metal
       tensileStrength: 200-1200 MPa
       youngsModulus: 200-250 GPa
@@ -781,8 +782,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Copper
-    - author_id: 4
+    - name: Gallium
+      author_id: 4
       category: metal
       tensileStrength: 200-1200 MPa
       youngsModulus: 200-250 GPa
@@ -797,8 +798,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Gallium
-    - author_id: 1
+    - name: Gold
+      author_id: 1
       category: metal
       tensileStrength: 200-1200 MPa
       youngsModulus: 200-250 GPa
@@ -813,8 +814,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Gold
-    - author_id: 3
+    - name: Hafnium
+      author_id: 3
       category: metal
       tensileStrength: 200-1200 MPa
       youngsModulus: 200-250 GPa
@@ -829,8 +830,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Hafnium
-    - author_id: 4
+    - name: Hastelloy
+      author_id: 4
       category: metal
       tensileStrength: 200-1200 MPa
       youngsModulus: 200-250 GPa
@@ -845,8 +846,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Hastelloy
-    - author_id: 1
+    - name: Inconel
+      author_id: 1
       category: metal
       tensileStrength: 200-1200 MPa
       youngsModulus: 200-250 GPa
@@ -861,8 +862,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Inconel
-    - author_id: 2
+    - name: Indium
+      author_id: 2
       category: metal
       tensileStrength: 200-1200 MPa
       youngsModulus: 200-250 GPa
@@ -877,8 +878,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Indium
-    - author_id: 4
+    - name: Iridium
+      author_id: 4
       category: metal
       tensileStrength: 200-1200 MPa
       youngsModulus: 200-250 GPa
@@ -893,8 +894,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Iridium
-    - author_id: 4
+    - name: Iron
+      author_id: 4
       category: metal
       tensileStrength: 200-1200 MPa
       youngsModulus: 200-250 GPa
@@ -909,8 +910,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Iron
-    - author_id: 1
+    - name: Lead
+      author_id: 1
       category: metal
       tensileStrength: 200-1200 MPa
       youngsModulus: 200-250 GPa
@@ -925,8 +926,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Lead
-    - author_id: 3
+    - name: Magnesium
+      author_id: 3
       category: metal
       tensileStrength: 667-1600 MPa
       youngsModulus: 200-250 GPa
@@ -948,8 +949,8 @@ materials:
       curie_temperature: 355°C
       magnetic_properties: ferromagnetic
       yield_strength: 638 MPa
-      name: Magnesium
-    - author_id: 4
+    - name: Molybdenum
+      author_id: 4
       category: metal
       tensileStrength: 200-1200 MPa
       youngsModulus: 200-250 GPa
@@ -964,8 +965,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Molybdenum
-    - author_id: 3
+    - name: Nickel
+      author_id: 3
       category: metal
       tensileStrength: 200-1200 MPa
       youngsModulus: 200-250 GPa
@@ -980,8 +981,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Nickel
-    - author_id: 3
+    - name: Niobium
+      author_id: 3
       category: metal
       tensileStrength: 200-1200 MPa
       youngsModulus: 200-250 GPa
@@ -996,8 +997,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Niobium
-    - author_id: 1
+    - name: Palladium
+      author_id: 1
       category: metal
       tensileStrength: 200-1200 MPa
       youngsModulus: 200-250 GPa
@@ -1012,8 +1013,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Palladium
-    - author_id: 2
+    - name: Platinum
+      author_id: 2
       category: metal
       tensileStrength: 200-1200 MPa
       youngsModulus: 200-250 GPa
@@ -1028,8 +1029,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Platinum
-    - author_id: 1
+    - name: Rhenium
+      author_id: 1
       category: metal
       tensileStrength: 200-1200 MPa
       youngsModulus: 200-250 GPa
@@ -1044,8 +1045,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Rhenium
-    - author_id: 2
+    - name: Rhodium
+      author_id: 2
       category: metal
       tensileStrength: 200-1200 MPa
       youngsModulus: 200-250 GPa
@@ -1060,8 +1061,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Rhodium
-    - author_id: 2
+    - name: Ruthenium
+      author_id: 2
       category: metal
       tensileStrength: 515-827 MPa
       youngsModulus: 200-250 GPa
@@ -1085,8 +1086,8 @@ materials:
       grades: 304, 316, 321, 347, 410, 420, 430
       magnetic_properties: Non-magnetic (304, 316), Magnetic (410, 420, 430)
       nickel_content: 0-37%
-      name: Ruthenium
-    - author_id: 3
+    - name: Silver
+      author_id: 3
       category: metal
       tensileStrength: 200-1200 MPa
       youngsModulus: 200-250 GPa
@@ -1101,8 +1102,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Silver
-    - author_id: 2
+    - name: Stainless Steel
+      author_id: 2
       category: metal
       tensileStrength: 200-1200 MPa
       youngsModulus: 200-250 GPa
@@ -1117,8 +1118,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Stainless Steel
-    - author_id: 3
+    - name: Steel
+      author_id: 3
       category: metal
       tensileStrength: 200-1200 MPa
       youngsModulus: 200-250 GPa
@@ -1133,8 +1134,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Steel
-    - author_id: 2
+    - name: Tantalum
+      author_id: 2
       category: metal
       tensileStrength: 3430-4600 MPa
       youngsModulus: 200-250 GPa
@@ -1152,8 +1153,8 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       yield_strength: 2000-4000 MPa
-      name: Tantalum
-    - author_id: 4
+    - name: Tin
+      author_id: 4
       category: metal
       tensileStrength: 200-1200 MPa
       youngsModulus: 200-250 GPa
@@ -1168,8 +1169,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Tin
-    - author_id: 3
+    - name: Tungsten
+      author_id: 3
       category: metal
       tensileStrength: 200-1200 MPa
       youngsModulus: 200-250 GPa
@@ -1184,8 +1185,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Tungsten
-    - author_id: 1
+    - name: Vanadium
+      author_id: 1
       category: metal
       tensileStrength: 200-1200 MPa
       youngsModulus: 200-250 GPa
@@ -1200,8 +1201,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Vanadium
-    - author_id: 1
+    - name: Zinc
+      author_id: 1
       category: metal
       hardness: 8.5 Mohs
       industryTags:
@@ -1216,8 +1217,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Zinc
-    - author_id: 2
+    - name: Zirconium
+      author_id: 2
       category: metal
       hardness: 6.0 Mohs
       industryTags:
@@ -1232,13 +1233,13 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Zirconium
     processing_priority: medium
   plastic:
     article_type: material
     description: Plastic materials for laser cleaning applications
     items:
-    - author_id: 1
+    - name: Polycarbonate
+      author_id: 1
       category: plastic
       hardness: Shore D 60-70
       industryTags:
@@ -1253,8 +1254,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Polycarbonate
-    - author_id: 2
+    - name: Polyethylene
+      author_id: 2
       category: plastic
       hardness: Shore D 65-75
       industryTags:
@@ -1269,8 +1270,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Polyethylene
-    - author_id: 3
+    - name: Polypropylene
+      author_id: 3
       category: plastic
       hardness: Shore D 75-85
       industryTags:
@@ -1285,8 +1286,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Polypropylene
-    - author_id: 4
+    - name: Polystyrene
+      author_id: 4
       category: plastic
       hardness: Shore D 70-85
       industryTags:
@@ -1301,8 +1302,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Polystyrene
-    - author_id: 1
+    - name: Polytetrafluoroethylene
+      author_id: 1
       category: plastic
       hardness: Shore D 50-65
       industryTags:
@@ -1317,8 +1318,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Polytetrafluoroethylene
-    - author_id: 2
+    - name: Polyvinyl Chloride
+      author_id: 2
       category: plastic
       hardness: Shore D 80-85
       industryTags:
@@ -1333,13 +1334,13 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Polyvinyl Chloride
     processing_priority: medium
   semiconductor:
     article_type: material
     description: Semiconductor materials for laser cleaning applications
     items:
-    - author_id: 4
+    - name: Gallium Arsenide
+      author_id: 4
       category: semiconductor
       thermalConductivity: 55 W/(m·K)
       melting_point: 1238°C
@@ -1356,8 +1357,8 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       bandgap: 1.42 eV
-      name: Gallium Arsenide
-    - author_id: 2
+    - name: Silicon
+      author_id: 2
       category: semiconductor
       hardness: 6.5 Mohs
       thermalConductivity: 149 W/(m·K)
@@ -1380,8 +1381,8 @@ materials:
       - IEC 60825 - Safety of Laser Products
       - ISO 14644 - Cleanroom and Associated Controlled Environments
       bandgap: 1.12 eV
-      name: Silicon
-    - author_id: 3
+    - name: Silicon Carbide
+      author_id: 3
       category: semiconductor
       hardness: 2800 HV
       thermalConductivity: 490 W/(m·K)
@@ -1399,8 +1400,8 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       bandgap: 3.3 eV
-      name: Silicon Carbide
-    - author_id: 4
+    - name: Silicon Germanium
+      author_id: 4
       category: semiconductor
       thermalConductivity: 80 W/(m·K)
       melting_point: 1350°C
@@ -1418,13 +1419,13 @@ materials:
       - IEC 60825 - Safety of Laser Products
       bandgap: 0.8-1.1 eV
       documentation_status: complete
-      name: Silicon Germanium
     processing_priority: medium
   stone:
     article_type: material
     description: Stone materials for laser cleaning applications
     items:
-    - author_id: 1
+    - name: Alabaster
+      author_id: 1
       category: stone
       hardness: 6-7 Mohs
       compressive_strength: 50-200 MPa
@@ -1440,8 +1441,8 @@ materials:
       - IEC 60825 - Safety of Laser Products
       mineral_composition: {}
       porosity: 5-15%
-      name: Alabaster
-    - author_id: 2
+    - name: Basalt
+      author_id: 2
       category: stone
       hardness: 6-7 Mohs
       compressive_strength: 50-200 MPa
@@ -1457,8 +1458,8 @@ materials:
       - IEC 60825 - Safety of Laser Products
       mineral_composition: {}
       porosity: 5-15%
-      name: Basalt
-    - author_id: 2
+    - name: Bluestone
+      author_id: 2
       category: stone
       hardness: 6-7 Mohs
       compressive_strength: 50-200 MPa
@@ -1474,8 +1475,8 @@ materials:
       - IEC 60825 - Safety of Laser Products
       mineral_composition: {}
       porosity: 5-15%
-      name: Bluestone
-    - author_id: 1
+    - name: Breccia
+      author_id: 1
       category: stone
       hardness: 6-7 Mohs
       compressive_strength: 50-200 MPa
@@ -1491,8 +1492,8 @@ materials:
       - IEC 60825 - Safety of Laser Products
       mineral_composition: {}
       porosity: 5-15%
-      name: Breccia
-    - author_id: 4
+    - name: Calcite
+      author_id: 4
       category: stone
       hardness: 6-7 Mohs
       compressive_strength: 50-200 MPa
@@ -1508,8 +1509,8 @@ materials:
       - IEC 60825 - Safety of Laser Products
       mineral_composition: {}
       porosity: 5-15%
-      name: Calcite
-    - author_id: 3
+    - name: Granite
+      author_id: 3
       category: stone
       hardness: 6-7 Mohs
       compressive_strength: 100-250 MPa
@@ -1535,8 +1536,8 @@ materials:
         other_minerals: 5-10%
         quartz: 20-60%
       porosity: 0.4-1.5%
-      name: Granite
-    - author_id: 2
+    - name: Limestone
+      author_id: 2
       category: stone
       hardness: 2-4 Mohs
       compressive_strength: 30-180 MPa
@@ -1562,8 +1563,8 @@ materials:
         organic_matter: 0-5%
         quartz: 0-10%
       porosity: 5-25%
-      name: Limestone
-    - author_id: 4
+    - name: Porphyry
+      author_id: 4
       category: stone
       hardness: 6-7 Mohs
       compressive_strength: 50-200 MPa
@@ -1579,8 +1580,8 @@ materials:
       - IEC 60825 - Safety of Laser Products
       mineral_composition: {}
       porosity: 5-15%
-      name: Porphyry
-    - author_id: 3
+    - name: Marble
+      author_id: 3
       category: stone
       hardness: 3-4 Mohs
       compressive_strength: 70-200 MPa
@@ -1606,8 +1607,8 @@ materials:
         dolomite: 0-10%
         impurities: 0-5%
       porosity: 0.1-2.0%
-      name: Marble
-    - author_id: 2
+    - name: Onyx
+      author_id: 2
       category: stone
       hardness: 6-7 Mohs
       compressive_strength: 50-200 MPa
@@ -1623,8 +1624,8 @@ materials:
       - IEC 60825 - Safety of Laser Products
       mineral_composition: {}
       porosity: 5-15%
-      name: Onyx
-    - author_id: 3
+    - name: Quartzite
+      author_id: 3
       category: stone
       hardness: 6-7 Mohs
       compressive_strength: 50-200 MPa
@@ -1640,8 +1641,8 @@ materials:
       - IEC 60825 - Safety of Laser Products
       mineral_composition: {}
       porosity: 5-15%
-      name: Quartzite
-    - author_id: 2
+    - name: Sandstone
+      author_id: 2
       category: stone
       hardness: 6-7 Mohs
       compressive_strength: 20-170 MPa
@@ -1667,8 +1668,8 @@ materials:
         quartz: 65-95%
         rock_fragments: 0-15%
       porosity: 10-35%
-      name: Sandstone
-    - author_id: 3
+    - name: Schist
+      author_id: 3
       category: stone
       hardness: 6-7 Mohs
       compressive_strength: 50-200 MPa
@@ -1684,8 +1685,8 @@ materials:
       - IEC 60825 - Safety of Laser Products
       mineral_composition: {}
       porosity: 5-15%
-      name: Schist
-    - author_id: 4
+    - name: Serpentine
+      author_id: 4
       category: stone
       hardness: 6-7 Mohs
       compressive_strength: 50-200 MPa
@@ -1701,8 +1702,8 @@ materials:
       - IEC 60825 - Safety of Laser Products
       mineral_composition: {}
       porosity: 5-15%
-      name: Serpentine
-    - author_id: 1
+    - name: Shale
+      author_id: 1
       category: stone
       hardness: 6-7 Mohs
       compressive_strength: 50-200 MPa
@@ -1718,8 +1719,8 @@ materials:
       - IEC 60825 - Safety of Laser Products
       mineral_composition: {}
       porosity: 5-15%
-      name: Shale
-    - author_id: 3
+    - name: Slate
+      author_id: 3
       category: stone
       hardness: 6-7 Mohs
       compressive_strength: 100-200 MPa
@@ -1745,8 +1746,8 @@ materials:
         mica: 30-50%
         quartz: 20-40%
       porosity: 0.1-3.0%
-      name: Slate
-    - author_id: 4
+    - name: Soapstone
+      author_id: 4
       category: stone
       hardness: 6-7 Mohs
       compressive_strength: 50-200 MPa
@@ -1762,8 +1763,8 @@ materials:
       - IEC 60825 - Safety of Laser Products
       mineral_composition: {}
       porosity: 5-15%
-      name: Soapstone
-    - author_id: 1
+    - name: Travertine
+      author_id: 1
       category: stone
       hardness: 6-7 Mohs
       compressive_strength: 50-200 MPa
@@ -1779,13 +1780,13 @@ materials:
       - IEC 60825 - Safety of Laser Products
       mineral_composition: {}
       porosity: 5-15%
-      name: Travertine
     processing_priority: medium
   wood:
     article_type: material
     description: Wood materials for laser cleaning applications
     items:
-    - author_id: 4
+    - name: Ash
+      author_id: 4
       category: wood
       hardness: 5.0 Janka
       thermalConductivity: 0.16 W/m·K
@@ -1807,8 +1808,8 @@ materials:
       resin_content: Low
       specific_heat: 1.2 kJ/kg·K
       tannin_content: Low
-      name: Ash
-    - author_id: 1
+    - name: Bamboo
+      author_id: 1
       category: wood
       hardness: 1.4 Janka
       thermalConductivity: 0.11 W/m·K
@@ -1832,8 +1833,8 @@ materials:
       resin_content: Very low
       specific_heat: 1.3 kJ/kg·K
       tannin_content: Low
-      name: Bamboo
-    - author_id: 3
+    - name: Beech
+      author_id: 3
       category: wood
       industryTags:
       - Woodworking
@@ -1843,8 +1844,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Beech
-    - author_id: 1
+    - name: Birch
+      author_id: 1
       category: wood
       hardness: 4.87 Janka
       thermalConductivity: 0.15 W/m·K
@@ -1866,8 +1867,8 @@ materials:
       resin_content: Low
       specific_heat: 1.25 kJ/kg·K
       tannin_content: Low
-      name: Birch
-    - author_id: 2
+    - name: Cedar
+      author_id: 2
       category: wood
       hardness: 1.8 Janka
       thermalConductivity: 0.10 W/m·K
@@ -1890,8 +1891,8 @@ materials:
       resin_content: High
       specific_heat: 1.4 kJ/kg·K
       tannin_content: Medium
-      name: Cedar
-    - author_id: 1
+    - name: Cherry
+      author_id: 1
       category: wood
       hardness: 4.0 Janka
       thermalConductivity: 0.14 W/m·K
@@ -1913,8 +1914,8 @@ materials:
       resin_content: Low to medium
       specific_heat: 1.2 kJ/kg·K
       tannin_content: Medium
-      name: Cherry
-    - author_id: 4
+    - name: Fir
+      author_id: 4
       category: wood
       industryTags:
       - Woodworking
@@ -1924,8 +1925,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Fir
-    - author_id: 2
+    - name: Hickory
+      author_id: 2
       category: wood
       industryTags:
       - Woodworking
@@ -1935,8 +1936,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Hickory
-    - author_id: 1
+    - name: Mahogany
+      author_id: 1
       category: wood
       hardness: 2.2 Janka
       thermalConductivity: 0.13 W/m·K
@@ -1959,8 +1960,8 @@ materials:
       resin_content: Low to medium
       specific_heat: 1.25 kJ/kg·K
       tannin_content: Medium
-      name: Mahogany
-    - author_id: 2
+    - name: Maple
+      author_id: 2
       category: wood
       hardness: 6.4 Janka
       thermalConductivity: 0.16 W/m·K
@@ -1983,8 +1984,8 @@ materials:
       resin_content: Very low
       specific_heat: 1.3 kJ/kg·K
       tannin_content: Low
-      name: Maple
-    - author_id: 3
+    - name: MDF
+      author_id: 3
       category: wood
       industryTags:
       - Construction
@@ -1994,8 +1995,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: MDF
-    - author_id: 1
+    - name: Oak
+      author_id: 1
       category: wood
       hardness: 5.9 Janka
       thermalConductivity: 0.17 W/m·K
@@ -2017,8 +2018,8 @@ materials:
       resin_content: Low
       specific_heat: 1.2 kJ/kg·K
       tannin_content: High
-      name: Oak
-    - author_id: 1
+    - name: Pine
+      author_id: 1
       category: wood
       hardness: 2.3 (Janka hardness scale)
       industryTags:
@@ -2034,8 +2035,8 @@ materials:
       grain_pattern: Straight grain
       moisture_content: 10-15%
       resin_content: High
-      name: Pine
-    - author_id: 4
+    - name: Plywood
+      author_id: 4
       category: wood
       industryTags:
       - Construction
@@ -2045,8 +2046,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Plywood
-    - author_id: 2
+    - name: Poplar
+      author_id: 2
       category: wood
       hardness: 2.3 Janka
       thermalConductivity: 0.12 W/m·K
@@ -2068,8 +2069,8 @@ materials:
       resin_content: Very low
       specific_heat: 1.35 kJ/kg·K
       tannin_content: Very low
-      name: Poplar
-    - author_id: 4
+    - name: Redwood
+      author_id: 4
       category: wood
       industryTags:
       - Woodworking
@@ -2079,8 +2080,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Redwood
-    - author_id: 3
+    - name: Rosewood
+      author_id: 3
       category: wood
       industryTags:
       - Restoration
@@ -2090,8 +2091,8 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Rosewood
-    - author_id: 3
+    - name: Teak
+      author_id: 3
       category: wood
       hardness: 4.2 Janka
       thermalConductivity: 0.13 W/m·K
@@ -2115,8 +2116,8 @@ materials:
       resin_content: Low
       specific_heat: 1.2 kJ/kg·K
       tannin_content: High
-      name: Teak
-    - author_id: 1
+    - name: Walnut
+      author_id: 1
       category: wood
       hardness: 4.49 Janka
       thermalConductivity: 0.14 W/m·K
@@ -2138,8 +2139,8 @@ materials:
       resin_content: Low
       specific_heat: 1.2 kJ/kg·K
       tannin_content: Medium to high
-      name: Walnut
-    - author_id: 2
+    - name: Willow
+      author_id: 2
       category: wood
       industryTags:
       - Woodworking
@@ -2149,7 +2150,6 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      name: Willow
     processing_priority: medium
 metadata:
   total_categories: 9
