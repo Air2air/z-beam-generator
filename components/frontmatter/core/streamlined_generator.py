@@ -201,6 +201,9 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             self.application_type_definitions = categories_data.get('applicationTypeDefinitions', {})
             self.standard_outcome_metrics = categories_data.get('standardOutcomeMetrics', {})
             
+            # Load universal regulatory standards (optimization v2.4.0)
+            self.universal_regulatory_standards = categories_data.get('universal_regulatory_standards', [])
+            
             if 'categories' in categories_data:
                 for category_name, category_info in categories_data['categories'].items():
                     # Store traditional category_ranges (for compatibility)
@@ -328,6 +331,9 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             frontmatter = self._add_environmental_impact_section(frontmatter, material_data)
             frontmatter = self._add_application_types_section(frontmatter, material_data)
             frontmatter = self._add_outcome_metrics_section(frontmatter, material_data)
+            
+            # Add regulatory standards (universal + material-specific)
+            frontmatter = self._add_regulatory_standards_section(frontmatter, material_data)
             
             # Generate author object (required by schema)
             frontmatter.update(self._generate_author_object(material_data))
@@ -901,6 +907,49 @@ Return YAML format with materialProperties (not properties) and machineSettings 
             if outcome_metrics:
                 frontmatter['outcomeMetrics'] = outcome_metrics
                 
+            return frontmatter
+        except Exception as e:
+            self.logger.error(f"Failed to add outcome metrics: {e}")
+            return frontmatter
+
+    def _add_regulatory_standards_section(self, frontmatter: Dict, material_data: Dict) -> Dict:
+        """Add regulatory standards combining universal standards from Categories.yaml with material-specific standards"""
+        try:
+            all_regulatory_standards = []
+            
+            # Add universal regulatory standards from Categories.yaml (applies to ALL materials)
+            if hasattr(self, 'universal_regulatory_standards') and self.universal_regulatory_standards:
+                all_regulatory_standards.extend(self.universal_regulatory_standards)
+                self.logger.info(f"Added {len(self.universal_regulatory_standards)} universal regulatory standards")
+            
+            # Add material-specific regulatory standards from Materials.yaml
+            material_specific_standards = []
+            
+            # Check for standards in material_metadata (optimized structure)
+            if 'material_metadata' in material_data and 'regulatoryStandards' in material_data['material_metadata']:
+                material_specific_standards = material_data['material_metadata']['regulatoryStandards']
+            # Fallback to direct field (legacy structure)
+            elif 'regulatoryStandards' in material_data:
+                material_specific_standards = material_data['regulatoryStandards']
+            
+            if material_specific_standards:
+                all_regulatory_standards.extend(material_specific_standards)
+                self.logger.info(f"Added {len(material_specific_standards)} material-specific regulatory standards")
+            
+            # Add combined regulatory standards to frontmatter
+            if all_regulatory_standards:
+                frontmatter['regulatoryStandards'] = all_regulatory_standards
+                self.logger.info(f"Total regulatory standards: {len(all_regulatory_standards)} (universal + specific)")
+            else:
+                # Ensure universal standards are always present
+                frontmatter['regulatoryStandards'] = self.universal_regulatory_standards if hasattr(self, 'universal_regulatory_standards') else []
+                
+            return frontmatter
+        except Exception as e:
+            self.logger.error(f"Failed to add regulatory standards: {e}")
+            # Ensure universal standards are preserved even on error
+            if hasattr(self, 'universal_regulatory_standards'):
+                frontmatter['regulatoryStandards'] = self.universal_regulatory_standards
             return frontmatter
             
         except Exception as e:

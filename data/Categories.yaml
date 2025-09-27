@@ -1,5 +1,5 @@
 metadata:
-  version: 2.3.0
+  version: 2.4.0
   generated_date: '2025-09-27T12:41:15.000000'
   source_materials_yaml_hash: fc69e9d44790542345aed7d97e63b2ef
   research_confidence_threshold: 75
@@ -13,7 +13,14 @@ metadata:
   research_confidence_rate: 100.0
   properties_verified: 9
   categories_researched: 3
-  enhancement_notes: Added machine settings descriptions, material properties definitions, environmental impact templates, and standardized application types. v2.3.0 applied AI-verified property ranges based on materials science research with 100% high-confidence results.
+  enhancement_notes: Added machine settings descriptions, material properties definitions, environmental impact templates, and standardized application types. v2.3.0 applied AI-verified property ranges based on materials science research with 100% high-confidence results. v2.4.0 added universal regulatory standards optimization.
+# Universal regulatory standards that apply to ALL laser cleaning operations
+# These were moved from Materials.yaml to eliminate 484+ redundant entries (4 standards × 121+ materials)
+universal_regulatory_standards:
+  - "FDA 21 CFR 1040.10 - Laser Product Performance Standards"
+  - "ANSI Z136.1 - Safe Use of Lasers"
+  - "IEC 60825 - Safety of Laser Products" 
+  - "OSHA 29 CFR 1926.95 - Personal Protective Equipment"
 machineSettingsDescriptions:
   ablationThreshold:
     description: "Minimum energy density required to initiate material removal from the surface"
