@@ -354,7 +354,9 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             
             # Generate properties with Min/Max ranges using unified inheritance
             unified_properties = self._get_unified_material_properties(material_name, material_data)
-            if unified_properties or 'materialProperties' in material_data or any(key in material_data for key in ['density', 'thermalConductivity', 'tensileStrength', 'youngsModulus']):
+            
+            # Always generate materialProperties using AI discovery (GROK compliant - comprehensive research required)
+            if self.property_researcher:
                 # Merge unified properties with any existing materialProperties
                 material_data_with_unified = material_data.copy()
                 for prop_type, props in unified_properties.items():
@@ -362,6 +364,9 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 
                 generated_properties = self._generate_properties_with_ranges(material_data_with_unified, material_name)
                 frontmatter['materialProperties'] = generated_properties  # Our enhanced structure
+            else:
+                # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
+                raise PropertyDiscoveryError(f"PropertyValueResearcher required for materialProperties generation for {material_name}")
             
             # Generate machine settings with Min/Max ranges (always generate for shared architecture)
             frontmatter['machineSettings'] = self._generate_machine_settings_with_ranges(material_data, material_name)
@@ -409,15 +414,23 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             # Use discovered properties directly (no need for additional research)
             for prop_name, prop_data in discovered_properties.items():
                 try:
-                    # Property data already complete from AI discovery
+                    # Property data from AI discovery, but min/max from Categories.yaml ranges
                     property_data = {
                         'value': prop_data['value'],
                         'unit': prop_data['unit'],
                         'confidence': prop_data['confidence'],
-                        'description': prop_data['description'],
-                        'min': prop_data['min'] if 'min' in prop_data else None,
-                        'max': prop_data['max'] if 'max' in prop_data else None
+                        'description': prop_data['description']
                     }
+                    
+                    # Get min/max from Categories.yaml category ranges - REQUIRED per data source policy
+                    category_ranges = self._get_category_ranges_for_property(material_data.get('category'), prop_name)
+                    if category_ranges:
+                        property_data['min'] = category_ranges.get('min')
+                        property_data['max'] = category_ranges.get('max')
+                    else:
+                        # No min/max available from Categories.yaml - omit rather than use AI values
+                        property_data['min'] = None
+                        property_data['max'] = None
                     
                     # Enhance with standardized descriptions from Categories.yaml
                     property_data = self._enhance_with_standardized_descriptions(
@@ -1025,6 +1038,29 @@ Return YAML format with materialProperties (not properties) and machineSettings 
         except Exception as e:
             self.logger.error(f"Failed to get unified properties for {material_name}: {str(e)}")
             raise PropertyDiscoveryError(f"Property inheritance failed for {material_name}: {str(e)}")
+    
+    def _get_category_ranges_for_property(self, category: str, property_name: str) -> Optional[Dict]:
+        """Get min/max ranges for a property from Categories.yaml category_ranges"""
+        try:
+            if not category or category not in self.category_ranges:
+                return None
+                
+            category_ranges = self.category_ranges[category]
+            
+            if property_name in category_ranges:
+                ranges = category_ranges[property_name]
+                if 'min' in ranges and 'max' in ranges:
+                    return {
+                        'min': ranges['min'],
+                        'max': ranges['max'],
+                        'unit': ranges.get('unit', '')
+                    }
+            
+            return None
+            
+        except Exception as e:
+            self.logger.warning(f"Failed to get category ranges for {property_name} in {category}: {e}")
+            return None
     
     def _generate_applications_from_unified_industry_data(self, material_name: str, material_data: Dict) -> list:
         """Generate applications using unified industry data structure (post-consolidation)"""
