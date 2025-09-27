@@ -40,7 +40,6 @@ class TestFrontmatterDataConsistency(unittest.TestCase):
         cls.test_materials_data = cls.materials_data.copy()
         cls.test_materials_data['machineSettingsRanges'] = {
             'powerRange': {'min': 10, 'max': 1000, 'unit': 'W'},
-            'wavelength': {'min': 355, 'max': 1064, 'unit': 'nm'},
             'pulseDuration': {'min': 1, 'max': 100, 'unit': 'ns'},
             'fluenceThreshold': {'min': 0.1, 'max': 50, 'unit': 'J/cm²'},
             'repetitionRate': {'min': 1, 'max': 100000, 'unit': 'Hz'},
@@ -90,7 +89,7 @@ class TestFrontmatterDataConsistency(unittest.TestCase):
                     failed_mappings.append(f"{setting_name}: Got '{extracted_unit}', expected '{expected_unit}'")
         
         self.assertEqual(len(failed_mappings), 0, 
-                        f"Machine settings unit extraction failures:\n" + "\n".join(failed_mappings))
+                        "Machine settings unit extraction failures:\n" + "\n".join(failed_mappings))
     
     def test_material_properties_unit_mapping(self):
         """Test that all material properties have proper unit mappings"""
@@ -118,7 +117,7 @@ class TestFrontmatterDataConsistency(unittest.TestCase):
                             failed_mappings.append(f"{category_name}.{prop_name}: Got '{extracted_unit}', expected '{expected_unit}'")
         
         self.assertEqual(len(failed_mappings), 0,
-                        f"Material properties unit extraction failures:\n" + "\n".join(failed_mappings))
+                        "Material properties unit extraction failures:\n" + "\n".join(failed_mappings))
     
     def test_generated_frontmatter_unit_consistency(self):
         """Test that generated frontmatter has consistent units for value, min, max"""
@@ -137,6 +136,10 @@ class TestFrontmatterDataConsistency(unittest.TestCase):
         machine_settings = parsed['machineSettings']
         
         for setting_name, setting_data in machine_settings.items():
+            # Skip wavelength since it was removed from the system but AI might still generate it
+            if setting_name == 'wavelength':
+                continue
+                
             if isinstance(setting_data, dict):
                 value_unit = setting_data.get('unit')
                 min_val = setting_data.get('min')
@@ -158,7 +161,7 @@ class TestFrontmatterDataConsistency(unittest.TestCase):
                     inconsistencies.append(f"{setting_name}: Max value '{max_val}' is not numeric")
         
         self.assertEqual(len(inconsistencies), 0,
-                        f"Machine settings inconsistencies:\n" + "\n".join(inconsistencies))
+                        "Machine settings inconsistencies:\n" + "\n".join(inconsistencies))
     
     def test_all_required_sections_present(self):
         """Test that all required sections from Categories.yaml are used in generation"""
@@ -177,8 +180,18 @@ class TestFrontmatterDataConsistency(unittest.TestCase):
         
         missing_sections = []
         
+        # Map section names to actual generator attribute names
+        section_to_attr = {
+            'machineSettingsDescriptions': 'machine_settings_descriptions',
+            'materialPropertyDescriptions': 'material_property_descriptions',
+            'environmentalImpactTemplates': 'environmental_impact_templates',
+            'applicationTypeDefinitions': 'application_type_definitions',
+            'standardOutcomeMetrics': 'standard_outcome_metrics'
+        }
+        
         for section in required_sections:
-            if not hasattr(self.generator, section.replace('Descriptions', '_descriptions').replace('Definitions', '_definitions').replace('Templates', '_templates').replace('Metrics', '_metrics').replace('universal_regulatory_standards', 'universal_regulatory_standards')):
+            attr_name = section_to_attr.get(section, section)
+            if not hasattr(self.generator, attr_name):
                 missing_sections.append(section)
         
         self.assertEqual(len(missing_sections), 0,

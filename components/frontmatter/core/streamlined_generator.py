@@ -154,7 +154,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             
             # Store machine settings ranges (from Materials.yaml - machine-specific) - FAIL-FAST per GROK_INSTRUCTIONS.md
             if 'machineSettingsRanges' not in materials_data:
-                raise MaterialDataError("machineSettingsRanges section required in materials data")
+                raise MaterialDataError("machineSettingsRanges section required in materials data - these ranges are easily researched and provide critical value")
             self.machine_settings_ranges = materials_data['machineSettingsRanges']
             
             self.logger.info("Loaded materials research data for enhanced range calculations")
@@ -578,7 +578,6 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         machine_mapping = {
             'powerRange': 'powerRange',
             'pulseDuration': 'pulseDuration',
-            'wavelength': 'wavelength', 
             'spotSize': 'spotSize',
             'repetitionRate': 'repetitionRate',
             'fluenceRange': 'fluenceThreshold'
@@ -699,7 +698,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
 Required structure with DataMetrics format:
 - Each property must have: value, unit, confidence, min, max, description
 - materialProperties: density, thermalConductivity, tensileStrength, etc.
-- machineSettings: powerRange, wavelength, pulseDuration, etc.
+- machineSettings: powerRange, pulseDuration, spotSize, etc.
 
 Material context: {material_data}
 
@@ -765,7 +764,6 @@ Return YAML format with materialProperties (not properties) and machineSettings 
             # Map machine settings to machineSettingsDescriptions keys - FIX for min/max unit extraction
             machine_settings_mapping = {
                 'powerRange': 'powerRange',
-                'wavelength': 'wavelength',
                 'spotSize': 'spotSize',
                 'repetitionRate': 'repetitionRate',
                 'fluenceThreshold': 'fluenceThreshold',
@@ -1033,7 +1031,7 @@ Return YAML format with materialProperties (not properties) and machineSettings 
         try:
             applications = []
             if 'category' not in material_data:
-                raise MaterialDataError(f"Material category required for industry data generation - no fallbacks allowed per GROK_INSTRUCTIONS.md")
+                raise MaterialDataError("Material category required for industry data generation - no fallbacks allowed per GROK_INSTRUCTIONS.md")
             material_category = material_data['category']
             
             # Get category primary industries from Categories.yaml (unified source)

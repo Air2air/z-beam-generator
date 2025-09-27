@@ -74,11 +74,6 @@ machineSettingsDescriptions:
     unit: J/cm²
     safety_margin: Typically operate at 70-80% of this threshold
     material_dependency: Varies significantly with thermal properties
-  wavelength:
-    description: Laser wavelength optimized for material optical properties
-    unit: nm
-    selection_criteria: Material absorption characteristics and penetration depth
-    common_ranges: UV (355nm) for organics, IR (1064nm) for metals
 materialPropertyDescriptions:
   bandgap:
     description: Electronic energy gap between valence and conduction bands
@@ -1044,7 +1039,7 @@ categories:
     - OSHA 29 CFR 1926.95 - Personal Protective Equipment
     - USDA Food Safety Guidelines (for food-contact surfaces)
 materialPropertiesDefinitions:
-  thermal_properties:
+  thermalProperties:
     description: Thermal behavior and heat transfer characteristics
     common_properties:
       thermalConductivity:
@@ -1055,19 +1050,19 @@ materialPropertiesDefinitions:
         description: Change in dimensions with temperature
         unit: /K or /°C
         measurement_method: ASTM E228 - Linear Thermal Expansion
-      specific_heat:
+      specificHeat:
         description: Heat capacity per unit mass
         unit: J/(kg·K)
         measurement_method: ASTM C351 - Mean Specific Heat
-      melting_point:
+      meltingPoint:
         description: Temperature at which material transitions to liquid
         unit: °C
         measurement_method: ASTM D3418 - Transition Temperatures
-      operating_temperature:
+      operatingTemperature:
         description: Safe operational temperature range
         unit: °C
         measurement_method: Material-specific testing protocols
-  mechanical_properties:
+  mechanicalProperties:
     description: Material response to applied forces and deformation
     common_properties:
       hardness:
@@ -1082,49 +1077,49 @@ materialPropertiesDefinitions:
         description: Elastic modulus measuring stiffness
         unit: GPa
         measurement_method: ASTM E111 - Young's Modulus
-      compressive_strength:
+      compressiveStrength:
         description: Maximum stress under compression
         unit: MPa
         measurement_method: ASTM D695 - Compressive Properties
-      flexural_strength:
+      flexuralStrength:
         description: Stress at failure in bending
         unit: MPa
         measurement_method: ASTM D790 - Flexural Properties
-      fracture_toughness:
+      fractureToughness:
         description: Resistance to crack propagation
         unit: MPa·m^0.5
         measurement_method: ASTM E399 - Plane-Strain Fracture Toughness
-  electrical_properties:
+  electricalProperties:
     description: Electrical behavior and conductivity characteristics
     common_properties:
       electricalResistivity:
         description: Resistance to electrical current flow
         unit: Ω·m, Ω·cm, nΩ·m
         measurement_method: ASTM B193 - Resistivity of Electrical Conductor Materials
-      dielectric_constant:
+      dielectricConstant:
         description: Relative permittivity for insulating materials
         unit: dimensionless
         measurement_method: ASTM D150 - AC Loss Characteristics
-  processing_properties:
+  processingProperties:
     description: Manufacturing and processing characteristics
     common_properties:
       porosity:
         description: Percentage of void space in material
         unit: '%'
         measurement_method: ASTM C373 - Water Absorption
-      firing_temperature:
+      firingTemperature:
         description: Temperature for ceramic processing
         unit: °C
         measurement_method: Material-specific processing protocols
-      moisture_content:
+      moistureContent:
         description: Water content in material
         unit: '%'
         measurement_method: ASTM D4442 - Moisture Content
-      resin_content:
+      resinContent:
         description: Polymer matrix content in composites
         unit: '%'
         measurement_method: ASTM D3171 - Constituent Content
-      grain_structure_type:
+      grainStructureType:
         description: Microstructural grain organization
         unit: descriptive
         measurement_method: Microscopy and metallographic analysis
