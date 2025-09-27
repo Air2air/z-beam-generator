@@ -193,6 +193,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             # Extract category ranges from Categories.yaml structure
             self.category_ranges = {}
             self.category_enhanced_data = {}
+            self.categories_data = categories_data  # Store full categories data for unified industry access
             
             # Load standardized descriptions and templates
             self.machine_settings_descriptions = categories_data.get('machineSettingsDescriptions', {})
@@ -216,7 +217,8 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                         'electricalProperties': category_info.get('electricalProperties', {}),
                         'processingParameters': category_info.get('processingParameters', {}),
                         'chemicalProperties': category_info.get('chemicalProperties', {}),
-                        'common_applications': category_info.get('common_applications', [])
+                        'common_applications': category_info.get('common_applications', []),
+                        'industryTags': category_info.get('industryTags', {})  # Add industryTags for unified access
                     }
             
             self.logger.info(f"Loaded Categories.yaml data: {len(self.category_ranges)} categories with enhanced properties")
@@ -313,12 +315,18 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 'category': material_data.get('category', 'materials').title(),  # Capitalized for consistency
                 'subcategory': material_data.get('subcategory', abbreviation_format['subcategory']),
                 'author_id': material_data.get('author_id', 3),  # Required by schema (not authorId)
-                'applications': material_data.get('applications', ['laser cleaning', 'surface preparation']),  # Required by schema
+                'applications': self._generate_applications_from_unified_industry_data(material_name, material_data),  # Unified industry data approach
             }
             
-            # Generate properties with Min/Max ranges
-            if 'materialProperties' in material_data or any(key in material_data for key in ['density', 'thermalConductivity', 'tensileStrength', 'youngsModulus']):
-                generated_properties = self._generate_properties_with_ranges(material_data, material_name)
+            # Generate properties with Min/Max ranges using unified inheritance
+            unified_properties = self._get_unified_material_properties(material_name, material_data)
+            if unified_properties or 'materialProperties' in material_data or any(key in material_data for key in ['density', 'thermalConductivity', 'tensileStrength', 'youngsModulus']):
+                # Merge unified properties with any existing materialProperties
+                material_data_with_unified = material_data.copy()
+                for prop_type, props in unified_properties.items():
+                    material_data_with_unified[prop_type] = props
+                
+                generated_properties = self._generate_properties_with_ranges(material_data_with_unified, material_name)
                 frontmatter['materialProperties'] = generated_properties  # Our enhanced structure
             
             # Generate machine settings with Min/Max ranges (always generate for shared architecture)
@@ -911,6 +919,100 @@ Return YAML format with materialProperties (not properties) and machineSettings 
         except Exception as e:
             self.logger.error(f"Failed to add outcome metrics: {e}")
             return frontmatter
+
+    def _get_unified_material_properties(self, material_name: str, material_data: Dict) -> Dict:
+        """Get material properties using unified inheritance from category definitions"""
+        try:
+            unified_properties = {}
+            material_category = material_data.get('category', 'unknown')
+            
+            # Get category property defaults from Categories.yaml
+            category_property_defaults = {}
+            if material_category in self.category_enhanced_data:
+                category_property_defaults = self.category_enhanced_data[material_category].get('categoryPropertyDefaults', {})
+            
+            # Property types to consolidate
+            property_types = ['thermal_properties', 'mechanical_properties', 'electrical_properties', 'processing_properties']
+            
+            for prop_type in property_types:
+                combined_properties = {}
+                
+                # Start with category defaults
+                if prop_type in category_property_defaults:
+                    combined_properties.update(category_property_defaults[prop_type])
+                
+                # Override with material-specific properties (if any)
+                if prop_type in material_data:
+                    combined_properties.update(material_data[prop_type])
+                
+                # Only include if we have properties
+                if combined_properties:
+                    unified_properties[prop_type] = combined_properties
+            
+            self.logger.info(f"Retrieved unified properties for {material_name} with category inheritance")
+            return unified_properties
+            
+        except Exception as e:
+            self.logger.error(f"Failed to get unified properties for {material_name}: {str(e)}")
+            raise PropertyDiscoveryError(f"Property inheritance failed for {material_name}: {str(e)}")
+    
+    def _generate_applications_from_unified_industry_data(self, material_name: str, material_data: Dict) -> list:
+        """Generate applications using unified industry data structure (post-consolidation)"""
+        try:
+            applications = []
+            material_category = material_data.get('category', 'unknown')
+            
+            # Get category primary industries from Categories.yaml (unified source)
+            category_primary_industries = []
+            if material_category in self.category_enhanced_data:
+                industry_tags_data = self.category_enhanced_data[material_category].get('industryTags', {})
+                category_primary_industries = industry_tags_data.get('primary_industries', [])
+            
+            # Check for material-specific industry overrides (preserved unique tags)
+            material_specific_industries = []
+            if 'material_metadata' in material_data and 'industryTags' in material_data['material_metadata']:
+                material_specific_industries = material_data['material_metadata']['industryTags']
+            
+            # Combine category primary + material-specific industries
+            all_industries = list(set(category_primary_industries + material_specific_industries))
+            
+            # Generate applications from industries
+            if all_industries:
+                # Map industries to laser cleaning applications
+                industry_applications = {
+                    'Aerospace': 'Aerospace: Precision cleaning of aerospace components and assemblies',
+                    'Automotive': 'Automotive: Paint removal and surface preparation for automotive parts',
+                    'Electronics': 'Electronics: Precision cleaning of electronic components and circuit boards',
+                    'Medical': 'Medical: Sterilization and cleaning of medical devices and instruments',
+                    'Manufacturing': 'Manufacturing: Industrial surface preparation and contamination removal',
+                    'Marine': 'Marine: Corrosion removal and surface treatment for marine applications',
+                    'Semiconductor': 'Semiconductor: Ultra-precise cleaning for semiconductor manufacturing',
+                    'Restoration': 'Restoration: Gentle cleaning for restoration and conservation applications',
+                    'Nuclear': 'Nuclear: Decontamination and surface cleaning in nuclear facilities',
+                    'Art Conservation': 'Art Conservation: Delicate cleaning of artwork and cultural artifacts',
+                    'Oil and Gas': 'Oil and Gas: Industrial cleaning and maintenance for oil and gas equipment',
+                    'Food Processing': 'Food Processing: Sanitary surface cleaning for food processing equipment',
+                    'Jewelry': 'Jewelry: Precision cleaning and polishing of precious metal jewelry',
+                    'Optics and Photonics': 'Optics: Precision cleaning of optical components and lenses',
+                    'Construction': 'Construction: Surface preparation and cleaning for construction materials'
+                }
+                
+                # Select applications based on available industries (limit to top 4)
+                for industry in all_industries[:4]:
+                    if industry in industry_applications:
+                        applications.append(industry_applications[industry])
+            
+            # Fallback to basic applications if no industry data available
+            if not applications:
+                applications = ['laser cleaning', 'surface preparation']
+                
+            self.logger.info(f"Generated {len(applications)} applications from unified industry data for {material_name}")
+            return applications
+            
+        except Exception as e:
+            self.logger.warning(f"Failed to generate applications from unified industry data: {e}")
+            # Fallback to basic applications
+            return ['laser cleaning', 'surface preparation']
 
     def _add_regulatory_standards_section(self, frontmatter: Dict, material_data: Dict) -> Dict:
         """Add regulatory standards combining universal standards from Categories.yaml with material-specific standards"""

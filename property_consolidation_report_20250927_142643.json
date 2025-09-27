@@ -1,0 +1,106 @@
+{
+  "consolidation_timestamp": "2025-09-27T14:26:43.571957",
+  "consolidation_type": "Property Consolidation",
+  "backup_files": {
+    "categories_backup": "backups/Categories_backup_20250927_142643.yaml",
+    "materials_backup": "backups/materials_backup_20250927_142643.yaml"
+  },
+  "consolidation_plan": {
+    "thermal_properties": {
+      "eliminatable_entries": 50,
+      "exact_duplications": 6,
+      "category_defaults": {
+        "metal": {
+          "thermalConductivity": "15-400 W/m·K",
+          "thermalExpansion": "10-25 × 10⁻⁶ /°C"
+        },
+        "composite": {
+          "thermalConductivity": "0.2-50 W/m·K",
+          "operating_temperature": "-40 to 200°C"
+        },
+        "stone": {
+          "thermalConductivity": "1.5-3.0 W/m·K",
+          "thermalExpansion": "8.0 × 10⁻⁶ /°C"
+        },
+        "wood": {
+          "thermalConductivity": "0.1-0.4 W/m·K",
+          "specific_heat": "1200-2000 J/kg·K"
+        },
+        "glass": {
+          "thermalConductivity": "1.0-1.4 W/m·K",
+          "thermalExpansion": "9.0 × 10⁻⁶ /°C"
+        }
+      }
+    },
+    "mechanical_properties": {
+      "eliminatable_entries": 52,
+      "exact_duplications": 6,
+      "category_defaults": {
+        "metal": {
+          "tensileStrength": "200-1200 MPa",
+          "youngsModulus": "200-250 GPa"
+        },
+        "composite": {
+          "tensileStrength": "100-1500 MPa",
+          "youngsModulus": "10-150 GPa"
+        },
+        "stone": {
+          "hardness": "6-7 Mohs",
+          "compressive_strength": "50-200 MPa"
+        },
+        "wood": {
+          "compressive_strength": "30-80 MPa",
+          "hardness": "1-5 Mohs"
+        },
+        "glass": {
+          "hardness": "5.5-6.5 Mohs",
+          "tensileStrength": "50-100 MPa",
+          "youngsModulus": "70-90 GPa"
+        }
+      }
+    },
+    "electrical_properties": {
+      "eliminatable_entries": 30,
+      "exact_duplications": 1,
+      "category_defaults": {
+        "metal": {
+          "electricalResistivity": "10-100 nΩ·m"
+        },
+        "semiconductor": {
+          "electricalResistivity": "Variable"
+        },
+        "ceramic": {
+          "electricalResistivity": "1×10¹⁴ Ω·cm",
+          "dielectric_constant": "9.8"
+        }
+      }
+    },
+    "processing_properties": {
+      "eliminatable_entries": 18,
+      "exact_duplications": 2,
+      "category_defaults": {
+        "stone": {
+          "porosity": "5-15%"
+        },
+        "masonry": {
+          "porosity": "10-25%"
+        },
+        "wood": {
+          "moisture_content": "8-12%",
+          "grain_structure_type": "Varied",
+          "resin_content": "Low"
+        }
+      }
+    }
+  },
+  "implementation_results": {
+    "categories_enhanced": 0,
+    "materials_processed": 121,
+    "properties_eliminated": 327,
+    "exact_matches_resolved": 327,
+    "inheritance_implementations": 194
+  },
+  "property_definitions_added": 4,
+  "category_defaults_created": 8,
+  "estimated_redundancy_reduction": "218.0%"
+}

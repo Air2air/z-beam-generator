@@ -189,16 +189,8 @@ materials:
         compressive_strength: 2000-4000 MPa
         flexural_strength: 300-400 MPa
       electrical_properties:
-        electricalResistivity: 1×10¹⁴ Ω·cm
         dielectric_constant: 9.8
       material_metadata:
-        industryTags:
-        - Semiconductor
-        - Aerospace
-        - Medical
-        - Refractory
-        - Electronics
-        - Wear Components
         regulatoryStandards:
         - EPA Clean Air Act Compliance
         - ASTM C848 - Standard Specification for High Alumina Refractory Brick
@@ -217,13 +209,6 @@ materials:
         porosity: 2-8%
         firing_temperature: 1200-1300°C
       material_metadata:
-        industryTags:
-        - Ceramics Manufacturing
-        - Restoration and Conservation
-        - Tableware
-        - Industrial
-        - Art Conservation
-        - Food Processing
         regulatoryStandards:
         - ASTM C373 - Standard Test Method for Water Absorption of Fired Ceramic Materials
         - NSF/ANSI 51 - Food Equipment Materials
@@ -242,13 +227,6 @@ materials:
       electrical_properties:
         dielectric_constant: 25
       material_metadata:
-        industryTags:
-        - Medical
-        - Aerospace
-        - Electronics
-        - Industrial
-        - Nuclear
-        - Jewelry
         regulatoryStandards:
         - EPA Clean Air Act Compliance
         - ISO 13356 - Zirconia for Surgical Implants
@@ -259,368 +237,103 @@ materials:
       category: ceramic
       mechanical_properties:
         hardness: 9.3 Mohs
-      material_metadata:
-        industryTags:
-        - Ceramics Manufacturing
-        - Aerospace
-        - Medical
-        - Electronics
-        - Industrial
-        - Research
     - name: Silicon Nitride
       author_id: 1
       category: ceramic
       mechanical_properties:
         hardness: 9.0 Mohs
-      material_metadata:
-        industryTags:
-        - Ceramics Manufacturing
-        - Aerospace
-        - Medical
-        - Electronics
-        - Industrial
-        - Research
     - name: Stoneware
       author_id: 3
       category: ceramic
       mechanical_properties:
         hardness: 9.0 Mohs
-      material_metadata:
-        industryTags:
-        - Ceramics Manufacturing
-        - Aerospace
-        - Medical
-        - Electronics
-        - Industrial
-        - Research
     - name: Zirconia
       author_id: 4
       category: ceramic
       mechanical_properties:
         hardness: 7.0 Mohs
-      material_metadata:
-        industryTags:
-        - Ceramics Manufacturing
-        - Aerospace
-        - Medical
-        - Electronics
-        - Industrial
-        - Research
   composite:
     items:
     - name: Carbon Fiber Reinforced Polymer
       author_id: 1
       category: composite
-      thermal_properties:
-        thermalConductivity: 0.2-50 W/m·K
-        operating_temperature: -40 to 200°C
-      mechanical_properties:
-        tensileStrength: 100-1500 MPa
-        youngsModulus: 10-150 GPa
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Aerospace
     - name: Epoxy Resin Composites
       author_id: 1
       category: composite
-      thermal_properties:
-        thermalConductivity: 0.2-50 W/m·K
-        operating_temperature: -40 to 200°C
-      mechanical_properties:
-        tensileStrength: 100-1500 MPa
-        youngsModulus: 10-150 GPa
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Aerospace
     - name: Fiberglass
       author_id: 1
       category: composite
-      thermal_properties:
-        thermalConductivity: 0.2-50 W/m·K
-        operating_temperature: -40 to 200°C
-      mechanical_properties:
-        tensileStrength: 100-1500 MPa
-        youngsModulus: 10-150 GPa
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Aerospace
     - name: Kevlar-Reinforced Polymer
       author_id: 2
       category: composite
-      thermal_properties:
-        thermalConductivity: 0.2-50 W/m·K
-        operating_temperature: -40 to 200°C
-      mechanical_properties:
-        tensileStrength: 100-1500 MPa
-        youngsModulus: 10-150 GPa
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Aerospace
     - name: Phenolic Resin Composites
       author_id: 4
       category: composite
-      thermal_properties:
-        thermalConductivity: 0.2-50 W/m·K
-        operating_temperature: -40 to 200°C
-      mechanical_properties:
-        tensileStrength: 100-1500 MPa
-        youngsModulus: 10-150 GPa
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Aerospace
     - name: Polyester Resin Composites
       author_id: 3
       category: composite
-      thermal_properties:
-        thermalConductivity: 0.2-50 W/m·K
-        operating_temperature: -40 to 200°C
-      mechanical_properties:
-        tensileStrength: 100-1500 MPa
-        youngsModulus: 10-150 GPa
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Aerospace
     - name: Rubber
       author_id: 4
       category: composite
-      thermal_properties:
-        thermalConductivity: 0.2-50 W/m·K
-        operating_temperature: -40 to 200°C
-      mechanical_properties:
-        tensileStrength: 100-1500 MPa
-        youngsModulus: 10-150 GPa
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Manufacturing
     - name: Thermoplastic Elastomer
       author_id: 4
       category: composite
-      thermal_properties:
-        thermalConductivity: 0.2-50 W/m·K
-        operating_temperature: -40 to 200°C
-      mechanical_properties:
-        tensileStrength: 100-1500 MPa
-        youngsModulus: 10-150 GPa
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Medical
     - name: Urethane Composites
       author_id: 4
       category: composite
-      thermal_properties:
-        thermalConductivity: 0.2-50 W/m·K
-        operating_temperature: -40 to 200°C
-      mechanical_properties:
-        tensileStrength: 100-1500 MPa
-        youngsModulus: 10-150 GPa
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Aerospace
     - name: Glass Fiber Reinforced Polymers GFRP
       author_id: 3
       category: composite
-      thermal_properties:
-        thermalConductivity: 0.2-50 W/m·K
-        operating_temperature: -40 to 200°C
-      mechanical_properties:
-        tensileStrength: 100-1500 MPa
-        youngsModulus: 10-150 GPa
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Aerospace
     - name: Fiber Reinforced Polyurethane FRPU
       author_id: 2
       category: composite
-      thermal_properties:
-        thermalConductivity: 0.2-50 W/m·K
-        operating_temperature: -40 to 200°C
-      mechanical_properties:
-        tensileStrength: 100-1500 MPa
-        youngsModulus: 10-150 GPa
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Aerospace
     - name: Metal Matrix Composites MMCs
       author_id: 3
       category: composite
-      thermal_properties:
-        thermalConductivity: 0.2-50 W/m·K
-        operating_temperature: -40 to 200°C
-      mechanical_properties:
-        tensileStrength: 100-1500 MPa
-        youngsModulus: 10-150 GPa
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Aerospace
     - name: Ceramic Matrix Composites CMCs
       author_id: 1
       category: composite
-      thermal_properties:
-        thermalConductivity: 0.2-50 W/m·K
-        operating_temperature: -40 to 200°C
-      mechanical_properties:
-        tensileStrength: 100-1500 MPa
-        youngsModulus: 10-150 GPa
-      material_metadata:
-        industryTags:
-        - Power Generation
-        - Aerospace
   glass:
     items:
     - name: Borosilicate Glass
       author_id: 1
       category: glass
-      thermal_properties:
-        thermalConductivity: 1.0-1.4 W/m·K
-        thermalExpansion: 9.0 × 10⁻⁶ /°C
-      mechanical_properties:
-        hardness: 5.5-6.5 Mohs
-        tensileStrength: 50-100 MPa
-        youngsModulus: 70-90 GPa
-      material_metadata:
-        industryTags:
-        - Pharmaceutical
-        - Semiconductor
     - name: Crown Glass
       author_id: 3
       category: glass
-      thermal_properties:
-        thermalConductivity: 1.0-1.4 W/m·K
-        thermalExpansion: 9.0 × 10⁻⁶ /°C
-      mechanical_properties:
-        hardness: 5.5-6.5 Mohs
-        tensileStrength: 50-100 MPa
-        youngsModulus: 70-90 GPa
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Architectural
     - name: Gorilla Glass
       author_id: 4
       category: glass
-      thermal_properties:
-        thermalConductivity: 1.0-1.4 W/m·K
-        thermalExpansion: 9.0 × 10⁻⁶ /°C
-      mechanical_properties:
-        hardness: 5.5-6.5 Mohs
-        tensileStrength: 50-100 MPa
-        youngsModulus: 70-90 GPa
-      material_metadata:
-        industryTags:
-        - Semiconductor Manufacturing
-        - Optics and Photonics
     - name: Sapphire Glass
       author_id: 3
       category: glass
-      thermal_properties:
-        thermalConductivity: 1.0-1.4 W/m·K
-        thermalExpansion: 9.0 × 10⁻⁶ /°C
-      mechanical_properties:
-        hardness: 5.5-6.5 Mohs
-        tensileStrength: 50-100 MPa
-        youngsModulus: 70-90 GPa
-      material_metadata:
-        industryTags:
-        - Restoration and Conservation
-        - Glass Manufacturing
     - name: Float Glass
       author_id: 3
       category: glass
-      thermal_properties:
-        thermalConductivity: 1.0-1.4 W/m·K
-        thermalExpansion: 9.0 × 10⁻⁶ /°C
-      mechanical_properties:
-        hardness: 5.5-6.5 Mohs
-        tensileStrength: 50-100 MPa
-        youngsModulus: 70-90 GPa
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Aerospace
     - name: Fused Silica
       author_id: 4
       category: glass
-      thermal_properties:
-        thermalConductivity: 1.0-1.4 W/m·K
-        thermalExpansion: 9.0 × 10⁻⁶ /°C
-      mechanical_properties:
-        hardness: 5.5-6.5 Mohs
-        tensileStrength: 50-100 MPa
-        youngsModulus: 70-90 GPa
-      material_metadata:
-        industryTags:
-        - Semiconductor Manufacturing
-        - Optics and Photonics
     - name: Lead Crystal
       author_id: 1
       category: glass
-      thermal_properties:
-        thermalConductivity: 1.0-1.4 W/m·K
-        thermalExpansion: 9.0 × 10⁻⁶ /°C
-      mechanical_properties:
-        hardness: 5.5-6.5 Mohs
-        tensileStrength: 50-100 MPa
-        youngsModulus: 70-90 GPa
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Electronics
     - name: Pyrex
       author_id: 2
       category: glass
-      thermal_properties:
-        thermalConductivity: 1.0-1.4 W/m·K
-        thermalExpansion: 9.0 × 10⁻⁶ /°C
-      mechanical_properties:
-        hardness: 5.5-6.5 Mohs
-        tensileStrength: 50-100 MPa
-        youngsModulus: 70-90 GPa
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Electronics
     - name: Quartz Glass
       author_id: 3
       category: glass
       mechanical_properties:
         hardness: 9.0 Mohs
-      material_metadata:
-        industryTags:
-        - Manufacturing
-        - Industrial
-        - Research
     - name: Soda-Lime Glass
       author_id: 1
       category: glass
       mechanical_properties:
         hardness: 6.8 Mohs
-      material_metadata:
-        industryTags:
-        - Manufacturing
-        - Industrial
-        - Research
     - name: Tempered Glass
       author_id: 2
       category: glass
       mechanical_properties:
         hardness: 5.5 Mohs
-      material_metadata:
-        industryTags:
-        - Manufacturing
-        - Industrial
-        - Research
   masonry:
     items:
     - name: Brick
@@ -630,12 +343,6 @@ materials:
         thermalConductivity: 0.5-1.5 W/m·K
       mechanical_properties:
         compressive_strength: 10-100 MPa
-      processing_properties:
-        porosity: 10-25%
-      material_metadata:
-        industryTags:
-        - Construction
-        - Restoration
       water_absorption: 5-20%
     - name: Cement
       author_id: 2
@@ -644,12 +351,6 @@ materials:
         thermalConductivity: 0.5-1.5 W/m·K
       mechanical_properties:
         compressive_strength: 10-100 MPa
-      processing_properties:
-        porosity: 10-25%
-      material_metadata:
-        industryTags:
-        - Construction
-        - Restoration
       water_absorption: 5-20%
     - name: Concrete
       author_id: 4
@@ -658,12 +359,6 @@ materials:
         thermalConductivity: 0.5-1.5 W/m·K
       mechanical_properties:
         compressive_strength: 10-100 MPa
-      processing_properties:
-        porosity: 10-25%
-      material_metadata:
-        industryTags:
-        - Construction
-        - Restoration
       water_absorption: 5-20%
     - name: Mortar
       author_id: 2
@@ -672,12 +367,6 @@ materials:
         thermalConductivity: 0.5-1.5 W/m·K
       mechanical_properties:
         compressive_strength: 10-100 MPa
-      processing_properties:
-        porosity: 10-25%
-      material_metadata:
-        industryTags:
-        - Construction
-        - Heritage Conservation
       water_absorption: 5-20%
     - name: Plaster
       author_id: 1
@@ -686,12 +375,6 @@ materials:
         thermalConductivity: 0.5-1.5 W/m·K
       mechanical_properties:
         compressive_strength: 10-100 MPa
-      processing_properties:
-        porosity: 10-25%
-      material_metadata:
-        industryTags:
-        - Construction
-        - Cultural Heritage
       water_absorption: 5-20%
     - name: Stucco
       author_id: 3
@@ -700,12 +383,6 @@ materials:
         thermalConductivity: 0.5-1.5 W/m·K
       mechanical_properties:
         compressive_strength: 10-100 MPa
-      processing_properties:
-        porosity: 10-25%
-      material_metadata:
-        industryTags:
-        - Construction
-        - Restoration
       water_absorption: 5-20%
     - name: Terracotta
       author_id: 1
@@ -714,63 +391,21 @@ materials:
         thermalConductivity: 0.5-1.5 W/m·K
       mechanical_properties:
         compressive_strength: 10-100 MPa
-      processing_properties:
-        porosity: 10-25%
-      material_metadata:
-        industryTags:
-        - Construction
-        - Cultural Heritage
       water_absorption: 5-20%
   metal:
     items:
     - name: Aluminum
       author_id: 4
       category: metal
-      thermal_properties:
-        thermalConductivity: 15-400 W/m·K
-        thermalExpansion: 10-25 × 10⁻⁶ /°C
-      mechanical_properties:
-        tensileStrength: 200-1200 MPa
-        youngsModulus: 200-250 GPa
-      electrical_properties:
-        electricalResistivity: 10-100 nΩ·m
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Aerospace
     - name: Chromium
       author_id: 4
       category: metal
-      thermal_properties:
-        thermalConductivity: 15-400 W/m·K
-        thermalExpansion: 10-25 × 10⁻⁶ /°C
-      mechanical_properties:
-        tensileStrength: 200-1200 MPa
-        youngsModulus: 200-250 GPa
-      electrical_properties:
-        electricalResistivity: 10-100 nΩ·m
-      material_metadata:
-        industryTags:
-        - Aerospace
-        - Nuclear
     - name: Manganese
       author_id: 4
       category: metal
       thermal_properties:
         thermalConductivity: 109-125 W/(m·K)
-        thermalExpansion: 10-25 × 10⁻⁶ /°C
         melting_point: 900-940°C
-      mechanical_properties:
-        tensileStrength: 200-1200 MPa
-        youngsModulus: 200-250 GPa
-      electrical_properties:
-        electricalResistivity: 10-100 nΩ·m
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Electronics
-        - Marine
-        - Plumbing
       antimicrobial_properties: true
       common_alloys: Cartridge brass (70/30), Naval brass (60/39/1% Sn)
       composition: 63% Cu, 37% Zn (C26000 Cartridge Brass)
@@ -781,19 +416,7 @@ materials:
       category: metal
       thermal_properties:
         thermalConductivity: 26 W/(m·K)
-        thermalExpansion: 10-25 × 10⁻⁶ /°C
         melting_point: 1025°C (88% Cu, 12% Sn phosphor bronze)
-      mechanical_properties:
-        tensileStrength: 200-1200 MPa
-        youngsModulus: 200-250 GPa
-      electrical_properties:
-        electricalResistivity: 10-100 nΩ·m
-      material_metadata:
-        industryTags:
-        - Manufacturing
-        - Restoration
-        - Marine
-        - Musical Instruments
       color: Reddish-brown to golden
       common_alloys: Aluminum bronze, Phosphor bronze, Bell metal (77/23)
       composition: 88% Cu, 12% Sn (SAE 903 bearing bronze)
@@ -804,347 +427,90 @@ materials:
       category: metal
       thermal_properties:
         thermalConductivity: 100 W/(m·K)
-        thermalExpansion: 10-25 × 10⁻⁶ /°C
         melting_point: 1495°C
       mechanical_properties:
         tensileStrength: 1043 MPa
-        youngsModulus: 200-250 GPa
-      electrical_properties:
-        electricalResistivity: 10-100 nΩ·m
-      material_metadata:
-        industryTags:
-        - Aerospace
-        - Electronics
-        - Medical
-        - Magnetics
       curie_temperature: 1115°C
       magnetic_properties: ferromagnetic
       yield_strength: 470-3000 MPa
     - name: Bronze
       author_id: 3
       category: metal
-      thermal_properties:
-        thermalConductivity: 15-400 W/m·K
-        thermalExpansion: 10-25 × 10⁻⁶ /°C
-      mechanical_properties:
-        tensileStrength: 200-1200 MPa
-        youngsModulus: 200-250 GPa
-      electrical_properties:
-        electricalResistivity: 10-100 nΩ·m
-      material_metadata:
-        industryTags:
-        - Manufacturing
-        - Restoration
     - name: Cobalt
       author_id: 1
       category: metal
-      thermal_properties:
-        thermalConductivity: 15-400 W/m·K
-        thermalExpansion: 10-25 × 10⁻⁶ /°C
-      mechanical_properties:
-        tensileStrength: 200-1200 MPa
-        youngsModulus: 200-250 GPa
-      electrical_properties:
-        electricalResistivity: 10-100 nΩ·m
-      material_metadata:
-        industryTags:
-        - Semiconductor
-        - Electronics
     - name: Copper
       author_id: 2
       category: metal
-      thermal_properties:
-        thermalConductivity: 15-400 W/m·K
-        thermalExpansion: 10-25 × 10⁻⁶ /°C
-      mechanical_properties:
-        tensileStrength: 200-1200 MPa
-        youngsModulus: 200-250 GPa
-      electrical_properties:
-        electricalResistivity: 10-100 nΩ·m
-      material_metadata:
-        industryTags:
-        - Jewelry
-        - Electronics
     - name: Gallium
       author_id: 4
       category: metal
-      thermal_properties:
-        thermalConductivity: 15-400 W/m·K
-        thermalExpansion: 10-25 × 10⁻⁶ /°C
-      mechanical_properties:
-        tensileStrength: 200-1200 MPa
-        youngsModulus: 200-250 GPa
-      electrical_properties:
-        electricalResistivity: 10-100 nΩ·m
-      material_metadata:
-        industryTags:
-        - Aerospace
-        - Electronics
     - name: Gold
       author_id: 3
       category: metal
-      thermal_properties:
-        thermalConductivity: 15-400 W/m·K
-        thermalExpansion: 10-25 × 10⁻⁶ /°C
-      mechanical_properties:
-        tensileStrength: 200-1200 MPa
-        youngsModulus: 200-250 GPa
-      electrical_properties:
-        electricalResistivity: 10-100 nΩ·m
-      material_metadata:
-        industryTags:
-        - Chemical Processing
-        - Aerospace
     - name: Hafnium
       author_id: 4
       category: metal
-      thermal_properties:
-        thermalConductivity: 15-400 W/m·K
-        thermalExpansion: 10-25 × 10⁻⁶ /°C
-      mechanical_properties:
-        tensileStrength: 200-1200 MPa
-        youngsModulus: 200-250 GPa
-      electrical_properties:
-        electricalResistivity: 10-100 nΩ·m
-      material_metadata:
-        industryTags:
-        - Oil and Gas
-        - Aerospace
     - name: Hastelloy
       author_id: 4
       category: metal
-      thermal_properties:
-        thermalConductivity: 15-400 W/m·K
-        thermalExpansion: 10-25 × 10⁻⁶ /°C
-      mechanical_properties:
-        tensileStrength: 200-1200 MPa
-        youngsModulus: 200-250 GPa
-      electrical_properties:
-        electricalResistivity: 10-100 nΩ·m
-      material_metadata:
-        industryTags:
-        - Aerospace
-        - Electronics
     - name: Inconel
       author_id: 2
       category: metal
-      thermal_properties:
-        thermalConductivity: 15-400 W/m·K
-        thermalExpansion: 10-25 × 10⁻⁶ /°C
-      mechanical_properties:
-        tensileStrength: 200-1200 MPa
-        youngsModulus: 200-250 GPa
-      electrical_properties:
-        electricalResistivity: 10-100 nΩ·m
-      material_metadata:
-        industryTags:
-        - Aerospace
-        - Electronics
     - name: Indium
       author_id: 3
       category: metal
-      thermal_properties:
-        thermalConductivity: 15-400 W/m·K
-        thermalExpansion: 10-25 × 10⁻⁶ /°C
-      mechanical_properties:
-        tensileStrength: 200-1200 MPa
-        youngsModulus: 200-250 GPa
-      electrical_properties:
-        electricalResistivity: 10-100 nΩ·m
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Manufacturing
     - name: Iridium
       author_id: 4
       category: metal
-      thermal_properties:
-        thermalConductivity: 15-400 W/m·K
-        thermalExpansion: 10-25 × 10⁻⁶ /°C
-      mechanical_properties:
-        tensileStrength: 200-1200 MPa
-        youngsModulus: 200-250 GPa
-      electrical_properties:
-        electricalResistivity: 10-100 nΩ·m
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Electronics
     - name: Iron
       author_id: 3
       category: metal
-      thermal_properties:
-        thermalConductivity: 15-400 W/m·K
-        thermalExpansion: 10-25 × 10⁻⁶ /°C
-      mechanical_properties:
-        tensileStrength: 200-1200 MPa
-        youngsModulus: 200-250 GPa
-      electrical_properties:
-        electricalResistivity: 10-100 nΩ·m
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Aerospace
     - name: Lead
       author_id: 2
       category: metal
-      thermal_properties:
-        thermalConductivity: 15-400 W/m·K
-        thermalExpansion: 10-25 × 10⁻⁶ /°C
-      mechanical_properties:
-        tensileStrength: 200-1200 MPa
-        youngsModulus: 200-250 GPa
-      electrical_properties:
-        electricalResistivity: 10-100 nΩ·m
-      material_metadata:
-        industryTags:
-        - Semiconductor
-        - Aerospace
     - name: Magnesium
       author_id: 2
       category: metal
       thermal_properties:
         thermalConductivity: 90.9 W/(m·K)
-        thermalExpansion: 10-25 × 10⁻⁶ /°C
         melting_point: 1455°C
       mechanical_properties:
         tensileStrength: 667-1600 MPa
-        youngsModulus: 200-250 GPa
       electrical_properties:
         electricalResistivity: 69.3 nΩ·m
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Electronics
-        - Aerospace
-        - Chemical Processing
       curie_temperature: 355°C
       magnetic_properties: ferromagnetic
       yield_strength: 638 MPa
     - name: Molybdenum
       author_id: 1
       category: metal
-      thermal_properties:
-        thermalConductivity: 15-400 W/m·K
-        thermalExpansion: 10-25 × 10⁻⁶ /°C
-      mechanical_properties:
-        tensileStrength: 200-1200 MPa
-        youngsModulus: 200-250 GPa
-      electrical_properties:
-        electricalResistivity: 10-100 nΩ·m
-      material_metadata:
-        industryTags:
-        - Aerospace
-        - Electronics
     - name: Nickel
       author_id: 1
       category: metal
-      thermal_properties:
-        thermalConductivity: 15-400 W/m·K
-        thermalExpansion: 10-25 × 10⁻⁶ /°C
-      mechanical_properties:
-        tensileStrength: 200-1200 MPa
-        youngsModulus: 200-250 GPa
-      electrical_properties:
-        electricalResistivity: 10-100 nΩ·m
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Electronics
     - name: Niobium
       author_id: 2
       category: metal
-      thermal_properties:
-        thermalConductivity: 15-400 W/m·K
-        thermalExpansion: 10-25 × 10⁻⁶ /°C
-      mechanical_properties:
-        tensileStrength: 200-1200 MPa
-        youngsModulus: 200-250 GPa
-      electrical_properties:
-        electricalResistivity: 10-100 nΩ·m
-      material_metadata:
-        industryTags:
-        - Jewelry
-        - Aerospace
     - name: Palladium
       author_id: 1
       category: metal
-      thermal_properties:
-        thermalConductivity: 15-400 W/m·K
-        thermalExpansion: 10-25 × 10⁻⁶ /°C
-      mechanical_properties:
-        tensileStrength: 200-1200 MPa
-        youngsModulus: 200-250 GPa
-      electrical_properties:
-        electricalResistivity: 10-100 nΩ·m
-      material_metadata:
-        industryTags:
-        - Semiconductor
-        - Aerospace
     - name: Platinum
       author_id: 3
       category: metal
-      thermal_properties:
-        thermalConductivity: 15-400 W/m·K
-        thermalExpansion: 10-25 × 10⁻⁶ /°C
-      mechanical_properties:
-        tensileStrength: 200-1200 MPa
-        youngsModulus: 200-250 GPa
-      electrical_properties:
-        electricalResistivity: 10-100 nΩ·m
-      material_metadata:
-        industryTags:
-        - Jewelry
-        - Aerospace
     - name: Rhenium
       author_id: 2
       category: metal
-      thermal_properties:
-        thermalConductivity: 15-400 W/m·K
-        thermalExpansion: 10-25 × 10⁻⁶ /°C
-      mechanical_properties:
-        tensileStrength: 200-1200 MPa
-        youngsModulus: 200-250 GPa
-      electrical_properties:
-        electricalResistivity: 10-100 nΩ·m
-      material_metadata:
-        industryTags:
-        - Aerospace
-        - Electronics
     - name: Rhodium
       author_id: 4
       category: metal
-      thermal_properties:
-        thermalConductivity: 15-400 W/m·K
-        thermalExpansion: 10-25 × 10⁻⁶ /°C
-      mechanical_properties:
-        tensileStrength: 200-1200 MPa
-        youngsModulus: 200-250 GPa
-      electrical_properties:
-        electricalResistivity: 10-100 nΩ·m
-      material_metadata:
-        industryTags:
-        - Jewelry
-        - Electronics
     - name: Ruthenium
       author_id: 1
       category: metal
       thermal_properties:
         thermalConductivity: 16.2 W/(m·K)
-        thermalExpansion: 10-25 × 10⁻⁶ /°C
         melting_point: 1325-1530°C
       mechanical_properties:
         tensileStrength: 515-827 MPa
-        youngsModulus: 200-250 GPa
-      electrical_properties:
-        electricalResistivity: 10-100 nΩ·m
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Aerospace
-        - Food Processing
-        - Medical
-        - Chemical Processing
       chromium_content: 11-30%
       corrosion_resistance: excellent
       grades: 304, 316, 321, 347, 410, 420, 430
@@ -1153,48 +519,12 @@ materials:
     - name: Silver
       author_id: 4
       category: metal
-      thermal_properties:
-        thermalConductivity: 15-400 W/m·K
-        thermalExpansion: 10-25 × 10⁻⁶ /°C
-      mechanical_properties:
-        tensileStrength: 200-1200 MPa
-        youngsModulus: 200-250 GPa
-      electrical_properties:
-        electricalResistivity: 10-100 nΩ·m
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Manufacturing
     - name: Stainless Steel
       author_id: 2
       category: metal
-      thermal_properties:
-        thermalConductivity: 15-400 W/m·K
-        thermalExpansion: 10-25 × 10⁻⁶ /°C
-      mechanical_properties:
-        tensileStrength: 200-1200 MPa
-        youngsModulus: 200-250 GPa
-      electrical_properties:
-        electricalResistivity: 10-100 nΩ·m
-      material_metadata:
-        industryTags:
-        - Aerospace
-        - Electronics
     - name: Steel
       author_id: 3
       category: metal
-      thermal_properties:
-        thermalConductivity: 15-400 W/m·K
-        thermalExpansion: 10-25 × 10⁻⁶ /°C
-      mechanical_properties:
-        tensileStrength: 200-1200 MPa
-        youngsModulus: 200-250 GPa
-      electrical_properties:
-        electricalResistivity: 10-100 nΩ·m
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Electronics
     - name: Tantalum
       author_id: 1
       category: metal
@@ -1204,85 +534,28 @@ materials:
         melting_point: 3422°C
       mechanical_properties:
         tensileStrength: 3430-4600 MPa
-        youngsModulus: 200-250 GPa
       electrical_properties:
         electricalResistivity: 52.8 nΩ·m
-      material_metadata:
-        industryTags:
-        - Semiconductor
-        - Aerospace
       yield_strength: 2000-4000 MPa
     - name: Tin
       author_id: 1
       category: metal
-      thermal_properties:
-        thermalConductivity: 15-400 W/m·K
-        thermalExpansion: 10-25 × 10⁻⁶ /°C
-      mechanical_properties:
-        tensileStrength: 200-1200 MPa
-        youngsModulus: 200-250 GPa
-      electrical_properties:
-        electricalResistivity: 10-100 nΩ·m
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Aerospace
     - name: Tungsten
       author_id: 1
       category: metal
-      thermal_properties:
-        thermalConductivity: 15-400 W/m·K
-        thermalExpansion: 10-25 × 10⁻⁶ /°C
-      mechanical_properties:
-        tensileStrength: 200-1200 MPa
-        youngsModulus: 200-250 GPa
-      electrical_properties:
-        electricalResistivity: 10-100 nΩ·m
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Electronics
     - name: Vanadium
       author_id: 2
       category: metal
-      thermal_properties:
-        thermalConductivity: 15-400 W/m·K
-        thermalExpansion: 10-25 × 10⁻⁶ /°C
-      mechanical_properties:
-        tensileStrength: 200-1200 MPa
-        youngsModulus: 200-250 GPa
-      electrical_properties:
-        electricalResistivity: 10-100 nΩ·m
-      material_metadata:
-        industryTags:
-        - Aerospace
-        - Nuclear
     - name: Zinc
       author_id: 1
       category: metal
       mechanical_properties:
         hardness: 8.5 Mohs
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Aerospace
-        - Manufacturing
-        - Electronics
-        - Marine
-        - Industrial
     - name: Zirconium
       author_id: 3
       category: metal
       mechanical_properties:
         hardness: 6.0 Mohs
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Aerospace
-        - Manufacturing
-        - Electronics
-        - Marine
-        - Industrial
   plastic:
     items:
     - name: Polycarbonate
@@ -1290,79 +563,31 @@ materials:
       category: plastic
       mechanical_properties:
         hardness: Shore D 60-70
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Medical
-        - Packaging
-        - Electronics
-        - Aerospace
-        - Consumer Goods
     - name: Polyethylene
       author_id: 2
       category: plastic
       mechanical_properties:
         hardness: Shore D 65-75
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Medical
-        - Packaging
-        - Electronics
-        - Aerospace
-        - Consumer Goods
     - name: Polypropylene
       author_id: 3
       category: plastic
       mechanical_properties:
         hardness: Shore D 75-85
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Medical
-        - Packaging
-        - Electronics
-        - Aerospace
-        - Consumer Goods
     - name: Polystyrene
       author_id: 2
       category: plastic
       mechanical_properties:
         hardness: Shore D 70-85
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Medical
-        - Packaging
-        - Electronics
-        - Aerospace
-        - Consumer Goods
     - name: Polytetrafluoroethylene
       author_id: 3
       category: plastic
       mechanical_properties:
         hardness: Shore D 50-65
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Medical
-        - Packaging
-        - Electronics
-        - Aerospace
-        - Consumer Goods
     - name: Polyvinyl Chloride
       author_id: 2
       category: plastic
       mechanical_properties:
         hardness: Shore D 80-85
-      material_metadata:
-        industryTags:
-        - Automotive
-        - Medical
-        - Packaging
-        - Electronics
-        - Aerospace
-        - Consumer Goods
   semiconductor:
     items:
     - name: Gallium Arsenide
@@ -1373,12 +598,6 @@ materials:
         melting_point: 1238°C
       electrical_properties:
         electricalResistivity: 1×10⁸ Ω·cm
-      material_metadata:
-        industryTags:
-        - Optoelectronics
-        - Semiconductor Manufacturing
-        - Solar
-        - RF Electronics
       bandgap: 1.42 eV
     - name: Silicon
       author_id: 4
@@ -1392,13 +611,6 @@ materials:
       electrical_properties:
         electricalResistivity: 1×10³-1×10⁵ Ω·cm
       material_metadata:
-        industryTags:
-        - Semiconductor Manufacturing
-        - Photovoltaics
-        - MEMS
-        - Electronics
-        - Optoelectronics
-        - Research
         regulatoryStandards:
         - SEMI M1 - Specification for Polished Single Crystal Silicon Wafers
         - ASTM F1188 - Standard Specification for Single Crystal Silicon
@@ -1414,12 +626,6 @@ materials:
         hardness: 2800 HV
       electrical_properties:
         electricalResistivity: 1×10⁵ Ω·cm
-      material_metadata:
-        industryTags:
-        - Power Electronics
-        - Automotive
-        - Aerospace
-        - Industrial
       bandgap: 3.3 eV
     - name: Silicon Germanium
       author_id: 3
@@ -1429,12 +635,6 @@ materials:
         melting_point: 1350°C
       electrical_properties:
         electricalResistivity: 100 Ω·cm
-      material_metadata:
-        industryTags:
-        - High-Speed Electronics
-        - RF Communications
-        - Automotive
-        - Telecommunications
       bandgap: 0.8-1.1 eV
       documentation_status: complete
   stone:
@@ -1442,97 +642,28 @@ materials:
     - name: Alabaster
       author_id: 2
       category: stone
-      thermal_properties:
-        thermalConductivity: 1.5-3.0 W/m·K
-        thermalExpansion: 8.0 × 10⁻⁶ /°C
-      mechanical_properties:
-        hardness: 6-7 Mohs
-        compressive_strength: 50-200 MPa
-      processing_properties:
-        porosity: 5-15%
-      material_metadata:
-        industryTags:
-        - Construction
-        - Art Restoration
     - name: Basalt
       author_id: 1
       category: stone
-      thermal_properties:
-        thermalConductivity: 1.5-3.0 W/m·K
-        thermalExpansion: 8.0 × 10⁻⁶ /°C
-      mechanical_properties:
-        hardness: 6-7 Mohs
-        compressive_strength: 50-200 MPa
-      processing_properties:
-        porosity: 5-15%
-      material_metadata:
-        industryTags:
-        - Construction
-        - Manufacturing
     - name: Bluestone
       author_id: 2
       category: stone
-      thermal_properties:
-        thermalConductivity: 1.5-3.0 W/m·K
-        thermalExpansion: 8.0 × 10⁻⁶ /°C
-      mechanical_properties:
-        hardness: 6-7 Mohs
-        compressive_strength: 50-200 MPa
-      processing_properties:
-        porosity: 5-15%
-      material_metadata:
-        industryTags:
-        - Construction
-        - Restoration
     - name: Breccia
       author_id: 3
       category: stone
-      thermal_properties:
-        thermalConductivity: 1.5-3.0 W/m·K
-        thermalExpansion: 8.0 × 10⁻⁶ /°C
-      mechanical_properties:
-        hardness: 6-7 Mohs
-        compressive_strength: 50-200 MPa
-      processing_properties:
-        porosity: 5-15%
-      material_metadata:
-        industryTags:
-        - Construction
-        - Art and Restoration
     - name: Calcite
       author_id: 3
       category: stone
-      thermal_properties:
-        thermalConductivity: 1.5-3.0 W/m·K
-        thermalExpansion: 8.0 × 10⁻⁶ /°C
-      mechanical_properties:
-        hardness: 6-7 Mohs
-        compressive_strength: 50-200 MPa
-      processing_properties:
-        porosity: 5-15%
-      material_metadata:
-        industryTags:
-        - Construction
-        - Restoration
     - name: Granite
       author_id: 4
       category: stone
       thermal_properties:
         thermalConductivity: 2.5-3.5 W/m·K
-        thermalExpansion: 8.0 × 10⁻⁶ /°C
       mechanical_properties:
-        hardness: 6-7 Mohs
         compressive_strength: 100-250 MPa
       processing_properties:
         porosity: 0.4-1.5%
       material_metadata:
-        industryTags:
-        - Construction
-        - Restoration
-        - Countertops
-        - Memorials
-        - Building Facades
-        - Quarrying
         regulatoryStandards:
         - EPA Clean Air Act Compliance
         - ASTM C615 - Standard Specification for Granite Dimension Stone
@@ -1548,31 +679,12 @@ materials:
       processing_properties:
         porosity: 5-25%
       material_metadata:
-        industryTags:
-        - Construction
-        - Heritage Conservation
-        - Building Restoration
-        - Quarrying
-        - Landscaping
-        - Educational Institutions
         regulatoryStandards:
         - EPA Clean Air Act Compliance
         - ASTM C568 - Standard Specification for Limestone Dimension Stone
     - name: Porphyry
       author_id: 3
       category: stone
-      thermal_properties:
-        thermalConductivity: 1.5-3.0 W/m·K
-        thermalExpansion: 8.0 × 10⁻⁶ /°C
-      mechanical_properties:
-        hardness: 6-7 Mohs
-        compressive_strength: 50-200 MPa
-      processing_properties:
-        porosity: 5-15%
-      material_metadata:
-        industryTags:
-        - Construction
-        - Art and Restoration
     - name: Marble
       author_id: 3
       category: stone
@@ -1585,13 +697,6 @@ materials:
       processing_properties:
         porosity: 0.1-2.0%
       material_metadata:
-        industryTags:
-        - Construction
-        - Restoration
-        - Art Conservation
-        - Architecture
-        - Countertops
-        - Flooring
         regulatoryStandards:
         - EPA Clean Air Act Compliance
         - ASTM C503 - Standard Specification for Marble Dimension Stone
@@ -1599,33 +704,9 @@ materials:
     - name: Onyx
       author_id: 1
       category: stone
-      thermal_properties:
-        thermalConductivity: 1.5-3.0 W/m·K
-        thermalExpansion: 8.0 × 10⁻⁶ /°C
-      mechanical_properties:
-        hardness: 6-7 Mohs
-        compressive_strength: 50-200 MPa
-      processing_properties:
-        porosity: 5-15%
-      material_metadata:
-        industryTags:
-        - Construction
-        - Jewelry
     - name: Quartzite
       author_id: 1
       category: stone
-      thermal_properties:
-        thermalConductivity: 1.5-3.0 W/m·K
-        thermalExpansion: 8.0 × 10⁻⁶ /°C
-      mechanical_properties:
-        hardness: 6-7 Mohs
-        compressive_strength: 50-200 MPa
-      processing_properties:
-        porosity: 5-15%
-      material_metadata:
-        industryTags:
-        - Construction
-        - Restoration
     - name: Sandstone
       author_id: 2
       category: stone
@@ -1633,66 +714,22 @@ materials:
         thermalConductivity: 1.7-5.1 W/m·K
         thermalExpansion: 11.9 × 10⁻⁶ /°C
       mechanical_properties:
-        hardness: 6-7 Mohs
         compressive_strength: 20-170 MPa
       processing_properties:
         porosity: 10-35%
       material_metadata:
-        industryTags:
-        - Construction
-        - Heritage Conservation
-        - Building Restoration
-        - Monuments
-        - Quarrying
-        - Landscaping
         regulatoryStandards:
         - EPA Clean Air Act Compliance
         - ASTM C616 - Standard Specification for Sandstone Dimension Stone
     - name: Schist
       author_id: 4
       category: stone
-      thermal_properties:
-        thermalConductivity: 1.5-3.0 W/m·K
-        thermalExpansion: 8.0 × 10⁻⁶ /°C
-      mechanical_properties:
-        hardness: 6-7 Mohs
-        compressive_strength: 50-200 MPa
-      processing_properties:
-        porosity: 5-15%
-      material_metadata:
-        industryTags:
-        - Construction
-        - Heritage Conservation
     - name: Serpentine
       author_id: 4
       category: stone
-      thermal_properties:
-        thermalConductivity: 1.5-3.0 W/m·K
-        thermalExpansion: 8.0 × 10⁻⁶ /°C
-      mechanical_properties:
-        hardness: 6-7 Mohs
-        compressive_strength: 50-200 MPa
-      processing_properties:
-        porosity: 5-15%
-      material_metadata:
-        industryTags:
-        - Construction
-        - Jewelry
     - name: Shale
       author_id: 1
       category: stone
-      thermal_properties:
-        thermalConductivity: 1.5-3.0 W/m·K
-        thermalExpansion: 8.0 × 10⁻⁶ /°C
-      mechanical_properties:
-        hardness: 6-7 Mohs
-        compressive_strength: 50-200 MPa
-      processing_properties:
-        porosity: 5-15%
-      material_metadata:
-        industryTags:
-        - Construction
-        - Oil and Gas
     - name: Slate
       author_id: 3
       category: stone
@@ -1700,51 +737,19 @@ materials:
         thermalConductivity: 2.0-2.5 W/m·K
         thermalExpansion: 10.4 × 10⁻⁶ /°C
       mechanical_properties:
-        hardness: 6-7 Mohs
         compressive_strength: 100-200 MPa
       processing_properties:
         porosity: 0.1-3.0%
       material_metadata:
-        industryTags:
-        - Construction
-        - Restoration
-        - Roofing
-        - Flooring
-        - Memorials
-        - Architectural Elements
         regulatoryStandards:
         - EPA Clean Air Act Compliance
         - ASTM C629 - Standard Specification for Slate Dimension Stone
     - name: Soapstone
       author_id: 3
       category: stone
-      thermal_properties:
-        thermalConductivity: 1.5-3.0 W/m·K
-        thermalExpansion: 8.0 × 10⁻⁶ /°C
-      mechanical_properties:
-        hardness: 6-7 Mohs
-        compressive_strength: 50-200 MPa
-      processing_properties:
-        porosity: 5-15%
-      material_metadata:
-        industryTags:
-        - Construction
-        - Restoration
     - name: Travertine
       author_id: 1
       category: stone
-      thermal_properties:
-        thermalConductivity: 1.5-3.0 W/m·K
-        thermalExpansion: 8.0 × 10⁻⁶ /°C
-      mechanical_properties:
-        hardness: 6-7 Mohs
-        compressive_strength: 50-200 MPa
-      processing_properties:
-        porosity: 5-15%
-      material_metadata:
-        industryTags:
-        - Construction
-        - Restoration
   wood:
     items:
     - name: Ash
@@ -1757,16 +762,8 @@ materials:
         hardness: 5.0 Janka
       processing_properties:
         moisture_content: 6-12%
-        resin_content: Low
         grain_structure_type: Open grain
       material_metadata:
-        industryTags:
-        - Woodworking
-        - Conservation
-        - Tool Manufacturing
-        - Musical Instruments
-        - Furniture Manufacturing
-        - Sports Equipment
         regulatoryStandards:
         - EPA Clean Air Act Compliance
     - name: Bamboo
@@ -1782,13 +779,6 @@ materials:
         resin_content: Very low
         grain_structure_type: Straight fiber
       material_metadata:
-        industryTags:
-        - Woodworking
-        - Conservation
-        - Flooring
-        - Textiles
-        - Construction
-        - Kitchenware
         regulatoryStandards:
         - EPA Clean Air Act Compliance
         - FSC Sustainable Forestry Standards
@@ -1796,10 +786,6 @@ materials:
     - name: Beech
       author_id: 2
       category: wood
-      material_metadata:
-        industryTags:
-        - Woodworking
-        - Restoration
     - name: Birch
       author_id: 4
       category: wood
@@ -1810,16 +796,8 @@ materials:
         hardness: 4.87 Janka
       processing_properties:
         moisture_content: 6-12%
-        resin_content: Low
         grain_structure_type: Closed grain
       material_metadata:
-        industryTags:
-        - Woodworking
-        - Construction
-        - Plywood Manufacturing
-        - Cabinetry
-        - Turning
-        - Flooring
         regulatoryStandards:
         - EPA Clean Air Act Compliance
     - name: Cedar
@@ -1835,13 +813,6 @@ materials:
         resin_content: High
         grain_structure_type: Straight grain
       material_metadata:
-        industryTags:
-        - Woodworking
-        - Restoration
-        - Outdoor Construction
-        - Marine Applications
-        - Saunas and Spas
-        - Roofing
         regulatoryStandards:
         - EPA Clean Air Act Compliance
     - name: Cherry
@@ -1857,29 +828,14 @@ materials:
         resin_content: Low to medium
         grain_structure_type: Closed grain
       material_metadata:
-        industryTags:
-        - Restoration and Conservation
-        - Furniture Manufacturing
-        - Cabinetry
-        - Musical Instruments
-        - Architectural Millwork
-        - Decorative Arts
         regulatoryStandards:
         - EPA Clean Air Act Compliance
     - name: Fir
       author_id: 3
       category: wood
-      material_metadata:
-        industryTags:
-        - Woodworking
-        - Restoration
     - name: Hickory
       author_id: 4
       category: wood
-      material_metadata:
-        industryTags:
-        - Woodworking
-        - Restoration
     - name: Mahogany
       author_id: 4
       category: wood
@@ -1893,13 +849,6 @@ materials:
         resin_content: Low to medium
         grain_structure_type: Interlocked grain
       material_metadata:
-        industryTags:
-        - Furniture Manufacturing
-        - Luxury Cabinetry
-        - Marine Applications
-        - Musical Instruments
-        - Antique Restoration
-        - Architectural Elements
         regulatoryStandards:
         - EPA Clean Air Act Compliance
         - CITES Regulations for Sustainable Mahogany Use
@@ -1916,23 +865,12 @@ materials:
         resin_content: Very low
         grain_structure_type: Closed grain
       material_metadata:
-        industryTags:
-        - Woodworking
-        - Restoration
-        - Musical Instruments
-        - Cabinetry
-        - Sports Equipment
-        - Food Service
         regulatoryStandards:
         - EPA Clean Air Act Compliance
         - USDA Food Safety Guidelines (for food-contact surfaces)
     - name: MDF
       author_id: 2
       category: wood
-      material_metadata:
-        industryTags:
-        - Construction
-        - Furniture Manufacturing
     - name: Oak
       author_id: 2
       category: wood
@@ -1942,17 +880,8 @@ materials:
       mechanical_properties:
         hardness: 5.9 Janka
       processing_properties:
-        moisture_content: 8-12%
-        resin_content: Low
         grain_structure_type: Open grain
       material_metadata:
-        industryTags:
-        - Woodworking
-        - Restoration
-        - Construction
-        - Marine
-        - Antique Restoration
-        - Flooring
         regulatoryStandards:
         - EPA Clean Air Act Compliance
     - name: Pine
@@ -1963,20 +892,10 @@ materials:
       processing_properties:
         moisture_content: 10-15%
         resin_content: High
-      material_metadata:
-        industryTags:
-        - Construction
-        - Furniture Manufacturing
-        - Restoration
-        - Marine
       grain_pattern: Straight grain
     - name: Plywood
       author_id: 2
       category: wood
-      material_metadata:
-        industryTags:
-        - Construction
-        - Woodworking
     - name: Poplar
       author_id: 4
       category: wood
@@ -1990,29 +909,14 @@ materials:
         resin_content: Very low
         grain_structure_type: Straight grain
       material_metadata:
-        industryTags:
-        - Woodworking
-        - Restoration
-        - Millwork
-        - Cabinetry
-        - Musical Instruments
-        - Craft Industry
         regulatoryStandards:
         - EPA Clean Air Act Compliance
     - name: Redwood
       author_id: 3
       category: wood
-      material_metadata:
-        industryTags:
-        - Woodworking
-        - Restoration
     - name: Rosewood
       author_id: 1
       category: wood
-      material_metadata:
-        industryTags:
-        - Restoration
-        - Furniture Manufacturing
     - name: Teak
       author_id: 4
       category: wood
@@ -2023,16 +927,8 @@ materials:
         hardness: 4.2 Janka
       processing_properties:
         moisture_content: 6-12%
-        resin_content: Low
         grain_structure_type: Straight to wavy grain
       material_metadata:
-        industryTags:
-        - Woodworking
-        - Marine
-        - Outdoor Furniture
-        - Luxury Interiors
-        - Shipbuilding
-        - Architectural Elements
         regulatoryStandards:
         - EPA Clean Air Act Compliance
         - IMO Marine Pollution Prevention Standards
@@ -2046,25 +942,13 @@ materials:
         hardness: 4.49 Janka
       processing_properties:
         moisture_content: 7-12%
-        resin_content: Low
         grain_structure_type: Open grain
       material_metadata:
-        industryTags:
-        - Furniture Manufacturing
-        - Art Restoration
-        - Cabinetry
-        - Musical Instruments
-        - Gunstock Manufacturing
-        - Architectural Millwork
         regulatoryStandards:
         - EPA Clean Air Act Compliance
     - name: Willow
       author_id: 2
       category: wood
-      material_metadata:
-        industryTags:
-        - Woodworking
-        - Restoration
 metadata:
   total_categories: 9
   total_materials: 121
