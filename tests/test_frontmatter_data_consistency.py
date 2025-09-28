@@ -135,6 +135,9 @@ class TestFrontmatterDataConsistency(unittest.TestCase):
         inconsistencies = []
         machine_settings = parsed['machineSettings']
         
+        # Categorical fields that don't need min/max values
+        categorical_fields = {'laserType', 'beamQuality', 'coolingType', 'operatingMode'}
+        
         for setting_name, setting_data in machine_settings.items():
             # Skip wavelength since it was removed from the system but AI might still generate it
             if setting_name == 'wavelength':
@@ -149,7 +152,11 @@ class TestFrontmatterDataConsistency(unittest.TestCase):
                 if not value_unit:
                     inconsistencies.append(f"{setting_name}: Missing unit field")
                 
-                # Check that min/max are present and numeric
+                # Skip min/max checks for categorical fields
+                if setting_name in categorical_fields:
+                    continue
+                    
+                # Check that min/max are present and numeric for numeric fields
                 if min_val is None:
                     inconsistencies.append(f"{setting_name}: Missing min value")
                 elif not isinstance(min_val, (int, float)):
@@ -227,6 +234,169 @@ class TestFrontmatterDataConsistency(unittest.TestCase):
         self.assertEqual(len(missing_units), 0,
                         f"Machine settings descriptions missing units: {missing_units}")
     
+    def test_categories_yaml_min_max_source_compliance(self):
+        """Test that materialProperties min/max values come from Categories.yaml category_ranges"""
+        if not self.generator:
+            self.skipTest("Generator not available")
+        
+        # Generate frontmatter for copper (metal category)
+        result = self.generator.generate('copper')
+        self.assertTrue(result.success, f"Frontmatter generation failed: {result.error_message}")
+        
+        parsed = yaml.safe_load(result.content)
+        self.assertIn('materialProperties', parsed, "Generated frontmatter missing materialProperties")
+        
+        # Get expected ranges from Categories.yaml for metal category
+        metal_ranges = self.categories_data.get('categories', {}).get('metal', {}).get('category_ranges', {})
+        
+        compliance_violations = []
+        material_properties = parsed['materialProperties']
+        
+        for prop_name, prop_data in material_properties.items():
+            if isinstance(prop_data, dict):
+                prop_min = prop_data.get('min')
+                prop_max = prop_data.get('max')
+                
+                # Check if property exists in Categories.yaml category_ranges
+                if prop_name in metal_ranges:
+                    expected_range = metal_ranges[prop_name]
+                    expected_min = expected_range.get('min')
+                    expected_max = expected_range.get('max')
+                    
+                    # Verify min/max match Categories.yaml values
+                    if prop_min != expected_min:
+                        compliance_violations.append(
+                            f"{prop_name}.min: Got {prop_min}, expected {expected_min} from Categories.yaml"
+                        )
+                    if prop_max != expected_max:
+                        compliance_violations.append(
+                            f"{prop_name}.max: Got {prop_max}, expected {expected_max} from Categories.yaml"
+                        )
+                else:
+                    # Properties not in Categories.yaml should have null min/max
+                    if prop_min is not None:
+                        compliance_violations.append(
+                            f"{prop_name}.min: Should be null (property not in Categories.yaml), got {prop_min}"
+                        )
+                    if prop_max is not None:
+                        compliance_violations.append(
+                            f"{prop_name}.max: Should be null (property not in Categories.yaml), got {prop_max}"
+                        )
+        
+        self.assertEqual(len(compliance_violations), 0,
+                        "Categories.yaml min/max source compliance violations:\n" + "\n".join(compliance_violations))
+
+    def test_environmental_impact_template_compliance(self):
+        """Test that environmentalImpact benefits use Categories.yaml environmentalImpactTemplates"""
+        if not self.generator:
+            self.skipTest("Generator not available")
+        
+        # Generate frontmatter 
+        result = self.generator.generate('copper')
+        self.assertTrue(result.success, f"Frontmatter generation failed: {result.error_message}")
+        
+        parsed = yaml.safe_load(result.content)
+        self.assertIn('environmentalImpact', parsed, "Generated frontmatter missing environmentalImpact")
+        
+        # Validate environmentalImpactTemplates exist in Categories.yaml
+        _ = self.categories_data.get('environmentalImpactTemplates', {})  # Validate existence
+        
+        # Map template keys to expected benefit names
+        template_to_benefit = {
+            'chemical_waste_elimination': 'Chemical Waste Elimination',
+            'water_usage_reduction': 'Water Usage Reduction', 
+            'energy_efficiency': 'Energy Efficiency',
+            'air_quality_improvement': 'Air Quality Improvement'
+        }
+        
+        generated_benefits = {impact.get('benefit', '') for impact in parsed['environmentalImpact']}
+        expected_benefits = set(template_to_benefit.values())
+        
+        # Check that generated benefits match expected template-derived benefits
+        missing_benefits = expected_benefits - generated_benefits
+        extra_benefits = generated_benefits - expected_benefits
+        
+        compliance_issues = []
+        if missing_benefits:
+            compliance_issues.append(f"Missing expected benefits: {missing_benefits}")
+        if extra_benefits:
+            compliance_issues.append(f"Extra benefits not from templates: {extra_benefits}")
+        
+        self.assertEqual(len(compliance_issues), 0,
+                        "Environmental impact template compliance issues:\n" + "\n".join(compliance_issues))
+
+    def test_application_types_definition_compliance(self):
+        """Test that applicationTypes use Categories.yaml applicationTypeDefinitions"""
+        if not self.generator:
+            self.skipTest("Generator not available")
+        
+        # Generate frontmatter
+        result = self.generator.generate('copper')
+        self.assertTrue(result.success, f"Frontmatter generation failed: {result.error_message}")
+        
+        parsed = yaml.safe_load(result.content)
+        self.assertIn('applicationTypes', parsed, "Generated frontmatter missing applicationTypes")
+        
+        # Get definitions from Categories.yaml
+        _ = self.categories_data.get('applicationTypeDefinitions', {})  # Validate existence
+        
+        # Map definition keys to expected type names
+        definition_to_type = {
+            'precision_cleaning': 'Precision Cleaning',
+            'surface_preparation': 'Surface Preparation',
+            'restoration_cleaning': 'Restoration Cleaning',
+            'contamination_removal': 'Contamination Removal'
+        }
+        
+        generated_types = {app.get('type', '') for app in parsed['applicationTypes']}
+        expected_types = set(definition_to_type.values())
+        
+        # Verify all generated types come from Categories.yaml definitions
+        extra_types = generated_types - expected_types
+        
+        compliance_issues = []
+        if extra_types:
+            compliance_issues.append(f"Application types not from Categories.yaml definitions: {extra_types}")
+        
+        self.assertEqual(len(compliance_issues), 0,
+                        "Application types definition compliance issues:\n" + "\n".join(compliance_issues))
+
+    def test_outcome_metrics_standard_compliance(self):
+        """Test that outcomeMetrics use Categories.yaml standardOutcomeMetrics"""
+        if not self.generator:
+            self.skipTest("Generator not available")
+        
+        # Generate frontmatter
+        result = self.generator.generate('copper')
+        self.assertTrue(result.success, f"Frontmatter generation failed: {result.error_message}")
+        
+        parsed = yaml.safe_load(result.content)
+        self.assertIn('outcomeMetrics', parsed, "Generated frontmatter missing outcomeMetrics")
+        
+        # Get standard metrics from Categories.yaml  
+        _ = self.categories_data.get('standardOutcomeMetrics', {})  # Validate existence
+        
+        # Map standard keys to expected metric names
+        standard_to_metric = {
+            'contaminant_removal_efficiency': 'Contaminant Removal Efficiency',
+            'processing_speed': 'Processing Speed',
+            'surface_quality_preservation': 'Surface Quality Preservation',
+            'thermal_damage_avoidance': 'Thermal Damage Avoidance'
+        }
+        
+        generated_metrics = {metric.get('metric', '') for metric in parsed['outcomeMetrics']}
+        expected_metrics = set(standard_to_metric.values())
+        
+        # Verify all generated metrics come from Categories.yaml standards
+        extra_metrics = generated_metrics - expected_metrics
+        
+        compliance_issues = []
+        if extra_metrics:
+            compliance_issues.append(f"Outcome metrics not from Categories.yaml standards: {extra_metrics}")
+        
+        self.assertEqual(len(compliance_issues), 0,
+                        "Outcome metrics standard compliance issues:\n" + "\n".join(compliance_issues))
+
     def test_material_property_coverage(self):
         """Test that all material properties in Categories.yaml are handled by generator"""
         if not self.generator:

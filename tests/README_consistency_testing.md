@@ -62,6 +62,24 @@ wavelength: Missing min value
 spotSize: Min value 'small' is not numeric
 ```
 
+### 2a. Categories.yaml Min/Max Source Compliance
+**Purpose**: Ensure min/max values come from Categories.yaml category_ranges, not AI generation
+
+```python
+def test_categories_yaml_min_max_source_compliance(self):
+    """Test that materialProperties min/max values come from Categories.yaml category_ranges"""
+```
+
+**What it catches**:
+- ❌ AI-generated min/max values instead of Categories.yaml data
+- ❌ Incorrect min/max ranges from wrong category
+- ❌ Properties without category_ranges having non-null min/max
+
+**Data Source Requirements**:
+- ✅ MaterialProperties min/max MUST come from Categories.yaml category_ranges
+- ✅ Properties not in category_ranges MUST have min: null, max: null
+- ✅ No AI-generated or calculated min/max values allowed
+
 ### 3. Source Data Integrity Tests
 **Purpose**: Ensure Categories.yaml and Materials.yaml have required structure
 

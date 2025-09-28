@@ -1050,10 +1050,13 @@ Return YAML format with materialProperties (not properties) and machineSettings 
             if property_name in category_ranges:
                 ranges = category_ranges[property_name]
                 if 'min' in ranges and 'max' in ranges:
+                    if 'unit' not in ranges:
+                        self.logger.warning(f"Unit missing for {category}.{property_name} in Categories.yaml")
+                        return None  # Fail-fast - no fallback defaults per GROK_INSTRUCTIONS.md
                     return {
                         'min': ranges['min'],
                         'max': ranges['max'],
-                        'unit': ranges.get('unit', '')
+                        'unit': ranges['unit']
                     }
             
             return None
