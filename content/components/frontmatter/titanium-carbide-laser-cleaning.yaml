@@ -2,123 +2,108 @@ name: Titanium Carbide
 category: Ceramic
 subcategory: Titanium Carbide
 title: Titanium Carbide Laser Cleaning
-description: Laser cleaning parameters for Titanium Carbide
+description: Laser cleaning parameters for Alumina
 materialProperties:
   density:
     value: 4.93
     unit: g/cm³
-    confidence: 97
+    confidence: 98
     description: Theoretical density of TiC at room temperature
-    min: 4.92
-    max: 4.94
+    min: 2.2
+    max: 19.3
   meltingPoint:
     value: 3067
     unit: °C
     confidence: 95
     description: Melting point of stoichiometric TiC
-    min: 3050
-    max: 3080
+    min: null
+    max: null
   thermalConductivity:
     value: 21
     unit: W/m·K
     confidence: 90
     description: Thermal conductivity at room temperature
-    min: 19
-    max: 25
+    min: 0.03
+    max: 2000.0
   hardness:
     value: 28
     unit: GPa
-    confidence: 96
-    description: Vickers hardness (HV0.5)
-    min: 27
-    max: 30
+    confidence: 92
+    description: Vickers hardness (HV) at room temperature
+    min: 3.0
+    max: 10.0
   youngsModulus:
     value: 450
     unit: GPa
-    confidence: 94
+    confidence: 95
     description: Young's modulus of elasticity
-    min: 440
-    max: 460
+    min: 150
+    max: 700
   thermalExpansion:
     value: 7.4
-    unit: ×10⁻⁶/K
+    unit: 10⁻⁶/K
     confidence: 92
     description: Coefficient of thermal expansion (20-1000°C)
-    min: 7.2
-    max: 7.6
+    min: 0.1
+    max: 14
   thermalDiffusivity:
     value: 8.2
     unit: mm²/s
-    confidence: 88
+    confidence: 85
     description: Thermal diffusivity at room temperature
-    min: 7.5
-    max: 9.0
+    min: 0.3
+    max: 120
   specificHeat:
     value: 840
     unit: J/kg·K
-    confidence: 85
+    confidence: 88
     description: Specific heat capacity at room temperature
-    min: 800
-    max: 880
+    min: 0.4
+    max: 1.1
   flexuralStrength:
     value: 350
     unit: MPa
     confidence: 85
-    description: Three-point bending strength
-    min: 300
-    max: 400
+    description: Flexural strength of sintered TiC
+    min: null
+    max: null
   absorptionCoefficient:
     value: 0.85
     unit: dimensionless
-    confidence: 82
-    description: Optical absorption coefficient at 1064 nm wavelength
-    min: 0.8
-    max: 0.9
+    confidence: 80
+    description: Optical absorption coefficient for near-IR lasers (1064 nm)
+    min: null
+    max: null
   reflectivity:
     value: 0.45
     unit: dimensionless
-    confidence: 80
-    description: Reflectivity at 1064 nm wavelength
-    min: 0.4
-    max: 0.5
-  ablationThreshold:
-    value: 1.2
-    unit: J/cm²
-    confidence: 85
-    description: Laser ablation threshold for nanosecond pulses at 1064 nm
-    min: 0.8
-    max: 1.5
-  laserDamageThreshold:
-    value: 15
-    unit: GW/cm²
     confidence: 82
-    description: Laser-induced damage threshold for picosecond pulses
-    min: 12
-    max: 18
-  oxidationResistance:
-    value: 1200
-    unit: °C
-    confidence: 90
-    description: Maximum service temperature in oxidizing atmosphere
-    min: 1100
-    max: 1300
+    description: Reflectivity at 1064 nm wavelength
+    min: null
+    max: null
+  ablationThreshold:
+    value: 2.5
+    unit: J/cm²
+    confidence: 80
+    description: Estimated laser ablation threshold for nanosecond pulses
+    min: null
+    max: null
   crystallineStructure:
     value: FCC
     unit: crystal system
     confidence: 98
     description: Face-centered cubic (NaCl-type) structure
-    min: N/A
-    max: N/A
-  porosity:
-    value: 2
-    unit: '%'
-    confidence: 85
-    description: Typical porosity for sintered TiC
-    min: 1
-    max: 5
+    min: null
+    max: null
+  oxidationResistance:
+    value: 1200
+    unit: °C
+    confidence: 90
+    description: Maximum service temperature in oxidizing environments
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Aerospace: Precision cleaning of aerospace components and assemblies'
 machineSettings:
   powerRange:
     value: 100
@@ -131,80 +116,74 @@ machineSettings:
   wavelength:
     value: 1064
     unit: nm
-    confidence: 91
-    description: Near-IR wavelength optimized for Titanium Carbide absorption characteristics
+    confidence: 88
+    description: Near-infrared wavelength optimized for Titanium Carbide absorption
     min: null
     max: null
   spotSize:
     value: 50
     unit: μm
-    confidence: 85
-    description: Optimal spot diameter for precision cleaning
+    confidence: 90
+    description: Beam spot diameter for precise Titanium Carbide surface treatment
     min: 30
     max: 100
   repetitionRate:
     value: 100
     unit: kHz
-    confidence: 90
-    description: High repetition rate for efficient cleaning coverage
+    confidence: 84
+    description: Optimal repetition rate for efficient cleaning with thermal management
     min: 50
     max: 200
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 88
-    description: Ablation threshold fluence for Titanium Carbide contamination removal
+    description: Ablation threshold fluence for Titanium Carbide removal
     min: 1.8
-    max: 3.2
+    max: 3.5
   energyDensity:
-    value: 3.0
+    value: 3.2
     unit: J/cm²
     confidence: 85
-    description: Optimal energy density for efficient contaminant removal
-    min: 2.2
-    max: 3.8
+    description: Optimal energy density for efficient TiC contaminant removal
+    min: 2.5
+    max: 4.0
   pulseWidth:
     value: 10
     unit: ns
     confidence: 87
-    description: Nanosecond pulse duration for controlled ablation of surface contaminants
+    description: Nanosecond pulse duration for controlled ablation of Titanium Carbide
     min: 5
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 88
+    confidence: 82
     description: Optimal scanning speed for uniform cleaning coverage
     min: 300
     max: 800
-  laserType:
-    value: Nd:YAG
-    unit: n/a
-    confidence: 89
-    description: Solid-state laser suitable for Titanium Carbide processing
-    min: null
-    max: null
-  passCount:
-    value: 3
-    unit: passes
-    confidence: 84
-    description: Optimal number of passes for complete contaminant removal
-    min: 1
-    max: 5
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 86
-    description: Beam overlap percentage for uniform cleaning
+    confidence: 85
+    description: Optimal pulse overlap for complete surface coverage
     min: 40
     max: 60
-  dwellTime:
-    value: 100
-    unit: μs
+  passCount:
+    value: 3
+    unit: passes
     confidence: 83
-    description: Optimal dwell time per spot for effective material removal
-    min: 50
-    max: 200
+    description: Recommended number of passes for thorough contaminant removal
+    min: 2
+    max: 5
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+- EPA Clean Air Act Compliance
+- ASTM C848 - Standard Specification for High Alumina Refractory Brick
+- ISO 23146 - Technical Ceramics
 author_object:
   id: 2
   name: Alessandro Moretti

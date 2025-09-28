@@ -2,106 +2,106 @@ name: Silicon Carbide
 category: Semiconductor
 subcategory: Silicon Carbide
 title: Silicon Carbide Laser Cleaning
-description: Laser cleaning parameters for Silicon Carbide
+description: Laser cleaning parameters for Gallium Arsenide
 materialProperties:
   density:
     value: 3.21
     unit: g/cm³
     confidence: 98
-    description: Density of sintered alpha-SiC at room temperature
-    min: 3.15
-    max: 3.22
+    description: Theoretical density of pure silicon carbide
+    min: 2.33
+    max: 7.13
   meltingPoint:
     value: 2730
     unit: °C
     confidence: 95
-    description: Decomposition temperature rather than true melting point
-    min: 2700
-    max: 2800
+    description: Decomposition temperature under normal pressure
+    min: null
+    max: null
   thermalConductivity:
     value: 120
     unit: W/m·K
     confidence: 92
-    description: Thermal conductivity of high-purity SiC at 25°C
-    min: 80
-    max: 180
+    description: Thermal conductivity at room temperature for high-purity SiC
+    min: 0.2
+    max: 156
   hardness:
-    value: 2800
-    unit: kg/mm² (Vickers)
+    value: 28
+    unit: GPa
     confidence: 92
-    description: Vickers hardness at room temperature
-    min: 2500
-    max: 3000
+    description: Vickers hardness (HV)
+    min: 2
+    max: 7
   youngsModulus:
     value: 410
     unit: GPa
     confidence: 95
-    description: Elastic modulus of sintered SiC
-    min: 400
-    max: 450
+    description: Young's modulus of elasticity
+    min: 5
+    max: 190
   thermalExpansion:
     value: 4.3
     unit: ×10⁻⁶/K
     confidence: 90
     description: Coefficient of thermal expansion (20-1000°C)
-    min: 4.0
-    max: 4.6
-  thermalDiffusivity:
-    value: 65
-    unit: mm²/s
-    confidence: 88
-    description: Thermal diffusivity at room temperature
-    min: 45
-    max: 85
+    min: 2.6
+    max: 19.7
   specificHeat:
-    value: 670
+    value: 750
     unit: J/kg·K
+    confidence: 88
+    description: Specific heat capacity at room temperature
+    min: 0.3
+    max: 1.6
+  thermalDiffusivity:
+    value: 50
+    unit: mm²/s
     confidence: 85
-    description: Specific heat capacity at 25°C
-    min: 650
-    max: 690
+    description: Thermal diffusivity at room temperature
+    min: 0.1
+    max: 90
   flexuralStrength:
     value: 400
     unit: MPa
     confidence: 90
     description: Room temperature flexural strength
-    min: 350
-    max: 550
+    min: null
+    max: null
   absorptionCoefficient:
-    value: 500
+    value: 100
     unit: cm⁻¹
     confidence: 85
-    description: Approximate absorption coefficient at 1064 nm
-    min: 300
-    max: 1000
+    description: Absorption coefficient at 1064 nm wavelength
+    min: null
+    max: null
   reflectivity:
     value: 0.25
     unit: dimensionless
     confidence: 82
     description: Reflectivity at 1064 nm wavelength
-    min: 0.2
-    max: 0.35
+    min: null
+    max: null
   ablationThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 80
-    description: Approximate ablation threshold for nanosecond pulses at 1064 nm
-    min: 1.5
-    max: 4.0
+    description: Laser ablation threshold for nanosecond pulses at 1064 nm
+    min: null
+    max: null
   oxidationResistance:
     value: 1600
     unit: °C
-    confidence: 90
+    confidence: 88
     description: Maximum service temperature in oxidizing atmosphere
-    min: 1500
-    max: 1650
+    min: null
+    max: null
   crystallineStructure:
-    value: Hexagonal (α-SiC) or Cubic (β-SiC)
-    unit: N/A
+    value: Hexagonal
+    unit: crystal system
     confidence: 95
-    description: Primary crystal structures
-    min: N/A
-    max: N/A
+    description: Most common alpha-SiC polytype (6H)
+    min: null
+    max: null
 applications:
 - laser cleaning
 - surface preparation
@@ -120,14 +120,13 @@ machineSettings:
     confidence: 88
     description: Near-IR wavelength with good SiC absorption for efficient contaminant
       removal
-    min: 1030
-    max: 1070
+    min: 532
+    max: 1064
   spotSize:
     value: 50
     unit: μm
     confidence: 84
-    description: Optimal beam diameter for precise cleaning with sufficient energy
-      density
+    description: Optimal beam diameter for precision cleaning of SiC surfaces
     min: 30
     max: 100
   repetitionRate:
@@ -135,47 +134,56 @@ machineSettings:
     unit: kHz
     confidence: 87
     description: High repetition rate for efficient area coverage while maintaining
-      cleaning quality
+      thermal control
     min: 50
     max: 200
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant ablation with
-      minimal thermal diffusion
+    description: Nanosecond pulse duration for controlled ablation of surface contaminants
     min: 5
     max: 20
   scanSpeed:
-    value: 500
+    value: 1000
     unit: mm/s
-    confidence: 82
-    description: Optimal scanning speed for uniform cleaning coverage
-    min: 200
-    max: 1000
+    confidence: 86
+    description: Scan speed balancing cleaning efficiency and thermal management
+    min: 500
+    max: 2000
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
-    confidence: 90
-    description: Minimum fluence required for effective contaminant removal from SiC
-      surface
+    confidence: 89
+    description: Threshold fluence for effective contaminant removal from SiC substrate
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for uniform cleaning without excessive heat
-      accumulation
+    description: Optimal pulse overlap for uniform cleaning coverage
     min: 40
     max: 70
   passCount:
     value: 3
     unit: passes
-    confidence: 81
-    description: Recommended number of passes for thorough cleaning of SiC surfaces
+    confidence: 82
+    description: Recommended number of passes for complete contaminant removal
     min: 1
     max: 5
+  laserType:
+    value: Nd:YAG
+    unit: n/a
+    confidence: 90
+    description: Fiber laser preferred for SiC cleaning applications
+    min: null
+    max: null
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
   id: 3
   name: Ikmanda Roswati

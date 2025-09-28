@@ -2,199 +2,201 @@ name: Float Glass
 category: Glass
 subcategory: Float Glass
 title: Float Glass Laser Cleaning
-description: Laser cleaning parameters for Float Glass
+description: Laser cleaning parameters for Borosilicate Glass
 materialProperties:
   density:
     value: 2.5
     unit: g/cm³
     confidence: 98
-    description: Typical density of standard soda-lime float glass
-    min: 2.45
-    max: 2.55
+    description: Typical density of soda-lime-silica float glass
+    min: 1.2
+    max: 7.6
   meltingPoint:
     value: 1000
     unit: °C
     confidence: 95
-    description: Approximate melting/softening temperature range
-    min: 950
-    max: 1050
+    description: Approximate melting point for soda-lime glass composition
+    min: null
+    max: null
   thermalConductivity:
     value: 1.0
     unit: W/m·K
     confidence: 92
-    description: Low thermal conductivity typical of glass materials
-    min: 0.9
-    max: 1.1
+    description: Low thermal conductivity characteristic of glass materials
+    min: 0.02
+    max: 4.2
   hardness:
     value: 6.0
     unit: Mohs
-    confidence: 88
+    confidence: 85
     description: Mohs hardness scale value
-    min: 5.5
-    max: 6.5
+    min: 4.5
+    max: 9
   youngsModulus:
     value: 70
     unit: GPa
-    confidence: 96
-    description: Elastic modulus of standard float glass
-    min: 68
-    max: 72
+    confidence: 95
+    description: Elastic modulus of float glass
+    min: 10
+    max: 95
   thermalExpansion:
     value: 8.5
     unit: 10⁻⁶/°C
-    confidence: 94
-    description: Coefficient of thermal expansion at 20-300°C
-    min: 8.0
-    max: 9.0
+    confidence: 90
+    description: Coefficient of thermal expansion for standard float glass
+    min: 0.1
+    max: 15
+  thermalDiffusivity:
+    value: 0.5
+    unit: mm²/s
+    confidence: 88
+    description: Thermal diffusivity at room temperature
+    min: 0.01
+    max: 1.8
   specificHeat:
     value: 840
     unit: J/kg·K
     confidence: 90
-    description: Specific heat capacity at room temperature
-    min: 800
-    max: 880
+    description: Specific heat capacity of soda-lime glass
+    min: 0.5
+    max: 1
   flexuralStrength:
     value: 50
     unit: MPa
-    confidence: 85
-    description: Bending strength of pristine glass
-    min: 40
-    max: 70
+    confidence: 88
+    description: Bending strength of annealed float glass
+    min: null
+    max: null
   refractiveIndex:
     value: 1.52
     unit: dimensionless
     confidence: 98
     description: Refractive index at 589 nm wavelength
-    min: 1.51
-    max: 1.53
+    min: null
+    max: null
+  transmissivity:
+    value: 92
+    unit: '%'
+    confidence: 95
+    description: Visible light transmission for clear float glass
+    min: null
+    max: null
   absorptionCoefficient:
     value: 0.1
     unit: cm⁻¹
-    confidence: 82
-    description: Approximate absorption coefficient for visible light
-    min: 0.05
-    max: 0.5
+    confidence: 85
+    description: Approximate absorption coefficient in visible spectrum
+    min: null
+    max: null
   ablationThreshold:
     value: 5.0
     unit: J/cm²
     confidence: 80
-    description: Approximate laser ablation threshold for nanosecond pulses
-    min: 2.0
-    max: 10.0
+    description: Estimated laser ablation threshold for nanosecond pulses
+    min: null
+    max: null
   laserDamageThreshold:
-    value: 15.0
+    value: 10.0
     unit: J/cm²
-    confidence: 78
-    description: Damage threshold for short pulse lasers
-    min: 8.0
-    max: 25.0
-  thermalDiffusivity:
-    value: 0.48
-    unit: mm²/s
-    confidence: 89
-    description: Thermal diffusivity calculated from conductivity, density, and specific
-      heat
-    min: 0.45
-    max: 0.52
+    confidence: 82
+    description: Typical damage threshold for pulsed laser systems
+    min: null
+    max: null
   chemicalStability:
-    value: High
-    unit: qualitative
+    value: 85
+    unit: '% resistance'
     confidence: 90
-    description: Resistance to most chemicals except strong alkalis and hydrofluoric
-      acid
-    min: Moderate
-    max: Very High
+    description: General chemical resistance to common solvents and mild acids
+    min: null
+    max: null
   surfaceRoughness:
     value: 0.5
-    unit: nm RMS
+    unit: nm Ra
     confidence: 92
     description: Typical surface roughness of pristine float glass
-    min: 0.2
-    max: 1.0
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Semiconductor: Ultra-precise cleaning for semiconductor manufacturing'
+- 'Manufacturing: Industrial surface preparation and contamination removal'
+- 'Electronics: Precision cleaning of electronic components and circuit boards'
 machineSettings:
   powerRange:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power range for Float Glass surface cleaning without
-      thermal damage
+    description: Optimal power range for Float Glass cleaning without thermal damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength for optimal Float Glass transmission with
-      surface absorption
-    min: 1030
-    max: 1070
+    description: Optimal wavelength for Float Glass processing with good absorption
+    min: 532
+    max: 1064
   spotSize:
-    value: 100
+    value: 50
     unit: μm
-    confidence: 85
-    description: Beam spot diameter for precise cleaning control
-    min: 50
-    max: 200
+    confidence: 90
+    description: Optimal spot size for precise cleaning resolution
+    min: 30
+    max: 100
   repetitionRate:
     value: 100
     unit: kHz
-    confidence: 90
+    confidence: 87
     description: Optimal repetition rate for efficient cleaning with thermal management
     min: 50
     max: 200
-  fluenceThreshold:
-    value: 2.5
-    unit: J/cm²
-    confidence: 88
-    description: Fluence threshold for effective contaminant removal without glass
-      substrate damage
-    min: 1.8
-    max: 3.2
-  energyDensity:
-    value: 3.0
-    unit: J/cm²
-    confidence: 85
-    description: Optimal energy density for Float Glass cleaning applications
-    min: 2.2
-    max: 3.8
   pulseWidth:
     value: 10
     unit: ns
-    confidence: 87
-    description: Nanosecond pulse width for controlled ablation of contaminants
+    confidence: 85
+    description: Optimal pulse width for controlled ablation of surface contaminants
     min: 5
     max: 20
   scanSpeed:
-    value: 1000
+    value: 500
     unit: mm/s
-    confidence: 86
+    confidence: 84
     description: Optimal scanning speed for uniform cleaning coverage
-    min: 500
-    max: 2000
+    min: 200
+    max: 1000
+  fluenceThreshold:
+    value: 2.5
+    unit: J/cm²
+    confidence: 89
+    description: Threshold fluence for effective contaminant removal without glass
+      damage
+    min: 1.5
+    max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 84
-    description: Beam overlap percentage for complete surface coverage
+    confidence: 86
+    description: Optimal overlap ratio for complete surface coverage
     min: 30
     max: 70
   passCount:
     value: 3
     unit: passes
-    confidence: 82
-    description: Number of passes for thorough contaminant removal
+    confidence: 83
+    description: Optimal number of passes for thorough cleaning
     min: 1
     max: 5
   laserType:
-    value: Fiber Laser
-    unit: N/A
-    confidence: 90
+    value: Nd:YAG
+    unit: n/a
+    confidence: 91
     description: Recommended laser type for Float Glass cleaning applications
     min: null
     max: null
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
   id: 1
   name: Yi-Chun Lin

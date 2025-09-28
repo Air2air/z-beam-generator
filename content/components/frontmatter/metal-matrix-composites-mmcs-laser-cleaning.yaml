@@ -2,110 +2,119 @@ name: MMCs
 category: Composite
 subcategory: Metal Matrix Composites (MMCs)
 title: MMCs Laser Cleaning
-description: Laser cleaning parameters for Metal Matrix Composites (MMCs)
+description: Laser cleaning parameters for Carbon Fiber Reinforced Polymer (MMCs)
 materialProperties:
   density:
     value: 2.85
     unit: g/cm³
-    confidence: 90
-    description: Typical density for aluminum-based MMCs with 10-20% ceramic reinforcement
-    min: 2.7
-    max: 3.2
+    confidence: 92
+    description: Typical density for aluminum-based MMCs with 20% SiC reinforcement
+    min: 0.5
+    max: 8
   meltingPoint:
     value: 640
     unit: °C
-    confidence: 85
-    description: Effective melting point considering ceramic reinforcement effects
-      on aluminum matrix
-    min: 580
-    max: 660
+    confidence: 88
+    description: Effective melting point considering reinforcement effects on aluminum
+      matrix
+    min: null
+    max: null
   thermalConductivity:
     value: 180
     unit: W/m·K
-    confidence: 88
-    description: Reduced thermal conductivity due to ceramic particle scattering
-    min: 120
-    max: 220
+    confidence: 90
+    description: Thermal conductivity of Al/SiC MMC with 20% reinforcement
+    min: 0.1
+    max: 400
   tensileStrength:
     value: 350
     unit: MPa
-    confidence: 90
-    description: Ultimate tensile strength for particle-reinforced aluminum MMCs
-    min: 280
-    max: 450
+    confidence: 89
+    description: Ultimate tensile strength of reinforced aluminum MMC
+    min: 50
+    max: 6000
   hardness:
     value: 120
     unit: HV
     confidence: 88
-    description: Vickers hardness for typical aluminum MMC compositions
-    min: 90
-    max: 160
+    description: Vickers hardness of SiC-reinforced aluminum composites
+    min: 20
+    max: 90
   youngsModulus:
-    value: 95
+    value: 110
     unit: GPa
-    confidence: 92
-    description: Elastic modulus enhanced by ceramic reinforcement
-    min: 80
-    max: 120
+    confidence: 91
+    description: Elastic modulus for structural aluminum MMCs
+    min: 5
+    max: 1000
   thermalExpansion:
-    value: 18.5
-    unit: 10⁻⁶/°C
-    confidence: 92
+    value: 16.5
+    unit: 10⁻⁶/K
+    confidence: 85
     description: Coefficient of thermal expansion for Al/SiC composites
-    min: 16.0
-    max: 22.0
+    min: -1
+    max: 50
   thermalDiffusivity:
     value: 65
     unit: mm²/s
-    confidence: 85
-    description: Thermal diffusivity at room temperature for typical MMC compositions
-    min: 45
-    max: 85
+    confidence: 82
+    description: Thermal diffusivity at room temperature for laser heating calculations
+    min: 0.1
+    max: 180
   specificHeat:
     value: 850
     unit: J/kg·K
-    confidence: 88
-    description: Specific heat capacity for aluminum-based MMCs
-    min: 800
-    max: 900
+    confidence: 87
+    description: Specific heat capacity of aluminum-based MMCs
+    min: 0.5
+    max: 2
   absorptionCoefficient:
     value: 0.65
     unit: dimensionless
-    confidence: 82
+    confidence: 80
     description: Laser absorption coefficient at 1064 nm wavelength
-    min: 0.45
-    max: 0.85
+    min: null
+    max: null
   reflectivity:
     value: 0.35
     unit: dimensionless
-    confidence: 85
+    confidence: 82
     description: Surface reflectivity for near-infrared laser wavelengths
-    min: 0.25
-    max: 0.5
+    min: null
+    max: null
   ablationThreshold:
     value: 2.5
     unit: J/cm²
-    confidence: 80
-    description: Laser ablation threshold for nanosecond pulses at 1064 nm
-    min: 1.8
-    max: 4.0
-  oxidationResistance:
-    value: High
-    unit: qualitative
     confidence: 85
-    description: Enhanced oxidation resistance due to ceramic reinforcement
-    min: Medium
-    max: Very High
+    description: Laser ablation threshold for nanosecond pulses at 1064 nm
+    min: null
+    max: null
+  oxidationResistance:
+    value: 0.8
+    unit: relative scale
+    confidence: 83
+    description: Relative oxidation resistance compared to pure aluminum
+    min: null
+    max: null
   porosity:
-    value: 1.5
+    value: 1.2
     unit: '%'
-    confidence: 88
+    confidence: 86
     description: Typical porosity level in well-processed MMCs
-    min: 0.5
-    max: 3.0
+    min: null
+    max: null
+  surfaceRoughness:
+    value: 0.8
+    unit: μm Ra
+    confidence: 84
+    description: Average surface roughness of as-processed MMC surfaces
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Aerospace: Precision cleaning of aerospace components and assemblies'
+- 'Medical: Sterilization and cleaning of medical devices and instruments'
+- 'Automotive: Paint removal and surface preparation for automotive parts'
+- 'Manufacturing: Industrial surface preparation and contamination removal'
 machineSettings:
   powerRange:
     value: 100
@@ -118,28 +127,28 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength for effective absorption by common MMC contaminants
+    description: Near-IR wavelength optimized for MMC material interaction
     min: null
     max: null
   spotSize:
-    value: 50
-    unit: μm
-    confidence: 84
-    description: Beam spot diameter for precise cleaning control on MMC surfaces
-    min: 30
-    max: 100
-  repetitionRate:
     value: 100
-    unit: kHz
-    confidence: 87
-    description: Pulse repetition rate for efficient cleaning with thermal management
+    unit: μm
+    confidence: 90
+    description: Beam spot diameter for precise cleaning control on MMC surfaces
     min: 50
     max: 200
+  repetitionRate:
+    value: 50
+    unit: kHz
+    confidence: 87
+    description: Optimal repetition rate for efficient cleaning with thermal management
+    min: 20
+    max: 100
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 88
-    description: Cleaning threshold fluence for contaminant removal from MMC surfaces
+    description: Threshold fluence for effective contaminant removal from MMC surfaces
     min: 1.8
     max: 3.5
   pulseWidth:
@@ -152,39 +161,45 @@ machineSettings:
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 86
+    confidence: 84
     description: Optimal scanning speed for uniform cleaning coverage
-    min: 300
-    max: 800
+    min: 200
+    max: 1000
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 83
+    confidence: 86
     description: Optimal pulse overlap for complete surface coverage without over-processing
-    min: 40
-    max: 60
+    min: 30
+    max: 70
   passCount:
-    value: 3
+    value: 2
     unit: passes
     confidence: 82
-    description: Recommended number of cleaning passes for thorough contaminant removal
-    min: 2
-    max: 5
+    description: Recommended number of passes for thorough cleaning
+    min: 1
+    max: 3
   energyDensity:
-    value: 12.7
+    value: 3.2
     unit: J/cm²
     confidence: 85
-    description: Calculated energy density based on power, spot size, and scan parameters
-    min: 8.5
-    max: 16.2
+    description: Optimal energy density for contaminant removal while preserving MMC
+      integrity
+    min: 2.0
+    max: 4.5
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
-  id: 4
-  name: Todd Dunning
-  sex: m
-  title: MA
-  country: United States (California)
-  expertise: Optical Materials for Laser Systems
-  image: /images/author/todd-dunning.jpg
+  id: 1
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg
 images:
   hero:
     alt: Metal Matrix Composites Mmcs surface undergoing laser cleaning showing precise
@@ -219,7 +234,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-author_id: 4
+author_id: 1
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues

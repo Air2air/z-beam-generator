@@ -2,133 +2,111 @@ name: CMCs
 category: Composite
 subcategory: Ceramic Matrix Composites (CMCs)
 title: CMCs Laser Cleaning
-description: Laser cleaning parameters for Ceramic Matrix Composites (CMCs)
+description: Laser cleaning parameters for Carbon Fiber Reinforced Polymer (CMCs)
 materialProperties:
   density:
     value: 2.8
     unit: g/cm³
-    confidence: 85
-    description: Typical density for SiC/SiC CMCs, varies with fiber content and matrix
-      composition
-    min: 2.5
-    max: 3.2
+    confidence: 95
+    description: Typical density for SiC/SiC ceramic matrix composites
+    min: 0.5
+    max: 8
   meltingPoint:
     value: 2700
     unit: °C
     confidence: 90
-    description: Approximate melting point for silicon carbide matrix, actual depends
-      on specific composition
-    min: 2400
-    max: 2830
+    description: Melting point of silicon carbide matrix component
+    min: null
+    max: null
   thermalConductivity:
     value: 25
     unit: W/m·K
-    confidence: 82
-    description: Thermal conductivity at room temperature, highly anisotropic depending
-      on fiber orientation
-    min: 15
-    max: 40
+    confidence: 88
+    description: Thermal conductivity at room temperature for C/SiC composites
+    min: 0.1
+    max: 400
   tensileStrength:
     value: 350
     unit: MPa
-    confidence: 88
-    description: Tensile strength parallel to fiber direction
-    min: 250
-    max: 500
+    confidence: 90
+    description: Tensile strength of continuous fiber reinforced CMCs
+    min: 50
+    max: 6000
   hardness:
     value: 25
     unit: GPa
-    confidence: 82
-    description: Vickers hardness of SiC matrix
+    confidence: 88
+    description: Vickers hardness of SiC matrix material
     min: 20
-    max: 30
+    max: 90
   youngsModulus:
-    value: 220
+    value: 250
     unit: GPa
-    confidence: 90
-    description: Elastic modulus in fiber direction
-    min: 180
-    max: 280
+    confidence: 92
+    description: Young's modulus for SiC/SiC composites
+    min: 5
+    max: 1000
   thermalExpansion:
     value: 4.5
-    unit: ×10⁻⁶/K
-    confidence: 88
-    description: Coefficient of thermal expansion at 20-1000°C range
-    min: 3.8
-    max: 5.2
+    unit: 10⁻⁶/K
+    confidence: 92
+    description: Coefficient of thermal expansion for SiC-based CMCs
+    min: -1
+    max: 50
   thermalDiffusivity:
-    value: 12
+    value: 12.5
     unit: mm²/s
-    confidence: 80
+    confidence: 85
     description: Thermal diffusivity at room temperature
-    min: 8
-    max: 18
-  specificHeat:
-    value: 750
-    unit: J/kg·K
-    confidence: 85
-    description: Specific heat capacity at room temperature
-    min: 650
-    max: 850
-  flexuralStrength:
-    value: 400
-    unit: MPa
-    confidence: 85
-    description: Flexural strength at room temperature
-    min: 300
-    max: 550
+    min: 0.1
+    max: 180
   absorptionCoefficient:
-    value: 0.8
-    unit: cm⁻¹
-    confidence: 78
-    description: Approximate absorption coefficient for 1064 nm laser wavelength
-    min: 0.5
-    max: 1.2
+    value: 0.85
+    unit: dimensionless
+    confidence: 82
+    description: Absorption coefficient for near-infrared laser wavelengths (1064
+      nm)
+    min: null
+    max: null
   reflectivity:
-    value: 0.4
+    value: 0.45
     unit: dimensionless
     confidence: 80
-    description: Reflectivity at 1064 nm wavelength
-    min: 0.3
-    max: 0.6
+    description: Reflectivity at 1064 nm laser wavelength
+    min: null
+    max: null
   ablationThreshold:
     value: 2.5
     unit: J/cm²
-    confidence: 75
-    description: Approximate laser ablation threshold for nanosecond pulses at 1064
-      nm
-    min: 1.5
-    max: 4.0
-  laserDamageThreshold:
-    value: 15
-    unit: MW/cm²
-    confidence: 78
-    description: Laser-induced damage threshold for continuous wave lasers
-    min: 10
-    max: 25
-  porosity:
-    value: 8
-    unit: '%'
     confidence: 85
+    description: Laser ablation threshold for nanosecond pulses at 1064 nm
+    min: null
+    max: null
+  porosity:
+    value: 12
+    unit: '%'
+    confidence: 90
     description: Typical porosity level in CVI-processed CMCs
-    min: 5
-    max: 15
+    min: null
+    max: null
   oxidationResistance:
     value: 1600
     unit: °C
     confidence: 88
     description: Maximum service temperature in oxidizing environments
-    min: 1400
-    max: 1800
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Manufacturing: Industrial surface preparation and contamination removal'
+- 'Aerospace: Precision cleaning of aerospace components and assemblies'
+- 'Automotive: Paint removal and surface preparation for automotive parts'
+- 'Medical: Sterilization and cleaning of medical devices and instruments'
 machineSettings:
   powerRange:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for CMC surface cleaning without substrate
+    description: Optimal average power range for CMC surface cleaning without thermal
       damage
     min: 80
     max: 120
@@ -158,13 +136,13 @@ machineSettings:
     unit: J/cm²
     confidence: 88
     description: Threshold fluence for effective contaminant removal from CMC surfaces
-    min: 1.8
-    max: 3.2
+    min: 1.5
+    max: 4.0
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Optimal pulse duration for controlled ablation of surface contaminants
+    description: Optimal pulse duration for controlled ablation of contaminants
     min: 5
     max: 20
   scanSpeed:
@@ -172,30 +150,35 @@ machineSettings:
     unit: mm/s
     confidence: 86
     description: Optimal scanning speed for uniform cleaning coverage
-    min: 300
-    max: 800
+    min: 200
+    max: 1000
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for complete surface coverage without over-processing
-    min: 40
-    max: 60
+    description: Optimal pulse overlap for complete surface coverage
+    min: 30
+    max: 70
   passCount:
     value: 2
     unit: passes
     confidence: 82
     description: Recommended number of passes for thorough cleaning
     min: 1
-    max: 3
+    max: 4
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
-  id: 4
-  name: Todd Dunning
-  sex: m
-  title: MA
-  country: United States (California)
-  expertise: Optical Materials for Laser Systems
-  image: /images/author/todd-dunning.jpg
+  id: 1
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg
 images:
   hero:
     alt: Ceramic Matrix Composites Cmcs surface undergoing laser cleaning showing
@@ -230,7 +213,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-author_id: 4
+author_id: 1
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues

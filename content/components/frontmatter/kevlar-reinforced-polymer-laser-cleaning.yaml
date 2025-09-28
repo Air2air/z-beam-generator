@@ -2,188 +2,177 @@ name: Kevlar-Reinforced Polymer
 category: Composite
 subcategory: Kevlar-Reinforced Polymer
 title: Kevlar-Reinforced Polymer Laser Cleaning
-description: Laser cleaning parameters for Kevlar-Reinforced Polymer
+description: Laser cleaning parameters for Carbon Fiber Reinforced Polymer
 materialProperties:
   density:
     value: 1.44
     unit: g/cm³
     confidence: 95
-    description: Typical density for Kevlar-epoxy composites with 50-60% fiber volume
-      fraction
-    min: 1.38
-    max: 1.5
+    description: Typical density of Kevlar-reinforced polymer composites
+    min: 0.5
+    max: 8
   meltingPoint:
-    value: N/A (Thermoset Decomposition)
+    value: 500
     unit: °C
-    confidence: 90
-    description: Kevlar fibers degrade at ~500°C, epoxy matrix decomposes at 300-400°C
-      without melting
-    min: 300
-    max: 500
+    confidence: 85
+    description: Decomposition temperature rather than melting point (polymer matrix
+      chars)
+    min: null
+    max: null
   thermalConductivity:
-    value: 0.5
+    value: 0.52
     unit: W/m·K
     confidence: 88
-    description: Anisotropic thermal conductivity, lower in transverse direction
-    min: 0.3
-    max: 0.8
+    description: Low thermal conductivity typical of polymer composites
+    min: 0.1
+    max: 400
   tensileStrength:
     value: 1240
     unit: MPa
-    confidence: 94
-    description: Longitudinal tensile strength with 60% fiber volume fraction
-    min: 1000
-    max: 1400
-  youngsModulus:
-    value: 76
-    unit: GPa
-    confidence: 93
-    description: Elastic modulus in fiber direction
-    min: 70
-    max: 83
-  thermalExpansion:
-    value: -4.0
-    unit: 10⁻⁶/°C
     confidence: 92
-    description: Negative thermal expansion coefficient along fiber direction due
-      to Kevlar's molecular structure
-    min: -6.0
-    max: -2.0
-  specificHeat:
-    value: 1100
-    unit: J/kg·K
-    confidence: 85
-    description: Specific heat capacity at room temperature
-    min: 1000
-    max: 1200
-  absorptionCoefficient:
-    value: 8500
-    unit: m⁻¹
+    description: Tensile strength along fiber direction
+    min: 50
+    max: 6000
+  youngsModulus:
+    value: 83
+    unit: GPa
+    confidence: 94
+    description: Elastic modulus along fiber orientation
+    min: 5
+    max: 1000
+  thermalExpansion:
+    value: 20
+    unit: μm/m·°C
     confidence: 82
-    description: Average absorption coefficient for near-IR lasers (1064 nm)
-    min: 6000
-    max: 11000
-  reflectivity:
-    value: 0.35
+    description: Coefficient of thermal expansion along fiber direction
+    min: -1
+    max: 50
+  specificHeat:
+    value: 1420
+    unit: J/kg·K
+    confidence: 90
+    description: Specific heat capacity at room temperature
+    min: 0.5
+    max: 2
+  absorptionCoefficient:
+    value: 0.85
     unit: dimensionless
     confidence: 80
-    description: Reflectivity at 1064 nm wavelength
-    min: 0.25
-    max: 0.45
+    description: Typical absorption coefficient for near-infrared lasers (1064 nm)
+    min: null
+    max: null
+  reflectivity:
+    value: 0.12
+    unit: dimensionless
+    confidence: 82
+    description: Reflectivity at common laser wavelengths (1064 nm)
+    min: null
+    max: null
   ablationThreshold:
-    value: 1.2
+    value: 2.5
     unit: J/cm²
     confidence: 85
-    description: Laser fluence threshold for material removal at 1064 nm, 10 ns pulse
-      duration
-    min: 0.8
-    max: 1.6
+    description: Laser ablation threshold for nanosecond pulses at 1064 nm
+    min: null
+    max: null
   oxidationResistance:
-    value: Excellent
-    unit: qualitative
-    confidence: 90
-    description: High resistance to oxidative degradation up to 200°C
-    min: Good
-    max: Excellent
+    value: 300
+    unit: °C
+    confidence: 88
+    description: Maximum continuous service temperature in air before oxidation
+    min: null
+    max: null
   surfaceRoughness:
     value: 1.8
     unit: μm Ra
-    confidence: 88
-    description: Typical as-molded surface roughness
-    min: 0.5
-    max: 3.5
+    confidence: 85
+    description: Typical as-manufactured surface roughness
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Automotive: Paint removal and surface preparation for automotive parts'
+- 'Manufacturing: Industrial surface preparation and contamination removal'
+- 'Medical: Sterilization and cleaning of medical devices and instruments'
 machineSettings:
   powerRange:
-    value: 100
+    value: 45
     unit: W
-    confidence: 92
+    confidence: 90
     description: Optimal average power for Kevlar-Reinforced Polymer surface cleaning
-      without thermal degradation
-    min: 80
-    max: 120
+      without thermal damage
+    min: 30
+    max: 60
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength for optimal absorption by polymer matrix
-      while minimizing Kevlar fiber damage
+    description: Near-IR wavelength optimized for Kevlar absorption while minimizing
+      polymer matrix damage
     min: 1030
-    max: 1070
+    max: 1080
   spotSize:
-    value: 100
+    value: 80
     unit: μm
-    confidence: 90
-    description: Beam spot diameter optimized for precision cleaning of Kevlar composite
-      surfaces
+    confidence: 82
+    description: Beam spot diameter for precise cleaning control
     min: 50
-    max: 200
+    max: 120
   repetitionRate:
-    value: 100
+    value: 50
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning coverage while maintaining
-      thermal management
-    min: 50
-    max: 200
+    description: High repetition rate for efficient cleaning with minimal heat accumulation
+    min: 20
+    max: 100
   pulseWidth:
-    value: 10
+    value: 15
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for controlled ablation of surface contaminants
-      without excessive heat accumulation
-    min: 5
-    max: 20
+    description: Short pulse duration for controlled ablation of surface contaminants
+    min: 10
+    max: 25
   scanSpeed:
-    value: 1000
+    value: 500
     unit: mm/s
-    confidence: 85
-    description: Optimal scanning speed for uniform cleaning without excessive dwell
-      time
-    min: 500
-    max: 2000
+    confidence: 84
+    description: Optimal scanning speed for uniform cleaning coverage
+    min: 300
+    max: 800
   fluenceThreshold:
-    value: 2.5
+    value: 1.2
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal while preserving
-      Kevlar fiber integrity
-    min: 1.5
-    max: 4.0
+    description: Fluence threshold for effective contaminant removal without substrate
+      damage
+    min: 0.8
+    max: 1.8
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 86
-    description: Optimal beam overlap for complete coverage without excessive energy
-      deposition
+    confidence: 83
+    description: Optimal overlap between adjacent scan lines for complete coverage
     min: 40
-    max: 70
+    max: 60
   passCount:
     value: 2
     unit: passes
-    confidence: 88
-    description: Recommended number of passes for thorough cleaning with minimal substrate
-      impact
+    confidence: 86
+    description: Recommended number of passes for thorough cleaning
     min: 1
     max: 3
-  laserType:
-    value: Fiber Laser
-    unit: N/A
-    confidence: 91
-    description: Fiber laser system preferred for stability, reliability, and wavelength
-      compatibility with Kevlar composites
-    min: null
-    max: null
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
-  id: 3
-  name: Ikmanda Roswati
-  sex: m
+  id: 1
+  name: Yi-Chun Lin
+  sex: f
   title: Ph.D.
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  image: /images/author/ikmanda-roswati.jpg
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg
 images:
   hero:
     alt: Kevlar-Reinforced Polymer surface undergoing laser cleaning showing precise
@@ -218,7 +207,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-author_id: 3
+author_id: 1
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues

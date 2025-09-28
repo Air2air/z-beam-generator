@@ -2,123 +2,118 @@ name: Silicon Nitride
 category: Ceramic
 subcategory: Silicon Nitride
 title: Silicon Nitride Laser Cleaning
-description: Laser cleaning parameters for Silicon Nitride
+description: Laser cleaning parameters for Alumina
 materialProperties:
   density:
     value: 3.2
     unit: g/cm³
     confidence: 95
-    description: Typical density for hot-pressed silicon nitride
-    min: 3.1
-    max: 3.3
+    description: Typical density for sintered silicon nitride
+    min: 2.2
+    max: 19.3
   meltingPoint:
     value: 1900
     unit: °C
     confidence: 90
     description: Decomposition temperature rather than true melting point
-    min: 1850
-    max: 1950
+    min: null
+    max: null
   thermalConductivity:
     value: 30
     unit: W/m·K
     confidence: 88
     description: Room temperature thermal conductivity for high-purity Si3N4
-    min: 25
-    max: 35
+    min: 0.03
+    max: 2000.0
   hardness:
-    value: 14
+    value: 15
     unit: GPa
     confidence: 92
     description: Vickers hardness at room temperature
-    min: 13
-    max: 15
+    min: 3.0
+    max: 10.0
   youngsModulus:
     value: 310
     unit: GPa
     confidence: 94
     description: Elastic modulus of dense silicon nitride
-    min: 300
-    max: 320
+    min: 150
+    max: 700
   thermalExpansion:
     value: 3.2
     unit: ×10⁻⁶/°C
     confidence: 92
     description: Coefficient of thermal expansion at 20-1000°C
-    min: 3.0
-    max: 3.4
+    min: 0.1
+    max: 14
   specificHeat:
     value: 710
     unit: J/kg·K
     confidence: 85
     description: Specific heat capacity at room temperature
-    min: 680
-    max: 740
-  thermalDiffusivity:
-    value: 13.2
-    unit: mm²/s
-    confidence: 82
-    description: Thermal diffusivity at room temperature
-    min: 12.0
-    max: 14.5
+    min: 0.4
+    max: 1.1
   flexuralStrength:
     value: 850
     unit: MPa
     confidence: 88
     description: Room temperature flexural strength
-    min: 800
-    max: 900
+    min: null
+    max: null
   absorptionCoefficient:
-    value: 0.8
+    value: 50
     unit: cm⁻¹
     confidence: 80
-    description: Approximate absorption coefficient for visible to near-IR wavelengths
-    min: 0.5
-    max: 1.2
+    description: Approximate absorption coefficient for 1064 nm laser wavelength
+    min: null
+    max: null
   reflectivity:
-    value: 0.15
+    value: 0.25
     unit: dimensionless
-    confidence: 78
-    description: Typical reflectivity at 1064 nm wavelength
-    min: 0.12
-    max: 0.18
+    confidence: 82
+    description: Reflectivity at 1064 nm wavelength
+    min: null
+    max: null
   ablationThreshold:
     value: 2.5
     unit: J/cm²
-    confidence: 75
-    description: Estimated ablation threshold for nanosecond pulses at 1064 nm
-    min: 2.0
-    max: 3.0
+    confidence: 85
+    description: Approximate ablation threshold for nanosecond pulses at 1064 nm
+    min: null
+    max: null
   laserDamageThreshold:
     value: 15
-    unit: GW/cm²
-    confidence: 70
-    description: Approximate laser-induced damage threshold
-    min: 12
-    max: 18
+    unit: J/cm²
+    confidence: 83
+    description: Damage threshold for short pulse lasers
+    min: null
+    max: null
+  oxidationResistance:
+    value: 1400
+    unit: °C
+    confidence: 90
+    description: Maximum service temperature in oxidizing environments
+    min: null
+    max: null
   crystallineStructure:
     value: Hexagonal
     unit: crystal system
-    confidence: 98
-    description: α-Si3N4 and β-Si3N4 both have hexagonal crystal structures
-    min: N/A
-    max: N/A
+    confidence: 95
+    description: Primary crystal structure of silicon nitride (α and β phases)
+    min: null
+    max: null
   porosity:
-    value: 0.5
+    value: 2
     unit: '%'
-    confidence: 85
-    description: Typical porosity for high-density silicon nitride
-    min: 0.1
-    max: 1.0
-  oxidationResistance:
-    value: Excellent
-    unit: qualitative
-    confidence: 90
-    description: Forms protective SiO2 layer up to 1400°C
-    min: N/A
-    max: N/A
+    confidence: 88
+    description: Typical porosity for high-quality sintered silicon nitride
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Electronics: Precision cleaning of electronic components and circuit boards'
+- 'Semiconductor: Ultra-precise cleaning for semiconductor manufacturing'
+- 'Art Conservation: Delicate cleaning of artwork and cultural artifacts'
+- 'Jewelry: Precision cleaning and polishing of precious metal jewelry'
 machineSettings:
   powerRange:
     value: 100
@@ -132,22 +127,23 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimized for Silicon Nitride absorption characteristics
+    description: Near-IR wavelength providing good absorption in Silicon Nitride with
+      minimal subsurface damage
     min: 1030
     max: 1070
   spotSize:
     value: 50
     unit: μm
-    confidence: 90
-    description: Beam spot diameter for precise cleaning control
+    confidence: 84
+    description: Beam spot diameter for precise cleaning with adequate energy density
     min: 30
     max: 100
   repetitionRate:
     value: 100
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning with minimal thermal
-      accumulation
+    description: High repetition rate for efficient cleaning coverage while maintaining
+      thermal control
     min: 50
     max: 200
   pulseWidth:
@@ -160,40 +156,49 @@ machineSettings:
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 84
-    description: Optimal scanning speed for uniform cleaning coverage
+    confidence: 86
+    description: Optimal scanning speed for uniform cleaning with sufficient overlap
     min: 200
     max: 1000
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without substrate
-      damage
+    description: Minimum fluence required for effective contaminant removal from Silicon
+      Nitride
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 86
-    description: Optimal pulse overlap for uniform cleaning efficiency
+    confidence: 83
+    description: Optimal pulse overlap for uniform cleaning without excessive heat
+      accumulation
     min: 30
     max: 70
   passCount:
     value: 3
     unit: passes
-    confidence: 83
+    confidence: 82
     description: Recommended number of passes for complete contaminant removal
     min: 1
     max: 5
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+- EPA Clean Air Act Compliance
+- ASTM C848 - Standard Specification for High Alumina Refractory Brick
+- ISO 23146 - Technical Ceramics
 author_object:
-  id: 1
-  name: Yi-Chun Lin
-  sex: f
+  id: 2
+  name: Alessandro Moretti
+  sex: m
   title: Ph.D.
-  country: Taiwan
-  expertise: Laser Materials Processing
-  image: /images/author/yi-chun-lin.jpg
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  image: /images/author/alessandro-moretti.jpg
 images:
   hero:
     alt: Silicon Nitride surface undergoing laser cleaning showing precise contamination
@@ -228,7 +233,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-author_id: 1
+author_id: 2
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues

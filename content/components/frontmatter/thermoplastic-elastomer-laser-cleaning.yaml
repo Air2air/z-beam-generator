@@ -2,109 +2,97 @@ name: Thermoplastic Elastomer
 category: Composite
 subcategory: Thermoplastic Elastomer
 title: Thermoplastic Elastomer Laser Cleaning
-description: Laser cleaning parameters for Thermoplastic Elastomer
+description: Laser cleaning parameters for Carbon Fiber Reinforced Polymer
 materialProperties:
   density:
     value: 0.95
     unit: g/cm³
     confidence: 92
-    description: Typical density range for common TPEs (TPU, TPS, TPO types)
-    min: 0.85
-    max: 1.25
+    description: Typical density range for common TPEs like SBS or SEBS compounds
+    min: 0.5
+    max: 8
   meltingPoint:
-    value: 180
+    value: 160
     unit: °C
     confidence: 88
-    description: Processing temperature range for most TPEs (varies by specific type)
-    min: 120
-    max: 240
+    description: Processing temperature range for styrenic TPEs
+    min: null
+    max: null
   thermalConductivity:
-    value: 0.22
+    value: 0.25
     unit: W/m·K
-    confidence: 90
+    confidence: 85
     description: Low thermal conductivity typical of polymeric materials
-    min: 0.18
-    max: 0.28
+    min: 0.1
+    max: 400
   tensileStrength:
-    value: 25
+    value: 15
     unit: MPa
     confidence: 90
-    description: Ultimate tensile strength for medium-grade TPEs
-    min: 5
-    max: 50
+    description: Typical tensile strength for medium-hardness TPEs
+    min: 50
+    max: 6000
   hardness:
     value: 75
     unit: Shore A
-    confidence: 92
-    description: Typical hardness range for flexible TPE applications
-    min: 30
-    max: 95
+    confidence: 93
+    description: Typical hardness for general-purpose TPE applications
+    min: 20
+    max: 90
   youngsModulus:
-    value: 150
+    value: 50
     unit: MPa
-    confidence: 88
+    confidence: 89
     description: Elastic modulus showing flexible characteristics
-    min: 10
+    min: 5
     max: 1000
   thermalExpansion:
     value: 150
-    unit: ×10⁻⁶/°C
-    confidence: 85
+    unit: 10⁻⁶/°C
+    confidence: 87
     description: Coefficient of linear thermal expansion for TPE materials
-    min: 100
-    max: 200
+    min: -1
+    max: 50
   specificHeat:
     value: 1800
     unit: J/kg·K
-    confidence: 87
+    confidence: 84
     description: Specific heat capacity at room temperature
-    min: 1500
-    max: 2200
+    min: 0.5
+    max: 2
   absorptionCoefficient:
     value: 8500
     unit: cm⁻¹
     confidence: 82
-    description: Absorption coefficient for near-IR wavelengths (1064 nm)
-    min: 5000
-    max: 15000
+    description: Absorption coefficient at 1064 nm wavelength
+    min: null
+    max: null
   reflectivity:
     value: 0.08
-    unit: fraction
+    unit: dimensionless
     confidence: 80
-    description: Reflectivity at common laser wavelengths (low reflectivity)
-    min: 0.05
-    max: 0.15
+    description: Reflectivity at near-infrared laser wavelengths
+    min: null
+    max: null
   ablationThreshold:
     value: 0.8
     unit: J/cm²
-    confidence: 85
+    confidence: 81
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
-    min: 0.3
-    max: 2.0
+    min: null
+    max: null
   oxidationResistance:
-    value: Moderate
-    unit: qualitative
-    confidence: 88
-    description: Resistance to oxidative degradation at elevated temperatures
-    min: Poor
-    max: Good
-  surfaceRoughness:
-    value: 1.2
-    unit: μm Ra
-    confidence: 85
-    description: Typical surface roughness for molded TPE components
-    min: 0.5
-    max: 3.0
-  degradationTemperature:
-    value: 250
+    value: 120
     unit: °C
     confidence: 86
-    description: Onset of thermal degradation for most TPE formulations
-    min: 200
-    max: 300
+    description: Maximum continuous service temperature before oxidation degradation
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Aerospace: Precision cleaning of aerospace components and assemblies'
+- 'Medical: Sterilization and cleaning of medical devices and instruments'
+- 'Automotive: Paint removal and surface preparation for automotive parts'
+- 'Manufacturing: Industrial surface preparation and contamination removal'
 machineSettings:
   powerRange:
     value: 100
@@ -117,92 +105,93 @@ machineSettings:
   wavelength:
     value: 1064
     unit: nm
-    confidence: 89
-    description: Optimal wavelength for Thermoplastic Elastomer processing with good
-      absorption
+    confidence: 88
+    description: Optimal wavelength for TPE processing with minimal substrate damage
     min: 532
     max: 1064
   spotSize:
     value: 50
     unit: μm
     confidence: 85
-    description: Optimal spot size for precision cleaning of Thermoplastic Elastomer
-      surfaces
+    description: Optimal spot size for precision cleaning of TPE surfaces
     min: 30
-    max: 80
+    max: 100
   repetitionRate:
-    value: 100
+    value: 50
     unit: kHz
     confidence: 90
-    description: Optimal repetition rate for efficient cleaning while maintaining
-      thermal control
-    min: 50
-    max: 200
+    description: Optimal repetition rate for efficient TPE surface processing
+    min: 20
+    max: 100
   fluenceThreshold:
     value: 0.8
     unit: J/cm²
     confidence: 88
-    description: Minimum fluence required for effective contaminant removal
+    description: Threshold fluence for effective contaminant removal from TPE surface
     min: 0.5
     max: 1.2
   energyDensity:
     value: 1.5
     unit: J/cm²
     confidence: 85
-    description: Optimal energy density for controlled ablation of surface contaminants
+    description: Optimal energy density for TPE surface cleaning applications
     min: 1.0
     max: 2.0
   pulseWidth:
     value: 10
     unit: ns
     confidence: 87
-    description: Optimal pulse width for Thermoplastic Elastomer ablation with minimal
-      heat diffusion
+    description: Optimal pulse width for controlled ablation of contaminants
     min: 5
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 88
-    description: Optimal scanning speed for uniform cleaning coverage
+    description: Optimal scanning speed for uniform TPE surface treatment
     min: 300
     max: 800
   passCount:
     value: 3
     unit: passes
-    confidence: 86
-    description: Optimal number of passes for complete contaminant removal
+    confidence: 82
+    description: Recommended number of passes for complete contaminant removal
     min: 1
     max: 5
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 84
-    description: Optimal overlap ratio between adjacent laser tracks
+    confidence: 85
+    description: Optimal overlap ratio for uniform TPE surface coverage
     min: 30
     max: 70
   dwellTime:
     value: 100
     unit: μs
-    confidence: 82
-    description: Optimal dwell time per spot for effective cleaning
+    confidence: 83
+    description: Optimal dwell time per spot for effective TPE cleaning
     min: 50
     max: 200
   laserType:
     value: Fiber Laser
     unit: N/A
-    confidence: 91
-    description: Recommended laser type for Thermoplastic Elastomer cleaning applications
+    confidence: 90
+    description: Recommended laser type for TPE cleaning applications
     min: null
     max: null
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
-  id: 2
-  name: Alessandro Moretti
-  sex: m
+  id: 1
+  name: Yi-Chun Lin
+  sex: f
   title: Ph.D.
-  country: Italy
-  expertise: Laser-Based Additive Manufacturing
-  image: /images/author/alessandro-moretti.jpg
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg
 images:
   hero:
     alt: Thermoplastic Elastomer surface undergoing laser cleaning showing precise
@@ -237,7 +226,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-author_id: 2
+author_id: 1
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues

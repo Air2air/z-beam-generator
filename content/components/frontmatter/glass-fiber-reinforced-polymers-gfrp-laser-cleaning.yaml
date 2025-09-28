@@ -2,140 +2,140 @@ name: GFRP
 category: Composite
 subcategory: Glass Fiber Reinforced Polymers (GFRP)
 title: GFRP Laser Cleaning
-description: Laser cleaning parameters for Glass Fiber Reinforced Polymers (GFRP)
+description: Laser cleaning parameters for Carbon Fiber Reinforced Polymer (GFRP)
 materialProperties:
   density:
     value: 1.8
     unit: g/cm³
     confidence: 95
-    description: Typical density for GFRP composites (55-65% glass fiber content)
-    min: 1.7
-    max: 2.1
+    description: Typical density for GFRP composites with 50-60% glass fiber content
+    min: 0.5
+    max: 8
   meltingPoint:
-    value: N/A (Decomposes)
+    value: 1150
     unit: °C
     confidence: 90
-    description: GFRP decomposes rather than melts; polymer matrix degrades at 300-400°C
-    min: 300
-    max: 400
+    description: Glass fiber softening point (polymer matrix decomposes before melting)
+    min: null
+    max: null
   thermalConductivity:
-    value: 0.3
+    value: 0.35
     unit: W/m·K
     confidence: 88
-    description: Low thermal conductivity typical of polymer composites
-    min: 0.2
-    max: 0.4
+    description: Through-thickness thermal conductivity of typical GFRP laminate
+    min: 0.1
+    max: 400
   tensileStrength:
     value: 350
     unit: MPa
     confidence: 92
-    description: Tensile strength along fiber direction
-    min: 300
-    max: 400
+    description: Tensile strength along fiber direction for 60% fiber volume fraction
+    min: 50
+    max: 6000
   youngsModulus:
     value: 25
     unit: GPa
-    confidence: 90
+    confidence: 94
     description: Elastic modulus in fiber direction
-    min: 20
-    max: 30
+    min: 5
+    max: 1000
   thermalExpansion:
-    value: 20
-    unit: ×10⁻⁶/°C
+    value: 25
+    unit: μm/m·°C
     confidence: 85
     description: Coefficient of thermal expansion in fiber direction
-    min: 15
-    max: 25
-  specificHeat:
-    value: 1000
-    unit: J/kg·K
-    confidence: 82
-    description: Specific heat capacity at room temperature
-    min: 900
-    max: 1100
-  flexuralStrength:
-    value: 400
-    unit: MPa
-    confidence: 88
-    description: Flexural/bending strength
-    min: 350
-    max: 450
-  absorptionCoefficient:
-    value: 0.8
-    unit: dimensionless
-    confidence: 85
-    description: Absorption coefficient for near-IR lasers (1064 nm)
-    min: 0.7
-    max: 0.9
-  reflectivity:
-    value: 0.15
-    unit: dimensionless
-    confidence: 82
-    description: Reflectivity at 1064 nm wavelength
-    min: 0.1
-    max: 0.2
-  ablationThreshold:
-    value: 1.5
-    unit: J/cm²
-    confidence: 80
-    description: Laser ablation threshold for nanosecond pulses at 1064 nm
-    min: 1.0
-    max: 2.0
+    min: -1
+    max: 50
   thermalDiffusivity:
-    value: 0.17
+    value: 0.22
     unit: mm²/s
+    confidence: 82
+    description: Thermal diffusivity at room temperature
+    min: 0.1
+    max: 180
+  specificHeat:
+    value: 1100
+    unit: J/kg·K
+    confidence: 87
+    description: Specific heat capacity of epoxy-based GFRP
+    min: 0.5
+    max: 2
+  absorptionCoefficient:
+    value: 8500
+    unit: m⁻¹
+    confidence: 80
+    description: Absorption coefficient at 1064 nm wavelength
+    min: null
+    max: null
+  reflectivity:
+    value: 0.35
+    unit: dimensionless
+    confidence: 82
+    description: Surface reflectivity at 1064 nm for typical GFRP surface
+    min: null
+    max: null
+  ablationThreshold:
+    value: 1.2
+    unit: J/cm²
+    confidence: 85
+    description: Laser ablation threshold for nanosecond pulses at 1064 nm
+    min: null
+    max: null
+  laserDamageThreshold:
+    value: 0.8
+    unit: J/cm²
     confidence: 83
-    description: Thermal diffusivity affecting heat propagation during laser processing
-    min: 0.15
-    max: 0.19
-  degradationTemperature:
+    description: Damage threshold for continuous wave laser cleaning
+    min: null
+    max: null
+  decompositionTemperature:
     value: 350
     unit: °C
     confidence: 90
-    description: Temperature at which polymer matrix begins significant degradation
-    min: 300
-    max: 400
-  glassTransitionTemperature:
-    value: 120
-    unit: °C
+    description: Onset temperature for polymer matrix thermal decomposition
+    min: null
+    max: null
+  surfaceRoughness:
+    value: 2.5
+    unit: μm
     confidence: 88
-    description: Glass transition temperature of typical epoxy matrix
-    min: 100
-    max: 140
+    description: Typical surface roughness (Ra) of molded GFRP surfaces
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Automotive: Paint removal and surface preparation for automotive parts'
+- 'Medical: Sterilization and cleaning of medical devices and instruments'
+- 'Manufacturing: Industrial surface preparation and contamination removal'
 machineSettings:
   powerRange:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power range for GFRP surface cleaning without matrix
-      degradation
+    description: Optimal average power range for GFRP cleaning without matrix degradation
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength for optimal absorption in contaminants while
-      minimizing GFRP damage
+    description: Near-IR wavelength for optimal absorption in contaminants while minimizing
+      GFRP damage
     min: null
     max: null
   spotSize:
-    value: 100
-    unit: μm
-    confidence: 90
-    description: Beam spot diameter for precise cleaning control on GFRP surfaces
-    min: 50
-    max: 200
-  repetitionRate:
     value: 50
+    unit: μm
+    confidence: 84
+    description: Beam spot diameter for precise cleaning control
+    min: 30
+    max: 100
+  repetitionRate:
+    value: 100
     unit: kHz
     confidence: 87
     description: Optimal repetition rate for efficient cleaning with thermal management
-    min: 20
-    max: 100
+    min: 50
+    max: 200
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
@@ -148,20 +148,20 @@ machineSettings:
     value: 10
     unit: ns
     confidence: 85
-    description: Optimal pulse duration for controlled ablation of surface contaminants
+    description: Optimal pulse duration for controlled ablation of contaminants
     min: 5
     max: 20
   scanSpeed:
-    value: 500
+    value: 1000
     unit: mm/s
-    confidence: 84
+    confidence: 86
     description: Optimal scanning speed for uniform cleaning coverage
-    min: 200
-    max: 1000
+    min: 500
+    max: 2000
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 86
+    confidence: 83
     description: Optimal pulse overlap for uniform cleaning without excessive heat
       accumulation
     min: 30
@@ -169,17 +169,15 @@ machineSettings:
   passCount:
     value: 2
     unit: passes
-    confidence: 82
+    confidence: 85
     description: Recommended number of passes for complete contaminant removal
     min: 1
     max: 3
-  laserType:
-    value: Nd:YAG
-    unit: n/a
-    confidence: 85
-    description: Recommended laser type for GFRP cleaning applications
-    min: null
-    max: null
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
   id: 1
   name: Yi-Chun Lin

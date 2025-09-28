@@ -9,161 +9,153 @@ materialProperties:
     unit: g/cm³
     confidence: 95
     description: Typical density for borosilicate glass (Pyrex-type)
-    min: 2.2
-    max: 2.26
+    min: 1.2
+    max: 7.6
   meltingPoint:
     value: 820
     unit: °C
     confidence: 90
     description: Softening point where glass becomes workable
-    min: 800
-    max: 840
+    min: null
+    max: null
   thermalConductivity:
     value: 1.2
     unit: W/m·K
     confidence: 92
     description: Low thermal conductivity typical of glass materials
-    min: 1.1
-    max: 1.3
+    min: 0.02
+    max: 4.2
   hardness:
     value: 5.5
     unit: Mohs
-    confidence: 92
+    confidence: 90
     description: Hardness on Mohs scale
-    min: 5.0
-    max: 6.0
+    min: 4.5
+    max: 9
   youngsModulus:
     value: 64
     unit: GPa
     confidence: 94
-    description: Elastic modulus (Young's modulus)
-    min: 62
-    max: 66
+    description: Elastic modulus of borosilicate glass
+    min: 10
+    max: 95
   thermalExpansion:
     value: 3.25
-    unit: ×10⁻⁶/°C
-    confidence: 96
-    description: Very low coefficient of thermal expansion (key borosilicate characteristic)
-    min: 3.2
-    max: 3.3
+    unit: 10⁻⁶/K
+    confidence: 95
+    description: Low thermal expansion coefficient characteristic of borosilicate
+      glass
+    min: 0.1
+    max: 15
   thermalDiffusivity:
     value: 0.65
     unit: mm²/s
-    confidence: 88
+    confidence: 85
     description: Thermal diffusivity at room temperature
-    min: 0.6
-    max: 0.7
+    min: 0.01
+    max: 1.8
   specificHeat:
     value: 830
     unit: J/kg·K
-    confidence: 90
+    confidence: 88
     description: Specific heat capacity at room temperature
-    min: 800
-    max: 850
+    min: 0.5
+    max: 1
   flexuralStrength:
     value: 70
     unit: MPa
     confidence: 85
-    description: Flexural (bending) strength
-    min: 60
-    max: 80
+    description: Flexural strength of annealed borosilicate glass
+    min: null
+    max: null
   refractiveIndex:
     value: 1.474
     unit: dimensionless
-    confidence: 98
+    confidence: 96
     description: Refractive index at 589 nm wavelength
-    min: 1.472
-    max: 1.476
+    min: null
+    max: null
   absorptionCoefficient:
-    value: 0.1
+    value: 0.02
     unit: cm⁻¹
-    confidence: 85
-    description: Approximate absorption coefficient for visible light
-    min: 0.05
-    max: 0.2
-  laserDamageThreshold:
-    value: 15
-    unit: J/cm²
-    confidence: 82
-    description: Approximate laser damage threshold for nanosecond pulses at 1064
-      nm
-    min: 10
-    max: 20
+    confidence: 88
+    description: Absorption coefficient for visible light
+    min: null
+    max: null
   ablationThreshold:
     value: 2.5
     unit: J/cm²
+    confidence: 82
+    description: Approximate laser ablation threshold for nanosecond pulses at 1064
+      nm
+    min: null
+    max: null
+  laserDamageThreshold:
+    value: 15
+    unit: J/cm²
     confidence: 80
-    description: Estimated ablation threshold for femtosecond pulses
-    min: 1.5
-    max: 4.0
+    description: Laser-induced damage threshold for short pulses
+    min: null
+    max: null
   chemicalStability:
-    value: Excellent
-    unit: qualitative
-    confidence: 95
-    description: High resistance to water, acids, and chemicals (except HF)
-    min: Good
-    max: Excellent
-  thermalShockResistance:
-    value: 160
-    unit: °C
+    value: 8.5
+    unit: rating (1-10)
     confidence: 90
-    description: Temperature difference glass can withstand without cracking
-    min: 150
-    max: 170
+    description: High chemical resistance to water, acids, and alkalis
+    min: null
+    max: null
   surfaceRoughness:
     value: 0.5
     unit: nm Ra
-    confidence: 88
-    description: Typical surface roughness for polished borosilicate glass
-    min: 0.2
-    max: 1.0
+    confidence: 85
+    description: Typical surface roughness of polished borosilicate glass
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Aerospace: Precision cleaning of aerospace components and assemblies'
+- 'Automotive: Paint removal and surface preparation for automotive parts'
 machineSettings:
   powerRange:
-    value: 15
+    value: 25
     unit: W
     confidence: 90
     description: Average power for effective contaminant removal without substrate
       damage
-    min: 5
-    max: 30
+    min: 15
+    max: 40
   wavelength:
     value: 1064
     unit: nm
-    confidence: 88
-    description: Near-IR wavelength with moderate glass transmission for surface-selective
-      cleaning
+    confidence: 90
+    description: Near-IR wavelength for optimal Borosilicate Glass processing
     min: 532
     max: 1064
   spotSize:
-    value: 50
+    value: 100
     unit: μm
     confidence: 92
     description: Beam spot diameter for precise cleaning control
-    min: 30
-    max: 100
+    min: 50
+    max: 200
   repetitionRate:
     value: 20
     unit: kHz
     confidence: 87
-    description: Repetition rate balancing cleaning efficiency and thermal management
+    description: Optimal repetition rate for efficient cleaning with thermal management
     min: 10
     max: 50
   fluenceThreshold:
-    value: 0.8
+    value: 1.2
     unit: J/cm²
     confidence: 88
-    description: Threshold fluence for contaminant ablation while preserving glass
-      substrate
-    min: 0.3
-    max: 1.5
+    description: Threshold fluence for Borosilicate Glass surface cleaning
+    min: 0.8
+    max: 2.0
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Optimal pulse duration for thermal confinement in contaminants
+    description: Optimal pulse duration for controlled ablation of surface contaminants
     min: 5
     max: 20
   scanSpeed:
@@ -176,32 +168,37 @@ machineSettings:
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 90
-    description: Optimal pulse overlap for complete surface coverage
+    confidence: 88
+    description: Optimal pulse overlap for uniform cleaning without thermal accumulation
     min: 30
     max: 70
   passCount:
     value: 2
     unit: passes
     confidence: 85
-    description: Number of cleaning passes for thorough contaminant removal
+    description: Recommended number of passes for complete contaminant removal
     min: 1
     max: 5
-  dwellTime:
-    value: 100
-    unit: μs
-    confidence: 82
-    description: Maximum dwell time per spot to prevent thermal accumulation
-    min: 50
-    max: 200
+  energyDensity:
+    value: 3.5
+    unit: J/cm²
+    confidence: 86
+    description: Optimal energy density for effective cleaning process
+    min: 2.0
+    max: 6.0
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
-  id: 3
-  name: Ikmanda Roswati
-  sex: m
+  id: 1
+  name: Yi-Chun Lin
+  sex: f
   title: Ph.D.
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  image: /images/author/ikmanda-roswati.jpg
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg
 images:
   hero:
     alt: Borosilicate Glass surface undergoing laser cleaning showing precise contamination
@@ -236,7 +233,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-author_id: 3
+author_id: 1
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues

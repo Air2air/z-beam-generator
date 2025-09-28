@@ -708,6 +708,34 @@ def run_frontmatter_sanitization(specific_file=None):
 
 
 # =================================================================================
+# UTILITY FUNCTIONS
+# =================================================================================
+
+def generate_safe_filename(material_name: str) -> str:
+    """
+    Generate a safe filename from material name by converting spaces and underscores to hyphens.
+    
+    Args:
+        material_name: The material name (e.g., "Stainless Steel")
+        
+    Returns:
+        Safe filename string (e.g., "stainless-steel")
+        
+    Example:
+        >>> generate_safe_filename("Stainless Steel")
+        'stainless-steel'
+        >>> generate_safe_filename("Ti-6Al-4V")
+        'ti-6al-4v'
+    """
+    import re
+    # Convert to lowercase, replace spaces and underscores with hyphens, 
+    # then remove any consecutive hyphens
+    safe_name = material_name.lower().replace(' ', '-').replace('_', '-')
+    # Remove consecutive hyphens and clean up
+    return re.sub(r'-+', '-', safe_name).strip('-')
+
+
+# =================================================================================
 # MAIN ENTRY POINT
 # =================================================================================
 
@@ -798,7 +826,7 @@ def main():
                 frontmatter_data = None
                 if component_type in ['table', 'author', 'metatags', 'jsonld', 'caption', 'tags', 'settings', 'propertiestable']:
                     # Try to load existing frontmatter - prioritize .yaml format
-                    base_name = args.material.lower().replace(' ', '-').replace('_', '-')
+                    base_name = generate_safe_filename(args.material)
                     frontmatter_paths = [
                         f"content/components/frontmatter/{base_name}-laser-cleaning.yaml",
                         f"content/components/frontmatter/{base_name}.yaml",
@@ -855,7 +883,8 @@ def main():
                     # Save the result
                     output_dir = f"content/components/{component_type}"
                     os.makedirs(output_dir, exist_ok=True)
-                    output_file = f"{output_dir}/{args.material.lower()}-laser-cleaning.json" if component_type == 'jsonld' else f"{output_dir}/{args.material.lower()}-laser-cleaning.yaml" if component_type in ['frontmatter', 'table', 'metatags', 'author', 'caption', 'settings'] else f"{output_dir}/{args.material.lower()}-laser-cleaning.md"
+                    filename = generate_safe_filename(args.material)
+                    output_file = f"{output_dir}/{filename}-laser-cleaning.json" if component_type == 'jsonld' else f"{output_dir}/{filename}-laser-cleaning.yaml" if component_type in ['frontmatter', 'table', 'metatags', 'author', 'caption', 'settings'] else f"{output_dir}/{filename}-laser-cleaning.md"
                     
                     with open(output_file, 'w') as f:
                         f.write(result.content)
@@ -942,7 +971,7 @@ def main():
                         frontmatter_data = None
                         if component_type in ['table', 'author', 'metatags', 'jsonld', 'caption', 'tags', 'settings', 'propertiestable']:
                             # Try to load existing frontmatter
-                            material_slug = material_name.lower().replace(' ', '-').replace('_', '-')
+                            material_slug = generate_safe_filename(material_name)
                             frontmatter_paths = [
                                 f"content/components/frontmatter/{material_slug}-laser-cleaning.yaml",
                                 f"content/components/frontmatter/{material_slug}.yaml",
@@ -987,7 +1016,7 @@ def main():
                             # Save the result
                             output_dir = f"content/components/{component_type}"
                             os.makedirs(output_dir, exist_ok=True)
-                            filename = material_name.lower().replace(' ', '-').replace('_', '-')
+                            filename = generate_safe_filename(material_name)
                             output_file = f"{output_dir}/{filename}-laser-cleaning.json" if component_type == 'jsonld' else f"{output_dir}/{filename}-laser-cleaning.yaml" if component_type in ['table', 'metatags', 'author', 'caption', 'settings'] else f"{output_dir}/{filename}-laser-cleaning.md"
                             
                             with open(output_file, 'w') as f:

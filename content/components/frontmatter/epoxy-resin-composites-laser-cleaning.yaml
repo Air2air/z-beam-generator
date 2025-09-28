@@ -2,145 +2,131 @@ name: Epoxy Resin Composites
 category: Composite
 subcategory: Epoxy Resin Composites
 title: Epoxy Resin Composites Laser Cleaning
-description: Laser cleaning parameters for Epoxy Resin Composites
+description: Laser cleaning parameters for Carbon Fiber Reinforced Polymer
 materialProperties:
   density:
-    value: 1.8
+    value: 1.2
     unit: g/cm³
     confidence: 95
-    description: Typical density for carbon fiber reinforced epoxy composites
-    min: 1.6
-    max: 2.1
-  meltingPoint:
-    value: N/A (thermoset)
-    unit: °C
-    confidence: 98
-    description: Epoxy resins are thermosetting polymers that decompose rather than
-      melt
-    min: N/A
-    max: N/A
-  thermalConductivity:
-    value: 0.8
-    unit: W/m·K
-    confidence: 90
-    description: Through-thickness thermal conductivity of carbon/epoxy composite
+    description: Typical density for unfilled epoxy resin composites
     min: 0.5
-    max: 1.2
+    max: 8
+  meltingPoint:
+    value: N/A
+    unit: °C
+    confidence: 90
+    description: Epoxy composites are thermosets and decompose rather than melt
+    min: null
+    max: null
+  thermalConductivity:
+    value: 0.2
+    unit: W/m·K
+    confidence: 92
+    description: Low thermal conductivity typical of polymer composites
+    min: 0.1
+    max: 400
   tensileStrength:
-    value: 600
+    value: 80
     unit: MPa
     confidence: 90
-    description: Tensile strength along fiber direction for carbon/epoxy
-    min: 400
-    max: 800
+    description: Typical tensile strength for epoxy resin composites
+    min: 50
+    max: 6000
   hardness:
     value: 85
     unit: Shore D
     confidence: 88
-    description: Hardness of cured epoxy resin matrix
-    min: 80
+    description: Hardness measurement on Shore D scale
+    min: 20
     max: 90
   youngsModulus:
-    value: 70
+    value: 3.5
     unit: GPa
     confidence: 92
-    description: Elastic modulus along fiber direction
-    min: 50
-    max: 90
+    description: Elastic modulus of epoxy composite materials
+    min: 5
+    max: 1000
   thermalExpansion:
-    value: 25
+    value: 60
     unit: μm/m·°C
     confidence: 88
-    description: Coefficient of thermal expansion in transverse direction
-    min: 20
-    max: 30
-  thermalDiffusivity:
-    value: 0.45
-    unit: mm²/s
-    confidence: 85
-    description: Thermal diffusivity at room temperature
-    min: 0.3
-    max: 0.6
+    description: Coefficient of thermal expansion for epoxy composites
+    min: -1
+    max: 50
   specificHeat:
     value: 1100
     unit: J/kg·K
-    confidence: 92
+    confidence: 85
     description: Specific heat capacity at room temperature
-    min: 1000
-    max: 1200
+    min: 0.5
+    max: 2
   absorptionCoefficient:
     value: 8500
     unit: cm⁻¹
-    confidence: 85
+    confidence: 82
     description: Absorption coefficient at 1064 nm wavelength
-    min: 7000
-    max: 10000
+    min: null
+    max: null
   reflectivity:
     value: 0.08
     unit: dimensionless
-    confidence: 82
-    description: Surface reflectivity at 1064 nm for carbon fiber composites
-    min: 0.05
-    max: 0.12
+    confidence: 80
+    description: Reflectivity at near-infrared wavelengths
+    min: null
+    max: null
   ablationThreshold:
     value: 0.8
     unit: J/cm²
-    confidence: 80
+    confidence: 85
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
-    min: 0.5
-    max: 1.2
-  glassTransitionTemperature:
-    value: 180
-    unit: °C
-    confidence: 94
-    description: Glass transition temperature of aerospace-grade epoxy
-    min: 150
-    max: 220
+    min: null
+    max: null
   decompositionTemperature:
     value: 350
     unit: °C
-    confidence: 90
+    confidence: 92
     description: Onset temperature for thermal decomposition
-    min: 300
-    max: 400
-  porosity:
-    value: 1.5
-    unit: '%'
-    confidence: 85
-    description: Typical porosity in well-manufactured composite laminates
-    min: 0.5
-    max: 3.0
+    min: null
+    max: null
+  glassTransition:
+    value: 120
+    unit: °C
+    confidence: 94
+    description: Glass transition temperature of cured epoxy
+    min: null
+    max: null
   surfaceRoughness:
-    value: 1.2
+    value: 0.8
     unit: μm Ra
     confidence: 82
-    description: Typical surface roughness of molded composite surfaces
-    min: 0.8
-    max: 2.0
+    description: Typical surface roughness of molded epoxy composites
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Medical: Sterilization and cleaning of medical devices and instruments'
+- 'Manufacturing: Industrial surface preparation and contamination removal'
+- 'Automotive: Paint removal and surface preparation for automotive parts'
 machineSettings:
   powerRange:
     value: 100
     unit: W
     confidence: 92
     description: Optimal average power for epoxy resin composite cleaning without
-      thermal damage
+      substrate damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Optimal near-IR wavelength for epoxy resin absorption
+    description: Near-IR wavelength optimized for epoxy resin absorption
     min: null
     max: null
   spotSize:
     value: 100
     unit: μm
     confidence: 90
-    description: Optimal beam diameter for precision cleaning of composite surfaces
+    description: Beam spot diameter for precise epoxy resin removal
     min: 50
     max: 200
   repetitionRate:
@@ -156,7 +142,7 @@ machineSettings:
     confidence: 88
     description: Ablation threshold fluence for epoxy resin composites
     min: 1.8
-    max: 3.5
+    max: 3.2
   pulseWidth:
     value: 10
     unit: ns
@@ -175,23 +161,28 @@ machineSettings:
     value: 50
     unit: '%'
     confidence: 86
-    description: Optimal pulse overlap for uniform cleaning coverage
-    min: 30
-    max: 70
+    description: Optimal pulse overlap for complete epoxy resin removal
+    min: 40
+    max: 60
   passCount:
     value: 3
     unit: passes
     confidence: 82
-    description: Recommended number of passes for complete epoxy removal
+    description: Recommended number of passes for thorough epoxy resin cleaning
     min: 1
     max: 5
-  dwellTime:
-    value: 100
-    unit: μs
-    confidence: 83
-    description: Optimal dwell time per spot for effective material removal
-    min: 50
-    max: 200
+  energyDensity:
+    value: 3.2
+    unit: J/cm²
+    confidence: 85
+    description: Optimal energy density for epoxy resin composite processing
+    min: 2.5
+    max: 4.0
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
   id: 1
   name: Yi-Chun Lin

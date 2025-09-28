@@ -2,130 +2,117 @@ name: Sapphire Glass
 category: Glass
 subcategory: Sapphire Glass
 title: Sapphire Glass Laser Cleaning
-description: Laser cleaning parameters for Sapphire Glass
+description: Laser cleaning parameters for Borosilicate Glass
 materialProperties:
   density:
     value: 3.98
     unit: g/cm³
     confidence: 98
     description: Density of single crystal sapphire at room temperature
-    min: 3.97
-    max: 3.99
+    min: 1.2
+    max: 7.6
   meltingPoint:
     value: 2040
     unit: °C
     confidence: 97
-    description: Melting point of pure sapphire (α-Al₂O₃)
-    min: 2030
-    max: 2050
+    description: Melting point of sapphire (α-Al₂O₃)
+    min: null
+    max: null
   thermalConductivity:
     value: 35
     unit: W/m·K
     confidence: 95
     description: Thermal conductivity at room temperature (c-axis)
-    min: 32
-    max: 38
+    min: 0.02
+    max: 4.2
   hardness:
     value: 9
     unit: Mohs
-    confidence: 98
+    confidence: 99
     description: Mohs hardness scale (second only to diamond)
-    min: 8.8
-    max: 9.0
+    min: 4.5
+    max: 9
   youngsModulus:
     value: 345
     unit: GPa
     confidence: 96
     description: Young's modulus (parallel to c-axis)
-    min: 340
-    max: 350
+    min: 10
+    max: 95
   thermalExpansion:
     value: 5.3
-    unit: ×10⁻⁶/°C
+    unit: ×10⁻⁶/K
     confidence: 94
-    description: Coefficient of thermal expansion (parallel to c-axis, 20-200°C)
-    min: 5.0
-    max: 5.6
+    description: Coefficient of thermal expansion (parallel to c-axis, 20-100°C)
+    min: 0.1
+    max: 15
   thermalDiffusivity:
     value: 12.5
     unit: mm²/s
     confidence: 92
     description: Thermal diffusivity at room temperature
-    min: 11.8
-    max: 13.2
+    min: 0.01
+    max: 1.8
   specificHeat:
     value: 750
     unit: J/kg·K
     confidence: 93
     description: Specific heat capacity at room temperature
-    min: 730
-    max: 770
-  knoopHardness:
-    value: 2200
-    unit: kg/mm²
-    confidence: 95
-    description: Knoop hardness (100g load)
-    min: 2100
-    max: 2300
+    min: 0.5
+    max: 1
   flexuralStrength:
     value: 690
     unit: MPa
     confidence: 90
-    description: Flexural strength at room temperature
-    min: 650
-    max: 730
+    description: Flexural strength of polished sapphire
+    min: null
+    max: null
   refractiveIndex:
     value: 1.76
-    unit: n/a
-    confidence: 97
+    unit: dimensionless
+    confidence: 98
     description: Refractive index at 589 nm (ordinary ray)
-    min: 1.757
-    max: 1.763
+    min: null
+    max: null
   transmissivity:
     value: 85
     unit: '%'
     confidence: 95
-    description: Transmission in visible spectrum (2mm thickness)
-    min: 83
-    max: 87
+    description: Transmission in visible to near-IR range (0.2-5.5 μm)
+    min: null
+    max: null
   laserDamageThreshold:
     value: 15
     unit: J/cm²
     confidence: 88
-    description: Laser damage threshold for nanosecond pulses at 1064 nm
-    min: 12
-    max: 18
+    description: Laser-induced damage threshold for nanosecond pulses at 1064 nm
+    min: null
+    max: null
   ablationThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 85
     description: Ablation threshold for femtosecond pulses at 800 nm
-    min: 2.0
-    max: 3.0
+    min: null
+    max: null
+  crystallineStructure:
+    value: Hexagonal
+    unit: crystal system
+    confidence: 99
+    description: Rhombohedral crystal structure (space group R3c)
+    min: null
+    max: null
   chemicalStability:
     value: Excellent
-    unit: n/a
+    unit: qualitative
     confidence: 96
-    description: Resistance to acids and alkalis at room temperature
-    min: n/a
-    max: n/a
-  crystallineStructure:
-    value: Rhombohedral
-    unit: n/a
-    confidence: 99
-    description: Hexagonal crystal system (space group R3c)
-    min: n/a
-    max: n/a
-  thermalShockResistance:
-    value: 800
-    unit: °C
-    confidence: 90
-    description: Maximum temperature difference for thermal shock resistance
-    min: 750
-    max: 850
+    description: Highly resistant to acids and alkalis except hydrofluoric acid and
+      phosphoric acid at high temperatures
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Aerospace: Precision cleaning of aerospace components and assemblies'
+- 'Manufacturing: Industrial surface preparation and contamination removal'
 machineSettings:
   powerRange:
     value: 15
@@ -139,24 +126,24 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength with good absorption by contaminants while transmitting
-      through sapphire
-    min: null
-    max: null
+    description: Near-IR wavelength with good transmission through sapphire for selective
+      contaminant absorption
+    min: 532
+    max: 1064
   spotSize:
     value: 50
     unit: μm
     confidence: 92
-    description: Beam spot diameter for precise cleaning resolution
+    description: Beam spot diameter for precise cleaning control
     min: 30
     max: 100
   repetitionRate:
-    value: 100
+    value: 20
     unit: kHz
     confidence: 87
     description: Optimal repetition rate for efficient cleaning with thermal management
-    min: 50
-    max: 200
+    min: 10
+    max: 50
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
@@ -168,7 +155,7 @@ machineSettings:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for controlled ablation of surface contaminants
+    description: Nanosecond pulse duration for controlled ablation of contaminants
     min: 5
     max: 20
   scanSpeed:
@@ -181,7 +168,7 @@ machineSettings:
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 90
+    confidence: 83
     description: Optimal pulse overlap for uniform cleaning without excessive heat
       accumulation
     min: 30
@@ -189,25 +176,30 @@ machineSettings:
   passCount:
     value: 3
     unit: passes
-    confidence: 86
+    confidence: 82
     description: Recommended number of passes for complete contaminant removal
     min: 1
     max: 5
   laserType:
     value: Nd:YAG
     unit: n/a
-    confidence: 89
+    confidence: 90
     description: Q-switched Nd:YAG laser optimized for precision cleaning applications
     min: null
     max: null
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
-  id: 3
-  name: Ikmanda Roswati
-  sex: m
+  id: 1
+  name: Yi-Chun Lin
+  sex: f
   title: Ph.D.
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  image: /images/author/ikmanda-roswati.jpg
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg
 images:
   hero:
     alt: Sapphire Glass surface undergoing laser cleaning showing precise contamination
@@ -242,7 +234,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-author_id: 3
+author_id: 1
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues

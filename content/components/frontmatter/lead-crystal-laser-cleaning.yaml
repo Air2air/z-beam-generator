@@ -2,95 +2,96 @@ name: Lead Crystal
 category: Glass
 subcategory: Lead Crystal
 title: Lead Crystal Laser Cleaning
-description: Laser cleaning parameters for Lead Crystal
+description: Laser cleaning parameters for Borosilicate Glass
 materialProperties:
   density:
     value: 3.1
     unit: g/cm³
     confidence: 95
-    description: High density due to lead oxide content (typically 24-32% PbO)
-    min: 2.9
-    max: 3.3
+    description: Typical density for 24-32% lead oxide content crystal glass
+    min: 1.2
+    max: 7.6
   meltingPoint:
     value: 850
     unit: °C
     confidence: 90
-    description: Lower melting point than standard glass due to lead content
-    min: 800
-    max: 900
+    description: Softening/melting point range for lead crystal glass
+    min: null
+    max: null
   thermalConductivity:
     value: 0.78
     unit: W/m·K
     confidence: 88
-    description: Poor thermal conductivity typical of glass materials
-    min: 0.75
-    max: 0.82
+    description: Low thermal conductivity typical of glass materials
+    min: 0.02
+    max: 4.2
   hardness:
-    value: 380
+    value: 420
     unit: HV
-    confidence: 85
-    description: Vickers hardness, softer than standard glass
-    min: 350
-    max: 410
+    confidence: 86
+    description: Vickers hardness of lead crystal
+    min: 4.5
+    max: 9
   youngsModulus:
-    value: 55
+    value: 60
     unit: GPa
-    confidence: 88
-    description: Elastic modulus, lower than standard glass due to lead content
-    min: 52
-    max: 58
+    confidence: 89
+    description: Elastic modulus of lead crystal glass
+    min: 10
+    max: 95
   thermalExpansion:
     value: 9.2
-    unit: ×10⁻⁶/°C
+    unit: 10⁻⁶/K
     confidence: 85
     description: Coefficient of thermal expansion at room temperature
-    min: 8.8
-    max: 9.6
+    min: 0.1
+    max: 15
   specificHeat:
     value: 0.67
     unit: J/g·K
-    confidence: 82
+    confidence: 87
     description: Specific heat capacity at room temperature
-    min: 0.64
-    max: 0.7
+    min: 0.5
+    max: 1
   refractiveIndex:
     value: 1.56
     unit: dimensionless
-    confidence: 95
-    description: High refractive index characteristic of lead crystal
-    min: 1.54
-    max: 1.58
+    confidence: 96
+    description: Refractive index for typical lead crystal (24% PbO)
+    min: null
+    max: null
   absorptionCoefficient:
     value: 0.15
     unit: cm⁻¹
-    confidence: 80
-    description: Optical absorption coefficient at 1064 nm wavelength
-    min: 0.12
-    max: 0.18
-  ablationThreshold:
-    value: 2.5
-    unit: J/cm²
     confidence: 82
+    description: Optical absorption coefficient at 1064 nm wavelength
+    min: null
+    max: null
+  ablationThreshold:
+    value: 2.8
+    unit: J/cm²
+    confidence: 80
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
-    min: 2.2
-    max: 2.8
+    min: null
+    max: null
   chemicalStability:
-    value: Moderate
-    unit: qualitative
-    confidence: 85
-    description: Resistance to chemical attack, vulnerable to acidic solutions
-    min: Poor
-    max: Good
-  thermalShockResistance:
-    value: 80
-    unit: °C
-    confidence: 83
-    description: Maximum temperature difference before thermal shock failure
-    min: 70
-    max: 90
+    value: 85
+    unit: '% resistance'
+    confidence: 88
+    description: Chemical durability against mild acids and water
+    min: null
+    max: null
+  transmissivity:
+    value: 92
+    unit: '%'
+    confidence: 94
+    description: Visible light transmission for clear lead crystal
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Manufacturing: Industrial surface preparation and contamination removal'
+- 'Aerospace: Precision cleaning of aerospace components and assemblies'
+- 'Semiconductor: Ultra-precise cleaning for semiconductor manufacturing'
 machineSettings:
   powerRange:
     value: 15
@@ -104,13 +105,14 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength for optimal penetration control in Lead Crystal
+    description: Near-IR wavelength for optimal absorption in Lead Crystal with minimal
+      transmission
     min: 532
     max: 1064
   spotSize:
     value: 100
     unit: μm
-    confidence: 92
+    confidence: 89
     description: Beam spot diameter for precise cleaning control on Lead Crystal surfaces
     min: 50
     max: 200
@@ -131,39 +133,44 @@ machineSettings:
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 85
+    confidence: 86
     description: Optimal scanning speed for uniform cleaning coverage
     min: 200
     max: 1000
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
-    confidence: 88
+    confidence: 91
     description: Fluence threshold for effective contaminant removal without damaging
-      crystal substrate
+      Lead Crystal substrate
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 83
-    description: Optimal beam overlap for uniform cleaning pattern
+    confidence: 84
+    description: Optimal beam overlap for uniform cleaning coverage
     min: 30
     max: 70
   passCount:
     value: 2
     unit: passes
-    confidence: 86
+    confidence: 88
     description: Recommended number of passes for complete contaminant removal
     min: 1
     max: 4
   laserType:
     value: Nd:YAG
     unit: n/a
-    confidence: 90
+    confidence: 92
     description: Recommended laser type for Lead Crystal cleaning applications
     min: null
     max: null
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
   id: 1
   name: Yi-Chun Lin

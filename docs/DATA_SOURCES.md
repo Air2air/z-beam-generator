@@ -63,6 +63,25 @@ This document defines the authoritative data sources for all frontmatter fields 
 - **FORBIDDEN**: Min/max ranges, benefit names, application types, metric names
 - **Rule**: AI content MUST be validated against Categories.yaml templates and ranges
 
+## File Naming Conventions
+
+### Frontmatter Output Files
+All frontmatter files are generated with consistent naming conventions:
+- **Pattern**: `{material-name}-laser-cleaning.yaml`
+- **Space Handling**: All spaces in material names are replaced with hyphens (`-`)
+- **Case**: Material names are converted to lowercase
+- **Examples**:
+  - "Stainless Steel" → `stainless-steel-laser-cleaning.yaml`
+  - "Borosilicate Glass" → `borosilicate-glass-laser-cleaning.yaml`
+  - "Carbon Fiber Reinforced Polymer" → `carbon-fiber-reinforced-polymer-laser-cleaning.yaml`
+
+### Implementation
+The filename generation logic ensures consistent naming across all components:
+```python
+filename = material_name.lower().replace(' ', '-').replace('_', '-')
+output_file = f"{output_dir}/{filename}-laser-cleaning.yaml"
+```
+
 ## Field-by-Field Data Source Map
 
 | Frontmatter Field | Source | Enforcement Level |
