@@ -20,107 +20,97 @@ materialProperties:
     min: null
     max: null
   thermalConductivity:
-    value: Anisotropic
+    value: 5-150
     unit: W/m·K
-    confidence: 92
-    description: 'In-plane: 5-10 W/m·K (fiber direction), Through-thickness: 0.5-1.0
-      W/m·K'
+    confidence: 85
+    description: 'Highly anisotropic: 5-10 W/m·K transverse, 100-150 W/m·K longitudinal
+      to fibers'
     min: 0.1
     max: 400
   tensileStrength:
-    value: Anisotropic
+    value: 1500-3500
     unit: MPa
     confidence: 94
-    description: 'Longitudinal: 1500-2500, Transverse: 40-80 (highly dependent on
-      fiber orientation)'
+    description: 'Highly dependent on fiber orientation: 1500-2000 MPa transverse,
+      2500-3500 MPa longitudinal'
     min: 50
     max: 6000
   youngsModulus:
-    value: Anisotropic
+    value: 70-230
     unit: GPa
     confidence: 96
-    description: 'Longitudinal: 120-180, Transverse: 8-12 (highly anisotropic mechanical
-      properties)'
+    description: 'Anisotropic modulus: 70-100 GPa transverse, 180-230 GPa longitudinal
+      to fibers'
     min: 5
     max: 1000
   thermalExpansion:
-    value: Anisotropic
-    unit: 10⁻⁶/°C
+    value: -1 to 30
+    unit: ×10⁻⁶/°C
     confidence: 88
-    description: 'In-plane: 0.1-0.5, Through-thickness: 25-40 (highly anisotropic
-      due to fiber constraint)'
+    description: 'Anisotropic coefficient: negative in fiber direction (-1 to 0),
+      positive transverse (20-30)'
     min: -1
     max: 50
-  thermalDiffusivity:
-    value: 0.8
-    unit: mm²/s
-    confidence: 85
-    description: Average thermal diffusivity for typical CFRP composites
-    min: 0.1
-    max: 180
   specificHeat:
-    value: 1.1
-    unit: kJ/kg·K
-    confidence: 90
-    description: Specific heat capacity at room temperature
+    value: 900
+    unit: J/kg·K
+    confidence: 92
+    description: Specific heat capacity at room temperature for typical CFRP composites
     min: 0.5
     max: 2
   absorptionCoefficient:
-    value: 0.85
+    value: 0.7-0.95
     unit: dimensionless
-    confidence: 88
-    description: High absorption coefficient for IR lasers (1064 nm) due to carbon
-      fiber content
+    confidence: 85
+    description: High absorption for IR lasers (1064 nm) due to carbon fiber content
     min: null
     max: null
   reflectivity:
-    value: 0.15
+    value: 0.05-0.3
     unit: dimensionless
-    confidence: 85
+    confidence: 82
     description: Low reflectivity at 1064 nm wavelength due to carbon fiber absorption
     min: null
     max: null
   ablationThreshold:
-    value: 0.5
+    value: 0.5-2.0
     unit: J/cm²
-    confidence: 82
-    description: Approximate ablation threshold for nanosecond pulses at 1064 nm
+    confidence: 80
+    description: Laser ablation threshold for nanosecond pulses at 1064 nm wavelength
     min: null
     max: null
   laserDamageThreshold:
-    value: 1.2
+    value: 1.5-3.0
     unit: J/cm²
-    confidence: 80
-    description: Damage threshold for matrix material before significant fiber damage
-      occurs
+    confidence: 78
+    description: Damage threshold before significant material degradation occurs
     min: null
     max: null
   oxidationResistance:
-    value: Moderate
-    unit: qualitative
-    confidence: 85
-    description: Carbon fibers oxidize above 400°C in air; epoxy matrix degrades at
-      lower temperatures
-    min: null
-    max: null
-  porosity:
-    value: 1.5
-    unit: '%'
-    confidence: 82
-    description: Typical porosity in well-manufactured CFRP laminates
+    value: '400'
+    unit: °C
+    confidence: 88
+    description: Maximum continuous service temperature before oxidative degradation
     min: null
     max: null
   surfaceRoughness:
-    value: 1.2
+    value: 0.5-5.0
     unit: μm Ra
-    confidence: 88
-    description: Typical surface roughness of as-manufactured CFRP surfaces
+    confidence: 85
+    description: Typical surface roughness range for as-manufactured CFRP surfaces
+    min: null
+    max: null
+  glassTransitionTemperature:
+    value: 120-180
+    unit: °C
+    confidence: 90
+    description: Glass transition temperature range for epoxy matrix systems
     min: null
     max: null
 applications:
-- 'Aerospace: Precision cleaning of aerospace components and assemblies'
-- 'Manufacturing: Industrial surface preparation and contamination removal'
+- 'Automotive: Paint removal and surface preparation for automotive parts'
 - 'Medical: Sterilization and cleaning of medical devices and instruments'
+- 'Manufacturing: Industrial surface preparation and contamination removal'
 machineSettings:
   powerRange:
     value: 100
@@ -133,66 +123,66 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength for optimal CFRP interaction with minimal
-      absorption depth
+    description: Near-IR wavelength for optimal CFRP absorption and minimal substrate
+      damage
     min: 1030
     max: 1070
   spotSize:
     value: 50
     unit: μm
     confidence: 84
-    description: Beam spot diameter for precise cleaning resolution on CFRP surface
+    description: Focused spot size for precise cleaning resolution
     min: 30
     max: 100
   repetitionRate:
     value: 100
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning with thermal management
+    description: High repetition rate for efficient cleaning with thermal management
     min: 50
     max: 200
-  fluenceThreshold:
-    value: 1.2
-    unit: J/cm²
-    confidence: 88
-    description: Threshold fluence for contaminant removal while preserving CFRP integrity
-    min: 0.8
-    max: 1.8
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for controlled ablation of surface contaminants
+    description: Nanosecond pulse duration for controlled ablation of contaminants
     min: 5
     max: 20
   scanSpeed:
-    value: 500
+    value: 1000
     unit: mm/s
     confidence: 86
     description: Optimal scanning speed for uniform cleaning coverage
-    min: 300
-    max: 800
+    min: 500
+    max: 2000
+  fluenceThreshold:
+    value: 2.5
+    unit: J/cm²
+    confidence: 89
+    description: Fluence threshold for contaminant removal without CFRP damage
+    min: 1.5
+    max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for complete surface coverage without over-processing
+    description: Optimal beam overlap for uniform cleaning without excessive heating
     min: 40
-    max: 60
+    max: 70
   passCount:
     value: 2
     unit: passes
     confidence: 85
-    description: Recommended number of passes for thorough cleaning with safety margin
+    description: Recommended number of passes for complete contaminant removal
     min: 1
     max: 3
-  energyDensity:
-    value: 6.1
-    unit: J/cm²
-    confidence: 82
-    description: Calculated energy density based on power, spot size, and scan parameters
-    min: 4.5
-    max: 8.0
+  laserType:
+    value: Fiber Laser
+    unit: N/A
+    confidence: 90
+    description: Recommended laser type for CFRP cleaning applications
+    min: null
+    max: null
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
