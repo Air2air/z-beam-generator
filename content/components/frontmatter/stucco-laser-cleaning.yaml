@@ -2,123 +2,117 @@ name: Stucco
 category: Masonry
 subcategory: Stucco
 title: Stucco Laser Cleaning
-description: Laser cleaning parameters for Stucco
+description: Laser cleaning parameters for Brick
 materialProperties:
   density:
-    value: 1.85
+    value: 1.8
     unit: g/cm³
-    confidence: 92
-    description: Bulk density of typical portland cement-based stucco
-    min: 1.7
-    max: 2.1
+    confidence: 85
+    description: Typical density for cured stucco (cement-lime-sand mixture)
+    min: 0.6
+    max: 2.8
   meltingPoint:
     value: 1450
     unit: °C
-    confidence: 85
-    description: Approximate melting point of cementitious components
-    min: 1300
-    max: 1550
+    confidence: 82
+    description: Approximate melting point of cementitious components in stucco
+    min: null
+    max: null
   thermalConductivity:
     value: 0.72
     unit: W/m·K
     confidence: 88
-    description: Thermal conductivity of cured stucco at room temperature
-    min: 0.65
-    max: 0.85
-  tensileStrength:
-    value: 2.1
-    unit: MPa
-    confidence: 88
-    description: Indirect tensile strength of cured stucco
-    min: 1.5
-    max: 3.0
+    description: Thermal conductivity of typical stucco material
+    min: 0.08
+    max: 2.5
   hardness:
     value: 4
     unit: Mohs
-    confidence: 82
-    description: Surface hardness on Mohs scale
-    min: 3
-    max: 5
+    confidence: 83
+    description: Hardness on Mohs scale for cementitious stucco
+    min: 2
+    max: 6
   youngsModulus:
-    value: 18
+    value: 15
     unit: GPa
-    confidence: 87
-    description: Elastic modulus of stucco under compression
-    min: 15
-    max: 22
+    confidence: 84
+    description: Elastic modulus of cured stucco material
+    min: 5
+    max: 50
   thermalExpansion:
-    value: 8.5
+    value: 8.0
     unit: μm/m·°C
-    confidence: 86
-    description: Coefficient of thermal expansion (20-100°C range)
-    min: 7.0
-    max: 10.0
+    confidence: 83
+    description: Coefficient of thermal expansion for cement-based stucco
+    min: 6
+    max: 12
   specificHeat:
     value: 840
     unit: J/kg·K
-    confidence: 90
-    description: Specific heat capacity at room temperature
-    min: 800
-    max: 900
+    confidence: 85
+    description: Specific heat capacity of stucco material
+    min: 0.8
+    max: 1.1
   thermalDiffusivity:
-    value: 0.46
+    value: 0.48
     unit: mm²/s
-    confidence: 84
-    description: Calculated thermal diffusivity at 20°C
-    min: 0.4
-    max: 0.52
+    confidence: 82
+    description: Thermal diffusivity calculated from conductivity, density, and specific
+      heat
+    min: 0.1
+    max: 1
   compressiveStrength:
     value: 20
     unit: MPa
-    confidence: 94
-    description: 28-day compressive strength of standard stucco mix
-    min: 15
-    max: 30
+    confidence: 86
+    description: Typical compressive strength of stucco
+    min: null
+    max: null
+  porosity:
+    value: 25
+    unit: '%'
+    confidence: 87
+    description: Typical porosity percentage in stucco material
+    min: null
+    max: null
   absorptionCoefficient:
     value: 0.65
     unit: dimensionless
-    confidence: 85
-    description: Typical absorption coefficient for common laser wavelengths (1064nm)
-    min: 0.55
-    max: 0.75
+    confidence: 81
+    description: Estimated absorption coefficient for common laser wavelengths (1064nm)
+    min: null
+    max: null
   reflectivity:
-    value: 0.25
+    value: 0.35
     unit: dimensionless
-    confidence: 83
-    description: Surface reflectivity at near-infrared wavelengths
-    min: 0.15
-    max: 0.35
+    confidence: 80
+    description: Typical reflectivity of stucco surfaces at laser wavelengths
+    min: null
+    max: null
   ablationThreshold:
     value: 1.2
     unit: J/cm²
-    confidence: 80
-    description: Approximate laser ablation threshold for nanosecond pulses
-    min: 0.8
-    max: 2.0
-  porosity:
+    confidence: 82
+    description: Estimated laser ablation threshold for stucco at 1064nm wavelength
+    min: null
+    max: null
+  surfaceRoughness:
     value: 15
-    unit: '%'
-    confidence: 91
-    description: Typical porosity of cured stucco material
-    min: 10
-    max: 25
+    unit: μm Ra
+    confidence: 85
+    description: Typical surface roughness of applied stucco finish
+    min: null
+    max: null
   waterAbsorption:
     value: 12
     unit: '% by weight'
-    confidence: 93
-    description: Water absorption capacity after 24 hours immersion
-    min: 8
-    max: 18
-  alkalinity:
-    value: 12.5
-    unit: pH
-    confidence: 95
-    description: Typical pH of fresh stucco surface
-    min: 12.0
-    max: 13.0
+    confidence: 86
+    description: Water absorption capacity of stucco material
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Restoration: Gentle cleaning for restoration and conservation applications'
+- 'Construction: Surface preparation and cleaning for construction materials'
 machineSettings:
   powerRange:
     value: 100
@@ -132,73 +126,81 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength optimized for Stucco absorption
-    min: null
-    max: null
+    description: Near-infrared wavelength for optimal absorption by Stucco contaminants
+    min: 1030
+    max: 1070
   spotSize:
     value: 100
     unit: μm
-    confidence: 90
-    description: Beam spot diameter for precise cleaning control
+    confidence: 84
+    description: Beam spot diameter for balanced cleaning efficiency and surface coverage
     min: 50
     max: 200
   repetitionRate:
-    value: 50
+    value: 100
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning coverage
-    min: 20
-    max: 100
-  fluenceThreshold:
-    value: 2.5
-    unit: J/cm²
-    confidence: 88
-    description: Threshold fluence for effective contaminant removal from Stucco surface
-    min: 1.8
-    max: 3.5
+    description: High repetition rate for efficient surface coverage while maintaining
+      cleaning quality
+    min: 50
+    max: 200
   pulseWidth:
-    value: 15
+    value: 10
     unit: ns
     confidence: 85
-    description: Optimal pulse duration for controlled ablation of surface contaminants
-    min: 10
-    max: 25
+    description: Nanosecond pulse duration for effective contaminant removal with
+      minimal thermal penetration
+    min: 5
+    max: 20
   scanSpeed:
-    value: 500
+    value: 1000
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform cleaning results
-    min: 300
-    max: 800
+    description: Optimal scanning speed for uniform cleaning without excessive dwell
+      time
+    min: 500
+    max: 2000
+  energyDensity:
+    value: 1.27
+    unit: J/cm²
+    confidence: 89
+    description: Fluence threshold for effective Stucco surface cleaning
+    min: 0.8
+    max: 2.0
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 84
-    description: Optimal beam overlap for complete surface coverage
-    min: 40
-    max: 60
+    confidence: 83
+    description: Optimal pulse overlap for uniform surface treatment
+    min: 30
+    max: 70
   passCount:
     value: 2
     unit: passes
-    confidence: 82
-    description: Recommended number of passes for thorough cleaning
-    min: 1
-    max: 3
-  energyDensity:
-    value: 3.2
-    unit: J/cm²
     confidence: 85
-    description: Optimal energy density for Stucco surface processing
-    min: 2.5
-    max: 4.0
+    description: Recommended number of passes for complete contaminant removal
+    min: 1
+    max: 4
+  laserType:
+    value: Fiber_Laser
+    unit: N/A
+    confidence: 90
+    description: Preferred laser type for Stucco cleaning applications
+    min: null
+    max: null
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
-  id: 1
-  name: Yi-Chun Lin
-  sex: f
-  title: Ph.D.
-  country: Taiwan
-  expertise: Laser Materials Processing
-  image: /images/author/yi-chun-lin.jpg
+  id: 4
+  name: Todd Dunning
+  sex: m
+  title: MA
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  image: /images/author/todd-dunning.jpg
 images:
   hero:
     alt: Stucco surface undergoing laser cleaning showing precise contamination removal
@@ -232,7 +234,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-author_id: 1
+author_id: 4
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues

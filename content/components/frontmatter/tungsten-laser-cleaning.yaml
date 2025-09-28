@@ -2,122 +2,116 @@ name: Tungsten
 category: Metal
 subcategory: Tungsten
 title: Tungsten Laser Cleaning
-description: Laser cleaning parameters for Tungsten
+description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
     value: 19.25
     unit: g/cm³
     confidence: 98
-    description: High density of pure tungsten at room temperature
-    min: 19.2
-    max: 19.3
+    description: Pure tungsten density at room temperature
+    min: 0.53
+    max: 22.6
   meltingPoint:
     value: 3422
     unit: °C
     confidence: 97
     description: Highest melting point of all pure metals
-    min: 3410
-    max: 3425
+    min: null
+    max: null
   thermalConductivity:
     value: 173
     unit: W/m·K
     confidence: 95
-    description: Thermal conductivity at room temperature
-    min: 165
-    max: 180
+    description: Thermal conductivity at 20°C
+    min: 6.0
+    max: 429.0
   tensileStrength:
     value: 980
     unit: MPa
-    confidence: 88
-    description: Ultimate tensile strength for pure annealed tungsten
-    min: 800
-    max: 1200
+    confidence: 90
+    description: Ultimate tensile strength at room temperature
+    min: 30.0
+    max: 3000.0
   hardness:
     value: 3430
-    unit: MPa (Vickers)
+    unit: MPa
     confidence: 92
-    description: Vickers hardness for pure tungsten
-    min: 3000
-    max: 4000
+    description: Vickers hardness of pure tungsten
+    min: 5
+    max: 500
   youngsModulus:
     value: 411
     unit: GPa
     confidence: 96
     description: Young's modulus of elasticity
-    min: 400
-    max: 420
+    min: 70
+    max: 411
   thermalExpansion:
     value: 4.5
     unit: ×10⁻⁶/K
     confidence: 92
     description: Coefficient of thermal expansion at 20°C
-    min: 4.3
-    max: 4.7
-  thermalDiffusivity:
-    value: 0.68
-    unit: cm²/s
-    confidence: 90
-    description: Thermal diffusivity at room temperature
-    min: 0.65
-    max: 0.71
+    min: 0.5
+    max: 29.1
   specificHeat:
-    value: 0.132
-    unit: J/g·K
-    confidence: 94
-    description: Specific heat capacity at 25°C
-    min: 0.13
-    max: 0.134
+    value: 132
+    unit: J/kg·K
+    confidence: 90
+    description: Specific heat capacity at room temperature
+    min: 0.128
+    max: 0.904
+  thermalDiffusivity:
+    value: 68.2
+    unit: mm²/s
+    confidence: 88
+    description: Thermal diffusivity at 20°C
+    min: 4.2
+    max: 174
   absorptionCoefficient:
-    value: 0.65
+    value: 0.45
     unit: dimensionless
     confidence: 85
-    description: Absorption coefficient for Nd:YAG laser (1064 nm)
-    min: 0.6
-    max: 0.7
+    description: Absorption coefficient for 1064 nm laser wavelength
+    min: null
+    max: null
   reflectivity:
     value: 0.52
     unit: dimensionless
-    confidence: 82
+    confidence: 85
     description: Reflectivity at 1064 nm wavelength
-    min: 0.48
-    max: 0.56
+    min: null
+    max: null
   ablationThreshold:
-    value: 2.5
+    value: 2.8
     unit: J/cm²
-    confidence: 80
-    description: Laser ablation threshold for nanosecond pulses (1064 nm)
-    min: 2.0
-    max: 3.0
+    confidence: 82
+    description: Laser ablation threshold for nanosecond pulses at 1064 nm
+    min: null
+    max: null
+  crystallineStructure:
+    value: BCC
+    unit: none
+    confidence: 98
+    description: Body-centered cubic crystal structure
+    min: null
+    max: null
   oxidationResistance:
     value: 600
     unit: °C
     confidence: 90
     description: Maximum temperature for protective oxide layer formation
-    min: 500
-    max: 700
-  crystallineStructure:
-    value: BCC
-    unit: crystal system
-    confidence: 98
-    description: Body-centered cubic structure at room temperature
-    min: N/A
-    max: N/A
-  thermalShockResistance:
-    value: 350
-    unit: °C
-    confidence: 85
-    description: Maximum temperature difference for thermal shock resistance
-    min: 300
-    max: 400
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Semiconductor: Ultra-precise cleaning for semiconductor manufacturing'
+- 'Manufacturing: Industrial surface preparation and contamination removal'
+- 'Medical: Sterilization and cleaning of medical devices and instruments'
 machineSettings:
   powerRange:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Tungsten oxide removal without substrate
+    description: Optimal average power range for Tungsten oxide removal without substrate
       damage
     min: 80
     max: 120
@@ -125,28 +119,35 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength for optimal Tungsten absorption and thermal processing
+    description: Near-IR wavelength optimized for Tungsten absorption characteristics
     min: null
     max: null
   spotSize:
     value: 50
     unit: μm
     confidence: 84
-    description: Beam spot diameter for precise cleaning with adequate energy density
+    description: Optimal beam spot diameter for precision cleaning
     min: 30
     max: 100
   repetitionRate:
     value: 100
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning with thermal management
+    description: Optimal repetition rate for efficient cleaning throughput
     min: 50
     max: 200
+  fluenceThreshold:
+    value: 2.5
+    unit: J/cm²
+    confidence: 88
+    description: Threshold fluence for effective Tungsten oxide ablation
+    min: 1.8
+    max: 3.5
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for controlled ablation of surface contaminants
+    description: Optimal pulse duration for controlled Tungsten surface cleaning
     min: 5
     max: 20
   scanSpeed:
@@ -157,26 +158,32 @@ machineSettings:
     min: 200
     max: 1000
   overlapRatio:
-    value: 70
+    value: 50
     unit: '%'
     confidence: 83
-    description: Beam overlap percentage for complete surface coverage
-    min: 50
-    max: 85
+    description: Optimal pulse overlap for complete surface coverage
+    min: 30
+    max: 70
   passCount:
     value: 3
     unit: passes
-    confidence: 81
-    description: Number of passes for thorough contaminant removal
+    confidence: 85
+    description: Recommended number of passes for thorough contamination removal
     min: 1
     max: 5
   energyDensity:
-    value: 5.1
+    value: 12.7
     unit: J/cm²
     confidence: 86
-    description: Fluence threshold for effective Tungsten oxide ablation
-    min: 3.0
-    max: 8.0
+    description: Calculated energy density based on power, spot size, and repetition
+      rate
+    min: 8.5
+    max: 16.2
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
   id: 4
   name: Todd Dunning

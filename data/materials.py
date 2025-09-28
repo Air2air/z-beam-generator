@@ -40,11 +40,19 @@ def add_material_names_to_items(data):
     # Create reverse lookup: category -> list of (material_name, index) for that category
     category_materials = {}
     for material_name, index_data in material_index.items():
-        category = index_data.get('category')
+        if isinstance(index_data, str):
+            # Simple format: material_name -> category_string
+            category = index_data
+            index_num = 0
+        else:
+            # Complex format: material_name -> {category: ..., index: ...}
+            category = index_data.get('category')
+            index_num = index_data.get('index', 0)
+            
         if category:
             if category not in category_materials:
                 category_materials[category] = []
-            category_materials[category].append((material_name, index_data.get('index', 0)))
+            category_materials[category].append((material_name, index_num))
     
     # Sort materials by index within each category
     for category in category_materials:
@@ -120,11 +128,19 @@ def expand_optimized_materials(data):
     # Create reverse lookup: category -> list of (material_name, index) for that category
     category_materials = {}
     for material_name, index_data in material_index.items():
-        category = index_data.get('category')
+        if isinstance(index_data, str):
+            # Simple format: material_name -> category_string
+            category = index_data
+            index_num = 0
+        else:
+            # Complex format: material_name -> {category: ..., index: ...}
+            category = index_data.get('category')
+            index_num = index_data.get('index', 0)
+            
         if category:
             if category not in category_materials:
                 category_materials[category] = []
-            category_materials[category].append((material_name, index_data.get('index', 0)))
+            category_materials[category].append((material_name, index_num))
     
     # Sort materials by index within each category
     for category in category_materials:
@@ -232,8 +248,14 @@ def get_material_by_name(material_name, data=None):
                     break
         
         if index_entry:
-            category = index_entry['category']
-            item_index = index_entry['index']
+            if isinstance(index_entry, str):
+                # Simple format: material_name -> category_string
+                category = index_entry
+                item_index = 0
+            else:
+                # Complex format: material_name -> {category: ..., index: ...}
+                category = index_entry['category']
+                item_index = index_entry['index']
             
             # Check if category exists in materials
             if category in data['materials']:

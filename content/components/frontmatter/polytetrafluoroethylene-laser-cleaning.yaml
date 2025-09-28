@@ -2,10 +2,109 @@ name: PTFE
 category: Plastic
 subcategory: Polytetrafluoroethylene (PTFE)
 title: PTFE Laser Cleaning
-description: Laser cleaning parameters for Polytetrafluoroethylene
+description: Laser cleaning parameters for Polycarbonate (PTFE)
+materialProperties:
+  density:
+    value: 2.2
+    unit: g/cm³
+    confidence: 95
+    description: Standard density of virgin PTFE material
+    min: 0.85
+    max: 2.2
+  meltingPoint:
+    value: 327
+    unit: °C
+    confidence: 92
+    description: Crystalline melting point of PTFE
+    min: null
+    max: null
+  thermalConductivity:
+    value: 0.25
+    unit: W/m·K
+    confidence: 90
+    description: Thermal conductivity at room temperature
+    min: 0.02
+    max: 3
+  tensileStrength:
+    value: 25
+    unit: MPa
+    confidence: 90
+    description: Typical tensile strength of unfilled PTFE
+    min: 10
+    max: 400
+  hardness:
+    value: 60
+    unit: Shore D
+    confidence: 85
+    description: Hardness on Shore D scale
+    min: null
+    max: null
+  youngsModulus:
+    value: 0.5
+    unit: GPa
+    confidence: 88
+    description: Elastic modulus in tension
+    min: 0.01
+    max: 50
+  thermalExpansion:
+    value: 135
+    unit: ×10⁻⁶/°C
+    confidence: 88
+    description: Linear thermal expansion coefficient (20-100°C)
+    min: 10
+    max: 200
+  specificHeat:
+    value: 1050
+    unit: J/kg·K
+    confidence: 85
+    description: Specific heat capacity at room temperature
+    min: 1
+    max: 2.5
+  absorptionCoefficient:
+    value: 0.85
+    unit: cm⁻¹
+    confidence: 82
+    description: Absorption coefficient at 1064 nm wavelength
+    min: null
+    max: null
+  reflectivity:
+    value: 0.15
+    unit: dimensionless
+    confidence: 80
+    description: Reflectivity at 1064 nm wavelength
+    min: null
+    max: null
+  ablationThreshold:
+    value: 0.8
+    unit: J/cm²
+    confidence: 85
+    description: Laser ablation threshold for nanosecond pulses at 1064 nm
+    min: null
+    max: null
+  chemicalStability:
+    value: 99.9
+    unit: '% resistance'
+    confidence: 95
+    description: Chemical resistance to most acids, bases, and solvents
+    min: null
+    max: null
+  crystallineStructure:
+    value: 50
+    unit: '% crystallinity'
+    confidence: 88
+    description: Typical crystallinity percentage in processed PTFE
+    min: null
+    max: null
+  surfaceEnergy:
+    value: 18
+    unit: mN/m
+    confidence: 90
+    description: Low surface energy critical for non-stick properties
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Automotive: Paint removal and surface preparation for automotive parts'
+- 'Electronics: Precision cleaning of electronic components and circuit boards'
 machineSettings:
   powerRange:
     value: 15
@@ -21,12 +120,12 @@ machineSettings:
     description: Near-IR wavelength for optimal PTFE absorption and minimal substrate
       damage
     min: 532
-    max: 1064
+    max: 10640
   spotSize:
     value: 100
     unit: μm
-    confidence: 86
-    description: Beam spot diameter for precise cleaning control on PTFE surfaces
+    confidence: 92
+    description: Beam spot diameter for precise PTFE surface cleaning
     min: 50
     max: 200
   repetitionRate:
@@ -34,44 +133,56 @@ machineSettings:
     unit: kHz
     confidence: 87
     description: Optimal repetition rate for efficient cleaning with thermal management
-    min: 10
-    max: 50
+    min: 1
+    max: 100
   pulseWidth:
     value: 100
     unit: ns
     confidence: 85
     description: Nanosecond pulse duration for controlled ablation of PTFE surface
       contaminants
-    min: 50
+    min: 10
     max: 200
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 84
+    confidence: 85
     description: Optimal scanning speed for uniform PTFE surface treatment
-    min: 200
-    max: 1000
+    min: 100
+    max: 2000
   fluenceThreshold:
     value: 0.8
     unit: J/cm²
     confidence: 89
     description: Minimum fluence required for effective PTFE contaminant removal
-    min: 0.5
-    max: 1.5
+    min: 0.3
+    max: 2.0
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 83
-    description: Optimal beam overlap for uniform PTFE surface cleaning
+    confidence: 86
+    description: Optimal overlap between successive laser passes for uniform cleaning
     min: 30
     max: 70
   passCount:
-    value: 2
+    value: 3
     unit: passes
-    confidence: 82
+    confidence: 84
     description: Recommended number of passes for complete PTFE surface cleaning
     min: 1
-    max: 5
+    max: 10
+  laserType:
+    value: Nd:YAG
+    unit: n/a
+    confidence: 90
+    description: Recommended laser type for PTFE cleaning applications
+    min: null
+    max: null
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
   id: 1
   name: Yi-Chun Lin

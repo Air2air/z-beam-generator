@@ -2,96 +2,109 @@ name: Shale
 category: Stone
 subcategory: Shale
 title: Shale Laser Cleaning
-description: Laser cleaning parameters for Shale
+description: Laser cleaning parameters for Alabaster
 materialProperties:
   density:
     value: 2.4
     unit: g/cm³
     confidence: 95
-    description: Bulk density of typical shale, varies with mineral composition and
-      porosity
-    min: 2.2
-    max: 2.8
+    description: Average bulk density of shale formations
+    min: 1.5
+    max: 3.4
   meltingPoint:
-    value: 1200
+    value: 1250
     unit: °C
     confidence: 85
-    description: Approximate melting range due to complex mineral composition
-    min: 1100
-    max: 1400
+    description: Approximate melting point of shale clay minerals
+    min: null
+    max: null
   thermalConductivity:
-    value: 1.5
+    value: 1.8
     unit: W/m·K
     confidence: 90
     description: Thermal conductivity perpendicular to bedding planes
-    min: 1.2
-    max: 2.0
+    min: 0.2
+    max: 5
   tensileStrength:
-    value: 5
+    value: 5.2
     unit: MPa
     confidence: 85
     description: Brazilian tensile strength parallel to bedding
     min: 2
-    max: 10
+    max: 25
   hardness:
-    value: 3.5
+    value: 2.5
     unit: Mohs
-    confidence: 88
-    description: Mohs hardness scale, varies with clay mineral content
-    min: 2.5
-    max: 4.5
+    confidence: 92
+    description: Mohs hardness scale for typical shale
+    min: 1
+    max: 7
   youngsModulus:
     value: 25
     unit: GPa
     confidence: 90
-    description: Elastic modulus parallel to bedding planes
-    min: 15
-    max: 40
+    description: Static Young's modulus perpendicular to bedding
+    min: 10
+    max: 100
   thermalExpansion:
-    value: 8.5
+    value: 8.2
     unit: 10⁻⁶/°C
-    confidence: 88
-    description: Coefficient of thermal expansion at room temperature
-    min: 7.0
-    max: 10.0
+    confidence: 82
+    description: Linear thermal expansion coefficient at room temperature
+    min: 3
+    max: 16
   specificHeat:
-    value: 0.9
+    value: 0.85
     unit: kJ/kg·K
-    confidence: 92
-    description: Specific heat capacity at room temperature
-    min: 0.8
-    max: 1.1
-  porosity:
-    value: 12
-    unit: '%'
-    confidence: 94
-    description: Typical porosity range for consolidated shale
-    min: 5
-    max: 20
+    confidence: 88
+    description: Specific heat capacity at 25°C
+    min: 0.7
+    max: 1.2
   absorptionCoefficient:
     value: 850
     unit: cm⁻¹
-    confidence: 82
-    description: Absorption coefficient for 1064 nm Nd:YAG laser wavelength
-    min: 600
-    max: 1200
-  reflectivity:
-    value: 0.25
-    unit: dimensionless
     confidence: 80
-    description: Reflectivity at 1064 nm wavelength
-    min: 0.15
-    max: 0.35
+    description: Absorption coefficient at 1064 nm wavelength
+    min: null
+    max: null
+  reflectivity:
+    value: 0.15
+    unit: dimensionless
+    confidence: 82
+    description: Reflectivity at 1064 nm for dry shale surface
+    min: null
+    max: null
   ablationThreshold:
-    value: 1.2
+    value: 1.8
     unit: J/cm²
+    confidence: 78
+    description: Laser ablation threshold for 1064 nm nanosecond pulses
+    min: null
+    max: null
+  porosity:
+    value: 8.5
+    unit: '%'
+    confidence: 94
+    description: Average porosity of compacted shale
+    min: null
+    max: null
+  surfaceRoughness:
+    value: 12.5
+    unit: μm Ra
+    confidence: 88
+    description: Average surface roughness of natural shale surfaces
+    min: null
+    max: null
+  chemicalStability:
+    value: 0.75
+    unit: dimensionless
     confidence: 85
-    description: Laser ablation threshold for nanosecond pulses at 1064 nm
-    min: 0.8
-    max: 2.0
+    description: Chemical stability index relative to quartz (1.0)
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Art Conservation: Delicate cleaning of artwork and cultural artifacts'
+- 'Jewelry: Precision cleaning and polishing of precious metal jewelry'
 machineSettings:
   powerRange:
     value: 100
@@ -105,24 +118,23 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength optimal for Shale mineral absorption
+    description: Near-infrared wavelength optimized for Shale mineral absorption
     min: 1030
     max: 1080
   spotSize:
     value: 100
     unit: μm
     confidence: 90
-    description: Beam spot diameter for precise Shale surface treatment
+    description: Beam spot diameter for precise cleaning control on Shale surfaces
     min: 50
     max: 200
   repetitionRate:
-    value: 50
+    value: 100
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient Shale cleaning with thermal
-      management
-    min: 20
-    max: 100
+    description: Optimal repetition rate for efficient cleaning with thermal management
+    min: 50
+    max: 200
   pulseWidth:
     value: 10
     unit: ns
@@ -135,45 +147,50 @@ machineSettings:
     value: 500
     unit: mm/s
     confidence: 84
-    description: Optimal scanning speed for uniform Shale surface cleaning
+    description: Optimal scanning speed for uniform cleaning coverage
     min: 200
     max: 1000
+  fluenceThreshold:
+    value: 2.5
+    unit: J/cm²
+    confidence: 89
+    description: Minimum fluence required for effective Shale surface cleaning
+    min: 1.5
+    max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 86
-    description: Beam overlap percentage for complete coverage without over-processing
+    description: Optimal pulse overlap for uniform cleaning without over-processing
     min: 30
     max: 70
   passCount:
-    value: 2
+    value: 3
     unit: passes
-    confidence: 89
-    description: Number of passes required for thorough Shale surface cleaning
+    confidence: 83
+    description: Recommended number of passes for complete contaminant removal
     min: 1
-    max: 4
-  energyDensity:
-    value: 12.7
-    unit: J/cm²
-    confidence: 91
-    description: Fluence threshold for effective Shale contaminant removal
-    min: 8.0
-    max: 15.0
+    max: 5
   laserType:
     value: Nd:YAG
     unit: n/a
-    confidence: 90
+    confidence: 91
     description: Recommended laser type for Shale cleaning applications
     min: null
     max: null
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
-  id: 1
-  name: Yi-Chun Lin
-  sex: f
+  id: 2
+  name: Alessandro Moretti
+  sex: m
   title: Ph.D.
-  country: Taiwan
-  expertise: Laser Materials Processing
-  image: /images/author/yi-chun-lin.jpg
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  image: /images/author/alessandro-moretti.jpg
 images:
   hero:
     alt: Shale surface undergoing laser cleaning showing precise contamination removal
@@ -207,7 +224,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-author_id: 1
+author_id: 2
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues

@@ -2,109 +2,103 @@ name: Porcelain
 category: Ceramic
 subcategory: Porcelain
 title: Porcelain Laser Cleaning
-description: Laser cleaning parameters for Porcelain
+description: Laser cleaning parameters for Alumina
 materialProperties:
   density:
     value: 2.4
     unit: g/cm³
     confidence: 95
-    description: Typical density of vitrified porcelain
-    min: 2.3
-    max: 2.5
+    description: Typical density of porcelain ceramic material
+    min: 2.2
+    max: 19.3
   meltingPoint:
     value: 1650
     unit: °C
     confidence: 90
-    description: Approximate melting temperature range
-    min: 1600
-    max: 1700
+    description: Melting point range for porcelain ceramics
+    min: null
+    max: null
   thermalConductivity:
     value: 1.5
     unit: W/m·K
-    confidence: 92
+    confidence: 88
     description: Thermal conductivity at room temperature
-    min: 1.2
-    max: 1.8
+    min: 0.03
+    max: 2000.0
   hardness:
     value: 7.0
     unit: Mohs
-    confidence: 95
-    description: Mohs hardness scale
-    min: 6.5
-    max: 7.5
+    confidence: 94
+    description: Mohs hardness scale value
+    min: 3.0
+    max: 10.0
   youngsModulus:
     value: 70
     unit: GPa
     confidence: 92
     description: Young's modulus of elasticity
-    min: 65
-    max: 75
+    min: 150
+    max: 700
   thermalExpansion:
     value: 6.0
     unit: ×10⁻⁶/°C
-    confidence: 88
-    description: Coefficient of thermal expansion (20-1000°C)
-    min: 5.5
-    max: 6.5
-  thermalDiffusivity:
-    value: 0.008
-    unit: cm²/s
     confidence: 85
-    description: Thermal diffusivity at room temperature
-    min: 0.006
-    max: 0.01
+    description: Coefficient of thermal expansion (20-1000°C)
+    min: 0.1
+    max: 14
   specificHeat:
     value: 1080
     unit: J/kg·K
-    confidence: 90
+    confidence: 87
     description: Specific heat capacity at room temperature
-    min: 1000
-    max: 1150
+    min: 0.4
+    max: 1.1
   flexuralStrength:
     value: 50
     unit: MPa
-    confidence: 88
-    description: Modulus of rupture (three-point bending)
-    min: 40
-    max: 60
+    confidence: 85
+    description: Flexural (bending) strength
+    min: null
+    max: null
   absorptionCoefficient:
     value: 0.85
     unit: dimensionless
     confidence: 82
-    description: Typical absorption coefficient for IR lasers (1064 nm)
-    min: 0.75
-    max: 0.95
+    description: Optical absorption coefficient for common laser wavelengths (1064
+      nm)
+    min: null
+    max: null
   reflectivity:
-    value: 0.15
+    value: 0.12
     unit: dimensionless
     confidence: 80
-    description: Reflectivity at common laser wavelengths
-    min: 0.1
-    max: 0.2
+    description: Surface reflectivity for typical laser wavelengths
+    min: null
+    max: null
   ablationThreshold:
     value: 2.5
     unit: J/cm²
-    confidence: 85
-    description: Laser ablation threshold for nanosecond pulses (1064 nm)
-    min: 2.0
-    max: 3.0
+    confidence: 82
+    description: Laser ablation threshold for nanosecond pulses
+    min: null
+    max: null
   porosity:
     value: 2.0
     unit: '%'
-    confidence: 90
-    description: Typical porosity of vitrified porcelain
-    min: 1.0
-    max: 3.0
+    confidence: 88
+    description: Typical porosity percentage in fired porcelain
+    min: null
+    max: null
   chemicalStability:
-    value: Excellent
-    unit: qualitative
-    confidence: 95
-    description: Resistance to acids, alkalis, and environmental degradation
-    min: Very Good
-    max: Excellent
+    value: 95
+    unit: '% resistance'
+    confidence: 90
+    description: Chemical resistance to acids and alkalis
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Jewelry: Precision cleaning and polishing of precious metal jewelry'
+- 'Nuclear: Decontamination and surface cleaning in nuclear facilities'
 machineSettings:
   powerRange:
     value: 100
@@ -118,78 +112,82 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength optimized for porcelain absorption and minimal
-      substrate damage
+    description: Near-infrared wavelength optimized for porcelain absorption
     min: 1030
     max: 1070
   spotSize:
     value: 100
     unit: μm
     confidence: 90
-    description: Optimal beam diameter for precision cleaning of porcelain surfaces
+    description: Beam spot diameter for precise cleaning control
     min: 50
     max: 200
   repetitionRate:
     value: 100
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning coverage while maintaining
-      thermal management
+    description: Optimal repetition rate for efficient cleaning with thermal management
     min: 50
     max: 200
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with
-      controlled thermal effects
+    description: Nanosecond pulse duration for controlled ablation of surface contaminants
     min: 5
     max: 20
   scanSpeed:
     value: 1000
     unit: mm/s
     confidence: 84
-    description: Scanning speed balancing cleaning efficiency and surface quality
+    description: Optimal scanning speed for uniform surface treatment
     min: 500
     max: 2000
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Threshold fluence for effective contaminant removal without damaging
-      porcelain substrate
+    description: Fluence threshold for effective contaminant removal without substrate
+      damage
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 86
-    description: Optimal overlap between adjacent laser tracks for uniform cleaning
-      coverage
-    min: 40
+    description: Optimal beam overlap for complete surface coverage
+    min: 30
     max: 70
   passCount:
     value: 3
     unit: passes
     confidence: 83
-    description: Recommended number of passes for thorough cleaning of porcelain surfaces
+    description: Recommended number of passes for thorough cleaning
     min: 1
     max: 5
   laserType:
     value: Nd:YAG
     unit: n/a
     confidence: 91
-    description: Fiber laser type preferred for porcelain cleaning applications
+    description: Recommended laser type for porcelain cleaning applications
     min: null
     max: null
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+- EPA Clean Air Act Compliance
+- ASTM C848 - Standard Specification for High Alumina Refractory Brick
+- ISO 23146 - Technical Ceramics
 author_object:
-  id: 3
-  name: Ikmanda Roswati
+  id: 2
+  name: Alessandro Moretti
   sex: m
   title: Ph.D.
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  image: /images/author/ikmanda-roswati.jpg
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  image: /images/author/alessandro-moretti.jpg
 images:
   hero:
     alt: Porcelain surface undergoing laser cleaning showing precise contamination
@@ -224,7 +222,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-author_id: 3
+author_id: 2
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues

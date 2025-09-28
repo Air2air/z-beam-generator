@@ -67,17 +67,9 @@ class DynamicGenerator:
         try:
             from cli.component_config import get_components_sorted_by_priority
             return get_components_sorted_by_priority()
-        except ImportError:
-            # Fallback to directory listing if config not available
-            components_dir = Path("components")
-            if not components_dir.exists():
-                return []
-
-            components = []
-            for item in components_dir.iterdir():
-                if item.is_dir() and not item.name.startswith("__"):
-                    components.append(item.name)
-            return sorted(components)
+        except ImportError as e:
+            # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
+            raise ValueError(f"Component configuration required for dynamic generation: {e}")
 
     def generate_multiple(self, request: GenerationRequest, frontmatter_data: Optional[Dict] = None) -> GenerationResult:
         """Generate multiple components for a material"""

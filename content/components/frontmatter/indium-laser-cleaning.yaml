@@ -2,174 +2,187 @@ name: Indium
 category: Metal
 subcategory: Indium
 title: Indium Laser Cleaning
-description: Laser cleaning parameters for Indium
+description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
     value: 7.31
     unit: g/cm³
     confidence: 98
     description: Density of pure indium at 20°C
-    min: 7.28
-    max: 7.31
+    min: 0.53
+    max: 22.6
   meltingPoint:
     value: 156.6
     unit: °C
     confidence: 97
     description: Melting point of pure indium
-    min: 156.4
-    max: 156.8
+    min: null
+    max: null
   thermalConductivity:
     value: 81.8
     unit: W/m·K
     confidence: 92
-    description: Thermal conductivity at 300K
-    min: 80.0
-    max: 83.0
+    description: Thermal conductivity at 25°C
+    min: 6.0
+    max: 429.0
   tensileStrength:
-    value: 2.5
+    value: 4
     unit: MPa
-    confidence: 85
+    confidence: 84
     description: Ultimate tensile strength of pure indium
-    min: 1.5
-    max: 4.0
+    min: 30.0
+    max: 3000.0
   hardness:
     value: 0.9
     unit: HB
     confidence: 89
-    description: Brinell hardness of pure indium
-    min: 0.8
-    max: 1.0
+    description: Brinell hardness of annealed indium
+    min: 5
+    max: 500
   youngsModulus:
     value: 11
     unit: GPa
-    confidence: 87
-    description: Young's modulus of elasticity
-    min: 10
-    max: 12
+    confidence: 85
+    description: Young's modulus of pure indium
+    min: 70
+    max: 411
   thermalExpansion:
     value: 32.1
-    unit: ×10⁻⁶/K
+    unit: μm/m·K
     confidence: 90
-    description: Linear thermal expansion coefficient at 25°C
-    min: 31.5
-    max: 33.0
-  thermalDiffusivity:
-    value: 0.44
-    unit: cm²/s
-    confidence: 88
-    description: Thermal diffusivity at room temperature
-    min: 0.42
-    max: 0.46
+    description: Coefficient of linear thermal expansion at 25°C
+    min: 0.5
+    max: 29.1
   specificHeat:
-    value: 0.233
-    unit: J/g·K
+    value: 233
+    unit: J/kg·K
     confidence: 91
     description: Specific heat capacity at 25°C
-    min: 0.23
-    max: 0.235
-  absorptionCoefficient:
-    value: 6.5
-    unit: ×10⁵ cm⁻¹
-    confidence: 82
-    description: Approximate absorption coefficient for visible light (500-600 nm)
-    min: 5.0
-    max: 8.0
+    min: 0.128
+    max: 0.904
+  thermalDiffusivity:
+    value: 4.6
+    unit: mm²/s
+    confidence: 88
+    description: Thermal diffusivity calculated from thermal properties
+    min: 4.2
+    max: 174
   reflectivity:
     value: 74
     unit: '%'
-    confidence: 84
-    description: Reflectivity at 500 nm wavelength
-    min: 72
-    max: 76
+    confidence: 82
+    description: Optical reflectivity at 1064 nm wavelength
+    min: null
+    max: null
+  absorptionCoefficient:
+    value: 12000000.0
+    unit: m⁻¹
+    confidence: 80
+    description: Absorption coefficient for near-infrared lasers
+    min: null
+    max: null
   ablationThreshold:
     value: 0.15
     unit: J/cm²
-    confidence: 80
-    description: Estimated laser ablation threshold for nanosecond pulses (1064 nm)
-    min: 0.1
-    max: 0.25
+    confidence: 78
+    description: Estimated laser ablation threshold for nanosecond pulses at 1064
+      nm
+    min: null
+    max: null
   crystallineStructure:
     value: Tetragonal
     unit: none
     confidence: 95
     description: Crystal structure (body-centered tetragonal)
-    min: n/a
-    max: n/a
-  oxidationResistance:
-    value: Low
-    unit: qualitative
-    confidence: 88
-    description: Forms thin oxide layer but oxidizes slowly in air
-    min: n/a
-    max: n/a
+    min: null
+    max: null
+  electricalResistivity:
+    value: 83.7
+    unit: nΩ·m
+    confidence: 93
+    description: Electrical resistivity at 20°C
+    min: null
+    max: null
+  vaporizationTemperature:
+    value: 2072
+    unit: °C
+    confidence: 90
+    description: Boiling point of indium
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Nuclear: Decontamination and surface cleaning in nuclear facilities'
+- 'Manufacturing: Industrial surface preparation and contamination removal'
 machineSettings:
   powerRange:
     value: 15
     unit: W
     confidence: 90
-    description: Optimal average power for Indium oxide removal without substrate
-      damage
+    description: Optimal average power for Indium oxide removal without melting substrate
     min: 8
     max: 25
   wavelength:
     value: 1064
     unit: nm
-    confidence: 88
-    description: Near-IR wavelength with good absorption in Indium oxide layers
-    min: 532
-    max: 1064
+    confidence: 89
+    description: Near-IR wavelength with good absorption in Indium oxides
+    min: null
+    max: null
   spotSize:
     value: 50
     unit: μm
     confidence: 82
-    description: Beam spot diameter for precise oxide removal
+    description: Beam spot diameter for precise cleaning control
     min: 30
     max: 100
   repetitionRate:
-    value: 20
+    value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning coverage
-    min: 10
-    max: 50
+    description: Optimal repetition rate for efficient cleaning with minimal heat
+      accumulation
+    min: 20
+    max: 100
+  fluenceThreshold:
+    value: 0.8
+    unit: J/cm²
+    confidence: 88
+    description: Minimum fluence required for effective Indium oxide ablation
+    min: 0.5
+    max: 1.5
   pulseWidth:
-    value: 100
+    value: 20
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for controlled oxide ablation
-    min: 50
-    max: 200
+    description: Pulse duration optimized for thermal confinement in Indium
+    min: 10
+    max: 50
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 84
-    description: Optimal scanning speed for uniform cleaning
+    description: Optimal scanning speed for uniform oxide removal
     min: 200
     max: 1000
-  fluenceThreshold:
-    value: 1.2
-    unit: J/cm²
-    confidence: 89
-    description: Minimum fluence required for Indium oxide ablation
-    min: 0.8
-    max: 2.5
   overlapRatio:
-    value: 50
+    value: 70
     unit: '%'
     confidence: 83
     description: Optimal pulse overlap for complete surface coverage
-    min: 30
-    max: 70
+    min: 50
+    max: 85
   passCount:
-    value: 1
+    value: 2
     unit: passes
-    confidence: 91
-    description: Single pass typically sufficient for thin oxide layers
+    confidence: 86
+    description: Number of passes for complete oxide removal
     min: 1
-    max: 3
+    max: 4
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
   id: 4
   name: Todd Dunning

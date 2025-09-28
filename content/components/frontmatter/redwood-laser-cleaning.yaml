@@ -2,7 +2,113 @@ name: Redwood
 category: Wood
 subcategory: Redwood
 title: Redwood Laser Cleaning
-description: Laser cleaning parameters for Redwood
+description: Laser cleaning parameters for Ash
+materialProperties:
+  density:
+    value: 0.42
+    unit: g/cm³
+    confidence: 95
+    description: Average density of coast redwood at 12% moisture content
+    min: 0.12
+    max: 1.25
+  meltingPoint:
+    value: 380
+    unit: °C
+    confidence: 85
+    description: Approximate pyrolysis temperature where wood begins to decompose
+    min: null
+    max: null
+  thermalConductivity:
+    value: 0.12
+    unit: W/m·K
+    confidence: 90
+    description: Thermal conductivity perpendicular to grain at room temperature
+    min: 0.04
+    max: 0.4
+  tensileStrength:
+    value: 85
+    unit: MPa
+    confidence: 90
+    description: Tensile strength parallel to grain
+    min: 20
+    max: 200
+  hardness:
+    value: 2.1
+    unit: kN
+    confidence: 88
+    description: Janka hardness test result
+    min: 0.4
+    max: 22.5
+  youngsModulus:
+    value: 9.0
+    unit: GPa
+    confidence: 92
+    description: Modulus of elasticity parallel to grain
+    min: 5
+    max: 25
+  thermalExpansion:
+    value: 3.0e-05
+    unit: 1/°C
+    confidence: 88
+    description: Coefficient of thermal expansion perpendicular to grain
+    min: 3
+    max: 60
+  thermalDiffusivity:
+    value: 0.00018
+    unit: m²/s
+    confidence: 85
+    description: Thermal diffusivity at room temperature
+    min: 0.1
+    max: 0.4
+  specificHeat:
+    value: 1600
+    unit: J/kg·K
+    confidence: 92
+    description: Specific heat capacity at room temperature
+    min: 1.2
+    max: 4.2
+  absorptionCoefficient:
+    value: 0.75
+    unit: dimensionless
+    confidence: 82
+    description: Average absorption coefficient for near-infrared wavelengths (800-1100nm)
+    min: null
+    max: null
+  reflectivity:
+    value: 0.15
+    unit: dimensionless
+    confidence: 80
+    description: Reflectivity at common laser cleaning wavelengths
+    min: null
+    max: null
+  ablationThreshold:
+    value: 0.8
+    unit: J/cm²
+    confidence: 85
+    description: Minimum fluence required for material removal with nanosecond pulses
+    min: null
+    max: null
+  porosity:
+    value: 65
+    unit: '%'
+    confidence: 90
+    description: Typical porosity percentage in redwood structure
+    min: null
+    max: null
+  surfaceRoughness:
+    value: 3.5
+    unit: μm
+    confidence: 85
+    description: Average surface roughness (Ra) of planed redwood
+    min: null
+    max: null
+  chemicalStability:
+    value: 8
+    unit: rating (1-10)
+    confidence: 88
+    description: Natural resistance to decay and chemical degradation
+    min: null
+    max: null
 applications:
 - laser cleaning
 - surface preparation
@@ -11,49 +117,51 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal power range for Redwood surface cleaning without charring
+    description: Optimal average power for Redwood surface cleaning without charring
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength for optimal absorption in wood cellulose and lignin
+    description: Near-infrared wavelength for optimal absorption in wood cellulose
+      and lignin
     min: 1030
     max: 1070
   spotSize:
     value: 100
     unit: μm
-    confidence: 84
+    confidence: 87
     description: Beam spot diameter for precise cleaning control
     min: 50
     max: 200
   repetitionRate:
     value: 50
     unit: kHz
-    confidence: 87
-    description: High repetition rate for efficient surface coverage
+    confidence: 90
+    description: High repetition rate for efficient cleaning with minimal thermal
+      damage
     min: 20
     max: 100
   pulseWidth:
-    value: 15
+    value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for controlled material removal
-    min: 10
-    max: 25
+    description: Nanosecond pulse duration for controlled ablation of surface contaminants
+    min: 5
+    max: 20
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 86
-    description: Optimal scanning speed for uniform surface treatment
-    min: 300
-    max: 800
+    confidence: 85
+    description: Optimal scanning speed for uniform cleaning coverage
+    min: 200
+    max: 1000
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Threshold fluence for effective contaminant removal without wood
+    description: Fluence threshold for effective contaminant removal without wood
       damage
     min: 1.5
     max: 4.0
@@ -61,17 +169,29 @@ machineSettings:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for complete surface coverage
-    min: 40
+    description: Optimal beam overlap for uniform cleaning results
+    min: 30
     max: 70
   passCount:
     value: 2
     unit: passes
-    confidence: 85
-    description: Number of passes for thorough cleaning without excessive material
-      removal
+    confidence: 88
+    description: Recommended number of passes for complete cleaning
     min: 1
-    max: 4
+    max: 3
+  laserType:
+    value: Fiber Laser
+    unit: N/A
+    confidence: 91
+    description: Recommended laser type for wood cleaning applications
+    min: null
+    max: null
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+- EPA Clean Air Act Compliance
 author_object:
   id: 4
   name: Todd Dunning

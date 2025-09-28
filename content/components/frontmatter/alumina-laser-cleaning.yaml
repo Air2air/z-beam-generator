@@ -8,117 +8,125 @@ materialProperties:
     value: 3.95
     unit: g/cm³
     confidence: 98
-    description: Density of high-purity (99.5%) alumina ceramic
-    min: 3.89
-    max: 3.98
+    description: Density of high-purity alumina (99.5% Al2O3) at room temperature
+    min: 2.2
+    max: 19.3
   meltingPoint:
     value: 2072
     unit: °C
     confidence: 95
-    description: Melting point of pure alpha-alumina
-    min: 2050
-    max: 2100
+    description: Melting point of pure alumina
+    min: null
+    max: null
   thermalConductivity:
     value: 30
     unit: W/m·K
-    confidence: 92
-    description: Thermal conductivity at room temperature (99.5% purity)
-    min: 28
-    max: 35
+    confidence: 90
+    description: Thermal conductivity at room temperature for 99.5% alumina
+    min: 0.03
+    max: 2000.0
   hardness:
-    value: 15
-    unit: GPa
-    confidence: 92
-    description: Vickers hardness (HV0.5)
-    min: 14
-    max: 16
+    value: 9
+    unit: Mohs
+    confidence: 96
+    description: Mohs hardness scale (diamond=10)
+    min: 3.0
+    max: 10.0
   youngsModulus:
     value: 370
     unit: GPa
     confidence: 95
-    description: Young's modulus of high-purity alumina
-    min: 350
-    max: 390
+    description: Young's modulus of elasticity
+    min: 150
+    max: 700
   thermalExpansion:
     value: 8.1
-    unit: ×10⁻⁶/°C
-    confidence: 90
+    unit: 10⁻⁶/°C
+    confidence: 92
     description: Coefficient of thermal expansion (20-1000°C)
-    min: 7.8
-    max: 8.4
-  thermalDiffusivity:
-    value: 0.12
-    unit: cm²/s
-    confidence: 88
-    description: Thermal diffusivity at room temperature
     min: 0.1
-    max: 0.14
+    max: 14
+  thermalDiffusivity:
+    value: 0.08
+    unit: cm²/s
+    confidence: 85
+    description: Thermal diffusivity at room temperature
+    min: 0.3
+    max: 120
   specificHeat:
     value: 880
     unit: J/kg·K
-    confidence: 85
-    description: Specific heat capacity at 25°C
-    min: 850
-    max: 920
+    confidence: 88
+    description: Specific heat capacity at room temperature
+    min: 0.4
+    max: 1.1
   flexuralStrength:
     value: 380
     unit: MPa
     confidence: 90
-    description: Flexural strength (3-point bending)
-    min: 350
-    max: 420
+    description: Flexural strength of sintered alumina
+    min: null
+    max: null
   absorptionCoefficient:
-    value: 0.85
-    unit: dimensionless
-    confidence: 85
-    description: Absorption coefficient for 1064nm Nd:YAG laser
-    min: 0.75
-    max: 0.92
-  reflectivity:
-    value: 0.12
-    unit: dimensionless
+    value: 0.15
+    unit: cm⁻¹
     confidence: 82
+    description: Absorption coefficient for 1064nm wavelength
+    min: null
+    max: null
+  reflectivity:
+    value: 0.08
+    unit: dimensionless
+    confidence: 80
     description: Reflectivity at 1064nm wavelength
-    min: 0.08
-    max: 0.15
+    min: null
+    max: null
+  refractiveIndex:
+    value: 1.76
+    unit: dimensionless
+    confidence: 94
+    description: Refractive index at 589nm wavelength
+    min: null
+    max: null
   ablationThreshold:
     value: 2.5
     unit: J/cm²
-    confidence: 80
+    confidence: 85
     description: Laser ablation threshold for nanosecond pulses at 1064nm
-    min: 1.8
-    max: 3.2
+    min: null
+    max: null
   laserDamageThreshold:
     value: 15
     unit: J/cm²
-    confidence: 85
-    description: Single-shot laser-induced damage threshold
-    min: 12
-    max: 18
-  chemicalStability:
-    value: 95
-    unit: '% resistance'
-    confidence: 90
-    description: Chemical stability rating against common solvents and acids
-    min: 90
-    max: 98
+    confidence: 82
+    description: Laser-induced damage threshold for short pulses
+    min: null
+    max: null
   crystallineStructure:
     value: Hexagonal
     unit: crystal system
     confidence: 98
-    description: Alpha-alumina (corundum) crystal structure
-    min: N/A
-    max: N/A
+    description: Alpha-alumina crystalline structure (corundum)
+    min: null
+    max: null
   porosity:
     value: 0.5
     unit: '%'
     confidence: 88
-    description: Typical porosity for high-density alumina ceramics
-    min: 0.1
-    max: 2.0
+    description: Typical porosity for high-density sintered alumina
+    min: null
+    max: null
+  chemicalStability:
+    value: Excellent
+    unit: qualitative
+    confidence: 96
+    description: Resistance to acids, alkalis, and oxidation
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Jewelry: Precision cleaning and polishing of precious metal jewelry'
+- 'Aerospace: Precision cleaning of aerospace components and assemblies'
+- 'Medical: Sterilization and cleaning of medical devices and instruments'
 machineSettings:
   powerRange:
     value: 100
@@ -138,8 +146,8 @@ machineSettings:
   spotSize:
     value: 50
     unit: μm
-    confidence: 84
-    description: Beam spot diameter for precise cleaning resolution
+    confidence: 90
+    description: Optimal spot size for precision cleaning of Alumina surfaces
     min: 30
     max: 100
   repetitionRate:
@@ -158,41 +166,49 @@ machineSettings:
     min: 5
     max: 20
   scanSpeed:
-    value: 1000
+    value: 500
     unit: mm/s
-    confidence: 86
-    description: Optimal scanning speed for uniform material removal
-    min: 500
-    max: 2000
+    confidence: 84
+    description: Scan speed balancing cleaning efficiency and surface quality
+    min: 200
+    max: 1000
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Threshold fluence for Alumina ablation without substrate damage
+    description: Fluence threshold for effective Alumina removal without substrate
+      damage
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 83
-    description: Optimal overlap between adjacent scan lines for uniform cleaning
-    min: 30
+    confidence: 86
+    description: Optimal overlap between adjacent laser tracks for uniform cleaning
+    min: 40
     max: 70
   passCount:
     value: 3
     unit: passes
-    confidence: 82
-    description: Recommended number of passes for complete contaminant removal
+    confidence: 83
+    description: Number of passes for complete contaminant removal from Alumina
     min: 1
     max: 5
-  energyDensity:
-    value: 5.1
-    unit: J/cm²
-    confidence: 85
-    description: Calculated energy density based on power, spot size, and repetition
-      rate
-    min: 3.0
-    max: 8.0
+  laserType:
+    value: Nd:YAG
+    unit: n/a
+    confidence: 91
+    description: Recommended laser type for Alumina cleaning applications
+    min: null
+    max: null
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+- EPA Clean Air Act Compliance
+- ASTM C848 - Standard Specification for High Alumina Refractory Brick
+- ISO 23146 - Technical Ceramics
 author_object:
   id: 2
   name: Alessandro Moretti

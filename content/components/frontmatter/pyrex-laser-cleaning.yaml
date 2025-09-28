@@ -1,0 +1,324 @@
+name: Pyrex
+category: Glass
+subcategory: Pyrex
+title: Pyrex Laser Cleaning
+description: Laser cleaning parameters for Borosilicate Glass
+materialProperties:
+  density:
+    value: 2.23
+    unit: g/cm³
+    confidence: 98
+    description: Density of Pyrex borosilicate glass at room temperature
+    min: 1.2
+    max: 7.6
+  meltingPoint:
+    value: 820
+    unit: °C
+    confidence: 95
+    description: Softening point where Pyrex begins to deform significantly
+    min: null
+    max: null
+  thermalConductivity:
+    value: 1.1
+    unit: W/m·K
+    confidence: 92
+    description: Thermal conductivity at room temperature
+    min: 0.02
+    max: 4.2
+  hardness:
+    value: 6.5
+    unit: Mohs
+    confidence: 92
+    description: Mohs hardness scale
+    min: 4.5
+    max: 9
+  youngsModulus:
+    value: 62
+    unit: GPa
+    confidence: 94
+    description: Young's modulus of elasticity
+    min: 10
+    max: 95
+  thermalExpansion:
+    value: 3.25
+    unit: ×10⁻⁶/°C
+    confidence: 96
+    description: Coefficient of linear thermal expansion (20-300°C)
+    min: 0.1
+    max: 15
+  thermalDiffusivity:
+    value: 0.55
+    unit: mm²/s
+    confidence: 88
+    description: Thermal diffusivity at room temperature
+    min: 0.01
+    max: 1.8
+  specificHeat:
+    value: 830
+    unit: J/kg·K
+    confidence: 90
+    description: Specific heat capacity at room temperature
+    min: 0.5
+    max: 1
+  flexuralStrength:
+    value: 69
+    unit: MPa
+    confidence: 85
+    description: Flexural (bending) strength
+    min: null
+    max: null
+  refractiveIndex:
+    value: 1.474
+    unit: dimensionless
+    confidence: 98
+    description: Refractive index at 589 nm wavelength
+    min: null
+    max: null
+  transmissivity:
+    value: 92
+    unit: '%'
+    confidence: 95
+    description: Visible light transmission (2 mm thickness)
+    min: null
+    max: null
+  ablationThreshold:
+    value: 2.5
+    unit: J/cm²
+    confidence: 82
+    description: Laser ablation threshold for 1064 nm Nd:YAG laser
+    min: null
+    max: null
+  laserDamageThreshold:
+    value: 15
+    unit: J/cm²
+    confidence: 80
+    description: Permanent damage threshold for nanosecond pulses
+    min: null
+    max: null
+  chemicalStability:
+    value: 0.05
+    unit: mg/cm²
+    confidence: 96
+    description: Weight loss in 6N HCl after 24 hours at 100°C
+    min: null
+    max: null
+  crystallineStructure:
+    value: Amorphous
+    unit: N/A
+    confidence: 99
+    description: Non-crystalline glass structure
+    min: null
+    max: null
+  surfaceRoughness:
+    value: 0.5
+    unit: nm Ra
+    confidence: 85
+    description: Typical surface roughness for polished Pyrex
+    min: null
+    max: null
+applications:
+- 'Automotive: Paint removal and surface preparation for automotive parts'
+- 'Electronics: Precision cleaning of electronic components and circuit boards'
+machineSettings:
+  powerRange:
+    value: 20
+    unit: W
+    confidence: 90
+    description: Average power for effective Pyrex cleaning without thermal damage
+    min: 10
+    max: 40
+  wavelength:
+    value: 1064
+    unit: nm
+    confidence: 88
+    description: Near-IR wavelength with good Pyrex absorption for controlled ablation
+    min: 1030
+    max: 1070
+  spotSize:
+    value: 100
+    unit: μm
+    confidence: 92
+    description: Beam spot diameter for precise cleaning control
+    min: 50
+    max: 200
+  repetitionRate:
+    value: 20
+    unit: kHz
+    confidence: 87
+    description: Optimal repetition rate for Pyrex cleaning efficiency
+    min: 10
+    max: 50
+  pulseWidth:
+    value: 100
+    unit: ns
+    confidence: 85
+    description: Nanosecond pulse duration for efficient contaminant removal
+    min: 50
+    max: 200
+  scanSpeed:
+    value: 500
+    unit: mm/s
+    confidence: 85
+    description: Optimal scanning speed for uniform cleaning
+    min: 200
+    max: 1000
+  fluenceThreshold:
+    value: 2.5
+    unit: J/cm²
+    confidence: 89
+    description: Fluence threshold for Pyrex surface cleaning
+    min: 1.5
+    max: 4.0
+  overlapRatio:
+    value: 50
+    unit: '%'
+    confidence: 86
+    description: Optimal pulse overlap for complete coverage
+    min: 30
+    max: 70
+  passCount:
+    value: 3
+    unit: passes
+    confidence: 88
+    description: Recommended number of passes for thorough cleaning
+    min: 1
+    max: 5
+  laserType:
+    value: Nd:YAG
+    unit: n/a
+    confidence: 90
+    description: Preferred laser type for Pyrex cleaning applications
+    min: null
+    max: null
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author_object:
+  id: 1
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg
+images:
+  hero:
+    alt: Pyrex surface undergoing laser cleaning showing precise contamination removal
+    url: /images/pyrex-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Pyrex surface after laser cleaning showing detailed surface
+      structure
+    url: /images/pyrex-laser-cleaning-micro.jpg
+environmentalImpact:
+- benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+  sustainabilityBenefit: ''
+- benefit: Water Usage Reduction
+  description: Dry process requires no water
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+- benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+author_id: 1
+applicationTypes:
+- type: Precision Cleaning
+  description: High-precision removal of microscopic contaminants and residues
+  industries:
+  - Semiconductor
+  - MEMS
+  - Optics
+  - Medical Devices
+  qualityMetrics:
+  - Particle count reduction
+  - Surface roughness maintenance
+  - Chemical purity
+  typicalTolerances: Sub-micron accuracy with minimal substrate impact
+  objectives: []
+- type: Surface Preparation
+  description: Preparation of surfaces for bonding, coating, or further processing
+  industries:
+  - Aerospace
+  - Automotive
+  - Manufacturing
+  - Construction
+  qualityMetrics:
+  - Surface energy
+  - Cleanliness level
+  - Roughness profile
+  typicalTolerances: ''
+  objectives:
+  - Adhesion enhancement
+  - Contamination removal
+  - Surface activation
+- type: Restoration Cleaning
+  description: Gentle removal of accumulated contamination while preserving original
+    material
+  industries:
+  - Cultural Heritage
+  - Architecture
+  - Art Conservation
+  - Historical Restoration
+  qualityMetrics: []
+  typicalTolerances: ''
+  objectives: []
+- type: Contamination Removal
+  description: General removal of unwanted surface deposits and contaminants
+  industries:
+  - Manufacturing
+  - Marine
+  - Oil & Gas
+  - Power Generation
+  qualityMetrics: []
+  typicalTolerances: ''
+  objectives: []
+outcomeMetrics:
+- metric: Contaminant Removal Efficiency
+  description: Percentage of target contaminants successfully removed from surface
+  measurementMethods:
+  - Before/after microscopy
+  - Chemical analysis
+  - Mass spectrometry
+  typicalRanges: 95-99.9% depending on application and material
+  factorsAffecting:
+  - Contamination type
+  - Adhesion strength
+  - Surface geometry
+  units: []
+- metric: Processing Speed
+  description: Rate of surface area processed per unit time
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- metric: Surface Quality Preservation
+  description: Maintenance of original surface characteristics after cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+- metric: Thermal Damage Avoidance
+  description: Prevention of heat-related material alterations during cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []

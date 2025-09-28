@@ -2,7 +2,92 @@ name: Plywood
 category: Wood
 subcategory: Plywood
 title: Plywood Laser Cleaning
-description: Laser cleaning parameters for Plywood
+description: Laser cleaning parameters for Ash
+materialProperties:
+  density:
+    value: 0.6
+    unit: g/cm³
+    confidence: 92
+    description: Average density of standard plywood (species-dependent)
+    min: 0.12
+    max: 1.25
+  meltingPoint:
+    value: 280
+    unit: °C
+    confidence: 85
+    description: Charring/decomposition temperature of wood components
+    min: null
+    max: null
+  thermalConductivity:
+    value: 0.12
+    unit: W/m·K
+    confidence: 88
+    description: Thermal conductivity perpendicular to grain direction
+    min: 0.04
+    max: 0.4
+  tensileStrength:
+    value: 30
+    unit: MPa
+    confidence: 85
+    description: Tensile strength parallel to surface grain
+    min: 20
+    max: 200
+  youngsModulus:
+    value: 8.5
+    unit: GPa
+    confidence: 87
+    description: Elastic modulus in bending/plane direction
+    min: 5
+    max: 25
+  thermalExpansion:
+    value: 3.5
+    unit: 10^-6/°C
+    confidence: 82
+    description: Linear thermal expansion coefficient in plane direction
+    min: 3
+    max: 60
+  specificHeat:
+    value: 1380
+    unit: J/kg·K
+    confidence: 90
+    description: Specific heat capacity at room temperature
+    min: 1.2
+    max: 4.2
+  absorptionCoefficient:
+    value: 0.85
+    unit: dimensionless
+    confidence: 88
+    description: Optical absorption coefficient for common laser wavelengths (1064nm)
+    min: null
+    max: null
+  reflectivity:
+    value: 0.15
+    unit: dimensionless
+    confidence: 84
+    description: Surface reflectivity for near-infrared laser wavelengths
+    min: null
+    max: null
+  ablationThreshold:
+    value: 0.8
+    unit: J/cm²
+    confidence: 82
+    description: Laser fluence threshold for wood material removal
+    min: null
+    max: null
+  porosity:
+    value: 45
+    unit: '%'
+    confidence: 86
+    description: Average porosity of wood fiber structure
+    min: null
+    max: null
+  surfaceRoughness:
+    value: 3.2
+    unit: μm Ra
+    confidence: 83
+    description: Typical surface roughness of finished plywood
+    min: null
+    max: null
 applications:
 - laser cleaning
 - surface preparation
@@ -11,14 +96,14 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal power range for Plywood surface cleaning without charring
+    description: Optimal average power for Plywood surface cleaning without charring
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength for optimal wood fiber absorption
+    description: Near-infrared wavelength for optimal wood absorption
     min: 1030
     max: 1070
   spotSize:
@@ -45,14 +130,14 @@ machineSettings:
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 85
-    description: Optimal scanning speed for uniform surface treatment
+    confidence: 89
+    description: Optimal scanning speed for uniform cleaning coverage
     min: 200
     max: 1000
   energyDensity:
     value: 1.27
     unit: J/cm²
-    confidence: 89
+    confidence: 86
     description: Fluence threshold for effective contaminant removal without substrate
       damage
     min: 0.8
@@ -60,24 +145,30 @@ machineSettings:
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 86
-    description: Optimal beam overlap for uniform cleaning coverage
+    confidence: 88
+    description: Optimal beam overlap for complete surface coverage
     min: 30
     max: 70
   passCount:
     value: 2
     unit: passes
-    confidence: 88
-    description: Recommended number of passes for complete surface cleaning
+    confidence: 85
+    description: Recommended number of passes for thorough cleaning
     min: 1
     max: 3
   laserType:
     value: Fiber Laser
     unit: N/A
-    confidence: 91
-    description: Recommended laser type for wood composite processing
+    confidence: 90
+    description: Recommended laser type for wood cleaning applications
     min: null
     max: null
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+- EPA Clean Air Act Compliance
 author_object:
   id: 4
   name: Todd Dunning

@@ -2,122 +2,122 @@ name: Magnesium
 category: Metal
 subcategory: Magnesium
 title: Magnesium Laser Cleaning
-description: Laser cleaning parameters for Magnesium
+description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
-    value: 1.74
+    value: 1.738
     unit: g/cm³
-    confidence: 99
-    description: Density of pure magnesium at 20°C
-    min: 1.738
-    max: 1.742
+    confidence: 98
+    description: Pure magnesium density at room temperature
+    min: 0.53
+    max: 22.6
   meltingPoint:
     value: 650
     unit: °C
-    confidence: 98
+    confidence: 97
     description: Melting point of pure magnesium
-    min: 648
-    max: 652
+    min: null
+    max: null
   thermalConductivity:
     value: 156
     unit: W/m·K
     confidence: 95
-    description: Thermal conductivity at room temperature
-    min: 150
-    max: 160
+    description: Thermal conductivity of pure magnesium at 20°C
+    min: 6.0
+    max: 429.0
   tensileStrength:
     value: 160
     unit: MPa
     confidence: 88
-    description: Ultimate tensile strength of pure cast magnesium
-    min: 120
-    max: 200
+    description: Ultimate tensile strength of pure magnesium
+    min: 30.0
+    max: 3000.0
   hardness:
     value: 45
     unit: HV
     confidence: 85
     description: Vickers hardness of pure magnesium
-    min: 35
-    max: 55
+    min: 5
+    max: 500
   youngsModulus:
     value: 45
     unit: GPa
     confidence: 95
     description: Young's modulus of elasticity
-    min: 44
-    max: 46
+    min: 70
+    max: 411
   thermalExpansion:
     value: 25.2
     unit: μm/m·K
     confidence: 92
-    description: Coefficient of linear thermal expansion (20-100°C)
-    min: 24.8
-    max: 25.6
+    description: Coefficient of linear thermal expansion at 20°C
+    min: 0.5
+    max: 29.1
   thermalDiffusivity:
-    value: 8.8
+    value: 8.6
     unit: mm²/s
     confidence: 90
     description: Thermal diffusivity at room temperature
-    min: 8.5
-    max: 9.1
+    min: 4.2
+    max: 174
   specificHeat:
-    value: 1020
+    value: 1025
     unit: J/kg·K
-    confidence: 94
+    confidence: 93
     description: Specific heat capacity at 20°C
-    min: 1000
-    max: 1040
+    min: 0.128
+    max: 0.904
   absorptionCoefficient:
     value: 0.65
     unit: dimensionless
     confidence: 82
-    description: Approximate absorption coefficient for visible light (400-700nm)
-    min: 0.6
-    max: 0.7
+    description: Approximate absorption coefficient for Nd:YAG laser (1064 nm)
+    min: null
+    max: null
   reflectivity:
-    value: 0.74
+    value: 0.75
     unit: dimensionless
-    confidence: 85
-    description: Reflectivity at 1064nm (common laser wavelength)
-    min: 0.72
-    max: 0.76
+    confidence: 80
+    description: Estimated reflectivity for visible to near-IR wavelengths
+    min: null
+    max: null
   ablationThreshold:
     value: 0.8
     unit: J/cm²
-    confidence: 80
-    description: Estimated laser ablation threshold for nanosecond pulses at 1064nm
-    min: 0.5
-    max: 1.2
+    confidence: 85
+    description: Estimated laser ablation threshold for nanosecond pulses
+    min: null
+    max: null
   oxidationResistance:
     value: 0.02
     unit: mg/cm²·day
-    confidence: 88
-    description: Oxidation rate in dry air at 200°C
-    min: 0.015
-    max: 0.025
+    confidence: 90
+    description: Oxidation rate in dry air at room temperature
+    min: null
+    max: null
   crystallineStructure:
     value: HCP
-    unit: N/A
-    confidence: 99
-    description: Hexagonal Close-Packed crystal structure
-    min: N/A
-    max: N/A
-  laserDamageThreshold:
-    value: 1.2
-    unit: J/cm²
+    unit: crystal system
+    confidence: 98
+    description: Hexagonal close-packed crystal structure
+    min: null
+    max: null
+  surfaceRoughness:
+    value: 0.8
+    unit: μm Ra
     confidence: 82
-    description: Estimated damage threshold for continuous wave lasers
-    min: 0.8
-    max: 1.6
+    description: Typical surface roughness of polished magnesium
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Automotive: Paint removal and surface preparation for automotive parts'
+- 'Aerospace: Precision cleaning of aerospace components and assemblies'
 machineSettings:
   powerRange:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power range for Magnesium oxide removal without substrate
+    description: Optimal average power for Magnesium oxide removal without substrate
       damage
     min: 80
     max: 120
@@ -125,68 +125,74 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimized for Magnesium's absorption characteristics
+    description: Near-IR wavelength with good absorption by Magnesium oxides and hydroxides
     min: null
     max: null
   spotSize:
     value: 50
     unit: μm
-    confidence: 90
-    description: Optimal beam diameter for precise cleaning of Magnesium surfaces
+    confidence: 84
+    description: Optimal spot size for balancing cleaning efficiency and processing
+      speed
     min: 30
     max: 100
   repetitionRate:
     value: 100
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning with thermal management
+    description: High repetition rate for efficient cleaning coverage while maintaining
+      thermal control
     min: 50
     max: 200
-  fluenceThreshold:
-    value: 1.2
-    unit: J/cm²
-    confidence: 88
-    description: Minimum fluence required for effective oxide layer removal from Magnesium
-    min: 0.8
-    max: 2.0
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Optimal pulse duration for controlled ablation of Magnesium surface
-      contaminants
+    description: Nanosecond pulse duration for efficient oxide ablation with minimal
+      thermal diffusion
     min: 5
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 84
-    description: Optimal scanning speed for uniform cleaning coverage
+    confidence: 86
+    description: Optimal scanning speed for uniform oxide removal without substrate
+      melting
     min: 200
     max: 1000
+  fluenceThreshold:
+    value: 1.5
+    unit: J/cm²
+    confidence: 89
+    description: Minimum fluence required for effective Magnesium oxide ablation
+    min: 0.8
+    max: 3.0
   overlapRatio:
     value: 70
     unit: '%'
-    confidence: 86
-    description: Optimal pulse overlap for complete surface coverage without excessive
-      heat accumulation
+    confidence: 83
+    description: Optimal pulse overlap for uniform cleaning coverage
     min: 50
     max: 85
   passCount:
     value: 2
     unit: passes
     confidence: 82
-    description: Recommended number of passes for thorough cleaning of Magnesium surfaces
+    description: Typical number of passes required for complete oxide removal
     min: 1
     max: 4
-  energyDensity:
-    value: 3.5
-    unit: J/cm²
-    confidence: 85
-    description: Optimal energy density for effective contaminant removal while preserving
-      Magnesium substrate
-    min: 2.0
-    max: 5.0
+  laserType:
+    value: Nd:YAG
+    unit: n/a
+    confidence: 90
+    description: Solid-state laser system optimized for metal cleaning applications
+    min: null
+    max: null
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
   id: 4
   name: Todd Dunning

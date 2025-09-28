@@ -2,137 +2,137 @@ name: Hafnium
 category: Metal
 subcategory: Hafnium
 title: Hafnium Laser Cleaning
-description: Laser cleaning parameters for Hafnium
+description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
     value: 13.31
     unit: g/cm³
     confidence: 98
     description: Density of pure hafnium at room temperature
-    min: 13.28
-    max: 13.34
+    min: 0.53
+    max: 22.6
   meltingPoint:
     value: 2233
     unit: °C
     confidence: 97
     description: Melting point of pure hafnium
-    min: 2227
-    max: 2239
+    min: null
+    max: null
   thermalConductivity:
     value: 23.0
     unit: W/m·K
     confidence: 92
     description: Thermal conductivity at room temperature
-    min: 22.0
-    max: 24.0
+    min: 6.0
+    max: 429.0
   tensileStrength:
     value: 380
     unit: MPa
     confidence: 85
-    description: Ultimate tensile strength (annealed condition)
-    min: 350
-    max: 410
+    description: Ultimate tensile strength of annealed hafnium
+    min: 30.0
+    max: 3000.0
   hardness:
     value: 170
     unit: HV
     confidence: 88
-    description: Vickers hardness (annealed condition)
-    min: 160
-    max: 180
+    description: Vickers hardness of pure hafnium
+    min: 5
+    max: 500
   youngsModulus:
     value: 78
     unit: GPa
     confidence: 92
     description: Young's modulus of elasticity
-    min: 75
-    max: 81
+    min: 70
+    max: 411
   thermalExpansion:
     value: 5.9
-    unit: ×10⁻⁶/K
+    unit: 10⁻⁶/K
     confidence: 90
     description: Coefficient of linear thermal expansion (20-100°C)
-    min: 5.7
-    max: 6.1
-  thermalDiffusivity:
-    value: 12.5
-    unit: mm²/s
-    confidence: 88
-    description: Thermal diffusivity at room temperature
-    min: 11.8
-    max: 13.2
+    min: 0.5
+    max: 29.1
   specificHeat:
     value: 144
     unit: J/kg·K
-    confidence: 94
+    confidence: 88
     description: Specific heat capacity at room temperature
-    min: 140
-    max: 148
+    min: 0.128
+    max: 0.904
+  thermalDiffusivity:
+    value: 12.0
+    unit: mm²/s
+    confidence: 85
+    description: Thermal diffusivity at room temperature
+    min: 4.2
+    max: 174
   absorptionCoefficient:
     value: 0.65
     unit: dimensionless
-    confidence: 82
-    description: Estimated absorption coefficient for Nd:YAG laser (1064 nm)
-    min: 0.6
-    max: 0.7
+    confidence: 80
+    description: Estimated absorption coefficient for near-IR lasers (1064 nm)
+    min: null
+    max: null
   reflectivity:
     value: 0.72
     unit: dimensionless
-    confidence: 85
-    description: Estimated reflectivity for infrared lasers (1064 nm)
-    min: 0.68
-    max: 0.76
+    confidence: 82
+    description: Estimated reflectivity at 1064 nm wavelength
+    min: null
+    max: null
   ablationThreshold:
-    value: 1.8
+    value: 2.5
     unit: J/cm²
-    confidence: 80
-    description: Estimated laser ablation threshold for nanosecond pulses (1064 nm)
-    min: 1.5
-    max: 2.1
+    confidence: 75
+    description: Estimated laser ablation threshold for nanosecond pulses at 1064
+      nm
+    min: null
+    max: null
   crystallineStructure:
     value: HCP
-    unit: n/a
-    confidence: 99
-    description: Hexagonal Close-Packed structure at room temperature
-    min: n/a
-    max: n/a
+    unit: none
+    confidence: 95
+    description: Hexagonal close-packed crystal structure at room temperature
+    min: null
+    max: null
   oxidationResistance:
-    value: Moderate
+    value: High
     unit: qualitative
-    confidence: 88
-    description: Forms protective oxide layer, good oxidation resistance up to 400°C
-    min: n/a
-    max: n/a
+    confidence: 90
+    description: Excellent oxidation resistance due to protective oxide layer formation
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Automotive: Paint removal and surface preparation for automotive parts'
+- 'Manufacturing: Industrial surface preparation and contamination removal'
 machineSettings:
   powerRange:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Hafnium oxide removal without substrate
-      damage
+    description: Optimal average power range for Hafnium oxide removal
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Optimal wavelength considering Hafnium's absorption characteristics
+    description: Optimal wavelength for Hafnium oxide absorption
     min: null
     max: null
   spotSize:
     value: 50
     unit: μm
     confidence: 84
-    description: Optimal beam diameter for precision cleaning of Hafnium surfaces
+    description: Optimal beam diameter for precise Hafnium surface treatment
     min: 30
     max: 100
   repetitionRate:
     value: 100
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning with thermal management
+    description: Optimal repetition rate for efficient oxide layer removal
     min: 50
     max: 200
   fluenceThreshold:
@@ -141,45 +141,40 @@ machineSettings:
     confidence: 88
     description: Minimum fluence required for effective Hafnium oxide ablation
     min: 1.8
-    max: 4.0
+    max: 3.5
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Optimal pulse duration for controlled ablation of Hafnium surface
-      contaminants
+    description: Optimal pulse duration for controlled Hafnium surface cleaning
     min: 5
     max: 20
   scanSpeed:
-    value: 1000
+    value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform surface treatment
-    min: 500
-    max: 2000
+    description: Optimal scanning speed for uniform cleaning coverage
+    min: 200
+    max: 1000
   overlapRatio:
-    value: 50
+    value: 70
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for complete surface coverage without excessive
-      heating
-    min: 40
-    max: 70
+    description: Optimal pulse overlap for complete surface coverage
+    min: 50
+    max: 85
   passCount:
     value: 3
     unit: passes
-    confidence: 82
-    description: Recommended number of passes for thorough contamination removal
+    confidence: 85
+    description: Recommended number of passes for thorough oxide removal
     min: 1
     max: 5
-  energyDensity:
-    value: 12.7
-    unit: J/cm²
-    confidence: 85
-    description: Calculated energy density based on power, spot size, and repetition
-      rate
-    min: 8.5
-    max: 16.9
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
   id: 4
   name: Todd Dunning

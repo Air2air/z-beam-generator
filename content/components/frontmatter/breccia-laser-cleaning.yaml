@@ -2,123 +2,124 @@ name: Breccia
 category: Stone
 subcategory: Breccia
 title: Breccia Laser Cleaning
-description: Laser cleaning parameters for Breccia
+description: Laser cleaning parameters for Alabaster
 materialProperties:
   density:
     value: 2.65
     unit: g/cm³
-    confidence: 85
-    description: Average bulk density of typical limestone-based breccia
-    min: 2.4
-    max: 2.9
+    confidence: 95
+    description: Typical density for consolidated breccia composed of mixed mineral
+      fragments
+    min: 1.5
+    max: 3.4
   meltingPoint:
     value: 1250
     unit: °C
-    confidence: 80
-    description: Approximate melting point for carbonate-rich breccia components
-    min: 1100
-    max: 1400
+    confidence: 85
+    description: Approximate melting point range for quartz-rich breccia compositions
+    min: null
+    max: null
   thermalConductivity:
-    value: 2.5
+    value: 2.9
     unit: W/m·K
-    confidence: 82
-    description: Thermal conductivity of consolidated breccia rock
-    min: 1.8
-    max: 3.2
+    confidence: 88
+    description: Thermal conductivity typical for consolidated sedimentary rocks
+    min: 0.2
+    max: 5
+  tensileStrength:
+    value: 8
+    unit: MPa
+    confidence: 80
+    description: Typical tensile strength for consolidated breccia
+    min: 2
+    max: 25
   hardness:
-    value: 4.5
+    value: 6.5
     unit: Mohs
     confidence: 88
-    description: Composite hardness on Mohs scale (varies by clast composition)
-    min: 3.0
-    max: 6.0
+    description: Hardness dominated by quartz content in fragments
+    min: 1
+    max: 7
   youngsModulus:
     value: 45
     unit: GPa
-    confidence: 79
-    description: Elastic modulus for consolidated breccia
-    min: 30
-    max: 60
+    confidence: 85
+    description: Elastic modulus for well-cemented breccia
+    min: 10
+    max: 100
   thermalExpansion:
-    value: 8.0
+    value: 8.5
     unit: 10⁻⁶/°C
-    confidence: 78
-    description: Coefficient of thermal expansion for mixed mineral composition
-    min: 5.0
-    max: 12.0
+    confidence: 82
+    description: Coefficient of thermal expansion for quartz-dominated breccia
+    min: 3
+    max: 16
   specificHeat:
     value: 0.84
     unit: kJ/kg·K
-    confidence: 83
+    confidence: 90
     description: Specific heat capacity at room temperature
-    min: 0.75
-    max: 0.95
-  compressiveStrength:
-    value: 120
-    unit: MPa
-    confidence: 85
-    description: Uniaxial compressive strength
-    min: 80
-    max: 180
-  porosity:
-    value: 12
-    unit: '%'
-    confidence: 87
-    description: Typical porosity range for well-cemented breccia
-    min: 5
-    max: 25
+    min: 0.7
+    max: 1.2
   absorptionCoefficient:
-    value: 0.65
+    value: 0.75
     unit: dimensionless
-    confidence: 75
-    description: Average absorption coefficient for visible to near-IR wavelengths
-    min: 0.4
-    max: 0.85
+    confidence: 82
+    description: Optical absorption coefficient for common laser wavelengths (1064
+      nm)
+    min: null
+    max: null
+  reflectivity:
+    value: 0.25
+    unit: dimensionless
+    confidence: 80
+    description: Surface reflectivity for near-infrared laser wavelengths
+    min: null
+    max: null
   ablationThreshold:
     value: 2.5
     unit: J/cm²
-    confidence: 72
-    description: Approximate laser ablation threshold for nanosecond pulses
-    min: 1.5
-    max: 4.0
-  chemicalStability:
-    value: Moderate
-    unit: qualitative
-    confidence: 82
-    description: Resistance to chemical weathering and dissolution
-    min: Low
-    max: High
+    confidence: 78
+    description: Laser ablation threshold for nanosecond pulses at 1064 nm
+    min: null
+    max: null
+  porosity:
+    value: 12
+    unit: '%'
+    confidence: 90
+    description: Typical porosity range for consolidated breccia formations
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Oil and Gas: Industrial cleaning and maintenance for oil and gas equipment'
 machineSettings:
   powerRange:
     value: 45
     unit: W
     confidence: 90
-    description: Optimal average power for Breccia surface cleaning without thermal
-      damage
+    description: Optimal average power for Breccia cleaning without thermal damage
     min: 30
     max: 60
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimal for mineral absorption in Breccia composition
+    description: Near-IR wavelength optimal for mineral absorption in Breccia
     min: 532
     max: 1064
   spotSize:
-    value: 80
+    value: 100
     unit: μm
-    confidence: 82
-    description: Optimal beam diameter for precision cleaning of Breccia surface features
+    confidence: 84
+    description: Optimal spot size for precision cleaning of Breccia matrix
     min: 50
-    max: 120
+    max: 200
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: High repetition rate for uniform cleaning coverage
+    description: High repetition rate for uniform cleaning of heterogeneous Breccia
+      surface
     min: 20
     max: 100
   pulseWidth:
@@ -126,14 +127,14 @@ machineSettings:
     unit: ns
     confidence: 85
     description: Short pulse duration for efficient ablation of surface contaminants
-    min: 10
+    min: 8
     max: 25
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 84
+    confidence: 86
     description: Scan speed balancing cleaning efficiency and surface preservation
-    min: 300
+    min: 200
     max: 800
   fluenceThreshold:
     value: 2.5
@@ -146,25 +147,29 @@ machineSettings:
     value: 70
     unit: '%'
     confidence: 83
-    description: Optimal overlap between adjacent laser tracks for uniform cleaning
+    description: Optimal overlap for complete coverage of heterogeneous Breccia surface
     min: 50
     max: 85
   passCount:
     value: 3
     unit: passes
-    confidence: 86
-    description: Number of passes for thorough cleaning while minimizing substrate
-      damage
+    confidence: 82
+    description: Multiple passes for thorough cleaning of porous Breccia structure
     min: 1
     max: 5
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
-  id: 1
-  name: Yi-Chun Lin
-  sex: f
+  id: 2
+  name: Alessandro Moretti
+  sex: m
   title: Ph.D.
-  country: Taiwan
-  expertise: Laser Materials Processing
-  image: /images/author/yi-chun-lin.jpg
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  image: /images/author/alessandro-moretti.jpg
 images:
   hero:
     alt: Breccia surface undergoing laser cleaning showing precise contamination removal
@@ -198,7 +203,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-author_id: 1
+author_id: 2
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues

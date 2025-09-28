@@ -2,110 +2,110 @@ name: Tin
 category: Metal
 subcategory: Tin
 title: Tin Laser Cleaning
-description: Laser cleaning parameters for Tin
+description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
     value: 7.31
     unit: g/cm³
     confidence: 98
-    description: Density of pure tin at 20°C
-    min: 7.28
-    max: 7.31
+    description: Density of pure tin at room temperature (white tin)
+    min: 0.53
+    max: 22.6
   meltingPoint:
     value: 231.93
     unit: °C
-    confidence: 99
-    description: Melting point of pure tin (β-tin)
-    min: 231.91
-    max: 231.95
+    confidence: 97
+    description: Melting point of pure tin
+    min: null
+    max: null
   thermalConductivity:
     value: 66.8
     unit: W/m·K
-    confidence: 95
-    description: Thermal conductivity at 27°C
-    min: 65.0
-    max: 68.5
+    confidence: 92
+    description: Thermal conductivity of pure tin at 27°C
+    min: 6.0
+    max: 429.0
   tensileStrength:
     value: 15
     unit: MPa
-    confidence: 88
-    description: Ultimate tensile strength of pure tin
-    min: 12
-    max: 18
+    confidence: 85
+    description: Ultimate tensile strength of pure annealed tin
+    min: 30.0
+    max: 3000.0
   hardness:
-    value: 5.0
-    unit: HB
+    value: 5
+    unit: Mohs
     confidence: 90
-    description: Brinell hardness of pure tin
-    min: 4.5
-    max: 5.5
+    description: Mohs hardness scale value
+    min: 5
+    max: 500
   youngsModulus:
     value: 50
     unit: GPa
-    confidence: 85
+    confidence: 88
     description: Young's modulus of elasticity
-    min: 45
-    max: 55
+    min: 70
+    max: 411
   thermalExpansion:
     value: 22.0
     unit: 10⁻⁶/K
-    confidence: 92
-    description: Coefficient of linear thermal expansion at 20°C
-    min: 21.5
-    max: 22.5
-  thermalDiffusivity:
-    value: 40.1
-    unit: mm²/s
     confidence: 90
+    description: Coefficient of linear thermal expansion at 20°C
+    min: 0.5
+    max: 29.1
+  thermalDiffusivity:
+    value: 40.2
+    unit: mm²/s
+    confidence: 88
     description: Thermal diffusivity at room temperature
-    min: 38.5
-    max: 41.5
+    min: 4.2
+    max: 174
   specificHeat:
     value: 0.227
     unit: J/g·K
-    confidence: 94
+    confidence: 91
     description: Specific heat capacity at 25°C
-    min: 0.225
-    max: 0.23
-  reflectivity:
-    value: 72
-    unit: '%'
-    confidence: 85
-    description: Optical reflectivity at 1064 nm wavelength
-    min: 70
-    max: 75
+    min: 0.128
+    max: 0.904
   absorptionCoefficient:
-    value: 12000000.0
-    unit: m⁻¹
+    value: 0.65
+    unit: dimensionless
     confidence: 82
-    description: Absorption coefficient for near-IR lasers (1064 nm)
-    min: 10000000.0
-    max: 14000000.0
+    description: Approximate absorption coefficient for visible to near-IR wavelengths
+    min: null
+    max: null
+  reflectivity:
+    value: 0.72
+    unit: dimensionless
+    confidence: 85
+    description: Reflectivity at 1064 nm wavelength
+    min: null
+    max: null
   ablationThreshold:
     value: 0.8
     unit: J/cm²
     confidence: 80
-    description: Approximate laser ablation threshold for nanosecond pulses at 1064
+    description: Estimated laser ablation threshold for nanosecond pulses at 1064
       nm
-    min: 0.6
-    max: 1.0
+    min: null
+    max: null
   crystallineStructure:
     value: Tetragonal
     unit: none
-    confidence: 98
-    description: Crystal structure of β-tin (room temperature stable phase)
-    min: n/a
-    max: n/a
+    confidence: 95
+    description: Crystal structure of beta-tin (white tin) at room temperature
+    min: null
+    max: null
   oxidationResistance:
     value: Good
     unit: qualitative
-    confidence: 90
+    confidence: 88
     description: Resistance to oxidation in air at room temperature
-    min: n/a
-    max: n/a
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Marine: Corrosion removal and surface treatment for marine applications'
+- 'Jewelry: Precision cleaning and polishing of precious metal jewelry'
 machineSettings:
   powerRange:
     value: 100
@@ -117,88 +117,79 @@ machineSettings:
   wavelength:
     value: 1064
     unit: nm
-    confidence: 89
-    description: Near-IR wavelength optimized for Tin absorption
-    min: null
-    max: null
+    confidence: 88
+    description: Near-IR wavelength for optimal Tin absorption and oxide removal
+    min: 1030
+    max: 1070
   spotSize:
     value: 50
     unit: μm
-    confidence: 85
-    description: Beam spot diameter for precise Tin surface treatment
+    confidence: 84
+    description: Optimal spot size for precision Tin cleaning applications
     min: 30
     max: 100
   repetitionRate:
-    value: 50
+    value: 100
     unit: kHz
-    confidence: 90
-    description: Optimal repetition rate for efficient Tin cleaning
-    min: 20
-    max: 100
-  fluenceThreshold:
-    value: 2.5
-    unit: J/cm²
-    confidence: 88
-    description: Threshold fluence for effective Tin oxide ablation
-    min: 1.8
-    max: 3.5
-  energyDensity:
-    value: 3.2
-    unit: J/cm²
-    confidence: 85
-    description: Optimal energy density for Tin surface cleaning
-    min: 2.5
-    max: 4.0
+    confidence: 87
+    description: High repetition rate for efficient Tin oxide layer removal
+    min: 50
+    max: 200
   pulseWidth:
     value: 10
     unit: ns
-    confidence: 87
-    description: Nanosecond pulse width for controlled Tin ablation
+    confidence: 85
+    description: Nanosecond pulse duration for controlled Tin ablation
     min: 5
     max: 20
   scanSpeed:
-    value: 500
+    value: 1000
     unit: mm/s
-    confidence: 88
-    description: Optimal scanning speed for uniform Tin cleaning
-    min: 300
-    max: 800
+    confidence: 86
+    description: Optimal scanning speed for uniform Tin surface cleaning
+    min: 500
+    max: 2000
+  fluenceThreshold:
+    value: 2.5
+    unit: J/cm²
+    confidence: 89
+    description: Minimum fluence required for effective Tin oxide removal
+    min: 1.5
+    max: 4.0
+  overlapRatio:
+    value: 70
+    unit: '%'
+    confidence: 83
+    description: Optimal overlap for complete Tin surface coverage
+    min: 50
+    max: 85
   passCount:
     value: 3
     unit: passes
-    confidence: 86
-    description: Recommended number of passes for complete Tin oxide removal
+    confidence: 82
+    description: Recommended number of passes for thorough Tin cleaning
     min: 1
     max: 5
-  overlapRatio:
-    value: 50
-    unit: '%'
-    confidence: 84
-    description: Optimal beam overlap for uniform Tin surface treatment
-    min: 30
-    max: 70
-  dwellTime:
-    value: 200
-    unit: μs
-    confidence: 82
-    description: Effective dwell time per spot for Tin ablation
-    min: 100
-    max: 400
   laserType:
     value: Nd:YAG
     unit: n/a
-    confidence: 91
-    description: Recommended laser type for Tin cleaning applications
+    confidence: 90
+    description: Recommended laser type for Tin processing applications
     min: null
     max: null
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
-  id: 3
-  name: Ikmanda Roswati
+  id: 4
+  name: Todd Dunning
   sex: m
-  title: Ph.D.
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  image: /images/author/ikmanda-roswati.jpg
+  title: MA
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  image: /images/author/todd-dunning.jpg
 images:
   hero:
     alt: Tin surface undergoing laser cleaning showing precise contamination removal
@@ -232,7 +223,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-author_id: 3
+author_id: 4
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues

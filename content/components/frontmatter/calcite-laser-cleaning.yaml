@@ -2,172 +2,172 @@ name: Calcite
 category: Stone
 subcategory: Calcite
 title: Calcite Laser Cleaning
-description: Laser cleaning parameters for Calcite
+description: Laser cleaning parameters for Alabaster
 materialProperties:
   density:
     value: 2.71
     unit: g/cm³
     confidence: 98
     description: Density of pure calcite at room temperature
-    min: 2.69
-    max: 2.73
+    min: 1.5
+    max: 3.4
   meltingPoint:
     value: 1339
     unit: °C
-    confidence: 90
+    confidence: 95
     description: Melting point with decomposition to CaO and CO₂
-    min: 1320
-    max: 1350
+    min: null
+    max: null
   thermalConductivity:
-    value: 3.2
+    value: 3.6
     unit: W/m·K
-    confidence: 85
+    confidence: 90
     description: Thermal conductivity parallel to c-axis at 25°C
-    min: 2.8
-    max: 3.6
+    min: 0.2
+    max: 5
   hardness:
     value: 3.0
     unit: Mohs
-    confidence: 95
-    description: Mohs hardness scale - reference mineral for hardness 3
-    min: 2.8
-    max: 3.2
+    confidence: 98
+    description: Mohs hardness scale value
+    min: 1
+    max: 7
   youngsModulus:
     value: 75
     unit: GPa
-    confidence: 82
-    description: Young's modulus for single crystal calcite
-    min: 70
-    max: 80
+    confidence: 88
+    description: Young's modulus parallel to cleavage direction
+    min: 10
+    max: 100
   thermalExpansion:
-    value: 25
-    unit: ×10⁻⁶/°C
+    value: 25.0
+    unit: ×10⁻⁶/K
     confidence: 88
     description: Coefficient of thermal expansion parallel to c-axis
-    min: 23
-    max: 27
+    min: 3
+    max: 16
+  thermalDiffusivity:
+    value: 1.4
+    unit: mm²/s
+    confidence: 85
+    description: Thermal diffusivity at room temperature
+    min: 0.2
+    max: 2.5
   specificHeat:
     value: 0.82
     unit: J/g·K
     confidence: 92
-    description: Specific heat capacity at room temperature
-    min: 0.8
-    max: 0.84
+    description: Specific heat capacity at 25°C
+    min: 0.7
+    max: 1.2
   refractiveIndex:
     value: 1.658
     unit: dimensionless
-    confidence: 96
-    description: Ordinary refractive index (nₒ) at 589 nm
-    min: 1.656
-    max: 1.66
+    confidence: 95
+    description: Ordinary refractive index (n_o) at 589 nm
+    min: null
+    max: null
   absorptionCoefficient:
-    value: 0.05
+    value: 0.1
     unit: cm⁻¹
     confidence: 85
-    description: Absorption coefficient at 1064 nm (Nd:YAG laser wavelength)
-    min: 0.03
-    max: 0.08
+    description: Absorption coefficient at 1064 nm wavelength
+    min: null
+    max: null
   ablationThreshold:
     value: 2.5
     unit: J/cm²
-    confidence: 80
-    description: Approximate ablation threshold for nanosecond pulses at 1064 nm
-    min: 1.8
-    max: 3.5
+    confidence: 82
+    description: Laser ablation threshold for nanosecond pulses at 1064 nm
+    min: null
+    max: null
   chemicalStability:
-    value: Low
-    unit: qualitative
-    confidence: 95
-    description: Highly soluble in acids, reacts with weak acids including carbonic
-      acid
-    min: N/A
-    max: N/A
-  crystallineStructure:
-    value: Rhombohedral
-    unit: crystal system
-    confidence: 98
-    description: Trigonal crystal system, space group R3̄c
-    min: N/A
-    max: N/A
+    value: 5.6
+    unit: pH
+    confidence: 90
+    description: Solubility in water at equilibrium (pH value)
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Construction: Surface preparation and cleaning for construction materials'
 machineSettings:
   powerRange:
-    value: 15
+    value: 25
     unit: W
     confidence: 90
-    description: Optimal average power for Calcite surface cleaning without thermal
-      damage
-    min: 8
-    max: 25
+    description: Optimal average power for Calcite cleaning without thermal damage
+    min: 15
+    max: 40
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength with good Calcite absorption for controlled ablation
+    description: Near-IR wavelength with good Calcite absorption for efficient cleaning
     min: 532
     max: 1064
   spotSize:
     value: 100
     unit: μm
     confidence: 92
-    description: Beam spot diameter for precise cleaning control on Calcite surfaces
+    description: Beam spot diameter for precise Calcite surface cleaning
     min: 50
     max: 200
   repetitionRate:
     value: 20
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning with adequate cooling
-      between pulses
+    description: Optimal repetition rate for efficient cleaning with thermal management
     min: 10
     max: 50
   pulseWidth:
-    value: 15
+    value: 8
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient contaminant removal with
-      minimal substrate damage
-    min: 10
-    max: 30
+    description: Nanosecond pulse duration for controlled ablation of Calcite surface
+      contaminants
+    min: 5
+    max: 15
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 84
-    description: Optimal scanning speed for uniform cleaning coverage
+    description: Optimal scanning speed for uniform Calcite surface treatment
     min: 200
     max: 1000
   fluenceThreshold:
-    value: 1.2
+    value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Threshold fluence for effective contaminant removal from Calcite
-    min: 0.8
-    max: 2.0
+    description: Threshold fluence for effective Calcite contaminant removal
+    min: 1.5
+    max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 86
-    description: Optimal pulse overlap for uniform cleaning without excessive energy
-      deposition
-    min: 30
+    description: Optimal beam overlap for uniform Calcite surface cleaning
+    min: 40
     max: 70
   passCount:
-    value: 2
+    value: 3
     unit: passes
-    confidence: 88
-    description: Recommended number of passes for complete contaminant removal
+    confidence: 83
+    description: Recommended number of passes for complete Calcite surface cleaning
     min: 1
-    max: 4
+    max: 5
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
-  id: 4
-  name: Todd Dunning
+  id: 2
+  name: Alessandro Moretti
   sex: m
-  title: MA
-  country: United States (California)
-  expertise: Optical Materials for Laser Systems
-  image: /images/author/todd-dunning.jpg
+  title: Ph.D.
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  image: /images/author/alessandro-moretti.jpg
 images:
   hero:
     alt: Calcite surface undergoing laser cleaning showing precise contamination removal
@@ -201,7 +201,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-author_id: 4
+author_id: 2
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues

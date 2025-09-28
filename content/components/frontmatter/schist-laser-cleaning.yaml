@@ -2,103 +2,106 @@ name: Schist
 category: Stone
 subcategory: Schist
 title: Schist Laser Cleaning
-description: Laser cleaning parameters for Schist
+description: Laser cleaning parameters for Alabaster
 materialProperties:
   density:
     value: 2.75
     unit: g/cm³
-    confidence: 85
-    description: Average density of schist rocks, varies with mineral composition
-    min: 2.6
-    max: 2.9
+    confidence: 92
+    description: Average density of schist based on mineral composition (mica, quartz,
+      feldspar)
+    min: 1.5
+    max: 3.4
   meltingPoint:
     value: 1250
     unit: °C
-    confidence: 80
-    description: Approximate melting temperature range for schist minerals
-    min: 1100
-    max: 1400
+    confidence: 85
+    description: Approximate melting point considering mixed mineral composition
+    min: null
+    max: null
   thermalConductivity:
     value: 2.8
     unit: W/m·K
-    confidence: 82
-    description: Thermal conductivity of typical schist at room temperature
-    min: 2.2
-    max: 3.4
-  hardness:
-    value: 5.5
-    unit: Mohs
     confidence: 88
-    description: Average hardness on Mohs scale, depends on mineral content
-    min: 3.0
-    max: 7.0
+    description: Thermal conductivity perpendicular to foliation planes
+    min: 0.2
+    max: 5
+  hardness:
+    value: 4.5
+    unit: Mohs
+    confidence: 95
+    description: Average Mohs hardness based on mineral constituents
+    min: 1
+    max: 7
   youngsModulus:
     value: 65
     unit: GPa
     confidence: 85
-    description: Elastic modulus parallel to foliation planes
-    min: 45
-    max: 85
+    description: Elastic modulus parallel to foliation direction
+    min: 10
+    max: 100
   thermalExpansion:
-    value: 8.5
+    value: 8.2
     unit: 10⁻⁶/°C
-    confidence: 78
-    description: Coefficient of thermal expansion for schist
-    min: 7.0
-    max: 10.0
+    confidence: 82
+    description: Coefficient of thermal expansion at room temperature
+    min: 3
+    max: 16
   specificHeat:
     value: 0.85
     unit: J/g·K
-    confidence: 83
-    description: Specific heat capacity at room temperature
-    min: 0.75
-    max: 0.95
-  compressiveStrength:
-    value: 150
-    unit: MPa
-    confidence: 82
-    description: Uniaxial compressive strength perpendicular to foliation
-    min: 80
-    max: 220
-  absorptionCoefficient:
-    value: 0.65
-    unit: dimensionless
-    confidence: 75
-    description: Average absorption coefficient for visible to near-IR wavelengths
-    min: 0.4
-    max: 0.8
-  ablationThreshold:
-    value: 2.5
-    unit: J/cm²
-    confidence: 70
-    description: Approximate laser ablation threshold for 1064 nm wavelength
-    min: 1.8
-    max: 3.5
+    confidence: 90
+    description: Specific heat capacity at 25°C
+    min: 0.7
+    max: 1.2
   porosity:
-    value: 2.5
+    value: 1.8
     unit: '%'
+    confidence: 88
+    description: Typical porosity range for well-compacted schist
+    min: null
+    max: null
+  absorptionCoefficient:
+    value: 0.45
+    unit: dimensionless
     confidence: 80
-    description: Typical porosity range for intact schist
-    min: 1.0
-    max: 5.0
-  surfaceRoughness:
-    value: 8.2
-    unit: μm Ra
-    confidence: 78
-    description: Average surface roughness of natural schist surfaces
-    min: 5.0
-    max: 15.0
+    description: Optical absorption coefficient for near-infrared wavelengths (1064
+      nm)
+    min: null
+    max: null
+  reflectivity:
+    value: 0.35
+    unit: dimensionless
+    confidence: 82
+    description: Surface reflectivity at common laser wavelengths
+    min: null
+    max: null
+  ablationThreshold:
+    value: 2.8
+    unit: J/cm²
+    confidence: 85
+    description: Laser ablation threshold for nanosecond pulses at 1064 nm
+    min: null
+    max: null
+  thermalDiffusivity:
+    value: 1.2
+    unit: mm²/s
+    confidence: 84
+    description: Thermal diffusivity calculated from conductivity, density, and specific
+      heat
+    min: 0.2
+    max: 2.5
 applications:
-- laser cleaning
-- surface preparation
+- 'Manufacturing: Industrial surface preparation and contamination removal'
 machineSettings:
   powerRange:
-    value: 100
+    value: 40
     unit: W
-    confidence: 92
-    description: Optimal power range for Schist cleaning without thermal damage
-    min: 80
-    max: 120
+    confidence: 90
+    description: Optimal average power for Schist surface cleaning without thermal
+      damage
+    min: 20
+    max: 60
   wavelength:
     value: 1064
     unit: nm
@@ -109,67 +112,72 @@ machineSettings:
   spotSize:
     value: 100
     unit: μm
-    confidence: 90
+    confidence: 89
     description: Beam spot diameter for precise cleaning control
     min: 50
     max: 200
   repetitionRate:
-    value: 50
+    value: 20
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning with thermal management
-    min: 20
-    max: 100
+    description: Optimal repetition rate for consistent cleaning coverage
+    min: 10
+    max: 50
   pulseWidth:
-    value: 10
+    value: 100
     unit: ns
     confidence: 85
-    description: Nanosecond pulse width for controlled ablation of surface contaminants
-    min: 5
-    max: 20
+    description: Pulse duration balancing cleaning efficiency and thermal control
+    min: 50
+    max: 200
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 84
-    description: Optimal scanning speed for uniform cleaning coverage
+    confidence: 86
+    description: Optimal scanning speed for efficient surface coverage
     min: 200
     max: 1000
-  fluenceThreshold:
-    value: 2.5
-    unit: J/cm²
-    confidence: 89
-    description: Fluence threshold for effective contaminant removal from Schist surface
-    min: 1.5
-    max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 86
-    description: Optimal beam overlap for complete surface coverage
+    confidence: 88
+    description: Beam overlap percentage for uniform cleaning results
     min: 30
     max: 70
   passCount:
-    value: 3
+    value: 2
     unit: passes
-    confidence: 88
-    description: Recommended number of passes for thorough cleaning
+    confidence: 85
+    description: Number of cleaning passes for complete contaminant removal
     min: 1
-    max: 5
+    max: 4
+  energyDensity:
+    value: 5.1
+    unit: J/cm²
+    confidence: 91
+    description: Fluence threshold for effective Schist cleaning
+    min: 2.5
+    max: 8.0
   laserType:
     value: Nd:YAG
     unit: n/a
     confidence: 90
-    description: Recommended laser type for Schist cleaning applications
+    description: Recommended laser type for Schist processing applications
     min: null
     max: null
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
-  id: 3
-  name: Ikmanda Roswati
+  id: 2
+  name: Alessandro Moretti
   sex: m
   title: Ph.D.
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  image: /images/author/ikmanda-roswati.jpg
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  image: /images/author/alessandro-moretti.jpg
 images:
   hero:
     alt: Schist surface undergoing laser cleaning showing precise contamination removal
@@ -203,7 +211,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-author_id: 3
+author_id: 2
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues

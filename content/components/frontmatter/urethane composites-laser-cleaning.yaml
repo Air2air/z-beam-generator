@@ -1,0 +1,309 @@
+name: Urethane Composites
+category: Composite
+subcategory: Urethane Composites
+title: Urethane Composites Laser Cleaning
+description: Laser cleaning parameters for Carbon Fiber Reinforced Polymer
+materialProperties:
+  density:
+    value: 1.1
+    unit: g/cm³
+    confidence: 92
+    description: Typical density range for filled urethane composites
+    min: 0.5
+    max: 8
+  meltingPoint:
+    value: 180
+    unit: °C
+    confidence: 85
+    description: Decomposition temperature rather than true melting point for thermoset
+      urethanes
+    min: null
+    max: null
+  thermalConductivity:
+    value: 0.25
+    unit: W/m·K
+    confidence: 88
+    description: Low thermal conductivity typical of polymer composites
+    min: 0.1
+    max: 400
+  tensileStrength:
+    value: 45
+    unit: MPa
+    confidence: 90
+    description: Typical tensile strength for reinforced urethane composites
+    min: 50
+    max: 6000
+  hardness:
+    value: 85
+    unit: Shore D
+    confidence: 91
+    description: Typical hardness for rigid urethane composites
+    min: 20
+    max: 90
+  youngsModulus:
+    value: 2.5
+    unit: GPa
+    confidence: 89
+    description: Elastic modulus for filled urethane composite systems
+    min: 5
+    max: 1000
+  thermalExpansion:
+    value: 120
+    unit: 10⁻⁶/°C
+    confidence: 86
+    description: Coefficient of thermal expansion for filled urethane systems
+    min: -1
+    max: 50
+  specificHeat:
+    value: 1500
+    unit: J/kg·K
+    confidence: 84
+    description: Specific heat capacity at room temperature
+    min: 0.5
+    max: 2
+  absorptionCoefficient:
+    value: 8500
+    unit: cm⁻¹
+    confidence: 82
+    description: Absorption coefficient at 1064 nm wavelength
+    min: null
+    max: null
+  reflectivity:
+    value: 0.15
+    unit: dimensionless
+    confidence: 80
+    description: Reflectivity at common laser wavelengths (1064 nm)
+    min: null
+    max: null
+  ablationThreshold:
+    value: 1.2
+    unit: J/cm²
+    confidence: 83
+    description: Laser ablation threshold for nanosecond pulses at 1064 nm
+    min: null
+    max: null
+  oxidationResistance:
+    value: 150
+    unit: °C
+    confidence: 87
+    description: Maximum continuous service temperature before oxidative degradation
+    min: null
+    max: null
+applications:
+- 'Automotive: Paint removal and surface preparation for automotive parts'
+- 'Medical: Sterilization and cleaning of medical devices and instruments'
+- 'Manufacturing: Industrial surface preparation and contamination removal'
+- 'Aerospace: Precision cleaning of aerospace components and assemblies'
+machineSettings:
+  powerRange:
+    value: 100
+    unit: W
+    confidence: 92
+    description: Optimal average power range for Urethane Composites cleaning without
+      thermal damage
+    min: 80
+    max: 120
+  wavelength:
+    value: 1064
+    unit: nm
+    confidence: 88
+    description: Near-infrared wavelength optimized for Urethane Composites absorption
+      characteristics
+    min: null
+    max: null
+  spotSize:
+    value: 100
+    unit: μm
+    confidence: 90
+    description: Beam spot diameter for precise cleaning control on Urethane Composites
+      surfaces
+    min: 50
+    max: 200
+  repetitionRate:
+    value: 50
+    unit: kHz
+    confidence: 87
+    description: Optimal repetition rate for continuous cleaning with controlled thermal
+      input
+    min: 20
+    max: 100
+  fluenceThreshold:
+    value: 1.2
+    unit: J/cm²
+    confidence: 88
+    description: Ablation threshold fluence for Urethane Composites surface contaminants
+    min: 0.8
+    max: 2.0
+  pulseWidth:
+    value: 10
+    unit: ns
+    confidence: 85
+    description: Optimal pulse width for efficient contaminant removal with minimal
+      substrate heating
+    min: 5
+    max: 20
+  scanSpeed:
+    value: 500
+    unit: mm/s
+    confidence: 84
+    description: Optimal scanning speed for efficient area coverage with adequate
+      cleaning effect
+    min: 200
+    max: 1000
+  overlapRatio:
+    value: 50
+    unit: '%'
+    confidence: 86
+    description: Optimal beam overlap percentage for uniform cleaning without excessive
+      energy deposition
+    min: 30
+    max: 70
+  passCount:
+    value: 2
+    unit: passes
+    confidence: 82
+    description: Recommended number of passes for complete contaminant removal from
+      Urethane Composites
+    min: 1
+    max: 4
+  energyDensity:
+    value: 3.5
+    unit: J/cm²
+    confidence: 85
+    description: Optimal energy density for effective cleaning while preserving substrate
+      integrity
+    min: 2.0
+    max: 5.0
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author_object:
+  id: 1
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg
+images:
+  hero:
+    alt: Urethane Composites surface undergoing laser cleaning showing precise contamination
+      removal
+    url: /images/urethane-composites-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Urethane Composites surface after laser cleaning showing
+      detailed surface structure
+    url: /images/urethane-composites-laser-cleaning-micro.jpg
+environmentalImpact:
+- benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+  sustainabilityBenefit: ''
+- benefit: Water Usage Reduction
+  description: Dry process requires no water
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+- benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+author_id: 1
+applicationTypes:
+- type: Precision Cleaning
+  description: High-precision removal of microscopic contaminants and residues
+  industries:
+  - Semiconductor
+  - MEMS
+  - Optics
+  - Medical Devices
+  qualityMetrics:
+  - Particle count reduction
+  - Surface roughness maintenance
+  - Chemical purity
+  typicalTolerances: Sub-micron accuracy with minimal substrate impact
+  objectives: []
+- type: Surface Preparation
+  description: Preparation of surfaces for bonding, coating, or further processing
+  industries:
+  - Aerospace
+  - Automotive
+  - Manufacturing
+  - Construction
+  qualityMetrics:
+  - Surface energy
+  - Cleanliness level
+  - Roughness profile
+  typicalTolerances: ''
+  objectives:
+  - Adhesion enhancement
+  - Contamination removal
+  - Surface activation
+- type: Restoration Cleaning
+  description: Gentle removal of accumulated contamination while preserving original
+    material
+  industries:
+  - Cultural Heritage
+  - Architecture
+  - Art Conservation
+  - Historical Restoration
+  qualityMetrics: []
+  typicalTolerances: ''
+  objectives: []
+- type: Contamination Removal
+  description: General removal of unwanted surface deposits and contaminants
+  industries:
+  - Manufacturing
+  - Marine
+  - Oil & Gas
+  - Power Generation
+  qualityMetrics: []
+  typicalTolerances: ''
+  objectives: []
+outcomeMetrics:
+- metric: Contaminant Removal Efficiency
+  description: Percentage of target contaminants successfully removed from surface
+  measurementMethods:
+  - Before/after microscopy
+  - Chemical analysis
+  - Mass spectrometry
+  typicalRanges: 95-99.9% depending on application and material
+  factorsAffecting:
+  - Contamination type
+  - Adhesion strength
+  - Surface geometry
+  units: []
+- metric: Processing Speed
+  description: Rate of surface area processed per unit time
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- metric: Surface Quality Preservation
+  description: Maintenance of original surface characteristics after cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+- metric: Thermal Damage Avoidance
+  description: Prevention of heat-related material alterations during cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []

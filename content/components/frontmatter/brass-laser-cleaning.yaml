@@ -2,123 +2,117 @@ name: Brass
 category: Metal
 subcategory: Brass
 title: Brass Laser Cleaning
-description: Laser cleaning parameters for Brass
+description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
-    value: 8.5
+    value: 8.44
     unit: g/cm³
     confidence: 95
-    description: Typical density for common brass alloys (60-70% Cu)
-    min: 8.4
-    max: 8.7
+    description: Typical density for 70/30 brass (CuZn30) at room temperature
+    min: 0.53
+    max: 22.6
   meltingPoint:
-    value: 930
+    value: 915
     unit: °C
-    confidence: 90
-    description: Average melting point for common brass compositions
-    min: 900
-    max: 960
+    confidence: 92
+    description: Melting point range for common brass alloys (900-930°C)
+    min: null
+    max: null
   thermalConductivity:
     value: 120
     unit: W/m·K
-    confidence: 88
-    description: Thermal conductivity of typical brass alloys
-    min: 110
-    max: 130
+    confidence: 90
+    description: Thermal conductivity of 70/30 brass at 20°C
+    min: 6.0
+    max: 429.0
   tensileStrength:
     value: 340
     unit: MPa
     confidence: 88
     description: Typical tensile strength for annealed brass
-    min: 300
-    max: 400
+    min: 30.0
+    max: 3000.0
   hardness:
     value: 75
     unit: HV
     confidence: 85
-    description: Vickers hardness for typical brass compositions
-    min: 65
-    max: 85
+    description: Vickers hardness for annealed brass
+    min: 5
+    max: 500
   youngsModulus:
-    value: 100
+    value: 110
     unit: GPa
-    confidence: 90
+    confidence: 92
     description: Elastic modulus of brass alloys
-    min: 95
-    max: 105
+    min: 70
+    max: 411
   thermalExpansion:
     value: 19.0
-    unit: 10⁻⁶/°C
-    confidence: 85
-    description: Coefficient of thermal expansion at 20-100°C
-    min: 18.0
-    max: 20.0
+    unit: 10⁻⁶/K
+    confidence: 88
+    description: Coefficient of thermal expansion for brass at 20-100°C
+    min: 0.5
+    max: 29.1
   thermalDiffusivity:
-    value: 35.0
+    value: 35.2
     unit: mm²/s
-    confidence: 82
-    description: Thermal diffusivity at room temperature
-    min: 32.0
-    max: 38.0
+    confidence: 85
+    description: Thermal diffusivity calculated from thermal properties
+    min: 4.2
+    max: 174
   specificHeat:
     value: 380
     unit: J/kg·K
-    confidence: 85
+    confidence: 90
     description: Specific heat capacity at room temperature
-    min: 370
-    max: 390
+    min: 0.128
+    max: 0.904
   reflectivity:
-    value: 65
+    value: 62
     unit: '%'
     confidence: 82
-    description: Average reflectivity in visible to near-IR range
-    min: 60
-    max: 70
+    description: Approximate reflectivity at common laser wavelengths (1064nm)
+    min: null
+    max: null
   absorptionCoefficient:
-    value: 0.8
-    unit: 10⁶/m
+    value: 12000000.0
+    unit: m⁻¹
     confidence: 80
-    description: Optical absorption coefficient at 1064nm wavelength
-    min: 0.7
-    max: 0.9
+    description: Absorption coefficient for IR laser wavelengths
+    min: null
+    max: null
   ablationThreshold:
-    value: 1.2
+    value: 0.8
     unit: J/cm²
     confidence: 78
-    description: Laser ablation threshold for nanosecond pulses at 1064nm
-    min: 0.8
-    max: 1.5
+    description: Estimated ablation threshold for nanosecond pulses at 1064nm
+    min: null
+    max: null
   oxidationResistance:
     value: Good
-    unit: Qualitative
+    unit: qualitative
     confidence: 85
-    description: Resistance to atmospheric oxidation and tarnishing
-    min: Moderate
-    max: Excellent
-  corrosionResistance:
-    value: Moderate
-    unit: Qualitative
-    confidence: 82
-    description: General corrosion resistance in various environments
-    min: Fair
-    max: Good
+    description: Natural corrosion resistance due to protective oxide layer
+    min: null
+    max: null
   crystallineStructure:
     value: FCC
-    unit: Crystal System
+    unit: crystal system
     confidence: 95
     description: Face-centered cubic structure typical for alpha-brass
-    min: Alpha Phase
-    max: Alpha+Beta Phase
+    min: null
+    max: null
   surfaceRoughness:
     value: 0.4
     unit: μm Ra
     confidence: 80
-    description: Typical surface roughness for machined brass surfaces
-    min: 0.2
-    max: 0.8
+    description: Typical as-machined surface roughness
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Oil and Gas: Industrial cleaning and maintenance for oil and gas equipment'
+- 'Automotive: Paint removal and surface preparation for automotive parts'
+- 'Nuclear: Decontamination and surface cleaning in nuclear facilities'
 machineSettings:
   powerRange:
     value: 100
@@ -131,7 +125,7 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength for optimal Brass absorption and thermal processing
+    description: Near-IR wavelength for optimal Brass absorption and minimal reflectivity
     min: 1030
     max: 1070
   spotSize:
@@ -145,7 +139,7 @@ machineSettings:
     value: 100
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning with thermal management
+    description: Optimal repetition rate for efficient cleaning with thermal management
     min: 50
     max: 200
   pulseWidth:
@@ -166,24 +160,24 @@ machineSettings:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Minimum fluence required for effective Brass surface cleaning
+    description: Minimum fluence required for effective Brass oxide removal
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive heat
+    description: Optimal pulse overlap for uniform cleaning without excessive heat
       accumulation
-    min: 30
+    min: 40
     max: 70
   passCount:
-    value: 3
+    value: 2
     unit: passes
-    confidence: 82
+    confidence: 85
     description: Recommended number of passes for complete contaminant removal
     min: 1
-    max: 5
+    max: 4
   laserType:
     value: Fiber Laser
     unit: N/A
@@ -191,6 +185,11 @@ machineSettings:
     description: Recommended laser type for Brass cleaning applications
     min: null
     max: null
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
   id: 4
   name: Todd Dunning

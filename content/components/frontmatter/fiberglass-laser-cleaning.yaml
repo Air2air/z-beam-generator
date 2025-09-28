@@ -2,182 +2,195 @@ name: Fiberglass
 category: Composite
 subcategory: Fiberglass
 title: Fiberglass Laser Cleaning
-description: Laser cleaning parameters for Fiberglass
+description: Laser cleaning parameters for Carbon Fiber Reinforced Polymer
 materialProperties:
   density:
-    value: 2.55
+    value: 1.8
     unit: g/cm³
     confidence: 95
-    description: Density of E-glass fiberglass composite
-    min: 2.4
-    max: 2.7
+    description: Typical density for E-glass fiber reinforced composites
+    min: 0.5
+    max: 8
   meltingPoint:
     value: 1120
     unit: °C
     confidence: 90
-    description: Softening point of E-glass fibers
-    min: 1050
-    max: 1200
+    description: Softening point of E-glass fibers (glass transition)
+    min: null
+    max: null
   thermalConductivity:
-    value: 1.2
+    value: 0.35
     unit: W/m·K
     confidence: 88
-    description: Thermal conductivity parallel to fiber direction
-    min: 0.8
-    max: 1.5
+    description: Thermal conductivity perpendicular to fiber direction
+    min: 0.1
+    max: 400
   tensileStrength:
-    value: 3450
+    value: 310
     unit: MPa
-    confidence: 90
-    description: Tensile strength of individual E-glass fibers
-    min: 3100
-    max: 3800
-  youngsModulus:
-    value: 72.5
-    unit: GPa
     confidence: 92
-    description: Elastic modulus of glass fibers
-    min: 68
-    max: 76
+    description: Tensile strength along fiber direction for E-glass composites
+    min: 50
+    max: 6000
+  youngsModulus:
+    value: 17.2
+    unit: GPa
+    confidence: 90
+    description: Young's modulus in the fiber direction
+    min: 5
+    max: 1000
   thermalExpansion:
-    value: 5.0
-    unit: ×10⁻⁶/°C
+    value: 8.6
+    unit: 10⁻⁶/°C
     confidence: 85
-    description: Coefficient of thermal expansion along fiber direction
-    min: 4.5
-    max: 6.0
+    description: Coefficient of thermal expansion for typical fiberglass composite
+    min: -1
+    max: 50
   specificHeat:
     value: 840
     unit: J/kg·K
-    confidence: 92
+    confidence: 87
     description: Specific heat capacity at room temperature
-    min: 800
-    max: 900
+    min: 0.5
+    max: 2
+  flexuralStrength:
+    value: 480
+    unit: MPa
+    confidence: 88
+    description: Flexural strength of typical fiberglass laminate
+    min: null
+    max: null
   absorptionCoefficient:
-    value: 0.85
+    value: 0.65
     unit: dimensionless
     confidence: 82
-    description: Absorption coefficient for 1064nm laser wavelength
-    min: 0.75
-    max: 0.95
+    description: Absorption coefficient for near-infrared laser wavelengths (1064
+      nm)
+    min: null
+    max: null
   reflectivity:
-    value: 0.08
+    value: 0.25
     unit: dimensionless
     confidence: 80
-    description: Reflectivity at 1064nm wavelength
-    min: 0.05
-    max: 0.12
+    description: Reflectivity at common laser cleaning wavelengths
+    min: null
+    max: null
   ablationThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 85
-    description: Laser ablation threshold for nanosecond pulses at 1064nm
-    min: 1.8
-    max: 3.5
+    description: Laser ablation threshold for nanosecond pulses at 1064 nm
+    min: null
+    max: null
+  laserDamageThreshold:
+    value: 1.8
+    unit: J/cm²
+    confidence: 83
+    description: Damage threshold for continuous wave laser exposure
+    min: null
+    max: null
   chemicalStability:
-    value: High
-    unit: qualitative
+    value: 85
+    unit: '% resistance'
     confidence: 88
-    description: Resistance to most chemicals except strong acids and bases
-    min: Moderate
-    max: Excellent
+    description: Chemical resistance rating against common solvents and mild acids
+    min: null
+    max: null
   surfaceRoughness:
     value: 1.2
     unit: μm Ra
     confidence: 82
-    description: Typical surface roughness of molded fiberglass
-    min: 0.8
-    max: 2.5
+    description: Typical surface roughness of molded fiberglass surfaces
+    min: null
+    max: null
+  thermalDiffusivity:
+    value: 0.23
+    unit: mm²/s
+    confidence: 84
+    description: Thermal diffusivity at room temperature
+    min: 0.1
+    max: 180
 applications:
-- laser cleaning
-- surface preparation
+- 'Medical: Sterilization and cleaning of medical devices and instruments'
+- 'Aerospace: Precision cleaning of aerospace components and assemblies'
+- 'Automotive: Paint removal and surface preparation for automotive parts'
 machineSettings:
   powerRange:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Fiberglass surface cleaning without matrix
-      damage
+    description: Optimal power range for Fiberglass cleaning without thermal damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength for optimal absorption in surface contaminants
-      while minimizing glass fiber damage
+    description: Near-IR wavelength for optimal Fiberglass absorption
     min: 1030
     max: 1070
   spotSize:
     value: 100
     unit: μm
     confidence: 90
-    description: Beam spot diameter for precise cleaning with adequate energy density
+    description: Beam spot diameter for precise cleaning control
     min: 50
     max: 200
   repetitionRate:
     value: 100
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient surface coverage while maintaining
-      thermal control
+    description: High repetition rate for efficient surface cleaning
     min: 50
     max: 200
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient contaminant removal with
-      controlled thermal effects
+    description: Nanosecond pulse duration for controlled ablation
     min: 5
     max: 20
   scanSpeed:
-    value: 1000
+    value: 500
     unit: mm/s
-    confidence: 85
-    description: Optimal scanning speed for efficient material removal without excessive
-      heat accumulation
-    min: 500
-    max: 2000
-  energyDensity:
-    value: 1.5
+    confidence: 84
+    description: Optimal scanning speed for uniform cleaning
+    min: 300
+    max: 800
+  fluenceThreshold:
+    value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal while preserving
-      Fiberglass integrity
-    min: 0.8
-    max: 2.5
+    description: Fluence threshold for effective contaminant removal
+    min: 1.5
+    max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 86
-    description: Optimal beam overlap for uniform cleaning coverage without excessive
-      thermal loading
-    min: 30
-    max: 70
+    description: Optimal beam overlap for complete coverage
+    min: 40
+    max: 60
   passCount:
-    value: 1
+    value: 3
     unit: passes
-    confidence: 88
-    description: Single-pass cleaning recommended to minimize thermal exposure to
-      Fiberglass matrix
+    confidence: 83
+    description: Number of passes for thorough cleaning
     min: 1
-    max: 3
-  laserType:
-    value: Pulsed Fiber Laser
-    unit: N/A
-    confidence: 91
-    description: Recommended laser type for Fiberglass cleaning applications
-    min: null
-    max: null
+    max: 5
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
-  id: 3
-  name: Ikmanda Roswati
-  sex: m
+  id: 1
+  name: Yi-Chun Lin
+  sex: f
   title: Ph.D.
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  image: /images/author/ikmanda-roswati.jpg
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg
 images:
   hero:
     alt: Fiberglass surface undergoing laser cleaning showing precise contamination
@@ -212,7 +225,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-author_id: 3
+author_id: 1
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues

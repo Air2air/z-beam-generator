@@ -2,202 +2,204 @@ name: Silicon
 category: Semiconductor
 subcategory: Silicon
 title: Silicon Laser Cleaning
-description: Laser cleaning parameters for Silicon
+description: Laser cleaning parameters for Gallium Arsenide
 materialProperties:
   density:
     value: 2.329
     unit: g/cm³
     confidence: 98
     description: Density of pure silicon at 25°C
-    min: 2.328
-    max: 2.33
+    min: 2.33
+    max: 7.13
   meltingPoint:
     value: 1414
     unit: °C
     confidence: 97
     description: Melting point of crystalline silicon
-    min: 1412
-    max: 1416
+    min: null
+    max: null
   thermalConductivity:
     value: 149
     unit: W/m·K
     confidence: 95
-    description: Thermal conductivity at 300K
-    min: 148
-    max: 150
+    description: Thermal conductivity at 300K for pure silicon
+    min: 0.2
+    max: 156
   hardness:
-    value: 11.5
-    unit: GPa
+    value: 9.5
+    unit: Mohs
     confidence: 88
-    description: Knoop hardness at room temperature
-    min: 11.0
-    max: 12.0
+    description: Mohs hardness scale value
+    min: 2
+    max: 7
   youngsModulus:
     value: 130
     unit: GPa
     confidence: 96
     description: Young's modulus along <100> direction
-    min: 129
-    max: 131
+    min: 5
+    max: 190
   thermalExpansion:
     value: 2.6
     unit: ×10⁻⁶/K
     confidence: 92
     description: Coefficient of thermal expansion at 25°C
-    min: 2.5
-    max: 2.7
+    min: 2.6
+    max: 19.7
   thermalDiffusivity:
-    value: 0.88
+    value: 0.9
     unit: cm²/s
     confidence: 90
     description: Thermal diffusivity at room temperature
-    min: 0.86
-    max: 0.9
+    min: 0.1
+    max: 90
   specificHeat:
     value: 0.705
     unit: J/g·K
-    confidence: 94
+    confidence: 93
     description: Specific heat capacity at 25°C
-    min: 0.7
-    max: 0.71
+    min: 0.3
+    max: 1.6
   absorptionCoefficient:
     value: 10000
     unit: cm⁻¹
     confidence: 85
     description: Absorption coefficient at 532nm wavelength
-    min: 9500
-    max: 10500
+    min: null
+    max: null
   reflectivity:
-    value: 0.38
+    value: 0.35
     unit: dimensionless
-    confidence: 90
+    confidence: 87
     description: Reflectivity at 1064nm wavelength
-    min: 0.36
-    max: 0.4
+    min: null
+    max: null
+  refractiveIndex:
+    value: 3.42
+    unit: dimensionless
+    confidence: 95
+    description: Refractive index at 1550nm wavelength
+    min: null
+    max: null
   ablationThreshold:
-    value: 2.5
+    value: 0.5
     unit: J/cm²
     confidence: 82
-    description: Laser ablation threshold for nanosecond pulses at 1064nm
-    min: 2.0
-    max: 3.0
+    description: Approximate ablation threshold for nanosecond pulses at 1064nm
+    min: null
+    max: null
   laserDamageThreshold:
-    value: 15
+    value: 2.0
     unit: J/cm²
     confidence: 80
-    description: Single-shot laser damage threshold for polished silicon
-    min: 12
-    max: 18
+    description: Laser-induced damage threshold for polished surfaces
+    min: null
+    max: null
   crystallineStructure:
     value: Diamond cubic
-    unit: crystal system
+    unit: N/A
     confidence: 99
-    description: Crystalline structure with lattice parameter 5.431Å
-    min: N/A
-    max: N/A
-  oxidationResistance:
-    value: High
-    unit: qualitative
-    confidence: 88
-    description: Forms protective silicon dioxide layer upon heating
-    min: N/A
-    max: N/A
+    description: Crystal structure with lattice parameter 5.4307Å
+    min: null
+    max: null
+  surfaceRoughness:
+    value: 0.1
+    unit: nm
+    confidence: 85
+    description: Typical surface roughness for polished silicon wafers
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Aerospace: Precision cleaning of aerospace components and assemblies'
 machineSettings:
   powerRange:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal power range for Silicon cleaning without substrate damage
+    description: Optimal average power for Silicon surface cleaning without substrate
+      damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
-    confidence: 90
-    description: Optimal wavelength for Silicon absorption and minimal substrate damage
+    confidence: 88
+    description: Near-IR wavelength with good Silicon absorption for contaminant removal
     min: 532
     max: 1064
   spotSize:
     value: 50
     unit: μm
-    confidence: 89
-    description: Optimal beam spot size for precision Silicon cleaning
+    confidence: 84
+    description: Beam spot diameter for precise cleaning with adequate energy density
     min: 30
     max: 100
   repetitionRate:
     value: 100
     unit: kHz
-    confidence: 84
-    description: Optimal repetition rate for efficient Silicon cleaning
+    confidence: 87
+    description: High repetition rate for efficient cleaning coverage while maintaining
+      thermal control
     min: 50
     max: 200
-  fluenceThreshold:
-    value: 0.8
-    unit: J/cm²
-    confidence: 88
-    description: Minimum fluence required for effective contaminant removal from Silicon
-    min: 0.5
-    max: 1.2
-  energyDensity:
-    value: 2.5
-    unit: J/cm²
-    confidence: 85
-    description: Optimal energy density for Silicon surface cleaning
-    min: 1.5
-    max: 4.0
   pulseWidth:
     value: 10
     unit: ns
-    confidence: 87
-    description: Optimal pulse width for controlled Silicon ablation
+    confidence: 85
+    description: Nanosecond pulse duration for effective contaminant ablation with
+      minimal thermal diffusion
     min: 5
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 83
-    description: Optimal scanning speed for uniform Silicon surface treatment
+    confidence: 82
+    description: Optimal scanning speed for uniform cleaning coverage
     min: 200
     max: 1000
+  fluenceThreshold:
+    value: 2.5
+    unit: J/cm²
+    confidence: 90
+    description: Minimum fluence required for effective contaminant removal from Silicon
+      surface
+    min: 1.5
+    max: 4.0
+  overlapRatio:
+    value: 70
+    unit: '%'
+    confidence: 83
+    description: Optimal pulse overlap for uniform cleaning without excessive heat
+      accumulation
+    min: 50
+    max: 85
   passCount:
     value: 3
     unit: passes
-    confidence: 86
-    description: Optimal number of passes for complete contaminant removal
+    confidence: 81
+    description: Number of cleaning passes for complete contaminant removal
     min: 1
     max: 5
-  overlapRatio:
-    value: 50
-    unit: '%'
-    confidence: 85
-    description: Optimal beam overlap for uniform Silicon surface treatment
-    min: 30
-    max: 70
-  dwellTime:
-    value: 100
-    unit: μs
-    confidence: 82
-    description: Optimal dwell time per spot for effective Silicon cleaning
-    min: 50
-    max: 200
   laserType:
     value: Nd:YAG
     unit: n/a
-    confidence: 88
-    description: Recommended laser type for Silicon processing applications
+    confidence: 89
+    description: Solid-state laser system optimized for Silicon processing applications
     min: null
     max: null
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
-  id: 2
-  name: Alessandro Moretti
+  id: 3
+  name: Ikmanda Roswati
   sex: m
   title: Ph.D.
-  country: Italy
-  expertise: Laser-Based Additive Manufacturing
-  image: /images/author/alessandro-moretti.jpg
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  image: /images/author/ikmanda-roswati.jpg
 images:
   hero:
     alt: Silicon surface undergoing laser cleaning showing precise contamination removal
@@ -231,7 +233,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-author_id: 2
+author_id: 3
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues

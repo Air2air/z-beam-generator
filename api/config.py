@@ -141,26 +141,16 @@ class ConfigAdapter:
             base_url=config_data["base_url"],
             model=config_data.get("model", config_data.get("default_model", "unknown")),
             api_key="",  # Will be set by client
-            max_tokens=config_data.get("max_tokens", _get_fallback("max_tokens")),
-            temperature=config_data.get("temperature", _get_fallback("temperature")),
-            timeout_connect=config_data.get("timeout_connect", _get_fallback("timeout_connect")),
-            timeout_read=config_data.get("timeout_read", _get_fallback("timeout_read")),
-            max_retries=config_data.get("max_retries", _get_fallback("max_retries")),
-            retry_delay=config_data.get("retry_delay", _get_fallback("retry_delay")),
+            max_tokens=config_data["max_tokens"],  # FAIL-FAST: Required per GROK_INSTRUCTIONS.md
+            temperature=config_data["temperature"],  # FAIL-FAST: Required per GROK_INSTRUCTIONS.md
+            timeout_connect=config_data["timeout_connect"],  # FAIL-FAST: Required per GROK_INSTRUCTIONS.md
+            timeout_read=config_data["timeout_read"],  # FAIL-FAST: Required per GROK_INSTRUCTIONS.md
+            max_retries=config_data["max_retries"],  # FAIL-FAST: Required per GROK_INSTRUCTIONS.md
+            retry_delay=config_data["retry_delay"],  # FAIL-FAST: Required per GROK_INSTRUCTIONS.md
         )
 
 
-def _get_fallback(key: str):
-    """Get configuration value from centralized run.py - FAIL FAST"""
-    from run import get_api_config_fallbacks
-    return get_api_config_fallbacks().get(key, {
-        "max_tokens": 4000,
-        "temperature": 0.7, 
-        "timeout_connect": 10,
-        "timeout_read": 30,
-        "max_retries": 3,
-        "retry_delay": 1.0,
-    }.get(key))
+# Removed _get_fallback function per GROK_INSTRUCTIONS.md - no fallbacks allowed in production
 
-# Backward compatibility exports
-__all__ = ['APIConfig', 'get_api_providers', 'get_default_config', 'ConfigAdapter', '_get_fallback']
+# Backward compatibility exports  
+__all__ = ['APIConfig', 'get_api_providers', 'get_default_config', 'ConfigAdapter']

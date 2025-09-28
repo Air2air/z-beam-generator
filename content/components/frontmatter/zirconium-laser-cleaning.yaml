@@ -2,10 +2,116 @@ name: Zirconium
 category: Metal
 subcategory: Zirconium
 title: Zirconium Laser Cleaning
-description: Laser cleaning parameters for Zirconium
+description: Laser cleaning parameters for Aluminum
+materialProperties:
+  density:
+    value: 6.52
+    unit: g/cm³
+    confidence: 98
+    description: Density of pure zirconium at room temperature
+    min: 0.53
+    max: 22.6
+  meltingPoint:
+    value: 1855
+    unit: °C
+    confidence: 97
+    description: Melting point of pure zirconium
+    min: null
+    max: null
+  thermalConductivity:
+    value: 22.7
+    unit: W/m·K
+    confidence: 92
+    description: Thermal conductivity at room temperature
+    min: 6.0
+    max: 429.0
+  tensileStrength:
+    value: 330
+    unit: MPa
+    confidence: 85
+    description: Ultimate tensile strength of annealed zirconium
+    min: 30.0
+    max: 3000.0
+  hardness:
+    value: 120
+    unit: HV
+    confidence: 86
+    description: Vickers hardness of pure zirconium
+    min: 5
+    max: 500
+  youngsModulus:
+    value: 88
+    unit: GPa
+    confidence: 94
+    description: Young's modulus of elasticity
+    min: 70
+    max: 411
+  thermalExpansion:
+    value: 5.7
+    unit: 10⁻⁶/K
+    confidence: 90
+    description: Coefficient of thermal expansion (20-100°C)
+    min: 0.5
+    max: 29.1
+  thermalDiffusivity:
+    value: 8.9
+    unit: mm²/s
+    confidence: 88
+    description: Thermal diffusivity at room temperature
+    min: 4.2
+    max: 174
+  specificHeat:
+    value: 278
+    unit: J/kg·K
+    confidence: 92
+    description: Specific heat capacity at room temperature
+    min: 0.128
+    max: 0.904
+  absorptionCoefficient:
+    value: 0.65
+    unit: dimensionless
+    confidence: 82
+    description: Approximate absorption coefficient for Nd:YAG laser (1064 nm)
+    min: null
+    max: null
+  reflectivity:
+    value: 0.35
+    unit: dimensionless
+    confidence: 80
+    description: Estimated reflectivity for common laser wavelengths
+    min: null
+    max: null
+  ablationThreshold:
+    value: 2.5
+    unit: J/cm²
+    confidence: 78
+    description: Estimated laser ablation threshold for nanosecond pulses
+    min: null
+    max: null
+  oxidationResistance:
+    value: High
+    unit: qualitative
+    confidence: 90
+    description: Excellent oxidation resistance due to protective oxide layer
+    min: null
+    max: null
+  crystallineStructure:
+    value: HCP
+    unit: crystal system
+    confidence: 99
+    description: Hexagonal close-packed structure at room temperature
+    min: null
+    max: null
+  surfaceRoughness:
+    value: 0.8
+    unit: μm Ra
+    confidence: 82
+    description: Typical surface roughness of polished zirconium
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Nuclear: Decontamination and surface cleaning in nuclear facilities'
+- 'Food Processing: Sanitary surface cleaning for food processing equipment'
 machineSettings:
   powerRange:
     value: 100
@@ -26,7 +132,7 @@ machineSettings:
     value: 50
     unit: μm
     confidence: 84
-    description: Optimal beam diameter for precision cleaning of Zirconium surfaces
+    description: Optimal beam diameter for precise Zirconium surface treatment
     min: 30
     max: 100
   repetitionRate:
@@ -40,7 +146,7 @@ machineSettings:
     value: 2.5
     unit: J/cm²
     confidence: 88
-    description: Threshold fluence for effective Zirconium oxide ablation
+    description: Minimum fluence required for effective Zirconium oxide ablation
     min: 1.8
     max: 3.5
   pulseWidth:
@@ -54,39 +160,45 @@ machineSettings:
     value: 1000
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform surface treatment
+    description: Optimal scanning speed for uniform cleaning coverage
     min: 500
     max: 2000
   overlapRatio:
-    value: 50
+    value: 70
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for complete surface coverage
-    min: 40
-    max: 70
+    description: Optimal pulse overlap for complete surface coverage without excessive
+      heating
+    min: 50
+    max: 85
   passCount:
     value: 3
     unit: passes
-    confidence: 85
+    confidence: 82
     description: Recommended number of passes for thorough contamination removal
     min: 1
     max: 5
   energyDensity:
     value: 12.7
     unit: J/cm²
-    confidence: 89
+    confidence: 85
     description: Calculated energy density based on power, spot size, and repetition
       rate
     min: 8.5
     max: 16.2
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
-  id: 1
-  name: Yi-Chun Lin
-  sex: f
-  title: Ph.D.
-  country: Taiwan
-  expertise: Laser Materials Processing
-  image: /images/author/yi-chun-lin.jpg
+  id: 4
+  name: Todd Dunning
+  sex: m
+  title: MA
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  image: /images/author/todd-dunning.jpg
 images:
   hero:
     alt: Zirconium surface undergoing laser cleaning showing precise contamination
@@ -121,7 +233,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-author_id: 1
+author_id: 4
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues

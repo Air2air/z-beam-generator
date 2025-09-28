@@ -2,160 +2,185 @@ name: Beryllium
 category: Metal
 subcategory: Beryllium
 title: Beryllium Laser Cleaning
-description: Laser cleaning parameters for Beryllium
+description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
     value: 1.85
     unit: g/cm³
-    confidence: 99
+    confidence: 98
     description: Density of pure beryllium at room temperature
-    min: 1.84
-    max: 1.86
+    min: 0.53
+    max: 22.6
   meltingPoint:
     value: 1287
     unit: °C
-    confidence: 98
+    confidence: 97
     description: Melting point of pure beryllium
-    min: 1285
-    max: 1289
+    min: null
+    max: null
   thermalConductivity:
     value: 200
     unit: W/m·K
     confidence: 95
     description: Thermal conductivity at room temperature
-    min: 190
-    max: 210
+    min: 6.0
+    max: 429.0
   tensileStrength:
     value: 370
     unit: MPa
-    confidence: 90
-    description: Typical tensile strength for wrought beryllium
-    min: 300
-    max: 450
+    confidence: 88
+    description: Typical tensile strength for pure beryllium
+    min: 30.0
+    max: 3000.0
   hardness:
     value: 150
     unit: HV
-    confidence: 88
+    confidence: 85
     description: Vickers hardness of pure beryllium
-    min: 130
-    max: 170
+    min: 5
+    max: 500
   youngsModulus:
     value: 303
     unit: GPa
-    confidence: 96
+    confidence: 95
     description: Young's modulus of elasticity
-    min: 300
-    max: 305
+    min: 70
+    max: 411
   thermalExpansion:
     value: 11.3
     unit: 10⁻⁶/K
     confidence: 92
-    description: Coefficient of thermal expansion (20-100°C)
-    min: 11.0
-    max: 11.6
+    description: Coefficient of linear thermal expansion (20-100°C)
+    min: 0.5
+    max: 29.1
   specificHeat:
     value: 1.825
     unit: J/g·K
-    confidence: 94
-    description: Specific heat capacity at 25°C
-    min: 1.8
-    max: 1.85
+    confidence: 90
+    description: Specific heat capacity at room temperature
+    min: 0.128
+    max: 0.904
   reflectivity:
     value: 55
     unit: '%'
-    confidence: 85
+    confidence: 82
     description: Approximate reflectivity at common laser wavelengths (500-1100 nm)
-    min: 50
-    max: 60
+    min: null
+    max: null
+  absorptionCoefficient:
+    value: 1200000.0
+    unit: m⁻¹
+    confidence: 80
+    description: Estimated absorption coefficient for IR lasers
+    min: null
+    max: null
   ablationThreshold:
     value: 0.8
     unit: J/cm²
-    confidence: 82
-    description: Estimated laser ablation threshold for nanosecond pulses
-    min: 0.5
-    max: 1.2
-  oxidationResistance:
-    value: Poor
-    unit: Qualitative
-    confidence: 90
-    description: Forms protective BeO layer but oxidizes readily above 600°C
-    min: N/A
-    max: N/A
+    confidence: 85
+    description: Approximate ablation threshold for nanosecond lasers
+    min: null
+    max: null
   crystallineStructure:
     value: HCP
-    unit: Crystal System
+    unit: none
     confidence: 99
-    description: Hexagonal Close-Packed structure (a=2.286Å, c=3.583Å)
-    min: N/A
-    max: N/A
+    description: Hexagonal close-packed crystal structure
+    min: null
+    max: null
+  oxidationResistance:
+    value: Moderate
+    unit: qualitative
+    confidence: 88
+    description: Forms protective BeO layer at elevated temperatures
+    min: null
+    max: null
+  thermalDiffusivity:
+    value: 0.55
+    unit: cm²/s
+    confidence: 90
+    description: Thermal diffusivity at room temperature
+    min: 4.2
+    max: 174
 applications:
-- laser cleaning
-- surface preparation
+- 'Medical: Sterilization and cleaning of medical devices and instruments'
+- 'Oil and Gas: Industrial cleaning and maintenance for oil and gas equipment'
 machineSettings:
   powerRange:
-    value: 15
+    value: 8
     unit: W
     confidence: 90
     description: Average power for oxide layer removal without substrate damage
-    min: 8
-    max: 25
+    min: 5
+    max: 15
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength for moderate Beryllium absorption with safety
-      considerations
+    description: Near-IR wavelength for optimal absorption in beryllium oxide layers
     min: 532
     max: 1064
   spotSize:
     value: 100
     unit: μm
     confidence: 82
-    description: Beam spot diameter for precise cleaning control
+    description: Beam spot diameter for precise oxide removal control
     min: 50
     max: 200
   repetitionRate:
     value: 20
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning with thermal management
+    description: Repetition rate balancing cleaning efficiency and thermal management
     min: 10
     max: 50
   pulseWidth:
     value: 100
     unit: ns
     confidence: 85
-    description: Nanosecond pulses for controlled ablation of surface contaminants
+    description: Nanosecond pulse duration for controlled oxide ablation
     min: 50
     max: 200
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 84
-    description: Optimal scanning speed for uniform surface treatment
+    description: Scan speed for efficient surface coverage with minimal heat accumulation
     min: 200
     max: 1000
-  fluenceThreshold:
+  fluence:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Threshold fluence for Beryllium oxide removal
+    description: Fluence threshold for beryllium oxide ablation
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal overlap between adjacent scan lines
+    description: Beam overlap percentage for uniform cleaning coverage
     min: 30
     max: 70
+  pulseEnergy:
+    value: 0.4
+    unit: mJ
+    confidence: 86
+    description: Pulse energy optimized for oxide layer removal
+    min: 0.2
+    max: 0.8
   passCount:
     value: 3
     unit: passes
-    confidence: 86
-    description: Recommended number of passes for complete cleaning
+    confidence: 81
+    description: Number of passes for complete oxide removal
     min: 1
     max: 5
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
   id: 4
   name: Todd Dunning

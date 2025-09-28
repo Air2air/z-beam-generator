@@ -2,109 +2,110 @@ name: Gold
 category: Metal
 subcategory: Gold
 title: Gold Laser Cleaning
-description: Laser cleaning parameters for Gold
+description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
     value: 19.32
     unit: g/cm³
     confidence: 99
     description: Density of pure gold at 20°C
-    min: 19.3
-    max: 19.34
+    min: 0.53
+    max: 22.6
   meltingPoint:
     value: 1064
     unit: °C
     confidence: 98
     description: Melting point of pure gold
-    min: 1063
-    max: 1065
+    min: null
+    max: null
   thermalConductivity:
     value: 318
     unit: W/m·K
     confidence: 95
-    description: Thermal conductivity at 27°C
-    min: 315
-    max: 320
+    description: Thermal conductivity at 300K
+    min: 6.0
+    max: 429.0
   hardness:
     value: 25
     unit: HV
     confidence: 88
     description: Vickers hardness of annealed gold
-    min: 20
-    max: 30
+    min: 5
+    max: 500
   youngsModulus:
     value: 79
     unit: GPa
     confidence: 94
-    description: Young's modulus of elasticity
-    min: 78
-    max: 80
+    description: Young's modulus of pure gold
+    min: 70
+    max: 411
   thermalExpansion:
     value: 14.2
-    unit: μm/m·K
+    unit: 10⁻⁶/K
     confidence: 92
     description: Coefficient of linear thermal expansion at 25°C
-    min: 14.0
-    max: 14.4
+    min: 0.5
+    max: 29.1
   thermalDiffusivity:
     value: 127
     unit: mm²/s
     confidence: 90
     description: Thermal diffusivity at room temperature
-    min: 125
-    max: 129
+    min: 4.2
+    max: 174
   specificHeat:
     value: 0.129
     unit: J/g·K
-    confidence: 92
+    confidence: 93
     description: Specific heat capacity at 25°C
     min: 0.128
-    max: 0.13
+    max: 0.904
   reflectivity:
-    value: 95
+    value: 98.5
     unit: '%'
     confidence: 96
-    description: Reflectivity in visible spectrum (500-700 nm)
-    min: 94
-    max: 97
+    description: Reflectivity at 1064 nm wavelength
+    min: null
+    max: null
   absorptionCoefficient:
     value: 6.5
-    unit: ×10⁵ cm⁻¹
+    unit: 10⁵ cm⁻¹
     confidence: 85
-    description: Absorption coefficient at 532 nm wavelength
-    min: 6.0
-    max: 7.0
+    description: Absorption coefficient at 532 nm
+    min: null
+    max: null
   ablationThreshold:
     value: 0.8
     unit: J/cm²
     confidence: 82
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
-    min: 0.6
-    max: 1.0
-  oxidationResistance:
-    value: Excellent
-    unit: Qualitative
-    confidence: 98
-    description: Resistance to oxidation and tarnishing
-    min: N/A
-    max: N/A
+    min: null
+    max: null
   crystallineStructure:
     value: FCC
-    unit: Crystal System
+    unit: none
     confidence: 99
     description: Face-centered cubic crystal structure
-    min: N/A
-    max: N/A
+    min: null
+    max: null
+  oxidationResistance:
+    value: Excellent
+    unit: qualitative
+    confidence: 98
+    description: Resistance to oxidation at room temperature
+    min: null
+    max: null
   electricalConductivity:
     value: 45.2
     unit: MS/m
-    confidence: 96
+    confidence: 97
     description: Electrical conductivity at 20°C
-    min: 45.0
-    max: 45.5
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Aerospace: Precision cleaning of aerospace components and assemblies'
+- 'Food Processing: Sanitary surface cleaning for food processing equipment'
+- 'Manufacturing: Industrial surface preparation and contamination removal'
 machineSettings:
   powerRange:
     value: 15
@@ -118,15 +119,15 @@ machineSettings:
     value: 532
     unit: nm
     confidence: 92
-    description: Green wavelength optimized for Gold's high reflectivity in IR and
-      better absorption in visible spectrum
+    description: Green wavelength for optimal Gold absorption (reflectivity ~40% vs
+      95%+ at 1064nm)
     min: 355
     max: 1064
   spotSize:
     value: 50
     unit: μm
     confidence: 87
-    description: Beam spot diameter for precise cleaning control
+    description: Beam diameter for precise cleaning with adequate energy density
     min: 30
     max: 100
   repetitionRate:
@@ -151,42 +152,46 @@ machineSettings:
     min: 200
     max: 1000
   fluenceThreshold:
-    value: 0.8
+    value: 1.2
     unit: J/cm²
-    confidence: 91
-    description: Fluence required for effective contaminant removal from Gold surface
-    min: 0.5
-    max: 1.5
+    confidence: 89
+    description: Minimum fluence required for effective contaminant removal from Gold
+    min: 0.8
+    max: 2.5
   overlapRatio:
     value: 70
     unit: '%'
     confidence: 86
-    description: Optimal pulse overlap for uniform cleaning without excessive heat
-      accumulation
+    description: Optimal pulse overlap for uniform cleaning without excessive heating
     min: 50
     max: 85
   passCount:
     value: 2
     unit: passes
     confidence: 83
-    description: Recommended number of passes for complete contaminant removal
+    description: Recommended number of passes for complete cleaning
     min: 1
     max: 4
-  laserType:
-    value: Nd:YAG
-    unit: n/a
-    confidence: 89
-    description: Q-switched Nd:YAG laser with frequency doubling capability
-    min: null
-    max: null
+  energyDensity:
+    value: 3.5
+    unit: J/cm²
+    confidence: 88
+    description: Optimal energy density for Gold surface cleaning applications
+    min: 2.0
+    max: 6.0
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
-  id: 2
-  name: Alessandro Moretti
+  id: 4
+  name: Todd Dunning
   sex: m
-  title: Ph.D.
-  country: Italy
-  expertise: Laser-Based Additive Manufacturing
-  image: /images/author/alessandro-moretti.jpg
+  title: MA
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  image: /images/author/todd-dunning.jpg
 images:
   hero:
     alt: Gold surface undergoing laser cleaning showing precise contamination removal
@@ -220,7 +225,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-author_id: 2
+author_id: 4
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues

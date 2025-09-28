@@ -1,0 +1,331 @@
+name: Phenolic Resin Composites
+category: Composite
+subcategory: Phenolic Resin Composites
+title: Phenolic Resin Composites Laser Cleaning
+description: Laser cleaning parameters for Carbon Fiber Reinforced Polymer
+materialProperties:
+  density:
+    value: 1.35
+    unit: g/cm³
+    confidence: 95
+    description: Typical density of phenolic resin composites with fiber reinforcement
+    min: 0.5
+    max: 8
+  meltingPoint:
+    value: N/A (thermoset)
+    unit: °C
+    confidence: 98
+    description: Phenolic resins are thermosetting polymers that decompose rather
+      than melt
+    min: null
+    max: null
+  thermalConductivity:
+    value: 0.25
+    unit: W/m·K
+    confidence: 90
+    description: Low thermal conductivity typical of phenolic composites
+    min: 0.1
+    max: 400
+  tensileStrength:
+    value: 60
+    unit: MPa
+    confidence: 92
+    description: Typical tensile strength for fiber-reinforced phenolic composites
+    min: 50
+    max: 6000
+  hardness:
+    value: 85
+    unit: Shore D
+    confidence: 88
+    description: Hardness measurement on Shore D scale
+    min: 20
+    max: 90
+  youngsModulus:
+    value: 8.5
+    unit: GPa
+    confidence: 90
+    description: Elastic modulus of phenolic composite materials
+    min: 5
+    max: 1000
+  thermalExpansion:
+    value: 30
+    unit: μm/m·°C
+    confidence: 88
+    description: Coefficient of thermal expansion at room temperature
+    min: -1
+    max: 50
+  specificHeat:
+    value: 1200
+    unit: J/kg·K
+    confidence: 85
+    description: Specific heat capacity at room temperature
+    min: 0.5
+    max: 2
+  absorptionCoefficient:
+    value: 8500
+    unit: cm⁻¹
+    confidence: 82
+    description: Absorption coefficient at 1064 nm wavelength
+    min: null
+    max: null
+  reflectivity:
+    value: 0.15
+    unit: dimensionless
+    confidence: 80
+    description: Surface reflectivity at common laser wavelengths (1064 nm)
+    min: null
+    max: null
+  ablationThreshold:
+    value: 1.2
+    unit: J/cm²
+    confidence: 85
+    description: Laser ablation threshold for nanosecond pulses at 1064 nm
+    min: null
+    max: null
+  thermalDecomposition:
+    value: 350
+    unit: °C
+    confidence: 94
+    description: Onset temperature for thermal decomposition of phenolic resin
+    min: null
+    max: null
+  porosity:
+    value: 3.5
+    unit: '%'
+    confidence: 86
+    description: Typical porosity percentage in cured phenolic composites
+    min: null
+    max: null
+  surfaceRoughness:
+    value: 1.8
+    unit: μm Ra
+    confidence: 82
+    description: Average surface roughness of typical phenolic composite surfaces
+    min: null
+    max: null
+  laserDamageThreshold:
+    value: 15
+    unit: MW/cm²
+    confidence: 83
+    description: Peak power density threshold for laser-induced damage
+    min: null
+    max: null
+  chemicalStability:
+    value: Excellent
+    unit: qualitative
+    confidence: 90
+    description: Resistance to solvents, acids, and environmental degradation
+    min: null
+    max: null
+applications:
+- 'Manufacturing: Industrial surface preparation and contamination removal'
+- 'Aerospace: Precision cleaning of aerospace components and assemblies'
+- 'Automotive: Paint removal and surface preparation for automotive parts'
+- 'Medical: Sterilization and cleaning of medical devices and instruments'
+machineSettings:
+  powerRange:
+    value: 100
+    unit: W
+    confidence: 92
+    description: Optimal average power for phenolic resin composite cleaning without
+      thermal damage
+    min: 80
+    max: 120
+  wavelength:
+    value: 1064
+    unit: nm
+    confidence: 88
+    description: Near-IR wavelength optimized for phenolic resin absorption characteristics
+    min: null
+    max: null
+  spotSize:
+    value: 100
+    unit: μm
+    confidence: 84
+    description: Optimal beam spot diameter for precise cleaning control
+    min: 50
+    max: 200
+  repetitionRate:
+    value: 100
+    unit: kHz
+    confidence: 87
+    description: Optimal repetition rate for efficient cleaning throughput
+    min: 50
+    max: 200
+  fluenceThreshold:
+    value: 2.5
+    unit: J/cm²
+    confidence: 88
+    description: Ablation threshold fluence for phenolic resin composites
+    min: 1.8
+    max: 3.5
+  pulseWidth:
+    value: 10
+    unit: ns
+    confidence: 85
+    description: Optimal pulse duration for efficient material removal with minimal
+      heat affected zone
+    min: 5
+    max: 20
+  scanSpeed:
+    value: 1000
+    unit: mm/s
+    confidence: 82
+    description: Optimal scanning speed for efficient area coverage
+    min: 500
+    max: 2000
+  overlapRatio:
+    value: 50
+    unit: '%'
+    confidence: 83
+    description: Optimal pulse overlap for uniform cleaning results
+    min: 30
+    max: 70
+  passCount:
+    value: 3
+    unit: passes
+    confidence: 85
+    description: Recommended number of passes for complete contaminant removal
+    min: 1
+    max: 5
+  energyDensity:
+    value: 12.7
+    unit: J/cm²
+    confidence: 86
+    description: Calculated energy density based on power, spot size, and repetition
+      rate
+    min: 8.0
+    max: 15.0
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author_object:
+  id: 1
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg
+images:
+  hero:
+    alt: Phenolic Resin Composites surface undergoing laser cleaning showing precise
+      contamination removal
+    url: /images/phenolic-resin-composites-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Phenolic Resin Composites surface after laser cleaning
+      showing detailed surface structure
+    url: /images/phenolic-resin-composites-laser-cleaning-micro.jpg
+environmentalImpact:
+- benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+  sustainabilityBenefit: ''
+- benefit: Water Usage Reduction
+  description: Dry process requires no water
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+- benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+author_id: 1
+applicationTypes:
+- type: Precision Cleaning
+  description: High-precision removal of microscopic contaminants and residues
+  industries:
+  - Semiconductor
+  - MEMS
+  - Optics
+  - Medical Devices
+  qualityMetrics:
+  - Particle count reduction
+  - Surface roughness maintenance
+  - Chemical purity
+  typicalTolerances: Sub-micron accuracy with minimal substrate impact
+  objectives: []
+- type: Surface Preparation
+  description: Preparation of surfaces for bonding, coating, or further processing
+  industries:
+  - Aerospace
+  - Automotive
+  - Manufacturing
+  - Construction
+  qualityMetrics:
+  - Surface energy
+  - Cleanliness level
+  - Roughness profile
+  typicalTolerances: ''
+  objectives:
+  - Adhesion enhancement
+  - Contamination removal
+  - Surface activation
+- type: Restoration Cleaning
+  description: Gentle removal of accumulated contamination while preserving original
+    material
+  industries:
+  - Cultural Heritage
+  - Architecture
+  - Art Conservation
+  - Historical Restoration
+  qualityMetrics: []
+  typicalTolerances: ''
+  objectives: []
+- type: Contamination Removal
+  description: General removal of unwanted surface deposits and contaminants
+  industries:
+  - Manufacturing
+  - Marine
+  - Oil & Gas
+  - Power Generation
+  qualityMetrics: []
+  typicalTolerances: ''
+  objectives: []
+outcomeMetrics:
+- metric: Contaminant Removal Efficiency
+  description: Percentage of target contaminants successfully removed from surface
+  measurementMethods:
+  - Before/after microscopy
+  - Chemical analysis
+  - Mass spectrometry
+  typicalRanges: 95-99.9% depending on application and material
+  factorsAffecting:
+  - Contamination type
+  - Adhesion strength
+  - Surface geometry
+  units: []
+- metric: Processing Speed
+  description: Rate of surface area processed per unit time
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- metric: Surface Quality Preservation
+  description: Maintenance of original surface characteristics after cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+- metric: Thermal Damage Avoidance
+  description: Prevention of heat-related material alterations during cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []

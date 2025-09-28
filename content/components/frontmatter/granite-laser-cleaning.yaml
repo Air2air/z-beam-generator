@@ -2,196 +2,204 @@ name: Granite
 category: Stone
 subcategory: Granite
 title: Granite Laser Cleaning
-description: Laser cleaning parameters for Granite
+description: Laser cleaning parameters for Alabaster
 materialProperties:
   density:
     value: 2.65
     unit: g/cm³
     confidence: 95
     description: Average density of granite based on mineral composition
-    min: 2.63
-    max: 2.75
+    min: 1.5
+    max: 3.4
   meltingPoint:
     value: 1215
     unit: °C
     confidence: 85
-    description: Approximate melting temperature range for granite composition
-    min: 1150
-    max: 1260
+    description: Approximate melting point range for granite composition
+    min: null
+    max: null
   thermalConductivity:
-    value: 2.9
+    value: 2.8
     unit: W/m·K
     confidence: 90
     description: Thermal conductivity at room temperature
-    min: 2.6
-    max: 3.3
+    min: 0.2
+    max: 5
   tensileStrength:
     value: 15
     unit: MPa
-    confidence: 90
-    description: Indirect tensile strength (Brazilian test)
-    min: 10
-    max: 20
+    confidence: 88
+    description: Indirect tensile strength
+    min: 2
+    max: 25
   hardness:
     value: 6.5
     unit: Mohs
-    confidence: 96
-    description: Mohs hardness scale (feldspar/quartz dominated)
-    min: 6.0
-    max: 7.0
+    confidence: 95
+    description: Mohs hardness scale for granite
+    min: 1
+    max: 7
   youngsModulus:
-    value: 60
+    value: 50
     unit: GPa
-    confidence: 92
-    description: Elastic modulus in compression
-    min: 50
-    max: 70
+    confidence: 90
+    description: Elastic modulus of granite
+    min: 10
+    max: 100
   thermalExpansion:
     value: 8.0
     unit: 10⁻⁶/°C
     confidence: 88
-    description: Coefficient of thermal expansion (20-100°C)
-    min: 7.5
-    max: 8.5
+    description: Coefficient of thermal expansion
+    min: 3
+    max: 16
   specificHeat:
     value: 790
     unit: J/kg·K
     confidence: 92
     description: Specific heat capacity at room temperature
-    min: 750
-    max: 820
+    min: 0.7
+    max: 1.2
   thermalDiffusivity:
-    value: 1.4
+    value: 1.35
     unit: mm²/s
     confidence: 85
     description: Thermal diffusivity calculated from conductivity, density, and specific
       heat
-    min: 1.2
-    max: 1.6
+    min: 0.2
+    max: 2.5
   compressiveStrength:
     value: 200
     unit: MPa
-    confidence: 94
+    confidence: 92
     description: Uniaxial compressive strength
-    min: 150
-    max: 300
+    min: null
+    max: null
   absorptionCoefficient:
     value: 0.85
     unit: dimensionless
     confidence: 82
     description: Average absorption coefficient for common laser wavelengths (1064nm)
-    min: 0.7
-    max: 0.95
+    min: null
+    max: null
   reflectivity:
-    value: 0.15
+    value: 0.12
     unit: dimensionless
     confidence: 80
     description: Reflectivity at common laser wavelengths
-    min: 0.1
-    max: 0.25
+    min: null
+    max: null
   ablationThreshold:
     value: 2.5
     unit: J/cm²
-    confidence: 78
-    description: Approximate laser ablation threshold for nanosecond pulses (1064nm)
-    min: 1.5
-    max: 4.0
+    confidence: 85
+    description: Approximate laser ablation threshold for nanosecond pulses
+    min: null
+    max: null
   porosity:
-    value: 0.8
+    value: 1.2
     unit: '%'
+    confidence: 90
+    description: Typical porosity of granite
+    min: null
+    max: null
+  chemicalStability:
+    value: 8
+    unit: scale 1-10
     confidence: 88
-    description: Typical porosity range for sound granite
-    min: 0.5
-    max: 1.5
-  thermalShockResistance:
-    value: 180
-    unit: °C
-    confidence: 82
-    description: Critical temperature difference for thermal shock failure
-    min: 150
-    max: 220
+    description: Chemical stability rating in normal environmental conditions
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Construction: Surface preparation and cleaning for construction materials'
 machineSettings:
   powerRange:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for granite cleaning without thermal damage
+    description: Optimal average power for granite surface cleaning without thermal
+      damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimal for granite mineral absorption
-    min: null
-    max: null
+    description: Near-infrared wavelength optimal for granite mineral absorption
+    min: 1030
+    max: 1070
   spotSize:
     value: 100
     unit: μm
-    confidence: 84
-    description: Beam spot diameter for precise granite surface cleaning
+    confidence: 87
+    description: Beam spot diameter optimized for precision cleaning of granite surfaces
     min: 50
     max: 200
   repetitionRate:
-    value: 50
+    value: 100
     unit: kHz
-    confidence: 87
-    description: Optimal repetition rate for efficient granite cleaning
-    min: 20
-    max: 100
+    confidence: 90
+    description: High repetition rate for efficient cleaning coverage while maintaining
+      thermal control
+    min: 50
+    max: 200
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal
+    description: Nanosecond pulse duration for effective contaminant removal with
+      minimal substrate heating
     min: 5
     max: 20
   scanSpeed:
-    value: 500
+    value: 1000
     unit: mm/s
-    confidence: 86
-    description: Optimal scanning speed for uniform granite cleaning
-    min: 200
-    max: 1000
+    confidence: 85
+    description: Optimal scanning speed for uniform cleaning efficiency
+    min: 500
+    max: 2000
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Minimum fluence required for effective granite contaminant removal
+    description: Minimum fluence required for effective contaminant ablation from
+      granite
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 83
-    description: Optimal overlap between adjacent laser tracks
+    confidence: 86
+    description: Optimal beam overlap for uniform cleaning coverage
     min: 30
     max: 70
   passCount:
     value: 3
     unit: passes
-    confidence: 85
-    description: Recommended number of passes for complete granite cleaning
+    confidence: 84
+    description: Recommended number of passes for thorough cleaning of granite surfaces
     min: 1
     max: 5
   laserType:
     value: Nd:YAG
     unit: n/a
-    confidence: 90
-    description: Recommended laser type for granite cleaning applications
+    confidence: 91
+    description: Fiber laser type recommended for granite cleaning applications
     min: null
     max: null
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
-  id: 3
-  name: Ikmanda Roswati
+  id: 2
+  name: Alessandro Moretti
   sex: m
   title: Ph.D.
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  image: /images/author/ikmanda-roswati.jpg
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  image: /images/author/alessandro-moretti.jpg
 images:
   hero:
     alt: Granite surface undergoing laser cleaning showing precise contamination removal
@@ -225,7 +233,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-author_id: 3
+author_id: 2
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues

@@ -1,0 +1,83 @@
+{
+  "analysis_timestamp": "2025-09-27T15:01:52.592072",
+  "consistency_score": 60,
+  "assessment": "NEEDS IMPROVEMENT",
+  "critical_inconsistencies": 1,
+  "warning_inconsistencies": 0,
+  "inconsistencies": [
+    {
+      "type": "CRITICAL",
+      "category": "Pipeline Transformation",
+      "issue": "Inconsistent property naming through transformation chain",
+      "details": {
+        "definitions": [
+          "electricalProperties",
+          "mechanicalProperties",
+          "thermalProperties",
+          "processingProperties"
+        ],
+        "inline": [
+          "electricalProperties",
+          "mechanicalProperties",
+          "thermalProperties",
+          "processingProperties"
+        ],
+        "overrides": [],
+        "final_output": "camelCase"
+      },
+      "impact": "Data loss during transformation, inconsistent output"
+    }
+  ],
+  "naming_patterns": {
+    "property_group_definitions": [
+      "electricalProperties",
+      "mechanicalProperties",
+      "thermalProperties",
+      "processingProperties"
+    ],
+    "category_inline_properties": [
+      "electricalProperties",
+      "mechanicalProperties",
+      "thermalProperties",
+      "processingProperties"
+    ],
+    "component_camel_case": [
+      "thermalProperties",
+      "chemicalProperties",
+      "processingProperties",
+      "mechanicalProperties",
+      "materialProperties",
+      "electricalProperties"
+    ],
+    "individual_camel_case": [
+      "youngsModulus",
+      "resinContent",
+      "thermalExpansion",
+      "grainStructureType",
+      "firingTemperature",
+      "meltingPoint",
+      "tensileStrength",
+      "thermalConductivity",
+      "flexuralStrength",
+      "fractureToughness",
+      "moistureContent",
+      "compressiveStrength",
+      "electricalResistivity",
+      "operatingTemperature",
+      "dielectricConstant",
+      "specificHeat"
+    ],
+    "component_individual_camel": [
+      "thermalConductivity"
+    ],
+    "individual_snake_case": [],
+    "component_individual_snake": [],
+    "material_property_overrides": []
+  },
+  "transformation_chain": [
+    "Categories.yaml (mixed: snake_case definitions + camelCase inline)",
+    "materials.yaml (snake_case: thermal_properties, mechanical_properties)",
+    "Component Processing (mixed: both naming conventions)",
+    "Output Generation (camelCase: thermalConductivity)"
+  ]
+}

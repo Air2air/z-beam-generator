@@ -378,10 +378,10 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         # Map actual Materials.yaml keys to property names
         property_mappings = {
             'density': 'density',
-            'thermal_conductivity': 'thermalConductivity', 
+            'thermalConductivity': 'thermalConductivity', 
             'tensile_strength': 'tensileStrength',
             'youngs_modulus': 'youngsModulus',
-            'melting_point': 'meltingPoint',
+            'meltingPoint': 'meltingPoint',
             'hardness': 'hardness',
             'electrical_conductivity': 'electricalConductivity'
         }

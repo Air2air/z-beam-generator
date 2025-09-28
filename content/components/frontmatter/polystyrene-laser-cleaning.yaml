@@ -2,30 +2,115 @@ name: Polystyrene
 category: Plastic
 subcategory: Polystyrene
 title: Polystyrene Laser Cleaning
-description: Laser cleaning parameters for Polystyrene
+description: Laser cleaning parameters for Polycarbonate
+materialProperties:
+  density:
+    value: 1.05
+    unit: g/cm³
+    confidence: 95
+    description: Density of general purpose polystyrene at room temperature
+    min: 0.85
+    max: 2.2
+  meltingPoint:
+    value: 240
+    unit: °C
+    confidence: 90
+    description: Glass transition temperature (Tg) for amorphous polystyrene
+    min: null
+    max: null
+  thermalConductivity:
+    value: 0.14
+    unit: W/m·K
+    confidence: 88
+    description: Thermal conductivity at room temperature
+    min: 0.02
+    max: 3
+  tensileStrength:
+    value: 45
+    unit: MPa
+    confidence: 92
+    description: Ultimate tensile strength
+    min: 10
+    max: 400
+  youngsModulus:
+    value: 3300
+    unit: MPa
+    confidence: 94
+    description: Young's modulus in tension
+    min: 0.01
+    max: 50
+  thermalExpansion:
+    value: 70
+    unit: ×10⁻⁶/°C
+    confidence: 85
+    description: Coefficient of linear thermal expansion
+    min: 10
+    max: 200
+  specificHeat:
+    value: 1300
+    unit: J/kg·K
+    confidence: 87
+    description: Specific heat capacity at room temperature
+    min: 1
+    max: 2.5
+  absorptionCoefficient:
+    value: 0.8
+    unit: cm⁻¹
+    confidence: 82
+    description: Absorption coefficient at 1064 nm wavelength
+    min: null
+    max: null
+  refractiveIndex:
+    value: 1.59
+    unit: dimensionless
+    confidence: 96
+    description: Refractive index at 589 nm
+    min: null
+    max: null
+  ablationThreshold:
+    value: 0.5
+    unit: J/cm²
+    confidence: 80
+    description: Laser ablation threshold for nanosecond pulses at 1064 nm
+    min: null
+    max: null
+  chemicalStability:
+    value: 85
+    unit: '% resistance'
+    confidence: 88
+    description: Resistance to weak acids and bases
+    min: null
+    max: null
+  surfaceRoughness:
+    value: 0.02
+    unit: μm Ra
+    confidence: 83
+    description: Typical surface roughness for molded polystyrene
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Medical: Sterilization and cleaning of medical devices and instruments'
+- 'Aerospace: Precision cleaning of aerospace components and assemblies'
+- 'Automotive: Paint removal and surface preparation for automotive parts'
 machineSettings:
   powerRange:
     value: 15
     unit: W
     confidence: 90
-    description: Optimal average power for Polystyrene cleaning without thermal damage
+    description: Average power for effective Polystyrene removal without melting
     min: 5
     max: 30
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength with good Polystyrene absorption and minimal surface
-      damage
-    min: 532
+    description: Near-IR wavelength with moderate Polystyrene absorption
+    min: 355
     max: 10640
   spotSize:
     value: 100
     unit: μm
-    confidence: 86
+    confidence: 89
     description: Beam spot diameter for precise cleaning control
     min: 50
     max: 200
@@ -33,61 +118,64 @@ machineSettings:
     value: 20
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning with thermal management
+    description: Optimal repetition rate for efficient cleaning coverage
     min: 1
     max: 100
   pulseWidth:
     value: 100
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for controlled ablation of Polystyrene
-      surface contaminants
+    description: Nanosecond pulses for controlled ablation of polymer surface
     min: 10
     max: 200
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 84
-    description: Optimal scanning speed for uniform cleaning coverage
+    confidence: 86
+    description: Optimal scanning speed for uniform material removal
     min: 100
     max: 1000
+  fluenceThreshold:
+    value: 0.8
+    unit: J/cm²
+    confidence: 91
+    description: Minimum fluence required for Polystyrene ablation
+    min: 0.3
+    max: 2.0
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 88
-    description: Beam overlap percentage for complete surface treatment
+    confidence: 84
+    description: Optimal overlap between adjacent scan lines
     min: 30
     max: 70
   passCount:
     value: 2
     unit: passes
-    confidence: 85
-    description: Number of passes for thorough contaminant removal
+    confidence: 88
+    description: Recommended number of passes for complete cleaning
     min: 1
     max: 5
-  energyDensity:
-    value: 2.0
-    unit: J/cm²
-    confidence: 89
-    description: Fluence threshold for effective Polystyrene cleaning without substrate
-      damage
-    min: 0.5
-    max: 5.0
   laserType:
     value: Nd:YAG
     unit: n/a
     confidence: 90
-    description: Recommended laser type for Polystyrene cleaning applications
+    description: Recommended laser type for polymer cleaning applications
     min: null
     max: null
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
-  id: 4
-  name: Todd Dunning
-  sex: m
-  title: MA
-  country: United States (California)
-  expertise: Optical Materials for Laser Systems
-  image: /images/author/todd-dunning.jpg
+  id: 1
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg
 images:
   hero:
     alt: Polystyrene surface undergoing laser cleaning showing precise contamination
@@ -122,7 +210,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-author_id: 4
+author_id: 1
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues

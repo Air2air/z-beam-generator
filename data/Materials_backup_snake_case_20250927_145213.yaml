@@ -1,0 +1,956 @@
+material_index:
+  Alumina: ceramic
+  Titanium Carbide: ceramic
+  Tungsten Carbide: ceramic
+  Porcelain: ceramic
+  Silicon Nitride: ceramic
+  Stoneware: ceramic
+  Zirconia: ceramic
+  Carbon Fiber Reinforced Polymer: composite
+  Epoxy Resin Composites: composite
+  Fiberglass: composite
+  Kevlar-Reinforced Polymer: composite
+  Phenolic Resin Composites: composite
+  Polyester Resin Composites: composite
+  Rubber: composite
+  Thermoplastic Elastomer: composite
+  Urethane Composites: composite
+  Glass Fiber Reinforced Polymers GFRP: composite
+  Fiber Reinforced Polyurethane FRPU: composite
+  Metal Matrix Composites MMCs: composite
+  Ceramic Matrix Composites CMCs: composite
+  Borosilicate Glass: glass
+  Crown Glass: glass
+  Gorilla Glass: glass
+  Sapphire Glass: glass
+  Float Glass: glass
+  Fused Silica: glass
+  Lead Crystal: glass
+  Pyrex: glass
+  Quartz Glass: glass
+  Soda-Lime Glass: glass
+  Tempered Glass: glass
+  Brick: masonry
+  Cement: masonry
+  Concrete: masonry
+  Mortar: masonry
+  Plaster: masonry
+  Stucco: masonry
+  Terracotta: masonry
+  Aluminum: metal
+  Chromium: metal
+  Manganese: metal
+  Beryllium: metal
+  Brass: metal
+  Bronze: metal
+  Cobalt: metal
+  Copper: metal
+  Gallium: metal
+  Gold: metal
+  Hafnium: metal
+  Hastelloy: metal
+  Inconel: metal
+  Indium: metal
+  Iridium: metal
+  Iron: metal
+  Lead: metal
+  Magnesium: metal
+  Molybdenum: metal
+  Nickel: metal
+  Niobium: metal
+  Palladium: metal
+  Platinum: metal
+  Rhenium: metal
+  Rhodium: metal
+  Ruthenium: metal
+  Silver: metal
+  Stainless Steel: metal
+  Steel: metal
+  Tantalum: metal
+  Tin: metal
+  Tungsten: metal
+  Vanadium: metal
+  Zinc: metal
+  Zirconium: metal
+  Polycarbonate: plastic
+  Polyethylene: plastic
+  Polypropylene: plastic
+  Polystyrene: plastic
+  Polytetrafluoroethylene: plastic
+  Polyvinyl Chloride: plastic
+  Gallium Arsenide: semiconductor
+  Silicon: semiconductor
+  Silicon Carbide: semiconductor
+  Silicon Germanium: semiconductor
+  Alabaster: stone
+  Basalt: stone
+  Bluestone: stone
+  Breccia: stone
+  Calcite: stone
+  Granite: stone
+  Limestone: stone
+  Porphyry: stone
+  Marble: stone
+  Onyx: stone
+  Quartzite: stone
+  Sandstone: stone
+  Schist: stone
+  Serpentine: stone
+  Shale: stone
+  Slate: stone
+  Soapstone: stone
+  Travertine: stone
+  Ash: wood
+  Bamboo: wood
+  Beech: wood
+  Birch: wood
+  Cedar: wood
+  Cherry: wood
+  Fir: wood
+  Hickory: wood
+  Mahogany: wood
+  Maple: wood
+  MDF: wood
+  Oak: wood
+  Pine: wood
+  Plywood: wood
+  Poplar: wood
+  Redwood: wood
+  Rosewood: wood
+  Teak: wood
+  Walnut: wood
+  Willow: wood
+category_metadata:
+  ceramic:
+    article_type: material
+    description: Ceramic materials for laser cleaning applications
+  composite:
+    article_type: material
+    description: Composite materials for laser cleaning applications
+  glass:
+    article_type: material
+    description: Glass materials for laser cleaning applications
+  masonry:
+    article_type: material
+    description: Masonry materials for laser cleaning applications
+  metal:
+    article_type: material
+    description: Metal materials for laser cleaning applications
+  plastic:
+    article_type: material
+    description: Plastic materials for laser cleaning applications
+  semiconductor:
+    article_type: material
+    description: Semiconductor materials for laser cleaning applications
+  stone:
+    article_type: material
+    description: Stone materials for laser cleaning applications
+  wood:
+    article_type: material
+    description: Wood materials for laser cleaning applications
+property_groups:
+  thermal_properties:
+  - thermalConductivity
+  - thermalExpansion
+  - specific_heat
+  - melting_point
+  - operating_temperature
+  mechanical_properties:
+  - hardness
+  - tensileStrength
+  - youngsModulus
+  - compressive_strength
+  - flexural_strength
+  - fracture_toughness
+  electrical_properties:
+  - electricalResistivity
+  - dielectric_constant
+  processing_properties:
+  - porosity
+  - firing_temperature
+  - moisture_content
+  - resin_content
+  - grain_structure_type
+  material_metadata:
+  - industryTags
+  - regulatoryStandards
+materials:
+  ceramic:
+    items:
+    - name: Alumina
+      author_id: 2
+      category: ceramic
+      thermal_properties:
+        thermalConductivity: 35 W/(m·K)
+        thermalExpansion: 8.1×10⁻⁶/K
+        melting_point: 2072°C
+      mechanical_properties:
+        hardness: 9.0 Mohs
+        compressive_strength: 2000-4000 MPa
+        flexural_strength: 300-400 MPa
+      electrical_properties:
+        dielectric_constant: 9.8
+      material_metadata:
+        regulatoryStandards:
+        - EPA Clean Air Act Compliance
+        - ASTM C848 - Standard Specification for High Alumina Refractory Brick
+        - ISO 23146 - Technical Ceramics
+    - name: Titanium Carbide
+      author_id: 2
+      category: ceramic
+      thermal_properties:
+        thermalConductivity: 1.2-1.8 W/(m·K)
+        thermalExpansion: 5.5 × 10⁻⁶ /°C
+      mechanical_properties:
+        hardness: 5-6 Mohs
+        compressive_strength: 200-600 MPa
+        flexural_strength: 30-80 MPa
+      processing_properties:
+        porosity: 2-8%
+        firing_temperature: 1200-1300°C
+      material_metadata:
+        regulatoryStandards:
+        - ASTM C373 - Standard Test Method for Water Absorption of Fired Ceramic Materials
+        - NSF/ANSI 51 - Food Equipment Materials
+    - name: Tungsten Carbide
+      author_id: 3
+      category: ceramic
+      thermal_properties:
+        thermalConductivity: 2.0 W/(m·K)
+        thermalExpansion: 10.5×10⁻⁶/K
+        melting_point: 2715°C
+      mechanical_properties:
+        hardness: 8.5 Mohs
+        compressive_strength: 2000-4000 MPa
+        flexural_strength: 800-1200 MPa
+        fracture_toughness: 6-10 MPa·m^0.5
+      electrical_properties:
+        dielectric_constant: 25
+      material_metadata:
+        regulatoryStandards:
+        - EPA Clean Air Act Compliance
+        - ISO 13356 - Zirconia for Surgical Implants
+        - ASTM F1873 - Standard Specification for Zirconia
+      ionic_conductivity: High at elevated temperatures
+    - name: Porcelain
+      author_id: 3
+      category: ceramic
+      mechanical_properties:
+        hardness: 9.3 Mohs
+    - name: Silicon Nitride
+      author_id: 1
+      category: ceramic
+      mechanical_properties:
+        hardness: 9.0 Mohs
+    - name: Stoneware
+      author_id: 3
+      category: ceramic
+      mechanical_properties:
+        hardness: 9.0 Mohs
+    - name: Zirconia
+      author_id: 4
+      category: ceramic
+      mechanical_properties:
+        hardness: 7.0 Mohs
+  composite:
+    items:
+    - name: Carbon Fiber Reinforced Polymer
+      author_id: 1
+      category: composite
+    - name: Epoxy Resin Composites
+      author_id: 1
+      category: composite
+    - name: Fiberglass
+      author_id: 1
+      category: composite
+    - name: Kevlar-Reinforced Polymer
+      author_id: 2
+      category: composite
+    - name: Phenolic Resin Composites
+      author_id: 4
+      category: composite
+    - name: Polyester Resin Composites
+      author_id: 3
+      category: composite
+    - name: Rubber
+      author_id: 4
+      category: composite
+    - name: Thermoplastic Elastomer
+      author_id: 4
+      category: composite
+    - name: Urethane Composites
+      author_id: 4
+      category: composite
+    - name: Glass Fiber Reinforced Polymers GFRP
+      author_id: 3
+      category: composite
+    - name: Fiber Reinforced Polyurethane FRPU
+      author_id: 2
+      category: composite
+    - name: Metal Matrix Composites MMCs
+      author_id: 3
+      category: composite
+    - name: Ceramic Matrix Composites CMCs
+      author_id: 1
+      category: composite
+  glass:
+    items:
+    - name: Borosilicate Glass
+      author_id: 1
+      category: glass
+    - name: Crown Glass
+      author_id: 3
+      category: glass
+    - name: Gorilla Glass
+      author_id: 4
+      category: glass
+    - name: Sapphire Glass
+      author_id: 3
+      category: glass
+    - name: Float Glass
+      author_id: 3
+      category: glass
+    - name: Fused Silica
+      author_id: 4
+      category: glass
+    - name: Lead Crystal
+      author_id: 1
+      category: glass
+    - name: Pyrex
+      author_id: 2
+      category: glass
+    - name: Quartz Glass
+      author_id: 3
+      category: glass
+      mechanical_properties:
+        hardness: 9.0 Mohs
+    - name: Soda-Lime Glass
+      author_id: 1
+      category: glass
+      mechanical_properties:
+        hardness: 6.8 Mohs
+    - name: Tempered Glass
+      author_id: 2
+      category: glass
+      mechanical_properties:
+        hardness: 5.5 Mohs
+  masonry:
+    items:
+    - name: Brick
+      author_id: 4
+      category: masonry
+      thermal_properties:
+        thermalConductivity: 0.5-1.5 W/m·K
+      mechanical_properties:
+        compressive_strength: 10-100 MPa
+      water_absorption: 5-20%
+    - name: Cement
+      author_id: 2
+      category: masonry
+      thermal_properties:
+        thermalConductivity: 0.5-1.5 W/m·K
+      mechanical_properties:
+        compressive_strength: 10-100 MPa
+      water_absorption: 5-20%
+    - name: Concrete
+      author_id: 4
+      category: masonry
+      thermal_properties:
+        thermalConductivity: 0.5-1.5 W/m·K
+      mechanical_properties:
+        compressive_strength: 10-100 MPa
+      water_absorption: 5-20%
+    - name: Mortar
+      author_id: 2
+      category: masonry
+      thermal_properties:
+        thermalConductivity: 0.5-1.5 W/m·K
+      mechanical_properties:
+        compressive_strength: 10-100 MPa
+      water_absorption: 5-20%
+    - name: Plaster
+      author_id: 1
+      category: masonry
+      thermal_properties:
+        thermalConductivity: 0.5-1.5 W/m·K
+      mechanical_properties:
+        compressive_strength: 10-100 MPa
+      water_absorption: 5-20%
+    - name: Stucco
+      author_id: 3
+      category: masonry
+      thermal_properties:
+        thermalConductivity: 0.5-1.5 W/m·K
+      mechanical_properties:
+        compressive_strength: 10-100 MPa
+      water_absorption: 5-20%
+    - name: Terracotta
+      author_id: 1
+      category: masonry
+      thermal_properties:
+        thermalConductivity: 0.5-1.5 W/m·K
+      mechanical_properties:
+        compressive_strength: 10-100 MPa
+      water_absorption: 5-20%
+  metal:
+    items:
+    - name: Aluminum
+      author_id: 4
+      category: metal
+    - name: Chromium
+      author_id: 4
+      category: metal
+    - name: Manganese
+      author_id: 4
+      category: metal
+      thermal_properties:
+        thermalConductivity: 109-125 W/(m·K)
+        melting_point: 900-940°C
+      antimicrobial_properties: true
+      common_alloys: Cartridge brass (70/30), Naval brass (60/39/1% Sn)
+      composition: 63% Cu, 37% Zn (C26000 Cartridge Brass)
+      corrosion_resistance: good
+      machinability: excellent
+    - name: Beryllium
+      author_id: 1
+      category: metal
+      thermal_properties:
+        thermalConductivity: 26 W/(m·K)
+        melting_point: 1025°C (88% Cu, 12% Sn phosphor bronze)
+      color: Reddish-brown to golden
+      common_alloys: Aluminum bronze, Phosphor bronze, Bell metal (77/23)
+      composition: 88% Cu, 12% Sn (SAE 903 bearing bronze)
+      corrosion_resistance: superior to steel
+      strength: 10% denser than steel
+    - name: Brass
+      author_id: 2
+      category: metal
+      thermal_properties:
+        thermalConductivity: 100 W/(m·K)
+        melting_point: 1495°C
+      mechanical_properties:
+        tensileStrength: 1043 MPa
+      curie_temperature: 1115°C
+      magnetic_properties: ferromagnetic
+      yield_strength: 470-3000 MPa
+    - name: Bronze
+      author_id: 3
+      category: metal
+    - name: Cobalt
+      author_id: 1
+      category: metal
+    - name: Copper
+      author_id: 2
+      category: metal
+    - name: Gallium
+      author_id: 4
+      category: metal
+    - name: Gold
+      author_id: 3
+      category: metal
+    - name: Hafnium
+      author_id: 4
+      category: metal
+    - name: Hastelloy
+      author_id: 4
+      category: metal
+    - name: Inconel
+      author_id: 2
+      category: metal
+    - name: Indium
+      author_id: 3
+      category: metal
+    - name: Iridium
+      author_id: 4
+      category: metal
+    - name: Iron
+      author_id: 3
+      category: metal
+    - name: Lead
+      author_id: 2
+      category: metal
+    - name: Magnesium
+      author_id: 2
+      category: metal
+      thermal_properties:
+        thermalConductivity: 90.9 W/(m·K)
+        melting_point: 1455°C
+      mechanical_properties:
+        tensileStrength: 667-1600 MPa
+      electrical_properties:
+        electricalResistivity: 69.3 nΩ·m
+      curie_temperature: 355°C
+      magnetic_properties: ferromagnetic
+      yield_strength: 638 MPa
+    - name: Molybdenum
+      author_id: 1
+      category: metal
+    - name: Nickel
+      author_id: 1
+      category: metal
+    - name: Niobium
+      author_id: 2
+      category: metal
+    - name: Palladium
+      author_id: 1
+      category: metal
+    - name: Platinum
+      author_id: 3
+      category: metal
+    - name: Rhenium
+      author_id: 2
+      category: metal
+    - name: Rhodium
+      author_id: 4
+      category: metal
+    - name: Ruthenium
+      author_id: 1
+      category: metal
+      thermal_properties:
+        thermalConductivity: 16.2 W/(m·K)
+        melting_point: 1325-1530°C
+      mechanical_properties:
+        tensileStrength: 515-827 MPa
+      chromium_content: 11-30%
+      corrosion_resistance: excellent
+      grades: 304, 316, 321, 347, 410, 420, 430
+      magnetic_properties: Non-magnetic (304, 316), Magnetic (410, 420, 430)
+      nickel_content: 0-37%
+    - name: Silver
+      author_id: 4
+      category: metal
+    - name: Stainless Steel
+      author_id: 2
+      category: metal
+    - name: Steel
+      author_id: 3
+      category: metal
+    - name: Tantalum
+      author_id: 1
+      category: metal
+      thermal_properties:
+        thermalConductivity: 173 W/(m·K)
+        thermalExpansion: 4.42×10⁻⁶/K
+        melting_point: 3422°C
+      mechanical_properties:
+        tensileStrength: 3430-4600 MPa
+      electrical_properties:
+        electricalResistivity: 52.8 nΩ·m
+      yield_strength: 2000-4000 MPa
+    - name: Tin
+      author_id: 1
+      category: metal
+    - name: Tungsten
+      author_id: 1
+      category: metal
+    - name: Vanadium
+      author_id: 2
+      category: metal
+    - name: Zinc
+      author_id: 1
+      category: metal
+      mechanical_properties:
+        hardness: 8.5 Mohs
+    - name: Zirconium
+      author_id: 3
+      category: metal
+      mechanical_properties:
+        hardness: 6.0 Mohs
+  plastic:
+    items:
+    - name: Polycarbonate
+      author_id: 1
+      category: plastic
+      mechanical_properties:
+        hardness: Shore D 60-70
+    - name: Polyethylene
+      author_id: 2
+      category: plastic
+      mechanical_properties:
+        hardness: Shore D 65-75
+    - name: Polypropylene
+      author_id: 3
+      category: plastic
+      mechanical_properties:
+        hardness: Shore D 75-85
+    - name: Polystyrene
+      author_id: 2
+      category: plastic
+      mechanical_properties:
+        hardness: Shore D 70-85
+    - name: Polytetrafluoroethylene
+      author_id: 3
+      category: plastic
+      mechanical_properties:
+        hardness: Shore D 50-65
+    - name: Polyvinyl Chloride
+      author_id: 2
+      category: plastic
+      mechanical_properties:
+        hardness: Shore D 80-85
+  semiconductor:
+    items:
+    - name: Gallium Arsenide
+      author_id: 3
+      category: semiconductor
+      thermal_properties:
+        thermalConductivity: 55 W/(m·K)
+        melting_point: 1238°C
+      electrical_properties:
+        electricalResistivity: 1×10⁸ Ω·cm
+      bandgap: 1.42 eV
+    - name: Silicon
+      author_id: 4
+      category: semiconductor
+      thermal_properties:
+        thermalConductivity: 149 W/(m·K)
+        thermalExpansion: 2.6×10⁻⁶/K
+        melting_point: 1414°C
+      mechanical_properties:
+        hardness: 6.5 Mohs
+      electrical_properties:
+        electricalResistivity: 1×10³-1×10⁵ Ω·cm
+      material_metadata:
+        regulatoryStandards:
+        - SEMI M1 - Specification for Polished Single Crystal Silicon Wafers
+        - ASTM F1188 - Standard Specification for Single Crystal Silicon
+        - ISO 14644 - Cleanroom and Associated Controlled Environments
+      bandgap: 1.12 eV
+    - name: Silicon Carbide
+      author_id: 1
+      category: semiconductor
+      thermal_properties:
+        thermalConductivity: 490 W/(m·K)
+        melting_point: 2830°C
+      mechanical_properties:
+        hardness: 2800 HV
+      electrical_properties:
+        electricalResistivity: 1×10⁵ Ω·cm
+      bandgap: 3.3 eV
+    - name: Silicon Germanium
+      author_id: 3
+      category: semiconductor
+      thermal_properties:
+        thermalConductivity: 80 W/(m·K)
+        melting_point: 1350°C
+      electrical_properties:
+        electricalResistivity: 100 Ω·cm
+      bandgap: 0.8-1.1 eV
+      documentation_status: complete
+  stone:
+    items:
+    - name: Alabaster
+      author_id: 2
+      category: stone
+    - name: Basalt
+      author_id: 1
+      category: stone
+    - name: Bluestone
+      author_id: 2
+      category: stone
+    - name: Breccia
+      author_id: 3
+      category: stone
+    - name: Calcite
+      author_id: 3
+      category: stone
+    - name: Granite
+      author_id: 4
+      category: stone
+      thermal_properties:
+        thermalConductivity: 2.5-3.5 W/m·K
+      mechanical_properties:
+        compressive_strength: 100-250 MPa
+      processing_properties:
+        porosity: 0.4-1.5%
+      material_metadata:
+        regulatoryStandards:
+        - EPA Clean Air Act Compliance
+        - ASTM C615 - Standard Specification for Granite Dimension Stone
+    - name: Limestone
+      author_id: 1
+      category: stone
+      thermal_properties:
+        thermalConductivity: 1.0-4.0 W/m·K
+        thermalExpansion: 6.0 × 10⁻⁶ /°C
+      mechanical_properties:
+        hardness: 2-4 Mohs
+        compressive_strength: 30-180 MPa
+      processing_properties:
+        porosity: 5-25%
+      material_metadata:
+        regulatoryStandards:
+        - EPA Clean Air Act Compliance
+        - ASTM C568 - Standard Specification for Limestone Dimension Stone
+    - name: Porphyry
+      author_id: 3
+      category: stone
+    - name: Marble
+      author_id: 3
+      category: stone
+      thermal_properties:
+        thermalConductivity: 2.0-3.5 W/m·K
+        thermalExpansion: 5.5 × 10⁻⁶ /°C
+      mechanical_properties:
+        hardness: 3-4 Mohs
+        compressive_strength: 70-200 MPa
+      processing_properties:
+        porosity: 0.1-2.0%
+      material_metadata:
+        regulatoryStandards:
+        - EPA Clean Air Act Compliance
+        - ASTM C503 - Standard Specification for Marble Dimension Stone
+        - UNESCO Guidelines for Cultural Heritage Conservation
+    - name: Onyx
+      author_id: 1
+      category: stone
+    - name: Quartzite
+      author_id: 1
+      category: stone
+    - name: Sandstone
+      author_id: 2
+      category: stone
+      thermal_properties:
+        thermalConductivity: 1.7-5.1 W/m·K
+        thermalExpansion: 11.9 × 10⁻⁶ /°C
+      mechanical_properties:
+        compressive_strength: 20-170 MPa
+      processing_properties:
+        porosity: 10-35%
+      material_metadata:
+        regulatoryStandards:
+        - EPA Clean Air Act Compliance
+        - ASTM C616 - Standard Specification for Sandstone Dimension Stone
+    - name: Schist
+      author_id: 4
+      category: stone
+    - name: Serpentine
+      author_id: 4
+      category: stone
+    - name: Shale
+      author_id: 1
+      category: stone
+    - name: Slate
+      author_id: 3
+      category: stone
+      thermal_properties:
+        thermalConductivity: 2.0-2.5 W/m·K
+        thermalExpansion: 10.4 × 10⁻⁶ /°C
+      mechanical_properties:
+        compressive_strength: 100-200 MPa
+      processing_properties:
+        porosity: 0.1-3.0%
+      material_metadata:
+        regulatoryStandards:
+        - EPA Clean Air Act Compliance
+        - ASTM C629 - Standard Specification for Slate Dimension Stone
+    - name: Soapstone
+      author_id: 3
+      category: stone
+    - name: Travertine
+      author_id: 1
+      category: stone
+  wood:
+    items:
+    - name: Ash
+      author_id: 4
+      category: wood
+      thermal_properties:
+        thermalConductivity: 0.16 W/m·K
+        specific_heat: 1.2 kJ/kg·K
+      mechanical_properties:
+        hardness: 5.0 Janka
+      processing_properties:
+        moisture_content: 6-12%
+        grain_structure_type: Open grain
+      material_metadata:
+        regulatoryStandards:
+        - EPA Clean Air Act Compliance
+    - name: Bamboo
+      author_id: 1
+      category: wood
+      thermal_properties:
+        thermalConductivity: 0.11 W/m·K
+        specific_heat: 1.3 kJ/kg·K
+      mechanical_properties:
+        hardness: 1.4 Janka
+      processing_properties:
+        moisture_content: 8-15%
+        resin_content: Very low
+        grain_structure_type: Straight fiber
+      material_metadata:
+        regulatoryStandards:
+        - EPA Clean Air Act Compliance
+        - FSC Sustainable Forestry Standards
+      growth_type: Grass (rapid growth)
+    - name: Beech
+      author_id: 2
+      category: wood
+    - name: Birch
+      author_id: 4
+      category: wood
+      thermal_properties:
+        thermalConductivity: 0.15 W/m·K
+        specific_heat: 1.25 kJ/kg·K
+      mechanical_properties:
+        hardness: 4.87 Janka
+      processing_properties:
+        moisture_content: 6-12%
+        grain_structure_type: Closed grain
+      material_metadata:
+        regulatoryStandards:
+        - EPA Clean Air Act Compliance
+    - name: Cedar
+      author_id: 4
+      category: wood
+      thermal_properties:
+        thermalConductivity: 0.10 W/m·K
+        specific_heat: 1.4 kJ/kg·K
+      mechanical_properties:
+        hardness: 1.8 Janka
+      processing_properties:
+        moisture_content: 8-15%
+        resin_content: High
+        grain_structure_type: Straight grain
+      material_metadata:
+        regulatoryStandards:
+        - EPA Clean Air Act Compliance
+    - name: Cherry
+      author_id: 4
+      category: wood
+      thermal_properties:
+        thermalConductivity: 0.14 W/m·K
+        specific_heat: 1.2 kJ/kg·K
+      mechanical_properties:
+        hardness: 4.0 Janka
+      processing_properties:
+        moisture_content: 7-12%
+        resin_content: Low to medium
+        grain_structure_type: Closed grain
+      material_metadata:
+        regulatoryStandards:
+        - EPA Clean Air Act Compliance
+    - name: Fir
+      author_id: 3
+      category: wood
+    - name: Hickory
+      author_id: 4
+      category: wood
+    - name: Mahogany
+      author_id: 4
+      category: wood
+      thermal_properties:
+        thermalConductivity: 0.13 W/m·K
+        specific_heat: 1.25 kJ/kg·K
+      mechanical_properties:
+        hardness: 2.2 Janka
+      processing_properties:
+        moisture_content: 6-12%
+        resin_content: Low to medium
+        grain_structure_type: Interlocked grain
+      material_metadata:
+        regulatoryStandards:
+        - EPA Clean Air Act Compliance
+        - CITES Regulations for Sustainable Mahogany Use
+    - name: Maple
+      author_id: 2
+      category: wood
+      thermal_properties:
+        thermalConductivity: 0.16 W/m·K
+        specific_heat: 1.3 kJ/kg·K
+      mechanical_properties:
+        hardness: 6.4 Janka
+      processing_properties:
+        moisture_content: 6-10%
+        resin_content: Very low
+        grain_structure_type: Closed grain
+      material_metadata:
+        regulatoryStandards:
+        - EPA Clean Air Act Compliance
+        - USDA Food Safety Guidelines (for food-contact surfaces)
+    - name: MDF
+      author_id: 2
+      category: wood
+    - name: Oak
+      author_id: 2
+      category: wood
+      thermal_properties:
+        thermalConductivity: 0.17 W/m·K
+        specific_heat: 1.2 kJ/kg·K
+      mechanical_properties:
+        hardness: 5.9 Janka
+      processing_properties:
+        grain_structure_type: Open grain
+      material_metadata:
+        regulatoryStandards:
+        - EPA Clean Air Act Compliance
+    - name: Pine
+      author_id: 2
+      category: wood
+      mechanical_properties:
+        hardness: 2.3 (Janka hardness scale)
+      processing_properties:
+        moisture_content: 10-15%
+        resin_content: High
+      grain_pattern: Straight grain
+    - name: Plywood
+      author_id: 2
+      category: wood
+    - name: Poplar
+      author_id: 4
+      category: wood
+      thermal_properties:
+        thermalConductivity: 0.12 W/m·K
+        specific_heat: 1.35 kJ/kg·K
+      mechanical_properties:
+        hardness: 2.3 Janka
+      processing_properties:
+        moisture_content: 8-14%
+        resin_content: Very low
+        grain_structure_type: Straight grain
+      material_metadata:
+        regulatoryStandards:
+        - EPA Clean Air Act Compliance
+    - name: Redwood
+      author_id: 3
+      category: wood
+    - name: Rosewood
+      author_id: 1
+      category: wood
+    - name: Teak
+      author_id: 4
+      category: wood
+      thermal_properties:
+        thermalConductivity: 0.13 W/m·K
+        specific_heat: 1.2 kJ/kg·K
+      mechanical_properties:
+        hardness: 4.2 Janka
+      processing_properties:
+        moisture_content: 6-12%
+        grain_structure_type: Straight to wavy grain
+      material_metadata:
+        regulatoryStandards:
+        - EPA Clean Air Act Compliance
+        - IMO Marine Pollution Prevention Standards
+    - name: Walnut
+      author_id: 1
+      category: wood
+      thermal_properties:
+        thermalConductivity: 0.14 W/m·K
+        specific_heat: 1.2 kJ/kg·K
+      mechanical_properties:
+        hardness: 4.49 Janka
+      processing_properties:
+        moisture_content: 7-12%
+        grain_structure_type: Open grain
+      material_metadata:
+        regulatoryStandards:
+        - EPA Clean Air Act Compliance
+    - name: Willow
+      author_id: 2
+      category: wood
+metadata:
+  total_categories: 9
+  total_materials: 121
+  last_updated: '2025-08-28'
+  format_version: '1.0'

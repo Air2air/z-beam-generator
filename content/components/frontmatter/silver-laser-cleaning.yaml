@@ -2,122 +2,125 @@ name: Silver
 category: Metal
 subcategory: Silver
 title: Silver Laser Cleaning
-description: Laser cleaning parameters for Silver
+description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
     value: 10.49
     unit: g/cm³
-    confidence: 99
-    description: Density of pure silver at 20°C
-    min: 10.49
-    max: 10.5
-  meltingPoint:
-    value: 961.78
-    unit: °C
     confidence: 98
+    description: Density of pure silver at 20°C
+    min: 0.53
+    max: 22.6
+  meltingPoint:
+    value: 961.8
+    unit: °C
+    confidence: 97
     description: Melting point of pure silver
-    min: 961.5
-    max: 962.0
+    min: null
+    max: null
   thermalConductivity:
     value: 429
     unit: W/m·K
     confidence: 95
-    description: Thermal conductivity at 20°C (highest of all metals)
-    min: 425
-    max: 432
+    description: Thermal conductivity at 20°C - highest of all metals
+    min: 6.0
+    max: 429.0
   tensileStrength:
     value: 125
     unit: MPa
-    confidence: 88
+    confidence: 89
     description: Tensile strength of annealed silver
-    min: 110
-    max: 140
+    min: 30.0
+    max: 3000.0
   hardness:
     value: 25
     unit: HV
-    confidence: 90
-    description: Vickers hardness of pure annealed silver
-    min: 22
-    max: 28
+    confidence: 88
+    description: Vickers hardness of annealed silver
+    min: 5
+    max: 500
   youngsModulus:
     value: 83
     unit: GPa
-    confidence: 94
+    confidence: 93
     description: Young's modulus of elasticity
-    min: 82
-    max: 84
+    min: 70
+    max: 411
   thermalExpansion:
     value: 18.9
     unit: μm/m·K
     confidence: 92
     description: Coefficient of linear thermal expansion at 20°C
-    min: 18.7
-    max: 19.1
+    min: 0.5
+    max: 29.1
   thermalDiffusivity:
     value: 174
     unit: mm²/s
     confidence: 90
     description: Thermal diffusivity at room temperature
-    min: 170
-    max: 178
+    min: 4.2
+    max: 174
   specificHeat:
     value: 0.235
     unit: J/g·K
-    confidence: 92
+    confidence: 91
     description: Specific heat capacity at 20°C
-    min: 0.232
-    max: 0.238
+    min: 0.128
+    max: 0.904
   reflectivity:
     value: 97
     unit: '%'
-    confidence: 95
-    description: Visible light reflectivity (highest of all metals)
-    min: 96
-    max: 98
+    confidence: 96
+    description: Visible light reflectivity at 600 nm wavelength
+    min: null
+    max: null
   absorptionCoefficient:
-    value: 0.05
-    unit: 1/μm
+    value: 3.2
+    unit: ×10⁵ cm⁻¹
     confidence: 85
-    description: Approximate absorption coefficient for visible light
-    min: 0.03
-    max: 0.08
+    description: Absorption coefficient for 1064 nm laser wavelength
+    min: null
+    max: null
   ablationThreshold:
-    value: 0.5
+    value: 0.8
     unit: J/cm²
-    confidence: 80
-    description: Approximate laser ablation threshold for nanosecond pulses
-    min: 0.3
-    max: 0.8
+    confidence: 82
+    description: Approximate laser ablation threshold for nanosecond pulses at 1064
+      nm
+    min: null
+    max: null
   crystallineStructure:
     value: FCC
     unit: none
-    confidence: 99
+    confidence: 98
     description: Face-centered cubic crystal structure
-    min: FCC
-    max: FCC
+    min: null
+    max: null
   electricalConductivity:
     value: 63
     unit: MS/m
-    confidence: 98
-    description: Electrical conductivity (highest of all metals)
-    min: 62.5
-    max: 63.5
+    confidence: 97
+    description: Electrical conductivity at 20°C - highest of all metals
+    min: null
+    max: null
   oxidationResistance:
     value: High
     unit: qualitative
-    confidence: 85
-    description: Resistance to oxidation at room temperature
-    min: Moderate
-    max: Very High
+    confidence: 90
+    description: Resistance to oxidation in air at room temperature
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Oil and Gas: Industrial cleaning and maintenance for oil and gas equipment'
+- 'Nuclear: Decontamination and surface cleaning in nuclear facilities'
+- 'Manufacturing: Industrial surface preparation and contamination removal'
+- 'Food Processing: Sanitary surface cleaning for food processing equipment'
 machineSettings:
   powerRange:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power range for Silver oxide removal without substrate
+    description: Optimal average power for Silver oxide removal without substrate
       damage
     min: 80
     max: 120
@@ -132,66 +135,71 @@ machineSettings:
     value: 50
     unit: μm
     confidence: 84
-    description: Beam spot diameter for precise cleaning with adequate energy density
+    description: Optimal spot diameter for precision cleaning
     min: 30
     max: 100
   repetitionRate:
     value: 100
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning coverage
+    description: High repetition rate for efficient surface cleaning
     min: 50
     max: 200
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for controlled thermal ablation of contaminants
+    description: Nanosecond pulse duration for controlled thermal ablation
     min: 5
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 82
-    description: Optimal scanning speed for uniform cleaning without overheating
+    confidence: 86
+    description: Scan speed for efficient coverage without overheating
     min: 200
     max: 1000
+  fluenceThreshold:
+    value: 2.5
+    unit: J/cm²
+    confidence: 89
+    description: Threshold fluence for Silver oxide removal
+    min: 1.5
+    max: 4.0
   overlapRatio:
-    value: 70
+    value: 50
     unit: '%'
     confidence: 83
-    description: Beam overlap percentage for complete surface coverage
-    min: 50
-    max: 85
+    description: Optimal overlap between adjacent scan lines
+    min: 30
+    max: 70
   passCount:
     value: 3
     unit: passes
-    confidence: 86
-    description: Number of cleaning passes for thorough contaminant removal
+    confidence: 82
+    description: Number of passes for complete contamination removal
     min: 1
     max: 5
-  energyDensity:
-    value: 5.1
-    unit: J/cm²
-    confidence: 89
-    description: Fluence threshold for effective Silver oxide removal
-    min: 3.0
-    max: 8.0
   laserType:
     value: Nd:YAG
     unit: n/a
     confidence: 90
-    description: Solid-state laser type suitable for metal cleaning applications
+    description: Solid-state laser suitable for metal cleaning applications
     min: null
     max: null
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
-  id: 2
-  name: Alessandro Moretti
+  id: 4
+  name: Todd Dunning
   sex: m
-  title: Ph.D.
-  country: Italy
-  expertise: Laser-Based Additive Manufacturing
-  image: /images/author/alessandro-moretti.jpg
+  title: MA
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  image: /images/author/todd-dunning.jpg
 images:
   hero:
     alt: Silver surface undergoing laser cleaning showing precise contamination removal
@@ -225,7 +233,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-author_id: 2
+author_id: 4
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues

@@ -2,187 +2,187 @@ name: Lead
 category: Metal
 subcategory: Lead
 title: Lead Laser Cleaning
-description: Laser cleaning parameters for Lead
+description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
     value: 11.34
     unit: g/cm³
-    confidence: 99
+    confidence: 98
     description: Density of pure lead at 20°C
-    min: 11.33
-    max: 11.35
+    min: 0.53
+    max: 22.6
   meltingPoint:
     value: 327.5
     unit: °C
-    confidence: 98
+    confidence: 97
     description: Melting point of pure lead
-    min: 327.4
-    max: 327.6
+    min: null
+    max: null
   thermalConductivity:
     value: 35.3
     unit: W/m·K
-    confidence: 95
+    confidence: 92
     description: Thermal conductivity at 20°C
-    min: 34.0
-    max: 36.5
+    min: 6.0
+    max: 429.0
   tensileStrength:
     value: 18
     unit: MPa
-    confidence: 88
+    confidence: 85
     description: Ultimate tensile strength of pure lead
-    min: 12
-    max: 25
+    min: 30.0
+    max: 3000.0
   hardness:
     value: 5
     unit: HB
-    confidence: 90
+    confidence: 84
     description: Brinell hardness of pure lead
-    min: 4
-    max: 6
+    min: 5
+    max: 500
   youngsModulus:
     value: 16
     unit: GPa
-    confidence: 85
+    confidence: 87
     description: Young's modulus of elasticity
-    min: 14
-    max: 18
+    min: 70
+    max: 411
   thermalExpansion:
     value: 29.1
     unit: μm/m·K
-    confidence: 92
+    confidence: 90
     description: Linear thermal expansion coefficient at 20°C
-    min: 28.8
-    max: 29.4
+    min: 0.5
+    max: 29.1
+  thermalDiffusivity:
+    value: 24.9
+    unit: mm²/s
+    confidence: 88
+    description: Thermal diffusivity at room temperature
+    min: 4.2
+    max: 174
   specificHeat:
     value: 129
     unit: J/kg·K
-    confidence: 94
+    confidence: 91
     description: Specific heat capacity at 20°C
-    min: 127
-    max: 131
-  thermalDiffusivity:
-    value: 24.1
-    unit: mm²/s
-    confidence: 90
-    description: Thermal diffusivity at 20°C
-    min: 23.5
-    max: 24.7
+    min: 0.128
+    max: 0.904
   absorptionCoefficient:
     value: 0.65
     unit: dimensionless
     confidence: 82
-    description: Estimated absorption coefficient for visible to near-IR wavelengths
-    min: 0.6
-    max: 0.7
+    description: Typical absorption coefficient for visible to near-IR wavelengths
+    min: null
+    max: null
   reflectivity:
     value: 0.35
     unit: dimensionless
-    confidence: 85
+    confidence: 81
     description: Reflectivity in visible to near-IR range
-    min: 0.3
-    max: 0.4
+    min: null
+    max: null
   ablationThreshold:
     value: 0.5
     unit: J/cm²
     confidence: 80
     description: Estimated laser ablation threshold for nanosecond pulses
-    min: 0.3
-    max: 0.8
-  oxidationResistance:
-    value: High
-    unit: qualitative
-    confidence: 95
-    description: Excellent oxidation resistance due to protective oxide layer formation
-    min: N/A
-    max: N/A
+    min: null
+    max: null
   crystallineStructure:
     value: FCC
-    unit: crystal system
-    confidence: 98
+    unit: none
+    confidence: 95
     description: Face-centered cubic crystal structure
-    min: N/A
-    max: N/A
-  surfaceRoughness:
-    value: 0.1
-    unit: μm Ra
-    confidence: 85
-    description: Typical surface roughness of polished lead
-    min: 0.05
-    max: 0.5
+    min: null
+    max: null
+  oxidationResistance:
+    value: Poor
+    unit: qualitative
+    confidence: 90
+    description: Forms protective oxide layer but susceptible to continued oxidation
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Aerospace: Precision cleaning of aerospace components and assemblies'
+- 'Marine: Corrosion removal and surface treatment for marine applications'
 machineSettings:
   powerRange:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Lead oxide removal without melting substrate
+    description: Optimal power range for Lead cleaning considering low melting point
+      (327°C)
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Optimal wavelength for Lead processing (Nd:YAG fundamental)
+    description: Near-infrared wavelength optimized for Lead's absorption characteristics
     min: null
     max: null
   spotSize:
     value: 100
     unit: μm
     confidence: 90
-    description: Optimal beam diameter for Lead surface cleaning applications
+    description: Beam spot diameter for precise cleaning control
     min: 50
     max: 200
   repetitionRate:
-    value: 100
+    value: 50
     unit: kHz
-    confidence: 87
-    description: Optimal repetition rate for efficient Lead oxide removal
-    min: 50
-    max: 200
+    confidence: 84
+    description: Optimal repetition rate for efficient cleaning throughput
+    min: 20
+    max: 100
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 88
-    description: Minimum fluence required for effective Lead oxide ablation
+    description: Ablation threshold fluence for Lead surface cleaning
     min: 1.8
     max: 4.0
+  energyDensity:
+    value: 3.2
+    unit: J/cm²
+    confidence: 85
+    description: Optimal energy density for effective contaminant removal without
+      substrate damage
+    min: 2.5
+    max: 4.5
   pulseWidth:
     value: 10
     unit: ns
-    confidence: 85
-    description: Optimal pulse duration for controlled Lead surface cleaning
+    confidence: 87
+    description: Nanosecond pulse width for controlled ablation of Lead surface contaminants
     min: 5
     max: 20
   scanSpeed:
-    value: 1000
+    value: 500
     unit: mm/s
-    confidence: 84
-    description: Optimal scanning speed for uniform Lead surface treatment
-    min: 500
-    max: 2000
+    confidence: 86
+    description: Optimal scanning speed for uniform cleaning coverage
+    min: 200
+    max: 1000
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 86
-    description: Optimal pulse overlap for complete Lead surface coverage
+    confidence: 85
+    description: Optimal pulse overlap for complete surface coverage
     min: 40
     max: 70
   passCount:
     value: 3
     unit: passes
     confidence: 82
-    description: Recommended number of passes for thorough Lead oxide removal
+    description: Recommended number of passes for thorough contaminant removal
     min: 1
     max: 5
-  energyDensity:
-    value: 3.2
-    unit: J/cm²
-    confidence: 85
-    description: Optimal energy density for Lead surface cleaning efficiency
-    min: 2.0
-    max: 5.0
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
   id: 4
   name: Todd Dunning

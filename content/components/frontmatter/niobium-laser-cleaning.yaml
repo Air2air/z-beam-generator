@@ -2,109 +2,117 @@ name: Niobium
 category: Metal
 subcategory: Niobium
 title: Niobium Laser Cleaning
-description: Laser cleaning parameters for Niobium
+description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
     value: 8.57
     unit: g/cm³
     confidence: 98
     description: Density of pure niobium at room temperature
-    min: 8.55
-    max: 8.6
+    min: 0.53
+    max: 22.6
   meltingPoint:
     value: 2477
     unit: °C
     confidence: 97
-    description: Melting point of pure niobium
-    min: 2470
-    max: 2480
+    description: High melting point characteristic of refractory metals
+    min: null
+    max: null
   thermalConductivity:
     value: 53.7
     unit: W/m·K
     confidence: 92
-    description: Thermal conductivity at room temperature
-    min: 52.0
-    max: 55.0
+    description: Thermal conductivity at 20°C
+    min: 6.0
+    max: 429.0
   tensileStrength:
     value: 275
     unit: MPa
-    confidence: 85
-    description: Ultimate tensile strength (annealed condition)
-    min: 250
-    max: 300
+    confidence: 90
+    description: Ultimate tensile strength of annealed niobium
+    min: 30.0
+    max: 3000.0
   hardness:
     value: 75
     unit: HV
-    confidence: 86
-    description: Vickers hardness (annealed condition)
-    min: 70
-    max: 80
+    confidence: 88
+    description: Vickers hardness of pure annealed niobium
+    min: 5
+    max: 500
   youngsModulus:
     value: 105
     unit: GPa
-    confidence: 94
+    confidence: 95
     description: Young's modulus of elasticity
-    min: 103
-    max: 107
+    min: 70
+    max: 411
   thermalExpansion:
     value: 7.3
     unit: 10⁻⁶/K
     confidence: 90
-    description: Coefficient of thermal expansion (20-100°C)
-    min: 7.1
-    max: 7.5
-  thermalDiffusivity:
-    value: 23.6
-    unit: mm²/s
-    confidence: 88
-    description: Thermal diffusivity at room temperature
-    min: 22.5
-    max: 24.5
+    description: Coefficient of thermal expansion at 20°C
+    min: 0.5
+    max: 29.1
   specificHeat:
-    value: 265
-    unit: J/kg·K
-    confidence: 91
-    description: Specific heat capacity at room temperature
-    min: 260
-    max: 270
+    value: 0.265
+    unit: J/g·K
+    confidence: 88
+    description: Specific heat capacity at 25°C
+    min: 0.128
+    max: 0.904
+  thermalDiffusivity:
+    value: 23.7
+    unit: mm²/s
+    confidence: 85
+    description: Thermal diffusivity at room temperature
+    min: 4.2
+    max: 174
   absorptionCoefficient:
     value: 0.45
     unit: dimensionless
     confidence: 82
-    description: Absorption coefficient for Nd:YAG laser (1064 nm)
-    min: 0.4
-    max: 0.5
+    description: Approximate absorption coefficient for near-IR lasers (1064 nm)
+    min: null
+    max: null
   reflectivity:
     value: 0.55
     unit: dimensionless
-    confidence: 83
-    description: Reflectivity for Nd:YAG laser (1064 nm)
-    min: 0.5
-    max: 0.6
-  ablationThreshold:
-    value: 1.2
-    unit: J/cm²
     confidence: 80
-    description: Laser ablation threshold for nanosecond pulses (1064 nm)
-    min: 0.8
-    max: 1.5
+    description: Reflectivity at 1064 nm wavelength
+    min: null
+    max: null
+  ablationThreshold:
+    value: 2.8
+    unit: J/cm²
+    confidence: 85
+    description: Estimated ablation threshold for nanosecond pulses at 1064 nm
+    min: null
+    max: null
+  crystallineStructure:
+    value: BCC
+    unit: none
+    confidence: 99
+    description: Body-centered cubic crystal structure
+    min: null
+    max: null
   oxidationResistance:
     value: 400
     unit: °C
     confidence: 88
-    description: Maximum temperature for protective oxide layer formation
-    min: 350
-    max: 450
-  crystallineStructure:
-    value: BCC
-    unit: crystal system
-    confidence: 99
-    description: Body-centered cubic crystal structure
-    min: N/A
-    max: N/A
+    description: Maximum temperature for protective oxide layer stability in air
+    min: null
+    max: null
+  electricalResistivity:
+    value: 15.2
+    unit: μΩ·cm
+    confidence: 92
+    description: Electrical resistivity at 20°C
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Aerospace: Precision cleaning of aerospace components and assemblies'
+- 'Restoration: Gentle cleaning for restoration and conservation applications'
+- 'Manufacturing: Industrial surface preparation and contamination removal'
 machineSettings:
   powerRange:
     value: 100
@@ -118,59 +126,71 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength for efficient absorption by niobium oxides
+    description: Near-IR wavelength with good absorption in niobium oxides while minimizing
+      bulk heating
     min: 1030
     max: 1070
   spotSize:
     value: 50
     unit: μm
     confidence: 84
-    description: Beam diameter for precise cleaning with adequate energy density
+    description: Optimal spot size balancing cleaning efficiency and resolution for
+      surface contaminants
     min: 30
     max: 100
   repetitionRate:
     value: 100
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning coverage
+    description: High repetition rate for efficient cleaning coverage while maintaining
+      thermal management
     min: 50
     max: 200
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for controlled ablation of surface contaminants
+    description: Nanosecond pulse duration for efficient oxide ablation with controlled
+      thermal penetration
     min: 5
     max: 20
   scanSpeed:
-    value: 500
+    value: 1000
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform surface treatment
-    min: 200
-    max: 1000
+    description: Scan speed providing adequate overlap between pulses for uniform
+      cleaning
+    min: 500
+    max: 2000
   fluence:
     value: 2.5
     unit: J/cm²
     confidence: 90
-    description: Energy density threshold for niobium oxide removal
+    description: Fluence threshold for niobium oxide removal while preserving base
+      material integrity
     min: 1.5
     max: 4.0
   overlapRatio:
-    value: 70
+    value: 50
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for uniform cleaning without excessive heat
-      accumulation
-    min: 50
-    max: 85
-  passCount:
-    value: 3
-    unit: passes
-    confidence: 82
-    description: Number of cleaning passes for complete contaminant removal
-    min: 1
-    max: 5
+    description: Optimal pulse overlap ensuring complete coverage without excessive
+      heat accumulation
+    min: 40
+    max: 70
+  pulseEnergy:
+    value: 1.0
+    unit: mJ
+    confidence: 85
+    description: Pulse energy calibrated for effective contaminant removal on niobium
+      surfaces
+    min: 0.5
+    max: 2.0
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
   id: 4
   name: Todd Dunning

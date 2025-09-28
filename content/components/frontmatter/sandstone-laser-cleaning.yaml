@@ -2,142 +2,138 @@ name: Sandstone
 category: Stone
 subcategory: Sandstone
 title: Sandstone Laser Cleaning
-description: Laser cleaning parameters for Sandstone
+description: Laser cleaning parameters for Alabaster
 materialProperties:
   density:
-    value: 2.32
+    value: 2.3
     unit: g/cm³
     confidence: 95
     description: Bulk density of typical sandstone with moderate porosity
-    min: 2.0
-    max: 2.65
+    min: 1.5
+    max: 3.4
   meltingPoint:
-    value: 1710
+    value: 1700
     unit: °C
-    confidence: 90
-    description: Approximate melting point of quartz (primary constituent)
-    min: 1650
-    max: 1750
+    confidence: 85
+    description: Approximate melting point of quartz-dominated sandstone
+    min: null
+    max: null
   thermalConductivity:
     value: 2.5
     unit: W/m·K
-    confidence: 88
-    description: Thermal conductivity at room temperature, varies with mineral composition
-    min: 1.5
-    max: 4.0
+    confidence: 90
+    description: Thermal conductivity at room temperature for dry sandstone
+    min: 0.2
+    max: 5
   tensileStrength:
-    value: 4.5
+    value: 8
     unit: MPa
-    confidence: 87
-    description: Indirect tensile strength (Brazilian test)
-    min: 1.0
-    max: 10.0
+    confidence: 88
+    description: Direct tensile strength of medium-grained sandstone
+    min: 2
+    max: 25
   hardness:
-    value: 6.5
+    value: 6
     unit: Mohs
-    confidence: 92
-    description: Mohs hardness scale, primarily determined by quartz content
-    min: 6.0
-    max: 7.0
+    confidence: 95
+    description: Mohs hardness scale for quartz-dominated sandstone
+    min: 1
+    max: 7
   youngsModulus:
     value: 15
     unit: GPa
-    confidence: 88
-    description: Elastic modulus in compression
-    min: 5
-    max: 30
-  thermalExpansion:
-    value: 12.0
-    unit: 10⁻⁶/°C
     confidence: 85
-    description: Coefficient of thermal expansion (20-100°C range)
-    min: 8.0
-    max: 15.0
+    description: Elastic modulus under compressive loading
+    min: 10
+    max: 100
+  thermalExpansion:
+    value: 12
+    unit: ×10⁻⁶/°C
+    confidence: 88
+    description: Coefficient of thermal expansion for quartz-rich sandstone
+    min: 3
+    max: 16
   specificHeat:
     value: 920
     unit: J/kg·K
     confidence: 92
     description: Specific heat capacity at room temperature
-    min: 800
-    max: 1000
+    min: 0.7
+    max: 1.2
   thermalDiffusivity:
-    value: 1.17
+    value: 1.18
     unit: mm²/s
-    confidence: 86
+    confidence: 85
     description: Thermal diffusivity calculated from conductivity, density, and specific
       heat
-    min: 0.8
-    max: 1.5
+    min: 0.2
+    max: 2.5
   porosity:
     value: 15
     unit: '%'
-    confidence: 94
-    description: Typical porosity range affecting laser absorption and cleaning efficiency
-    min: 5
-    max: 30
-  compressiveStrength:
-    value: 70
-    unit: MPa
-    confidence: 89
-    description: Uniaxial compressive strength, varies significantly with cementation
-    min: 20
-    max: 170
+    confidence: 90
+    description: Typical porosity range for construction-grade sandstone
+    min: null
+    max: null
   absorptionCoefficient:
     value: 0.85
     unit: dimensionless
     confidence: 82
-    description: Optical absorption coefficient for common laser wavelengths (1064nm)
-    min: 0.7
-    max: 0.95
-  ablationThreshold:
-    value: 1.2
-    unit: J/cm²
+    description: Optical absorption coefficient for visible to near-IR wavelengths
+    min: null
+    max: null
+  reflectivity:
+    value: 0.15
+    unit: dimensionless
     confidence: 80
-    description: Laser ablation threshold for nanosecond pulses at 1064nm
-    min: 0.8
-    max: 2.0
-  surfaceRoughness:
-    value: 12.5
-    unit: μm Ra
+    description: Surface reflectivity at common laser wavelengths (1064 nm)
+    min: null
+    max: null
+  ablationThreshold:
+    value: 2.5
+    unit: J/cm²
     confidence: 85
-    description: Typical surface roughness of cut sandstone surfaces
-    min: 5.0
-    max: 25.0
+    description: Laser ablation threshold for nanosecond pulses at 1064 nm
+    min: null
+    max: null
+  chemicalStability:
+    value: 8
+    unit: scale 1-10
+    confidence: 90
+    description: Relative chemical stability rating in atmospheric conditions
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Jewelry: Precision cleaning and polishing of precious metal jewelry'
 machineSettings:
   powerRange:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power range for Sandstone cleaning without thermal
-      damage
+    description: Optimal average power for sandstone cleaning without thermal damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength optimized for Sandstone mineral absorption
-    min: 1030
-    max: 1080
+    description: Near-infrared wavelength optimal for sandstone mineral absorption
+    min: 532
+    max: 1064
   spotSize:
-    value: 100
+    value: 200
     unit: μm
     confidence: 90
-    description: Optimal beam diameter for precision cleaning of Sandstone surface
-      features
-    min: 50
-    max: 200
+    description: Beam spot diameter for effective coverage and energy density control
+    min: 100
+    max: 500
   repetitionRate:
-    value: 100
+    value: 20
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning with minimal thermal
-      accumulation
-    min: 50
-    max: 200
+    description: Optimal repetition rate for efficient cleaning with thermal management
+    min: 10
+    max: 50
   pulseWidth:
     value: 10
     unit: ns
@@ -149,39 +145,43 @@ machineSettings:
     value: 500
     unit: mm/s
     confidence: 84
-    description: Scanning speed balancing cleaning efficiency and surface preservation
-    min: 300
-    max: 800
-  fluenceThreshold:
-    value: 2.5
-    unit: J/cm²
-    confidence: 89
-    description: Threshold fluence for effective contaminant removal without damaging
-      Sandstone substrate
-    min: 1.5
-    max: 4.0
-  overlapRatio:
-    value: 70
-    unit: '%'
-    confidence: 86
-    description: Optimal pulse overlap for uniform cleaning coverage
-    min: 60
-    max: 80
-  passCount:
-    value: 3
-    unit: passes
-    confidence: 83
-    description: Recommended number of passes for thorough cleaning without excessive
-      exposure
-    min: 2
-    max: 5
+    description: Optimal scanning speed for uniform cleaning without overheating
+    min: 200
+    max: 1000
   energyDensity:
     value: 3.2
     unit: J/cm²
-    confidence: 88
-    description: Optimal energy density for Sandstone cleaning applications
+    confidence: 89
+    description: Fluence threshold for effective contaminant removal without substrate
+      damage
     min: 2.0
     max: 5.0
+  overlapRatio:
+    value: 50
+    unit: '%'
+    confidence: 86
+    description: Optimal overlap between adjacent scan lines for complete coverage
+    min: 30
+    max: 70
+  passCount:
+    value: 2
+    unit: passes
+    confidence: 83
+    description: Recommended number of passes for thorough cleaning
+    min: 1
+    max: 4
+  laserType:
+    value: Nd:YAG
+    unit: n/a
+    confidence: 91
+    description: Preferred laser type for sandstone cleaning applications
+    min: null
+    max: null
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
   id: 2
   name: Alessandro Moretti

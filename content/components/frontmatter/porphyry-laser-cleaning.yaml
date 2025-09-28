@@ -2,96 +2,109 @@ name: Porphyry
 category: Stone
 subcategory: Porphyry
 title: Porphyry Laser Cleaning
-description: Laser cleaning parameters for Porphyry
+description: Laser cleaning parameters for Alabaster
 materialProperties:
   density:
     value: 2.65
     unit: g/cm³
     confidence: 95
-    description: Bulk density of porphyry rock with typical mineral composition
-    min: 2.6
-    max: 2.75
+    description: Typical density range for porphyritic igneous rocks
+    min: 1.5
+    max: 3.4
   meltingPoint:
     value: 1200
     unit: °C
     confidence: 85
-    description: Approximate melting temperature range for porphyry composition
-    min: 950
-    max: 1300
+    description: Approximate melting temperature for quartz-feldspar porphyry composition
+    min: null
+    max: null
   thermalConductivity:
     value: 2.9
     unit: W/m·K
     confidence: 88
-    description: Thermal conductivity at room temperature
-    min: 2.5
-    max: 3.3
+    description: Thermal conductivity of typical porphyry at room temperature
+    min: 0.2
+    max: 5
+  tensileStrength:
+    value: 8
+    unit: MPa
+    confidence: 80
+    description: Indirect tensile strength (Brazilian test)
+    min: 2
+    max: 25
   hardness:
     value: 6.5
     unit: Mohs
     confidence: 92
-    description: Mohs hardness scale for porphyry (feldspar-dominated)
-    min: 6.0
-    max: 7.0
+    description: Hardness on Mohs scale, typical for quartz-feldspar porphyry
+    min: 1
+    max: 7
   youngsModulus:
-    value: 60
+    value: 70
     unit: GPa
-    confidence: 85
-    description: Elastic modulus in compression
-    min: 50
-    max: 70
+    confidence: 88
+    description: Elastic modulus of porphyry rock
+    min: 10
+    max: 100
   thermalExpansion:
-    value: 7.2
-    unit: 10⁻⁶/°C
+    value: 8.5
+    unit: 10⁻⁶/K
     confidence: 82
-    description: Coefficient of linear thermal expansion
-    min: 6.5
-    max: 8.0
+    description: Coefficient of thermal expansion for quartz-rich porphyry
+    min: 3
+    max: 16
   specificHeat:
     value: 0.84
     unit: kJ/kg·K
     confidence: 90
     description: Specific heat capacity at room temperature
-    min: 0.8
-    max: 0.88
+    min: 0.7
+    max: 1.2
+  thermalDiffusivity:
+    value: 1.3
+    unit: mm²/s
+    confidence: 85
+    description: Thermal diffusivity calculated from conductivity, density, and specific
+      heat
+    min: 0.2
+    max: 2.5
   compressiveStrength:
     value: 180
     unit: MPa
-    confidence: 88
-    description: Uniaxial compressive strength
-    min: 150
-    max: 220
-  absorptionCoefficient:
-    value: 0.85
-    unit: dimensionless
-    confidence: 80
-    description: Optical absorption coefficient for common laser wavelengths (1064
-      nm)
-    min: 0.75
-    max: 0.92
-  reflectivity:
-    value: 0.15
-    unit: dimensionless
-    confidence: 82
-    description: Surface reflectivity at 1064 nm wavelength
-    min: 0.1
-    max: 0.2
-  ablationThreshold:
-    value: 2.5
-    unit: J/cm²
-    confidence: 80
-    description: Laser ablation threshold for nanosecond pulses at 1064 nm
-    min: 1.8
-    max: 3.5
+    confidence: 85
+    description: Uniaxial compressive strength of intact porphyry
+    min: null
+    max: null
   porosity:
     value: 2.5
     unit: '%'
     confidence: 90
-    description: Typical porosity range for dense porphyry
-    min: 1.0
-    max: 5.0
+    description: Typical porosity for dense porphyry rock
+    min: null
+    max: null
+  absorptionCoefficient:
+    value: 0.85
+    unit: dimensionless
+    confidence: 82
+    description: Estimated absorption coefficient for near-infrared laser wavelengths
+    min: null
+    max: null
+  ablationThreshold:
+    value: 1.2
+    unit: J/cm²
+    confidence: 78
+    description: Estimated laser ablation threshold for nanosecond pulses at 1064nm
+    min: null
+    max: null
+  reflectivity:
+    value: 0.15
+    unit: dimensionless
+    confidence: 80
+    description: Approximate reflectivity at common laser wavelengths (1064nm)
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Jewelry: Precision cleaning and polishing of precious metal jewelry'
 machineSettings:
   powerRange:
     value: 90
@@ -134,37 +147,42 @@ machineSettings:
     unit: mm/s
     confidence: 84
     description: Optimal scanning speed for uniform cleaning coverage
-    min: 300
+    min: 200
     max: 800
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 89
     description: Threshold fluence for effective contaminant removal from Porphyry
-    min: 1.8
-    max: 3.5
+    min: 1.5
+    max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 86
-    description: Optimal beam overlap for complete surface coverage without over-processing
-    min: 40
-    max: 60
+    description: Optimal beam overlap for complete surface coverage
+    min: 30
+    max: 70
   passCount:
     value: 3
     unit: passes
     confidence: 83
     description: Recommended number of passes for thorough cleaning
-    min: 2
+    min: 1
     max: 5
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
-  id: 4
-  name: Todd Dunning
+  id: 2
+  name: Alessandro Moretti
   sex: m
-  title: MA
-  country: United States (California)
-  expertise: Optical Materials for Laser Systems
-  image: /images/author/todd-dunning.jpg
+  title: Ph.D.
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  image: /images/author/alessandro-moretti.jpg
 images:
   hero:
     alt: Porphyry surface undergoing laser cleaning showing precise contamination
@@ -199,7 +217,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-author_id: 4
+author_id: 2
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues

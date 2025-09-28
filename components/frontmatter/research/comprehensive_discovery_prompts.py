@@ -34,25 +34,19 @@ RESPONSE FORMAT (JSON - provide COMPLETE property data without YAML anchors):
             "value": 2.7,
             "unit": "g/cm³",
             "confidence": 98,
-            "description": "Pure aluminum density at room temperature",
-            "min": 2.65,
-            "max": 2.75
+            "description": "Pure aluminum density at room temperature"
         }},
         "meltingPoint": {{
             "value": 660,
             "unit": "°C", 
             "confidence": 95,
-            "description": "Melting point of pure aluminum",
-            "min": 658,
-            "max": 662
+            "description": "Melting point of pure aluminum"
         }},
         "thermalConductivity": {{
             "value": 237,
             "unit": "W/m·K",
             "confidence": 92,
-            "description": "Thermal conductivity of pure aluminum",
-            "min": 230,
-            "max": 240
+            "description": "Thermal conductivity of pure aluminum"
         }}
         // Continue for ALL relevant properties with actual values
     }},
@@ -66,13 +60,14 @@ RESPONSE FORMAT (JSON - provide COMPLETE property data without YAML anchors):
 }}
 
 CRITICAL REQUIREMENTS:
-- Provide COMPLETE property data (value, unit, confidence, description, min/max ranges)
+- Provide property data with value, unit, confidence, and description ONLY (no min/max ranges)
+- Min/max ranges will be supplied from category-based data sources
 - Include MINIMUM 8-12 properties (comprehensive analysis required)
 - All confidence scores 80-98% (high-quality scientific data only)
 - Prioritize laser-relevant properties over general material properties
 - Consider {material_name}-specific characteristics and common applications  
 - NO generic responses - tailor specifically to {material_name}
-- Use precise scientific units and realistic value ranges"""
+- Use precise scientific units and realistic values"""
 
 MACHINE_SETTINGS_DISCOVERY_PROMPT = """
 You are a laser engineering expert conducting comprehensive machine settings research for laser cleaning applications.

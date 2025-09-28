@@ -2,110 +2,112 @@ name: Slate
 category: Stone
 subcategory: Slate
 title: Slate Laser Cleaning
-description: Laser cleaning parameters for Slate
+description: Laser cleaning parameters for Alabaster
 materialProperties:
   density:
-    value: 2.79
+    value: 2.75
     unit: g/cm³
     confidence: 95
-    description: Bulk density of typical slate rock
-    min: 2.65
-    max: 2.9
+    description: Average density of slate rock at room temperature
+    min: 1.5
+    max: 3.4
   meltingPoint:
     value: 1250
     unit: °C
     confidence: 85
-    description: Approximate melting point considering mineral composition
-    min: 1200
-    max: 1300
+    description: Approximate melting point of slate composition
+    min: null
+    max: null
   thermalConductivity:
     value: 2.2
     unit: W/m·K
     confidence: 90
     description: Thermal conductivity perpendicular to cleavage planes
-    min: 1.8
-    max: 2.6
+    min: 0.2
+    max: 5
   hardness:
     value: 3.5
     unit: Mohs
-    confidence: 95
-    description: Mohs hardness scale - typical for slate minerals
-    min: 3.0
-    max: 4.0
+    confidence: 96
+    description: Mohs hardness scale value for slate
+    min: 1
+    max: 7
   youngsModulus:
-    value: 65
+    value: 45
     unit: GPa
-    confidence: 90
+    confidence: 93
     description: Elastic modulus perpendicular to cleavage direction
-    min: 55
-    max: 75
+    min: 10
+    max: 100
   thermalExpansion:
     value: 8.5
     unit: 10⁻⁶/°C
     confidence: 88
     description: Coefficient of thermal expansion at room temperature
-    min: 7.0
-    max: 10.0
+    min: 3
+    max: 16
   specificHeat:
-    value: 0.84
-    unit: kJ/kg·K
+    value: 0.85
+    unit: J/g·K
     confidence: 92
     description: Specific heat capacity at 20°C
-    min: 0.8
-    max: 0.88
+    min: 0.7
+    max: 1.2
   thermalDiffusivity:
     value: 0.94
     unit: mm²/s
-    confidence: 85
+    confidence: 86
     description: Thermal diffusivity calculated from conductivity, density, and specific
       heat
-    min: 0.8
-    max: 1.1
+    min: 0.2
+    max: 2.5
   flexuralStrength:
     value: 35
     unit: MPa
-    confidence: 88
-    description: Bending strength perpendicular to cleavage
-    min: 25
-    max: 45
+    confidence: 89
+    description: Flexural strength across cleavage planes
+    min: null
+    max: null
   absorptionCoefficient:
     value: 0.85
     unit: dimensionless
     confidence: 82
-    description: Optical absorption coefficient for visible to near-IR wavelengths
-    min: 0.75
-    max: 0.92
+    description: Optical absorption coefficient for typical laser wavelengths (1064
+      nm)
+    min: null
+    max: null
   reflectivity:
-    value: 0.15
+    value: 0.12
     unit: dimensionless
-    confidence: 85
-    description: Surface reflectivity at common laser wavelengths (1064nm)
-    min: 0.1
-    max: 0.2
+    confidence: 84
+    description: Surface reflectivity at 1064 nm wavelength
+    min: null
+    max: null
   ablationThreshold:
-    value: 1.2
+    value: 1.8
     unit: J/cm²
     confidence: 80
-    description: Laser fluence threshold for ablation at 1064nm wavelength
-    min: 0.8
-    max: 1.6
+    description: Approximate laser ablation threshold for nanosecond pulses at 1064
+      nm
+    min: null
+    max: null
   porosity:
-    value: 1.5
+    value: 1.2
     unit: '%'
-    confidence: 90
-    description: Typical porosity range for dense slate
-    min: 0.5
-    max: 3.0
+    confidence: 91
+    description: Average porosity percentage in high-quality slate
+    min: null
+    max: null
   surfaceRoughness:
     value: 2.8
     unit: μm Ra
-    confidence: 88
-    description: Average surface roughness of natural slate surfaces
-    min: 1.5
-    max: 5.0
+    confidence: 87
+    description: Typical surface roughness of natural slate surfaces
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Construction: Surface preparation and cleaning for construction materials'
+- 'Restoration: Gentle cleaning for restoration and conservation applications'
 machineSettings:
   powerRange:
     value: 100
@@ -125,30 +127,30 @@ machineSettings:
     value: 100
     unit: μm
     confidence: 90
-    description: Beam spot diameter for precise cleaning resolution
+    description: Optimal spot size for precision cleaning of Slate surfaces
     min: 50
     max: 200
   repetitionRate:
-    value: 50
+    value: 100
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning coverage
-    min: 20
-    max: 100
+    description: High repetition rate for efficient surface cleaning
+    min: 50
+    max: 200
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse width for controlled ablation of surface contaminants
+    description: Nanosecond pulse width for controlled ablation of contaminants
     min: 5
     max: 20
   scanSpeed:
-    value: 500
+    value: 1000
     unit: mm/s
     confidence: 84
-    description: Optimal scanning speed for uniform cleaning efficiency
-    min: 200
-    max: 1000
+    description: Scan speed balancing cleaning efficiency and surface preservation
+    min: 500
+    max: 2000
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
@@ -160,31 +162,36 @@ machineSettings:
     value: 50
     unit: '%'
     confidence: 86
-    description: Optimal beam overlap for complete surface coverage
+    description: Optimal overlap for uniform cleaning coverage
     min: 30
     max: 70
   passCount:
     value: 3
     unit: passes
-    confidence: 88
-    description: Recommended number of passes for thorough cleaning
+    confidence: 83
+    description: Number of passes for thorough cleaning without substrate damage
     min: 1
     max: 5
   laserType:
     value: Nd:YAG
     unit: n/a
     confidence: 91
-    description: Recommended laser type for Slate cleaning applications
+    description: Fiber laser type recommended for Slate cleaning applications
     min: null
     max: null
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
-  id: 3
-  name: Ikmanda Roswati
+  id: 2
+  name: Alessandro Moretti
   sex: m
   title: Ph.D.
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  image: /images/author/ikmanda-roswati.jpg
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  image: /images/author/alessandro-moretti.jpg
 images:
   hero:
     alt: Slate surface undergoing laser cleaning showing precise contamination removal
@@ -218,7 +225,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-author_id: 3
+author_id: 2
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues

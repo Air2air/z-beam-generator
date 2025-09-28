@@ -2,10 +2,96 @@ name: Polyethylene
 category: Plastic
 subcategory: Polyethylene
 title: Polyethylene Laser Cleaning
-description: Laser cleaning parameters for Polyethylene
+description: Laser cleaning parameters for Polycarbonate
+materialProperties:
+  density:
+    value: 0.92
+    unit: g/cm³
+    confidence: 95
+    description: Density of low-density polyethylene at room temperature
+    min: 0.85
+    max: 2.2
+  meltingPoint:
+    value: 115
+    unit: °C
+    confidence: 92
+    description: Melting point range for LDPE (105-115°C)
+    min: null
+    max: null
+  thermalConductivity:
+    value: 0.33
+    unit: W/m·K
+    confidence: 88
+    description: Thermal conductivity of polyethylene at 20°C
+    min: 0.02
+    max: 3
+  tensileStrength:
+    value: 15
+    unit: MPa
+    confidence: 88
+    description: Tensile strength of LDPE
+    min: 10
+    max: 400
+  youngsModulus:
+    value: 0.2
+    unit: GPa
+    confidence: 85
+    description: Young's modulus of elasticity
+    min: 0.01
+    max: 50
+  thermalExpansion:
+    value: 200
+    unit: 10⁻⁶/°C
+    confidence: 85
+    description: Linear thermal expansion coefficient
+    min: 10
+    max: 200
+  specificHeat:
+    value: 1900
+    unit: J/kg·K
+    confidence: 90
+    description: Specific heat capacity at room temperature
+    min: 1
+    max: 2.5
+  absorptionCoefficient:
+    value: 0.85
+    unit: cm⁻¹
+    confidence: 82
+    description: Absorption coefficient at 1064 nm wavelength
+    min: null
+    max: null
+  reflectivity:
+    value: 0.05
+    unit: dimensionless
+    confidence: 80
+    description: Surface reflectivity at near-IR wavelengths
+    min: null
+    max: null
+  ablationThreshold:
+    value: 0.5
+    unit: J/cm²
+    confidence: 78
+    description: Laser ablation threshold for nanosecond pulses at 1064 nm
+    min: null
+    max: null
+  oxidationResistance:
+    value: 3
+    unit: scale 1-5
+    confidence: 85
+    description: Resistance to oxidative degradation (5 = highest)
+    min: null
+    max: null
+  crystallineStructure:
+    value: 50
+    unit: '%'
+    confidence: 88
+    description: Percentage crystallinity in typical LDPE
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Aerospace: Precision cleaning of aerospace components and assemblies'
+- 'Automotive: Paint removal and surface preparation for automotive parts'
+- 'Medical: Sterilization and cleaning of medical devices and instruments'
 machineSettings:
   powerRange:
     value: 40
@@ -25,15 +111,16 @@ machineSettings:
   spotSize:
     value: 100
     unit: μm
-    confidence: 92
-    description: Beam spot diameter for effective cleaning resolution
+    confidence: 85
+    description: Beam spot diameter for efficient area coverage and adequate fluence
     min: 50
     max: 200
   repetitionRate:
     value: 20
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning with thermal management
+    description: Optimal repetition rate for continuous cleaning process with thermal
+      management
     min: 5
     max: 100
   pulseWidth:
@@ -47,47 +134,54 @@ machineSettings:
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 85
-    description: Optimal scanning speed for uniform cleaning coverage
-    min: 200
-    max: 1000
-  fluenceThreshold:
-    value: 0.8
-    unit: J/cm²
-    confidence: 89
-    description: Minimum fluence required for effective contaminant removal from Polyethylene
-    min: 0.3
-    max: 2.0
+    confidence: 82
+    description: Optimal scanning speed for uniform cleaning with proper pulse overlap
+    min: 100
+    max: 2000
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 86
-    description: Optimal beam overlap for uniform cleaning without excessive heat
-      accumulation
+    confidence: 85
+    description: Pulse overlap percentage for complete surface coverage without excessive
+      heating
     min: 30
     max: 70
   passCount:
-    value: 2
+    value: 1
     unit: passes
     confidence: 88
-    description: Recommended number of passes for complete contaminant removal
+    description: Typically single-pass cleaning sufficient for Polyethylene surface
+      contaminants
     min: 1
-    max: 5
-  laserType:
-    value: Fiber Laser
-    unit: n/a
+    max: 3
+  energyDensity:
+    value: 5.1
+    unit: J/cm²
     confidence: 90
-    description: Recommended laser type for Polyethylene cleaning applications
+    description: Fluence threshold for effective contaminant removal while preserving
+      Polyethylene substrate
+    min: 2.0
+    max: 10.0
+  laserType:
+    value: Nd:YAG
+    unit: n/a
+    confidence: 85
+    description: Fiber or Nd:YAG laser systems preferred for polymer cleaning applications
     min: null
     max: null
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
-  id: 2
-  name: Alessandro Moretti
-  sex: m
+  id: 1
+  name: Yi-Chun Lin
+  sex: f
   title: Ph.D.
-  country: Italy
-  expertise: Laser-Based Additive Manufacturing
-  image: /images/author/alessandro-moretti.jpg
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg
 images:
   hero:
     alt: Polyethylene surface undergoing laser cleaning showing precise contamination
@@ -122,7 +216,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-author_id: 2
+author_id: 1
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues

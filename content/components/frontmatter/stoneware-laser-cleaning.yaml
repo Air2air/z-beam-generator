@@ -2,137 +2,122 @@ name: Stoneware
 category: Ceramic
 subcategory: Stoneware
 title: Stoneware Laser Cleaning
-description: Laser cleaning parameters for Stoneware
+description: Laser cleaning parameters for Alumina
 materialProperties:
   density:
     value: 2.3
     unit: g/cm³
     confidence: 95
-    description: Typical density of fired stoneware ceramics
+    description: Typical density for fired stoneware ceramics
     min: 2.2
-    max: 2.5
+    max: 19.3
   meltingPoint:
     value: 1250
     unit: °C
     confidence: 90
     description: Approximate melting/vitrification temperature
-    min: 1200
-    max: 1300
+    min: null
+    max: null
   thermalConductivity:
     value: 1.5
     unit: W/m·K
     confidence: 88
-    description: Thermal conductivity at room temperature
-    min: 1.2
-    max: 1.8
+    description: Low thermal conductivity typical of ceramic materials
+    min: 0.03
+    max: 2000.0
   hardness:
     value: 6.5
     unit: Mohs
     confidence: 92
     description: Mohs hardness scale for fired stoneware
-    min: 6.0
-    max: 7.0
-  youngsModulus:
-    value: 70
-    unit: GPa
-    confidence: 85
-    description: Elastic modulus of stoneware ceramics
-    min: 60
-    max: 80
+    min: 3.0
+    max: 10.0
   thermalExpansion:
     value: 5.5
     unit: ×10⁻⁶/°C
     confidence: 85
-    description: Coefficient of thermal expansion (20-500°C)
-    min: 4.5
-    max: 6.5
-  specificHeat:
-    value: 850
-    unit: J/kg·K
-    confidence: 90
-    description: Specific heat capacity at room temperature
-    min: 800
-    max: 900
+    description: Coefficient of thermal expansion at room temperature
+    min: 0.1
+    max: 14
   thermalDiffusivity:
-    value: 0.75
+    value: 0.8
     unit: mm²/s
-    confidence: 85
-    description: Thermal diffusivity calculated from conductivity, density, and specific
-      heat
-    min: 0.6
-    max: 0.9
+    confidence: 82
+    description: Thermal diffusivity affecting heat propagation
+    min: 0.3
+    max: 120
   flexuralStrength:
     value: 45
     unit: MPa
-    confidence: 88
+    confidence: 85
     description: Modulus of rupture for typical stoneware
-    min: 35
-    max: 55
+    min: null
+    max: null
   absorptionCoefficient:
     value: 0.85
     unit: dimensionless
-    confidence: 82
+    confidence: 88
     description: Typical absorption coefficient for IR lasers (1064 nm)
-    min: 0.75
-    max: 0.92
+    min: null
+    max: null
   reflectivity:
-    value: 0.15
+    value: 0.12
     unit: dimensionless
-    confidence: 80
-    description: Reflectivity at common laser wavelengths (1064 nm)
-    min: 0.08
-    max: 0.25
+    confidence: 84
+    description: Reflectivity at common laser wavelengths
+    min: null
+    max: null
   ablationThreshold:
     value: 2.5
     unit: J/cm²
-    confidence: 85
-    description: Laser ablation threshold for nanosecond pulses (1064 nm)
-    min: 1.8
-    max: 3.5
+    confidence: 80
+    description: Approximate laser ablation threshold for nanosecond pulses
+    min: null
+    max: null
   porosity:
     value: 3.5
     unit: '%'
     confidence: 90
-    description: Typical porosity of vitrified stoneware
-    min: 2.0
-    max: 5.0
+    description: Typical porosity range for vitrified stoneware
+    min: null
+    max: null
   chemicalStability:
-    value: High
-    unit: qualitative
-    confidence: 95
-    description: Resistance to acids, alkalis, and environmental degradation
-    min: Moderate
-    max: Very High
+    value: 95
+    unit: '% resistance'
+    confidence: 92
+    description: Resistance to common environmental chemicals and acids
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Jewelry: Precision cleaning and polishing of precious metal jewelry'
 machineSettings:
   powerRange:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal power range for Stoneware cleaning without thermal damage
+    description: Optimal average power range for Stoneware surface cleaning without
+      thermal damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimized for Stoneware mineral absorption
+    description: Near-infrared wavelength optimal for Stoneware mineral absorption
     min: null
     max: null
   spotSize:
     value: 100
     unit: μm
-    confidence: 84
-    description: Beam spot diameter for precise cleaning resolution
+    confidence: 90
+    description: Beam spot diameter for precise cleaning control on Stoneware surfaces
     min: 50
     max: 200
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning coverage
+    description: Optimal repetition rate for efficient cleaning with thermal management
     min: 20
     max: 100
   pulseWidth:
@@ -145,46 +130,55 @@ machineSettings:
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 86
-    description: Optimal scanning speed for uniform cleaning results
+    confidence: 84
+    description: Optimal scanning speed for uniform cleaning coverage
     min: 200
     max: 1000
-  energyDensity:
-    value: 1.27
+  fluenceThreshold:
+    value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal
-    min: 0.8
-    max: 2.0
+    description: Threshold fluence for effective contaminant removal without substrate
+      damage
+    min: 1.5
+    max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 83
-    description: Optimal beam overlap for complete surface coverage
+    confidence: 86
+    description: Optimal beam overlap for uniform cleaning results
     min: 30
     max: 70
   passCount:
     value: 3
     unit: passes
-    confidence: 85
-    description: Recommended number of passes for thorough cleaning
+    confidence: 83
+    description: Recommended number of passes for complete contaminant removal
     min: 1
     max: 5
-  laserType:
-    value: Nd:YAG
-    unit: n/a
-    confidence: 90
-    description: Recommended laser type for Stoneware applications
-    min: null
-    max: null
+  energyDensity:
+    value: 3.2
+    unit: J/cm²
+    confidence: 88
+    description: Optimal energy density for Stoneware surface processing
+    min: 2.0
+    max: 5.0
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+- EPA Clean Air Act Compliance
+- ASTM C848 - Standard Specification for High Alumina Refractory Brick
+- ISO 23146 - Technical Ceramics
 author_object:
-  id: 4
-  name: Todd Dunning
+  id: 2
+  name: Alessandro Moretti
   sex: m
-  title: MA
-  country: United States (California)
-  expertise: Optical Materials for Laser Systems
-  image: /images/author/todd-dunning.jpg
+  title: Ph.D.
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  image: /images/author/alessandro-moretti.jpg
 images:
   hero:
     alt: Stoneware surface undergoing laser cleaning showing precise contamination
@@ -219,7 +213,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-author_id: 4
+author_id: 2
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues

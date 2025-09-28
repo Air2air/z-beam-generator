@@ -2,117 +2,119 @@ name: Copper
 category: Metal
 subcategory: Copper
 title: Copper Laser Cleaning
-description: Laser cleaning parameters for Copper
+description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
     value: 8.96
     unit: g/cm³
     confidence: 99
-    description: Density of pure copper at 20°C
-    min: 8.89
-    max: 8.96
+    description: Pure copper density at 20°C
+    min: 0.53
+    max: 22.6
   meltingPoint:
     value: 1085
     unit: °C
     confidence: 98
     description: Melting point of pure copper
-    min: 1083
-    max: 1087
+    min: null
+    max: null
   thermalConductivity:
     value: 401
     unit: W/m·K
-    confidence: 95
-    description: Thermal conductivity at 20°C - one of the highest among pure metals
-    min: 398
-    max: 405
+    confidence: 97
+    description: Thermal conductivity at 20°C
+    min: 6.0
+    max: 429.0
   tensileStrength:
     value: 210
     unit: MPa
-    confidence: 88
-    description: Tensile strength of annealed copper
-    min: 200
-    max: 250
+    confidence: 90
+    description: Typical tensile strength for annealed copper
+    min: 30.0
+    max: 3000.0
   hardness:
     value: 45
     unit: HV
-    confidence: 85
-    description: Vickers hardness of annealed copper
-    min: 40
-    max: 50
+    confidence: 88
+    description: Vickers hardness for annealed copper
+    min: 5
+    max: 500
   youngsModulus:
     value: 110
     unit: GPa
-    confidence: 95
+    confidence: 96
     description: Young's modulus of elasticity
-    min: 108
-    max: 115
+    min: 70
+    max: 411
   thermalExpansion:
     value: 16.5
-    unit: 10⁻⁶/°C
-    confidence: 92
+    unit: μm/m·K
+    confidence: 95
     description: Coefficient of linear thermal expansion at 20°C
-    min: 16.0
-    max: 17.0
+    min: 0.5
+    max: 29.1
   thermalDiffusivity:
-    value: 116
+    value: 117
     unit: mm²/s
-    confidence: 90
+    confidence: 92
     description: Thermal diffusivity at room temperature
-    min: 112
-    max: 120
+    min: 4.2
+    max: 174
   specificHeat:
     value: 385
     unit: J/kg·K
     confidence: 94
     description: Specific heat capacity at 20°C
-    min: 380
-    max: 390
+    min: 0.128
+    max: 0.904
   reflectivity:
-    value: 95
+    value: 98
     unit: '%'
-    confidence: 92
-    description: Reflectivity at 1064 nm (common laser wavelength)
-    min: 92
-    max: 98
+    confidence: 85
+    description: Reflectivity in visible to near-IR range (400-1000 nm)
+    min: null
+    max: null
   absorptionCoefficient:
     value: 6.5
-    unit: 10⁷/m
-    confidence: 85
+    unit: ×10⁷ m⁻¹
+    confidence: 82
     description: Absorption coefficient at 1064 nm wavelength
-    min: 6.0
-    max: 7.0
+    min: null
+    max: null
   ablationThreshold:
     value: 1.2
     unit: J/cm²
-    confidence: 82
-    description: Laser ablation threshold for nanosecond pulses at 1064 nm
-    min: 0.8
-    max: 1.5
-  oxidationResistance:
-    value: Moderate
-    unit: Qualitative
-    confidence: 88
-    description: Forms protective oxide layer but susceptible to oxidation at elevated
-      temperatures
+    confidence: 80
+    description: Approximate laser ablation threshold for nanosecond pulses at 1064
+      nm
     min: null
     max: null
   crystallineStructure:
     value: FCC
-    unit: Crystal System
+    unit: none
     confidence: 99
     description: Face-centered cubic crystal structure
     min: null
     max: null
+  oxidationResistance:
+    value: Moderate
+    unit: qualitative
+    confidence: 88
+    description: Forms protective oxide layer but susceptible to tarnishing
+    min: null
+    max: null
   electricalConductivity:
-    value: 58.0
-    unit: MS/m
-    confidence: 96
-    description: Electrical conductivity at 20°C (100% IACS)
-    min: 57.0
-    max: 59.0
+    value: 5.96
+    unit: ×10⁷ S/m
+    confidence: 98
+    description: Electrical conductivity at 20°C (IACS 100%)
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Electronics: Precision cleaning of electronic components and circuit boards'
+- 'Aerospace: Precision cleaning of aerospace components and assemblies'
+- 'Food Processing: Sanitary surface cleaning for food processing equipment'
+- 'Medical: Sterilization and cleaning of medical devices and instruments'
 machineSettings:
   powerRange:
     value: 100
@@ -126,42 +128,44 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Optimal wavelength matching Copper's absorption characteristics
+    description: Optimal near-IR wavelength for Copper processing with good absorption
     min: null
     max: null
   spotSize:
     value: 50
     unit: μm
     confidence: 84
-    description: Optimal beam spot diameter for precision Copper cleaning
+    description: Optimal beam spot diameter for precise Copper cleaning applications
     min: 30
     max: 100
   repetitionRate:
     value: 100
     unit: kHz
     confidence: 90
-    description: Optimal repetition rate for efficient Copper cleaning process
+    description: Optimal repetition rate for efficient cleaning coverage on Copper
+      surfaces
     min: 50
     max: 200
   fluenceThreshold:
-    value: 0.8
+    value: 1.2
     unit: J/cm²
     confidence: 88
     description: Minimum fluence required for effective Copper oxide ablation
-    min: 0.5
-    max: 1.2
+    min: 0.8
+    max: 2.5
   energyDensity:
-    value: 2.5
+    value: 3.5
     unit: J/cm²
     confidence: 85
     description: Optimal energy density for efficient Copper surface cleaning
-    min: 1.5
-    max: 4.0
+    min: 2.0
+    max: 5.0
   pulseWidth:
     value: 10
     unit: ns
     confidence: 87
-    description: Optimal pulse duration for controlled Copper ablation
+    description: Optimal pulse duration for controlled Copper ablation with minimal
+      thermal effects
     min: 5
     max: 20
   scanSpeed:
@@ -175,30 +179,28 @@ machineSettings:
     value: 3
     unit: passes
     confidence: 82
-    description: Recommended number of passes for complete oxide removal
+    description: Optimal number of passes for complete Copper oxide removal
     min: 1
     max: 5
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 85
-    description: Optimal overlap between adjacent scan lines for uniform cleaning
+    description: Optimal overlap between adjacent scan lines for uniform Copper cleaning
     min: 30
     max: 70
   dwellTime:
     value: 100
     unit: μs
     confidence: 83
-    description: Optimal dwell time per spot for effective material removal
+    description: Optimal dwell time per spot for effective Copper contaminant removal
     min: 50
     max: 200
-  laserType:
-    value: Nd:YAG
-    unit: n/a
-    confidence: 90
-    description: Recommended laser type for Copper processing applications
-    min: null
-    max: null
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
   id: 4
   name: Todd Dunning

@@ -2,198 +2,189 @@ name: Terracotta
 category: Masonry
 subcategory: Terracotta
 title: Terracotta Laser Cleaning
-description: Laser cleaning parameters for Terracotta
+description: Laser cleaning parameters for Brick
 materialProperties:
   density:
     value: 1.8
     unit: g/cm³
-    confidence: 95
-    description: Bulk density of typical fired terracotta accounting for porosity
-    min: 1.7
-    max: 2.0
+    confidence: 92
+    description: Bulk density of typical terracotta accounting for porosity
+    min: 0.6
+    max: 2.8
   meltingPoint:
-    value: 1200
+    value: 1650
     unit: °C
-    confidence: 90
-    description: Approximate vitrification temperature where terracotta begins to
-      melt
-    min: 1150
-    max: 1250
+    confidence: 88
+    description: Approximate melting point of clay minerals in terracotta
+    min: null
+    max: null
   thermalConductivity:
     value: 1.2
     unit: W/m·K
-    confidence: 88
-    description: Thermal conductivity at room temperature, reduced by porosity
-    min: 1.0
-    max: 1.4
+    confidence: 85
+    description: Thermal conductivity at room temperature
+    min: 0.08
+    max: 2.5
   hardness:
-    value: 4
+    value: 5
     unit: Mohs
-    confidence: 90
-    description: Mohs hardness scale for fired clay ceramic
-    min: 3.5
-    max: 4.5
+    confidence: 85
+    description: Mohs hardness scale
+    min: 2
+    max: 6
   youngsModulus:
-    value: 15
+    value: 20
     unit: GPa
-    confidence: 83
-    description: Elastic modulus in compression
-    min: 12
-    max: 18
+    confidence: 80
+    description: Elastic modulus of terracotta
+    min: 5
+    max: 50
   thermalExpansion:
     value: 5.5
     unit: 10⁻⁶/°C
-    confidence: 85
-    description: Coefficient of thermal expansion (20-500°C range)
-    min: 4.5
-    max: 6.5
+    confidence: 82
+    description: Coefficient of thermal expansion (20-500°C)
+    min: 6
+    max: 12
   thermalDiffusivity:
     value: 0.6
     unit: mm²/s
-    confidence: 82
+    confidence: 80
     description: Thermal diffusivity at room temperature
-    min: 0.5
-    max: 0.7
+    min: 0.1
+    max: 1
   specificHeat:
     value: 900
     unit: J/kg·K
-    confidence: 90
+    confidence: 85
     description: Specific heat capacity at room temperature
-    min: 850
-    max: 950
+    min: 0.8
+    max: 1.1
   porosity:
     value: 15
     unit: '%'
-    confidence: 92
-    description: Typical open porosity percentage in fired terracotta
-    min: 10
-    max: 20
+    confidence: 90
+    description: Typical porosity range for fired terracotta
+    min: null
+    max: null
   waterAbsorption:
     value: 12
     unit: '%'
-    confidence: 94
-    description: Water absorption capacity by weight, critical for laser cleaning
-    min: 8
-    max: 16
+    confidence: 88
+    description: Water absorption capacity by weight
+    min: null
+    max: null
   flexuralStrength:
     value: 15
     unit: MPa
-    confidence: 85
-    description: Modulus of rupture for typical terracotta
-    min: 12
-    max: 18
-  compressiveStrength:
-    value: 40
-    unit: MPa
-    confidence: 88
-    description: Uniaxial compressive strength
-    min: 35
-    max: 45
+    confidence: 82
+    description: Modulus of rupture for terracotta
+    min: null
+    max: null
   absorptionCoefficient:
-    value: 0.7
+    value: 0.85
     unit: dimensionless
-    confidence: 80
-    description: Approximate absorption coefficient for IR wavelengths (1064nm)
-    min: 0.6
-    max: 0.8
+    confidence: 82
+    description: Optical absorption coefficient for typical laser wavelengths (1064nm)
+    min: null
+    max: null
   ablationThreshold:
     value: 2.5
     unit: J/cm²
-    confidence: 82
-    description: Laser ablation threshold for nanosecond pulses at 1064nm
-    min: 2.0
-    max: 3.0
-  chemicalStability:
-    value: High
-    unit: qualitative
-    confidence: 95
-    description: Resistance to atmospheric corrosion and most chemicals
-    min: Moderate
-    max: Very High
+    confidence: 80
+    description: Approximate laser ablation threshold for nanosecond pulses
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Restoration: Gentle cleaning for restoration and conservation applications'
+- 'Construction: Surface preparation and cleaning for construction materials'
 machineSettings:
   powerRange:
-    value: 40
+    value: 100
     unit: W
-    confidence: 90
+    confidence: 92
     description: Optimal average power for Terracotta surface cleaning without thermal
       damage
-    min: 20
-    max: 80
+    min: 80
+    max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength optimized for Terracotta mineral absorption
+    description: Near-infrared wavelength for optimal Terracotta absorption and minimal
+      substrate damage
     min: 532
     max: 1064
   spotSize:
-    value: 200
+    value: 100
     unit: μm
-    confidence: 92
-    description: Beam spot diameter for precise contamination removal
-    min: 100
-    max: 500
+    confidence: 90
+    description: Beam spot diameter for precise cleaning control
+    min: 50
+    max: 200
   repetitionRate:
     value: 20
     unit: kHz
     confidence: 87
-    description: Repetition rate for consistent cleaning with thermal management
+    description: Optimal repetition rate for efficient cleaning with thermal management
     min: 10
     max: 50
   pulseWidth:
-    value: 100
+    value: 10
     unit: ns
     confidence: 85
-    description: Pulse duration balancing cleaning efficiency and thermal control
-    min: 50
-    max: 200
+    description: Nanosecond pulse duration for controlled ablation of contaminants
+    min: 5
+    max: 20
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 85
-    description: Optimal scanning speed for uniform surface treatment
+    confidence: 84
+    description: Optimal scanning speed for uniform cleaning coverage
     min: 200
     max: 1000
   energyDensity:
-    value: 1.5
+    value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without substrate
-      damage
-    min: 0.8
-    max: 3.0
+    description: Fluence threshold for effective contaminant removal without damaging
+      Terracotta substrate
+    min: 1.5
+    max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 86
-    description: Optimal overlap between adjacent scan lines for complete coverage
+    description: Optimal beam overlap for complete surface coverage
     min: 30
     max: 70
   passCount:
     value: 3
     unit: passes
-    confidence: 84
-    description: Number of passes for thorough cleaning with minimal thermal accumulation
+    confidence: 83
+    description: Recommended number of passes for thorough cleaning
     min: 1
     max: 5
-  laserType:
-    value: Nd:YAG
-    unit: 'null'
-    confidence: 90
-    description: Recommended laser type for Terracotta cleaning applications
-    min: null
-    max: null
+  dwellTime:
+    value: 100
+    unit: μs
+    confidence: 82
+    description: Maximum dwell time per spot to prevent thermal accumulation
+    min: 50
+    max: 200
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
-  id: 1
-  name: Yi-Chun Lin
-  sex: f
-  title: Ph.D.
-  country: Taiwan
-  expertise: Laser Materials Processing
-  image: /images/author/yi-chun-lin.jpg
+  id: 4
+  name: Todd Dunning
+  sex: m
+  title: MA
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  image: /images/author/todd-dunning.jpg
 images:
   hero:
     alt: Terracotta surface undergoing laser cleaning showing precise contamination
@@ -228,7 +219,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-author_id: 1
+author_id: 4
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues

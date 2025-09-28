@@ -272,11 +272,8 @@ class APIComponentGenerator(BaseComponentGenerator):
                 return enhanced_prompt
                 
             except Exception as e:
-                logger.warning(f"Material-aware prompt generation failed for {self.component_type}: {e}")
-                # Fall back to basic prompt
-        
-        # Fallback to basic prompt generation
-        return self._get_basic_prompt(material_name, material_data, author_info, frontmatter_data, schema_fields)
+                # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
+                raise ValueError(f"Material-aware prompt generation failed for {self.component_type}: {e}")
     
     def _get_base_component_prompt(self) -> str:
         """Get base prompt template for this component type - override in subclasses"""

@@ -2,147 +2,146 @@ name: Marble
 category: Stone
 subcategory: Marble
 title: Marble Laser Cleaning
-description: Laser cleaning parameters for Marble
+description: Laser cleaning parameters for Alabaster
 materialProperties:
   density:
-    value: 2.71
+    value: 2.7
     unit: g/cm³
     confidence: 95
-    description: Average density of pure calcite marble
-    min: 2.6
-    max: 2.85
+    description: Average density of pure calcite marble at room temperature
+    min: 1.5
+    max: 3.4
   meltingPoint:
     value: 825
     unit: °C
     confidence: 90
-    description: Decomposition temperature where CaCO3 → CaO + CO2
-    min: 800
-    max: 850
+    description: Decomposition temperature where calcium carbonate decomposes to calcium
+      oxide
+    min: null
+    max: null
   thermalConductivity:
     value: 2.8
     unit: W/m·K
     confidence: 88
-    description: Thermal conductivity at room temperature
-    min: 2.5
-    max: 3.2
+    description: Thermal conductivity of marble at room temperature
+    min: 0.2
+    max: 5
   hardness:
-    value: 3.0
+    value: 3
     unit: Mohs
     confidence: 95
-    description: Mohs hardness scale (calcite mineral)
-    min: 2.5
-    max: 3.5
+    description: Mohs hardness scale value for calcite mineral
+    min: 1
+    max: 7
   youngsModulus:
-    value: 55
+    value: 50
     unit: GPa
-    confidence: 90
-    description: Elastic modulus of calcite marble
-    min: 40
-    max: 70
+    confidence: 85
+    description: Young's modulus of elasticity for marble
+    min: 10
+    max: 100
   thermalExpansion:
-    value: 8.0
+    value: 5.5
     unit: 10⁻⁶/°C
     confidence: 85
-    description: Coefficient of thermal expansion (20-100°C)
-    min: 6.5
-    max: 10.0
+    description: Coefficient of thermal expansion for calcite-based marble
+    min: 3
+    max: 16
   specificHeat:
-    value: 0.88
-    unit: kJ/kg·K
-    confidence: 92
+    value: 880
+    unit: J/kg·K
+    confidence: 90
     description: Specific heat capacity at room temperature
-    min: 0.84
-    max: 0.92
+    min: 0.7
+    max: 1.2
   thermalDiffusivity:
-    value: 1.18
+    value: 1.15
     unit: mm²/s
-    confidence: 86
+    confidence: 82
     description: Thermal diffusivity calculated from conductivity, density, and specific
       heat
-    min: 1.05
-    max: 1.35
+    min: 0.2
+    max: 2.5
   compressiveStrength:
-    value: 120
+    value: 115
     unit: MPa
     confidence: 88
-    description: Uniaxial compressive strength
-    min: 80
-    max: 180
+    description: Uniaxial compressive strength of marble
+    min: null
+    max: null
   absorptionCoefficient:
     value: 0.85
     unit: dimensionless
-    confidence: 82
-    description: Average absorption coefficient for visible to near-IR wavelengths
-    min: 0.7
-    max: 0.95
-  ablationThreshold:
-    value: 1.5
-    unit: J/cm²
     confidence: 80
-    description: Laser ablation threshold for nanosecond pulses at 1064nm
-    min: 0.8
-    max: 2.5
+    description: Average absorption coefficient for visible to near-IR wavelengths
+    min: null
+    max: null
+  reflectivity:
+    value: 0.12
+    unit: dimensionless
+    confidence: 82
+    description: Reflectivity at common laser wavelengths (1064 nm)
+    min: null
+    max: null
+  ablationThreshold:
+    value: 2.5
+    unit: J/cm²
+    confidence: 78
+    description: Approximate laser ablation threshold for nanosecond pulses at 1064
+      nm
+    min: null
+    max: null
   porosity:
     value: 0.5
     unit: '%'
     confidence: 85
     description: Typical porosity range for high-quality marble
-    min: 0.1
-    max: 2.0
+    min: null
+    max: null
   chemicalStability:
-    value: Low
-    unit: qualitative
-    confidence: 95
-    description: Susceptible to acid attack and weathering
-    min: N/A
-    max: N/A
-  crystallineStructure:
-    value: Hexagonal
-    unit: crystal system
-    confidence: 98
-    description: Calcite crystal structure (rhombohedral)
-    min: N/A
-    max: N/A
+    value: 6
+    unit: pH stability range
+    confidence: 90
+    description: Stable in neutral to basic conditions, dissolves in acids
+    min: null
+    max: null
 applications:
-- laser cleaning
-- surface preparation
+- 'Jewelry: Precision cleaning and polishing of precious metal jewelry'
 machineSettings:
   powerRange:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal power range for Marble cleaning without thermal damage
+    description: Optimal average power for Marble surface cleaning without thermal
+      damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimized for Marble absorption and minimal substrate
-      damage
+    description: Near-IR wavelength optimized for Marble's calcium carbonate absorption
     min: 532
     max: 1064
   spotSize:
     value: 100
     unit: μm
     confidence: 90
-    description: Beam spot diameter for precise cleaning with adequate energy density
+    description: Beam spot diameter for precise cleaning control
     min: 50
     max: 200
   repetitionRate:
     value: 20
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning while maintaining
-      thermal control
+    description: Optimal repetition rate for efficient cleaning with thermal management
     min: 10
     max: 50
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with
-      controlled thermal penetration
+    description: Nanosecond pulse duration for controlled ablation of contaminants
     min: 5
     max: 20
   scanSpeed:
@@ -155,40 +154,45 @@ machineSettings:
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
-    confidence: 88
-    description: Energy density threshold for effective contaminant removal without
-      damaging marble substrate
+    confidence: 89
+    description: Fluence threshold for effective contaminant removal without substrate
+      damage
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 83
-    description: Optimal overlap between adjacent scan lines for uniform cleaning
+    confidence: 86
+    description: Optimal overlap between adjacent scan lines for complete coverage
     min: 30
     max: 70
   passCount:
     value: 3
     unit: passes
-    confidence: 82
-    description: Recommended number of passes for thorough cleaning of surface contaminants
+    confidence: 84
+    description: Recommended number of passes for thorough cleaning
     min: 1
     max: 5
   laserType:
     value: Nd:YAG
     unit: n/a
-    confidence: 90
-    description: Recommended laser type for marble cleaning applications
+    confidence: 91
+    description: Recommended laser type for Marble cleaning applications
     min: null
     max: null
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author_object:
-  id: 3
-  name: Ikmanda Roswati
+  id: 2
+  name: Alessandro Moretti
   sex: m
   title: Ph.D.
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  image: /images/author/ikmanda-roswati.jpg
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  image: /images/author/alessandro-moretti.jpg
 images:
   hero:
     alt: Marble surface undergoing laser cleaning showing precise contamination removal
@@ -222,7 +226,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-author_id: 3
+author_id: 2
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues

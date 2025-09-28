@@ -149,28 +149,28 @@ category_metadata:
     article_type: material
     description: Wood materials for laser cleaning applications
 property_groups:
-  thermal_properties:
+  thermalProperties:
   - thermalConductivity
   - thermalExpansion
-  - specific_heat
-  - melting_point
-  - operating_temperature
-  mechanical_properties:
+  - specificHeat
+  - meltingPoint
+  - operatingTemperature
+  mechanicalProperties:
   - hardness
   - tensileStrength
   - youngsModulus
-  - compressive_strength
-  - flexural_strength
-  - fracture_toughness
-  electrical_properties:
+  - compressiveStrength
+  - flexuralStrength
+  - fractureToughness
+  electricalProperties:
   - electricalResistivity
-  - dielectric_constant
-  processing_properties:
+  - dielectricConstant
+  processingProperties:
   - porosity
-  - firing_temperature
-  - moisture_content
-  - resin_content
-  - grain_structure_type
+  - firingTemperature
+  - moistureContent
+  - resinContent
+  - grainStructureType
   material_metadata:
   - industryTags
   - regulatoryStandards
@@ -180,16 +180,16 @@ materials:
     - name: Alumina
       author_id: 2
       category: ceramic
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 35 W/(m·K)
         thermalExpansion: 8.1×10⁻⁶/K
-        melting_point: 2072°C
-      mechanical_properties:
+        meltingPoint: 2072°C
+      mechanicalProperties:
         hardness: 9.0 Mohs
-        compressive_strength: 2000-4000 MPa
-        flexural_strength: 300-400 MPa
-      electrical_properties:
-        dielectric_constant: 9.8
+        compressiveStrength: 2000-4000 MPa
+        flexuralStrength: 300-400 MPa
+      electricalProperties:
+        dielectricConstant: 9.8
       material_metadata:
         regulatoryStandards:
         - EPA Clean Air Act Compliance
@@ -198,16 +198,16 @@ materials:
     - name: Titanium Carbide
       author_id: 2
       category: ceramic
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 1.2-1.8 W/(m·K)
         thermalExpansion: 5.5 × 10⁻⁶ /°C
-      mechanical_properties:
+      mechanicalProperties:
         hardness: 5-6 Mohs
-        compressive_strength: 200-600 MPa
-        flexural_strength: 30-80 MPa
-      processing_properties:
+        compressiveStrength: 200-600 MPa
+        flexuralStrength: 30-80 MPa
+      processingProperties:
         porosity: 2-8%
-        firing_temperature: 1200-1300°C
+        firingTemperature: 1200-1300°C
       material_metadata:
         regulatoryStandards:
         - ASTM C373 - Standard Test Method for Water Absorption of Fired Ceramic Materials
@@ -215,17 +215,17 @@ materials:
     - name: Tungsten Carbide
       author_id: 3
       category: ceramic
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 2.0 W/(m·K)
         thermalExpansion: 10.5×10⁻⁶/K
-        melting_point: 2715°C
-      mechanical_properties:
+        meltingPoint: 2715°C
+      mechanicalProperties:
         hardness: 8.5 Mohs
-        compressive_strength: 2000-4000 MPa
-        flexural_strength: 800-1200 MPa
-        fracture_toughness: 6-10 MPa·m^0.5
-      electrical_properties:
-        dielectric_constant: 25
+        compressiveStrength: 2000-4000 MPa
+        flexuralStrength: 800-1200 MPa
+        fractureToughness: 6-10 MPa·m^0.5
+      electricalProperties:
+        dielectricConstant: 25
       material_metadata:
         regulatoryStandards:
         - EPA Clean Air Act Compliance
@@ -235,22 +235,22 @@ materials:
     - name: Porcelain
       author_id: 3
       category: ceramic
-      mechanical_properties:
+      mechanicalProperties:
         hardness: 9.3 Mohs
     - name: Silicon Nitride
       author_id: 1
       category: ceramic
-      mechanical_properties:
+      mechanicalProperties:
         hardness: 9.0 Mohs
     - name: Stoneware
       author_id: 3
       category: ceramic
-      mechanical_properties:
+      mechanicalProperties:
         hardness: 9.0 Mohs
     - name: Zirconia
       author_id: 4
       category: ceramic
-      mechanical_properties:
+      mechanicalProperties:
         hardness: 7.0 Mohs
   composite:
     items:
@@ -322,75 +322,75 @@ materials:
     - name: Quartz Glass
       author_id: 3
       category: glass
-      mechanical_properties:
+      mechanicalProperties:
         hardness: 9.0 Mohs
     - name: Soda-Lime Glass
       author_id: 1
       category: glass
-      mechanical_properties:
+      mechanicalProperties:
         hardness: 6.8 Mohs
     - name: Tempered Glass
       author_id: 2
       category: glass
-      mechanical_properties:
+      mechanicalProperties:
         hardness: 5.5 Mohs
   masonry:
     items:
     - name: Brick
       author_id: 4
       category: masonry
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 0.5-1.5 W/m·K
-      mechanical_properties:
-        compressive_strength: 10-100 MPa
+      mechanicalProperties:
+        compressiveStrength: 10-100 MPa
       water_absorption: 5-20%
     - name: Cement
       author_id: 2
       category: masonry
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 0.5-1.5 W/m·K
-      mechanical_properties:
-        compressive_strength: 10-100 MPa
+      mechanicalProperties:
+        compressiveStrength: 10-100 MPa
       water_absorption: 5-20%
     - name: Concrete
       author_id: 4
       category: masonry
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 0.5-1.5 W/m·K
-      mechanical_properties:
-        compressive_strength: 10-100 MPa
+      mechanicalProperties:
+        compressiveStrength: 10-100 MPa
       water_absorption: 5-20%
     - name: Mortar
       author_id: 2
       category: masonry
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 0.5-1.5 W/m·K
-      mechanical_properties:
-        compressive_strength: 10-100 MPa
+      mechanicalProperties:
+        compressiveStrength: 10-100 MPa
       water_absorption: 5-20%
     - name: Plaster
       author_id: 1
       category: masonry
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 0.5-1.5 W/m·K
-      mechanical_properties:
-        compressive_strength: 10-100 MPa
+      mechanicalProperties:
+        compressiveStrength: 10-100 MPa
       water_absorption: 5-20%
     - name: Stucco
       author_id: 3
       category: masonry
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 0.5-1.5 W/m·K
-      mechanical_properties:
-        compressive_strength: 10-100 MPa
+      mechanicalProperties:
+        compressiveStrength: 10-100 MPa
       water_absorption: 5-20%
     - name: Terracotta
       author_id: 1
       category: masonry
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 0.5-1.5 W/m·K
-      mechanical_properties:
-        compressive_strength: 10-100 MPa
+      mechanicalProperties:
+        compressiveStrength: 10-100 MPa
       water_absorption: 5-20%
   metal:
     items:
@@ -403,10 +403,10 @@ materials:
     - name: Manganese
       author_id: 4
       category: metal
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 109-125 W/(m·K)
-        melting_point: 900-940°C
-      antimicrobial_properties: true
+        meltingPoint: 900-940°C
+      antimicrobialProperties: true
       common_alloys: Cartridge brass (70/30), Naval brass (60/39/1% Sn)
       composition: 63% Cu, 37% Zn (C26000 Cartridge Brass)
       corrosion_resistance: good
@@ -414,9 +414,9 @@ materials:
     - name: Beryllium
       author_id: 1
       category: metal
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 26 W/(m·K)
-        melting_point: 1025°C (88% Cu, 12% Sn phosphor bronze)
+        meltingPoint: 1025°C (88% Cu, 12% Sn phosphor bronze)
       color: Reddish-brown to golden
       common_alloys: Aluminum bronze, Phosphor bronze, Bell metal (77/23)
       composition: 88% Cu, 12% Sn (SAE 903 bearing bronze)
@@ -425,13 +425,13 @@ materials:
     - name: Brass
       author_id: 2
       category: metal
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 100 W/(m·K)
-        melting_point: 1495°C
-      mechanical_properties:
+        meltingPoint: 1495°C
+      mechanicalProperties:
         tensileStrength: 1043 MPa
       curie_temperature: 1115°C
-      magnetic_properties: ferromagnetic
+      magneticProperties: ferromagnetic
       yield_strength: 470-3000 MPa
     - name: Bronze
       author_id: 3
@@ -472,15 +472,15 @@ materials:
     - name: Magnesium
       author_id: 2
       category: metal
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 90.9 W/(m·K)
-        melting_point: 1455°C
-      mechanical_properties:
+        meltingPoint: 1455°C
+      mechanicalProperties:
         tensileStrength: 667-1600 MPa
-      electrical_properties:
+      electricalProperties:
         electricalResistivity: 69.3 nΩ·m
       curie_temperature: 355°C
-      magnetic_properties: ferromagnetic
+      magneticProperties: ferromagnetic
       yield_strength: 638 MPa
     - name: Molybdenum
       author_id: 1
@@ -506,15 +506,15 @@ materials:
     - name: Ruthenium
       author_id: 1
       category: metal
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 16.2 W/(m·K)
-        melting_point: 1325-1530°C
-      mechanical_properties:
+        meltingPoint: 1325-1530°C
+      mechanicalProperties:
         tensileStrength: 515-827 MPa
       chromium_content: 11-30%
       corrosion_resistance: excellent
       grades: 304, 316, 321, 347, 410, 420, 430
-      magnetic_properties: Non-magnetic (304, 316), Magnetic (410, 420, 430)
+      magneticProperties: Non-magnetic (304, 316), Magnetic (410, 420, 430)
       nickel_content: 0-37%
     - name: Silver
       author_id: 4
@@ -528,13 +528,13 @@ materials:
     - name: Tantalum
       author_id: 1
       category: metal
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 173 W/(m·K)
         thermalExpansion: 4.42×10⁻⁶/K
-        melting_point: 3422°C
-      mechanical_properties:
+        meltingPoint: 3422°C
+      mechanicalProperties:
         tensileStrength: 3430-4600 MPa
-      electrical_properties:
+      electricalProperties:
         electricalResistivity: 52.8 nΩ·m
       yield_strength: 2000-4000 MPa
     - name: Tin
@@ -549,66 +549,66 @@ materials:
     - name: Zinc
       author_id: 1
       category: metal
-      mechanical_properties:
+      mechanicalProperties:
         hardness: 8.5 Mohs
     - name: Zirconium
       author_id: 3
       category: metal
-      mechanical_properties:
+      mechanicalProperties:
         hardness: 6.0 Mohs
   plastic:
     items:
     - name: Polycarbonate
       author_id: 1
       category: plastic
-      mechanical_properties:
+      mechanicalProperties:
         hardness: Shore D 60-70
     - name: Polyethylene
       author_id: 2
       category: plastic
-      mechanical_properties:
+      mechanicalProperties:
         hardness: Shore D 65-75
     - name: Polypropylene
       author_id: 3
       category: plastic
-      mechanical_properties:
+      mechanicalProperties:
         hardness: Shore D 75-85
     - name: Polystyrene
       author_id: 2
       category: plastic
-      mechanical_properties:
+      mechanicalProperties:
         hardness: Shore D 70-85
     - name: Polytetrafluoroethylene
       author_id: 3
       category: plastic
-      mechanical_properties:
+      mechanicalProperties:
         hardness: Shore D 50-65
     - name: Polyvinyl Chloride
       author_id: 2
       category: plastic
-      mechanical_properties:
+      mechanicalProperties:
         hardness: Shore D 80-85
   semiconductor:
     items:
     - name: Gallium Arsenide
       author_id: 3
       category: semiconductor
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 55 W/(m·K)
-        melting_point: 1238°C
-      electrical_properties:
+        meltingPoint: 1238°C
+      electricalProperties:
         electricalResistivity: 1×10⁸ Ω·cm
       bandgap: 1.42 eV
     - name: Silicon
       author_id: 4
       category: semiconductor
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 149 W/(m·K)
         thermalExpansion: 2.6×10⁻⁶/K
-        melting_point: 1414°C
-      mechanical_properties:
+        meltingPoint: 1414°C
+      mechanicalProperties:
         hardness: 6.5 Mohs
-      electrical_properties:
+      electricalProperties:
         electricalResistivity: 1×10³-1×10⁵ Ω·cm
       material_metadata:
         regulatoryStandards:
@@ -619,21 +619,21 @@ materials:
     - name: Silicon Carbide
       author_id: 1
       category: semiconductor
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 490 W/(m·K)
-        melting_point: 2830°C
-      mechanical_properties:
+        meltingPoint: 2830°C
+      mechanicalProperties:
         hardness: 2800 HV
-      electrical_properties:
+      electricalProperties:
         electricalResistivity: 1×10⁵ Ω·cm
       bandgap: 3.3 eV
     - name: Silicon Germanium
       author_id: 3
       category: semiconductor
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 80 W/(m·K)
-        melting_point: 1350°C
-      electrical_properties:
+        meltingPoint: 1350°C
+      electricalProperties:
         electricalResistivity: 100 Ω·cm
       bandgap: 0.8-1.1 eV
       documentation_status: complete
@@ -657,11 +657,11 @@ materials:
     - name: Granite
       author_id: 4
       category: stone
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 2.5-3.5 W/m·K
-      mechanical_properties:
-        compressive_strength: 100-250 MPa
-      processing_properties:
+      mechanicalProperties:
+        compressiveStrength: 100-250 MPa
+      processingProperties:
         porosity: 0.4-1.5%
       material_metadata:
         regulatoryStandards:
@@ -670,13 +670,13 @@ materials:
     - name: Limestone
       author_id: 1
       category: stone
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 1.0-4.0 W/m·K
         thermalExpansion: 6.0 × 10⁻⁶ /°C
-      mechanical_properties:
+      mechanicalProperties:
         hardness: 2-4 Mohs
-        compressive_strength: 30-180 MPa
-      processing_properties:
+        compressiveStrength: 30-180 MPa
+      processingProperties:
         porosity: 5-25%
       material_metadata:
         regulatoryStandards:
@@ -688,13 +688,13 @@ materials:
     - name: Marble
       author_id: 3
       category: stone
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 2.0-3.5 W/m·K
         thermalExpansion: 5.5 × 10⁻⁶ /°C
-      mechanical_properties:
+      mechanicalProperties:
         hardness: 3-4 Mohs
-        compressive_strength: 70-200 MPa
-      processing_properties:
+        compressiveStrength: 70-200 MPa
+      processingProperties:
         porosity: 0.1-2.0%
       material_metadata:
         regulatoryStandards:
@@ -710,12 +710,12 @@ materials:
     - name: Sandstone
       author_id: 2
       category: stone
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 1.7-5.1 W/m·K
         thermalExpansion: 11.9 × 10⁻⁶ /°C
-      mechanical_properties:
-        compressive_strength: 20-170 MPa
-      processing_properties:
+      mechanicalProperties:
+        compressiveStrength: 20-170 MPa
+      processingProperties:
         porosity: 10-35%
       material_metadata:
         regulatoryStandards:
@@ -733,12 +733,12 @@ materials:
     - name: Slate
       author_id: 3
       category: stone
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 2.0-2.5 W/m·K
         thermalExpansion: 10.4 × 10⁻⁶ /°C
-      mechanical_properties:
-        compressive_strength: 100-200 MPa
-      processing_properties:
+      mechanicalProperties:
+        compressiveStrength: 100-200 MPa
+      processingProperties:
         porosity: 0.1-3.0%
       material_metadata:
         regulatoryStandards:
@@ -755,29 +755,29 @@ materials:
     - name: Ash
       author_id: 4
       category: wood
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 0.16 W/m·K
-        specific_heat: 1.2 kJ/kg·K
-      mechanical_properties:
+        specificHeat: 1.2 kJ/kg·K
+      mechanicalProperties:
         hardness: 5.0 Janka
-      processing_properties:
-        moisture_content: 6-12%
-        grain_structure_type: Open grain
+      processingProperties:
+        moistureContent: 6-12%
+        grainStructureType: Open grain
       material_metadata:
         regulatoryStandards:
         - EPA Clean Air Act Compliance
     - name: Bamboo
       author_id: 1
       category: wood
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 0.11 W/m·K
-        specific_heat: 1.3 kJ/kg·K
-      mechanical_properties:
+        specificHeat: 1.3 kJ/kg·K
+      mechanicalProperties:
         hardness: 1.4 Janka
-      processing_properties:
-        moisture_content: 8-15%
-        resin_content: Very low
-        grain_structure_type: Straight fiber
+      processingProperties:
+        moistureContent: 8-15%
+        resinContent: Very low
+        grainStructureType: Straight fiber
       material_metadata:
         regulatoryStandards:
         - EPA Clean Air Act Compliance
@@ -789,44 +789,44 @@ materials:
     - name: Birch
       author_id: 4
       category: wood
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 0.15 W/m·K
-        specific_heat: 1.25 kJ/kg·K
-      mechanical_properties:
+        specificHeat: 1.25 kJ/kg·K
+      mechanicalProperties:
         hardness: 4.87 Janka
-      processing_properties:
-        moisture_content: 6-12%
-        grain_structure_type: Closed grain
+      processingProperties:
+        moistureContent: 6-12%
+        grainStructureType: Closed grain
       material_metadata:
         regulatoryStandards:
         - EPA Clean Air Act Compliance
     - name: Cedar
       author_id: 4
       category: wood
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 0.10 W/m·K
-        specific_heat: 1.4 kJ/kg·K
-      mechanical_properties:
+        specificHeat: 1.4 kJ/kg·K
+      mechanicalProperties:
         hardness: 1.8 Janka
-      processing_properties:
-        moisture_content: 8-15%
-        resin_content: High
-        grain_structure_type: Straight grain
+      processingProperties:
+        moistureContent: 8-15%
+        resinContent: High
+        grainStructureType: Straight grain
       material_metadata:
         regulatoryStandards:
         - EPA Clean Air Act Compliance
     - name: Cherry
       author_id: 4
       category: wood
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 0.14 W/m·K
-        specific_heat: 1.2 kJ/kg·K
-      mechanical_properties:
+        specificHeat: 1.2 kJ/kg·K
+      mechanicalProperties:
         hardness: 4.0 Janka
-      processing_properties:
-        moisture_content: 7-12%
-        resin_content: Low to medium
-        grain_structure_type: Closed grain
+      processingProperties:
+        moistureContent: 7-12%
+        resinContent: Low to medium
+        grainStructureType: Closed grain
       material_metadata:
         regulatoryStandards:
         - EPA Clean Air Act Compliance
@@ -839,15 +839,15 @@ materials:
     - name: Mahogany
       author_id: 4
       category: wood
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 0.13 W/m·K
-        specific_heat: 1.25 kJ/kg·K
-      mechanical_properties:
+        specificHeat: 1.25 kJ/kg·K
+      mechanicalProperties:
         hardness: 2.2 Janka
-      processing_properties:
-        moisture_content: 6-12%
-        resin_content: Low to medium
-        grain_structure_type: Interlocked grain
+      processingProperties:
+        moistureContent: 6-12%
+        resinContent: Low to medium
+        grainStructureType: Interlocked grain
       material_metadata:
         regulatoryStandards:
         - EPA Clean Air Act Compliance
@@ -855,15 +855,15 @@ materials:
     - name: Maple
       author_id: 2
       category: wood
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 0.16 W/m·K
-        specific_heat: 1.3 kJ/kg·K
-      mechanical_properties:
+        specificHeat: 1.3 kJ/kg·K
+      mechanicalProperties:
         hardness: 6.4 Janka
-      processing_properties:
-        moisture_content: 6-10%
-        resin_content: Very low
-        grain_structure_type: Closed grain
+      processingProperties:
+        moistureContent: 6-10%
+        resinContent: Very low
+        grainStructureType: Closed grain
       material_metadata:
         regulatoryStandards:
         - EPA Clean Air Act Compliance
@@ -874,24 +874,24 @@ materials:
     - name: Oak
       author_id: 2
       category: wood
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 0.17 W/m·K
-        specific_heat: 1.2 kJ/kg·K
-      mechanical_properties:
+        specificHeat: 1.2 kJ/kg·K
+      mechanicalProperties:
         hardness: 5.9 Janka
-      processing_properties:
-        grain_structure_type: Open grain
+      processingProperties:
+        grainStructureType: Open grain
       material_metadata:
         regulatoryStandards:
         - EPA Clean Air Act Compliance
     - name: Pine
       author_id: 2
       category: wood
-      mechanical_properties:
+      mechanicalProperties:
         hardness: 2.3 (Janka hardness scale)
-      processing_properties:
-        moisture_content: 10-15%
-        resin_content: High
+      processingProperties:
+        moistureContent: 10-15%
+        resinContent: High
       grain_pattern: Straight grain
     - name: Plywood
       author_id: 2
@@ -899,15 +899,15 @@ materials:
     - name: Poplar
       author_id: 4
       category: wood
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 0.12 W/m·K
-        specific_heat: 1.35 kJ/kg·K
-      mechanical_properties:
+        specificHeat: 1.35 kJ/kg·K
+      mechanicalProperties:
         hardness: 2.3 Janka
-      processing_properties:
-        moisture_content: 8-14%
-        resin_content: Very low
-        grain_structure_type: Straight grain
+      processingProperties:
+        moistureContent: 8-14%
+        resinContent: Very low
+        grainStructureType: Straight grain
       material_metadata:
         regulatoryStandards:
         - EPA Clean Air Act Compliance
@@ -920,14 +920,14 @@ materials:
     - name: Teak
       author_id: 4
       category: wood
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 0.13 W/m·K
-        specific_heat: 1.2 kJ/kg·K
-      mechanical_properties:
+        specificHeat: 1.2 kJ/kg·K
+      mechanicalProperties:
         hardness: 4.2 Janka
-      processing_properties:
-        moisture_content: 6-12%
-        grain_structure_type: Straight to wavy grain
+      processingProperties:
+        moistureContent: 6-12%
+        grainStructureType: Straight to wavy grain
       material_metadata:
         regulatoryStandards:
         - EPA Clean Air Act Compliance
@@ -935,14 +935,14 @@ materials:
     - name: Walnut
       author_id: 1
       category: wood
-      thermal_properties:
+      thermalProperties:
         thermalConductivity: 0.14 W/m·K
-        specific_heat: 1.2 kJ/kg·K
-      mechanical_properties:
+        specificHeat: 1.2 kJ/kg·K
+      mechanicalProperties:
         hardness: 4.49 Janka
-      processing_properties:
-        moisture_content: 7-12%
-        grain_structure_type: Open grain
+      processingProperties:
+        moistureContent: 7-12%
+        grainStructureType: Open grain
       material_metadata:
         regulatoryStandards:
         - EPA Clean Air Act Compliance
@@ -954,3 +954,40 @@ metadata:
   total_materials: 121
   last_updated: '2025-08-28'
   format_version: '1.0'
+
+# Machine Settings Ranges - Research-based values for laser cleaning parameters
+machineSettingsRanges:
+  powerRange:
+    min: 10
+    max: 2000
+    unit: W
+    description: Laser power range for industrial cleaning applications
+    research_basis: Industrial fiber lasers typically range from 10W handheld to 2000W+ industrial systems
+  
+  pulseDuration:
+    min: 0.1
+    max: 1000
+    unit: ns
+    description: Pulse duration range for optimal material processing
+    research_basis: Femtosecond (0.1ns) to microsecond (1000ns) pulses for different material interactions
+  
+  spotSize:
+    min: 10
+    max: 5000
+    unit: μm
+    description: Focused beam spot diameter range
+    research_basis: Precision optics allow spots from 10μm (microscale) to 5mm (large area processing)
+  
+  repetitionRate:
+    min: 1
+    max: 1000000
+    unit: Hz
+    description: Pulse repetition frequency range
+    research_basis: Single shot (1Hz) to MHz repetition rates for different throughput requirements
+  
+  fluenceThreshold:
+    min: 0.01
+    max: 100
+    unit: J/cm²
+    description: Laser fluence range for material ablation
+    research_basis: Typical ablation thresholds from 0.01 J/cm² (organics) to 100 J/cm² (refractory materials)
