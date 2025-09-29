@@ -14,8 +14,8 @@ from typing import Dict, List, Optional
 
 # Import material-aware prompt system
 try:
-    from ai_research.prompt_exceptions.material_aware_generator import MaterialAwarePromptGenerator
-    from ai_research.prompt_exceptions.material_exception_handler import MaterialExceptionHandler
+    from material_prompting.core.material_aware_generator import MaterialAwarePromptGenerator
+    from material_prompting.exceptions.handler import MaterialExceptionHandler
     MATERIAL_AWARE_PROMPTS_AVAILABLE = True
 except ImportError:
     MATERIAL_AWARE_PROMPTS_AVAILABLE = False

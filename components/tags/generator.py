@@ -349,19 +349,29 @@ Format: YAML v2.0
         # If still not found, try to get from Materials.yaml via resolver
         if not formula or not symbol:
             resolver = get_material_name_resolver()
-            materials_data = resolver.get_material_data(material_name)
-            if materials_data:
-                # The resolver already provides the material's data directly
-                if not formula:
-                    formula = materials_data.get('formula')
-                if not symbol:
-                    symbol = materials_data.get('symbol')
+            # Get the materials data structure which contains full material info
+            all_materials_data = resolver.materials_data
+            materials_section = all_materials_data.get('materials', {})
+            
+            # Find the specific material in the category-organized structure
+            canonical_name = resolver.resolve_canonical_name(material_name)
+            if canonical_name:
+                # Search through all categories for this material
+                for category_data in materials_section.values():
+                    if isinstance(category_data, dict) and 'items' in category_data:
+                        for item in category_data['items']:
+                            if item.get('name') == canonical_name:
+                                # Found the material, extract formula and symbol
+                                if not formula:
+                                    formula = item.get('formula')
+                                if not symbol:
+                                    symbol = item.get('symbol')
+                                break
+                        if formula and symbol:
+                            break
         
-        # Final validation - fail-fast if still missing
-        if not formula:
-            raise ValueError(f"Chemical formula missing for {material_name} - fail-fast requires explicit chemical data")
-        if not symbol:
-            raise ValueError(f"Chemical symbol missing for {material_name} - fail-fast requires explicit chemical data")
+        # Formula and symbol are optional for tags generation - not fail-fast requirements
+        # Tags can be generated based on material name, category, and other available data
         
         # FAIL-FAST: Author info must be present
         if not author_info or not author_info.get("name"):

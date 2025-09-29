@@ -18,6 +18,18 @@ from typing import Dict, Any, List, Optional, Union
 from dataclasses import dataclass, field
 from enum import Enum
 
+try:
+    from material_prompting.exceptions.handler import MaterialCategory
+except ImportError:
+    # Fallback enum for MaterialCategory
+    class MaterialCategory(Enum):
+        METAL = "metal"
+        CERAMIC = "ceramic"
+        POLYMER = "polymer"
+        COMPOSITE = "composite"
+        WOOD = "wood"
+        STONE = "stone"
+
 logger = logging.getLogger(__name__)
 
 
@@ -51,6 +63,17 @@ class MachineSetting:
     sources: List[str] = field(default_factory=list)
     category: str = "general"
 
+
+@dataclass
+class MachineSettings:
+    """Machine laser settings configuration"""
+    power: float = 0.0
+    wavelength: int = 1064
+    pulse_duration: float = 0.0
+    repetition_rate: float = 0.0
+    spot_size: float = 0.0
+    fluence_threshold: float = 0.0
+    processing_speed: float = 0.0
 
 @dataclass
 class MachineSettingsResult:

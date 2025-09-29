@@ -95,8 +95,8 @@ except ImportError as e:
 
 # Import material-aware prompt system
 try:
-    from ai_research.prompt_exceptions.material_aware_generator import MaterialAwarePromptGenerator
-    from ai_research.prompt_exceptions.material_exception_handler import AIPromptExceptionHandler as MaterialExceptionHandler
+    from material_prompting.core.material_aware_generator import MaterialAwarePromptGenerator
+    from material_prompting.exceptions.handler import AIPromptExceptionHandler as MaterialExceptionHandler
     MATERIAL_AWARE_PROMPTS_AVAILABLE = True
     logger.info("Material-aware prompt system loaded successfully")
 except ImportError as e:

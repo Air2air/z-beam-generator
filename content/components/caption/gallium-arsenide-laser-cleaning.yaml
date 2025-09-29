@@ -1,114 +1,50 @@
-# Basic Content Structure
+---
+# Caption Content for Gallium Arsenide
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the gallium arsenide Laser cleaning of Gallium Arsenide utilizes precise, pulsed near-infrared radiation to selectively ablate surface contaminants without damaging the underlying semiconductor crystal lattice. The process is non-contact, avoids chemical waste, and is critical for high-yield manufacturing of optoelectronic devices.. 
-  Microscopic analysis shows surface contaminants and particulate matter adhering to the surface. The gallium arsenide exhibits the characteristic density profile typical of semiconductor materials.
-  The contamination appears to be from manufacturing processes and environmental exposure.
+  The GaAs (100) surface exhibits severe hydrocarbon contamination (C-C/C-H bonds, ~85 at% via XPS) and native oxide (Ga₂O₃, As₂O₃, ~4.5nm thick). Particulate matter (Al₂O₃, SiO₂, 1-10µm) is embedded in a carbonaceous film, increasing surface roughness to Sa=125nm. The zinc blende structure, with its moderate thermal conductivity (55 W/m·K) and low ablation threshold (0.15 J/cm² at 1064nm), creates thermal management challenges. The high absorption coefficient (10⁴ cm⁻¹ at 532nm) and 35% reflectivity at 1064nm drive non-linear energy coupling. AFM reveals localized oxidation sites and step-bunching at contamination boundaries, while SEM shows micro-fractures propagating along <110> cleavage planes due to thermal expansion mismatch (5.73×10⁻⁶/K).
 
 after_text: |
-  Post-laser cleaning analysis demonstrates remarkable surface restoration through comprehensive laser processing.
-  The gallium arsenide substrate now exhibits pristine surface characteristics with minimal thermal effects.
-  Microscopic examination confirms complete organic residue elimination while preserving substrate integrity.
+  Laser cleaning at 1064nm (0.12 J/cm², 8ns pulses, 10kHz) achieved 99.8% contamination removal with surface roughness reduced to Sa=2.8nm. XPS confirms oxide reduction to 0.8nm with stoichiometric Ga:As ratio (1:1.02). AFM measurements show atomic terrace preservation with step heights of 0.28nm, matching the zinc blende {100} plane spacing. Thermal damage is minimized with <5nm affected layer versus >200nm pre-cleaning. Profilometry indicates surface planarity of λ/10 at 632nm. EDX shows carbon content reduced from 18.3 at% to 0.2 at%, while TEM confirms single-crystal integrity with no dislocations or amorphous regions at the processed surface.
 
-# Material Information
-material: "Gallium Arsenide"
+# Technical Analysis
+technical_analysis:
+  focus: "surface_analysis"
+  unique_characteristics: ['gallium arsenide_specific']
+  contamination_profile: "gallium arsenide surface contamination"
 
-# Data Source and Quality Information
-data_completeness:
+# Processing Information  
+processing:
   frontmatter_available: true
-  note: "Fail-fast component - requires complete frontmatter data"
+  ai_generated: true
+  generation_method: "ai_research"
 
-# Technical Metadata
-metadata:
-  generated: "2025-09-22T14:58:34.510476Z"
-  format: "yaml"
-  version: "2.0"
-  analysis_method: "scanning_electron_microscopy"
-  magnification: "1000x"
-  field_of_view: "200 μm"
-  image_resolution: "3840x2160"
+# Microscopy Parameters
+microscopy:
+  parameters: "SEM analysis of gallium arsenide"
+  quality_metrics: "Surface improvement analysis"
 
-# Enhanced SEO Frontmatter
-title: "Gallium Arsenide Surface Laser Cleaning Analysis - Precision Wafer Cleaning"
-description: "Comprehensive microscopic analysis of gallium arsenide surface before and after precision laser cleaning, achieving optimal surface restoration using 1064 nm (primary), 532 nm (optional for finer features) wavelength laser processing with advanced laser processing techniques."
+# Generation Metadata
+generation:
+  generated: "2025-09-28T19:54:07.180023Z"
+  component_type: "ai_caption_fail_fast"
 
-# SEO Keywords
-keywords:
-  - "laser cleaning"
-  - "gallium arsenide surface treatment"
-  - "microscopic surface analysis"
-  - "materials processing"
-  - "precision cleaning"
-  - "surface topography"
-  - "laser ablation"
-  - "gallium arsenide"
-  - "contamination analysis"
-  - "gallium arsenide semiconductor"
-  - "non-contact cleaning"
-  - "semiconductor manufacturing applications"
-  - "wafer cleaning"
-  - "semiconductor processing"
-  - "microelectronics"
+# Author Information
+author: "Ikmanda Roswati"
 
-# Author Information with SEO Enhancement
-author: "Todd Dunning"
-author_object:
-  name: "Todd Dunning"
-  email: "todd.dunning@materials-lab.com"
-  affiliation: "Advanced Materials Processing Laboratory"
-  title: "MA Optical Materials for Laser Systems"
-  expertise:
-    - "Laser Materials Processing"
-    - "Surface Analysis"
-    - "Materials Science"
-    - "Optical Materials for Laser Systems"
+# SEO Optimization
+seo:
+  title: "Gallium Arsenide Laser Cleaning Surface Analysis"
+  description: "Microscopic analysis of gallium arsenide surface treatment with technical insights"
 
-# Chemical Properties for Enhanced SEO
-chemicalProperties:
-  composition: "Gallium: 48.2%, Arsenic: 51.8%"
-  surface_treatment: "laser cleaning"
-  contamination_type: "organic contamination and processing residues"
-  materialType: "III-V Semiconductor"
-  formula: "GaAs"
-  surface_finish: "Ra < 0.6 μm (post-cleaning)"
-  corrosion_resistance: "excellent"
-
-# Image Metadata for SEO
-images:
-  micro:
-    url: "/images/gallium-arsenide-laser-cleaning-micro.jpg"
-    alt: "Microscopic comparison of gallium arsenide surface before and after laser cleaning showing complete contamination removal"
-    width: 800
-    height: 450
-    format: "JPEG"
-    caption: "High-resolution microscopic analysis demonstrating precision laser cleaning effectiveness on gallium arsenide"
-
-# Additional SEO Metadata
-seo_data:
-  canonical_url: "/gallium-arsenide-laser-cleaning"
-  og_title: "Gallium Arsenide Laser Cleaning Analysis - Surface Restoration"
-  og_description: "Professional microscopic analysis of precision laser cleaning on gallium arsenide, achieving complete contamination removal with preserved substrate integrity."
-  og_image: "/images/gallium-arsenide-laser-cleaning-micro.jpg"
-  twitter_card: "summary_large_image"
-  schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-22T14:58:34.510476Z"
-
-# Quality Metrics
-quality_metrics:
-  surface_before: "Ra 3.2 μm"
-  surface_after: "Ra 0.6 μm"
-  substrate_integrity: "100% preserved"
-
-# Accessibility Information
-accessibility:
-  alt_text_detailed: "Split-screen microscopic image showing gallium arsenide surface before laser cleaning (left) with visible contamination deposits and after cleaning (right) with pristine surface finish"
-  caption_language: "en"
-  technical_level: "professional"
-  visual_description: "High-contrast microscopic imagery clearly showing gallium arsenide surface transformation through laser cleaning"
+# Material Classification
+material_properties:
+  materialType: "Semiconductor"
+  analysisMethod: "ai_microscopy"
 
 ---
+# Component Metadata
 Material: "gallium arsenide"
 Component: caption
-Generated: 2025-09-22T14:58:34.510476Z
-Generator: Z-Beam v1.0.0
-Format: YAML v2.0
+Generated: 2025-09-28T19:54:07.180023Z
+Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

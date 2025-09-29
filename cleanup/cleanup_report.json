@@ -1,6 +1,6 @@
 {
   "dry_run": true,
-  "timestamp": "2025-09-24T19:01:46.470285",
+  "timestamp": "2025-09-28T23:18:02.189414",
   "dead_files": [],
   "unused_component_files": [
     [
@@ -8,37 +8,43 @@
       "Unused: component '__pycache__' not in configuration"
     ]
   ],
-  "temp_files": [],
-  "empty_dirs": [],
+  "temp_files": [
+    [
+      "data/Materials.yaml.backup",
+      "Temporary file matching pattern: *.backup"
+    ],
+    [
+      "components/frontmatter/core/schema_validator.py.backup",
+      "Temporary file matching pattern: *.backup"
+    ],
+    [
+      "scripts/validation/enhanced_schema_validator.py.backup",
+      "Temporary file matching pattern: *.backup"
+    ]
+  ],
+  "empty_dirs": [
+    [
+      "logs/quality_history",
+      "Empty directory"
+    ],
+    [
+      "components/categories/generators",
+      "Empty directory"
+    ],
+    [
+      "components/categories/data",
+      "Empty directory"
+    ]
+  ],
   "outdated_files": [],
   "broken_links": [],
   "misplaced_test_files": [
     [
-      "test_na_normalization.py",
-      "Test file/directory in root - should be in tests/"
-    ],
-    [
-      "test_exception_handling.py",
-      "Test file/directory in root - should be in tests/"
-    ],
-    [
-      "verify_materials_database.py",
+      "test_caption_generation.py",
       "Test file/directory in root - should be in tests/"
     ]
   ],
   "misplaced_doc_files": [
-    [
-      "UNIT_VALUE_SEPARATION_IMPLEMENTATION_SUMMARY.md",
-      "Documentation file in root - should be in docs/"
-    ],
-    [
-      "UNIT_VALUE_SEPARATION_SUMMARY.md",
-      "Documentation file in root - should be in docs/"
-    ],
-    [
-      "SCHEMA_RECONCILIATION_COMPLETE.md",
-      "Documentation file in root - should be in docs/"
-    ],
     [
       "GROK_INSTRUCTIONS.md",
       "Documentation file in root - should be in docs/"

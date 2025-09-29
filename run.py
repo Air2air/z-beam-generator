@@ -196,10 +196,10 @@ COMPONENT_CONFIG = {
         "data_provider": "static",  # No API calls needed, deterministic
     },
     "caption": {
-        "api_provider": "none",  # ❌ NO API - static/deterministic generation
+        "api_provider": "deepseek",  # ✅ API-BASED COMPONENT - Enhanced AI generation
         "priority": 5,
-        "enabled": False,  # ENABLED for caption generation
-        "data_provider": "static",  # Uses frontmatter data only
+        "enabled": True,  # ENABLED for caption generation
+        "data_provider": "hybrid",  # Uses frontmatter data + AI generation
     },
     "text": {
         "api_provider": "deepseek",  # ✅ API-BASED COMPONENT

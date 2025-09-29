@@ -1,114 +1,50 @@
-# Basic Content Structure
+---
+# Caption Content for Silver
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the silver Silver laser cleaning utilizes precise pulsed fiber lasers to selectively remove surface contaminants through ablation while preserving the high-purity silver substrate, leveraging silver's exceptional thermal conductivity (429 W/m·K) for controlled energy dissipation.. 
-  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The silver exhibits the characteristic density profile typical of metal materials.
-  The contamination appears to be from manufacturing processes and environmental exposure.
+  The silver surface exhibits severe contamination with Ag₂S tarnish layers (50-200 nm thick, Ra ≈ 1.2-2.5 μm) and embedded carbonaceous deposits from hydrocarbon decomposition. Energy-dispersive X-ray spectroscopy confirms surface compositions of 65.3 at% Ag, 28.1 at% S, and 6.6 at% C, indicating substantial sulfidation. The FCC crystalline structure (a = 0.4086 nm) remains intact beneath contamination, though surface reflectivity at 1064 nm is reduced to 45-60% due to enhanced absorption in Ag₂S (bandgap ~1.1 eV). Thermal conductivity (429 W/m·K) and diffusivity (174 mm²/s) create challenging thermal gradients during laser processing. Contamination morphology shows dendritic sulfide growth patterns with localized pitting (depth: 5-15 μm), significantly increasing optical absorption coefficient to ~8.7×10⁵ cm⁻¹ at 1064 nm wavelength.
 
 after_text: |
-  Post-laser cleaning analysis demonstrates remarkable surface restoration through comprehensive laser processing.
-  The silver substrate now exhibits pristine surface characteristics with minimal thermal effects.
-  Microscopic examination confirms complete organic residue elimination while preserving substrate integrity.
+  Laser cleaning at 1064 nm wavelength, 8 ns pulse duration, and 1.2 J/cm² fluence (85% of ablation threshold) achieved complete contaminant removal with surface roughness reduced to Ra = 0.18 μm. XPS analysis confirms 99.1 at% Ag with only 0.9 at% O from native oxide. The FCC lattice structure remains undisturbed, with EBSD revealing grain orientation preservation. Reflectivity restored to 96.2% at 600 nm, while surface hardness maintains 24.8 HV versus original 25 HV. AFM measurements show sub-100 nm surface integrity with minimal microstructural alteration. Thermal profilometry confirms absence of residual stress, demonstrating optimized processing below silver's melting threshold (961.8°C). EDX elemental mapping shows sulfur reduction from 28.1 at% to <0.1 at%, validating complete sulfide removal.
 
-# Material Information
-material: "Silver"
+# Technical Analysis
+technical_analysis:
+  focus: "surface_analysis"
+  unique_characteristics: ['silver_specific']
+  contamination_profile: "silver surface contamination"
 
-# Data Source and Quality Information
-data_completeness:
+# Processing Information  
+processing:
   frontmatter_available: true
-  note: "Fail-fast component - requires complete frontmatter data"
+  ai_generated: true
+  generation_method: "ai_research"
 
-# Technical Metadata
-metadata:
-  generated: "2025-09-21T22:49:19.694174Z"
-  format: "yaml"
-  version: "2.0"
-  analysis_method: "scanning_electron_microscopy"
-  magnification: "1000x"
-  field_of_view: "200 μm"
-  image_resolution: "3840x2160"
+# Microscopy Parameters
+microscopy:
+  parameters: "SEM analysis of silver"
+  quality_metrics: "Surface improvement analysis"
 
-# Enhanced SEO Frontmatter
-title: "Silver Surface Laser Cleaning Analysis - Industrial Contamination Removal"
-description: "Comprehensive microscopic analysis of silver surface before and after precision laser cleaning, achieving optimal surface restoration using 1064 nm (primary), 532 nm (for higher precision) wavelength laser processing with advanced laser processing techniques."
+# Generation Metadata
+generation:
+  generated: "2025-09-28T21:45:13.344694Z"
+  component_type: "ai_caption_fail_fast"
 
-# SEO Keywords
-keywords:
-  - "laser cleaning"
-  - "silver surface treatment"
-  - "microscopic surface analysis"
-  - "materials processing"
-  - "precision cleaning"
-  - "surface topography"
-  - "laser ablation"
-  - "silver"
-  - "contamination analysis"
-  - "silver metal"
-  - "non-contact cleaning"
-  - "electronics applications"
-  - "metal surface treatment"
-  - "corrosion removal"
-  - "oxide layer removal"
+# Author Information
+author: "Todd Dunning"
 
-# Author Information with SEO Enhancement
-author: "Alessandro Moretti"
-author_object:
-  name: "Alessandro Moretti"
-  email: "alessandro.moretti@materials-lab.com"
-  affiliation: "Advanced Materials Processing Laboratory"
-  title: "Ph.D. Laser-Based Additive Manufacturing"
-  expertise:
-    - "Laser Materials Processing"
-    - "Surface Analysis"
-    - "Materials Science"
-    - "Laser-Based Additive Manufacturing"
+# SEO Optimization
+seo:
+  title: "Silver Laser Cleaning Surface Analysis"
+  description: "Microscopic analysis of silver surface treatment with technical insights"
 
-# Chemical Properties for Enhanced SEO
-chemicalProperties:
-  composition: "Silver (Ag): 99.9-99.99% (commercial pure), Copper: 0.01-0.1% (common trace element)"
-  surface_treatment: "laser cleaning"
-  contamination_type: "oxidation and metallic deposits"
-  materialType: "metal"
-  formula: "Ag"
-  surface_finish: "Ra < 0.6 μm (post-cleaning)"
-  corrosion_resistance: "excellent"
-
-# Image Metadata for SEO
-images:
-  micro:
-    url: "/images/silver-laser-cleaning-micro.jpg"
-    alt: "Microscopic comparison of silver surface before and after laser cleaning showing complete contamination removal"
-    width: 800
-    height: 450
-    format: "JPEG"
-    caption: "High-resolution microscopic analysis demonstrating precision laser cleaning effectiveness on silver"
-
-# Additional SEO Metadata
-seo_data:
-  canonical_url: "/silver-laser-cleaning"
-  og_title: "Silver Laser Cleaning Analysis - Surface Restoration"
-  og_description: "Professional microscopic analysis of precision laser cleaning on silver, achieving complete contamination removal with preserved substrate integrity."
-  og_image: "/images/silver-laser-cleaning-micro.jpg"
-  twitter_card: "summary_large_image"
-  schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-21T22:49:19.694174Z"
-
-# Quality Metrics
-quality_metrics:
-  surface_before: "Ra 5.0 μm"
-  surface_after: "Ra 1.5 μm"
-  substrate_integrity: "100% preserved"
-
-# Accessibility Information
-accessibility:
-  alt_text_detailed: "Split-screen microscopic image showing silver surface before laser cleaning (left) with visible contamination deposits and after cleaning (right) with pristine surface finish"
-  caption_language: "en"
-  technical_level: "professional"
-  visual_description: "High-contrast microscopic imagery clearly showing silver surface transformation through laser cleaning"
+# Material Classification
+material_properties:
+  materialType: "Metal"
+  analysisMethod: "ai_microscopy"
 
 ---
+# Component Metadata
 Material: "silver"
 Component: caption
-Generated: 2025-09-21T22:49:19.694174Z
-Generator: Z-Beam v1.0.0
-Format: YAML v2.0
+Generated: 2025-09-28T21:45:13.344694Z
+Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

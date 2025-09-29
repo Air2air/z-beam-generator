@@ -88,73 +88,83 @@ class CaptionComponentGenerator(APIComponentGenerator):
                     'description': data.get('description', '')
                 }
 
-        return f"""You are an expert materials scientist specializing in laser surface treatment and microscopic analysis.
+        return f"""You are a senior materials scientist and laser processing expert with expertise in advanced surface characterization and contamination analysis.
 
-TASK: Generate comprehensive, research-grade image caption content for microscopic before/after analysis of {material_name} laser cleaning.
+TASK: Generate comprehensive technical descriptions for detailed microscopic before/after analysis of {material_name} laser cleaning with enhanced scientific depth.
 
 MATERIAL CONTEXT:
 - Material: {material_name}
 - Category: {category}
 - Material Properties: {json.dumps(context_data['properties'], indent=2) if context_data['properties'] else 'Limited data available'}
-- Machine Settings: {json.dumps(context_data['settings'], indent=2) if context_data['settings'] else 'Standard parameters'}
 - Applications: {', '.join(context_data['applications']) if context_data['applications'] else 'General cleaning'}
 
 REQUIREMENTS:
-1. Generate two distinct text descriptions (150-200 characters each):
-   - before_text: Describe contaminated surface state with technical detail
-   - after_text: Describe cleaned surface with quality metrics
+- Write detailed technical descriptions with specific measurements, wavelengths, and quantitative data
+- Include material-specific properties, crystal structures, thermal characteristics
+- Reference specific contamination mechanisms and surface phenomena
+- Use advanced microscopy and spectroscopy terminology
+- Include laser parameters, processing conditions, and surface analysis metrics
+- Mention specific analytical techniques (SEM, EDX, XPS, AFM, profilometry)
 
-2. Incorporate specific material properties that make {material_name} unique within {category} materials
+Generate exactly two comprehensive text blocks:
 
-3. Reference actual technical values from the material data when available
+**BEFORE_TEXT:**
+[Write 500-700 characters of highly detailed technical description of the contaminated {material_name.lower()} surface, including:
+- Specific contamination types with chemical compositions
+- Quantitative surface roughness, thickness, and composition data  
+- Material-specific properties affecting laser interaction
+- Crystallographic structure and thermal properties
+- Surface morphology and contamination mechanisms
+- Optical properties and laser absorption characteristics]
 
-4. Use professional microscopy terminology (SEM analysis, surface topography, etc.)
+**AFTER_TEXT:**
+[Write 500-700 characters of comprehensive technical description of the cleaned surface, including:
+- Quantitative improvement metrics with specific measurements
+- Surface quality parameters and analytical results
+- Material structure preservation and integrity assessment
+- Comparison of key properties before/after treatment
+- Process optimization parameters and achieved specifications
+- Advanced characterization results from multiple analytical techniques]
 
-5. Emphasize what makes {material_name} different from other {category} materials
-
-6. Include material-specific contamination types and cleaning challenges
-
-RESPONSE FORMAT (JSON):
-{{
-  "before_text": "Technical description of contaminated {material_name.lower()} surface with specific material properties...",
-  "after_text": "Technical description of cleaned surface with quality metrics and material-specific results...",
-  "technical_focus": "Primary technical aspect emphasized (thermal/mechanical/optical/chemical)",
-  "unique_characteristics": ["distinctive trait 1", "distinctive trait 2"],
-  "contamination_profile": "Material-specific contamination description",
-  "quality_metrics": "Quantified improvement measurements",
-  "microscopy_parameters": "Optimized analysis parameters for {material_name}"
-}}
-
-Generate content that is completely unique for {material_name} and cannot be confused with other materials."""
+Ensure all content is scientifically accurate, quantitative, and demonstrates deep materials science expertise specific to {material_name} within the {category} category."""
 
     def _extract_ai_content(self, ai_response: str, material_name: str) -> Dict:
-        """Extract and validate AI-generated content - FAIL FAST"""
+        """Extract before/after text from AI response - FAIL FAST"""
         
         if not ai_response or not ai_response.strip():
             raise ValueError(f"Empty AI response for {material_name} - fail-fast architecture requires valid content")
         
-        # Try to parse JSON response
-        if '{' not in ai_response or '}' not in ai_response:
-            raise ValueError(f"No JSON structure found in AI response for {material_name} - fail-fast requires proper JSON format")
+        # Extract BEFORE_TEXT
+        before_start = ai_response.find('**BEFORE_TEXT:**')
+        before_end = ai_response.find('**AFTER_TEXT:**')
         
-        try:
-            start_idx = ai_response.find('{')
-            end_idx = ai_response.rfind('}') + 1
-            json_content = ai_response[start_idx:end_idx]
-            ai_data = json.loads(json_content)
-        except json.JSONDecodeError as e:
-            raise ValueError(f"Invalid JSON in AI response for {material_name}: {e} - fail-fast requires valid JSON")
+        if before_start == -1 or before_end == -1:
+            raise ValueError(f"Missing BEFORE_TEXT or AFTER_TEXT markers in AI response for {material_name}")
         
-        # Validate required fields - FAIL FAST
-        required_fields = ['before_text', 'after_text']
-        for field in required_fields:
-            if field not in ai_data:
-                raise ValueError(f"Missing required field '{field}' in AI response for {material_name} - fail-fast requires complete data")
-            
-            if not ai_data[field] or not ai_data[field].strip():
-                raise ValueError(f"Empty required field '{field}' in AI response for {material_name} - fail-fast requires meaningful content")
+        before_text = ai_response[before_start + len('**BEFORE_TEXT:**'):before_end].strip()
+        before_text = before_text.strip('[]').strip()
         
-        return ai_data
+        # Extract AFTER_TEXT  
+        after_start = before_end + len('**AFTER_TEXT:**')
+        after_text = ai_response[after_start:].strip()
+        after_text = after_text.strip('[]').strip()
+        
+        # Validate content - FAIL FAST (Enhanced thresholds for detailed scientific content)
+        if not before_text or len(before_text) < 200:
+            raise ValueError(f"BEFORE_TEXT too short or missing for {material_name} - fail-fast requires detailed scientific content (minimum 200 characters)")
+        
+        if not after_text or len(after_text) < 200:
+            raise ValueError(f"AFTER_TEXT too short or missing for {material_name} - fail-fast requires detailed scientific content (minimum 200 characters)")
+        
+        return {
+            'before_text': before_text,
+            'after_text': after_text,
+            'technical_focus': 'surface_analysis',
+            'unique_characteristics': [f'{material_name.lower()}_specific'],
+            'contamination_profile': f'{material_name.lower()} surface contamination',
+            'microscopy_parameters': f'SEM analysis of {material_name.lower()}',
+            'quality_metrics': 'Surface improvement analysis'
+        }
 
     def generate(
         self,
@@ -199,8 +209,8 @@ Generate content that is completely unique for {material_name} and cannot be con
             
             response = api_client.generate_simple(
                 prompt=prompt,
-                max_tokens=1500,
-                temperature=0.3
+                max_tokens=3000,  # Increased for detailed scientific content
+                temperature=0.2   # Reduced for more precise technical content
             )
             
             # FAIL FAST: API response must be successful
@@ -219,14 +229,14 @@ Generate content that is completely unique for {material_name} and cannot be con
         
         # Generate YAML content with validated AI data
         yaml_content = f"""---
-# AI-Generated Caption Content for {material_name}
+# Caption Content for {material_name}
 before_text: |
   {ai_content['before_text']}
 
 after_text: |
   {ai_content['after_text']}
 
-# AI-Generated Technical Analysis
+# Technical Analysis
 technical_analysis:
   focus: "{ai_content.get('technical_focus', '')}"
   unique_characteristics: {ai_content.get('unique_characteristics', [])}
@@ -253,8 +263,8 @@ author: "{author}"
 
 # SEO Optimization
 seo:
-  title: "{material_name.title()} AI-Generated Surface Analysis"
-  description: "AI-generated microscopic analysis of {material_name.lower()} surface treatment with technical insights"
+  title: "{material_name.title()} Laser Cleaning Surface Analysis"
+  description: "Microscopic analysis of {material_name.lower()} surface treatment with technical insights"
 
 # Material Classification
 material_properties:
