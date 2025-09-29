@@ -5,57 +5,50 @@ title: Silicon Germanium Laser Cleaning
 description: Laser cleaning parameters for Gallium Arsenide
 materialProperties:
   density:
-    value: 5.32
-    unit: g/cm³
+    value: 4.73
+    unit: "g/cm\xB3"
     confidence: 95
     description: Density for SiGe alloy with 50% composition at room temperature
-    min: 2.33
-    max: 7.13
-  meltingPoint:
-    value: 1215
-    unit: °C
-    confidence: 90
-    description: Melting point for Si0.5Ge0.5 alloy (varies with Ge content)
-    min: null
-    max: null
+    min: 2.0
+    max: 5.6
   thermalConductivity:
-    value: 45
-    unit: W/m·K
+    value: 78.1
+    unit: "W/m\xB7K"
     confidence: 85
     description: Thermal conductivity for Si0.5Ge0.5 at room temperature
     min: 0.2
     max: 156
   hardness:
-    value: 10.5
+    value: 4.5
     unit: GPa
     confidence: 85
     description: Vickers hardness for SiGe alloys
-    min: 2
-    max: 7
+    min: 5.4
+    max: 30.1
   youngsModulus:
-    value: 145
+    value: 97.5
     unit: GPa
     confidence: 90
     description: Young's modulus for SiGe crystalline structure
-    min: 5
-    max: 190
+    min: 53.0
+    max: 442.4
   thermalExpansion:
-    value: 4.2
-    unit: ×10⁻⁶/K
+    value: 11.15
+    unit: "\xD710\u207B\u2076/K"
     confidence: 88
     description: Coefficient of thermal expansion for SiGe alloys
     min: 2.6
     max: 19.7
   specificHeat:
-    value: 320.0
-    unit: J/kg·K
+    value: 600.0
+    unit: "J/kg\xB7K"
     confidence: 92
     description: Specific heat capacity at room temperature
-    min: 0.3
-    max: 1.6
+    min: 277.0
+    max: 793.0
   absorptionCoefficient:
     value: 8500
-    unit: cm⁻¹
+    unit: "cm\u207B\xB9"
     confidence: 88
     description: Absorption coefficient at 1064 nm wavelength
     min: null
@@ -76,21 +69,21 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 0.45
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 82
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   laserDamageThreshold:
     value: 1.2
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 80
     description: Damage threshold for picosecond pulses at 1064 nm
     min: null
     max: null
   oxidationResistance:
     value: 650
-    unit: °C
+    unit: "\xB0C"
     confidence: 85
     description: Maximum temperature for stable oxidation resistance
     min: null
@@ -102,6 +95,45 @@ materialProperties:
     description: Crystalline structure similar to silicon and germanium
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 100.0
+    min: 0.01
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 50.005
+  laserReflectivity:
+    confidence: 0.7
+    max: 70.0
+    min: 10.0
+    source: default_from_category_range
+    unit: '%'
+    value: 40.0
+  tensileStrength:
+    confidence: 0.7
+    max: 7000.0
+    min: 50.0
+    source: default_from_category_range
+    unit: MPa
+    value: 3525.0
+  thermalDiffusivity:
+    confidence: 0.7
+    max: 90.0
+    min: 0.1
+    source: default_from_category_range
+    unit: "mm\xB2/s"
+    value: 45.05
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 1414.0
+    min: 100.0
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 757.0
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: melting
 applications:
 - 'Electronics: Precision cleaning of electronic components and circuit boards'
 machineSettings:
@@ -122,7 +154,7 @@ machineSettings:
     max: 1080
   spotSize:
     value: 50
-    unit: μm
+    unit: "\u03BCm"
     confidence: 84
     description: Beam spot diameter for precise cleaning control
     min: 30
@@ -136,7 +168,7 @@ machineSettings:
     max: 200
   fluenceThreshold:
     value: 0.8
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 88
     description: Threshold fluence for Silicon Germanium surface cleaning
     min: 0.5
@@ -171,7 +203,7 @@ machineSettings:
     max: 5
   energyDensity:
     value: 4.1
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 85
     description: Calculated energy density based on power and spot parameters
     min: 2.5
@@ -294,9 +326,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

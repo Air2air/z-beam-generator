@@ -5,61 +5,54 @@ title: Onyx Laser Cleaning
 description: Laser cleaning parameters for Alabaster
 materialProperties:
   density:
-    value: 2.65
-    unit: g/cm³
+    value: 2.45
+    unit: "g/cm\xB3"
     confidence: 95
     description: Typical density of natural onyx (silicon dioxide mineral)
     min: 1.5
     max: 3.4
-  meltingPoint:
-    value: 1670
-    unit: °C
-    confidence: 90
-    description: Melting point of silicon dioxide (quartz family)
-    min: null
-    max: null
   thermalConductivity:
-    value: 1.4
-    unit: W/m·K
+    value: 4.1
+    unit: "W/m\xB7K"
     confidence: 88
     description: Thermal conductivity of quartz-based minerals at room temperature
-    min: 0.2
-    max: 5
+    min: 0.12
+    max: 8.28
   tensileStrength:
-    value: 48
+    value: 13.5
     unit: MPa
     confidence: 82
     description: Tensile strength of natural onyx stone
-    min: 2
-    max: 25
+    min: 0.92
+    max: 52.28
   hardness:
-    value: 7.0
+    value: 4.0
     unit: Mohs
     confidence: 95
     description: Mohs hardness scale value for onyx (quartz family)
     min: 1
     max: 7
   youngsModulus:
-    value: 70
+    value: 55.0
     unit: GPa
     confidence: 85
     description: Young's modulus of quartz-based minerals
     min: 10
     max: 100
   thermalExpansion:
-    value: 7.5
-    unit: 10⁻⁶/K
+    value: 14.0
+    unit: "10\u207B\u2076/K"
     confidence: 85
     description: Coefficient of thermal expansion for quartz minerals
-    min: 3
-    max: 16
+    min: 3.5
+    max: 26.9
   specificHeat:
-    value: 740
-    unit: J/kg·K
+    value: 900.0
+    unit: "J/kg\xB7K"
     confidence: 87
     description: Specific heat capacity of silicon dioxide minerals
-    min: 0.7
-    max: 1.2
+    min: 705.5
+    max: 1119.5
   absorptionCoefficient:
     value: 0.85
     unit: dimensionless
@@ -76,7 +69,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 78
     description: Estimated laser ablation threshold for nanosecond pulses
     min: null
@@ -88,6 +81,38 @@ materialProperties:
     description: Typical porosity of natural onyx stone
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 20.0
+    min: 0.1
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 10.05
+  laserReflectivity:
+    confidence: 0.7
+    max: 80.0
+    min: 5.0
+    source: default_from_category_range
+    unit: '%'
+    value: 42.5
+  thermalDiffusivity:
+    confidence: 0.7
+    max: 2.5
+    min: 0.2
+    source: default_from_category_range
+    unit: "mm\xB2/s"
+    value: 1.35
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 1700.0
+    min: 600.0
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 1150.0
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: thermal_shock
 applications:
 - 'Jewelry: Precision cleaning and polishing of precious metal jewelry'
 machineSettings:
@@ -107,7 +132,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: μm
+    unit: "\u03BCm"
     confidence: 90
     description: Optimal spot size for precision cleaning of Onyx surfaces
     min: 50
@@ -135,7 +160,7 @@ machineSettings:
     max: 1000
   fluenceThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 89
     description: Threshold fluence for effective contaminant removal from Onyx
     min: 1.5
@@ -156,7 +181,7 @@ machineSettings:
     max: 5
   energyDensity:
     value: 12.7
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 85
     description: Calculated energy density based on power, spot size, and repetition
       rate
@@ -279,9 +304,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

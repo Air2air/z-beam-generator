@@ -5,68 +5,61 @@ title: Rhodium Laser Cleaning
 description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
-    value: 12.41
-    unit: g/cm³
+    value: 11.565000000000001
+    unit: "g/cm\xB3"
     confidence: 98
-    description: Density of pure rhodium at 20°C
+    description: "Density of pure rhodium at 20\xB0C"
     min: 0.53
     max: 22.6
-  meltingPoint:
-    value: 1964
-    unit: °C
-    confidence: 97
-    description: Melting point of pure rhodium
-    min: null
-    max: null
   thermalConductivity:
-    value: 150
-    unit: W/m·K
+    value: 217.5
+    unit: "W/m\xB7K"
     confidence: 92
     description: Thermal conductivity at room temperature
     min: 6.0
     max: 429.0
   tensileStrength:
-    value: 950
+    value: 1501.5
     unit: MPa
     confidence: 88
     description: Tensile strength of annealed rhodium
-    min: 30.0
-    max: 3000.0
+    min: 0
+    max: 1363.6
   hardness:
-    value: 110
+    value: 1750.25
     unit: HV
     confidence: 90
     description: Vickers hardness of annealed rhodium
-    min: 5
-    max: 500
+    min: 0
+    max: 3772.91
   youngsModulus:
-    value: 380
+    value: 208.0
     unit: GPa
     confidence: 94
     description: Young's modulus of elasticity
-    min: 70
-    max: 411
+    min: 0
+    max: 579.82
   thermalExpansion:
-    value: 8.2
-    unit: 10⁻⁶/K
+    value: 14.8
+    unit: "10\u207B\u2076/K"
     confidence: 90
-    description: Coefficient of linear thermal expansion (20-100°C)
-    min: 0.5
-    max: 29.1
+    description: "Coefficient of linear thermal expansion (20-100\xB0C)"
+    min: 1.7
+    max: 34.9
   specificHeat:
-    value: 242.0
-    unit: J/kg·K
+    value: 500.0
+    unit: "J/kg\xB7K"
     confidence: 88
-    description: Specific heat capacity at 25°C
-    min: 0.128
-    max: 0.904
+    description: "Specific heat capacity at 25\xB0C"
+    min: 0
+    max: 1994.6
   thermalDiffusivity:
-    value: 0.5
-    unit: cm²/s
+    value: 87.1
+    unit: "cm\xB2/s"
     confidence: 85
     description: Thermal diffusivity at room temperature
-    min: 4.2
-    max: 174
+    min: 0
+    max: 191.376
   reflectivity:
     value: 78
     unit: '%'
@@ -76,14 +69,14 @@ materialProperties:
     max: null
   absorptionCoefficient:
     value: 6.8
-    unit: 10⁵ cm⁻¹
+    unit: "10\u2075 cm\u207B\xB9"
     confidence: 82
     description: Absorption coefficient for near-IR lasers
     min: null
     max: null
   ablationThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 80
     description: Estimated laser ablation threshold for nanosecond pulses
     min: null
@@ -99,9 +92,34 @@ materialProperties:
     value: Excellent
     unit: qualitative
     confidence: 95
-    description: High resistance to oxidation up to 600°C
+    description: "High resistance to oxidation up to 600\xB0C"
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 100.0
+    min: 0.02
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 50.01
+  laserReflectivity:
+    confidence: 0.7
+    max: 98.0
+    min: 5.0
+    source: default_from_category_range
+    unit: '%'
+    value: 51.5
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 3422.0
+    min: -38.8
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 1691.6
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: melting
 applications:
 - 'Medical: Sterilization and cleaning of medical devices and instruments'
 - 'Automotive: Paint removal and surface preparation for automotive parts'
@@ -125,7 +143,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 80
-    unit: μm
+    unit: "\u03BCm"
     confidence: 82
     description: Beam spot diameter for precise cleaning with adequate energy density
     min: 50
@@ -154,7 +172,7 @@ machineSettings:
     max: 800
   fluenceThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 89
     description: Minimum fluence required for effective contaminant removal from Rhodium
       surface
@@ -177,7 +195,7 @@ machineSettings:
     max: 5
   energyDensity:
     value: 4.2
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 85
     description: Optimal energy density for contaminant ablation while preserving
       Rhodium substrate
@@ -300,9 +318,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

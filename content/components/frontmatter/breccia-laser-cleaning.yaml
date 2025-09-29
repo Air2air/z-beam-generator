@@ -5,62 +5,55 @@ title: Breccia Laser Cleaning
 description: Laser cleaning parameters for Alabaster
 materialProperties:
   density:
-    value: 2.65
-    unit: g/cm³
+    value: 2.45
+    unit: "g/cm\xB3"
     confidence: 95
     description: Typical density for consolidated breccia composed of mixed mineral
       fragments
     min: 1.5
     max: 3.4
-  meltingPoint:
-    value: 1250
-    unit: °C
-    confidence: 85
-    description: Approximate melting point range for quartz-rich breccia compositions
-    min: null
-    max: null
   thermalConductivity:
-    value: 2.9
-    unit: W/m·K
+    value: 4.1
+    unit: "W/m\xB7K"
     confidence: 88
     description: Thermal conductivity typical for consolidated sedimentary rocks
-    min: 0.2
-    max: 5
+    min: 0.12
+    max: 8.28
   tensileStrength:
-    value: 8
+    value: 13.5
     unit: MPa
     confidence: 80
     description: Typical tensile strength for consolidated breccia
-    min: 2
-    max: 25
+    min: 0.92
+    max: 52.28
   hardness:
-    value: 6.5
+    value: 4.0
     unit: Mohs
     confidence: 88
     description: Hardness dominated by quartz content in fragments
     min: 1
     max: 7
   youngsModulus:
-    value: 45
+    value: 55.0
     unit: GPa
     confidence: 85
     description: Elastic modulus for well-cemented breccia
     min: 10
     max: 100
   thermalExpansion:
-    value: 8.5
-    unit: 10⁻⁶/°C
+    value: 14.0
+    unit: "10\u207B\u2076/\xB0C"
     confidence: 82
     description: Coefficient of thermal expansion for quartz-dominated breccia
-    min: 3
-    max: 16
+    min: 3.5
+    max: 26.9
   specificHeat:
-    value: 840.0
-    unit: J/kg·K
+    value: 900.0
+    unit: "J/kg\xB7K"
     confidence: 90
     description: Specific heat capacity at room temperature
-    min: 0.7
-    max: 1.2
+    min: 705.5
+    max: 1119.5
   absorptionCoefficient:
     value: 0.75
     unit: dimensionless
@@ -78,7 +71,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 78
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
@@ -90,6 +83,38 @@ materialProperties:
     description: Typical porosity range for consolidated breccia formations
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 20.0
+    min: 0.1
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 10.05
+  laserReflectivity:
+    confidence: 0.7
+    max: 80.0
+    min: 5.0
+    source: default_from_category_range
+    unit: '%'
+    value: 42.5
+  thermalDiffusivity:
+    confidence: 0.7
+    max: 2.5
+    min: 0.2
+    source: default_from_category_range
+    unit: "mm\xB2/s"
+    value: 1.35
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 1700.0
+    min: 600.0
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 1150.0
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: thermal_shock
 applications:
 - 'Oil and Gas: Industrial cleaning and maintenance for oil and gas equipment'
 machineSettings:
@@ -109,7 +134,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: μm
+    unit: "\u03BCm"
     confidence: 84
     description: Optimal spot size for precision cleaning of Breccia matrix
     min: 50
@@ -138,7 +163,7 @@ machineSettings:
     max: 800
   fluenceThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 89
     description: Threshold fluence for effective contaminant removal from Breccia
     min: 1.5
@@ -274,9 +299,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

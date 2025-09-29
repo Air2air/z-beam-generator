@@ -5,57 +5,50 @@ title: Quartzite Laser Cleaning
 description: Laser cleaning parameters for Alabaster
 materialProperties:
   density:
-    value: 2.65
-    unit: g/cm³
+    value: 2.45
+    unit: "g/cm\xB3"
     confidence: 95
     description: Average density of quartzite due to high quartz content
     min: 1.5
     max: 3.4
-  meltingPoint:
-    value: 1670
-    unit: °C
-    confidence: 90
-    description: Melting point of pure quartz (SiO₂), primary component of quartzite
-    min: null
-    max: null
   thermalConductivity:
-    value: 7.6
-    unit: W/m·K
+    value: 4.1
+    unit: "W/m\xB7K"
     confidence: 85
     description: Thermal conductivity at room temperature, perpendicular to bedding
-    min: 0.2
-    max: 5
+    min: 0.12
+    max: 8.28
   hardness:
-    value: 7
+    value: 4.0
     unit: Mohs
     confidence: 95
     description: Mohs hardness scale, equivalent to quartz mineral
     min: 1
     max: 7
   youngsModulus:
-    value: 87
+    value: 55.0
     unit: GPa
     confidence: 82
     description: Elastic modulus in compression, varies with quartz content
     min: 10
     max: 100
   thermalExpansion:
-    value: 12.3
-    unit: 10⁻⁶/°C
+    value: 14.0
+    unit: "10\u207B\u2076/\xB0C"
     confidence: 88
-    description: Coefficient of thermal expansion at 20-100°C
-    min: 3
-    max: 16
+    description: "Coefficient of thermal expansion at 20-100\xB0C"
+    min: 3.5
+    max: 26.9
   specificHeat:
-    value: 1050
-    unit: J/kg·K
+    value: 900.0
+    unit: "J/kg\xB7K"
     confidence: 87
     description: Specific heat capacity at room temperature
-    min: 0.7
-    max: 1.2
+    min: 705.5
+    max: 1119.5
   absorptionCoefficient:
     value: 0.85
-    unit: cm⁻¹ at 1064nm
+    unit: "cm\u207B\xB9 at 1064nm"
     confidence: 80
     description: Optical absorption coefficient for Nd:YAG laser wavelength
     min: null
@@ -69,7 +62,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 2.8
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 78
     description: Laser ablation threshold for nanosecond pulses at 1064nm
     min: null
@@ -88,6 +81,45 @@ materialProperties:
     description: Typical porosity range for dense, metamorphosed quartzite
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 20.0
+    min: 0.1
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 10.05
+  laserReflectivity:
+    confidence: 0.7
+    max: 80.0
+    min: 5.0
+    source: default_from_category_range
+    unit: '%'
+    value: 42.5
+  tensileStrength:
+    confidence: 0.7
+    max: 25.0
+    min: 2.0
+    source: default_from_category_range
+    unit: MPa
+    value: 13.5
+  thermalDiffusivity:
+    confidence: 0.7
+    max: 2.5
+    min: 0.2
+    source: default_from_category_range
+    unit: "mm\xB2/s"
+    value: 1.35
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 1700.0
+    min: 600.0
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 1150.0
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: thermal_shock
 applications:
 - 'Jewelry: Precision cleaning and polishing of precious metal jewelry'
 machineSettings:
@@ -108,7 +140,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: μm
+    unit: "\u03BCm"
     confidence: 90
     description: Optimal spot size for precise cleaning of Quartzite surfaces
     min: 50
@@ -137,7 +169,7 @@ machineSettings:
     max: 1000
   fluenceThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 89
     description: Threshold fluence for effective contaminant removal from Quartzite
     min: 1.5
@@ -281,9 +313,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

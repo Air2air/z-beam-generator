@@ -5,65 +5,57 @@ title: Urethane Composites Laser Cleaning
 description: Laser cleaning parameters for Carbon Fiber Reinforced Polymer
 materialProperties:
   density:
-    value: 1.1
-    unit: g/cm³
+    value: 4.25
+    unit: "g/cm\xB3"
     confidence: 92
     description: Typical density range for filled urethane composites
     min: 0.5
     max: 8
-  meltingPoint:
-    value: 180
-    unit: °C
-    confidence: 85
-    description: Decomposition temperature rather than true melting point for thermoset
-      urethanes
-    min: null
-    max: null
   thermalConductivity:
-    value: 0.25
-    unit: W/m·K
+    value: 200.05
+    unit: "W/m\xB7K"
     confidence: 88
     description: Low thermal conductivity typical of polymer composites
     min: 0.1
     max: 400
   tensileStrength:
-    value: 45
+    value: 3025.0
     unit: MPa
     confidence: 90
     description: Typical tensile strength for reinforced urethane composites
-    min: 50
-    max: 6000
+    min: 0
+    max: 2748.5
   hardness:
-    value: 85
+    value: 55.0
     unit: Shore D
     confidence: 91
     description: Typical hardness for rigid urethane composites
-    min: 20
-    max: 90
+    min: 15.5
+    max: 129.5
   youngsModulus:
-    value: 2.5
+    value: 750.0005
     unit: GPa
     confidence: 89
     description: Elastic modulus for filled urethane composite systems
-    min: 5
-    max: 1000
+    min: 0
+    max: 274.999
   thermalExpansion:
-    value: 120
-    unit: 10⁻⁶/°C
+    value: 124.5
+    unit: "10\u207B\u2076/\xB0C"
     confidence: 86
     description: Coefficient of thermal expansion for filled urethane systems
-    min: -1
-    max: 50
+    min: 0
+    max: 241.55
   specificHeat:
-    value: 1500
-    unit: J/kg·K
+    value: 1000.0
+    unit: "J/kg\xB7K"
     confidence: 84
     description: Specific heat capacity at room temperature
-    min: 0.5
-    max: 2
+    min: 734.0
+    max: 2006.0
   absorptionCoefficient:
     value: 8500
-    unit: cm⁻¹
+    unit: "cm\u207B\xB9"
     confidence: 82
     description: Absorption coefficient at 1064 nm wavelength
     min: null
@@ -77,18 +69,50 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 1.2
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 83
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   oxidationResistance:
     value: 150
-    unit: °C
+    unit: "\xB0C"
     confidence: 87
     description: Maximum continuous service temperature before oxidative degradation
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 200.0
+    min: 0.05
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 100.025
+  laserReflectivity:
+    confidence: 0.7
+    max: 80.0
+    min: 2.0
+    source: default_from_category_range
+    unit: '%'
+    value: 41.0
+  thermalDiffusivity:
+    confidence: 0.7
+    max: 180.0
+    min: 0.1
+    source: default_from_category_range
+    unit: "mm\xB2/s"
+    value: 90.05
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 2000.0
+    min: 150.0
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 1075.0
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: decomposition
 applications:
 - 'Automotive: Paint removal and surface preparation for automotive parts'
 - 'Medical: Sterilization and cleaning of medical devices and instruments'
@@ -113,7 +137,7 @@ machineSettings:
     max: 1080
   spotSize:
     value: 100
-    unit: μm
+    unit: "\u03BCm"
     confidence: 90
     description: Beam spot diameter for precise cleaning control on Urethane Composites
       surfaces
@@ -129,7 +153,7 @@ machineSettings:
     max: 100
   fluenceThreshold:
     value: 1.2
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 88
     description: Ablation threshold fluence for Urethane Composites surface contaminants
     min: 0.8
@@ -168,7 +192,7 @@ machineSettings:
     max: 4
   energyDensity:
     value: 3.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 85
     description: Optimal energy density for effective cleaning while preserving substrate
       integrity
@@ -292,9 +316,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

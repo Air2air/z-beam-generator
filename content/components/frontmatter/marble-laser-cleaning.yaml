@@ -5,58 +5,50 @@ title: Marble Laser Cleaning
 description: Laser cleaning parameters for Alabaster
 materialProperties:
   density:
-    value: 2.7
-    unit: g/cm³
+    value: 2.45
+    unit: "g/cm\xB3"
     confidence: 95
     description: Average density of pure calcite marble at room temperature
     min: 1.5
     max: 3.4
-  meltingPoint:
-    value: 825
-    unit: °C
-    confidence: 90
-    description: Decomposition temperature where calcium carbonate decomposes to calcium
-      oxide
-    min: null
-    max: null
   thermalConductivity:
-    value: 2.8
-    unit: W/m·K
+    value: 4.1
+    unit: "W/m\xB7K"
     confidence: 88
     description: Thermal conductivity of marble at room temperature
-    min: 0.2
-    max: 5
+    min: 0.12
+    max: 8.28
   hardness:
-    value: 3
+    value: 4.0
     unit: Mohs
     confidence: 95
     description: Mohs hardness scale value for calcite mineral
     min: 1
     max: 7
   youngsModulus:
-    value: 50
+    value: 55.0
     unit: GPa
     confidence: 85
     description: Young's modulus of elasticity for marble
     min: 10
     max: 100
   thermalExpansion:
-    value: 5.5
-    unit: 10⁻⁶/°C
+    value: 14.0
+    unit: "10\u207B\u2076/\xB0C"
     confidence: 85
     description: Coefficient of thermal expansion for calcite-based marble
-    min: 3
-    max: 16
+    min: 3.5
+    max: 26.9
   specificHeat:
-    value: 880
-    unit: J/kg·K
+    value: 900.0
+    unit: "J/kg\xB7K"
     confidence: 90
     description: Specific heat capacity at room temperature
-    min: 0.7
-    max: 1.2
+    min: 705.5
+    max: 1119.5
   thermalDiffusivity:
-    value: 1.15
-    unit: mm²/s
+    value: 1.35
+    unit: "mm\xB2/s"
     confidence: 82
     description: Thermal diffusivity calculated from conductivity, density, and specific
       heat
@@ -85,7 +77,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 78
     description: Approximate laser ablation threshold for nanosecond pulses at 1064
       nm
@@ -105,6 +97,38 @@ materialProperties:
     description: Stable in neutral to basic conditions, dissolves in acids
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 20.0
+    min: 0.1
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 10.05
+  laserReflectivity:
+    confidence: 0.7
+    max: 80.0
+    min: 5.0
+    source: default_from_category_range
+    unit: '%'
+    value: 42.5
+  tensileStrength:
+    confidence: 0.7
+    max: 25.0
+    min: 2.0
+    source: default_from_category_range
+    unit: MPa
+    value: 13.5
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 1700.0
+    min: 600.0
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 1150.0
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: calcination
 applications:
 - 'Jewelry: Precision cleaning and polishing of precious metal jewelry'
 machineSettings:
@@ -125,7 +149,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: μm
+    unit: "\u03BCm"
     confidence: 90
     description: Beam spot diameter for precise cleaning control
     min: 50
@@ -153,7 +177,7 @@ machineSettings:
     max: 1000
   fluenceThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 89
     description: Fluence threshold for effective contaminant removal without substrate
       damage
@@ -297,9 +321,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

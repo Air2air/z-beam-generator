@@ -5,68 +5,61 @@ title: Lead Laser Cleaning
 description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
-    value: 11.34
-    unit: g/cm³
+    value: 11.565000000000001
+    unit: "g/cm\xB3"
     confidence: 98
-    description: Density of pure lead at 20°C
+    description: "Density of pure lead at 20\xB0C"
     min: 0.53
     max: 22.6
-  meltingPoint:
-    value: 327.5
-    unit: °C
-    confidence: 97
-    description: Melting point of pure lead
-    min: null
-    max: null
   thermalConductivity:
-    value: 35.3
-    unit: W/m·K
+    value: 217.5
+    unit: "W/m\xB7K"
     confidence: 92
-    description: Thermal conductivity at 20°C
+    description: "Thermal conductivity at 20\xB0C"
     min: 6.0
     max: 429.0
   tensileStrength:
-    value: 18
+    value: 1501.5
     unit: MPa
     confidence: 85
     description: Ultimate tensile strength of pure lead
-    min: 30.0
-    max: 3000.0
+    min: 0
+    max: 1363.6
   hardness:
-    value: 5
+    value: 1750.25
     unit: HB
     confidence: 84
     description: Brinell hardness of pure lead
-    min: 5
-    max: 500
+    min: 0
+    max: 3772.91
   youngsModulus:
-    value: 16
+    value: 208.0
     unit: GPa
     confidence: 87
     description: Young's modulus of elasticity
-    min: 70
-    max: 411
+    min: 0
+    max: 579.82
   thermalExpansion:
-    value: 29.1
-    unit: μm/m·K
+    value: 14.8
+    unit: "\u03BCm/m\xB7K"
     confidence: 90
-    description: Linear thermal expansion coefficient at 20°C
-    min: 0.5
-    max: 29.1
+    description: "Linear thermal expansion coefficient at 20\xB0C"
+    min: 1.7
+    max: 34.9
   thermalDiffusivity:
-    value: 24.9
-    unit: mm²/s
+    value: 87.1
+    unit: "mm\xB2/s"
     confidence: 88
     description: Thermal diffusivity at room temperature
-    min: 4.2
-    max: 174
+    min: 0
+    max: 191.376
   specificHeat:
-    value: 129
-    unit: J/kg·K
+    value: 500.0
+    unit: "J/kg\xB7K"
     confidence: 91
-    description: Specific heat capacity at 20°C
-    min: 0.128
-    max: 0.904
+    description: "Specific heat capacity at 20\xB0C"
+    min: 0
+    max: 1994.6
   absorptionCoefficient:
     value: 0.65
     unit: dimensionless
@@ -83,7 +76,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 0.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 80
     description: Estimated laser ablation threshold for nanosecond pulses
     min: null
@@ -102,6 +95,31 @@ materialProperties:
     description: Forms protective oxide layer but susceptible to continued oxidation
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 100.0
+    min: 0.02
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 50.01
+  laserReflectivity:
+    confidence: 0.7
+    max: 98.0
+    min: 5.0
+    source: default_from_category_range
+    unit: '%'
+    value: 51.5
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 3422.0
+    min: -38.8
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 1691.6
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: melting
 applications:
 - 'Aerospace: Precision cleaning of aerospace components and assemblies'
 - 'Marine: Corrosion removal and surface treatment for marine applications'
@@ -110,8 +128,8 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal power range for Lead cleaning considering low melting point
-      (327°C)
+    description: "Optimal power range for Lead cleaning considering low melting point\
+      \ (327\xB0C)"
     min: 80
     max: 120
   wavelength:
@@ -123,7 +141,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: μm
+    unit: "\u03BCm"
     confidence: 90
     description: Beam spot diameter for precise cleaning control
     min: 50
@@ -137,14 +155,14 @@ machineSettings:
     max: 100
   fluenceThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 88
     description: Ablation threshold fluence for Lead surface cleaning
     min: 1.8
     max: 4.0
   energyDensity:
     value: 3.2
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 85
     description: Optimal energy density for effective contaminant removal without
       substrate damage
@@ -295,9 +313,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

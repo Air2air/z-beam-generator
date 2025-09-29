@@ -5,65 +5,57 @@ title: Phenolic Resin Composites Laser Cleaning
 description: Laser cleaning parameters for Carbon Fiber Reinforced Polymer
 materialProperties:
   density:
-    value: 1.35
-    unit: g/cm³
+    value: 4.25
+    unit: "g/cm\xB3"
     confidence: 95
     description: Typical density of phenolic resin composites with fiber reinforcement
     min: 0.5
     max: 8
-  meltingPoint:
-    value: N/A (thermoset)
-    unit: °C
-    confidence: 98
-    description: Phenolic resins are thermosetting polymers that decompose rather
-      than melt
-    min: null
-    max: null
   thermalConductivity:
-    value: 0.25
-    unit: W/m·K
+    value: 200.05
+    unit: "W/m\xB7K"
     confidence: 90
     description: Low thermal conductivity typical of phenolic composites
     min: 0.1
     max: 400
   tensileStrength:
-    value: 60
+    value: 3025.0
     unit: MPa
     confidence: 92
     description: Typical tensile strength for fiber-reinforced phenolic composites
-    min: 50
-    max: 6000
+    min: 0
+    max: 2748.5
   hardness:
-    value: 85
+    value: 55.0
     unit: Shore D
     confidence: 88
     description: Hardness measurement on Shore D scale
-    min: 20
-    max: 90
+    min: 15.5
+    max: 129.5
   youngsModulus:
-    value: 8.5
+    value: 750.0005
     unit: GPa
     confidence: 90
     description: Elastic modulus of phenolic composite materials
-    min: 5
-    max: 1000
+    min: 0
+    max: 274.999
   thermalExpansion:
-    value: 30
-    unit: μm/m·°C
+    value: 124.5
+    unit: "\u03BCm/m\xB7\xB0C"
     confidence: 88
     description: Coefficient of thermal expansion at room temperature
-    min: -1
-    max: 50
+    min: 0
+    max: 241.55
   specificHeat:
-    value: 1200
-    unit: J/kg·K
+    value: 1000.0
+    unit: "J/kg\xB7K"
     confidence: 85
     description: Specific heat capacity at room temperature
-    min: 0.5
-    max: 2
+    min: 734.0
+    max: 2006.0
   absorptionCoefficient:
     value: 8500
-    unit: cm⁻¹
+    unit: "cm\u207B\xB9"
     confidence: 82
     description: Absorption coefficient at 1064 nm wavelength
     min: null
@@ -77,14 +69,14 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 1.2
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 85
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   thermalDecomposition:
     value: 350
-    unit: °C
+    unit: "\xB0C"
     confidence: 94
     description: Onset temperature for thermal decomposition of phenolic resin
     min: null
@@ -98,14 +90,14 @@ materialProperties:
     max: null
   surfaceRoughness:
     value: 1.8
-    unit: μm Ra
+    unit: "\u03BCm Ra"
     confidence: 82
     description: Average surface roughness of typical phenolic composite surfaces
     min: null
     max: null
   laserDamageThreshold:
     value: 15
-    unit: MW/cm²
+    unit: "MW/cm\xB2"
     confidence: 83
     description: Peak power density threshold for laser-induced damage
     min: null
@@ -117,6 +109,38 @@ materialProperties:
     description: Resistance to solvents, acids, and environmental degradation
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 200.0
+    min: 0.05
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 100.025
+  laserReflectivity:
+    confidence: 0.7
+    max: 80.0
+    min: 2.0
+    source: default_from_category_range
+    unit: '%'
+    value: 41.0
+  thermalDiffusivity:
+    confidence: 0.7
+    max: 180.0
+    min: 0.1
+    source: default_from_category_range
+    unit: "mm\xB2/s"
+    value: 90.05
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 2000.0
+    min: 150.0
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 1075.0
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: decomposition
 applications:
 - 'Manufacturing: Industrial surface preparation and contamination removal'
 - 'Aerospace: Precision cleaning of aerospace components and assemblies'
@@ -140,7 +164,7 @@ machineSettings:
     max: 1080
   spotSize:
     value: 100
-    unit: μm
+    unit: "\u03BCm"
     confidence: 84
     description: Optimal beam spot diameter for precise cleaning control
     min: 50
@@ -154,7 +178,7 @@ machineSettings:
     max: 200
   fluenceThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 88
     description: Ablation threshold fluence for phenolic resin composites
     min: 1.8
@@ -190,7 +214,7 @@ machineSettings:
     max: 5
   energyDensity:
     value: 12.7
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 86
     description: Calculated energy density based on power, spot size, and repetition
       rate
@@ -314,9 +338,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

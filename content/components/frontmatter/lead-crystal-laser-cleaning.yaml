@@ -5,54 +5,47 @@ title: Lead Crystal Laser Cleaning
 description: Laser cleaning parameters for Borosilicate Glass
 materialProperties:
   density:
-    value: 3.1
-    unit: g/cm³
+    value: 4.3999999999999995
+    unit: "g/cm\xB3"
     confidence: 95
     description: Typical density for 24-32% lead oxide content crystal glass
     min: 1.2
     max: 7.6
-  meltingPoint:
-    value: 850
-    unit: °C
-    confidence: 90
-    description: Softening/melting point range for lead crystal glass
-    min: null
-    max: null
   thermalConductivity:
-    value: 0.78
-    unit: W/m·K
+    value: 20.01
+    unit: "W/m\xB7K"
     confidence: 88
     description: Low thermal conductivity typical of glass materials
-    min: 0.02
-    max: 4.2
+    min: 0
+    max: 38.422
   hardness:
-    value: 5.5
+    value: 6.75
     unit: Mohs
     confidence: 86
     description: Vickers hardness of lead crystal
     min: 4.5
     max: 9
   youngsModulus:
-    value: 60
+    value: 205.0
     unit: GPa
     confidence: 89
     description: Elastic modulus of lead crystal glass
-    min: 10
-    max: 95
+    min: 31.5
+    max: 373.5
   thermalExpansion:
-    value: 9.2
-    unit: 10⁻⁶/K
+    value: 7.55
+    unit: "10\u207B\u2076/K"
     confidence: 85
     description: Coefficient of thermal expansion at room temperature
     min: 0.1
     max: 15
   specificHeat:
-    value: 670.0
-    unit: J/kg·K
+    value: 700.0
+    unit: "J/kg\xB7K"
     confidence: 87
     description: Specific heat capacity at room temperature
-    min: 0.5
-    max: 1
+    min: 653.0
+    max: 857.0
   refractiveIndex:
     value: 1.56
     unit: dimensionless
@@ -62,14 +55,14 @@ materialProperties:
     max: null
   absorptionCoefficient:
     value: 0.15
-    unit: cm⁻¹
+    unit: "cm\u207B\xB9"
     confidence: 82
     description: Optical absorption coefficient at 1064 nm wavelength
     min: null
     max: null
   ablationThreshold:
     value: 2.8
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 80
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
@@ -88,6 +81,45 @@ materialProperties:
     description: Visible light transmission for clear lead crystal
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 10.0
+    min: 0.001
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 5.0005
+  laserReflectivity:
+    confidence: 0.7
+    max: 92.0
+    min: 4.0
+    source: default_from_category_range
+    unit: '%'
+    value: 48.0
+  tensileStrength:
+    confidence: 0.7
+    max: 2000.0
+    min: 30.0
+    source: default_from_category_range
+    unit: MPa
+    value: 1015.0
+  thermalDiffusivity:
+    confidence: 0.7
+    max: 15.0
+    min: 0.01
+    source: default_from_category_range
+    unit: "mm\xB2/s"
+    value: 7.505
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 1723.0
+    min: 500.0
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 1111.5
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: softening
 applications:
 - 'Manufacturing: Industrial surface preparation and contamination removal'
 - 'Aerospace: Precision cleaning of aerospace components and assemblies'
@@ -111,7 +143,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: μm
+    unit: "\u03BCm"
     confidence: 89
     description: Beam spot diameter for precise cleaning control on Lead Crystal surfaces
     min: 50
@@ -139,7 +171,7 @@ machineSettings:
     max: 1000
   fluenceThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 91
     description: Fluence threshold for effective contaminant removal without damaging
       Lead Crystal substrate
@@ -284,9 +316,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

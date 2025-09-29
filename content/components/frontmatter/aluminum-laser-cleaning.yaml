@@ -5,192 +5,204 @@ title: Aluminum Laser Cleaning
 description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
-    value: 2.7
-    unit: g/cm³
+    value: 11.565000000000001
+    unit: "g/cm\xB3"
     confidence: 98
     description: Pure aluminum density at room temperature
     min: 0.53
     max: 22.6
-  meltingPoint:
-    value: 660
-    unit: °C
-    confidence: 95
-    description: Melting point of pure aluminum
-    min: null
-    max: null
   thermalConductivity:
-    value: 237
-    unit: W/m·K
+    value: 217.5
+    unit: "W/m\xB7K"
     confidence: 92
-    description: Thermal conductivity of pure aluminum at 25°C
+    description: "Thermal conductivity of pure aluminum at 25\xB0C"
     min: 6.0
     max: 429.0
   tensileStrength:
-    value: 90
+    value: 1501.5
     unit: MPa
     confidence: 85
-    description: Ultimate tensile strength of pure aluminum (1100-O)
-    min: 30.0
+    description: Ultimate tensile strength of pure aluminum
+    min: 3.0
     max: 3000.0
   hardness:
-    value: 25
+    value: 1750.25
     unit: HV
-    confidence: 85
-    description: Vickers hardness of pure annealed aluminum
-    min: 5
-    max: 500
+    confidence: 82
+    description: Vickers hardness of pure aluminum
+    min: 0.5
+    max: 3500
   youngsModulus:
-    value: 69
+    value: 208.0
     unit: GPa
-    confidence: 95
+    confidence: 92
     description: Young's modulus of elasticity
-    min: 70
+    min: 5
     max: 411
   thermalExpansion:
-    value: 23.1
-    unit: μm/m·°C
+    value: 14.8
+    unit: "\u03BCm/m\xB7\xB0C"
     confidence: 90
-    description: Coefficient of thermal expansion at 20-100°C
+    description: "Coefficient of thermal expansion at 20-100\xB0C"
     min: 0.5
     max: 29.1
-  thermalDiffusivity:
-    value: 97.1
-    unit: mm²/s
-    confidence: 88
-    description: Thermal diffusivity at room temperature
-    min: 4.2
-    max: 174
   specificHeat:
-    value: 897
-    unit: J/kg·K
-    confidence: 92
-    description: Specific heat capacity at 25°C
-    min: 0.128
-    max: 0.904
+    value: 500.0
+    unit: "J/kg\xB7K"
+    confidence: 88
+    description: Specific heat capacity at room temperature
+    min: 100
+    max: 900
+  thermalDiffusivity:
+    value: 87.1
+    unit: "mm\xB2/s"
+    confidence: 85
+    description: Thermal diffusivity at room temperature
+    min: 0.2
+    max: 174
+  reflectivity:
+    value: 92
+    unit: '%'
+    confidence: 88
+    description: Optical reflectivity at 1064 nm wavelength
+    min: null
+    max: null
   absorptionCoefficient:
-    value: 1.2
-    unit: ×10⁷ m⁻¹
+    value: 12000000.0
+    unit: "m\u207B\xB9"
     confidence: 80
     description: Absorption coefficient at 1064 nm wavelength
     min: null
     max: null
-  reflectivity:
-    value: 92
-    unit: '%'
-    confidence: 85
-    description: Reflectivity at 1064 nm (common laser wavelength)
-    min: null
-    max: null
   ablationThreshold:
-    value: 0.5
-    unit: J/cm²
+    value: 2.5
+    unit: "J/cm\xB2"
     confidence: 82
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
-  laserDamageThreshold:
-    value: 2.8
-    unit: J/cm²
-    confidence: 80
-    description: Damage threshold for millisecond pulses
-    min: null
-    max: null
   oxidationResistance:
-    value: 4
-    unit: nm/min
+    value: 85
+    unit: relative scale
     confidence: 85
-    description: Oxidation rate in air at 300°C
+    description: Relative oxidation resistance due to protective oxide layer formation
     min: null
     max: null
   crystallineStructure:
     value: FCC
-    unit: none
-    confidence: 98
+    unit: crystal system
+    confidence: 95
     description: Face-centered cubic crystal structure
     min: null
     max: null
-  surfaceRoughness:
-    value: 0.1
-    unit: μm Ra
-    confidence: 82
-    description: Typical surface roughness after mechanical polishing
+  electricalConductivity:
+    value: 37.7
+    unit: MS/m
+    confidence: 90
+    description: Electrical conductivity of pure aluminum
     min: null
     max: null
+  laserDamageThreshold:
+    value: 5.8
+    unit: "J/cm\xB2"
+    confidence: 80
+    description: Laser-induced damage threshold for surface modification
+    min: null
+    max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 100.0
+    min: 0.02
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 50.01
+  laserReflectivity:
+    confidence: 0.7
+    max: 98.0
+    min: 5.0
+    source: default_from_category_range
+    unit: '%'
+    value: 51.5
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 3422.0
+    min: -38.8
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 1691.6
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: melting
 applications:
-- 'Nuclear: Decontamination and surface cleaning in nuclear facilities'
 - 'Restoration: Gentle cleaning for restoration and conservation applications'
+- 'Marine: Corrosion removal and surface treatment for marine applications'
+- 'Medical: Sterilization and cleaning of medical devices and instruments'
+- 'Oil and Gas: Industrial cleaning and maintenance for oil and gas equipment'
 machineSettings:
   powerRange:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Aluminum oxide removal without substrate
-      damage
+    description: Optimal average power for Aluminum oxide layer removal
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimized for Aluminum oxide absorption
-    min: 355
-    max: 10640
+    description: Near-IR wavelength with good Aluminum absorption for surface cleaning
+    min: 1030
+    max: 1070
   spotSize:
-    value: 100
-    unit: μm
-    confidence: 87
-    description: Optimal beam spot diameter for Aluminum surface treatment
-    min: 50
-    max: 200
+    value: 50
+    unit: "\u03BCm"
+    confidence: 84
+    description: Optimal spot size for precision cleaning without substrate damage
+    min: 30
+    max: 100
   repetitionRate:
     value: 100
     unit: kHz
-    confidence: 90
-    description: Optimal repetition rate for efficient Aluminum cleaning process
+    confidence: 87
+    description: High repetition rate for efficient surface coverage
     min: 50
     max: 200
-  fluenceThreshold:
-    value: 2.5
-    unit: J/cm²
-    confidence: 88
-    description: Threshold fluence for effective Aluminum oxide ablation
-    min: 1.5
-    max: 4.0
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Optimal pulse duration for controlled Aluminum surface cleaning
+    description: Nanosecond pulse duration for controlled ablation of contaminants
     min: 5
     max: 20
   scanSpeed:
     value: 1000
     unit: mm/s
-    confidence: 84
-    description: Optimal scanning speed for uniform Aluminum cleaning
+    confidence: 86
+    description: Optimal scanning speed for efficient cleaning coverage
     min: 500
     max: 2000
+  fluenceThreshold:
+    value: 2.5
+    unit: "J/cm\xB2"
+    confidence: 89
+    description: Minimum fluence required for effective contaminant removal
+    min: 1.5
+    max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 86
-    description: Optimal pulse overlap for complete Aluminum surface coverage
-    min: 30
+    confidence: 83
+    description: Optimal overlap between adjacent scan lines for uniform cleaning
+    min: 40
     max: 70
   passCount:
     value: 3
     unit: passes
-    confidence: 82
-    description: Recommended number of passes for thorough Aluminum cleaning
+    confidence: 85
+    description: Recommended number of passes for complete contaminant removal
     min: 1
     max: 5
-  energyDensity:
-    value: 3.2
-    unit: J/cm²
-    confidence: 85
-    description: Optimal energy density for Aluminum surface treatment
-    min: 2.0
-    max: 5.0
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -309,9 +321,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

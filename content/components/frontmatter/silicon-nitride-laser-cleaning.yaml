@@ -5,54 +5,47 @@ title: Silicon Nitride Laser Cleaning
 description: Laser cleaning parameters for Alumina
 materialProperties:
   density:
-    value: 3.2
-    unit: g/cm³
+    value: 10.75
+    unit: "g/cm\xB3"
     confidence: 95
     description: Typical density for sintered silicon nitride
     min: 2.2
     max: 19.3
-  meltingPoint:
-    value: 1900
-    unit: °C
-    confidence: 90
-    description: Decomposition temperature rather than true melting point
-    min: null
-    max: null
   thermalConductivity:
-    value: 30
-    unit: W/m·K
+    value: 1000.015
+    unit: "W/m\xB7K"
     confidence: 88
     description: Room temperature thermal conductivity for high-purity Si3N4
     min: 0.03
     max: 2000.0
   hardness:
-    value: 1.0
+    value: 5.5
     unit: Mohs
     confidence: 92
     description: Mohs hardness at room temperature
-    min: 3.0
-    max: 10.0
+    min: 0.2
+    max: 9.8
   youngsModulus:
-    value: 310
+    value: 425.0
     unit: GPa
     confidence: 94
     description: Elastic modulus of dense silicon nitride
-    min: 150
-    max: 700
+    min: 12.0
+    max: 708.0
   thermalExpansion:
-    value: 3.2
-    unit: ×10⁻⁶/°C
+    value: 7.05
+    unit: "\xD710\u207B\u2076/\xB0C"
     confidence: 92
-    description: Coefficient of thermal expansion at 20-1000°C
+    description: "Coefficient of thermal expansion at 20-1000\xB0C"
     min: 0.1
     max: 14
   specificHeat:
-    value: 710
-    unit: J/kg·K
+    value: 700.0
+    unit: "J/kg\xB7K"
     confidence: 85
     description: Specific heat capacity at room temperature
-    min: 0.4
-    max: 1.1
+    min: 134.0
+    max: 1166.0
   flexuralStrength:
     value: 850
     unit: MPa
@@ -62,7 +55,7 @@ materialProperties:
     max: null
   absorptionCoefficient:
     value: 50
-    unit: cm⁻¹
+    unit: "cm\u207B\xB9"
     confidence: 80
     description: Approximate absorption coefficient for 1064 nm laser wavelength
     min: null
@@ -76,21 +69,21 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 85
     description: Approximate ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   laserDamageThreshold:
     value: 15
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 83
     description: Damage threshold for short pulse lasers
     min: null
     max: null
   oxidationResistance:
     value: 1400
-    unit: °C
+    unit: "\xB0C"
     confidence: 90
     description: Maximum service temperature in oxidizing environments
     min: null
@@ -99,7 +92,8 @@ materialProperties:
     value: Hexagonal
     unit: crystal system
     confidence: 95
-    description: Primary crystal structure of silicon nitride (α and β phases)
+    description: "Primary crystal structure of silicon nitride (\u03B1 and \u03B2\
+      \ phases)"
     min: null
     max: null
   porosity:
@@ -109,6 +103,45 @@ materialProperties:
     description: Typical porosity for high-quality sintered silicon nitride
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 50.0
+    min: 0.1
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 25.05
+  laserReflectivity:
+    confidence: 0.7
+    max: 90.0
+    min: 5.0
+    source: default_from_category_range
+    unit: '%'
+    value: 47.5
+  tensileStrength:
+    confidence: 0.7
+    max: 1000.0
+    min: 50.0
+    source: default_from_category_range
+    unit: MPa
+    value: 525.0
+  thermalDiffusivity:
+    confidence: 0.7
+    max: 120.0
+    min: 0.05
+    source: default_from_category_range
+    unit: "mm\xB2/s"
+    value: 60.025
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 3827.0
+    min: 1000.0
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 2413.5
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: thermal_shock
 applications:
 - 'Electronics: Precision cleaning of electronic components and circuit boards'
 - 'Semiconductor: Ultra-precise cleaning for semiconductor manufacturing'
@@ -133,7 +166,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 50
-    unit: μm
+    unit: "\u03BCm"
     confidence: 84
     description: Beam spot diameter for precise cleaning with adequate energy density
     min: 30
@@ -162,7 +195,7 @@ machineSettings:
     max: 1000
   fluenceThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 89
     description: Minimum fluence required for effective contaminant removal from Silicon
       Nitride
@@ -304,9 +337,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

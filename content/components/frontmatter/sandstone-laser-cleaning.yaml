@@ -5,64 +5,57 @@ title: Sandstone Laser Cleaning
 description: Laser cleaning parameters for Alabaster
 materialProperties:
   density:
-    value: 2.3
-    unit: g/cm³
+    value: 2.45
+    unit: "g/cm\xB3"
     confidence: 95
     description: Bulk density of typical sandstone with moderate porosity
     min: 1.5
     max: 3.4
-  meltingPoint:
-    value: 1700
-    unit: °C
-    confidence: 85
-    description: Approximate melting point of quartz-dominated sandstone
-    min: null
-    max: null
   thermalConductivity:
-    value: 2.5
-    unit: W/m·K
+    value: 4.1
+    unit: "W/m\xB7K"
     confidence: 90
     description: Thermal conductivity at room temperature for dry sandstone
-    min: 0.2
-    max: 5
+    min: 0.12
+    max: 8.28
   tensileStrength:
-    value: 8
+    value: 13.5
     unit: MPa
     confidence: 88
     description: Direct tensile strength of medium-grained sandstone
-    min: 2
-    max: 25
+    min: 0.92
+    max: 52.28
   hardness:
-    value: 6
+    value: 4.0
     unit: Mohs
     confidence: 95
     description: Mohs hardness scale for quartz-dominated sandstone
     min: 1
     max: 7
   youngsModulus:
-    value: 15
+    value: 55.0
     unit: GPa
     confidence: 85
     description: Elastic modulus under compressive loading
     min: 10
     max: 100
   thermalExpansion:
-    value: 12
-    unit: ×10⁻⁶/°C
+    value: 14.0
+    unit: "\xD710\u207B\u2076/\xB0C"
     confidence: 88
     description: Coefficient of thermal expansion for quartz-rich sandstone
-    min: 3
-    max: 16
+    min: 3.5
+    max: 26.9
   specificHeat:
-    value: 920
-    unit: J/kg·K
+    value: 900.0
+    unit: "J/kg\xB7K"
     confidence: 92
     description: Specific heat capacity at room temperature
-    min: 0.7
-    max: 1.2
+    min: 705.5
+    max: 1119.5
   thermalDiffusivity:
-    value: 1.18
-    unit: mm²/s
+    value: 1.35
+    unit: "mm\xB2/s"
     confidence: 85
     description: Thermal diffusivity calculated from conductivity, density, and specific
       heat
@@ -91,7 +84,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 85
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
@@ -103,6 +96,31 @@ materialProperties:
     description: Relative chemical stability rating in atmospheric conditions
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 20.0
+    min: 0.1
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 10.05
+  laserReflectivity:
+    confidence: 0.7
+    max: 80.0
+    min: 5.0
+    source: default_from_category_range
+    unit: '%'
+    value: 42.5
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 1700.0
+    min: 600.0
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 1150.0
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: thermal_shock
 applications:
 - 'Jewelry: Precision cleaning and polishing of precious metal jewelry'
 machineSettings:
@@ -122,7 +140,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 200
-    unit: μm
+    unit: "\u03BCm"
     confidence: 90
     description: Beam spot diameter for effective coverage and energy density control
     min: 100
@@ -150,7 +168,7 @@ machineSettings:
     max: 1000
   energyDensity:
     value: 3.2
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 89
     description: Fluence threshold for effective contaminant removal without substrate
       damage
@@ -295,9 +313,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

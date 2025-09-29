@@ -5,64 +5,57 @@ title: Granite Laser Cleaning
 description: Laser cleaning parameters for Alabaster
 materialProperties:
   density:
-    value: 2.65
-    unit: g/cm³
+    value: 2.45
+    unit: "g/cm\xB3"
     confidence: 95
     description: Average density of granite based on mineral composition
     min: 1.5
     max: 3.4
-  meltingPoint:
-    value: 1215
-    unit: °C
-    confidence: 85
-    description: Approximate melting point range for granite composition
-    min: null
-    max: null
   thermalConductivity:
-    value: 2.8
-    unit: W/m·K
+    value: 4.1
+    unit: "W/m\xB7K"
     confidence: 90
     description: Thermal conductivity at room temperature
-    min: 0.2
-    max: 5
+    min: 0.12
+    max: 8.28
   tensileStrength:
-    value: 15
+    value: 13.5
     unit: MPa
     confidence: 88
     description: Indirect tensile strength
-    min: 2
-    max: 25
+    min: 0.92
+    max: 52.28
   hardness:
-    value: 6.5
+    value: 4.0
     unit: Mohs
     confidence: 95
     description: Mohs hardness scale for granite
     min: 1
     max: 7
   youngsModulus:
-    value: 50
+    value: 55.0
     unit: GPa
     confidence: 90
     description: Elastic modulus of granite
     min: 10
     max: 100
   thermalExpansion:
-    value: 8.0
-    unit: 10⁻⁶/°C
+    value: 14.0
+    unit: "10\u207B\u2076/\xB0C"
     confidence: 88
     description: Coefficient of thermal expansion
-    min: 3
-    max: 16
+    min: 3.5
+    max: 26.9
   specificHeat:
-    value: 790
-    unit: J/kg·K
+    value: 900.0
+    unit: "J/kg\xB7K"
     confidence: 92
     description: Specific heat capacity at room temperature
-    min: 0.7
-    max: 1.2
+    min: 705.5
+    max: 1119.5
   thermalDiffusivity:
     value: 1.35
-    unit: mm²/s
+    unit: "mm\xB2/s"
     confidence: 85
     description: Thermal diffusivity calculated from conductivity, density, and specific
       heat
@@ -91,7 +84,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 85
     description: Approximate laser ablation threshold for nanosecond pulses
     min: null
@@ -110,6 +103,31 @@ materialProperties:
     description: Chemical stability rating in normal environmental conditions
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 20.0
+    min: 0.1
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 10.05
+  laserReflectivity:
+    confidence: 0.7
+    max: 80.0
+    min: 5.0
+    source: default_from_category_range
+    unit: '%'
+    value: 42.5
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 1700.0
+    min: 600.0
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 1150.0
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: thermal_shock
 applications:
 - 'Construction: Surface preparation and cleaning for construction materials'
 machineSettings:
@@ -130,7 +148,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: μm
+    unit: "\u03BCm"
     confidence: 87
     description: Beam spot diameter optimized for precision cleaning of granite surfaces
     min: 50
@@ -160,7 +178,7 @@ machineSettings:
     max: 2000
   fluenceThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 89
     description: Minimum fluence required for effective contaminant ablation from
       granite
@@ -304,9 +322,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

@@ -5,61 +5,54 @@ title: Titanium Carbide Laser Cleaning
 description: Laser cleaning parameters for Alumina
 materialProperties:
   density:
-    value: 4.93
-    unit: g/cm³
+    value: 10.75
+    unit: "g/cm\xB3"
     confidence: 98
     description: Theoretical density of TiC at room temperature
     min: 2.2
     max: 19.3
-  meltingPoint:
-    value: 3067
-    unit: °C
-    confidence: 95
-    description: Melting point of stoichiometric TiC
-    min: null
-    max: null
   thermalConductivity:
-    value: 21
-    unit: W/m·K
+    value: 1000.015
+    unit: "W/m\xB7K"
     confidence: 90
     description: Thermal conductivity at room temperature
     min: 0.03
     max: 2000.0
   hardness:
-    value: 1.0
+    value: 5.5
     unit: Mohs
     confidence: 92
     description: Mohs hardness (Mohs hardness) at room temperature
-    min: 3.0
-    max: 10.0
+    min: 0.2
+    max: 9.8
   youngsModulus:
-    value: 450
+    value: 425.0
     unit: GPa
     confidence: 95
     description: Young's modulus of elasticity
-    min: 150
-    max: 700
+    min: 12.0
+    max: 708.0
   thermalExpansion:
-    value: 7.4
-    unit: 10⁻⁶/K
+    value: 7.05
+    unit: "10\u207B\u2076/K"
     confidence: 92
-    description: Coefficient of thermal expansion (20-1000°C)
+    description: "Coefficient of thermal expansion (20-1000\xB0C)"
     min: 0.1
     max: 14
   thermalDiffusivity:
-    value: 8.2
-    unit: mm²/s
+    value: 60.025
+    unit: "mm\xB2/s"
     confidence: 85
     description: Thermal diffusivity at room temperature
-    min: 0.3
-    max: 120
+    min: 0
+    max: 9.012
   specificHeat:
-    value: 840
-    unit: J/kg·K
+    value: 700.0
+    unit: "J/kg\xB7K"
     confidence: 88
     description: Specific heat capacity at room temperature
-    min: 0.4
-    max: 1.1
+    min: 134.0
+    max: 1166.0
   flexuralStrength:
     value: 350
     unit: MPa
@@ -83,7 +76,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 80
     description: Estimated laser ablation threshold for nanosecond pulses
     min: null
@@ -97,11 +90,43 @@ materialProperties:
     max: null
   oxidationResistance:
     value: 1200
-    unit: °C
+    unit: "\xB0C"
     confidence: 90
     description: Maximum service temperature in oxidizing environments
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 50.0
+    min: 0.1
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 25.05
+  laserReflectivity:
+    confidence: 0.7
+    max: 90.0
+    min: 5.0
+    source: default_from_category_range
+    unit: '%'
+    value: 47.5
+  tensileStrength:
+    confidence: 0.7
+    max: 1000.0
+    min: 50.0
+    source: default_from_category_range
+    unit: MPa
+    value: 525.0
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 3827.0
+    min: 1000.0
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 2413.5
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: thermal_shock
 applications:
 - 'Aerospace: Precision cleaning of aerospace components and assemblies'
 machineSettings:
@@ -122,7 +147,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 50
-    unit: μm
+    unit: "\u03BCm"
     confidence: 90
     description: Beam spot diameter for precise Titanium Carbide surface treatment
     min: 30
@@ -136,14 +161,14 @@ machineSettings:
     max: 200
   fluenceThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 88
     description: Ablation threshold fluence for Titanium Carbide removal
     min: 1.8
     max: 3.5
   energyDensity:
     value: 3.2
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 85
     description: Optimal energy density for efficient TiC contaminant removal
     min: 2.5
@@ -297,9 +322,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

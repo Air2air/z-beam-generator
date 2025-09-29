@@ -5,68 +5,61 @@ title: Brass Laser Cleaning
 description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
-    value: 8.44
-    unit: g/cm³
+    value: 11.565000000000001
+    unit: "g/cm\xB3"
     confidence: 95
     description: Typical density for 70/30 brass (CuZn30) at room temperature
     min: 0.53
     max: 22.6
-  meltingPoint:
-    value: 915
-    unit: °C
-    confidence: 92
-    description: Melting point range for common brass alloys (900-930°C)
-    min: null
-    max: null
   thermalConductivity:
-    value: 120
-    unit: W/m·K
+    value: 217.5
+    unit: "W/m\xB7K"
     confidence: 90
-    description: Thermal conductivity of 70/30 brass at 20°C
+    description: "Thermal conductivity of 70/30 brass at 20\xB0C"
     min: 6.0
     max: 429.0
   tensileStrength:
-    value: 340
+    value: 1501.5
     unit: MPa
     confidence: 88
     description: Typical tensile strength for annealed brass
-    min: 30.0
-    max: 3000.0
+    min: 0
+    max: 1363.6
   hardness:
-    value: 75
+    value: 1750.25
     unit: HV
     confidence: 85
     description: Vickers hardness for annealed brass
-    min: 5
-    max: 500
+    min: 0
+    max: 3772.91
   youngsModulus:
-    value: 110
+    value: 208.0
     unit: GPa
     confidence: 92
     description: Elastic modulus of brass alloys
-    min: 70
-    max: 411
+    min: 0
+    max: 579.82
   thermalExpansion:
-    value: 19.0
-    unit: 10⁻⁶/K
+    value: 14.8
+    unit: "10\u207B\u2076/K"
     confidence: 88
-    description: Coefficient of thermal expansion for brass at 20-100°C
-    min: 0.5
-    max: 29.1
+    description: "Coefficient of thermal expansion for brass at 20-100\xB0C"
+    min: 1.7
+    max: 34.9
   thermalDiffusivity:
-    value: 35.2
-    unit: mm²/s
+    value: 87.1
+    unit: "mm\xB2/s"
     confidence: 85
     description: Thermal diffusivity calculated from thermal properties
-    min: 4.2
-    max: 174
+    min: 0
+    max: 191.376
   specificHeat:
-    value: 380
-    unit: J/kg·K
+    value: 500.0
+    unit: "J/kg\xB7K"
     confidence: 90
     description: Specific heat capacity at room temperature
-    min: 0.128
-    max: 0.904
+    min: 0
+    max: 1994.6
   reflectivity:
     value: 62
     unit: '%'
@@ -76,14 +69,14 @@ materialProperties:
     max: null
   absorptionCoefficient:
     value: 12000000.0
-    unit: m⁻¹
+    unit: "m\u207B\xB9"
     confidence: 80
     description: Absorption coefficient for IR laser wavelengths
     min: null
     max: null
   ablationThreshold:
     value: 0.8
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 78
     description: Estimated ablation threshold for nanosecond pulses at 1064nm
     min: null
@@ -104,11 +97,36 @@ materialProperties:
     max: null
   surfaceRoughness:
     value: 0.4
-    unit: μm Ra
+    unit: "\u03BCm Ra"
     confidence: 80
     description: Typical as-machined surface roughness
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 100.0
+    min: 0.02
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 50.01
+  laserReflectivity:
+    confidence: 0.7
+    max: 98.0
+    min: 5.0
+    source: default_from_category_range
+    unit: '%'
+    value: 51.5
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 3422.0
+    min: -38.8
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 1691.6
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: melting
 applications:
 - 'Oil and Gas: Industrial cleaning and maintenance for oil and gas equipment'
 - 'Automotive: Paint removal and surface preparation for automotive parts'
@@ -130,7 +148,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 50
-    unit: μm
+    unit: "\u03BCm"
     confidence: 84
     description: Beam spot diameter for precise cleaning resolution
     min: 30
@@ -158,7 +176,7 @@ machineSettings:
     max: 2000
   fluenceThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 89
     description: Minimum fluence required for effective Brass oxide removal
     min: 1.5
@@ -302,9 +320,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

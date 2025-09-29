@@ -5,59 +5,51 @@ title: CFRP Laser Cleaning
 description: Laser cleaning parameters for Carbon Fiber Reinforced Polymer (CFRP)
 materialProperties:
   density:
-    value: 1.6
-    unit: g/cm³
+    value: 4.25
+    unit: "g/cm\xB3"
     confidence: 95
     description: Typical density for CFRP composites with 60-70% fiber volume fraction
     min: 0.5
     max: 8
-  meltingPoint:
-    value: N/A
-    unit: °C
-    confidence: 90
-    description: CFRP decomposes rather than melts; decomposition begins around 350-400°C
-      for epoxy matrix
-    min: null
-    max: null
   thermalConductivity:
-    value: 5-150
-    unit: W/m·K
+    value: 200.05
+    unit: "W/m\xB7K"
     confidence: 85
-    description: 'Highly anisotropic: 5-10 W/m·K transverse, 100-150 W/m·K longitudinal
-      to fibers'
+    description: "Highly anisotropic: 5-10 W/m\xB7K transverse, 100-150 W/m\xB7K longitudinal\
+      \ to fibers"
     min: 0.1
     max: 400
   tensileStrength:
-    value: 1500-3500
+    value: 3025.0
     unit: MPa
     confidence: 94
     description: 'Highly dependent on fiber orientation: 1500-2000 MPa transverse,
       2500-3500 MPa longitudinal'
-    min: 50
-    max: 6000
+    min: 0
+    max: 2748.5
   youngsModulus:
-    value: 70-230
+    value: 750.0005
     unit: GPa
     confidence: 96
     description: 'Anisotropic modulus: 70-100 GPa transverse, 180-230 GPa longitudinal
       to fibers'
-    min: 5
-    max: 1000
+    min: 0
+    max: 274.999
   thermalExpansion:
-    value: -1 to 30
-    unit: ×10⁻⁶/°C
+    value: 124.5
+    unit: "\xD710\u207B\u2076/\xB0C"
     confidence: 88
     description: 'Anisotropic coefficient: negative in fiber direction (-1 to 0),
       positive transverse (20-30)'
     min: -1
     max: 50
   specificHeat:
-    value: 900
-    unit: J/kg·K
+    value: 1000.0
+    unit: "J/kg\xB7K"
     confidence: 92
     description: Specific heat capacity at room temperature for typical CFRP composites
-    min: 0.5
-    max: 2
+    min: 734.0
+    max: 2006.0
   absorptionCoefficient:
     value: 0.7-0.95
     unit: dimensionless
@@ -74,39 +66,78 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 0.5-2.0
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 80
     description: Laser ablation threshold for nanosecond pulses at 1064 nm wavelength
     min: null
     max: null
   laserDamageThreshold:
     value: 1.5-3.0
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 78
     description: Damage threshold before significant material degradation occurs
     min: null
     max: null
   oxidationResistance:
     value: '400'
-    unit: °C
+    unit: "\xB0C"
     confidence: 88
     description: Maximum continuous service temperature before oxidative degradation
     min: null
     max: null
   surfaceRoughness:
     value: 0.5-5.0
-    unit: μm Ra
+    unit: "\u03BCm Ra"
     confidence: 85
     description: Typical surface roughness range for as-manufactured CFRP surfaces
     min: null
     max: null
   glassTransitionTemperature:
     value: 120-180
-    unit: °C
+    unit: "\xB0C"
     confidence: 90
     description: Glass transition temperature range for epoxy matrix systems
     min: null
     max: null
+  hardness:
+    confidence: 0.7
+    max: 90.0
+    min: 20.0
+    source: default_from_category_range
+    unit: HRC
+    value: 55.0
+  laserAbsorption:
+    confidence: 0.7
+    max: 200.0
+    min: 0.05
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 100.025
+  laserReflectivity:
+    confidence: 0.7
+    max: 80.0
+    min: 2.0
+    source: default_from_category_range
+    unit: '%'
+    value: 41.0
+  thermalDiffusivity:
+    confidence: 0.7
+    max: 180.0
+    min: 0.1
+    source: default_from_category_range
+    unit: "mm\xB2/s"
+    value: 90.05
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 2000.0
+    min: 150.0
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 1075.0
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: decomposition
 applications:
 - 'Automotive: Paint removal and surface preparation for automotive parts'
 - 'Medical: Sterilization and cleaning of medical devices and instruments'
@@ -129,7 +160,7 @@ machineSettings:
     max: 1080
   spotSize:
     value: 50
-    unit: μm
+    unit: "\u03BCm"
     confidence: 84
     description: Focused spot size for precise cleaning resolution
     min: 30
@@ -157,7 +188,7 @@ machineSettings:
     max: 2000
   fluenceThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 89
     description: Fluence threshold for contaminant removal without CFRP damage
     min: 1.5
@@ -301,9 +332,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

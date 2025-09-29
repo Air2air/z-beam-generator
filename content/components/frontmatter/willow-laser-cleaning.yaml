@@ -5,61 +5,54 @@ title: Willow Laser Cleaning
 description: Laser cleaning parameters for Ash
 materialProperties:
   density:
-    value: 0.45
-    unit: g/cm³
+    value: 0.685
+    unit: "g/cm\xB3"
     confidence: 85
     description: Average density of willow wood at 12% moisture content
     min: 0.12
     max: 1.25
-  meltingPoint:
-    value: 280
-    unit: °C
-    confidence: 82
-    description: Pyrolysis onset temperature where thermal decomposition begins
-    min: null
-    max: null
   thermalConductivity:
-    value: 0.12
-    unit: W/m·K
+    value: 0.22
+    unit: "W/m\xB7K"
     confidence: 88
     description: Thermal conductivity perpendicular to grain direction
     min: 0.04
     max: 0.4
   tensileStrength:
-    value: 85
+    value: 110.0
     unit: MPa
     confidence: 83
     description: Tensile strength parallel to grain direction
-    min: 20
-    max: 200
+    min: 2.5
+    max: 152.5
   hardness:
-    value: 180
+    value: 2510.0
     unit: lbf
     confidence: 82
     description: Janka hardness test value
-    min: 0.4
-    max: 22.5
+    min: 0
+    max: 4650.8
   youngsModulus:
-    value: 9.2
+    value: 2502.5
     unit: GPa
     confidence: 84
     description: Elastic modulus parallel to grain direction
-    min: 5
-    max: 25
+    min: 0
+    max: 3299.24
   thermalExpansion:
-    value: 5.4
-    unit: 10^-6/°C
+    value: 30.000015
+    unit: "10^-6/\xB0C"
     confidence: 80
     description: Linear thermal expansion coefficient tangential direction
-    min: 3
-    max: 60
+    min: 0
+    max: 33.0
   specificHeat:
-    value: 1700
-    unit: J/kg·K
+    value: 1650.0
+    unit: "J/kg\xB7K"
     confidence: 85
     description: Specific heat capacity at room temperature
-    min: 1.2
-    max: 4.2
+    min: 695.0
+    max: 2555.0
   absorptionCoefficient:
     value: 0.78
     unit: dimensionless
@@ -76,7 +69,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 1.8
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 81
     description: Minimum fluence required for material removal at 1064nm
     min: null
@@ -90,18 +83,18 @@ materialProperties:
     max: null
   surfaceRoughness:
     value: 12.5
-    unit: μm Ra
+    unit: "\u03BCm Ra"
     confidence: 83
     description: Average surface roughness of planed willow wood
     min: null
     max: null
   thermalDiffusivity:
-    value: 0.16
-    unit: mm²/s
+    value: 0.20005
+    unit: "mm\xB2/s"
     confidence: 82
     description: Thermal diffusivity perpendicular to grain direction
-    min: 0.1
-    max: 0.4
+    min: 0
+    max: 0.209
   chemicalStability:
     value: 3.2
     unit: pH range stable
@@ -109,6 +102,31 @@ materialProperties:
     description: Stable pH range before significant degradation occurs
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 50.0
+    min: 1.0
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 25.5
+  laserReflectivity:
+    confidence: 0.7
+    max: 60.0
+    min: 10.0
+    source: default_from_category_range
+    unit: '%'
+    value: 35.0
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 500.0
+    min: 200.0
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 350.0
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: carbonization
 applications:
 - laser cleaning
 - surface preparation
@@ -129,7 +147,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: μm
+    unit: "\u03BCm"
     confidence: 92
     description: Optimal beam diameter for precise cleaning control on Willow surface
     min: 50
@@ -143,7 +161,7 @@ machineSettings:
     max: 50
   fluenceThreshold:
     value: 1.2
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 88
     description: Threshold fluence for effective contaminant removal from Willow surface
     min: 0.8
@@ -179,7 +197,7 @@ machineSettings:
     max: 4
   energyDensity:
     value: 3.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 84
     description: Optimal energy density for effective cleaning while preserving Willow
       substrate
@@ -303,9 +321,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

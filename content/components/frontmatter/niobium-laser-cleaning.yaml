@@ -5,68 +5,61 @@ title: Niobium Laser Cleaning
 description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
-    value: 8.57
-    unit: g/cm³
+    value: 11.565000000000001
+    unit: "g/cm\xB3"
     confidence: 98
     description: Density of pure niobium at room temperature
     min: 0.53
     max: 22.6
-  meltingPoint:
-    value: 2477
-    unit: °C
-    confidence: 97
-    description: High melting point characteristic of refractory metals
-    min: null
-    max: null
   thermalConductivity:
-    value: 53.7
-    unit: W/m·K
+    value: 217.5
+    unit: "W/m\xB7K"
     confidence: 92
-    description: Thermal conductivity at 20°C
+    description: "Thermal conductivity at 20\xB0C"
     min: 6.0
     max: 429.0
   tensileStrength:
-    value: 275
+    value: 1501.5
     unit: MPa
     confidence: 90
     description: Ultimate tensile strength of annealed niobium
-    min: 30.0
-    max: 3000.0
+    min: 0
+    max: 1363.6
   hardness:
-    value: 75
+    value: 1750.25
     unit: HV
     confidence: 88
     description: Vickers hardness of pure annealed niobium
-    min: 5
-    max: 500
+    min: 0
+    max: 3772.91
   youngsModulus:
-    value: 105
+    value: 208.0
     unit: GPa
     confidence: 95
     description: Young's modulus of elasticity
-    min: 70
-    max: 411
+    min: 0
+    max: 579.82
   thermalExpansion:
-    value: 7.3
-    unit: 10⁻⁶/K
+    value: 14.8
+    unit: "10\u207B\u2076/K"
     confidence: 90
-    description: Coefficient of thermal expansion at 20°C
-    min: 0.5
-    max: 29.1
+    description: "Coefficient of thermal expansion at 20\xB0C"
+    min: 1.7
+    max: 34.9
   specificHeat:
-    value: 265.0
-    unit: J/kg·K
+    value: 500.0
+    unit: "J/kg\xB7K"
     confidence: 88
-    description: Specific heat capacity at 25°C
-    min: 0.128
-    max: 0.904
+    description: "Specific heat capacity at 25\xB0C"
+    min: 0
+    max: 1994.6
   thermalDiffusivity:
-    value: 23.7
-    unit: mm²/s
+    value: 87.1
+    unit: "mm\xB2/s"
     confidence: 85
     description: Thermal diffusivity at room temperature
-    min: 4.2
-    max: 174
+    min: 0
+    max: 191.376
   absorptionCoefficient:
     value: 0.45
     unit: dimensionless
@@ -83,7 +76,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 2.8
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 85
     description: Estimated ablation threshold for nanosecond pulses at 1064 nm
     min: null
@@ -97,18 +90,43 @@ materialProperties:
     max: null
   oxidationResistance:
     value: 400
-    unit: °C
+    unit: "\xB0C"
     confidence: 88
     description: Maximum temperature for protective oxide layer stability in air
     min: null
     max: null
   electricalResistivity:
     value: 15.2
-    unit: μΩ·cm
+    unit: "\u03BC\u03A9\xB7cm"
     confidence: 92
-    description: Electrical resistivity at 20°C
+    description: "Electrical resistivity at 20\xB0C"
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 100.0
+    min: 0.02
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 50.01
+  laserReflectivity:
+    confidence: 0.7
+    max: 98.0
+    min: 5.0
+    source: default_from_category_range
+    unit: '%'
+    value: 51.5
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 3422.0
+    min: -38.8
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 1691.6
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: melting
 applications:
 - 'Aerospace: Precision cleaning of aerospace components and assemblies'
 - 'Restoration: Gentle cleaning for restoration and conservation applications'
@@ -132,7 +150,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 50
-    unit: μm
+    unit: "\u03BCm"
     confidence: 84
     description: Optimal spot size balancing cleaning efficiency and resolution for
       surface contaminants
@@ -164,7 +182,7 @@ machineSettings:
     max: 2000
   fluence:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 90
     description: Fluence threshold for niobium oxide removal while preserving base
       material integrity
@@ -303,9 +321,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

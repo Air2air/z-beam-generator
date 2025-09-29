@@ -5,64 +5,57 @@ title: PVC Laser Cleaning
 description: Laser cleaning parameters for Polycarbonate (PVC)
 materialProperties:
   density:
-    value: 1.38
-    unit: g/cm³
+    value: 1.5250000000000001
+    unit: "g/cm\xB3"
     confidence: 95
     description: Density of rigid PVC at room temperature
     min: 0.85
     max: 2.2
-  meltingPoint:
-    value: 160
-    unit: °C
-    confidence: 85
-    description: Glass transition temperature (Tg) - PVC decomposes before melting
-    min: null
-    max: null
   thermalConductivity:
-    value: 0.16
-    unit: W/m·K
+    value: 1.51
+    unit: "W/m\xB7K"
     confidence: 90
-    description: Thermal conductivity of rigid PVC at 20°C
+    description: "Thermal conductivity of rigid PVC at 20\xB0C"
     min: 0.02
     max: 3
   tensileStrength:
-    value: 50
+    value: 205.0
     unit: MPa
     confidence: 90
     description: Tensile strength of rigid PVC
     min: 10
     max: 400
   hardness:
-    value: 115
+    value: 50.0
     unit: Shore D
     confidence: 88
     description: Hardness on Shore D scale for rigid PVC
     min: null
     max: null
   youngsModulus:
-    value: 3.0
+    value: 2000.005
     unit: GPa
     confidence: 92
     description: Young's modulus of elasticity for rigid PVC
-    min: 0.01
-    max: 50
+    min: 0
+    max: 3629.98
   thermalExpansion:
-    value: 50
-    unit: 10⁻⁶/°C
+    value: 105.0
+    unit: "10\u207B\u2076/\xB0C"
     confidence: 88
     description: Linear thermal expansion coefficient for rigid PVC
     min: 10
     max: 200
   specificHeat:
-    value: 900
-    unit: J/kg·K
+    value: 1750.0
+    unit: "J/kg\xB7K"
     confidence: 85
     description: Specific heat capacity at room temperature
-    min: 1
-    max: 2.5
+    min: 800.0
+    max: 2000.0
   absorptionCoefficient:
     value: 850
-    unit: cm⁻¹
+    unit: "cm\u207B\xB9"
     confidence: 82
     description: Absorption coefficient at 1064 nm wavelength
     min: null
@@ -76,7 +69,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 0.8
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 85
     description: Laser ablation threshold for 1064 nm nanosecond pulses
     min: null
@@ -90,11 +83,43 @@ materialProperties:
     max: null
   surfaceRoughness:
     value: 0.8
-    unit: μm Ra
+    unit: "\u03BCm Ra"
     confidence: 82
     description: Typical surface roughness of extruded PVC
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 100.0
+    min: 0.1
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 50.05
+  laserReflectivity:
+    confidence: 0.7
+    max: 95.0
+    min: 5.0
+    source: default_from_category_range
+    unit: '%'
+    value: 50.0
+  thermalDiffusivity:
+    confidence: 0.7
+    max: 1.0
+    min: 0.05
+    source: default_from_category_range
+    unit: "mm\xB2/s"
+    value: 0.525
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 400.0
+    min: 80.0
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 240.0
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: melting
 applications:
 - 'Automotive: Paint removal and surface preparation for automotive parts'
 - 'Electronics: Precision cleaning of electronic components and circuit boards'
@@ -118,7 +143,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: μm
+    unit: "\u03BCm"
     confidence: 89
     description: Optimal spot size for precision cleaning of PVC surfaces
     min: 50
@@ -132,14 +157,14 @@ machineSettings:
     max: 100
   fluenceThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 88
     description: Threshold fluence for effective PVC ablation without substrate damage
     min: 1.8
     max: 3.2
   energyDensity:
     value: 3.0
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 85
     description: Optimal energy density for controlled PVC removal
     min: 2.2
@@ -182,7 +207,7 @@ machineSettings:
     max: 70
   dwellTime:
     value: 200
-    unit: μs
+    unit: "\u03BCs"
     confidence: 82
     description: Optimal dwell time per spot for effective PVC ablation
     min: 100
@@ -305,9 +330,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

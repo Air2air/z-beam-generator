@@ -5,54 +5,47 @@ title: Alabaster Laser Cleaning
 description: Laser cleaning parameters for Alabaster
 materialProperties:
   density:
-    value: 2.32
-    unit: g/cm³
+    value: 2.45
+    unit: "g/cm\xB3"
     confidence: 95
     description: Typical density of gypsum-based alabaster
     min: 1.5
     max: 3.4
-  meltingPoint:
-    value: 1450
-    unit: °C
-    confidence: 90
-    description: Decomposition temperature where gypsum converts to plaster
-    min: null
-    max: null
   thermalConductivity:
-    value: 0.8
-    unit: W/m·K
+    value: 4.1
+    unit: "W/m\xB7K"
     confidence: 88
     description: Low thermal conductivity typical of gypsum minerals
-    min: 0.2
-    max: 5
+    min: 0.12
+    max: 8.28
   hardness:
-    value: 2
+    value: 4.0
     unit: Mohs
     confidence: 95
     description: Mohs hardness scale - very soft mineral
     min: 1
     max: 7
   youngsModulus:
-    value: 25
+    value: 55.0
     unit: GPa
     confidence: 82
     description: Elastic modulus for gypsum alabaster
     min: 10
     max: 100
   thermalExpansion:
-    value: 25
-    unit: ×10⁻⁶/°C
+    value: 14.0
+    unit: "\xD710\u207B\u2076/\xB0C"
     confidence: 85
     description: Coefficient of thermal expansion at room temperature
-    min: 3
-    max: 16
+    min: 3.5
+    max: 26.9
   specificHeat:
-    value: 1085
-    unit: J/kg·K
+    value: 900.0
+    unit: "J/kg\xB7K"
     confidence: 87
-    description: Specific heat capacity at 20°C
-    min: 0.7
-    max: 1.2
+    description: "Specific heat capacity at 20\xB0C"
+    min: 705.5
+    max: 1119.5
   compressiveStrength:
     value: 40
     unit: MPa
@@ -62,7 +55,7 @@ materialProperties:
     max: null
   absorptionCoefficient:
     value: 0.15
-    unit: cm⁻¹
+    unit: "cm\u207B\xB9"
     confidence: 80
     description: Optical absorption coefficient at 1064 nm wavelength
     min: null
@@ -76,7 +69,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 1.2
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 78
     description: Laser ablation threshold for Nd:YAG lasers
     min: null
@@ -102,6 +95,45 @@ materialProperties:
     description: Stable in dry conditions, soluble in acids and hot water
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 20.0
+    min: 0.1
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 10.05
+  laserReflectivity:
+    confidence: 0.7
+    max: 80.0
+    min: 5.0
+    source: default_from_category_range
+    unit: '%'
+    value: 42.5
+  tensileStrength:
+    confidence: 0.7
+    max: 25.0
+    min: 2.0
+    source: default_from_category_range
+    unit: MPa
+    value: 13.5
+  thermalDiffusivity:
+    confidence: 0.7
+    max: 2.5
+    min: 0.2
+    source: default_from_category_range
+    unit: "mm\xB2/s"
+    value: 1.35
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 1700.0
+    min: 600.0
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 1150.0
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: thermal_shock
 applications:
 - 'Oil and Gas: Industrial cleaning and maintenance for oil and gas equipment'
 machineSettings:
@@ -122,7 +154,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: μm
+    unit: "\u03BCm"
     confidence: 89
     description: Optimal beam diameter for precise cleaning control
     min: 50
@@ -150,7 +182,7 @@ machineSettings:
     max: 1000
   fluenceThreshold:
     value: 1.2
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 91
     description: Fluence threshold for effective contaminant removal without damaging
       Alabaster
@@ -172,7 +204,7 @@ machineSettings:
     max: 4
   energyDensity:
     value: 3.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 85
     description: Energy density optimized for Alabaster's thermal sensitivity
     min: 2.0
@@ -295,9 +327,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

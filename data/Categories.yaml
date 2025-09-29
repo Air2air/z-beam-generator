@@ -176,12 +176,20 @@ materialPropertyDescriptions:
       stone: 1.5-3.2
       masonry: 1.8-2.8
       semiconductor: 2.3-19.3
-  meltingPoint:
-    description: Temperature at which material transitions from solid to liquid
+  thermalDestructionPoint:
+    description: Temperature at which thermal damage begins (replaces melting point for accuracy)
     unit: °C
-    relevance: Critical threshold for thermal damage assessment
-    laser_cleaning_impact: Determines safe operating temperature limits
-    safety_considerations: Stay well below melting point to prevent substrate damage
+    relevance: Critical threshold for thermal damage assessment across all material types
+    laser_cleaning_impact: Determines safe operating temperature limits for substrate protection
+    safety_considerations: Stay well below destruction point to prevent substrate damage
+    scientific_accuracy: Accounts for various thermal destruction mechanisms beyond simple melting
+  thermalDestructionType:
+    description: Primary mechanism of thermal failure for this material category
+    unit: categorical
+    relevance: Determines appropriate temperature monitoring and safety protocols
+    laser_cleaning_impact: Influences parameter selection and damage assessment methods
+    safety_considerations: Different destruction types require different preventive measures
+    valid_values: ["melting", "decomposition", "carbonization", "oxidation", "sublimation", "thermal_shock", "softening", "spalling", "calcination", "delamination"]
   thermalConductivity:
     description: Rate of heat transfer through the material
     unit: W/m·K
@@ -307,6 +315,8 @@ standardOutcomeMetrics:
     description: Prevention of heat-related material alterations during cleaning
 categories:
   ceramic:
+    name: "Ceramic Materials"
+    description: "Advanced ceramic materials including technical ceramics, porcelain, and ceramic composites used in laser cleaning applications"
     category_ranges:
       density:
         max: 19.3
@@ -340,7 +350,7 @@ categories:
         max: 3827
         min: 1000
         unit: °C
-      thermalDestructionType: melting
+      thermalDestructionType: thermal_shock
       thermalDiffusivity:
         max: 120
         min: 0.05
@@ -434,6 +444,8 @@ categories:
     - NSF/ANSI 51 - Food Equipment Materials
     - OSHA 29 CFR 1926.95 - Personal Protective Equipment
   composite:
+    name: "Composite Materials"
+    description: "Engineered composite materials including fiber-reinforced polymers, matrix composites, and hybrid materials for specialized cleaning applications"
     category_ranges:
       density:
         max: 8
@@ -502,6 +514,8 @@ categories:
     - IEC 60825 - Safety of Laser Products
     - OSHA 29 CFR 1926.95 - Personal Protective Equipment
   glass:
+    name: "Glass Materials"
+    description: "Various glass types including optical glass, borosilicate, tempered glass, and specialty glass materials for precision laser cleaning"
     category_ranges:
       density:
         max: 7.6
@@ -578,6 +592,8 @@ categories:
     - IEC 60825 - Safety of Laser Products
     - OSHA 29 CFR 1926.95 - Personal Protective Equipment
   masonry:
+    name: "Masonry Materials"
+    description: "Construction masonry materials including concrete, brick, mortar, stucco, and stone-based building materials for restoration cleaning"
     category_ranges:
       density:
         max: 2.8
@@ -611,7 +627,7 @@ categories:
         max: 1200
         min: 500
         unit: °C
-      thermalDestructionType: decomposition
+      thermalDestructionType: spalling
       thermalDiffusivity:
         max: 1
         min: 0.1
@@ -659,6 +675,8 @@ categories:
     - IEC 60825 - Safety of Laser Products
     - OSHA 29 CFR 1926.95 - Personal Protective Equipment
   metal:
+    name: "Metallic Materials"
+    description: "Pure metals, alloys, and metallic compounds including steel, aluminum, precious metals, and industrial alloys for precision cleaning"
     category_ranges:
       density:
         max: 22.6
@@ -769,6 +787,8 @@ categories:
     - IEC 60825 - Safety of Laser Products
     - OSHA 29 CFR 1926.95 - Personal Protective Equipment
   plastic:
+    name: "Plastic Materials"
+    description: "Polymeric materials including thermoplastics, thermosets, elastomers, and specialty plastic compounds for delicate cleaning applications"
     category_ranges:
       density:
         max: 2.2
@@ -836,6 +856,8 @@ categories:
     - IEC 60825 - Safety of Laser Products
     - OSHA 29 CFR 1926.95 - Personal Protective Equipment
   semiconductor:
+    name: "Semiconductor Materials"
+    description: "Electronic semiconductor materials including silicon, gallium compounds, and advanced semiconductor substrates for high-precision cleaning"
     category_ranges:
       density:
         max: 7.13
@@ -939,6 +961,8 @@ categories:
     - OSHA 29 CFR 1926.95 - Personal Protective Equipment
     - SEMI M1 - Specification for Polished Single Crystal Silicon Wafers
   stone:
+    name: "Natural Stone Materials"
+    description: "Natural stone materials including granite, marble, limestone, slate, and quarried stone for architectural restoration cleaning"
     category_ranges:
       density:
         max: 3.4
@@ -972,7 +996,7 @@ categories:
         max: 1700
         min: 600
         unit: °C
-      thermalDestructionType: decomposition
+      thermalDestructionType: thermal_shock
       thermalDiffusivity:
         max: 2.5
         min: 0.2
@@ -1057,6 +1081,8 @@ categories:
     - OSHA 29 CFR 1926.95 - Personal Protective Equipment
     - UNESCO Guidelines for Cultural Heritage Conservation
   wood:
+    name: "Wood Materials"
+    description: "Natural and engineered wood materials including hardwoods, softwoods, plywood, and composite wood products for gentle cleaning applications"
     category_ranges:
       density:
         max: 1.25
@@ -1090,7 +1116,7 @@ categories:
         max: 500
         min: 200
         unit: °C
-      thermalDestructionType: decomposition
+      thermalDestructionType: carbonization
       thermalDiffusivity:
         max: 0.4
         min: 0.0001

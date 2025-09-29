@@ -5,68 +5,61 @@ title: Tempered Glass Laser Cleaning
 description: Laser cleaning parameters for Borosilicate Glass
 materialProperties:
   density:
-    value: 2.5
-    unit: g/cm³
+    value: 4.3999999999999995
+    unit: "g/cm\xB3"
     confidence: 95
     description: Density of soda-lime tempered glass at room temperature
     min: 1.2
     max: 7.6
-  meltingPoint:
-    value: 1000
-    unit: °C
-    confidence: 90
-    description: Softening/melting point of soda-lime glass
-    min: null
-    max: null
   thermalConductivity:
-    value: 1.0
-    unit: W/m·K
+    value: 20.01
+    unit: "W/m\xB7K"
     confidence: 88
     description: Thermal conductivity of tempered glass at room temperature
-    min: 0.02
-    max: 4.2
+    min: 0
+    max: 38.422
   tensileStrength:
-    value: 70
+    value: 1015.0
     unit: MPa
     confidence: 85
     description: Tensile strength of tempered glass due to surface compression
     min: 30
     max: 2000
   hardness:
-    value: 6.0
+    value: 6.75
     unit: Mohs
     confidence: 88
     description: Hardness on Mohs scale for tempered glass
     min: 4.5
     max: 9
   youngsModulus:
-    value: 70
+    value: 205.0
     unit: GPa
     confidence: 95
     description: Young's modulus of elasticity for tempered glass
-    min: 10
-    max: 95
+    min: 31.5
+    max: 373.5
   thermalExpansion:
-    value: 8.5
-    unit: 10⁻⁶/°C
+    value: 7.55
+    unit: "10\u207B\u2076/\xB0C"
     confidence: 92
     description: Coefficient of thermal expansion for soda-lime glass
     min: 0.1
     max: 15
   thermalDiffusivity:
-    value: 0.5
-    unit: mm²/s
+    value: 7.505
+    unit: "mm\xB2/s"
     confidence: 85
     description: Thermal diffusivity at room temperature
-    min: 0.01
-    max: 1.8
+    min: 0
+    max: 13.7
   specificHeat:
-    value: 840
-    unit: J/kg·K
+    value: 700.0
+    unit: "J/kg\xB7K"
     confidence: 90
     description: Specific heat capacity of tempered glass
-    min: 0.5
-    max: 1
+    min: 653.0
+    max: 857.0
   flexuralStrength:
     value: 120
     unit: MPa
@@ -76,7 +69,7 @@ materialProperties:
     max: null
   absorptionCoefficient:
     value: 0.1
-    unit: cm⁻¹
+    unit: "cm\u207B\xB9"
     confidence: 82
     description: Optical absorption coefficient at 1064 nm wavelength
     min: null
@@ -104,14 +97,14 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 5.0
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 80
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   laserDamageThreshold:
     value: 10.0
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 82
     description: Laser-induced damage threshold for tempered glass surfaces
     min: null
@@ -125,18 +118,43 @@ materialProperties:
     max: null
   surfaceRoughness:
     value: 0.01
-    unit: μm Ra
+    unit: "\u03BCm Ra"
     confidence: 85
     description: Typical surface roughness of commercial tempered glass
     min: null
     max: null
   thermalShockResistance:
     value: 180
-    unit: °C
+    unit: "\xB0C"
     confidence: 85
     description: Maximum temperature differential tempered glass can withstand
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 10.0
+    min: 0.001
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 5.0005
+  laserReflectivity:
+    confidence: 0.7
+    max: 92.0
+    min: 4.0
+    source: default_from_category_range
+    unit: '%'
+    value: 48.0
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 1723.0
+    min: 500.0
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 1111.5
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: softening
 applications:
 - 'Optics: Precision cleaning of optical components and lenses'
 - 'Semiconductor: Ultra-precise cleaning for semiconductor manufacturing'
@@ -160,7 +178,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 50
-    unit: μm
+    unit: "\u03BCm"
     confidence: 84
     description: Beam spot diameter for precise cleaning control on glass surface
     min: 30
@@ -174,7 +192,7 @@ machineSettings:
     max: 200
   fluenceThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 88
     description: Threshold fluence for effective contaminant removal without glass
       substrate damage
@@ -211,7 +229,7 @@ machineSettings:
     max: 3
   energyDensity:
     value: 12.7
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 82
     description: Calculated energy density based on spot size and pulse energy parameters
     min: 8.0
@@ -334,9 +352,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

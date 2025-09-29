@@ -5,68 +5,61 @@ title: Copper Laser Cleaning
 description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
-    value: 8.96
-    unit: g/cm³
+    value: 11.565000000000001
+    unit: "g/cm\xB3"
     confidence: 99
-    description: Pure copper density at 20°C
+    description: "Pure copper density at 20\xB0C"
     min: 0.53
     max: 22.6
-  meltingPoint:
-    value: 1085
-    unit: °C
-    confidence: 98
-    description: Melting point of pure copper
-    min: null
-    max: null
   thermalConductivity:
-    value: 401
-    unit: W/m·K
+    value: 217.5
+    unit: "W/m\xB7K"
     confidence: 97
-    description: Thermal conductivity at 20°C
+    description: "Thermal conductivity at 20\xB0C"
     min: 6.0
     max: 429.0
   tensileStrength:
-    value: 210
+    value: 1501.5
     unit: MPa
     confidence: 90
     description: Typical tensile strength for annealed copper
-    min: 30.0
-    max: 3000.0
+    min: 0
+    max: 1363.6
   hardness:
-    value: 45
+    value: 1750.25
     unit: HV
     confidence: 88
     description: Vickers hardness for annealed copper
-    min: 5
-    max: 500
+    min: 0
+    max: 3772.91
   youngsModulus:
-    value: 110
+    value: 208.0
     unit: GPa
     confidence: 96
     description: Young's modulus of elasticity
-    min: 70
-    max: 411
+    min: 0
+    max: 579.82
   thermalExpansion:
-    value: 16.5
-    unit: μm/m·K
+    value: 14.8
+    unit: "\u03BCm/m\xB7K"
     confidence: 95
-    description: Coefficient of linear thermal expansion at 20°C
-    min: 0.5
-    max: 29.1
+    description: "Coefficient of linear thermal expansion at 20\xB0C"
+    min: 1.7
+    max: 34.9
   thermalDiffusivity:
-    value: 117
-    unit: mm²/s
+    value: 87.1
+    unit: "mm\xB2/s"
     confidence: 92
     description: Thermal diffusivity at room temperature
-    min: 4.2
-    max: 174
+    min: 0
+    max: 191.376
   specificHeat:
-    value: 385
-    unit: J/kg·K
+    value: 500.0
+    unit: "J/kg\xB7K"
     confidence: 94
-    description: Specific heat capacity at 20°C
-    min: 0.128
-    max: 0.904
+    description: "Specific heat capacity at 20\xB0C"
+    min: 0
+    max: 1994.6
   reflectivity:
     value: 98
     unit: '%'
@@ -76,14 +69,14 @@ materialProperties:
     max: null
   absorptionCoefficient:
     value: 6.5
-    unit: ×10⁷ m⁻¹
+    unit: "\xD710\u2077 m\u207B\xB9"
     confidence: 82
     description: Absorption coefficient at 1064 nm wavelength
     min: null
     max: null
   ablationThreshold:
     value: 1.2
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 80
     description: Approximate laser ablation threshold for nanosecond pulses at 1064
       nm
@@ -105,11 +98,36 @@ materialProperties:
     max: null
   electricalConductivity:
     value: 5.96
-    unit: ×10⁷ S/m
+    unit: "\xD710\u2077 S/m"
     confidence: 98
-    description: Electrical conductivity at 20°C (IACS 100%)
+    description: "Electrical conductivity at 20\xB0C (IACS 100%)"
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 100.0
+    min: 0.02
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 50.01
+  laserReflectivity:
+    confidence: 0.7
+    max: 98.0
+    min: 5.0
+    source: default_from_category_range
+    unit: '%'
+    value: 51.5
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 3422.0
+    min: -38.8
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 1691.6
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: melting
 applications:
 - 'Electronics: Precision cleaning of electronic components and circuit boards'
 - 'Aerospace: Precision cleaning of aerospace components and assemblies'
@@ -133,7 +151,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 50
-    unit: μm
+    unit: "\u03BCm"
     confidence: 84
     description: Optimal beam spot diameter for precise Copper cleaning applications
     min: 30
@@ -148,14 +166,14 @@ machineSettings:
     max: 200
   fluenceThreshold:
     value: 1.2
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 88
     description: Minimum fluence required for effective Copper oxide ablation
     min: 0.8
     max: 2.5
   energyDensity:
     value: 3.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 85
     description: Optimal energy density for efficient Copper surface cleaning
     min: 2.0
@@ -191,7 +209,7 @@ machineSettings:
     max: 70
   dwellTime:
     value: 100
-    unit: μs
+    unit: "\u03BCs"
     confidence: 83
     description: Optimal dwell time per spot for effective Copper contaminant removal
     min: 50
@@ -313,9 +331,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

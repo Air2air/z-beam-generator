@@ -5,68 +5,61 @@ title: Cobalt Laser Cleaning
 description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
-    value: 8.9
-    unit: g/cm³
+    value: 11.565000000000001
+    unit: "g/cm\xB3"
     confidence: 98
     description: Density of pure cobalt at room temperature
     min: 0.53
     max: 22.6
-  meltingPoint:
-    value: 1495
-    unit: °C
-    confidence: 97
-    description: Melting point of pure cobalt
-    min: null
-    max: null
   thermalConductivity:
-    value: 100
-    unit: W/m·K
+    value: 217.5
+    unit: "W/m\xB7K"
     confidence: 92
     description: Thermal conductivity at room temperature
     min: 6.0
     max: 429.0
   tensileStrength:
-    value: 760
+    value: 1501.5
     unit: MPa
     confidence: 90
     description: Ultimate tensile strength of pure cobalt
-    min: 30.0
-    max: 3000.0
+    min: 0
+    max: 1363.6
   hardness:
-    value: 125
+    value: 1750.25
     unit: HV
     confidence: 92
     description: Vickers hardness of annealed cobalt
-    min: 5
-    max: 500
+    min: 0
+    max: 3772.91
   youngsModulus:
-    value: 209
+    value: 208.0
     unit: GPa
     confidence: 94
     description: Young's modulus of elasticity
-    min: 70
-    max: 411
+    min: 0
+    max: 579.82
   thermalExpansion:
-    value: 13.0
-    unit: 10⁻⁶/K
+    value: 14.8
+    unit: "10\u207B\u2076/K"
     confidence: 90
-    description: Coefficient of linear thermal expansion (20-100°C)
-    min: 0.5
-    max: 29.1
+    description: "Coefficient of linear thermal expansion (20-100\xB0C)"
+    min: 1.7
+    max: 34.9
   specificHeat:
-    value: 421
-    unit: J/kg·K
+    value: 500.0
+    unit: "J/kg\xB7K"
     confidence: 91
     description: Specific heat capacity at room temperature
-    min: 0.128
-    max: 0.904
+    min: 0
+    max: 1994.6
   thermalDiffusivity:
-    value: 2.67
-    unit: 10⁻⁵ m²/s
+    value: 87.1
+    unit: "10\u207B\u2075 m\xB2/s"
     confidence: 88
     description: Thermal diffusivity at room temperature
-    min: 4.2
-    max: 174
+    min: 0
+    max: 191.376
   reflectivity:
     value: 67
     unit: '%'
@@ -76,14 +69,14 @@ materialProperties:
     max: null
   absorptionCoefficient:
     value: 6.8
-    unit: 10⁵ cm⁻¹
+    unit: "10\u2075 cm\u207B\xB9"
     confidence: 82
     description: Absorption coefficient for near-infrared lasers
     min: null
     max: null
   ablationThreshold:
     value: 2.1
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 80
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
@@ -92,14 +85,15 @@ materialProperties:
     value: HCP/FCC
     unit: none
     confidence: 95
-    description: Hexagonal close-packed at room temperature, FCC above 417°C
+    description: "Hexagonal close-packed at room temperature, FCC above 417\xB0C"
     min: null
     max: null
   oxidationResistance:
     value: Moderate
     unit: qualitative
     confidence: 88
-    description: Forms protective oxide layer, good oxidation resistance up to 900°C
+    description: "Forms protective oxide layer, good oxidation resistance up to 900\xB0\
+      C"
     min: null
     max: null
   corrosionResistance:
@@ -109,6 +103,31 @@ materialProperties:
     description: Good resistance to atmospheric corrosion and many chemicals
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 100.0
+    min: 0.02
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 50.01
+  laserReflectivity:
+    confidence: 0.7
+    max: 98.0
+    min: 5.0
+    source: default_from_category_range
+    unit: '%'
+    value: 51.5
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 3422.0
+    min: -38.8
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 1691.6
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: melting
 applications:
 - 'Oil and Gas: Industrial cleaning and maintenance for oil and gas equipment'
 - 'Food Processing: Sanitary surface cleaning for food processing equipment'
@@ -130,7 +149,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 50
-    unit: μm
+    unit: "\u03BCm"
     confidence: 84
     description: Optimal beam diameter for precision cleaning with adequate energy
       density
@@ -145,7 +164,7 @@ machineSettings:
     max: 200
   fluenceThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 88
     description: Minimum fluence required for effective Cobalt surface cleaning
     min: 1.8
@@ -180,7 +199,7 @@ machineSettings:
     max: 4
   energyDensity:
     value: 3.2
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 88
     description: Optimal energy density for Cobalt surface processing
     min: 2.0
@@ -302,9 +321,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

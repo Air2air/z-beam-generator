@@ -5,68 +5,61 @@ title: Zirconium Laser Cleaning
 description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
-    value: 6.52
-    unit: g/cm³
+    value: 11.565000000000001
+    unit: "g/cm\xB3"
     confidence: 98
     description: Density of pure zirconium at room temperature
     min: 0.53
     max: 22.6
-  meltingPoint:
-    value: 1855
-    unit: °C
-    confidence: 97
-    description: Melting point of pure zirconium
-    min: null
-    max: null
   thermalConductivity:
-    value: 22.7
-    unit: W/m·K
+    value: 217.5
+    unit: "W/m\xB7K"
     confidence: 92
     description: Thermal conductivity at room temperature
     min: 6.0
     max: 429.0
   tensileStrength:
-    value: 330
+    value: 1501.5
     unit: MPa
     confidence: 85
     description: Ultimate tensile strength of annealed zirconium
-    min: 30.0
-    max: 3000.0
+    min: 0
+    max: 1363.6
   hardness:
-    value: 120
+    value: 1750.25
     unit: HV
     confidence: 86
     description: Vickers hardness of pure zirconium
-    min: 5
-    max: 500
+    min: 0
+    max: 3772.91
   youngsModulus:
-    value: 88
+    value: 208.0
     unit: GPa
     confidence: 94
     description: Young's modulus of elasticity
-    min: 70
-    max: 411
+    min: 0
+    max: 579.82
   thermalExpansion:
-    value: 5.7
-    unit: 10⁻⁶/K
+    value: 14.8
+    unit: "10\u207B\u2076/K"
     confidence: 90
-    description: Coefficient of thermal expansion (20-100°C)
-    min: 0.5
-    max: 29.1
+    description: "Coefficient of thermal expansion (20-100\xB0C)"
+    min: 1.7
+    max: 34.9
   thermalDiffusivity:
-    value: 8.9
-    unit: mm²/s
+    value: 87.1
+    unit: "mm\xB2/s"
     confidence: 88
     description: Thermal diffusivity at room temperature
-    min: 4.2
-    max: 174
+    min: 0
+    max: 191.376
   specificHeat:
-    value: 278
-    unit: J/kg·K
+    value: 500.0
+    unit: "J/kg\xB7K"
     confidence: 92
     description: Specific heat capacity at room temperature
-    min: 0.128
-    max: 0.904
+    min: 0
+    max: 1994.6
   absorptionCoefficient:
     value: 0.65
     unit: dimensionless
@@ -83,7 +76,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 78
     description: Estimated laser ablation threshold for nanosecond pulses
     min: null
@@ -104,11 +97,36 @@ materialProperties:
     max: null
   surfaceRoughness:
     value: 0.8
-    unit: μm Ra
+    unit: "\u03BCm Ra"
     confidence: 82
     description: Typical surface roughness of polished zirconium
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 100.0
+    min: 0.02
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 50.01
+  laserReflectivity:
+    confidence: 0.7
+    max: 98.0
+    min: 5.0
+    source: default_from_category_range
+    unit: '%'
+    value: 51.5
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 3422.0
+    min: -38.8
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 1691.6
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: melting
 applications:
 - 'Nuclear: Decontamination and surface cleaning in nuclear facilities'
 - 'Food Processing: Sanitary surface cleaning for food processing equipment'
@@ -130,7 +148,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 50
-    unit: μm
+    unit: "\u03BCm"
     confidence: 84
     description: Optimal beam diameter for precise Zirconium surface treatment
     min: 30
@@ -144,7 +162,7 @@ machineSettings:
     max: 200
   fluenceThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 88
     description: Minimum fluence required for effective Zirconium oxide ablation
     min: 1.8
@@ -180,7 +198,7 @@ machineSettings:
     max: 5
   energyDensity:
     value: 12.7
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 85
     description: Calculated energy density based on power, spot size, and repetition
       rate
@@ -304,9 +322,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

@@ -5,22 +5,15 @@ title: Stucco Laser Cleaning
 description: Laser cleaning parameters for Brick
 materialProperties:
   density:
-    value: 1.8
-    unit: g/cm³
+    value: 1.7
+    unit: "g/cm\xB3"
     confidence: 85
     description: Typical density for cured stucco (cement-lime-sand mixture)
     min: 0.6
     max: 2.8
-  meltingPoint:
-    value: 1450
-    unit: °C
-    confidence: 82
-    description: Approximate melting point of cementitious components in stucco
-    min: null
-    max: null
   thermalConductivity:
-    value: 0.72
-    unit: W/m·K
+    value: 1.29
+    unit: "W/m\xB7K"
     confidence: 88
     description: Thermal conductivity of typical stucco material
     min: 0.08
@@ -33,29 +26,29 @@ materialProperties:
     min: 2
     max: 6
   youngsModulus:
-    value: 15
+    value: 27.5
     unit: GPa
     confidence: 84
     description: Elastic modulus of cured stucco material
-    min: 5
-    max: 50
+    min: 1.2
+    max: 32.6
   thermalExpansion:
-    value: 8.0
-    unit: μm/m·°C
+    value: 12.5
+    unit: "\u03BCm/m\xB7\xB0C"
     confidence: 83
     description: Coefficient of thermal expansion for cement-based stucco
-    min: 6
-    max: 12
+    min: 4.2
+    max: 19.8
   specificHeat:
-    value: 840
-    unit: J/kg·K
+    value: 900.0
+    unit: "J/kg\xB7K"
     confidence: 85
     description: Specific heat capacity of stucco material
-    min: 0.8
-    max: 1.1
+    min: 815.5
+    max: 1109.5
   thermalDiffusivity:
-    value: 0.48
-    unit: mm²/s
+    value: 0.55
+    unit: "mm\xB2/s"
     confidence: 82
     description: Thermal diffusivity calculated from conductivity, density, and specific
       heat
@@ -91,14 +84,14 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 1.2
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 82
     description: Estimated laser ablation threshold for stucco at 1064nm wavelength
     min: null
     max: null
   surfaceRoughness:
     value: 15
-    unit: μm Ra
+    unit: "\u03BCm Ra"
     confidence: 85
     description: Typical surface roughness of applied stucco finish
     min: null
@@ -110,6 +103,38 @@ materialProperties:
     description: Water absorption capacity of stucco material
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 15.0
+    min: 0.5
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 7.75
+  laserReflectivity:
+    confidence: 0.7
+    max: 70.0
+    min: 10.0
+    source: default_from_category_range
+    unit: '%'
+    value: 40.0
+  tensileStrength:
+    confidence: 0.7
+    max: 15.0
+    min: 1.0
+    source: default_from_category_range
+    unit: MPa
+    value: 8.0
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 1200.0
+    min: 500.0
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 850.0
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: spalling
 applications:
 - 'Restoration: Gentle cleaning for restoration and conservation applications'
 - 'Construction: Surface preparation and cleaning for construction materials'
@@ -131,7 +156,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: μm
+    unit: "\u03BCm"
     confidence: 84
     description: Beam spot diameter for balanced cleaning efficiency and surface coverage
     min: 50
@@ -162,7 +187,7 @@ machineSettings:
     max: 2000
   energyDensity:
     value: 1.27
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 89
     description: Fluence threshold for effective Stucco surface cleaning
     min: 0.8
@@ -305,9 +330,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

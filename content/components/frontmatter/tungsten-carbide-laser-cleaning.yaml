@@ -5,61 +5,54 @@ title: Tungsten Carbide Laser Cleaning
 description: Laser cleaning parameters for Alumina
 materialProperties:
   density:
-    value: 15.7
-    unit: g/cm³
+    value: 10.75
+    unit: "g/cm\xB3"
     confidence: 98
     description: High density due to tungsten content, typical for WC-Co composites
     min: 2.2
     max: 19.3
-  meltingPoint:
-    value: 2870
-    unit: °C
-    confidence: 95
-    description: Decomposition temperature rather than true melting point
-    min: null
-    max: null
   thermalConductivity:
-    value: 110
-    unit: W/m·K
+    value: 1000.015
+    unit: "W/m\xB7K"
     confidence: 92
     description: High thermal conductivity beneficial for laser heat dissipation
     min: 0.03
     max: 2000.0
   hardness:
-    value: 7.0
+    value: 5.5
     unit: Mohs
     confidence: 96
     description: Extreme hardness characteristic of tungsten carbide
-    min: 3.0
-    max: 10.0
+    min: 0.2
+    max: 9.8
   youngsModulus:
-    value: 650
+    value: 425.0
     unit: GPa
     confidence: 94
     description: Very high Young's modulus providing stiffness
-    min: 150
-    max: 700
+    min: 12.0
+    max: 708.0
   thermalExpansion:
-    value: 5.2
-    unit: ×10⁻⁶/K
+    value: 7.05
+    unit: "\xD710\u207B\u2076/K"
     confidence: 90
     description: Low thermal expansion coefficient reduces thermal stress
     min: 0.1
     max: 14
   thermalDiffusivity:
-    value: 0.12
-    unit: cm²/s
+    value: 60.025
+    unit: "cm\xB2/s"
     confidence: 88
     description: Moderate thermal diffusivity affects laser heating rate
-    min: 0.3
-    max: 120
+    min: 0
+    max: 9.012
   specificHeat:
-    value: 220.0
-    unit: J/kg·K
+    value: 700.0
+    unit: "J/kg\xB7K"
     confidence: 85
     description: Specific heat capacity at room temperature
-    min: 0.4
-    max: 1.1
+    min: 134.0
+    max: 1166.0
   flexuralStrength:
     value: 3500
     unit: MPa
@@ -83,14 +76,14 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 85
     description: Laser ablation threshold for nanosecond pulses
     min: null
     max: null
   oxidationResistance:
     value: 800
-    unit: °C
+    unit: "\xB0C"
     confidence: 88
     description: Maximum service temperature in oxidizing environments
     min: null
@@ -104,11 +97,43 @@ materialProperties:
     max: null
   grainSize:
     value: 1.5
-    unit: μm
+    unit: "\u03BCm"
     confidence: 85
     description: Typical grain size for commercial WC-Co composites
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 50.0
+    min: 0.1
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 25.05
+  laserReflectivity:
+    confidence: 0.7
+    max: 90.0
+    min: 5.0
+    source: default_from_category_range
+    unit: '%'
+    value: 47.5
+  tensileStrength:
+    confidence: 0.7
+    max: 1000.0
+    min: 50.0
+    source: default_from_category_range
+    unit: MPa
+    value: 525.0
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 3827.0
+    min: 1000.0
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 2413.5
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: thermal_shock
 applications:
 - 'Aerospace: Precision cleaning of aerospace components and assemblies'
 - 'Art Conservation: Delicate cleaning of artwork and cultural artifacts'
@@ -131,7 +156,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 50
-    unit: μm
+    unit: "\u03BCm"
     confidence: 84
     description: Optimal spot size for precision cleaning of Tungsten Carbide surfaces
     min: 30
@@ -160,7 +185,7 @@ machineSettings:
     max: 2000
   fluenceThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 90
     description: Fluence threshold for effective contaminant removal without damaging
       WC substrate
@@ -182,7 +207,7 @@ machineSettings:
     max: 5
   energyDensity:
     value: 5.1
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 88
     description: Calculated energy density based on power, spot size, and repetition
       rate
@@ -309,9 +334,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

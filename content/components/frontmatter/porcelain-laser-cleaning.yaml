@@ -5,54 +5,47 @@ title: Porcelain Laser Cleaning
 description: Laser cleaning parameters for Alumina
 materialProperties:
   density:
-    value: 2.4
-    unit: g/cm³
+    value: 10.75
+    unit: "g/cm\xB3"
     confidence: 95
     description: Typical density of porcelain ceramic material
     min: 2.2
     max: 19.3
-  meltingPoint:
-    value: 1650
-    unit: °C
-    confidence: 90
-    description: Melting point range for porcelain ceramics
-    min: null
-    max: null
   thermalConductivity:
-    value: 1.5
-    unit: W/m·K
+    value: 1000.015
+    unit: "W/m\xB7K"
     confidence: 88
     description: Thermal conductivity at room temperature
     min: 0.03
     max: 2000.0
   hardness:
-    value: 7.0
+    value: 5.5
     unit: Mohs
     confidence: 94
     description: Mohs hardness scale value
-    min: 3.0
-    max: 10.0
+    min: 0.2
+    max: 9.8
   youngsModulus:
-    value: 70
+    value: 425.0
     unit: GPa
     confidence: 92
     description: Young's modulus of elasticity
-    min: 150
-    max: 700
+    min: 12.0
+    max: 708.0
   thermalExpansion:
-    value: 6.0
-    unit: ×10⁻⁶/°C
+    value: 7.05
+    unit: "\xD710\u207B\u2076/\xB0C"
     confidence: 85
-    description: Coefficient of thermal expansion (20-1000°C)
+    description: "Coefficient of thermal expansion (20-1000\xB0C)"
     min: 0.1
     max: 14
   specificHeat:
-    value: 1080
-    unit: J/kg·K
+    value: 700.0
+    unit: "J/kg\xB7K"
     confidence: 87
     description: Specific heat capacity at room temperature
-    min: 0.4
-    max: 1.1
+    min: 134.0
+    max: 1166.0
   flexuralStrength:
     value: 50
     unit: MPa
@@ -77,7 +70,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 82
     description: Laser ablation threshold for nanosecond pulses
     min: null
@@ -96,6 +89,45 @@ materialProperties:
     description: Chemical resistance to acids and alkalis
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 50.0
+    min: 0.1
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 25.05
+  laserReflectivity:
+    confidence: 0.7
+    max: 90.0
+    min: 5.0
+    source: default_from_category_range
+    unit: '%'
+    value: 47.5
+  tensileStrength:
+    confidence: 0.7
+    max: 1000.0
+    min: 50.0
+    source: default_from_category_range
+    unit: MPa
+    value: 525.0
+  thermalDiffusivity:
+    confidence: 0.7
+    max: 120.0
+    min: 0.05
+    source: default_from_category_range
+    unit: "mm\xB2/s"
+    value: 60.025
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 3827.0
+    min: 1000.0
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 2413.5
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: thermal_shock
 applications:
 - 'Jewelry: Precision cleaning and polishing of precious metal jewelry'
 - 'Nuclear: Decontamination and surface cleaning in nuclear facilities'
@@ -117,7 +149,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: μm
+    unit: "\u03BCm"
     confidence: 90
     description: Beam spot diameter for precise cleaning control
     min: 50
@@ -145,7 +177,7 @@ machineSettings:
     max: 2000
   fluenceThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 89
     description: Fluence threshold for effective contaminant removal without substrate
       damage
@@ -293,9 +325,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

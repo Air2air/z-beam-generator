@@ -5,54 +5,47 @@ title: Fiberglass Laser Cleaning
 description: Laser cleaning parameters for Carbon Fiber Reinforced Polymer
 materialProperties:
   density:
-    value: 1.8
-    unit: g/cm³
+    value: 4.25
+    unit: "g/cm\xB3"
     confidence: 95
     description: Typical density for E-glass fiber reinforced composites
     min: 0.5
     max: 8
-  meltingPoint:
-    value: 1120
-    unit: °C
-    confidence: 90
-    description: Softening point of E-glass fibers (glass transition)
-    min: null
-    max: null
   thermalConductivity:
-    value: 0.35
-    unit: W/m·K
+    value: 200.05
+    unit: "W/m\xB7K"
     confidence: 88
     description: Thermal conductivity perpendicular to fiber direction
     min: 0.1
     max: 400
   tensileStrength:
-    value: 310
+    value: 3025.0
     unit: MPa
     confidence: 92
     description: Tensile strength along fiber direction for E-glass composites
-    min: 50
-    max: 6000
+    min: 0
+    max: 2748.5
   youngsModulus:
-    value: 17.2
+    value: 750.0005
     unit: GPa
     confidence: 90
     description: Young's modulus in the fiber direction
-    min: 5
-    max: 1000
+    min: 0
+    max: 274.999
   thermalExpansion:
-    value: 8.6
-    unit: 10⁻⁶/°C
+    value: 124.5
+    unit: "10\u207B\u2076/\xB0C"
     confidence: 85
     description: Coefficient of thermal expansion for typical fiberglass composite
-    min: -1
-    max: 50
+    min: 0
+    max: 241.55
   specificHeat:
-    value: 840
-    unit: J/kg·K
+    value: 1000.0
+    unit: "J/kg\xB7K"
     confidence: 87
     description: Specific heat capacity at room temperature
-    min: 0.5
-    max: 2
+    min: 734.0
+    max: 2006.0
   flexuralStrength:
     value: 480
     unit: MPa
@@ -77,14 +70,14 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 85
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   laserDamageThreshold:
     value: 1.8
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 83
     description: Damage threshold for continuous wave laser exposure
     min: null
@@ -98,18 +91,50 @@ materialProperties:
     max: null
   surfaceRoughness:
     value: 1.2
-    unit: μm Ra
+    unit: "\u03BCm Ra"
     confidence: 82
     description: Typical surface roughness of molded fiberglass surfaces
     min: null
     max: null
   thermalDiffusivity:
-    value: 0.23
-    unit: mm²/s
+    value: 90.05
+    unit: "mm\xB2/s"
     confidence: 84
     description: Thermal diffusivity at room temperature
-    min: 0.1
-    max: 180
+    min: 0
+    max: 71.493
+  hardness:
+    confidence: 0.7
+    max: 90.0
+    min: 20.0
+    source: default_from_category_range
+    unit: HRC
+    value: 55.0
+  laserAbsorption:
+    confidence: 0.7
+    max: 200.0
+    min: 0.05
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 100.025
+  laserReflectivity:
+    confidence: 0.7
+    max: 80.0
+    min: 2.0
+    source: default_from_category_range
+    unit: '%'
+    value: 41.0
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 2000.0
+    min: 150.0
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 1075.0
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: decomposition
 applications:
 - 'Medical: Sterilization and cleaning of medical devices and instruments'
 - 'Aerospace: Precision cleaning of aerospace components and assemblies'
@@ -131,7 +156,7 @@ machineSettings:
     max: 1080
   spotSize:
     value: 100
-    unit: μm
+    unit: "\u03BCm"
     confidence: 90
     description: Beam spot diameter for precise cleaning control
     min: 50
@@ -159,7 +184,7 @@ machineSettings:
     max: 800
   fluenceThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 89
     description: Fluence threshold for effective contaminant removal
     min: 1.5
@@ -296,9 +321,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

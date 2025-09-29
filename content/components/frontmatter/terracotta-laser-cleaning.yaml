@@ -5,61 +5,54 @@ title: Terracotta Laser Cleaning
 description: Laser cleaning parameters for Brick
 materialProperties:
   density:
-    value: 1.8
-    unit: g/cm³
+    value: 1.7
+    unit: "g/cm\xB3"
     confidence: 92
     description: Bulk density of typical terracotta accounting for porosity
     min: 0.6
     max: 2.8
-  meltingPoint:
-    value: 1650
-    unit: °C
-    confidence: 88
-    description: Approximate melting point of clay minerals in terracotta
-    min: null
-    max: null
   thermalConductivity:
-    value: 1.2
-    unit: W/m·K
+    value: 1.29
+    unit: "W/m\xB7K"
     confidence: 85
     description: Thermal conductivity at room temperature
     min: 0.08
     max: 2.5
   hardness:
-    value: 5
+    value: 4.0
     unit: Mohs
     confidence: 85
     description: Mohs hardness scale
     min: 2
     max: 6
   youngsModulus:
-    value: 20
+    value: 27.5
     unit: GPa
     confidence: 80
     description: Elastic modulus of terracotta
-    min: 5
-    max: 50
+    min: 1.2
+    max: 32.6
   thermalExpansion:
-    value: 5.5
-    unit: 10⁻⁶/°C
+    value: 12.5
+    unit: "10\u207B\u2076/\xB0C"
     confidence: 82
-    description: Coefficient of thermal expansion (20-500°C)
-    min: 6
-    max: 12
+    description: "Coefficient of thermal expansion (20-500\xB0C)"
+    min: 4.2
+    max: 19.8
   thermalDiffusivity:
-    value: 0.6
-    unit: mm²/s
+    value: 0.55
+    unit: "mm\xB2/s"
     confidence: 80
     description: Thermal diffusivity at room temperature
     min: 0.1
     max: 1
   specificHeat:
     value: 900
-    unit: J/kg·K
+    unit: "J/kg\xB7K"
     confidence: 85
     description: Specific heat capacity at room temperature
-    min: 0.8
-    max: 1.1
+    min: 815.5
+    max: 1109.5
   porosity:
     value: 15
     unit: '%'
@@ -90,11 +83,43 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 80
     description: Approximate laser ablation threshold for nanosecond pulses
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 15.0
+    min: 0.5
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 7.75
+  laserReflectivity:
+    confidence: 0.7
+    max: 70.0
+    min: 10.0
+    source: default_from_category_range
+    unit: '%'
+    value: 40.0
+  tensileStrength:
+    confidence: 0.7
+    max: 15.0
+    min: 1.0
+    source: default_from_category_range
+    unit: MPa
+    value: 8.0
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 1200.0
+    min: 500.0
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 850.0
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: spalling
 applications:
 - 'Restoration: Gentle cleaning for restoration and conservation applications'
 - 'Construction: Surface preparation and cleaning for construction materials'
@@ -117,7 +142,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: μm
+    unit: "\u03BCm"
     confidence: 90
     description: Beam spot diameter for precise cleaning control
     min: 50
@@ -145,7 +170,7 @@ machineSettings:
     max: 1000
   energyDensity:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 89
     description: Fluence threshold for effective contaminant removal without damaging
       Terracotta substrate
@@ -167,7 +192,7 @@ machineSettings:
     max: 5
   dwellTime:
     value: 100
-    unit: μs
+    unit: "\u03BCs"
     confidence: 82
     description: Maximum dwell time per spot to prevent thermal accumulation
     min: 50
@@ -290,9 +315,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

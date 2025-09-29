@@ -5,54 +5,47 @@ title: Soapstone Laser Cleaning
 description: Laser cleaning parameters for Alabaster
 materialProperties:
   density:
-    value: 2.75
-    unit: g/cm³
+    value: 2.45
+    unit: "g/cm\xB3"
     confidence: 95
     description: Average density of soapstone due to high talc content
     min: 1.5
     max: 3.4
-  meltingPoint:
-    value: 1350
-    unit: °C
-    confidence: 85
-    description: Approximate melting point considering talc decomposition
-    min: null
-    max: null
   thermalConductivity:
-    value: 6.2
-    unit: W/m·K
+    value: 4.1
+    unit: "W/m\xB7K"
     confidence: 88
     description: Thermal conductivity at room temperature
-    min: 0.2
-    max: 5
+    min: 0.12
+    max: 8.28
   hardness:
-    value: 1.0
+    value: 4.0
     unit: Mohs
     confidence: 98
     description: Mohs hardness scale - very soft due to talc content
     min: 1
     max: 7
   youngsModulus:
-    value: 25
+    value: 55.0
     unit: GPa
     confidence: 85
     description: Elastic modulus reflecting soft, pliable nature
     min: 10
     max: 100
   thermalExpansion:
-    value: 8.5
-    unit: 10⁻⁶/K
+    value: 14.0
+    unit: "10\u207B\u2076/K"
     confidence: 82
     description: Coefficient of thermal expansion
-    min: 3
-    max: 16
+    min: 3.5
+    max: 26.9
   specificHeat:
-    value: 980.0
-    unit: J/kg·K
+    value: 900.0
+    unit: "J/kg\xB7K"
     confidence: 90
-    description: Specific heat capacity at 25°C
-    min: 0.7
-    max: 1.2
+    description: "Specific heat capacity at 25\xB0C"
+    min: 705.5
+    max: 1119.5
   compressiveStrength:
     value: 55
     unit: MPa
@@ -69,7 +62,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 0.8
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 75
     description: Estimated laser ablation threshold for nanosecond pulses
     min: null
@@ -88,6 +81,45 @@ materialProperties:
     description: Resistance to acids and chemicals at room temperature
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 20.0
+    min: 0.1
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 10.05
+  laserReflectivity:
+    confidence: 0.7
+    max: 80.0
+    min: 5.0
+    source: default_from_category_range
+    unit: '%'
+    value: 42.5
+  tensileStrength:
+    confidence: 0.7
+    max: 25.0
+    min: 2.0
+    source: default_from_category_range
+    unit: MPa
+    value: 13.5
+  thermalDiffusivity:
+    confidence: 0.7
+    max: 2.5
+    min: 0.2
+    source: default_from_category_range
+    unit: "mm\xB2/s"
+    value: 1.35
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 1700.0
+    min: 600.0
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 1150.0
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: thermal_shock
 applications:
 - 'Jewelry: Precision cleaning and polishing of precious metal jewelry'
 machineSettings:
@@ -109,7 +141,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: μm
+    unit: "\u03BCm"
     confidence: 92
     description: Beam diameter for precise cleaning control on Soapstone surface
     min: 50
@@ -138,7 +170,7 @@ machineSettings:
     max: 1000
   fluenceThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 88
     description: Minimum fluence required for effective Soapstone surface cleaning
     min: 1.5
@@ -159,7 +191,7 @@ machineSettings:
     max: 4
   energyDensity:
     value: 5.1
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 84
     description: Calculated energy density based on spot size and pulse energy
     min: 3.0
@@ -282,9 +314,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

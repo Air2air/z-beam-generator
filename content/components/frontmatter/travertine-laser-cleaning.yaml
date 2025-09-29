@@ -5,26 +5,19 @@ title: Travertine Laser Cleaning
 description: Laser cleaning parameters for Alabaster
 materialProperties:
   density:
-    value: 2.4
-    unit: g/cm³
+    value: 2.45
+    unit: "g/cm\xB3"
     confidence: 95
     description: Bulk density of typical travertine stone
     min: 1.5
     max: 3.4
-  meltingPoint:
-    value: 825
-    unit: °C
-    confidence: 90
-    description: Decomposition temperature of calcium carbonate to calcium oxide
-    min: null
-    max: null
   thermalConductivity:
-    value: 2.3
-    unit: W/m·K
+    value: 4.1
+    unit: "W/m\xB7K"
     confidence: 88
     description: Thermal conductivity at room temperature
-    min: 0.2
-    max: 5
+    min: 0.12
+    max: 8.28
   hardness:
     value: 4.0
     unit: Mohs
@@ -33,26 +26,26 @@ materialProperties:
     min: 1
     max: 7
   youngsModulus:
-    value: 60
+    value: 55.0
     unit: GPa
     confidence: 85
     description: Elastic modulus in compression
     min: 10
     max: 100
   thermalExpansion:
-    value: 8.0
-    unit: 10⁻⁶/°C
+    value: 14.0
+    unit: "10\u207B\u2076/\xB0C"
     confidence: 85
     description: Coefficient of thermal expansion
-    min: 3
-    max: 16
+    min: 3.5
+    max: 26.9
   specificHeat:
-    value: 840.0
-    unit: J/kg·K
+    value: 900.0
+    unit: "J/kg\xB7K"
     confidence: 90
     description: Specific heat capacity at room temperature
-    min: 0.7
-    max: 1.2
+    min: 705.5
+    max: 1119.5
   compressiveStrength:
     value: 80
     unit: MPa
@@ -76,7 +69,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 1.2
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 80
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
@@ -88,6 +81,45 @@ materialProperties:
     description: Susceptible to acid dissolution but stable in neutral conditions
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 20.0
+    min: 0.1
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 10.05
+  laserReflectivity:
+    confidence: 0.7
+    max: 80.0
+    min: 5.0
+    source: default_from_category_range
+    unit: '%'
+    value: 42.5
+  tensileStrength:
+    confidence: 0.7
+    max: 25.0
+    min: 2.0
+    source: default_from_category_range
+    unit: MPa
+    value: 13.5
+  thermalDiffusivity:
+    confidence: 0.7
+    max: 2.5
+    min: 0.2
+    source: default_from_category_range
+    unit: "mm\xB2/s"
+    value: 1.35
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 1700.0
+    min: 600.0
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 1150.0
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: thermal_shock
 applications:
 - laser cleaning
 - surface preparation
@@ -109,7 +141,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: μm
+    unit: "\u03BCm"
     confidence: 92
     description: Optimal beam diameter for precise cleaning control on Travertine
       surface
@@ -124,7 +156,7 @@ machineSettings:
     max: 50
   fluenceThreshold:
     value: 0.8
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 88
     description: Threshold fluence for effective contaminant removal without substrate
       damage
@@ -161,7 +193,7 @@ machineSettings:
     max: 5
   energyDensity:
     value: 1.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 86
     description: Optimal energy density for Travertine cleaning applications
     min: 0.8
@@ -284,9 +316,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

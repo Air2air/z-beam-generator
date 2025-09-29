@@ -1,0 +1,139 @@
+{
+  "generated": "2025-09-29T14:50:48.668821",
+  "summary": {
+    "total_research_calls": 5,
+    "average_confidence": 0.922,
+    "research_steps": [
+      "Quality Assurance Research",
+      "Material Property Research",
+      "Category Range Validation",
+      "Property Cross-Validation"
+    ],
+    "materials_researched": [
+      "Aluminum 6061-T6",
+      "Mild Steel",
+      "Pure Aluminum",
+      "Aluminum"
+    ],
+    "properties_researched": [
+      "meltingPoint",
+      "thermalConductivity",
+      "density",
+      "multi-property",
+      "quality_check"
+    ],
+    "high_confidence_calls": 3,
+    "research_recommendations": [
+      "Consider pure aluminum at 2.70 g/cm\u00b3",
+      "Pure aluminum melts at 660.3\u00b0C",
+      "Temperature-dependent property",
+      "Properties match pure aluminum grade",
+      "Properties verified against standards"
+    ]
+  },
+  "detailed_calls": [
+    {
+      "timestamp": "2025-09-29T14:50:48.668547",
+      "elapsed_time": 0.33850884437561035,
+      "step": "Category Range Validation",
+      "material": "Aluminum",
+      "property": "density",
+      "prompt_preview": "Validate aluminum density range: 2.60-2.80 g/cm\u00b3. Is this scientifically accurate?",
+      "response_preview": "The aluminum density range 2.60-2.80 g/cm\u00b3 is accurate for most aluminum alloys.",
+      "validation_result": {
+        "confidence": 0.95,
+        "valid": true,
+        "recommendations": [
+          "Consider pure aluminum at 2.70 g/cm\u00b3"
+        ]
+      },
+      "ai_confidence": 0.95,
+      "research_recommendations": [
+        "Consider pure aluminum at 2.70 g/cm\u00b3"
+      ]
+    },
+    {
+      "timestamp": "2025-09-29T14:50:48.668609",
+      "elapsed_time": 0.3385610580444336,
+      "step": "Category Range Validation",
+      "material": "Aluminum",
+      "property": "meltingPoint",
+      "prompt_preview": "Validate aluminum melting point range: 600-700\u00b0C. Check against materials science data.",
+      "response_preview": "Aluminum melting point is typically 660.3\u00b0C. Range 600-700\u00b0C is reasonable for alloys.",
+      "validation_result": {
+        "confidence": 0.92,
+        "valid": true,
+        "recommendations": [
+          "Pure aluminum melts at 660.3\u00b0C"
+        ]
+      },
+      "ai_confidence": 0.92,
+      "research_recommendations": [
+        "Pure aluminum melts at 660.3\u00b0C"
+      ]
+    },
+    {
+      "timestamp": "2025-09-29T14:50:48.668653",
+      "elapsed_time": 0.3386039733886719,
+      "step": "Material Property Research",
+      "material": "Aluminum 6061-T6",
+      "property": "thermalConductivity",
+      "prompt_preview": "Research thermal conductivity for aluminum 6061-T6 alloy. Provide accurate value with source.",
+      "response_preview": "Aluminum 6061-T6 thermal conductivity: 167 W/m\u00b7K at room temperature (ASM Handbook).",
+      "validation_result": {
+        "confidence": 0.88,
+        "valid": true,
+        "source": "ASM_Handbook",
+        "recommendations": [
+          "Temperature-dependent property"
+        ]
+      },
+      "ai_confidence": 0.88,
+      "research_recommendations": [
+        "Temperature-dependent property"
+      ]
+    },
+    {
+      "timestamp": "2025-09-29T14:50:48.668695",
+      "elapsed_time": 0.33864498138427734,
+      "step": "Property Cross-Validation",
+      "material": "Pure Aluminum",
+      "property": "multi-property",
+      "prompt_preview": "Cross-validate these aluminum properties: density=2.70 g/cm\u00b3, melting=660\u00b0C, thermal=205 W/m\u00b7K",
+      "response_preview": "Properties are consistent with pure aluminum. Thermal conductivity suggests high purity grade.",
+      "validation_result": {
+        "confidence": 0.9,
+        "valid": true,
+        "consistency_score": 0.94,
+        "recommendations": [
+          "Properties match pure aluminum grade"
+        ]
+      },
+      "ai_confidence": 0.9,
+      "research_recommendations": [
+        "Properties match pure aluminum grade"
+      ]
+    },
+    {
+      "timestamp": "2025-09-29T14:50:48.668734",
+      "elapsed_time": 0.3386838436126709,
+      "step": "Quality Assurance Research",
+      "material": "Mild Steel",
+      "property": "quality_check",
+      "prompt_preview": "Quality check: Are these steel properties realistic? density=7.85 g/cm\u00b3, yield=250 MPa",
+      "response_preview": "Properties match mild steel specifications. Density and yield strength are within expected ranges.",
+      "validation_result": {
+        "confidence": 0.96,
+        "valid": true,
+        "quality_score": 0.98,
+        "recommendations": [
+          "Properties verified against standards"
+        ]
+      },
+      "ai_confidence": 0.96,
+      "research_recommendations": [
+        "Properties verified against standards"
+      ]
+    }
+  ]
+}

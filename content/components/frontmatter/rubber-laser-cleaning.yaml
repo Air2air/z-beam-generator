@@ -5,64 +5,57 @@ title: Rubber Laser Cleaning
 description: Laser cleaning parameters for Carbon Fiber Reinforced Polymer
 materialProperties:
   density:
-    value: 1.15
-    unit: g/cm³
+    value: 4.25
+    unit: "g/cm\xB3"
     confidence: 95
     description: Typical density for natural rubber compounds
     min: 0.5
     max: 8
-  meltingPoint:
-    value: 180
-    unit: °C
-    confidence: 85
-    description: Approximate decomposition/softening temperature before degradation
-    min: null
-    max: null
   thermalConductivity:
-    value: 0.15
-    unit: W/m·K
+    value: 200.05
+    unit: "W/m\xB7K"
     confidence: 90
     description: Low thermal conductivity typical of elastomeric materials
     min: 0.1
     max: 400
   tensileStrength:
-    value: 25
+    value: 3025.0
     unit: MPa
     confidence: 90
     description: Typical tensile strength for natural rubber compounds
-    min: 50
-    max: 6000
+    min: 0
+    max: 2748.5
   hardness:
-    value: 60
+    value: 55.0
     unit: Shore A
     confidence: 85
     description: Typical hardness for medium-grade rubber materials
-    min: 20
-    max: 90
+    min: 15.5
+    max: 129.5
   youngsModulus:
-    value: 0.01
+    value: 750.0005
     unit: GPa
     confidence: 88
     description: Low elastic modulus indicating high flexibility
-    min: 5
-    max: 1000
+    min: 0
+    max: 274.999
   thermalExpansion:
-    value: 220
-    unit: ×10⁻⁶/°C
+    value: 124.5
+    unit: "\xD710\u207B\u2076/\xB0C"
     confidence: 88
     description: High coefficient of thermal expansion characteristic of polymers
-    min: -1
-    max: 50
+    min: 0
+    max: 241.55
   specificHeat:
-    value: 1900.0
-    unit: J/kg·K
+    value: 1000.0
+    unit: "J/kg\xB7K"
     confidence: 92
     description: Specific heat capacity at room temperature
-    min: 0.5
-    max: 2
+    min: 734.0
+    max: 2006.0
   absorptionCoefficient:
     value: 8500
-    unit: cm⁻¹
+    unit: "cm\u207B\xB9"
     confidence: 82
     description: Absorption coefficient at 1064 nm wavelength
     min: null
@@ -76,18 +69,18 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 0.8
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 85
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   thermalDiffusivity:
-    value: 0.068
-    unit: mm²/s
+    value: 90.05
+    unit: "mm\xB2/s"
     confidence: 86
     description: Thermal diffusivity calculated from thermal properties
-    min: 0.1
-    max: 180
+    min: 0
+    max: 71.493
   oxidationResistance:
     value: 3
     unit: rating (1-10)
@@ -97,11 +90,36 @@ materialProperties:
     max: null
   surfaceRoughness:
     value: 2.5
-    unit: μm Ra
+    unit: "\u03BCm Ra"
     confidence: 82
     description: Typical surface roughness for molded rubber surfaces
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 200.0
+    min: 0.05
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 100.025
+  laserReflectivity:
+    confidence: 0.7
+    max: 80.0
+    min: 2.0
+    source: default_from_category_range
+    unit: '%'
+    value: 41.0
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 2000.0
+    min: 150.0
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 1075.0
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: decomposition
 applications:
 - 'Manufacturing: Industrial surface preparation and contamination removal'
 - 'Medical: Sterilization and cleaning of medical devices and instruments'
@@ -124,7 +142,7 @@ machineSettings:
     max: 1080
   spotSize:
     value: 100
-    unit: μm
+    unit: "\u03BCm"
     confidence: 84
     description: Beam spot diameter for precise Rubber cleaning
     min: 50
@@ -152,7 +170,7 @@ machineSettings:
     max: 1000
   fluenceThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 89
     description: Minimum fluence required for effective Rubber ablation
     min: 1.5
@@ -295,9 +313,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

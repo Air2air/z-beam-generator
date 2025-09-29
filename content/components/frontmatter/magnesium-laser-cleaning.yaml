@@ -5,68 +5,61 @@ title: Magnesium Laser Cleaning
 description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
-    value: 1.738
-    unit: g/cm³
+    value: 11.565000000000001
+    unit: "g/cm\xB3"
     confidence: 98
     description: Pure magnesium density at room temperature
     min: 0.53
     max: 22.6
-  meltingPoint:
-    value: 650
-    unit: °C
-    confidence: 97
-    description: Melting point of pure magnesium
-    min: null
-    max: null
   thermalConductivity:
-    value: 156
-    unit: W/m·K
+    value: 217.5
+    unit: "W/m\xB7K"
     confidence: 95
-    description: Thermal conductivity of pure magnesium at 20°C
+    description: "Thermal conductivity of pure magnesium at 20\xB0C"
     min: 6.0
     max: 429.0
   tensileStrength:
-    value: 160
+    value: 1501.5
     unit: MPa
     confidence: 88
     description: Ultimate tensile strength of pure magnesium
-    min: 30.0
-    max: 3000.0
+    min: 0
+    max: 1363.6
   hardness:
-    value: 45
+    value: 1750.25
     unit: HV
     confidence: 85
     description: Vickers hardness of pure magnesium
-    min: 5
-    max: 500
+    min: 0
+    max: 3772.91
   youngsModulus:
-    value: 45
+    value: 208.0
     unit: GPa
     confidence: 95
     description: Young's modulus of elasticity
-    min: 70
-    max: 411
+    min: 0
+    max: 579.82
   thermalExpansion:
-    value: 25.2
-    unit: μm/m·K
+    value: 14.8
+    unit: "\u03BCm/m\xB7K"
     confidence: 92
-    description: Coefficient of linear thermal expansion at 20°C
-    min: 0.5
-    max: 29.1
+    description: "Coefficient of linear thermal expansion at 20\xB0C"
+    min: 1.7
+    max: 34.9
   thermalDiffusivity:
-    value: 8.6
-    unit: mm²/s
+    value: 87.1
+    unit: "mm\xB2/s"
     confidence: 90
     description: Thermal diffusivity at room temperature
-    min: 4.2
-    max: 174
+    min: 0
+    max: 191.376
   specificHeat:
-    value: 1025
-    unit: J/kg·K
+    value: 500.0
+    unit: "J/kg\xB7K"
     confidence: 93
-    description: Specific heat capacity at 20°C
-    min: 0.128
-    max: 0.904
+    description: "Specific heat capacity at 20\xB0C"
+    min: 0
+    max: 1994.6
   absorptionCoefficient:
     value: 0.65
     unit: dimensionless
@@ -83,14 +76,14 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 0.8
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 85
     description: Estimated laser ablation threshold for nanosecond pulses
     min: null
     max: null
   oxidationResistance:
     value: 0.02
-    unit: mg/cm²·day
+    unit: "mg/cm\xB2\xB7day"
     confidence: 90
     description: Oxidation rate in dry air at room temperature
     min: null
@@ -104,11 +97,36 @@ materialProperties:
     max: null
   surfaceRoughness:
     value: 0.8
-    unit: μm Ra
+    unit: "\u03BCm Ra"
     confidence: 82
     description: Typical surface roughness of polished magnesium
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 100.0
+    min: 0.02
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 50.01
+  laserReflectivity:
+    confidence: 0.7
+    max: 98.0
+    min: 5.0
+    source: default_from_category_range
+    unit: '%'
+    value: 51.5
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 3422.0
+    min: -38.8
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 1691.6
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: melting
 applications:
 - 'Automotive: Paint removal and surface preparation for automotive parts'
 - 'Aerospace: Precision cleaning of aerospace components and assemblies'
@@ -130,7 +148,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 50
-    unit: μm
+    unit: "\u03BCm"
     confidence: 84
     description: Optimal spot size for balancing cleaning efficiency and processing
       speed
@@ -162,7 +180,7 @@ machineSettings:
     max: 1000
   fluenceThreshold:
     value: 1.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 89
     description: Minimum fluence required for effective Magnesium oxide ablation
     min: 0.8
@@ -306,9 +324,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

@@ -5,61 +5,54 @@ title: Plaster Laser Cleaning
 description: Laser cleaning parameters for Brick
 materialProperties:
   density:
-    value: 2.32
-    unit: g/cm³
+    value: 1.7
+    unit: "g/cm\xB3"
     confidence: 95
     description: Density of set plaster (calcium sulfate dihydrate)
     min: 0.6
     max: 2.8
-  meltingPoint:
-    value: 1450
-    unit: °C
-    confidence: 90
-    description: Melting point of calcium sulfate
-    min: null
-    max: null
   thermalConductivity:
-    value: 0.43
-    unit: W/m·K
+    value: 1.29
+    unit: "W/m\xB7K"
     confidence: 92
     description: Thermal conductivity of set plaster at room temperature
     min: 0.08
     max: 2.5
   tensileStrength:
-    value: 2.1
+    value: 8.0
     unit: MPa
     confidence: 90
     description: Tensile strength of set plaster
     min: 1
     max: 15
   hardness:
-    value: 2.0
+    value: 4.0
     unit: Mohs
     confidence: 92
     description: Mohs hardness scale
     min: 2
     max: 6
   youngsModulus:
-    value: 3.8
+    value: 27.5
     unit: GPa
     confidence: 88
     description: Young's modulus of elasticity
-    min: 5
-    max: 50
+    min: 1.2
+    max: 32.6
   thermalExpansion:
-    value: 18.5
-    unit: ×10⁻⁶/°C
+    value: 12.5
+    unit: "\xD710\u207B\u2076/\xB0C"
     confidence: 88
-    description: Coefficient of thermal expansion (20-100°C)
-    min: 6
-    max: 12
+    description: "Coefficient of thermal expansion (20-100\xB0C)"
+    min: 4.2
+    max: 19.8
   specificHeat:
-    value: 1085
-    unit: J/kg·K
+    value: 900.0
+    unit: "J/kg\xB7K"
     confidence: 85
     description: Specific heat capacity at room temperature
-    min: 0.8
-    max: 1.1
+    min: 815.5
+    max: 1109.5
   absorptionCoefficient:
     value: 0.85
     unit: dimensionless
@@ -76,7 +69,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 1.2
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 85
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
@@ -90,11 +83,43 @@ materialProperties:
     max: null
   decompositionTemperature:
     value: 128
-    unit: °C
+    unit: "\xB0C"
     confidence: 96
     description: Temperature where plaster loses water and reverts to hemihydrate
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 15.0
+    min: 0.5
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 7.75
+  laserReflectivity:
+    confidence: 0.7
+    max: 70.0
+    min: 10.0
+    source: default_from_category_range
+    unit: '%'
+    value: 40.0
+  thermalDiffusivity:
+    confidence: 0.7
+    max: 1.0
+    min: 0.1
+    source: default_from_category_range
+    unit: "mm\xB2/s"
+    value: 0.55
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 1200.0
+    min: 500.0
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 850.0
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: spalling
 applications:
 - 'Construction: Surface preparation and cleaning for construction materials'
 - 'Restoration: Gentle cleaning for restoration and conservation applications'
@@ -116,7 +141,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: μm
+    unit: "\u03BCm"
     confidence: 85
     description: Optimal beam spot diameter for precision cleaning
     min: 50
@@ -130,14 +155,14 @@ machineSettings:
     max: 200
   fluenceThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 88
     description: Ablation threshold fluence for Plaster removal
     min: 1.8
     max: 3.5
   energyDensity:
     value: 3.2
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 85
     description: Optimal energy density for efficient Plaster ablation
     min: 2.5
@@ -172,7 +197,7 @@ machineSettings:
     max: 70
   dwellTime:
     value: 100
-    unit: μs
+    unit: "\u03BCs"
     confidence: 82
     description: Optimal dwell time per spot for effective material removal
     min: 50
@@ -301,9 +326,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

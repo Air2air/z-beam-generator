@@ -193,6 +193,14 @@ grep -A5 -B5 "METADATA START\|CONTENT START" content/components/text/testmateria
 **→ Common Issue**: Tests looking for removed verbose fields like `regulatory_advantages`, `typical_savings`
 **→ Solution**: Update test assertions to expect concise sections with essential data only
 
+### "'could not convert string to float' errors in validation"
+**→ Immediate Response**: ✅ **FIXED** - Shore hardness numerical extraction implemented
+**→ Root Cause**: Shore hardness values like "Shore A 10" need numerical extraction (10.0)
+**→ Solution**: `extract_numeric_value()` function with Shore hardness regex parsing added to run.py
+**→ Quick Test**: `python3 tests/test_shore_hardness_extraction.py`
+**→ Usage**: Validation pipeline now automatically extracts numerical values from Shore scales
+**→ Details**: [Hierarchical Validation](docs/VALIDATION_USER_GUIDE.md) with enhanced AI research logging
+
 ## 📍 File Location Quick Map for AI
 
 ### User needs setup help → Look in:

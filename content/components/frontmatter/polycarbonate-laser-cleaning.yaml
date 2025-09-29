@@ -5,64 +5,57 @@ title: Polycarbonate Laser Cleaning
 description: Laser cleaning parameters for Polycarbonate
 materialProperties:
   density:
-    value: 1.2
-    unit: g/cm³
+    value: 1.5250000000000001
+    unit: "g/cm\xB3"
     confidence: 95
     description: Density of amorphous polycarbonate at room temperature
     min: 0.85
     max: 2.2
-  meltingPoint:
-    value: 155
-    unit: °C
-    confidence: 90
-    description: Glass transition temperature (Tg) - polycarbonate is amorphous
-    min: null
-    max: null
   thermalConductivity:
-    value: 0.2
-    unit: W/m·K
+    value: 1.51
+    unit: "W/m\xB7K"
     confidence: 88
     description: Low thermal conductivity typical of polymers
     min: 0.02
     max: 3
   tensileStrength:
-    value: 65
+    value: 205.0
     unit: MPa
     confidence: 92
     description: Ultimate tensile strength
     min: 10
     max: 400
   hardness:
-    value: 70
+    value: 50.0
     unit: Rockwell M
     confidence: 85
     description: Rockwell M scale hardness
     min: null
     max: null
   youngsModulus:
-    value: 2.4
+    value: 2000.005
     unit: GPa
     confidence: 94
     description: Elastic modulus in tension
-    min: 0.01
-    max: 50
+    min: 0
+    max: 3629.98
   thermalExpansion:
-    value: 70
-    unit: 10⁻⁶/°C
+    value: 105.0
+    unit: "10\u207B\u2076/\xB0C"
     confidence: 85
     description: Coefficient of linear thermal expansion
     min: 10
     max: 200
   specificHeat:
-    value: 1200
-    unit: J/kg·K
+    value: 1750.0
+    unit: "J/kg\xB7K"
     confidence: 87
     description: Specific heat capacity at room temperature
-    min: 1
-    max: 2.5
+    min: 800.0
+    max: 2000.0
   absorptionCoefficient:
     value: 0.8
-    unit: cm⁻¹
+    unit: "cm\u207B\xB9"
     confidence: 82
     description: Approximate absorption coefficient for near-IR lasers
     min: null
@@ -76,21 +69,21 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 0.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 80
     description: Approximate ablation threshold for nanosecond lasers at 1064 nm
     min: null
     max: null
   laserDamageThreshold:
     value: 2.0
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 82
     description: Damage threshold for short pulse lasers
     min: null
     max: null
   thermalDiffusivity:
-    value: 0.14
-    unit: mm²/s
+    value: 0.525
+    unit: "mm\xB2/s"
     confidence: 84
     description: Thermal diffusivity calculated from thermal properties
     min: 0.05
@@ -109,6 +102,31 @@ materialProperties:
     description: Visible light transmission for clear polycarbonate
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 100.0
+    min: 0.1
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 50.05
+  laserReflectivity:
+    confidence: 0.7
+    max: 95.0
+    min: 5.0
+    source: default_from_category_range
+    unit: '%'
+    value: 50.0
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 400.0
+    min: 80.0
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 240.0
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: melting
 applications:
 - 'Automotive: Paint removal and surface preparation for automotive parts'
 - 'Aerospace: Precision cleaning of aerospace components and assemblies'
@@ -131,7 +149,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 50
-    unit: μm
+    unit: "\u03BCm"
     confidence: 89
     description: Optimal beam spot diameter for precision cleaning
     min: 30
@@ -145,14 +163,14 @@ machineSettings:
     max: 200
   fluenceThreshold:
     value: 0.8
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 88
     description: Ablation threshold fluence for Polycarbonate surface cleaning
     min: 0.5
     max: 1.2
   energyDensity:
     value: 1.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 85
     description: Optimal energy density for effective contaminant removal
     min: 1.0
@@ -188,7 +206,7 @@ machineSettings:
     max: 70
   dwellTime:
     value: 100
-    unit: μs
+    unit: "\u03BCs"
     confidence: 84
     description: Optimal dwell time per treatment area
     min: 50
@@ -318,9 +336,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

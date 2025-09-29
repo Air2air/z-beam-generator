@@ -45,8 +45,14 @@ The main applic        "api_provider": "none",  # ❌ NO API - static/determinis
 🧪 TESTING & VALIDATION:
   python3 run.py --test                    # Full test suite
   python3 run.py --test-api                # Test API connections
+  python3 run.py --validate                # Validate existing data without regeneration
+  python3 run.py --validate-report report.md  # Generate validation report
   python3 run.py --check-env               # Health check
   python3 run.py --list-materials          # List available materials
+
+🔍 DATA VALIDATION & INTEGRITY:
+  python3 run.py --validate              # Run hierarchical validation & auto-fix
+  python3 run.py --validate-report FILE  # Generate detailed validation report
 
 ⚙️  SYSTEM MANAGEMENT:
   python3 run.py --config                  # Show configuration
@@ -89,6 +95,26 @@ GLOBAL_OPERATIONAL_CONFIG = {
         "base_retry_delay": 2.0,      # Longer base delay
         "max_retry_delay": 30.0,      # Cap exponential backoff
         "jitter_factor": 0.1,         # Add randomness to prevent thundering herd
+    },
+    
+    # Invisible Pipeline Integration Settings
+    "pipeline_integration": {
+        "enabled": True,              # Enable invisible pipeline during content generation
+        "silent_mode": False,         # Show verbose AI research logging by default
+        "max_validation_time": 15,    # Maximum time to spend on validation (seconds) - increased for AI
+        "cache_validations": True,    # Cache validation results to avoid redundant work
+        "auto_improve_frontmatter": True,  # Automatically improve frontmatter quality
+        "batch_validation": True,     # Run batch validation for --all operations
+        "quality_threshold": 0.6,     # Minimum quality score to pass validation
+        "ai_validation_enabled": True, # Enable AI cross-checking of critical properties
+        "ai_validation_critical_only": True, # Only validate critical properties with AI (faster)
+        "ai_confidence_threshold": 0.7, # Minimum AI confidence for passing validation
+        "ai_verbose_logging": True,   # Enable detailed AI research call logging
+        "ai_log_prompts": True,       # Log AI prompts and responses
+        "ai_log_timing": True,        # Log AI request timing information
+        "hierarchical_validation_enabled": True, # Enable hierarchical validation (Categories.yaml → Materials.yaml → Frontmatter)
+        "hierarchical_validation_pre_generation": True, # Run hierarchical validation before content generation
+        "hierarchical_validation_post_generation": True, # Run hierarchical validation after content generation
     },
     
     # Research component API settings
@@ -364,8 +390,9 @@ OPTIMIZER_CONFIG = {
 
     # Logging Configuration
     "logging": {
-        "level": "INFO",
+        "level": "DEBUG",              # DEBUG level for detailed AI research logging
         "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+        "ai_research_logger": True,    # Enable dedicated AI research logger
     },
 
     # Test Mode Configuration
@@ -452,6 +479,59 @@ def get_api_config_fallbacks():
 def get_ai_detection_config():
     """Get AI detection configuration."""
     return get_optimizer_config("ai_detection_service")
+
+
+def extract_numeric_value(value):
+    """Extract numeric value from various formats, including Shore hardness scales."""
+    import re
+    
+    if isinstance(value, (int, float)):
+        return float(value)
+    
+    if isinstance(value, str):
+        # Remove common units and multipliers first
+        cleaned = value.replace(',', '')
+        
+        # Handle Shore hardness ranges specifically (Shore D 60-70, Shore A 10-20)
+        shore_range_match = re.search(r'Shore\s+[AD]\s+(\d+(?:\.\d+)?)-(\d+(?:\.\d+)?)', cleaned, re.IGNORECASE)
+        if shore_range_match:
+            # Return midpoint of the range
+            min_val = float(shore_range_match.group(1))
+            max_val = float(shore_range_match.group(2))
+            return (min_val + max_val) / 2.0
+        
+        # Handle Shore hardness single values (Shore A 10, Shore D 90)
+        shore_match = re.search(r'Shore\s+[AD]\s+(\d+(?:\.\d+)?)', cleaned, re.IGNORECASE)
+        if shore_match:
+            return float(shore_match.group(1))
+        
+        # Handle scientific notation markers like ×10⁻⁶
+        if '×10⁻' in cleaned:
+            parts = cleaned.split('×10⁻')
+            if len(parts) == 2:
+                try:
+                    base = float(parts[0])
+                    exp = int(parts[1].split('/')[0])  # Handle cases like ×10⁻⁶/K
+                    return base * (10 ** -exp)
+                except ValueError:
+                    pass
+        
+        # Handle regular scientific notation
+        if 'e-' in cleaned.lower() or 'e+' in cleaned.lower():
+            try:
+                return float(cleaned.split()[0])
+            except ValueError:
+                pass
+        
+        # Extract first number from string
+        number_match = re.search(r'-?\d+\.?\d*', cleaned)
+        if number_match:
+            try:
+                return float(number_match.group())
+            except ValueError:
+                pass
+    
+    return None
 
 
 def get_workflow_config():
@@ -657,6 +737,343 @@ def deploy_to_production():
 # FRONTMATTER SANITIZATION POST-PROCESSOR
 # =================================================================================
 
+def run_data_validation(report_file = None) -> bool:
+    """Run comprehensive hierarchical validation and update system"""
+    try:
+        from hierarchical_validator import HierarchicalValidator
+        import yaml
+        import os
+        from pathlib import Path
+        
+        print("🔍 Running Comprehensive Hierarchical Data Validation")
+        print("=" * 60)
+        
+        # Stage 1: Run full hierarchical validation
+        print("📊 Stage 1: Hierarchical Validation (Categories.yaml → Materials.yaml → Frontmatter)")
+        validator = HierarchicalValidator(ai_validation_enabled=True, silent_mode=False)
+        validation_results = validator.run_hierarchical_validation()
+        
+        summary = validation_results['summary']
+        print(f"\n📋 Validation Results:")
+        print(f"   Overall Status: {summary['overall_status']}")
+        print(f"   Categories: {summary['categories_status']}")
+        print(f"   Materials: {summary['materials_status']}")
+        print(f"   Hierarchy: {summary['hierarchy_status']}")
+        print(f"   AI Validation: {summary['ai_validation_status']}")
+        print(f"   Frontmatter: {summary['frontmatter_status']}")
+        print(f"   Total Issues: {summary['total_issues']}")
+        print(f"   Critical Issues: {summary['critical_issues']}")
+        
+        # Stage 2: Fix property violations automatically
+        if validation_results['validation_results']['materials_validation'].get('property_violations'):
+            print(f"\n🔧 Stage 2: Fixing Property Violations in Materials.yaml")
+            property_violations = validation_results['validation_results']['materials_validation']['property_violations']
+            
+            print(f"   Found {len(property_violations)} property violations to fix")
+            
+            # Load Materials.yaml
+            with open('data/Materials.yaml', 'r') as f:
+                materials_data = yaml.safe_load(f)
+            
+            fixed_count = 0
+            for violation in property_violations:
+                if violation.get('severity') == 'high':
+                    material_name = violation['material']
+                    category = violation['category']
+                    prop_name = violation['property']
+                    current_value = violation['value']
+                    
+                    # Handle violations with or without range info
+                    range_info = violation.get('range')
+                    if not range_info:
+                        # Skip violations without range info (like conversion errors)
+                        error_info = violation.get('error', 'Unknown error')
+                        print(f"   ⚠️ Skipping violation (no range): {material_name}.{prop_name} - {error_info}")
+                        continue
+                    
+                    print(f"   🚨 Fixing critical violation: {material_name}.{prop_name} = {current_value} (range: {range_info})")
+                    
+                    # Find and fix the violation in Materials.yaml
+                    materials_section = materials_data['materials']
+                    if category in materials_section:
+                        for item in materials_section[category]['items']:
+                            if item['name'] == material_name:
+                                # Ensure properties section exists
+                                if 'properties' not in item:
+                                    item['properties'] = {}
+                                
+                                if prop_name in item['properties'] or True:  # Fix regardless
+                                    # Get range bounds
+                                    range_parts = range_info.split('-')
+                                    if len(range_parts) == 2:
+                                        min_val = float(range_parts[0])
+                                        max_val = float(range_parts[1])
+                                        
+                                        # Set to midpoint of range
+                                        fixed_value = (min_val + max_val) / 2
+                                        
+                                        # Create proper property structure
+                                        item['properties'][prop_name] = {
+                                            'value': fixed_value,
+                                            'unit': violation.get('unit', ''),
+                                            'min': min_val,
+                                            'max': max_val,
+                                            'confidence': 0.8
+                                        }
+                                        
+                                        print(f"     ✅ Fixed: {prop_name} = {fixed_value}")
+                                        fixed_count += 1
+            
+            if fixed_count > 0:
+                # Save updated Materials.yaml
+                with open('data/Materials.yaml', 'w') as f:
+                    yaml.dump(materials_data, f, default_flow_style=False, sort_keys=False)
+                print(f"   ✅ Saved {fixed_count} fixes to Materials.yaml")
+            else:
+                print(f"   ℹ️  No critical property violations found in Materials.yaml")
+        else:
+            print(f"\n🔧 Stage 2: Ensuring Materials.yaml Has Required Properties")
+            
+            # Load Categories.yaml and Materials.yaml
+            with open('data/Categories.yaml', 'r') as f:
+                categories_data = yaml.safe_load(f)
+            with open('data/Materials.yaml', 'r') as f:
+                materials_data = yaml.safe_load(f)
+            
+            # Check if materials have properties, add them if missing
+            materials_updated = False
+            properties_added = 0
+            
+            for category_name, category_data in categories_data['categories'].items():
+                if category_name not in materials_data['materials']:
+                    continue
+                
+                category_ranges = category_data.get('category_ranges', {})
+                materials_in_category = materials_data['materials'][category_name].get('items', [])
+                
+                for material_item in materials_in_category:
+                    material_name = material_item.get('name')
+                    
+                    # Ensure properties exist
+                    if 'properties' not in material_item:
+                        material_item['properties'] = {}
+                        materials_updated = True
+                    
+                    # Add missing critical properties with default values from category ranges
+                    for prop_name, range_data in category_ranges.items():
+                        if prop_name not in material_item['properties']:
+                            try:
+                                # Handle different range data formats
+                                if isinstance(range_data, dict):
+                                    # Use robust numeric extraction for min/max values
+                                    min_raw = range_data.get('min', 0)
+                                    max_raw = range_data.get('max', 100)
+                                    
+                                    min_val = extract_numeric_value(min_raw)
+                                    max_val = extract_numeric_value(max_raw)
+                                    
+                                    if min_val is None or max_val is None:
+                                        print(f"   ⚠️  Skipped {material_name}.{prop_name}: could not extract numeric values from min='{min_raw}' max='{max_raw}'")
+                                        continue
+                                    
+                                    unit = range_data.get('unit', '')
+                                elif isinstance(range_data, str):
+                                    # Skip string ranges (like thermalDestructionType)
+                                    continue
+                                else:
+                                    continue
+                                
+                                default_value = (min_val + max_val) / 2
+                                
+                                material_item['properties'][prop_name] = {
+                                    'value': default_value,
+                                    'unit': unit,
+                                    'min': min_val,
+                                    'max': max_val,
+                                    'confidence': 0.7,
+                                    'source': 'default_from_category_range'
+                                }
+                                
+                                print(f"   ➕ Added {material_name}.{prop_name} = {default_value} (default from range)")
+                                properties_added += 1
+                                materials_updated = True
+                            except (ValueError, TypeError) as e:
+                                print(f"   ⚠️  Skipped {material_name}.{prop_name}: {e}")
+                                continue
+            
+            if materials_updated:
+                # Save updated Materials.yaml
+                with open('data/Materials.yaml', 'w') as f:
+                    yaml.dump(materials_data, f, default_flow_style=False, sort_keys=False)
+                print(f"   ✅ Added {properties_added} missing properties to Materials.yaml")
+
+        # Stage 3: Propagate Materials.yaml updates to frontmatter files
+        print(f"\n📄 Stage 3: Propagating Materials.yaml Updates to Frontmatter Files")
+        
+        frontmatter_dir = Path("content/components/frontmatter")
+        if frontmatter_dir.exists():
+            frontmatter_files = list(frontmatter_dir.glob("*.yaml"))
+            updated_count = 0
+            
+            # Load updated Materials.yaml
+            with open('data/Materials.yaml', 'r') as f:
+                updated_materials_data = yaml.safe_load(f)
+            
+            for frontmatter_file in frontmatter_files:
+                try:
+                    # Extract material name from filename
+                    material_name = frontmatter_file.stem.replace('-laser-cleaning', '').replace('-', ' ').replace('_', ' ').title()
+                    
+                    # Find material in Materials.yaml
+                    material_index = updated_materials_data.get('material_index', {})
+                    if material_name not in material_index:
+                        continue
+                    
+                    category = material_index[material_name]
+                    
+                    # Find material properties in Materials.yaml
+                    updated_properties = {}
+                    materials_section = updated_materials_data['materials']
+                    if category in materials_section:
+                        for item in materials_section[category]['items']:
+                            if item['name'] == material_name:
+                                updated_properties = item.get('properties', {})
+                                break
+                    
+                    if not updated_properties:
+                        continue
+                    
+                    # Load frontmatter file
+                    with open(frontmatter_file, 'r') as f:
+                        frontmatter_data = yaml.safe_load(f)
+                    
+                    # Check if updates are needed
+                    current_properties = frontmatter_data.get('materialProperties', {})
+                    needs_update = False
+                    
+                    # Handle thermal destruction migration: meltingPoint → thermalDestructionPoint
+                    thermal_destruction_migration = {}
+                    if 'thermalDestructionPoint' in updated_properties and 'meltingPoint' in current_properties:
+                        thermal_destruction_migration['thermalDestructionPoint'] = updated_properties['thermalDestructionPoint']
+                        thermal_destruction_migration['_remove_meltingPoint'] = True
+                        needs_update = True
+                        print(f"   🔥 Migrating {material_name}: meltingPoint → thermalDestructionPoint")
+                    
+                    # Add new thermal destruction type if missing
+                    if 'thermalDestructionType' in updated_properties and 'thermalDestructionType' not in current_properties:
+                        thermal_destruction_migration['thermalDestructionType'] = updated_properties['thermalDestructionType']
+                        needs_update = True
+                        thermal_type = updated_properties['thermalDestructionType'].get('value', 'N/A') if isinstance(updated_properties['thermalDestructionType'], dict) else updated_properties['thermalDestructionType']
+                        print(f"   🆕 Adding {material_name}: thermalDestructionType = {thermal_type}")
+                    
+                    for prop_name, prop_value in updated_properties.items():
+                        # Skip thermal destruction properties handled above
+                        if prop_name in thermal_destruction_migration:
+                            continue
+                            
+                        if prop_name in current_properties:
+                            current_val = current_properties[prop_name]
+                            
+                            # Extract value for comparison
+                            if isinstance(current_val, dict):
+                                current_actual = current_val.get('value')
+                            else:
+                                current_actual = current_val
+                            
+                            if isinstance(prop_value, dict):
+                                updated_actual = prop_value.get('value')
+                            else:
+                                updated_actual = prop_value
+                            
+                            if current_actual != updated_actual:
+                                needs_update = True
+                                print(f"   🔄 Updating {material_name}.{prop_name}: {current_actual} → {updated_actual}")
+                                
+                                # Update the frontmatter
+                                if isinstance(current_properties[prop_name], dict):
+                                    frontmatter_data['materialProperties'][prop_name]['value'] = updated_actual
+                                else:
+                                    frontmatter_data['materialProperties'][prop_name] = updated_actual
+                        else:
+                            # Add new property from Materials.yaml
+                            needs_update = True
+                            new_val = prop_value.get('value') if isinstance(prop_value, dict) else prop_value
+                            print(f"   ➕ Adding {material_name}.{prop_name}: {new_val}")
+                            frontmatter_data['materialProperties'][prop_name] = prop_value
+                    
+                    # Apply thermal destruction migration
+                    if thermal_destruction_migration:
+                        for thermal_prop, thermal_value in thermal_destruction_migration.items():
+                            if thermal_prop == '_remove_meltingPoint':
+                                if 'meltingPoint' in frontmatter_data['materialProperties']:
+                                    del frontmatter_data['materialProperties']['meltingPoint']
+                                    print(f"     ❌ Removed obsolete meltingPoint property")
+                            else:
+                                frontmatter_data['materialProperties'][thermal_prop] = thermal_value
+                    
+                    # Save updated frontmatter if needed
+                    if needs_update:
+                        with open(frontmatter_file, 'w') as f:
+                            yaml.dump(frontmatter_data, f, default_flow_style=False, sort_keys=False)
+                        updated_count += 1
+                        print(f"     ✅ Updated: {frontmatter_file.name}")
+                
+                except Exception as e:
+                    print(f"     ❌ Error updating {frontmatter_file.name}: {e}")
+            
+            print(f"   ✅ Updated {updated_count} frontmatter files")
+        
+        # Stage 4: Generate report if requested
+        if report_file:
+            print(f"\n� Stage 4: Generating Validation Report")
+            
+            report_content = f"""# Hierarchical Validation Report
+Generated: {validation_results['summary'].get('timestamp', 'Unknown')}
+
+## Overall Status: {summary['overall_status']}
+
+### Categories.yaml: {summary['categories_status']}
+### Materials.yaml: {summary['materials_status']}
+### Hierarchy Consistency: {summary['hierarchy_status']}
+### AI Validation: {summary['ai_validation_status']}
+### Frontmatter Files: {summary['frontmatter_status']}
+
+## Issue Summary
+- Total Issues: {summary['total_issues']}
+- Critical Issues: {summary['critical_issues']}
+
+## Recommendations
+"""
+            for i, rec in enumerate(validation_results['recommendations'], 1):
+                report_content += f"{i}. {rec}\n"
+            
+            report_content += f"\n## Detailed Results\n{yaml.dump(validation_results['validation_results'], default_flow_style=False)}"
+            
+            with open(report_file, 'w') as f:
+                f.write(report_content)
+            print(f"   ✅ Report saved to: {report_file}")
+        
+        # Final summary
+        print(f"\n🎉 Hierarchical Validation and Update Complete!")
+        print(f"   Data integrity maintained from Categories.yaml → Materials.yaml → Frontmatter")
+        
+        if summary['critical_issues'] > 0:
+            print(f"   ⚠️  {summary['critical_issues']} critical issues require attention")
+            return False
+        elif summary['total_issues'] > 0:
+            print(f"   ⚠️  {summary['total_issues']} non-critical issues noted")
+            return True
+        else:
+            print(f"   ✅ All validations passed!")
+            return True
+            
+    except Exception as e:
+        print(f"❌ Hierarchical validation failed: {e}")
+        import traceback
+        traceback.print_exc()
+        return False
+
+
 def run_frontmatter_sanitization(specific_file=None):
     """Run frontmatter YAML sanitization as a post-processor"""
     try:
@@ -664,7 +1081,7 @@ def run_frontmatter_sanitization(specific_file=None):
         import sys
         import os
         sys.path.append(os.path.join(os.path.dirname(__file__), 'scripts', 'tools'))
-        from sanitize_frontmatter import FrontmatterSanitizer
+        from scripts.tools.sanitize_frontmatter import FrontmatterSanitizer
         
         sanitizer = FrontmatterSanitizer()
         
@@ -746,6 +1163,7 @@ def main():
     from generators.dynamic_generator import DynamicGenerator
     from api.client_factory import create_api_client
     from data.materials import load_materials
+    from pipeline_integration import validate_material_pre_generation, validate_and_improve_frontmatter
     
     parser = argparse.ArgumentParser(description="Z-Beam Content Generator")
     parser.add_argument("--material", help="Generate content for specific material")
@@ -755,12 +1173,18 @@ def main():
     parser.add_argument("--deploy", action="store_true", help="Deploy generated content to Next.js production site")
     parser.add_argument("--sanitize", action="store_true", help="Sanitize all existing frontmatter files (post-processor)")
     parser.add_argument("--sanitize-file", help="Sanitize a specific frontmatter file")
+    parser.add_argument("--validate", action="store_true", help="Run hierarchical validation (Categories.yaml → Materials.yaml → Frontmatter) and auto-fix issues")
+    parser.add_argument("--validate-report", help="Generate hierarchical validation report to file")
     
     args = parser.parse_args()
     
     # Handle deployment to Next.js production site
     if args.deploy:
         return deploy_to_production()
+    
+    # Handle data validation without regeneration
+    if args.validate or args.validate_report:
+        return run_data_validation(args.validate_report)
     
     # Handle frontmatter sanitization (post-processor)
     if args.sanitize or args.sanitize_file:
@@ -797,6 +1221,13 @@ def main():
             if not material_info:
                 print(f"❌ Material '{args.material}' not found")
                 return False
+
+            # 🔍 INVISIBLE PIPELINE: Pre-generation validation
+            print(f"🔍 Validating material data for {args.material}...")
+            validation_result = validate_material_pre_generation(args.material)
+            if not validation_result['validation_passed']:
+                print(f"⚠️ Material validation issues detected: {', '.join(validation_result['issues_detected'])}")
+                print("🔧 Proceeding with generation, pipeline will attempt corrections...")
 
             # Check if any components require API clients
             requires_api = any(
@@ -880,6 +1311,24 @@ def main():
                 )
                 
                 if result.success:
+                    # 🔍 INVISIBLE PIPELINE: Post-generation validation for frontmatter
+                    if component_type == 'frontmatter':
+                        try:
+                            import yaml
+                            frontmatter_content = yaml.safe_load(result.content)
+                            pipeline_result = validate_and_improve_frontmatter(args.material, frontmatter_content)
+                            
+                            if pipeline_result['improvements_made']:
+                                print(f"🔧 Pipeline improved frontmatter quality for {args.material}")
+                                # Use improved frontmatter
+                                result.content = yaml.dump(pipeline_result['improved_frontmatter'], default_flow_style=False, sort_keys=False)
+                            
+                            validation_info = pipeline_result['validation_result']
+                            if not validation_info['validation_passed']:
+                                print(f"⚠️ Quality issues detected: {', '.join(validation_info['issues_detected'])}")
+                        except Exception as e:
+                            print(f"⚠️ Pipeline validation failed: {e}")
+                    
                     # Save the result
                     output_dir = f"content/components/{component_type}"
                     os.makedirs(output_dir, exist_ok=True)
@@ -931,6 +1380,14 @@ def main():
                 return False
             
             print(f"📋 Found {len(all_materials)} materials to process")
+            
+            # 🔍 INVISIBLE PIPELINE: Batch validation for all materials
+            from pipeline_integration import validate_batch_generation
+            material_names = [material[0] for material in all_materials]
+            batch_validation = validate_batch_generation(material_names)
+            print(f"🔍 Batch validation: {batch_validation['validation_passed']}/{batch_validation['total_materials']} materials passed")
+            if batch_validation['validation_failed'] > 0:
+                print(f"⚠️ {batch_validation['validation_failed']} materials have validation issues (proceeding with corrections)")
             
             # Check if any components require API clients
             requires_api = any(

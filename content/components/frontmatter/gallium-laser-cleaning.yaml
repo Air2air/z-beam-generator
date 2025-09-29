@@ -5,64 +5,57 @@ title: Gallium Laser Cleaning
 description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
-    value: 5.91
-    unit: g/cm³
+    value: 11.565000000000001
+    unit: "g/cm\xB3"
     confidence: 98
-    description: Density of solid gallium at 20°C
+    description: "Density of solid gallium at 20\xB0C"
     min: 0.53
     max: 22.6
-  meltingPoint:
-    value: 29.76
-    unit: °C
-    confidence: 99
-    description: Melting point of pure gallium (below room temperature)
-    min: null
-    max: null
   thermalConductivity:
-    value: 40.6
-    unit: W/m·K
+    value: 217.5
+    unit: "W/m\xB7K"
     confidence: 92
-    description: Thermal conductivity of solid gallium at 25°C
+    description: "Thermal conductivity of solid gallium at 25\xB0C"
     min: 6.0
     max: 429.0
   hardness:
-    value: 1.5
+    value: 1750.25
     unit: Mohs
     confidence: 84
     description: Mohs hardness scale
-    min: 5
-    max: 500
+    min: 0
+    max: 3772.91
   youngsModulus:
-    value: 9.8
+    value: 208.0
     unit: GPa
     confidence: 86
     description: Young's modulus of solid gallium
-    min: 70
-    max: 411
+    min: 0
+    max: 579.82
   thermalExpansion:
-    value: 18
-    unit: μm/m·K
+    value: 14.8
+    unit: "\u03BCm/m\xB7K"
     confidence: 88
     description: Coefficient of linear thermal expansion
-    min: 0.5
-    max: 29.1
+    min: 1.7
+    max: 34.9
   specificHeat:
-    value: 371
-    unit: J/kg·K
+    value: 500.0
+    unit: "J/kg\xB7K"
     confidence: 90
-    description: Specific heat capacity at 25°C
-    min: 0.128
-    max: 0.904
+    description: "Specific heat capacity at 25\xB0C"
+    min: 0
+    max: 1994.6
   thermalDiffusivity:
-    value: 1.85
-    unit: cm²/s
+    value: 87.1
+    unit: "cm\xB2/s"
     confidence: 85
     description: Thermal diffusivity at room temperature
-    min: 4.2
-    max: 174
+    min: 0
+    max: 191.376
   vaporizationPoint:
     value: 2204
-    unit: °C
+    unit: "\xB0C"
     confidence: 95
     description: Boiling point of gallium
     min: null
@@ -78,14 +71,14 @@ materialProperties:
     value: 708
     unit: mN/m
     confidence: 88
-    description: Surface tension of liquid gallium at 30°C
+    description: "Surface tension of liquid gallium at 30\xB0C"
     min: null
     max: null
   electricalResistivity:
     value: 1.4
-    unit: μΩ·m
+    unit: "\u03BC\u03A9\xB7m"
     confidence: 94
-    description: Electrical resistivity at 20°C
+    description: "Electrical resistivity at 20\xB0C"
     min: null
     max: null
   reflectivity:
@@ -97,14 +90,14 @@ materialProperties:
     max: null
   absorptionCoefficient:
     value: 1200000.0
-    unit: m⁻¹
+    unit: "m\u207B\xB9"
     confidence: 82
     description: Approximate absorption coefficient for near-IR lasers
     min: null
     max: null
   ablationThreshold:
     value: 0.15
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 80
     description: Estimated laser ablation threshold for nanosecond pulses
     min: null
@@ -123,6 +116,38 @@ materialProperties:
     description: Forms thin oxide layer in air
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 100.0
+    min: 0.02
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 50.01
+  laserReflectivity:
+    confidence: 0.7
+    max: 98.0
+    min: 5.0
+    source: default_from_category_range
+    unit: '%'
+    value: 51.5
+  tensileStrength:
+    confidence: 0.7
+    max: 3000.0
+    min: 3.0
+    source: default_from_category_range
+    unit: MPa
+    value: 1501.5
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 3422.0
+    min: -38.8
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 1691.6
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: melting
 applications:
 - 'Aerospace: Precision cleaning of aerospace components and assemblies'
 - 'Electronics: Precision cleaning of electronic components and circuit boards'
@@ -144,7 +169,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 50
-    unit: μm
+    unit: "\u03BCm"
     confidence: 89
     description: Optimal beam diameter for precise Gallium removal
     min: 20
@@ -158,7 +183,7 @@ machineSettings:
     max: 50
   fluenceThreshold:
     value: 0.8
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 88
     description: Minimum fluence required for effective Gallium ablation
     min: 0.3
@@ -308,9 +333,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

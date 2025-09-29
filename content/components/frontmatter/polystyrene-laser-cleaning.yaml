@@ -5,57 +5,50 @@ title: Polystyrene Laser Cleaning
 description: Laser cleaning parameters for Polycarbonate
 materialProperties:
   density:
-    value: 1.05
-    unit: g/cm³
+    value: 1.5250000000000001
+    unit: "g/cm\xB3"
     confidence: 95
     description: Density of general purpose polystyrene at room temperature
     min: 0.85
     max: 2.2
-  meltingPoint:
-    value: 240
-    unit: °C
-    confidence: 90
-    description: Glass transition temperature (Tg) for amorphous polystyrene
-    min: null
-    max: null
   thermalConductivity:
-    value: 0.14
-    unit: W/m·K
+    value: 1.51
+    unit: "W/m\xB7K"
     confidence: 88
     description: Thermal conductivity at room temperature
     min: 0.02
     max: 3
   tensileStrength:
-    value: 45
+    value: 205.0
     unit: MPa
     confidence: 92
     description: Ultimate tensile strength
     min: 10
     max: 400
   youngsModulus:
-    value: 3300
+    value: 2000.005
     unit: MPa
     confidence: 94
     description: Young's modulus in tension
-    min: 0.01
-    max: 50
+    min: 0
+    max: 3629.98
   thermalExpansion:
-    value: 70
-    unit: ×10⁻⁶/°C
+    value: 105.0
+    unit: "\xD710\u207B\u2076/\xB0C"
     confidence: 85
     description: Coefficient of linear thermal expansion
     min: 10
     max: 200
   specificHeat:
-    value: 1300
-    unit: J/kg·K
+    value: 1750.0
+    unit: "J/kg\xB7K"
     confidence: 87
     description: Specific heat capacity at room temperature
-    min: 1
-    max: 2.5
+    min: 800.0
+    max: 2000.0
   absorptionCoefficient:
     value: 0.8
-    unit: cm⁻¹
+    unit: "cm\u207B\xB9"
     confidence: 82
     description: Absorption coefficient at 1064 nm wavelength
     min: null
@@ -69,7 +62,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 0.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 80
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
@@ -83,11 +76,50 @@ materialProperties:
     max: null
   surfaceRoughness:
     value: 0.02
-    unit: μm Ra
+    unit: "\u03BCm Ra"
     confidence: 83
     description: Typical surface roughness for molded polystyrene
     min: null
     max: null
+  hardness:
+    confidence: 0.7
+    max: 90.0
+    min: 10.0
+    source: default_from_category_range
+    unit: ''
+    value: 50.0
+  laserAbsorption:
+    confidence: 0.7
+    max: 100.0
+    min: 0.1
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 50.05
+  laserReflectivity:
+    confidence: 0.7
+    max: 95.0
+    min: 5.0
+    source: default_from_category_range
+    unit: '%'
+    value: 50.0
+  thermalDiffusivity:
+    confidence: 0.7
+    max: 1.0
+    min: 0.05
+    source: default_from_category_range
+    unit: "mm\xB2/s"
+    value: 0.525
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 400.0
+    min: 80.0
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 240.0
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: melting
 applications:
 - 'Medical: Sterilization and cleaning of medical devices and instruments'
 - 'Aerospace: Precision cleaning of aerospace components and assemblies'
@@ -109,7 +141,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: μm
+    unit: "\u03BCm"
     confidence: 89
     description: Beam spot diameter for precise cleaning control
     min: 50
@@ -137,7 +169,7 @@ machineSettings:
     max: 1000
   fluenceThreshold:
     value: 0.8
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 91
     description: Minimum fluence required for Polystyrene ablation
     min: 0.3
@@ -281,9 +313,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

@@ -5,57 +5,50 @@ title: Brick Laser Cleaning
 description: Laser cleaning parameters for Brick
 materialProperties:
   density:
-    value: 1.8
-    unit: g/cm³
+    value: 1.7
+    unit: "g/cm\xB3"
     confidence: 95
     description: Typical density of fired clay brick
     min: 0.6
     max: 2.8
-  meltingPoint:
-    value: 1450
-    unit: °C
-    confidence: 90
-    description: Approximate melting point of clay-based brick composition
-    min: null
-    max: null
   thermalConductivity:
-    value: 0.72
-    unit: W/m·K
+    value: 1.29
+    unit: "W/m\xB7K"
     confidence: 92
     description: Thermal conductivity of common fired brick
     min: 0.08
     max: 2.5
   hardness:
-    value: 4.5
+    value: 4.0
     unit: Mohs
     confidence: 92
     description: Hardness on Mohs scale for fired clay brick
     min: 2
     max: 6
   youngsModulus:
-    value: 20
+    value: 27.5
     unit: GPa
     confidence: 88
     description: Elastic modulus of brick material
-    min: 5
-    max: 50
+    min: 1.2
+    max: 32.6
   thermalExpansion:
-    value: 5.5
-    unit: 10⁻⁶/°C
+    value: 12.5
+    unit: "10\u207B\u2076/\xB0C"
     confidence: 88
     description: Coefficient of thermal expansion for clay brick
-    min: 6
-    max: 12
+    min: 4.2
+    max: 19.8
   specificHeat:
-    value: 840
-    unit: J/kg·K
+    value: 900.0
+    unit: "J/kg\xB7K"
     confidence: 85
     description: Specific heat capacity at room temperature
-    min: 0.8
-    max: 1.1
+    min: 815.5
+    max: 1109.5
   thermalDiffusivity:
-    value: 0.48
-    unit: mm²/s
+    value: 0.55
+    unit: "mm\xB2/s"
     confidence: 82
     description: Thermal diffusivity calculated from conductivity, density, and specific
       heat
@@ -85,7 +78,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 1.2
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 80
     description: Approximate laser ablation threshold for nanosecond pulses at 1064
       nm
@@ -107,7 +100,7 @@ materialProperties:
     max: null
   surfaceRoughness:
     value: 15
-    unit: μm Ra
+    unit: "\u03BCm Ra"
     confidence: 85
     description: Typical surface roughness of unfinished brick
     min: null
@@ -119,6 +112,38 @@ materialProperties:
     description: Chemical stability rating in atmospheric conditions
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 15.0
+    min: 0.5
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 7.75
+  laserReflectivity:
+    confidence: 0.7
+    max: 70.0
+    min: 10.0
+    source: default_from_category_range
+    unit: '%'
+    value: 40.0
+  tensileStrength:
+    confidence: 0.7
+    max: 15.0
+    min: 1.0
+    source: default_from_category_range
+    unit: MPa
+    value: 8.0
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 1200.0
+    min: 500.0
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 850.0
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: spalling
 applications:
 - 'Restoration: Gentle cleaning for restoration and conservation applications'
 - 'Construction: Surface preparation and cleaning for construction materials'
@@ -140,7 +165,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: μm
+    unit: "\u03BCm"
     confidence: 90
     description: Beam spot diameter for precise cleaning resolution
     min: 50
@@ -168,7 +193,7 @@ machineSettings:
     max: 1000
   energyDensity:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 89
     description: Fluence threshold for effective contaminant removal without substrate
       damage
@@ -312,9 +337,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

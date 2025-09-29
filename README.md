@@ -1,13 +1,15 @@
 # Z-Beam Generator
 
 **🔬 AI-Researched Material Property Validation System**  
-**✅ Production-Ready: 98.1% Accuracy | 1.9% Error Rate | 1,351 Values Validated**
+**✅ Production-Ready: 98.1% Accuracy | 1.9% Error Rate | 1,351 Values Validated**  
+**🔍 NEW: Invisible Quality Pipeline** - Automatic validation and improvement during content generation
 
-A dynamic, schema-driven content generator for laser cleaning technical documentation with AI-researched material property validation, comprehensive range verification, and industry-grade accuracy.
+A dynamic, schema-driven content generator for laser cleaning technical documentation with AI-researched material property validation, comprehensive range verification, industry-grade accuracy, and invisible quality assurance pipeline.
 
 ## ✨ Features
 
-- **🔬 AI-Researched Validation**: DeepSeek materials science expertise with 98.1% accuracy
+- **� **NEW: Invisible Quality Pipeline**: Automatic validation and improvement during content generation
+- **�🔬 AI-Researched Validation**: DeepSeek materials science expertise with 98.1% accuracy
 - **📊 Scientific Property Ranges**: Research-validated ranges for 9 material categories
 - **🧪 Unit Standardization**: Consistent engineering units (J/kg·K, HV, Mohs scales)
 - **� Real-Time Validation**: 1,351 values checked with 1.9% error rate achievement

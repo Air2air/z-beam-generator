@@ -5,61 +5,54 @@ title: Inconel Laser Cleaning
 description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
-    value: 8.19
-    unit: g/cm³
+    value: 11.565000000000001
+    unit: "g/cm\xB3"
     confidence: 95
     description: Typical density for Inconel 718 at room temperature
     min: 0.53
     max: 22.6
-  meltingPoint:
-    value: 1336
-    unit: °C
-    confidence: 92
-    description: Solidus temperature for Inconel 718
-    min: null
-    max: null
   thermalConductivity:
-    value: 11.4
-    unit: W/m·K
+    value: 217.5
+    unit: "W/m\xB7K"
     confidence: 90
-    description: Thermal conductivity at 20°C for Inconel 718
+    description: "Thermal conductivity at 20\xB0C for Inconel 718"
     min: 6.0
     max: 429.0
   tensileStrength:
-    value: 1240
+    value: 1501.5
     unit: MPa
     confidence: 92
     description: Ultimate tensile strength at room temperature
-    min: 30.0
-    max: 3000.0
+    min: 0
+    max: 1363.6
   hardness:
-    value: 35
+    value: 1750.25
     unit: HRC
     confidence: 90
     description: Typical Rockwell C hardness for solution treated condition
-    min: 5
-    max: 500
+    min: 0
+    max: 3772.91
   youngsModulus:
-    value: 200
+    value: 208.0
     unit: GPa
     confidence: 94
     description: Young's modulus at room temperature
-    min: 70
-    max: 411
+    min: 0
+    max: 579.82
   thermalExpansion:
-    value: 13.0
-    unit: μm/m·°C
+    value: 14.8
+    unit: "\u03BCm/m\xB7\xB0C"
     confidence: 88
-    description: Coefficient of thermal expansion at 20-100°C
-    min: 0.5
-    max: 29.1
+    description: "Coefficient of thermal expansion at 20-100\xB0C"
+    min: 1.7
+    max: 34.9
   specificHeat:
-    value: 435
-    unit: J/kg·K
+    value: 500.0
+    unit: "J/kg\xB7K"
     confidence: 85
     description: Specific heat capacity at room temperature
-    min: 0.128
-    max: 0.904
+    min: 0
+    max: 1994.6
   absorptionCoefficient:
     value: 0.65
     unit: dimensionless
@@ -76,14 +69,14 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 85
     description: Estimated laser ablation threshold for nanosecond pulses
     min: null
     max: null
   oxidationResistance:
     value: 1100
-    unit: °C
+    unit: "\xB0C"
     confidence: 88
     description: Maximum continuous service temperature in oxidizing environments
     min: null
@@ -96,6 +89,38 @@ materialProperties:
       precipitates
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 100.0
+    min: 0.02
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 50.01
+  laserReflectivity:
+    confidence: 0.7
+    max: 98.0
+    min: 5.0
+    source: default_from_category_range
+    unit: '%'
+    value: 51.5
+  thermalDiffusivity:
+    confidence: 0.7
+    max: 174.0
+    min: 0.2
+    source: default_from_category_range
+    unit: "mm\xB2/s"
+    value: 87.1
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 3422.0
+    min: -38.8
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 1691.6
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: melting
 applications:
 - 'Automotive: Paint removal and surface preparation for automotive parts'
 - 'Restoration: Gentle cleaning for restoration and conservation applications'
@@ -118,7 +143,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 50
-    unit: μm
+    unit: "\u03BCm"
     confidence: 84
     description: Optimal beam diameter for precision cleaning
     min: 30
@@ -146,7 +171,7 @@ machineSettings:
     max: 2000
   fluenceThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 90
     description: Threshold fluence for effective Inconel oxide removal
     min: 1.5
@@ -167,7 +192,7 @@ machineSettings:
     max: 5
   energyDensity:
     value: 5.1
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 86
     description: Calculated energy density based on power, spot size, and repetition
       rate
@@ -290,9 +315,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

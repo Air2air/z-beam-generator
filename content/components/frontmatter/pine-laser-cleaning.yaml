@@ -5,69 +5,61 @@ title: Pine Laser Cleaning
 description: Laser cleaning parameters for Ash
 materialProperties:
   density:
-    value: 0.52
-    unit: g/cm³
+    value: 0.685
+    unit: "g/cm\xB3"
     confidence: 95
     description: Average density of dry pine wood at 12% moisture content
     min: 0.12
     max: 1.25
-  meltingPoint:
-    value: 280
-    unit: °C
-    confidence: 85
-    description: Approximate temperature where thermal decomposition begins (not true
-      melting)
-    min: null
-    max: null
   thermalConductivity:
-    value: 0.12
-    unit: W/m·K
+    value: 0.22
+    unit: "W/m\xB7K"
     confidence: 90
     description: Thermal conductivity perpendicular to grain direction
     min: 0.04
     max: 0.4
   tensileStrength:
-    value: 85
+    value: 110.0
     unit: MPa
     confidence: 90
     description: Tensile strength parallel to grain direction
-    min: 20
-    max: 200
+    min: 2.5
+    max: 152.5
   hardness:
-    value: 180
+    value: 2510.0
     unit: lbf
     confidence: 88
     description: Janka hardness test value
-    min: 0.4
-    max: 22.5
+    min: 0
+    max: 4650.8
   youngsModulus:
-    value: 9.0
+    value: 2502.5
     unit: GPa
     confidence: 92
     description: Modulus of elasticity parallel to grain
-    min: 5
-    max: 25
+    min: 0
+    max: 3299.24
   thermalExpansion:
-    value: 3.4
-    unit: 10^-6/°C
+    value: 30.000015
+    unit: "10^-6/\xB0C"
     confidence: 88
     description: Coefficient of thermal expansion perpendicular to grain
-    min: 3
-    max: 60
+    min: 0
+    max: 33.0
   thermalDiffusivity:
-    value: 0.15
-    unit: mm²/s
+    value: 0.20005
+    unit: "mm\xB2/s"
     confidence: 85
     description: Thermal diffusivity at room temperature
-    min: 0.1
-    max: 0.4
+    min: 0
+    max: 0.209
   specificHeat:
-    value: 1380
-    unit: J/kg·K
+    value: 1650.0
+    unit: "J/kg\xB7K"
     confidence: 92
-    description: Specific heat capacity at 20°C
-    min: 1.2
-    max: 4.2
+    description: "Specific heat capacity at 20\xB0C"
+    min: 695.0
+    max: 2555.0
   absorptionCoefficient:
     value: 0.75
     unit: dimensionless
@@ -84,7 +76,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 1.2
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 85
     description: Minimum fluence required for material removal with nanosecond pulses
     min: null
@@ -98,11 +90,36 @@ materialProperties:
     max: null
   surfaceRoughness:
     value: 3.5
-    unit: μm
+    unit: "\u03BCm"
     confidence: 85
     description: Average surface roughness (Ra) of planed pine surface
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 50.0
+    min: 1.0
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 25.5
+  laserReflectivity:
+    confidence: 0.7
+    max: 60.0
+    min: 10.0
+    source: default_from_category_range
+    unit: '%'
+    value: 35.0
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 500.0
+    min: 200.0
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 350.0
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: carbonization
 applications:
 - 'Restoration: Gentle cleaning for restoration and conservation applications'
 machineSettings:
@@ -122,7 +139,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: μm
+    unit: "\u03BCm"
     confidence: 89
     description: Beam spot diameter for precise cleaning control
     min: 50
@@ -151,7 +168,7 @@ machineSettings:
     max: 1000
   fluenceThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 91
     description: Fluence threshold for effective contaminant removal without wood
       damage
@@ -289,9 +306,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

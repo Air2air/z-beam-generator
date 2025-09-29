@@ -5,64 +5,57 @@ title: PTFE Laser Cleaning
 description: Laser cleaning parameters for Polycarbonate (PTFE)
 materialProperties:
   density:
-    value: 2.2
-    unit: g/cm³
+    value: 1.5250000000000001
+    unit: "g/cm\xB3"
     confidence: 95
     description: Standard density of virgin PTFE material
     min: 0.85
     max: 2.2
-  meltingPoint:
-    value: 327
-    unit: °C
-    confidence: 92
-    description: Crystalline melting point of PTFE
-    min: null
-    max: null
   thermalConductivity:
-    value: 0.25
-    unit: W/m·K
+    value: 1.51
+    unit: "W/m\xB7K"
     confidence: 90
     description: Thermal conductivity at room temperature
     min: 0.02
     max: 3
   tensileStrength:
-    value: 25
+    value: 205.0
     unit: MPa
     confidence: 90
     description: Typical tensile strength of unfilled PTFE
     min: 10
     max: 400
   hardness:
-    value: 60
+    value: 50.0
     unit: Shore D
     confidence: 85
     description: Hardness on Shore D scale
     min: null
     max: null
   youngsModulus:
-    value: 0.5
+    value: 2000.005
     unit: GPa
     confidence: 88
     description: Elastic modulus in tension
-    min: 0.01
-    max: 50
+    min: 0
+    max: 3629.98
   thermalExpansion:
-    value: 135
-    unit: ×10⁻⁶/°C
+    value: 105.0
+    unit: "\xD710\u207B\u2076/\xB0C"
     confidence: 88
-    description: Linear thermal expansion coefficient (20-100°C)
+    description: "Linear thermal expansion coefficient (20-100\xB0C)"
     min: 10
     max: 200
   specificHeat:
-    value: 1050
-    unit: J/kg·K
+    value: 1750.0
+    unit: "J/kg\xB7K"
     confidence: 85
     description: Specific heat capacity at room temperature
-    min: 1
-    max: 2.5
+    min: 800.0
+    max: 2000.0
   absorptionCoefficient:
     value: 0.85
-    unit: cm⁻¹
+    unit: "cm\u207B\xB9"
     confidence: 82
     description: Absorption coefficient at 1064 nm wavelength
     min: null
@@ -76,7 +69,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 0.8
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 85
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
@@ -102,6 +95,38 @@ materialProperties:
     description: Low surface energy critical for non-stick properties
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 100.0
+    min: 0.1
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 50.05
+  laserReflectivity:
+    confidence: 0.7
+    max: 95.0
+    min: 5.0
+    source: default_from_category_range
+    unit: '%'
+    value: 50.0
+  thermalDiffusivity:
+    confidence: 0.7
+    max: 1.0
+    min: 0.05
+    source: default_from_category_range
+    unit: "mm\xB2/s"
+    value: 0.525
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 400.0
+    min: 80.0
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 240.0
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: melting
 applications:
 - 'Automotive: Paint removal and surface preparation for automotive parts'
 - 'Electronics: Precision cleaning of electronic components and circuit boards'
@@ -123,7 +148,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: μm
+    unit: "\u03BCm"
     confidence: 92
     description: Beam spot diameter for precise PTFE surface cleaning
     min: 50
@@ -152,7 +177,7 @@ machineSettings:
     max: 2000
   fluenceThreshold:
     value: 0.8
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 89
     description: Minimum fluence required for effective PTFE contaminant removal
     min: 0.3
@@ -296,9 +321,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

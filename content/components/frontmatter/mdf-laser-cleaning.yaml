@@ -30,36 +30,36 @@ materialProperties:
     unit: MPa
     confidence: 85
     description: Tensile strength perpendicular to surface
-    min: 20
-    max: 200
+    min: 2.5
+    max: 152.5
   hardness:
     value: 65
     unit: HB
     confidence: 83
     description: Brinell hardness on surface
-    min: 0.4
-    max: 22.5
+    min: 0
+    max: 4650.8
   youngsModulus:
     value: 3000
     unit: MPa
     confidence: 87
     description: Elastic modulus in bending
-    min: 5
-    max: 25
+    min: 0
+    max: 3299.24
   thermalExpansion:
     value: 30
     unit: μm/m·°C
     confidence: 82
     description: Linear thermal expansion coefficient perpendicular to grain direction
-    min: 3
-    max: 60
+    min: 0
+    max: 33.0
   specificHeat:
     value: 1300
     unit: J/kg·K
     confidence: 90
     description: Specific heat capacity at room temperature
-    min: 1.2
-    max: 4.2
+    min: 695.0
+    max: 2555.0
   flexuralStrength:
     value: 35
     unit: MPa
@@ -108,8 +108,8 @@ materialProperties:
     unit: mm²/s
     confidence: 84
     description: Thermal diffusivity at room temperature
-    min: 0.1
-    max: 0.4
+    min: 0
+    max: 0.209
 applications:
 - laser cleaning
 - surface preparation

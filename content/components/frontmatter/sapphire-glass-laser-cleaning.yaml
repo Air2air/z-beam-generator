@@ -5,61 +5,55 @@ title: Sapphire Glass Laser Cleaning
 description: Laser cleaning parameters for Borosilicate Glass
 materialProperties:
   density:
-    value: 3.98
-    unit: g/cm³
+    value: 4.3999999999999995
+    unit: "g/cm\xB3"
     confidence: 98
     description: Density of single crystal sapphire at room temperature
     min: 1.2
     max: 7.6
-  meltingPoint:
-    value: 2040
-    unit: °C
-    confidence: 97
-    description: Melting point of sapphire (α-Al₂O₃)
-    min: null
-    max: null
   thermalConductivity:
-    value: 35
-    unit: W/m·K
+    value: 20.01
+    unit: "W/m\xB7K"
     confidence: 95
     description: Thermal conductivity at room temperature (c-axis)
-    min: 0.02
-    max: 4.2
+    min: 0
+    max: 38.422
   hardness:
-    value: 9
+    value: 6.75
     unit: Mohs
     confidence: 99
     description: Mohs hardness scale (second only to diamond)
     min: 4.5
     max: 9
   youngsModulus:
-    value: 345
+    value: 205.0
     unit: GPa
     confidence: 96
     description: Young's modulus (parallel to c-axis)
-    min: 10
-    max: 95
+    min: 31.5
+    max: 373.5
   thermalExpansion:
-    value: 5.3
-    unit: ×10⁻⁶/K
+    value: 7.55
+    unit: "\xD710\u207B\u2076/K"
     confidence: 94
-    description: Coefficient of thermal expansion (parallel to c-axis, 20-100°C)
+    description: "Coefficient of thermal expansion (parallel to c-axis, 20-100\xB0\
+      C)"
     min: 0.1
     max: 15
   thermalDiffusivity:
-    value: 12.5
-    unit: mm²/s
+    value: 7.505
+    unit: "mm\xB2/s"
     confidence: 92
     description: Thermal diffusivity at room temperature
-    min: 0.01
-    max: 1.8
+    min: 0
+    max: 13.7
   specificHeat:
-    value: 750
-    unit: J/kg·K
+    value: 700.0
+    unit: "J/kg\xB7K"
     confidence: 93
     description: Specific heat capacity at room temperature
-    min: 0.5
-    max: 1
+    min: 653.0
+    max: 857.0
   flexuralStrength:
     value: 690
     unit: MPa
@@ -78,19 +72,19 @@ materialProperties:
     value: 85
     unit: '%'
     confidence: 95
-    description: Transmission in visible to near-IR range (0.2-5.5 μm)
+    description: "Transmission in visible to near-IR range (0.2-5.5 \u03BCm)"
     min: null
     max: null
   laserDamageThreshold:
     value: 15
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 88
     description: Laser-induced damage threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   ablationThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 85
     description: Ablation threshold for femtosecond pulses at 800 nm
     min: null
@@ -110,6 +104,38 @@ materialProperties:
       phosphoric acid at high temperatures
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 10.0
+    min: 0.001
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 5.0005
+  laserReflectivity:
+    confidence: 0.7
+    max: 92.0
+    min: 4.0
+    source: default_from_category_range
+    unit: '%'
+    value: 48.0
+  tensileStrength:
+    confidence: 0.7
+    max: 2000.0
+    min: 30.0
+    source: default_from_category_range
+    unit: MPa
+    value: 1015.0
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 1723.0
+    min: 500.0
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 1111.5
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: softening
 applications:
 - 'Aerospace: Precision cleaning of aerospace components and assemblies'
 - 'Manufacturing: Industrial surface preparation and contamination removal'
@@ -132,7 +158,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 50
-    unit: μm
+    unit: "\u03BCm"
     confidence: 92
     description: Beam spot diameter for precise cleaning control
     min: 30
@@ -146,7 +172,7 @@ machineSettings:
     max: 50
   fluenceThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 88
     description: Fluence threshold for contaminant removal below sapphire damage threshold
     min: 1.5
@@ -305,9 +331,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

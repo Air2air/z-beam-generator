@@ -5,64 +5,57 @@ title: Gallium Arsenide Laser Cleaning
 description: Laser cleaning parameters for Gallium Arsenide
 materialProperties:
   density:
-    value: 5.32
-    unit: g/cm³
+    value: 4.73
+    unit: "g/cm\xB3"
     confidence: 98
     description: Density of single crystal GaAs at room temperature
-    min: 2.33
-    max: 7.13
-  meltingPoint:
-    value: 1238
-    unit: °C
-    confidence: 95
-    description: Melting point of GaAs under arsenic overpressure
-    min: null
-    max: null
+    min: 2.0
+    max: 5.6
   thermalConductivity:
-    value: 55
-    unit: W/m·K
+    value: 78.1
+    unit: "W/m\xB7K"
     confidence: 90
     description: Thermal conductivity at room temperature (300K)
     min: 0.2
     max: 156
   hardness:
-    value: 7.5
+    value: 4.5
     unit: GPa
     confidence: 85
     description: Knoop hardness at 100g load
-    min: 2
-    max: 7
+    min: 5.4
+    max: 30.1
   youngsModulus:
-    value: 85.5
+    value: 97.5
     unit: GPa
     confidence: 90
     description: Young's modulus along <100> direction
-    min: 5
-    max: 190
+    min: 53.0
+    max: 442.4
   thermalExpansion:
-    value: 5.73
-    unit: ×10⁻⁶/K
+    value: 11.15
+    unit: "\xD710\u207B\u2076/K"
     confidence: 88
     description: Linear thermal expansion coefficient at 300K
     min: 2.6
     max: 19.7
   thermalDiffusivity:
-    value: 0.26
-    unit: cm²/s
+    value: 45.05
+    unit: "cm\xB2/s"
     confidence: 85
     description: Thermal diffusivity at room temperature
     min: 0.1
     max: 90
   specificHeat:
-    value: 327.0
-    unit: J/kg·K
+    value: 600.0
+    unit: "J/kg\xB7K"
     confidence: 92
     description: Specific heat capacity at constant pressure
-    min: 0.3
-    max: 1.6
+    min: 277.0
+    max: 793.0
   absorptionCoefficient:
     value: 10000
-    unit: cm⁻¹
+    unit: "cm\u207B\xB9"
     confidence: 88
     description: Absorption coefficient at 532nm wavelength
     min: null
@@ -83,14 +76,14 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 0.15
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 82
     description: Ablation threshold for nanosecond pulses at 1064nm
     min: null
     max: null
   laserDamageThreshold:
     value: 0.8
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 80
     description: Laser-induced damage threshold for femtosecond pulses
     min: null
@@ -116,6 +109,38 @@ materialProperties:
     description: Forms native oxide layer but susceptible to thermal oxidation
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 100.0
+    min: 0.01
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 50.005
+  laserReflectivity:
+    confidence: 0.7
+    max: 70.0
+    min: 10.0
+    source: default_from_category_range
+    unit: '%'
+    value: 40.0
+  tensileStrength:
+    confidence: 0.7
+    max: 7000.0
+    min: 50.0
+    source: default_from_category_range
+    unit: MPa
+    value: 3525.0
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 1414.0
+    min: 100.0
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 757.0
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: melting
 applications:
 - 'Automotive: Paint removal and surface preparation for automotive parts'
 - 'Electronics: Precision cleaning of electronic components and circuit boards'
@@ -137,7 +162,7 @@ machineSettings:
     max: 1080
   spotSize:
     value: 50
-    unit: μm
+    unit: "\u03BCm"
     confidence: 87
     description: Beam diameter for precise oxide layer removal
     min: 30
@@ -165,7 +190,7 @@ machineSettings:
     max: 200
   fluence:
     value: 1.2
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 91
     description: Fluence threshold for GaAs oxide removal
     min: 0.8
@@ -309,9 +334,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []

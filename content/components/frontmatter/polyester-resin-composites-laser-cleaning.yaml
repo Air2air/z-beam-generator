@@ -5,65 +5,57 @@ title: Polyester Resin Composites Laser Cleaning
 description: Laser cleaning parameters for Carbon Fiber Reinforced Polymer
 materialProperties:
   density:
-    value: 1.35
-    unit: g/cm³
+    value: 4.25
+    unit: "g/cm\xB3"
     confidence: 95
     description: Typical density range for unfilled polyester resin composites
     min: 0.5
     max: 8
-  meltingPoint:
-    value: 250
-    unit: °C
-    confidence: 85
-    description: Decomposition temperature rather than true melting point (thermoset
-      polymer)
-    min: null
-    max: null
   thermalConductivity:
-    value: 0.21
-    unit: W/m·K
+    value: 200.05
+    unit: "W/m\xB7K"
     confidence: 90
     description: Low thermal conductivity typical of polymer composites
     min: 0.1
     max: 400
   tensileStrength:
-    value: 55
+    value: 3025.0
     unit: MPa
     confidence: 92
     description: Typical tensile strength for standard polyester composites
-    min: 50
-    max: 6000
+    min: 0
+    max: 2748.5
   hardness:
-    value: 85
+    value: 55.0
     unit: Barcol
     confidence: 89
     description: Barcol hardness scale typical for cured polyester resins
-    min: 20
-    max: 90
+    min: 15.5
+    max: 129.5
   youngsModulus:
-    value: 3.5
+    value: 750.0005
     unit: GPa
     confidence: 91
     description: Elastic modulus in tension
-    min: 5
-    max: 1000
+    min: 0
+    max: 274.999
   thermalExpansion:
-    value: 80
-    unit: ×10⁻⁶/°C
+    value: 124.5
+    unit: "\xD710\u207B\u2076/\xB0C"
     confidence: 88
     description: Coefficient of thermal expansion for polyester composites
-    min: -1
-    max: 50
+    min: 0
+    max: 241.55
   specificHeat:
-    value: 1200
-    unit: J/kg·K
+    value: 1000.0
+    unit: "J/kg\xB7K"
     confidence: 87
     description: Specific heat capacity at room temperature
-    min: 0.5
-    max: 2
+    min: 734.0
+    max: 2006.0
   absorptionCoefficient:
     value: 850
-    unit: cm⁻¹
+    unit: "cm\u207B\xB9"
     confidence: 82
     description: Absorption coefficient at 1064 nm wavelength
     min: null
@@ -77,7 +69,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 1.2
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 83
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
@@ -89,6 +81,38 @@ materialProperties:
     description: General chemical resistance rating against common solvents
     min: null
     max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 200.0
+    min: 0.05
+    source: default_from_category_range
+    unit: "cm\u207B\xB9"
+    value: 100.025
+  laserReflectivity:
+    confidence: 0.7
+    max: 80.0
+    min: 2.0
+    source: default_from_category_range
+    unit: '%'
+    value: 41.0
+  thermalDiffusivity:
+    confidence: 0.7
+    max: 180.0
+    min: 0.1
+    source: default_from_category_range
+    unit: "mm\xB2/s"
+    value: 90.05
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 2000.0
+    min: 150.0
+    source: default_from_category_range
+    unit: "\xB0C"
+    value: 1075.0
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: decomposition
 applications:
 - 'Manufacturing: Industrial surface preparation and contamination removal'
 - 'Automotive: Paint removal and surface preparation for automotive parts'
@@ -112,7 +136,7 @@ machineSettings:
     max: 1080
   spotSize:
     value: 100
-    unit: μm
+    unit: "\u03BCm"
     confidence: 90
     description: Beam spot diameter for precise cleaning control
     min: 50
@@ -127,7 +151,7 @@ machineSettings:
     max: 100
   fluenceThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 88
     description: Ablation threshold fluence for Polyester Resin Composites
     min: 1.8
@@ -279,9 +303,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
