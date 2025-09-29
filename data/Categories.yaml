@@ -1,5 +1,5 @@
 metadata:
-  version: 2.5.0
+  version: 2.6.0
   generated_date: '2025-09-27T12:41:15.000000'
   source_materials_yaml_hash: fc69e9d44790542345aed7d97e63b2ef
   research_confidence_threshold: 75
@@ -7,17 +7,26 @@ metadata:
   total_subcategories: 0
   enhancement_applied: true
   additional_field_categories: 6
-  last_updated: '2025-09-27'
+  last_updated: '2025-09-29'
+  last_sync_date: '2025-09-29'
+  frontmatter_sync_applied: true
+  files_synchronized: 121
+  sync_timestamp: '2025-09-29T13:37:05.579878'
   research_verification_applied: true
   api_research_provider: deepseek
   research_confidence_rate: 100.0
   properties_verified: 9
   categories_researched: 3
+  material_property_descriptions_enhanced: true
+  property_descriptions_count: 13
   enhancement_notes: Added machine settings descriptions, material properties definitions,
     environmental impact templates, and standardized application types. v2.3.0 applied
     AI-verified property ranges based on materials science research with 100% high-confidence
     results. v2.4.0 added universal regulatory standards optimization. v2.5.0 applied
     comprehensive property consolidation eliminating 327 redundant property entries.
+    v2.6.0 enhanced with comprehensive material property descriptions for complete
+    frontmatter generation support. v2.6.0 enhanced with comprehensive material property
+    descriptions for complete frontmatter generation support.
 universal_regulatory_standards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -74,6 +83,59 @@ machineSettingsDescriptions:
     unit: J/cm²
     safety_margin: Typically operate at 70-80% of this threshold
     material_dependency: Varies significantly with thermal properties
+  wavelength:
+    description: Laser wavelength for optimal material interaction and cleaning efficiency
+    unit: nm
+    selection_criteria: Material absorption characteristics, cleaning requirements,
+      and safety considerations
+    typical_range_guidance: 355nm (UV) for organics/coatings, 1064nm (NIR) for metals,
+      10640nm (CO2) for plastics
+    optimization_factors:
+    - Material absorption coefficient
+    - Penetration depth requirements
+    - Thermal vs. photochemical ablation
+    category_specific_ranges:
+      metal:
+        range: 355-10640 nm
+        optimal: 1064 nm
+        rationale: High absorption at 1064nm, UV for precision, CO2 for aggressive
+          cleaning
+      ceramic:
+        range: 532-10640 nm
+        optimal: 1064 nm
+        rationale: Ceramic absorption increases with wavelength, avoid UV damage
+      glass:
+        range: 532-10640 nm
+        optimal: 1064 nm
+        rationale: Glass transparent to UV, moderate NIR absorption, strong CO2 absorption
+      plastic:
+        range: 355-10640 nm
+        optimal: 1064 nm
+        rationale: UV excellent for organics, NIR safe, CO2 very effective but thermal
+      composite:
+        range: 355-1080 nm
+        optimal: 1064 nm
+        rationale: Mixed materials need careful wavelength selection, avoid thermal
+          CO2
+      wood:
+        range: 355-10640 nm
+        optimal: 1064 nm
+        rationale: Organic material, UV very effective, NIR balanced, CO2 for heavy
+          removal
+      stone:
+        range: 532-10640 nm
+        optimal: 1064 nm
+        rationale: Natural materials, avoid UV to prevent discoloration, NIR/CO2 effective
+      masonry:
+        range: 532-10640 nm
+        optimal: 1064 nm
+        rationale: Mixed cement/stone materials, avoid UV, NIR safe, CO2 for paint
+          removal
+      semiconductor:
+        range: 355-1080 nm
+        optimal: 532 nm
+        rationale: High precision required, avoid thermal damage, shorter wavelengths
+          preferred
 materialPropertyDescriptions:
   bandgap:
     description: Electronic energy gap between valence and conduction bands
@@ -99,6 +161,69 @@ materialPropertyDescriptions:
     - Contamination adhesion
     - Surface complexity
     selection_guidance: Higher scores require more precise parameter control
+  density:
+    description: Mass per unit volume of the material
+    unit: g/cm³
+    relevance: Affects thermal mass and energy distribution during cleaning
+    laser_cleaning_impact: Influences heat diffusion rates and required energy density
+    typical_ranges:
+      metal: 0.53-22.6
+      ceramic: 1.8-15.7
+      glass: 2.2-4.8
+      plastic: 0.9-2.3
+      composite: 1.1-2.5
+      wood: 0.3-1.2
+      stone: 1.5-3.2
+      masonry: 1.8-2.8
+      semiconductor: 2.3-19.3
+  meltingPoint:
+    description: Temperature at which material transitions from solid to liquid
+    unit: °C
+    relevance: Critical threshold for thermal damage assessment
+    laser_cleaning_impact: Determines safe operating temperature limits
+    safety_considerations: Stay well below melting point to prevent substrate damage
+  thermalConductivity:
+    description: Rate of heat transfer through the material
+    unit: W/m·K
+    relevance: Affects heat dissipation and thermal stress development
+    laser_cleaning_impact: High conductivity materials require adjusted parameters
+    optimization_factor: Critical for pulse duration and repetition rate selection
+  tensileStrength:
+    description: Maximum stress material can withstand while being stretched
+    unit: MPa
+    relevance: Indicates mechanical robustness during cleaning
+    laser_cleaning_impact: Affects susceptibility to thermal stress damage
+  hardness:
+    description: Resistance to deformation and surface indentation
+    unit: HV, Mohs
+    relevance: Indicates surface durability and cleaning difficulty
+    laser_cleaning_impact: Harder materials may require higher energy densities
+  youngsModulus:
+    description: Measure of material stiffness and elastic deformation
+    unit: GPa
+    relevance: Affects thermal expansion and stress response
+    laser_cleaning_impact: Influences crack propagation and damage thresholds
+  thermalExpansion:
+    description: Rate of dimensional change with temperature variation
+    unit: μm/m·°C
+    relevance: Critical for thermal stress calculation
+    laser_cleaning_impact: High expansion materials need careful thermal management
+  absorptionCoefficient:
+    description: Rate of optical energy absorption at specific wavelengths
+    unit: cm⁻¹
+    relevance: Determines energy coupling efficiency
+    laser_cleaning_impact: Directly affects cleaning effectiveness and penetration
+      depth
+  reflectivity:
+    description: Fraction of incident light reflected from the surface
+    unit: dimensionless (0-1)
+    relevance: Affects energy coupling and safety considerations
+    laser_cleaning_impact: High reflectivity requires adjusted power settings
+  thermalDiffusivity:
+    description: Rate of thermal energy transfer through material
+    unit: mm²/s
+    relevance: Affects heat spread and cooling rates
+    laser_cleaning_impact: Influences pulse timing and thermal damage prevention
 environmentalImpactTemplates:
   chemical_waste_elimination:
     description: Eliminates hazardous chemical waste streams
@@ -189,7 +314,7 @@ categories:
         unit: g/cm³
       hardness:
         max: 10.0
-        min: 3.0
+        min: 1.0
         unit: Mohs
       laserAbsorption:
         max: 50
@@ -200,9 +325,9 @@ categories:
         min: 5
         unit: '%'
       specificHeat:
-        max: 1.1
-        min: 0.4
-        unit: J/g·K
+        max: 1200
+        min: 200
+        unit: J/kg·K
       tensileStrength:
         max: 1000
         min: 50
@@ -218,15 +343,15 @@ categories:
       thermalDestructionType: melting
       thermalDiffusivity:
         max: 120
-        min: 0.3
+        min: 0.05
         unit: mm²/s
       thermalExpansion:
         max: 14
         min: 0.1
         unit: µm/m·K
       youngsModulus:
-        max: 700
-        min: 150
+        max: 800
+        min: 50
         unit: GPa
     subcategories: {}
     common_applications:
@@ -327,9 +452,9 @@ categories:
         min: 2
         unit: '%'
       specificHeat:
-        max: 2
-        min: 0.5
-        unit: J/g·K
+        max: 1500
+        min: 500
+        unit: J/kg·K
       tensileStrength:
         max: 6000
         min: 50
@@ -348,12 +473,12 @@ categories:
         min: 0.1
         unit: mm²/s
       thermalExpansion:
-        max: 50
+        max: 250
         min: -1
         unit: µm/m·K
       youngsModulus:
-        max: 1000
-        min: 5
+        max: 1500
+        min: 0.001
         unit: GPa
     subcategories: {}
     common_applications:
@@ -395,15 +520,15 @@ categories:
         min: 4
         unit: '%'
       specificHeat:
-        max: 1
-        min: 0.5
-        unit: J/g·K
+        max: 900
+        min: 500
+        unit: J/kg·K
       tensileStrength:
         max: 2000
         min: 30
         unit: MPa
       thermalConductivity:
-        max: 4.2
+        max: 40
         min: 0.02
         unit: W/m·K
       thermalDestructionPoint:
@@ -412,7 +537,7 @@ categories:
         unit: °C
       thermalDestructionType: melting
       thermalDiffusivity:
-        max: 1.8
+        max: 15
         min: 0.01
         unit: mm²/s
       thermalExpansion:
@@ -420,7 +545,7 @@ categories:
         min: 0.1
         unit: µm/m·K
       youngsModulus:
-        max: 95
+        max: 400
         min: 10
         unit: GPa
     subcategories: {}
@@ -471,9 +596,9 @@ categories:
         min: 10
         unit: '%'
       specificHeat:
-        max: 1.1
-        min: 0.8
-        unit: J/g·K
+        max: 1100
+        min: 700
+        unit: J/kg·K
       tensileStrength:
         max: 15
         min: 1
@@ -492,8 +617,8 @@ categories:
         min: 0.1
         unit: mm²/s
       thermalExpansion:
-        max: 12
-        min: 6
+        max: 20
+        min: 5
         unit: µm/m·K
       youngsModulus:
         max: 50
@@ -540,9 +665,9 @@ categories:
         min: 0.53
         unit: g/cm³
       hardness:
-        max: 500
-        min: 5
-        unit: HB
+        max: 3500
+        min: 0.5
+        unit: HV
       laserAbsorption:
         max: 100
         min: 0.02
@@ -552,12 +677,12 @@ categories:
         min: 5
         unit: '%'
       specificHeat:
-        max: 0.904
-        min: 0.128
-        unit: J/g·K
+        max: 900
+        min: 100
+        unit: J/kg·K
       tensileStrength:
         max: 3000.0
-        min: 30.0
+        min: 3.0
         unit: MPa
       thermalConductivity:
         max: 429.0
@@ -570,7 +695,7 @@ categories:
       thermalDestructionType: melting
       thermalDiffusivity:
         max: 174
-        min: 4.2
+        min: 0.2
         unit: mm²/s
       thermalExpansion:
         max: 29.1
@@ -578,7 +703,7 @@ categories:
         unit: µm/m·K
       youngsModulus:
         max: 411
-        min: 70
+        min: 5
         unit: GPa
     subcategories: {}
     common_applications:
@@ -588,7 +713,7 @@ categories:
     - paint stripping
     electricalProperties:
       electricalResistivity:
-        min: 10.0
+        min: 1.0
         max: 100.0
         unit: nΩ·m
         confidence: 95
@@ -661,9 +786,9 @@ categories:
         min: 5
         unit: '%'
       specificHeat:
-        max: 2.5
-        min: 1
-        unit: J/g·K
+        max: 2500
+        min: 1000
+        unit: J/kg·K
       tensileStrength:
         max: 400
         min: 10
@@ -686,7 +811,7 @@ categories:
         min: 10
         unit: µm/m·K
       youngsModulus:
-        max: 50
+        max: 4000
         min: 0.01
         unit: GPa
     subcategories: {}
@@ -729,9 +854,9 @@ categories:
         min: 10
         unit: '%'
       specificHeat:
-        max: 1.6
-        min: 0.3
-        unit: J/g·K
+        max: 900
+        min: 300
+        unit: J/kg·K
       tensileStrength:
         max: 7000
         min: 50
@@ -832,15 +957,15 @@ categories:
         min: 5
         unit: '%'
       specificHeat:
-        max: 1.2
-        min: 0.7
-        unit: J/g·K
+        max: 1200
+        min: 600
+        unit: J/kg·K
       tensileStrength:
         max: 25
         min: 2
         unit: MPa
       thermalConductivity:
-        max: 5
+        max: 8
         min: 0.2
         unit: W/m·K
       thermalDestructionPoint:
@@ -853,7 +978,7 @@ categories:
         min: 0.2
         unit: mm²/s
       thermalExpansion:
-        max: 16
+        max: 25
         min: 3
         unit: µm/m·K
       youngsModulus:
@@ -938,9 +1063,9 @@ categories:
         min: 0.12
         unit: g/cm³
       hardness:
-        max: 22.5
-        min: 0.4
-        unit: kN
+        max: 5000
+        min: 20
+        unit: lbf
       laserAbsorption:
         max: 50
         min: 1
@@ -950,9 +1075,9 @@ categories:
         min: 10
         unit: '%'
       specificHeat:
-        max: 4.2
-        min: 1.2
-        unit: J/g·K
+        max: 2500
+        min: 800
+        unit: J/kg·K
       tensileStrength:
         max: 200
         min: 20
@@ -968,14 +1093,14 @@ categories:
       thermalDestructionType: decomposition
       thermalDiffusivity:
         max: 0.4
-        min: 0.1
+        min: 0.0001
         unit: mm²/s
       thermalExpansion:
         max: 60
-        min: 3
+        min: 3.0e-05
         unit: µm/m·K
       youngsModulus:
-        max: 25
+        max: 5000
         min: 5
         unit: GPa
     subcategories: {}

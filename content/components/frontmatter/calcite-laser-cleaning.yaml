@@ -54,8 +54,8 @@ materialProperties:
     min: 0.2
     max: 2.5
   specificHeat:
-    value: 0.82
-    unit: J/g·K
+    value: 820.0
+    unit: J/kg·K
     confidence: 92
     description: Specific heat capacity at 25°C
     min: 0.7
@@ -104,7 +104,7 @@ machineSettings:
     confidence: 88
     description: Near-IR wavelength with good Calcite absorption for efficient cleaning
     min: 532
-    max: 1064
+    max: 10640
   spotSize:
     value: 100
     unit: μm

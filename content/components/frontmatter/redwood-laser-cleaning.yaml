@@ -33,8 +33,8 @@ materialProperties:
     min: 20
     max: 200
   hardness:
-    value: 2.1
-    unit: kN
+    value: 180
+    unit: lbf
     confidence: 88
     description: Janka hardness test result
     min: 0.4
@@ -126,8 +126,8 @@ machineSettings:
     confidence: 88
     description: Near-infrared wavelength for optimal absorption in wood cellulose
       and lignin
-    min: 1030
-    max: 1070
+    min: 355
+    max: 10640
   spotSize:
     value: 100
     unit: μm

@@ -54,8 +54,8 @@ materialProperties:
     min: 3
     max: 60
   specificHeat:
-    value: 1.38
-    unit: kJ/kg·K
+    value: 1380.0
+    unit: J/kg·K
     confidence: 85
     description: Specific heat capacity at room temperature
     min: 1.2
@@ -125,8 +125,8 @@ machineSettings:
     unit: nm
     confidence: 88
     description: Near-infrared wavelength optimized for Maple cellulose absorption
-    min: 1030
-    max: 1070
+    min: 355
+    max: 10640
   spotSize:
     value: 100
     unit: μm

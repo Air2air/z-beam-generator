@@ -26,8 +26,8 @@ materialProperties:
     min: 20
     max: 200
   hardness:
-    value: 7.2
-    unit: kN
+    value: 2200
+    unit: lbf
     confidence: 88
     description: Janka hardness test value
     min: 0.4
@@ -40,8 +40,8 @@ materialProperties:
     min: 5
     max: 25
   specificHeat:
-    value: 1.38
-    unit: kJ/kg·K
+    value: 1380.0
+    unit: J/kg·K
     confidence: 88
     description: Specific heat capacity at room temperature
     min: 1.2
@@ -104,8 +104,8 @@ machineSettings:
     unit: nm
     confidence: 88
     description: Near-infrared wavelength for optimal Hickory absorption
-    min: 1030
-    max: 1070
+    min: 355
+    max: 10640
   spotSize:
     value: 100
     unit: μm

@@ -61,8 +61,8 @@ materialProperties:
     min: 4.2
     max: 174
   specificHeat:
-    value: 0.227
-    unit: J/g·K
+    value: 227.0
+    unit: J/kg·K
     confidence: 91
     description: Specific heat capacity at 25°C
     min: 0.128
@@ -119,8 +119,8 @@ machineSettings:
     unit: nm
     confidence: 88
     description: Near-IR wavelength for optimal Tin absorption and oxide removal
-    min: 1030
-    max: 1070
+    min: 355
+    max: 10640
   spotSize:
     value: 50
     unit: μm

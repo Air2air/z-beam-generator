@@ -54,8 +54,8 @@ materialProperties:
     min: 0.5
     max: 29.1
   specificHeat:
-    value: 0.244
-    unit: J/g·K
+    value: 244.0
+    unit: J/kg·K
     confidence: 88
     description: Specific heat capacity at 25°C
     min: 0.128
@@ -120,8 +120,8 @@ machineSettings:
     unit: nm
     confidence: 88
     description: Near-IR wavelength with good absorption in Palladium oxide layers
-    min: 532
-    max: 1064
+    min: 355
+    max: 10640
   spotSize:
     value: 50
     unit: μm

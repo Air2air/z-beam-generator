@@ -5,8 +5,8 @@ title: Birch Laser Cleaning
 description: Laser cleaning parameters for Ash
 materialProperties:
   density:
-    value: 670
-    unit: kg/m³
+    value: 0.67
+    unit: g/cm³
     confidence: 95
     description: Average density of European birch wood at 12% moisture content
     min: 0.12
@@ -34,8 +34,8 @@ materialProperties:
     min: 20
     max: 200
   hardness:
-    value: 3.5
-    unit: kN
+    value: 350
+    unit: lbf
     confidence: 88
     description: Janka hardness test value for side hardness
     min: 0.4
@@ -127,8 +127,8 @@ machineSettings:
     unit: nm
     confidence: 88
     description: Near-IR wavelength for optimal Birch wood absorption
-    min: 1030
-    max: 1070
+    min: 355
+    max: 10640
   spotSize:
     value: 100
     unit: μm

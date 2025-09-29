@@ -1,0 +1,83 @@
+{
+  "metal": {
+    "range": [
+      355,
+      10640
+    ],
+    "optimal": 1064,
+    "description": "Metals: 355nm (UV for delicate), 1064nm (standard NIR), 10.6\u03bcm (CO2 for heavy cleaning)",
+    "rationale": "High absorption at 1064nm, UV for precision, CO2 for aggressive cleaning"
+  },
+  "ceramic": {
+    "range": [
+      532,
+      10640
+    ],
+    "optimal": 1064,
+    "description": "Ceramics: 532nm (green for precision), 1064nm (standard), 10.6\u03bcm (CO2)",
+    "rationale": "Ceramic absorption increases with wavelength, avoid UV damage"
+  },
+  "glass": {
+    "range": [
+      532,
+      10640
+    ],
+    "optimal": 1064,
+    "description": "Glass: 532nm (visible absorption), 1064nm (standard), 10.6\u03bcm (CO2)",
+    "rationale": "Glass transparent to UV, moderate NIR absorption, strong CO2 absorption"
+  },
+  "plastic": {
+    "range": [
+      355,
+      10640
+    ],
+    "optimal": 1064,
+    "description": "Plastics: 355nm (UV for organics), 1064nm (safe), 10.6\u03bcm (CO2 strong)",
+    "rationale": "UV excellent for organics, NIR safe, CO2 very effective but thermal"
+  },
+  "composite": {
+    "range": [
+      355,
+      1064
+    ],
+    "optimal": 1064,
+    "description": "Composites: 355nm (UV selective), 1064nm (balanced) - avoid CO2",
+    "rationale": "Mixed materials need careful wavelength selection, avoid thermal CO2"
+  },
+  "wood": {
+    "range": [
+      355,
+      10640
+    ],
+    "optimal": 1064,
+    "description": "Wood: 355nm (UV precise), 1064nm (balanced), 10.6\u03bcm (CO2 aggressive)",
+    "rationale": "Organic material, UV very effective, NIR balanced, CO2 for heavy removal"
+  },
+  "stone": {
+    "range": [
+      532,
+      10640
+    ],
+    "optimal": 1064,
+    "description": "Stone: 532nm (surface), 1064nm (standard), 10.6\u03bcm (CO2 powerful)",
+    "rationale": "Natural materials, avoid UV to prevent discoloration, NIR/CO2 effective"
+  },
+  "masonry": {
+    "range": [
+      532,
+      10640
+    ],
+    "optimal": 1064,
+    "description": "Masonry: 532nm (delicate), 1064nm (standard), 10.6\u03bcm (aggressive)",
+    "rationale": "Mixed cement/stone materials, avoid UV, NIR safe, CO2 for paint removal"
+  },
+  "semiconductor": {
+    "range": [
+      355,
+      1064
+    ],
+    "optimal": 532,
+    "description": "Semiconductors: 355nm (UV precise), 532nm (green precision), 1064nm (gentle)",
+    "rationale": "High precision required, avoid thermal damage, shorter wavelengths preferred"
+  }
+}

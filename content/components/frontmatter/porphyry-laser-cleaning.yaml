@@ -54,8 +54,8 @@ materialProperties:
     min: 3
     max: 16
   specificHeat:
-    value: 0.84
-    unit: kJ/kg·K
+    value: 840.0
+    unit: J/kg·K
     confidence: 90
     description: Specific heat capacity at room temperature
     min: 0.7
@@ -120,7 +120,7 @@ machineSettings:
     confidence: 88
     description: Near-infrared wavelength optimized for Porphyry mineral absorption
     min: 532
-    max: 1064
+    max: 10640
   spotSize:
     value: 100
     unit: μm

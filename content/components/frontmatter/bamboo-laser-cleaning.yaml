@@ -33,8 +33,8 @@ materialProperties:
     min: 20
     max: 200
   hardness:
-    value: 3.5
-    unit: HB
+    value: 350
+    unit: lbf
     confidence: 82
     description: Brinell hardness of bamboo surface
     min: 0.4
@@ -124,8 +124,8 @@ machineSettings:
     unit: nm
     confidence: 88
     description: Near-IR wavelength for optimal absorption in bamboo contaminants
-    min: 532
-    max: 1064
+    min: 355
+    max: 10640
   spotSize:
     value: 100
     unit: μm

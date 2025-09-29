@@ -27,10 +27,10 @@ materialProperties:
     min: 0.04
     max: 0.4
   hardness:
-    value: 2.5
-    unit: Mohs
+    value: 180
+    unit: lbf
     confidence: 81
-    description: Mohs hardness of ash mineral components
+    description: Janka hardness hardness of ash mineral components
     min: 0.4
     max: 22.5
   thermalExpansion:
@@ -107,8 +107,8 @@ machineSettings:
     unit: nm
     confidence: 88
     description: Optimal wavelength for Ash absorption characteristics
-    min: null
-    max: null
+    min: 355
+    max: 10640
   spotSize:
     value: 100
     unit: μm

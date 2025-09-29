@@ -61,8 +61,8 @@ materialProperties:
     min: 4.2
     max: 174
   specificHeat:
-    value: 0.131
-    unit: J/g·K
+    value: 131.0
+    unit: J/kg·K
     confidence: 88
     description: Specific heat capacity at 25°C
     min: 0.128
@@ -120,8 +120,8 @@ machineSettings:
     unit: nm
     confidence: 92
     description: Near-IR wavelength optimized for Iridium's absorption characteristics
-    min: 532
-    max: 1064
+    min: 355
+    max: 10640
   spotSize:
     value: 80
     unit: μm

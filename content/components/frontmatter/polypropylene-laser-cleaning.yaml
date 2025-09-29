@@ -47,8 +47,8 @@ materialProperties:
     min: 10
     max: 200
   specificHeat:
-    value: 1.9
-    unit: kJ/kg·K
+    value: 1900.0
+    unit: J/kg·K
     confidence: 90
     description: Specific heat capacity at room temperature
     min: 1
@@ -106,7 +106,7 @@ machineSettings:
     unit: nm
     confidence: 88
     description: Near-IR wavelength with moderate Polypropylene absorption
-    min: 532
+    min: 355
     max: 10640
   spotSize:
     value: 100

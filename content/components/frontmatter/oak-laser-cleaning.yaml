@@ -33,8 +33,8 @@ materialProperties:
     min: 20
     max: 200
   hardness:
-    value: 5.8
-    unit: kN
+    value: 1500
+    unit: lbf
     confidence: 88
     description: Janka hardness test value for European oak
     min: 0.4
@@ -126,8 +126,8 @@ machineSettings:
     unit: nm
     confidence: 88
     description: Near-IR wavelength with good absorption in Oak cellulose/lignin components
-    min: 1030
-    max: 1070
+    min: 355
+    max: 10640
   spotSize:
     value: 100
     unit: μm

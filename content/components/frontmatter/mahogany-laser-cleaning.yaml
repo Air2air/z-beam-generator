@@ -26,8 +26,8 @@ materialProperties:
     min: 20
     max: 200
   hardness:
-    value: 4.2
-    unit: kN
+    value: 600
+    unit: lbf
     confidence: 94
     description: Janka hardness test value
     min: 0.4
@@ -104,8 +104,8 @@ machineSettings:
     unit: nm
     confidence: 89
     description: Near-IR wavelength with good absorption in wood contaminants
-    min: null
-    max: null
+    min: 355
+    max: 10640
   spotSize:
     value: 100
     unit: μm

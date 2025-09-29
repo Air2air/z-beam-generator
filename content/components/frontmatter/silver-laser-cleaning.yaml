@@ -61,8 +61,8 @@ materialProperties:
     min: 4.2
     max: 174
   specificHeat:
-    value: 0.235
-    unit: J/g·K
+    value: 235.0
+    unit: J/kg·K
     confidence: 91
     description: Specific heat capacity at 20°C
     min: 0.128
@@ -129,8 +129,8 @@ machineSettings:
     unit: nm
     confidence: 88
     description: Near-IR wavelength with good Silver absorption for thermal cleaning
-    min: 532
-    max: 1064
+    min: 355
+    max: 10640
   spotSize:
     value: 50
     unit: μm

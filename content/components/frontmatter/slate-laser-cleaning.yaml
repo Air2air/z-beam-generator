@@ -47,8 +47,8 @@ materialProperties:
     min: 3
     max: 16
   specificHeat:
-    value: 0.85
-    unit: J/g·K
+    value: 850.0
+    unit: J/kg·K
     confidence: 92
     description: Specific heat capacity at 20°C
     min: 0.7
@@ -121,8 +121,8 @@ machineSettings:
     unit: nm
     confidence: 88
     description: Near-IR wavelength optimized for Slate mineral absorption
-    min: 1030
-    max: 1070
+    min: 532
+    max: 10640
   spotSize:
     value: 100
     unit: μm

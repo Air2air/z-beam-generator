@@ -54,8 +54,8 @@ materialProperties:
     min: 0.5
     max: 29.1
   specificHeat:
-    value: 1.825
-    unit: J/g·K
+    value: 1825.0
+    unit: J/kg·K
     confidence: 90
     description: Specific heat capacity at room temperature
     min: 0.128
@@ -118,8 +118,8 @@ machineSettings:
     unit: nm
     confidence: 88
     description: Near-IR wavelength for optimal absorption in beryllium oxide layers
-    min: 532
-    max: 1064
+    min: 355
+    max: 10640
   spotSize:
     value: 100
     unit: μm

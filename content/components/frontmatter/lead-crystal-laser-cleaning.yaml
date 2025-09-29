@@ -26,8 +26,8 @@ materialProperties:
     min: 0.02
     max: 4.2
   hardness:
-    value: 420
-    unit: HV
+    value: 5.5
+    unit: Mohs
     confidence: 86
     description: Vickers hardness of lead crystal
     min: 4.5
@@ -47,8 +47,8 @@ materialProperties:
     min: 0.1
     max: 15
   specificHeat:
-    value: 0.67
-    unit: J/g·K
+    value: 670.0
+    unit: J/kg·K
     confidence: 87
     description: Specific heat capacity at room temperature
     min: 0.5
@@ -108,7 +108,7 @@ machineSettings:
     description: Near-IR wavelength for optimal absorption in Lead Crystal with minimal
       transmission
     min: 532
-    max: 1064
+    max: 10640
   spotSize:
     value: 100
     unit: μm

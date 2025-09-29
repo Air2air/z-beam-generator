@@ -47,8 +47,8 @@ materialProperties:
     min: 2.6
     max: 19.7
   specificHeat:
-    value: 0.32
-    unit: J/g·K
+    value: 320.0
+    unit: J/kg·K
     confidence: 92
     description: Specific heat capacity at room temperature
     min: 0.3
@@ -118,8 +118,8 @@ machineSettings:
     unit: nm
     confidence: 92
     description: Near-IR wavelength with optimal absorption for Silicon Germanium
-    min: 532
-    max: 1064
+    min: 355
+    max: 1080
   spotSize:
     value: 50
     unit: μm

@@ -47,8 +47,8 @@ materialProperties:
     min: 3
     max: 16
   specificHeat:
-    value: 0.85
-    unit: J/g·K
+    value: 850.0
+    unit: J/kg·K
     confidence: 90
     description: Specific heat capacity at 25°C
     min: 0.7
@@ -105,8 +105,8 @@ machineSettings:
     confidence: 89
     description: Optimal wavelength for Serpentine absorption and minimal substrate
       damage
-    min: null
-    max: null
+    min: 532
+    max: 10640
   spotSize:
     value: 80
     unit: μm

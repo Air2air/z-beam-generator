@@ -54,8 +54,8 @@ materialProperties:
     min: -1
     max: 50
   specificHeat:
-    value: 1.9
-    unit: J/g·K
+    value: 1900.0
+    unit: J/kg·K
     confidence: 92
     description: Specific heat capacity at room temperature
     min: 0.5
@@ -120,8 +120,8 @@ machineSettings:
     confidence: 88
     description: Near-infrared wavelength for optimal Rubber absorption and minimal
       substrate damage
-    min: 1030
-    max: 1070
+    min: 355
+    max: 1080
   spotSize:
     value: 100
     unit: μm

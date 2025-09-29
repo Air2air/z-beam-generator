@@ -47,8 +47,8 @@ materialProperties:
     min: 3
     max: 16
   specificHeat:
-    value: 0.91
-    unit: kJ/kg·K
+    value: 910.0
+    unit: J/kg·K
     confidence: 92
     description: Specific heat capacity at room temperature
     min: 0.7
@@ -114,8 +114,8 @@ machineSettings:
     confidence: 88
     description: Near-infrared wavelength optimal for limestone absorption and contaminant
       removal
-    min: 1030
-    max: 1070
+    min: 532
+    max: 10640
   spotSize:
     value: 100
     unit: μm

@@ -54,8 +54,8 @@ materialProperties:
     min: 0.1
     max: 90
   specificHeat:
-    value: 0.705
-    unit: J/g·K
+    value: 705.0
+    unit: J/kg·K
     confidence: 93
     description: Specific heat capacity at 25°C
     min: 0.3
@@ -125,8 +125,8 @@ machineSettings:
     unit: nm
     confidence: 88
     description: Near-IR wavelength with good Silicon absorption for contaminant removal
-    min: 532
-    max: 1064
+    min: 355
+    max: 1080
   spotSize:
     value: 50
     unit: μm

@@ -5,8 +5,8 @@ title: Willow Laser Cleaning
 description: Laser cleaning parameters for Ash
 materialProperties:
   density:
-    value: 450
-    unit: kg/m³
+    value: 0.45
+    unit: g/cm³
     confidence: 85
     description: Average density of willow wood at 12% moisture content
     min: 0.12
@@ -33,8 +33,8 @@ materialProperties:
     min: 20
     max: 200
   hardness:
-    value: 2.3
-    unit: N/mm²
+    value: 180
+    unit: lbf
     confidence: 82
     description: Janka hardness test value
     min: 0.4
@@ -125,8 +125,8 @@ machineSettings:
     unit: nm
     confidence: 91
     description: Near-IR wavelength optimized for Willow's cellulose absorption characteristics
-    min: null
-    max: null
+    min: 355
+    max: 10640
   spotSize:
     value: 100
     unit: μm

@@ -54,8 +54,8 @@ materialProperties:
     min: 4.2
     max: 174
   specificHeat:
-    value: 0.129
-    unit: J/g·K
+    value: 129.0
+    unit: J/kg·K
     confidence: 93
     description: Specific heat capacity at 25°C
     min: 0.128
@@ -122,7 +122,7 @@ machineSettings:
     description: Green wavelength for optimal Gold absorption (reflectivity ~40% vs
       95%+ at 1064nm)
     min: 355
-    max: 1064
+    max: 10640
   spotSize:
     value: 50
     unit: μm

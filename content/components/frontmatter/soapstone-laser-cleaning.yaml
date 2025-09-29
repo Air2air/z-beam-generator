@@ -47,8 +47,8 @@ materialProperties:
     min: 3
     max: 16
   specificHeat:
-    value: 0.98
-    unit: J/g·K
+    value: 980.0
+    unit: J/kg·K
     confidence: 90
     description: Specific heat capacity at 25°C
     min: 0.7
@@ -105,8 +105,8 @@ machineSettings:
     confidence: 88
     description: Near-infrared wavelength for optimal absorption in Soapstone mineral
       composition
-    min: 1030
-    max: 1080
+    min: 532
+    max: 10640
   spotSize:
     value: 100
     unit: μm

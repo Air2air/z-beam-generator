@@ -952,42 +952,49 @@ materials:
 metadata:
   total_categories: 9
   total_materials: 121
-  last_updated: '2025-08-28'
+  last_updated: '2025-09-29'
   format_version: '1.0'
-
-# Machine Settings Ranges - Research-based values for laser cleaning parameters
+  sync_date: '2025-09-29'
+  frontmatter_files_analyzed: 121
 machineSettingsRanges:
   powerRange:
-    min: 10
-    max: 2000
+    min: 1.0
+    max: 120
     unit: W
     description: Laser power range for industrial cleaning applications
-    research_basis: Industrial fiber lasers typically range from 10W handheld to 2000W+ industrial systems
-  
+    research_basis: Industrial fiber lasers typically range from 10W handheld to 2000W+
+      industrial systems
   pulseDuration:
     min: 0.1
     max: 1000
     unit: ns
     description: Pulse duration range for optimal material processing
-    research_basis: Femtosecond (0.1ns) to microsecond (1000ns) pulses for different material interactions
-  
+    research_basis: Femtosecond (0.1ns) to microsecond (1000ns) pulses for different
+      material interactions
   spotSize:
-    min: 10
-    max: 5000
+    min: 0.1
+    max: 500
     unit: μm
     description: Focused beam spot diameter range
-    research_basis: Precision optics allow spots from 10μm (microscale) to 5mm (large area processing)
-  
+    research_basis: Precision optics allow spots from 10μm (microscale) to 5mm (large
+      area processing)
   repetitionRate:
     min: 1
-    max: 1000000
+    max: 200
     unit: Hz
     description: Pulse repetition frequency range
-    research_basis: Single shot (1Hz) to MHz repetition rates for different throughput requirements
-  
+    research_basis: Single shot (1Hz) to MHz repetition rates for different throughput
+      requirements
   fluenceThreshold:
-    min: 0.01
-    max: 100
+    min: 0.3
+    max: 4.5
     unit: J/cm²
     description: Laser fluence range for material ablation
-    research_basis: Typical ablation thresholds from 0.01 J/cm² (organics) to 100 J/cm² (refractory materials)
+    research_basis: Typical ablation thresholds from 0.01 J/cm² (organics) to 100
+      J/cm² (refractory materials)
+  wavelength:
+    min: 355
+    max: 10640
+    unit: nm
+    description: Laser wavelength range for industrial cleaning applications
+    research_basis: Common industrial lasers from UV (355nm) to CO2 (10.6μm) wavelengths

@@ -26,10 +26,10 @@ materialProperties:
     min: 0.03
     max: 2000.0
   hardness:
-    value: 28
-    unit: GPa
+    value: 1.0
+    unit: Mohs
     confidence: 92
-    description: Vickers hardness (HV) at room temperature
+    description: Mohs hardness (Mohs hardness) at room temperature
     min: 3.0
     max: 10.0
   youngsModulus:
@@ -118,8 +118,8 @@ machineSettings:
     unit: nm
     confidence: 88
     description: Near-infrared wavelength optimized for Titanium Carbide absorption
-    min: null
-    max: null
+    min: 532
+    max: 10640
   spotSize:
     value: 50
     unit: μm
