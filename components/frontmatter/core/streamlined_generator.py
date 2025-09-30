@@ -382,8 +382,8 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             # Add regulatory standards (universal + material-specific)
             frontmatter = self._add_regulatory_standards_section(frontmatter, material_data)
             
-            # Generate author object (required by schema)
-            frontmatter.update(self._generate_author_object(material_data))
+            # Generate author (required by schema)
+            frontmatter.update(self._generate_author(material_data))
             
             return frontmatter
             
@@ -840,8 +840,8 @@ Return YAML format with materialProperties (not properties) and machineSettings 
             
         return None
 
-    def _generate_author_object(self, material_data: Dict) -> Dict:
-        """Generate author_object from material data author_id"""
+    def _generate_author(self, material_data: Dict) -> Dict:
+        """Generate author from material data author_id"""
         try:
             from utils.core.author_manager import get_author_by_id
             
@@ -853,11 +853,11 @@ Return YAML format with materialProperties (not properties) and machineSettings 
                 raise PropertyDiscoveryError(f"Author with ID {author_id} not found - author system required for content generation")
             
             return {
-                'author_object': author_info
+                'author': author_info
             }
             
         except Exception as e:
-            self.logger.error(f"Author object generation failed: {e}")
+            self.logger.error(f"Author generation failed: {e}")
             # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
             raise PropertyDiscoveryError(f"Author system required for content generation: {e}")
 

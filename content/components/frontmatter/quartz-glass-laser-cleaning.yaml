@@ -5,7 +5,7 @@ title: Quartz Glass Laser Cleaning
 description: Laser cleaning parameters for Borosilicate Glass
 materialProperties:
   density:
-    value: 4.3999999999999995
+    value: 4.4
     unit: "g/cm\xB3"
     confidence: 98
     description: Density of high-purity fused quartz glass at room temperature
@@ -40,7 +40,7 @@ materialProperties:
     min: 0.1
     max: 15
   thermalDiffusivity:
-    value: 7.505
+    value: 7.5
     unit: "mm\xB2/s"
     confidence: 88
     description: Thermal diffusivity at room temperature
@@ -108,7 +108,7 @@ materialProperties:
     min: 0.001
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 5.0005
+    value: 5.0
   laserReflectivity:
     confidence: 0.7
     max: 92.0
@@ -133,7 +133,7 @@ materialProperties:
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: softening
+    value: melting
 applications:
 - 'Optics: Precision cleaning of optical components and lenses'
 machineSettings:
@@ -216,14 +216,6 @@ regulatoryStandards:
 - ANSI Z136.1 - Safe Use of Lasers
 - IEC 60825 - Safety of Laser Products
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-author_object:
-  id: 1
-  name: Yi-Chun Lin
-  sex: f
-  title: Ph.D.
-  country: Taiwan
-  expertise: Laser Materials Processing
-  image: /images/author/yi-chun-lin.jpg
 images:
   hero:
     alt: Quartz Glass surface undergoing laser cleaning showing precise contamination
@@ -344,3 +336,11 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units: []
+author:
+  id: 1
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg

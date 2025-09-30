@@ -6,21 +6,21 @@ description: Laser cleaning parameters for Ash (MDF)
 materialProperties:
   density:
     value: 0.75
-    unit: g/cm³
+    unit: "g/cm\xB3"
     confidence: 95
     description: Typical density range for standard MDF
     min: 0.12
     max: 1.25
   meltingPoint:
     value: 180
-    unit: °C
+    unit: "\xB0C"
     confidence: 85
     description: Approximate temperature where lignin softens and decomposition begins
     min: null
     max: null
   thermalConductivity:
     value: 0.12
-    unit: W/m·K
+    unit: "W/m\xB7K"
     confidence: 88
     description: Low thermal conductivity typical of wood-based materials
     min: 0.04
@@ -48,14 +48,14 @@ materialProperties:
     max: 3299.24
   thermalExpansion:
     value: 30
-    unit: μm/m·°C
+    unit: "\u03BCm/m\xB7\xB0C"
     confidence: 82
     description: Linear thermal expansion coefficient perpendicular to grain direction
     min: 0
     max: 33.0
   specificHeat:
     value: 1300
-    unit: J/kg·K
+    unit: "J/kg\xB7K"
     confidence: 90
     description: Specific heat capacity at room temperature
     min: 695.0
@@ -78,13 +78,12 @@ materialProperties:
     value: 0.15
     unit: dimensionless
     confidence: 90
-    description: Low reflectivity at common laser wavelengths due to porous, fibrous
-      structure
+    description: Low reflectivity at common laser wavelengths due to porous, fibrous structure
     min: null
     max: null
   ablationThreshold:
     value: 0.8
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 85
     description: Fluence threshold for laser ablation with nanosecond pulses
     min: null
@@ -98,14 +97,14 @@ materialProperties:
     max: null
   surfaceRoughness:
     value: 3.5
-    unit: μm Ra
+    unit: "\u03BCm Ra"
     confidence: 86
     description: Average surface roughness of finished MDF surfaces
     min: null
     max: null
   thermalDiffusivity:
     value: 0.12
-    unit: mm²/s
+    unit: "mm\xB2/s"
     confidence: 84
     description: Thermal diffusivity at room temperature
     min: 0
@@ -130,7 +129,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: μm
+    unit: "\u03BCm"
     confidence: 90
     description: Optimal beam diameter for MDF surface processing
     min: 50
@@ -144,7 +143,7 @@ machineSettings:
     max: 100
   fluenceThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 88
     description: Minimum fluence required for effective MDF material removal
     min: 1.8
@@ -179,7 +178,7 @@ machineSettings:
     max: 3
   energyDensity:
     value: 3.2
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 86
     description: Optimal energy density for MDF surface treatment
     min: 2.5
@@ -190,21 +189,12 @@ regulatoryStandards:
 - IEC 60825 - Safety of Laser Products
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 - EPA Clean Air Act Compliance
-author_object:
-  id: 4
-  name: Todd Dunning
-  sex: m
-  title: MA
-  country: United States (California)
-  expertise: Optical Materials for Laser Systems
-  image: /images/author/todd-dunning.jpg
 images:
   hero:
     alt: Mdf surface undergoing laser cleaning showing precise contamination removal
     url: /images/mdf-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Mdf surface after laser cleaning showing detailed surface
-      structure
+    alt: Microscopic view of Mdf surface after laser cleaning showing detailed surface structure
     url: /images/mdf-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -263,8 +253,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -302,9 +291,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -317,3 +306,11 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units: []
+author:
+  id: 4
+  name: Todd Dunning
+  sex: m
+  title: MA
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  image: /images/author/todd-dunning.jpg

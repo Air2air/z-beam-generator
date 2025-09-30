@@ -12,7 +12,7 @@ materialProperties:
     min: 2.2
     max: 19.3
   thermalConductivity:
-    value: 1000.015
+    value: 1000.01
     unit: "W/m\xB7K"
     confidence: 88
     description: Room temperature thermal conductivity for high-purity Si3N4
@@ -92,8 +92,7 @@ materialProperties:
     value: Hexagonal
     unit: crystal system
     confidence: 95
-    description: "Primary crystal structure of silicon nitride (\u03B1 and \u03B2\
-      \ phases)"
+    description: "Primary crystal structure of silicon nitride (\u03B1 and \u03B2 phases)"
     min: null
     max: null
   porosity:
@@ -130,7 +129,7 @@ materialProperties:
     min: 0.05
     source: default_from_category_range
     unit: "mm\xB2/s"
-    value: 60.025
+    value: 60.02
   thermalDestructionPoint:
     confidence: 0.7
     max: 3827.0
@@ -152,16 +151,14 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Silicon Nitride surface cleaning without
-      thermal damage
+    description: Optimal average power for Silicon Nitride surface cleaning without thermal damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength providing good absorption in Silicon Nitride with
-      minimal subsurface damage
+    description: Near-IR wavelength providing good absorption in Silicon Nitride with minimal subsurface damage
     min: 532
     max: 10640
   spotSize:
@@ -175,8 +172,7 @@ machineSettings:
     value: 100
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning coverage while maintaining
-      thermal control
+    description: High repetition rate for efficient cleaning coverage while maintaining thermal control
     min: 50
     max: 200
   pulseWidth:
@@ -197,16 +193,14 @@ machineSettings:
     value: 2.5
     unit: "J/cm\xB2"
     confidence: 89
-    description: Minimum fluence required for effective contaminant removal from Silicon
-      Nitride
+    description: Minimum fluence required for effective contaminant removal from Silicon Nitride
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for uniform cleaning without excessive heat
-      accumulation
+    description: Optimal pulse overlap for uniform cleaning without excessive heat accumulation
     min: 30
     max: 70
   passCount:
@@ -224,22 +218,12 @@ regulatoryStandards:
 - EPA Clean Air Act Compliance
 - ASTM C848 - Standard Specification for High Alumina Refractory Brick
 - ISO 23146 - Technical Ceramics
-author_object:
-  id: 2
-  name: Alessandro Moretti
-  sex: m
-  title: Ph.D.
-  country: Italy
-  expertise: Laser-Based Additive Manufacturing
-  image: /images/author/alessandro-moretti.jpg
 images:
   hero:
-    alt: Silicon Nitride surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Silicon Nitride surface undergoing laser cleaning showing precise contamination removal
     url: /images/silicon-nitride-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Silicon Nitride surface after laser cleaning showing
-      detailed surface structure
+    alt: Microscopic view of Silicon Nitride surface after laser cleaning showing detailed surface structure
     url: /images/silicon-nitride-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -298,8 +282,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -352,3 +335,11 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units: []
+author:
+  id: 2
+  name: Alessandro Moretti
+  sex: m
+  title: Ph.D.
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  image: /images/author/alessandro-moretti.jpg

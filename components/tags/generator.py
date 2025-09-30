@@ -378,7 +378,7 @@ Format: YAML v2.0
             if not frontmatter_data or not frontmatter_data.get("author"):
                 raise ValueError(f"Author information missing for {material_name} - fail-fast requires explicit author data")
             author_name = frontmatter_data["author"]
-            author_obj = frontmatter_data.get("author_object", {})
+            author_obj = frontmatter_data.get("author", {})
             if not isinstance(author_obj, dict) or not author_obj.get("country"):
                 raise ValueError(f"Author country missing for {material_name} - fail-fast requires complete author data")
             author_country = author_obj["country"]

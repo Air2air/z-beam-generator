@@ -26,7 +26,7 @@ materialProperties:
     min: 0
     max: 2748.5
   youngsModulus:
-    value: 750.0005
+    value: 750.0
     unit: GPa
     confidence: 90
     description: Young's modulus in the fiber direction
@@ -57,8 +57,7 @@ materialProperties:
     value: 0.65
     unit: dimensionless
     confidence: 82
-    description: Absorption coefficient for near-infrared laser wavelengths (1064
-      nm)
+    description: Absorption coefficient for near-infrared laser wavelengths (1064 nm)
     min: null
     max: null
   reflectivity:
@@ -116,7 +115,7 @@ materialProperties:
     min: 0.05
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 100.025
+    value: 100.03
   laserReflectivity:
     confidence: 0.7
     max: 80.0
@@ -208,22 +207,12 @@ regulatoryStandards:
 - ANSI Z136.1 - Safe Use of Lasers
 - IEC 60825 - Safety of Laser Products
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-author_object:
-  id: 1
-  name: Yi-Chun Lin
-  sex: f
-  title: Ph.D.
-  country: Taiwan
-  expertise: Laser Materials Processing
-  image: /images/author/yi-chun-lin.jpg
 images:
   hero:
-    alt: Fiberglass surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Fiberglass surface undergoing laser cleaning showing precise contamination removal
     url: /images/fiberglass-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Fiberglass surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Fiberglass surface after laser cleaning showing detailed surface structure
     url: /images/fiberglass-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -282,8 +271,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -336,3 +324,11 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units: []
+author:
+  id: 1
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg

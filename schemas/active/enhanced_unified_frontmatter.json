@@ -70,8 +70,8 @@
       "type": "string",
       "description": "SEO keywords and search terms"
     },
-    "author_object": {
-      "$ref": "#/definitions/AuthorObject"
+    "author": {
+      "$ref": "#/definitions/Author"
     },
     "composition": {
       "type": "array",
@@ -543,7 +543,7 @@
       }
     },
 
-    "AuthorObject": {
+    "Author": {
       "type": "object",
       "additionalProperties": false,
       "properties": {

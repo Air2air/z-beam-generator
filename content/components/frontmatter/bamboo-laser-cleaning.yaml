@@ -5,7 +5,7 @@ title: Bamboo Laser Cleaning
 description: Laser cleaning parameters for Ash
 materialProperties:
   density:
-    value: 0.685
+    value: 0.69
     unit: "g/cm\xB3"
     confidence: 92
     description: Average density of mature bamboo culm material
@@ -40,14 +40,14 @@ materialProperties:
     min: 0
     max: 3299.24
   thermalExpansion:
-    value: 30.000015
+    value: 30.0
     unit: "10^-6/\xB0C"
     confidence: 82
     description: Longitudinal coefficient of thermal expansion
     min: 0
     max: 33.0
   thermalDiffusivity:
-    value: 0.20005
+    value: 0.2
     unit: "mm\xB2/s"
     confidence: 80
     description: Thermal diffusivity at room temperature
@@ -199,21 +199,12 @@ regulatoryStandards:
 - IEC 60825 - Safety of Laser Products
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 - EPA Clean Air Act Compliance
-author_object:
-  id: 4
-  name: Todd Dunning
-  sex: m
-  title: MA
-  country: United States (California)
-  expertise: Optical Materials for Laser Systems
-  image: /images/author/todd-dunning.jpg
 images:
   hero:
     alt: Bamboo surface undergoing laser cleaning showing precise contamination removal
     url: /images/bamboo-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Bamboo surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Bamboo surface after laser cleaning showing detailed surface structure
     url: /images/bamboo-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -272,8 +263,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -326,3 +316,11 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units: []
+author:
+  id: 4
+  name: Todd Dunning
+  sex: m
+  title: MA
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  image: /images/author/todd-dunning.jpg

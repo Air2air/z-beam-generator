@@ -33,7 +33,7 @@ materialProperties:
     min: 15.5
     max: 129.5
   youngsModulus:
-    value: 750.0005
+    value: 750.0
     unit: GPa
     confidence: 89
     description: Elastic modulus for filled urethane composite systems
@@ -87,7 +87,7 @@ materialProperties:
     min: 0.05
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 100.025
+    value: 100.03
   laserReflectivity:
     confidence: 0.7
     max: 80.0
@@ -123,32 +123,28 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power range for Urethane Composites cleaning without
-      thermal damage
+    description: Optimal average power range for Urethane Composites cleaning without thermal damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength optimized for Urethane Composites absorption
-      characteristics
+    description: Near-infrared wavelength optimized for Urethane Composites absorption characteristics
     min: 355
     max: 1080
   spotSize:
     value: 100
     unit: "\u03BCm"
     confidence: 90
-    description: Beam spot diameter for precise cleaning control on Urethane Composites
-      surfaces
+    description: Beam spot diameter for precise cleaning control on Urethane Composites surfaces
     min: 50
     max: 200
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for continuous cleaning with controlled thermal
-      input
+    description: Optimal repetition rate for continuous cleaning with controlled thermal input
     min: 20
     max: 100
   fluenceThreshold:
@@ -162,40 +158,35 @@ machineSettings:
     value: 10
     unit: ns
     confidence: 85
-    description: Optimal pulse width for efficient contaminant removal with minimal
-      substrate heating
+    description: Optimal pulse width for efficient contaminant removal with minimal substrate heating
     min: 5
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 84
-    description: Optimal scanning speed for efficient area coverage with adequate
-      cleaning effect
+    description: Optimal scanning speed for efficient area coverage with adequate cleaning effect
     min: 200
     max: 1000
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 86
-    description: Optimal beam overlap percentage for uniform cleaning without excessive
-      energy deposition
+    description: Optimal beam overlap percentage for uniform cleaning without excessive energy deposition
     min: 30
     max: 70
   passCount:
     value: 2
     unit: passes
     confidence: 82
-    description: Recommended number of passes for complete contaminant removal from
-      Urethane Composites
+    description: Recommended number of passes for complete contaminant removal from Urethane Composites
     min: 1
     max: 4
   energyDensity:
     value: 3.5
     unit: "J/cm\xB2"
     confidence: 85
-    description: Optimal energy density for effective cleaning while preserving substrate
-      integrity
+    description: Optimal energy density for effective cleaning while preserving substrate integrity
     min: 2.0
     max: 5.0
 regulatoryStandards:
@@ -203,22 +194,12 @@ regulatoryStandards:
 - ANSI Z136.1 - Safe Use of Lasers
 - IEC 60825 - Safety of Laser Products
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-author_object:
-  id: 1
-  name: Yi-Chun Lin
-  sex: f
-  title: Ph.D.
-  country: Taiwan
-  expertise: Laser Materials Processing
-  image: /images/author/yi-chun-lin.jpg
 images:
   hero:
-    alt: Urethane Composites surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Urethane Composites surface undergoing laser cleaning showing precise contamination removal
     url: /images/urethane-composites-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Urethane Composites surface after laser cleaning showing
-      detailed surface structure
+    alt: Microscopic view of Urethane Composites surface after laser cleaning showing detailed surface structure
     url: /images/urethane-composites-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -277,8 +258,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -331,3 +311,11 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units: []
+author:
+  id: 1
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg

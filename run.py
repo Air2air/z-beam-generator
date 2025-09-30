@@ -279,7 +279,7 @@ OPTIMIZER_CONFIG = {
     "ai_detection_service": {
         "enabled": True,
         "version": "1.0.0",
-        "settings": {
+        "config": {
             "providers": {
                 "winston": {
                     "type": "winston",
@@ -303,7 +303,7 @@ OPTIMIZER_CONFIG = {
     "iterative_workflow_service": {
         "enabled": True,
         "version": "1.0.0",
-        "settings": {
+        "config": {
             "max_iterations": 10,
             "quality_threshold": 0.9,
             "time_limit_seconds": 300,
@@ -1255,7 +1255,7 @@ def main():
                 
                 # Load frontmatter data for components that need it
                 frontmatter_data = None
-                if component_type in ['table', 'author', 'metatags', 'jsonld', 'caption', 'tags', 'settings', 'propertiestable']:
+                if component_type in ['table', 'author', 'metatags', 'jsonld', 'caption', 'tags', 'propertiestable']:
                     # Try to load existing frontmatter - prioritize .yaml format
                     base_name = generate_safe_filename(args.material)
                     frontmatter_paths = [
@@ -1333,7 +1333,7 @@ def main():
                     output_dir = f"content/components/{component_type}"
                     os.makedirs(output_dir, exist_ok=True)
                     filename = generate_safe_filename(args.material)
-                    output_file = f"{output_dir}/{filename}-laser-cleaning.json" if component_type == 'jsonld' else f"{output_dir}/{filename}-laser-cleaning.yaml" if component_type in ['frontmatter', 'table', 'metatags', 'author', 'caption', 'settings'] else f"{output_dir}/{filename}-laser-cleaning.md"
+                    output_file = f"{output_dir}/{filename}-laser-cleaning.json" if component_type == 'jsonld' else f"{output_dir}/{filename}-laser-cleaning.yaml" if component_type in ['frontmatter', 'table', 'metatags', 'author', 'caption'] else f"{output_dir}/{filename}-laser-cleaning.md"
                     
                     with open(output_file, 'w') as f:
                         f.write(result.content)
@@ -1426,7 +1426,7 @@ def main():
                     try:
                         # Load frontmatter data for components that need it
                         frontmatter_data = None
-                        if component_type in ['table', 'author', 'metatags', 'jsonld', 'caption', 'tags', 'settings', 'propertiestable']:
+                        if component_type in ['table', 'author', 'metatags', 'jsonld', 'caption', 'tags', 'propertiestable']:
                             # Try to load existing frontmatter
                             material_slug = generate_safe_filename(material_name)
                             frontmatter_paths = [
@@ -1474,7 +1474,7 @@ def main():
                             output_dir = f"content/components/{component_type}"
                             os.makedirs(output_dir, exist_ok=True)
                             filename = generate_safe_filename(material_name)
-                            output_file = f"{output_dir}/{filename}-laser-cleaning.json" if component_type == 'jsonld' else f"{output_dir}/{filename}-laser-cleaning.yaml" if component_type in ['table', 'metatags', 'author', 'caption', 'settings'] else f"{output_dir}/{filename}-laser-cleaning.md"
+                            output_file = f"{output_dir}/{filename}-laser-cleaning.json" if component_type == 'jsonld' else f"{output_dir}/{filename}-laser-cleaning.yaml" if component_type in ['table', 'metatags', 'author', 'caption'] else f"{output_dir}/{filename}-laser-cleaning.md"
                             
                             with open(output_file, 'w') as f:
                                 f.write(result.content)

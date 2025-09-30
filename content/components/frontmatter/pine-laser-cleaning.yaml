@@ -5,7 +5,7 @@ title: Pine Laser Cleaning
 description: Laser cleaning parameters for Ash
 materialProperties:
   density:
-    value: 0.685
+    value: 0.69
     unit: "g/cm\xB3"
     confidence: 95
     description: Average density of dry pine wood at 12% moisture content
@@ -40,14 +40,14 @@ materialProperties:
     min: 0
     max: 3299.24
   thermalExpansion:
-    value: 30.000015
+    value: 30.0
     unit: "10^-6/\xB0C"
     confidence: 88
     description: Coefficient of thermal expansion perpendicular to grain
     min: 0
     max: 33.0
   thermalDiffusivity:
-    value: 0.20005
+    value: 0.2
     unit: "mm\xB2/s"
     confidence: 85
     description: Thermal diffusivity at room temperature
@@ -155,8 +155,7 @@ machineSettings:
     value: 100
     unit: ns
     confidence: 85
-    description: Nanosecond pulses for efficient contaminant removal with minimal
-      substrate damage
+    description: Nanosecond pulses for efficient contaminant removal with minimal substrate damage
     min: 50
     max: 200
   scanSpeed:
@@ -170,8 +169,7 @@ machineSettings:
     value: 2.5
     unit: "J/cm\xB2"
     confidence: 91
-    description: Fluence threshold for effective contaminant removal without wood
-      damage
+    description: Fluence threshold for effective contaminant removal without wood damage
     min: 1.5
     max: 4.0
   overlapRatio:
@@ -194,21 +192,12 @@ regulatoryStandards:
 - IEC 60825 - Safety of Laser Products
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 - EPA Clean Air Act Compliance
-author_object:
-  id: 4
-  name: Todd Dunning
-  sex: m
-  title: MA
-  country: United States (California)
-  expertise: Optical Materials for Laser Systems
-  image: /images/author/todd-dunning.jpg
 images:
   hero:
     alt: Pine surface undergoing laser cleaning showing precise contamination removal
     url: /images/pine-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Pine surface after laser cleaning showing detailed surface
-      structure
+    alt: Microscopic view of Pine surface after laser cleaning showing detailed surface structure
     url: /images/pine-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -267,8 +256,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -321,3 +309,11 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units: []
+author:
+  id: 4
+  name: Todd Dunning
+  sex: m
+  title: MA
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  image: /images/author/todd-dunning.jpg

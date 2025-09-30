@@ -101,7 +101,7 @@ materialProperties:
     min: 0.01
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 50.005
+    value: 50.01
   laserReflectivity:
     confidence: 0.7
     max: 70.0
@@ -135,16 +135,14 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for SiC surface cleaning without substrate
-      damage
+    description: Optimal average power for SiC surface cleaning without substrate damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength with good SiC absorption for efficient contaminant
-      removal
+    description: Near-IR wavelength with good SiC absorption for efficient contaminant removal
     min: 355
     max: 1080
   spotSize:
@@ -158,8 +156,7 @@ machineSettings:
     value: 100
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient area coverage while maintaining
-      thermal control
+    description: High repetition rate for efficient area coverage while maintaining thermal control
     min: 50
     max: 200
   pulseWidth:
@@ -209,22 +206,12 @@ regulatoryStandards:
 - ANSI Z136.1 - Safe Use of Lasers
 - IEC 60825 - Safety of Laser Products
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-author_object:
-  id: 3
-  name: Ikmanda Roswati
-  sex: m
-  title: Ph.D.
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  image: /images/author/ikmanda-roswati.jpg
 images:
   hero:
-    alt: Silicon Carbide surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Silicon Carbide surface undergoing laser cleaning showing precise contamination removal
     url: /images/silicon-carbide-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Silicon Carbide surface after laser cleaning showing
-      detailed surface structure
+    alt: Microscopic view of Silicon Carbide surface after laser cleaning showing detailed surface structure
     url: /images/silicon-carbide-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -283,8 +270,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -337,3 +323,11 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units: []
+author:
+  id: 3
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  image: /images/author/ikmanda-roswati.jpg

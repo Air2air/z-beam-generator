@@ -76,7 +76,7 @@ class FieldOrderingService:
                 ordered_data[field] = frontmatter_data[field]
                 
         # === 8. AUTHOR & VISUAL ASSETS ===
-        for field in ["author", "author_object", "images"]:
+        for field in ["author", "images"]:
             if field in frontmatter_data:
                 ordered_data[field] = frontmatter_data[field]
                 

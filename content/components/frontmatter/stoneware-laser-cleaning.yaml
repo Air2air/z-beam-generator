@@ -12,7 +12,7 @@ materialProperties:
     min: 2.2
     max: 19.3
   thermalConductivity:
-    value: 1000.015
+    value: 1000.01
     unit: "W/m\xB7K"
     confidence: 88
     description: Low thermal conductivity typical of ceramic materials
@@ -33,7 +33,7 @@ materialProperties:
     min: 0.1
     max: 14
   thermalDiffusivity:
-    value: 60.025
+    value: 60.02
     unit: "mm\xB2/s"
     confidence: 82
     description: Thermal diffusivity affecting heat propagation
@@ -134,8 +134,7 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power range for Stoneware surface cleaning without
-      thermal damage
+    description: Optimal average power range for Stoneware surface cleaning without thermal damage
     min: 80
     max: 120
   wavelength:
@@ -177,8 +176,7 @@ machineSettings:
     value: 2.5
     unit: "J/cm\xB2"
     confidence: 89
-    description: Threshold fluence for effective contaminant removal without substrate
-      damage
+    description: Threshold fluence for effective contaminant removal without substrate damage
     min: 1.5
     max: 4.0
   overlapRatio:
@@ -210,22 +208,12 @@ regulatoryStandards:
 - EPA Clean Air Act Compliance
 - ASTM C848 - Standard Specification for High Alumina Refractory Brick
 - ISO 23146 - Technical Ceramics
-author_object:
-  id: 2
-  name: Alessandro Moretti
-  sex: m
-  title: Ph.D.
-  country: Italy
-  expertise: Laser-Based Additive Manufacturing
-  image: /images/author/alessandro-moretti.jpg
 images:
   hero:
-    alt: Stoneware surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Stoneware surface undergoing laser cleaning showing precise contamination removal
     url: /images/stoneware-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Stoneware surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Stoneware surface after laser cleaning showing detailed surface structure
     url: /images/stoneware-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -284,8 +272,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -338,3 +325,11 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units: []
+author:
+  id: 2
+  name: Alessandro Moretti
+  sex: m
+  title: Ph.D.
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  image: /images/author/alessandro-moretti.jpg

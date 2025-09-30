@@ -33,7 +33,7 @@ materialProperties:
     min: 15.5
     max: 129.5
   youngsModulus:
-    value: 750.0005
+    value: 750.0
     unit: GPa
     confidence: 90
     description: Elastic modulus of phenolic composite materials
@@ -115,7 +115,7 @@ materialProperties:
     min: 0.05
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 100.025
+    value: 100.03
   laserReflectivity:
     confidence: 0.7
     max: 80.0
@@ -151,8 +151,7 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for phenolic resin composite cleaning without
-      thermal damage
+    description: Optimal average power for phenolic resin composite cleaning without thermal damage
     min: 80
     max: 120
   wavelength:
@@ -187,8 +186,7 @@ machineSettings:
     value: 10
     unit: ns
     confidence: 85
-    description: Optimal pulse duration for efficient material removal with minimal
-      heat affected zone
+    description: Optimal pulse duration for efficient material removal with minimal heat affected zone
     min: 5
     max: 20
   scanSpeed:
@@ -216,8 +214,7 @@ machineSettings:
     value: 12.7
     unit: "J/cm\xB2"
     confidence: 86
-    description: Calculated energy density based on power, spot size, and repetition
-      rate
+    description: Calculated energy density based on power, spot size, and repetition rate
     min: 8.0
     max: 15.0
 regulatoryStandards:
@@ -225,22 +222,12 @@ regulatoryStandards:
 - ANSI Z136.1 - Safe Use of Lasers
 - IEC 60825 - Safety of Laser Products
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-author_object:
-  id: 1
-  name: Yi-Chun Lin
-  sex: f
-  title: Ph.D.
-  country: Taiwan
-  expertise: Laser Materials Processing
-  image: /images/author/yi-chun-lin.jpg
 images:
   hero:
-    alt: Phenolic Resin Composites surface undergoing laser cleaning showing precise
-      contamination removal
+    alt: Phenolic Resin Composites surface undergoing laser cleaning showing precise contamination removal
     url: /images/phenolic-resin-composites-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Phenolic Resin Composites surface after laser cleaning
-      showing detailed surface structure
+    alt: Microscopic view of Phenolic Resin Composites surface after laser cleaning showing detailed surface structure
     url: /images/phenolic-resin-composites-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -299,8 +286,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -353,3 +339,11 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units: []
+author:
+  id: 1
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg

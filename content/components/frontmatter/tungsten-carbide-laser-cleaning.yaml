@@ -12,7 +12,7 @@ materialProperties:
     min: 2.2
     max: 19.3
   thermalConductivity:
-    value: 1000.015
+    value: 1000.01
     unit: "W/m\xB7K"
     confidence: 92
     description: High thermal conductivity beneficial for laser heat dissipation
@@ -40,7 +40,7 @@ materialProperties:
     min: 0.1
     max: 14
   thermalDiffusivity:
-    value: 60.025
+    value: 60.02
     unit: "cm\xB2/s"
     confidence: 88
     description: Moderate thermal diffusivity affects laser heating rate
@@ -54,7 +54,7 @@ materialProperties:
     min: 134.0
     max: 1166.0
   flexuralStrength:
-    value: 3500
+    value: 1000
     unit: MPa
     confidence: 90
     description: High flexural strength typical for WC-Co composites
@@ -134,6 +134,22 @@ materialProperties:
     confidence: 0.8
     source: category_default
     value: thermal_shock
+  compressiveStrength:
+    value: 4500
+    unit: MPa
+    confidence: 0.9
+    description: Tungsten carbide (WC), a cemented carbide or cermet, exhibits exceptionally high compressive strength due to its composite structure of hard, covalent WC grains embedded in a tough, metallic cobalt binder. This structure enables it to withstand immense compressive loads without fracturing, making it superior to most engineering ceramics and metals.
+    source: ai_research_from_mechanical_properties
+    min: 3500
+    max: 6800
+  fractureToughness:
+    value: 8.5
+    unit: "MPa\xB7m^0.5"
+    confidence: 0.85
+    description: Fracture toughness (K_IC) represents tungsten carbide's resistance to crack propagation. WC-Co composites exhibit higher toughness than most ceramics due to crack bridging and plastic deformation in the cobalt binder phase. The toughness increases with cobalt content and is strongly influenced by WC grain size and distribution.
+    source: ai_research_from_mechanical_properties
+    min: 6.0
+    max: 15.0
 applications:
 - 'Aerospace: Precision cleaning of aerospace components and assemblies'
 - 'Art Conservation: Delicate cleaning of artwork and cultural artifacts'
@@ -142,16 +158,14 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Tungsten Carbide surface cleaning without
-      substrate damage
+    description: Optimal average power for Tungsten Carbide surface cleaning without substrate damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength optimal for Tungsten Carbide absorption
-      characteristics
+    description: Near-infrared wavelength optimal for Tungsten Carbide absorption characteristics
     min: 532
     max: 10640
   spotSize:
@@ -165,8 +179,7 @@ machineSettings:
     value: 100
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning with minimal thermal
-      accumulation
+    description: High repetition rate for efficient cleaning with minimal thermal accumulation
     min: 50
     max: 200
   pulseWidth:
@@ -187,8 +200,7 @@ machineSettings:
     value: 2.5
     unit: "J/cm\xB2"
     confidence: 90
-    description: Fluence threshold for effective contaminant removal without damaging
-      WC substrate
+    description: Fluence threshold for effective contaminant removal without damaging WC substrate
     min: 1.5
     max: 4.0
   overlapRatio:
@@ -209,8 +221,7 @@ machineSettings:
     value: 5.1
     unit: "J/cm\xB2"
     confidence: 88
-    description: Calculated energy density based on power, spot size, and repetition
-      rate
+    description: Calculated energy density based on power, spot size, and repetition rate
     min: 3.2
     max: 7.8
 regulatoryStandards:
@@ -221,22 +232,12 @@ regulatoryStandards:
 - EPA Clean Air Act Compliance
 - ASTM C848 - Standard Specification for High Alumina Refractory Brick
 - ISO 23146 - Technical Ceramics
-author_object:
-  id: 2
-  name: Alessandro Moretti
-  sex: m
-  title: Ph.D.
-  country: Italy
-  expertise: Laser-Based Additive Manufacturing
-  image: /images/author/alessandro-moretti.jpg
 images:
   hero:
-    alt: Tungsten Carbide surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Tungsten Carbide surface undergoing laser cleaning showing precise contamination removal
     url: /images/tungsten-carbide-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Tungsten Carbide surface after laser cleaning showing
-      detailed surface structure
+    alt: Microscopic view of Tungsten Carbide surface after laser cleaning showing detailed surface structure
     url: /images/tungsten-carbide-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -295,8 +296,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -349,3 +349,11 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units: []
+author:
+  id: 2
+  name: Alessandro Moretti
+  sex: m
+  title: Ph.D.
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  image: /images/author/alessandro-moretti.jpg

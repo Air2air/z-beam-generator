@@ -256,7 +256,7 @@ materials:
           min: 0.03
           source: default_from_category_range
           unit: W/m·K
-          value: 1000.015
+          value: 1000.01
         thermalDestructionPoint:
           confidence: 0.7
           max: 3827.0
@@ -274,7 +274,7 @@ materials:
           min: 0.05
           source: default_from_category_range
           unit: mm²/s
-          value: 60.025
+          value: 60.02
         thermalExpansion:
           confidence: 0.7
           max: 14.0
@@ -289,6 +289,30 @@ materials:
           source: default_from_category_range
           unit: GPa
           value: 425.0
+        compressiveStrength:
+          value: 3000
+          unit: MPa
+          confidence: 0.95
+          description: Compressive strength is the maximum compressive stress a material
+            can withstand before fracture. For polycrystalline alumina, this property
+            is exceptionally high due to its strong ionic/covalent bonding, fine grain
+            size, and low porosity. It is significantly higher than its tensile strength,
+            as ceramics typically fail from pre-existing flaws in tension but can
+            support much higher loads in compression where flaws are less critical.
+          source: ai_research_from_mechanical_properties
+          min: 2500
+          max: 4000
+        flexuralStrength:
+          value: 350
+          unit: MPa
+          confidence: 0.85
+          description: Flexural strength (modulus of rupture) of polycrystalline alumina
+            depends strongly on purity, grain size, porosity, and processing method.
+            High-purity (>99.5%) fine-grained alumina typically exhibits higher strength
+            due to reduced defect concentration and smaller critical flaw sizes.
+          source: ai_research_from_mechanical_properties
+          min: 300
+          max: 550
       thermalProperties:
         meltingPoint: 2072°C
         thermalConductivity: 35 W/(m·K)
@@ -356,7 +380,7 @@ materials:
           min: 0.03
           source: default_from_category_range
           unit: W/m·K
-          value: 1000.015
+          value: 1000.01
         thermalDestructionPoint:
           confidence: 0.7
           max: 3827.0
@@ -374,7 +398,7 @@ materials:
           min: 0.05
           source: default_from_category_range
           unit: mm²/s
-          value: 60.025
+          value: 60.02
         thermalExpansion:
           confidence: 0.7
           max: 14.0
@@ -389,6 +413,30 @@ materials:
           source: default_from_category_range
           unit: GPa
           value: 425.0
+        compressiveStrength:
+          value: 390
+          unit: MPa
+          confidence: 0.85
+          description: Titanium carbide (TiC) exhibits high compressive strength due
+            to its strong covalent bonding, face-centered cubic crystal structure,
+            and high hardness (2800-3200 HV). The compressive strength is significantly
+            higher than its tensile strength, typical of brittle ceramic materials
+            where failure occurs via shear under compression rather than crack propagation.
+          source: ai_research_from_mechanical_properties
+          min: 200
+          max: 600
+        flexuralStrength:
+          value: 400
+          unit: MPa
+          confidence: 0.85
+          description: Flexural strength of titanium carbide (TiC) ceramics depends
+            strongly on processing parameters, porosity, grain size, and testing conditions.
+            TiC exhibits high hardness and stiffness but relatively low fracture toughness,
+            making it sensitive to flaws and defects. Typical values range from 300-600
+            MPa for dense, well-processed materials.
+          source: ai_research_from_mechanical_properties
+          min: 300
+          max: 600
       thermalProperties:
         thermalConductivity: 1.2-1.8 W/(m·K)
         thermalExpansion: 5.5 × 10⁻⁶ /°C
@@ -457,7 +505,7 @@ materials:
           min: 0.03
           source: default_from_category_range
           unit: W/m·K
-          value: 1000.015
+          value: 1000.01
         thermalDestructionPoint:
           confidence: 0.7
           max: 3827.0
@@ -475,7 +523,7 @@ materials:
           min: 0.05
           source: default_from_category_range
           unit: mm²/s
-          value: 60.025
+          value: 60.02
         thermalExpansion:
           confidence: 0.7
           max: 14.0
@@ -490,6 +538,43 @@ materials:
           source: default_from_category_range
           unit: GPa
           value: 425.0
+        compressiveStrength:
+          value: 4500
+          unit: MPa
+          confidence: 0.9
+          description: Tungsten carbide (WC), a cemented carbide or cermet, exhibits
+            exceptionally high compressive strength due to its composite structure
+            of hard, covalent WC grains embedded in a tough, metallic cobalt binder.
+            This structure enables it to withstand immense compressive loads without
+            fracturing, making it superior to most engineering ceramics and metals.
+          source: ai_research_from_mechanical_properties
+          min: 3500
+          max: 6800
+        flexuralStrength:
+          value: 1000
+          unit: MPa
+          confidence: 0.85
+          description: Flexural strength (modulus of rupture) represents the maximum
+            stress a material can withstand when subjected to bending forces before
+            fracture. For tungsten carbide, this property is highly dependent on cobalt
+            binder content, grain size, and manufacturing defects. WC-Co composites
+            typically exhibit flexural strengths significantly higher than most technical
+            ceramics due to the ductile cobalt phase that blunts crack propagation.
+          source: ai_research_from_mechanical_properties
+          min: 800
+          max: 2400
+        fractureToughness:
+          value: 8.5
+          unit: MPa·m^0.5
+          confidence: 0.85
+          description: Fracture toughness (K_IC) represents tungsten carbide's resistance
+            to crack propagation. WC-Co composites exhibit higher toughness than most
+            ceramics due to crack bridging and plastic deformation in the cobalt binder
+            phase. The toughness increases with cobalt content and is strongly influenced
+            by WC grain size and distribution.
+          source: ai_research_from_mechanical_properties
+          min: 6.0
+          max: 15.0
       thermalProperties:
         meltingPoint: 2715°C
         thermalConductivity: 2.0 W/(m·K)
@@ -548,7 +633,7 @@ materials:
           min: 0.03
           source: default_from_category_range
           unit: W/m·K
-          value: 1000.015
+          value: 1000.01
         thermalDestructionPoint:
           confidence: 0.7
           max: 3827.0
@@ -566,7 +651,7 @@ materials:
           min: 0.05
           source: default_from_category_range
           unit: mm²/s
-          value: 60.025
+          value: 60.02
         thermalExpansion:
           confidence: 0.7
           max: 14.0
@@ -635,7 +720,7 @@ materials:
           min: 0.03
           source: default_from_category_range
           unit: W/m·K
-          value: 1000.015
+          value: 1000.01
         thermalDestructionPoint:
           confidence: 0.7
           max: 3827.0
@@ -653,7 +738,7 @@ materials:
           min: 0.05
           source: default_from_category_range
           unit: mm²/s
-          value: 60.025
+          value: 60.02
         thermalExpansion:
           confidence: 0.7
           max: 14.0
@@ -722,7 +807,7 @@ materials:
           min: 0.03
           source: default_from_category_range
           unit: W/m·K
-          value: 1000.015
+          value: 1000.01
         thermalDestructionPoint:
           confidence: 0.7
           max: 3827.0
@@ -740,7 +825,7 @@ materials:
           min: 0.05
           source: default_from_category_range
           unit: mm²/s
-          value: 60.025
+          value: 60.02
         thermalExpansion:
           confidence: 0.7
           max: 14.0
@@ -809,7 +894,7 @@ materials:
           min: 0.03
           source: default_from_category_range
           unit: W/m·K
-          value: 1000.015
+          value: 1000.01
         thermalDestructionPoint:
           confidence: 0.7
           max: 3827.0
@@ -827,7 +912,7 @@ materials:
           min: 0.05
           source: default_from_category_range
           unit: mm²/s
-          value: 60.025
+          value: 60.02
         thermalExpansion:
           confidence: 0.7
           max: 14.0
@@ -868,7 +953,7 @@ materials:
           min: 0.05
           source: default_from_category_range
           unit: cm⁻¹
-          value: 100.025
+          value: 100.03
         laserReflectivity:
           confidence: 0.7
           max: 80.0
@@ -925,10 +1010,10 @@ materials:
         youngsModulus:
           confidence: 0.7
           max: 1500.0
-          min: 0.001
+          min: 0.0
           source: default_from_category_range
           unit: GPa
-          value: 750.0005
+          value: 750.0
     - author_id: 1
       category: composite
       name: Epoxy Resin Composites
@@ -953,7 +1038,7 @@ materials:
           min: 0.05
           source: default_from_category_range
           unit: cm⁻¹
-          value: 100.025
+          value: 100.03
         laserReflectivity:
           confidence: 0.7
           max: 80.0
@@ -1010,10 +1095,10 @@ materials:
         youngsModulus:
           confidence: 0.7
           max: 1500.0
-          min: 0.001
+          min: 0.0
           source: default_from_category_range
           unit: GPa
-          value: 750.0005
+          value: 750.0
     - author_id: 1
       category: composite
       name: Fiberglass
@@ -1038,7 +1123,7 @@ materials:
           min: 0.05
           source: default_from_category_range
           unit: cm⁻¹
-          value: 100.025
+          value: 100.03
         laserReflectivity:
           confidence: 0.7
           max: 80.0
@@ -1095,10 +1180,10 @@ materials:
         youngsModulus:
           confidence: 0.7
           max: 1500.0
-          min: 0.001
+          min: 0.0
           source: default_from_category_range
           unit: GPa
-          value: 750.0005
+          value: 750.0
     - author_id: 2
       category: composite
       name: Kevlar-Reinforced Polymer
@@ -1123,7 +1208,7 @@ materials:
           min: 0.05
           source: default_from_category_range
           unit: cm⁻¹
-          value: 100.025
+          value: 100.03
         laserReflectivity:
           confidence: 0.7
           max: 80.0
@@ -1180,10 +1265,10 @@ materials:
         youngsModulus:
           confidence: 0.7
           max: 1500.0
-          min: 0.001
+          min: 0.0
           source: default_from_category_range
           unit: GPa
-          value: 750.0005
+          value: 750.0
     - author_id: 4
       category: composite
       name: Phenolic Resin Composites
@@ -1208,7 +1293,7 @@ materials:
           min: 0.05
           source: default_from_category_range
           unit: cm⁻¹
-          value: 100.025
+          value: 100.03
         laserReflectivity:
           confidence: 0.7
           max: 80.0
@@ -1265,10 +1350,10 @@ materials:
         youngsModulus:
           confidence: 0.7
           max: 1500.0
-          min: 0.001
+          min: 0.0
           source: default_from_category_range
           unit: GPa
-          value: 750.0005
+          value: 750.0
     - author_id: 3
       category: composite
       name: Polyester Resin Composites
@@ -1293,7 +1378,7 @@ materials:
           min: 0.05
           source: default_from_category_range
           unit: cm⁻¹
-          value: 100.025
+          value: 100.03
         laserReflectivity:
           confidence: 0.7
           max: 80.0
@@ -1350,10 +1435,10 @@ materials:
         youngsModulus:
           confidence: 0.7
           max: 1500.0
-          min: 0.001
+          min: 0.0
           source: default_from_category_range
           unit: GPa
-          value: 750.0005
+          value: 750.0
     - author_id: 4
       category: composite
       name: Rubber
@@ -1378,7 +1463,7 @@ materials:
           min: 0.05
           source: default_from_category_range
           unit: cm⁻¹
-          value: 100.025
+          value: 100.03
         laserReflectivity:
           confidence: 0.7
           max: 80.0
@@ -1435,10 +1520,10 @@ materials:
         youngsModulus:
           confidence: 0.7
           max: 1500.0
-          min: 0.001
+          min: 0.0
           source: default_from_category_range
           unit: GPa
-          value: 750.0005
+          value: 750.0
     - author_id: 4
       category: composite
       name: Thermoplastic Elastomer
@@ -1463,7 +1548,7 @@ materials:
           min: 0.05
           source: default_from_category_range
           unit: cm⁻¹
-          value: 100.025
+          value: 100.03
         laserReflectivity:
           confidence: 0.7
           max: 80.0
@@ -1520,10 +1605,10 @@ materials:
         youngsModulus:
           confidence: 0.7
           max: 1500.0
-          min: 0.001
+          min: 0.0
           source: default_from_category_range
           unit: GPa
-          value: 750.0005
+          value: 750.0
     - author_id: 4
       category: composite
       name: Urethane Composites
@@ -1548,7 +1633,7 @@ materials:
           min: 0.05
           source: default_from_category_range
           unit: cm⁻¹
-          value: 100.025
+          value: 100.03
         laserReflectivity:
           confidence: 0.7
           max: 80.0
@@ -1605,10 +1690,10 @@ materials:
         youngsModulus:
           confidence: 0.7
           max: 1500.0
-          min: 0.001
+          min: 0.0
           source: default_from_category_range
           unit: GPa
-          value: 750.0005
+          value: 750.0
     - author_id: 3
       category: composite
       name: Glass Fiber Reinforced Polymers GFRP
@@ -1633,7 +1718,7 @@ materials:
           min: 0.05
           source: default_from_category_range
           unit: cm⁻¹
-          value: 100.025
+          value: 100.03
         laserReflectivity:
           confidence: 0.7
           max: 80.0
@@ -1690,10 +1775,10 @@ materials:
         youngsModulus:
           confidence: 0.7
           max: 1500.0
-          min: 0.001
+          min: 0.0
           source: default_from_category_range
           unit: GPa
-          value: 750.0005
+          value: 750.0
     - author_id: 2
       category: composite
       name: Fiber Reinforced Polyurethane FRPU
@@ -1718,7 +1803,7 @@ materials:
           min: 0.05
           source: default_from_category_range
           unit: cm⁻¹
-          value: 100.025
+          value: 100.03
         laserReflectivity:
           confidence: 0.7
           max: 80.0
@@ -1775,10 +1860,10 @@ materials:
         youngsModulus:
           confidence: 0.7
           max: 1500.0
-          min: 0.001
+          min: 0.0
           source: default_from_category_range
           unit: GPa
-          value: 750.0005
+          value: 750.0
     - author_id: 3
       category: composite
       name: Metal Matrix Composites MMCs
@@ -1803,7 +1888,7 @@ materials:
           min: 0.05
           source: default_from_category_range
           unit: cm⁻¹
-          value: 100.025
+          value: 100.03
         laserReflectivity:
           confidence: 0.7
           max: 80.0
@@ -1860,10 +1945,10 @@ materials:
         youngsModulus:
           confidence: 0.7
           max: 1500.0
-          min: 0.001
+          min: 0.0
           source: default_from_category_range
           unit: GPa
-          value: 750.0005
+          value: 750.0
     - author_id: 1
       category: composite
       name: Ceramic Matrix Composites CMCs
@@ -1888,7 +1973,7 @@ materials:
           min: 0.05
           source: default_from_category_range
           unit: cm⁻¹
-          value: 100.025
+          value: 100.03
         laserReflectivity:
           confidence: 0.7
           max: 80.0
@@ -1945,10 +2030,10 @@ materials:
         youngsModulus:
           confidence: 0.7
           max: 1500.0
-          min: 0.001
+          min: 0.0
           source: default_from_category_range
           unit: GPa
-          value: 750.0005
+          value: 750.0
   glass:
     items:
     - author_id: 1
@@ -1961,7 +2046,7 @@ materials:
           min: 1.2
           source: default_from_category_range
           unit: g/cm³
-          value: 4.3999999999999995
+          value: 4.4
         hardness:
           confidence: 0.7
           max: 9.0
@@ -1972,10 +2057,10 @@ materials:
         laserAbsorption:
           confidence: 0.7
           max: 10.0
-          min: 0.001
+          min: 0.0
           source: default_from_category_range
           unit: cm⁻¹
-          value: 5.0005
+          value: 5.0
         laserReflectivity:
           confidence: 0.7
           max: 92.0
@@ -2014,14 +2099,14 @@ materials:
         thermalDestructionType:
           confidence: 0.8
           source: category_default
-          value: softening
+          value: melting
         thermalDiffusivity:
           confidence: 0.7
           max: 15.0
           min: 0.01
           source: default_from_category_range
           unit: mm²/s
-          value: 7.505
+          value: 7.5
         thermalExpansion:
           confidence: 0.7
           max: 15.0
@@ -2046,7 +2131,7 @@ materials:
           min: 1.2
           source: default_from_category_range
           unit: g/cm³
-          value: 4.3999999999999995
+          value: 4.4
         hardness:
           confidence: 0.7
           max: 9.0
@@ -2057,10 +2142,10 @@ materials:
         laserAbsorption:
           confidence: 0.7
           max: 10.0
-          min: 0.001
+          min: 0.0
           source: default_from_category_range
           unit: cm⁻¹
-          value: 5.0005
+          value: 5.0
         laserReflectivity:
           confidence: 0.7
           max: 92.0
@@ -2099,14 +2184,14 @@ materials:
         thermalDestructionType:
           confidence: 0.8
           source: category_default
-          value: softening
+          value: melting
         thermalDiffusivity:
           confidence: 0.7
           max: 15.0
           min: 0.01
           source: default_from_category_range
           unit: mm²/s
-          value: 7.505
+          value: 7.5
         thermalExpansion:
           confidence: 0.7
           max: 15.0
@@ -2131,7 +2216,7 @@ materials:
           min: 1.2
           source: default_from_category_range
           unit: g/cm³
-          value: 4.3999999999999995
+          value: 4.4
         hardness:
           confidence: 0.7
           max: 9.0
@@ -2142,10 +2227,10 @@ materials:
         laserAbsorption:
           confidence: 0.7
           max: 10.0
-          min: 0.001
+          min: 0.0
           source: default_from_category_range
           unit: cm⁻¹
-          value: 5.0005
+          value: 5.0
         laserReflectivity:
           confidence: 0.7
           max: 92.0
@@ -2184,14 +2269,14 @@ materials:
         thermalDestructionType:
           confidence: 0.8
           source: category_default
-          value: softening
+          value: melting
         thermalDiffusivity:
           confidence: 0.7
           max: 15.0
           min: 0.01
           source: default_from_category_range
           unit: mm²/s
-          value: 7.505
+          value: 7.5
         thermalExpansion:
           confidence: 0.7
           max: 15.0
@@ -2216,7 +2301,7 @@ materials:
           min: 1.2
           source: default_from_category_range
           unit: g/cm³
-          value: 4.3999999999999995
+          value: 4.4
         hardness:
           confidence: 0.7
           max: 9.0
@@ -2227,10 +2312,10 @@ materials:
         laserAbsorption:
           confidence: 0.7
           max: 10.0
-          min: 0.001
+          min: 0.0
           source: default_from_category_range
           unit: cm⁻¹
-          value: 5.0005
+          value: 5.0
         laserReflectivity:
           confidence: 0.7
           max: 92.0
@@ -2269,14 +2354,14 @@ materials:
         thermalDestructionType:
           confidence: 0.8
           source: category_default
-          value: softening
+          value: melting
         thermalDiffusivity:
           confidence: 0.7
           max: 15.0
           min: 0.01
           source: default_from_category_range
           unit: mm²/s
-          value: 7.505
+          value: 7.5
         thermalExpansion:
           confidence: 0.7
           max: 15.0
@@ -2301,7 +2386,7 @@ materials:
           min: 1.2
           source: default_from_category_range
           unit: g/cm³
-          value: 4.3999999999999995
+          value: 4.4
         hardness:
           confidence: 0.7
           max: 9.0
@@ -2312,10 +2397,10 @@ materials:
         laserAbsorption:
           confidence: 0.7
           max: 10.0
-          min: 0.001
+          min: 0.0
           source: default_from_category_range
           unit: cm⁻¹
-          value: 5.0005
+          value: 5.0
         laserReflectivity:
           confidence: 0.7
           max: 92.0
@@ -2354,14 +2439,14 @@ materials:
         thermalDestructionType:
           confidence: 0.8
           source: category_default
-          value: softening
+          value: melting
         thermalDiffusivity:
           confidence: 0.7
           max: 15.0
           min: 0.01
           source: default_from_category_range
           unit: mm²/s
-          value: 7.505
+          value: 7.5
         thermalExpansion:
           confidence: 0.7
           max: 15.0
@@ -2386,7 +2471,7 @@ materials:
           min: 1.2
           source: default_from_category_range
           unit: g/cm³
-          value: 4.3999999999999995
+          value: 4.4
         hardness:
           confidence: 0.7
           max: 9.0
@@ -2397,10 +2482,10 @@ materials:
         laserAbsorption:
           confidence: 0.7
           max: 10.0
-          min: 0.001
+          min: 0.0
           source: default_from_category_range
           unit: cm⁻¹
-          value: 5.0005
+          value: 5.0
         laserReflectivity:
           confidence: 0.7
           max: 92.0
@@ -2439,14 +2524,14 @@ materials:
         thermalDestructionType:
           confidence: 0.8
           source: category_default
-          value: softening
+          value: melting
         thermalDiffusivity:
           confidence: 0.7
           max: 15.0
           min: 0.01
           source: default_from_category_range
           unit: mm²/s
-          value: 7.505
+          value: 7.5
         thermalExpansion:
           confidence: 0.7
           max: 15.0
@@ -2471,7 +2556,7 @@ materials:
           min: 1.2
           source: default_from_category_range
           unit: g/cm³
-          value: 4.3999999999999995
+          value: 4.4
         hardness:
           confidence: 0.7
           max: 9.0
@@ -2482,10 +2567,10 @@ materials:
         laserAbsorption:
           confidence: 0.7
           max: 10.0
-          min: 0.001
+          min: 0.0
           source: default_from_category_range
           unit: cm⁻¹
-          value: 5.0005
+          value: 5.0
         laserReflectivity:
           confidence: 0.7
           max: 92.0
@@ -2524,14 +2609,14 @@ materials:
         thermalDestructionType:
           confidence: 0.8
           source: category_default
-          value: softening
+          value: melting
         thermalDiffusivity:
           confidence: 0.7
           max: 15.0
           min: 0.01
           source: default_from_category_range
           unit: mm²/s
-          value: 7.505
+          value: 7.5
         thermalExpansion:
           confidence: 0.7
           max: 15.0
@@ -2556,7 +2641,7 @@ materials:
           min: 1.2
           source: default_from_category_range
           unit: g/cm³
-          value: 4.3999999999999995
+          value: 4.4
         hardness:
           confidence: 0.7
           max: 9.0
@@ -2567,10 +2652,10 @@ materials:
         laserAbsorption:
           confidence: 0.7
           max: 10.0
-          min: 0.001
+          min: 0.0
           source: default_from_category_range
           unit: cm⁻¹
-          value: 5.0005
+          value: 5.0
         laserReflectivity:
           confidence: 0.7
           max: 92.0
@@ -2609,14 +2694,14 @@ materials:
         thermalDestructionType:
           confidence: 0.8
           source: category_default
-          value: softening
+          value: melting
         thermalDiffusivity:
           confidence: 0.7
           max: 15.0
           min: 0.01
           source: default_from_category_range
           unit: mm²/s
-          value: 7.505
+          value: 7.5
         thermalExpansion:
           confidence: 0.7
           max: 15.0
@@ -2643,7 +2728,7 @@ materials:
           min: 1.2
           source: default_from_category_range
           unit: g/cm³
-          value: 4.3999999999999995
+          value: 4.4
         hardness:
           confidence: 0.7
           max: 9.0
@@ -2654,10 +2739,10 @@ materials:
         laserAbsorption:
           confidence: 0.7
           max: 10.0
-          min: 0.001
+          min: 0.0
           source: default_from_category_range
           unit: cm⁻¹
-          value: 5.0005
+          value: 5.0
         laserReflectivity:
           confidence: 0.7
           max: 92.0
@@ -2696,14 +2781,14 @@ materials:
         thermalDestructionType:
           confidence: 0.8
           source: category_default
-          value: softening
+          value: melting
         thermalDiffusivity:
           confidence: 0.7
           max: 15.0
           min: 0.01
           source: default_from_category_range
           unit: mm²/s
-          value: 7.505
+          value: 7.5
         thermalExpansion:
           confidence: 0.7
           max: 15.0
@@ -2730,7 +2815,7 @@ materials:
           min: 1.2
           source: default_from_category_range
           unit: g/cm³
-          value: 4.3999999999999995
+          value: 4.4
         hardness:
           confidence: 0.7
           max: 9.0
@@ -2741,10 +2826,10 @@ materials:
         laserAbsorption:
           confidence: 0.7
           max: 10.0
-          min: 0.001
+          min: 0.0
           source: default_from_category_range
           unit: cm⁻¹
-          value: 5.0005
+          value: 5.0
         laserReflectivity:
           confidence: 0.7
           max: 92.0
@@ -2783,14 +2868,14 @@ materials:
         thermalDestructionType:
           confidence: 0.8
           source: category_default
-          value: softening
+          value: melting
         thermalDiffusivity:
           confidence: 0.7
           max: 15.0
           min: 0.01
           source: default_from_category_range
           unit: mm²/s
-          value: 7.505
+          value: 7.5
         thermalExpansion:
           confidence: 0.7
           max: 15.0
@@ -2817,7 +2902,7 @@ materials:
           min: 1.2
           source: default_from_category_range
           unit: g/cm³
-          value: 4.3999999999999995
+          value: 4.4
         hardness:
           confidence: 0.7
           max: 9.0
@@ -2828,10 +2913,10 @@ materials:
         laserAbsorption:
           confidence: 0.7
           max: 10.0
-          min: 0.001
+          min: 0.0
           source: default_from_category_range
           unit: cm⁻¹
-          value: 5.0005
+          value: 5.0
         laserReflectivity:
           confidence: 0.7
           max: 92.0
@@ -2870,14 +2955,14 @@ materials:
         thermalDestructionType:
           confidence: 0.8
           source: category_default
-          value: softening
+          value: melting
         thermalDiffusivity:
           confidence: 0.7
           max: 15.0
           min: 0.01
           source: default_from_category_range
           unit: mm²/s
-          value: 7.505
+          value: 7.5
         thermalExpansion:
           confidence: 0.7
           max: 15.0
@@ -2981,6 +3066,18 @@ materials:
           source: default_from_category_range
           unit: GPa
           value: 27.5
+        compressiveStrength:
+          value: 35
+          unit: MPa
+          confidence: 0.95
+          description: Compressive strength is the maximum axial compressive stress
+            a brick can withstand before failure. It is a critical property for masonry
+            design, primarily dependent on the raw material composition (clay/shale
+            type), manufacturing process (firing temperature, duration), and resulting
+            porosity and microstructure.
+          source: ai_research_from_mechanical_properties
+          min: 20
+          max: 100
       thermalProperties:
         thermalConductivity: 0.5-1.5 W/m·K
       water_absorption: 5-20%
@@ -3071,6 +3168,19 @@ materials:
           source: default_from_category_range
           unit: GPa
           value: 27.5
+        compressiveStrength:
+          value: 42.5
+          unit: MPa
+          confidence: 0.95
+          description: Compressive strength of masonry cement represents its ability
+            to withstand axial loads without failure, primarily determined by the
+            hydration products (C-S-H gel, calcium hydroxide) and pore structure.
+            Masonry cement typically contains Portland cement with added limestone
+            and air-entraining agents, resulting in lower strength than structural
+            concrete but optimized for mortar workability and bond strength.
+          source: ai_research_from_mechanical_properties
+          min: 12.4
+          max: 34.5
       thermalProperties:
         thermalConductivity: 0.5-1.5 W/m·K
       water_absorption: 5-20%
@@ -3161,6 +3271,18 @@ materials:
           source: default_from_category_range
           unit: GPa
           value: 27.5
+        compressiveStrength:
+          value: 40
+          unit: MPa
+          confidence: 0.95
+          description: Compressive strength of concrete represents its ability to
+            resist axial loads causing material compaction. For masonry concrete,
+            this is primarily determined by the water-cement ratio, aggregate properties,
+            curing conditions, and cement type. The crystalline structure of calcium
+            silicate hydrate (C-S-H) phases provides the primary load-bearing mechanism.
+          source: ai_research_from_mechanical_properties
+          min: 20
+          max: 80
       thermalProperties:
         thermalConductivity: 0.5-1.5 W/m·K
       water_absorption: 5-20%
@@ -3251,6 +3373,19 @@ materials:
           source: default_from_category_range
           unit: GPa
           value: 27.5
+        compressiveStrength:
+          value: 25.0
+          unit: MPa
+          confidence: 0.95
+          description: Compressive strength of masonry mortar is the maximum axial
+            compressive stress it can sustain before failure. It is primarily governed
+            by the water-cement ratio, cement type and content, sand gradation, and
+            curing conditions. The strength development is a result of the hydration
+            of cementitious materials (Portland cement, lime, or masonry cement) binding
+            the aggregate particles.
+          source: ai_research_from_mechanical_properties
+          min: 5.2
+          max: 34.5
       thermalProperties:
         thermalConductivity: 0.5-1.5 W/m·K
       water_absorption: 5-20%
@@ -3341,6 +3476,20 @@ materials:
           source: default_from_category_range
           unit: GPa
           value: 27.5
+        compressiveStrength:
+          value: 25
+          unit: MPa
+          confidence: 0.85
+          description: Compressive strength of plaster in masonry applications represents
+            the maximum axial stress the material can withstand before failure under
+            compression. This property is highly dependent on plaster composition,
+            water-to-binder ratio, curing conditions, and age. Gypsum-based plasters
+            typically exhibit lower strengths (2-20 MPa) while cement-lime plasters
+            used in masonry achieve higher values due to hydraulic setting reactions
+            and improved particle packing.
+          source: ai_research_from_mechanical_properties
+          min: 5
+          max: 40
       thermalProperties:
         thermalConductivity: 0.5-1.5 W/m·K
       water_absorption: 5-20%
@@ -3431,6 +3580,21 @@ materials:
           source: default_from_category_range
           unit: GPa
           value: 27.5
+        compressiveStrength:
+          value: 20
+          unit: MPa
+          confidence: 0.85
+          description: Compressive strength of stucco is primarily dependent on the
+            binder-to-aggregate ratio, curing conditions, and age. Traditional cement-based
+            stucco develops strength through the hydration of Portland cement, forming
+            a calcium silicate hydrate (C-S-H) matrix that binds the silica sand aggregate.
+            The strength is anisotropic and can be influenced by the application method
+            (e.g., three-coat vs. one-coat systems) and the presence of lime, which
+            can slightly reduce ultimate strength but improve workability and crack
+            resistance.
+          source: ai_research_from_mechanical_properties
+          min: 10
+          max: 50
       thermalProperties:
         thermalConductivity: 0.5-1.5 W/m·K
       water_absorption: 5-20%
@@ -3521,6 +3685,18 @@ materials:
           source: default_from_category_range
           unit: GPa
           value: 27.5
+        compressiveStrength:
+          value: 40
+          unit: MPa
+          confidence: 0.85
+          description: Compressive strength of terracotta masonry is primarily governed
+            by its porous, vitrified microstructure formed from fired clay. The strength
+            depends on clay composition, firing temperature (typically 900-1100°C),
+            and resulting porosity, which typically ranges from 5-20%. Failure occurs
+            through brittle fracture along microcracks and pores.
+          source: ai_research_from_mechanical_properties
+          min: 20
+          max: 100
       thermalProperties:
         thermalConductivity: 0.5-1.5 W/m·K
       water_absorption: 5-20%
@@ -3536,7 +3712,7 @@ materials:
           min: 0.53
           source: default_from_category_range
           unit: g/cm³
-          value: 11.565000000000001
+          value: 11.57
         hardness:
           confidence: 0.7
           max: 3500.0
@@ -3621,7 +3797,7 @@ materials:
           min: 0.53
           source: default_from_category_range
           unit: g/cm³
-          value: 11.565000000000001
+          value: 11.57
         hardness:
           confidence: 0.7
           max: 3500.0
@@ -3711,7 +3887,7 @@ materials:
           min: 0.53
           source: default_from_category_range
           unit: g/cm³
-          value: 11.565000000000001
+          value: 11.57
         hardness:
           confidence: 0.7
           max: 3500.0
@@ -3803,7 +3979,7 @@ materials:
           min: 0.53
           source: default_from_category_range
           unit: g/cm³
-          value: 11.565000000000001
+          value: 11.57
         hardness:
           confidence: 0.7
           max: 3500.0
@@ -3896,7 +4072,7 @@ materials:
           min: 0.53
           source: default_from_category_range
           unit: g/cm³
-          value: 11.565000000000001
+          value: 11.57
         hardness:
           confidence: 0.7
           max: 3500.0
@@ -3985,7 +4161,7 @@ materials:
           min: 0.53
           source: default_from_category_range
           unit: g/cm³
-          value: 11.565000000000001
+          value: 11.57
         hardness:
           confidence: 0.7
           max: 3500.0
@@ -4070,7 +4246,7 @@ materials:
           min: 0.53
           source: default_from_category_range
           unit: g/cm³
-          value: 11.565000000000001
+          value: 11.57
         hardness:
           confidence: 0.7
           max: 3500.0
@@ -4155,7 +4331,7 @@ materials:
           min: 0.53
           source: default_from_category_range
           unit: g/cm³
-          value: 11.565000000000001
+          value: 11.57
         hardness:
           confidence: 0.7
           max: 3500.0
@@ -4240,7 +4416,7 @@ materials:
           min: 0.53
           source: default_from_category_range
           unit: g/cm³
-          value: 11.565000000000001
+          value: 11.57
         hardness:
           confidence: 0.7
           max: 3500.0
@@ -4325,7 +4501,7 @@ materials:
           min: 0.53
           source: default_from_category_range
           unit: g/cm³
-          value: 11.565000000000001
+          value: 11.57
         hardness:
           confidence: 0.7
           max: 3500.0
@@ -4410,7 +4586,7 @@ materials:
           min: 0.53
           source: default_from_category_range
           unit: g/cm³
-          value: 11.565000000000001
+          value: 11.57
         hardness:
           confidence: 0.7
           max: 3500.0
@@ -4495,7 +4671,7 @@ materials:
           min: 0.53
           source: default_from_category_range
           unit: g/cm³
-          value: 11.565000000000001
+          value: 11.57
         hardness:
           confidence: 0.7
           max: 3500.0
@@ -4580,7 +4756,7 @@ materials:
           min: 0.53
           source: default_from_category_range
           unit: g/cm³
-          value: 11.565000000000001
+          value: 11.57
         hardness:
           confidence: 0.7
           max: 3500.0
@@ -4665,7 +4841,7 @@ materials:
           min: 0.53
           source: default_from_category_range
           unit: g/cm³
-          value: 11.565000000000001
+          value: 11.57
         hardness:
           confidence: 0.7
           max: 3500.0
@@ -4750,7 +4926,7 @@ materials:
           min: 0.53
           source: default_from_category_range
           unit: g/cm³
-          value: 11.565000000000001
+          value: 11.57
         hardness:
           confidence: 0.7
           max: 3500.0
@@ -4835,7 +5011,7 @@ materials:
           min: 0.53
           source: default_from_category_range
           unit: g/cm³
-          value: 11.565000000000001
+          value: 11.57
         hardness:
           confidence: 0.7
           max: 3500.0
@@ -4920,7 +5096,7 @@ materials:
           min: 0.53
           source: default_from_category_range
           unit: g/cm³
-          value: 11.565000000000001
+          value: 11.57
         hardness:
           confidence: 0.7
           max: 3500.0
@@ -5011,7 +5187,7 @@ materials:
           min: 0.53
           source: default_from_category_range
           unit: g/cm³
-          value: 11.565000000000001
+          value: 11.57
         hardness:
           confidence: 0.7
           max: 3500.0
@@ -5100,7 +5276,7 @@ materials:
           min: 0.53
           source: default_from_category_range
           unit: g/cm³
-          value: 11.565000000000001
+          value: 11.57
         hardness:
           confidence: 0.7
           max: 3500.0
@@ -5185,7 +5361,7 @@ materials:
           min: 0.53
           source: default_from_category_range
           unit: g/cm³
-          value: 11.565000000000001
+          value: 11.57
         hardness:
           confidence: 0.7
           max: 3500.0
@@ -5270,7 +5446,7 @@ materials:
           min: 0.53
           source: default_from_category_range
           unit: g/cm³
-          value: 11.565000000000001
+          value: 11.57
         hardness:
           confidence: 0.7
           max: 3500.0
@@ -5355,7 +5531,7 @@ materials:
           min: 0.53
           source: default_from_category_range
           unit: g/cm³
-          value: 11.565000000000001
+          value: 11.57
         hardness:
           confidence: 0.7
           max: 3500.0
@@ -5440,7 +5616,7 @@ materials:
           min: 0.53
           source: default_from_category_range
           unit: g/cm³
-          value: 11.565000000000001
+          value: 11.57
         hardness:
           confidence: 0.7
           max: 3500.0
@@ -5525,7 +5701,7 @@ materials:
           min: 0.53
           source: default_from_category_range
           unit: g/cm³
-          value: 11.565000000000001
+          value: 11.57
         hardness:
           confidence: 0.7
           max: 3500.0
@@ -5610,7 +5786,7 @@ materials:
           min: 0.53
           source: default_from_category_range
           unit: g/cm³
-          value: 11.565000000000001
+          value: 11.57
         hardness:
           confidence: 0.7
           max: 3500.0
@@ -5702,7 +5878,7 @@ materials:
           min: 0.53
           source: default_from_category_range
           unit: g/cm³
-          value: 11.565000000000001
+          value: 11.57
         hardness:
           confidence: 0.7
           max: 3500.0
@@ -5790,7 +5966,7 @@ materials:
           min: 0.53
           source: default_from_category_range
           unit: g/cm³
-          value: 11.565000000000001
+          value: 11.57
         hardness:
           confidence: 0.7
           max: 3500.0
@@ -5875,7 +6051,7 @@ materials:
           min: 0.53
           source: default_from_category_range
           unit: g/cm³
-          value: 11.565000000000001
+          value: 11.57
         hardness:
           confidence: 0.7
           max: 3500.0
@@ -5960,7 +6136,7 @@ materials:
           min: 0.53
           source: default_from_category_range
           unit: g/cm³
-          value: 11.565000000000001
+          value: 11.57
         hardness:
           confidence: 0.7
           max: 3500.0
@@ -6049,7 +6225,7 @@ materials:
           min: 0.53
           source: default_from_category_range
           unit: g/cm³
-          value: 11.565000000000001
+          value: 11.57
         hardness:
           confidence: 0.7
           max: 3500.0
@@ -6139,7 +6315,7 @@ materials:
           min: 0.53
           source: default_from_category_range
           unit: g/cm³
-          value: 11.565000000000001
+          value: 11.57
         hardness:
           confidence: 0.7
           max: 3500.0
@@ -6224,7 +6400,7 @@ materials:
           min: 0.53
           source: default_from_category_range
           unit: g/cm³
-          value: 11.565000000000001
+          value: 11.57
         hardness:
           confidence: 0.7
           max: 3500.0
@@ -6309,7 +6485,7 @@ materials:
           min: 0.53
           source: default_from_category_range
           unit: g/cm³
-          value: 11.565000000000001
+          value: 11.57
         hardness:
           confidence: 0.7
           max: 3500.0
@@ -6396,7 +6572,7 @@ materials:
           min: 0.53
           source: default_from_category_range
           unit: g/cm³
-          value: 11.565000000000001
+          value: 11.57
         hardness:
           confidence: 0.7
           max: 3500.0
@@ -6483,7 +6659,7 @@ materials:
           min: 0.53
           source: default_from_category_range
           unit: g/cm³
-          value: 11.565000000000001
+          value: 11.57
         hardness:
           confidence: 0.7
           max: 3500.0
@@ -6572,7 +6748,7 @@ materials:
           min: 0.85
           source: default_from_category_range
           unit: g/cm³
-          value: 1.5250000000000001
+          value: 1.53
         hardness:
           confidence: 0.7
           max: 90.0
@@ -6625,14 +6801,14 @@ materials:
         thermalDestructionType:
           confidence: 0.8
           source: category_default
-          value: melting
+          value: decomposition
         thermalDiffusivity:
           confidence: 0.7
           max: 1.0
           min: 0.05
           source: default_from_category_range
           unit: mm²/s
-          value: 0.525
+          value: 0.53
         thermalExpansion:
           confidence: 0.7
           max: 200.0
@@ -6646,7 +6822,7 @@ materials:
           min: 0.01
           source: default_from_category_range
           unit: GPa
-          value: 2000.005
+          value: 2000.01
     - author_id: 2
       category: plastic
       mechanicalProperties:
@@ -6659,7 +6835,7 @@ materials:
           min: 0.85
           source: default_from_category_range
           unit: g/cm³
-          value: 1.5250000000000001
+          value: 1.53
         hardness:
           confidence: 0.7
           max: 90.0
@@ -6712,14 +6888,14 @@ materials:
         thermalDestructionType:
           confidence: 0.8
           source: category_default
-          value: melting
+          value: decomposition
         thermalDiffusivity:
           confidence: 0.7
           max: 1.0
           min: 0.05
           source: default_from_category_range
           unit: mm²/s
-          value: 0.525
+          value: 0.53
         thermalExpansion:
           confidence: 0.7
           max: 200.0
@@ -6733,7 +6909,7 @@ materials:
           min: 0.01
           source: default_from_category_range
           unit: GPa
-          value: 2000.005
+          value: 2000.01
     - author_id: 3
       category: plastic
       mechanicalProperties:
@@ -6746,7 +6922,7 @@ materials:
           min: 0.85
           source: default_from_category_range
           unit: g/cm³
-          value: 1.5250000000000001
+          value: 1.53
         hardness:
           confidence: 0.7
           max: 90.0
@@ -6799,14 +6975,14 @@ materials:
         thermalDestructionType:
           confidence: 0.8
           source: category_default
-          value: melting
+          value: decomposition
         thermalDiffusivity:
           confidence: 0.7
           max: 1.0
           min: 0.05
           source: default_from_category_range
           unit: mm²/s
-          value: 0.525
+          value: 0.53
         thermalExpansion:
           confidence: 0.7
           max: 200.0
@@ -6820,7 +6996,7 @@ materials:
           min: 0.01
           source: default_from_category_range
           unit: GPa
-          value: 2000.005
+          value: 2000.01
     - author_id: 2
       category: plastic
       mechanicalProperties:
@@ -6833,7 +7009,7 @@ materials:
           min: 0.85
           source: default_from_category_range
           unit: g/cm³
-          value: 1.5250000000000001
+          value: 1.53
         hardness:
           confidence: 0.7
           max: 90.0
@@ -6886,14 +7062,14 @@ materials:
         thermalDestructionType:
           confidence: 0.8
           source: category_default
-          value: melting
+          value: decomposition
         thermalDiffusivity:
           confidence: 0.7
           max: 1.0
           min: 0.05
           source: default_from_category_range
           unit: mm²/s
-          value: 0.525
+          value: 0.53
         thermalExpansion:
           confidence: 0.7
           max: 200.0
@@ -6907,7 +7083,7 @@ materials:
           min: 0.01
           source: default_from_category_range
           unit: GPa
-          value: 2000.005
+          value: 2000.01
     - author_id: 3
       category: plastic
       mechanicalProperties:
@@ -6920,7 +7096,7 @@ materials:
           min: 0.85
           source: default_from_category_range
           unit: g/cm³
-          value: 1.5250000000000001
+          value: 1.53
         hardness:
           confidence: 0.7
           max: 90.0
@@ -6973,14 +7149,14 @@ materials:
         thermalDestructionType:
           confidence: 0.8
           source: category_default
-          value: melting
+          value: decomposition
         thermalDiffusivity:
           confidence: 0.7
           max: 1.0
           min: 0.05
           source: default_from_category_range
           unit: mm²/s
-          value: 0.525
+          value: 0.53
         thermalExpansion:
           confidence: 0.7
           max: 200.0
@@ -6994,7 +7170,7 @@ materials:
           min: 0.01
           source: default_from_category_range
           unit: GPa
-          value: 2000.005
+          value: 2000.01
     - author_id: 2
       category: plastic
       mechanicalProperties:
@@ -7007,7 +7183,7 @@ materials:
           min: 0.85
           source: default_from_category_range
           unit: g/cm³
-          value: 1.5250000000000001
+          value: 1.53
         hardness:
           confidence: 0.7
           max: 90.0
@@ -7060,14 +7236,14 @@ materials:
         thermalDestructionType:
           confidence: 0.8
           source: category_default
-          value: melting
+          value: decomposition
         thermalDiffusivity:
           confidence: 0.7
           max: 1.0
           min: 0.05
           source: default_from_category_range
           unit: mm²/s
-          value: 0.525
+          value: 0.53
         thermalExpansion:
           confidence: 0.7
           max: 200.0
@@ -7081,7 +7257,7 @@ materials:
           min: 0.01
           source: default_from_category_range
           unit: GPa
-          value: 2000.005
+          value: 2000.01
   semiconductor:
     items:
     - author_id: 3
@@ -7111,7 +7287,7 @@ materials:
           min: 0.01
           source: default_from_category_range
           unit: cm⁻¹
-          value: 50.005
+          value: 50.01
         laserReflectivity:
           confidence: 0.7
           max: 70.0
@@ -7209,7 +7385,7 @@ materials:
           min: 0.01
           source: default_from_category_range
           unit: cm⁻¹
-          value: 50.005
+          value: 50.01
         laserReflectivity:
           confidence: 0.7
           max: 70.0
@@ -7303,7 +7479,7 @@ materials:
           min: 0.01
           source: default_from_category_range
           unit: cm⁻¹
-          value: 50.005
+          value: 50.01
         laserReflectivity:
           confidence: 0.7
           max: 70.0
@@ -7395,7 +7571,7 @@ materials:
           min: 0.01
           source: default_from_category_range
           unit: cm⁻¹
-          value: 50.005
+          value: 50.01
         laserReflectivity:
           confidence: 0.7
           max: 70.0
@@ -7979,6 +8155,18 @@ materials:
           source: default_from_category_range
           unit: GPa
           value: 55.0
+        compressiveStrength:
+          value: 175
+          unit: MPa
+          confidence: 0.95
+          description: Compressive strength is the maximum axial stress granite can
+            withstand under gradual loading before failing. For granite, this is primarily
+            governed by its interlocking crystalline structure of quartz, feldspar,
+            and mica, with strength influenced by mineralogy, grain size, and microcrack
+            density.
+          source: ai_research_from_mechanical_properties
+          min: 100
+          max: 300
       thermalProperties:
         thermalConductivity: 2.5-3.5 W/m·K
     - author_id: 1
@@ -8053,7 +8241,7 @@ materials:
         thermalDestructionType:
           confidence: 0.8
           source: category_default
-          value: calcination
+          value: thermal_shock
         thermalDiffusivity:
           confidence: 0.7
           max: 2.5
@@ -8075,6 +8263,18 @@ materials:
           source: default_from_category_range
           unit: GPa
           value: 55.0
+        compressiveStrength:
+          value: 70
+          unit: MPa
+          confidence: 0.95
+          description: Compressive strength is the maximum axial stress limestone
+            can withstand under gradual loading before failing. This property is highly
+            dependent on porosity, pore structure, mineral composition (calcite content),
+            and the presence of impurities or micro-fractures. Dense, crystalline
+            limestones exhibit higher strength.
+          source: ai_research_from_mechanical_properties
+          min: 30
+          max: 250
       thermalProperties:
         thermalConductivity: 1.0-4.0 W/m·K
         thermalExpansion: 6.0 × 10⁻⁶ /°C
@@ -8236,7 +8436,7 @@ materials:
         thermalDestructionType:
           confidence: 0.8
           source: category_default
-          value: calcination
+          value: thermal_shock
         thermalDiffusivity:
           confidence: 0.7
           max: 2.5
@@ -8258,6 +8458,18 @@ materials:
           source: default_from_category_range
           unit: GPa
           value: 55.0
+        compressiveStrength:
+          value: 115
+          unit: MPa
+          confidence: 0.85
+          description: Compressive strength of marble represents the maximum axial
+            stress the stone can withstand before failure under compression. This
+            property is highly dependent on mineral composition, grain size, porosity,
+            and microcrack density. Calcite-rich marbles typically show lower strength
+            than dolomitic varieties due to calcite's perfect cleavage.
+          source: ai_research_from_mechanical_properties
+          min: 70
+          max: 200
       thermalProperties:
         thermalConductivity: 2.0-3.5 W/m·K
         thermalExpansion: 5.5 × 10⁻⁶ /°C
@@ -8524,6 +8736,18 @@ materials:
           source: default_from_category_range
           unit: GPa
           value: 55.0
+        compressiveStrength:
+          value: 65
+          unit: MPa
+          confidence: 0.85
+          description: Compressive strength of sandstone is highly dependent on mineral
+            composition, cementation type, porosity, and grain size. Quartz-rich sandstones
+            with silica cementation exhibit the highest strengths, while clay-rich
+            or poorly-cemented sandstones show lower values. Anisotropy from bedding
+            planes significantly affects strength measurements.
+          source: ai_research_from_mechanical_properties
+          min: 20
+          max: 170
       thermalProperties:
         thermalConductivity: 1.7-5.1 W/m·K
         thermalExpansion: 11.9 × 10⁻⁶ /°C
@@ -8875,6 +9099,19 @@ materials:
           source: default_from_category_range
           unit: GPa
           value: 55.0
+        compressiveStrength:
+          value: 150
+          unit: MPa
+          confidence: 0.9
+          description: Compressive strength in slate is the maximum axial stress it
+            can withstand before failure. This property is highly anisotropic, being
+            strongest perpendicular to the cleavage plane (slaty cleavage) due to
+            the parallel alignment of platy minerals like clay, mica, and chlorite.
+            Strength is governed by mineral composition, grain interlocking, and the
+            density of microcracks along the foliation.
+          source: ai_research_from_mechanical_properties
+          min: 100
+          max: 200
       thermalProperties:
         thermalConductivity: 2.0-2.5 W/m·K
         thermalExpansion: 10.4 × 10⁻⁶ /°C
@@ -9068,7 +9305,7 @@ materials:
           min: 0.12
           source: default_from_category_range
           unit: g/cm³
-          value: 0.685
+          value: 0.69
         hardness:
           confidence: 0.7
           max: 5000.0
@@ -9125,17 +9362,17 @@ materials:
         thermalDiffusivity:
           confidence: 0.7
           max: 0.4
-          min: 0.0001
+          min: 0.0
           source: default_from_category_range
           unit: mm²/s
-          value: 0.20005
+          value: 0.2
         thermalExpansion:
           confidence: 0.7
           max: 60.0
-          min: 3.0e-05
+          min: 0.0
           source: default_from_category_range
           unit: µm/m·K
-          value: 30.000015
+          value: 30.0
         youngsModulus:
           confidence: 0.7
           max: 5000.0
@@ -9167,7 +9404,7 @@ materials:
           min: 0.12
           source: default_from_category_range
           unit: g/cm³
-          value: 0.685
+          value: 0.69
         hardness:
           confidence: 0.7
           max: 5000.0
@@ -9224,17 +9461,17 @@ materials:
         thermalDiffusivity:
           confidence: 0.7
           max: 0.4
-          min: 0.0001
+          min: 0.0
           source: default_from_category_range
           unit: mm²/s
-          value: 0.20005
+          value: 0.2
         thermalExpansion:
           confidence: 0.7
           max: 60.0
-          min: 3.0e-05
+          min: 0.0
           source: default_from_category_range
           unit: µm/m·K
-          value: 30.000015
+          value: 30.0
         youngsModulus:
           confidence: 0.7
           max: 5000.0
@@ -9255,7 +9492,7 @@ materials:
           min: 0.12
           source: default_from_category_range
           unit: g/cm³
-          value: 0.685
+          value: 0.69
         hardness:
           confidence: 0.7
           max: 5000.0
@@ -9312,17 +9549,17 @@ materials:
         thermalDiffusivity:
           confidence: 0.7
           max: 0.4
-          min: 0.0001
+          min: 0.0
           source: default_from_category_range
           unit: mm²/s
-          value: 0.20005
+          value: 0.2
         thermalExpansion:
           confidence: 0.7
           max: 60.0
-          min: 3.0e-05
+          min: 0.0
           source: default_from_category_range
           unit: µm/m·K
-          value: 30.000015
+          value: 30.0
         youngsModulus:
           confidence: 0.7
           max: 5000.0
@@ -9348,7 +9585,7 @@ materials:
           min: 0.12
           source: default_from_category_range
           unit: g/cm³
-          value: 0.685
+          value: 0.69
         hardness:
           confidence: 0.7
           max: 5000.0
@@ -9405,17 +9642,17 @@ materials:
         thermalDiffusivity:
           confidence: 0.7
           max: 0.4
-          min: 0.0001
+          min: 0.0
           source: default_from_category_range
           unit: mm²/s
-          value: 0.20005
+          value: 0.2
         thermalExpansion:
           confidence: 0.7
           max: 60.0
-          min: 3.0e-05
+          min: 0.0
           source: default_from_category_range
           unit: µm/m·K
-          value: 30.000015
+          value: 30.0
         youngsModulus:
           confidence: 0.7
           max: 5000.0
@@ -9445,7 +9682,7 @@ materials:
           min: 0.12
           source: default_from_category_range
           unit: g/cm³
-          value: 0.685
+          value: 0.69
         hardness:
           confidence: 0.7
           max: 5000.0
@@ -9502,17 +9739,17 @@ materials:
         thermalDiffusivity:
           confidence: 0.7
           max: 0.4
-          min: 0.0001
+          min: 0.0
           source: default_from_category_range
           unit: mm²/s
-          value: 0.20005
+          value: 0.2
         thermalExpansion:
           confidence: 0.7
           max: 60.0
-          min: 3.0e-05
+          min: 0.0
           source: default_from_category_range
           unit: µm/m·K
-          value: 30.000015
+          value: 30.0
         youngsModulus:
           confidence: 0.7
           max: 5000.0
@@ -9542,7 +9779,7 @@ materials:
           min: 0.12
           source: default_from_category_range
           unit: g/cm³
-          value: 0.685
+          value: 0.69
         hardness:
           confidence: 0.7
           max: 5000.0
@@ -9599,17 +9836,17 @@ materials:
         thermalDiffusivity:
           confidence: 0.7
           max: 0.4
-          min: 0.0001
+          min: 0.0
           source: default_from_category_range
           unit: mm²/s
-          value: 0.20005
+          value: 0.2
         thermalExpansion:
           confidence: 0.7
           max: 60.0
-          min: 3.0e-05
+          min: 0.0
           source: default_from_category_range
           unit: µm/m·K
-          value: 30.000015
+          value: 30.0
         youngsModulus:
           confidence: 0.7
           max: 5000.0
@@ -9630,7 +9867,7 @@ materials:
           min: 0.12
           source: default_from_category_range
           unit: g/cm³
-          value: 0.685
+          value: 0.69
         hardness:
           confidence: 0.7
           max: 5000.0
@@ -9687,17 +9924,17 @@ materials:
         thermalDiffusivity:
           confidence: 0.7
           max: 0.4
-          min: 0.0001
+          min: 0.0
           source: default_from_category_range
           unit: mm²/s
-          value: 0.20005
+          value: 0.2
         thermalExpansion:
           confidence: 0.7
           max: 60.0
-          min: 3.0e-05
+          min: 0.0
           source: default_from_category_range
           unit: µm/m·K
-          value: 30.000015
+          value: 30.0
         youngsModulus:
           confidence: 0.7
           max: 5000.0
@@ -9715,7 +9952,7 @@ materials:
           min: 0.12
           source: default_from_category_range
           unit: g/cm³
-          value: 0.685
+          value: 0.69
         hardness:
           confidence: 0.7
           max: 5000.0
@@ -9772,17 +10009,17 @@ materials:
         thermalDiffusivity:
           confidence: 0.7
           max: 0.4
-          min: 0.0001
+          min: 0.0
           source: default_from_category_range
           unit: mm²/s
-          value: 0.20005
+          value: 0.2
         thermalExpansion:
           confidence: 0.7
           max: 60.0
-          min: 3.0e-05
+          min: 0.0
           source: default_from_category_range
           unit: µm/m·K
-          value: 30.000015
+          value: 30.0
         youngsModulus:
           confidence: 0.7
           max: 5000.0
@@ -9810,7 +10047,7 @@ materials:
           min: 0.12
           source: default_from_category_range
           unit: g/cm³
-          value: 0.685
+          value: 0.69
         hardness:
           confidence: 0.7
           max: 5000.0
@@ -9867,17 +10104,17 @@ materials:
         thermalDiffusivity:
           confidence: 0.7
           max: 0.4
-          min: 0.0001
+          min: 0.0
           source: default_from_category_range
           unit: mm²/s
-          value: 0.20005
+          value: 0.2
         thermalExpansion:
           confidence: 0.7
           max: 60.0
-          min: 3.0e-05
+          min: 0.0
           source: default_from_category_range
           unit: µm/m·K
-          value: 30.000015
+          value: 30.0
         youngsModulus:
           confidence: 0.7
           max: 5000.0
@@ -9908,7 +10145,7 @@ materials:
           min: 0.12
           source: default_from_category_range
           unit: g/cm³
-          value: 0.685
+          value: 0.69
         hardness:
           confidence: 0.7
           max: 5000.0
@@ -9965,17 +10202,17 @@ materials:
         thermalDiffusivity:
           confidence: 0.7
           max: 0.4
-          min: 0.0001
+          min: 0.0
           source: default_from_category_range
           unit: mm²/s
-          value: 0.20005
+          value: 0.2
         thermalExpansion:
           confidence: 0.7
           max: 60.0
-          min: 3.0e-05
+          min: 0.0
           source: default_from_category_range
           unit: µm/m·K
-          value: 30.000015
+          value: 30.0
         youngsModulus:
           confidence: 0.7
           max: 5000.0
@@ -9996,7 +10233,7 @@ materials:
           min: 0.12
           source: default_from_category_range
           unit: g/cm³
-          value: 0.685
+          value: 0.69
         hardness:
           confidence: 0.7
           max: 5000.0
@@ -10053,17 +10290,17 @@ materials:
         thermalDiffusivity:
           confidence: 0.7
           max: 0.4
-          min: 0.0001
+          min: 0.0
           source: default_from_category_range
           unit: mm²/s
-          value: 0.20005
+          value: 0.2
         thermalExpansion:
           confidence: 0.7
           max: 60.0
-          min: 3.0e-05
+          min: 0.0
           source: default_from_category_range
           unit: µm/m·K
-          value: 30.000015
+          value: 30.0
         youngsModulus:
           confidence: 0.7
           max: 5000.0
@@ -10088,7 +10325,7 @@ materials:
           min: 0.12
           source: default_from_category_range
           unit: g/cm³
-          value: 0.685
+          value: 0.69
         hardness:
           confidence: 0.7
           max: 5000.0
@@ -10145,17 +10382,17 @@ materials:
         thermalDiffusivity:
           confidence: 0.7
           max: 0.4
-          min: 0.0001
+          min: 0.0
           source: default_from_category_range
           unit: mm²/s
-          value: 0.20005
+          value: 0.2
         thermalExpansion:
           confidence: 0.7
           max: 60.0
-          min: 3.0e-05
+          min: 0.0
           source: default_from_category_range
           unit: µm/m·K
-          value: 30.000015
+          value: 30.0
         youngsModulus:
           confidence: 0.7
           max: 5000.0
@@ -10182,7 +10419,7 @@ materials:
           min: 0.12
           source: default_from_category_range
           unit: g/cm³
-          value: 0.685
+          value: 0.69
         hardness:
           confidence: 0.7
           max: 5000.0
@@ -10239,17 +10476,17 @@ materials:
         thermalDiffusivity:
           confidence: 0.7
           max: 0.4
-          min: 0.0001
+          min: 0.0
           source: default_from_category_range
           unit: mm²/s
-          value: 0.20005
+          value: 0.2
         thermalExpansion:
           confidence: 0.7
           max: 60.0
-          min: 3.0e-05
+          min: 0.0
           source: default_from_category_range
           unit: µm/m·K
-          value: 30.000015
+          value: 30.0
         youngsModulus:
           confidence: 0.7
           max: 5000.0
@@ -10267,7 +10504,7 @@ materials:
           min: 0.12
           source: default_from_category_range
           unit: g/cm³
-          value: 0.685
+          value: 0.69
         hardness:
           confidence: 0.7
           max: 5000.0
@@ -10324,17 +10561,17 @@ materials:
         thermalDiffusivity:
           confidence: 0.7
           max: 0.4
-          min: 0.0001
+          min: 0.0
           source: default_from_category_range
           unit: mm²/s
-          value: 0.20005
+          value: 0.2
         thermalExpansion:
           confidence: 0.7
           max: 60.0
-          min: 3.0e-05
+          min: 0.0
           source: default_from_category_range
           unit: µm/m·K
-          value: 30.000015
+          value: 30.0
         youngsModulus:
           confidence: 0.7
           max: 5000.0
@@ -10361,7 +10598,7 @@ materials:
           min: 0.12
           source: default_from_category_range
           unit: g/cm³
-          value: 0.685
+          value: 0.69
         hardness:
           confidence: 0.7
           max: 5000.0
@@ -10418,17 +10655,17 @@ materials:
         thermalDiffusivity:
           confidence: 0.7
           max: 0.4
-          min: 0.0001
+          min: 0.0
           source: default_from_category_range
           unit: mm²/s
-          value: 0.20005
+          value: 0.2
         thermalExpansion:
           confidence: 0.7
           max: 60.0
-          min: 3.0e-05
+          min: 0.0
           source: default_from_category_range
           unit: µm/m·K
-          value: 30.000015
+          value: 30.0
         youngsModulus:
           confidence: 0.7
           max: 5000.0
@@ -10449,7 +10686,7 @@ materials:
           min: 0.12
           source: default_from_category_range
           unit: g/cm³
-          value: 0.685
+          value: 0.69
         hardness:
           confidence: 0.7
           max: 5000.0
@@ -10506,17 +10743,17 @@ materials:
         thermalDiffusivity:
           confidence: 0.7
           max: 0.4
-          min: 0.0001
+          min: 0.0
           source: default_from_category_range
           unit: mm²/s
-          value: 0.20005
+          value: 0.2
         thermalExpansion:
           confidence: 0.7
           max: 60.0
-          min: 3.0e-05
+          min: 0.0
           source: default_from_category_range
           unit: µm/m·K
-          value: 30.000015
+          value: 30.0
         youngsModulus:
           confidence: 0.7
           max: 5000.0
@@ -10534,7 +10771,7 @@ materials:
           min: 0.12
           source: default_from_category_range
           unit: g/cm³
-          value: 0.685
+          value: 0.69
         hardness:
           confidence: 0.7
           max: 5000.0
@@ -10591,17 +10828,17 @@ materials:
         thermalDiffusivity:
           confidence: 0.7
           max: 0.4
-          min: 0.0001
+          min: 0.0
           source: default_from_category_range
           unit: mm²/s
-          value: 0.20005
+          value: 0.2
         thermalExpansion:
           confidence: 0.7
           max: 60.0
-          min: 3.0e-05
+          min: 0.0
           source: default_from_category_range
           unit: µm/m·K
-          value: 30.000015
+          value: 30.0
         youngsModulus:
           confidence: 0.7
           max: 5000.0
@@ -10628,7 +10865,7 @@ materials:
           min: 0.12
           source: default_from_category_range
           unit: g/cm³
-          value: 0.685
+          value: 0.69
         hardness:
           confidence: 0.7
           max: 5000.0
@@ -10685,17 +10922,17 @@ materials:
         thermalDiffusivity:
           confidence: 0.7
           max: 0.4
-          min: 0.0001
+          min: 0.0
           source: default_from_category_range
           unit: mm²/s
-          value: 0.20005
+          value: 0.2
         thermalExpansion:
           confidence: 0.7
           max: 60.0
-          min: 3.0e-05
+          min: 0.0
           source: default_from_category_range
           unit: µm/m·K
-          value: 30.000015
+          value: 30.0
         youngsModulus:
           confidence: 0.7
           max: 5000.0
@@ -10724,7 +10961,7 @@ materials:
           min: 0.12
           source: default_from_category_range
           unit: g/cm³
-          value: 0.685
+          value: 0.69
         hardness:
           confidence: 0.7
           max: 5000.0
@@ -10781,17 +11018,17 @@ materials:
         thermalDiffusivity:
           confidence: 0.7
           max: 0.4
-          min: 0.0001
+          min: 0.0
           source: default_from_category_range
           unit: mm²/s
-          value: 0.20005
+          value: 0.2
         thermalExpansion:
           confidence: 0.7
           max: 60.0
-          min: 3.0e-05
+          min: 0.0
           source: default_from_category_range
           unit: µm/m·K
-          value: 30.000015
+          value: 30.0
         youngsModulus:
           confidence: 0.7
           max: 5000.0
@@ -10812,7 +11049,7 @@ materials:
           min: 0.12
           source: default_from_category_range
           unit: g/cm³
-          value: 0.685
+          value: 0.69
         hardness:
           confidence: 0.7
           max: 5000.0
@@ -10869,17 +11106,17 @@ materials:
         thermalDiffusivity:
           confidence: 0.7
           max: 0.4
-          min: 0.0001
+          min: 0.0
           source: default_from_category_range
           unit: mm²/s
-          value: 0.20005
+          value: 0.2
         thermalExpansion:
           confidence: 0.7
           max: 60.0
-          min: 3.0e-05
+          min: 0.0
           source: default_from_category_range
           unit: µm/m·K
-          value: 30.000015
+          value: 30.0
         youngsModulus:
           confidence: 0.7
           max: 5000.0

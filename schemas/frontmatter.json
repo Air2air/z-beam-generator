@@ -71,8 +71,8 @@
       "type": "string",
       "description": "SEO keywords"
     },
-    "author_object": {
-      "$ref": "#/definitions/AuthorObject"
+    "author": {
+      "$ref": "#/definitions/Author"
     },
     "composition": {
       "type": "array",
@@ -226,7 +226,7 @@
     }
   },
   "definitions": {
-    "AuthorObject": {
+    "Author": {
       "type": "object",
       "required": [
         "id",

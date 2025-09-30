@@ -5,7 +5,7 @@ title: Polypropylene Laser Cleaning
 description: Laser cleaning parameters for Polycarbonate
 materialProperties:
   density:
-    value: 1.5250000000000001
+    value: 1.53
     unit: "g/cm\xB3"
     confidence: 95
     description: Density of isotactic polypropylene at room temperature
@@ -26,7 +26,7 @@ materialProperties:
     min: 10
     max: 400
   youngsModulus:
-    value: 2000.005
+    value: 2000.01
     unit: GPa
     confidence: 90
     description: Young's modulus in tension
@@ -108,7 +108,7 @@ materialProperties:
     min: 0.05
     source: default_from_category_range
     unit: "mm\xB2/s"
-    value: 0.525
+    value: 0.53
   thermalDestructionPoint:
     confidence: 0.7
     max: 400.0
@@ -119,7 +119,7 @@ materialProperties:
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: melting
+    value: decomposition
 applications:
 - 'Automotive: Paint removal and surface preparation for automotive parts'
 - 'Electronics: Precision cleaning of electronic components and circuit boards'
@@ -194,14 +194,6 @@ regulatoryStandards:
 - ANSI Z136.1 - Safe Use of Lasers
 - IEC 60825 - Safety of Laser Products
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-author_object:
-  id: 1
-  name: Yi-Chun Lin
-  sex: f
-  title: Ph.D.
-  country: Taiwan
-  expertise: Laser Materials Processing
-  image: /images/author/yi-chun-lin.jpg
 images:
   hero:
     alt: Polypropylene surface undergoing laser cleaning showing precise contamination
@@ -322,3 +314,11 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units: []
+author:
+  id: 1
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg

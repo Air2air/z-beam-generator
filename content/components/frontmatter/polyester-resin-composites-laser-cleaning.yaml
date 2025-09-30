@@ -33,7 +33,7 @@ materialProperties:
     min: 15.5
     max: 129.5
   youngsModulus:
-    value: 750.0005
+    value: 750.0
     unit: GPa
     confidence: 91
     description: Elastic modulus in tension
@@ -87,7 +87,7 @@ materialProperties:
     min: 0.05
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 100.025
+    value: 100.03
   laserReflectivity:
     confidence: 0.7
     max: 80.0
@@ -122,16 +122,14 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power range for Polyester Resin Composites cleaning
-      without thermal damage
+    description: Optimal average power range for Polyester Resin Composites cleaning without thermal damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength optimized for Polyester Resin Composites
-      absorption
+    description: Near-infrared wavelength optimized for Polyester Resin Composites absorption
     min: 355
     max: 1080
   spotSize:
@@ -145,8 +143,7 @@ machineSettings:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning with minimal heat
-      accumulation
+    description: Optimal repetition rate for efficient cleaning with minimal heat accumulation
     min: 20
     max: 100
   fluenceThreshold:
@@ -174,8 +171,7 @@ machineSettings:
     value: 50
     unit: '%'
     confidence: 86
-    description: Optimal pulse overlap for uniform cleaning without excessive heat
-      buildup
+    description: Optimal pulse overlap for uniform cleaning without excessive heat buildup
     min: 30
     max: 70
   passCount:
@@ -190,22 +186,12 @@ regulatoryStandards:
 - ANSI Z136.1 - Safe Use of Lasers
 - IEC 60825 - Safety of Laser Products
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-author_object:
-  id: 1
-  name: Yi-Chun Lin
-  sex: f
-  title: Ph.D.
-  country: Taiwan
-  expertise: Laser Materials Processing
-  image: /images/author/yi-chun-lin.jpg
 images:
   hero:
-    alt: Polyester Resin Composites surface undergoing laser cleaning showing precise
-      contamination removal
+    alt: Polyester Resin Composites surface undergoing laser cleaning showing precise contamination removal
     url: /images/polyester-resin-composites-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Polyester Resin Composites surface after laser cleaning
-      showing detailed surface structure
+    alt: Microscopic view of Polyester Resin Composites surface after laser cleaning showing detailed surface structure
     url: /images/polyester-resin-composites-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -264,8 +250,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -318,3 +303,11 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units: []
+author:
+  id: 1
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg

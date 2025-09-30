@@ -256,8 +256,8 @@ class EnhancedJsonldGenerator:
             if "name" in author_info:
                 return str(author_info["name"])
         
-        # Try frontmatter author_object
-        author_obj = frontmatter_data.get("author_object", {})
+        # Try frontmatter author
+        author_obj = frontmatter_data.get("author", {})
         if isinstance(author_obj, dict) and "name" in author_obj:
             return str(author_obj["name"])
         
@@ -266,6 +266,7 @@ class EnhancedJsonldGenerator:
         if isinstance(author, str) and author:
             return author
         
-        # Fail-fast: Author information required - no fallback\n        raise ValueError("Author information required in frontmatter or author_info - no fallback allowed")
+        # Fail-fast: Author information required - no fallback
+        raise ValueError("Author information required in frontmatter or author_info - no fallback allowed")
 
     # Fallback method removed - fail-fast architecture requires complete JSON-LD generation

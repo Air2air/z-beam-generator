@@ -8,8 +8,7 @@ materialProperties:
     value: 2.45
     unit: "g/cm\xB3"
     confidence: 95
-    description: Typical density for consolidated breccia composed of mixed mineral
-      fragments
+    description: Typical density for consolidated breccia composed of mixed mineral fragments
     min: 1.5
     max: 3.4
   thermalConductivity:
@@ -58,8 +57,7 @@ materialProperties:
     value: 0.75
     unit: dimensionless
     confidence: 82
-    description: Optical absorption coefficient for common laser wavelengths (1064
-      nm)
+    description: Optical absorption coefficient for common laser wavelengths (1064 nm)
     min: null
     max: null
   reflectivity:
@@ -143,8 +141,7 @@ machineSettings:
     value: 50
     unit: kHz
     confidence: 87
-    description: High repetition rate for uniform cleaning of heterogeneous Breccia
-      surface
+    description: High repetition rate for uniform cleaning of heterogeneous Breccia surface
     min: 20
     max: 100
   pulseWidth:
@@ -187,21 +184,12 @@ regulatoryStandards:
 - ANSI Z136.1 - Safe Use of Lasers
 - IEC 60825 - Safety of Laser Products
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-author_object:
-  id: 2
-  name: Alessandro Moretti
-  sex: m
-  title: Ph.D.
-  country: Italy
-  expertise: Laser-Based Additive Manufacturing
-  image: /images/author/alessandro-moretti.jpg
 images:
   hero:
     alt: Breccia surface undergoing laser cleaning showing precise contamination removal
     url: /images/breccia-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Breccia surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Breccia surface after laser cleaning showing detailed surface structure
     url: /images/breccia-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -260,8 +248,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -314,3 +301,11 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units: []
+author:
+  id: 2
+  name: Alessandro Moretti
+  sex: m
+  title: Ph.D.
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  image: /images/author/alessandro-moretti.jpg

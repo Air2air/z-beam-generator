@@ -6,22 +6,21 @@ description: Laser cleaning parameters for Carbon Fiber Reinforced Polymer (MMCs
 materialProperties:
   density:
     value: 2.85
-    unit: g/cm³
+    unit: "g/cm\xB3"
     confidence: 92
     description: Typical density for aluminum-based MMCs with 20% SiC reinforcement
     min: 0.5
     max: 8
   meltingPoint:
     value: 640
-    unit: °C
+    unit: "\xB0C"
     confidence: 88
-    description: Effective melting point considering reinforcement effects on aluminum
-      matrix
+    description: Effective melting point considering reinforcement effects on aluminum matrix
     min: null
     max: null
   thermalConductivity:
     value: 180
-    unit: W/m·K
+    unit: "W/m\xB7K"
     confidence: 90
     description: Thermal conductivity of Al/SiC MMC with 20% reinforcement
     min: 0.1
@@ -49,21 +48,21 @@ materialProperties:
     max: 274.999
   thermalExpansion:
     value: 16.5
-    unit: 10⁻⁶/K
+    unit: "10\u207B\u2076/K"
     confidence: 85
     description: Coefficient of thermal expansion for Al/SiC composites
     min: 0
     max: 241.55
   thermalDiffusivity:
     value: 65
-    unit: mm²/s
+    unit: "mm\xB2/s"
     confidence: 82
     description: Thermal diffusivity at room temperature for laser heating calculations
     min: 0
     max: 71.493
   specificHeat:
     value: 850
-    unit: J/kg·K
+    unit: "J/kg\xB7K"
     confidence: 87
     description: Specific heat capacity of aluminum-based MMCs
     min: 734.0
@@ -84,7 +83,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 85
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
@@ -105,7 +104,7 @@ materialProperties:
     max: null
   surfaceRoughness:
     value: 0.8
-    unit: μm Ra
+    unit: "\u03BCm Ra"
     confidence: 84
     description: Average surface roughness of as-processed MMC surfaces
     min: null
@@ -132,7 +131,7 @@ machineSettings:
     max: 1080
   spotSize:
     value: 100
-    unit: μm
+    unit: "\u03BCm"
     confidence: 90
     description: Beam spot diameter for precise cleaning control on MMC surfaces
     min: 50
@@ -146,7 +145,7 @@ machineSettings:
     max: 100
   fluenceThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 88
     description: Threshold fluence for effective contaminant removal from MMC surfaces
     min: 1.8
@@ -181,10 +180,9 @@ machineSettings:
     max: 3
   energyDensity:
     value: 3.2
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 85
-    description: Optimal energy density for contaminant removal while preserving MMC
-      integrity
+    description: Optimal energy density for contaminant removal while preserving MMC integrity
     min: 2.0
     max: 4.5
 regulatoryStandards:
@@ -192,22 +190,12 @@ regulatoryStandards:
 - ANSI Z136.1 - Safe Use of Lasers
 - IEC 60825 - Safety of Laser Products
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-author_object:
-  id: 1
-  name: Yi-Chun Lin
-  sex: f
-  title: Ph.D.
-  country: Taiwan
-  expertise: Laser Materials Processing
-  image: /images/author/yi-chun-lin.jpg
 images:
   hero:
-    alt: Metal Matrix Composites Mmcs surface undergoing laser cleaning showing precise
-      contamination removal
+    alt: Metal Matrix Composites Mmcs surface undergoing laser cleaning showing precise contamination removal
     url: /images/metal-matrix-composites-mmcs-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Metal Matrix Composites Mmcs surface after laser cleaning
-      showing detailed surface structure
+    alt: Microscopic view of Metal Matrix Composites Mmcs surface after laser cleaning showing detailed surface structure
     url: /images/metal-matrix-composites-mmcs-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -266,8 +254,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -305,9 +292,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -320,3 +307,11 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units: []
+author:
+  id: 1
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg

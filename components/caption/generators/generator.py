@@ -192,7 +192,7 @@ Ensure all content is scientifically accurate, quantitative, and demonstrates de
         timestamp = datetime.datetime.now().isoformat() + "Z"
         
         # Extract required data - FAIL FAST if missing
-        author_obj = frontmatter_data.get('author_object', {})
+        author_obj = frontmatter_data.get('author', {})
         if not author_obj or not author_obj.get('name'):
             raise ValueError(f"Author information required in frontmatter for {material_name} - fail-fast requires complete metadata")
         

@@ -6,21 +6,21 @@ description: Laser cleaning parameters for Carbon Fiber Reinforced Polymer (FRPU
 materialProperties:
   density:
     value: 1.25
-    unit: g/cm³
+    unit: "g/cm\xB3"
     confidence: 92
     description: Typical density for fiber-reinforced polyurethane composites
     min: 0.5
     max: 8
   meltingPoint:
     value: 180
-    unit: °C
+    unit: "\xB0C"
     confidence: 85
     description: Softening/decomposition temperature range for polyurethane matrix
     min: null
     max: null
   thermalConductivity:
     value: 0.25
-    unit: W/m·K
+    unit: "W/m\xB7K"
     confidence: 88
     description: Thermal conductivity of FRPU composite material
     min: 0.1
@@ -48,14 +48,14 @@ materialProperties:
     max: 274.999
   thermalExpansion:
     value: 80
-    unit: ×10⁻⁶/°C
+    unit: "\xD710\u207B\u2076/\xB0C"
     confidence: 84
     description: Coefficient of thermal expansion for FRPU composites
     min: 0
     max: 241.55
   specificHeat:
     value: 1500
-    unit: J/kg·K
+    unit: "J/kg\xB7K"
     confidence: 86
     description: Specific heat capacity at room temperature
     min: 734.0
@@ -76,7 +76,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 1.8
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 83
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
@@ -97,7 +97,7 @@ materialProperties:
     max: null
   surfaceRoughness:
     value: 1.2
-    unit: μm Ra
+    unit: "\u03BCm Ra"
     confidence: 85
     description: Average surface roughness of manufactured FRPU surfaces
     min: null
@@ -111,8 +111,7 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power range for FRPU cleaning without thermal damage
-      to fibers
+    description: Optimal average power range for FRPU cleaning without thermal damage to fibers
     min: 80
     max: 120
   wavelength:
@@ -124,7 +123,7 @@ machineSettings:
     max: 1080
   spotSize:
     value: 100
-    unit: μm
+    unit: "\u03BCm"
     confidence: 90
     description: Beam spot diameter for precise cleaning control
     min: 50
@@ -138,7 +137,7 @@ machineSettings:
     max: 100
   fluenceThreshold:
     value: 2.5
-    unit: J/cm²
+    unit: "J/cm\xB2"
     confidence: 88
     description: Ablation threshold fluence for FRPU matrix removal
     min: 1.8
@@ -176,22 +175,12 @@ regulatoryStandards:
 - ANSI Z136.1 - Safe Use of Lasers
 - IEC 60825 - Safety of Laser Products
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-author_object:
-  id: 1
-  name: Yi-Chun Lin
-  sex: f
-  title: Ph.D.
-  country: Taiwan
-  expertise: Laser Materials Processing
-  image: /images/author/yi-chun-lin.jpg
 images:
   hero:
-    alt: Fiber Reinforced Polyurethane Frpu surface undergoing laser cleaning showing
-      precise contamination removal
+    alt: Fiber Reinforced Polyurethane Frpu surface undergoing laser cleaning showing precise contamination removal
     url: /images/fiber-reinforced-polyurethane-frpu-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Fiber Reinforced Polyurethane Frpu surface after laser
-      cleaning showing detailed surface structure
+    alt: Microscopic view of Fiber Reinforced Polyurethane Frpu surface after laser cleaning showing detailed surface structure
     url: /images/fiber-reinforced-polyurethane-frpu-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -250,8 +239,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -289,9 +277,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - m²/h
-  - cm²/min
-  - mm²/s
+  - "m\xB2/h"
+  - "cm\xB2/min"
+  - "mm\xB2/s"
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -304,3 +292,11 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units: []
+author:
+  id: 1
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg

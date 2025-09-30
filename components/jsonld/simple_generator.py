@@ -90,7 +90,7 @@ class SimpleJsonldGenerator:
                     app_keywords.append(industry.lower())
         
         # Extract author information
-        author_obj = frontmatter_data.get("author_object", {})
+        author_obj = frontmatter_data.get("author", {})
         author_name = author_obj.get("name", "Laser Technology Specialist") if isinstance(author_obj, dict) else "Laser Technology Specialist"
         
         # Build JSON-LD structure

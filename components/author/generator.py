@@ -3,7 +3,7 @@
 Author Component Generator
 
 Generates author information in YAML format using frontmatter data only.
-No backward compatibility, no API calls - pure frontmatter extraction.
+Noompatibility, no API calls - pure frontmatter extraction.
 """
 
 import json
@@ -20,6 +20,11 @@ class AuthorComponentGenerator:
 
     def __init__(self):
         self.component_type = "author"
+        # Load author lookup data
+        authors_file = Path(__file__).parent / "authors.json"
+        with open(authors_file, 'r') as f:
+            self.authors_data = json.load(f)
+        self.authors_lookup = {author["id"]: author for author in self.authors_data["authors"]}
 
     def generate(
         self,
@@ -40,9 +45,9 @@ class AuthorComponentGenerator:
                 return self.create_error_result("Frontmatter data is required - fail-fast architecture requires frontmatter author information")
 
             # Extract author data from frontmatter
-            author_data = frontmatter_data.get("author_object")
+            author_data = frontmatter_data.get("author")
             if not author_data:
-                return self.create_error_result("No author_object found in frontmatter data")
+                return self.create_error_result("No author found in frontmatter data")
 
             # Generate YAML content from frontmatter author data
             yaml_content = self._create_author_yaml(material_name, author_data)
@@ -65,7 +70,6 @@ class AuthorComponentGenerator:
                 raise ValueError(f"Required author field '{field}' missing from frontmatter data - fail-fast architecture requires complete author information")
         
         # Extract author information - no fallback values
-        author_name = author_data["name"]
         author_title = author_data["title"]
         author_expertise = author_data["expertise"]
         country = author_data["country"]
@@ -73,9 +77,16 @@ class AuthorComponentGenerator:
         image_url = author_data["image"]
         sex = author_data["sex"]
 
+        # Look up author name from authors.json for profile text
+        if author_id not in self.authors_lookup:
+            raise ValueError(f"Author ID {author_id} not found in authors.json - fail-fast architecture requires valid author references")
+        
+        author_name = self.authors_lookup[author_id]["name"]
+        first_name = author_name.split()[0]
+
         # Create structured author data
         author_structure = {
-            "authorInfo": {
+            "author": {
                 "id": author_id,
                 "name": author_name,
                 "title": author_title,
@@ -84,14 +95,14 @@ class AuthorComponentGenerator:
                 "sex": sex,
                 "image": image_url,
                 "profile": {
-                    "description": f"{author_name} is a {author_expertise.lower()}{' based in ' + country if country else ''}. With extensive experience in laser processing and material science, {author_name.split()[0]} specializes in advanced laser cleaning applications and industrial material processing technologies.",
+                    "description": f"{author_name} is a {author_expertise.lower()}{' based in ' + country if country else ''}. With extensive experience in laser processing and material science, {first_name} specializes in advanced laser cleaning applications and industrial material processing technologies.",
                     "expertiseAreas": [
                         "Laser cleaning systems and applications",
                         "Material science and processing", 
                         "Industrial automation and safety protocols",
                         "Technical consultation and process optimization"
                     ],
-                    "contactNote": f"Contact {author_name.split()[0]} for expert consultation on laser cleaning applications for {material_name} and related materials."
+                    "contactNote": f"Contact {first_name} for expert consultation on laser cleaning applications for {material_name} and related materials."
                 }
             },
             "materialContext": {
@@ -120,9 +131,8 @@ if __name__ == "__main__":
     
     # Sample frontmatter data
     test_frontmatter = {
-        "author_object": {
+        "author": {
             "id": 1,
-            "name": "Yi-Chun Lin",
             "title": "Ph.D.",
             "expertise": "Laser Materials Processing",
             "country": "Taiwan",
