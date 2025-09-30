@@ -93,189 +93,152 @@ Format: YAML v2.0
             )
 
     def _format_as_yaml(self, material_name: str, tags_list: list, template_vars: Dict) -> str:
-        """Format tags as structured YAML for Next.js consumption"""
+        """Format tags as YAML for frontmatter embedding"""
         from datetime import datetime
         
-        # Categorize tags
-        industry_tags = []
-        process_tags = []
-        author_tags = []
-        other_tags = []
-        
-        # Known categories for classification
-        industries = {'aerospace', 'automotive', 'manufacturing', 'electronics', 'marine', 'medical', 'industrial'}
-        processes = {'decoating', 'decontamination', 'restoration', 'polishing', 'texturing', 'etching', 'passivation', 'anodizing'}
-        
-        for tag in tags_list:
-            tag_clean = tag.strip().lower()
-            # Since we exclude material names now, this section won't match
-            if tag_clean in industries:
-                industry_tags.append(tag_clean)
-            elif tag_clean in processes:
-                process_tags.append(tag_clean)
-            elif '-' in tag_clean and len(tag_clean.split('-')) == 2:  # Likely author name
-                author_tags.append(tag_clean)
-            else:
-                other_tags.append(tag_clean)
-        
-        # Format as proper YAML
-        yaml_content = "tags:\n"
+        # Simple essential tags format for frontmatter
+        yaml_content = "essentialTags:\n"
         for tag in tags_list:
             yaml_content += f"  - {tag.strip()}\n"
         
-        yaml_content += f"material: \"{material_name.lower()}\"\n"
-        yaml_content += f"count: {len(tags_list)}\n"
-        yaml_content += "categories:\n"
-        
-        yaml_content += "  industry:\n"
-        for tag in industry_tags:
-            yaml_content += f"    - {tag}\n"
-        
-        yaml_content += "  process:\n"
-        for tag in process_tags:
-            yaml_content += f"    - {tag}\n"
-        
-        yaml_content += "  author:\n"
-        for tag in author_tags:
-            yaml_content += f"    - {tag}\n"
-        
-        yaml_content += "  other:\n"
-        for tag in other_tags:
-            yaml_content += f"    - {tag}\n"
-        
-        yaml_content += "metadata:\n"
+        yaml_content += "generation:\n"
         yaml_content += f"  generated: \"{datetime.now().isoformat()}\"\n"
-        yaml_content += "  format: \"yaml\"\n"
-        yaml_content += "  version: \"2.0\""
+        yaml_content += "  method: \"frontmatter_essential\"\n"
+        yaml_content += f"  totalTags: {len(tags_list)}\n"
+        yaml_content += "  tagPriority: \"essential\"\n"
         
         return yaml_content
 
     def _generate_tags_from_frontmatter(self, material_name: str, material_data: Dict, frontmatter_data: Optional[Dict], template_vars: Dict) -> list:
-        """Generate tags purely from frontmatter data without AI"""
+        """Generate exactly 10 essential tags for frontmatter"""
         tags = []
         
-        # 1. Always include author slug
-        author_slug = template_vars['author_name'].lower().replace(' ', '-')
+        # Priority 1: Core identifiers (4 tags)
+        # 1. Material name (normalized)
+        material_slug = material_name.lower().replace(' ', '-').replace('_', '-')
+        tags.append(material_slug)
+        
+        # 2. Category
+        category = template_vars['material_category'].lower()
+        tags.append(category)
+        
+        # 3. Author name (normalized) 
+        author_slug = template_vars['author_name'].lower().replace(' ', '-').replace('.', '')
         tags.append(author_slug)
         
-        # 2. Add material category AND subcategory tags
-        category = template_vars['material_category'].lower()
-        subcategory = template_vars.get('material_subcategory', '').lower()
+        # 4. Core process
+        tags.append('laser-cleaning')
         
-        # Add category-specific tags
-        if category in ['metal', 'alloy']:
-            tags.extend(['metalworking', 'industrial'])
-        elif category in ['ceramic', 'glass']:
-            tags.extend(['ceramics', 'precision'])
-        elif category in ['polymer', 'plastic', 'composite']:
-            tags.extend(['polymer', 'manufacturing'])
-        elif category in ['wood', 'organic']:
-            tags.extend(['woodworking', 'restoration'])
-        elif category in ['stone', 'mineral']:
-            tags.extend(['masonry', 'heritage'])
+        # Priority 2: Material classification (2-3 tags)
+        subcategory = template_vars.get('material_subcategory', '').lower()
+        if subcategory and subcategory != category:
+            subcategory_slug = subcategory.replace('_', '-').replace(' ', '-')
+            tags.append(subcategory_slug)
+        
+        # Material type refinement
+        if category == 'metals':
+            if subcategory in ['light_metals', 'non_ferrous']:
+                tags.append('lightweight')
+            elif subcategory in ['ferrous', 'steel']:
+                tags.append('ferrous')
+            elif subcategory in ['precious', 'noble']:
+                tags.append('precious')
+            else:
+                tags.append('alloy')
+        elif category == 'ceramics':
+            tags.append('ceramic')
+        elif category == 'composites':
+            tags.append('composite')
+        elif category == 'polymers':
+            tags.append('polymer')
         else:
             tags.append('industrial')
         
-        # Add subcategory-specific tags
-        if subcategory:
-            subcategory_tags = {
-                # Metal subcategories
-                'precious': ['precious-metals', 'high-value'],
-                'ferrous': ['steel-processing', 'heavy-industry'],
-                'non-ferrous': ['light-metals', 'corrosion-resistant'],
-                'refractory': ['high-temperature', 'aerospace'],
-                'reactive': ['specialized-handling', 'aerospace'],
-                'specialty': ['advanced-alloys', 'high-performance'],
-                
-                # Ceramic subcategories  
-                'oxide': ['advanced-ceramics', 'high-temperature'],
-                'nitride': ['technical-ceramics', 'wear-resistant'],
-                'carbide': ['cutting-tools', 'wear-resistant'],
-                'traditional': ['architectural', 'decorative'],
-                
-                # Composite subcategories
-                'fiber-reinforced': ['advanced-composites', 'lightweight'],
-                'matrix': ['engineered-materials', 'high-performance'],
-                'resin': ['thermoset', 'structural'],
-                'elastomeric': ['flexible', 'sealing'],
-                'structural': ['load-bearing', 'construction'],
-                
-                # Glass subcategories
-                'borosilicate': ['laboratory', 'thermal-shock'],
-                'silicate': ['architectural', 'commercial'],
-                'crystal': ['decorative', 'optical'],
-                'treated': ['safety', 'tempered'],
-                
-                # Stone subcategories
-                'igneous': ['natural-stone', 'construction'],
-                'metamorphic': ['decorative', 'architectural'],
-                'sedimentary': ['building-materials', 'construction'],
-                'soft': ['carving', 'decorative'],
-                'mineral': ['crystalline', 'specialty'],
-                
-                # Wood subcategories
-                'hardwood': ['furniture', 'flooring'],
-                'softwood': ['construction', 'framing'],
-                'engineered': ['manufactured', 'composite'],
-                'flexible': ['specialty', 'crafts']
+        # Priority 3: Application context (2-3 tags)
+        # Extract primary industry from frontmatter if available
+        primary_industry = None
+        if frontmatter_data:
+            # Look for industry keywords in description or applications
+            description = frontmatter_data.get('description', '').lower()
+            applications = frontmatter_data.get('applications', [])
+            
+            industry_keywords = {
+                'aerospace': 'aerospace',
+                'automotive': 'automotive', 
+                'medical': 'medical',
+                'electronics': 'electronics',
+                'marine': 'marine',
+                'construction': 'construction',
+                'manufacturing': 'manufacturing'
             }
             
-            if subcategory in subcategory_tags:
-                # Add up to 2 subcategory tags
-                for tag in subcategory_tags[subcategory][:2]:
-                    if tag not in tags and len(tags) < 6:
-                        tags.append(tag)
-        
-        # 3. Extract industry applications from frontmatter
-        if frontmatter_data:
-            # Look for applications in various frontmatter fields
-            applications = frontmatter_data.get('applications', [])
-            if isinstance(applications, list):
-                for app in applications[:2]:  # Limit to 2 applications
-                    if isinstance(app, str):
-                        # Extract just the industry name, not the full description
-                        app_clean = app.split(':')[0].lower().replace(' ', '-')
-                        if app_clean not in tags and len(app_clean) < 20:  # Avoid long descriptions
-                            tags.append(app_clean)
+            # Check description first
+            for keyword, industry in industry_keywords.items():
+                if keyword in description:
+                    primary_industry = industry
+                    break
             
-            # Look for industries in keywords
-            keywords = frontmatter_data.get('keywords', '')
-            if isinstance(keywords, str):
-                keyword_list = [k.strip().lower() for k in keywords.split(',')]
-                industry_keywords = ['aerospace', 'automotive', 'medical', 'electronics', 'marine', 'semiconductor']
-                for keyword in keyword_list:
-                    if keyword in industry_keywords and keyword not in tags:
-                        tags.append(keyword)
-                        if len(tags) >= 6:  # Leave room for process tags
+            # Check applications if no industry found in description
+            if not primary_industry and isinstance(applications, list):
+                for app in applications:
+                    if isinstance(app, str):
+                        app_lower = app.lower()
+                        for keyword, industry in industry_keywords.items():
+                            if keyword in app_lower:
+                                primary_industry = industry
+                                break
+                        if primary_industry:
                             break
         
-        # 4. Add common process tags based on material type
-        process_tags = ['decontamination', 'surface-preparation']
-        if category in ['metal', 'alloy']:
-            process_tags.extend(['passivation', 'decoating'])
-        elif category in ['ceramic', 'glass']:
-            process_tags.extend(['polishing', 'etching'])
-        elif category in ['polymer', 'composite']:
-            process_tags.extend(['texturing', 'preparation'])
-        elif category in ['wood']:
-            process_tags.extend(['restoration', 'refinishing'])
-        elif category in ['stone']:
-            process_tags.extend(['restoration', 'conservation'])
+        if primary_industry:
+            tags.append(primary_industry)
+        else:
+            tags.append('industrial')
         
-        # Add process tags until we have 8 total
-        for process_tag in process_tags:
-            if len(tags) >= 8:
+        # Add surface treatment indicator
+        tags.append('surface-treatment')
+        
+        # Priority 4: Fill remaining slots with process-specific tags
+        additional_tags = []
+        
+        # Process-specific tags based on material type
+        if category == 'metals':
+            additional_tags = ['decoating', 'oxide-removal', 'passivation']
+        elif category == 'ceramics':
+            additional_tags = ['precision-cleaning', 'surface-prep', 'restoration']
+        elif category == 'composites':
+            additional_tags = ['preparation', 'texturing', 'maintenance']
+        elif category == 'polymers':
+            additional_tags = ['preparation', 'modification', 'cleaning']
+        else:
+            additional_tags = ['maintenance', 'preparation', 'decontamination']
+        
+        # Add additional tags up to 10 total
+        for tag in additional_tags:
+            if len(tags) >= 10:
                 break
-            if process_tag not in tags:
-                tags.append(process_tag)
+            if tag not in tags:
+                tags.append(tag)
         
-        # 5. Fail-fast: Must have at least some tags from content - no fallback defaults
-        if len(tags) < 2:
-            raise ValueError(f"Insufficient tag content extracted from material data - need minimum 2 tags, got {len(tags)}")
+        # Ensure we have exactly 10 tags (pad if necessary)
+        while len(tags) < 10:
+            fallback_tags = ['processing', 'industrial', 'precision', 'automated', 'quality']
+            for fallback in fallback_tags:
+                if fallback not in tags:
+                    tags.append(fallback)
+                    break
+            else:
+                # If all fallbacks are used, break to avoid infinite loop
+                break
         
-        # Return available tags up to 8 - no default padding
+        # Validation: Must have core essentials
+        required_elements = [material_slug, category, author_slug, 'laser-cleaning']
+        missing_required = [req for req in required_elements if req not in tags]
+        if missing_required:
+            raise ValueError(f"Missing required tags in frontmatter: {missing_required}")
         
-        return tags[:8]  # Always return exactly 8 tags
+        return tags[:10]  # Ensure exactly 10 tags maximum
+        return tags[:10]  # Ensure exactly 10 tags maximum
 
     def _sanitize_frontmatter_data(self, frontmatter_data: Dict) -> Dict:
         """Sanitize frontmatter data to prevent YAML parsing issues"""

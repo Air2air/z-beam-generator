@@ -408,14 +408,24 @@ class MaterialsValidator:
             for item in cat_data.get('items', []):
                 name = item.get('name', 'Unknown')
                 
-                if 'author_id' in item:
-                    author_id = item['author_id']
+                if 'author' in item and isinstance(item['author'], dict) and 'id' in item['author']:
+                    author_id = item['author']['id']
                     author_ids.add(author_id)
                     
                     if not isinstance(author_id, int) or author_id < 1 or author_id > 10:
                         self.validation_results['warnings'].append(
-                            f"Material '{name}': Unusual author_id {author_id} - verify if valid"
+                            f"Material '{name}': Unusual author ID {author_id} - verify if valid"
                         )
+                elif 'author_id' in item:  # Legacy support
+                    author_id = item['author_id']
+                    author_ids.add(author_id)
+                    self.validation_results['warnings'].append(
+                        f"Material '{name}': Uses legacy author_id field - should migrate to author.id structure"
+                    )
+                else:
+                    self.validation_results['errors'].append(
+                        f"Material '{name}': Missing author information"
+                    )
         
         self.validation_results['statistics']['unique_authors'] = len(author_ids)
         self.validation_results['statistics']['author_ids_used'] = sorted(list(author_ids))

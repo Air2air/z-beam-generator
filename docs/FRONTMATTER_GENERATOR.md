@@ -1,5 +1,10 @@
 # Frontmatter Generator Documentation
 
+## Strategic Role
+**The frontmatter component is the core component of the Z-Beam system and will eventually serve as the single source of truth for all material data generation.**
+
+> 📋 **Architectural Direction**: Over time, the system will transition to using only the frontmatter component, with other components being derived from or integrated into frontmatter output.
+
 ## Overview
 
 The Frontmatter Component Generator creates YAML metadata for material articles based on structured material data. 
@@ -31,7 +36,13 @@ As of the latest update, the frontmatter generator has the following field requi
 - Material name
 - Material category
 - Material symbol (chemical symbol)
-- Author information (either directly or via author_id)
+- Author information (via author object with id, name, expertise, etc.)
+- Machine settings and laser parameters
+- Environmental impact data
+- Application types and industry classifications
+- Regulatory standards and safety information
+
+> 💡 **Future Enhancement**: The frontmatter component will be enhanced to include derivation methods for generating all other component outputs (JSON-LD, metatags, tables, etc.) from the core frontmatter data.
 
 ### Optional Fields:
 - Formula (chemical formula) - Warning logged if missing, generation continues

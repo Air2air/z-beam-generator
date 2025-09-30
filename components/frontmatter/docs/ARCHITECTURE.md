@@ -154,9 +154,9 @@ if 'formula' not in material_data:
     raise KeyError("Formula field is required for material generation")
 
 # Explicit null checks instead of 'or' fallbacks
-author_object = self.get_author_by_id(author_id)
-if author_object is None:
-    raise ValueError(f"Author {author_id} not found - cannot proceed")
+author_object = self.get_author_by_id(author_data['id'])
+if not author_object:
+    raise ValueError(f"Author {author_data['id']} not found - cannot proceed")
 ```
 
 ## Performance Characteristics

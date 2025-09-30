@@ -89,7 +89,7 @@ Generates properties section with min/max ranges from category data.
 Generates machine settings section with parameter ranges.
 
 #### `_generate_author_object(material_data: dict) -> dict`
-Resolves author information from author_id to complete author object.
+Resolves author information from author.id to complete author object.
 
 #### `_generate_images_section(material_name: str) -> dict`
 Generates images section with hero and micro images for the material.
@@ -366,7 +366,7 @@ logger.setLevel(logging.INFO)
 
 #### `KeyError`
 - Missing required keys in material data
-- Missing author_id in material data
+- Missing author.id in material data
 - Missing required frontmatter fields
 
 #### `FileNotFoundError`

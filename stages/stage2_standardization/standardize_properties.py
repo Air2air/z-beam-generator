@@ -82,7 +82,7 @@ class PropertyStandardizer:
                 'thermalExpansion': '1/°C',
                 'specificHeat': 'J/kg·K',
                 'electricalResistivity': 'Ω·m',
-                'poissonRatio': 'dimensionless'
+                'poissonRatio': ''
             },
             'precision': {
                 'density': 3,

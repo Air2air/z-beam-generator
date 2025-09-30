@@ -80,7 +80,7 @@ None found
 
 ### 📋 Metadata Fields (1)
 *Fields for content management and organization*
-- `author_id` (used 123x)
+- `author` (used 123x)
 
 ### 🏷️ Taxonomic Fields (1)
 *Fields for material classification*
@@ -162,11 +162,11 @@ categories:
 
 | Category | Unique Fields | Most Common Fields |
 |----------|---------------|--------------------|
-| ceramic | 17 | author_id (123), category (123), chemical_resistance (1) |
-| composite | 8 | author_id (123), category (123), industryTags (123) |
-| glass | 9 | author_id (123), category (123), hardness (69) |
-| masonry | 8 | author_id (123), category (123), compressive_strength (30) |
-| metal | 25 | antimicrobial_properties (1), author_id (123), category (123) |
+| ceramic | 17 | author (123), category (123), chemical_resistance (1) |
+| composite | 8 | author (123), category (123), industryTags (123) |
+| glass | 9 | author (123), category (123), hardness (69) |
+| masonry | 8 | author (123), category (123), compressive_strength (30) |
+| metal | 25 | antimicrobial_properties (1), author (123), category (123) |
 | plastic | 5 | author_id (123), category (123), hardness (69) |
 | semiconductor | 12 | author_id (123), bandgap (4), category (123) |
 | stone | 10 | author_id (123), category (123), compressive_strength (30) |

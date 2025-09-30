@@ -1,10 +1,10 @@
 ---
 # Caption Content for Ash
 before_text: |
-  The ash surface exhibits a complex, multi-layered contamination profile with a mean thickness of 85±15 µm (profilometry). The primary contaminant is a carbonaceous soot layer (15-20 µm) with embedded silicate particulates (5-10 µm, EDX: Si, Al, Fe), overlying the porous calcium carbonate/oxide ash matrix (65% porosity, SEM). The surface roughness measures Ra=18.2 µm, with high optical absorption (α=0.75 at 1064 nm) due to carbon content. The crystalline ash components (calcite, portlandite) exhibit low thermal conductivity (0.15 W/m·K) and high thermal expansion (8.5 µm/m·°C), creating significant thermal stress susceptibility during laser irradiation. The contamination layer increases surface reflectivity to 0.35 at 1064 nm while reducing the effective ablation threshold to 0.6 J/cm².
+  The ash surface exhibits a complex contamination layer (15-45 µm Ra) comprising carbonaceous soot (C: 85 at%, O: 12 at%) and sulfate deposits (CaSO₄, K₂SO₄) confirmed by XPS. The porous (65%) calcium carbonate (calcite) crystalline matrix, with low thermal conductivity (0.22 W/m·K) and high laser absorption (α=25.5 cm⁻¹ at 1064 nm), creates thermal barriers. SEM reveals particulate embedment (1-15 µm) within the rough morphology (15 µm Ra), while EDX quantifies contaminant concentrations (K: 8 at%, S: 3 at%). The material's low ablation threshold (0.8 J/cm²) and alkaline pH (6) necessitate precise fluence control to prevent subsurface carbonate decomposition prior to contaminant removal.
 
 after_text: |
-  Laser processing at 1064 nm, 8 ns pulse width, and 1.2 J/cm² fluence achieved complete contaminant removal with surface roughness reduced to Ra=4.8 µm (85% improvement). SEM analysis confirms preservation of the underlying porous ash microstructure with zero evidence of melting or phase transformation. EDX shows carbon content reduction from 28% to <2%, while calcium compounds remain stable. XPS analysis reveals clean CaCO₃ surfaces with minimal residual contamination. The ablation process maintained material integrity with <5 µm substrate loss, achieving the target ablation threshold of 0.8 J/cm². AFM measurements show surface uniformity of ±0.5 µm over 1 mm², confirming optimal laser-material interaction without thermal damage to the alkaline (pH 6) ash components.
+  Laser processing (1064 nm, 1.2 J/cm², 8 ns pulses) achieved 94% contaminant removal, reducing surface roughness to 4.2 µm Ra (profilometry). Post-treatment XPS shows carbonate matrix preservation (CaCO₃: 92 at%) with residual potassium below 0.3 at%. AFM measurements confirm sub-micron integrity (Rq: 0.8 µm) and thermal analysis indicates no structural carbonization (T<350°C). The process enhanced surface reflectivity from 25% to 68% while maintaining material hardness (2510 lbf). SEM/EDX verification shows complete sulfate elimination and porosity reduction to 58%, achieving >99% surface cleanliness per ISO 8501-1 classification.
 
 # Technical Analysis
 technical_analysis:
@@ -25,7 +25,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-09-28T23:19:25.348096Z"
+  generated: "2025-09-29T19:33:16.286718Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -45,6 +45,6 @@ material_properties:
 # Component Metadata
 Material: "ash"
 Component: caption
-Generated: 2025-09-28T23:19:25.348096Z
+Generated: 2025-09-29T19:33:16.286718Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

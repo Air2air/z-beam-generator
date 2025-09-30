@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
 Remove top-level author.name fields from all author component files.
-Only author_id fields should be used for author references.
+Only author.id fields should be used for author references.
 
 This script:
 1. Removes the 'name' field from authorInfo sections in author component files
-2. Leaves author_id fields intact in frontmatter files
+2. Leaves author.id fields intact in frontmatter files
 3. Creates backup of modified files
 """
 
@@ -94,14 +94,14 @@ def main():
     if success:
         logger.info("\n🎉 Author name removal completed successfully!")
         logger.info("✅ All author.name fields have been removed")
-        logger.info("✅ Only author_id fields remain for author references")
+        logger.info("✅ Only author.id fields remain for author references")
         logger.info("\n📝 Next steps:")
         logger.info("1. Test component generation: python3 run.py --material 'Aluminum' --components author")
         logger.info("2. Run validation: python3 run.py --validate")
         logger.info("3. Deploy changes: python3 run.py --deploy")
     else:
         logger.info("\n⚠️ No author name fields found to remove")
-        logger.info("✅ System already uses only author_id references")
+        logger.info("✅ System already uses only author.id references")
 
 if __name__ == "__main__":
     main()

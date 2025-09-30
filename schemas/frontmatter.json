@@ -223,6 +223,25 @@
         "type": "string" 
       },
       "description": "Primary industries using this material"
+    },
+    "componentOutputs": {
+      "type": "object",
+      "description": "Embedded specialized component outputs",
+      "additionalProperties": false,
+      "properties": {
+        "caption": {
+          "$ref": "#/definitions/CaptionOutput"
+        },
+        "jsonld": {
+          "$ref": "#/definitions/JsonldOutput"
+        },
+        "metatags": {
+          "$ref": "#/definitions/MetatagsOutput"
+        },
+        "tags": {
+          "$ref": "#/definitions/TagsOutput"
+        }
+      }
     }
   },
   "definitions": {
@@ -1633,6 +1652,297 @@
         },
         "materialType": {
           "type": "string"
+        }
+      }
+    },
+    "CaptionOutput": {
+      "type": "object",
+      "description": "Caption component output with before/after descriptions and technical analysis",
+      "additionalProperties": false,
+      "properties": {
+        "beforeText": {
+          "type": "string",
+          "description": "Pre-cleaning surface description with technical details"
+        },
+        "afterText": {
+          "type": "string",
+          "description": "Post-cleaning surface description with results"
+        },
+        "technicalAnalysis": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "focus": {
+              "type": "string",
+              "description": "Analysis focus area (e.g., surface_analysis, thermal_optical)"
+            },
+            "uniqueCharacteristics": {
+              "type": "array",
+              "items": {"type": "string"},
+              "description": "Material-specific characteristics identified"
+            },
+            "contaminationProfile": {
+              "type": "string", 
+              "description": "Contamination analysis details"
+            }
+          }
+        },
+        "microscopy": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "parameters": {
+              "type": "string",
+              "description": "Microscopy analysis parameters"
+            },
+            "qualityMetrics": {
+              "type": "string",
+              "description": "Quality assessment metrics"
+            }
+          }
+        },
+        "seo": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "title": {
+              "type": "string",
+              "description": "SEO-optimized title for caption content"
+            },
+            "description": {
+              "type": "string",
+              "description": "SEO meta description"
+            }
+          }
+        },
+        "processing": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "frontmatterAvailable": {
+              "type": "boolean",
+              "description": "Whether frontmatter data was available during generation"
+            },
+            "aiGenerated": {
+              "type": "boolean",
+              "description": "Whether content was AI-generated"
+            },
+            "generationMethod": {
+              "type": "string",
+              "description": "Method used for content generation"
+            }
+          }
+        },
+        "generation": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "generated": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Timestamp of content generation"
+            },
+            "componentType": {
+              "type": "string",
+              "description": "Type of caption component used"
+            },
+            "method": {
+              "type": "string",
+              "description": "Generation method identifier"
+            }
+          }
+        },
+        "author": {
+          "type": "string",
+          "description": "Author name for the caption content"
+        },
+        "materialProperties": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "materialType": {
+              "type": "string",
+              "description": "Classification of material type"
+            },
+            "analysisMethod": {
+              "type": "string",
+              "description": "Method used for material analysis"
+            }
+          }
+        }
+      }
+    },
+    "JsonldOutput": {
+      "type": "object",
+      "description": "JSON-LD structured data output with schema.org compliance",
+      "additionalProperties": false,
+      "properties": {
+        "structuredData": {
+          "type": "object",
+          "description": "Complete JSON-LD structured data object"
+        },
+        "schemaTypes": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "List of schema.org types included in the structured data"
+        },
+        "generation": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "generated": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Timestamp of JSON-LD generation"
+            },
+            "method": {
+              "type": "string",
+              "description": "Generation method used"
+            },
+            "schemaVersion": {
+              "type": "string",
+              "description": "Schema.org version used"
+            }
+          }
+        }
+      }
+    },
+    "MetatagsOutput": {
+      "type": "object",
+      "description": "HTML metatags output for web integration",
+      "additionalProperties": false,
+      "properties": {
+        "htmlMeta": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "title": {
+              "type": "string",
+              "description": "HTML page title"
+            },
+            "description": {
+              "type": "string",
+              "description": "Meta description for SEO"
+            },
+            "keywords": {
+              "type": "string",
+              "description": "Meta keywords for SEO"
+            },
+            "author": {
+              "type": "string",
+              "description": "Meta author tag"
+            },
+            "robots": {
+              "type": "string",
+              "description": "Robots meta directive"
+            },
+            "canonical": {
+              "type": "string",
+              "description": "Canonical URL"
+            }
+          }
+        },
+        "openGraph": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "title": {
+              "type": "string",
+              "description": "Open Graph title"
+            },
+            "description": {
+              "type": "string",
+              "description": "Open Graph description"
+            },
+            "image": {
+              "type": "string",
+              "description": "Open Graph image URL"
+            },
+            "url": {
+              "type": "string",
+              "description": "Open Graph URL"
+            },
+            "type": {
+              "type": "string",
+              "description": "Open Graph content type"
+            }
+          }
+        },
+        "twitterCard": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "card": {
+              "type": "string",
+              "description": "Twitter card type"
+            },
+            "title": {
+              "type": "string",
+              "description": "Twitter card title"
+            },
+            "description": {
+              "type": "string",
+              "description": "Twitter card description"
+            },
+            "image": {
+              "type": "string",
+              "description": "Twitter card image URL"
+            }
+          }
+        },
+        "generation": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "generated": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Timestamp of metatags generation"
+            },
+            "method": {
+              "type": "string",
+              "description": "Generation method used"
+            }
+          }
+        }
+      }
+    },
+    "TagsOutput": {
+      "type": "object",
+      "description": "Essential content tags output for frontmatter (max 10 tags)",
+      "additionalProperties": false,
+      "properties": {
+        "essentialTags": {
+          "type": "array",
+          "items": {"type": "string"},
+          "maxItems": 10,
+          "minItems": 5,
+          "description": "Essential tags including category, author, material, and key descriptors"
+        },
+        "generation": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "generated": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Timestamp of tags generation"
+            },
+            "method": {
+              "type": "string",
+              "description": "Generation method used"
+            },
+            "totalTags": {
+              "type": "integer",
+              "maximum": 10,
+              "description": "Total number of essential tags generated"
+            },
+            "tagPriority": {
+              "type": "string",
+              "enum": ["essential", "minimal", "core"],
+              "description": "Priority level for frontmatter tags"
+            }
+          }
         }
       }
     }

@@ -216,7 +216,7 @@ def implement_property_consolidation():
                 },
                 'dielectric_constant': {
                     'description': 'Relative permittivity for insulating materials',
-                    'unit': 'dimensionless',
+                    'unit': '',
                     'measurement_method': 'ASTM D150 - AC Loss Characteristics'
                 }
             }

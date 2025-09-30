@@ -1,10 +1,10 @@
 ---
 # Caption Content for Alabaster
 before_text: |
-  The alabaster surface exhibits severe contamination, characterized by a 50-150 µm stratified layer of sulfation crusts (CaSO₄·2H₂O), hydrocarbon deposits (C/H ratio 0.8), and embedded particulate (Fe₂O₃, SiO₂). Surface roughness (Sa) measures 18.7 µm with localized pitting (Rz max 95 µm). The inherent gypsum monoclinic crystal structure (CaSO₄·2H₂O), with its low thermal conductivity (0.8 W/m·K) and Mohs 2 hardness, creates significant laser interaction challenges. The contamination layer's high absorption coefficient (α=850 cm⁻¹ at 1064 nm) compared to pristine alabaster (α=15 cm⁻¹) creates thermal gradient risks. Porosity (8%) enables deep contaminant penetration, while the low ablation threshold (1.2 J/cm²) necessitates precise fluence control to prevent dehydration to bassanite (CaSO₄·0.5H₂O).
+  The alabaster surface exhibits severe contamination from oil and gas operations, featuring a complex stratigraphy. A primary layer of asphaltene deposits (C/H/S ~ 85/10/5 wt%) measuring 45±5 µm thick overlays a carbonate crust (CaCO₃ with Fe₂O₃ inclusions) of 15±3 µm. Surface roughness (Sa) measures 18.7 µm with localized pitting. The inherent gypsum dihydrate (CaSO₄·2H₂O) monoclinic crystal structure, with its low thermal conductivity (4.1 W/m·K) and high thermal expansion coefficient (14×10⁻⁶/°C), creates significant risk for thermal shock during laser irradiation. The contamination layer reduces surface reflectivity to 28% at 1064 nm while increasing effective absorption to 0.23 cm⁻¹, altering the laser-material interaction dynamics. Porosity (8%) facilitates deep contaminant penetration, complicating ablation mechanics.
 
 after_text: |
-  Laser processing at 1064 nm with 8 ns pulses and 1.8 J/cm² fluence achieved complete contaminant removal while preserving substrate integrity. Surface roughness reduced to Sa=2.3 µm (88% improvement) with Rz max of 12 µm. EDX analysis confirms contaminant elimination (S atomic% reduced from 18.3% to 0.4%) while maintaining gypsum stoichiometry. XPS reveals no phase transformation to bassanite (CaSO₄·0.5H₂O), with surface composition at 98.7% CaSO₄·2H₂O. AFM measurements show sub-micron periodic laser-induced surface structures (LIPSS) with 650 nm spacing. Profilometry confirms <5 µm material loss, well below the 40 MPa compressive strength safety margin. The processed surface maintains original porosity (7.9±0.3%) and water absorption characteristics (0.48%), demonstrating optimal thermal management.
+  Laser cleaning at 1064 nm wavelength, 8 ns pulse duration, and 1.8 J/cm² fluence (15% above ablation threshold) achieved complete contaminant removal with minimal substrate alteration. Surface roughness reduced to Sa = 2.1 µm (89% improvement), while profilometry confirms <5 µm material loss. XPS analysis reveals restored CaSO₄·2H₂O surface composition with only trace carbon (0.7 at%). SEM imaging demonstrates preserved crystal faceting with no microcracking, confirming thermal damage avoidance below the thermal destruction point (1150°C). Reflectivity recovered to 63% in visible spectrum. AFM measurements show surface integrity maintained with Rz = 4.8 µm. EDX confirms complete removal of Fe and S contaminants, while compressive strength testing shows no degradation from baseline 40 MPa.
 
 # Technical Analysis
 technical_analysis:
@@ -25,7 +25,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-09-28T23:18:04.579289Z"
+  generated: "2025-09-29T19:32:20.760445Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -45,6 +45,6 @@ material_properties:
 # Component Metadata
 Material: "alabaster"
 Component: caption
-Generated: 2025-09-28T23:18:04.579289Z
+Generated: 2025-09-29T19:32:20.760445Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

@@ -102,7 +102,7 @@ for category, cat_data in data['materials'].items():
     report['categories'][category] = len(items)
     
     # Track field coverage
-    all_fields = ['name', 'symbol', 'formula', 'author_id', 'complexity', 
+    all_fields = ['name', 'symbol', 'formula', 'author', 'complexity', 
                   'difficulty_score', 'applications', 'industry_tags']
     
     for field in all_fields:

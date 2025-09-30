@@ -8,7 +8,8 @@ materials:
     processing_priority: medium
     items:
     - name: Alumina
-      author_id: 2
+      author:
+        id: 2
       complexity: high
       difficulty_score: 4
       category: ceramic
@@ -35,7 +36,9 @@ materials:
       - Semiconductor
       - Aerospace
 
-      author_id: 1
+      author:
+
+        id: 1
       complexity: low
       difficulty_score: 2
       category: ceramic
@@ -64,7 +67,8 @@ materials:
     processing_priority: high
     items:
     - name: Steel
-      author_id: 1
+      author:
+        id: 1
       complexity: medium
       difficulty_score: 3
       category: metal
@@ -92,7 +96,8 @@ materials:
       - Construction
 
     - name: Aluminum
-      author_id: 1
+      author:
+        id: 1
       complexity: medium
       difficulty_score: 3
       category: metal
@@ -120,7 +125,8 @@ materials:
       - Automotive
 
     - name: Copper
-      author_id: 2
+      author:
+        id: 2
       complexity: medium
       difficulty_score: 3
       category: metal

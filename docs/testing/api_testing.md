@@ -1032,7 +1032,7 @@ class TestAPIClientCaching:
             result = run_material_generation(
                 material='Aluminum',
                 component_types=['frontmatter'],
-                author_id=None
+                author=None
             )
             
             # Verify cached client was requested

@@ -1,10 +1,10 @@
 ---
 # Caption Content for Bamboo
 before_text: |
-  The bamboo surface exhibits significant marine corrosion contamination, characterized by a heterogeneous biofilm (20-50 µm thick) of calcium carbonate (CaCO₃) crystallites and iron oxide (Fe₂O₃) deposits, confirmed via SEM-EDX. Surface roughness is elevated to 12.5 µm Ra (from a native 3.2 µm Ra) due to embedded particulate matter. The anisotropic, lignocellulosic structure, with a cellulose crystallinity index of ~48%, presents a complex ablation challenge. The inherent porosity (40%) allows deep contaminant penetration, complicating removal. The low thermal diffusivity (0.18 mm²/s) and ablation threshold (0.8 J/cm²) necessitate precise laser control to avoid exceeding the charring onset temperature (280°C). The surface's high absorption coefficient (0.75 at 1064 nm) for the contaminant layer contrasts with the lower absorption of the underlying substrate, creating a selective cleaning window.
+  The bamboo surface exhibits severe marine corrosion with heterogeneous contamination layers. SEM analysis reveals a 45±5 µm stratified deposit comprising NaCl crystallites (EDX: 28 at% Cl, 17 at% Na), FeOOH rust transfer (12 at% Fe), and biological fouling (C: 58 at%, O: 22 at%). Surface roughness increased to Ra 18.7 µm (vs. native 3.2 µm) with contact angle reduction to 42° indicating high surface energy. The anisotropic cellulose microfibril structure (crystalline index 68%) presents directional thermal conductivity (0.22 W/m·K parallel to fibers) creating non-uniform laser absorption. The contamination layer's high reflectivity (65% at 1064 nm) and low thermal diffusivity (0.08 mm²/s) necessitate precise fluence control above the bamboo ablation threshold (0.8 J/cm²) while avoiding carbonization at 350°C. XPS confirms sulfate groups (S 2p at 168.9 eV) from marine aerosols penetrating the porous structure (40% porosity).
 
 after_text: |
-  Laser cleaning (1064 nm, 8 ns pulse, 1.2 J/cm², 20 kHz) successfully restored the surface to a roughness of 3.8 µm Ra, achieving 99.7% contaminant removal by XPS atomic concentration analysis. SEM reveals intact vascular bundle microstructure with minimal disruption to the primary cell wall; AFM confirms sub-micron surface integrity. The process preserved the material's tensile strength (138 MPa post-treatment, vs. native 140 MPa) and Brinell hardness (3.4 HB). Profilometry indicates a clean ablation boundary with no heat-affected zone (HAZ) exceeding 5 µm depth. Optimized parameters maintained peak surface temperatures below 250°C, preventing cellulose pyrolysis. FTIR analysis confirms no chemical degradation of lignin or hemicellulose, validating the non-ablative, photomechanical contaminant removal mechanism.
+  Laser cleaning at 1064 nm, 8 ns pulses, 2.5 J/cm² fluence, and 25 kHz repetition rate achieved 98.7% contamination removal while preserving substrate integrity. Post-treatment surface roughness reduced to Ra 4.1 µm (78% improvement), with water contact angle restored to 78°. SEM confirms intact vascular bundle structure with minimal cellular damage (<2 µm HAZ). XPS analysis shows oxygen/carbon ratio normalized to 0.38 (from 0.72 pre-cleaning), indicating effective organic contaminant removal. AFM measurements reveal exposed cellulose nanofibrils with 42 nm average feature height. Thermal analysis confirms no carbonization (reflectance maintained at 16% at 1064 nm). EDX quantifies residual contaminants below 0.3 at% for all marine elements. The process achieved Class A surface cleanliness per IEST-STD-CC1246D with >95% native material preservation.
 
 # Technical Analysis
 technical_analysis:
@@ -25,7 +25,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-09-28T23:19:50.355339Z"
+  generated: "2025-09-29T19:33:33.004833Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -45,6 +45,6 @@ material_properties:
 # Component Metadata
 Material: "bamboo"
 Component: caption
-Generated: 2025-09-28T23:19:50.355339Z
+Generated: 2025-09-29T19:33:33.004833Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

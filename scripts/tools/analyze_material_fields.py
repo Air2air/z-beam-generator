@@ -324,7 +324,7 @@ categories:
       dielectric_constant:
         min: 2.0
         max: 25.0
-        unit: dimensionless
+        unit: ""
       electricalResistivity:
         min: 1e10
         max: 1e16

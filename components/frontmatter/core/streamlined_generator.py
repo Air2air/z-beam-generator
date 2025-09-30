@@ -348,7 +348,6 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 'description': material_data['description'] if 'description' in material_data else f"Laser cleaning parameters for {material_data['name'] if 'name' in material_data else material_name}{abbreviation_format['description_suffix']}",
                 'category': (material_data['category'] if 'category' in material_data else 'materials').title(),
                 'subcategory': material_data['subcategory'] if 'subcategory' in material_data else abbreviation_format['subcategory'],
-                'author_id': material_data['author_id'] if 'author_id' in material_data else 3,
                 'applications': self._generate_applications_from_unified_industry_data(material_name, material_data),
             }
             
@@ -841,11 +840,19 @@ Return YAML format with materialProperties (not properties) and machineSettings 
         return None
 
     def _generate_author(self, material_data: Dict) -> Dict:
-        """Generate author from material data author_id"""
+        """Generate author from material data author.id"""
         try:
             from utils.core.author_manager import get_author_by_id
             
-            author_id = material_data['author_id'] if 'author_id' in material_data else 3
+            # Prefer author.id from materials.yaml, fallback to legacy author_id for backwards compatibility
+            author_id = None
+            if 'author' in material_data and isinstance(material_data['author'], dict) and 'id' in material_data['author']:
+                author_id = material_data['author']['id']
+            elif 'author_id' in material_data:
+                author_id = material_data['author_id']
+            else:
+                author_id = 3
+                
             author_info = get_author_by_id(author_id)
             
             if not author_info:

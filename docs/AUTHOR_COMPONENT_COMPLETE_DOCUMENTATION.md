@@ -440,7 +440,7 @@ result = generator.generate(
 ```python
 # Old: Exception-based errors
 try:
-    content = generator.generate("Aluminum", author_id=1)
+    content = generator.generate("Aluminum", author={'id': 1})
 except AuthorNotFoundError:
     content = ""
 

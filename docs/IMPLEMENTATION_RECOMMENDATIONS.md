@@ -200,7 +200,8 @@ properties:
   category: metal
   subcategory: aerospace  
   complexity: high
-  author_id: 4
+  author:
+    id: 4
   
   # AI generation guidance only
   generation_hints:
@@ -230,7 +231,7 @@ def migrate_materials_yaml():
             "category": material_data.get("category"),
             "subcategory": material_data.get("subcategory"),
             "complexity": material_data.get("complexity"),
-            "author_id": material_data.get("author_id"),
+            "author": material_data.get("author", {}),
             "generation_hints": {
                 "research_validation_required": True,
                 "minimum_confidence_score": 0.8

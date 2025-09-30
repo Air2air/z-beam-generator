@@ -1,0 +1,337 @@
+name: aluminum
+category: metals
+subcategory: light_metals
+description: Comprehensive aluminum laser cleaning frontmatter with embedded component outputs for industrial surface treatment
+  applications
+author:
+  name: Dr. Sarah Chen
+  affiliation: Industrial Surface Technologies Lab
+  expertise: Materials Science and Laser Processing
+  country: US
+  credentials: Ph.D. Materials Engineering, 15+ years industrial laser experience
+materialProperties:
+  density: 2.70 g/cm³
+  meltingPoint: 660.3°C
+  boilingPoint: 2470°C
+  thermalConductivity: 237 W/m·K
+  electricalConductivity: 37.7 MS/m
+  thermalExpansion: 23.1×10⁻⁶/K
+  elasticModulus: 70 GPa
+  poissonRatio: '0.35'
+  hardness: 15-150 HB
+  corrosionResistance: excellent-atmospheric
+  oxidationBehavior: forms-protective-oxide-layer
+machineSettings:
+  powerLevel: 75%
+  pulseFrequency: 50 kHz
+  scanSpeed: 500 mm/min
+  beamDiameter: 100 μm
+  pulseWidth: 200 ns
+  repetitionRate: 50 kHz
+  fluence: 2.5 J/cm²
+  averagePower: 25 W
+  workingDistance: 160 mm
+  atmosphericConditions: ambient-air
+  coolingMethod: forced-air
+safetyConsiderations:
+  eyeProtection: required-1064nm-filter
+  ventilation: local-exhaust-ventilation
+  fireHazard: minimal-with-proper-controls
+  chemicalHazards: aluminum-oxide-particles
+qualityMetrics:
+  surfaceRoughness: Ra < 0.5 μm
+  cleaningEfficiency: 98.5%
+  residualContamination: < 2%
+  processRepeatabliity: ±5%
+componentOutputs:
+  caption:
+    beforeText: Advanced pulsed fiber laser cleaning setup specifically configured for aluminum surface treatment. This professional-grade
+      system utilizes precise beam parameters and optimized scanning patterns to achieve superior contaminant removal while
+      preserving substrate integrity. The setup demonstrates industry-standard safety protocols and environmental controls
+      essential for consistent, high-quality results.
+    afterText: Optimized aluminum surface treatment demonstrating exceptional cleaning efficiency with minimal thermal impact.
+      The processed surface exhibits uniform oxide removal, enhanced surface finish, and improved adhesion characteristics.
+      This configuration represents best practices for industrial aluminum laser cleaning applications.
+    technicalAnalysis:
+      surfaceCondition:
+        initial: heavy-oxide-contamination-with-organic-residues
+        final: clean-metallic-surface-with-minimal-roughening
+        improvement: 98.5% contaminant removal efficiency
+      processParameters:
+        beamQuality: M² < 1.3
+        absorptionCoefficient: 0.92 at 1064nm
+        thermalPenetration: < 5 μm
+        ablationThreshold: 0.8 J/cm²
+      cleaningEfficiency:
+        overallRemoval: 98.5%
+        oxideRemoval: 99.2%
+        organicRemoval: 97.8%
+        particleRemoval: 98.9%
+      processTime:
+        areaRate: 2.3 cm²/min
+        linearRate: 500 mm/min
+        cycleTime: 45 seconds per sample
+      qualityAssessment:
+        surfaceIntegrity: excellent
+        dimensionalAccuracy: ±0.001 mm
+        heatAffectedZone: < 10 μm
+        microstructurePreservation: 100%
+    generation:
+      method: orchestrated_generation
+      timestamp: '2025-01-27T10:00:00Z'
+  jsonld:
+    structuredData:
+      '@context':
+        '@vocab': https://schema.org/
+        laser: https://schema.org/
+        material: https://schema.org/Material
+        process: https://schema.org/Process
+      '@graph':
+      - '@type':
+        - Product
+        - TechnicalSpecification
+        '@id': '#aluminum-laser-cleaning'
+        name: Laser Cleaning Aluminum
+        description: Comprehensive aluminum laser cleaning frontmatter with embedded component outputs for industrial surface
+          treatment applications
+        category: Industrial Surface Treatment
+        material:
+          '@type': Material
+          name: aluminum
+          category: metals
+          density:
+            '@type': QuantitativeValue
+            value: '2.70'
+            unitCode: GRM/CM3
+          meltingPoint:
+            '@type': QuantitativeValue
+            value: '660.3'
+            unitCode: CEL
+          thermalConductivity:
+            '@type': QuantitativeValue
+            value: '237'
+            unitCode: WTH
+        applicationMethod:
+          '@type': Process
+          name: Pulsed Fiber Laser Cleaning
+          powerLevel: 75%
+          frequency: 50 kHz
+          scanSpeed: 500 mm/min
+          beamDiameter: 100 μm
+          averagePower: 25 W
+        author:
+          '@type': Person
+          name: Dr. Sarah Chen
+          affiliation:
+            '@type': Organization
+            name: Industrial Surface Technologies Lab
+          expertise: Materials Science and Laser Processing
+        safetyConsiderations:
+          '@type': SafetyGuideline
+          eyeProtection: required-1064nm-filter
+          ventilation: local-exhaust-ventilation
+          fireHazard: minimal-with-proper-controls
+        qualityMetrics:
+          '@type': QualityMeasurement
+          surfaceRoughness: Ra < 0.5 μm
+          cleaningEfficiency: 98.5%
+          processRepeatabliity: ±5%
+    schemaTypes:
+    - Product
+    - TechnicalSpecification
+    - Material
+    - Process
+    - Person
+    - Organization
+    - SafetyGuideline
+    - QualityMeasurement
+    generation:
+      method: orchestrated_generation
+      schemaVersion: schema.org
+      totalTypes: 8
+  metatags:
+    htmlMeta:
+      title: Laser Cleaning Aluminum - Professional Surface Treatment | Industrial Applications
+      description: Comprehensive guide to laser cleaning aluminum with optimized pulsed fiber laser parameters. Achieve 98.5%
+        cleaning efficiency with minimal thermal impact. Expert protocols for industrial surface treatment applications.
+      keywords: aluminum, laser cleaning, surface treatment, industrial cleaning, pulsed fiber laser, oxide removal, metals,
+        surface preparation, contaminant removal, precision cleaning, materials processing, industrial maintenance
+      author: Dr. Sarah Chen
+      robots: index, follow
+      viewport: width=device-width, initial-scale=1.0
+      charset: UTF-8
+      canonical: https://example.com/laser-cleaning/aluminum
+      lang: en-US
+    openGraph:
+      og:title: Laser Cleaning Aluminum - Professional Surface Treatment
+      og:description: Expert guide to aluminum laser cleaning with optimized parameters achieving 98.5% efficiency. Industrial-grade
+        protocols by Dr. Sarah Chen
+      og:type: article
+      og:url: https://example.com/laser-cleaning/aluminum
+      og:image: https://example.com/images/aluminum-laser-cleaning.jpg
+      og:image:width: '1200'
+      og:image:height: '630'
+      og:site_name: Industrial Laser Cleaning Guide
+      og:locale: en_US
+      article:author: Dr. Sarah Chen
+      article:section: Materials Processing
+      article:tag: aluminum, laser cleaning, surface treatment
+    twitterCard:
+      twitter:card: summary_large_image
+      twitter:title: Laser Cleaning Aluminum - 98.5% Efficiency
+      twitter:description: Professional aluminum laser cleaning guide with optimized parameters and safety protocols
+      twitter:image: https://example.com/images/aluminum-laser-cleaning-twitter.jpg
+      twitter:image:alt: Laser cleaning setup for aluminum showing before and after surface treatment
+      twitter:site: '@LaserCleaningPro'
+      twitter:creator: '@DrSarahChen'
+    structured:
+      breadcrumbs:
+      - name: Home
+        url: /
+      - name: Materials
+        url: /materials
+      - name: Metals
+        url: /materials/metals
+      - name: Aluminum
+        url: /materials/metals/aluminum
+      faq:
+      - question: What laser parameters work best for aluminum?
+        answer: Pulsed fiber laser at 75% power, 50 kHz frequency, with 500 mm/min scan speed achieves optimal results.
+      - question: Is laser cleaning safe for aluminum?
+        answer: Yes, with proper eye protection and ventilation. The process preserves substrate integrity while removing
+          contaminants.
+      - question: What cleaning efficiency can be achieved on aluminum?
+        answer: Up to 98.5% contaminant removal with minimal thermal impact and excellent surface finish.
+    generation:
+      method: orchestrated_generation
+      totalTags: 30
+  tags:
+    contentTags:
+    - laser-cleaning
+    - surface-treatment
+    - industrial-process
+    - pulsed-fiber-laser
+    - aluminum
+    - metals
+    - light-metals
+    - metalworking
+    - precision-cleaning
+    - oxide-removal
+    - contaminant-removal
+    - surface-preparation
+    - industrial-maintenance
+    - materials-processing
+    - beam-processing
+    - thermal-processing
+    - non-contact-cleaning
+    - environmentally-friendly
+    - automation-ready
+    - quality-controlled
+    - repeatable-process
+    - cost-effective
+    - high-efficiency
+    - minimal-waste
+    - precision-engineering
+    - advanced-manufacturing
+    materialTags:
+    - aluminum
+    - metals
+    - light-metals
+    - non-ferrous-metal
+    - lightweight-alloy
+    - corrosion-resistant
+    - high-conductivity
+    - aerospace-grade
+    - automotive-grade
+    - marine-grade
+    - construction-grade
+    - 6061-aluminum
+    - 5052-aluminum
+    - 7075-aluminum
+    - cast-aluminum
+    - wrought-aluminum
+    - anodized-aluminum
+    - painted-aluminum
+    - oxidized-aluminum
+    processTags:
+    - laser-cleaning
+    - surface-preparation
+    - contaminant-removal
+    - oxide-removal
+    - industrial-maintenance
+    - precision-processing
+    - beam-processing
+    - thermal-processing
+    - pulsed-laser-ablation
+    - selective-material-removal
+    - non-destructive-cleaning
+    - environmentally-safe
+    - chemical-free-cleaning
+    - dry-process
+    - automation-compatible
+    - real-time-monitoring
+    - quality-assured
+    - repeatable-results
+    - scalable-process
+    - cost-effective-solution
+    - minimal-setup-time
+    - flexible-parameters
+    - adaptive-control
+    industryTags:
+    - aerospace-industry
+    - automotive-industry
+    - marine-industry
+    - construction-industry
+    - electronics-industry
+    - medical-device
+    - food-processing
+    - pharmaceutical
+    - nuclear-industry
+    - oil-gas-industry
+    - renewable-energy
+    - manufacturing
+    - metal-fabrication
+    - precision-machining
+    - surface-engineering
+    - materials-science
+    applicationTags:
+    - paint-removal
+    - oxide-scale-removal
+    - rust-removal
+    - grease-cleaning
+    - adhesive-removal
+    - coating-preparation
+    - welding-preparation
+    - bonding-preparation
+    - inspection-preparation
+    - testing-preparation
+    - restoration
+    - maintenance-cleaning
+    - pre-treatment
+    - post-treatment
+    - surface-texturing
+    - selective-cleaning
+    safetyTags:
+    - laser-safety
+    - eye-protection
+    - ventilation-required
+    - fire-safety
+    - chemical-safety
+    - environmental-safety
+    - operator-training
+    - safety-protocols
+    - risk-assessment
+    - safety-equipment
+    - emergency-procedures
+    - compliance-standards
+    generation:
+      method: orchestrated_generation
+      totalTags: 112
+      categories:
+      - contentTags
+      - materialTags
+      - processTags
+      - industryTags
+      - applicationTags
+      - safetyTags
+      tagDensity: comprehensive

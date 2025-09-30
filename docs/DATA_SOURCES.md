@@ -104,7 +104,7 @@ output_file = f"{output_dir}/{filename}-laser-cleaning.yaml"
 | `outcomeMetrics[].metric` | Categories.yaml standardOutcomeMetrics | Strict - Must match standards |
 | `outcomeMetrics[].description` | Categories.yaml standardOutcomeMetrics | Template-based |
 | `regulatoryStandards` | Categories.yaml universal_regulatory_standards | Required inclusion |
-| `author_id` | AI Research | Generated |
+| `author.id` | AI Research | Generated |
 | `images` | AI Research | Generated |
 
 ## Compliance Rules

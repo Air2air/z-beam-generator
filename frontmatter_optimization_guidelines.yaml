@@ -1,0 +1,38 @@
+organization_principles:
+- Prioritize essential properties by material category
+- Group related components (content vs metadata)
+- Separate generation metadata from content
+- Use consistent property templates by material type
+redundancy_removal:
+- Eliminate identical name/subcategory fields
+- Remove empty or null property values
+- Consolidate duplicate generation metadata
+- Avoid repetitive descriptions across materials
+size_optimization:
+- Keep only essential property fields (value, unit, confidence)
+- Limit application/process lists to top 5 items
+- Simplify outcome metrics structure
+- Use abbreviated generation metadata
+template_structure:
+  metal:
+  - density
+  - meltingPoint
+  - thermalConductivity
+  - hardness
+  - ablationThreshold
+  glass:
+  - density
+  - refractiveIndex
+  - hardness
+  - thermalExpansion
+  - absorptionCoefficient
+  polymer:
+  - density
+  - glassTempo
+  - thermalStability
+  - laserAbsorption
+  ceramic:
+  - density
+  - hardness
+  - thermalConductivity
+  - thermalExpansion

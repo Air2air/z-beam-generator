@@ -134,7 +134,8 @@ materials:
     category: metal
     subcategory: aerospace
     complexity: high
-    author_id: 4
+    author:
+      id: 4
     
     # Generation hints (not actual data)
     generation_profile:
