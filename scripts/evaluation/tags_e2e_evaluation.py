@@ -8,7 +8,6 @@ import os
 import subprocess
 import time
 from datetime import datetime
-from pathlib import Path
 
 def run_tags_generation(material_name):
     """Run tags generation for a specific material"""

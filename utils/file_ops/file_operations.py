@@ -6,7 +6,6 @@ Centralized file operations for content generation.
 Extracted from run.py to reduce bloat and improve testability.
 """
 
-import json
 import os
 import shutil
 from datetime import datetime

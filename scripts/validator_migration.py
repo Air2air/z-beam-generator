@@ -19,7 +19,6 @@ Safety Features:
 - Validates migration success
 """
 
-import os
 import sys
 import json
 import shutil

@@ -1,0 +1,383 @@
+🔍 UNUSED IMPORTS REPORT
+==================================================
+
+📁 demo_ai_logging.py
+--------------------
+  🗑️  time (line 6)
+
+📁 ai_research_tracer.py
+-----------------------
+  🗑️  List (line 8)
+
+📁 analyze_frontmatter_structure.py
+----------------------------------
+  🗑️  Counter (line 10)
+  🗑️  Set (line 11)
+
+📁 evaluate_material_value_ranges.py
+-----------------------------------
+  🗑️  List (line 13)
+  🗑️  Tuple (line 13)
+
+📁 pipeline_integration.py
+-------------------------
+  🗑️  asyncio (line 9)
+
+📁 ai_research_verifier.py
+-------------------------
+  🗑️  List (line 10)
+  🗑️  Optional (line 10)
+
+📁 analyze_wavelength_issues.py
+------------------------------
+  🗑️  defaultdict (line 11)
+
+📁 optimize_frontmatter_structure.py
+-----------------------------------
+  🗑️  List (line 10)
+
+📁 validate_data.py
+------------------
+  🗑️  List (line 9)
+
+📁 tests/conftest.py
+-------------------
+  🗑️  List (line 14)
+  🗑️  TestPathManager (line 21)
+  🗑️  TestDataFactory (line 21)
+  🗑️  mock_api_calls (line 22)
+  🗑️  mock_file_operations (line 22)
+
+📁 tests/test_api_connectivity_validation.py
+-------------------------------------------
+  🗑️  Mock (line 12)
+  🗑️  patch (line 12)
+
+📁 tests/test_frontmatter_data_consistency.py
+--------------------------------------------
+  🗑️  Dict (line 15)
+  🗑️  List (line 15)
+  🗑️  Optional (line 15)
+  🗑️  Any (line 15)
+
+📁 tests/quick_consistency_check.py
+----------------------------------
+  🗑️  create_api_client (line 54)
+
+📁 utils/compact_sentence_logger.py
+----------------------------------
+  🗑️  List (line 8)
+  🗑️  Optional (line 8)
+
+📁 cli/commands.py
+-----------------
+  🗑️  Dict (line 14)
+  🗑️  Any (line 14)
+
+📁 scripts/organize_schemas.py
+-----------------------------
+  🗑️  Tuple (line 26)
+  🗑️  Set (line 26)
+
+📁 scripts/validator_migration.py
+--------------------------------
+  🗑️  Any (line 28)
+
+📁 scripts/migrate_to_author_field.py
+------------------------------------
+  🗑️  Dict (line 21)
+  🗑️  Optional (line 21)
+  🗑️  Set (line 21)
+  🗑️  Tuple (line 21)
+
+📁 scripts/validate_materials_yaml.py
+------------------------------------
+  🗑️  List (line 18)
+  🗑️  validate (line 19)
+  🗑️  ValidationError (line 19)
+
+📁 scripts/comprehensive_property_cleanup.py
+-------------------------------------------
+  🗑️  List (line 19)
+  🗑️  Optional (line 19)
+
+📁 scripts/test_material_aware_system.py
+---------------------------------------
+  🗑️  List (line 20)
+
+📁 scripts/verify_unified_validator.py
+-------------------------------------
+  🗑️  ValidationMode (line 36)
+
+📁 api/key_manager.py
+--------------------
+  🗑️  API_KEYS (line 14)
+
+📁 api/enhanced_client.py
+------------------------
+  🗑️  List (line 14)
+
+📁 api/client.py
+---------------
+  🗑️  List (line 14)
+
+📁 api/cache_adapter.py
+----------------------
+  🗑️  Optional (line 11)
+  🗑️  Tuple (line 11)
+
+📁 api/client_cache.py
+---------------------
+  🗑️  lru_cache (line 10)
+  🗑️  Optional (line 11)
+
+📁 generators/hybrid_generator.py
+--------------------------------
+  🗑️  should_use_api (line 14)
+
+📁 generators/component_generators.py
+------------------------------------
+  🗑️  List (line 13)
+
+📁 validation/unified_schema_validator.py
+----------------------------------------
+  🗑️  Union (line 21)
+
+📁 stages/stage5_quality_assurance/quality_assurance.py
+------------------------------------------------------
+  🗑️  hashlib (line 14)
+  🗑️  Tuple (line 11)
+  🗑️  np (line 9)
+
+📁 stages/stage7_monitoring/continuous_monitoring.py
+---------------------------------------------------
+  🗑️  Optional (line 12)
+  🗑️  Tuple (line 12)
+  🗑️  timedelta (line 13)
+
+📁 stages/shared/pipeline_utilities.py
+-------------------------------------
+  🗑️  Tuple (line 10)
+
+📁 stages/stage4_cross_validation/cross_validate_properties.py
+-------------------------------------------------------------
+  🗑️  Tuple (line 11)
+  🗑️  np (line 9)
+
+📁 stages/stage6_production/production_integration.py
+----------------------------------------------------
+  🗑️  Tuple (line 11)
+
+📁 stages/stage1_discovery/discover_properties.py
+------------------------------------------------
+  🗑️  Tuple (line 10)
+  🗑️  Counter (line 11)
+
+📁 stages/stage3_research/research_properties.py
+-----------------------------------------------
+  🗑️  Tuple (line 11)
+
+📁 tests/unit/test_yaml_output_formats.py
+----------------------------------------
+  🗑️  Mock (line 11)
+
+📁 tests/unit/test_chemical_fallback_generator.py
+------------------------------------------------
+  🗑️  MagicMock (line 9)
+
+📁 tests/unit/test_table_component.py
+------------------------------------
+  🗑️  Mock (line 8)
+
+📁 tests/integration/test_frontmatter_validator.py
+-------------------------------------------------
+  🗑️  pytest (line 9)
+
+📁 tests/integration/test_component_ai_routing.py
+------------------------------------------------
+  🗑️  mock_api_calls (line 12)
+  🗑️  assert_test_files_exist (line 12)
+
+📁 tests/integration/test_frontmatter_validator_legacy.py
+--------------------------------------------------------
+  🗑️  pytest (line 9)
+
+📁 tests/integration/test_ai_detection_config.py
+-----------------------------------------------
+  🗑️  pytest (line 74)
+
+📁 tests/integration/test_content_comprehensive.py
+-------------------------------------------------
+  🗑️  FailFastTextGenerator (line 14)
+
+📁 tests/integration/test_iterative_content_improver.py
+------------------------------------------------------
+  🗑️  MagicMock (line 9)
+
+📁 tests/integration/test_frontmatter_core.py
+--------------------------------------------
+  🗑️  pytest (line 10)
+  🗑️  MagicMock (line 8)
+  🗑️  patch (line 8)
+
+📁 tests/integration/test_text_comprehensive.py
+----------------------------------------------
+  🗑️  FailFastTextGenerator (line 14)
+
+📁 tests/integration/test_frontmatter_dependency_chain.py
+--------------------------------------------------------
+  🗑️  List (line 14)
+  🗑️  Optional (line 14)
+  🗑️  patch (line 15)
+  🗑️  create_api_client (line 21)
+
+📁 tests/integration/test_cascading_failure.py
+---------------------------------------------
+  🗑️  mock_api_calls (line 16)
+  🗑️  assert_test_files_exist (line 16)
+
+📁 tests/integration/test_service_integration.py
+-----------------------------------------------
+  🗑️  patch (line 9)
+
+📁 tests/integration/test_category_ranges.py
+-------------------------------------------
+  🗑️  load_category_ranges (line 11)
+  🗑️  extract_numeric_value (line 12)
+  🗑️  calculate_percentile (line 13)
+
+📁 tests/e2e/test_simplified_e2e.py
+----------------------------------
+  🗑️  patch (line 20)
+
+📁 tests/e2e/test_coverage_analysis.py
+-------------------------------------
+  🗑️  Dict (line 18)
+  🗑️  List (line 18)
+  🗑️  Tuple (line 18)
+  🗑️  Counter (line 19)
+
+📁 tests/e2e/test_optimized_e2e.py
+---------------------------------
+  🗑️  patch (line 18)
+  🗑️  RobustTestCase (line 20)
+  🗑️  mock_file_operations (line 21)
+
+📁 tests/e2e/test_comprehensive_workflow.py
+------------------------------------------
+  🗑️  APIResponse (line 17)
+  🗑️  GenerationRequest (line 17)
+  🗑️  MockAPIClient (line 20)
+
+📁 utils/core/get_material_data.py
+---------------------------------
+  🗑️  Any (line 5)
+
+📁 utils/core/component_base.py
+------------------------------
+  🗑️  ABC (line 10)
+  🗑️  abstractmethod (line 10)
+
+📁 utils/core/material_data_utils.py
+-----------------------------------
+  🗑️  List (line 9)
+
+📁 utils/core/chemical_fallback_generator.py
+-------------------------------------------
+  🗑️  Dict (line 13)
+
+📁 utils/validation/quality_validator.py
+---------------------------------------
+  🗑️  Dict (line 10)
+
+📁 utils/validation/frontmatter_validator.py
+-------------------------------------------
+  🗑️  Any (line 11)
+
+📁 material_prompting/core/material_aware_generator.py
+-----------------------------------------------------
+  🗑️  Optional (line 12)
+
+📁 material_prompting/enhancers/category_aware_enhancer.py
+---------------------------------------------------------
+  🗑️  Tuple (line 12)
+
+📁 material_prompting/exceptions/handler.py
+------------------------------------------
+  🗑️  Union (line 12)
+
+📁 material_prompting/properties/enhancer.py
+-------------------------------------------
+  🗑️  Tuple (line 22)
+
+📁 material_prompting/generators/materials_yaml_updater.py
+---------------------------------------------------------
+  🗑️  Set (line 19)
+
+📁 components/author/generator.py
+--------------------------------
+  🗑️  Any (line 11)
+
+📁 components/frontmatter/research/machine_settings_researcher.py
+----------------------------------------------------------------
+  🗑️  Tuple (line 22)
+
+📁 components/frontmatter/research/unified_research_interface.py
+---------------------------------------------------------------
+  🗑️  Optional (line 21)
+  🗑️  Union (line 21)
+
+📁 components/frontmatter/tests/__init__.py
+------------------------------------------
+  🗑️  * (line 10)
+  🗑️  * (line 10)
+
+📁 cleanup/temp-scripts/analyze_materials_optimization.py
+--------------------------------------------------------
+  🗑️  List (line 17)
+  🗑️  Set (line 17)
+
+📁 cleanup/temp-scripts/analyze_industry_data_redundancy.py
+----------------------------------------------------------
+  🗑️  Counter (line 15)
+
+📁 cleanup/temp-scripts/naming_consistency_analysis.py
+-----------------------------------------------------
+  🗑️  Counter (line 11)
+
+📁 cleanup/temp-scripts/analyze_materials_completeness.py
+--------------------------------------------------------
+  🗑️  List (line 10)
+  🗑️  Set (line 10)
+
+📁 cleanup/temp-scripts/optimize_materials_performance.py
+--------------------------------------------------------
+  🗑️  List (line 17)
+
+📁 scripts/tools/data_completeness_analyzer.py
+---------------------------------------------
+  🗑️  Tuple (line 20)
+  🗑️  Set (line 20)
+
+📁 scripts/tools/prompt_chain_diagnostics.py
+-------------------------------------------
+  🗑️  List (line 9)
+  🗑️  AIDetectionPromptOptimizer (line 282)
+
+📁 scripts/tools/sentence_structure_optimizer.py
+-----------------------------------------------
+  🗑️  Tuple (line 9)
+
+📁 scripts/validation/materials_validator.py
+-------------------------------------------
+  🗑️  List (line 11)
+  🗑️  Any (line 11)
+  🗑️  Tuple (line 11)
+  🗑️  Set (line 11)
+
+🔧 RECOMMENDATIONS:
+====================
+1. Remove unused imports to reduce file size and improve readability
+2. Consider using tools like 'autoflake' or 'isort' for automatic cleanup
+3. Review imports that might be used in eval() or exec() calls
+4. Check for imports used only in type hints (consider TYPE_CHECKING)

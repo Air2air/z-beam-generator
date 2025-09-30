@@ -10,7 +10,6 @@ import yaml
 import json
 import shutil
 from pathlib import Path
-from collections import defaultdict, Counter
 from datetime import datetime
 
 def implement_property_consolidation():

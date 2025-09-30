@@ -7,9 +7,7 @@ and problematic materials identified in the analysis.
 """
 
 import yaml
-import os
 import glob
-from pathlib import Path
 
 def fix_wood_density_units():
     """Fix wood density values that appear to be in kg/m³ instead of g/cm³"""

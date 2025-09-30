@@ -4,7 +4,6 @@ Script cleanup utility for Z-Beam Generator
 Identifies and organizes obsolete, duplicate, and temporary scripts.
 """
 
-import os
 import shutil
 from pathlib import Path
 from datetime import datetime

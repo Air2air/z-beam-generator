@@ -7,10 +7,8 @@ allowing for flexible field-driven content creation with component selection.
 """
 
 import argparse
-import json
 import logging
 from dataclasses import dataclass
-from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 import yaml

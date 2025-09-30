@@ -4,7 +4,6 @@ Stage 6: Production Integration
 Safely deploys validated and quality-assured property data to production systems.
 """
 
-import os
 import yaml
 import json
 import shutil

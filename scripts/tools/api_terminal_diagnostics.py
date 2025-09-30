@@ -7,7 +7,6 @@ This tool demonstrates the correct way to diagnose API issues by reading
 terminal output to capture detailed error information not available in response objects.
 """
 
-import json
 import re
 import sys
 from pathlib import Path

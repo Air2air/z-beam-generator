@@ -5,7 +5,6 @@ Target: 121 materials across 4 authors = 30, 30, 30, 31 materials per author.
 """
 
 import yaml
-from collections import Counter, OrderedDict
 import random
 
 def redistribute_author_ids():

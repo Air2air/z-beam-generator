@@ -15,7 +15,6 @@ sys.path.insert(0, str(project_root))
 
 from research.material_property_researcher import MaterialPropertyResearcher
 from data.materials import get_material_by_name
-import json
 
 
 def demonstrate_research_integration(material_name: str):

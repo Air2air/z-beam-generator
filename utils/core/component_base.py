@@ -7,7 +7,6 @@ Consolidates common patterns and reduces code duplication.
 """
 
 import logging
-import sys
 from abc import ABC, abstractmethod
 from pathlib import Path
 from typing import Any, Dict, Optional

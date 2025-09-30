@@ -4,7 +4,6 @@ Batch Caption Generation Script
 Generates captions for all materials that have frontmatter data.
 """
 
-import os
 import sys
 import subprocess
 import time

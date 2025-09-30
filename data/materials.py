@@ -1,6 +1,8 @@
 """
 Enhanced materials data loader with optimization support.
 Maintains full backward compatibility with existing code.
+
+FAIL-FAST VALIDATION: Per GROK_INSTRUCTIONS.md, enforces ZERO TOLERANCE for defaults/fallbacks.
 """
 
 from pathlib import Path
@@ -8,7 +10,24 @@ import yaml
 
 
 def load_materials():
-    """Load materials data from YAML file with optimization support."""
+    """
+    Load materials data from YAML file with optimization support.
+    
+    FAIL-FAST VALIDATION: Per GROK_INSTRUCTIONS.md, system must fail immediately
+    if materials database contains defaults/fallbacks/mocks.
+    """
+    
+    # FAIL-FAST VALIDATION - NO EXCEPTIONS
+    try:
+        from scripts.validation.fail_fast_materials_validator import fail_fast_validate_materials
+        fail_fast_validate_materials()
+    except Exception as e:
+        raise RuntimeError(
+            f"CRITICAL: Materials database validation failed. "
+            f"Per GROK_INSTRUCTIONS.md: ZERO TOLERANCE FOR DEFAULTS/FALLBACKS. "
+            f"Error: {e}"
+        )
+    
     materials_file = Path(__file__).parent / "Materials.yaml"
 
     try:
@@ -28,8 +47,7 @@ def load_materials():
         # Return original format as-is
         return data
     except Exception as e:
-        print(f"Error loading materials data: {e}")
-        return {"materials": {}}
+        raise RuntimeError(f"CRITICAL: Error loading materials data: {e}")
 
 
 def add_material_names_to_items(data):

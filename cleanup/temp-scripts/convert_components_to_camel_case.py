@@ -3,10 +3,7 @@
 Convert all component files from snake_case to camelCase property naming.
 """
 
-import os
-import re
 from pathlib import Path
-from datetime import datetime
 
 def snake_to_camel_case(snake_str):
     """Convert snake_case to camelCase."""

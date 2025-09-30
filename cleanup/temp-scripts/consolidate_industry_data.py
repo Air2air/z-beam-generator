@@ -12,7 +12,6 @@ Eliminates 66.2% redundancy (263 entries) while preserving 100% data integrity.
 
 import yaml
 from pathlib import Path
-from collections import defaultdict, Counter
 import json
 import shutil
 from datetime import datetime

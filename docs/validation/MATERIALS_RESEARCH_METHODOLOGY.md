@@ -1,10 +1,47 @@
 # Comprehensive Materials.yaml Research & Validation Methodology
 
+## 🚨 CRITICAL UPDATE (September 30, 2025)
+
+**URGENT ISSUE IDENTIFIED**: Analysis reveals that 98.6% of material property values are NOT AI-researched as required, but are instead using generic default values. This represents a fundamental failure of the research requirement.
+
+**Current Status**: 
+- **1,331 properties** using `source: default_from_category_range` (98.6%)
+- **19 properties** using `source: ai_research` (1.4%)
+- **Value duplication**: 35+ materials sharing identical property values
+
+**IMMEDIATE ACTION REQUIRED**: See `MATERIALS_ANALYSIS_CRITICAL_FINDINGS.md` for complete analysis.
+
 ## Overview
 
-This document outlines a systematic approach to research, validate, and verify every value in the `Materials.yaml` file against authoritative sources and scientific standards.
+This document outlines a systematic approach to research, validate, and verify every value in the `Materials.yaml` file against authoritative sources and scientific standards. **CRITICAL REQUIREMENT**: All material property values MUST be unique and independently AI-researched.
 
 ## 🎯 Validation Framework
+
+### MANDATORY REQUIREMENTS FOR ALL MATERIAL PROPERTIES
+
+#### **1. UNIQUENESS REQUIREMENT**
+- **Every material MUST have unique property values** reflecting actual material characteristics
+- **No two materials may share identical property values** except for dimensionless properties where scientifically accurate
+- **Category-based defaults are PROHIBITED** in production data
+- **Generic midpoint calculations are FORBIDDEN**
+
+#### **2. AI-RESEARCH REQUIREMENT**
+- **All property values MUST be independently AI-researched** using authoritative sources
+- **Source attribution MUST be `ai_research`** - NOT `default_from_category_range`
+- **Confidence levels MUST be ≥ 0.9** for production use
+- **Research basis MUST be documented** with specific citations
+
+#### **3. SCIENTIFIC ACCURACY REQUIREMENT**
+- **Property values MUST reflect real material characteristics** (e.g., Gold density ≈ 19.3 g/cm³, NOT 2.7 g/cm³)
+- **Values MUST be within physically possible ranges** for each material
+- **Alloy properties MUST differ from constituent metals** appropriately
+- **Temperature and pressure conditions MUST be specified** where relevant
+
+#### **4. VALIDATION REQUIREMENTS**
+- **Cross-reference with NIST, ASM, and other authoritative sources**
+- **Independent verification of at least 20% of values** by different research methods
+- **Peer review of unusual or extreme values**
+- **Regular audits to prevent regression to defaults**
 
 ### 1. Automated Technical Validation
 

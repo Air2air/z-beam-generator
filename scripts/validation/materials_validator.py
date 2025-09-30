@@ -8,10 +8,7 @@ in the Materials.yaml file against known standards and scientific data.
 
 import yaml
 import re
-from pathlib import Path
 from typing import Dict, List, Any, Tuple, Set
-from collections import defaultdict
-import requests
 import json
 
 class MaterialsValidator:

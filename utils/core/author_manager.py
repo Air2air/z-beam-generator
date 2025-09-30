@@ -7,7 +7,6 @@ Extracted from run.py to reduce bloat and improve testability.
 """
 
 import json
-import os
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 

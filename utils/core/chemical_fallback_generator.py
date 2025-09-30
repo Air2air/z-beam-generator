@@ -10,7 +10,6 @@ only scientifically accurate category-based generation rules.
 """
 
 import logging
-import re
 from typing import Dict, Optional, Tuple
 
 logger = logging.getLogger(__name__)

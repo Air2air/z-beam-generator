@@ -4,8 +4,6 @@ Analyze material properties for out-of-range values and suggest corrections.
 """
 
 import yaml
-import json
-import os
 from pathlib import Path
 from collections import defaultdict
 

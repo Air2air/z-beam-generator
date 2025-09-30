@@ -4,7 +4,6 @@ Batch Tags Generation Script
 Generates tags for all materials that have frontmatter data.
 """
 
-import os
 import sys
 import subprocess
 import time

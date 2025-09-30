@@ -4,7 +4,6 @@ Convert Materials.yaml from snake_case to camelCase property naming.
 """
 
 import yaml
-import re
 from pathlib import Path
 
 def snake_to_camel_case(snake_str):

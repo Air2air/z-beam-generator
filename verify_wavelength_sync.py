@@ -10,7 +10,6 @@ This script ensures complete synchronization of wavelength data between:
 
 import yaml
 import glob
-import json
 from pathlib import Path
 from collections import defaultdict
 

@@ -7,8 +7,6 @@ Analyzes Categories.yaml and materials.yaml for frontmatter generation optimizat
 
 import yaml
 import json
-from pathlib import Path
-from collections import defaultdict
 from datetime import datetime
 
 def analyze_structure_optimization():

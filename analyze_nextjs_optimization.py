@@ -5,9 +5,7 @@ Comprehensive analysis of the Next.js context-aware frontmatter generation.
 """
 
 import yaml
-import json
 from pathlib import Path
-from datetime import datetime
 
 def analyze_nextjs_optimization():
     """Analyze the Next.js optimized frontmatter structure and performance."""

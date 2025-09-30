@@ -23,7 +23,6 @@ from typing import Dict, List, Optional, Any, Tuple
 from dataclasses import dataclass, field
 from enum import Enum
 import time
-import json
 
 # Import PropertyValueResearcher for material property lookup
 from .property_value_researcher import PropertyValueResearcher, ResearchContext, PropertyResult

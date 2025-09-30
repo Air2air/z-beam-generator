@@ -8,7 +8,7 @@ import sys
 import yaml
 from pathlib import Path
 from datetime import datetime
-from typing import Dict, Any, Optional, List
+from typing import Dict, Any, Optional
 
 # Add the project root to the Python path
 sys.path.insert(0, '/Users/todddunning/Desktop/Z-Beam/z-beam-generator')

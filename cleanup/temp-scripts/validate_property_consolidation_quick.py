@@ -8,7 +8,6 @@ Quick validation to ensure property consolidation worked correctly.
 import yaml
 import json
 from pathlib import Path
-from datetime import datetime
 
 def quick_validate_consolidation():
     """Quick validation of property consolidation results."""

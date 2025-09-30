@@ -4,9 +4,7 @@ AI Research Verification Tool
 Comprehensive tracking and verification of AI research usage throughout the system.
 """
 
-import os
 import yaml
-import json
 import time
 from pathlib import Path
 from typing import Dict, List, Any, Optional

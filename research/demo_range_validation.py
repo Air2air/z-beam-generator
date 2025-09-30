@@ -8,7 +8,6 @@ that ensures property ranges represent realistic values within each material's c
 
 import sys
 from pathlib import Path
-import json
 
 # Add project root to path
 project_root = Path(__file__).parent.parent

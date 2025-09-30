@@ -9,7 +9,6 @@ This script:
 3. Creates backup of modified files
 """
 
-import os
 import yaml
 import logging
 from pathlib import Path

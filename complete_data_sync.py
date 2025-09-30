@@ -8,7 +8,6 @@ is fully synchronized and current for future frontmatter regeneration operations
 
 import yaml
 import glob
-import json
 from pathlib import Path
 from collections import defaultdict
 from datetime import datetime

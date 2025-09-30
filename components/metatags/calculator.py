@@ -5,9 +5,7 @@ Follows current best practice standards for comprehensive meta tag implementatio
 """
 
 import html
-import json
 import re
-from datetime import datetime
 from typing import Any, Dict, List, Optional
 
 import yaml

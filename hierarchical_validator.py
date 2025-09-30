@@ -4,12 +4,9 @@ Hierarchical Data Validation Pipeline
 Validates data at Materials.yaml/Categories.yaml level and propagates to frontmatter.
 """
 
-import os
 import yaml
-import json
-import asyncio
 from pathlib import Path
-from typing import Dict, List, Any, Optional
+from typing import Dict, List, Any
 from datetime import datetime
 import logging
 

@@ -4,13 +4,11 @@ Stage 1: Property Discovery & Inventory
 Comprehensive scanning and analysis of all material properties across the system.
 """
 
-import os
 import yaml
 import json
 from pathlib import Path
 from typing import Dict, List, Any, Optional, Tuple
 from collections import defaultdict, Counter
-import re
 
 class PropertyDiscoverer:
     """

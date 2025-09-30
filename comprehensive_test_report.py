@@ -5,7 +5,6 @@ Shows the difference between working Next.js system and legacy test expectations
 """
 
 import subprocess
-import sys
 from datetime import datetime
 
 def run_command(cmd, description):

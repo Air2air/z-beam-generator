@@ -10,7 +10,6 @@ This script fixes wavelength range issues in frontmatter files by:
 
 import yaml
 import glob
-import json
 from pathlib import Path
 
 def load_wavelength_standards():

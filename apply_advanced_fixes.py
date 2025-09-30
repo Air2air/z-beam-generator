@@ -7,9 +7,6 @@ that require special handling beyond standard material categories.
 """
 
 import yaml
-import os
-import glob
-from pathlib import Path
 
 def create_soft_metal_exceptions():
     """Create special handling for soft metals with exceptional properties"""

@@ -4,8 +4,6 @@ Debug analysis for material property ranges - detailed logging version.
 """
 
 import yaml
-import json
-import os
 from pathlib import Path
 
 def debug_range_analysis():

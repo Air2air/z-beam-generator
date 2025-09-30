@@ -12,9 +12,7 @@ CRITICAL: This script implements the fail-fast architecture
 - Complete validation and error reporting
 """
 
-import json
 import logging
-import os
 import shutil
 import sys
 import yaml

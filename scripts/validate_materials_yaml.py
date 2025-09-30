@@ -14,10 +14,8 @@ Usage:
 import json
 import yaml
 import sys
-import os
 from pathlib import Path
 from typing import Dict, Any, List
-import jsonschema
 from jsonschema import validate, ValidationError, Draft7Validator
 from datetime import datetime
 

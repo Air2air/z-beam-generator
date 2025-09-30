@@ -1158,6 +1158,22 @@ def generate_safe_filename(material_name: str) -> str:
 
 def main():
     """Main application entry point with basic command line interface."""
+    
+    # FAIL-FAST VALIDATION (Per GROK_INSTRUCTIONS.md: ZERO TOLERANCE FOR DEFAULTS/FALLBACKS)
+    print("🚨 ENFORCING FAIL-FAST VALIDATION")
+    print("Per GROK_INSTRUCTIONS.md: ZERO TOLERANCE FOR MOCKS/FALLBACKS/DEFAULTS")
+    try:
+        from scripts.validation.fail_fast_materials_validator import fail_fast_validate_materials
+        fail_fast_validate_materials()
+        print("✅ Materials database validation PASSED - System approved for operation")
+    except Exception as e:
+        print("🚨 CRITICAL: System cannot start due to validation failure")
+        print(f"💥 Error: {e}")
+        print("🚫 Per GROK_INSTRUCTIONS.md: ZERO TOLERANCE FOR DEFAULTS/FALLBACKS")
+        print("📋 See MATERIALS_REMEDIATION_PLAN.md for remediation instructions.")
+        print("🔧 Run: python3 scripts/validation/fail_fast_materials_validator.py")
+        return False
+    
     import argparse
     import os
     from generators.dynamic_generator import DynamicGenerator

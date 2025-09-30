@@ -3,7 +3,6 @@
 Shared utilities and tools for the material property validation pipeline.
 """
 
-import os
 import yaml
 import json
 import sqlite3

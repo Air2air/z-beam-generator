@@ -9,9 +9,7 @@ This script addresses the remaining 41 violations by handling:
 """
 
 import yaml
-import os
 import glob
-from pathlib import Path
 
 def fix_hardness_unit_mismatches():
     """Fix hardness values that are in wrong units/scales"""

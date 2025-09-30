@@ -7,7 +7,6 @@ based on COMPONENT_CONFIG settings.
 """
 
 import logging
-from typing import Dict, Optional
 
 # Import from the central configuration file
 from run import COMPONENT_CONFIG

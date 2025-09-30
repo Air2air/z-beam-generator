@@ -9,7 +9,6 @@ Follows fail-fast architecture with no fallbacks.
 
 import logging
 import yaml
-from pathlib import Path
 from typing import Any, Dict, Optional, Union
 
 from generators.component_generators import StaticComponentGenerator

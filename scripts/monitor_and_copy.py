@@ -4,7 +4,6 @@ Batch Monitor and Copy Script
 Monitors the batch tags generation and copies files when complete.
 """
 
-import os
 import shutil
 import time
 import subprocess

@@ -7,11 +7,7 @@ This ensures consistent, clean paths without parentheses for all generated conte
 """
 
 import argparse
-import logging
-import shutil
-import sys
 from pathlib import Path
-from typing import Dict, List, Tuple
 
 from utils.slug_utils import create_filename_slug, get_clean_material_mapping
 

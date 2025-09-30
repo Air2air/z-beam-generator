@@ -4,9 +4,7 @@ Standalone Validation Tool
 Validate existing frontmatter, Materials.yaml, and Categories.yaml without regeneration.
 """
 
-import os
 import yaml
-import json
 from pathlib import Path
 from typing import Dict, List, Any, Optional
 from datetime import datetime

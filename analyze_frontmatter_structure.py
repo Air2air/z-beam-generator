@@ -6,7 +6,6 @@ Analyzes frontmatter files to identify organization and redundancy removal oppor
 
 import sys
 import yaml
-import json
 from pathlib import Path
 from collections import Counter, defaultdict
 from typing import Dict, List, Any, Set

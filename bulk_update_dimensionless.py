@@ -4,7 +4,6 @@ Bulk Update Script: Replace dimensionless units with empty strings
 Updates all YAML frontmatter files to use Option 1 (empty string for dimensionless units).
 """
 
-import os
 import sys
 import re
 from pathlib import Path

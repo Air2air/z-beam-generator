@@ -5,7 +5,6 @@ Metatags Format Checker
 Script to check and fix the format of metatags files.
 """
 
-import os
 from pathlib import Path
 import yaml
 

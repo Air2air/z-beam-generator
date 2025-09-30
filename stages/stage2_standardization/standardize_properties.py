@@ -4,12 +4,10 @@ Stage 2: Property Standardization
 Standardizes property formats, units, and data structures based on defined schemas.
 """
 
-import os
 import yaml
 import json
 from pathlib import Path
 from typing import Dict, List, Any, Optional, Tuple
-import re
 from datetime import datetime
 
 class PropertyStandardizer:
