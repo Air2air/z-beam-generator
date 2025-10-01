@@ -35,7 +35,7 @@ The Z-Beam Generator has undergone a major **architecture consolidation** to eli
 
 4. **🔗 jsonld** - JSON-LD structured data
    - **Purpose**: Generate schema.org structured data
-   - **Generator**: `EnhancedJsonldGenerator`
+   - **Generator**: `JsonldGenerator`
 
 5. **📊 propertiestable** - Material properties table
    - **Purpose**: Generate formatted property tables
@@ -140,7 +140,7 @@ from generators.component_generators import ComponentGeneratorFactory
 generator = ComponentGeneratorFactory.create_generator("frontmatter")  # StreamlinedFrontmatterGenerator
 generator = ComponentGeneratorFactory.create_generator("author")       # AuthorComponentGenerator
 generator = ComponentGeneratorFactory.create_generator("metatags")     # MetatagsComponentGenerator
-generator = ComponentGeneratorFactory.create_generator("jsonld")       # EnhancedJsonldGenerator
+generator = ComponentGeneratorFactory.create_generator("jsonld")       # JsonldGenerator
 generator = ComponentGeneratorFactory.create_generator("propertiestable") # PropertiestableComponentGenerator
 generator = ComponentGeneratorFactory.create_generator("badgesymbol")  # BadgesymbolComponentGenerator
 

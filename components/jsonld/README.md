@@ -25,7 +25,7 @@ The JSON-LD component generates comprehensive structured data in schema.org form
 
 ### Core Implementation
 - **`enhanced_generator.py`** - New comprehensive generator with dynamic substitution
-- **`generator.py`** - Main component entry point (uses EnhancedJsonldGenerator)
+- **`generator.py`** - Main component entry point (uses JsonldGenerator)
 - **`simple_generator.py`** - Legacy simple generator (deprecated)
 - **`schemas/json-ld.json`** - Comprehensive schema template with placeholders
 - **`validator.py`** - Updated validation supporting @graph structure
@@ -39,7 +39,7 @@ The component generates comprehensive JSON-LD structured data using frontmatter 
 from components.jsonld.generator import JsonldComponentGenerator
 
 # Create enhanced generator
-generator = JsonldComponentGenerator()  # Uses EnhancedJsonldGenerator
+generator = JsonldComponentGenerator()  # Uses JsonldGenerator
 
 # Generate comprehensive JSON-LD
 result = generator.generate(
@@ -55,7 +55,7 @@ jsonld_content = result.content  # Contains all 7 schema types
 ## Implementation Details
 
 ### Enhanced Generator Class
-The `EnhancedJsonldGenerator` class implements:
+The `JsonldGenerator` class implements:
 
 - **Dynamic Substitution**: Replaces all placeholders with real frontmatter values
 - **Multi-Schema Generation**: Creates 7 interconnected schema.org types
