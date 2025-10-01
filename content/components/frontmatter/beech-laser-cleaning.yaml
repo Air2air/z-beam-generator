@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Ash
 materialProperties:
   density:
     value: 0.72
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 95
     description: Average density of European beech wood at 12% moisture content
     min: 0.12
     max: 1.25
   thermalConductivity:
     value: 0.18
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 90
     description: Thermal conductivity perpendicular to grain at room temperature
     min: 0.04
@@ -27,7 +27,7 @@ materialProperties:
     max: 152.5
   hardness:
     value: 1300.0
-    unit: "N/mm\xB2"
+    unit: N/mm²
     confidence: 88
     description: Brinell hardness perpendicular to grain
     min: 0
@@ -48,14 +48,14 @@ materialProperties:
     max: 33.0
   thermalDiffusivity:
     value: 0.165
-    unit: "mm\xB2/s"
+    unit: mm²/s
     confidence: 85
     description: Thermal diffusivity at room temperature
     min: 0
     max: 0.209
   specificHeat:
     value: 1630.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 92
     description: Specific heat capacity at room temperature
     min: 695.0
@@ -69,10 +69,9 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 0.8
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 80
-    description: Estimated laser ablation threshold for nanosecond pulses at 1064
-      nm
+    description: Estimated laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   porosity:
@@ -87,7 +86,7 @@ materialProperties:
     max: 50.0
     min: 1.0
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 32.7
   laserReflectivity:
     confidence: 0.7
@@ -101,7 +100,7 @@ materialProperties:
     max: 500.0
     min: 200.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 380.0
   thermalDestructionType:
     confidence: 0.8
@@ -126,7 +125,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: "\u03BCm"
+    unit: μm
     confidence: 92
     description: Beam spot diameter for precise cleaning control
     min: 50
@@ -154,10 +153,9 @@ machineSettings:
     max: 1000
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 91
-    description: Fluence threshold for effective contaminant removal without wood
-      damage
+    description: Fluence threshold for effective contaminant removal without wood damage
     min: 1.5
     max: 4.0
   overlapRatio:
@@ -176,7 +174,7 @@ machineSettings:
     max: 3
   energyDensity:
     value: 3.2
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 85
     description: Energy density optimized for Beech surface treatment
     min: 2.0
@@ -191,10 +189,6 @@ images:
   hero:
     alt: Beech surface undergoing laser cleaning showing precise contamination removal
     url: /images/beech-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Beech surface after laser cleaning showing detailed surface
-      structure
-    url: /images/beech-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -251,8 +245,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -290,9 +283,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -313,3 +306,53 @@ author:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+caption:
+  beforeText: 'At 500x magnification, the beech surface is obscured by a discontinuous contamination layer, approximately
+    5-15 micrometers thick. This layer consists of particulate matter embedded in a matrix of aged, cross-linked organic residues,
+    which fills the natural wood pores and creates a textured, uneven topography. The underlying cellular structure of the
+    beech is partially visible but its definition is lost, with the grain pattern muted by the film.
+
+
+    The contaminants exhibit poor adhesion in some areas, showing micro-cracking and delamination from the wood substrate.
+    This suggests a brittle, aged coating that does not flex with the wood''s natural dimensional changes. The original porous
+    structure of the wood, typically 55% porosity, is largely occluded, preventing any analysis of the true substrate beneath.'
+  afterText: 'Laser cleaning has effectively removed the contamination layer, revealing the intact, original beech wood substrate.
+    The surface now displays a clear, open cellular structure, with the distinctive vessels and fibers of the hardwood fully
+    exposed. The natural porosity of the wood is restored, allowing for direct observation of the clean, undamaged cell walls.
+
+
+    In direct contrast to the pre-cleaning state, the surface topography is now defined solely by the wood''s inherent anatomy
+    rather than an applied film. The laser parameters were tuned to operate just above the ablation threshold of the contaminants
+    (approximately 0.8 J/cm²) but well below the thermal destruction point of the beech lignin (380°C). This selective removal
+    is confirmed by the absence of charring or discoloration.
+
+
+    Analysis confirms the preservation of the primary cell wall structure. There is no evidence of melting, splintering, or
+    significant material loss from the wood itself, indicating a controlled ablation process that leveraged the differential
+    absorption of laser energy between the contaminant and the substrate. The surface is clean and chemically unaltered, suitable
+    for subsequent conservation treatments.'
+  description: Microscopic analysis of beech surface before and after laser cleaning treatment
+  alt: Microscopic view of beech surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - beech_specific
+    contaminationProfile: beech surface contamination
+  microscopy:
+    parameters: Microscopic analysis of beech
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:16:34.762570Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Todd Dunning
+  materialProperties:
+    materialType: Wood
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Beech surface after laser cleaning showing detailed surface structure
+    url: /images/beech-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:16:53.374929'
+  captionIntegrated: true

@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
     value: 8.94
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 95
     description: Typical density for Hastelloy C-276 at room temperature
     min: 0.53
     max: 22.6
   thermalConductivity:
     value: 11.4
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 92
     description: Thermal conductivity at room temperature for Hastelloy C-276
     min: 6.0
@@ -34,14 +34,14 @@ materialProperties:
     max: 579.82
   thermalExpansion:
     value: 12.3
-    unit: "\u03BCm/m\xB7\xB0C"
+    unit: μm/m·°C
     confidence: 88
-    description: "Coefficient of thermal expansion at 20-100\xB0C for Hastelloy C-276"
+    description: Coefficient of thermal expansion at 20-100°C for Hastelloy C-276
     min: 1.7
     max: 34.9
   specificHeat:
     value: 427.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 85
     description: Specific heat capacity at room temperature
     min: 0
@@ -57,21 +57,19 @@ materialProperties:
     value: 0.35
     unit: ''
     confidence: 82
-    description: "Estimated reflectivity at common laser wavelengths (1-10 \u03BC\
-      m)"
+    description: Estimated reflectivity at common laser wavelengths (1-10 μm)
     min: null
     max: null
   ablationThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 85
-    description: Estimated laser ablation threshold for nanosecond pulses at 1064
-      nm
+    description: Estimated laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   oxidationResistance:
     value: 1200
-    unit: "\xB0C"
+    unit: °C
     confidence: 88
     description: Maximum continuous service temperature in oxidizing environments
     min: null
@@ -85,7 +83,7 @@ materialProperties:
     max: null
   electricalResistivity:
     value: 130
-    unit: "\u03BC\u03A9\xB7cm"
+    unit: μΩ·cm
     confidence: 90
     description: Electrical resistivity at room temperature
     min: null
@@ -102,7 +100,7 @@ materialProperties:
     max: 100.0
     min: 0.02
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 42.7
   laserReflectivity:
     confidence: 0.7
@@ -116,14 +114,14 @@ materialProperties:
     max: 174.0
     min: 0.2
     source: default_from_category_range
-    unit: "mm\xB2/s"
+    unit: mm²/s
     value: 3.7
   thermalDestructionPoint:
     confidence: 0.7
     max: 3422.0
     min: -38.8
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 1623.15
   thermalDestructionType:
     confidence: 0.8
@@ -138,8 +136,7 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Hastelloy surface cleaning without substrate
-      damage
+    description: Optimal average power for Hastelloy surface cleaning without substrate damage
     min: 80
     max: 120
   wavelength:
@@ -151,7 +148,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 50
-    unit: "\u03BCm"
+    unit: μm
     confidence: 87
     description: Beam spot diameter for precise cleaning with adequate energy density
     min: 30
@@ -160,16 +157,14 @@ machineSettings:
     value: 100
     unit: kHz
     confidence: 90
-    description: High repetition rate for efficient cleaning coverage while maintaining
-      thermal control
+    description: High repetition rate for efficient cleaning coverage while maintaining thermal control
     min: 50
     max: 200
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with
-      minimal HAZ
+    description: Nanosecond pulse duration for effective contaminant removal with minimal HAZ
     min: 5
     max: 20
   scanSpeed:
@@ -181,7 +176,7 @@ machineSettings:
     max: 2000
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 89
     description: Minimum fluence required for effective contaminant ablation on Hastelloy
     min: 1.5
@@ -190,8 +185,7 @@ machineSettings:
     value: 70
     unit: '%'
     confidence: 86
-    description: Optimal pulse overlap for uniform cleaning without excessive heat
-      accumulation
+    description: Optimal pulse overlap for uniform cleaning without excessive heat accumulation
     min: 50
     max: 85
   passCount:
@@ -215,13 +209,8 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Hastelloy surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Hastelloy surface undergoing laser cleaning showing precise contamination removal
     url: /images/hastelloy-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Hastelloy surface after laser cleaning showing detailed
-      surface structure
-    url: /images/hastelloy-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -278,8 +267,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -317,9 +305,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -340,3 +328,48 @@ author:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+caption:
+  beforeText: 'At 500x magnification, the Hastelloy surface is obscured by a non-uniform contamination layer, typically 5-15
+    micrometers thick. This layer appears as a topographical crust of embedded oxides and particulate matter, creating a rough,
+    textured landscape. The surface morphology is discontinuous, with patches of darker, porous oxides and scattered, brighter
+    foreign particles.
+
+
+    The underlying alloy''s metallic grain structure is not visible, as the contamination completely masks the substrate.
+    The layer exhibits micro-cracking and a splattered appearance, indicative of thermally grown oxides or process residues.
+    This coverage significantly alters the surface''s original topography, creating a matte, non-reflective finish at the
+    microscopic level that compromises the base material''s intended surface properties.'
+  afterText: 'Following laser cleaning, the 500x view reveals a complete transformation. The contamination crust has been
+    entirely removed, exposing the pristine, metallic Hastelloy substrate. The surface now displays the characteristic polygonal
+    grain structure of the alloy''s face-centered cubic crystalline arrangement.
+
+
+    The visual contrast is definitive; the rough, matte contamination layer is replaced by a smooth, clean metallic surface
+    with uniform reflectivity. Minor, sub-micrometer laser scan lines are visible, but no evidence of the former oxide layer
+    or embedded particulates remains. The process has successfully restored the native surface topography without the macroscopic
+    melting or heat-affected zone that would indicate substrate damage.'
+  description: Microscopic analysis of hastelloy surface before and after laser cleaning treatment
+  alt: Microscopic view of hastelloy surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - hastelloy_specific
+    contaminationProfile: hastelloy surface contamination
+  microscopy:
+    parameters: Microscopic analysis of hastelloy
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:22:33.552169Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Todd Dunning
+  materialProperties:
+    materialType: Metal
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Hastelloy surface after laser cleaning showing detailed surface structure
+    url: /images/hastelloy-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:22:47.069851'
+  captionIntegrated: true

@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Alabaster
 materialProperties:
   density:
     value: 2.32
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 95
     description: Bulk density of typical sandstone with moderate porosity
     min: 1.5
     max: 3.4
   thermalConductivity:
     value: 2.3
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 90
     description: Thermal conductivity at room temperature for dry sandstone
     min: 0.12
@@ -41,24 +41,23 @@ materialProperties:
     max: 100
   thermalExpansion:
     value: 12.2
-    unit: "\xD710\u207B\u2076/\xB0C"
+    unit: ×10⁻⁶/°C
     confidence: 88
     description: Coefficient of thermal expansion for quartz-rich sandstone
     min: 3.5
     max: 26.9
   specificHeat:
     value: 745.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 92
     description: Specific heat capacity at room temperature
     min: 705.5
     max: 1119.5
   thermalDiffusivity:
     value: 1.32
-    unit: "mm\xB2/s"
+    unit: mm²/s
     confidence: 85
-    description: Thermal diffusivity calculated from conductivity, density, and specific
-      heat
+    description: Thermal diffusivity calculated from conductivity, density, and specific heat
     min: 0.2
     max: 2.5
   porosity:
@@ -84,7 +83,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 85
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
@@ -101,7 +100,7 @@ materialProperties:
     max: 20.0
     min: 0.1
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 8.7
   laserReflectivity:
     confidence: 0.7
@@ -115,7 +114,7 @@ materialProperties:
     max: 1700.0
     min: 600.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 573.0
   thermalDestructionType:
     confidence: 0.8
@@ -125,11 +124,9 @@ materialProperties:
     value: 55.0
     unit: MPa
     confidence: 0.85
-    description: Compressive strength of sandstone is highly dependent on mineral
-      composition, cementation type, porosity, and grain size. Quartz-rich sandstones
-      with silica cementation exhibit the highest strengths, while clay-rich or poorly-cemented
-      sandstones show lower values. Anisotropy from bedding planes significantly affects
-      strength measurements.
+    description: Compressive strength of sandstone is highly dependent on mineral composition, cementation type, porosity,
+      and grain size. Quartz-rich sandstones with silica cementation exhibit the highest strengths, while clay-rich or poorly-cemented
+      sandstones show lower values. Anisotropy from bedding planes significantly affects strength measurements.
     source: ai_research_from_mechanical_properties
     min: 20
     max: 170
@@ -152,7 +149,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 200
-    unit: "\u03BCm"
+    unit: μm
     confidence: 90
     description: Beam spot diameter for effective coverage and energy density control
     min: 100
@@ -180,10 +177,9 @@ machineSettings:
     max: 1000
   energyDensity:
     value: 3.2
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without substrate
-      damage
+    description: Fluence threshold for effective contaminant removal without substrate damage
     min: 2.0
     max: 5.0
   overlapRatio:
@@ -214,13 +210,8 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Sandstone surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Sandstone surface undergoing laser cleaning showing precise contamination removal
     url: /images/sandstone-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Sandstone surface after laser cleaning showing detailed
-      surface structure
-    url: /images/sandstone-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -277,8 +268,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -316,9 +306,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -339,3 +329,44 @@ author:
   country: Italy
   expertise: Laser-Based Additive Manufacturing
   image: /images/author/alessandro-moretti.jpg
+caption:
+  beforeText: 'At 500x magnification, the sandstone surface is obscured by a dense, heterogeneous contamination layer approximately
+    20-50 micrometers thick. This layer consists of particulate matter, including carbonaceous soot and mineral dust, embedded
+    within a matrix of organic compounds and sulfate crusts. The original grain structure of the sandstone is largely hidden,
+    with only the tallest quartz grain peaks protruding through the contamination.
+
+
+    The surface exhibits a cracked, crust-like morphology, with the contaminant filling the natural porosity and micro-fractures
+    of the stone. This layer creates a continuous film that masks the stone''s inherent texture and mineralogical features.
+    The visual effect is a loss of surface definition and a uniform darkening, which alters the stone''s natural appearance
+    and compromises its substrate integrity.'
+  afterText: Laser cleaning has completely removed the contamination layer, revealing the pristine mineralogical surface.
+    The original grain-to-grain boundaries and the stone's inherent porosity are now fully exposed and clearly defined. The
+    surface texture has been restored to its natural state, characterized by the distinct, interlocking quartz grains and
+    a clean, open pore network. This reveals the true, unaltered substrate without mechanical or chemical alteration to the
+    stone itself.
+  description: Microscopic analysis of sandstone surface before and after laser cleaning treatment
+  alt: Microscopic view of sandstone surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - sandstone_specific
+    contaminationProfile: sandstone surface contamination
+  microscopy:
+    parameters: Microscopic analysis of sandstone
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:31:51.602618Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Alessandro Moretti
+  materialProperties:
+    materialType: Stone
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Sandstone surface after laser cleaning showing detailed surface structure
+    url: /images/sandstone-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:32:03.633142'
+  captionIntegrated: true

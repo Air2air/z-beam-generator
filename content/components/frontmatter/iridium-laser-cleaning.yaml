@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
     value: 22.56
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 98
     description: Highest density among elemental metals at room temperature
     min: 0.53
     max: 22.6
   thermalConductivity:
     value: 147.0
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 92
     description: High thermal conductivity at room temperature
     min: 6.0
@@ -41,23 +41,23 @@ materialProperties:
     max: 579.82
   thermalExpansion:
     value: 6.8
-    unit: "\u03BCm/m\xB7K"
+    unit: μm/m·K
     confidence: 90
-    description: "Low coefficient of thermal expansion at 20\xB0C"
+    description: Low coefficient of thermal expansion at 20°C
     min: 1.7
     max: 34.9
   thermalDiffusivity:
     value: 31.5
-    unit: "cm\xB2/s"
+    unit: cm²/s
     confidence: 85
     description: Thermal diffusivity at room temperature
     min: 0
     max: 191.376
   specificHeat:
     value: 129.1
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 88
-    description: "Specific heat capacity at 25\xB0C"
+    description: Specific heat capacity at 25°C
     min: 0
     max: 1994.6
   absorptionCoefficient:
@@ -76,14 +76,14 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 2.8
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 80
     description: Estimated ablation threshold for nanosecond lasers at 1064 nm
     min: null
     max: null
   oxidationResistance:
     value: 2000
-    unit: "\xB0C"
+    unit: °C
     confidence: 90
     description: Temperature limit for significant oxidation in air
     min: null
@@ -92,7 +92,7 @@ materialProperties:
     value: FCC
     unit: crystal system
     confidence: 95
-    description: "Face-centered cubic structure with lattice parameter 3.839 \xC5"
+    description: Face-centered cubic structure with lattice parameter 3.839 Å
     min: null
     max: null
   laserAbsorption:
@@ -100,7 +100,7 @@ materialProperties:
     max: 100.0
     min: 0.02
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 38.7
   laserReflectivity:
     confidence: 0.7
@@ -114,7 +114,7 @@ materialProperties:
     max: 3422.0
     min: -38.8
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 1691.6
   thermalDestructionType:
     confidence: 0.8
@@ -129,8 +129,7 @@ machineSettings:
     value: 45
     unit: W
     confidence: 90
-    description: Optimal average power for Iridium oxide removal without substrate
-      damage
+    description: Optimal average power for Iridium oxide removal without substrate damage
     min: 30
     max: 60
   wavelength:
@@ -142,7 +141,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 80
-    unit: "\u03BCm"
+    unit: μm
     confidence: 84
     description: Optimal beam diameter for precise Iridium surface treatment
     min: 50
@@ -156,7 +155,7 @@ machineSettings:
     max: 200
   fluenceThreshold:
     value: 2.8
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 88
     description: Minimum fluence required for effective Iridium contamination ablation
     min: 1.5
@@ -191,7 +190,7 @@ machineSettings:
     max: 5
   energyDensity:
     value: 3.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 89
     description: Optimal energy density for Iridium surface processing
     min: 2.0
@@ -205,10 +204,6 @@ images:
   hero:
     alt: Iridium surface undergoing laser cleaning showing precise contamination removal
     url: /images/iridium-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Iridium surface after laser cleaning showing detailed
-      surface structure
-    url: /images/iridium-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -265,8 +260,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -304,9 +298,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -327,3 +321,48 @@ author:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+caption:
+  beforeText: 'At 500x magnification, the iridium surface is obscured by a non-uniform contamination layer approximately 2-5
+    micrometers thick. This layer consists of amorphous carbonaceous deposits and fine, embedded particulate matter, creating
+    a topographically complex and textured landscape. The surface exhibits a matte, dark gray appearance with localized discoloration,
+    indicating varying chemical compositions of the contaminants.
+
+
+    The contamination does not form a continuous film but rather appears as agglomerated islands, creating peaks and valleys
+    across the surface. This morphology suggests a history of exposure to high-temperature organic compounds or oxidizing
+    environments. The underlying iridium''s metallic luster is completely absent, and the original surface finish is undetectable
+    beneath this insulating layer, which would significantly impede thermal and electrical conductivity.'
+  afterText: 'Laser cleaning has completely removed the contamination layer, revealing the underlying iridium substrate. The
+    surface now exhibits a uniform, clean metallic luster with the characteristic grain structure of the polycrystalline metal
+    clearly visible. The previously obscured micro-topography is now fully resolved, showing a smooth surface free of particulate
+    matter and discoloration.
+
+
+    The transformation is evident in the restoration of iridium''s intrinsic reflectivity and the elimination of the insulating
+    contamination barrier. The cleaned surface displays minimal laser interaction marks, confirming the process''s selectivity
+    in removing contaminants without damaging the high-value substrate.'
+  description: Microscopic analysis of iridium surface before and after laser cleaning treatment
+  alt: Microscopic view of iridium surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - iridium_specific
+    contaminationProfile: iridium surface contamination
+  microscopy:
+    parameters: Microscopic analysis of iridium
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:23:31.829788Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Todd Dunning
+  materialProperties:
+    materialType: Metal
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Iridium surface after laser cleaning showing detailed surface structure
+    url: /images/iridium-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:23:45.485973'
+  captionIntegrated: true

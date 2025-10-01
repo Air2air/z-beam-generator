@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Ash
 materialProperties:
   density:
     value: 0.52
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 95
     description: Average density of dry pine wood at 12% moisture content
     min: 0.12
     max: 1.25
   thermalConductivity:
     value: 0.14
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 90
     description: Thermal conductivity perpendicular to grain direction
     min: 0.04
@@ -41,23 +41,23 @@ materialProperties:
     max: 3299.24
   thermalExpansion:
     value: 27.4
-    unit: "10^-6/\xB0C"
+    unit: 10^-6/°C
     confidence: 88
     description: Coefficient of thermal expansion perpendicular to grain
     min: 0
     max: 33.0
   thermalDiffusivity:
     value: 0.165
-    unit: "mm\xB2/s"
+    unit: mm²/s
     confidence: 85
     description: Thermal diffusivity at room temperature
     min: 0
     max: 0.209
   specificHeat:
     value: 1380.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 92
-    description: "Specific heat capacity at 20\xB0C"
+    description: Specific heat capacity at 20°C
     min: 695.0
     max: 2555.0
   absorptionCoefficient:
@@ -76,7 +76,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 1.2
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 85
     description: Minimum fluence required for material removal with nanosecond pulses
     min: null
@@ -90,7 +90,7 @@ materialProperties:
     max: null
   surfaceRoughness:
     value: 3.5
-    unit: "\u03BCm"
+    unit: μm
     confidence: 85
     description: Average surface roughness (Ra) of planed pine surface
     min: null
@@ -100,7 +100,7 @@ materialProperties:
     max: 50.0
     min: 1.0
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 32.7
   laserReflectivity:
     confidence: 0.7
@@ -114,7 +114,7 @@ materialProperties:
     max: 500.0
     min: 200.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 427.0
   thermalDestructionType:
     confidence: 0.8
@@ -139,7 +139,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: "\u03BCm"
+    unit: μm
     confidence: 89
     description: Beam spot diameter for precise cleaning control
     min: 50
@@ -155,8 +155,7 @@ machineSettings:
     value: 100
     unit: ns
     confidence: 85
-    description: Nanosecond pulses for efficient contaminant removal with minimal
-      substrate damage
+    description: Nanosecond pulses for efficient contaminant removal with minimal substrate damage
     min: 50
     max: 200
   scanSpeed:
@@ -168,10 +167,9 @@ machineSettings:
     max: 1000
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 91
-    description: Fluence threshold for effective contaminant removal without wood
-      damage
+    description: Fluence threshold for effective contaminant removal without wood damage
     min: 1.5
     max: 4.0
   overlapRatio:
@@ -198,10 +196,6 @@ images:
   hero:
     alt: Pine surface undergoing laser cleaning showing precise contamination removal
     url: /images/pine-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Pine surface after laser cleaning showing detailed surface
-      structure
-    url: /images/pine-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -258,8 +252,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -297,9 +290,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -320,3 +313,42 @@ author:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+caption:
+  beforeText: 'At 500x magnification, the contaminated pine surface reveals a complex, occluding layer of foreign material.
+    A discontinuous film, approximately 5-15 micrometers thick, coats the wood''s cellular structure. This layer consists
+    of particulate matter embedded in an amorphous matrix, which fills the natural pores and valleys of the wood''s grain.
+
+
+    The underlying tracheids—the long, hollow cells characteristic of pine—are partially obscured. Their typical polygonal
+    cross-sections are blurred by the contamination, which adheres strongly to the micro-fibrils of the cell walls. The surface
+    texture is homogenized, with the original roughness of 3.5 µm (Ra) effectively smoothed over by the deposited layer, masking
+    the wood''s intrinsic anisotropic pattern.'
+  afterText: Laser cleaning has fully restored the pine's microscopic topography. The occluding contamination layer is entirely
+    removed, revealing the清晰的, open structure of the tracheids and resin canals. The original surface roughness is re-established,
+    and the wood's cellular architecture is now fully visible without any residual film or particulate matter. The transformation
+    is defined by the complete exposure of the pristine substrate.
+  description: Microscopic analysis of pine surface before and after laser cleaning treatment
+  alt: Microscopic view of pine surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - pine_specific
+    contaminationProfile: pine surface contamination
+  microscopy:
+    parameters: Microscopic analysis of pine
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:27:17.574965Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Todd Dunning
+  materialProperties:
+    materialType: Wood
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Pine surface after laser cleaning showing detailed surface structure
+    url: /images/pine-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:27:28.747863'
+  captionIntegrated: true

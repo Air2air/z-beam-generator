@@ -6,16 +6,16 @@ description: Laser cleaning parameters for Borosilicate Glass
 materialProperties:
   density:
     value: 2.202
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 98
     description: Density of high-purity fused silica at room temperature
     min: 1.2
     max: 7.6
   thermalConductivity:
     value: 1.38
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 92
-    description: "Thermal conductivity at room temperature (20\xB0C)"
+    description: Thermal conductivity at room temperature (20°C)
     min: 0
     max: 38.422
   hardness:
@@ -34,21 +34,21 @@ materialProperties:
     max: 373.5
   thermalExpansion:
     value: 0.55
-    unit: "\xD710\u207B\u2076/\xB0C"
+    unit: ×10⁻⁶/°C
     confidence: 96
-    description: "Coefficient of thermal expansion (20-300\xB0C)"
+    description: Coefficient of thermal expansion (20-300°C)
     min: 0.1
     max: 15
   thermalDiffusivity:
     value: 8.6
-    unit: "mm\xB2/s"
+    unit: mm²/s
     confidence: 88
     description: Thermal diffusivity at room temperature
     min: 0
     max: 13.7
   specificHeat:
     value: 741.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 90
     description: Specific heat capacity at room temperature
     min: 653.0
@@ -76,14 +76,14 @@ materialProperties:
     max: null
   laserDamageThreshold:
     value: 15
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 85
     description: Laser-induced damage threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   ablationThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 82
     description: Ablation threshold for femtosecond pulses at 800 nm
     min: null
@@ -114,7 +114,7 @@ materialProperties:
     max: 10.0
     min: 0.001
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 0.96
   laserReflectivity:
     confidence: 0.7
@@ -135,7 +135,7 @@ materialProperties:
     max: 1723.0
     min: 500.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 1683.0
   thermalDestructionType:
     confidence: 0.8
@@ -149,21 +149,19 @@ machineSettings:
     value: 15
     unit: W
     confidence: 90
-    description: Average power range for Fused Silica surface cleaning without thermal
-      damage
+    description: Average power range for Fused Silica surface cleaning without thermal damage
     min: 5
     max: 30
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength with moderate absorption in Fused Silica for controlled
-      ablation
+    description: Near-IR wavelength with moderate absorption in Fused Silica for controlled ablation
     min: 532
     max: 10640
   spotSize:
     value: 50
-    unit: "\u03BCm"
+    unit: μm
     confidence: 82
     description: Beam spot diameter for precise cleaning with sufficient energy density
     min: 30
@@ -172,16 +170,14 @@ machineSettings:
     value: 20
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning with adequate cooling
-      between pulses
+    description: Optimal repetition rate for efficient cleaning with adequate cooling between pulses
     min: 10
     max: 50
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient contaminant removal with
-      minimal substrate heating
+    description: Nanosecond pulse duration for efficient contaminant removal with minimal substrate heating
     min: 5
     max: 20
   scanSpeed:
@@ -193,18 +189,16 @@ machineSettings:
     max: 1000
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without damaging
-      Fused Silica substrate
+    description: Fluence threshold for effective contaminant removal without damaging Fused Silica substrate
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for uniform cleaning without excessive energy
-      deposition
+    description: Optimal pulse overlap for uniform cleaning without excessive energy deposition
     min: 30
     max: 70
   passCount:
@@ -216,10 +210,9 @@ machineSettings:
     max: 5
   energyDensity:
     value: 3.2
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 88
-    description: Optimal energy density for efficient contaminant ablation while preserving
-      substrate integrity
+    description: Optimal energy density for efficient contaminant ablation while preserving substrate integrity
     min: 2.0
     max: 5.0
 regulatoryStandards:
@@ -229,13 +222,8 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Fused Silica surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Fused Silica surface undergoing laser cleaning showing precise contamination removal
     url: /images/fused-silica-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Fused Silica surface after laser cleaning showing detailed
-      surface structure
-    url: /images/fused-silica-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -292,8 +280,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -331,9 +318,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -354,3 +341,48 @@ author:
   country: Taiwan
   expertise: Laser Materials Processing
   image: /images/author/yi-chun-lin.jpg
+caption:
+  beforeText: 'At 500x magnification, the fused silica surface is obscured by a non-uniform contamination layer. This layer,
+    measuring 1-5 micrometers thick, consists of particulate matter embedded in a thin film of organic residue. The particulates,
+    ranging from sub-micron to 10 micrometers in size, create a textured, irregular topography that scatters light and disrupts
+    the substrate''s inherent smoothness.
+
+
+    The underlying fused silica surface is largely hidden. The contamination film exhibits a mottled, hazy appearance with
+    visible interference fringes, indicating variable thickness. This layer adheres to the glass, filling the native surface
+    pores and creating a microscopically rough texture that significantly degrades optical transmission and can act as a nucleation
+    site for further contamination or laser damage.'
+  afterText: 'Following laser cleaning, the 500x view reveals the pristine fused silica substrate. The contamination layer
+    has been completely removed, exposing the original polished surface which now exhibits a uniform, featureless plane. The
+    microscopic particulate embedment and organic film are absent, restoring the surface to its intrinsic smoothness with
+    a measured roughness of approximately 0.5 nm Ra.
+
+
+    This restoration eliminates the light-scattering sites, confirming the process''s effectiveness in ablating contaminants
+    without imparting thermal stress or micro-fractures to the underlying glass. The surface is now optically clear and functionally
+    prepared for high-performance applications.'
+  description: Microscopic analysis of fused silica surface before and after laser cleaning treatment
+  alt: Microscopic view of fused silica surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - fused silica_specific
+    contaminationProfile: fused silica surface contamination
+  microscopy:
+    parameters: Microscopic analysis of fused silica
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:21:10.576443Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Yi-Chun Lin
+  materialProperties:
+    materialType: Glass
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Fused Silica surface after laser cleaning showing detailed surface structure
+    url: /images/fused-silica-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:21:24.519053'
+  captionIntegrated: true

@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Borosilicate Glass
 materialProperties:
   density:
     value: 2.49
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 95
     description: Density of soda-lime tempered glass at room temperature
     min: 1.2
     max: 7.6
   thermalConductivity:
     value: 1.05
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 88
     description: Thermal conductivity of tempered glass at room temperature
     min: 0
@@ -41,21 +41,21 @@ materialProperties:
     max: 373.5
   thermalExpansion:
     value: 8.5
-    unit: "10\u207B\u2076/\xB0C"
+    unit: 10⁻⁶/°C
     confidence: 92
     description: Coefficient of thermal expansion for soda-lime glass
     min: 0.1
     max: 15
   thermalDiffusivity:
     value: 0.84
-    unit: "mm\xB2/s"
+    unit: mm²/s
     confidence: 85
     description: Thermal diffusivity at room temperature
     min: 0
     max: 13.7
   specificHeat:
     value: 840.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 90
     description: Specific heat capacity of tempered glass
     min: 653.0
@@ -69,7 +69,7 @@ materialProperties:
     max: null
   absorptionCoefficient:
     value: 0.1
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     confidence: 82
     description: Optical absorption coefficient at 1064 nm wavelength
     min: null
@@ -97,14 +97,14 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 5.0
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 80
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   laserDamageThreshold:
     value: 10.0
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 82
     description: Laser-induced damage threshold for tempered glass surfaces
     min: null
@@ -118,14 +118,14 @@ materialProperties:
     max: null
   surfaceRoughness:
     value: 0.01
-    unit: "\u03BCm Ra"
+    unit: μm Ra
     confidence: 85
     description: Typical surface roughness of commercial tempered glass
     min: null
     max: null
   thermalShockResistance:
     value: 180
-    unit: "\xB0C"
+    unit: °C
     confidence: 85
     description: Maximum temperature differential tempered glass can withstand
     min: null
@@ -135,7 +135,7 @@ materialProperties:
     max: 10.0
     min: 0.001
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 4.2
   laserReflectivity:
     confidence: 0.7
@@ -149,7 +149,7 @@ materialProperties:
     max: 1723.0
     min: 500.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 1150.0
   thermalDestructionType:
     confidence: 0.8
@@ -164,21 +164,19 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for tempered glass surface cleaning without
-      thermal damage
+    description: Optimal average power for tempered glass surface cleaning without thermal damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimized for tempered glass processing with minimal
-      absorption
+    description: Near-IR wavelength optimized for tempered glass processing with minimal absorption
     min: 532
     max: 10640
   spotSize:
     value: 50
-    unit: "\u03BCm"
+    unit: μm
     confidence: 84
     description: Beam spot diameter for precise cleaning control on glass surface
     min: 30
@@ -192,10 +190,9 @@ machineSettings:
     max: 200
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 88
-    description: Threshold fluence for effective contaminant removal without glass
-      substrate damage
+    description: Threshold fluence for effective contaminant removal without glass substrate damage
     min: 1.8
     max: 3.2
   pulseWidth:
@@ -216,8 +213,7 @@ machineSettings:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for complete surface coverage without excessive
-      energy deposition
+    description: Optimal pulse overlap for complete surface coverage without excessive energy deposition
     min: 40
     max: 60
   passCount:
@@ -229,7 +225,7 @@ machineSettings:
     max: 3
   energyDensity:
     value: 12.7
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 82
     description: Calculated energy density based on spot size and pulse energy parameters
     min: 8.0
@@ -241,13 +237,8 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Tempered Glass surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Tempered Glass surface undergoing laser cleaning showing precise contamination removal
     url: /images/tempered-glass-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Tempered Glass surface after laser cleaning showing detailed
-      surface structure
-    url: /images/tempered-glass-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -304,8 +295,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -343,9 +333,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -366,3 +356,55 @@ author:
   country: Taiwan
   expertise: Laser Materials Processing
   image: /images/author/yi-chun-lin.jpg
+caption:
+  beforeText: 'At 500x magnification, the contaminated tempered glass surface reveals a complex layer of particulate and film-based
+    contaminants. A discontinuous film, approximately 0.5–2.0 µm thick, covers large areas, creating a hazy, textured appearance
+    that obscures the underlying glass. This film is punctuated by localized accumulations of particulate matter, ranging
+    from sub-micron specks to agglomerates up to 10 µm in diameter.
+
+
+    The surface topography is dominated by these foreign deposits rather than the glass itself. The contaminants scatter light,
+    reducing optical clarity, and create a microscopically rough landscape. The presence of these adhered particles and films
+    indicates a surface that is not in its pristine, engineered state, which would compromise its performance in precision
+    applications where flawless transmission and a defect-free surface are critical.'
+  afterText: 'Following the laser cleaning process, the 500x magnification view reveals a complete transformation of the surface.
+    The opaque contamination layer has been entirely removed, exposing the pristine, homogeneous substrate of the tempered
+    glass. The surface now exhibits the characteristic smoothness of the manufactured material, with a measured roughness
+    (Ra) returning to its intrinsic value of approximately 0.01 µm.
+
+
+    The laser process has effectively ablated the contaminant film without inducing micro-fractures or thermal stress marks
+    on the underlying glass. This is confirmed by the absence of the particulate agglomerates and the restoration of a continuous,
+    optically clear surface. The cleaning threshold was carefully maintained below the material''s laser damage threshold
+    of 10 J/cm² to preserve the glass''s structural integrity.
+
+
+    The result is a surface defined by its intrinsic properties. The high transmissivity of 92% for visible light is restored,
+    and the compressive surface layer, which gives tempered glass its tensile strength of 165 MPa, remains uncompromised.
+    The surface is now suitable for high-precision applications in optics and electronics, where even microscopic contaminants
+    can impair function.'
+  description: Microscopic analysis of tempered glass surface before and after laser cleaning treatment
+  alt: Microscopic view of tempered glass surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - tempered glass_specific
+    contaminationProfile: tempered glass surface contamination
+  microscopy:
+    parameters: Microscopic analysis of tempered glass
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:36:16.867605Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Yi-Chun Lin
+  materialProperties:
+    materialType: Glass
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Tempered Glass surface after laser cleaning showing detailed surface structure
+    url: /images/tempered-glass-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:36:34.209735'
+  captionIntegrated: true

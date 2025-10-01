@@ -6,16 +6,16 @@ description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
     value: 19.25
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 98
     description: Pure tungsten density at room temperature
     min: 0.53
     max: 22.6
   thermalConductivity:
     value: 173.0
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 95
-    description: "Thermal conductivity at 20\xB0C"
+    description: Thermal conductivity at 20°C
     min: 6.0
     max: 429.0
   tensileStrength:
@@ -41,23 +41,23 @@ materialProperties:
     max: 579.82
   thermalExpansion:
     value: 4.5
-    unit: "\xD710\u207B\u2076/K"
+    unit: ×10⁻⁶/K
     confidence: 92
-    description: "Coefficient of thermal expansion at 20\xB0C"
+    description: Coefficient of thermal expansion at 20°C
     min: 1.7
     max: 34.9
   specificHeat:
     value: 132.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 90
     description: Specific heat capacity at room temperature
     min: 0
     max: 1994.6
   thermalDiffusivity:
     value: 67.8
-    unit: "mm\xB2/s"
+    unit: mm²/s
     confidence: 88
-    description: "Thermal diffusivity at 20\xB0C"
+    description: Thermal diffusivity at 20°C
     min: 0
     max: 191.376
   absorptionCoefficient:
@@ -76,7 +76,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 2.8
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 82
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
@@ -90,7 +90,7 @@ materialProperties:
     max: null
   oxidationResistance:
     value: 600
-    unit: "\xB0C"
+    unit: °C
     confidence: 90
     description: Maximum temperature for protective oxide layer formation
     min: null
@@ -100,7 +100,7 @@ materialProperties:
     max: 100.0
     min: 0.02
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 42.7
   laserReflectivity:
     confidence: 0.7
@@ -114,7 +114,7 @@ materialProperties:
     max: 3422.0
     min: -38.8
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 1653.0
   thermalDestructionType:
     confidence: 0.8
@@ -129,8 +129,7 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power range for Tungsten oxide removal without substrate
-      damage
+    description: Optimal average power range for Tungsten oxide removal without substrate damage
     min: 80
     max: 120
   wavelength:
@@ -142,7 +141,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 50
-    unit: "\u03BCm"
+    unit: μm
     confidence: 84
     description: Optimal beam spot diameter for precision cleaning
     min: 30
@@ -156,7 +155,7 @@ machineSettings:
     max: 200
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 88
     description: Threshold fluence for effective Tungsten oxide ablation
     min: 1.8
@@ -191,10 +190,9 @@ machineSettings:
     max: 5
   energyDensity:
     value: 12.7
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 86
-    description: Calculated energy density based on power, spot size, and repetition
-      rate
+    description: Calculated energy density based on power, spot size, and repetition rate
     min: 8.5
     max: 16.2
 regulatoryStandards:
@@ -204,13 +202,8 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Tungsten surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Tungsten surface undergoing laser cleaning showing precise contamination removal
     url: /images/tungsten-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Tungsten surface after laser cleaning showing detailed
-      surface structure
-    url: /images/tungsten-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -267,8 +260,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -306,9 +298,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -329,3 +321,41 @@ author:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+caption:
+  beforeText: 'At 500x magnification, the tungsten surface is obscured by a non-uniform contamination layer, typically 5-15
+    micrometers thick. This layer consists of embedded carbonaceous soot and oxide scale, appearing as a dark, textured crust
+    with visible cracking. The underlying tungsten''s metallic luster is completely absent.
+
+
+    The surface morphology is characterized by irregular, sintered particles and areas of discoloration, ranging from iridescent
+    blue to dull gray, indicative of thermal oxidation. The contamination adheres strongly, filling the natural micro-texture
+    of the tungsten substrate and creating a discontinuous, matte finish that scatters light.'
+  afterText: Laser cleaning has completely removed the contamination layer, revealing the pristine, underlying tungsten substrate.
+    The surface now exhibits a uniform, light gray, metallic appearance with restored reflectivity. The process has eliminated
+    all oxide discoloration and particulate matter, exposing the material's intrinsic micro-texture without thermal damage
+    to the base metal.
+  description: Microscopic analysis of tungsten surface before and after laser cleaning treatment
+  alt: Microscopic view of tungsten surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - tungsten_specific
+    contaminationProfile: tungsten surface contamination
+  microscopy:
+    parameters: Microscopic analysis of tungsten
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T19:25:59.682478Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Todd Dunning
+  materialProperties:
+    materialType: Metal
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Tungsten surface after laser cleaning showing detailed surface structure
+    url: /images/tungsten-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T19:26:09.775124'
+  captionIntegrated: true

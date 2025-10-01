@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
     value: 13.31
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 98
     description: Density of pure hafnium at room temperature
     min: 0.53
     max: 22.6
   thermalConductivity:
     value: 23.0
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 92
     description: Thermal conductivity at room temperature
     min: 6.0
@@ -41,21 +41,21 @@ materialProperties:
     max: 579.82
   thermalExpansion:
     value: 5.9
-    unit: "10\u207B\u2076/K"
+    unit: 10⁻⁶/K
     confidence: 90
-    description: "Coefficient of linear thermal expansion (20-100\xB0C)"
+    description: Coefficient of linear thermal expansion (20-100°C)
     min: 1.7
     max: 34.9
   specificHeat:
     value: 144.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 88
     description: Specific heat capacity at room temperature
     min: 0
     max: 1994.6
   thermalDiffusivity:
     value: 22.1
-    unit: "mm\xB2/s"
+    unit: mm²/s
     confidence: 85
     description: Thermal diffusivity at room temperature
     min: 0
@@ -76,10 +76,9 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 75
-    description: Estimated laser ablation threshold for nanosecond pulses at 1064
-      nm
+    description: Estimated laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   crystallineStructure:
@@ -101,7 +100,7 @@ materialProperties:
     max: 100.0
     min: 0.02
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 42.7
   laserReflectivity:
     confidence: 0.7
@@ -115,7 +114,7 @@ materialProperties:
     max: 3422.0
     min: -38.8
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 2222.0
   thermalDestructionType:
     confidence: 0.8
@@ -141,7 +140,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 50
-    unit: "\u03BCm"
+    unit: μm
     confidence: 84
     description: Optimal beam diameter for precise Hafnium surface treatment
     min: 30
@@ -155,7 +154,7 @@ machineSettings:
     max: 200
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 88
     description: Minimum fluence required for effective Hafnium oxide ablation
     min: 1.8
@@ -197,10 +196,6 @@ images:
   hero:
     alt: Hafnium surface undergoing laser cleaning showing precise contamination removal
     url: /images/hafnium-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Hafnium surface after laser cleaning showing detailed
-      surface structure
-    url: /images/hafnium-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -257,8 +252,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -296,9 +290,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -319,3 +313,51 @@ author:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+caption:
+  beforeText: 'At 500x magnification, the hafnium surface is obscured by a non-uniform contamination layer, approximately
+    5-15 micrometers thick. This layer consists of amorphous carbonaceous deposits and embedded particulate matter, creating
+    a topographically complex and textured landscape. The underlying hafnium''s metallic structure is completely concealed.
+
+
+    The contamination exhibits a cracked, mudflat-like morphology with visible porosity. This layer disrupts the native surface,
+    masking the material''s intrinsic properties and creating potential sites for further corrosion or adhesion failure. The
+    surface is visually dominated by the contaminant''s characteristics rather than those of the base metal.'
+  afterText: 'Laser cleaning has completely removed the contamination layer, revealing the true hafnium substrate. The surface
+    now exhibits the characteristic features of the metal''s hexagonal close-packed (HCP) crystalline structure, visible as
+    a uniform grain pattern. The prior 5-15 micrometer contaminant layer has been eliminated, restoring the original surface
+    topography.
+
+
+    The process has achieved this through laser ablation, where precisely controlled pulses exceeding the 2.5 J/cm² ablation
+    threshold vaporized the contaminants. The high thermal diffusivity of hafnium (22.1 mm²/s) allowed rapid heat dissipation,
+    preventing thermal damage to the substrate. This selective removal preserved the base metal''s integrity.
+
+
+    The resulting surface is a clean, metallically pure interface with minimal micro-scale pitting. This restored surface
+    is now optimal for subsequent manufacturing processes, such as coating adhesion or welding, as it provides a consistent,
+    contaminant-free foundation with predictable material properties.'
+  description: Microscopic analysis of hafnium surface before and after laser cleaning treatment
+  alt: Microscopic view of hafnium surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - hafnium_specific
+    contaminationProfile: hafnium surface contamination
+  microscopy:
+    parameters: Microscopic analysis of hafnium
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:22:16.850301Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Todd Dunning
+  materialProperties:
+    materialType: Metal
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Hafnium surface after laser cleaning showing detailed surface structure
+    url: /images/hafnium-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:22:32.087859'
+  captionIntegrated: true

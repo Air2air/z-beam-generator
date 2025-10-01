@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Ash
 materialProperties:
   density:
     value: 0.63
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 92
     description: Average density of standard plywood (species-dependent)
     min: 0.12
     max: 1.25
   thermalConductivity:
     value: 0.12
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 88
     description: Thermal conductivity perpendicular to grain direction
     min: 0.04
@@ -34,14 +34,14 @@ materialProperties:
     max: 3299.24
   thermalExpansion:
     value: 25.0
-    unit: "10^-6/\xB0C"
+    unit: 10^-6/°C
     confidence: 82
     description: Linear thermal expansion coefficient in plane direction
     min: 0
     max: 33.0
   specificHeat:
     value: 1210.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 90
     description: Specific heat capacity at room temperature
     min: 695.0
@@ -62,7 +62,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 0.8
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 82
     description: Laser fluence threshold for wood material removal
     min: null
@@ -76,7 +76,7 @@ materialProperties:
     max: null
   surfaceRoughness:
     value: 3.2
-    unit: "\u03BCm Ra"
+    unit: μm Ra
     confidence: 83
     description: Typical surface roughness of finished plywood
     min: null
@@ -93,7 +93,7 @@ materialProperties:
     max: 50.0
     min: 1.0
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 32.7
   laserReflectivity:
     confidence: 0.7
@@ -107,14 +107,14 @@ materialProperties:
     max: 0.4
     min: 0.0001
     source: default_from_category_range
-    unit: "mm\xB2/s"
+    unit: mm²/s
     value: 0.00145
   thermalDestructionPoint:
     confidence: 0.7
     max: 500.0
     min: 200.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 300.0
   thermalDestructionType:
     confidence: 0.8
@@ -140,7 +140,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: "\u03BCm"
+    unit: μm
     confidence: 90
     description: Beam spot diameter for precise cleaning control
     min: 50
@@ -168,10 +168,9 @@ machineSettings:
     max: 1000
   energyDensity:
     value: 1.27
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 86
-    description: Fluence threshold for effective contaminant removal without substrate
-      damage
+    description: Fluence threshold for effective contaminant removal without substrate damage
     min: 0.8
     max: 2.0
   overlapRatio:
@@ -205,10 +204,6 @@ images:
   hero:
     alt: Plywood surface undergoing laser cleaning showing precise contamination removal
     url: /images/plywood-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Plywood surface after laser cleaning showing detailed
-      surface structure
-    url: /images/plywood-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -265,8 +260,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -304,9 +298,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -327,3 +321,49 @@ author:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+caption:
+  beforeText: At 500x magnification, the plywood surface is obscured by a discontinuous contamination layer, approximately
+    5-15 micrometers thick. This layer consists of particulate matter embedded in a matrix of organic residues, which fills
+    the natural porous structure of the wood. The surface texture appears matte and uneven, with the original wood grain and
+    cellular structure largely masked. The contaminants create a topographical landscape that increases the measured surface
+    roughness, significantly deviating from the substrate's inherent 3.2 µm Ra profile.
+  afterText: 'The laser cleaning process has resulted in a complete removal of the superficial contamination layer. The surface
+    now reveals the intact, underlying wood fiber structure, with individual tracheids and vessel elements clearly visible.
+    The original porous network, characteristic of wood''s approximately 45% porosity, is fully exposed and free of obstructive
+    debris.
+
+
+    Direct comparison shows the elimination of the matte, occluding film. The surface topography now corresponds directly
+    to the plywood''s inherent grain pattern, restoring its natural surface roughness profile. There is no evidence of charring
+    or thermal degradation, indicating the laser parameters were maintained below the material''s 300°C thermal destruction
+    point.
+
+
+    The cleaning has achieved selective ablation, where the laser energy was preferentially absorbed by the contaminants,
+    which typically have a higher absorption coefficient than the wood substrate. This has resulted in a clean, well-defined
+    interface at the wood surface without damaging the structural integrity of the cellulose and lignin matrix.'
+  description: Microscopic analysis of plywood surface before and after laser cleaning treatment
+  alt: Microscopic view of plywood surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - plywood_specific
+    contaminationProfile: plywood surface contamination
+  microscopy:
+    parameters: Microscopic analysis of plywood
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:27:45.277008Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Todd Dunning
+  materialProperties:
+    materialType: Wood
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Plywood surface after laser cleaning showing detailed surface structure
+    url: /images/plywood-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:27:59.144109'
+  captionIntegrated: true

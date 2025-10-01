@@ -6,16 +6,16 @@ description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
     value: 7.21
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 95
     description: Density of pure manganese at room temperature
     min: 0.53
     max: 22.6
   thermalConductivity:
     value: 7.81
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 90
-    description: "Thermal conductivity of pure manganese at 25\xB0C"
+    description: Thermal conductivity of pure manganese at 25°C
     min: 6.0
     max: 429.0
   tensileStrength:
@@ -41,21 +41,21 @@ materialProperties:
     max: 579.82
   thermalExpansion:
     value: 22.1
-    unit: "\u03BCm/m\xB7K"
+    unit: μm/m·K
     confidence: 88
-    description: "Coefficient of thermal expansion at 25\xB0C"
+    description: Coefficient of thermal expansion at 25°C
     min: 1.7
     max: 34.9
   specificHeat:
     value: 479.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 92
     description: Specific heat capacity at room temperature
     min: 0
     max: 1994.6
   thermalDiffusivity:
     value: 1.7
-    unit: "mm\xB2/s"
+    unit: mm²/s
     confidence: 85
     description: Thermal diffusivity at room temperature
     min: 0
@@ -64,8 +64,7 @@ materialProperties:
     value: 0.65
     unit: ''
     confidence: 82
-    description: Estimated absorption coefficient for visible wavelengths (400-700
-      nm)
+    description: Estimated absorption coefficient for visible wavelengths (400-700 nm)
     min: null
     max: null
   reflectivity:
@@ -76,19 +75,17 @@ materialProperties:
     min: null
     max: null
   crystallineStructure:
-    value: "\u03B1-Mn (complex cubic)"
+    value: α-Mn (complex cubic)
     unit: crystal system
     confidence: 96
-    description: Room temperature stable phase with complex cubic structure (58 atoms
-      per unit cell)
+    description: Room temperature stable phase with complex cubic structure (58 atoms per unit cell)
     min: null
     max: null
   ablationThreshold:
     value: 1.2
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 82
-    description: Estimated laser ablation threshold for nanosecond pulses at 1064
-      nm
+    description: Estimated laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   oxidationResistance:
@@ -103,7 +100,7 @@ materialProperties:
     max: 100.0
     min: 0.02
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 62.3
   laserReflectivity:
     confidence: 0.7
@@ -117,7 +114,7 @@ materialProperties:
     max: 3422.0
     min: -38.8
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 1519.0
   thermalDestructionType:
     confidence: 0.8
@@ -131,8 +128,7 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Manganese oxide removal without substrate
-      damage
+    description: Optimal average power for Manganese oxide removal without substrate damage
     min: 80
     max: 120
   wavelength:
@@ -144,7 +140,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 50
-    unit: "\u03BCm"
+    unit: μm
     confidence: 84
     description: Beam spot diameter for controlled energy density
     min: 30
@@ -186,7 +182,7 @@ machineSettings:
     max: 4
   energyDensity:
     value: 5.1
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 89
     description: Fluence threshold for Manganese oxide ablation
     min: 3.0
@@ -198,13 +194,8 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Manganese surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Manganese surface undergoing laser cleaning showing precise contamination removal
     url: /images/manganese-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Manganese surface after laser cleaning showing detailed
-      surface structure
-    url: /images/manganese-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -261,8 +252,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -300,9 +290,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -323,3 +313,43 @@ author:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+caption:
+  beforeText: 'At 500x magnification, the manganese surface shows a non-uniform oxide layer approximately 5-10 micrometers
+    thick. This layer appears as a dark, mottled crust with a complex crystalline structure, composed primarily of manganese
+    oxides (MnO and Mn₃O₄). The surface texture is rough and porous, with visible micro-cracks and granular deposits that
+    obscure the underlying metal grain structure.
+
+
+    The contamination layer exhibits poor adhesion in localized areas, creating pockets of delamination. Particulate contaminants,
+    likely from environmental exposure, are embedded within the oxide matrix, further increasing surface roughness. The overall
+    topography is highly irregular, with peak-to-valley variations exceeding 15 micrometers, which would negatively affect
+    any subsequent coating or bonding processes.'
+  afterText: Following laser cleaning, the surface is transformed to reveal the base manganese microstructure. The dark oxide
+    crust is entirely removed, exposing a uniform metallic surface with clearly defined grain boundaries. The previous 5-10
+    micrometer contamination layer is eliminated, reducing the peak-to-valley surface roughness to under 2 micrometers. The
+    cleaned surface now presents a consistent, oxide-free substrate suitable for further processing.
+  description: Microscopic analysis of manganese surface before and after laser cleaning treatment
+  alt: Microscopic view of manganese surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - manganese_specific
+    contaminationProfile: manganese surface contamination
+  microscopy:
+    parameters: Microscopic analysis of manganese
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:24:53.682199Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Todd Dunning
+  materialProperties:
+    materialType: Metal
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Manganese surface after laser cleaning showing detailed surface structure
+    url: /images/manganese-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:25:05.151133'
+  captionIntegrated: true

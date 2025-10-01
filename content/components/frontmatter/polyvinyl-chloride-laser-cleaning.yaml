@@ -6,16 +6,16 @@ description: Laser cleaning parameters for Polycarbonate (PVC)
 materialProperties:
   density:
     value: 1.38
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 95
     description: Density of rigid PVC at room temperature
     min: 0.85
     max: 2.2
   thermalConductivity:
     value: 0.19
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 90
-    description: "Thermal conductivity of rigid PVC at 20\xB0C"
+    description: Thermal conductivity of rigid PVC at 20°C
     min: 0.02
     max: 3
   tensileStrength:
@@ -41,21 +41,21 @@ materialProperties:
     max: 3629.98
   thermalExpansion:
     value: 75.0
-    unit: "10\u207B\u2076/\xB0C"
+    unit: 10⁻⁶/°C
     confidence: 88
     description: Linear thermal expansion coefficient for rigid PVC
     min: 10
     max: 200
   specificHeat:
     value: 900.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 85
     description: Specific heat capacity at room temperature
     min: 800.0
     max: 2000.0
   absorptionCoefficient:
     value: 850
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     confidence: 82
     description: Absorption coefficient at 1064 nm wavelength
     min: null
@@ -69,7 +69,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 0.8
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 85
     description: Laser ablation threshold for 1064 nm nanosecond pulses
     min: null
@@ -83,7 +83,7 @@ materialProperties:
     max: null
   surfaceRoughness:
     value: 0.8
-    unit: "\u03BCm Ra"
+    unit: μm Ra
     confidence: 82
     description: Typical surface roughness of extruded PVC
     min: null
@@ -93,7 +93,7 @@ materialProperties:
     max: 100.0
     min: 0.1
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 85.2
   laserReflectivity:
     confidence: 0.7
@@ -107,14 +107,14 @@ materialProperties:
     max: 1.0
     min: 0.05
     source: default_from_category_range
-    unit: "mm\xB2/s"
+    unit: mm²/s
     value: 0.52
   thermalDestructionPoint:
     confidence: 0.7
     max: 400.0
     min: 80.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 260.0
   thermalDestructionType:
     confidence: 0.8
@@ -143,7 +143,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: "\u03BCm"
+    unit: μm
     confidence: 89
     description: Optimal spot size for precision cleaning of PVC surfaces
     min: 50
@@ -157,14 +157,14 @@ machineSettings:
     max: 100
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 88
     description: Threshold fluence for effective PVC ablation without substrate damage
     min: 1.8
     max: 3.2
   energyDensity:
     value: 3.0
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 85
     description: Optimal energy density for controlled PVC removal
     min: 2.2
@@ -207,7 +207,7 @@ machineSettings:
     max: 70
   dwellTime:
     value: 200
-    unit: "\u03BCs"
+    unit: μs
     confidence: 82
     description: Optimal dwell time per spot for effective PVC ablation
     min: 100
@@ -222,10 +222,6 @@ images:
     alt: Polyvinyl Chloride surface undergoing laser cleaning showing precise contamination
       removal
     url: /images/polyvinyl-chloride-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Polyvinyl Chloride surface after laser cleaning showing
-      detailed surface structure
-    url: /images/polyvinyl-chloride-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -321,9 +317,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -344,3 +340,69 @@ author:
   country: Taiwan
   expertise: Laser Materials Processing
   image: /images/author/yi-chun-lin.jpg
+caption:
+  beforeText: 'At 500x magnification, the contaminated PVC surface shows a non-uniform
+    layer of organic and particulate matter, approximately 5-15 micrometers thick.
+    This layer obscures the underlying polymer texture, presenting as a discontinuous
+    film with embedded carbonaceous particles and fine dust. The contamination adheres
+    to the native surface roughness of the PVC, which has a baseline profile of 0.8
+    µm Ra, filling the microscopic valleys and creating a mottled, topographically
+    complex appearance.
+
+
+    The contamination itself exhibits a cracked-mud pattern in areas, suggesting a
+    dried residue. Isolated agglomerations of foreign material, some exceeding 20
+    micrometers in diameter, are randomly distributed across the surface. These features
+    indicate a combination of environmental settling and prior handling, which has
+    resulted in a composite layer that is visually distinct from the clean PVC substrate
+    beneath it.'
+  afterText: 'Laser cleaning produces a definitive transformation, returning the surface
+    to a state that closely resembles virgin PVC. The previously observed 5-15 micrometer
+    contamination layer has been completely removed. The underlying polymer substrate
+    is now fully exposed, revealing its intrinsic micro-texture with a measured roughness
+    of 0.8 µm Ra, consistent with the original extruded material. The removal process
+    was highly selective, ablating only the contaminant layer without melting or deforming
+    the PVC surface.
+
+
+    The visual evidence of this selectivity is clear. The "cracked-mud" patterning
+    and particulate agglomerations are entirely absent. In their place, the surface
+    exhibits a uniform, matte finish characteristic of the polymer''s composition.
+    There is no indication of heat-affected zones or thermal degradation, such as
+    bubbling or discoloration, which confirms the laser parameters were maintained
+    below the material''s ablation threshold of 0.8 J/cm².
+
+
+    Analysis confirms the surface is free of residual film. The cleaning process has
+    restored the material''s original properties, including its low reflectivity of
+    4.2% at the laser wavelength. This level of cleanliness is critical for subsequent
+    manufacturing steps, such as adhesion in painting or bonding, as it provides a
+    pristine, chemically consistent surface without altering the bulk properties of
+    the PVC component.'
+  description: Microscopic analysis of pvc surface before and after laser cleaning
+    treatment
+  alt: Microscopic view of pvc surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - pvc_specific
+    contaminationProfile: pvc surface contamination
+  microscopy:
+    parameters: Microscopic analysis of pvc
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T21:24:34.776304Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Yi-Chun Lin
+  materialProperties:
+    materialType: Plastic
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Polyvinyl Chloride surface after laser cleaning showing
+      detailed surface structure
+    url: /images/polyvinyl-chloride-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T21:24:54.286590'
+  captionIntegrated: true

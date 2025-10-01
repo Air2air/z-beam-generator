@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Carbon Fiber Reinforced Polymer
 materialProperties:
   density:
     value: 1.38
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 95
     description: Typical density range for unfilled polyester resin composites
     min: 0.5
     max: 8
   thermalConductivity:
     value: 0.19
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 90
     description: Low thermal conductivity typical of polymer composites
     min: 0.1
@@ -41,21 +41,21 @@ materialProperties:
     max: 274.999
   thermalExpansion:
     value: 125.0
-    unit: "\xD710\u207B\u2076/\xB0C"
+    unit: ×10⁻⁶/°C
     confidence: 88
     description: Coefficient of thermal expansion for polyester composites
     min: 0
     max: 241.55
   specificHeat:
     value: 1200.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 87
     description: Specific heat capacity at room temperature
     min: 734.0
     max: 2006.0
   absorptionCoefficient:
     value: 850
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     confidence: 82
     description: Absorption coefficient at 1064 nm wavelength
     min: null
@@ -69,7 +69,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 1.2
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 83
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
@@ -86,7 +86,7 @@ materialProperties:
     max: 200.0
     min: 0.05
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 85.2
   laserReflectivity:
     confidence: 0.7
@@ -100,14 +100,14 @@ materialProperties:
     max: 180.0
     min: 0.1
     source: default_from_category_range
-    unit: "mm\xB2/s"
+    unit: mm²/s
     value: 0.12
   thermalDestructionPoint:
     confidence: 0.7
     max: 2000.0
     min: 150.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 623.0
   thermalDestructionType:
     confidence: 0.8
@@ -122,21 +122,19 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power range for Polyester Resin Composites cleaning
-      without thermal damage
+    description: Optimal average power range for Polyester Resin Composites cleaning without thermal damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength optimized for Polyester Resin Composites
-      absorption
+    description: Near-infrared wavelength optimized for Polyester Resin Composites absorption
     min: 355
     max: 1080
   spotSize:
     value: 100
-    unit: "\u03BCm"
+    unit: μm
     confidence: 90
     description: Beam spot diameter for precise cleaning control
     min: 50
@@ -145,13 +143,12 @@ machineSettings:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning with minimal heat
-      accumulation
+    description: Optimal repetition rate for efficient cleaning with minimal heat accumulation
     min: 20
     max: 100
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 88
     description: Ablation threshold fluence for Polyester Resin Composites
     min: 1.8
@@ -174,8 +171,7 @@ machineSettings:
     value: 50
     unit: '%'
     confidence: 86
-    description: Optimal pulse overlap for uniform cleaning without excessive heat
-      buildup
+    description: Optimal pulse overlap for uniform cleaning without excessive heat buildup
     min: 30
     max: 70
   passCount:
@@ -192,13 +188,8 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Polyester Resin Composites surface undergoing laser cleaning showing precise
-      contamination removal
+    alt: Polyester Resin Composites surface undergoing laser cleaning showing precise contamination removal
     url: /images/polyester-resin-composites-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Polyester Resin Composites surface after laser cleaning
-      showing detailed surface structure
-    url: /images/polyester-resin-composites-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -255,8 +246,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -294,9 +284,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -317,3 +307,51 @@ author:
   country: Taiwan
   expertise: Laser Materials Processing
   image: /images/author/yi-chun-lin.jpg
+caption:
+  beforeText: 'At 500x magnification, the contaminated polyester resin composite surface reveals a complex, non-uniform layer
+    of foreign material. This contamination layer, measuring between 5-15 micrometers thick, appears as a discontinuous, particulate-laden
+    film. It obscures the underlying composite''s texture, creating a mottled, high-contrast appearance with dark agglomerates
+    embedded in a lighter matrix.
+
+
+    The surface topography is highly irregular, dominated by agglomerated particles ranging from sub-micrometer specks to
+    clusters up to 20 micrometers across. These contaminants create significant surface roughness, with sharp peaks and deep
+    valleys that scatter light and prevent clear observation of the substrate. The original fiber reinforcement pattern and
+    resin-rich areas of the composite are completely masked by this adherent layer, which shows poor adhesion in localized
+    regions, suggesting potential for subsurface contamination.'
+  afterText: 'Following laser cleaning, the surface transformation at 500x magnification is pronounced. The thick, obscuring
+    contamination layer has been completely removed, revealing the underlying polyester composite substrate. The surface now
+    exhibits the characteristic texture of the cured resin system, with clearly visible fiber reinforcement patterns and resin-rich
+    regions.
+
+
+    The laser process has restored the original surface profile, eliminating the particulate agglomerates and the associated
+    micro-scale roughness. The resulting surface is notably uniform, with minimal residual scoring or thermal alteration visible
+    at this magnification. The primary visual improvement is the exposure of the intact composite microstructure, free from
+    the light-scattering contaminants, confirming the selective removal of foreign material without significant substrate
+    damage.'
+  description: Microscopic analysis of polyester resin composites surface before and after laser cleaning treatment
+  alt: Microscopic view of polyester resin composites surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - polyester resin composites_specific
+    contaminationProfile: polyester resin composites surface contamination
+  microscopy:
+    parameters: Microscopic analysis of polyester resin composites
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:28:16.858580Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Yi-Chun Lin
+  materialProperties:
+    materialType: Composite
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Polyester Resin Composites surface after laser cleaning showing detailed surface structure
+    url: /images/polyester-resin-composites-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:28:32.405953'
+  captionIntegrated: true

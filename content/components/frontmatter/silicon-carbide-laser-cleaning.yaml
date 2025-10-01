@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Gallium Arsenide
 materialProperties:
   density:
     value: 3.21
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 98
     description: Theoretical density of pure silicon carbide
     min: 2.0
     max: 5.6
   thermalConductivity:
     value: 120.0
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 92
     description: Thermal conductivity at room temperature for high-purity SiC
     min: 0.2
@@ -34,21 +34,21 @@ materialProperties:
     max: 442.4
   thermalExpansion:
     value: 4.3
-    unit: "\xD710\u207B\u2076/K"
+    unit: ×10⁻⁶/K
     confidence: 90
-    description: "Coefficient of thermal expansion (20-1000\xB0C)"
+    description: Coefficient of thermal expansion (20-1000°C)
     min: 2.6
     max: 19.7
   specificHeat:
     value: 675.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 88
     description: Specific heat capacity at room temperature
     min: 277.0
     max: 793.0
   thermalDiffusivity:
     value: 90.0
-    unit: "mm\xB2/s"
+    unit: mm²/s
     confidence: 85
     description: Thermal diffusivity at room temperature
     min: 0.1
@@ -62,7 +62,7 @@ materialProperties:
     max: null
   absorptionCoefficient:
     value: 100
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     confidence: 85
     description: Absorption coefficient at 1064 nm wavelength
     min: null
@@ -76,14 +76,14 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 80
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   oxidationResistance:
     value: 1600
-    unit: "\xB0C"
+    unit: °C
     confidence: 88
     description: Maximum service temperature in oxidizing atmosphere
     min: null
@@ -100,7 +100,7 @@ materialProperties:
     max: 100.0
     min: 0.01
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 68.5
   laserReflectivity:
     confidence: 0.7
@@ -121,7 +121,7 @@ materialProperties:
     max: 1414.0
     min: 100.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 1800.0
   thermalDestructionType:
     confidence: 0.8
@@ -135,21 +135,19 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for SiC surface cleaning without substrate
-      damage
+    description: Optimal average power for SiC surface cleaning without substrate damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength with good SiC absorption for efficient contaminant
-      removal
+    description: Near-IR wavelength with good SiC absorption for efficient contaminant removal
     min: 355
     max: 1080
   spotSize:
     value: 50
-    unit: "\u03BCm"
+    unit: μm
     confidence: 84
     description: Optimal beam diameter for precision cleaning of SiC surfaces
     min: 30
@@ -158,8 +156,7 @@ machineSettings:
     value: 100
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient area coverage while maintaining
-      thermal control
+    description: High repetition rate for efficient area coverage while maintaining thermal control
     min: 50
     max: 200
   pulseWidth:
@@ -178,7 +175,7 @@ machineSettings:
     max: 2000
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 89
     description: Threshold fluence for effective contaminant removal from SiC substrate
     min: 1.5
@@ -211,13 +208,8 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Silicon Carbide surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Silicon Carbide surface undergoing laser cleaning showing precise contamination removal
     url: /images/silicon-carbide-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Silicon Carbide surface after laser cleaning showing
-      detailed surface structure
-    url: /images/silicon-carbide-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -274,8 +266,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -313,9 +304,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -336,3 +327,53 @@ author:
   country: Indonesia
   expertise: Ultrafast Laser Physics and Material Interactions
   image: /images/author/ikmanda-roswati.jpg
+caption:
+  beforeText: 'At 500x magnification, the silicon carbide surface is obscured by a non-uniform contamination layer, approximately
+    5-10 micrometers thick. This layer consists of amorphous carbonaceous deposits and particulate matter, which appear as
+    dark, splotchy regions that mask the underlying crystalline structure of the substrate. The contaminants create a topographically
+    complex surface with a matte, low-reflectance appearance.
+
+
+    The deposits are not continuous, forming islands and agglomerates that adhere to the surface. Fine, sub-micrometer particles
+    are embedded within the larger carbon films, creating a textured, irregular morphology. This layer significantly alters
+    the surface''s properties, increasing light scattering and reducing its inherent thermal conductivity by acting as an
+    insulating barrier.'
+  afterText: 'Following laser cleaning, the 500x magnification reveals a complete transformation. The amorphous contamination
+    layer has been entirely removed, exposing the pristine silicon carbide substrate. The surface now exhibits the characteristic
+    microstructure of the polycrystalline material, with clearly defined grain boundaries and a uniform, reflective finish.
+
+
+    The visual contrast with the pre-cleaned state is definitive. The matte, dark deposits have been replaced by a clean,
+    monolithic surface where the laser''s interaction is evidenced only by the absence of foreign material. The process has
+    successfully ablated the contaminants without inducing micro-cracks or thermal damage to the underlying SiC, which has
+    a thermal destruction point of 1800°C.
+
+
+    This results in a surface with restored functionality. The high thermal conductivity (120 W/m·K) and structural integrity
+    of the silicon carbide are now unimpeded, which is critical for its performance in semiconductor applications. The surface
+    is prepared for subsequent manufacturing steps, such as thin-film deposition or bonding.'
+  description: Microscopic analysis of silicon carbide surface before and after laser cleaning treatment
+  alt: Microscopic view of silicon carbide surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - silicon carbide_specific
+    contaminationProfile: silicon carbide surface contamination
+  microscopy:
+    parameters: Microscopic analysis of silicon carbide
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:33:05.287088Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Ikmanda Roswati
+  materialProperties:
+    materialType: Semiconductor
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Silicon Carbide surface after laser cleaning showing detailed surface structure
+    url: /images/silicon-carbide-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:33:20.762038'
+  captionIntegrated: true

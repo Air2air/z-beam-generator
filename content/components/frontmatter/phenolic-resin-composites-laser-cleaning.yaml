@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Carbon Fiber Reinforced Polymer
 materialProperties:
   density:
     value: 1.38
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 95
     description: Typical density of phenolic resin composites with fiber reinforcement
     min: 0.5
     max: 8
   thermalConductivity:
     value: 0.35
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 90
     description: Low thermal conductivity typical of phenolic composites
     min: 0.1
@@ -41,21 +41,21 @@ materialProperties:
     max: 274.999
   thermalExpansion:
     value: 125.0
-    unit: "\u03BCm/m\xB7\xB0C"
+    unit: μm/m·°C
     confidence: 88
     description: Coefficient of thermal expansion at room temperature
     min: 0
     max: 241.55
   specificHeat:
     value: 1200.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 85
     description: Specific heat capacity at room temperature
     min: 734.0
     max: 2006.0
   absorptionCoefficient:
     value: 8500
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     confidence: 82
     description: Absorption coefficient at 1064 nm wavelength
     min: null
@@ -69,14 +69,14 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 1.2
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 85
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   thermalDecomposition:
     value: 350
-    unit: "\xB0C"
+    unit: °C
     confidence: 94
     description: Onset temperature for thermal decomposition of phenolic resin
     min: null
@@ -90,14 +90,14 @@ materialProperties:
     max: null
   surfaceRoughness:
     value: 1.8
-    unit: "\u03BCm Ra"
+    unit: μm Ra
     confidence: 82
     description: Average surface roughness of typical phenolic composite surfaces
     min: null
     max: null
   laserDamageThreshold:
     value: 15
-    unit: "MW/cm\xB2"
+    unit: MW/cm²
     confidence: 83
     description: Peak power density threshold for laser-induced damage
     min: null
@@ -114,7 +114,7 @@ materialProperties:
     max: 200.0
     min: 0.05
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 92.7
   laserReflectivity:
     confidence: 0.7
@@ -128,14 +128,14 @@ materialProperties:
     max: 180.0
     min: 0.1
     source: default_from_category_range
-    unit: "mm\xB2/s"
+    unit: mm²/s
     value: 0.18
   thermalDestructionPoint:
     confidence: 0.7
     max: 2000.0
     min: 150.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 1073.15
   thermalDestructionType:
     confidence: 0.8
@@ -151,8 +151,7 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for phenolic resin composite cleaning without
-      thermal damage
+    description: Optimal average power for phenolic resin composite cleaning without thermal damage
     min: 80
     max: 120
   wavelength:
@@ -164,7 +163,7 @@ machineSettings:
     max: 1080
   spotSize:
     value: 100
-    unit: "\u03BCm"
+    unit: μm
     confidence: 84
     description: Optimal beam spot diameter for precise cleaning control
     min: 50
@@ -178,7 +177,7 @@ machineSettings:
     max: 200
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 88
     description: Ablation threshold fluence for phenolic resin composites
     min: 1.8
@@ -187,8 +186,7 @@ machineSettings:
     value: 10
     unit: ns
     confidence: 85
-    description: Optimal pulse duration for efficient material removal with minimal
-      heat affected zone
+    description: Optimal pulse duration for efficient material removal with minimal heat affected zone
     min: 5
     max: 20
   scanSpeed:
@@ -214,10 +212,9 @@ machineSettings:
     max: 5
   energyDensity:
     value: 12.7
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 86
-    description: Calculated energy density based on power, spot size, and repetition
-      rate
+    description: Calculated energy density based on power, spot size, and repetition rate
     min: 8.0
     max: 15.0
 regulatoryStandards:
@@ -227,13 +224,8 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Phenolic Resin Composites surface undergoing laser cleaning showing precise
-      contamination removal
+    alt: Phenolic Resin Composites surface undergoing laser cleaning showing precise contamination removal
     url: /images/phenolic-resin-composites-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Phenolic Resin Composites surface after laser cleaning
-      showing detailed surface structure
-    url: /images/phenolic-resin-composites-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -290,8 +282,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -329,9 +320,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -352,3 +343,46 @@ author:
   country: Taiwan
   expertise: Laser Materials Processing
   image: /images/author/yi-chun-lin.jpg
+caption:
+  beforeText: 'At 500x magnification, the phenolic resin composite surface is obscured by a non-uniform contamination layer,
+    measuring 15-25 micrometers thick. This layer consists of embedded particulate matter and a carbonized film, creating
+    a textured, discontinuous topography that masks the underlying composite structure.
+
+
+    The contamination exhibits a cracked, mudflat-like pattern, with agglomerated particles up to 10 micrometers in diameter
+    firmly adhered to the surface. The original fiber reinforcement pattern of the composite is no longer visible, as the
+    porous contaminant layer has filled the natural surface texture, which typically has an average roughness (Ra) of 1.8
+    µm. This significantly alters the surface''s physical characteristics.'
+  afterText: 'Following laser cleaning, the surface reveals a complete transformation at 500x magnification. The thick contamination
+    layer has been entirely removed, exposing the pristine phenolic resin matrix and the distinct pattern of the fiber reinforcement.
+    The original surface roughness of approximately 1.8 µm Ra is now fully restored.
+
+
+    The laser process has effectively ablated the contaminant without damaging the underlying composite. The surface is now
+    free of particulate matter and carbonized residue, displaying a clean, well-defined interface between the resin and fibers.
+    This confirms the successful removal of the obscuring layer while preserving the material''s structural integrity.'
+  description: Microscopic analysis of phenolic resin composites surface before and after laser cleaning treatment
+  alt: Microscopic view of phenolic resin composites surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - phenolic resin composites_specific
+    contaminationProfile: phenolic resin composites surface contamination
+  microscopy:
+    parameters: Microscopic analysis of phenolic resin composites
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:27:03.820862Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Yi-Chun Lin
+  materialProperties:
+    materialType: Composite
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Phenolic Resin Composites surface after laser cleaning showing detailed surface structure
+    url: /images/phenolic-resin-composites-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:27:16.219258'
+  captionIntegrated: true

@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Alabaster
 materialProperties:
   density:
     value: 2.71
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 95
     description: Average density of high-purity calcite limestone
     min: 1.5
     max: 3.4
   thermalConductivity:
     value: 2.2
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 88
     description: Thermal conductivity at room temperature for dry limestone
     min: 0.12
@@ -34,24 +34,23 @@ materialProperties:
     max: 100
   thermalExpansion:
     value: 8.0
-    unit: "10\u207B\u2076/\xB0C"
+    unit: 10⁻⁶/°C
     confidence: 85
-    description: "Linear thermal expansion coefficient (20-100\xB0C)"
+    description: Linear thermal expansion coefficient (20-100°C)
     min: 3.5
     max: 26.9
   specificHeat:
     value: 908.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 92
     description: Specific heat capacity at room temperature
     min: 705.5
     max: 1119.5
   thermalDiffusivity:
     value: 1.32
-    unit: "mm\xB2/s"
+    unit: mm²/s
     confidence: 82
-    description: Thermal diffusivity calculated from conductivity, density, and specific
-      heat
+    description: Thermal diffusivity calculated from conductivity, density, and specific heat
     min: 0.2
     max: 2.5
   compressiveStrength:
@@ -70,10 +69,9 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 1.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 78
-    description: Estimated laser ablation threshold for nanosecond pulses at 1064
-      nm
+    description: Estimated laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   porosity:
@@ -95,7 +93,7 @@ materialProperties:
     max: 20.0
     min: 0.1
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 8.7
   laserReflectivity:
     confidence: 0.7
@@ -116,7 +114,7 @@ materialProperties:
     max: 1700.0
     min: 600.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 825.0
   thermalDestructionType:
     confidence: 0.8
@@ -129,40 +127,35 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power range for limestone surface cleaning without
-      thermal damage
+    description: Optimal average power range for limestone surface cleaning without thermal damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength optimal for limestone absorption and contaminant
-      removal
+    description: Near-infrared wavelength optimal for limestone absorption and contaminant removal
     min: 532
     max: 10640
   spotSize:
     value: 100
-    unit: "\u03BCm"
+    unit: μm
     confidence: 90
-    description: Optimal spot size for balancing cleaning efficiency and processing
-      speed
+    description: Optimal spot size for balancing cleaning efficiency and processing speed
     min: 50
     max: 200
   repetitionRate:
     value: 100
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning coverage while maintaining
-      thermal control
+    description: High repetition rate for efficient cleaning coverage while maintaining thermal control
     min: 50
     max: 200
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant ablation with
-      minimal substrate heating
+    description: Nanosecond pulse duration for effective contaminant ablation with minimal substrate heating
     min: 5
     max: 20
   scanSpeed:
@@ -176,24 +169,21 @@ machineSettings:
     value: 50
     unit: '%'
     confidence: 86
-    description: Optimal overlap between adjacent scan lines for complete surface
-      coverage
+    description: Optimal overlap between adjacent scan lines for complete surface coverage
     min: 30
     max: 70
   passCount:
     value: 2
     unit: passes
     confidence: 88
-    description: Recommended number of passes for thorough contaminant removal without
-      substrate damage
+    description: Recommended number of passes for thorough contaminant removal without substrate damage
     min: 1
     max: 3
   energyDensity:
     value: 12.7
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 89
-    description: Optimal fluence for limestone cleaning threshold without causing
-      surface erosion
+    description: Optimal fluence for limestone cleaning threshold without causing surface erosion
     min: 8.0
     max: 15.0
   laserType:
@@ -210,13 +200,8 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Limestone surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Limestone surface undergoing laser cleaning showing precise contamination removal
     url: /images/limestone-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Limestone surface after laser cleaning showing detailed
-      surface structure
-    url: /images/limestone-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -273,8 +258,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -312,9 +296,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -335,3 +319,59 @@ author:
   country: Italy
   expertise: Laser-Based Additive Manufacturing
   image: /images/author/alessandro-moretti.jpg
+caption:
+  beforeText: 'At 500x magnification, the contaminated limestone surface is characterized by a discontinuous, particulate-laden
+    layer averaging 15-25 micrometers in thickness. This layer consists of agglomerated carbonaceous soot and mineral dust
+    particles, ranging from 2 to 8 micrometers in diameter, embedded within a porous matrix of biological growth and hydrocarbon
+    residues. The underlying limestone''s natural calcite crystals are partially obscured, with their characteristic rhombohedral
+    cleavage planes visible only in isolated areas.
+
+
+    The contamination exhibits significant surface heterogeneity, with dense particulate accumulations concentrated within
+    the stone''s natural micro-porosity (typically 5-10 micrometer features). This creates a textured, irregular topography
+    that masks the substrate''s true morphology. The particulate matter shows weak adhesion to the limestone, forming a friable,
+    non-cohesive layer that bridges across surface micro-features rather than conforming to them.'
+  afterText: 'Following laser cleaning, microscopic examination at 500x reveals complete removal of the particulate contamination
+    layer, restoring the intrinsic surface morphology of the limestone substrate. The previously obscured calcite crystal
+    structure is now fully exposed, displaying well-defined intercrystalline boundaries and characteristic rhombohedral cleavage
+    planes. The surface presents a uniform, mineralogically authentic appearance with no evidence of residual contamination
+    within the natural porosity.
+
+
+    The transformation is particularly evident in the restoration of micro-scale surface features. The stone''s original texture,
+    including subtle crystalline facets and grain boundaries, is now clearly visible without the masking effect of the 15-25
+    micrometer contamination layer. The cleaning process has achieved selective ablation of contaminants while preserving
+    the structural integrity of the underlying limestone, as confirmed by the absence of thermal alteration features or micro-fracturing
+    at the crystal boundaries.
+
+
+    Comparative analysis confirms the procedure''s precision: the laser parameters were calibrated below the limestone''s
+    ablation threshold of 1.5 J/cm², ensuring removal occurred exclusively within the contamination layer. This is evidenced
+    by the sharp definition of crystalline features and the maintenance of the stone''s natural micro-porosity network, which
+    now appears clean and open rather than filled with particulate matter. The surface now exhibits the expected reflectivity
+    and color of pure calcite without artificial darkening or residue.'
+  description: Microscopic analysis of limestone surface before and after laser cleaning treatment
+  alt: Microscopic view of limestone surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - limestone_specific
+    contaminationProfile: limestone surface contamination
+  microscopy:
+    parameters: Microscopic analysis of limestone
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:06:15.797523Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Alessandro Moretti
+  materialProperties:
+    materialType: Stone
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Limestone surface after laser cleaning showing detailed surface structure
+    url: /images/limestone-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:06:36.917670'
+  captionIntegrated: true

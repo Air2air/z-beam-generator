@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Alabaster
 materialProperties:
   density:
     value: 2.4
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 95
     description: Bulk density of typical travertine stone
     min: 1.5
     max: 3.4
   thermalConductivity:
     value: 2.3
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 88
     description: Thermal conductivity at room temperature
     min: 0.12
@@ -34,14 +34,14 @@ materialProperties:
     max: 100
   thermalExpansion:
     value: 8.2
-    unit: "10\u207B\u2076/\xB0C"
+    unit: 10⁻⁶/°C
     confidence: 85
     description: Coefficient of thermal expansion
     min: 3.5
     max: 26.9
   specificHeat:
     value: 921.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 90
     description: Specific heat capacity at room temperature
     min: 705.5
@@ -69,7 +69,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 1.2
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 80
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
@@ -86,7 +86,7 @@ materialProperties:
     max: 20.0
     min: 0.1
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 8.7
   laserReflectivity:
     confidence: 0.7
@@ -107,14 +107,14 @@ materialProperties:
     max: 2.5
     min: 0.2
     source: default_from_category_range
-    unit: "mm\xB2/s"
+    unit: mm²/s
     value: 1.32
   thermalDestructionPoint:
     confidence: 0.7
     max: 1700.0
     min: 600.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 825.0
   thermalDestructionType:
     confidence: 0.8
@@ -128,8 +128,7 @@ machineSettings:
     value: 12
     unit: W
     confidence: 90
-    description: Optimal average power for Travertine surface cleaning without thermal
-      damage
+    description: Optimal average power for Travertine surface cleaning without thermal damage
     min: 8
     max: 18
   wavelength:
@@ -141,10 +140,9 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: "\u03BCm"
+    unit: μm
     confidence: 92
-    description: Optimal beam diameter for precise cleaning control on Travertine
-      surface
+    description: Optimal beam diameter for precise cleaning control on Travertine surface
     min: 50
     max: 200
   repetitionRate:
@@ -156,10 +154,9 @@ machineSettings:
     max: 50
   fluenceThreshold:
     value: 0.8
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 88
-    description: Threshold fluence for effective contaminant removal without substrate
-      damage
+    description: Threshold fluence for effective contaminant removal without substrate damage
     min: 0.5
     max: 1.2
   pulseWidth:
@@ -180,8 +177,7 @@ machineSettings:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for uniform cleaning without excessive energy
-      deposition
+    description: Optimal pulse overlap for uniform cleaning without excessive energy deposition
     min: 30
     max: 70
   passCount:
@@ -193,7 +189,7 @@ machineSettings:
     max: 5
   energyDensity:
     value: 1.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 86
     description: Optimal energy density for Travertine cleaning applications
     min: 0.8
@@ -205,13 +201,8 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Travertine surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Travertine surface undergoing laser cleaning showing precise contamination removal
     url: /images/travertine-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Travertine surface after laser cleaning showing detailed
-      surface structure
-    url: /images/travertine-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -268,8 +259,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -307,9 +297,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -330,3 +320,43 @@ author:
   country: Italy
   expertise: Laser-Based Additive Manufacturing
   image: /images/author/alessandro-moretti.jpg
+caption:
+  beforeText: 'At 500x magnification, the contaminated travertine surface reveals a complex, stratified layer of foreign material.
+    A discontinuous soiling layer, approximately 5-15 micrometers thick, fills the natural pores and fissures characteristic
+    of this porous stone. This layer consists of fine particulate matter, carbonaceous deposits, and biological growth, which
+    obscure the underlying crystalline structure of the calcite.
+
+
+    The surface texture is highly irregular, with contaminants forming a crust that bridges across the micro-topography. This
+    crust exhibits a cracked, desiccated appearance, indicating adhesion to the stone substrate. The original travertine surface
+    is no longer visible in many areas, as the contamination has created a continuous film that alters the stone''s inherent
+    reflectivity and color at a microscopic level.'
+  afterText: Following laser cleaning, the 500x magnification reveals a complete restoration of the original stone substrate.
+    The contaminant crust has been entirely removed, exposing the clean, intact calcite crystals and reopening the stone's
+    natural porosity. The surface now displays its inherent micro-texture without the bridging effect of the soiling layer,
+    resulting in a clear, well-defined pore structure and restored surface geometry.
+  description: Microscopic analysis of travertine surface before and after laser cleaning treatment
+  alt: Microscopic view of travertine surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - travertine_specific
+    contaminationProfile: travertine surface contamination
+  microscopy:
+    parameters: Microscopic analysis of travertine
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:37:21.938901Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Alessandro Moretti
+  materialProperties:
+    materialType: Stone
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Travertine surface after laser cleaning showing detailed surface structure
+    url: /images/travertine-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:37:34.074158'
+  captionIntegrated: true

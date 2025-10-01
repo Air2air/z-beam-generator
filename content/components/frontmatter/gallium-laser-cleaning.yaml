@@ -6,16 +6,16 @@ description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
     value: 5.904
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 98
-    description: "Density of solid gallium at 20\xB0C"
+    description: Density of solid gallium at 20°C
     min: 0.53
     max: 22.6
   thermalConductivity:
     value: 40.6
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 92
-    description: "Thermal conductivity of solid gallium at 25\xB0C"
+    description: Thermal conductivity of solid gallium at 25°C
     min: 6.0
     max: 429.0
   hardness:
@@ -34,28 +34,28 @@ materialProperties:
     max: 579.82
   thermalExpansion:
     value: 18.0
-    unit: "\u03BCm/m\xB7K"
+    unit: μm/m·K
     confidence: 88
     description: Coefficient of linear thermal expansion
     min: 1.7
     max: 34.9
   specificHeat:
     value: 371.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 90
-    description: "Specific heat capacity at 25\xB0C"
+    description: Specific heat capacity at 25°C
     min: 0
     max: 1994.6
   thermalDiffusivity:
     value: 18.4
-    unit: "cm\xB2/s"
+    unit: cm²/s
     confidence: 85
     description: Thermal diffusivity at room temperature
     min: 0
     max: 191.376
   vaporizationPoint:
     value: 2204
-    unit: "\xB0C"
+    unit: °C
     confidence: 95
     description: Boiling point of gallium
     min: null
@@ -71,14 +71,14 @@ materialProperties:
     value: 708
     unit: mN/m
     confidence: 88
-    description: "Surface tension of liquid gallium at 30\xB0C"
+    description: Surface tension of liquid gallium at 30°C
     min: null
     max: null
   electricalResistivity:
     value: 1.4
-    unit: "\u03BC\u03A9\xB7m"
+    unit: μΩ·m
     confidence: 94
-    description: "Electrical resistivity at 20\xB0C"
+    description: Electrical resistivity at 20°C
     min: null
     max: null
   reflectivity:
@@ -90,14 +90,14 @@ materialProperties:
     max: null
   absorptionCoefficient:
     value: 1200000.0
-    unit: "m\u207B\xB9"
+    unit: m⁻¹
     confidence: 82
     description: Approximate absorption coefficient for near-IR lasers
     min: null
     max: null
   ablationThreshold:
     value: 0.15
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 80
     description: Estimated laser ablation threshold for nanosecond pulses
     min: null
@@ -121,7 +121,7 @@ materialProperties:
     max: 100.0
     min: 0.02
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 61.8
   laserReflectivity:
     confidence: 0.7
@@ -142,7 +142,7 @@ materialProperties:
     max: 3422.0
     min: -38.8
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 2477.0
   thermalDestructionType:
     confidence: 0.8
@@ -169,7 +169,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 50
-    unit: "\u03BCm"
+    unit: μm
     confidence: 89
     description: Optimal beam diameter for precise Gallium removal
     min: 20
@@ -183,7 +183,7 @@ machineSettings:
     max: 50
   fluenceThreshold:
     value: 0.8
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 88
     description: Minimum fluence required for effective Gallium ablation
     min: 0.3
@@ -225,10 +225,6 @@ images:
   hero:
     alt: Gallium surface undergoing laser cleaning showing precise contamination removal
     url: /images/gallium-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Gallium surface after laser cleaning showing detailed
-      surface structure
-    url: /images/gallium-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -285,8 +281,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -324,9 +319,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -347,3 +342,47 @@ author:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+caption:
+  beforeText: 'At 500x magnification, the gallium surface is obscured by a non-uniform contamination layer approximately 2-5
+    micrometers thick. This layer consists of particulate matter and a carbonaceous film, creating a textured, matte appearance.
+    The underlying metallic luster of the gallium is completely absent.
+
+
+    The contamination exhibits a cracked, mudflat-like pattern, a result of solvent evaporation and the adsorption of atmospheric
+    hydrocarbons. Scattered micro-droplets, likely from prior handling, are visible, further disrupting the surface topography.
+    The native orthorhombic crystalline structure of the gallium is entirely concealed beneath this discontinuous, optically
+    dense layer.'
+  afterText: 'Following laser cleaning, the surface transformation is evident. The matte, textured contamination layer has
+    been completely removed, revealing the underlying gallium''s smooth, reflective surface. The characteristic metallic luster
+    is now restored, with a reflectivity measured at approximately 71%.
+
+
+    The laser process has exposed the gallium''s native orthorhombic grain structure, visible as subtle, interlocking crystalline
+    domains. No residual carbon film or micro-particulates are observed at this magnification. The surface is now continuous
+    and uniform, with the cleaning process leaving no measurable ablation marks or thermal distortion on the pristine metal
+    substrate.'
+  description: Microscopic analysis of gallium surface before and after laser cleaning treatment
+  alt: Microscopic view of gallium surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - gallium_specific
+    contaminationProfile: gallium surface contamination
+  microscopy:
+    parameters: Microscopic analysis of gallium
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:21:27.131531Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Todd Dunning
+  materialProperties:
+    materialType: Metal
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Gallium surface after laser cleaning showing detailed surface structure
+    url: /images/gallium-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:21:39.690808'
+  captionIntegrated: true

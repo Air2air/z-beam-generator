@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
     value: 1.848
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 98
     description: Density of pure beryllium at room temperature
     min: 0.53
     max: 22.6
   thermalConductivity:
     value: 201.0
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 95
     description: Thermal conductivity at room temperature
     min: 6.0
@@ -41,14 +41,14 @@ materialProperties:
     max: 579.82
   thermalExpansion:
     value: 11.5
-    unit: "10\u207B\u2076/K"
+    unit: 10⁻⁶/K
     confidence: 92
-    description: "Coefficient of linear thermal expansion (20-100\xB0C)"
+    description: Coefficient of linear thermal expansion (20-100°C)
     min: 1.7
     max: 34.9
   specificHeat:
     value: 500.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 90
     description: Specific heat capacity at room temperature
     min: 0
@@ -62,14 +62,14 @@ materialProperties:
     max: null
   absorptionCoefficient:
     value: 1200000.0
-    unit: "m\u207B\xB9"
+    unit: m⁻¹
     confidence: 80
     description: Estimated absorption coefficient for IR lasers
     min: null
     max: null
   ablationThreshold:
     value: 0.8
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 85
     description: Approximate ablation threshold for nanosecond lasers
     min: null
@@ -90,7 +90,7 @@ materialProperties:
     max: null
   thermalDiffusivity:
     value: 68.3
-    unit: "cm\xB2/s"
+    unit: cm²/s
     confidence: 90
     description: Thermal diffusivity at room temperature
     min: 0
@@ -100,7 +100,7 @@ materialProperties:
     max: 100.0
     min: 0.02
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 38.7
   laserReflectivity:
     confidence: 0.7
@@ -114,7 +114,7 @@ materialProperties:
     max: 3422.0
     min: -38.8
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 1560.0
   thermalDestructionType:
     confidence: 0.8
@@ -140,7 +140,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: "\u03BCm"
+    unit: μm
     confidence: 82
     description: Beam spot diameter for precise oxide removal control
     min: 50
@@ -168,7 +168,7 @@ machineSettings:
     max: 1000
   fluence:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 89
     description: Fluence threshold for beryllium oxide ablation
     min: 1.5
@@ -201,13 +201,8 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Beryllium surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Beryllium surface undergoing laser cleaning showing precise contamination removal
     url: /images/beryllium-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Beryllium surface after laser cleaning showing detailed
-      surface structure
-    url: /images/beryllium-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -264,8 +259,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -303,9 +297,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -326,3 +320,47 @@ author:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+caption:
+  beforeText: 'At 500x magnification, the beryllium surface is obscured by a non-uniform contamination layer, approximately
+    5-15 micrometers thick. This layer appears as a matte, textured crust of oxides and embedded particulate matter, which
+    masks the underlying metallic grain structure. The contaminants form irregular, patchy islands, creating a topographically
+    complex and rough surface profile.
+
+
+    Energy-dispersive X-ray spectroscopy (EDS) would likely detect elevated levels of oxygen and carbon, confirming the presence
+    of beryllium oxide (BeO) and adsorbed hydrocarbons. The original, hard HCP (hexagonal close-packed) crystalline surface
+    of the beryllium is entirely hidden. The contamination disrupts the surface''s inherent thermal and reflective properties,
+    presenting a barrier to both visual inspection and functional performance.'
+  afterText: 'Following laser cleaning, the surface transformation is evident. The contamination crust has been completely
+    removed, revealing the pristine, polycrystalline grain structure of the beryllium substrate. The surface is now characterized
+    by a uniform, metallic luster and a significantly reduced micro-roughness.
+
+
+    The laser process has selectively ablated the contaminants without damaging the underlying metal, as evidenced by the
+    clear, well-defined grain boundaries now visible. This restoration of the original surface geometry ensures optimal thermal
+    conductivity and reflectivity, which are critical for the component''s performance in demanding applications.'
+  description: Microscopic analysis of beryllium surface before and after laser cleaning treatment
+  alt: Microscopic view of beryllium surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - beryllium_specific
+    contaminationProfile: beryllium surface contamination
+  microscopy:
+    parameters: Microscopic analysis of beryllium
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:16:54.770848Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Todd Dunning
+  materialProperties:
+    materialType: Metal
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Beryllium surface after laser cleaning showing detailed surface structure
+    url: /images/beryllium-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:17:08.222166'
+  captionIntegrated: true

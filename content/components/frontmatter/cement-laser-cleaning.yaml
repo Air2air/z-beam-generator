@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Brick
 materialProperties:
   density:
     value: 3.15
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 95
     description: Typical density of hardened Portland cement paste
     min: 0.6
     max: 2.8
   thermalConductivity:
     value: 1.28
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 92
     description: Thermal conductivity of hardened cement paste at room temperature
     min: 0.08
@@ -41,14 +41,14 @@ materialProperties:
     max: 32.6
   thermalExpansion:
     value: 10.0
-    unit: "\u03BCm/m\xB7\xB0C"
+    unit: μm/m·°C
     confidence: 88
     description: Coefficient of thermal expansion for cementitious materials
     min: 4.2
     max: 19.8
   specificHeat:
     value: 900
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 85
     description: Specific heat capacity of cement-based materials
     min: 815.5
@@ -64,8 +64,7 @@ materialProperties:
     value: 0.85
     unit: ''
     confidence: 88
-    description: Optical absorption coefficient for common laser wavelengths (1064
-      nm)
+    description: Optical absorption coefficient for common laser wavelengths (1064 nm)
     min: null
     max: null
   reflectivity:
@@ -77,7 +76,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 1.2
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 80
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
@@ -101,7 +100,7 @@ materialProperties:
     max: 15.0
     min: 0.5
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 8.2
   laserReflectivity:
     confidence: 0.7
@@ -115,14 +114,14 @@ materialProperties:
     max: 1.0
     min: 0.1
     source: default_from_category_range
-    unit: "mm\xB2/s"
+    unit: mm²/s
     value: 0.47
   thermalDestructionPoint:
     confidence: 0.7
     max: 1200.0
     min: 500.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 450.0
   thermalDestructionType:
     confidence: 0.8
@@ -136,8 +135,7 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for cement surface cleaning without thermal
-      damage
+    description: Optimal average power for cement surface cleaning without thermal damage
     min: 80
     max: 120
   wavelength:
@@ -149,26 +147,23 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: "\u03BCm"
+    unit: μm
     confidence: 84
-    description: Beam spot diameter for balanced cleaning efficiency and coverage
-      area
+    description: Beam spot diameter for balanced cleaning efficiency and coverage area
     min: 50
     max: 200
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning coverage and thermal
-      management
+    description: Optimal repetition rate for efficient cleaning coverage and thermal management
     min: 20
     max: 100
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with
-      minimal substrate damage
+    description: Nanosecond pulse duration for effective contaminant removal with minimal substrate damage
     min: 5
     max: 20
   scanSpeed:
@@ -180,18 +175,16 @@ machineSettings:
     max: 1000
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 89
-    description: Minimum fluence required for effective contaminant removal from cement
-      surfaces
+    description: Minimum fluence required for effective contaminant removal from cement surfaces
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal overlap between adjacent scan lines for complete surface
-      coverage
+    description: Optimal overlap between adjacent scan lines for complete surface coverage
     min: 30
     max: 70
   passCount:
@@ -217,10 +210,6 @@ images:
   hero:
     alt: Cement surface undergoing laser cleaning showing precise contamination removal
     url: /images/cement-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Cement surface after laser cleaning showing detailed
-      surface structure
-    url: /images/cement-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -277,8 +266,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -316,9 +304,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -339,3 +327,54 @@ author:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+caption:
+  beforeText: 'At 500x magnification, the contaminated cement surface reveals a complex, stratified layer of foreign material.
+    A discontinuous soot and particulate layer, approximately 5-15 micrometers thick, blankets the surface, obscuring the
+    underlying cement microstructure. This layer exhibits a granular, agglomerated texture with embedded carbon spherules.
+
+
+    Beneath this, a denser, more cohesive biofilm or efflorescence crust fills the natural surface pores and micro-cracks
+    of the cement. This sub-layer, which can reach localized thicknesses of up to 50 micrometers, creates a physical barrier
+    that masks the intrinsic roughness and mineral composition of the substrate. The original cement surface texture is entirely
+    undiscernible.'
+  afterText: 'The laser cleaning process has resulted in a complete removal of the superficial contamination layers. The stratified
+    soot and crust deposits documented in the ''before'' state are absent, revealing the unaltered cement substrate. The surface
+    now exhibits the intrinsic micro-roughness and porosity characteristic of the material, with individual cement grains
+    and hydration products clearly visible.
+
+
+    Comparative analysis shows the restoration of the cement''s original surface topography. The network of micro-cracks and
+    pores, previously filled with biological or salt-based crusts, are now open and clearly defined. The laser parameters
+    were calibrated to remain below the cement''s ablation threshold of approximately 1.2 J/cm², ensuring the removal was
+    confined to the contaminant layer without damaging the substrate.
+
+
+    The cleaned surface demonstrates a return to the material''s baseline optical and physical properties. The reflectivity
+    has increased due to the exposure of the original cement, which has a higher inherent reflectivity (approximately 32.5%)
+    than the light-absorbing soot layer. There is no visual evidence of thermal damage, such as melting or vitrification,
+    indicating a controlled ablation process that preserved the cement''s structural integrity.'
+  description: Microscopic analysis of cement surface before and after laser cleaning treatment
+  alt: Microscopic view of cement surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - cement_specific
+    contaminationProfile: cement surface contamination
+  microscopy:
+    parameters: Microscopic analysis of cement
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:19:00.879173Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Todd Dunning
+  materialProperties:
+    materialType: Masonry
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Cement surface after laser cleaning showing detailed surface structure
+    url: /images/cement-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:19:18.271525'
+  captionIntegrated: true

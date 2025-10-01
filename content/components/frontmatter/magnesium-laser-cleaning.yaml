@@ -6,16 +6,16 @@ description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
     value: 1.738
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 98
     description: Pure magnesium density at room temperature
     min: 0.53
     max: 22.6
   thermalConductivity:
     value: 156.0
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 95
-    description: "Thermal conductivity of pure magnesium at 20\xB0C"
+    description: Thermal conductivity of pure magnesium at 20°C
     min: 6.0
     max: 429.0
   tensileStrength:
@@ -41,23 +41,23 @@ materialProperties:
     max: 579.82
   thermalExpansion:
     value: 25.2
-    unit: "\u03BCm/m\xB7K"
+    unit: μm/m·K
     confidence: 92
-    description: "Coefficient of linear thermal expansion at 20\xB0C"
+    description: Coefficient of linear thermal expansion at 20°C
     min: 1.7
     max: 34.9
   thermalDiffusivity:
     value: 88.6
-    unit: "mm\xB2/s"
+    unit: mm²/s
     confidence: 90
     description: Thermal diffusivity at room temperature
     min: 0
     max: 191.376
   specificHeat:
     value: 1020.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 93
-    description: "Specific heat capacity at 20\xB0C"
+    description: Specific heat capacity at 20°C
     min: 0
     max: 1994.6
   absorptionCoefficient:
@@ -76,14 +76,14 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 0.8
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 85
     description: Estimated laser ablation threshold for nanosecond pulses
     min: null
     max: null
   oxidationResistance:
     value: 0.02
-    unit: "mg/cm\xB2\xB7day"
+    unit: mg/cm²·day
     confidence: 90
     description: Oxidation rate in dry air at room temperature
     min: null
@@ -97,7 +97,7 @@ materialProperties:
     max: null
   surfaceRoughness:
     value: 0.8
-    unit: "\u03BCm Ra"
+    unit: μm Ra
     confidence: 82
     description: Typical surface roughness of polished magnesium
     min: null
@@ -107,7 +107,7 @@ materialProperties:
     max: 100.0
     min: 0.02
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 62.5
   laserReflectivity:
     confidence: 0.7
@@ -121,7 +121,7 @@ materialProperties:
     max: 3422.0
     min: -38.8
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 923.0
   thermalDestructionType:
     confidence: 0.8
@@ -135,8 +135,7 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Magnesium oxide removal without substrate
-      damage
+    description: Optimal average power for Magnesium oxide removal without substrate damage
     min: 80
     max: 120
   wavelength:
@@ -148,39 +147,35 @@ machineSettings:
     max: 10640
   spotSize:
     value: 50
-    unit: "\u03BCm"
+    unit: μm
     confidence: 84
-    description: Optimal spot size for balancing cleaning efficiency and processing
-      speed
+    description: Optimal spot size for balancing cleaning efficiency and processing speed
     min: 30
     max: 100
   repetitionRate:
     value: 100
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning coverage while maintaining
-      thermal control
+    description: High repetition rate for efficient cleaning coverage while maintaining thermal control
     min: 50
     max: 200
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient oxide ablation with minimal
-      thermal diffusion
+    description: Nanosecond pulse duration for efficient oxide ablation with minimal thermal diffusion
     min: 5
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform oxide removal without substrate
-      melting
+    description: Optimal scanning speed for uniform oxide removal without substrate melting
     min: 200
     max: 1000
   fluenceThreshold:
     value: 1.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 89
     description: Minimum fluence required for effective Magnesium oxide ablation
     min: 0.8
@@ -213,13 +208,8 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Magnesium surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Magnesium surface undergoing laser cleaning showing precise contamination removal
     url: /images/magnesium-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Magnesium surface after laser cleaning showing detailed
-      surface structure
-    url: /images/magnesium-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -276,8 +266,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -315,9 +304,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -338,3 +327,51 @@ author:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+caption:
+  beforeText: 'At 500x magnification, the magnesium surface is obscured by a non-uniform contamination layer, measuring between
+    5-15 micrometers thick. This layer consists of a matrix of oxide particles (MgO) and embedded carbonaceous deposits from
+    environmental exposure. The surface texture is highly irregular, with agglomerated particulate matter creating a topographical
+    landscape of peaks and valleys that mask the underlying metal''s true structure.
+
+
+    The contamination adheres in a patchy, discontinuous pattern, with some areas showing dense, crust-like formations and
+    others exhibiting a more porous, sooty appearance. Fine micro-cracks are visible within the thicker oxide regions, a result
+    of differing thermal expansion rates between the brittle oxide and the more ductile magnesium substrate. The native hexagonal
+    close-packed (HCP) crystalline structure of the magnesium is entirely concealed beneath this contaminated crust.'
+  afterText: 'Following laser cleaning, the surface transformation at 500x magnification is definitive. The previously dominant
+    5-15 micrometer contamination layer has been completely removed via laser ablation, revealing the pristine, underlying
+    magnesium substrate. The surface now exhibits the characteristic fine grain structure of the metal''s HCP crystalline
+    arrangement, which was entirely concealed before. The visual contrast is stark, shifting from an obscured, textured crust
+    to a clean, metallic surface.
+
+
+    The process has left a uniform, matte-finish texture with a measured surface roughness (Ra) of approximately 0.8 micrometers.
+    The laser''s controlled energy has effectively vaporized contaminants without melting or damaging the base metal, preserving
+    its mechanical integrity. Isolated, shallow micro-pits are visible where the laser energy selectively ablated tenacious
+    oxide inclusions, providing direct evidence of the precise, layer-by-layer contaminant removal. The surface is now optimally
+    prepared for subsequent processes like coating or bonding.'
+  description: Microscopic analysis of magnesium surface before and after laser cleaning treatment
+  alt: Microscopic view of magnesium surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - magnesium_specific
+    contaminationProfile: magnesium surface contamination
+  microscopy:
+    parameters: Microscopic analysis of magnesium
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T19:26:19.781289Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Todd Dunning
+  materialProperties:
+    materialType: Metal
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Magnesium surface after laser cleaning showing detailed surface structure
+    url: /images/magnesium-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T19:26:36.649182'
+  captionIntegrated: true

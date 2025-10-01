@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Gallium Arsenide
 materialProperties:
   density:
     value: 2.329
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 98
-    description: "Density of pure silicon at 25\xB0C"
+    description: Density of pure silicon at 25°C
     min: 2.0
     max: 5.6
   thermalConductivity:
     value: 148.0
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 95
     description: Thermal conductivity at 300K for pure silicon
     min: 0.2
@@ -34,28 +34,28 @@ materialProperties:
     max: 442.4
   thermalExpansion:
     value: 2.616
-    unit: "\xD710\u207B\u2076/K"
+    unit: ×10⁻⁶/K
     confidence: 92
-    description: "Coefficient of thermal expansion at 25\xB0C"
+    description: Coefficient of thermal expansion at 25°C
     min: 2.6
     max: 19.7
   thermalDiffusivity:
     value: 88.0
-    unit: "cm\xB2/s"
+    unit: cm²/s
     confidence: 90
     description: Thermal diffusivity at room temperature
     min: 0.1
     max: 90
   specificHeat:
     value: 705.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 93
-    description: "Specific heat capacity at 25\xB0C"
+    description: Specific heat capacity at 25°C
     min: 277.0
     max: 793.0
   absorptionCoefficient:
     value: 10000
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     confidence: 85
     description: Absorption coefficient at 532nm wavelength
     min: null
@@ -76,14 +76,14 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 0.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 82
     description: Approximate ablation threshold for nanosecond pulses at 1064nm
     min: null
     max: null
   laserDamageThreshold:
     value: 2.0
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 80
     description: Laser-induced damage threshold for polished surfaces
     min: null
@@ -92,7 +92,7 @@ materialProperties:
     value: Diamond cubic
     unit: N/A
     confidence: 99
-    description: "Crystal structure with lattice parameter 5.4307\xC5"
+    description: Crystal structure with lattice parameter 5.4307Å
     min: null
     max: null
   surfaceRoughness:
@@ -107,7 +107,7 @@ materialProperties:
     max: 100.0
     min: 0.01
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 35.2
   laserReflectivity:
     confidence: 0.7
@@ -128,7 +128,7 @@ materialProperties:
     max: 1414.0
     min: 100.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 1687.0
   thermalDestructionType:
     confidence: 0.8
@@ -141,8 +141,7 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Silicon surface cleaning without substrate
-      damage
+    description: Optimal average power for Silicon surface cleaning without substrate damage
     min: 80
     max: 120
   wavelength:
@@ -154,7 +153,7 @@ machineSettings:
     max: 1080
   spotSize:
     value: 50
-    unit: "\u03BCm"
+    unit: μm
     confidence: 84
     description: Beam spot diameter for precise cleaning with adequate energy density
     min: 30
@@ -163,16 +162,14 @@ machineSettings:
     value: 100
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning coverage while maintaining
-      thermal control
+    description: High repetition rate for efficient cleaning coverage while maintaining thermal control
     min: 50
     max: 200
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant ablation with
-      minimal thermal diffusion
+    description: Nanosecond pulse duration for effective contaminant ablation with minimal thermal diffusion
     min: 5
     max: 20
   scanSpeed:
@@ -184,18 +181,16 @@ machineSettings:
     max: 1000
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 90
-    description: Minimum fluence required for effective contaminant removal from Silicon
-      surface
+    description: Minimum fluence required for effective contaminant removal from Silicon surface
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 70
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for uniform cleaning without excessive heat
-      accumulation
+    description: Optimal pulse overlap for uniform cleaning without excessive heat accumulation
     min: 50
     max: 85
   passCount:
@@ -221,10 +216,6 @@ images:
   hero:
     alt: Silicon surface undergoing laser cleaning showing precise contamination removal
     url: /images/silicon-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Silicon surface after laser cleaning showing detailed
-      surface structure
-    url: /images/silicon-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -281,8 +272,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -320,9 +310,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -343,3 +333,46 @@ author:
   country: Indonesia
   expertise: Ultrafast Laser Physics and Material Interactions
   image: /images/author/ikmanda-roswati.jpg
+caption:
+  beforeText: 'At 500x magnification, the silicon surface is obscured by a non-uniform contamination layer. Particulate matter,
+    ranging from sub-micron to over 5 micrometers in diameter, is scattered across the surface, appearing as distinct, opaque
+    specks. These are embedded within a thinner, continuous film that adds a hazy, textured appearance to the underlying silicon.
+
+
+    This film layer, estimated to be a few hundred nanometers thick, exhibits a mottled or streaked pattern, suggesting it
+    was deposited unevenly. The contamination disrupts the native surface, increasing its microscopic roughness and masking
+    the characteristic, uniform reflectivity of a pristine silicon wafer. The overall visual impression is of a topographically
+    complex and optically non-uniform plane, rather than a clean semiconductor surface.'
+  afterText: 'Following laser cleaning, the surface transformation is evident. The particulate matter and the thin, hazy film
+    have been completely removed, revealing the underlying silicon substrate. The surface now exhibits a uniform, reflective
+    appearance, with the characteristic crystalline structure of the silicon becoming clearly visible.
+
+
+    The microscopic roughness has been significantly reduced, returning to a state consistent with a polished wafer. The previously
+    obscured, smooth surface topography is now fully restored, with no visual evidence of residual contamination or laser-induced
+    damage at this magnification. The cleaning process has successfully returned the surface to its essential, pristine condition.'
+  description: Microscopic analysis of silicon surface before and after laser cleaning treatment
+  alt: Microscopic view of silicon surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - silicon_specific
+    contaminationProfile: silicon surface contamination
+  microscopy:
+    parameters: Microscopic analysis of silicon
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:04:44.108528Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Ikmanda Roswati
+  materialProperties:
+    materialType: Semiconductor
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Silicon surface after laser cleaning showing detailed surface structure
+    url: /images/silicon-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:04:57.074866'
+  captionIntegrated: true

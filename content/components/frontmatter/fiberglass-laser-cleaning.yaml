@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Carbon Fiber Reinforced Polymer
 materialProperties:
   density:
     value: 2.55
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 95
     description: Typical density for E-glass fiber reinforced composites
     min: 0.5
     max: 8
   thermalConductivity:
     value: 200.05
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 88
     description: Thermal conductivity perpendicular to fiber direction
     min: 0.1
@@ -34,14 +34,14 @@ materialProperties:
     max: 274.999
   thermalExpansion:
     value: 8.0
-    unit: "10\u207B\u2076/\xB0C"
+    unit: 10⁻⁶/°C
     confidence: 85
     description: Coefficient of thermal expansion for typical fiberglass composite
     min: 0
     max: 241.55
   specificHeat:
     value: 840.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 87
     description: Specific heat capacity at room temperature
     min: 734.0
@@ -57,8 +57,7 @@ materialProperties:
     value: 0.65
     unit: ''
     confidence: 82
-    description: Absorption coefficient for near-infrared laser wavelengths (1064
-      nm)
+    description: Absorption coefficient for near-infrared laser wavelengths (1064 nm)
     min: null
     max: null
   reflectivity:
@@ -70,14 +69,14 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 85
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   laserDamageThreshold:
     value: 1.8
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 83
     description: Damage threshold for continuous wave laser exposure
     min: null
@@ -91,14 +90,14 @@ materialProperties:
     max: null
   surfaceRoughness:
     value: 1.2
-    unit: "\u03BCm Ra"
+    unit: μm Ra
     confidence: 82
     description: Typical surface roughness of molded fiberglass surfaces
     min: null
     max: null
   thermalDiffusivity:
     value: 0.45
-    unit: "mm\xB2/s"
+    unit: mm²/s
     confidence: 84
     description: Thermal diffusivity at room temperature
     min: 0
@@ -115,7 +114,7 @@ materialProperties:
     max: 200.0
     min: 0.05
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 0.92
   laserReflectivity:
     confidence: 0.7
@@ -129,7 +128,7 @@ materialProperties:
     max: 2000.0
     min: 150.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 823.0
   thermalDestructionType:
     confidence: 0.8
@@ -156,7 +155,7 @@ machineSettings:
     max: 1080
   spotSize:
     value: 100
-    unit: "\u03BCm"
+    unit: μm
     confidence: 90
     description: Beam spot diameter for precise cleaning control
     min: 50
@@ -184,7 +183,7 @@ machineSettings:
     max: 800
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 89
     description: Fluence threshold for effective contaminant removal
     min: 1.5
@@ -210,13 +209,8 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Fiberglass surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Fiberglass surface undergoing laser cleaning showing precise contamination removal
     url: /images/fiberglass-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Fiberglass surface after laser cleaning showing detailed
-      surface structure
-    url: /images/fiberglass-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -273,8 +267,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -312,9 +305,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -335,3 +328,44 @@ author:
   country: Taiwan
   expertise: Laser Materials Processing
   image: /images/author/yi-chun-lin.jpg
+caption:
+  beforeText: 'At 500x magnification, the contaminated fiberglass surface reveals a complex, non-uniform layer of foreign
+    material. This contamination layer, measuring between 5-15 micrometers thick, appears as a discontinuous film of organic
+    residues and embedded particulate matter. The underlying fiberglass weave pattern is partially obscured, with the contaminant
+    accumulating preferentially in the microscopic valleys of the 1.2 µm Ra surface texture.
+
+
+    The contamination exhibits a cracked, mudflat-like morphology, suggesting a dried polymer or composite substance. Particulates,
+    ranging from 2-10 µm in diameter, are firmly adhered within this matrix. The presence of this layer significantly alters
+    the surface''s optical properties, increasing light scattering and masking the characteristic glass fiber and resin microstructure.
+    This obscuration prevents accurate assessment of the substrate''s true condition.'
+  afterText: Laser cleaning has completely removed the contamination layer, restoring the original fiberglass substrate. The
+    surface now displays the distinct, undamaged weave pattern of the glass fibers and the surrounding polymer matrix with
+    high fidelity. The characteristic 1.2 µm Ra micro-roughness of the molded composite is fully exposed and uniform, with
+    no evidence of embedded particulate or residual film. This confirms the selective nature of the process, which ablated
+    the contaminant without exceeding the material's 1.8 J/cm² damage threshold.
+  description: Microscopic analysis of fiberglass surface before and after laser cleaning treatment
+  alt: Microscopic view of fiberglass surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - fiberglass_specific
+    contaminationProfile: fiberglass surface contamination
+  microscopy:
+    parameters: Microscopic analysis of fiberglass
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:20:22.550690Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Yi-Chun Lin
+  materialProperties:
+    materialType: Composite
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Fiberglass surface after laser cleaning showing detailed surface structure
+    url: /images/fiberglass-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:20:36.346230'
+  captionIntegrated: true

@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Ash
 materialProperties:
   density:
     value: 0.71
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 95
     description: Average density of European oak at 12% moisture content
     min: 0.12
     max: 1.25
   thermalConductivity:
     value: 0.17
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 90
     description: Thermal conductivity perpendicular to grain at room temperature
     min: 0.04
@@ -41,14 +41,14 @@ materialProperties:
     max: 3299.24
   thermalExpansion:
     value: 54.0
-    unit: "10^-6/\xB0C"
+    unit: 10^-6/°C
     confidence: 88
     description: Coefficient of thermal expansion perpendicular to grain
     min: 0
     max: 33.0
   specificHeat:
     value: 2380.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 92
     description: Specific heat capacity at room temperature
     min: 695.0
@@ -69,10 +69,9 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 0.8
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 85
-    description: Estimated laser ablation threshold for nanosecond pulses at 1064
-      nm
+    description: Estimated laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   porosity:
@@ -108,7 +107,7 @@ materialProperties:
     max: 50.0
     min: 1.0
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 32.7
   laserReflectivity:
     confidence: 0.7
@@ -122,14 +121,14 @@ materialProperties:
     max: 0.4
     min: 0.0001
     source: default_from_category_range
-    unit: "mm\xB2/s"
+    unit: mm²/s
     value: 0.16
   thermalDestructionPoint:
     confidence: 0.7
     max: 500.0
     min: 200.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 400.0
   thermalDestructionType:
     confidence: 0.8
@@ -155,7 +154,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: "\u03BCm"
+    unit: μm
     confidence: 84
     description: Beam spot diameter for precise cleaning control
     min: 50
@@ -183,7 +182,7 @@ machineSettings:
     max: 2000
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 89
     description: Fluence threshold for effective Oak surface cleaning
     min: 1.5
@@ -219,10 +218,6 @@ images:
   hero:
     alt: Oak surface undergoing laser cleaning showing precise contamination removal
     url: /images/oak-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Oak surface after laser cleaning showing detailed surface
-      structure
-    url: /images/oak-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -279,8 +274,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -318,9 +312,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -341,3 +335,45 @@ author:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+caption:
+  beforeText: At 500x magnification, the oak surface is obscured by a discontinuous contamination layer averaging 15-25 micrometers
+    in thickness. This layer consists of particulate matter embedded in a matrix of degraded organic residues, which fills
+    the natural porous structure of the wood. The surface texture appears matte and uneven, with the original cellular structure
+    of the oak, including large vessel elements and medullary rays, largely masked by the foreign deposits. The contamination
+    exhibits poor adhesion in some areas, creating visible micro-fissures at the interface with the underlying wood substrate.
+  afterText: 'Laser cleaning produces a distinct transformation, revealing the intact anatomical structure of the oak. The
+    contamination layer has been completely removed, exposing the clean, open lumens of the vessel elements and the detailed
+    cellular network. The original wood surface is now visible with minimal substrate alteration; the cellulose-rich cell
+    walls remain structurally sound, showing no evidence of charting or thermal degradation that would indicate overheating.
+
+
+    The process has restored the natural porosity of the oak, with the 45% void volume now fully accessible. The surface exhibits
+    a uniform texture consistent with the wood''s inherent density of 0.71 g/cm³. The cleaning threshold was precisely controlled
+    to remain below the 0.8 J/cm² ablation threshold of the oak substrate, ensuring selective removal of contaminants while
+    preserving the underlying lignocellulosic material. This results in a surface that is analytically clean and prepared
+    for subsequent treatments.'
+  description: Microscopic analysis of oak surface before and after laser cleaning treatment
+  alt: Microscopic view of oak surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - oak_specific
+    contaminationProfile: oak surface contamination
+  microscopy:
+    parameters: Microscopic analysis of oak
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T19:26:41.791665Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Todd Dunning
+  materialProperties:
+    materialType: Wood
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Oak surface after laser cleaning showing detailed surface structure
+    url: /images/oak-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T19:26:55.388334'
+  captionIntegrated: true

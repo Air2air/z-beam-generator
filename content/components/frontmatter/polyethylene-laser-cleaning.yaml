@@ -6,16 +6,16 @@ description: Laser cleaning parameters for Polycarbonate
 materialProperties:
   density:
     value: 0.93
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 95
     description: Density of low-density polyethylene at room temperature
     min: 0.85
     max: 2.2
   thermalConductivity:
     value: 0.33
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 88
-    description: "Thermal conductivity of polyethylene at 20\xB0C"
+    description: Thermal conductivity of polyethylene at 20°C
     min: 0.02
     max: 3
   tensileStrength:
@@ -34,21 +34,21 @@ materialProperties:
     max: 3629.98
   thermalExpansion:
     value: 200.0
-    unit: "10\u207B\u2076/\xB0C"
+    unit: 10⁻⁶/°C
     confidence: 85
     description: Linear thermal expansion coefficient
     min: 10
     max: 200
   specificHeat:
     value: 2300.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 90
     description: Specific heat capacity at room temperature
     min: 800.0
     max: 2000.0
   absorptionCoefficient:
     value: 0.85
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     confidence: 82
     description: Absorption coefficient at 1064 nm wavelength
     min: null
@@ -62,7 +62,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 0.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 78
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
@@ -93,7 +93,7 @@ materialProperties:
     max: 100.0
     min: 0.1
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 65.2
   laserReflectivity:
     confidence: 0.7
@@ -107,14 +107,14 @@ materialProperties:
     max: 1.0
     min: 0.05
     source: default_from_category_range
-    unit: "mm\xB2/s"
+    unit: mm²/s
     value: 0.22
   thermalDestructionPoint:
     confidence: 0.7
     max: 400.0
     min: 80.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 385.0
   thermalDestructionType:
     confidence: 0.8
@@ -136,13 +136,12 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 85
-    description: Near-IR wavelength with moderate Polyethylene absorption for controlled
-      ablation
+    description: Near-IR wavelength with moderate Polyethylene absorption for controlled ablation
     min: 355
     max: 10640
   spotSize:
     value: 100
-    unit: "\u03BCm"
+    unit: μm
     confidence: 85
     description: Beam spot diameter for efficient area coverage and adequate fluence
     min: 50
@@ -151,16 +150,14 @@ machineSettings:
     value: 20
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for continuous cleaning process with thermal
-      management
+    description: Optimal repetition rate for continuous cleaning process with thermal management
     min: 5
     max: 100
   pulseWidth:
     value: 100
     unit: ns
     confidence: 88
-    description: Nanosecond pulse duration for efficient contaminant removal with
-      minimal substrate damage
+    description: Nanosecond pulse duration for efficient contaminant removal with minimal substrate damage
     min: 10
     max: 200
   scanSpeed:
@@ -174,24 +171,21 @@ machineSettings:
     value: 50
     unit: '%'
     confidence: 85
-    description: Pulse overlap percentage for complete surface coverage without excessive
-      heating
+    description: Pulse overlap percentage for complete surface coverage without excessive heating
     min: 30
     max: 70
   passCount:
     value: 1
     unit: passes
     confidence: 88
-    description: Typically single-pass cleaning sufficient for Polyethylene surface
-      contaminants
+    description: Typically single-pass cleaning sufficient for Polyethylene surface contaminants
     min: 1
     max: 3
   energyDensity:
     value: 5.1
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 90
-    description: Fluence threshold for effective contaminant removal while preserving
-      Polyethylene substrate
+    description: Fluence threshold for effective contaminant removal while preserving Polyethylene substrate
     min: 2.0
     max: 10.0
   laserType:
@@ -208,13 +202,8 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Polyethylene surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Polyethylene surface undergoing laser cleaning showing precise contamination removal
     url: /images/polyethylene-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Polyethylene surface after laser cleaning showing detailed
-      surface structure
-    url: /images/polyethylene-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -271,8 +260,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -310,9 +298,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -333,3 +321,47 @@ author:
   country: Taiwan
   expertise: Laser Materials Processing
   image: /images/author/yi-chun-lin.jpg
+caption:
+  beforeText: 'At 500x magnification, the polyethylene surface is obscured by a non-uniform contamination layer, approximately
+    5-15 micrometers thick. This layer consists of embedded particulate matter and a film of organic residues, creating a
+    topographically complex and textured landscape. The surface exhibits a matte, irregular appearance due to light scattering
+    from these features.
+
+
+    The contamination is not a continuous film but forms isolated islands and agglomerates, with some particulate contaminants
+    measuring up to 20 micrometers in diameter. These features disrupt the underlying polymer morphology, masking the native
+    semi-crystalline structure of the polyethylene. The resulting surface is characterized by high microscopic roughness and
+    inconsistent reflectivity.'
+  afterText: 'Following laser cleaning, the surface transformation is evident. The contamination layer has been completely
+    removed, revealing the underlying polyethylene substrate with its characteristic semi-crystalline morphology. The surface
+    now displays a uniform texture with significantly reduced microscopic roughness.
+
+
+    The previously obscured polymer structure is now clearly visible, with the laser process restoring the material''s native
+    topography. The surface exhibits consistent reflectivity and is free from residual particulate matter, confirming the
+    precision of the ablation process which selectively removed contaminants without damaging the base polymer.'
+  description: Microscopic analysis of polyethylene surface before and after laser cleaning treatment
+  alt: Microscopic view of polyethylene surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - polyethylene_specific
+    contaminationProfile: polyethylene surface contamination
+  microscopy:
+    parameters: Microscopic analysis of polyethylene
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:28:33.730245Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Yi-Chun Lin
+  materialProperties:
+    materialType: Plastic
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Polyethylene surface after laser cleaning showing detailed surface structure
+    url: /images/polyethylene-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:28:45.721348'
+  captionIntegrated: true

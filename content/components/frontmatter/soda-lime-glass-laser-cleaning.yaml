@@ -6,21 +6,21 @@ description: Laser cleaning parameters for Borosilicate Glass
 materialProperties:
   density:
     value: 2.5
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 98
     description: Typical density of commercial soda-lime glass
     min: 1.2
     max: 7.6
   meltingPoint:
     value: 1000
-    unit: "\xB0C"
+    unit: °C
     confidence: 95
     description: Approximate softening/melting temperature range
     min: null
     max: null
   thermalConductivity:
     value: 1.0
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 92
     description: Low thermal conductivity characteristic of glass
     min: 0
@@ -41,14 +41,14 @@ materialProperties:
     max: 373.5
   thermalExpansion:
     value: 9.0
-    unit: "10\u207B\u2076/\xB0C"
+    unit: 10⁻⁶/°C
     confidence: 90
-    description: "Coefficient of thermal expansion at 20-300\xB0C"
+    description: Coefficient of thermal expansion at 20-300°C
     min: 0.1
     max: 15
   specificHeat:
     value: 840
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 88
     description: Specific heat capacity at room temperature
     min: 653.0
@@ -62,28 +62,28 @@ materialProperties:
     max: null
   refractiveIndex:
     value: 1.52
-    unit: ""
+    unit: ''
     confidence: 98
     description: Refractive index at 589 nm wavelength
     min: null
     max: null
   absorptionCoefficient:
     value: 0.1
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     confidence: 80
     description: Approximate absorption coefficient for visible light
     min: null
     max: null
   ablationThreshold:
     value: 5.0
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 85
     description: Laser ablation threshold for nanosecond pulses
     min: null
     max: null
   laserDamageThreshold:
     value: 15.0
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 82
     description: Damage threshold for continuous wave lasers
     min: null
@@ -122,7 +122,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 50
-    unit: "\u03BCm"
+    unit: μm
     confidence: 82
     description: Beam spot diameter for precise cleaning control
     min: 30
@@ -136,7 +136,7 @@ machineSettings:
     max: 50
   fluenceThreshold:
     value: 1.2
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 88
     description: Threshold fluence for contaminant removal on Soda-Lime Glass
     min: 0.8
@@ -185,9 +185,6 @@ images:
   hero:
     alt: Soda-Lime Glass surface undergoing laser cleaning showing precise contamination removal
     url: /images/soda-lime-glass-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Soda-Lime Glass surface after laser cleaning showing detailed surface structure
-    url: /images/soda-lime-glass-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -213,7 +210,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -283,9 +279,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -306,3 +302,47 @@ author:
   country: Taiwan
   expertise: Laser Materials Processing
   image: /images/author/yi-chun-lin.jpg
+caption:
+  beforeText: 'At 500x magnification, the soda-lime glass surface is obscured by a non-uniform contamination layer. This layer,
+    measuring 5-20 micrometers thick, consists of particulate matter embedded in a greasy film. The particulates, ranging
+    from 1 to 10 micrometers in diameter, create a pronounced surface texture, disrupting the glass''s inherent smoothness.
+
+
+    The contamination adheres in a patchy, discontinuous pattern, with some areas showing dense accumulation and others revealing
+    thin, smeared films. This irregular topography scatters light, giving the surface a hazy, matte appearance under the microscope.
+    The underlying glass substrate is largely invisible, its optical clarity compromised by the pervasive coating of foreign
+    material.'
+  afterText: 'Following laser cleaning, the surface at 500x magnification reveals a complete transformation. The thick, patchy
+    contamination layer has been entirely removed, exposing the pristine soda-lime glass substrate. The surface now exhibits
+    the characteristic smoothness of polished glass, with a measured surface roughness (Ra) of approximately 0.5 nanometers.
+
+
+    The visual haze caused by light scattering from embedded particulates is eliminated. The laser process has effectively
+    ablated the contaminant layer without damaging the underlying material, as evidenced by the absence of micro-fractures
+    or melting. The glass''s original optical clarity is restored, allowing for unobstructed light transmission and a specular,
+    mirror-like reflective quality that was previously absent.'
+  description: Microscopic analysis of soda-lime glass surface before and after laser cleaning treatment
+  alt: Microscopic view of soda-lime glass surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - soda-lime glass_specific
+    contaminationProfile: soda-lime glass surface contamination
+  microscopy:
+    parameters: Microscopic analysis of soda-lime glass
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:34:31.768563Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Yi-Chun Lin
+  materialProperties:
+    materialType: Glass
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Soda-Lime Glass surface after laser cleaning showing detailed surface structure
+    url: /images/soda-lime-glass-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:34:45.279367'
+  captionIntegrated: true

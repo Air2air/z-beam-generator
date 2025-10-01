@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Borosilicate Glass
 materialProperties:
   density:
     value: 2.5
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 98
     description: Typical density of soda-lime-silica float glass
     min: 1.2
     max: 7.6
   thermalConductivity:
     value: 1.0
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 92
     description: Low thermal conductivity characteristic of glass materials
     min: 0
@@ -34,21 +34,21 @@ materialProperties:
     max: 373.5
   thermalExpansion:
     value: 8.5
-    unit: "10\u207B\u2076/\xB0C"
+    unit: 10⁻⁶/°C
     confidence: 90
     description: Coefficient of thermal expansion for standard float glass
     min: 0.1
     max: 15
   thermalDiffusivity:
     value: 0.84
-    unit: "mm\xB2/s"
+    unit: mm²/s
     confidence: 88
     description: Thermal diffusivity at room temperature
     min: 0
     max: 13.7
   specificHeat:
     value: 753.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 90
     description: Specific heat capacity of soda-lime glass
     min: 653.0
@@ -76,21 +76,21 @@ materialProperties:
     max: null
   absorptionCoefficient:
     value: 0.1
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     confidence: 85
     description: Approximate absorption coefficient in visible spectrum
     min: null
     max: null
   ablationThreshold:
     value: 5.0
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 80
     description: Estimated laser ablation threshold for nanosecond pulses
     min: null
     max: null
   laserDamageThreshold:
     value: 10.0
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 82
     description: Typical damage threshold for pulsed laser systems
     min: null
@@ -114,7 +114,7 @@ materialProperties:
     max: 10.0
     min: 0.001
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 4.0
   laserReflectivity:
     confidence: 0.7
@@ -135,7 +135,7 @@ materialProperties:
     max: 1723.0
     min: 500.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 1100.0
   thermalDestructionType:
     confidence: 0.8
@@ -162,7 +162,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 50
-    unit: "\u03BCm"
+    unit: μm
     confidence: 90
     description: Optimal spot size for precise cleaning resolution
     min: 30
@@ -190,10 +190,9 @@ machineSettings:
     max: 1000
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 89
-    description: Threshold fluence for effective contaminant removal without glass
-      damage
+    description: Threshold fluence for effective contaminant removal without glass damage
     min: 1.5
     max: 4.0
   overlapRatio:
@@ -224,13 +223,8 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Float Glass surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Float Glass surface undergoing laser cleaning showing precise contamination removal
     url: /images/float-glass-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Float Glass surface after laser cleaning showing detailed
-      surface structure
-    url: /images/float-glass-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -287,8 +281,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -326,9 +319,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -349,3 +342,49 @@ author:
   country: Taiwan
   expertise: Laser Materials Processing
   image: /images/author/yi-chun-lin.jpg
+caption:
+  beforeText: 'At 500x magnification, the float glass surface is obscured by a non-uniform contamination layer approximately
+    2-5 micrometers thick. This layer consists of particulate matter, including silica dust and organic residues, embedded
+    in a thin film of adsorbed hydrocarbons. The particulates, ranging from 1 to 20 micrometers in diameter, create a textured,
+    irregular topography that scatters light and disrupts the glass''s inherent smoothness.
+
+
+    The underlying glass substrate is partially visible through thinner areas of the film, which exhibits an interference
+    pattern indicative of varying thickness. The contamination adheres to the surface in a patchy, discontinuous manner, with
+    agglomerated particles forming raised islands. This microstructure significantly increases the surface roughness from
+    the pristine state of 0.5 nm Ra to a measured range of 200-500 nm Ra, creating a diffuse, matte appearance under the microscope.'
+  afterText: 'Following laser cleaning, the surface at 500x magnification reveals the pristine float glass substrate. The
+    contamination layer has been completely removed, eliminating the light-scattering particulate matter and hydrocarbon film.
+    The surface now exhibits the characteristic smooth, featureless plane of virgin glass, with a measured surface roughness
+    restored to its native state of approximately 0.5 nm Ra.
+
+
+    The visual transformation is marked by the disappearance of the previous patchy film and particulate agglomerations. The
+    laser process has selectively ablated the contaminants without damaging the underlying glass, as evidenced by the absence
+    of micro-fractures or thermal stress marks. The surface is now optically homogeneous, allowing for unobstructed light
+    transmission and a clear, distinct view of the glass''s intrinsic properties.'
+  description: Microscopic analysis of float glass surface before and after laser cleaning treatment
+  alt: Microscopic view of float glass surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - float glass_specific
+    contaminationProfile: float glass surface contamination
+  microscopy:
+    parameters: Microscopic analysis of float glass
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:20:54.255688Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Yi-Chun Lin
+  materialProperties:
+    materialType: Glass
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Float Glass surface after laser cleaning showing detailed surface structure
+    url: /images/float-glass-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:21:09.207093'
+  captionIntegrated: true

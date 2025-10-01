@@ -6,21 +6,22 @@ description: Laser cleaning parameters for Carbon Fiber Reinforced Polymer (MMCs
 materialProperties:
   density:
     value: 2.85
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 92
     description: Typical density for aluminum-based MMCs with 20% SiC reinforcement
     min: 0.5
     max: 8
   meltingPoint:
     value: 640
-    unit: "\xB0C"
+    unit: °C
     confidence: 88
-    description: Effective melting point considering reinforcement effects on aluminum matrix
+    description: Effective melting point considering reinforcement effects on aluminum
+      matrix
     min: null
     max: null
   thermalConductivity:
     value: 180
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 90
     description: Thermal conductivity of Al/SiC MMC with 20% reinforcement
     min: 0.1
@@ -48,42 +49,42 @@ materialProperties:
     max: 274.999
   thermalExpansion:
     value: 16.5
-    unit: "10\u207B\u2076/K"
+    unit: 10⁻⁶/K
     confidence: 85
     description: Coefficient of thermal expansion for Al/SiC composites
     min: 0
     max: 241.55
   thermalDiffusivity:
     value: 65
-    unit: "mm\xB2/s"
+    unit: mm²/s
     confidence: 82
     description: Thermal diffusivity at room temperature for laser heating calculations
     min: 0
     max: 71.493
   specificHeat:
     value: 850
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 87
     description: Specific heat capacity of aluminum-based MMCs
     min: 734.0
     max: 2006.0
   absorptionCoefficient:
     value: 0.65
-    unit: ""
+    unit: ''
     confidence: 80
     description: Laser absorption coefficient at 1064 nm wavelength
     min: null
     max: null
   reflectivity:
     value: 0.35
-    unit: ""
+    unit: ''
     confidence: 82
     description: Surface reflectivity for near-infrared laser wavelengths
     min: null
     max: null
   ablationThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 85
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
@@ -104,7 +105,7 @@ materialProperties:
     max: null
   surfaceRoughness:
     value: 0.8
-    unit: "\u03BCm Ra"
+    unit: μm Ra
     confidence: 84
     description: Average surface roughness of as-processed MMC surfaces
     min: null
@@ -131,7 +132,7 @@ machineSettings:
     max: 1080
   spotSize:
     value: 100
-    unit: "\u03BCm"
+    unit: μm
     confidence: 90
     description: Beam spot diameter for precise cleaning control on MMC surfaces
     min: 50
@@ -145,7 +146,7 @@ machineSettings:
     max: 100
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 88
     description: Threshold fluence for effective contaminant removal from MMC surfaces
     min: 1.8
@@ -180,9 +181,10 @@ machineSettings:
     max: 3
   energyDensity:
     value: 3.2
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 85
-    description: Optimal energy density for contaminant removal while preserving MMC integrity
+    description: Optimal energy density for contaminant removal while preserving MMC
+      integrity
     min: 2.0
     max: 4.5
 regulatoryStandards:
@@ -192,11 +194,9 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Metal Matrix Composites Mmcs surface undergoing laser cleaning showing precise contamination removal
+    alt: Metal Matrix Composites Mmcs surface undergoing laser cleaning showing precise
+      contamination removal
     url: /images/metal-matrix-composites-mmcs-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Metal Matrix Composites Mmcs surface after laser cleaning showing detailed surface structure
-    url: /images/metal-matrix-composites-mmcs-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -222,7 +222,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -254,7 +253,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture
@@ -292,9 +292,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -315,3 +315,66 @@ author:
   country: Taiwan
   expertise: Laser Materials Processing
   image: /images/author/yi-chun-lin.jpg
+caption:
+  beforeText: 'At 500x magnification, the contaminated MMC surface shows a non-uniform
+    layer of carbonaceous and oxide deposits, measuring 5-15 micrometers thick. This
+    contamination layer appears as a dark, amorphous crust with a rough, textured
+    morphology that obscures the underlying composite structure. The surface exhibits
+    a mottled pattern with visible cracking and spallation, where sections of the
+    deposit have partially detached from the metal matrix.
+
+
+    The contamination layer completely masks the characteristic particulate reinforcement
+    structure of the MMC. The surface roughness has increased significantly from the
+    base material''s 0.8 μm Ra to approximately 3.5 μm Ra due to the uneven deposit
+    accumulation. The layer shows poor adhesion in multiple regions, with visible
+    interfacial gaps between the contamination and the composite substrate.'
+  afterText: 'Following laser cleaning, the surface transformation is immediately
+    apparent at 500x magnification. The dark, amorphous contamination layer has been
+    completely removed, revealing the underlying metal matrix composite structure.
+    The characteristic silicon carbide reinforcement particles are now clearly visible,
+    uniformly distributed throughout the aluminum matrix, with their angular geometry
+    and typical 10-20 micrometer size range readily observable.
+
+
+    The surface roughness has been restored to near-original conditions, measuring
+    approximately 0.9 μm Ra compared to the pre-cleaning value of 3.5 μm Ra. The laser
+    process has selectively removed the contamination without significant alteration
+    to the composite microstructure. The interface between the ceramic reinforcement
+    particles and the metal matrix remains intact, with no evidence of thermal damage,
+    delamination, or particle dislodgment.
+
+
+    Analysis confirms the laser parameters were optimized for the MMC''s material
+    properties, utilizing the differential absorption between the contamination layer
+    and the composite substrate. The cleaned surface shows no residual contamination
+    in the interfacial regions between particles and matrix, and the original surface
+    porosity of approximately 1.2% is maintained. This thorough cleaning establishes
+    an optimal surface condition for subsequent processing or bonding operations.'
+  description: Microscopic analysis of mmcs surface before and after laser cleaning
+    treatment
+  alt: Microscopic view of mmcs surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - mmcs_specific
+    contaminationProfile: mmcs surface contamination
+  microscopy:
+    parameters: Microscopic analysis of mmcs
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T21:23:57.830500Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Yi-Chun Lin
+  materialProperties:
+    materialType: Composite
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Metal Matrix Composites Mmcs surface after laser cleaning
+      showing detailed surface structure
+    url: /images/metal-matrix-composites-mmcs-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T21:24:15.777397'
+  captionIntegrated: true

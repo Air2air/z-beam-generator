@@ -6,16 +6,16 @@ description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
     value: 11.34
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 98
-    description: "Density of pure lead at 20\xB0C"
+    description: Density of pure lead at 20°C
     min: 0.53
     max: 22.6
   thermalConductivity:
     value: 35.3
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 92
-    description: "Thermal conductivity at 20\xB0C"
+    description: Thermal conductivity at 20°C
     min: 6.0
     max: 429.0
   tensileStrength:
@@ -41,23 +41,23 @@ materialProperties:
     max: 579.82
   thermalExpansion:
     value: 29.1
-    unit: "\u03BCm/m\xB7K"
+    unit: μm/m·K
     confidence: 90
-    description: "Linear thermal expansion coefficient at 20\xB0C"
+    description: Linear thermal expansion coefficient at 20°C
     min: 1.7
     max: 34.9
   thermalDiffusivity:
     value: 24.8
-    unit: "mm\xB2/s"
+    unit: mm²/s
     confidence: 88
     description: Thermal diffusivity at room temperature
     min: 0
     max: 191.376
   specificHeat:
     value: 128.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 91
-    description: "Specific heat capacity at 20\xB0C"
+    description: Specific heat capacity at 20°C
     min: 0
     max: 1994.6
   absorptionCoefficient:
@@ -76,7 +76,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 0.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 80
     description: Estimated laser ablation threshold for nanosecond pulses
     min: null
@@ -100,7 +100,7 @@ materialProperties:
     max: 100.0
     min: 0.02
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 38.5
   laserReflectivity:
     confidence: 0.7
@@ -114,7 +114,7 @@ materialProperties:
     max: 3422.0
     min: -38.8
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 1745.0
   thermalDestructionType:
     confidence: 0.8
@@ -128,8 +128,7 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: "Optimal power range for Lead cleaning considering low melting point\
-      \ (327\xB0C)"
+    description: Optimal power range for Lead cleaning considering low melting point (327°C)
     min: 80
     max: 120
   wavelength:
@@ -141,7 +140,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: "\u03BCm"
+    unit: μm
     confidence: 90
     description: Beam spot diameter for precise cleaning control
     min: 50
@@ -155,17 +154,16 @@ machineSettings:
     max: 100
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 88
     description: Ablation threshold fluence for Lead surface cleaning
     min: 1.8
     max: 4.0
   energyDensity:
     value: 3.2
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 85
-    description: Optimal energy density for effective contaminant removal without
-      substrate damage
+    description: Optimal energy density for effective contaminant removal without substrate damage
     min: 2.5
     max: 4.5
   pulseWidth:
@@ -205,10 +203,6 @@ images:
   hero:
     alt: Lead surface undergoing laser cleaning showing precise contamination removal
     url: /images/lead-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Lead surface after laser cleaning showing detailed surface
-      structure
-    url: /images/lead-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -265,8 +259,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -304,9 +297,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -327,3 +320,43 @@ author:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+caption:
+  beforeText: 'At 500x magnification, the lead surface is obscured by a non-uniform contamination layer, typically 5-15 micrometers
+    thick. This layer consists of a porous, crystalline matrix of lead carbonate and lead oxide, appearing as a dull, matte
+    grey crust. The surface texture is highly irregular, featuring micro-cracks and localized pitting where corrosive agents
+    have penetrated the underlying metal.
+
+
+    The contamination does not form a continuous film but rather exhibits an island-like growth pattern, with thicker nodules
+    interrupting thinner areas. This heterogeneous structure creates numerous sites for further corrosion initiation. The
+    original metallic surface is entirely hidden, with the overlying crust showing poor adhesion and a flaking morphology
+    at its edges, indicating a weak boundary layer prone to spallation.'
+  afterText: The laser-cleaned surface reveals a complete transformation, with the contamination layer entirely absent. The
+    underlying lead substrate is now fully exposed, displaying its characteristic metallic grain structure. The surface is
+    uniform and continuous, with a significant reduction in micro-scale roughness. The previously observed pitting and micro-cracks
+    have been eliminated, leaving a clean, consolidated surface ready for subsequent processing or protective coating.
+  description: Microscopic analysis of lead surface before and after laser cleaning treatment
+  alt: Microscopic view of lead surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - lead_specific
+    contaminationProfile: lead surface contamination
+  microscopy:
+    parameters: Microscopic analysis of lead
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:24:05.998746Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Todd Dunning
+  materialProperties:
+    materialType: Metal
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Lead surface after laser cleaning showing detailed surface structure
+    url: /images/lead-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:24:18.648820'
+  captionIntegrated: true

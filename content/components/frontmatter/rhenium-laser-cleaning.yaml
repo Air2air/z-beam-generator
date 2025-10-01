@@ -6,16 +6,16 @@ description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
     value: 21.02
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 98
     description: Density of pure rhenium at room temperature
     min: 0.53
     max: 22.6
   thermalConductivity:
     value: 71.2
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 90
-    description: "Thermal conductivity at 20\xB0C"
+    description: Thermal conductivity at 20°C
     min: 6.0
     max: 429.0
   tensileStrength:
@@ -41,21 +41,21 @@ materialProperties:
     max: 579.82
   thermalExpansion:
     value: 6.2
-    unit: "\xD710\u207B\u2076/K"
+    unit: ×10⁻⁶/K
     confidence: 88
-    description: "Coefficient of thermal expansion (20-1000\xB0C)"
+    description: Coefficient of thermal expansion (20-1000°C)
     min: 1.7
     max: 34.9
   specificHeat:
     value: 137.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 92
-    description: "Specific heat capacity at 25\xB0C"
+    description: Specific heat capacity at 25°C
     min: 0
     max: 1994.6
   thermalDiffusivity:
     value: 63.2
-    unit: "mm\xB2/s"
+    unit: mm²/s
     confidence: 85
     description: Thermal diffusivity at room temperature
     min: 0
@@ -69,17 +69,16 @@ materialProperties:
     max: null
   absorptionCoefficient:
     value: 4.8
-    unit: "\xD710\u2075 cm\u207B\xB9"
+    unit: ×10⁵ cm⁻¹
     confidence: 80
     description: Estimated absorption coefficient for near-IR lasers
     min: null
     max: null
   ablationThreshold:
     value: 2.8
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 78
-    description: Estimated laser ablation threshold for nanosecond pulses at 1064
-      nm
+    description: Estimated laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   crystallineStructure:
@@ -90,7 +89,7 @@ materialProperties:
     min: null
     max: null
   oxidationResistance:
-    value: "Excellent up to 1000\xB0C"
+    value: Excellent up to 1000°C
     unit: qualitative
     confidence: 85
     description: Resistance to oxidation in air
@@ -101,7 +100,7 @@ materialProperties:
     max: 100.0
     min: 0.02
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 42.7
   laserReflectivity:
     confidence: 0.7
@@ -115,7 +114,7 @@ materialProperties:
     max: 3422.0
     min: -38.8
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 1727.0
   thermalDestructionType:
     confidence: 0.8
@@ -130,8 +129,7 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Rhenium oxide removal without substrate
-      damage
+    description: Optimal average power for Rhenium oxide removal without substrate damage
     min: 80
     max: 120
   wavelength:
@@ -143,7 +141,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 50
-    unit: "\u03BCm"
+    unit: μm
     confidence: 84
     description: Beam spot diameter for precise cleaning control
     min: 30
@@ -171,7 +169,7 @@ machineSettings:
     max: 1000
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 90
     description: Minimum fluence required for effective Rhenium oxide removal
     min: 1.5
@@ -206,10 +204,6 @@ images:
   hero:
     alt: Rhenium surface undergoing laser cleaning showing precise contamination removal
     url: /images/rhenium-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Rhenium surface after laser cleaning showing detailed
-      surface structure
-    url: /images/rhenium-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -266,8 +260,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -305,9 +298,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -328,3 +321,51 @@ author:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+caption:
+  beforeText: 'At 500x magnification, the rhenium surface is obscured by a non-uniform contamination layer, approximately
+    5-15 micrometers thick. This layer appears as a matte, textured crust composed of embedded carbonaceous soot and oxide
+    particles, creating a topographically complex and rough surface. The underlying metallic substrate is not visible, and
+    the contamination exhibits a cracked, mud-flat pattern, indicative of thermal stress and oxidation cycles.
+
+
+    Energy-dispersive X-ray spectroscopy (EDS) analysis confirms the presence of foreign elements, including oxygen and carbon,
+    which form a discontinuous but tenacious film. This layer significantly alters the surface''s native properties, masking
+    the characteristic, fine-grained microstructure of the rhenium metal beneath it.'
+  afterText: 'Following laser cleaning, the surface transformation at 500x magnification is definitive. The thick, matte contamination
+    crust has been completely removed, revealing the pristine, underlying rhenium substrate. The surface now exhibits the
+    intrinsic, fine-grained polycrystalline structure of the metal, with individual grain boundaries clearly visible.
+
+
+    The laser process has restored the original metallic luster and surface topography. The previously rough and cracked texture
+    has been replaced by a clean, uniform morphology. Analysis confirms the elimination of the oxygen and carbon signals detected
+    prior to cleaning, verifying the removal of the oxide and soot layers.
+
+
+    This restoration to the base metal provides an optimal surface for subsequent processes, such as coating or bonding, by
+    ensuring maximum adhesion to the pure rhenium without any intervening contamination. The process successfully ablated
+    the contaminants without damaging the high-strength rhenium substrate.'
+  description: Microscopic analysis of rhenium surface before and after laser cleaning treatment
+  alt: Microscopic view of rhenium surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - rhenium_specific
+    contaminationProfile: rhenium surface contamination
+  microscopy:
+    parameters: Microscopic analysis of rhenium
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:30:37.454143Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Todd Dunning
+  materialProperties:
+    materialType: Metal
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Rhenium surface after laser cleaning showing detailed surface structure
+    url: /images/rhenium-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:30:52.897801'
+  captionIntegrated: true

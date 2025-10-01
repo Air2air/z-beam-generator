@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Alabaster
 materialProperties:
   density:
     value: 2.65
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 95
     description: Average density of quartzite due to high quartz content
     min: 1.5
     max: 3.4
   thermalConductivity:
     value: 5.38
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 85
     description: Thermal conductivity at room temperature, perpendicular to bedding
     min: 0.12
@@ -34,21 +34,21 @@ materialProperties:
     max: 100
   thermalExpansion:
     value: 12.0
-    unit: "10\u207B\u2076/\xB0C"
+    unit: 10⁻⁶/°C
     confidence: 88
-    description: "Coefficient of thermal expansion at 20-100\xB0C"
+    description: Coefficient of thermal expansion at 20-100°C
     min: 3.5
     max: 26.9
   specificHeat:
     value: 1100.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 87
     description: Specific heat capacity at room temperature
     min: 705.5
     max: 1119.5
   absorptionCoefficient:
     value: 0.85
-    unit: "cm\u207B\xB9 at 1064nm"
+    unit: cm⁻¹ at 1064nm
     confidence: 80
     description: Optical absorption coefficient for Nd:YAG laser wavelength
     min: null
@@ -62,7 +62,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 2.8
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 78
     description: Laser ablation threshold for nanosecond pulses at 1064nm
     min: null
@@ -86,7 +86,7 @@ materialProperties:
     max: 20.0
     min: 0.1
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 8.2
   laserReflectivity:
     confidence: 0.7
@@ -107,14 +107,14 @@ materialProperties:
     max: 2.5
     min: 0.2
     source: default_from_category_range
-    unit: "mm\xB2/s"
+    unit: mm²/s
     value: 1.32
   thermalDestructionPoint:
     confidence: 0.7
     max: 1700.0
     min: 600.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 1470.0
   thermalDestructionType:
     confidence: 0.8
@@ -134,13 +134,12 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Optimal wavelength for Quartzite absorption and minimal subsurface
-      damage
+    description: Optimal wavelength for Quartzite absorption and minimal subsurface damage
     min: 532
     max: 10640
   spotSize:
     value: 100
-    unit: "\u03BCm"
+    unit: μm
     confidence: 90
     description: Optimal spot size for precise cleaning of Quartzite surfaces
     min: 50
@@ -156,8 +155,7 @@ machineSettings:
     value: 10
     unit: ns
     confidence: 85
-    description: Optimal pulse width for controlled ablation of Quartzite surface
-      contaminants
+    description: Optimal pulse width for controlled ablation of Quartzite surface contaminants
     min: 5
     max: 20
   scanSpeed:
@@ -169,7 +167,7 @@ machineSettings:
     max: 1000
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 89
     description: Threshold fluence for effective contaminant removal from Quartzite
     min: 1.5
@@ -202,13 +200,8 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Quartzite surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Quartzite surface undergoing laser cleaning showing precise contamination removal
     url: /images/quartzite-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Quartzite surface after laser cleaning showing detailed
-      surface structure
-    url: /images/quartzite-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -265,8 +258,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -304,9 +296,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -327,3 +319,52 @@ author:
   country: Italy
   expertise: Laser-Based Additive Manufacturing
   image: /images/author/alessandro-moretti.jpg
+caption:
+  beforeText: 'At 500x magnification, the quartzite surface is obscured by a non-uniform contamination layer approximately
+    5-15 micrometers thick. This layer consists of particulate matter embedded in a matrix of organic residues, creating a
+    discontinuous film that masks the underlying crystalline structure. The particulates, ranging from 1 to 5 micrometers
+    in diameter, are firmly adhered to the stone.
+
+
+    The contamination disrupts the natural surface texture, filling the micro-scale intergranular boundaries between quartz
+    crystals. This results in a topographically muted appearance, where the inherent reflectivity of the quartz is significantly
+    reduced. The layer exhibits a cracked, desiccated morphology, indicating its susceptibility to cohesive failure.'
+  afterText: 'The laser cleaning process has resulted in the complete removal of the contamination layer, revealing the pristine
+    quartzite substrate. The surface now exhibits the distinct, interlocking texture of recrystallized quartz grains, with
+    sharp boundaries clearly visible. The micro-roughness inherent to the stone''s natural cleavage is fully restored, contrasting
+    sharply with the previously muted and occluded surface.
+
+
+    The removal is highly selective, as evidenced by the absence of thermal damage to the quartz crystals themselves. The
+    mineral grains, with a Mohs hardness of 7, retain their structural integrity. The process has effectively cleared the
+    intergranular boundaries, eliminating the particulate-filled matrix that was previously present.
+
+
+    This restoration of the original microstructure has a direct impact on the surface''s optical properties. The cleaned
+    quartzite now demonstrates significantly higher reflectivity, a direct result of exposing the crystalline faces. The surface
+    is defined by its mineralogical composition, free from foreign material that altered its visual and physical characteristics.'
+  description: Microscopic analysis of quartzite surface before and after laser cleaning treatment
+  alt: Microscopic view of quartzite surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - quartzite_specific
+    contaminationProfile: quartzite surface contamination
+  microscopy:
+    parameters: Microscopic analysis of quartzite
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:30:02.536194Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Alessandro Moretti
+  materialProperties:
+    materialType: Stone
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Quartzite surface after laser cleaning showing detailed surface structure
+    url: /images/quartzite-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:30:18.182312'
+  captionIntegrated: true

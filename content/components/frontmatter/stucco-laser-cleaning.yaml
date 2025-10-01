@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Brick
 materialProperties:
   density:
     value: 1.85
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 85
     description: Typical density for cured stucco (cement-lime-sand mixture)
     min: 0.6
     max: 2.8
   thermalConductivity:
     value: 0.72
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 88
     description: Thermal conductivity of typical stucco material
     min: 0.08
@@ -34,24 +34,23 @@ materialProperties:
     max: 32.6
   thermalExpansion:
     value: 10.8
-    unit: "\u03BCm/m\xB7\xB0C"
+    unit: μm/m·°C
     confidence: 83
     description: Coefficient of thermal expansion for cement-based stucco
     min: 4.2
     max: 19.8
   specificHeat:
     value: 840.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 85
     description: Specific heat capacity of stucco material
     min: 815.5
     max: 1109.5
   thermalDiffusivity:
     value: 0.48
-    unit: "mm\xB2/s"
+    unit: mm²/s
     confidence: 82
-    description: Thermal diffusivity calculated from conductivity, density, and specific
-      heat
+    description: Thermal diffusivity calculated from conductivity, density, and specific heat
     min: 0.1
     max: 1
   compressiveStrength:
@@ -84,14 +83,14 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 1.2
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 82
     description: Estimated laser ablation threshold for stucco at 1064nm wavelength
     min: null
     max: null
   surfaceRoughness:
     value: 15
-    unit: "\u03BCm Ra"
+    unit: μm Ra
     confidence: 85
     description: Typical surface roughness of applied stucco finish
     min: null
@@ -108,7 +107,7 @@ materialProperties:
     max: 15.0
     min: 0.5
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 8.2
   laserReflectivity:
     confidence: 0.7
@@ -129,7 +128,7 @@ materialProperties:
     max: 1200.0
     min: 500.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 750.0
   thermalDestructionType:
     confidence: 0.8
@@ -143,8 +142,7 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Stucco surface cleaning without substrate
-      damage
+    description: Optimal average power for Stucco surface cleaning without substrate damage
     min: 80
     max: 120
   wavelength:
@@ -156,7 +154,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: "\u03BCm"
+    unit: μm
     confidence: 84
     description: Beam spot diameter for balanced cleaning efficiency and surface coverage
     min: 50
@@ -165,29 +163,26 @@ machineSettings:
     value: 100
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient surface coverage while maintaining
-      cleaning quality
+    description: High repetition rate for efficient surface coverage while maintaining cleaning quality
     min: 50
     max: 200
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with
-      minimal thermal penetration
+    description: Nanosecond pulse duration for effective contaminant removal with minimal thermal penetration
     min: 5
     max: 20
   scanSpeed:
     value: 1000
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform cleaning without excessive dwell
-      time
+    description: Optimal scanning speed for uniform cleaning without excessive dwell time
     min: 500
     max: 2000
   energyDensity:
     value: 1.27
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 89
     description: Fluence threshold for effective Stucco surface cleaning
     min: 0.8
@@ -222,10 +217,6 @@ images:
   hero:
     alt: Stucco surface undergoing laser cleaning showing precise contamination removal
     url: /images/stucco-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Stucco surface after laser cleaning showing detailed
-      surface structure
-    url: /images/stucco-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -282,8 +273,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -321,9 +311,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -344,3 +334,49 @@ author:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+caption:
+  beforeText: 'At 500x magnification, the stucco surface is dominated by a continuous, amorphous layer of carbonaceous soot
+    and particulate matter, measuring 15-25 micrometers thick. This contamination layer completely obscures the underlying
+    cementitious matrix, filling the natural surface pores and creating a matte, occluded appearance. The deposit is not uniform;
+    it exhibits a cracked-mud pattern, with fissures revealing deeper, consolidated grime.
+
+
+    The intrinsic texture of the stucco is undetectable beneath this crust. Particulate matter, including silicate grains
+    under 10 micrometers in diameter, is embedded within the soot matrix. The high porosity of the stucco, typically around
+    25%, is visually absent as the voids are fully saturated with contaminants, which contributes to the darkened, blotchy
+    macroscopic appearance.'
+  afterText: 'Following laser cleaning, the microscopic view at 500x reveals a complete restoration of the original stucco
+    surface topography. The 15-25 micrometer contamination crust has been entirely removed, exposing the intrinsic porosity
+    and granular texture of the cement-lime-sand matrix. The surface now exhibits the characteristic roughness of stucco,
+    measured at approximately 15 micrometers Ra, with clearly defined sand particles and open pores.
+
+
+    The cleaning process has selectively ablated the contaminant layer without damaging the substrate. Individual sand grains
+    and cement hydration crystals are now distinctly visible, and the material''s natural 25% porosity is fully apparent,
+    with clean, open voids. This confirms the removal of the light-absorbing soot layer and the restoration of the surface''s
+    original reflectivity and thermal properties, which is critical for long-term material performance.'
+  description: Microscopic analysis of stucco surface before and after laser cleaning treatment
+  alt: Microscopic view of stucco surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - stucco_specific
+    contaminationProfile: stucco surface contamination
+  microscopy:
+    parameters: Microscopic analysis of stucco
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:35:27.779010Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Todd Dunning
+  materialProperties:
+    materialType: Masonry
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Stucco surface after laser cleaning showing detailed surface structure
+    url: /images/stucco-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:35:43.092296'
+  captionIntegrated: true

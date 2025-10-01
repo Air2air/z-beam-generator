@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Borosilicate Glass
 materialProperties:
   density:
     value: 2.23
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 95
     description: Density of borosilicate glass at room temperature
     min: 1.2
     max: 7.6
   thermalConductivity:
     value: 1.2
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 92
     description: Thermal conductivity at room temperature
     min: 0
@@ -34,21 +34,21 @@ materialProperties:
     max: 373.5
   thermalExpansion:
     value: 3.25
-    unit: "\xD710\u207B\u2076/K"
+    unit: ×10⁻⁶/K
     confidence: 95
-    description: "Coefficient of linear thermal expansion (20-300\xB0C)"
+    description: Coefficient of linear thermal expansion (20-300°C)
     min: 0.1
     max: 15
   thermalDiffusivity:
     value: 0.67
-    unit: "mm\xB2/s"
+    unit: mm²/s
     confidence: 88
     description: Thermal diffusivity at room temperature
     min: 0
     max: 13.7
   specificHeat:
     value: 830.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 90
     description: Specific heat capacity at room temperature
     min: 653.0
@@ -76,14 +76,14 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 85
     description: Laser ablation threshold for 1064 nm wavelength
     min: null
     max: null
   chemicalStability:
     value: 1
-    unit: "mg/cm\xB2"
+    unit: mg/cm²
     confidence: 92
     description: Acid resistance weight loss in 6N HCl after 24h
     min: null
@@ -93,7 +93,7 @@ materialProperties:
     max: 10.0
     min: 0.001
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 3.2
   laserReflectivity:
     confidence: 0.7
@@ -114,7 +114,7 @@ materialProperties:
     max: 1723.0
     min: 500.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 821.0
   thermalDestructionType:
     confidence: 0.8
@@ -128,21 +128,19 @@ machineSettings:
     value: 8
     unit: W
     confidence: 90
-    description: Optimal average power for Borosilicate Glass surface cleaning without
-      thermal damage
+    description: Optimal average power for Borosilicate Glass surface cleaning without thermal damage
     min: 5
     max: 15
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength providing optimal absorption balance for Borosilicate
-      Glass
+    description: Near-IR wavelength providing optimal absorption balance for Borosilicate Glass
     min: 532
     max: 10640
   spotSize:
     value: 50
-    unit: "\u03BCm"
+    unit: μm
     confidence: 82
     description: Beam spot diameter for precise cleaning with adequate energy density
     min: 30
@@ -151,16 +149,14 @@ machineSettings:
     value: 20
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for continuous cleaning process with thermal
-      management
+    description: Optimal repetition rate for continuous cleaning process with thermal management
     min: 10
     max: 50
   pulseWidth:
     value: 100
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient contaminant removal without
-      substrate damage
+    description: Nanosecond pulse duration for efficient contaminant removal without substrate damage
     min: 50
     max: 200
   scanSpeed:
@@ -172,10 +168,9 @@ machineSettings:
     max: 200
   fluence:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 89
-    description: Energy density threshold for effective contaminant removal without
-      glass damage
+    description: Energy density threshold for effective contaminant removal without glass damage
     min: 1.5
     max: 4.0
   overlapRatio:
@@ -206,13 +201,8 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Borosilicate Glass surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Borosilicate Glass surface undergoing laser cleaning showing precise contamination removal
     url: /images/borosilicate-glass-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Borosilicate Glass surface after laser cleaning showing
-      detailed surface structure
-    url: /images/borosilicate-glass-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -269,8 +259,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -308,9 +297,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -331,3 +320,47 @@ author:
   country: Taiwan
   expertise: Laser Materials Processing
   image: /images/author/yi-chun-lin.jpg
+caption:
+  beforeText: 'At 500x magnification, the borosilicate glass surface is obscured by a non-uniform contamination layer, approximately
+    5-15 micrometers thick. This layer consists of amorphous carbonaceous deposits and embedded particulate matter, creating
+    a topographically complex and rough surface texture. The contaminants scatter light, significantly reducing the inherent
+    transmissivity of the underlying glass substrate.
+
+
+    The contamination adheres in a patchy, island-like pattern, with some areas exhibiting thicker, coherent films and others
+    showing a more granular, particulate structure. This irregular coverage creates sharp transitions in surface elevation,
+    which would act as stress concentrators under mechanical load. The original, smooth glass surface is completely hidden,
+    and the microscopic view is dominated by the textured, opaque characteristics of the contaminant layer itself.'
+  afterText: 'Following laser cleaning, the surface transformation is evident. The contamination layer has been completely
+    removed, revealing the pristine, homogeneous borosilicate glass substrate. The surface now exhibits its inherent smoothness,
+    with the laser process leaving no measurable residue or subsurface damage.
+
+
+    The original light-scattering texture is eliminated, restoring the material''s high optical transmissivity. At 500x, the
+    surface is featureless and continuous, confirming the successful and selective ablation of the contaminants without compromising
+    the structural integrity of the glass beneath.'
+  description: Microscopic analysis of borosilicate glass surface before and after laser cleaning treatment
+  alt: Microscopic view of borosilicate glass surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - borosilicate glass_specific
+    contaminationProfile: borosilicate glass surface contamination
+  microscopy:
+    parameters: Microscopic analysis of borosilicate glass
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:17:41.897169Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Yi-Chun Lin
+  materialProperties:
+    materialType: Glass
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Borosilicate Glass surface after laser cleaning showing detailed surface structure
+    url: /images/borosilicate-glass-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:17:55.329006'
+  captionIntegrated: true

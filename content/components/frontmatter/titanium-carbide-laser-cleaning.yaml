@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Alumina
 materialProperties:
   density:
     value: 4.93
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 98
     description: Theoretical density of TiC at room temperature
     min: 2.2
     max: 19.3
   thermalConductivity:
     value: 21.0
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 90
     description: Thermal conductivity at room temperature
     min: 0.03
@@ -34,21 +34,21 @@ materialProperties:
     max: 708.0
   thermalExpansion:
     value: 7.4
-    unit: "10\u207B\u2076/K"
+    unit: 10⁻⁶/K
     confidence: 92
-    description: "Coefficient of thermal expansion (20-1000\xB0C)"
+    description: Coefficient of thermal expansion (20-1000°C)
     min: 0.1
     max: 14
   thermalDiffusivity:
     value: 7.2
-    unit: "mm\xB2/s"
+    unit: mm²/s
     confidence: 85
     description: Thermal diffusivity at room temperature
     min: 0
     max: 9.012
   specificHeat:
     value: 568.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 88
     description: Specific heat capacity at room temperature
     min: 134.0
@@ -76,7 +76,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 80
     description: Estimated laser ablation threshold for nanosecond pulses
     min: null
@@ -90,7 +90,7 @@ materialProperties:
     max: null
   oxidationResistance:
     value: 1200
-    unit: "\xB0C"
+    unit: °C
     confidence: 90
     description: Maximum service temperature in oxidizing environments
     min: null
@@ -100,7 +100,7 @@ materialProperties:
     max: 50.0
     min: 0.1
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 32.7
   laserReflectivity:
     confidence: 0.7
@@ -121,7 +121,7 @@ materialProperties:
     max: 3827.0
     min: 1000.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 2467.0
   thermalDestructionType:
     confidence: 0.8
@@ -131,11 +131,10 @@ materialProperties:
     value: 410.0
     unit: MPa
     confidence: 0.85
-    description: Titanium carbide (TiC) exhibits high compressive strength due to
-      its strong covalent bonding, face-centered cubic crystal structure, and high
-      hardness (2800-3200 HV). The compressive strength is significantly higher than
-      its tensile strength, typical of brittle ceramic materials where failure occurs
-      via shear under compression rather than crack propagation.
+    description: Titanium carbide (TiC) exhibits high compressive strength due to its strong covalent bonding, face-centered
+      cubic crystal structure, and high hardness (2800-3200 HV). The compressive strength is significantly higher than its
+      tensile strength, typical of brittle ceramic materials where failure occurs via shear under compression rather than
+      crack propagation.
     source: ai_research_from_mechanical_properties
     min: 200
     max: 600
@@ -146,8 +145,7 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Titanium Carbide surface cleaning without
-      substrate damage
+    description: Optimal average power for Titanium Carbide surface cleaning without substrate damage
     min: 80
     max: 120
   wavelength:
@@ -159,7 +157,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 50
-    unit: "\u03BCm"
+    unit: μm
     confidence: 90
     description: Beam spot diameter for precise Titanium Carbide surface treatment
     min: 30
@@ -173,14 +171,14 @@ machineSettings:
     max: 200
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 88
     description: Ablation threshold fluence for Titanium Carbide removal
     min: 1.8
     max: 3.5
   energyDensity:
     value: 3.2
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 85
     description: Optimal energy density for efficient TiC contaminant removal
     min: 2.5
@@ -223,13 +221,8 @@ regulatoryStandards:
 - ISO 23146 - Technical Ceramics
 images:
   hero:
-    alt: Titanium Carbide surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Titanium Carbide surface undergoing laser cleaning showing precise contamination removal
     url: /images/titanium-carbide-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Titanium Carbide surface after laser cleaning showing
-      detailed surface structure
-    url: /images/titanium-carbide-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -286,8 +279,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -325,9 +317,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -348,3 +340,48 @@ author:
   country: Italy
   expertise: Laser-Based Additive Manufacturing
   image: /images/author/alessandro-moretti.jpg
+caption:
+  beforeText: 'At 500x magnification, the titanium carbide surface is obscured by a non-uniform contamination layer, approximately
+    5-10 micrometers thick. This layer appears as a matte, amorphous film with localized particulate deposits, disrupting
+    the underlying ceramic''s inherent microstructure. The contamination exhibits a cracked, mud-flat texture, indicating
+    poor adhesion and the presence of organic or oxide-based residues.
+
+
+    Energy-dispersive X-ray spectroscopy (EDS) would likely detect foreign elements like carbon, oxygen, and silicon within
+    this layer, confirming it is not part of the base TiC material. The film significantly alters the surface''s optical properties,
+    scattering light and reducing reflectivity. This obscures the grain boundaries and fine features of the titanium carbide
+    substrate, which has a theoretical density of 4.93 g/cm³.'
+  afterText: 'Laser cleaning has completely removed the contamination layer, revealing the true titanium carbide substrate.
+    The surface now displays a distinct grain structure with clearly defined boundaries, a direct result of exposing the material''s
+    face-centered cubic crystalline form. The visual texture is uniform, with a consistent reflectivity that contrasts sharply
+    with the previous matte, obscured appearance.
+
+
+    The process has restored the surface to its intrinsic state without measurable damage to the underlying ceramic, which
+    has a Young''s Modulus of 451 GPa. All particulate deposits and the cracked film are absent, leaving a clean, well-defined
+    surface suitable for subsequent high-precision engineering applications, such as in aerospace component assemblies.'
+  description: Microscopic analysis of titanium carbide surface before and after laser cleaning treatment
+  alt: Microscopic view of titanium carbide surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - titanium carbide_specific
+    contaminationProfile: titanium carbide surface contamination
+  microscopy:
+    parameters: Microscopic analysis of titanium carbide
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:37:05.731791Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Alessandro Moretti
+  materialProperties:
+    materialType: Ceramic
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Titanium Carbide surface after laser cleaning showing detailed surface structure
+    url: /images/titanium-carbide-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:37:20.580189'
+  captionIntegrated: true

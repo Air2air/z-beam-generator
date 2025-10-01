@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Alabaster
 materialProperties:
   density:
     value: 2.55
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 95
     description: Average density of serpentine group minerals
     min: 1.5
     max: 3.4
   thermalConductivity:
     value: 2.2
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 88
     description: Thermal conductivity at room temperature
     min: 0.12
@@ -34,16 +34,16 @@ materialProperties:
     max: 100
   thermalExpansion:
     value: 11.5
-    unit: "\xD710\u207B\u2076/\xB0C"
+    unit: ×10⁻⁶/°C
     confidence: 82
     description: Coefficient of thermal expansion
     min: 3.5
     max: 26.9
   specificHeat:
     value: 780.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 90
-    description: "Specific heat capacity at 25\xB0C"
+    description: Specific heat capacity at 25°C
     min: 705.5
     max: 1119.5
   absorptionCoefficient:
@@ -62,7 +62,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 80
     description: Laser ablation threshold for nanosecond pulses
     min: null
@@ -86,7 +86,7 @@ materialProperties:
     max: 20.0
     min: 0.1
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 8.7
   laserReflectivity:
     confidence: 0.7
@@ -107,14 +107,14 @@ materialProperties:
     max: 2.5
     min: 0.2
     source: default_from_category_range
-    unit: "mm\xB2/s"
+    unit: mm²/s
     value: 1.32
   thermalDestructionPoint:
     confidence: 0.7
     max: 1700.0
     min: 600.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 600.0
   thermalDestructionType:
     confidence: 0.8
@@ -135,13 +135,12 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 89
-    description: Optimal wavelength for Serpentine absorption and minimal substrate
-      damage
+    description: Optimal wavelength for Serpentine absorption and minimal substrate damage
     min: 532
     max: 10640
   spotSize:
     value: 80
-    unit: "\u03BCm"
+    unit: μm
     confidence: 86
     description: Optimal beam spot diameter for Serpentine processing
     min: 50
@@ -155,7 +154,7 @@ machineSettings:
     max: 100
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 88
     description: Threshold fluence for effective Serpentine ablation
     min: 1.8
@@ -190,7 +189,7 @@ machineSettings:
     max: 5
   energyDensity:
     value: 4.2
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 85
     description: Optimal energy density for controlled Serpentine ablation
     min: 3.0
@@ -202,13 +201,8 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Serpentine surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Serpentine surface undergoing laser cleaning showing precise contamination removal
     url: /images/serpentine-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Serpentine surface after laser cleaning showing detailed
-      surface structure
-    url: /images/serpentine-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -265,8 +259,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -304,9 +297,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -327,3 +320,45 @@ author:
   country: Italy
   expertise: Laser-Based Additive Manufacturing
   image: /images/author/alessandro-moretti.jpg
+caption:
+  beforeText: 'At 500x magnification, the serpentine surface is obscured by a non-uniform contamination layer, approximately
+    5-15 micrometers thick. This layer consists of particulate matter and a tenacious, dark biofilm that fills the stone''s
+    natural micro-fissures and surface porosity. The underlying crystalline structure of the serpentine is largely hidden.
+
+
+    The contaminants form a discontinuous, crust-like morphology that adheres strongly to the substrate. The biofilm exhibits
+    a viscous, globular texture, while embedded particulates create a topographically complex and rough surface profile. This
+    layer significantly alters the stone''s inherent reflectivity and masks its true mineralogical features.'
+  afterText: 'Following laser cleaning, the 500x magnification reveals a complete removal of the contamination layer, restoring
+    the intrinsic surface morphology of the serpentine. The stone''s micro-texture, including grain boundaries and natural
+    porosity, is now fully exposed and clearly defined without any residual film or particulates.
+
+
+    The surface exhibits a consistent and uniform appearance, with a marked reduction in micro-roughness. The laser process
+    has effectively ablated the contaminants located within the pores and fissures, re-establishing the stone''s original
+    reflectivity and revealing its characteristic mineral composition without inducing thermal damage to the substrate.'
+  description: Microscopic analysis of serpentine surface before and after laser cleaning treatment
+  alt: Microscopic view of serpentine surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - serpentine_specific
+    contaminationProfile: serpentine surface contamination
+  microscopy:
+    parameters: Microscopic analysis of serpentine
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:32:32.502148Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Alessandro Moretti
+  materialProperties:
+    materialType: Stone
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Serpentine surface after laser cleaning showing detailed surface structure
+    url: /images/serpentine-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:32:44.723181'
+  captionIntegrated: true

@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Alabaster
 materialProperties:
   density:
     value: 2.65
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 95
     description: Average bulk density of shale formations
     min: 1.5
     max: 3.4
   thermalConductivity:
     value: 1.7
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 90
     description: Thermal conductivity perpendicular to bedding planes
     min: 0.12
@@ -41,21 +41,21 @@ materialProperties:
     max: 100
   thermalExpansion:
     value: 8.5
-    unit: "10\u207B\u2076/\xB0C"
+    unit: 10⁻⁶/°C
     confidence: 82
     description: Linear thermal expansion coefficient at room temperature
     min: 3.5
     max: 26.9
   specificHeat:
     value: 790.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 88
-    description: "Specific heat capacity at 25\xB0C"
+    description: Specific heat capacity at 25°C
     min: 705.5
     max: 1119.5
   absorptionCoefficient:
     value: 850
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     confidence: 80
     description: Absorption coefficient at 1064 nm wavelength
     min: null
@@ -69,7 +69,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 1.8
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 78
     description: Laser ablation threshold for 1064 nm nanosecond pulses
     min: null
@@ -83,7 +83,7 @@ materialProperties:
     max: null
   surfaceRoughness:
     value: 12.5
-    unit: "\u03BCm Ra"
+    unit: μm Ra
     confidence: 88
     description: Average surface roughness of natural shale surfaces
     min: null
@@ -100,7 +100,7 @@ materialProperties:
     max: 20.0
     min: 0.1
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 8.7
   laserReflectivity:
     confidence: 0.7
@@ -114,14 +114,14 @@ materialProperties:
     max: 2.5
     min: 0.2
     source: default_from_category_range
-    unit: "mm\xB2/s"
+    unit: mm²/s
     value: 1.32
   thermalDestructionPoint:
     confidence: 0.7
     max: 1700.0
     min: 600.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 1073.15
   thermalDestructionType:
     confidence: 0.8
@@ -135,8 +135,7 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Shale surface cleaning without thermal
-      damage
+    description: Optimal average power for Shale surface cleaning without thermal damage
     min: 80
     max: 120
   wavelength:
@@ -148,7 +147,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: "\u03BCm"
+    unit: μm
     confidence: 90
     description: Beam spot diameter for precise cleaning control on Shale surfaces
     min: 50
@@ -164,8 +163,7 @@ machineSettings:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for controlled ablation of Shale surface
-      contaminants
+    description: Nanosecond pulse duration for controlled ablation of Shale surface contaminants
     min: 5
     max: 20
   scanSpeed:
@@ -177,7 +175,7 @@ machineSettings:
     max: 1000
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 89
     description: Minimum fluence required for effective Shale surface cleaning
     min: 1.5
@@ -212,10 +210,6 @@ images:
   hero:
     alt: Shale surface undergoing laser cleaning showing precise contamination removal
     url: /images/shale-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Shale surface after laser cleaning showing detailed surface
-      structure
-    url: /images/shale-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -272,8 +266,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -311,9 +304,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -334,3 +327,55 @@ author:
   country: Italy
   expertise: Laser-Based Additive Manufacturing
   image: /images/author/alessandro-moretti.jpg
+caption:
+  beforeText: 'At 500x magnification, the shale surface is obscured by a continuous, non-uniform contamination layer averaging
+    15-20 micrometers thick. This layer exhibits a complex, amorphous structure that fills the natural micro-fissures and
+    pores of the stone. Particulate matter, ranging from 2 to 10 micrometers in diameter, is embedded within a matrix of carbonaceous
+    deposits and mineral accretions, creating a textured, topographically complex surface that masks the underlying shale''s
+    granular bedding planes and inherent surface roughness.
+
+
+    The contamination layer significantly alters the surface''s optical properties, creating a mottled appearance with areas
+    of high and low reflectivity. The original shale substrate is only partially visible in isolated areas where the layer
+    is thinnest, revealing glimpses of the mineral grains beneath. The overall effect is a loss of surface definition and
+    a homogenization of the natural stone texture.'
+  afterText: 'Laser cleaning has effectively removed the contamination layer, fully restoring the original shale substrate.
+    The surface now displays a clear, well-defined granular texture where individual mineral grains and the distinct layering
+    of the bedding planes are fully exposed. The micro-fissure network, previously filled with deposits, is now open and visible,
+    demonstrating the precision of the contaminant removal without damage to the underlying stone structure.
+
+
+    The removal of the light-absorbing contamination has restored the surface''s inherent reflectivity. The contrast between
+    different mineral components within the shale is now pronounced, and the natural surface roughness of approximately 12.5
+    micrometers Ra is fully apparent. There is no visual evidence of residual carbonaceous film or particulate matter within
+    the observable field.
+
+
+    Comparative analysis confirms the process selectively ablated the contamination layer, which had a lower ablation threshold
+    than the shale itself. The result is a microscopically clean surface where the intrinsic geological features of the shale
+    are fully revealed without thermal alteration, such as melting or cracking, to the primary mineral matrix.'
+  description: Microscopic analysis of shale surface before and after laser cleaning treatment
+  alt: Microscopic view of shale surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - shale_specific
+    contaminationProfile: shale surface contamination
+  microscopy:
+    parameters: Microscopic analysis of shale
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:32:46.049289Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Alessandro Moretti
+  materialProperties:
+    materialType: Stone
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Shale surface after laser cleaning showing detailed surface structure
+    url: /images/shale-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:33:03.969151'
+  captionIntegrated: true

@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Alumina
 materialProperties:
   density:
     value: 15.63
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 98
     description: High density due to tungsten content, typical for WC-Co composites
     min: 2.2
     max: 19.3
   thermalConductivity:
     value: 110.0
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 92
     description: High thermal conductivity beneficial for laser heat dissipation
     min: 0.03
@@ -34,21 +34,21 @@ materialProperties:
     max: 708.0
   thermalExpansion:
     value: 5.2
-    unit: "\xD710\u207B\u2076/K"
+    unit: ×10⁻⁶/K
     confidence: 90
     description: Low thermal expansion coefficient reduces thermal stress
     min: 0.1
     max: 14
   thermalDiffusivity:
     value: 22.5
-    unit: "cm\xB2/s"
+    unit: cm²/s
     confidence: 88
     description: Moderate thermal diffusivity affects laser heating rate
     min: 0
     max: 9.012
   specificHeat:
     value: 292.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 85
     description: Specific heat capacity at room temperature
     min: 134.0
@@ -76,14 +76,14 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 85
     description: Laser ablation threshold for nanosecond pulses
     min: null
     max: null
   oxidationResistance:
     value: 800
-    unit: "\xB0C"
+    unit: °C
     confidence: 88
     description: Maximum service temperature in oxidizing environments
     min: null
@@ -97,7 +97,7 @@ materialProperties:
     max: null
   grainSize:
     value: 1.5
-    unit: "\u03BCm"
+    unit: μm
     confidence: 85
     description: Typical grain size for commercial WC-Co composites
     min: null
@@ -107,7 +107,7 @@ materialProperties:
     max: 50.0
     min: 0.1
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 32.7
   laserReflectivity:
     confidence: 0.7
@@ -128,7 +128,7 @@ materialProperties:
     max: 3827.0
     min: 1000.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 2870.0
   thermalDestructionType:
     confidence: 0.8
@@ -138,23 +138,19 @@ materialProperties:
     value: 6700.0
     unit: MPa
     confidence: 0.9
-    description: Tungsten carbide (WC), a cemented carbide or cermet, exhibits exceptionally
-      high compressive strength due to its composite structure of hard, covalent WC
-      grains embedded in a tough, metallic cobalt binder. This structure enables it
-      to withstand immense compressive loads without fracturing, making it superior
-      to most engineering ceramics and metals.
+    description: Tungsten carbide (WC), a cemented carbide or cermet, exhibits exceptionally high compressive strength due
+      to its composite structure of hard, covalent WC grains embedded in a tough, metallic cobalt binder. This structure enables
+      it to withstand immense compressive loads without fracturing, making it superior to most engineering ceramics and metals.
     source: ai_research_from_mechanical_properties
     min: 3500
     max: 6800
   fractureToughness:
     value: 9.5
-    unit: "MPa\xB7m^0.5"
+    unit: MPa·m^0.5
     confidence: 0.85
-    description: Fracture toughness (K_IC) represents tungsten carbide's resistance
-      to crack propagation. WC-Co composites exhibit higher toughness than most ceramics
-      due to crack bridging and plastic deformation in the cobalt binder phase. The
-      toughness increases with cobalt content and is strongly influenced by WC grain
-      size and distribution.
+    description: Fracture toughness (K_IC) represents tungsten carbide's resistance to crack propagation. WC-Co composites
+      exhibit higher toughness than most ceramics due to crack bridging and plastic deformation in the cobalt binder phase.
+      The toughness increases with cobalt content and is strongly influenced by WC grain size and distribution.
     source: ai_research_from_mechanical_properties
     min: 6.0
     max: 15.0
@@ -166,21 +162,19 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Tungsten Carbide surface cleaning without
-      substrate damage
+    description: Optimal average power for Tungsten Carbide surface cleaning without substrate damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength optimal for Tungsten Carbide absorption
-      characteristics
+    description: Near-infrared wavelength optimal for Tungsten Carbide absorption characteristics
     min: 532
     max: 10640
   spotSize:
     value: 50
-    unit: "\u03BCm"
+    unit: μm
     confidence: 84
     description: Optimal spot size for precision cleaning of Tungsten Carbide surfaces
     min: 30
@@ -189,8 +183,7 @@ machineSettings:
     value: 100
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning with minimal thermal
-      accumulation
+    description: High repetition rate for efficient cleaning with minimal thermal accumulation
     min: 50
     max: 200
   pulseWidth:
@@ -209,10 +202,9 @@ machineSettings:
     max: 2000
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 90
-    description: Fluence threshold for effective contaminant removal without damaging
-      WC substrate
+    description: Fluence threshold for effective contaminant removal without damaging WC substrate
     min: 1.5
     max: 4.0
   overlapRatio:
@@ -231,10 +223,9 @@ machineSettings:
     max: 5
   energyDensity:
     value: 5.1
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 88
-    description: Calculated energy density based on power, spot size, and repetition
-      rate
+    description: Calculated energy density based on power, spot size, and repetition rate
     min: 3.2
     max: 7.8
 regulatoryStandards:
@@ -247,13 +238,8 @@ regulatoryStandards:
 - ISO 23146 - Technical Ceramics
 images:
   hero:
-    alt: Tungsten Carbide surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Tungsten Carbide surface undergoing laser cleaning showing precise contamination removal
     url: /images/tungsten-carbide-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Tungsten Carbide surface after laser cleaning showing
-      detailed surface structure
-    url: /images/tungsten-carbide-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -310,8 +296,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -349,9 +334,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -372,3 +357,55 @@ author:
   country: Italy
   expertise: Laser-Based Additive Manufacturing
   image: /images/author/alessandro-moretti.jpg
+caption:
+  beforeText: 'At 500x magnification, the tungsten carbide surface is obscured by a non-uniform contamination layer approximately
+    5-10 micrometers thick. This layer consists of agglomerated carbonaceous soot and fine metallic oxides, creating a matte,
+    textured topography that masks the underlying material''s structure. The contaminants form a discontinuous, splotchy pattern,
+    with some areas exhibiting thicker, crust-like deposits.
+
+
+    The inherent micro-cracks and grain boundaries of the tungsten carbide substrate are completely filled with this particulate
+    matter. This occludes the material''s characteristic fine-grained, granular structure, which typically reveals the hard
+    WC grains and the tougher cobalt binder phase. The surface appears predominantly dark gray with intermittent regions of
+    reddish-brown from iron oxide contamination.'
+  afterText: 'Following laser cleaning, the surface transformation at 500x magnification is pronounced. The matte, textured
+    contamination layer has been entirely removed, revealing the pristine, underlying microstructure of the tungsten carbide
+    composite. The fine, 1.5-micrometer WC grains and the intergranular cobalt binder network are now fully exposed and clearly
+    defined.
+
+
+    The laser process has effectively ablated the contaminants from the micro-cracks and grain boundaries without inducing
+    thermal damage to the substrate. This is evident from the sharp, well-defined edges of the WC grains and the absence of
+    micro-fracturing or surface melting. The surface reflectivity has increased significantly due to the exposure of the native,
+    polished ceramic-metal composite.
+
+
+    The result is a clean, topographically complex surface where the contrast between the hard, angular carbide grains and
+    the ductile cobalt matrix is visually distinct. This level of cleanliness, achieved without mechanical abrasion, restores
+    the material''s intrinsic surface properties, which is critical for subsequent coating adhesion or precise dimensional
+    measurement.'
+  description: Microscopic analysis of tungsten carbide surface before and after laser cleaning treatment
+  alt: Microscopic view of tungsten carbide surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - tungsten carbide_specific
+    contaminationProfile: tungsten carbide surface contamination
+  microscopy:
+    parameters: Microscopic analysis of tungsten carbide
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:37:35.435183Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Alessandro Moretti
+  materialProperties:
+    materialType: Ceramic
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Tungsten Carbide surface after laser cleaning showing detailed surface structure
+    url: /images/tungsten-carbide-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:37:51.825414'
+  captionIntegrated: true

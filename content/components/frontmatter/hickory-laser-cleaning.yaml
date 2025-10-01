@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Ash
 materialProperties:
   density:
     value: 0.72
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 95
     description: Average density of hickory wood at 12% moisture content
     min: 0.12
     max: 1.25
   thermalConductivity:
     value: 0.155
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 90
     description: Thermal conductivity perpendicular to grain at room temperature
     min: 0.04
@@ -41,14 +41,14 @@ materialProperties:
     max: 3299.24
   specificHeat:
     value: 1380.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 88
     description: Specific heat capacity at room temperature
     min: 695.0
     max: 2555.0
   thermalDiffusivity:
     value: 0.00165
-    unit: "mm\xB2/s"
+    unit: mm²/s
     confidence: 85
     description: Thermal diffusivity perpendicular to grain direction
     min: 0
@@ -57,8 +57,7 @@ materialProperties:
     value: 85
     unit: '%'
     confidence: 82
-    description: Average absorption coefficient for near-infrared laser wavelengths
-      (1064 nm)
+    description: Average absorption coefficient for near-infrared laser wavelengths (1064 nm)
     min: null
     max: null
   reflectivity:
@@ -70,7 +69,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 0.8
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 85
     description: Minimum fluence required for laser ablation at 1064 nm
     min: null
@@ -84,7 +83,7 @@ materialProperties:
     max: null
   thermalDecomposition:
     value: 280
-    unit: "\xB0C"
+    unit: °C
     confidence: 90
     description: Onset temperature for thermal decomposition and charring
     min: null
@@ -94,7 +93,7 @@ materialProperties:
     max: 50.0
     min: 1.0
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 32.7
   laserReflectivity:
     confidence: 0.7
@@ -108,14 +107,14 @@ materialProperties:
     max: 500.0
     min: 200.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 287.0
   thermalExpansion:
     confidence: 0.7
     max: 60.0
     min: 3.0e-05
     source: default_from_category_range
-    unit: "\xB5m/m\xB7K"
+    unit: µm/m·K
     value: 33.7
   thermalDestructionType:
     confidence: 0.8
@@ -140,7 +139,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: "\u03BCm"
+    unit: μm
     confidence: 90
     description: Beam spot diameter for precise Hickory surface treatment
     min: 50
@@ -168,7 +167,7 @@ machineSettings:
     max: 1000
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 89
     description: Fluence threshold for Hickory material removal
     min: 1.5
@@ -204,10 +203,6 @@ images:
   hero:
     alt: Hickory surface undergoing laser cleaning showing precise contamination removal
     url: /images/hickory-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Hickory surface after laser cleaning showing detailed
-      surface structure
-    url: /images/hickory-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -264,8 +259,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -303,9 +297,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -326,3 +320,50 @@ author:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+caption:
+  beforeText: 'At 500x magnification, the hickory surface is obscured by a dense, non-uniform contamination layer, approximately
+    15-25 micrometers thick. This layer consists of crystalline salt deposits, primarily sodium chloride, which form a crust-like
+    matrix across the wood''s cellular structure. The underlying grain pattern is partially visible but heavily masked.
+
+
+    The porous hickory substrate, with its characteristic vessel elements and tracheids, has absorbed moisture and contaminants,
+    leading to localized swelling. The salt crystals exhibit sharp, cubic geometries and are intermixed with fine particulate
+    matter, creating a textured, discontinuous film. This layer significantly alters the surface''s original topography and
+    masks the natural wood anatomy.'
+  afterText: 'Following laser cleaning, the 500x magnification reveals a complete restoration of the hickory''s native anatomical
+    features. The 15-25 micrometer contamination crust has been entirely removed through selective laser ablation, a process
+    where the laser''s energy is preferentially absorbed by the contaminants, vaporizing them without damaging the underlying
+    wood substrate that has a higher thermal decomposition threshold.
+
+
+    The surface now displays a clean, open cellular structure. The large vessel elements and dense fibers of the hickory are
+    fully exposed, with their original cell wall integrity maintained. There is no evidence of the crystalline salt deposits
+    or the particulate matter that previously occluded the surface. The laser process has effectively cleared the pores, restoring
+    the wood''s natural porosity and texture without inducing macroscopic charring, as the energy input was controlled to
+    remain below hickory''s thermal destruction point of 287°C. The result is a surface that is microscopically clean and
+    true to its original, uncontaminated state.'
+  description: Microscopic analysis of hickory surface before and after laser cleaning treatment
+  alt: Microscopic view of hickory surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - hickory_specific
+    contaminationProfile: hickory surface contamination
+  microscopy:
+    parameters: Microscopic analysis of hickory
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:22:48.459211Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Todd Dunning
+  materialProperties:
+    materialType: Wood
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Hickory surface after laser cleaning showing detailed surface structure
+    url: /images/hickory-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:23:04.064929'
+  captionIntegrated: true

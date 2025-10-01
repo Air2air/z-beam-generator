@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Ash
 materialProperties:
   density:
     value: 0.64
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 95
     description: Average density of walnut wood at 12% moisture content
     min: 0.12
     max: 1.25
   thermalConductivity:
     value: 0.14
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 88
     description: Thermal conductivity perpendicular to grain at room temperature
     min: 0.04
@@ -41,14 +41,14 @@ materialProperties:
     max: 3299.24
   thermalExpansion:
     value: 27.5
-    unit: "1/\xB0C"
+    unit: 1/°C
     confidence: 82
     description: Coefficient of thermal expansion perpendicular to grain
     min: 0
     max: 33.0
   specificHeat:
     value: 1400.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 90
     description: Specific heat capacity at room temperature
     min: 695.0
@@ -69,7 +69,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 0.8
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 82
     description: Estimated ablation threshold for nanosecond pulses at 1064nm
     min: null
@@ -83,7 +83,7 @@ materialProperties:
     max: null
   surfaceRoughness:
     value: 3.2
-    unit: "\u03BCm"
+    unit: μm
     confidence: 87
     description: Average surface roughness (Ra) for planed walnut
     min: null
@@ -100,7 +100,7 @@ materialProperties:
     max: 50.0
     min: 1.0
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 32.7
   laserReflectivity:
     confidence: 0.7
@@ -114,14 +114,14 @@ materialProperties:
     max: 0.4
     min: 0.0001
     source: default_from_category_range
-    unit: "mm\xB2/s"
+    unit: mm²/s
     value: 0.00165
   thermalDestructionPoint:
     confidence: 0.7
     max: 500.0
     min: 200.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 401.0
   thermalDestructionType:
     confidence: 0.8
@@ -147,7 +147,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: "\u03BCm"
+    unit: μm
     confidence: 90
     description: Beam spot diameter for precise cleaning control on Walnut surface
     min: 50
@@ -175,10 +175,9 @@ machineSettings:
     max: 1000
   energyDensity:
     value: 1.27
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without wood
-      damage
+    description: Fluence threshold for effective contaminant removal without wood damage
     min: 0.8
     max: 2.0
   overlapRatio:
@@ -212,10 +211,6 @@ images:
   hero:
     alt: Walnut surface undergoing laser cleaning showing precise contamination removal
     url: /images/walnut-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Walnut surface after laser cleaning showing detailed
-      surface structure
-    url: /images/walnut-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -272,8 +267,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -311,9 +305,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -334,3 +328,50 @@ author:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+caption:
+  beforeText: 'At 500x magnification, the contaminated walnut surface reveals a complex, non-uniform layer of foreign material.
+    This contamination layer, measuring 5-15 micrometers thick, consists of embedded particulate matter and amorphous organic
+    deposits that obscure the underlying wood anatomy. The deposits fill the natural cellular pores, which constitute approximately
+    55% of the walnut''s surface area, creating a discontinuous film that masks the wood''s characteristic grain texture.
+
+
+    The surface topography is highly irregular, with contamination accumulating preferentially in the porous vessel elements
+    and along the boundaries of wood rays. This creates a mottled appearance where patches of exposed wood cell walls, with
+    their typical surface roughness of 3.2 micrometers, alternate with regions completely covered by contamination. The particulate
+    matter appears as discrete, high-contrast inclusions embedded within the lighter-toned organic matrix, creating significant
+    visual noise across the field of view.'
+  afterText: 'Laser cleaning produces a distinct transformation, revealing the walnut''s unaltered anatomical structure. The
+    porous vessel network is now fully exposed and free of occluding material, restoring the natural surface texture with
+    a measured roughness of 3.2 micrometers. The previously obscured wood rays and growth ring boundaries are clearly visible,
+    demonstrating complete contamination removal without substrate damage.
+
+
+    The surface now exhibits consistent cellular definition with sharp boundaries between different tissue types. This confirms
+    the laser''s selective ablation mechanism, which removed the contamination layer at its thermal destruction point of 401°C
+    while preserving the underlying wood structure. The resulting surface provides an optimal foundation for subsequent finishing
+    processes.'
+  description: Microscopic analysis of walnut surface before and after laser cleaning treatment
+  alt: Microscopic view of walnut surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - walnut_specific
+    contaminationProfile: walnut surface contamination
+  microscopy:
+    parameters: Microscopic analysis of walnut
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:38:20.198176Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Todd Dunning
+  materialProperties:
+    materialType: Wood
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Walnut surface after laser cleaning showing detailed surface structure
+    url: /images/walnut-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:38:35.660830'
+  captionIntegrated: true

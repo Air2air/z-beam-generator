@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Brick
 materialProperties:
   density:
     value: 1.68
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 95
     description: Density of set plaster (calcium sulfate dihydrate)
     min: 0.6
     max: 2.8
   thermalConductivity:
     value: 0.43
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 92
     description: Thermal conductivity of set plaster at room temperature
     min: 0.08
@@ -41,14 +41,14 @@ materialProperties:
     max: 32.6
   thermalExpansion:
     value: 18.0
-    unit: "\xD710\u207B\u2076/\xB0C"
+    unit: ×10⁻⁶/°C
     confidence: 88
-    description: "Coefficient of thermal expansion (20-100\xB0C)"
+    description: Coefficient of thermal expansion (20-100°C)
     min: 4.2
     max: 19.8
   specificHeat:
     value: 1085.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 85
     description: Specific heat capacity at room temperature
     min: 815.5
@@ -69,7 +69,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 1.2
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 85
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
@@ -83,7 +83,7 @@ materialProperties:
     max: null
   decompositionTemperature:
     value: 128
-    unit: "\xB0C"
+    unit: °C
     confidence: 96
     description: Temperature where plaster loses water and reverts to hemihydrate
     min: null
@@ -93,7 +93,7 @@ materialProperties:
     max: 15.0
     min: 0.5
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 8.2
   laserReflectivity:
     confidence: 0.7
@@ -107,14 +107,14 @@ materialProperties:
     max: 1.0
     min: 0.1
     source: default_from_category_range
-    unit: "mm\xB2/s"
+    unit: mm²/s
     value: 0.48
   thermalDestructionPoint:
     confidence: 0.7
     max: 1200.0
     min: 500.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 1073.15
   thermalDestructionType:
     confidence: 0.8
@@ -124,12 +124,10 @@ materialProperties:
     value: 12.4
     unit: MPa
     confidence: 0.85
-    description: Compressive strength of plaster in masonry applications represents
-      the maximum axial stress the material can withstand before failure under compression.
-      This property is highly dependent on plaster composition, water-to-binder ratio,
-      curing conditions, and age. Gypsum-based plasters typically exhibit lower strengths
-      (2-20 MPa) while cement-lime plasters used in masonry achieve higher values
-      due to hydraulic setting reactions and improved particle packing.
+    description: Compressive strength of plaster in masonry applications represents the maximum axial stress the material
+      can withstand before failure under compression. This property is highly dependent on plaster composition, water-to-binder
+      ratio, curing conditions, and age. Gypsum-based plasters typically exhibit lower strengths (2-20 MPa) while cement-lime
+      plasters used in masonry achieve higher values due to hydraulic setting reactions and improved particle packing.
     source: ai_research_from_mechanical_properties
     min: 5
     max: 40
@@ -141,8 +139,7 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power range for Plaster cleaning without thermal
-      damage
+    description: Optimal average power range for Plaster cleaning without thermal damage
     min: 80
     max: 120
   wavelength:
@@ -154,7 +151,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: "\u03BCm"
+    unit: μm
     confidence: 85
     description: Optimal beam spot diameter for precision cleaning
     min: 50
@@ -168,14 +165,14 @@ machineSettings:
     max: 200
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 88
     description: Ablation threshold fluence for Plaster removal
     min: 1.8
     max: 3.5
   energyDensity:
     value: 3.2
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 85
     description: Optimal energy density for efficient Plaster ablation
     min: 2.5
@@ -210,7 +207,7 @@ machineSettings:
     max: 70
   dwellTime:
     value: 100
-    unit: "\u03BCs"
+    unit: μs
     confidence: 82
     description: Optimal dwell time per spot for effective material removal
     min: 50
@@ -231,10 +228,6 @@ images:
   hero:
     alt: Plaster surface undergoing laser cleaning showing precise contamination removal
     url: /images/plaster-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Plaster surface after laser cleaning showing detailed
-      surface structure
-    url: /images/plaster-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -291,8 +284,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -330,9 +322,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -353,3 +345,47 @@ author:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+caption:
+  beforeText: 'At 500x magnification, the contaminated plaster surface reveals a complex, stratified layer of foreign material.
+    A discontinuous soot and particulate crust, measuring 5-20 micrometers thick, adheres to the surface. This crust obscures
+    the underlying plaster texture and fills the material''s natural pores, which account for its 35% porosity.
+
+
+    Beneath this crust, finer particulate matter has penetrated deep into the porous matrix. The original plaster surface
+    is no longer distinct, as the contamination forms a cohesive, dark layer that bridges across the microscopic peaks and
+    valleys of the substrate. The overall appearance is one of a occluded, topographically muted surface where the inherent
+    granular structure of the plaster is largely hidden by the accumulated deposits.'
+  afterText: 'Following laser cleaning, the microscopic view at 500x magnification shows a complete transformation. The obscuring
+    crust and embedded particulates have been entirely removed, revealing the pristine, granular microstructure of the plaster
+    substrate. The surface''s intrinsic porosity is now fully exposed and unobstructed.
+
+
+    The cleaning process has successfully ablated the contamination layer without damaging the underlying material. The original
+    surface topography, with its characteristic peaks and valleys, is clearly visible. This confirms the selective nature
+    of the laser ablation, which targeted the contaminant''s lower ablation threshold while preserving the plaster''s structural
+    integrity.'
+  description: Microscopic analysis of plaster surface before and after laser cleaning treatment
+  alt: Microscopic view of plaster surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - plaster_specific
+    contaminationProfile: plaster surface contamination
+  microscopy:
+    parameters: Microscopic analysis of plaster
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:27:30.096857Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Todd Dunning
+  materialProperties:
+    materialType: Masonry
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Plaster surface after laser cleaning showing detailed surface structure
+    url: /images/plaster-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:27:42.641678'
+  captionIntegrated: true

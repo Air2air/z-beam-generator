@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Alabaster
 materialProperties:
   density:
     value: 2.68
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 95
     description: Typical density range for porphyritic igneous rocks
     min: 1.5
     max: 3.4
   thermalConductivity:
     value: 3.8
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 88
     description: Thermal conductivity of typical porphyry at room temperature
     min: 0.12
@@ -41,24 +41,23 @@ materialProperties:
     max: 100
   thermalExpansion:
     value: 8.2
-    unit: "10\u207B\u2076/K"
+    unit: 10⁻⁶/K
     confidence: 82
     description: Coefficient of thermal expansion for quartz-rich porphyry
     min: 3.5
     max: 26.9
   specificHeat:
     value: 840.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 90
     description: Specific heat capacity at room temperature
     min: 705.5
     max: 1119.5
   thermalDiffusivity:
     value: 1.32
-    unit: "mm\xB2/s"
+    unit: mm²/s
     confidence: 85
-    description: Thermal diffusivity calculated from conductivity, density, and specific
-      heat
+    description: Thermal diffusivity calculated from conductivity, density, and specific heat
     min: 0.2
     max: 2.5
   compressiveStrength:
@@ -84,7 +83,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 1.2
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 78
     description: Estimated laser ablation threshold for nanosecond pulses at 1064nm
     min: null
@@ -101,7 +100,7 @@ materialProperties:
     max: 20.0
     min: 0.1
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 8.72
   laserReflectivity:
     confidence: 0.7
@@ -115,7 +114,7 @@ materialProperties:
     max: 1700.0
     min: 600.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 1120.0
   thermalDestructionType:
     confidence: 0.8
@@ -128,8 +127,7 @@ machineSettings:
     value: 90
     unit: W
     confidence: 92
-    description: Optimal average power for Porphyry surface cleaning without thermal
-      damage
+    description: Optimal average power for Porphyry surface cleaning without thermal damage
     min: 70
     max: 110
   wavelength:
@@ -141,7 +139,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: "\u03BCm"
+    unit: μm
     confidence: 90
     description: Beam spot diameter for precise cleaning of Porphyry surface features
     min: 50
@@ -169,7 +167,7 @@ machineSettings:
     max: 800
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 89
     description: Threshold fluence for effective contaminant removal from Porphyry
     min: 1.5
@@ -195,13 +193,8 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Porphyry surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Porphyry surface undergoing laser cleaning showing precise contamination removal
     url: /images/porphyry-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Porphyry surface after laser cleaning showing detailed
-      surface structure
-    url: /images/porphyry-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -258,8 +251,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -297,9 +289,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -320,3 +312,47 @@ author:
   country: Italy
   expertise: Laser-Based Additive Manufacturing
   image: /images/author/alessandro-moretti.jpg
+caption:
+  beforeText: 'At 500x magnification, the porphyry surface is obscured by a complex contamination layer. A discontinuous soiling
+    matrix, approximately 5-15 micrometers thick, adheres to the substrate. This layer consists of fine particulate matter
+    embedded within a carbonaceous film, which fills the natural micro-fissures and pits of the stone''s surface.
+
+
+    The underlying porphyritic texture, characterized by its distinct phenocrysts (larger crystals) within a finer-grained
+    groundmass, is partially masked. The contamination exhibits poor adhesion in some areas, forming a cracked, crust-like
+    morphology that bridges surface features. This layer significantly alters the surface''s original micro-topography, creating
+    a uniform, matte appearance that obscures the natural mineralogical contrast and surface reflectivity.'
+  afterText: 'Following laser cleaning, the 500x magnification reveals a complete restoration of the original porphyry microstructure.
+    The contamination layer has been entirely removed, with no residual carbonaceous film or particulate matter observed.
+    The surface now exposes the full, unaltered porphyritic texture.
+
+
+    The sharp geometric boundaries of the phenocrysts and the intricate details of the groundmass are fully visible, restoring
+    the natural micro-relief. The laser process has effectively cleared all occlusions from the micro-fissures without inducing
+    micro-fracturing or thermal alteration to the mineral constituents. The surface reflectivity and inherent mineralogical
+    contrast have been returned to their native state.'
+  description: Microscopic analysis of porphyry surface before and after laser cleaning treatment
+  alt: Microscopic view of porphyry surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - porphyry_specific
+    contaminationProfile: porphyry surface contamination
+  microscopy:
+    parameters: Microscopic analysis of porphyry
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:29:17.742557Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Alessandro Moretti
+  materialProperties:
+    materialType: Stone
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Porphyry surface after laser cleaning showing detailed surface structure
+    url: /images/porphyry-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:29:31.946906'
+  captionIntegrated: true

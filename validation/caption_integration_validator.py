@@ -299,7 +299,8 @@ if __name__ == "__main__":
         print("\n❌ Files with errors:")
         for file_result in results['file_results']:
             if not file_result['valid']:
-                print(f"  • {file_result['material_name']}: {len(file_result['errors'])} errors")
+                material_name = file_result.get('material_name', file_result.get('file_path', 'Unknown'))
+                print(f"  • {material_name}: {len(file_result['errors'])} errors")
     
     print(f"\n📋 Total errors: {results['total_errors']}")
     print(f"📋 Total warnings: {results['total_warnings']}")

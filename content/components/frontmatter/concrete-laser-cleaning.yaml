@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Brick
 materialProperties:
   density:
     value: 2.4
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 95
     description: Typical density of normal weight concrete
     min: 0.6
     max: 2.8
   thermalConductivity:
     value: 1.28
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 90
     description: Thermal conductivity of standard concrete at room temperature
     min: 0.08
@@ -41,24 +41,23 @@ materialProperties:
     max: 32.6
   thermalExpansion:
     value: 10.0
-    unit: "\u03BCm/m\xB7\xB0C"
+    unit: μm/m·°C
     confidence: 88
     description: Coefficient of thermal expansion for typical concrete
     min: 4.2
     max: 19.8
   specificHeat:
     value: 880.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 92
-    description: "Specific heat capacity of concrete at 20\xB0C"
+    description: Specific heat capacity of concrete at 20°C
     min: 815.5
     max: 1109.5
   thermalDiffusivity:
     value: 0.47
-    unit: "mm\xB2/s"
+    unit: mm²/s
     confidence: 85
-    description: Thermal diffusivity calculated from conductivity, density, and specific
-      heat
+    description: Thermal diffusivity calculated from conductivity, density, and specific heat
     min: 0.1
     max: 1
   compressiveStrength:
@@ -84,7 +83,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 1.2
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 78
     description: Estimated laser ablation threshold for concrete surface removal
     min: null
@@ -98,7 +97,7 @@ materialProperties:
     max: null
   surfaceRoughness:
     value: 25
-    unit: "\u03BCm Ra"
+    unit: μm Ra
     confidence: 85
     description: Average surface roughness of typical concrete finishes
     min: null
@@ -115,7 +114,7 @@ materialProperties:
     max: 15.0
     min: 0.5
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 8.2
   laserReflectivity:
     confidence: 0.7
@@ -129,7 +128,7 @@ materialProperties:
     max: 1200.0
     min: 500.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 450.0
   thermalDestructionType:
     confidence: 0.8
@@ -143,8 +142,7 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power range for concrete surface cleaning without
-      thermal damage
+    description: Optimal average power range for concrete surface cleaning without thermal damage
     min: 80
     max: 120
   wavelength:
@@ -172,8 +170,7 @@ machineSettings:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with
-      minimal substrate damage
+    description: Nanosecond pulse duration for effective contaminant removal with minimal substrate damage
     min: 5
     max: 20
   scanSpeed:
@@ -185,7 +182,7 @@ machineSettings:
     max: 1000
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 89
     description: Minimum fluence required for effective concrete surface cleaning
     min: 1.5
@@ -218,13 +215,8 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Concrete surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Concrete surface undergoing laser cleaning showing precise contamination removal
     url: /images/concrete-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Concrete surface after laser cleaning showing detailed
-      surface structure
-    url: /images/concrete-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -281,8 +273,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -320,9 +311,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -343,3 +334,43 @@ author:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+caption:
+  beforeText: 'At 500x magnification, the concrete surface is dominated by a discontinuous contamination layer, approximately
+    50-200 micrometers thick. This layer consists of embedded particulate matter, primarily carbon soot and mineral dust,
+    trapped within the concrete''s porous matrix. The surface texture is highly irregular, with contaminants filling the natural
+    valleys and pores of the substrate, obscuring the underlying aggregate.
+
+
+    The contamination does not form a uniform film but rather a complex, stratified structure. A darker, carbon-rich upper
+    layer masks the concrete''s natural coloration and light-reflective properties. Beneath this, finer silicates and clays
+    have penetrated the microstructure, binding to the calcium silicate hydrate gel. This occludes the surface''s inherent
+    roughness and creates a visually heterogeneous, mottled appearance that compromises the substrate''s original profile.'
+  afterText: The laser-cleaned surface reveals a complete transformation. The thick, occluding contamination layer has been
+    entirely removed, exposing the original concrete microstructure. The surface now displays the intrinsic texture of the
+    cement paste and aggregate, with open pores and a clear, unadulterated profile. The visual homogeneity and reflectivity
+    are restored to the substrate's native state.
+  description: Microscopic analysis of concrete surface before and after laser cleaning treatment
+  alt: Microscopic view of concrete surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - concrete_specific
+    contaminationProfile: concrete surface contamination
+  microscopy:
+    parameters: Microscopic analysis of concrete
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:05:01.549524Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Todd Dunning
+  materialProperties:
+    materialType: Masonry
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Concrete surface after laser cleaning showing detailed surface structure
+    url: /images/concrete-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:05:13.830965'
+  captionIntegrated: true

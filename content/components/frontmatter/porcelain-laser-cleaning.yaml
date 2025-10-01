@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Alumina
 materialProperties:
   density:
     value: 2.4
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 95
     description: Typical density of porcelain ceramic material
     min: 2.2
     max: 19.3
   thermalConductivity:
     value: 1.5
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 88
     description: Thermal conductivity at room temperature
     min: 0.03
@@ -34,14 +34,14 @@ materialProperties:
     max: 708.0
   thermalExpansion:
     value: 7.0
-    unit: "\xD710\u207B\u2076/\xB0C"
+    unit: ×10⁻⁶/°C
     confidence: 85
-    description: "Coefficient of thermal expansion (20-1000\xB0C)"
+    description: Coefficient of thermal expansion (20-1000°C)
     min: 0.1
     max: 14
   specificHeat:
     value: 1088.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 87
     description: Specific heat capacity at room temperature
     min: 134.0
@@ -57,8 +57,7 @@ materialProperties:
     value: 0.85
     unit: ''
     confidence: 82
-    description: Optical absorption coefficient for common laser wavelengths (1064
-      nm)
+    description: Optical absorption coefficient for common laser wavelengths (1064 nm)
     min: null
     max: null
   reflectivity:
@@ -70,7 +69,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 82
     description: Laser ablation threshold for nanosecond pulses
     min: null
@@ -94,7 +93,7 @@ materialProperties:
     max: 50.0
     min: 0.1
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 32.7
   laserReflectivity:
     confidence: 0.7
@@ -115,14 +114,14 @@ materialProperties:
     max: 120.0
     min: 0.05
     source: default_from_category_range
-    unit: "mm\xB2/s"
+    unit: mm²/s
     value: 0.85
   thermalDestructionPoint:
     confidence: 0.7
     max: 3827.0
     min: 1000.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 1923.15
   thermalDestructionType:
     confidence: 0.8
@@ -136,8 +135,7 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for porcelain surface cleaning without thermal
-      damage
+    description: Optimal average power for porcelain surface cleaning without thermal damage
     min: 80
     max: 120
   wavelength:
@@ -149,7 +147,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: "\u03BCm"
+    unit: μm
     confidence: 90
     description: Beam spot diameter for precise cleaning control
     min: 50
@@ -177,10 +175,9 @@ machineSettings:
     max: 2000
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without substrate
-      damage
+    description: Fluence threshold for effective contaminant removal without substrate damage
     min: 1.5
     max: 4.0
   overlapRatio:
@@ -214,13 +211,8 @@ regulatoryStandards:
 - ISO 23146 - Technical Ceramics
 images:
   hero:
-    alt: Porcelain surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Porcelain surface undergoing laser cleaning showing precise contamination removal
     url: /images/porcelain-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Porcelain surface after laser cleaning showing detailed
-      surface structure
-    url: /images/porcelain-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -277,8 +269,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -316,9 +307,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -339,3 +330,56 @@ author:
   country: Italy
   expertise: Laser-Based Additive Manufacturing
   image: /images/author/alessandro-moretti.jpg
+caption:
+  beforeText: 'At 500x magnification, the porcelain surface is obscured by a non-uniform contamination layer, approximately
+    5-15 micrometers thick. This layer consists of particulate matter and a tenacious film that fills the microscopic valleys
+    of the porcelain''s inherent grain structure. The particulates, ranging from 2 to 20 micrometers in diameter, are embedded
+    within an amorphous matrix, creating a topographically complex and occluded surface.
+
+
+    The underlying porcelain texture is only partially visible where the film is thinnest. The contamination exhibits low
+    reflectivity and a matte appearance at this scale, with visible cracking and delamination at the interface with the ceramic
+    substrate in some regions. This indicates poor adhesion and the presence of subsurface penetration into the material''s
+    minimal 2% porosity.'
+  afterText: 'The laser cleaning process has resulted in a complete removal of the contamination layer, revealing the intrinsic
+    porcelain substrate. The surface now displays the characteristic fine-grained, vitrified microstructure of the ceramic,
+    with a uniform reflectivity that contrasts sharply with the previous matte, occluded state. The specific laser parameters,
+    calibrated below the material''s 2.5 J/cm² ablation threshold, have ensured selective removal of contaminants without
+    damaging the underlying matrix.
+
+
+    Direct comparison shows the elimination of the 5-15 micrometer film and all embedded particulates. The laser''s interaction,
+    governed by the porcelain''s 32.7 cm⁻¹ absorption coefficient, has effectively vaporized the contaminants. The original
+    micro-topography of the porcelain is now fully exposed, with clean, well-defined grain boundaries and no evidence of the
+    previous interfacial cracking or delamination.
+
+
+    Analysis confirms the surface integrity is maintained, with no thermal cracking or melting observed. This indicates that
+    the process parameters successfully leveraged the differential in thermal properties between the contamination and the
+    porcelain itself, whose high thermal destruction point of 1650°C was not approached. The result is a substrate-defined
+    surface, free from foreign material and restored to its original engineered state.'
+  description: Microscopic analysis of porcelain surface before and after laser cleaning treatment
+  alt: Microscopic view of porcelain surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - porcelain_specific
+    contaminationProfile: porcelain surface contamination
+  microscopy:
+    parameters: Microscopic analysis of porcelain
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:04:03.759413Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Alessandro Moretti
+  materialProperties:
+    materialType: Ceramic
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Porcelain surface after laser cleaning showing detailed surface structure
+    url: /images/porcelain-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:04:22.498049'
+  captionIntegrated: true

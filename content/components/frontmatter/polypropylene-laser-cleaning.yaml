@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Polycarbonate
 materialProperties:
   density:
     value: 0.905
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 95
     description: Density of isotactic polypropylene at room temperature
     min: 0.85
     max: 2.2
   thermalConductivity:
     value: 0.22
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 88
     description: Thermal conductivity at room temperature
     min: 0.02
@@ -34,21 +34,21 @@ materialProperties:
     max: 3629.98
   thermalExpansion:
     value: 110.0
-    unit: "10\u207B\u2076/\xB0C"
+    unit: 10⁻⁶/°C
     confidence: 85
     description: Linear coefficient of thermal expansion
     min: 10
     max: 200
   specificHeat:
     value: 1880.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 90
     description: Specific heat capacity at room temperature
     min: 800.0
     max: 2000.0
   absorptionCoefficient:
     value: 0.8
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     confidence: 82
     description: Absorption coefficient at 1064 nm wavelength
     min: null
@@ -62,14 +62,14 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 0.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 85
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   oxidationResistance:
     value: 150
-    unit: "\xB0C"
+    unit: °C
     confidence: 88
     description: Maximum continuous service temperature in air
     min: null
@@ -93,7 +93,7 @@ materialProperties:
     max: 100.0
     min: 0.1
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 42.7
   laserReflectivity:
     confidence: 0.7
@@ -107,14 +107,14 @@ materialProperties:
     max: 1.0
     min: 0.05
     source: default_from_category_range
-    unit: "mm\xB2/s"
+    unit: mm²/s
     value: 0.096
   thermalDestructionPoint:
     confidence: 0.7
     max: 400.0
     min: 80.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 328.0
   thermalDestructionType:
     confidence: 0.8
@@ -129,8 +129,7 @@ machineSettings:
     value: 25
     unit: W
     confidence: 90
-    description: Optimal average power for Polypropylene cleaning without thermal
-      damage
+    description: Optimal average power for Polypropylene cleaning without thermal damage
     min: 15
     max: 40
   wavelength:
@@ -142,7 +141,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: "\u03BCm"
+    unit: μm
     confidence: 92
     description: Beam spot diameter for precise cleaning control
     min: 50
@@ -170,7 +169,7 @@ machineSettings:
     max: 1000
   fluenceThreshold:
     value: 1.2
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 89
     description: Minimum fluence required for effective contaminant removal
     min: 0.8
@@ -196,13 +195,8 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Polypropylene surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Polypropylene surface undergoing laser cleaning showing precise contamination removal
     url: /images/polypropylene-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Polypropylene surface after laser cleaning showing detailed
-      surface structure
-    url: /images/polypropylene-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -259,8 +253,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -298,9 +291,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -321,3 +314,45 @@ author:
   country: Taiwan
   expertise: Laser Materials Processing
   image: /images/author/yi-chun-lin.jpg
+caption:
+  beforeText: 'At 500x magnification, the polypropylene surface is obscured by a non-uniform contamination layer, approximately
+    5-15 micrometers thick. This layer appears as a discontinuous film of particulate matter and organic residues, creating
+    a textured, topographically complex surface. The underlying polymer morphology is completely masked.
+
+
+    The contamination exhibits a cracked-mud pattern, with agglomerated particles embedded in a matrix. This creates significant
+    surface roughness, with height variations exceeding 10 micrometers. The native semi-crystalline structure of the polypropylene
+    is not visible, as the contaminants prevent clear observation of the substrate''s intrinsic features.'
+  afterText: 'Following laser cleaning, the surface transformation is evident. The contamination layer has been completely
+    removed, revealing the intrinsic semi-crystalline morphology of the polypropylene substrate. The surface is now uniform,
+    with the laser-processed area showing a clean, micro-roughened texture characteristic of controlled ablation.
+
+
+    The previously masked polymer spherulites are now clearly visible, confirming the contaminant''s removal down to the base
+    material. The surface exhibits a consistent matte finish with sub-micrometer scale roughness, a direct result of the laser
+    interacting with the polymer at its ablation threshold without causing bulk thermal damage.'
+  description: Microscopic analysis of polypropylene surface before and after laser cleaning treatment
+  alt: Microscopic view of polypropylene surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - polypropylene_specific
+    contaminationProfile: polypropylene surface contamination
+  microscopy:
+    parameters: Microscopic analysis of polypropylene
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:28:47.048496Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Yi-Chun Lin
+  materialProperties:
+    materialType: Plastic
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Polypropylene surface after laser cleaning showing detailed surface structure
+    url: /images/polypropylene-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:28:59.127974'
+  captionIntegrated: true

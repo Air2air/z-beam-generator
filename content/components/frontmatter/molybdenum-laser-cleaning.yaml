@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
     value: 10.22
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 98
     description: Density of pure molybdenum at room temperature
     min: 0.53
     max: 22.6
   thermalConductivity:
     value: 138.0
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 95
     description: Thermal conductivity at room temperature
     min: 6.0
@@ -41,14 +41,14 @@ materialProperties:
     max: 579.82
   thermalExpansion:
     value: 4.8
-    unit: "\xD710\u207B\u2076/K"
+    unit: ×10⁻⁶/K
     confidence: 92
-    description: "Coefficient of thermal expansion at 20\xB0C"
+    description: Coefficient of thermal expansion at 20°C
     min: 1.7
     max: 34.9
   specificHeat:
     value: 251.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 90
     description: Specific heat capacity at room temperature
     min: 0
@@ -62,21 +62,21 @@ materialProperties:
     max: null
   absorptionCoefficient:
     value: 1.2
-    unit: "\xD710\u2077 m\u207B\xB9"
+    unit: ×10⁷ m⁻¹
     confidence: 80
     description: Absorption coefficient for near-IR lasers
     min: null
     max: null
   ablationThreshold:
     value: 2.8
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 85
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   oxidationResistance:
     value: 600
-    unit: "\xB0C"
+    unit: °C
     confidence: 88
     description: Maximum temperature for protective oxide layer stability
     min: null
@@ -90,7 +90,7 @@ materialProperties:
     max: null
   thermalDiffusivity:
     value: 54.3
-    unit: "mm\xB2/s"
+    unit: mm²/s
     confidence: 90
     description: Thermal diffusivity at room temperature
     min: 0
@@ -100,7 +100,7 @@ materialProperties:
     max: 100.0
     min: 0.02
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 39.2
   laserReflectivity:
     confidence: 0.7
@@ -114,7 +114,7 @@ materialProperties:
     max: 3422.0
     min: -38.8
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 2896.0
   thermalDestructionType:
     confidence: 0.8
@@ -130,8 +130,7 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Molybdenum surface cleaning without excessive
-      melting
+    description: Optimal average power for Molybdenum surface cleaning without excessive melting
     min: 80
     max: 120
   wavelength:
@@ -143,23 +142,21 @@ machineSettings:
     max: 10640
   spotSize:
     value: 50
-    unit: "\u03BCm"
+    unit: μm
     confidence: 90
-    description: Optimal beam diameter for precise cleaning with sufficient energy
-      density
+    description: Optimal beam diameter for precise cleaning with sufficient energy density
     min: 30
     max: 100
   repetitionRate:
     value: 100
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning with adequate cooling
-      between pulses
+    description: Optimal repetition rate for efficient cleaning with adequate cooling between pulses
     min: 50
     max: 200
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 88
     description: Minimum fluence required for effective contaminant removal from Molybdenum
     min: 1.8
@@ -168,8 +165,7 @@ machineSettings:
     value: 10
     unit: ns
     confidence: 85
-    description: Optimal pulse duration balancing ablation efficiency and thermal
-      management
+    description: Optimal pulse duration balancing ablation efficiency and thermal management
     min: 5
     max: 20
   scanSpeed:
@@ -183,8 +179,7 @@ machineSettings:
     value: 50
     unit: '%'
     confidence: 86
-    description: Optimal pulse overlap for complete surface coverage without excessive
-      processing
+    description: Optimal pulse overlap for complete surface coverage without excessive processing
     min: 30
     max: 70
   passCount:
@@ -196,10 +191,9 @@ machineSettings:
     max: 5
   energyDensity:
     value: 12.7
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 85
-    description: Calculated energy density based on power, spot size, and repetition
-      rate
+    description: Calculated energy density based on power, spot size, and repetition rate
     min: 8.5
     max: 16.9
 regulatoryStandards:
@@ -209,13 +203,8 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Molybdenum surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Molybdenum surface undergoing laser cleaning showing precise contamination removal
     url: /images/molybdenum-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Molybdenum surface after laser cleaning showing detailed
-      surface structure
-    url: /images/molybdenum-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -272,8 +261,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -311,9 +299,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -334,3 +322,45 @@ author:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+caption:
+  beforeText: At 500x magnification, the molybdenum surface is obscured by a non-uniform contamination layer. A discontinuous
+    oxide scale, approximately 2-5 micrometers thick, appears as a dark, mottled crust with a cracked-mud pattern. Particulate
+    contaminants, including embedded carbonaceous soot and metallic splatter from adjacent processes, are scattered across
+    the surface. This layer significantly masks the underlying metallic grain structure and imparts a high degree of surface
+    roughness.
+  afterText: 'Laser cleaning has completely removed the superficial contamination layer, revealing the underlying molybdenum
+    substrate. The dark, mottled oxide scale and embedded particulates are absent, leaving a clean, reflective metallic surface.
+    The process has successfully ablated the contaminants without exceeding molybdenum''s ablation threshold of 2.8 J/cm²,
+    thus preserving the base material.
+
+
+    The surface now exhibits the characteristic features of the bare metal, including a discernible grain structure. The reflectivity
+    has increased significantly from the previously obscured state, consistent with molybdenum''s inherent 58% reflectivity
+    at the laser''s 1064 nm wavelength. Minor, sub-micrometer laser scan lines are visible, indicating the precise, raster-based
+    path of the laser beam. The result is a uniformly clean surface suitable for high-value applications like semiconductor
+    manufacturing, where micron-level contamination control is critical.'
+  description: Microscopic analysis of molybdenum surface before and after laser cleaning treatment
+  alt: Microscopic view of molybdenum surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - molybdenum_specific
+    contaminationProfile: molybdenum surface contamination
+  microscopy:
+    parameters: Microscopic analysis of molybdenum
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:25:39.248898Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Todd Dunning
+  materialProperties:
+    materialType: Metal
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Molybdenum surface after laser cleaning showing detailed surface structure
+    url: /images/molybdenum-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:25:52.255923'
+  captionIntegrated: true

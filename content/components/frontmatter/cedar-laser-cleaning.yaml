@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Ash
 materialProperties:
   density:
     value: 0.53
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 92
     description: Average density of Western Red Cedar at 12% moisture content
     min: 0.12
     max: 1.25
   thermalConductivity:
     value: 0.12
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 88
     description: Thermal conductivity perpendicular to grain at room temperature
     min: 0.04
@@ -41,14 +41,14 @@ materialProperties:
     max: 3299.24
   thermalExpansion:
     value: 3.7
-    unit: "10^-6/\xB0C"
+    unit: 10^-6/°C
     confidence: 82
     description: Coefficient of thermal expansion perpendicular to grain direction
     min: 0
     max: 33.0
   specificHeat:
     value: 1630.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 85
     description: Specific heat capacity at room temperature
     min: 695.0
@@ -57,8 +57,7 @@ materialProperties:
     value: 85
     unit: '%'
     confidence: 88
-    description: Average absorption coefficient for near-infrared laser wavelengths
-      (1064 nm)
+    description: Average absorption coefficient for near-infrared laser wavelengths (1064 nm)
     min: null
     max: null
   reflectivity:
@@ -70,7 +69,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 0.8
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 80
     description: Approximate laser fluence threshold for ablation at 1064 nm
     min: null
@@ -87,7 +86,7 @@ materialProperties:
     max: 50.0
     min: 1.0
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 32.7
   laserReflectivity:
     confidence: 0.7
@@ -101,14 +100,14 @@ materialProperties:
     max: 0.4
     min: 0.0001
     source: default_from_category_range
-    unit: "mm\xB2/s"
+    unit: mm²/s
     value: 0.16
   thermalDestructionPoint:
     confidence: 0.7
     max: 500.0
     min: 200.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 380.0
   thermalDestructionType:
     confidence: 0.8
@@ -134,7 +133,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: "\u03BCm"
+    unit: μm
     confidence: 82
     description: Beam spot diameter for precise cleaning control on Cedar surface
     min: 50
@@ -162,7 +161,7 @@ machineSettings:
     max: 1000
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 88
     description: Threshold fluence for effective contaminant removal from Cedar
     min: 1.5
@@ -198,10 +197,6 @@ images:
   hero:
     alt: Cedar surface undergoing laser cleaning showing precise contamination removal
     url: /images/cedar-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Cedar surface after laser cleaning showing detailed surface
-      structure
-    url: /images/cedar-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -258,8 +253,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -297,9 +291,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -320,3 +314,48 @@ author:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+caption:
+  beforeText: 'At 500x magnification, the contaminated cedar surface reveals a complex, multi-layered structure. A continuous
+    biofilm, approximately 15-25 micrometers thick, obscures the underlying wood cells. This layer appears as an amorphous,
+    gelatinous matrix with embedded particulate matter, including soot aggregates and mineral dust particles measuring 2-10
+    micrometers in diameter.
+
+
+    The wood''s natural cellular architecture is largely concealed. The tracheid cells and ray parenchyma are filled with
+    the contaminant matrix, which creates a textured, uneven surface profile. The contamination penetrates the porous structure
+    to a depth of up to 50 micrometers, utilizing the wood''s 65% porosity. This infiltration creates a discontinuous surface
+    that masks the cedar''s intrinsic grain pattern and micro-textural features.'
+  afterText: 'Laser cleaning produces a distinct transformation, restoring the cedar''s native anatomical structure. The contaminant
+    layer has been completely removed, revealing the clean, open lumens of the tracheid cells and the organized pattern of
+    the ray parenchyma. The surface now exhibits the precise cellular geometry characteristic of cedar wood.
+
+
+    The process has effectively cleared the porous network without damaging the delicate cell walls. The resulting surface
+    is topographically consistent with the wood''s natural grain, showing no evidence of charring or thermal degradation.
+    The micro-texture is defined solely by the wood''s intrinsic cellular architecture, with a surface roughness corresponding
+    directly to the anatomical features.'
+  description: Microscopic analysis of cedar surface before and after laser cleaning treatment
+  alt: Microscopic view of cedar surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - cedar_specific
+    contaminationProfile: cedar surface contamination
+  microscopy:
+    parameters: Microscopic analysis of cedar
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:18:46.061761Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Todd Dunning
+  materialProperties:
+    materialType: Wood
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Cedar surface after laser cleaning showing detailed surface structure
+    url: /images/cedar-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:18:59.533103'
+  captionIntegrated: true

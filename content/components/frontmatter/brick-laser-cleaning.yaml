@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Brick
 materialProperties:
   density:
     value: 1.92
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 95
     description: Typical density of fired clay brick
     min: 0.6
     max: 2.8
   thermalConductivity:
     value: 1.31
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 92
     description: Thermal conductivity of common fired brick
     min: 0.08
@@ -34,24 +34,23 @@ materialProperties:
     max: 32.6
   thermalExpansion:
     value: 5.5
-    unit: "10\u207B\u2076/\xB0C"
+    unit: 10⁻⁶/°C
     confidence: 88
     description: Coefficient of thermal expansion for clay brick
     min: 4.2
     max: 19.8
   specificHeat:
     value: 840.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 85
     description: Specific heat capacity at room temperature
     min: 815.5
     max: 1109.5
   thermalDiffusivity:
     value: 0.52
-    unit: "mm\xB2/s"
+    unit: mm²/s
     confidence: 82
-    description: Thermal diffusivity calculated from conductivity, density, and specific
-      heat
+    description: Thermal diffusivity calculated from conductivity, density, and specific heat
     min: 0.1
     max: 1
   porosity:
@@ -65,8 +64,7 @@ materialProperties:
     value: 0.85
     unit: ''
     confidence: 88
-    description: Optical absorption coefficient for common laser wavelengths (1064
-      nm)
+    description: Optical absorption coefficient for common laser wavelengths (1064 nm)
     min: null
     max: null
   reflectivity:
@@ -78,10 +76,9 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 1.2
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 80
-    description: Approximate laser ablation threshold for nanosecond pulses at 1064
-      nm
+    description: Approximate laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   compressiveStrength:
@@ -100,7 +97,7 @@ materialProperties:
     max: null
   surfaceRoughness:
     value: 15
-    unit: "\u03BCm Ra"
+    unit: μm Ra
     confidence: 85
     description: Typical surface roughness of unfinished brick
     min: null
@@ -117,7 +114,7 @@ materialProperties:
     max: 15.0
     min: 0.5
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 8.2
   laserReflectivity:
     confidence: 0.7
@@ -138,7 +135,7 @@ materialProperties:
     max: 1200.0
     min: 500.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 950.0
   thermalDestructionType:
     confidence: 0.8
@@ -152,8 +149,7 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Brick surface cleaning without thermal
-      damage
+    description: Optimal average power for Brick surface cleaning without thermal damage
     min: 80
     max: 120
   wavelength:
@@ -165,7 +161,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: "\u03BCm"
+    unit: μm
     confidence: 90
     description: Beam spot diameter for precise cleaning resolution
     min: 50
@@ -193,10 +189,9 @@ machineSettings:
     max: 1000
   energyDensity:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without substrate
-      damage
+    description: Fluence threshold for effective contaminant removal without substrate damage
     min: 1.5
     max: 4.0
   overlapRatio:
@@ -229,10 +224,6 @@ images:
   hero:
     alt: Brick surface undergoing laser cleaning showing precise contamination removal
     url: /images/brick-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Brick surface after laser cleaning showing detailed surface
-      structure
-    url: /images/brick-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -289,8 +280,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -328,9 +318,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -351,3 +341,48 @@ author:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+caption:
+  beforeText: 'At 500x magnification, the brick surface is dominated by a complex contamination layer, typically 50-200 micrometers
+    thick. This layer consists of particulate matter, including carbon soot and mineral dust, embedded within a porous matrix
+    of biological growth and salt crystals. The contaminants fill the natural surface pores of the brick, obscuring its intrinsic
+    texture and creating a discontinuous, crust-like appearance.
+
+
+    The underlying brick substrate is only partially visible through this layer. The original surface roughness, measured
+    at approximately 15 micrometers (Ra), is masked by the accumulated deposits. The contamination exhibits poor adhesion
+    in some areas, showing micro-fissures and delamination, while in other regions it forms a dense, cohesive crust. This
+    heterogeneous structure indicates a complex history of environmental exposure and material degradation.'
+  afterText: 'Following laser cleaning, the microscopic view at 500x reveals a complete transformation. The thick, heterogeneous
+    contamination layer has been entirely removed, exposing the intrinsic mineral structure of the brick substrate. The original
+    surface roughness of approximately 15 micrometers (Ra) is now fully visible, characterized by the distinct, open porosity
+    typical of fired clay.
+
+
+    The cleaning process has selectively ablated the contaminants without damaging the underlying brick. The surface now displays
+    a clear, uncoated mineral composition. The sharp, well-defined edges of clay particles and a consistent, clean pore network
+    are evident, confirming the removal of all foreign material and the restoration of the brick''s original microscopic topography.'
+  description: Microscopic analysis of brick surface before and after laser cleaning treatment
+  alt: Microscopic view of brick surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - brick_specific
+    contaminationProfile: brick surface contamination
+  microscopy:
+    parameters: Microscopic analysis of brick
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:18:14.933468Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Todd Dunning
+  materialProperties:
+    materialType: Masonry
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Brick surface after laser cleaning showing detailed surface structure
+    url: /images/brick-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:18:29.223649'
+  captionIntegrated: true

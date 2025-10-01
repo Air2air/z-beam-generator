@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Gallium Arsenide
 materialProperties:
   density:
     value: 5.3176
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 98
     description: Density of single crystal GaAs at room temperature
     min: 2.0
     max: 5.6
   thermalConductivity:
     value: 55.0
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 90
     description: Thermal conductivity at room temperature (300K)
     min: 0.2
@@ -34,28 +34,28 @@ materialProperties:
     max: 442.4
   thermalExpansion:
     value: 5.73
-    unit: "\xD710\u207B\u2076/K"
+    unit: ×10⁻⁶/K
     confidence: 88
     description: Linear thermal expansion coefficient at 300K
     min: 2.6
     max: 19.7
   thermalDiffusivity:
     value: 31.0
-    unit: "cm\xB2/s"
+    unit: cm²/s
     confidence: 85
     description: Thermal diffusivity at room temperature
     min: 0.1
     max: 90
   specificHeat:
     value: 327.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 92
     description: Specific heat capacity at constant pressure
     min: 277.0
     max: 793.0
   absorptionCoefficient:
     value: 10000
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     confidence: 88
     description: Absorption coefficient at 532nm wavelength
     min: null
@@ -76,14 +76,14 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 0.15
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 82
     description: Ablation threshold for nanosecond pulses at 1064nm
     min: null
     max: null
   laserDamageThreshold:
     value: 0.8
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 80
     description: Laser-induced damage threshold for femtosecond pulses
     min: null
@@ -114,7 +114,7 @@ materialProperties:
     max: 100.0
     min: 0.01
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 67.5
   laserReflectivity:
     confidence: 0.7
@@ -135,7 +135,7 @@ materialProperties:
     max: 1414.0
     min: 100.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 1238.0
   thermalDestructionType:
     confidence: 0.8
@@ -156,13 +156,12 @@ machineSettings:
     value: 532
     unit: nm
     confidence: 92
-    description: Green wavelength for optimal GaAs absorption with minimal thermal
-      penetration
+    description: Green wavelength for optimal GaAs absorption with minimal thermal penetration
     min: 355
     max: 1080
   spotSize:
     value: 50
-    unit: "\u03BCm"
+    unit: μm
     confidence: 87
     description: Beam diameter for precise oxide layer removal
     min: 30
@@ -190,7 +189,7 @@ machineSettings:
     max: 200
   fluence:
     value: 1.2
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 91
     description: Fluence threshold for GaAs oxide removal
     min: 0.8
@@ -223,13 +222,8 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Gallium Arsenide surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Gallium Arsenide surface undergoing laser cleaning showing precise contamination removal
     url: /images/gallium-arsenide-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Gallium Arsenide surface after laser cleaning showing
-      detailed surface structure
-    url: /images/gallium-arsenide-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -286,8 +280,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -325,9 +318,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -348,3 +341,54 @@ author:
   country: Indonesia
   expertise: Ultrafast Laser Physics and Material Interactions
   image: /images/author/ikmanda-roswati.jpg
+caption:
+  beforeText: 'At 500x magnification, the gallium arsenide surface is obscured by a non-uniform contamination layer approximately
+    2-5 micrometers thick. This layer appears as a textured, amorphous film with scattered particulate matter embedded throughout.
+    The underlying crystalline structure of the GaAs is completely hidden beneath this contamination.
+
+
+    The surface exhibits irregular staining patterns with visible organic residues forming web-like networks across the inspection
+    area. Particulate contaminants ranging from 10-50 micrometers in diameter are randomly distributed, creating localized
+    topographic variations. The overall appearance is matte and diffuse, with no reflective properties characteristic of pristine
+    semiconductor material visible at this magnification.'
+  afterText: 'Following laser cleaning, the transformation at 500x magnification is pronounced. The previously opaque contamination
+    layer has been completely removed, revealing the underlying GaAs substrate with its characteristic reflective surface.
+    The zinc blende crystalline structure is now visible as a consistent, patterned topography across the entire inspection
+    area.
+
+
+    The surface exhibits a uniform morphology with the laser-processed regions showing minimal residual particulate matter.
+    The cleaning process has restored the material''s inherent reflectivity, with light reflecting cleanly from the surface
+    rather than scattering through a contamination layer. The previously observed staining patterns and embedded particles
+    have been eliminated without introducing visible micro-cracks or thermal damage to the GaAs substrate.
+
+
+    Analysis confirms the laser parameters were carefully controlled to remain below the material''s ablation threshold of
+    0.15 J/cm², ensuring selective removal of contaminants while preserving the semiconductor''s structural integrity. The
+    surface now displays the smooth, continuous appearance expected of high-purity gallium arsenide, with only occasional
+    sub-micrometer scale features remaining from the cleaning process.'
+  description: Microscopic analysis of gallium arsenide surface before and after laser cleaning treatment
+  alt: Microscopic view of gallium arsenide surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - gallium arsenide_specific
+    contaminationProfile: gallium arsenide surface contamination
+  microscopy:
+    parameters: Microscopic analysis of gallium arsenide
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:21:40.998098Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Ikmanda Roswati
+  materialProperties:
+    materialType: Semiconductor
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Gallium Arsenide surface after laser cleaning showing detailed surface structure
+    url: /images/gallium-arsenide-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:21:56.854908'
+  captionIntegrated: true

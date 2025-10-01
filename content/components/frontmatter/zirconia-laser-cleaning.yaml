@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Alumina
 materialProperties:
   density:
     value: 6.08
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 95
     description: Density of yttria-stabilized zirconia (YSZ) at room temperature
     min: 2.2
     max: 19.3
   thermalConductivity:
     value: 2.7
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 88
     description: Thermal conductivity of YSZ at room temperature
     min: 0.03
@@ -34,21 +34,21 @@ materialProperties:
     max: 708.0
   thermalExpansion:
     value: 10.5
-    unit: "10\u207B\u2076/K"
+    unit: 10⁻⁶/K
     confidence: 85
-    description: "Coefficient of thermal expansion for YSZ (20-1000\xB0C)"
+    description: Coefficient of thermal expansion for YSZ (20-1000°C)
     min: 0.1
     max: 14
   specificHeat:
     value: 456.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 82
     description: Specific heat capacity at room temperature
     min: 134.0
     max: 1166.0
   thermalDiffusivity:
     value: 0.58
-    unit: "mm\xB2/s"
+    unit: mm²/s
     confidence: 80
     description: Thermal diffusivity at room temperature
     min: 0
@@ -62,7 +62,7 @@ materialProperties:
     max: null
   absorptionCoefficient:
     value: 0.85
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     confidence: 82
     description: Absorption coefficient at 1064 nm wavelength
     min: null
@@ -83,14 +83,14 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 82
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   laserDamageThreshold:
     value: 15
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 80
     description: Single-pulse laser-induced damage threshold
     min: null
@@ -114,7 +114,7 @@ materialProperties:
     max: 50.0
     min: 0.1
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 32.7
   laserReflectivity:
     confidence: 0.7
@@ -135,7 +135,7 @@ materialProperties:
     max: 3827.0
     min: 1000.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 2680.0
   thermalDestructionType:
     confidence: 0.8
@@ -149,8 +149,7 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power range for Zirconia surface cleaning without
-      thermal damage
+    description: Optimal average power range for Zirconia surface cleaning without thermal damage
     min: 80
     max: 120
   wavelength:
@@ -162,7 +161,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 50
-    unit: "\u03BCm"
+    unit: μm
     confidence: 90
     description: Optimal beam diameter for precision cleaning of Zirconia surfaces
     min: 30
@@ -176,7 +175,7 @@ machineSettings:
     max: 200
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 88
     description: Threshold fluence for effective Zirconia contaminant removal
     min: 1.8
@@ -211,7 +210,7 @@ machineSettings:
     max: 5
   dwellTime:
     value: 100
-    unit: "\u03BCs"
+    unit: μs
     confidence: 83
     description: Optimal dwell time per spot for effective cleaning action
     min: 50
@@ -226,13 +225,8 @@ regulatoryStandards:
 - ISO 23146 - Technical Ceramics
 images:
   hero:
-    alt: Zirconia surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Zirconia surface undergoing laser cleaning showing precise contamination removal
     url: /images/zirconia-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Zirconia surface after laser cleaning showing detailed
-      surface structure
-    url: /images/zirconia-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -289,8 +283,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -328,9 +321,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -351,3 +344,54 @@ author:
   country: Italy
   expertise: Laser-Based Additive Manufacturing
   image: /images/author/alessandro-moretti.jpg
+caption:
+  beforeText: 'At 500x magnification, the zirconia surface is obscured by a non-uniform contamination layer, approximately
+    5-15 micrometers thick. This layer appears as a matte, textured film composed of particulate matter and amorphous deposits,
+    which disrupts the underlying ceramic''s natural microstructure. The contaminants form agglomerates and fill the fine
+    surface pores, creating a topographically complex and irregular landscape.
+
+
+    The surface exhibits localized discoloration and a loss of reflectivity due to light scattering from the embedded particles.
+    The contamination does not form a continuous film but rather a patchy, island-like structure, with some areas showing
+    denser accumulation than others. This heterogeneous coverage confirms the presence of multiple contaminant types adhering
+    to the ceramic substrate.'
+  afterText: 'Following laser cleaning, the 500x magnification reveals a complete transformation. The matte, textured contamination
+    layer has been entirely removed, exposing the intrinsic, sintered grain structure of the zirconia ceramic. The surface
+    now displays a uniform, clean topography with clearly defined grain boundaries and a consistent, light-gray appearance.
+
+
+    The process has successfully eliminated the particulate agglomerates and amorphous deposits without inducing micro-fractures
+    or thermal damage to the underlying substrate. This is evidenced by the sharp, well-defined edges of the zirconia grains
+    and the absence of melted or re-solidified material, confirming the laser parameters were maintained below the material''s
+    ablation threshold of 2.5 J/cm².
+
+
+    The restoration of the original surface morphology results in a significant increase in reflectivity and a homogeneous
+    visual character. The laser''s selective ablation has precisely targeted the contaminants, leaving a pristine ceramic
+    surface with its native porosity and microstructure fully intact, which is critical for subsequent manufacturing processes
+    like coating adhesion or bonding.'
+  description: Microscopic analysis of zirconia surface before and after laser cleaning treatment
+  alt: Microscopic view of zirconia surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - zirconia_specific
+    contaminationProfile: zirconia surface contamination
+  microscopy:
+    parameters: Microscopic analysis of zirconia
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:38:52.386938Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Alessandro Moretti
+  materialProperties:
+    materialType: Ceramic
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Zirconia surface after laser cleaning showing detailed surface structure
+    url: /images/zirconia-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:39:08.314466'
+  captionIntegrated: true

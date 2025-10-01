@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Alabaster
 materialProperties:
   density:
     value: 2.95
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 95
     description: Typical density of basalt rock at room temperature
     min: 1.5
     max: 3.4
   thermalConductivity:
     value: 1.7
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 88
     description: Thermal conductivity at room temperature
     min: 0.12
@@ -34,24 +34,23 @@ materialProperties:
     max: 100
   thermalExpansion:
     value: 8.0
-    unit: "10\u207B\u2076/\xB0C"
+    unit: 10⁻⁶/°C
     confidence: 85
     description: Coefficient of thermal expansion
     min: 3.5
     max: 26.9
   specificHeat:
     value: 840.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 90
     description: Specific heat capacity at room temperature
     min: 705.5
     max: 1119.5
   thermalDiffusivity:
     value: 0.83
-    unit: "mm\xB2/s"
+    unit: mm²/s
     confidence: 82
-    description: Thermal diffusivity calculated from conductivity, density, and specific
-      heat
+    description: Thermal diffusivity calculated from conductivity, density, and specific heat
     min: 0.2
     max: 2.5
   compressiveStrength:
@@ -77,10 +76,9 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 78
-    description: Approximate laser ablation threshold for nanosecond pulses at 1064
-      nm
+    description: Approximate laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   porosity:
@@ -102,7 +100,7 @@ materialProperties:
     max: 20.0
     min: 0.1
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 8.7
   laserReflectivity:
     confidence: 0.7
@@ -123,7 +121,7 @@ materialProperties:
     max: 1700.0
     min: 600.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 1100.0
   thermalDestructionType:
     confidence: 0.8
@@ -137,8 +135,7 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Basalt surface cleaning without thermal
-      damage
+    description: Optimal average power for Basalt surface cleaning without thermal damage
     min: 80
     max: 120
   wavelength:
@@ -150,7 +147,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: "\u03BCm"
+    unit: μm
     confidence: 84
     description: Beam spot diameter for precise cleaning control on Basalt surface
     min: 50
@@ -178,7 +175,7 @@ machineSettings:
     max: 1000
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 90
     description: Minimum fluence required for effective contaminant removal from Basalt
     min: 1.5
@@ -194,8 +191,7 @@ machineSettings:
     value: 3
     unit: passes
     confidence: 85
-    description: Recommended number of passes for thorough cleaning without substrate
-      damage
+    description: Recommended number of passes for thorough cleaning without substrate damage
     min: 1
     max: 5
   laserType:
@@ -214,10 +210,6 @@ images:
   hero:
     alt: Basalt surface undergoing laser cleaning showing precise contamination removal
     url: /images/basalt-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Basalt surface after laser cleaning showing detailed
-      surface structure
-    url: /images/basalt-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -274,8 +266,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -313,9 +304,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -336,3 +327,44 @@ author:
   country: Italy
   expertise: Laser-Based Additive Manufacturing
   image: /images/author/alessandro-moretti.jpg
+caption:
+  beforeText: 'At 500x magnification, the contaminated basalt surface is characterized by a discontinuous layer of particulate
+    and biological matter. A primary feature is a sooty, carbonaceous deposit, approximately 5-15 micrometers thick, which
+    fills the natural micro-fractures and vesicles of the stone. This layer exhibits low adhesion, appearing as a loosely-bound,
+    amorphous film that obscures the underlying mineralogy.
+
+
+    The surface texture is further complicated by patches of cryptogamic growth, where fungal hyphae and microbial biofilms
+    have established a tenacious, web-like structure across the substrate. These biological colonies penetrate the stone''s
+    micro-porosity (typically 1.5%), creating a complex, multi-layered contamination system. The original, fine-grained interlocking
+    crystals of plagioclase and pyroxene are largely hidden, with only the highest topographic peaks remaining partially visible
+    through the overlying deposits.'
+  afterText: Laser cleaning has effectively removed the superficial contamination layer, fully exposing the original basalt
+    substrate. The stone's intrinsic micro-texture is now clearly visible, revealing a clean, interlocking matrix of fine-grained
+    plagioclase and pyroxene crystals. The previously obscured vesicles and micro-fractures are now open and free of particulate
+    fill, restoring the surface's natural porosity and mineralogical detail without thermal alteration to the primary structure.
+  description: Microscopic analysis of basalt surface before and after laser cleaning treatment
+  alt: Microscopic view of basalt surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - basalt_specific
+    contaminationProfile: basalt surface contamination
+  microscopy:
+    parameters: Microscopic analysis of basalt
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:16:19.664692Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Alessandro Moretti
+  materialProperties:
+    materialType: Stone
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Basalt surface after laser cleaning showing detailed surface structure
+    url: /images/basalt-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:16:33.405818'
+  captionIntegrated: true

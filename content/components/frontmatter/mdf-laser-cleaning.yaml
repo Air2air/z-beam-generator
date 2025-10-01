@@ -6,21 +6,21 @@ description: Laser cleaning parameters for Ash (MDF)
 materialProperties:
   density:
     value: 0.75
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 95
     description: Typical density range for standard MDF
     min: 0.12
     max: 1.25
   meltingPoint:
     value: 180
-    unit: "\xB0C"
+    unit: °C
     confidence: 85
     description: Approximate temperature where lignin softens and decomposition begins
     min: null
     max: null
   thermalConductivity:
     value: 0.12
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 88
     description: Low thermal conductivity typical of wood-based materials
     min: 0.04
@@ -48,14 +48,14 @@ materialProperties:
     max: 3299.24
   thermalExpansion:
     value: 30
-    unit: "\u03BCm/m\xB7\xB0C"
+    unit: μm/m·°C
     confidence: 82
     description: Linear thermal expansion coefficient perpendicular to grain direction
     min: 0
     max: 33.0
   specificHeat:
     value: 1300
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 90
     description: Specific heat capacity at room temperature
     min: 695.0
@@ -69,21 +69,21 @@ materialProperties:
     max: null
   absorptionCoefficient:
     value: 0.85
-    unit: ""
+    unit: ''
     confidence: 92
     description: High absorption coefficient for common laser wavelengths (1064nm)
     min: null
     max: null
   reflectivity:
     value: 0.15
-    unit: ""
+    unit: ''
     confidence: 90
     description: Low reflectivity at common laser wavelengths due to porous, fibrous structure
     min: null
     max: null
   ablationThreshold:
     value: 0.8
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 85
     description: Fluence threshold for laser ablation with nanosecond pulses
     min: null
@@ -97,14 +97,14 @@ materialProperties:
     max: null
   surfaceRoughness:
     value: 3.5
-    unit: "\u03BCm Ra"
+    unit: μm Ra
     confidence: 86
     description: Average surface roughness of finished MDF surfaces
     min: null
     max: null
   thermalDiffusivity:
     value: 0.12
-    unit: "mm\xB2/s"
+    unit: mm²/s
     confidence: 84
     description: Thermal diffusivity at room temperature
     min: 0
@@ -129,7 +129,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: "\u03BCm"
+    unit: μm
     confidence: 90
     description: Optimal beam diameter for MDF surface processing
     min: 50
@@ -143,7 +143,7 @@ machineSettings:
     max: 100
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 88
     description: Minimum fluence required for effective MDF material removal
     min: 1.8
@@ -178,7 +178,7 @@ machineSettings:
     max: 3
   energyDensity:
     value: 3.2
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 86
     description: Optimal energy density for MDF surface treatment
     min: 2.5
@@ -193,9 +193,6 @@ images:
   hero:
     alt: Mdf surface undergoing laser cleaning showing precise contamination removal
     url: /images/mdf-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Mdf surface after laser cleaning showing detailed surface structure
-    url: /images/mdf-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -221,7 +218,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -291,9 +287,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -314,3 +310,50 @@ author:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+caption:
+  beforeText: 'At 500x magnification, the contaminated MDF surface is dominated by a non-uniform layer of particulate and
+    organic debris. This contamination layer, measuring between 5-15 micrometers thick, adheres to and partially occludes
+    the underlying wood fibers. The debris consists of agglomerated particles, ranging from sub-micrometer dust to larger
+    10-micrometer fragments, creating a discontinuous film.
+
+
+    The surface texture is highly irregular, with the contamination filling the natural porous structure of the MDF. The fibrous
+    substrate is partially visible through thinner areas of the layer, while thicker deposits completely mask the underlying
+    material. The contaminant exhibits poor adhesion in some regions, showing micro-cracking and delamination from the MDF
+    surface, which has an intrinsic roughness of approximately 3.5 micrometers.'
+  afterText: 'Following laser cleaning, the surface transformation at 500x magnification is pronounced. The contaminant layer
+    has been entirely removed, revealing the intact, undamaged MDF substrate beneath. The characteristic porous structure
+    of the medium-density fiberboard is now fully exposed, with individual wood fibers and the resin binder matrix clearly
+    visible and free of foreign material.
+
+
+    The cleaning process has restored the original surface topography, with the typical MDF surface roughness of 3.5 micrometers
+    Ra now measurable and consistent. No residual contamination is observed within the pores or on the fiber surfaces. The
+    laser parameters were precisely controlled to remain below the material''s ablation threshold of 0.8 J/cm², ensuring selective
+    removal of contaminants without damaging the lignin or cellulose components of the wood fibers, preserving the structural
+    integrity of the surface.'
+  description: Microscopic analysis of mdf surface before and after laser cleaning treatment
+  alt: Microscopic view of mdf surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - mdf_specific
+    contaminationProfile: mdf surface contamination
+  microscopy:
+    parameters: Microscopic analysis of mdf
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:24:35.408797Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Todd Dunning
+  materialProperties:
+    materialType: Wood
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Mdf surface after laser cleaning showing detailed surface structure
+    url: /images/mdf-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:24:51.120393'
+  captionIntegrated: true

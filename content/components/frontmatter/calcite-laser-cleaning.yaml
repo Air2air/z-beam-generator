@@ -6,16 +6,16 @@ description: Laser cleaning parameters for Alabaster
 materialProperties:
   density:
     value: 2.71
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 98
     description: Density of pure calcite at room temperature
     min: 1.5
     max: 3.4
   thermalConductivity:
     value: 4.18
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 90
-    description: "Thermal conductivity parallel to c-axis at 25\xB0C"
+    description: Thermal conductivity parallel to c-axis at 25°C
     min: 0.12
     max: 8.28
   hardness:
@@ -34,23 +34,23 @@ materialProperties:
     max: 100
   thermalExpansion:
     value: 25.0
-    unit: "\xD710\u207B\u2076/K"
+    unit: ×10⁻⁶/K
     confidence: 88
     description: Coefficient of thermal expansion parallel to c-axis
     min: 3.5
     max: 26.9
   thermalDiffusivity:
     value: 1.32
-    unit: "mm\xB2/s"
+    unit: mm²/s
     confidence: 85
     description: Thermal diffusivity at room temperature
     min: 0.2
     max: 2.5
   specificHeat:
     value: 820.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 92
-    description: "Specific heat capacity at 25\xB0C"
+    description: Specific heat capacity at 25°C
     min: 705.5
     max: 1119.5
   refractiveIndex:
@@ -62,14 +62,14 @@ materialProperties:
     max: null
   absorptionCoefficient:
     value: 0.1
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     confidence: 85
     description: Absorption coefficient at 1064 nm wavelength
     min: null
     max: null
   ablationThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 82
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
@@ -86,7 +86,7 @@ materialProperties:
     max: 20.0
     min: 0.1
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 8.7
   laserReflectivity:
     confidence: 0.7
@@ -107,7 +107,7 @@ materialProperties:
     max: 1700.0
     min: 600.0
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 898.0
   thermalDestructionType:
     confidence: 0.8
@@ -132,7 +132,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 100
-    unit: "\u03BCm"
+    unit: μm
     confidence: 92
     description: Beam spot diameter for precise Calcite surface cleaning
     min: 50
@@ -148,8 +148,7 @@ machineSettings:
     value: 8
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for controlled ablation of Calcite surface
-      contaminants
+    description: Nanosecond pulse duration for controlled ablation of Calcite surface contaminants
     min: 5
     max: 15
   scanSpeed:
@@ -161,7 +160,7 @@ machineSettings:
     max: 1000
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 89
     description: Threshold fluence for effective Calcite contaminant removal
     min: 1.5
@@ -189,10 +188,6 @@ images:
   hero:
     alt: Calcite surface undergoing laser cleaning showing precise contamination removal
     url: /images/calcite-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Calcite surface after laser cleaning showing detailed
-      surface structure
-    url: /images/calcite-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -249,8 +244,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -288,9 +282,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -311,3 +305,39 @@ author:
   country: Italy
   expertise: Laser-Based Additive Manufacturing
   image: /images/author/alessandro-moretti.jpg
+caption:
+  beforeText: At 500x magnification, the calcite surface is obscured by a non-uniform contamination layer approximately 5-15
+    micrometers thick. This layer consists of particulate matter and a dark, tenacious crust that fills the natural micro-fissures
+    and cleavage planes characteristic of the mineral. The surface texture is highly irregular, with the contaminants forming
+    a matte, occluding film that prevents observation of the underlying crystalline structure. The original surface morphology
+    is no longer discernible.
+  afterText: Laser cleaning has restored the intrinsic surface morphology, revealing the calcite's characteristic rhombohedral
+    cleavage planes and micro-texture. The previously occluding contamination layer has been completely removed, with no residual
+    crust observed within the fissures. The surface now exhibits a consistent, clean substrate with clearly defined crystalline
+    features. This confirms the selective ablation process successfully targeted the contaminants while preserving the mineral's
+    structural integrity.
+  description: Microscopic analysis of calcite surface before and after laser cleaning treatment
+  alt: Microscopic view of calcite surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - calcite_specific
+    contaminationProfile: calcite surface contamination
+  microscopy:
+    parameters: Microscopic analysis of calcite
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T20:18:34.475455Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Alessandro Moretti
+  materialProperties:
+    materialType: Stone
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Calcite surface after laser cleaning showing detailed surface structure
+    url: /images/calcite-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T20:18:44.513748'
+  captionIntegrated: true
