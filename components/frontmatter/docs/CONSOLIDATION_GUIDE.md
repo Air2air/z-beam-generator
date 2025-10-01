@@ -15,7 +15,7 @@ This guide documents the complete architectural consolidation that eliminated 90
 ### After (Streamlined Architecture)  
 - **784 total lines** in consolidated architecture (90% reduction)
 - **20 methods** in streamlined generator (29% reduction)
-- **1 unified service** (UnifiedPropertyEnhancementService)
+- **1 unified service** (PropertyEnhancementService)
 - **Direct integration** (MaterialsYamlFrontmatterMapper functionality merged into core)
 - **GROK compliant**: Explicit null checks, fail-fast validation, consolidated services
 
@@ -23,8 +23,8 @@ This guide documents the complete architectural consolidation that eliminated 90
 
 | Old Service | Lines | New Service | Lines | Status |
 |-------------|--------|-------------|--------|---------|
-| OptimizedPropertyEnhancementService | 183 | UnifiedPropertyEnhancementService | 395 | Merged |
-| PropertyEnhancementService | 316 | UnifiedPropertyEnhancementService | 395 | Merged |
+| OptimizedPropertyEnhancementService | 183 | PropertyEnhancementService | 395 | Merged |
+| PropertyEnhancementService | 316 | PropertyEnhancementService | 395 | Merged |
 | MaterialsYamlFrontmatterMapper | 543 | StreamlinedFrontmatterGenerator | 389 | Integrated |
 | FrontmatterComponentGenerator | 1,518 | StreamlinedFrontmatterGenerator | 389 | Replaced |
 | **TOTAL** | **8,628** | **TOTAL** | **784** | **90% Reduction** |
@@ -32,7 +32,7 @@ This guide documents the complete architectural consolidation that eliminated 90
 ## Key Changes
 
 ### 1. Service Consolidation
-**UnifiedPropertyEnhancementService** combines:
+**PropertyEnhancementService** combines:
 - Optimized property enhancement (Min/Max/Unit structure)
 - Triple format property enhancement (full breakdown)
 - Configurable format switching
@@ -83,7 +83,7 @@ from components.frontmatter.enhancement.materials_yaml_mapper import MaterialsYa
 ```python
 # New streamlined architecture
 from components.frontmatter.core.streamlined_generator import StreamlinedFrontmatterGenerator
-from components.frontmatter.enhancement.unified_property_enhancement_service import UnifiedPropertyEnhancementService
+from components.frontmatter.enhancement.property_enhancement_service import PropertyEnhancementService
 
 # Backward compatibility (automatically uses streamlined architecture)
 from components.frontmatter.generator import FrontmatterComponentGenerator  # → StreamlinedFrontmatterGenerator
@@ -98,8 +98,17 @@ OptimizedPropertyEnhancementService.add_optimized_properties(properties)
 PropertyEnhancementService.add_triple_format_properties(frontmatter_data)
 
 # NEW (unified service with configuration)
-UnifiedPropertyEnhancementService.add_properties(frontmatter_data, preserve_min_max=True)  # Optimized format
-UnifiedPropertyEnhancementService.add_properties(frontmatter_data, preserve_min_max=False)  # Triple format
+```python
+from components.frontmatter.enhancement.property_enhancement_service import PropertyEnhancementService
+
+# OLD (multiple services for different formats)
+# optimized_service.add_optimized_properties(frontmatter_data)
+# triple_service.add_triple_format_properties(frontmatter_data)
+# property_service.add_properties(frontmatter_data)
+
+# NEW (unified service with configuration)
+PropertyEnhancementService.add_properties(frontmatter_data, preserve_min_max=True)  # Optimized format
+PropertyEnhancementService.add_properties(frontmatter_data, preserve_min_max=False)  # Triple format
 ```
 
 #### Materials Data Integration
@@ -162,7 +171,7 @@ result = generator.generate(material_name)  # Materials.yaml integration built-i
 
 ### When to Use Streamlined Architecture
 - **All new development** should use StreamlinedFrontmatterGenerator
-- **Property enhancement** should use UnifiedPropertyEnhancementService with configuration
+- **Property enhancement** should use PropertyEnhancementService with configuration
 - **Legacy code** can continue using old imports (automatically redirected)
 
 ### Configuration Guidelines
@@ -191,10 +200,10 @@ from components.frontmatter.generator import FrontmatterComponentGenerator
 #### Missing Methods
 ```python
 # If you need specific old methods, they may be consolidated
-AttributeError: 'UnifiedPropertyEnhancementService' object has no attribute 'add_optimized_properties'
+AttributeError: 'PropertyEnhancementService' object has no attribute 'add_optimized_properties'
 
 # Solution: Use new unified methods
-UnifiedPropertyEnhancementService.add_properties(data, preserve_min_max=True)
+PropertyEnhancementService.add_properties(data, preserve_min_max=True)
 ```
 
 ### Performance Issues
@@ -206,7 +215,7 @@ If you experience issues:
 ## Future Maintenance
 
 ### Adding New Features
-- **Extend UnifiedPropertyEnhancementService** for property enhancements
+- **Extend PropertyEnhancementService** for property enhancements
 - **Modify StreamlinedFrontmatterGenerator** for generation features
 - **Maintain GROK compliance** with explicit error handling
 

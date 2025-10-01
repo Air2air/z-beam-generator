@@ -36,13 +36,16 @@ class MyComponent(EnhancedComponentGenerator):
 - ✅ **Data Types**: Components must validate data types match schema
 - ✅ **Field Constraints**: Components must enforce schema constraints
 
-#### Enhanced Generator Base Classes
+#### Component Generator Base Classes
 ```python
-# ✅ STANDARD - Use EnhancedComponentGenerator for normal components
-from frontmatter.management.enhanced_generator import EnhancedComponentGenerator
+# ✅ API COMPONENTS - For components that call AI APIs (frontmatter, text, caption, tags)
+from generators.component_generators import APIComponentGenerator
 
-# ✅ STRICT - Use FailFastComponentGenerator for critical components
-from frontmatter.management.enhanced_generator import FailFastComponentGenerator
+# ✅ STATIC COMPONENTS - For components that transform data (table, jsonld, etc.)
+from generators.component_generators import StaticComponentGenerator
+
+# ✅ HYBRID COMPONENTS - For components with both API and static logic (metatags, badgesymbol)
+from generators.hybrid_generator import HybridComponentGenerator
 ```
 
 ### Component-Specific Fail-Fast Requirements

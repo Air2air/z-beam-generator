@@ -130,7 +130,7 @@ Formats frontmatter data as proper YAML with frontmatter delimiters.
 
 ---
 
-## UnifiedPropertyEnhancementService
+## PropertyEnhancementService
 
 Consolidated service for property and machine settings enhancement.
 
@@ -145,7 +145,7 @@ Enhances frontmatter with property data.
 
 **Example:**
 ```python
-UnifiedPropertyEnhancementService.add_properties(frontmatter, preserve_min_max=True)
+PropertyEnhancementService.add_properties(frontmatter, preserve_min_max=True)
 ```
 
 #### `add_machine_settings(machine_settings: dict, use_optimized: bool = True) -> None`
@@ -260,7 +260,7 @@ else:
 
 ### Advanced Property Enhancement
 ```python
-from components.frontmatter.enhancement.unified_property_enhancement_service import UnifiedPropertyEnhancementService
+from components.frontmatter.enhancement.property_enhancement_service import PropertyEnhancementService
 
 # Create frontmatter data
 frontmatter = {
@@ -272,7 +272,7 @@ frontmatter = {
 }
 
 # Enhance with full property breakdown
-UnifiedPropertyEnhancementService.add_properties(frontmatter, preserve_min_max=False)
+PropertyEnhancementService.add_properties(frontmatter, preserve_min_max=False)
 
 # Result includes numeric values, units, and ranges
 print(frontmatter["properties"])

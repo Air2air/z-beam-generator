@@ -10,7 +10,7 @@ components/frontmatter/
 │   ├── streamlined_generator.py      # Main generator (389 lines)
 │   └── validation_helpers.py         # Validation logic
 ├── enhancement/
-│   └── unified_property_enhancement_service.py  # Consolidated enhancement (395 lines)
+│   └── property_enhancement_service.py  # Consolidated enhancement (395 lines)
 ├── ordering/
 │   └── field_ordering_service.py     # Field organization
 ├── tests/
@@ -70,7 +70,7 @@ _create_datametrics_property(value, prop_key, category) → DataMetrics structur
   - Field ordering integration with hierarchical support
   - Property enhancement integration
 
-### UnifiedPropertyEnhancementService
+### PropertyEnhancementService
 - **Primary Function**: Property and machine settings enhancement
 - **Consolidates**:
   - Unified property enhancement functionality
@@ -106,7 +106,7 @@ Template Variable Creation
        ↓
 Content Generation
        ↓
-Property Enhancement (UnifiedPropertyEnhancementService)
+Property Enhancement (PropertyEnhancementService)
        ↓
 Field Ordering (FieldOrderingService)
        ↓
@@ -130,10 +130,11 @@ result = generator.generate_from_material_name("Titanium")
 
 ### Service-Level Access (Advanced)
 ```python
-from components.frontmatter.enhancement.unified_property_enhancement_service import UnifiedPropertyEnhancementService
+```python
+from components.frontmatter.enhancement.property_enhancement_service import PropertyEnhancementService
 
-# Direct service access for custom workflows
-UnifiedPropertyEnhancementService.add_properties(frontmatter, preserve_min_max=True)
+# Add properties using consolidated service
+PropertyEnhancementService.add_properties(frontmatter, preserve_min_max=True)
 ```
 
 ## GROK Compliance Architecture

@@ -255,7 +255,7 @@ class QualityGatePipeline:
     """Automated quality validation pipeline"""
     
     def __init__(self):
-        self.schema_validator = EnhancedSchemaValidator("schemas/frontmatter.json")
+        self.schema_validator = UnifiedSchemaValidator("schemas/frontmatter.json")
         self.quality_analyzer = AdvancedQualityAnalyzer()
     
     def validate_generated_content(self, material_name: str, content: Dict) -> QualityGateResult:
