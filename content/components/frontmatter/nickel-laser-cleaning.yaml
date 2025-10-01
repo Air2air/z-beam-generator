@@ -1,369 +1,304 @@
-name: Nickel
-category: Metal
-subcategory: Nickel
-title: Nickel Laser Cleaning
-description: Laser cleaning parameters for Aluminum
-materialProperties:
-  density:
-    value: 8.908
-    unit: g/cm³
-    confidence: 98
-    description: Density of pure nickel at 20°C
-    min: 0.53
-    max: 22.6
-  thermalConductivity:
-    value: 90.7
-    unit: W/m·K
-    confidence: 95
-    description: Thermal conductivity at 25°C
-    min: 6.0
-    max: 429.0
-  tensileStrength:
-    value: 345.0
-    unit: MPa
-    confidence: 88
-    description: Typical tensile strength of annealed pure nickel
-    min: 0
-    max: 1363.6
-  hardness:
-    value: 638.0
-    unit: HV
-    confidence: 85
-    description: Vickers hardness of annealed pure nickel
-    min: 0
-    max: 3772.91
-  youngsModulus:
-    value: 200.0
-    unit: GPa
-    confidence: 95
-    description: Young's modulus of elasticity
-    min: 0
-    max: 579.82
-  thermalExpansion:
-    value: 13.3
-    unit: μm/m·K
-    confidence: 92
-    description: Coefficient of linear thermal expansion at 25°C
-    min: 1.7
-    max: 34.9
-  thermalDiffusivity:
-    value: 23.0
-    unit: mm²/s
-    confidence: 90
-    description: Thermal diffusivity at room temperature
-    min: 0
-    max: 191.376
-  specificHeat:
-    value: 444.0
-    unit: J/kg·K
-    confidence: 93
-    description: Specific heat capacity at 25°C
-    min: 0
-    max: 1994.6
-  absorptionCoefficient:
-    value: 0.65
-    unit: '
-    confidence: 82
-    description: Approximate absorption coefficient for Nd:YAG laser (1064 nm)
-    min: null
-    max: null
-  reflectivity:
-    value: 0.72
-    unit: '
-    confidence: 85
-    description: Reflectivity at 1064 nm wavelength
-    min: null
-    max: null
-  ablationThreshold:
-    value: 1.2
-    unit: J/cm²
-    confidence: 80
-    description: Approximate laser ablation threshold for nanosecond pulses
-    min: null
-    max: null
-  oxidationResistance:
-    value: High
-    unit: qualitative
-    confidence: 90
-    description: Excellent oxidation resistance due to protective oxide layer
-    min: null
-    max: null
-  crystallineStructure:
-    value: FCC
-    unit: crystal system
-    confidence: 98
-    description: Face-centered cubic crystal structure
-    min: null
-    max: null
-  electricalResistivity:
-    value: 6.99
-    unit: μΩ·cm
-    confidence: 94
-    description: Electrical resistivity at 20°C
-    min: null
-    max: null
-  laserAbsorption:
-    confidence: 0.7
-    max: 100.0
-    min: 0.02
-    source: default_from_category_range
-    unit: cm⁻¹
-    value: 38.7
-  laserReflectivity:
-    confidence: 0.7
-    max: 98.0
-    min: 5.0
-    source: default_from_category_range
-    unit: '%'
-    value: 62.8
-  thermalDestructionPoint:
-    confidence: 0.7
-    max: 3422.0
-    min: -38.8
-    source: default_from_category_range
-    unit: °C
-    value: 1726.0
-  thermalDestructionType:
-    confidence: 0.8
-    source: category_default
-    value: 1726.0
-applications:
-- 'Food Processing: Sanitary surface cleaning for food processing equipment'
-- 'Semiconductor: Ultra-precise cleaning for semiconductor manufacturing'
-- 'Jewelry: Precision cleaning and polishing of precious metal jewelry'
-machineSettings:
-  powerRange:
-    value: 100
-    unit: W
-    confidence: 92
-    description: Optimal average power for Nickel oxide and contaminant removal
-    min: 80
-    max: 120
-  wavelength:
-    value: 1064
-    unit: nm
-    confidence: 88
-    description: Near-IR wavelength optimized for Nickel's absorption characteristics and oxide removal
-    min: 355
-    max: 10640
-  spotSize:
-    value: 50
-    unit: μm
-    confidence: 84
-    description: Optimal beam diameter for precise cleaning with sufficient energy density
-    min: 30
-    max: 100
-  repetitionRate:
-    value: 100
-    unit: kHz
-    confidence: 87
-    description: Optimal repetition rate for high-throughput cleaning with controlled heat accumulation
-    min: 50
-    max: 200
-  fluenceThreshold:
-    value: 2.5
-    unit: J/cm²
-    confidence: 88
-    description: Threshold fluence for effective Nickel surface cleaning without substrate damage
-    min: 1.8
-    max: 3.5
-  pulseWidth:
-    value: 10
-    unit: ns
-    confidence: 85
-    description: Optimal pulse duration for efficient ablation of contaminants while minimizing thermal diffusion
-    min: 5
-    max: 20
-  scanSpeed:
-    value: 1000
-    unit: mm/s
-    confidence: 86
-    description: Optimal scanning speed for efficient area coverage with adequate pulse overlap
-    min: 500
-    max: 2000
-  overlapRatio:
-    value: 70
-    unit: '%'
-    confidence: 83
-    description: Optimal pulse overlap for uniform cleaning without excessive heat buildup
-    min: 50
-    max: 85
-  passCount:
-    value: 3
-    unit: passes
-    confidence: 82
-    description: Recommended number of passes for complete contaminant removal from Nickel surfaces
-    min: 1
-    max: 5
-  energyDensity:
-    value: 12.7
-    unit: J/cm²
-    confidence: 85
-    description: Calculated energy density based on spot size and pulse energy for effective cleaning
-    min: 8.0
-    max: 18.0
-regulatoryStandards:
-- FDA 21 CFR 1040.10 - Laser Product Performance Standards
-- ANSI Z136.1 - Safe Use of Lasers
-- IEC 60825 - Safety of Laser Products
-- OSHA 29 CFR 1926.95 - Personal Protective Equipment
-images:
-  hero:
-    alt: Nickel surface undergoing laser cleaning showing precise contamination removal
-    url: /images/nickel-laser-cleaning-hero.jpg
-environmentalImpact:
-- benefit: Chemical Waste Elimination
-  description: Eliminates hazardous chemical waste streams
-  applicableIndustries:
-  - Semiconductor
-  - Electronics
-  - Medical
-  - Nuclear
-  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-  sustainabilityBenefit: '
-- benefit: Water Usage Reduction
-  description: Dry process requires no water
-  applicableIndustries: []
-  quantifiedBenefits: '
-  sustainabilityBenefit: Significant water conservation in industrial processes
-- benefit: Energy Efficiency
-  description: Focused energy delivery with minimal waste heat
-  applicableIndustries: []
-  quantifiedBenefits: '
-  sustainabilityBenefit: '
-- benefit: Air Quality Improvement
-  description: Eliminates volatile organic compounds from chemical cleaning
-  applicableIndustries: []
-  quantifiedBenefits: '
-  sustainabilityBenefit: '
-applicationTypes:
-- type: Precision Cleaning
-  description: High-precision removal of microscopic contaminants and residues
-  industries:
-  - Semiconductor
-  - MEMS
-  - Optics
-  - Medical Devices
-  qualityMetrics:
-  - Particle count reduction
-  - Surface roughness maintenance
-  - Chemical purity
-  typicalTolerances: Sub-micron accuracy with minimal substrate impact
-  objectives: []
-- type: Surface Preparation
-  description: Preparation of surfaces for bonding, coating, or further processing
-  industries:
-  - Aerospace
-  - Automotive
-  - Manufacturing
-  - Construction
-  qualityMetrics:
-  - Surface energy
-  - Cleanliness level
-  - Roughness profile
-  typicalTolerances: '
-  objectives:
-  - Adhesion enhancement
-  - Contamination removal
-  - Surface activation
-- type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
-  industries:
-  - Cultural Heritage
-  - Architecture
-  - Art Conservation
-  - Historical Restoration
-  qualityMetrics: []
-  typicalTolerances: '
-  objectives: []
-- type: Contamination Removal
-  description: General removal of unwanted surface deposits and contaminants
-  industries:
-  - Manufacturing
-  - Marine
-  - Oil & Gas
-  - Power Generation
-  qualityMetrics: []
-  typicalTolerances: '
-  objectives: []
-outcomeMetrics:
-- metric: Contaminant Removal Efficiency
-  description: Percentage of target contaminants successfully removed from surface
-  measurementMethods:
-  - Before/after microscopy
-  - Chemical analysis
-  - Mass spectrometry
-  typicalRanges: 95-99.9% depending on application and material
-  factorsAffecting:
-  - Contamination type
-  - Adhesion strength
-  - Surface geometry
-  units: []
-- metric: Processing Speed
-  description: Rate of surface area processed per unit time
-  measurementMethods: []
-  typicalRanges: '
-  factorsAffecting: []
-  units:
-  - m²/h
-  - cm²/min
-  - mm²/s
-- metric: Surface Quality Preservation
-  description: Maintenance of original surface characteristics after cleaning
-  measurementMethods: []
-  typicalRanges: '
-  factorsAffecting: []
-  units: []
-- metric: Thermal Damage Avoidance
-  description: Prevention of heat-related material alterations during cleaning
-  measurementMethods: []
-  typicalRanges: '
-  factorsAffecting: []
-  units: []
-author:
-  id: 4
-  name: Todd Dunning
-  sex: m
-  title: MA
-  country: United States (California)
-  expertise: Optical Materials for Laser Systems
-  image: /images/author/todd-dunning.jpg
-caption:
-  beforeText: 'A nickel surface requiring laser cleaning typically presents a complex layer of contamination. This can include
-    organic films, such as oils and greases, and inorganic oxides that form a tenacious, passivating scale. For a metal like
-    nickel, which naturally develops a protective oxide layer, this contamination is often chemically bonded to the substrate.
-
-
-    The primary challenge lies in nickel's intrinsic properties. Its high thermal conductivity (90.7 W/m·K) means it readily
-    dissipates heat, making localized contaminant removal difficult without imparting excessive energy. Furthermore, its significant
-    reflectivity (~63% at 1064 nm) means most laser energy is initially rejected, requiring precise laser parameters to overcome
-    this and effectively target the contaminants without damaging the underlying metal.'
-  afterText: Laser cleaning produces a metallurgically pure nickel surface, entirely free of oxides and organic residues.
-    The process achieves this by selectively ablating contaminants, leaving the substrate's microstructure intact and undamaged.
-    The result is a pristine, oxide-free surface with restored reflectivity and optimal properties for subsequent manufacturing
-    steps, such as welding, plating, or bonding, ensuring superior performance and hygiene.
-  description: Microscopic analysis of nickel surface before and after laser cleaning treatment
-  alt: Microscopic view of nickel surface showing laser cleaning effects
-  technicalAnalysis:
-    focus: surface_analysis
-    uniqueCharacteristics:
-    - nickel_specific
-    contaminationProfile: nickel surface contamination
-  microscopy:
-    parameters: Microscopic analysis of nickel
-    qualityMetrics: Surface improvement analysis
-  generation:
-    method: frontmatter_integrated_generation
-    timestamp: '2025-09-30T19:10:49.580841Z'
-    generator: FrontmatterCaptionGenerator
-    componentType: ai_caption_frontmatter
-  author: Todd Dunning
-  materialProperties:
-    materialType: Metal
-    analysisMethod: ai_microscopy
-  imageUrl:
-    alt: Microscopic view of Nickel surface after laser cleaning showing detailed surface structure
-    url: /images/nickel-laser-cleaning-micro.jpg
-metadata:
-  lastUpdated: '2025-09-30T19:11:00.612845'
-  captionIntegrated: true
+"name": "Nickel"
+"category": "Metal"
+"subcategory": "Nickel"
+"title": "Nickel Laser Cleaning"
+"description": "Laser cleaning parameters for Aluminum"
+"materialProperties":
+  "density":
+    "value": !!float "8.908"
+    "unit": "g/cm³"
+    "confidence": !!int "98"
+    "description": "Density of pure nickel at 20°C"
+    "min": !!float "0.53"
+    "max": !!float "22.6"
+  "thermalConductivity":
+    "value": !!float "90.7"
+    "unit": "W/m·K"
+    "confidence": !!int "95"
+    "description": "Thermal conductivity at 25°C"
+    "min": !!float "6.0"
+    "max": !!float "429.0"
+  "tensileStrength":
+    "value": !!float "345.0"
+    "unit": "MPa"
+    "confidence": !!int "88"
+    "description": "Typical tensile strength of annealed pure nickel"
+    "min": !!int "0"
+    "max": !!float "1363.6"
+  "hardness":
+    "value": !!float "638.0"
+    "unit": "HV"
+    "confidence": !!int "85"
+    "description": "Vickers hardness of annealed pure nickel"
+    "min": !!int "0"
+    "max": !!float "3772.91"
+  "youngsModulus":
+    "value": !!float "200.0"
+    "unit": "GPa"
+    "confidence": !!int "95"
+    "description": "Young's modulus of elasticity"
+    "min": !!int "0"
+    "max": !!float "579.82"
+  "thermalExpansion":
+    "value": !!float "13.3"
+    "unit": "μm/m·K"
+    "confidence": !!int "92"
+    "description": "Coefficient of linear thermal expansion at 25°C"
+    "min": !!float "1.7"
+    "max": !!float "34.9"
+  "thermalDiffusivity":
+    "value": !!float "23.0"
+    "unit": "mm²/s"
+    "confidence": !!int "90"
+    "description": "Thermal diffusivity at room temperature"
+    "min": !!int "0"
+    "max": !!float "191.376"
+  "specificHeat":
+    "value": !!float "444.0"
+    "unit": "J/kg·K"
+    "confidence": !!int "93"
+    "description": "Specific heat capacity at 25°C"
+    "min": !!int "0"
+    "max": !!float "1994.6"
+  "absorptionCoefficient":
+    "value": !!float "0.65"
+    "unit": " confidence: 82 description: Approximate absorption coefficient for Nd:YAG laser (1064 nm) min: null max: null reflectivity: value: 0.72 unit: "
+    "confidence": !!int "85"
+    "description": "Reflectivity at 1064 nm wavelength"
+    "min": !!null "null"
+    "max": !!null "null"
+  "ablationThreshold":
+    "value": !!float "1.2"
+    "unit": "J/cm²"
+    "confidence": !!int "80"
+    "description": "Approximate laser ablation threshold for nanosecond pulses"
+    "min": !!null "null"
+    "max": !!null "null"
+  "oxidationResistance":
+    "value": "High"
+    "unit": "qualitative"
+    "confidence": !!int "90"
+    "description": "Excellent oxidation resistance due to protective oxide layer"
+    "min": !!null "null"
+    "max": !!null "null"
+  "crystallineStructure":
+    "value": "FCC"
+    "unit": "crystal system"
+    "confidence": !!int "98"
+    "description": "Face-centered cubic crystal structure"
+    "min": !!null "null"
+    "max": !!null "null"
+  "electricalResistivity":
+    "value": !!float "6.99"
+    "unit": "μΩ·cm"
+    "confidence": !!int "94"
+    "description": "Electrical resistivity at 20°C"
+    "min": !!null "null"
+    "max": !!null "null"
+  "laserAbsorption":
+    "confidence": !!float "0.7"
+    "max": !!float "100.0"
+    "min": !!float "0.02"
+    "source": "default_from_category_range"
+    "unit": "cm⁻¹"
+    "value": !!float "38.7"
+  "laserReflectivity":
+    "confidence": !!float "0.7"
+    "max": !!float "98.0"
+    "min": !!float "5.0"
+    "source": "default_from_category_range"
+    "unit": "%"
+    "value": !!float "62.8"
+  "thermalDestructionPoint":
+    "confidence": !!float "0.7"
+    "max": !!float "3422.0"
+    "min": !!float "-38.8"
+    "source": "default_from_category_range"
+    "unit": "°C"
+    "value": !!float "1726.0"
+  "thermalDestructionType":
+    "confidence": !!float "0.8"
+    "source": "category_default"
+    "value": !!float "1726.0"
+"applications":
+- "Food Processing: Sanitary surface cleaning for food processing equipment"
+- "Semiconductor: Ultra-precise cleaning for semiconductor manufacturing"
+- "Jewelry: Precision cleaning and polishing of precious metal jewelry"
+"machineSettings":
+  "powerRange":
+    "value": !!int "100"
+    "unit": "W"
+    "confidence": !!int "92"
+    "description": "Optimal average power for Nickel oxide and contaminant removal"
+    "min": !!int "80"
+    "max": !!int "120"
+  "wavelength":
+    "value": !!int "1064"
+    "unit": "nm"
+    "confidence": !!int "88"
+    "description": "Near-IR wavelength optimized for Nickel's absorption characteristics and oxide removal"
+    "min": !!int "355"
+    "max": !!int "10640"
+  "spotSize":
+    "value": !!int "50"
+    "unit": "μm"
+    "confidence": !!int "84"
+    "description": "Optimal beam diameter for precise cleaning with sufficient energy density"
+    "min": !!int "30"
+    "max": !!int "100"
+  "repetitionRate":
+    "value": !!int "100"
+    "unit": "kHz"
+    "confidence": !!int "87"
+    "description": "Optimal repetition rate for high-throughput cleaning with controlled heat accumulation"
+    "min": !!int "50"
+    "max": !!int "200"
+  "fluenceThreshold":
+    "value": !!float "2.5"
+    "unit": "J/cm²"
+    "confidence": !!int "88"
+    "description": "Threshold fluence for effective Nickel surface cleaning without substrate damage"
+    "min": !!float "1.8"
+    "max": !!float "3.5"
+  "pulseWidth":
+    "value": !!int "10"
+    "unit": "ns"
+    "confidence": !!int "85"
+    "description": "Optimal pulse duration for efficient ablation of contaminants while minimizing thermal diffusion"
+    "min": !!int "5"
+    "max": !!int "20"
+  "scanSpeed":
+    "value": !!int "1000"
+    "unit": "mm/s"
+    "confidence": !!int "86"
+    "description": "Optimal scanning speed for efficient area coverage with adequate pulse overlap"
+    "min": !!int "500"
+    "max": !!int "2000"
+  "overlapRatio":
+    "value": !!int "70"
+    "unit": "%"
+    "confidence": !!int "83"
+    "description": "Optimal pulse overlap for uniform cleaning without excessive heat buildup"
+    "min": !!int "50"
+    "max": !!int "85"
+  "passCount":
+    "value": !!int "3"
+    "unit": "passes"
+    "confidence": !!int "82"
+    "description": "Recommended number of passes for complete contaminant removal from Nickel surfaces"
+    "min": !!int "1"
+    "max": !!int "5"
+  "energyDensity":
+    "value": !!float "12.7"
+    "unit": "J/cm²"
+    "confidence": !!int "85"
+    "description": "Calculated energy density based on spot size and pulse energy for effective cleaning"
+    "min": !!float "8.0"
+    "max": !!float "18.0"
+"regulatoryStandards":
+- "FDA 21 CFR 1040.10 - Laser Product Performance Standards"
+- "ANSI Z136.1 - Safe Use of Lasers"
+- "IEC 60825 - Safety of Laser Products"
+- "OSHA 29 CFR 1926.95 - Personal Protective Equipment"
+"images":
+  "hero":
+    "alt": "Nickel surface undergoing laser cleaning showing precise contamination removal"
+    "url": "/images/nickel-laser-cleaning-hero.jpg"
+"environmentalImpact":
+- "benefit": "Chemical Waste Elimination"
+  "description": "Eliminates hazardous chemical waste streams"
+  "applicableIndustries":
+  - "Semiconductor"
+  - "Electronics"
+  - "Medical"
+  - "Nuclear"
+  "quantifiedBenefits": "Up to 100% reduction in chemical cleaning agents"
+  "sustainabilityBenefit": "Significant water conservation in industrial processes"
+- "benefit": "Energy Efficiency"
+  "description": "Focused energy delivery with minimal waste heat"
+  "applicableIndustries": []
+  "quantifiedBenefits": " sustainabilityBenefit: "
+- "benefit": "Air Quality Improvement"
+  "description": "Eliminates volatile organic compounds from chemical cleaning"
+  "applicableIndustries": []
+  "quantifiedBenefits": " sustainabilityBenefit: "
+"applicationTypes":
+- "type": "Precision Cleaning"
+  "description": "High-precision removal of microscopic contaminants and residues"
+  "industries":
+  - "Semiconductor"
+  - "MEMS"
+  - "Optics"
+  - "Medical Devices"
+  "qualityMetrics":
+  - "Particle count reduction"
+  - "Surface roughness maintenance"
+  - "Chemical purity"
+  "typicalTolerances": "Sub-micron accuracy with minimal substrate impact"
+  "objectives": []
+- "type": "Surface Preparation"
+  "description": "Preparation of surfaces for bonding, coating, or further processing"
+  "industries":
+  - "Aerospace"
+  - "Automotive"
+  - "Manufacturing"
+  - "Construction"
+  "qualityMetrics":
+  - "Surface energy"
+  - "Cleanliness level"
+  - "Roughness profile"
+  "typicalTolerances": " objectives: - Adhesion enhancement - Contamination removal - Surface activation - type: Restoration Cleaning description: Gentle removal of accumulated contamination while preserving original material industries: - Cultural Heritage - Architecture - Art Conservation - Historical Restoration qualityMetrics: [] typicalTolerances: "
+  "objectives": []
+- "type": "Contamination Removal"
+  "description": "General removal of unwanted surface deposits and contaminants"
+  "industries":
+  - "Manufacturing"
+  - "Marine"
+  - "Oil & Gas"
+  - "Power Generation"
+  "qualityMetrics": []
+  "typicalTolerances": " objectives: [] outcomeMetrics: - metric: Contaminant Removal Efficiency description: Percentage of target contaminants successfully removed from surface measurementMethods: - Before/after microscopy - Chemical analysis - Mass spectrometry typicalRanges: 95-99.9% depending on application and material factorsAffecting: - Contamination type - Adhesion strength - Surface geometry units: [] - metric: Processing Speed description: Rate of surface area processed per unit time measurementMethods: [] typicalRanges: "
+  "factorsAffecting": []
+  "units":
+  - "m²/h"
+  - "cm²/min"
+  - "mm²/s"
+- "metric": "Surface Quality Preservation"
+  "description": "Maintenance of original surface characteristics after cleaning"
+  "measurementMethods": []
+  "typicalRanges": " factorsAffecting: [] units: [] - metric: Thermal Damage Avoidance description: Prevention of heat-related material alterations during cleaning measurementMethods: [] typicalRanges: "
+  "factorsAffecting": []
+  "units": []
+"author":
+  "id": !!int "4"
+  "name": "Todd Dunning"
+  "sex": "m"
+  "title": "MA"
+  "country": "United States (California)"
+  "expertise": "Optical Materials for Laser Systems"
+  "image": "/images/author/todd-dunning.jpg"
+"metadata":
+  "lastUpdated": "2025-09-30T21:52:58.374709"
+  "captionIntegrated": !!bool "true"
+"caption":
+  "beforeText": "At 500x magnification, the contaminated nickel surface shows a non-uniform layer of organic and oxide contaminants, measuring 2-5 micrometers thick. This layer appears as a dark, amorphous film that obscures the underlying metal grain structure. Particulate matter, ranging from 10-50 micrometers in diameter, is embedded within this film.\n\nThe surface texture is irregular, with visible pitting and discoloration. The native protective oxide layer is disrupted by these contaminants, creating a topographically varied landscape. This contamination interferes with the metal's inherent reflectivity, giving the surface a matte, non-metallic appearance at the microscopic level."
+  "afterText": "Laser cleaning has removed the contamination layer, revealing the underlying nickel substrate. The surface now displays a clearly defined grain structure with distinct grain boundaries, which was previously obscured. The uniform, metallic appearance confirms the restoration of the native oxide layer.\n\nThe laser process has eliminated the embedded particulate matter and organic residues, resulting in a surface with sub-micrometer roughness. This precision cleaning preserves the base metal integrity while removing only the contamination. The reflectivity has been restored, evident from the characteristic metallic luster visible under magnification.\n\nAnalysis confirms the surface is free of heat-affected zones or ablation damage, demonstrating the process's selectivity. The cleaned surface exhibits the optimal topography and chemical state required for subsequent manufacturing processes or applications where surface purity is critical."
+  "description": "Microscopic analysis of nickel surface before and after laser cleaning treatment"
+  "alt": "Microscopic view of nickel surface showing laser cleaning effects"
+  "technicalAnalysis":
+    "focus": "surface_analysis"
+    "uniqueCharacteristics":
+    - "nickel_specific"
+    "contaminationProfile": "nickel surface contamination"
+  "microscopy":
+    "parameters": "Microscopic analysis of nickel"
+    "qualityMetrics": "Surface improvement analysis"
+  "generation":
+    "method": "frontmatter_integrated_generation"
+    "timestamp": "2025-09-30T21:52:45.000879Z"
+    "generator": "FrontmatterCaptionGenerator"
+    "componentType": "ai_caption_frontmatter"
+  "author": "Todd Dunning"
+  "materialProperties":
+    "materialType": "Metal"
+    "analysisMethod": "ai_microscopy"

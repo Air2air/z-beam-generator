@@ -147,15 +147,16 @@ class CaptionFrontmatterIntegrator:
     def save_frontmatter(self, frontmatter_path: Path, frontmatter_data: Dict[str, Any]) -> bool:
         """Save updated frontmatter data back to file."""
         try:
-            # Create backup
-            backup_path = frontmatter_path.with_suffix(f'.backup.{datetime.now().strftime("%Y%m%d_%H%M%S")}.yaml')
+            # Skip backup creation - disabled to prevent clutter
+            # backup_path = frontmatter_path.with_suffix(f'.backup.{datetime.now().strftime("%Y%m%d_%H%M%S")}.yaml')
+            # if frontmatter_path.exists():
+            #     import shutil
+            #     shutil.copy2(frontmatter_path, backup_path)
+            #     print(f"📋 Backup created: {backup_path}")
+            
+            # Detect original file format by checking if it starts with ---
             if frontmatter_path.exists():
-                import shutil
-                shutil.copy2(frontmatter_path, backup_path)
-                print(f"📋 Backup created: {backup_path}")
-                
-                # Detect original file format by checking if it starts with ---
-                with open(backup_path, 'r', encoding='utf-8') as f:
+                with open(frontmatter_path, 'r', encoding='utf-8') as f:
                     first_line = f.readline().strip()
                     is_frontmatter_format = first_line == '---'
             else:
@@ -170,8 +171,8 @@ class CaptionFrontmatterIntegrator:
                                            default_flow_style=False, 
                                            sort_keys=False, 
                                            allow_unicode=True, 
-                                           width=120,
-                                           default_style=None)  # Let YAML choose appropriate quoting
+                                           width=1000,  # Prevent line wrapping issues
+                                           default_style='"')  # Use double quotes for safer escaping
                     f.write(yaml_content)
                     f.write("---\n")
                 else:
@@ -180,8 +181,8 @@ class CaptionFrontmatterIntegrator:
                                            default_flow_style=False, 
                                            sort_keys=False, 
                                            allow_unicode=True, 
-                                           width=120,
-                                           default_style=None)  # Let YAML choose appropriate quoting
+                                           width=1000,  # Prevent line wrapping issues
+                                           default_style='"')  # Use double quotes for safer escaping
                     f.write(yaml_content)
             
             print(f"✅ Updated frontmatter saved to: {frontmatter_path}")
