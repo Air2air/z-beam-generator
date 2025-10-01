@@ -75,12 +75,14 @@ Day-to-day usage and content generation
 - [**OPTIMIZATION.md**](operations/OPTIMIZATION.md) - Performance tuning and optimization (TODO)
 - [**MAINTENANCE.md**](operations/MAINTENANCE.md) - System maintenance tasks (TODO)
 
-### 🧪 **Testing & Validation**
+### 🧪 **Testing & Validation** *(October 2025 - Updated)*
 Ensuring system reliability and correctness
+- [**TEST_IMPROVEMENTS_SUMMARY.md**](testing/TEST_IMPROVEMENTS_SUMMARY.md) - ✅ Recent test suite improvements (Oct 2025)
 - [**TESTING_STRATEGY.md**](testing/TESTING_STRATEGY.md) - Overall testing approach
 - [**API_TESTING.md**](testing/API_TESTING.md) - API connectivity and health tests
 - [**COMPONENT_TESTING.md**](testing/COMPONENT_TESTING.md) - Component validation procedures
 - [**E2E_TESTING.md**](testing/E2E_TESTING.md) - End-to-end workflow testing
+- **Current Status**: 673 tests collected, 98.2% pass rate, deprecated tests isolated
 
 ### 👨‍💻 **Development**
 For contributors and developers extending Z-Beam

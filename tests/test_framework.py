@@ -31,7 +31,11 @@ logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(leve
 logger = logging.getLogger(__name__)
 
 class TestHangProtector:
-    """Comprehensive protection against test hanging"""
+    """Comprehensive protection against test hanging
+    
+    Note: Not a pytest test class - this is a utility class for test protection.
+    Pytest won't try to collect this as it doesn't match Test* pattern for actual test classes.
+    """
 
     def __init__(self):
         self.start_time = time.time()
