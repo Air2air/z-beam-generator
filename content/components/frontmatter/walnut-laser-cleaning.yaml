@@ -5,28 +5,28 @@ title: Walnut Laser Cleaning
 description: Laser cleaning parameters for Ash
 materialProperties:
   density:
-    value: 0.69
+    value: 0.64
     unit: "g/cm\xB3"
     confidence: 95
     description: Average density of walnut wood at 12% moisture content
     min: 0.12
     max: 1.25
   thermalConductivity:
-    value: 0.22
+    value: 0.14
     unit: "W/m\xB7K"
     confidence: 88
     description: Thermal conductivity perpendicular to grain at room temperature
     min: 0.04
     max: 0.4
   tensileStrength:
-    value: 110.0
+    value: 101.0
     unit: MPa
     confidence: 92
     description: Tensile strength parallel to grain
     min: 2.5
     max: 152.5
   hardness:
-    value: 2510.0
+    value: 1010.0
     unit: N
     confidence: 91
     description: Janka hardness test value
@@ -40,14 +40,14 @@ materialProperties:
     min: 0
     max: 3299.24
   thermalExpansion:
-    value: 30.0
+    value: 27.5
     unit: "1/\xB0C"
     confidence: 82
     description: Coefficient of thermal expansion perpendicular to grain
     min: 0
     max: 33.0
   specificHeat:
-    value: 1650.0
+    value: 1400.0
     unit: "J/kg\xB7K"
     confidence: 90
     description: Specific heat capacity at room temperature
@@ -55,14 +55,14 @@ materialProperties:
     max: 2555.0
   absorptionCoefficient:
     value: 0.85
-    unit: ""
+    unit: ''
     confidence: 83
     description: Approximate absorption coefficient for common laser wavelengths (1064nm)
     min: null
     max: null
   reflectivity:
     value: 0.15
-    unit: ""
+    unit: ''
     confidence: 80
     description: Average reflectivity in visible to near-IR range
     min: null
@@ -101,32 +101,32 @@ materialProperties:
     min: 1.0
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 25.5
+    value: 32.7
   laserReflectivity:
     confidence: 0.7
     max: 60.0
     min: 10.0
     source: default_from_category_range
     unit: '%'
-    value: 35.0
+    value: 32.7
   thermalDiffusivity:
     confidence: 0.7
     max: 0.4
     min: 0.0001
     source: default_from_category_range
     unit: "mm\xB2/s"
-    value: 0.2
+    value: 0.00165
   thermalDestructionPoint:
     confidence: 0.7
     max: 500.0
     min: 200.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 350.0
+    value: 401.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: carbonization
+    value: 573.0
 applications:
 - laser cleaning
 - surface preparation
@@ -177,7 +177,8 @@ machineSettings:
     value: 1.27
     unit: "J/cm\xB2"
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without wood damage
+    description: Fluence threshold for effective contaminant removal without wood
+      damage
     min: 0.8
     max: 2.0
   overlapRatio:
@@ -212,7 +213,8 @@ images:
     alt: Walnut surface undergoing laser cleaning showing precise contamination removal
     url: /images/walnut-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Walnut surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Walnut surface after laser cleaning showing detailed
+      surface structure
     url: /images/walnut-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -239,7 +241,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -271,7 +272,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

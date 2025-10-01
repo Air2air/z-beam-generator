@@ -5,42 +5,42 @@ title: Polypropylene Laser Cleaning
 description: Laser cleaning parameters for Polycarbonate
 materialProperties:
   density:
-    value: 1.53
+    value: 0.905
     unit: "g/cm\xB3"
     confidence: 95
     description: Density of isotactic polypropylene at room temperature
     min: 0.85
     max: 2.2
   thermalConductivity:
-    value: 1.51
+    value: 0.22
     unit: "W/m\xB7K"
     confidence: 88
     description: Thermal conductivity at room temperature
     min: 0.02
     max: 3
   tensileStrength:
-    value: 205.0
+    value: 35.0
     unit: MPa
     confidence: 92
     description: Tensile strength at yield for unfilled PP
     min: 10
     max: 400
   youngsModulus:
-    value: 2000.01
+    value: 1500.0
     unit: GPa
     confidence: 90
     description: Young's modulus in tension
     min: 0
     max: 3629.98
   thermalExpansion:
-    value: 105.0
+    value: 110.0
     unit: "10\u207B\u2076/\xB0C"
     confidence: 85
     description: Linear coefficient of thermal expansion
     min: 10
     max: 200
   specificHeat:
-    value: 1750.0
+    value: 1880.0
     unit: "J/kg\xB7K"
     confidence: 90
     description: Specific heat capacity at room temperature
@@ -55,7 +55,7 @@ materialProperties:
     max: null
   reflectivity:
     value: 0.04
-    unit: ""
+    unit: ''
     confidence: 80
     description: Surface reflectivity at 1064 nm
     min: null
@@ -87,39 +87,39 @@ materialProperties:
     min: 10.0
     source: default_from_category_range
     unit: ''
-    value: 50.0
+    value: 75.0
   laserAbsorption:
     confidence: 0.7
     max: 100.0
     min: 0.1
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 50.05
+    value: 42.7
   laserReflectivity:
     confidence: 0.7
     max: 95.0
     min: 5.0
     source: default_from_category_range
     unit: '%'
-    value: 50.0
+    value: 94.5
   thermalDiffusivity:
     confidence: 0.7
     max: 1.0
     min: 0.05
     source: default_from_category_range
     unit: "mm\xB2/s"
-    value: 0.53
+    value: 0.096
   thermalDestructionPoint:
     confidence: 0.7
     max: 400.0
     min: 80.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 240.0
+    value: 328.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: decomposition
+    value: 328.0
 applications:
 - 'Automotive: Paint removal and surface preparation for automotive parts'
 - 'Electronics: Precision cleaning of electronic components and circuit boards'
@@ -228,7 +228,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues

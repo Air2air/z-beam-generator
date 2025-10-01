@@ -5,21 +5,21 @@ title: Inconel Laser Cleaning
 description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
-    value: 11.57
+    value: 8.44
     unit: "g/cm\xB3"
     confidence: 95
     description: Typical density for Inconel 718 at room temperature
     min: 0.53
     max: 22.6
   thermalConductivity:
-    value: 217.5
+    value: 11.2
     unit: "W/m\xB7K"
     confidence: 90
     description: "Thermal conductivity at 20\xB0C for Inconel 718"
     min: 6.0
     max: 429.0
   tensileStrength:
-    value: 1501.5
+    value: 827.0
     unit: MPa
     confidence: 92
     description: Ultimate tensile strength at room temperature
@@ -33,21 +33,21 @@ materialProperties:
     min: 0
     max: 3772.91
   youngsModulus:
-    value: 208.0
+    value: 214.0
     unit: GPa
     confidence: 94
     description: Young's modulus at room temperature
     min: 0
     max: 579.82
   thermalExpansion:
-    value: 14.8
+    value: 13.1
     unit: "\u03BCm/m\xB7\xB0C"
     confidence: 88
     description: "Coefficient of thermal expansion at 20-100\xB0C"
     min: 1.7
     max: 34.9
   specificHeat:
-    value: 500.0
+    value: 444.0
     unit: "J/kg\xB7K"
     confidence: 85
     description: Specific heat capacity at room temperature
@@ -55,14 +55,14 @@ materialProperties:
     max: 1994.6
   absorptionCoefficient:
     value: 0.65
-    unit: ""
+    unit: ''
     confidence: 82
     description: Estimated absorption coefficient for Nd:YAG laser (1064 nm)
     min: null
     max: null
   reflectivity:
     value: 0.35
-    unit: ""
+    unit: ''
     confidence: 80
     description: Estimated reflectivity for infrared lasers at room temperature
     min: null
@@ -85,7 +85,8 @@ materialProperties:
     value: FCC
     unit: crystal system
     confidence: 95
-    description: Face-centered cubic gamma matrix with gamma prime/gamma double prime precipitates
+    description: Face-centered cubic gamma matrix with gamma prime/gamma double prime
+      precipitates
     min: null
     max: null
   laserAbsorption:
@@ -94,32 +95,32 @@ materialProperties:
     min: 0.02
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 50.01
+    value: 38.7
   laserReflectivity:
     confidence: 0.7
     max: 98.0
     min: 5.0
     source: default_from_category_range
     unit: '%'
-    value: 51.5
+    value: 62.3
   thermalDiffusivity:
     confidence: 0.7
     max: 174.0
     min: 0.2
     source: default_from_category_range
     unit: "mm\xB2/s"
-    value: 87.1
+    value: 3.5
   thermalDestructionPoint:
     confidence: 0.7
     max: 3422.0
     min: -38.8
     source: default_from_category_range
     unit: "\xB0C"
-    value: 1691.6
+    value: 1665.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: melting
+    value: 1673.0
 applications:
 - 'Automotive: Paint removal and surface preparation for automotive parts'
 - 'Restoration: Gentle cleaning for restoration and conservation applications'
@@ -129,7 +130,8 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Inconel oxide removal without substrate damage
+    description: Optimal average power for Inconel oxide removal without substrate
+      damage
     min: 80
     max: 120
   wavelength:
@@ -192,7 +194,8 @@ machineSettings:
     value: 5.1
     unit: "J/cm\xB2"
     confidence: 86
-    description: Calculated energy density based on power, spot size, and repetition rate
+    description: Calculated energy density based on power, spot size, and repetition
+      rate
     min: 3.0
     max: 8.0
 regulatoryStandards:
@@ -205,7 +208,8 @@ images:
     alt: Inconel surface undergoing laser cleaning showing precise contamination removal
     url: /images/inconel-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Inconel surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Inconel surface after laser cleaning showing detailed
+      surface structure
     url: /images/inconel-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -232,7 +236,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -264,7 +267,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

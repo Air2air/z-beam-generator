@@ -5,21 +5,21 @@ title: Stoneware Laser Cleaning
 description: Laser cleaning parameters for Alumina
 materialProperties:
   density:
-    value: 10.75
+    value: 2.4
     unit: "g/cm\xB3"
     confidence: 95
     description: Typical density for fired stoneware ceramics
     min: 2.2
     max: 19.3
   thermalConductivity:
-    value: 1000.01
+    value: 1.5
     unit: "W/m\xB7K"
     confidence: 88
     description: Low thermal conductivity typical of ceramic materials
     min: 0.03
     max: 2000.0
   hardness:
-    value: 5.5
+    value: 6.0
     unit: Mohs
     confidence: 92
     description: Mohs hardness scale for fired stoneware
@@ -33,7 +33,7 @@ materialProperties:
     min: 0.1
     max: 14
   thermalDiffusivity:
-    value: 60.02
+    value: 0.85
     unit: "mm\xB2/s"
     confidence: 82
     description: Thermal diffusivity affecting heat propagation
@@ -48,14 +48,14 @@ materialProperties:
     max: null
   absorptionCoefficient:
     value: 0.85
-    unit: ""
+    unit: ''
     confidence: 88
     description: Typical absorption coefficient for IR lasers (1064 nm)
     min: null
     max: null
   reflectivity:
     value: 0.12
-    unit: ""
+    unit: ''
     confidence: 84
     description: Reflectivity at common laser wavelengths
     min: null
@@ -87,46 +87,46 @@ materialProperties:
     min: 0.1
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 25.05
+    value: 32.7
   laserReflectivity:
     confidence: 0.7
     max: 90.0
     min: 5.0
     source: default_from_category_range
     unit: '%'
-    value: 47.5
+    value: 42.3
   specificHeat:
     confidence: 0.7
     max: 1200.0
     min: 200.0
     source: default_from_category_range
     unit: "J/kg\xB7K"
-    value: 700.0
+    value: 800.0
   tensileStrength:
     confidence: 0.7
     max: 1000.0
     min: 50.0
     source: default_from_category_range
     unit: MPa
-    value: 525.0
+    value: 40.0
   youngsModulus:
     confidence: 0.7
     max: 800.0
     min: 50.0
     source: default_from_category_range
     unit: GPa
-    value: 425.0
+    value: 70.0
   thermalDestructionPoint:
     confidence: 0.7
     max: 3827.0
     min: 1000.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 2413.5
+    value: 1673.15
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: thermal_shock
+    value: 180.0
 applications:
 - 'Jewelry: Precision cleaning and polishing of precious metal jewelry'
 machineSettings:
@@ -134,7 +134,8 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power range for Stoneware surface cleaning without thermal damage
+    description: Optimal average power range for Stoneware surface cleaning without
+      thermal damage
     min: 80
     max: 120
   wavelength:
@@ -176,7 +177,8 @@ machineSettings:
     value: 2.5
     unit: "J/cm\xB2"
     confidence: 89
-    description: Threshold fluence for effective contaminant removal without substrate damage
+    description: Threshold fluence for effective contaminant removal without substrate
+      damage
     min: 1.5
     max: 4.0
   overlapRatio:
@@ -210,10 +212,12 @@ regulatoryStandards:
 - ISO 23146 - Technical Ceramics
 images:
   hero:
-    alt: Stoneware surface undergoing laser cleaning showing precise contamination removal
+    alt: Stoneware surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/stoneware-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Stoneware surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Stoneware surface after laser cleaning showing detailed
+      surface structure
     url: /images/stoneware-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -240,7 +244,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -272,7 +275,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

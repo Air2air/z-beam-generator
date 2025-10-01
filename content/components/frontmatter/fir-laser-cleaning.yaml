@@ -5,28 +5,28 @@ title: Fir Laser Cleaning
 description: Laser cleaning parameters for Ash
 materialProperties:
   density:
-    value: 0.69
+    value: 0.45
     unit: "g/cm\xB3"
     confidence: 92
     description: Average density of European Fir wood at 12% moisture content
     min: 0.12
     max: 1.25
   thermalConductivity:
-    value: 0.22
+    value: 0.12
     unit: "W/m\xB7K"
     confidence: 88
     description: Thermal conductivity perpendicular to grain direction at room temperature
     min: 0.04
     max: 0.4
   tensileStrength:
-    value: 110.0
+    value: 85.0
     unit: MPa
     confidence: 89
     description: Tensile strength parallel to grain direction
     min: 2.5
     max: 152.5
   hardness:
-    value: 2510.0
+    value: 410.0
     unit: "N/mm\xB2"
     confidence: 84
     description: Brinell hardness perpendicular to grain surface
@@ -40,14 +40,14 @@ materialProperties:
     min: 0
     max: 3299.24
   thermalExpansion:
-    value: 30.0
+    value: 3.7
     unit: 10^-6/K
     confidence: 82
     description: Coefficient of thermal expansion parallel to grain direction
     min: 0
     max: 33.0
   specificHeat:
-    value: 1650.0
+    value: 1630.0
     unit: "J/kg\xB7K"
     confidence: 90
     description: "Specific heat capacity at 20\xB0C and 12% moisture content"
@@ -55,14 +55,15 @@ materialProperties:
     max: 2555.0
   absorptionCoefficient:
     value: 0.78
-    unit: ""
+    unit: ''
     confidence: 86
-    description: Optical absorption coefficient for near-infrared wavelengths (1064 nm)
+    description: Optical absorption coefficient for near-infrared wavelengths (1064
+      nm)
     min: null
     max: null
   reflectivity:
     value: 0.15
-    unit: ""
+    unit: ''
     confidence: 83
     description: Surface reflectivity at 1064 nm laser wavelength
     min: null
@@ -89,7 +90,7 @@ materialProperties:
     min: null
     max: null
   thermalDiffusivity:
-    value: 0.2
+    value: 0.16
     unit: "mm\xB2/s"
     confidence: 83
     description: Thermal diffusivity perpendicular to grain direction
@@ -108,25 +109,25 @@ materialProperties:
     min: 1.0
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 25.5
+    value: 88.2
   laserReflectivity:
     confidence: 0.7
     max: 60.0
     min: 10.0
     source: default_from_category_range
     unit: '%'
-    value: 35.0
+    value: 32.7
   thermalDestructionPoint:
     confidence: 0.7
     max: 500.0
     min: 200.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 350.0
+    value: 382.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: carbonization
+    value: 573.0
 applications:
 - 'Restoration: Gentle cleaning for restoration and conservation applications'
 machineSettings:
@@ -197,7 +198,8 @@ machineSettings:
     value: 5.1
     unit: "J/cm\xB2"
     confidence: 84
-    description: Calculated energy density based on power, spot size, and repetition rate
+    description: Calculated energy density based on power, spot size, and repetition
+      rate
     min: 3.0
     max: 8.0
 regulatoryStandards:
@@ -211,7 +213,8 @@ images:
     alt: Fir surface undergoing laser cleaning showing precise contamination removal
     url: /images/fir-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Fir surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Fir surface after laser cleaning showing detailed surface
+      structure
     url: /images/fir-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -238,7 +241,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -270,7 +272,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

@@ -5,14 +5,14 @@ title: Alumina Laser Cleaning
 description: Laser cleaning parameters for Alumina
 materialProperties:
   density:
-    value: 10.75
+    value: 3.98
     unit: "g/cm\xB3"
     confidence: 95
     description: Theoretical density of pure alpha-alumina
     min: 2.2
     max: 19.3
   thermalConductivity:
-    value: 1000.01
+    value: 30.0
     unit: "W/m\xB7K"
     confidence: 88
     description: Thermal conductivity at room temperature for high-purity alumina
@@ -26,35 +26,35 @@ materialProperties:
     min: 1.0
     max: 10.0
   youngsModulus:
-    value: 425.0
+    value: 393.0
     unit: GPa
     confidence: 90
     description: Young's modulus of elasticity
     min: 50
     max: 800
   thermalExpansion:
-    value: 7.05
+    value: 8.1
     unit: "\xD710\u207B\u2076/K"
     confidence: 90
     description: "Coefficient of thermal expansion (20-1000\xB0C)"
     min: 0.1
     max: 14
   thermalDiffusivity:
-    value: 60.02
+    value: 12.0
     unit: "cm\xB2/s"
     confidence: 85
     description: Thermal diffusivity at room temperature
     min: 0.05
     max: 120
   specificHeat:
-    value: 700.0
+    value: 880.0
     unit: "J/kg\xB7K"
     confidence: 92
     description: Specific heat capacity at room temperature
     min: 200
     max: 1200
   flexuralStrength:
-    value: 350
+    value: 379.0
     unit: MPa
     confidence: 85
     description: Flexural strength of high-purity alumina
@@ -62,14 +62,14 @@ materialProperties:
     max: null
   absorptionCoefficient:
     value: 0.85
-    unit: ""
+    unit: ''
     confidence: 82
     description: Absorption coefficient for common laser wavelengths (1064 nm)
     min: null
     max: null
   reflectivity:
     value: 0.15
-    unit: ""
+    unit: ''
     confidence: 80
     description: Reflectivity at common laser wavelengths
     min: null
@@ -101,26 +101,31 @@ materialProperties:
     min: 0.1
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 25.05
+    value: 18.7
   laserReflectivity:
     confidence: 0.7
     max: 90.0
     min: 5.0
     source: default_from_category_range
     unit: '%'
-    value: 47.5
+    value: 42.3
   tensileStrength:
     confidence: 0.7
     max: 1000.0
     min: 50.0
     source: default_from_category_range
     unit: MPa
-    value: 525.0
+    value: 262.0
   compressiveStrength:
-    value: 3000
+    value: 2600.0
     unit: MPa
     confidence: 0.95
-    description: Compressive strength is the maximum compressive stress a material can withstand before fracture. For polycrystalline alumina, this property is exceptionally high due to its strong ionic/covalent bonding, fine grain size, and low porosity. It is significantly higher than its tensile strength, as ceramics typically fail from pre-existing flaws in tension but can support much higher loads in compression where flaws are less critical.
+    description: Compressive strength is the maximum compressive stress a material
+      can withstand before fracture. For polycrystalline alumina, this property is
+      exceptionally high due to its strong ionic/covalent bonding, fine grain size,
+      and low porosity. It is significantly higher than its tensile strength, as ceramics
+      typically fail from pre-existing flaws in tension but can support much higher
+      loads in compression where flaws are less critical.
     source: ai_research_from_mechanical_properties
     min: 2500
     max: 4000
@@ -130,11 +135,11 @@ materialProperties:
     min: 1000.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 2413.5
+    value: 2323.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: thermal_shock
+    value: 200.0
 applications:
 - 'Jewelry: Precision cleaning and polishing of precious metal jewelry'
 - 'Food Processing: Sanitary surface cleaning for food processing equipment'
@@ -143,7 +148,8 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Alumina surface cleaning without thermal damage
+    description: Optimal average power for Alumina surface cleaning without thermal
+      damage
     min: 80
     max: 120
   wavelength:
@@ -164,14 +170,16 @@ machineSettings:
     value: 50
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning coverage while maintaining thermal control
+    description: High repetition rate for efficient cleaning coverage while maintaining
+      thermal control
     min: 20
     max: 100
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient contaminant removal with minimal substrate heating
+    description: Nanosecond pulse duration for efficient contaminant removal with
+      minimal substrate heating
     min: 5
     max: 20
   scanSpeed:
@@ -185,14 +193,16 @@ machineSettings:
     value: 2.5
     unit: "J/cm\xB2"
     confidence: 89
-    description: Minimum fluence required for effective contaminant removal from Alumina surface
+    description: Minimum fluence required for effective contaminant removal from Alumina
+      surface
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for uniform cleaning without excessive thermal accumulation
+    description: Optimal pulse overlap for uniform cleaning without excessive thermal
+      accumulation
     min: 30
     max: 70
   passCount:
@@ -222,7 +232,8 @@ images:
     alt: Alumina surface undergoing laser cleaning showing precise contamination removal
     url: /images/alumina-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Alumina surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Alumina surface after laser cleaning showing detailed
+      surface structure
     url: /images/alumina-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -249,7 +260,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -281,7 +291,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

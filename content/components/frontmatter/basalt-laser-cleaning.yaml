@@ -5,52 +5,53 @@ title: Basalt Laser Cleaning
 description: Laser cleaning parameters for Alabaster
 materialProperties:
   density:
-    value: 2.45
+    value: 2.95
     unit: "g/cm\xB3"
     confidence: 95
     description: Typical density of basalt rock at room temperature
     min: 1.5
     max: 3.4
   thermalConductivity:
-    value: 4.1
+    value: 1.7
     unit: "W/m\xB7K"
     confidence: 88
     description: Thermal conductivity at room temperature
     min: 0.12
     max: 8.28
   hardness:
-    value: 4.0
+    value: 6.0
     unit: Mohs
     confidence: 95
     description: Mohs hardness scale
     min: 1
     max: 7
   youngsModulus:
-    value: 55.0
+    value: 70.3
     unit: GPa
     confidence: 88
     description: Elastic modulus of basalt
     min: 10
     max: 100
   thermalExpansion:
-    value: 14.0
+    value: 8.0
     unit: "10\u207B\u2076/\xB0C"
     confidence: 85
     description: Coefficient of thermal expansion
     min: 3.5
     max: 26.9
   specificHeat:
-    value: 900.0
+    value: 840.0
     unit: "J/kg\xB7K"
     confidence: 90
     description: Specific heat capacity at room temperature
     min: 705.5
     max: 1119.5
   thermalDiffusivity:
-    value: 1.35
+    value: 0.83
     unit: "mm\xB2/s"
     confidence: 82
-    description: Thermal diffusivity calculated from conductivity, density, and specific heat
+    description: Thermal diffusivity calculated from conductivity, density, and specific
+      heat
     min: 0.2
     max: 2.5
   compressiveStrength:
@@ -62,14 +63,14 @@ materialProperties:
     max: null
   absorptionCoefficient:
     value: 0.85
-    unit: ""
+    unit: ''
     confidence: 80
     description: Typical absorption coefficient for near-infrared lasers (1064 nm)
     min: null
     max: null
   reflectivity:
     value: 0.12
-    unit: ""
+    unit: ''
     confidence: 82
     description: Reflectivity at 1064 nm wavelength
     min: null
@@ -78,7 +79,8 @@ materialProperties:
     value: 2.5
     unit: "J/cm\xB2"
     confidence: 78
-    description: Approximate laser ablation threshold for nanosecond pulses at 1064 nm
+    description: Approximate laser ablation threshold for nanosecond pulses at 1064
+      nm
     min: null
     max: null
   porosity:
@@ -101,32 +103,32 @@ materialProperties:
     min: 0.1
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 10.05
+    value: 8.7
   laserReflectivity:
     confidence: 0.7
     max: 80.0
     min: 5.0
     source: default_from_category_range
     unit: '%'
-    value: 42.5
+    value: 38.2
   tensileStrength:
     confidence: 0.7
     max: 25.0
     min: 2.0
     source: default_from_category_range
     unit: MPa
-    value: 13.5
+    value: 10.0
   thermalDestructionPoint:
     confidence: 0.7
     max: 1700.0
     min: 600.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 1150.0
+    value: 1100.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: thermal_shock
+    value: 2.1
 applications:
 - laser cleaning
 - surface preparation
@@ -135,7 +137,8 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Basalt surface cleaning without thermal damage
+    description: Optimal average power for Basalt surface cleaning without thermal
+      damage
     min: 80
     max: 120
   wavelength:
@@ -191,7 +194,8 @@ machineSettings:
     value: 3
     unit: passes
     confidence: 85
-    description: Recommended number of passes for thorough cleaning without substrate damage
+    description: Recommended number of passes for thorough cleaning without substrate
+      damage
     min: 1
     max: 5
   laserType:
@@ -211,7 +215,8 @@ images:
     alt: Basalt surface undergoing laser cleaning showing precise contamination removal
     url: /images/basalt-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Basalt surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Basalt surface after laser cleaning showing detailed
+      surface structure
     url: /images/basalt-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -238,7 +243,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -270,7 +274,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

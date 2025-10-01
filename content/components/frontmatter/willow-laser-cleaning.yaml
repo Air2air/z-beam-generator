@@ -5,49 +5,49 @@ title: Willow Laser Cleaning
 description: Laser cleaning parameters for Ash
 materialProperties:
   density:
-    value: 0.69
+    value: 0.45
     unit: "g/cm\xB3"
     confidence: 85
     description: Average density of willow wood at 12% moisture content
     min: 0.12
     max: 1.25
   thermalConductivity:
-    value: 0.22
+    value: 0.12
     unit: "W/m\xB7K"
     confidence: 88
     description: Thermal conductivity perpendicular to grain direction
     min: 0.04
     max: 0.4
   tensileStrength:
-    value: 110.0
+    value: 85.0
     unit: MPa
     confidence: 83
     description: Tensile strength parallel to grain direction
     min: 2.5
     max: 152.5
   hardness:
-    value: 2510.0
+    value: 1700.0
     unit: lbf
     confidence: 82
     description: Janka hardness test value
     min: 0
     max: 4650.8
   youngsModulus:
-    value: 2502.5
+    value: 9000.0
     unit: GPa
     confidence: 84
     description: Elastic modulus parallel to grain direction
     min: 0
     max: 3299.24
   thermalExpansion:
-    value: 30.0
+    value: 54.0
     unit: "10^-6/\xB0C"
     confidence: 80
     description: Linear thermal expansion coefficient tangential direction
     min: 0
     max: 33.0
   specificHeat:
-    value: 1650.0
+    value: 1700.0
     unit: "J/kg\xB7K"
     confidence: 85
     description: Specific heat capacity at room temperature
@@ -55,14 +55,14 @@ materialProperties:
     max: 2555.0
   absorptionCoefficient:
     value: 0.78
-    unit: ""
+    unit: ''
     confidence: 86
     description: Optical absorption coefficient at 1064nm wavelength
     min: null
     max: null
   reflectivity:
     value: 0.22
-    unit: ""
+    unit: ''
     confidence: 84
     description: Surface reflectivity at 1064nm near-infrared wavelength
     min: null
@@ -89,7 +89,7 @@ materialProperties:
     min: null
     max: null
   thermalDiffusivity:
-    value: 0.2
+    value: 0.16
     unit: "mm\xB2/s"
     confidence: 82
     description: Thermal diffusivity perpendicular to grain direction
@@ -108,25 +108,25 @@ materialProperties:
     min: 1.0
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 25.5
+    value: 32.7
   laserReflectivity:
     confidence: 0.7
     max: 60.0
     min: 10.0
     source: default_from_category_range
     unit: '%'
-    value: 35.0
+    value: 32.7
   thermalDestructionPoint:
     confidence: 0.7
     max: 500.0
     min: 200.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 350.0
+    value: 380.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: carbonization
+    value: 573.0
 applications:
 - laser cleaning
 - surface preparation
@@ -184,7 +184,8 @@ machineSettings:
     value: 50
     unit: '%'
     confidence: 86
-    description: Optimal pulse overlap for uniform cleaning without excessive heat accumulation
+    description: Optimal pulse overlap for uniform cleaning without excessive heat
+      accumulation
     min: 30
     max: 70
   passCount:
@@ -198,7 +199,8 @@ machineSettings:
     value: 3.5
     unit: "J/cm\xB2"
     confidence: 84
-    description: Optimal energy density for effective cleaning while preserving Willow substrate
+    description: Optimal energy density for effective cleaning while preserving Willow
+      substrate
     min: 2.0
     max: 6.0
 regulatoryStandards:
@@ -212,7 +214,8 @@ images:
     alt: Willow surface undergoing laser cleaning showing precise contamination removal
     url: /images/willow-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Willow surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Willow surface after laser cleaning showing detailed
+      surface structure
     url: /images/willow-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -239,7 +242,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -271,7 +273,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

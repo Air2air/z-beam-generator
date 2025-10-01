@@ -5,42 +5,42 @@ title: Beryllium Laser Cleaning
 description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
-    value: 11.57
+    value: 1.848
     unit: "g/cm\xB3"
     confidence: 98
     description: Density of pure beryllium at room temperature
     min: 0.53
     max: 22.6
   thermalConductivity:
-    value: 217.5
+    value: 201.0
     unit: "W/m\xB7K"
     confidence: 95
     description: Thermal conductivity at room temperature
     min: 6.0
     max: 429.0
   tensileStrength:
-    value: 1501.5
+    value: 448.0
     unit: MPa
     confidence: 88
     description: Typical tensile strength for pure beryllium
     min: 0
     max: 1363.6
   hardness:
-    value: 1750.25
+    value: 150.0
     unit: HV
     confidence: 85
     description: Vickers hardness of pure beryllium
     min: 0
     max: 3772.91
   youngsModulus:
-    value: 208.0
+    value: 287.0
     unit: GPa
     confidence: 95
     description: Young's modulus of elasticity
     min: 0
     max: 579.82
   thermalExpansion:
-    value: 14.8
+    value: 11.5
     unit: "10\u207B\u2076/K"
     confidence: 92
     description: "Coefficient of linear thermal expansion (20-100\xB0C)"
@@ -89,7 +89,7 @@ materialProperties:
     min: null
     max: null
   thermalDiffusivity:
-    value: 87.1
+    value: 68.3
     unit: "cm\xB2/s"
     confidence: 90
     description: Thermal diffusivity at room temperature
@@ -101,25 +101,25 @@ materialProperties:
     min: 0.02
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 50.01
+    value: 38.7
   laserReflectivity:
     confidence: 0.7
     max: 98.0
     min: 5.0
     source: default_from_category_range
     unit: '%'
-    value: 51.5
+    value: 54.2
   thermalDestructionPoint:
     confidence: 0.7
     max: 3422.0
     min: -38.8
     source: default_from_category_range
     unit: "\xB0C"
-    value: 1691.6
+    value: 1560.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: melting
+    value: 1287.0
 applications:
 - 'Medical: Sterilization and cleaning of medical devices and instruments'
 - 'Oil and Gas: Industrial cleaning and maintenance for oil and gas equipment'
@@ -201,10 +201,12 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Beryllium surface undergoing laser cleaning showing precise contamination removal
+    alt: Beryllium surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/beryllium-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Beryllium surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Beryllium surface after laser cleaning showing detailed
+      surface structure
     url: /images/beryllium-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -231,7 +233,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -263,7 +264,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

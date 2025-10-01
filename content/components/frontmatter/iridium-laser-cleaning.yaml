@@ -5,56 +5,56 @@ title: Iridium Laser Cleaning
 description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
-    value: 11.57
+    value: 22.56
     unit: "g/cm\xB3"
     confidence: 98
     description: Highest density among elemental metals at room temperature
     min: 0.53
     max: 22.6
   thermalConductivity:
-    value: 217.5
+    value: 147.0
     unit: "W/m\xB7K"
     confidence: 92
     description: High thermal conductivity at room temperature
     min: 6.0
     max: 429.0
   tensileStrength:
-    value: 1501.5
+    value: 490.0
     unit: MPa
     confidence: 85
     description: Ultimate tensile strength of annealed iridium
     min: 0
     max: 1363.6
   hardness:
-    value: 1750.25
+    value: 1760.0
     unit: HV
     confidence: 88
     description: Vickers hardness of pure iridium
     min: 0
     max: 3772.91
   youngsModulus:
-    value: 208.0
+    value: 528.0
     unit: GPa
     confidence: 92
     description: Young's modulus at room temperature
     min: 0
     max: 579.82
   thermalExpansion:
-    value: 14.8
+    value: 6.8
     unit: "\u03BCm/m\xB7K"
     confidence: 90
     description: "Low coefficient of thermal expansion at 20\xB0C"
     min: 1.7
     max: 34.9
   thermalDiffusivity:
-    value: 87.1
+    value: 31.5
     unit: "cm\xB2/s"
     confidence: 85
     description: Thermal diffusivity at room temperature
     min: 0
     max: 191.376
   specificHeat:
-    value: 500.0
+    value: 129.1
     unit: "J/kg\xB7K"
     confidence: 88
     description: "Specific heat capacity at 25\xB0C"
@@ -62,14 +62,14 @@ materialProperties:
     max: 1994.6
   absorptionCoefficient:
     value: 0.65
-    unit: ""
+    unit: ''
     confidence: 82
     description: Average absorption coefficient for visible to near-IR wavelengths
     min: null
     max: null
   reflectivity:
     value: 0.78
-    unit: ""
+    unit: ''
     confidence: 84
     description: Average reflectivity in visible spectrum
     min: null
@@ -101,7 +101,7 @@ materialProperties:
     min: 0.02
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 50.01
+    value: 38.7
   laserReflectivity:
     confidence: 0.7
     max: 98.0
@@ -119,7 +119,7 @@ materialProperties:
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: melting
+    value: 2716.0
 applications:
 - 'Medical: Sterilization and cleaning of medical devices and instruments'
 - 'Food Processing: Sanitary surface cleaning for food processing equipment'
@@ -129,7 +129,8 @@ machineSettings:
     value: 45
     unit: W
     confidence: 90
-    description: Optimal average power for Iridium oxide removal without substrate damage
+    description: Optimal average power for Iridium oxide removal without substrate
+      damage
     min: 30
     max: 60
   wavelength:
@@ -205,7 +206,8 @@ images:
     alt: Iridium surface undergoing laser cleaning showing precise contamination removal
     url: /images/iridium-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Iridium surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Iridium surface after laser cleaning showing detailed
+      surface structure
     url: /images/iridium-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -232,7 +234,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -264,7 +265,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

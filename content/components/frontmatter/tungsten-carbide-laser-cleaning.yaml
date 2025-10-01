@@ -5,14 +5,14 @@ title: Tungsten Carbide Laser Cleaning
 description: Laser cleaning parameters for Alumina
 materialProperties:
   density:
-    value: 10.75
+    value: 15.63
     unit: "g/cm\xB3"
     confidence: 98
     description: High density due to tungsten content, typical for WC-Co composites
     min: 2.2
     max: 19.3
   thermalConductivity:
-    value: 1000.01
+    value: 110.0
     unit: "W/m\xB7K"
     confidence: 92
     description: High thermal conductivity beneficial for laser heat dissipation
@@ -26,35 +26,35 @@ materialProperties:
     min: 0.2
     max: 9.8
   youngsModulus:
-    value: 425.0
+    value: 650.0
     unit: GPa
     confidence: 94
     description: Very high Young's modulus providing stiffness
     min: 12.0
     max: 708.0
   thermalExpansion:
-    value: 7.05
+    value: 5.2
     unit: "\xD710\u207B\u2076/K"
     confidence: 90
     description: Low thermal expansion coefficient reduces thermal stress
     min: 0.1
     max: 14
   thermalDiffusivity:
-    value: 60.02
+    value: 22.5
     unit: "cm\xB2/s"
     confidence: 88
     description: Moderate thermal diffusivity affects laser heating rate
     min: 0
     max: 9.012
   specificHeat:
-    value: 700.0
+    value: 292.0
     unit: "J/kg\xB7K"
     confidence: 85
     description: Specific heat capacity at room temperature
     min: 134.0
     max: 1166.0
   flexuralStrength:
-    value: 1000
+    value: 2300.0
     unit: MPa
     confidence: 90
     description: High flexural strength typical for WC-Co composites
@@ -62,14 +62,14 @@ materialProperties:
     max: null
   absorptionCoefficient:
     value: 0.65
-    unit: ""
+    unit: ''
     confidence: 82
     description: Absorption coefficient for common laser wavelengths (1064 nm)
     min: null
     max: null
   reflectivity:
     value: 0.35
-    unit: ""
+    unit: ''
     confidence: 80
     description: Reflectivity at common laser wavelengths
     min: null
@@ -108,45 +108,53 @@ materialProperties:
     min: 0.1
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 25.05
+    value: 32.7
   laserReflectivity:
     confidence: 0.7
     max: 90.0
     min: 5.0
     source: default_from_category_range
     unit: '%'
-    value: 47.5
+    value: 52.3
   tensileStrength:
     confidence: 0.7
     max: 1000.0
     min: 50.0
     source: default_from_category_range
     unit: MPa
-    value: 525.0
+    value: 344.7
   thermalDestructionPoint:
     confidence: 0.7
     max: 3827.0
     min: 1000.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 2413.5
+    value: 2870.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: thermal_shock
+    value: 800.0
   compressiveStrength:
-    value: 4500
+    value: 6700.0
     unit: MPa
     confidence: 0.9
-    description: Tungsten carbide (WC), a cemented carbide or cermet, exhibits exceptionally high compressive strength due to its composite structure of hard, covalent WC grains embedded in a tough, metallic cobalt binder. This structure enables it to withstand immense compressive loads without fracturing, making it superior to most engineering ceramics and metals.
+    description: Tungsten carbide (WC), a cemented carbide or cermet, exhibits exceptionally
+      high compressive strength due to its composite structure of hard, covalent WC
+      grains embedded in a tough, metallic cobalt binder. This structure enables it
+      to withstand immense compressive loads without fracturing, making it superior
+      to most engineering ceramics and metals.
     source: ai_research_from_mechanical_properties
     min: 3500
     max: 6800
   fractureToughness:
-    value: 8.5
+    value: 9.5
     unit: "MPa\xB7m^0.5"
     confidence: 0.85
-    description: Fracture toughness (K_IC) represents tungsten carbide's resistance to crack propagation. WC-Co composites exhibit higher toughness than most ceramics due to crack bridging and plastic deformation in the cobalt binder phase. The toughness increases with cobalt content and is strongly influenced by WC grain size and distribution.
+    description: Fracture toughness (K_IC) represents tungsten carbide's resistance
+      to crack propagation. WC-Co composites exhibit higher toughness than most ceramics
+      due to crack bridging and plastic deformation in the cobalt binder phase. The
+      toughness increases with cobalt content and is strongly influenced by WC grain
+      size and distribution.
     source: ai_research_from_mechanical_properties
     min: 6.0
     max: 15.0
@@ -158,14 +166,16 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Tungsten Carbide surface cleaning without substrate damage
+    description: Optimal average power for Tungsten Carbide surface cleaning without
+      substrate damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength optimal for Tungsten Carbide absorption characteristics
+    description: Near-infrared wavelength optimal for Tungsten Carbide absorption
+      characteristics
     min: 532
     max: 10640
   spotSize:
@@ -179,7 +189,8 @@ machineSettings:
     value: 100
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning with minimal thermal accumulation
+    description: High repetition rate for efficient cleaning with minimal thermal
+      accumulation
     min: 50
     max: 200
   pulseWidth:
@@ -200,7 +211,8 @@ machineSettings:
     value: 2.5
     unit: "J/cm\xB2"
     confidence: 90
-    description: Fluence threshold for effective contaminant removal without damaging WC substrate
+    description: Fluence threshold for effective contaminant removal without damaging
+      WC substrate
     min: 1.5
     max: 4.0
   overlapRatio:
@@ -221,7 +233,8 @@ machineSettings:
     value: 5.1
     unit: "J/cm\xB2"
     confidence: 88
-    description: Calculated energy density based on power, spot size, and repetition rate
+    description: Calculated energy density based on power, spot size, and repetition
+      rate
     min: 3.2
     max: 7.8
 regulatoryStandards:
@@ -234,10 +247,12 @@ regulatoryStandards:
 - ISO 23146 - Technical Ceramics
 images:
   hero:
-    alt: Tungsten Carbide surface undergoing laser cleaning showing precise contamination removal
+    alt: Tungsten Carbide surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/tungsten-carbide-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Tungsten Carbide surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Tungsten Carbide surface after laser cleaning showing
+      detailed surface structure
     url: /images/tungsten-carbide-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -264,7 +279,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -296,7 +310,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

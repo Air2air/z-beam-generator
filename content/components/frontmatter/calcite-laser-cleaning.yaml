@@ -5,49 +5,49 @@ title: Calcite Laser Cleaning
 description: Laser cleaning parameters for Alabaster
 materialProperties:
   density:
-    value: 2.45
+    value: 2.71
     unit: "g/cm\xB3"
     confidence: 98
     description: Density of pure calcite at room temperature
     min: 1.5
     max: 3.4
   thermalConductivity:
-    value: 4.1
+    value: 4.18
     unit: "W/m\xB7K"
     confidence: 90
     description: "Thermal conductivity parallel to c-axis at 25\xB0C"
     min: 0.12
     max: 8.28
   hardness:
-    value: 4.0
+    value: 3.0
     unit: Mohs
     confidence: 98
     description: Mohs hardness scale value
     min: 1
     max: 7
   youngsModulus:
-    value: 55.0
+    value: 76.0
     unit: GPa
     confidence: 88
     description: Young's modulus parallel to cleavage direction
     min: 10
     max: 100
   thermalExpansion:
-    value: 14.0
+    value: 25.0
     unit: "\xD710\u207B\u2076/K"
     confidence: 88
     description: Coefficient of thermal expansion parallel to c-axis
     min: 3.5
     max: 26.9
   thermalDiffusivity:
-    value: 1.35
+    value: 1.32
     unit: "mm\xB2/s"
     confidence: 85
     description: Thermal diffusivity at room temperature
     min: 0.2
     max: 2.5
   specificHeat:
-    value: 900.0
+    value: 820.0
     unit: "J/kg\xB7K"
     confidence: 92
     description: "Specific heat capacity at 25\xB0C"
@@ -55,7 +55,7 @@ materialProperties:
     max: 1119.5
   refractiveIndex:
     value: 1.658
-    unit: ""
+    unit: ''
     confidence: 95
     description: Ordinary refractive index (n_o) at 589 nm
     min: null
@@ -87,32 +87,32 @@ materialProperties:
     min: 0.1
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 10.05
+    value: 8.7
   laserReflectivity:
     confidence: 0.7
     max: 80.0
     min: 5.0
     source: default_from_category_range
     unit: '%'
-    value: 42.5
+    value: 38.2
   tensileStrength:
     confidence: 0.7
     max: 25.0
     min: 2.0
     source: default_from_category_range
     unit: MPa
-    value: 13.5
+    value: 6.0
   thermalDestructionPoint:
     confidence: 0.7
     max: 1700.0
     min: 600.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 1150.0
+    value: 898.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: thermal_shock
+    value: 1.8
 applications:
 - 'Construction: Surface preparation and cleaning for construction materials'
 machineSettings:
@@ -148,7 +148,8 @@ machineSettings:
     value: 8
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for controlled ablation of Calcite surface contaminants
+    description: Nanosecond pulse duration for controlled ablation of Calcite surface
+      contaminants
     min: 5
     max: 15
   scanSpeed:
@@ -189,7 +190,8 @@ images:
     alt: Calcite surface undergoing laser cleaning showing precise contamination removal
     url: /images/calcite-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Calcite surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Calcite surface after laser cleaning showing detailed
+      surface structure
     url: /images/calcite-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -216,7 +218,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -248,7 +249,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

@@ -5,49 +5,49 @@ title: Marble Laser Cleaning
 description: Laser cleaning parameters for Alabaster
 materialProperties:
   density:
-    value: 2.45
+    value: 2.71
     unit: "g/cm\xB3"
     confidence: 95
     description: Average density of pure calcite marble at room temperature
     min: 1.5
     max: 3.4
   thermalConductivity:
-    value: 4.1
+    value: 2.8
     unit: "W/m\xB7K"
     confidence: 88
     description: Thermal conductivity of marble at room temperature
     min: 0.12
     max: 8.28
   hardness:
-    value: 4.0
+    value: 3.0
     unit: Mohs
     confidence: 95
     description: Mohs hardness scale value for calcite mineral
     min: 1
     max: 7
   youngsModulus:
-    value: 55.0
+    value: 50.0
     unit: GPa
     confidence: 85
     description: Young's modulus of elasticity for marble
     min: 10
     max: 100
   thermalExpansion:
-    value: 14.0
+    value: 12.0
     unit: "10\u207B\u2076/\xB0C"
     confidence: 85
     description: Coefficient of thermal expansion for calcite-based marble
     min: 3.5
     max: 26.9
   specificHeat:
-    value: 900.0
+    value: 880.0
     unit: "J/kg\xB7K"
     confidence: 90
     description: Specific heat capacity at room temperature
     min: 705.5
     max: 1119.5
   thermalDiffusivity:
-    value: 1.35
+    value: 1.27
     unit: "mm\xB2/s"
     confidence: 82
     description: Thermal diffusivity calculated from conductivity, density, and specific
@@ -63,14 +63,14 @@ materialProperties:
     max: null
   absorptionCoefficient:
     value: 0.85
-    unit: ""
+    unit: ''
     confidence: 80
     description: Average absorption coefficient for visible to near-IR wavelengths
     min: null
     max: null
   reflectivity:
     value: 0.12
-    unit: ""
+    unit: ''
     confidence: 82
     description: Reflectivity at common laser wavelengths (1064 nm)
     min: null
@@ -103,32 +103,32 @@ materialProperties:
     min: 0.1
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 10.05
+    value: 8.7
   laserReflectivity:
     confidence: 0.7
     max: 80.0
     min: 5.0
     source: default_from_category_range
     unit: '%'
-    value: 42.5
+    value: 38.2
   tensileStrength:
     confidence: 0.7
     max: 25.0
     min: 2.0
     source: default_from_category_range
     unit: MPa
-    value: 13.5
+    value: 8.5
   thermalDestructionPoint:
     confidence: 0.7
     max: 1700.0
     min: 600.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 1150.0
+    value: 825.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: thermal_shock
+    value: 2.1
 applications:
 - 'Jewelry: Precision cleaning and polishing of precious metal jewelry'
 machineSettings:
@@ -242,7 +242,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues

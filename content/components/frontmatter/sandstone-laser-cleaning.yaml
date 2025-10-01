@@ -5,59 +5,60 @@ title: Sandstone Laser Cleaning
 description: Laser cleaning parameters for Alabaster
 materialProperties:
   density:
-    value: 2.45
+    value: 2.32
     unit: "g/cm\xB3"
     confidence: 95
     description: Bulk density of typical sandstone with moderate porosity
     min: 1.5
     max: 3.4
   thermalConductivity:
-    value: 4.1
+    value: 2.3
     unit: "W/m\xB7K"
     confidence: 90
     description: Thermal conductivity at room temperature for dry sandstone
     min: 0.12
     max: 8.28
   tensileStrength:
-    value: 13.5
+    value: 4.8
     unit: MPa
     confidence: 88
     description: Direct tensile strength of medium-grained sandstone
     min: 0.92
     max: 52.28
   hardness:
-    value: 4.0
+    value: 6.5
     unit: Mohs
     confidence: 95
     description: Mohs hardness scale for quartz-dominated sandstone
     min: 1
     max: 7
   youngsModulus:
-    value: 55.0
+    value: 18.5
     unit: GPa
     confidence: 85
     description: Elastic modulus under compressive loading
     min: 10
     max: 100
   thermalExpansion:
-    value: 14.0
+    value: 12.2
     unit: "\xD710\u207B\u2076/\xB0C"
     confidence: 88
     description: Coefficient of thermal expansion for quartz-rich sandstone
     min: 3.5
     max: 26.9
   specificHeat:
-    value: 900.0
+    value: 745.0
     unit: "J/kg\xB7K"
     confidence: 92
     description: Specific heat capacity at room temperature
     min: 705.5
     max: 1119.5
   thermalDiffusivity:
-    value: 1.35
+    value: 1.32
     unit: "mm\xB2/s"
     confidence: 85
-    description: Thermal diffusivity calculated from conductivity, density, and specific heat
+    description: Thermal diffusivity calculated from conductivity, density, and specific
+      heat
     min: 0.2
     max: 2.5
   porosity:
@@ -69,14 +70,14 @@ materialProperties:
     max: null
   absorptionCoefficient:
     value: 0.85
-    unit: ""
+    unit: ''
     confidence: 82
     description: Optical absorption coefficient for visible to near-IR wavelengths
     min: null
     max: null
   reflectivity:
     value: 0.15
-    unit: ""
+    unit: ''
     confidence: 80
     description: Surface reflectivity at common laser wavelengths (1064 nm)
     min: null
@@ -101,30 +102,34 @@ materialProperties:
     min: 0.1
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 10.05
+    value: 8.7
   laserReflectivity:
     confidence: 0.7
     max: 80.0
     min: 5.0
     source: default_from_category_range
     unit: '%'
-    value: 42.5
+    value: 38.2
   thermalDestructionPoint:
     confidence: 0.7
     max: 1700.0
     min: 600.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 1150.0
+    value: 573.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: thermal_shock
+    value: 2.8
   compressiveStrength:
-    value: 65
+    value: 55.0
     unit: MPa
     confidence: 0.85
-    description: Compressive strength of sandstone is highly dependent on mineral composition, cementation type, porosity, and grain size. Quartz-rich sandstones with silica cementation exhibit the highest strengths, while clay-rich or poorly-cemented sandstones show lower values. Anisotropy from bedding planes significantly affects strength measurements.
+    description: Compressive strength of sandstone is highly dependent on mineral
+      composition, cementation type, porosity, and grain size. Quartz-rich sandstones
+      with silica cementation exhibit the highest strengths, while clay-rich or poorly-cemented
+      sandstones show lower values. Anisotropy from bedding planes significantly affects
+      strength measurements.
     source: ai_research_from_mechanical_properties
     min: 20
     max: 170
@@ -177,7 +182,8 @@ machineSettings:
     value: 3.2
     unit: "J/cm\xB2"
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without substrate damage
+    description: Fluence threshold for effective contaminant removal without substrate
+      damage
     min: 2.0
     max: 5.0
   overlapRatio:
@@ -208,10 +214,12 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Sandstone surface undergoing laser cleaning showing precise contamination removal
+    alt: Sandstone surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/sandstone-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Sandstone surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Sandstone surface after laser cleaning showing detailed
+      surface structure
     url: /images/sandstone-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -238,7 +246,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -270,7 +277,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

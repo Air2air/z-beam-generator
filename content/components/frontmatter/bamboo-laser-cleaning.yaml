@@ -5,28 +5,28 @@ title: Bamboo Laser Cleaning
 description: Laser cleaning parameters for Ash
 materialProperties:
   density:
-    value: 0.69
+    value: 0.73
     unit: "g/cm\xB3"
     confidence: 92
     description: Average density of mature bamboo culm material
     min: 0.12
     max: 1.25
   thermalConductivity:
-    value: 0.22
+    value: 0.18
     unit: "W/m\xB7K"
     confidence: 85
     description: Longitudinal thermal conductivity parallel to fiber direction
     min: 0.04
     max: 0.4
   tensileStrength:
-    value: 110.0
+    value: 140.0
     unit: MPa
     confidence: 90
     description: Longitudinal tensile strength parallel to fiber direction
     min: 2.5
     max: 152.5
   hardness:
-    value: 2510.0
+    value: 1580.0
     unit: lbf
     confidence: 82
     description: Brinell hardness of bamboo surface
@@ -40,21 +40,21 @@ materialProperties:
     min: 0
     max: 3299.24
   thermalExpansion:
-    value: 30.0
+    value: 27.5
     unit: "10^-6/\xB0C"
     confidence: 82
     description: Longitudinal coefficient of thermal expansion
     min: 0
     max: 33.0
   thermalDiffusivity:
-    value: 0.2
+    value: 0.17
     unit: "mm\xB2/s"
     confidence: 80
     description: Thermal diffusivity at room temperature
     min: 0
     max: 0.209
   specificHeat:
-    value: 1650.0
+    value: 1600.0
     unit: "J/kg\xB7K"
     confidence: 85
     description: Specific heat capacity of dry bamboo
@@ -62,14 +62,14 @@ materialProperties:
     max: 2555.0
   absorptionCoefficient:
     value: 0.75
-    unit: ""
+    unit: ''
     confidence: 85
     description: Average absorption coefficient for near-infrared lasers (1064 nm)
     min: null
     max: null
   reflectivity:
     value: 0.15
-    unit: ""
+    unit: ''
     confidence: 83
     description: Surface reflectivity at common laser wavelengths
     min: null
@@ -108,25 +108,25 @@ materialProperties:
     min: 1.0
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 25.5
+    value: 32.7
   laserReflectivity:
     confidence: 0.7
     max: 60.0
     min: 10.0
     source: default_from_category_range
     unit: '%'
-    value: 35.0
+    value: 42.5
   thermalDestructionPoint:
     confidence: 0.7
     max: 500.0
     min: 200.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 350.0
+    value: 204.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: carbonization
+    value: 280.0
 applications:
 - 'Marine: Corrosion removal and surface treatment for marine applications'
 machineSettings:
@@ -204,7 +204,8 @@ images:
     alt: Bamboo surface undergoing laser cleaning showing precise contamination removal
     url: /images/bamboo-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Bamboo surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Bamboo surface after laser cleaning showing detailed
+      surface structure
     url: /images/bamboo-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -231,7 +232,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -263,7 +263,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

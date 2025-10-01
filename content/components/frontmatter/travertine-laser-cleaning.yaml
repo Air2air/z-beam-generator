@@ -5,42 +5,42 @@ title: Travertine Laser Cleaning
 description: Laser cleaning parameters for Alabaster
 materialProperties:
   density:
-    value: 2.45
+    value: 2.4
     unit: "g/cm\xB3"
     confidence: 95
     description: Bulk density of typical travertine stone
     min: 1.5
     max: 3.4
   thermalConductivity:
-    value: 4.1
+    value: 2.3
     unit: "W/m\xB7K"
     confidence: 88
     description: Thermal conductivity at room temperature
     min: 0.12
     max: 8.28
   hardness:
-    value: 4.0
+    value: 3.8
     unit: Mohs
     confidence: 92
     description: Mohs hardness scale for calcite-based stone
     min: 1
     max: 7
   youngsModulus:
-    value: 55.0
+    value: 48.2
     unit: GPa
     confidence: 85
     description: Elastic modulus in compression
     min: 10
     max: 100
   thermalExpansion:
-    value: 14.0
+    value: 8.2
     unit: "10\u207B\u2076/\xB0C"
     confidence: 85
     description: Coefficient of thermal expansion
     min: 3.5
     max: 26.9
   specificHeat:
-    value: 900.0
+    value: 921.0
     unit: "J/kg\xB7K"
     confidence: 90
     description: Specific heat capacity at room temperature
@@ -62,7 +62,7 @@ materialProperties:
     max: null
   absorptionCoefficient:
     value: 0.65
-    unit: ""
+    unit: ''
     confidence: 82
     description: Optical absorption coefficient for IR wavelengths (1064 nm)
     min: null
@@ -87,39 +87,39 @@ materialProperties:
     min: 0.1
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 10.05
+    value: 8.7
   laserReflectivity:
     confidence: 0.7
     max: 80.0
     min: 5.0
     source: default_from_category_range
     unit: '%'
-    value: 42.5
+    value: 38.2
   tensileStrength:
     confidence: 0.7
     max: 25.0
     min: 2.0
     source: default_from_category_range
     unit: MPa
-    value: 13.5
+    value: 8.2
   thermalDiffusivity:
     confidence: 0.7
     max: 2.5
     min: 0.2
     source: default_from_category_range
     unit: "mm\xB2/s"
-    value: 1.35
+    value: 1.32
   thermalDestructionPoint:
     confidence: 0.7
     max: 1700.0
     min: 600.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 1150.0
+    value: 825.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: thermal_shock
+    value: 2.3
 applications:
 - laser cleaning
 - surface preparation
@@ -128,7 +128,8 @@ machineSettings:
     value: 12
     unit: W
     confidence: 90
-    description: Optimal average power for Travertine surface cleaning without thermal damage
+    description: Optimal average power for Travertine surface cleaning without thermal
+      damage
     min: 8
     max: 18
   wavelength:
@@ -142,7 +143,8 @@ machineSettings:
     value: 100
     unit: "\u03BCm"
     confidence: 92
-    description: Optimal beam diameter for precise cleaning control on Travertine surface
+    description: Optimal beam diameter for precise cleaning control on Travertine
+      surface
     min: 50
     max: 200
   repetitionRate:
@@ -156,7 +158,8 @@ machineSettings:
     value: 0.8
     unit: "J/cm\xB2"
     confidence: 88
-    description: Threshold fluence for effective contaminant removal without substrate damage
+    description: Threshold fluence for effective contaminant removal without substrate
+      damage
     min: 0.5
     max: 1.2
   pulseWidth:
@@ -177,7 +180,8 @@ machineSettings:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for uniform cleaning without excessive energy deposition
+    description: Optimal pulse overlap for uniform cleaning without excessive energy
+      deposition
     min: 30
     max: 70
   passCount:
@@ -201,10 +205,12 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Travertine surface undergoing laser cleaning showing precise contamination removal
+    alt: Travertine surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/travertine-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Travertine surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Travertine surface after laser cleaning showing detailed
+      surface structure
     url: /images/travertine-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -231,7 +237,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -263,7 +268,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

@@ -5,56 +5,56 @@ title: Rhenium Laser Cleaning
 description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
-    value: 11.57
+    value: 21.02
     unit: "g/cm\xB3"
     confidence: 98
     description: Density of pure rhenium at room temperature
     min: 0.53
     max: 22.6
   thermalConductivity:
-    value: 217.5
+    value: 71.2
     unit: "W/m\xB7K"
     confidence: 90
     description: "Thermal conductivity at 20\xB0C"
     min: 6.0
     max: 429.0
   tensileStrength:
-    value: 1501.5
+    value: 1170.0
     unit: MPa
     confidence: 88
     description: Ultimate tensile strength of annealed rhenium
     min: 0
     max: 1363.6
   hardness:
-    value: 1750.25
+    value: 1700.0
     unit: HV
     confidence: 90
     description: Vickers hardness of annealed rhenium
     min: 0
     max: 3772.91
   youngsModulus:
-    value: 208.0
+    value: 463.0
     unit: GPa
     confidence: 94
     description: Elastic modulus of polycrystalline rhenium
     min: 0
     max: 579.82
   thermalExpansion:
-    value: 14.8
+    value: 6.2
     unit: "\xD710\u207B\u2076/K"
     confidence: 88
     description: "Coefficient of thermal expansion (20-1000\xB0C)"
     min: 1.7
     max: 34.9
   specificHeat:
-    value: 500.0
+    value: 137.0
     unit: "J/kg\xB7K"
     confidence: 92
     description: "Specific heat capacity at 25\xB0C"
     min: 0
     max: 1994.6
   thermalDiffusivity:
-    value: 87.1
+    value: 63.2
     unit: "mm\xB2/s"
     confidence: 85
     description: Thermal diffusivity at room temperature
@@ -78,7 +78,8 @@ materialProperties:
     value: 2.8
     unit: "J/cm\xB2"
     confidence: 78
-    description: Estimated laser ablation threshold for nanosecond pulses at 1064 nm
+    description: Estimated laser ablation threshold for nanosecond pulses at 1064
+      nm
     min: null
     max: null
   crystallineStructure:
@@ -101,7 +102,7 @@ materialProperties:
     min: 0.02
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 50.01
+    value: 42.7
   laserReflectivity:
     confidence: 0.7
     max: 98.0
@@ -115,11 +116,11 @@ materialProperties:
     min: -38.8
     source: default_from_category_range
     unit: "\xB0C"
-    value: 1691.6
+    value: 1727.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: melting
+    value: 3186.0
 applications:
 - 'Aerospace: Precision cleaning of aerospace components and assemblies'
 - 'Automotive: Paint removal and surface preparation for automotive parts'
@@ -129,7 +130,8 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Rhenium oxide removal without substrate damage
+    description: Optimal average power for Rhenium oxide removal without substrate
+      damage
     min: 80
     max: 120
   wavelength:
@@ -205,7 +207,8 @@ images:
     alt: Rhenium surface undergoing laser cleaning showing precise contamination removal
     url: /images/rhenium-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Rhenium surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Rhenium surface after laser cleaning showing detailed
+      surface structure
     url: /images/rhenium-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -232,7 +235,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -264,7 +266,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

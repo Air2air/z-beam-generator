@@ -5,56 +5,56 @@ title: Manganese Laser Cleaning
 description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
-    value: 11.57
+    value: 7.21
     unit: "g/cm\xB3"
     confidence: 95
     description: Density of pure manganese at room temperature
     min: 0.53
     max: 22.6
   thermalConductivity:
-    value: 217.5
+    value: 7.81
     unit: "W/m\xB7K"
     confidence: 90
     description: "Thermal conductivity of pure manganese at 25\xB0C"
     min: 6.0
     max: 429.0
   tensileStrength:
-    value: 1501.5
+    value: 241.3
     unit: MPa
     confidence: 85
     description: Ultimate tensile strength of pure manganese
     min: 0
     max: 1363.6
   hardness:
-    value: 1750.25
+    value: 210.0
     unit: HV
     confidence: 86
     description: Vickers hardness of pure manganese
     min: 0
     max: 3772.91
   youngsModulus:
-    value: 208.0
+    value: 198.0
     unit: GPa
     confidence: 88
     description: Young's modulus of polycrystalline manganese
     min: 0
     max: 579.82
   thermalExpansion:
-    value: 14.8
+    value: 22.1
     unit: "\u03BCm/m\xB7K"
     confidence: 88
     description: "Coefficient of thermal expansion at 25\xB0C"
     min: 1.7
     max: 34.9
   specificHeat:
-    value: 500.0
+    value: 479.0
     unit: "J/kg\xB7K"
     confidence: 92
     description: Specific heat capacity at room temperature
     min: 0
     max: 1994.6
   thermalDiffusivity:
-    value: 87.1
+    value: 1.7
     unit: "mm\xB2/s"
     confidence: 85
     description: Thermal diffusivity at room temperature
@@ -62,14 +62,15 @@ materialProperties:
     max: 191.376
   absorptionCoefficient:
     value: 0.65
-    unit: ""
+    unit: ''
     confidence: 82
-    description: Estimated absorption coefficient for visible wavelengths (400-700 nm)
+    description: Estimated absorption coefficient for visible wavelengths (400-700
+      nm)
     min: null
     max: null
   reflectivity:
     value: 0.35
-    unit: ""
+    unit: ''
     confidence: 80
     description: Estimated reflectivity for visible laser wavelengths
     min: null
@@ -78,14 +79,16 @@ materialProperties:
     value: "\u03B1-Mn (complex cubic)"
     unit: crystal system
     confidence: 96
-    description: Room temperature stable phase with complex cubic structure (58 atoms per unit cell)
+    description: Room temperature stable phase with complex cubic structure (58 atoms
+      per unit cell)
     min: null
     max: null
   ablationThreshold:
     value: 1.2
     unit: "J/cm\xB2"
     confidence: 82
-    description: Estimated laser ablation threshold for nanosecond pulses at 1064 nm
+    description: Estimated laser ablation threshold for nanosecond pulses at 1064
+      nm
     min: null
     max: null
   oxidationResistance:
@@ -101,25 +104,25 @@ materialProperties:
     min: 0.02
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 50.01
+    value: 62.3
   laserReflectivity:
     confidence: 0.7
     max: 98.0
     min: 5.0
     source: default_from_category_range
     unit: '%'
-    value: 51.5
+    value: 52.0
   thermalDestructionPoint:
     confidence: 0.7
     max: 3422.0
     min: -38.8
     source: default_from_category_range
     unit: "\xB0C"
-    value: 1691.6
+    value: 1519.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: melting
+    value: 1519.0
 applications:
 - 'Nuclear: Decontamination and surface cleaning in nuclear facilities'
 - 'Jewelry: Precision cleaning and polishing of precious metal jewelry'
@@ -128,7 +131,8 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Manganese oxide removal without substrate damage
+    description: Optimal average power for Manganese oxide removal without substrate
+      damage
     min: 80
     max: 120
   wavelength:
@@ -194,10 +198,12 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Manganese surface undergoing laser cleaning showing precise contamination removal
+    alt: Manganese surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/manganese-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Manganese surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Manganese surface after laser cleaning showing detailed
+      surface structure
     url: /images/manganese-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -224,7 +230,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -256,7 +261,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

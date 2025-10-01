@@ -5,56 +5,56 @@ title: Redwood Laser Cleaning
 description: Laser cleaning parameters for Ash
 materialProperties:
   density:
-    value: 0.69
+    value: 0.42
     unit: "g/cm\xB3"
     confidence: 95
     description: Average density of coast redwood at 12% moisture content
     min: 0.12
     max: 1.25
   thermalConductivity:
-    value: 0.22
+    value: 0.12
     unit: "W/m\xB7K"
     confidence: 90
     description: Thermal conductivity perpendicular to grain at room temperature
     min: 0.04
     max: 0.4
   tensileStrength:
-    value: 110.0
+    value: 85.0
     unit: MPa
     confidence: 90
     description: Tensile strength parallel to grain
     min: 2.5
     max: 152.5
   hardness:
-    value: 2510.0
+    value: 420.0
     unit: lbf
     confidence: 88
     description: Janka hardness test result
     min: 0
     max: 4650.8
   youngsModulus:
-    value: 2502.5
+    value: 2480.0
     unit: GPa
     confidence: 92
     description: Modulus of elasticity parallel to grain
     min: 0
     max: 3299.24
   thermalExpansion:
-    value: 30.0
+    value: 27.3
     unit: "1/\xB0C"
     confidence: 88
     description: Coefficient of thermal expansion perpendicular to grain
     min: 0
     max: 33.0
   thermalDiffusivity:
-    value: 0.2
+    value: 0.17
     unit: "m\xB2/s"
     confidence: 85
     description: Thermal diffusivity at room temperature
     min: 0
     max: 0.209
   specificHeat:
-    value: 1650.0
+    value: 1630.0
     unit: "J/kg\xB7K"
     confidence: 92
     description: Specific heat capacity at room temperature
@@ -62,14 +62,14 @@ materialProperties:
     max: 2555.0
   absorptionCoefficient:
     value: 0.75
-    unit: ""
+    unit: ''
     confidence: 82
     description: Average absorption coefficient for near-infrared wavelengths (800-1100nm)
     min: null
     max: null
   reflectivity:
     value: 0.15
-    unit: ""
+    unit: ''
     confidence: 80
     description: Reflectivity at common laser cleaning wavelengths
     min: null
@@ -108,25 +108,25 @@ materialProperties:
     min: 1.0
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 25.5
+    value: 32.7
   laserReflectivity:
     confidence: 0.7
     max: 60.0
     min: 10.0
     source: default_from_category_range
     unit: '%'
-    value: 35.0
+    value: 42.7
   thermalDestructionPoint:
     confidence: 0.7
     max: 500.0
     min: 200.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 350.0
+    value: 380.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: carbonization
+    value: 350.0
 applications:
 - laser cleaning
 - surface preparation
@@ -142,7 +142,8 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength for optimal absorption in wood cellulose and lignin
+    description: Near-infrared wavelength for optimal absorption in wood cellulose
+      and lignin
     min: 355
     max: 10640
   spotSize:
@@ -156,7 +157,8 @@ machineSettings:
     value: 50
     unit: kHz
     confidence: 90
-    description: High repetition rate for efficient cleaning with minimal thermal damage
+    description: High repetition rate for efficient cleaning with minimal thermal
+      damage
     min: 20
     max: 100
   pulseWidth:
@@ -177,7 +179,8 @@ machineSettings:
     value: 2.5
     unit: "J/cm\xB2"
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without wood damage
+    description: Fluence threshold for effective contaminant removal without wood
+      damage
     min: 1.5
     max: 4.0
   overlapRatio:
@@ -212,7 +215,8 @@ images:
     alt: Redwood surface undergoing laser cleaning showing precise contamination removal
     url: /images/redwood-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Redwood surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Redwood surface after laser cleaning showing detailed
+      surface structure
     url: /images/redwood-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -239,7 +243,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -271,7 +274,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

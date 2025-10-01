@@ -5,56 +5,56 @@ title: Iron Laser Cleaning
 description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
-    value: 11.57
+    value: 7.874
     unit: "g/cm\xB3"
     confidence: 98
     description: "Density of pure iron at room temperature (20\xB0C)"
     min: 0.53
     max: 22.6
   thermalConductivity:
-    value: 217.5
+    value: 80.4
     unit: "W/m\xB7K"
     confidence: 95
     description: "Thermal conductivity of pure iron at 20\xB0C"
     min: 6.0
     max: 429.0
   tensileStrength:
-    value: 1501.5
+    value: 210.0
     unit: MPa
     confidence: 88
     description: Ultimate tensile strength of pure annealed iron
     min: 0
     max: 1363.6
   hardness:
-    value: 1750.25
+    value: 80.0
     unit: HV
     confidence: 85
     description: Vickers hardness of pure iron
     min: 0
     max: 3772.91
   youngsModulus:
-    value: 208.0
+    value: 211.0
     unit: GPa
     confidence: 96
     description: Young's modulus of elasticity
     min: 0
     max: 579.82
   thermalExpansion:
-    value: 14.8
+    value: 11.8
     unit: "\u03BCm/m\xB7K"
     confidence: 92
     description: "Linear thermal expansion coefficient at 20\xB0C"
     min: 1.7
     max: 34.9
   thermalDiffusivity:
-    value: 87.1
+    value: 23.1
     unit: "mm\xB2/s"
     confidence: 90
     description: Thermal diffusivity at room temperature
     min: 0
     max: 191.376
   specificHeat:
-    value: 500.0
+    value: 449.0
     unit: "J/kg\xB7K"
     confidence: 93
     description: "Specific heat capacity at 20\xB0C"
@@ -62,14 +62,14 @@ materialProperties:
     max: 1994.6
   absorptionCoefficient:
     value: 0.65
-    unit: ""
+    unit: ''
     confidence: 82
     description: Absorption coefficient for near-infrared lasers (1064 nm)
     min: null
     max: null
   reflectivity:
     value: 0.35
-    unit: ""
+    unit: ''
     confidence: 85
     description: Reflectivity at 1064 nm wavelength
     min: null
@@ -78,7 +78,8 @@ materialProperties:
     value: 1.2
     unit: "J/cm\xB2"
     confidence: 80
-    description: Approximate laser ablation threshold for nanosecond pulses at 1064 nm
+    description: Approximate laser ablation threshold for nanosecond pulses at 1064
+      nm
     min: null
     max: null
   oxidationResistance:
@@ -108,25 +109,25 @@ materialProperties:
     min: 0.02
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 50.01
+    value: 64.2
   laserReflectivity:
     confidence: 0.7
     max: 98.0
     min: 5.0
     source: default_from_category_range
     unit: '%'
-    value: 51.5
+    value: 64.2
   thermalDestructionPoint:
     confidence: 0.7
     max: 3422.0
     min: -38.8
     source: default_from_category_range
     unit: "\xB0C"
-    value: 1691.6
+    value: 1811.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: melting
+    value: 1811.0
 applications:
 - 'Aerospace: Precision cleaning of aerospace components and assemblies'
 - 'Electronics: Precision cleaning of electronic components and circuit boards'
@@ -135,7 +136,8 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for efficient rust removal without substrate damage
+    description: Optimal average power for efficient rust removal without substrate
+      damage
     min: 80
     max: 120
   wavelength:
@@ -211,7 +213,8 @@ images:
     alt: Iron surface undergoing laser cleaning showing precise contamination removal
     url: /images/iron-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Iron surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Iron surface after laser cleaning showing detailed surface
+      structure
     url: /images/iron-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -238,7 +241,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -270,7 +272,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

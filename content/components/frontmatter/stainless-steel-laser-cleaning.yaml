@@ -5,49 +5,49 @@ title: Stainless Steel Laser Cleaning
 description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
-    value: 11.57
+    value: 7.93
     unit: "g/cm\xB3"
     confidence: 95
     description: Typical density for austenitic stainless steel (304/316 grades)
     min: 0.53
     max: 22.6
   thermalConductivity:
-    value: 217.5
+    value: 15.0
     unit: "W/m\xB7K"
     confidence: 90
     description: Thermal conductivity at room temperature for 304 stainless steel
     min: 6.0
     max: 429.0
   tensileStrength:
-    value: 1501.5
+    value: 515.0
     unit: MPa
     confidence: 90
     description: Typical tensile strength for annealed 304 stainless steel
     min: 0
     max: 1363.6
   hardness:
-    value: 1750.25
+    value: 1750.0
     unit: HV
     confidence: 88
     description: Vickers hardness for annealed 304 stainless steel
     min: 0
     max: 3772.91
   youngsModulus:
-    value: 208.0
+    value: 200.0
     unit: GPa
     confidence: 92
     description: Elastic modulus at room temperature
     min: 0
     max: 579.82
   thermalExpansion:
-    value: 14.8
+    value: 17.3
     unit: "\u03BCm/m\xB7\xB0C"
     confidence: 88
     description: "Coefficient of thermal expansion (20-100\xB0C) for 304 stainless"
     min: 1.7
     max: 34.9
   specificHeat:
-    value: 500
+    value: 502.416
     unit: "J/kg\xB7K"
     confidence: 85
     description: Specific heat capacity at room temperature
@@ -78,7 +78,8 @@ materialProperties:
     value: 925
     unit: "\xB0C"
     confidence: 90
-    description: Maximum continuous service temperature in air without significant scaling
+    description: Maximum continuous service temperature in air without significant
+      scaling
     min: null
     max: null
   crystallineStructure:
@@ -101,32 +102,32 @@ materialProperties:
     min: 0.02
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 50.01
+    value: 35.2
   laserReflectivity:
     confidence: 0.7
     max: 98.0
     min: 5.0
     source: default_from_category_range
     unit: '%'
-    value: 51.5
+    value: 65.2
   thermalDiffusivity:
     confidence: 0.7
     max: 174.0
     min: 0.2
     source: default_from_category_range
     unit: "mm\xB2/s"
-    value: 87.1
+    value: 4.2
   thermalDestructionPoint:
     confidence: 0.7
     max: 3422.0
     min: -38.8
     source: default_from_category_range
     unit: "\xB0C"
-    value: 1691.6
+    value: 1670.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: melting
+    value: 1673.0
 applications:
 - 'Oil and Gas: Industrial cleaning and maintenance for oil and gas equipment'
 - 'Restoration: Gentle cleaning for restoration and conservation applications'
@@ -135,56 +136,64 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for stainless steel oxide removal without substrate damage
+    description: Optimal average power for stainless steel oxide removal without substrate
+      damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength with good absorption in surface contaminants while minimizing substrate heating
+    description: Near-IR wavelength with good absorption in surface contaminants while
+      minimizing substrate heating
     min: 355
     max: 10640
   spotSize:
     value: 50
     unit: "\u03BCm"
     confidence: 84
-    description: Optimal spot diameter for balancing cleaning efficiency and processing speed
+    description: Optimal spot diameter for balancing cleaning efficiency and processing
+      speed
     min: 30
     max: 100
   repetitionRate:
     value: 100
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning coverage while maintaining pulse energy
+    description: High repetition rate for efficient cleaning coverage while maintaining
+      pulse energy
     min: 50
     max: 200
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient contaminant ablation with controlled thermal penetration
+    description: Nanosecond pulse duration for efficient contaminant ablation with
+      controlled thermal penetration
     min: 5
     max: 20
   scanSpeed:
     value: 1000
     unit: mm/s
     confidence: 82
-    description: Optimal scanning speed for uniform cleaning coverage without excessive overlap
+    description: Optimal scanning speed for uniform cleaning coverage without excessive
+      overlap
     min: 500
     max: 2000
   fluenceThreshold:
     value: 2.5
     unit: "J/cm\xB2"
     confidence: 89
-    description: Minimum fluence required for effective contaminant removal from stainless steel
+    description: Minimum fluence required for effective contaminant removal from stainless
+      steel
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for uniform cleaning without excessive thermal buildup
+    description: Optimal pulse overlap for uniform cleaning without excessive thermal
+      buildup
     min: 40
     max: 70
   passCount:
@@ -201,10 +210,12 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Stainless Steel surface undergoing laser cleaning showing precise contamination removal
+    alt: Stainless Steel surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/stainless-steel-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Stainless Steel surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Stainless Steel surface after laser cleaning showing
+      detailed surface structure
     url: /images/stainless-steel-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -231,7 +242,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -263,7 +273,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

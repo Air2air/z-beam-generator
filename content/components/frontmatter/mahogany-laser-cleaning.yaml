@@ -5,21 +5,21 @@ title: Mahogany Laser Cleaning
 description: Laser cleaning parameters for Ash
 materialProperties:
   density:
-    value: 0.69
+    value: 0.64
     unit: "g/cm\xB3"
     confidence: 95
     description: Average density of mahogany at 12% moisture content
     min: 0.12
     max: 1.25
   thermalConductivity:
-    value: 0.22
+    value: 0.16
     unit: "W/m\xB7K"
     confidence: 88
     description: Thermal conductivity perpendicular to grain direction
     min: 0.04
     max: 0.4
   tensileStrength:
-    value: 110.0
+    value: 95.0
     unit: MPa
     confidence: 92
     description: Tensile strength parallel to grain direction
@@ -33,21 +33,21 @@ materialProperties:
     min: 0
     max: 4650.8
   youngsModulus:
-    value: 2502.5
+    value: 9800.0
     unit: GPa
     confidence: 90
     description: Modulus of elasticity parallel to grain
     min: 0
     max: 3299.24
   specificHeat:
-    value: 1650.0
+    value: 1590.0
     unit: "J/kg\xB7K"
     confidence: 85
     description: Specific heat capacity at room temperature
     min: 695.0
     max: 2555.0
   thermalDiffusivity:
-    value: 0.2
+    value: 0.16
     unit: "mm\xB2/s"
     confidence: 82
     description: Thermal diffusivity across grain direction
@@ -55,14 +55,14 @@ materialProperties:
     max: 0.209
   absorptionCoefficient:
     value: 0.85
-    unit: ""
+    unit: ''
     confidence: 90
     description: Average absorption coefficient for near-infrared lasers (1064 nm)
     min: null
     max: null
   reflectivity:
     value: 0.12
-    unit: ""
+    unit: ''
     confidence: 88
     description: Reflectivity at 1064 nm wavelength
     min: null
@@ -94,32 +94,32 @@ materialProperties:
     min: 1.0
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 25.5
+    value: 28.7
   laserReflectivity:
     confidence: 0.7
     max: 60.0
     min: 10.0
     source: default_from_category_range
     unit: '%'
-    value: 35.0
+    value: 32.5
   thermalDestructionPoint:
     confidence: 0.7
     max: 500.0
     min: 200.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 350.0
+    value: 380.0
   thermalExpansion:
     confidence: 0.7
     max: 60.0
     min: 3.0e-05
     source: default_from_category_range
     unit: "\xB5m/m\xB7K"
-    value: 30.0
+    value: 45.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: carbonization
+    value: 573.0
 applications:
 - laser cleaning
 - surface preparation
@@ -156,7 +156,8 @@ machineSettings:
     value: 0.8
     unit: "J/cm\xB2"
     confidence: 88
-    description: Threshold fluence for effective contaminant removal without wood damage
+    description: Threshold fluence for effective contaminant removal without wood
+      damage
     min: 0.5
     max: 1.2
   pulseWidth:
@@ -202,10 +203,12 @@ regulatoryStandards:
 - EPA Clean Air Act Compliance
 images:
   hero:
-    alt: Mahogany surface undergoing laser cleaning showing precise contamination removal
+    alt: Mahogany surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/mahogany-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Mahogany surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Mahogany surface after laser cleaning showing detailed
+      surface structure
     url: /images/mahogany-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -232,7 +235,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -264,7 +266,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

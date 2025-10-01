@@ -5,42 +5,42 @@ title: Cement Laser Cleaning
 description: Laser cleaning parameters for Brick
 materialProperties:
   density:
-    value: 1.7
+    value: 3.15
     unit: "g/cm\xB3"
     confidence: 95
     description: Typical density of hardened Portland cement paste
     min: 0.6
     max: 2.8
   thermalConductivity:
-    value: 1.29
+    value: 1.28
     unit: "W/m\xB7K"
     confidence: 92
     description: Thermal conductivity of hardened cement paste at room temperature
     min: 0.08
     max: 2.5
   tensileStrength:
-    value: 8.0
+    value: 3.5
     unit: MPa
     confidence: 90
     description: Direct tensile strength of cement paste
     min: 1
     max: 15
   hardness:
-    value: 4.0
+    value: 4.5
     unit: Mohs
     confidence: 85
     description: Hardness of cementitious materials on Mohs scale
     min: 2
     max: 6
   youngsModulus:
-    value: 27.5
+    value: 30.0
     unit: GPa
     confidence: 92
     description: Elastic modulus of hardened cement paste
     min: 1.2
     max: 32.6
   thermalExpansion:
-    value: 12.5
+    value: 10.0
     unit: "\u03BCm/m\xB7\xB0C"
     confidence: 88
     description: Coefficient of thermal expansion for cementitious materials
@@ -62,14 +62,15 @@ materialProperties:
     max: null
   absorptionCoefficient:
     value: 0.85
-    unit: ""
+    unit: ''
     confidence: 88
-    description: Optical absorption coefficient for common laser wavelengths (1064 nm)
+    description: Optical absorption coefficient for common laser wavelengths (1064
+      nm)
     min: null
     max: null
   reflectivity:
     value: 0.15
-    unit: ""
+    unit: ''
     confidence: 82
     description: Surface reflectivity for infrared laser wavelengths
     min: null
@@ -101,32 +102,32 @@ materialProperties:
     min: 0.5
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 7.75
+    value: 8.2
   laserReflectivity:
     confidence: 0.7
     max: 70.0
     min: 10.0
     source: default_from_category_range
     unit: '%'
-    value: 40.0
+    value: 32.5
   thermalDiffusivity:
     confidence: 0.7
     max: 1.0
     min: 0.1
     source: default_from_category_range
     unit: "mm\xB2/s"
-    value: 0.55
+    value: 0.47
   thermalDestructionPoint:
     confidence: 0.7
     max: 1200.0
     min: 500.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 850.0
+    value: 450.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: spalling
+    value: 573.0
 applications:
 - 'Restoration: Gentle cleaning for restoration and conservation applications'
 - 'Construction: Surface preparation and cleaning for construction materials'
@@ -135,7 +136,8 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for cement surface cleaning without thermal damage
+    description: Optimal average power for cement surface cleaning without thermal
+      damage
     min: 80
     max: 120
   wavelength:
@@ -149,21 +151,24 @@ machineSettings:
     value: 100
     unit: "\u03BCm"
     confidence: 84
-    description: Beam spot diameter for balanced cleaning efficiency and coverage area
+    description: Beam spot diameter for balanced cleaning efficiency and coverage
+      area
     min: 50
     max: 200
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning coverage and thermal management
+    description: Optimal repetition rate for efficient cleaning coverage and thermal
+      management
     min: 20
     max: 100
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with minimal substrate damage
+    description: Nanosecond pulse duration for effective contaminant removal with
+      minimal substrate damage
     min: 5
     max: 20
   scanSpeed:
@@ -177,14 +182,16 @@ machineSettings:
     value: 2.5
     unit: "J/cm\xB2"
     confidence: 89
-    description: Minimum fluence required for effective contaminant removal from cement surfaces
+    description: Minimum fluence required for effective contaminant removal from cement
+      surfaces
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal overlap between adjacent scan lines for complete surface coverage
+    description: Optimal overlap between adjacent scan lines for complete surface
+      coverage
     min: 30
     max: 70
   passCount:
@@ -211,7 +218,8 @@ images:
     alt: Cement surface undergoing laser cleaning showing precise contamination removal
     url: /images/cement-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Cement surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Cement surface after laser cleaning showing detailed
+      surface structure
     url: /images/cement-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -238,7 +246,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -270,7 +277,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

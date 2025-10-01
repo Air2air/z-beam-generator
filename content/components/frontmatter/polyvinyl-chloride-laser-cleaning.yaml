@@ -5,49 +5,49 @@ title: PVC Laser Cleaning
 description: Laser cleaning parameters for Polycarbonate (PVC)
 materialProperties:
   density:
-    value: 1.53
+    value: 1.38
     unit: "g/cm\xB3"
     confidence: 95
     description: Density of rigid PVC at room temperature
     min: 0.85
     max: 2.2
   thermalConductivity:
-    value: 1.51
+    value: 0.19
     unit: "W/m\xB7K"
     confidence: 90
     description: "Thermal conductivity of rigid PVC at 20\xB0C"
     min: 0.02
     max: 3
   tensileStrength:
-    value: 205.0
+    value: 50.0
     unit: MPa
     confidence: 90
     description: Tensile strength of rigid PVC
     min: 10
     max: 400
   hardness:
-    value: 50.0
+    value: 15.0
     unit: Shore D
     confidence: 88
     description: Hardness on Shore D scale for rigid PVC
     min: null
     max: null
   youngsModulus:
-    value: 2000.01
+    value: 2900.0
     unit: GPa
     confidence: 92
     description: Young's modulus of elasticity for rigid PVC
     min: 0
     max: 3629.98
   thermalExpansion:
-    value: 105.0
+    value: 75.0
     unit: "10\u207B\u2076/\xB0C"
     confidence: 88
     description: Linear thermal expansion coefficient for rigid PVC
     min: 10
     max: 200
   specificHeat:
-    value: 1750.0
+    value: 900.0
     unit: "J/kg\xB7K"
     confidence: 85
     description: Specific heat capacity at room temperature
@@ -62,7 +62,7 @@ materialProperties:
     max: null
   reflectivity:
     value: 0.08
-    unit: ""
+    unit: ''
     confidence: 80
     description: Reflectivity at 1064 nm for untreated PVC surface
     min: null
@@ -94,32 +94,32 @@ materialProperties:
     min: 0.1
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 50.05
+    value: 85.2
   laserReflectivity:
     confidence: 0.7
     max: 95.0
     min: 5.0
     source: default_from_category_range
     unit: '%'
-    value: 50.0
+    value: 4.2
   thermalDiffusivity:
     confidence: 0.7
     max: 1.0
     min: 0.05
     source: default_from_category_range
     unit: "mm\xB2/s"
-    value: 0.53
+    value: 0.52
   thermalDestructionPoint:
     confidence: 0.7
     max: 400.0
     min: 80.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 240.0
+    value: 260.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: decomposition
+    value: 523.15
 applications:
 - 'Automotive: Paint removal and surface preparation for automotive parts'
 - 'Electronics: Precision cleaning of electronic components and circuit boards'
@@ -251,7 +251,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues

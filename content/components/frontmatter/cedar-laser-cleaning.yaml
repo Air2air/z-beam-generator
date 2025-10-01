@@ -5,49 +5,49 @@ title: Cedar Laser Cleaning
 description: Laser cleaning parameters for Ash
 materialProperties:
   density:
-    value: 0.69
+    value: 0.53
     unit: "g/cm\xB3"
     confidence: 92
     description: Average density of Western Red Cedar at 12% moisture content
     min: 0.12
     max: 1.25
   thermalConductivity:
-    value: 0.22
+    value: 0.12
     unit: "W/m\xB7K"
     confidence: 88
     description: Thermal conductivity perpendicular to grain at room temperature
     min: 0.04
     max: 0.4
   tensileStrength:
-    value: 110.0
+    value: 85.0
     unit: MPa
     confidence: 84
     description: Tensile strength parallel to grain direction
     min: 2.5
     max: 152.5
   hardness:
-    value: 2510.0
+    value: 900.0
     unit: lbf
     confidence: 82
     description: Janka hardness test result for side grain
     min: 0
     max: 4650.8
   youngsModulus:
-    value: 2502.5
+    value: 8800.0
     unit: GPa
     confidence: 86
     description: Modulus of elasticity parallel to grain
     min: 0
     max: 3299.24
   thermalExpansion:
-    value: 30.0
+    value: 3.7
     unit: "10^-6/\xB0C"
     confidence: 82
     description: Coefficient of thermal expansion perpendicular to grain direction
     min: 0
     max: 33.0
   specificHeat:
-    value: 1650.0
+    value: 1630.0
     unit: "J/kg\xB7K"
     confidence: 85
     description: Specific heat capacity at room temperature
@@ -57,7 +57,8 @@ materialProperties:
     value: 85
     unit: '%'
     confidence: 88
-    description: Average absorption coefficient for near-infrared laser wavelengths (1064 nm)
+    description: Average absorption coefficient for near-infrared laser wavelengths
+      (1064 nm)
     min: null
     max: null
   reflectivity:
@@ -87,32 +88,32 @@ materialProperties:
     min: 1.0
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 25.5
+    value: 32.7
   laserReflectivity:
     confidence: 0.7
     max: 60.0
     min: 10.0
     source: default_from_category_range
     unit: '%'
-    value: 35.0
+    value: 42.7
   thermalDiffusivity:
     confidence: 0.7
     max: 0.4
     min: 0.0001
     source: default_from_category_range
     unit: "mm\xB2/s"
-    value: 0.2
+    value: 0.16
   thermalDestructionPoint:
     confidence: 0.7
     max: 500.0
     min: 200.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 350.0
+    value: 380.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: carbonization
+    value: 350.0
 applications:
 - laser cleaning
 - surface preparation
@@ -198,7 +199,8 @@ images:
     alt: Cedar surface undergoing laser cleaning showing precise contamination removal
     url: /images/cedar-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Cedar surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Cedar surface after laser cleaning showing detailed surface
+      structure
     url: /images/cedar-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -225,7 +227,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -257,7 +258,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

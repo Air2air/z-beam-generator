@@ -5,49 +5,49 @@ title: Zirconia Laser Cleaning
 description: Laser cleaning parameters for Alumina
 materialProperties:
   density:
-    value: 10.75
+    value: 6.08
     unit: "g/cm\xB3"
     confidence: 95
     description: Density of yttria-stabilized zirconia (YSZ) at room temperature
     min: 2.2
     max: 19.3
   thermalConductivity:
-    value: 1000.01
+    value: 2.7
     unit: "W/m\xB7K"
     confidence: 88
     description: Thermal conductivity of YSZ at room temperature
     min: 0.03
     max: 2000.0
   hardness:
-    value: 5.5
+    value: 12.5
     unit: Mohs
     confidence: 90
     description: Mohs hardness of sintered YSZ
     min: 0.2
     max: 9.8
   youngsModulus:
-    value: 425.0
+    value: 200.0
     unit: GPa
     confidence: 92
     description: Young's modulus of fully dense YSZ
     min: 12.0
     max: 708.0
   thermalExpansion:
-    value: 7.05
+    value: 10.5
     unit: "10\u207B\u2076/K"
     confidence: 85
     description: "Coefficient of thermal expansion for YSZ (20-1000\xB0C)"
     min: 0.1
     max: 14
   specificHeat:
-    value: 700.0
+    value: 456.0
     unit: "J/kg\xB7K"
     confidence: 82
     description: Specific heat capacity at room temperature
     min: 134.0
     max: 1166.0
   thermalDiffusivity:
-    value: 60.02
+    value: 0.58
     unit: "mm\xB2/s"
     confidence: 80
     description: Thermal diffusivity at room temperature
@@ -69,14 +69,14 @@ materialProperties:
     max: null
   reflectivity:
     value: 0.15
-    unit: ""
+    unit: ''
     confidence: 80
     description: Reflectivity at 1064 nm for polished surface
     min: null
     max: null
   refractiveIndex:
     value: 2.2
-    unit: ""
+    unit: ''
     confidence: 85
     description: Refractive index at visible wavelengths
     min: null
@@ -115,32 +115,32 @@ materialProperties:
     min: 0.1
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 25.05
+    value: 32.7
   laserReflectivity:
     confidence: 0.7
     max: 90.0
     min: 5.0
     source: default_from_category_range
     unit: '%'
-    value: 47.5
+    value: 52.3
   tensileStrength:
     confidence: 0.7
     max: 1000.0
     min: 50.0
     source: default_from_category_range
     unit: MPa
-    value: 525.0
+    value: 500.0
   thermalDestructionPoint:
     confidence: 0.7
     max: 3827.0
     min: 1000.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 2413.5
+    value: 2680.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: thermal_shock
+    value: 200.0
 applications:
 - 'Automotive: Paint removal and surface preparation for automotive parts'
 - 'Semiconductor: Ultra-precise cleaning for semiconductor manufacturing'
@@ -149,7 +149,8 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power range for Zirconia surface cleaning without thermal damage
+    description: Optimal average power range for Zirconia surface cleaning without
+      thermal damage
     min: 80
     max: 120
   wavelength:
@@ -225,10 +226,12 @@ regulatoryStandards:
 - ISO 23146 - Technical Ceramics
 images:
   hero:
-    alt: Zirconia surface undergoing laser cleaning showing precise contamination removal
+    alt: Zirconia surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/zirconia-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Zirconia surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Zirconia surface after laser cleaning showing detailed
+      surface structure
     url: /images/zirconia-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -255,7 +258,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -287,7 +289,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

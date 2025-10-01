@@ -5,49 +5,49 @@ title: Epoxy Resin Composites Laser Cleaning
 description: Laser cleaning parameters for Carbon Fiber Reinforced Polymer
 materialProperties:
   density:
-    value: 4.25
+    value: 1.25
     unit: "g/cm\xB3"
     confidence: 95
     description: Typical density for unfilled epoxy resin composites
     min: 0.5
     max: 8
   thermalConductivity:
-    value: 200.05
+    value: 0.35
     unit: "W/m\xB7K"
     confidence: 92
     description: Low thermal conductivity typical of polymer composites
     min: 0.1
     max: 400
   tensileStrength:
-    value: 3025.0
+    value: 3100.0
     unit: MPa
     confidence: 90
     description: Typical tensile strength for epoxy resin composites
     min: 0
     max: 2748.5
   hardness:
-    value: 55.0
+    value: 85.0
     unit: Shore D
     confidence: 88
     description: Hardness measurement on Shore D scale
     min: 15.5
     max: 129.5
   youngsModulus:
-    value: 750.0
+    value: 3.2
     unit: GPa
     confidence: 92
     description: Elastic modulus of epoxy composite materials
     min: 0
     max: 274.999
   thermalExpansion:
-    value: 124.5
+    value: 55.0
     unit: "\u03BCm/m\xB7\xB0C"
     confidence: 88
     description: Coefficient of thermal expansion for epoxy composites
     min: 0
     max: 241.55
   specificHeat:
-    value: 1000.0
+    value: 1100.0
     unit: "J/kg\xB7K"
     confidence: 85
     description: Specific heat capacity at room temperature
@@ -62,7 +62,7 @@ materialProperties:
     max: null
   reflectivity:
     value: 0.08
-    unit: ""
+    unit: ''
     confidence: 80
     description: Reflectivity at near-infrared wavelengths
     min: null
@@ -101,32 +101,32 @@ materialProperties:
     min: 0.05
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 100.03
+    value: 92.7
   laserReflectivity:
     confidence: 0.7
     max: 80.0
     min: 2.0
     source: default_from_category_range
     unit: '%'
-    value: 41.0
+    value: 38.5
   thermalDiffusivity:
     confidence: 0.7
     max: 180.0
     min: 0.1
     source: default_from_category_range
     unit: "mm\xB2/s"
-    value: 90.05
+    value: 0.12
   thermalDestructionPoint:
     confidence: 0.7
     max: 2000.0
     min: 150.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 1075.0
+    value: 623.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: decomposition
+    value: 623.0
 applications:
 - 'Medical: Sterilization and cleaning of medical devices and instruments'
 - 'Manufacturing: Industrial surface preparation and contamination removal'
@@ -136,7 +136,8 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for epoxy resin composite cleaning without substrate damage
+    description: Optimal average power for epoxy resin composite cleaning without
+      substrate damage
     min: 80
     max: 120
   wavelength:
@@ -209,10 +210,12 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Epoxy Resin Composites surface undergoing laser cleaning showing precise contamination removal
+    alt: Epoxy Resin Composites surface undergoing laser cleaning showing precise
+      contamination removal
     url: /images/epoxy-resin-composites-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Epoxy Resin Composites surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Epoxy Resin Composites surface after laser cleaning showing
+      detailed surface structure
     url: /images/epoxy-resin-composites-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -239,7 +242,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -271,7 +273,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

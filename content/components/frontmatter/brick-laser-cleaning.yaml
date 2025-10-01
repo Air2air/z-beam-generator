@@ -5,52 +5,53 @@ title: Brick Laser Cleaning
 description: Laser cleaning parameters for Brick
 materialProperties:
   density:
-    value: 1.7
+    value: 1.92
     unit: "g/cm\xB3"
     confidence: 95
     description: Typical density of fired clay brick
     min: 0.6
     max: 2.8
   thermalConductivity:
-    value: 1.29
+    value: 1.31
     unit: "W/m\xB7K"
     confidence: 92
     description: Thermal conductivity of common fired brick
     min: 0.08
     max: 2.5
   hardness:
-    value: 4.0
+    value: 3.8
     unit: Mohs
     confidence: 92
     description: Hardness on Mohs scale for fired clay brick
     min: 2
     max: 6
   youngsModulus:
-    value: 27.5
+    value: 16.7
     unit: GPa
     confidence: 88
     description: Elastic modulus of brick material
     min: 1.2
     max: 32.6
   thermalExpansion:
-    value: 12.5
+    value: 5.5
     unit: "10\u207B\u2076/\xB0C"
     confidence: 88
     description: Coefficient of thermal expansion for clay brick
     min: 4.2
     max: 19.8
   specificHeat:
-    value: 900.0
+    value: 840.0
     unit: "J/kg\xB7K"
     confidence: 85
     description: Specific heat capacity at room temperature
     min: 815.5
     max: 1109.5
   thermalDiffusivity:
-    value: 0.55
+    value: 0.52
     unit: "mm\xB2/s"
     confidence: 82
-    description: Thermal diffusivity calculated from conductivity, density, and specific heat
+    description: Thermal diffusivity calculated from conductivity, density, and specific
+      heat
     min: 0.1
     max: 1
   porosity:
@@ -62,14 +63,15 @@ materialProperties:
     max: null
   absorptionCoefficient:
     value: 0.85
-    unit: ""
+    unit: ''
     confidence: 88
-    description: Optical absorption coefficient for common laser wavelengths (1064 nm)
+    description: Optical absorption coefficient for common laser wavelengths (1064
+      nm)
     min: null
     max: null
   reflectivity:
     value: 0.15
-    unit: ""
+    unit: ''
     confidence: 85
     description: Surface reflectivity for near-infrared laser wavelengths
     min: null
@@ -78,11 +80,12 @@ materialProperties:
     value: 1.2
     unit: "J/cm\xB2"
     confidence: 80
-    description: Approximate laser ablation threshold for nanosecond pulses at 1064 nm
+    description: Approximate laser ablation threshold for nanosecond pulses at 1064
+      nm
     min: null
     max: null
   compressiveStrength:
-    value: 35
+    value: 41.4
     unit: MPa
     confidence: 96
     description: Typical compressive strength of standard construction brick
@@ -115,32 +118,32 @@ materialProperties:
     min: 0.5
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 7.75
+    value: 8.2
   laserReflectivity:
     confidence: 0.7
     max: 70.0
     min: 10.0
     source: default_from_category_range
     unit: '%'
-    value: 40.0
+    value: 36.2
   tensileStrength:
     confidence: 0.7
     max: 15.0
     min: 1.0
     source: default_from_category_range
     unit: MPa
-    value: 8.0
+    value: 3.4
   thermalDestructionPoint:
     confidence: 0.7
     max: 1200.0
     min: 500.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 850.0
+    value: 950.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: spalling
+    value: 573.0
 applications:
 - 'Restoration: Gentle cleaning for restoration and conservation applications'
 - 'Construction: Surface preparation and cleaning for construction materials'
@@ -149,7 +152,8 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Brick surface cleaning without thermal damage
+    description: Optimal average power for Brick surface cleaning without thermal
+      damage
     min: 80
     max: 120
   wavelength:
@@ -191,7 +195,8 @@ machineSettings:
     value: 2.5
     unit: "J/cm\xB2"
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without substrate damage
+    description: Fluence threshold for effective contaminant removal without substrate
+      damage
     min: 1.5
     max: 4.0
   overlapRatio:
@@ -225,7 +230,8 @@ images:
     alt: Brick surface undergoing laser cleaning showing precise contamination removal
     url: /images/brick-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Brick surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Brick surface after laser cleaning showing detailed surface
+      structure
     url: /images/brick-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -252,7 +258,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -284,7 +289,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

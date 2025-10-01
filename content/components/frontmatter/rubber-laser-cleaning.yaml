@@ -5,28 +5,28 @@ title: Rubber Laser Cleaning
 description: Laser cleaning parameters for Carbon Fiber Reinforced Polymer
 materialProperties:
   density:
-    value: 4.25
+    value: 1.15
     unit: "g/cm\xB3"
     confidence: 95
     description: Typical density for natural rubber compounds
     min: 0.5
     max: 8
   thermalConductivity:
-    value: 200.05
+    value: 0.15
     unit: "W/m\xB7K"
     confidence: 90
     description: Low thermal conductivity typical of elastomeric materials
     min: 0.1
     max: 400
   tensileStrength:
-    value: 3025.0
+    value: 25.0
     unit: MPa
     confidence: 90
     description: Typical tensile strength for natural rubber compounds
     min: 0
     max: 2748.5
   hardness:
-    value: 55.0
+    value: 60.0
     unit: Shore A
     confidence: 85
     description: Typical hardness for medium-grade rubber materials
@@ -40,14 +40,14 @@ materialProperties:
     min: 0
     max: 274.999
   thermalExpansion:
-    value: 124.5
+    value: 77.0
     unit: "\xD710\u207B\u2076/\xB0C"
     confidence: 88
     description: High coefficient of thermal expansion characteristic of polymers
     min: 0
     max: 241.55
   specificHeat:
-    value: 1000.0
+    value: 2010.0
     unit: "J/kg\xB7K"
     confidence: 92
     description: Specific heat capacity at room temperature
@@ -62,7 +62,7 @@ materialProperties:
     max: null
   reflectivity:
     value: 0.08
-    unit: ""
+    unit: ''
     confidence: 80
     description: Low reflectivity at near-infrared wavelengths
     min: null
@@ -75,7 +75,7 @@ materialProperties:
     min: null
     max: null
   thermalDiffusivity:
-    value: 90.05
+    value: 0.089
     unit: "mm\xB2/s"
     confidence: 86
     description: Thermal diffusivity calculated from thermal properties
@@ -101,25 +101,25 @@ materialProperties:
     min: 0.05
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 100.03
+    value: 95.2
   laserReflectivity:
     confidence: 0.7
     max: 80.0
     min: 2.0
     source: default_from_category_range
     unit: '%'
-    value: 41.0
+    value: 38.5
   thermalDestructionPoint:
     confidence: 0.7
     max: 2000.0
     min: 150.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 1075.0
+    value: 623.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: decomposition
+    value: 573.0
 applications:
 - 'Manufacturing: Industrial surface preparation and contamination removal'
 - 'Medical: Sterilization and cleaning of medical devices and instruments'
@@ -136,7 +136,8 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength for optimal Rubber absorption and minimal substrate damage
+    description: Near-infrared wavelength for optimal Rubber absorption and minimal
+      substrate damage
     min: 355
     max: 1080
   spotSize:
@@ -205,7 +206,8 @@ images:
     alt: Rubber surface undergoing laser cleaning showing precise contamination removal
     url: /images/rubber-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Rubber surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Rubber surface after laser cleaning showing detailed
+      surface structure
     url: /images/rubber-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -232,7 +234,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -264,7 +265,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

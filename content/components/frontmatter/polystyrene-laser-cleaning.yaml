@@ -5,42 +5,42 @@ title: Polystyrene Laser Cleaning
 description: Laser cleaning parameters for Polycarbonate
 materialProperties:
   density:
-    value: 1.53
+    value: 1.05
     unit: "g/cm\xB3"
     confidence: 95
     description: Density of general purpose polystyrene at room temperature
     min: 0.85
     max: 2.2
   thermalConductivity:
-    value: 1.51
+    value: 0.142
     unit: "W/m\xB7K"
     confidence: 88
     description: Thermal conductivity at room temperature
     min: 0.02
     max: 3
   tensileStrength:
-    value: 205.0
+    value: 45.0
     unit: MPa
     confidence: 92
     description: Ultimate tensile strength
     min: 10
     max: 400
   youngsModulus:
-    value: 2000.01
+    value: 3300.0
     unit: MPa
     confidence: 94
     description: Young's modulus in tension
     min: 0
     max: 3629.98
   thermalExpansion:
-    value: 105.0
+    value: 70.0
     unit: "\xD710\u207B\u2076/\xB0C"
     confidence: 85
     description: Coefficient of linear thermal expansion
     min: 10
     max: 200
   specificHeat:
-    value: 1750.0
+    value: 1300.0
     unit: "J/kg\xB7K"
     confidence: 87
     description: Specific heat capacity at room temperature
@@ -55,7 +55,7 @@ materialProperties:
     max: null
   refractiveIndex:
     value: 1.59
-    unit: ""
+    unit: ''
     confidence: 96
     description: Refractive index at 589 nm
     min: null
@@ -87,21 +87,21 @@ materialProperties:
     min: 10.0
     source: default_from_category_range
     unit: ''
-    value: 50.0
+    value: 75.0
   laserAbsorption:
     confidence: 0.7
     max: 100.0
     min: 0.1
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 50.05
+    value: 65.2
   laserReflectivity:
     confidence: 0.7
     max: 95.0
     min: 5.0
     source: default_from_category_range
     unit: '%'
-    value: 50.0
+    value: 4.2
   thermalDiffusivity:
     confidence: 0.7
     max: 1.0
@@ -115,11 +115,11 @@ materialProperties:
     min: 80.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 240.0
+    value: 270.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: decomposition
+    value: 300.0
 applications:
 - 'Medical: Sterilization and cleaning of medical devices and instruments'
 - 'Aerospace: Precision cleaning of aerospace components and assemblies'
@@ -234,7 +234,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues

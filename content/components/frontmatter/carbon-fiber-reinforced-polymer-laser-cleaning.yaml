@@ -5,42 +5,46 @@ title: CFRP Laser Cleaning
 description: Laser cleaning parameters for Carbon Fiber Reinforced Polymer (CFRP)
 materialProperties:
   density:
-    value: 4.25
+    value: 1.55
     unit: "g/cm\xB3"
     confidence: 95
     description: Typical density for CFRP composites with 60-70% fiber volume fraction
     min: 0.5
     max: 8
   thermalConductivity:
-    value: 200.05
+    value: 5.0
     unit: "W/m\xB7K"
     confidence: 85
-    description: "Highly anisotropic: 5-10 W/m\xB7K transverse, 100-150 W/m\xB7K longitudinal to fibers"
+    description: "Highly anisotropic: 5-10 W/m\xB7K transverse, 100-150 W/m\xB7K longitudinal\
+      \ to fibers"
     min: 0.1
     max: 400
   tensileStrength:
     value: 3025.0
     unit: MPa
     confidence: 94
-    description: 'Highly dependent on fiber orientation: 1500-2000 MPa transverse, 2500-3500 MPa longitudinal'
+    description: 'Highly dependent on fiber orientation: 1500-2000 MPa transverse,
+      2500-3500 MPa longitudinal'
     min: 0
     max: 2748.5
   youngsModulus:
-    value: 750.0
+    value: 150.0
     unit: GPa
     confidence: 96
-    description: 'Anisotropic modulus: 70-100 GPa transverse, 180-230 GPa longitudinal to fibers'
+    description: 'Anisotropic modulus: 70-100 GPa transverse, 180-230 GPa longitudinal
+      to fibers'
     min: 0
     max: 274.999
   thermalExpansion:
-    value: 124.5
+    value: 2.0
     unit: "\xD710\u207B\u2076/\xB0C"
     confidence: 88
-    description: 'Anisotropic coefficient: negative in fiber direction (-1 to 0), positive transverse (20-30)'
+    description: 'Anisotropic coefficient: negative in fiber direction (-1 to 0),
+      positive transverse (20-30)'
     min: -1
     max: 50
   specificHeat:
-    value: 1000.0
+    value: 1130.0
     unit: "J/kg\xB7K"
     confidence: 92
     description: Specific heat capacity at room temperature for typical CFRP composites
@@ -48,14 +52,14 @@ materialProperties:
     max: 2006.0
   absorptionCoefficient:
     value: 0.7-0.95
-    unit: ""
+    unit: ''
     confidence: 85
     description: High absorption for IR lasers (1064 nm) due to carbon fiber content
     min: null
     max: null
   reflectivity:
     value: 0.05-0.3
-    unit: ""
+    unit: ''
     confidence: 82
     description: Low reflectivity at 1064 nm wavelength due to carbon fiber absorption
     min: null
@@ -101,39 +105,39 @@ materialProperties:
     min: 20.0
     source: default_from_category_range
     unit: HRC
-    value: 55.0
+    value: 62.3
   laserAbsorption:
     confidence: 0.7
     max: 200.0
     min: 0.05
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 100.03
+    value: 95.2
   laserReflectivity:
     confidence: 0.7
     max: 80.0
     min: 2.0
     source: default_from_category_range
     unit: '%'
-    value: 41.0
+    value: 4.2
   thermalDiffusivity:
     confidence: 0.7
     max: 180.0
     min: 0.1
     source: default_from_category_range
     unit: "mm\xB2/s"
-    value: 90.05
+    value: 2.8
   thermalDestructionPoint:
     confidence: 0.7
     max: 2000.0
     min: 150.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 1075.0
+    value: 723.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: decomposition
+    value: 723.15
 applications:
 - 'Automotive: Paint removal and surface preparation for automotive parts'
 - 'Medical: Sterilization and cleaning of medical devices and instruments'
@@ -150,7 +154,8 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength for optimal CFRP absorption and minimal substrate damage
+    description: Near-IR wavelength for optimal CFRP absorption and minimal substrate
+      damage
     min: 355
     max: 1080
   spotSize:
@@ -216,10 +221,12 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Carbon Fiber Reinforced Polymer surface undergoing laser cleaning showing precise contamination removal
+    alt: Carbon Fiber Reinforced Polymer surface undergoing laser cleaning showing
+      precise contamination removal
     url: /images/carbon-fiber-reinforced-polymer-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Carbon Fiber Reinforced Polymer surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Carbon Fiber Reinforced Polymer surface after laser cleaning
+      showing detailed surface structure
     url: /images/carbon-fiber-reinforced-polymer-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -246,7 +253,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -278,7 +284,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

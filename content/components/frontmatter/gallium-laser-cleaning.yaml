@@ -5,49 +5,49 @@ title: Gallium Laser Cleaning
 description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
-    value: 11.57
+    value: 5.904
     unit: "g/cm\xB3"
     confidence: 98
     description: "Density of solid gallium at 20\xB0C"
     min: 0.53
     max: 22.6
   thermalConductivity:
-    value: 217.5
+    value: 40.6
     unit: "W/m\xB7K"
     confidence: 92
     description: "Thermal conductivity of solid gallium at 25\xB0C"
     min: 6.0
     max: 429.0
   hardness:
-    value: 1750.25
+    value: 1.5
     unit: Mohs
     confidence: 84
     description: Mohs hardness scale
     min: 0
     max: 3772.91
   youngsModulus:
-    value: 208.0
+    value: 9.8
     unit: GPa
     confidence: 86
     description: Young's modulus of solid gallium
     min: 0
     max: 579.82
   thermalExpansion:
-    value: 14.8
+    value: 18.0
     unit: "\u03BCm/m\xB7K"
     confidence: 88
     description: Coefficient of linear thermal expansion
     min: 1.7
     max: 34.9
   specificHeat:
-    value: 500.0
+    value: 371.0
     unit: "J/kg\xB7K"
     confidence: 90
     description: "Specific heat capacity at 25\xB0C"
     min: 0
     max: 1994.6
   thermalDiffusivity:
-    value: 87.1
+    value: 18.4
     unit: "cm\xB2/s"
     confidence: 85
     description: Thermal diffusivity at room temperature
@@ -122,32 +122,32 @@ materialProperties:
     min: 0.02
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 50.01
+    value: 61.8
   laserReflectivity:
     confidence: 0.7
     max: 98.0
     min: 5.0
     source: default_from_category_range
     unit: '%'
-    value: 51.5
+    value: 71.2
   tensileStrength:
     confidence: 0.7
     max: 3000.0
     min: 3.0
     source: default_from_category_range
     unit: MPa
-    value: 1501.5
+    value: 8.3
   thermalDestructionPoint:
     confidence: 0.7
     max: 3422.0
     min: -38.8
     source: default_from_category_range
     unit: "\xB0C"
-    value: 1691.6
+    value: 2477.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: melting
+    value: 302.91
 applications:
 - 'Aerospace: Precision cleaning of aerospace components and assemblies'
 - 'Electronics: Precision cleaning of electronic components and circuit boards'
@@ -226,7 +226,8 @@ images:
     alt: Gallium surface undergoing laser cleaning showing precise contamination removal
     url: /images/gallium-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Gallium surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Gallium surface after laser cleaning showing detailed
+      surface structure
     url: /images/gallium-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -253,7 +254,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -285,7 +285,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

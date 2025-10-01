@@ -5,56 +5,56 @@ title: Nickel Laser Cleaning
 description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
-    value: 11.57
+    value: 8.908
     unit: "g/cm\xB3"
     confidence: 98
     description: "Density of pure nickel at 20\xB0C"
     min: 0.53
     max: 22.6
   thermalConductivity:
-    value: 217.5
+    value: 90.7
     unit: "W/m\xB7K"
     confidence: 95
     description: "Thermal conductivity at 25\xB0C"
     min: 6.0
     max: 429.0
   tensileStrength:
-    value: 1501.5
+    value: 345.0
     unit: MPa
     confidence: 88
     description: Typical tensile strength of annealed pure nickel
     min: 0
     max: 1363.6
   hardness:
-    value: 1750.25
+    value: 638.0
     unit: HV
     confidence: 85
     description: Vickers hardness of annealed pure nickel
     min: 0
     max: 3772.91
   youngsModulus:
-    value: 208.0
+    value: 200.0
     unit: GPa
     confidence: 95
     description: Young's modulus of elasticity
     min: 0
     max: 579.82
   thermalExpansion:
-    value: 14.8
+    value: 13.3
     unit: "\u03BCm/m\xB7K"
     confidence: 92
     description: "Coefficient of linear thermal expansion at 25\xB0C"
     min: 1.7
     max: 34.9
   thermalDiffusivity:
-    value: 87.1
+    value: 23.0
     unit: "mm\xB2/s"
     confidence: 90
     description: Thermal diffusivity at room temperature
     min: 0
     max: 191.376
   specificHeat:
-    value: 500.0
+    value: 444.0
     unit: "J/kg\xB7K"
     confidence: 93
     description: "Specific heat capacity at 25\xB0C"
@@ -62,14 +62,14 @@ materialProperties:
     max: 1994.6
   absorptionCoefficient:
     value: 0.65
-    unit: ""
+    unit: ''
     confidence: 82
     description: Approximate absorption coefficient for Nd:YAG laser (1064 nm)
     min: null
     max: null
   reflectivity:
     value: 0.72
-    unit: ""
+    unit: ''
     confidence: 85
     description: Reflectivity at 1064 nm wavelength
     min: null
@@ -108,25 +108,25 @@ materialProperties:
     min: 0.02
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 50.01
+    value: 38.7
   laserReflectivity:
     confidence: 0.7
     max: 98.0
     min: 5.0
     source: default_from_category_range
     unit: '%'
-    value: 51.5
+    value: 62.8
   thermalDestructionPoint:
     confidence: 0.7
     max: 3422.0
     min: -38.8
     source: default_from_category_range
     unit: "\xB0C"
-    value: 1691.6
+    value: 1726.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: melting
+    value: 1726.0
 applications:
 - 'Food Processing: Sanitary surface cleaning for food processing equipment'
 - 'Semiconductor: Ultra-precise cleaning for semiconductor manufacturing'
@@ -143,63 +143,72 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimized for Nickel's absorption characteristics and oxide removal
+    description: Near-IR wavelength optimized for Nickel's absorption characteristics
+      and oxide removal
     min: 355
     max: 10640
   spotSize:
     value: 50
     unit: "\u03BCm"
     confidence: 84
-    description: Optimal beam diameter for precise cleaning with sufficient energy density
+    description: Optimal beam diameter for precise cleaning with sufficient energy
+      density
     min: 30
     max: 100
   repetitionRate:
     value: 100
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for high-throughput cleaning with controlled heat accumulation
+    description: Optimal repetition rate for high-throughput cleaning with controlled
+      heat accumulation
     min: 50
     max: 200
   fluenceThreshold:
     value: 2.5
     unit: "J/cm\xB2"
     confidence: 88
-    description: Threshold fluence for effective Nickel surface cleaning without substrate damage
+    description: Threshold fluence for effective Nickel surface cleaning without substrate
+      damage
     min: 1.8
     max: 3.5
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Optimal pulse duration for efficient ablation of contaminants while minimizing thermal diffusion
+    description: Optimal pulse duration for efficient ablation of contaminants while
+      minimizing thermal diffusion
     min: 5
     max: 20
   scanSpeed:
     value: 1000
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for efficient area coverage with adequate pulse overlap
+    description: Optimal scanning speed for efficient area coverage with adequate
+      pulse overlap
     min: 500
     max: 2000
   overlapRatio:
     value: 70
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for uniform cleaning without excessive heat buildup
+    description: Optimal pulse overlap for uniform cleaning without excessive heat
+      buildup
     min: 50
     max: 85
   passCount:
     value: 3
     unit: passes
     confidence: 82
-    description: Recommended number of passes for complete contaminant removal from Nickel surfaces
+    description: Recommended number of passes for complete contaminant removal from
+      Nickel surfaces
     min: 1
     max: 5
   energyDensity:
     value: 12.7
     unit: "J/cm\xB2"
     confidence: 85
-    description: Calculated energy density based on spot size and pulse energy for effective cleaning
+    description: Calculated energy density based on spot size and pulse energy for
+      effective cleaning
     min: 8.0
     max: 18.0
 regulatoryStandards:
@@ -212,7 +221,8 @@ images:
     alt: Nickel surface undergoing laser cleaning showing precise contamination removal
     url: /images/nickel-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Nickel surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Nickel surface after laser cleaning showing detailed
+      surface structure
     url: /images/nickel-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -239,7 +249,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -271,7 +280,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

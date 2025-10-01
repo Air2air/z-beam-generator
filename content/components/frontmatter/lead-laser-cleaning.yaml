@@ -5,56 +5,56 @@ title: Lead Laser Cleaning
 description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
-    value: 11.57
+    value: 11.34
     unit: "g/cm\xB3"
     confidence: 98
     description: "Density of pure lead at 20\xB0C"
     min: 0.53
     max: 22.6
   thermalConductivity:
-    value: 217.5
+    value: 35.3
     unit: "W/m\xB7K"
     confidence: 92
     description: "Thermal conductivity at 20\xB0C"
     min: 6.0
     max: 429.0
   tensileStrength:
-    value: 1501.5
+    value: 12.0
     unit: MPa
     confidence: 85
     description: Ultimate tensile strength of pure lead
     min: 0
     max: 1363.6
   hardness:
-    value: 1750.25
+    value: 3.9
     unit: HB
     confidence: 84
     description: Brinell hardness of pure lead
     min: 0
     max: 3772.91
   youngsModulus:
-    value: 208.0
+    value: 16.0
     unit: GPa
     confidence: 87
     description: Young's modulus of elasticity
     min: 0
     max: 579.82
   thermalExpansion:
-    value: 14.8
+    value: 29.1
     unit: "\u03BCm/m\xB7K"
     confidence: 90
     description: "Linear thermal expansion coefficient at 20\xB0C"
     min: 1.7
     max: 34.9
   thermalDiffusivity:
-    value: 87.1
+    value: 24.8
     unit: "mm\xB2/s"
     confidence: 88
     description: Thermal diffusivity at room temperature
     min: 0
     max: 191.376
   specificHeat:
-    value: 500.0
+    value: 128.0
     unit: "J/kg\xB7K"
     confidence: 91
     description: "Specific heat capacity at 20\xB0C"
@@ -62,14 +62,14 @@ materialProperties:
     max: 1994.6
   absorptionCoefficient:
     value: 0.65
-    unit: ""
+    unit: ''
     confidence: 82
     description: Typical absorption coefficient for visible to near-IR wavelengths
     min: null
     max: null
   reflectivity:
     value: 0.35
-    unit: ""
+    unit: ''
     confidence: 81
     description: Reflectivity in visible to near-IR range
     min: null
@@ -101,25 +101,25 @@ materialProperties:
     min: 0.02
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 50.01
+    value: 38.5
   laserReflectivity:
     confidence: 0.7
     max: 98.0
     min: 5.0
     source: default_from_category_range
     unit: '%'
-    value: 51.5
+    value: 48.7
   thermalDestructionPoint:
     confidence: 0.7
     max: 3422.0
     min: -38.8
     source: default_from_category_range
     unit: "\xB0C"
-    value: 1691.6
+    value: 1745.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: melting
+    value: 327.5
 applications:
 - 'Aerospace: Precision cleaning of aerospace components and assemblies'
 - 'Marine: Corrosion removal and surface treatment for marine applications'
@@ -128,7 +128,8 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: "Optimal power range for Lead cleaning considering low melting point (327\xB0C)"
+    description: "Optimal power range for Lead cleaning considering low melting point\
+      \ (327\xB0C)"
     min: 80
     max: 120
   wavelength:
@@ -163,7 +164,8 @@ machineSettings:
     value: 3.2
     unit: "J/cm\xB2"
     confidence: 85
-    description: Optimal energy density for effective contaminant removal without substrate damage
+    description: Optimal energy density for effective contaminant removal without
+      substrate damage
     min: 2.5
     max: 4.5
   pulseWidth:
@@ -204,7 +206,8 @@ images:
     alt: Lead surface undergoing laser cleaning showing precise contamination removal
     url: /images/lead-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Lead surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Lead surface after laser cleaning showing detailed surface
+      structure
     url: /images/lead-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -231,7 +234,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -263,7 +265,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

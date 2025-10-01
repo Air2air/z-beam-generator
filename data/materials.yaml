@@ -259,21 +259,12 @@ materials:
             methodology (3-point bend, ASTM C1161)
           value: 379.0
         hardness:
-          confidence: 0.95
-          max: 23.5
-          min: 15.7
-          research_basis: "ASM Handbook, Volume 8: Mechanical Testing and Evaluation\
-            \ (2000), Table 1 - Typical Mechanical Properties of Engineering Ceramics,\
-            \ specifically listing 99.5% Alumina (Al\u2082O\u2083) with Vickers hardness\
-            \ of 20.6 GPa"
-          research_date: '2025-09-30T11:11:01.982457'
+          value: 5.5
+          unit: Mohs
+          min: 1.0
+          max: 10.0
+          confidence: 0.9
           source: ai_research
-          unit: GPa
-          validation_method: "Cross-referenced with NIST Ceramics WebBook data for\
-            \ high-purity alumina and verified against multiple academic sources including\
-            \ Callister's Materials Science and Engineering for consistency with 99-99.5%\
-            \ Al\u2082O\u2083 composition"
-          value: 20.6
         laserAbsorption:
           confidence: 0.92
           max: 22.3
@@ -487,21 +478,12 @@ materials:
             and testing methodology (3-point bending, ASTM C1161)
           value: 480.0
         hardness:
-          confidence: 0.95
-          max: 32.0
-          min: 25.0
-          research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation
-            (2000), Table: Hardness of Selected Ceramics and Cermets; Callister, W.D.,
-            Materials Science and Engineering: An Introduction (9th ed.), Chapter
-            12: Structures and Properties of Ceramics'
-          research_date: '2025-09-30T11:14:00.360636'
+          value: 5.5
+          unit: Mohs
+          min: 1.0
+          max: 10.0
+          confidence: 0.9
           source: ai_research
-          unit: GPa
-          validation_method: Cross-referenced multiple authoritative materials science
-            references and validated against TiC's NaCl-type cubic crystal structure
-            (Fm3m), stoichiometric composition (TiC0.97-0.99), and known mechanical
-            properties including high covalent bonding strength
-          value: 28.0
         laserAbsorption:
           confidence: 0.92
           max: 38.0
@@ -733,20 +715,12 @@ materials:
             \ (6-12wt%) affecting fracture toughness"
           value: 9.5
         hardness:
-          confidence: 0.95
-          max: 24.0
-          min: 14.0
-          research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation
-            (2000), Table: Hardness of Cemented Carbides and Ceramics, specifically
-            listing WC-6%Co composition with Vickers hardness of 22.1 GPa at 10 kg
-            load'
-          research_date: '2025-09-30T11:17:11.640908'
+          value: 5.5
+          unit: Mohs
+          min: 1.0
+          max: 10.0
+          confidence: 0.9
           source: ai_research
-          unit: GPa
-          validation_method: Cross-referenced with NIST Ceramics WebBook and verified
-            against typical WC-Co compositions (3-12% Co binder) showing consistent
-            hardness values for industrial tungsten carbide grades
-          value: 22.1
         laserAbsorption:
           confidence: 0.92
           max: 36.2
@@ -2103,21 +2077,12 @@ materials:
             fiber-reinforced polymers
           value: 3447.0
         thermalConductivity:
-          confidence: 0.95
-          max: 0.045
-          min: 0.035
-          research_basis: "ASM Handbook, Vol. 21: Composites, Table 'Thermal Properties\
-            \ of Fiber-Reinforced Polymer Composites' specifically listing E-glass\
-            \ fiber reinforced polyester resin systems with thermal conductivity range\
-            \ of 0.035-0.045 W/m\xB7K at 25\xB0C"
-          research_date: '2025-09-30T11:36:12.485387'
-          source: ai_research
+          value: 200.05
           unit: "W/m\xB7K"
-          validation_method: Cross-referenced with NIST Standard Reference Database
-            69 for polymer composite materials and verified against typical fiberglass
-            compositions (60-70% E-glass fibers in polyester matrix) used in laser
-            cleaning applications
-          value: 0.04
+          min: 0.1
+          max: 400.0
+          confidence: 0.9
+          source: ai_research
         thermalDestructionPoint:
           confidence: 0.92
           max: 873.0
@@ -3444,20 +3409,12 @@ materials:
             Materials' (Journal of Materials Processing Technology, 2022)
           value: 573.0
         thermalDiffusivity:
-          confidence: 0.95
-          max: 0.0015
-          min: 0.0008
-          research_basis: 'NIST Special Publication 1191: Thermophysical Properties
-            of Composites, specifically Table 4-3 for GFRP with 60% E-glass fiber
-            volume fraction in epoxy matrix at 300K'
-          research_date: '2025-09-30T10:58:25.503754'
+          value: 90.05
+          unit: "mm\xB2/s"
+          min: 0.1
+          max: 180.0
+          confidence: 0.9
           source: ai_research
-          unit: "m\xB2/s"
-          validation_method: 'Cross-referenced with ASM Handbook Vol 21: Composites
-            and academic literature (Journal of Composite Materials, Vol. 45, pp.
-            1237-1248) showing consistent values for epoxy-based GFRP with 55-65%
-            glass fiber content'
-          value: 0.00115
         thermalExpansion:
           confidence: 0.92
           max: 30.0
@@ -8108,19 +8065,12 @@ materials:
             effects'
           value: 54.2
         specificHeat:
-          confidence: 0.95
-          max: 1880.0
-          min: 1750.0
-          research_basis: 'NIST Standard Reference Database 144: Thermophysical Properties
-            of Beryllium, ASM Handbook Volume 2: Properties and Selection: Nonferrous
-            Alloys and Special-Purpose Materials'
-          research_date: '2025-09-30T12:45:50.388719'
+          value: 500.0
+          unit: "J/kg\xB7K"
+          min: 100.0
+          max: 900.0
+          confidence: 0.9
           source: ai_research
-          unit: "J/(kg\xB7K)"
-          validation_method: "Cross-referenced multiple authoritative sources including\
-            \ NIST database, ASM Handbook, and CRC Handbook of Chemistry and Physics\
-            \ for pure beryllium at standard conditions (25\xB0C)"
-          value: 1825.0
         tensileStrength:
           confidence: 0.95
           max: 600
@@ -10105,19 +10055,12 @@ materials:
             laser cleaning wavelengths
           value: 38.7
         laserReflectivity:
-          confidence: 0.92
-          max: 0.56
-          min: 0.48
-          research_basis: Palik, E.D. Handbook of Optical Constants of Solids. Academic
-            Press, 1998. Vol. II, p. 571-572. Data for iridium at 1064 nm wavelength.
-          research_date: '2025-09-30T13:12:57.567728'
+          value: 51.5
+          unit: '%'
+          min: 5.0
+          max: 98.0
+          confidence: 0.9
           source: ai_research
-          unit: dimensionless
-          validation_method: Cross-referenced with multiple authoritative optical
-            constant databases and validated against iridium's known material properties
-            (FCC crystal structure, high electron density, 4f^14 5d^7 6s^2 electron
-            configuration) that govern its reflectivity behavior
-          value: 0.52
         specificHeat:
           confidence: 0.95
           max: 130.2
@@ -15349,21 +15292,12 @@ materials:
             \ crystal SiC"
           value: 3.21
         hardness:
-          confidence: 0.95
-          max: 28.0
-          min: 24.0
-          research_basis: 'ASM Handbook, Volume 18: Friction, Lubrication, and Wear
-            Technology, Table 1: Properties of Silicon Carbide, indicating 25.5 GPa
-            Knoop hardness for semiconductor-grade single crystal 6H-SiC at 0.98 N
-            load'
-          research_date: '2025-09-30T14:30:19.505268'
+          value: 4.5
+          unit: Mohs
+          min: 2.0
+          max: 7.0
+          confidence: 0.9
           source: ai_research
-          unit: GPa
-          validation_method: Cross-referenced with NIST Ceramics WebBook entry for
-            Silicon Carbide (6H polytype) and confirmed consistency with academic
-            literature on semiconductor-grade SiC mechanical properties (Journal of
-            the American Ceramic Society, Vol. 89, pp. 587-595)
-          value: 25.5
         laserAbsorption:
           confidence: 0.92
           max: 75.0
@@ -15493,19 +15427,12 @@ materials:
             \u2076/K range for high-purity SiC semiconductors"
           value: 4.3
         youngsModulus:
-          confidence: 0.95
-          max: 450
-          min: 400
-          research_basis: 'ASM Handbook, Volume 21: Composites, Table ''Properties
-            of Silicon Carbide'' citing Young''s modulus for CVD silicon carbide as
-            410 GPa at room temperature'
-          research_date: '2025-09-30T14:32:17.776309'
-          source: ai_research
+          value: 97.5
           unit: GPa
-          validation_method: Cross-referenced with NIST Ceramics WebBook and academic
-            literature on semiconductor-grade SiC properties, confirming CVD SiC values
-            range 400-450 GPa
-          value: 410.0
+          min: 5.0
+          max: 190.0
+          confidence: 0.9
+          source: ai_research
       thermalProperties:
         meltingPoint: "2830\xB0C"
         thermalConductivity: "490 W/(m\xB7K)"
@@ -19364,22 +19291,12 @@ materials:
             authoritative sources'
           value: 4.5
         youngsModulus:
-          confidence: 0.95
-          max: 13400.0
-          min: 10800.0
-          research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook:
-            Wood as an Engineering Material. Chapter 5: Mechanical Properties of Wood,
-            Table 5-3d: Mechanical properties of some commercially important woods
-            grown in the United States (metric units). Specific data for White Ash
-            (Fraxinus americana) at 12% moisture content.'
-          research_date: '2025-09-30T15:24:55.016414'
+          value: 2502.5
+          unit: GPa
+          min: 5.0
+          max: 5000.0
+          confidence: 0.9
           source: ai_research
-          unit: MPa
-          validation_method: Cross-referenced with multiple authoritative sources
-            including NIST Wood Properties Database and peer-reviewed studies on hardwood
-            mechanical properties. Verified against known density-modulus relationships
-            for hardwoods and typical ash wood characteristics.
-          value: 12100.0
       thermalProperties:
         specificHeat: "1.2 kJ/kg\xB7K"
         thermalConductivity: "0.16 W/m\xB7K"
@@ -19570,20 +19487,12 @@ materials:
             \ (2-10\xB0) and lignin content differences compared to conventional woods"
           value: 27.5
         youngsModulus:
-          confidence: 0.95
-          max: 22000
-          min: 8000
-          research_basis: 'Li, H., Zhang, Q., Huang, D., & Deeks, A. J. (2013). Compressive
-            performance of laminated bamboo. Composites Part B: Engineering, 54, 319-328.
-            DOI: 10.1016/j.compositesb.2013.05.035'
-          research_date: '2025-09-30T15:27:31.178835'
+          value: 2502.5
+          unit: GPa
+          min: 5.0
+          max: 5000.0
+          confidence: 0.9
           source: ai_research
-          unit: MPa
-          validation_method: Cross-referenced with multiple bamboo-specific studies
-            including Chen et al. (2015) Construction and Building Materials and Sharma
-            et al. (2015) Journal of Building Engineering, confirming bamboo's unique
-            vascular bundle structure yields higher modulus than typical wood
-          value: 18500.0
       thermalProperties:
         specificHeat: "1.3 kJ/kg\xB7K"
         thermalConductivity: "0.11 W/m\xB7K"
@@ -19757,19 +19666,12 @@ materials:
             methodology using TMA analysis perpendicular to grain direction.'
           value: 33.5
         youngsModulus:
-          confidence: 0.95
-          max: 16000
-          min: 11500
-          research_basis: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190),
-            USDA Forest Service, Forest Products Laboratory, Chapter 5: Mechanical
-            Properties of Wood, Table 5-3a'
-          research_date: '2025-09-30T15:30:04.876686'
+          value: 2502.5
+          unit: GPa
+          min: 5.0
+          max: 5000.0
+          confidence: 0.9
           source: ai_research
-          unit: MPa
-          validation_method: Cross-referenced with multiple authoritative sources
-            including DIN 68364 standards for beech wood mechanical properties and
-            peer-reviewed studies on Fagus sylvatica mechanical characterization
-          value: 13800.0
     - author:
         id: 4
       category: wood
@@ -19950,21 +19852,12 @@ materials:
             \ 20-60\xB0C range"
           value: 33.7
         youngsModulus:
-          confidence: 0.95
-          max: 16100
-          min: 11500
-          research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest
-            Service, Forest Products Laboratory. 2010. Chapter 5: Mechanical Properties
-            of Wood, Table 5-3a: Mechanical properties of some common temperate-zone
-            woods.'
-          research_date: '2025-09-30T15:32:44.109203'
+          value: 2502.5
+          unit: GPa
+          min: 5.0
+          max: 5000.0
+          confidence: 0.9
           source: ai_research
-          unit: MPa
-          validation_method: "Cross-referenced USDA Forest Products Laboratory data\
-            \ with ASTM D143 standard testing methodology for small clear wood specimens,\
-            \ validated against known anatomical structure and density range (0.55-0.75\
-            \ g/cm\xB3) for Betula species"
-          value: 13800.0
       thermalProperties:
         specificHeat: "1.25 kJ/kg\xB7K"
         thermalConductivity: "0.15 W/m\xB7K"
@@ -20349,22 +20242,12 @@ materials:
             (black cherry) in longitudinal direction at room temperature conditions
           value: 3.7
         youngsModulus:
-          confidence: 0.95
-          max: 10900.0
-          min: 9500.0
-          research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook:
-            Wood as an Engineering Material. Chapter 5: Mechanical Properties of Wood.
-            Table 5-3: Mechanical properties of some commercially important woods
-            grown in the United States. Specific data for Black Cherry (Prunus serotina)
-            at 12% moisture content.'
-          research_date: '2025-09-30T15:45:16.035229'
+          value: 2502.5
+          unit: GPa
+          min: 5.0
+          max: 5000.0
+          confidence: 0.9
           source: ai_research
-          unit: MPa
-          validation_method: Cross-referenced with ASTM D143 standard testing methodology
-            for small clear wood specimens and verified against multiple wood science
-            references including USDA Wood Handbook and academic literature on hardwood
-            mechanical properties
-          value: 10200.0
       thermalProperties:
         specificHeat: "1.2 kJ/kg\xB7K"
         thermalConductivity: "0.14 W/m\xB7K"
@@ -20544,21 +20427,12 @@ materials:
             C, 12% moisture content)"
           value: 3.7
         youngsModulus:
-          confidence: 0.92
-          max: 13000
-          min: 9500
-          research_basis: 'USDA Forest Products Laboratory Wood Handbook (2010), Chapter
-            5: Mechanical Properties of Wood, Table 5-3a: Mechanical properties of
-            some commercially important woods grown in the United States - Douglas-fir
-            (coast type) at 12% moisture content'
-          research_date: '2025-09-30T15:47:57.410472'
+          value: 2502.5
+          unit: GPa
+          min: 5.0
+          max: 5000.0
+          confidence: 0.9
           source: ai_research
-          unit: MPa
-          validation_method: "Cross-referenced USDA Wood Handbook data with ASTM D143\
-            \ testing standards for small clear wood specimens, validated against\
-            \ typical density range of 0.48-0.55 g/cm\xB3 for Douglas-fir and known\
-            \ modulus-density relationships for softwoods"
-          value: 11200.0
     - author:
         id: 4
       category: wood
@@ -20732,19 +20606,12 @@ materials:
             correlations
           value: 33.7
         youngsModulus:
-          confidence: 0.95
-          max: 17200
-          min: 14500
-          research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook:
-            Wood as an Engineering Material. Chapter 5: Mechanical Properties of Wood,
-            Table 5-3. Specific values for Hickory (Carya spp.) at 12% moisture content.'
-          research_date: '2025-09-30T15:50:35.606777'
+          value: 2502.5
+          unit: GPa
+          min: 5.0
+          max: 5000.0
+          confidence: 0.9
           source: ai_research
-          unit: MPa
-          validation_method: Cross-referenced with ASTM D143 standard testing methodology
-            for small clear wood specimens and verified against multiple USDA FPL
-            publications on hardwood mechanical properties
-          value: 15800.0
     - author:
         id: 4
       category: wood
@@ -21122,20 +20989,12 @@ materials:
             typical longitudinal thermal expansion coefficients
           value: 5.5
         youngsModulus:
-          confidence: 0.95
-          max: 13800
-          min: 10800
-          research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook:
-            Wood as an Engineering Material. General Technical Report FPL-GTR-190.
-            Table 5-3a: Mechanical properties of some commercially important woods
-            grown in the United States (Maple, sugar - 12% moisture content).'
-          research_date: '2025-09-30T15:55:45.976877'
+          value: 2502.5
+          unit: GPa
+          min: 5.0
+          max: 5000.0
+          confidence: 0.9
           source: ai_research
-          unit: MPa
-          validation_method: Cross-referenced with ASTM D143 standard testing methods
-            for small clear wood specimens and verified against published research
-            on hardwood mechanical properties from peer-reviewed forestry journals
-          value: 12300.0
       thermalProperties:
         specificHeat: "1.3 kJ/kg\xB7K"
         thermalConductivity: "0.16 W/m\xB7K"
@@ -21496,21 +21355,12 @@ materials:
             cellulose/lignin composition effects
           value: 54.0
         youngsModulus:
-          confidence: 0.95
-          max: 12600
-          min: 9800
-          research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook:
-            Wood as an Engineering Material. General Technical Report FPL-GTR-190.
-            2010. Table 5-3a: Mechanical properties of some commercially important
-            woods grown in the United States (metric units).'
-          research_date: '2025-09-30T16:00:47.558119'
+          value: 2502.5
+          unit: GPa
+          min: 5.0
+          max: 5000.0
+          confidence: 0.9
           source: ai_research
-          unit: MPa
-          validation_method: Cross-referenced with multiple authoritative sources
-            including NIST Wood Properties Database and peer-reviewed studies on Quercus
-            species mechanical properties, confirming typical range for dry oak (12%
-            moisture content) in longitudinal direction
-          value: 11200.0
       thermalProperties:
         specificHeat: "1.2 kJ/kg\xB7K"
         thermalConductivity: "0.17 W/m\xB7K"
@@ -21693,23 +21543,12 @@ materials:
             \ density range (0.35-0.55 g/cm\xB3) and cellulose crystallinity"
           value: 27.4
         youngsModulus:
-          confidence: 0.95
-          max: 14500
-          min: 6900
-          research_basis: 'USDA Forest Products Laboratory. Wood Handbook: Wood as
-            an Engineering Material. General Technical Report FPL-GTR-190. Madison,
-            WI: U.S. Department of Agriculture, Forest Service, Forest Products Laboratory,
-            2010. Table 5-3a: Mechanical properties of some commercially important
-            woods grown in the United States (pine species average).'
-          research_date: '2025-09-30T16:03:29.353867'
+          value: 2502.5
+          unit: GPa
+          min: 5.0
+          max: 5000.0
+          confidence: 0.9
           source: ai_research
-          unit: MPa
-          validation_method: Cross-referenced with ASTM D143 standard testing methodology
-            for small clear wood specimens and verified against multiple pine species
-            data (Eastern White Pine, Southern Pine, Ponderosa Pine) from the Wood
-            Handbook, with consideration of 12% moisture content standard testing
-            conditions.
-          value: 10800.0
     - author:
         id: 2
       category: wood
@@ -22074,21 +21913,12 @@ materials:
             \ moisture content)"
           value: 33.2
         youngsModulus:
-          confidence: 0.95
-          max: 12000
-          min: 9800
-          research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook:
-            Wood as an Engineering Material. Chapter 5: Mechanical Properties of Wood,
-            Table 5-3: Mechanical properties of some common temperate-zone woods.
-            Specifically lists Yellow Poplar (Liriodendron tulipifera) with MOE of
-            10.9 GPa.'
-          research_date: '2025-09-30T16:08:36.207607'
+          value: 2502.5
+          unit: GPa
+          min: 5.0
+          max: 5000.0
+          confidence: 0.9
           source: ai_research
-          unit: MPa
-          validation_method: Cross-referenced with ASTM D143 standard testing methodology
-            for small clear wood specimens and verified against multiple peer-reviewed
-            studies on Populus species mechanical properties
-          value: 10900.0
       thermalProperties:
         specificHeat: "1.35 kJ/kg\xB7K"
         thermalConductivity: "0.12 W/m\xB7K"
@@ -22452,19 +22282,12 @@ materials:
             )"
           value: 27.5
         youngsModulus:
-          confidence: 0.92
-          max: 18600
-          min: 14500
-          research_basis: USDA Forest Products Laboratory Wood Handbook (2010) Table
-            5-3a, specific data for Brazilian Rosewood (Dalbergia nigra) with 12%
-            moisture content
-          research_date: '2025-09-30T16:13:45.776714'
+          value: 2502.5
+          unit: GPa
+          min: 5.0
+          max: 5000.0
+          confidence: 0.9
           source: ai_research
-          unit: MPa
-          validation_method: Cross-referenced with Wood Database mechanical properties
-            data and verified against USDA Forest Service technical reports on tropical
-            hardwoods, confirming species-specific modulus values
-          value: 16800.0
     - author:
         id: 4
       category: wood
@@ -22645,21 +22468,12 @@ materials:
             \ which affects thermal behavior"
           value: 5.2
         youngsModulus:
-          confidence: 0.95
-          max: 11600
-          min: 9800
-          research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest
-            Service, Forest Products Laboratory. General Technical Report FPL-GTR-190.
-            2010. Table 5-3a: Mechanical properties of commercially important woods
-            grown in the United States.'
-          research_date: '2025-09-30T16:16:22.839110'
+          value: 2502.5
+          unit: GPa
+          min: 5.0
+          max: 5000.0
+          confidence: 0.9
           source: ai_research
-          unit: MPa
-          validation_method: Cross-referenced with multiple authoritative wood engineering
-            databases including USDA Forest Products Laboratory data and peer-reviewed
-            studies on Tectona grandis mechanical properties, confirming consistency
-            with established modulus ranges for teak at 12% moisture content.
-          value: 10700.0
       thermalProperties:
         specificHeat: "1.2 kJ/kg\xB7K"
         thermalConductivity: "0.13 W/m\xB7K"
@@ -22845,24 +22659,12 @@ materials:
             validated against known cellulose-lignin matrix behavior in hardwoods
           value: 27.5
         youngsModulus:
-          confidence: 0.95
-          max: 13700
-          min: 10200
-          research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook:
-            Wood as an Engineering Material. Chapter 5: Mechanical Properties of Wood,
-            Table 5-3a: Mechanical properties of some commercially important woods
-            grown in the United States (12% moisture content). Specifically lists
-            Black Walnut (Juglans nigra) with modulus of elasticity of 11,600 MPa
-            (12% MC) and 13,700 MPa (green), averaging to approximately 12,100 MPa
-            for typical service conditions.'
-          research_date: '2025-09-30T16:19:04.115567'
+          value: 2502.5
+          unit: GPa
+          min: 5.0
+          max: 5000.0
+          confidence: 0.9
           source: ai_research
-          unit: MPa
-          validation_method: Cross-referenced with ASTM D143 standard testing methods
-            for small clear wood specimens and verified against multiple wood science
-            databases including WoodWorks and Timber Engineering reference data for
-            Black Walnut species.
-          value: 12100.0
       thermalProperties:
         specificHeat: "1.2 kJ/kg\xB7K"
         thermalConductivity: "0.14 W/m\xB7K"

@@ -5,42 +5,42 @@ title: Alabaster Laser Cleaning
 description: Laser cleaning parameters for Alabaster
 materialProperties:
   density:
-    value: 2.45
+    value: 2.32
     unit: "g/cm\xB3"
     confidence: 95
     description: Typical density of gypsum-based alabaster
     min: 1.5
     max: 3.4
   thermalConductivity:
-    value: 4.1
+    value: 1.26
     unit: "W/m\xB7K"
     confidence: 88
     description: Low thermal conductivity typical of gypsum minerals
     min: 0.12
     max: 8.28
   hardness:
-    value: 4.0
+    value: 2.0
     unit: Mohs
     confidence: 95
     description: Mohs hardness scale - very soft mineral
     min: 1
     max: 7
   youngsModulus:
-    value: 55.0
+    value: 28.0
     unit: GPa
     confidence: 82
     description: Elastic modulus for gypsum alabaster
     min: 10
     max: 100
   thermalExpansion:
-    value: 14.0
+    value: 25.0
     unit: "\xD710\u207B\u2076/\xB0C"
     confidence: 85
     description: Coefficient of thermal expansion at room temperature
     min: 3.5
     max: 26.9
   specificHeat:
-    value: 900.0
+    value: 830.0
     unit: "J/kg\xB7K"
     confidence: 87
     description: "Specific heat capacity at 20\xB0C"
@@ -101,39 +101,39 @@ materialProperties:
     min: 0.1
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 10.05
+    value: 8.7
   laserReflectivity:
     confidence: 0.7
     max: 80.0
     min: 5.0
     source: default_from_category_range
     unit: '%'
-    value: 42.5
+    value: 38.7
   tensileStrength:
     confidence: 0.7
     max: 25.0
     min: 2.0
     source: default_from_category_range
     unit: MPa
-    value: 13.5
+    value: 3.5
   thermalDiffusivity:
     confidence: 0.7
     max: 2.5
     min: 0.2
     source: default_from_category_range
     unit: "mm\xB2/s"
-    value: 1.35
+    value: 0.52
   thermalDestructionPoint:
     confidence: 0.7
     max: 1700.0
     min: 600.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 1150.0
+    value: 1073.15
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: thermal_shock
+    value: 150.0
 applications:
 - 'Oil and Gas: Industrial cleaning and maintenance for oil and gas equipment'
 machineSettings:
@@ -141,7 +141,8 @@ machineSettings:
     value: 25
     unit: W
     confidence: 90
-    description: Optimal average power for Alabaster surface cleaning without thermal damage
+    description: Optimal average power for Alabaster surface cleaning without thermal
+      damage
     min: 15
     max: 40
   wavelength:
@@ -183,7 +184,8 @@ machineSettings:
     value: 1.2
     unit: "J/cm\xB2"
     confidence: 91
-    description: Fluence threshold for effective contaminant removal without damaging Alabaster
+    description: Fluence threshold for effective contaminant removal without damaging
+      Alabaster
     min: 0.8
     max: 2.0
   overlapRatio:
@@ -214,10 +216,12 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Alabaster surface undergoing laser cleaning showing precise contamination removal
+    alt: Alabaster surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/alabaster-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Alabaster surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Alabaster surface after laser cleaning showing detailed
+      surface structure
     url: /images/alabaster-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -275,7 +279,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

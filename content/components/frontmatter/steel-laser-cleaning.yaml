@@ -5,14 +5,14 @@ title: Steel Laser Cleaning
 description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
-    value: 11.57
+    value: 7.85
     unit: "g/cm\xB3"
     confidence: 98
     description: Typical density for carbon steel at room temperature
     min: 0.53
     max: 22.6
   thermalConductivity:
-    value: 217.5
+    value: 50.2
     unit: "W/m\xB7K"
     confidence: 92
     description: "Thermal conductivity of carbon steel at 20\xB0C"
@@ -26,35 +26,35 @@ materialProperties:
     min: 0
     max: 1363.6
   hardness:
-    value: 1750.25
+    value: 1750.0
     unit: HV
     confidence: 85
     description: Vickers hardness for annealed carbon steel
     min: 0
     max: 3772.91
   youngsModulus:
-    value: 208.0
+    value: 200.0
     unit: GPa
     confidence: 98
     description: Young's modulus of elasticity for steel
     min: 0
     max: 579.82
   thermalExpansion:
-    value: 14.8
+    value: 12.0
     unit: "10\u207B\u2076/\xB0C"
     confidence: 90
     description: "Linear thermal expansion coefficient at 20-100\xB0C"
     min: 1.7
     max: 34.9
   thermalDiffusivity:
-    value: 87.1
+    value: 12.5
     unit: "mm\xB2/s"
     confidence: 88
     description: Thermal diffusivity at room temperature
     min: 0
     max: 191.376
   specificHeat:
-    value: 500.0
+    value: 466.0
     unit: "J/kg\xB7K"
     confidence: 92
     description: Specific heat capacity at room temperature
@@ -62,14 +62,14 @@ materialProperties:
     max: 1994.6
   absorptionCoefficient:
     value: 0.35
-    unit: ""
+    unit: ''
     confidence: 82
     description: Absorption coefficient for steel at 1064 nm wavelength
     min: null
     max: null
   reflectivity:
     value: 0.65
-    unit: ""
+    unit: ''
     confidence: 85
     description: Reflectivity for steel at 1064 nm laser wavelength
     min: null
@@ -92,7 +92,8 @@ materialProperties:
     value: BCC/FCC
     unit: crystal system
     confidence: 95
-    description: Body-centered cubic (ferrite) and face-centered cubic (austenite) structures
+    description: Body-centered cubic (ferrite) and face-centered cubic (austenite)
+      structures
     min: null
     max: null
   laserAbsorption:
@@ -101,14 +102,14 @@ materialProperties:
     min: 0.02
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 50.01
+    value: 35.2
   laserReflectivity:
     confidence: 0.7
     max: 98.0
     min: 5.0
     source: default_from_category_range
     unit: '%'
-    value: 51.5
+    value: 56.2
   thermalDestructionPoint:
     confidence: 0.7
     max: 3422.0
@@ -119,7 +120,7 @@ materialProperties:
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: melting
+    value: 1800.0
 applications:
 - 'Electronics: Precision cleaning of electronic components and circuit boards'
 - 'Nuclear: Decontamination and surface cleaning in nuclear facilities'
@@ -204,7 +205,8 @@ images:
     alt: Steel surface undergoing laser cleaning showing precise contamination removal
     url: /images/steel-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Steel surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Steel surface after laser cleaning showing detailed surface
+      structure
     url: /images/steel-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -231,7 +233,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -263,7 +264,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

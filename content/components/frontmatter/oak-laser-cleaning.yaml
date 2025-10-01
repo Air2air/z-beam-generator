@@ -5,28 +5,28 @@ title: Oak Laser Cleaning
 description: Laser cleaning parameters for Ash
 materialProperties:
   density:
-    value: 0.69
+    value: 0.71
     unit: "g/cm\xB3"
     confidence: 95
     description: Average density of European oak at 12% moisture content
     min: 0.12
     max: 1.25
   thermalConductivity:
-    value: 0.22
+    value: 0.17
     unit: "W/m\xB7K"
     confidence: 90
     description: Thermal conductivity perpendicular to grain at room temperature
     min: 0.04
     max: 0.4
   tensileStrength:
-    value: 110.0
+    value: 95.0
     unit: MPa
     confidence: 90
     description: Tensile strength parallel to grain
     min: 2.5
     max: 152.5
   hardness:
-    value: 2510.0
+    value: 1290.0
     unit: lbf
     confidence: 88
     description: Janka hardness test value for European oak
@@ -40,14 +40,14 @@ materialProperties:
     min: 0
     max: 3299.24
   thermalExpansion:
-    value: 30.0
+    value: 54.0
     unit: "10^-6/\xB0C"
     confidence: 88
     description: Coefficient of thermal expansion perpendicular to grain
     min: 0
     max: 33.0
   specificHeat:
-    value: 1650.0
+    value: 2380.0
     unit: "J/kg\xB7K"
     confidence: 92
     description: Specific heat capacity at room temperature
@@ -55,14 +55,14 @@ materialProperties:
     max: 2555.0
   absorptionCoefficient:
     value: 0.85
-    unit: ""
+    unit: ''
     confidence: 82
     description: Estimated absorption coefficient for near-infrared lasers (1064 nm)
     min: null
     max: null
   reflectivity:
     value: 0.15
-    unit: ""
+    unit: ''
     confidence: 80
     description: Reflectivity at 1064 nm wavelength for natural oak surface
     min: null
@@ -71,7 +71,8 @@ materialProperties:
     value: 0.8
     unit: "J/cm\xB2"
     confidence: 85
-    description: Estimated laser ablation threshold for nanosecond pulses at 1064 nm
+    description: Estimated laser ablation threshold for nanosecond pulses at 1064
+      nm
     min: null
     max: null
   porosity:
@@ -108,32 +109,32 @@ materialProperties:
     min: 1.0
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 25.5
+    value: 32.7
   laserReflectivity:
     confidence: 0.7
     max: 60.0
     min: 10.0
     source: default_from_category_range
     unit: '%'
-    value: 35.0
+    value: 32.5
   thermalDiffusivity:
     confidence: 0.7
     max: 0.4
     min: 0.0001
     source: default_from_category_range
     unit: "mm\xB2/s"
-    value: 0.2
+    value: 0.16
   thermalDestructionPoint:
     confidence: 0.7
     max: 500.0
     min: 200.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 350.0
+    value: 400.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: carbonization
+    value: 280.0
 applications:
 - laser cleaning
 - surface preparation
@@ -219,7 +220,8 @@ images:
     alt: Oak surface undergoing laser cleaning showing precise contamination removal
     url: /images/oak-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Oak surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Oak surface after laser cleaning showing detailed surface
+      structure
     url: /images/oak-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -246,7 +248,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -278,7 +279,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

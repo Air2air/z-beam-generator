@@ -5,49 +5,49 @@ title: Polycarbonate Laser Cleaning
 description: Laser cleaning parameters for Polycarbonate
 materialProperties:
   density:
-    value: 1.53
+    value: 1.2
     unit: "g/cm\xB3"
     confidence: 95
     description: Density of amorphous polycarbonate at room temperature
     min: 0.85
     max: 2.2
   thermalConductivity:
-    value: 1.51
+    value: 0.2
     unit: "W/m\xB7K"
     confidence: 88
     description: Low thermal conductivity typical of polymers
     min: 0.02
     max: 3
   tensileStrength:
-    value: 205.0
+    value: 65.0
     unit: MPa
     confidence: 92
     description: Ultimate tensile strength
     min: 10
     max: 400
   hardness:
-    value: 50.0
+    value: 85.0
     unit: Rockwell M
     confidence: 85
     description: Rockwell M scale hardness
     min: null
     max: null
   youngsModulus:
-    value: 2000.01
+    value: 2340.0
     unit: GPa
     confidence: 94
     description: Elastic modulus in tension
     min: 0
     max: 3629.98
   thermalExpansion:
-    value: 105.0
+    value: 68.0
     unit: "10\u207B\u2076/\xB0C"
     confidence: 85
     description: Coefficient of linear thermal expansion
     min: 10
     max: 200
   specificHeat:
-    value: 1750.0
+    value: 1250.0
     unit: "J/kg\xB7K"
     confidence: 87
     description: Specific heat capacity at room temperature
@@ -62,7 +62,7 @@ materialProperties:
     max: null
   refractiveIndex:
     value: 1.586
-    unit: ""
+    unit: ''
     confidence: 96
     description: Refractive index at 589 nm
     min: null
@@ -82,7 +82,7 @@ materialProperties:
     min: null
     max: null
   thermalDiffusivity:
-    value: 0.53
+    value: 0.52
     unit: "mm\xB2/s"
     confidence: 84
     description: Thermal diffusivity calculated from thermal properties
@@ -108,25 +108,25 @@ materialProperties:
     min: 0.1
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 50.05
+    value: 65.2
   laserReflectivity:
     confidence: 0.7
     max: 95.0
     min: 5.0
     source: default_from_category_range
     unit: '%'
-    value: 50.0
+    value: 4.2
   thermalDestructionPoint:
     confidence: 0.7
     max: 400.0
     min: 80.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 240.0
+    value: 270.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: decomposition
+    value: 425.0
 applications:
 - 'Automotive: Paint removal and surface preparation for automotive parts'
 - 'Aerospace: Precision cleaning of aerospace components and assemblies'
@@ -257,7 +257,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues

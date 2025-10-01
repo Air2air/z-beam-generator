@@ -5,35 +5,35 @@ title: Sapphire Glass Laser Cleaning
 description: Laser cleaning parameters for Borosilicate Glass
 materialProperties:
   density:
-    value: 4.4
+    value: 3.98
     unit: "g/cm\xB3"
     confidence: 98
     description: Density of single crystal sapphire at room temperature
     min: 1.2
     max: 7.6
   thermalConductivity:
-    value: 20.01
+    value: 27.21
     unit: "W/m\xB7K"
     confidence: 95
     description: Thermal conductivity at room temperature (c-axis)
     min: 0
     max: 38.422
   hardness:
-    value: 6.75
+    value: 9.0
     unit: Mohs
     confidence: 99
     description: Mohs hardness scale (second only to diamond)
     min: 4.5
     max: 9
   youngsModulus:
-    value: 205.0
+    value: 345.0
     unit: GPa
     confidence: 96
     description: Young's modulus (parallel to c-axis)
     min: 31.5
     max: 373.5
   thermalExpansion:
-    value: 7.55
+    value: 5.3
     unit: "\xD710\u207B\u2076/K"
     confidence: 94
     description: "Coefficient of thermal expansion (parallel to c-axis, 20-100\xB0\
@@ -41,14 +41,14 @@ materialProperties:
     min: 0.1
     max: 15
   thermalDiffusivity:
-    value: 7.5
+    value: 13.0
     unit: "mm\xB2/s"
     confidence: 92
     description: Thermal diffusivity at room temperature
     min: 0
     max: 13.7
   specificHeat:
-    value: 700.0
+    value: 761.0
     unit: "J/kg\xB7K"
     confidence: 93
     description: Specific heat capacity at room temperature
@@ -63,7 +63,7 @@ materialProperties:
     max: null
   refractiveIndex:
     value: 1.76
-    unit: ""
+    unit: ''
     confidence: 98
     description: Refractive index at 589 nm (ordinary ray)
     min: null
@@ -110,32 +110,32 @@ materialProperties:
     min: 0.001
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 5.0
+    value: 8.2
   laserReflectivity:
     confidence: 0.7
     max: 92.0
     min: 4.0
     source: default_from_category_range
     unit: '%'
-    value: 48.0
+    value: 7.2
   tensileStrength:
     confidence: 0.7
     max: 2000.0
     min: 30.0
     source: default_from_category_range
     unit: MPa
-    value: 1015.0
+    value: 400.0
   thermalDestructionPoint:
     confidence: 0.7
     max: 1723.0
     min: 500.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 1111.5
+    value: 2040.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: melting
+    value: 2323.0
 applications:
 - 'Aerospace: Precision cleaning of aerospace components and assemblies'
 - 'Manufacturing: Industrial surface preparation and contamination removal'
@@ -252,7 +252,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues

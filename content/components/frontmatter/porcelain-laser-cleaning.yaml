@@ -5,42 +5,42 @@ title: Porcelain Laser Cleaning
 description: Laser cleaning parameters for Alumina
 materialProperties:
   density:
-    value: 10.75
+    value: 2.4
     unit: "g/cm\xB3"
     confidence: 95
     description: Typical density of porcelain ceramic material
     min: 2.2
     max: 19.3
   thermalConductivity:
-    value: 1000.01
+    value: 1.5
     unit: "W/m\xB7K"
     confidence: 88
     description: Thermal conductivity at room temperature
     min: 0.03
     max: 2000.0
   hardness:
-    value: 5.5
+    value: 7.0
     unit: Mohs
     confidence: 94
     description: Mohs hardness scale value
     min: 0.2
     max: 9.8
   youngsModulus:
-    value: 425.0
+    value: 70.0
     unit: GPa
     confidence: 92
     description: Young's modulus of elasticity
     min: 12.0
     max: 708.0
   thermalExpansion:
-    value: 7.05
+    value: 7.0
     unit: "\xD710\u207B\u2076/\xB0C"
     confidence: 85
     description: "Coefficient of thermal expansion (20-1000\xB0C)"
     min: 0.1
     max: 14
   specificHeat:
-    value: 700.0
+    value: 1088.0
     unit: "J/kg\xB7K"
     confidence: 87
     description: Specific heat capacity at room temperature
@@ -55,14 +55,15 @@ materialProperties:
     max: null
   absorptionCoefficient:
     value: 0.85
-    unit: ""
+    unit: ''
     confidence: 82
-    description: Optical absorption coefficient for common laser wavelengths (1064 nm)
+    description: Optical absorption coefficient for common laser wavelengths (1064
+      nm)
     min: null
     max: null
   reflectivity:
     value: 0.12
-    unit: ""
+    unit: ''
     confidence: 80
     description: Surface reflectivity for typical laser wavelengths
     min: null
@@ -94,39 +95,39 @@ materialProperties:
     min: 0.1
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 25.05
+    value: 32.7
   laserReflectivity:
     confidence: 0.7
     max: 90.0
     min: 5.0
     source: default_from_category_range
     unit: '%'
-    value: 47.5
+    value: 42.3
   tensileStrength:
     confidence: 0.7
     max: 1000.0
     min: 50.0
     source: default_from_category_range
     unit: MPa
-    value: 525.0
+    value: 50.0
   thermalDiffusivity:
     confidence: 0.7
     max: 120.0
     min: 0.05
     source: default_from_category_range
     unit: "mm\xB2/s"
-    value: 60.02
+    value: 0.85
   thermalDestructionPoint:
     confidence: 0.7
     max: 3827.0
     min: 1000.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 2413.5
+    value: 1923.15
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: thermal_shock
+    value: 220.0
 applications:
 - 'Jewelry: Precision cleaning and polishing of precious metal jewelry'
 - 'Nuclear: Decontamination and surface cleaning in nuclear facilities'
@@ -135,7 +136,8 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for porcelain surface cleaning without thermal damage
+    description: Optimal average power for porcelain surface cleaning without thermal
+      damage
     min: 80
     max: 120
   wavelength:
@@ -177,7 +179,8 @@ machineSettings:
     value: 2.5
     unit: "J/cm\xB2"
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without substrate damage
+    description: Fluence threshold for effective contaminant removal without substrate
+      damage
     min: 1.5
     max: 4.0
   overlapRatio:
@@ -211,10 +214,12 @@ regulatoryStandards:
 - ISO 23146 - Technical Ceramics
 images:
   hero:
-    alt: Porcelain surface undergoing laser cleaning showing precise contamination removal
+    alt: Porcelain surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/porcelain-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Porcelain surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Porcelain surface after laser cleaning showing detailed
+      surface structure
     url: /images/porcelain-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -241,7 +246,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -273,7 +277,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

@@ -5,49 +5,49 @@ title: Shale Laser Cleaning
 description: Laser cleaning parameters for Alabaster
 materialProperties:
   density:
-    value: 2.45
+    value: 2.65
     unit: "g/cm\xB3"
     confidence: 95
     description: Average bulk density of shale formations
     min: 1.5
     max: 3.4
   thermalConductivity:
-    value: 4.1
+    value: 1.7
     unit: "W/m\xB7K"
     confidence: 90
     description: Thermal conductivity perpendicular to bedding planes
     min: 0.12
     max: 8.28
   tensileStrength:
-    value: 13.5
+    value: 8.2
     unit: MPa
     confidence: 85
     description: Brazilian tensile strength parallel to bedding
     min: 0.92
     max: 52.28
   hardness:
-    value: 4.0
+    value: 3.5
     unit: Mohs
     confidence: 92
     description: Mohs hardness scale for typical shale
     min: 1
     max: 7
   youngsModulus:
-    value: 55.0
+    value: 25.8
     unit: GPa
     confidence: 90
     description: Static Young's modulus perpendicular to bedding
     min: 10
     max: 100
   thermalExpansion:
-    value: 14.0
+    value: 8.5
     unit: "10\u207B\u2076/\xB0C"
     confidence: 82
     description: Linear thermal expansion coefficient at room temperature
     min: 3.5
     max: 26.9
   specificHeat:
-    value: 900.0
+    value: 790.0
     unit: "J/kg\xB7K"
     confidence: 88
     description: "Specific heat capacity at 25\xB0C"
@@ -62,7 +62,7 @@ materialProperties:
     max: null
   reflectivity:
     value: 0.15
-    unit: ""
+    unit: ''
     confidence: 82
     description: Reflectivity at 1064 nm for dry shale surface
     min: null
@@ -90,7 +90,7 @@ materialProperties:
     max: null
   chemicalStability:
     value: 0.75
-    unit: ""
+    unit: ''
     confidence: 85
     description: Chemical stability index relative to quartz (1.0)
     min: null
@@ -101,32 +101,32 @@ materialProperties:
     min: 0.1
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 10.05
+    value: 8.7
   laserReflectivity:
     confidence: 0.7
     max: 80.0
     min: 5.0
     source: default_from_category_range
     unit: '%'
-    value: 42.5
+    value: 38.2
   thermalDiffusivity:
     confidence: 0.7
     max: 2.5
     min: 0.2
     source: default_from_category_range
     unit: "mm\xB2/s"
-    value: 1.35
+    value: 1.32
   thermalDestructionPoint:
     confidence: 0.7
     max: 1700.0
     min: 600.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 1150.0
+    value: 1073.15
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: thermal_shock
+    value: 2.8
 applications:
 - 'Art Conservation: Delicate cleaning of artwork and cultural artifacts'
 - 'Jewelry: Precision cleaning and polishing of precious metal jewelry'
@@ -135,7 +135,8 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Shale surface cleaning without thermal damage
+    description: Optimal average power for Shale surface cleaning without thermal
+      damage
     min: 80
     max: 120
   wavelength:
@@ -163,7 +164,8 @@ machineSettings:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for controlled ablation of Shale surface contaminants
+    description: Nanosecond pulse duration for controlled ablation of Shale surface
+      contaminants
     min: 5
     max: 20
   scanSpeed:
@@ -211,7 +213,8 @@ images:
     alt: Shale surface undergoing laser cleaning showing precise contamination removal
     url: /images/shale-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Shale surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Shale surface after laser cleaning showing detailed surface
+      structure
     url: /images/shale-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -238,7 +241,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -270,7 +272,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

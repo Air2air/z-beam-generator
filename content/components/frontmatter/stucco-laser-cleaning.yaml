@@ -5,56 +5,57 @@ title: Stucco Laser Cleaning
 description: Laser cleaning parameters for Brick
 materialProperties:
   density:
-    value: 1.7
+    value: 1.85
     unit: "g/cm\xB3"
     confidence: 85
     description: Typical density for cured stucco (cement-lime-sand mixture)
     min: 0.6
     max: 2.8
   thermalConductivity:
-    value: 1.29
+    value: 0.72
     unit: "W/m\xB7K"
     confidence: 88
     description: Thermal conductivity of typical stucco material
     min: 0.08
     max: 2.5
   hardness:
-    value: 4
+    value: 3.5
     unit: Mohs
     confidence: 83
     description: Hardness on Mohs scale for cementitious stucco
     min: 2
     max: 6
   youngsModulus:
-    value: 27.5
+    value: 24.8
     unit: GPa
     confidence: 84
     description: Elastic modulus of cured stucco material
     min: 1.2
     max: 32.6
   thermalExpansion:
-    value: 12.5
+    value: 10.8
     unit: "\u03BCm/m\xB7\xB0C"
     confidence: 83
     description: Coefficient of thermal expansion for cement-based stucco
     min: 4.2
     max: 19.8
   specificHeat:
-    value: 900.0
+    value: 840.0
     unit: "J/kg\xB7K"
     confidence: 85
     description: Specific heat capacity of stucco material
     min: 815.5
     max: 1109.5
   thermalDiffusivity:
-    value: 0.55
+    value: 0.48
     unit: "mm\xB2/s"
     confidence: 82
-    description: Thermal diffusivity calculated from conductivity, density, and specific heat
+    description: Thermal diffusivity calculated from conductivity, density, and specific
+      heat
     min: 0.1
     max: 1
   compressiveStrength:
-    value: 20
+    value: 24.1
     unit: MPa
     confidence: 86
     description: Typical compressive strength of stucco
@@ -69,14 +70,14 @@ materialProperties:
     max: null
   absorptionCoefficient:
     value: 0.65
-    unit: ""
+    unit: ''
     confidence: 81
     description: Estimated absorption coefficient for common laser wavelengths (1064nm)
     min: null
     max: null
   reflectivity:
     value: 0.35
-    unit: ""
+    unit: ''
     confidence: 80
     description: Typical reflectivity of stucco surfaces at laser wavelengths
     min: null
@@ -108,32 +109,32 @@ materialProperties:
     min: 0.5
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 7.75
+    value: 8.2
   laserReflectivity:
     confidence: 0.7
     max: 70.0
     min: 10.0
     source: default_from_category_range
     unit: '%'
-    value: 40.0
+    value: 35.2
   tensileStrength:
     confidence: 0.7
     max: 15.0
     min: 1.0
     source: default_from_category_range
     unit: MPa
-    value: 8.0
+    value: 1.4
   thermalDestructionPoint:
     confidence: 0.7
     max: 1200.0
     min: 500.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 850.0
+    value: 750.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: spalling
+    value: 573.0
 applications:
 - 'Restoration: Gentle cleaning for restoration and conservation applications'
 - 'Construction: Surface preparation and cleaning for construction materials'
@@ -142,7 +143,8 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Stucco surface cleaning without substrate damage
+    description: Optimal average power for Stucco surface cleaning without substrate
+      damage
     min: 80
     max: 120
   wavelength:
@@ -163,21 +165,24 @@ machineSettings:
     value: 100
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient surface coverage while maintaining cleaning quality
+    description: High repetition rate for efficient surface coverage while maintaining
+      cleaning quality
     min: 50
     max: 200
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with minimal thermal penetration
+    description: Nanosecond pulse duration for effective contaminant removal with
+      minimal thermal penetration
     min: 5
     max: 20
   scanSpeed:
     value: 1000
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform cleaning without excessive dwell time
+    description: Optimal scanning speed for uniform cleaning without excessive dwell
+      time
     min: 500
     max: 2000
   energyDensity:
@@ -218,7 +223,8 @@ images:
     alt: Stucco surface undergoing laser cleaning showing precise contamination removal
     url: /images/stucco-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Stucco surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Stucco surface after laser cleaning showing detailed
+      surface structure
     url: /images/stucco-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -245,7 +251,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -277,7 +282,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

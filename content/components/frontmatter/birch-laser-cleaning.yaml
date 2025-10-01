@@ -5,28 +5,28 @@ title: Birch Laser Cleaning
 description: Laser cleaning parameters for Ash
 materialProperties:
   density:
-    value: 0.69
+    value: 0.67
     unit: "g/cm\xB3"
     confidence: 95
     description: Average density of European birch wood at 12% moisture content
     min: 0.12
     max: 1.25
   thermalConductivity:
-    value: 0.22
+    value: 0.17
     unit: "W/m\xB7K"
     confidence: 90
     description: Thermal conductivity perpendicular to grain at room temperature
     min: 0.04
     max: 0.4
   tensileStrength:
-    value: 110.0
+    value: 121.0
     unit: MPa
     confidence: 90
     description: Tensile strength parallel to grain direction
     min: 2.5
     max: 152.5
   hardness:
-    value: 2510.0
+    value: 1260.0
     unit: lbf
     confidence: 88
     description: Janka hardness test value for side hardness
@@ -40,14 +40,14 @@ materialProperties:
     min: 0
     max: 3299.24
   thermalExpansion:
-    value: 30.0
+    value: 33.7
     unit: "10^-6/\xB0C"
     confidence: 88
     description: Coefficient of thermal expansion perpendicular to grain direction
     min: 0
     max: 33.0
   specificHeat:
-    value: 1650.0
+    value: 1250.0
     unit: "J/kg\xB7K"
     confidence: 92
     description: Specific heat capacity at room temperature
@@ -55,14 +55,15 @@ materialProperties:
     max: 2555.0
   absorptionCoefficient:
     value: 0.85
-    unit: ""
+    unit: ''
     confidence: 82
-    description: Estimated absorption coefficient for near-infrared laser wavelengths (1064 nm)
+    description: Estimated absorption coefficient for near-infrared laser wavelengths
+      (1064 nm)
     min: null
     max: null
   reflectivity:
     value: 0.12
-    unit: ""
+    unit: ''
     confidence: 80
     description: Reflectivity at common laser cleaning wavelengths
     min: null
@@ -89,7 +90,7 @@ materialProperties:
     min: null
     max: null
   thermalDiffusivity:
-    value: 0.2
+    value: 0.165
     unit: "m\xB2/s"
     confidence: 86
     description: Thermal diffusivity at room temperature
@@ -108,25 +109,25 @@ materialProperties:
     min: 1.0
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 25.5
+    value: 32.7
   laserReflectivity:
     confidence: 0.7
     max: 60.0
     min: 10.0
     source: default_from_category_range
     unit: '%'
-    value: 35.0
+    value: 42.7
   thermalDestructionPoint:
     confidence: 0.7
     max: 500.0
     min: 200.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 350.0
+    value: 380.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: carbonization
+    value: 573.0
 applications:
 - laser cleaning
 - surface preparation
@@ -163,7 +164,8 @@ machineSettings:
     value: 100
     unit: ns
     confidence: 85
-    description: Pulse duration for effective contaminant removal with minimal substrate damage
+    description: Pulse duration for effective contaminant removal with minimal substrate
+      damage
     min: 50
     max: 200
   scanSpeed:
@@ -205,7 +207,8 @@ images:
     alt: Birch surface undergoing laser cleaning showing precise contamination removal
     url: /images/birch-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Birch surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Birch surface after laser cleaning showing detailed surface
+      structure
     url: /images/birch-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -232,7 +235,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -264,7 +266,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

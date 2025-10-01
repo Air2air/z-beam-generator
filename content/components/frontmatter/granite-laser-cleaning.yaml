@@ -5,63 +5,64 @@ title: Granite Laser Cleaning
 description: Laser cleaning parameters for Alabaster
 materialProperties:
   density:
-    value: 2.45
+    value: 2.65
     unit: "g/cm\xB3"
     confidence: 95
     description: Average density of granite based on mineral composition
     min: 1.5
     max: 3.4
   thermalConductivity:
-    value: 4.1
+    value: 2.9
     unit: "W/m\xB7K"
     confidence: 90
     description: Thermal conductivity at room temperature
     min: 0.12
     max: 8.28
   tensileStrength:
-    value: 13.5
+    value: 7.5
     unit: MPa
     confidence: 88
     description: Indirect tensile strength
     min: 0.92
     max: 52.28
   hardness:
-    value: 4.0
+    value: 6.5
     unit: Mohs
     confidence: 95
     description: Mohs hardness scale for granite
     min: 1
     max: 7
   youngsModulus:
-    value: 55.0
+    value: 60.0
     unit: GPa
     confidence: 90
     description: Elastic modulus of granite
     min: 10
     max: 100
   thermalExpansion:
-    value: 14.0
+    value: 8.0
     unit: "10\u207B\u2076/\xB0C"
     confidence: 88
     description: Coefficient of thermal expansion
     min: 3.5
     max: 26.9
   specificHeat:
-    value: 900.0
+    value: 790.0
     unit: "J/kg\xB7K"
     confidence: 92
     description: Specific heat capacity at room temperature
     min: 705.5
     max: 1119.5
   thermalDiffusivity:
-    value: 1.35
+    value: 1.32
     unit: "mm\xB2/s"
     confidence: 85
-    description: Thermal diffusivity calculated from conductivity, density, and specific heat
+    description: Thermal diffusivity calculated from conductivity, density, and specific
+      heat
     min: 0.2
     max: 2.5
   compressiveStrength:
-    value: 175
+    value: 200.0
     unit: MPa
     confidence: 92
     description: Uniaxial compressive strength
@@ -69,14 +70,14 @@ materialProperties:
     max: null
   absorptionCoefficient:
     value: 0.85
-    unit: ""
+    unit: ''
     confidence: 82
     description: Average absorption coefficient for common laser wavelengths (1064nm)
     min: null
     max: null
   reflectivity:
     value: 0.12
-    unit: ""
+    unit: ''
     confidence: 80
     description: Reflectivity at common laser wavelengths
     min: null
@@ -108,25 +109,25 @@ materialProperties:
     min: 0.1
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 10.05
+    value: 8.7
   laserReflectivity:
     confidence: 0.7
     max: 80.0
     min: 5.0
     source: default_from_category_range
     unit: '%'
-    value: 42.5
+    value: 38.2
   thermalDestructionPoint:
     confidence: 0.7
     max: 1700.0
     min: 600.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 1150.0
+    value: 1210.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: thermal_shock
+    value: 2.8
 applications:
 - 'Construction: Surface preparation and cleaning for construction materials'
 machineSettings:
@@ -134,7 +135,8 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for granite surface cleaning without thermal damage
+    description: Optimal average power for granite surface cleaning without thermal
+      damage
     min: 80
     max: 120
   wavelength:
@@ -155,14 +157,16 @@ machineSettings:
     value: 100
     unit: kHz
     confidence: 90
-    description: High repetition rate for efficient cleaning coverage while maintaining thermal control
+    description: High repetition rate for efficient cleaning coverage while maintaining
+      thermal control
     min: 50
     max: 200
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with minimal substrate heating
+    description: Nanosecond pulse duration for effective contaminant removal with
+      minimal substrate heating
     min: 5
     max: 20
   scanSpeed:
@@ -176,7 +180,8 @@ machineSettings:
     value: 2.5
     unit: "J/cm\xB2"
     confidence: 89
-    description: Minimum fluence required for effective contaminant ablation from granite
+    description: Minimum fluence required for effective contaminant ablation from
+      granite
     min: 1.5
     max: 4.0
   overlapRatio:
@@ -210,7 +215,8 @@ images:
     alt: Granite surface undergoing laser cleaning showing precise contamination removal
     url: /images/granite-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Granite surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Granite surface after laser cleaning showing detailed
+      surface structure
     url: /images/granite-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -237,7 +243,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -269,7 +274,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

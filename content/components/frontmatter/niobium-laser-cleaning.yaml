@@ -5,56 +5,56 @@ title: Niobium Laser Cleaning
 description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
-    value: 11.57
+    value: 8.57
     unit: "g/cm\xB3"
     confidence: 98
     description: Density of pure niobium at room temperature
     min: 0.53
     max: 22.6
   thermalConductivity:
-    value: 217.5
+    value: 53.7
     unit: "W/m\xB7K"
     confidence: 92
     description: "Thermal conductivity at 20\xB0C"
     min: 6.0
     max: 429.0
   tensileStrength:
-    value: 1501.5
+    value: 275.0
     unit: MPa
     confidence: 90
     description: Ultimate tensile strength of annealed niobium
     min: 0
     max: 1363.6
   hardness:
-    value: 1750.25
+    value: 75.0
     unit: HV
     confidence: 88
     description: Vickers hardness of pure annealed niobium
     min: 0
     max: 3772.91
   youngsModulus:
-    value: 208.0
+    value: 104.9
     unit: GPa
     confidence: 95
     description: Young's modulus of elasticity
     min: 0
     max: 579.82
   thermalExpansion:
-    value: 14.8
+    value: 7.3
     unit: "10\u207B\u2076/K"
     confidence: 90
     description: "Coefficient of thermal expansion at 20\xB0C"
     min: 1.7
     max: 34.9
   specificHeat:
-    value: 500.0
+    value: 265.0
     unit: "J/kg\xB7K"
     confidence: 88
     description: "Specific heat capacity at 25\xB0C"
     min: 0
     max: 1994.6
   thermalDiffusivity:
-    value: 87.1
+    value: 24.1
     unit: "mm\xB2/s"
     confidence: 85
     description: Thermal diffusivity at room temperature
@@ -62,14 +62,14 @@ materialProperties:
     max: 191.376
   absorptionCoefficient:
     value: 0.45
-    unit: ""
+    unit: ''
     confidence: 82
     description: Approximate absorption coefficient for near-IR lasers (1064 nm)
     min: null
     max: null
   reflectivity:
     value: 0.55
-    unit: ""
+    unit: ''
     confidence: 80
     description: Reflectivity at 1064 nm wavelength
     min: null
@@ -108,25 +108,25 @@ materialProperties:
     min: 0.02
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 50.01
+    value: 38.5
   laserReflectivity:
     confidence: 0.7
     max: 98.0
     min: 5.0
     source: default_from_category_range
     unit: '%'
-    value: 51.5
+    value: 52.3
   thermalDestructionPoint:
     confidence: 0.7
     max: 3422.0
     min: -38.8
     source: default_from_category_range
     unit: "\xB0C"
-    value: 1691.6
+    value: 2468.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: melting
+    value: 2741.0
 applications:
 - 'Aerospace: Precision cleaning of aerospace components and assemblies'
 - 'Restoration: Gentle cleaning for restoration and conservation applications'
@@ -136,63 +136,72 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Niobium oxide removal without substrate damage
+    description: Optimal average power for Niobium oxide removal without substrate
+      damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength with good absorption in niobium oxides while minimizing bulk heating
+    description: Near-IR wavelength with good absorption in niobium oxides while minimizing
+      bulk heating
     min: 355
     max: 10640
   spotSize:
     value: 50
     unit: "\u03BCm"
     confidence: 84
-    description: Optimal spot size balancing cleaning efficiency and resolution for surface contaminants
+    description: Optimal spot size balancing cleaning efficiency and resolution for
+      surface contaminants
     min: 30
     max: 100
   repetitionRate:
     value: 100
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning coverage while maintaining thermal management
+    description: High repetition rate for efficient cleaning coverage while maintaining
+      thermal management
     min: 50
     max: 200
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient oxide ablation with controlled thermal penetration
+    description: Nanosecond pulse duration for efficient oxide ablation with controlled
+      thermal penetration
     min: 5
     max: 20
   scanSpeed:
     value: 1000
     unit: mm/s
     confidence: 86
-    description: Scan speed providing adequate overlap between pulses for uniform cleaning
+    description: Scan speed providing adequate overlap between pulses for uniform
+      cleaning
     min: 500
     max: 2000
   fluence:
     value: 2.5
     unit: "J/cm\xB2"
     confidence: 90
-    description: Fluence threshold for niobium oxide removal while preserving base material integrity
+    description: Fluence threshold for niobium oxide removal while preserving base
+      material integrity
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap ensuring complete coverage without excessive heat accumulation
+    description: Optimal pulse overlap ensuring complete coverage without excessive
+      heat accumulation
     min: 40
     max: 70
   pulseEnergy:
     value: 1.0
     unit: mJ
     confidence: 85
-    description: Pulse energy calibrated for effective contaminant removal on niobium surfaces
+    description: Pulse energy calibrated for effective contaminant removal on niobium
+      surfaces
     min: 0.5
     max: 2.0
 regulatoryStandards:
@@ -205,7 +214,8 @@ images:
     alt: Niobium surface undergoing laser cleaning showing precise contamination removal
     url: /images/niobium-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Niobium surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Niobium surface after laser cleaning showing detailed
+      surface structure
     url: /images/niobium-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -232,7 +242,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -264,7 +273,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

@@ -5,49 +5,49 @@ title: Terracotta Laser Cleaning
 description: Laser cleaning parameters for Brick
 materialProperties:
   density:
-    value: 1.7
+    value: 1.95
     unit: "g/cm\xB3"
     confidence: 92
     description: Bulk density of typical terracotta accounting for porosity
     min: 0.6
     max: 2.8
   thermalConductivity:
-    value: 1.29
+    value: 1.28
     unit: "W/m\xB7K"
     confidence: 85
     description: Thermal conductivity at room temperature
     min: 0.08
     max: 2.5
   hardness:
-    value: 4.0
+    value: 3.5
     unit: Mohs
     confidence: 85
     description: Mohs hardness scale
     min: 2
     max: 6
   youngsModulus:
-    value: 27.5
+    value: 22.0
     unit: GPa
     confidence: 80
     description: Elastic modulus of terracotta
     min: 1.2
     max: 32.6
   thermalExpansion:
-    value: 12.5
+    value: 5.8
     unit: "10\u207B\u2076/\xB0C"
     confidence: 82
     description: "Coefficient of thermal expansion (20-500\xB0C)"
     min: 4.2
     max: 19.8
   thermalDiffusivity:
-    value: 0.55
+    value: 0.52
     unit: "mm\xB2/s"
     confidence: 80
     description: Thermal diffusivity at room temperature
     min: 0.1
     max: 1
   specificHeat:
-    value: 900
+    value: 880.0
     unit: "J/kg\xB7K"
     confidence: 85
     description: Specific heat capacity at room temperature
@@ -76,7 +76,7 @@ materialProperties:
     max: null
   absorptionCoefficient:
     value: 0.85
-    unit: ""
+    unit: ''
     confidence: 82
     description: Optical absorption coefficient for typical laser wavelengths (1064nm)
     min: null
@@ -94,37 +94,41 @@ materialProperties:
     min: 0.5
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 7.75
+    value: 8.2
   laserReflectivity:
     confidence: 0.7
     max: 70.0
     min: 10.0
     source: default_from_category_range
     unit: '%'
-    value: 40.0
+    value: 36.2
   tensileStrength:
     confidence: 0.7
     max: 15.0
     min: 1.0
     source: default_from_category_range
     unit: MPa
-    value: 8.0
+    value: 3.2
   thermalDestructionPoint:
     confidence: 0.7
     max: 1200.0
     min: 500.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 850.0
+    value: 870.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: spalling
+    value: 2.8
   compressiveStrength:
-    value: 40
+    value: 45.0
     unit: MPa
     confidence: 0.85
-    description: "Compressive strength of terracotta masonry is primarily governed by its porous, vitrified microstructure formed from fired clay. The strength depends on clay composition, firing temperature (typically 900-1100\xB0C), and resulting porosity, which typically ranges from 5-20%. Failure occurs through brittle fracture along microcracks and pores."
+    description: "Compressive strength of terracotta masonry is primarily governed\
+      \ by its porous, vitrified microstructure formed from fired clay. The strength\
+      \ depends on clay composition, firing temperature (typically 900-1100\xB0C),\
+      \ and resulting porosity, which typically ranges from 5-20%. Failure occurs\
+      \ through brittle fracture along microcracks and pores."
     source: ai_research_from_mechanical_properties
     min: 20
     max: 100
@@ -136,14 +140,16 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Terracotta surface cleaning without thermal damage
+    description: Optimal average power for Terracotta surface cleaning without thermal
+      damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength for optimal Terracotta absorption and minimal substrate damage
+    description: Near-infrared wavelength for optimal Terracotta absorption and minimal
+      substrate damage
     min: 532
     max: 10640
   spotSize:
@@ -178,7 +184,8 @@ machineSettings:
     value: 2.5
     unit: "J/cm\xB2"
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without damaging Terracotta substrate
+    description: Fluence threshold for effective contaminant removal without damaging
+      Terracotta substrate
     min: 1.5
     max: 4.0
   overlapRatio:
@@ -209,10 +216,12 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Terracotta surface undergoing laser cleaning showing precise contamination removal
+    alt: Terracotta surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/terracotta-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Terracotta surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Terracotta surface after laser cleaning showing detailed
+      surface structure
     url: /images/terracotta-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -239,7 +248,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -271,7 +279,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

@@ -5,49 +5,49 @@ title: Silicon Laser Cleaning
 description: Laser cleaning parameters for Gallium Arsenide
 materialProperties:
   density:
-    value: 4.73
+    value: 2.329
     unit: "g/cm\xB3"
     confidence: 98
     description: "Density of pure silicon at 25\xB0C"
     min: 2.0
     max: 5.6
   thermalConductivity:
-    value: 78.1
+    value: 148.0
     unit: "W/m\xB7K"
     confidence: 95
     description: Thermal conductivity at 300K for pure silicon
     min: 0.2
     max: 156
   hardness:
-    value: 4.5
+    value: 11.5
     unit: Mohs
     confidence: 88
     description: Mohs hardness scale value
     min: 5.4
     max: 30.1
   youngsModulus:
-    value: 97.5
+    value: 130.0
     unit: GPa
     confidence: 96
     description: Young's modulus along <100> direction
     min: 53.0
     max: 442.4
   thermalExpansion:
-    value: 11.15
+    value: 2.616
     unit: "\xD710\u207B\u2076/K"
     confidence: 92
     description: "Coefficient of thermal expansion at 25\xB0C"
     min: 2.6
     max: 19.7
   thermalDiffusivity:
-    value: 45.05
+    value: 88.0
     unit: "cm\xB2/s"
     confidence: 90
     description: Thermal diffusivity at room temperature
     min: 0.1
     max: 90
   specificHeat:
-    value: 600.0
+    value: 705.0
     unit: "J/kg\xB7K"
     confidence: 93
     description: "Specific heat capacity at 25\xB0C"
@@ -62,14 +62,14 @@ materialProperties:
     max: null
   reflectivity:
     value: 0.35
-    unit: ""
+    unit: ''
     confidence: 87
     description: Reflectivity at 1064nm wavelength
     min: null
     max: null
   refractiveIndex:
     value: 3.42
-    unit: ""
+    unit: ''
     confidence: 95
     description: Refractive index at 1550nm wavelength
     min: null
@@ -108,32 +108,32 @@ materialProperties:
     min: 0.01
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 50.01
+    value: 35.2
   laserReflectivity:
     confidence: 0.7
     max: 70.0
     min: 10.0
     source: default_from_category_range
     unit: '%'
-    value: 40.0
+    value: 32.7
   tensileStrength:
     confidence: 0.7
     max: 7000.0
     min: 50.0
     source: default_from_category_range
     unit: MPa
-    value: 3525.0
+    value: 7000.0
   thermalDestructionPoint:
     confidence: 0.7
     max: 1414.0
     min: 100.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 757.0
+    value: 1687.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: melting
+    value: 1687.0
 applications:
 - 'Aerospace: Precision cleaning of aerospace components and assemblies'
 machineSettings:
@@ -141,7 +141,8 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Silicon surface cleaning without substrate damage
+    description: Optimal average power for Silicon surface cleaning without substrate
+      damage
     min: 80
     max: 120
   wavelength:
@@ -162,14 +163,16 @@ machineSettings:
     value: 100
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning coverage while maintaining thermal control
+    description: High repetition rate for efficient cleaning coverage while maintaining
+      thermal control
     min: 50
     max: 200
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant ablation with minimal thermal diffusion
+    description: Nanosecond pulse duration for effective contaminant ablation with
+      minimal thermal diffusion
     min: 5
     max: 20
   scanSpeed:
@@ -183,14 +186,16 @@ machineSettings:
     value: 2.5
     unit: "J/cm\xB2"
     confidence: 90
-    description: Minimum fluence required for effective contaminant removal from Silicon surface
+    description: Minimum fluence required for effective contaminant removal from Silicon
+      surface
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 70
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for uniform cleaning without excessive heat accumulation
+    description: Optimal pulse overlap for uniform cleaning without excessive heat
+      accumulation
     min: 50
     max: 85
   passCount:
@@ -217,7 +222,8 @@ images:
     alt: Silicon surface undergoing laser cleaning showing precise contamination removal
     url: /images/silicon-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Silicon surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Silicon surface after laser cleaning showing detailed
+      surface structure
     url: /images/silicon-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -244,7 +250,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -276,7 +281,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

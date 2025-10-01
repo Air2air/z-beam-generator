@@ -5,49 +5,49 @@ title: Phenolic Resin Composites Laser Cleaning
 description: Laser cleaning parameters for Carbon Fiber Reinforced Polymer
 materialProperties:
   density:
-    value: 4.25
+    value: 1.38
     unit: "g/cm\xB3"
     confidence: 95
     description: Typical density of phenolic resin composites with fiber reinforcement
     min: 0.5
     max: 8
   thermalConductivity:
-    value: 200.05
+    value: 0.35
     unit: "W/m\xB7K"
     confidence: 90
     description: Low thermal conductivity typical of phenolic composites
     min: 0.1
     max: 400
   tensileStrength:
-    value: 3025.0
+    value: 41.0
     unit: MPa
     confidence: 92
     description: Typical tensile strength for fiber-reinforced phenolic composites
     min: 0
     max: 2748.5
   hardness:
-    value: 55.0
+    value: 85.0
     unit: Shore D
     confidence: 88
     description: Hardness measurement on Shore D scale
     min: 15.5
     max: 129.5
   youngsModulus:
-    value: 750.0
+    value: 760.0
     unit: GPa
     confidence: 90
     description: Elastic modulus of phenolic composite materials
     min: 0
     max: 274.999
   thermalExpansion:
-    value: 124.5
+    value: 125.0
     unit: "\u03BCm/m\xB7\xB0C"
     confidence: 88
     description: Coefficient of thermal expansion at room temperature
     min: 0
     max: 241.55
   specificHeat:
-    value: 1000.0
+    value: 1200.0
     unit: "J/kg\xB7K"
     confidence: 85
     description: Specific heat capacity at room temperature
@@ -62,7 +62,7 @@ materialProperties:
     max: null
   reflectivity:
     value: 0.15
-    unit: ""
+    unit: ''
     confidence: 80
     description: Surface reflectivity at common laser wavelengths (1064 nm)
     min: null
@@ -115,32 +115,32 @@ materialProperties:
     min: 0.05
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 100.03
+    value: 92.7
   laserReflectivity:
     confidence: 0.7
     max: 80.0
     min: 2.0
     source: default_from_category_range
     unit: '%'
-    value: 41.0
+    value: 38.5
   thermalDiffusivity:
     confidence: 0.7
     max: 180.0
     min: 0.1
     source: default_from_category_range
     unit: "mm\xB2/s"
-    value: 90.05
+    value: 0.18
   thermalDestructionPoint:
     confidence: 0.7
     max: 2000.0
     min: 150.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 1075.0
+    value: 1073.15
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: decomposition
+    value: 623.15
 applications:
 - 'Manufacturing: Industrial surface preparation and contamination removal'
 - 'Aerospace: Precision cleaning of aerospace components and assemblies'
@@ -151,7 +151,8 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for phenolic resin composite cleaning without thermal damage
+    description: Optimal average power for phenolic resin composite cleaning without
+      thermal damage
     min: 80
     max: 120
   wavelength:
@@ -186,7 +187,8 @@ machineSettings:
     value: 10
     unit: ns
     confidence: 85
-    description: Optimal pulse duration for efficient material removal with minimal heat affected zone
+    description: Optimal pulse duration for efficient material removal with minimal
+      heat affected zone
     min: 5
     max: 20
   scanSpeed:
@@ -214,7 +216,8 @@ machineSettings:
     value: 12.7
     unit: "J/cm\xB2"
     confidence: 86
-    description: Calculated energy density based on power, spot size, and repetition rate
+    description: Calculated energy density based on power, spot size, and repetition
+      rate
     min: 8.0
     max: 15.0
 regulatoryStandards:
@@ -224,10 +227,12 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Phenolic Resin Composites surface undergoing laser cleaning showing precise contamination removal
+    alt: Phenolic Resin Composites surface undergoing laser cleaning showing precise
+      contamination removal
     url: /images/phenolic-resin-composites-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Phenolic Resin Composites surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Phenolic Resin Composites surface after laser cleaning
+      showing detailed surface structure
     url: /images/phenolic-resin-composites-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -254,7 +259,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -286,7 +290,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

@@ -5,56 +5,56 @@ title: Indium Laser Cleaning
 description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
-    value: 11.57
+    value: 7.31
     unit: "g/cm\xB3"
     confidence: 98
     description: "Density of pure indium at 20\xB0C"
     min: 0.53
     max: 22.6
   thermalConductivity:
-    value: 217.5
+    value: 81.8
     unit: "W/m\xB7K"
     confidence: 92
     description: "Thermal conductivity at 25\xB0C"
     min: 6.0
     max: 429.0
   tensileStrength:
-    value: 1501.5
+    value: 2.5
     unit: MPa
     confidence: 84
     description: Ultimate tensile strength of pure indium
     min: 0
     max: 1363.6
   hardness:
-    value: 1750.25
+    value: 0.9
     unit: HB
     confidence: 89
     description: Brinell hardness of annealed indium
     min: 0
     max: 3772.91
   youngsModulus:
-    value: 208.0
+    value: 10.7
     unit: GPa
     confidence: 85
     description: Young's modulus of pure indium
     min: 0
     max: 579.82
   thermalExpansion:
-    value: 14.8
+    value: 32.1
     unit: "\u03BCm/m\xB7K"
     confidence: 90
     description: "Coefficient of linear thermal expansion at 25\xB0C"
     min: 1.7
     max: 34.9
   specificHeat:
-    value: 500.0
+    value: 233.0
     unit: "J/kg\xB7K"
     confidence: 91
     description: "Specific heat capacity at 25\xB0C"
     min: 0
     max: 1994.6
   thermalDiffusivity:
-    value: 87.1
+    value: 86.7
     unit: "mm\xB2/s"
     confidence: 88
     description: Thermal diffusivity calculated from thermal properties
@@ -78,7 +78,8 @@ materialProperties:
     value: 0.15
     unit: "J/cm\xB2"
     confidence: 78
-    description: Estimated laser ablation threshold for nanosecond pulses at 1064 nm
+    description: Estimated laser ablation threshold for nanosecond pulses at 1064
+      nm
     min: null
     max: null
   crystallineStructure:
@@ -108,7 +109,7 @@ materialProperties:
     min: 0.02
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 50.01
+    value: 58.7
   laserReflectivity:
     confidence: 0.7
     max: 98.0
@@ -122,11 +123,11 @@ materialProperties:
     min: -38.8
     source: default_from_category_range
     unit: "\xB0C"
-    value: 1691.6
+    value: 2000.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: melting
+    value: 429.75
 applications:
 - 'Nuclear: Decontamination and surface cleaning in nuclear facilities'
 - 'Manufacturing: Industrial surface preparation and contamination removal'
@@ -156,7 +157,8 @@ machineSettings:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning with minimal heat accumulation
+    description: Optimal repetition rate for efficient cleaning with minimal heat
+      accumulation
     min: 20
     max: 100
   fluenceThreshold:
@@ -204,7 +206,8 @@ images:
     alt: Indium surface undergoing laser cleaning showing precise contamination removal
     url: /images/indium-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Indium surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Indium surface after laser cleaning showing detailed
+      surface structure
     url: /images/indium-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -231,7 +234,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -263,7 +265,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

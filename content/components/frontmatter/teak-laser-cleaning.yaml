@@ -5,28 +5,28 @@ title: Teak Laser Cleaning
 description: Laser cleaning parameters for Ash
 materialProperties:
   density:
-    value: 0.69
+    value: 0.655
     unit: "g/cm\xB3"
     confidence: 95
     description: Average density of seasoned teak wood at 12% moisture content
     min: 0.12
     max: 1.25
   thermalConductivity:
-    value: 0.22
+    value: 0.163
     unit: "W/m\xB7K"
     confidence: 88
     description: Thermal conductivity perpendicular to grain direction
     min: 0.04
     max: 0.4
   tensileStrength:
-    value: 110.0
+    value: 95.0
     unit: MPa
     confidence: 90
     description: Tensile strength parallel to grain direction
     min: 2.5
     max: 152.5
   hardness:
-    value: 2510.0
+    value: 1000.0
     unit: lbf
     confidence: 92
     description: Janka hardness test result
@@ -40,14 +40,14 @@ materialProperties:
     min: 0
     max: 3299.24
   thermalExpansion:
-    value: 30.0
+    value: 5.2
     unit: "1/\xB0C"
     confidence: 82
     description: Coefficient of thermal expansion tangential to grain
     min: 0
     max: 33.0
   specificHeat:
-    value: 1650.0
+    value: 1600.0
     unit: "J/kg\xB7K"
     confidence: 85
     description: Specific heat capacity at room temperature
@@ -55,14 +55,14 @@ materialProperties:
     max: 2555.0
   absorptionCoefficient:
     value: 0.75
-    unit: ""
+    unit: ''
     confidence: 80
     description: Estimated absorption coefficient for near-infrared lasers (1064 nm)
     min: null
     max: null
   reflectivity:
     value: 0.25
-    unit: ""
+    unit: ''
     confidence: 78
     description: Approximate reflectivity at common laser wavelengths
     min: null
@@ -89,10 +89,11 @@ materialProperties:
     min: null
     max: null
   thermalDiffusivity:
-    value: 0.2
+    value: 0.16
     unit: "m\xB2/s"
     confidence: 83
-    description: Calculated thermal diffusivity from conductivity, density, and specific heat
+    description: Calculated thermal diffusivity from conductivity, density, and specific
+      heat
     min: 0
     max: 0.209
   laserAbsorption:
@@ -101,25 +102,25 @@ materialProperties:
     min: 1.0
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 25.5
+    value: 32.7
   laserReflectivity:
     confidence: 0.7
     max: 60.0
     min: 10.0
     source: default_from_category_range
     unit: '%'
-    value: 35.0
+    value: 42.7
   thermalDestructionPoint:
     confidence: 0.7
     max: 500.0
     min: 200.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 350.0
+    value: 380.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: carbonization
+    value: 573.0
 applications:
 - 'Restoration: Gentle cleaning for restoration and conservation applications'
 machineSettings:
@@ -169,7 +170,8 @@ machineSettings:
     value: 2.5
     unit: "J/cm\xB2"
     confidence: 91
-    description: Threshold fluence for effective contaminant removal without wood damage
+    description: Threshold fluence for effective contaminant removal without wood
+      damage
     min: 1.5
     max: 4.0
   overlapRatio:
@@ -204,7 +206,8 @@ images:
     alt: Teak surface undergoing laser cleaning showing precise contamination removal
     url: /images/teak-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Teak surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Teak surface after laser cleaning showing detailed surface
+      structure
     url: /images/teak-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -231,7 +234,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -263,7 +265,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

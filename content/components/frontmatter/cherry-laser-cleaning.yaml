@@ -5,21 +5,21 @@ title: Cherry Laser Cleaning
 description: Laser cleaning parameters for Ash
 materialProperties:
   density:
-    value: 0.69
+    value: 0.67
     unit: "g/cm\xB3"
     confidence: 95
     description: Average density of cherry wood at 12% moisture content
     min: 0.12
     max: 1.25
   thermalConductivity:
-    value: 0.22
+    value: 0.15
     unit: "W/m\xB7K"
     confidence: 90
     description: Thermal conductivity perpendicular to grain at room temperature
     min: 0.04
     max: 0.4
   tensileStrength:
-    value: 110.0
+    value: 95.0
     unit: MPa
     confidence: 90
     description: Tensile strength parallel to grain
@@ -40,14 +40,14 @@ materialProperties:
     min: 0
     max: 3299.24
   thermalExpansion:
-    value: 30.0
+    value: 3.7
     unit: "10^-6/\xB0C"
     confidence: 88
     description: Coefficient of thermal expansion perpendicular to grain
     min: 0
     max: 33.0
   specificHeat:
-    value: 1650.0
+    value: 1600.0
     unit: "J/kg\xB7K"
     confidence: 92
     description: Specific heat capacity at room temperature
@@ -55,14 +55,15 @@ materialProperties:
     max: 2555.0
   absorptionCoefficient:
     value: 0.85
-    unit: ""
+    unit: ''
     confidence: 82
-    description: Estimated absorption coefficient for near-infrared laser wavelengths (1064 nm)
+    description: Estimated absorption coefficient for near-infrared laser wavelengths
+      (1064 nm)
     min: null
     max: null
   reflectivity:
     value: 0.15
-    unit: ""
+    unit: ''
     confidence: 80
     description: Estimated reflectivity at common laser cleaning wavelengths
     min: null
@@ -71,7 +72,8 @@ materialProperties:
     value: 0.8
     unit: "J/cm\xB2"
     confidence: 85
-    description: Estimated laser ablation threshold for nanosecond pulses at 1064 nm
+    description: Estimated laser ablation threshold for nanosecond pulses at 1064
+      nm
     min: null
     max: null
   porosity:
@@ -101,32 +103,32 @@ materialProperties:
     min: 1.0
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 25.5
+    value: 32.7
   laserReflectivity:
     confidence: 0.7
     max: 60.0
     min: 10.0
     source: default_from_category_range
     unit: '%'
-    value: 35.0
+    value: 32.7
   thermalDiffusivity:
     confidence: 0.7
     max: 0.4
     min: 0.0001
     source: default_from_category_range
     unit: "mm\xB2/s"
-    value: 0.2
+    value: 0.16
   thermalDestructionPoint:
     confidence: 0.7
     max: 500.0
     min: 200.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 350.0
+    value: 427.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: carbonization
+    value: 573.0
 applications:
 - 'Construction: Surface preparation and cleaning for construction materials'
 - 'Restoration: Gentle cleaning for restoration and conservation applications'
@@ -135,14 +137,16 @@ machineSettings:
     value: 25
     unit: W
     confidence: 90
-    description: Optimal average power for Cherry surface cleaning without thermal damage
+    description: Optimal average power for Cherry surface cleaning without thermal
+      damage
     min: 15
     max: 40
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength for moderate Cherry wood absorption with controlled penetration
+    description: Near-IR wavelength for moderate Cherry wood absorption with controlled
+      penetration
     min: 355
     max: 10640
   spotSize:
@@ -163,7 +167,8 @@ machineSettings:
     value: 100
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient contaminant removal with minimal substrate heating
+    description: Nanosecond pulse duration for efficient contaminant removal with
+      minimal substrate heating
     min: 50
     max: 200
   scanSpeed:
@@ -177,14 +182,16 @@ machineSettings:
     value: 2.5
     unit: "J/cm\xB2"
     confidence: 88
-    description: Threshold fluence for effective contaminant removal without wood damage
+    description: Threshold fluence for effective contaminant removal without wood
+      damage
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 85
-    description: Optimal beam overlap for uniform cleaning without excessive energy deposition
+    description: Optimal beam overlap for uniform cleaning without excessive energy
+      deposition
     min: 30
     max: 70
   passCount:
@@ -212,7 +219,8 @@ images:
     alt: Cherry surface undergoing laser cleaning showing precise contamination removal
     url: /images/cherry-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Cherry surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Cherry surface after laser cleaning showing detailed
+      surface structure
     url: /images/cherry-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -239,7 +247,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -271,7 +278,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

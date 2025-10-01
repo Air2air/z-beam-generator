@@ -5,49 +5,49 @@ title: Molybdenum Laser Cleaning
 description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
-    value: 11.57
+    value: 10.22
     unit: "g/cm\xB3"
     confidence: 98
     description: Density of pure molybdenum at room temperature
     min: 0.53
     max: 22.6
   thermalConductivity:
-    value: 217.5
+    value: 138.0
     unit: "W/m\xB7K"
     confidence: 95
     description: Thermal conductivity at room temperature
     min: 6.0
     max: 429.0
   tensileStrength:
-    value: 1501.5
+    value: 550.0
     unit: MPa
     confidence: 88
     description: Typical tensile strength for annealed molybdenum
     min: 0
     max: 1363.6
   hardness:
-    value: 1750.25
+    value: 1530.0
     unit: HV
     confidence: 85
     description: Vickers hardness for pure molybdenum
     min: 0
     max: 3772.91
   youngsModulus:
-    value: 208.0
+    value: 324.8
     unit: GPa
     confidence: 95
     description: Elastic modulus at room temperature
     min: 0
     max: 579.82
   thermalExpansion:
-    value: 14.8
+    value: 4.8
     unit: "\xD710\u207B\u2076/K"
     confidence: 92
     description: "Coefficient of thermal expansion at 20\xB0C"
     min: 1.7
     max: 34.9
   specificHeat:
-    value: 500.0
+    value: 251.0
     unit: "J/kg\xB7K"
     confidence: 90
     description: Specific heat capacity at room temperature
@@ -89,7 +89,7 @@ materialProperties:
     min: null
     max: null
   thermalDiffusivity:
-    value: 87.1
+    value: 54.3
     unit: "mm\xB2/s"
     confidence: 90
     description: Thermal diffusivity at room temperature
@@ -101,25 +101,25 @@ materialProperties:
     min: 0.02
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 50.01
+    value: 39.2
   laserReflectivity:
     confidence: 0.7
     max: 98.0
     min: 5.0
     source: default_from_category_range
     unit: '%'
-    value: 51.5
+    value: 57.2
   thermalDestructionPoint:
     confidence: 0.7
     max: 3422.0
     min: -38.8
     source: default_from_category_range
     unit: "\xB0C"
-    value: 1691.6
+    value: 2896.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: melting
+    value: 2896.0
 applications:
 - 'Manufacturing: Industrial surface preparation and contamination removal'
 - 'Electronics: Precision cleaning of electronic components and circuit boards'
@@ -130,7 +130,8 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Molybdenum surface cleaning without excessive melting
+    description: Optimal average power for Molybdenum surface cleaning without excessive
+      melting
     min: 80
     max: 120
   wavelength:
@@ -144,14 +145,16 @@ machineSettings:
     value: 50
     unit: "\u03BCm"
     confidence: 90
-    description: Optimal beam diameter for precise cleaning with sufficient energy density
+    description: Optimal beam diameter for precise cleaning with sufficient energy
+      density
     min: 30
     max: 100
   repetitionRate:
     value: 100
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning with adequate cooling between pulses
+    description: Optimal repetition rate for efficient cleaning with adequate cooling
+      between pulses
     min: 50
     max: 200
   fluenceThreshold:
@@ -165,7 +168,8 @@ machineSettings:
     value: 10
     unit: ns
     confidence: 85
-    description: Optimal pulse duration balancing ablation efficiency and thermal management
+    description: Optimal pulse duration balancing ablation efficiency and thermal
+      management
     min: 5
     max: 20
   scanSpeed:
@@ -179,7 +183,8 @@ machineSettings:
     value: 50
     unit: '%'
     confidence: 86
-    description: Optimal pulse overlap for complete surface coverage without excessive processing
+    description: Optimal pulse overlap for complete surface coverage without excessive
+      processing
     min: 30
     max: 70
   passCount:
@@ -193,7 +198,8 @@ machineSettings:
     value: 12.7
     unit: "J/cm\xB2"
     confidence: 85
-    description: Calculated energy density based on power, spot size, and repetition rate
+    description: Calculated energy density based on power, spot size, and repetition
+      rate
     min: 8.5
     max: 16.9
 regulatoryStandards:
@@ -203,10 +209,12 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Molybdenum surface undergoing laser cleaning showing precise contamination removal
+    alt: Molybdenum surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/molybdenum-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Molybdenum surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Molybdenum surface after laser cleaning showing detailed
+      surface structure
     url: /images/molybdenum-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -233,7 +241,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -265,7 +272,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

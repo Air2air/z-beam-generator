@@ -12,35 +12,35 @@ materialProperties:
     min: 2.0
     max: 5.6
   thermalConductivity:
-    value: 78.1
+    value: 8.7
     unit: "W/m\xB7K"
     confidence: 85
     description: Thermal conductivity for Si0.5Ge0.5 at room temperature
     min: 0.2
     max: 156
   hardness:
-    value: 4.5
+    value: 11.5
     unit: GPa
     confidence: 85
     description: Vickers hardness for SiGe alloys
     min: 5.4
     max: 30.1
   youngsModulus:
-    value: 97.5
+    value: 156.5
     unit: GPa
     confidence: 90
     description: Young's modulus for SiGe crystalline structure
     min: 53.0
     max: 442.4
   thermalExpansion:
-    value: 11.15
+    value: 4.5
     unit: "\xD710\u207B\u2076/K"
     confidence: 88
     description: Coefficient of thermal expansion for SiGe alloys
     min: 2.6
     max: 19.7
   specificHeat:
-    value: 600.0
+    value: 330.0
     unit: "J/kg\xB7K"
     confidence: 92
     description: Specific heat capacity at room temperature
@@ -55,14 +55,14 @@ materialProperties:
     max: null
   reflectivity:
     value: 0.38
-    unit: ""
+    unit: ''
     confidence: 92
     description: Reflectivity at 1064 nm for polished surface
     min: null
     max: null
   refractiveIndex:
     value: 4.1
-    unit: ""
+    unit: ''
     confidence: 94
     description: Refractive index at 1064 nm wavelength
     min: null
@@ -101,39 +101,39 @@ materialProperties:
     min: 0.01
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 50.01
+    value: 67.4
   laserReflectivity:
     confidence: 0.7
     max: 70.0
     min: 10.0
     source: default_from_category_range
     unit: '%'
-    value: 40.0
+    value: 36.2
   tensileStrength:
     confidence: 0.7
     max: 7000.0
     min: 50.0
     source: default_from_category_range
     unit: MPa
-    value: 3525.0
+    value: 1200.0
   thermalDiffusivity:
     confidence: 0.7
     max: 90.0
     min: 0.1
     source: default_from_category_range
     unit: "mm\xB2/s"
-    value: 45.05
+    value: 34.2
   thermalDestructionPoint:
     confidence: 0.7
     max: 1414.0
     min: 100.0
     source: default_from_category_range
     unit: "\xB0C"
-    value: 757.0
+    value: 723.0
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: melting
+    value: 1210.0
 applications:
 - 'Electronics: Precision cleaning of electronic components and circuit boards'
 machineSettings:
@@ -141,7 +141,8 @@ machineSettings:
     value: 8
     unit: W
     confidence: 90
-    description: Average power for effective contaminant removal without substrate damage
+    description: Average power for effective contaminant removal without substrate
+      damage
     min: 5
     max: 15
   wavelength:
@@ -214,10 +215,12 @@ regulatoryStandards:
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 images:
   hero:
-    alt: Silicon Germanium surface undergoing laser cleaning showing precise contamination removal
+    alt: Silicon Germanium surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/silicon-germanium-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Silicon Germanium surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Silicon Germanium surface after laser cleaning showing
+      detailed surface structure
     url: /images/silicon-germanium-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -244,7 +247,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -276,7 +278,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture

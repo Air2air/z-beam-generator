@@ -5,49 +5,49 @@ title: Gold Laser Cleaning
 description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
-    value: 11.57
+    value: 19.32
     unit: "g/cm\xB3"
     confidence: 99
     description: "Density of pure gold at 20\xB0C"
     min: 0.53
     max: 22.6
   thermalConductivity:
-    value: 217.5
+    value: 317.0
     unit: "W/m\xB7K"
     confidence: 95
     description: Thermal conductivity at 300K
     min: 6.0
     max: 429.0
   hardness:
-    value: 1750.25
+    value: 25.0
     unit: HV
     confidence: 88
     description: Vickers hardness of annealed gold
     min: 0
     max: 3772.91
   youngsModulus:
-    value: 208.0
+    value: 79.0
     unit: GPa
     confidence: 94
     description: Young's modulus of pure gold
     min: 0
     max: 579.82
   thermalExpansion:
-    value: 14.8
+    value: 14.2
     unit: "10\u207B\u2076/K"
     confidence: 92
     description: "Coefficient of linear thermal expansion at 25\xB0C"
     min: 1.7
     max: 34.9
   thermalDiffusivity:
-    value: 87.1
+    value: 127.0
     unit: "mm\xB2/s"
     confidence: 90
     description: Thermal diffusivity at room temperature
     min: 0
     max: 191.376
   specificHeat:
-    value: 500.0
+    value: 129.1
     unit: "J/kg\xB7K"
     confidence: 93
     description: "Specific heat capacity at 25\xB0C"
@@ -101,32 +101,32 @@ materialProperties:
     min: 0.02
     source: default_from_category_range
     unit: "cm\u207B\xB9"
-    value: 50.01
+    value: 2.3
   laserReflectivity:
     confidence: 0.7
     max: 98.0
     min: 5.0
     source: default_from_category_range
     unit: '%'
-    value: 51.5
+    value: 97.8
   tensileStrength:
     confidence: 0.7
     max: 3000.0
     min: 3.0
     source: default_from_category_range
     unit: MPa
-    value: 1501.5
+    value: 220.0
   thermalDestructionPoint:
     confidence: 0.7
     max: 3422.0
     min: -38.8
     source: default_from_category_range
     unit: "\xB0C"
-    value: 1691.6
+    value: 1337.33
   thermalDestructionType:
     confidence: 0.8
     source: category_default
-    value: melting
+    value: 1337.33
 applications:
 - 'Aerospace: Precision cleaning of aerospace components and assemblies'
 - 'Food Processing: Sanitary surface cleaning for food processing equipment'
@@ -136,14 +136,16 @@ machineSettings:
     value: 15
     unit: W
     confidence: 90
-    description: Average power for effective Gold oxide removal without substrate damage
+    description: Average power for effective Gold oxide removal without substrate
+      damage
     min: 8
     max: 25
   wavelength:
     value: 532
     unit: nm
     confidence: 92
-    description: Green wavelength for optimal Gold absorption (reflectivity ~40% vs 95%+ at 1064nm)
+    description: Green wavelength for optimal Gold absorption (reflectivity ~40% vs
+      95%+ at 1064nm)
     min: 355
     max: 10640
   spotSize:
@@ -212,7 +214,8 @@ images:
     alt: Gold surface undergoing laser cleaning showing precise contamination removal
     url: /images/gold-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Gold surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Gold surface after laser cleaning showing detailed surface
+      structure
     url: /images/gold-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -239,7 +242,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -271,7 +273,8 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
+  description: Gentle removal of accumulated contamination while preserving original
+    material
   industries:
   - Cultural Heritage
   - Architecture
