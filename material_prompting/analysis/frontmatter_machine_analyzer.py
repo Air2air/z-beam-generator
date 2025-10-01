@@ -23,9 +23,9 @@ from typing import Dict, Any, List, Optional, Tuple
 from dataclasses import dataclass, field
 from enum import Enum
 
-# Import base comprehensive analysis capabilities
-from .comprehensive_analyzer import (
-    ComprehensiveValueAnalyzer,
+# Import base analysis capabilities
+from .analyzer import (
+    ValueAnalyzer,
     PropertyAnalysis,
     ValidationLevel,
     AccuracyClass,
@@ -147,7 +147,7 @@ class FrontmatterMachineAnalyzer:
     
     def __init__(self):
         """Initialize frontmatter and machine settings analyzer"""
-        self.base_analyzer = ComprehensiveValueAnalyzer()
+        self.base_analyzer = ValueAnalyzer()
         self.laser_processing_database = self._initialize_laser_database()
         self.material_category_specs = self._initialize_category_specs()
         self.industry_standards = self._initialize_industry_standards()

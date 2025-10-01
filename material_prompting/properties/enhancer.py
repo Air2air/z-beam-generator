@@ -23,10 +23,10 @@ from typing import Dict, Any, List, Optional, Tuple
 from dataclasses import dataclass
 from enum import Enum
 
-# Import comprehensive analysis capabilities
+# Import analysis capabilities
 try:
-    from ..analysis.comprehensive_analyzer import (
-        ComprehensiveValueAnalyzer,
+    from ..analysis.analyzer import (
+        ValueAnalyzer,
         PropertyAnalysis,
         ValidationLevel,
         AccuracyClass,
@@ -35,7 +35,7 @@ try:
     ANALYSIS_AVAILABLE = True
 except ImportError:
     ANALYSIS_AVAILABLE = False
-    logging.warning("Comprehensive analysis not available - using basic validation")
+    logging.warning("Analysis not available - using basic validation")
 
 logger = logging.getLogger(__name__)
 
@@ -280,7 +280,7 @@ class MaterialPropertiesEnhancer:
             
             if comprehensive_analysis and ANALYSIS_AVAILABLE:
                 try:
-                    analyzer = ComprehensiveValueAnalyzer(self.material_generator)
+                    analyzer = ValueAnalyzer(self.material_generator)
                     self.logger.info(f"Performing comprehensive analysis for {material_name}")
                     
                     # Perform comprehensive analysis of all properties
