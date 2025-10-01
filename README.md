@@ -116,7 +116,7 @@ The system now uses a **frontmatter-first approach** where validated material da
 **Key Achievements:**
 - ✅ **Pure Numeric Values**: All property and machine setting values are now numeric (int/float)
 - ✅ **Clean Unit Separation**: Units stored in dedicated `*Unit` fields (e.g., `densityUnit: "g/cm³"`)
-- ✅ **Min/Max Field Processing**: Fixed UnifiedPropertyEnhancementService to process all Min/Max fields
+- ✅ **Min/Max Field Processing**: Fixed PropertyEnhancementService to process all Min/Max fields
 - ✅ **Schema Validation**: Updated JSON schema to enforce numeric types for all value fields
 - ✅ **Comprehensive Testing**: Enhanced test suite validates numeric-only format
 - ✅ **Mathematical Processing Ready**: Clean numeric values enable direct calculations

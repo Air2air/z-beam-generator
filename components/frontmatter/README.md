@@ -220,14 +220,14 @@ else:
 - **Clear**: Logical separation between material properties and processing parameters
 - **Schema-compliant**: Matches modern frontmatter.json schema requirements
 
-### UnifiedPropertyEnhancementService
+### PropertyEnhancementService
 Processes and enhances properties while preserving numeric format:
 
 ```python
-from components.frontmatter.enhancement.unified_property_enhancement_service import UnifiedPropertyEnhancementService
+from components.frontmatter.enhancement.unified_property_enhancement_service import PropertyEnhancementService
 
 # Apply enhancement while preserving Min/Max/Unit structure
-UnifiedPropertyEnhancementService.add_properties(frontmatter, preserve_min_max=True)
+PropertyEnhancementService.add_properties(frontmatter, preserve_min_max=True)
 ```
 
 **Key Features:**
@@ -450,7 +450,7 @@ environmentalImpact: []  # Empty
 
 - **v6.1.0**: Unit/value separation implementation
   - Added numeric-only value format
-  - Enhanced UnifiedPropertyEnhancementService
+  - Enhanced PropertyEnhancementService
   - Updated schema validation
   - Comprehensive test coverage
   
