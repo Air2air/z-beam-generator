@@ -13,7 +13,7 @@ The Z-Beam Generator now includes a comprehensive schema-based quality measureme
    - Completeness scoring with quality grades
    - Field-level analysis and recommendations
 
-2. **Advanced Quality Analyzer** (`scripts/tools/advanced_quality_analyzer.py`)
+2. **Advanced Quality Analyzer** (`scripts/tools/quality_analyzer.py`)
    - Multi-dimensional quality metrics (17 different scores)
    - Research validation depth analysis
    - Component-specific scoring (material specificity, laser relevance, safety)
@@ -90,10 +90,10 @@ python3 scripts/tools/data_completeness_analyzer.py titanium --export titanium_a
 ### Advanced Quality Assessment
 ```bash
 # Comprehensive quality analysis with all 17 metrics
-python3 scripts/tools/advanced_quality_analyzer.py titanium
+python3 scripts/tools/quality_analyzer.py titanium
 
 # Export advanced metrics
-python3 scripts/tools/advanced_quality_analyzer.py titanium --export titanium_advanced.json
+python3 scripts/tools/quality_analyzer.py titanium --export titanium_advanced.json
 ```
 
 ### Improvement Recommendations

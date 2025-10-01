@@ -33,10 +33,11 @@ except ImportError:
 from components.frontmatter.tests.test_field_ordering import TestFieldOrderingService
 
 try:
-    from components.frontmatter.tests.test_unified_property_enhancement import TestUnifiedPropertyEnhancementService, TestUnifiedPropertyEnhancementEdgeCases
+    # Property enhancement tests (2 test classes)
+    from components.frontmatter.tests.test_unified_property_enhancement import TestPropertyEnhancementService, TestPropertyEnhancementEdgeCases
 except ImportError:
     # Fallback to existing tests if new ones don't exist yet
-    from components.frontmatter.tests.test_property_enhancement import TestPropertyEnhancementService as TestUnifiedPropertyEnhancementService, TestPropertyEnhancementEdgeCases as TestUnifiedPropertyEnhancementEdgeCases
+    from components.frontmatter.tests.test_property_enhancement import TestPropertyEnhancementService, TestPropertyEnhancementEdgeCases
 
 from components.frontmatter.tests.test_validation_helpers import TestValidationHelpers, TestValidationHelpersEdgeCases
 from components.frontmatter.tests.test_integration import TestFrontmatterIntegration, TestPropertyEnhancementIntegration
@@ -48,7 +49,7 @@ def create_test_suite(test_categories=None):
     test_mapping = {
         'core': [TestStreamlinedGenerator, TestStreamlinedGeneratorEdgeCases],
         'ordering': [TestFieldOrderingService],
-        'enhancement': [TestUnifiedPropertyEnhancementService, TestUnifiedPropertyEnhancementEdgeCases],
+        'enhancement': [TestPropertyEnhancementService, TestPropertyEnhancementEdgeCases],
         'validation': [TestValidationHelpers, TestValidationHelpersEdgeCases],
         'integration': [TestFrontmatterIntegration, TestPropertyEnhancementIntegration]
     }
