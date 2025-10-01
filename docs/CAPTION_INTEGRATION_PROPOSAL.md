@@ -1,4 +1,4 @@
-# Enhanced Caption Generator Integration Proposal
+# Caption Generator Integration Proposal
 
 ## 🎯 Integration Strategy
 
@@ -7,8 +7,8 @@
 Base Frontmatter → Tags → JSON-LD → Metatags → Caption → Unified Output
 ```
 
-### Proposed Enhancement Location
-**Replace step 2.4** in `single_frontmatter_orchestration.py` with enhanced caption generation.
+### Proposed Integration Location
+**Replace step 2.4** in `single_frontmatter_orchestration.py` with improved caption generation.
 
 ## 📍 Specific Integration Points
 
@@ -25,17 +25,17 @@ def _orchestrate_caption_component(self, material_name: str, frontmatter_data: D
     # ... standard generation
 ```
 
-#### **Proposed Enhanced Implementation:**
+#### **Proposed Implementation:**
 ```python
 def _orchestrate_caption_component(self, material_name: str, frontmatter_data: Dict):
-    from components.caption.generators.enhanced_generator import EnhancedCaptionGenerator
+    from components.caption.generators.generator import CaptionGenerator
     
-    generator = EnhancedCaptionGenerator()
+    generator = CaptionGenerator()
     
-    # Enhanced material data extraction from frontmatter
-    material_data = self._extract_enhanced_material_data(frontmatter_data)
+    # Material data extraction from frontmatter
+    material_data = self._extract_material_data(frontmatter_data)
     
-    # Generate enhanced caption with quality analysis
+    # Generate caption with quality analysis
     result = generator.generate(
         material_name=material_name,
         material_data=material_data,
@@ -43,39 +43,38 @@ def _orchestrate_caption_component(self, material_name: str, frontmatter_data: D
         frontmatter_data=frontmatter_data
     )
     
-    # Parse and structure enhanced output
+    # Parse and structure output
     if result.success:
-        return self._structure_enhanced_caption_output(result.content)
+        return self._structure_caption_output(result.content)
 ```
 
 ### 2. **Secondary Integration: Component Factory**
 **File**: `components/caption/__init__.py`  
-**Enhancement**: Add enhanced generator to exports
+**Enhancement**: Add generator to exports
 
 ```python
-from .generators.enhanced_generator import EnhancedCaptionGenerator
-from .generators.generator import CaptionComponentGenerator
+from .generators.generator import CaptionGenerator, CaptionComponentGenerator
 
-__all__ = ["CaptionComponentGenerator", "EnhancedCaptionGenerator"]
+__all__ = ["CaptionComponentGenerator", "CaptionGenerator"]
 ```
 
 ### 3. **Workflow Manager Integration**
 **File**: `generators/workflow_manager.py`  
-**Enhancement**: Add enhanced caption option
+**Enhancement**: Add caption option
 
 ```python
 # In component generation logic
-if component_type == "caption" and use_enhanced:
-    from components.caption.generators.enhanced_generator import EnhancedCaptionGenerator
-    generator = EnhancedCaptionGenerator()
+if component_type == "caption":
+    from components.caption.generators.generator import CaptionGenerator
+    generator = CaptionGenerator()
 ```
 
 ## 🔧 Implementation Details
 
-### Enhanced Material Data Extraction
+### Material Data Extraction
 ```python
-def _extract_enhanced_material_data(self, frontmatter_data: Dict) -> Dict:
-    """Extract comprehensive material data for enhanced caption generation"""
+def _extract_material_data(self, frontmatter_data: Dict) -> Dict:
+    """Extract comprehensive material data for caption generation"""
     return {
         # Physical properties
         "physical_properties": frontmatter_data.get("physicalProperties", {}),
@@ -94,12 +93,12 @@ def _extract_enhanced_material_data(self, frontmatter_data: Dict) -> Dict:
     }
 ```
 
-### Enhanced Output Structure
+### Output Structure
 ```python
-def _structure_enhanced_caption_output(self, content: str) -> Dict:
-    """Structure enhanced caption output with quality metrics"""
+def _structure_caption_output(self, content: str) -> Dict:
+    """Structure caption output with quality metrics"""
     
-    # Parse enhanced content (JSON format from enhanced generator)
+    # Parse content (JSON format from generator)
     caption_data = json.loads(content)
     
     return {
@@ -107,7 +106,7 @@ def _structure_enhanced_caption_output(self, content: str) -> Dict:
         "afterText": caption_data.get("after_text", ""),
         "technicalAnalysis": caption_data.get("technical_analysis", {}),
         
-        # Enhanced quality metrics
+        # Quality metrics
         "qualityMetrics": {
             "readabilityScore": caption_data.get("readability_score", "N/A"),
             "avgSentenceLength": caption_data.get("avg_sentence_length", 0),
@@ -118,9 +117,9 @@ def _structure_enhanced_caption_output(self, content: str) -> Dict:
         
         # Generation metadata
         "generation": {
-            "method": "enhanced_orchestrated_generation",
+            "method": "orchestrated_generation",
             "timestamp": datetime.now().isoformat(),
-            "generator": "EnhancedCaptionGenerator",
+            "generator": "CaptionGenerator",
             "sections": 3,
             "enhancements": ["human_writing_patterns", "ai_detection_reduction", "readability_optimization"]
         }
@@ -134,13 +133,13 @@ def _structure_enhanced_caption_output(self, content: str) -> Dict:
 - Maintains all current data structures and APIs
 - No breaking changes to downstream consumers
 
-### 2. **Enhanced Output Quality**
+### 2. **Improved Output Quality**
 - 30% shorter content while maintaining accuracy
 - Improved readability (Graduate → College Professional)
 - Reduced AI detection scores (45 → 78+)
 - Natural, human-like professional writing
 
-### 3. **Rich Quality Metrics**
+### 3. **Quality Metrics**
 - Detailed readability analysis embedded in frontmatter
 - AI detection scoring for content quality assessment
 - Technical density measurements
