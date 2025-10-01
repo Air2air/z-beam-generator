@@ -6,16 +6,16 @@ description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
     value: 8.47
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 95
     description: Typical density for 70/30 brass (CuZn30) at room temperature
     min: 0.53
     max: 22.6
   thermalConductivity:
     value: 109.0
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 90
-    description: "Thermal conductivity of 70/30 brass at 20\xB0C"
+    description: Thermal conductivity of 70/30 brass at 20°C
     min: 6.0
     max: 429.0
   tensileStrength:
@@ -41,21 +41,21 @@ materialProperties:
     max: 579.82
   thermalExpansion:
     value: 18.7
-    unit: "10\u207B\u2076/K"
+    unit: 10⁻⁶/K
     confidence: 88
-    description: "Coefficient of thermal expansion for brass at 20-100\xB0C"
+    description: Coefficient of thermal expansion for brass at 20-100°C
     min: 1.7
     max: 34.9
   thermalDiffusivity:
     value: 34.2
-    unit: "mm\xB2/s"
+    unit: mm²/s
     confidence: 85
     description: Thermal diffusivity calculated from thermal properties
     min: 0
     max: 191.376
   specificHeat:
     value: 375.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 90
     description: Specific heat capacity at room temperature
     min: 0
@@ -69,14 +69,14 @@ materialProperties:
     max: null
   absorptionCoefficient:
     value: 12000000.0
-    unit: "m\u207B\xB9"
+    unit: m⁻¹
     confidence: 80
     description: Absorption coefficient for IR laser wavelengths
     min: null
     max: null
   ablationThreshold:
     value: 0.8
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 78
     description: Estimated ablation threshold for nanosecond pulses at 1064nm
     min: null
@@ -97,7 +97,7 @@ materialProperties:
     max: null
   surfaceRoughness:
     value: 0.4
-    unit: "\u03BCm Ra"
+    unit: μm Ra
     confidence: 80
     description: Typical as-machined surface roughness
     min: null
@@ -107,7 +107,7 @@ materialProperties:
     max: 100.0
     min: 0.02
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 38.5
   laserReflectivity:
     confidence: 0.7
@@ -121,7 +121,7 @@ materialProperties:
     max: 3422.0
     min: -38.8
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 1713.15
   thermalDestructionType:
     confidence: 0.8
@@ -148,7 +148,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 50
-    unit: "\u03BCm"
+    unit: μm
     confidence: 84
     description: Beam spot diameter for precise cleaning resolution
     min: 30
@@ -176,7 +176,7 @@ machineSettings:
     max: 2000
   fluenceThreshold:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 89
     description: Minimum fluence required for effective Brass oxide removal
     min: 1.5
@@ -185,8 +185,7 @@ machineSettings:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for uniform cleaning without excessive heat
-      accumulation
+    description: Optimal pulse overlap for uniform cleaning without excessive heat accumulation
     min: 40
     max: 70
   passCount:
@@ -212,10 +211,6 @@ images:
   hero:
     alt: Brass surface undergoing laser cleaning showing precise contamination removal
     url: /images/brass-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Brass surface after laser cleaning showing detailed surface
-      structure
-    url: /images/brass-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -225,22 +220,22 @@ environmentalImpact:
   - Medical
   - Nuclear
   quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-  sustainabilityBenefit: ''
+  sustainabilityBenefit: '
 - benefit: Water Usage Reduction
   description: Dry process requires no water
   applicableIndustries: []
-  quantifiedBenefits: ''
+  quantifiedBenefits: '
   sustainabilityBenefit: Significant water conservation in industrial processes
 - benefit: Energy Efficiency
   description: Focused energy delivery with minimal waste heat
   applicableIndustries: []
-  quantifiedBenefits: ''
-  sustainabilityBenefit: ''
+  quantifiedBenefits: '
+  sustainabilityBenefit: '
 - benefit: Air Quality Improvement
   description: Eliminates volatile organic compounds from chemical cleaning
   applicableIndustries: []
-  quantifiedBenefits: ''
-  sustainabilityBenefit: ''
+  quantifiedBenefits: '
+  sustainabilityBenefit: '
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -266,21 +261,20 @@ applicationTypes:
   - Surface energy
   - Cleanliness level
   - Roughness profile
-  typicalTolerances: ''
+  typicalTolerances: '
   objectives:
   - Adhesion enhancement
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
   - Art Conservation
   - Historical Restoration
   qualityMetrics: []
-  typicalTolerances: ''
+  typicalTolerances: '
   objectives: []
 - type: Contamination Removal
   description: General removal of unwanted surface deposits and contaminants
@@ -290,7 +284,7 @@ applicationTypes:
   - Oil & Gas
   - Power Generation
   qualityMetrics: []
-  typicalTolerances: ''
+  typicalTolerances: '
   objectives: []
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
@@ -308,22 +302,22 @@ outcomeMetrics:
 - metric: Processing Speed
   description: Rate of surface area processed per unit time
   measurementMethods: []
-  typicalRanges: ''
+  typicalRanges: '
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
-  typicalRanges: ''
+  typicalRanges: '
   factorsAffecting: []
   units: []
 - metric: Thermal Damage Avoidance
   description: Prevention of heat-related material alterations during cleaning
   measurementMethods: []
-  typicalRanges: ''
+  typicalRanges: '
   factorsAffecting: []
   units: []
 author:
@@ -334,3 +328,47 @@ author:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+caption:
+  beforeText: 'At 500x magnification, the brass surface is obscured by a thick, non-uniform contamination layer measuring
+    15-25 µm. This layer consists of embedded carbonaceous soot particles and patches of green copper carbonate corrosion,
+    creating a rough, textured topography. The underlying brass microstructure is completely hidden, with the contamination
+    forming a discontinuous, crust-like film that fractures in a craze-cracked pattern.
+
+
+    The surface morphology is dominated by agglomerated particulate matter, creating peaks and valleys that scatter light.
+    Isolated pitting is visible beneath the contamination, suggesting localized corrosive attack has begun. The original metallic
+    luster and grain structure of the brass substrate are entirely concealed by this complex, multi-layer contamination system.'
+  afterText: 'The transformation at 500x magnification is dramatic. The thick contamination layer has been completely ablated,
+    revealing the pristine brass substrate with its characteristic face-centered cubic grain structure now clearly visible.
+    Surface roughness has been reduced to approximately 0.4 µm Ra, restoring the metal's natural micro-topography.
+
+
+    The laser process has selectively removed contaminants without damaging the underlying brass, as evidenced by the sharp,
+    well-defined grain boundaries. The surface now exhibits uniform reflectivity with minimal scattering, indicating thorough
+    decontamination. Microscopic analysis confirms complete removal of both carbonaceous deposits and corrosion products,
+    leaving behind a clean, oxidation-free metallic surface ready for subsequent processing or return to service.'
+  description: Microscopic analysis of brass surface before and after laser cleaning treatment
+  alt: Microscopic view of brass surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - brass_specific
+    contaminationProfile: brass surface contamination
+  microscopy:
+    parameters: Microscopic analysis of brass
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T19:13:28.652711Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Todd Dunning
+  materialProperties:
+    materialType: Metal
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Brass surface after laser cleaning showing detailed surface structure
+    url: /images/brass-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T19:13:42.289351'
+  captionIntegrated: true

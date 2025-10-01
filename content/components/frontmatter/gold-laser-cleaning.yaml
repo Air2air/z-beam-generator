@@ -6,14 +6,14 @@ description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
     value: 19.32
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 99
-    description: "Density of pure gold at 20\xB0C"
+    description: Density of pure gold at 20°C
     min: 0.53
     max: 22.6
   thermalConductivity:
     value: 317.0
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 95
     description: Thermal conductivity at 300K
     min: 6.0
@@ -34,23 +34,23 @@ materialProperties:
     max: 579.82
   thermalExpansion:
     value: 14.2
-    unit: "10\u207B\u2076/K"
+    unit: 10⁻⁶/K
     confidence: 92
-    description: "Coefficient of linear thermal expansion at 25\xB0C"
+    description: Coefficient of linear thermal expansion at 25°C
     min: 1.7
     max: 34.9
   thermalDiffusivity:
     value: 127.0
-    unit: "mm\xB2/s"
+    unit: mm²/s
     confidence: 90
     description: Thermal diffusivity at room temperature
     min: 0
     max: 191.376
   specificHeat:
     value: 129.1
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 93
-    description: "Specific heat capacity at 25\xB0C"
+    description: Specific heat capacity at 25°C
     min: 0
     max: 1994.6
   reflectivity:
@@ -62,14 +62,14 @@ materialProperties:
     max: null
   absorptionCoefficient:
     value: 6.5
-    unit: "10\u2075 cm\u207B\xB9"
+    unit: 10⁵ cm⁻¹
     confidence: 85
     description: Absorption coefficient at 532 nm
     min: null
     max: null
   ablationThreshold:
     value: 0.8
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 82
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
@@ -92,7 +92,7 @@ materialProperties:
     value: 45.2
     unit: MS/m
     confidence: 97
-    description: "Electrical conductivity at 20\xB0C"
+    description: Electrical conductivity at 20°C
     min: null
     max: null
   laserAbsorption:
@@ -100,7 +100,7 @@ materialProperties:
     max: 100.0
     min: 0.02
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 2.3
   laserReflectivity:
     confidence: 0.7
@@ -121,7 +121,7 @@ materialProperties:
     max: 3422.0
     min: -38.8
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 1337.33
   thermalDestructionType:
     confidence: 0.8
@@ -136,21 +136,19 @@ machineSettings:
     value: 15
     unit: W
     confidence: 90
-    description: Average power for effective Gold oxide removal without substrate
-      damage
+    description: Average power for effective Gold oxide removal without substrate damage
     min: 8
     max: 25
   wavelength:
     value: 532
     unit: nm
     confidence: 92
-    description: Green wavelength for optimal Gold absorption (reflectivity ~40% vs
-      95%+ at 1064nm)
+    description: Green wavelength for optimal Gold absorption (reflectivity ~40% vs 95%+ at 1064nm)
     min: 355
     max: 10640
   spotSize:
     value: 50
-    unit: "\u03BCm"
+    unit: μm
     confidence: 87
     description: Beam diameter for precise cleaning with adequate energy density
     min: 30
@@ -178,7 +176,7 @@ machineSettings:
     max: 1000
   fluenceThreshold:
     value: 1.2
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 89
     description: Minimum fluence required for effective contaminant removal from Gold
     min: 0.8
@@ -199,7 +197,7 @@ machineSettings:
     max: 4
   energyDensity:
     value: 3.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 88
     description: Optimal energy density for Gold surface cleaning applications
     min: 2.0
@@ -213,10 +211,6 @@ images:
   hero:
     alt: Gold surface undergoing laser cleaning showing precise contamination removal
     url: /images/gold-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Gold surface after laser cleaning showing detailed surface
-      structure
-    url: /images/gold-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -226,22 +220,22 @@ environmentalImpact:
   - Medical
   - Nuclear
   quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-  sustainabilityBenefit: ''
+  sustainabilityBenefit: '
 - benefit: Water Usage Reduction
   description: Dry process requires no water
   applicableIndustries: []
-  quantifiedBenefits: ''
+  quantifiedBenefits: '
   sustainabilityBenefit: Significant water conservation in industrial processes
 - benefit: Energy Efficiency
   description: Focused energy delivery with minimal waste heat
   applicableIndustries: []
-  quantifiedBenefits: ''
-  sustainabilityBenefit: ''
+  quantifiedBenefits: '
+  sustainabilityBenefit: '
 - benefit: Air Quality Improvement
   description: Eliminates volatile organic compounds from chemical cleaning
   applicableIndustries: []
-  quantifiedBenefits: ''
-  sustainabilityBenefit: ''
+  quantifiedBenefits: '
+  sustainabilityBenefit: '
 applicationTypes:
 - type: Precision Cleaning
   description: High-precision removal of microscopic contaminants and residues
@@ -267,21 +261,20 @@ applicationTypes:
   - Surface energy
   - Cleanliness level
   - Roughness profile
-  typicalTolerances: ''
+  typicalTolerances: '
   objectives:
   - Adhesion enhancement
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
   - Art Conservation
   - Historical Restoration
   qualityMetrics: []
-  typicalTolerances: ''
+  typicalTolerances: '
   objectives: []
 - type: Contamination Removal
   description: General removal of unwanted surface deposits and contaminants
@@ -291,7 +284,7 @@ applicationTypes:
   - Oil & Gas
   - Power Generation
   qualityMetrics: []
-  typicalTolerances: ''
+  typicalTolerances: '
   objectives: []
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
@@ -309,22 +302,22 @@ outcomeMetrics:
 - metric: Processing Speed
   description: Rate of surface area processed per unit time
   measurementMethods: []
-  typicalRanges: ''
+  typicalRanges: '
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
-  typicalRanges: ''
+  typicalRanges: '
   factorsAffecting: []
   units: []
 - metric: Thermal Damage Avoidance
   description: Prevention of heat-related material alterations during cleaning
   measurementMethods: []
-  typicalRanges: ''
+  typicalRanges: '
   factorsAffecting: []
   units: []
 author:
@@ -335,3 +328,45 @@ author:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+caption:
+  beforeText: 'A gold surface awaiting cleaning is often dull and blemished. It can be covered in tarnish, fingerprints, grease,
+    or microscopic particles from handling and the environment. These contaminants mask gold's natural, brilliant luster
+    and can interfere with its performance in sensitive applications.
+
+
+    The challenge is that gold is an extremely soft and reflective metal. Traditional cleaning methods, like abrasive polishing
+    or harsh chemicals, can easily scratch the delicate surface or leave behind residues. This permanently damages the item
+    and diminishes its value and function.'
+  afterText: 'After laser cleaning, the gold surface is restored to its original, pristine condition. The process has completely
+    removed all contaminants, revealing a brilliantly reflective and microscopically clean finish. The inherent, deep luster
+    of the pure gold is now fully visible.
+
+
+    Crucially, this result is achieved without any damage. The laser's precision eliminates contaminants without scratching
+    or altering the underlying gold. The surface is left not only visually perfect but also optimally prepared for its final
+    use, whether for high-precision instrumentation, aerospace components, or luxurious appearance.'
+  description: Microscopic analysis of gold surface before and after laser cleaning treatment
+  alt: Microscopic view of gold surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - gold_specific
+    contaminationProfile: gold surface contamination
+  microscopy:
+    parameters: Microscopic analysis of gold
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T19:05:55.260392Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Todd Dunning
+  materialProperties:
+    materialType: Metal
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Gold surface after laser cleaning showing detailed surface structure
+    url: /images/gold-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T19:06:06.014125'
+  captionIntegrated: true

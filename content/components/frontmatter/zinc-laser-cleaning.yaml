@@ -6,16 +6,16 @@ description: Laser cleaning parameters for Aluminum
 materialProperties:
   density:
     value: 7.14
-    unit: "g/cm\xB3"
+    unit: g/cm³
     confidence: 98
-    description: "Density of pure zinc at 20\xB0C"
+    description: Density of pure zinc at 20°C
     min: 0.53
     max: 22.6
   thermalConductivity:
     value: 116.0
-    unit: "W/m\xB7K"
+    unit: W/m·K
     confidence: 95
-    description: "Thermal conductivity at 25\xB0C"
+    description: Thermal conductivity at 25°C
     min: 6.0
     max: 429.0
   tensileStrength:
@@ -41,31 +41,30 @@ materialProperties:
     max: 579.82
   thermalExpansion:
     value: 30.2
-    unit: "\u03BCm/m\xB7K"
+    unit: μm/m·K
     confidence: 92
-    description: "Coefficient of linear thermal expansion at 25\xB0C"
+    description: Coefficient of linear thermal expansion at 25°C
     min: 1.7
     max: 34.9
   thermalDiffusivity:
     value: 41.8
-    unit: "mm\xB2/s"
+    unit: mm²/s
     confidence: 90
     description: Thermal diffusivity at room temperature
     min: 0
     max: 191.376
   specificHeat:
     value: 388.0
-    unit: "J/kg\xB7K"
+    unit: J/kg·K
     confidence: 93
-    description: "Specific heat capacity at 25\xB0C"
+    description: Specific heat capacity at 25°C
     min: 0
     max: 1994.6
   absorptionCoefficient:
     value: 0.65
     unit: ''
     confidence: 82
-    description: Approximate absorption coefficient for common laser wavelengths (1064
-      nm)
+    description: Approximate absorption coefficient for common laser wavelengths (1064 nm)
     min: null
     max: null
   reflectivity:
@@ -77,7 +76,7 @@ materialProperties:
     max: null
   ablationThreshold:
     value: 0.8
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 80
     description: Estimated ablation threshold for nanosecond pulses at 1064 nm
     min: null
@@ -105,7 +104,7 @@ materialProperties:
     max: null
   vaporizationPoint:
     value: 907
-    unit: "\xB0C"
+    unit: °C
     confidence: 96
     description: Boiling point of zinc, critical for laser ablation processes
     min: null
@@ -115,7 +114,7 @@ materialProperties:
     max: 100.0
     min: 0.02
     source: default_from_category_range
-    unit: "cm\u207B\xB9"
+    unit: cm⁻¹
     value: 38.2
   laserReflectivity:
     confidence: 0.7
@@ -129,7 +128,7 @@ materialProperties:
     max: 3422.0
     min: -38.8
     source: default_from_category_range
-    unit: "\xB0C"
+    unit: °C
     value: 1180.0
   thermalDestructionType:
     confidence: 0.8
@@ -155,7 +154,7 @@ machineSettings:
     max: 10640
   spotSize:
     value: 50
-    unit: "\u03BCm"
+    unit: μm
     confidence: 86
     description: Beam spot diameter for precise cleaning
     min: 30
@@ -169,14 +168,14 @@ machineSettings:
     max: 100
   fluenceThreshold:
     value: 1.2
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 88
     description: Minimum fluence required for effective Zinc ablation
     min: 0.8
     max: 2.0
   energyDensity:
     value: 2.5
-    unit: "J/cm\xB2"
+    unit: J/cm²
     confidence: 85
     description: Optimal energy density for controlled Zinc removal
     min: 1.5
@@ -211,7 +210,7 @@ machineSettings:
     max: 70
   dwellTime:
     value: 100
-    unit: "\u03BCs"
+    unit: μs
     confidence: 81
     description: Effective dwell time per spot location
     min: 50
@@ -232,10 +231,6 @@ images:
   hero:
     alt: Zinc surface undergoing laser cleaning showing precise contamination removal
     url: /images/zinc-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Zinc surface after laser cleaning showing detailed surface
-      structure
-    url: /images/zinc-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -292,8 +287,7 @@ applicationTypes:
   - Contamination removal
   - Surface activation
 - type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original
-    material
+  description: Gentle removal of accumulated contamination while preserving original material
   industries:
   - Cultural Heritage
   - Architecture
@@ -331,9 +325,9 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units:
-  - "m\xB2/h"
-  - "cm\xB2/min"
-  - "mm\xB2/s"
+  - m²/h
+  - cm²/min
+  - mm²/s
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
@@ -354,3 +348,50 @@ author:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+caption:
+  beforeText: 'At 500x magnification, the zinc surface is obscured by a non-uniform contamination layer approximately 5-15
+    micrometers thick. This layer appears as a topographical map of debris, with agglomerated particles of oxides and carbonaceous
+    soot embedded in a matrix of industrial grime. The underlying metallic structure is completely hidden.
+
+
+    The surface texture is rough and porous, with visible micro-cracks running through the contamination crust. This compromised
+    layer, which appears dark gray and blotchy, creates a barrier that would severely inhibit any subsequent process like
+    coating adhesion or electrical contact, as it prevents direct interaction with the pure zinc substrate.'
+  afterText: 'The transformation is dramatic. The thick, obscuring contamination layer has been completely removed, revealing
+    the true underlying zinc microstructure. The surface now exhibits the characteristic fine, granular pattern of the metal''s
+    hexagonal close-packed (HCP) crystalline structure, visible for the first time.
+
+
+    Direct comparison shows the elimination of all micro-cracks and porous crust, replaced by a uniform, clean metallic surface.
+    The reflectivity has increased significantly; the surface now has a consistent, bright luster instead of the former dull,
+    blotchy appearance. This confirms the complete ablation of the contaminant layer without damaging the zinc substrate.
+
+
+    This pristine surface, now free of insulating or weakly-bonded layers, provides an ideal foundation. It ensures optimal
+    conditions for processes like painting, plating, or soldering, as the laser has restored a perfectly clean and reactive
+    metallic interface.'
+  description: Microscopic analysis of zinc surface before and after laser cleaning treatment
+  alt: Microscopic view of zinc surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - zinc_specific
+    contaminationProfile: zinc surface contamination
+  microscopy:
+    parameters: Microscopic analysis of zinc
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T19:18:42.872901Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Todd Dunning
+  materialProperties:
+    materialType: Metal
+    analysisMethod: ai_microscopy
+  imageUrl:
+    alt: Microscopic view of Zinc surface after laser cleaning showing detailed surface structure
+    url: /images/zinc-laser-cleaning-micro.jpg
+metadata:
+  lastUpdated: '2025-09-30T19:18:57.607288'
+  captionIntegrated: true
