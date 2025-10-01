@@ -168,9 +168,9 @@ class ValidationMigrator:
 Enhanced Schema Validator - Compatibility Wrapper
 
 This file provides backward compatibility for existing enhanced_schema_validator imports.
-All functionality has been consolidated into the UnifiedSchemaValidator.
+All functionality has been consolidated into the SchemaValidator.
 
-DEPRECATED: Use validation.unified_schema_validator.UnifiedSchemaValidator directly
+DEPRECATED: Use validation.schema_validator.SchemaValidator directly
 """
 
 import warnings
@@ -181,12 +181,12 @@ import sys
 project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
-from validation.unified_schema_validator import UnifiedSchemaValidator, ValidationResult
+from validation.schema_validator import SchemaValidator, ValidationResult
 
 
 class EnhancedSchemaValidator:
     """
-    DEPRECATED: Compatibility wrapper for UnifiedSchemaValidator
+    DEPRECATED: Compatibility wrapper for SchemaValidator
     
     This class maintains the original EnhancedSchemaValidator interface
     while delegating to the new unified validator.
@@ -194,11 +194,11 @@ class EnhancedSchemaValidator:
     
     def __init__(self, schema_path: str = None):
         warnings.warn(
-            "EnhancedSchemaValidator is deprecated. Use UnifiedSchemaValidator directly.",
+            "EnhancedSchemaValidator is deprecated. Use SchemaValidator directly.",
             DeprecationWarning,
             stacklevel=2
         )
-        self._unified = UnifiedSchemaValidator(schema_path, validation_mode="enhanced")
+        self._unified = SchemaValidator(schema_path, validation_mode="enhanced")
     
     def validate_with_detailed_report(self, data: dict, material_name: str = "unknown") -> str:
         """Compatibility method - delegates to unified validator"""
@@ -213,15 +213,15 @@ class EnhancedSchemaValidator:
 def validate_frontmatter_schema(data: dict, schema_path: str = None) -> ValidationResult:
     """
     DEPRECATED: Legacy function compatibility
-    Use UnifiedSchemaValidator directly
+    Use SchemaValidator directly
     """
     warnings.warn(
-        "validate_frontmatter_schema is deprecated. Use UnifiedSchemaValidator.validate() directly.",
+        "validate_frontmatter_schema is deprecated. Use SchemaValidator.validate() directly.",
         DeprecationWarning,
         stacklevel=2
     )
     
-    validator = UnifiedSchemaValidator(schema_path, validation_mode="enhanced")
+    validator = SchemaValidator(schema_path, validation_mode="enhanced")
     return validator.validate(data)
 ''')
         
@@ -236,9 +236,9 @@ def validate_frontmatter_schema(data: dict, schema_path: str = None) -> Validati
 Frontmatter Core Schema Validator - Compatibility Wrapper
 
 This file provides backward compatibility for existing core schema validator imports.
-All functionality has been consolidated into the UnifiedSchemaValidator.
+All functionality has been consolidated into the SchemaValidator.
 
-DEPRECATED: Use validation.unified_schema_validator.UnifiedSchemaValidator directly
+DEPRECATED: Use validation.schema_validator.SchemaValidator directly
 """
 
 import warnings
@@ -250,12 +250,12 @@ from typing import Tuple, List, Dict
 project_root = Path(__file__).parent.parent.parent.parent
 sys.path.insert(0, str(project_root))
 
-from validation.unified_schema_validator import UnifiedSchemaValidator
+from validation.schema_validator import SchemaValidator
 
 
 class FrontmatterSchemaValidator:
     """
-    DEPRECATED: Compatibility wrapper for UnifiedSchemaValidator
+    DEPRECATED: Compatibility wrapper for SchemaValidator
     
     Maintains the original FrontmatterSchemaValidator interface
     while delegating to the unified validator.
@@ -263,11 +263,11 @@ class FrontmatterSchemaValidator:
     
     def __init__(self, schema_path: str = None):
         warnings.warn(
-            "FrontmatterSchemaValidator is deprecated. Use UnifiedSchemaValidator directly.",
+            "FrontmatterSchemaValidator is deprecated. Use SchemaValidator directly.",
             DeprecationWarning,
             stacklevel=2
         )
-        self._unified = UnifiedSchemaValidator(schema_path, validation_mode="basic")
+        self._unified = SchemaValidator(schema_path, validation_mode="basic")
     
     def validate_frontmatter(self, data: Dict, material_name: str = "unknown") -> Tuple[bool, List[str]]:
         """Compatibility method - delegates to unified validator"""
@@ -278,15 +278,15 @@ class FrontmatterSchemaValidator:
 def validate_frontmatter_and_log(data: Dict, material_name: str) -> bool:
     """
     DEPRECATED: Legacy function compatibility
-    Use UnifiedSchemaValidator directly
+    Use SchemaValidator directly
     """
     warnings.warn(
-        "validate_frontmatter_and_log is deprecated. Use UnifiedSchemaValidator.validate() directly.",
+        "validate_frontmatter_and_log is deprecated. Use SchemaValidator.validate() directly.",
         DeprecationWarning,
         stacklevel=2
     )
     
-    validator = UnifiedSchemaValidator(validation_mode="basic")
+    validator = SchemaValidator(validation_mode="basic")
     result = validator.validate(data, material_name)
     
     if not result.is_valid:
@@ -315,19 +315,19 @@ def validate_frontmatter_and_log(data: Dict, material_name: str) -> bool:
                 import_replacements = [
                     # Enhanced validator imports
                     ("from scripts.validation.enhanced_schema_validator import EnhancedSchemaValidator", 
-                     "from validation.unified_schema_validator import UnifiedSchemaValidator as EnhancedSchemaValidator"),
+                     "from validation.schema_validator import SchemaValidator as EnhancedSchemaValidator"),
                     ("from scripts.validation.enhanced_schema_validator import validate_frontmatter_schema",
-                     "from validation.unified_schema_validator import validate_frontmatter_schema"),
+                     "from validation.schema_validator import validate_frontmatter_schema"),
                     
                     # Core validator imports
                     ("from components.frontmatter.core.schema_validator import FrontmatterSchemaValidator",
-                     "from validation.unified_schema_validator import UnifiedSchemaValidator as FrontmatterSchemaValidator"),
+                     "from validation.schema_validator import SchemaValidator as FrontmatterSchemaValidator"),
                     ("from components.frontmatter.core.schema_validator import validate_frontmatter_and_log",
-                     "from validation.unified_schema_validator import validate_frontmatter_and_log"),
+                     "from validation.schema_validator import validate_frontmatter_and_log"),
                     
                     # Basic validator imports
                     ("from components.frontmatter.schema_validator import validate_frontmatter_schema",
-                     "from validation.unified_schema_validator import validate_frontmatter_schema"),
+                     "from validation.schema_validator import validate_frontmatter_schema"),
                 ]
                 
                 for old_import, new_import in import_replacements:
@@ -337,8 +337,8 @@ def validate_frontmatter_and_log(data: Dict, material_name: str) -> bool:
                 
                 # Update constructor calls to specify validation mode
                 constructor_updates = [
-                    ('EnhancedSchemaValidator(', 'UnifiedSchemaValidator(validation_mode="enhanced", '),
-                    ('FrontmatterSchemaValidator(', 'UnifiedSchemaValidator(validation_mode="basic", '),
+                    ('EnhancedSchemaValidator(', 'SchemaValidator(validation_mode="enhanced", '),
+                    ('FrontmatterSchemaValidator(', 'SchemaValidator(validation_mode="basic", '),
                 ]
                 
                 for old_constructor, new_constructor in constructor_updates:
@@ -371,7 +371,7 @@ def validate_frontmatter_and_log(data: Dict, material_name: str) -> bool:
             spec.loader.exec_module(unified_module)
             
             # Test basic functionality
-            validator = unified_module.UnifiedSchemaValidator(validation_mode="basic")
+            validator = unified_module.SchemaValidator(validation_mode="basic")
             test_data = {
                 "name": "test_material",
                 "category": "metal", 
@@ -477,7 +477,7 @@ def validate_frontmatter_and_log(data: Dict, material_name: str) -> bool:
    If issues arise, restore files from: {self.backup_dir}
    
 💡 MAINTENANCE NOTES:
-   - All validation now routes through UnifiedSchemaValidator
+   - All validation now routes through SchemaValidator
    - Schema hierarchy: enhanced_unified → enhanced → basic fallback
    - Quality metrics available in enhanced/research modes
    - CLI interface available: python validation/unified_schema_validator.py
@@ -555,7 +555,7 @@ def main():
     
     # Confirm migration unless forced
     if not args.force:
-        print("⚠️  This will consolidate all existing validators into UnifiedSchemaValidator.")
+        print("⚠️  This will consolidate all existing validators into SchemaValidator.")
         print("   Backups will be created, but this is a significant change.")
         print("   Type 'yes' to proceed:")
         

@@ -508,9 +508,9 @@ class PropertiesToMaterialPropertiesMigrator:
         
         try:
             # Test schema loading
-            from validation.unified_schema_validator import UnifiedSchemaValidator
+            from validation.schema_validator import SchemaValidator
             
-            validator = UnifiedSchemaValidator(validation_mode="enhanced")
+            validator = SchemaValidator(validation_mode="enhanced")
             
             # Test with materialProperties structure
             test_data = {

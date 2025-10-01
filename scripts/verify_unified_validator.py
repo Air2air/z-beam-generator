@@ -30,13 +30,13 @@ logger = logging.getLogger(__name__)
 def test_unified_validator_basic():
     """Test basic unified validator functionality"""
     
-    logger.info("🧪 Testing UnifiedSchemaValidator basic functionality...")
+    logger.info("🧪 Testing SchemaValidator basic functionality...")
     
     try:
-        from validation.unified_schema_validator import UnifiedSchemaValidator, ValidationMode
+        from validation.schema_validator import SchemaValidator, ValidationMode
         
         # Test basic mode
-        validator = UnifiedSchemaValidator(validation_mode="basic")
+        validator = SchemaValidator(validation_mode="basic")
         
         # Test with valid data
         valid_data = {
@@ -74,13 +74,11 @@ def test_unified_validator_basic():
         return False
 
 
-def test_validation_modes():
-    """Test different validation modes"""
-    
-    logger.info("🧪 Testing validation modes...")
+def test_validation_modes() -> bool:
+    """Test that all validation modes work"""
     
     try:
-        from validation.unified_schema_validator import UnifiedSchemaValidator
+        from validation.schema_validator import SchemaValidator
         
         test_data = {
             "name": "steel_304",
@@ -114,15 +112,15 @@ def test_validation_modes():
         }
         
         # Test basic mode
-        basic_validator = UnifiedSchemaValidator(validation_mode="basic")
+        basic_validator = SchemaValidator(validation_mode="basic")
         basic_result = basic_validator.validate(test_data, "steel_304")
         
         # Test enhanced mode
-        enhanced_validator = UnifiedSchemaValidator(validation_mode="enhanced")
+        enhanced_validator = SchemaValidator(validation_mode="enhanced")
         enhanced_result = enhanced_validator.validate(test_data, "steel_304")
         
         # Test research grade mode
-        research_validator = UnifiedSchemaValidator(validation_mode="research_grade")
+        research_validator = SchemaValidator(validation_mode="research_grade")
         research_result = research_validator.validate(test_data, "steel_304")
         
         # Verify mode differences
@@ -143,9 +141,9 @@ def test_backward_compatibility():
     logger.info("🧪 Testing backward compatibility...")
     
     try:
-        from validation.unified_schema_validator import UnifiedSchemaValidator
+        from validation.schema_validator import SchemaValidator
         
-        validator = UnifiedSchemaValidator(validation_mode="basic")
+        validator = SchemaValidator(validation_mode="basic")
         
         test_data = {
             "name": "titanium_grade2",
@@ -180,7 +178,7 @@ def test_schema_hierarchy():
     logger.info("🧪 Testing schema hierarchy...")
     
     try:
-        from validation.unified_schema_validator import SchemaManager
+        from validation.schema_validator import SchemaManager
         
         schema_manager = SchemaManager(project_root)
         schema_path, schema_data = schema_manager.get_primary_schema()
@@ -202,9 +200,9 @@ def test_error_handling():
     logger.info("🧪 Testing error handling...")
     
     try:
-        from validation.unified_schema_validator import UnifiedSchemaValidator
+        from validation.schema_validator import SchemaValidator
         
-        validator = UnifiedSchemaValidator(validation_mode="enhanced")
+        validator = SchemaValidator(validation_mode="enhanced")
         
         # Test with invalid data
         invalid_data = {
@@ -240,9 +238,9 @@ def test_datametric_validation():
     logger.info("🧪 Testing DataMetric validation...")
     
     try:
-        from validation.unified_schema_validator import UnifiedSchemaValidator
+        from validation.schema_validator import SchemaValidator
         
-        validator = UnifiedSchemaValidator(validation_mode="enhanced")
+        validator = SchemaValidator(validation_mode="enhanced")
         
         # Test with proper DataMetric structure
         datametric_data = {
@@ -309,7 +307,7 @@ def test_cli_interface():
             json.dump(test_data, f, indent=2)
         
         # Test CLI import
-        from validation.unified_schema_validator import main
+        from validation.schema_validator import main
         
         logger.info("✅ CLI interface test passed - Main function available")
         

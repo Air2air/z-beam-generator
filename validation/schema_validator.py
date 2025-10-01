@@ -148,7 +148,7 @@ class SchemaManager:
         }
 
 
-class UnifiedSchemaValidator:
+class SchemaValidator:
     """
     Consolidated schema validator replacing all existing validators.
     
@@ -192,7 +192,7 @@ class UnifiedSchemaValidator:
             logger.error(f"Schema validation setup failed: {e}")
             self.json_validator = None
         
-        logger.info(f"UnifiedSchemaValidator initialized - Mode: {self.validation_mode.value}")
+        logger.info(f"SchemaValidator initialized - Mode: {self.validation_mode.value}")
     
     def validate(self, data: Dict[str, Any], material_name: str = "unknown", **kwargs) -> ValidationResult:
         """
@@ -481,13 +481,13 @@ class UnifiedSchemaValidator:
 # Backward compatibility functions
 def validate_frontmatter_schema(data: Dict, schema_path: str = None) -> ValidationResult:
     """Legacy function compatibility"""
-    validator = UnifiedSchemaValidator(schema_path, validation_mode="basic")
+    validator = SchemaValidator(schema_path, validation_mode="basic")
     return validator.validate(data)
 
 
 def validate_frontmatter_and_log(data: Dict, material_name: str) -> bool:
     """Legacy function compatibility"""  
-    validator = UnifiedSchemaValidator(validation_mode="basic")
+    validator = SchemaValidator(validation_mode="basic")
     result = validator.validate(data, material_name)
     
     if not result.is_valid:
@@ -523,7 +523,7 @@ def main():
     
     # Create validator
     try:
-        validator = UnifiedSchemaValidator(args.schema, args.mode)
+        validator = SchemaValidator(args.schema, args.mode)
     except Exception as e:
         print(f"❌ Error initializing validator: {e}")
         return 1

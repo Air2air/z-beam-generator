@@ -189,7 +189,7 @@ Generated: {datetime.now().isoformat()}
 
 ## Schema Hierarchy (Validation Priority)
 
-The UnifiedSchemaValidator uses this fallback hierarchy:
+The SchemaValidator uses this fallback hierarchy:
 
 1. **enhanced_unified_frontmatter.json** (PRIMARY)
    - Location: `schemas/active/`
@@ -271,19 +271,19 @@ Specialized schemas moved to archive for organization:
 ## Usage Guidelines
 
 ### For Validation
-Use UnifiedSchemaValidator which automatically selects the best available schema:
+Use SchemaValidator which automatically selects the best available schema:
 ```python
-from validation.unified_schema_validator import UnifiedSchemaValidator
+from validation.schema_validator import SchemaValidator
 
 # Automatic schema selection with fallback
-validator = UnifiedSchemaValidator(validation_mode="enhanced")
+validator = SchemaValidator(validation_mode="enhanced")
 result = validator.validate(frontmatter_data, material_name)
 ```
 
 ### For Specific Schema
 ```python
 # Use specific schema
-validator = UnifiedSchemaValidator("schemas/active/enhanced_unified_frontmatter.json")
+validator = SchemaValidator("schemas/active/enhanced_unified_frontmatter.json")
 ```
 
 ### Schema Path Resolution
@@ -306,7 +306,7 @@ The validator searches in this order:
 ## Migration Notes
 
 - Legacy code may reference old schema locations
-- UnifiedSchemaValidator handles path resolution automatically
+- SchemaValidator handles path resolution automatically
 - Component schemas remain accessible for specialized validation
 - Archive schemas are preserved for specialized use cases
 """
@@ -318,14 +318,14 @@ The validator searches in this order:
         logger.info(f"✅ Schema index created: {index_path}")
     
     def update_unified_validator_paths(self):
-        """Update UnifiedSchemaValidator to use organized schema paths"""
+        """Update SchemaValidator to use organized schema paths"""
         
-        logger.info("🔧 Updating UnifiedSchemaValidator for organized paths...")
+        logger.info("🔧 Updating SchemaValidator for organized paths...")
         
         validator_file = self.project_root / "validation" / "unified_schema_validator.py"
         
         if not validator_file.exists():
-            logger.warning("UnifiedSchemaValidator not found - skipping path updates")
+            logger.warning("SchemaValidator not found - skipping path updates")
             return
         
         content = validator_file.read_text()
@@ -349,7 +349,7 @@ The validator searches in this order:
         if old_priority in content:
             content = content.replace(old_priority, new_priority)
             validator_file.write_text(content)
-            logger.info("✅ Updated schema priority paths in UnifiedSchemaValidator")
+            logger.info("✅ Updated schema priority paths in SchemaValidator")
         else:
             logger.warning("Schema priority pattern not found - manual update may be needed")
     
@@ -406,7 +406,7 @@ The validator searches in this order:
         
         report += f"""
 🛠️ INTEGRATION FEATURES:
-   ✅ UnifiedSchemaValidator path resolution updated
+   ✅ SchemaValidator path resolution updated
    ✅ Automatic fallback chain for missing schemas
    ✅ Backward compatibility with legacy references
    ✅ Component schema accessibility preserved
