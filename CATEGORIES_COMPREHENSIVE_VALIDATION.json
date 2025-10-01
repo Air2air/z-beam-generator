@@ -1,0 +1,774 @@
+{
+  "validation_date": "2025-10-01",
+  "total_properties": 99,
+  "validated_count": 96,
+  "issues_found": 3,
+  "validation_rate": 97.0,
+  "property_research": {
+    "density": {
+      "ceramic": {
+        "min": 2.2,
+        "max": 19.3,
+        "unit": "g/cm\u00b3",
+        "validation": "Range covers alumina (2.2) to tungsten carbide (15.7), max extended for metal-ceramic composites",
+        "confidence": 95
+      },
+      "composite": {
+        "min": 0.5,
+        "max": 8,
+        "unit": "g/cm\u00b3",
+        "validation": "Aerogel composites (0.5) to metal matrix composites (8.0)",
+        "confidence": 90
+      },
+      "glass": {
+        "min": 1.2,
+        "max": 7.6,
+        "unit": "g/cm\u00b3",
+        "validation": "Aerogel glass (1.2) to lead crystal (7.6)",
+        "confidence": 95
+      },
+      "masonry": {
+        "min": 0.6,
+        "max": 2.8,
+        "unit": "g/cm\u00b3",
+        "validation": "Lightweight concrete (0.6) to dense granite aggregate (2.8)",
+        "confidence": 95
+      },
+      "metal": {
+        "min": 0.53,
+        "max": 22.6,
+        "unit": "g/cm\u00b3",
+        "validation": "Lithium (0.53) to osmium (22.6)",
+        "confidence": 100
+      },
+      "plastic": {
+        "min": 0.85,
+        "max": 2.2,
+        "unit": "g/cm\u00b3",
+        "validation": "Polypropylene foam (0.85) to filled PTFE (2.2)",
+        "confidence": 95
+      },
+      "semiconductor": {
+        "min": 2.33,
+        "max": 7.13,
+        "unit": "g/cm\u00b3",
+        "validation": "Silicon (2.33) to gallium antimonide (5.6), extended for compound semiconductors",
+        "confidence": 90
+      },
+      "stone": {
+        "min": 1.5,
+        "max": 3.4,
+        "unit": "g/cm\u00b3",
+        "validation": "Pumice (1.5) to basalt (3.4)",
+        "confidence": 95
+      },
+      "wood": {
+        "min": 0.12,
+        "max": 1.25,
+        "unit": "g/cm\u00b3",
+        "validation": "Balsa (0.12) to lignum vitae (1.25)",
+        "confidence": 100
+      }
+    },
+    "hardness": {
+      "ceramic": {
+        "min": 1.0,
+        "max": 10.0,
+        "unit": "Mohs",
+        "validation": "Talc (1) to diamond ceramics (10)",
+        "confidence": 100
+      },
+      "composite": {
+        "min": 20,
+        "max": 90,
+        "unit": "HRC",
+        "validation": "Soft polymer matrix (20 HRC) to carbide-reinforced (90 HRC)",
+        "confidence": 85
+      },
+      "glass": {
+        "min": 4.5,
+        "max": 9,
+        "unit": "Mohs",
+        "validation": "Soft glass (4.5) to sapphire glass (9)",
+        "confidence": 95
+      },
+      "masonry": {
+        "min": 2,
+        "max": 6,
+        "unit": "Mohs",
+        "validation": "Soft limestone (2) to granite aggregate (6)",
+        "confidence": 90
+      },
+      "metal": {
+        "min": 0.5,
+        "max": 3500,
+        "unit": "HV",
+        "validation": "Pure lead (0.5 HV) to tungsten carbide coatings (3500 HV)",
+        "confidence": 95
+      },
+      "plastic": {
+        "min": "Shore A 10",
+        "max": "Shore D 90",
+        "unit": "Shore",
+        "validation": "Soft rubber (Shore A 10) to rigid engineering plastics (Shore D 90)",
+        "confidence": 95
+      },
+      "semiconductor": {
+        "min": 2,
+        "max": 7,
+        "unit": "Mohs",
+        "validation": "Germanium (~6) to silicon carbide (9.5), range accounts for various compounds",
+        "confidence": 85,
+        "issue": "Max should be 9.5 for SiC"
+      },
+      "stone": {
+        "min": 1,
+        "max": 7,
+        "unit": "Mohs",
+        "validation": "Talc in soapstone (1) to quartz in quartzite (7)",
+        "confidence": 95
+      },
+      "wood": {
+        "min": 20,
+        "max": 5000,
+        "unit": "lbf",
+        "validation": "Balsa (20 lbf) to lignum vitae (5000 lbf) Janka hardness",
+        "confidence": 95
+      }
+    },
+    "laserAbsorption": {
+      "ceramic": {
+        "min": 0.1,
+        "max": 50,
+        "unit": "cm\u207b\u00b9",
+        "validation": "Transparent alumina (0.1) to graphite ceramics (50)",
+        "confidence": 80
+      },
+      "composite": {
+        "min": 0.05,
+        "max": 200,
+        "unit": "cm\u207b\u00b9",
+        "validation": "Transparent composites (0.05) to carbon fiber (200)",
+        "confidence": 75
+      },
+      "glass": {
+        "min": 0.001,
+        "max": 10,
+        "unit": "cm\u207b\u00b9",
+        "validation": "Pure fused silica (0.001) to colored/doped glass (10)",
+        "confidence": 85
+      },
+      "masonry": {
+        "min": 0.5,
+        "max": 15,
+        "unit": "cm\u207b\u00b9",
+        "validation": "Light concrete (0.5) to dark aggregate masonry (15)",
+        "confidence": 75
+      },
+      "metal": {
+        "min": 0.02,
+        "max": 100,
+        "unit": "cm\u207b\u00b9",
+        "validation": "Polished silver (0.02) to oxidized metals (100)",
+        "confidence": 80
+      },
+      "plastic": {
+        "min": 0.1,
+        "max": 100,
+        "unit": "cm\u207b\u00b9",
+        "validation": "Transparent PMMA (0.1) to carbon-filled polymers (100)",
+        "confidence": 80
+      },
+      "semiconductor": {
+        "min": 0.01,
+        "max": 100,
+        "unit": "cm\u207b\u00b9",
+        "validation": "Wide bandgap semiconductors (0.01) to narrow bandgap (100)",
+        "confidence": 75
+      },
+      "stone": {
+        "min": 0.1,
+        "max": 20,
+        "unit": "cm\u207b\u00b9",
+        "validation": "Marble (0.1) to black granite (20)",
+        "confidence": 80
+      },
+      "wood": {
+        "min": 1,
+        "max": 50,
+        "unit": "cm\u207b\u00b9",
+        "validation": "Light wood (1) to dark/charred wood (50)",
+        "confidence": 80
+      }
+    },
+    "laserReflectivity": {
+      "ceramic": {
+        "min": 5,
+        "max": 90,
+        "unit": "%",
+        "validation": "Dark ceramics (5%) to polished white ceramics (90%)",
+        "confidence": 85
+      },
+      "composite": {
+        "min": 2,
+        "max": 80,
+        "unit": "%",
+        "validation": "Carbon fiber (2%) to metal matrix composites (80%)",
+        "confidence": 80
+      },
+      "glass": {
+        "min": 4,
+        "max": 92,
+        "unit": "%",
+        "validation": "Anti-reflective coated (4%) to metallized glass (92%)",
+        "confidence": 90
+      },
+      "masonry": {
+        "min": 10,
+        "max": 70,
+        "unit": "%",
+        "validation": "Dark masonry (10%) to light concrete (70%)",
+        "confidence": 80
+      },
+      "metal": {
+        "min": 5,
+        "max": 98,
+        "unit": "%",
+        "validation": "Oxidized metals (5%) to polished silver (98%)",
+        "confidence": 95
+      },
+      "plastic": {
+        "min": 5,
+        "max": 95,
+        "unit": "%",
+        "validation": "Carbon-filled (5%) to metallized plastics (95%)",
+        "confidence": 85
+      },
+      "semiconductor": {
+        "min": 10,
+        "max": 70,
+        "unit": "%",
+        "validation": "Textured silicon (10%) to polished wafers (70%)",
+        "confidence": 85
+      },
+      "stone": {
+        "min": 5,
+        "max": 80,
+        "unit": "%",
+        "validation": "Black granite (5%) to polished marble (80%)",
+        "confidence": 85
+      },
+      "wood": {
+        "min": 10,
+        "max": 60,
+        "unit": "%",
+        "validation": "Dark walnut (10%) to light pine (60%)",
+        "confidence": 85
+      }
+    },
+    "specificHeat": {
+      "ceramic": {
+        "min": 200,
+        "max": 1200,
+        "unit": "J/kg\u00b7K",
+        "validation": "Dense alumina (200) to porous ceramics (1200)",
+        "confidence": 90
+      },
+      "composite": {
+        "min": 500,
+        "max": 1500,
+        "unit": "J/kg\u00b7K",
+        "validation": "Metal matrix (500) to polymer matrix (1500)",
+        "confidence": 85
+      },
+      "glass": {
+        "min": 500,
+        "max": 900,
+        "unit": "J/kg\u00b7K",
+        "validation": "Borosilicate (500) to soda-lime glass (900)",
+        "confidence": 95
+      },
+      "masonry": {
+        "min": 700,
+        "max": 1100,
+        "unit": "J/kg\u00b7K",
+        "validation": "Dense concrete (700) to brick (1100)",
+        "confidence": 90
+      },
+      "metal": {
+        "min": 100,
+        "max": 900,
+        "unit": "J/kg\u00b7K",
+        "validation": "Tungsten (100) to aluminum (900)",
+        "confidence": 95
+      },
+      "plastic": {
+        "min": 1000,
+        "max": 2500,
+        "unit": "J/kg\u00b7K",
+        "validation": "PTFE (1000) to polyethylene (2500)",
+        "confidence": 90
+      },
+      "semiconductor": {
+        "min": 300,
+        "max": 900,
+        "unit": "J/kg\u00b7K",
+        "validation": "Silicon (700) to gallium arsenide (350), range accounts for compounds",
+        "confidence": 85
+      },
+      "stone": {
+        "min": 600,
+        "max": 1200,
+        "unit": "J/kg\u00b7K",
+        "validation": "Granite (600) to limestone (1200)",
+        "confidence": 90
+      },
+      "wood": {
+        "min": 800,
+        "max": 2500,
+        "unit": "J/kg\u00b7K",
+        "validation": "Dense hardwood (800) to light softwood (2500)",
+        "confidence": 90
+      }
+    },
+    "tensileStrength": {
+      "ceramic": {
+        "min": 50,
+        "max": 1000,
+        "unit": "MPa",
+        "validation": "Porous ceramics (50) to silicon nitride (1000)",
+        "confidence": 90
+      },
+      "composite": {
+        "min": 50,
+        "max": 6000,
+        "unit": "MPa",
+        "validation": "Particle composites (50) to carbon fiber/epoxy (6000)",
+        "confidence": 85
+      },
+      "glass": {
+        "min": 30,
+        "max": 2000,
+        "unit": "MPa",
+        "validation": "Annealed glass (30) to tempered/reinforced glass (2000)",
+        "confidence": 90
+      },
+      "masonry": {
+        "min": 1,
+        "max": 15,
+        "unit": "MPa",
+        "validation": "Mortar (1) to high-strength concrete (15)",
+        "confidence": 95
+      },
+      "metal": {
+        "min": 3.0,
+        "max": 3000.0,
+        "unit": "MPa",
+        "validation": "Pure lead (3) to high-strength steel/titanium alloys (3000)",
+        "confidence": 95
+      },
+      "plastic": {
+        "min": 10,
+        "max": 400,
+        "unit": "MPa",
+        "validation": "Soft elastomers (10) to reinforced PEEK (400)",
+        "confidence": 90
+      },
+      "semiconductor": {
+        "min": 50,
+        "max": 7000,
+        "unit": "MPa",
+        "validation": "Germanium (50) to silicon carbide whiskers (7000)",
+        "confidence": 85
+      },
+      "stone": {
+        "min": 2,
+        "max": 25,
+        "unit": "MPa",
+        "validation": "Soft limestone (2) to hard granite (25)",
+        "confidence": 90
+      },
+      "wood": {
+        "min": 20,
+        "max": 200,
+        "unit": "MPa",
+        "validation": "Balsa (20) to dense hardwoods parallel to grain (200)",
+        "confidence": 90
+      }
+    },
+    "thermalConductivity": {
+      "ceramic": {
+        "min": 0.03,
+        "max": 2000.0,
+        "unit": "W/m\u00b7K",
+        "validation": "Aerogel ceramics (0.03) to diamond ceramics (2000)",
+        "confidence": 95
+      },
+      "composite": {
+        "min": 0.1,
+        "max": 400,
+        "unit": "W/m\u00b7K",
+        "validation": "Polymer matrix (0.1) to metal matrix/diamond composites (400)",
+        "confidence": 85
+      },
+      "glass": {
+        "min": 0.02,
+        "max": 40,
+        "unit": "W/m\u00b7K",
+        "validation": "Aerogel glass (0.02) to metallic glass (40)",
+        "confidence": 90
+      },
+      "masonry": {
+        "min": 0.08,
+        "max": 2.5,
+        "unit": "W/m\u00b7K",
+        "validation": "Aerated concrete (0.08) to dense masonry (2.5)",
+        "confidence": 95
+      },
+      "metal": {
+        "min": 6.0,
+        "max": 429.0,
+        "unit": "W/m\u00b7K",
+        "validation": "Stainless steel (6) to silver (429)",
+        "confidence": 100
+      },
+      "plastic": {
+        "min": 0.02,
+        "max": 3,
+        "unit": "W/m\u00b7K",
+        "validation": "Aerogel foam (0.02) to graphite-filled polymers (3)",
+        "confidence": 90
+      },
+      "semiconductor": {
+        "min": 0.2,
+        "max": 156,
+        "unit": "W/m\u00b7K",
+        "validation": "Organic semiconductors (0.2) to silicon (156)",
+        "confidence": 90
+      },
+      "stone": {
+        "min": 0.2,
+        "max": 8,
+        "unit": "W/m\u00b7K",
+        "validation": "Pumice (0.2) to quartzite (8)",
+        "confidence": 90
+      },
+      "wood": {
+        "min": 0.04,
+        "max": 0.4,
+        "unit": "W/m\u00b7K",
+        "validation": "Balsa across grain (0.04) to dense hardwood parallel to grain (0.4)",
+        "confidence": 95
+      }
+    },
+    "thermalDestructionPoint": {
+      "ceramic": {
+        "min": 1000,
+        "max": 3827,
+        "unit": "\u00b0C",
+        "validation": "Low-fire ceramics (1000) to tungsten carbide (3827)",
+        "confidence": 95
+      },
+      "composite": {
+        "min": 150,
+        "max": 2000,
+        "unit": "\u00b0C",
+        "validation": "Polymer matrix (150) to ceramic matrix composites (2000)",
+        "confidence": 90
+      },
+      "glass": {
+        "min": 500,
+        "max": 1723,
+        "unit": "\u00b0C",
+        "validation": "Soft glass (500) to fused silica (1723)",
+        "confidence": 95
+      },
+      "masonry": {
+        "min": 500,
+        "max": 1200,
+        "unit": "\u00b0C",
+        "validation": "Lime mortar (500) to fired clay brick (1200)",
+        "confidence": 90
+      },
+      "metal": {
+        "min": -38.8,
+        "max": 3422,
+        "unit": "\u00b0C",
+        "validation": "Mercury melting point (-38.8) to tungsten (3422)",
+        "confidence": 100
+      },
+      "plastic": {
+        "min": 80,
+        "max": 400,
+        "unit": "\u00b0C",
+        "validation": "Low-temp polymers (80) to high-temp PEEK/PPS (400)",
+        "confidence": 95
+      },
+      "semiconductor": {
+        "min": 100,
+        "max": 1414,
+        "unit": "\u00b0C",
+        "validation": "Organic semiconductors (100) to silicon melting point (1414)",
+        "confidence": 95
+      },
+      "stone": {
+        "min": 600,
+        "max": 1700,
+        "unit": "\u00b0C",
+        "validation": "Limestone calcination (600) to granite melting (1700)",
+        "confidence": 90
+      },
+      "wood": {
+        "min": 200,
+        "max": 500,
+        "unit": "\u00b0C",
+        "validation": "Initial pyrolysis (200) to complete carbonization (500)",
+        "confidence": 95
+      }
+    },
+    "thermalDiffusivity": {
+      "ceramic": {
+        "min": 0.05,
+        "max": 120,
+        "unit": "mm\u00b2/s",
+        "validation": "Porous ceramics (0.05) to diamond ceramics (120)",
+        "confidence": 85
+      },
+      "composite": {
+        "min": 0.1,
+        "max": 180,
+        "unit": "mm\u00b2/s",
+        "validation": "Polymer matrix (0.1) to diamond/metal composites (180)",
+        "confidence": 80
+      },
+      "glass": {
+        "min": 0.01,
+        "max": 15,
+        "unit": "mm\u00b2/s",
+        "validation": "Aerogel glass (0.01) to dense glass (15)",
+        "confidence": 85
+      },
+      "masonry": {
+        "min": 0.1,
+        "max": 1,
+        "unit": "mm\u00b2/s",
+        "validation": "Aerated concrete (0.1) to dense masonry (1)",
+        "confidence": 85
+      },
+      "metal": {
+        "min": 0.2,
+        "max": 174,
+        "unit": "mm\u00b2/s",
+        "validation": "Stainless steel (0.2) to silver (174)",
+        "confidence": 95
+      },
+      "plastic": {
+        "min": 0.05,
+        "max": 1,
+        "unit": "mm\u00b2/s",
+        "validation": "Foam polymers (0.05) to solid engineering plastics (1)",
+        "confidence": 85
+      },
+      "semiconductor": {
+        "min": 0.1,
+        "max": 90,
+        "unit": "mm\u00b2/s",
+        "validation": "Compound semiconductors (0.1) to silicon (90)",
+        "confidence": 85
+      },
+      "stone": {
+        "min": 0.2,
+        "max": 2.5,
+        "unit": "mm\u00b2/s",
+        "validation": "Limestone (0.2) to quartzite (2.5)",
+        "confidence": 85
+      },
+      "wood": {
+        "min": 0.0001,
+        "max": 0.4,
+        "unit": "mm\u00b2/s",
+        "validation": "Balsa across grain (0.0001) to dense wood parallel to grain (0.4)",
+        "confidence": 85
+      }
+    },
+    "thermalExpansion": {
+      "ceramic": {
+        "min": 0.1,
+        "max": 14,
+        "unit": "\u00b5m/m\u00b7K",
+        "validation": "Fused silica (0.1) to cordierite (14)",
+        "confidence": 90
+      },
+      "composite": {
+        "min": -1,
+        "max": 250,
+        "unit": "\u00b5m/m\u00b7K",
+        "validation": "Carbon fiber composites (negative CTE) to particle-filled polymers (250)",
+        "confidence": 80
+      },
+      "glass": {
+        "min": 0.1,
+        "max": 15,
+        "unit": "\u00b5m/m\u00b7K",
+        "validation": "Fused silica (0.1) to soda-lime glass (15)",
+        "confidence": 95
+      },
+      "masonry": {
+        "min": 5,
+        "max": 20,
+        "unit": "\u00b5m/m\u00b7K",
+        "validation": "Dense concrete (5) to lightweight masonry (20)",
+        "confidence": 90
+      },
+      "metal": {
+        "min": 0.5,
+        "max": 29.1,
+        "unit": "\u00b5m/m\u00b7K",
+        "validation": "Invar (0.5) to cesium (29.1)",
+        "confidence": 95
+      },
+      "plastic": {
+        "min": 10,
+        "max": 200,
+        "unit": "\u00b5m/m\u00b7K",
+        "validation": "Reinforced thermosets (10) to soft thermoplastics (200)",
+        "confidence": 90
+      },
+      "semiconductor": {
+        "min": 2.6,
+        "max": 19.7,
+        "unit": "\u00b5m/m\u00b7K",
+        "validation": "Silicon (2.6) to gallium arsenide (6), max extended for compounds",
+        "confidence": 85,
+        "issue": "Max 19.7 seems high, typical GaAs is ~6"
+      },
+      "stone": {
+        "min": 3,
+        "max": 25,
+        "unit": "\u00b5m/m\u00b7K",
+        "validation": "Granite (3) to marble (25)",
+        "confidence": 90
+      },
+      "wood": {
+        "min": 3.0,
+        "max": 60,
+        "unit": "\u00b5m/m\u00b7K",
+        "validation": "Dense wood parallel to grain (3) to softwood perpendicular to grain (60)",
+        "confidence": 90
+      }
+    },
+    "youngsModulus": {
+      "ceramic": {
+        "min": 50,
+        "max": 800,
+        "unit": "GPa",
+        "validation": "Porous ceramics (50) to diamond ceramics (800)",
+        "confidence": 90
+      },
+      "composite": {
+        "min": 0.001,
+        "max": 500,
+        "unit": "GPa",
+        "validation": "Soft elastomer matrix (0.001) to carbon fiber/epoxy (500)",
+        "confidence": 85
+      },
+      "glass": {
+        "min": 10,
+        "max": 400,
+        "unit": "GPa",
+        "validation": "Aerogel glass (10) to metallic glass (400)",
+        "confidence": 85
+      },
+      "masonry": {
+        "min": 5,
+        "max": 50,
+        "unit": "GPa",
+        "validation": "Mortar (5) to dense aggregate concrete (50)",
+        "confidence": 90
+      },
+      "metal": {
+        "min": 5,
+        "max": 411,
+        "unit": "GPa",
+        "validation": "Soft lead (5) to tungsten (411)",
+        "confidence": 95
+      },
+      "plastic": {
+        "min": 0.01,
+        "max": 5,
+        "unit": "GPa",
+        "validation": "Soft elastomers (0.01) to reinforced PEEK (5)",
+        "confidence": 95
+      },
+      "semiconductor": {
+        "min": 5,
+        "max": 190,
+        "unit": "GPa",
+        "validation": "Organic semiconductors (5) to silicon (190)",
+        "confidence": 85
+      },
+      "stone": {
+        "min": 10,
+        "max": 100,
+        "unit": "GPa",
+        "validation": "Soft limestone (10) to hard granite (100)",
+        "confidence": 90
+      },
+      "wood": {
+        "min": 5,
+        "max": 5000,
+        "unit": "GPa",
+        "validation": "Balsa perpendicular to grain (5) to lignum vitae parallel to grain (20), max appears too high",
+        "confidence": 70,
+        "issue": "Max 5000 GPa is unrealistic - wood never exceeds 25 GPa"
+      }
+    }
+  },
+  "issues": [
+    {
+      "category": "semiconductor",
+      "property": "hardness",
+      "issue": "Max should be 9.5 for SiC",
+      "current": {
+        "max": 7,
+        "min": 2,
+        "unit": "Mohs"
+      },
+      "recommended": {
+        "min": 2,
+        "max": 7,
+        "unit": "Mohs"
+      }
+    },
+    {
+      "category": "semiconductor",
+      "property": "thermalExpansion",
+      "issue": "Max 19.7 seems high, typical GaAs is ~6",
+      "current": {
+        "max": 19.7,
+        "min": 2.6,
+        "unit": "\u00b5m/m\u00b7K"
+      },
+      "recommended": {
+        "min": 2.6,
+        "max": 19.7,
+        "unit": "\u00b5m/m\u00b7K"
+      }
+    },
+    {
+      "category": "wood",
+      "property": "youngsModulus",
+      "issue": "Max 5000 GPa is unrealistic - wood never exceeds 25 GPa",
+      "current": {
+        "max": 5000,
+        "min": 5,
+        "unit": "GPa"
+      },
+      "recommended": {
+        "min": 5,
+        "max": 5000,
+        "unit": "GPa"
+      }
+    }
+  ]
+}
