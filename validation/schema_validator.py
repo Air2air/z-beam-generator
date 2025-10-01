@@ -96,12 +96,12 @@ class SchemaManager:
     def get_primary_schema(self) -> Tuple[Path, Dict]:
         """Get the primary schema with fallback hierarchy"""
         schema_priority = [
-            "active/enhanced_unified_frontmatter.json",  # Primary organized
-            "enhanced_unified_frontmatter.json",         # Primary legacy location
-            "active/enhanced_frontmatter.json",          # Enhanced organized
-            "enhanced_frontmatter.json",                 # Enhanced legacy location  
-            "active/frontmatter.json",                   # Legacy organized
-            "frontmatter.json"                           # Legacy location
+            "active/frontmatter_v2.json",                # Primary (v2 with DataMetric pattern)
+            "active/frontmatter_enhanced.json",          # Enhanced validation features
+            "active/frontmatter.json",                   # Basic frontmatter
+            "enhanced_unified_frontmatter.json",         # Legacy: unified naming (deprecated)
+            "enhanced_frontmatter.json",                 # Legacy: enhanced naming (deprecated)
+            "frontmatter.json"                           # Legacy: basic location
         ]
         
         for schema_name in schema_priority:
@@ -172,7 +172,7 @@ class SchemaValidator:
         if schema_path:
             self.project_root = Path(schema_path).parent.parent
         else:
-            self.project_root = Path(__file__).parent.parent.parent
+            self.project_root = Path(__file__).parent.parent
         
         # Initialize schema manager
         self.schema_manager = SchemaManager(self.project_root)

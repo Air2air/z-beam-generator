@@ -6,8 +6,8 @@ Organizes the schema directory with clear hierarchy and removes redundant schema
 Creates organized structure with proper fallback chain and version management.
 
 Schema Hierarchy (Priority Order):
-1. enhanced_unified_frontmatter.json    # Primary - with DataMetric pattern
-2. enhanced_frontmatter.json            # Enhanced fallback
+1. frontmatter_v2.json    # Primary - with DataMetric pattern
+2. frontmatter_enhanced.json            # Enhanced fallback
 3. frontmatter.json                     # Legacy fallback 
 
 Organization Strategy:
@@ -43,8 +43,8 @@ class SchemaOrganizer:
         
         # Schema categorization
         self.primary_schemas = {
-            "enhanced_unified_frontmatter.json": "Primary schema with DataMetric pattern",
-            "enhanced_frontmatter.json": "Enhanced validation features", 
+            "frontmatter_v2.json": "Primary schema with DataMetric pattern",
+            "frontmatter_enhanced.json": "Enhanced validation features", 
             "frontmatter.json": "Legacy compatibility fallback"
         }
         
@@ -191,13 +191,13 @@ Generated: {datetime.now().isoformat()}
 
 The SchemaValidator uses this fallback hierarchy:
 
-1. **enhanced_unified_frontmatter.json** (PRIMARY)
+1. **frontmatter_v2.json** (PRIMARY)
    - Location: `schemas/active/`
    - Purpose: Complete frontmatter validation with DataMetric pattern
    - Features: Reusable data structures, confidence scoring, research validation
    - Use Case: Production content generation with quality metrics
 
-2. **enhanced_frontmatter.json** (ENHANCED FALLBACK)
+2. **frontmatter_enhanced.json** (ENHANCED FALLBACK)
    - Location: `schemas/active/`
    - Purpose: Enhanced validation without DataMetric complexity
    - Features: Extended validation rules, quality checks
@@ -283,15 +283,15 @@ result = validator.validate(frontmatter_data, material_name)
 ### For Specific Schema
 ```python
 # Use specific schema
-validator = SchemaValidator("schemas/active/enhanced_unified_frontmatter.json")
+validator = SchemaValidator("schemas/active/frontmatter_v2.json")
 ```
 
 ### Schema Path Resolution
 The validator searches in this order:
-1. `schemas/active/enhanced_unified_frontmatter.json`
-2. `schemas/enhanced_unified_frontmatter.json` (legacy location)
-3. `schemas/active/enhanced_frontmatter.json`
-4. `schemas/enhanced_frontmatter.json` (legacy location)
+1. `schemas/active/frontmatter_v2.json`
+2. `schemas/frontmatter_v2.json` (legacy location)
+3. `schemas/active/frontmatter_enhanced.json`
+4. `schemas/frontmatter_enhanced.json` (legacy location)
 5. `schemas/active/frontmatter.json`
 6. `schemas/frontmatter.json` (legacy location)
 7. Emergency minimal schema (built-in)
@@ -332,16 +332,16 @@ The validator searches in this order:
         
         # Update schema priority list to include new paths
         old_priority = '''        schema_priority = [
-            "enhanced_unified_frontmatter.json",  # Primary
-            "enhanced_frontmatter.json",          # Enhanced fallback  
+            "frontmatter_v2.json",  # Primary
+            "frontmatter_enhanced.json",          # Enhanced fallback  
             "frontmatter.json"                    # Legacy fallback
         ]'''
         
         new_priority = '''        schema_priority = [
-            "active/enhanced_unified_frontmatter.json",  # Primary organized
-            "enhanced_unified_frontmatter.json",         # Primary legacy location
-            "active/enhanced_frontmatter.json",          # Enhanced organized
-            "enhanced_frontmatter.json",                 # Enhanced legacy location  
+            "active/frontmatter_v2.json",  # Primary organized
+            "frontmatter_v2.json",         # Primary legacy location
+            "active/frontmatter_enhanced.json",          # Enhanced organized
+            "frontmatter_enhanced.json",                 # Enhanced legacy location  
             "active/frontmatter.json",                   # Legacy organized
             "frontmatter.json"                           # Legacy location
         ]'''
@@ -377,8 +377,8 @@ The validator searches in this order:
 🗂️ NEW DIRECTORY STRUCTURE:
    schemas/
    ├── active/              # Primary validation schemas
-   │   ├── enhanced_unified_frontmatter.json  (PRIMARY)
-   │   ├── enhanced_frontmatter.json          (ENHANCED FALLBACK)
+   │   ├── frontmatter_v2.json  (PRIMARY)
+   │   ├── frontmatter_enhanced.json          (ENHANCED FALLBACK)
    │   └── frontmatter.json                   (LEGACY FALLBACK)
    ├── components/          # Component-specific schemas
    │   ├── author.json
@@ -391,8 +391,8 @@ The validator searches in this order:
    └── SCHEMA_INDEX.md      # Complete documentation
 
 🔄 VALIDATION HIERARCHY:
-   1. active/enhanced_unified_frontmatter.json  → DataMetric pattern, research validation
-   2. active/enhanced_frontmatter.json          → Enhanced validation features
+   1. active/frontmatter_v2.json  → DataMetric pattern, research validation
+   2. active/frontmatter_enhanced.json          → Enhanced validation features
    3. active/frontmatter.json                   → Basic compatibility fallback
    4. Emergency minimal schema                  → Built-in last resort
 
@@ -421,7 +421,7 @@ The validator searches in this order:
 🎯 BENEFITS ACHIEVED:
    • Clear schema hierarchy with automatic fallback
    • Organized directory structure (75% improvement in clarity)
-   • Single source of truth for validation (enhanced_unified_frontmatter.json)
+   • Single source of truth for validation (frontmatter_v2.json)
    • Preserved all existing functionality
    • Improved maintainability and discoverability
 

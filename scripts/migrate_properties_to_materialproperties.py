@@ -576,7 +576,7 @@ class PropertiesToMaterialPropertiesMigrator:
    • DataMetric validation patterns preserved
 
 ✅ CRITICAL CHANGES COMPLETED:
-   • enhanced_unified_frontmatter.json: 'properties' → 'materialProperties'
+   • frontmatter_v2.json: 'properties' → 'materialProperties'
    • streamlined_generator.py: Dictionary access patterns updated
    • unified_schema_validator.py: Validation logic updated
    • Generated content files: YAML keys migrated
