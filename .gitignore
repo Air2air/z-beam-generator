@@ -100,3 +100,18 @@ node_modules/
 
 # Archived files
 .archive/
+
+# Generated coverage reports
+htmlcov/
+.coverage
+*.cover
+.pytest_cache/
+
+# Log files
+logs/*.json
+logs/*.log
+
+# Python cache
+*.py[cod]
+*$py.class
+__pycache__/
