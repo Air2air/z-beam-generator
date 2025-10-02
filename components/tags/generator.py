@@ -134,32 +134,28 @@ class TagsComponentGenerator(APIComponentGenerator):
         return yaml_content
 
     def _generate_tags_from_frontmatter(self, material_name: str, material_data: Dict, frontmatter_data: Optional[Dict], template_vars: Dict) -> list:
-        """Generate exactly 11 tags: 1 material + 1 category + 3 industries + 3 processes + 2 characteristics + 1 author"""
+        """Generate exactly 10 tags: 1 category + 3 industries + 3 processes + 2 characteristics + 1 author"""
         tags = []
         
         try:
-            # 1. CORE: Material name (normalized)
-            material_slug = material_name.lower().replace(' ', '-').replace('_', '-')
-            tags.append(material_slug)
-            
-            # 2. CORE: Category
+            # 1. CORE: Category
             category_raw = template_vars['material_category']
             category = category_raw.lower() if isinstance(category_raw, str) else str(category_raw).lower()
             tags.append(category)
             
-            # 3-5. INDUSTRIES: Extract 3 industry tags from applicationTypes
+            # 2-4. INDUSTRIES: Extract 3 industry tags from applicationTypes
             industry_tags = self._extract_industry_tags(frontmatter_data, category)
             tags.extend(industry_tags[:3])  # Exactly 3 industries
             
-            # 6-8. PROCESSES: Extract 3 process tags from applicationTypes
+            # 5-7. PROCESSES: Extract 3 process tags from applicationTypes
             process_tags = self._extract_process_tags(frontmatter_data, category)
             tags.extend(process_tags[:3])  # Exactly 3 processes
             
-            # 9-10. CHARACTERISTICS: Extract 2 material characteristic tags
+            # 8-9. CHARACTERISTICS: Extract 2 material characteristic tags
             characteristic_tags = self._extract_characteristic_tags(frontmatter_data, material_data, category)
             tags.extend(characteristic_tags[:2])  # Exactly 2 characteristics
             
-            # 11. AUTHOR: Author name slug
+            # 10. AUTHOR: Author name slug
             author_raw = template_vars.get('author_name', '')
             author_slug = author_raw.lower().replace(' ', '-').replace('.', '').replace(',', '') if isinstance(author_raw, str) else str(author_raw).lower().replace(' ', '-')
             tags.append(author_slug)
@@ -169,13 +165,13 @@ class TagsComponentGenerator(APIComponentGenerator):
             logger.error(f"template_vars: {template_vars}")
             raise
         
-        # Validation: Ensure exactly 11 tags (material + category + 3 industries + 3 processes + 2 characteristics + author)
-        if len(tags) != 11:
-            logger.warning(f"Tag count mismatch for {material_name}: expected 11, got {len(tags)}")
-            # Pad or trim to exactly 11
-            while len(tags) < 11:
+        # Validation: Ensure exactly 10 tags (category + 3 industries + 3 processes + 2 characteristics + author)
+        if len(tags) != 10:
+            logger.warning(f"Tag count mismatch for {material_name}: expected 10, got {len(tags)}")
+            # Pad or trim to exactly 10
+            while len(tags) < 10:
                 tags.append('laser-processing')  # Fallback tag
-            tags = tags[:11]
+            tags = tags[:10]
         
         return tags
         
