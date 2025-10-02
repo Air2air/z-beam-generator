@@ -291,7 +291,7 @@ class MockTagsComponentGenerator(TagsComponentGenerator):
 - **Generation Time**: < 3 seconds per material
 - **API Calls**: 1 call per material (no retries needed)
 - **Success Rate**: > 95% for valid inputs
-- **Tag Count**: 8-12 tags per material
+- **Tag Count**: 4-10 tags per material
 
 ### **Quality Metrics**
 - **Relevance Score**: > 85% of tags should be relevant to laser cleaning
@@ -394,7 +394,7 @@ print(f"Content preview: {result.content[:200]}")
 - [ ] All four tag categories present (industry, process, author, other)
 - [ ] Author slug included in author tags
 - [ ] Material name/category represented in tags
-- [ ] Total tag count between 6-12 tags
+- [ ] Total tag count between 4-10 tags
 
 ### **Integration Validation**
 - [ ] Component generates without API client dependency

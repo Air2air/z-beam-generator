@@ -242,10 +242,10 @@ class TagsComponentGenerator(APIComponentGenerator):
         
         # Final validation: no need for additional filtering since we filtered during extraction
         
-        # FAIL-FAST: Must have 5-10 tags (NO FALLBACKS per GROK_INSTRUCTIONS.md)
-        # Lowered from 7 to 5 to accommodate materials with limited properties/applications
-        if len(tags) < 5 or len(tags) > 10:
-            raise ValueError(f"Tag count mismatch for {material_name}: expected 5-10, got {len(tags)}. Insufficient data in frontmatter - needs more applications or materialProperties.")
+        # FAIL-FAST: Must have 4-10 tags (NO FALLBACKS per GROK_INSTRUCTIONS.md)
+        # Lowered from 5 to 4 to accommodate materials with minimal properties/applications
+        if len(tags) < 4 or len(tags) > 10:
+            raise ValueError(f"Tag count mismatch for {material_name}: expected 4-10, got {len(tags)}. Insufficient data in frontmatter - needs more applications or materialProperties.")
         
         return tags
 
