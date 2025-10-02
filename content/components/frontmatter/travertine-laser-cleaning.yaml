@@ -11,198 +11,192 @@ materialProperties:
     description: Bulk density of typical travertine stone
     min: 1.5
     max: 3.4
+  meltingPoint:
+    value: 825
+    unit: °C
+    confidence: 90
+    description: Decomposition temperature of calcium carbonate to calcium oxide
+    min: null
+    max: null
   thermalConductivity:
     value: 2.3
     unit: W/m·K
     confidence: 88
     description: Thermal conductivity at room temperature
-    min: 0.12
-    max: 8.28
+    min: 0.2
+    max: 8
+  tensileStrength:
+    value: 8.5
+    unit: MPa
+    confidence: 87
+    description: Brazilian tensile strength of travertine
+    min: 2
+    max: 25
   hardness:
-    value: 3.8
+    value: 4.0
     unit: Mohs
-    confidence: 92
-    description: Mohs hardness scale for calcite-based stone
+    confidence: 94
+    description: Mohs hardness scale for calcite-based travertine
     min: 1
     max: 7
   youngsModulus:
-    value: 48.2
+    value: 35
     unit: GPa
-    confidence: 85
-    description: Elastic modulus in compression
+    confidence: 88
+    description: Elastic modulus under compression
     min: 10
     max: 100
   thermalExpansion:
-    value: 8.2
-    unit: 10⁻⁶/°C
+    value: 8.0
+    unit: μm/m·°C
     confidence: 85
-    description: Coefficient of thermal expansion
-    min: 3.5
-    max: 26.9
+    description: Coefficient of thermal expansion (20-100°C)
+    min: 3
+    max: 25
   specificHeat:
-    value: 921.0
-    unit: J/kg·K
-    confidence: 90
+    value: 0.84
+    unit: kJ/kg·K
+    confidence: 92
     description: Specific heat capacity at room temperature
-    min: 705.5
-    max: 1119.5
+    min: 600
+    max: 1200
+  thermalDiffusivity:
+    value: 1.14
+    unit: mm²/s
+    confidence: 86
+    description: Thermal diffusivity calculated from conductivity, density, and specific heat
+    min: 0.2
+    max: 2.5
   compressiveStrength:
     value: 80
     unit: MPa
-    confidence: 88
-    description: Uniaxial compressive strength
+    confidence: 89
+    description: Uniaxial compressive strength of travertine
     min: null
     max: null
   porosity:
-    value: 12
+    value: 12.5
     unit: '%'
-    confidence: 90
-    description: Typical porosity range affecting laser absorption
+    confidence: 93
+    description: Average porosity percentage in travertine
     min: null
     max: null
   absorptionCoefficient:
-    value: 0.65
-    unit: ''
+    value: 0.75
+    unit: dimensionless
     confidence: 82
-    description: Optical absorption coefficient for IR wavelengths (1064 nm)
+    description: Optical absorption coefficient for common laser wavelengths (1064 nm)
     min: null
     max: null
   ablationThreshold:
-    value: 1.2
+    value: 2.8
     unit: J/cm²
-    confidence: 80
-    description: Laser ablation threshold for nanosecond pulses at 1064 nm
+    confidence: 85
+    description: Laser ablation threshold for Nd:YAG lasers (1064 nm)
     min: null
     max: null
   chemicalStability:
     value: Moderate
     unit: qualitative
-    confidence: 88
-    description: Susceptible to acid dissolution but stable in neutral conditions
+    confidence: 90
+    description: Reacts with acids but stable in alkaline environments
     min: null
     max: null
-  laserAbsorption:
-    confidence: 0.7
-    max: 20.0
-    min: 0.1
-    source: default_from_category_range
-    unit: cm⁻¹
-    value: 8.7
-  laserReflectivity:
-    confidence: 0.7
-    max: 80.0
-    min: 5.0
-    source: default_from_category_range
-    unit: '%'
-    value: 38.2
-  tensileStrength:
-    confidence: 0.7
-    max: 25.0
-    min: 2.0
-    source: default_from_category_range
-    unit: MPa
-    value: 8.2
-  thermalDiffusivity:
-    confidence: 0.7
-    max: 2.5
-    min: 0.2
-    source: default_from_category_range
-    unit: mm²/s
-    value: 1.32
-  thermalDestructionPoint:
-    confidence: 0.7
-    max: 1700.0
-    min: 600.0
-    source: default_from_category_range
-    unit: °C
-    value: 825.0
-  thermalDestructionType:
-    confidence: 0.8
-    source: category_default
-    value: 2.3
 applications:
-- laser cleaning
-- surface preparation
+- 'Restoration: Gentle cleaning for restoration and conservation applications'
+- 'Manufacturing: Industrial surface preparation and contamination removal'
+- 'Jewelry: Precision cleaning and polishing of precious metal jewelry'
 machineSettings:
   powerRange:
-    value: 12
+    value: 25
     unit: W
     confidence: 90
     description: Optimal average power for Travertine surface cleaning without thermal damage
-    min: 8
-    max: 18
+    min: 15
+    max: 40
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimized for Travertine's calcium carbonate matrix
+    description: Near-infrared wavelength optimal for calcareous stone absorption characteristics
     min: 532
-    max: 10640
+    max: 1064
   spotSize:
     value: 100
     unit: μm
-    confidence: 92
-    description: Optimal beam diameter for precise cleaning control on Travertine surface
+    confidence: 86
+    description: Beam spot diameter for precise cleaning control on Travertine surface
     min: 50
     max: 200
   repetitionRate:
-    value: 20
+    value: 30
     unit: kHz
     confidence: 87
     description: Optimal repetition rate for efficient cleaning with thermal management
-    min: 10
+    min: 20
     max: 50
-  fluenceThreshold:
-    value: 0.8
-    unit: J/cm²
-    confidence: 88
-    description: Threshold fluence for effective contaminant removal without substrate damage
-    min: 0.5
-    max: 1.2
   pulseWidth:
-    value: 10
+    value: 8
     unit: ns
     confidence: 85
-    description: Optimal pulse duration for controlled ablation of surface contaminants
+    description: Short pulse duration for controlled ablation of contaminants without substrate damage
     min: 5
-    max: 20
+    max: 15
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 85
+    confidence: 84
     description: Optimal scanning speed for uniform cleaning coverage
-    min: 200
-    max: 1000
+    min: 300
+    max: 800
+  energyDensity:
+    value: 3.2
+    unit: J/cm²
+    confidence: 89
+    description: Fluence threshold for effective contaminant removal without damaging Travertine substrate
+    min: 2.0
+    max: 4.5
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for uniform cleaning without excessive energy deposition
-    min: 30
-    max: 70
+    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
+    min: 40
+    max: 60
   passCount:
-    value: 3
+    value: 2
     unit: passes
-    confidence: 82
-    description: Recommended number of passes for thorough cleaning with safety margin
+    confidence: 85
+    description: Recommended number of passes for complete contaminant removal
     min: 1
-    max: 5
-  energyDensity:
-    value: 1.5
-    unit: J/cm²
-    confidence: 86
-    description: Optimal energy density for Travertine cleaning applications
-    min: 0.8
-    max: 2.5
+    max: 3
+  laserType:
+    value: Nd:YAG
+    unit: n/a
+    confidence: 90
+    description: Recommended laser type for Travertine cleaning applications
+    min: null
+    max: null
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
 - IEC 60825 - Safety of Laser Products
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author:
+  id: 2
+  name: Alessandro Moretti
+  sex: m
+  title: Ph.D.
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  image: /images/author/alessandro-moretti.jpg
 images:
   hero:
     alt: Travertine surface undergoing laser cleaning showing precise contamination removal
-    url: /images/travertine-laser-cleaning-hero.jpg
+    url: /images/material/travertine-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Travertine surface after laser cleaning showing detailed surface structure
+    url: /images/material/travertine-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -228,56 +222,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-applicationTypes:
-- type: Precision Cleaning
-  description: High-precision removal of microscopic contaminants and residues
-  industries:
-  - Semiconductor
-  - MEMS
-  - Optics
-  - Medical Devices
-  qualityMetrics:
-  - Particle count reduction
-  - Surface roughness maintenance
-  - Chemical purity
-  typicalTolerances: Sub-micron accuracy with minimal substrate impact
-  objectives: []
-- type: Surface Preparation
-  description: Preparation of surfaces for bonding, coating, or further processing
-  industries:
-  - Aerospace
-  - Automotive
-  - Manufacturing
-  - Construction
-  qualityMetrics:
-  - Surface energy
-  - Cleanliness level
-  - Roughness profile
-  typicalTolerances: ''
-  objectives:
-  - Adhesion enhancement
-  - Contamination removal
-  - Surface activation
-- type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
-  industries:
-  - Cultural Heritage
-  - Architecture
-  - Art Conservation
-  - Historical Restoration
-  qualityMetrics: []
-  typicalTolerances: ''
-  objectives: []
-- type: Contamination Removal
-  description: General removal of unwanted surface deposits and contaminants
-  industries:
-  - Manufacturing
-  - Marine
-  - Oil & Gas
-  - Power Generation
-  qualityMetrics: []
-  typicalTolerances: ''
-  objectives: []
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -312,62 +256,22 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units: []
-author:
-  id: 2
-  name: Alessandro Moretti
-  sex: m
-  title: Ph.D.
-  country: Italy
-  expertise: Laser-Based Additive Manufacturing
-  image: /images/author/alessandro-moretti.jpg
 caption:
-  beforeText: 'At 500x magnification, the contaminated travertine surface reveals a complex, stratified layer of foreign material.
-    A discontinuous soiling layer, approximately 5-15 micrometers thick, fills the natural pores and fissures characteristic
-    of this porous stone. This layer consists of fine particulate matter, carbonaceous deposits, and biological growth, which
-    obscure the underlying crystalline structure of the calcite.
-
-
-    The surface texture is highly irregular, with contaminants forming a crust that bridges across the micro-topography. This
-    crust exhibits a cracked, desiccated appearance, indicating adhesion to the stone substrate. The original travertine surface
-    is no longer visible in many areas, as the contamination has created a continuous film that alters the stone''s inherent
-    reflectivity and color at a microscopic level.'
-  afterText: Following laser cleaning, the 500x magnification reveals a complete restoration of the original stone substrate.
-    The contaminant crust has been entirely removed, exposing the clean, intact calcite crystals and reopening the stone's
-    natural porosity. The surface now displays its inherent micro-texture without the bridging effect of the soiling layer,
-    resulting in a clear, well-defined pore structure and restored surface geometry.
-  description: Microscopic analysis of travertine surface before and after laser cleaning treatment
-  alt: Microscopic view of travertine surface showing laser cleaning effects
-  technicalAnalysis:
-    focus: surface_analysis
-    uniqueCharacteristics:
-    - travertine_specific
-    contaminationProfile: travertine surface contamination
-  microscopy:
-    parameters: Microscopic analysis of travertine
-    qualityMetrics: Surface improvement analysis
-  generation:
-    method: frontmatter_integrated_generation
-    timestamp: '2025-09-30T20:37:21.938901Z'
-    generator: FrontmatterCaptionGenerator
-    componentType: ai_caption_frontmatter
-  author: Alessandro Moretti
-  materialProperties:
-    materialType: Stone
-    analysisMethod: ai_microscopy
-  imageUrl:
-    alt: Microscopic view of Travertine surface after laser cleaning showing detailed surface structure
-    url: /images/travertine-laser-cleaning-micro.jpg
-metadata:
-  lastUpdated: '2025-09-30T20:37:34.074158'
-  captionIntegrated: true
+  before_text: At 500x magnification, the travertine surface is obscured by a continuous, amorphous contamination layer approximately
+    10-50 µm thick. This layer, composed of carbonaceous particulates, gypsum crusts, and biological growth, fills the natural
+    pores and voids characteristic of the stone's 12.5% porosity. The underlying crystalline calcite structure and surface
+    texture are entirely masked, with the contaminant exhibiting a cracked, crust-like morphology.
+  after_text: Laser cleaning has fully removed the superficial contamination layer, revealing the pristine calcite matrix.
+    The stone's intrinsic porosity and microcrystalline texture are now clearly defined, with pore diameters ranging from
+    5-200 µm. The surface exhibits no thermal damage, as the process remained well below calcium carbonate's 825°C decomposition
+    threshold. The ablation has restored the original surface topography without mechanical alteration to the substrate.
 tags:
 - stone
-- semiconductor
-- mems
-- optics
-- precision-cleaning
-- surface-preparation
-- restoration-cleaning
-- porous-material
-- thermal-sensitive
+- restoration
+- manufacturing
+- jewelry
+- insulating
+- porous
+- brittle
+- absorptive
 - alessandro-moretti

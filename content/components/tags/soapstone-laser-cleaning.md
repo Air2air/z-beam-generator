@@ -1,0 +1,1 @@
+Tags integrated into frontmatter: stone, jewelry, insulating, soft, brittle, corrosion-resistant, alessandro-moretti

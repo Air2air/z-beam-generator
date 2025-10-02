@@ -1,0 +1,1 @@
+Tags integrated into frontmatter: stone, manufacturing, absorptive, insulating, brittle, alessandro-moretti

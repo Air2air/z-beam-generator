@@ -1,0 +1,1 @@
+Tags integrated into frontmatter: stone, jewelry, absorptive, insulating, strong, alessandro-moretti

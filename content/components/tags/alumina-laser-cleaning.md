@@ -1,0 +1,1 @@
+Tags integrated into frontmatter: ceramic, food-processing, nuclear, aerospace, low-reflectivity, hard-material, low-absorption, medium-density, high-melting-point, alessandro-moretti

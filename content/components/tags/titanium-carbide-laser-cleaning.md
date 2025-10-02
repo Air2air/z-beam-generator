@@ -1,0 +1,1 @@
+Tags integrated into frontmatter: ceramic, aerospace, absorptive, strong, rigid, alessandro-moretti

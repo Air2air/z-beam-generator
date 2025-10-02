@@ -1,0 +1,1 @@
+Tags integrated into frontmatter: stone, construction, absorptive, insulating, strong, corrosion-resistant, alessandro-moretti

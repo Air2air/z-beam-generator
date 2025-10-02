@@ -1491,7 +1491,7 @@ def main():
                             output_dir = f"content/components/{component_type}"
                             os.makedirs(output_dir, exist_ok=True)
                             filename = generate_safe_filename(material_name)
-                            output_file = f"{output_dir}/{filename}-laser-cleaning.json" if component_type == 'jsonld' else f"{output_dir}/{filename}-laser-cleaning.yaml" if component_type in ['table', 'metatags', 'author', 'caption'] else f"{output_dir}/{filename}-laser-cleaning.md"
+                            output_file = f"{output_dir}/{filename}-laser-cleaning.json" if component_type == 'jsonld' else f"{output_dir}/{filename}-laser-cleaning.yaml" if component_type in ['frontmatter', 'table', 'metatags', 'author', 'caption', 'tags'] else f"{output_dir}/{filename}-laser-cleaning.md"
                             
                             with open(output_file, 'w') as f:
                                 f.write(result.content)

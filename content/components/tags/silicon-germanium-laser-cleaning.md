@@ -1,0 +1,1 @@
+Tags integrated into frontmatter: semiconductor, electronics, absorptive, insulating, durable, stable, strong, rigid, ikmanda-roswati
