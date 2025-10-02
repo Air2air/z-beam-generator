@@ -107,12 +107,14 @@
     "tags": {
       "type": "array",
       "items": {"type": "string"},
-      "description": "Categorization tags"
+      "minItems": 11,
+      "maxItems": 11,
+      "description": "Essential categorization tags: 1 material + 1 category + 3 industries + 3 processes + 2 characteristics + 1 author (11 total)"
     },
     "industryTags": {
       "type": "array",
       "items": {"type": "string"},
-      "description": "Industry-specific classification tags"
+      "description": "Industry-specific classification tags (deprecated - use tags field)"
     },
     "compatibility": {
       "$ref": "#/definitions/CompatibilityMatrix"

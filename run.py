@@ -1401,9 +1401,12 @@ def main():
             from pipeline_integration import validate_batch_generation
             material_names = [material[0] for material in all_materials]
             batch_validation = validate_batch_generation(material_names)
-            print(f"🔍 Batch validation: {batch_validation['validation_passed']}/{batch_validation['total_materials']} materials passed")
-            if batch_validation['validation_failed'] > 0:
-                print(f"⚠️ {batch_validation['validation_failed']} materials have validation issues (proceeding with corrections)")
+            if batch_validation['valid']:
+                print(f"🔍 Batch validation: {batch_validation['total_materials']} materials ready for processing")
+            if batch_validation.get('errors'):
+                print(f"⚠️ {len(batch_validation['errors'])} validation errors detected")
+            if batch_validation.get('warnings'):
+                print(f"⚠️ {len(batch_validation['warnings'])} validation warnings detected")
             
             # Check if any components require API clients
             requires_api = any(
@@ -1457,21 +1460,19 @@ def main():
                                     break
                             if frontmatter_path and os.path.exists(frontmatter_path):
                                 import yaml
-                                with open(frontmatter_path, 'r') as f:
+                                with open(frontmatter_path, 'r', encoding='utf-8') as f:
+                                    # Check if file is pure YAML or markdown with frontmatter
                                     content = f.read()
-                                yaml_start = content.find('---') + 3
-                                yaml_end = content.find('---', yaml_start)
-                                if yaml_start > 2 and yaml_end > yaml_start:
-                                    # Traditional frontmatter with closing ---
-                                    yaml_content = content[yaml_start:yaml_end].strip()
-                                elif yaml_start > 2:
-                                    # Pure YAML file without closing --- (our current format)
-                                    yaml_content = content[yaml_start:].strip()
-                                else:
-                                    yaml_content = None
-                                
-                                if yaml_content:
-                                    frontmatter_data = yaml.safe_load(yaml_content)
+                                    if frontmatter_path.endswith('.yaml'):
+                                        # Pure YAML file - load directly
+                                        frontmatter_data = yaml.safe_load(content)
+                                    else:
+                                        # Markdown file with frontmatter - extract YAML between --- delimiters
+                                        yaml_start = content.find('---') + 3
+                                        yaml_end = content.find('---', yaml_start)
+                                        if yaml_start > 2 and yaml_end > yaml_start:
+                                            yaml_content = content[yaml_start:yaml_end].strip()
+                                            frontmatter_data = yaml.safe_load(yaml_content)
                             
                             if not frontmatter_data and component_type != 'frontmatter':
                                 print(f"  ⚠️ No frontmatter data found for {material_name} - skipping {component_type}")

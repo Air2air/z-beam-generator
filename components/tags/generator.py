@@ -37,7 +37,10 @@ class TagsComponentGenerator(APIComponentGenerator):
         frontmatter_data: Optional[Dict] = None,
         schema_fields: Optional[Dict] = None,
     ) -> ComponentResult:
-        """Generate tags using frontmatter data only (no AI)"""
+        """Generate tags and integrate them directly into frontmatter YAML file"""
+        import yaml
+        from pathlib import Path
+        
         try:
             # Pre-validate frontmatter data if available
             if frontmatter_data:
@@ -55,36 +58,57 @@ class TagsComponentGenerator(APIComponentGenerator):
             # Generate tags from frontmatter data
             final_tags = self._generate_tags_from_frontmatter(material_name, material_data, frontmatter_data, template_vars)
 
-            # Create structured YAML output
-            yaml_content = self._format_as_yaml(material_name, final_tags, template_vars)
+            # INTEGRATION: Write tags directly into frontmatter YAML file
+            material_slug = material_name.lower().replace(' ', '-').replace('_', '-')
+            frontmatter_file = Path(f"content/components/frontmatter/{material_slug}-laser-cleaning.yaml")
             
-            # Validate YAML syntax
-            try:
-                import yaml
-                yaml.safe_load(yaml_content)
-            except yaml.YAMLError as yaml_err:
-                logger.warning(f"Generated YAML has syntax issues for {material_name}: {yaml_err}")
-                # Attempt to fix common issues
-                yaml_content = self._fix_yaml_syntax(yaml_content)
+            if not frontmatter_file.exists():
+                error_msg = f"Frontmatter file not found: {frontmatter_file}"
+                logger.error(error_msg)
+                return ComponentResult(
+                    component_type="tags",
+                    content="",
+                    success=False,
+                    error_message=error_msg,
+                )
             
-            # Add version info
-            from datetime import datetime
-            version_info = f"""---
-Material: "{material_name.lower()}"
-Component: tags
-Generated: {datetime.now().isoformat()}
-Generator: Z-Beam v1.0.0 (Frontmatter-Based)
-Format: YAML v2.0
----"""
+            # Load existing frontmatter YAML
+            with open(frontmatter_file, 'r', encoding='utf-8') as f:
+                frontmatter_content = yaml.safe_load(f)
             
-            final_content = f"{yaml_content}\n\n{version_info}"
+            if not frontmatter_content:
+                error_msg = f"Could not parse frontmatter YAML: {frontmatter_file}"
+                logger.error(error_msg)
+                return ComponentResult(
+                    component_type="tags",
+                    content="",
+                    success=False,
+                    error_message=error_msg,
+                )
+            
+            # Add tags array to frontmatter
+            frontmatter_content['tags'] = final_tags
+            
+            # Save updated frontmatter with preserved formatting
+            with open(frontmatter_file, 'w', encoding='utf-8') as f:
+                yaml.dump(frontmatter_content, f, 
+                         default_flow_style=False, 
+                         sort_keys=False, 
+                         allow_unicode=True,
+                         width=120)
+            
+            logger.info(f"Successfully integrated {len(final_tags)} tags into frontmatter: {frontmatter_file}")
 
+            # Return success with tag list for logging
+            tag_summary = ", ".join(final_tags)
             return ComponentResult(
-                component_type="tags", content=final_content, success=True
+                component_type="tags", 
+                content=f"Tags integrated into frontmatter: {tag_summary}", 
+                success=True
             )
 
         except Exception as e:
-            logger.error(f"Error generating tags for {material_name}: {e}")
+            logger.error(f"Error generating/integrating tags for {material_name}: {e}")
             return ComponentResult(
                 component_type="tags",
                 content="",
@@ -110,135 +134,236 @@ Format: YAML v2.0
         return yaml_content
 
     def _generate_tags_from_frontmatter(self, material_name: str, material_data: Dict, frontmatter_data: Optional[Dict], template_vars: Dict) -> list:
-        """Generate exactly 10 essential tags for frontmatter"""
+        """Generate exactly 11 tags: 1 material + 1 category + 3 industries + 3 processes + 2 characteristics + 1 author"""
         tags = []
         
-        # Priority 1: Core identifiers (4 tags)
-        # 1. Material name (normalized)
-        material_slug = material_name.lower().replace(' ', '-').replace('_', '-')
-        tags.append(material_slug)
-        
-        # 2. Category
-        category = template_vars['material_category'].lower()
-        tags.append(category)
-        
-        # 3. Author name (normalized) 
-        author_slug = template_vars['author_name'].lower().replace(' ', '-').replace('.', '')
-        tags.append(author_slug)
-        
-        # 4. Core process
-        tags.append('laser-cleaning')
-        
-        # Priority 2: Material classification (2-3 tags)
-        subcategory = template_vars.get('material_subcategory', '').lower()
-        if subcategory and subcategory != category:
-            subcategory_slug = subcategory.replace('_', '-').replace(' ', '-')
-            tags.append(subcategory_slug)
-        
-        # Material type refinement
-        if category == 'metals':
-            if subcategory in ['light_metals', 'non_ferrous']:
-                tags.append('lightweight')
-            elif subcategory in ['ferrous', 'steel']:
-                tags.append('ferrous')
-            elif subcategory in ['precious', 'noble']:
-                tags.append('precious')
-            else:
-                tags.append('alloy')
-        elif category == 'ceramics':
-            tags.append('ceramic')
-        elif category == 'composites':
-            tags.append('composite')
-        elif category == 'polymers':
-            tags.append('polymer')
-        else:
-            tags.append('industrial')
-        
-        # Priority 3: Application context (2-3 tags)
-        # Extract primary industry from frontmatter if available
-        primary_industry = None
-        if frontmatter_data:
-            # Look for industry keywords in description or applications
-            description = frontmatter_data.get('description', '').lower()
-            applications = frontmatter_data.get('applications', [])
+        try:
+            # 1. CORE: Material name (normalized)
+            material_slug = material_name.lower().replace(' ', '-').replace('_', '-')
+            tags.append(material_slug)
             
-            industry_keywords = {
-                'aerospace': 'aerospace',
-                'automotive': 'automotive', 
-                'medical': 'medical',
-                'electronics': 'electronics',
-                'marine': 'marine',
-                'construction': 'construction',
-                'manufacturing': 'manufacturing'
+            # 2. CORE: Category
+            category_raw = template_vars['material_category']
+            category = category_raw.lower() if isinstance(category_raw, str) else str(category_raw).lower()
+            tags.append(category)
+            
+            # 3-5. INDUSTRIES: Extract 3 industry tags from applicationTypes
+            industry_tags = self._extract_industry_tags(frontmatter_data, category)
+            tags.extend(industry_tags[:3])  # Exactly 3 industries
+            
+            # 6-8. PROCESSES: Extract 3 process tags from applicationTypes
+            process_tags = self._extract_process_tags(frontmatter_data, category)
+            tags.extend(process_tags[:3])  # Exactly 3 processes
+            
+            # 9-10. CHARACTERISTICS: Extract 2 material characteristic tags
+            characteristic_tags = self._extract_characteristic_tags(frontmatter_data, material_data, category)
+            tags.extend(characteristic_tags[:2])  # Exactly 2 characteristics
+            
+            # 11. AUTHOR: Author name slug
+            author_raw = template_vars.get('author_name', '')
+            author_slug = author_raw.lower().replace(' ', '-').replace('.', '').replace(',', '') if isinstance(author_raw, str) else str(author_raw).lower().replace(' ', '-')
+            tags.append(author_slug)
+        except Exception as e:
+            logger.error(f"Error generating tags for {material_name}: {e}")
+            logger.error(f"template_vars keys: {list(template_vars.keys())}")
+            logger.error(f"template_vars: {template_vars}")
+            raise
+        
+        # Validation: Ensure exactly 11 tags (material + category + 3 industries + 3 processes + 2 characteristics + author)
+        if len(tags) != 11:
+            logger.warning(f"Tag count mismatch for {material_name}: expected 11, got {len(tags)}")
+            # Pad or trim to exactly 11
+            while len(tags) < 11:
+                tags.append('laser-processing')  # Fallback tag
+            tags = tags[:11]
+        
+        return tags
+        
+        return tags
+
+    def _extract_industry_tags(self, frontmatter_data: Optional[Dict], category: str) -> list:
+        """Extract 3 industry tags from applicationTypes"""
+        industries = []
+        
+        if frontmatter_data and 'applicationTypes' in frontmatter_data:
+            app_types = frontmatter_data['applicationTypes']
+            if isinstance(app_types, list):
+                for app_type in app_types:
+                    if isinstance(app_type, dict) and 'industries' in app_type:
+                        app_industries = app_type['industries']
+                        if isinstance(app_industries, list):
+                            for industry in app_industries:
+                                if isinstance(industry, str):
+                                    # Convert to slug: "Cultural Heritage" → "cultural-heritage"
+                                    industry_slug = industry.lower().replace(' ', '-').replace('_', '-').replace('&', 'and')
+                                    if industry_slug not in industries:
+                                        industries.append(industry_slug)
+                                    if len(industries) >= 3:
+                                        return industries
+        
+        # Fallback: infer from category if not enough industries found
+        fallback_industries = {
+            'metal': ['manufacturing', 'aerospace', 'automotive'],
+            'metals': ['manufacturing', 'aerospace', 'automotive'],
+            'ceramic': ['electronics', 'medical', 'aerospace'],
+            'ceramics': ['electronics', 'medical', 'aerospace'],
+            'stone': ['cultural-heritage', 'architecture', 'restoration'],
+            'composite': ['aerospace', 'automotive', 'marine'],
+            'composites': ['aerospace', 'automotive', 'marine'],
+            'polymer': ['automotive', 'medical', 'consumer-goods'],
+            'polymers': ['automotive', 'medical', 'consumer-goods'],
+            'semiconductor': ['electronics', 'computing', 'telecommunications'],
+            'glass': ['optics', 'architecture', 'automotive']
+        }
+        
+        category_fallbacks = fallback_industries.get(category, ['manufacturing', 'industrial', 'processing'])
+        for fallback in category_fallbacks:
+            if fallback not in industries:
+                industries.append(fallback)
+            if len(industries) >= 3:
+                break
+        
+        # Final padding if still not enough
+        generic_industries = ['manufacturing', 'industrial', 'processing', 'maintenance', 'quality-control']
+        for generic in generic_industries:
+            if len(industries) >= 3:
+                break
+            if generic not in industries:
+                industries.append(generic)
+        
+        return industries[:3]
+
+    def _extract_process_tags(self, frontmatter_data: Optional[Dict], category: str) -> list:
+        """Extract 3 process tags from applicationTypes"""
+        processes = []
+        
+        if frontmatter_data and 'applicationTypes' in frontmatter_data:
+            app_types = frontmatter_data['applicationTypes']
+            if isinstance(app_types, list):
+                for app_type in app_types:
+                    if isinstance(app_type, dict) and 'type' in app_type:
+                        process_type = app_type['type']
+                        if isinstance(process_type, str):
+                            # Convert to slug: "Precision Cleaning" → "precision-cleaning"
+                            process_slug = process_type.lower().replace(' ', '-').replace('_', '-')
+                            if process_slug not in processes:
+                                processes.append(process_slug)
+                            if len(processes) >= 3:
+                                return processes
+        
+        # Fallback: category-specific processes
+        fallback_processes = {
+            'metal': ['decoating', 'oxide-removal', 'surface-preparation'],
+            'metals': ['decoating', 'oxide-removal', 'surface-preparation'],
+            'ceramic': ['precision-cleaning', 'surface-preparation', 'restoration'],
+            'ceramics': ['precision-cleaning', 'surface-preparation', 'restoration'],
+            'stone': ['restoration-cleaning', 'contamination-removal', 'conservation'],
+            'composite': ['surface-preparation', 'adhesion-enhancement', 'coating-removal'],
+            'composites': ['surface-preparation', 'adhesion-enhancement', 'coating-removal'],
+            'polymer': ['surface-activation', 'contamination-removal', 'preparation'],
+            'polymers': ['surface-activation', 'contamination-removal', 'preparation'],
+            'semiconductor': ['precision-cleaning', 'particle-removal', 'surface-preparation'],
+            'glass': ['precision-cleaning', 'restoration', 'surface-preparation']
+        }
+        
+        category_fallbacks = fallback_processes.get(category, ['surface-preparation', 'contamination-removal', 'maintenance'])
+        for fallback in category_fallbacks:
+            if fallback not in processes:
+                processes.append(fallback)
+            if len(processes) >= 3:
+                break
+        
+        # Final padding
+        generic_processes = ['laser-ablation', 'surface-treatment', 'cleaning', 'processing', 'decontamination']
+        for generic in generic_processes:
+            if len(processes) >= 3:
+                break
+            if generic not in processes:
+                processes.append(generic)
+        
+        return processes[:3]
+
+    def _extract_characteristic_tags(self, frontmatter_data: Optional[Dict], material_data: Dict, category: str) -> list:
+        """Extract 2 material characteristic tags from materialProperties"""
+        characteristics = []
+        
+        if frontmatter_data and 'materialProperties' in frontmatter_data:
+            props = frontmatter_data['materialProperties']
+            
+            # Check for porosity
+            if 'porosity' in props:
+                porosity_val = props['porosity'].get('value', 0) if isinstance(props['porosity'], dict) else props['porosity']
+                try:
+                    if float(porosity_val) > 5:  # More than 5% porosity
+                        characteristics.append('porous-material')
+                except (ValueError, TypeError):
+                    pass
+            
+            # Check for thermal sensitivity
+            if 'thermalConductivity' in props:
+                thermal_val = props['thermalConductivity'].get('value', 0) if isinstance(props['thermalConductivity'], dict) else props['thermalConductivity']
+                try:
+                    if float(thermal_val) < 10:  # Low thermal conductivity
+                        characteristics.append('thermal-sensitive')
+                except (ValueError, TypeError):
+                    pass
+            
+            # Check for hardness
+            if 'hardness' in props and len(characteristics) < 2:
+                hardness_val = props['hardness'].get('value', 0) if isinstance(props['hardness'], dict) else props['hardness']
+                try:
+                    if float(hardness_val) < 3:  # Mohs < 3
+                        characteristics.append('soft-material')
+                    elif float(hardness_val) > 7:  # Mohs > 7
+                        characteristics.append('hard-material')
+                except (ValueError, TypeError):
+                    pass
+            
+            # Check for reflectivity
+            if 'reflectivity' in props and len(characteristics) < 2:
+                reflectivity_val = props['reflectivity'].get('value', 0) if isinstance(props['reflectivity'], dict) else props['reflectivity']
+                try:
+                    if float(reflectivity_val) > 0.5:  # High reflectivity
+                        characteristics.append('reflective-surface')
+                except (ValueError, TypeError):
+                    pass
+            
+            # Check for absorption
+            if 'absorptionCoefficient' in props and len(characteristics) < 2:
+                characteristics.append('laser-absorptive')
+        
+        # Fallback: category-specific characteristics
+        if len(characteristics) < 2:
+            fallback_chars = {
+                'metal': ['conductive', 'reflective-surface'],
+                'metals': ['conductive', 'reflective-surface'],
+                'ceramic': ['thermal-resistant', 'hard-material'],
+                'ceramics': ['thermal-resistant', 'hard-material'],
+                'stone': ['porous-material', 'weathered-surface'],
+                'composite': ['multi-layered', 'anisotropic'],
+                'composites': ['multi-layered', 'anisotropic'],
+                'polymer': ['thermal-sensitive', 'low-density'],
+                'polymers': ['thermal-sensitive', 'low-density'],
+                'semiconductor': ['high-purity', 'crystalline'],
+                'glass': ['transparent', 'brittle']
             }
             
-            # Check description first
-            for keyword, industry in industry_keywords.items():
-                if keyword in description:
-                    primary_industry = industry
+            category_fallbacks = fallback_chars.get(category, ['industrial-grade', 'processed'])
+            for fallback in category_fallbacks:
+                if len(characteristics) >= 2:
                     break
-            
-            # Check applications if no industry found in description
-            if not primary_industry and isinstance(applications, list):
-                for app in applications:
-                    if isinstance(app, str):
-                        app_lower = app.lower()
-                        for keyword, industry in industry_keywords.items():
-                            if keyword in app_lower:
-                                primary_industry = industry
-                                break
-                        if primary_industry:
-                            break
+                if fallback not in characteristics:
+                    characteristics.append(fallback)
         
-        if primary_industry:
-            tags.append(primary_industry)
-        else:
-            tags.append('industrial')
-        
-        # Add surface treatment indicator
-        tags.append('surface-treatment')
-        
-        # Priority 4: Fill remaining slots with process-specific tags
-        additional_tags = []
-        
-        # Process-specific tags based on material type
-        if category == 'metals':
-            additional_tags = ['decoating', 'oxide-removal', 'passivation']
-        elif category == 'ceramics':
-            additional_tags = ['precision-cleaning', 'surface-prep', 'restoration']
-        elif category == 'composites':
-            additional_tags = ['preparation', 'texturing', 'maintenance']
-        elif category == 'polymers':
-            additional_tags = ['preparation', 'modification', 'cleaning']
-        else:
-            additional_tags = ['maintenance', 'preparation', 'decontamination']
-        
-        # Add additional tags up to 10 total
-        for tag in additional_tags:
-            if len(tags) >= 10:
+        # Final padding
+        generic_chars = ['engineered', 'processed', 'industrial-grade', 'technical']
+        for generic in generic_chars:
+            if len(characteristics) >= 2:
                 break
-            if tag not in tags:
-                tags.append(tag)
+            if generic not in characteristics:
+                characteristics.append(generic)
         
-        # Ensure we have exactly 10 tags (pad if necessary)
-        while len(tags) < 10:
-            fallback_tags = ['processing', 'industrial', 'precision', 'automated', 'quality']
-            for fallback in fallback_tags:
-                if fallback not in tags:
-                    tags.append(fallback)
-                    break
-            else:
-                # If all fallbacks are used, break to avoid infinite loop
-                break
-        
-        # Validation: Must have core essentials
-        required_elements = [material_slug, category, author_slug, 'laser-cleaning']
-        missing_required = [req for req in required_elements if req not in tags]
-        if missing_required:
-            raise ValueError(f"Missing required tags in frontmatter: {missing_required}")
-        
-        return tags[:10]  # Ensure exactly 10 tags maximum
-        return tags[:10]  # Ensure exactly 10 tags maximum
+        return characteristics[:2]
 
     def _sanitize_frontmatter_data(self, frontmatter_data: Dict) -> Dict:
         """Sanitize frontmatter data to prevent YAML parsing issues"""
@@ -340,11 +465,20 @@ Format: YAML v2.0
         if not author_info or not author_info.get("name"):
             if not frontmatter_data or not frontmatter_data.get("author"):
                 raise ValueError(f"Author information missing for {material_name} - fail-fast requires explicit author data")
-            author_name = frontmatter_data["author"]
             author_obj = frontmatter_data.get("author", {})
-            if not isinstance(author_obj, dict) or not author_obj.get("country"):
-                raise ValueError(f"Author country missing for {material_name} - fail-fast requires complete author data")
-            author_country = author_obj["country"]
+            
+            # Handle both string and dict author formats
+            if isinstance(author_obj, dict):
+                author_name = author_obj.get("name", "")
+                author_country = author_obj.get("country", "")
+                if not author_name or not author_country:
+                    raise ValueError(f"Author name or country missing for {material_name} - fail-fast requires complete author data")
+            elif isinstance(author_obj, str):
+                # Legacy format: author is just a string
+                author_name = author_obj
+                author_country = "Unknown"
+            else:
+                raise ValueError(f"Invalid author format for {material_name} - must be dict with name/country or string")
         else:
             author_name = author_info["name"]
             if not author_info.get("country"):

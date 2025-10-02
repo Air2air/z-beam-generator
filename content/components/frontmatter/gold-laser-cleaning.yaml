@@ -1,312 +1,351 @@
-"name": "Gold"
-"category": "Metal"
-"subcategory": "Gold"
-"title": "Gold Laser Cleaning"
-"description": "Laser cleaning parameters for Aluminum"
-"materialProperties":
-  "density":
-    "value": !!float "19.32"
-    "unit": "g/cm³"
-    "confidence": !!int "99"
-    "description": "Density of pure gold at 20°C"
-    "min": !!float "0.53"
-    "max": !!float "22.6"
-  "thermalConductivity":
-    "value": !!float "317.0"
-    "unit": "W/m·K"
-    "confidence": !!int "95"
-    "description": "Thermal conductivity at 300K"
-    "min": !!float "6.0"
-    "max": !!float "429.0"
-  "hardness":
-    "value": !!float "25.0"
-    "unit": "HV"
-    "confidence": !!int "88"
-    "description": "Vickers hardness of annealed gold"
-    "min": !!int "0"
-    "max": !!float "3772.91"
-  "youngsModulus":
-    "value": !!float "79.0"
-    "unit": "GPa"
-    "confidence": !!int "94"
-    "description": "Young's modulus of pure gold"
-    "min": !!int "0"
-    "max": !!float "579.82"
-  "thermalExpansion":
-    "value": !!float "14.2"
-    "unit": "10⁻⁶/K"
-    "confidence": !!int "92"
-    "description": "Coefficient of linear thermal expansion at 25°C"
-    "min": !!float "1.7"
-    "max": !!float "34.9"
-  "thermalDiffusivity":
-    "value": !!float "127.0"
-    "unit": "mm²/s"
-    "confidence": !!int "90"
-    "description": "Thermal diffusivity at room temperature"
-    "min": !!int "0"
-    "max": !!float "191.376"
-  "specificHeat":
-    "value": !!float "129.1"
-    "unit": "J/kg·K"
-    "confidence": !!int "93"
-    "description": "Specific heat capacity at 25°C"
-    "min": !!int "0"
-    "max": !!float "1994.6"
-  "reflectivity":
-    "value": !!float "98.5"
-    "unit": "%"
-    "confidence": !!int "96"
-    "description": "Reflectivity at 1064 nm wavelength"
-    "min": !!null "null"
-    "max": !!null "null"
-  "absorptionCoefficient":
-    "value": !!float "6.5"
-    "unit": "10⁵ cm⁻¹"
-    "confidence": !!int "85"
-    "description": "Absorption coefficient at 532 nm"
-    "min": !!null "null"
-    "max": !!null "null"
-  "ablationThreshold":
-    "value": !!float "0.8"
-    "unit": "J/cm²"
-    "confidence": !!int "82"
-    "description": "Laser ablation threshold for nanosecond pulses at 1064 nm"
-    "min": !!null "null"
-    "max": !!null "null"
-  "crystallineStructure":
-    "value": "FCC"
-    "unit": "none"
-    "confidence": !!int "99"
-    "description": "Face-centered cubic crystal structure"
-    "min": !!null "null"
-    "max": !!null "null"
-  "oxidationResistance":
-    "value": "Excellent"
-    "unit": "qualitative"
-    "confidence": !!int "98"
-    "description": "Resistance to oxidation at room temperature"
-    "min": !!null "null"
-    "max": !!null "null"
-  "electricalConductivity":
-    "value": !!float "45.2"
-    "unit": "MS/m"
-    "confidence": !!int "97"
-    "description": "Electrical conductivity at 20°C"
-    "min": !!null "null"
-    "max": !!null "null"
-  "laserAbsorption":
-    "confidence": !!float "0.7"
-    "max": !!float "100.0"
-    "min": !!float "0.02"
-    "source": "default_from_category_range"
-    "unit": "cm⁻¹"
-    "value": !!float "2.3"
-  "laserReflectivity":
-    "confidence": !!float "0.7"
-    "max": !!float "98.0"
-    "min": !!float "5.0"
-    "source": "default_from_category_range"
-    "unit": "%"
-    "value": !!float "97.8"
-  "tensileStrength":
-    "confidence": !!float "0.7"
-    "max": !!float "3000.0"
-    "min": !!float "3.0"
-    "source": "default_from_category_range"
-    "unit": "MPa"
-    "value": !!float "220.0"
-  "thermalDestructionPoint":
-    "confidence": !!float "0.7"
-    "max": !!float "3422.0"
-    "min": !!float "-38.8"
-    "source": "default_from_category_range"
-    "unit": "°C"
-    "value": !!float "1337.33"
-  "thermalDestructionType":
-    "confidence": !!float "0.8"
-    "source": "category_default"
-    "value": !!float "1337.33"
-"applications":
-- "Aerospace: Precision cleaning of aerospace components and assemblies"
-- "Food Processing: Sanitary surface cleaning for food processing equipment"
-- "Manufacturing: Industrial surface preparation and contamination removal"
-"machineSettings":
-  "powerRange":
-    "value": !!int "15"
-    "unit": "W"
-    "confidence": !!int "90"
-    "description": "Average power for effective Gold oxide removal without substrate damage"
-    "min": !!int "8"
-    "max": !!int "25"
-  "wavelength":
-    "value": !!int "532"
-    "unit": "nm"
-    "confidence": !!int "92"
-    "description": "Green wavelength for optimal Gold absorption (reflectivity ~40% vs 95%+ at 1064nm)"
-    "min": !!int "355"
-    "max": !!int "10640"
-  "spotSize":
-    "value": !!int "50"
-    "unit": "μm"
-    "confidence": !!int "87"
-    "description": "Beam diameter for precise cleaning with adequate energy density"
-    "min": !!int "30"
-    "max": !!int "100"
-  "repetitionRate":
-    "value": !!int "50"
-    "unit": "kHz"
-    "confidence": !!int "85"
-    "description": "Optimal repetition rate for efficient cleaning with thermal management"
-    "min": !!int "20"
-    "max": !!int "100"
-  "pulseWidth":
-    "value": !!int "8"
-    "unit": "ns"
-    "confidence": !!int "88"
-    "description": "Nanosecond pulse duration for controlled ablation of contaminants"
-    "min": !!int "5"
-    "max": !!int "15"
-  "scanSpeed":
-    "value": !!int "500"
-    "unit": "mm/s"
-    "confidence": !!int "84"
-    "description": "Optimal scanning speed for uniform cleaning coverage"
-    "min": !!int "200"
-    "max": !!int "1000"
-  "fluenceThreshold":
-    "value": !!float "1.2"
-    "unit": "J/cm²"
-    "confidence": !!int "89"
-    "description": "Minimum fluence required for effective contaminant removal from Gold"
-    "min": !!float "0.8"
-    "max": !!float "2.5"
-  "overlapRatio":
-    "value": !!int "70"
-    "unit": "%"
-    "confidence": !!int "86"
-    "description": "Optimal pulse overlap for uniform cleaning without excessive heating"
-    "min": !!int "50"
-    "max": !!int "85"
-  "passCount":
-    "value": !!int "2"
-    "unit": "passes"
-    "confidence": !!int "83"
-    "description": "Recommended number of passes for complete cleaning"
-    "min": !!int "1"
-    "max": !!int "4"
-  "energyDensity":
-    "value": !!float "3.5"
-    "unit": "J/cm²"
-    "confidence": !!int "88"
-    "description": "Optimal energy density for Gold surface cleaning applications"
-    "min": !!float "2.0"
-    "max": !!float "6.0"
-"regulatoryStandards":
-- "FDA 21 CFR 1040.10 - Laser Product Performance Standards"
-- "ANSI Z136.1 - Safe Use of Lasers"
-- "IEC 60825 - Safety of Laser Products"
-- "OSHA 29 CFR 1926.95 - Personal Protective Equipment"
-"images":
-  "hero":
-    "alt": "Gold surface undergoing laser cleaning showing precise contamination removal"
-    "url": "/images/gold-laser-cleaning-hero.jpg"
-"environmentalImpact":
-- "benefit": "Chemical Waste Elimination"
-  "description": "Eliminates hazardous chemical waste streams"
-  "applicableIndustries":
-  - "Semiconductor"
-  - "Electronics"
-  - "Medical"
-  - "Nuclear"
-  "quantifiedBenefits": "Up to 100% reduction in chemical cleaning agents"
-  "sustainabilityBenefit": "Significant water conservation in industrial processes"
-- "benefit": "Energy Efficiency"
-  "description": "Focused energy delivery with minimal waste heat"
-  "applicableIndustries": []
-  "quantifiedBenefits": " sustainabilityBenefit: "
-- "benefit": "Air Quality Improvement"
-  "description": "Eliminates volatile organic compounds from chemical cleaning"
-  "applicableIndustries": []
-  "quantifiedBenefits": " sustainabilityBenefit: "
-"applicationTypes":
-- "type": "Precision Cleaning"
-  "description": "High-precision removal of microscopic contaminants and residues"
-  "industries":
-  - "Semiconductor"
-  - "MEMS"
-  - "Optics"
-  - "Medical Devices"
-  "qualityMetrics":
-  - "Particle count reduction"
-  - "Surface roughness maintenance"
-  - "Chemical purity"
-  "typicalTolerances": "Sub-micron accuracy with minimal substrate impact"
-  "objectives": []
-- "type": "Surface Preparation"
-  "description": "Preparation of surfaces for bonding, coating, or further processing"
-  "industries":
-  - "Aerospace"
-  - "Automotive"
-  - "Manufacturing"
-  - "Construction"
-  "qualityMetrics":
-  - "Surface energy"
-  - "Cleanliness level"
-  - "Roughness profile"
-  "typicalTolerances": " objectives: - Adhesion enhancement - Contamination removal - Surface activation - type: Restoration Cleaning description: Gentle removal of accumulated contamination while preserving original material industries: - Cultural Heritage - Architecture - Art Conservation - Historical Restoration qualityMetrics: [] typicalTolerances: "
-  "objectives": []
-- "type": "Contamination Removal"
-  "description": "General removal of unwanted surface deposits and contaminants"
-  "industries":
-  - "Manufacturing"
-  - "Marine"
-  - "Oil & Gas"
-  - "Power Generation"
-  "qualityMetrics": []
-  "typicalTolerances": " objectives: [] outcomeMetrics: - metric: Contaminant Removal Efficiency description: Percentage of target contaminants successfully removed from surface measurementMethods: - Before/after microscopy - Chemical analysis - Mass spectrometry typicalRanges: 95-99.9% depending on application and material factorsAffecting: - Contamination type - Adhesion strength - Surface geometry units: [] - metric: Processing Speed description: Rate of surface area processed per unit time measurementMethods: [] typicalRanges: "
-  "factorsAffecting": []
-  "units":
-  - "m²/h"
-  - "cm²/min"
-  - "mm²/s"
-- "metric": "Surface Quality Preservation"
-  "description": "Maintenance of original surface characteristics after cleaning"
-  "measurementMethods": []
-  "typicalRanges": " factorsAffecting: [] units: [] - metric: Thermal Damage Avoidance description: Prevention of heat-related material alterations during cleaning measurementMethods: [] typicalRanges: "
-  "factorsAffecting": []
-  "units": []
-"author":
-  "id": !!int "4"
-  "name": "Todd Dunning"
-  "sex": "m"
-  "title": "MA"
-  "country": "United States (California)"
-  "expertise": "Optical Materials for Laser Systems"
-  "image": "/images/author/todd-dunning.jpg"
-"metadata":
-  "lastUpdated": "2025-09-30T21:52:18.544448"
-  "captionIntegrated": !!bool "true"
-"caption":
-  "beforeText": "At 500x magnification, the gold surface is obscured by a discontinuous contamination layer approximately 5-10 micrometers thick. This layer consists of amorphous carbonaceous deposits and particulate matter, which appear as dark, blotchy regions that scatter light and mask the underlying metal's reflectivity.\n\nThe surface texture is highly irregular, with contaminants filling the natural grain boundaries of the gold's polycrystalline structure. The deposits form a non-uniform, matte film that significantly reduces the intrinsic luster of the substrate. Isolated particles, likely embedded silica or other hard contaminants, are visible as raised features on the surface."
-  "afterText": "Following laser cleaning, the surface transformation at 500x magnification is pronounced. The matte, discontinuous contamination layer has been entirely removed, revealing the continuous, reflective gold substrate beneath. The process has restored the metal's inherent high reflectivity, which now appears as a bright, specular surface.\n\nThe underlying polycrystalline structure of the gold is now fully visible, with clean, well-defined grain boundaries. The surface is free of the previously observed carbonaceous films and embedded particulates. The cleaning has achieved this result without inducing surface melting or ablation of the gold substrate, as confirmed by the preservation of the original grain morphology.\n\nThis precision is attributable to the laser parameters being tuned below gold's ablation threshold of 0.8 J/cm². The mechanism relied on the rapid thermal expansion of the contaminants, which have a much lower thermal conductivity than the gold, causing them\
-    \ to detache cleanly. The result is a surface with no measurable topographical damage to the precious metal."
-  "description": "Microscopic analysis of gold surface before and after laser cleaning treatment"
-  "alt": "Microscopic view of gold surface showing laser cleaning effects"
-  "technicalAnalysis":
-    "focus": "surface_analysis"
-    "uniqueCharacteristics":
-    - "gold_specific"
-    "contaminationProfile": "gold surface contamination"
-  "microscopy":
-    "parameters": "Microscopic analysis of gold"
-    "qualityMetrics": "Surface improvement analysis"
-  "generation":
-    "method": "frontmatter_integrated_generation"
-    "timestamp": "2025-09-30T21:52:03.477539Z"
-    "generator": "FrontmatterCaptionGenerator"
-    "componentType": "ai_caption_frontmatter"
-  "author": "Todd Dunning"
-  "materialProperties":
-    "materialType": "Metal"
-    "analysisMethod": "ai_microscopy"
+name: Gold
+category: Metal
+subcategory: Gold
+title: Gold Laser Cleaning
+description: Laser cleaning parameters for Aluminum
+materialProperties:
+  density:
+    value: 19.32
+    unit: g/cm³
+    confidence: 99
+    description: Density of pure gold at 20°C
+    min: 0.53
+    max: 22.6
+  thermalConductivity:
+    value: 317.0
+    unit: W/m·K
+    confidence: 95
+    description: Thermal conductivity at 300K
+    min: 6.0
+    max: 429.0
+  hardness:
+    value: 25.0
+    unit: HV
+    confidence: 88
+    description: Vickers hardness of annealed gold
+    min: 0
+    max: 3772.91
+  youngsModulus:
+    value: 79.0
+    unit: GPa
+    confidence: 94
+    description: Young's modulus of pure gold
+    min: 0
+    max: 579.82
+  thermalExpansion:
+    value: 14.2
+    unit: 10⁻⁶/K
+    confidence: 92
+    description: Coefficient of linear thermal expansion at 25°C
+    min: 1.7
+    max: 34.9
+  thermalDiffusivity:
+    value: 127.0
+    unit: mm²/s
+    confidence: 90
+    description: Thermal diffusivity at room temperature
+    min: 0
+    max: 191.376
+  specificHeat:
+    value: 129.1
+    unit: J/kg·K
+    confidence: 93
+    description: Specific heat capacity at 25°C
+    min: 0
+    max: 1994.6
+  reflectivity:
+    value: 98.5
+    unit: '%'
+    confidence: 96
+    description: Reflectivity at 1064 nm wavelength
+    min: null
+    max: null
+  absorptionCoefficient:
+    value: 6.5
+    unit: 10⁵ cm⁻¹
+    confidence: 85
+    description: Absorption coefficient at 532 nm
+    min: null
+    max: null
+  ablationThreshold:
+    value: 0.8
+    unit: J/cm²
+    confidence: 82
+    description: Laser ablation threshold for nanosecond pulses at 1064 nm
+    min: null
+    max: null
+  crystallineStructure:
+    value: FCC
+    unit: none
+    confidence: 99
+    description: Face-centered cubic crystal structure
+    min: null
+    max: null
+  oxidationResistance:
+    value: Excellent
+    unit: qualitative
+    confidence: 98
+    description: Resistance to oxidation at room temperature
+    min: null
+    max: null
+  electricalConductivity:
+    value: 45.2
+    unit: MS/m
+    confidence: 97
+    description: Electrical conductivity at 20°C
+    min: null
+    max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 100.0
+    min: 0.02
+    source: default_from_category_range
+    unit: cm⁻¹
+    value: 2.3
+  laserReflectivity:
+    confidence: 0.7
+    max: 98.0
+    min: 5.0
+    source: default_from_category_range
+    unit: '%'
+    value: 97.8
+  tensileStrength:
+    confidence: 0.7
+    max: 3000.0
+    min: 3.0
+    source: default_from_category_range
+    unit: MPa
+    value: 220.0
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 3422.0
+    min: -38.8
+    source: default_from_category_range
+    unit: °C
+    value: 1337.33
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: 1337.33
+applications:
+- 'Aerospace: Precision cleaning of aerospace components and assemblies'
+- 'Food Processing: Sanitary surface cleaning for food processing equipment'
+- 'Manufacturing: Industrial surface preparation and contamination removal'
+machineSettings:
+  powerRange:
+    value: 15
+    unit: W
+    confidence: 90
+    description: Average power for effective Gold oxide removal without substrate damage
+    min: 8
+    max: 25
+  wavelength:
+    value: 532
+    unit: nm
+    confidence: 92
+    description: Green wavelength for optimal Gold absorption (reflectivity ~40% vs 95%+ at 1064nm)
+    min: 355
+    max: 10640
+  spotSize:
+    value: 50
+    unit: μm
+    confidence: 87
+    description: Beam diameter for precise cleaning with adequate energy density
+    min: 30
+    max: 100
+  repetitionRate:
+    value: 50
+    unit: kHz
+    confidence: 85
+    description: Optimal repetition rate for efficient cleaning with thermal management
+    min: 20
+    max: 100
+  pulseWidth:
+    value: 8
+    unit: ns
+    confidence: 88
+    description: Nanosecond pulse duration for controlled ablation of contaminants
+    min: 5
+    max: 15
+  scanSpeed:
+    value: 500
+    unit: mm/s
+    confidence: 84
+    description: Optimal scanning speed for uniform cleaning coverage
+    min: 200
+    max: 1000
+  fluenceThreshold:
+    value: 1.2
+    unit: J/cm²
+    confidence: 89
+    description: Minimum fluence required for effective contaminant removal from Gold
+    min: 0.8
+    max: 2.5
+  overlapRatio:
+    value: 70
+    unit: '%'
+    confidence: 86
+    description: Optimal pulse overlap for uniform cleaning without excessive heating
+    min: 50
+    max: 85
+  passCount:
+    value: 2
+    unit: passes
+    confidence: 83
+    description: Recommended number of passes for complete cleaning
+    min: 1
+    max: 4
+  energyDensity:
+    value: 3.5
+    unit: J/cm²
+    confidence: 88
+    description: Optimal energy density for Gold surface cleaning applications
+    min: 2.0
+    max: 6.0
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+images:
+  hero:
+    alt: Gold surface undergoing laser cleaning showing precise contamination removal
+    url: /images/gold-laser-cleaning-hero.jpg
+environmentalImpact:
+- benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+  applicableIndustries: []
+  quantifiedBenefits: ' sustainabilityBenefit: '
+- benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+  applicableIndustries: []
+  quantifiedBenefits: ' sustainabilityBenefit: '
+applicationTypes:
+- type: Precision Cleaning
+  description: High-precision removal of microscopic contaminants and residues
+  industries:
+  - Semiconductor
+  - MEMS
+  - Optics
+  - Medical Devices
+  qualityMetrics:
+  - Particle count reduction
+  - Surface roughness maintenance
+  - Chemical purity
+  typicalTolerances: Sub-micron accuracy with minimal substrate impact
+  objectives: []
+- type: Surface Preparation
+  description: Preparation of surfaces for bonding, coating, or further processing
+  industries:
+  - Aerospace
+  - Automotive
+  - Manufacturing
+  - Construction
+  qualityMetrics:
+  - Surface energy
+  - Cleanliness level
+  - Roughness profile
+  typicalTolerances: ' objectives: - Adhesion enhancement - Contamination removal - Surface activation - type: Restoration
+    Cleaning description: Gentle removal of accumulated contamination while preserving original material industries: - Cultural
+    Heritage - Architecture - Art Conservation - Historical Restoration qualityMetrics: [] typicalTolerances: '
+  objectives: []
+- type: Contamination Removal
+  description: General removal of unwanted surface deposits and contaminants
+  industries:
+  - Manufacturing
+  - Marine
+  - Oil & Gas
+  - Power Generation
+  qualityMetrics: []
+  typicalTolerances: ' objectives: [] outcomeMetrics: - metric: Contaminant Removal Efficiency description: Percentage of
+    target contaminants successfully removed from surface measurementMethods: - Before/after microscopy - Chemical analysis
+    - Mass spectrometry typicalRanges: 95-99.9% depending on application and material factorsAffecting: - Contamination type
+    - Adhesion strength - Surface geometry units: [] - metric: Processing Speed description: Rate of surface area processed
+    per unit time measurementMethods: [] typicalRanges: '
+  factorsAffecting: []
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- metric: Surface Quality Preservation
+  description: Maintenance of original surface characteristics after cleaning
+  measurementMethods: []
+  typicalRanges: ' factorsAffecting: [] units: [] - metric: Thermal Damage Avoidance description: Prevention of heat-related
+    material alterations during cleaning measurementMethods: [] typicalRanges: '
+  factorsAffecting: []
+  units: []
+author:
+  id: 4
+  name: Todd Dunning
+  sex: m
+  title: MA
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  image: /images/author/todd-dunning.jpg
+metadata:
+  lastUpdated: '2025-09-30T21:52:18.544448'
+  captionIntegrated: true
+caption:
+  beforeText: 'At 500x magnification, the gold surface is obscured by a discontinuous contamination layer approximately 5-10
+    micrometers thick. This layer consists of amorphous carbonaceous deposits and particulate matter, which appear as dark,
+    blotchy regions that scatter light and mask the underlying metal''s reflectivity.
+
+
+    The surface texture is highly irregular, with contaminants filling the natural grain boundaries of the gold''s polycrystalline
+    structure. The deposits form a non-uniform, matte film that significantly reduces the intrinsic luster of the substrate.
+    Isolated particles, likely embedded silica or other hard contaminants, are visible as raised features on the surface.'
+  afterText: 'Following laser cleaning, the surface transformation at 500x magnification is pronounced. The matte, discontinuous
+    contamination layer has been entirely removed, revealing the continuous, reflective gold substrate beneath. The process
+    has restored the metal''s inherent high reflectivity, which now appears as a bright, specular surface.
+
+
+    The underlying polycrystalline structure of the gold is now fully visible, with clean, well-defined grain boundaries.
+    The surface is free of the previously observed carbonaceous films and embedded particulates. The cleaning has achieved
+    this result without inducing surface melting or ablation of the gold substrate, as confirmed by the preservation of the
+    original grain morphology.
+
+
+    This precision is attributable to the laser parameters being tuned below gold''s ablation threshold of 0.8 J/cm². The
+    mechanism relied on the rapid thermal expansion of the contaminants, which have a much lower thermal conductivity than
+    the gold, causing them to detache cleanly. The result is a surface with no measurable topographical damage to the precious
+    metal.'
+  description: Microscopic analysis of gold surface before and after laser cleaning treatment
+  alt: Microscopic view of gold surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - gold_specific
+    contaminationProfile: gold surface contamination
+  microscopy:
+    parameters: Microscopic analysis of gold
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T21:52:03.477539Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Todd Dunning
+  materialProperties:
+    materialType: Metal
+    analysisMethod: ai_microscopy
+tags:
+- gold
+- metal
+- semiconductor
+- mems
+- optics
+- precision-cleaning
+- surface-preparation
+- contamination-removal
+- hard-material
+- reflective-surface
+- todd-dunning

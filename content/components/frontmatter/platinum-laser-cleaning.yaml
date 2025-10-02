@@ -1,311 +1,349 @@
-"name": "Platinum"
-"category": "Metal"
-"subcategory": "Platinum"
-"title": "Platinum Laser Cleaning"
-"description": "Laser cleaning parameters for Aluminum"
-"materialProperties":
-  "density":
-    "value": !!float "21.45"
-    "unit": "g/cm³"
-    "confidence": !!int "98"
-    "description": "Density of pure platinum at 20°C"
-    "min": !!float "0.53"
-    "max": !!float "22.6"
-  "thermalConductivity":
-    "value": !!float "71.6"
-    "unit": "W/m·K"
-    "confidence": !!int "95"
-    "description": "Thermal conductivity at 20°C"
-    "min": !!float "6.0"
-    "max": !!float "429.0"
-  "tensileStrength":
-    "value": !!float "125.0"
-    "unit": "MPa"
-    "confidence": !!int "88"
-    "description": "Ultimate tensile strength (annealed)"
-    "min": !!int "0"
-    "max": !!float "1363.6"
-  "hardness":
-    "value": !!float "40.0"
-    "unit": "HV"
-    "confidence": !!int "85"
-    "description": "Vickers hardness (annealed condition)"
-    "min": !!int "0"
-    "max": !!float "3772.91"
-  "youngsModulus":
-    "value": !!float "168.0"
-    "unit": "GPa"
-    "confidence": !!int "95"
-    "description": "Young's modulus of elasticity"
-    "min": !!int "0"
-    "max": !!float "579.82"
-  "thermalExpansion":
-    "value": !!float "8.8"
-    "unit": "10⁻⁶/K"
-    "confidence": !!int "92"
-    "description": "Coefficient of linear thermal expansion (20-100°C)"
-    "min": !!float "1.7"
-    "max": !!float "34.9"
-  "thermalDiffusivity":
-    "value": !!float "25.9"
-    "unit": "10⁻⁵ m²/s"
-    "confidence": !!int "90"
-    "description": "Thermal diffusivity at room temperature"
-    "min": !!int "0"
-    "max": !!float "191.376"
-  "specificHeat":
-    "value": !!float "133.0"
-    "unit": "J/kg·K"
-    "confidence": !!int "93"
-    "description": "Specific heat capacity at 25°C"
-    "min": !!int "0"
-    "max": !!float "1994.6"
-  "reflectivity":
-    "value": !!int "73"
-    "unit": "%"
-    "confidence": !!int "90"
-    "description": "Reflectivity at 1064 nm (common laser wavelength)"
-    "min": !!null "null"
-    "max": !!null "null"
-  "absorptionCoefficient":
-    "value": !!float "4.2"
-    "unit": "10⁷ m⁻¹"
-    "confidence": !!int "85"
-    "description": "Absorption coefficient for visible light"
-    "min": !!null "null"
-    "max": !!null "null"
-  "ablationThreshold":
-    "value": !!float "2.8"
-    "unit": "J/cm²"
-    "confidence": !!int "82"
-    "description": "Approximate ablation threshold for nanosecond pulses at 1064 nm"
-    "min": !!null "null"
-    "max": !!null "null"
-  "oxidationResistance":
-    "value": "Excellent"
-    "unit": "Qualitative"
-    "confidence": !!int "98"
-    "description": "Resistance to oxidation at high temperatures"
-    "min": !!null "null"
-    "max": !!null "null"
-  "crystallineStructure":
-    "value": "FCC"
-    "unit": "Crystal System"
-    "confidence": !!int "99"
-    "description": "Face-centered cubic crystal structure"
-    "min": !!null "null"
-    "max": !!null "null"
-  "electricalResistivity":
-    "value": !!float "10.6"
-    "unit": "μΩ·cm"
-    "confidence": !!int "96"
-    "description": "Electrical resistivity at 20°C"
-    "min": !!null "null"
-    "max": !!null "null"
-  "laserAbsorption":
-    "confidence": !!float "0.7"
-    "max": !!float "100.0"
-    "min": !!float "0.02"
-    "source": "default_from_category_range"
-    "unit": "cm⁻¹"
-    "value": !!float "38.7"
-  "laserReflectivity":
-    "confidence": !!float "0.7"
-    "max": !!float "98.0"
-    "min": !!float "5.0"
-    "source": "default_from_category_range"
-    "unit": "%"
-    "value": !!float "73.2"
-  "thermalDestructionPoint":
-    "confidence": !!float "0.7"
-    "max": !!float "3422.0"
-    "min": !!float "-38.8"
-    "source": "default_from_category_range"
-    "unit": "°C"
-    "value": !!float "2041.15"
-  "thermalDestructionType":
-    "confidence": !!float "0.8"
-    "source": "category_default"
-    "value": !!float "2041.4"
-"applications":
-- "Medical: Sterilization and cleaning of medical devices and instruments"
-- "Nuclear: Decontamination and surface cleaning in nuclear facilities"
-- "Marine: Corrosion removal and surface treatment for marine applications"
-"machineSettings":
-  "powerRange":
-    "value": !!int "100"
-    "unit": "W"
-    "confidence": !!int "92"
-    "description": "Optimal power range for Platinum cleaning considering high thermal conductivity"
-    "min": !!int "80"
-    "max": !!int "120"
-  "wavelength":
-    "value": !!int "1064"
-    "unit": "nm"
-    "confidence": !!int "90"
-    "description": "Near-infrared wavelength optimal for Platinum's moderate reflectivity"
-    "min": !!int "355"
-    "max": !!int "10640"
-  "spotSize":
-    "value": !!int "50"
-    "unit": "μm"
-    "confidence": !!int "89"
-    "description": "Optimal spot size for precision cleaning of Platinum surfaces"
-    "min": !!int "30"
-    "max": !!int "100"
-  "repetitionRate":
-    "value": !!int "100"
-    "unit": "kHz"
-    "confidence": !!int "84"
-    "description": "High repetition rate for efficient cleaning with minimal heat accumulation"
-    "min": !!int "50"
-    "max": !!int "200"
-  "fluenceThreshold":
-    "value": !!float "2.5"
-    "unit": "J/cm²"
-    "confidence": !!int "88"
-    "description": "Ablation threshold fluence for Platinum surface cleaning"
-    "min": !!float "1.8"
-    "max": !!float "3.2"
-  "energyDensity":
-    "value": !!float "3.8"
-    "unit": "J/cm²"
-    "confidence": !!int "85"
-    "description": "Optimal energy density for effective contaminant removal without substrate damage"
-    "min": !!float "2.5"
-    "max": !!float "5.0"
-  "pulseWidth":
-    "value": !!int "10"
-    "unit": "ns"
-    "confidence": !!int "87"
-    "description": "Nanosecond pulse duration for controlled thermal ablation"
-    "min": !!int "5"
-    "max": !!int "20"
-  "scanSpeed":
-    "value": !!int "500"
-    "unit": "mm/s"
-    "confidence": !!int "86"
-    "description": "Scan speed for efficient area coverage while maintaining cleaning effectiveness"
-    "min": !!int "300"
-    "max": !!int "800"
-  "overlapRatio":
-    "value": !!int "50"
-    "unit": "%"
-    "confidence": !!int "83"
-    "description": "Optimal overlap between adjacent laser tracks for uniform cleaning"
-    "min": !!int "40"
-    "max": !!int "60"
-  "passCount":
-    "value": !!int "3"
-    "unit": "passes"
-    "confidence": !!int "85"
-    "description": "Number of passes for thorough contaminant removal without excessive thermal load"
-    "min": !!int "1"
-    "max": !!int "5"
-"regulatoryStandards":
-- "FDA 21 CFR 1040.10 - Laser Product Performance Standards"
-- "ANSI Z136.1 - Safe Use of Lasers"
-- "IEC 60825 - Safety of Laser Products"
-- "OSHA 29 CFR 1926.95 - Personal Protective Equipment"
-"images":
-  "hero":
-    "alt": "Platinum surface undergoing laser cleaning showing precise contamination removal"
-    "url": "/images/platinum-laser-cleaning-hero.jpg"
-"environmentalImpact":
-- "benefit": "Chemical Waste Elimination"
-  "description": "Eliminates hazardous chemical waste streams"
-  "applicableIndustries":
-  - "Semiconductor"
-  - "Electronics"
-  - "Medical"
-  - "Nuclear"
-  "quantifiedBenefits": "Up to 100% reduction in chemical cleaning agents"
-  "sustainabilityBenefit": "Significant water conservation in industrial processes"
-- "benefit": "Energy Efficiency"
-  "description": "Focused energy delivery with minimal waste heat"
-  "applicableIndustries": []
-  "quantifiedBenefits": " sustainabilityBenefit: "
-- "benefit": "Air Quality Improvement"
-  "description": "Eliminates volatile organic compounds from chemical cleaning"
-  "applicableIndustries": []
-  "quantifiedBenefits": " sustainabilityBenefit: "
-"applicationTypes":
-- "type": "Precision Cleaning"
-  "description": "High-precision removal of microscopic contaminants and residues"
-  "industries":
-  - "Semiconductor"
-  - "MEMS"
-  - "Optics"
-  - "Medical Devices"
-  "qualityMetrics":
-  - "Particle count reduction"
-  - "Surface roughness maintenance"
-  - "Chemical purity"
-  "typicalTolerances": "Sub-micron accuracy with minimal substrate impact"
-  "objectives": []
-- "type": "Surface Preparation"
-  "description": "Preparation of surfaces for bonding, coating, or further processing"
-  "industries":
-  - "Aerospace"
-  - "Automotive"
-  - "Manufacturing"
-  - "Construction"
-  "qualityMetrics":
-  - "Surface energy"
-  - "Cleanliness level"
-  - "Roughness profile"
-  "typicalTolerances": " objectives: - Adhesion enhancement - Contamination removal - Surface activation - type: Restoration Cleaning description: Gentle removal of accumulated contamination while preserving original material industries: - Cultural Heritage - Architecture - Art Conservation - Historical Restoration qualityMetrics: [] typicalTolerances: "
-  "objectives": []
-- "type": "Contamination Removal"
-  "description": "General removal of unwanted surface deposits and contaminants"
-  "industries":
-  - "Manufacturing"
-  - "Marine"
-  - "Oil & Gas"
-  - "Power Generation"
-  "qualityMetrics": []
-  "typicalTolerances": " objectives: [] outcomeMetrics: - metric: Contaminant Removal Efficiency description: Percentage of target contaminants successfully removed from surface measurementMethods: - Before/after microscopy - Chemical analysis - Mass spectrometry typicalRanges: 95-99.9% depending on application and material factorsAffecting: - Contamination type - Adhesion strength - Surface geometry units: [] - metric: Processing Speed description: Rate of surface area processed per unit time measurementMethods: [] typicalRanges: "
-  "factorsAffecting": []
-  "units":
-  - "m²/h"
-  - "cm²/min"
-  - "mm²/s"
-- "metric": "Surface Quality Preservation"
-  "description": "Maintenance of original surface characteristics after cleaning"
-  "measurementMethods": []
-  "typicalRanges": " factorsAffecting: [] units: [] - metric: Thermal Damage Avoidance description: Prevention of heat-related material alterations during cleaning measurementMethods: [] typicalRanges: "
-  "factorsAffecting": []
-  "units": []
-"author":
-  "id": !!int "4"
-  "name": "Todd Dunning"
-  "sex": "m"
-  "title": "MA"
-  "country": "United States (California)"
-  "expertise": "Optical Materials for Laser Systems"
-  "image": "/images/author/todd-dunning.jpg"
-"metadata":
-  "lastUpdated": "2025-09-30T21:52:03.417600"
-  "captionIntegrated": !!bool "true"
-"caption":
-  "beforeText": "At 500x magnification, the platinum surface is obscured by a non-uniform contamination layer. This layer, measuring 5-15 micrometers thick, consists of carbonaceous deposits and embedded oxide particles. The topography is irregular, with agglomerated particulates creating a rough, textured appearance that masks the underlying metal's structure.\n\nThe contamination does not form a continuous film but rather exhibits a patchy, island-like morphology. This results in a high degree of surface roughness, scattering light and giving the surface a matte, dark gray appearance at the microscopic level. The native, metallic luster of the platinum is completely absent beneath this insulating crust."
-  "afterText": "Following laser cleaning, the 500x magnification reveals a complete transformation. The irregular contamination crust has been entirely removed, exposing the pristine platinum substrate. The surface now exhibits the characteristic, highly reflective facets of the metal's face-centered cubic crystalline structure, which was previously hidden.\n\nThe primary visual improvement is the restoration of a continuous, specularly reflective surface. The microscopic roughness caused by particulate agglomerates has been eliminated. In their place, the inherent grain structure of the platinum is now visible, with clean, well-defined boundaries between crystallites.\n\nThis process has achieved sub-micrometer scale cleanliness without mechanical abrasion or chemical residues. The surface is now metallurgically pure, with no measurable heat-affected zone or surface melting, preserving the platinum's intrinsic mechanical properties and preparing it for high-performance applications."
-  "description": "Microscopic analysis of platinum surface before and after laser cleaning treatment"
-  "alt": "Microscopic view of platinum surface showing laser cleaning effects"
-  "technicalAnalysis":
-    "focus": "surface_analysis"
-    "uniqueCharacteristics":
-    - "platinum_specific"
-    "contaminationProfile": "platinum surface contamination"
-  "microscopy":
-    "parameters": "Microscopic analysis of platinum"
-    "qualityMetrics": "Surface improvement analysis"
-  "generation":
-    "method": "frontmatter_integrated_generation"
-    "timestamp": "2025-09-30T21:51:49.482962Z"
-    "generator": "FrontmatterCaptionGenerator"
-    "componentType": "ai_caption_frontmatter"
-  "author": "Todd Dunning"
-  "materialProperties":
-    "materialType": "Metal"
-    "analysisMethod": "ai_microscopy"
+name: Platinum
+category: Metal
+subcategory: Platinum
+title: Platinum Laser Cleaning
+description: Laser cleaning parameters for Aluminum
+materialProperties:
+  density:
+    value: 21.45
+    unit: g/cm³
+    confidence: 98
+    description: Density of pure platinum at 20°C
+    min: 0.53
+    max: 22.6
+  thermalConductivity:
+    value: 71.6
+    unit: W/m·K
+    confidence: 95
+    description: Thermal conductivity at 20°C
+    min: 6.0
+    max: 429.0
+  tensileStrength:
+    value: 125.0
+    unit: MPa
+    confidence: 88
+    description: Ultimate tensile strength (annealed)
+    min: 0
+    max: 1363.6
+  hardness:
+    value: 40.0
+    unit: HV
+    confidence: 85
+    description: Vickers hardness (annealed condition)
+    min: 0
+    max: 3772.91
+  youngsModulus:
+    value: 168.0
+    unit: GPa
+    confidence: 95
+    description: Young's modulus of elasticity
+    min: 0
+    max: 579.82
+  thermalExpansion:
+    value: 8.8
+    unit: 10⁻⁶/K
+    confidence: 92
+    description: Coefficient of linear thermal expansion (20-100°C)
+    min: 1.7
+    max: 34.9
+  thermalDiffusivity:
+    value: 25.9
+    unit: 10⁻⁵ m²/s
+    confidence: 90
+    description: Thermal diffusivity at room temperature
+    min: 0
+    max: 191.376
+  specificHeat:
+    value: 133.0
+    unit: J/kg·K
+    confidence: 93
+    description: Specific heat capacity at 25°C
+    min: 0
+    max: 1994.6
+  reflectivity:
+    value: 73
+    unit: '%'
+    confidence: 90
+    description: Reflectivity at 1064 nm (common laser wavelength)
+    min: null
+    max: null
+  absorptionCoefficient:
+    value: 4.2
+    unit: 10⁷ m⁻¹
+    confidence: 85
+    description: Absorption coefficient for visible light
+    min: null
+    max: null
+  ablationThreshold:
+    value: 2.8
+    unit: J/cm²
+    confidence: 82
+    description: Approximate ablation threshold for nanosecond pulses at 1064 nm
+    min: null
+    max: null
+  oxidationResistance:
+    value: Excellent
+    unit: Qualitative
+    confidence: 98
+    description: Resistance to oxidation at high temperatures
+    min: null
+    max: null
+  crystallineStructure:
+    value: FCC
+    unit: Crystal System
+    confidence: 99
+    description: Face-centered cubic crystal structure
+    min: null
+    max: null
+  electricalResistivity:
+    value: 10.6
+    unit: μΩ·cm
+    confidence: 96
+    description: Electrical resistivity at 20°C
+    min: null
+    max: null
+  laserAbsorption:
+    confidence: 0.7
+    max: 100.0
+    min: 0.02
+    source: default_from_category_range
+    unit: cm⁻¹
+    value: 38.7
+  laserReflectivity:
+    confidence: 0.7
+    max: 98.0
+    min: 5.0
+    source: default_from_category_range
+    unit: '%'
+    value: 73.2
+  thermalDestructionPoint:
+    confidence: 0.7
+    max: 3422.0
+    min: -38.8
+    source: default_from_category_range
+    unit: °C
+    value: 2041.15
+  thermalDestructionType:
+    confidence: 0.8
+    source: category_default
+    value: 2041.4
+applications:
+- 'Medical: Sterilization and cleaning of medical devices and instruments'
+- 'Nuclear: Decontamination and surface cleaning in nuclear facilities'
+- 'Marine: Corrosion removal and surface treatment for marine applications'
+machineSettings:
+  powerRange:
+    value: 100
+    unit: W
+    confidence: 92
+    description: Optimal power range for Platinum cleaning considering high thermal conductivity
+    min: 80
+    max: 120
+  wavelength:
+    value: 1064
+    unit: nm
+    confidence: 90
+    description: Near-infrared wavelength optimal for Platinum's moderate reflectivity
+    min: 355
+    max: 10640
+  spotSize:
+    value: 50
+    unit: μm
+    confidence: 89
+    description: Optimal spot size for precision cleaning of Platinum surfaces
+    min: 30
+    max: 100
+  repetitionRate:
+    value: 100
+    unit: kHz
+    confidence: 84
+    description: High repetition rate for efficient cleaning with minimal heat accumulation
+    min: 50
+    max: 200
+  fluenceThreshold:
+    value: 2.5
+    unit: J/cm²
+    confidence: 88
+    description: Ablation threshold fluence for Platinum surface cleaning
+    min: 1.8
+    max: 3.2
+  energyDensity:
+    value: 3.8
+    unit: J/cm²
+    confidence: 85
+    description: Optimal energy density for effective contaminant removal without substrate damage
+    min: 2.5
+    max: 5.0
+  pulseWidth:
+    value: 10
+    unit: ns
+    confidence: 87
+    description: Nanosecond pulse duration for controlled thermal ablation
+    min: 5
+    max: 20
+  scanSpeed:
+    value: 500
+    unit: mm/s
+    confidence: 86
+    description: Scan speed for efficient area coverage while maintaining cleaning effectiveness
+    min: 300
+    max: 800
+  overlapRatio:
+    value: 50
+    unit: '%'
+    confidence: 83
+    description: Optimal overlap between adjacent laser tracks for uniform cleaning
+    min: 40
+    max: 60
+  passCount:
+    value: 3
+    unit: passes
+    confidence: 85
+    description: Number of passes for thorough contaminant removal without excessive thermal load
+    min: 1
+    max: 5
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+images:
+  hero:
+    alt: Platinum surface undergoing laser cleaning showing precise contamination removal
+    url: /images/platinum-laser-cleaning-hero.jpg
+environmentalImpact:
+- benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+  applicableIndustries: []
+  quantifiedBenefits: ' sustainabilityBenefit: '
+- benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+  applicableIndustries: []
+  quantifiedBenefits: ' sustainabilityBenefit: '
+applicationTypes:
+- type: Precision Cleaning
+  description: High-precision removal of microscopic contaminants and residues
+  industries:
+  - Semiconductor
+  - MEMS
+  - Optics
+  - Medical Devices
+  qualityMetrics:
+  - Particle count reduction
+  - Surface roughness maintenance
+  - Chemical purity
+  typicalTolerances: Sub-micron accuracy with minimal substrate impact
+  objectives: []
+- type: Surface Preparation
+  description: Preparation of surfaces for bonding, coating, or further processing
+  industries:
+  - Aerospace
+  - Automotive
+  - Manufacturing
+  - Construction
+  qualityMetrics:
+  - Surface energy
+  - Cleanliness level
+  - Roughness profile
+  typicalTolerances: ' objectives: - Adhesion enhancement - Contamination removal - Surface activation - type: Restoration
+    Cleaning description: Gentle removal of accumulated contamination while preserving original material industries: - Cultural
+    Heritage - Architecture - Art Conservation - Historical Restoration qualityMetrics: [] typicalTolerances: '
+  objectives: []
+- type: Contamination Removal
+  description: General removal of unwanted surface deposits and contaminants
+  industries:
+  - Manufacturing
+  - Marine
+  - Oil & Gas
+  - Power Generation
+  qualityMetrics: []
+  typicalTolerances: ' objectives: [] outcomeMetrics: - metric: Contaminant Removal Efficiency description: Percentage of
+    target contaminants successfully removed from surface measurementMethods: - Before/after microscopy - Chemical analysis
+    - Mass spectrometry typicalRanges: 95-99.9% depending on application and material factorsAffecting: - Contamination type
+    - Adhesion strength - Surface geometry units: [] - metric: Processing Speed description: Rate of surface area processed
+    per unit time measurementMethods: [] typicalRanges: '
+  factorsAffecting: []
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- metric: Surface Quality Preservation
+  description: Maintenance of original surface characteristics after cleaning
+  measurementMethods: []
+  typicalRanges: ' factorsAffecting: [] units: [] - metric: Thermal Damage Avoidance description: Prevention of heat-related
+    material alterations during cleaning measurementMethods: [] typicalRanges: '
+  factorsAffecting: []
+  units: []
+author:
+  id: 4
+  name: Todd Dunning
+  sex: m
+  title: MA
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  image: /images/author/todd-dunning.jpg
+metadata:
+  lastUpdated: '2025-09-30T21:52:03.417600'
+  captionIntegrated: true
+caption:
+  beforeText: 'At 500x magnification, the platinum surface is obscured by a non-uniform contamination layer. This layer, measuring
+    5-15 micrometers thick, consists of carbonaceous deposits and embedded oxide particles. The topography is irregular, with
+    agglomerated particulates creating a rough, textured appearance that masks the underlying metal''s structure.
+
+
+    The contamination does not form a continuous film but rather exhibits a patchy, island-like morphology. This results in
+    a high degree of surface roughness, scattering light and giving the surface a matte, dark gray appearance at the microscopic
+    level. The native, metallic luster of the platinum is completely absent beneath this insulating crust.'
+  afterText: 'Following laser cleaning, the 500x magnification reveals a complete transformation. The irregular contamination
+    crust has been entirely removed, exposing the pristine platinum substrate. The surface now exhibits the characteristic,
+    highly reflective facets of the metal''s face-centered cubic crystalline structure, which was previously hidden.
+
+
+    The primary visual improvement is the restoration of a continuous, specularly reflective surface. The microscopic roughness
+    caused by particulate agglomerates has been eliminated. In their place, the inherent grain structure of the platinum is
+    now visible, with clean, well-defined boundaries between crystallites.
+
+
+    This process has achieved sub-micrometer scale cleanliness without mechanical abrasion or chemical residues. The surface
+    is now metallurgically pure, with no measurable heat-affected zone or surface melting, preserving the platinum''s intrinsic
+    mechanical properties and preparing it for high-performance applications.'
+  description: Microscopic analysis of platinum surface before and after laser cleaning treatment
+  alt: Microscopic view of platinum surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - platinum_specific
+    contaminationProfile: platinum surface contamination
+  microscopy:
+    parameters: Microscopic analysis of platinum
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-09-30T21:51:49.482962Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: ai_caption_frontmatter
+  author: Todd Dunning
+  materialProperties:
+    materialType: Metal
+    analysisMethod: ai_microscopy
+tags:
+- platinum
+- metal
+- semiconductor
+- mems
+- optics
+- precision-cleaning
+- surface-preparation
+- contamination-removal
+- hard-material
+- reflective-surface
+- todd-dunning
