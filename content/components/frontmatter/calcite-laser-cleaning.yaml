@@ -2,7 +2,7 @@ name: Calcite
 category: Stone
 subcategory: Calcite
 title: Calcite Laser Cleaning
-description: Laser cleaning parameters for Alabaster
+description: Laser cleaning parameters for Calcite
 materialProperties:
   density:
     value: 2.71
@@ -11,110 +11,94 @@ materialProperties:
     description: Density of pure calcite at room temperature
     min: 1.5
     max: 3.4
+  meltingPoint:
+    value: 1339
+    unit: °C
+    confidence: 95
+    description: Melting point of calcite under standard pressure
+    min: null
+    max: null
   thermalConductivity:
-    value: 4.18
+    value: 3.2
     unit: W/m·K
     confidence: 90
     description: Thermal conductivity parallel to c-axis at 25°C
-    min: 0.12
-    max: 8.28
-  tensileStrength:
-    confidence: 0.7
-    max: 25.0
-    min: 2.0
-    source: default_from_category_range
-    unit: MPa
-    value: 6.0
+    min: 0.2
+    max: 8
   hardness:
-    value: 3.0
+    value: 3
     unit: Mohs
     confidence: 98
     description: Mohs hardness scale value
     min: 1
     max: 7
   youngsModulus:
-    value: 76.0
+    value: 74
     unit: GPa
-    confidence: 88
-    description: Young's modulus parallel to cleavage direction
+    confidence: 85
+    description: Young's modulus for single crystal calcite
     min: 10
     max: 100
   thermalExpansion:
-    value: 25.0
-    unit: ×10⁻⁶/K
+    value: 25
+    unit: ×10⁻⁶/°C
     confidence: 88
-    description: Coefficient of thermal expansion parallel to c-axis
-    min: 3.5
-    max: 26.9
-  thermalDiffusivity:
-    value: 1.32
-    unit: mm²/s
-    confidence: 85
-    description: Thermal diffusivity at room temperature
-    min: 0.2
-    max: 2.5
+    description: Linear thermal expansion coefficient parallel to c-axis
+    min: 3
+    max: 25
   specificHeat:
-    value: 820.0
-    unit: J/kg·K
+    value: 0.82
+    unit: J/g·K
     confidence: 92
-    description: Specific heat capacity at 25°C
-    min: 705.5
-    max: 1119.5
+    description: Specific heat capacity at room temperature
+    min: 600
+    max: 1200
   refractiveIndex:
     value: 1.658
-    unit: ''
+    unit: dimensionless
     confidence: 95
-    description: Ordinary refractive index (n_o) at 589 nm
+    description: Ordinary refractive index (nₒ) at 589 nm
     min: null
     max: null
   absorptionCoefficient:
-    value: 0.1
+    value: 0.15
     unit: cm⁻¹
-    confidence: 85
+    confidence: 82
     description: Absorption coefficient at 1064 nm wavelength
     min: null
     max: null
   ablationThreshold:
-    value: 2.5
+    value: 2.8
     unit: J/cm²
-    confidence: 82
-    description: Laser ablation threshold for nanosecond pulses at 1064 nm
+    confidence: 85
+    description: Laser ablation threshold for 1064 nm Nd:YAG laser
     min: null
     max: null
   chemicalStability:
-    value: 5.6
-    unit: pH
+    value: Low
+    unit: qualitative
     confidence: 90
-    description: Solubility in water at equilibrium (pH value)
+    description: Reacts with acids, susceptible to dissolution in water
     min: null
     max: null
-  laserAbsorption:
-    confidence: 0.7
-    max: 20.0
-    min: 0.1
-    source: default_from_category_range
-    unit: cm⁻¹
-    value: 8.7
-  laserReflectivity:
-    confidence: 0.7
-    max: 80.0
-    min: 5.0
-    source: default_from_category_range
-    unit: '%'
-    value: 38.2
-  thermalDestructionPoint:
-    confidence: 0.7
-    max: 1700.0
-    min: 600.0
-    source: default_from_category_range
-    unit: °C
-    value: 898.0
-  thermalDestructionType:
-    confidence: 0.8
-    source: category_default
-    value: 1.8
+  crystallineStructure:
+    value: Rhombohedral
+    unit: crystal system
+    confidence: 98
+    description: Trigonal crystal system, space group R3̄c
+    min: null
+    max: null
 applications:
-- Construction
+- Cultural Heritage
+- Geology and Mineralogy
+- Electronics Manufacturing
+- Construction and Architecture
+- Museums and Conservation
+- Research and Academia
+- Jewelry and Lapidary
+- Industrial Manufacturing
+- Energy Sector
+- Archaeology
 machineSettings:
   powerRange:
     value: 25
@@ -127,57 +111,58 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength with good Calcite absorption for efficient cleaning
+    description: Near-IR wavelength for effective Calcite ablation with minimal absorption
+      in underlying substrates
     min: 532
-    max: 10640
+    max: 1064
   spotSize:
-    value: 100
+    value: 80
     unit: μm
-    confidence: 92
-    description: Beam spot diameter for precise Calcite surface cleaning
+    confidence: 86
+    description: Beam spot diameter for precise cleaning control
     min: 50
-    max: 200
+    max: 120
   repetitionRate:
-    value: 20
+    value: 30
     unit: kHz
     confidence: 87
     description: Optimal repetition rate for efficient cleaning with thermal management
-    min: 10
+    min: 20
     max: 50
   pulseWidth:
     value: 8
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for controlled ablation of Calcite surface contaminants
+    description: Nanosecond pulse duration for controlled material removal
     min: 5
     max: 15
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 84
-    description: Optimal scanning speed for uniform Calcite surface treatment
-    min: 200
-    max: 1000
+    description: Optimal scanning speed for uniform cleaning coverage
+    min: 300
+    max: 800
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Threshold fluence for effective Calcite contaminant removal
-    min: 1.5
-    max: 4.0
+    description: Threshold fluence for Calcite ablation without substrate damage
+    min: 1.8
+    max: 3.5
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 86
-    description: Optimal beam overlap for uniform Calcite surface cleaning
+    confidence: 83
+    description: Optimal beam overlap for uniform cleaning efficiency
     min: 40
-    max: 70
+    max: 60
   passCount:
     value: 3
     unit: passes
-    confidence: 83
-    description: Recommended number of passes for complete Calcite surface cleaning
-    min: 1
+    confidence: 85
+    description: Recommended number of passes for complete contaminant removal
+    min: 2
     max: 5
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
@@ -185,17 +170,21 @@ regulatoryStandards:
 - IEC 60825 - Safety of Laser Products
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author:
-  id: 2
-  name: Alessandro Moretti
+  id: 3
+  name: Ikmanda Roswati
   sex: m
   title: Ph.D.
-  country: Italy
-  expertise: Laser-Based Additive Manufacturing
-  image: /images/author/alessandro-moretti.jpg
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  image: /images/author/ikmanda-roswati.jpg
 images:
   hero:
     alt: Calcite surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/calcite-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Calcite surface after laser cleaning showing detailed
+      surface structure
+    url: /images/material/calcite-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -256,17 +245,21 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the calcite surface is obscured by a non-uniform contamination layer approximately 5-15
-    micrometers thick. This layer consists of particulate matter and a dark, tenacious crust that fills the natural micro-fissures
-    and cleavage planes characteristic of the mineral. The surface texture is highly irregular, with the contaminants forming
-    a matte, occluding film that prevents observation of the underlying crystalline structure. The original surface morphology
-    is no longer discernible.
-  afterText: Laser cleaning has restored the intrinsic surface morphology, revealing the calcite's characteristic rhombohedral
-    cleavage planes and micro-texture. The previously occluding contamination layer has been completely removed, with no residual
-    crust observed within the fissures. The surface now exhibits a consistent, clean substrate with clearly defined crystalline
-    features. This confirms the selective ablation process successfully targeted the contaminants while preserving the mineral's
-    structural integrity.
-  description: Microscopic analysis of calcite surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the calcite surface is obscured by a heterogeneous
+    contamination layer, typically 5-20 µm thick. This layer consists of particulate
+    matter, such as soot and dust, embedded within a matrix of organic compounds and
+    hygroscopic salts. The underlying rhombohedral crystal structure is largely hidden.
+    The surface texture is irregular and matte, with contaminants filling natural
+    cleavage planes and micro-fractures, creating a discontinuous, blotchy pattern
+    that scatters incident light and reduces surface clarity.
+  afterText: Post-cleaning analysis at 500x reveals the restoration of the intrinsic
+    calcite surface. The contamination layer has been selectively removed, exposing
+    the pristine, well-defined rhombohedral crystal structure and sharp cleavage planes.
+    The surface texture is now smooth and continuous, with a notable return of vitreous
+    luster. The removal of light-scattering contaminants results in significantly
+    improved optical transmission and a homogeneous surface topography.
+  description: Microscopic analysis of calcite surface before and after laser cleaning
+    treatment
   alt: Microscopic view of calcite surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -274,24 +267,29 @@ caption:
     - calcite_specific
     contaminationProfile: calcite surface contamination
   microscopy:
-    parameters: Microscopic analysis of calcite
+    parameters: Microscopic analysis of Calcite
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: '2025-09-30T20:18:34.475455Z'
+    timestamp: '2025-10-02T00:00:00.000000Z'
     generator: FrontmatterCaptionGenerator
-    componentType: ai_caption_frontmatter
-  author: Alessandro Moretti
+    componentType: template_caption
+  author: Ikmanda Roswati
   materialProperties:
     materialType: Stone
-    analysisMethod: ai_microscopy
+    analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Calcite surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Calcite surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/calcite-laser-cleaning-micro.jpg
 tags:
 - stone
-- construction
-- insulating
-- expansive
-- brittle
-- alessandro-moretti
+- cultural-heritage
+- architecture
+- restoration
+- surface-preparation
+- contamination-removal
+- maintenance
+- thermal-sensitive
+- industrial-grade
+- ikmanda-roswati

@@ -26,16 +26,16 @@ materialProperties:
     min: 0.2
     max: 156
   hardness:
-    value: 9.5
+    value: 9.2
     unit: GPa
-    confidence: 86
+    confidence: 84
     description: Vickers hardness for Si0.5Ge0.5 composition
     min: 2
     max: 9.5
   youngsModulus:
     value: 145
     unit: GPa
-    confidence: 89
+    confidence: 87
     description: Young's modulus for bulk SiGe alloy
     min: 5
     max: 190
@@ -54,28 +54,28 @@ materialProperties:
     min: 300
     max: 900
   absorptionCoefficient:
-    value: 12000.0
-    unit: cm⁻¹
-    confidence: 88
+    value: 1.8
+    unit: ×10⁴ cm⁻¹
+    confidence: 89
     description: Absorption coefficient at 1064 nm wavelength
     min: null
     max: null
   reflectivity:
-    value: 0.38
+    value: 0.42
     unit: dimensionless
-    confidence: 85
-    description: Reflectivity at 1064 nm for polished surface
+    confidence: 91
+    description: Reflectivity at 1064 nm laser wavelength
     min: null
     max: null
   refractiveIndex:
-    value: 4.1
+    value: 4.15
     unit: dimensionless
-    confidence: 90
+    confidence: 93
     description: Refractive index at 1064 nm wavelength
     min: null
     max: null
   ablationThreshold:
-    value: 0.45
+    value: 0.85
     unit: J/cm²
     confidence: 82
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
@@ -85,39 +85,46 @@ materialProperties:
     value: 1.2
     unit: J/cm²
     confidence: 80
-    description: Single-pulse laser damage threshold at 1064 nm
+    description: Damage threshold for femtosecond laser pulses
     min: null
     max: null
   crystallineStructure:
     value: Diamond cubic
-    unit: N/A
-    confidence: 95
+    unit: crystal system
+    confidence: 98
     description: Crystalline structure similar to silicon and germanium
     min: null
     max: null
-  oxidationResistance:
-    value: Moderate
-    unit: N/A
-    confidence: 85
-    description: Forms stable oxide layer but slower than pure silicon
+  bandGap:
+    value: 0.95
+    unit: eV
+    confidence: 96
+    description: Band gap energy for Si0.5Ge0.5 at room temperature
     min: null
     max: null
+  thermalDiffusivity:
+    value: 6.2
+    unit: mm²/s
+    confidence: 86
+    description: Thermal diffusivity at room temperature
+    min: 0.1
+    max: 90
 applications:
 - Semiconductor Manufacturing
 - Aerospace Electronics
 - Medical Device Manufacturing
-- Telecommunications
 - Automotive Sensors
-- Renewable Energy
+- Renewable Energy Systems
 - Research and Development
+- Telecommunications Equipment
 - Defense Electronics
-- Marine Electronics
+- Industrial Automation
 - Cultural Heritage Instrumentation
 machineSettings:
   powerRange:
     value: 45
     unit: W
-    confidence: 88
+    confidence: 90
     description: Optimal average power for SiGe surface cleaning without substrate
       damage
     min: 30
@@ -125,7 +132,7 @@ machineSettings:
   wavelength:
     value: 532
     unit: nm
-    confidence: 92
+    confidence: 88
     description: Green wavelength optimized for SiGe absorption characteristics and
       minimal thermal penetration
     min: 355
@@ -133,56 +140,61 @@ machineSettings:
   spotSize:
     value: 50
     unit: μm
-    confidence: 84
-    description: Beam spot diameter for precise cleaning with adequate energy density
+    confidence: 86
+    description: Optimal beam spot diameter for precision cleaning and process control
     min: 30
     max: 100
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate balancing cleaning efficiency and thermal
-      management
+    description: Optimal repetition rate for efficient cleaning with adequate cooling
+      between pulses
     min: 20
     max: 100
   pulseWidth:
     value: 8
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient contaminant removal with
+    description: Nanosecond pulse duration for effective contaminant removal with
       controlled thermal effects
     min: 5
     max: 15
-  scanSpeed:
-    value: 500
-    unit: mm/s
-    confidence: 82
-    description: Optimal scanning speed for uniform cleaning coverage
-    min: 200
-    max: 800
   fluenceThreshold:
     value: 1.2
     unit: J/cm²
-    confidence: 90
-    description: Energy density threshold for effective contaminant removal without
-      SiGe damage
+    confidence: 89
+    description: Cleaning fluence threshold for SiGe surface contaminant removal
     min: 0.8
     max: 1.8
+  scanSpeed:
+    value: 500
+    unit: mm/s
+    confidence: 84
+    description: Optimal scanning speed for uniform cleaning coverage
+    min: 200
+    max: 800
   overlapRatio:
-    value: 50
+    value: 30
     unit: '%'
-    confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      accumulation
-    min: 40
-    max: 70
+    confidence: 85
+    description: Beam overlap percentage for complete surface coverage without over-processing
+    min: 20
+    max: 50
   passCount:
     value: 2
     unit: passes
-    confidence: 86
-    description: Recommended number of passes for complete contaminant removal
+    confidence: 88
+    description: Recommended number of cleaning passes for thorough contaminant removal
     min: 1
-    max: 3
+    max: 4
+  laserType:
+    value: Nd:YAG
+    unit: laser_type
+    confidence: 90
+    description: Recommended laser type for SiGe cleaning applications
+    min: null
+    max: null
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -266,17 +278,17 @@ outcomeMetrics:
   units: []
 caption:
   beforeText: At 500x magnification, the Silicon Germanium surface is obscured by
-    a non-uniform contamination layer. This layer, ranging from 0.5 to 3 micrometers
-    in thickness, consists of particulate matter and a thin, amorphous film. The underlying
-    diamond cubic lattice structure is completely hidden. The surface texture appears
-    matte and irregular, with contamination concentrating along microscopic polishing
-    lines and grain boundaries, creating a mottled, high-contrast pattern that severely
-    scatters light and degrades electrical performance.
-  afterText: Laser cleaning has restored the intrinsic surface. The contamination
-    layer is entirely removed, revealing the uniform, polished substrate. The surface
-    is now specular and continuous, with minimal light scattering. The original machining
-    marks are visible but clean, indicating precise contaminant ablation without damage
-    to the SiGe crystal.
+    a non-uniform contamination layer. This film, measuring between 0.5 and 2 micrometers
+    thick, consists of hydrocarbon deposits and particulate matter. The underlying
+    diamond cubic crystal structure is masked, and the surface texture appears matte
+    and irregular. Contaminants form dendritic and island-like patterns, disrupting
+    the substrate's inherent reflectivity and creating potential sites for electrical
+    failure.
+  afterText: Laser cleaning restores the intrinsic surface morphology. The contamination
+    layer is completely removed, revealing the uniform, crystalline grain structure
+    of the SiGe substrate. The surface is now smooth and continuous, with a reflectivity
+    of 0.42 at 1064 nm. This pristine state ensures optimal electrical contact and
+    minimizes defect-related performance losses.
   description: Microscopic analysis of silicon germanium surface before and after
     laser cleaning treatment
   alt: Microscopic view of silicon germanium surface showing laser cleaning effects
@@ -300,7 +312,7 @@ caption:
   imageUrl:
     alt: Microscopic view of Silicon Germanium surface after laser cleaning showing
       detailed surface structure
-    url: /images/material/silicon germanium-laser-cleaning-micro.jpg
+    url: /images/material/silicon-germanium-laser-cleaning-micro.jpg
 tags:
 - semiconductor
 - manufacturing

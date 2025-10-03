@@ -33,28 +33,28 @@ materialProperties:
     min: 1
     max: 7
   youngsModulus:
-    value: 22.5
+    value: 25.0
     unit: GPa
     confidence: 82
     description: Elastic modulus in compression
     min: 10
     max: 100
   thermalExpansion:
-    value: 25.5
-    unit: μm/m·°C
+    value: 25.0
+    unit: ×10⁻⁶/°C
     confidence: 85
-    description: Coefficient of thermal expansion (20-100°C)
+    description: Coefficient of thermal expansion
     min: 3
     max: 25
   specificHeat:
     value: 1085
     unit: J/kg·K
     confidence: 92
-    description: Specific heat capacity at room temperature
+    description: Specific heat capacity at 20°C
     min: 600
     max: 1200
   compressiveStrength:
-    value: 45
+    value: 60.0
     unit: MPa
     confidence: 88
     description: Uniaxial compressive strength
@@ -64,54 +64,47 @@ materialProperties:
     value: 0.85
     unit: dimensionless
     confidence: 85
-    description: Optical absorption coefficient at 1064 nm
+    description: Optical absorption coefficient for visible light
     min: null
     max: null
   reflectivity:
     value: 0.12
     unit: dimensionless
     confidence: 83
-    description: Surface reflectivity at common laser wavelengths
+    description: Surface reflectivity at 1064 nm wavelength
     min: null
     max: null
   ablationThreshold:
-    value: 1.8
+    value: 2.5
     unit: J/cm²
     confidence: 80
     description: Laser ablation threshold for Nd:YAG 1064 nm
     min: null
     max: null
   porosity:
-    value: 8.5
-    unit: '%'
-    confidence: 87
-    description: Average porosity of natural alabaster
+    value: 0.08
+    unit: dimensionless
+    confidence: 90
+    description: Typical porosity fraction
     min: null
     max: null
-  waterContent:
-    value: 20.9
-    unit: '%'
+  waterSolubility:
+    value: 2.41
+    unit: g/L
     confidence: 94
-    description: Hydrated water content in gypsum alabaster
-    min: null
-    max: null
-  dehydrationTemperature:
-    value: 128
-    unit: °C
-    confidence: 92
-    description: Critical temperature for gypsum dehydration
+    description: Solubility in water at 20°C
     min: null
     max: null
 applications:
 - Cultural Heritage
 - Aerospace
-- Medical Devices
-- Electronics Manufacturing
+- Medical Device Manufacturing
+- Electronics
 - Automotive Luxury
-- Marine Interior
-- Energy Sector
-- Manufacturing Tooling
-- Architectural Restoration
+- Marine
+- Energy
+- Manufacturing
+- Architecture
 - Art Conservation
 machineSettings:
   powerRange:
@@ -134,7 +127,7 @@ machineSettings:
     value: 100
     unit: μm
     confidence: 86
-    description: Beam spot diameter for precise cleaning with adequate energy density
+    description: Beam spot diameter for precise cleaning control on Alabaster surfaces
     min: 50
     max: 200
   repetitionRate:
@@ -161,13 +154,13 @@ machineSettings:
     min: 200
     max: 1000
   energyDensity:
-    value: 3.2
+    value: 2.5
     unit: J/cm²
     confidence: 89
     description: Fluence threshold for effective contaminant removal without damaging
       Alabaster substrate
     min: 1.5
-    max: 5.0
+    max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
@@ -177,20 +170,13 @@ machineSettings:
     min: 30
     max: 70
   passCount:
-    value: 2
+    value: 3
     unit: passes
     confidence: 85
-    description: Recommended number of passes for thorough cleaning with minimal substrate
-      impact
+    description: Recommended number of passes for thorough cleaning with progressive
+      contaminant removal
     min: 1
-    max: 4
-  laserType:
-    value: Nd:YAG
-    unit: laser_type
-    confidence: 90
-    description: Recommended laser type for Alabaster cleaning applications
-    min: null
-    max: null
+    max: 5
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -273,26 +259,31 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the alabaster surface is obscured by a stratified
-    contamination layer approximately 50-200 µm thick. A discontinuous crust of inorganic
-    particulates (e.g., soot, dust) adheres to a deeper, consolidated matrix of organic
-    matter and salts. This layer masks the stone's intrinsic translucency and micro-crystalline
-    structure. The contaminants fill the natural porosity and intergranular boundaries,
-    creating a rough, occluded surface texture that promotes further degradation.
-  afterText: 'Laser cleaning has effectively removed the stratified contamination
-    layer, revealing the pristine, micro-crystalline substrate. The original grain
-    boundaries and interlocking crystal structure of the gypsum are now fully exposed
-    and clearly defined. Surface porosity has been restored to its natural state,
-    with no evidence of residual crust or particulate matter embedded within the pore
-    network.
+  beforeText: At 500x magnification, the alabaster surface is obscured by a dense,
+    particulate-laden layer approximately 5-20 µm thick. This crust, composed of carbonaceous
+    soot and mineral dust, fills the natural micro-porosity of the stone. The underlying
+    crystalline structure is entirely concealed, with contamination adhering to the
+    surface topography in an uneven, matte-black coating that disrupts light interaction.
+  afterText: 'Laser cleaning has fully removed the superficial contamination layer,
+    revealing the intrinsic microcrystalline structure of the alabaster. The surface
+    now exhibits a well-defined, interlocking crystal matrix with a porosity of approximately
+    8%. The original surface texture is fully restored, with no evidence of embedded
+    particulate matter.
 
 
-    The process has achieved selective ablation, precisely removing contaminants at
-    their adhesion points without damaging the underlying stone. This is confirmed
-    by the intact crystal facets and the absence of thermal artifacts, such as melting
-    or discoloration, which would indicate exceeding the material''s dehydration temperature.
-    The surface now exhibits its inherent semi-translucency and a uniform, micro-textured
-    finish.'
+    The primary visual improvement is the re-emergence of the stone''s light-transmitting
+    properties. At 500x, the crystalline facets show a reflectivity of 0.12 at 1064
+    nm, allowing light to penetrate and scatter from within the material, restoring
+    its characteristic translucency. The cleaning process has achieved selective ablation,
+    precisely removing contaminants at their 2.5 J/cm² threshold without affecting
+    the softer gypsum substrate.
+
+
+    This results in a surface free of mechanical scratches or chemical residues. The
+    precise ablation ensures the preservation of delicate, sub-micron surface features
+    and the stone''s natural porosity, confirming the procedure''s non-contact and
+    non-abrasive nature. The underlying material integrity, with a compressive strength
+    of 60 MPa, remains entirely unaffected.'
   description: Microscopic analysis of alabaster surface before and after laser cleaning
     treatment
   alt: Microscopic view of alabaster surface showing laser cleaning effects
