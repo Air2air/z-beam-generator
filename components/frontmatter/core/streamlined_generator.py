@@ -1418,7 +1418,7 @@ Generate exactly two text blocks:
                 },
                 'imageUrl': {
                     'alt': f'Microscopic view of {material_name} surface after laser cleaning showing detailed surface structure',
-                    'url': f'/images/material/{material_name.lower()}-laser-cleaning-micro.jpg'
+                    'url': f'/images/material/{material_name.lower().replace(" ", "-")}-laser-cleaning-micro.jpg'
                 }
             }
             self.logger.info(f"✅ Added caption section for {material_name}")

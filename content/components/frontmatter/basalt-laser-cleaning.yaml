@@ -43,7 +43,7 @@ materialProperties:
     value: 70
     unit: GPa
     confidence: 88
-    description: Young's modulus of elasticity
+    description: Elastic modulus of basalt rock
     min: 10
     max: 100
   thermalExpansion:
@@ -78,22 +78,21 @@ materialProperties:
     value: 0.85
     unit: dimensionless
     confidence: 82
-    description: Optical absorption coefficient for common laser wavelengths (1064
-      nm)
+    description: Optical absorption coefficient for common laser wavelengths
     min: null
     max: null
   reflectivity:
     value: 0.12
     unit: dimensionless
     confidence: 80
-    description: Surface reflectivity at 1064 nm wavelength
+    description: Surface reflectivity at typical laser wavelengths
     min: null
     max: null
   ablationThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 85
-    description: Laser ablation threshold for nanosecond pulses at 1064 nm
+    description: Laser ablation threshold for nanosecond pulses
     min: null
     max: null
   porosity:
@@ -104,22 +103,22 @@ materialProperties:
     min: null
     max: null
   chemicalStability:
-    value: high
-    unit: qualitative
-    confidence: 92
-    description: Resistance to chemical weathering and corrosion
+    value: 8.5
+    unit: rating_1-10
+    confidence: 90
+    description: Chemical stability rating in normal environments
     min: null
     max: null
 applications:
 - Aerospace
-- Architectural Restoration
-- Marine Engineering
-- Manufacturing
-- Energy Sector
-- Electronics Manufacturing
 - Automotive
+- Marine
 - Cultural Heritage
 - Construction
+- Electronics
+- Energy
+- Manufacturing
+- Medical
 - Research Laboratories
 machineSettings:
   powerRange:
@@ -134,58 +133,56 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength with good Basalt absorption for efficient cleaning
+    description: Near-IR wavelength optimized for Basalt mineral absorption
     min: 1030
     max: 1070
   spotSize:
     value: 80
     unit: μm
     confidence: 84
-    description: Beam spot diameter for effective cleaning resolution and energy density
+    description: Beam spot diameter for precise cleaning resolution
     min: 50
     max: 120
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning coverage and process
-      speed
+    description: Optimal repetition rate for continuous cleaning coverage
     min: 20
     max: 100
   pulseWidth:
     value: 12
     unit: ns
     confidence: 85
-    description: Short pulse duration for effective contaminant removal with minimal
-      substrate heating
+    description: Nanosecond pulse duration for efficient ablation of surface contaminants
     min: 8
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform cleaning coverage
+    description: Optimal scanning speed for efficient area coverage
     min: 300
     max: 800
   energyDensity:
-    value: 3.5
+    value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal from Basalt surface
-    min: 2.5
-    max: 5.0
+    description: Fluence threshold for effective contaminant removal
+    min: 1.5
+    max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive processing
+    description: Optimal beam overlap for uniform cleaning
     min: 40
-    max: 70
+    max: 60
   passCount:
     value: 3
     unit: passes
-    confidence: 85
-    description: Recommended number of passes for complete contaminant removal
+    confidence: 82
+    description: Recommended number of passes for complete cleaning
     min: 2
     max: 5
 regulatoryStandards:
@@ -269,19 +266,17 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the basalt surface is obscured by a dense, stratified
-    contamination layer approximately 50-200 µm thick. This layer, composed of carbonaceous
-    soot, mineral dust, and biological growth, fills the natural micro-fractures and
-    vesicles characteristic of the stone. The original crystalline texture of the
-    plagioclase and pyroxene minerals is entirely masked. The contaminant forms a
-    cohesive, low-porosity crust that compromises the substrate's permeability and
-    adhesion for any subsequent treatments.
-  afterText: Laser cleaning has fully removed the contamination layer, revealing the
-    pristine mineral microstructure. The original interlocking crystals of plagioclase
-    and pyroxene are now clearly defined, with sharp boundaries and micro-vesicles
-    free of particulate matter. The surface exhibits its inherent micro-roughness
-    and porosity without thermal damage or alteration to the mineral phases. The substrate's
-    natural absorption coefficient and reflectivity have been restored.
+  beforeText: At 500x magnification, the basalt surface is obscured by a discontinuous
+    contamination layer, approximately 5-15 micrometers thick. This layer, composed
+    of carbonaceous soot, industrial particulates, and embedded salts, fills the natural
+    micro-fractures and vesicles of the stone. The underlying crystalline matrix of
+    plagioclase and pyroxene is largely hidden, with contamination adhering strongly
+    to the rough, porous surface texture, creating a matte, occluded appearance.
+  afterText: Laser cleaning has restored the intrinsic basalt surface. At 500x magnification,
+    the contamination layer is entirely removed, revealing the unaltered mineral microstructure.
+    The sharp boundaries of plagioclase laths and pyroxene grains are now fully visible,
+    with micro-fractures and vesicles cleared of debris. The surface exhibits its
+    native micro-roughness and a consistent, clean substrate.
   description: Microscopic analysis of basalt surface before and after laser cleaning
     treatment
   alt: Microscopic view of basalt surface showing laser cleaning effects

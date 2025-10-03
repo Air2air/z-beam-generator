@@ -33,79 +33,79 @@ materialProperties:
     min: 1
     max: 7
   youngsModulus:
-    value: 25.0
+    value: 22.5
     unit: GPa
     confidence: 82
     description: Elastic modulus in compression
     min: 10
     max: 100
   thermalExpansion:
-    value: 25.0
-    unit: ×10⁻⁶/°C
+    value: 25.5
+    unit: μm/m·°C
     confidence: 85
-    description: Coefficient of thermal expansion
+    description: Coefficient of thermal expansion (20-100°C)
     min: 3
     max: 25
   specificHeat:
     value: 1085
     unit: J/kg·K
-    confidence: 92
-    description: Specific heat capacity at 20°C
+    confidence: 90
+    description: Specific heat capacity at room temperature
     min: 600
     max: 1200
   compressiveStrength:
-    value: 60.0
+    value: 45
     unit: MPa
-    confidence: 88
+    confidence: 85
     description: Uniaxial compressive strength
     min: null
     max: null
   absorptionCoefficient:
     value: 0.85
     unit: dimensionless
-    confidence: 85
-    description: Optical absorption coefficient for visible light
+    confidence: 88
+    description: Optical absorption coefficient at 1064 nm
     min: null
     max: null
   reflectivity:
     value: 0.12
     unit: dimensionless
-    confidence: 83
-    description: Surface reflectivity at 1064 nm wavelength
+    confidence: 85
+    description: Surface reflectivity at common laser wavelengths
     min: null
     max: null
   ablationThreshold:
-    value: 2.5
+    value: 1.8
     unit: J/cm²
-    confidence: 80
+    confidence: 82
     description: Laser ablation threshold for Nd:YAG 1064 nm
     min: null
     max: null
   porosity:
-    value: 0.08
-    unit: dimensionless
+    value: 8.5
+    unit: '%'
     confidence: 90
-    description: Typical porosity fraction
+    description: Average porosity of natural alabaster
     min: null
     max: null
-  waterSolubility:
-    value: 2.41
-    unit: g/L
-    confidence: 94
-    description: Solubility in water at 20°C
+  waterContent:
+    value: 20.9
+    unit: '%'
+    confidence: 95
+    description: Hydrated water content in gypsum alabaster
     min: null
     max: null
 applications:
 - Cultural Heritage
 - Aerospace
 - Medical Device Manufacturing
-- Electronics
-- Automotive Luxury
-- Marine
-- Energy
-- Manufacturing
-- Architecture
+- Electronics Manufacturing
+- Automotive Luxury Interiors
+- Marine Luxury Yachts
+- Energy Sector Instrumentation
+- Architectural Restoration
 - Art Conservation
+- Manufacturing Quality Control
 machineSettings:
   powerRange:
     value: 25
@@ -126,8 +126,8 @@ machineSettings:
   spotSize:
     value: 100
     unit: μm
-    confidence: 86
-    description: Beam spot diameter for precise cleaning control on Alabaster surfaces
+    confidence: 89
+    description: Beam spot diameter for precise cleaning with adequate energy density
     min: 50
     max: 200
   repetitionRate:
@@ -149,34 +149,34 @@ machineSettings:
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 84
+    confidence: 86
     description: Optimal scanning speed for uniform cleaning coverage
     min: 200
     max: 1000
   energyDensity:
-    value: 2.5
+    value: 3.2
     unit: J/cm²
-    confidence: 89
+    confidence: 91
     description: Fluence threshold for effective contaminant removal without damaging
       Alabaster substrate
     min: 1.5
-    max: 4.0
+    max: 5.0
   overlapRatio:
-    value: 50
+    value: 30
     unit: '%'
-    confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive energy
-      deposition
-    min: 30
-    max: 70
+    confidence: 84
+    description: Optimal beam overlap for uniform cleaning without excessive thermal
+      buildup
+    min: 20
+    max: 50
   passCount:
-    value: 3
+    value: 2
     unit: passes
-    confidence: 85
-    description: Recommended number of passes for thorough cleaning with progressive
-      contaminant removal
+    confidence: 88
+    description: Recommended number of passes for thorough cleaning with minimal substrate
+      impact
     min: 1
-    max: 5
+    max: 4
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -259,31 +259,29 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the alabaster surface is obscured by a dense,
-    particulate-laden layer approximately 5-20 µm thick. This crust, composed of carbonaceous
-    soot and mineral dust, fills the natural micro-porosity of the stone. The underlying
-    crystalline structure is entirely concealed, with contamination adhering to the
-    surface topography in an uneven, matte-black coating that disrupts light interaction.
-  afterText: 'Laser cleaning has fully removed the superficial contamination layer,
-    revealing the intrinsic microcrystalline structure of the alabaster. The surface
-    now exhibits a well-defined, interlocking crystal matrix with a porosity of approximately
-    8%. The original surface texture is fully restored, with no evidence of embedded
-    particulate matter.
+  beforeText: 'At 500x magnification, the alabaster surface is obscured by a complex
+    contamination layer. This stratum, measuring 5-15 micrometers thick, consists
+    of particulate matter (carbon soot, silica dust) embedded within a matrix of sulfated
+    calcites and organic residues from environmental exposure. The underlying stone''s
+    micro-topography is entirely masked.
 
 
-    The primary visual improvement is the re-emergence of the stone''s light-transmitting
-    properties. At 500x, the crystalline facets show a reflectivity of 0.12 at 1064
-    nm, allowing light to penetrate and scatter from within the material, restoring
-    its characteristic translucency. The cleaning process has achieved selective ablation,
-    precisely removing contaminants at their 2.5 J/cm² threshold without affecting
-    the softer gypsum substrate.
+    The contamination adheres tenaciously within the natural porosity of the alabaster,
+    which averages 8.5%. This occludes the stone''s intrinsic translucency and sub-micrometer
+    surface texture. The layer exhibits micro-fracturing, but its overall cohesion
+    prevents the underlying, softer alabaster (Mohs 2.0) from being accessed by conventional,
+    contact-based cleaning methods without risk of mechanical abrasion.'
+  afterText: 'Post-cleaning analysis at 500x reveals the pristine alabaster substrate.
+    The contamination layer has been completely removed via ablation, exposing the
+    original micro-crystalline structure. The stone''s inherent porosity and grain
+    boundaries are now clearly visible and free of foreign deposits.
 
 
-    This results in a surface free of mechanical scratches or chemical residues. The
-    precise ablation ensures the preservation of delicate, sub-micron surface features
-    and the stone''s natural porosity, confirming the procedure''s non-contact and
-    non-abrasive nature. The underlying material integrity, with a compressive strength
-    of 60 MPa, remains entirely unaffected.'
+    The laser process has selectively vaporized contaminants, which have a lower ablation
+    threshold than the alabaster itself. This results in a clean, mineralogical surface
+    without altering the substrate''s mechanical integrity. The stone''s natural translucency
+    and fine texture are restored, confirming the non-abrasive and precise nature
+    of the cleaning intervention.'
   description: Microscopic analysis of alabaster surface before and after laser cleaning
     treatment
   alt: Microscopic view of alabaster surface showing laser cleaning effects
