@@ -88,9 +88,9 @@
     "applications": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/Application"
+        "type": "string"
       },
-      "description": "Industrial applications with enhanced context"
+      "description": "Industry names for material applications (e.g., 'Aerospace', 'Manufacturing', 'Medical')"
     },
     "safety": {
       "$ref": "#/definitions/Safety"

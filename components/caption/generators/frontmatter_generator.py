@@ -99,18 +99,18 @@ class FrontmatterCaptionGenerator(CaptionComponentGenerator):
         
         # Create structured caption data for frontmatter integration
         caption_data = {
-            "beforeText": ai_content['before_text'],
-            "afterText": ai_content['after_text'],
+            "beforeText": ai_content['beforeText'],
+            "afterText": ai_content['afterText'],
             "description": f"Microscopic analysis of {material_name.lower()} surface before and after laser cleaning treatment",
             "alt": f"Microscopic view of {material_name.lower()} surface showing laser cleaning effects",
             "technicalAnalysis": {
-                "focus": ai_content.get('technical_focus', ''),
-                "uniqueCharacteristics": ai_content.get('unique_characteristics', []),
-                "contaminationProfile": ai_content.get('contamination_profile', '')
+                "focus": ai_content.get('technicalFocus', ''),
+                "uniqueCharacteristics": ai_content.get('uniqueCharacteristics', []),
+                "contaminationProfile": ai_content.get('contaminationProfile', '')
             },
             "microscopy": {
-                "parameters": ai_content.get('microscopy_parameters', ''),
-                "qualityMetrics": ai_content.get('quality_metrics', '')
+                "parameters": ai_content.get('microscopyParameters', ''),
+                "qualityMetrics": ai_content.get('qualityMetrics', '')
             },
             "generation": {
                 "method": "frontmatter_integrated_generation",

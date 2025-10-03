@@ -1,0 +1,175 @@
+# Industry Tags Examples for Materials.yaml
+# Use this as a template for adding industryTags to materials
+
+# EXAMPLE 1: Aluminum (Metal - Common Industrial)
+Aluminum:
+  material_metadata:
+    industryTags:
+      - Aerospace
+      - Automotive
+      - Construction
+      - Electronics Manufacturing
+      - Food and Beverage Processing
+      - Marine
+      - Packaging
+      - Rail Transport
+      - Renewable Energy
+
+# EXAMPLE 2: Stainless Steel 316 (Metal - High Performance)
+Stainless Steel 316:
+  material_metadata:
+    industryTags:
+      - Chemical Processing
+      - Food and Beverage Processing
+      - Marine
+      - Medical Devices
+      - Oil & Gas
+      - Paper and Pulp
+      - Pharmaceutical
+      - Water Treatment
+
+# EXAMPLE 3: Granite (Stone - Architectural)
+Granite:
+  material_metadata:
+    industryTags:
+      - Architecture
+      - Construction
+      - Countertops and Surfaces
+      - Memorial and Monument
+      - Restoration and Conservation
+
+# EXAMPLE 4: Oak (Wood - Furniture/Construction)
+Oak:
+  material_metadata:
+    industryTags:
+      - Furniture Manufacturing
+      - Construction
+      - Flooring
+      - Wine and Spirits
+      - Architecture
+      - Restoration and Conservation
+
+# EXAMPLE 5: Carbon Fiber Reinforced Polymer (Composite - High Performance)
+Carbon Fiber Reinforced Polymer:
+  material_metadata:
+    industryTags:
+      - Aerospace
+      - Automotive
+      - Marine
+      - Renewable Energy
+      - Sporting Goods
+      - Defense
+
+# EXAMPLE 6: Borosilicate Glass (Glass - Laboratory/Industrial)
+Borosilicate Glass:
+  material_metadata:
+    industryTags:
+      - Laboratory Equipment
+      - Pharmaceutical
+      - Chemical Processing
+      - Food and Beverage Processing
+      - Optics
+      - Electronics Manufacturing
+
+# EXAMPLE 7: Kevlar (Synthetic - High Performance)
+Kevlar:
+  material_metadata:
+    industryTags:
+      - Aerospace
+      - Automotive
+      - Defense
+      - Personal Protective Equipment
+      - Marine
+      - Sporting Goods
+
+# EXAMPLE 8: Titanium (Metal - Medical/Aerospace)
+Titanium:
+  material_metadata:
+    industryTags:
+      - Aerospace
+      - Medical Devices
+      - Chemical Processing
+      - Marine
+      - Defense
+      - Oil & Gas
+      - Sporting Goods
+
+# EXAMPLE 9: Silicon (Semiconductor)
+Silicon:
+  material_metadata:
+    industryTags:
+      - Semiconductor Manufacturing
+      - Electronics Manufacturing
+      - Solar Energy
+      - Optics
+
+# EXAMPLE 10: Rubber (Elastomer - Industrial)
+Rubber:
+  material_metadata:
+    industryTags:
+      - Automotive
+      - Construction
+      - Electronics Manufacturing
+      - Medical Devices
+      - Oil & Gas
+      - Sealing and Gaskets
+
+# REFERENCE: Available Application Types from Categories.yaml
+# Use these as the basis for industryTags (they match our application system)
+#
+# Core Industries:
+# - Aerospace
+# - Architecture
+# - Automotive
+# - Chemical Processing
+# - Construction
+# - Defense
+# - Electronics Manufacturing
+# - Food and Beverage Processing
+# - Furniture Manufacturing
+# - Laboratory Equipment
+# - Marine
+# - Medical Devices
+# - Memorial and Monument
+# - Oil & Gas
+# - Optics
+# - Packaging
+# - Paper and Pulp
+# - Personal Protective Equipment
+# - Pharmaceutical
+# - Power Generation
+# - Rail Transport
+# - Renewable Energy
+# - Restoration and Conservation
+# - Semiconductor Manufacturing
+# - Solar Energy
+# - Sporting Goods
+# - Water Treatment
+# - Wine and Spirits
+#
+# Specialized:
+# - Countertops and Surfaces
+# - Flooring
+# - Sealing and Gaskets
+# - Tooling and Dies
+
+# IMPLEMENTATION NOTES:
+# 1. Each material should have 5-10 industryTags
+# 2. Tags should match applicationTypeDefinitions from Categories.yaml
+# 3. Order by relevance (most common applications first)
+# 4. Consider both current uses and laser cleaning potential
+# 5. Be specific but comprehensive
+
+# VALIDATION RULES:
+# - All tags must be from the approved list above
+# - Minimum 3 tags, maximum 15 tags per material
+# - Each tag must be a valid application type
+# - Format: YAML list with proper indentation
+
+# RESEARCH APPROACH:
+# For each material, consider:
+# 1. Common industrial applications
+# 2. Specialized uses requiring laser cleaning
+# 3. Regulatory/compliance drivers (medical, food, etc.)
+# 4. Material properties suggesting applications
+# 5. Cross-reference with existing regulatoryStandards if available

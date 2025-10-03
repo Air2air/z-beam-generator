@@ -1,0 +1,269 @@
+name: Granite
+category: Stone
+subcategory: Granite
+title: Granite Laser Cleaning
+description: Laser cleaning parameters for Alabaster
+materialProperties:
+  density:
+    value: 2.65
+    unit: g/cm³
+    confidence: 95
+    description: Average density of granite at room temperature
+    min: 1.5
+    max: 3.4
+  meltingPoint:
+    value: 1215
+    unit: °C
+    confidence: 90
+    description: Average melting point of granite composition
+    min: null
+    max: null
+  thermalConductivity:
+    value: 2.9
+    unit: W/m·K
+    confidence: 88
+    description: Thermal conductivity at room temperature
+    min: 0.2
+    max: 8
+  hardness:
+    value: 6.5
+    unit: Mohs
+    confidence: 92
+    description: Mohs hardness scale for granite
+    min: 1
+    max: 7
+  youngsModulus:
+    value: 55
+    unit: GPa
+    confidence: 85
+    description: Young's modulus of elasticity
+    min: 10
+    max: 100
+  thermalExpansion:
+    value: 8.0
+    unit: 10^-6/°C
+    confidence: 85
+    description: Coefficient of thermal expansion
+    min: 3
+    max: 25
+  thermalDiffusivity:
+    value: 1.3
+    unit: mm²/s
+    confidence: 82
+    description: Thermal diffusivity at 20°C
+    min: 0.2
+    max: 2.5
+  specificHeat:
+    value: 0.79
+    unit: kJ/kg·K
+    confidence: 87
+    description: Specific heat capacity at room temperature
+    min: 600
+    max: 1200
+  compressiveStrength:
+    value: 200
+    unit: MPa
+    confidence: 88
+    description: Uniaxial compressive strength
+    min: null
+    max: null
+  absorptionCoefficient:
+    value: 0.85
+    unit: dimensionless
+    confidence: 80
+    description: Optical absorption coefficient for common laser wavelengths
+    min: null
+    max: null
+  reflectivity:
+    value: 0.15
+    unit: dimensionless
+    confidence: 82
+    description: Surface reflectivity at 1064 nm wavelength
+    min: null
+    max: null
+  ablationThreshold:
+    value: 2.5
+    unit: J/cm²
+    confidence: 85
+    description: Laser ablation threshold for nanosecond pulses at 1064 nm
+    min: null
+    max: null
+  porosity:
+    value: 0.8
+    unit: '%'
+    confidence: 90
+    description: Average porosity of granite
+    min: null
+    max: null
+  chemicalStability:
+    value: 95
+    unit: '% resistance'
+    confidence: 92
+    description: Chemical stability against common environmental agents
+    min: null
+    max: null
+applications:
+- Manufacturing
+machineSettings:
+  powerRange:
+    value: 100
+    unit: W
+    confidence: 92
+    description: Optimal average power for granite surface cleaning without thermal damage
+    min: 80
+    max: 120
+  wavelength:
+    value: 1064
+    unit: nm
+    confidence: 88
+    description: Near-infrared wavelength optimal for granite mineral absorption
+    min: 532
+    max: 1064
+  spotSize:
+    value: 100
+    unit: μm
+    confidence: 84
+    description: Beam spot diameter for precise cleaning of granite surface features
+    min: 50
+    max: 200
+  repetitionRate:
+    value: 50
+    unit: kHz
+    confidence: 87
+    description: Optimal repetition rate for efficient cleaning coverage and thermal management
+    min: 20
+    max: 100
+  pulseWidth:
+    value: 10
+    unit: ns
+    confidence: 85
+    description: Nanosecond pulse duration for effective contaminant removal without substrate damage
+    min: 5
+    max: 20
+  scanSpeed:
+    value: 500
+    unit: mm/s
+    confidence: 86
+    description: Optimal scanning speed for uniform cleaning coverage
+    min: 200
+    max: 1000
+  energyDensity:
+    value: 12.7
+    unit: J/cm²
+    confidence: 89
+    description: Fluence threshold for effective contaminant removal from granite
+    min: 8
+    max: 16
+  overlapRatio:
+    value: 50
+    unit: '%'
+    confidence: 83
+    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
+    min: 30
+    max: 70
+  passCount:
+    value: 3
+    unit: passes
+    confidence: 85
+    description: Recommended number of passes for complete contaminant removal
+    min: 1
+    max: 5
+  laserType:
+    value: Nd:YAG
+    unit: n/a
+    confidence: 90
+    description: Recommended laser type for granite cleaning applications
+    min: null
+    max: null
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author:
+  id: 2
+  name: Alessandro Moretti
+  sex: m
+  title: Ph.D.
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  image: /images/author/alessandro-moretti.jpg
+images:
+  hero:
+    alt: Granite surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/granite-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Granite surface after laser cleaning showing detailed surface structure
+    url: /images/material/granite-laser-cleaning-micro.jpg
+environmentalImpact:
+- benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+  sustainabilityBenefit: ''
+- benefit: Water Usage Reduction
+  description: Dry process requires no water
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+- benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+outcomeMetrics:
+- metric: Contaminant Removal Efficiency
+  description: Percentage of target contaminants successfully removed from surface
+  measurementMethods:
+  - Before/after microscopy
+  - Chemical analysis
+  - Mass spectrometry
+  typicalRanges: 95-99.9% depending on application and material
+  factorsAffecting:
+  - Contamination type
+  - Adhesion strength
+  - Surface geometry
+  units: []
+- metric: Processing Speed
+  description: Rate of surface area processed per unit time
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- metric: Surface Quality Preservation
+  description: Maintenance of original surface characteristics after cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+- metric: Thermal Damage Avoidance
+  description: Prevention of heat-related material alterations during cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+caption:
+  beforeText: At 500x magnification, the granite surface is obscured by a complex contamination layer. A discontinuous film,
+    ranging from 5 to 50 micrometers in thickness, coats the crystalline matrix. This layer consists of embedded particulate
+    matter, such as carbon soot and fine silicates, within a matrix of hydrocarbon deposits and biological growth. The contaminants
+    fill the natural micro-fissures and pores of the stone, creating a textured, uneven topography that masks the granite's
+    intrinsic mineralogy and compromises its surface integrity.
+  afterText: Following laser cleaning, microscopic analysis at 500x reveals a complete restoration of the granite's intrinsic
+    surface. The contamination layer has been entirely removed via ablation, exposing the clean, interlocking crystals of
+    quartz, feldspar, and mica. The stone's original micro-texture is now fully visible, with grain boundaries and natural
+    porosity clearly defined and free of foreign material. The process has effectively eliminated subsurface contaminants
+    without inducing micro-fractures or thermal alteration to the mineral lattice. This results in a surface with restored
+    physical and aesthetic properties, characterized by its natural composition and minimal residual reflectivity of approximately
+    0.15 at 1064 nm.

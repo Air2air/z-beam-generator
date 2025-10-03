@@ -175,13 +175,13 @@ Ensure all content is scientifically accurate but prioritize clarity and readabi
             raise ValueError(f"AFTER_TEXT too short for {material_name} - minimum {min_length} characters for basic content")
         
         return {
-            'before_text': before_text,
-            'after_text': after_text,
-            'technical_focus': 'surface_analysis',
-            'unique_characteristics': [f'{material_name.lower()}_specific'],
-            'contamination_profile': f'{material_name.lower()} surface contamination',
-            'microscopy_parameters': f'Microscopic analysis of {material_name.lower()}',
-            'quality_metrics': 'Surface improvement analysis'
+            'beforeText': before_text,
+            'afterText': after_text,
+            'technicalFocus': 'surface_analysis',
+            'uniqueCharacteristics': [f'{material_name.lower()}_specific'],
+            'contaminationProfile': f'{material_name.lower()} surface contamination',
+            'microscopyParameters': f'Microscopic analysis of {material_name.lower()}',
+            'qualityMetrics': 'Surface improvement analysis'
         }
 
     def generate(

@@ -56,10 +56,8 @@ template: |
     content: Comprehensive {subject_lowercase} laser cleaning guide using optimal wavelength technology. Professional restoration methods for {category} preservation and industrial applications.
   - property: og:type
     content: article
-  - property: og:image
-    content: /images/{subject_slug}-laser-cleaning-hero.jpg
-  - property: og:image:alt
-    content: {subject} laser cleaning process showing precision {category} restoration and surface treatment
+  content: /images/material/{subject_slug}-laser-cleaning-hero.jpg
+  - name: og:image:alt
   - property: og:image:width
     content: '1200'
   - property: og:image:height
@@ -84,7 +82,7 @@ template: |
   - name: twitter:description
     content: Professional {subject_lowercase} laser cleaning using optimal wavelength technology. Complete guide for {category} restoration, heritage conservation, and precision surface treatment.
   - name: twitter:image
-    content: /images/{subject_slug}-laser-cleaning-hero.jpg
+    content: /images/material/{subject_slug}-laser-cleaning-hero.jpg
   - name: twitter:image:alt
     content: {subject} {category} laser cleaning technical guide
   - name: twitter:site

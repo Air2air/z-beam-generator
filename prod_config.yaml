@@ -20,6 +20,23 @@ API:
   MAX_CONTENT_LENGTH: 5000
   # Use full prompt complexity
   USE_SIMPLE_PROMPTS: false
+  
+  # API Response Caching Configuration
+  RESPONSE_CACHE:
+    # Enable response caching to reduce costs and improve performance
+    enabled: true
+    # Cache storage location (absolute path or relative to project root)
+    storage_location: "/tmp/z-beam-response-cache"
+    # Time-to-live for cached responses (seconds)
+    # 86400 = 24 hours, 604800 = 7 days, 2592000 = 30 days
+    ttl_seconds: 86400
+    # Maximum cache size (megabytes) before evicting oldest entries
+    max_size_mb: 1000
+    # Cache key strategy:
+    #   - prompt_hash: Cache by prompt only (most permissive, highest hit rate)
+    #   - prompt_hash_with_model: Cache by prompt + model + temperature (recommended)
+    #   - full_request_hash: Cache by entire request (most strict, lowest hit rate)
+    key_strategy: "prompt_hash_with_model"
 
 # Production Data Settings
 TEST_DATA:

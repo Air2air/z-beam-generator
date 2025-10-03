@@ -61,7 +61,7 @@
   "image": [
     {
       "@type": "ImageObject",
-      "url": "/images/aluminum-laser-cleaning-hero.jpg",
+      "url": "/images/material/aluminum-laser-cleaning-hero.jpg",
       "name": "Aluminum Laser Cleaning Before/After Comparison",
       "caption": "Split-view workbench photograph displaying Aluminum component before and after laser cleaning treatment",
       "description": "High-resolution dual-panel photograph showing an Aluminum component processed with 1064nm wavelength, 1.0-10 J/cm² fluence, demonstrating complete contamination removal while preserving material integrity",
@@ -73,7 +73,7 @@
     },
     {
       "@type": "ImageObject",
-      "url": "/images/aluminum-laser-cleaning-micro.jpg",
+      "url": "/images/material/aluminum-laser-cleaning-micro.jpg",
       "name": "Aluminum Surface Microstructure Analysis",
       "caption": "SEM images showing Aluminum surface quality before and after laser treatment",
       "description": "Comparative scanning electron micrographs displaying surface microstructure processed with 1064nm wavelength, 1.0-10 J/cm² fluence, verified at 1000x magnification",

@@ -1,0 +1,277 @@
+name: Platinum
+category: Metal
+subcategory: Platinum
+title: Platinum Laser Cleaning
+description: Laser cleaning parameters for Aluminum
+materialProperties:
+  density:
+    value: 21.45
+    unit: g/cm³
+    confidence: 98
+    description: Density of pure platinum at 20°C
+    min: 0.53
+    max: 22.6
+  meltingPoint:
+    value: 1768
+    unit: °C
+    confidence: 97
+    description: Melting point of pure platinum
+    min: null
+    max: null
+  thermalConductivity:
+    value: 71.6
+    unit: W/m·K
+    confidence: 95
+    description: Thermal conductivity at 20°C
+    min: 6.0
+    max: 429.0
+  tensileStrength:
+    value: 125
+    unit: MPa
+    confidence: 89
+    description: Tensile strength of annealed platinum
+    min: 3.0
+    max: 3000.0
+  hardness:
+    value: 40
+    unit: HV
+    confidence: 88
+    description: Vickers hardness of annealed platinum
+    min: 0.5
+    max: 3500
+  youngsModulus:
+    value: 168
+    unit: GPa
+    confidence: 93
+    description: Young's modulus of elasticity
+    min: 5
+    max: 411
+  thermalExpansion:
+    value: 8.8
+    unit: μm/m·K
+    confidence: 92
+    description: Coefficient of linear thermal expansion (20-100°C)
+    min: 0.5
+    max: 29.1
+  thermalDiffusivity:
+    value: 24.9
+    unit: mm²/s
+    confidence: 90
+    description: Thermal diffusivity at room temperature
+    min: 0.2
+    max: 174
+  specificHeat:
+    value: 0.133
+    unit: J/g·K
+    confidence: 94
+    description: Specific heat capacity at 20°C
+    min: 100
+    max: 900
+  reflectivity:
+    value: 73
+    unit: '%'
+    confidence: 85
+    description: Reflectivity at 1064 nm (common laser wavelength)
+    min: null
+    max: null
+  absorptionCoefficient:
+    value: 12000000.0
+    unit: m⁻¹
+    confidence: 82
+    description: Absorption coefficient at 1064 nm wavelength
+    min: null
+    max: null
+  ablationThreshold:
+    value: 2.8
+    unit: J/cm²
+    confidence: 80
+    description: Estimated laser ablation threshold for nanosecond pulses at 1064 nm
+    min: null
+    max: null
+  oxidationResistance:
+    value: Excellent
+    unit: qualitative
+    confidence: 96
+    description: Resistance to oxidation at high temperatures
+    min: null
+    max: null
+  crystallineStructure:
+    value: FCC
+    unit: crystal system
+    confidence: 98
+    description: Face-centered cubic crystal structure
+    min: null
+    max: null
+  electricalResistivity:
+    value: 10.6
+    unit: μΩ·cm
+    confidence: 95
+    description: Electrical resistivity at 20°C
+    min: null
+    max: null
+applications:
+- Restoration
+- Nuclear
+- Marine
+machineSettings:
+  powerRange:
+    value: 90
+    unit: W
+    confidence: 92
+    description: Optimal average power for Platinum oxide and contaminant removal
+    min: 70
+    max: 120
+  wavelength:
+    value: 1064
+    unit: nm
+    confidence: 88
+    description: Near-IR wavelength for optimal absorption in Platinum surface contaminants
+    min: 532
+    max: 1064
+  spotSize:
+    value: 80
+    unit: μm
+    confidence: 84
+    description: Beam spot diameter for precise cleaning with adequate energy density
+    min: 50
+    max: 150
+  repetitionRate:
+    value: 50
+    unit: kHz
+    confidence: 87
+    description: Optimal repetition rate for efficient cleaning coverage and thermal management
+    min: 20
+    max: 100
+  pulseWidth:
+    value: 12
+    unit: ns
+    confidence: 85
+    description: Nanosecond pulse duration for efficient contaminant ablation without substrate damage
+    min: 8
+    max: 20
+  scanSpeed:
+    value: 500
+    unit: mm/s
+    confidence: 86
+    description: Optimal scanning speed for uniform cleaning coverage
+    min: 300
+    max: 800
+  fluenceThreshold:
+    value: 2.5
+    unit: J/cm²
+    confidence: 90
+    description: Minimum fluence required for effective contaminant removal from Platinum
+    min: 1.8
+    max: 4.0
+  overlapRatio:
+    value: 50
+    unit: '%'
+    confidence: 83
+    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
+    min: 40
+    max: 70
+  passCount:
+    value: 3
+    unit: passes
+    confidence: 85
+    description: Recommended number of passes for complete contaminant removal
+    min: 2
+    max: 5
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author:
+  id: 4
+  name: Todd Dunning
+  sex: m
+  title: MA
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  image: /images/author/todd-dunning.jpg
+images:
+  hero:
+    alt: Platinum surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/platinum-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Platinum surface after laser cleaning showing detailed surface structure
+    url: /images/material/platinum-laser-cleaning-micro.jpg
+environmentalImpact:
+- benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+  sustainabilityBenefit: ''
+- benefit: Water Usage Reduction
+  description: Dry process requires no water
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+- benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+outcomeMetrics:
+- metric: Contaminant Removal Efficiency
+  description: Percentage of target contaminants successfully removed from surface
+  measurementMethods:
+  - Before/after microscopy
+  - Chemical analysis
+  - Mass spectrometry
+  typicalRanges: 95-99.9% depending on application and material
+  factorsAffecting:
+  - Contamination type
+  - Adhesion strength
+  - Surface geometry
+  units: []
+- metric: Processing Speed
+  description: Rate of surface area processed per unit time
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- metric: Surface Quality Preservation
+  description: Maintenance of original surface characteristics after cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+- metric: Thermal Damage Avoidance
+  description: Prevention of heat-related material alterations during cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+caption:
+  beforeText: At 500x magnification, the platinum surface is obscured by a non-uniform contamination layer, typically 5-20
+    µm thick. This layer exhibits a complex topography of particulate matter, amorphous deposits, and localized corrosion
+    products. The underlying platinum's metallic luster is absent, replaced by a textured, matte appearance. Crystalline structures
+    and micro-fissures are visible within the contamination, indicating a compromised surface that masks the substrate's intrinsic
+    properties.
+  afterText: 'Laser cleaning restores the platinum surface to its native state. The contamination layer is completely removed,
+    revealing the pristine, faceted grain structure of the FCC crystalline lattice. The surface now displays a characteristic
+    metallic luster with clearly defined grain boundaries.
+
+
+    This process effectively eliminates micro-fissures and particulate embedment without inducing surface melting or topographical
+    damage, as confirmed by the preservation of original micro-features. The reflectivity is restored to the base metal''s
+    nominal 73% at 1064 nm.
+
+
+    The result is a geometrically intact surface with no measurable loss of substrate material. The cleaning threshold is
+    precisely controlled to remain below platinum''s ablation threshold of 2.8 J/cm², ensuring the material''s integrity and
+    its excellent oxidation resistance are fully maintained.'

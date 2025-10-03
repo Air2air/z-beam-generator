@@ -2,7 +2,7 @@ name: Silver
 category: Metal
 subcategory: Silver
 title: Silver Laser Cleaning
-description: Laser cleaning parameters for Aluminum
+description: Laser cleaning parameters for Silver
 materialProperties:
   density:
     value: 10.49
@@ -11,207 +11,205 @@ materialProperties:
     description: Density of pure silver at 20°C
     min: 0.53
     max: 22.6
+  meltingPoint:
+    value: 961.78
+    unit: °C
+    confidence: 97
+    description: Melting point of pure silver
+    min: null
+    max: null
   thermalConductivity:
-    value: 429.0
+    value: 429
     unit: W/m·K
     confidence: 95
-    description: Thermal conductivity at 20°C - highest of all metals
+    description: Thermal conductivity at 20°C - highest of all pure metals
     min: 6.0
     max: 429.0
   tensileStrength:
-    value: 170.0
+    value: 125
     unit: MPa
-    confidence: 89
-    description: Tensile strength of annealed silver
-    min: 0
-    max: 1363.6
-  hardness:
-    value: 25.0
-    unit: HV
     confidence: 88
+    description: Tensile strength of annealed silver
+    min: 3.0
+    max: 3000.0
+  hardness:
+    value: 25
+    unit: HV
+    confidence: 85
     description: Vickers hardness of annealed silver
-    min: 0
-    max: 3772.91
+    min: 0.5
+    max: 3500
   youngsModulus:
-    value: 83.0
+    value: 83
     unit: GPa
-    confidence: 93
+    confidence: 92
     description: Young's modulus of elasticity
-    min: 0
-    max: 579.82
+    min: 5
+    max: 411
   thermalExpansion:
     value: 18.9
     unit: μm/m·K
     confidence: 92
     description: Coefficient of linear thermal expansion at 20°C
-    min: 1.7
-    max: 34.9
-  thermalDiffusivity:
-    value: 165.63
-    unit: mm²/s
-    confidence: 90
-    description: Thermal diffusivity at room temperature
-    min: 0
-    max: 191.376
+    min: 0.5
+    max: 29.1
   specificHeat:
-    value: 232.0
-    unit: J/kg·K
-    confidence: 91
+    value: 0.235
+    unit: J/g·K
+    confidence: 90
     description: Specific heat capacity at 20°C
-    min: 0
-    max: 1994.6
+    min: 100
+    max: 900
+  thermalDiffusivity:
+    value: 174
+    unit: mm²/s
+    confidence: 88
+    description: Thermal diffusivity at 20°C
+    min: 0.2
+    max: 174
   reflectivity:
     value: 97
     unit: '%'
-    confidence: 96
-    description: Visible light reflectivity at 600 nm wavelength
+    confidence: 94
+    description: Visible light reflectivity at 550 nm wavelength
     min: null
     max: null
   absorptionCoefficient:
     value: 3.2
     unit: ×10⁵ cm⁻¹
     confidence: 85
-    description: Absorption coefficient for 1064 nm laser wavelength
+    description: Absorption coefficient at 532 nm laser wavelength
     min: null
     max: null
   ablationThreshold:
-    value: 0.8
+    value: 0.45
     unit: J/cm²
     confidence: 82
-    description: Approximate laser ablation threshold for nanosecond pulses at 1064 nm
+    description: Approximate laser ablation threshold for nanosecond pulses at 1064
+      nm
+    min: null
+    max: null
+  oxidationResistance:
+    value: Low
+    unit: qualitative
+    confidence: 90
+    description: Forms silver sulfide tarnish but maintains metallic surface integrity
     min: null
     max: null
   crystallineStructure:
     value: FCC
-    unit: none
+    unit: crystal system
     confidence: 98
     description: Face-centered cubic crystal structure
     min: null
     max: null
   electricalConductivity:
-    value: 63
+    value: 63.0
     unit: MS/m
-    confidence: 97
+    confidence: 96
     description: Electrical conductivity at 20°C - highest of all metals
     min: null
     max: null
-  oxidationResistance:
-    value: High
-    unit: qualitative
-    confidence: 90
-    description: Resistance to oxidation in air at room temperature
-    min: null
-    max: null
-  laserAbsorption:
-    confidence: 0.7
-    max: 100.0
-    min: 0.02
-    source: default_from_category_range
-    unit: cm⁻¹
-    value: 3.8
-  laserReflectivity:
-    confidence: 0.7
-    max: 98.0
-    min: 5.0
-    source: default_from_category_range
-    unit: '%'
-    value: 97.0
-  thermalDestructionPoint:
-    confidence: 0.7
-    max: 3422.0
-    min: -38.8
-    source: default_from_category_range
-    unit: °C
-    value: 1234.93
-  thermalDestructionType:
-    confidence: 0.8
-    source: category_default
-    value: 1234.93
 applications:
-- 'Oil and Gas: Industrial cleaning and maintenance for oil and gas equipment'
-- 'Nuclear: Decontamination and surface cleaning in nuclear facilities'
-- 'Manufacturing: Industrial surface preparation and contamination removal'
-- 'Food Processing: Sanitary surface cleaning for food processing equipment'
+- Electronics Manufacturing
+- Aerospace
+- Medical Devices
+- Cultural Heritage
+- Automotive
+- Energy Sector
+- Jewelry Manufacturing
+- Food Processing
+- Marine Electronics
+- Telecommunications
 machineSettings:
   powerRange:
-    value: 100
+    value: 15
     unit: W
-    confidence: 92
-    description: Optimal average power for Silver oxide removal without substrate damage
-    min: 80
-    max: 120
+    confidence: 90
+    description: Optimal average power for Silver oxide removal without substrate
+      damage
+    min: 8
+    max: 25
   wavelength:
-    value: 1064
+    value: 532
     unit: nm
-    confidence: 88
-    description: Near-IR wavelength with good Silver absorption for thermal cleaning
+    confidence: 92
+    description: Green wavelength optimized for Silver's high reflectivity in IR and
+      better absorption in visible spectrum
     min: 355
-    max: 10640
+    max: 1064
   spotSize:
     value: 50
     unit: μm
-    confidence: 84
-    description: Optimal spot diameter for precision cleaning
+    confidence: 87
+    description: Beam spot diameter for precise cleaning of Silver surfaces
     min: 30
     max: 100
   repetitionRate:
-    value: 100
+    value: 30
     unit: kHz
-    confidence: 87
-    description: High repetition rate for efficient surface cleaning
-    min: 50
-    max: 200
-  pulseWidth:
-    value: 10
-    unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for controlled thermal ablation
+    description: Optimal repetition rate for efficient cleaning with thermal management
+    min: 20
+    max: 50
+  pulseWidth:
+    value: 8
+    unit: ns
+    confidence: 88
+    description: Nanosecond pulse duration for controlled ablation of Silver tarnish
+      layers
     min: 5
-    max: 20
+    max: 15
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 86
-    description: Scan speed for efficient coverage without overheating
-    min: 200
-    max: 1000
+    confidence: 84
+    description: Optimal scanning speed for uniform cleaning coverage
+    min: 300
+    max: 800
   fluenceThreshold:
-    value: 2.5
+    value: 1.2
     unit: J/cm²
     confidence: 89
-    description: Threshold fluence for Silver oxide removal
-    min: 1.5
-    max: 4.0
+    description: Minimum fluence required for effective Silver oxide removal
+    min: 0.8
+    max: 2.0
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 83
-    description: Optimal overlap between adjacent scan lines
-    min: 30
+    confidence: 86
+    description: Optimal beam overlap for uniform cleaning without excessive thermal
+      buildup
+    min: 40
     max: 70
   passCount:
-    value: 3
+    value: 2
     unit: passes
-    confidence: 82
-    description: Number of passes for complete contamination removal
+    confidence: 83
+    description: Recommended number of passes for complete tarnish removal
     min: 1
-    max: 5
-  laserType:
-    value: Nd:YAG
-    unit: n/a
-    confidence: 90
-    description: Solid-state laser suitable for metal cleaning applications
-    min: null
-    max: null
+    max: 4
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
 - IEC 60825 - Safety of Laser Products
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author:
+  id: 4
+  name: Todd Dunning
+  sex: m
+  title: MA
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  image: /images/author/todd-dunning.jpg
 images:
   hero:
     alt: Silver surface undergoing laser cleaning showing precise contamination removal
-    url: /images/silver-laser-cleaning-hero.jpg
+    url: /images/material/silver-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Silver surface after laser cleaning showing detailed
+      surface structure
+    url: /images/material/silver-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -221,57 +219,39 @@ environmentalImpact:
   - Medical
   - Nuclear
   quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+  sustainabilityBenefit: ''
+- benefit: Water Usage Reduction
+  description: Dry process requires no water
+  applicableIndustries: []
+  quantifiedBenefits: ''
   sustainabilityBenefit: Significant water conservation in industrial processes
 - benefit: Energy Efficiency
   description: Focused energy delivery with minimal waste heat
   applicableIndustries: []
-  quantifiedBenefits: ' sustainabilityBenefit: '
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
 - benefit: Air Quality Improvement
   description: Eliminates volatile organic compounds from chemical cleaning
   applicableIndustries: []
-  quantifiedBenefits: ' sustainabilityBenefit: '
-applicationTypes:
-- type: Precision Cleaning
-  description: High-precision removal of microscopic contaminants and residues
-  industries:
-  - Semiconductor
-  - MEMS
-  - Optics
-  - Medical Devices
-  qualityMetrics:
-  - Particle count reduction
-  - Surface roughness maintenance
-  - Chemical purity
-  typicalTolerances: Sub-micron accuracy with minimal substrate impact
-  objectives: []
-- type: Surface Preparation
-  description: Preparation of surfaces for bonding, coating, or further processing
-  industries:
-  - Aerospace
-  - Automotive
-  - Manufacturing
-  - Construction
-  qualityMetrics:
-  - Surface energy
-  - Cleanliness level
-  - Roughness profile
-  typicalTolerances: ' objectives: - Adhesion enhancement - Contamination removal - Surface activation - type: Restoration
-    Cleaning description: Gentle removal of accumulated contamination while preserving original material industries: - Cultural
-    Heritage - Architecture - Art Conservation - Historical Restoration qualityMetrics: [] typicalTolerances: '
-  objectives: []
-- type: Contamination Removal
-  description: General removal of unwanted surface deposits and contaminants
-  industries:
-  - Manufacturing
-  - Marine
-  - Oil & Gas
-  - Power Generation
-  qualityMetrics: []
-  typicalTolerances: ' objectives: [] outcomeMetrics: - metric: Contaminant Removal Efficiency description: Percentage of
-    target contaminants successfully removed from surface measurementMethods: - Before/after microscopy - Chemical analysis
-    - Mass spectrometry typicalRanges: 95-99.9% depending on application and material factorsAffecting: - Contamination type
-    - Adhesion strength - Surface geometry units: [] - metric: Processing Speed description: Rate of surface area processed
-    per unit time measurementMethods: [] typicalRanges: '
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+outcomeMetrics:
+- metric: Contaminant Removal Efficiency
+  description: Percentage of target contaminants successfully removed from surface
+  measurementMethods:
+  - Before/after microscopy
+  - Chemical analysis
+  - Mass spectrometry
+  typicalRanges: 95-99.9% depending on application and material
+  factorsAffecting:
+  - Contamination type
+  - Adhesion strength
+  - Surface geometry
+  units: []
+- metric: Processing Speed
+  description: Rate of surface area processed per unit time
+  measurementMethods: []
+  typicalRanges: ''
   factorsAffecting: []
   units:
   - m²/h
@@ -280,41 +260,37 @@ applicationTypes:
 - metric: Surface Quality Preservation
   description: Maintenance of original surface characteristics after cleaning
   measurementMethods: []
-  typicalRanges: ' factorsAffecting: [] units: [] - metric: Thermal Damage Avoidance description: Prevention of heat-related
-    material alterations during cleaning measurementMethods: [] typicalRanges: '
+  typicalRanges: ''
   factorsAffecting: []
   units: []
-author:
-  id: 4
-  name: Todd Dunning
-  sex: m
-  title: MA
-  country: United States (California)
-  expertise: Optical Materials for Laser Systems
-  image: /images/author/todd-dunning.jpg
-metadata:
-  lastUpdated: '2025-09-30T21:52:44.960885'
-  captionIntegrated: true
+- metric: Thermal Damage Avoidance
+  description: Prevention of heat-related material alterations during cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
 caption:
-  beforeText: 'At 500x magnification, the silver surface is obscured by a non-uniform contamination layer, approximately 5-15
-    micrometers thick. This layer consists of agglomerated particles, primarily carbonaceous soot and sulfide-based tarnish
-    (silver sulfide). The tarnish manifests as a dark, discontinuous film, while the particulate contamination appears as
-    a topographical landscape of fine, irregularly shaped deposits.
+  beforeText: At 500x magnification, the silver surface is obscured by a non-uniform
+    tarnish layer, primarily silver sulfide (Ag₂S). This layer measures 1-5 micrometers
+    thick and exhibits a granular, crystalline morphology. The underlying metal's
+    topography is masked by this dark, adherent scale, which creates a matte, low-reflectivity
+    surface. Micro-cracking and localized pitting are visible within the contamination,
+    indicating progressive corrosive degradation.
+  afterText: 'Laser cleaning restores the original metallic surface by selectively
+    ablating the contaminant layer. At 500x, the transformation is evident: the matte,
+    granular tarnish is completely removed, revealing the substrate''s inherent grain
+    structure and polishing lines. The surface now displays high reflectivity, with
+    laser scan tracks visible as subtle, parallel striations measuring under 2 micrometers
+    in depth.
 
 
-    The underlying silver microstructure is not visible. The contamination creates a textured, matte surface that scatters
-    light, eliminating the metal''s inherent reflectivity. The particle distribution is not even, with some areas showing
-    dense agglomeration and others revealing thinner, more translucent tarnish films that still obscure the substrate.'
-  afterText: 'Laser cleaning has completely removed the contamination layer, revealing the pristine silver substrate. The
-    surface now exhibits the characteristic grain structure of the polycrystalline metal, with clear, distinct boundaries
-    between individual crystal facets. The matte, light-scattering texture has been replaced by a smooth, highly reflective
-    surface.
-
-
-    The transformation is evident in the restoration of metallic reflectivity and the elimination of all particulate and tarnish
-    residues. The laser process has achieved this without observable surface damage, such as melting or ablation pits, leaving
-    behind a clean, metallurgically intact surface ready for further processing or application.'
-  description: Microscopic analysis of silver surface before and after laser cleaning treatment
+    This process exploits silver''s high thermal conductivity (429 W/m·K) to rapidly
+    dissipate heat, confining the laser''s energy to the surface contaminants. The
+    result is a microscopically clean interface free of chemical residues, with the
+    base metal''s FCC crystalline structure intact. No thermal distortion or melting
+    of the silver substrate is observed, preserving its mechanical integrity.'
+  description: Microscopic analysis of silver surface before and after laser cleaning
+    treatment
   alt: Microscopic view of silver surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -322,25 +298,29 @@ caption:
     - silver_specific
     contaminationProfile: silver surface contamination
   microscopy:
-    parameters: Microscopic analysis of silver
+    parameters: Microscopic analysis of Silver
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: '2025-09-30T21:52:32.408625Z'
+    timestamp: '2025-10-02T00:00:00.000000Z'
     generator: FrontmatterCaptionGenerator
-    componentType: ai_caption_frontmatter
+    componentType: template_caption
   author: Todd Dunning
   materialProperties:
     materialType: Metal
-    analysisMethod: ai_microscopy
+    analysisMethod: template_microscopy
+  imageUrl:
+    alt: Microscopic view of Silver surface after laser cleaning showing detailed
+      surface structure
+    url: /images/material/silver-laser-cleaning-micro.jpg
 tags:
 - metal
-- oil-and-gas
-- nuclear
 - manufacturing
-- food-processing
-- reflective
+- aerospace
+- automotive
+- decoating
+- oxide-removal
+- surface-preparation
+- reflective-surface
 - conductive
-- soft
-- dense
 - todd-dunning

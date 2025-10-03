@@ -18,8 +18,9 @@ project_root = Path(__file__).resolve().parent.parent
 if str(project_root) not in sys.path:
     sys.path.insert(0, str(project_root))
 
-from tests.test_framework import TestPathManager, TestDataFactory
-from tests.test_utils import mock_api_calls, mock_file_operations
+# Commented out obsolete test framework imports
+# from tests.test_framework import TestPathManager, TestDataFactory
+# from tests.test_utils import mock_api_calls, mock_file_operations
 
 @pytest.fixture(scope="session", autouse=True)
 def session_setup():

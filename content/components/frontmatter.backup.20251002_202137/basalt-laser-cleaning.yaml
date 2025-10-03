@@ -1,0 +1,254 @@
+name: Basalt
+category: Stone
+subcategory: Basalt
+title: Basalt Laser Cleaning
+description: Laser cleaning parameters for Alabaster
+materialProperties:
+  density:
+    value: 2.9
+    unit: g/cm³
+    confidence: 95
+    description: Average density of basalt rock at room temperature
+    min: 1.5
+    max: 3.4
+  meltingPoint:
+    value: 1250
+    unit: °C
+    confidence: 90
+    description: Approximate melting temperature of basalt
+    min: null
+    max: null
+  thermalConductivity:
+    value: 1.8
+    unit: W/m·K
+    confidence: 88
+    description: Thermal conductivity at room temperature
+    min: 0.2
+    max: 8
+  hardness:
+    value: 6.0
+    unit: Mohs
+    confidence: 92
+    description: Mohs hardness scale for basalt
+    min: 1
+    max: 7
+  youngsModulus:
+    value: 70
+    unit: GPa
+    confidence: 88
+    description: Elastic modulus of basalt rock
+    min: 10
+    max: 100
+  thermalExpansion:
+    value: 8.0
+    unit: 10⁻⁶/K
+    confidence: 85
+    description: Coefficient of thermal expansion
+    min: 3
+    max: 25
+  specificHeat:
+    value: 840
+    unit: J/kg·K
+    confidence: 90
+    description: Specific heat capacity at room temperature
+    min: 600
+    max: 1200
+  compressiveStrength:
+    value: 200
+    unit: MPa
+    confidence: 85
+    description: Typical compressive strength of basalt
+    min: null
+    max: null
+  absorptionCoefficient:
+    value: 0.85
+    unit: dimensionless
+    confidence: 82
+    description: Optical absorption coefficient for common laser wavelengths
+    min: null
+    max: null
+  reflectivity:
+    value: 0.15
+    unit: dimensionless
+    confidence: 80
+    description: Surface reflectivity for infrared wavelengths
+    min: null
+    max: null
+  ablationThreshold:
+    value: 2.5
+    unit: J/cm²
+    confidence: 85
+    description: Approximate laser ablation threshold for nanosecond pulses
+    min: null
+    max: null
+  porosity:
+    value: 1.5
+    unit: '%'
+    confidence: 88
+    description: Typical porosity of dense basalt
+    min: null
+    max: null
+applications:
+- Manufacturing
+machineSettings:
+  powerRange:
+    value: 90
+    unit: W
+    confidence: 92
+    description: Optimal average power for Basalt surface cleaning without thermal damage
+    min: 70
+    max: 120
+  wavelength:
+    value: 1064
+    unit: nm
+    confidence: 88
+    description: Near-IR wavelength optimized for Basalt mineral absorption
+    min: 1030
+    max: 1070
+  spotSize:
+    value: 80
+    unit: μm
+    confidence: 84
+    description: Beam spot diameter for effective cleaning resolution
+    min: 50
+    max: 120
+  repetitionRate:
+    value: 50
+    unit: kHz
+    confidence: 87
+    description: Optimal repetition rate for continuous cleaning coverage
+    min: 20
+    max: 100
+  pulseWidth:
+    value: 12
+    unit: ns
+    confidence: 85
+    description: Nanosecond pulse duration for efficient ablation of surface contaminants
+    min: 8
+    max: 20
+  scanSpeed:
+    value: 500
+    unit: mm/s
+    confidence: 86
+    description: Optimal scanning speed for uniform surface treatment
+    min: 300
+    max: 800
+  fluenceThreshold:
+    value: 2.5
+    unit: J/cm²
+    confidence: 89
+    description: Minimum fluence required for effective contaminant removal
+    min: 1.8
+    max: 4.0
+  overlapRatio:
+    value: 50
+    unit: '%'
+    confidence: 83
+    description: Optimal beam overlap for uniform cleaning coverage
+    min: 40
+    max: 70
+  passCount:
+    value: 2
+    unit: passes
+    confidence: 85
+    description: Recommended number of passes for complete cleaning
+    min: 1
+    max: 4
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author:
+  id: 2
+  name: Alessandro Moretti
+  sex: m
+  title: Ph.D.
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  image: /images/author/alessandro-moretti.jpg
+images:
+  hero:
+    alt: Basalt surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/basalt-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Basalt surface after laser cleaning showing detailed surface structure
+    url: /images/material/basalt-laser-cleaning-micro.jpg
+environmentalImpact:
+- benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+  sustainabilityBenefit: ''
+- benefit: Water Usage Reduction
+  description: Dry process requires no water
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+- benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+outcomeMetrics:
+- metric: Contaminant Removal Efficiency
+  description: Percentage of target contaminants successfully removed from surface
+  measurementMethods:
+  - Before/after microscopy
+  - Chemical analysis
+  - Mass spectrometry
+  typicalRanges: 95-99.9% depending on application and material
+  factorsAffecting:
+  - Contamination type
+  - Adhesion strength
+  - Surface geometry
+  units: []
+- metric: Processing Speed
+  description: Rate of surface area processed per unit time
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- metric: Surface Quality Preservation
+  description: Maintenance of original surface characteristics after cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+- metric: Thermal Damage Avoidance
+  description: Prevention of heat-related material alterations during cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+caption:
+  beforeText: At 500x magnification, the basalt surface is obscured by a non-uniform contamination layer, measuring 10-50
+    micrometers thick. This layer consists of embedded particulate matter, such as silica dust and metallic oxides, within
+    a matrix of carbonaceous soot and hydrocarbon deposits. The underlying basalt's micro-crystalline texture, characterized
+    by interlocking plagioclase and pyroxene crystals, is entirely masked. The contaminants fill the natural micro-fissures
+    and pores of the stone, creating a discontinuous, matte-black coating that compromises the substrate's inherent properties.
+  afterText: Laser cleaning has restored the pristine mineralogical surface. The superficial contamination layer has been
+    completely ablated, revealing the intact, interlocking crystal structure of plagioclase feldspar and pyroxene. The process
+    has effectively cleared all micro-fissures and pores, with no observable thermal damage such as melting or micro-fracturing
+    to the underlying basalt, which has a compressive strength of 200 MPa. The surface now exhibits its natural micro-roughness
+    and mineralogical contrast. The high optical absorption coefficient of basalt (0.85) allowed for efficient contaminant
+    removal at energy densities just above the 2.5 J/cm² ablation threshold, ensuring a selective process that preserved the
+    substrate. The result is a clean, well-defined interface between the different mineral phases.
+tags:
+- stone
+- manufacturing
+- insulating
+- soft
+- alessandro-moretti

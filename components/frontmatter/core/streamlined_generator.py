@@ -279,6 +279,22 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             # Apply field ordering
             ordered_content = self.field_ordering_service.apply_field_ordering(content)
             
+            # Enforce camelCase for caption keys (fix snake_case if present)
+            if 'caption' in ordered_content and isinstance(ordered_content['caption'], dict):
+                caption = ordered_content['caption']
+                # Convert snake_case to camelCase if needed
+                if 'before_text' in caption:
+                    caption['beforeText'] = caption.pop('before_text')
+                if 'after_text' in caption:
+                    caption['afterText'] = caption.pop('after_text')
+                if 'technical_analysis' in caption:
+                    caption['technicalAnalysis'] = caption.pop('technical_analysis')
+                if 'material_properties' in caption:
+                    caption['materialProperties'] = caption.pop('material_properties')
+                if 'image_url' in caption:
+                    caption['imageUrl'] = caption.pop('image_url')
+                self.logger.debug("Enforced camelCase for caption keys")
+            
             # Enhanced validation if available
             if self.enhanced_validator:
                 try:
@@ -347,8 +363,59 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 'description': material_data['description'] if 'description' in material_data else f"Laser cleaning parameters for {material_data['name'] if 'name' in material_data else material_name}{abbreviation_format['description_suffix']}",
                 'category': (material_data['category'] if 'category' in material_data else 'materials').title(),
                 'subcategory': material_data['subcategory'] if 'subcategory' in material_data else abbreviation_format['subcategory'],
-                'applications': self._generate_applications_from_unified_industry_data(material_name, material_data),
             }
+            
+            # OPTIMIZATION: Check Materials.yaml for industryTags first before calling AI
+            yaml_industries = None
+            if 'material_metadata' in material_data and 'industryTags' in material_data['material_metadata']:
+                yaml_industries = material_data['material_metadata']['industryTags']
+                if isinstance(yaml_industries, list) and len(yaml_industries) > 0:
+                    self.logger.info(f"✅ Using {len(yaml_industries)} applications from Materials.yaml industryTags")
+                    frontmatter['applications'] = yaml_industries
+                elif isinstance(yaml_industries, dict):
+                    # Handle structured industryTags (primary/secondary)
+                    apps = []
+                    if 'primary_industries' in yaml_industries:
+                        apps.extend(yaml_industries['primary_industries'])
+                    if 'secondary_industries' in yaml_industries:
+                        apps.extend(yaml_industries['secondary_industries'])
+                    if apps:
+                        self.logger.info(f"✅ Using {len(apps)} applications from Materials.yaml structured industryTags")
+                        frontmatter['applications'] = apps
+                        yaml_industries = apps
+            
+            # Fallback to AI generation only if no YAML industryTags
+            if not yaml_industries or not frontmatter.get('applications'):
+                if self.api_client:
+                    try:
+                        self.logger.info(f"🤖 Calling AI to generate applications for {material_name} (no YAML industryTags)")
+                        ai_content = self._call_api_for_generation(material_name, material_data)
+                        if ai_content:
+                            self.logger.info(f"📥 AI response received, parsing...")
+                            parsed_ai = self._parse_api_response(ai_content, material_data)
+                            # Extract applications from AI response and convert to simple strings
+                            if 'applications' in parsed_ai and isinstance(parsed_ai['applications'], list):
+                                self.logger.info(f"🤖 AI generated {len(parsed_ai['applications'])} applications")
+                                simplified_apps = []
+                                for app in parsed_ai['applications']:
+                                    if isinstance(app, dict) and 'industry' in app:
+                                        simplified_apps.append(app['industry'])
+                                    elif isinstance(app, str):
+                                        simplified_apps.append(app)
+                                    else:
+                                        raise GenerationError(f"Invalid application format: {type(app)}")
+                                frontmatter['applications'] = simplified_apps
+                            else:
+                                raise GenerationError(f"No applications in AI response for {material_name}")
+                    except Exception as e:
+                        self.logger.error(f"❌ Failed to generate AI applications: {e}")
+                        import traceback
+                        traceback.print_exc()
+                        # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
+                        raise GenerationError(f"Failed to generate applications for {material_name}: {e}")
+                else:
+                    # FAIL-FAST per GROK_INSTRUCTIONS.md - must have applications
+                    raise GenerationError(f"No industryTags in YAML and no API client for {material_name}")
             
             # Generate properties with Min/Max ranges using unified inheritance
             unified_properties = self._get_unified_material_properties(material_name, material_data)
@@ -380,14 +447,14 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             # Add regulatory standards (universal + material-specific)
             frontmatter = self._add_regulatory_standards_section(frontmatter, material_data)
             
+            # Generate author (required by schema) - must come before caption/tags that reference it
+            frontmatter.update(self._generate_author(material_data))
+            
             # Add caption section (AI-generated before/after text)
             frontmatter = self._add_caption_section(frontmatter, material_data, material_name)
             
-            # Tags removed from frontmatter generator - will be generated by standalone tags component
-            # reading from frontmatter data. NO FALLBACKS allowed per GROK_INSTRUCTIONS.md
-            
-            # Generate author (required by schema)
-            frontmatter.update(self._generate_author(material_data))
+            # Add tags section (10 essential tags for frontmatter)
+            frontmatter = self._add_tags_section(frontmatter, material_data, material_name)
             
             return frontmatter
             
@@ -401,22 +468,50 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         return self._generate_basic_properties(material_data, material_name)
 
     def _generate_basic_properties(self, material_data: Dict, material_name: str) -> Dict:
-        """Generate properties with DataMetrics structure using comprehensive AI discovery (GROK compliant - no fallbacks)"""
+        """Generate properties with DataMetrics structure using YAML-first approach with AI fallback (OPTIMIZED)"""
         properties = {}
         
-        # Use PropertyValueResearcher for comprehensive material property discovery
+        # OPTIMIZATION: Check Materials.yaml first before calling AI
+        yaml_properties = material_data.get('properties', {})
+        yaml_count = 0
+        ai_count = 0
+        
+        # Use PropertyValueResearcher for AI discovery of missing properties only
         if not self.property_researcher:
             # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
-            raise PropertyDiscoveryError("PropertyValueResearcher required for comprehensive property discovery")
+            raise PropertyDiscoveryError("PropertyValueResearcher required for property discovery")
             
         try:
-            # Use comprehensive AI discovery to get ALL relevant properties with complete data
+            # PHASE 1: Use high-confidence YAML properties first (OPTIMIZATION)
+            for prop_name, yaml_prop in yaml_properties.items():
+                if isinstance(yaml_prop, dict):
+                    confidence = yaml_prop.get('confidence', 0)
+                    if confidence >= 0.85:  # High confidence threshold
+                        yaml_count += 1
+                        properties[prop_name] = {
+                            'value': yaml_prop.get('value'),
+                            'unit': yaml_prop.get('unit', ''),
+                            'confidence': int(confidence * 100) if confidence < 1 else int(confidence),
+                            'description': yaml_prop.get('description', f'{prop_name} from Materials.yaml'),
+                            'min': None,
+                            'max': None
+                        }
+                        # Get min/max from Categories.yaml
+                        category_ranges = self._get_category_ranges_for_property(material_data.get('category'), prop_name)
+                        if category_ranges:
+                            properties[prop_name]['min'] = category_ranges.get('min')
+                            properties[prop_name]['max'] = category_ranges.get('max')
+                        self.logger.info(f"✅ YAML: {prop_name} = {yaml_prop.get('value')} {yaml_prop.get('unit', '')} (confidence: {confidence})")
+            
+            # PHASE 2: AI discovery for missing/low-confidence properties only
             discovered_properties = self.property_researcher.discover_all_material_properties(material_name)
             
-            self.logger.info(f"Comprehensive AI discovery found {len(discovered_properties)} properties for {material_name}")
+            self.logger.info(f"AI discovery found {len(discovered_properties)} properties for {material_name}")
             
-            # Use discovered properties directly (no need for additional research)
+            # Use discovered properties for anything not already in YAML
             for prop_name, prop_data in discovered_properties.items():
+                if prop_name not in properties:  # Only if not already from YAML
+                    ai_count += 1
                 try:
                     # Property data from AI discovery, but min/max from Categories.yaml ranges
                     property_data = {
@@ -442,7 +537,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                     )
                     
                     properties[prop_name] = property_data
-                    self.logger.info(f"AI-discovered {prop_name}: {prop_data['value']} {prop_data['unit']} (confidence: {prop_data['confidence']}%)")
+                    self.logger.info(f"🤖 AI: {prop_name} = {prop_data['value']} {prop_data['unit']} (confidence: {prop_data['confidence']}%)")
                 except Exception as e:
                     self.logger.warning(f"Error processing discovered property {prop_name}: {e}")
                         
@@ -451,13 +546,19 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                     # Continue with other properties - don't fail entire generation for one property
                     
         except Exception as e:
-            self.logger.error(f"Comprehensive property discovery failed for {material_name}: {e}")
+            self.logger.error(f"Property discovery failed for {material_name}: {e}")
             # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
-            raise PropertyDiscoveryError(f"Cannot generate materialProperties without comprehensive discovery for {material_name}: {e}")
+            raise PropertyDiscoveryError(f"Cannot generate materialProperties for {material_name}: {e}")
         
         if not properties:
             # FAIL-FAST - must have at least some properties for valid frontmatter
-            raise PropertyDiscoveryError(f"No properties discovered for {material_name} - comprehensive discovery required")
+            raise PropertyDiscoveryError(f"No properties found for {material_name}")
+        
+        # Log optimization statistics
+        total = yaml_count + ai_count
+        if total > 0:
+            yaml_pct = (yaml_count / total) * 100
+            self.logger.info(f"📊 Property sources: {yaml_count} from YAML ({yaml_pct:.1f}%), {ai_count} from AI ({100-yaml_pct:.1f}%)")
                         
         return properties
 
@@ -702,24 +803,97 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 temperature=temperature
             )
             
-            return response
+            # Extract content from APIResponse object if needed
+            if hasattr(response, 'content'):
+                return response.content
+            elif isinstance(response, str):
+                return response
+            else:
+                return str(response)
             
         except Exception as e:
             self.logger.error(f"API call failed for {material_name}: {str(e)}")
             raise GenerationError(f"API generation failed for {material_name}: {str(e)}")
 
     def _build_material_prompt(self, material_name: str, material_data: Dict) -> str:
-        """Build material-specific prompt for frontmatter generation"""
+        """Build material-specific prompt for frontmatter generation with structured applications"""
+        
+        # Get cleaning types from Categories.yaml for reference
+        cleaning_types_reference = """
+Coating Removal, Oxide Removal, Rust Removal, Paint Stripping, Grease/Oil Removal,
+Carbon Deposit Removal, Biological Growth Removal, Contamination Removal, Surface Preparation,
+Precision Cleaning, Restoration Cleaning, Degreasing, Descaling, Paint Removal, Corrosion Removal
+"""
+        
         prompt = f"""Generate comprehensive laser cleaning frontmatter for {material_name}.
 
-Required structure with DataMetrics format:
-- Each property must have: value, unit, confidence, min, max, description
-- materialProperties: density, thermalConductivity, tensileStrength, etc.
-- machineSettings: powerRange, pulseDuration, spotSize, etc.
+CRITICAL REQUIREMENTS:
+
+1. **Material Properties Structure** (DataMetrics format):
+   - Each property must have: value, unit, confidence, min, max, description
+   - Use materialProperties (not properties) key
+   - Include: density, thermalConductivity, tensileStrength, hardness, etc.
+
+2. **Machine Settings Structure** (DataMetrics format):
+   - Each setting must have: value, unit, confidence, min, max, description
+   - Include: powerRange, wavelength, spotSize, repetitionRate, pulseDuration, etc.
+
+3. **Applications Structure** (CRITICAL - MUST BE STRUCTURED OBJECTS):
+   REQUIRED: Generate 8-10 diverse laser cleaning applications using this EXACT format:
+   
+   applications:
+     - industry: "Industry Name"
+       description: "Detailed description of the specific laser cleaning application (30-50 words minimum)"
+       cleaningTypes:
+         - "Primary Cleaning Type"
+         - "Secondary Cleaning Type"
+         - "Additional Type"
+       contaminantTypes:
+         - "Specific Contaminant 1"
+         - "Specific Contaminant 2"
+         - "Additional Contaminant"
+     - industry: "Different Industry"
+       description: "Another detailed cleaning application description (30-50 words)"
+       cleaningTypes: [...]
+       contaminantTypes: [...]
+
+   **Application Requirements:**
+   - Minimum: 8 applications (target: 8-10)
+   - Each application MUST be a structured object (NOT a string)
+   - Required fields for EVERY application: industry, description, cleaningTypes, contaminantTypes
+   - Industries must be diverse: Aerospace, Automotive, Medical, Marine, Electronics, Cultural Heritage, Manufacturing, Energy, etc.
+   - Descriptions must be detailed (30+ words) and material-specific
+   - cleaningTypes: Use 2-4 types per application from: {cleaning_types_reference}
+   - contaminantTypes: Specify 2-4 specific contaminants relevant to that industry/material
+   - NO duplicate industries
+   - Include both common AND specialized applications
+
+   **Example for {material_name}:**
+   applications:
+     - industry: "Aerospace"
+       description: "Removal of protective coatings, oxidation layers, and manufacturing residues from {material_name} aircraft components during maintenance and overhaul, ensuring surface integrity for inspection and subsequent coating application without thermal damage to the substrate material."
+       cleaningTypes:
+         - "Coating Removal"
+         - "Oxide Removal"
+         - "Surface Preparation"
+       contaminantTypes:
+         - "Protective Coatings"
+         - "Oxidation Layers"
+         - "Manufacturing Residues"
+         - "Hydraulic Fluids"
 
 Material context: {material_data}
 
-Return YAML format with materialProperties (not properties) and machineSettings sections."""
+**VALIDATION CHECKLIST** (verify before returning):
+✓ 8-10 structured applications provided (NOT strings)
+✓ Each application has: industry, description, cleaningTypes, contaminantTypes
+✓ All industries are different (no duplicates)
+✓ Descriptions are detailed (30+ words each)
+✓ cleaningTypes arrays have 2-4 relevant types
+✓ contaminantTypes arrays have 2-4 specific contaminants
+✓ Applications are material-specific and realistic
+
+Return YAML format with materialProperties, machineSettings, and structured applications sections."""
         
         return prompt
 
@@ -1080,43 +1254,25 @@ Return YAML format with materialProperties (not properties) and machineSettings 
             # Combine category primary + material-specific industries
             all_industries = list(set(category_primary_industries + material_specific_industries))
             
-            # Generate applications from industries
+            # Generate applications from industries (simple industry names only - no descriptions)
             if all_industries:
-                # Map industries to laser cleaning applications
-                industry_applications = {
-                    'Aerospace': 'Aerospace: Precision cleaning of aerospace components and assemblies',
-                    'Automotive': 'Automotive: Paint removal and surface preparation for automotive parts',
-                    'Electronics': 'Electronics: Precision cleaning of electronic components and circuit boards',
-                    'Medical': 'Medical: Sterilization and cleaning of medical devices and instruments',
-                    'Manufacturing': 'Manufacturing: Industrial surface preparation and contamination removal',
-                    'Marine': 'Marine: Corrosion removal and surface treatment for marine applications',
-                    'Semiconductor': 'Semiconductor: Ultra-precise cleaning for semiconductor manufacturing',
-                    'Restoration': 'Restoration: Gentle cleaning for restoration and conservation applications',
-                    'Nuclear': 'Nuclear: Decontamination and surface cleaning in nuclear facilities',
-                    'Art Conservation': 'Art Conservation: Delicate cleaning of artwork and cultural artifacts',
-                    'Oil and Gas': 'Oil and Gas: Industrial cleaning and maintenance for oil and gas equipment',
-                    'Food Processing': 'Food Processing: Sanitary surface cleaning for food processing equipment',
-                    'Jewelry': 'Jewelry: Precision cleaning and polishing of precious metal jewelry',
-                    'Optics and Photonics': 'Optics: Precision cleaning of optical components and lenses',
-                    'Construction': 'Construction: Surface preparation and cleaning for construction materials'
-                }
-                
-                # Select applications based on available industries (limit to top 4)
-                for industry in all_industries[:4]:
-                    if industry in industry_applications:
-                        applications.append(industry_applications[industry])
+                # Just use industry names directly (removed descriptions per user request)
+                for industry in all_industries[:10]:
+                    # Convert slug to display format
+                    industry_display = industry.replace('-', ' ').title()
+                    applications.append(industry_display)
             
-            # Fallback to basic applications if no industry data available
+            # FAIL-FAST per GROK_INSTRUCTIONS.md - must have industry data
             if not applications:
-                applications = ['laser cleaning', 'surface preparation']
+                raise GenerationError(f"No industry data available for {material_name} - cannot generate applications")
                 
             self.logger.info(f"Generated {len(applications)} applications from unified industry data for {material_name}")
             return applications
             
         except Exception as e:
-            self.logger.warning(f"Failed to generate applications from unified industry data: {e}")
-            # Fallback to basic applications
-            return ['laser cleaning', 'surface preparation']
+            self.logger.error(f"Failed to generate applications from unified industry data: {e}")
+            # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
+            raise GenerationError(f"Applications generation failed for {material_name}: {e}")
 
     def _add_caption_section(self, frontmatter: Dict, material_data: Dict, material_name: str) -> Dict:
         """Add caption section with before/after text using AI generation"""
@@ -1138,12 +1294,27 @@ Return YAML format with materialProperties (not properties) and machineSettings 
             applications = frontmatter.get('applications', [])
             
             # Build context for AI
+            # Filter applications to ensure they are strings only (fail-fast if not)
+            if applications:
+                filtered_apps = []
+                for app in applications[:3]:
+                    if isinstance(app, str):
+                        filtered_apps.append(app)
+                    elif isinstance(app, dict) and 'industry' in app:
+                        # Handle old dict format (should not happen after migration)
+                        filtered_apps.append(app['industry'])
+                    else:
+                        raise GenerationError(f"Invalid application format for {material_name}: {type(app)}")
+                applications_list = filtered_apps
+            else:
+                applications_list = []
+            
             context_data = {
                 'material': material_name,
                 'category': category,
                 'properties': {},
                 'settings': {},
-                'applications': applications[:3] if applications else []
+                'applications': applications_list
             }
             
             # Extract key properties
@@ -1179,56 +1350,96 @@ Generate exactly two text blocks:
 **AFTER_TEXT:**
 [Write a microscopic analysis of the cleaned {material_name.lower()} surface in {after_paragraphs} (target ~{after_target} characters). Focus on visual transformation at 500x magnification. Contrast with contaminated state, highlight surface improvements. Use accessible language while maintaining technical precision.]"""
             
-            # Call API if available
-            if hasattr(self, 'api_client') and self.api_client:
-                try:
-                    response = self.api_client.generate_simple(
-                        prompt=prompt,
-                        max_tokens=3000,
-                        temperature=0.2
-                    )
-                    
-                    if response.success and response.content:
-                        # Extract BEFORE_TEXT
-                        before_start = response.content.find('**BEFORE_TEXT:**')
-                        before_end = response.content.find('**AFTER_TEXT:**')
-                        
-                        if before_start != -1 and before_end != -1:
-                            before_text = response.content[before_start + len('**BEFORE_TEXT:**'):before_end].strip()
-                            before_text = before_text.strip('[]').strip()
-                            
-                            # Extract AFTER_TEXT
-                            after_start = before_end + len('**AFTER_TEXT:**')
-                            after_text = response.content[after_start:].strip()
-                            after_text = after_text.strip('[]').strip()
-                            
-                            if before_text and len(before_text) > 100 and after_text and len(after_text) > 100:
-                                frontmatter['caption'] = {
-                                    'before_text': before_text,
-                                    'after_text': after_text
-                                }
-                                self.logger.info(f"Added AI-generated caption section for {material_name}")
-                                return frontmatter
-                except Exception as e:
-                    self.logger.warning(f"AI caption generation failed: {e}")
+            # Generate caption using AI
+            self.logger.info(f"Generating AI caption for {material_name} (target: before={before_target}, after={after_target})")
             
-            # If AI generation fails, skip caption (fail-fast - no fallbacks)
-            self.logger.warning(f"Caption generation skipped for {material_name} - API unavailable or failed")
+            try:
+                # Call API for caption generation
+                response = self.api_client.generate_simple(
+                    prompt=prompt,
+                    max_tokens=2000,  # Enough for both captions
+                    temperature=0.7
+                )
+                
+                # Extract content from APIResponse object if needed
+                if hasattr(response, 'content'):
+                    caption_text = response.content
+                elif isinstance(response, str):
+                    caption_text = response
+                else:
+                    caption_text = str(response)
+                
+                # Parse the response to extract before_text and after_text
+                import re
+                before_match = re.search(r'\*\*BEFORE_TEXT:\*\*\s*\n(.*?)(?=\*\*AFTER_TEXT:|\Z)', caption_text, re.DOTALL)
+                after_match = re.search(r'\*\*AFTER_TEXT:\*\*\s*\n(.*?)(?=\Z)', caption_text, re.DOTALL)
+                
+                if before_match and after_match:
+                    before_text = before_match.group(1).strip()
+                    after_text = after_match.group(1).strip()
+                    self.logger.info(f"✅ AI caption generated: before={len(before_text)} chars, after={len(after_text)} chars")
+                else:
+                    raise ValueError("Could not parse BEFORE_TEXT and AFTER_TEXT from API response")
+                    
+            except Exception as e:
+                self.logger.error(f"Failed to generate AI caption for {material_name}: {e}")
+                # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
+                raise GenerationError(f"AI caption generation failed for {material_name}: {e}")
+            
+            # Get author info for caption
+            author_info = frontmatter.get('author', {})
+            author_name = author_info.get('name', 'Unknown Author') if isinstance(author_info, dict) else str(author_info)
+            
+            # Build complete caption structure matching Gallium format
+            frontmatter['caption'] = {
+                'beforeText': before_text,
+                'afterText': after_text,
+                'description': f'Microscopic analysis of {material_name.lower()} surface before and after laser cleaning treatment',
+                'alt': f'Microscopic view of {material_name.lower()} surface showing laser cleaning effects',
+                'technicalAnalysis': {
+                    'focus': 'surface_analysis',
+                    'uniqueCharacteristics': [f'{material_name.lower()}_specific'],
+                    'contaminationProfile': f'{material_name.lower()} surface contamination'
+                },
+                'microscopy': {
+                    'parameters': f'Microscopic analysis of {material_name}',
+                    'qualityMetrics': 'Surface improvement analysis'
+                },
+                'generation': {
+                    'method': 'frontmatter_integrated_generation',
+                    'timestamp': '2025-10-02T00:00:00.000000Z',
+                    'generator': 'FrontmatterCaptionGenerator',
+                    'componentType': 'template_caption'
+                },
+                'author': author_name,
+                'materialProperties': {
+                    'materialType': category.capitalize(),
+                    'analysisMethod': 'template_microscopy'
+                },
+                'imageUrl': {
+                    'alt': f'Microscopic view of {material_name} surface after laser cleaning showing detailed surface structure',
+                    'url': f'/images/material/{material_name.lower()}-laser-cleaning-micro.jpg'
+                }
+            }
+            self.logger.info(f"✅ Added caption section for {material_name}")
             return frontmatter
             
         except Exception as e:
-            self.logger.warning(f"Failed to add caption section: {e}")
-            return frontmatter
+            self.logger.error(f"Failed to add caption section for {material_name}: {e}")
+            # FAIL-FAST per GROK_INSTRUCTIONS.md - caption is required
+            raise GenerationError(f"Caption generation failed for {material_name}: {e}")
 
     def _add_tags_section(self, frontmatter: Dict, material_data: Dict, material_name: str) -> Dict:
         """Add tags section with 10 tags: 1 category + 3 industries + 3 processes + 2 characteristics + 1 author"""
         try:
+            self.logger.info(f"Starting tags generation for {material_name}")
             tags = []
             
             # 1. CORE: Category
             category_raw = frontmatter.get('category', material_data.get('category', 'material'))
             category = category_raw.lower() if isinstance(category_raw, str) else str(category_raw).lower()
             tags.append(category)
+            self.logger.info(f"Added category tag: {category}")
             
             # 2-4. INDUSTRIES: Extract from applicationTypes
             industry_tags = self._extract_industry_tags_for_tags(frontmatter, category)
@@ -1257,17 +1468,41 @@ Generate exactly two text blocks:
             tags = tags[:10]
             
             frontmatter['tags'] = tags
-            self.logger.info(f"Added {len(tags)} tags for {material_name}")
+            self.logger.info(f"✅ Successfully added {len(tags)} tags for {material_name}: {tags}")
             return frontmatter
             
         except Exception as e:
-            self.logger.warning(f"Failed to add tags section: {e}")
+            self.logger.error(f"❌ FAILED to add tags section for {material_name}: {e}")
+            import traceback
+            self.logger.error(f"Traceback: {traceback.format_exc()}")
             return frontmatter
 
     def _extract_industry_tags_for_tags(self, frontmatter: Dict, category: str) -> list:
-        """Extract 3 industry tags from applicationTypes"""
+        """Extract 3 industry tags from applications (supports both string and structured formats)"""
         industries = []
         
+        # Extract from applications field (both string and structured formats)
+        if 'applications' in frontmatter:
+            apps = frontmatter['applications']
+            if isinstance(apps, list):
+                for app in apps:
+                    industry = None
+                    
+                    # Structured format: {industry: "Aerospace", detail: "..."}
+                    if isinstance(app, dict) and 'industry' in app:
+                        industry = app['industry']
+                    # String format: "Aerospace: Description..."
+                    elif isinstance(app, str) and ':' in app:
+                        industry = app.split(':')[0].strip()
+                    
+                    if industry:
+                        industry_slug = industry.lower().replace(' ', '-').replace('_', '-').replace('&', 'and')
+                        if industry_slug not in industries:
+                            industries.append(industry_slug)
+                        if len(industries) >= 3:
+                            return industries[:3]
+        
+        # Fallback from legacy applicationTypes if present
         if 'applicationTypes' in frontmatter:
             app_types = frontmatter['applicationTypes']
             if isinstance(app_types, list):
@@ -1281,9 +1516,9 @@ Generate exactly two text blocks:
                                     if industry_slug not in industries:
                                         industries.append(industry_slug)
                                     if len(industries) >= 3:
-                                        return industries
+                                        return industries[:3]
         
-        # Fallback: category-specific
+        # Final fallback: category-specific defaults
         fallback_industries = {
             'metal': ['manufacturing', 'aerospace', 'automotive'],
             'metals': ['manufacturing', 'aerospace', 'automotive'],

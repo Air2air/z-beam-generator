@@ -625,9 +625,9 @@ def deploy_to_production():
     import shutil
     import os
     
-    # Define source and target paths
-    source_dir = "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/content/components"
-    target_dir = "/Users/todddunning/Desktop/Z-Beam/z-beam-test-push/content/components"
+    # Define source and target paths - ONLY FRONTMATTER
+    source_dir = "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/content/components/frontmatter"
+    target_dir = "/Users/todddunning/Desktop/Z-Beam/z-beam-test-push/content/components/frontmatter"
     
     try:
         # Verify source directory exists
@@ -640,19 +640,10 @@ def deploy_to_production():
             print(f"❌ Target directory not found: {target_dir}")
             return False
         
-        print("🚀 Deploying content from generator to Next.js production site...")
+        print("🚀 Deploying frontmatter content from generator to Next.js production site...")
         print(f"📂 Source: {source_dir}")
         print(f"📂 Target: {target_dir}")
-        
-        # Get list of component directories in source
-        source_components = [d for d in os.listdir(source_dir) 
-                           if os.path.isdir(os.path.join(source_dir, d)) and not d.startswith('.')]
-        
-        if not source_components:
-            print("⚠️ No component directories found in source")
-            return False
-        
-        print(f"📋 Found {len(source_components)} component types to deploy: {', '.join(source_components)}")
+        print("📋 Deploying frontmatter component only")
         
         deployment_stats = {
             "updated": 0,
@@ -661,30 +652,25 @@ def deploy_to_production():
             "skipped": 0
         }
         
-        # Deploy each component type
-        for component_type in source_components:
-            component_source = os.path.join(source_dir, component_type)
-            component_target = os.path.join(target_dir, component_type)
+        # Deploy frontmatter component
+        print("\n📦 Deploying frontmatter component...")
+        
+        # Create target directory if it doesn't exist
+        os.makedirs(target_dir, exist_ok=True)
+        
+        # Get list of files in source directory
+        try:
+            source_files = [f for f in os.listdir(source_dir) 
+                          if os.path.isfile(os.path.join(source_dir, f)) and not f.startswith('.')]
             
-            print(f"\n📦 Deploying {component_type} component...")
-            
-            # Create target component directory if it doesn't exist
-            os.makedirs(component_target, exist_ok=True)
-            
-            # Get list of files in source component directory
-            try:
-                source_files = [f for f in os.listdir(component_source) 
-                              if os.path.isfile(os.path.join(component_source, f)) and not f.startswith('.')]
-                
-                if not source_files:
-                    print(f"  ⚠️ No files found in {component_type}")
-                    deployment_stats["skipped"] += 1
-                    continue
-                
+            if not source_files:
+                print("  ⚠️ No files found in frontmatter")
+                deployment_stats["skipped"] += 1
+            else:
                 # Copy each file
                 for filename in source_files:
-                    source_file = os.path.join(component_source, filename)
-                    target_file = os.path.join(component_target, filename)
+                    source_file = os.path.join(source_dir, filename)
+                    target_file = os.path.join(target_dir, filename)
                     
                     try:
                         # Check if target file exists
@@ -703,10 +689,10 @@ def deploy_to_production():
                     except Exception as e:
                         print(f"  ❌ Error copying {filename}: {e}")
                         deployment_stats["errors"] += 1
-                        
-            except Exception as e:
-                print(f"  ❌ Error processing {component_type}: {e}")
-                deployment_stats["errors"] += 1
+                    
+        except Exception as e:
+            print(f"  ❌ Error processing frontmatter: {e}")
+            deployment_stats["errors"] += 1
         
         # Print deployment summary
         print("\n🏁 Deployment completed!")
@@ -1385,11 +1371,10 @@ def main():
             all_materials = []
             
             # Get all materials from all categories
-            for category, category_data in materials_data_dict.get('materials', {}).items():
-                for item in category_data.get('items', []):
-                    material_name = item.get('name', '')
-                    if material_name:
-                        all_materials.append((material_name, item))
+            # In the new format, each category key IS a material name
+            for material_name, material_data in materials_data_dict.get('materials', {}).items():
+                if material_name and isinstance(material_data, dict):
+                    all_materials.append((material_name, material_data))
             
             if not all_materials:
                 print("❌ No materials found in database")

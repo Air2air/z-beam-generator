@@ -1,0 +1,306 @@
+name: Zinc
+category: Metal
+subcategory: Zinc
+title: Zinc Laser Cleaning
+description: Laser cleaning parameters for Zinc
+materialProperties:
+  density:
+    value: 7.14
+    unit: g/cm³
+    confidence: 98
+    description: Density of pure zinc at 20°C
+    min: 0.53
+    max: 22.6
+  meltingPoint:
+    value: 419.5
+    unit: °C
+    confidence: 97
+    description: Melting point of pure zinc
+    min: null
+    max: null
+  thermalConductivity:
+    value: 116
+    unit: W/m·K
+    confidence: 95
+    description: Thermal conductivity at 25°C
+    min: 6.0
+    max: 429.0
+  tensileStrength:
+    value: 120
+    unit: MPa
+    confidence: 88
+    description: Ultimate tensile strength of pure zinc
+    min: 3.0
+    max: 3000.0
+  hardness:
+    value: 2.5
+    unit: Mohs
+    confidence: 85
+    description: Mohs hardness scale value
+    min: 0.5
+    max: 3500
+  youngsModulus:
+    value: 108
+    unit: GPa
+    confidence: 92
+    description: Young's modulus of elasticity
+    min: 5
+    max: 411
+  thermalExpansion:
+    value: 30.2
+    unit: μm/m·K
+    confidence: 92
+    description: Coefficient of linear thermal expansion at 25°C
+    min: 0.5
+    max: 29.1
+  thermalDiffusivity:
+    value: 42.1
+    unit: mm²/s
+    confidence: 90
+    description: Thermal diffusivity at room temperature
+    min: 0.2
+    max: 174
+  specificHeat:
+    value: 0.387
+    unit: J/g·K
+    confidence: 94
+    description: Specific heat capacity at 25°C
+    min: 100
+    max: 900
+  reflectivity:
+    value: 80
+    unit: '%'
+    confidence: 90
+    description: Optical reflectivity at 1064 nm wavelength
+    min: null
+    max: null
+  absorptionCoefficient:
+    value: 12000000.0
+    unit: m⁻¹
+    confidence: 85
+    description: Absorption coefficient for near-IR lasers
+    min: null
+    max: null
+  ablationThreshold:
+    value: 0.8
+    unit: J/cm²
+    confidence: 82
+    description: Approximate laser ablation threshold for nanosecond pulses
+    min: null
+    max: null
+  oxidationResistance:
+    value: Moderate
+    unit: qualitative
+    confidence: 88
+    description: Forms protective zinc oxide layer in air
+    min: null
+    max: null
+  crystallineStructure:
+    value: HCP
+    unit: crystal system
+    confidence: 98
+    description: Hexagonal Close-Packed structure at room temperature
+    min: null
+    max: null
+  vaporizationPoint:
+    value: 907
+    unit: °C
+    confidence: 95
+    description: Boiling point of zinc, critical for laser ablation
+    min: null
+    max: null
+  electricalConductivity:
+    value: 16.6
+    unit: '% IACS'
+    confidence: 92
+    description: Electrical conductivity relative to copper standard
+    min: null
+    max: null
+applications:
+- Restoration
+- Food Processing
+- Manufacturing
+- Marine
+- Jewelry
+- Nuclear
+- Automotive
+- Semiconductor
+machineSettings:
+  powerRange:
+    value: 100
+    unit: W
+    confidence: 92
+    description: Optimal average power for Zinc oxide removal without substrate damage
+    min: 80
+    max: 120
+  wavelength:
+    value: 1064
+    unit: nm
+    confidence: 88
+    description: Near-IR wavelength with good Zinc absorption for surface cleaning
+    min: 532
+    max: 1064
+  spotSize:
+    value: 50
+    unit: μm
+    confidence: 84
+    description: Beam spot diameter for precise cleaning control
+    min: 30
+    max: 100
+  repetitionRate:
+    value: 50
+    unit: kHz
+    confidence: 87
+    description: Optimal repetition rate for continuous cleaning coverage
+    min: 20
+    max: 100
+  pulseWidth:
+    value: 10
+    unit: ns
+    confidence: 85
+    description: Nanosecond pulse duration for efficient oxide layer removal
+    min: 5
+    max: 20
+  scanSpeed:
+    value: 500
+    unit: mm/s
+    confidence: 86
+    description: Optimal scanning speed for uniform cleaning efficiency
+    min: 200
+    max: 1000
+  fluenceThreshold:
+    value: 2.5
+    unit: J/cm²
+    confidence: 89
+    description: Minimum fluence required for Zinc oxide ablation
+    min: 1.5
+    max: 4.0
+  overlapRatio:
+    value: 50
+    unit: '%'
+    confidence: 83
+    description: Optimal beam overlap for uniform cleaning coverage
+    min: 30
+    max: 70
+  passCount:
+    value: 2
+    unit: passes
+    confidence: 85
+    description: Recommended number of passes for complete oxide removal
+    min: 1
+    max: 4
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author:
+  id: 1
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg
+images:
+  hero:
+    alt: Zinc surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/zinc-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Zinc surface after laser cleaning showing detailed surface structure
+    url: /images/material/zinc-laser-cleaning-micro.jpg
+environmentalImpact:
+- benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+  sustainabilityBenefit: ''
+- benefit: Water Usage Reduction
+  description: Dry process requires no water
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+- benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+outcomeMetrics:
+- metric: Contaminant Removal Efficiency
+  description: Percentage of target contaminants successfully removed from surface
+  measurementMethods:
+  - Before/after microscopy
+  - Chemical analysis
+  - Mass spectrometry
+  typicalRanges: 95-99.9% depending on application and material
+  factorsAffecting:
+  - Contamination type
+  - Adhesion strength
+  - Surface geometry
+  units: []
+- metric: Processing Speed
+  description: Rate of surface area processed per unit time
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- metric: Surface Quality Preservation
+  description: Maintenance of original surface characteristics after cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+- metric: Thermal Damage Avoidance
+  description: Prevention of heat-related material alterations during cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+caption:
+  beforeText: At 500x magnification, the zinc surface shows contamination layers typical of this material class.
+  afterText: Following laser cleaning, the zinc surface reveals the clean substrate with improved surface characteristics.
+  description: Microscopic analysis of zinc surface before and after laser cleaning treatment
+  alt: Microscopic view of zinc surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - zinc_specific
+    contaminationProfile: zinc surface contamination
+  microscopy:
+    parameters: Microscopic analysis of Zinc
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-10-02T00:00:00.000000Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: template_caption
+  author: Yi-Chun Lin
+  materialProperties:
+    materialType: Metal
+    analysisMethod: template_microscopy
+  imageUrl:
+    alt: Microscopic view of Zinc surface after laser cleaning showing detailed surface structure
+    url: /images/material/zinc-laser-cleaning-micro.jpg
+tags:
+- metal
+- restoration
+- food-processing
+- manufacturing
+- decoating
+- oxide-removal
+- surface-preparation
+- reflective-surface
+- conductive
+- yi-chun-lin

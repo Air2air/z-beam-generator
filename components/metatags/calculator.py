@@ -186,7 +186,7 @@ class MetatagsCalculator:
             {"property": "og:type", "content": "article"},
             {
                 "property": "og:image",
-                "content": f"/images/{subject_slug}-laser-cleaning-hero.jpg",
+                "content": f"/images/material/{subject_slug}-laser-cleaning-hero.jpg",
             },
             {
                 "property": "og:image:alt",
@@ -226,7 +226,7 @@ class MetatagsCalculator:
             },
             {
                 "name": "twitter:image",
-                "content": f"/images/{subject_slug}-laser-cleaning-hero.jpg",
+                "content": f"/images/material/{subject_slug}-laser-cleaning-hero.jpg",
             },
             {
                 "name": "twitter:image:alt",

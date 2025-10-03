@@ -83,7 +83,7 @@ template: |
     "image": [
       {
         "@type": "ImageObject",
-        "url": "/images/{subject_slug}-laser-cleaning-hero.jpg",
+        "url": "/images/material/{subject_slug}-laser-cleaning-hero.jpg",
         "name": "{subject} Laser Cleaning Workbench Before/After Comparison",
         "caption": "Split-view workbench photograph displaying {subject} {component_type} before and after laser cleaning treatment",
         "description": "High-resolution dual-panel photograph showing a {subject} component processed with {wavelength} wavelength, {fluence} J/cm² fluence, demonstrating complete contamination removal while preserving material integrity",
@@ -96,7 +96,7 @@ template: |
       },
       {
         "@type": "ImageObject",
-        "url": "/images/{subject_slug}-laser-cleaning-micro.jpg",
+        "url": "/images/material/{subject_slug}-laser-cleaning-micro.jpg",
         "name": "{subject} Surface Microstructure Analysis",
         "caption": "SEM images showing {subject} surface quality before and after {wavelength} laser treatment",
         "description": "Comparative scanning electron micrographs displaying surface microstructure processed with {wavelength} wavelength, {fluence} J/cm² fluence, {pulse_duration} pulse duration, verified at {magnification}x magnification",
@@ -115,7 +115,7 @@ template: |
       "@type": "VideoObject",
       "name": "{subject} Laser Cleaning Process Demonstration",
       "description": "Real-time demonstration of {wavelength} laser cleaning process on {subject} {category} components",
-      "thumbnailUrl": "/images/{subject_slug}-laser-cleaning-hero.jpg",
+      "thumbnailUrl": "/images/material/{subject_slug}-laser-cleaning-hero.jpg",
       "uploadDate": "2025-08-08T12:00:00Z",
       "duration": "PT3M45S",
       "contentUrl": "/videos/{subject_slug}-laser-cleaning-demo.mp4"

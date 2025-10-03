@@ -1,1 +1,1 @@
-Tags integrated into frontmatter: metal, electronics, automotive, oil-and-gas, reflective, conductive, soft, dense, expansive, todd-dunning
+Tags integrated into frontmatter: metal, aerospace, nuclear, food-processing, reflective, conductive, soft, dense, expansive, todd-dunning

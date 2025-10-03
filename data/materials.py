@@ -51,58 +51,10 @@ def load_materials():
 
 
 def add_material_names_to_items(data):
-    """Add material names to items in non-optimized format for --all compatibility."""
-    result = data.copy()
-    material_index = data.get('material_index', {})
-    
-    # Create reverse lookup: category -> list of (material_name, index) for that category
-    category_materials = {}
-    for material_name, index_data in material_index.items():
-        if isinstance(index_data, str):
-            # Simple format: material_name -> category_string
-            category = index_data
-            index_num = 0
-        else:
-            # Complex format: material_name -> {category: ..., index: ...}
-            category = index_data.get('category')
-            index_num = index_data.get('index', 0)
-            
-        if category:
-            if category not in category_materials:
-                category_materials[category] = []
-            category_materials[category].append((material_name, index_num))
-    
-    # Sort materials by index within each category
-    for category in category_materials:
-        category_materials[category].sort(key=lambda x: x[1])
-    
-    # Add names to items
-    materials_with_names = {}
-    for category, cat_data in data['materials'].items():
-        if isinstance(cat_data, dict) and 'items' in cat_data:
-            items_with_names = []
-            category_material_list = category_materials.get(category, [])
-            
-            for idx, item in enumerate(cat_data['items']):
-                item_with_name = item.copy()
-                
-                # Add material name from the index
-                if idx < len(category_material_list):
-                    material_name = category_material_list[idx][0]
-                    item_with_name['name'] = material_name
-                
-                items_with_names.append(item_with_name)
-            
-            # Create updated category data
-            cat_data_with_names = cat_data.copy()
-            cat_data_with_names['items'] = items_with_names
-            materials_with_names[category] = cat_data_with_names
-        else:
-            materials_with_names[category] = cat_data
-    
-    result['materials'] = materials_with_names
-    
-    return result
+    """No-op for flattened structure - materials already have names as keys."""
+    # With flattened structure, materials are already keyed by name
+    # This function kept for backward compatibility but does nothing
+    return data
 
 
 def find_material_case_insensitive(material_name: str, materials_data: dict = None) -> tuple:
@@ -121,12 +73,11 @@ def find_material_case_insensitive(material_name: str, materials_data: dict = No
     
     search_name = material_name.lower().strip()
     
-    for category, category_data in materials_data.get('materials', {}).items():
-        items = category_data.get('items', [])
-        for item in items:
-            item_name = item.get('name', '').lower().strip()
-            if item_name == search_name:
-                return item, category
+    # With flattened structure, materials are direct dict entries
+    for material_key, material_data in materials_data.get('materials', {}).items():
+        if material_key.lower().strip() == search_name:
+            category = material_data.get('category')
+            return material_data, category
     
     return None, None
 def expand_optimized_materials(data):
@@ -247,51 +198,24 @@ def expand_optimized_materials(data):
 
 
 def get_material_by_name(material_name, data=None):
-    """Fast O(1) material lookup using material index with case-insensitive matching."""
+    """Fast O(1) material lookup with case-insensitive matching."""
     if data is None:
         data = load_materials()
     
-    # Use material index if available (optimized format)
-    if 'material_index' in data:
-        # Try exact match first (for performance)
-        index_entry = data['material_index'].get(material_name)
-        
-        # If no exact match, try case-insensitive search
-        if not index_entry:
-            material_name_lower = material_name.lower()
-            for key, value in data['material_index'].items():
-                if key.lower() == material_name_lower:
-                    index_entry = value
-                    material_name = key  # Use the correct case from index
-                    break
-        
-        if index_entry:
-            if isinstance(index_entry, str):
-                # Simple format: material_name -> category_string
-                category = index_entry
-                item_index = 0
-            else:
-                # Complex format: material_name -> {category: ..., index: ...}
-                category = index_entry['category']
-                item_index = index_entry['index']
-            
-            # Check if category exists in materials
-            if category in data['materials']:
-                cat_data = data['materials'][category]
-                
-                # Handle direct items structure
-                if 'items' in cat_data and item_index < len(cat_data['items']):
-                    return cat_data['items'][item_index]
-                
-                # Handle subcategory structure - search through all subcategories
-                elif not isinstance(cat_data.get('items'), list):
-                    for subcat_name, subcat_data in cat_data.items():
-                        if isinstance(subcat_data, dict) and 'items' in subcat_data:
-                            if item_index < len(subcat_data['items']):
-                                return subcat_data['items'][item_index]
-                            item_index -= len(subcat_data['items'])
+    # With flattened structure, materials are keyed directly by name
+    materials = data.get('materials', {})
     
-    # Fail-fast: Index lookup failed - no fallback search allowed
-    raise ValueError(f"Material '{material_name}' not found in material index - index system must be complete")
+    # Try exact match first (for performance)
+    if material_name in materials:
+        return materials[material_name]
+    
+    # If no exact match, try case-insensitive search
+    material_name_lower = material_name.lower()
+    for key, value in materials.items():
+        if key.lower() == material_name_lower:
+            return value
+    
+    # Fail-fast: Material not found - no fallback defaults allowed
+    raise ValueError(f"Material '{material_name}' not found in materials database - all materials must be explicitly defined")
     
     return None

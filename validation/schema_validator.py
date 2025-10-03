@@ -94,30 +94,25 @@ class SchemaManager:
         self._schema_cache = {}
         
     def get_primary_schema(self) -> Tuple[Path, Dict]:
-        """Get the primary schema with fallback hierarchy"""
-        schema_priority = [
-            "active/frontmatter_v2.json",                # Primary (v2 with DataMetric pattern)
-            "active/frontmatter_enhanced.json",          # Enhanced validation features
-            "active/frontmatter.json",                   # Basic frontmatter
-            "enhanced_unified_frontmatter.json",         # Legacy: unified naming (deprecated)
-            "enhanced_frontmatter.json",                 # Legacy: enhanced naming (deprecated)
-            "frontmatter.json"                           # Legacy: basic location
-        ]
+        """Get the primary schema - FAIL-FAST if not found per GROK_INSTRUCTIONS.md"""
+        # Try primary schema only - no fallbacks
+        schema_path = self.schemas_dir / "active/frontmatter_v2.json"
         
-        for schema_name in schema_priority:
-            schema_path = self.schemas_dir / schema_name
-            if schema_path.exists():
-                try:
-                    schema_data = self._load_schema(schema_path)
-                    logger.info(f"Using primary schema: {schema_name}")
-                    return schema_path, schema_data
-                except Exception as e:
-                    logger.warning(f"Failed to load {schema_name}: {e}")
-                    continue
+        if not schema_path.exists():
+            raise FileNotFoundError(
+                f"Primary schema not found: {schema_path}. "
+                "Per GROK_INSTRUCTIONS.md: No fallbacks allowed."
+            )
         
-        # Emergency fallback
-        logger.error("No valid schema found - using minimal schema")
-        return None, self._get_minimal_schema()
+        try:
+            schema_data = self._load_schema(schema_path)
+            logger.info(f"Using primary schema: active/frontmatter_v2.json")
+            return schema_path, schema_data
+        except Exception as e:
+            raise RuntimeError(
+                f"Failed to load primary schema: {e}. "
+                "Per GROK_INSTRUCTIONS.md: No fallbacks allowed."
+            )
     
     def _load_schema(self, schema_path: Path) -> Dict:
         """Load and validate schema file"""
@@ -135,7 +130,11 @@ class SchemaManager:
         return schema_data
     
     def _get_minimal_schema(self) -> Dict:
-        """Minimal emergency fallback schema"""
+        """REMOVED: No fallback schemas allowed per GROK_INSTRUCTIONS.md"""
+        raise NotImplementedError(
+            "Minimal schema fallback not allowed per GROK_INSTRUCTIONS.md. "
+            "System must have valid primary schema or fail."
+        )
         return {
             "type": "object",
             "required": ["name", "category", "title", "description"],

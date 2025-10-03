@@ -7,9 +7,12 @@ across testing and production environments.
 """
 
 import os
+import yaml
+from pathlib import Path
 from typing import Any, Dict, Optional
 
 from api.client import APIClient
+from api.cached_client import CachedAPIClient
 
 
 def get_api_providers():
@@ -69,7 +72,7 @@ class APIClientFactory:
 
     @staticmethod
     def _create_real_client(provider: str, **kwargs) -> APIClient:
-        """Create a real API client"""
+        """Create a real API client with response caching"""
         API_PROVIDERS = get_api_providers()
         
         if provider not in API_PROVIDERS:
@@ -112,10 +115,38 @@ class APIClientFactory:
         # Pass config as a separate parameter
         client_kwargs["config"] = config_dict
 
-        print(f"🚀 [CLIENT FACTORY] Initializing {provider_config['name']} API client...")
-        # Create real client with all required parameters
-        client = APIClient(**client_kwargs)
-        print("✅ [CLIENT FACTORY] API client created successfully")
+        # Load cache configuration from prod_config.yaml
+        cache_config = None
+        try:
+            import yaml
+            from pathlib import Path
+            
+            config_file = Path("prod_config.yaml")
+            if config_file.exists():
+                with open(config_file, 'r') as f:
+                    prod_config = yaml.safe_load(f)
+                    cache_config = prod_config.get('API', {}).get('RESPONSE_CACHE')
+                    
+                    if cache_config:
+                        print(f"🗄️  [CLIENT FACTORY] Response cache configured: enabled={cache_config.get('enabled')}")
+                    else:
+                        print("⚠️  [CLIENT FACTORY] No cache config found in prod_config.yaml")
+            else:
+                print("⚠️  [CLIENT FACTORY] prod_config.yaml not found, caching disabled")
+        except Exception as e:
+            print(f"⚠️  [CLIENT FACTORY] Error loading cache config: {e}")
+        
+        # Create cached client if cache config exists, otherwise regular client
+        if cache_config is not None:
+            client_kwargs["cache_config"] = cache_config
+            print(f"🚀 [CLIENT FACTORY] Initializing CACHED {provider_config['name']} API client...")
+            client = CachedAPIClient(**client_kwargs)
+            print("✅ [CLIENT FACTORY] Cached API client created successfully")
+        else:
+            print(f"🚀 [CLIENT FACTORY] Initializing {provider_config['name']} API client (NO CACHE)...")
+            client = APIClient(**client_kwargs)
+            print("✅ [CLIENT FACTORY] API client created successfully")
+        
         return client
 
 

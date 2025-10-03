@@ -2,7 +2,7 @@ name: Polypropylene
 category: Plastic
 subcategory: Polypropylene
 title: Polypropylene Laser Cleaning
-description: Laser cleaning parameters for Polycarbonate
+description: Laser cleaning parameters for Polypropylene
 materialProperties:
   density:
     value: 0.905
@@ -11,6 +11,13 @@ materialProperties:
     description: Density of isotactic polypropylene at room temperature
     min: 0.85
     max: 2.2
+  meltingPoint:
+    value: 160
+    unit: °C
+    confidence: 92
+    description: Melting point range for commercial polypropylene grades
+    min: null
+    max: null
   thermalConductivity:
     value: 0.22
     unit: W/m·K
@@ -19,184 +26,187 @@ materialProperties:
     min: 0.02
     max: 3
   tensileStrength:
-    value: 35.0
+    value: 35
     unit: MPa
     confidence: 92
-    description: Tensile strength at yield for unfilled PP
+    description: Tensile strength at yield for standard grade
     min: 10
     max: 400
+  hardness:
+    value: 70
+    unit: Shore D
+    confidence: 88
+    description: Hardness on Shore D scale
+    min: Shore A 10
+    max: Shore D 90
   youngsModulus:
-    value: 1500.0
+    value: 1.5
     unit: GPa
     confidence: 90
     description: Young's modulus in tension
-    min: 0
-    max: 3629.98
+    min: 0.01
+    max: 5
   thermalExpansion:
-    value: 110.0
-    unit: 10⁻⁶/°C
+    value: 150
+    unit: 10^-6/°C
     confidence: 85
-    description: Linear coefficient of thermal expansion
+    description: Coefficient of linear thermal expansion
     min: 10
     max: 200
   specificHeat:
-    value: 1880.0
-    unit: J/kg·K
+    value: 1.8
+    unit: kJ/kg·K
     confidence: 90
     description: Specific heat capacity at room temperature
-    min: 800.0
-    max: 2000.0
+    min: 1000
+    max: 2500
   absorptionCoefficient:
-    value: 0.8
-    unit: cm⁻¹
+    value: 0.15
+    unit: cm^-1
     confidence: 82
     description: Absorption coefficient at 1064 nm wavelength
     min: null
     max: null
   reflectivity:
     value: 0.04
-    unit: ''
+    unit: dimensionless
     confidence: 80
-    description: Surface reflectivity at 1064 nm
+    description: Reflectivity at 1064 nm wavelength
     min: null
     max: null
   ablationThreshold:
-    value: 0.5
+    value: 0.8
     unit: J/cm²
     confidence: 85
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
-  oxidationResistance:
-    value: 150
-    unit: °C
-    confidence: 88
-    description: Maximum continuous service temperature in air
+  chemicalStability:
+    value: 85
+    unit: '% resistance'
+    confidence: 90
+    description: Chemical resistance to acids and bases at room temperature
     min: null
     max: null
   crystallineStructure:
-    value: 50
-    unit: '%'
-    confidence: 90
-    description: Typical crystallinity percentage for commercial PP
+    value: 60
+    unit: '% crystallinity'
+    confidence: 88
+    description: Typical crystallinity percentage in commercial grades
     min: null
     max: null
-  hardness:
-    confidence: 0.7
-    max: 90.0
-    min: 10.0
-    source: default_from_category_range
-    unit: ''
-    value: 75.0
-  laserAbsorption:
-    confidence: 0.7
-    max: 100.0
-    min: 0.1
-    source: default_from_category_range
-    unit: cm⁻¹
-    value: 42.7
-  laserReflectivity:
-    confidence: 0.7
-    max: 95.0
-    min: 5.0
-    source: default_from_category_range
-    unit: '%'
-    value: 94.5
-  thermalDiffusivity:
-    confidence: 0.7
-    max: 1.0
-    min: 0.05
-    source: default_from_category_range
-    unit: mm²/s
-    value: 0.096
-  thermalDestructionPoint:
-    confidence: 0.7
-    max: 400.0
-    min: 80.0
-    source: default_from_category_range
-    unit: °C
-    value: 328.0
-  thermalDestructionType:
-    confidence: 0.8
-    source: category_default
-    value: 328.0
+  surfaceRoughness:
+    value: 0.8
+    unit: μm Ra
+    confidence: 82
+    description: Typical surface roughness for injection molded parts
+    min: null
+    max: null
 applications:
-- 'Automotive: Paint removal and surface preparation for automotive parts'
-- 'Electronics: Precision cleaning of electronic components and circuit boards'
-- 'Aerospace: Precision cleaning of aerospace components and assemblies'
+- Automotive
+- Medical Devices
+- Electronics Manufacturing
+- Food Processing
+- Aerospace
+- Marine
+- Packaging Manufacturing
+- Textile Machinery
+- Renewable Energy
+- Consumer Products
 machineSettings:
   powerRange:
-    value: 25
+    value: 90
     unit: W
-    confidence: 90
-    description: Optimal average power for Polypropylene cleaning without thermal damage
-    min: 15
-    max: 40
+    confidence: 92
+    description: Optimal average power for Polypropylene surface cleaning without
+      thermal damage
+    min: 70
+    max: 110
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength with moderate Polypropylene absorption
-    min: 355
-    max: 10640
+    description: Near-IR wavelength with moderate Polypropylene absorption for controlled
+      ablation
+    min: 1030
+    max: 1070
   spotSize:
-    value: 100
+    value: 80
     unit: μm
-    confidence: 92
-    description: Beam spot diameter for precise cleaning control
+    confidence: 84
+    description: Beam spot diameter for effective cleaning resolution and energy density
+      control
     min: 50
-    max: 200
+    max: 120
   repetitionRate:
-    value: 20
+    value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning throughput
-    min: 1
+    description: Optimal repetition rate for continuous cleaning coverage with thermal
+      management
+    min: 30
     max: 100
   pulseWidth:
-    value: 100
+    value: 12
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for controlled material removal
-    min: 10
-    max: 200
+    description: Nanosecond pulse duration for efficient contaminant removal with
+      minimal substrate heating
+    min: 8
+    max: 20
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 85
-    description: Optimal scanning speed for uniform surface treatment
-    min: 100
-    max: 1000
-  fluenceThreshold:
-    value: 1.2
+    confidence: 86
+    description: Optimal scanning speed for efficient area coverage while maintaining
+      cleaning effectiveness
+    min: 300
+    max: 800
+  energyDensity:
+    value: 1.8
     unit: J/cm²
-    confidence: 89
-    description: Minimum fluence required for effective contaminant removal
-    min: 0.8
+    confidence: 90
+    description: Fluence threshold for effective contaminant removal without damaging
+      Polypropylene substrate
+    min: 1.2
     max: 2.5
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 86
-    description: Optimal pulse overlap for uniform cleaning coverage
-    min: 30
+    confidence: 83
+    description: Optimal beam overlap for uniform cleaning coverage and process efficiency
+    min: 40
     max: 70
   passCount:
     value: 2
     unit: passes
-    confidence: 88
-    description: Recommended number of passes for complete cleaning
+    confidence: 85
+    description: Recommended number of passes for complete contaminant removal with
+      safety margin
     min: 1
-    max: 5
+    max: 3
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
 - IEC 60825 - Safety of Laser Products
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author:
+  id: 3
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  image: /images/author/ikmanda-roswati.jpg
 images:
   hero:
-    alt: Polypropylene surface undergoing laser cleaning showing precise contamination removal
-    url: /images/polypropylene-laser-cleaning-hero.jpg
+    alt: Polypropylene surface undergoing laser cleaning showing precise contamination
+      removal
+    url: /images/material/polypropylene-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Polypropylene surface after laser cleaning showing detailed
+      surface structure
+    url: /images/material/polypropylene-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -222,56 +232,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-applicationTypes:
-- type: Precision Cleaning
-  description: High-precision removal of microscopic contaminants and residues
-  industries:
-  - Semiconductor
-  - MEMS
-  - Optics
-  - Medical Devices
-  qualityMetrics:
-  - Particle count reduction
-  - Surface roughness maintenance
-  - Chemical purity
-  typicalTolerances: Sub-micron accuracy with minimal substrate impact
-  objectives: []
-- type: Surface Preparation
-  description: Preparation of surfaces for bonding, coating, or further processing
-  industries:
-  - Aerospace
-  - Automotive
-  - Manufacturing
-  - Construction
-  qualityMetrics:
-  - Surface energy
-  - Cleanliness level
-  - Roughness profile
-  typicalTolerances: ''
-  objectives:
-  - Adhesion enhancement
-  - Contamination removal
-  - Surface activation
-- type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
-  industries:
-  - Cultural Heritage
-  - Architecture
-  - Art Conservation
-  - Historical Restoration
-  qualityMetrics: []
-  typicalTolerances: ''
-  objectives: []
-- type: Contamination Removal
-  description: General removal of unwanted surface deposits and contaminants
-  industries:
-  - Manufacturing
-  - Marine
-  - Oil & Gas
-  - Power Generation
-  qualityMetrics: []
-  typicalTolerances: ''
-  objectives: []
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -306,32 +266,21 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units: []
-author:
-  id: 1
-  name: Yi-Chun Lin
-  sex: f
-  title: Ph.D.
-  country: Taiwan
-  expertise: Laser Materials Processing
-  image: /images/author/yi-chun-lin.jpg
 caption:
-  beforeText: 'At 500x magnification, the polypropylene surface is obscured by a non-uniform contamination layer, approximately
-    5-15 micrometers thick. This layer appears as a discontinuous film of particulate matter and organic residues, creating
-    a textured, topographically complex surface. The underlying polymer morphology is completely masked.
-
-
-    The contamination exhibits a cracked-mud pattern, with agglomerated particles embedded in a matrix. This creates significant
-    surface roughness, with height variations exceeding 10 micrometers. The native semi-crystalline structure of the polypropylene
-    is not visible, as the contaminants prevent clear observation of the substrate''s intrinsic features.'
-  afterText: 'Following laser cleaning, the surface transformation is evident. The contamination layer has been completely
-    removed, revealing the intrinsic semi-crystalline morphology of the polypropylene substrate. The surface is now uniform,
-    with the laser-processed area showing a clean, micro-roughened texture characteristic of controlled ablation.
-
-
-    The previously masked polymer spherulites are now clearly visible, confirming the contaminant''s removal down to the base
-    material. The surface exhibits a consistent matte finish with sub-micrometer scale roughness, a direct result of the laser
-    interacting with the polymer at its ablation threshold without causing bulk thermal damage.'
-  description: Microscopic analysis of polypropylene surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the polypropylene surface is obscured by a non-uniform
+    contamination layer, approximately 5-15 µm thick. This layer, composed of organic
+    residues and particulate matter, disrupts the substrate's inherent micro-texture
+    of 0.8 µm Ra. The contaminants form an irregular, matte film that masks the polymer's
+    semi-crystalline structure, significantly increasing light scattering and reducing
+    surface energy.
+  afterText: Laser cleaning reveals the pristine polypropylene substrate, restoring
+    its intrinsic micro-topography. The previously obscured 0.8 µm Ra surface texture
+    is now fully visible, with the semi-crystalline morphology appearing intact. The
+    process has selectively removed the contamination layer without inducing macroscopic
+    melting, resulting in a surface with minimal subsurface damage and restored chemical
+    functionality.
+  description: Microscopic analysis of polypropylene surface before and after laser
+    cleaning treatment
   alt: Microscopic view of polypropylene surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -339,31 +288,29 @@ caption:
     - polypropylene_specific
     contaminationProfile: polypropylene surface contamination
   microscopy:
-    parameters: Microscopic analysis of polypropylene
+    parameters: Microscopic analysis of Polypropylene
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: '2025-09-30T20:28:47.048496Z'
+    timestamp: '2025-10-02T00:00:00.000000Z'
     generator: FrontmatterCaptionGenerator
-    componentType: ai_caption_frontmatter
-  author: Yi-Chun Lin
+    componentType: template_caption
+  author: Ikmanda Roswati
   materialProperties:
     materialType: Plastic
-    analysisMethod: ai_microscopy
+    analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Polypropylene surface after laser cleaning showing detailed surface structure
-    url: /images/polypropylene-laser-cleaning-micro.jpg
-metadata:
-  lastUpdated: '2025-09-30T20:28:59.127974'
-  captionIntegrated: true
+    alt: Microscopic view of Polypropylene surface after laser cleaning showing detailed
+      surface structure
+    url: /images/material/polypropylene-laser-cleaning-micro.jpg
 tags:
 - plastic
-- automotive
-- electronics
-- aerospace
-- absorptive
-- insulating
-- durable
-- lightweight
-- expansive
-- yi-chun-lin
+- manufacturing
+- industrial
+- processing
+- surface-preparation
+- contamination-removal
+- maintenance
+- thermal-sensitive
+- industrial-grade
+- ikmanda-roswati

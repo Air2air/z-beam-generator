@@ -39,8 +39,8 @@ opengraph:
 - property: og:type
   content: article
 - property: og:image
-  content: /images/stoneware-laser-cleaning-hero.jpg
-- property: og:image:alt
+  content: /images/material/stoneware-laser-cleaning-hero.jpg
+- name: og:image:alt
   content: Stoneware laser cleaning process showing precision ceramic restoration and surface treatment
 - property: og:image:width
   content: '1200'
@@ -66,7 +66,7 @@ twitter:
 - name: twitter:description
   content: Professional stoneware laser cleaning using 1064nm technology. Complete guide for ceramic restoration, heritage conservation, and precision surface treatment.
 - name: twitter:image
-  content: /images/stoneware-laser-cleaning-hero.jpg
+  content: /images/material/stoneware-laser-cleaning-hero.jpg
 - name: twitter:image:alt
   content: Stoneware ceramic laser cleaning technical guide
 - name: twitter:site

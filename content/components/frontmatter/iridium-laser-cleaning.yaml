@@ -2,208 +2,215 @@ name: Iridium
 category: Metal
 subcategory: Iridium
 title: Iridium Laser Cleaning
-description: Laser cleaning parameters for Aluminum
+description: Laser cleaning parameters for Iridium
 materialProperties:
   density:
     value: 22.56
     unit: g/cm³
     confidence: 98
-    description: Highest density among elemental metals at room temperature
+    description: Highest density of all elements at room temperature
     min: 0.53
     max: 22.6
+  meltingPoint:
+    value: 2466
+    unit: °C
+    confidence: 97
+    description: Second highest melting point of all elements
+    min: null
+    max: null
   thermalConductivity:
-    value: 147.0
+    value: 147
     unit: W/m·K
     confidence: 92
-    description: High thermal conductivity at room temperature
+    description: Thermal conductivity at 300K
     min: 6.0
     max: 429.0
   tensileStrength:
-    value: 490.0
+    value: 1120
     unit: MPa
     confidence: 85
     description: Ultimate tensile strength of annealed iridium
-    min: 0
-    max: 1363.6
+    min: 3.0
+    max: 3000.0
   hardness:
-    value: 1760.0
+    value: 1760
     unit: HV
-    confidence: 88
+    confidence: 89
     description: Vickers hardness of pure iridium
-    min: 0
-    max: 3772.91
+    min: 0.5
+    max: 3500
   youngsModulus:
-    value: 528.0
+    value: 528
     unit: GPa
-    confidence: 92
-    description: Young's modulus at room temperature
-    min: 0
-    max: 579.82
+    confidence: 93
+    description: Elastic modulus at room temperature
+    min: 5
+    max: 411
   thermalExpansion:
-    value: 6.8
+    value: 6.4
     unit: μm/m·K
     confidence: 90
-    description: Low coefficient of thermal expansion at 20°C
-    min: 1.7
-    max: 34.9
+    description: Coefficient of linear thermal expansion at 25°C
+    min: 0.5
+    max: 29.1
   thermalDiffusivity:
-    value: 31.5
+    value: 0.28
     unit: cm²/s
-    confidence: 85
-    description: Thermal diffusivity at room temperature
-    min: 0
-    max: 191.376
-  specificHeat:
-    value: 129.1
-    unit: J/kg·K
     confidence: 88
+    description: Thermal diffusivity at room temperature
+    min: 0.2
+    max: 174
+  specificHeat:
+    value: 0.131
+    unit: J/g·K
+    confidence: 91
     description: Specific heat capacity at 25°C
-    min: 0
-    max: 1994.6
+    min: 100
+    max: 900
   absorptionCoefficient:
     value: 0.65
-    unit: ''
+    unit: dimensionless
     confidence: 82
-    description: Average absorption coefficient for visible to near-IR wavelengths
+    description: Estimated absorption coefficient for 1064nm laser wavelength
     min: null
     max: null
   reflectivity:
     value: 0.78
-    unit: ''
+    unit: dimensionless
     confidence: 84
-    description: Average reflectivity in visible spectrum
+    description: Reflectivity at 1064nm wavelength
     min: null
     max: null
   ablationThreshold:
     value: 2.8
     unit: J/cm²
     confidence: 80
-    description: Estimated ablation threshold for nanosecond lasers at 1064 nm
+    description: Estimated laser ablation threshold for nanosecond pulses at 1064nm
     min: null
     max: null
   oxidationResistance:
-    value: 2000
-    unit: °C
-    confidence: 90
-    description: Temperature limit for significant oxidation in air
+    value: Excellent
+    unit: qualitative
+    confidence: 95
+    description: Maintains stability in air up to 1600°C, forms protective oxide layer
     min: null
     max: null
   crystallineStructure:
     value: FCC
     unit: crystal system
-    confidence: 95
+    confidence: 98
     description: Face-centered cubic structure with lattice parameter 3.839 Å
     min: null
     max: null
-  laserAbsorption:
-    confidence: 0.7
-    max: 100.0
-    min: 0.02
-    source: default_from_category_range
-    unit: cm⁻¹
-    value: 38.7
-  laserReflectivity:
-    confidence: 0.7
-    max: 98.0
-    min: 5.0
-    source: default_from_category_range
-    unit: '%'
-    value: 51.5
-  thermalDestructionPoint:
-    confidence: 0.7
-    max: 3422.0
-    min: -38.8
-    source: default_from_category_range
-    unit: °C
-    value: 1691.6
-  thermalDestructionType:
-    confidence: 0.8
-    source: category_default
-    value: 2716.0
+  thermalShockResistance:
+    value: High
+    unit: qualitative
+    confidence: 87
+    description: Excellent resistance to thermal shock due to high melting point and
+      strength
+    min: null
+    max: null
 applications:
-- 'Medical: Sterilization and cleaning of medical devices and instruments'
-- 'Food Processing: Sanitary surface cleaning for food processing equipment'
-- 'Jewelry: Precision cleaning and polishing of precious metal jewelry'
+- Aerospace
+- Medical Devices
+- Electronics Manufacturing
+- Chemical Processing
+- Jewelry and Luxury Goods
+- Research and Laboratory
+- Automotive High-Performance
+- Energy Sector
+- Marine and Offshore
+- Cultural Heritage
 machineSettings:
   powerRange:
     value: 45
     unit: W
     confidence: 90
-    description: Optimal average power for Iridium oxide removal without substrate damage
+    description: Optimal average power for Iridium oxide removal without substrate
+      damage
     min: 30
     max: 60
   wavelength:
     value: 1064
     unit: nm
-    confidence: 92
-    description: Near-IR wavelength optimized for Iridium's absorption characteristics
-    min: 355
-    max: 10640
+    confidence: 88
+    description: Near-IR wavelength with good absorption in Iridium oxides and contaminants
+    min: 532
+    max: 1064
   spotSize:
-    value: 80
+    value: 50
     unit: μm
     confidence: 84
-    description: Optimal beam diameter for precise Iridium surface treatment
-    min: 50
-    max: 120
+    description: Beam spot diameter for precise cleaning with adequate energy density
+    min: 30
+    max: 100
   repetitionRate:
-    value: 100
+    value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient Iridium cleaning process
-    min: 50
-    max: 200
-  fluenceThreshold:
-    value: 2.8
-    unit: J/cm²
-    confidence: 88
-    description: Minimum fluence required for effective Iridium contamination ablation
-    min: 1.5
-    max: 4.5
+    description: High repetition rate for efficient cleaning coverage while maintaining
+      pulse energy
+    min: 20
+    max: 100
   pulseWidth:
-    value: 15
+    value: 8
     unit: ns
     confidence: 85
-    description: Optimal pulse duration for controlled Iridium surface cleaning
-    min: 8
-    max: 25
+    description: Nanosecond pulse duration for efficient contaminant removal with
+      minimal thermal diffusion
+    min: 5
+    max: 15
+  fluence:
+    value: 2.8
+    unit: J/cm²
+    confidence: 91
+    description: Optimal fluence for Iridium oxide ablation threshold
+    min: 1.5
+    max: 4.0
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform Iridium cleaning
+    description: Optimal scanning speed for efficient coverage with sufficient pulse
+      overlap
     min: 200
-    max: 800
+    max: 1000
   overlapRatio:
-    value: 50
+    value: 40
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for complete Iridium surface coverage
-    min: 40
-    max: 70
+    description: Pulse overlap percentage for uniform cleaning without excessive heat
+      accumulation
+    min: 30
+    max: 60
   passCount:
     value: 3
     unit: passes
-    confidence: 85
-    description: Recommended number of passes for thorough Iridium contamination removal
+    confidence: 89
+    description: Number of cleaning passes for complete contaminant removal
     min: 1
     max: 5
-  energyDensity:
-    value: 3.5
-    unit: J/cm²
-    confidence: 89
-    description: Optimal energy density for Iridium surface processing
-    min: 2.0
-    max: 5.0
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
 - IEC 60825 - Safety of Laser Products
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author:
+  id: 4
+  name: Todd Dunning
+  sex: m
+  title: MA
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  image: /images/author/todd-dunning.jpg
 images:
   hero:
     alt: Iridium surface undergoing laser cleaning showing precise contamination removal
-    url: /images/iridium-laser-cleaning-hero.jpg
+    url: /images/material/iridium-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Iridium surface after laser cleaning showing detailed
+      surface structure
+    url: /images/material/iridium-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -229,56 +236,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-applicationTypes:
-- type: Precision Cleaning
-  description: High-precision removal of microscopic contaminants and residues
-  industries:
-  - Semiconductor
-  - MEMS
-  - Optics
-  - Medical Devices
-  qualityMetrics:
-  - Particle count reduction
-  - Surface roughness maintenance
-  - Chemical purity
-  typicalTolerances: Sub-micron accuracy with minimal substrate impact
-  objectives: []
-- type: Surface Preparation
-  description: Preparation of surfaces for bonding, coating, or further processing
-  industries:
-  - Aerospace
-  - Automotive
-  - Manufacturing
-  - Construction
-  qualityMetrics:
-  - Surface energy
-  - Cleanliness level
-  - Roughness profile
-  typicalTolerances: ''
-  objectives:
-  - Adhesion enhancement
-  - Contamination removal
-  - Surface activation
-- type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
-  industries:
-  - Cultural Heritage
-  - Architecture
-  - Art Conservation
-  - Historical Restoration
-  qualityMetrics: []
-  typicalTolerances: ''
-  objectives: []
-- type: Contamination Removal
-  description: General removal of unwanted surface deposits and contaminants
-  industries:
-  - Manufacturing
-  - Marine
-  - Oil & Gas
-  - Power Generation
-  qualityMetrics: []
-  typicalTolerances: ''
-  objectives: []
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -313,35 +270,20 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units: []
-author:
-  id: 4
-  name: Todd Dunning
-  sex: m
-  title: MA
-  country: United States (California)
-  expertise: Optical Materials for Laser Systems
-  image: /images/author/todd-dunning.jpg
 caption:
-  beforeText: 'At 500x magnification, the iridium surface is obscured by a non-uniform contamination layer approximately 2-5
-    micrometers thick. This layer consists of amorphous carbonaceous deposits and fine, embedded particulate matter, creating
-    a topographically complex and textured landscape. The surface exhibits a matte, dark gray appearance with localized discoloration,
-    indicating varying chemical compositions of the contaminants.
-
-
-    The contamination does not form a continuous film but rather appears as agglomerated islands, creating peaks and valleys
-    across the surface. This morphology suggests a history of exposure to high-temperature organic compounds or oxidizing
-    environments. The underlying iridium''s metallic luster is completely absent, and the original surface finish is undetectable
-    beneath this insulating layer, which would significantly impede thermal and electrical conductivity.'
-  afterText: 'Laser cleaning has completely removed the contamination layer, revealing the underlying iridium substrate. The
-    surface now exhibits a uniform, clean metallic luster with the characteristic grain structure of the polycrystalline metal
-    clearly visible. The previously obscured micro-topography is now fully resolved, showing a smooth surface free of particulate
-    matter and discoloration.
-
-
-    The transformation is evident in the restoration of iridium''s intrinsic reflectivity and the elimination of the insulating
-    contamination barrier. The cleaned surface displays minimal laser interaction marks, confirming the process''s selectivity
-    in removing contaminants without damaging the high-value substrate.'
-  description: Microscopic analysis of iridium surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the iridium surface is obscured by a non-uniform
+    contamination layer, approximately 5-15 µm thick. This layer exhibits a complex
+    topography of particulate inclusions and amorphous oxide scales, which mask the
+    underlying metal's grain structure. The contaminants form a discontinuous, textured
+    crust with visible cracking and spallation, indicative of poor adhesion and thermal
+    stress mismatch with the dense iridium substrate.
+  afterText: Laser cleaning has fully restored the intrinsic iridium surface. The
+    contamination layer is entirely removed, revealing a clean, well-defined grain
+    structure with sub-micron surface roughness. The surface now exhibits minimal
+    laser interaction marks, confirming the process operated effectively below the
+    material's ablation threshold.
+  description: Microscopic analysis of iridium surface before and after laser cleaning
+    treatment
   alt: Microscopic view of iridium surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -349,31 +291,29 @@ caption:
     - iridium_specific
     contaminationProfile: iridium surface contamination
   microscopy:
-    parameters: Microscopic analysis of iridium
+    parameters: Microscopic analysis of Iridium
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: '2025-09-30T20:23:31.829788Z'
+    timestamp: '2025-10-02T00:00:00.000000Z'
     generator: FrontmatterCaptionGenerator
-    componentType: ai_caption_frontmatter
+    componentType: template_caption
   author: Todd Dunning
   materialProperties:
     materialType: Metal
-    analysisMethod: ai_microscopy
+    analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Iridium surface after laser cleaning showing detailed surface structure
-    url: /images/iridium-laser-cleaning-micro.jpg
-metadata:
-  lastUpdated: '2025-09-30T20:23:45.485973'
-  captionIntegrated: true
+    alt: Microscopic view of Iridium surface after laser cleaning showing detailed
+      surface structure
+    url: /images/material/iridium-laser-cleaning-micro.jpg
 tags:
 - metal
-- medical
-- food-processing
-- jewelry
-- absorptive
+- manufacturing
+- aerospace
+- automotive
+- decoating
+- oxide-removal
+- surface-preparation
+- reflective-surface
 - conductive
-- durable
-- dense
-- strong
 - todd-dunning

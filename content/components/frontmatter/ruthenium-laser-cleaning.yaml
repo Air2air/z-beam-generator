@@ -2,7 +2,7 @@ name: Ruthenium
 category: Metal
 subcategory: Ruthenium
 title: Ruthenium Laser Cleaning
-description: Laser cleaning parameters for Aluminum
+description: Laser cleaning parameters for Ruthenium
 materialProperties:
   density:
     value: 12.45
@@ -11,205 +11,201 @@ materialProperties:
     description: Density of pure ruthenium at 20°C
     min: 0.53
     max: 22.6
+  meltingPoint:
+    value: 2334
+    unit: °C
+    confidence: 97
+    description: Melting point of pure ruthenium
+    min: null
+    max: null
   thermalConductivity:
-    value: 117.0
+    value: 117
     unit: W/m·K
     confidence: 90
     description: Thermal conductivity at room temperature
     min: 6.0
     max: 429.0
   hardness:
-    value: 2200.0
+    value: 6.5
     unit: Mohs
-    confidence: 90
-    description: Mohs hardness scale value
-    min: 0
-    max: 3772.91
+    confidence: 86
+    description: Mohs hardness scale
+    min: 0.5
+    max: 3500
   youngsModulus:
-    value: 423.0
+    value: 447
     unit: GPa
-    confidence: 94
-    description: Young's modulus of polycrystalline ruthenium
-    min: 0
-    max: 579.82
+    confidence: 89
+    description: Young's modulus of elasticity
+    min: 5
+    max: 411
   thermalExpansion:
-    value: 9.1
+    value: 6.4
     unit: μm/m·K
     confidence: 88
     description: Coefficient of linear thermal expansion (20-100°C)
-    min: 1.7
-    max: 34.9
+    min: 0.5
+    max: 29.1
   thermalDiffusivity:
-    value: 24.1
+    value: 0.24
     unit: cm²/s
     confidence: 85
     description: Thermal diffusivity at room temperature
-    min: 0
-    max: 191.376
+    min: 0.2
+    max: 174
   specificHeat:
-    value: 238.06
+    value: 238
     unit: J/kg·K
     confidence: 92
     description: Specific heat capacity at 25°C
-    min: 0
-    max: 1994.6
+    min: 100
+    max: 900
   absorptionCoefficient:
-    value: 0.65
-    unit: ''
+    value: 0.45
+    unit: dimensionless
     confidence: 82
-    description: Estimated absorption coefficient for visible light (500-700 nm)
+    description: Estimated absorption coefficient for common laser wavelengths (500-1100
+      nm)
     min: null
     max: null
   reflectivity:
-    value: 0.72
-    unit: ''
-    confidence: 85
-    description: Optical reflectivity in visible spectrum
+    value: 0.65
+    unit: dimensionless
+    confidence: 84
+    description: Average reflectivity in visible to near-IR spectrum
     min: null
     max: null
   ablationThreshold:
     value: 2.8
     unit: J/cm²
     confidence: 80
-    description: Estimated laser ablation threshold for nanosecond pulses (1064 nm)
+    description: Estimated ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   oxidationResistance:
     value: 800
     unit: °C
-    confidence: 95
+    confidence: 91
     description: Temperature limit for significant oxidation in air
     min: null
     max: null
   crystallineStructure:
     value: HCP
-    unit: N/A
-    confidence: 99
-    description: Hexagonal Close-Packed crystal structure
+    unit: crystal system
+    confidence: 95
+    description: Hexagonal Close-Packed structure at room temperature
     min: null
     max: null
   electricalResistivity:
     value: 7.1
     unit: μΩ·cm
-    confidence: 96
+    confidence: 93
     description: Electrical resistivity at 20°C
     min: null
     max: null
-  laserAbsorption:
-    confidence: 0.7
-    max: 100.0
-    min: 0.02
-    source: default_from_category_range
-    unit: cm⁻¹
-    value: 42.7
-  laserReflectivity:
-    confidence: 0.7
-    max: 98.0
-    min: 5.0
-    source: default_from_category_range
-    unit: '%'
-    value: 67.2
-  tensileStrength:
-    confidence: 0.7
-    max: 3000.0
-    min: 3.0
-    source: default_from_category_range
-    unit: MPa
-    value: 497.0
-  thermalDestructionPoint:
-    confidence: 0.7
-    max: 3422.0
-    min: -38.8
-    source: default_from_category_range
-    unit: °C
-    value: 2607.0
-  thermalDestructionType:
-    confidence: 0.8
-    source: category_default
-    value: 2607.0
 applications:
-- 'Nuclear: Decontamination and surface cleaning in nuclear facilities'
-- 'Medical: Sterilization and cleaning of medical devices and instruments'
+- Electronics Manufacturing
+- Aerospace Components
+- Medical Device Manufacturing
+- Chemical Processing
+- Jewelry and Luxury Goods
+- Research and Laboratory
+- Energy Storage Systems
+- Marine Engineering
+- Automotive Electronics
+- Cultural Heritage Conservation
 machineSettings:
   powerRange:
     value: 45
     unit: W
     confidence: 90
-    description: Optimal average power for Ruthenium surface cleaning without substrate damage
+    description: Optimal average power for Ruthenium oxide removal without substrate
+      damage
     min: 30
     max: 60
   wavelength:
     value: 1064
     unit: nm
-    confidence: 89
+    confidence: 88
     description: Near-IR wavelength optimized for Ruthenium's moderate reflectivity
-    min: 355
-    max: 10640
+      and thermal processing
+    min: 532
+    max: 1064
   spotSize:
-    value: 80
+    value: 50
     unit: μm
     confidence: 86
-    description: Beam spot diameter for precise Ruthenium surface treatment
-    min: 50
-    max: 120
+    description: Beam spot diameter for precise cleaning control on Ruthenium surfaces
+    min: 30
+    max: 80
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning throughput
+    description: Optimal repetition rate balancing cleaning efficiency and thermal
+      management
     min: 20
     max: 100
-  fluenceThreshold:
-    value: 0.8
-    unit: J/cm²
-    confidence: 88
-    description: Threshold fluence for effective Ruthenium contaminant removal
-    min: 0.5
-    max: 1.2
   pulseWidth:
-    value: 15
+    value: 8
     unit: ns
     confidence: 85
-    description: Optimal pulse duration for controlled Ruthenium ablation
-    min: 8
-    max: 25
+    description: Nanosecond pulse duration for efficient oxide layer removal with
+      minimal thermal diffusion
+    min: 5
+    max: 15
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 84
-    description: Optimal scanning speed for uniform cleaning coverage
+    description: Optimal scanning speed for uniform oxide removal across Ruthenium
+      surface
     min: 300
     max: 800
+  fluenceThreshold:
+    value: 2.5
+    unit: J/cm²
+    confidence: 89
+    description: Minimum fluence required for effective Ruthenium oxide ablation
+    min: 1.8
+    max: 3.5
   overlapRatio:
-    value: 70
+    value: 40
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for complete surface coverage
-    min: 50
-    max: 85
+    description: Optimal beam overlap for complete coverage without excessive thermal
+      buildup
+    min: 30
+    max: 60
   passCount:
     value: 3
     unit: passes
-    confidence: 82
-    description: Recommended number of passes for thorough contaminant removal
-    min: 1
-    max: 5
-  energyDensity:
-    value: 2.5
-    unit: J/cm²
     confidence: 85
-    description: Optimal energy density for efficient Ruthenium cleaning
-    min: 1.5
-    max: 4.0
+    description: Recommended number of passes for thorough oxide removal from Ruthenium
+    min: 2
+    max: 5
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
 - IEC 60825 - Safety of Laser Products
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author:
+  id: 1
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg
 images:
   hero:
-    alt: Ruthenium surface undergoing laser cleaning showing precise contamination removal
-    url: /images/ruthenium-laser-cleaning-hero.jpg
+    alt: Ruthenium surface undergoing laser cleaning showing precise contamination
+      removal
+    url: /images/material/ruthenium-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Ruthenium surface after laser cleaning showing detailed
+      surface structure
+    url: /images/material/ruthenium-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -235,56 +231,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-applicationTypes:
-- type: Precision Cleaning
-  description: High-precision removal of microscopic contaminants and residues
-  industries:
-  - Semiconductor
-  - MEMS
-  - Optics
-  - Medical Devices
-  qualityMetrics:
-  - Particle count reduction
-  - Surface roughness maintenance
-  - Chemical purity
-  typicalTolerances: Sub-micron accuracy with minimal substrate impact
-  objectives: []
-- type: Surface Preparation
-  description: Preparation of surfaces for bonding, coating, or further processing
-  industries:
-  - Aerospace
-  - Automotive
-  - Manufacturing
-  - Construction
-  qualityMetrics:
-  - Surface energy
-  - Cleanliness level
-  - Roughness profile
-  typicalTolerances: ''
-  objectives:
-  - Adhesion enhancement
-  - Contamination removal
-  - Surface activation
-- type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
-  industries:
-  - Cultural Heritage
-  - Architecture
-  - Art Conservation
-  - Historical Restoration
-  qualityMetrics: []
-  typicalTolerances: ''
-  objectives: []
-- type: Contamination Removal
-  description: General removal of unwanted surface deposits and contaminants
-  industries:
-  - Manufacturing
-  - Marine
-  - Oil & Gas
-  - Power Generation
-  qualityMetrics: []
-  typicalTolerances: ''
-  objectives: []
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -319,34 +265,20 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units: []
-author:
-  id: 4
-  name: Todd Dunning
-  sex: m
-  title: MA
-  country: United States (California)
-  expertise: Optical Materials for Laser Systems
-  image: /images/author/todd-dunning.jpg
 caption:
-  beforeText: 'At 500x magnification, the ruthenium surface is obscured by a non-uniform contamination layer, approximately
-    5-15 micrometers thick. This layer appears as a matte, amorphous crust with a fine, granular texture, composed of embedded
-    particulate and tenacious oxide films. The underlying metallic substrate is not visible, and the surface morphology is
-    characterized by a high degree of micro-roughness, with visible pitting and fissures running through the contaminant.
-
-
-    The contamination adheres in a patchy, discontinuous pattern, creating stark topographical contrast. The original HCP
-    (Hexagonal Close-Packed) crystalline grain structure of the ruthenium is entirely masked. The layer''s low reflectivity
-    results in a dull, non-metallic appearance, with light scattering diffusely from the rough, contaminated surface.'
-  afterText: 'Following laser cleaning, the surface transformation is evident. The contamination layer has been completely
-    removed, revealing the pristine, underlying ruthenium substrate. The surface now exhibits a high degree of reflectivity,
-    with the characteristic metallic luster of the pure metal restored.
-
-
-    The original polycrystalline grain structure is now clearly visible, with well-defined grain boundaries. The surface is
-    smooth and continuous, with the micro-roughness and pitting eliminated. At 500x, the surface appears as a coherent, solid
-    metal, with laser scan lines indicating the precise, layer-by-layer ablation process that selectively removed contaminants
-    without damaging the base material.'
-  description: Microscopic analysis of ruthenium surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the ruthenium surface is obscured by a non-uniform
+    contamination layer, approximately 2-5 µm thick. This layer, composed of oxides
+    and embedded carbonaceous particulates, creates a topographically complex and
+    textured surface. The underlying metallic substrate is largely hidden, with visible
+    micro-cracking and a general loss of surface definition due to the pervasive,
+    matte-finish coating.
+  afterText: Laser cleaning removes the contamination layer, revealing the pristine,
+    polycrystalline grain structure of the ruthenium substrate. The surface now exhibits
+    high reflectivity and a well-defined, clean micro-topography. The process eliminates
+    surface oxides and particulates without inducing micro-fractures, restoring the
+    intrinsic metallic luster and sharp grain boundaries of the base material.
+  description: Microscopic analysis of ruthenium surface before and after laser cleaning
+    treatment
   alt: Microscopic view of ruthenium surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -354,31 +286,29 @@ caption:
     - ruthenium_specific
     contaminationProfile: ruthenium surface contamination
   microscopy:
-    parameters: Microscopic analysis of ruthenium
+    parameters: Microscopic analysis of Ruthenium
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: '2025-09-30T20:31:36.536209Z'
+    timestamp: '2025-10-02T00:00:00.000000Z'
     generator: FrontmatterCaptionGenerator
-    componentType: ai_caption_frontmatter
-  author: Todd Dunning
+    componentType: template_caption
+  author: Yi-Chun Lin
   materialProperties:
     materialType: Metal
-    analysisMethod: ai_microscopy
+    analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Ruthenium surface after laser cleaning showing detailed surface structure
-    url: /images/ruthenium-laser-cleaning-micro.jpg
-metadata:
-  lastUpdated: '2025-09-30T20:31:50.134960'
-  captionIntegrated: true
+    alt: Microscopic view of Ruthenium surface after laser cleaning showing detailed
+      surface structure
+    url: /images/material/ruthenium-laser-cleaning-micro.jpg
 tags:
 - metal
-- nuclear
-- medical
-- absorptive
+- manufacturing
+- aerospace
+- automotive
+- decoating
+- oxide-removal
+- surface-preparation
+- reflective-surface
 - conductive
-- durable
-- dense
-- strong
-- rigid
-- todd-dunning
+- yi-chun-lin

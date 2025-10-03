@@ -11,208 +11,185 @@ materialProperties:
     description: Density of amorphous polycarbonate at room temperature
     min: 0.85
     max: 2.2
+  meltingPoint:
+    value: 155
+    unit: °C
+    confidence: 90
+    description: Glass transition temperature (Tg) - polycarbonate softens rather
+      than melts sharply
+    min: null
+    max: null
   thermalConductivity:
     value: 0.2
     unit: W/m·K
     confidence: 88
-    description: Low thermal conductivity typical of polymers
+    description: Low thermal conductivity typical of amorphous polymers
     min: 0.02
     max: 3
   tensileStrength:
-    value: 65.0
+    value: 65
     unit: MPa
     confidence: 92
     description: Ultimate tensile strength
     min: 10
     max: 400
   hardness:
-    value: 85.0
-    unit: Rockwell M
+    value: 118
+    unit: Rockwell R
     confidence: 85
-    description: Rockwell M scale hardness
-    min: null
-    max: null
+    description: Rockwell R scale hardness
+    min: Shore A 10
+    max: Shore D 90
   youngsModulus:
-    value: 2340.0
+    value: 2.4
     unit: GPa
     confidence: 94
     description: Elastic modulus in tension
-    min: 0
-    max: 3629.98
+    min: 0.01
+    max: 5
   thermalExpansion:
-    value: 68.0
+    value: 70
     unit: 10⁻⁶/°C
     confidence: 85
     description: Coefficient of linear thermal expansion
     min: 10
     max: 200
   specificHeat:
-    value: 1250.0
+    value: 1200
     unit: J/kg·K
     confidence: 87
     description: Specific heat capacity at room temperature
-    min: 800.0
-    max: 2000.0
+    min: 1000
+    max: 2500
   absorptionCoefficient:
-    value: 0.8
-    unit: cm⁻¹
+    value: 0.85
+    unit: cm⁻¹ at 1064 nm
     confidence: 82
-    description: Approximate absorption coefficient for near-IR lasers
+    description: Absorption coefficient for near-infrared laser wavelengths
     min: null
     max: null
   refractiveIndex:
-    value: 1.586
-    unit: ''
+    value: 1.585
+    unit: dimensionless
     confidence: 96
     description: Refractive index at 589 nm
     min: null
     max: null
   ablationThreshold:
-    value: 0.5
+    value: 0.8
     unit: J/cm²
     confidence: 80
-    description: Approximate ablation threshold for nanosecond lasers at 1064 nm
+    description: Approximate laser ablation threshold for nanosecond pulses at 1064
+      nm
     min: null
     max: null
   laserDamageThreshold:
-    value: 2.0
+    value: 1.2
     unit: J/cm²
     confidence: 82
-    description: Damage threshold for short pulse lasers
+    description: Damage threshold for continuous wave laser exposure
     min: null
     max: null
-  thermalDiffusivity:
-    value: 0.52
-    unit: mm²/s
-    confidence: 84
-    description: Thermal diffusivity calculated from thermal properties
-    min: 0.05
-    max: 1
-  flexuralStrength:
-    value: 93
-    unit: MPa
-    confidence: 90
-    description: Flexural strength at yield
+  chemicalStability:
+    value: Moderate
+    unit: qualitative
+    confidence: 88
+    description: Resistant to weak acids and alcohols, attacked by strong bases and
+      hydrocarbons
     min: null
     max: null
-  transmissivity:
-    value: 88
-    unit: '%'
-    confidence: 92
-    description: Visible light transmission for clear polycarbonate
+  crystallineStructure:
+    value: Amorphous
+    unit: qualitative
+    confidence: 98
+    description: Polycarbonate is typically amorphous with no long-range order
     min: null
     max: null
-  laserAbsorption:
-    confidence: 0.7
-    max: 100.0
-    min: 0.1
-    source: default_from_category_range
-    unit: cm⁻¹
-    value: 65.2
-  laserReflectivity:
-    confidence: 0.7
-    max: 95.0
-    min: 5.0
-    source: default_from_category_range
-    unit: '%'
-    value: 4.2
-  thermalDestructionPoint:
-    confidence: 0.7
-    max: 400.0
-    min: 80.0
-    source: default_from_category_range
-    unit: °C
-    value: 270.0
-  thermalDestructionType:
-    confidence: 0.8
-    source: category_default
-    value: 425.0
 applications:
-- 'Automotive: Paint removal and surface preparation for automotive parts'
-- 'Aerospace: Precision cleaning of aerospace components and assemblies'
-- 'Electronics: Precision cleaning of electronic components and circuit boards'
+- Aerospace
+- Automotive
+- Medical Devices
+- Electronics Manufacturing
+- Marine Equipment
+- Cultural Heritage
+- Optical Manufacturing
+- Energy Sector
+- Food Processing
+- Construction Materials
 machineSettings:
   powerRange:
-    value: 100
+    value: 90
     unit: W
     confidence: 92
-    description: Optimal average power range for Polycarbonate cleaning without thermal damage
-    min: 80
-    max: 120
+    description: Optimal average power for Polycarbonate surface cleaning without
+      thermal damage
+    min: 70
+    max: 110
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Optimal wavelength considering Polycarbonate's absorption characteristics
-    min: 355
-    max: 10640
+    description: Near-IR wavelength providing good absorption in Polycarbonate with
+      minimal surface damage risk
+    min: 532
+    max: 1064
   spotSize:
-    value: 50
+    value: 80
     unit: μm
-    confidence: 89
-    description: Optimal beam spot diameter for precision cleaning
-    min: 30
-    max: 100
-  repetitionRate:
-    value: 100
-    unit: kHz
-    confidence: 90
-    description: Optimal repetition rate for efficient cleaning throughput
+    confidence: 84
+    description: Beam spot diameter for precise cleaning with sufficient energy density
     min: 50
-    max: 200
-  fluenceThreshold:
-    value: 0.8
-    unit: J/cm²
-    confidence: 88
-    description: Ablation threshold fluence for Polycarbonate surface cleaning
-    min: 0.5
-    max: 1.2
-  energyDensity:
-    value: 1.5
-    unit: J/cm²
-    confidence: 85
-    description: Optimal energy density for effective contaminant removal
-    min: 1.0
-    max: 2.0
-  pulseWidth:
-    value: 10
-    unit: ns
+    max: 120
+  repetitionRate:
+    value: 50
+    unit: kHz
     confidence: 87
-    description: Optimal pulse duration for controlled ablation with minimal thermal effects
-    min: 5
+    description: Optimal repetition rate for efficient cleaning with adequate cooling
+      between pulses
+    min: 20
+    max: 100
+  pulseWidth:
+    value: 12
+    unit: ns
+    confidence: 85
+    description: Nanosecond pulse duration for effective contaminant removal while
+      minimizing thermal effects
+    min: 8
     max: 20
   scanSpeed:
-    value: 1000
+    value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform surface treatment
-    min: 500
-    max: 2000
-  passCount:
-    value: 3
-    unit: passes
-    confidence: 91
-    description: Optimal number of passes for complete contaminant removal
-    min: 1
-    max: 5
+    description: Optimal scanning speed for uniform cleaning coverage
+    min: 300
+    max: 800
+  energyDensity:
+    value: 1.8
+    unit: J/cm²
+    confidence: 90
+    description: Fluence threshold for effective contaminant removal without substrate
+      damage
+    min: 1.2
+    max: 2.5
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 85
-    description: Optimal beam overlap for uniform coverage
-    min: 30
+    confidence: 83
+    description: Optimal beam overlap for uniform cleaning without excessive thermal
+      buildup
+    min: 40
     max: 70
-  dwellTime:
-    value: 100
-    unit: μs
-    confidence: 84
-    description: Optimal dwell time per treatment area
-    min: 50
-    max: 200
+  passCount:
+    value: 2
+    unit: passes
+    confidence: 85
+    description: Recommended number of passes for complete contaminant removal
+    min: 1
+    max: 4
   laserType:
-    value: Nd:YAG
-    unit: n/a
-    confidence: 90
+    value: Fiber Laser
+    unit: N/A
+    confidence: 89
     description: Recommended laser type for Polycarbonate cleaning applications
     min: null
     max: null
@@ -221,10 +198,23 @@ regulatoryStandards:
 - ANSI Z136.1 - Safe Use of Lasers
 - IEC 60825 - Safety of Laser Products
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author:
+  id: 1
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg
 images:
   hero:
-    alt: Polycarbonate surface undergoing laser cleaning showing precise contamination removal
-    url: /images/polycarbonate-laser-cleaning-hero.jpg
+    alt: Polycarbonate surface undergoing laser cleaning showing precise contamination
+      removal
+    url: /images/material/polycarbonate-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Polycarbonate surface after laser cleaning showing detailed
+      surface structure
+    url: /images/material/polycarbonate-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -250,56 +240,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-applicationTypes:
-- type: Precision Cleaning
-  description: High-precision removal of microscopic contaminants and residues
-  industries:
-  - Semiconductor
-  - MEMS
-  - Optics
-  - Medical Devices
-  qualityMetrics:
-  - Particle count reduction
-  - Surface roughness maintenance
-  - Chemical purity
-  typicalTolerances: Sub-micron accuracy with minimal substrate impact
-  objectives: []
-- type: Surface Preparation
-  description: Preparation of surfaces for bonding, coating, or further processing
-  industries:
-  - Aerospace
-  - Automotive
-  - Manufacturing
-  - Construction
-  qualityMetrics:
-  - Surface energy
-  - Cleanliness level
-  - Roughness profile
-  typicalTolerances: ''
-  objectives:
-  - Adhesion enhancement
-  - Contamination removal
-  - Surface activation
-- type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
-  industries:
-  - Cultural Heritage
-  - Architecture
-  - Art Conservation
-  - Historical Restoration
-  qualityMetrics: []
-  typicalTolerances: ''
-  objectives: []
-- type: Contamination Removal
-  description: General removal of unwanted surface deposits and contaminants
-  industries:
-  - Manufacturing
-  - Marine
-  - Oil & Gas
-  - Power Generation
-  qualityMetrics: []
-  typicalTolerances: ''
-  objectives: []
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -334,40 +274,21 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units: []
-author:
-  id: 1
-  name: Yi-Chun Lin
-  sex: f
-  title: Ph.D.
-  country: Taiwan
-  expertise: Laser Materials Processing
-  image: /images/author/yi-chun-lin.jpg
 caption:
-  beforeText: 'At 500x magnification, the polycarbonate surface is obscured by a non-uniform contamination layer, approximately
-    5-15 micrometers thick. This layer consists of embedded particulate matter and a film of organic residues, which create
-    a topographically complex and textured landscape. The particulates, ranging from 2 to 10 micrometers in diameter, are
-    firmly adhered to the substrate.
-
-
-    The underlying polycarbonate is largely invisible, with its characteristic smoothness and optical clarity masked by this
-    discontinuous coating. The contamination scatters light intensely, resulting in a matte, hazy appearance even at the microscopic
-    level. The irregular coverage and varying layer thickness indicate a complex adhesion mechanism between the contaminants
-    and the polymer surface.'
-  afterText: 'Following laser cleaning, the 500x magnification reveals a complete transformation. The thick, textured contamination
-    layer has been entirely removed, exposing the native polycarbonate substrate. The surface is now predominantly smooth
-    and featureless, with the laser''s scanning pattern faintly visible as a series of parallel, overlapping tracks.
-
-
-    The removal process has exposed minor, pre-existing sub-surface features, such as flow lines from the original molding
-    process, which were previously hidden. These are now the most prominent features, confirming that material removal was
-    confined to the contamination layer and did not significantly ablate the base polymer. The high optical clarity of the
-    polycarbonate is restored, as evidenced by the minimal light scattering.
-
-
-    Analysis confirms the process successfully ablated the contamination without exceeding the material''s damage threshold
-    of approximately 2.0 J/cm². The surface is now chemically clean and morphologically uniform, providing an optimal foundation
-    for subsequent processing, such as adhesion for coatings or bonding.'
-  description: Microscopic analysis of polycarbonate surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the polycarbonate surface is obscured by a non-uniform
+    contamination layer, typically 5-20 µm thick. This layer consists of embedded
+    particulate matter, hydrocarbon films, and micro-fissures that scatter light and
+    degrade optical clarity. The underlying polymer texture is masked, and the contaminants
+    form a topographical map of surface defects, which can act as stress concentrators,
+    compromising the material's mechanical integrity and adhesion properties.
+  afterText: Following laser cleaning, the surface at 500x magnification reveals the
+    native amorphous polymer structure. The contamination layer is completely removed,
+    restoring a uniform surface topography with sub-micron roughness. The laser process
+    selectively ablates contaminants without melting the bulk substrate, leaving a
+    chemically pure polycarbonate surface. This results in restored optical transmission
+    and a pristine base for subsequent coating or bonding operations.
+  description: Microscopic analysis of polycarbonate surface before and after laser
+    cleaning treatment
   alt: Microscopic view of polycarbonate surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -375,31 +296,29 @@ caption:
     - polycarbonate_specific
     contaminationProfile: polycarbonate surface contamination
   microscopy:
-    parameters: Microscopic analysis of polycarbonate
+    parameters: Microscopic analysis of Polycarbonate
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: '2025-09-30T20:28:00.479220Z'
+    timestamp: '2025-10-02T00:00:00.000000Z'
     generator: FrontmatterCaptionGenerator
-    componentType: ai_caption_frontmatter
+    componentType: template_caption
   author: Yi-Chun Lin
   materialProperties:
     materialType: Plastic
-    analysisMethod: ai_microscopy
+    analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Polycarbonate surface after laser cleaning showing detailed surface structure
-    url: /images/polycarbonate-laser-cleaning-micro.jpg
-metadata:
-  lastUpdated: '2025-09-30T20:28:15.510297'
-  captionIntegrated: true
+    alt: Microscopic view of Polycarbonate surface after laser cleaning showing detailed
+      surface structure
+    url: /images/material/polycarbonate-laser-cleaning-micro.jpg
 tags:
 - plastic
-- automotive
-- aerospace
-- electronics
-- insulating
-- durable
-- lightweight
-- expansive
-- rigid
+- manufacturing
+- industrial
+- processing
+- surface-preparation
+- contamination-removal
+- maintenance
+- thermal-sensitive
+- industrial-grade
 - yi-chun-lin

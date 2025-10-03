@@ -2,61 +2,54 @@ name: Silicon Carbide
 category: Semiconductor
 subcategory: Silicon Carbide
 title: Silicon Carbide Laser Cleaning
-description: Laser cleaning parameters for Gallium Arsenide
+description: Laser cleaning parameters for Silicon Carbide
 materialProperties:
   density:
     value: 3.21
     unit: g/cm³
     confidence: 97
-    description: Density of sintered alpha silicon carbide at room temperature
+    description: Theoretical density of pure silicon carbide
     min: 2.33
     max: 7.13
   meltingPoint:
     value: 2730
     unit: °C
     confidence: 95
-    description: Decomposition temperature rather than true melting point under standard pressure
+    description: Decomposition temperature rather than true melting point
     min: null
     max: null
   thermalConductivity:
     value: 120
     unit: W/m·K
     confidence: 92
-    description: Thermal conductivity of high-purity SiC at room temperature
+    description: Thermal conductivity for high-purity SiC at room temperature
     min: 0.2
     max: 156
   hardness:
     value: 2800
-    unit: kgf/mm²
+    unit: kg/mm²
     confidence: 94
-    description: Knoop hardness (HK) at room temperature
+    description: Knoop hardness for alpha silicon carbide
     min: 2
     max: 9.5
   youngsModulus:
     value: 410
     unit: GPa
     confidence: 96
-    description: Elastic modulus of sintered silicon carbide
+    description: Elastic modulus for sintered silicon carbide
     min: 5
     max: 190
   thermalExpansion:
     value: 4.3
     unit: ×10⁻⁶/K
     confidence: 90
-    description: Coefficient of thermal expansion (20-1000°C) for alpha-SiC
+    description: Coefficient of thermal expansion at 20-1000°C
     min: 2.6
     max: 10
-  thermalDiffusivity:
-    value: 65
-    unit: mm²/s
-    confidence: 88
-    description: Thermal diffusivity at room temperature for high thermal conductivity grade
-    min: 0.1
-    max: 90
   specificHeat:
-    value: 750
+    value: 670
     unit: J/kg·K
-    confidence: 91
+    confidence: 88
     description: Specific heat capacity at room temperature
     min: 300
     max: 900
@@ -64,122 +57,124 @@ materialProperties:
     value: 450
     unit: MPa
     confidence: 89
-    description: Room temperature flexural strength of sintered SiC
+    description: Room temperature flexural strength
     min: null
     max: null
   absorptionCoefficient:
-    value: 850
+    value: 150
     unit: cm⁻¹
     confidence: 85
-    description: Absorption coefficient at 1064 nm wavelength
+    description: Approximate absorption coefficient at 1064 nm wavelength
     min: null
     max: null
   reflectivity:
     value: 0.21
     unit: dimensionless
-    confidence: 83
+    confidence: 82
     description: Reflectivity at 1064 nm for polished surface
     min: null
     max: null
   ablationThreshold:
-    value: 2.8
+    value: 2.5
     unit: J/cm²
-    confidence: 82
-    description: Laser ablation threshold for nanosecond pulses at 1064 nm
-    min: null
-    max: null
-  laserDamageThreshold:
-    value: 15
-    unit: J/cm²
-    confidence: 80
-    description: Damage threshold for millisecond pulses at 1064 nm
+    confidence: 83
+    description: Approximate ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   oxidationResistance:
     value: 1600
     unit: °C
-    confidence: 93
-    description: Maximum service temperature in oxidizing atmosphere
+    confidence: 91
+    description: Maximum service temperature in oxidizing environments
     min: null
     max: null
   crystallineStructure:
     value: Hexagonal
-    unit: crystal system
+    unit: n/a
     confidence: 98
-    description: Alpha-SiC (6H polytype) crystalline structure
+    description: Alpha-phase (6H) crystal structure most common
     min: null
     max: null
-  thermalShockResistance:
-    value: 350
-    unit: ΔT °C
+  thermalDiffusivity:
+    value: 56
+    unit: mm²/s
     confidence: 87
-    description: Critical temperature difference for thermal shock failure in water quench
-    min: null
-    max: null
+    description: Thermal diffusivity at room temperature
+    min: 0.1
+    max: 90
 applications:
-- 'Electronics: Precision cleaning of electronic components and circuit boards'
+- Semiconductor Manufacturing
+- Aerospace
+- Automotive
+- Power Electronics
+- Medical Devices
+- Research and Development
+- Renewable Energy
+- Defense Systems
+- Industrial Manufacturing
+- Optoelectronics
 machineSettings:
   powerRange:
     value: 90
     unit: W
     confidence: 92
-    description: Optimal average power for SiC surface cleaning without substrate damage
+    description: Optimal average power for SiC surface cleaning without thermal damage
     min: 70
-    max: 120
+    max: 110
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimized for SiC absorption and thermal processing
+    description: Near-IR wavelength optimized for SiC absorption characteristics
     min: 532
     max: 1064
   spotSize:
     value: 80
     unit: μm
     confidence: 84
-    description: Beam spot diameter for precise cleaning resolution
+    description: Beam spot diameter for precise cleaning control
     min: 50
-    max: 150
+    max: 120
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning with thermal management
+    description: Optimal repetition rate for efficient cleaning coverage
     min: 20
     max: 100
   pulseWidth:
     value: 12
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for controlled ablation of contaminants
+    description: Nanosecond pulse duration for effective contaminant removal
     min: 8
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform cleaning coverage
+    description: Optimal scanning speed for uniform cleaning
     min: 300
     max: 800
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Minimum fluence required for effective contaminant removal
+    description: Fluence threshold for SiC surface cleaning
     min: 1.8
-    max: 4.0
+    max: 3.5
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive heat accumulation
+    description: Optimal beam overlap for uniform coverage
     min: 40
-    max: 70
+    max: 60
   passCount:
     value: 3
     unit: passes
-    confidence: 85
-    description: Recommended number of passes for complete contaminant removal
+    confidence: 82
+    description: Recommended number of passes for complete cleaning
     min: 2
     max: 5
 regulatoryStandards:
@@ -188,19 +183,21 @@ regulatoryStandards:
 - IEC 60825 - Safety of Laser Products
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author:
-  id: 3
-  name: Ikmanda Roswati
-  sex: m
+  id: 1
+  name: Yi-Chun Lin
+  sex: f
   title: Ph.D.
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  image: /images/author/ikmanda-roswati.jpg
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg
 images:
   hero:
-    alt: Silicon Carbide surface undergoing laser cleaning showing precise contamination removal
+    alt: Silicon Carbide surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/silicon-carbide-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Silicon Carbide surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Silicon Carbide surface after laser cleaning showing
+      detailed surface structure
     url: /images/material/silicon-carbide-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -262,27 +259,64 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  before_text: At 500x magnification, the silicon carbide surface is obscured by a non-uniform contamination layer, typically
-    5-20 µm thick. This layer consists of particulate matter, such as alumina or silica dust, embedded in a matrix of hydrocarbon
-    residues. The underlying SiC microstructure, including its characteristic grain boundaries, is entirely masked. The surface
-    texture appears matte and irregular, with contamination accumulating preferentially in microscopic surface valleys, creating
-    a topographically complex and optically obstructive film.
-  after_text: 'Following laser cleaning, the surface reveals the intrinsic polycrystalline structure of the sintered silicon
-    carbide. Individual grains and their boundaries are now clearly defined and free of foreign material. The surface texture
-    is restored to its original state, exhibiting minimal topographical variation from the ablation process.
+  beforeText: 'At 500x magnification, the silicon carbide surface is obscured by a
+    non-uniform contamination layer. This layer, measuring 5-15 µm in thickness, consists
+    of carbonaceous soot, oxide scale, and adhered metallic particles. The contaminants
+    form a discontinuous, textured crust that masks the underlying substrate''s grain
+    structure and micro-features. The surface appears mottled, with agglomerated particles
+    creating a topographical profile that significantly deviates from the base material''s
+    intrinsic morphology.
 
 
-    The cleaning process has selectively removed the contamination layer without exceeding the material''s ablation threshold
-    of 2.8 J/cm², preserving the substrate''s integrity. The surface reflectivity has increased measurably, returning to its
-    nominal value of approximately 0.21 at 1064 nm. This results in a visually uniform and pristine surface, with no evidence
-    of thermal stress cracking or melting, confirming the non-contact precision of the method.'
+    The contamination adheres through a combination of van der Waals forces and chemical
+    bonds, forming a tenacious, light-absorbing film. This layer detrimentally impacts
+    surface-dependent properties, including thermal conductivity and electrical performance,
+    by creating an insulating barrier and disrupting the pristine SiC interface.'
+  afterText: 'Following laser cleaning, the surface at 500x magnification reveals
+    the pristine silicon carbide substrate. The contamination layer has been completely
+    ablated, exposing the material''s characteristic polycrystalline grain structure
+    and intrinsic micro-topography. The surface now exhibits minimal micro-fracturing,
+    with laser parameters carefully controlled to remain below the material''s ablation
+    threshold of 2.5 J/cm².
+
+
+    The visual transformation is marked by the restoration of surface reflectivity
+    and the distinct contrast between individual grains. The process has successfully
+    removed the insulating barrier, restoring the surface''s functional properties
+    for thermal management and semiconductor applications without inducing significant
+    subsurface damage.'
+  description: Microscopic analysis of silicon carbide surface before and after laser
+    cleaning treatment
+  alt: Microscopic view of silicon carbide surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - silicon carbide_specific
+    contaminationProfile: silicon carbide surface contamination
+  microscopy:
+    parameters: Microscopic analysis of Silicon Carbide
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-10-02T00:00:00.000000Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: template_caption
+  author: Yi-Chun Lin
+  materialProperties:
+    materialType: Semiconductor
+    analysisMethod: template_microscopy
+  imageUrl:
+    alt: Microscopic view of Silicon Carbide surface after laser cleaning showing
+      detailed surface structure
+    url: /images/material/silicon carbide-laser-cleaning-micro.jpg
 tags:
 - semiconductor
-- electronics
-- absorptive
-- conductive
-- durable
-- stable
-- refractory
-- rigid
-- ikmanda-roswati
+- manufacturing
+- industrial
+- processing
+- surface-preparation
+- contamination-removal
+- maintenance
+- industrial-grade
+- processed
+- yi-chun-lin

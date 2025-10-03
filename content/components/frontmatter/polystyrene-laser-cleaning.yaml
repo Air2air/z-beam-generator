@@ -2,7 +2,7 @@ name: Polystyrene
 category: Plastic
 subcategory: Polystyrene
 title: Polystyrene Laser Cleaning
-description: Laser cleaning parameters for Polycarbonate
+description: Laser cleaning parameters for Polystyrene
 materialProperties:
   density:
     value: 1.05
@@ -11,199 +11,218 @@ materialProperties:
     description: Density of general purpose polystyrene at room temperature
     min: 0.85
     max: 2.2
+  meltingPoint:
+    value: 240
+    unit: °C
+    confidence: 92
+    description: Glass transition temperature (Tg) for amorphous polystyrene
+    min: null
+    max: null
   thermalConductivity:
-    value: 0.142
+    value: 0.14
     unit: W/m·K
-    confidence: 88
+    confidence: 90
     description: Thermal conductivity at room temperature
     min: 0.02
     max: 3
   tensileStrength:
-    value: 45.0
+    value: 45
     unit: MPa
-    confidence: 92
+    confidence: 90
     description: Ultimate tensile strength
     min: 10
     max: 400
-  youngsModulus:
-    value: 3300.0
-    unit: MPa
-    confidence: 94
-    description: Young's modulus in tension
-    min: 0
-    max: 3629.98
-  thermalExpansion:
-    value: 70.0
-    unit: ×10⁻⁶/°C
+  hardness:
+    value: 75
+    unit: Rockwell M
     confidence: 85
+    description: Rockwell M scale hardness
+    min: Shore A 10
+    max: Shore D 90
+  youngsModulus:
+    value: 3.2
+    unit: GPa
+    confidence: 92
+    description: Elastic modulus in tension
+    min: 0.01
+    max: 5
+  thermalExpansion:
+    value: 70
+    unit: ×10⁻⁶/°C
+    confidence: 88
     description: Coefficient of linear thermal expansion
     min: 10
     max: 200
   specificHeat:
-    value: 1300.0
+    value: 1200
     unit: J/kg·K
-    confidence: 87
+    confidence: 85
     description: Specific heat capacity at room temperature
-    min: 800.0
-    max: 2000.0
+    min: 1000
+    max: 2500
   absorptionCoefficient:
-    value: 0.8
+    value: 0.08
     unit: cm⁻¹
     confidence: 82
     description: Absorption coefficient at 1064 nm wavelength
     min: null
     max: null
+  reflectivity:
+    value: 0.04
+    unit: dimensionless
+    confidence: 80
+    description: Reflectivity at 1064 nm wavelength
+    min: null
+    max: null
   refractiveIndex:
     value: 1.59
-    unit: ''
-    confidence: 96
+    unit: dimensionless
+    confidence: 95
     description: Refractive index at 589 nm
     min: null
     max: null
   ablationThreshold:
-    value: 0.5
+    value: 0.8
     unit: J/cm²
-    confidence: 80
+    confidence: 85
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
+  laserDamageThreshold:
+    value: 1.2
+    unit: J/cm²
+    confidence: 82
+    description: Damage threshold for continuous wave laser exposure
+    min: null
+    max: null
   chemicalStability:
-    value: 85
+    value: 70
     unit: '% resistance'
     confidence: 88
     description: Resistance to weak acids and bases
     min: null
     max: null
+  oxidationResistance:
+    value: 60
+    unit: '% resistance'
+    confidence: 85
+    description: Resistance to oxidative degradation
+    min: null
+    max: null
+  crystallineStructure:
+    value: 0
+    unit: '% crystallinity'
+    confidence: 95
+    description: General purpose polystyrene is amorphous
+    min: null
+    max: null
   surfaceRoughness:
-    value: 0.02
+    value: 0.1
     unit: μm Ra
-    confidence: 83
+    confidence: 80
     description: Typical surface roughness for molded polystyrene
     min: null
     max: null
-  hardness:
-    confidence: 0.7
-    max: 90.0
-    min: 10.0
-    source: default_from_category_range
-    unit: ''
-    value: 75.0
-  laserAbsorption:
-    confidence: 0.7
-    max: 100.0
-    min: 0.1
-    source: default_from_category_range
-    unit: cm⁻¹
-    value: 65.2
-  laserReflectivity:
-    confidence: 0.7
-    max: 95.0
-    min: 5.0
-    source: default_from_category_range
-    unit: '%'
-    value: 4.2
-  thermalDiffusivity:
-    confidence: 0.7
-    max: 1.0
-    min: 0.05
-    source: default_from_category_range
-    unit: mm²/s
-    value: 0.53
-  thermalDestructionPoint:
-    confidence: 0.7
-    max: 400.0
-    min: 80.0
-    source: default_from_category_range
-    unit: °C
-    value: 270.0
-  thermalDestructionType:
-    confidence: 0.8
-    source: category_default
-    value: 300.0
 applications:
-- 'Medical: Sterilization and cleaning of medical devices and instruments'
-- 'Aerospace: Precision cleaning of aerospace components and assemblies'
-- 'Automotive: Paint removal and surface preparation for automotive parts'
+- Electronics Manufacturing
+- Medical Device Manufacturing
+- Aerospace Components
+- Automotive Interior
+- Cultural Heritage Preservation
+- Packaging Manufacturing
+- Marine Equipment
+- Energy Sector Instrumentation
+- Laboratory Equipment
+- Consumer Products Manufacturing
 machineSettings:
   powerRange:
     value: 15
     unit: W
     confidence: 90
-    description: Average power for effective Polystyrene removal without melting
-    min: 5
-    max: 30
+    description: Optimal average power for Polystyrene cleaning without thermal damage
+    min: 8
+    max: 25
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength with moderate Polystyrene absorption
-    min: 355
+    description: Near-IR wavelength providing good absorption in Polystyrene with
+      minimal surface reflection
+    min: 532
     max: 10640
   spotSize:
     value: 100
     unit: μm
     confidence: 89
-    description: Beam spot diameter for precise cleaning control
+    description: Beam spot diameter for precise cleaning control on Polystyrene surfaces
     min: 50
     max: 200
   repetitionRate:
     value: 20
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning coverage
-    min: 1
-    max: 100
+    description: Optimal repetition rate for efficient cleaning with thermal management
+    min: 5
+    max: 50
   pulseWidth:
     value: 100
     unit: ns
     confidence: 85
-    description: Nanosecond pulses for controlled ablation of polymer surface
+    description: Nanosecond pulse duration for controlled ablation of Polystyrene
+      surface layers
     min: 10
     max: 200
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform material removal
-    min: 100
+    description: Optimal scanning speed for uniform cleaning without excessive dwell
+      time
+    min: 200
     max: 1000
   fluenceThreshold:
     value: 0.8
     unit: J/cm²
     confidence: 91
-    description: Minimum fluence required for Polystyrene ablation
-    min: 0.3
-    max: 2.0
+    description: Minimum fluence required for effective Polystyrene ablation
+    min: 0.5
+    max: 1.5
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 84
-    description: Optimal overlap between adjacent scan lines
+    description: Optimal beam overlap for uniform cleaning coverage
     min: 30
     max: 70
   passCount:
     value: 2
     unit: passes
     confidence: 88
-    description: Recommended number of passes for complete cleaning
+    description: Recommended number of passes for complete contaminant removal
     min: 1
     max: 5
-  laserType:
-    value: Nd:YAG
-    unit: n/a
-    confidence: 90
-    description: Recommended laser type for polymer cleaning applications
-    min: null
-    max: null
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
 - IEC 60825 - Safety of Laser Products
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author:
+  id: 2
+  name: Alessandro Moretti
+  sex: m
+  title: Ph.D.
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  image: /images/author/alessandro-moretti.jpg
 images:
   hero:
-    alt: Polystyrene surface undergoing laser cleaning showing precise contamination removal
-    url: /images/polystyrene-laser-cleaning-hero.jpg
+    alt: Polystyrene surface undergoing laser cleaning showing precise contamination
+      removal
+    url: /images/material/polystyrene-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Polystyrene surface after laser cleaning showing detailed
+      surface structure
+    url: /images/material/polystyrene-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -229,56 +248,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-applicationTypes:
-- type: Precision Cleaning
-  description: High-precision removal of microscopic contaminants and residues
-  industries:
-  - Semiconductor
-  - MEMS
-  - Optics
-  - Medical Devices
-  qualityMetrics:
-  - Particle count reduction
-  - Surface roughness maintenance
-  - Chemical purity
-  typicalTolerances: Sub-micron accuracy with minimal substrate impact
-  objectives: []
-- type: Surface Preparation
-  description: Preparation of surfaces for bonding, coating, or further processing
-  industries:
-  - Aerospace
-  - Automotive
-  - Manufacturing
-  - Construction
-  qualityMetrics:
-  - Surface energy
-  - Cleanliness level
-  - Roughness profile
-  typicalTolerances: ''
-  objectives:
-  - Adhesion enhancement
-  - Contamination removal
-  - Surface activation
-- type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
-  industries:
-  - Cultural Heritage
-  - Architecture
-  - Art Conservation
-  - Historical Restoration
-  qualityMetrics: []
-  typicalTolerances: ''
-  objectives: []
-- type: Contamination Removal
-  description: General removal of unwanted surface deposits and contaminants
-  industries:
-  - Manufacturing
-  - Marine
-  - Oil & Gas
-  - Power Generation
-  qualityMetrics: []
-  typicalTolerances: ''
-  objectives: []
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -313,35 +282,20 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units: []
-author:
-  id: 1
-  name: Yi-Chun Lin
-  sex: f
-  title: Ph.D.
-  country: Taiwan
-  expertise: Laser Materials Processing
-  image: /images/author/yi-chun-lin.jpg
 caption:
-  beforeText: 'At 500x magnification, the contaminated polystyrene surface shows a continuous, non-uniform layer of organic
-    and particulate matter. This contamination layer measures between 5-15 micrometers thick and completely obscures the original
-    polymer surface. The deposit exhibits a textured, agglomerated morphology with visible embedded particles ranging from
-    2 to 8 micrometers in diameter.
-
-
-    The underlying polystyrene substrate is not visible through this contamination matrix. The layer displays a cracked, irregular
-    topography with poor adhesion to the base material, creating visible delamination at the interface. Surface roughness
-    measurements indicate an Ra value exceeding 5.0 µm, significantly higher than the native polystyrene''s typical 0.02 µm
-    Ra, due to the particulate contamination and layer inconsistency.'
-  afterText: 'Following laser cleaning, the surface transformation is evident at 500x magnification. The contamination layer
-    has been completely removed, revealing the pristine polystyrene substrate beneath. The surface now exhibits the characteristic
-    smooth morphology of molded polystyrene, with a measured roughness returning to approximately 0.02 µm Ra.
-
-
-    The cleaning process has eliminated all particulate matter and organic residues without altering the polymer''s structural
-    integrity. The original surface features are now clearly visible, showing minimal thermal impact from the laser process.
-    The complete contaminant removal has restored the material''s native surface properties while maintaining dimensional
-    stability.'
-  description: Microscopic analysis of polystyrene surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the polystyrene surface is obscured by a non-uniform
+    contamination layer, measuring 5-15 µm in thickness. This layer exhibits a particulate
+    and film-like morphology, with agglomerates adhering to the substrate's native
+    0.1 µm Ra texture. The contaminants disrupt the underlying polymer topography,
+    creating a matte, occluded appearance that masks the material's intrinsic optical
+    clarity and compromises interfacial properties.
+  afterText: Laser cleaning restores the pristine polystyrene substrate. The contamination
+    layer is completely removed, revealing the original polymer surface with its characteristic
+    0.1 µm Ra micro-texture. The surface is now continuous and defect-free, with no
+    evidence of thermal degradation, melting, or ablation of the base polymer. This
+    results in optimal optical transmission and a chemically pure interface.
+  description: Microscopic analysis of polystyrene surface before and after laser
+    cleaning treatment
   alt: Microscopic view of polystyrene surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -349,31 +303,29 @@ caption:
     - polystyrene_specific
     contaminationProfile: polystyrene surface contamination
   microscopy:
-    parameters: Microscopic analysis of polystyrene
+    parameters: Microscopic analysis of Polystyrene
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: '2025-09-30T20:05:39.985236Z'
+    timestamp: '2025-10-02T00:00:00.000000Z'
     generator: FrontmatterCaptionGenerator
-    componentType: ai_caption_frontmatter
-  author: Yi-Chun Lin
+    componentType: template_caption
+  author: Alessandro Moretti
   materialProperties:
     materialType: Plastic
-    analysisMethod: ai_microscopy
+    analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Polystyrene surface after laser cleaning showing detailed surface structure
-    url: /images/polystyrene-laser-cleaning-micro.jpg
-metadata:
-  lastUpdated: '2025-09-30T20:05:52.592945'
-  captionIntegrated: true
+    alt: Microscopic view of Polystyrene surface after laser cleaning showing detailed
+      surface structure
+    url: /images/material/polystyrene-laser-cleaning-micro.jpg
 tags:
 - plastic
-- medical
-- aerospace
-- automotive
-- insulating
-- durable
-- lightweight
-- expansive
-- rigid
-- yi-chun-lin
+- manufacturing
+- industrial
+- processing
+- surface-preparation
+- contamination-removal
+- maintenance
+- thermal-sensitive
+- industrial-grade
+- alessandro-moretti

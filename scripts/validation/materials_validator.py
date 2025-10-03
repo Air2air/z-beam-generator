@@ -452,31 +452,31 @@ class MaterialsValidator:
     
     def _validate_application_format(self, material_name: str, application: str) -> None:
         """Validate individual application format."""
-        # Expected format: "Industry: Description"
-        if ':' not in application:
+        # Expected format: Simple industry names only (no descriptions)
+        if ':' in application:
             self.validation_results['warnings'].append(
-                f"Material '{material_name}': Application '{application}' missing industry prefix"
+                f"Material '{material_name}': Application '{application}' uses old format with colon - use industry names only"
             )
             return
         
-        industry, description = application.split(':', 1)
-        industry = industry.strip()
-        description = description.strip()
-        
-        if len(description) < 20:
-            self.validation_results['suggestions'].append(
-                f"Material '{material_name}': Application description very short: '{description}'"
+        # Validate simple industry name
+        if len(application.strip()) < 3:
+            self.validation_results['warnings'].append(
+                f"Material '{material_name}': Application '{application}' too short"
             )
         
-        # Check for common industries
+        # No longer checking description length - applications are just industry names now
+        
+        # Check for common industries (application is now just the industry name)
         common_industries = [
             'Automotive', 'Aerospace', 'Electronics', 'Medical', 'Manufacturing',
-            'Construction', 'Marine', 'Energy', 'Jewelry', 'Art Restoration'
+            'Construction', 'Marine', 'Energy', 'Jewelry', 'Art Restoration',
+            'Industrial', 'Food Processing', 'Restoration', 'Conservation'
         ]
         
-        if industry not in common_industries:
+        if application.strip() not in common_industries:
             self.validation_results['suggestions'].append(
-                f"Material '{material_name}': Uncommon industry '{industry}' - verify spelling"
+                f"Material '{material_name}': Uncommon industry '{application}' - verify spelling"
             )
     
     def generate_report(self) -> Dict:

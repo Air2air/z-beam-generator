@@ -111,7 +111,8 @@ images = generator._generate_images_section("Aluminum")
 #   },
 #   'micro': {
 #     'alt': 'Microscopic view of Aluminum surface after laser cleaning showing detailed surface structure', 
-#     'url': '/images/aluminum-laser-cleaning-micro.jpg'
+#     #     'url': '/images/material/aluminum-laser-cleaning-micro.jpg'
+# }
 #   }
 # }
 ```

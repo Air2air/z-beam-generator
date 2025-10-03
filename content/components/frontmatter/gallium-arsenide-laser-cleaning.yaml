@@ -5,214 +5,198 @@ title: Gallium Arsenide Laser Cleaning
 description: Laser cleaning parameters for Gallium Arsenide
 materialProperties:
   density:
-    value: 5.3176
+    value: 5.32
     unit: g/cm³
     confidence: 98
-    description: Density of single crystal GaAs at room temperature
-    min: 2.0
-    max: 5.6
+    description: Crystalline density at room temperature
+    min: 2.33
+    max: 7.13
+  meltingPoint:
+    value: 1238
+    unit: °C
+    confidence: 95
+    description: Melting point of GaAs under arsenic overpressure
+    min: null
+    max: null
   thermalConductivity:
-    value: 55.0
+    value: 55
     unit: W/m·K
-    confidence: 90
-    description: Thermal conductivity at room temperature (300K)
+    confidence: 92
+    description: Thermal conductivity at 300K for pure GaAs
     min: 0.2
     max: 156
   hardness:
-    value: 4.5
+    value: 7.5
     unit: GPa
     confidence: 85
     description: Knoop hardness at 100g load
-    min: 5.4
-    max: 30.1
+    min: 2
+    max: 9.5
   youngsModulus:
     value: 85.3
     unit: GPa
     confidence: 90
-    description: Young's modulus along <100> direction
-    min: 53.0
-    max: 442.4
+    description: Young's modulus along <100> crystal direction
+    min: 5
+    max: 190
   thermalExpansion:
     value: 5.73
     unit: ×10⁻⁶/K
-    confidence: 88
+    confidence: 90
     description: Linear thermal expansion coefficient at 300K
     min: 2.6
-    max: 19.7
+    max: 10
   thermalDiffusivity:
-    value: 31.0
+    value: 0.31
     unit: cm²/s
-    confidence: 85
+    confidence: 88
     description: Thermal diffusivity at room temperature
     min: 0.1
     max: 90
   specificHeat:
-    value: 327.0
-    unit: J/kg·K
+    value: 0.327
+    unit: J/g·K
     confidence: 92
-    description: Specific heat capacity at constant pressure
-    min: 277.0
-    max: 793.0
+    description: Specific heat capacity at constant pressure, 300K
+    min: 300
+    max: 900
   absorptionCoefficient:
-    value: 10000
-    unit: cm⁻¹
-    confidence: 88
+    value: 1.0
+    unit: ×10⁴ cm⁻¹
+    confidence: 92
     description: Absorption coefficient at 532nm wavelength
     min: null
     max: null
   reflectivity:
     value: 0.35
-    unit: ''
-    confidence: 90
-    description: Reflectivity at 1064nm near band edge
+    unit: dimensionless
+    confidence: 88
+    description: Surface reflectivity at 1064nm wavelength
     min: null
     max: null
   refractiveIndex:
     value: 3.45
-    unit: ''
+    unit: dimensionless
     confidence: 95
     description: Refractive index at 1064nm wavelength
     min: null
     max: null
   ablationThreshold:
-    value: 0.15
+    value: 0.8
     unit: J/cm²
-    confidence: 82
-    description: Ablation threshold for nanosecond pulses at 1064nm
+    confidence: 85
+    description: Laser ablation threshold for nanosecond pulses at 1064nm
     min: null
     max: null
   laserDamageThreshold:
-    value: 0.8
+    value: 1.2
     unit: J/cm²
-    confidence: 80
-    description: Laser-induced damage threshold for femtosecond pulses
+    confidence: 82
+    description: Single-shot laser-induced damage threshold at 1064nm
     min: null
     max: null
   crystallineStructure:
     value: Zinc Blende
     unit: crystal system
     confidence: 98
-    description: Cubic crystal structure with space group F-43m
+    description: Face-centered cubic structure with space group F-43m
     min: null
     max: null
   bandGap:
     value: 1.424
     unit: eV
     confidence: 98
-    description: Direct band gap energy at room temperature (300K)
+    description: Direct bandgap energy at 300K
     min: null
     max: null
-  oxidationResistance:
-    value: Moderate
-    unit: qualitative
+  fractureToughness:
+    value: 0.43
+    unit: MPa·m¹/²
     confidence: 85
-    description: Forms native oxide layer but susceptible to thermal oxidation
+    description: Fracture toughness for brittle fracture behavior
     min: null
     max: null
-  laserAbsorption:
-    confidence: 0.7
-    max: 100.0
-    min: 0.01
-    source: default_from_category_range
-    unit: cm⁻¹
-    value: 67.5
-  laserReflectivity:
-    confidence: 0.7
-    max: 70.0
-    min: 10.0
-    source: default_from_category_range
-    unit: '%'
-    value: 37.2
-  tensileStrength:
-    confidence: 0.7
-    max: 7000.0
-    min: 50.0
-    source: default_from_category_range
-    unit: MPa
-    value: 55.0
-  thermalDestructionPoint:
-    confidence: 0.7
-    max: 1414.0
-    min: 100.0
-    source: default_from_category_range
-    unit: °C
-    value: 1238.0
-  thermalDestructionType:
-    confidence: 0.8
-    source: category_default
-    value: 1511.0
 applications:
-- 'Automotive: Paint removal and surface preparation for automotive parts'
-- 'Electronics: Precision cleaning of electronic components and circuit boards'
+- Semiconductor Manufacturing
+- Aerospace & Defense
+- Medical Electronics
+- Telecommunications
+- Research & Development
+- Automotive Electronics
+- Renewable Energy
+- Cultural Heritage Instrumentation
+- Military Electronics
+- Industrial Manufacturing
 machineSettings:
   powerRange:
-    value: 2.5
+    value: 8
     unit: W
     confidence: 90
-    description: Average power for oxide removal without substrate damage
-    min: 1.0
-    max: 5.0
+    description: Optimal average power for GaAs surface cleaning without substrate
+      damage
+    min: 5
+    max: 15
   wavelength:
     value: 532
     unit: nm
     confidence: 92
-    description: Green wavelength for optimal GaAs absorption with minimal thermal penetration
+    description: Green wavelength optimized for GaAs absorption characteristics
     min: 355
-    max: 1080
+    max: 1064
   spotSize:
     value: 50
     unit: μm
     confidence: 87
-    description: Beam diameter for precise oxide layer removal
+    description: Optimal spot diameter for precision cleaning of GaAs surfaces
     min: 30
     max: 100
   repetitionRate:
-    value: 20
+    value: 50
     unit: kHz
     confidence: 85
-    description: Repetition rate balancing cleaning efficiency and thermal management
-    min: 10
-    max: 50
+    description: Optimal repetition rate for efficient cleaning with thermal management
+    min: 20
+    max: 100
   pulseWidth:
     value: 8
     unit: ns
     confidence: 88
-    description: Nanosecond pulses for controlled oxide ablation
+    description: Nanosecond pulse duration for controlled ablation of contaminants
     min: 5
     max: 15
-  scanSpeed:
-    value: 100
-    unit: mm/s
-    confidence: 83
-    description: Scan speed for uniform oxide removal
-    min: 50
-    max: 200
-  fluence:
-    value: 1.2
+  fluenceThreshold:
+    value: 0.8
     unit: J/cm²
     confidence: 91
-    description: Fluence threshold for GaAs oxide removal
-    min: 0.8
-    max: 2.0
-  overlapRatio:
-    value: 70
-    unit: '%'
+    description: Fluence threshold for GaAs surface cleaning without substrate damage
+    min: 0.5
+    max: 1.2
+  scanSpeed:
+    value: 200
+    unit: mm/s
     confidence: 84
-    description: Beam overlap for complete surface coverage
-    min: 50
-    max: 85
+    description: Optimal scanning speed for uniform cleaning coverage
+    min: 100
+    max: 500
+  overlapRatio:
+    value: 50
+    unit: '%'
+    confidence: 86
+    description: Beam overlap percentage for complete surface coverage
+    min: 40
+    max: 70
   passCount:
     value: 2
     unit: passes
-    confidence: 82
-    description: Number of passes for complete oxide removal
+    confidence: 89
+    description: Number of cleaning passes for complete contaminant removal
     min: 1
-    max: 3
+    max: 4
   laserType:
     value: Nd:YAG
-    unit: n/a
-    confidence: 89
-    description: Q-switched laser system for precise cleaning
+    unit: laser_type
+    confidence: 90
+    description: Recommended laser type for GaAs cleaning applications
     min: null
     max: null
 regulatoryStandards:
@@ -220,10 +204,23 @@ regulatoryStandards:
 - ANSI Z136.1 - Safe Use of Lasers
 - IEC 60825 - Safety of Laser Products
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author:
+  id: 3
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  image: /images/author/ikmanda-roswati.jpg
 images:
   hero:
-    alt: Gallium Arsenide surface undergoing laser cleaning showing precise contamination removal
-    url: /images/gallium-arsenide-laser-cleaning-hero.jpg
+    alt: Gallium Arsenide surface undergoing laser cleaning showing precise contamination
+      removal
+    url: /images/material/gallium-arsenide-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Gallium Arsenide surface after laser cleaning showing
+      detailed surface structure
+    url: /images/material/gallium-arsenide-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -249,56 +246,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-applicationTypes:
-- type: Precision Cleaning
-  description: High-precision removal of microscopic contaminants and residues
-  industries:
-  - Semiconductor
-  - MEMS
-  - Optics
-  - Medical Devices
-  qualityMetrics:
-  - Particle count reduction
-  - Surface roughness maintenance
-  - Chemical purity
-  typicalTolerances: Sub-micron accuracy with minimal substrate impact
-  objectives: []
-- type: Surface Preparation
-  description: Preparation of surfaces for bonding, coating, or further processing
-  industries:
-  - Aerospace
-  - Automotive
-  - Manufacturing
-  - Construction
-  qualityMetrics:
-  - Surface energy
-  - Cleanliness level
-  - Roughness profile
-  typicalTolerances: ''
-  objectives:
-  - Adhesion enhancement
-  - Contamination removal
-  - Surface activation
-- type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
-  industries:
-  - Cultural Heritage
-  - Architecture
-  - Art Conservation
-  - Historical Restoration
-  qualityMetrics: []
-  typicalTolerances: ''
-  objectives: []
-- type: Contamination Removal
-  description: General removal of unwanted surface deposits and contaminants
-  industries:
-  - Manufacturing
-  - Marine
-  - Oil & Gas
-  - Power Generation
-  qualityMetrics: []
-  typicalTolerances: ''
-  objectives: []
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -333,41 +280,19 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units: []
-author:
-  id: 3
-  name: Ikmanda Roswati
-  sex: m
-  title: Ph.D.
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  image: /images/author/ikmanda-roswati.jpg
 caption:
-  beforeText: 'At 500x magnification, the gallium arsenide surface is obscured by a non-uniform contamination layer approximately
-    2-5 micrometers thick. This layer appears as a textured, amorphous film with scattered particulate matter embedded throughout.
-    The underlying crystalline structure of the GaAs is completely hidden beneath this contamination.
-
-
-    The surface exhibits irregular staining patterns with visible organic residues forming web-like networks across the inspection
-    area. Particulate contaminants ranging from 10-50 micrometers in diameter are randomly distributed, creating localized
-    topographic variations. The overall appearance is matte and diffuse, with no reflective properties characteristic of pristine
-    semiconductor material visible at this magnification.'
-  afterText: 'Following laser cleaning, the transformation at 500x magnification is pronounced. The previously opaque contamination
-    layer has been completely removed, revealing the underlying GaAs substrate with its characteristic reflective surface.
-    The zinc blende crystalline structure is now visible as a consistent, patterned topography across the entire inspection
-    area.
-
-
-    The surface exhibits a uniform morphology with the laser-processed regions showing minimal residual particulate matter.
-    The cleaning process has restored the material''s inherent reflectivity, with light reflecting cleanly from the surface
-    rather than scattering through a contamination layer. The previously observed staining patterns and embedded particles
-    have been eliminated without introducing visible micro-cracks or thermal damage to the GaAs substrate.
-
-
-    Analysis confirms the laser parameters were carefully controlled to remain below the material''s ablation threshold of
-    0.15 J/cm², ensuring selective removal of contaminants while preserving the semiconductor''s structural integrity. The
-    surface now displays the smooth, continuous appearance expected of high-purity gallium arsenide, with only occasional
-    sub-micrometer scale features remaining from the cleaning process.'
-  description: Microscopic analysis of gallium arsenide surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the GaAs surface is obscured by a non-uniform
+    contamination layer, approximately 0.5-2 µm thick. Particulate matter and hydrocarbon
+    films create a textured, irregular topography. This layer disrupts the underlying
+    crystalline structure, scattering light and masking the substrate's intrinsic
+    semiconductor properties, which degrades electronic performance.
+  afterText: Following laser cleaning, the surface reveals the pristine, atomic-level
+    structure of the Zinc Blende crystal lattice. The contamination layer is completely
+    removed, exposing a smooth, defect-free plane with sub-micrometer uniformity.
+    This restoration of the intrinsic surface ensures optimal electrical characteristics
+    and minimal optical scattering for high-performance applications.
+  description: Microscopic analysis of gallium arsenide surface before and after laser
+    cleaning treatment
   alt: Microscopic view of gallium arsenide surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -375,31 +300,29 @@ caption:
     - gallium arsenide_specific
     contaminationProfile: gallium arsenide surface contamination
   microscopy:
-    parameters: Microscopic analysis of gallium arsenide
+    parameters: Microscopic analysis of Gallium Arsenide
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: '2025-09-30T20:21:40.998098Z'
+    timestamp: '2025-10-02T00:00:00.000000Z'
     generator: FrontmatterCaptionGenerator
-    componentType: ai_caption_frontmatter
+    componentType: template_caption
   author: Ikmanda Roswati
   materialProperties:
     materialType: Semiconductor
-    analysisMethod: ai_microscopy
+    analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Gallium Arsenide surface after laser cleaning showing detailed surface structure
-    url: /images/gallium-arsenide-laser-cleaning-micro.jpg
-metadata:
-  lastUpdated: '2025-09-30T20:21:56.854908'
-  captionIntegrated: true
+    alt: Microscopic view of Gallium Arsenide surface after laser cleaning showing
+      detailed surface structure
+    url: /images/material/gallium arsenide-laser-cleaning-micro.jpg
 tags:
 - semiconductor
-- automotive
-- electronics
-- low-reflectivity
-- low-absorption
-- medium-density
+- manufacturing
+- industrial
+- processing
+- surface-preparation
+- contamination-removal
+- maintenance
+- industrial-grade
+- processed
 - ikmanda-roswati
-- laser-processing
-- laser-processing
-- laser-processing

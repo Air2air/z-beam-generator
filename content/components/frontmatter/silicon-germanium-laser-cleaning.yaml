@@ -2,52 +2,59 @@ name: Silicon Germanium
 category: Semiconductor
 subcategory: Silicon Germanium
 title: Silicon Germanium Laser Cleaning
-description: Laser cleaning parameters for Gallium Arsenide
+description: Laser cleaning parameters for Silicon Germanium
 materialProperties:
   density:
-    value: 4.73
+    value: 4.32
     unit: g/cm³
     confidence: 95
-    description: Density for SiGe alloy with 50% composition at room temperature
-    min: 2.0
-    max: 5.6
+    description: Density for Si0.5Ge0.5 composition at room temperature
+    min: 2.33
+    max: 7.13
+  meltingPoint:
+    value: 1215
+    unit: °C
+    confidence: 90
+    description: Melting point for Si0.5Ge0.5 composition
+    min: null
+    max: null
   thermalConductivity:
-    value: 8.7
+    value: 8.5
     unit: W/m·K
-    confidence: 85
-    description: Thermal conductivity for Si0.5Ge0.5 at room temperature
+    confidence: 88
+    description: Thermal conductivity at room temperature for Si0.5Ge0.5
     min: 0.2
     max: 156
   hardness:
-    value: 11.5
+    value: 9.5
     unit: GPa
-    confidence: 85
-    description: Vickers hardness for SiGe alloys
-    min: 5.4
-    max: 30.1
+    confidence: 86
+    description: Vickers hardness for Si0.5Ge0.5 composition
+    min: 2
+    max: 9.5
   youngsModulus:
-    value: 156.5
+    value: 145
     unit: GPa
-    confidence: 90
-    description: Young's modulus for SiGe crystalline structure
-    min: 53.0
-    max: 442.4
+    confidence: 89
+    description: Young's modulus for bulk SiGe alloy
+    min: 5
+    max: 190
   thermalExpansion:
-    value: 4.5
+    value: 4.2
     unit: ×10⁻⁶/K
-    confidence: 88
-    description: Coefficient of thermal expansion for SiGe alloys
+    confidence: 85
+    description: Coefficient of thermal expansion at 300K
     min: 2.6
-    max: 19.7
+    max: 10
   specificHeat:
-    value: 330.0
-    unit: J/kg·K
+    value: 0.32
+    unit: J/g·K
     confidence: 92
     description: Specific heat capacity at room temperature
-    min: 277.0
-    max: 793.0
+    min: 300
+    max: 900
   absorptionCoefficient:
-    value: 8500
+    value: 12000.0
     unit: cm⁻¹
     confidence: 88
     description: Absorption coefficient at 1064 nm wavelength
@@ -55,15 +62,15 @@ materialProperties:
     max: null
   reflectivity:
     value: 0.38
-    unit: ''
-    confidence: 92
+    unit: dimensionless
+    confidence: 85
     description: Reflectivity at 1064 nm for polished surface
     min: null
     max: null
   refractiveIndex:
     value: 4.1
-    unit: ''
-    confidence: 94
+    unit: dimensionless
+    confidence: 90
     description: Refractive index at 1064 nm wavelength
     min: null
     max: null
@@ -78,144 +85,126 @@ materialProperties:
     value: 1.2
     unit: J/cm²
     confidence: 80
-    description: Damage threshold for picosecond pulses at 1064 nm
-    min: null
-    max: null
-  oxidationResistance:
-    value: 650
-    unit: °C
-    confidence: 85
-    description: Maximum temperature for stable oxidation resistance
+    description: Single-pulse laser damage threshold at 1064 nm
     min: null
     max: null
   crystallineStructure:
     value: Diamond cubic
-    unit: crystal system
-    confidence: 98
+    unit: N/A
+    confidence: 95
     description: Crystalline structure similar to silicon and germanium
     min: null
     max: null
-  laserAbsorption:
-    confidence: 0.7
-    max: 100.0
-    min: 0.01
-    source: default_from_category_range
-    unit: cm⁻¹
-    value: 67.4
-  laserReflectivity:
-    confidence: 0.7
-    max: 70.0
-    min: 10.0
-    source: default_from_category_range
-    unit: '%'
-    value: 36.2
-  tensileStrength:
-    confidence: 0.7
-    max: 7000.0
-    min: 50.0
-    source: default_from_category_range
-    unit: MPa
-    value: 1200.0
-  thermalDiffusivity:
-    confidence: 0.7
-    max: 90.0
-    min: 0.1
-    source: default_from_category_range
-    unit: mm²/s
-    value: 34.2
-  thermalDestructionPoint:
-    confidence: 0.7
-    max: 1414.0
-    min: 100.0
-    source: default_from_category_range
-    unit: °C
-    value: 723.0
-  thermalDestructionType:
-    confidence: 0.8
-    source: category_default
-    value: 1210.0
+  oxidationResistance:
+    value: Moderate
+    unit: N/A
+    confidence: 85
+    description: Forms stable oxide layer but slower than pure silicon
+    min: null
+    max: null
 applications:
-- 'Electronics: Precision cleaning of electronic components and circuit boards'
+- Semiconductor Manufacturing
+- Aerospace Electronics
+- Medical Device Manufacturing
+- Telecommunications
+- Automotive Sensors
+- Renewable Energy
+- Research and Development
+- Defense Electronics
+- Marine Electronics
+- Cultural Heritage Instrumentation
 machineSettings:
   powerRange:
-    value: 8
+    value: 45
     unit: W
-    confidence: 90
-    description: Average power for effective contaminant removal without substrate damage
-    min: 5
-    max: 15
+    confidence: 88
+    description: Optimal average power for SiGe surface cleaning without substrate
+      damage
+    min: 30
+    max: 60
   wavelength:
-    value: 1064
+    value: 532
     unit: nm
     confidence: 92
-    description: Near-IR wavelength with optimal absorption for Silicon Germanium
+    description: Green wavelength optimized for SiGe absorption characteristics and
+      minimal thermal penetration
     min: 355
-    max: 1080
+    max: 1064
   spotSize:
     value: 50
     unit: μm
     confidence: 84
-    description: Beam spot diameter for precise cleaning control
+    description: Beam spot diameter for precise cleaning with adequate energy density
     min: 30
     max: 100
   repetitionRate:
-    value: 100
+    value: 50
     unit: kHz
     confidence: 87
-    description: Repetition rate balancing cleaning efficiency and thermal management
-    min: 50
-    max: 200
-  fluenceThreshold:
-    value: 0.8
-    unit: J/cm²
-    confidence: 88
-    description: Threshold fluence for Silicon Germanium surface cleaning
-    min: 0.5
-    max: 1.2
+    description: Optimal repetition rate balancing cleaning efficiency and thermal
+      management
+    min: 20
+    max: 100
   pulseWidth:
-    value: 10
+    value: 8
     unit: ns
     confidence: 85
-    description: Optimal pulse duration for controlled ablation of surface contaminants
+    description: Nanosecond pulse duration for efficient contaminant removal with
+      controlled thermal effects
     min: 5
-    max: 20
+    max: 15
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 86
+    confidence: 82
     description: Optimal scanning speed for uniform cleaning coverage
     min: 200
-    max: 1000
+    max: 800
+  fluenceThreshold:
+    value: 1.2
+    unit: J/cm²
+    confidence: 90
+    description: Energy density threshold for effective contaminant removal without
+      SiGe damage
+    min: 0.8
+    max: 1.8
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Beam overlap percentage for complete surface treatment
-    min: 30
+    description: Optimal beam overlap for uniform cleaning without excessive thermal
+      accumulation
+    min: 40
     max: 70
   passCount:
     value: 2
     unit: passes
-    confidence: 88
-    description: Number of passes for thorough contaminant removal
+    confidence: 86
+    description: Recommended number of passes for complete contaminant removal
     min: 1
-    max: 5
-  energyDensity:
-    value: 4.1
-    unit: J/cm²
-    confidence: 85
-    description: Calculated energy density based on power and spot parameters
-    min: 2.5
-    max: 6.0
+    max: 3
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
 - IEC 60825 - Safety of Laser Products
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author:
+  id: 3
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  image: /images/author/ikmanda-roswati.jpg
 images:
   hero:
-    alt: Silicon Germanium surface undergoing laser cleaning showing precise contamination removal
-    url: /images/silicon-germanium-laser-cleaning-hero.jpg
+    alt: Silicon Germanium surface undergoing laser cleaning showing precise contamination
+      removal
+    url: /images/material/silicon-germanium-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Silicon Germanium surface after laser cleaning showing
+      detailed surface structure
+    url: /images/material/silicon-germanium-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -241,56 +230,6 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-applicationTypes:
-- type: Precision Cleaning
-  description: High-precision removal of microscopic contaminants and residues
-  industries:
-  - Semiconductor
-  - MEMS
-  - Optics
-  - Medical Devices
-  qualityMetrics:
-  - Particle count reduction
-  - Surface roughness maintenance
-  - Chemical purity
-  typicalTolerances: Sub-micron accuracy with minimal substrate impact
-  objectives: []
-- type: Surface Preparation
-  description: Preparation of surfaces for bonding, coating, or further processing
-  industries:
-  - Aerospace
-  - Automotive
-  - Manufacturing
-  - Construction
-  qualityMetrics:
-  - Surface energy
-  - Cleanliness level
-  - Roughness profile
-  typicalTolerances: ''
-  objectives:
-  - Adhesion enhancement
-  - Contamination removal
-  - Surface activation
-- type: Restoration Cleaning
-  description: Gentle removal of accumulated contamination while preserving original material
-  industries:
-  - Cultural Heritage
-  - Architecture
-  - Art Conservation
-  - Historical Restoration
-  qualityMetrics: []
-  typicalTolerances: ''
-  objectives: []
-- type: Contamination Removal
-  description: General removal of unwanted surface deposits and contaminants
-  industries:
-  - Manufacturing
-  - Marine
-  - Oil & Gas
-  - Power Generation
-  qualityMetrics: []
-  typicalTolerances: ''
-  objectives: []
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -325,34 +264,21 @@ outcomeMetrics:
   typicalRanges: ''
   factorsAffecting: []
   units: []
-author:
-  id: 3
-  name: Ikmanda Roswati
-  sex: m
-  title: Ph.D.
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  image: /images/author/ikmanda-roswati.jpg
 caption:
-  beforeText: 'At 500x magnification, the silicon germanium surface is obscured by a non-uniform contamination layer. This
-    layer, measuring approximately 2-5 micrometers thick, appears as a textured, amorphous film with visible particulate inclusions.
-    The surface morphology is characterized by a matte, topographically varied finish that scatters light, significantly reducing
-    reflectivity.
-
-
-    The contamination exhibits a cracked-mudflat pattern, with fissures revealing the underlying substrate. Particulate contaminants,
-    ranging from sub-micrometer to 10 micrometers in diameter, are embedded within the film. This layer disrupts the intrinsic
-    crystalline structure of the SiGe, masking its characteristic semiconductor properties and creating a barrier that would
-    impede electronic performance and subsequent manufacturing steps.'
-  afterText: 'Following laser cleaning, the surface transformation is evident. The amorphous contamination layer has been
-    completely removed, revealing the underlying silicon germanium''s intrinsic crystalline structure. The surface now exhibits
-    a uniform, smooth morphology with a consistent reflectivity characteristic of a pristine semiconductor.
-
-
-    The previously obscured grain boundaries and the material''s natural texture are now clearly visible. All particulate
-    inclusions and the cracked, matte film have been eliminated, leaving a clean substrate ideal for further processing. The
-    surface is restored to its functional state without the microscopic damage that mechanical cleaning methods can cause.'
-  description: Microscopic analysis of silicon germanium surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the Silicon Germanium surface is obscured by
+    a non-uniform contamination layer. This layer, ranging from 0.5 to 3 micrometers
+    in thickness, consists of particulate matter and a thin, amorphous film. The underlying
+    diamond cubic lattice structure is completely hidden. The surface texture appears
+    matte and irregular, with contamination concentrating along microscopic polishing
+    lines and grain boundaries, creating a mottled, high-contrast pattern that severely
+    scatters light and degrades electrical performance.
+  afterText: Laser cleaning has restored the intrinsic surface. The contamination
+    layer is entirely removed, revealing the uniform, polished substrate. The surface
+    is now specular and continuous, with minimal light scattering. The original machining
+    marks are visible but clean, indicating precise contaminant ablation without damage
+    to the SiGe crystal.
+  description: Microscopic analysis of silicon germanium surface before and after
+    laser cleaning treatment
   alt: Microscopic view of silicon germanium surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -360,30 +286,29 @@ caption:
     - silicon germanium_specific
     contaminationProfile: silicon germanium surface contamination
   microscopy:
-    parameters: Microscopic analysis of silicon germanium
+    parameters: Microscopic analysis of Silicon Germanium
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: '2025-09-30T20:33:22.094633Z'
+    timestamp: '2025-10-02T00:00:00.000000Z'
     generator: FrontmatterCaptionGenerator
-    componentType: ai_caption_frontmatter
+    componentType: template_caption
   author: Ikmanda Roswati
   materialProperties:
     materialType: Semiconductor
-    analysisMethod: ai_microscopy
+    analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Silicon Germanium surface after laser cleaning showing detailed surface structure
-    url: /images/silicon-germanium-laser-cleaning-micro.jpg
-metadata:
-  lastUpdated: '2025-09-30T20:33:35.094619'
-  captionIntegrated: true
+    alt: Microscopic view of Silicon Germanium surface after laser cleaning showing
+      detailed surface structure
+    url: /images/material/silicon germanium-laser-cleaning-micro.jpg
 tags:
 - semiconductor
-- electronics
-- absorptive
-- insulating
-- durable
-- stable
-- strong
-- rigid
+- manufacturing
+- industrial
+- processing
+- surface-preparation
+- contamination-removal
+- maintenance
+- thermal-sensitive
+- industrial-grade
 - ikmanda-roswati
