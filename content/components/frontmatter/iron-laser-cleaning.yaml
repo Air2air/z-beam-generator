@@ -1,6 +1,6 @@
 name: Iron
 category: Metal
-subcategory: Iron
+subcategory: ferrous
 title: Iron Laser Cleaning
 description: Laser cleaning parameters for Iron
 materialProperties:
@@ -22,7 +22,7 @@ materialProperties:
     value: 80.2
     unit: W/m·K
     confidence: 92
-    description: Thermal conductivity of pure iron at 20°C
+    description: Thermal conductivity at 20°C
     min: 6.0
     max: 429.0
   tensileStrength:
@@ -46,13 +46,41 @@ materialProperties:
     description: Young's modulus of elasticity
     min: 5
     max: 411
-  thermalExpansion:
-    value: 11.8
-    unit: μm/m·K
-    confidence: 90
-    description: Linear thermal expansion coefficient at 20°C
-    min: 0.5
-    max: 29.1
+  laserAbsorption:
+    value: 64.2
+    unit: '%'
+    confidence: 95
+    description: laserAbsorption from Materials.yaml
+    min: 0.02
+    max: 100
+  laserReflectivity:
+    value: 64.2
+    unit: '%'
+    confidence: 95
+    description: laserReflectivity from Materials.yaml
+    min: 5
+    max: 98
+  specificHeat:
+    value: 449
+    unit: J/kg·K
+    confidence: 91
+    description: Specific heat capacity at 20°C
+    min: 100
+    max: 900
+  thermalDestructionPoint:
+    value: 1811.0
+    unit: K
+    confidence: 95
+    description: thermalDestructionPoint from Materials.yaml
+    min: -38.8
+    max: 3422
+  thermalDestructionType:
+    value: 1811.0
+    unit: K
+    confidence: 98
+    description: thermalDestructionType from Materials.yaml
+    min: null
+    max: null
   thermalDiffusivity:
     value: 23.1
     unit: mm²/s
@@ -60,32 +88,33 @@ materialProperties:
     description: Thermal diffusivity at room temperature
     min: 0.2
     max: 174
-  specificHeat:
-    value: 449
-    unit: J/kg·K
-    confidence: 91
-    description: Specific heat capacity at 25°C
-    min: 100
-    max: 900
+  thermalExpansion:
+    value: 11.8
+    unit: μm/m·K
+    confidence: 90
+    description: Linear thermal expansion coefficient at 20°C
+    min: 0.5
+    max: 29.1
   absorptionCoefficient:
     value: 0.65
     unit: dimensionless
     confidence: 82
-    description: Optical absorption coefficient for 1064 nm wavelength
+    description: Absorption coefficient for 1064 nm laser wavelength
     min: null
     max: null
   reflectivity:
     value: 0.35
     unit: dimensionless
-    confidence: 83
-    description: Reflectivity at 1064 nm laser wavelength
+    confidence: 84
+    description: Reflectivity for 1064 nm laser wavelength
     min: null
     max: null
   ablationThreshold:
     value: 1.2
     unit: J/cm²
     confidence: 80
-    description: Laser ablation threshold for nanosecond pulses at 1064 nm
+    description: Approximate laser ablation threshold for nanosecond pulses at 1064
+      nm
     min: null
     max: null
   oxidationResistance:
@@ -97,7 +126,7 @@ materialProperties:
     max: null
   crystallineStructure:
     value: BCC
-    unit: none
+    unit: crystal system
     confidence: 98
     description: Body-centered cubic structure (alpha-iron) at room temperature
     min: null
@@ -109,13 +138,6 @@ materialProperties:
     description: Electrical resistivity at 20°C
     min: null
     max: null
-  laserDamageThreshold:
-    value: 0.8
-    unit: J/cm²
-    confidence: 81
-    description: Laser-induced damage threshold for surface modification
-    min: null
-    max: null
 applications:
 - Aerospace
 - Automotive Manufacturing
@@ -124,9 +146,9 @@ applications:
 - Energy Sector
 - Rail Transportation
 - Heavy Manufacturing
-- Electronics Manufacturing
-- Nuclear Decommissioning
+- Construction and Infrastructure
 - Food Processing Equipment
+- Oil and Gas
 machineSettings:
   powerRange:
     value: 100
@@ -139,21 +161,22 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength with good Iron absorption and minimal plasma shielding
+    description: Near-IR wavelength with good absorption in iron oxides and minimal
+      substrate heating
     min: 1030
     max: 1070
   spotSize:
     value: 50
     unit: μm
-    confidence: 84
-    description: Beam spot diameter for optimal energy density distribution
+    confidence: 83
+    description: Optimal spot size for balancing cleaning efficiency and coverage
     min: 30
     max: 100
   repetitionRate:
     value: 100
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient surface coverage and thermal management
+    description: High repetition rate for efficient cleaning coverage
     min: 50
     max: 200
   pulseWidth:
@@ -166,31 +189,38 @@ machineSettings:
   scanSpeed:
     value: 1000
     unit: mm/s
-    confidence: 86
-    description: Optimal scanning speed for uniform cleaning efficiency
+    confidence: 85
+    description: Optimal scanning speed for uniform cleaning without thermal accumulation
     min: 500
     max: 2000
-  energyDensity:
-    value: 5.1
+  fluenceThreshold:
+    value: 2.5
     unit: J/cm²
-    confidence: 89
-    description: Fluence threshold for effective Iron oxide removal
-    min: 3.5
-    max: 8.0
+    confidence: 90
+    description: Minimum fluence required for effective iron oxide removal
+    min: 1.5
+    max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 83
-    description: Optimal beam overlap for uniform surface treatment
+    confidence: 82
+    description: Optimal pulse overlap for uniform cleaning coverage
     min: 40
     max: 70
   passCount:
-    value: 2
+    value: 3
     unit: passes
-    confidence: 82
-    description: Number of cleaning passes for complete contaminant removal
+    confidence: 84
+    description: Typical number of passes for complete oxide layer removal
     min: 1
     max: 5
+  laserType:
+    value: Fiber Laser
+    unit: n/a
+    confidence: 89
+    description: Preferred laser type for iron cleaning applications
+    min: null
+    max: null
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -273,16 +303,20 @@ outcomeMetrics:
   units: []
 caption:
   beforeText: At 500x magnification, the iron surface is obscured by a non-uniform
-    contamination layer, typically 5-50 µm thick. This layer consists of adherent
-    oxides (rust), carbonaceous soot, and embedded particulate matter. The underlying
-    metallic substrate is largely invisible, with the texture dominated by the porous,
-    irregular topography of the corrosion products and foreign deposits, which create
-    a matte, non-reflective surface.
-  afterText: The laser-cleaned surface reveals the intact, original metallic substrate
-    with a distinct micro-texture. The contamination layer is entirely removed, exposing
-    the iron's grain structure and minor manufacturing marks. This results in a specular,
-    reflective finish with no measurable substrate damage, restoring the material's
-    inherent surface properties.
+    contamination layer, typically 5-20 µm thick. This layer consists of porous, amorphous
+    iron oxide (Fe₂O₃/Fe₃O₄) and embedded particulate matter. The underlying metallic
+    substrate is largely invisible, with surface features like machining marks completely
+    filled by corrosion products, creating a rough, textured topography that compromises
+    the base material's integrity and reflectivity.
+  afterText: Laser cleaning removes the contamination layer, revealing the original,
+    intact metallic substrate. At 500x, the surface now exhibits a distinct grain
+    structure with clearly defined boundaries, characteristic of the body-centered
+    cubic (BCC) crystalline form of alpha-iron. Micron-scale machining striations
+    are fully restored, and the surface reflectivity is significantly increased due
+    to the exposure of pure, uncorroded metal. The process achieves a selective ablation
+    threshold of approximately 1.2 J/cm², effectively vaporizing oxides while the
+    underlying iron, with its melting point of 1538°C and high thermal conductivity
+    (80.2 W/m·K), remains undamaged, resulting in a clean, metallurgically sound surface.
   description: Microscopic analysis of iron surface before and after laser cleaning
     treatment
   alt: Microscopic view of iron surface showing laser cleaning effects

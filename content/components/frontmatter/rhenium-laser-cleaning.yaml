@@ -1,6 +1,6 @@
 name: Rhenium
 category: Metal
-subcategory: Rhenium
+subcategory: precious
 title: Rhenium Laser Cleaning
 description: Laser cleaning parameters for Rhenium
 materialProperties:
@@ -28,24 +28,66 @@ materialProperties:
   tensileStrength:
     value: 1070
     unit: MPa
-    confidence: 85
-    description: Typical tensile strength for annealed rhenium
+    confidence: 88
+    description: Ultimate tensile strength of annealed rhenium
     min: 3.0
     max: 3000.0
   hardness:
-    value: 250
+    value: 245
     unit: HV
-    confidence: 88
-    description: Vickers hardness for annealed rhenium
+    confidence: 90
+    description: Vickers hardness of annealed rhenium
     min: 0.5
     max: 3500
   youngsModulus:
     value: 463
     unit: GPa
-    confidence: 92
-    description: Elastic modulus at room temperature
+    confidence: 94
+    description: Elastic modulus of polycrystalline rhenium
     min: 5
     max: 411
+  laserAbsorption:
+    value: 42.7
+    unit: '%'
+    confidence: 92
+    description: laserAbsorption from Materials.yaml
+    min: 0.02
+    max: 100
+  laserReflectivity:
+    value: 51.5
+    unit: '%'
+    confidence: 95
+    description: laserReflectivity from Materials.yaml
+    min: 5
+    max: 98
+  specificHeat:
+    value: 137
+    unit: J/kg·K
+    confidence: 88
+    description: Specific heat capacity at 25°C
+    min: 100
+    max: 900
+  thermalDestructionPoint:
+    value: 1727.0
+    unit: °C
+    confidence: 95
+    description: thermalDestructionPoint from Materials.yaml
+    min: -38.8
+    max: 3422
+  thermalDestructionType:
+    value: 3186.0
+    unit: °C
+    confidence: 95
+    description: thermalDestructionType from Materials.yaml
+    min: null
+    max: null
+  thermalDiffusivity:
+    value: 24.7
+    unit: mm²/s
+    confidence: 85
+    description: Thermal diffusivity at room temperature
+    min: 0.2
+    max: 174
   thermalExpansion:
     value: 6.2
     unit: ×10⁻⁶/K
@@ -53,80 +95,52 @@ materialProperties:
     description: Coefficient of thermal expansion (20-1000°C)
     min: 0.5
     max: 29.1
-  thermalDiffusivity:
-    value: 0.24
-    unit: cm²/s
-    confidence: 88
-    description: Thermal diffusivity at room temperature
-    min: 0.2
-    max: 174
-  specificHeat:
-    value: 0.137
-    unit: J/g·K
-    confidence: 92
-    description: Specific heat capacity at 25°C
-    min: 100
-    max: 900
-  absorptionCoefficient:
-    value: 0.65
+  reflectivity:
+    value: 0.52
     unit: dimensionless
     confidence: 82
-    description: Estimated absorption coefficient for visible wavelengths
+    description: Optical reflectivity at 1064 nm wavelength
     min: null
     max: null
-  reflectivity:
-    value: 0.48
-    unit: dimensionless
-    confidence: 85
-    description: Approximate reflectivity at 1064 nm wavelength
+  absorptionCoefficient:
+    value: 8.7
+    unit: ×10⁵ cm⁻¹
+    confidence: 80
+    description: Estimated absorption coefficient for Nd:YAG lasers
     min: null
     max: null
   ablationThreshold:
     value: 3.8
     unit: J/cm²
-    confidence: 80
-    description: Estimated ablation threshold for nanosecond pulses at 1064 nm
+    confidence: 85
+    description: Estimated laser ablation threshold for nanosecond pulses
     min: null
     max: null
   oxidationResistance:
-    value: 400
-    unit: °C
-    confidence: 90
-    description: Maximum temperature for oxidation resistance in air
+    value: Poor
+    unit: qualitative
+    confidence: 95
+    description: Forms volatile rhenium heptoxide (Re₂O₇) above 600°C
     min: null
     max: null
   crystallineStructure:
     value: HCP
-    unit: none
-    confidence: 98
-    description: Hexagonal close-packed crystal structure
-    min: null
-    max: null
-  electricalResistivity:
-    value: 19.3
-    unit: μΩ·cm
-    confidence: 94
-    description: Electrical resistivity at 20°C
-    min: null
-    max: null
-  thermalShockResistance:
-    value: 850
-    unit: °C
-    confidence: 85
-    description: Estimated thermal shock resistance parameter
+    unit: crystal system
+    confidence: 99
+    description: Hexagonal close-packed structure at room temperature
     min: null
     max: null
 applications:
 - Aerospace
 - Electronics
-- Medical
-- Nuclear
-- Research and Development
+- Medical Devices
+- Nuclear Technology
 - Chemical Processing
-- Marine
-- Automotive
-- Cultural Heritage
-- Manufacturing
+- Research and Laboratory
+- Marine and Offshore
+- Automotive Racing
+- Jewelry and Luxury Goods
+- Energy Generation
 machineSettings:
   powerRange:
     value: 90
@@ -140,62 +154,66 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength providing good absorption for Rhenium oxides while
-      minimizing substrate heating
+    description: Near-IR wavelength optimized for Rhenium's high reflectivity and
+      thermal conductivity
     min: 532
-    max: 1064
+    max: 1070
   spotSize:
     value: 80
     unit: μm
     confidence: 84
-    description: Optimal beam diameter for balancing cleaning efficiency and resolution
+    description: Optimal beam diameter for precise cleaning with adequate energy density
     min: 50
     max: 120
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning while maintaining thermal
-      control
+    description: Balanced repetition rate for thermal management and cleaning efficiency
     min: 20
     max: 100
   pulseWidth:
     value: 12
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration optimized for oxide layer ablation with
-      minimal thermal diffusion
+    description: Nanosecond pulse duration for efficient oxide layer ablation
     min: 8
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Scan speed providing effective material removal with controlled overlap
+    description: Optimal scanning speed for uniform oxide removal
     min: 300
     max: 800
   fluenceThreshold:
-    value: 2.8
+    value: 3.5
     unit: J/cm²
-    confidence: 89
-    description: Fluence threshold for Rhenium oxide removal accounting for high melting
-      point (3186°C)
-    min: 2.2
-    max: 3.5
+    confidence: 90
+    description: Minimum fluence required for effective Rhenium oxide ablation
+    min: 2.5
+    max: 5.0
   overlapRatio:
-    value: 40
+    value: 50
     unit: '%'
     confidence: 83
-    description: Optimal overlap between adjacent scan lines for uniform cleaning
-    min: 30
-    max: 60
+    description: Optimal beam overlap for uniform cleaning coverage
+    min: 40
+    max: 70
   passCount:
     value: 3
     unit: passes
     confidence: 85
-    description: Recommended number of passes for complete oxide layer removal
+    description: Recommended number of passes for complete oxide removal
     min: 2
     max: 5
+  laserType:
+    value: Nd:YAG
+    unit: n/a
+    confidence: 89
+    description: Recommended laser type for Rhenium processing applications
+    min: null
+    max: null
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -278,19 +296,20 @@ outcomeMetrics:
   units: []
 caption:
   beforeText: At 500x magnification, the rhenium surface is obscured by a non-uniform
-    contamination layer, typically 5-20 µm thick. This layer consists of a carbonaceous
-    film, intermixed with embedded alumina or silicate particles from handling and
-    high-temperature service. The underlying rhenium's HCP crystalline structure is
-    entirely hidden. The contaminant morphology is complex, displaying a cracked,
-    crust-like texture with visible porosity. This layer disrupts the metal's inherent
-    thermal and electrical properties, creating a barrier that appears as a topographically
-    rough, matte, and dark gray landscape under the microscope, masking the substrate's
-    true metallic character.
-  afterText: Laser cleaning has completely removed the contamination layer, revealing
-    the pristine rhenium substrate. The surface now exhibits a clean, metallic luster
-    with clearly defined grain boundaries from its HCP crystalline structure. The
-    removal of the obscuring layer restores the material's native surface texture
-    and properties.
+    contamination layer. This layer, ranging from 5 to 20 micrometers in thickness,
+    consists of amorphous carbon deposits and discrete oxide particles (Re₂O₇). The
+    underlying HCP grain structure is entirely masked. The texture is rough and porous,
+    with contamination accumulating preferentially along microscopic scratches and
+    grain boundaries, creating a webbed, dendritic pattern. This insulating layer
+    significantly alters the surface's thermal and electrical properties from the
+    base metal's known characteristics.
+  afterText: Laser cleaning restores the pristine metallic surface, revealing the
+    fine, equiaxed grain structure of the HCP crystalline lattice. At 500x, the surface
+    is now continuous and uniform, with contamination completely absent. The laser
+    process has selectively ablated the oxides and carbonaceous deposits without melting
+    the underlying rhenium, preserving the original micro-topography. The result is
+    a clean, metallurgically intact surface with restored thermal conductivity and
+    reflectivity, ready for high-temperature service or coating adhesion.
   description: Microscopic analysis of rhenium surface before and after laser cleaning
     treatment
   alt: Microscopic view of rhenium surface showing laser cleaning effects
@@ -323,6 +342,6 @@ tags:
 - decoating
 - oxide-removal
 - surface-preparation
-- conductive
 - reflective-surface
+- conductive
 - alessandro-moretti

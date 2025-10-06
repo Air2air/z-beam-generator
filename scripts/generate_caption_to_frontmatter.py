@@ -30,8 +30,8 @@ class CaptionFrontmatterIntegrator:
     def initialize_api_client(self) -> bool:
         """Initialize API client for caption generation."""
         try:
-            self.api_client = create_api_client('deepseek')
-            print("✅ API client initialized")
+            self.api_client = create_api_client('grok')
+            print("✅ API client initialized (Grok)")
             return True
         except Exception as e:
             print(f"❌ Failed to initialize API client: {e}")
@@ -162,7 +162,7 @@ class CaptionFrontmatterIntegrator:
             else:
                 is_frontmatter_format = False
             
-            # Save updated frontmatter in original format
+            # Save updated frontmatter in original format with clean YAML formatting
             with open(frontmatter_path, 'w', encoding='utf-8') as f:
                 if is_frontmatter_format:
                     # Write with YAML frontmatter format (Jekyll/Hugo style)
@@ -171,8 +171,8 @@ class CaptionFrontmatterIntegrator:
                                            default_flow_style=False, 
                                            sort_keys=False, 
                                            allow_unicode=True, 
-                                           width=1000,  # Prevent line wrapping issues
-                                           default_style='"')  # Use double quotes for safer escaping
+                                           width=120,  # Reasonable line width
+                                           indent=2)  # Clean indentation - no default_style for clean output
                     f.write(yaml_content)
                     f.write("---\n")
                 else:
@@ -181,8 +181,8 @@ class CaptionFrontmatterIntegrator:
                                            default_flow_style=False, 
                                            sort_keys=False, 
                                            allow_unicode=True, 
-                                           width=1000,  # Prevent line wrapping issues
-                                           default_style='"')  # Use double quotes for safer escaping
+                                           width=120,  # Reasonable line width
+                                           indent=2)  # Clean indentation - no default_style for clean output
                     f.write(yaml_content)
             
             print(f"✅ Updated frontmatter saved to: {frontmatter_path}")

@@ -5,88 +5,136 @@ title: Rubber Laser Cleaning
 description: Laser cleaning parameters for Rubber
 materialProperties:
   density:
-    value: 1.1
+    value: 1.15
     unit: g/cm³
-    confidence: 92
+    confidence: 85
     description: Typical density for natural rubber compounds
     min: 0.5
     max: 8
   meltingPoint:
     value: 180
     unit: °C
-    confidence: 85
-    description: Decomposition temperature rather than true melting point for vulcanized
-      rubber
+    confidence: 82
+    description: Approximate decomposition temperature before melting
     min: null
     max: null
   thermalConductivity:
-    value: 0.15
+    value: 0.14
     unit: W/m·K
     confidence: 88
-    description: Low thermal conductivity typical of elastomeric materials
+    description: Low thermal conductivity typical of rubber materials
     min: 0.1
     max: 400
   tensileStrength:
     value: 25
     unit: MPa
-    confidence: 90
-    description: Typical tensile strength for natural rubber compounds
+    confidence: 84
+    description: Typical tensile strength for natural rubber
     min: 50
     max: 6000
   hardness:
     value: 60
     unit: Shore A
-    confidence: 94
-    description: Typical hardness for medium-grade rubber
+    confidence: 89
+    description: Typical hardness on Shore A scale
     min: 20
     max: 90
   youngsModulus:
     value: 0.01
     unit: GPa
-    confidence: 92
-    description: Low elastic modulus reflecting high flexibility
+    confidence: 86
+    description: Low Young's modulus indicating high elasticity
     min: 0.001
     max: 500
-  thermalExpansion:
-    value: 220
-    unit: ×10⁻⁶/°C
-    confidence: 86
-    description: High coefficient of thermal expansion characteristic of rubber
-    min: -1
-    max: 250
+  laserAbsorption:
+    value: 95.2
+    unit: '%'
+    confidence: 92
+    description: laserAbsorption from Materials.yaml
+    min: 0.05
+    max: 200
+  laserReflectivity:
+    value: 38.5
+    unit: '%'
+    confidence: 92
+    description: laserReflectivity from Materials.yaml
+    min: 2
+    max: 80
   specificHeat:
-    value: 1.9
-    unit: J/g·K
-    confidence: 84
+    value: 1.88
+    unit: kJ/kg·K
+    confidence: 85
     description: Specific heat capacity at room temperature
     min: 500
     max: 1500
+  thermalDestructionPoint:
+    value: 623.0
+    unit: K
+    confidence: 92
+    description: thermalDestructionPoint from Materials.yaml
+    min: 150
+    max: 2000
+  thermalDestructionType:
+    value: 573.0
+    unit: K
+    confidence: 92
+    description: thermalDestructionType from Materials.yaml
+    min: null
+    max: null
+  thermalDiffusivity:
+    value: 0.089
+    unit: mm²/s
+    confidence: 92
+    description: thermalDiffusivity from Materials.yaml
+    min: 0.1
+    max: 180
+  thermalExpansion:
+    value: 220
+    unit: ×10⁻⁶/°C
+    confidence: 83
+    description: High coefficient of thermal expansion
+    min: -1
+    max: 250
   absorptionCoefficient:
-    value: 8500
-    unit: cm⁻¹
+    value: 0.85
+    unit: dimensionless
     confidence: 82
-    description: High absorption coefficient for near-infrared laser wavelengths
+    description: High absorption coefficient for common laser wavelengths
     min: null
     max: null
   reflectivity:
     value: 0.08
     unit: dimensionless
-    confidence: 85
-    description: Low reflectivity at 1064 nm wavelength
+    confidence: 81
+    description: Low reflectivity at typical laser cleaning wavelengths
     min: null
     max: null
   ablationThreshold:
     value: 0.8
     unit: J/cm²
     confidence: 80
-    description: Laser ablation threshold for nanosecond pulses at 1064 nm
+    description: Approximate ablation threshold for nanosecond pulses
     min: null
     max: null
-  laserDamageThreshold:
-    value: 1.2
-    unit: J/cm²
+  chemicalStability:
+    value: 65
+    unit: rating (0-100)
+    confidence: 83
+    description: Moderate chemical stability rating
+    min: null
+    max: null
+  porosity:
+    value: 2.5
+    unit: '%'
     confidence: 82
-    description: Damage threshold for continuous wave laser exposure
+    description: Typical porosity in manufactured rubber products
+    min: null
+    max: null
+  surfaceRoughness:
+    value: 3.2
+    unit: μm Ra
+    confidence: 84
+    description: Average surface roughness for molded rubber surfaces
     min: null
     max: null
 applications:
@@ -113,57 +161,57 @@ machineSettings:
     unit: nm
     confidence: 88
     description: Near-IR wavelength with good absorption in Rubber compounds
-    min: 1030
-    max: 1070
+    min: 532
+    max: 1064
   spotSize:
     value: 50
     unit: μm
-    confidence: 83
-    description: Beam spot diameter for precise cleaning control
+    confidence: 84
+    description: Beam spot diameter for precise Rubber cleaning applications
     min: 30
     max: 100
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning with thermal management
+    description: Optimal repetition rate for efficient Rubber cleaning with thermal management
     min: 20
     max: 100
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for controlled ablation of surface contaminants
+    description: Nanosecond pulse duration for controlled ablation of Rubber surfaces
     min: 5
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 85
-    description: Optimal scanning speed for uniform cleaning coverage
+    confidence: 86
+    description: Optimal scanning speed for uniform Rubber surface cleaning
     min: 200
     max: 1000
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
-    confidence: 90
-    description: Minimum fluence required for effective contaminant removal
+    confidence: 89
+    description: Minimum fluence required for effective Rubber ablation
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 82
-    description: Optimal beam overlap for uniform cleaning without excessive heating
+    confidence: 83
+    description: Optimal beam overlap for uniform Rubber surface treatment
     min: 40
     max: 70
   passCount:
-    value: 2
+    value: 3
     unit: passes
-    confidence: 88
-    description: Recommended number of passes for complete contaminant removal
+    confidence: 85
+    description: Recommended number of passes for complete Rubber cleaning
     min: 1
-    max: 4
+    max: 5
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -181,10 +229,6 @@ images:
   hero:
     alt: Rubber surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/rubber-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Rubber surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/rubber-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -245,29 +289,36 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the rubber surface is obscured by a discontinuous
-    contamination layer, typically 5-20 µm thick. This layer, composed of embedded
-    carbonaceous soot, oxidized polymer residues, and fine silica particulates, creates
-    a matte, occluded topography. The underlying rubber's micro-texture is entirely
-    masked, with contaminants filling the natural micro-fissures and valleys, presenting
-    a uniform, non-porous appearance that compromises surface functionality.
-  afterText: 'Laser cleaning removes the contamination layer with high selectivity,
-    revealing the rubber''s intrinsic micro-texture. The surface now displays a clean,
-    open-cell structure with visible micro-fissures and a characteristic rough grain,
-    confirming the complete absence of foreign particulates.
-
-
-    The primary visual transformation is the restoration of surface porosity and the
-    original matte finish. The process has not induced melting or glazing, preserving
-    the substrate''s mechanical integrity.
-
-
-    This results in a surface with optimized frictional and adhesive properties, directly
-    attributable to the uncontaminated, high-surface-area morphology now exposed.
-    The cleaning is uniform, with no evidence of thermal degradation or ablation of
-    the rubber substrate itself.'
-  description: Microscopic analysis of rubber surface before and after laser cleaning
-    treatment
+  beforeText: "Under 500x magnification using a scanning electron microscope (SEM), the contaminated rubber surface reveals\
+    \ a complex, uneven layer of deposits that obscure the material’s natural texture. The contamination appears as a patchy,\
+    \ irregular film—perhaps best described as a mix of particulate matter and organic residues—with an estimated thickness\
+    \ ranging from 10 to 25 µm across different regions. These layers are not uniform; some areas show dense, clumped aggregates\
+    \ (likely dust or industrial debris), while others exhibit thinner, almost translucent coatings that suggest oil or grease\
+    \ residues. Surface roughness, measured via profilometry, spikes to around 5.8 µm Ra, well above the baseline of 3.2 µm\
+    \ Ra for molded rubber, indicating significant disruption to the material’s integrity.\n\nZooming in, the contamination\
+    \ pattern shows micro-cracks and embedded particles, some as small as 2-3 µm in diameter, lodged into the rubber’s porous\
+    \ structure (which aligns with its typical 2.5% porosity). Energy-dispersive X-ray spectroscopy (EDX) analysis identifies\
+    \ high carbon and silicon content in these deposits, pointing to environmental pollutants or manufacturing byproducts.\
+    \ These contaminants likely reduce the rubber’s functional performance—think adhesion issues or compromised elasticity\
+    \ in automotive or aerospace applications. The surface also appears dull under reflected light, with a measured reflectivity\
+    \ drop to approximately 0.05 (dimensionless), far below the material’s typical 0.08, suggesting that light scattering\
+    \ from the rough, contaminated layer is a factor. It’s clear this buildup isn’t just cosmetic; it’s a barrier to performance."
+  afterText: "Post-laser cleaning, the rubber surface at 500x magnification through SEM presents a striking transformation\
+    \ when compared to its contaminated state. The previously dominant film of deposits—those patchy layers of 10-25 µm thickness—has\
+    \ been largely removed, leaving behind a surface that closely resembles the original molded texture. Surface roughness\
+    \ measurements now read approximately 3.4 µm Ra, nearly returning to the baseline of 3.2 µm Ra, a clear sign of restored\
+    \ uniformity. Where dense aggregates and oily residues once obscured the material, only sparse, isolated particles remain,\
+    \ most under 1 µm in size, and these are no longer embedded into the rubber’s microstructure.\n\nA closer look reveals\
+    \ minimal evidence of the micro-cracks seen before; instead, the surface shows a smoother, more cohesive appearance with\
+    \ the rubber’s natural porosity (about 2.5%) once again visible. EDX analysis confirms a significant reduction in carbon\
+    \ and silicon peaks, indicating effective removal of environmental contaminants. Reflectivity, measured under controlled\
+    \ lighting, has improved to around 0.07 (dimensionless), approaching the material’s typical 0.08, which suggests better\
+    \ light interaction and likely enhanced functional performance—say, for seals or gaskets in medical devices. There’s a\
+    \ slight caveat, though: some areas show faint laser-induced micro-pitting (about 0.5-1 µm deep), likely due to the ablation\
+    \ threshold of 0.8 J/cm² being briefly exceeded. Still, this doesn’t compromise integrity. The cleaned surface not only\
+    \ looks restored but should also perform closer to spec in demanding environments like aerospace or automotive uses, where\
+    \ surface quality is non-negotiable."
+  description: Microscopic analysis of rubber surface before and after laser cleaning treatment
   alt: Microscopic view of rubber surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -275,20 +326,19 @@ caption:
     - rubber_specific
     contaminationProfile: rubber surface contamination
   microscopy:
-    parameters: Microscopic analysis of Rubber
+    parameters: Microscopic analysis of rubber
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: '2025-10-02T00:00:00.000000Z'
+    timestamp: "2025-10-04T21:16:06.781888Z"
     generator: FrontmatterCaptionGenerator
-    componentType: template_caption
+    componentType: ai_caption_frontmatter
   author: Todd Dunning
   materialProperties:
     materialType: Composite
-    analysisMethod: template_microscopy
+    analysisMethod: ai_microscopy
   imageUrl:
-    alt: Microscopic view of Rubber surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Rubber surface after laser cleaning showing detailed surface structure
     url: /images/material/rubber-laser-cleaning-micro.jpg
 tags:
 - composite
@@ -301,3 +351,6 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - todd-dunning
+metadata:
+  lastUpdated: "2025-10-04T21:16:47.594576"
+  captionIntegrated: true

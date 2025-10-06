@@ -1,6 +1,6 @@
 name: Alabaster
 category: Stone
-subcategory: Alabaster
+subcategory: mineral
 title: Alabaster Laser Cleaning
 description: Laser cleaning parameters for Alabaster
 materialProperties:
@@ -8,14 +8,14 @@ materialProperties:
     value: 2.32
     unit: g/cm³
     confidence: 95
-    description: Average density of alabaster (gypsum form)
+    description: Average density of gypsum-based alabaster
     min: 1.5
     max: 3.4
   meltingPoint:
     value: 1450
     unit: °C
     confidence: 90
-    description: Decomposition temperature for gypsum alabaster
+    description: Decomposition temperature of gypsum to calcium sulfate hemihydrate
     min: null
     max: null
   thermalConductivity:
@@ -25,6 +25,13 @@ materialProperties:
     description: Thermal conductivity at room temperature
     min: 0.2
     max: 8
+  tensileStrength:
+    value: 3.5
+    unit: MPa
+    confidence: 95
+    description: tensileStrength from Materials.yaml
+    min: 2
+    max: 25
   hardness:
     value: 2.0
     unit: Mohs
@@ -33,28 +40,63 @@ materialProperties:
     min: 1
     max: 7
   youngsModulus:
-    value: 22.5
+    value: 25.0
     unit: GPa
     confidence: 82
     description: Elastic modulus in compression
     min: 10
     max: 100
+  laserAbsorption:
+    value: 85.0
+    unit: '%'
+    confidence: 92
+    description: laserAbsorption from Materials.yaml
+    min: 0.1
+    max: 20
+  laserReflectivity:
+    value: 38.7
+    unit: '%'
+    confidence: 92
+    description: laserReflectivity from Materials.yaml
+    min: 5
+    max: 80
+  specificHeat:
+    value: 1085
+    unit: J/kg·K
+    confidence: 92
+    description: Specific heat capacity at room temperature
+    min: 600
+    max: 1200
+  thermalDestructionPoint:
+    value: 1073.15
+    unit: K
+    confidence: 92
+    description: thermalDestructionPoint from Materials.yaml
+    min: 600
+    max: 1700
+  thermalDestructionType:
+    value: 150.0
+    unit: °C
+    confidence: 92
+    description: thermalDestructionType from Materials.yaml
+    min: null
+    max: null
+  thermalDiffusivity:
+    value: 0.52
+    unit: mm²/s
+    confidence: 92
+    description: thermalDiffusivity from Materials.yaml
+    min: 0.2
+    max: 2.5
   thermalExpansion:
-    value: 25.5
+    value: 25.0
     unit: μm/m·°C
     confidence: 85
     description: Coefficient of thermal expansion (20-100°C)
     min: 3
     max: 25
-  specificHeat:
-    value: 1085
-    unit: J/kg·K
-    confidence: 90
-    description: Specific heat capacity at room temperature
-    min: 600
-    max: 1200
   compressiveStrength:
-    value: 45
+    value: 40.0
     unit: MPa
     confidence: 85
     description: Uniaxial compressive strength
@@ -64,21 +106,21 @@ materialProperties:
     value: 0.85
     unit: dimensionless
     confidence: 88
-    description: Optical absorption coefficient at 1064 nm
+    description: Optical absorption coefficient for visible wavelengths
     min: null
     max: null
   reflectivity:
     value: 0.12
     unit: dimensionless
     confidence: 85
-    description: Surface reflectivity at common laser wavelengths
+    description: Surface reflectivity at 1064 nm wavelength
     min: null
     max: null
   ablationThreshold:
-    value: 1.8
+    value: 1.2
     unit: J/cm²
-    confidence: 82
-    description: Laser ablation threshold for Nd:YAG 1064 nm
+    confidence: 80
+    description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   porosity:
@@ -91,92 +133,88 @@ materialProperties:
   waterContent:
     value: 20.9
     unit: '%'
-    confidence: 95
-    description: Hydrated water content in gypsum alabaster
+    confidence: 98
+    description: Hydration water content in gypsum alabaster (CaSO₄·2H₂O)
     min: null
     max: null
 applications:
 - Cultural Heritage
 - Aerospace
-- Medical Device Manufacturing
+- Medical Devices
 - Electronics Manufacturing
-- Automotive Luxury Interiors
-- Marine Luxury Yachts
-- Energy Sector Instrumentation
+- Automotive Luxury
+- Marine Interior
+- Energy Sector
 - Architectural Restoration
-- Art Conservation
-- Manufacturing Quality Control
+- Manufacturing Quality
+- Museum Conservation
 machineSettings:
   powerRange:
-    value: 25
+    value: 90
     unit: W
-    confidence: 90
+    confidence: 92
     description: Optimal average power for Alabaster surface cleaning without thermal
       damage
-    min: 15
-    max: 40
+    min: 70
+    max: 110
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength providing good absorption in surface contaminants
-      while minimizing substrate damage
+    description: Near-IR wavelength optimized for Alabaster absorption and minimal
+      subsurface damage
     min: 532
-    max: 1064
+    max: 10640
   spotSize:
     value: 100
     unit: μm
-    confidence: 89
-    description: Beam spot diameter for precise cleaning with adequate energy density
+    confidence: 84
+    description: Beam spot diameter for precise cleaning control on Alabaster surface
     min: 50
     max: 200
   repetitionRate:
-    value: 20
+    value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning coverage while maintaining
-      thermal control
-    min: 10
-    max: 50
+    description: Optimal repetition rate for efficient cleaning with thermal management
+    min: 20
+    max: 100
   pulseWidth:
-    value: 100
+    value: 12
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with
-      controlled thermal penetration
-    min: 50
-    max: 200
+    description: Nanosecond pulse duration for controlled ablation of surface contaminants
+    min: 8
+    max: 20
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
     description: Optimal scanning speed for uniform cleaning coverage
     min: 200
-    max: 1000
-  energyDensity:
-    value: 3.2
+    max: 800
+  fluenceThreshold:
+    value: 2.5
     unit: J/cm²
-    confidence: 91
-    description: Fluence threshold for effective contaminant removal without damaging
-      Alabaster substrate
+    confidence: 90
+    description: Energy density threshold for effective contaminant removal without
+      substrate damage
     min: 1.5
-    max: 5.0
+    max: 4.0
   overlapRatio:
-    value: 30
+    value: 50
     unit: '%'
-    confidence: 84
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      buildup
-    min: 20
-    max: 50
+    confidence: 83
+    description: Optimal beam overlap for uniform cleaning pattern
+    min: 30
+    max: 70
   passCount:
-    value: 2
+    value: 3
     unit: passes
-    confidence: 88
-    description: Recommended number of passes for thorough cleaning with minimal substrate
-      impact
+    confidence: 85
+    description: Recommended number of passes for complete contaminant removal
     min: 1
-    max: 4
+    max: 5
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -259,29 +297,18 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: 'At 500x magnification, the alabaster surface is obscured by a complex
-    contamination layer. This stratum, measuring 5-15 micrometers thick, consists
-    of particulate matter (carbon soot, silica dust) embedded within a matrix of sulfated
-    calcites and organic residues from environmental exposure. The underlying stone''s
-    micro-topography is entirely masked.
-
-
-    The contamination adheres tenaciously within the natural porosity of the alabaster,
-    which averages 8.5%. This occludes the stone''s intrinsic translucency and sub-micrometer
-    surface texture. The layer exhibits micro-fracturing, but its overall cohesion
-    prevents the underlying, softer alabaster (Mohs 2.0) from being accessed by conventional,
-    contact-based cleaning methods without risk of mechanical abrasion.'
-  afterText: 'Post-cleaning analysis at 500x reveals the pristine alabaster substrate.
-    The contamination layer has been completely removed via ablation, exposing the
-    original micro-crystalline structure. The stone''s inherent porosity and grain
-    boundaries are now clearly visible and free of foreign deposits.
-
-
-    The laser process has selectively vaporized contaminants, which have a lower ablation
-    threshold than the alabaster itself. This results in a clean, mineralogical surface
-    without altering the substrate''s mechanical integrity. The stone''s natural translucency
-    and fine texture are restored, confirming the non-abrasive and precise nature
-    of the cleaning intervention.'
+  beforeText: At 500x magnification, the alabaster surface is obscured by a complex
+    contamination layer, typically 50-200 micrometers thick. This stratum consists
+    of particulate matter, carbonaceous soot, and biological micro-colonies embedded
+    within a matrix of aged hydrocarbon binders. The contaminants fill the natural
+    micro-porosity (8.5% average) and intergranular boundaries of the gypsum matrix,
+    creating a discontinuous, textured crust. This layer exhibits poor adhesion to
+    the substrate and significantly alters the stone's intrinsic optical properties,
+    scattering light and masking the subsurface translucency.
+  afterText: Laser cleaning has selectively removed the contamination crust, fully
+    restoring the original gypsum microstructure. The surface now reveals intact crystal
+    facets and open porosity, with no measurable damage to the soft (2.0 Mohs) alabaster
+    substrate. This exposes the stone's inherent translucency and fine granular texture.
   description: Microscopic analysis of alabaster surface before and after laser cleaning
     treatment
   alt: Microscopic view of alabaster surface showing laser cleaning effects

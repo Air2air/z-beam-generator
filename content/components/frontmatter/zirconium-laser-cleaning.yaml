@@ -1,6 +1,6 @@
 name: Zirconium
 category: Metal
-subcategory: Zirconium
+subcategory: refractory
 title: Zirconium Laser Cleaning
 description: Laser cleaning parameters for Zirconium
 materialProperties:
@@ -21,106 +21,133 @@ materialProperties:
   thermalConductivity:
     value: 22.7
     unit: W/m·K
-    confidence: 95
+    confidence: 92
     description: Thermal conductivity at room temperature
     min: 6.0
     max: 429.0
   tensileStrength:
     value: 330
     unit: MPa
-    confidence: 92
-    description: Ultimate tensile strength of annealed zirconium
+    confidence: 89
+    description: Typical tensile strength for annealed zirconium
     min: 3.0
     max: 3000.0
   hardness:
     value: 120
     unit: HV
-    confidence: 90
+    confidence: 87
     description: Vickers hardness of pure zirconium
     min: 0.5
     max: 3500
   youngsModulus:
     value: 88
     unit: GPa
-    confidence: 95
+    confidence: 93
     description: Young's modulus of elasticity
     min: 5
     max: 411
-  thermalExpansion:
-    value: 5.7
-    unit: μm/m·K
+  laserAbsorption:
+    value: 38.0
+    unit: '%'
     confidence: 92
-    description: Coefficient of linear thermal expansion (20-100°C)
-    min: 0.5
-    max: 29.1
+    description: laserAbsorption from Materials.yaml
+    min: 0.02
+    max: 100
+  laserReflectivity:
+    value: 52.3
+    unit: '%'
+    confidence: 92
+    description: laserReflectivity from Materials.yaml
+    min: 5
+    max: 98
   specificHeat:
     value: 278
     unit: J/kg·K
-    confidence: 94
+    confidence: 91
     description: Specific heat capacity at room temperature
     min: 100
     max: 900
+  thermalDestructionPoint:
+    value: 2128.0
+    unit: K
+    confidence: 95
+    description: thermalDestructionPoint from Materials.yaml
+    min: -38.8
+    max: 3422
+  thermalDestructionType:
+    value: 2125.0
+    unit: K
+    confidence: 95
+    description: thermalDestructionType from Materials.yaml
+    min: null
+    max: null
   thermalDiffusivity:
-    value: 12.5
+    value: 8.9
     unit: mm²/s
-    confidence: 90
+    confidence: 88
     description: Thermal diffusivity at room temperature
     min: 0.2
     max: 174
-  reflectivity:
-    value: 55
-    unit: '%'
+  thermalExpansion:
+    value: 5.7
+    unit: μm/m·K
+    confidence: 90
+    description: Coefficient of thermal expansion (20-100°C)
+    min: 0.5
+    max: 29.1
+  absorptionCoefficient:
+    value: 0.65
+    unit: dimensionless
     confidence: 85
-    description: Approximate reflectivity at common laser wavelengths (500-1100 nm)
+    description: Typical absorption coefficient for 1064 nm laser wavelength
     min: null
     max: null
-  absorptionCoefficient:
-    value: 1200000.0
-    unit: m⁻¹
-    confidence: 82
-    description: Estimated absorption coefficient for IR lasers
+  reflectivity:
+    value: 0.35
+    unit: dimensionless
+    confidence: 84
+    description: Reflectivity at 1064 nm laser wavelength
     min: null
     max: null
   ablationThreshold:
-    value: 1.8
+    value: 2.8
     unit: J/cm²
-    confidence: 80
-    description: Estimated laser ablation threshold for nanosecond pulses
+    confidence: 82
+    description: Approximate laser ablation threshold for nanosecond pulses
     min: null
     max: null
   oxidationResistance:
     value: High
     unit: qualitative
-    confidence: 88
-    description: Forms protective oxide layer at elevated temperatures
+    confidence: 90
+    description: Excellent oxidation resistance due to protective oxide layer formation
     min: null
     max: null
   crystallineStructure:
     value: HCP
     unit: crystal system
-    confidence: 98
-    description: Hexagonal close-packed structure at room temperature (α-phase)
+    confidence: 95
+    description: Hexagonal Close-Packed structure at room temperature
     min: null
     max: null
-  corrosionResistance:
-    value: Excellent
-    unit: qualitative
-    confidence: 95
-    description: Excellent corrosion resistance in most environments due to protective
-      oxide layer
+  laserDamageThreshold:
+    value: 3.2
+    unit: J/cm²
+    confidence: 81
+    description: Laser-induced damage threshold for short pulses
     min: null
     max: null
 applications:
-- Nuclear Industry
+- Nuclear Power
 - Aerospace
 - Medical Devices
 - Chemical Processing
 - Marine Engineering
 - Electronics Manufacturing
+- Automotive
 - Cultural Heritage
 - Additive Manufacturing
-- Energy Sector
-- Automotive Racing
+- Energy Storage
 machineSettings:
   powerRange:
     value: 100
@@ -134,57 +161,61 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimized for Zirconium oxide absorption characteristics
+    description: Near-IR wavelength optimized for Zirconium's moderate absorption
+      and thermal processing
     min: 532
     max: 1064
   spotSize:
     value: 50
     unit: μm
     confidence: 84
-    description: Beam spot diameter for precise cleaning control
+    description: Optimal spot size for precision cleaning with sufficient energy density
     min: 30
     max: 100
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for continuous cleaning coverage
+    description: High repetition rate for efficient surface coverage while maintaining
+      thermal control
     min: 20
     max: 100
   pulseWidth:
-    value: 10
+    value: 8
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient oxide layer ablation
+    description: Nanosecond pulse duration balancing thermal effects and cleaning
+      efficiency
     min: 5
-    max: 20
+    max: 15
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for efficient surface coverage
+    description: Scan speed providing adequate overlap and processing efficiency
     min: 200
     max: 1000
-  fluenceThreshold:
-    value: 2.5
+  energyDensity:
+    value: 5.1
     unit: J/cm²
     confidence: 89
-    description: Minimum fluence required for effective Zirconium oxide removal
-    min: 1.5
-    max: 4.0
+    description: Fluence optimized for Zirconium oxide ablation threshold
+    min: 3.5
+    max: 7.0
   overlapRatio:
-    value: 50
+    value: 30
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for uniform cleaning results
-    min: 40
-    max: 70
+    description: Optimal overlap for uniform cleaning without excessive thermal buildup
+    min: 20
+    max: 50
   passCount:
     value: 3
     unit: passes
     confidence: 85
-    description: Recommended number of passes for complete oxide removal
-    min: 2
+    description: Number of passes for complete contaminant removal with minimal substrate
+      impact
+    min: 1
     max: 5
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
@@ -269,22 +300,18 @@ outcomeMetrics:
   units: []
 caption:
   beforeText: At 500x magnification, the zirconium surface is obscured by a non-uniform
-    contamination layer, measuring 5-20 µm thick. This layer consists of embedded
-    carbonaceous soot, oxide scale from thermal exposure, and particulate matter.
-    The underlying HCP crystalline structure is entirely masked, and the surface texture
-    appears rough and irregular, with contamination filling the natural micro-features
-    of the metal substrate.
-  afterText: 'Laser cleaning reveals the pristine, underlying zirconium substrate.
-    The contamination layer has been completely removed via ablation, exposing the
-    intrinsic metallic grain structure and micro-texture. The surface is now uniform,
-    with a matte-grey metallic finish and no evidence of embedded foreign material.
-
-
-    The process has restored the surface to its native state without mechanical deformation
-    or chemical residue. The reflectivity is measurably higher, and the surface is
-    optimally prepared for subsequent processes like welding or coating, with a clean,
-    oxide-free interface. This non-contact method ensures the zirconium''s excellent
-    corrosion resistance and mechanical properties are fully preserved.'
+    contamination layer. This layer, ranging from 5 to 20 micrometers in thickness,
+    consists of embedded carbonaceous soot, oxide scale, and particulate matter. The
+    underlying metal's HCP crystalline structure is entirely hidden. The texture is
+    rough and irregular, with contamination filling the natural micro-valleys of the
+    substrate, creating a matte, light-absorbing appearance that compromises the material's
+    intrinsic surface properties.
+  afterText: Post-cleaning, the surface reveals a distinct transformation. The contamination
+    layer is completely removed, exposing the bare zirconium substrate with its characteristic
+    metallic luster. At 500x, the surface exhibits a clean, uniform texture with clearly
+    defined grain boundaries. The process has restored the original topography without
+    inducing surface melting or ablation, leaving a pristine, contaminant-free finish
+    ideal for subsequent high-integrity applications.
   description: Microscopic analysis of zirconium surface before and after laser cleaning
     treatment
   alt: Microscopic view of zirconium surface showing laser cleaning effects
@@ -317,6 +344,6 @@ tags:
 - decoating
 - oxide-removal
 - surface-preparation
-- reflective-surface
 - conductive
+- reflective-surface
 - ikmanda-roswati

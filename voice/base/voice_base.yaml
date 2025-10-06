@@ -1,0 +1,224 @@
+name: "Base Voice Foundations"
+description: "Shared voice characteristics across all countries and authors"
+version: "1.0.0"
+
+# These are universal principles that apply regardless of country-specific variations
+
+core_principles:
+  
+  technical_authority:
+    description: "Maintain authoritative technical expertise without promotional tone"
+    guidelines:
+      - "Report findings rather than make marketing claims"
+      - "Use precise technical language that demonstrates expertise"
+      - "Support statements with measurable observations"
+      - "Avoid hyperbole and unsubstantiated superlatives"
+      - "Focus on observable, verifiable characteristics"
+  
+  analytical_precision:
+    description: "Document observations with scientific rigor"
+    guidelines:
+      - "Specify measurements with appropriate units"
+      - "Use standard analytical terminology (SEM, XPS, EDX, Ra, etc.)"
+      - "Describe what is directly observable"
+      - "Connect observations to material performance logically"
+      - "Maintain consistency in technical specifications"
+  
+  professional_tone:
+    description: "Balance accessibility with professional standards"
+    guidelines:
+      - "Write for educated technical audience"
+      - "Avoid casual or colloquial language (unless culturally appropriate)"
+      - "Maintain respectful, authoritative voice"
+      - "Use active voice where appropriate for clarity"
+      - "Ensure proper grammar and technical writing conventions"
+
+technical_writing_standards:
+  
+  measurement_reporting:
+    - "Always include units with numerical values"
+    - "Use scientific notation appropriately"
+    - "Specify measurement methods when relevant"
+    - "Report ranges or tolerances where applicable"
+    - "Maintain consistent precision (e.g., 'Ra < 0.8 μm' not 'Ra < 0.80000 μm')"
+  
+  terminology:
+    - "Use standardized technical terms consistently"
+    - "Define specialized terms on first use when necessary"
+    - "Avoid ambiguous descriptors"
+    - "Use industry-standard abbreviations"
+    - "Maintain consistent terminology throughout document"
+  
+  structure:
+    - "Begin with clear context or observation"
+    - "Present evidence systematically"
+    - "Connect observations to implications"
+    - "Conclude with practical significance or outcomes"
+    - "Use logical paragraph progression"
+
+forbidden_patterns:
+  
+  marketing_language:
+    avoid:
+      - "Revolutionary breakthrough"
+      - "Game-changing innovation"
+      - "Unprecedented results"
+      - "Miraculous cleaning"
+      - "Ultimate solution"
+    reason: "Undermines technical credibility with promotional tone"
+  
+  emotional_descriptors:
+    avoid:
+      - "Stunning results"
+      - "Dramatic transformation"
+      - "Amazing performance"
+      - "Shocking contamination"
+    reason: "Conflicts with objective analytical reporting"
+    exception: "Italian voice may use 'remarkable', 'extraordinary' within technical context"
+  
+  unsupported_claims:
+    avoid:
+      - "Best in class"
+      - "Industry-leading"
+      - "Unmatched performance"
+      - "Superior to all alternatives"
+    reason: "Requires comparative evidence to support"
+  
+  vague_descriptors:
+    avoid:
+      - "Very clean"
+      - "Pretty good"
+      - "Kind of effective"
+      - "Somewhat contaminated"
+    reason: "Replace with quantitative or specific observations"
+
+required_elements:
+  
+  surface_observations:
+    before_cleaning:
+      - "Contamination type and composition"
+      - "Layer thickness or coverage area"
+      - "Impact on surface properties (roughness, reflectivity)"
+      - "Visual characteristics at magnification"
+    
+    after_cleaning:
+      - "Cleanliness level achieved"
+      - "Surface integrity preservation"
+      - "Measurable improvements (Ra, reflectivity, etc.)"
+      - "Substrate condition post-treatment"
+  
+  technical_context:
+    - "Material identification"
+    - "Application or industry context"
+    - "Relevant technical specifications"
+    - "Performance implications"
+
+quality_criteria:
+  
+  accuracy:
+    - "Technical information must be verifiable"
+    - "Measurements must be realistic for material/process"
+    - "Terminology must be used correctly"
+    - "Claims must be supportable"
+  
+  clarity:
+    - "Sentences convey intended meaning unambiguously"
+    - "Technical terms used appropriately for audience"
+    - "Logical flow from observation to implication"
+    - "Paragraph structure supports comprehension"
+  
+  completeness:
+    - "Required context provided"
+    - "Observations adequately described"
+    - "Technical specifications included"
+    - "Practical significance addressed"
+
+microscopy_observation_guidelines:
+  
+  magnification_context:
+    - "Reference magnification level (e.g., 500x, 1000x)"
+    - "Specify imaging mode when relevant (SEM, optical, etc.)"
+    - "Note any analytical techniques used (EDX, XPS)"
+  
+  visual_description:
+    - "Describe layer structure and morphology"
+    - "Note color changes indicating composition"
+    - "Reference crystalline vs amorphous structures"
+    - "Describe surface texture and topography"
+  
+  quantitative_integration:
+    - "Include measured values where available"
+    - "Reference roughness measurements (Ra, Rz)"
+    - "Specify layer thicknesses"
+    - "Report composition percentages when known"
+
+laser_cleaning_context:
+  
+  before_state_focus:
+    - "Contamination characteristics and severity"
+    - "Impact on material performance"
+    - "Challenge complexity"
+    - "Surface condition baseline"
+  
+  after_state_focus:
+    - "Cleaning effectiveness"
+    - "Surface integrity preservation"
+    - "Performance restoration"
+    - "Quality of restoration"
+  
+  process_implications:
+    - "Parameter optimization requirements"
+    - "Material compatibility considerations"
+    - "Quality control measures"
+    - "Application suitability"
+
+country_adaptation_notes:
+  
+  voice_flexibility:
+    description: "Base principles adapt to country-specific communication styles"
+    examples:
+      taiwan: "Academic formality with systematic documentation"
+      italy: "Technical elegance with aesthetic appreciation"
+      indonesia: "Practical accessibility with environmental context"
+      united_states: "Efficient communication with business focus"
+  
+  cultural_respect:
+    - "Country profiles represent authentic communication patterns"
+    - "Linguistic variations are natural, not errors"
+    - "Formality levels vary appropriately by culture"
+    - "Technical density adjusts to audience and purpose"
+  
+  consistency_requirements:
+    - "Base technical accuracy standards apply universally"
+    - "Measurement reporting follows consistent conventions"
+    - "Safety and compliance information remains standard"
+    - "Core technical terminology stays consistent"
+
+integration_with_country_profiles:
+  
+  hierarchy:
+    1: "Base voice provides universal technical standards"
+    2: "Country profile adds linguistic and cultural characteristics"
+    3: "Component adaptation specifies format and focus"
+    4: "Context provides material and application specifics"
+  
+  resolution_priority:
+    - "Country-specific patterns override base when in conflict"
+    - "Component adaptations override country defaults"
+    - "Context-specific requirements override general guidelines"
+    - "Technical accuracy requirements are never overridden"
+
+usage_in_orchestrator:
+  
+  loading_sequence:
+    1: "Load base voice foundations"
+    2: "Load country-specific profile"
+    3: "Merge with base as foundation"
+    4: "Apply component-specific adaptations"
+    5: "Inject context-specific requirements"
+  
+  conflict_resolution:
+    - "Country patterns take precedence for style/tone"
+    - "Base principles govern technical accuracy"
+    - "Component needs determine format"
+    - "Context provides specific details"

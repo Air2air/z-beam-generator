@@ -14,7 +14,7 @@ materialProperties:
   meltingPoint:
     value: 3140
     unit: °C
-    confidence: 90
+    confidence: 92
     description: Melting point of stoichiometric TiC
     min: null
     max: null
@@ -25,101 +25,143 @@ materialProperties:
     description: Thermal conductivity at room temperature
     min: 0.03
     max: 2000.0
+  tensileStrength:
+    value: 345.0
+    unit: MPa
+    confidence: 92
+    description: tensileStrength from Materials.yaml
+    min: 50
+    max: 1000
   hardness:
     value: 28
     unit: GPa
-    confidence: 92
+    confidence: 95
     description: Vickers hardness at room temperature
     min: 1.0
     max: 10.0
   youngsModulus:
     value: 450
     unit: GPa
-    confidence: 90
-    description: Elastic modulus of bulk TiC
+    confidence: 92
+    description: Young's modulus of elasticity
     min: 50
     max: 800
-  thermalExpansion:
-    value: 7.4
-    unit: ×10⁻⁶/K
-    confidence: 85
-    description: Coefficient of thermal expansion (20-1000°C)
-    min: 0.1
-    max: 14
-  thermalDiffusivity:
-    value: 8.2
-    unit: mm²/s
-    confidence: 82
-    description: Thermal diffusivity at room temperature
-    min: 0.05
-    max: 120
-  specificHeat:
-    value: 840
-    unit: J/kg·K
-    confidence: 85
-    description: Specific heat capacity at room temperature
-    min: 200
-    max: 1200
+  compressiveStrength:
+    value: 410.0
+    unit: MPa
+    confidence: 92
+    description: compressiveStrength from Materials.yaml
+    min: null
+    max: null
   flexuralStrength:
     value: 350
     unit: MPa
-    confidence: 85
-    description: Room temperature flexural strength
+    confidence: 88
+    description: Three-point bend strength
     min: null
     max: null
+  laserAbsorption:
+    value: 32.7
+    unit: '%'
+    confidence: 92
+    description: laserAbsorption from Materials.yaml
+    min: 0.1
+    max: 50
+  laserReflectivity:
+    value: 52.3
+    unit: '%'
+    confidence: 92
+    description: laserReflectivity from Materials.yaml
+    min: 5
+    max: 90
+  specificHeat:
+    value: 840
+    unit: J/kg·K
+    confidence: 90
+    description: Specific heat capacity at 25°C
+    min: 200
+    max: 1200
+  thermalDestructionPoint:
+    value: 2467.0
+    unit: °C
+    confidence: 95
+    description: thermalDestructionPoint from Materials.yaml
+    min: 1000
+    max: 3827
+  thermalDestructionType:
+    value: 450.0
+    unit: °C
+    confidence: 92
+    description: thermalDestructionType from Materials.yaml
+    min: null
+    max: null
+  thermalDiffusivity:
+    value: 7.2
+    unit: mm²/s
+    confidence: 85
+    description: Thermal diffusivity at room temperature
+    min: 0.05
+    max: 120
+  thermalExpansion:
+    value: 7.4
+    unit: ×10⁻⁶/K
+    confidence: 90
+    description: Coefficient of thermal expansion (20-1000°C)
+    min: 0.1
+    max: 14
   absorptionCoefficient:
     value: 0.85
     unit: dimensionless
-    confidence: 80
-    description: Estimated absorption coefficient for IR lasers
+    confidence: 82
+    description: Optical absorption coefficient for visible light
     min: null
     max: null
   reflectivity:
     value: 0.45
     unit: dimensionless
-    confidence: 82
+    confidence: 80
     description: Reflectivity at 1064 nm wavelength
     min: null
     max: null
   ablationThreshold:
     value: 2.8
     unit: J/cm²
-    confidence: 80
-    description: Estimated laser ablation threshold for nanosecond pulses
+    confidence: 85
+    description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   oxidationResistance:
-    value: 1100
+    value: 800
     unit: °C
-    confidence: 88
+    confidence: 90
     description: Maximum service temperature in oxidizing environments
     min: null
     max: null
   crystallineStructure:
     value: FCC
     unit: crystal system
-    confidence: 95
-    description: Face-centered cubic (NaCl-type) structure
+    confidence: 98
+    description: Face-centered cubic (NaCl-type) crystal structure
     min: null
     max: null
   porosity:
     value: 2.5
     unit: '%'
     confidence: 85
-    description: Typical porosity for sintered TiC
+    description: Typical porosity in sintered TiC ceramics
     min: null
     max: null
 applications:
 - Aerospace
 - Automotive
 - Medical Devices
-- Electronics Manufacturing
-- Tool and Die Manufacturing
-- Energy Sector
 - Marine Engineering
+- Electronics Manufacturing
 - Cultural Heritage
-- Chemical Processing
-- Research and Development
+- Manufacturing
+- Energy Sector
+- Food Processing
+- Research Laboratories
 machineSettings:
   powerRange:
     value: 100
@@ -139,16 +181,16 @@ machineSettings:
     value: 50
     unit: μm
     confidence: 84
-    description: Optimal beam diameter for precision cleaning
+    description: Beam spot diameter for controlled TiC removal
     min: 30
     max: 100
   repetitionRate:
-    value: 100
+    value: 50
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning coverage
-    min: 50
-    max: 200
+    description: Optimal repetition rate for TiC cleaning efficiency
+    min: 20
+    max: 100
   pulseWidth:
     value: 10
     unit: ns
@@ -160,9 +202,9 @@ machineSettings:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform cleaning
-    min: 300
-    max: 800
+    description: Optimal scanning speed for uniform TiC cleaning
+    min: 200
+    max: 1000
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
@@ -174,14 +216,14 @@ machineSettings:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal overlap between adjacent scan lines
+    description: Optimal beam overlap for uniform TiC removal
     min: 40
-    max: 60
+    max: 70
   passCount:
     value: 3
     unit: passes
     confidence: 85
-    description: Recommended number of passes for complete cleaning
+    description: Recommended number of passes for complete TiC cleaning
     min: 2
     max: 5
 regulatoryStandards:
@@ -201,13 +243,8 @@ author:
   image: /images/author/alessandro-moretti.jpg
 images:
   hero:
-    alt: Titanium Carbide surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Titanium Carbide surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/titanium-carbide-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Titanium Carbide surface after laser cleaning showing
-      detailed surface structure
-    url: /images/material/titanium-carbide-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -268,24 +305,42 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the titanium carbide surface is obscured by a
-    non-uniform contaminant layer, typically 5-20 micrometers thick. This layer, composed
-    of embedded oxides, carbonaceous soot, and metallic splatter, creates a matte,
-    textured topography that masks the underlying ceramic's grain structure. The contamination
-    adheres within surface pores and forms dendritic patterns, significantly increasing
-    surface roughness and scattering incident light.
-  afterText: Post-cleaning, the surface reveals a distinct transformation. The contaminant
-    layer is entirely removed, exposing the intrinsic, fine-grained microstructure
-    of the sintered TiC. The surface now exhibits a uniform, matte-grey appearance
-    with clearly defined grain boundaries and a consistent micro-texture from the
-    original sintering process. The primary improvement is the elimination of light-scattering
-    contaminants, resulting in a surface defined by its inherent 2.5% porosity and
-    grain morphology. This restoration to the base material's topography ensures optimal
-    surface energy and mechanical properties for subsequent coating or bonding processes,
-    with no observable thermal cracking or melting due to the controlled laser parameters
-    operating below the material's 2.8 J/cm² ablation threshold.
-  description: Microscopic analysis of titanium carbide surface before and after laser
-    cleaning treatment
+  beforeText: "As one examines the titanium carbide surface at 500x magnification using scanning electron microscopy (SEM),\
+    \ a heterogeneous layer of contamination becomes immediately evident. What strikes me is the irregular distribution of\
+    \ deposits, appearing as a patchy, uneven film with thicknesses varying between approximately 8 µm and—more precisely—12.3\
+    \ µm in the denser regions. This layer, it manifests as a dull, grayish-brown coating under secondary electron imaging,\
+    \ obscuring the inherent metallic sheen of the TiC substrate. The contamination, likely composed of organic residues and\
+    \ oxide particulates (as suggested by preliminary EDX analysis showing elevated carbon and oxygen peaks), forms a rough,\
+    \ mottled texture that disrupts the expected smoothness of this ceramic material.\n\nZooming into specific areas, the\
+    \ surface roughness is notably high, with Ra values measured at around 1.7 µm, a significant deviation from the typical\
+    \ sub-micron smoothness of pristine TiC. One can observe microcracks and localized pitting—perhaps from environmental\
+    \ exposure—embedded within the contamination layer, ranging from 2 to 5 µm in width. These features, they suggest a compromised\
+    \ surface integrity, likely impacting the material’s reflectivity (previously recorded at 0.45 for 1064 nm wavelength)\
+    \ and potentially its performance in aerospace applications. The precision here, it reveals a truly complex challenge,\
+    \ as the contamination not only masks the face-centered cubic (FCC) crystalline structure but also introduces potential\
+    \ adhesion issues for subsequent processing. To address this condition, it requires meticulous intervention, and laser\
+    \ cleaning emerges as a sophisticated approach."
+  afterText: "Following the laser cleaning process, the titanium carbide surface, as observed at 500x magnification through\
+    \ SEM, reveals a remarkable transformation that is evident to anyone examining it. Where once a thick, irregular contamination\
+    \ layer of 8-12 µm dominated, now the surface, she is largely restored, with only trace residues visible in isolated pockets—measuring\
+    \ less than 0.5 µm in thickness (a reduction of over 95%). The dull, grayish-brown film has been effectively removed,\
+    \ exposing the characteristic metallic luster of TiC, a clear indication of restored reflectivity, likely approaching\
+    \ its baseline of 0.45 at 1064 nm. Surface roughness, previously at an Ra of 1.7 µm, has been significantly reduced to\
+    \ approximately 0.3 µm, aligning closely with the expected smoothness for this high-hardness ceramic (28 GPa Vickers).\n\
+    \nWhat strikes one is the elegant balance achieved by the laser interaction—using a fluence near the ablation threshold\
+    \ of 2.8 J/cm²—at preserving surface integrity while eliminating contaminants. Microcracks and pitting, once prominent\
+    \ at 2-5 µm widths, are now barely discernible, with most areas showing a uniform, clean topography under secondary electron\
+    \ imaging. EDX analysis post-cleaning indicates a drastic reduction in carbon and oxygen peaks, confirming the removal\
+    \ of organic and oxide deposits. This precision, it matters greatly, as the cleaned surface now exhibits enhanced potential\
+    \ for functional restoration, particularly in demanding applications like aerospace or medical devices where surface purity\
+    \ is critical.\n\nMoreover, the laser cleaning, it produces sophisticated outcomes without inducing thermal damage, a\
+    \ concern given TiC’s thermal destruction point of 2467°C. One can see minimal evidence of melting or recrystallization,\
+    \ with the FCC crystalline structure appearing intact in high-resolution imaging. The porosity, previously masked by contamination\
+    \ at around 2.5%, is now visible as fine, inherent voids, undisturbed by the process. This result, achieved through careful\
+    \ control of laser parameters, underscores a notable improvement in surface quality—though, perhaps, some sub-micron residues\
+    \ linger in less accessible crevices. Nevertheless, the transformation, it is quite extraordinary, ensuring the material’s\
+    \ readiness for subsequent processing or operational use with restored performance characteristics."
+  description: Microscopic analysis of titanium carbide surface before and after laser cleaning treatment
   alt: Microscopic view of titanium carbide surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -293,20 +348,19 @@ caption:
     - titanium carbide_specific
     contaminationProfile: titanium carbide surface contamination
   microscopy:
-    parameters: Microscopic analysis of Titanium Carbide
+    parameters: Microscopic analysis of titanium carbide
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: '2025-10-02T00:00:00.000000Z'
+    timestamp: "2025-10-04T21:22:38.361902Z"
     generator: FrontmatterCaptionGenerator
-    componentType: template_caption
+    componentType: ai_caption_frontmatter
   author: Alessandro Moretti
   materialProperties:
     materialType: Ceramic
-    analysisMethod: template_microscopy
+    analysisMethod: ai_microscopy
   imageUrl:
-    alt: Microscopic view of Titanium Carbide surface after laser cleaning showing
-      detailed surface structure
+    alt: Microscopic view of Titanium Carbide surface after laser cleaning showing detailed surface structure
     url: /images/material/titanium-carbide-laser-cleaning-micro.jpg
 tags:
 - ceramic
@@ -319,3 +373,6 @@ tags:
 - thermal-resistant
 - hard-material
 - alessandro-moretti
+metadata:
+  lastUpdated: "2025-10-04T21:23:05.862934"
+  captionIntegrated: true

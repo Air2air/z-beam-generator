@@ -1,6 +1,6 @@
 name: Lead
 category: Metal
-subcategory: Lead
+subcategory: non_ferrous
 title: Lead Laser Cleaning
 description: Laser cleaning parameters for Lead
 materialProperties:
@@ -8,7 +8,7 @@ materialProperties:
     value: 11.34
     unit: g/cm³
     confidence: 98
-    description: Density of pure lead at room temperature (20°C)
+    description: Density of pure lead at room temperature
     min: 0.53
     max: 22.6
   meltingPoint:
@@ -22,21 +22,21 @@ materialProperties:
     value: 35.3
     unit: W/m·K
     confidence: 92
-    description: Thermal conductivity at room temperature
+    description: Thermal conductivity at 20°C
     min: 6.0
     max: 429.0
   tensileStrength:
     value: 18
     unit: MPa
-    confidence: 84
-    description: Tensile strength of pure lead
+    confidence: 86
+    description: Ultimate tensile strength
     min: 3.0
     max: 3000.0
   hardness:
     value: 38
     unit: HV
-    confidence: 86
-    description: Vickers hardness of pure annealed lead
+    confidence: 87
+    description: Vickers hardness of pure lead
     min: 0.5
     max: 3500
   youngsModulus:
@@ -46,13 +46,20 @@ materialProperties:
     description: Young's modulus of elasticity
     min: 5
     max: 411
-  thermalExpansion:
-    value: 29.1
-    unit: μm/m·K
-    confidence: 90
-    description: Linear thermal expansion coefficient at 20°C
-    min: 0.5
-    max: 29.1
+  laserAbsorption:
+    value: 38.5
+    unit: '%'
+    confidence: 92
+    description: laserAbsorption from Materials.yaml
+    min: 0.02
+    max: 100
+  laserReflectivity:
+    value: 48.7
+    unit: '%'
+    confidence: 92
+    description: laserReflectivity from Materials.yaml
+    min: 5
+    max: 98
   specificHeat:
     value: 129
     unit: J/kg·K
@@ -60,13 +67,34 @@ materialProperties:
     description: Specific heat capacity at room temperature
     min: 100
     max: 900
+  thermalDestructionPoint:
+    value: 1745.0
+    unit: K
+    confidence: 95
+    description: thermalDestructionPoint from Materials.yaml
+    min: -38.8
+    max: 3422
+  thermalDestructionType:
+    value: 327.5
+    unit: °C
+    confidence: 95
+    description: thermalDestructionType from Materials.yaml
+    min: null
+    max: null
   thermalDiffusivity:
     value: 24.1
     unit: mm²/s
     confidence: 88
-    description: Thermal diffusivity calculated from thermal properties
+    description: Thermal diffusivity at room temperature
     min: 0.2
     max: 174
+  thermalExpansion:
+    value: 29.1
+    unit: μm/m·K
+    confidence: 90
+    description: Linear thermal expansion coefficient at 20°C
+    min: 0.5
+    max: 29.1
   reflectivity:
     value: 65
     unit: '%'
@@ -89,111 +117,118 @@ materialProperties:
     min: null
     max: null
   oxidationResistance:
-    value: Low
-    unit: qualitative
-    confidence: 90
-    description: Forms protective oxide layer but has poor high-temperature oxidation
-      resistance
+    value: Poor
+    unit: Qualitative
+    confidence: 95
+    description: Forms protective oxide layer but has poor overall oxidation resistance
     min: null
     max: null
   crystallineStructure:
     value: FCC
-    unit: crystal system
-    confidence: 95
+    unit: Crystal System
+    confidence: 98
     description: Face-centered cubic crystal structure
     min: null
     max: null
-  surfaceEnergy:
-    value: 470
-    unit: mJ/m²
-    confidence: 83
-    description: Surface energy relevant for adhesion and cleaning efficiency
+  electricalConductivity:
+    value: 4.8
+    unit: MS/m
+    confidence: 93
+    description: Electrical conductivity at 20°C
+    min: null
+    max: null
+  vaporizationPoint:
+    value: 1749
+    unit: °C
+    confidence: 94
+    description: Boiling point of lead
     min: null
     max: null
 applications:
-- Nuclear Energy
+- Nuclear Industry
 - Battery Manufacturing
-- Cultural Heritage
-- Medical Radiation Shielding
-- Marine Engineering
-- Electronics Manufacturing
 - Construction and Roofing
+- Medical Radiation Shielding
+- Marine and Offshore
+- Electronics Manufacturing
+- Cultural Heritage Conservation
 - Automotive Manufacturing
-- Industrial Piping
-- Art and Sculpture
+- Industrial Plumbing
+- Art and Sculpture Foundries
 machineSettings:
   powerRange:
     value: 90
     unit: W
-    confidence: 92
-    description: Optimal average power for Lead oxide removal without substrate damage
+    confidence: 91
+    description: Optimal average power for lead oxide removal without substrate damage
     min: 70
     max: 110
   wavelength:
     value: 1064
     unit: nm
-    confidence: 88
-    description: Near-IR wavelength providing good absorption in Lead oxides while
-      minimizing thermal penetration
+    confidence: 89
+    description: Near-IR wavelength with good absorption in lead oxides and minimal
+      plasma shielding
     min: 532
     max: 1064
   spotSize:
     value: 80
     unit: μm
-    confidence: 84
-    description: Optimal beam diameter for balancing cleaning efficiency and resolution
+    confidence: 88
+    description: Optimal spot size for balancing cleaning efficiency and processing
+      speed
     min: 50
     max: 120
   repetitionRate:
     value: 50
     unit: kHz
-    confidence: 87
-    description: High repetition rate for efficient cleaning coverage while maintaining
-      thermal control
+    confidence: 85
+    description: High repetition rate for efficient cleaning coverage with thermal
+      management
     min: 20
     max: 100
   pulseWidth:
     value: 8
     unit: ns
-    confidence: 85
-    description: Nanosecond pulses for efficient oxide layer removal with controlled
+    confidence: 87
+    description: Nanosecond pulses for efficient oxide layer ablation with controlled
       thermal effects
     min: 5
     max: 15
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 86
-    description: Optimal scanning speed for uniform oxide removal without substrate
-      melting
+    confidence: 84
+    description: Scan speed for efficient oxide removal while maintaining process
+      control
     min: 300
     max: 800
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
-    confidence: 89
-    description: Minimum fluence required for effective Lead oxide ablation
+    confidence: 90
+    description: Minimum fluence required for effective lead oxide ablation
     min: 1.8
-    max: 3.5
+    max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 83
+    confidence: 86
     description: Optimal overlap between adjacent scan lines for uniform cleaning
     min: 40
-    max: 60
+    max: 70
   passCount:
     value: 2
     unit: passes
     confidence: 88
     description: Recommended number of passes for complete oxide removal
     min: 1
-    max: 3
+    max: 4
   laserType:
     value: Nd:YAG
-    unit: none
-    confidence: 90
-    description: Fiber laser preferred for Lead cleaning applications
+    unit: n/a
+    confidence: 92
+    description: Fiber or solid-state laser system for lead cleaning applications
     min: null
     max: null
 regulatoryStandards:
@@ -277,28 +312,18 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the lead surface is obscured by a complex contamination
-    layer. A porous, non-uniform oxide scale, approximately 5-15 µm thick, forms a
-    crust over the substrate. Particulate matter, including carbonaceous soot and
-    mineral dust, is embedded within this brittle matrix. The underlying lead's metallic
-    luster is entirely absent, replaced by a topographically varied, matte surface
-    with visible micro-cracking and pitting.
-  afterText: 'Laser cleaning has removed the contamination layer, revealing the underlying
-    lead substrate. The surface now exhibits a uniform, matte-grey metallic appearance,
-    with the original grain structure of the FCC crystalline metal faintly visible.
-    The brittle oxide crust and embedded particulates have been completely ablated.
-
-
-    The process has exposed minor, pre-existing surface features like grain boundaries
-    and shallow rolling marks, confirming the removal was highly selective to the
-    contaminants. The surface texture is significantly smoother, with the micro-cracking
-    and pitting observed in the contaminated state eliminated.
-
-
-    This results in a chemically pure, metallurgically clean surface with a low surface
-    energy of approximately 470 mJ/m², optimized for subsequent processes like bonding
-    or coating. The visual transformation confirms the precise, non-contact nature
-    of the laser ablation process.'
+  beforeText: At 500x magnification, the lead surface is obscured by a non-uniform
+    contamination layer, typically 5-20 µm thick. This layer consists of a porous,
+    granular matrix of lead oxides (PbO, PbO₂) and carbonates, intermixed with embedded
+    atmospheric particulates. The underlying lead exhibits a smeared, plastically
+    deformed texture from prior mechanical handling, with contamination concentrated
+    in these micro-valleys, creating a dark, mottled pattern that masks the native
+    metallic structure.
+  afterText: Laser cleaning has restored the surface to its native metallic state.
+    The contamination layer is entirely removed, revealing the original grain structure
+    and a more uniform surface topography. At 500x, the surface shows minimal heat-affected
+    zone, with only slight micro-roughening from the ablation process. The distinct,
+    reflective facets of the FCC crystalline lead are now clearly visible and unobscured.
   description: Microscopic analysis of lead surface before and after laser cleaning
     treatment
   alt: Microscopic view of lead surface showing laser cleaning effects

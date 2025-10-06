@@ -54,6 +54,14 @@ The main applic        "api_provider": "none",  # ❌ NO API - static/determinis
   python3 run.py --validate              # Run hierarchical validation & auto-fix
   python3 run.py --validate-report FILE  # Generate detailed validation report
 
+🔬 SYSTEMATIC DATA VERIFICATION (AI Research):
+  python3 run.py --data                  # Verify ALL properties (18 hours, $14.64)
+  python3 run.py --data=critical         # Verify critical properties (3 hours, $1.20)
+  python3 run.py --data=test             # Safe test run (15 min, $0.10, dry-run)
+  python3 run.py --data=important        # Verify important properties (3 hours, $1.20)
+  python3 run.py --data=--group=mechanical  # Verify property group
+  python3 run.py --data=--properties=density,meltingPoint  # Specific properties
+
 ⚙️  SYSTEM MANAGEMENT:
   python3 run.py --config                  # Show configuration
   python3 run.py --cache-stats             # Cache performance
@@ -197,6 +205,26 @@ API_PROVIDERS = {
         },
         "fallback_provider": None,  # FAIL-FAST: No fallbacks allowed
     },
+    "grok": {
+        "name": "Grok",
+        "type": "grok",
+        "env_var": "GROK_API_KEY",
+        "base_url": "https://api.x.ai",
+        "model": "grok-3",
+        "max_tokens": 550,  # Final optimized setting to consistently produce 400-500 total words
+        "temperature": 0.2,  # Slightly higher for creative caption generation
+        "timeout_connect": 30,
+        "timeout_read": 120,
+        "max_retries": 5,
+        "retry_delay": 2.0,
+        "enabled": True,
+        "timeout": 30,
+        "rate_limit": {
+            "requests_per_minute": 60,
+            "tokens_per_minute": 30000,
+        },
+        "fallback_provider": None,  # FAIL-FAST: No fallbacks allowed
+    },
 }
 
 # Component Configuration - USER SETTABLE
@@ -222,7 +250,7 @@ COMPONENT_CONFIG = {
         "data_provider": "static",  # No API calls needed, deterministic
     },
     "caption": {
-        "api_provider": "deepseek",  # ✅ API-BASED COMPONENT - Enhanced AI generation
+        "api_provider": "grok",  # ✅ API-BASED COMPONENT - Enhanced AI generation with Grok
         "priority": 5,
         "enabled": True,  # ENABLED for caption generation
         "data_provider": "hybrid",  # Uses frontmatter data + AI generation
@@ -1114,6 +1142,73 @@ def run_frontmatter_sanitization(specific_file=None):
 # UTILITY FUNCTIONS
 # =================================================================================
 
+def run_data_verification(mode='--all'):
+    """Run systematic data verification with AI research"""
+    try:
+        import subprocess
+        import sys
+        
+        print("🔬 SYSTEMATIC DATA VERIFICATION")
+        print("=" * 80)
+        
+        # Build command based on mode
+        cmd = [sys.executable, 'scripts/research_tools/systematic_verify.py']
+        
+        # Parse mode parameter
+        if mode == '--all' or mode == 'all':
+            cmd.append('--all')
+            print("📋 Mode: Verify ALL properties (~60 properties, $14.64, 18 hours)")
+        elif mode == '--critical' or mode == 'critical':
+            cmd.append('--critical')
+            print("📋 Mode: Verify critical properties (5 properties, $1.20, 3 hours)")
+        elif mode == '--important' or mode == 'important':
+            cmd.append('--important')
+            print("📋 Mode: Verify important properties (5 properties, $1.20, 3 hours)")
+        elif mode == '--test' or mode == 'test':
+            cmd.extend(['--critical', '--dry-run', '--batch-size', '10'])
+            print("📋 Mode: Test run (10 materials, dry-run, $0.10, 15 minutes)")
+        elif mode.startswith('--group='):
+            group = mode.split('=')[1]
+            cmd.extend(['--group', group])
+            print(f"📋 Mode: Verify {group} property group")
+        elif mode.startswith('--properties='):
+            properties = mode.split('=')[1]
+            cmd.extend(['--properties', properties])
+            print(f"📋 Mode: Verify specific properties: {properties}")
+        else:
+            # Default to all
+            cmd.append('--all')
+            print(f"📋 Mode: {mode} (defaulting to --all)")
+        
+        # Auto-accept all AI values (no manual review)
+        cmd.append('--auto-accept-all')
+        print("🤖 Auto-accept: ALL AI-verified values will be accepted automatically")
+        
+        print("=" * 80)
+        print("")
+        
+        # Run the systematic verification tool
+        result = subprocess.run(cmd, check=False)
+        
+        if result.returncode == 0:
+            print("\n✅ Data verification completed successfully")
+            print("📄 See verification report in data/research/")
+            return True
+        else:
+            print(f"\n⚠️ Data verification exited with code {result.returncode}")
+            return False
+            
+    except FileNotFoundError:
+        print("❌ Systematic verification tool not found")
+        print("Expected: scripts/research_tools/systematic_verify.py")
+        return False
+    except Exception as e:
+        print(f"❌ Data verification error: {e}")
+        import traceback
+        traceback.print_exc()
+        return False
+
+
 def generate_safe_filename(material_name: str) -> str:
     """
     Generate a safe filename from material name by converting spaces and underscores to hyphens.
@@ -1164,8 +1259,12 @@ def main():
     import os
     from generators.dynamic_generator import DynamicGenerator
     from api.client_factory import create_api_client
-    from data.materials import load_materials
+    from data.materials import load_materials_cached as load_materials, clear_materials_cache
     from pipeline_integration import validate_material_pre_generation, validate_and_improve_frontmatter
+    
+    # Clear materials cache at startup to ensure fresh data
+    # (cache will be populated on first material access)
+    clear_materials_cache()
     
     parser = argparse.ArgumentParser(description="Z-Beam Content Generator")
     parser.add_argument("--material", help="Generate content for specific material")
@@ -1177,8 +1276,13 @@ def main():
     parser.add_argument("--sanitize-file", help="Sanitize a specific frontmatter file")
     parser.add_argument("--validate", action="store_true", help="Run hierarchical validation (Categories.yaml → Materials.yaml → Frontmatter) and auto-fix issues")
     parser.add_argument("--validate-report", help="Generate hierarchical validation report to file")
+    parser.add_argument("--data", nargs='?', const='--all', help="Systematically verify Materials.yaml data with AI research (use --data=critical, --data=all, or --data=test)")
     
     args = parser.parse_args()
+    
+    # Handle systematic data verification
+    if args.data is not None:
+        return run_data_verification(args.data)
     
     # Handle deployment to Next.js production site
     if args.deploy:

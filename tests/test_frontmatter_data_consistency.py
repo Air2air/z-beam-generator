@@ -260,6 +260,11 @@ class TestFrontmatterDataConsistency(unittest.TestCase):
                 # Check if property exists in Categories.yaml category_ranges
                 if prop_name in metal_ranges:
                     expected_range = metal_ranges[prop_name]
+                    
+                    # Handle string values (like thermalDestructionType) - skip validation
+                    if not isinstance(expected_range, dict):
+                        continue
+                    
                     expected_min = expected_range.get('min')
                     expected_max = expected_range.get('max')
                     

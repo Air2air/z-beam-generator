@@ -1,6 +1,6 @@
 name: Tantalum
 category: Metal
-subcategory: Tantalum
+subcategory: refractory
 title: Tantalum Laser Cleaning
 description: Laser cleaning parameters for Tantalum
 materialProperties:
@@ -46,13 +46,41 @@ materialProperties:
     description: Elastic modulus at room temperature
     min: 5
     max: 411
-  thermalExpansion:
-    value: 6.3
-    unit: ×10⁻⁶/K
-    confidence: 90
-    description: Coefficient of thermal expansion at 20°C
-    min: 0.5
-    max: 29.1
+  laserAbsorption:
+    value: 40.0
+    unit: '%'
+    confidence: 92
+    description: laserAbsorption from Materials.yaml
+    min: 0.02
+    max: 100
+  laserReflectivity:
+    value: 52.3
+    unit: '%'
+    confidence: 92
+    description: laserReflectivity from Materials.yaml
+    min: 5
+    max: 98
+  specificHeat:
+    value: 140
+    unit: J/kg·K
+    confidence: 91
+    description: Specific heat capacity at 25°C
+    min: 100
+    max: 900
+  thermalDestructionPoint:
+    value: 1668.0
+    unit: °C
+    confidence: 95
+    description: thermalDestructionPoint from Materials.yaml
+    min: -38.8
+    max: 3422
+  thermalDestructionType:
+    value: 3290.0
+    unit: K
+    confidence: 95
+    description: thermalDestructionType from Materials.yaml
+    min: null
+    max: null
   thermalDiffusivity:
     value: 23.7
     unit: mm²/s
@@ -60,46 +88,46 @@ materialProperties:
     description: Thermal diffusivity at room temperature
     min: 0.2
     max: 174
-  specificHeat:
-    value: 140
-    unit: J/kg·K
-    confidence: 91
-    description: Specific heat capacity at room temperature
-    min: 100
-    max: 900
+  thermalExpansion:
+    value: 6.3
+    unit: ×10⁻⁶/K
+    confidence: 90
+    description: Coefficient of thermal expansion at 20°C
+    min: 0.5
+    max: 29.1
   absorptionCoefficient:
     value: 0.45
     unit: dimensionless
     confidence: 85
-    description: Typical absorption coefficient for near-infrared lasers
+    description: Typical absorption coefficient for IR lasers (1064 nm)
     min: null
     max: null
   reflectivity:
     value: 0.78
     unit: dimensionless
     confidence: 83
-    description: Reflectivity at 1064 nm wavelength
+    description: Reflectivity at common laser wavelengths (500-1100 nm)
     min: null
     max: null
   ablationThreshold:
     value: 2.8
     unit: J/cm²
     confidence: 82
-    description: Approximate laser ablation threshold for nanosecond pulses
+    description: Approximate ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   oxidationResistance:
     value: Excellent
     unit: qualitative
     confidence: 95
-    description: Forms protective oxide layer, resistant to most acids
+    description: Forms protective oxide layer, resistant to most acids except HF
     min: null
     max: null
   crystallineStructure:
     value: BCC
     unit: crystal system
     confidence: 98
-    description: Body-centered cubic crystal structure
+    description: Body-centered cubic structure with lattice parameter 0.330 nm
     min: null
     max: null
   electricalResistivity:
@@ -109,25 +137,24 @@ materialProperties:
     description: Electrical resistivity at 20°C
     min: null
     max: null
-  thermalShockResistance:
-    value: High
-    unit: qualitative
-    confidence: 88
-    description: Excellent thermal shock resistance due to high ductility and melting
-      point
+  laserDamageThreshold:
+    value: 15
+    unit: J/cm²
+    confidence: 81
+    description: Damage threshold for short pulse lasers
     min: null
     max: null
 applications:
 - Aerospace
-- Medical Implants
+- Medical Devices
 - Chemical Processing
-- Electronics
+- Electronics Manufacturing
 - Nuclear Technology
 - Marine Engineering
+- Cultural Heritage
+- Energy Sector
 - Research Laboratories
 - Additive Manufacturing
-- Energy Sector
-- Cultural Heritage
 machineSettings:
   powerRange:
     value: 90
@@ -141,71 +168,58 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength providing good absorption in Tantalum oxides while
-      minimizing substrate heating
-    min: 1030
-    max: 1070
+    description: Near-IR wavelength optimized for Tantalum's absorption characteristics
+    min: 532
+    max: 1064
   spotSize:
-    value: 50
+    value: 80
     unit: μm
     confidence: 84
-    description: Beam spot diameter balancing cleaning efficiency and resolution
-    min: 30
-    max: 80
+    description: Beam spot diameter for precise cleaning control
+    min: 50
+    max: 120
   repetitionRate:
-    value: 100
+    value: 50
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning coverage while maintaining
-      thermal management
-    min: 50
-    max: 200
+    description: Optimal repetition rate for continuous cleaning coverage
+    min: 20
+    max: 100
   pulseWidth:
     value: 12
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration optimized for oxide layer ablation with
-      controlled thermal effects
+    description: Nanosecond pulse duration for efficient oxide layer ablation
     min: 8
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform oxide removal without substrate
-      damage
+    description: Optimal scanning speed for efficient area coverage
     min: 300
     max: 800
-  fluence:
-    value: 4.5
+  fluenceThreshold:
+    value: 3.5
     unit: J/cm²
     confidence: 90
-    description: Laser fluence optimized for Tantalum oxide ablation threshold
-    min: 3.0
-    max: 6.5
+    description: Minimum fluence required for effective Tantalum oxide removal
+    min: 2.5
+    max: 5.0
   overlapRatio:
-    value: 50
+    value: 40
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for complete coverage without excessive thermal
-      accumulation
-    min: 40
-    max: 65
+    description: Optimal beam overlap for uniform cleaning results
+    min: 30
+    max: 60
   passCount:
     value: 3
     unit: passes
     confidence: 85
-    description: Recommended number of passes for complete oxide removal from Tantalum
-      surface
+    description: Recommended number of passes for complete contamination removal
     min: 2
     max: 5
-  laserType:
-    value: Nd:YAG
-    unit: none
-    confidence: 89
-    description: Recommended laser type for Tantalum cleaning applications
-    min: null
-    max: null
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -290,29 +304,27 @@ outcomeMetrics:
 caption:
   beforeText: At 500x magnification, the tantalum surface is obscured by a non-uniform
     contamination layer, typically 5-20 µm thick. This layer consists of embedded
-    oxides, carbonaceous deposits, and particulate matter, creating a topographically
-    complex and irregular texture. The underlying metallic substrate is not visible,
-    and the contamination exhibits a cracked, mudflat-like pattern, indicative of
-    thermal stress and environmental exposure.
-  afterText: 'Laser cleaning removes the contamination layer entirely, revealing the
-    pristine, ductile metallic substrate. The surface now exhibits the characteristic
-    micro-texture of the base tantalum, with visible grain boundaries and polishing
-    marks. At 500x, the surface is uniform and continuous, with no evidence of the
-    former oxide and carbon deposits.
+    oxides, carbonaceous deposits, and particulate matter, creating a rough, textured
+    topography. The underlying metal's characteristic BCC grain structure is entirely
+    masked. The contamination appears as dark, mottled patches and scattered, reflective
+    inclusions, disrupting the surface's native metallic luster and compromising its
+    functional integrity.
+  afterText: 'Laser cleaning restores the pristine metallic surface, revealing the
+    fine, equiaxed grain structure of the body-centered cubic tantalum. The previously
+    obscured grain boundaries are now sharply defined, and the surface exhibits a
+    uniform, matte-grey finish with minimal microscopic pitting.
 
 
-    The process achieves this result through precise control of laser fluence, which
-    is maintained just above the 2.8 J/cm² ablation threshold of the contaminants
-    but safely below the damage threshold of the underlying tantalum. The metal''s
-    high thermal diffusivity (23.7 mm²/s) rapidly dissipates incident energy, preventing
-    heat accumulation and microstructural alterations such as grain growth or phase
-    changes.
+    The process effectively removes the 5-20 µm contamination layer without inducing
+    significant heat-affected zone microcracking, a critical consideration given tantalum''s
+    high melting point of 3017°C. The laser''s parameters are tuned to exploit its
+    moderate IR absorption (~40%) while avoiding ablation damage to the base metal.
 
 
-    This yields a metallurgically clean surface with a minimal heat-affected zone,
-    restoring the material''s inherent corrosion resistance and optimal surface energy.
-    The visual transformation is from a non-conductive, contaminated crust to a homogeneous,
-    ready-for-service metallic finish.'
+    This results in a topographically consistent surface with a measured roughness
+    (Ra) below 0.8 µm. The cleaned surface is now optimally prepared for subsequent
+    high-integrity processes, such as anodizing or thin-film deposition, with no residual
+    contaminants to act as initiation sites for corrosion or adhesion failure.'
   description: Microscopic analysis of tantalum surface before and after laser cleaning
     treatment
   alt: Microscopic view of tantalum surface showing laser cleaning effects

@@ -1,6 +1,6 @@
 name: Platinum
 category: Metal
-subcategory: Platinum
+subcategory: precious
 title: Platinum Laser Cleaning
 description: Laser cleaning parameters for Platinum
 materialProperties:
@@ -8,7 +8,7 @@ materialProperties:
     value: 21.45
     unit: g/cm³
     confidence: 98
-    description: Density of pure platinum at 20°C
+    description: High density of pure platinum at 20°C
     min: 0.53
     max: 22.6
   meltingPoint:
@@ -28,14 +28,14 @@ materialProperties:
   tensileStrength:
     value: 125
     unit: MPa
-    confidence: 88
+    confidence: 90
     description: Tensile strength of annealed platinum
     min: 3.0
     max: 3000.0
   hardness:
     value: 40
     unit: HV
-    confidence: 89
+    confidence: 85
     description: Vickers hardness of annealed platinum
     min: 0.5
     max: 3500
@@ -46,6 +46,48 @@ materialProperties:
     description: Young's modulus of elasticity
     min: 5
     max: 411
+  laserAbsorption:
+    value: 36.5
+    unit: '%'
+    confidence: 92
+    description: laserAbsorption from Materials.yaml
+    min: 0.02
+    max: 100
+  laserReflectivity:
+    value: 73.2
+    unit: '%'
+    confidence: 95
+    description: laserReflectivity from Materials.yaml
+    min: 5
+    max: 98
+  specificHeat:
+    value: 0.133
+    unit: J/g·K
+    confidence: 90
+    description: Specific heat capacity at 25°C
+    min: 100
+    max: 900
+  thermalDestructionPoint:
+    value: 2041.15
+    unit: K
+    confidence: 95
+    description: thermalDestructionPoint from Materials.yaml
+    min: -38.8
+    max: 3422
+  thermalDestructionType:
+    value: 2041.4
+    unit: K
+    confidence: 98
+    description: thermalDestructionType from Materials.yaml
+    min: null
+    max: null
+  thermalDiffusivity:
+    value: 25.1
+    unit: mm²/s
+    confidence: 88
+    description: Thermal diffusivity at room temperature
+    min: 0.2
+    max: 174
   thermalExpansion:
     value: 8.8
     unit: μm/m·K
@@ -53,46 +95,32 @@ materialProperties:
     description: Coefficient of linear thermal expansion (20-100°C)
     min: 0.5
     max: 29.1
-  thermalDiffusivity:
-    value: 24.9
-    unit: mm²/s
-    confidence: 90
-    description: Thermal diffusivity at room temperature
-    min: 0.2
-    max: 174
-  specificHeat:
-    value: 133
-    unit: J/kg·K
-    confidence: 93
-    description: Specific heat capacity at 25°C
-    min: 100
-    max: 900
   reflectivity:
     value: 73
     unit: '%'
-    confidence: 85
-    description: Reflectivity at 1064 nm wavelength (common laser)
+    confidence: 92
+    description: Reflectivity at 1064 nm (common laser wavelength)
     min: null
     max: null
   absorptionCoefficient:
     value: 0.85
     unit: 1/μm
-    confidence: 82
+    confidence: 85
     description: Absorption coefficient at 1064 nm wavelength
     min: null
     max: null
   ablationThreshold:
     value: 2.8
     unit: J/cm²
-    confidence: 80
-    description: Approximate laser ablation threshold for nanosecond pulses
+    confidence: 82
+    description: Estimated laser ablation threshold for nanosecond pulses
     min: null
     max: null
   oxidationResistance:
     value: Excellent
     unit: qualitative
     confidence: 96
-    description: High resistance to oxidation even at elevated temperatures
+    description: Highly resistant to oxidation even at high temperatures
     min: null
     max: null
   crystallineStructure:
@@ -102,48 +130,47 @@ materialProperties:
     description: Face-centered cubic crystal structure
     min: null
     max: null
-  electricalResistivity:
-    value: 10.6
-    unit: μΩ·cm
+  electricalConductivity:
+    value: 9.43
+    unit: MS/m
     confidence: 95
-    description: Electrical resistivity at 20°C
+    description: Electrical conductivity at 20°C
     min: null
     max: null
 applications:
 - Aerospace
 - Medical Devices
 - Electronics Manufacturing
-- Chemical Processing
 - Jewelry and Luxury Goods
+- Chemical Processing
 - Automotive
-- Energy Sector
 - Research and Laboratory
-- Marine and Offshore
+- Energy Sector
+- Marine Engineering
 - Cultural Heritage
 machineSettings:
   powerRange:
     value: 90
     unit: W
     confidence: 92
-    description: Optimal average power for Platinum surface cleaning without thermal
-      damage
+    description: Optimal average power for Platinum oxide and contaminant removal
     min: 70
-    max: 110
+    max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength with good absorption in Platinum surface contaminants
+    description: Near-IR wavelength optimized for Platinum's moderate reflectivity
+      and thermal processing
     min: 532
     max: 1064
   spotSize:
     value: 80
     unit: μm
     confidence: 84
-    description: Optimal beam diameter for precision cleaning with adequate energy
-      density
+    description: Optimal spot size for balancing cleaning efficiency and resolution
     min: 50
-    max: 120
+    max: 150
   repetitionRate:
     value: 50
     unit: kHz
@@ -153,41 +180,40 @@ machineSettings:
     min: 20
     max: 100
   pulseWidth:
-    value: 12
+    value: 15
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient contaminant removal with
-      minimal substrate heating
+    description: Nanosecond pulse duration for efficient contaminant ablation without
+      substrate damage
     min: 8
-    max: 20
+    max: 30
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Scanning speed balancing cleaning efficiency and process quality
-    min: 300
-    max: 800
-  fluenceThreshold:
-    value: 2.5
+    description: Scan speed for efficient area coverage with adequate energy deposition
+    min: 200
+    max: 1000
+  fluence:
+    value: 4.5
     unit: J/cm²
     confidence: 90
-    description: Minimum fluence required for effective contaminant removal from Platinum
-      surfaces
-    min: 1.8
-    max: 4.0
+    description: Fluence threshold for effective contaminant removal on Platinum surfaces
+    min: 2.5
+    max: 7.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for uniform cleaning without excessive thermal
-      accumulation
+    description: Optimal beam overlap for uniform cleaning without excessive thermal
+      buildup
     min: 40
     max: 70
   passCount:
     value: 3
     unit: passes
     confidence: 85
-    description: Recommended number of passes for thorough cleaning with process control
+    description: Recommended number of passes for thorough cleaning of Platinum surfaces
     min: 1
     max: 5
 regulatoryStandards:
@@ -273,19 +299,19 @@ outcomeMetrics:
   units: []
 caption:
   beforeText: At 500x magnification, the platinum surface is obscured by a non-uniform
-    contamination layer, typically 5-20 µm thick. This layer consists of amorphous
-    carbon deposits, embedded particulate matter, and areas of tenacious oxide scale,
-    despite platinum's inherent oxidation resistance. The underlying metal's FCC crystalline
-    structure is entirely hidden. The texture is highly irregular, with contamination
-    filling the natural grain boundaries and creating a topographically complex, matte
-    surface that scatters light and severely diminishes thermal and electrical conductivity
-    at the interface.
-  afterText: Laser cleaning reveals the pristine platinum substrate, restoring its
-    intrinsic metallic luster. The surface now exhibits a clean, defined grain structure
-    with visible annealing twins, characteristic of its FCC lattice. Contaminants
-    are completely removed from the grain boundaries, resulting in a microscopically
-    smooth finish that optimizes the surface for electrical contact and catalytic
-    activity.
+    contamination layer, typically 5-20 µm thick. This layer, composed of carbonaceous
+    deposits, adsorbed oxides, and trace metallic impurities, appears as a dark, mottled
+    film. It masks the underlying metal's grain structure and creates a topographically
+    complex, rough texture. The contamination adheres in irregular patches, with visible
+    cracking and delamination at the interface with the platinum substrate, indicating
+    poor adhesion and a propensity for spalling.
+  afterText: Following laser cleaning, the surface reveals a distinct transformation
+    at 500x magnification. The contamination layer is entirely removed, exposing the
+    pristine, fully metallic surface and its well-defined polycrystalline grain structure.
+    The surface texture is now characterized by the inherent micro-features of the
+    platinum, with a significant reduction in microscopic roughness. The material's
+    high reflectivity is restored, presenting a clean, homogeneous substrate free
+    from residual film or thermal discoloration.
   description: Microscopic analysis of platinum surface before and after laser cleaning
     treatment
   alt: Microscopic view of platinum surface showing laser cleaning effects

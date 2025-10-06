@@ -1,6 +1,6 @@
 name: Breccia
 category: Stone
-subcategory: Breccia
+subcategory: mineral
 title: Breccia Laser Cleaning
 description: Laser cleaning parameters for Breccia
 materialProperties:
@@ -8,121 +8,162 @@ materialProperties:
     value: 2.65
     unit: g/cm³
     confidence: 85
-    description: Average density for consolidated breccia rock formations
+    description: Average density for consolidated sedimentary breccia
     min: 1.5
     max: 3.4
   meltingPoint:
     value: 1250
     unit: °C
     confidence: 82
-    description: Approximate melting point for silicate-based breccia compositions
+    description: Estimated melting point based on quartz-feldspar composition
     min: null
     max: null
   thermalConductivity:
-    value: 2.5
+    value: 2.8
     unit: W/m·K
-    confidence: 83
-    description: Thermal conductivity typical for consolidated breccia materials
+    confidence: 80
+    description: Thermal conductivity for consolidated breccia rock
     min: 0.2
     max: 8
+  tensileStrength:
+    value: 8.2
+    unit: MPa
+    confidence: 92
+    description: tensileStrength from Materials.yaml
+    min: 2
+    max: 25
   hardness:
     value: 6.5
     unit: Mohs
-    confidence: 86
-    description: Hardness range for consolidated breccia with mixed mineral content
+    confidence: 85
+    description: Mohs hardness scale for consolidated breccia
     min: 1
     max: 7
   youngsModulus:
     value: 65
     unit: GPa
     confidence: 82
-    description: Young's modulus for consolidated breccia formations
+    description: Elastic modulus for consolidated sedimentary breccia
     min: 10
     max: 100
-  thermalExpansion:
-    value: 8.2
-    unit: 10⁻⁶/K
-    confidence: 81
-    description: Coefficient of thermal expansion for mixed mineral breccia
-    min: 3
-    max: 25
-  thermalDiffusivity:
-    value: 1.1
-    unit: mm²/s
-    confidence: 80
-    description: Thermal diffusivity calculated from thermal properties
-    min: 0.2
-    max: 2.5
+  laserAbsorption:
+    value: 8.72
+    unit: '%'
+    confidence: 92
+    description: laserAbsorption from Materials.yaml
+    min: 0.1
+    max: 20
+  laserReflectivity:
+    value: 38.2
+    unit: '%'
+    confidence: 92
+    description: laserReflectivity from Materials.yaml
+    min: 5
+    max: 80
   specificHeat:
-    value: 0.84
-    unit: kJ/kg·K
-    confidence: 84
-    description: Specific heat capacity for rock-based breccia materials
+    value: 850
+    unit: J/kg·K
+    confidence: 83
+    description: Specific heat capacity at room temperature
     min: 600
     max: 1200
+  thermalDestructionPoint:
+    value: 1120.0
+    unit: °C
+    confidence: 92
+    description: thermalDestructionPoint from Materials.yaml
+    min: 600
+    max: 1700
+  thermalDestructionType:
+    value: 2.8
+    unit: MW/m²
+    confidence: 92
+    description: thermalDestructionType from Materials.yaml
+    min: null
+    max: null
+  thermalDiffusivity:
+    value: 1.32
+    unit: mm²/s
+    confidence: 92
+    description: thermalDiffusivity from Materials.yaml
+    min: 0.2
+    max: 2.5
+  thermalExpansion:
+    value: 8.5
+    unit: 10⁻⁶/K
+    confidence: 82
+    description: Coefficient of thermal expansion for mixed mineral composition
+    min: 3
+    max: 25
+  compressiveStrength:
+    value: 180
+    unit: MPa
+    confidence: 84
+    description: Uniaxial compressive strength of consolidated breccia
+    min: null
+    max: null
   absorptionCoefficient:
     value: 0.75
     unit: dimensionless
-    confidence: 85
-    description: Optical absorption coefficient for common laser wavelengths (1064
-      nm)
+    confidence: 81
+    description: Optical absorption coefficient for common laser wavelengths
     min: null
     max: null
   reflectivity:
     value: 0.25
     unit: dimensionless
-    confidence: 83
-    description: Surface reflectivity for near-infrared laser wavelengths
+    confidence: 82
+    description: Surface reflectivity at typical laser cleaning wavelengths
     min: null
     max: null
   ablationThreshold:
     value: 2.8
     unit: J/cm²
-    confidence: 84
-    description: Laser ablation threshold for nanosecond pulses at 1064 nm
+    confidence: 80
+    description: Laser ablation threshold for Nd:YAG lasers
     min: null
     max: null
   porosity:
-    value: 8.5
+    value: 8
     unit: '%'
-    confidence: 87
-    description: Typical porosity range for consolidated breccia materials
+    confidence: 86
+    description: Typical porosity range for consolidated breccia
     min: null
     max: null
 applications:
 - Cultural Heritage
-- Construction and Architecture
+- Architecture and Construction
 - Museum Conservation
 - Geological Research
-- Monument Restoration
-- Interior Design
+- Luxury Interior Design
+- Monument Preservation
 - Archaeological Excavation
-- Landscape Architecture
 - Stone Fabrication
+- Art Restoration
 - Geological Education
 machineSettings:
   powerRange:
-    value: 45
+    value: 90
     unit: W
     confidence: 88
     description: Optimal average power for Breccia surface cleaning without thermal
       damage
-    min: 30
-    max: 60
+    min: 70
+    max: 110
   wavelength:
     value: 1064
     unit: nm
     confidence: 85
-    description: Near-IR wavelength for effective absorption in mineral components
+    description: Near-infrared wavelength for effective Breccia mineral absorption
     min: 532
     max: 1064
   spotSize:
-    value: 80
+    value: 100
     unit: μm
     confidence: 86
-    description: Beam spot diameter for precise cleaning control
+    description: Beam spot diameter for precise cleaning control on Breccia surfaces
     min: 50
-    max: 120
+    max: 200
   repetitionRate:
     value: 50
     unit: kHz
@@ -131,39 +172,39 @@ machineSettings:
     min: 20
     max: 100
   pulseWidth:
-    value: 8
+    value: 15
     unit: ns
     confidence: 82
     description: Short pulse duration for controlled ablation of surface contaminants
-    min: 5
-    max: 15
+    min: 8
+    max: 25
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 83
-    description: Optimal scanning speed for uniform surface treatment
+    description: Optimal scanning speed for uniform cleaning coverage
     min: 300
     max: 800
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 87
-    description: Threshold fluence for effective contaminant removal from Breccia
-      surface
-    min: 1.8
-    max: 3.5
+    description: Minimum fluence required for effective contaminant removal from Breccia
+    min: 1.5
+    max: 4.0
   overlapRatio:
-    value: 50
+    value: 40
     unit: '%'
     confidence: 85
-    description: Optimal beam overlap for uniform cleaning coverage
-    min: 40
+    description: Optimal beam overlap for uniform cleaning without excessive energy
+      deposition
+    min: 30
     max: 60
   passCount:
     value: 3
     unit: passes
     confidence: 82
-    description: Recommended number of passes for complete contaminant removal
+    description: Recommended number of passes for complete surface cleaning
     min: 2
     max: 5
 regulatoryStandards:
@@ -247,15 +288,21 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the breccia surface is obscured by a continuous,
-    heterogeneous contamination layer averaging 15-25 µm thick. This layer, composed
-    of particulate matter, carbonaceous soot, and biological growth, fills the natural
-    porosity and fractures. It creates a matte, occluded texture that masks the stone's
-    inherent mineralogical composition and interlocking clast structure.
-  afterText: Post-cleaning, the surface reveals the breccia's intrinsic fabric. The
-    contamination layer is removed, exposing clean, individual mineral grains and
-    the sharp boundaries of constituent clasts. The stone's original micro-topography
-    and porosity are fully restored, with no thermal alteration to the substrate.
+  beforeText: At 500x magnification, the breccia surface is obscured by a complex
+    contamination layer. A discontinuous crust, measuring 50-200 micrometers thick,
+    adheres to the stone matrix. This crust is a composite of particulate matter,
+    black gypsum crusts, and biological growth, filling the natural porosity and interlocking
+    clasts. The underlying breccia texture—a key visual characteristic—is largely
+    hidden, with only the highest mineral protrusions visible through the deposit.
+    The contaminants form a cohesive, low-porosity layer that masks the stone's inherent
+    color and granular detail.
+  afterText: Laser cleaning has effectively restored the breccia's micro-topography.
+    The contamination crust is entirely removed, revealing the distinct boundaries
+    between the constituent clasts and the cementing matrix. The stone's natural porosity
+    (approximately 8%) and granular texture are now fully visible, with no thermal
+    damage or alteration to the mineral components. The surface exhibits its original
+    heterogeneous composition, with clear differentiation between the various rock
+    fragments.
   description: Microscopic analysis of breccia surface before and after laser cleaning
     treatment
   alt: Microscopic view of breccia surface showing laser cleaning effects

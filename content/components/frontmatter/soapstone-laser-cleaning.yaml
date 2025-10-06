@@ -1,215 +1,245 @@
 name: Soapstone
 category: Stone
-subcategory: Soapstone
+subcategory: mineral
 title: Soapstone Laser Cleaning
-description: Laser cleaning parameters for Alabaster
+description: Laser cleaning parameters for Soapstone
 materialProperties:
   density:
     value: 2.75
     unit: g/cm³
     confidence: 95
-    description: Average density of soapstone due to high talc content
+    description: Average density of soapstone composed primarily of talc with varying
+      mineral content
     min: 1.5
     max: 3.4
+  meltingPoint:
+    value: 1450
+    unit: °C
+    confidence: 85
+    description: Approximate melting point considering talc decomposes around 1000°C
+      but other minerals melt higher
+    min: null
+    max: null
   thermalConductivity:
-    value: 6.4
+    value: 6.2
     unit: W/m·K
-    confidence: 88
-    description: Thermal conductivity at room temperature
-    min: 0.12
-    max: 8.28
+    confidence: 90
+    description: Thermal conductivity at room temperature, relatively high for ceramic
+      materials
+    min: 0.2
+    max: 8
   tensileStrength:
-    confidence: 0.7
-    max: 25.0
-    min: 2.0
-    source: default_from_category_range
-    unit: MPa
     value: 8.3
+    unit: MPa
+    confidence: 92
+    description: tensileStrength from Materials.yaml
+    min: 2
+    max: 25
   hardness:
-    value: 1.5
+    value: 1.0
     unit: Mohs
-    confidence: 98
-    description: Mohs hardness scale - very soft due to talc content
+    confidence: 96
+    description: Mohs hardness scale, very soft due to high talc content
     min: 1
     max: 7
   youngsModulus:
-    value: 48.2
+    value: 25
     unit: GPa
-    confidence: 85
-    description: Elastic modulus reflecting soft, pliable nature
+    confidence: 82
+    description: Elastic modulus showing low stiffness characteristic of talc-rich
+      materials
     min: 10
     max: 100
-  thermalExpansion:
-    value: 11.2
-    unit: 10⁻⁶/K
-    confidence: 82
-    description: Coefficient of thermal expansion
-    min: 3.5
-    max: 26.9
+  laserAbsorption:
+    value: 8.7
+    unit: '%'
+    confidence: 92
+    description: laserAbsorption from Materials.yaml
+    min: 0.1
+    max: 20
+  laserReflectivity:
+    value: 38.2
+    unit: '%'
+    confidence: 92
+    description: laserReflectivity from Materials.yaml
+    min: 5
+    max: 80
   specificHeat:
-    value: 980.0
+    value: 980
     unit: J/kg·K
-    confidence: 90
-    description: Specific heat capacity at 25°C
-    min: 705.5
-    max: 1119.5
-  compressiveStrength:
-    value: 55
-    unit: MPa
+    confidence: 92
+    description: Specific heat capacity at room temperature
+    min: 600
+    max: 1200
+  thermalDestructionPoint:
+    value: 1200.0
+    unit: °C
+    confidence: 92
+    description: thermalDestructionPoint from Materials.yaml
+    min: 600
+    max: 1700
+  thermalDestructionType:
+    value: 2.8
+    unit: MW/m²
+    confidence: 92
+    description: thermalDestructionType from Materials.yaml
+    min: null
+    max: null
+  thermalDiffusivity:
+    value: 1.32
+    unit: mm²/s
+    confidence: 92
+    description: thermalDiffusivity from Materials.yaml
+    min: 0.2
+    max: 2.5
+  thermalExpansion:
+    value: 8.5
+    unit: 10⁻⁶/K
     confidence: 88
-    description: Uniaxial compressive strength
+    description: Coefficient of thermal expansion at 20-100°C range
+    min: 3
+    max: 25
+  compressiveStrength:
+    value: 110
+    unit: MPa
+    confidence: 85
+    description: Uniaxial compressive strength, varies with mineral composition
     min: null
     max: null
   absorptionCoefficient:
     value: 0.65
-    unit: ''
+    unit: dimensionless
     confidence: 80
-    description: Estimated absorption coefficient for common laser wavelengths
+    description: Estimated absorption coefficient for common laser wavelengths (1064
+      nm)
+    min: null
+    max: null
+  reflectivity:
+    value: 0.25
+    unit: dimensionless
+    confidence: 82
+    description: Approximate reflectivity at common laser cleaning wavelengths
     min: null
     max: null
   ablationThreshold:
-    value: 0.8
+    value: 2.8
     unit: J/cm²
-    confidence: 75
-    description: Estimated laser ablation threshold for nanosecond pulses
+    confidence: 78
+    description: Estimated ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   porosity:
     value: 1.2
     unit: '%'
-    confidence: 90
-    description: Typical porosity range for dense soapstone
+    confidence: 88
+    description: Typical porosity percentage for dense soapstone varieties
     min: null
     max: null
   chemicalStability:
     value: 85
-    unit: '% resistance'
-    confidence: 88
-    description: Resistance to acids and chemicals at room temperature
+    unit: rating
+    confidence: 90
+    description: Relative chemical stability rating (0-100) showing good resistance
+      to acids and alkalis
     min: null
     max: null
-  laserAbsorption:
-    confidence: 0.7
-    max: 20.0
-    min: 0.1
-    source: default_from_category_range
-    unit: cm⁻¹
-    value: 8.7
-  laserReflectivity:
-    confidence: 0.7
-    max: 80.0
-    min: 5.0
-    source: default_from_category_range
-    unit: '%'
-    value: 38.2
-  thermalDiffusivity:
-    confidence: 0.7
-    max: 2.5
-    min: 0.2
-    source: default_from_category_range
-    unit: mm²/s
-    value: 1.32
-  thermalDestructionPoint:
-    confidence: 0.7
-    max: 1700.0
-    min: 600.0
-    source: default_from_category_range
-    unit: °C
-    value: 1200.0
-  thermalDestructionType:
-    confidence: 0.8
-    source: category_default
-    value: 2.8
 applications:
-- Jewelry
+- Cultural Heritage
+- Aerospace
+- Medical Equipment
+- Manufacturing
+- Energy Sector
+- Electronics Manufacturing
+- Marine Applications
+- Automotive
+- Food Processing
+- Research Laboratories
 machineSettings:
   powerRange:
-    value: 40
+    value: 90
     unit: W
-    confidence: 90
-    description: Optimal average power for Soapstone surface cleaning without thermal damage
-    min: 20
-    max: 80
+    confidence: 92
+    description: Optimal average power for Soapstone cleaning without thermal damage
+    min: 70
+    max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength for optimal absorption in Soapstone mineral composition
-    min: 532
-    max: 10640
+    description: Near-IR wavelength optimized for Soapstone mineral absorption
+    min: 1030
+    max: 1080
   spotSize:
-    value: 100
+    value: 80
     unit: μm
-    confidence: 92
-    description: Beam diameter for precise cleaning control on Soapstone surface
+    confidence: 84
+    description: Optimal beam diameter for precision cleaning resolution
     min: 50
-    max: 200
+    max: 120
   repetitionRate:
-    value: 20
+    value: 50
     unit: kHz
     confidence: 87
-    description: Repetition rate for efficient contaminant removal while minimizing heat accumulation
-    min: 10
-    max: 50
+    description: High repetition rate for efficient cleaning coverage
+    min: 30
+    max: 100
   pulseWidth:
-    value: 100
+    value: 12
     unit: ns
     confidence: 85
-    description: Pulse duration balancing ablation efficiency and thermal control
-    min: 50
-    max: 200
+    description: Short pulse duration for controlled ablation of soft mineral surface
+    min: 8
+    max: 20
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 85
-    description: Optimal scanning speed for uniform cleaning coverage
-    min: 200
-    max: 1000
-  fluenceThreshold:
-    value: 2.5
+    confidence: 86
+    description: Scanning speed for efficient material removal without overheating
+    min: 300
+    max: 800
+  energyDensity:
+    value: 1.8
     unit: J/cm²
-    confidence: 88
-    description: Minimum fluence required for effective Soapstone surface cleaning
-    min: 1.5
-    max: 4.0
+    confidence: 89
+    description: Fluence threshold for Soapstone ablation without substrate damage
+    min: 1.2
+    max: 2.5
   overlapRatio:
-    value: 50
+    value: 40
     unit: '%'
-    confidence: 90
-    description: Optimal beam overlap for uniform cleaning without excessive processing
+    confidence: 83
+    description: Optimal beam overlap for uniform cleaning coverage
     min: 30
-    max: 70
+    max: 60
   passCount:
     value: 2
     unit: passes
-    confidence: 86
+    confidence: 88
     description: Recommended number of passes for complete contaminant removal
     min: 1
     max: 4
-  energyDensity:
-    value: 5.1
-    unit: J/cm²
-    confidence: 84
-    description: Calculated energy density based on spot size and pulse energy
-    min: 3.0
-    max: 8.0
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
 - IEC 60825 - Safety of Laser Products
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author:
-  id: 2
-  name: Alessandro Moretti
+  id: 3
+  name: Ikmanda Roswati
   sex: m
   title: Ph.D.
-  country: Italy
-  expertise: Laser-Based Additive Manufacturing
-  image: /images/author/alessandro-moretti.jpg
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  image: /images/author/ikmanda-roswati.jpg
 images:
   hero:
-    alt: Soapstone surface undergoing laser cleaning showing precise contamination removal
+    alt: Soapstone surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/soapstone-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Soapstone surface after laser cleaning showing detailed
+      surface structure
+    url: /images/material/soapstone-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -270,29 +300,20 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: 'At 500x magnification, the soapstone surface is obscured by a continuous, non-uniform contamination layer averaging
-    15-20 micrometers in thickness. This layer consists of embedded particulate matter, primarily carbonaceous soot and fine
-    silica dust, trapped within a matrix of organic residues like oils and polymers. The surface texture is highly irregular,
-    with contamination filling the natural micro-pores of the stone, creating a topographically muted and occluded appearance.
-
-
-    The contamination adheres tenaciously, forming dark, amorphous patches that contrast sharply with the underlying, lighter-colored
-    soapstone mineralogy. The layer exhibits micro-fissuring, a result of differential thermal expansion between the contaminants
-    and the stone substrate. This complex, multi-phase layer effectively masks the intrinsic granular structure and subtle
-    cleavage planes of the talc-rich mineral composition, reducing surface reflectivity to an estimated 20-25%.'
-  afterText: 'Laser cleaning produces a distinct transformation, revealing the pristine, unaltered soapstone substrate. The
-    15-20 micrometer contamination layer has been entirely removed via laser ablation, a process where focused light energy
-    vaporizes surface contaminants without damaging the underlying stone. The surface now displays the characteristic platy,
-    interlocking structure of the talc minerals, with individual grains and micro-crystalline boundaries clearly visible at
-    500x magnification.
-
-
-    The removal of the occluding layer restores the stone''s natural micro-topography. The surface reflectivity has increased
-    significantly, now measuring approximately 38%, which is consistent with the inherent optical properties of clean soapstone.
-    Crucially, the process has preserved the stone''s structural integrity; no thermal micro-fracturing or mineral phase changes
-    are observed, confirming the laser parameters remained well below soapstone''s ablation threshold of 0.8 J/cm². The intrinsic
-    porosity of approximately 1.2% is now evident and free of foreign material.'
-  description: Microscopic analysis of soapstone surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the soapstone surface is obscured by a complex
+    contamination layer. A discontinuous, carbonaceous crust, measuring 50-150 µm
+    thick, adheres to the substrate. This crust is porous and exhibits extensive micro-cracking.
+    Beneath it, a network of fine, dendritic soot particles penetrates the stone's
+    natural micro-pores due to its low hardness (1.0 Mohs). The original talc-dominated
+    matrix is largely hidden, with contaminants forming a topographical map of accretion
+    and infiltration across the surface.
+  afterText: Laser cleaning has restored the substrate's intrinsic morphology. The
+    contamination crust is entirely removed, revealing the undamaged, interlocking
+    platelet structure of the talc matrix. The surface is now defined by the stone's
+    natural micro-texture, with no residual soot or thermal alteration visible. Pore
+    structures are clean and open.
+  description: Microscopic analysis of soapstone surface before and after laser cleaning
+    treatment
   alt: Microscopic view of soapstone surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -300,25 +321,29 @@ caption:
     - soapstone_specific
     contaminationProfile: soapstone surface contamination
   microscopy:
-    parameters: Microscopic analysis of soapstone
+    parameters: Microscopic analysis of Soapstone
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: '2025-09-30T20:34:12.588076Z'
+    timestamp: '2025-10-02T00:00:00.000000Z'
     generator: FrontmatterCaptionGenerator
-    componentType: ai_caption_frontmatter
-  author: Alessandro Moretti
+    componentType: template_caption
+  author: Ikmanda Roswati
   materialProperties:
     materialType: Stone
-    analysisMethod: ai_microscopy
+    analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Soapstone surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Soapstone surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/soapstone-laser-cleaning-micro.jpg
 tags:
 - stone
-- jewelry
-- insulating
-- soft
-- brittle
-- corrosion-resistant
-- alessandro-moretti
+- cultural-heritage
+- architecture
+- restoration
+- surface-preparation
+- contamination-removal
+- maintenance
+- thermal-sensitive
+- industrial-grade
+- ikmanda-roswati

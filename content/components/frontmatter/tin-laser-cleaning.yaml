@@ -1,72 +1,100 @@
 name: Tin
 category: Metal
-subcategory: Tin
+subcategory: non_ferrous
 title: Tin Laser Cleaning
 description: Laser cleaning parameters for Tin
 materialProperties:
   density:
     value: 7.265
     unit: g/cm³
-    confidence: 95
-    description: Density of pure tin at 20°C (white tin)
+    confidence: 98
+    description: Density of pure tin at 20°C
     min: 0.53
     max: 22.6
   meltingPoint:
     value: 231.93
     unit: °C
-    confidence: 98
+    confidence: 99
     description: Melting point of pure tin
     min: null
     max: null
   thermalConductivity:
     value: 66.8
     unit: W/m·K
-    confidence: 90
-    description: Thermal conductivity at 25°C
+    confidence: 95
+    description: Thermal conductivity at room temperature
     min: 6.0
     max: 429.0
   tensileStrength:
-    value: 15
+    value: 15.0
     unit: MPa
-    confidence: 82
-    description: Ultimate tensile strength
+    confidence: 95
+    description: tensileStrength from Materials.yaml
     min: 3.0
     max: 3000.0
   hardness:
     value: 5.0
-    unit: HB
-    confidence: 88
-    description: Brinell hardness of pure tin
+    unit: Mohs
+    confidence: 92
+    description: Mohs hardness scale
     min: 0.5
     max: 3500
   youngsModulus:
     value: 50
     unit: GPa
-    confidence: 85
+    confidence: 88
     description: Young's modulus of elasticity
     min: 5
     max: 411
-  thermalExpansion:
-    value: 22.0
-    unit: μm/m·K
-    confidence: 88
-    description: Coefficient of linear thermal expansion (20-100°C)
-    min: 0.5
-    max: 29.1
-  thermalDiffusivity:
-    value: 40.2
-    unit: mm²/s
-    confidence: 85
-    description: Thermal diffusivity at room temperature
-    min: 0.2
-    max: 174
+  laserAbsorption:
+    value: 37.2
+    unit: '%'
+    confidence: 92
+    description: laserAbsorption from Materials.yaml
+    min: 0.02
+    max: 100
+  laserReflectivity:
+    value: 52.3
+    unit: '%'
+    confidence: 92
+    description: laserReflectivity from Materials.yaml
+    min: 5
+    max: 98
   specificHeat:
     value: 228
     unit: J/kg·K
-    confidence: 92
+    confidence: 94
     description: Specific heat capacity at 25°C
     min: 100
     max: 900
+  thermalDestructionPoint:
+    value: 2270.15
+    unit: K
+    confidence: 95
+    description: thermalDestructionPoint from Materials.yaml
+    min: -38.8
+    max: 3422
+  thermalDestructionType:
+    value: 505.08
+    unit: K
+    confidence: 95
+    description: thermalDestructionType from Materials.yaml
+    min: null
+    max: null
+  thermalDiffusivity:
+    value: 40.2
+    unit: mm²/s
+    confidence: 90
+    description: Thermal diffusivity at room temperature
+    min: 0.2
+    max: 174
+  thermalExpansion:
+    value: 22.0
+    unit: 10⁻⁶/K
+    confidence: 92
+    description: Coefficient of linear thermal expansion at 20°C
+    min: 0.5
+    max: 29.1
   reflectivity:
     value: 72
     unit: '%'
@@ -77,29 +105,50 @@ materialProperties:
   absorptionCoefficient:
     value: 12000000.0
     unit: m⁻¹
-    confidence: 80
+    confidence: 82
     description: Absorption coefficient for near-IR lasers
     min: null
     max: null
   ablationThreshold:
     value: 0.8
     unit: J/cm²
-    confidence: 82
-    description: Approximate laser ablation threshold for nanosecond pulses
-    min: null
-    max: null
-  crystallineStructure:
-    value: Tetragonal
-    unit: none
-    confidence: 95
-    description: Crystal structure (β-Sn, white tin)
+    confidence: 80
+    description: Estimated laser ablation threshold for nanosecond pulses
     min: null
     max: null
   oxidationResistance:
     value: Moderate
     unit: qualitative
     confidence: 88
-    description: Forms protective oxide layer, good atmospheric corrosion resistance
+    description: Resistance to oxidation in air at room temperature
+    min: null
+    max: null
+  crystallineStructure:
+    value: Tetragonal
+    unit: crystal system
+    confidence: 98
+    description: Body-centered tetragonal structure (β-Sn)
+    min: null
+    max: null
+  electricalConductivity:
+    value: 9.17
+    unit: 10⁶ S/m
+    confidence: 96
+    description: Electrical conductivity at 20°C
+    min: null
+    max: null
+  vaporizationPoint:
+    value: 2602
+    unit: °C
+    confidence: 90
+    description: Boiling point of tin
+    min: null
+    max: null
+  surfaceTension:
+    value: 544
+    unit: mN/m
+    confidence: 85
+    description: Surface tension at melting point
     min: null
     max: null
 applications:
@@ -107,73 +156,74 @@ applications:
 - Food Processing Equipment
 - Cultural Heritage Conservation
 - Aerospace Components
-- Automotive Electrical Systems
-- Marine Equipment
+- Marine Electronics
 - Medical Device Manufacturing
 - Renewable Energy Systems
-- Manufacturing Tooling
+- Automotive Electronics
 - Historical Architecture
+- Telecommunications
 machineSettings:
   powerRange:
     value: 90
     unit: W
-    confidence: 91
+    confidence: 88
     description: Optimal average power for Tin oxide removal without substrate damage
     min: 70
     max: 110
   wavelength:
     value: 1064
     unit: nm
-    confidence: 89
-    description: Near-IR wavelength for optimal Tin absorption and oxide removal
-    min: 1030
-    max: 1070
+    confidence: 85
+    description: Near-IR wavelength for effective Tin oxide absorption with minimal
+      substrate interaction
+    min: 532
+    max: 1064
   spotSize:
     value: 80
     unit: μm
-    confidence: 88
+    confidence: 86
     description: Beam spot diameter for precise Tin surface cleaning
     min: 50
     max: 120
   repetitionRate:
     value: 50
     unit: kHz
-    confidence: 85
-    description: Optimal repetition rate for Tin cleaning efficiency
-    min: 30
+    confidence: 84
+    description: Optimal repetition rate for efficient Tin cleaning with thermal management
+    min: 20
     max: 100
   pulseWidth:
-    value: 12
+    value: 15
     unit: ns
-    confidence: 87
-    description: Nanosecond pulse duration for efficient Tin oxide ablation
+    confidence: 82
+    description: Nanosecond pulse duration for controlled Tin oxide ablation
     min: 8
-    max: 20
+    max: 25
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 86
+    confidence: 83
     description: Optimal scanning speed for uniform Tin surface treatment
     min: 300
     max: 800
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
-    confidence: 90
+    confidence: 87
     description: Minimum fluence required for effective Tin oxide removal
     min: 1.8
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 84
+    confidence: 81
     description: Optimal beam overlap for uniform Tin surface cleaning
     min: 40
-    max: 70
+    max: 65
   passCount:
     value: 2
     unit: passes
-    confidence: 88
+    confidence: 85
     description: Recommended number of passes for complete Tin oxide removal
     min: 1
     max: 4
@@ -258,26 +308,32 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the tin surface is obscured by a non-uniform
-    contamination layer, measuring 5-15 µm thick. This layer exhibits a porous, particulate
-    texture, with agglomerations of carbonaceous soot and oxide particles embedded
-    in a matrix of organic residues. The underlying metallic grain structure is entirely
-    concealed. Cracking and delamination are visible at the interface with the tin
-    substrate, indicating poor adhesion and a compromised surface.
-  afterText: 'Laser cleaning has completely removed the contamination layer, revealing
-    the pristine, polycrystalline structure of the tin substrate. The surface now
-    displays clearly defined grain boundaries and the characteristic tetragonal crystal
-    facets of β-tin. The cleaning process has produced a matte, microscopically textured
-    finish with a peak-to-valley roughness (Ra) under 0.8 µm, a result of the selective
-    ablation of contaminants without bulk melting.
+  beforeText: 'At 500x magnification, the tin surface is obscured by a complex contamination
+    layer. A carbonaceous film, approximately 2-5 micrometers thick, forms a discontinuous,
+    sooty blanket across the substrate. This layer is punctuated by localized oxide
+    nodules, appearing as crystalline, dendritic structures with a greyish hue, indicating
+    advanced atmospheric corrosion.
 
 
-    This refined surface topography enhances adhesion for subsequent processes like
-    soldering or coating by increasing effective surface area. The removal of the
-    insulating oxide and carbon layers restores the metal''s inherent thermal and
-    electrical conductivity at the surface. The process has successfully eliminated
-    the interfacial cracking and porosity, resulting in a metallurgically clean and
-    stable surface finish suitable for high-performance applications.'
+    Beneath this, the native tin topography is largely hidden. The underlying metal''s
+    characteristic tetragonal grain structure is only faintly perceptible. The contaminants
+    create a textured, matte surface that significantly increases light scattering,
+    masking the metal''s inherent 72% reflectivity. The porous, non-uniform nature
+    of these layers provides sites for further chemical degradation and compromises
+    the surface''s functional integrity.'
+  afterText: 'Following laser cleaning, the 500x view reveals a dramatic transformation
+    to the pristine tin substrate. The contamination layers have been completely ablated,
+    exposing the metal''s native, fine-grained microstructure. The surface now exhibits
+    a uniform, matte-silver finish with clearly defined grain boundaries characteristic
+    of its body-centered tetragonal crystalline form.
+
+
+    The laser process has effectively homogenized the surface texture, eliminating
+    the porous oxide nodules and carbon films. This restoration of the pure metal
+    interface results in a consistent surface with significantly reduced light scattering.
+    The inherent reflectivity of the tin is now fully expressed, and the clean, metallurgically
+    sound surface is prepared for subsequent manufacturing processes or is stabilized
+    for conservation.'
   description: Microscopic analysis of tin surface before and after laser cleaning
     treatment
   alt: Microscopic view of tin surface showing laser cleaning effects

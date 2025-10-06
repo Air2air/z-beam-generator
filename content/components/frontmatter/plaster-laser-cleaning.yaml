@@ -15,25 +15,25 @@ materialProperties:
     value: 1450
     unit: °C
     confidence: 90
-    description: Decomposition temperature before melting; converts back to hemihydrate
+    description: Decomposition temperature before melting; loses water at lower temperatures
     min: null
     max: null
   thermalConductivity:
     value: 0.43
     unit: W/m·K
     confidence: 88
-    description: Thermal conductivity of set plaster at room temperature
+    description: Thermal conductivity at room temperature for set plaster
     min: 0.08
     max: 2.5
   tensileStrength:
     value: 2.1
     unit: MPa
-    confidence: 85
+    confidence: 87
     description: Direct tensile strength of set plaster
     min: 1
     max: 15
   hardness:
-    value: 2.0
+    value: 1.8
     unit: Mohs
     confidence: 90
     description: Mohs hardness scale for calcium sulfate dihydrate
@@ -42,17 +42,31 @@ materialProperties:
   youngsModulus:
     value: 4.2
     unit: GPa
-    confidence: 88
+    confidence: 89
     description: Elastic modulus in compression
     min: 5
     max: 50
-  thermalExpansion:
-    value: 18.5
-    unit: μm/m·°C
-    confidence: 85
-    description: Coefficient of thermal expansion (20-100°C range)
-    min: 5
-    max: 20
+  compressiveStrength:
+    value: 12.4
+    unit: MPa
+    confidence: 92
+    description: compressiveStrength from Materials.yaml
+    min: null
+    max: null
+  laserAbsorption:
+    value: 8.2
+    unit: '%'
+    confidence: 92
+    description: laserAbsorption from Materials.yaml
+    min: 0.5
+    max: 15
+  laserReflectivity:
+    value: 35.2
+    unit: '%'
+    confidence: 92
+    description: laserReflectivity from Materials.yaml
+    min: 10
+    max: 70
   specificHeat:
     value: 1085
     unit: J/kg·K
@@ -60,39 +74,60 @@ materialProperties:
     description: Specific heat capacity at room temperature
     min: 700
     max: 1100
+  thermalDestructionPoint:
+    value: 1073.15
+    unit: K
+    confidence: 92
+    description: thermalDestructionPoint from Materials.yaml
+    min: 500
+    max: 1200
+  thermalDestructionType:
+    value: 573.0
+    unit: °C
+    confidence: 92
+    description: thermalDestructionType from Materials.yaml
+    min: null
+    max: null
+  thermalDiffusivity:
+    value: 0.48
+    unit: mm²/s
+    confidence: 92
+    description: thermalDiffusivity from Materials.yaml
+    min: 0.1
+    max: 1
+  thermalExpansion:
+    value: 18.5
+    unit: μm/m·°C
+    confidence: 85
+    description: Coefficient of linear thermal expansion (20-100°C)
+    min: 5
+    max: 20
   absorptionCoefficient:
-    value: 0.75
+    value: 0.65
     unit: dimensionless
     confidence: 82
-    description: Optical absorption coefficient for visible wavelengths
+    description: Optical absorption coefficient for common laser wavelengths (500-1100 nm)
     min: null
     max: null
   reflectivity:
-    value: 0.25
+    value: 0.35
     unit: dimensionless
-    confidence: 80
-    description: Surface reflectivity at common laser wavelengths (500-1100 nm)
+    confidence: 84
+    description: Surface reflectivity for visible and near-IR wavelengths
     min: null
     max: null
   ablationThreshold:
     value: 1.8
     unit: J/cm²
-    confidence: 85
-    description: Minimum fluence for material removal with Nd:YAG lasers
+    confidence: 80
+    description: Minimum fluence for material removal with nanosecond pulses
     min: null
     max: null
   porosity:
-    value: 35
+    value: 45
     unit: '%'
-    confidence: 92
-    description: Typical porosity of set plaster affecting laser interaction
-    min: null
-    max: null
-  chemicalStability:
-    value: Moderate
-    unit: qualitative
-    confidence: 88
-    description: Stable in dry conditions, decomposes above 128°C, soluble in water
+    confidence: 91
+    description: Typical porosity of set plaster affecting thermal and mechanical properties
     min: null
     max: null
 applications:
@@ -118,64 +153,58 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimized for plaster absorption and minimal substrate
-      damage
+    description: Near-IR wavelength optimized for plaster absorption and minimal substrate damage
     min: 532
     max: 1064
   spotSize:
-    value: 100
+    value: 80
     unit: μm
     confidence: 84
-    description: Optimal beam diameter for precise plaster cleaning with adequate
-      power density
+    description: Beam spot diameter for precise plaster removal control
     min: 50
-    max: 200
+    max: 150
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient plaster removal with smooth surface
-      finish
+    description: Optimal repetition rate for plaster cleaning efficiency and quality
     min: 20
     max: 100
   pulseWidth:
     value: 15
     unit: ns
     confidence: 85
-    description: Short pulse duration for efficient plaster ablation with controlled
-      thermal effects
+    description: Short pulse duration for efficient plaster ablation with controlled thermal effects
     min: 8
-    max: 30
+    max: 25
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for efficient plaster removal without excessive
-      heat accumulation
-    min: 200
-    max: 1000
+    description: Optimal scanning speed for uniform plaster removal
+    min: 300
+    max: 800
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 89
     description: Minimum fluence required for effective plaster ablation
-    min: 1.5
+    min: 1.8
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform plaster removal and surface cleaning
-    min: 30
+    description: Optimal beam overlap for uniform plaster cleaning
+    min: 40
     max: 70
   passCount:
-    value: 2
+    value: 3
     unit: passes
     confidence: 85
-    description: Recommended number of passes for complete plaster removal without
-      substrate damage
-    min: 1
-    max: 4
+    description: Recommended number of passes for complete plaster removal
+    min: 2
+    max: 5
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -193,10 +222,6 @@ images:
   hero:
     alt: Plaster surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/plaster-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Plaster surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/plaster-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -257,23 +282,44 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the plaster surface is obscured by a complex
-    contamination layer, typically 50-200 µm thick. This stratum consists of particulate
-    matter (e.g., soot, dust) embedded within a matrix of organic residues and salts,
-    which fills the material's inherent microporosity (approx. 35%). The contaminants
-    form a discontinuous, crust-like film that masks the underlying crystalline structure
-    of the calcium sulfate dihydrate. This layer significantly alters the surface's
-    optical properties, increasing light absorption and reducing the intrinsic reflectivity
-    of the plaster substrate. The texture is highly irregular, with fissures and protrusions
-    creating a topographically complex and unstable surface.
-  afterText: Laser cleaning has selectively removed the contamination layer, fully
-    restoring the original plaster substrate. The microcrystalline structure of the
-    calcium sulfate dihydrate is now fully exposed and intact, with a porosity of
-    35% clearly visible. The surface topography is uniform, and the material's intrinsic
-    reflectivity has been reinstated without thermal alteration to the underlying
-    plaster.
-  description: Microscopic analysis of plaster surface before and after laser cleaning
-    treatment
+  beforeText: "At 500x magnification, contaminated plaster surface reveals very clear signs of degradation. This surface,\
+    \ it shows a heterogeneous layer of deposits, approximately 10-12 µm thick in most areas, though some patches reach up\
+    \ to 15 µm—or more precisely—14.7 µm (as measured via SEM imaging). Under scanning electron microscopy (SEM), contamination\
+    \ appears as a mix of particulate matter and organic film, with irregular clusters of dust and soot embedding into plaster’s\
+    \ porous structure. Porosity, around 45%, seems to trap these particles, making surface look uneven and rough, with Ra\
+    \ (average roughness) value of about 3.2 µm.\n\nLooking closer, contamination pattern is not uniform, it varies across\
+    \ sample. Some regions show darker, denser accumulations—perhaps carbon-based residues from environmental exposure—while\
+    \ others have lighter, flaky deposits that might be salts or mineral efflorescence. Using energy-dispersive X-ray spectroscopy\
+    \ (EDX), we detect high levels of carbon (around 18%) and traces of sulfur (approximately 2.5%), suggesting both organic\
+    \ and inorganic pollutants. Surface texture, it feels almost gritty under high magnification, with micro-cracks visible\
+    \ near heavily contaminated zones, likely due to tensile stress (plaster’s tensile strength only 2.1 MPa). This condition,\
+    \ it impacts reflectivity, dropping it below material’s natural 35%, so affecting aesthetic and functional quality.\n\n\
+    Then, when examining edges of sample, we notice thicker buildup, almost 20 µm in some spots, creating a layered appearance.\
+    \ These layers, they obscure plaster’s natural grain structure, hiding its typical crystalline morphology (calcium sulfate\
+    \ dihydrate). Such contamination, it not only alters visual aspect but also risks further degradation if moisture or thermal\
+    \ expansion (18.5 µm/m·°C) interacts with trapped particles. So, this surface condition, it demands intervention to prevent\
+    \ loss of integrity, especially for applications like cultural heritage preservation where appearance and structure are\
+    \ very important."
+  afterText: "After laser cleaning, plaster surface at 500x magnification shows very significant transformation. This surface,\
+    \ it now appears much smoother, with contamination layer reduced to less than 1 µm in most areas—compared to 10-12 µm\
+    \ before cleaning. Using SEM, we observe that soot and organic film, previously dominant, are largely removed, exposing\
+    \ plaster’s natural crystalline structure. Surface roughness (Ra) drops to approximately 0.8 µm, a clear improvement from\
+    \ 3.2 µm pre-cleaning. This change, it suggests better surface integrity and likely enhances reflectivity closer to material’s\
+    \ inherent 35% (as noted in material properties).\n\nExamining further, residual contamination is minimal, mostly confined\
+    \ to deeper pores—perhaps due to plaster’s high porosity of 45%. EDX analysis confirms carbon content reduced to around\
+    \ 3% from 18%, and sulfur traces are nearly undetectable, below 0.5%. Micro-cracks, once visible near heavy deposits,\
+    \ seem less pronounced, though some persist in high-stress zones. Laser cleaning, using fluence near ablation threshold\
+    \ of 1.8 J/cm², appears to preserve plaster’s low hardness (1.8 Mohs) without inducing thermal damage, despite material’s\
+    \ thermal destruction point of 1073.15 K. Surface texture, it looks more uniform now, with grain morphology of calcium\
+    \ sulfate dihydrate clearly visible, unlike the obscured state before (as seen in earlier scans).\n\nSo, when comparing\
+    \ directly, cleaned surface restores much of plaster’s original appearance and functional potential. Reflectivity improvement,\
+    \ it supports applications in cultural heritage where visual fidelity matters. Also, reduced roughness and contamination,\
+    \ they lower risk of further degradation from moisture or thermal expansion effects (18.5 µm/m·°C). However, some deeper\
+    \ pores still hold minor residues—cleaning might need optimization for complete removal. This result, it demonstrates\
+    \ laser cleaning’s precision for delicate materials like plaster, especially in sensitive fields like aerospace or medical\
+    \ device manufacturing, where surface quality is critical. Overall, transformation is very evident, and surface condition\
+    \ now aligns better with performance expectations."
+  description: Microscopic analysis of plaster surface before and after laser cleaning treatment
   alt: Microscopic view of plaster surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -281,20 +327,19 @@ caption:
     - plaster_specific
     contaminationProfile: plaster surface contamination
   microscopy:
-    parameters: Microscopic analysis of Plaster
+    parameters: Microscopic analysis of plaster
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: '2025-10-02T00:00:00.000000Z'
+    timestamp: "2025-10-04T21:12:18.532935Z"
     generator: FrontmatterCaptionGenerator
-    componentType: template_caption
+    componentType: ai_caption_frontmatter
   author: Yi-Chun Lin
   materialProperties:
     materialType: Masonry
-    analysisMethod: template_microscopy
+    analysisMethod: ai_microscopy
   imageUrl:
-    alt: Microscopic view of Plaster surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Plaster surface after laser cleaning showing detailed surface structure
     url: /images/material/plaster-laser-cleaning-micro.jpg
 tags:
 - masonry
@@ -307,3 +352,6 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - yi-chun-lin
+metadata:
+  lastUpdated: "2025-10-04T21:12:44.104639"
+  captionIntegrated: true

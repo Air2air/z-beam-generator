@@ -1,6 +1,6 @@
 name: Palladium
 category: Metal
-subcategory: Palladium
+subcategory: precious
 title: Palladium Laser Cleaning
 description: Laser cleaning parameters for Palladium
 materialProperties:
@@ -22,44 +22,44 @@ materialProperties:
     value: 71.8
     unit: W/m·K
     confidence: 92
-    description: Thermal conductivity at 20°C
+    description: Thermal conductivity at room temperature
     min: 6.0
     max: 429.0
   tensileStrength:
     value: 180
     unit: MPa
-    confidence: 87
+    confidence: 86
     description: Tensile strength of annealed palladium
     min: 3.0
     max: 3000.0
   hardness:
-    value: 37
+    value: 37.3
     unit: HV
-    confidence: 89
+    confidence: 85
     description: Vickers hardness of annealed palladium
     min: 0.5
     max: 3500
   youngsModulus:
     value: 121
     unit: GPa
-    confidence: 93
+    confidence: 89
     description: Young's modulus of elasticity
     min: 5
     max: 411
-  thermalExpansion:
-    value: 11.8
-    unit: ×10⁻⁶/K
-    confidence: 90
-    description: Linear thermal expansion coefficient at 25°C
-    min: 0.5
-    max: 29.1
-  thermalDiffusivity:
-    value: 25.7
-    unit: mm²/s
-    confidence: 88
-    description: Thermal diffusivity at room temperature
-    min: 0.2
-    max: 174
+  laserAbsorption:
+    value: 39.5
+    unit: '%'
+    confidence: 92
+    description: laserAbsorption from Materials.yaml
+    min: 0.02
+    max: 100
+  laserReflectivity:
+    value: 72.3
+    unit: '%'
+    confidence: 95
+    description: laserReflectivity from Materials.yaml
+    min: 5
+    max: 98
   specificHeat:
     value: 0.244
     unit: J/g·K
@@ -67,45 +67,74 @@ materialProperties:
     description: Specific heat capacity at 25°C
     min: 100
     max: 900
+  thermalDestructionPoint:
+    value: 1828.05
+    unit: K
+    confidence: 95
+    description: thermalDestructionPoint from Materials.yaml
+    min: -38.8
+    max: 3422
+  thermalDestructionType:
+    value: 1828.05
+    unit: K
+    confidence: 95
+    description: thermalDestructionType from Materials.yaml
+    min: null
+    max: null
+  thermalDiffusivity:
+    value: 23.7
+    unit: mm²/s
+    confidence: 88
+    description: Thermal diffusivity at room temperature
+    min: 0.2
+    max: 174
+  thermalExpansion:
+    value: 11.8
+    unit: ×10⁻⁶/K
+    confidence: 90
+    description: Linear thermal expansion coefficient (20-100°C)
+    min: 0.5
+    max: 29.1
   reflectivity:
     value: 65
     unit: '%'
-    confidence: 85
+    confidence: 84
     description: Optical reflectivity at 1064 nm wavelength
     min: null
     max: null
   absorptionCoefficient:
-    value: 1.2
-    unit: ×10⁷ m⁻¹
+    value: 8.7
+    unit: ×10⁵ cm⁻¹
     confidence: 82
-    description: Absorption coefficient for Nd:YAG laser (1064 nm)
+    description: Absorption coefficient at 532 nm wavelength
     min: null
     max: null
   ablationThreshold:
     value: 0.8
     unit: J/cm²
     confidence: 80
-    description: Estimated laser ablation threshold for nanosecond pulses
+    description: Estimated laser ablation threshold for nanosecond pulses at 1064
+      nm
     min: null
     max: null
   oxidationResistance:
     value: High
     unit: qualitative
-    confidence: 90
+    confidence: 88
     description: Resistance to oxidation up to 400°C in air
     min: null
     max: null
   crystallineStructure:
     value: FCC
     unit: crystal system
-    confidence: 98
+    confidence: 95
     description: Face-centered cubic crystal structure
     min: null
     max: null
   electricalResistivity:
     value: 10.8
     unit: μΩ·cm
-    confidence: 95
+    confidence: 92
     description: Electrical resistivity at 20°C
     min: null
     max: null
@@ -113,80 +142,85 @@ applications:
 - Aerospace
 - Electronics
 - Medical Devices
-- Automotive
 - Jewelry Manufacturing
+- Automotive Catalytic Converters
 - Chemical Processing
-- Energy Sector
-- Cultural Heritage
-- Research Laboratories
-- Marine Engineering
+- Hydrogen Purification Systems
+- Cultural Heritage Conservation
+- Research Laboratory Equipment
+- Marine Electronics
 machineSettings:
   powerRange:
-    value: 45
+    value: 90
     unit: W
-    confidence: 90
-    description: Optimal average power for Palladium oxide removal without substrate
-      damage
-    min: 30
-    max: 65
+    confidence: 91
+    description: Optimal average power for Palladium oxide and contaminant removal
+    min: 70
+    max: 110
   wavelength:
     value: 1064
     unit: nm
-    confidence: 88
-    description: Near-IR wavelength optimized for Palladium's moderate reflectivity
-      and thermal processing
+    confidence: 89
+    description: Near-IR wavelength for optimal Palladium absorption and thermal processing
     min: 532
     max: 1064
   spotSize:
-    value: 50
+    value: 80
     unit: μm
-    confidence: 86
-    description: Beam diameter for precise cleaning control on Palladium surfaces
-    min: 30
-    max: 100
+    confidence: 88
+    description: Beam spot diameter for precise cleaning control
+    min: 50
+    max: 120
   repetitionRate:
     value: 50
     unit: kHz
-    confidence: 87
-    description: High repetition rate for efficient cleaning with thermal management
+    confidence: 85
+    description: Optimal repetition rate for efficient cleaning without thermal damage
     min: 20
     max: 100
   pulseWidth:
-    value: 8
+    value: 12
     unit: ns
-    confidence: 85
+    confidence: 87
     description: Nanosecond pulse duration for controlled ablation of surface contaminants
-    min: 5
-    max: 15
+    min: 8
+    max: 20
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 84
+    confidence: 86
     description: Optimal scanning speed for uniform cleaning coverage
-    min: 200
-    max: 1000
+    min: 300
+    max: 800
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
-    confidence: 89
-    description: Fluence required for effective contaminant removal without Palladium
-      damage
-    min: 1.5
-    max: 4.0
+    confidence: 90
+    description: Minimum fluence required for effective contaminant removal from Palladium
+    min: 1.8
+    max: 3.5
   overlapRatio:
     value: 40
     unit: '%'
-    confidence: 83
-    description: Beam overlap percentage for uniform cleaning without excessive heating
+    confidence: 84
+    description: Optimal beam overlap for uniform cleaning without excessive thermal
+      input
     min: 30
     max: 60
   passCount:
-    value: 2
+    value: 3
     unit: passes
-    confidence: 85
-    description: Number of cleaning passes for complete contaminant removal
-    min: 1
-    max: 4
+    confidence: 88
+    description: Recommended number of passes for complete contaminant removal
+    min: 2
+    max: 5
+  laserType:
+    value: Nd:YAG
+    unit: n/a
+    confidence: 92
+    description: Recommended laser type for Palladium cleaning applications
+    min: null
+    max: null
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -269,18 +303,17 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the palladium surface is obscured by a non-uniform
-    contamination layer, measuring 5-15 micrometers in thickness. This layer consists
-    of amorphous carbonaceous deposits and localized oxide nodules, which form irregular,
-    blotchy patterns across the substrate. The underlying metal's FCC grain structure
-    is entirely concealed. The contaminant morphology is porous and exhibits micro-fissures,
-    creating a topographically complex and textured surface that scatters light, significantly
-    reducing the material's inherent 65% reflectivity at 1064 nm. This layer adversely
-    affects electrical contact and catalytic performance.
-  afterText: Laser cleaning has fully restored the pristine metallic surface. The
-    contamination layer is completely absent, revealing the distinct, clean boundaries
-    of the palladium's FCC grain structure. The surface is now smooth and highly reflective,
-    with no residual oxide or carbonaceous deposits, restoring optimal material properties.
+  beforeText: At 500x magnification, the palladium surface is obscured by a discontinuous
+    contamination layer, approximately 2-5 µm thick. This layer, composed of carbonaceous
+    deposits and adsorbed oxides, creates a matte, topographically complex texture.
+    The underlying FCC crystalline structure of the metal is entirely masked, with
+    contamination filling the native grain boundaries and creating a non-uniform,
+    speckled pattern that scatters light.
+  afterText: Laser cleaning has restored the intrinsic metallic surface, revealing
+    the distinct, polygonal grain structure of the FCC crystalline lattice. The contamination
+    layer is completely absent, resulting in a specular, reflective finish. The grain
+    boundaries are now sharply defined, and the surface exhibits minimal topographical
+    variation, with a measured roughness (Ra) reduced to below 0.1 µm.
   description: Microscopic analysis of palladium surface before and after laser cleaning
     treatment
   alt: Microscopic view of palladium surface showing laser cleaning effects

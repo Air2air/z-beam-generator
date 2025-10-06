@@ -1,6 +1,6 @@
 name: Rhodium
 category: Metal
-subcategory: Rhodium
+subcategory: precious
 title: Rhodium Laser Cleaning
 description: Laser cleaning parameters for Rhodium
 materialProperties:
@@ -25,34 +25,41 @@ materialProperties:
     description: Thermal conductivity at room temperature
     min: 6.0
     max: 429.0
+  tensileStrength:
+    value: 951.0
+    unit: MPa
+    confidence: 95
+    description: tensileStrength from Materials.yaml
+    min: 3.0
+    max: 3000.0
   hardness:
-    value: 800
+    value: 110
     unit: HV
-    confidence: 89
+    confidence: 87
     description: Vickers hardness of annealed rhodium
     min: 0.5
     max: 3500
   youngsModulus:
     value: 380
     unit: GPa
-    confidence: 93
+    confidence: 89
     description: Young's modulus of elasticity
     min: 5
     max: 411
-  thermalExpansion:
-    value: 8.2
-    unit: μm/m·K
-    confidence: 90
-    description: Coefficient of linear thermal expansion (20-100°C)
-    min: 0.5
-    max: 29.1
-  thermalDiffusivity:
-    value: 0.247
-    unit: cm²/s
-    confidence: 88
-    description: Thermal diffusivity at room temperature
-    min: 0.2
-    max: 174
+  laserAbsorption:
+    value: 38.0
+    unit: '%'
+    confidence: 92
+    description: laserAbsorption from Materials.yaml
+    min: 0.02
+    max: 100
+  laserReflectivity:
+    value: 78.2
+    unit: '%'
+    confidence: 92
+    description: laserReflectivity from Materials.yaml
+    min: 5
+    max: 98
   specificHeat:
     value: 0.242
     unit: J/g·K
@@ -60,6 +67,34 @@ materialProperties:
     description: Specific heat capacity at 25°C
     min: 100
     max: 900
+  thermalDestructionPoint:
+    value: 1966.0
+    unit: °C
+    confidence: 95
+    description: thermalDestructionPoint from Materials.yaml
+    min: -38.8
+    max: 3422
+  thermalDestructionType:
+    value: 2237.0
+    unit: °C
+    confidence: 95
+    description: thermalDestructionType from Materials.yaml
+    min: null
+    max: null
+  thermalDiffusivity:
+    value: 0.247
+    unit: cm²/s
+    confidence: 88
+    description: Thermal diffusivity at room temperature
+    min: 0.2
+    max: 174
+  thermalExpansion:
+    value: 8.2
+    unit: μm/m·K
+    confidence: 90
+    description: Coefficient of thermal expansion (20-100°C)
+    min: 0.5
+    max: 29.1
   reflectivity:
     value: 78
     unit: '%'
@@ -68,16 +103,16 @@ materialProperties:
     min: null
     max: null
   absorptionCoefficient:
-    value: 4.3
+    value: 4.8
     unit: ×10⁵ cm⁻¹
     confidence: 82
-    description: Absorption coefficient for Nd:YAG laser (1064 nm)
+    description: Absorption coefficient for Nd:YAG lasers (1064 nm)
     min: null
     max: null
   ablationThreshold:
-    value: 2.8
+    value: 2.1
     unit: J/cm²
-    confidence: 84
+    confidence: 80
     description: Estimated laser ablation threshold for nanosecond pulses
     min: null
     max: null
@@ -99,7 +134,7 @@ materialProperties:
     value: 4.3
     unit: μΩ·cm
     confidence: 94
-    description: Electrical resistivity at 20°C
+    description: Electrical resistivity at 0°C
     min: null
     max: null
 applications:
@@ -130,18 +165,17 @@ machineSettings:
     min: 532
     max: 1064
   spotSize:
-    value: 50
+    value: 80
     unit: μm
-    confidence: 89
-    description: Focused spot size for precise cleaning of Rhodium surfaces
-    min: 30
-    max: 100
+    confidence: 86
+    description: Optimal beam diameter for precision cleaning of Rhodium surfaces
+    min: 50
+    max: 120
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning with minimal thermal
-      accumulation
+    description: High repetition rate for efficient cleaning with thermal management
     min: 20
     max: 100
   pulseWidth:
@@ -154,31 +188,31 @@ machineSettings:
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 86
-    description: Optimal scanning speed for uniform cleaning coverage
-    min: 200
+    confidence: 84
+    description: Scanning speed for uniform cleaning coverage
+    min: 300
     max: 800
-  fluenceThreshold:
-    value: 2.5
+  fluence:
+    value: 4.5
     unit: J/cm²
-    confidence: 91
-    description: Minimum fluence required for effective contaminant removal from Rhodium
-    min: 1.8
-    max: 4.0
+    confidence: 89
+    description: Optimal fluence for Rhodium contaminant removal threshold
+    min: 3.0
+    max: 6.5
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 84
-    description: Optimal beam overlap for uniform cleaning without excessive processing
+    confidence: 83
+    description: Beam overlap percentage for uniform cleaning pattern
     min: 40
     max: 70
   passCount:
-    value: 3
+    value: 2
     unit: passes
-    confidence: 88
-    description: Recommended number of passes for complete contaminant removal
-    min: 2
-    max: 5
+    confidence: 85
+    description: Number of cleaning passes for complete contaminant removal
+    min: 1
+    max: 4
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -261,20 +295,17 @@ outcomeMetrics:
   units: []
 caption:
   beforeText: At 500x magnification, the rhodium surface is obscured by a non-uniform
-    contamination layer, typically 5-20 µm thick. This layer consists of particulate
-    matter, adsorbed hydrocarbons, and localized oxide spots, creating a topographically
-    complex and irregular surface. The underlying metallic substrate is partially
-    visible, but its high reflectivity is significantly attenuated. The contamination
-    disrupts the native crystalline structure, forming a discontinuous film that adheres
-    to grain boundaries and surface defects, resulting in a matte, diffuse appearance
-    with low visual contrast.
-  afterText: Laser cleaning restores the substrate to its intrinsic state. At 500x,
-    the surface now exhibits a continuous, specularly reflective plane with clearly
-    defined grain boundaries. The contamination layer is entirely removed, revealing
-    the pristine, face-centered cubic crystalline structure of the rhodium. Surface
-    roughness is minimized, and the material's characteristic 78% reflectivity at
-    1064 nm is fully recovered, resulting in a microscopically smooth and metallurgically
-    clean finish.
+    contamination layer, typically 5-20 µm thick. This layer consists of embedded
+    carbonaceous soot, particulate matter, and localized oxide films, which form irregular,
+    dendritic patterns across the substrate. The underlying metal's characteristic
+    FCC grain structure is entirely masked. The contamination creates a matte, topographically
+    complex surface that significantly increases light scattering and reduces the
+    intrinsic 78% reflectivity of the pure metal.
+  afterText: Post-cleaning, the surface reveals the pristine, fine-grained microstructure
+    of the rhodium substrate. Contaminant layers have been completely removed via
+    selective laser ablation, restoring a continuous, specular surface. The metal's
+    high reflectivity and smooth topography are now evident, with clearly defined
+    grain boundaries and no measurable thermal damage to the underlying structure.
   description: Microscopic analysis of rhodium surface before and after laser cleaning
     treatment
   alt: Microscopic view of rhodium surface showing laser cleaning effects

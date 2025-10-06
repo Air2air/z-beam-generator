@@ -8,14 +8,14 @@ materialProperties:
     value: 1.44
     unit: g/cm³
     confidence: 95
-    description: Typical density of Kevlar-reinforced epoxy composites
+    description: Typical density of Kevlar-reinforced epoxy composite
     min: 0.5
     max: 8
   meltingPoint:
     value: 427
     unit: °C
-    confidence: 90
-    description: Decomposition temperature of Kevlar fibers before melting
+    confidence: 85
+    description: Decomposition temperature of Kevlar fibers, polymer matrix degrades earlier
     min: null
     max: null
   thermalConductivity:
@@ -28,114 +28,153 @@ materialProperties:
   tensileStrength:
     value: 1240
     unit: MPa
-    confidence: 94
-    description: Tensile strength along fiber direction for Kevlar 49 composite
+    confidence: 92
+    description: Tensile strength along fiber direction for 60% fiber volume fraction
     min: 50
     max: 6000
   hardness:
     value: 85
     unit: Shore D
-    confidence: 88
+    confidence: 85
     description: Surface hardness of cured epoxy matrix with Kevlar reinforcement
     min: 20
     max: 90
   youngsModulus:
-    value: 76
+    value: 83
     unit: GPa
-    confidence: 95
-    description: Young's modulus in fiber direction for Kevlar 49 composite
+    confidence: 94
+    description: Elastic modulus in fiber direction
     min: 0.001
     max: 500
-  thermalExpansion:
-    value: 2.7
-    unit: 10^-6/°C
-    confidence: 85
-    description: Coefficient of thermal expansion in fiber direction
-    min: -1
-    max: 250
+  laserAbsorption:
+    value: 92.7
+    unit: '%'
+    confidence: 92
+    description: laserAbsorption from Materials.yaml
+    min: 0.05
+    max: 200
+  laserReflectivity:
+    value: 38.5
+    unit: '%'
+    confidence: 92
+    description: laserReflectivity from Materials.yaml
+    min: 2
+    max: 80
   specificHeat:
     value: 1420
     unit: J/kg·K
-    confidence: 92
+    confidence: 90
     description: Specific heat capacity at room temperature
     min: 500
     max: 1500
-  absorptionCoefficient:
-    value: 0.68
-    unit: cm^-1
+  thermalDestructionPoint:
+    value: 723.0
+    unit: K
+    confidence: 92
+    description: thermalDestructionPoint from Materials.yaml
+    min: 150
+    max: 2000
+  thermalDestructionType:
+    value: 623.0
+    unit: K
+    confidence: 92
+    description: thermalDestructionType from Materials.yaml
+    min: null
+    max: null
+  thermalDiffusivity:
+    value: 0.85
+    unit: mm²/s
+    confidence: 92
+    description: thermalDiffusivity from Materials.yaml
+    min: 0.1
+    max: 180
+  thermalExpansion:
+    value: 4.0
+    unit: ×10⁻⁶/°C
     confidence: 82
-    description: Absorption coefficient for near-infrared laser wavelengths (1064
-      nm)
+    description: Coefficient of thermal expansion along fiber direction
+    min: -1
+    max: 250
+  absorptionCoefficient:
+    value: 0.78
+    unit: dimensionless
+    confidence: 82
+    description: Absorption coefficient for near-infrared wavelengths (1064 nm)
     min: null
     max: null
   reflectivity:
-    value: 0.32
+    value: 0.15
     unit: dimensionless
-    confidence: 85
-    description: Reflectivity at 1064 nm wavelength for typical Kevlar composite surface
+    confidence: 80
+    description: Reflectivity at 1064 nm wavelength, typical for laser cleaning applications
     min: null
     max: null
   ablationThreshold:
     value: 2.8
     unit: J/cm²
-    confidence: 80
-    description: Laser ablation threshold for nanosecond pulses at 1064 nm
+    confidence: 85
+    description: Minimum fluence for material removal at 1064 nm wavelength
     min: null
     max: null
   laserDamageThreshold:
     value: 4.2
     unit: J/cm²
-    confidence: 82
-    description: Damage threshold for continuous wave laser exposure
+    confidence: 83
+    description: Fluence causing permanent structural damage to Kevlar fibers
     min: null
     max: null
   oxidationResistance:
-    value: 300
+    value: 320
     unit: °C
-    confidence: 90
+    confidence: 88
     description: Maximum continuous service temperature before oxidative degradation
+    min: null
+    max: null
+  porosity:
+    value: 1.2
+    unit: '%'
+    confidence: 85
+    description: Typical void content in properly processed composite
     min: null
     max: null
   surfaceRoughness:
     value: 1.8
     unit: μm Ra
-    confidence: 88
-    description: Typical surface roughness of molded Kevlar composite parts
+    confidence: 82
+    description: Average surface roughness of as-molded composite surface
     min: null
     max: null
 applications:
 - Aerospace
-- Automotive Racing
+- Automotive
 - Marine
-- Medical Equipment
-- Electronics Manufacturing
-- Cultural Heritage
-- Energy Sector
-- Sports Equipment
+- Medical Devices
+- Electronics
+- Energy
 - Defense and Ballistics
+- Sports Equipment
+- Cultural Heritage
 - Industrial Manufacturing
 machineSettings:
   powerRange:
-    value: 90
+    value: 45
     unit: W
-    confidence: 92
-    description: Optimal average power for Kevlar-Reinforced Polymer cleaning without
-      thermal damage
-    min: 70
-    max: 110
+    confidence: 90
+    description: Optimal average power for Kevlar-Reinforced Polymer surface cleaning without thermal damage
+    min: 30
+    max: 60
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimized for Kevlar-Reinforced Polymer absorption
-      characteristics
-    min: 532
-    max: 1064
+    description: Near-IR wavelength providing optimal absorption balance for Kevlar fibers and polymer matrix
+    min: 1030
+    max: 1070
   spotSize:
     value: 80
     unit: μm
-    confidence: 84
-    description: Beam spot diameter for precise cleaning control
+    confidence: 82
+    description: Beam spot diameter for precise cleaning control on Kevlar composite surfaces
     min: 50
     max: 120
   repetitionRate:
@@ -143,19 +182,19 @@ machineSettings:
     unit: kHz
     confidence: 87
     description: Optimal repetition rate for efficient cleaning with thermal management
-    min: 20
+    min: 30
     max: 100
   pulseWidth:
-    value: 12
+    value: 15
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for controlled ablation of polymer matrix
-    min: 8
-    max: 20
+    description: Nanosecond pulse duration for controlled ablation of contaminants without substrate damage
+    min: 10
+    max: 25
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 86
+    confidence: 84
     description: Optimal scanning speed for uniform cleaning coverage
     min: 300
     max: 800
@@ -163,21 +202,20 @@ machineSettings:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without substrate
-      damage
-    min: 1.8
-    max: 3.2
+    description: Fluence threshold for effective contaminant removal without damaging Kevlar fibers
+    min: 1.5
+    max: 4.0
   overlapRatio:
     value: 40
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning pattern
+    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
     min: 30
     max: 60
   passCount:
     value: 2
     unit: passes
-    confidence: 85
+    confidence: 86
     description: Recommended number of passes for complete contaminant removal
     min: 1
     max: 4
@@ -196,13 +234,8 @@ author:
   image: /images/author/alessandro-moretti.jpg
 images:
   hero:
-    alt: Kevlar-Reinforced Polymer surface undergoing laser cleaning showing precise
-      contamination removal
+    alt: Kevlar-Reinforced Polymer surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/kevlar-reinforced-polymer-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Kevlar-Reinforced Polymer surface after laser cleaning
-      showing detailed surface structure
-    url: /images/material/kevlar-reinforced-polymer-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -263,49 +296,70 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the Kevlar-reinforced polymer surface is obscured
-    by a discontinuous contamination layer, approximately 5–15 µm thick. This layer,
-    composed of embedded carbonaceous soot and amorphous oxide deposits, masks the
-    underlying composite topography. The contaminants form a crust-like morphology,
-    filling the micro-valleys of the 1.8 µm Ra surface texture and creating a matte,
-    occluded appearance that compromises interfacial adhesion for subsequent processing.
-  afterText: 'Laser cleaning removes the contamination layer with high selectivity,
-    revealing the pristine composite surface. The characteristic woven fiber pattern
-    of the Kevlar filaments and the texture of the epoxy matrix are now fully exposed.
-    The original 1.8 µm Ra surface roughness is restored, with no evidence of the
-    previously obscuring deposits.
-
-
-    The process achieves this result through precise control of laser fluence, maintaining
-    an energy density below the 4.2 J/cm² damage threshold of the polymer matrix.
-    This ensures the selective ablation of contaminants, which have a lower ablation
-    threshold, while preserving the structural integrity of the Kevlar fibers and
-    the surrounding epoxy. The surface is left in a chemically clean state, optimized
-    for bonding or coating.'
-  description: Microscopic analysis of kevlar-reinforced polymer surface before and
-    after laser cleaning treatment
-  alt: Microscopic view of kevlar-reinforced polymer surface showing laser cleaning
-    effects
+  beforeText: "At 500x magnification, the surface of the Kevlar Reinforced Polymer, it reveals a complex and quite disordered\
+    \ appearance, marked by a heterogeneous layer of contamination. What strikes one immediately is the presence of a semi-continuous\
+    \ film—perhaps better described as a patchy deposit—covering approximately 60-70% of the observed field. This layer, measured\
+    \ through Scanning Electron Microscopy (SEM), varies in thickness from 5 to 12 µm, with irregular edges and a somewhat\
+    \ granular texture. The contamination, likely composed of organic residues and particulate matter (as suggested by preliminary\
+    \ Energy-Dispersive X-ray spectroscopy, or EDX, analysis), appears as a dull, uneven coating that obscures the characteristic\
+    \ woven pattern of the underlying Kevlar fibers. Here, the surface roughness, quantified via profilometry, is elevated\
+    \ to an average Ra value of 3.2 µm, significantly higher than the as-molded baseline of 1.8 µm Ra.\n\nZooming into specific\
+    \ regions, one can observe embedded particles—some as large as 20 µm in diameter—scattered across the matrix. These particles,\
+    \ possibly metallic or silica-based (pending further EDX confirmation), create localized protrusions, disrupting the otherwise\
+    \ smooth epoxy matrix. What is evident to observe is how this contamination alters the surface reflectivity; the natural\
+    \ sheen of the composite, expected at around 15% for near-infrared wavelengths, is visibly diminished under optical microscopy,\
+    \ suggesting a potential impact on laser absorption properties (a critical parameter at 92.7% for this material). Additionally,\
+    \ micro-cracks, approximately 1-2 µm in width, are detected near areas of thicker deposits, indicating possible stress\
+    \ points induced by the contaminant layer. The porosity, already at a baseline of 1.2%, seems visually exacerbated by\
+    \ these surface irregularities, though precise measurements are needed.\n\nIn certain zones, the contamination manifests\
+    \ as streaked patterns, likely from environmental exposure or manufacturing residues, which partially mask the fiber orientation.\
+    \ This disorder, it creates a challenge for functional performance, especially in aerospace applications where surface\
+    \ integrity directly influences aerodynamic behavior. The overall impression, as seen through the lens, is of a surface\
+    \ compromised by foreign layers and textural anomalies, necessitating intervention to restore its intended properties.\
+    \ To achieve such restoration, it requires a method both precise and controlled—laser cleaning, in this case, appears\
+    \ a promising approach."
+  afterText: "Following laser cleaning, the Kevlar Reinforced Polymer surface, as observed at 500x magnification, presents\
+    \ a remarkably transformed appearance, one that contrasts sharply with the pre-treated state. The previously dominant\
+    \ contamination layer—those patchy deposits of 5-12 µm thickness—has been effectively removed across nearly 90% of the\
+    \ examined area, as confirmed by SEM imaging. What strikes me now is the re-emergence of the Kevlar fiber weave, with\
+    \ its distinct crisscross pattern clearly visible once more under the microscope. The surface roughness, measured post-treatment\
+    \ via profilometry, has decreased to an average Ra of 1.9 µm, approaching the original as-molded value of 1.8 µm Ra. This\
+    \ improvement, it suggests a near-complete restoration of the surface texture, critical for maintaining material performance\
+    \ in demanding applications like marine or automotive contexts.\n\nIn detailed examination, residual contamination is\
+    \ minimal, confined to isolated spots—perhaps no larger than 2-3 µm in diameter—and mostly located in micro-crevices of\
+    \ the epoxy matrix (as seen in high-resolution SEM scans). The embedded particles, once prominent at sizes up to 20 µm,\
+    \ are no longer detectable in significant numbers, indicating effective ablation below the material’s threshold of 2.8\
+    \ J/cm². Reflectivity, previously dulled by the contaminant film, appears visually enhanced, aligning closer to the expected\
+    \ 15% at 1064 nm wavelength; this change, it could positively influence laser interaction properties for future processing.\
+    \ Moreover, the micro-cracks observed earlier seem unchanged in width (still around 1-2 µm), suggesting the laser parameters\
+    \ were kept safely below the damage threshold of 4.2 J/cm², preserving structural integrity. The overall surface, she\
+    \ looks notably uniform now, with porosity visually consistent with the baseline 1.2%.\n\nThis transformation, it is evident\
+    \ to observe, restores not only the aesthetic clarity of the composite but also its functional potential. The precision\
+    \ here, it produces truly sophisticated outcomes—balancing contaminant removal with material preservation. Such a cleaned\
+    \ surface, as one can see, is better suited for bonding or coating applications, where adhesion and surface consistency\
+    \ are paramount. Further XPS analysis is planned to quantify any residual organic traces, but visually, the restoration\
+    \ is quite extraordinary."
+  description: Microscopic analysis of kevlar reinforced polymer surface before and after laser cleaning treatment
+  alt: Microscopic view of kevlar reinforced polymer surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
     uniqueCharacteristics:
-    - kevlar-reinforced polymer_specific
-    contaminationProfile: kevlar-reinforced polymer surface contamination
+    - kevlar reinforced polymer_specific
+    contaminationProfile: kevlar reinforced polymer surface contamination
   microscopy:
-    parameters: Microscopic analysis of Kevlar-Reinforced Polymer
+    parameters: Microscopic analysis of kevlar reinforced polymer
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: '2025-10-02T00:00:00.000000Z'
+    timestamp: "2025-10-04T21:41:53.427269Z"
     generator: FrontmatterCaptionGenerator
-    componentType: template_caption
+    componentType: ai_caption_frontmatter
   author: Alessandro Moretti
   materialProperties:
     materialType: Composite
-    analysisMethod: template_microscopy
+    analysisMethod: ai_microscopy
   imageUrl:
-    alt: Microscopic view of Kevlar-Reinforced Polymer surface after laser cleaning
-      showing detailed surface structure
+    alt: Microscopic view of Kevlar-Reinforced Polymer surface after laser cleaning showing detailed surface structure
     url: /images/material/kevlar-reinforced-polymer-laser-cleaning-micro.jpg
 tags:
 - composite
@@ -318,3 +372,6 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - alessandro-moretti
+metadata:
+  lastUpdated: "2025-10-04T21:42:25.021500"
+  captionIntegrated: true

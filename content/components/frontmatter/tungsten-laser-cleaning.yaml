@@ -1,6 +1,6 @@
 name: Tungsten
 category: Metal
-subcategory: Tungsten
+subcategory: refractory
 title: Tungsten Laser Cleaning
 description: Laser cleaning parameters for Tungsten
 materialProperties:
@@ -22,111 +22,124 @@ materialProperties:
     value: 173
     unit: W/m·K
     confidence: 95
-    description: Thermal conductivity at 20°C
+    description: Thermal conductivity at room temperature
     min: 6.0
     max: 429.0
   tensileStrength:
     value: 980
     unit: MPa
-    confidence: 88
-    description: Ultimate tensile strength for annealed tungsten
+    confidence: 90
+    description: Ultimate tensile strength of annealed tungsten
     min: 3.0
     max: 3000.0
   hardness:
     value: 3430
     unit: MPa
-    confidence: 90
-    description: Vickers hardness for pure tungsten
+    confidence: 92
+    description: Vickers hardness of pure tungsten
     min: 0.5
     max: 3500
   youngsModulus:
     value: 411
     unit: GPa
-    confidence: 96
+    confidence: 95
     description: Young's modulus of elasticity
     min: 5
     max: 411
+  laserAbsorption:
+    value: 42.7
+    unit: '%'
+    confidence: 92
+    description: laserAbsorption from Materials.yaml
+    min: 0.02
+    max: 100
+  laserReflectivity:
+    value: 52.3
+    unit: '%'
+    confidence: 95
+    description: laserReflectivity from Materials.yaml
+    min: 5
+    max: 98
+  specificHeat:
+    value: 0.132
+    unit: J/g·K
+    confidence: 90
+    description: Specific heat capacity at room temperature
+    min: 100
+    max: 900
+  thermalDestructionPoint:
+    value: 1653.0
+    unit: °C
+    confidence: 95
+    description: thermalDestructionPoint from Materials.yaml
+    min: -38.8
+    max: 3422
+  thermalDestructionType:
+    value: 3695.0
+    unit: K
+    confidence: 98
+    description: thermalDestructionType from Materials.yaml
+    min: null
+    max: null
+  thermalDiffusivity:
+    value: 0.68
+    unit: cm²/s
+    confidence: 88
+    description: Thermal diffusivity at 20°C
+    min: 0.2
+    max: 174
   thermalExpansion:
     value: 4.5
-    unit: ×10⁻⁶/K
+    unit: μm/m·K
     confidence: 92
     description: Coefficient of thermal expansion at 20°C
     min: 0.5
     max: 29.1
-  thermalDiffusivity:
-    value: 0.68
-    unit: cm²/s
-    confidence: 90
-    description: Thermal diffusivity at room temperature
-    min: 0.2
-    max: 174
-  specificHeat:
-    value: 0.13
-    unit: J/g·K
-    confidence: 93
-    description: Specific heat capacity at 20°C
-    min: 100
-    max: 900
-  absorptionCoefficient:
-    value: 0.65
+  reflectivity:
+    value: 0.52
     unit: dimensionless
     confidence: 85
-    description: Absorption coefficient for 1064 nm laser wavelength
+    description: Optical reflectivity at 1064 nm wavelength
     min: null
     max: null
-  reflectivity:
-    value: 0.48
-    unit: dimensionless
-    confidence: 87
-    description: Reflectivity at 1064 nm wavelength
+  absorptionCoefficient:
+    value: 1.8
+    unit: ×10⁶ m⁻¹
+    confidence: 82
+    description: Absorption coefficient for near-IR lasers
     min: null
     max: null
   ablationThreshold:
-    value: 2.8
+    value: 3.2
     unit: J/cm²
-    confidence: 82
-    description: Approximate ablation threshold for nanosecond pulses at 1064 nm
-    min: null
-    max: null
-  oxidationResistance:
-    value: 0.15
-    unit: mg/cm²·h
-    confidence: 89
-    description: Oxidation rate in air at 1000°C
+    confidence: 80
+    description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   crystallineStructure:
     value: BCC
-    unit: none
+    unit: crystal system
     confidence: 98
     description: Body-centered cubic crystal structure
     min: null
     max: null
-  electricalResistivity:
-    value: 5.6
-    unit: μΩ·cm
-    confidence: 94
-    description: Electrical resistivity at 20°C
-    min: null
-    max: null
-  thermalShockResistance:
-    value: 280
-    unit: W/m
-    confidence: 86
-    description: Thermal shock resistance parameter
+  oxidationResistance:
+    value: 500
+    unit: °C
+    confidence: 90
+    description: Maximum temperature for protective oxide layer stability
     min: null
     max: null
 applications:
 - Aerospace
-- Medical Device Manufacturing
-- Electronics and Semiconductor
-- Nuclear Energy
-- Tool and Die Manufacturing
-- Automotive Racing
-- Lighting and Vacuum Technology
-- Cultural Heritage and Conservation
-- Marine and Offshore
-- Research and Laboratory
+- Defense
+- Electronics Manufacturing
+- Lighting and Vacuum Tubes
+- Medical Devices (X-ray tubes)
+- Mining and Drilling
+- Nuclear
+- Tooling and Dies
+- Welding Electrodes
 machineSettings:
   powerRange:
     value: 100
@@ -140,36 +153,38 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength for optimal Tungsten absorption and thermal processing
+    description: Near-IR wavelength for efficient Tungsten oxide absorption and thermal
+      processing
     min: 532
     max: 1064
   spotSize:
     value: 50
     unit: μm
     confidence: 84
-    description: Optimal beam diameter for precision cleaning and energy density control
+    description: Optimal beam diameter for precision cleaning with sufficient energy
+      density
     min: 30
     max: 100
   repetitionRate:
     value: 100
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning coverage with thermal
-      management
+    description: High repetition rate for efficient cleaning coverage while maintaining
+      thermal control
     min: 50
     max: 200
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient ablation of surface contaminants
+    description: Nanosecond pulse duration for controlled ablation of surface contaminants
     min: 5
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform cleaning with adequate overlap
+    description: Scanning speed balancing cleaning efficiency and thermal management
     min: 200
     max: 1000
   fluenceThreshold:
@@ -183,15 +198,16 @@ machineSettings:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal overlap between adjacent scan lines for uniform cleaning
+    description: Optimal beam overlap for uniform cleaning without excessive heat
+      accumulation
     min: 40
     max: 70
   passCount:
     value: 3
     unit: passes
     confidence: 85
-    description: Recommended number of passes for complete contaminant removal
-    min: 1
+    description: Number of cleaning passes for complete contaminant removal
+    min: 2
     max: 5
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
@@ -276,17 +292,28 @@ outcomeMetrics:
   units: []
 caption:
   beforeText: At 500x magnification, the tungsten surface is obscured by a non-uniform
-    contamination layer, typically 5-20 µm thick. This layer consists of adhered oxides,
-    carbonaceous soot, and particulate debris, forming a textured, matte topography.
-    The underlying metallic substrate is largely invisible, with the contamination
-    masking the material's intrinsic grain structure and micro-features. The surface
-    appears rough and irregular, with the contaminants filling microscopic valleys
-    and pores.
-  afterText: Laser cleaning removes the contamination layer, revealing the pristine
-    tungsten substrate. The surface now exhibits a clean, defined grain structure
-    with visible micro-features. The transformation results in a uniform, reflective
-    metallic surface, restoring the material's intrinsic properties and eliminating
-    the obscuring, textured contaminants.
+    contamination layer, typically 5-20 µm thick. This layer consists of embedded
+    carbonaceous soot, oxide scale (WO₃), and particulate matter, creating a matte,
+    textured topography. The underlying metallic substrate is largely invisible, with
+    the contamination forming a discontinuous, crust-like film that masks the material's
+    intrinsic grain structure and micro-features.
+  afterText: 'Following laser cleaning, the surface reveals a distinct transformation.
+    The contamination layer has been completely removed via selective laser ablation,
+    exposing the pristine, underlying tungsten substrate. The material''s characteristic
+    polycrystalline grain structure is now clearly visible, with sharp, well-defined
+    grain boundaries.
+
+
+    The surface exhibits a significantly smoother and more uniform texture. The laser
+    process has effectively eliminated the porous oxide scale and embedded particulates
+    without inducing surface melting or micro-cracking, preserving the base metal''s
+    integrity.
+
+
+    This results in a surface with restored metallic reflectivity and a clean, defect-free
+    appearance. The process successfully recovers the original surface morphology,
+    critical for applications requiring optimal thermal or electrical contact and
+    high material purity.'
   description: Microscopic analysis of tungsten surface before and after laser cleaning
     treatment
   alt: Microscopic view of tungsten surface showing laser cleaning effects
@@ -319,6 +346,6 @@ tags:
 - decoating
 - oxide-removal
 - surface-preparation
-- conductive
 - reflective-surface
+- conductive
 - yi-chun-lin

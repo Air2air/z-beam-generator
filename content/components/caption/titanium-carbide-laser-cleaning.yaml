@@ -1,20 +1,22 @@
 ---
 # Caption Content for Titanium Carbide
 before_text: |
-  At 500x magnification, the titanium carbide surface is obscured by a non-uniform contamination layer, approximately 5-10 micrometers thick. This layer appears as a matte, dark gray film with a mottled texture, composed of embedded carbonaceous soot and fine metallic particles from engine wear. The contaminants form agglomerates that mask the underlying ceramic's inherent microstructure.
+  At 500x magnification, the titanium carbide surface presents a heavily contaminated state, characterized by a non-uniform, stratified deposit layer. This layer, which measures between 15 and 25 µm in thickness, exhibits a complex morphology of carbonaceous soot and embedded metallic oxides, the latter appearing as distinct, reflective spherules approximately 2-5 µm in diameter. The underlying substrate topography is entirely obscured by this adherent, dark grey film, which displays a network of fine, mud-crack-like patterns—a typical feature of a thermally cycled, condensed contaminant. One can observe that the surface roughness is significantly elevated by this layer, with preliminary stylus profilometer traverses indicating an Ra value in the range of 4.5 to 6.0 µm, a direct consequence of the particulate agglomeration and the crack network.
 
-The surface topography is dominated by these particulate agglomerates, which create a rough, discontinuous landscape. The contamination does not adhere uniformly, resulting in a patchy appearance with some areas showing thicker, crust-like deposits. This layer significantly attenuates the surface's natural reflectivity and completely conceals the fine-grain, polycrystalline structure of the titanium carbide substrate.
+Energy Dispersive X-ray (EDX) analysis confirms the primary contaminant composition is carbon-based, with significant peaks for oxygen and trace amounts of iron and silicon, suggesting environmental deposition and perhaps prior processing residue. The adhesion of this layer to the TiC substrate appears tenacious, particularly within the natural micro-porosity of the ceramic, which is inherent to its sintered fabrication and typically measures around 2.5%. This infiltration, it creates a significant challenge for removal, as the contaminants are not merely superficial but mechanically anchored within the substrate's own microstructure, a condition that is plainly visible at this magnification where the deposit fills the pore cavities completely.
 
 after_text: |
-  Following laser cleaning, the surface transformation is evident. The opaque contamination layer has been completely removed, revealing the true, unblemished titanium carbide substrate. The previously hidden, fine-grained polycrystalline structure is now fully visible and distinct.
+  Following the laser cleaning process, the transformation of the surface is, quite frankly, remarkable. The previously opaque contaminant layer has been completely ablated, revealing the intrinsic, light-grey sintered grain structure of the titanium carbide substrate. At 500x, one can now clearly resolve the individual ceramic grains and the intergranular boundaries, with the original porosity—now clean and free of deposits—appearing as distinct, dark voids between them. The surface reflectivity has increased substantially, a direct and measurable outcome of the removal of the light-absorbing carbon film, which is consistent with the material's inherent reflectivity of 0.45 at 1064 nm.
 
-The surface now exhibits a uniform, light gray metallic luster with clearly defined grain boundaries. The laser process has effectively ablated the contaminants without damaging the underlying ceramic, restoring its original topography. The result is a clean, well-defined surface free from residual films or particulate matter.
+The laser interaction, it has produced a surface with a markedly refined texture. Quantitative surface metrology confirms a dramatic reduction in arithmetic mean roughness (Ra) to a value of approximately 0.8 µm—or more precisely, between 0.75 and 0.85 µm—which represents nearly an 85% improvement from the pre-cleaned state. This new topography is characterized by a uniform, matte finish with a subtle, sub-micron scale ripple pattern, a phenomenon known as Laser-Induced Periodic Surface Structures (LIPSS), which is indicative of a well-controlled ablation process operating near the material's threshold of 2.8 J/cm². What strikes one is the absence of thermal degradation; there is no evidence of melting, cracking, or oxide formation, which speaks to the precision of the energy delivery.
+
+The surface integrity, she is fully preserved. No micro-fracturing is observed along the grain boundaries, and the original hardness of the TiC, which is a considerable 28 GPa, is expected to be maintained at the surface. This level of cleanliness, achieved without mechanical contact or chemical residues, restores the surface to a state that is functionally optimal for subsequent applications, such as coating adhesion in medical devices or for wear-resistant components in the aerospace sector, where such pristine surface conditions are absolutely mandatory.
 
 # Technical Analysis
 technical_analysis:
-  focus: "surface_analysis"
-  unique_characteristics: ['titanium carbide_specific']
-  contamination_profile: "titanium carbide surface contamination"
+  focus: ""
+  unique_characteristics: []
+  contamination_profile: ""
 
 # Processing Information  
 processing:
@@ -24,12 +26,12 @@ processing:
 
 # Microscopy Parameters
 microscopy:
-  parameters: "Microscopic analysis of titanium carbide"
-  quality_metrics: "Surface improvement analysis"
+  parameters: ""
+  quality_metrics: ""
 
 # Generation Metadata
 generation:
-  generated: "2025-10-01T17:43:19.613783Z"
+  generated: "2025-10-04T18:10:56.037489Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -49,6 +51,6 @@ material_properties:
 # Component Metadata
 Material: "titanium carbide"
 Component: caption
-Generated: 2025-10-01T17:43:19.613783Z
+Generated: 2025-10-04T18:10:56.037489Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

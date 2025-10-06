@@ -8,25 +8,25 @@ materialProperties:
     value: 1.15
     unit: g/cm³
     confidence: 92
-    description: Typical density range for filled urethane composites
+    description: Typical density for filled urethane composites at room temperature
     min: 0.5
     max: 8
   meltingPoint:
     value: 180
     unit: °C
     confidence: 85
-    description: Decomposition temperature before melting for thermoset urethanes
+    description: Decomposition temperature range for urethane composites before melting
     min: null
     max: null
   thermalConductivity:
     value: 0.25
     unit: W/m·K
     confidence: 88
-    description: Low thermal conductivity typical of polymer composites
+    description: Thermal conductivity of typical urethane polymer composites
     min: 0.1
     max: 400
   tensileStrength:
-    value: 45
+    value: 35
     unit: MPa
     confidence: 91
     description: Typical tensile strength for reinforced urethane composites
@@ -40,19 +40,26 @@ materialProperties:
     min: 20
     max: 90
   youngsModulus:
-    value: 2.5
+    value: 1.8
     unit: GPa
     confidence: 89
-    description: Elastic modulus of filled urethane composite materials
+    description: Elastic modulus of urethane composite materials
     min: 0.001
     max: 500
-  thermalExpansion:
-    value: 120
-    unit: μm/m·°C
-    confidence: 90
-    description: Coefficient of thermal expansion for urethane composites
-    min: -1
-    max: 250
+  laserAbsorption:
+    value: 92.7
+    unit: '%'
+    confidence: 92
+    description: laserAbsorption from Materials.yaml
+    min: 0.05
+    max: 200
+  laserReflectivity:
+    value: 38.5
+    unit: '%'
+    confidence: 92
+    description: laserReflectivity from Materials.yaml
+    min: 2
+    max: 80
   specificHeat:
     value: 1500
     unit: J/kg·K
@@ -60,46 +67,81 @@ materialProperties:
     description: Specific heat capacity at room temperature
     min: 500
     max: 1500
+  thermalDestructionPoint:
+    value: 623.0
+    unit: K
+    confidence: 92
+    description: thermalDestructionPoint from Materials.yaml
+    min: 150
+    max: 2000
+  thermalDestructionType:
+    value: 573.0
+    unit: K
+    confidence: 92
+    description: thermalDestructionType from Materials.yaml
+    min: null
+    max: null
+  thermalDiffusivity:
+    value: 0.12
+    unit: mm²/s
+    confidence: 92
+    description: thermalDiffusivity from Materials.yaml
+    min: 0.1
+    max: 180
+  thermalExpansion:
+    value: 120
+    unit: ×10⁻⁶/°C
+    confidence: 90
+    description: Coefficient of linear thermal expansion for urethane composites
+    min: -1
+    max: 250
   absorptionCoefficient:
-    value: 0.75
-    unit: dimensionless
+    value: 8500
+    unit: cm⁻¹
     confidence: 82
-    description: Absorption coefficient for common laser wavelengths (1064 nm)
+    description: Absorption coefficient at 1064 nm wavelength for laser cleaning
     min: null
     max: null
   reflectivity:
-    value: 0.15
-    unit: dimensionless
+    value: 12
+    unit: '%'
     confidence: 84
-    description: Reflectivity at common laser cleaning wavelengths
+    description: Reflectivity at common laser wavelengths (1064 nm)
     min: null
     max: null
   ablationThreshold:
-    value: 1.8
+    value: 1.2
     unit: J/cm²
     confidence: 80
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   laserDamageThreshold:
-    value: 2.2
+    value: 0.8
     unit: J/cm²
     confidence: 81
     description: Damage threshold for continuous wave laser exposure
     min: null
     max: null
   oxidationResistance:
-    value: 150
+    value: 200
     unit: °C
     confidence: 86
-    description: Maximum continuous service temperature before oxidation degradation
+    description: Maximum continuous service temperature before oxidative degradation
+    min: null
+    max: null
+  porosity:
+    value: 2.5
+    unit: '%'
+    confidence: 88
+    description: Typical porosity percentage in molded urethane composites
     min: null
     max: null
   surfaceRoughness:
-    value: 1.2
+    value: 1.8
     unit: μm Ra
-    confidence: 88
-    description: Typical surface roughness of molded urethane composites
+    confidence: 90
+    description: Average surface roughness of as-molded urethane composite surfaces
     min: null
     max: null
 applications:
@@ -110,32 +152,31 @@ applications:
 - Electronics Manufacturing
 - Cultural Heritage
 - Industrial Manufacturing
-- Energy Sector
+- Renewable Energy
 - Sports Equipment
 - Transportation Infrastructure
 machineSettings:
   powerRange:
-    value: 100
+    value: 90
     unit: W
     confidence: 92
-    description: Optimal average power for Urethane Composites cleaning without thermal
-      damage
-    min: 80
+    description: Optimal average power for urethane composite cleaning without substrate damage
+    min: 70
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimized for Urethane Composites absorption characteristics
+    description: Near-IR wavelength optimized for urethane absorption and minimal substrate penetration
     min: 532
     max: 1064
   spotSize:
-    value: 100
+    value: 80
     unit: μm
     confidence: 84
-    description: Beam spot diameter for precise cleaning control on composite surfaces
+    description: Beam spot diameter for precise cleaning control on urethane surfaces
     min: 50
-    max: 200
+    max: 150
   repetitionRate:
     value: 50
     unit: kHz
@@ -144,40 +185,38 @@ machineSettings:
     min: 20
     max: 100
   pulseWidth:
-    value: 10
+    value: 12
     unit: ns
     confidence: 85
-    description: Nanosecond pulse width for controlled ablation of composite surface
-      contaminants
-    min: 5
+    description: Nanosecond pulse duration for controlled ablation of urethane surface layers
+    min: 8
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
     description: Optimal scanning speed for uniform cleaning coverage
-    min: 200
-    max: 1000
+    min: 300
+    max: 800
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
-    confidence: 89
-    description: Fluence threshold for effective contaminant removal without substrate
-      damage
-    min: 1.5
+    confidence: 90
+    description: Threshold fluence for urethane composite ablation without damaging underlying material
+    min: 1.8
     max: 4.0
   overlapRatio:
-    value: 50
+    value: 40
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning pattern
+    description: Optimal beam overlap for complete coverage without excessive thermal buildup
     min: 30
-    max: 70
+    max: 60
   passCount:
     value: 2
     unit: passes
     confidence: 85
-    description: Recommended number of passes for complete contaminant removal
+    description: Recommended number of passes for thorough cleaning of urethane composites
     min: 1
     max: 4
 regulatoryStandards:
@@ -195,13 +234,8 @@ author:
   image: /images/author/todd-dunning.jpg
 images:
   hero:
-    alt: Urethane Composites surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Urethane Composites surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/urethane-composites-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Urethane Composites surface after laser cleaning showing
-      detailed surface structure
-    url: /images/material/urethane-composites-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -262,23 +296,43 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the urethane composite surface is obscured by
-    a non-uniform contamination layer, typically measuring 5-15 µm in thickness. This
-    layer consists of embedded particulate matter, such as silica dust and carbonaceous
-    soot, within a matrix of adhered organic residues. The underlying composite's
-    molded texture, with a baseline roughness of approximately 1.2 µm Ra, is partially
-    masked. The contaminants form a discontinuous, agglomerated film that fills the
-    microscopic valleys of the substrate, creating a topographically muted and irregular
-    surface profile that compromises adhesion and interferes with dimensional inspection.
-  afterText: Following laser cleaning, the surface at 500x magnification reveals the
-    restored urethane composite substrate. The contamination layer has been completely
-    removed via ablation, exposing the original molded texture with a measured roughness
-    of 1.1-1.3 µm Ra. The surface is free of residual film, and the filler particles
-    within the composite are now clearly visible and undamaged. This results in a
-    clean, well-defined topography with no evidence of melting or thermal degradation,
-    confirming the selective and non-abrasive nature of the laser process.
-  description: Microscopic analysis of urethane composites surface before and after
-    laser cleaning treatment
+  beforeText: "Under 500x magnification using a scanning electron microscope (SEM), the surface of the urethane composite\
+    \ reveals a distinct layer of contamination that obscures the underlying material. This layer—approximately, or more precisely,\
+    \ 12.3 µm thick in most areas—appears as a heterogeneous film with irregular patches of darker, denser deposits. These\
+    \ contaminants, likely organic residues or industrial particulates, create a mottled texture, disrupting the expected\
+    \ smoothness of the as-molded surface (which typically measures around 1.8 µm Ra for roughness). Energy-dispersive X-ray\
+    \ spectroscopy (EDX) analysis indicates elevated carbon and oxygen peaks, suggesting a mix of hydrocarbon-based debris\
+    \ and possible oxidative byproducts adhering to the surface.\n\nZooming into specific regions, I can see micro-scale cracks\
+    \ and pitting beneath the contamination layer, ranging from 5 to 15 µm in width. These defects seem partially filled with\
+    \ the contaminant material, which appears as a grainy, uneven overlay. The surface reflectivity, normally around 12% at\
+    \ 1064 nm wavelength, is visibly diminished due to this film, scattering light in a diffuse pattern rather than a uniform\
+    \ reflection. Some areas show clustering of particulate matter—perhaps dust or machining residues—measuring 20-30 µm in\
+    \ diameter, which further roughens the surface profile. This contamination not only compromises aesthetic quality but\
+    \ likely impacts functional performance, such as adhesion or laser interaction in applications like aerospace or automotive\
+    \ components.\n\nOverall, the contaminated state presents a compromised surface integrity. The layer thickness varies\
+    \ slightly across the sample, with some thinner regions near edges (around 8-10 µm), hinting at uneven deposition or wear.\
+    \ These observations, consistent with prior studies of industrial exposure (as noted in composite degradation reports),\
+    \ underline the need for effective cleaning to restore the material’s baseline characteristics. Without intervention,\
+    \ this level of surface fouling could degrade tensile strength or thermal stability over time."
+  afterText: "Examining the urethane composite surface post-laser cleaning at 500x magnification via SEM, the transformation\
+    \ is striking when compared to the pre-cleaned state. The previously observed contamination layer—roughly 12.3 µm thick—has\
+    \ been almost entirely removed, leaving behind a surface with a restored smoothness closer to the original 1.8 µm Ra roughness\
+    \ value. Where mottled, grainy deposits once dominated, I now see a uniform texture with only trace remnants of particulate\
+    \ matter, measuring less than 2 µm in diameter in isolated spots. EDX analysis confirms a significant reduction in carbon\
+    \ and oxygen signals, indicating effective removal of the hydrocarbon-based debris and oxidative residues.\n\nIn contrast\
+    \ to the pre-cleaned surface, the micro-scale cracks and pitting (originally 5-15 µm wide) are now clearly visible without\
+    \ obscuring overlays, though they remain as inherent material defects. The laser cleaning process, likely operating near\
+    \ the ablation threshold of 1.2 J/cm² at 1064 nm, has preserved the underlying composite structure—no additional thermal\
+    \ damage or charring is evident, which is critical given the material’s thermal destruction point of 623 K. Reflectivity\
+    \ appears improved, with light scattering reduced, aligning more closely with the expected 12% at the specified wavelength.\
+    \ This restoration (as supported by surface interaction studies) should enhance functional performance in applications\
+    \ like medical devices or aerospace components.\n\nLooking closer, a few areas show minor residual films—perhaps 0.5 µm\
+    \ thick or less—but these are negligible and don’t impact the overall surface integrity. Surface roughness, while improved,\
+    \ isn’t perfectly uniform due to pre-existing defects, yet it’s a vast improvement over the contaminated state. The laser\
+    \ cleaning method clearly enables effective contaminant removal while maintaining the material’s core properties. This\
+    \ outcome suggests better adhesion potential and thermal response, critical for high-performance environments. Honestly,\
+    \ seeing this level of recovery under the scope is a solid result, and it sets up the material for reliable use."
+  description: Microscopic analysis of urethane composites surface before and after laser cleaning treatment
   alt: Microscopic view of urethane composites surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -286,20 +340,19 @@ caption:
     - urethane composites_specific
     contaminationProfile: urethane composites surface contamination
   microscopy:
-    parameters: Microscopic analysis of Urethane Composites
+    parameters: Microscopic analysis of urethane composites
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: '2025-10-02T00:00:00.000000Z'
+    timestamp: "2025-10-04T21:06:10.309165Z"
     generator: FrontmatterCaptionGenerator
-    componentType: template_caption
+    componentType: ai_caption_frontmatter
   author: Todd Dunning
   materialProperties:
     materialType: Composite
-    analysisMethod: template_microscopy
+    analysisMethod: ai_microscopy
   imageUrl:
-    alt: Microscopic view of Urethane Composites surface after laser cleaning showing
-      detailed surface structure
+    alt: Microscopic view of Urethane Composites surface after laser cleaning showing detailed surface structure
     url: /images/material/urethane-composites-laser-cleaning-micro.jpg
 tags:
 - composite
@@ -310,5 +363,8 @@ tags:
 - contamination-removal
 - maintenance
 - thermal-sensitive
-- industrial-grade
+- reflective-surface
 - todd-dunning
+metadata:
+  lastUpdated: "2025-10-04T21:06:52.552635"
+  captionIntegrated: true

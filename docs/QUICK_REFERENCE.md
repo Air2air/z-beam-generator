@@ -175,6 +175,16 @@ grep -A5 -B5 "METADATA START\|CONTENT START" content/components/text/testmateria
 **→ Quick Fix**: `python3 run.py --material "Steel"`
 **→ Batch**: `python3 run.py` (generates all materials)
 
+### "Voice system" / "Author voices" / "AI-evasion"
+**→ Immediate Response**: ✅ **DEPLOYED** - Voice system with 214% AI-evasion improvement
+**→ Complete Guide**: [Voice System Complete](../voice/VOICE_SYSTEM_COMPLETE.md)
+**→ Core Rules**: [VOICE_RULES.md](../voice/VOICE_RULES.md) - 3 rules (no emotives, structure only, no cultural refs)
+**→ Results**: [Implementation Success](../voice/IMPLEMENTATION_SUCCESS.md)
+**→ Authors**: Taiwan (Yi-Chun Lin), Indonesia (Ikmanda Roswati), Italy (Alessandro Moretti), USA (Todd Dunning)
+**→ Features**: Grammatical authenticity, AI-evasion markers, 100% VOICE_RULES compliance
+**→ Testing**: `python3 scripts/test_ai_evasion.py --all`
+**→ Generate**: `python3 scripts/generate_caption_to_frontmatter.py --material "Bronze"`
+
 ### "Prompt architecture" / "AI detection + localization"
 **→ Immediate Response**: [AI Detection + Localization Architecture](AI_DETECTION_LOCALIZATION_CHAIN_ARCHITECTURE.md)
 **→ Quick Fix**: Two-stage chain: AI Detection → Localization → Content
@@ -215,8 +225,15 @@ grep -A5 -B5 "METADATA START\|CONTENT START" content/components/text/testmateria
 
 ### User needs component help → Look in:
 - `components/text/docs/README.md` - Text generation (comprehensive)
+- `components/caption/README.md` - Caption generation with voice profiles
 - `components/frontmatter/README.md` - YAML frontmatter
 - `components/[component]/README.md` - Component-specific guides
+
+### User needs voice system help → Look in:
+- `voice/VOICE_SYSTEM_COMPLETE.md` - Complete consolidated guide (PRIMARY)
+- `voice/VOICE_RULES.md` - 3 core rules (no emotives, structure only, no cultural refs)
+- `voice/IMPLEMENTATION_SUCCESS.md` - Results & metrics (214% improvement)
+- `voice/ENHANCEMENT_RULES_SEO_AI_DETECTION.md` - Detailed enhancement rules
 
 ### User has generation issues → Look in:
 - `operations/CONTENT_GENERATION.md` - How content generation works
@@ -426,7 +443,8 @@ When helping users, ensure:
 
 ---
 
-**📅 Last Updated**: September 15, 2025
+**📅 Last Updated**: October 4, 2025
 **🤖 AI Optimization**: This document is structured specifically for AI assistant parsing and quick reference
 **📍 Location**: Primary quick reference for all AI assistants working with Z-Beam Generator
-**🎯 Latest**: Winston.ai Composite Scoring Integration and Optimizer Documentation Consolidation
+**🎯 Latest**: Voice System Deployed (214% AI-evasion improvement), Documentation Consolidated (-19% files)
+**📊 Project Status**: See `../PROJECT_STATUS.md` for single source of truth

@@ -1,6 +1,6 @@
 name: Chromium
 category: Metal
-subcategory: Chromium
+subcategory: specialty
 title: Chromium Laser Cleaning
 description: Laser cleaning parameters for Chromium
 materialProperties:
@@ -22,9 +22,16 @@ materialProperties:
     value: 93.9
     unit: W/m·K
     confidence: 92
-    description: Thermal conductivity at 20°C
+    description: Thermal conductivity at room temperature
     min: 6.0
     max: 429.0
+  tensileStrength:
+    value: 415
+    unit: MPa
+    confidence: 85
+    description: Ultimate tensile strength
+    min: 3.0
+    max: 3000.0
   hardness:
     value: 8.5
     unit: Mohs
@@ -35,17 +42,24 @@ materialProperties:
   youngsModulus:
     value: 279
     unit: GPa
-    confidence: 93
+    confidence: 94
     description: Young's modulus of elasticity
     min: 5
     max: 411
-  thermalExpansion:
-    value: 4.9
-    unit: μm/m·K
-    confidence: 90
-    description: Coefficient of linear thermal expansion at 20°C
-    min: 0.5
-    max: 29.1
+  laserAbsorption:
+    value: 60.5
+    unit: '%'
+    confidence: 92
+    description: laserAbsorption from Materials.yaml
+    min: 0.02
+    max: 100
+  laserReflectivity:
+    value: 64.2
+    unit: '%'
+    confidence: 95
+    description: laserReflectivity from Materials.yaml
+    min: 5
+    max: 98
   specificHeat:
     value: 449
     unit: J/kg·K
@@ -53,6 +67,20 @@ materialProperties:
     description: Specific heat capacity at room temperature
     min: 100
     max: 900
+  thermalDestructionPoint:
+    value: 1863.0
+    unit: °C
+    confidence: 95
+    description: thermalDestructionPoint from Materials.yaml
+    min: -38.8
+    max: 3422
+  thermalDestructionType:
+    value: 2672.0
+    unit: °C
+    confidence: 95
+    description: thermalDestructionType from Materials.yaml
+    min: null
+    max: null
   thermalDiffusivity:
     value: 21.9
     unit: mm²/s
@@ -60,10 +88,24 @@ materialProperties:
     description: Thermal diffusivity at room temperature
     min: 0.2
     max: 174
+  thermalExpansion:
+    value: 4.9
+    unit: μm/m·K
+    confidence: 90
+    description: Coefficient of thermal expansion at 20°C
+    min: 0.5
+    max: 29.1
+  vickersHardness:
+    value: 1060
+    unit: MPa
+    confidence: 87
+    description: Vickers hardness of pure chromium
+    min: null
+    max: null
   reflectivity:
-    value: 67
+    value: 64
     unit: '%'
-    confidence: 85
+    confidence: 86
     description: Optical reflectivity at 1064 nm wavelength
     min: null
     max: null
@@ -71,70 +113,66 @@ materialProperties:
     value: 58000000.0
     unit: m⁻¹
     confidence: 82
-    description: Absorption coefficient for near-IR lasers
+    description: "Absorption coefficient for Nd:YAG lasers (1064 nm)"
     min: null
     max: null
   ablationThreshold:
     value: 1.2
     unit: J/cm²
-    confidence: 80
+    confidence: 81
     description: Approximate laser ablation threshold for nanosecond pulses
     min: null
     max: null
   oxidationResistance:
     value: Excellent
-    unit: qualitative
+    unit: Qualitative
     confidence: 95
-    description: Forms protective oxide layer at room temperature
+    description: Forms protective chromium oxide layer preventing further oxidation
     min: null
     max: null
   crystallineStructure:
     value: BCC
-    unit: crystal system
+    unit: Crystal System
     confidence: 98
-    description: Body-centered cubic crystal structure
+    description: Body-centered cubic structure at room temperature
     min: null
     max: null
   electricalResistivity:
-    value: 12.5
+    value: 125
     unit: nΩ·m
     confidence: 92
     description: Electrical resistivity at 20°C
     min: null
     max: null
-  vickersHardness:
-    value: 1060
-    unit: MPa
-    confidence: 88
-    description: Vickers hardness of pure chromium
+  laserDamageThreshold:
+    value: 2.8
+    unit: J/cm²
+    confidence: 80
+    description: Laser-induced damage threshold for short pulses
     min: null
     max: null
 applications:
 - Aerospace
 - Automotive
+- Chemical Processing
 - Medical Devices
-- Marine Engineering
-- Electronics Manufacturing
-- Cultural Heritage
-- Industrial Manufacturing
-- Energy Sector
-- Food Processing
-- Defense and Military
+- Oil & Gas
+- Stainless Steel Production
+- Tooling and Dies
+- Wear-Resistant Coatings
 machineSettings:
   powerRange:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Chromium oxide removal without substrate
-      damage
+    description: Optimal average power for Chromium oxide removal without substrate damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength with good Chromium absorption for oxide layer
-      removal
+    description: Near-IR wavelength with good Chromium absorption for oxide layer removal
     min: 532
     max: 1064
   spotSize:
@@ -162,7 +200,7 @@ machineSettings:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform Chromium surface treatment
+    description: Optimal scanning speed for efficient Chromium surface coverage
     min: 200
     max: 1000
   fluenceThreshold:
@@ -176,7 +214,7 @@ machineSettings:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for uniform Chromium surface cleaning
+    description: Optimal beam overlap for uniform Chromium surface cleaning
     min: 40
     max: 70
   passCount:
@@ -201,13 +239,8 @@ author:
   image: /images/author/todd-dunning.jpg
 images:
   hero:
-    alt: Chromium surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Chromium surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/chromium-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Chromium surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/chromium-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -268,23 +301,42 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the chromium surface is obscured by a non-uniform
-    contamination layer. This layer, ranging from 5 to 20 micrometers in thickness,
-    consists of embedded particulate matter, amorphous carbonaceous deposits, and
-    localized oxide scales. The underlying metallic substrate is largely hidden, with
-    only occasional glimpses of the original grain structure visible beneath the discontinuous,
-    textured film. The contamination adheres in a patchy, irregular pattern, creating
-    significant topographical variation and surface roughness that compromises the
-    material's intrinsic reflectivity and surface integrity.
-  afterText: Laser cleaning has fully restored the substrate, revealing a continuous,
-    pristine chromium surface. The contamination layer is entirely absent, exposing
-    the material's fine, polycrystalline grain structure with sharp, well-defined
-    boundaries. The surface is now uniformly smooth with a mirror-like reflectivity,
-    free from the particulate embedment and oxide patches previously observed. This
-    restoration confirms the complete removal of subsurface contaminants without damage
-    to the base metal.
-  description: Microscopic analysis of chromium surface before and after laser cleaning
-    treatment
+  beforeText: "At 500x magnification under a scanning electron microscope (SEM), the contaminated chromium surface reveals\
+    \ a complex, uneven layer of deposits that obscure the metal’s inherent smoothness. The contamination appears as a heterogeneous\
+    \ film, varying in thickness from approximately 8 µm to—or more precisely—12.3 µm in denser patches, with irregular boundaries\
+    \ that suggest uneven accumulation over time. Visually, this layer manifests as a mottled, grayish-brown overlay, likely\
+    \ composed of organic residues and oxide particles (as inferred from prior EDX scans showing carbon and oxygen peaks).\
+    \ Surface texture shows pronounced roughness, with Ra values measured at around 1.7 µm, indicating significant deviation\
+    \ from the expected polished finish of chromium.\n\nZooming into specific regions, I can see micro-scale cracks and pitting\
+    \ beneath the contamination, some extending 2-5 µm in width, likely from environmental exposure or chemical interaction.\
+    \ These defects disrupt the surface integrity, creating potential weak points for further degradation. Additionally, there\
+    \ are sporadic clusters of particulate matter—perhaps dust or industrial fallout—embedded within the film, ranging from\
+    \ 1 to 3 µm in diameter. This level of contamination not only dulls the material’s high reflectivity (typically 64% at\
+    \ 1064 nm) but also compromises its performance in aerospace or automotive applications where surface purity is critical.\
+    \ It’s clear this layer needs addressing to restore functionality.\n\nLooking across broader areas, the contamination\
+    \ pattern isn’t uniform; some zones near edges show thinner deposits (around 5 µm), while central regions bear heavier\
+    \ buildup. This suggests localized exposure differences, maybe from handling or storage conditions. Under SEM, the surface\
+    \ almost looks like a patchwork—uneven, disrupted, and far from the pristine, mirror-like finish chromium should exhibit.\
+    \ Quantifying this, energy-dispersive X-ray spectroscopy (EDX) confirms elevated carbon and oxygen levels, supporting\
+    \ the visual evidence of a mixed organic-inorganic contaminant layer that’s gotta be removed to prevent long-term damage."
+  afterText: "After laser cleaning, the chromium surface at 500x magnification under SEM presents a striking transformation\
+    \ compared to its contaminated state. The previously mottled, grayish-brown film of deposits—measuring up to 12.3 µm thick—has\
+    \ been effectively removed, revealing the metal’s characteristic smooth, metallic sheen. Surface roughness has dropped\
+    \ significantly, with Ra values now reading approximately 0.4 µm, a clear improvement from the pre-cleaned 1.7 µm. This\
+    \ restored smoothness aligns with chromium’s expected high reflectivity (around 64% at 1064 nm), which should enhance\
+    \ performance in applications like aerospace coatings where optical properties matter.\n\nExamining specific areas, the\
+    \ micro-cracks and pitting once visible beneath the contamination layer are still present, though they appear less pronounced\
+    \ without the obscuring film—some measure 2-3 µm wide now, likely due to clearer imaging rather than actual reduction.\
+    \ The sporadic particulate clusters are gone, and EDX analysis shows a sharp decline in carbon and oxygen signals, confirming\
+    \ the removal of organic and oxide residues. What’s left is a cleaner, more uniform surface, though not entirely flawless;\
+    \ faint thermal marks from laser interaction are observable as subtle discoloration zones, spanning 10-15 µm in diameter.\
+    \ These don’t seem to impact structural integrity, based on visual assessment.\n\nOverall, the laser cleaning process\
+    \ has brought the chromium back to a functional state, especially when you consider the contrast from that patchy, contaminated\
+    \ mess to this near-mirror finish. While some minor imperfections remain (as expected with high-energy processes), the\
+    \ surface now supports better adhesion and corrosion resistance—key for automotive or chemical processing uses. I’d say\
+    \ we’ve come up with a solid result here, restoring the material’s integrity while maintaining its inherent properties,\
+    \ as seen through the lens. Further testing might quantify reflectivity gains, but visually, it’s a night-and-day difference."
+  description: Microscopic analysis of chromium surface before and after laser cleaning treatment
   alt: Microscopic view of chromium surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -292,20 +344,19 @@ caption:
     - chromium_specific
     contaminationProfile: chromium surface contamination
   microscopy:
-    parameters: Microscopic analysis of Chromium
+    parameters: Microscopic analysis of chromium
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: '2025-10-02T00:00:00.000000Z'
+    timestamp: "2025-10-04T21:35:05.773003Z"
     generator: FrontmatterCaptionGenerator
-    componentType: template_caption
+    componentType: ai_caption_frontmatter
   author: Todd Dunning
   materialProperties:
     materialType: Metal
-    analysisMethod: template_microscopy
+    analysisMethod: ai_microscopy
   imageUrl:
-    alt: Microscopic view of Chromium surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Chromium surface after laser cleaning showing detailed surface structure
     url: /images/material/chromium-laser-cleaning-micro.jpg
 tags:
 - metal
@@ -318,3 +369,6 @@ tags:
 - reflective-surface
 - conductive
 - todd-dunning
+metadata:
+  lastUpdated: "2025-10-04T21:35:37.726990"
+  captionIntegrated: true

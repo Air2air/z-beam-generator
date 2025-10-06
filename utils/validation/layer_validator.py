@@ -174,68 +174,72 @@ class PersonaDriftDetector:
         self.persona_baselines = self._load_persona_baselines()
 
     def _load_persona_baselines(self) -> Dict[int, Dict]:
-        """Load baseline persona characteristics"""
+        """
+        Load baseline voice characteristics (aligned with VOICE_RULES.md)
+        NOTE: No signature phrases or emotives per VOICE_RULES.md Rule 1
+        """
         return {
             1: {  # Taiwan - Yi-Chun Lin
-                "word_range": (300, 400),
-                "signature_phrases": ["systematic approach", "methodical analysis"],
+                "word_range": (200, 800),  # Flexible range for caption variation
+                "structural_patterns": ["article_omission", "topic_comment", "measurement_first"],
                 "technical_focus": "semiconductor processing",
-                "linguistic_markers": ["precise", "systematic", "methodical"],
             },
             2: {  # Italy - Alessandro Moretti
-                "word_range": (400, 500),
-                "signature_phrases": [
-                    "engineering excellence",
-                    "heritage preservation",
-                ],
-                "technical_focus": "aerospace applications",
-                "linguistic_markers": ["passionate", "innovative", "expressive"],
+                "word_range": (200, 800),
+                "structural_patterns": ["word_inversion", "emphatic_pronouns", "nested_clauses"],
+                "technical_focus": "heritage preservation",
             },
             3: {  # Indonesia - Ikmanda Roswati
-                "word_range": (200, 280),
-                "signature_phrases": ["renewable energy", "marine applications"],
+                "word_range": (200, 800),
+                "structural_patterns": ["repetition_emphasis", "simplified_subordination", "demonstrative_pronouns"],
                 "technical_focus": "sustainable technologies",
-                "linguistic_markers": ["analytical", "balanced", "accessible"],
             },
             4: {  # USA - Todd Dunning
-                "word_range": (280, 350),
-                "signature_phrases": ["Silicon Valley", "biomedical devices"],
+                "word_range": (200, 800),
+                "structural_patterns": ["phrasal_verbs", "active_voice", "direct_statements"],
                 "technical_focus": "emerging technologies",
-                "linguistic_markers": ["conversational", "optimistic", "innovative"],
             },
         }
 
     def detect_persona_drift(self, content: str, author_id: int) -> DriftReport:
-        """Detect if content deviates from persona baseline"""
+        """
+        Detect if content deviates from voice baseline
+        Validates compliance with VOICE_RULES.md (no emotives, structural patterns only)
+        """
         baseline = self.persona_baselines.get(author_id)
         if not baseline:
             return DriftReport(False, [f"Unknown author ID: {author_id}"])
 
         issues = []
 
-        # Check word count
+        # Check word count (flexible range for random variation)
         word_count = len(content.split())
         if not (baseline["word_range"][0] <= word_count <= baseline["word_range"][1]):
             issues.append(
                 f"Word count {word_count} outside range {baseline['word_range']}"
             )
 
-        # Check signature phrases
-        signature_found = any(
-            phrase.lower() in content.lower()
-            for phrase in baseline["signature_phrases"]
-        )
-        if not signature_found:
-            issues.append("Missing signature phrases")
-
-        # Check linguistic markers
-        markers_found = sum(
-            1
-            for marker in baseline["linguistic_markers"]
-            if marker.lower() in content.lower()
-        )
-        if markers_found < len(baseline["linguistic_markers"]) * 0.5:
-            issues.append("Insufficient linguistic markers")
+        # REMOVED: Signature phrase checks (violate VOICE_RULES.md Rule 1)
+        # REMOVED: Linguistic marker checks (emotives not allowed)
+        
+        # Check for PROHIBITED emotives (VOICE_RULES.md Rule 1)
+        prohibited_emotives = [
+            "remarkable", "beautiful", "truly", "quite", "innovative", 
+            "cutting-edge", "breakthrough", "game-changer", "sustainable",
+            "elegant", "extraordinary", "magnificent"
+        ]
+        emotives_found = [
+            emotive for emotive in prohibited_emotives 
+            if emotive.lower() in content.lower()
+        ]
+        if emotives_found:
+            issues.append(f"Prohibited emotives found: {', '.join(emotives_found)}")
+        
+        # Check for technical accuracy (measurements should have units)
+        content_lower = content.lower()
+        has_measurements = any(unit in content_lower for unit in ["µm", "nm", "mm", "cm", "mpa", "gpa", "°c"])
+        if not has_measurements and word_count > 100:
+            issues.append("Missing technical measurements with units")
 
         return DriftReport(len(issues) == 0, issues)
 

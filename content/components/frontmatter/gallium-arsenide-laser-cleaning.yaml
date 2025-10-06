@@ -8,7 +8,7 @@ materialProperties:
     value: 5.32
     unit: g/cm³
     confidence: 98
-    description: Crystalline density at room temperature
+    description: Density of single crystal GaAs at room temperature
     min: 2.33
     max: 7.13
   meltingPoint:
@@ -22,9 +22,16 @@ materialProperties:
     value: 55
     unit: W/m·K
     confidence: 92
-    description: Thermal conductivity at 300K for pure GaAs
+    description: Thermal conductivity at 300K for undoped GaAs
     min: 0.2
     max: 156
+  tensileStrength:
+    value: 55.0
+    unit: MPa
+    confidence: 92
+    description: tensileStrength from Materials.yaml
+    min: 50
+    max: 7000
   hardness:
     value: 7.5
     unit: GPa
@@ -35,10 +42,52 @@ materialProperties:
   youngsModulus:
     value: 85.3
     unit: GPa
-    confidence: 90
-    description: Young's modulus along <100> crystal direction
+    confidence: 92
+    description: Young's modulus along <100> direction at 300K
     min: 5
     max: 190
+  laserAbsorption:
+    value: 67.5
+    unit: '%'
+    confidence: 95
+    description: laserAbsorption from Materials.yaml
+    min: 0.01
+    max: 100
+  laserReflectivity:
+    value: 37.2
+    unit: '%'
+    confidence: 95
+    description: laserReflectivity from Materials.yaml
+    min: 10
+    max: 70
+  specificHeat:
+    value: 0.327
+    unit: J/g·K
+    confidence: 90
+    description: Specific heat capacity at constant pressure, 300K
+    min: 300
+    max: 900
+  thermalDestructionPoint:
+    value: 1238.0
+    unit: K
+    confidence: 95
+    description: thermalDestructionPoint from Materials.yaml
+    min: 100
+    max: 1414
+  thermalDestructionType:
+    value: 1511.0
+    unit: K
+    confidence: 95
+    description: thermalDestructionType from Materials.yaml
+    min: null
+    max: null
+  thermalDiffusivity:
+    value: 0.26
+    unit: cm²/s
+    confidence: 88
+    description: Thermal diffusivity at room temperature
+    min: 0.1
+    max: 90
   thermalExpansion:
     value: 5.73
     unit: ×10⁻⁶/K
@@ -46,63 +95,49 @@ materialProperties:
     description: Linear thermal expansion coefficient at 300K
     min: 2.6
     max: 10
-  thermalDiffusivity:
-    value: 0.31
-    unit: cm²/s
-    confidence: 88
-    description: Thermal diffusivity at room temperature
-    min: 0.1
-    max: 90
-  specificHeat:
-    value: 0.327
-    unit: J/g·K
-    confidence: 92
-    description: Specific heat capacity at constant pressure, 300K
-    min: 300
-    max: 900
   absorptionCoefficient:
     value: 1.0
     unit: ×10⁴ cm⁻¹
-    confidence: 92
+    confidence: 88
     description: Absorption coefficient at 532nm wavelength
     min: null
     max: null
   reflectivity:
     value: 0.35
     unit: dimensionless
-    confidence: 88
-    description: Surface reflectivity at 1064nm wavelength
+    confidence: 90
+    description: Reflectivity at 1064nm wavelength
     min: null
     max: null
   refractiveIndex:
     value: 3.45
     unit: dimensionless
-    confidence: 95
+    confidence: 92
     description: Refractive index at 1064nm wavelength
     min: null
     max: null
   ablationThreshold:
-    value: 0.8
+    value: 0.5
     unit: J/cm²
     confidence: 85
-    description: Laser ablation threshold for nanosecond pulses at 1064nm
+    description: Approximate ablation threshold for nanosecond pulses at 1064nm
     min: null
     max: null
   laserDamageThreshold:
     value: 1.2
     unit: J/cm²
     confidence: 82
-    description: Single-shot laser-induced damage threshold at 1064nm
+    description: Single pulse laser-induced damage threshold at 1064nm
     min: null
     max: null
   crystallineStructure:
-    value: Zinc Blende
-    unit: crystal system
+    value: Zinc blende
+    unit: crystal structure
     confidence: 98
-    description: Face-centered cubic structure with space group F-43m
+    description: Face-centered cubic structure with Ga and As sublattices
     min: null
     max: null
-  bandGap:
+  bandgap:
     value: 1.424
     unit: eV
     confidence: 98
@@ -113,20 +148,20 @@ materialProperties:
     value: 0.43
     unit: MPa·m¹/²
     confidence: 85
-    description: Fracture toughness for brittle fracture behavior
+    description: Fracture toughness for brittle fracture
     min: null
     max: null
 applications:
 - Semiconductor Manufacturing
 - Aerospace & Defense
-- Medical Electronics
+- Medical Devices
 - Telecommunications
 - Research & Development
 - Automotive Electronics
 - Renewable Energy
-- Cultural Heritage Instrumentation
-- Military Electronics
+- Cultural Heritage Preservation
 - Industrial Manufacturing
+- Military Electronics
 machineSettings:
   powerRange:
     value: 8
@@ -140,37 +175,41 @@ machineSettings:
     value: 532
     unit: nm
     confidence: 92
-    description: Green wavelength optimized for GaAs absorption characteristics
+    description: Green wavelength optimized for GaAs absorption characteristics and
+      oxide removal
     min: 355
     max: 1064
   spotSize:
     value: 50
     unit: μm
     confidence: 87
-    description: Optimal spot diameter for precision cleaning of GaAs surfaces
+    description: Beam spot diameter for precise cleaning with adequate energy density
     min: 30
     max: 100
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 85
-    description: Optimal repetition rate for efficient cleaning with thermal management
+    description: Optimal repetition rate balancing cleaning efficiency and thermal
+      management
     min: 20
     max: 100
   pulseWidth:
     value: 8
     unit: ns
     confidence: 88
-    description: Nanosecond pulse duration for controlled ablation of contaminants
+    description: Nanosecond pulse duration for effective contaminant removal with
+      minimal thermal diffusion
     min: 5
     max: 15
-  fluenceThreshold:
-    value: 0.8
+  fluence:
+    value: 1.2
     unit: J/cm²
     confidence: 91
-    description: Fluence threshold for GaAs surface cleaning without substrate damage
-    min: 0.5
-    max: 1.2
+    description: Energy density threshold for effective contaminant removal below
+      GaAs damage threshold
+    min: 0.8
+    max: 2.0
   scanSpeed:
     value: 200
     unit: mm/s
@@ -182,7 +221,8 @@ machineSettings:
     value: 50
     unit: '%'
     confidence: 86
-    description: Beam overlap percentage for complete surface coverage
+    description: Beam overlap percentage ensuring complete surface coverage without
+      excessive processing
     min: 40
     max: 70
   passCount:
@@ -196,7 +236,8 @@ machineSettings:
     value: Nd:YAG
     unit: laser_type
     confidence: 90
-    description: Recommended laser type for GaAs cleaning applications
+    description: Recommended laser type for GaAs processing with harmonic generation
+      capability
     min: null
     max: null
 regulatoryStandards:
@@ -282,15 +323,17 @@ outcomeMetrics:
   units: []
 caption:
   beforeText: At 500x magnification, the GaAs surface is obscured by a non-uniform
-    contamination layer, approximately 0.5-2 µm thick. Particulate matter and hydrocarbon
-    films create a textured, irregular topography. This layer disrupts the underlying
-    crystalline structure, scattering light and masking the substrate's intrinsic
-    semiconductor properties, which degrades electronic performance.
-  afterText: Following laser cleaning, the surface reveals the pristine, atomic-level
-    structure of the Zinc Blende crystal lattice. The contamination layer is completely
-    removed, exposing a smooth, defect-free plane with sub-micrometer uniformity.
-    This restoration of the intrinsic surface ensures optimal electrical characteristics
-    and minimal optical scattering for high-performance applications.
+    contamination layer. Particulate matter, approximately 2-5 µm in diameter, is
+    scattered across the surface and embedded in a thin, amorphous carbonaceous film.
+    This film, with an estimated thickness of 100-500 nm, creates a textured, matte
+    appearance that significantly scatters light. The underlying crystalline structure
+    and polished finish of the GaAs are entirely masked by this adherent layer of
+    organic and inorganic residues, which follows a streaked pattern indicative of
+    prior handling or processing.
+  afterText: Laser cleaning restores the intrinsic GaAs surface. The contamination
+    layer is completely removed, revealing the original, smooth substrate with its
+    characteristic crystalline grain. The surface is now continuous and reflective,
+    with no residual particulates or film obscuring the material.
   description: Microscopic analysis of gallium arsenide surface before and after laser
     cleaning treatment
   alt: Microscopic view of gallium arsenide surface showing laser cleaning effects

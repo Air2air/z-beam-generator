@@ -1053,6 +1053,20 @@ categories:
         description: Compressive strength range for ceramic materials
         confidence: 85
         source: materials_analysis
+      flexural_strength:
+        min: 30
+        max: 1200
+        unit: MPa
+        description: Flexural (bending) strength range for ceramic materials
+        confidence: 85
+        source: materials_analysis
+      fracture_toughness:
+        min: 0.5
+        max: 10.0
+        unit: MPa·m^0.5
+        description: Fracture toughness range for ceramic materials
+        confidence: 75
+        source: materials_analysis
     industryTags:
       primary_industries:
       - Aerospace
@@ -1303,11 +1317,11 @@ categories:
         typical: 17.5
     mechanicalProperties:
       compressive_strength:
-        min: 200
-        max: 4000
+        min: 10
+        max: 100
         unit: MPa
         description: Compressive strength range for masonry materials
-        confidence: 85
+        confidence: 90
         source: materials_analysis
     industryTags:
       primary_industries:
@@ -1373,7 +1387,74 @@ categories:
         max: 411
         min: 5
         unit: GPa
-    subcategories: {}
+    subcategories:
+      ferrous:
+        name: "Ferrous Metals"
+        description: "Iron-based metals including steel, stainless steel, and cast iron"
+        materials: [Steel, Iron, Stainless Steel, Manganese]
+        category_ranges:
+          density: {min: 7.2, max: 8.0, unit: "g/cm³"}
+          thermalConductivity: {min: 15.0, max: 80.0, unit: "W/m·K"}
+          thermalDestructionPoint: {min: 1370, max: 1538, unit: "°C"}
+          hardness: {min: 120, max: 700, unit: "HV"}
+        special_considerations:
+          - "Magnetic properties require special handling"
+          - "Rust formation accelerated by moisture"
+          - "Heat-affected zones need monitoring"
+      non_ferrous:
+        name: "Non-Ferrous Metals"
+        description: "Common non-iron metals including aluminum, copper, brass, bronze, zinc"
+        materials: [Aluminum, Copper, Brass, Bronze, Zinc, Tin, Lead]
+        category_ranges:
+          density: {min: 2.7, max: 11.34, unit: "g/cm³"}
+          thermalConductivity: {min: 60.0, max: 429.0, unit: "W/m·K"}
+          thermalDestructionPoint: {min: 232, max: 1085, unit: "°C"}
+          laserReflectivity: {min: 60, max: 98, unit: "%"}
+        special_considerations:
+          - "High reflectivity requires power adjustment"
+          - "Excellent thermal conductivity enables rapid heat dissipation"
+          - "Oxidation layers affect cleaning parameters"
+      precious:
+        name: "Precious Metals"
+        description: "Noble metals including gold, silver, platinum, palladium"
+        materials: [Gold, Silver, Platinum, Palladium, Rhodium, Iridium, Ruthenium, Rhenium]
+        category_ranges:
+          density: {min: 10.5, max: 22.6, unit: "g/cm³"}
+          thermalConductivity: {min: 70.0, max: 429.0, unit: "W/m·K"}
+          thermalDestructionPoint: {min: 962, max: 3422, unit: "°C"}
+          laserReflectivity: {min: 80, max: 98, unit: "%"}
+        special_considerations:
+          - "Extremely high reflectivity requires specialized optics"
+          - "High value materials demand zero-damage cleaning"
+          - "Biocompatibility critical for medical applications"
+      refractory:
+        name: "Refractory Metals"
+        description: "High-temperature resistant metals including tungsten, molybdenum, tantalum"
+        materials: [Tungsten, Molybdenum, Tantalum, Hafnium, Niobium, Zirconium, Vanadium]
+        category_ranges:
+          density: {min: 6.0, max: 19.3, unit: "g/cm³"}
+          thermalConductivity: {min: 22.0, max: 174.0, unit: "W/m·K"}
+          thermalDestructionPoint: {min: 1855, max: 3422, unit: "°C"}
+          hardness: {min: 150, max: 3500, unit: "HV"}
+        special_considerations:
+          - "Extremely high melting points allow aggressive cleaning"
+          - "Oxidation at elevated temperatures"
+          - "High hardness requires careful parameter selection"
+      specialty:
+        name: "Specialty Alloys & Reactive Metals"
+        description: "Advanced alloys and reactive metals including Inconel, Hastelloy, beryllium, titanium"
+        materials: [Inconel, Hastelloy, Beryllium, Titanium, Cobalt, Nickel, Chromium, Magnesium, Gallium, Indium]
+        category_ranges:
+          density: {min: 0.53, max: 8.9, unit: "g/cm³"}
+          thermalConductivity: {min: 6.0, max: 100.0, unit: "W/m·K"}
+          thermalDestructionPoint: {min: 30, max: 1907, unit: "°C"}
+          hardness: {min: 0.5, max: 1200, unit: "HV"}
+        special_considerations:
+          - "Beryllium - EXTREME TOXICITY, requires sealed processing"
+          - "Magnesium - FLAMMABLE, inert atmosphere required"
+          - "Titanium - High strength-to-weight, biocompatible"
+          - "Inconel/Hastelloy - Superior corrosion resistance"
+          - "Special safety protocols for each material"
     common_applications:
     - rust removal
     - oxide cleaning
@@ -1386,6 +1467,17 @@ categories:
         unit: nΩ·m
         confidence: 95
         typical: 55.36666666666667
+    chemicalProperties:
+      corrosion_resistance:
+        description: Qualitative corrosion resistance ratings for metal materials
+        common_ratings:
+          - Excellent
+          - Good
+          - Fair
+          - Poor
+        confidence: 80
+        source: materials_analysis
+        note: Numeric scale 0-10 where applicable in Materials.yaml
     processingParameters:
       melting_point:
         min: 900.0
@@ -1660,7 +1752,64 @@ categories:
         max: 100
         min: 10
         unit: GPa
-    subcategories: {}
+    subcategories:
+      igneous:
+        name: "Igneous Stone"
+        description: "Volcanic and plutonic rocks formed from molten magma"
+        materials: [Granite, Basalt, Porphyry]
+        category_ranges:
+          density: {min: 2.4, max: 3.0, unit: "g/cm³"}
+          hardness: {min: 5, max: 7, unit: "Mohs"}
+          thermalConductivity: {min: 1.7, max: 3.5, unit: "W/m·K"}
+          compressiveStrength: {min: 1000, max: 3500, unit: "MPa"}
+        special_considerations:
+          - "Crystalline structure varies by cooling rate"
+          - "High hardness requires careful parameter selection"
+          - "Excellent durability for exterior applications"
+          - "Mineral composition affects laser absorption"
+      sedimentary:
+        name: "Sedimentary Stone"
+        description: "Layered rocks formed from compressed sediments"
+        materials: [Limestone, Sandstone, Travertine, Shale]
+        category_ranges:
+          density: {min: 1.5, max: 2.7, unit: "g/cm³"}
+          hardness: {min: 1, max: 4, unit: "Mohs"}
+          porosity: {min: 5.0, max: 35.0, unit: "%"}
+          thermalConductivity: {min: 0.2, max: 2.5, unit: "W/m·K"}
+        special_considerations:
+          - "High porosity absorbs moisture and contaminants"
+          - "Layered structure prone to delamination"
+          - "Softer than igneous - gentler cleaning required"
+          - "Calcite-based stones react to acids"
+      metamorphic:
+        name: "Metamorphic Stone"
+        description: "Transformed rocks created under heat and pressure"
+        materials: [Marble, Slate, Quartzite, Schist, Serpentine]
+        category_ranges:
+          density: {min: 2.3, max: 3.1, unit: "g/cm³"}
+          hardness: {min: 3, max: 7, unit: "Mohs"}
+          thermalConductivity: {min: 1.5, max: 5.0, unit: "W/m·K"}
+          compressiveStrength: {min: 500, max: 2500, unit: "MPa"}
+        special_considerations:
+          - "Recrystallization creates unique textures"
+          - "Marble susceptible to acid etching"
+          - "Foliated stones (slate, schist) have directional properties"
+          - "Variable hardness within same piece"
+      mineral:
+        name: "Mineral & Soft Stone"
+        description: "Soft, carvable stones and mineral deposits"
+        materials: [Alabaster, Calcite, Onyx, Soapstone, Bluestone, Breccia]
+        category_ranges:
+          density: {min: 1.8, max: 3.2, unit: "g/cm³"}
+          hardness: {min: 1, max: 4, unit: "Mohs"}
+          thermalConductivity: {min: 0.5, max: 3.0, unit: "W/m·K"}
+          porosity: {min: 0.1, max: 15.0, unit: "%"}
+        special_considerations:
+          - "Very soft - extremely gentle cleaning required"
+          - "Often translucent or decorative"
+          - "Soapstone (talc) softest at Mohs 1"
+          - "Alabaster (gypsum) water-soluble - dry cleaning only"
+          - "High value decorative applications"
     common_applications:
     - restoration
     - contamination removal
@@ -1686,11 +1835,11 @@ categories:
         typical: 9.502777777777778
     mechanicalProperties:
       compressive_strength:
-        min: 200
-        max: 4000
+        min: 20
+        max: 250
         unit: MPa
         description: Compressive strength range for stone materials
-        confidence: 85
+        confidence: 90
         source: materials_analysis
     industryTags:
       primary_industries:
@@ -1780,7 +1929,67 @@ categories:
         max: 25
         min: 5
         unit: GPa
-    subcategories: {}
+    subcategories:
+      hardwood:
+        name: "Hardwood"
+        description: "Deciduous trees with dense, slow-growing wood"
+        materials: [Oak, Maple, Walnut, Cherry, Mahogany, Teak, Beech, Birch, Hickory, Ash, Poplar]
+        category_ranges:
+          density: {min: 0.5, max: 1.25, unit: "g/cm³"}
+          hardness: {min: 900, max: 5000, unit: "lbf"}
+          moistureContent: {min: 6.0, max: 12.0, unit: "%"}
+          thermalDestructionPoint: {min: 300, max: 450, unit: "°C"}
+        special_considerations:
+          - "Dense grain structure requires precise cleaning"
+          - "Higher value than softwoods - minimize surface damage"
+          - "Varying hardness affects parameter selection"
+          - "Hickory/Maple hardest, Poplar softest"
+          - "Moisture content critical for stability"
+      softwood:
+        name: "Softwood"
+        description: "Coniferous trees with faster-growing, lighter wood"
+        materials: [Pine, Cedar, Fir, Redwood, Willow]
+        category_ranges:
+          density: {min: 0.3, max: 0.6, unit: "g/cm³"}
+          hardness: {min: 20, max: 900, unit: "lbf"}
+          moistureContent: {min: 8.0, max: 15.0, unit: "%"}
+          thermalDestructionPoint: {min: 250, max: 380, unit: "°C"}
+        special_considerations:
+          - "Softer structure - gentler cleaning required"
+          - "Resin content in pine requires special attention"
+          - "Cedar naturally rot-resistant"
+          - "Redwood excellent outdoor durability"
+          - "Lower density enables faster processing"
+      engineered:
+        name: "Engineered Wood Products"
+        description: "Manufactured wood composites and laminates"
+        materials: [Plywood, MDF]
+        category_ranges:
+          density: {min: 0.5, max: 0.85, unit: "g/cm³"}
+          hardness: {min: 500, max: 1500, unit: "lbf"}
+          moistureContent: {min: 6.0, max: 10.0, unit: "%"}
+          thermalDestructionPoint: {min: 200, max: 350, unit: "°C"}
+        special_considerations:
+          - "Adhesives require careful temperature control"
+          - "Layered structure (plywood) needs even heating"
+          - "MDF highly porous - moisture sensitive"
+          - "Edge sealing critical for MDF"
+          - "Variable quality affects cleaning parameters"
+      exotic:
+        name: "Exotic & Specialty Woods"
+        description: "Rare, high-value woods with unique properties"
+        materials: [Bamboo, Rosewood]
+        category_ranges:
+          density: {min: 0.6, max: 1.2, unit: "g/cm³"}
+          hardness: {min: 1000, max: 4500, unit: "lbf"}
+          moistureContent: {min: 6.0, max: 12.0, unit: "%"}
+          thermalDestructionPoint: {min: 300, max: 450, unit: "°C"}
+        special_considerations:
+          - "Bamboo technically grass - very hard, fast-growing"
+          - "Rosewood endangered - CITES regulations apply"
+          - "Extremely high value - zero-damage requirement"
+          - "Unique grain patterns must be preserved"
+          - "Often used in musical instruments and fine furniture"
     common_applications:
     - laser cleaning
     - surface preparation

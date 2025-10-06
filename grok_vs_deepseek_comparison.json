@@ -1,0 +1,105 @@
+{
+  "test_date": "2025-10-04 17:58:00",
+  "test_materials": [
+    "Aluminum",
+    "Stainless Steel",
+    "Copper",
+    "Birch"
+  ],
+  "results": [
+    {
+      "provider": "deepseek",
+      "material": "Aluminum",
+      "success": true,
+      "elapsed_time": 19.49,
+      "content_length": 3181,
+      "has_before_marker": false,
+      "has_after_marker": false,
+      "error": ""
+    },
+    {
+      "provider": "grok",
+      "material": "Aluminum",
+      "success": true,
+      "elapsed_time": 22.85,
+      "content_length": 4500,
+      "has_before_marker": false,
+      "has_after_marker": false,
+      "error": ""
+    },
+    {
+      "provider": "deepseek",
+      "material": "Stainless Steel",
+      "success": true,
+      "elapsed_time": 23.58,
+      "content_length": 3704,
+      "has_before_marker": false,
+      "has_after_marker": false,
+      "error": ""
+    },
+    {
+      "provider": "grok",
+      "material": "Stainless Steel",
+      "success": true,
+      "elapsed_time": 27.72,
+      "content_length": 5649,
+      "has_before_marker": false,
+      "has_after_marker": false,
+      "error": ""
+    },
+    {
+      "provider": "deepseek",
+      "material": "Copper",
+      "success": true,
+      "elapsed_time": 29.68,
+      "content_length": 4562,
+      "has_before_marker": false,
+      "has_after_marker": false,
+      "error": ""
+    },
+    {
+      "provider": "grok",
+      "material": "Copper",
+      "success": true,
+      "elapsed_time": 21.38,
+      "content_length": 5157,
+      "has_before_marker": false,
+      "has_after_marker": false,
+      "error": ""
+    },
+    {
+      "provider": "deepseek",
+      "material": "Birch",
+      "success": true,
+      "elapsed_time": 19.44,
+      "content_length": 3267,
+      "has_before_marker": false,
+      "has_after_marker": false,
+      "error": ""
+    },
+    {
+      "provider": "grok",
+      "material": "Birch",
+      "success": true,
+      "elapsed_time": 27.06,
+      "content_length": 4183,
+      "has_before_marker": false,
+      "has_after_marker": false,
+      "error": ""
+    }
+  ],
+  "summary": {
+    "deepseek": {
+      "success_rate": "4/4",
+      "avg_time": 23.0475,
+      "avg_length": 3678.5,
+      "marker_compliance": "0/4"
+    },
+    "grok": {
+      "success_rate": "4/4",
+      "avg_time": 24.752499999999998,
+      "avg_length": 4872.25,
+      "marker_compliance": "0/4"
+    }
+  }
+}

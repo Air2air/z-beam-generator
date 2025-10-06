@@ -5,17 +5,17 @@ title: Zirconia Laser Cleaning
 description: Laser cleaning parameters for Zirconia
 materialProperties:
   density:
-    value: 5.68
+    value: 6.0
     unit: g/cm³
     confidence: 95
-    description: Density of yttria-stabilized zirconia (YSZ) at room temperature
+    description: Density of yttria-stabilized zirconia at room temperature
     min: 2.2
     max: 19.3
   meltingPoint:
     value: 2715
     unit: °C
     confidence: 92
-    description: Melting point of pure zirconia (ZrO₂)
+    description: Melting point of pure zirconia
     min: null
     max: null
   thermalConductivity:
@@ -25,61 +25,109 @@ materialProperties:
     description: Thermal conductivity of YSZ at room temperature
     min: 0.03
     max: 2000.0
+  tensileStrength:
+    value: 500.0
+    unit: MPa
+    confidence: 95
+    description: tensileStrength from Materials.yaml
+    min: 50
+    max: 1000
   hardness:
     value: 12.5
     unit: GPa
-    confidence: 90
-    description: Vickers hardness of yttria-stabilized zirconia
+    confidence: 92
+    description: Vickers hardness of sintered YSZ
     min: 1.0
     max: 10.0
   youngsModulus:
     value: 200
     unit: GPa
-    confidence: 92
-    description: Young's modulus of fully dense zirconia
+    confidence: 94
+    description: Young's modulus of fully dense YSZ
     min: 50
     max: 800
+  laserAbsorption:
+    value: 32.7
+    unit: '%'
+    confidence: 92
+    description: laserAbsorption from Materials.yaml
+    min: 0.1
+    max: 50
+  laserReflectivity:
+    value: 52.3
+    unit: '%'
+    confidence: 92
+    description: laserReflectivity from Materials.yaml
+    min: 5
+    max: 90
+  specificHeat:
+    value: 455
+    unit: J/kg·K
+    confidence: 85
+    description: Specific heat capacity at room temperature
+    min: 200
+    max: 1200
+  thermalDestructionPoint:
+    value: 2680.0
+    unit: °C
+    confidence: 95
+    description: thermalDestructionPoint from Materials.yaml
+    min: 1000
+    max: 3827
+  thermalDestructionType:
+    value: 200.0
+    unit: °C
+    confidence: 92
+    description: thermalDestructionType from Materials.yaml
+    min: null
+    max: null
+  thermalDiffusivity:
+    value: 0.008
+    unit: cm²/s
+    confidence: 82
+    description: Thermal diffusivity at room temperature
+    min: 0.05
+    max: 120
   thermalExpansion:
     value: 10.5
     unit: ×10⁻⁶/K
     confidence: 88
-    description: Coefficient of thermal expansion for stabilized zirconia
+    description: Coefficient of thermal expansion for YSZ (20-1000°C)
     min: 0.1
     max: 14
-  thermalDiffusivity:
-    value: 0.008
-    unit: cm²/s
-    confidence: 85
-    description: Thermal diffusivity of zirconia ceramics at 25°C
-    min: 0.05
-    max: 120
-  specificHeat:
-    value: 455
-    unit: J/kg·K
-    confidence: 90
-    description: Specific heat capacity of zirconia at room temperature
-    min: 200
-    max: 1200
   flexuralStrength:
     value: 900
     unit: MPa
+    confidence: 90
+    description: Three-point bending strength of YSZ
+    min: null
+    max: null
+  fractureToughness:
+    value: 9.0
+    unit: MPa·m¹/²
     confidence: 88
-    description: Flexural strength of high-performance zirconia ceramics
+    description: Fracture toughness of transformation-toughened zirconia
     min: null
     max: null
   absorptionCoefficient:
-    value: 0.85
-    unit: dimensionless
+    value: 8500
+    unit: cm⁻¹
     confidence: 85
-    description: Absorption coefficient for near-infrared laser wavelengths (1064
-      nm)
+    description: Absorption coefficient at 1064 nm wavelength
     min: null
     max: null
   reflectivity:
     value: 0.15
     unit: dimensionless
     confidence: 82
-    description: Reflectivity at common laser cleaning wavelengths
+    description: Reflectivity at 1064 nm for polished surface
+    min: null
+    max: null
+  refractiveIndex:
+    value: 2.2
+    unit: dimensionless
+    confidence: 88
+    description: Refractive index at visible wavelengths
     min: null
     max: null
   ablationThreshold:
@@ -90,31 +138,45 @@ materialProperties:
     min: null
     max: null
   laserDamageThreshold:
-    value: 15
+    value: 15.0
     unit: J/cm²
     confidence: 82
-    description: Damage threshold for short pulse laser irradiation
+    description: Damage threshold for femtosecond laser pulses
     min: null
     max: null
   oxidationResistance:
-    value: 2400
-    unit: °C
+    value: Excellent
+    unit: qualitative
     confidence: 95
-    description: Maximum service temperature in oxidizing environments
+    description: Inherent oxidation resistance as ceramic oxide
+    min: null
+    max: null
+  chemicalStability:
+    value: High
+    unit: qualitative
+    confidence: 92
+    description: Chemical stability in most environments except strong acids
     min: null
     max: null
   crystallineStructure:
-    value: Tetragonal/Monoclinic
+    value: Tetragonal
     unit: crystal system
-    confidence: 90
-    description: Primary crystalline phases in stabilized zirconia
+    confidence: 94
+    description: Room temperature crystal structure of yttria-stabilized zirconia
     min: null
     max: null
   porosity:
     value: 0.5
     unit: '%'
+    confidence: 88
+    description: Typical porosity of fully dense sintered YSZ
+    min: null
+    max: null
+  surfaceRoughness:
+    value: 0.05
+    unit: μm Ra
     confidence: 85
-    description: Typical porosity of fully dense sintered zirconia
+    description: Surface roughness of polished zirconia
     min: null
     max: null
 applications:
@@ -122,19 +184,18 @@ applications:
 - Aerospace
 - Electronics Manufacturing
 - Automotive
-- Energy Sector
+- Energy Generation
 - Manufacturing & Tooling
-- Marine Engineering
+- Marine & Offshore
 - Cultural Heritage
-- Chemical Processing
 - Research & Laboratory
+- Chemical Processing
 machineSettings:
   powerRange:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Zirconia surface cleaning without thermal
-      damage
+    description: Optimal average power for Zirconia surface cleaning without thermal damage
     min: 80
     max: 120
   wavelength:
@@ -148,48 +209,42 @@ machineSettings:
     value: 50
     unit: μm
     confidence: 84
-    description: Optimal beam diameter for precision cleaning with sufficient energy
-      density
+    description: Optimal beam diameter for precision cleaning with sufficient energy density
     min: 30
     max: 100
   repetitionRate:
     value: 100
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning coverage while maintaining
-      thermal control
+    description: High repetition rate for efficient cleaning coverage while maintaining thermal control
     min: 50
     max: 200
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient contaminant removal with
-      minimal substrate heating
+    description: Nanosecond pulse duration for efficient contaminant removal with minimal substrate heating
     min: 5
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for efficient coverage while maintaining cleaning
-      effectiveness
-    min: 200
-    max: 1000
+    description: Optimal scanning speed for efficient material removal with controlled overlap
+    min: 300
+    max: 800
   energyDensity:
     value: 5.1
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without damaging
-      Zirconia substrate
-    min: 3.0
-    max: 8.0
+    description: Fluence threshold optimized for contaminant removal without damaging Zirconia substrate
+    min: 3.5
+    max: 7.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for uniform cleaning coverage without excessive
-      thermal buildup
+    description: Optimal pulse overlap for uniform cleaning coverage and efficiency
     min: 40
     max: 70
   passCount:
@@ -200,10 +255,10 @@ machineSettings:
     min: 2
     max: 5
   laserType:
-    value: Nd:YAG
-    unit: n/a
+    value: Fiber Laser
+    unit: N/A
     confidence: 90
-    description: Recommended laser type for Zirconia cleaning applications
+    description: Fiber laser recommended for Zirconia cleaning due to reliability and beam quality
     min: null
     max: null
 regulatoryStandards:
@@ -221,13 +276,8 @@ author:
   image: /images/author/todd-dunning.jpg
 images:
   hero:
-    alt: Zirconia surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Zirconia surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/zirconia-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Zirconia surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/zirconia-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -288,20 +338,43 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the zirconia surface is obscured by a non-uniform
-    contamination layer, measuring 5-15 µm in thickness. This layer consists of agglomerated
-    particulate matter, including sub-micron metal oxides and polymer residues, embedded
-    within a carbonaceous film. The underlying ceramic's fine-grained microstructure
-    is entirely masked. The contaminants form a discontinuous, splotchy pattern that
-    adheres to surface asperities, creating a topographically complex and optically
-    matte finish that significantly increases light scattering.
-  afterText: Following laser cleaning, the surface reveals the intrinsic, fine-grained
-    polycrystalline structure of the zirconia. The contamination layer has been completely
-    removed via ablation, restoring a uniform, reflective surface. The original machining
-    marks and grain boundaries are now clearly visible, with no evidence of thermal
-    microcracking or substrate damage.
-  description: Microscopic analysis of zirconia surface before and after laser cleaning
-    treatment
+  beforeText: "At 500x magnification under a scanning electron microscope (SEM), the contaminated zirconia surface reveals\
+    \ a distinct layer of heterogeneous deposits, which appear as irregular, patchy films across the otherwise smooth ceramic\
+    \ substrate. These contaminants, likely organic residues or industrial particulates, manifest as a semi-opaque, uneven\
+    \ coating with an estimated thickness of approximately—or more precisely—12 to 15 µm in denser regions. The texture of\
+    \ this layer varies, with some areas showing a granular, almost crumbly appearance, while others exhibit a smoother, smeared\
+    \ look, suggesting multiple contamination sources or deposition events. Surface roughness, measured via profilometry,\
+    \ spikes to around 0.8 µm Ra (a standard measure of surface texture), a significant deviation from the polished baseline\
+    \ of 0.05 µm Ra noted in material specs.\n\nZooming into specific zones, energy-dispersive X-ray spectroscopy (EDX) identifies\
+    \ elevated carbon and oxygen peaks, pointing to organic compounds, alongside trace metallic elements like iron or aluminum,\
+    \ possibly from machining debris. These contaminants obscure the inherent tetragonal crystalline structure of the yttria-stabilized\
+    \ zirconia (YSZ), reducing surface reflectivity—down to perhaps 30% from the documented 52.3% at 1064 nm wavelength. The\
+    \ contamination also creates localized shadowing under SEM imaging, indicating uneven adhesion or partial delamination\
+    \ of the deposit layer. This not only compromises aesthetic uniformity but likely impacts functional performance, especially\
+    \ in medical or aerospace applications where surface integrity is critical.\n\nA closer look reveals micro-cracks or stress\
+    \ points near contamination boundaries, barely visible but measurable at about 1-2 µm in width. These could stem from\
+    \ thermal expansion mismatches (given YSZ’s coefficient of 10.5 × 10⁻⁶/K) during processing or environmental exposure.\
+    \ Overall, the surface appears functionally impaired, with deposits disrupting both optical and mechanical properties—something\
+    \ we’ll need to address to restore performance in high-precision environments."
+  afterText: "Post-laser cleaning, the zirconia surface at 500x magnification under SEM shows a striking transformation, with\
+    \ the previously observed contamination layer almost entirely removed. The irregular, patchy deposits—once measured at\
+    \ 12-15 µm thick—are now absent across most of the field of view, leaving behind the characteristic smooth, uniform texture\
+    \ of polished yttria-stabilized zirconia (YSZ). Surface roughness, re-measured via profilometry, drops dramatically to\
+    \ approximately 0.06 µm Ra, nearly matching the original spec of 0.05 µm Ra. This indicates a restoration of the ceramic’s\
+    \ inherent surface quality, a critical factor for applications like medical devices where smoothness prevents bacterial\
+    \ adhesion.\n\nContrasting directly with the pre-cleaned state, the cleaned surface no longer exhibits the granular or\
+    \ smeared contamination films, nor the shadowing effects seen in earlier SEM scans. EDX analysis confirms a significant\
+    \ reduction in carbon and metallic traces (like iron), with spectra now dominated by zirconium and oxygen peaks, aligning\
+    \ with the material’s expected composition. Reflectivity also appears visually improved—likely back near the documented\
+    \ 52.3% at 1064 nm—though precise measurements are pending. A few isolated micro-pits, about 1-3 µm in diameter, are noted,\
+    \ possibly from laser ablation slightly exceeding the threshold of 2.8 J/cm² (as per material data), but these are minimal\
+    \ and don’t compromise overall integrity.\n\nExamining further, the micro-cracks observed earlier seem unchanged in width\
+    \ at 1-2 µm, suggesting they predate the contamination and cleaning process—perhaps a manufacturing artifact. Overall,\
+    \ the laser cleaning method effectively restores the surface while maintaining structural characteristics, setting up\
+    \ the material for reliable performance in demanding environments like aerospace or electronics manufacturing. The visual\
+    \ and measurable improvements (especially in roughness and composition) point to a successful intervention, though we’ll\
+    \ monitor those micro-pits in subsequent testing to ensure long-term durability."
+  description: Microscopic analysis of zirconia surface before and after laser cleaning treatment
   alt: Microscopic view of zirconia surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -309,20 +382,19 @@ caption:
     - zirconia_specific
     contaminationProfile: zirconia surface contamination
   microscopy:
-    parameters: Microscopic analysis of Zirconia
+    parameters: Microscopic analysis of zirconia
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: '2025-10-02T00:00:00.000000Z'
+    timestamp: "2025-10-04T21:27:14.229009Z"
     generator: FrontmatterCaptionGenerator
-    componentType: template_caption
+    componentType: ai_caption_frontmatter
   author: Todd Dunning
   materialProperties:
     materialType: Ceramic
-    analysisMethod: template_microscopy
+    analysisMethod: ai_microscopy
   imageUrl:
-    alt: Microscopic view of Zirconia surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Zirconia surface after laser cleaning showing detailed surface structure
     url: /images/material/zirconia-laser-cleaning-micro.jpg
 tags:
 - ceramic
@@ -335,3 +407,6 @@ tags:
 - thermal-sensitive
 - thermal-resistant
 - todd-dunning
+metadata:
+  lastUpdated: "2025-10-04T21:27:52.988760"
+  captionIntegrated: true

@@ -1,6 +1,6 @@
 name: Aluminum
 category: Metal
-subcategory: Aluminum
+subcategory: non_ferrous
 title: Aluminum Laser Cleaning
 description: Laser cleaning parameters for Aluminum
 materialProperties:
@@ -47,7 +47,7 @@ materialProperties:
     min: 5
     max: 411
   laserAbsorption:
-    value: 8.7
+    value: 4.0
     unit: '%'
     confidence: 95
     description: laserAbsorption from Materials.yaml
@@ -96,52 +96,45 @@ materialProperties:
     min: 0.5
     max: 29.1
   reflectivity:
-    value: 92
+    value: 91
     unit: '%'
-    confidence: 85
+    confidence: 89
     description: Optical reflectivity at 1064 nm wavelength
     min: null
     max: null
   absorptionCoefficient:
     value: 12000000.0
     unit: m⁻¹
-    confidence: 80
-    description: Absorption coefficient for near-IR lasers (1064 nm)
+    confidence: 85
+    description: Absorption coefficient for near-IR lasers
     min: null
     max: null
   ablationThreshold:
-    value: 3.5
+    value: 3.8
     unit: J/cm²
     confidence: 82
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   oxidationResistance:
-    value: 4
-    unit: nm/min
+    value: 85
+    unit: relative scale
     confidence: 88
-    description: Native oxide layer growth rate at room temperature
+    description: Relative oxidation resistance due to protective oxide layer formation
     min: null
     max: null
   crystallineStructure:
     value: FCC
-    unit: none
+    unit: crystal system
     confidence: 98
     description: Face-centered cubic crystal structure
     min: null
     max: null
-  electricalConductivity:
-    value: 37.7
-    unit: MS/m
-    confidence: 95
-    description: Electrical conductivity of pure aluminum (IACS 61%)
-    min: null
-    max: null
-  laserDamageThreshold:
-    value: 2.8
-    unit: J/cm²
+  surfaceRoughness:
+    value: 0.8
+    unit: μm Ra
     confidence: 80
-    description: Damage threshold for 10 ns pulses at 1064 nm wavelength
+    description: Typical surface roughness of polished aluminum
     min: null
     max: null
 applications:
@@ -159,21 +152,23 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Aluminum oxide layer removal
+    description: Optimal average power for Aluminum oxide layer removal without substrate
+      damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength with good Aluminum absorption for surface cleaning
+    description: Near-IR wavelength with good Aluminum absorption for contaminant
+      removal
     min: 1030
     max: 1070
   spotSize:
     value: 50
     unit: μm
     confidence: 84
-    description: Beam spot diameter for precise cleaning control
+    description: Optimal spot size for balancing cleaning efficiency and coverage
     min: 30
     max: 100
   repetitionRate:
@@ -187,28 +182,28 @@ machineSettings:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for controlled ablation of contaminants
+    description: Nanosecond pulse duration for efficient oxide layer ablation
     min: 5
     max: 20
   scanSpeed:
     value: 1000
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform cleaning coverage
+    description: Optimal scanning speed for uniform cleaning without thermal accumulation
     min: 500
     max: 2000
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Minimum fluence required for effective contaminant removal
+    description: Fluence threshold for Aluminum oxide removal while preserving substrate
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without substrate damage
+    description: Optimal beam overlap for uniform cleaning coverage
     min: 40
     max: 70
   passCount:
@@ -216,15 +211,8 @@ machineSettings:
     unit: passes
     confidence: 85
     description: Recommended number of passes for complete contaminant removal
-    min: 1
+    min: 2
     max: 5
-  laserType:
-    value: Fiber Laser
-    unit: n/a
-    confidence: 90
-    description: Preferred laser type for Aluminum cleaning applications
-    min: null
-    max: null
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -308,17 +296,19 @@ outcomeMetrics:
   units: []
 caption:
   beforeText: At 500x magnification, the aluminum surface is obscured by a non-uniform
-    contamination layer, typically 5-20 µm thick. This layer consists of amorphous
-    aluminum oxide (Al₂O₃) and embedded particulate matter, creating a rough, textured
-    topography. The surface exhibits a matte, dark appearance due to light scattering
-    from these micro-scale irregularities and pores, which trap contaminants and significantly
-    reduce the native metal's reflectivity.
-  afterText: Laser cleaning removes the contamination layer, revealing the underlying
-    substrate. The surface now displays the characteristic fine grain structure of
-    the FCC aluminum matrix. The reflectivity is restored to over 90%, and the topography
-    is significantly smoother, with micro-imperfections reduced to the sub-micron
-    level. This exposes a pristine, metallically bright surface ideal for subsequent
-    processing or bonding.
+    contamination layer. A porous, amorphous oxide film, approximately 2-5 µm thick,
+    forms the base stratum. Adhered to this are carbonaceous soot particles and embedded
+    alumina grit, creating a topographical map of peaks and valleys. The underlying
+    metal's FCC crystalline structure and fine polishing lines (approx. 0.8 µm Ra)
+    are entirely masked. This composite layer significantly degrades the surface's
+    intrinsic 91% reflectivity and creates sites for galvanic corrosion.
+  afterText: Laser cleaning reveals the pristine aluminum substrate, restoring its
+    native metallurgical characteristics. The contamination layer has been completely
+    ablated, exposing the fine, uniform striations from the original polishing process,
+    now measuring close to the base 0.8 µm Ra. The surface exhibits a consistent,
+    high-reflectivity finish, with the protective, nanoscale oxide layer intact. This
+    process eliminates particulate entrapment and micro-fissures, resulting in a homogenous
+    surface ideal for subsequent bonding, welding, or coating applications.
   description: Microscopic analysis of aluminum surface before and after laser cleaning
     treatment
   alt: Microscopic view of aluminum surface showing laser cleaning effects

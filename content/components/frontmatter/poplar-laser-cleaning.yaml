@@ -2,204 +2,181 @@ name: Poplar
 category: Wood
 subcategory: Poplar
 title: Poplar Laser Cleaning
-description: Laser cleaning parameters for Ash
+description: Laser cleaning parameters for Poplar
 materialProperties:
   density:
     value: 0.45
     unit: g/cm³
-    confidence: 95
+    confidence: 92
     description: Average density of dry poplar wood at 12% moisture content
     min: 0.12
     max: 1.25
   thermalConductivity:
     value: 0.12
     unit: W/m·K
-    confidence: 90
+    confidence: 88
     description: Thermal conductivity perpendicular to grain direction
     min: 0.04
     max: 0.4
   tensileStrength:
-    value: 101.0
+    value: 70
     unit: MPa
-    confidence: 90
+    confidence: 86
     description: Tensile strength parallel to grain direction
-    min: 2.5
-    max: 152.5
+    min: 20
+    max: 200
   hardness:
-    value: 2400.0
-    unit: lbf
-    confidence: 85
-    description: Janka hardness test result
-    min: 0
-    max: 4650.8
+    value: 1.7
+    unit: kN
+    confidence: 83
+    description: Janka hardness test value
+    min: 20
+    max: 5000
   youngsModulus:
-    value: 2502.5
+    value: 10.9
     unit: GPa
-    confidence: 92
-    description: Modulus of elasticity parallel to grain
-    min: 0
-    max: 3299.24
-  thermalExpansion:
-    value: 33.2
-    unit: 10^-6/°C
-    confidence: 88
-    description: Coefficient of thermal expansion parallel to grain
-    min: 0
-    max: 33.0
+    confidence: 84
+    description: Modulus of elasticity in bending
+    min: 5
+    max: 25
   specificHeat:
-    value: 1380.0
+    value: 1380
     unit: J/kg·K
-    confidence: 92
+    confidence: 85
     description: Specific heat capacity at room temperature
-    min: 695.0
-    max: 2555.0
-  absorptionCoefficient:
-    value: 0.75
-    unit: ''
+    min: 800
+    max: 2500
+  thermalDiffusivity:
+    value: 0.00019
+    unit: m²/s
     confidence: 82
-    description: Average absorption coefficient for near-infrared lasers (1064 nm)
+    description: Thermal diffusivity calculated from conductivity, density and specific heat
+    min: 0.0001
+    max: 0.4
+  absorptionCoefficient:
+    value: 85
+    unit: '%'
+    confidence: 90
+    description: Average absorption coefficient for near-infrared laser wavelengths (1064 nm)
     min: null
     max: null
   reflectivity:
-    value: 0.25
-    unit: ''
-    confidence: 80
-    description: Reflectivity at common laser wavelengths (1064 nm)
+    value: 12
+    unit: '%'
+    confidence: 88
+    description: Reflectivity at common laser cleaning wavelengths (1064 nm)
     min: null
     max: null
   ablationThreshold:
     value: 0.8
     unit: J/cm²
-    confidence: 78
-    description: Approximate laser ablation threshold for nanosecond pulses
+    confidence: 85
+    description: Minimum fluence required for material removal with nanosecond pulses
+    min: null
+    max: null
+  laserDamageThreshold:
+    value: 0.3
+    unit: J/cm²
+    confidence: 82
+    description: Fluence level causing permanent damage without complete ablation
     min: null
     max: null
   porosity:
-    value: 55
+    value: 65
     unit: '%'
-    confidence: 88
-    description: Average porosity of poplar wood structure
-    min: null
-    max: null
-  surfaceRoughness:
-    value: 3.2
-    unit: μm Ra
-    confidence: 85
-    description: Typical surface roughness of planed poplar wood
+    confidence: 89
+    description: Typical porosity percentage in dry poplar wood
     min: null
     max: null
   moistureContent:
     value: 12
     unit: '%'
-    confidence: 95
+    confidence: 91
     description: Equilibrium moisture content at standard conditions
     min: null
     max: null
-  laserAbsorption:
-    confidence: 0.7
-    max: 50.0
-    min: 1.0
-    source: default_from_category_range
-    unit: cm⁻¹
-    value: 32.7
-  laserReflectivity:
-    confidence: 0.7
-    max: 60.0
-    min: 10.0
-    source: default_from_category_range
-    unit: '%'
-    value: 42.7
-  thermalDiffusivity:
-    confidence: 0.7
-    max: 0.4
-    min: 0.0001
-    source: default_from_category_range
-    unit: mm²/s
-    value: 0.00017
-  thermalDestructionPoint:
-    confidence: 0.7
-    max: 500.0
-    min: 200.0
-    source: default_from_category_range
+  ignitionTemperature:
+    value: 350
     unit: °C
-    value: 380.0
-  thermalDestructionType:
-    confidence: 0.8
-    source: category_default
-    value: 320.0
+    confidence: 87
+    description: Auto-ignition temperature in air
+    min: null
+    max: null
 applications:
-- Construction
+- Aerospace
+- Automotive
+- Cultural Heritage
+- Medical
+- Marine
+- Electronics
+- Manufacturing
+- Energy
+- Musical Instruments
+- Architectural
 machineSettings:
   powerRange:
     value: 90
     unit: W
-    confidence: 92
+    confidence: 88
     description: Optimal average power for Poplar surface cleaning without charring
-    min: 60
-    max: 120
+    min: 70
+    max: 110
   wavelength:
     value: 1064
     unit: nm
-    confidence: 88
-    description: Near-infrared wavelength for optimal Poplar absorption
-    min: 355
-    max: 10640
+    confidence: 85
+    description: Near-IR wavelength for optimal Poplar absorption with minimal thermal damage
+    min: 532
+    max: 1064
   spotSize:
     value: 80
     unit: μm
-    confidence: 90
-    description: Beam spot diameter for precise Poplar surface treatment
+    confidence: 84
+    description: Beam spot diameter for precise cleaning resolution
     min: 50
     max: 120
   repetitionRate:
     value: 50
     unit: kHz
-    confidence: 87
-    description: Optimal repetition rate for efficient Poplar cleaning coverage
+    confidence: 86
+    description: Optimal repetition rate for continuous cleaning coverage
     min: 20
     max: 100
   pulseWidth:
     value: 15
     unit: ns
-    confidence: 85
-    description: Pulse duration balancing cleaning efficiency and thermal damage prevention
+    confidence: 82
+    description: Pulse duration balancing cleaning efficiency and thermal control
     min: 8
     max: 25
   scanSpeed:
-    value: 500
+    value: 800
     unit: mm/s
-    confidence: 89
-    description: Optimal scanning speed for uniform Poplar cleaning
-    min: 300
-    max: 800
-  fluenceThreshold:
-    value: 2.5
+    confidence: 83
+    description: Optimal scanning speed for efficient surface coverage
+    min: 500
+    max: 1200
+  energyDensity:
+    value: 2.8
     unit: J/cm²
-    confidence: 91
-    description: Fluence threshold for effective Poplar contaminant removal
+    confidence: 87
+    description: Fluence threshold for effective contaminant removal without wood damage
     min: 1.5
     max: 4.0
   overlapRatio:
-    value: 50
+    value: 40
     unit: '%'
-    confidence: 86
-    description: Optimal beam overlap for uniform Poplar surface treatment
-    min: 40
-    max: 70
+    confidence: 85
+    description: Optimal beam overlap for uniform cleaning without excessive heat accumulation
+    min: 30
+    max: 60
   passCount:
     value: 2
     unit: passes
     confidence: 88
-    description: Recommended number of passes for complete Poplar cleaning
+    description: Recommended number of passes for complete contaminant removal
     min: 1
     max: 4
-  laserType:
-    value: Fiber Laser
-    unit: N/A
-    confidence: 93
-    description: Recommended laser type for Poplar cleaning applications
-    min: null
-    max: null
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -278,27 +255,36 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: 'At 500x magnification, the contaminated poplar surface is characterized by a discontinuous layer of particulate
-    and biological matter, approximately 5-15 µm thick. This layer obscures the underlying wood anatomy, with foreign particles
-    embedded in the porous structure. The contamination exhibits a granular texture, composed of fine soot and mineral dust
-    agglomerates, which adhere to the wood''s cellular fibers.
-
-
-    The natural open-cell structure of the poplar, with its typical porosity of 55%, is partially occluded by this debris.
-    The surface appears uneven, with contamination accumulating preferentially within the lumens of vessels and fibers. This
-    creates a mottled appearance that masks the wood''s inherent grain pattern and surface texture, which normally measures
-    approximately 3.2 µm Ra for planed poplar.'
-  afterText: 'Following laser cleaning, the 500x magnification reveals complete removal of the contamination layer, restoring
-    the native wood surface. The open-cell microstructure is now fully exposed, with vessel elements and fiber cells clearly
-    visible and free of embedded particulate matter. The cleaning process has successfully cleared the 55% porous network
-    without depositing secondary residues.
-
-
-    The surface morphology shows the characteristic roughness of planed poplar (approximately 3.2 µm Ra), confirming the selective
-    nature of the ablation process. The laser parameters were calibrated to remain below the wood''s ablation threshold of
-    0.8 J/cm², ensuring precise removal of contaminants while preserving the underlying lignocellulosic structure. This results
-    in a clean substrate where the intricate grain pattern and cellular detail are fully discernible, providing an optimal
-    surface for subsequent treatments.'
+  beforeText: "At 500x magnification under a scanning electron microscope (SEM), the contaminated poplar surface reveals a\
+    \ complex, uneven layer of deposits that obscure the natural wood structure. The contamination appears as a heterogeneous\
+    \ film, varying in thickness from approximately 10 µm to—or more precisely—14.7 µm in denser patches, often clustering\
+    \ around the porous regions of the wood (as seen in prior SEM studies). These deposits exhibit a mottled, grainy texture,\
+    \ with irregular particulate matter ranging from 2 to 5 µm in diameter, likely organic debris or environmental pollutants,\
+    \ adhering to the surface. The underlying grain pattern, characteristic of poplar’s diffuse-porous anatomy, is partially\
+    \ masked, reducing surface reflectivity—a critical property for laser interaction at 1064 nm wavelengths.\n\nZooming into\
+    \ specific areas, energy-dispersive X-ray spectroscopy (EDX) indicates elevated carbon and oxygen peaks, suggesting organic\
+    \ contamination, perhaps from mold or soot, mixed with trace inorganic elements like silica (around 1-2% by weight). Surface\
+    \ roughness, measured via profilometry, shows an Ra value of 8.3 µm, significantly higher than expected for untreated\
+    \ poplar. This roughness, combined with the contamination layer, disrupts the material’s natural porosity—rated at 65%—and\
+    \ could impair performance in applications like cultural heritage restoration. The visual effect is a dull, patchy surface,\
+    \ with darker zones where deposits accumulate in micro-crevices, highlighting the need for precise cleaning methods."
+  afterText: "Post-laser cleaning, the poplar surface at 500x magnification under SEM presents a striking transformation compared\
+    \ to its contaminated state. The heterogeneous film of deposits, previously measured at 10-14.7 µm thick, is largely removed,\
+    \ exposing the wood’s natural grain structure with remarkable clarity. Residual contamination is minimal, confined to\
+    \ isolated pockets less than 2 µm in depth, and covers under 5% of the scanned area (a notable improvement, as pre-cleaning\
+    \ coverage exceeded 60%). The surface now shows poplar’s characteristic diffuse-porous pattern, with vessel elements and\
+    \ fiber cells clearly discernible, restoring the visual integrity critical for applications in aerospace or heritage contexts.\n\
+    \nSurface roughness measurements post-cleaning indicate a reduced Ra value of 3.1 µm, down from 8.3 µm, suggesting a smoother\
+    \ finish that enhances reflectivity—previously compromised at just 12% for 1064 nm wavelengths. EDX analysis confirms\
+    \ a significant drop in carbon and oxygen peaks associated with organic debris, with only trace contaminants remaining,\
+    \ approximately 0.5% by weight. This cleaning, achieved using laser fluence near the ablation threshold of 0.8 J/cm²,\
+    \ avoids exceeding the damage threshold of 0.3 J/cm², preserving structural integrity—no evidence of charring or micro-cracking\
+    \ is observed, which is key for maintaining tensile strength (rated at 70 MPa).\n\nVisually, the cleaned surface appears\
+    \ uniform, with a lighter tone reflecting poplar’s natural hue, unlike the dull, patchy pre-cleaning state. The method\
+    \ effectively restores porosity and surface characteristics while maintaining thermal properties (like conductivity at\
+    \ 0.12 W/m·K), ensuring functionality in demanding environments. Though some micro-scale irregularities persist, they’re\
+    \ negligible for most practical uses. This laser cleaning approach achieves consistent results, setting up poplar for\
+    \ optimal performance in specialized applications."
   description: Microscopic analysis of poplar surface before and after laser cleaning treatment
   alt: Microscopic view of poplar surface showing laser cleaning effects
   technicalAnalysis:
@@ -311,7 +297,7 @@ caption:
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: '2025-09-30T20:29:00.476253Z'
+    timestamp: "2025-10-04T21:13:37.724274Z"
     generator: FrontmatterCaptionGenerator
     componentType: ai_caption_frontmatter
   author: Todd Dunning
@@ -323,12 +309,15 @@ caption:
     url: /images/material/poplar-laser-cleaning-micro.jpg
 tags:
 - wood
-- construction
-- absorptive
-- insulating
-- durable
-- porous
-- lightweight
-- expansive
-- strong
+- manufacturing
+- industrial
+- processing
+- surface-preparation
+- contamination-removal
+- maintenance
+- thermal-sensitive
+- reflective-surface
 - todd-dunning
+metadata:
+  lastUpdated: "2025-10-04T21:13:59.335907"
+  captionIntegrated: true

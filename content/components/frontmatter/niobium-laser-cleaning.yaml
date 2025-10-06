@@ -1,6 +1,6 @@
 name: Niobium
 category: Metal
-subcategory: Niobium
+subcategory: refractory
 title: Niobium Laser Cleaning
 description: Laser cleaning parameters for Niobium
 materialProperties:
@@ -28,85 +28,120 @@ materialProperties:
   tensileStrength:
     value: 275
     unit: MPa
-    confidence: 90
-    description: Ultimate tensile strength of annealed niobium
+    confidence: 85
+    description: Typical tensile strength of annealed niobium
     min: 3.0
     max: 3000.0
   hardness:
     value: 75
     unit: HV
-    confidence: 88
+    confidence: 86
     description: Vickers hardness of annealed niobium
     min: 0.5
     max: 3500
   youngsModulus:
     value: 105
     unit: GPa
-    confidence: 94
+    confidence: 93
     description: Young's modulus of elasticity
     min: 5
     max: 411
+  laserAbsorption:
+    value: 38.0
+    unit: '%'
+    confidence: 92
+    description: laserAbsorption from Materials.yaml
+    min: 0.02
+    max: 100
+  laserReflectivity:
+    value: 52.3
+    unit: '%'
+    confidence: 92
+    description: laserReflectivity from Materials.yaml
+    min: 5
+    max: 98
+  specificHeat:
+    value: 265
+    unit: J/kg·K
+    confidence: 91
+    description: Specific heat capacity at room temperature
+    min: 100
+    max: 900
+  thermalDestructionPoint:
+    value: 2468.0
+    unit: °C
+    confidence: 95
+    description: thermalDestructionPoint from Materials.yaml
+    min: -38.8
+    max: 3422
+  thermalDestructionType:
+    value: 2741.0
+    unit: °C
+    confidence: 95
+    description: thermalDestructionType from Materials.yaml
+    min: null
+    max: null
+  thermalDiffusivity:
+    value: 24.1
+    unit: mm²/s
+    confidence: 88
+    description: Thermal diffusivity at room temperature
+    min: 0.2
+    max: 174
   thermalExpansion:
     value: 7.3
-    unit: μm/m·K
+    unit: 10⁻⁶/K
     confidence: 90
     description: Coefficient of thermal expansion (20-100°C)
     min: 0.5
     max: 29.1
-  specificHeat:
-    value: 265
-    unit: J/kg·K
-    confidence: 88
-    description: Specific heat capacity at room temperature
-    min: 100
-    max: 900
-  thermalDiffusivity:
-    value: 23.8
-    unit: mm²/s
-    confidence: 85
-    description: Thermal diffusivity at room temperature
-    min: 0.2
-    max: 174
   reflectivity:
     value: 58
     unit: '%'
-    confidence: 82
+    confidence: 84
     description: Optical reflectivity at 1064 nm wavelength
     min: null
     max: null
   absorptionCoefficient:
-    value: 4200000.0
-    unit: m⁻¹
-    confidence: 80
-    description: Absorption coefficient for Nd:YAG laser (1064 nm)
+    value: 6.8
+    unit: 10⁵ cm⁻¹
+    confidence: 82
+    description: Absorption coefficient for Nd:YAG lasers (1064 nm)
     min: null
     max: null
   ablationThreshold:
-    value: 2.8
+    value: 2.1
     unit: J/cm²
-    confidence: 85
+    confidence: 80
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   oxidationResistance:
     value: 400
     unit: °C
-    confidence: 90
-    description: Maximum service temperature in oxidizing environments
+    confidence: 89
+    description: Maximum temperature for protective oxide layer stability
     min: null
     max: null
   crystallineStructure:
     value: BCC
     unit: none
-    confidence: 98
+    confidence: 99
     description: Body-centered cubic crystal structure
     min: null
     max: null
   electricalResistivity:
     value: 15.2
     unit: μΩ·cm
-    confidence: 92
+    confidence: 94
     description: Electrical resistivity at room temperature
+    min: null
+    max: null
+  laserDamageThreshold:
+    value: 3.8
+    unit: J/cm²
+    confidence: 81
+    description: Damage threshold for millisecond laser pulses
     min: null
     max: null
 applications:
@@ -116,10 +151,10 @@ applications:
 - Chemical Processing
 - Nuclear Technology
 - Electronics Manufacturing
+- Jewelry and Art
 - Marine Engineering
-- Jewelry and Art Conservation
 - Research Laboratories
-- Energy Storage
+- Energy Sector
 machineSettings:
   powerRange:
     value: 90
@@ -133,71 +168,68 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength providing good absorption in surface contaminants
-      while minimizing bulk heating
+    description: Near-IR wavelength optimized for Niobium's moderate reflectivity
+      and oxide absorption
     min: 532
     max: 1064
   spotSize:
-    value: 80
+    value: 50
     unit: μm
     confidence: 84
-    description: Optimal beam diameter for balancing cleaning efficiency and processing
-      speed
-    min: 50
-    max: 120
+    description: Optimal beam diameter for precision cleaning with adequate energy
+      density
+    min: 30
+    max: 80
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient area coverage while maintaining
-      thermal management
+    description: Optimal repetition rate balancing cleaning efficiency and thermal
+      management
     min: 20
     max: 100
   pulseWidth:
     value: 12
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient oxide layer ablation with
-      controlled thermal penetration
+    description: Nanosecond pulse duration for efficient oxide ablation with minimal
+      thermal diffusion
     min: 8
     max: 20
+  fluence:
+    value: 3.2
+    unit: J/cm²
+    confidence: 90
+    description: Energy density threshold for Niobium oxide removal
+    min: 2.5
+    max: 4.0
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Scan speed providing effective oxide removal with minimal thermal
-      accumulation
+    description: Optimal scanning speed for uniform oxide removal
     min: 300
     max: 800
-  fluence:
-    value: 4.5
-    unit: J/cm²
-    confidence: 90
-    description: Energy density optimized for Niobium oxide ablation threshold (2.8
-      J/cm²) with safety margin
-    min: 3.0
-    max: 6.0
   overlapRatio:
-    value: 50
+    value: 40
     unit: '%'
     confidence: 83
-    description: Beam overlap ensuring complete coverage without excessive heat input
-    min: 40
-    max: 70
+    description: Optimal pulse overlap for complete surface coverage without excessive
+      heating
+    min: 30
+    max: 60
   passCount:
     value: 2
     unit: passes
     confidence: 85
-    description: Multiple passes for thorough cleaning with progressive oxide layer
-      removal
+    description: Recommended number of passes for complete oxide removal
     min: 1
-    max: 4
+    max: 3
   laserType:
-    value: Fiber Laser
-    unit: N/A
+    value: Nd:YAG
+    unit: laser_type
     confidence: 89
-    description: Fiber laser recommended for Niobium cleaning due to stability and
-      beam quality
+    description: Recommended laser type for Niobium processing applications
     min: null
     max: null
 regulatoryStandards:
@@ -283,26 +315,17 @@ outcomeMetrics:
 caption:
   beforeText: At 500x magnification, the niobium surface is obscured by a non-uniform
     contamination layer, typically 5-20 µm thick. This layer consists of embedded
-    oxide particles, hydrocarbon films, and adsorbed atmospheric particulates. The
-    underlying metal's texture is entirely masked, presenting a topographically varied,
-    matte, and discontinuous surface that compromises its functional properties.
-  afterText: 'Laser cleaning restores the intrinsic metallic surface of the niobium.
-    At 500x magnification, the contamination layer is entirely absent, revealing the
-    original, fine-grained microstructure of the metal. The surface now exhibits a
-    uniform, light-gray appearance with clearly defined grain boundaries, a direct
-    result of the body-centered cubic crystalline structure.
-
-
-    The process has selectively ablated contaminants without melting the underlying
-    substrate, preserving the native topography. This is evidenced by the sharp, well-defined
-    edges of micro-features and the absence of the smeared residue typical of mechanical
-    methods.
-
-
-    The resulting surface is optimally prepared for subsequent high-performance applications,
-    such as superconducting cavity deposition or medical implant coating, where atomic-level
-    purity and minimal surface disturbance are critical. The reflectivity has increased
-    measurably, consistent with the removal of light-absorbing films.'
+    carbonaceous particulates and a discontinuous oxide scale, primarily niobium pentoxide
+    (Nb₂O₅). The underlying metal's grain structure is entirely hidden. The topography
+    is chaotic, with patches of amorphous deposits and localized pitting, which scatter
+    incident light and create a matte, dark appearance. This contamination directly
+    interferes with the metal's intrinsic properties, such as its electrical conductivity
+    and superconducting potential.
+  afterText: Laser cleaning has restored the intrinsic niobium surface. The contamination
+    layer is completely removed, revealing the distinct, clean grain boundaries of
+    the underlying BCC crystalline structure. The surface is now uniform and smooth,
+    with a metallic luster indicative of the pure, oxide-free metal, ready for high-performance
+    applications.
   description: Microscopic analysis of niobium surface before and after laser cleaning
     treatment
   alt: Microscopic view of niobium surface showing laser cleaning effects

@@ -1,6 +1,6 @@
 name: Iridium
 category: Metal
-subcategory: Iridium
+subcategory: precious
 title: Iridium Laser Cleaning
 description: Laser cleaning parameters for Iridium
 materialProperties:
@@ -22,21 +22,21 @@ materialProperties:
     value: 147
     unit: W/m·K
     confidence: 92
-    description: Thermal conductivity at 300K
+    description: Thermal conductivity at 20°C
     min: 6.0
     max: 429.0
   tensileStrength:
     value: 1120
     unit: MPa
     confidence: 85
-    description: Ultimate tensile strength of annealed iridium
+    description: Ultimate tensile strength (annealed)
     min: 3.0
     max: 3000.0
   hardness:
     value: 1760
     unit: HV
     confidence: 89
-    description: Vickers hardness of pure iridium
+    description: Vickers hardness (annealed)
     min: 0.5
     max: 3500
   youngsModulus:
@@ -46,20 +46,20 @@ materialProperties:
     description: Elastic modulus at room temperature
     min: 5
     max: 411
-  thermalExpansion:
-    value: 6.4
-    unit: μm/m·K
+  laserAbsorption:
+    value: 38.7
+    unit: '%'
+    confidence: 92
+    description: laserAbsorption from Materials.yaml
+    min: 0.02
+    max: 100
+  laserReflectivity:
+    value: 51.5
+    unit: '%'
     confidence: 90
-    description: Coefficient of linear thermal expansion at 25°C
-    min: 0.5
-    max: 29.1
-  thermalDiffusivity:
-    value: 0.28
-    unit: cm²/s
-    confidence: 88
-    description: Thermal diffusivity at room temperature
-    min: 0.2
-    max: 174
+    description: laserReflectivity from Materials.yaml
+    min: 5
+    max: 98
   specificHeat:
     value: 0.131
     unit: J/g·K
@@ -67,47 +67,74 @@ materialProperties:
     description: Specific heat capacity at 25°C
     min: 100
     max: 900
+  thermalDestructionPoint:
+    value: 1691.6
+    unit: K
+    confidence: 95
+    description: thermalDestructionPoint from Materials.yaml
+    min: -38.8
+    max: 3422
+  thermalDestructionType:
+    value: 2716.0
+    unit: K
+    confidence: 95
+    description: thermalDestructionType from Materials.yaml
+    min: null
+    max: null
+  thermalDiffusivity:
+    value: 0.31
+    unit: cm²/s
+    confidence: 88
+    description: Thermal diffusivity at room temperature
+    min: 0.2
+    max: 174
+  thermalExpansion:
+    value: 6.4
+    unit: μm/m·K
+    confidence: 90
+    description: Coefficient of linear thermal expansion (20-100°C)
+    min: 0.5
+    max: 29.1
   absorptionCoefficient:
-    value: 0.65
+    value: 0.42
     unit: dimensionless
     confidence: 82
-    description: Estimated absorption coefficient for 1064nm laser wavelength
+    description: Absorption coefficient for 1064 nm laser wavelength
     min: null
     max: null
   reflectivity:
     value: 0.78
     unit: dimensionless
     confidence: 84
-    description: Reflectivity at 1064nm wavelength
+    description: Reflectivity at 1064 nm wavelength
     min: null
     max: null
   ablationThreshold:
-    value: 2.8
+    value: 3.2
     unit: J/cm²
     confidence: 80
-    description: Estimated laser ablation threshold for nanosecond pulses at 1064nm
+    description: Estimated laser ablation threshold for nanosecond pulses
     min: null
     max: null
   oxidationResistance:
     value: Excellent
     unit: qualitative
     confidence: 95
-    description: Maintains stability in air up to 1600°C, forms protective oxide layer
+    description: Maintains stability in air up to 2300°C
     min: null
     max: null
   crystallineStructure:
     value: FCC
     unit: crystal system
     confidence: 98
-    description: Face-centered cubic structure with lattice parameter 3.839 Å
+    description: Face-centered cubic structure (space group Fm3m)
     min: null
     max: null
-  thermalShockResistance:
-    value: High
-    unit: qualitative
-    confidence: 87
-    description: Excellent resistance to thermal shock due to high melting point and
-      strength
+  electricalResistivity:
+    value: 4.71
+    unit: μΩ·cm
+    confidence: 94
+    description: Electrical resistivity at 20°C
     min: null
     max: null
 applications:
@@ -115,12 +142,12 @@ applications:
 - Medical Devices
 - Electronics Manufacturing
 - Chemical Processing
-- Jewelry and Luxury Goods
 - Research and Laboratory
 - Automotive High-Performance
-- Energy Sector
 - Marine and Offshore
+- Energy Production
 - Cultural Heritage
+- Semiconductor Manufacturing
 machineSettings:
   powerRange:
     value: 45
@@ -140,8 +167,8 @@ machineSettings:
   spotSize:
     value: 50
     unit: μm
-    confidence: 84
-    description: Beam spot diameter for precise cleaning with adequate energy density
+    confidence: 83
+    description: Optimal spot size for precision cleaning of Iridium surfaces
     min: 30
     max: 100
   repetitionRate:
@@ -160,34 +187,32 @@ machineSettings:
       minimal thermal diffusion
     min: 5
     max: 15
-  fluence:
-    value: 2.8
-    unit: J/cm²
-    confidence: 91
-    description: Optimal fluence for Iridium oxide ablation threshold
-    min: 1.5
-    max: 4.0
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 86
-    description: Optimal scanning speed for efficient coverage with sufficient pulse
-      overlap
+    confidence: 82
+    description: Scan speed providing effective cleaning with adequate overlap
     min: 200
     max: 1000
+  fluenceThreshold:
+    value: 2.5
+    unit: J/cm²
+    confidence: 89
+    description: Minimum fluence required for effective contaminant removal from Iridium
+    min: 1.8
+    max: 4.0
   overlapRatio:
-    value: 40
+    value: 50
     unit: '%'
-    confidence: 83
-    description: Pulse overlap percentage for uniform cleaning without excessive heat
-      accumulation
-    min: 30
-    max: 60
+    confidence: 84
+    description: Optimal overlap between adjacent scan lines for uniform cleaning
+    min: 40
+    max: 70
   passCount:
     value: 3
     unit: passes
-    confidence: 89
-    description: Number of cleaning passes for complete contaminant removal
+    confidence: 86
+    description: Recommended number of passes for complete contaminant removal
     min: 1
     max: 5
 regulatoryStandards:
@@ -272,16 +297,20 @@ outcomeMetrics:
   units: []
 caption:
   beforeText: At 500x magnification, the iridium surface is obscured by a non-uniform
-    contamination layer, approximately 5-15 µm thick. This layer exhibits a complex
-    topography of particulate inclusions and amorphous oxide scales, which mask the
-    underlying metal's grain structure. The contaminants form a discontinuous, textured
-    crust with visible cracking and spallation, indicative of poor adhesion and thermal
-    stress mismatch with the dense iridium substrate.
-  afterText: Laser cleaning has fully restored the intrinsic iridium surface. The
-    contamination layer is entirely removed, revealing a clean, well-defined grain
-    structure with sub-micron surface roughness. The surface now exhibits minimal
-    laser interaction marks, confirming the process operated effectively below the
-    material's ablation threshold.
+    contamination layer. This layer, ranging from 2 to 15 micrometers in thickness,
+    consists of amorphous carbon deposits and embedded particulate matter. The underlying
+    FCC crystalline structure of the iridium is entirely hidden. The topography is
+    characterized by a rough, matte texture with visible micro-cracking and localized
+    spalling within the contaminant film. This irregular coverage significantly alters
+    the surface's intrinsic reflectivity and thermal properties, masking the metal's
+    true performance characteristics.
+  afterText: Post-cleaning, the surface reveals the pristine, polycrystalline grain
+    structure of the iridium. The contaminant layer has been completely removed via
+    selective laser ablation, restoring the metal's inherent high reflectivity (78%
+    at 1064 nm). At 500x, the surface is now defined by a uniform, clean texture with
+    clearly delineated grain boundaries. The process has eliminated micro-cracking
+    and spalling, resulting in a topographically even surface that exhibits the material's
+    excellent oxidation resistance and thermal stability.
   description: Microscopic analysis of iridium surface before and after laser cleaning
     treatment
   alt: Microscopic view of iridium surface showing laser cleaning effects

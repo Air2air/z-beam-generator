@@ -22,21 +22,21 @@ materialProperties:
     value: 1.7
     unit: W/m·K
     confidence: 92
-    description: Thermal conductivity of standard concrete
+    description: Thermal conductivity at room temperature
     min: 0.08
     max: 2.5
   tensileStrength:
     value: 3.5
     unit: MPa
     confidence: 90
-    description: Direct tensile strength of concrete
+    description: Direct tensile strength of standard concrete
     min: 1
     max: 15
   hardness:
     value: 6
     unit: Mohs
-    confidence: 82
-    description: Approximate hardness on Mohs scale
+    confidence: 85
+    description: Approximate Mohs hardness scale
     min: 2
     max: 6
   youngsModulus:
@@ -46,6 +46,55 @@ materialProperties:
     description: Elastic modulus of concrete
     min: 5
     max: 50
+  compressiveStrength:
+    value: 35
+    unit: MPa
+    confidence: 95
+    description: Characteristic compressive strength
+    min: null
+    max: null
+  laserAbsorption:
+    value: 8.2
+    unit: '%'
+    confidence: 92
+    description: laserAbsorption from Materials.yaml
+    min: 0.5
+    max: 15
+  laserReflectivity:
+    value: 32.5
+    unit: '%'
+    confidence: 92
+    description: laserReflectivity from Materials.yaml
+    min: 10
+    max: 70
+  specificHeat:
+    value: 880
+    unit: J/kg·K
+    confidence: 85
+    description: Specific heat capacity at 20°C
+    min: 700
+    max: 1100
+  thermalDestructionPoint:
+    value: 450.0
+    unit: °C
+    confidence: 95
+    description: thermalDestructionPoint from Materials.yaml
+    min: 500
+    max: 1200
+  thermalDestructionType:
+    value: 573.0
+    unit: °C
+    confidence: 92
+    description: thermalDestructionType from Materials.yaml
+    min: null
+    max: null
+  thermalDiffusivity:
+    value: 0.8
+    unit: mm²/s
+    confidence: 82
+    description: Thermal diffusivity calculated from conductivity
+    min: 0.1
+    max: 1
   thermalExpansion:
     value: 10
     unit: μm/m·°C
@@ -53,24 +102,10 @@ materialProperties:
     description: Coefficient of thermal expansion
     min: 5
     max: 20
-  specificHeat:
-    value: 880
-    unit: J/kg·K
-    confidence: 85
-    description: Specific heat capacity at room temperature
-    min: 700
-    max: 1100
-  compressiveStrength:
-    value: 35
-    unit: MPa
-    confidence: 95
-    description: Standard 28-day compressive strength
-    min: null
-    max: null
   absorptionCoefficient:
     value: 0.85
     unit: dimensionless
-    confidence: 85
+    confidence: 80
     description: Optical absorption coefficient for common laser wavelengths
     min: null
     max: null
@@ -84,41 +119,48 @@ materialProperties:
   ablationThreshold:
     value: 1.2
     unit: J/cm²
-    confidence: 80
-    description: Minimum fluence required for material removal
+    confidence: 85
+    description: Laser ablation threshold for concrete surface
     min: null
     max: null
   porosity:
     value: 12
     unit: '%'
-    confidence: 88
+    confidence: 90
     description: Typical porosity of standard concrete
     min: null
     max: null
-  thermalDiffusivity:
-    value: 0.8
-    unit: mm²/s
+  waterContent:
+    value: 5
+    unit: '%'
     confidence: 85
-    description: Thermal diffusivity affecting heat propagation
-    min: 0.1
-    max: 1
+    description: Typical moisture content in cured concrete
+    min: null
+    max: null
+  chemicalStability:
+    value: 7
+    unit: rating (1-10)
+    confidence: 88
+    description: Chemical stability rating against common environmental exposure
+    min: null
+    max: null
 applications:
 - Civil Infrastructure
 - Nuclear Decommissioning
 - Marine Structures
 - Historical Preservation
-- Industrial Flooring
-- Parking Structures
+- Manufacturing Facilities
 - Food Processing
-- Wastewater Treatment
-- Energy Facilities
-- Transportation Infrastructure
+- Parking Structures
+- Water Treatment Facilities
+- Aerospace Facilities
+- Energy Generation
 machineSettings:
   powerRange:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for concrete surface cleaning and contamination
+    description: Optimal average power for concrete surface cleaning and contaminant
       removal
     min: 80
     max: 120
@@ -134,8 +176,8 @@ machineSettings:
     value: 0.2
     unit: mm
     confidence: 84
-    description: Beam spot diameter for effective concrete surface treatment with
-      controlled energy density
+    description: Beam spot diameter for precise concrete surface treatment and efficient
+      cleaning coverage
     min: 0.1
     max: 0.5
   repetitionRate:
@@ -143,7 +185,7 @@ machineSettings:
     unit: kHz
     confidence: 87
     description: Optimal repetition rate for efficient concrete cleaning with adequate
-      cooling between pulses
+      thermal management
     min: 20
     max: 100
   pulseWidth:
@@ -159,7 +201,7 @@ machineSettings:
     unit: mm/s
     confidence: 86
     description: Optimal scanning speed for uniform concrete surface treatment and
-      efficient coverage
+      efficient material removal
     min: 200
     max: 1000
   energyDensity:
@@ -174,23 +216,18 @@ machineSettings:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap percentage for uniform concrete surface treatment
+    description: Optimal beam overlap for uniform concrete surface treatment and complete
+      coverage
     min: 40
     max: 70
   passCount:
-    value: 3
+    value: 2
     unit: passes
     confidence: 85
-    description: Recommended number of passes for complete concrete surface cleaning
+    description: Recommended number of passes for thorough concrete cleaning without
+      substrate damage
     min: 1
-    max: 5
-  laserType:
-    value: Fiber Laser
-    unit: n/a
-    confidence: 90
-    description: Recommended laser type for concrete cleaning applications
-    min: null
-    max: null
+    max: 4
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -273,24 +310,30 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the concrete surface is obscured by a stratified
-    contamination layer, typically 50-200 µm thick. This layer consists of embedded
-    particulate matter, such as carbon soot and mineral salts, fused within the cementitious
-    matrix. The natural porosity is occluded, and the surface texture is homogenized,
-    masking the underlying aggregate and cement paste. A network of micro-fissures
-    is often visible within the contaminant crust, indicating its brittle nature and
-    poor adhesion to the substrate.
-  afterText: 'Post-cleaning, the microscopic view reveals the restored concrete substrate.
-    The superficial contamination layer has been entirely removed, exposing the intrinsic
-    surface morphology. The original porosity, with pore sizes ranging from 10-100
-    µm, is now fully open and unobstructed.
+  beforeText: 'At 500x magnification, the concrete surface is obscured by a complex
+    contamination layer, typically 50-200 µm thick. This stratum consists of embedded
+    particulate matter, such as carbonaceous soot and silica dust, bound within a
+    matrix of hydrocarbon residues and biological growth like fungal hyphae. The original
+    surface texture, characterized by the aggregate profile and cement paste porosity,
+    is largely masked.
 
 
-    The distinct phases of the material—the hard aggregate particles and the softer
-    cement paste—are clearly delineated, restoring the surface''s natural micro-roughness.
-    This process effectively eliminates the contaminant matrix without inducing thermal
-    damage, preserving the structural integrity of the concrete at the micron scale.
-    The surface is now optimally prepared for subsequent treatments or coatings.'
+    The contamination exhibits a non-uniform, stratified pattern, filling the natural
+    10-15% surface porosity. This layer creates a weak boundary, compromising the
+    adhesion of any new coating or treatment. The presence of moisture, held within
+    this porous layer, can facilitate further chemical degradation of the underlying
+    cementitious matrix, threatening the long-term integrity of the material.'
+  afterText: 'Post-cleaning analysis at 500x magnification reveals the restoration
+    of the intrinsic concrete substrate. The contamination layer has been completely
+    removed, exposing the original micro-texture of the cement paste and the mineral
+    aggregates. The surface porosity is now fully open and clear, with no evidence
+    of residual film or thermal damage to the cementitious binder.
+
+
+    The ablation process has left a clean, sound surface with a peak-to-valley profile
+    consistent with the aggregate hardness differential. This state provides an optimal
+    substrate profile for subsequent protective coatings or structural assessments,
+    ensuring maximum adhesion and revealing the true condition of the concrete.'
   description: Microscopic analysis of concrete surface before and after laser cleaning
     treatment
   alt: Microscopic view of concrete surface showing laser cleaning effects

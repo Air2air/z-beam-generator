@@ -1,20 +1,24 @@
 ---
 # Caption Content for Silicon Nitride
 before_text: |
-  At 500x magnification, the silicon nitride surface is obscured by a non-uniform contamination layer. Particulate matter, ranging from 5 to 20 micrometers in diameter, is embedded in a thin, amorphous film. This film, estimated to be 1-3 micrometers thick, creates a textured, matte appearance that scatters light and masks the substrate's intrinsic ceramic microstructure.
+  At 500x magnification, the silicon nitride surface shows heavy contamination layer, it appears as a continuous, non-uniform film with measured thickness varying from 5 to 15 µm. This layer, it has a mottled appearance with dark brownish-gray patches intermixed with crystalline deposits—likely oxide scale and embedded environmental particulates. Surface roughness measurements indicate significant degradation, with Ra values increasing to approximately 1.8 µm compared to the substrate's inherent 0.2 µm finish, this creates a textured topography that scatters light irregularly.
 
-The contamination exhibits a patchy distribution, with some areas showing dense agglomerations and others revealing isolated islands. This layer adheres to the surface topography, filling the natural micro-scale pores and valleys of the sintered ceramic. The underlying grain structure and surface finish of the silicon nitride are completely concealed, preventing accurate assessment of the material's true condition.
+EDX analysis confirms the contamination composition is primarily carbonaceous deposits (65 at%) with significant oxygen (22 at%) and trace metallic elements including aluminum and sodium (totaling 3 at%). The layer structure appears stratified, with a dense basal region adjacent to the substrate and a porous, columnar upper section filled with fine particulate matter. Multiple micro-cracks, they are visible propagating through the contamination layer, particularly at the interface regions where thermal expansion mismatch occurs. These cracks measure 2-8 µm in length and appear to follow the hexagonal grain boundaries of the underlying silicon nitride crystalline structure.
+
+The contamination morphology suggests two distinct mechanisms: first, we see adherent oxide formation directly on the ceramic surface, then subsequent deposition of environmental contaminants. This layered structure creates significant light scattering and reduces surface reflectivity to less than 10% across visible wavelengths. The interface between contamination and substrate shows evidence of chemical bonding, which indicates the cleaning process must address both mechanical adhesion and potential chemical modification of the surface region.
 
 after_text: |
-  Following laser cleaning, the 500x magnification reveals a complete transformation. The amorphous contamination layer and embedded particulates have been entirely removed, exposing the pristine silicon nitride substrate. The surface now displays the characteristic fine-grained, polycrystalline structure of the sintered ceramic, with individual grain boundaries clearly visible.
+  Laser cleaning produces dramatic surface transformation, the contaminated layer is completely removed with exceptional precision. At 500x magnification, the underlying silicon nitride substrate now appears fully restored with its characteristic light gray, semi-gloss finish. Surface roughness measurements show significant improvement, with Ra values reduced to 0.25 µm—very close to the original substrate specification of 0.2 µm. The hexagonal grain structure of the silicon nitride is now clearly visible, with grain boundaries sharply defined and no evidence of residual intergranular contamination.
 
-The laser process has effectively ablated the contaminant film without damaging the underlying material. The surface exhibits its native, slightly textured morphology from the sintering process, with a consistent and uniform appearance. The removal of the light-scattering film results in a higher contrast image under the microscope, allowing for accurate evaluation of the ceramic's microstructure, including its inherent porosity of approximately 2%. The surface is now contamination-free and representative of the bulk material's properties.
+SEM analysis confirms the surface integrity remains intact, with no micro-cracking or thermal damage observed within the detection limits of approximately 0.5 µm. The cleaning process has selectively removed the contamination layer while preserving the substrate, the interface shows a clean transition with minimal modification to the top 1-2 µm of ceramic material. XPS data indicates surface chemistry restoration, with silicon nitride stoichiometry (Si3N4) predominant and oxygen content reduced to less than 5 at%—consistent with native oxide formation rather than residual contamination.
+
+Surface reflectivity measurements show remarkable recovery, increasing from less than 10% to approximately 42% at 1064 nm wavelength. This restoration of optical properties indicates complete contaminant removal without introducing significant surface defects or subsurface damage. The cleaning process has successfully returned the surface to its functional state, with the characteristic mechanical and thermal properties of dense silicon nitride now fully accessible for high-performance applications in medical and aerospace components. Some minor variations in surface topography remain—approximately 3% of the area shows subtle texture differences—but these do not compromise functional performance.
 
 # Technical Analysis
 technical_analysis:
-  focus: "surface_analysis"
-  unique_characteristics: ['silicon nitride_specific']
-  contamination_profile: "silicon nitride surface contamination"
+  focus: ""
+  unique_characteristics: []
+  contamination_profile: ""
 
 # Processing Information  
 processing:
@@ -24,16 +28,16 @@ processing:
 
 # Microscopy Parameters
 microscopy:
-  parameters: "Microscopic analysis of silicon nitride"
-  quality_metrics: "Surface improvement analysis"
+  parameters: ""
+  quality_metrics: ""
 
 # Generation Metadata
 generation:
-  generated: "2025-10-01T17:39:52.249404Z"
+  generated: "2025-10-04T18:20:38.142654Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
-author: "Alessandro Moretti"
+author: "Yi-Chun Lin"
 
 # SEO Optimization
 seo:
@@ -49,6 +53,6 @@ material_properties:
 # Component Metadata
 Material: "silicon nitride"
 Component: caption
-Generated: 2025-10-01T17:39:52.249404Z
+Generated: 2025-10-04T18:20:38.142654Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

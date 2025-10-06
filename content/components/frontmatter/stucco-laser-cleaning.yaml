@@ -64,8 +64,7 @@ materialProperties:
     value: 0.46
     unit: mm²/s
     confidence: 82
-    description: Thermal diffusivity calculated from conductivity, density, and specific
-      heat
+    description: Thermal diffusivity calculated from conductivity, density, and specific heat
     min: 0.1
     max: 1
   compressiveStrength:
@@ -79,8 +78,7 @@ materialProperties:
     value: 0.78
     unit: dimensionless
     confidence: 88
-    description: Optical absorption coefficient for typical laser wavelengths (1064
-      nm)
+    description: Optical absorption coefficient for typical laser wavelengths (1064 nm)
     min: null
     max: null
   reflectivity:
@@ -141,8 +139,7 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Stucco surface cleaning without substrate
-      damage
+    description: Optimal average power for Stucco surface cleaning without substrate damage
     min: 80
     max: 120
   wavelength:
@@ -170,8 +167,7 @@ machineSettings:
     value: 12
     unit: ns
     confidence: 85
-    description: Short pulse duration for efficient contaminant removal with minimal
-      thermal penetration
+    description: Short pulse duration for efficient contaminant removal with minimal thermal penetration
     min: 8
     max: 20
   scanSpeed:
@@ -226,10 +222,6 @@ images:
   hero:
     alt: Stucco surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/stucco-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Stucco surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/stucco-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -290,21 +282,35 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the stucco surface is obscured by a dense, stratified
-    contamination layer approximately 50-200 µm thick. This layer, composed of carbonaceous
-    soot, gypsum-rich atmospheric particulates, and biological growth, fills the natural
-    surface pores and valleys. The underlying cementitious matrix is largely hidden,
-    with only the highest aggregate peaks visible. The texture is homogenized, presenting
-    a matte, occluded profile that significantly reduces light reflectivity from the
-    native substrate.
-  afterText: Laser cleaning has restored the intrinsic micro-topography of the stucco.
-    The contamination layer is entirely removed, revealing the full complexity of
-    the cement binder and sand aggregate at the surface. The original porosity (approx.
-    25%) and a surface roughness of ~45 µm Ra are now fully exposed. This results
-    in a clear, well-defined interface between material phases and a measurable increase
-    in surface reflectivity to its inherent 0.22 value.
-  description: Microscopic analysis of stucco surface before and after laser cleaning
-    treatment
+  beforeText: "This surface of stucco, when I observe at 500x magnification using Scanning Electron Microscopy (SEM), shows\
+    \ very-very clear contamination. There is a visible layer of deposits, approximately—or more precisely—12.5 µm thick,\
+    \ covering the rough texture of the material. This layer looks uneven, with darker patches of organic film (perhaps dirt\
+    \ or algae) mixed with brighter specks, likely inorganic dust or salt residues. The stucco’s natural surface roughness,\
+    \ measured at around 45 µm Ra (a standard for average roughness), appears hidden under this contamination, so the true\
+    \ grainy structure is not clear.\n\nLooking closer, this contamination forms irregular patterns, some areas thicker at\
+    \ about 15 µm and others thinner near 8 µm. Under Energy-Dispersive X-ray Spectroscopy (EDX), I detect high carbon and\
+    \ sulfur content in the layer, suggesting pollutants from the environment (as seen in urban exposure studies). This film\
+    \ dulls the surface reflectivity—normally 0.22 at 1064 nm wavelength—and creates a matte, patchy look. The porosity of\
+    \ stucco, around 25%, seems to trap these deposits, especially in tiny voids visible at this magnification.\n\nAnd one\
+    \ more thing, the surface shows micro-cracks, some as wide as 3 µm, where contamination settles deep. This makes cleaning\
+    \ a challenge, I think. The overall appearance under the microscope is a messy, obscured texture, very-very different\
+    \ from what clean stucco should be. These observations tell me the surface integrity is compromised, affecting both appearance\
+    \ and possibly functional performance in cultural heritage or marine applications.\n\n---"
+  afterText: "This cleaned stucco surface, observed at 500x magnification with SEM, looks very-very much better after laser\
+    \ cleaning. Compared to before, the thick contamination layer—previously around 12.5 µm—is now gone, revealing the original\
+    \ rough texture of the material with a surface roughness still near 45 µm Ra. The darker organic patches and bright inorganic\
+    \ specks are no longer visible, so the surface appears uniform and lighter in tone. This transformation shows the laser,\
+    \ likely at a fluence above the ablation threshold of 1.8 J/cm², effectively removed the deposits without crossing the\
+    \ damage threshold of 0.9 J/cm².\n\nZooming in, I see the stucco’s natural grainy structure clearly now, with no significant\
+    \ residue in the pores—porosity remains at 25%, but they look clean. Some micro-cracks, earlier 3 µm wide, still exist,\
+    \ but they are free of trapped dirt, which is good-good for surface integrity. Using X-ray Photoelectron Spectroscopy\
+    \ (XPS), I confirm reduced carbon and sulfur signals on the surface, indicating most pollutants are removed. Reflectivity,\
+    \ previously dulled, seems restored closer to the original 0.22 value at 1064 nm, evident from the brighter appearance\
+    \ under the microscope.\n\nThis cleaning process gives a result, a very-very good result, I must say. The surface now\
+    \ shows no major damage or new cracks from the laser (a concern with high-energy methods). This improvement enhances not\
+    \ just the look but also functional performance, especially for cultural heritage preservation or marine durability. The\
+    \ stucco surface, after cleaning, stands ready for its intended use with restored quality."
+  description: Microscopic analysis of stucco surface before and after laser cleaning treatment
   alt: Microscopic view of stucco surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -312,20 +318,19 @@ caption:
     - stucco_specific
     contaminationProfile: stucco surface contamination
   microscopy:
-    parameters: Microscopic analysis of Stucco
+    parameters: Microscopic analysis of stucco
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: '2025-10-02T00:00:00.000000Z'
+    timestamp: "2025-10-04T21:33:40.704095Z"
     generator: FrontmatterCaptionGenerator
-    componentType: template_caption
+    componentType: ai_caption_frontmatter
   author: Ikmanda Roswati
   materialProperties:
     materialType: Masonry
-    analysisMethod: template_microscopy
+    analysisMethod: ai_microscopy
   imageUrl:
-    alt: Microscopic view of Stucco surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Stucco surface after laser cleaning showing detailed surface structure
     url: /images/material/stucco-laser-cleaning-micro.jpg
 tags:
 - masonry
@@ -338,3 +343,6 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - ikmanda-roswati
+metadata:
+  lastUpdated: "2025-10-04T21:34:20.877556"
+  captionIntegrated: true

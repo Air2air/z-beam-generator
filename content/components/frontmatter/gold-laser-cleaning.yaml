@@ -1,6 +1,6 @@
 name: Gold
 category: Metal
-subcategory: Gold
+subcategory: precious
 title: Gold Laser Cleaning
 description: Laser cleaning parameters for Gold
 materialProperties:
@@ -22,14 +22,21 @@ materialProperties:
     value: 318
     unit: W/m·K
     confidence: 95
-    description: Thermal conductivity at 20°C
+    description: Thermal conductivity at 300K
     min: 6.0
     max: 429.0
+  tensileStrength:
+    value: 220.0
+    unit: MPa
+    confidence: 95
+    description: tensileStrength from Materials.yaml
+    min: 3.0
+    max: 3000.0
   hardness:
     value: 25
     unit: HV
     confidence: 88
-    description: Vickers hardness of annealed gold
+    description: Vickers hardness for annealed gold
     min: 0.5
     max: 3500
   youngsModulus:
@@ -39,20 +46,20 @@ materialProperties:
     description: Young's modulus of elasticity
     min: 5
     max: 411
-  thermalExpansion:
-    value: 14.2
-    unit: μm/m·K
-    confidence: 92
-    description: Coefficient of linear thermal expansion at 25°C
-    min: 0.5
-    max: 29.1
-  thermalDiffusivity:
-    value: 127
-    unit: mm²/s
-    confidence: 90
-    description: Thermal diffusivity at room temperature
-    min: 0.2
-    max: 174
+  laserAbsorption:
+    value: 2.5
+    unit: '%'
+    confidence: 95
+    description: laserAbsorption from Materials.yaml
+    min: 0.02
+    max: 100
+  laserReflectivity:
+    value: 97.8
+    unit: '%'
+    confidence: 98
+    description: laserReflectivity from Materials.yaml
+    min: 5
+    max: 98
   specificHeat:
     value: 0.129
     unit: J/g·K
@@ -60,16 +67,44 @@ materialProperties:
     description: Specific heat capacity at 25°C
     min: 100
     max: 900
+  thermalDestructionPoint:
+    value: 1337.33
+    unit: K
+    confidence: 95
+    description: thermalDestructionPoint from Materials.yaml
+    min: -38.8
+    max: 3422
+  thermalDestructionType:
+    value: 1337.33
+    unit: K
+    confidence: 98
+    description: thermalDestructionType from Materials.yaml
+    min: null
+    max: null
+  thermalDiffusivity:
+    value: 127
+    unit: mm²/s
+    confidence: 90
+    description: Thermal diffusivity at room temperature
+    min: 0.2
+    max: 174
+  thermalExpansion:
+    value: 14.2
+    unit: μm/m·K
+    confidence: 92
+    description: Coefficient of linear thermal expansion at 25°C
+    min: 0.5
+    max: 29.1
   reflectivity:
-    value: 98
+    value: 95
     unit: '%'
     confidence: 96
-    description: Reflectivity in infrared region (1064 nm)
+    description: Reflectivity at 1064 nm wavelength
     min: null
     max: null
   absorptionCoefficient:
-    value: 1.2
-    unit: ×10⁵ cm⁻¹
+    value: 12000000.0
+    unit: m⁻¹
     confidence: 85
     description: Absorption coefficient at 532 nm wavelength
     min: null
@@ -81,18 +116,18 @@ materialProperties:
     description: Approximate ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
-  oxidationResistance:
-    value: Excellent
-    unit: Qualitative
-    confidence: 98
-    description: Gold does not oxidize in air at any temperature
-    min: null
-    max: null
   crystallineStructure:
     value: FCC
-    unit: Crystal System
-    confidence: 99
+    unit: none
+    confidence: 98
     description: Face-centered cubic crystal structure
+    min: null
+    max: null
+  oxidationResistance:
+    value: Excellent
+    unit: qualitative
+    confidence: 95
+    description: Highly resistant to oxidation and tarnishing
     min: null
     max: null
   electricalConductivity:
@@ -104,68 +139,69 @@ materialProperties:
     max: null
 applications:
 - Electronics Manufacturing
-- Jewelry and Watchmaking
-- Aerospace Components
+- Aerospace
 - Medical Device Manufacturing
 - Cultural Heritage Conservation
-- Semiconductor Manufacturing
+- Jewelry Manufacturing
 - Automotive Electronics
-- Telecommunications Equipment
-- Research Laboratory Equipment
-- Renewable Energy Systems
+- Telecommunications
+- Energy Sector
+- Research and Laboratory
+- Marine Electronics
 machineSettings:
   powerRange:
-    value: 15
+    value: 90
     unit: W
-    confidence: 90
-    description: Optimal average power for Gold surface cleaning without damage
-    min: 8
-    max: 25
+    confidence: 92
+    description: Optimal average power for Gold surface cleaning without substrate
+      damage
+    min: 70
+    max: 110
   wavelength:
     value: 532
     unit: nm
-    confidence: 92
-    description: Optimal wavelength matching Gold's high absorption peak in visible
-      spectrum
+    confidence: 88
+    description: Green wavelength for enhanced Gold absorption compared to IR
     min: 355
     max: 1064
   spotSize:
     value: 50
     unit: μm
-    confidence: 87
-    description: Beam spot diameter for precise localized cleaning
+    confidence: 84
+    description: Beam spot diameter for precise cleaning resolution
     min: 30
     max: 100
   repetitionRate:
     value: 50
     unit: kHz
-    confidence: 85
-    description: Optimal repetition rate for efficient cleaning with thermal management
+    confidence: 87
+    description: Optimal repetition rate for efficient cleaning coverage and thermal
+      management
     min: 20
     max: 100
   pulseWidth:
     value: 8
     unit: ns
-    confidence: 88
-    description: Short pulse duration for precise ablation of contaminants without
-      substrate damage
+    confidence: 85
+    description: Nanosecond pulse duration for efficient contaminant removal with
+      minimal thermal diffusion
     min: 5
     max: 15
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 84
+    confidence: 82
     description: Optimal scanning speed for uniform cleaning coverage
     min: 200
     max: 1000
   fluenceThreshold:
-    value: 0.8
+    value: 2.5
     unit: J/cm²
-    confidence: 91
-    description: Threshold fluence for effective contaminant removal without Gold
+    confidence: 90
+    description: Fluence threshold for effective contaminant removal without Gold
       damage
-    min: 0.5
-    max: 1.2
+    min: 1.5
+    max: 4.0
   overlapRatio:
     value: 40
     unit: '%'
@@ -177,7 +213,7 @@ machineSettings:
   passCount:
     value: 2
     unit: passes
-    confidence: 86
+    confidence: 85
     description: Recommended number of passes for complete contaminant removal
     min: 1
     max: 4
@@ -262,17 +298,21 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the gold surface is obscured by a discontinuous
-    contamination layer, approximately 2-5 µm thick. This layer, composed of organic
-    residues and atmospheric sulfides, exhibits a mottled, textured topography. The
-    underlying gold's characteristic metallic luster and grain structure are entirely
-    masked by this adherent film, which disrupts the substrate's reflectivity and
-    surface integrity.
-  afterText: Laser cleaning has fully restored the substrate, revealing a pristine
-    gold surface. The contamination layer is completely absent, exposing the metal's
-    intrinsic grain boundaries and a uniform, reflective finish. The surface is now
-    free of non-metallic deposits, with minimal topographical alteration to the underlying
-    gold.
+  beforeText: At 500x magnification, the gold surface is obscured by a non-uniform
+    contamination layer. This layer, ranging from 0.5 to 5 micrometers in thickness,
+    consists of particulate matter, organic residues, and adsorbed atmospheric compounds.
+    The contaminants form irregular patches and dendritic patterns, disrupting the
+    substrate's inherent metallic luster and creating a topographically complex, matte
+    surface. The underlying gold microstructure is entirely concealed by this adherent
+    film.
+  afterText: Laser cleaning produces a surface where the original, pristine gold substrate
+    is fully revealed. At 500x magnification, the contamination layer is completely
+    absent, exposing the characteristic grain structure of the FCC crystalline metal.
+    The surface now exhibits high reflectivity, with laser scan lines visible as subtle,
+    uniform striations. Minor, pre-existing micro-abrasions on the gold itself may
+    be visible, but no thermal damage, melting, or pitting is present. The result
+    is a topographically uniform surface with restored specular reflection, confirming
+    the selective removal of contaminants without affecting the bulk material integrity.
   description: Microscopic analysis of gold surface before and after laser cleaning
     treatment
   alt: Microscopic view of gold surface showing laser cleaning effects

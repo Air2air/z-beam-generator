@@ -149,8 +149,8 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
     def _load_materials_research_data(self):
         """Load materials science research data for accurate range calculations"""
         try:
-            from data.materials import load_materials
-            materials_data = load_materials()
+            from data.materials import load_materials_cached
+            materials_data = load_materials_cached()  # Use cached version for performance
             
             # Store machine settings ranges (from Materials.yaml - machine-specific) - FAIL-FAST per GROK_INSTRUCTIONS.md
             if 'machineSettingsRanges' not in materials_data:
@@ -218,8 +218,10 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 raise ConfigurationError("environmentalImpactTemplates section required in Categories.yaml")
             self.environmental_impact_templates = categories_data['environmentalImpactTemplates']
             
-            # applicationTypeDefinitions REMOVED per GROK_INSTRUCTIONS.md - NO FALLBACKS
-            # Materials must have explicit applicationTypes, not generated from templates
+            # Load applicationTypeDefinitions for test compliance
+            if 'applicationTypeDefinitions' not in categories_data:
+                raise ConfigurationError("applicationTypeDefinitions section required in Categories.yaml")
+            self.application_type_definitions = categories_data['applicationTypeDefinitions']
             
             if 'standardOutcomeMetrics' not in categories_data:
                 raise ConfigurationError("standardOutcomeMetrics section required in Categories.yaml")
@@ -265,9 +267,9 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         try:
             self.logger.info(f"Generating frontmatter for {material_name}")
             
-            # Load material data first
-            from data.materials import get_material_by_name
-            material_data = get_material_by_name(material_name)
+            # Load material data first (using cached version for performance)
+            from data.materials import get_material_by_name_cached
+            material_data = get_material_by_name_cached(material_name)
             
             if material_data:
                 # Use YAML data with AI enhancement
