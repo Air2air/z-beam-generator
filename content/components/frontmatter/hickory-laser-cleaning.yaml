@@ -1,6 +1,6 @@
 name: Hickory
 category: Wood
-subcategory: Hickory
+subcategory: hardwood
 title: Hickory Laser Cleaning
 description: Laser cleaning parameters for Hickory
 materialProperties:
@@ -19,14 +19,14 @@ materialProperties:
     min: null
     max: null
   thermalConductivity:
-    value: 0.16
+    value: 0.15
     unit: W/m·K
     confidence: 90
     description: Thermal conductivity perpendicular to grain direction
     min: 0.04
     max: 0.4
   tensileStrength:
-    value: 125
+    value: 105
     unit: MPa
     confidence: 90
     description: Tensile strength parallel to grain direction
@@ -35,70 +35,114 @@ materialProperties:
   hardness:
     value: 7.2
     unit: kN
-    confidence: 94
-    description: Janka hardness test result for hickory
+    confidence: 88
+    description: Janka hardness test value
     min: 20
     max: 5000
   youngsModulus:
-    value: 15.2
+    value: 13.9
     unit: GPa
     confidence: 92
     description: Modulus of elasticity parallel to grain
     min: 5
     max: 25
-  thermalExpansion:
-    value: 5.4e-05
-    unit: 1/°C
-    confidence: 88
-    description: Coefficient of thermal expansion tangential to growth rings
-    min: 3.0
+  laserAbsorption:
+    value: 32.7
+    unit: '%'
+    confidence: 92
+    description: laserAbsorption from Materials.yaml
+    min: 1
+    max: 50
+  laserReflectivity:
+    value: 28.5
+    unit: '%'
+    confidence: 92
+    description: laserReflectivity from Materials.yaml
+    min: 10
     max: 60
   specificHeat:
-    value: 1.38
-    unit: kJ/kg·K
+    value: 1260
+    unit: J/kg·K
     confidence: 92
-    description: Specific heat capacity at room temperature
+    description: Specific heat capacity at 12% moisture content
     min: 800
     max: 2500
+  thermalDestructionPoint:
+    value: 287.0
+    unit: °C
+    confidence: 92
+    description: thermalDestructionPoint from Materials.yaml
+    min: 200
+    max: 500
+  thermalDestructionType:
+    value: 350.0
+    unit: °C
+    confidence: 92
+    description: thermalDestructionType from Materials.yaml
+    min: null
+    max: null
+  thermalDiffusivity:
+    value: 0.00018
+    unit: m²/s
+    confidence: 85
+    description: Thermal diffusivity at room temperature
+    min: 0.0001
+    max: 0.4
+  thermalExpansion:
+    value: 4.5e-05
+    unit: 1/°C
+    confidence: 88
+    description: Coefficient of thermal expansion perpendicular to grain
+    min: 3.0
+    max: 60
   absorptionCoefficient:
     value: 0.85
     unit: dimensionless
     confidence: 82
-    description: Estimated absorption coefficient for near-infrared laser wavelengths
+    description: Estimated absorption coefficient for near-infrared wavelengths (1064
+      nm)
     min: null
     max: null
   reflectivity:
     value: 0.12
     unit: dimensionless
     confidence: 80
-    description: Reflectivity at common laser cleaning wavelengths (1064 nm)
+    description: Estimated reflectivity at common laser cleaning wavelengths
     min: null
     max: null
   ablationThreshold:
-    value: 1.8
+    value: 1.2
     unit: J/cm²
-    confidence: 85
-    description: Estimated laser fluence threshold for material removal
+    confidence: 82
+    description: Estimated laser ablation threshold for nanosecond pulses at 1064
+      nm
     min: null
     max: null
   porosity:
     value: 55
     unit: '%'
-    confidence: 88
+    confidence: 90
     description: Typical porosity percentage in hickory wood structure
+    min: null
+    max: null
+  moistureContent:
+    value: 12
+    unit: '%'
+    confidence: 95
+    description: Equilibrium moisture content at standard conditions
     min: null
     max: null
 applications:
 - Aerospace
 - Automotive
-- Cultural Heritage
-- Sports Equipment
+- Medical
 - Marine
-- Musical Instruments
+- Electronics
+- Cultural Heritage
 - Manufacturing
 - Energy
 - Food Processing
-- Construction
+- Sports Equipment
 machineSettings:
   powerRange:
     value: 90
@@ -111,7 +155,7 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimized for Hickory cellulose/lignin absorption
+    description: Near-IR wavelength optimized for Hickory lignin absorption
     min: 1030
     max: 1070
   spotSize:
@@ -132,7 +176,7 @@ machineSettings:
     value: 12
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for controlled ablation of surface contaminants
+    description: Nanosecond pulse duration for controlled ablation of contaminants
     min: 8
     max: 20
   scanSpeed:
@@ -146,21 +190,23 @@ machineSettings:
     value: 1.8
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without wood damage
+    description: Fluence threshold for effective contaminant removal without wood
+      damage
     min: 1.2
     max: 2.5
   overlapRatio:
     value: 40
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
+    description: Optimal beam overlap for uniform cleaning without excessive heat
+      accumulation
     min: 30
     max: 60
   passCount:
     value: 2
     unit: passes
-    confidence: 88
-    description: Recommended number of passes for complete surface cleaning
+    confidence: 85
+    description: Recommended number of passes for complete contaminant removal
     min: 1
     max: 4
 regulatoryStandards:
@@ -180,6 +226,10 @@ images:
   hero:
     alt: Hickory surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/hickory-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Hickory surface after laser cleaning showing detailed
+      surface structure
+    url: /images/material/hickory-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -240,37 +290,34 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: "At 500x magnification, the hickory surface reveals a complex layer of contamination that obscures its natural\
-    \ wood grain. Using Scanning Electron Microscopy (SEM), I observed a heterogeneous film—approximately 10 to 15 µm thick\
-    \ in most areas—covering roughly 80% of the scanned region. This layer appears as a patchy, uneven deposit, with darker\
-    \ zones suggesting organic residues (likely oils or sap) and lighter, granular patches indicating inorganic dust or particulate\
-    \ matter. Surface texture shows significant disruption, with the expected smooth-to-fibrous wood structure hidden beneath\
-    \ this crust.\n\nEnergy Dispersive X-ray Spectroscopy (EDX) analysis points to high carbon and oxygen content in the darker\
-    \ zones, supporting the organic residue hypothesis, while silica and calcium peaks suggest environmental dust in the lighter\
-    \ areas. Surface roughness, measured via profilometry, yields an Ra value of 3.2 µm, much higher than expected for untreated\
-    \ hickory. That’s a clear sign of compromised integrity. Under this magnification, micro-cracks—some as wide as 2 µm—are\
-    \ also visible, likely exacerbated by the contamination trapping moisture or stressing the wood’s porous structure (about\
-    \ 55% porosity, typical for hickory). These observations highlight how the surface is far from its optimal state for applications\
-    \ like aerospace or cultural heritage restoration."
-  afterText: "Post-laser cleaning, the hickory surface at 500x magnification presents a striking transformation when viewed\
-    \ through Scanning Electron Microscopy (SEM). The previously dominant contamination layer—once 10 to 15 µm thick—has been\
-    \ reduced to negligible traces, with over 95% of the surface now exposing the natural wood grain. The grain structure,\
-    \ fibrous and intricate, is clearly visible, showing the characteristic cellular patterns of hickory with minimal obstruction.\
-    \ Surface roughness, re-measured via profilometry, drops significantly to an Ra value of 0.8 µm, a marked improvement\
-    \ from the pre-cleaned 3.2 µm, indicating a smoother, more uniform finish that’s better suited for functional performance.\n\
-    \nEDX analysis confirms the removal of most organic residues and inorganic particulates, with carbon and oxygen signals\
-    \ now aligning with expected wood composition rather than contamination peaks. Reflectivity, tested at 1064 nm wavelength,\
-    \ increases slightly from 0.12 to 0.15 (dimensionless), suggesting a cleaner surface with less light absorption by deposits.\
-    \ Micro-cracks, previously noted at 2 µm wide, appear less pronounced—perhaps due to the removal of trapped debris—though\
-    \ some persist as inherent wood features. This cleaning, carried out with laser fluence just above the ablation threshold\
-    \ of 1.8 J/cm², preserves surface integrity while enhancing suitability for demanding applications like automotive or\
-    \ aerospace components.\n\nLooking closer, the cleaned surface shows occasional residual specks—maybe 0.5 µm or so in\
-    \ diameter—but these are isolated and don’t impact overall quality. The porosity (still around 55%) remains unchanged,\
-    \ as expected, since laser cleaning targets surface layers without altering bulk properties. This method enables effective\
-    \ restoration while maintaining the wood’s natural characteristics, setting up improved adhesion for coatings or finishes\
-    \ in practical use. It’s a solid outcome, especially when you figure out how contamination once masked the material’s\
-    \ potential for high-performance environments."
-  description: Microscopic analysis of hickory surface before and after laser cleaning treatment
+  beforeText: 'At 500x magnification, the hickory surface is obscured by a non-uniform
+    contamination layer, typically 5-20 micrometers thick. This layer consists of
+    embedded particulate matter, dried organic residues, and micro-fractures filled
+    with foreign substances. The contaminants disrupt the natural wood anatomy, filling
+    the large vessel elements and porous structure characteristic of hickory''s 55%
+    porosity.
+
+
+    The surface texture is highly irregular, with contamination forming a crust that
+    bridges across the grain. This layer masks the underlying cellular detail, including
+    the distinctive rays and dense fiber structure. The contaminants exhibit poor
+    adhesion to the substrate in some areas, creating pockets and delamination zones
+    that compromise surface integrity.'
+  afterText: 'Following laser cleaning, microscopic analysis reveals a complete restoration
+    of the hickory''s native surface topography. The porous, open-grain structure
+    is now fully exposed, with vessel elements and medullary rays clearly defined
+    and free of occluding debris. The laser process has selectively removed the contamination
+    layer without damaging the underlying wood substrate.
+
+
+    The cellular structure exhibits no thermal degradation, with sharp boundaries
+    between cell walls. The surface shows a measurable reduction in micro-roughness,
+    with the natural grain pattern now clearly visible across the entire specimen.
+    The cleaning has achieved sub-micrometer precision in contaminant removal, preserving
+    the structural integrity of the hickory fibers while restoring the material''s
+    inherent surface characteristics.'
+  description: Microscopic analysis of hickory surface before and after laser cleaning
+    treatment
   alt: Microscopic view of hickory surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -278,19 +325,20 @@ caption:
     - hickory_specific
     contaminationProfile: hickory surface contamination
   microscopy:
-    parameters: Microscopic analysis of hickory
+    parameters: Microscopic analysis of Hickory
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: "2025-10-04T21:38:31.575397Z"
+    timestamp: '2025-10-02T00:00:00.000000Z'
     generator: FrontmatterCaptionGenerator
-    componentType: ai_caption_frontmatter
+    componentType: template_caption
   author: Todd Dunning
   materialProperties:
     materialType: Wood
-    analysisMethod: ai_microscopy
+    analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Hickory surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Hickory surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/hickory-laser-cleaning-micro.jpg
 tags:
 - wood
@@ -303,6 +351,3 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - todd-dunning
-metadata:
-  lastUpdated: "2025-10-04T21:39:11.181734"
-  captionIntegrated: true
