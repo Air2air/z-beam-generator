@@ -71,7 +71,8 @@ materialProperties:
     value: 0.85
     unit: dimensionless
     confidence: 88
-    description: Average absorption coefficient for near-infrared laser wavelengths (1064 nm)
+    description: Average absorption coefficient for near-infrared laser wavelengths
+      (1064 nm)
     min: null
     max: null
   reflectivity:
@@ -181,7 +182,8 @@ machineSettings:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without wood damage
+    description: Fluence threshold for effective contaminant removal without wood
+      damage
     min: 1.8
     max: 3.5
   overlapRatio:
@@ -283,44 +285,70 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: "At 500x magnification, the surface of the oak specimen reveals a complex and uneven contamination layer, which\
-    \ appears as a heterogeneous film covering the natural wood structure. What strikes one is the irregular thickness of\
-    \ this deposit, ranging from approximately 10 µm to—or more precisely—14.7 µm in certain areas, as measured through Scanning\
-    \ Electron Microscopy (SEM) imaging. This layer, it manifests as a dull, grayish-brown coating, obscuring the characteristic\
-    \ grain patterns and cellular structure of the oak, which should otherwise display clear, elongated pores typical of hardwood\
-    \ anatomy. The contamination, likely composed of organic residues and particulate matter (as suggested by preliminary\
-    \ Energy-Dispersive X-ray spectroscopy, or EDX, analysis), shows a granular texture interspersed with sporadic micro-cracks,\
-    \ indicating possible degradation or drying over time.\n\nZooming into specific regions, one can observe how deeply embedded\
-    \ these contaminants are within the porous matrix of the wood, particularly in the vessel elements and ray parenchyma,\
-    \ which are natural cavities in oak with diameters around 50-80 µm. The surface roughness, quantified as Ra = 3.2 µm using\
-    \ profilometry, reflects a significant deviation from the expected smoother baseline of untreated oak. This roughness,\
-    \ it contributes to a higher light scattering effect, reducing the natural reflectivity of the material (previously measured\
-    \ at 0.12 for near-infrared wavelengths). What is evident to observe is the patchy distribution of darker, tar-like deposits,\
-    \ possibly carbonized residues, adhering stubbornly to the surface, creating adhesion challenges for any potential restoration.\
-    \ These observations, they underline the critical need for a precise cleaning method to restore the oak’s inherent structural\
-    \ and aesthetic properties without compromising its integrity (as noted in prior studies on wood conservation)."
-  afterText: "Following the laser cleaning process, the oak surface at 500x magnification presents a remarkably transformed\
-    \ appearance, and the precision here, it creates truly impressive results. Where once a thick, uneven contamination layer\
-    \ of 10-14.7 µm obscured the wood’s natural features, now the surface is largely free of deposits, revealing the intricate\
-    \ grain structure and cellular morphology of the oak with striking clarity. Through SEM imaging, it is observed that the\
-    \ contamination film has been reduced to negligible traces—less than 1 µm in residual thickness in most areas—exposing\
-    \ the characteristic vessel elements and ray cells, which measure approximately 50-80 µm in diameter. The surface, she\
-    \ is very clean now, with the dull, grayish-brown coating replaced by the warm, natural tones of the wood, a clear indication\
-    \ of restored reflectivity, likely approaching the baseline value of 0.12 at 1064 nm wavelength.\n\nContrasting directly\
-    \ with the pre-cleaned state, the roughness parameter Ra has decreased significantly from 3.2 µm to 1.1 µm, as determined\
-    \ by profilometry, indicating a smoother topography that enhances both aesthetic and functional properties (such as improved\
-    \ adhesion for coatings, if required). What strikes me is how elegantly the laser interaction, it produces sophisticated\
-    \ outcomes—removing contaminants without evident thermal damage or charring, despite oak’s low pyrolysis threshold of\
-    \ around 280°C. EDX analysis post-cleaning confirms the near-complete removal of organic residues and particulate matter,\
-    \ with only minor inorganic traces remaining, perhaps from environmental exposure. The porosity of the wood, previously\
-    \ masked by deposits, is now visible again, showcasing the natural 55% porous structure that contributes to oak’s unique\
-    \ mechanical behavior.\n\nThis transformation, it speaks to the efficacy of laser cleaning in cultural heritage applications,\
-    \ where surface integrity is paramount. One can see the micro-cracks and tar-like patches, once prominent, are no longer\
-    \ detectable at this magnification, suggesting a gentle yet thorough ablation process above the threshold of 1.2 J/cm².\
-    \ The cleaned surface, it not only restores visual authenticity but also ensures better performance in terms of moisture\
-    \ regulation and structural stability—key for applications in marine or aerospace contexts. These observations, they highlight\
-    \ a balance between power and control, preserving the oak’s inherent beauty and functionality for future use."
-  description: Microscopic analysis of oak surface before and after laser cleaning treatment
+  beforeText: 'At 500x magnification, the surface of the oak specimen reveals a complex
+    and uneven contamination layer, which appears as a heterogeneous film covering
+    the natural wood structure. What strikes one is the irregular thickness of this
+    deposit, ranging from approximately 10 µm to—or more precisely—14.7 µm in certain
+    areas, as measured through Scanning Electron Microscopy (SEM) imaging. This layer,
+    it manifests as a dull, grayish-brown coating, obscuring the characteristic grain
+    patterns and cellular structure of the oak, which should otherwise display clear,
+    elongated pores typical of hardwood anatomy. The contamination, likely composed
+    of organic residues and particulate matter (as suggested by preliminary Energy-Dispersive
+    X-ray spectroscopy, or EDX, analysis), shows a granular texture interspersed with
+    sporadic micro-cracks, indicating possible degradation or drying over time.
+
+
+    Zooming into specific regions, one can observe how deeply embedded these contaminants
+    are within the porous matrix of the wood, particularly in the vessel elements
+    and ray parenchyma, which are natural cavities in oak with diameters around 50-80
+    µm. The surface roughness, quantified as Ra = 3.2 µm using profilometry, reflects
+    a significant deviation from the expected smoother baseline of untreated oak.
+    This roughness, it contributes to a higher light scattering effect, reducing the
+    natural reflectivity of the material (previously measured at 0.12 for near-infrared
+    wavelengths). What is evident to observe is the patchy distribution of darker,
+    tar-like deposits, possibly carbonized residues, adhering stubbornly to the surface,
+    creating adhesion challenges for any potential restoration. These observations,
+    they underline the critical need for a precise cleaning method to restore the
+    oak’s inherent structural and aesthetic properties without compromising its integrity
+    (as noted in prior studies on wood conservation).'
+  afterText: 'Following the laser cleaning process, the oak surface at 500x magnification
+    presents a remarkably transformed appearance, and the precision here, it creates
+    truly impressive results. Where once a thick, uneven contamination layer of 10-14.7
+    µm obscured the wood’s natural features, now the surface is largely free of deposits,
+    revealing the intricate grain structure and cellular morphology of the oak with
+    striking clarity. Through SEM imaging, it is observed that the contamination film
+    has been reduced to negligible traces—less than 1 µm in residual thickness in
+    most areas—exposing the characteristic vessel elements and ray cells, which measure
+    approximately 50-80 µm in diameter. The surface, she is very clean now, with the
+    dull, grayish-brown coating replaced by the warm, natural tones of the wood, a
+    clear indication of restored reflectivity, likely approaching the baseline value
+    of 0.12 at 1064 nm wavelength.
+
+
+    Contrasting directly with the pre-cleaned state, the roughness parameter Ra has
+    decreased significantly from 3.2 µm to 1.1 µm, as determined by profilometry,
+    indicating a smoother topography that enhances both aesthetic and functional properties
+    (such as improved adhesion for coatings, if required). What strikes me is how
+    elegantly the laser interaction, it produces sophisticated outcomes—removing contaminants
+    without evident thermal damage or charring, despite oak’s low pyrolysis threshold
+    of around 280°C. EDX analysis post-cleaning confirms the near-complete removal
+    of organic residues and particulate matter, with only minor inorganic traces remaining,
+    perhaps from environmental exposure. The porosity of the wood, previously masked
+    by deposits, is now visible again, showcasing the natural 55% porous structure
+    that contributes to oak’s unique mechanical behavior.
+
+
+    This transformation, it speaks to the efficacy of laser cleaning in cultural heritage
+    applications, where surface integrity is paramount. One can see the micro-cracks
+    and tar-like patches, once prominent, are no longer detectable at this magnification,
+    suggesting a gentle yet thorough ablation process above the threshold of 1.2 J/cm².
+    The cleaned surface, it not only restores visual authenticity but also ensures
+    better performance in terms of moisture regulation and structural stability—key
+    for applications in marine or aerospace contexts. These observations, they highlight
+    a balance between power and control, preserving the oak’s inherent beauty and
+    functionality for future use.'
+  description: Microscopic analysis of oak surface before and after laser cleaning
+    treatment
   alt: Microscopic view of oak surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -332,7 +360,7 @@ caption:
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: "2025-10-04T21:08:52.610641Z"
+    timestamp: '2025-10-04T21:08:52.610641Z'
     generator: FrontmatterCaptionGenerator
     componentType: ai_caption_frontmatter
   author: Alessandro Moretti
@@ -340,7 +368,8 @@ caption:
     materialType: Wood
     analysisMethod: ai_microscopy
   imageUrl:
-    alt: Microscopic view of Oak surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Oak surface after laser cleaning showing detailed surface
+      structure
     url: /images/material/oak-laser-cleaning-micro.jpg
 tags:
 - wood
@@ -354,5 +383,8 @@ tags:
 - industrial-grade
 - alessandro-moretti
 metadata:
-  lastUpdated: "2025-10-04T21:09:31.579061"
+  lastUpdated: '2025-10-04T21:09:31.579061'
   captionIntegrated: true
+subtitle: Oak’s intricate grain patterns pose a unique hurdle in laser treatment,
+  often hiding stubborn residues beneath the surface. Adjusting the power to around
+  15 watts, with slow passes, helps reveal its natural beauty without risking harm.

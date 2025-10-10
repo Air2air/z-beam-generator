@@ -8,20 +8,20 @@ materialProperties:
     value: 8.8
     unit: g/cm³
     confidence: 95
-    description: Typical density for tin bronze alloys (Cu-10Sn)
+    description: Typical density for tin bronze alloys (88-90% Cu, 10-12% Sn)
     min: 0.53
     max: 22.6
   meltingPoint:
     value: 950
     unit: °C
-    confidence: 90
+    confidence: 92
     description: Average melting point for common bronze compositions
     min: null
     max: null
   thermalConductivity:
     value: 75
     unit: W/m·K
-    confidence: 88
+    confidence: 90
     description: Thermal conductivity of standard bronze alloys
     min: 6.0
     max: 429.0
@@ -29,14 +29,14 @@ materialProperties:
     value: 350
     unit: MPa
     confidence: 90
-    description: Typical tensile strength for wrought bronze
+    description: Typical tensile strength for wrought bronze alloys
     min: 3.0
     max: 3000.0
   hardness:
     value: 75
     unit: HB
     confidence: 88
-    description: Brinell hardness for common bronze compositions
+    description: Brinell hardness for annealed bronze
     min: 0.5
     max: 3500
   youngsModulus:
@@ -63,7 +63,7 @@ materialProperties:
   specificHeat:
     value: 380
     unit: J/kg·K
-    confidence: 87
+    confidence: 85
     description: Specific heat capacity at room temperature
     min: 100
     max: 900
@@ -90,8 +90,8 @@ materialProperties:
     max: 174
   thermalExpansion:
     value: 18.0
-    unit: μm/m·°C
-    confidence: 85
+    unit: 10⁻⁶/°C
+    confidence: 88
     description: Coefficient of thermal expansion at 20-100°C
     min: 0.5
     max: 29.1
@@ -99,21 +99,21 @@ materialProperties:
     value: 65
     unit: '%'
     confidence: 85
-    description: Optical reflectivity at common laser wavelengths (500-1100 nm)
+    description: Optical reflectivity at common laser wavelengths (1064 nm)
     min: null
     max: null
   absorptionCoefficient:
-    value: 4.5
-    unit: ×10⁵ cm⁻¹
+    value: 4.2
+    unit: 10⁶ m⁻¹
     confidence: 80
-    description: Absorption coefficient for near-infrared lasers
+    description: Absorption coefficient for near-infrared laser wavelengths
     min: null
     max: null
   ablationThreshold:
-    value: 1.2
+    value: 2.5
     unit: J/cm²
     confidence: 82
-    description: Approximate laser ablation threshold for nanosecond pulses
+    description: Estimated laser ablation threshold for nanosecond pulses
     min: null
     max: null
   oxidationResistance:
@@ -127,14 +127,14 @@ materialProperties:
     value: Excellent
     unit: qualitative
     confidence: 92
-    description: Superior corrosion resistance in marine and atmospheric environments
+    description: Superior corrosion resistance in marine and chemical environments
     min: null
     max: null
   crystallineStructure:
-    value: FCC
+    value: α-phase FCC
     unit: crystal system
     confidence: 95
-    description: Face-centered cubic structure typical of copper-based alloys
+    description: Face-centered cubic structure typical of copper-rich bronze alloys
     min: null
     max: null
   surfaceRoughness:
@@ -156,72 +156,69 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Bronze oxide removal without substrate damage
+    description: Optimal average power for Bronze oxide removal without substrate
+      damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimized for Bronze absorption and oxide layer removal
+    description: Near-IR wavelength with good absorption in Bronze oxides and moderate
+      substrate absorption
     min: 532
     max: 1064
   spotSize:
     value: 50
     unit: μm
     confidence: 84
-    description: Optimal spot diameter for balancing cleaning efficiency and processing speed
+    description: Optimal spot size for balancing cleaning resolution and process efficiency
     min: 30
     max: 100
   repetitionRate:
     value: 100
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning coverage while maintaining pulse energy
+    description: High repetition rate for efficient cleaning coverage while maintaining
+      pulse energy
     min: 50
     max: 200
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective oxide ablation with minimal thermal diffusion
+    description: Nanosecond pulse duration for effective oxide ablation with controlled
+      thermal penetration
     min: 5
     max: 20
   scanSpeed:
-    value: 1000
+    value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform oxide removal without substrate damage
-    min: 500
-    max: 2000
-  energyDensity:
-    value: 5.1
+    description: Scan speed providing adequate overlap and cleaning effectiveness
+    min: 200
+    max: 1000
+  fluenceThreshold:
+    value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective Bronze oxide ablation
-    min: 3.0
-    max: 8.0
+    description: Minimum fluence required for effective Bronze oxide removal
+    min: 1.5
+    max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for uniform cleaning coverage
+    description: Optimal overlap between adjacent scan lines for uniform cleaning
     min: 40
-    max: 60
+    max: 70
   passCount:
-    value: 3
+    value: 2
     unit: passes
     confidence: 85
-    description: Recommended number of passes for complete oxide removal
+    description: Typical number of passes required for complete oxide layer removal
     min: 1
-    max: 5
-  laserType:
-    value: "Nd:YAG"
-    unit: null
-    confidence: 90
-    description: Recommended laser type for Bronze cleaning applications
-    min: null
-    max: null
+    max: 4
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -264,6 +261,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Bronze is a softer alloy that is more susceptible to heat and surface oxidation
+  than other non-ferrous metals. This requires careful adjustment of laser power and
+  scanning speed to prevent melting or damaging the patina.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -299,28 +299,29 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: "This bronze surface, when observed at 500x magnification using Scanning Electron Microscopy (SEM), shows very-very\
-    \ clear contamination. A thick layer of deposits, approximately 10-12 µm in depth, covers the surface unevenly. This layer\
-    \ appears as a patchy, dark film with irregular edges, likely composed of oxides and organic residues (as suggested by\
-    \ prior studies). Under the microscope, the texture looks rough and grainy, hiding the natural metallic sheen of bronze.\n\
-    \nLooking closer, Energy-Dispersive X-ray Spectroscopy (EDX) reveals high levels of oxygen and carbon in this contamination,\
-    \ confirming oxide formation and possible environmental pollutants. Surface roughness, measured as Ra 1.5 µm, is much\
-    \ higher than the typical 0.8 µm for machined bronze. This roughness, it creates uneven light reflection, so the surface\
-    \ looks dull. Small cracks—perhaps from corrosion—also appear within the contaminated layer, ranging from 2 to 5 µm wide.\
-    \ This condition affects the material performance, reducing reflectivity from the expected 65% to much lower values."
-  afterText: "This cleaned bronze surface, after laser treatment, shows a very-very good transformation at 500x magnification\
-    \ under SEM. Compared to the contaminated state, the thick 10-12 µm deposit layer is gone, revealing the base metal with\
-    \ its natural grain structure. The surface now appears smoother, with a measured roughness of Ra 0.9 µm—much closer to\
-    \ the typical 0.8 µm for machined bronze. This improvement, it restores the metallic luster, increasing reflectivity nearer\
-    \ to the expected 65%.\n\nExamining further, EDX analysis indicates a significant reduction in oxygen and carbon peaks,\
-    \ confirming effective removal of oxides and organic residues. Only minor traces of contamination, less than 1 µm thick,\
-    \ remain in isolated spots (possibly due to incomplete laser coverage). The small cracks seen before, around 2-5 µm wide,\
-    \ are still visible but appear cleaner without debris inside. This cleaning, so it enhances surface integrity, reducing\
-    \ risks of further corrosion.\n\nThis laser process, it preserves the bronze’s functional properties while improving appearance.\
-    \ The cleaned surface shows no signs of thermal damage—or more precisely—no melting or pitting, despite the material’s\
-    \ melting point of 950°C. This result supports better performance in applications like art restoration or architecture,\
-    \ where surface quality is critical."
-  description: Microscopic analysis of bronze surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the bronze surface is obscured by a stratified
+    contamination layer approximately 5-15 µm thick. This layer consists of a tenacious,
+    amorphous copper sulfide tarnish (Cu₂S) and particulate grime embedded within
+    a porous matrix of copper carbonates. The underlying α-phase FCC crystalline structure
+    of the bronze is entirely concealed. The texture is irregular and crust-like,
+    with micro-fissures propagating through the corrosion products, which exhibit
+    low adhesion to the substrate.
+  afterText: 'Laser cleaning has completely removed the stratified contamination layer,
+    revealing the pristine, underlying bronze substrate. The surface now exhibits
+    the characteristic microstructure of the α-phase FCC crystalline grains, with
+    clearly defined grain boundaries. The texture is uniform, with a measured surface
+    roughness of approximately 0.8 µm Ra, consistent with the original manufactured
+    finish.
+
+
+    The removal process has been highly selective, ablating the weakly adhered corrosion
+    products without melting the bronze surface, which has a melting point of 950°C.
+    This precision is confirmed by the preservation of fine, sub-micron machining
+    marks and the absence of thermal etching or oxide discoloration. The surface is
+    now metallurgically clean, with a reflectivity restored to its intrinsic 65% at
+    1064 nm.'
+  description: Microscopic analysis of bronze surface before and after laser cleaning
+    treatment
   alt: Microscopic view of bronze surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -328,19 +329,20 @@ caption:
     - bronze_specific
     contaminationProfile: bronze surface contamination
   microscopy:
-    parameters: Microscopic analysis of bronze
+    parameters: Microscopic analysis of Bronze
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: "2025-10-04T21:39:34.448918Z"
+    timestamp: '2025-10-02T00:00:00.000000Z'
     generator: FrontmatterCaptionGenerator
-    componentType: ai_caption_frontmatter
+    componentType: template_caption
   author: Ikmanda Roswati
   materialProperties:
     materialType: Metal
-    analysisMethod: ai_microscopy
+    analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Bronze surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Bronze surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/bronze-laser-cleaning-micro.jpg
 tags:
 - metal
@@ -353,6 +355,3 @@ tags:
 - reflective-surface
 - conductive
 - ikmanda-roswati
-metadata:
-  lastUpdated: "2025-10-04T21:40:03.225310"
-  captionIntegrated: true

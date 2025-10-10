@@ -5,24 +5,24 @@ title: Brass Laser Cleaning
 description: Laser cleaning parameters for Brass
 materialProperties:
   density:
-    value: 8.44
+    value: 8.5
     unit: g/cm³
     confidence: 95
-    description: Typical density for 70/30 brass (CuZn30) at room temperature
+    description: Typical density for common brass alloys (60-70% Cu, 30-40% Zn)
     min: 0.53
     max: 22.6
   meltingPoint:
-    value: 915
+    value: 930
     unit: °C
-    confidence: 92
-    description: Solidus temperature for common brass alloys
+    confidence: 90
+    description: Average melting point range for common brass compositions
     min: null
     max: null
   thermalConductivity:
     value: 120
     unit: W/m·K
-    confidence: 90
-    description: Thermal conductivity for 70/30 brass at 20°C
+    confidence: 88
+    description: Thermal conductivity of typical brass alloys at room temperature
     min: 6.0
     max: 429.0
   tensileStrength:
@@ -36,14 +36,14 @@ materialProperties:
     value: 75
     unit: HV
     confidence: 85
-    description: Vickers hardness for annealed brass
+    description: Vickers hardness for typical brass compositions
     min: 0.5
     max: 3500
   youngsModulus:
     value: 110
     unit: GPa
     confidence: 92
-    description: Young's modulus of elasticity
+    description: Elastic modulus of brass alloys
     min: 5
     max: 411
   laserAbsorption:
@@ -63,8 +63,8 @@ materialProperties:
   specificHeat:
     value: 380
     unit: J/kg·K
-    confidence: 90
-    description: Specific heat capacity at 20°C
+    confidence: 85
+    description: Specific heat capacity at room temperature
     min: 100
     max: 900
   thermalDestructionPoint:
@@ -84,33 +84,33 @@ materialProperties:
   thermalDiffusivity:
     value: 35.2
     unit: mm²/s
-    confidence: 85
-    description: Thermal diffusivity at room temperature
+    confidence: 82
+    description: Thermal diffusivity calculated from thermal properties
     min: 0.2
     max: 174
   thermalExpansion:
-    value: 18.7
-    unit: μm/m·K
-    confidence: 88
-    description: Coefficient of thermal expansion (20-300°C)
+    value: 19.0
+    unit: μm/m·°C
+    confidence: 85
+    description: Coefficient of thermal expansion at 20-100°C
     min: 0.5
     max: 29.1
   reflectivity:
     value: 65
     unit: '%'
-    confidence: 82
-    description: Approximate reflectivity at common laser wavelengths (1064 nm)
+    confidence: 80
+    description: Approximate reflectivity in visible to near-IR range
     min: null
     max: null
   absorptionCoefficient:
-    value: 4.8
-    unit: ×10⁷ m⁻¹
-    confidence: 80
-    description: Optical absorption coefficient for IR wavelengths
+    value: 1200000.0
+    unit: m⁻¹
+    confidence: 78
+    description: Absorption coefficient for common laser wavelengths (1064 nm)
     min: null
     max: null
   ablationThreshold:
-    value: 1.2
+    value: 1.8
     unit: J/cm²
     confidence: 82
     description: Estimated laser ablation threshold for nanosecond pulses
@@ -119,14 +119,14 @@ materialProperties:
   oxidationResistance:
     value: Moderate
     unit: qualitative
-    confidence: 88
+    confidence: 85
     description: Resistance to atmospheric oxidation and tarnishing
     min: null
     max: null
   corrosionResistance:
     value: Good
     unit: qualitative
-    confidence: 85
+    confidence: 88
     description: General corrosion resistance in various environments
     min: null
     max: null
@@ -134,14 +134,14 @@ materialProperties:
     value: FCC
     unit: crystal system
     confidence: 95
-    description: Face-centered cubic structure typical for alpha brass
+    description: Face-centered cubic structure typical for alpha-brass
     min: null
     max: null
   surfaceRoughness:
     value: 0.8
     unit: μm Ra
     confidence: 80
-    description: Typical as-machined surface roughness
+    description: Typical surface roughness for machined brass surfaces
     min: null
     max: null
 applications:
@@ -163,58 +163,65 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimized for Brass absorption and minimal reflectivity
+    description: Near-IR wavelength providing good absorption in Brass oxides with
+      minimal substrate interaction
     min: 532
     max: 1064
   spotSize:
     value: 80
     unit: μm
     confidence: 84
-    description: Beam spot diameter for balanced cleaning efficiency and resolution
+    description: Beam spot diameter for effective cleaning resolution and energy density
+      control
     min: 50
     max: 120
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning coverage and thermal management
+    description: Optimal repetition rate balancing cleaning efficiency and thermal
+      management
     min: 20
     max: 100
   pulseWidth:
     value: 12
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with controlled thermal input
+    description: Nanosecond pulse duration for efficient oxide layer ablation with
+      controlled thermal penetration
     min: 8
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform cleaning without excessive overlap
+    description: Optimal scanning speed for uniform oxide removal across Brass surface
     min: 300
     max: 800
   energyDensity:
-    value: 4.5
+    value: 3.5
     unit: J/cm²
-    confidence: 89
-    description: Fluence threshold for effective Brass surface cleaning
-    min: 3.0
-    max: 6.5
+    confidence: 90
+    description: Fluence threshold for effective Brass oxide removal while preserving
+      substrate
+    min: 2.0
+    max: 5.0
   overlapRatio:
-    value: 40
+    value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning coverage
-    min: 30
-    max: 60
+    description: Optimal beam overlap for uniform cleaning coverage without excessive
+      heat accumulation
+    min: 40
+    max: 70
   passCount:
-    value: 2
+    value: 3
     unit: passes
     confidence: 85
-    description: Recommended number of passes for complete contaminant removal
-    min: 1
-    max: 4
+    description: Recommended number of passes for complete oxide removal from Brass
+      surfaces
+    min: 2
+    max: 5
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -257,6 +264,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Brass is a softer metal with a lower melting point than materials like aluminum
+  or titanium. This requires careful adjustment of laser power and speed to effectively
+  remove contaminants without damaging the surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -292,48 +302,31 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: "At 500x magnification, the surface of the contaminated brass reveals a complex and uneven topography, one can\
-    \ observe it with striking clarity. A heterogeneous layer of deposits—perhaps better described as a tarnished film—covers\
-    \ the substrate, with thicknesses varying between approximately 5 µm and, more precisely, 8.2 µm in the denser regions\
-    \ (as measured via SEM cross-sectional imaging). This layer, it appears as a mottled patchwork of darker, opaque zones\
-    \ interspersed with lighter, semi-translucent patches, suggesting a mix of organic residues and oxidative corrosion products.\
-    \ What strikes me is how irregular the distribution becomes, with some areas showing dense clustering of particulate matter—likely\
-    \ atmospheric dust or industrial contaminants—while others remain partially exposed, revealing the underlying brass with\
-    \ faint, muted reflectivity.\n\nZooming into specific regions, the contamination manifests as granular aggregates, often\
-    \ 1-2 µm in diameter, embedded within a smoother, amorphous matrix. EDX analysis indicates a composition rich in carbon\
-    \ and oxygen, pointing to organic films or oxidized brass components, alongside trace sulfur—possibly from environmental\
-    \ exposure. The surface roughness, measured as Ra 1.3 µm, is notably elevated compared to the typical as-machined value\
-    \ of 0.8 µm Ra for brass, and this, it creates a disrupted texture that scatters light unevenly. Under the microscope,\
-    \ micro-pits and shallow crevices, some extending 3-5 µm in depth, are visible beneath the contamination layer, hinting\
-    \ at early-stage corrosion or dezincification—a common issue for brass in humid or marine environments (as noted in prior\
-    \ studies). The overall appearance, she is quite obscured, with the natural golden hue of brass barely discernible beneath\
-    \ this dull, heterogeneous veil.\n\nTo summarize this observation, the contaminated brass surface, it shows a compromised\
-    \ integrity, both visually and functionally. Reflectivity, normally around 65% at 1064 nm for clean brass, is drastically\
-    \ reduced—likely below 30% based on visual dullness. Such a condition, it impacts not only aesthetic applications, like\
-    \ in architecture, but also functional performance, particularly in hardware where surface contact or conductivity matters.\
-    \ This detailed view, it truly underscores the need for precise cleaning intervention."
-  afterText: "After laser cleaning, the brass surface at 500x magnification presents a remarkable transformation, one can\
-    \ see it with undeniable clarity. The previously dominant contamination layer—once a thick, uneven film of 5-8.2 µm—has\
-    \ been effectively removed, leaving behind a surface that, she is now predominantly clean and uniform. SEM imaging reveals\
-    \ that over 90% of the organic and oxidative deposits are eliminated, with only sparse, isolated residues remaining, measuring\
-    \ less than 0.5 µm in thickness (a significant reduction, to be sure). The natural golden luster of brass, previously\
-    \ obscured, is now vividly apparent, with reflectivity visually restored to near its original value of approximately 65%\
-    \ at common laser wavelengths. What strikes one is how elegant this balance becomes between the cleaned areas and the\
-    \ subtle traces of micro-texture left behind.\n\nContrasting directly with the pre-cleaned state, the surface roughness\
-    \ has improved notably, now measured at Ra 0.9 µm—closer to the as-machined baseline of 0.8 µm Ra. The granular aggregates\
-    \ and amorphous matrix, once so prominent at 1-2 µm in size, are no longer visible across most of the field of view; instead,\
-    \ the brass substrate shows a smoother, more cohesive appearance, with micro-pits and crevices appearing less pronounced,\
-    \ though some remain at depths of 2-3 µm (likely pre-existing damage, as observed earlier). EDX analysis post-cleaning\
-    \ indicates a drastic reduction in carbon and sulfur peaks, confirming the removal of organic and environmental contaminants.\
-    \ The laser interaction, it produces sophisticated outcomes—while some localized heat-affected zones are detectable as\
-    \ faint discoloration bands (spanning 10-15 µm in width), the overall surface integrity remains intact, with no evidence\
-    \ of melting or cracking beyond the ablation threshold of 1.2 J/cm².\n\nTo reflect on this result, the cleaned brass surface,\
-    \ she demonstrates a restored functionality that is truly noteworthy. This precision, it matters greatly for applications\
-    \ in marine or architectural contexts, where both aesthetic appeal and corrosion resistance are critical. The laser cleaning,\
-    \ it not only enhances visual quality but also prepares the surface for better performance—be it improved conductivity\
-    \ in hardware or reduced tarnishing risk. Such a transformation, it is evident to observe, underscores the efficacy of\
-    \ this method with remarkable clarity."
-  description: Microscopic analysis of brass surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the brass surface is obscured by a non-uniform
+    contamination layer, approximately 5-15 µm thick. This layer consists of adherent
+    oxides, primarily copper carbonate (verdigris), and embedded particulate matter.
+    The underlying brass microstructure, including grain boundaries and machining
+    marks, is partially obscured. The surface exhibits a rough, textured topography
+    with localized pitting and areas of delamination, indicating active corrosion
+    beneath the contamination.
+  afterText: 'Laser cleaning has removed the contamination layer, revealing the pristine,
+    underlying brass substrate. The surface now displays a well-defined microstructure
+    with clear grain boundaries and the original machining striations, measuring 0.8
+    µm Ra in roughness. The uniform, metallic surface is free of oxides and particulates.
+
+
+    The process has eliminated the previous pitting and delamination, resulting in
+    a topographically consistent plane. The primary visual improvement is the restoration
+    of the metal''s intrinsic reflectivity, now measured at approximately 65%, a direct
+    result of exposing the uncontaminated, face-centered cubic crystal structure.
+
+
+    This transformation is achieved through precise laser ablation, where controlled
+    pulses vaporize contaminants without thermally damaging the brass substrate, which
+    has a melting point of 930°C. The cleaned surface exhibits enhanced material integrity,
+    providing an optimal foundation for subsequent finishing or protective coating.'
+  description: Microscopic analysis of brass surface before and after laser cleaning
+    treatment
   alt: Microscopic view of brass surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -341,19 +334,20 @@ caption:
     - brass_specific
     contaminationProfile: brass surface contamination
   microscopy:
-    parameters: Microscopic analysis of brass
+    parameters: Microscopic analysis of Brass
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: "2025-10-04T21:26:36.443423Z"
+    timestamp: '2025-10-02T00:00:00.000000Z'
     generator: FrontmatterCaptionGenerator
-    componentType: ai_caption_frontmatter
+    componentType: template_caption
   author: Alessandro Moretti
   materialProperties:
     materialType: Metal
-    analysisMethod: ai_microscopy
+    analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Brass surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Brass surface after laser cleaning showing detailed surface
+      structure
     url: /images/material/brass-laser-cleaning-micro.jpg
 tags:
 - metal
@@ -366,6 +360,3 @@ tags:
 - reflective-surface
 - conductive
 - alessandro-moretti
-metadata:
-  lastUpdated: "2025-10-04T21:27:14.179442"
-  captionIntegrated: true

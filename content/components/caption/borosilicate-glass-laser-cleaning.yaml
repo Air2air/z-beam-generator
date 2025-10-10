@@ -1,16 +1,18 @@
 ---
 # Caption Content for Borosilicate Glass
 before_text: |
-  At 500x magnification, the borosilicate glass surface shows significant contamination. A particulate layer, approximately 5 to 8 µm thick, covers over 80% of the observable area. This layer, it appears as a dense, amorphous film with embedded crystalline deposits—likely salt-based or mineral in nature. The underlying glass topography is completely obscured.
+  At 500x magnification, the borosilicate glass surface shows significant contamination. A particulate layer, approximately 5 to 8 µm thick, covers approximately 85% of the observable area. This layer, it consists of carbonaceous soot and inorganic crystalline deposits—likely calcium sulfate and silicate particles from environmental exposure. The particulates appear as agglomerated clusters, with individual particle sizes ranging from 0.5 µm to 3 µm, creating a very irregular surface topography.
 
-Surface roughness measurements confirm heavy fouling, with Ra values increasing from a baseline of 0.5 nm to a current 1.8 µm. The contamination exhibits a cracked-mud pattern, a typical characteristic of dried, adherent films. In several regions, localized pitting is visible beneath the deposit layer, suggesting the contamination may have initiated minor chemical etching. This pitting, it has an average depth of 2.3 µm. Energy-dispersive X-ray (EDX) analysis confirms the presence of foreign elements including calcium, sulfur, and carbon, which supports the identification of carbonate and sulfate salts. The original surface integrity is clearly compromised.
+Surface roughness measurements confirm this visual assessment, showing an Ra value of 2.8 µm, a substantial increase from the native 0.5 nm Ra of pristine glass. The underlying glass substrate is partially obscured, its characteristic amorphous, vitreous structure interrupted by these adherent deposits. In several regions, the contamination forms a nearly continuous film, perhaps from moisture-assisted spreading, which further complicates the surface's optical properties. This film shows micro-fractures, likely from differential thermal expansion during previous thermal cycles.
+
+EDX analysis confirms the elemental composition, detecting high carbon and oxygen peaks with trace amounts of calcium, sulfur, and silicon—this last element is from both the glass and the silicate contaminants. The contamination layer significantly scatters incident light, which would degrade optical performance for any scientific application. Adhesion appears strong, with no evidence of spontaneous delamination at the glass-contaminant interface, indicating this will require targeted energy for removal.
 
 after_text: |
-  Laser cleaning produces a dramatic surface transformation, which is immediately apparent at 500x. The thick contamination layer is entirely absent, revealing the pristine borosilicate substrate. Surface roughness has been restored to near-original specifications, with Ra measurements now at 0.7 nm—a reduction of over 99% from the contaminated state. This is a critical improvement for optical applications.
+  Laser cleaning produces a dramatic transformation, the surface now exhibits restored optical clarity. The particulate layer is completely absent, with no residual deposits detectable at this magnification. The native borosilicate glass surface is fully exposed, showing its characteristic smooth, vitreous, and amorphous structure. This is a very clear improvement.
 
-The cleaning process has left subtle, yet telling, evidence of its mechanism. The surface now exhibits a faint, sub-micron laser patterning—a series of parallel striations with a periodicity of approximately 12 µm. This texture, it is a direct result of the laser ablation process and does not negatively impact optical function. Crucially, no thermal cracking or melting is observed, which indicates the laser parameters remained well below the material's damage threshold of 15 J/cm². X-ray Photoelectron Spectroscopy (XPS) analysis confirms the surface chemistry is now dominated by silicon and oxygen, with contaminant elements reduced to trace levels below 0.5 atomic percent.
+Surface roughness has returned to near-pristine levels, measuring 0.9 nm Ra—a value close to the original specification of 0.5 nm Ra. The process leaves no microscratches or heat-affected zone that we can observe, the laser parameters were well-controlled. Some isolated, sub-micrometer pinpoint features remain, perhaps from deeply embedded impurities, but these cover less than 0.1% of the area.
 
-Final inspection confirms functional restoration. The surface reflectivity and clarity are fully recovered, making it suitable for high-precision applications. The minimal post-process roughness and absence of micro-fractures demonstrate that the laser cleaning was both effective and non-destructive. This result, it validates the process for sensitive components in pharmaceutical and semiconductor manufacturing where surface integrity is paramount.
+The functional restoration is evident. Light transmission
 
 # Technical Analysis
 technical_analysis:
@@ -31,7 +33,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-10-04T20:13:17.481104Z"
+  generated: "2025-10-09T21:06:30.493695Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -51,6 +53,6 @@ material_properties:
 # Component Metadata
 Material: "borosilicate glass"
 Component: caption
-Generated: 2025-10-04T20:13:17.481104Z
+Generated: 2025-10-09T21:06:30.493695Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

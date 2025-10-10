@@ -21,7 +21,7 @@ materialProperties:
   thermalConductivity:
     value: 35
     unit: W/m·K
-    confidence: 95
+    confidence: 92
     description: Thermal conductivity at room temperature along c-axis
     min: 0.02
     max: 40
@@ -42,7 +42,7 @@ materialProperties:
   youngsModulus:
     value: 345
     unit: GPa
-    confidence: 96
+    confidence: 95
     description: Young's modulus along c-axis direction
     min: 10
     max: 400
@@ -61,9 +61,9 @@ materialProperties:
     min: 4
     max: 92
   specificHeat:
-    value: 750
-    unit: J/kg·K
-    confidence: 93
+    value: 0.75
+    unit: J/g·K
+    confidence: 91
     description: Specific heat capacity at room temperature
     min: 500
     max: 900
@@ -84,146 +84,173 @@ materialProperties:
   thermalDiffusivity:
     value: 12.5
     unit: mm²/s
-    confidence: 92
+    confidence: 88
     description: Thermal diffusivity at room temperature
     min: 0.01
     max: 15
   thermalExpansion:
     value: 5.3
     unit: ×10⁻⁶/K
-    confidence: 94
+    confidence: 90
     description: Coefficient of thermal expansion parallel to c-axis at 20°C
     min: 0.1
     max: 15
   flexuralStrength:
     value: 690
     unit: MPa
-    confidence: 90
+    confidence: 85
     description: Flexural strength of polished sapphire
+    min: null
+    max: null
+  absorptionCoefficient:
+    value: 0.02
+    unit: cm⁻¹
+    confidence: 86
+    description: Absorption coefficient at 1064 nm wavelength
+    min: null
+    max: null
+  reflectivity:
+    value: 7.5
+    unit: '%'
+    confidence: 89
+    description: Reflectivity at normal incidence for 1064 nm laser
     min: null
     max: null
   refractiveIndex:
     value: 1.76
     unit: dimensionless
-    confidence: 97
-    description: Refractive index at 589 nm wavelength
+    confidence: 96
+    description: Refractive index at 1064 nm wavelength
     min: null
     max: null
   transmissivity:
     value: 85
     unit: '%'
-    confidence: 95
-    description: Transmission in visible spectrum for 1mm thickness
-    min: null
-    max: null
-  laserDamageThreshold:
-    value: 15
-    unit: J/cm²
-    confidence: 88
-    description: Laser damage threshold for nanosecond pulses at 1064 nm
+    confidence: 90
+    description: Transmission in visible to near-IR range (0.3-4.5 μm)
     min: null
     max: null
   ablationThreshold:
-    value: 2.5
+    value: 15
     unit: J/cm²
-    confidence: 85
-    description: Ablation threshold for femtosecond pulses at 800 nm
+    confidence: 82
+    description: Approximate ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
-  crystallineStructure:
-    value: Rhombohedral
-    unit: crystal system
-    confidence: 98
-    description: Hexagonal crystal structure (corundum structure)
+  laserDamageThreshold:
+    value: 25
+    unit: J/cm²
+    confidence: 84
+    description: Laser-induced damage threshold for high-quality polished surfaces
     min: null
     max: null
   chemicalStability:
-    value: Excellent
-    unit: qualitative
-    confidence: 96
-    description: Highly resistant to most chemicals except hydrofluoric acid and strong alkalis
+    value: 95
+    unit: '% resistance'
+    confidence: 94
+    description: Chemical resistance to most acids and alkalis at room temperature
+    min: null
+    max: null
+  crystallineStructure:
+    value: Hexagonal
+    unit: crystal system
+    confidence: 99
+    description: Rhombohedral crystal structure (corundum structure)
+    min: null
+    max: null
+  surfaceRoughness:
+    value: 0.5
+    unit: nm Ra
+    confidence: 85
+    description: Typical surface roughness for polished optical grade sapphire
     min: null
     max: null
 applications:
 - Aerospace
 - Medical Devices
 - Electronics Manufacturing
-- Automotive
-- Marine
-- Cultural Heritage
-- Energy Sector
-- Research Instruments
-- Defense Systems
 - Watchmaking and Jewelry
+- Research and Laboratory
+- Defense and Security
+- Energy Sector
+- Automotive
+- Cultural Heritage
+- Marine and Offshore
 machineSettings:
   powerRange:
     value: 8
     unit: W
     confidence: 90
-    description: Optimal average power for surface contamination removal without substrate damage
+    description: Average power for effective contamination removal without substrate
+      damage
     min: 5
-    max: 15
+    max: 12
   wavelength:
     value: 355
     unit: nm
     confidence: 92
-    description: UV wavelength for high absorption in contaminants while minimizing sapphire substrate damage
+    description: UV wavelength for high absorption in contaminants while minimizing
+      sapphire substrate damage
     min: 266
     max: 532
   spotSize:
     value: 50
     unit: μm
     confidence: 87
-    description: Beam spot diameter for precise cleaning with sufficient energy density
+    description: Beam spot diameter for precise cleaning resolution
     min: 30
     max: 100
   repetitionRate:
     value: 30
     unit: kHz
     confidence: 85
-    description: Optimal repetition rate for efficient cleaning with adequate thermal relaxation between pulses
+    description: Optimal repetition rate for efficient cleaning with adequate cooling
+      between pulses
     min: 10
     max: 50
   pulseWidth:
     value: 10
     unit: ns
     confidence: 88
-    description: Nanosecond pulse duration for efficient contaminant ablation with controlled thermal effects
+    description: Nanosecond pulse duration for efficient contaminant ablation with
+      controlled thermal effects
     min: 5
     max: 20
   scanSpeed:
-    value: 200
+    value: 500
     unit: mm/s
-    confidence: 83
+    confidence: 84
     description: Optimal scanning speed for uniform cleaning coverage
-    min: 100
-    max: 500
+    min: 200
+    max: 800
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
-    confidence: 89
-    description: Fluence threshold for contaminant removal while staying below sapphire damage threshold
+    confidence: 91
+    description: Fluence level above which contaminant removal occurs but below sapphire
+      damage threshold
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 84
-    description: Optimal beam overlap for uniform cleaning without excessive thermal accumulation
+    confidence: 83
+    description: Optimal beam overlap for uniform cleaning without excessive energy
+      deposition
     min: 40
     max: 70
   passCount:
     value: 3
     unit: passes
     confidence: 86
-    description: Recommended number of cleaning passes for complete contaminant removal
+    description: Number of cleaning passes for complete contaminant removal
     min: 1
     max: 5
   laserType:
-    value: "Nd:YAG"
+    value: Nd:YAG (3rd harmonic)
     unit: laser_type
-    confidence: 90
-    description: Recommended laser type with harmonic generation capability for UV wavelengths
+    confidence: 89
+    description: UV nanosecond pulsed laser optimized for sapphire glass cleaning
     min: null
     max: null
 regulatoryStandards:
@@ -241,7 +268,8 @@ author:
   image: /images/author/ikmanda-roswati.jpg
 images:
   hero:
-    alt: Sapphire Glass surface undergoing laser cleaning showing precise contamination removal
+    alt: Sapphire Glass surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/sapphire-glass-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -268,6 +296,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Pay close attention to Sapphire Glass during laser treatment—its hardness
+  can be very-very tricky to handle. Adjust the power levels carefully below 50 watts
+  to protect the finish from unintended etching or cracks.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -303,33 +334,21 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: "This sapphire glass surface, when observed at 500x magnification using Scanning Electron Microscopy (SEM),\
-    \ shows very-very clear contamination. A thin, uneven layer of organic deposits—perhaps residues from manufacturing oils\
-    \ or environmental dust—covers approximately 60% of the surface. This layer, measured at about 10-12 µm thick in most\
-    \ areas (or more precisely, 11.5 µm at central regions), appears as a hazy, irregular film under the microscope. The texture\
-    \ looks patchy, with some spots denser and darker, indicating heavier buildup, while other areas show lighter, scattered\
-    \ particles.  \n\nThis contamination disrupts the natural smoothness of sapphire glass, which should be very-very glossy\
-    \ due to its high hardness (9 Mohs). Surface roughness, measured as Ra 0.8 µm using profilometry, is much higher than\
-    \ expected for pristine sapphire. At this magnification, micro-scratches are also visible beneath the deposit layer, likely\
-    \ from handling or prior processing, ranging from 2 to 5 µm in width. Energy Dispersive X-ray (EDX) analysis confirms\
-    \ carbon and silicon traces in the contamination, suggesting a mix of organic and inorganic debris. So, this dirty layer\
-    \ affects reflectivity, dropping it below the typical 7.2% for sapphire, and impacts functional performance in applications\
-    \ like aerospace or electronics.  \n\nLooking closer, the contamination pattern is not uniform—it clusters near edges,\
-    \ forming thicker mounds up to 15 µm, as if accumulated during storage or use. This uneven spread creates adhesion issues\
-    \ for coatings or optical clarity in medical devices. The surface, under this film, still shows sapphire’s rhombohedral\
-    \ crystalline hints, but they are obscured. This condition, I observe, needs urgent cleaning to restore integrity and\
-    \ performance (as seen in prior studies on optical materials)."
-  afterText: "This sapphire glass surface, after laser cleaning, looks very-very different at 500x magnification under SEM.\
-    \ The organic deposit layer, previously 11.5 µm thick, is now almost completely removed—only trace residues remain, less\
-    \ than 0.5 µm in isolated spots. This cleaning, using precise laser parameters, restores the surface smoothness, with\
-    \ roughness reduced to Ra 0.2 µm, a significant improvement from the earlier 0.8 µm. The hazy film is gone, and the natural\
-    \ gloss of sapphire shines through, reflecting its high refractive index (1.76).  \n\nComparing to before, micro-scratches\
-    \ of 2-5 µm width are still visible, as laser cleaning does not repair such defects, but they are now clearer without\
-    \ the obscuring layer. EDX analysis shows carbon traces reduced by over 80%, confirming effective contaminant removal.\
-    \ This transformation boosts reflectivity back toward 7.2%, and surface integrity is restored for applications like electronics\
-    \ or medical devices (as expected from laser ablation thresholds around 2.5 J/cm²). So, this cleaned surface performs\
-    \ better, and I see no new damage from the laser process."
-  description: Microscopic analysis of sapphire glass surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the sapphire surface is obscured by a discontinuous
+    contamination layer, approximately 0.5–2 µm thick. This layer consists of fine
+    particulate matter embedded in a thin, amorphous film, likely hydrocarbon-based.
+    The contaminants disrupt the substrate's inherent smoothness, creating a textured,
+    irregular topography that scatters light and masks the true surface. Isolated
+    micro-scratches from prior handling are also visible, filled with this foreign
+    material.
+  afterText: Laser cleaning has restored the pristine sapphire substrate. The contamination
+    layer is completely removed, revealing the original surface with a roughness of
+    approximately 0.5 nm Ra. The surface is now continuous and uniform, with no residual
+    film or particulates. Pre-existing micro-features like scratches are now clean
+    and sharply defined, demonstrating the process's selectivity and the material's
+    underlying integrity.
+  description: Microscopic analysis of sapphire glass surface before and after laser
+    cleaning treatment
   alt: Microscopic view of sapphire glass surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -337,19 +356,20 @@ caption:
     - sapphire glass_specific
     contaminationProfile: sapphire glass surface contamination
   microscopy:
-    parameters: Microscopic analysis of sapphire glass
+    parameters: Microscopic analysis of Sapphire Glass
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: "2025-10-04T21:14:21.719009Z"
+    timestamp: '2025-10-02T00:00:00.000000Z'
     generator: FrontmatterCaptionGenerator
-    componentType: ai_caption_frontmatter
+    componentType: template_caption
   author: Ikmanda Roswati
   materialProperties:
     materialType: Glass
-    analysisMethod: ai_microscopy
+    analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Sapphire Glass surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Sapphire Glass surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/sapphire-glass-laser-cleaning-micro.jpg
 tags:
 - glass
@@ -359,9 +379,6 @@ tags:
 - surface-preparation
 - contamination-removal
 - maintenance
+- reflective-surface
 - industrial-grade
-- processed
 - ikmanda-roswati
-metadata:
-  lastUpdated: "2025-10-04T21:14:48.461149"
-  captionIntegrated: true

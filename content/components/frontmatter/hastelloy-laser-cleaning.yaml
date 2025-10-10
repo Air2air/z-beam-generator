@@ -15,7 +15,7 @@ materialProperties:
     value: 1370
     unit: °C
     confidence: 92
-    description: Solidus temperature of Hastelloy C-276
+    description: Solidus temperature for Hastelloy C-276
     min: null
     max: null
   thermalConductivity:
@@ -26,7 +26,7 @@ materialProperties:
     min: 6.0
     max: 429.0
   tensileStrength:
-    value: 790
+    value: 690
     unit: MPa
     confidence: 92
     description: Room temperature ultimate tensile strength
@@ -64,7 +64,7 @@ materialProperties:
     value: 427
     unit: J/kg·K
     confidence: 85
-    description: Specific heat capacity at 20°C
+    description: Specific heat capacity at room temperature
     min: 100
     max: 900
   thermalDestructionPoint:
@@ -99,7 +99,7 @@ materialProperties:
     value: 0.65
     unit: dimensionless
     confidence: 82
-    description: Estimated absorption coefficient for near-IR lasers (1064 nm)
+    description: Estimated absorption coefficient for IR lasers (1064 nm)
     min: null
     max: null
   reflectivity:
@@ -120,22 +120,14 @@ materialProperties:
     value: 1200
     unit: °C
     confidence: 90
-    description: Maximum continuous service temperature in oxidizing atmospheres
+    description: Maximum continuous service temperature in oxidizing environments
     min: null
     max: null
   crystallineStructure:
     value: FCC
     unit: crystal system
     confidence: 95
-    description: Face-centered cubic crystal structure
-    min: null
-    max: null
-  corrosionResistance:
-    value: Excellent
-    unit: qualitative rating
-    confidence: 92
-    description: Exceptional resistance to pitting, stress corrosion cracking, and
-      oxidizing media
+    description: Face-centered cubic structure typical of nickel alloys
     min: null
     max: null
 applications:
@@ -160,8 +152,8 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength providing good absorption in Hastelloy surface
-      contaminants
+    description: Near-IR wavelength optimized for Hastelloy absorption and minimal
+      reflectivity
     min: 1030
     max: 1070
   spotSize:
@@ -177,48 +169,48 @@ machineSettings:
     unit: kHz
     confidence: 87
     description: High repetition rate for efficient cleaning coverage while maintaining
-      pulse energy
+      thermal management
     min: 50
     max: 200
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient contaminant ablation with
-      minimal thermal effects
+    description: Nanosecond pulse duration for efficient oxide layer ablation with
+      controlled thermal input
     min: 5
     max: 20
   scanSpeed:
-    value: 500
+    value: 1000
     unit: mm/s
     confidence: 86
-    description: Scan speed providing effective cleaning with adequate overlap between
-      pulses
-    min: 300
-    max: 1000
+    description: Optimal scanning speed for uniform oxide removal without substrate
+      damage
+    min: 500
+    max: 2000
   fluence:
     value: 5
     unit: J/cm²
     confidence: 90
-    description: Fluence threshold for effective contaminant removal on Hastelloy
-      surfaces
+    description: Energy density threshold for effective Hastelloy oxide layer removal
     min: 3
     max: 8
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for uniform cleaning without excessive thermal
-      buildup
+    description: Optimal pulse overlap for uniform cleaning coverage without excessive
+      thermal buildup
     min: 40
     max: 70
   passCount:
-    value: 3
+    value: 2
     unit: passes
     confidence: 85
-    description: Recommended number of passes for complete contaminant removal
-    min: 2
-    max: 5
+    description: Recommended number of passes for complete oxide removal from Hastelloy
+      surfaces
+    min: 1
+    max: 4
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -237,10 +229,6 @@ images:
     alt: Hastelloy surface undergoing laser cleaning showing precise contamination
       removal
     url: /images/material/hastelloy-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Hastelloy surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/hastelloy-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -266,6 +254,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Hastelloy alloys are known for their exceptional resistance to heat and
+  corrosion. This high-performance nature demands precise laser settings to effectively
+  remove contaminants without damaging the underlying surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -302,25 +293,21 @@ outcomeMetrics:
   units: []
 caption:
   beforeText: 'At 500x magnification, the Hastelloy surface is obscured by a non-uniform
-    contamination layer, typically measuring 5-20 micrometers in thickness. This layer
-    consists of embedded oxides, carbonaceous soot, and salt deposits, which form
-    a topographically complex crust. The underlying alloy''s fine-grained, face-centered
-    cubic microstructure is entirely hidden.
+    contamination layer, typically 5-20 µm thick. This layer consists of embedded
+    oxides, carbonaceous soot, and salt deposits, which form a topographically complex
+    crust. The underlying FCC grain structure is entirely masked.
 
 
-    The contamination exhibits a cracked, island-like morphology, with deposits concentrated
-    in the machining grooves and pits of the original surface finish. This heterogeneous
-    coverage creates localized galvanic cells, accelerating underlying corrosion despite
-    the alloy''s inherent resistance. The layer''s low thermal conductivity (contrasting
-    sharply with the base metal''s 11.1 W/m·K) acts as an insulating barrier, further
-    promoting thermal degradation and impeding effective heat transfer during subsequent
-    processing.'
-  afterText: Laser cleaning completely removes the contamination layer, revealing
-    the pristine, fine-grained microstructure of the Hastelloy substrate. The original
-    machining striations are now clearly visible, with a uniform, metallic luster
-    restored to the surface. At the microscopic level, the process has selectively
-    ablated contaminants without melting the underlying alloy, preserving its mechanical
-    integrity and corrosion-resistant properties.
+    The contamination exhibits a cracked, mudflat-like pattern, a result of differential
+    thermal expansion and contraction cycles. This porous layer significantly increases
+    surface roughness and creates sites for pitting and stress corrosion cracking
+    initiation. The native metallic luster and machining marks of the Hastelloy substrate
+    are completely absent beneath this insulative and often chemically active scale.'
+  afterText: Laser cleaning has fully restored the substrate's integrity. The surface
+    now reveals the fine, equiaxed grain structure of the FCC matrix, with machining
+    marks and minor pitting clearly visible. The contamination layer has been completely
+    ablated, resulting in a clean, metallurgically pure surface with minimal topographical
+    alteration to the base metal.
   description: Microscopic analysis of hastelloy surface before and after laser cleaning
     treatment
   alt: Microscopic view of hastelloy surface showing laser cleaning effects

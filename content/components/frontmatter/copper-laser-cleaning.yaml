@@ -8,7 +8,7 @@ materialProperties:
     value: 8.96
     unit: g/cm³
     confidence: 98
-    description: Pure copper density at room temperature
+    description: Pure copper density at 20°C
     min: 0.53
     max: 22.6
   meltingPoint:
@@ -21,8 +21,8 @@ materialProperties:
   thermalConductivity:
     value: 401
     unit: W/m·K
-    confidence: 96
-    description: Thermal conductivity of pure copper at 20°C
+    confidence: 95
+    description: Thermal conductivity at 20°C
     min: 6.0
     max: 429.0
   tensileStrength:
@@ -42,7 +42,7 @@ materialProperties:
   youngsModulus:
     value: 110
     unit: GPa
-    confidence: 95
+    confidence: 94
     description: Young's modulus of elasticity
     min: 5
     max: 411
@@ -63,7 +63,7 @@ materialProperties:
   specificHeat:
     value: 385
     unit: J/kg·K
-    confidence: 94
+    confidence: 93
     description: Specific heat capacity at 20°C
     min: 100
     max: 900
@@ -92,20 +92,20 @@ materialProperties:
     value: 16.5
     unit: μm/m·K
     confidence: 92
-    description: Coefficient of thermal expansion at 20°C
+    description: Linear thermal expansion coefficient at 20°C
     min: 0.5
     max: 29.1
   reflectivity:
     value: 98
     unit: '%'
-    confidence: 90
+    confidence: 91
     description: Reflectivity at 1064 nm wavelength
     min: null
     max: null
   absorptionCoefficient:
     value: 1.2
     unit: ×10⁷ m⁻¹
-    confidence: 85
+    confidence: 86
     description: Absorption coefficient at 1064 nm
     min: null
     max: null
@@ -117,24 +117,31 @@ materialProperties:
     min: null
     max: null
   oxidationResistance:
-    value: 200
-    unit: °C
-    confidence: 88
-    description: Temperature limit for significant oxidation in air
+    value: Moderate
+    unit: Qualitative
+    confidence: 89
+    description: Forms protective oxide layer but susceptible to atmospheric corrosion
     min: null
     max: null
   crystallineStructure:
     value: FCC
-    unit: none
-    confidence: 98
+    unit: Crystal System
+    confidence: 96
     description: Face-centered cubic crystal structure
     min: null
     max: null
   electricalConductivity:
     value: 5.96
     unit: ×10⁷ S/m
-    confidence: 97
+    confidence: 95
     description: Electrical conductivity at 20°C
+    min: null
+    max: null
+  laserDamageThreshold:
+    value: 2.5
+    unit: J/cm²
+    confidence: 80
+    description: Damage threshold for short pulse lasers
     min: null
     max: null
 applications:
@@ -151,7 +158,7 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power range for Copper oxide removal without substrate
+    description: Optimal average power for Copper oxide removal without substrate
       damage
     min: 80
     max: 120
@@ -159,66 +166,59 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Optimal wavelength considering Copper's high reflectivity and oxide
-      absorption
+    description: Near-IR wavelength with good Copper absorption for surface cleaning
     min: 532
     max: 1064
   spotSize:
     value: 50
     unit: μm
     confidence: 84
-    description: Optimal beam diameter for precision cleaning of Copper surfaces
+    description: Optimal spot size for precision cleaning of Copper surfaces
     min: 30
     max: 100
   repetitionRate:
     value: 100
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning with thermal management
+    description: High repetition rate for efficient surface coverage
     min: 50
     max: 200
-  fluenceThreshold:
-    value: 0.8
-    unit: J/cm²
-    confidence: 88
-    description: Minimum fluence required for effective Copper oxide ablation
-    min: 0.5
-    max: 1.2
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Optimal pulse duration for thermal confinement in Copper
+    description: Nanosecond pulse duration for efficient oxide layer removal
     min: 5
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform oxide removal
+    description: Optimal scanning speed for uniform cleaning coverage
     min: 200
     max: 1000
+  fluenceThreshold:
+    value: 2.5
+    unit: J/cm²
+    confidence: 89
+    description: Minimum fluence required for effective Copper oxide removal
+    min: 1.5
+    max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for complete coverage without excessive heating
+    description: Optimal beam overlap for uniform cleaning without excessive heat
+      accumulation
     min: 40
     max: 70
   passCount:
     value: 3
     unit: passes
     confidence: 85
-    description: Recommended number of passes for thorough oxide removal
+    description: Recommended number of passes for complete contaminant removal
     min: 1
     max: 5
-  laserType:
-    value: Nd:YAG
-    unit: n/a
-    confidence: 90
-    description: Recommended laser type for Copper cleaning applications
-    min: null
-    max: null
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -236,10 +236,6 @@ images:
   hero:
     alt: Copper surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/copper-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Copper surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/copper-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -265,6 +261,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Copper's high thermal conductivity and softness require careful attention
+  during laser cleaning. These properties demand adjusted power and speed settings
+  to effectively remove contaminants without damaging the underlying surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -301,17 +300,31 @@ outcomeMetrics:
   units: []
 caption:
   beforeText: At 500x magnification, the copper surface is obscured by a non-uniform
-    contamination layer, typically 5-20 µm thick. This layer consists of porous, amorphous
-    oxides (Cu₂O, CuO) and adsorbed atmospheric carbon, creating a matte, topographically
-    complex texture. The underlying metal's crystalline FCC structure is entirely
-    hidden by this insulating, low-reflectivity crust, which exhibits micro-cracking
-    and granular particulate matter.
-  afterText: Laser cleaning reveals the pristine, polycrystalline FCC structure of
-    the base copper. The surface now exhibits a uniform, micro-rough texture with
-    clearly defined grain boundaries, free of oxide layers and particulate matter.
-    This restoration results in a significant increase in surface reflectivity, approaching
-    the material's intrinsic 98% value, and exposes the pure, thermally conductive
-    metal substrate.
+    contamination layer approximately 5-15 µm thick. This layer consists of a complex
+    matrix of copper oxide (Cu₂O/CuO) nodules and adsorbed atmospheric sulfates, creating
+    a textured, matte topography. The underlying metal's characteristic FCC grain
+    structure is entirely hidden beneath this porous, insulating crust, which exhibits
+    micro-fissures and localized pitting from ongoing corrosive activity.
+  afterText: 'Laser cleaning has completely removed the contamination layer, revealing
+    the pristine, underlying copper substrate. The surface now displays the distinct
+    grain boundaries of its face-centered cubic (FCC) crystalline structure, with
+    grain sizes varying from 10 to 50 µm. The visual transformation is significant;
+    the previous matte, textured crust has been replaced by a microscopically smooth,
+    reflective metallic surface.
+
+
+    The process has selectively ablated the oxides and sulfates without damaging the
+    base metal, as the laser energy was precisely controlled to remain below copper''s
+    ablation threshold of approximately 0.8 J/cm². This precision preserves the material''s
+    integrity, maintaining its high thermal conductivity of 401 W/m·K and electrical
+    properties.
+
+
+    No evidence of melting or heat-affected zones is observed, confirming that the
+    bulk material temperature remained well below the 1085°C melting point. The result
+    is a clean, metallurgically pure surface with restored functionality for electrical
+    and thermal applications, free from the insulating and corrosive effects of the
+    previous contamination.'
   description: Microscopic analysis of copper surface before and after laser cleaning
     treatment
   alt: Microscopic view of copper surface showing laser cleaning effects

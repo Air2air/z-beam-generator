@@ -71,7 +71,8 @@ materialProperties:
     value: 0.75
     unit: dimensionless
     confidence: 82
-    description: Average absorption coefficient for near-infrared wavelengths (1064 nm)
+    description: Average absorption coefficient for near-infrared wavelengths (1064
+      nm)
     min: null
     max: null
   reflectivity:
@@ -261,49 +262,78 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: "At 500x magnification, the surface of the pine wood, it reveals a quite complex and uneven topography, burdened\
-    \ by a heterogeneous layer of contamination. What strikes one immediately is the presence of a dark, irregular film—perhaps\
-    \ a mix of organic residues and environmental deposits—that obscures the natural grain structure. This layer, measured\
-    \ via Scanning Electron Microscopy (SEM), varies in thickness from approximately 10 µm to—or more precisely—14.7 µm in\
-    \ denser patches, particularly within the porous regions of the wood (as observed in prior studies of softwood degradation).\
-    \ The contamination appears as a mottled, semi-opaque coating, with granular particulates embedded sporadically, likely\
-    \ composed of dust or soot, ranging in size from 2 to 5 µm as confirmed by Energy-Dispersive X-ray Spectroscopy (EDX)\
-    \ analysis.\n\nZooming into specific areas, one can see how the contamination infiltrates the natural porosity of the\
-    \ pine, which, with its average porosity of 65%, offers numerous cavities for debris to settle. The surface roughness,\
-    \ initially measured at an Ra value of 25 µm, seems exacerbated by these deposits, creating micro-scale irregularities\
-    \ that disrupt the otherwise smooth planed texture. What is evident to observe is the partial masking of the wood’s cellular\
-    \ structure—tracheids and resin canals are barely discernible beneath this film. Additionally, localized discoloration,\
-    \ possibly from fungal spores or oxidative reactions, manifests as darker streaks across the field of view, suggesting\
-    \ a chemical alteration of the surface (a phenomenon often linked to prolonged exposure). This contamination, it undoubtedly\
-    \ compromises the material’s aesthetic and functional integrity, likely reducing reflectivity from its baseline of 0.2\
-    \ at 1064 nm wavelength.\n\nIn certain regions, particularly near the edges of the sample, the layer appears cracked or\
-    \ flaking, exposing fragmented glimpses of the underlying wood. However, these exposed areas are minimal, and the overall\
-    \ impression remains one of a heavily burdened surface. Through X-ray Photoelectron Spectroscopy (XPS), preliminary data\
-    \ indicate a high carbon content in the contamination, pointing to organic pollutants or char residues. Such a condition,\
-    \ it poses challenges for applications like furniture manufacturing or cultural heritage restoration, where surface purity\
-    \ and structural clarity are paramount."
-  afterText: "Following laser cleaning, the pine surface at 500x magnification, it presents a remarkably transformed appearance,\
-    \ one that highlights the efficacy of the process with striking clarity. Where once a thick, uneven film of contamination—ranging\
-    \ from 10 to 14.7 µm—obscured the wood’s natural features, now the grain structure and cellular details are distinctly\
-    \ visible. The laser interaction, conducted above the ablation threshold of 1.2 J/cm², has effectively removed the mottled\
-    \ layer of organic residues and particulates (as previously identified via EDX), leaving behind a surface that appears\
-    \ significantly smoother. Post-cleaning surface roughness measurements, taken via profilometry, indicate a reduced Ra\
-    \ value of approximately 18 µm—a notable improvement over the initial 25 µm—suggesting enhanced uniformity (a critical\
-    \ factor for functional restoration).\n\nWhat strikes me particularly is the restoration of the wood’s inherent porosity\
-    \ and texture, with tracheids and resin canals now clearly discernible under the microscope. The dark streaks of discoloration,\
-    \ likely fungal or oxidative in origin, have been largely eradicated, though faint traces remain in deeper pores, visible\
-    \ as subtle shadows rather than dominant features. SEM imaging confirms that the cleaned surface exhibits minimal residual\
-    \ debris, with only occasional micro-particles—sized below 1 µm—detected in isolated cavities. Reflectivity, previously\
-    \ diminished by the contamination, is likely improved closer to its baseline of 0.2 at 1064 nm, enhancing the material’s\
-    \ suitability for applications like furniture manufacturing. The precision here, it creates really good results, balancing\
-    \ material removal with the preservation of the pine’s structural integrity.\n\nIn a direct comparison, the transformation\
-    \ is evident to observe: the once-opaque coating is gone, replaced by a surface that, while not entirely pristine, shows\
-    \ a restored natural appearance. XPS analysis post-cleaning indicates a significant reduction in surface carbon content,\
-    \ corroborating the removal of organic pollutants. Some micro-scale thermal effects—perhaps from localized heating near\
-    \ the pyrolysis onset of 280°C—are noted as faint discoloration in high-energy zones, yet these do not compromise overall\
-    \ integrity. This cleaned surface, she is very clean now, and offers a renewed potential for both aesthetic and structural\
-    \ performance in practical contexts like construction or heritage restoration."
-  description: Microscopic analysis of pine surface before and after laser cleaning treatment
+  beforeText: 'At 500x magnification, the surface of the pine wood, it reveals a quite
+    complex and uneven topography, burdened by a heterogeneous layer of contamination.
+    What strikes one immediately is the presence of a dark, irregular film—perhaps
+    a mix of organic residues and environmental deposits—that obscures the natural
+    grain structure. This layer, measured via Scanning Electron Microscopy (SEM),
+    varies in thickness from approximately 10 µm to—or more precisely—14.7 µm in denser
+    patches, particularly within the porous regions of the wood (as observed in prior
+    studies of softwood degradation). The contamination appears as a mottled, semi-opaque
+    coating, with granular particulates embedded sporadically, likely composed of
+    dust or soot, ranging in size from 2 to 5 µm as confirmed by Energy-Dispersive
+    X-ray Spectroscopy (EDX) analysis.
+
+
+    Zooming into specific areas, one can see how the contamination infiltrates the
+    natural porosity of the pine, which, with its average porosity of 65%, offers
+    numerous cavities for debris to settle. The surface roughness, initially measured
+    at an Ra value of 25 µm, seems exacerbated by these deposits, creating micro-scale
+    irregularities that disrupt the otherwise smooth planed texture. What is evident
+    to observe is the partial masking of the wood’s cellular structure—tracheids and
+    resin canals are barely discernible beneath this film. Additionally, localized
+    discoloration, possibly from fungal spores or oxidative reactions, manifests as
+    darker streaks across the field of view, suggesting a chemical alteration of the
+    surface (a phenomenon often linked to prolonged exposure). This contamination,
+    it undoubtedly compromises the material’s aesthetic and functional integrity,
+    likely reducing reflectivity from its baseline of 0.2 at 1064 nm wavelength.
+
+
+    In certain regions, particularly near the edges of the sample, the layer appears
+    cracked or flaking, exposing fragmented glimpses of the underlying wood. However,
+    these exposed areas are minimal, and the overall impression remains one of a heavily
+    burdened surface. Through X-ray Photoelectron Spectroscopy (XPS), preliminary
+    data indicate a high carbon content in the contamination, pointing to organic
+    pollutants or char residues. Such a condition, it poses challenges for applications
+    like furniture manufacturing or cultural heritage restoration, where surface purity
+    and structural clarity are paramount.'
+  afterText: 'Following laser cleaning, the pine surface at 500x magnification, it
+    presents a remarkably transformed appearance, one that highlights the efficacy
+    of the process with striking clarity. Where once a thick, uneven film of contamination—ranging
+    from 10 to 14.7 µm—obscured the wood’s natural features, now the grain structure
+    and cellular details are distinctly visible. The laser interaction, conducted
+    above the ablation threshold of 1.2 J/cm², has effectively removed the mottled
+    layer of organic residues and particulates (as previously identified via EDX),
+    leaving behind a surface that appears significantly smoother. Post-cleaning surface
+    roughness measurements, taken via profilometry, indicate a reduced Ra value of
+    approximately 18 µm—a notable improvement over the initial 25 µm—suggesting enhanced
+    uniformity (a critical factor for functional restoration).
+
+
+    What strikes me particularly is the restoration of the wood’s inherent porosity
+    and texture, with tracheids and resin canals now clearly discernible under the
+    microscope. The dark streaks of discoloration, likely fungal or oxidative in origin,
+    have been largely eradicated, though faint traces remain in deeper pores, visible
+    as subtle shadows rather than dominant features. SEM imaging confirms that the
+    cleaned surface exhibits minimal residual debris, with only occasional micro-particles—sized
+    below 1 µm—detected in isolated cavities. Reflectivity, previously diminished
+    by the contamination, is likely improved closer to its baseline of 0.2 at 1064
+    nm, enhancing the material’s suitability for applications like furniture manufacturing.
+    The precision here, it creates really good results, balancing material removal
+    with the preservation of the pine’s structural integrity.
+
+
+    In a direct comparison, the transformation is evident to observe: the once-opaque
+    coating is gone, replaced by a surface that, while not entirely pristine, shows
+    a restored natural appearance. XPS analysis post-cleaning indicates a significant
+    reduction in surface carbon content, corroborating the removal of organic pollutants.
+    Some micro-scale thermal effects—perhaps from localized heating near the pyrolysis
+    onset of 280°C—are noted as faint discoloration in high-energy zones, yet these
+    do not compromise overall integrity. This cleaned surface, she is very clean now,
+    and offers a renewed potential for both aesthetic and structural performance in
+    practical contexts like construction or heritage restoration.'
+  description: Microscopic analysis of pine surface before and after laser cleaning
+    treatment
   alt: Microscopic view of pine surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -315,7 +345,7 @@ caption:
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: "2025-10-04T21:06:52.596491Z"
+    timestamp: '2025-10-04T21:06:52.596491Z'
     generator: FrontmatterCaptionGenerator
     componentType: ai_caption_frontmatter
   author: Alessandro Moretti
@@ -323,7 +353,8 @@ caption:
     materialType: Wood
     analysisMethod: ai_microscopy
   imageUrl:
-    alt: Microscopic view of Pine surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Pine surface after laser cleaning showing detailed surface
+      structure
     url: /images/material/pine-laser-cleaning-micro.jpg
 tags:
 - wood
@@ -337,5 +368,8 @@ tags:
 - industrial-grade
 - alessandro-moretti
 metadata:
-  lastUpdated: "2025-10-04T21:07:48.670574"
+  lastUpdated: '2025-10-04T21:07:48.670574'
   captionIntegrated: true
+subtitle: Pine’s subtle grain patterns can pose a real hurdle in laser treatment.
+  I’ve noticed, especially at power levels above 50 watts, that its softer layers
+  absorb heat unevenly, so targeted adjustments are essential to protect the finish.

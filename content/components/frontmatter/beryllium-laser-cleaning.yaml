@@ -95,59 +95,60 @@ materialProperties:
     description: Coefficient of thermal expansion at 20°C
     min: 0.5
     max: 29.1
-  absorptionCoefficient:
-    value: 0.65
-    unit: dimensionless
+  reflectivity:
+    value: 55
+    unit: '%'
     confidence: 82
-    description: Estimated absorption coefficient for common laser wavelengths (1064 nm)
+    description: Approximate reflectivity for visible to near-IR wavelengths
     min: null
     max: null
-  reflectivity:
-    value: 0.5
-    unit: dimensionless
+  absorptionCoefficient:
+    value: 0.45
+    unit: μm⁻¹
     confidence: 80
-    description: Approximate reflectivity for visible to near-IR laser wavelengths
+    description: Estimated absorption coefficient for common laser wavelengths
     min: null
     max: null
   ablationThreshold:
-    value: 2.5
+    value: 2.8
     unit: J/cm²
-    confidence: 85
+    confidence: 82
     description: Estimated laser ablation threshold for nanosecond pulses
     min: null
     max: null
   oxidationResistance:
-    value: Poor
+    value: Moderate
     unit: qualitative
-    confidence: 90
-    description: Forms protective oxide layer but susceptible to oxidation at elevated temperatures
+    confidence: 88
+    description: Forms protective oxide layer but oxidizes above 600°C
     min: null
     max: null
   crystallineStructure:
     value: HCP
     unit: crystal system
-    confidence: 99
+    confidence: 98
     description: Hexagonal Close-Packed crystal structure
     min: null
     max: null
-  surfaceRoughness:
-    value: 0.8
-    unit: μm Ra
-    confidence: 82
-    description: Typical surface roughness for machined beryllium surfaces
+  thermalShockResistance:
+    value: High
+    unit: qualitative
+    confidence: 90
+    description: Excellent thermal shock resistance due to high thermal conductivity
+      and moderate CTE
     min: null
     max: null
 applications:
-- Aerospace
-- Nuclear Energy
-- Defense Electronics
+- Aerospace and Defense
+- Nuclear Technology
 - Medical Device Manufacturing
-- Optics and Precision Instruments
+- Electronics and Semiconductor
 - Automotive Racing
-- Research and Development
-- Semiconductor Manufacturing
-- Cultural Heritage Preservation
+- Optics and X-ray Technology
+- Research and Laboratory
 - Additive Manufacturing
+- Cultural Heritage Preservation
+- Energy and Power Generation
 machineSettings:
   powerRange:
     value: 90
@@ -159,59 +160,60 @@ machineSettings:
   wavelength:
     value: 1064
     unit: nm
-    confidence: 88
-    description: Near-IR wavelength for optimal Beryllium absorption and thermal control
+    confidence: 90
+    description: Optimal wavelength for Beryllium absorption and minimal substrate
+      damage
     min: 532
     max: 1064
   spotSize:
-    value: 50
+    value: 80
     unit: μm
     confidence: 84
-    description: Beam spot diameter for precise oxide removal
-    min: 30
-    max: 80
+    description: Optimal beam spot diameter for Beryllium contamination removal
+    min: 50
+    max: 120
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient surface cleaning
+    description: Optimal repetition rate for efficient Beryllium surface cleaning
     min: 20
     max: 100
+  fluenceThreshold:
+    value: 1.2
+    unit: J/cm²
+    confidence: 88
+    description: Minimum fluence required for effective Beryllium oxide ablation
+    min: 0.8
+    max: 1.8
   pulseWidth:
     value: 8
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for controlled oxide ablation
+    description: Optimal pulse duration for thermal control during Beryllium cleaning
     min: 5
     max: 15
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform cleaning
+    description: Optimal scanning speed for uniform Beryllium surface treatment
     min: 300
     max: 800
-  fluenceThreshold:
-    value: 2.5
-    unit: J/cm²
-    confidence: 90
-    description: Minimum fluence required for Beryllium oxide ablation
-    min: 1.8
-    max: 3.5
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for complete surface coverage
+    description: Optimal beam overlap for complete Beryllium surface coverage
     min: 40
-    max: 60
+    max: 70
   passCount:
-    value: 3
+    value: 2
     unit: passes
     confidence: 85
-    description: Number of cleaning passes for thorough oxide removal
-    min: 2
-    max: 5
+    description: Recommended number of passes for thorough Beryllium cleaning
+    min: 1
+    max: 4
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -227,7 +229,8 @@ author:
   image: /images/author/yi-chun-lin.jpg
 images:
   hero:
-    alt: Beryllium surface undergoing laser cleaning showing precise contamination removal
+    alt: Beryllium surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/beryllium-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -254,6 +257,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Beryllium is uniquely lightweight and stiff, but its dust can be toxic when
+  inhaled. This requires laser cleaning processes that rigorously control airborne
+  particles to ensure operator safety.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -289,36 +295,26 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: "When examining beryllium surface under 500x magnification with SEM (Scanning Electron Microscopy), contamination\
-    \ is very clear. This surface, it shows a distinct layer of deposits, uneven and patchy, with thickness ranging from approximately\
-    \ 8 µm to—or more precisely—12.3 µm in some areas. The contamination, it appears as a mix of dark, irregular spots and\
-    \ lighter, grainy patches, likely a combination of organic residues and oxide buildup (as suggested by prior EDX analysis,\
-    \ Energy Dispersive X-ray spectroscopy, which identifies elemental composition). Surface texture looks rough, almost like\
-    \ a cracked, dry landscape, with Ra (average roughness) measured at 1.2 µm, much higher than typical machined beryllium\
-    \ at 0.8 µm Ra.\n\nZooming closer, certain regions reveal micro-cracks within contamination layer, some as wide as 2.5\
-    \ µm, perhaps due to thermal stress or material handling. These cracks, they expose small glimpses of underlying beryllium,\
-    \ which still reflect light slightly (indicating some retained reflectivity, around 30% compared to material’s natural\
-    \ 54.2%). Contamination distribution, it is not uniform—thicker near edges, thinner at center, suggesting uneven exposure\
-    \ or deposition during use in aerospace or nuclear applications. So, this layer, it impacts surface integrity, reducing\
-    \ thermal conductivity potential (normally 216 W/m·K) and likely affecting performance in high-precision systems.\n\n\
-    Looking even further, secondary electron imaging highlights smaller debris particles, around 0.5 to 1 µm in diameter,\
-    \ embedded within main contamination film. These particles, they create additional surface irregularities, contributing\
-    \ to adhesion issues for coatings or interfaces in defense electronics. Overall, contaminated beryllium surface shows\
-    \ significant compromise—visually chaotic, functionally impaired, with clear need for restoration to recover its high\
-    \ reflectivity and mechanical properties."
-  afterText: "After laser cleaning, beryllium surface at 500x magnification reveals very noticeable transformation. This surface,\
-    \ it now appears much smoother, with contamination layer mostly removed—thickness reduced to less than 0.5 µm in residual\
-    \ spots, compared to previous 8-12.3 µm. SEM imaging shows a cleaner, more uniform texture, almost like polished metal,\
-    \ with Ra value improved to 0.7 µm, closer to original machined state of 0.8 µm Ra. Dark patches and grainy deposits,\
-    \ they are largely gone, leaving behind faint traces only in isolated micro-pits (perhaps from incomplete ablation below\
-    \ the 2.5 J/cm² threshold).\n\nComparing directly to before state, micro-cracks are less visible, and reflectivity looks\
-    \ enhanced—estimated at 50%, very near material’s natural 54.2%. This improvement, it suggests laser cleaning (likely\
-    \ at 1064 nm wavelength, given beryllium’s 38.7% absorption) effectively removed oxide and organic films without damaging\
-    \ substrate. Surface integrity, it seems restored, which is critical for thermal conductivity and performance in applications\
-    \ like aerospace. EDX scans post-cleaning confirm reduced carbon and oxygen peaks, supporting visual evidence of cleaner\
-    \ beryllium. So, laser cleaning, it brings surface back to near-optimal condition, ready for functional use with minimal\
-    \ compromise."
-  description: Microscopic analysis of beryllium surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the beryllium surface is obscured by a non-uniform
+    contamination layer, typically 5-20 µm thick. This layer consists of embedded
+    particulate, amorphous carbon deposits, and localized oxide patches, creating
+    a topographically complex and textured landscape. The underlying metallic grain
+    structure is entirely masked. The contaminants exhibit a mottled, splotchy pattern,
+    indicating areas of preferential adhesion and oxidation, which disrupts the native
+    surface morphology.
+  afterText: 'Following laser cleaning, the surface reveals a stark transformation.
+    The contamination layer has been completely ablated, exposing the pristine, polycrystalline
+    metallic substrate. The characteristic grain structure of the beryllium, with
+    its HCP crystalline arrangement, is now clearly visible and well-defined.
+
+
+    The surface texture is significantly smoother and more uniform, with only minimal,
+    sub-micron scale pitting remaining from the removal of tenacious oxide inclusions.
+    This process restores the material''s native reflectivity and creates a surface
+    free of obscuring films, directly exposing the bare metal for subsequent processing
+    or analysis.'
+  description: Microscopic analysis of beryllium surface before and after laser cleaning
+    treatment
   alt: Microscopic view of beryllium surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -326,19 +322,20 @@ caption:
     - beryllium_specific
     contaminationProfile: beryllium surface contamination
   microscopy:
-    parameters: Microscopic analysis of beryllium
+    parameters: Microscopic analysis of Beryllium
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: "2025-10-04T21:27:53.035182Z"
+    timestamp: '2025-10-02T00:00:00.000000Z'
     generator: FrontmatterCaptionGenerator
-    componentType: ai_caption_frontmatter
+    componentType: template_caption
   author: Yi-Chun Lin
   materialProperties:
     materialType: Metal
-    analysisMethod: ai_microscopy
+    analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Beryllium surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Beryllium surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/beryllium-laser-cleaning-micro.jpg
 tags:
 - metal
@@ -348,9 +345,6 @@ tags:
 - decoating
 - oxide-removal
 - surface-preparation
-- conductive
 - reflective-surface
+- conductive
 - yi-chun-lin
-metadata:
-  lastUpdated: "2025-10-04T21:28:38.344467"
-  captionIntegrated: true

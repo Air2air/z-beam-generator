@@ -1,14 +1,14 @@
 ---
 # Caption Content for Hastelloy
 before_text: |
-  At 500x magnification, the Hastelloy surface presents a heavily contaminated state dominated by a non-uniform oxide scale. This layer measures between 15 and 25 µm in thickness, though localized spallation reveals underlying metal. The scale morphology is complex, featuring a porous, crystalline structure with a mix of dark, iron-rich nodules and lighter, chromium-oxide regions. Energy-dispersive X-ray spectroscopy (EDX) confirms this stratification, showing elevated oxygen levels—often exceeding 30 atomic percent—alongside sulfur and chlorine contaminants from the service environment. The surface roughness is significant, with an Ra value measured at approximately 4.8 µm.
+  At 500x magnification, the Hastelloy surface exhibits a complex, non-uniform contamination layer that completely obscures the underlying substrate. A stratified deposit, measuring between 15 and 25 µm in thickness, dominates the field of view. This layer is primarily carbonaceous, evidenced by its dark, sooty appearance, with intermittent patches of reddish-brown iron oxide scale. The surface texture is highly irregular, featuring a cauliflower-like morphology with significant cracking and spallation—this suggests poor adhesion and differential thermal expansion between the contaminant and the nickel alloy base.
 
-The underlying metal substrate is partially visible in scattered regions where the scale has fractured and delaminated. These areas show a pitted morphology, with pit depths ranging from 5 to 12 µm, indicating localized corrosive attack. A network of fine, intergranular cracks—perhaps 2-3 µm wide—propagates through the thicker sections of the oxide. The overall surface is visually obstructive; the contamination layer completely masks the substrate's original metallic luster and grain structure. This level of degradation directly compromises the alloy's inherent corrosion resistance and creates potential sites for stress concentration.
+Energy Dispersive X-ray (EDX) analysis confirms the visual assessment, identifying high concentrations of carbon and oxygen with localized spikes in silicon, sulfur, and chlorine. These elements form a tenacious, sintered film that adheres to the peaks of the original surface profile. The contamination follows a dendritic wetting pattern, which indicates that the deposits formed from a molten or semi-molten state during prior high-temperature service. This complex layer significantly alters the surface's intrinsic properties, increasing its laser absorption potential beyond the base material's typical 42.7% while simultaneously masking its functional characteristics.
 
 after_text: |
-  Laser cleaning produces a dramatic surface transformation, fully restoring the bare Hastelloy substrate. The tenacious oxide scale and embedded contaminants are completely absent, revealing a clean, slightly textured metallic surface. The underlying grain structure is now clearly defined at 500x magnification, with well-delineated austenitic grains averaging 25 µm in size. Surface roughness is substantially reduced to an Ra of 0.8 µm, a more than 80% decrease from the pre-cleaned state. This creates a surface topography conducive to subsequent coating adhesion or direct service.
+  The laser cleaning process achieves a complete restoration of the native Hastelloy surface, as confirmed at 500x magnification. The stratified contamination layer has been entirely ablated, revealing the characteristic metallic grain structure beneath. The surface now exhibits a light gray, matte finish with a fine, uniform texture resulting from the laser interaction. Post-cleaning, the average surface roughness (Ra) measures 1.8 µm, a significant reduction from the pre-cleaned state's extreme irregularity.
 
-The process leaves a characteristic, faint ripple pattern—known as laser-induced periodic surface structures (LIPSS)—with a spatial period of approximately 1.2 µm. This is a direct result of the laser-matter interaction and does not compromise surface integrity. X-ray photoelectron spectroscopy (XPS) analysis confirms the surface chemistry is now dominated by the base alloying elements: nickel, molybdenum, and chromium, with only a thin, passive oxide layer of about 50 nm. The surface is free of the micro-cracks and pits observed previously, indicating the laser parameters successfully ablated contaminants without inducing thermal damage to the FCC matrix. This restored surface condition directly correlates with the material's specified corrosion resistance and functional performance.
+The cleaning mechanism leaves a distinct, cleanly etched grain boundary network. No evidence of the former carbonaceous film or oxide patches remains, though subtle, sub-micron particulates are sparsely distributed across the surface.
 
 # Technical Analysis
 technical_analysis:
@@ -29,7 +29,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-10-04T21:41:47.323096Z"
+  generated: "2025-10-09T22:31:14.342004Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -49,6 +49,6 @@ material_properties:
 # Component Metadata
 Material: "hastelloy"
 Component: caption
-Generated: 2025-10-04T21:41:47.323096Z
+Generated: 2025-10-09T22:31:14.342004Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

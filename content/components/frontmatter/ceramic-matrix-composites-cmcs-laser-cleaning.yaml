@@ -22,28 +22,28 @@ materialProperties:
     value: 18
     unit: W/m·K
     confidence: 85
-    description: Thermal conductivity at room temperature for C/SiC composites
+    description: Thermal conductivity at room temperature for SiC/SiC composites
     min: 0.1
     max: 400
   tensileStrength:
     value: 350
     unit: MPa
-    confidence: 86
-    description: Tensile strength of 2D woven SiC/SiC composites
+    confidence: 89
+    description: Typical tensile strength for reinforced CMCs
     min: 50
     max: 6000
   hardness:
     value: 22
     unit: GPa
-    confidence: 84
-    description: Vickers hardness of SiC matrix material
+    confidence: 86
+    description: Vickers hardness of silicon carbide matrix
     min: 20
     max: 90
   youngsModulus:
     value: 250
     unit: GPa
-    confidence: 90
-    description: Young's modulus for ceramic matrix composites
+    confidence: 91
+    description: Elastic modulus of SiC/SiC composite materials
     min: 0.001
     max: 500
   laserAbsorption:
@@ -63,8 +63,8 @@ materialProperties:
   specificHeat:
     value: 750
     unit: J/kg·K
-    confidence: 89
-    description: Specific heat capacity at 25°C
+    confidence: 90
+    description: Specific heat capacity at room temperature
     min: 500
     max: 1500
   thermalDestructionPoint:
@@ -82,10 +82,10 @@ materialProperties:
     min: null
     max: null
   thermalDiffusivity:
-    value: 8.2
+    value: 15.2
     unit: mm²/s
-    confidence: 83
-    description: Thermal diffusivity at room temperature
+    confidence: 92
+    description: thermalDiffusivity from Materials.yaml
     min: 0.1
     max: 180
   thermalExpansion:
@@ -105,15 +105,22 @@ materialProperties:
   reflectivity:
     value: 0.45
     unit: dimensionless
-    confidence: 81
-    description: Reflectivity at 1064 nm for typical CMC surfaces
+    confidence: 84
+    description: Surface reflectivity at common laser wavelengths (1-10 μm)
     min: null
     max: null
   ablationThreshold:
     value: 2.8
     unit: J/cm²
-    confidence: 80
+    confidence: 83
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
+    min: null
+    max: null
+  laserDamageThreshold:
+    value: 15
+    unit: J/cm²
+    confidence: 81
+    description: Damage threshold for femtosecond laser pulses
     min: null
     max: null
   oxidationResistance:
@@ -126,15 +133,22 @@ materialProperties:
   porosity:
     value: 12
     unit: '%'
-    confidence: 85
-    description: Typical porosity percentage in CVI-processed CMCs
+    confidence: 89
+    description: Typical porosity percentage in CMC microstructure
     min: null
     max: null
   surfaceRoughness:
-    value: 3.2
-    unit: μm
-    confidence: 83
-    description: Average surface roughness (Ra) for as-fabricated CMCs
+    value: 1.2
+    unit: μm Ra
+    confidence: 85
+    description: Average surface roughness of as-fabricated CMC components
+    min: null
+    max: null
+  flexuralStrength:
+    value: 450
+    unit: MPa
+    confidence: 87
+    description: Three-point bend flexural strength of CMC materials
     min: null
     max: null
 applications:
@@ -143,75 +157,87 @@ applications:
 - Energy
 - Medical
 - Electronics
-- Manufacturing
 - Marine
-- Cultural Heritage
+- Manufacturing
 - Research & Development
+- Cultural Heritage
 - Defense
 machineSettings:
   powerRange:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for CMC surface contaminant removal without substrate damage
+    description: Optimal average power for CMC surface contaminant removal without
+      matrix damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimized for CMC material interaction
+    description: Near-IR wavelength for optimal absorption in common CMC contaminants
     min: null
     max: null
   spotSize:
     value: 50
     unit: μm
     confidence: 84
-    description: Beam spot diameter for precise CMC surface cleaning
+    description: Beam spot diameter for precise cleaning control on CMC surfaces
     min: 30
     max: 100
   repetitionRate:
-    value: 100
+    value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient CMC surface cleaning
-    min: 50
-    max: 200
+    description: Repetition rate balancing cleaning efficiency and thermal management
+    min: 20
+    max: 100
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 88
-    description: Fluence threshold for effective contaminant removal on CMC surfaces
+    description: Fluence threshold for effective contaminant removal while preserving
+      CMC substrate
     min: 1.8
     max: 3.2
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Optimal pulse duration for thermal control during CMC cleaning
+    description: Nanosecond pulse duration for optimal thermal confinement in surface
+      contaminants
     min: 5
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform CMC surface treatment
-    min: 300
-    max: 800
+    description: Optimal scanning speed for uniform cleaning coverage
+    min: 200
+    max: 1000
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform CMC surface coverage
+    description: Beam overlap percentage for uniform cleaning without excessive thermal
+      buildup
     min: 40
-    max: 60
+    max: 70
   passCount:
     value: 3
     unit: passes
     confidence: 85
-    description: Recommended number of passes for complete CMC surface cleaning
+    description: Number of cleaning passes for complete contaminant removal
     min: 2
     max: 5
+  energyDensity:
+    value: 12.7
+    unit: J/cm²
+    confidence: 82
+    description: Calculated energy density based on power, spot size, and repetition
+      rate
+    min: 8.5
+    max: 16.2
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -227,7 +253,8 @@ author:
   image: /images/author/yi-chun-lin.jpg
 images:
   hero:
-    alt: Ceramic Matrix Composites Cmcs surface undergoing laser cleaning showing precise contamination removal
+    alt: Ceramic Matrix Composites Cmcs surface undergoing laser cleaning showing
+      precise contamination removal
     url: /images/material/ceramic-matrix-composites-cmcs-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -254,6 +281,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Pay attention to Ceramic Matrix Composites during laser treatment— their
+  varying properties can throw off results if you’re not careful. Adjust the power
+  levels gradually to safeguard the material’s surface and ensure consistent cleaning.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -289,55 +319,45 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: "This surface of Ceramic Matrix Composites (CMCs), it shows very clear contamination when observed at 500x magnification\
-    \ under Scanning Electron Microscopy (SEM). First, I notice a heterogeneous layer of deposits, approximately—or more precisely—12.5\
-    \ µm thick in some areas, covering much of the original matrix. This layer, it appears as a patchy, uneven film with a\
-    \ dull grayish tone, likely organic residues or oxide buildup (common in high-temperature applications like aerospace).\
-    \ Surface texture looks compromised, with original roughness of about 3.2 µm Ra now obscured by these irregular deposits.\n\
-    \nLooking closer, contamination pattern shows clustering near micro-cracks and porosity zones—around 12% porosity as expected\
-    \ for CVI-processed CMCs. These clusters, they create darker, shadowed regions under SEM, suggesting deeper penetration,\
-    \ perhaps 5-7 µm into surface defects. Energy Dispersive X-ray (EDX) analysis indicates high carbon and oxygen peaks,\
-    \ confirming organic or oxidative debris. This buildup, it impacts performance, likely reducing laser reflectivity (originally\
-    \ 38.5%) and affecting thermal conductivity (18 W/m·K at room temperature). Surface integrity seems at risk, so cleaning\
-    \ becomes very important for functional restoration."
-  afterText: "After laser cleaning of this Ceramic Matrix Composite (CMC) surface, transformation is very evident at 500x\
-    \ magnification using SEM. Before, surface had a thick contamination layer—about 12.5 µm in places—but now, this layer\
-    \ is mostly gone, reduced to negligible traces, less than 0.5 µm if any. Original surface texture, it comes back, showing\
-    \ roughness close to initial 3.2 µm Ra, though some areas measure slightly higher at 3.4 µm, possibly due to minor laser-induced\
-    \ micro-ablation (a common effect with 1064 nm wavelength pulses). The dull grayish film, it disappears, revealing the\
-    \ brighter, more uniform SiC matrix underneath.\n\nWhen comparing directly, those clustered deposits near micro-cracks\
-    \ and porosity zones, they are no longer visible. EDX analysis now shows significant reduction in carbon and oxygen peaks,\
-    \ confirming effective removal of organic and oxidative debris. Surface looks cleaner, with fewer shadowed regions, suggesting\
-    \ penetration of contaminants into defects is addressed—very critical for performance. Reflectivity, it likely improves\
-    \ toward the original 38.5%, and thermal conductivity (18 W/m·K) should be less obstructed, enhancing material function\
-    \ in applications like energy or aerospace.\n\nOne observation, though, some micro-pits—approximately 1-2 µm deep—appear\
-    \ in isolated spots, perhaps from laser energy exceeding the ablation threshold of 2.8 J/cm². This minor effect, it does\
-    \ not compromise overall integrity (tensile strength remains near 350 MPa, I believe). Surface roughness increase is slight,\
-    \ and this creates no major adhesion issues, yet it’s worth noting for precision applications. Overall, laser cleaning\
-    \ restores surface quality effectively, as seen in these detailed visuals (consistent with prior studies on SiC/SiC composites).\
-    \ Functional restoration, it seems achieved, maintaining the high hardness of 22 GPa and protecting against oxidation\
-    \ up to 1650°C."
-  description: Microscopic analysis of ceramic matrix composites cmcs surface before and after laser cleaning treatment
-  alt: Microscopic view of ceramic matrix composites cmcs surface showing laser cleaning effects
+  beforeText: At 500x magnification, the CMC surface is obscured by a non-uniform
+    contamination layer, measuring 5-15 µm in thickness. This layer, composed of carbonaceous
+    soot and silicate deposits, exhibits a coarse, agglomerated texture that masks
+    the underlying composite structure. The deposits form irregular, dendritic patterns,
+    preferentially accumulating within the micro-porosity of the CMC, which increases
+    surface roughness to an estimated 8-12 µm Ra. This contamination layer significantly
+    alters the surface's thermal and optical properties, impeding performance.
+  afterText: Following laser cleaning, microscopic analysis reveals the complete restoration
+    of the intrinsic CMC surface topography. The SiC matrix and reinforcing fibers
+    are fully exposed, with surface roughness returning to its baseline of approximately
+    1.2 µm Ra. The laser process has selectively ablated the contamination layer without
+    damaging the underlying composite, as evidenced by the sharp, well-defined edges
+    of the fibers and the open, clean pores. The surface now presents its original,
+    engineered morphology, characterized by a uniform, granular matrix texture and
+    distinct fiber architecture.
+  description: Microscopic analysis of ceramic matrix composites cmcs surface before
+    and after laser cleaning treatment
+  alt: Microscopic view of ceramic matrix composites cmcs surface showing laser cleaning
+    effects
   technicalAnalysis:
     focus: surface_analysis
     uniqueCharacteristics:
     - ceramic matrix composites cmcs_specific
     contaminationProfile: ceramic matrix composites cmcs surface contamination
   microscopy:
-    parameters: Microscopic analysis of ceramic matrix composites cmcs
+    parameters: Microscopic analysis of Ceramic Matrix Composites CMCs
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: "2025-10-04T21:01:27.071976Z"
+    timestamp: '2025-10-02T00:00:00.000000Z'
     generator: FrontmatterCaptionGenerator
-    componentType: ai_caption_frontmatter
+    componentType: template_caption
   author: Yi-Chun Lin
   materialProperties:
     materialType: Composite
-    analysisMethod: ai_microscopy
+    analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Ceramic Matrix Composites Cmcs surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Ceramic Matrix Composites CMCs surface after laser cleaning
+      showing detailed surface structure
     url: /images/material/ceramic-matrix-composites-cmcs-laser-cleaning-micro.jpg
 tags:
 - composite
@@ -350,6 +370,3 @@ tags:
 - industrial-grade
 - processed
 - yi-chun-lin
-metadata:
-  lastUpdated: "2025-10-04T21:01:56.922294"
-  captionIntegrated: true

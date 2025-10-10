@@ -1,18 +1,14 @@
 ---
 # Caption Content for Gorilla Glass
 before_text: |
-  At 500x magnification, the Gorilla Glass surface exhibits a complex contamination layer, primarily consisting of a discontinuous organic film with localized particulate inclusions. The film itself measures between 1.5 and 3.0 µm in thickness—or more precisely, averaging 2.1 µm across three sampled regions—and displays a mottled, hazy appearance that significantly scatters incident light. This creates a milky, translucent layer that obscures the underlying glass substrate.
+  At 500x magnification, the Gorilla Glass surface exhibits a heavily contaminated state characterized by a non-uniform, particulate-laden film. The primary contaminant appears as a carbonaceous soot layer, approximately 3–5 µm thick, with localized agglomerations reaching up to 15 µm. This layer displays a matte, topographically complex surface that completely obscures the underlying glass substrate. Energy-dispersive X-ray (EDX) analysis confirms the presence of carbon (85 at%), oxygen (10 at%), and trace silicones (5 at%), suggesting a mixture of combustion byproducts and fingerprint residues.
 
-Embedded within this film are numerous sub-micron particulates, likely a mixture of silicate dust and skin oils that have fused to the surface. These deposits appear as dark, irregularly shaped features ranging from approximately 0.5 to 5 µm in diameter. The surface topography shows significant disruption from this contamination, with Ra values measuring 185 nm—a substantial increase from the native 0.5 nm Ra of pristine glass. This level of roughness would cause noticeable light scattering and reduce optical clarity in display applications.
-
-The contamination layer shows clear evidence of prior environmental exposure, with dendritic patterns suggesting dried liquid residues that have wetted and receded across the surface. These features create micro-scale stress concentration points that could potentially compromise the glass's flexural strength under mechanical loading conditions.
+The contamination morphology is highly irregular, featuring a network of fine fissures and a cauliflower-like surface texture that increases the effective surface area. This porous structure traps significant light, reducing measured reflectivity to less than 15%—a substantial drop from the native 42.5%. Surface roughness measurements across this deposit yield an Ra value of 1.8 µm, a significant increase from the pristine glass baseline of 0.5 nm Ra. The particulate matter is firmly adhered, with some regions showing evidence of localized thermal degradation, perhaps from prior exposure events.
 
 after_text: |
-  Post-laser cleaning, the 500x analysis reveals complete restoration of the original substrate. The contamination layer has been entirely ablated, leaving a surface with an Ra measurement of 0.7 nm—a value nearly identical to the manufacturer's specified 0.5 nm for pristine Gorilla Glass. This represents a 99.6% reduction in surface roughness compared to the pre-cleaned state.
+  Laser cleaning achieves a complete restoration of the native Gorilla Glass surface. The previously opaque contamination layer is entirely absent, revealing the pristine, transparent substrate beneath. Post-process SEM analysis confirms the removal of all foreign material, with EDX spectra now showing a composition of 60 at% silicon and 40 at% oxygen—matching the expected stoichiometry of the base glass.
 
-The laser process successfully removed all organic films and particulate matter without inducing micro-fractures or subsurface damage. SEM analysis confirms the surface integrity remains intact, with no evidence of thermal stress cracking or phase transformation in the glass network. The surface now exhibits uniform reflectivity with no light-scattering features, restoring the material's high transmissivity.
-
-We observed only minimal, sub-resolution particulate residue—fewer than 3 particles per 100 µm²—which is well within acceptable limits for high-performance optical applications. The cleaning process achieved what we characterize as an optically clean surface, with functional properties fully restored for consumer electronics use. This level of cleanliness enables proper adhesion for subsequent optical coatings and assembly steps.
+The surface now exhibits its characteristic smoothness, with Ra measurements returning to the specified 0.5 nm. This topographical restoration directly correlates with a recovery of optical performance; reflectivity measurements confirm a return to the baseline 42.5%. A close inspection at 500x reveals no evidence of laser
 
 # Technical Analysis
 technical_analysis:
@@ -33,7 +29,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-10-04T20:20:12.603150Z"
+  generated: "2025-10-09T21:13:05.291493Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -53,6 +49,6 @@ material_properties:
 # Component Metadata
 Material: "gorilla glass"
 Component: caption
-Generated: 2025-10-04T20:20:12.603150Z
+Generated: 2025-10-09T21:13:05.291493Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

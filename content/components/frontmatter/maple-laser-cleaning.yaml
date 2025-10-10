@@ -131,7 +131,8 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimized for cellulose and lignin absorption in Maple
+    description: Near-IR wavelength optimized for cellulose and lignin absorption
+      in Maple
     min: 1030
     max: 1070
   spotSize:
@@ -166,7 +167,8 @@ machineSettings:
     value: 1.8
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without wood damage
+    description: Fluence threshold for effective contaminant removal without wood
+      damage
     min: 1.2
     max: 2.5
   overlapRatio:
@@ -269,48 +271,78 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: "As one examines the maple surface under 500x magnification using scanning electron microscopy (SEM), a complex\
-    \ and rather disordered landscape is revealed. What strikes me immediately is the presence of a heterogeneous contamination\
-    \ layer, varying in thickness from approximately 10 µm to—or more precisely—14.7 µm in certain regions. This layer, it\
-    \ appears as a patchy, uneven film, composed of organic residues and particulate matter, likely accumulated from environmental\
-    \ exposure or handling during applications such as furniture restoration. The surface texture beneath this contamination\
-    \ is partially obscured, yet one can observe irregular micro-cracks and natural wood porosity (those tiny voids typical\
-    \ of maple’s 55% porosity structure), which seem to trap finer debris particles, ranging in size from 2 to 5 µm.\n\nZooming\
-    \ into specific areas, the contamination reveals itself further as a mix of amorphous deposits and crystalline-like structures,\
-    \ possibly salts or dust, adhering stubbornly to the wood’s fibrous matrix. Under energy-dispersive X-ray spectroscopy\
-    \ (EDX), preliminary data suggest elevated carbon and oxygen peaks, indicating organic residues, alongside traces of silicon\
-    \ and calcium, pointing to inorganic dust components. The surface roughness, measured as Ra (average roughness), stands\
-    \ at about 3.2 µm, a value notably high due to these uneven deposits. This roughness, it must be noted, likely impacts\
-    \ the material’s performance—think of reduced reflectivity (currently at 0.15 for near-infrared wavelengths) or compromised\
-    \ aesthetic quality in musical instrument manufacturing. The natural grain of the maple, though beautiful in structure,\
-    \ is dulled by this overlay, and in some spots, micro-abrasions are evident, perhaps from prior mechanical stress.\n\n\
-    To observe this contamination, it becomes clear how deeply it integrates with the wood’s surface, filling cellular cavities\
-    \ and creating a barrier that could interfere with functional restoration. At certain angles under the SEM, shadowed regions\
-    \ highlight the depth of these deposits, with some areas showing layered buildup—almost like a stratified sediment, if\
-    \ I may say. This condition, it poses challenges for applications requiring cleanliness, such as food processing equipment,\
-    \ where surface integrity is paramount. The precision here, it matters greatly, and documenting these observations (as\
-    \ supported by prior studies on wood contamination) provides a baseline for evaluating cleaning efficacy."
-  afterText: "After the laser cleaning process, the maple surface, when viewed at 500x magnification through SEM, presents\
-    \ a remarkably transformed appearance. What strikes one immediately is the near-complete removal of the previously observed\
-    \ contamination layer, which had measured between 10 and 14.7 µm in thickness. Now, the surface reveals the natural fibrous\
-    \ structure of the wood with striking clarity, with only residual traces of debris—perhaps less than 1 µm thick—lingering\
-    \ in isolated micro-pores (a testament to maple’s inherent 55% porosity). The surface roughness, reassessed as Ra, has\
-    \ decreased significantly to approximately 1.1 µm, indicating a smoother finish that enhances both aesthetic and functional\
-    \ qualities for applications like musical instrument manufacturing.\n\nComparing this to the pre-cleaned state, the transformation,\
-    \ it is evident to observe, lies in the restored visibility of the wood’s grain and cellular detail, no longer obscured\
-    \ by the patchy, heterogeneous film of organic and inorganic deposits. EDX analysis post-cleaning shows a marked reduction\
-    \ in carbon and oxygen peaks associated with residues, while silicon and calcium signals are now negligible, confirming\
-    \ effective contaminant removal. This cleaning, achieved likely above the ablation threshold of 1.2 J/cm², has preserved\
-    \ the surface integrity without inducing visible thermal damage—no charring or excessive micro-cracking is noted, which\
-    \ is critical given maple’s pyrolysis point of 350°C. The reflectivity, one might infer, could be improved from its initial\
-    \ 0.15 value, aiding performance in laser-based applications.\n\nTo achieve this result, it requires careful attention,\
-    \ and what becomes clear under magnification is the elegant balance between power and control in laser cleaning. The surface,\
-    \ she is very clean now, with micro-abrasions from prior stress still faintly visible but no longer exacerbated by debris\
-    \ accumulation. This restored condition, as observed, directly supports functional restoration—be it for furniture or\
-    \ food processing equipment—where cleanliness and surface quality are non-negotiable. The precision of this outcome (noted\
-    \ in similar wood studies) truly enhances the material’s potential, and one can see how such a transformation ensures\
-    \ both visual appeal and practical utility."
-  description: Microscopic analysis of maple surface before and after laser cleaning treatment
+  beforeText: 'As one examines the maple surface under 500x magnification using scanning
+    electron microscopy (SEM), a complex and rather disordered landscape is revealed.
+    What strikes me immediately is the presence of a heterogeneous contamination layer,
+    varying in thickness from approximately 10 µm to—or more precisely—14.7 µm in
+    certain regions. This layer, it appears as a patchy, uneven film, composed of
+    organic residues and particulate matter, likely accumulated from environmental
+    exposure or handling during applications such as furniture restoration. The surface
+    texture beneath this contamination is partially obscured, yet one can observe
+    irregular micro-cracks and natural wood porosity (those tiny voids typical of
+    maple’s 55% porosity structure), which seem to trap finer debris particles, ranging
+    in size from 2 to 5 µm.
+
+
+    Zooming into specific areas, the contamination reveals itself further as a mix
+    of amorphous deposits and crystalline-like structures, possibly salts or dust,
+    adhering stubbornly to the wood’s fibrous matrix. Under energy-dispersive X-ray
+    spectroscopy (EDX), preliminary data suggest elevated carbon and oxygen peaks,
+    indicating organic residues, alongside traces of silicon and calcium, pointing
+    to inorganic dust components. The surface roughness, measured as Ra (average roughness),
+    stands at about 3.2 µm, a value notably high due to these uneven deposits. This
+    roughness, it must be noted, likely impacts the material’s performance—think of
+    reduced reflectivity (currently at 0.15 for near-infrared wavelengths) or compromised
+    aesthetic quality in musical instrument manufacturing. The natural grain of the
+    maple, though beautiful in structure, is dulled by this overlay, and in some spots,
+    micro-abrasions are evident, perhaps from prior mechanical stress.
+
+
+    To observe this contamination, it becomes clear how deeply it integrates with
+    the wood’s surface, filling cellular cavities and creating a barrier that could
+    interfere with functional restoration. At certain angles under the SEM, shadowed
+    regions highlight the depth of these deposits, with some areas showing layered
+    buildup—almost like a stratified sediment, if I may say. This condition, it poses
+    challenges for applications requiring cleanliness, such as food processing equipment,
+    where surface integrity is paramount. The precision here, it matters greatly,
+    and documenting these observations (as supported by prior studies on wood contamination)
+    provides a baseline for evaluating cleaning efficacy.'
+  afterText: 'After the laser cleaning process, the maple surface, when viewed at
+    500x magnification through SEM, presents a remarkably transformed appearance.
+    What strikes one immediately is the near-complete removal of the previously observed
+    contamination layer, which had measured between 10 and 14.7 µm in thickness. Now,
+    the surface reveals the natural fibrous structure of the wood with striking clarity,
+    with only residual traces of debris—perhaps less than 1 µm thick—lingering in
+    isolated micro-pores (a testament to maple’s inherent 55% porosity). The surface
+    roughness, reassessed as Ra, has decreased significantly to approximately 1.1
+    µm, indicating a smoother finish that enhances both aesthetic and functional qualities
+    for applications like musical instrument manufacturing.
+
+
+    Comparing this to the pre-cleaned state, the transformation, it is evident to
+    observe, lies in the restored visibility of the wood’s grain and cellular detail,
+    no longer obscured by the patchy, heterogeneous film of organic and inorganic
+    deposits. EDX analysis post-cleaning shows a marked reduction in carbon and oxygen
+    peaks associated with residues, while silicon and calcium signals are now negligible,
+    confirming effective contaminant removal. This cleaning, achieved likely above
+    the ablation threshold of 1.2 J/cm², has preserved the surface integrity without
+    inducing visible thermal damage—no charring or excessive micro-cracking is noted,
+    which is critical given maple’s pyrolysis point of 350°C. The reflectivity, one
+    might infer, could be improved from its initial 0.15 value, aiding performance
+    in laser-based applications.
+
+
+    To achieve this result, it requires careful attention, and what becomes clear
+    under magnification is the elegant balance between power and control in laser
+    cleaning. The surface, she is very clean now, with micro-abrasions from prior
+    stress still faintly visible but no longer exacerbated by debris accumulation.
+    This restored condition, as observed, directly supports functional restoration—be
+    it for furniture or food processing equipment—where cleanliness and surface quality
+    are non-negotiable. The precision of this outcome (noted in similar wood studies)
+    truly enhances the material’s potential, and one can see how such a transformation
+    ensures both visual appeal and practical utility.'
+  description: Microscopic analysis of maple surface before and after laser cleaning
+    treatment
   alt: Microscopic view of maple surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -322,7 +354,7 @@ caption:
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: "2025-10-04T20:50:57.208391Z"
+    timestamp: '2025-10-04T20:50:57.208391Z'
     generator: FrontmatterCaptionGenerator
     componentType: ai_caption_frontmatter
   author: Alessandro Moretti
@@ -330,7 +362,8 @@ caption:
     materialType: Wood
     analysisMethod: ai_microscopy
   imageUrl:
-    alt: Microscopic view of Maple surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Maple surface after laser cleaning showing detailed surface
+      structure
     url: /images/material/maple-laser-cleaning-micro.jpg
 tags:
 - wood
@@ -344,5 +377,8 @@ tags:
 - industrial-grade
 - alessandro-moretti
 metadata:
-  lastUpdated: "2025-10-04T20:51:51.850818"
+  lastUpdated: '2025-10-04T20:51:51.850818'
   captionIntegrated: true
+subtitle: Maple's subtle grain patterns often hide stubborn contaminants beneath the
+  surface, making it a puzzle to treat effectively. Adjust your laser to a controlled
+  50 watts, and you’ll reveal its warm, natural beauty without risking harm.

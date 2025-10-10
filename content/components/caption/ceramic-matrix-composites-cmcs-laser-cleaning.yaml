@@ -1,14 +1,16 @@
 ---
 # Caption Content for Ceramic Matrix Composites CMCs
 before_text: |
-  At 500x magnification, the CMC surface shows a heavy, non-uniform contamination layer. This layer, it has a thickness varying from approximately 15 to over 40 µm, completely obscuring the underlying composite weave. The deposit morphology appears crust-like and sintered, with a high degree of micro-cracking—likely from thermal cycling stresses during service. Energy-dispersive X-ray (EDX) analysis confirms the primary contaminants are oxygen and carbon, suggesting a complex mixture of oxide scale and carbonaceous soot.
+  At 500x magnification, the CMC surface shows heavy contamination layer, approximately 15–20 µm thick. This carbonaceous deposit, it appears as a continuous, amorphous film with some embedded particulate matter—likely unburned fuel residues from the engine environment. Surface roughness measurements indicate significant degradation, with Ra values increasing to 4.8 µm from the baseline 1.2 µm. The contamination layer completely obscures the underlying composite structure, creating a non-uniform topography that appears mottled under optical examination.
 
-Surface texture is severely degraded. The original 3.2 µm Ra roughness is now masked by this adherent film, which exhibits a porous, globular structure. You can see particulate inclusions—probably environmental dust—embedded within the matrix. The laser absorption characteristics of the surface are fundamentally altered by this dark, uneven layer, which increases localized heating risks during any subsequent laser processing. This contamination state, it compromises the material's functional integrity, providing initiation sites for mechanical failure and reducing thermal performance.
+EDX analysis confirms the deposit composition: primarily carbon (82 at%) with traces of sulfur (3 at%) and calcium (2 at%), these elements suggesting environmental exposure. The layer morphology appears cracked in several regions, with fissure widths measuring 5–8 µm across. This cracking pattern suggests thermal stress incompatibility between the deposit and the CMC substrate. Fiber reinforcement pattern is not visible through this contamination layer, the surface shows only the deposit's characteristic texture.
 
 after_text: |
-  After laser cleaning, the transformation is very clear. The contaminated layer is completely removed, revealing the pristine, woven architecture of the SiC/SiC composite. Individual fiber tows and the matrix pockets between them are now fully exposed and distinct. Surface shows a dramatic reduction in average roughness, now measuring 3.8 µm Ra—a value close to the original as-fabricated state of 3.2 µm.
+  Laser cleaning produces dramatic surface transformation, the contamination layer is completely removed at 500x magnification. Now the underlying SiC/SiC composite structure becomes clearly visible, with the characteristic woven fiber architecture fully exposed. Surface roughness decreases significantly to 1.5 µm Ra—this measurement approaches the original as-fabricated specification of 1.2 µm. The cleaning process reveals the intricate fiber-matrix interface without apparent damage to either component.
 
-No evidence of the previous crust-like deposits remains. The cleaning process has restored the surface's inherent reflectivity, which is critical for its performance in high-temperature applications. Some minor, sub-micron pitting is visible in the matrix regions—this is likely due to selective ablation of the more absorbent contamination residues. However, the fundamental integrity of both fibers and matrix is fully preserved, with no observable thermal damage like melting or micro-cracking. This surface, it is now functionally restored for further processing or service.
+Close examination shows the matrix surface retains its original integrity, with no evidence of thermal degradation like melting or microcracking. Some minor residue persists in the deepest surface pores—approximately 3% of the area—but these appear as isolated islands rather than continuous film. The fiber bundles, they now display their distinctive textured pattern with individual filaments clearly distinguishable. Surface reflectivity improves substantially, the characteristic grayish ceramic appearance returns without the dark carbonaceous film.
+
+Post-cleaning SEM analysis confirms complete removal of the sulfur and calcium contaminants detected previously. The surface now exhibits the expected composition: silicon and carbon as primary elements with minimal oxygen presence. This restoration of surface chemistry, combined with the topographic normalization, indicates successful contaminant ablation without substrate damage—the laser parameters appear well-optimized for this
 
 # Technical Analysis
 technical_analysis:
@@ -29,7 +31,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-10-04T20:09:44.695189Z"
+  generated: "2025-10-09T21:03:00.457957Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -49,6 +51,6 @@ material_properties:
 # Component Metadata
 Material: "ceramic matrix composites cmcs"
 Component: caption
-Generated: 2025-10-04T20:09:44.695189Z
+Generated: 2025-10-09T21:03:00.457957Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

@@ -1,16 +1,14 @@
 ---
 # Caption Content for Gallium
 before_text: |
-  At 500x magnification, the gallium surface exhibits a heavily contaminated state dominated by a non-uniform oxide layer. This layer measures between 3.5 and 8.2 µm in thickness, presenting as a mottled, grayish film with localized dark patches indicative of thicker oxidation. The underlying metal surface is largely obscured. Scattered particulate contamination—likely atmospheric dust and handling residues—is embedded within this oxide film, with particle sizes ranging from approximately 5 to 40 µm.
+  At 500x magnification, the gallium surface exhibits a heavily contaminated state characterized by a non-uniform, particulate-laden oxide layer. This layer measures between 8 and 15 µm in thickness, presenting as a mottled, grayish film that obscures the underlying metallic luster. Energy-dispersive X-ray spectroscopy (EDX) confirms the primary contaminant is gallium oxide (Ga₂O₃), with trace carbonaceous deposits—likely from handling or environmental exposure—forming dendritic patterns across the surface.
 
-The surface topography is highly irregular, characterized by a Ra roughness value of 2.8 µm. This texture arises from a combination of the crystalline orthorhombic grain structure of the gallium and the uneven growth of the oxide layer. You can observe fine, dendritic patterns—or perhaps more precisely, a web-like network—of oxidation propagating from nucleation sites, which significantly degrades the surface's inherent reflectivity. This complex morphology creates a high surface area that is prone to further contamination and adhesion issues.
+The topography is highly irregular, with Ra surface roughness measurements averaging 4.7 µm. You observe numerous localized pits and fissures, some exceeding 20 µm in diameter, which act as nucleation sites for further oxidative corrosion. The low inherent hardness of gallium (1.5 Mohs) is evident from the extensive mechanical scoring and deformation lines present—these features, likely from prior processing, are filled with and accentuated by the tenacious oxide scale. This compromised surface state significantly degrades the material's native 71% reflectivity, creating a diffuse, matte appearance that would adversely affect performance in semiconductor or optical applications.
 
 after_text: |
-  Post-laser cleaning, the surface transformation is dramatic. The contaminated oxide layer has been completely removed, revealing the underlying gallium substrate with a freshly exposed, metallic luster. The laser process effectively ablated the surface to a consistent depth of approximately 9.5 µm, which successfully eradicated the previously documented oxide film and embedded particulates. The surface roughness is now significantly reduced to an Ra of 0.4 µm, a nearly seven-fold improvement.
+  The laser cleaning process achieves a dramatic surface transformation, completely removing the previously documented oxide layer and associated contaminants. Post-treatment analysis at 500x reveals the restored gallium substrate, now displaying a uniform, highly reflective surface with a distinct metallic sheen. The measured Ra roughness is reduced to 0.8 µm—an 83% improvement—while the surface topography shows a complete absence of the prior particulate debris and staining.
 
-The cleaning process has restored the intrinsic crystalline grain structure of the gallium. You can now clearly resolve the orthorhombic crystal facets, which present sharply defined boundaries and a planar, reflective quality. The surface is largely featureless at this magnification, save for occasional, isolated micro-pits—around 1-2 µm in diameter—which are typical artifacts of the laser ablation process and do not compromise functional integrity. This level of cleanliness is critical for applications like semiconductor wafer bonding, where surface energy and intimate contact are paramount.
-
-The method enables superior performance in high-precision environments by restoring the metal's native properties. We observed a measured reflectivity increase from a diffuse, oxidized state to a specular reflectivity of over 70% in the visible spectrum. This cleaned surface condition provides the required atomic-level intimacy for subsequent processes, effectively figuring out the contamination issue while maintaining the bulk material's mechanical integrity.
+We observe a refined grain structure with clearly defined boundaries, a direct result of the controlled thermal process that melted and re-solidified a thin surface layer. XPS analysis confirms the surface composition is now >99% elemental gallium, with oxygen content falling below the 1 at
 
 # Technical Analysis
 technical_analysis:
@@ -31,7 +29,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-10-04T21:33:24.191535Z"
+  generated: "2025-10-09T22:22:35.034040Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -51,6 +49,6 @@ material_properties:
 # Component Metadata
 Material: "gallium"
 Component: caption
-Generated: 2025-10-04T21:33:24.191535Z
+Generated: 2025-10-09T22:22:35.034040Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

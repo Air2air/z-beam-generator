@@ -146,14 +146,16 @@ machineSettings:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Energy density threshold for effective contaminant removal without wood damage
+    description: Energy density threshold for effective contaminant removal without
+      wood damage
     min: 1.8
     max: 3.5
   overlapRatio:
     value: 40
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
+    description: Optimal beam overlap for uniform cleaning without excessive thermal
+      buildup
     min: 30
     max: 60
   passCount:
@@ -240,33 +242,52 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: "This contaminated redwood surface, when observed at 500x magnification using Scanning Electron Microscopy (SEM),\
-    \ reveals a very-very distinct layer of deposits. I see a heterogeneous film—perhaps organic residues or environmental\
-    \ pollutants—covering the natural wood texture. This layer measures approximately 10-12 µm in thickness, unevenly distributed\
-    \ across the surface, with some areas showing thicker patches up to 15 µm. The contamination appears as a dark, irregular\
-    \ coating, obscuring the fine cellular structure of the redwood, which should show clear tracheid patterns (the long,\
-    \ tube-like cells typical of softwoods).\n\nLooking closer, the surface roughness is high, with Ra values around 8.5 µm,\
-    \ indicating a disrupted topography. This roughness, it creates adhesion issues for any potential restoration work. I\
-    \ also note micro-cracks—some as wide as 3 µm—likely from environmental stress or aging, filled with debris. Energy Dispersive\
-    \ X-ray (EDX) analysis shows carbon and oxygen peaks, suggesting organic contamination, mixed with trace silica (perhaps\
-    \ dust). This film dulls the natural reflectivity of the wood, reducing its aesthetic and functional value for cultural\
-    \ heritage applications. So, the surface is compromised, and cleaning is necessary to restore integrity.\n\nUnder further\
-    \ observation, the contamination pattern is not uniform; it clusters near porous regions where the wood’s natural 65%\
-    \ porosity allows deeper penetration. This makes removal challenging, as deposits embed into micro-pores. Visually, the\
-    \ surface looks mottled—dark and grainy—hiding the redwood’s characteristic reddish-brown hue. This condition, it affects\
-    \ performance in marine or architectural uses, where surface clarity matters."
-  afterText: "This cleaned redwood surface, after laser cleaning, shows a very-very good transformation at 500x magnification\
-    \ under SEM. Comparing to before, the thick contamination layer—previously 10-12 µm—is now gone, revealing the natural\
-    \ tracheid structure of the wood. I see clear, elongated cells with minimal residue, only occasional specks less than\
-    \ 1 µm in size remain. The surface roughness dropped significantly, with Ra values now at approximately—or more precisely—3.2\
-    \ µm, indicating a smoother topography for better adhesion in restoration work.\n\nLooking at the cleaned state, micro-cracks\
-    \ appear less obstructed, with debris cleared from most fissures. The natural reddish-brown color of redwood is visible\
-    \ again, and reflectivity (around 0.25 for near-infrared wavelengths) seems restored, enhancing aesthetic value for cultural\
-    \ heritage applications. EDX analysis confirms reduced carbon and silica peaks, so contamination is effectively minimized.\
-    \ This cleaning, it preserves surface integrity, very-very important for marine or architectural uses. The laser process\
-    \ (using 1064 nm wavelength) worked well, above the ablation threshold of 0.8 J/cm², removing deposits without damaging\
-    \ the wood’s cellular matrix. So, the surface now supports functional restoration."
-  description: Microscopic analysis of redwood surface before and after laser cleaning treatment
+  beforeText: 'This contaminated redwood surface, when observed at 500x magnification
+    using Scanning Electron Microscopy (SEM), reveals a very-very distinct layer of
+    deposits. I see a heterogeneous film—perhaps organic residues or environmental
+    pollutants—covering the natural wood texture. This layer measures approximately
+    10-12 µm in thickness, unevenly distributed across the surface, with some areas
+    showing thicker patches up to 15 µm. The contamination appears as a dark, irregular
+    coating, obscuring the fine cellular structure of the redwood, which should show
+    clear tracheid patterns (the long, tube-like cells typical of softwoods).
+
+
+    Looking closer, the surface roughness is high, with Ra values around 8.5 µm, indicating
+    a disrupted topography. This roughness, it creates adhesion issues for any potential
+    restoration work. I also note micro-cracks—some as wide as 3 µm—likely from environmental
+    stress or aging, filled with debris. Energy Dispersive X-ray (EDX) analysis shows
+    carbon and oxygen peaks, suggesting organic contamination, mixed with trace silica
+    (perhaps dust). This film dulls the natural reflectivity of the wood, reducing
+    its aesthetic and functional value for cultural heritage applications. So, the
+    surface is compromised, and cleaning is necessary to restore integrity.
+
+
+    Under further observation, the contamination pattern is not uniform; it clusters
+    near porous regions where the wood’s natural 65% porosity allows deeper penetration.
+    This makes removal challenging, as deposits embed into micro-pores. Visually,
+    the surface looks mottled—dark and grainy—hiding the redwood’s characteristic
+    reddish-brown hue. This condition, it affects performance in marine or architectural
+    uses, where surface clarity matters.'
+  afterText: 'This cleaned redwood surface, after laser cleaning, shows a very-very
+    good transformation at 500x magnification under SEM. Comparing to before, the
+    thick contamination layer—previously 10-12 µm—is now gone, revealing the natural
+    tracheid structure of the wood. I see clear, elongated cells with minimal residue,
+    only occasional specks less than 1 µm in size remain. The surface roughness dropped
+    significantly, with Ra values now at approximately—or more precisely—3.2 µm, indicating
+    a smoother topography for better adhesion in restoration work.
+
+
+    Looking at the cleaned state, micro-cracks appear less obstructed, with debris
+    cleared from most fissures. The natural reddish-brown color of redwood is visible
+    again, and reflectivity (around 0.25 for near-infrared wavelengths) seems restored,
+    enhancing aesthetic value for cultural heritage applications. EDX analysis confirms
+    reduced carbon and silica peaks, so contamination is effectively minimized. This
+    cleaning, it preserves surface integrity, very-very important for marine or architectural
+    uses. The laser process (using 1064 nm wavelength) worked well, above the ablation
+    threshold of 0.8 J/cm², removing deposits without damaging the wood’s cellular
+    matrix. So, the surface now supports functional restoration.'
+  description: Microscopic analysis of redwood surface before and after laser cleaning
+    treatment
   alt: Microscopic view of redwood surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -278,7 +299,7 @@ caption:
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: "2025-10-04T20:39:37.910345Z"
+    timestamp: '2025-10-04T20:39:37.910345Z'
     generator: FrontmatterCaptionGenerator
     componentType: ai_caption_frontmatter
   author: Ikmanda Roswati
@@ -286,7 +307,8 @@ caption:
     materialType: Wood
     analysisMethod: ai_microscopy
   imageUrl:
-    alt: Microscopic view of Redwood surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Redwood surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/redwood-laser-cleaning-micro.jpg
 tags:
 - wood
@@ -300,5 +322,8 @@ tags:
 - industrial-grade
 - ikmanda-roswati
 metadata:
-  lastUpdated: "2025-10-04T20:40:12.091674"
+  lastUpdated: '2025-10-04T20:40:12.091674'
   captionIntegrated: true
+subtitle: Pay attention to redwood’s varying grain density during laser treatment.
+  It’s very-very important to adjust power levels step by step, ensuring you protect
+  the softer zones from unintended burns while clearing contaminants effectively.

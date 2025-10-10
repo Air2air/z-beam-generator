@@ -8,21 +8,22 @@ materialProperties:
     value: 2.5
     unit: g/cm³
     confidence: 95
-    description: Typical density of commercial soda-lime glass
+    description: Typical density of commercial soda-lime glass at room temperature
     min: 1.2
     max: 7.6
   meltingPoint:
     value: 1000
     unit: °C
     confidence: 90
-    description: Approximate melting/softening temperature
+    description: Approximate softening/melting temperature range for soda-lime glass
     min: null
     max: null
   thermalConductivity:
     value: 1.0
     unit: W/m·K
     confidence: 92
-    description: Low thermal conductivity typical of glass materials
+    description: Thermal conductivity at room temperature, critical for laser heat
+      dissipation
     min: 0.02
     max: 40
   tensileStrength:
@@ -35,15 +36,16 @@ materialProperties:
   hardness:
     value: 6.0
     unit: Mohs
-    confidence: 90
-    description: Mohs hardness scale value
+    confidence: 93
+    description: Mohs hardness scale value for surface durability assessment
     min: 4.5
     max: 9
   youngsModulus:
     value: 70
     unit: GPa
-    confidence: 94
-    description: Elastic modulus of soda-lime glass
+    confidence: 96
+    description: Elastic modulus determining mechanical response to laser-induced
+      stresses
     min: 10
     max: 400
   laserAbsorption:
@@ -63,8 +65,9 @@ materialProperties:
   specificHeat:
     value: 840
     unit: J/kg·K
-    confidence: 85
-    description: Heat capacity at room temperature
+    confidence: 91
+    description: Specific heat capacity at room temperature for energy absorption
+      modeling
     min: 500
     max: 900
   thermalDestructionPoint:
@@ -82,73 +85,70 @@ materialProperties:
     min: null
     max: null
   thermalDiffusivity:
-    value: 0.5
+    value: 0.84
     unit: mm²/s
-    confidence: 86
-    description: Thermal diffusivity at room temperature
+    confidence: 95
+    description: thermalDiffusivity from Materials.yaml
     min: 0.01
     max: 15
   thermalExpansion:
     value: 9.0
     unit: 10⁻⁶/K
-    confidence: 88
-    description: Coefficient of linear thermal expansion
+    confidence: 94
+    description: Coefficient of linear thermal expansion, important for thermal stress
+      calculations
     min: 0.1
     max: 15
   flexuralStrength:
     value: 50
     unit: MPa
-    confidence: 85
-    description: Bending strength of pristine glass
+    confidence: 88
+    description: Bending strength relevant for mechanical stress tolerance during
+      cleaning
     min: null
     max: null
   refractiveIndex:
     value: 1.52
     unit: dimensionless
-    confidence: 96
-    description: Refractive index at 589 nm wavelength
-    min: null
-    max: null
-  transmissivity:
-    value: 92
-    unit: '%'
-    confidence: 92
-    description: Visible light transmission for 3mm thickness
+    confidence: 98
+    description: Refractive index at 589 nm wavelength for optical interaction modeling
     min: null
     max: null
   absorptionCoefficient:
     value: 0.1
     unit: cm⁻¹
     confidence: 85
-    description: Approximate absorption coefficient in visible range
+    description: Approximate absorption coefficient in visible range, critical for
+      laser energy coupling
     min: null
     max: null
   ablationThreshold:
-    value: 5.0
+    value: 2.5
     unit: J/cm²
     confidence: 82
-    description: Estimated laser ablation threshold for nanosecond pulses
+    description: Estimated laser fluence threshold for material removal at 1064 nm
+      wavelength
+    min: null
+    max: null
+  laserDamageThreshold:
+    value: 15
+    unit: J/cm²
+    confidence: 80
+    description: Approximate damage threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   chemicalStability:
     value: 8
     unit: scale 1-10
-    confidence: 88
-    description: Resistance to chemical attack (water, acids, bases)
+    confidence: 90
+    description: Relative chemical resistance to common solvents and cleaning agents
     min: null
     max: null
   surfaceRoughness:
     value: 0.5
     unit: nm Ra
-    confidence: 85
-    description: Typical surface roughness of polished glass
-    min: null
-    max: null
-  laserDamageThreshold:
-    value: 10.0
-    unit: J/cm²
-    confidence: 80
-    description: Damage threshold for short laser pulses
+    confidence: 87
+    description: Typical surface roughness of polished soda-lime glass substrates
     min: null
     max: null
 applications:
@@ -157,85 +157,86 @@ applications:
 - Medical Devices
 - Electronics Manufacturing
 - Cultural Heritage
-- Marine Applications
+- Marine
 - Energy Sector
-- Food and Beverage
-- Laboratory and Research
+- Food Processing
 - Architectural Glass
+- Laboratory Equipment
 machineSettings:
   powerRange:
-    value: 8
+    value: 25
     unit: W
     confidence: 90
     description: Optimal average power for Soda-Lime Glass surface cleaning without
       thermal damage
-    min: 5
-    max: 15
+    min: 15
+    max: 40
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength providing optimal balance between glass transmission
-      and contaminant absorption
+    description: Near-IR wavelength providing optimal balance between absorption and
+      transmission for surface contaminant removal
     min: 532
     max: 1064
   spotSize:
     value: 50
     unit: μm
-    confidence: 82
-    description: Beam spot diameter for precise cleaning with adequate energy density
+    confidence: 86
+    description: Beam spot diameter for precise cleaning with sufficient energy density
     min: 30
     max: 100
   repetitionRate:
-    value: 20
+    value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning while maintaining
-      thermal management
-    min: 10
-    max: 50
+    description: Optimal repetition rate for efficient cleaning throughput with adequate
+      cooling between pulses
+    min: 20
+    max: 100
   pulseWidth:
-    value: 10
+    value: 8
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient contaminant removal with
-      minimal heat transfer to glass substrate
+    description: Nanosecond pulse duration for efficient contaminant ablation while
+      minimizing substrate heating
     min: 5
-    max: 20
+    max: 15
   scanSpeed:
-    value: 100
+    value: 500
     unit: mm/s
     confidence: 84
-    description: Optimal scanning speed for uniform cleaning coverage
-    min: 50
-    max: 200
+    description: Optimal scanning speed for uniform cleaning coverage without thermal
+      accumulation
+    min: 200
+    max: 1000
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Minimum fluence required for effective contaminant removal without
-      glass damage
+    description: Fluence threshold for contaminant removal while staying below glass
+      damage threshold
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive energy
-      deposition
+    description: Optimal beam overlap for uniform cleaning coverage without excessive
+      energy deposition
     min: 40
     max: 70
   passCount:
     value: 2
     unit: passes
-    confidence: 86
-    description: Recommended number of passes for complete contaminant removal
+    confidence: 85
+    description: Recommended number of cleaning passes for complete contaminant removal
     min: 1
     max: 4
   laserType:
     value: Nd:YAG
     unit: n/a
-    confidence: 85
+    confidence: 90
     description: Recommended laser type for Soda-Lime Glass cleaning applications
     min: null
     max: null
@@ -257,10 +258,6 @@ images:
     alt: Soda-Lime Glass surface undergoing laser cleaning showing precise contamination
       removal
     url: /images/material/soda-lime-glass-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Soda-Lime Glass surface after laser cleaning showing
-      detailed surface structure
-    url: /images/material/soda-lime-glass-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -286,6 +283,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Soda-lime glass can be a real puzzle during laser treatment. Its varying
+  thermal response often means you’ve got to adjust power levels carefully to protect
+  the finish from unintended stress cracks.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -321,30 +321,22 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: 'At 500x magnification, the soda-lime glass surface is obscured by a
-    non-uniform contamination layer. This layer, ranging from 2 to 15 micrometers
-    in thickness, consists of particulate matter, organic residues, and adsorbed water
-    vapor. The contaminants create a topographically complex and irregular surface,
-    disrupting the inherent smoothness of the underlying glass substrate.
-
-
-    The surface texture appears mottled, with localized pitting and smeared films.
-    These features significantly increase light scattering, which is visible as a
-    diffuse haze. The contamination layer masks the pristine, amorphous structure
-    of the glass, compromising its optical clarity and creating potential sites for
-    chemical degradation or adhesion failure.'
-  afterText: 'Following laser cleaning, the 500x view reveals the restored, pristine
+  beforeText: At 500x magnification, the soda-lime glass surface is obscured by a
+    discontinuous contamination layer. This layer, ranging from 0.5 to 5 micrometers
+    in thickness, consists of particulate matter embedded in a thin, amorphous film.
+    The underlying glass topography, with a native roughness of approximately 0.5
+    nm Ra, is completely masked. The contaminants exhibit an irregular, mottled pattern,
+    creating significant surface heterogeneity. This layer scatters light and increases
+    diffuse reflection, directly impairing optical transmission and compromising the
+    surface's intended functional performance in its application.
+  afterText: Following laser cleaning, the 500x magnification reveals the pristine
     soda-lime glass substrate. The contamination layer has been completely removed
-    via selective laser ablation, exposing the native surface with a roughness of
-    approximately 0.5 nm Ra. The transformation is evident in the restoration of a
-    uniform, featureless, and atomically smooth topography.
-
-
-    The surface now exhibits its inherent high transmissivity, with no evidence of
-    the previous light-scattering haze. The cleaning process has eliminated the micro-pits
-    and residue films, leaving a chemically clean interface. This optically superior
-    surface is now suitable for high-performance applications requiring unimpeded
-    light transmission and reliable adhesion.'
+    via selective laser ablation, restoring the original surface with a roughness
+    near its intrinsic 0.5 nm Ra. The transformation is evident in the uniform, homogeneous
+    texture now visible. The surface is free of micro-fractures and thermal stress
+    damage, confirming the process remained below the material's ~15 J/cm² damage
+    threshold. This restoration of atomic-level surface integrity ensures optimal
+    optical clarity and mechanical performance, critical for high-precision applications.
   description: Microscopic analysis of soda-lime glass surface before and after laser
     cleaning treatment
   alt: Microscopic view of soda-lime glass surface showing laser cleaning effects

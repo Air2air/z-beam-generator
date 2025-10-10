@@ -64,7 +64,8 @@ materialProperties:
     value: 0.85
     unit: dimensionless
     confidence: 82
-    description: Optical absorption coefficient for common laser wavelengths (1064 nm)
+    description: Optical absorption coefficient for common laser wavelengths (1064
+      nm)
     min: null
     max: null
   reflectivity:
@@ -146,14 +147,16 @@ machineSettings:
     value: 2.5
     unit: J/cm²
     confidence: 87
-    description: Energy density threshold for effective contaminant removal without wood damage
+    description: Energy density threshold for effective contaminant removal without
+      wood damage
     min: 1.8
     max: 3.5
   overlapRatio:
     value: 40
     unit: '%'
     confidence: 85
-    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
+    description: Optimal beam overlap for uniform cleaning without excessive thermal
+      buildup
     min: 30
     max: 60
   passCount:
@@ -241,36 +244,58 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: "At 500x magnification, walnut surface, it reveals a very complex and uneven contamination layer. First, we\
-    \ see a dark, irregular film—perhaps organic deposits or industrial residues—covering much of the natural wood texture.\
-    \ This layer, it has thickness varying between 10 µm and approximately—or more precisely—14.5 µm in some areas, as measured\
-    \ through SEM imaging. The contamination appears as patchy clusters, with denser accumulations near the grain boundaries,\
-    \ where the wood’s natural porosity (around 45%) seems to trap more debris. Under the microscope, these deposits look\
-    \ like a matte, grainy coating that obscures the fine cellular structure of walnut.\n\nZooming into specific regions,\
-    \ surface roughness, it is notably high, with Ra values averaging 3.2 µm, likely due to embedded particles and uneven\
-    \ buildup. EDX analysis indicates presence of carbon-rich residues, possibly from environmental soot, mixed with trace\
-    \ metallic elements like iron or aluminum (less than 2% by weight). This contamination, it not only hides the wood’s inherent\
-    \ reflectivity (originally 0.12 at 1064 nm) but also creates a dull, non-uniform appearance. So, when examining, shows\
-    \ clearly that such a layer could impair functional performance, especially in applications like cultural heritage restoration\
-    \ where surface integrity is critical. (I note this because prior studies suggest similar issues in wood artifacts.)"
-  afterText: "After laser cleaning, walnut surface, it transforms significantly when viewed at 500x magnification. First,\
-    \ contamination layer, it is mostly removed, with only sparse residual patches—less than 1 µm thick—remaining in deeper\
-    \ grain recesses. Comparing to before, where deposits ranged up to 14.5 µm, this reduction, it is very clear and measurable\
-    \ through SEM. The natural wood texture, it now emerges with distinct cellular patterns visible, no longer hidden by the\
-    \ matte, grainy film. Surface roughness also improves, dropping to an Ra value of about 1.1 µm, which suggests better\
-    \ uniformity and potential for enhanced adhesion or finishing in applications like aerospace or automotive components.\n\
-    \nLooking closer, cleaned areas, they show a subtle sheen, likely tied to restored reflectivity closer to the original\
-    \ 0.12 at 1064 nm wavelength. XPS analysis confirms reduction in carbon-based residues, with surface composition returning\
-    \ near to baseline walnut properties. However, some micro-abrasions—perhaps from laser interaction above the ablation\
-    \ threshold of 0.8 J/cm²—are visible as faint striations along grain lines. These marks, they are minor, under 0.5 µm\
-    \ deep, and do not compromise structural integrity (as tensile strength remains unaffected at 101 MPa). So, this cleaning,\
-    \ it restores much of functional surface quality, very important for precision uses.\n\nFinally, when examining overall,\
-    \ the transformation looks like a revival of material character. Contamination removal, it enhances visual clarity and\
-    \ exposes the wood’s inherent porosity and grain detail, which were previously obscured. This improvement, it directly\
-    \ supports performance in cultural heritage contexts, where authenticity of appearance matters. (I mention this, as similar\
-    \ results were noted in wood conservation projects.) Surface now, it appears ready for further treatment or protective\
-    \ coating, with minimal risk of residual interference."
-  description: Microscopic analysis of walnut surface before and after laser cleaning treatment
+  beforeText: 'At 500x magnification, walnut surface, it reveals a very complex and
+    uneven contamination layer. First, we see a dark, irregular film—perhaps organic
+    deposits or industrial residues—covering much of the natural wood texture. This
+    layer, it has thickness varying between 10 µm and approximately—or more precisely—14.5
+    µm in some areas, as measured through SEM imaging. The contamination appears as
+    patchy clusters, with denser accumulations near the grain boundaries, where the
+    wood’s natural porosity (around 45%) seems to trap more debris. Under the microscope,
+    these deposits look like a matte, grainy coating that obscures the fine cellular
+    structure of walnut.
+
+
+    Zooming into specific regions, surface roughness, it is notably high, with Ra
+    values averaging 3.2 µm, likely due to embedded particles and uneven buildup.
+    EDX analysis indicates presence of carbon-rich residues, possibly from environmental
+    soot, mixed with trace metallic elements like iron or aluminum (less than 2% by
+    weight). This contamination, it not only hides the wood’s inherent reflectivity
+    (originally 0.12 at 1064 nm) but also creates a dull, non-uniform appearance.
+    So, when examining, shows clearly that such a layer could impair functional performance,
+    especially in applications like cultural heritage restoration where surface integrity
+    is critical. (I note this because prior studies suggest similar issues in wood
+    artifacts.)'
+  afterText: 'After laser cleaning, walnut surface, it transforms significantly when
+    viewed at 500x magnification. First, contamination layer, it is mostly removed,
+    with only sparse residual patches—less than 1 µm thick—remaining in deeper grain
+    recesses. Comparing to before, where deposits ranged up to 14.5 µm, this reduction,
+    it is very clear and measurable through SEM. The natural wood texture, it now
+    emerges with distinct cellular patterns visible, no longer hidden by the matte,
+    grainy film. Surface roughness also improves, dropping to an Ra value of about
+    1.1 µm, which suggests better uniformity and potential for enhanced adhesion or
+    finishing in applications like aerospace or automotive components.
+
+
+    Looking closer, cleaned areas, they show a subtle sheen, likely tied to restored
+    reflectivity closer to the original 0.12 at 1064 nm wavelength. XPS analysis confirms
+    reduction in carbon-based residues, with surface composition returning near to
+    baseline walnut properties. However, some micro-abrasions—perhaps from laser interaction
+    above the ablation threshold of 0.8 J/cm²—are visible as faint striations along
+    grain lines. These marks, they are minor, under 0.5 µm deep, and do not compromise
+    structural integrity (as tensile strength remains unaffected at 101 MPa). So,
+    this cleaning, it restores much of functional surface quality, very important
+    for precision uses.
+
+
+    Finally, when examining overall, the transformation looks like a revival of material
+    character. Contamination removal, it enhances visual clarity and exposes the wood’s
+    inherent porosity and grain detail, which were previously obscured. This improvement,
+    it directly supports performance in cultural heritage contexts, where authenticity
+    of appearance matters. (I mention this, as similar results were noted in wood
+    conservation projects.) Surface now, it appears ready for further treatment or
+    protective coating, with minimal risk of residual interference.'
+  description: Microscopic analysis of walnut surface before and after laser cleaning
+    treatment
   alt: Microscopic view of walnut surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -282,7 +307,7 @@ caption:
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: "2025-10-04T20:56:34.616119Z"
+    timestamp: '2025-10-04T20:56:34.616119Z'
     generator: FrontmatterCaptionGenerator
     componentType: ai_caption_frontmatter
   author: Yi-Chun Lin
@@ -290,7 +315,8 @@ caption:
     materialType: Wood
     analysisMethod: ai_microscopy
   imageUrl:
-    alt: Microscopic view of Walnut surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Walnut surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/walnut-laser-cleaning-micro.jpg
 tags:
 - wood
@@ -304,5 +330,8 @@ tags:
 - industrial-grade
 - yi-chun-lin
 metadata:
-  lastUpdated: "2025-10-04T20:57:15.530600"
+  lastUpdated: '2025-10-04T20:57:15.530600'
   captionIntegrated: true
+subtitle: Handling walnut in laser cleaning takes patience due to its varying grain
+  density. Adjust your power levels below 50 watts initially, or you might risk uneven
+  removal on the hardwood’s intricate surface.

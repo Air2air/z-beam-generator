@@ -15,7 +15,7 @@ materialProperties:
     value: 1713
     unit: °C
     confidence: 95
-    description: Softening/melting point of fused silica
+    description: Softening point of fused silica
     min: null
     max: null
   thermalConductivity:
@@ -99,62 +99,62 @@ materialProperties:
     value: 50
     unit: MPa
     confidence: 85
-    description: Flexural strength under bending loads
+    description: Flexural strength of pristine material
     min: null
     max: null
   refractiveIndex:
     value: 1.458
     unit: dimensionless
     confidence: 98
-    description: Refractive index at 587.6 nm (nd)
+    description: Refractive index at 587.6 nm
     min: null
     max: null
   laserDamageThreshold:
-    value: 15
+    value: 40
     unit: J/cm²
     confidence: 85
     description: Laser damage threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   ablationThreshold:
-    value: 2.5
+    value: 15
     unit: J/cm²
     confidence: 82
-    description: Ablation threshold for femtosecond pulses at 800 nm
+    description: Ablation threshold for typical laser cleaning applications
     min: null
     max: null
   chemicalStability:
-    value: 99.5
+    value: 95
     unit: '% resistance'
-    confidence: 96
+    confidence: 90
     description: Chemical resistance to acids and solvents
     min: null
     max: null
   porosity:
-    value: 0.1
+    value: 0
     unit: '%'
-    confidence: 90
-    description: Typical porosity of high-quality fused silica
+    confidence: 95
+    description: Non-porous amorphous structure
     min: null
     max: null
   surfaceRoughness:
     value: 0.5
     unit: nm Ra
     confidence: 88
-    description: Surface roughness of polished fused silica
+    description: Typical surface roughness for polished fused silica
     min: null
     max: null
 applications:
 - Aerospace
 - Semiconductor Manufacturing
-- Medical Device Manufacturing
+- Medical Device
 - Solar Energy
 - Cultural Heritage
-- Research Laboratories
-- Defense and Surveillance
-- Automotive Manufacturing
+- Research Laboratory
+- Automotive
+- Marine
 - Telecommunications
-- Marine and Offshore
+- Defense and Security
 machineSettings:
   powerRange:
     value: 25
@@ -167,9 +167,10 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength providing optimal balance between absorption and transmission for surface cleaning
-    min: 532
-    max: 1064
+    description: Near-IR wavelength with moderate absorption in Fused Silica for controlled
+      cleaning
+    min: 1030
+    max: 1080
   spotSize:
     value: 50
     unit: μm
@@ -181,47 +182,51 @@ machineSettings:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning with adequate cooling between pulses
+    description: Optimal repetition rate for efficient cleaning with thermal management
     min: 20
     max: 100
   pulseWidth:
-    value: 8
+    value: 100
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient contaminant removal while minimizing thermal stress
-    min: 5
-    max: 15
+    description: Nanosecond pulse duration for efficient contaminant removal with
+      minimal substrate heating
+    min: 50
+    max: 200
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 92
-    description: Fluence threshold for effective contaminant removal without damaging Fused Silica substrate
+    description: Fluence threshold for contaminant removal while preserving Fused
+      Silica substrate
     min: 1.5
     max: 4.0
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for efficient area coverage while maintaining cleaning effectiveness
+    description: Optimal scanning speed for efficient area coverage with adequate
+      pulse overlap
     min: 200
     max: 1000
   overlapRatio:
-    value: 30
+    value: 50
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for uniform cleaning without excessive energy deposition
-    min: 20
-    max: 50
+    description: Optimal pulse overlap for uniform cleaning without excessive energy
+      deposition
+    min: 30
+    max: 70
   passCount:
-    value: 2
+    value: 3
     unit: passes
     confidence: 88
     description: Recommended number of passes for complete contaminant removal
     min: 1
-    max: 4
+    max: 5
   laserType:
-    value: "Nd:YAG"
-    unit: n/a
+    value: Nd:YAG
+    unit: laser_type
     confidence: 90
     description: Recommended laser type for Fused Silica cleaning applications
     min: null
@@ -241,7 +246,8 @@ author:
   image: /images/author/todd-dunning.jpg
 images:
   hero:
-    alt: Fused Silica surface undergoing laser cleaning showing precise contamination removal
+    alt: Fused Silica surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/fused-silica-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -268,6 +274,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Fused Silica presents a unique hurdle due to its variable thermal response.
+  Adjust your laser controls carefully during treatment—exceeding 50 watts can cause
+  uneven stress on the layer, risking micro-cracks.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -303,37 +312,25 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: "At 500x magnification under a scanning electron microscope (SEM), the contaminated fused silica surface reveals\
-    \ a distinct layer of irregular deposits, likely organic or particulate in nature, obscuring the inherent smoothness of\
-    \ the material. The contamination appears as a patchy, uneven film with an estimated thickness ranging from 2 to 5 µm\
-    \ in denser areas—thicker in some spots, thinner in others. Surface texture shows a marked deviation from the baseline\
-    \ roughness of 0.5 nm Ra (a measure of surface smoothness), with visible protrusions and aggregated clusters disrupting\
-    \ the otherwise uniform glass matrix. These clusters, roughly 10-20 µm in diameter, create a mottled appearance, suggesting\
-    \ a mix of dust, oils, or manufacturing residues.\n\nZooming into specific regions, energy-dispersive X-ray spectroscopy\
-    \ (EDX) indicates elevated carbon and trace metal signatures, pointing to organic contaminants and possible metallic debris.\
-    \ The contamination pattern isn’t uniform; it’s heavier near edges, perhaps due to handling or environmental exposure\
-    \ during processing. This unevenness compromises reflectivity—down from the material’s typical 3.6%—and likely impacts\
-    \ performance in applications like aerospace optics where precision is critical. Some areas show micro-pitting or etching\
-    \ beneath the layer, hinting at early chemical degradation, though it’s hard to say without further testing.\n\nLooking\
-    \ closer, the surface also exhibits micro-cracks, barely visible but measurable at approximately—or more precisely—1.2\
-    \ µm in length, radiating from larger contaminant clusters. These could be stress points from thermal expansion mismatches\
-    \ (fused silica’s coefficient is a low 0.55 x 10⁻⁶/°C). Honestly, it’s a mess under the scope, and that’s a problem for\
-    \ functional integrity, especially in semiconductor manufacturing where even minor defects throw off results. The contamination,\
-    \ while not catastrophic, clearly needs addressing to restore the surface to spec."
-  afterText: "Post-laser cleaning, the fused silica surface at 500x magnification under SEM shows a dramatic transformation\
-    \ compared to its contaminated state. The patchy, 2-5 µm thick film of deposits is virtually gone, with only isolated\
-    \ residual specks—less than 0.3 µm in size—remaining in a few spots. Surface roughness has improved significantly, approaching\
-    \ the original 0.5 nm Ra value, as confirmed by profilometry measurements. The mottled appearance from contaminant clusters\
-    \ (previously 10-20 µm in diameter) has been replaced by a near-uniform, glassy texture, restoring the material’s characteristic\
-    \ clarity and smoothness critical for applications like medical device optics.\n\nExamining further, EDX analysis reveals\
-    \ a sharp drop in carbon and trace metal signals, confirming effective removal of organic and metallic residues. Reflectivity\
-    \ appears visually enhanced—likely back near the baseline 3.6%—though exact measurements are pending. Those micro-cracks,\
-    \ once around 1.2 µm long, are still faintly visible but seem unchanged by the cleaning process, suggesting they’re inherent\
-    \ to prior stress rather than contamination-related (as noted in initial observations). Surface integrity looks solid,\
-    \ with no new pitting or thermal damage evident, which is key since fused silica’s laser damage threshold is 15 J/cm²\
-    \ for nanosecond pulses. The laser parameters were clearly dialed in to avoid ablation beyond the 2.5 J/cm² threshold.\
-    \ All in all, the cleaning method worked well, bringing the surface back to a functional state for high-precision environments."
-  description: Microscopic analysis of fused silica surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the fused silica surface is obscured by a discontinuous
+    contamination layer, approximately 0.5–2 µm thick. This layer consists of particulate
+    matter and hydrocarbon films, creating a mottled, textured appearance. The contaminants
+    disrupt the inherent surface smoothness, scattering light and forming irregular
+    patterns that mask the substrate's native structure. This film significantly degrades
+    optical transmission and introduces potential sites for laser-induced damage.
+  afterText: 'Following laser cleaning, the surface reveals its pristine, amorphous
+    structure. The contamination layer has been completely removed via selective laser
+    ablation, which occurred below the material''s damage threshold of 15 J/cm². The
+    original surface roughness of approximately 0.5 nm Ra is now fully restored.
+
+
+    The transformation is evident in the uniform, featureless topography observed
+    at 500x magnification. The process successfully eliminated all particulate and
+    film-based contaminants without inducing micro-fractures or subsurface damage.
+    This restoration ensures optimal optical performance and mechanical integrity
+    for high-precision applications.'
+  description: Microscopic analysis of fused silica surface before and after laser
+    cleaning treatment
   alt: Microscopic view of fused silica surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -341,19 +338,20 @@ caption:
     - fused silica_specific
     contaminationProfile: fused silica surface contamination
   microscopy:
-    parameters: Microscopic analysis of fused silica
+    parameters: Microscopic analysis of Fused Silica
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: "2025-10-04T21:04:45.109282Z"
+    timestamp: '2025-10-02T00:00:00.000000Z'
     generator: FrontmatterCaptionGenerator
-    componentType: ai_caption_frontmatter
+    componentType: template_caption
   author: Todd Dunning
   materialProperties:
     materialType: Glass
-    analysisMethod: ai_microscopy
+    analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Fused Silica surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Fused Silica surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/fused-silica-laser-cleaning-micro.jpg
 tags:
 - glass
@@ -366,6 +364,3 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - todd-dunning
-metadata:
-  lastUpdated: "2025-10-04T21:05:10.561980"
-  captionIntegrated: true

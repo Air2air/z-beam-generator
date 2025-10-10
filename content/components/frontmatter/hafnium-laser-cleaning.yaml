@@ -92,34 +92,34 @@ materialProperties:
     value: 5.9
     unit: μm/m·K
     confidence: 90
-    description: Coefficient of thermal expansion (20-100°C)
+    description: Coefficient of linear thermal expansion (25°C)
     min: 0.5
     max: 29.1
   reflectivity:
     value: 45
     unit: '%'
     confidence: 82
-    description: Approximate reflectivity at common laser wavelengths (1-10μm)
+    description: Approximate reflectivity for visible to near-IR wavelengths
     min: null
     max: null
   absorptionCoefficient:
     value: 1200000.0
     unit: m⁻¹
     confidence: 80
-    description: Estimated absorption coefficient for IR lasers
+    description: Estimated absorption coefficient for common laser wavelengths
     min: null
     max: null
   ablationThreshold:
     value: 2.5
     unit: J/cm²
-    confidence: 85
+    confidence: 82
     description: Estimated laser ablation threshold for nanosecond pulses
     min: null
     max: null
   oxidationResistance:
     value: Moderate
     unit: qualitative
-    confidence: 88
+    confidence: 85
     description: Forms protective oxide layer but oxidizes above 400°C
     min: null
     max: null
@@ -130,17 +130,24 @@ materialProperties:
     description: Hexagonal close-packed structure at room temperature
     min: null
     max: null
+  laserDamageThreshold:
+    value: 3.8
+    unit: J/cm²
+    confidence: 80
+    description: Estimated laser-induced damage threshold
+    min: null
+    max: null
 applications:
-- Aerospace
-- Nuclear Energy
-- Medical Device Manufacturing
-- Chemical Processing
+- Nuclear Reactor Components
+- Aerospace Turbine Components
+- Chemical Processing Equipment
+- Medical Implant Manufacturing
 - Electronics and Semiconductors
-- Marine and Offshore
-- Research and Laboratory
+- Marine Propulsion Systems
+- Research Laboratory Equipment
 - Additive Manufacturing
-- Defense and Military
-- Cultural Heritage Preservation
+- Cultural Heritage Conservation
+- Energy Storage Systems
 machineSettings:
   powerRange:
     value: 90
@@ -153,14 +160,14 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength for efficient Hafnium processing with good absorption
-    min: 1030
-    max: 1070
+    description: Near-IR wavelength optimized for Hafnium's absorption characteristics
+    min: 532
+    max: 1064
   spotSize:
     value: 80
     unit: μm
     confidence: 84
-    description: Beam spot diameter for precise cleaning with adequate coverage
+    description: Beam spot diameter for precise cleaning control
     min: 50
     max: 120
   repetitionRate:
@@ -180,29 +187,29 @@ machineSettings:
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 83
-    description: Optimal scanning speed for uniform cleaning efficiency
+    confidence: 86
+    description: Optimal scanning speed for uniform surface treatment
     min: 300
     max: 800
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Minimum fluence required for effective Hafnium oxide removal
+    description: Minimum fluence required for effective Hafnium surface cleaning
     min: 1.8
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 86
-    description: Optimal beam overlap for uniform cleaning coverage
+    confidence: 83
+    description: Optimal beam overlap for complete surface coverage
     min: 40
     max: 70
   passCount:
     value: 3
     unit: passes
-    confidence: 82
-    description: Recommended number of passes for complete surface cleaning
+    confidence: 85
+    description: Recommended number of passes for thorough cleaning
     min: 2
     max: 5
 regulatoryStandards:
@@ -222,10 +229,6 @@ images:
   hero:
     alt: Hafnium surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/hafnium-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Hafnium surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/hafnium-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -251,6 +254,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Hafnium's unique reactivity and variable oxide layer demand careful attention.
+  This requires tailored laser settings to effectively remove contaminants without
+  damaging the underlying material.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -288,21 +294,19 @@ outcomeMetrics:
 caption:
   beforeText: At 500x magnification, the hafnium surface is obscured by a non-uniform
     contamination layer. This layer, ranging from 5 to 20 micrometers in thickness,
-    consists of embedded carbonaceous particulates and a discontinuous oxide scale.
-    The underlying metal's HCP crystalline structure is entirely concealed. The topography
-    is irregular, with contamination accumulating in the micro-valleys of the mechanically
-    finished surface, creating a textured, matte appearance that significantly increases
-    light scattering and reduces the native metallic luster. This layer compromises
-    the material's surface-dependent properties.
-  afterText: Following laser cleaning, the 500x view reveals a dramatic transformation
-    to the pristine hafnium substrate. The contamination layer has been completely
-    removed via ablation, exposing the native, fine-grained metallic surface. The
-    topography now shows the original machining marks and grain boundaries with high
-    clarity, free from particulate inclusions. The surface reflectivity has increased
-    significantly, measured by a reduction in diffuse light scattering, which is a
-    direct result of restoring the metal's inherent 45% reflectivity. This process
-    achieves a clean, oxide-controlled surface without mechanical deformation or media
-    residue, restoring the material's baseline performance characteristics.
+    consists of embedded particulates and a discontinuous oxide scale. The underlying
+    metal's HCP crystalline structure is entirely hidden. The topography is irregular,
+    with contamination accumulating in the micro-valleys of the machined surface texture,
+    creating a matte, dark appearance that significantly increases light absorption
+    and scattering. This layer compromises the material's inherent properties and
+    provides initiation sites for further corrosion.
+  afterText: Following laser cleaning, the surface at 500x magnification reveals the
+    native hafnium microstructure. The contamination layer has been completely removed
+    via ablation, exposing the fine, uniform grain boundaries of the HCP lattice.
+    The surface texture is now defined by the metal's intrinsic micro-topography,
+    with a consistent, light-grey metallic lustre. The reflectivity has increased
+    to the material's inherent 45-48%, and the surface is free of embedded oxides
+    and particulates, restoring the substrate's baseline mechanical and chemical properties.
   description: Microscopic analysis of hafnium surface before and after laser cleaning
     treatment
   alt: Microscopic view of hafnium surface showing laser cleaning effects

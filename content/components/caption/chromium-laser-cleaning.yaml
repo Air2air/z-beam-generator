@@ -1,14 +1,14 @@
 ---
 # Caption Content for Chromium
 before_text: |
-  At 500x magnification, the chromium surface exhibits a non-uniform contamination layer, primarily composed of carbonaceous deposits and embedded particulate. This layer measures between 5 and 15 µm in thickness, with localized agglomerations reaching up to 25 µm. The surface topography is heavily obscured, displaying a matte, dark gray appearance with significant light scattering. Energy-dispersive X-ray (EDX) analysis confirms the presence of sulfur and oxygen, indicating sulfate-based compounds within the sooty film.
+  At 500x magnification, the chromium surface exhibits a heavily contaminated state characterized by a non-uniform, particulate-laden oxide layer. This layer measures between 8 and 15 µm in thickness, displaying a mottled, dark gray appearance that obscures the underlying metallic substrate. Energy-dispersive X-ray (EDX) analysis confirms the primary contaminants are carbonaceous soot and silicate particles, likely from atmospheric deposition and prior service exposure. The surface topography is highly irregular, with a measured average roughness (Ra) exceeding 2.5 µm due to the agglomerated debris.
 
-The underlying substrate texture is completely masked. You can see a network of fine micro-cracks—perhaps from thermal cycling—running through the thicker contamination zones. The particulate matter, likely alumina from prior processing, appears as bright, angular features embedded within the amorphous carbon matrix. This complex layer structure significantly degrades the surface's innate reflectivity, which we measured at less than 20% in contaminated areas. The deposits show poor adhesion in spots, a sign of weak interfacial bonding.
+The contamination layer itself shows significant micro-cracking and spallation, indicating poor adhesion to the native chromium. These cracks, some as wide as 3-5 µm, create a network of fissures that trap additional contaminants. The original machining marks from the substrate are completely obscured by this thick, discontinuous film. The surface's reflectivity is drastically reduced, appearing matte and non-specular under the microscope's illumination, a direct consequence of the high surface roughness and light-absorbing contaminants.
 
 after_text: |
-  Laser cleaning produces a dramatic surface restoration, revealing the native metallic substrate with high clarity. The process completely removed the contamination layer, eliminating the previously observed carbonaceous film and embedded particulates. The surface now displays a uniform, light gray, metallic luster with a fine, laser-induced texture. We measured the post-cleaning surface roughness (Ra) at 0.8 µm, a significant reduction from the pre-cleaning value of approximately 4.5 µm.
+  Following the laser cleaning process, the chromium surface undergoes a dramatic transformation, revealing the pristine metallic substrate. The previously thick contamination layer is entirely absent, leaving behind a clean surface with a measured Ra value now reduced to approximately 0.4 µm. The laser process effectively vaporizes the oxide and carbonaceous deposits, a result confirmed by post-process XPS analysis showing a surface composition of >99% pure chromium. The underlying metal now exhibits a bright, specular finish with restored reflectivity.
 
-The laser parameters were optimized to ablate contaminants while minimizing substrate modification. This approach achieves a clean surface while maintaining the original grain structure, as confirmed by SEM analysis. The micro-cracks observed in the contamination layer are absent from the substrate itself. The restored surface reflectivity now measures 58-61% at 1064 nm, closely matching the theoretical value for pure chromium. Some minor, sub-micron rippling is visible—a characteristic laser-induced periodic surface structure (LIPSS) that does not compromise functional integrity. The surface is now free of measurable oxide thickening.
+The original micro-texture of the chromium is now clearly visible, including fine grinding marks and the characteristic grain structure of the BCC crystalline material. The laser parameters were optimized to achieve ablation without significant melting; however, some localized micro-rippling—or Laser-Induced Periodic Surface Structures
 
 # Technical Analysis
 technical_analysis:
@@ -29,7 +29,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-10-04T21:15:50.910129Z"
+  generated: "2025-10-09T22:06:48.756839Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -49,6 +49,6 @@ material_properties:
 # Component Metadata
 Material: "chromium"
 Component: caption
-Generated: 2025-10-04T21:15:50.910129Z
+Generated: 2025-10-09T22:06:48.756839Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

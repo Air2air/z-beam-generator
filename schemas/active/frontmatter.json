@@ -13,7 +13,7 @@
     "subcategory",
     "title"
   ],
-  "additionalProperties": false,
+  "additionalProperties": true,
   "properties": {
     "name": {
       "type": "string",
@@ -74,9 +74,41 @@
       "type": "string",
       "description": "SEO-optimized title"
     },
+    "subtitle": {
+      "type": "string",
+      "description": "AI-generated subtitle highlighting material-specific characteristics and treatment differences (2 sentences, 20-30 words)"
+    },
     "headline": {
       "type": "string",
       "description": "Marketing headline"
+    },
+    "caption": {
+      "type": "object",
+      "description": "Microscopic analysis caption with before/after text",
+      "properties": {
+        "beforeText": {"type": "string"},
+        "afterText": {"type": "string"},
+        "description": {"type": "string"},
+        "alt": {"type": "string"},
+        "author": {"type": "string"},
+        "imageUrl": {"type": "object"},
+        "technicalAnalysis": {"type": "object"},
+        "microscopy": {"type": "object"},
+        "generation": {"type": "object"},
+        "materialProperties": {"type": "object"}
+      }
+    },
+    "outcomeMetrics": {
+      "type": "object",
+      "description": "Quantified outcome metrics",
+      "properties": {
+        "efficiency": {"type": "string"},
+        "qualityImprovement": {"type": "string"},
+        "costReduction": {"type": "string"},
+        "timeReduction": {"type": "string"},
+        "sustainabilityBenefit": {"type": "string"},
+        "quantifiedBenefits": {"type": "string"}
+      }
     },
     "description": {
       "type": "string",

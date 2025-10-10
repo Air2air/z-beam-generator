@@ -359,12 +359,21 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             abbreviation_format = self._apply_abbreviation_template(material_name)
             
             # Build base structure from YAML with all required schema fields - FAIL-FAST per GROK_INSTRUCTIONS.md
+            category = (material_data['category'] if 'category' in material_data else 'materials').title()
+            subcategory = material_data['subcategory'] if 'subcategory' in material_data else abbreviation_format['subcategory']
+            
             frontmatter = {
                 'name': abbreviation_format['name'],
                 'title': material_data['title'] if 'title' in material_data else abbreviation_format['title'],
+                'subtitle': self._generate_subtitle(
+                    material_name=abbreviation_format['name'],
+                    category=category,
+                    subcategory=subcategory,
+                    material_data=material_data
+                ),
                 'description': material_data['description'] if 'description' in material_data else f"Laser cleaning parameters for {material_data['name'] if 'name' in material_data else material_name}{abbreviation_format['description_suffix']}",
-                'category': (material_data['category'] if 'category' in material_data else 'materials').title(),
-                'subcategory': material_data['subcategory'] if 'subcategory' in material_data else abbreviation_format['subcategory'],
+                'category': category,
+                'subcategory': subcategory,
             }
             
             # OPTIMIZATION: Check Materials.yaml for industryTags first before calling AI
@@ -1053,6 +1062,10 @@ Return YAML format with materialProperties, machineSettings, and structured appl
         """
         Generate images section with material-specific URLs and alt text
         
+        Per PYTHON_GENERATOR_PROMPT_CORRECTED.md:
+        - images section contains ONLY hero image
+        - micro image goes in caption.imageUrl (generated separately in _add_caption_section)
+        
         Creates proper alt text and URL patterns following schema requirements.
         Handles special characters, multi-word names, and URL normalization.
         
@@ -1060,7 +1073,7 @@ Return YAML format with materialProperties, machineSettings, and structured appl
             material_name: Name of the material
             
         Returns:
-            Dict with 'hero' and 'micro' image objects containing 'alt' and 'url'
+            Dict with ONLY 'hero' image object containing 'alt' and 'url'
         """
         try:
             import re
@@ -1075,16 +1088,13 @@ Return YAML format with materialProperties, machineSettings, and structured appl
             # Generate descriptive alt text with proper capitalization
             material_title = material_name.title()
             hero_alt = f'{material_title} surface undergoing laser cleaning showing precise contamination removal'
-            micro_alt = f'Microscopic view of {material_title} surface after laser cleaning showing detailed surface structure'
             
+            # ONLY hero image in images section per PYTHON_GENERATOR_PROMPT_CORRECTED.md
+            # Micro image is in caption.imageUrl (see _add_caption_section)
             return {
                 'hero': {
                     'alt': hero_alt,
                     'url': f'/images/material/{material_slug}-laser-cleaning-hero.jpg'
-                },
-                'micro': {
-                    'alt': micro_alt,
-                    'url': f'/images/material/{material_slug}-laser-cleaning-micro.jpg'
                 }
             }
             
@@ -1275,6 +1285,170 @@ Return YAML format with materialProperties, machineSettings, and structured appl
             self.logger.error(f"Failed to generate applications from unified industry data: {e}")
             # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
             raise GenerationError(f"Applications generation failed for {material_name}: {e}")
+
+    def _generate_subtitle(self, material_name: str, category: str, subcategory: str, material_data: Dict) -> str:
+        """Generate AI-powered subtitle highlighting material-specific characteristics and treatment differences"""
+        try:
+            import yaml
+            from pathlib import Path
+            from utils.core.author_manager import get_author_by_id
+            
+            # Extract context
+            applications = material_data.get('applications', [])
+            properties = material_data.get('materialProperties', {})
+            
+            # Build property summary for context
+            property_summary = []
+            for prop, data in list(properties.items())[:5]:  # Limit to top 5 properties
+                if isinstance(data, dict) and 'value' in data:
+                    unit = data.get('unit', '')
+                    property_summary.append(f"{prop}: {data['value']}{unit}")
+            
+            property_context = '; '.join(property_summary) if property_summary else 'Properties vary'
+            apps_context = ', '.join(applications[:3]) if applications else 'General cleaning applications'
+            
+            # Get author information for voice profile
+            author_id = None
+            if 'author' in material_data and isinstance(material_data['author'], dict) and 'id' in material_data['author']:
+                author_id = material_data['author']['id']
+            elif 'author_id' in material_data:
+                author_id = material_data['author_id']
+            else:
+                author_id = 3  # Default author
+            
+            author_info = get_author_by_id(author_id)
+            if not author_info:
+                raise PropertyDiscoveryError(f"Author with ID {author_id} not found")
+            
+            # Load author voice profile
+            country = author_info.get('country', 'United States')
+            # Map country to voice profile file
+            country_mapping = {
+                'Taiwan': 'taiwan',
+                'Italy': 'italy',
+                'Indonesia': 'indonesia',
+                'United States': 'united_states',
+                'United States (California)': 'united_states'
+            }
+            profile_name = country_mapping.get(country, 'united_states')
+            voice_file = Path(f"voice/profiles/{profile_name}.yaml")
+            
+            # Load voice profile
+            voice_profile = {}
+            if voice_file.exists():
+                with open(voice_file, 'r', encoding='utf-8') as f:
+                    voice_profile = yaml.safe_load(f)
+            
+            # Extract linguistic characteristics for prompt
+            linguistic = voice_profile.get('linguistic_characteristics', {})
+            sentence_structure = linguistic.get('sentence_structure', {})
+            patterns = sentence_structure.get('patterns', [])
+            tendencies = sentence_structure.get('tendencies', [])
+            grammar = linguistic.get('grammar_characteristics', {})
+            common_patterns = grammar.get('common_patterns', [])
+            
+            # Build author voice guidance (SUBTLE - don't dominate the output)
+            author_voice = f"""
+SUBTLE AUTHOR INFLUENCE (let personality show naturally, don't force patterns):
+Author: {author_info['name']} from {country}
+Voice hints: {', '.join(tendencies[:2]) if tendencies else 'Direct technical writing'}
+"""
+            
+            # Build AI prompt that forces structural variation and human-like writing
+            prompt = f"""You are writing subtitle copy for laser cleaning technical documentation. Generate a natural, conversational two-sentence subtitle about {material_name} that passes AI detection.
+
+{author_voice}
+
+CRITICAL: DO NOT USE REPETITIVE PATTERNS! Each subtitle must have a COMPLETELY UNIQUE structure.
+BANNED: "What strikes me about...", "This [Material]...", any formulaic openings you've used before.
+TONE: Professional technical writing - NO overly familiar expressions like "Hey!", "Wow!", or emotional exclamations.
+
+MATERIAL CONTEXT:
+- Material: {material_name}
+- Category: {category}
+- Subcategory: {subcategory}
+- Properties: {property_context}
+- Applications: {apps_context}
+
+CRITICAL ANTI-AI-DETECTION REQUIREMENTS:
+
+1. BANNED PHRASES & STRUCTURES (never use any of these):
+   - "X is defined by..." / "X is characterized by..." / "X is known for..."
+   - "stands out" / "sets apart" / "distinguishes"
+   - "necessitates" / "requires" / "demands" + "precise/careful/tailored"
+   - "When cleaning [Material], the surface..." (overused opening)
+   - "dial in" / "dialed-in" (overused jargon)
+   - "keep/keeping the [x] intact" (too common)
+   - "calls for close attention" (AI favorite)
+   - "well-tuned parameters" (AI favorite)
+
+2. REQUIRED: Use COMPLETELY DIFFERENT sentence structures. Pick ONE (never repeat):
+   
+   A. Problem-first: "The biggest challenge with [material] is..."
+   B. Behavior-first: "[Material] tends to react unpredictably when..."
+   C. Property-leads: "Its [property] creates complications during..."
+   D. Comparison: "Unlike [similar materials], [material] responds..."
+   E. Operator perspective: "Most operators find [material] tricky because..."
+   F. Timing-based: "During initial treatment, [material] often..."
+   G. Conditional: "If power levels drift above X watts, [material]..."
+   H. Consequence: "Skip proper calibration and [material] will..."
+   I. Question-implied: "Why does [material] need special attention? Its..."
+   J. Discovery: "Look at [material] under magnification and you'll spot..."
+   K. Measurement-first: "At roughness levels exceeding X µm, [material]..."
+   L. Process-flow: "Start with low power on [material], then gradually..."
+   M. Contrast-within: "While the [part A] remains stable, [material's part B]..."
+   N. User-instruction: "Keep your laser focused when treating [material] - its..."
+   O. Observation: "Notice how [material] shifts color as contamination lifts..."
+   P. Technical fact: "With thermal conductivity of X, [material] distributes..."
+   Q. Industry-specific: "In aerospace applications, [material] demands..."
+   R. Caution-first: "Watch out for [material's tendency] during..."
+   S. Benefit-angle: "The advantage of [material] is its ability to..."
+   T. Historical/Practical: "Operators have learned that [material] works best when..."
+
+3. VOCABULARY VARIATION - use fresh phrasing:
+   - For "precise": specific, exact, targeted, controlled, focused
+   - For "settings": controls, parameters, adjustments, power levels, conditions
+   - For "avoid damage": prevent harm, protect, preserve, maintain, safeguard
+   - For "surface": coating, layer, finish, skin, face
+   - For "cleaning": treatment, processing, work, operation, removal
+
+4. WRITE WITH PERSONALITY (match author voice above):
+   - Use active, concrete verbs
+   - Include occasional contractions (it's, won't, can't)
+   - Add specifics (numbers, measurements, observations)
+   - Vary rhythm (short + long sentence, or long + short)
+   - Let expertise show through word choice
+
+TARGET: 25-40 words, two sentences, completely unique structure from previous subtitles.
+
+Generate the subtitle now:"""
+
+            # Call API
+            self.logger.info(f"Generating AI subtitle for {material_name}")
+            response = self.api_client.generate_simple(
+                prompt=prompt,
+                max_tokens=150,  # Enough for 2 sentences
+                temperature=0.75  # Higher for more variety (was 0.6)
+            )
+            
+            # Extract content
+            if hasattr(response, 'content'):
+                subtitle = response.content.strip()
+            elif isinstance(response, str):
+                subtitle = response.strip()
+            else:
+                subtitle = str(response).strip()
+            
+            # Clean up any markdown formatting or extra whitespace
+            subtitle = subtitle.replace('**', '').replace('*', '').strip()
+            
+            self.logger.info(f"✅ Generated subtitle for {material_name}: {subtitle}")
+            return subtitle
+            
+        except Exception as e:
+            self.logger.error(f"Failed to generate subtitle for {material_name}: {e}")
+            # FAIL-FAST: subtitle is required
+            raise GenerationError(f"Subtitle generation failed for {material_name}: {e}")
 
     def _add_caption_section(self, frontmatter: Dict, material_data: Dict, material_name: str) -> Dict:
         """Add caption section with before/after text using AI generation"""

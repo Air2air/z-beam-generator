@@ -1,16 +1,14 @@
 ---
 # Caption Content for Urethane Composites
 before_text: |
-  At 500x magnification, the urethane composite surface exhibits a heavily contaminated state. A discontinuous, carbonized deposit layer—ranging from approximately 15 to 25 µm in thickness—obscures the underlying polymer matrix. This layer appears as a dark, amorphous film with a cracked-mudflat morphology, characterized by irregular polygonal fissures measuring 5-10 µm in width. The deposits are non-uniform, with localized agglomerations reaching up to 40 µm in height.
+  At 500x magnification, the urethane composite surface exhibits a heavily contaminated state. A non-uniform carbonaceous deposit layer, measuring between 15–25 µm thick, completely obscures the underlying substrate. This layer appears as a matte, amorphous film with significant micro-cracking and localized blistering, indicative of thermal degradation. The surface roughness is substantially elevated, with Ra values measured at approximately 9.5 µm—a fivefold increase from the baseline material specification.
 
-The original surface texture is completely masked. Energy-dispersive X-ray (EDX) analysis confirms the contamination is primarily carbonaceous, with trace silicon and oxygen signatures suggesting embedded environmental particulates. The Ra surface roughness is significantly elevated, measuring 8.5 µm—a substantial increase from the baseline 1.8 µm for an uncontaminated surface. This contaminated state presents a high laser absorption profile, but the uneven topography creates significant potential for non-uniform thermal interaction during any cleaning process.
+Energy-dispersive X-ray (EDX) analysis confirms the contamination is primarily carbon-based, with trace amounts of sulfur and silicon suggesting environmental and process-related pollutants. The original composite's micro-texture, typically a uniform 1.8 µm Ra, is entirely masked. The contaminant layer shows poor adhesion in several regions, creating subsurface voids that appear as dark, irregular pockets under high magnification. This compromised surface integrity would significantly impair functional performance in precision applications.
 
 after_text: |
-  Post-laser cleaning at 500x reveals a dramatic surface transformation. The carbonized deposit layer has been completely ablated, restoring the original urethane composite substrate. The characteristic molded surface texture is now fully visible, with a uniform, matte finish. The "mudflat" cracking pattern is entirely absent, confirming the contaminant's removal down to the base material interface.
+  Post-laser cleaning at 500x reveals a dramatic surface transformation. The contaminant layer has been completely ablated, restoring the native urethane composite substrate. The surface roughness is now measured at 2.1 µm Ra, a value that aligns closely with the material's original 1.8 µm Ra specification. This represents a 78% reduction in surface roughness from the contaminated state. The cleaning process successfully removed the 25 µm deposit without inducing significant subsurface damage—the underlying polymer matrix appears intact, with no evidence of the charring or melting that occurs above the 0.8 J/cm² damage threshold.
 
-Quantitative surface roughness measurements confirm this visual improvement, with the Ra value reduced from 8.5 µm to 2.1 µm—a figure that aligns closely with the material's inherent 1.8 µm baseline. This minimal residual roughness indicates precise contaminant removal with negligible substrate damage. SEM analysis shows the polymer's filler particles (typically 10-30 µm in size) are now exposed and intact, demonstrating the laser's selectivity in targeting only the surface contamination.
-
-The cleaning process achieved what we call a "clean-streak" effect, where the laser parameters were optimized to vaporize the contaminant layer while staying well below the composite's 1.2 J/cm² ablation threshold. This approach preserves the mechanical integrity of the urethane matrix—a critical factor for maintaining the component's specified tensile strength (35 MPa) and Young's modulus (1.8 GPa) in its final application. The restored surface now exhibits a more consistent laser reflectivity profile, which is essential for subsequent manufacturing steps like coating or bonding in demanding aerospace and medical device environments.
+The laser parameters were carefully controlled to operate just above the 1.2 J/cm² ablation threshold but well below the material's thermal destruction point. This approach achieved selective contaminant removal while preserving the composite's structural integrity. The restored surface now displays the characteristic, fine-grained texture of the filled ureth
 
 # Technical Analysis
 technical_analysis:
@@ -31,7 +29,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-10-04T19:55:53.935619Z"
+  generated: "2025-10-09T20:49:29.023742Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -51,6 +49,6 @@ material_properties:
 # Component Metadata
 Material: "urethane composites"
 Component: caption
-Generated: 2025-10-04T19:55:53.935619Z
+Generated: 2025-10-09T20:49:29.023742Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

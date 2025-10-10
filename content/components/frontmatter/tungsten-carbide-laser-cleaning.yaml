@@ -7,181 +7,245 @@ materialProperties:
   density:
     value: 15.7
     unit: g/cm³
-    confidence: 95
-    description: High density due to tungsten content in WC-Co compositions
+    confidence: 97
+    description: High density due to tungsten content in WC-Co composites
     min: 2.2
     max: 19.3
   meltingPoint:
     value: 2870
     unit: °C
-    confidence: 90
-    description: Melting point of pure tungsten carbide, varies with cobalt content
+    confidence: 95
+    description: Decomposition temperature rather than true melting point
     min: null
     max: null
   thermalConductivity:
     value: 110
     unit: W/m·K
-    confidence: 88
-    description: Thermal conductivity for WC-6%Co composition at room temperature
+    confidence: 92
+    description: High thermal conductivity for WC-6%Co composition at 20°C
     min: 0.03
     max: 2000.0
+  tensileStrength:
+    value: 344.7
+    unit: MPa
+    confidence: 92
+    description: tensileStrength from Materials.yaml
+    min: 50
+    max: 1000
   hardness:
     value: 1600
     unit: HV
-    confidence: 92
+    confidence: 94
     description: Vickers hardness for WC-6%Co composition
     min: 1.0
     max: 10.0
   youngsModulus:
     value: 650
     unit: GPa
-    confidence: 90
-    description: Elastic modulus for WC-6%Co composition
+    confidence: 95
+    description: High elastic modulus typical for WC-Co composites
     min: 50
     max: 800
-  thermalExpansion:
-    value: 5.2
-    unit: ×10⁻⁶/K
-    confidence: 85
-    description: Coefficient of thermal expansion for WC-6%Co at 20-400°C
-    min: 0.1
-    max: 14
-  thermalDiffusivity:
-    value: 0.18
-    unit: cm²/s
-    confidence: 82
-    description: Thermal diffusivity at room temperature for typical WC-Co grades
-    min: 0.05
-    max: 120
-  specificHeat:
-    value: 0.22
-    unit: J/g·K
-    confidence: 85
-    description: Specific heat capacity at room temperature
-    min: 200
-    max: 1200
+  compressiveStrength:
+    value: 6700.0
+    unit: MPa
+    confidence: 95
+    description: compressiveStrength from Materials.yaml
+    min: null
+    max: null
   flexuralStrength:
     value: 3500
     unit: MPa
-    confidence: 88
-    description: Transverse rupture strength for fine-grained WC-Co
+    confidence: 90
+    description: Transverse rupture strength for WC-6%Co
     min: null
     max: null
+  fractureToughness:
+    value: 9.5
+    unit: MPa·m¹/²
+    confidence: 95
+    description: fractureToughness from Materials.yaml
+    min: null
+    max: null
+  laserAbsorption:
+    value: 32.7
+    unit: '%'
+    confidence: 92
+    description: laserAbsorption from Materials.yaml
+    min: 0.1
+    max: 50
+  laserReflectivity:
+    value: 52.3
+    unit: '%'
+    confidence: 92
+    description: laserReflectivity from Materials.yaml
+    min: 5
+    max: 90
+  specificHeat:
+    value: 220
+    unit: J/kg·K
+    confidence: 88
+    description: Specific heat capacity at room temperature
+    min: 200
+    max: 1200
+  thermalDestructionPoint:
+    value: 2870.0
+    unit: K
+    confidence: 95
+    description: thermalDestructionPoint from Materials.yaml
+    min: 1000
+    max: 3827
+  thermalDestructionType:
+    value: 800.0
+    unit: °C
+    confidence: 92
+    description: thermalDestructionType from Materials.yaml
+    min: null
+    max: null
+  thermalDiffusivity:
+    value: 0.32
+    unit: cm²/s
+    confidence: 85
+    description: Thermal diffusivity for WC-6%Co at room temperature
+    min: 0.05
+    max: 120
+  thermalExpansion:
+    value: 5.2
+    unit: ×10⁻⁶/K
+    confidence: 90
+    description: Coefficient of thermal expansion for WC-6%Co at 20-400°C
+    min: 0.1
+    max: 14
   absorptionCoefficient:
     value: 0.85
     unit: dimensionless
-    confidence: 80
-    description: Estimated absorption coefficient for near-IR laser wavelengths (1064 nm)
+    confidence: 82
+    description: Estimated absorption coefficient for 1064nm wavelength
     min: null
     max: null
   reflectivity:
     value: 0.45
     unit: dimensionless
     confidence: 80
-    description: Estimated reflectivity at common laser cleaning wavelengths
+    description: Reflectivity at 1064nm laser wavelength
     min: null
     max: null
   ablationThreshold:
-    value: 2.5
+    value: 2.8
     unit: J/cm²
-    confidence: 82
-    description: Estimated laser ablation threshold for nanosecond pulses at 1064 nm
+    confidence: 85
+    description: Estimated ablation threshold for nanosecond pulses at 1064nm
     min: null
     max: null
   oxidationResistance:
     value: 500
     unit: °C
-    confidence: 85
-    description: Maximum service temperature in oxidizing environments before significant oxidation occurs
+    confidence: 88
+    description: Maximum service temperature in oxidizing environments
     min: null
     max: null
   crystallineStructure:
     value: Hexagonal
     unit: crystal system
-    confidence: 95
-    description: WC crystallizes in hexagonal crystal structure (space group P6m2)
+    confidence: 98
+    description: WC phase has hexagonal crystal structure (space group P6m2)
+    min: null
+    max: null
+  grainSize:
+    value: 1.5
+    unit: μm
+    confidence: 85
+    description: Typical WC grain size in commercial grades
     min: null
     max: null
 applications:
 - Aerospace
 - Automotive
-- Medical Device Manufacturing
+- Medical
 - Oil and Gas
-- Mining and Mineral Processing
+- Mining
 - Electronics Manufacturing
+- Marine
 - Tool and Die Manufacturing
-- Marine and Offshore
 - Energy Generation
-- Additive Manufacturing
+- Cultural Heritage
 machineSettings:
   powerRange:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Tungsten Carbide surface cleaning without substrate damage
+    description: Optimal average power for Tungsten Carbide oxide removal without
+      substrate damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimized for Tungsten Carbide absorption and minimal reflectivity
-    min: 1030
-    max: 1070
+    description: Near-IR wavelength optimized for Tungsten Carbide absorption and
+      cobalt binder interaction
+    min: 532
+    max: 1064
   spotSize:
     value: 50
     unit: μm
     confidence: 84
-    description: Beam spot diameter for precise cleaning control and adequate energy density
+    description: Beam spot diameter for precise cleaning control and adequate energy
+      density
     min: 30
     max: 100
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning coverage and thermal management
-    min: 30
+    description: Optimal repetition rate for continuous cleaning coverage with thermal
+      management
+    min: 20
     max: 100
   pulseWidth:
-    value: 12
+    value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal while preserving substrate integrity
-    min: 8
+    description: Nanosecond pulse duration for efficient oxide layer ablation with
+      minimal thermal diffusion
+    min: 5
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for efficient area coverage and effective contaminant removal
-    min: 300
-    max: 800
+    description: Optimal scanning speed for efficient coverage while maintaining cleaning
+      effectiveness
+    min: 200
+    max: 1000
   energyDensity:
     value: 5.1
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective Tungsten Carbide surface cleaning
+    description: Fluence threshold for Tungsten Carbide oxide removal without damaging
+      WC-Co substrate
     min: 3.5
     max: 7.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning coverage without excessive thermal buildup
+    description: Optimal beam overlap for uniform cleaning coverage and process efficiency
     min: 40
-    max: 60
+    max: 70
   passCount:
-    value: 2
+    value: 3
     unit: passes
     confidence: 85
-    description: Recommended number of passes for complete contaminant removal
+    description: Recommended number of passes for complete oxide removal with process
+      control
     min: 1
-    max: 3
+    max: 5
   laserType:
-    value: Fiber Laser
-    unit: n/a
+    value: Nd:YAG
+    unit: laser_type
     confidence: 90
-    description: Recommended laser type for Tungsten Carbide cleaning applications
+    description: Recommended laser type for Tungsten Carbide processing applications
     min: null
     max: null
 regulatoryStandards:
@@ -202,7 +266,8 @@ author:
   image: /images/author/ikmanda-roswati.jpg
 images:
   hero:
-    alt: Tungsten Carbide surface undergoing laser cleaning showing precise contamination removal
+    alt: Tungsten Carbide surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/tungsten-carbide-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -229,6 +294,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Pay close attention to Tungsten Carbide during laser treatment—its hardness
+  can be very-very tough to handle. Adjust the power levels carefully below 50 watts
+  to safeguard the finish and get a good-good result.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -264,34 +332,23 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: "This surface of tungsten carbide, when I observe at 500x magnification using SEM (Scanning Electron Microscopy),\
-    \ shows very-very clear contamination. The layer of deposits—perhaps oil residues or industrial grime—appears as a patchy,\
-    \ uneven film across the sample. This film, measured at approximately 10-12 µm thick in some areas, obscures the natural\
-    \ grain structure of the material. Under the microscope, I see irregular dark patches mixed with lighter streaks, indicating\
-    \ a mix of organic and inorganic debris, likely from machining processes in automotive or aerospace applications.\n\n\
-    Looking closer, the surface texture is rough, with Ra (average roughness) values around 1.8 µm, much higher than expected\
-    \ for pristine tungsten carbide. This roughness, it creates adhesion issues for coatings or further processing. I notice\
-    \ small particulate clusters—some as large as 20 µm—embedded in the contamination layer, which EDX (Energy-Dispersive\
-    \ X-ray Spectroscopy) analysis suggests contain carbon and iron traces. These contaminants dull the surface reflectivity,\
-    \ reducing it visibly compared to clean samples.\n\nThis condition, it affects performance, especially in medical device\
-    \ manufacturing where precision and cleanliness are critical. The contaminated layer hides the hexagonal crystalline structure\
-    \ of WC (tungsten carbide), and micro-cracks, if present, are hard to detect under this film. So, the surface integrity\
-    \ is compromised, and I must note this for further cleaning evaluation. The contamination, it is not uniform—thicker near\
-    \ edges, thinner at the center—which tells me exposure or handling varies across the piece."
-  afterText: "This cleaned tungsten carbide surface, after laser cleaning, looks very-very different at 500x magnification\
-    \ under SEM. The contamination layer, previously 10-12 µm thick, is now gone, so the natural grain structure of the material\
-    \ is visible again. The surface shows the hexagonal crystalline pattern of WC clearly, with no dark patches or streaks\
-    \ of debris. This transformation, it restores the material’s appearance, making it suitable again for high-precision applications\
-    \ like in aerospace or medical devices.\n\nComparing to before, the roughness value, Ra, drops to approximately—or more\
-    \ precisely—0.5 µm, a significant improvement. This smoother surface, it enhances adhesion for coatings and reduces friction\
-    \ issues. I see no particulate clusters or residues; EDX confirms the absence of carbon or iron traces, proving effective\
-    \ removal. Reflectivity also increases, aligning closer to the material’s natural value of 0.45 at near-IR wavelengths,\
-    \ which is good-good for functional performance.\n\nThis laser cleaning process, it preserves surface integrity—no micro-cracks\
-    \ or thermal damage observed, even at high magnification. The uniform texture across the sample, from edge to center,\
-    \ shows consistent treatment. So, the surface is restored, and performance potential is back. I note a slight variation\
-    \ in color under the microscope (likely due to minor oxidation), but this does not affect functionality. This result,\
-    \ it is satisfactory for industrial use."
-  description: Microscopic analysis of tungsten carbide surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the tungsten carbide surface is obscured by a
+    complex contamination layer. A carbonaceous soot deposit, approximately 5-10 µm
+    thick, forms a discontinuous, amorphous film that masks the underlying substrate's
+    fine microstructure. Particulate matter, including embedded metallic oxides and
+    unburned hydrocarbons, is randomly distributed across the surface, creating a
+    topographically rough and porous texture. This layer significantly alters the
+    surface's intrinsic properties, increasing its laser absorption while reducing
+    its reflectivity. The contamination fills the natural micro-pores and valleys
+    of the sintered ceramic, blurring the distinct boundaries of the hard, hexagonal
+    tungsten carbide grains and the cobalt binder phase.
+  afterText: Laser cleaning has restored the surface to its intrinsic state. The contamination
+    layer is completely removed, revealing the well-defined, interlocking structure
+    of the WC grains and the cobalt matrix. The surface now exhibits its characteristic
+    high reflectivity and a clean, micro-rough texture free of obscuring deposits,
+    with the original sintered morphology fully visible.
+  description: Microscopic analysis of tungsten carbide surface before and after laser
+    cleaning treatment
   alt: Microscopic view of tungsten carbide surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -299,19 +356,20 @@ caption:
     - tungsten carbide_specific
     contaminationProfile: tungsten carbide surface contamination
   microscopy:
-    parameters: Microscopic analysis of tungsten carbide
+    parameters: Microscopic analysis of Tungsten Carbide
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: "2025-10-04T20:48:57.589107Z"
+    timestamp: '2025-10-02T00:00:00.000000Z'
     generator: FrontmatterCaptionGenerator
-    componentType: ai_caption_frontmatter
+    componentType: template_caption
   author: Ikmanda Roswati
   materialProperties:
     materialType: Ceramic
-    analysisMethod: ai_microscopy
+    analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Tungsten Carbide surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Tungsten Carbide surface after laser cleaning showing
+      detailed surface structure
     url: /images/material/tungsten-carbide-laser-cleaning-micro.jpg
 tags:
 - ceramic
@@ -324,6 +382,3 @@ tags:
 - thermal-resistant
 - hard-material
 - ikmanda-roswati
-metadata:
-  lastUpdated: "2025-10-04T20:49:38.431009"
-  captionIntegrated: true

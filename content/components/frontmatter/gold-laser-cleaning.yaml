@@ -36,7 +36,7 @@ materialProperties:
     value: 25
     unit: HV
     confidence: 88
-    description: Vickers hardness for annealed gold
+    description: Vickers hardness of annealed gold
     min: 0.5
     max: 3500
   youngsModulus:
@@ -96,15 +96,15 @@ materialProperties:
     min: 0.5
     max: 29.1
   reflectivity:
-    value: 95
+    value: 98
     unit: '%'
     confidence: 96
     description: Reflectivity at 1064 nm wavelength
     min: null
     max: null
   absorptionCoefficient:
-    value: 12000000.0
-    unit: m⁻¹
+    value: 1.2
+    unit: ×10⁷ m⁻¹
     confidence: 85
     description: Absorption coefficient at 532 nm wavelength
     min: null
@@ -116,18 +116,18 @@ materialProperties:
     description: Approximate ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
-  crystallineStructure:
-    value: FCC
-    unit: none
-    confidence: 98
-    description: Face-centered cubic crystal structure
-    min: null
-    max: null
   oxidationResistance:
     value: Excellent
-    unit: qualitative
-    confidence: 95
-    description: Highly resistant to oxidation and tarnishing
+    unit: Qualitative
+    confidence: 98
+    description: Gold does not oxidize in air at any temperature
+    min: null
+    max: null
+  crystallineStructure:
+    value: FCC
+    unit: Crystal System
+    confidence: 99
+    description: Face-centered cubic crystal structure
     min: null
     max: null
   electricalConductivity:
@@ -137,86 +137,101 @@ materialProperties:
     description: Electrical conductivity at 20°C
     min: null
     max: null
+  laserDamageThreshold:
+    value: 2.5
+    unit: J/cm²
+    confidence: 80
+    description: Laser-induced damage threshold for polished surfaces
+    min: null
+    max: null
 applications:
 - Electronics Manufacturing
 - Aerospace
-- Medical Device Manufacturing
-- Cultural Heritage Conservation
-- Jewelry Manufacturing
+- Medical Devices
+- Jewelry and Luxury Goods
+- Cultural Heritage
 - Automotive Electronics
-- Telecommunications
 - Energy Sector
-- Research and Laboratory
+- Telecommunications
+- Semiconductor Manufacturing
 - Marine Electronics
 machineSettings:
   powerRange:
     value: 90
     unit: W
     confidence: 92
-    description: Optimal average power for Gold surface cleaning without substrate
-      damage
+    description: Optimal average power for Gold surface cleaning without thermal damage
     min: 70
     max: 110
   wavelength:
     value: 532
     unit: nm
     confidence: 88
-    description: Green wavelength for enhanced Gold absorption compared to IR
+    description: Green wavelength optimized for Gold's high reflectivity in IR and
+      better absorption in visible spectrum
     min: 355
     max: 1064
   spotSize:
     value: 50
     unit: μm
     confidence: 84
-    description: Beam spot diameter for precise cleaning resolution
+    description: Optimal spot size for precision cleaning of Gold surfaces
     min: 30
     max: 100
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning coverage and thermal
-      management
+    description: High repetition rate for efficient cleaning while maintaining thermal
+      control
     min: 20
     max: 100
   pulseWidth:
     value: 8
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient contaminant removal with
-      minimal thermal diffusion
+    description: Nanosecond pulse duration for controlled ablation of contaminants
+      without substrate damage
     min: 5
     max: 15
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 82
-    description: Optimal scanning speed for uniform cleaning coverage
-    min: 200
-    max: 1000
+    confidence: 86
+    description: Scan speed for efficient area coverage while maintaining cleaning
+      effectiveness
+    min: 300
+    max: 800
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
-    confidence: 90
-    description: Fluence threshold for effective contaminant removal without Gold
-      damage
-    min: 1.5
-    max: 4.0
+    confidence: 89
+    description: Fluence threshold for effective contaminant removal without damaging
+      Gold substrate
+    min: 1.8
+    max: 3.5
   overlapRatio:
     value: 40
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      buildup
+    description: Optimal beam overlap for uniform cleaning coverage
     min: 30
     max: 60
   passCount:
-    value: 2
+    value: 3
     unit: passes
     confidence: 85
     description: Recommended number of passes for complete contaminant removal
-    min: 1
-    max: 4
+    min: 2
+    max: 5
+  laserType:
+    value: Nd:YAG
+    unit: laser_type
+    confidence: 90
+    description: Q-switched Nd:YAG laser with frequency doubling capability for optimal
+      Gold processing
+    min: null
+    max: null
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -234,10 +249,6 @@ images:
   hero:
     alt: Gold surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/gold-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Gold surface after laser cleaning showing detailed surface
-      structure
-    url: /images/material/gold-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -263,6 +274,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Gold is exceptionally soft and prone to surface damage compared to other
+  precious metals. This requires laser settings with very low energy and rapid pulses
+  to remove contaminants without altering the surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -300,19 +314,18 @@ outcomeMetrics:
 caption:
   beforeText: At 500x magnification, the gold surface is obscured by a non-uniform
     contamination layer. This layer, ranging from 0.5 to 5 micrometers in thickness,
-    consists of particulate matter, organic residues, and adsorbed atmospheric compounds.
-    The contaminants form irregular patches and dendritic patterns, disrupting the
-    substrate's inherent metallic luster and creating a topographically complex, matte
-    surface. The underlying gold microstructure is entirely concealed by this adherent
-    film.
-  afterText: Laser cleaning produces a surface where the original, pristine gold substrate
-    is fully revealed. At 500x magnification, the contamination layer is completely
-    absent, exposing the characteristic grain structure of the FCC crystalline metal.
-    The surface now exhibits high reflectivity, with laser scan lines visible as subtle,
-    uniform striations. Minor, pre-existing micro-abrasions on the gold itself may
-    be visible, but no thermal damage, melting, or pitting is present. The result
-    is a topographically uniform surface with restored specular reflection, confirming
-    the selective removal of contaminants without affecting the bulk material integrity.
+    consists of carbonaceous deposits, adsorbed organic films, and particulate matter.
+    The underlying gold's metallic luster is muted, and its native micro-texture is
+    concealed. The contaminants form irregular, patchy patterns, creating a topographically
+    complex and optically dull surface that compromises its functional properties
+    and aesthetic signature.
+  afterText: Laser cleaning restores the pristine gold substrate, revealing a continuous,
+    specularly reflective surface at 500x magnification. The contamination layer is
+    entirely removed, exposing the native grain structure and micro-polishing lines
+    of the pure gold. The surface is now topographically uniform, with no evidence
+    of thermal damage or ablation to the substrate. This results in a surface with
+    restored reflectivity exceeding 97% and optimal performance for its intended electrical
+    or optical application.
   description: Microscopic analysis of gold surface before and after laser cleaning
     treatment
   alt: Microscopic view of gold surface showing laser cleaning effects

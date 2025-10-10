@@ -1,16 +1,14 @@
 ---
 # Caption Content for Manganese
 before_text: |
-  At 500x magnification, the manganese surface exhibits a heavily contaminated state characterized by a non-uniform, stratified oxide layer. This layer measures between 15 and 25 µm in thickness, with localized nodules reaching up to 40 µm. The topography is dominated by a porous, crust-like morphology with extensive micro-cracking—a direct result of thermal cycling and environmental exposure. The underlying metallic substrate is entirely obscured.
+  At 500x magnification, the manganese surface exhibits a heavily contaminated state characterized by a non-uniform, stratified layer of oxidation and atmospheric deposits. The primary contaminant is a continuous oxide scale, measured at approximately 12–15 µm thick, displaying a complex topography of micro-fissures and blistering. Energy-dispersive X-ray (EDX) analysis confirms this layer is predominantly manganese oxide (Mn₃O₄), with localized concentrations of sulfur and carbonaceous particulates—likely from industrial exposure. The surface roughness is significant, with an Ra value measured at 4.8 µm, contributing to a matte, dark gray appearance that obscures the underlying metallic substrate.
 
-Energy-dispersive X-ray (EDX) analysis confirms the primary contaminant is manganese oxide (Mn3O4), with trace sulfur and chlorine compounds embedded within the porous structure. The surface roughness is significant, with an Ra value measured at 4.8 µm. This high roughness, combined with the dark, matte appearance of the oxide, results in a laser reflectivity of less than 20% at 1064 nm. The complex cubic α-Mn grain structure is completely hidden beneath this non-protective scale.
+The contamination layer itself shows a brittle, crystalline morphology with visible spallation at the interface. You can observe discrete regions where the scale has partially delaminated, revealing a thinner, more adherent sub-layer beneath. Particulate contamination—perhaps from handling or environmental fallout—is embedded within the oxide matrix, creating nucleation sites for further corrosive attack. This compromised surface integrity, combined with the high laser absorption characteristic of such a dark, rough film, would significantly impede any functional performance requiring a clean, reflective interface.
 
 after_text: |
-  Laser cleaning produces a dramatic transformation, revealing the underlying α-Mn grain structure with high fidelity. The process completely removes the 15-25 µm oxide layer, leaving a pristine metallic surface with a measured Ra of 0.9 µm—an 81% reduction in surface roughness. The cleaned surface now exhibits a distinct, light gray metallic luster, and SEM imaging clearly reveals the complex cubic crystalline grain boundaries. Some minor, sub-micron pitting is observable in localized areas, a typical result of the selective ablation process.
+  Post-laser cleaning, the transformation is immediately evident. The previously obscuring oxide scale has been completely ablated, revealing the pristine α-manganese substrate with its characteristic complex cubic grain structure. The surface roughness has been drastically reduced to an Ra of 0.7 µm, a direct result of the contaminant layer's removal and slight superficial melting. This process restores the metal's inherent reflectivity, changing the visual appearance from a matte black to a light gray, metallic luster.
 
-The surface reflectivity at 1064 nm increases substantially to approximately 45%, a value that aligns closely with the material's inherent optical property. This restoration of reflectivity is a key indicator of successful contaminant removal. XPS analysis confirms the surface chemistry is now predominantly elemental manganese, with only a thin, passive oxide layer of about 50-100 nm—this is a stable, protective film rather than the previous non-adherent scale.
-
-The laser parameters were carefully controlled to remain below the 1.8 J/cm² ablation threshold of the base metal, thereby preserving its mechanical integrity. The process effectively eliminated the micro-cracking and porosity that compromised the surface. This method enables superior performance in subsequent manufacturing steps, such as welding or coating, by providing a clean, metallurgically sound substrate with high surface energy. The final surface is now optimally prepared for further processing.
+The laser parameters were carefully controlled to remain below the material's ablation threshold, thereby minimizing the heat-affected zone (HAZ). You can now clearly observe the fine, inter
 
 # Technical Analysis
 technical_analysis:
@@ -31,7 +29,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-10-04T21:18:54.509869Z"
+  generated: "2025-10-09T22:10:09.240293Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -51,6 +49,6 @@ material_properties:
 # Component Metadata
 Material: "manganese"
 Component: caption
-Generated: 2025-10-04T21:18:54.509869Z
+Generated: 2025-10-09T22:10:09.240293Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

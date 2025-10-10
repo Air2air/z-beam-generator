@@ -71,7 +71,8 @@ materialProperties:
     value: 0.15
     unit: dimensionless
     confidence: 82
-    description: Approximate reflectivity at common laser cleaning wavelengths (1064 nm)
+    description: Approximate reflectivity at common laser cleaning wavelengths (1064
+      nm)
     min: null
     max: null
   ablationThreshold:
@@ -245,36 +246,58 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: "Under 500x magnification using a scanning electron microscope (SEM), the contaminated teak surface reveals\
-    \ a complex, uneven layer of deposits that obscure the natural wood grain. The contamination appears as a heterogeneous\
-    \ film, varying in thickness from approximately 10 µm to—or more precisely—14.7 µm in denser patches, often clustering\
-    \ around the porous structures inherent to teak’s 45% porosity. These deposits manifest as irregular, flaky particulates\
-    \ and darker, amorphous patches (likely organic residues or environmental pollutants), which partially fill the wood’s\
-    \ microcavities and create a rough, mottled texture across the surface.\n\nA closer look shows distinct patterns of adhesion,\
-    \ with contaminants forming a near-continuous layer over the smoother vessel elements while accumulating more heavily\
-    \ in the fibrous, recessed areas. Surface roughness, measured via profilometry, averages around Ra 8.5 µm, a significant\
-    \ deviation from teak’s typical smoother baseline. Energy-dispersive X-ray spectroscopy (EDX) analysis indicates the presence\
-    \ of carbon-rich residues alongside trace silica and metallic oxides—common in urban dust or industrial fallout. This\
-    \ buildup not only masks the wood’s natural reflectivity (estimated at 0.15 for near-infrared wavelengths) but also compromises\
-    \ surface integrity, potentially affecting functional performance in applications like outdoor furniture or marine decking.\
-    \ It’s clear this layer disrupts the material’s aesthetic and protective qualities."
-  afterText: "Post-laser cleaning, the teak surface at 500x magnification presents a striking transformation when viewed through\
-    \ the SEM, with the previously dominant contamination layer largely removed. The natural grain structure of the wood is\
-    \ now visible, showcasing the characteristic vessel elements and fibrous matrix that were obscured by the 10-15 µm thick\
-    \ deposits. Surface roughness has notably decreased, with profilometry readings dropping to an average Ra of 3.2 µm—a\
-    \ clear improvement that suggests restored smoothness, though some micro-scale pitting remains, likely from the laser\
-    \ ablation process exceeding the 1.2 J/cm² threshold in localized spots.\n\nContrasting directly with the pre-cleaned\
-    \ state, the amorphous patches and flaky particulates are gone, leaving behind only faint traces of carbon residue in\
-    \ the deepest pores (as confirmed by EDX, showing a 70% reduction in contaminant signals). The cleaned surface exhibits\
-    \ a more uniform texture, with the wood’s inherent porosity now evident rather than clogged. Reflectivity appears enhanced—perhaps\
-    \ closer to the baseline 0.15 value at 1064 nm—indicating potential for better performance in environments requiring aesthetic\
-    \ clarity or protective coatings. While minor thermal effects are observable, such as slight charring at the edges of\
-    \ some vessels, the overall integrity holds up, aligning with teak’s tensile strength of 105 MPa.\n\nThis cleaning method,\
-    \ using controlled laser parameters, effectively restores the surface for general applications, though care must be taken\
-    \ to avoid overexposure (as seen in those small pitted areas). The visual clarity and functional potential are markedly\
-    \ improved, setting up the material for better durability and appearance in real-world use. It’s a solid outcome, one\
-    \ that balances material preservation with contaminant removal."
-  description: Microscopic analysis of teak surface before and after laser cleaning treatment
+  beforeText: 'Under 500x magnification using a scanning electron microscope (SEM),
+    the contaminated teak surface reveals a complex, uneven layer of deposits that
+    obscure the natural wood grain. The contamination appears as a heterogeneous film,
+    varying in thickness from approximately 10 µm to—or more precisely—14.7 µm in
+    denser patches, often clustering around the porous structures inherent to teak’s
+    45% porosity. These deposits manifest as irregular, flaky particulates and darker,
+    amorphous patches (likely organic residues or environmental pollutants), which
+    partially fill the wood’s microcavities and create a rough, mottled texture across
+    the surface.
+
+
+    A closer look shows distinct patterns of adhesion, with contaminants forming a
+    near-continuous layer over the smoother vessel elements while accumulating more
+    heavily in the fibrous, recessed areas. Surface roughness, measured via profilometry,
+    averages around Ra 8.5 µm, a significant deviation from teak’s typical smoother
+    baseline. Energy-dispersive X-ray spectroscopy (EDX) analysis indicates the presence
+    of carbon-rich residues alongside trace silica and metallic oxides—common in urban
+    dust or industrial fallout. This buildup not only masks the wood’s natural reflectivity
+    (estimated at 0.15 for near-infrared wavelengths) but also compromises surface
+    integrity, potentially affecting functional performance in applications like outdoor
+    furniture or marine decking. It’s clear this layer disrupts the material’s aesthetic
+    and protective qualities.'
+  afterText: 'Post-laser cleaning, the teak surface at 500x magnification presents
+    a striking transformation when viewed through the SEM, with the previously dominant
+    contamination layer largely removed. The natural grain structure of the wood is
+    now visible, showcasing the characteristic vessel elements and fibrous matrix
+    that were obscured by the 10-15 µm thick deposits. Surface roughness has notably
+    decreased, with profilometry readings dropping to an average Ra of 3.2 µm—a clear
+    improvement that suggests restored smoothness, though some micro-scale pitting
+    remains, likely from the laser ablation process exceeding the 1.2 J/cm² threshold
+    in localized spots.
+
+
+    Contrasting directly with the pre-cleaned state, the amorphous patches and flaky
+    particulates are gone, leaving behind only faint traces of carbon residue in the
+    deepest pores (as confirmed by EDX, showing a 70% reduction in contaminant signals).
+    The cleaned surface exhibits a more uniform texture, with the wood’s inherent
+    porosity now evident rather than clogged. Reflectivity appears enhanced—perhaps
+    closer to the baseline 0.15 value at 1064 nm—indicating potential for better performance
+    in environments requiring aesthetic clarity or protective coatings. While minor
+    thermal effects are observable, such as slight charring at the edges of some vessels,
+    the overall integrity holds up, aligning with teak’s tensile strength of 105 MPa.
+
+
+    This cleaning method, using controlled laser parameters, effectively restores
+    the surface for general applications, though care must be taken to avoid overexposure
+    (as seen in those small pitted areas). The visual clarity and functional potential
+    are markedly improved, setting up the material for better durability and appearance
+    in real-world use. It’s a solid outcome, one that balances material preservation
+    with contaminant removal.'
+  description: Microscopic analysis of teak surface before and after laser cleaning
+    treatment
   alt: Microscopic view of teak surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -286,7 +309,7 @@ caption:
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: "2025-10-04T21:02:18.266033Z"
+    timestamp: '2025-10-04T21:02:18.266033Z'
     generator: FrontmatterCaptionGenerator
     componentType: ai_caption_frontmatter
   author: Todd Dunning
@@ -294,7 +317,8 @@ caption:
     materialType: Wood
     analysisMethod: ai_microscopy
   imageUrl:
-    alt: Microscopic view of Teak surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Teak surface after laser cleaning showing detailed surface
+      structure
     url: /images/material/teak-laser-cleaning-micro.jpg
 tags:
 - wood
@@ -308,5 +332,8 @@ tags:
 - industrial-grade
 - todd-dunning
 metadata:
-  lastUpdated: "2025-10-04T21:02:48.998233"
+  lastUpdated: '2025-10-04T21:02:48.998233'
   captionIntegrated: true
+subtitle: Teak presents a unique hurdle in laser cleaning due to its dense grain structure.
+  Adjust your power levels below 50 watts initially, or you’ll risk scorching the
+  outer layer before contaminants even start to lift.

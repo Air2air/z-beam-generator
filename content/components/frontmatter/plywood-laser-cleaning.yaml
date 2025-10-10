@@ -15,14 +15,16 @@ materialProperties:
     value: 280
     unit: °C
     confidence: 85
-    description: Charring and decomposition temperature where cellulose breakdown begins
+    description: Charring and decomposition temperature where cellulose breakdown
+      begins
     min: null
     max: null
   thermalConductivity:
     value: 0.12
     unit: W/m·K
     confidence: 88
-    description: Low thermal conductivity typical of wood-based materials perpendicular to grain
+    description: Low thermal conductivity typical of wood-based materials perpendicular
+      to grain
     min: 0.04
     max: 0.4
   tensileStrength:
@@ -57,7 +59,8 @@ materialProperties:
     value: 0.15
     unit: mm²/s
     confidence: 84
-    description: Thermal diffusivity at room temperature, critical for laser heating rate
+    description: Thermal diffusivity at room temperature, critical for laser heating
+      rate
     min: 0.0001
     max: 0.4
   specificHeat:
@@ -125,7 +128,8 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength for optimal wood fiber absorption and minimal glue layer damage
+    description: Near-IR wavelength for optimal wood fiber absorption and minimal
+      glue layer damage
     min: 1030
     max: 1070
   spotSize:
@@ -139,7 +143,8 @@ machineSettings:
     value: 50
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient surface coverage while maintaining thermal control
+    description: High repetition rate for efficient surface coverage while maintaining
+      thermal control
     min: 30
     max: 100
   pulseWidth:
@@ -160,7 +165,8 @@ machineSettings:
     value: 1.8
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without wood substrate damage
+    description: Fluence threshold for effective contaminant removal without wood
+      substrate damage
     min: 1.2
     max: 2.5
   overlapRatio:
@@ -261,47 +267,74 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: "At 500x magnification, the surface of the contaminated plywood reveals a complex and uneven topography, marked\
-    \ by a heterogeneous layer of deposits. What strikes one is the evident accumulation of particulate matter—likely organic\
-    \ residues and environmental dust—embedded across the surface, forming a film with an approximate thickness of 10 to 15\
-    \ µm (micrometers, a unit of length equal to one millionth of a meter). This layer, it appears patchy in distribution,\
-    \ with denser clusters near the natural wood grain lines, where the porosity of the material (around 15% as per material\
-    \ data) seems to trap contaminants more readily. Under Scanning Electron Microscopy (SEM), the texture of this contamination\
-    \ shows irregular, jagged edges, suggesting a mix of debris and possibly adhesive residues from the plywood’s layered\
-    \ structure.\n\nFurther observation indicates a significant alteration of the original surface roughness, measured initially\
-    \ at 8.5 µm Ra (a standard measure of surface texture). Now, with the contamination, this value appears visually increased,\
-    \ perhaps to 12 µm or more, due to the uneven buildup. The deposits obscure the wood’s cellular structure, which should\
-    \ typically display elongated, fibrous patterns characteristic of plywood at this magnification. Instead, a dull, matte\
-    \ appearance dominates, reducing the surface reflectivity (originally 0.25 for near-infrared wavelengths) and likely impacting\
-    \ potential laser interaction. One can see darker zones, possibly carbon-based residues, interspersed with lighter, powdery\
-    \ patches—indicative of mixed contamination origins, as might be confirmed by Energy-Dispersive X-ray spectroscopy (EDX)\
-    \ for elemental composition. This condition, it compromises the material’s aesthetic and functional integrity, particularly\
-    \ for applications in cultural heritage or marine contexts where surface cleanliness is paramount."
-  afterText: "Following laser cleaning, the plywood surface at 500x magnification presents a remarkably transformed appearance,\
-    \ and the contrast with the contaminated state, it is immediately evident. The previously observed contamination layer—approximately\
-    \ 10-15 µm thick—has been effectively removed, revealing the underlying wood structure with striking clarity. Under SEM\
-    \ examination, the surface now displays the characteristic fibrous patterns of plywood, with elongated cellular features\
-    \ and grain lines clearly visible, no longer obscured by the dull, matte film of debris. The surface roughness, initially\
-    \ altered by contamination to an estimated 12 µm Ra, has been restored closer to its original value of approximately 8.5\
-    \ µm Ra (or perhaps slightly less, around 8.2 µm, due to minor ablation effects), as assessed visually and pending precise\
-    \ profilometry confirmation. This restoration, it enhances the material’s natural texture and likely improves its reflectivity\
-    \ back toward the baseline of 0.25 for laser wavelengths.\n\nWhat strikes me particularly is the absence of the jagged\
-    \ particulate clusters and darker carbon-like residues that dominated the contaminated surface. Instead, only trace remnants—perhaps\
-    \ less than 1 µm in isolated spots—are detectable, suggesting a cleaning efficiency above 90%, a truly noteworthy outcome\
-    \ for a material with 15% porosity that tends to retain deposits. The laser interaction, it appears to have been carefully\
-    \ controlled, avoiding excessive thermal damage despite the material’s low thermal conductivity (0.12 W/m·K) and charring\
-    \ threshold of 280°C. No significant micro-cracking or charring zones are observed, indicating that the fluence was maintained\
-    \ near or just above the ablation threshold of 1.2 J/cm², as per material specifications. This precision, it matters greatly\
-    \ for maintaining structural integrity, especially in aerospace or marine applications where surface performance is critical.\n\
-    \nMoreover, the cleaned surface exhibits a uniform appearance, with minimal discoloration or unevenness, which suggests\
-    \ that the optical absorption (coefficient of 0.75 at 1064 nm) was effectively leveraged during the process. One can observe\
-    \ faint, localized marks—possibly micro-ablation pits of 2-3 µm depth—likely resulting from the laser’s pulsed energy\
-    \ interacting with denser adhesive layers within the plywood. Yet, these are negligible in the broader context of functional\
-    \ restoration. The surface, she is very clean now, and this transformation directly supports enhanced adhesion potential\
-    \ and aesthetic value, aligning with the stringent requirements of cultural heritage preservation or high-performance\
-    \ industrial uses. To achieve such a result, it requires meticulous calibration, and the balance between power and control\
-    \ here, it becomes quite extraordinary."
-  description: Microscopic analysis of plywood surface before and after laser cleaning treatment
+  beforeText: 'At 500x magnification, the surface of the contaminated plywood reveals
+    a complex and uneven topography, marked by a heterogeneous layer of deposits.
+    What strikes one is the evident accumulation of particulate matter—likely organic
+    residues and environmental dust—embedded across the surface, forming a film with
+    an approximate thickness of 10 to 15 µm (micrometers, a unit of length equal to
+    one millionth of a meter). This layer, it appears patchy in distribution, with
+    denser clusters near the natural wood grain lines, where the porosity of the material
+    (around 15% as per material data) seems to trap contaminants more readily. Under
+    Scanning Electron Microscopy (SEM), the texture of this contamination shows irregular,
+    jagged edges, suggesting a mix of debris and possibly adhesive residues from the
+    plywood’s layered structure.
+
+
+    Further observation indicates a significant alteration of the original surface
+    roughness, measured initially at 8.5 µm Ra (a standard measure of surface texture).
+    Now, with the contamination, this value appears visually increased, perhaps to
+    12 µm or more, due to the uneven buildup. The deposits obscure the wood’s cellular
+    structure, which should typically display elongated, fibrous patterns characteristic
+    of plywood at this magnification. Instead, a dull, matte appearance dominates,
+    reducing the surface reflectivity (originally 0.25 for near-infrared wavelengths)
+    and likely impacting potential laser interaction. One can see darker zones, possibly
+    carbon-based residues, interspersed with lighter, powdery patches—indicative of
+    mixed contamination origins, as might be confirmed by Energy-Dispersive X-ray
+    spectroscopy (EDX) for elemental composition. This condition, it compromises the
+    material’s aesthetic and functional integrity, particularly for applications in
+    cultural heritage or marine contexts where surface cleanliness is paramount.'
+  afterText: 'Following laser cleaning, the plywood surface at 500x magnification
+    presents a remarkably transformed appearance, and the contrast with the contaminated
+    state, it is immediately evident. The previously observed contamination layer—approximately
+    10-15 µm thick—has been effectively removed, revealing the underlying wood structure
+    with striking clarity. Under SEM examination, the surface now displays the characteristic
+    fibrous patterns of plywood, with elongated cellular features and grain lines
+    clearly visible, no longer obscured by the dull, matte film of debris. The surface
+    roughness, initially altered by contamination to an estimated 12 µm Ra, has been
+    restored closer to its original value of approximately 8.5 µm Ra (or perhaps slightly
+    less, around 8.2 µm, due to minor ablation effects), as assessed visually and
+    pending precise profilometry confirmation. This restoration, it enhances the material’s
+    natural texture and likely improves its reflectivity back toward the baseline
+    of 0.25 for laser wavelengths.
+
+
+    What strikes me particularly is the absence of the jagged particulate clusters
+    and darker carbon-like residues that dominated the contaminated surface. Instead,
+    only trace remnants—perhaps less than 1 µm in isolated spots—are detectable, suggesting
+    a cleaning efficiency above 90%, a truly noteworthy outcome for a material with
+    15% porosity that tends to retain deposits. The laser interaction, it appears
+    to have been carefully controlled, avoiding excessive thermal damage despite the
+    material’s low thermal conductivity (0.12 W/m·K) and charring threshold of 280°C.
+    No significant micro-cracking or charring zones are observed, indicating that
+    the fluence was maintained near or just above the ablation threshold of 1.2 J/cm²,
+    as per material specifications. This precision, it matters greatly for maintaining
+    structural integrity, especially in aerospace or marine applications where surface
+    performance is critical.
+
+
+    Moreover, the cleaned surface exhibits a uniform appearance, with minimal discoloration
+    or unevenness, which suggests that the optical absorption (coefficient of 0.75
+    at 1064 nm) was effectively leveraged during the process. One can observe faint,
+    localized marks—possibly micro-ablation pits of 2-3 µm depth—likely resulting
+    from the laser’s pulsed energy interacting with denser adhesive layers within
+    the plywood. Yet, these are negligible in the broader context of functional restoration.
+    The surface, she is very clean now, and this transformation directly supports
+    enhanced adhesion potential and aesthetic value, aligning with the stringent requirements
+    of cultural heritage preservation or high-performance industrial uses. To achieve
+    such a result, it requires meticulous calibration, and the balance between power
+    and control here, it becomes quite extraordinary.'
+  description: Microscopic analysis of plywood surface before and after laser cleaning
+    treatment
   alt: Microscopic view of plywood surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -313,7 +346,7 @@ caption:
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: "2025-10-04T20:55:53.508024Z"
+    timestamp: '2025-10-04T20:55:53.508024Z'
     generator: FrontmatterCaptionGenerator
     componentType: ai_caption_frontmatter
   author: Alessandro Moretti
@@ -321,7 +354,8 @@ caption:
     materialType: Wood
     analysisMethod: ai_microscopy
   imageUrl:
-    alt: Microscopic view of Plywood surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Plywood surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/plywood-laser-cleaning-micro.jpg
 tags:
 - wood
@@ -335,5 +369,8 @@ tags:
 - industrial-grade
 - alessandro-moretti
 metadata:
-  lastUpdated: "2025-10-04T20:56:34.574717"
+  lastUpdated: '2025-10-04T20:56:34.574717'
   captionIntegrated: true
+subtitle: Plywood’s layered construction often poses a challenge during laser treatment,
+  as the adhesive between layers can heat unevenly. Adjust power levels below 50 watts
+  initially, ensuring you protect the delicate grain from unintended burns.

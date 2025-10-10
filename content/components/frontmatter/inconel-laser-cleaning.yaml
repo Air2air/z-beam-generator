@@ -36,15 +36,14 @@ materialProperties:
     value: 40
     unit: HRC
     confidence: 90
-    description: Typical Rockwell C hardness for solution treated and aged Inconel
-      718
+    description: Typical Rockwell C hardness for solution treated and aged condition
     min: 0.5
     max: 3500
   youngsModulus:
     value: 200
     unit: GPa
     confidence: 94
-    description: Elastic modulus at room temperature for Inconel 718
+    description: Elastic modulus at room temperature
     min: 5
     max: 411
   laserAbsorption:
@@ -65,7 +64,7 @@ materialProperties:
     value: 435
     unit: J/kg·K
     confidence: 85
-    description: Specific heat capacity at 20°C for Inconel 718
+    description: Specific heat capacity at room temperature
     min: 100
     max: 900
   thermalDestructionPoint:
@@ -83,39 +82,38 @@ materialProperties:
     min: null
     max: null
   thermalDiffusivity:
-    value: 3.5
+    value: 3.2
     unit: mm²/s
-    confidence: 95
-    description: thermalDiffusivity from Materials.yaml
+    confidence: 86
+    description: Thermal diffusivity at room temperature
     min: 0.2
     max: 174
   thermalExpansion:
     value: 13.0
     unit: μm/m·°C
     confidence: 88
-    description: Coefficient of thermal expansion (20-100°C) for Inconel 718
+    description: Coefficient of thermal expansion at 20-100°C
     min: 0.5
     max: 29.1
   absorptionCoefficient:
     value: 0.65
     unit: dimensionless
     confidence: 82
-    description: Estimated absorption coefficient for near-infrared lasers (1064 nm)
+    description: Estimated absorption coefficient for Nd:YAG laser (1064 nm)
     min: null
     max: null
   reflectivity:
     value: 0.35
     unit: dimensionless
     confidence: 80
-    description: Estimated reflectivity for near-infrared laser wavelengths
+    description: Estimated reflectivity for infrared lasers on oxidized surface
     min: null
     max: null
   ablationThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 85
-    description: Estimated laser ablation threshold for nanosecond pulses at 1064
-      nm
+    description: Estimated laser ablation threshold for nanosecond pulses
     min: null
     max: null
   oxidationResistance:
@@ -147,21 +145,22 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Inconel oxide layer removal
+    description: Optimal average power for Inconel oxide removal without substrate
+      damage
     min: 80
-    max: 150
+    max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimized for Inconel absorption
+    description: Near-IR wavelength optimized for Inconel oxide layer absorption
     min: 1030
     max: 1070
   spotSize:
     value: 50
     unit: μm
     confidence: 84
-    description: Beam spot diameter for precision cleaning
+    description: Beam spot diameter for optimal energy density distribution
     min: 30
     max: 100
   repetitionRate:
@@ -175,37 +174,46 @@ machineSettings:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for controlled ablation
+    description: Nanosecond pulse duration for efficient oxide ablation with minimal
+      HAZ
     min: 5
     max: 20
   scanSpeed:
-    value: 1000
+    value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform cleaning
-    min: 500
-    max: 2000
+    description: Optimal scanning speed for uniform cleaning efficiency
+    min: 300
+    max: 800
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
-    confidence: 89
-    description: Minimum fluence for effective contaminant removal
-    min: 1.5
+    confidence: 90
+    description: Minimum fluence required for effective Inconel oxide removal
+    min: 1.8
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for complete coverage
+    description: Optimal beam overlap for uniform cleaning without excessive thermal
+      input
     min: 40
     max: 70
   passCount:
-    value: 3
+    value: 2
     unit: passes
-    confidence: 82
-    description: Number of cleaning passes for thorough removal
+    confidence: 85
+    description: Recommended number of passes for complete oxide layer removal
     min: 1
-    max: 5
+    max: 4
+  laserType:
+    value: Fiber Laser
+    unit: N/A
+    confidence: 89
+    description: Preferred laser type for Inconel cleaning applications
+    min: null
+    max: null
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -223,10 +231,6 @@ images:
   hero:
     alt: Inconel surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/inconel-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Inconel surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/inconel-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -252,6 +256,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Inconel forms a tough, protective oxide layer when heated, unlike many other
+  specialty metals. This layer requires specific laser settings to remove effectively
+  without damaging the base material.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -289,18 +296,19 @@ outcomeMetrics:
 caption:
   beforeText: At 500x magnification, the Inconel surface is obscured by a non-uniform
     contamination layer, typically 5-20 µm thick. This layer consists of complex oxides,
-    carbonaceous deposits, and embedded foreign particles, forming a topographically
-    varied crust. The underlying alloy's fine-grained, face-centered cubic microstructure
-    is entirely concealed. The surface exhibits a cracked, sintered texture with evidence
-    of localized hot corrosion, where aggressive chemical species have initiated pitting
-    at the interface with the base metal.
-  afterText: Laser cleaning has fully removed the contamination layer, revealing the
-    pristine, fine-grained microstructure of the Inconel substrate. The surface now
-    displays a clean, matte-grey metallic finish with the characteristic texture of
-    the alloy's gamma matrix visible. Micron-scale laser ablation patterns are evident,
-    but the process has successfully eliminated all foreign material without inducing
-    significant heat-affected zone microcracking, restoring the material's intrinsic
-    surface integrity.
+    carbon deposits, and embedded foreign particles, forming a topographically rough
+    and discontinuous crust. The underlying alloy's fine-grained, FCC microstructure
+    is entirely concealed. The surface exhibits a cracked, sintered appearance with
+    low reflectivity, a direct result of prolonged exposure to high-temperature, oxidizing
+    service environments.
+  afterText: Laser cleaning reveals the pristine, metallurgically intact Inconel substrate.
+    The contaminant crust is completely removed, exposing the original, fine-grained
+    gamma matrix with its characteristic precipitate structure. The surface texture
+    is now defined by the material's intrinsic grain boundaries, not foreign deposits.
+    Reflectivity increases significantly due to the restoration of the bare metal
+    surface. The process achieves this transformation with minimal thermal input,
+    preserving the base material's hardness and strength by avoiding microstructural
+    alterations like recrystallization or phase changes.
   description: Microscopic analysis of inconel surface before and after laser cleaning
     treatment
   alt: Microscopic view of inconel surface showing laser cleaning effects

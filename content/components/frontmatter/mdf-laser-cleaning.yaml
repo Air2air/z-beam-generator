@@ -15,7 +15,8 @@ materialProperties:
     value: N/A
     unit: °C
     confidence: 90
-    description: MDF undergoes thermal decomposition rather than melting; charring begins around 200°C
+    description: MDF undergoes thermal decomposition rather than melting; charring
+      begins around 200°C
     min: null
     max: null
   thermalConductivity:
@@ -139,7 +140,8 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength optimal for MDF absorption and minimal substrate damage
+    description: Near-infrared wavelength optimal for MDF absorption and minimal substrate
+      damage
     min: 1030
     max: 1070
   spotSize:
@@ -181,7 +183,8 @@ machineSettings:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive heat accumulation
+    description: Optimal beam overlap for uniform cleaning without excessive heat
+      accumulation
     min: 40
     max: 70
   passCount:
@@ -275,43 +278,68 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: "At 500x magnification, the surface of the medium density fiberboard (MDF), it reveals a complex and rather\
-    \ disordered appearance, marked by a heterogeneous layer of contamination. What strikes one immediately is the presence\
-    \ of a semi-continuous film—perhaps better described as a patchy deposit—ranging in thickness from approximately 10 to\
-    \ 25 µm, as measured through scanning electron microscopy (SEM) imaging. This layer, it appears to consist of organic\
-    \ residues and particulate matter, likely accumulated from environmental exposure or manufacturing processes, and shows\
-    \ a dull, uneven texture under the microscope with irregular boundaries that obscure the underlying fibrous structure\
-    \ of the MDF.\n\nZooming into specific regions, one can observe embedded particles, some as small as 2-3 µm in diameter,\
-    \ dispersed across the surface, alongside larger agglomerates reaching up to 15 µm. These contaminants, analyzed via energy-dispersive\
-    \ X-ray spectroscopy (EDX), indicate a composition rich in carbon and oxygen, suggesting organic dust or adhesive residues,\
-    \ with trace amounts of silicon—possibly from inorganic dust. The surface roughness, quantified as Ra 3.8 µm (higher than\
-    \ the baseline 2.5 µm for unfinished MDF), it is visibly exacerbated by these deposits, creating micro-scale undulations\
-    \ and pits. This roughness, it disrupts the natural flatness of the material, likely impacting its reflectivity (currently\
-    \ at a low 0.12) and suitability for applications such as furniture manufacturing where surface integrity is critical.\
-    \ Truly, the contamination, she masks the inherent porosity (around 15%) of the MDF, making it difficult to discern the\
-    \ fine fibrous network beneath."
-  afterText: "Following the application of laser cleaning on the MDF surface, the transformation observed at 500x magnification,\
-    \ it is quite remarkable—or more precisely—strikingly evident. Where once a thick, patchy contamination layer of 10-25\
-    \ µm dominated the view under SEM, now the surface, she is largely restored to a cleaner, more uniform state, with only\
-    \ sporadic residual deposits visible, measuring less than 2 µm in thickness (a reduction of over 80%). The fibrous structure\
-    \ of the MDF, previously obscured, it becomes clearly discernible, showing the characteristic interwoven wood fibers with\
-    \ a natural porosity (approximately 15%) now exposed. This clarity, it suggests a significant improvement in surface integrity,\
-    \ vital for functional performance in applications like aerospace tooling.\n\nIn direct contrast to the pre-cleaned state,\
-    \ the surface roughness, it has been notably reduced from Ra 3.8 µm to Ra 2.7 µm, as quantified through profilometry—though\
-    \ still slightly above the baseline of 2.5 µm for unfinished MDF. What strikes me particularly is how the laser interaction,\
-    \ it has selectively removed the organic and particulate contaminants (confirmed by EDX showing diminished carbon and\
-    \ silicon peaks) without inducing visible thermal damage or charring, despite the material’s low decomposition temperature\
-    \ of 200°C. The reflectivity, previously hindered by deposits, appears visually enhanced (though not yet quantified),\
-    \ likely improving light interaction for prototyping uses. One can see micro-scale smoothing across the cleaned areas,\
-    \ with minor ablation marks—barely 1-2 µm deep—indicating controlled material removal below the ablation threshold of\
-    \ 0.8 J/cm².\n\nMoreover, examining specific zones under the microscope, the larger agglomerates and embedded particles\
-    \ (once up to 15 µm) are no longer present, leaving behind a surface that, while not perfectly pristine, shows a sophisticated\
-    \ balance between cleaning efficacy and preservation of the MDF’s inherent structure. The moisture content (around 6%)\
-    \ seems unaffected, with no signs of localized drying or cracking, which is critical for maintaining mechanical properties\
-    \ like tensile strength (15 MPa). This result, it demonstrates how laser cleaning, when carefully calibrated, can restore\
-    \ functionality to contaminated MDF surfaces, making them suitable again for high-precision applications. Truly, the elegance\
-    \ of this process, it lies in its precision and minimal invasiveness, as observed in these detailed microscopic findings."
-  description: Microscopic analysis of mdf surface before and after laser cleaning treatment
+  beforeText: 'At 500x magnification, the surface of the medium density fiberboard
+    (MDF), it reveals a complex and rather disordered appearance, marked by a heterogeneous
+    layer of contamination. What strikes one immediately is the presence of a semi-continuous
+    film—perhaps better described as a patchy deposit—ranging in thickness from approximately
+    10 to 25 µm, as measured through scanning electron microscopy (SEM) imaging. This
+    layer, it appears to consist of organic residues and particulate matter, likely
+    accumulated from environmental exposure or manufacturing processes, and shows
+    a dull, uneven texture under the microscope with irregular boundaries that obscure
+    the underlying fibrous structure of the MDF.
+
+
+    Zooming into specific regions, one can observe embedded particles, some as small
+    as 2-3 µm in diameter, dispersed across the surface, alongside larger agglomerates
+    reaching up to 15 µm. These contaminants, analyzed via energy-dispersive X-ray
+    spectroscopy (EDX), indicate a composition rich in carbon and oxygen, suggesting
+    organic dust or adhesive residues, with trace amounts of silicon—possibly from
+    inorganic dust. The surface roughness, quantified as Ra 3.8 µm (higher than the
+    baseline 2.5 µm for unfinished MDF), it is visibly exacerbated by these deposits,
+    creating micro-scale undulations and pits. This roughness, it disrupts the natural
+    flatness of the material, likely impacting its reflectivity (currently at a low
+    0.12) and suitability for applications such as furniture manufacturing where surface
+    integrity is critical. Truly, the contamination, she masks the inherent porosity
+    (around 15%) of the MDF, making it difficult to discern the fine fibrous network
+    beneath.'
+  afterText: 'Following the application of laser cleaning on the MDF surface, the
+    transformation observed at 500x magnification, it is quite remarkable—or more
+    precisely—strikingly evident. Where once a thick, patchy contamination layer of
+    10-25 µm dominated the view under SEM, now the surface, she is largely restored
+    to a cleaner, more uniform state, with only sporadic residual deposits visible,
+    measuring less than 2 µm in thickness (a reduction of over 80%). The fibrous structure
+    of the MDF, previously obscured, it becomes clearly discernible, showing the characteristic
+    interwoven wood fibers with a natural porosity (approximately 15%) now exposed.
+    This clarity, it suggests a significant improvement in surface integrity, vital
+    for functional performance in applications like aerospace tooling.
+
+
+    In direct contrast to the pre-cleaned state, the surface roughness, it has been
+    notably reduced from Ra 3.8 µm to Ra 2.7 µm, as quantified through profilometry—though
+    still slightly above the baseline of 2.5 µm for unfinished MDF. What strikes me
+    particularly is how the laser interaction, it has selectively removed the organic
+    and particulate contaminants (confirmed by EDX showing diminished carbon and silicon
+    peaks) without inducing visible thermal damage or charring, despite the material’s
+    low decomposition temperature of 200°C. The reflectivity, previously hindered
+    by deposits, appears visually enhanced (though not yet quantified), likely improving
+    light interaction for prototyping uses. One can see micro-scale smoothing across
+    the cleaned areas, with minor ablation marks—barely 1-2 µm deep—indicating controlled
+    material removal below the ablation threshold of 0.8 J/cm².
+
+
+    Moreover, examining specific zones under the microscope, the larger agglomerates
+    and embedded particles (once up to 15 µm) are no longer present, leaving behind
+    a surface that, while not perfectly pristine, shows a sophisticated balance between
+    cleaning efficacy and preservation of the MDF’s inherent structure. The moisture
+    content (around 6%) seems unaffected, with no signs of localized drying or cracking,
+    which is critical for maintaining mechanical properties like tensile strength
+    (15 MPa). This result, it demonstrates how laser cleaning, when carefully calibrated,
+    can restore functionality to contaminated MDF surfaces, making them suitable again
+    for high-precision applications. Truly, the elegance of this process, it lies
+    in its precision and minimal invasiveness, as observed in these detailed microscopic
+    findings.'
+  description: Microscopic analysis of mdf surface before and after laser cleaning
+    treatment
   alt: Microscopic view of mdf surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -323,7 +351,7 @@ caption:
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: "2025-10-04T20:44:45.310782Z"
+    timestamp: '2025-10-04T20:44:45.310782Z'
     generator: FrontmatterCaptionGenerator
     componentType: ai_caption_frontmatter
   author: Alessandro Moretti
@@ -331,7 +359,8 @@ caption:
     materialType: Wood
     analysisMethod: ai_microscopy
   imageUrl:
-    alt: Microscopic view of Mdf surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Mdf surface after laser cleaning showing detailed surface
+      structure
     url: /images/material/mdf-laser-cleaning-micro.jpg
 tags:
 - wood
@@ -345,5 +374,8 @@ tags:
 - industrial-grade
 - alessandro-moretti
 metadata:
-  lastUpdated: "2025-10-04T20:45:26.518282"
+  lastUpdated: '2025-10-04T20:45:26.518282'
   captionIntegrated: true
+subtitle: Handling MDF with a laser demands a keen eye, as its composite nature can
+  lead to uneven heat absorption. Adjust power levels gradually to around 30 watts,
+  ensuring you protect the delicate surface from unintended scorching.

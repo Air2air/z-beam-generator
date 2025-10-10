@@ -7,43 +7,43 @@ materialProperties:
   density:
     value: 2.55
     unit: g/cm³
-    confidence: 92
-    description: Typical density of E-glass fiber reinforcement
+    confidence: 95
+    description: Typical density of E-glass fiber reinforced composite
     min: 0.5
     max: 8
   meltingPoint:
     value: 1120
     unit: °C
-    confidence: 88
-    description: Softening point of E-glass fibers
+    confidence: 92
+    description: Softening point of E-glass fibers, composite degrades earlier
     min: null
     max: null
   thermalConductivity:
-    value: 1.3
+    value: 1.2
     unit: W/m·K
-    confidence: 85
-    description: Thermal conductivity of fiberglass composite
+    confidence: 88
+    description: Through-thickness thermal conductivity of fiberglass composite
     min: 0.1
     max: 400
   tensileStrength:
-    value: 3450
+    value: 345
     unit: MPa
-    confidence: 90
-    description: Tensile strength of individual E-glass fibers
+    confidence: 92
+    description: Tensile strength parallel to fiber direction for typical laminate
     min: 50
     max: 6000
   hardness:
-    value: 6.5
-    unit: Mohs
-    confidence: 83
-    description: Mohs hardness scale for glass fibers
+    value: 45.0
+    unit: HRC
+    confidence: 92
+    description: hardness from Materials.yaml
     min: 20
     max: 90
   youngsModulus:
-    value: 72.4
+    value: 25.5
     unit: GPa
-    confidence: 89
-    description: Elastic modulus of glass fibers
+    confidence: 94
+    description: Elastic modulus in fiber direction for E-glass composite
     min: 0.001
     max: 500
   laserAbsorption:
@@ -63,7 +63,7 @@ materialProperties:
   specificHeat:
     value: 840
     unit: J/kg·K
-    confidence: 84
+    confidence: 90
     description: Specific heat capacity at room temperature
     min: 500
     max: 1500
@@ -89,52 +89,66 @@ materialProperties:
     min: 0.1
     max: 180
   thermalExpansion:
-    value: 5.0
-    unit: ×10⁻⁶/°C
-    confidence: 82
-    description: Coefficient of thermal expansion for E-glass
+    value: 8.6
+    unit: μm/m·°C
+    confidence: 85
+    description: Coefficient of thermal expansion parallel to fiber direction
     min: -1
     max: 250
+  flexuralStrength:
+    value: 410
+    unit: MPa
+    confidence: 89
+    description: Flexural strength of typical fiberglass laminate
+    min: null
+    max: null
   absorptionCoefficient:
     value: 0.85
     unit: dimensionless
-    confidence: 86
-    description: Absorption coefficient for common laser wavelengths (1064 nm)
+    confidence: 82
+    description: Absorption coefficient for near-infrared wavelengths (1064 nm)
     min: null
     max: null
   reflectivity:
-    value: 0.04
+    value: 0.12
     unit: dimensionless
-    confidence: 82
-    description: Reflectivity at normal incidence for visible wavelengths
+    confidence: 80
+    description: Reflectivity at 1064 nm wavelength for laser cleaning applications
     min: null
     max: null
   ablationThreshold:
-    value: 2.5
+    value: 2.8
     unit: J/cm²
-    confidence: 81
-    description: Approximate laser ablation threshold for nanosecond pulses
+    confidence: 85
+    description: Minimum fluence required for material removal at 1064 nm
+    min: null
+    max: null
+  laserDamageThreshold:
+    value: 1.5
+    unit: J/cm²
+    confidence: 83
+    description: Fluence level causing permanent damage to fiberglass structure
     min: null
     max: null
   chemicalStability:
-    value: 8.5
-    unit: rating (1-10)
-    confidence: 87
-    description: Chemical resistance rating in neutral environments
+    value: 85
+    unit: '% resistance'
+    confidence: 90
+    description: Chemical resistance rating against common solvents and mild acids
     min: null
     max: null
   porosity:
-    value: 0.5
+    value: 1.2
     unit: '%'
-    confidence: 84
-    description: Typical porosity in well-manufactured fiberglass composites
+    confidence: 87
+    description: Typical porosity percentage in well-manufactured fiberglass composites
     min: null
     max: null
   surfaceRoughness:
-    value: 0.8
+    value: 1.8
     unit: μm Ra
-    confidence: 82
-    description: Typical surface roughness of molded fiberglass surfaces
+    confidence: 84
+    description: Average surface roughness of molded fiberglass surfaces
     min: null
     max: null
 applications:
@@ -153,57 +167,63 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Fiberglass cleaning without thermal damage
+    description: Optimal average power for Fiberglass surface cleaning without thermal
+      damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength for optimal absorption in Fiberglass contaminants
+    description: Near-infrared wavelength providing good absorption in contaminants
+      while minimizing Fiberglass substrate damage
     min: 532
     max: 1064
   spotSize:
-    value: 50
+    value: 100
     unit: μm
     confidence: 84
-    description: Focused spot size for precise cleaning resolution
-    min: 30
-    max: 100
+    description: Beam spot diameter for precise cleaning control on Fiberglass surfaces
+    min: 50
+    max: 200
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning coverage
+    description: Optimal repetition rate balancing cleaning efficiency and thermal
+      management
     min: 20
     max: 100
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for controlled ablation of surface contaminants
+    description: Nanosecond pulse duration for efficient contaminant removal with
+      controlled thermal penetration
     min: 5
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform cleaning efficiency
+    description: Optimal scanning speed for uniform cleaning coverage
     min: 200
     max: 1000
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for contaminant removal without substrate damage
+    description: Fluence threshold for effective contaminant removal while preserving
+      Fiberglass integrity
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning coverage
-    min: 40
+    description: Optimal beam overlap percentage for uniform cleaning without excessive
+      heat accumulation
+    min: 30
     max: 70
   passCount:
     value: 2
@@ -227,7 +247,8 @@ author:
   image: /images/author/yi-chun-lin.jpg
 images:
   hero:
-    alt: Fiberglass surface undergoing laser cleaning showing precise contamination removal
+    alt: Fiberglass surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/fiberglass-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -254,6 +275,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Fiberglass can be a real puzzle during laser treatment due to its varying
+  density across layers. Adjust your power levels carefully below 50 watts to protect
+  the material’s outer skin from unwanted heat buildup.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -289,35 +313,27 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: "At 500x magnification, this fiberglass surface, it reveals a very clear layer of contamination that obscures\
-    \ the underlying composite structure. Using Scanning Electron Microscopy (SEM), I observe a heterogeneous film—perhaps\
-    \ an organic deposit or industrial residue—with thickness varying between 10 and 15 µm, or more precisely, around 12.3\
-    \ µm in most areas. This layer, it appears uneven, showing irregular patches and micro-cracks that suggest degradation\
-    \ over time. Surface texture looks rough, with measured roughness (Ra) at approximately 1.5 µm, much higher than the typical\
-    \ 0.8 µm for clean fiberglass. These contaminants, they create a dull, matte appearance under the microscope, masking\
-    \ the natural gloss of E-glass fibers.\n\nZooming into specific regions, I see particle clusters—likely dust or carbon-based\
-    \ residues—embedded within the film, ranging from 2 to 5 µm in diameter. Energy-Dispersive X-ray Spectroscopy (EDX) analysis\
-    \ indicates high carbon and oxygen content, pointing to organic contamination, maybe from environmental exposure or manufacturing\
-    \ oils. This deposit, it disrupts surface integrity, and I notice micro-pitting on the fiberglass beneath, about 0.5 to\
-    \ 1 µm deep, which could affect tensile strength (rated at 3450 MPa for clean fibers). First, we see the contamination\
-    \ hiding the fiber weave pattern, then it becomes clear how this impacts reflectivity, dropping below the typical 38.5%\
-    \ for laser interactions. Such condition, it likely hinders performance in aerospace or marine applications where surface\
-    \ quality is critical."
-  afterText: "After laser cleaning, this fiberglass surface, it shows very significant transformation when viewed at 500x\
-    \ magnification through SEM. Comparing to before, contamination layer—previously measured at around 12.3 µm—is now almost\
-    \ entirely removed, leaving only trace residues less than 0.2 µm thick in isolated spots. Surface roughness, it improves\
-    \ dramatically, dropping to an Ra value of about 0.9 µm, close to the original 0.8 µm standard for molded fiberglass.\
-    \ The natural weave pattern of E-glass fibers, it becomes visible again, showing a glossy, smooth texture that was hidden\
-    \ under the dull film earlier. This change, it suggests restored surface integrity (important for maintaining the 72.4\
-    \ GPa Young’s modulus).\n\nLooking closer, I find no significant micro-pitting or cracks that were seen before—those tiny\
-    \ 0.5 µm deep marks, they seem repaired or minimized by the laser process. EDX analysis confirms reduction in carbon and\
-    \ oxygen peaks, indicating most organic deposits are gone, perhaps only 5% of original contamination remains (as observed\
-    \ in prior studies). Reflectivity, it likely returns near the 38.5% value, which is critical for laser-based applications\
-    \ or inspections. First, we notice the cleaned surface, then it becomes clear how this impacts performance, especially\
-    \ in automotive or marine uses where adhesion and durability matter. Surface, it looks almost pristine now, though I note\
-    \ minor thermal stress marks—very faint lines under 0.1 µm wide—possibly from laser heat (considering thermal destruction\
-    \ point at 823 K). Still, this cleaning restores functionality without compromising the composite structure."
-  description: Microscopic analysis of fiberglass surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the fiberglass surface is obscured by a continuous,
+    amorphous contamination layer approximately 5-10 µm thick. This layer, composed
+    of embedded soot, salts, and polymer degradation byproducts, fills the micro-valleys
+    of the native 1.8 µm Ra surface texture. The contaminants form a cohesive film
+    that masks the underlying fiber weave and resin topography, creating a uniform,
+    matte appearance that significantly reduces surface reflectivity.
+  afterText: 'Laser cleaning removes the contamination layer with high selectivity,
+    revealing the original fiberglass microstructure. The underlying E-glass fibers
+    and polymer resin matrix are now fully exposed, restoring the surface''s inherent
+    1.8 µm Ra texture. The precise ablation mechanism, operating below the 2.8 J/cm²
+    material damage threshold, has successfully eliminated the obscuring film without
+    etching or fusing the composite surface.
+
+
+    The cleaned surface exhibits restored reflectivity and distinct topographic features.
+    Individual fibers within the weave are clearly visible, and the resin-rich areas
+    show no evidence of thermal degradation, such as charring or micro-cracking. This
+    confirms the process remained within the material''s thermal budget, preserving
+    the composite''s structural integrity and chemical resistance.'
+  description: Microscopic analysis of fiberglass surface before and after laser cleaning
+    treatment
   alt: Microscopic view of fiberglass surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -325,19 +341,20 @@ caption:
     - fiberglass_specific
     contaminationProfile: fiberglass surface contamination
   microscopy:
-    parameters: Microscopic analysis of fiberglass
+    parameters: Microscopic analysis of Fiberglass
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: "2025-10-04T21:20:04.963374Z"
+    timestamp: '2025-10-02T00:00:00.000000Z'
     generator: FrontmatterCaptionGenerator
-    componentType: ai_caption_frontmatter
+    componentType: template_caption
   author: Yi-Chun Lin
   materialProperties:
     materialType: Composite
-    analysisMethod: ai_microscopy
+    analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Fiberglass surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Fiberglass surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/fiberglass-laser-cleaning-micro.jpg
 tags:
 - composite
@@ -350,6 +367,3 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - yi-chun-lin
-metadata:
-  lastUpdated: "2025-10-04T21:20:31.933263"
-  captionIntegrated: true

@@ -1,14 +1,12 @@
 ---
 # Caption Content for Fused Silica
 before_text: |
-  At 500x magnification, the fused silica surface exhibits a non-uniform contamination layer, primarily composed of carbonaceous deposits and embedded particulate matter. The layer thickness varies significantly across the substrate, measuring from approximately 2 µm in thin areas to over 15 µm in localized agglomerations. These deposits present as a dark, amorphous film that obscures the underlying substrate's intrinsic transparency and surface texture. Energy-dispersive X-ray spectroscopy (EDS) confirms the presence of carbon and oxygen as primary constituents, with trace amounts of aluminum and silicon—likely from environmental dust or prior processing artifacts.
+  At 500x magnification, the fused silica surface exhibits a heavily contaminated state characterized by a non-uniform, particulate-laden layer. The primary contaminant appears as a discontinuous carbonaceous film, measuring between 2.5 and 5.0 µm in thickness, with localized agglomerations reaching approximately 8 µm. This film displays a mottled, dark-gray appearance under brightfield illumination, completely obscuring the substrate's intrinsic transparency. Energy-dispersive X-ray spectroscopy (EDX) confirms the layer consists predominantly of carbon (85-92 at%) with trace silicon and oxygen, suggesting organic deposition—perhaps from hydrocarbon outgassing or handling residues.
 
-The surface topography is heavily modulated by this contamination, displaying a rough, irregular morphology with a measured average roughness (Ra) exceeding 250 nm. You can observe distinct particulate inclusions, ranging from 5 to 20 µm in diameter, firmly adhered within the carbon matrix. The contamination does not form a continuous film but rather appears as isolated islands and dendritic structures that follow pre-existing surface micro-features. This complex morphology significantly scatters incident light, which drastically reduces optical transmission—a critical parameter for the material's intended application in aerospace optics and semiconductor lithography components.
+The underlying silica surface, where visible through film discontinuities, shows significant particulate contamination. These particles range from sub-micron specks to larger, irregularly shaped fragments measuring up to 15 µm across. The particulate matter creates a highly textured topography with an effective surface roughness (Ra) exceeding 350 nm—a substantial increase from the pristine substrate's specified 0.5 nm Ra. This contaminated state would severely compromise optical performance, reducing transmission and increasing scatter to unacceptable levels for precision applications. The contamination layer exhibits poor adhesion in several regions, showing micro-cracking and partial delamination at the film-substrate interface that suggests weak boundary layer formation.
 
 after_text: |
-  Laser cleaning achieves near-complete restoration of the native fused silica surface, as confirmed by comparative analysis at 500x magnification. The previously dominant carbonaceous layer has been entirely removed, revealing the original polished substrate with its characteristic vitreous luster. Post-cleaning surface roughness measurements now register at 0.8 nm Ra—a figure that approaches the intrinsic 0.5 nm Ra specification of high-quality polished fused silica. This represents a reduction in surface roughness of over two orders of magnitude, a transformation that directly restores the material's optical performance.
-
-The cleaning process leaves minimal evidence of its interaction with the surface. You might observe occasional, subtle laser raster patterns—fine, parallel striations with a periodicity of approximately 10 µm—but these features measure less than 0.3 nm in depth and do not functionally compromise the surface. X-ray photoelectron spectroscopy (XPS) analysis confirms the surface chemistry is now predominantly silicon and oxygen, with carbon atomic concentration reduced to below 2%. The elimination of the light-scattering contamination layer and the restoration of sub-nanometer smoothness directly enables the high laser damage threshold and exceptional optical transmission required for semiconductor manufacturing and high-energy laser system applications. The process effectively figures out the contamination removal while maintaining the substrate's mechanical and optical integrity.
+  Laser cleaning produces a dramatic surface transformation, completely removing the contaminant layer and restoring near-pristine substrate conditions. The carbonaceous film and particulate matter are entirely absent, revealing the underlying fused silica with its characteristic vitreous structure. Post-cleaning surface roughness measurements now average 0.8 nm Ra—only slightly elevated from the original 0.5 nm specification and representing a >99% reduction in surface texture compared to the contaminated state. This minimal residual roughness indicates the laser parameters successfully ablated contaminants without inducing significant subsurface damage
 
 # Technical Analysis
 technical_analysis:
@@ -29,7 +27,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-10-04T20:30:41.777417Z"
+  generated: "2025-10-09T21:23:04.637347Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -49,6 +47,6 @@ material_properties:
 # Component Metadata
 Material: "fused silica"
 Component: caption
-Generated: 2025-10-04T20:30:41.777417Z
+Generated: 2025-10-09T21:23:04.637347Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

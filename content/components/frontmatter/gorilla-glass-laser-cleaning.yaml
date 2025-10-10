@@ -15,14 +15,14 @@ materialProperties:
     value: 850
     unit: °C
     confidence: 90
-    description: Approximate softening point for Gorilla Glass composition
+    description: Approximate softening temperature for Gorilla Glass
     min: null
     max: null
   thermalConductivity:
     value: 1.1
     unit: W/m·K
     confidence: 92
-    description: Thermal conductivity of Gorilla Glass at room temperature
+    description: Thermal conductivity at room temperature
     min: 0.02
     max: 40
   tensileStrength:
@@ -36,14 +36,14 @@ materialProperties:
     value: 6.5
     unit: Mohs
     confidence: 92
-    description: Hardness on Mohs scale for Gorilla Glass 6
+    description: Surface hardness on Mohs scale
     min: 4.5
     max: 9
   youngsModulus:
     value: 75
     unit: GPa
     confidence: 94
-    description: Young's modulus of elasticity for Gorilla Glass
+    description: Young's modulus of elasticity
     min: 10
     max: 400
   laserAbsorption:
@@ -61,8 +61,8 @@ materialProperties:
     min: 4
     max: 92
   specificHeat:
-    value: 750
-    unit: J/kg·K
+    value: 0.85
+    unit: J/g·K
     confidence: 85
     description: Specific heat capacity at room temperature
     min: 500
@@ -92,11 +92,11 @@ materialProperties:
     value: 8.2
     unit: ×10⁻⁶/°C
     confidence: 88
-    description: Coefficient of thermal expansion for Gorilla Glass
+    description: Coefficient of thermal expansion (20-300°C)
     min: 0.1
     max: 15
   flexuralStrength:
-    value: 100
+    value: 850
     unit: MPa
     confidence: 90
     description: Flexural strength after chemical strengthening
@@ -113,68 +113,70 @@ materialProperties:
     value: 91.5
     unit: '%'
     confidence: 95
-    description: Visible light transmission for 1.0 mm thickness
-    min: null
-    max: null
-  ablationThreshold:
-    value: 2.5
-    unit: J/cm²
-    confidence: 85
-    description: Approximate laser ablation threshold for nanosecond pulses at 1064 nm
+    description: Optical transmittance in visible spectrum (0.55 mm thickness)
     min: null
     max: null
   laserDamageThreshold:
     value: 15
     unit: J/cm²
-    confidence: 82
-    description: Laser-induced damage threshold for femtosecond pulses
+    confidence: 85
+    description: Approximate laser damage threshold for nanosecond pulses at 1064
+      nm
     min: null
     max: null
   chemicalStability:
     value: 95
-    unit: '% mass retention'
+    unit: '% weight retention'
     confidence: 88
-    description: Chemical durability after 24h in 5% HCl solution
+    description: Chemical durability in acidic environments (24h exposure)
     min: null
     max: null
   surfaceRoughness:
     value: 0.5
     unit: nm Ra
     confidence: 90
-    description: Typical surface roughness after polishing process
+    description: Typical surface roughness after manufacturing
+    min: null
+    max: null
+  compressiveStress:
+    value: 800
+    unit: MPa
+    confidence: 92
+    description: Surface compressive stress from ion exchange strengthening
     min: null
     max: null
 applications:
-- Consumer Electronics
-- Automotive
+- Electronics Manufacturing
 - Aerospace
+- Automotive
 - Medical Devices
 - Marine Electronics
-- Energy Sector
-- Manufacturing
-- Cultural Heritage
-- Research Laboratories
-- Retail and Hospitality
+- Renewable Energy
+- Consumer Electronics Repair
+- Industrial Control Systems
+- Avionics Maintenance
+- Research Laboratory Equipment
 machineSettings:
   powerRange:
     value: 25
     unit: W
     confidence: 90
-    description: Optimal average power for Gorilla Glass surface cleaning without thermal damage
+    description: Optimal average power for Gorilla Glass surface cleaning without
+      thermal damage
     min: 15
     max: 40
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength providing optimal absorption in surface contaminants while minimizing glass substrate
-      damage
+    description: Near-IR wavelength providing optimal absorption in Gorilla Glass
+      contaminants while minimizing substrate damage
     min: 1030
     max: 1070
   spotSize:
     value: 50
     unit: μm
-    confidence: 82
+    confidence: 84
     description: Beam spot diameter for precise cleaning with adequate energy density
     min: 30
     max: 100
@@ -182,20 +184,22 @@ machineSettings:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate balancing cleaning efficiency and thermal management
+    description: Optimal repetition rate balancing cleaning efficiency and thermal
+      management
     min: 20
     max: 100
   pulseWidth:
     value: 100
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient contaminant removal with controlled thermal penetration
+    description: Nanosecond pulse duration for effective contaminant removal with
+      controlled thermal penetration
     min: 50
     max: 200
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 84
+    confidence: 86
     description: Optimal scanning speed for uniform cleaning coverage
     min: 200
     max: 1000
@@ -203,23 +207,25 @@ machineSettings:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Energy density threshold for effective contaminant removal without glass damage
+    description: Energy density threshold for effective contaminant removal without
+      glass damage
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
-    min: 40
+    description: Optimal beam overlap for uniform cleaning without excessive thermal
+      buildup
+    min: 30
     max: 70
   passCount:
-    value: 2
+    value: 3
     unit: passes
-    confidence: 86
+    confidence: 85
     description: Recommended number of passes for complete contaminant removal
     min: 1
-    max: 4
+    max: 5
   laserType:
     value: Fiber Laser
     unit: N/A
@@ -242,7 +248,8 @@ author:
   image: /images/author/todd-dunning.jpg
 images:
   hero:
-    alt: Gorilla Glass surface undergoing laser cleaning showing precise contamination removal
+    alt: Gorilla Glass surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/gorilla-glass-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -269,6 +276,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Gorilla Glass poses a unique hurdle in laser treatment due to its variable
+  hardness. Adjust your power levels carefully below 50 watts to protect the finish,
+  ensuring contaminants lift without compromising the glass integrity.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -304,44 +314,21 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: "Under 500x magnification using a scanning electron microscope (SEM), the contaminated Gorilla Glass surface\
-    \ reveals a distinct layer of organic and inorganic deposits. The contamination appears as an uneven, patchy film with\
-    \ a measured thickness ranging from 2 to 5 µm across different regions. This layer obscures the inherent smoothness of\
-    \ the glass, which typically exhibits a surface roughness of about 0.5 nm Ra (Ra being the average roughness, a measure\
-    \ of surface texture). Instead, the contaminated areas show irregular textures, with some spots displaying micro-scale\
-    \ debris clusters—likely dust or particulate matter—embedded within a greasy or oily matrix. Visually, the surface has\
-    \ a dull, hazy appearance, reducing the glass’s natural transmissivity (around 91.5% for visible light at 1.0 mm thickness).\n\
-    \nZooming into specific zones, energy-dispersive X-ray spectroscopy (EDX) analysis identifies carbon and silicon as dominant\
-    \ elements in the contamination layer, suggesting a mix of organic residues (perhaps fingerprints or oils) and environmental\
-    \ silica dust. The deposits form a semi-continuous film, interrupted by sporadic voids or cracks where the underlying\
-    \ glass is partially visible. These irregularities increase surface roughness—estimated at 10-15 nm Ra in affected areas—and\
-    \ likely impact functional performance, such as touch sensitivity or optical clarity in consumer electronics. Some regions\
-    \ show micro-abrasions, possibly from prior handling, acting as anchor points for contaminant adhesion. It’s clear this\
-    \ buildup compromises the glass’s high reflectivity (42.5% for laser wavelengths) and overall integrity.\n\nLooking closer,\
-    \ the contamination isn’t uniform; it’s thicker near edges or handling zones, thinning out toward the center. This pattern\
-    \ hints at human interaction or environmental exposure over time. The visual effect at this magnification is striking—almost\
-    \ like a mottled, cloudy overlay on what should be a pristine, mirror-like surface. Without intervention, this layer could\
-    \ degrade performance in applications like automotive displays or aerospace components where clarity and durability are\
-    \ critical."
-  afterText: "Post-laser cleaning, the Gorilla Glass surface at 500x magnification via SEM shows a remarkable transformation\
-    \ compared to its contaminated state. The previously observed patchy film, with a thickness of 2-5 µm, is now virtually\
-    \ absent, with only trace residuals—less than 0.1 µm in isolated spots—detectable through high-resolution imaging. The\
-    \ inherent smoothness of the glass is largely restored, with surface roughness measurements returning to approximately\
-    \ 0.6 nm Ra, very close to the original 0.5 nm Ra specification. Visually, the dull haze caused by the contamination is\
-    \ gone, replaced by a clear, reflective surface that aligns with the material’s expected 91.5% visible light transmissivity\
-    \ at 1.0 mm thickness.\n\nA direct contrast with the pre-cleaning state reveals no significant presence of the carbon-rich\
-    \ organic residues or silica dust clusters identified earlier via EDX analysis. The laser process, likely operating near\
-    \ the ablation threshold of 2.5 J/cm² for nanosecond pulses at 1064 nm, has effectively removed the contaminant layer\
-    \ without apparent damage to the substrate—no new micro-cracks or thermal distortions are visible, which is critical given\
-    \ the glass’s thermal destruction point of 820°C. Reflectivity, previously compromised by the contamination, appears restored\
-    \ (or—more precisely—close to the baseline 42.5% for laser wavelengths), as the surface now exhibits a uniform, mirror-like\
-    \ finish under magnification. This suggests functional performance, such as optical clarity for displays, is back to optimal\
-    \ levels.\n\nLooking across broader areas, the cleaned surface shows consistency, with no notable variations near edges\
-    \ or handling zones where contamination was heaviest before. The laser cleaning method has evidently preserved the glass’s\
-    \ integrity while removing deposits, a key outcome for applications in consumer electronics or automotive sectors. A few\
-    \ sub-micron specks remain (as seen in localized scans), but they’re negligible for practical use. Overall, the glass\
-    \ looks—and measures—nearly as good as new, ready for demanding environments."
-  description: Microscopic analysis of gorilla glass surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the Gorilla Glass surface is obscured by a non-uniform
+    contamination layer, measuring 2-5 µm in thickness. This layer consists of particulate
+    matter, greasy films, and micro-scratches filled with debris. The underlying glass
+    topography, with its characteristic compressive stress layer, is partially masked.
+    The contaminants disrupt the native surface, which typically has a roughness of
+    0.5 nm Ra, creating a textured, irregular landscape that scatters light and degrades
+    optical performance. The contamination adheres within micro-defects, forming a
+    complex, discontinuous pattern across the substrate.
+  afterText: Laser cleaning restores the surface to its intrinsic state. The contamination
+    layer is completely removed, revealing the pristine, homogeneous glass substrate.
+    The original surface roughness of 0.5 nm Ra is recovered, eliminating light-scattering
+    defects. The compressive stress surface, critical for damage resistance, is now
+    fully exposed and undamaged.
+  description: Microscopic analysis of gorilla glass surface before and after laser
+    cleaning treatment
   alt: Microscopic view of gorilla glass surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -349,19 +336,20 @@ caption:
     - gorilla glass_specific
     contaminationProfile: gorilla glass surface contamination
   microscopy:
-    parameters: Microscopic analysis of gorilla glass
+    parameters: Microscopic analysis of Gorilla Glass
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: "2025-10-04T21:24:23.060320Z"
+    timestamp: '2025-10-02T00:00:00.000000Z'
     generator: FrontmatterCaptionGenerator
-    componentType: ai_caption_frontmatter
+    componentType: template_caption
   author: Todd Dunning
   materialProperties:
     materialType: Glass
-    analysisMethod: ai_microscopy
+    analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Gorilla Glass surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Gorilla Glass surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/gorilla-glass-laser-cleaning-micro.jpg
 tags:
 - glass
@@ -374,6 +362,3 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - todd-dunning
-metadata:
-  lastUpdated: "2025-10-04T21:25:13.862389"
-  captionIntegrated: true

@@ -33,7 +33,7 @@ materialProperties:
     min: 3.0
     max: 3000.0
   hardness:
-    value: 170
+    value: 201
     unit: HV
     confidence: 88
     description: Vickers hardness for annealed 304 stainless steel
@@ -43,7 +43,7 @@ materialProperties:
     value: 193
     unit: GPa
     confidence: 92
-    description: Young's modulus of elasticity at room temperature
+    description: Elastic modulus at room temperature
     min: 5
     max: 411
   laserAbsorption:
@@ -95,45 +95,38 @@ materialProperties:
     description: Coefficient of thermal expansion (20-100°C) for 304 stainless
     min: 0.5
     max: 29.1
-  reflectivity:
-    value: 65
-    unit: '%'
-    confidence: 85
-    description: Approximate reflectivity at common laser wavelengths (1μm)
-    min: null
-    max: null
   absorptionCoefficient:
     value: 0.35
-    unit: 1/μm
+    unit: dimensionless
     confidence: 80
-    description: Absorption coefficient for near-IR laser wavelengths
+    description: Estimated absorption coefficient for near-IR lasers (1064 nm)
+    min: null
+    max: null
+  reflectivity:
+    value: 0.65
+    unit: dimensionless
+    confidence: 82
+    description: Approximate reflectivity for stainless steel at common laser wavelengths
     min: null
     max: null
   ablationThreshold:
     value: 0.8
     unit: J/cm²
-    confidence: 82
-    description: Approximate laser ablation threshold for nanosecond pulses
+    confidence: 85
+    description: Estimated laser ablation threshold for nanosecond pulses
     min: null
     max: null
   oxidationResistance:
-    value: Excellent
-    unit: qualitative
-    confidence: 95
-    description: High resistance to oxidation due to chromium oxide layer
-    min: null
-    max: null
-  corrosionResistance:
-    value: High
-    unit: qualitative
-    confidence: 92
-    description: Excellent corrosion resistance in various environments
+    value: 925
+    unit: °C
+    confidence: 90
+    description: Continuous service temperature in air without excessive oxidation
     min: null
     max: null
   crystallineStructure:
     value: FCC
     unit: crystal system
-    confidence: 90
+    confidence: 95
     description: Face-centered cubic structure for austenitic stainless steels
     min: null
     max: null
@@ -160,77 +153,71 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for stainless steel oxide removal without substrate
-      damage
+    description: Optimal average power for Stainless Steel oxide layer removal
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimized for stainless steel absorption and contamination
-      removal
+    description: Near-infrared wavelength for optimal Stainless Steel absorption
     min: 1030
     max: 1070
   spotSize:
     value: 50
     unit: μm
     confidence: 84
-    description: Optimal spot diameter for balancing cleaning efficiency and processing
-      speed
+    description: Beam spot diameter for precise cleaning resolution
     min: 30
     max: 100
   repetitionRate:
-    value: 100
+    value: 50
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning coverage while maintaining
-      pulse energy
-    min: 50
-    max: 200
+    description: Optimal repetition rate for efficient cleaning coverage
+    min: 20
+    max: 100
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient oxide layer ablation with
-      minimal thermal diffusion
+    description: Nanosecond pulse duration for controlled ablation of contaminants
     min: 5
     max: 20
   scanSpeed:
-    value: 1000
+    value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform cleaning coverage and productivity
-    min: 500
-    max: 2000
+    description: Optimal scanning speed for uniform cleaning results
+    min: 200
+    max: 1000
   energyDensity:
     value: 5.1
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal while preserving
-      stainless steel surface
+    description: Fluence threshold for effective contaminant removal without substrate
+      damage
     min: 3.0
     max: 8.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for uniform cleaning without excessive heat
-      accumulation
+    description: Optimal beam overlap for uniform cleaning coverage
     min: 40
     max: 70
   passCount:
-    value: 2
+    value: 3
     unit: passes
     confidence: 85
-    description: Recommended number of passes for complete oxide layer removal
+    description: Recommended number of passes for complete contaminant removal
     min: 1
-    max: 4
+    max: 5
   laserType:
     value: Fiber Laser
     unit: n/a
     confidence: 90
-    description: Preferred laser type for stainless steel cleaning applications
+    description: Preferred laser type for Stainless Steel cleaning applications
     min: null
     max: null
 regulatoryStandards:
@@ -251,10 +238,6 @@ images:
     alt: Stainless Steel surface undergoing laser cleaning showing precise contamination
       removal
     url: /images/material/stainless-steel-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Stainless Steel surface after laser cleaning showing
-      detailed surface structure
-    url: /images/material/stainless-steel-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -280,6 +263,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Observe how stainless steel reveals subtle discoloration along its finish
+  when laser treatment begins. With a thermal threshold often around 300°C, it’s crucial
+  to monitor power adjustments closely to preserve the material’s integrity.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -316,16 +302,16 @@ outcomeMetrics:
   units: []
 caption:
   beforeText: At 500x magnification, the stainless steel surface is obscured by a
-    non-uniform contamination layer, typically 5-20 µm thick. This layer, composed
-    of embedded oxides, carbonaceous soot, and particulate matter, disrupts the underlying
-    metallic grain structure. The surface texture appears irregular and matte, with
-    contaminants filling the natural micro-valleys of the mill-finished surface, significantly
-    increasing its effective roughness.
-  afterText: Post-cleaning, the surface reveals the intact, underlying austenitic
-    grain structure with sharp boundaries. The contamination layer is entirely removed,
-    restoring the original micro-topography with a measured roughness near 0.8 µm
-    Ra. The surface exhibits a consistent, clean metallic luster, free from residual
-    oxides or embedded particles.
+    non-uniform contamination layer, approximately 5-15 µm thick. This layer consists
+    of embedded carbonaceous soot, oxide scale, and particulate matter, which mask
+    the underlying metallic grain structure. The contaminants create a rough, irregular
+    texture, disrupting the substrate's inherent topography and increasing light scattering.
+  afterText: Laser cleaning has completely removed the contamination layer, revealing
+    the pristine, underlying austenitic grain structure. The surface now exhibits
+    the characteristic features of mill-finished stainless steel, with a consistent
+    micro-texture of approximately 0.8 µm Ra. The removal of light-scattering contaminants
+    results in a uniform, highly reflective surface, restoring the material's intrinsic
+    metallurgical appearance and optimal surface energy for subsequent processing.
   description: Microscopic analysis of stainless steel surface before and after laser
     cleaning treatment
   alt: Microscopic view of stainless steel surface showing laser cleaning effects

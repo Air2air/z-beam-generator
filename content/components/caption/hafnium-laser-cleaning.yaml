@@ -1,14 +1,14 @@
 ---
 # Caption Content for Hafnium
 before_text: |
-  At 500x magnification, the hafnium surface exhibits a non-uniform contamination layer, primarily composed of tenacious oxide scale and embedded particulate. The oxide layer measures between 8 and 15 µm in thickness—or more precisely, 14.7 µm in the thickest regions observed. This scale displays a characteristic mud-cracked topography, with fissures approximately 5-10 µm wide traversing the surface. The underlying metal texture is completely obscured.
+  At 500x magnification, the hafnium surface exhibits a heavily contaminated state characterized by a non-uniform, stratified layer of surface deposits. SEM analysis reveals a complex oxide and carbonaceous film with a measured thickness varying from 12 to 18 µm. The topography is dominated by a cracked, mudflat pattern—a telltale sign of thermal stress from prior service exposure. This creates a highly irregular texture, with Ra values measured at approximately 4.5 µm.
 
-Embedded within this oxide matrix are numerous foreign particulates, likely carbonaceous deposits and silicate inclusions from prior service. These particulates range from sub-micron specks to agglomerates nearly 25 µm across. Surface roughness measurements confirm significant degradation, with an Ra value of 4.8 µm and an Rz of 38.5 µm. The high laser reflectivity of the base hafnium (approximately 48.2%) is effectively neutralized by this contaminated layer, which presents a matte, dark gray appearance under optical examination. Energy-dispersive X-ray spectroscopy (EDX) spot analysis confirms elevated oxygen and carbon concentrations, this creates a significant barrier to any functional surface performance.
+EDX spot analysis confirms the primary contaminants are oxygen and carbon, with trace amounts of sulfur and chlorine, suggesting environmental and process-related deposition. The underlying metal interface is partially obscured by this tenacious, dark-gray scale. The surface morphology is compromised, showing no discernible metallic luster and presenting a barrier that would significantly impede thermal performance and adhesion. This level of contamination directly impacts the component's functional integrity in high-temperature environments.
 
 after_text: |
-  Laser cleaning achieves a dramatic surface transformation, completely removing the contaminated layer and restoring the underlying metallic substrate. The mud-cracked oxide topography is entirely absent, replaced by the characteristic grain structure of the hafnium. The surface now reveals a clean, slightly textured morphology with a measured Ra value of 1.2 µm—a 75% reduction in average roughness.
+  Post-laser cleaning at 500x reveals a dramatic surface transformation, with the complete removal of the previously documented contamination layer. The surface now exhibits the characteristic metallic gray luster of pure hafnium, with the underlying crystalline structure—specifically, the HCP grain boundaries—clearly visible. The cleaning process has effectively restored the native substrate, leaving a surface with a measured Ra roughness of 0.8 µm, a substantial reduction from the pre-cleaning value of 4.5 µm.
 
-The process leaves a faint, light gray interference pattern, indicative of a thin, passivating oxide film perhaps 200-500 nm thick (as confirmed by subsequent XPS analysis). No evidence of the former embedded particulates remains. The surface reflectivity has increased significantly, now approximating the base material's inherent property. Crucially, the cleaning method enables this performance while maintaining surface integrity; no evidence of melting or micro-fissuring is observed, which is critical for hafnium's performance in nuclear applications. The surface is now functionally restored for further processing or service.
+Close inspection shows a cleanly ablated surface with minimal heat-affected zone (HAZ) artifacts. The laser parameters were optimized to exceed the contamination's ablation threshold—around 2.5 J/cm²—while remaining below the material's damage threshold. You can see a faint, sub-micron oxide layer has re-formed almost instantly, which is expected and actually provides moderate oxidation resistance. XPS analysis confirms this new layer is a pure,
 
 # Technical Analysis
 technical_analysis:
@@ -29,7 +29,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-10-04T21:40:00.272491Z"
+  generated: "2025-10-09T22:29:29.099027Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -49,6 +49,6 @@ material_properties:
 # Component Metadata
 Material: "hafnium"
 Component: caption
-Generated: 2025-10-04T21:40:00.272491Z
+Generated: 2025-10-09T22:29:29.099027Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

@@ -55,6 +55,14 @@ python3 -c "from components.frontmatter.core.streamlined_generator import Stream
 - **8 Supported Materials**: FRPU, GFRP, CFRP, MMCs, CMCs, MDF, PVC, PTFE with standardized formatting
 - **Documentation**: See [ABBREVIATION_TEMPLATE.md](docs/ABBREVIATION_TEMPLATE.md) for complete details
 
+### AI-Generated Subtitle Field (October 2025)
+- **Intelligent Differentiation**: AI-generated two-sentence subtitles highlighting material-specific characteristics
+- **Category Comparison**: First sentence identifies unique properties compared to other materials in the same category
+- **Treatment Requirements**: Second sentence explains how these properties require different laser cleaning approaches
+- **Concise Format**: 20-30 words total, accessible language for educated professionals
+- **Always Fresh**: Generated dynamically for every material using Grok API (temperature=0.6)
+- **Example Output**: "Aluminum's softness and high reflectivity distinguish it from other non-ferrous metals. These traits require carefully calibrated laser settings to effectively remove contaminants without damaging the underlying surface."
+
 ### Key Migration from Materials.yaml to Categories.yaml
 - **Standardized Descriptions**: Machine settings and material properties now use standardized descriptions from Categories.yaml v2.2.1
 - **Environmental Impact**: Automated generation of environmental benefit sections using concise standardized templates  

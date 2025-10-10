@@ -22,28 +22,28 @@ materialProperties:
     value: 81.8
     unit: W/m·K
     confidence: 92
-    description: Thermal conductivity at 25°C
+    description: Thermal conductivity at 27°C
     min: 6.0
     max: 429.0
   tensileStrength:
     value: 2.5
     unit: MPa
-    confidence: 84
-    description: Ultimate tensile strength of pure indium
+    confidence: 82
+    description: Ultimate tensile strength
     min: 3.0
     max: 3000.0
   hardness:
     value: 0.9
-    unit: HB
-    confidence: 86
-    description: Brinell hardness of annealed indium
+    unit: Mohs
+    confidence: 88
+    description: Mohs hardness scale
     min: 0.5
     max: 3500
   youngsModulus:
     value: 11
     unit: GPa
-    confidence: 88
-    description: Young's modulus of pure indium
+    confidence: 86
+    description: Young's modulus of elasticity
     min: 5
     max: 411
   laserAbsorption:
@@ -63,7 +63,7 @@ materialProperties:
   specificHeat:
     value: 233
     unit: J/kg·K
-    confidence: 91
+    confidence: 88
     description: Specific heat capacity at 25°C
     min: 100
     max: 900
@@ -92,48 +92,47 @@ materialProperties:
     value: 32.1
     unit: μm/m·K
     confidence: 90
-    description: Linear thermal expansion coefficient at 25°C
+    description: Coefficient of linear thermal expansion at 25°C
     min: 0.5
     max: 29.1
   reflectivity:
     value: 74
     unit: '%'
-    confidence: 82
-    description: Optical reflectivity at 1064 nm wavelength
+    confidence: 84
+    description: Optical reflectivity at 10.6 μm (CO₂ laser wavelength)
     min: null
     max: null
   absorptionCoefficient:
-    value: 12000000.0
+    value: 1200000.0
     unit: m⁻¹
     confidence: 80
-    description: Approximate absorption coefficient for near-IR lasers
+    description: Approximate absorption coefficient for IR wavelengths
     min: null
     max: null
   ablationThreshold:
     value: 0.15
     unit: J/cm²
     confidence: 82
-    description: Estimated laser ablation threshold for nanosecond pulses at 1064
-      nm
+    description: Estimated laser ablation threshold for nanosecond pulses
     min: null
     max: null
   oxidationResistance:
     value: Low
     unit: qualitative
     confidence: 90
-    description: Forms thin oxide layer but has poor oxidation resistance
+    description: Forms thin oxide layer but has poor high-temperature oxidation resistance
     min: null
     max: null
   crystallineStructure:
     value: Tetragonal
     unit: crystal system
     confidence: 95
-    description: Body-centered tetragonal structure (a=3.251 Å, c=4.946 Å)
+    description: Body-centered tetragonal structure
     min: null
     max: null
   electricalResistivity:
-    value: 8.37
-    unit: μΩ·cm
+    value: 83.7
+    unit: nΩ·m
     confidence: 92
     description: Electrical resistivity at 20°C
     min: null
@@ -149,13 +148,13 @@ applications:
 - Electronics Manufacturing
 - Aerospace Components
 - Medical Device Manufacturing
-- Solar Panel Production
 - Nuclear Engineering
-- Cryogenic Systems
+- Research and Development
 - Automotive Electronics
-- Research Laboratory Equipment
-- Jewelry and Precious Metals
+- Renewable Energy Systems
+- Cultural Heritage Preservation
 - Semiconductor Fabrication
+- Cryogenic Systems
 machineSettings:
   powerRange:
     value: 25
@@ -169,62 +168,60 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength providing good absorption for Indium oxide layer
-      removal
+    description: Near-IR wavelength providing good absorption in Indium oxide layer
     min: 532
     max: 1064
   spotSize:
     value: 50
     unit: μm
     confidence: 86
-    description: Beam spot diameter for precise oxide removal from Indium surfaces
+    description: Optimal spot size for precision cleaning of Indium surfaces
     min: 30
     max: 100
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for continuous cleaning coverage with controlled
-      heat input
+    description: High repetition rate for efficient surface coverage with controlled
+      thermal input
     min: 20
     max: 100
   pulseWidth:
-    value: 8
+    value: 100
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient oxide layer ablation with
-      minimal thermal diffusion
-    min: 5
-    max: 15
+    description: Nanosecond pulses for efficient oxide removal with minimal thermal
+      diffusion
+    min: 50
+    max: 200
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 84
-    description: Optimal scanning speed for efficient oxide removal without substrate
-      melting
+    description: Scan speed providing effective oxide removal with single-pass capability
     min: 200
     max: 1000
   fluenceThreshold:
-    value: 1.2
+    value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Minimum fluence required for effective Indium oxide layer removal
-    min: 0.8
-    max: 2.0
+    description: Fluence required for effective Indium oxide ablation threshold
+    min: 1.5
+    max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning coverage
-    min: 40
+    description: Optimal overlap between adjacent laser tracks for uniform cleaning
+    min: 30
     max: 70
   passCount:
-    value: 2
+    value: 1
     unit: passes
     confidence: 88
-    description: Recommended number of passes for complete oxide removal
+    description: Single-pass cleaning typically sufficient for Indium oxide removal
     min: 1
-    max: 4
+    max: 3
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -242,10 +239,6 @@ images:
   hero:
     alt: Indium surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/indium-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Indium surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/indium-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -271,6 +264,8 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Indium is a very soft metal with a low melting point. These properties require
+  careful laser settings to avoid surface damage during cleaning.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -307,16 +302,18 @@ outcomeMetrics:
   units: []
 caption:
   beforeText: At 500x magnification, the indium surface is obscured by a non-uniform
-    contamination layer, approximately 5-15 µm thick. This layer consists of particulate
-    matter and a carbonaceous film, creating a textured, irregular topography. The
-    underlying metal's characteristic tetragonal grain structure is entirely masked,
-    with contaminants filling the intergranular boundaries and forming a discontinuous,
-    matte coating.
-  afterText: Laser cleaning reveals the pristine indium substrate, with a distinct,
-    well-defined grain structure now clearly visible. The surface is smooth and reflective,
-    with contamination completely removed from the grain boundaries. The process restores
-    the metal's inherent metallic luster and uniform topography without subsurface
-    damage.
+    contamination layer, typically 5-20 µm thick. This layer consists of particulate
+    matter, organic residues, and a thin, discontinuous oxide film (In₂O₃). The underlying
+    metal's soft, ductile character is masked by this topography, which exhibits a
+    mottled, high-relief texture. Contaminants adhere within the natural grain boundaries
+    and surface imperfections, creating a complex, irregular pattern that compromises
+    surface integrity and electrical properties.
+  afterText: Laser cleaning restores the intrinsic surface, revealing the pure indium's
+    fine, coherent grain structure at 500x magnification. The contamination layer
+    is entirely removed, leaving a smooth, reflective plane with minimal micro-roughness.
+    The surface is now defined by its metallic luster and clean grain boundaries,
+    free from embedded particulates and oxide films. This state ensures optimal electrical
+    contact and adhesion for subsequent processes.
   description: Microscopic analysis of indium surface before and after laser cleaning
     treatment
   alt: Microscopic view of indium surface showing laser cleaning effects

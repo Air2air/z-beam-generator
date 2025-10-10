@@ -78,7 +78,8 @@ materialProperties:
     value: 1.2
     unit: J/cm²
     confidence: 82
-    description: Estimated laser ablation threshold for nanosecond pulses at 1064 nm
+    description: Estimated laser ablation threshold for nanosecond pulses at 1064
+      nm
     min: null
     max: null
   porosity:
@@ -104,14 +105,16 @@ machineSettings:
     value: 90
     unit: W
     confidence: 92
-    description: Optimal average power for Rosewood surface cleaning without thermal damage
+    description: Optimal average power for Rosewood surface cleaning without thermal
+      damage
     min: 70
     max: 110
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength optimized for Rosewood absorption and minimal penetration depth
+    description: Near-infrared wavelength optimized for Rosewood absorption and minimal
+      penetration depth
     min: 532
     max: 1064
   spotSize:
@@ -132,7 +135,8 @@ machineSettings:
     value: 15
     unit: ns
     confidence: 85
-    description: Short pulse duration for controlled ablation of contaminants without substrate damage
+    description: Short pulse duration for controlled ablation of contaminants without
+      substrate damage
     min: 8
     max: 25
   scanSpeed:
@@ -146,14 +150,16 @@ machineSettings:
     value: 2.8
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without wood substrate damage
+    description: Fluence threshold for effective contaminant removal without wood
+      substrate damage
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 40
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive thermal accumulation
+    description: Optimal beam overlap for uniform cleaning without excessive thermal
+      accumulation
     min: 30
     max: 60
   passCount:
@@ -164,7 +170,7 @@ machineSettings:
     min: 1
     max: 4
   laserType:
-    value: "Nd:YAG"
+    value: Nd:YAG
     unit: n/a
     confidence: 90
     description: Recommended laser type for Rosewood cleaning applications
@@ -185,7 +191,8 @@ author:
   image: /images/author/yi-chun-lin.jpg
 images:
   hero:
-    alt: Rosewood surface undergoing laser cleaning showing precise contamination removal
+    alt: Rosewood surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/rosewood-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -247,40 +254,66 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: "When examining rosewood surface under 500x magnification with SEM (Scanning Electron Microscopy), contamination\
-    \ layer, it becomes very clear. This layer, it appears as uneven, patchy film covering natural wood grain. Thickness of\
-    \ this deposit, it varies between approximately 10 µm to—or more precisely—14.7 µm in denser areas, especially near the\
-    \ porous regions (as typical for tropical hardwoods with 45% porosity). Surface texture looks rough and irregular, with\
-    \ visible debris particles embedded, some as large as 5 µm in diameter. These contaminants, they seem like a mix of organic\
-    \ residues and inorganic dust, creating a dull, matte appearance that hides the wood’s natural luster.\n\nFurther analysis\
-    \ with EDX (Energy-Dispersive X-ray Spectroscopy) shows composition of this layer, it includes high carbon and oxygen\
-    \ peaks, suggesting organic buildup, perhaps from environmental exposure, and traces of silicon and aluminum, likely from\
-    \ dust or soil. Surface roughness, measured as Ra (average roughness), stands at 3.2 µm, much higher than expected for\
-    \ untreated rosewood. This roughness, it creates potential issues for adhesion or finishing in applications like aerospace\
-    \ or marine. Under magnification, micro-cracks also visible near contamination edges, some extending 2-3 µm into wood\
-    \ structure, indicating possible early degradation. So, this contaminated state, it reduces both aesthetic quality and\
-    \ functional integrity of material.\n\nLooking closer, contamination pattern, it is not uniform—thicker near vessel elements\
-    \ of wood, where natural pores trap more debris. This unevenness, it distorts reflectivity (estimated at 0.25 for near-infrared\
-    \ wavelengths), making surface appear darker and less consistent. Such condition, it is critical to address, because long-term\
-    \ exposure could worsen micro-damage. First we see the layer, then understand its impact on performance, so cleaning becomes\
-    \ very necessary step for restoration."
-  afterText: "After laser cleaning, rosewood surface under 500x magnification, it shows significant transformation. Contamination\
-    \ layer, previously 10-14.7 µm thick, now mostly removed, with residual traces less than 1 µm in isolated spots (as confirmed\
-    \ by SEM imaging). Surface, it looks much smoother, with Ra roughness value reduced to 0.8 µm, a clear improvement from\
-    \ initial 3.2 µm. Natural wood grain, it becomes visible again, showing distinct cellular structure and restored luster,\
-    \ unlike the dull, matte appearance before. This change, it suggests laser ablation (above threshold of 1.2 J/cm²) effectively\
-    \ removed deposits without deep damage to substrate.\n\nComparing to contaminated state, micro-cracks earlier observed,\
-    \ they appear minimized, with most no longer detectable at this magnification. EDX analysis now indicates sharp drop in\
-    \ carbon and oxygen peaks, confirming removal of organic residues, while silicon and aluminum traces are nearly gone.\
-    \ Reflectivity, it seems improved, likely closer to natural value for rosewood, enhancing aesthetic and functional quality\
-    \ for automotive or marine uses. Surface integrity, it is restored, with no new thermal damage visible—perhaps due to\
-    \ controlled laser parameters avoiding thermal decomposition (around 280°C). This cleaning, it preserves material’s tensile\
-    \ strength (95 MPa) potential.\n\nLooking at details, porous regions, they no longer trap debris, showing clean vessel\
-    \ elements under magnification. Some minor charring spots, approximately 2 µm wide, are noted near high-density grain\
-    \ areas, but these are negligible for performance. Overall, transformation, it is very clear—surface roughness decreases,\
-    \ contamination disappears, and wood’s natural beauty returns. So, laser cleaning proves effective for rosewood, ensuring\
-    \ both visual and practical benefits for high-value applications."
-  description: Microscopic analysis of rosewood surface before and after laser cleaning treatment
+  beforeText: 'When examining rosewood surface under 500x magnification with SEM (Scanning
+    Electron Microscopy), contamination layer, it becomes very clear. This layer,
+    it appears as uneven, patchy film covering natural wood grain. Thickness of this
+    deposit, it varies between approximately 10 µm to—or more precisely—14.7 µm in
+    denser areas, especially near the porous regions (as typical for tropical hardwoods
+    with 45% porosity). Surface texture looks rough and irregular, with visible debris
+    particles embedded, some as large as 5 µm in diameter. These contaminants, they
+    seem like a mix of organic residues and inorganic dust, creating a dull, matte
+    appearance that hides the wood’s natural luster.
+
+
+    Further analysis with EDX (Energy-Dispersive X-ray Spectroscopy) shows composition
+    of this layer, it includes high carbon and oxygen peaks, suggesting organic buildup,
+    perhaps from environmental exposure, and traces of silicon and aluminum, likely
+    from dust or soil. Surface roughness, measured as Ra (average roughness), stands
+    at 3.2 µm, much higher than expected for untreated rosewood. This roughness, it
+    creates potential issues for adhesion or finishing in applications like aerospace
+    or marine. Under magnification, micro-cracks also visible near contamination edges,
+    some extending 2-3 µm into wood structure, indicating possible early degradation.
+    So, this contaminated state, it reduces both aesthetic quality and functional
+    integrity of material.
+
+
+    Looking closer, contamination pattern, it is not uniform—thicker near vessel elements
+    of wood, where natural pores trap more debris. This unevenness, it distorts reflectivity
+    (estimated at 0.25 for near-infrared wavelengths), making surface appear darker
+    and less consistent. Such condition, it is critical to address, because long-term
+    exposure could worsen micro-damage. First we see the layer, then understand its
+    impact on performance, so cleaning becomes very necessary step for restoration.'
+  afterText: 'After laser cleaning, rosewood surface under 500x magnification, it
+    shows significant transformation. Contamination layer, previously 10-14.7 µm thick,
+    now mostly removed, with residual traces less than 1 µm in isolated spots (as
+    confirmed by SEM imaging). Surface, it looks much smoother, with Ra roughness
+    value reduced to 0.8 µm, a clear improvement from initial 3.2 µm. Natural wood
+    grain, it becomes visible again, showing distinct cellular structure and restored
+    luster, unlike the dull, matte appearance before. This change, it suggests laser
+    ablation (above threshold of 1.2 J/cm²) effectively removed deposits without deep
+    damage to substrate.
+
+
+    Comparing to contaminated state, micro-cracks earlier observed, they appear minimized,
+    with most no longer detectable at this magnification. EDX analysis now indicates
+    sharp drop in carbon and oxygen peaks, confirming removal of organic residues,
+    while silicon and aluminum traces are nearly gone. Reflectivity, it seems improved,
+    likely closer to natural value for rosewood, enhancing aesthetic and functional
+    quality for automotive or marine uses. Surface integrity, it is restored, with
+    no new thermal damage visible—perhaps due to controlled laser parameters avoiding
+    thermal decomposition (around 280°C). This cleaning, it preserves material’s tensile
+    strength (95 MPa) potential.
+
+
+    Looking at details, porous regions, they no longer trap debris, showing clean
+    vessel elements under magnification. Some minor charring spots, approximately
+    2 µm wide, are noted near high-density grain areas, but these are negligible for
+    performance. Overall, transformation, it is very clear—surface roughness decreases,
+    contamination disappears, and wood’s natural beauty returns. So, laser cleaning
+    proves effective for rosewood, ensuring both visual and practical benefits for
+    high-value applications.'
+  description: Microscopic analysis of rosewood surface before and after laser cleaning
+    treatment
   alt: Microscopic view of rosewood surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -292,7 +325,7 @@ caption:
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: "2025-10-04T21:09:31.622199Z"
+    timestamp: '2025-10-04T21:09:31.622199Z'
     generator: FrontmatterCaptionGenerator
     componentType: ai_caption_frontmatter
   author: Yi-Chun Lin
@@ -300,7 +333,8 @@ caption:
     materialType: Wood
     analysisMethod: ai_microscopy
   imageUrl:
-    alt: Microscopic view of Rosewood surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Rosewood surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/rosewood-laser-cleaning-micro.jpg
 tags:
 - wood
@@ -314,5 +348,8 @@ tags:
 - industrial-grade
 - yi-chun-lin
 metadata:
-  lastUpdated: "2025-10-04T21:09:59.941309"
+  lastUpdated: '2025-10-04T21:09:59.941309'
   captionIntegrated: true
+subtitle: Rosewood often poses a challenge due to its varying density across different
+  sections. Pay close attention to your laser controls, as even a slight mismatch
+  can affect the finish at critical spots.
