@@ -18,39 +18,39 @@ import sys
 # Mapping of categories to thermal destruction types
 THERMAL_TYPE_MAP = {
     'wood': {
-        'type': 'pyrolysis',
+        'type': 'Pyrolysis',
         'description': 'Temperature where pyrolysis (thermal decomposition) begins'
     },
     'ceramic': {
-        'type': 'sintering',
+        'type': 'Sintering',
         'description': 'Temperature where particle fusion or decomposition occurs'
     },
     'stone': {
-        'type': 'structural_breakdown',
+        'type': 'Structural breakdown',
         'description': 'Temperature where structural breakdown begins'
     },
     'composite': {
-        'type': 'matrix_degradation',
+        'type': 'Matrix degradation',
         'description': 'Temperature where polymer matrix decomposition begins'
     },
     'plastic': {
-        'type': 'polymer_degradation',
+        'type': 'Polymer degradation',
         'description': 'Temperature where polymer chain breakdown begins'
     },
     'glass': {
-        'type': 'softening',
+        'type': 'Softening',
         'description': 'Temperature where glass transitions from rigid to pliable state'
     },
     'masonry': {
-        'type': 'structural_breakdown',
+        'type': 'Structural breakdown',
         'description': 'Temperature where structural breakdown begins'
     },
     'metal': {
-        'type': 'melting',
+        'type': 'Melting',
         'description': 'Temperature where solid-to-liquid phase transition occurs'
     },
     'semiconductor': {
-        'type': 'melting',
+        'type': 'Melting',
         'description': 'Temperature where solid-to-liquid phase transition occurs'
     }
 }
