@@ -171,6 +171,11 @@
       "properties": {
         "density": {"$ref": "#/definitions/DataMetricValue"},
         "meltingPoint": {"$ref": "#/definitions/DataMetricValue"},
+        "thermalDestructionPoint": {"$ref": "#/definitions/DataMetricValue"},
+        "sinteringPoint": {"$ref": "#/definitions/DataMetricValue"},
+        "softeningPoint": {"$ref": "#/definitions/DataMetricValue"},
+        "degradationPoint": {"$ref": "#/definitions/DataMetricValue"},
+        "thermalDegradationPoint": {"$ref": "#/definitions/DataMetricValue"},
         "thermalConductivity": {"$ref": "#/definitions/DataMetricValue"},
         "tensileStrength": {"$ref": "#/definitions/DataMetricValue"},
         "hardness": {"$ref": "#/definitions/DataMetricValue"},

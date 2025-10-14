@@ -282,7 +282,7 @@
       "description": "Comprehensive material properties using reusable DataMetric structure. Property names (density, meltingPoint, etc.) serve as object keys.",
       "additionalProperties": false,
       "patternProperties": {
-        "^(density|meltingPoint|boilingPoint|thermalConductivity|thermalExpansion|specificHeat|thermalDiffusivity|electricalResistivity|electricalConductivity|tensileStrength|compressiveStrength|yieldStrength|ultimateStrength|hardness|youngsModulus|shearModulus|bulkModulus|poissonsRatio|fatigueLimit|toughness|ductility|brittleness|viscosity|surfaceTension|refractivIndex|dielectricConstant|magneticPermeability|absorptivity|reflectivity|emissivity|corrosionRate|oxidationResistance|chemicalStability|biocompatibility|toxicity|flammability|smokeDensity|thermalDecomposition|glassTransition|crystallineStructure|grainSize|porosity|permeability|solubility|diffusivity)$": {
+        "^(density|meltingPoint|boilingPoint|thermalConductivity|thermalExpansion|specificHeat|thermalDiffusivity|thermalDestructionPoint|sinteringPoint|softeningPoint|degradationPoint|thermalDegradationPoint|electricalResistivity|electricalConductivity|tensileStrength|compressiveStrength|yieldStrength|ultimateStrength|hardness|youngsModulus|shearModulus|bulkModulus|poissonsRatio|fatigueLimit|toughness|ductility|brittleness|viscosity|surfaceTension|refractivIndex|dielectricConstant|magneticPermeability|absorptivity|reflectivity|emissivity|corrosionRate|oxidationResistance|chemicalStability|biocompatibility|toxicity|flammability|smokeDensity|thermalDecomposition|glassTransition|crystallineStructure|grainSize|porosity|permeability|solubility|diffusivity)$": {
           "$ref": "#/definitions/DataMetric"
         }
       },

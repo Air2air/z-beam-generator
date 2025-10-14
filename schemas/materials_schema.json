@@ -146,11 +146,27 @@
         },
         "thermalDestructionPoint": {
           "type": "number",
-          "description": "Temperature at which thermal damage begins (°C)"
+          "description": "Temperature at which thermal damage begins - for wood materials (°C)"
+        },
+        "sinteringPoint": {
+          "type": "number",
+          "description": "Temperature where particle fusion or decomposition occurs - for ceramic materials (°C)"
+        },
+        "softeningPoint": {
+          "type": "number",
+          "description": "Temperature where glass transitions from rigid to pliable state - for glass materials (°C)"
+        },
+        "degradationPoint": {
+          "type": "number",
+          "description": "Temperature where polymer decomposition begins - for plastic and composite materials (°C)"
+        },
+        "thermalDegradationPoint": {
+          "type": "number",
+          "description": "Temperature where structural breakdown begins - for stone and masonry materials (°C)"
         },
         "thermalDestructionType": {
           "type": "string",
-          "enum": ["melting", "decomposition", "carbonization", "oxidation", "sublimation", "thermal_shock", "softening", "spalling", "calcination", "delamination"],
+          "enum": ["melting", "decomposition", "carbonization", "oxidation", "sublimation", "thermal_shock", "softening", "spalling", "calcination", "delamination", "pyrolysis", "sintering", "degradation"],
           "description": "Primary mechanism of thermal failure"
         },
         "thermalConductivity": {
