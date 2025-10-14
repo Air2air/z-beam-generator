@@ -11,13 +11,6 @@ materialProperties:
     description: Average density of sugar maple at 12% moisture content
     min: 0.12
     max: 1.25
-  meltingPoint:
-    value: 350
-    unit: °C
-    confidence: 85
-    description: Approximate pyrolysis temperature where thermal decomposition begins
-    min: null
-    max: null
   thermalConductivity:
     value: 0.16
     unit: W/m·K
@@ -71,7 +64,7 @@ materialProperties:
     value: 230.0
     unit: °C
     confidence: 92
-    description: Temperature where pyrolysis (thermal decomposition) begins
+    description: Temperature where thermal decomposition begins
     min: 200
     max: 500
   thermalDiffusivity:
@@ -144,7 +137,7 @@ materialProperties:
     description: Average lignin content influencing thermal degradation behavior
     min: null
     max: null
-  thermalDestructionType: Pyrolysis
+  thermalDestructionType: Decomposition
 applications:
 - Musical Instrument Manufacturing
 - Furniture Restoration

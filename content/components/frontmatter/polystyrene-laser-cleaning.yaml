@@ -11,13 +11,6 @@ materialProperties:
     description: Density of general purpose polystyrene at room temperature
     min: 0.85
     max: 2.2
-  meltingPoint:
-    value: 240
-    unit: °C
-    confidence: 90
-    description: Glass transition temperature (Tg) for amorphous polystyrene
-    min: null
-    max: null
   thermalConductivity:
     value: 0.17
     unit: W/m·K
@@ -144,7 +137,7 @@ materialProperties:
     description: Temperature where polymer chain breakdown begins
     min: null
     max: null
-  thermalDestructionType: Polymer degradation
+  thermalDestructionType: Degradation
 applications:
 - Electronics Manufacturing
 - Medical Device Manufacturing

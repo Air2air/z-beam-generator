@@ -11,13 +11,6 @@ materialProperties:
     description: Average density of walnut wood at 12% moisture content
     min: 0.12
     max: 1.25
-  meltingPoint:
-    value: 280
-    unit: °C
-    confidence: 85
-    description: Approximate pyrolysis temperature where thermal decomposition begins
-    min: null
-    max: null
   thermalConductivity:
     value: 0.14
     unit: W/m·K
@@ -71,7 +64,7 @@ materialProperties:
     value: 401.0
     unit: °C
     confidence: 92
-    description: Temperature where pyrolysis (thermal decomposition) begins
+    description: Temperature where thermal decomposition begins
     min: 200
     max: 500
   thermalDiffusivity:
@@ -137,7 +130,7 @@ materialProperties:
     description: Resistance to chemical degradation and environmental factors
     min: null
     max: null
-  thermalDestructionType: Pyrolysis
+  thermalDestructionType: Decomposition
 applications:
 - Aerospace
 - Automotive

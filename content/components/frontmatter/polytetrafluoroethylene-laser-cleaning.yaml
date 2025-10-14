@@ -11,13 +11,6 @@ materialProperties:
     description: Density of virgin PTFE at room temperature
     min: 0.85
     max: 2.2
-  meltingPoint:
-    value: 327
-    unit: °C
-    confidence: 92
-    description: First-order transition temperature of PTFE
-    min: null
-    max: null
   thermalConductivity:
     value: 0.25
     unit: W/m·K
@@ -137,7 +130,7 @@ materialProperties:
     description: Temperature where polymer chain breakdown begins
     min: null
     max: null
-  thermalDestructionType: Polymer degradation
+  thermalDestructionType: Degradation
 applications:
 - Aerospace
 - Medical Device Manufacturing

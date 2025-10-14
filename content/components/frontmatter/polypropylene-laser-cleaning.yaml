@@ -11,13 +11,6 @@ materialProperties:
     description: Density of isotactic polypropylene at room temperature
     min: 0.85
     max: 2.2
-  meltingPoint:
-    value: 160
-    unit: °C
-    confidence: 92
-    description: Melting point range for commercial polypropylene grades
-    min: null
-    max: null
   thermalConductivity:
     value: 0.22
     unit: W/m·K
@@ -130,7 +123,7 @@ materialProperties:
     description: Temperature where polymer chain breakdown begins
     min: null
     max: null
-  thermalDestructionType: Polymer degradation
+  thermalDestructionType: Degradation
 applications:
 - Automotive
 - Medical Devices

@@ -11,13 +11,6 @@ materialProperties:
     description: Density of rigid PVC at room temperature
     min: 0.85
     max: 2.2
-  meltingPoint:
-    value: 160
-    unit: °C
-    confidence: 90
-    description: Glass transition temperature for rigid PVC
-    min: null
-    max: null
   thermalConductivity:
     value: 0.16
     unit: W/m·K
@@ -116,7 +109,7 @@ materialProperties:
     description: Temperature where polymer chain breakdown begins
     min: null
     max: null
-  thermalDestructionType: Polymer degradation
+  thermalDestructionType: Degradation
 applications:
 - Medical Device Manufacturing
 - Aerospace

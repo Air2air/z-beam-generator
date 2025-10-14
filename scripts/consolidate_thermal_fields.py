@@ -18,8 +18,8 @@ import sys
 # Mapping of categories to thermal destruction types
 THERMAL_TYPE_MAP = {
     'wood': {
-        'type': 'Pyrolysis',
-        'description': 'Temperature where pyrolysis (thermal decomposition) begins'
+        'type': 'Decomposition',
+        'description': 'Temperature where thermal decomposition begins'
     },
     'ceramic': {
         'type': 'Sintering',
@@ -34,7 +34,7 @@ THERMAL_TYPE_MAP = {
         'description': 'Temperature where polymer matrix decomposition begins'
     },
     'plastic': {
-        'type': 'Polymer degradation',
+        'type': 'Degradation',
         'description': 'Temperature where polymer chain breakdown begins'
     },
     'glass': {
@@ -61,7 +61,8 @@ FIELDS_TO_REMOVE = [
     'softeningPoint',
     'degradationPoint',
     'thermalDegradationPoint',
-    'thermalDestructionType'  # Remove old incorrectly-named field
+    'thermalDestructionType',  # Remove old incorrectly-named field
+    'meltingPoint'  # BREAKING CHANGE: Remove legacy meltingPoint field
 ]
 
 

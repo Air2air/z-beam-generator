@@ -11,13 +11,6 @@ materialProperties:
     description: Density of amorphous polycarbonate at room temperature
     min: 0.85
     max: 2.2
-  meltingPoint:
-    value: 155
-    unit: °C
-    confidence: 90
-    description: Glass transition temperature (Tg) - critical for laser processing
-    min: null
-    max: null
   thermalConductivity:
     value: 0.2
     unit: W/m·K
@@ -130,7 +123,7 @@ materialProperties:
     description: Temperature where polymer chain breakdown begins
     min: null
     max: null
-  thermalDestructionType: Polymer degradation
+  thermalDestructionType: Degradation
 applications:
 - Aerospace
 - Automotive

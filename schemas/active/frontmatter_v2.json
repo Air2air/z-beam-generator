@@ -307,8 +307,8 @@
         },
         "thermalDestructionType": {
           "type": "string",
-          "enum": ["Pyrolysis", "Sintering", "Softening", "Polymer degradation", "Matrix degradation", "Structural breakdown", "Melting"],
-          "description": "Type of thermal destruction process: Pyrolysis (wood), Sintering (ceramics), Softening (glass), Polymer degradation (plastics), Matrix degradation (composites), Structural breakdown (stone/masonry), Melting (metals/semiconductors)"
+          "enum": ["Decomposition", "Sintering", "Softening", "Degradation", "Matrix degradation", "Structural breakdown", "Melting"],
+          "description": "Type of thermal destruction process: Decomposition (wood), Sintering (ceramics), Softening (glass), Degradation (plastics), Matrix degradation (composites), Structural breakdown (stone/masonry), Melting (metals/semiconductors)"
         }
       }
     },

@@ -11,13 +11,6 @@ materialProperties:
     description: Medium density fiberboard typical density range
     min: 0.12
     max: 1.25
-  meltingPoint:
-    value: N/A
-    unit: °C
-    confidence: 90
-    description: MDF undergoes thermal decomposition rather than melting
-    min: null
-    max: null
   thermalConductivity:
     value: 0.12
     unit: W/m·K
@@ -71,7 +64,7 @@ materialProperties:
     value: 302.0
     unit: °C
     confidence: 92
-    description: Temperature where pyrolysis (thermal decomposition) begins
+    description: Temperature where thermal decomposition begins
     min: 200
     max: 500
   thermalDiffusivity:
@@ -144,7 +137,7 @@ materialProperties:
     description: Minimum temperature for sustained combustion
     min: null
     max: null
-  thermalDestructionType: Pyrolysis
+  thermalDestructionType: Decomposition
 applications:
 - Furniture Manufacturing
 - Automotive Interior Components
