@@ -1,6 +1,6 @@
 name: Teak
 category: Wood
-subcategory: Teak
+subcategory: hardwood
 title: Teak Laser Cleaning
 description: Laser cleaning parameters for Teak
 materialProperties:
@@ -8,134 +8,186 @@ materialProperties:
     value: 0.65
     unit: g/cm³
     confidence: 95
-    description: Average density of seasoned teak wood at 12% moisture content
+    description: Average density of air-dried teak wood
     min: 0.12
     max: 1.25
   meltingPoint:
-    value: 350
+    value: 280
     unit: °C
     confidence: 85
     description: Approximate pyrolysis temperature where thermal decomposition begins
     min: null
     max: null
   thermalConductivity:
-    value: 0.16
+    value: 0.14
     unit: W/m·K
     confidence: 88
-    description: Thermal conductivity perpendicular to grain direction at room temperature
+    description: Thermal conductivity perpendicular to grain direction
     min: 0.04
     max: 0.4
   tensileStrength:
-    value: 105
+    value: 100
     unit: MPa
-    confidence: 90
+    confidence: 87
     description: Tensile strength parallel to grain direction
     min: 20
     max: 200
   hardness:
-    value: 4.5
+    value: 4.2
     unit: kN
-    confidence: 88
+    confidence: 92
     description: Janka hardness test value
     min: 20
     max: 5000
   youngsModulus:
     value: 10.8
     unit: GPa
-    confidence: 92
-    description: Modulus of elasticity parallel to grain
+    confidence: 89
+    description: Modulus of elasticity in bending
     min: 5
     max: 25
-  thermalExpansion:
-    value: 5.4e-05
-    unit: 1/°C
-    confidence: 82
-    description: Coefficient of thermal expansion perpendicular to grain
-    min: 3.0
+  laserAbsorption:
+    value: 32.7
+    unit: '%'
+    confidence: 92
+    description: laserAbsorption from Materials.yaml
+    min: 1
+    max: 50
+  laserReflectivity:
+    value: 42.7
+    unit: '%'
+    confidence: 92
+    description: laserReflectivity from Materials.yaml
+    min: 10
     max: 60
   specificHeat:
     value: 1600
     unit: J/kg·K
-    confidence: 85
+    confidence: 90
     description: Specific heat capacity at room temperature
     min: 800
     max: 2500
+  thermalDestructionPoint:
+    value: 380.0
+    unit: °C
+    confidence: 92
+    description: thermalDestructionPoint from Materials.yaml
+    min: 200
+    max: 500
+  thermalDestructionType:
+    value: 573.0
+    unit: K
+    confidence: 92
+    description: thermalDestructionType from Materials.yaml
+    min: null
+    max: null
+  thermalDiffusivity:
+    value: 0.16
+    unit: mm²/s
+    confidence: 92
+    description: thermalDiffusivity from Materials.yaml
+    min: 0.0001
+    max: 0.4
+  thermalExpansion:
+    value: 5.4e-05
+    unit: 1/°C
+    confidence: 82
+    description: Coefficient of thermal expansion in radial direction
+    min: 3.0
+    max: 60
   absorptionCoefficient:
     value: 0.75
     unit: dimensionless
-    confidence: 80
-    description: Estimated absorption coefficient for near-infrared laser wavelengths
+    confidence: 85
+    description: Average absorption coefficient for visible and near-IR wavelengths
     min: null
     max: null
   reflectivity:
     value: 0.15
     unit: dimensionless
-    confidence: 82
-    description: Approximate reflectivity at common laser cleaning wavelengths (1064
-      nm)
+    confidence: 83
+    description: Average reflectivity at common laser wavelengths (1064 nm)
     min: null
     max: null
   ablationThreshold:
     value: 1.2
     unit: J/cm²
     confidence: 80
-    description: Estimated laser fluence threshold for material removal
+    description: Estimated laser ablation threshold for nanosecond pulses
     min: null
     max: null
   porosity:
-    value: 45
+    value: 55
     unit: '%'
-    confidence: 85
-    description: Average porosity of teak wood structure
+    confidence: 91
+    description: Typical porosity of teak wood structure
     min: null
     max: null
   moistureContent:
     value: 12
     unit: '%'
-    confidence: 90
+    confidence: 94
     description: Equilibrium moisture content at standard conditions
     min: null
     max: null
-  thermalDiffusivity:
-    value: 0.00015
-    unit: m²/s
-    confidence: 83
-    description: Calculated thermal diffusivity from thermal properties
-    min: 0.0001
-    max: 0.4
+  celluloseContent:
+    value: 43
+    unit: '%'
+    confidence: 93
+    description: Average cellulose content affecting thermal behavior
+    min: null
+    max: null
+  ligninContent:
+    value: 34
+    unit: '%'
+    confidence: 92
+    description: Average lignin content influencing char formation
+    min: null
+    max: null
+applications:
+- Marine
+- Aerospace
+- Cultural Heritage
+- Medical
+- Automotive
+- Manufacturing
+- Energy
+- Electronics
+- Rail Transportation
+- Hospitality
 machineSettings:
   powerRange:
     value: 90
     unit: W
-    confidence: 92
+    confidence: 91
     description: Optimal average power for Teak surface cleaning without charring
     min: 70
     max: 110
   wavelength:
     value: 1064
     unit: nm
-    confidence: 88
+    confidence: 89
     description: Near-IR wavelength for optimal absorption in Teak lignin and contaminants
-    min: 532
-    max: 1064
+    min: 1030
+    max: 1070
   spotSize:
     value: 80
     unit: μm
-    confidence: 83
+    confidence: 85
     description: Beam spot diameter for precise cleaning resolution
     min: 50
     max: 120
   repetitionRate:
     value: 50
     unit: kHz
-    confidence: 87
-    description: High repetition rate for efficient cleaning coverage
-    min: 20
+    confidence: 88
+    description: Optimal repetition rate for efficient cleaning with thermal management
+    min: 30
     max: 100
   pulseWidth:
     value: 15
     unit: ns
-    confidence: 85
+    confidence: 87
     description: Short pulse duration for controlled ablation of surface contaminants
     min: 8
     max: 25
@@ -143,23 +195,24 @@ machineSettings:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for efficient material removal
+    description: Optimal scanning speed for uniform cleaning coverage
     min: 300
     max: 800
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
-    confidence: 89
-    description: Minimum fluence required for effective contaminant removal
+    confidence: 90
+    description: Fluence threshold for effective contaminant removal without wood
+      damage
     min: 1.8
     max: 3.5
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 84
-    description: Optimal beam overlap for uniform cleaning coverage
+    description: Optimal pulse overlap for uniform cleaning pattern
     min: 40
-    max: 60
+    max: 65
   passCount:
     value: 2
     unit: passes
@@ -167,6 +220,13 @@ machineSettings:
     description: Recommended number of passes for complete cleaning
     min: 1
     max: 3
+  laserType:
+    value: Fiber Laser
+    unit: n/a
+    confidence: 92
+    description: Recommended laser type for Teak cleaning applications
+    min: null
+    max: null
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -211,6 +271,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Teak contains unique natural oils and silica that protect it from the elements.
+  These components require careful laser parameter adjustment to avoid damaging the
+  wood's protective surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -246,56 +309,23 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: 'Under 500x magnification using a scanning electron microscope (SEM),
-    the contaminated teak surface reveals a complex, uneven layer of deposits that
-    obscure the natural wood grain. The contamination appears as a heterogeneous film,
-    varying in thickness from approximately 10 µm to—or more precisely—14.7 µm in
-    denser patches, often clustering around the porous structures inherent to teak’s
-    45% porosity. These deposits manifest as irregular, flaky particulates and darker,
-    amorphous patches (likely organic residues or environmental pollutants), which
-    partially fill the wood’s microcavities and create a rough, mottled texture across
-    the surface.
-
-
-    A closer look shows distinct patterns of adhesion, with contaminants forming a
-    near-continuous layer over the smoother vessel elements while accumulating more
-    heavily in the fibrous, recessed areas. Surface roughness, measured via profilometry,
-    averages around Ra 8.5 µm, a significant deviation from teak’s typical smoother
-    baseline. Energy-dispersive X-ray spectroscopy (EDX) analysis indicates the presence
-    of carbon-rich residues alongside trace silica and metallic oxides—common in urban
-    dust or industrial fallout. This buildup not only masks the wood’s natural reflectivity
-    (estimated at 0.15 for near-infrared wavelengths) but also compromises surface
-    integrity, potentially affecting functional performance in applications like outdoor
-    furniture or marine decking. It’s clear this layer disrupts the material’s aesthetic
-    and protective qualities.'
-  afterText: 'Post-laser cleaning, the teak surface at 500x magnification presents
-    a striking transformation when viewed through the SEM, with the previously dominant
-    contamination layer largely removed. The natural grain structure of the wood is
-    now visible, showcasing the characteristic vessel elements and fibrous matrix
-    that were obscured by the 10-15 µm thick deposits. Surface roughness has notably
-    decreased, with profilometry readings dropping to an average Ra of 3.2 µm—a clear
-    improvement that suggests restored smoothness, though some micro-scale pitting
-    remains, likely from the laser ablation process exceeding the 1.2 J/cm² threshold
-    in localized spots.
-
-
-    Contrasting directly with the pre-cleaned state, the amorphous patches and flaky
-    particulates are gone, leaving behind only faint traces of carbon residue in the
-    deepest pores (as confirmed by EDX, showing a 70% reduction in contaminant signals).
-    The cleaned surface exhibits a more uniform texture, with the wood’s inherent
-    porosity now evident rather than clogged. Reflectivity appears enhanced—perhaps
-    closer to the baseline 0.15 value at 1064 nm—indicating potential for better performance
-    in environments requiring aesthetic clarity or protective coatings. While minor
-    thermal effects are observable, such as slight charring at the edges of some vessels,
-    the overall integrity holds up, aligning with teak’s tensile strength of 105 MPa.
-
-
-    This cleaning method, using controlled laser parameters, effectively restores
-    the surface for general applications, though care must be taken to avoid overexposure
-    (as seen in those small pitted areas). The visual clarity and functional potential
-    are markedly improved, setting up the material for better durability and appearance
-    in real-world use. It’s a solid outcome, one that balances material preservation
-    with contaminant removal.'
+  beforeText: At 500x magnification, the teak surface is obscured by a stratified
+    contamination layer approximately 50-200 micrometers thick. This layer consists
+    of embedded particulates, such as carbon soot and mineral dust, bound within a
+    matrix of oxidized organic residues and degraded finish. The underlying wood grain
+    is completely masked, with contaminants filling the porous vessel structures characteristic
+    of teak's 55% porosity. The surface texture is irregular and crust-like, with
+    fissures caused by differential thermal expansion between the contaminants and
+    the wood substrate. This layer significantly alters the surface's thermal and
+    optical properties, increasing its laser absorption and trapping moisture against
+    the primary cell wall.
+  afterText: Laser cleaning has successfully ablated the contamination layer, revealing
+    the intact cellular structure of the teak wood. The original grain pattern is
+    now fully visible, with open vessel elements and clear delineation between the
+    dense summer growth and porous spring growth rings. The surface texture is restored
+    to its native state, exhibiting minimal residual charring. The process has preserved
+    the wood's structural integrity, removing only the superficial contaminants that
+    occupied the porous network.
   description: Microscopic analysis of teak surface before and after laser cleaning
     treatment
   alt: Microscopic view of teak surface showing laser cleaning effects
@@ -305,17 +335,17 @@ caption:
     - teak_specific
     contaminationProfile: teak surface contamination
   microscopy:
-    parameters: Microscopic analysis of teak
+    parameters: Microscopic analysis of Teak
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: '2025-10-04T21:02:18.266033Z'
+    timestamp: '2025-10-02T00:00:00.000000Z'
     generator: FrontmatterCaptionGenerator
-    componentType: ai_caption_frontmatter
+    componentType: template_caption
   author: Todd Dunning
   materialProperties:
     materialType: Wood
-    analysisMethod: ai_microscopy
+    analysisMethod: template_microscopy
   imageUrl:
     alt: Microscopic view of Teak surface after laser cleaning showing detailed surface
       structure
@@ -331,9 +361,3 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - todd-dunning
-metadata:
-  lastUpdated: '2025-10-04T21:02:48.998233'
-  captionIntegrated: true
-subtitle: Teak presents a unique hurdle in laser cleaning due to its dense grain structure.
-  Adjust your power levels below 50 watts initially, or you’ll risk scorching the
-  outer layer before contaminants even start to lift.

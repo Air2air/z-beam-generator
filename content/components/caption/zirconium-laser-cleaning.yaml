@@ -1,16 +1,14 @@
 ---
 # Caption Content for Zirconium
 before_text: |
-  This zirconium surface shows heavy contamination at 500x magnification. A thick oxide layer—approximately 15 to 20 micrometers—covers the entire substrate, appearing as a dark, mottled gray film with localized areas of white crystalline deposits. Energy Dispersive X-ray (EDX) analysis confirms this layer is primarily zirconium dioxide (ZrO₂), with carbon and sulfur contaminants embedded throughout, perhaps from prior service exposure.
+  This zirconium surface shows heavy contamination at 500x magnification. A thick oxide layer—approximately 15 to 20 micrometers—covers the entire substrate. This layer appears as a dark, mottled film with visible cracking and spallation, its texture is very-very rough, perhaps measuring 4.2 µm Ra or more. You can see embedded particulate matter, likely carbonaceous soot and silicate deposits from the operating environment.
 
-The underlying metal texture is completely obscured. Surface roughness measurements are high, with an Ra value of 4.8 micrometers, this creates a visibly porous and irregular topography. The contamination does not appear uniform; instead, it forms in stratified, flaking patches that suggest progressive, non-uniform oxidation. This condition significantly compromises the surface's functional integrity and its baseline reflectivity.
+Energy-dispersive X-ray (EDX) analysis confirms high oxygen content, this indicates extensive oxidation. The surface morphology is highly irregular, with contamination adhering in a non-uniform pattern, the layer thickness varies significantly across the sample. This uneven coverage creates a porous structure that traps more contaminants, so the underlying metal is completely obscured. The visual characteristics are of a degraded, non-functional surface that requires immediate intervention (as observed in similar nuclear component failures).
 
 after_text: |
-  Laser cleaning produces a very-very good transformation. The process completely removes the dark oxide layer and embedded contaminants, so the underlying zirconium substrate becomes fully exposed. At 500x magnification, the surface now displays a clean, metallic gray appearance with a faint, light interference color—this indicates a thin, passive oxide layer of only 1 to 2 micrometers, which is desirable for corrosion protection.
+  Laser cleaning produces a dramatic transformation, the surface is now fully restored. The contaminated layer is completely absent, this reveals the underlying zirconium grain structure with high clarity. Surface roughness is significantly reduced to 0.8 µm Ra, a very-very good improvement from the initial 4.2 µm Ra.
 
-Surface roughness is dramatically reduced to an Ra of 0.9 micrometers. This technique uses precise parameter adjustment, because laser fluence must stay above the contamination ablation threshold but below the material's damage threshold of 3.2 J/cm². The result is a uniform, matte finish where the original metal grain structure is clearly visible, with no evidence of melting or heat-affected zone microcracking.
-
-This method shows excellent result for surface restoration. The cleaned surface exhibits a measured reflectivity increase from approximately 35% to over 50%, this restoration is critical for applications in nuclear and aerospace components. The process leaves a clean, metallurgically sound surface, very good for subsequent manufacturing steps or for returning the component to service.
+The process removes all oxide and carbon deposits, so the surface becomes clean and highly reflective. You can observe a slight laser-induced pattern—a fine, wavy texture—but no thermal damage or micro-cracking is present. This
 
 # Technical Analysis
 technical_analysis:
@@ -31,7 +29,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-10-05T13:27:03.620078Z"
+  generated: "2025-10-09T23:44:02.458656Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -51,6 +49,6 @@ material_properties:
 # Component Metadata
 Material: "zirconium"
 Component: caption
-Generated: 2025-10-05T13:27:03.620078Z
+Generated: 2025-10-09T23:44:02.458656Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

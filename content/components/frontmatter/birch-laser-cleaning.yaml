@@ -5,8 +5,8 @@ title: Birch Laser Cleaning
 description: Laser cleaning parameters for Birch
 materialProperties:
   density:
-    value: 670
-    unit: kg/m³
+    value: 0.67
+    unit: g/cm³
     confidence: 95
     description: Average density of European birch wood at 12% moisture content
     min: 0.12
@@ -23,27 +23,27 @@ materialProperties:
     value: 0.17
     unit: W/m·K
     confidence: 90
-    description: Thermal conductivity parallel to grain at room temperature
+    description: Thermal conductivity perpendicular to grain at room temperature
     min: 0.04
     max: 0.4
   tensileStrength:
     value: 120
     unit: MPa
-    confidence: 94
+    confidence: 90
     description: Tensile strength parallel to grain direction
     min: 20
     max: 200
   hardness:
     value: 3.5
     unit: kN
-    confidence: 90
-    description: Janka hardness test value for side grain
+    confidence: 88
+    description: Janka hardness test value for side hardness
     min: 20
     max: 5000
   youngsModulus:
     value: 14
     unit: GPa
-    confidence: 96
+    confidence: 92
     description: Modulus of elasticity parallel to grain direction
     min: 5
     max: 25
@@ -65,7 +65,7 @@ materialProperties:
     value: 1300
     unit: J/kg·K
     confidence: 92
-    description: Specific heat capacity at constant pressure for dry birch
+    description: Specific heat capacity at 12% moisture content and 20°C
     min: 800
     max: 2500
   thermalDestructionPoint:
@@ -83,132 +83,145 @@ materialProperties:
     min: null
     max: null
   thermalDiffusivity:
-    value: 0.18
-    unit: mm²/s
-    confidence: 82
-    description: Thermal diffusivity at room temperature for dry birch wood
+    value: 0.00022
+    unit: m²/s
+    confidence: 85
+    description: Thermal diffusivity across grain direction at room temperature
     min: 0.0001
     max: 0.4
   thermalExpansion:
-    value: 4.5
-    unit: 10^-6/°C
+    value: 4.5e-05
+    unit: 1/°C
     confidence: 88
-    description: Coefficient of thermal expansion parallel to grain direction
+    description: Coefficient of thermal expansion perpendicular to grain direction
     min: 3.0
     max: 60
   absorptionCoefficient:
     value: 0.85
     unit: dimensionless
-    confidence: 88
-    description: Optical absorption coefficient for common laser wavelengths (1064
+    confidence: 82
+    description: Average absorption coefficient for near-infrared wavelengths (1064
       nm)
     min: null
     max: null
   reflectivity:
     value: 0.12
     unit: dimensionless
-    confidence: 85
-    description: Surface reflectivity for near-infrared laser wavelengths
+    confidence: 80
+    description: Reflectivity at 1064 nm wavelength for clean birch surface
     min: null
     max: null
   ablationThreshold:
     value: 1.2
     unit: J/cm²
-    confidence: 82
-    description: Minimum fluence required for material removal with nanosecond pulses
+    confidence: 85
+    description: Minimum fluence required for material removal at 1064 nm wavelength
     min: null
     max: null
   porosity:
     value: 55
     unit: '%'
-    confidence: 92
-    description: Average porosity of birch wood structure
+    confidence: 90
+    description: Average porosity percentage in birch wood structure
     min: null
     max: null
   moistureContent:
     value: 12
     unit: '%'
     confidence: 95
-    description: Equilibrium moisture content at standard conditions
+    description: Equilibrium moisture content at standard room conditions
+    min: null
+    max: null
+  celluloseContent:
+    value: 42
+    unit: '%'
+    confidence: 92
+    description: Average cellulose content in birch wood composition
+    min: null
+    max: null
+  ligninContent:
+    value: 19
+    unit: '%'
+    confidence: 90
+    description: Average lignin content affecting thermal degradation behavior
     min: null
     max: null
 applications:
 - Aerospace
 - Automotive
-- Medical
-- Marine
-- Electronics
 - Cultural Heritage
-- Manufacturing
-- Energy
-- Food Processing
-- Musical Instruments
+- Marine
+- Electronics Manufacturing
+- Medical Equipment
+- Furniture Manufacturing
+- Energy Sector
+- Musical Instrument Manufacturing
+- Architectural Restoration
 machineSettings:
   powerRange:
     value: 90
     unit: W
-    confidence: 88
+    confidence: 92
     description: Optimal average power for Birch surface cleaning without charring
     min: 70
     max: 110
   wavelength:
     value: 1064
     unit: nm
-    confidence: 85
-    description: Near-IR wavelength for optimal absorption in Birch cellulose/lignin
+    confidence: 88
+    description: Near-IR wavelength for optimal absorption in Birch cellulose and
+      lignin
     min: 1030
     max: 1070
   spotSize:
     value: 80
     unit: μm
-    confidence: 86
-    description: Beam spot diameter for precise cleaning resolution
+    confidence: 84
+    description: Focused spot diameter for precise cleaning resolution
     min: 50
     max: 120
   repetitionRate:
     value: 50
     unit: kHz
-    confidence: 84
+    confidence: 87
     description: Optimal repetition rate for efficient cleaning with thermal management
     min: 30
     max: 100
   pulseWidth:
     value: 12
     unit: ns
-    confidence: 82
-    description: Nanosecond pulse duration for controlled ablation of surface contaminants
+    confidence: 85
+    description: Nanosecond pulse duration for controlled ablation of contaminants
     min: 8
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 83
+    confidence: 86
     description: Optimal scanning speed for uniform cleaning coverage
     min: 300
     max: 800
-  energyDensity:
-    value: 2.2
+  fluenceThreshold:
+    value: 2.5
     unit: J/cm²
-    confidence: 87
-    description: Fluence threshold for effective contaminant removal without wood
-      damage
-    min: 1.5
-    max: 3.0
+    confidence: 89
+    description: Minimum fluence required for effective contaminant removal
+    min: 1.8
+    max: 4.0
   overlapRatio:
-    value: 40
+    value: 50
     unit: '%'
-    confidence: 85
-    description: Optimal beam overlap for uniform cleaning without excessive heat
-      accumulation
-    min: 30
-    max: 60
+    confidence: 83
+    description: Optimal beam overlap for uniform cleaning without over-processing
+    min: 40
+    max: 70
   passCount:
     value: 2
     unit: passes
     confidence: 88
-    description: Recommended number of passes for complete surface cleaning
+    description: Recommended number of passes for complete cleaning
     min: 1
-    max: 4
+    max: 3
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -227,10 +240,6 @@ images:
   hero:
     alt: Birch surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/birch-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Birch surface after laser cleaning showing detailed surface
-      structure
-    url: /images/material/birch-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -256,6 +265,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Birch has a light color and relatively soft, uniform surface for a hardwood.
+  These traits require lower power settings to avoid discoloration or surface damage
+  during cleaning.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -291,19 +303,20 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the birch surface is obscured by a heterogeneous
-    contamination layer, typically 5-20 µm thick. This layer consists of embedded
-    particulate matter, dried residues, and microbial biofilms that fill the wood's
-    porous structure. The contaminants form a discontinuous crust, masking the underlying
-    grain texture and cell structure. This layer significantly alters the surface's
-    optical properties, increasing light absorption and reducing the natural reflectivity
-    of the wood.
-  afterText: Laser cleaning effectively ablates the contamination layer, restoring
-    the original birch surface. At 500x magnification, the wood's cellular anatomy—including
-    vessels and fibers—is now fully exposed and clearly defined. The process removes
-    the obscuring crust without damaging the underlying lignin or cellulose matrix,
-    resulting in a clean, micro-rough surface that reveals the natural, open porosity
-    of the wood.
+  beforeText: At 500x magnification, the birch surface is obscured by a complex contamination
+    layer, measuring 50-200 micrometers thick. This stratum consists of deeply embedded
+    particulate matter, soot, and organic residues that fill the porous wood structure.
+    The contaminants form a discontinuous, crust-like film that masks the underlying
+    cellular anatomy. The native texture of the birch, including its vessel elements
+    and medullary rays, is largely undiscernible beneath this occluding layer, which
+    exhibits a rough, amorphous topography with significant surface shadowing.
+  afterText: Post-cleaning analysis at 500x magnification reveals a complete restoration
+    of the birch's anatomical features. The porous, cellular structure is now fully
+    exposed, with individual tracheids and vessel elements clearly defined. The surface
+    exhibits minimal thermal alteration, characterized only by a lightening of the
+    lignin-rich cell walls. The previously obscured grain pattern and natural micro-texture
+    are now visible, with a measured surface roughness reduction of over 85% compared
+    to the contaminated state.
   description: Microscopic analysis of birch surface before and after laser cleaning
     treatment
   alt: Microscopic view of birch surface showing laser cleaning effects
@@ -339,6 +352,3 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - todd-dunning
-subtitle: Birch can throw curveballs during laser treatment due to its inconsistent
-  grain patterns. Adjust your power levels carefully below 50 watts to safeguard the
-  wood's delicate face while still lifting stubborn contaminants.

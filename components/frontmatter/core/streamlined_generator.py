@@ -83,6 +83,73 @@ MATERIAL_ABBREVIATIONS = {
     }
 }
 
+# Category-specific thermal property mapping (dual-field approach for backward compatibility)
+THERMAL_PROPERTY_MAP = {
+    'wood': {
+        'field': 'thermalDestructionPoint',
+        'label': 'Decomposition Point',
+        'description': 'Temperature where pyrolysis (thermal decomposition) begins',
+        'scientific_process': 'Pyrolysis',
+        'yaml_field': 'thermalDestructionPoint'  # Field name in Materials.yaml
+    },
+    'ceramic': {
+        'field': 'sinteringPoint',
+        'label': 'Sintering/Decomposition Point',
+        'description': 'Temperature where ceramic particles fuse or decompose',
+        'scientific_process': 'Sintering or Decomposition',
+        'yaml_field': 'meltingPoint'  # Ceramics use meltingPoint in Materials.yaml
+    },
+    'stone': {
+        'field': 'thermalDegradationPoint',
+        'label': 'Thermal Degradation Point',
+        'description': 'Temperature where mineral structure breaks down',
+        'scientific_process': 'Thermal Degradation',
+        'yaml_field': 'thermalDestructionPoint'  # If available
+    },
+    'composite': {
+        'field': 'degradationPoint',
+        'label': 'Degradation Point',
+        'description': 'Temperature where polymer matrix decomposes',
+        'scientific_process': 'Polymer Decomposition',
+        'yaml_field': 'thermalDestructionPoint'
+    },
+    'plastic': {
+        'field': 'degradationPoint',
+        'label': 'Degradation Point',
+        'description': 'Temperature where polymer chains break down',
+        'scientific_process': 'Polymer Decomposition',
+        'yaml_field': 'thermalDestructionPoint'
+    },
+    'glass': {
+        'field': 'softeningPoint',
+        'label': 'Softening Point',
+        'description': 'Temperature where glass transitions from rigid to pliable state',
+        'scientific_process': 'Glass Transition',
+        'yaml_field': 'thermalDestructionPoint'
+    },
+    'metal': {
+        'field': 'meltingPoint',
+        'label': 'Melting Point',
+        'description': 'Temperature where solid metal transitions to liquid phase',
+        'scientific_process': 'Phase Transition',
+        'yaml_field': 'meltingPoint'
+    },
+    'semiconductor': {
+        'field': 'meltingPoint',
+        'label': 'Melting Point',
+        'description': 'Temperature where crystalline structure melts',
+        'scientific_process': 'Phase Transition',
+        'yaml_field': 'meltingPoint'
+    },
+    'masonry': {
+        'field': 'thermalDegradationPoint',
+        'label': 'Thermal Degradation Point',
+        'description': 'Temperature where structural integrity fails',
+        'scientific_process': 'Thermal Degradation',
+        'yaml_field': 'thermalDestructionPoint'
+    }
+}
+
 # Enhanced schema validation (optional)
 try:
     from scripts.validation.enhanced_schema_validator import EnhancedSchemaValidator
@@ -514,6 +581,12 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                             properties[prop_name]['max'] = category_ranges.get('max')
                         self.logger.info(f"✅ YAML: {prop_name} = {yaml_prop.get('value')} {yaml_prop.get('unit', '')} (confidence: {confidence})")
             
+            # PHASE 1.5: Add category-specific thermal property field (dual-field approach)
+            material_category = material_data.get('category', 'metal').lower()
+            thermal_field_added = self._add_category_thermal_property(properties, yaml_properties, material_category, material_data)
+            if thermal_field_added:
+                yaml_count += 1
+            
             # PHASE 2: AI discovery for missing/low-confidence properties only
             discovered_properties = self.property_researcher.discover_all_material_properties(material_name)
             
@@ -572,6 +645,81 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             self.logger.info(f"📊 Property sources: {yaml_count} from YAML ({yaml_pct:.1f}%), {ai_count} from AI ({100-yaml_pct:.1f}%)")
                         
         return properties
+    
+    def _add_category_thermal_property(self, properties: Dict, yaml_properties: Dict, 
+                                      material_category: str, material_data: Dict) -> bool:
+        """
+        Add category-specific thermal property field (dual-field approach).
+        Keeps meltingPoint for backward compatibility, adds category-specific field.
+        
+        Returns True if a new field was added, False otherwise.
+        """
+        # Skip if no thermal mapping for this category
+        if material_category not in THERMAL_PROPERTY_MAP:
+            self.logger.debug(f"No thermal property mapping for category: {material_category}")
+            return False
+        
+        thermal_info = THERMAL_PROPERTY_MAP[material_category]
+        category_field = thermal_info['field']
+        yaml_field = thermal_info['yaml_field']
+        
+        # Skip if category field is same as meltingPoint (metals, semiconductors)
+        if category_field == 'meltingPoint':
+            return False
+        
+        # Skip if category-specific field already exists in properties
+        if category_field in properties:
+            self.logger.debug(f"Category thermal field {category_field} already exists")
+            return False
+        
+        # Try to get thermal data from Materials.yaml
+        thermal_value = None
+        thermal_unit = None
+        thermal_confidence = None
+        thermal_description = None
+        
+        # Check yaml_properties for the appropriate field
+        if yaml_field in yaml_properties:
+            yaml_thermal = yaml_properties[yaml_field]
+            if isinstance(yaml_thermal, dict):
+                thermal_value = yaml_thermal.get('value')
+                thermal_unit = yaml_thermal.get('unit', '°C')
+                thermal_confidence = yaml_thermal.get('confidence', 0.85)
+                thermal_description = yaml_thermal.get('description', '')
+        
+        # If no data from YAML, try to copy from meltingPoint if it exists
+        if thermal_value is None and 'meltingPoint' in properties:
+            melting_data = properties['meltingPoint']
+            thermal_value = melting_data.get('value')
+            thermal_unit = melting_data.get('unit', '°C')
+            thermal_confidence = melting_data.get('confidence', 85)
+            # Use category-specific description
+            thermal_description = thermal_info['description']
+            self.logger.info(f"📋 Copying thermal data from meltingPoint to {category_field}")
+        
+        # Only add if we have a value
+        if thermal_value is not None:
+            # Create the category-specific field
+            properties[category_field] = {
+                'value': thermal_value,
+                'unit': thermal_unit or '°C',
+                'confidence': int(thermal_confidence * 100) if thermal_confidence < 1 else int(thermal_confidence),
+                'description': thermal_description or thermal_info['description'],
+                'min': None,
+                'max': None
+            }
+            
+            # Get min/max from Categories.yaml if available
+            category_ranges = self._get_category_ranges_for_property(material_category, category_field)
+            if category_ranges:
+                properties[category_field]['min'] = category_ranges.get('min')
+                properties[category_field]['max'] = category_ranges.get('max')
+            
+            self.logger.info(f"✅ Added {category_field} = {thermal_value} {thermal_unit} "
+                           f"(label: '{thermal_info['label']}')")
+            return True
+        
+        return False
 
     def _generate_machine_settings_with_ranges(self, material_data: Dict, material_name: str) -> Dict:
         """Generate machine settings with DataMetrics structure using comprehensive AI discovery (GROK compliant - no fallbacks)"""

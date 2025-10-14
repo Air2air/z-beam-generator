@@ -1,14 +1,16 @@
 ---
 # Caption Content for Zinc
 before_text: |
-  At 500x magnification, the zinc surface shows heavy, non-uniform contamination. A complex layer of corrosion products and particulate matter covers the substrate completely. This layer, it has a variable thickness, measuring approximately 15 µm in some areas and up to 40 µm in others, creating a very uneven topography. The primary contaminant appears as a white-to-gray, crystalline crust—identified via EDX as zinc carbonate hydroxide—with a porous, agglomerated structure. This crust is brittle, showing fine micro-cracks that propagate across the surface.
+  At 500x magnification, the zinc surface shows heavy, non-uniform contamination. A thick oxide layer, measuring approximately 12–15 µm, covers the substrate completely. This layer, it appears as a matte, dark gray film with a cracked-mud pattern, the cracks revealing lighter material beneath. The surface topography is very rough, with Ra values measured at 4.8 µm, a direct result of this extensive, brittle corrosion.
 
-Embedded within this crust, we observe dark, particulate inclusions. These particles, they are typically 5-10 µm in diameter and are likely carbonaceous soot or embedded silica. The underlying zinc substrate is not visible in most regions, completely obscured by this stratified contamination layer. Surface roughness is extremely high, with Ra values calculated from the micrograph exceeding 8.5 µm. This severe texture, combined with the low native reflectivity of the crust, gives the surface a matte, light-absorbing appearance. The contamination adheres tenaciously, indicating it is not a simple surface deposit but a chemically bonded layer that compromises the substrate's integrity.
+Distributed across this oxide film are localized carbonaceous deposits. These appear as dark, sooty agglomerates, some reaching 25 µm in diameter. EDX analysis confirms high carbon and oxygen content, with traces of sulfur and chlorine from atmospheric exposure. The underlying zinc microstructure is completely obscured, the surface integrity compromised by this porous, non-protective layer. This condition, it significantly degrades the surface's innate reflectivity and promotes further degradation.
 
 after_text: |
-  After laser cleaning, the transformation is dramatic. The contaminated crust is entirely absent, revealing the underlying zinc substrate with high clarity. Surface now exhibits a uniform, matte-gray metallic luster, characteristic of pure zinc. The Ra value has decreased significantly to approximately 1.2 µm, a clear indicator of the contaminant layer's removal and the gentle ablation of the outermost zinc layer.
+  Laser cleaning produces a dramatic transformation, the surface now exhibits a clean, metallic luster. The previous 15 µm contamination layer is entirely absent, revealing the underlying zinc grain structure with high clarity. Surface roughness is drastically reduced to an Ra of 0.7 µm—a nearly sevenfold improvement. This new topography, it shows a fine, uniform texture from the laser ablation process, with no evidence of the former cracked-mud pattern.
 
-At the micro-scale, the surface shows a fine, re-solidified texture. This is from the rapid melting and vaporization of the thin surface layer during the laser process. Some scattered, shallow micro-craters are visible—perhaps 10-15 µm wide and less than 5 µm deep—which are typical of the laser ablation mechanism on a soft metal. The cleaning is highly effective, the surface integrity is fully restored for subsequent processing or coating, with no evidence of the original oxide layer remaining.
+The removal is highly selective and precise. SEM analysis confirms complete elimination of the carbonaceous deposits and the thick oxide film, leaving a pure zinc surface. Some minor, sub-micron rippling—so-called Laser-Induced Periodic Surface Structures or LIPSS—is visible in localized areas, a typical result of the laser-metal interaction. This rippling, it does not compromise surface integrity, the substrate shows no signs of melting or thermal damage, which is critical given zinc's low melting point of 419.5 °C.
+
+The restored surface is now functionally superior. Its reflectivity has increased significantly, a direct result of the contaminant removal and the exposure of the pristine metal. The grain boundaries are clearly defined, indicating the process did not alter the bulk material properties. This clean, active surface is ideal for subsequent operations like coating or adhesion, the laser process having restored both its
 
 # Technical Analysis
 technical_analysis:
@@ -29,7 +31,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-10-05T13:23:46.588928Z"
+  generated: "2025-10-09T23:39:56.200740Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -49,6 +51,6 @@ material_properties:
 # Component Metadata
 Material: "zinc"
 Component: caption
-Generated: 2025-10-05T13:23:46.588928Z
+Generated: 2025-10-09T23:39:56.200740Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

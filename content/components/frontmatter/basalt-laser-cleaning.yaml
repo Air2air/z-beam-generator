@@ -33,7 +33,7 @@ materialProperties:
     min: 2
     max: 25
   hardness:
-    value: 6.0
+    value: 6
     unit: Mohs
     confidence: 92
     description: Mohs hardness scale
@@ -43,7 +43,7 @@ materialProperties:
     value: 70
     unit: GPa
     confidence: 88
-    description: Elastic modulus of basalt rock
+    description: Elastic modulus of basalt
     min: 10
     max: 100
   laserAbsorption:
@@ -106,21 +106,21 @@ materialProperties:
     value: 0.85
     unit: dimensionless
     confidence: 80
-    description: Typical absorption coefficient for IR lasers (1064 nm)
+    description: Typical absorption coefficient for near-IR wavelengths
     min: null
     max: null
   reflectivity:
     value: 0.12
     unit: dimensionless
     confidence: 80
-    description: Reflectivity at common laser wavelengths
+    description: Reflectivity at common laser wavelengths (1064 nm)
     min: null
     max: null
   ablationThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 82
-    description: Approximate laser ablation threshold for nanosecond pulses
+    description: Estimated ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   porosity:
@@ -134,26 +134,27 @@ materialProperties:
     value: high
     unit: qualitative
     confidence: 90
-    description: Resistance to chemical weathering and corrosion
+    description: High resistance to chemical weathering and corrosion
     min: null
     max: null
 applications:
 - Aerospace
 - Architectural Restoration
 - Marine Engineering
-- Electronics Manufacturing
-- Automotive Manufacturing
+- Manufacturing
 - Energy Sector
-- Medical Device Manufacturing
-- Industrial Manufacturing
+- Electronics Manufacturing
+- Automotive
 - Cultural Heritage
+- Chemical Processing
 - Construction Materials
 machineSettings:
   powerRange:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Basalt cleaning without thermal damage
+    description: Optimal average power for Basalt surface cleaning without thermal
+      damage
     min: 80
     max: 120
   wavelength:
@@ -164,62 +165,54 @@ machineSettings:
     min: 1030
     max: 1070
   spotSize:
-    value: 80
+    value: 50
     unit: μm
     confidence: 84
-    description: Focused spot size for precise cleaning resolution
-    min: 50
-    max: 120
+    description: Optimal beam spot diameter for precision cleaning
+    min: 30
+    max: 100
   repetitionRate:
-    value: 50
+    value: 100
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for continuous cleaning coverage
-    min: 20
-    max: 100
+    description: High repetition rate for efficient surface coverage
+    min: 50
+    max: 200
   pulseWidth:
-    value: 12
+    value: 10
     unit: ns
     confidence: 85
     description: Nanosecond pulse duration for efficient ablation of surface contaminants
-    min: 8
+    min: 5
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for efficient surface coverage
+    description: Optimal scanning speed for uniform surface treatment
     min: 300
     max: 800
-  energyDensity:
-    value: 4.5
+  fluenceThreshold:
+    value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without substrate
-      damage
-    min: 3.0
-    max: 6.5
+    description: Minimum fluence required for effective contaminant removal
+    min: 1.5
+    max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for uniform cleaning results
+    description: Optimal beam overlap for uniform cleaning coverage
     min: 40
     max: 60
   passCount:
-    value: 2
+    value: 3
     unit: passes
     confidence: 85
-    description: Recommended number of passes for complete contaminant removal
-    min: 1
-    max: 3
-  laserType:
-    value: Nd:YAG
-    unit: type
-    confidence: 90
-    description: Recommended laser type for Basalt processing applications
-    min: null
-    max: null
+    description: Recommended number of passes for complete surface cleaning
+    min: 2
+    max: 5
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -237,10 +230,6 @@ images:
   hero:
     alt: Basalt surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/basalt-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Basalt surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/basalt-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -266,6 +255,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Basalt is a dense, fine-grained igneous stone that can vary in hardness
+  and mineral composition. These variations require careful adjustment of laser settings
+  to effectively remove contaminants without damaging the surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -302,19 +294,21 @@ outcomeMetrics:
   units: []
 caption:
   beforeText: At 500x magnification, the basalt surface is obscured by a complex contamination
-    layer. A discontinuous, carbonaceous crust, measuring 10-50 µm thick, adheres
-    to the mineral matrix. This layer, composed of soot, salts, and organic matter,
-    fills the natural micro-fractures and vesicles inherent to the stone. The underlying
-    feldspar and pyroxene crystals are partially visible, but their sharp, interlocking
-    texture is muted. The contamination exhibits a dendritic, branching pattern, exploiting
-    the basalt's low 1.5% porosity for anchorage, which compromises the stone's intrinsic
-    high chemical stability and creates a rough, uneven topography.
-  afterText: Laser cleaning has restored the pristine mineralogical surface. The contamination
-    layer has been completely removed, revealing the unaltered, interlocking crystal
-    structure of the feldspar and pyroxene grains. The original micro-fractures and
-    vesicles are now clean and open, with sharp, well-defined edges. The surface topography
-    is uniform, with the inherent hardness (6.0 Mohs) and density of the basalt fully
-    exposed, resulting in a visually coherent and texturally intact substrate.
+    layer. A carbonaceous soot and particulate matrix, approximately 10-50 micrometers
+    thick, adheres tenaciously to the stone's micro-texture. This layer infiltrates
+    the natural micro-fractures and vesicles inherent to the basalt, creating a deep-seated,
+    interlocked bond. The underlying crystalline structure of the feldspar and pyroxene
+    minerals is completely masked. The contaminant's low reflectivity results in a
+    visually homogeneous, matte black appearance that obscures the stone's intrinsic
+    granularity and color variation.
+  afterText: Laser cleaning has restored the basalt to its intrinsic mineralogical
+    state. The contaminant layer has been completely ablated, revealing a clean, well-defined
+    grain boundary network between the feldspar and pyroxene crystals. The surface
+    now exhibits its natural micro-roughness and the distinct geometries of individual
+    mineral grains. The process has effectively cleared the vesicles and micro-fractures,
+    eliminating the binding points for contaminants. This results in a surface with
+    higher light reflectivity, showcasing the material's authentic texture and subtle
+    color gradations.
   description: Microscopic analysis of basalt surface before and after laser cleaning
     treatment
   alt: Microscopic view of basalt surface showing laser cleaning effects
@@ -350,6 +344,3 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - yi-chun-lin
-subtitle: Basalt can pose real hurdles in laser treatment due to its varying porosity.
-  Adjust your power levels carefully below 50 watts to protect the stone’s rugged
-  face while effectively lifting contaminants.

@@ -14,14 +14,14 @@ materialProperties:
   meltingPoint:
     value: 240
     unit: °C
-    confidence: 92
-    description: Glass transition temperature for amorphous polystyrene
+    confidence: 90
+    description: Glass transition temperature (Tg) for amorphous polystyrene
     min: null
     max: null
   thermalConductivity:
     value: 0.17
     unit: W/m·K
-    confidence: 90
+    confidence: 92
     description: Thermal conductivity of polystyrene at room temperature
     min: 0.02
     max: 3
@@ -43,7 +43,7 @@ materialProperties:
     value: 3.2
     unit: GPa
     confidence: 92
-    description: Young's modulus in tension at room temperature
+    description: Young's modulus in tension
     min: 0.01
     max: 5
   laserAbsorption:
@@ -61,7 +61,7 @@ materialProperties:
     min: 5
     max: 95
   specificHeat:
-    value: 1300
+    value: 1200
     unit: J/kg·K
     confidence: 85
     description: Specific heat capacity at room temperature
@@ -106,127 +106,132 @@ materialProperties:
     value: 0.04
     unit: dimensionless
     confidence: 80
-    description: Reflectivity at 1064 nm for untreated surface
+    description: Reflectivity at 1064 nm wavelength
     min: null
     max: null
   refractiveIndex:
     value: 1.59
     unit: dimensionless
     confidence: 95
-    description: Refractive index at 589 nm wavelength
+    description: Refractive index at 589 nm
     min: null
     max: null
   ablationThreshold:
-    value: 0.8
+    value: 1.2
     unit: J/cm²
     confidence: 85
     description: Laser ablation threshold for 1064 nm Nd:YAG laser
     min: null
     max: null
   laserDamageThreshold:
-    value: 1.2
+    value: 0.8
     unit: J/cm²
     confidence: 82
-    description: Damage threshold for pulsed laser irradiation
+    description: Damage threshold for continuous wave lasers
     min: null
     max: null
   chemicalStability:
-    value: 85
-    unit: '% resistance'
+    value: 65
+    unit: rating
     confidence: 88
-    description: Resistance to weak acids and bases
+    description: Chemical resistance rating (0-100 scale)
+    min: null
+    max: null
+  crystallineStructure:
+    value: Amorphous
+    unit: classification
+    confidence: 98
+    description: Molecular structure classification
     min: null
     max: null
   surfaceRoughness:
-    value: 0.8
+    value: 0.1
     unit: μm Ra
     confidence: 80
-    description: Typical surface roughness for molded polystyrene
+    description: Typical surface roughness for molded PS
     min: null
     max: null
 applications:
 - Electronics Manufacturing
 - Medical Device Manufacturing
-- Aerospace Components
-- Automotive Interior
-- Cultural Heritage Preservation
+- Aerospace
+- Automotive
+- Cultural Heritage
 - Packaging Manufacturing
-- Renewable Energy
-- Marine Equipment
-- Laboratory Equipment
-- Consumer Products Manufacturing
+- Marine
+- Energy Sector
+- Consumer Products
+- Research and Laboratory
 machineSettings:
   powerRange:
-    value: 25
+    value: 15
     unit: W
     confidence: 90
     description: Optimal average power for Polystyrene cleaning without thermal damage
-    min: 15
-    max: 40
+    min: 10
+    max: 25
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength with good Polystyrene absorption and minimal surface
-      damage
+    description: Near-IR wavelength providing good absorption in Polystyrene with
+      minimal reflection
     min: 532
     max: 1064
   spotSize:
     value: 50
     unit: μm
-    confidence: 82
-    description: Beam spot diameter for precise cleaning control on Polystyrene surfaces
+    confidence: 86
+    description: Optimal beam spot diameter for precise Polystyrene removal
     min: 30
     max: 100
   repetitionRate:
     value: 20
     unit: kHz
-    confidence: 85
+    confidence: 89
     description: Optimal repetition rate for efficient cleaning with thermal management
     min: 10
     max: 50
   laserType:
-    value: Nd:YAG
-    unit: type
+    value: Fiber Laser
+    unit: n/a
     confidence: 85
-    description: Pulsed laser system suitable for polymer cleaning applications
+    description: Recommended laser type for Polystyrene cleaning applications
     min: null
     max: null
   pulseWidth:
-    value: 8
+    value: 100
     unit: ns
     confidence: 87
-    description: Short pulse duration for controlled ablation of Polystyrene surface
-      contaminants
-    min: 5
-    max: 15
+    description: Optimal pulse duration for controlled ablation of Polystyrene
+    min: 50
+    max: 200
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 84
-    description: Optimal scanning speed for uniform cleaning coverage
+    confidence: 88
+    description: Optimal scanning speed for uniform cleaning of Polystyrene surfaces
     min: 200
     max: 1000
   fluenceThreshold:
-    value: 0.8
+    value: 1.2
     unit: J/cm²
-    confidence: 89
-    description: Fluence threshold for effective Polystyrene contaminant removal
-    min: 0.5
-    max: 1.2
+    confidence: 91
+    description: Minimum fluence required for effective Polystyrene ablation
+    min: 0.8
+    max: 2.0
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      buildup
+    confidence: 85
+    description: Optimal beam overlap for uniform Polystyrene removal
     min: 30
     max: 70
   passCount:
     value: 2
     unit: passes
-    confidence: 86
-    description: Recommended number of passes for complete contaminant removal
+    confidence: 84
+    description: Recommended number of passes for complete Polystyrene removal
     min: 1
     max: 4
 regulatoryStandards:
@@ -247,10 +252,6 @@ images:
     alt: Polystyrene surface undergoing laser cleaning showing precise contamination
       removal
     url: /images/material/polystyrene-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Polystyrene surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/polystyrene-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -276,6 +277,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Polystyrene is uniquely sensitive to heat and prone to melting compared
+  to other plastics. This requires using very low laser power and rapid pulses to
+  avoid damaging the surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -311,22 +315,30 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the polystyrene surface is obscured by a discontinuous
-    contaminant layer, approximately 5-15 µm thick. This layer, composed of organic
-    residues and particulate matter, adheres to the native surface texture, which
-    has a baseline roughness of 0.8 µm Ra. The contaminants form a webbed pattern,
-    filling the microscopic valleys of the polymer and creating a topographically
-    uneven, matte-finish surface that scatters light and masks the substrate's intrinsic
-    properties.
-  afterText: Laser cleaning has completely removed the contaminant layer, revealing
-    the pristine polystyrene substrate. The surface now exhibits its intrinsic molded
-    texture with a consistent 0.8 µm Ra roughness, free from any foreign material.
-    The cleaning process has restored optical clarity and surface uniformity without
-    inducing melting or ablation, as the laser fluence was maintained below the material's
-    0.8 J/cm² ablation threshold. This precise removal of contaminants has reinstated
-    the polymer's original surface energy and reflectivity of 4.2%, ensuring optimal
-    performance for subsequent manufacturing steps like bonding or coating. The transformation
-    is defined by the restoration of the base material's properties.
+  beforeText: At 500x magnification, the polystyrene surface is obscured by a non-uniform
+    contamination layer, measuring 5-15 µm in thickness. This layer exhibits a particulate
+    and film-like morphology, with agglomerates distorting the underlying substrate's
+    topography. The native surface roughness of approximately 0.1 µm Ra is entirely
+    masked, creating a textured, high-relief profile that scatters light and compromises
+    the material's intrinsic optical clarity and adhesion properties.
+  afterText: 'Laser cleaning produces a distinct transformation, restoring the substrate''s
+    native amorphous polymer structure. The 5-15 µm contamination layer has been completely
+    removed via selective laser ablation. The process successfully vaporized the foreign
+    material, which has a lower ablation threshold than the polystyrene, without initiating
+    thermal degradation in the base polymer.
+
+
+    The underlying polystyrene surface is now fully exposed, revealing its characteristic
+    smooth morphology with a measured roughness of 0.1 µm Ra. The surface is free
+    of the previous particulate agglomerates and film residues. At the micron scale,
+    the laser interaction preserves the polymer''s integrity, with no evidence of
+    melting, cracking, or surface oxidation that would indicate thermal damage.
+
+
+    This precise material removal results in a surface with restored optical properties
+    and chemical functionality. The reflectivity and clarity inherent to the pristine
+    polymer are recovered, providing an optimal surface for subsequent manufacturing
+    steps such as bonding, coating, or assembly in sensitive applications.'
   description: Microscopic analysis of polystyrene surface before and after laser
     cleaning treatment
   alt: Microscopic view of polystyrene surface showing laser cleaning effects
@@ -362,6 +374,3 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - alessandro-moretti
-subtitle: Polystyrene often presents a subtle challenge during laser treatment, as
-  its surface can warp under excessive heat. Pay close attention to power adjustments,
-  ideally staying below 50 watts, to safeguard its delicate finish.

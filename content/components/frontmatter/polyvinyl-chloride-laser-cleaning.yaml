@@ -15,20 +15,20 @@ materialProperties:
     value: 160
     unit: °C
     confidence: 90
-    description: Glass transition temperature range for rigid PVC
+    description: Glass transition temperature for rigid PVC
     min: null
     max: null
   thermalConductivity:
     value: 0.16
     unit: W/m·K
-    confidence: 88
-    description: Thermal conductivity of PVC at 20°C
+    confidence: 92
+    description: Thermal conductivity at room temperature
     min: 0.02
     max: 3
   tensileStrength:
     value: 50
     unit: MPa
-    confidence: 92
+    confidence: 90
     description: Tensile strength of rigid PVC
     min: 10
     max: 400
@@ -36,14 +36,14 @@ materialProperties:
     value: 115
     unit: Shore D
     confidence: 88
-    description: Hardness on Shore D scale for rigid PVC
+    description: Hardness on Shore D scale
     min: Shore A 10
     max: Shore D 90
   youngsModulus:
     value: 3.0
     unit: GPa
-    confidence: 90
-    description: Young's modulus of elasticity
+    confidence: 92
+    description: Elastic modulus of rigid PVC
     min: 0.01
     max: 5
   laserAbsorption:
@@ -63,7 +63,7 @@ materialProperties:
   specificHeat:
     value: 900
     unit: J/kg·K
-    confidence: 87
+    confidence: 85
     description: Specific heat capacity at room temperature
     min: 1000
     max: 2500
@@ -89,51 +89,51 @@ materialProperties:
     min: 0.05
     max: 1
   thermalExpansion:
-    value: 70
+    value: 50
     unit: ×10⁻⁶/°C
-    confidence: 85
+    confidence: 88
     description: Linear thermal expansion coefficient
     min: 10
     max: 200
   absorptionCoefficient:
     value: 0.85
-    unit: dimensionless
+    unit: cm⁻¹
     confidence: 82
-    description: Typical absorption coefficient for IR lasers (1064 nm)
+    description: Absorption coefficient at 1064 nm wavelength
+    min: null
+    max: null
+  reflectivity:
+    value: 0.08
+    unit: dimensionless
+    confidence: 85
+    description: Reflectivity at 1064 nm wavelength
     min: null
     max: null
   ablationThreshold:
     value: 0.8
     unit: J/cm²
     confidence: 80
-    description: Approximate laser ablation threshold for Nd:YAG lasers
+    description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
-  decompositionTemperature:
-    value: 200
-    unit: °C
-    confidence: 92
-    description: Onset temperature for thermal decomposition and HCl release
-    min: null
-    max: null
-  dielectricStrength:
-    value: 40
-    unit: kV/mm
-    confidence: 89
-    description: Electrical breakdown strength
+  chemicalStability:
+    value: 85
+    unit: '% resistance'
+    confidence: 90
+    description: Chemical resistance to acids and alkalis
     min: null
     max: null
 applications:
 - Medical Device Manufacturing
 - Aerospace
 - Electronics Manufacturing
+- Automotive
 - Construction and Building Materials
 - Marine
-- Automotive
-- Cultural Heritage Conservation
 - Food Processing Equipment
+- Cultural Heritage Conservation
 - Energy Sector
-- Water Treatment Facilities
+- Manufacturing and Tooling
 machineSettings:
   powerRange:
     value: 90
@@ -146,65 +146,66 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength with good absorption in PVC contaminants
+    description: Near-IR wavelength providing optimal absorption in PVC contaminants
+      while minimizing substrate damage
     min: 532
     max: 1064
   spotSize:
     value: 50
     unit: μm
     confidence: 84
-    description: Beam spot diameter for controlled cleaning area
+    description: Beam spot diameter for precise PVC surface treatment
     min: 30
     max: 100
   repetitionRate:
-    value: 50
+    value: 20
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning throughput
-    min: 20
-    max: 100
+    description: Optimal repetition rate for efficient PVC surface cleaning
+    min: 10
+    max: 50
   laserType:
-    value: Fiber Laser
+    value: Nd:YAG
     unit: 'null'
     confidence: 90
-    description: Pulsed fiber laser recommended for PVC cleaning applications
+    description: Solid-state laser system suitable for PVC processing applications
     min: null
     max: null
   pulseWidth:
-    value: 12
+    value: 8
     unit: ns
     confidence: 85
-    description: Short pulse duration for precise material removal
-    min: 8
-    max: 20
+    description: Short pulse duration to minimize heat affected zone in PVC substrate
+    min: 5
+    max: 15
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform cleaning
+    description: Optimal scanning speed for PVC laser cleaning applications
     min: 300
     max: 800
-  energyDensity:
-    value: 4.5
+  fluenceThreshold:
+    value: 1.2
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal
-    min: 3.0
-    max: 6.5
+    description: Minimum fluence required for effective PVC surface ablation
+    min: 0.8
+    max: 2.0
+  overlapRatio:
+    value: 50
+    unit: '%'
+    confidence: 83
+    description: Optimal beam overlap for uniform PVC surface treatment
+    min: 40
+    max: 70
   passCount:
     value: 2
     unit: passes
-    confidence: 83
-    description: Number of cleaning passes for complete surface treatment
+    confidence: 85
+    description: Recommended number of passes for complete PVC surface cleaning
     min: 1
     max: 4
-  overlapRatio:
-    value: 30
-    unit: '%'
-    confidence: 85
-    description: Optimal beam overlap for uniform coverage
-    min: 20
-    max: 50
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -223,10 +224,6 @@ images:
     alt: Polyvinyl Chloride surface undergoing laser cleaning showing precise contamination
       removal
     url: /images/material/polyvinyl-chloride-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Polyvinyl Chloride surface after laser cleaning showing
-      detailed surface structure
-    url: /images/material/polyvinyl-chloride-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -252,6 +249,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: PVC has a lower heat tolerance and can release harmful chlorine gas when
+  overheated. This requires careful control of laser settings to avoid melting and
+  ensure safe fume extraction.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -287,19 +287,18 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the PVC surface is obscured by a discontinuous
-    contamination layer, approximately 5-15 µm thick. This layer exhibits a granular,
-    particulate morphology intermixed with organic residues, creating a highly irregular
-    surface texture. The underlying PVC substrate is partially visible, showing that
-    the contaminants have formed a weakly-adhered, non-uniform film. This layer disrupts
-    the material's intrinsic surface properties and increases surface roughness.
-  afterText: Laser cleaning has restored the substrate to its native state, revealing
-    a uniform, well-defined surface topography. The previously obscured grain structure
-    of the PVC is now clearly visible, with contamination residues completely removed.
-    The process has achieved sub-micron cleaning precision, eliminating the contamination
-    layer without inducing melting or surface etching. The resulting surface is characterized
-    by its low reflectivity and consistent morphology, confirming the restoration
-    of the material's original functional properties.
+  beforeText: At 500x magnification, the PVC surface is obscured by a non-uniform
+    contamination layer, typically measuring 5-20 µm in thickness. This layer consists
+    of embedded particulate matter, organic residues, and a discontinuous film that
+    disrupts the substrate's inherent micro-texture. The contaminants exhibit poor
+    adhesion, forming crack networks and creating shadowed voids where further degradation
+    can initiate. The underlying PVC morphology is largely invisible, with only occasional
+    topographic features hinting at the intact polymer beneath the occluding film.
+  afterText: Laser cleaning has restored the native PVC surface, revealing its characteristic
+    micro-texture with high fidelity. The contaminant layer is entirely removed, eliminating
+    shadowed voids and exposing a continuous, uniform substrate. The surface now displays
+    minimal laser interaction, confirming the process operated effectively below the
+    material's 0.8 J/cm² ablation threshold.
   description: Microscopic analysis of polyvinyl chloride surface before and after
     laser cleaning treatment
   alt: Microscopic view of polyvinyl chloride surface showing laser cleaning effects
@@ -335,6 +334,3 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - alessandro-moretti
-subtitle: Handling Polyvinyl Chloride in laser cleaning requires a steady hand, as
-  its variable composition can throw off even seasoned operators. Adjust power levels
-  below 50 watts initially, ensuring the surface finish stays pristine during treatment.

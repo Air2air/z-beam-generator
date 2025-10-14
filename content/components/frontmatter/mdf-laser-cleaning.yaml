@@ -1,6 +1,6 @@
 name: MDF
 category: Wood
-subcategory: Medium Density Fiberboard (MDF)
+subcategory: engineered
 title: MDF Laser Cleaning
 description: Laser cleaning parameters for MDF (MDF)
 materialProperties:
@@ -15,8 +15,7 @@ materialProperties:
     value: N/A
     unit: °C
     confidence: 90
-    description: MDF undergoes thermal decomposition rather than melting; charring
-      begins around 200°C
+    description: MDF undergoes thermal decomposition rather than melting
     min: null
     max: null
   thermalConductivity:
@@ -29,112 +28,147 @@ materialProperties:
   tensileStrength:
     value: 15
     unit: MPa
-    confidence: 85
+    confidence: 90
     description: Tensile strength parallel to surface
     min: 20
     max: 200
   hardness:
     value: 25
-    unit: N/mm²
-    confidence: 83
-    description: Brinell hardness for standard MDF
+    unit: HB
+    confidence: 85
+    description: Brinell hardness on surface
     min: 20
     max: 5000
   youngsModulus:
     value: 3000
     unit: MPa
-    confidence: 88
+    confidence: 92
     description: Elastic modulus in bending
     min: 5
     max: 25
-  thermalExpansion:
-    value: 30
-    unit: μm/m·°C
-    confidence: 85
-    description: Linear thermal expansion coefficient in longitudinal direction
-    min: 3.0
+  laserAbsorption:
+    value: 32.7
+    unit: '%'
+    confidence: 92
+    description: laserAbsorption from Materials.yaml
+    min: 1
+    max: 50
+  laserReflectivity:
+    value: 28.5
+    unit: '%'
+    confidence: 92
+    description: laserReflectivity from Materials.yaml
+    min: 10
     max: 60
-  thermalDiffusivity:
-    value: 0.15
-    unit: mm²/s
-    confidence: 82
-    description: Thermal diffusivity at room temperature
-    min: 0.0001
-    max: 0.4
   specificHeat:
     value: 1300
     unit: J/kg·K
     confidence: 87
-    description: Specific heat capacity at 20°C
+    description: Specific heat capacity at constant pressure
     min: 800
     max: 2500
+  thermalDestructionPoint:
+    value: 302.0
+    unit: °C
+    confidence: 92
+    description: thermalDestructionPoint from Materials.yaml
+    min: 200
+    max: 500
+  thermalDestructionType:
+    value: 573.0
+    unit: K
+    confidence: 92
+    description: thermalDestructionType from Materials.yaml
+    min: null
+    max: null
+  thermalDiffusivity:
+    value: 0.00018
+    unit: m²/s
+    confidence: 82
+    description: Thermal diffusivity at room temperature
+    min: 0.0001
+    max: 0.4
+  thermalExpansion:
+    value: 3.0e-05
+    unit: 1/°C
+    confidence: 85
+    description: Linear thermal expansion coefficient in longitudinal direction
+    min: 3.0
+    max: 60
   absorptionCoefficient:
     value: 0.85
     unit: dimensionless
-    confidence: 90
-    description: High absorption coefficient for IR wavelengths (1064 nm)
+    confidence: 88
+    description: Optical absorption coefficient for common laser wavelengths (1064nm)
     min: null
     max: null
   reflectivity:
     value: 0.12
     unit: dimensionless
-    confidence: 88
-    description: Low reflectivity at common laser wavelengths
+    confidence: 86
+    description: Surface reflectivity at 1064nm wavelength
     min: null
     max: null
   ablationThreshold:
+    value: 1.2
+    unit: J/cm²
+    confidence: 84
+    description: Minimum fluence required for material removal at 1064nm
+    min: null
+    max: null
+  laserDamageThreshold:
     value: 0.8
     unit: J/cm²
-    confidence: 85
-    description: Minimum fluence required for material removal at 1064 nm
+    confidence: 82
+    description: Fluence level causing permanent surface damage
     min: null
     max: null
   porosity:
     value: 15
     unit: '%'
-    confidence: 86
-    description: Typical porosity percentage in standard MDF
+    confidence: 89
+    description: Volume percentage of void spaces in material
     min: null
     max: null
   surfaceRoughness:
-    value: 2.5
+    value: 3.5
     unit: μm Ra
-    confidence: 84
-    description: Average surface roughness for unfinished MDF
+    confidence: 91
+    description: Average surface roughness of standard MDF
     min: null
     max: null
-  decompositionTemperature:
+  thermalDecomposition:
     value: 200
     unit: °C
-    confidence: 92
+    confidence: 90
     description: Onset temperature for thermal decomposition and charring
     min: null
     max: null
-  moistureContent:
-    value: 6
-    unit: '%'
-    confidence: 89
-    description: Equilibrium moisture content at standard conditions
+  ignitionTemperature:
+    value: 400
+    unit: °C
+    confidence: 88
+    description: Minimum temperature for sustained combustion
     min: null
     max: null
 applications:
 - Furniture Manufacturing
-- Aerospace Tooling
-- Automotive Prototyping
-- Museum Conservation
-- Electronics Manufacturing
-- Marine Interior Manufacturing
-- Medical Device Packaging
-- Renewable Energy Manufacturing
-- Architectural Model Making
-- Exhibition Display Manufacturing
+- Automotive Interior Components
+- Electronics Enclosure Production
+- Architectural Millwork
+- Exhibition and Display Manufacturing
+- Musical Instrument Production
+- Packaging and Point-of-Purchase
+- Marine Interior Components
+- Medical Equipment Housing
+- Cultural Heritage Reproduction
 machineSettings:
   powerRange:
-    value: 90
+    value: 100
     unit: W
     confidence: 92
     description: Optimal average power for MDF surface cleaning without charring
-    min: 70
+    min: 80
     max: 120
   wavelength:
     value: 1064
@@ -145,62 +179,63 @@ machineSettings:
     min: 1030
     max: 1070
   spotSize:
-    value: 80
+    value: 100
     unit: μm
     confidence: 84
-    description: Beam spot diameter for precise cleaning control
+    description: Beam spot diameter for precise cleaning resolution
     min: 50
-    max: 120
+    max: 200
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for uniform cleaning coverage
-    min: 30
+    description: High repetition rate for efficient surface coverage while maintaining
+      thermal control
+    min: 20
     max: 100
   pulseWidth:
-    value: 12
+    value: 10
     unit: ns
     confidence: 85
-    description: Pulse duration balancing cleaning efficiency and thermal management
-    min: 8
+    description: Nanosecond pulse duration for controlled ablation of surface contaminants
+    min: 5
     max: 20
   scanSpeed:
-    value: 800
+    value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for efficient material removal
-    min: 500
-    max: 1500
-  fluenceThreshold:
+    description: Optimal scanning speed for uniform surface treatment
+    min: 200
+    max: 1000
+  energyDensity:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Minimum fluence required for effective MDF surface ablation
-    min: 1.8
+    description: Fluence threshold for effective contaminant removal without substrate
+      damage
+    min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive heat
-      accumulation
-    min: 40
+    description: Optimal beam overlap for uniform cleaning coverage
+    min: 30
     max: 70
   passCount:
     value: 2
     unit: passes
-    confidence: 88
-    description: Recommended number of passes for complete surface cleaning
+    confidence: 85
+    description: Number of cleaning passes for complete contaminant removal
     min: 1
     max: 4
-  dwellTime:
-    value: 120
-    unit: μs
-    confidence: 82
-    description: Optimal dwell time per cleaning spot
-    min: 80
-    max: 200
+  laserType:
+    value: Fiber Laser
+    unit: n/a
+    confidence: 90
+    description: Recommended laser type for MDF cleaning applications
+    min: null
+    max: null
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -243,6 +278,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: MDF lacks a natural grain and is bound by a synthetic resin, unlike other
+  engineered woods. This uniform composition requires precise laser settings to avoid
+  scorching the surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -278,66 +316,17 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: 'At 500x magnification, the surface of the medium density fiberboard
-    (MDF), it reveals a complex and rather disordered appearance, marked by a heterogeneous
-    layer of contamination. What strikes one immediately is the presence of a semi-continuous
-    film—perhaps better described as a patchy deposit—ranging in thickness from approximately
-    10 to 25 µm, as measured through scanning electron microscopy (SEM) imaging. This
-    layer, it appears to consist of organic residues and particulate matter, likely
-    accumulated from environmental exposure or manufacturing processes, and shows
-    a dull, uneven texture under the microscope with irregular boundaries that obscure
-    the underlying fibrous structure of the MDF.
-
-
-    Zooming into specific regions, one can observe embedded particles, some as small
-    as 2-3 µm in diameter, dispersed across the surface, alongside larger agglomerates
-    reaching up to 15 µm. These contaminants, analyzed via energy-dispersive X-ray
-    spectroscopy (EDX), indicate a composition rich in carbon and oxygen, suggesting
-    organic dust or adhesive residues, with trace amounts of silicon—possibly from
-    inorganic dust. The surface roughness, quantified as Ra 3.8 µm (higher than the
-    baseline 2.5 µm for unfinished MDF), it is visibly exacerbated by these deposits,
-    creating micro-scale undulations and pits. This roughness, it disrupts the natural
-    flatness of the material, likely impacting its reflectivity (currently at a low
-    0.12) and suitability for applications such as furniture manufacturing where surface
-    integrity is critical. Truly, the contamination, she masks the inherent porosity
-    (around 15%) of the MDF, making it difficult to discern the fine fibrous network
-    beneath.'
-  afterText: 'Following the application of laser cleaning on the MDF surface, the
-    transformation observed at 500x magnification, it is quite remarkable—or more
-    precisely—strikingly evident. Where once a thick, patchy contamination layer of
-    10-25 µm dominated the view under SEM, now the surface, she is largely restored
-    to a cleaner, more uniform state, with only sporadic residual deposits visible,
-    measuring less than 2 µm in thickness (a reduction of over 80%). The fibrous structure
-    of the MDF, previously obscured, it becomes clearly discernible, showing the characteristic
-    interwoven wood fibers with a natural porosity (approximately 15%) now exposed.
-    This clarity, it suggests a significant improvement in surface integrity, vital
-    for functional performance in applications like aerospace tooling.
-
-
-    In direct contrast to the pre-cleaned state, the surface roughness, it has been
-    notably reduced from Ra 3.8 µm to Ra 2.7 µm, as quantified through profilometry—though
-    still slightly above the baseline of 2.5 µm for unfinished MDF. What strikes me
-    particularly is how the laser interaction, it has selectively removed the organic
-    and particulate contaminants (confirmed by EDX showing diminished carbon and silicon
-    peaks) without inducing visible thermal damage or charring, despite the material’s
-    low decomposition temperature of 200°C. The reflectivity, previously hindered
-    by deposits, appears visually enhanced (though not yet quantified), likely improving
-    light interaction for prototyping uses. One can see micro-scale smoothing across
-    the cleaned areas, with minor ablation marks—barely 1-2 µm deep—indicating controlled
-    material removal below the ablation threshold of 0.8 J/cm².
-
-
-    Moreover, examining specific zones under the microscope, the larger agglomerates
-    and embedded particles (once up to 15 µm) are no longer present, leaving behind
-    a surface that, while not perfectly pristine, shows a sophisticated balance between
-    cleaning efficacy and preservation of the MDF’s inherent structure. The moisture
-    content (around 6%) seems unaffected, with no signs of localized drying or cracking,
-    which is critical for maintaining mechanical properties like tensile strength
-    (15 MPa). This result, it demonstrates how laser cleaning, when carefully calibrated,
-    can restore functionality to contaminated MDF surfaces, making them suitable again
-    for high-precision applications. Truly, the elegance of this process, it lies
-    in its precision and minimal invasiveness, as observed in these detailed microscopic
-    findings.'
+  beforeText: At 500x magnification, the MDF surface is obscured by a discontinuous
+    contamination layer, approximately 5-15 µm thick. This layer, composed of embedded
+    particulates and organic residues, fills the natural micro-porosity of the substrate.
+    The original fibrous texture is masked, creating an uneven, matte topography that
+    scatters light and compromises surface energy, which is critical for subsequent
+    adhesion processes.
+  afterText: Laser cleaning effectively ablates the contamination layer, restoring
+    the substrate's intrinsic micro-porous structure. The surface now exhibits a clean,
+    open-cell fibrous network with a consistent texture. This precise removal enhances
+    surface energy for improved coating adhesion and reveals the uniform, light-absorbing
+    qualities of the base MDF material.
   description: Microscopic analysis of mdf surface before and after laser cleaning
     treatment
   alt: Microscopic view of mdf surface showing laser cleaning effects
@@ -347,19 +336,19 @@ caption:
     - mdf_specific
     contaminationProfile: mdf surface contamination
   microscopy:
-    parameters: Microscopic analysis of mdf
+    parameters: Microscopic analysis of MDF
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: '2025-10-04T20:44:45.310782Z'
+    timestamp: '2025-10-02T00:00:00.000000Z'
     generator: FrontmatterCaptionGenerator
-    componentType: ai_caption_frontmatter
+    componentType: template_caption
   author: Alessandro Moretti
   materialProperties:
     materialType: Wood
-    analysisMethod: ai_microscopy
+    analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Mdf surface after laser cleaning showing detailed surface
+    alt: Microscopic view of MDF surface after laser cleaning showing detailed surface
       structure
     url: /images/material/mdf-laser-cleaning-micro.jpg
 tags:
@@ -373,9 +362,3 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - alessandro-moretti
-metadata:
-  lastUpdated: '2025-10-04T20:45:26.518282'
-  captionIntegrated: true
-subtitle: Handling MDF with a laser demands a keen eye, as its composite nature can
-  lead to uneven heat absorption. Adjust power levels gradually to around 30 watts,
-  ensuring you protect the delicate surface from unintended scorching.

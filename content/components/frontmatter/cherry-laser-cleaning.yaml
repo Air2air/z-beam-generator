@@ -5,7 +5,7 @@ title: Cherry Laser Cleaning
 description: Laser cleaning parameters for Cherry
 materialProperties:
   density:
-    value: 0.62
+    value: 0.61
     unit: g/cm³
     confidence: 92
     description: Average density of cherry wood at 12% moisture content
@@ -15,35 +15,35 @@ materialProperties:
     value: 380
     unit: °C
     confidence: 85
-    description: Pyrolysis temperature where thermal decomposition begins
+    description: Approximate pyrolysis/charring temperature of cherry wood
     min: null
     max: null
   thermalConductivity:
     value: 0.15
     unit: W/m·K
     confidence: 88
-    description: Thermal conductivity perpendicular to grain direction
+    description: Thermal conductivity perpendicular to grain at room temperature
     min: 0.04
     max: 0.4
   tensileStrength:
     value: 85
     unit: MPa
-    confidence: 88
-    description: Tensile strength parallel to grain
+    confidence: 84
+    description: Tensile strength perpendicular to grain
     min: 20
     max: 200
   hardness:
-    value: 4.2
+    value: 3.2
     unit: kN
-    confidence: 85
+    confidence: 89
     description: Janka hardness test value
     min: 20
     max: 5000
   youngsModulus:
     value: 10.3
     unit: GPa
-    confidence: 90
-    description: Modulus of elasticity parallel to grain
+    confidence: 87
+    description: Modulus of elasticity in bending
     min: 5
     max: 25
   laserAbsorption:
@@ -64,7 +64,7 @@ materialProperties:
     value: 1.8
     unit: kJ/kg·K
     confidence: 86
-    description: Specific heat capacity at 20°C
+    description: Specific heat capacity at room temperature
     min: 800
     max: 2500
   thermalDestructionPoint:
@@ -82,137 +82,125 @@ materialProperties:
     min: null
     max: null
   thermalDiffusivity:
-    value: 0.18
+    value: 0.16
     unit: mm²/s
-    confidence: 84
-    description: Thermal diffusivity at room temperature
+    confidence: 92
+    description: thermalDiffusivity from Materials.yaml
     min: 0.0001
     max: 0.4
   thermalExpansion:
     value: 3.7
     unit: 10^-6/°C
     confidence: 82
-    description: Coefficient of thermal expansion radial direction
+    description: Coefficient of thermal expansion perpendicular to grain
     min: 3.0
     max: 60
   absorptionCoefficient:
     value: 0.75
     unit: dimensionless
-    confidence: 82
-    description: Optical absorption coefficient for 1064nm wavelength
+    confidence: 83
+    description: Optical absorption coefficient for common laser wavelengths (1064
+      nm)
     min: null
     max: null
   reflectivity:
     value: 0.25
     unit: dimensionless
-    confidence: 80
-    description: Surface reflectivity at 1064nm laser wavelength
+    confidence: 81
+    description: Surface reflectivity for near-infrared laser wavelengths
     min: null
     max: null
   ablationThreshold:
     value: 1.2
     unit: J/cm²
-    confidence: 82
-    description: Minimum fluence for material removal at 1064nm
+    confidence: 80
+    description: Estimated laser ablation threshold for nanosecond pulses at 1064
+      nm
     min: null
     max: null
   porosity:
     value: 45
     unit: '%'
-    confidence: 88
-    description: Average porosity of cherry wood structure
-    min: null
-    max: null
-  surfaceRoughness:
-    value: 3.2
-    unit: μm Ra
     confidence: 85
-    description: Typical surface roughness after machining
+    description: Typical porosity of cherry wood structure
     min: null
     max: null
 applications:
 - Furniture Manufacturing
 - Musical Instrument Manufacturing
-- Cultural Heritage Restoration
-- Aerospace Interior Components
-- Marine Interior Finishes
+- Cultural Heritage Conservation
 - Architectural Woodwork
 - Luxury Automotive Interiors
+- Aerospace Interior Components
+- Marine Yacht Interiors
 - Art and Sculpture Conservation
-- High-End Cabinet Making
-- Historical Document Preservation
+- Premium Packaging Manufacturing
+- Custom Boat Building
 machineSettings:
   powerRange:
-    value: 90
+    value: 40
     unit: W
-    confidence: 91
+    confidence: 90
     description: Optimal average power for Cherry surface cleaning without charring
-    min: 70
-    max: 110
+    min: 20
+    max: 60
   wavelength:
     value: 1064
     unit: nm
-    confidence: 89
-    description: Near-IR wavelength optimized for Cherry wood absorption
-    min: 1030
-    max: 1070
-  spotSize:
-    value: 80
-    unit: μm
     confidence: 88
-    description: Beam spot diameter for precise cleaning resolution
+    description: Near-IR wavelength for optimal absorption in Cherry wood contaminants
+    min: 532
+    max: 1064
+  spotSize:
+    value: 100
+    unit: μm
+    confidence: 86
+    description: Beam spot diameter for precise cleaning control
     min: 50
-    max: 120
+    max: 200
   repetitionRate:
-    value: 50
+    value: 20
     unit: kHz
-    confidence: 85
-    description: Optimal repetition rate for efficient cleaning coverage
-    min: 30
-    max: 100
-  pulseWidth:
-    value: 12
-    unit: ns
     confidence: 87
-    description: Nanosecond pulse duration for controlled ablation of contaminants
-    min: 8
-    max: 20
+    description: Optimal repetition rate for efficient cleaning coverage
+    min: 10
+    max: 50
+  pulseWidth:
+    value: 100
+    unit: ns
+    confidence: 85
+    description: Nanosecond pulse duration for effective contaminant removal with
+      minimal substrate damage
+    min: 50
+    max: 200
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 86
-    description: Optimal scanning speed for uniform cleaning
-    min: 300
-    max: 800
+    confidence: 84
+    description: Optimal scanning speed for uniform cleaning results
+    min: 200
+    max: 1000
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
-    confidence: 90
-    description: Fluence threshold for effective contaminant removal without wood
-      damage
-    min: 1.8
-    max: 3.5
+    confidence: 89
+    description: Fluence threshold for effective contaminant removal from Cherry surface
+    min: 1.5
+    max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 84
+    confidence: 83
     description: Optimal beam overlap for uniform cleaning coverage
-    min: 40
-    max: 60
+    min: 30
+    max: 70
   passCount:
     value: 2
     unit: passes
     confidence: 88
     description: Recommended number of passes for complete cleaning
     min: 1
-    max: 3
-  laserType:
-    value: Fiber Laser
-    unit: n/a
-    confidence: 92
-    description: Recommended laser type for Cherry wood cleaning applications
-    min: null
-    max: null
+    max: 4
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -231,10 +219,6 @@ images:
   hero:
     alt: Cherry surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/cherry-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Cherry surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/cherry-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -260,6 +244,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Cherry wood has a softer surface and darkens significantly with age and
+  exposure to light. These traits demand lower laser power and careful handling to
+  avoid etching the delicate grain or altering its natural color development.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -295,24 +282,19 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the cherry wood surface is obscured by a heterogeneous
-    contamination layer, typically 10-50 µm thick. This layer consists of embedded
-    particulate matter, oxidized oil residues, and microbial biofilms that fill the
-    porous wood structure. The contaminants form a discontinuous crust, masking the
-    wood's natural grain and cell structure. The surface texture appears irregular
-    and matte, with a roughness (Ra) increased to an estimated 8-12 µm due to the
-    uneven deposition. The open pores of the cherry, which constitute approximately
-    45% of the surface area, are fully occluded, compromising the substrate's integrity
-    and appearance.
-  afterText: Post-cleaning analysis at 500x magnification reveals a complete restoration
-    of the cherry wood's intrinsic surface morphology. The contamination layer has
-    been selectively ablated, exposing the clean, open cell lumens and distinct anatomical
-    features like vessels and rays. The original surface roughness of approximately
-    3.2 µm Ra is restored, confirming the precise, non-contact nature of the laser
-    ablation process. The wood's natural, porous microstructure is now fully visible
-    and unobstructed, with no residual charring or heat-affected zone, indicating
-    optimal laser parameters were used to remove contaminants without exceeding the
-    material's pyrolysis threshold of 380°C.
+  beforeText: At 500x magnification, the cherry surface is obscured by a discontinuous
+    contamination layer, approximately 5-15 µm thick. This layer, composed of embedded
+    particulates and organic residues, fills the wood's cellular pores and micro-fissures.
+    The underlying grain texture is partially masked, and the natural porosity is
+    compromised, reducing the substrate's inherent tactile and visual properties.
+    The contaminant exhibits poor adhesion and a non-uniform distribution across the
+    surface.
+  afterText: Laser cleaning has restored the surface to its native state. At 500x
+    magnification, the cellular structure and grain pattern are fully exposed, with
+    no residual contamination within the 45% porous network. The process has selectively
+    removed the foreign layer without carbonizing the underlying wood, which retains
+    its original micro-texture. The surface now displays clean, open lumens and sharp
+    cell wall boundaries.
   description: Microscopic analysis of cherry surface before and after laser cleaning
     treatment
   alt: Microscopic view of cherry surface showing laser cleaning effects
@@ -348,6 +330,3 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - todd-dunning
-subtitle: Cherry hardwood often poses a unique hurdle during laser treatment due to
-  its inconsistent grain patterns. Adjust your power levels below 50 watts initially,
-  or you’ll risk scorching the delicate finish before contamination lifts.

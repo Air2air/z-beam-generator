@@ -28,21 +28,21 @@ materialProperties:
   tensileStrength:
     value: 160
     unit: MPa
-    confidence: 90
-    description: Ultimate tensile strength of pure magnesium
+    confidence: 85
+    description: Typical tensile strength of pure magnesium
     min: 3.0
     max: 3000.0
   hardness:
     value: 44
     unit: HV
-    confidence: 85
+    confidence: 86
     description: Vickers hardness of pure magnesium
     min: 0.5
     max: 3500
   youngsModulus:
     value: 45
     unit: GPa
-    confidence: 92
+    confidence: 93
     description: Young's modulus of elasticity
     min: 5
     max: 411
@@ -63,8 +63,8 @@ materialProperties:
   specificHeat:
     value: 1020
     unit: J/kg·K
-    confidence: 88
-    description: Specific heat capacity at room temperature
+    confidence: 91
+    description: Specific heat capacity at 20°C
     min: 100
     max: 900
   thermalDestructionPoint:
@@ -84,7 +84,7 @@ materialProperties:
   thermalDiffusivity:
     value: 8.8
     unit: mm²/s
-    confidence: 85
+    confidence: 88
     description: Thermal diffusivity at room temperature
     min: 0.2
     max: 174
@@ -117,31 +117,24 @@ materialProperties:
     min: null
     max: null
   oxidationResistance:
-    value: 0.3
-    unit: mg/cm²·day
-    confidence: 88
-    description: Oxidation rate in air at room temperature
+    value: 3
+    unit: rating (1-10)
+    confidence: 85
+    description: Relative oxidation resistance rating (10 = highest)
     min: null
     max: null
   crystallineStructure:
     value: HCP
-    unit: none
+    unit: crystal system
     confidence: 95
     description: Hexagonal close-packed crystal structure
     min: null
     max: null
-  electricalResistivity:
-    value: 4.45
-    unit: μΩ·cm
-    confidence: 90
-    description: Electrical resistivity at 20°C
-    min: null
-    max: null
-  laserDamageThreshold:
-    value: 1.2
-    unit: J/cm²
-    confidence: 80
-    description: Laser-induced damage threshold for surface modification
+  surfaceRoughness:
+    value: 0.8
+    unit: μm Ra
+    confidence: 84
+    description: Typical as-polished surface roughness
     min: null
     max: null
 applications:
@@ -152,7 +145,7 @@ applications:
 - Marine
 - Cultural Heritage
 - Manufacturing
-- Energy
+- Energy Sector
 - Defense
 - Sports Equipment
 machineSettings:
@@ -168,33 +161,33 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength providing good absorption in Magnesium oxides
-      while minimizing thermal penetration
+    description: Near-IR wavelength with good absorption in Magnesium oxide layers
     min: 532
     max: 1064
   spotSize:
-    value: 50
+    value: 80
     unit: μm
     confidence: 84
-    description: Beam spot diameter for precise cleaning with adequate energy density
-    min: 30
-    max: 80
+    description: Optimal beam diameter for balancing cleaning efficiency and processing
+      speed
+    min: 50
+    max: 120
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate balancing cleaning efficiency and thermal
-      management
+    description: High repetition rate for efficient cleaning coverage while maintaining
+      pulse energy
     min: 20
     max: 100
   pulseWidth:
-    value: 8
+    value: 12
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient oxide layer ablation with
-      controlled thermal effects
-    min: 5
-    max: 15
+    description: Nanosecond pulse duration for efficient oxide ablation with minimal
+      thermal diffusion
+    min: 8
+    max: 20
   scanSpeed:
     value: 500
     unit: mm/s
@@ -207,21 +200,23 @@ machineSettings:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Minimum fluence required for effective Magnesium oxide ablation
+    description: Minimum fluence required for effective oxide layer ablation on Magnesium
     min: 1.8
-    max: 3.5
+    max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning coverage
+    description: Optimal pulse overlap for uniform cleaning coverage without excessive
+      heating
     min: 40
-    max: 60
+    max: 70
   passCount:
     value: 2
     unit: passes
     confidence: 85
-    description: Recommended number of passes for complete oxide removal
+    description: Recommended number of passes for complete oxide removal with safety
+      margin
     min: 1
     max: 3
 regulatoryStandards:
@@ -242,10 +237,6 @@ images:
     alt: Magnesium surface undergoing laser cleaning showing precise contamination
       removal
     url: /images/material/magnesium-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Magnesium surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/magnesium-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -271,6 +262,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Magnesium is highly reactive and has a low ignition temperature compared
+  to other specialty metals. This requires careful control of laser settings to prevent
+  heat buildup and ensure safe, effective cleaning.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -307,16 +301,20 @@ outcomeMetrics:
   units: []
 caption:
   beforeText: At 500x magnification, the magnesium surface is obscured by a non-uniform
-    contamination layer, approximately 5-15 µm thick. This layer exhibits a porous,
-    granular texture with localized oxide nodules and embedded particulate matter.
-    The underlying HCP crystalline structure is entirely masked, and the original
-    metallic luster is absent due to light scattering from the rough, discontinuous
-    contaminant film.
-  afterText: Laser cleaning reveals the pristine magnesium substrate, characterized
-    by distinct grain boundaries and micro-polishing effects. The surface is now free
-    of oxides and particulates, restoring its inherent metallic reflectivity. Minor,
-    sub-micron laser interaction traces are visible, but the original surface integrity
-    is maintained with no evidence of thermal damage, such as melting or micro-cracking.
+    contamination layer, typically 5-20 µm thick. This layer consists of particulate
+    matter, such as embedded alumina from handling, and a patchy oxide/hydroxide film.
+    The underlying HCP crystalline structure is entirely hidden. The topography is
+    chaotic, with contamination filling the natural grain boundaries and valleys of
+    the metal substrate, creating a textured, matte appearance that scatters light.
+    This layer compromises surface-dependent properties and acts as a site for ongoing
+    localized corrosion.
+  afterText: Laser cleaning reveals the pristine magnesium substrate, restoring its
+    intrinsic metallic luster. At 500x, the surface now exhibits clearly defined grain
+    boundaries and the fine, directional polishing lines of the underlying metal.
+    The contamination layer has been completely ablated, with no residual oxide patches
+    or embedded particles. The result is a topographically uniform surface with a
+    measured roughness near the base material's 0.8 µm Ra. This optically clean state
+    ensures optimal performance for subsequent processes like bonding or coating.
   description: Microscopic analysis of magnesium surface before and after laser cleaning
     treatment
   alt: Microscopic view of magnesium surface showing laser cleaning effects
@@ -352,6 +350,3 @@ tags:
 - reflective-surface
 - conductive
 - alessandro-moretti
-subtitle: Handling magnesium in laser cleaning requires a sharp eye for detail, as
-  its lightweight nature can mislead you on heat buildup. Adjust power levels carefully
-  below 50 watts to safeguard the delicate finish from unintended warping.

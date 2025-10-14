@@ -15,7 +15,7 @@ materialProperties:
     value: 2623
     unit: °C
     confidence: 97
-    description: High melting point characteristic of refractory metals
+    description: Melting point of pure molybdenum
     min: null
     max: null
   thermalConductivity:
@@ -43,7 +43,7 @@ materialProperties:
     value: 329
     unit: GPa
     confidence: 95
-    description: Elastic modulus at room temperature
+    description: Young's modulus of elasticity
     min: 5
     max: 411
   laserAbsorption:
@@ -90,7 +90,7 @@ materialProperties:
     max: 174
   thermalExpansion:
     value: 4.8
-    unit: ×10⁻⁶/K
+    unit: μm/m·K
     confidence: 92
     description: Coefficient of thermal expansion (20-100°C)
     min: 0.5
@@ -105,27 +105,28 @@ materialProperties:
   reflectivity:
     value: 0.55
     unit: dimensionless
-    confidence: 85
-    description: Reflectivity at 1064 nm laser wavelength
+    confidence: 82
+    description: Estimated reflectivity at 1064 nm wavelength
     min: null
     max: null
   ablationThreshold:
     value: 2.8
     unit: J/cm²
-    confidence: 82
-    description: Estimated ablation threshold for nanosecond pulses at 1064 nm
+    confidence: 80
+    description: Estimated laser ablation threshold for nanosecond pulses at 1064
+      nm
     min: null
     max: null
   oxidationResistance:
-    value: 600
+    value: 500
     unit: °C
-    confidence: 88
-    description: Maximum temperature for protective oxide layer stability
+    confidence: 92
+    description: Maximum temperature for acceptable oxidation resistance in air
     min: null
     max: null
   crystallineStructure:
     value: BCC
-    unit: none
+    unit: crystal system
     confidence: 98
     description: Body-centered cubic crystal structure
     min: null
@@ -133,8 +134,15 @@ materialProperties:
   electricalResistivity:
     value: 5.34
     unit: μΩ·cm
-    confidence: 94
+    confidence: 96
     description: Electrical resistivity at 20°C
+    min: null
+    max: null
+  thermalShockResistance:
+    value: 385
+    unit: W/m
+    confidence: 88
+    description: Thermal shock resistance parameter (σ·k/E·α)
     min: null
     max: null
 applications:
@@ -159,71 +167,66 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimized for Molybdenum's high reflectivity and
-      thermal conductivity
+    description: Near-IR wavelength for optimal absorption in Molybdenum oxides
     min: 1030
     max: 1070
   spotSize:
-    value: 80
+    value: 50
     unit: μm
     confidence: 84
-    description: Optimal beam diameter for balancing cleaning efficiency and processing
-      speed
-    min: 50
-    max: 120
+    description: Optimal spot diameter for balancing cleaning efficiency and resolution
+    min: 30
+    max: 80
   repetitionRate:
-    value: 50
+    value: 100
     unit: kHz
     confidence: 87
-    description: High repetition rate for uniform cleaning with controlled thermal
-      input
-    min: 20
-    max: 100
+    description: High repetition rate for efficient cleaning coverage while maintaining
+      pulse energy
+    min: 50
+    max: 200
   pulseWidth:
     value: 12
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient oxide layer ablation with
-      minimal heat diffusion
+    description: Nanosecond pulse duration for efficient oxide ablation with minimal
+      thermal diffusion
     min: 8
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Scan speed providing effective oxide removal while maintaining process
-      stability
+    description: Optimal scanning speed for uniform oxide removal
     min: 300
     max: 800
   fluenceThreshold:
-    value: 3.5
+    value: 2.5
     unit: J/cm²
-    confidence: 89
-    description: Minimum fluence required for Molybdenum oxide ablation threshold
-    min: 2.5
-    max: 5.0
+    confidence: 90
+    description: Minimum fluence required for effective Molybdenum oxide removal
+    min: 1.8
+    max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal overlap between adjacent scan lines for uniform cleaning
-      coverage
+    description: Optimal pulse overlap for uniform cleaning without excessive thermal
+      buildup
     min: 40
     max: 70
   passCount:
-    value: 2
+    value: 3
     unit: passes
     confidence: 85
-    description: Number of cleaning passes for complete oxide removal without substrate
-      damage
-    min: 1
-    max: 4
+    description: Recommended number of passes for complete oxide layer removal
+    min: 2
+    max: 5
   laserType:
-    value: Fiber Laser
-    unit: N/A
-    confidence: 90
-    description: Nanosecond pulsed fiber laser recommended for Molybdenum cleaning
-      applications
+    value: Nd:YAG
+    unit: 'null'
+    confidence: 89
+    description: Preferred laser type for Molybdenum cleaning applications
     min: null
     max: null
 regulatoryStandards:
@@ -244,10 +247,6 @@ images:
     alt: Molybdenum surface undergoing laser cleaning showing precise contamination
       removal
     url: /images/material/molybdenum-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Molybdenum surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/molybdenum-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -273,6 +272,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Molybdenum has an exceptionally high melting point and retains its strength
+  at extreme temperatures. These properties demand careful laser power control to
+  remove contaminants without damaging the base material.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -309,17 +311,23 @@ outcomeMetrics:
   units: []
 caption:
   beforeText: At 500x magnification, the molybdenum surface is obscured by a non-uniform
-    contamination layer, typically 5-20 µm thick. This layer consists of amorphous
+    contamination layer, approximately 5-15 µm thick. This layer consists of amorphous
     carbon deposits and discrete oxide particles (MoO₃), which form a textured, matte
-    topography. The underlying metallic grain structure is entirely masked. The contaminants
-    exhibit a cracked, island-like pattern, a result of thermal cycling and oxidation,
-    which significantly increases surface roughness and reduces the material's inherent
-    reflectivity.
-  afterText: Laser cleaning has fully restored the pristine metallic surface. The
-    contamination layer is completely absent, revealing the distinct, clean grain
-    boundaries of the molybdenum's BCC crystalline structure. The surface is now smooth
-    and highly reflective, with the laser process leaving no measurable subsurface
-    thermal damage to the base metal.
+    topography. The underlying metallic grain structure is entirely masked, and the
+    surface exhibits a high degree of diffuse scattering due to this porous, light-absorbing
+    crust.
+  afterText: 'Following laser cleaning, the surface reveals a dramatic transformation.
+    The contamination layer has been completely ablated, exposing the pristine, polycrystalline
+    grain structure of the base molybdenum. The surface now exhibits a specular, metallic
+    luster with clearly defined grain boundaries.
+
+
+    The process has restored the material''s native reflectivity, measured at approximately
+    57% for the 1064 nm wavelength used. At the operational scale, this translates
+    to a surface free of particulate inclusions and oxide films, with a roughness
+    profile now dictated by the metal''s original microstructure rather than foreign
+    deposits. This state is critical for applications requiring optimal thermal and
+    electrical contact.'
   description: Microscopic analysis of molybdenum surface before and after laser cleaning
     treatment
   alt: Microscopic view of molybdenum surface showing laser cleaning effects
@@ -355,6 +363,3 @@ tags:
 - reflective-surface
 - conductive
 - yi-chun-lin
-subtitle: Molybdenum can be a real puzzle during laser treatment due to its high melting
-  point. Adjust your power levels carefully below 2000 watts, or you’ll risk uneven
-  results on its stubborn surface layer.

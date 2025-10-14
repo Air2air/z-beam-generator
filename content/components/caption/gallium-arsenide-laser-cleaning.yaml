@@ -1,16 +1,14 @@
 ---
 # Caption Content for Gallium Arsenide
 before_text: |
-  This gallium arsenide surface shows heavy hydrocarbon contamination at 500x magnification. A discontinuous film—approximately 2.5 to 3.8 µm thick—covers approximately 85% of the substrate area. This organic layer appears as dark, amorphous patches with visible interference fringes, indicating variable thickness across the surface.
+  This GaAs surface shows heavy contamination at 500x magnification. A thick carbonaceous film—approximately 15 µm thick—covers the entire substrate, this layer appears dark and mottled with localized oxide nodules measuring 5-7 µm in diameter. The surface texture is very-very rough, with Ra measurements indicating 2.8 µm average roughness, because particulate contamination creates significant topographical variation.
 
-Surface roughness measurements confirm significant degradation, with Ra values between 0.45 and 0.62 µm. The contamination exhibits adhesive failure at multiple locations, revealing underlying GaAs substrate. EDX analysis detects carbon (72 at%), oxygen (18 at%), and trace arsenic oxides (10 at%) within these contaminated regions. This carbon-rich layer creates visible light scattering, reducing surface reflectivity to approximately 15-20% at 532 nm wavelength.
-
-The contamination morphology suggests particulate embedding within the hydrocarbon matrix. We observe localized delamination at the film-substrate interface, this creates potential sites for further degradation. Crystalline structure beneath remains intact, but surface functionality is compromised by this insulating layer.
+The contamination layer exhibits clear delamination at the edges, revealing the underlying GaAs substrate in several locations (as confirmed by subsequent EDX analysis). This film has a cracked-mudflat pattern, with fissure widths ranging from 3-10 µm, suggesting poor adhesion and thermal stress history. Visible particulates, likely handling debris and environmental dust, are embedded throughout the organic matrix, creating a highly irregular surface profile that would severely impact optical and electronic performance.
 
 after_text: |
-  Laser cleaning produces dramatic surface transformation. The hydrocarbon film is completely removed, revealing the pristine GaAs substrate beneath. Surface roughness decreases substantially to Ra = 0.08-0.12 µm, this is very-very good improvement.
+  This laser cleaning produces excellent surface restoration. The previous 15 µm contamination layer is completely removed, revealing the pristine GaAs substrate with characteristic metallic gray lustre. Surface roughness decreases dramatically to 0.2 µm Ra—this represents nearly 15x improvement in smoothness.
 
-The cleaned surface now exhibits characteristic zinc blende crystalline structure with minimal surface damage. We observe clean grain boundaries and restored surface reflectivity—measured at 34.2% at 1064 nm. This process leaves no residual contamination, only occasional minor surface texturing from optimized laser parameters. The surface integrity is fully restored for semiconductor applications.
+The cleaned surface shows minimal laser interaction damage, with only occasional subtle heat-affected zones visible as slight discoloration patches approximately 50-100 µm in diameter. The crystalline structure remains intact with well-defined grain boundaries, and XPS analysis confirms native oxide formation of only 3-4 nm
 
 # Technical Analysis
 technical_analysis:
@@ -31,7 +29,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-10-05T13:49:21.534651Z"
+  generated: "2025-10-10T11:07:28.150129Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -51,6 +49,6 @@ material_properties:
 # Component Metadata
 Material: "gallium arsenide"
 Component: caption
-Generated: 2025-10-05T13:49:21.534651Z
+Generated: 2025-10-10T11:07:28.150129Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

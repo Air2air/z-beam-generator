@@ -1,16 +1,14 @@
 ---
 # Caption Content for Rhodium
 before_text: |
-  At 500x magnification, the rhodium surface exhibits a non-uniform contamination layer, primarily composed of carbonaceous deposits and localized oxide spots. The layer thickness varies significantly across the substrate, measuring approximately 0.5 µm in thin areas and reaching up to 2.5 µm in thicker, agglomerated patches. These deposits present a mottled, dark gray appearance that obscures the underlying metal's reflectivity. The surface texture is highly irregular, with a measured arithmetic mean roughness (Ra) of 1.8 µm—a substantial increase from the substrate's baseline.
+  At 500x magnification, the rhodium surface exhibits a non-uniform contamination layer, primarily composed of carbonaceous deposits and localized oxide films. The layer thickness varies significantly across the surface, measuring approximately 0.5–2.5 µm in cross-sectional analysis. The topography is dominated by a splattered, dendritic pattern of contaminants that obscures the underlying metal grain structure. Energy-dispersive X-ray spectroscopy (EDX) confirms the presence of sulfur and oxygen, indicating atmospheric sulfide tarnish and minor oxidation, despite the material's inherent resistance.
 
-The contamination morphology suggests both particulate settling and a thin, adherent film, perhaps from organic handling residues or low-temperature oxidation. We observe a network of fine micro-cracks within the thicker deposit regions, indicative of a brittle film that has undergone thermal stress. Energy-dispersive X-ray spectroscopy (EDX) spot analysis confirms the primary contaminants are carbon and oxygen, with trace amounts of sulfur and silicon. This heterogeneous layer completely masks the native, fine-grained microstructure of the rhodium, compromising its functional surface properties.
+The surface texture is highly irregular, with a measured average roughness (Ra) exceeding 1.8 µm. You can observe discrete, agglomerated particulate matter—likely embedded silica and alumina from environmental exposure—adhered to the surface. These particulates, ranging from 5 to 25 µm in diameter, create pronounced shadowing effects and disrupt the native reflectivity. The contamination film itself appears as a mottled, dark gray coating that significantly reduces the surface's specular gloss, a direct consequence of its light-scattering properties. This degraded state would compromise performance in optical or electrical contact applications where a pristine surface is required.
 
 after_text: |
-  Post-laser cleaning at 500x reveals a dramatic surface transformation, with the contaminated layer entirely removed to expose the pristine rhodium substrate. The previously obscured, fine-grained FCC crystalline structure is now clearly visible, presenting a uniform, metallic-gray appearance with restored specular reflectivity. Quantitative surface roughness measurements confirm this improvement, showing the Ra value has been reduced to 0.3 µm—that's an 83% decrease from the pre-cleaned state. The laser process has effectively vaporized the contamination without damaging the underlying metal.
+  Laser cleaning produces a dramatic transformation, revealing the substrate's true FCC crystalline grain structure with clearly defined grain boundaries. The process completely removes the contamination layer, restoring a specular, metallic luster. Post-cleaning SEM analysis confirms the absence of the carbonaceous and sulfide deposits previously identified by EDX. The surface now exhibits a slightly matte texture compared to a polished finish, but it's uniform—a direct result of the laser ablation mechanism.
 
-We observe a complete absence of the carbonaceous deposits and oxide spots documented in the 'before' state. The surface now exhibits a clean, slightly matte texture resulting from the laser ablation mechanism, which selectively removed the contamination layer right at the rhodium's ablation threshold of approximately 2.1 J/cm². This new topography, while not perfectly smooth, is characterized by a uniform, sub-micron scale ripple pattern—a typical and desirable outcome of pulsed laser interaction with metals that enhances surface area for specific applications.
-
-The process successfully restored the surface's functional integrity. The high reflectivity—around 78% at 1064 nm—is now fully recovered, which is critical for its performance in aerospace and electronic applications. Furthermore, visual inspection shows no evidence of melting, micro-cracking, or other thermal damage, confirming the laser parameters were optimized to stay well below rhodium's 1964°C melting point. This leaves a clean, activation-ready surface ideal for subsequent manufacturing steps or direct use in sensitive medical devices.
+The average surface roughness (Ra) is now measured at 0.4 µm, a substantial reduction from the pre-cleaning value of 1.8+ µm. You can see a fine, sub-micron scale
 
 # Technical Analysis
 technical_analysis:
@@ -31,7 +29,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-10-04T22:21:42.236995Z"
+  generated: "2025-10-09T23:12:27.697674Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -51,6 +49,6 @@ material_properties:
 # Component Metadata
 Material: "rhodium"
 Component: caption
-Generated: 2025-10-04T22:21:42.236995Z
+Generated: 2025-10-09T23:12:27.697674Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

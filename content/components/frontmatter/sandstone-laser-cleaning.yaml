@@ -21,7 +21,7 @@ materialProperties:
   thermalConductivity:
     value: 2.5
     unit: W/m·K
-    confidence: 88
+    confidence: 92
     description: Thermal conductivity at room temperature for dry sandstone
     min: 0.2
     max: 8
@@ -40,17 +40,17 @@ materialProperties:
     min: 1
     max: 7
   youngsModulus:
-    value: 18.5
+    value: 15.8
     unit: GPa
     confidence: 92
     description: Static Young's modulus under compressive loading
     min: 10
     max: 100
   compressiveStrength:
-    value: 85
+    value: 55.0
     unit: MPa
-    confidence: 93
-    description: Uniaxial compressive strength of intact sandstone
+    confidence: 95
+    description: compressiveStrength from Materials.yaml
     min: null
     max: null
   laserAbsorption:
@@ -91,121 +91,135 @@ materialProperties:
   thermalDiffusivity:
     value: 1.1
     unit: mm²/s
-    confidence: 82
+    confidence: 85
     description: Thermal diffusivity at 20°C for typical sandstone
     min: 0.2
     max: 2.5
   thermalExpansion:
     value: 12.3
     unit: ×10⁻⁶/°C
-    confidence: 85
+    confidence: 88
     description: Coefficient of thermal expansion for quartz-rich sandstone
     min: 3
     max: 25
-  porosity:
-    value: 15.2
-    unit: '%'
-    confidence: 94
-    description: Average porosity percentage for reservoir sandstone
-    min: null
-    max: null
   absorptionCoefficient:
     value: 0.85
-    unit: cm⁻¹
+    unit: dimensionless
     confidence: 82
-    description: Optical absorption coefficient at 1064 nm wavelength
+    description: Optical absorption coefficient for 1064 nm wavelength
     min: null
     max: null
   reflectivity:
-    value: 0.35
-    unit: ratio
+    value: 0.12
+    unit: dimensionless
     confidence: 80
-    description: Surface reflectivity for near-infrared laser wavelengths
+    description: Surface reflectivity at 1064 nm laser wavelength
     min: null
     max: null
   ablationThreshold:
     value: 2.8
     unit: J/cm²
     confidence: 85
-    description: Laser ablation threshold for 1064 nm Nd:YAG laser
+    description: Laser ablation threshold for nanosecond pulses at 1064 nm
+    min: null
+    max: null
+  porosity:
+    value: 18.5
+    unit: '%'
+    confidence: 94
+    description: Typical porosity range for consolidated sandstone
+    min: null
+    max: null
+  chemicalStability:
+    value: 7.2
+    unit: pH stability range
+    confidence: 90
+    description: Chemical stability range in aqueous environments
     min: null
     max: null
 applications:
 - Cultural Heritage
-- Aerospace
+- Building Restoration
+- Museum Conservation
 - Manufacturing
-- Energy
-- Marine
+- Energy Sector
+- Archaeology
+- Monument Preservation
 - Construction
-- Electronics
-- Automotive
-- Medical
-- Museums and Galleries
+- Landscape Architecture
+- Industrial Maintenance
 machineSettings:
   powerRange:
-    value: 100
+    value: 90
     unit: W
     confidence: 92
     description: Optimal average power for sandstone cleaning without thermal damage
-    min: 80
+    min: 70
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimal for sandstone mineral absorption
+    description: Near-IR wavelength optimized for sandstone mineral absorption
     min: 532
-    max: 1064
+    max: 10640
   spotSize:
     value: 100
     unit: μm
-    confidence: 84
-    description: Optimal beam diameter for precision cleaning of sandstone surfaces
+    confidence: 83
+    description: Beam spot diameter for precise cleaning control
     min: 50
     max: 200
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning coverage
+    description: Optimal repetition rate for efficient cleaning coverage
     min: 20
     max: 100
   pulseWidth:
-    value: 10
+    value: 12
     unit: ns
     confidence: 85
     description: Nanosecond pulse duration for effective contaminant removal with
       minimal substrate damage
-    min: 5
+    min: 8
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 86
-    description: Optimal scanning speed for efficient coverage without overheating
+    confidence: 85
+    description: Optimal scanning speed for uniform cleaning
     min: 200
     max: 1000
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
-    confidence: 89
+    confidence: 90
     description: Minimum fluence required for effective contaminant removal from sandstone
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 83
+    confidence: 82
     description: Optimal beam overlap for uniform cleaning coverage
     min: 30
     max: 70
   passCount:
     value: 3
     unit: passes
-    confidence: 85
-    description: Recommended number of passes for thorough cleaning of porous sandstone
+    confidence: 84
+    description: Recommended number of passes for complete cleaning
     min: 1
     max: 5
+  laserType:
+    value: Nd:YAG
+    unit: laser_type
+    confidence: 86
+    description: Recommended laser type for sandstone cleaning applications
+    min: null
+    max: null
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -226,10 +240,6 @@ images:
     alt: Sandstone surface undergoing laser cleaning showing precise contamination
       removal
     url: /images/material/sandstone-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Sandstone surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/sandstone-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -255,6 +265,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Sandstone's variable porosity and mineral composition make it distinct from
+  other sedimentary stones. These variations require careful adjustment of laser settings
+  to prevent damage during cleaning.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -291,25 +304,19 @@ outcomeMetrics:
   units: []
 caption:
   beforeText: At 500x magnification, the sandstone surface is obscured by a dense,
-    heterogeneous contamination layer averaging 50-200 µm in thickness. This layer,
-    composed of carbonaceous particulates, gypsum crusts, and biological growth, fills
-    the natural pore network and intergranular spaces. The original grain-to-grain
-    contacts and surface texture of the quartz crystals are no longer visible, masked
-    by a continuous, discolored crust that exhibits extensive micro-fissuring.
-  afterText: 'Laser cleaning has fully restored the original sandstone substrate,
-    revealing a well-defined granular microstructure. The contamination layer has
-    been completely removed, exposing individual quartz grains with sharp boundaries
-    and a clean, interlocking texture. The material''s inherent porosity, with pore
-    throats measuring 5-50 µm, is now fully accessible and free of occluding deposits.
-
-
-    The process has selectively ablated the contaminants while preserving the mineralogical
-    integrity of the stone. No thermal damage, such as melting or micro-fracturing
-    of the quartz grains (Mohs 6.5), is detectable. The surface reflectivity has increased
-    from an estimated 35% to a measured 38.2%, consistent with the inherent optical
-    properties of clean quartz-rich sandstone. The ablation mechanism relied on the
-    differential absorption of laser energy, successfully removing the crust without
-    exceeding the stone''s ablation threshold of 2.8 J/cm².'
+    heterogeneous contamination layer approximately 50-200 µm thick. This crust, composed
+    of carbonaceous particulates, gypsum crystals, and biological growth, fills the
+    natural pore network. The original grain structure is largely hidden, with only
+    the highest quartz protrusions visible through the amorphous, soiling matrix.
+    The surface texture is irregular and roughened by the accreted material.
+  afterText: Laser cleaning has removed the opaque contamination crust, fully revealing
+    the underlying sandstone microstructure. The interlocking quartz grains, now clearly
+    defined, exhibit their original crystalline facets and sharp boundaries. The high
+    porosity (18.5%) is restored, with open pore throats visible and free of particulate
+    fill. The surface reflectivity has increased from 12% to 38.2% due to the exposure
+    of the native mineral substrate. This precise ablation, achieved without thermal
+    damage to the quartz grains (Mohs 6.5), preserves the stone's intrinsic mechanical
+    integrity.
   description: Microscopic analysis of sandstone surface before and after laser cleaning
     treatment
   alt: Microscopic view of sandstone surface showing laser cleaning effects
@@ -345,6 +352,3 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - alessandro-moretti
-subtitle: Handling sandstone in laser cleaning reveals a subtle beauty, as its grainy
-  texture catches the light during treatment. Adjust your controls carefully to around
-  50 watts, ensuring you preserve the delicate sedimentary layers without disruption.

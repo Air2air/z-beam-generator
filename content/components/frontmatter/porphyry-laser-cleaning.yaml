@@ -8,22 +8,21 @@ materialProperties:
     value: 2.65
     unit: g/cm³
     confidence: 95
-    description: Average bulk density of porphyry rock with typical mineral composition
+    description: Average bulk density of porphyry rock formations
     min: 1.5
     max: 3.4
   meltingPoint:
     value: 1250
     unit: °C
     confidence: 85
-    description: Approximate melting temperature range for feldspar-quartz porphyry
-      composition
+    description: Approximate melting temperature range for feldspar-quartz composition
     min: null
     max: null
   thermalConductivity:
     value: 2.9
     unit: W/m·K
     confidence: 88
-    description: Thermal conductivity at room temperature for crystalline porphyry
+    description: Thermal conductivity at room temperature for porphyritic granite
     min: 0.2
     max: 8
   tensileStrength:
@@ -37,14 +36,14 @@ materialProperties:
     value: 6.5
     unit: Mohs
     confidence: 92
-    description: Composite hardness dominated by quartz and feldspar components
+    description: Mohs hardness scale for porphyry with quartz phenocrysts
     min: 1
     max: 7
   youngsModulus:
-    value: 65
+    value: 55
     unit: GPa
     confidence: 85
-    description: Elastic modulus for porphyry under compressive loading
+    description: Elastic modulus under compressive loading
     min: 10
     max: 100
   laserAbsorption:
@@ -62,10 +61,10 @@ materialProperties:
     min: 5
     max: 80
   specificHeat:
-    value: 0.84
+    value: 0.79
     unit: kJ/kg·K
     confidence: 90
-    description: Specific heat capacity at 20°C for porphyritic rock
+    description: Specific heat capacity at 20°C
     min: 600
     max: 1200
   thermalDestructionPoint:
@@ -83,17 +82,18 @@ materialProperties:
     min: null
     max: null
   thermalDiffusivity:
-    value: 1.32
+    value: 1.4
     unit: mm²/s
-    confidence: 92
-    description: thermalDiffusivity from Materials.yaml
+    confidence: 85
+    description: Thermal diffusivity calculated from conductivity, density and specific
+      heat
     min: 0.2
     max: 2.5
   thermalExpansion:
     value: 8.5
     unit: 10⁻⁶/K
     confidence: 82
-    description: Coefficient of thermal expansion for mixed mineral composition
+    description: Coefficient of thermal expansion for quartz-feldspar matrix
     min: 3
     max: 25
   compressiveStrength:
@@ -103,43 +103,37 @@ materialProperties:
     description: Uniaxial compressive strength of intact porphyry
     min: null
     max: null
-  absorptionCoefficient:
-    value: 0.75
-    unit: dimensionless
-    confidence: 80
-    description: Optical absorption coefficient for near-infrared laser wavelengths
+  porosity:
+    value: 1.2
+    unit: '%'
+    confidence: 90
+    description: Average porosity of dense porphyry formations
     min: null
     max: null
-  reflectivity:
-    value: 0.25
+  absorptionCoefficient:
+    value: 0.85
     unit: dimensionless
     confidence: 82
-    description: Surface reflectivity at common laser cleaning wavelengths (1064 nm)
+    description: Optical absorption coefficient for near-infrared wavelengths (1064
+      nm)
     min: null
     max: null
   ablationThreshold:
     value: 2.8
     unit: J/cm²
-    confidence: 85
-    description: Laser fluence threshold for material removal at 1064 nm wavelength
-    min: null
-    max: null
-  porosity:
-    value: 1.2
-    unit: '%'
-    confidence: 90
-    description: Typical porosity range for dense porphyry rock
+    confidence: 80
+    description: Estimated laser ablation threshold for 1064 nm wavelength
     min: null
     max: null
 applications:
 - Cultural Heritage
 - Architecture and Construction
 - Manufacturing
+- Marine and Coastal
+- Energy Sector
+- Electronics Manufacturing
 - Aerospace
-- Electronics
-- Marine
-- Energy
-- Medical
+- Medical Equipment
 - Automotive
 - Food Processing
 machineSettings:
@@ -155,22 +149,22 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimized for Porphyry mineral absorption
+    description: Near-IR wavelength optimized for Porphyry mineral absorption characteristics
     min: 532
     max: 1064
   spotSize:
-    value: 80
+    value: 100
     unit: μm
     confidence: 84
-    description: Beam spot diameter for precise cleaning control
+    description: Optimal beam diameter for precision cleaning of Porphyry texture
     min: 50
-    max: 150
+    max: 200
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for continuous cleaning coverage
-    min: 30
+    description: High repetition rate for uniform cleaning coverage
+    min: 20
     max: 100
   pulseWidth:
     value: 12
@@ -183,30 +177,30 @@ machineSettings:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for efficient area coverage
+    description: Scanning speed for efficient area coverage without overheating
     min: 300
     max: 800
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Minimum fluence required for effective contaminant removal
+    description: Minimum fluence required for effective contaminant removal from Porphyry
     min: 1.8
     max: 4.0
   overlapRatio:
-    value: 40
+    value: 30
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning results
-    min: 30
-    max: 60
+    description: Optimal overlap between adjacent scan lines for uniform cleaning
+    min: 20
+    max: 50
   passCount:
-    value: 3
+    value: 2
     unit: passes
     confidence: 85
-    description: Recommended number of passes for complete cleaning
-    min: 2
-    max: 5
+    description: Recommended number of passes for complete contaminant removal
+    min: 1
+    max: 4
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -225,10 +219,6 @@ images:
     alt: Porphyry surface undergoing laser cleaning showing precise contamination
       removal
     url: /images/material/porphyry-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Porphyry surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/porphyry-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -254,6 +244,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Porphyry's unique, coarse-grained crystals are embedded in a finer, softer
+  matrix. This composition demands careful laser calibration to avoid differential
+  erosion between these two components.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -289,23 +282,30 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the porphyry surface is obscured by a dense,
-    heterogeneous contamination layer averaging 50-200 µm thick. This crust, composed
-    of particulate matter, black gypsum crusts, and biological growth, fills the micro-fissures
-    and pits characteristic of the stone's crystalline matrix. The original texture
-    of the feldspar phenocrysts and fine-grained groundmass is largely hidden, with
-    contamination adhering strongly to the mineral boundaries.
-  afterText: 'Post-cleaning, the analysis reveals a restored porphyritic texture.
-    The laser has cleanly ablated the contamination crust, exposing the distinct,
-    interlocking crystals of feldspar and quartz within the groundmass. The micro-topography
-    is now fully visible, with pits and fissures cleared of particulate matter, though
-    their original morphology remains intact.
+  beforeText: 'At 500x magnification, the porphyry surface is obscured by a complex,
+    stratified contamination layer. A dark, carbonaceous crust, measuring 50-200 micrometers
+    thick, adheres tenaciously to the stone matrix. This crust, composed of soot,
+    hydrocarbons, and gypsum, fills the micro-porosity and blankets the distinct phenocrysts
+    of quartz and feldspar.
 
 
-    The mineral boundaries are sharply defined, with no residual carbonaceous or sulfate
-    deposits. The process has achieved selective removal, as evidenced by the undamaged
-    crystal faces and the absence of thermal alteration such as melting or micro-fracturing.
-    The intrinsic hardness and composition of the porphyry have been preserved.'
+    Beneath this crust, a sub-layer of biological growth, including fungal hyphae
+    and cyanobacteria, penetrates the stone''s natural micropores (approx. 1.2% porosity).
+    The contamination creates a uniform, matte-black topography that completely masks
+    the inherent mineralogical contrast and micro-fracture network of the underlying
+    porphyry, compromising its visual and material integrity.'
+  afterText: 'Following laser cleaning, the 500x view reveals a complete restoration
+    of the porphyry''s intrinsic microstructure. The contamination crust has been
+    selectively ablated, exposing the clean, unaltered matrix. The sharp geometric
+    boundaries of quartz and feldspar phenocrysts are now clearly defined against
+    the finer-grained groundmass.
+
+
+    The stone''s natural micro-fracture network and original surface texture are fully
+    visible, with no residual soiling within the pores. The laser process has successfully
+    removed the biological sub-layer without inducing thermal damage, such as melting
+    or micro-fissuring, to the primary minerals. The surface exhibits its native hardness
+    and reflectivity.'
   description: Microscopic analysis of porphyry surface before and after laser cleaning
     treatment
   alt: Microscopic view of porphyry surface showing laser cleaning effects
@@ -341,6 +341,3 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - ikmanda-roswati
-subtitle: Porphyry can be a real puzzle during laser treatment due to its varying
-  hardness across the surface. Adjust your power levels with care—it's very-very important
-  to monitor the response and prevent uneven results.

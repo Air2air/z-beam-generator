@@ -15,25 +15,25 @@ materialProperties:
     value: 1250
     unit: °C
     confidence: 85
-    description: Approximate melting point range for schist minerals
+    description: Approximate melting temperature range for schist minerals
     min: null
     max: null
   thermalConductivity:
     value: 2.8
     unit: W/m·K
     confidence: 88
-    description: Thermal conductivity perpendicular to foliation
+    description: Thermal conductivity perpendicular to foliation planes
     min: 0.2
     max: 8
   tensileStrength:
-    value: 8.5
+    value: 8.2
     unit: MPa
-    confidence: 85
-    description: Brazilian tensile strength of schist
+    confidence: 92
+    description: tensileStrength from Materials.yaml
     min: 2
     max: 25
   hardness:
-    value: 5.5
+    value: 4.5
     unit: Mohs
     confidence: 90
     description: Average Mohs hardness based on mica and quartz content
@@ -42,8 +42,8 @@ materialProperties:
   youngsModulus:
     value: 65
     unit: GPa
-    confidence: 86
-    description: Young's modulus parallel to foliation plane
+    confidence: 83
+    description: Elastic modulus perpendicular to foliation direction
     min: 10
     max: 100
   laserAbsorption:
@@ -61,10 +61,10 @@ materialProperties:
     min: 5
     max: 80
   specificHeat:
-    value: 800.0
-    unit: J/kg·K
-    confidence: 92
-    description: specificHeat from Materials.yaml
+    value: 0.85
+    unit: J/g·K
+    confidence: 86
+    description: Specific heat capacity at constant pressure
     min: 600
     max: 1200
   thermalDestructionPoint:
@@ -84,63 +84,56 @@ materialProperties:
   thermalDiffusivity:
     value: 1.1
     unit: mm²/s
-    confidence: 82
-    description: Thermal diffusivity at room temperature
+    confidence: 84
+    description: Thermal diffusivity for heat propagation calculations
     min: 0.2
     max: 2.5
   thermalExpansion:
     value: 8.2
     unit: 10⁻⁶/K
-    confidence: 84
-    description: Coefficient of thermal expansion parallel to foliation
+    confidence: 82
+    description: Coefficient of thermal expansion at room temperature
     min: 3
     max: 25
   absorptionCoefficient:
     value: 0.45
     unit: dimensionless
-    confidence: 82
-    description: Optical absorption coefficient at 1064 nm wavelength
+    confidence: 80
+    description: Optical absorption coefficient for common laser wavelengths
     min: null
     max: null
   reflectivity:
     value: 0.35
     unit: dimensionless
-    confidence: 83
-    description: Surface reflectivity at 1064 nm laser wavelength
+    confidence: 82
+    description: Surface reflectivity at 1064 nm wavelength
     min: null
     max: null
   ablationThreshold:
     value: 2.8
     unit: J/cm²
-    confidence: 81
-    description: Laser ablation threshold for 1064 nm Nd:YAG laser
+    confidence: 85
+    description: Minimum fluence required for material removal at 1064 nm
     min: null
     max: null
   porosity:
     value: 2.5
     unit: '%'
-    confidence: 87
-    description: Average porosity of intact schist rock
-    min: null
-    max: null
-  compressiveStrength:
-    value: 120
-    unit: MPa
-    confidence: 89
-    description: Uniaxial compressive strength perpendicular to foliation
+    confidence: 88
+    description: Average porosity affecting laser interaction efficiency
     min: null
     max: null
 applications:
 - Cultural Heritage
 - Construction and Architecture
-- Geological Research
 - Museum Conservation
+- Geological Research
 - Landscape Architecture
-- Monument Restoration
-- Geotechnical Engineering
+- Monument Preservation
+- Interior Design
 - Archaeological Conservation
-- Building Restoration
-- Geological Education
+- Stone Fabrication
+- Geotechnical Engineering
 machineSettings:
   powerRange:
     value: 90
@@ -149,12 +142,12 @@ machineSettings:
     description: Optimal average power for Schist surface cleaning without thermal
       damage
     min: 70
-    max: 110
+    max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength optimized for Schist mineral absorption
+    description: Near-IR wavelength optimized for Schist mineral absorption
     min: 532
     max: 1064
   spotSize:
@@ -163,13 +156,13 @@ machineSettings:
     confidence: 84
     description: Beam spot diameter for precise cleaning control on Schist surfaces
     min: 50
-    max: 120
+    max: 150
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
     description: Optimal repetition rate for efficient cleaning with thermal management
-    min: 30
+    min: 20
     max: 100
   pulseWidth:
     value: 12
@@ -185,12 +178,12 @@ machineSettings:
     description: Optimal scanning speed for uniform cleaning coverage
     min: 300
     max: 800
-  energyDensity:
+  fluenceThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without substrate
-      damage
+    description: Energy density threshold for effective contaminant removal without
+      substrate damage
     min: 1.8
     max: 3.5
   overlapRatio:
@@ -210,7 +203,7 @@ machineSettings:
     max: 4
   laserType:
     value: Nd:YAG
-    unit: 'null'
+    unit: n/a
     confidence: 90
     description: Recommended laser type for Schist cleaning applications
     min: null
@@ -232,10 +225,6 @@ images:
   hero:
     alt: Schist surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/schist-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Schist surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/schist-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -261,6 +250,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Schist has a unique, flaky layered structure and variable mineral composition.
+  This requires careful adjustment of laser settings to clean effectively without
+  damaging its delicate surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -296,19 +288,18 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the schist surface is obscured by a dense, heterogeneous
-    contamination layer approximately 50-200 µm thick. This layer, composed of particulate
-    matter, carbonaceous soot, and biological growth, fills the natural micro-fissures
-    and foliation planes. The underlying crystalline structure of mica and quartz
-    is largely hidden, with the surface texture appearing matte and irregular due
-    to the non-uniform deposition of contaminants.
-  afterText: Following laser cleaning, the 500x view reveals a distinct transformation.
-    The contamination layer has been entirely removed, exposing the pristine, foliated
-    texture of the schist substrate. Individual mica flakes and quartz crystals are
-    now clearly defined, with sharp boundaries and a return to the stone's intrinsic
-    light reflectivity. The micro-topography is clean and well-defined, with no residual
-    thermal damage or alteration to the mineral grains, confirming the procedure's
-    precision.
+  beforeText: At 500x magnification, the schist surface is obscured by a complex contamination
+    layer. A discontinuous crust, measuring 50-200 micrometers thick, adheres to the
+    foliated stone matrix. This layer consists of particulate matter, carbonaceous
+    deposits, and biological growth, filling the natural micro-fissures and foliation
+    planes. The contaminants form an irregular, matte-textured film that masks the
+    underlying mineralogy and surface topography, significantly reducing light reflectivity.
+  afterText: Laser cleaning has effectively removed the contamination crust, revealing
+    the pristine schist substrate. The distinct foliation planes and interlocking
+    crystals of mica and quartz are now fully exposed, restoring the stone's inherent
+    texture. The surface exhibits a clean, well-defined topography with a measurable
+    increase in reflectivity, confirming the selective and non-abrasive nature of
+    the contaminant removal.
   description: Microscopic analysis of schist surface before and after laser cleaning
     treatment
   alt: Microscopic view of schist surface showing laser cleaning effects
@@ -344,6 +335,3 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - todd-dunning
-subtitle: Schist poses a unique hurdle in laser cleaning due to its inconsistent layering.
-  Adjust your power levels carefully below 50 watts to protect the stone’s fragile
-  foliation during the operation.

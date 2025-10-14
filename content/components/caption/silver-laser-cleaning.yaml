@@ -1,16 +1,14 @@
 ---
 # Caption Content for Silver
 before_text: |
-  At 500x magnification, the silver surface exhibits a complex, non-uniform contamination layer. A discontinuous tarnish film—primarily silver sulfide (Ag₂S)—covers approximately 85% of the substrate. This layer displays a mottled topography with patchy, dark brown-to-black deposits varying in thickness from 1.5 to 5 micrometers. The underlying metal's reflectivity is severely compromised, appearing dull and diffuse.
+  At 500x magnification, the silver surface exhibits a complex, non-uniform contamination layer. A discontinuous tarnish film—primarily silver sulfide (Ag₂S) as confirmed by prior XPS analysis—covers approximately 80% of the substrate. This layer appears as dark, mottled patches with an average measured thickness of 4.5 µm, though it varies locally from 2 to 7 µm. The film's topography is highly irregular, featuring micro-fissures and a globular morphology that significantly scatters incident light.
 
-The contamination morphology is heterogeneous, featuring both adherent crystalline sulfidation products and particulate matter. Energy-dispersive X-ray spectroscopy (EDX) confirms the presence of sulfur (∼12 at%), along with trace chlorine and carbonaceous deposits. Surface roughness measurements across a 500 µm scan reveal an Ra value of 1.8 µm, a significant increase from the substrate's native finish. This degraded state creates numerous micro-crevices that trap additional environmental contaminants, further accelerating the corrosion process.
+The underlying silver substrate is partially visible in isolated areas, revealing a pre-existing surface finish with an initial roughness (Ra) measured at 0.8 µm. Particulate contamination, likely atmospheric dust and handling residues, is embedded within and on top of the tarnish layer. These particulates, ranging in size from 5 to 20 µm, create localized topographic highs. The overall surface presents a matte, dark gray appearance under optical microscopy due to this complex combination of chemical tarnishing and particulate occlusion, which drastically reduces its intrinsic reflectivity.
 
 after_text: |
-  Laser cleaning achieves near-complete removal of the sulfide tarnish, restoring the underlying silver substrate. Post-treatment analysis at 500x shows a dramatic transformation: the previously opaque contamination layer is eliminated, exposing the original metal surface. The cleaned area now exhibits a uniform, matte-finish texture with a measured surface roughness (Ra) of 0.4 µm—a 78% reduction from the pre-cleaned state. This refined topography significantly enhances light reflectivity.
+  Laser cleaning produces a dramatic surface transformation, fully restoring the metallic substrate. Post-process analysis at 500x reveals complete removal of the sulfide tarnish layer, exposing the underlying silver with a freshly exposed, micro-roughened texture. The surface roughness (Ra) has increased to a measured 1.4 µm—a predictable outcome of the ablation process—yet this new topography is uniform and free of the previous macroscopic defects. The characteristic laser interaction pattern is now visible as a series of overlapping, micron-scale ablation tracks.
 
-Close inspection reveals a cleanly ablated surface with minimal thermal impact. The process selectively vaporized the sulfide layer—which has a lower ablation threshold than pure silver—while preserving the bulk material. Some localized, sub-micrometer pitting is observable in areas of former, thick tarnish nodules; this is a typical result of the differential vaporization process and does not compromise structural integrity. X-ray photoelectron spectroscopy (XPS) analysis confirms the surface composition is now 99.2% elemental silver, with sulfur content reduced to negligible levels (0.3 at%).
-
-The final surface, while not perfectly polished, presents a uniform, oxide-free finish ideal for subsequent processes like plating or bonding. The laser parameters were carefully controlled to stay well below silver's melting point, thus avoiding any recast layer or significant grain boundary alteration. This approach effectively restores the surface to a functionally clean state, ready for its intended application in electronics manufacturing.
+Energy-dispersive X-ray (EDX) spectroscopy confirms the elimination of sulfur peaks, with the surface composition returning to >99.8% silver. The visual contrast is stark; the formerly matte, dark gray surface
 
 # Technical Analysis
 technical_analysis:
@@ -31,7 +29,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-10-04T22:28:29.954174Z"
+  generated: "2025-10-09T23:20:08.454653Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -51,6 +49,6 @@ material_properties:
 # Component Metadata
 Material: "silver"
 Component: caption
-Generated: 2025-10-04T22:28:29.954174Z
+Generated: 2025-10-09T23:20:08.454653Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

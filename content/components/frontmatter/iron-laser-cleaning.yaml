@@ -19,10 +19,10 @@ materialProperties:
     min: null
     max: null
   thermalConductivity:
-    value: 80.2
+    value: 80.4
     unit: W/m·K
     confidence: 92
-    description: Thermal conductivity at 20°C
+    description: Thermal conductivity of pure iron at 20°C
     min: 6.0
     max: 429.0
   tensileStrength:
@@ -64,7 +64,7 @@ materialProperties:
     value: 449
     unit: J/kg·K
     confidence: 91
-    description: Specific heat capacity at 20°C
+    description: Specific heat capacity at room temperature
     min: 100
     max: 900
   thermalDestructionPoint:
@@ -105,7 +105,7 @@ materialProperties:
   reflectivity:
     value: 0.35
     unit: dimensionless
-    confidence: 84
+    confidence: 83
     description: Reflectivity for 1064 nm laser wavelength
     min: null
     max: null
@@ -113,20 +113,19 @@ materialProperties:
     value: 1.2
     unit: J/cm²
     confidence: 80
-    description: Approximate laser ablation threshold for nanosecond pulses at 1064
-      nm
+    description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   oxidationResistance:
-    value: 0.15
-    unit: mm/year
+    value: 2.8
+    unit: mg/cm²·h
     confidence: 85
-    description: Oxidation rate in air at 500°C
+    description: Oxidation rate in air at 800°C
     min: null
     max: null
   crystallineStructure:
     value: BCC
-    unit: crystal system
+    unit: none
     confidence: 98
     description: Body-centered cubic structure (alpha-iron) at room temperature
     min: null
@@ -138,17 +137,24 @@ materialProperties:
     description: Electrical resistivity at 20°C
     min: null
     max: null
+  laserDamageThreshold:
+    value: 0.8
+    unit: J/cm²
+    confidence: 81
+    description: Laser-induced damage threshold for surface modification
+    min: null
+    max: null
 applications:
 - Aerospace
 - Automotive Manufacturing
 - Marine Engineering
 - Cultural Heritage Conservation
-- Energy Sector
+- Power Generation
 - Rail Transportation
-- Heavy Manufacturing
-- Construction and Infrastructure
-- Food Processing Equipment
-- Oil and Gas
+- Heavy Equipment Manufacturing
+- Medical Device Manufacturing
+- Oil and Gas Infrastructure
+- Electronics Manufacturing
 machineSettings:
   powerRange:
     value: 100
@@ -162,13 +168,13 @@ machineSettings:
     unit: nm
     confidence: 88
     description: Near-IR wavelength with good absorption in iron oxides and minimal
-      substrate heating
+      substrate damage
     min: 1030
     max: 1070
   spotSize:
     value: 50
     unit: μm
-    confidence: 83
+    confidence: 84
     description: Optimal spot size for balancing cleaning efficiency and coverage
     min: 30
     max: 100
@@ -183,44 +189,37 @@ machineSettings:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient oxide layer ablation
+    description: Nanosecond pulse duration for efficient oxide layer removal
     min: 5
     max: 20
   scanSpeed:
     value: 1000
     unit: mm/s
-    confidence: 85
-    description: Optimal scanning speed for uniform cleaning without thermal accumulation
+    confidence: 86
+    description: Optimal scanning speed for uniform cleaning
     min: 500
     max: 2000
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
-    confidence: 90
-    description: Minimum fluence required for effective iron oxide removal
+    confidence: 89
+    description: Minimum fluence required for effective oxide layer removal
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 82
-    description: Optimal pulse overlap for uniform cleaning coverage
+    confidence: 83
+    description: Optimal overlap between adjacent scan lines for uniform cleaning
     min: 40
     max: 70
   passCount:
     value: 3
     unit: passes
-    confidence: 84
-    description: Typical number of passes for complete oxide layer removal
+    confidence: 85
+    description: Typical number of passes required for complete oxide removal
     min: 1
     max: 5
-  laserType:
-    value: Fiber Laser
-    unit: n/a
-    confidence: 89
-    description: Preferred laser type for iron cleaning applications
-    min: null
-    max: null
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -238,10 +237,6 @@ images:
   hero:
     alt: Iron surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/iron-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Iron surface after laser cleaning showing detailed surface
-      structure
-    url: /images/material/iron-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -267,6 +262,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Iron is highly prone to oxidation, forming tenacious rust layers unlike
+  other ferrous metals. This requires careful adjustment of laser parameters to effectively
+  remove corrosion without damaging the underlying base metal.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -302,21 +300,20 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the iron surface is obscured by a non-uniform
-    contamination layer, typically 5-20 µm thick. This layer consists of porous, amorphous
-    iron oxide (Fe₂O₃/Fe₃O₄) and embedded particulate matter. The underlying metallic
-    substrate is largely invisible, with surface features like machining marks completely
-    filled by corrosion products, creating a rough, textured topography that compromises
-    the base material's integrity and reflectivity.
-  afterText: Laser cleaning removes the contamination layer, revealing the original,
-    intact metallic substrate. At 500x, the surface now exhibits a distinct grain
-    structure with clearly defined boundaries, characteristic of the body-centered
-    cubic (BCC) crystalline form of alpha-iron. Micron-scale machining striations
-    are fully restored, and the surface reflectivity is significantly increased due
-    to the exposure of pure, uncorroded metal. The process achieves a selective ablation
-    threshold of approximately 1.2 J/cm², effectively vaporizing oxides while the
-    underlying iron, with its melting point of 1538°C and high thermal conductivity
-    (80.2 W/m·K), remains undamaged, resulting in a clean, metallurgically sound surface.
+  beforeText: At 500x magnification, the iron surface is obscured by a complex contamination
+    layer. A porous, amorphous oxide scale, primarily Fe2O3 and Fe3O4, forms a crust
+    ranging from 5-50 µm in thickness. This brittle, fractured layer exhibits poor
+    adhesion to the underlying metal substrate. Embedded particulate matter, including
+    carbonaceous soot and silica dust, is distributed non-uniformly across the surface,
+    creating a topographically rough and irregular profile that masks the native metallic
+    grain structure.
+  afterText: Following laser cleaning, the surface reveals a distinct transformation
+    at 500x magnification. The contamination layer has been completely ablated, exposing
+    the underlying polycrystalline grain structure of the pure iron substrate. The
+    surface now exhibits a clean, micro-rough texture with an average roughness (Ra)
+    below 2 µm, a direct result of the selective removal process. The well-defined
+    grain boundaries and a uniform, light-gray metallic appearance confirm the restoration
+    of the base material.
   description: Microscopic analysis of iron surface before and after laser cleaning
     treatment
   alt: Microscopic view of iron surface showing laser cleaning effects
@@ -352,6 +349,3 @@ tags:
 - conductive
 - reflective-surface
 - ikmanda-roswati
-subtitle: Pay close attention to iron during laser treatment—its surface can be very-very
-  sensitive to high power. Adjust the controls gradually to below 50 watts to safeguard
-  the finish and get a good-good result.

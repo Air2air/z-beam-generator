@@ -8,14 +8,14 @@ materialProperties:
     value: 2.7
     unit: g/cm³
     confidence: 95
-    description: Average density of pure calcite marble
+    description: Average density of calcite-based marble
     min: 1.5
     max: 3.4
   meltingPoint:
-    value: 825
+    value: 1339
     unit: °C
     confidence: 90
-    description: Decomposition temperature of calcium carbonate to calcium oxide
+    description: Melting point of calcite (CaCO3) decomposition
     min: null
     max: null
   thermalConductivity:
@@ -36,20 +36,20 @@ materialProperties:
     value: 3.0
     unit: Mohs
     confidence: 95
-    description: Mohs hardness scale for calcite
+    description: Mohs hardness scale for calcite-based marble
     min: 1
     max: 7
   youngsModulus:
-    value: 70
+    value: 55
     unit: GPa
-    confidence: 90
-    description: Elastic modulus of marble
+    confidence: 88
+    description: Young's modulus of elasticity
     min: 10
     max: 100
   compressiveStrength:
     value: 115
     unit: MPa
-    confidence: 88
+    confidence: 90
     description: Uniaxial compressive strength
     min: null
     max: null
@@ -69,7 +69,7 @@ materialProperties:
     max: 80
   specificHeat:
     value: 0.88
-    unit: kJ/kg·K
+    unit: J/g·°C
     confidence: 92
     description: Specific heat capacity at room temperature
     min: 600
@@ -104,37 +104,37 @@ materialProperties:
     max: 25
   absorptionCoefficient:
     value: 0.65
-    unit: dimensionless
+    unit: cm⁻¹
     confidence: 82
-    description: Average absorption coefficient for visible light
+    description: Optical absorption coefficient at 1064 nm wavelength
     min: null
     max: null
   reflectivity:
-    value: 0.35
+    value: 0.25
     unit: dimensionless
     confidence: 85
-    description: Average reflectivity at 1064 nm wavelength
+    description: Surface reflectivity at 1064 nm laser wavelength
     min: null
     max: null
   ablationThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 80
-    description: Estimated ablation threshold for nanosecond pulses at 1064 nm
+    description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   porosity:
     value: 0.7
     unit: '%'
-    confidence: 90
-    description: Typical porosity range for high-quality marble
+    confidence: 88
+    description: Average porosity percentage
     min: null
     max: null
   chemicalStability:
     value: Low
     unit: qualitative
     confidence: 95
-    description: Reacts with acids, stable in alkaline environments
+    description: Reacts with acids due to calcite composition
     min: null
     max: null
 applications:
@@ -142,88 +142,82 @@ applications:
 - Construction and Architecture
 - Monument Conservation
 - Museum and Art Conservation
-- Funerary and Cemetery Maintenance
-- Interior Design and Restoration
-- Industrial Manufacturing
+- Funerary Art Restoration
+- Interior Design and Luxury Goods
 - Archaeological Science
-- Commercial Real Estate
+- Industrial Manufacturing
 - Religious Architecture
+- Public Art Maintenance
 machineSettings:
   powerRange:
-    value: 90
+    value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for marble surface cleaning without thermal
-      damage
-    min: 70
+    description: Optimal average power for Marble cleaning without thermal damage
+    min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength optimized for marble absorption and minimal
-      substrate damage
+    description: Near-IR wavelength optimized for Marble's calcium carbonate absorption
     min: 532
-    max: 1064
+    max: 10640
   spotSize:
     value: 100
     unit: μm
     confidence: 84
-    description: Beam spot diameter for precise cleaning control on marble surfaces
+    description: Beam spot diameter for precise cleaning control
     min: 50
     max: 200
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning coverage and thermal
-      management
+    description: Optimal repetition rate for efficient cleaning with thermal management
     min: 20
     max: 100
   pulseWidth:
-    value: 15
+    value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with
-      controlled thermal penetration
-    min: 8
-    max: 30
+    description: Nanosecond pulse duration for controlled ablation of contaminants
+    min: 5
+    max: 20
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform cleaning without excessive heat
-      accumulation
+    description: Optimal scanning speed for uniform cleaning coverage
     min: 200
     max: 1000
-  fluenceThreshold:
-    value: 2.5
+  energyDensity:
+    value: 1.2
     unit: J/cm²
     confidence: 89
-    description: Energy density threshold for effective contaminant removal while
-      preserving marble substrate
-    min: 1.5
-    max: 4.0
+    description: Fluence threshold for effective contaminant removal without substrate
+      damage
+    min: 0.8
+    max: 2.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning coverage and processing
-      efficiency
+    description: Optimal beam overlap for uniform cleaning pattern
     min: 30
     max: 70
   passCount:
     value: 3
     unit: passes
     confidence: 85
-    description: Recommended number of passes for thorough cleaning of marble surfaces
+    description: Recommended number of passes for complete contaminant removal
     min: 1
     max: 5
   laserType:
     value: Nd:YAG
-    unit: n/a
+    unit: laser_type
     confidence: 90
-    description: Recommended laser type for marble cleaning applications
+    description: Recommended laser type for Marble cleaning applications
     min: null
     max: null
 regulatoryStandards:
@@ -246,10 +240,6 @@ images:
   hero:
     alt: Marble surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/marble-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Marble surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/marble-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -275,6 +265,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Marble is a softer and more porous stone with unique veining patterns. These
+  properties demand careful laser calibration to prevent etching and preserve its
+  intricate surface details.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -310,21 +303,23 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the marble surface is obscured by a stratified
-    contamination layer approximately 50-200 micrometers thick. This layer consists
-    of particulate matter (soot, dust) embedded within a dark, carbonaceous matrix,
-    likely from pollution. The underlying calcite crystals are partially visible,
-    but their interlocking texture is muted. The contaminants have filled the natural
-    micro-fissures and porosity of the stone, creating a continuous, dark crust that
-    compromises the substrate's reflectivity and obscures its intrinsic crystalline
-    structure.
-  afterText: Following laser cleaning, the surface reveals a distinct transformation.
-    The stratified contamination layer has been entirely removed, exposing the pristine,
-    interlocking structure of the calcite crystals. The marble's intrinsic micro-topography,
-    including grain boundaries and subtle cleavage planes, is now clearly defined.
-    The surface exhibits restored reflectivity and a clean, mineral-white appearance,
-    with no thermal damage or residue observed. The process has successfully ablated
-    the crust while preserving the substrate's integrity.
+  beforeText: At 500x magnification, the marble surface is obscured by a complex,
+    stratified contamination layer. This layer, measuring 50-200 micrometers thick,
+    consists of particulate matter (carbon soot, silica dust) embedded within a gypsum-rich
+    matrix. The contaminants fill the natural calcite crystal boundaries and micro-fissures,
+    creating a dark, cohesive crust that masks the stone's inherent crystalline structure.
+    The surface texture is highly irregular, with the crust forming brittle, dendritic
+    patterns that follow moisture pathways and previous weathering. This layer significantly
+    increases light absorption and scattering, giving the macroscopic surface its
+    darkened, blotchy appearance.
+  afterText: Following laser cleaning, the 500x view reveals the restored marble substrate.
+    The contamination crust has been completely removed via selective laser ablation,
+    exposing the interlocking calcite crystal structure. The surface now exhibits
+    sub-micrometer roughness, with crystal boundaries and cleavage planes clearly
+    defined. Minor, pre-existing micro-fissures are now visible but free of foreign
+    material. The primary visual improvement is the restoration of the stone's inherent
+    light reflectivity and mineralogical texture, confirming the removal of the obscuring
+    layer without mechanical damage to the underlying calcite.
   description: Microscopic analysis of marble surface before and after laser cleaning
     treatment
   alt: Microscopic view of marble surface showing laser cleaning effects
@@ -360,6 +355,3 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - ikmanda-roswati
-subtitle: Marble can be very-very demanding during laser treatment due to its varying
-  properties. Adjust your power levels carefully below 50 watts to protect the delicate
-  finish, ensuring a clean result without any harm.

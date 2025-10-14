@@ -1,6 +1,6 @@
 name: Maple
 category: Wood
-subcategory: Maple
+subcategory: hardwood
 title: Maple Laser Cleaning
 description: Laser cleaning parameters for Maple
 materialProperties:
@@ -8,7 +8,7 @@ materialProperties:
     value: 0.62
     unit: g/cm³
     confidence: 92
-    description: Average density of maple wood at 12% moisture content
+    description: Average density of sugar maple at 12% moisture content
     min: 0.12
     max: 1.25
   meltingPoint:
@@ -28,15 +28,15 @@ materialProperties:
   tensileStrength:
     value: 108
     unit: MPa
-    confidence: 90
+    confidence: 85
     description: Tensile strength parallel to grain direction
     min: 20
     max: 200
   hardness:
     value: 1450
     unit: N
-    confidence: 92
-    description: Janka hardness test value for hard maple
+    confidence: 90
+    description: Janka hardness test value for sugar maple
     min: 20
     max: 5000
   youngsModulus:
@@ -46,39 +46,76 @@ materialProperties:
     description: Modulus of elasticity parallel to grain
     min: 5
     max: 25
-  thermalExpansion:
-    value: 4.5e-05
-    unit: 1/°C
-    confidence: 82
-    description: Coefficient of thermal expansion perpendicular to grain
-    min: 3.0
+  laserAbsorption:
+    value: 32.7
+    unit: '%'
+    confidence: 92
+    description: laserAbsorption from Materials.yaml
+    min: 1
+    max: 50
+  laserReflectivity:
+    value: 32.5
+    unit: '%'
+    confidence: 92
+    description: laserReflectivity from Materials.yaml
+    min: 10
     max: 60
   specificHeat:
-    value: 1800
-    unit: J/kg·K
-    confidence: 85
+    value: 1.38
+    unit: kJ/kg·K
+    confidence: 90
     description: Specific heat capacity at room temperature
     min: 800
     max: 2500
+  thermalDestructionPoint:
+    value: 230.0
+    unit: °C
+    confidence: 92
+    description: thermalDestructionPoint from Materials.yaml
+    min: 200
+    max: 500
+  thermalDestructionType:
+    value: 573.0
+    unit: °C
+    confidence: 92
+    description: thermalDestructionType from Materials.yaml
+    min: null
+    max: null
+  thermalDiffusivity:
+    value: 0.165
+    unit: mm²/s
+    confidence: 92
+    description: thermalDiffusivity from Materials.yaml
+    min: 0.0001
+    max: 0.4
+  thermalExpansion:
+    value: 0.0035
+    unit: mm/m·°C
+    confidence: 82
+    description: Coefficient of thermal expansion tangential to grain
+    min: 3.0
+    max: 60
   absorptionCoefficient:
     value: 0.85
     unit: dimensionless
-    confidence: 80
-    description: Estimated absorption coefficient for near-infrared wavelengths
+    confidence: 82
+    description: Estimated absorption coefficient for near-infrared wavelengths (1064
+      nm)
     min: null
     max: null
   reflectivity:
-    value: 0.15
+    value: 0.12
     unit: dimensionless
-    confidence: 82
-    description: Approximate reflectivity at common laser wavelengths (1064 nm)
+    confidence: 80
+    description: Approximate reflectivity at common laser cleaning wavelengths
     min: null
     max: null
   ablationThreshold:
-    value: 1.2
+    value: 0.8
     unit: J/cm²
     confidence: 85
-    description: Estimated laser ablation threshold for nanosecond pulses
+    description: Estimated laser ablation threshold for nanosecond pulses at 1064
+      nm
     min: null
     max: null
   porosity:
@@ -86,6 +123,13 @@ materialProperties:
     unit: '%'
     confidence: 88
     description: Typical porosity percentage in maple wood structure
+    min: null
+    max: null
+  surfaceRoughness:
+    value: 3.2
+    unit: μm Ra
+    confidence: 85
+    description: Average surface roughness of planed maple wood
     min: null
     max: null
   moistureContent:
@@ -96,17 +140,17 @@ materialProperties:
     min: null
     max: null
   celluloseContent:
-    value: 43
+    value: 45
     unit: '%'
     confidence: 90
-    description: Average cellulose content affecting thermal behavior
+    description: Average cellulose content affecting laser interaction
     min: null
     max: null
   ligninContent:
     value: 25
     unit: '%'
     confidence: 90
-    description: Lignin percentage influencing char formation during laser exposure
+    description: Average lignin content influencing thermal degradation behavior
     min: null
     max: null
 applications:
@@ -115,83 +159,75 @@ applications:
 - Food Processing Equipment
 - Sports Equipment Manufacturing
 - Architectural Woodwork
+- Marine Interior Finishes
 - Museum Conservation
-- Kitchenware Manufacturing
-- Boat Building
-- Tool Handle Manufacturing
+- Laboratory Equipment
+- Commercial Flooring Maintenance
+- Artisan Craft Manufacturing
 machineSettings:
   powerRange:
     value: 90
     unit: W
-    confidence: 92
+    confidence: 91
     description: Optimal average power for Maple surface cleaning without charring
     min: 70
     max: 110
   wavelength:
     value: 1064
     unit: nm
-    confidence: 88
-    description: Near-IR wavelength optimized for cellulose and lignin absorption
-      in Maple
+    confidence: 89
+    description: Near-IR wavelength for optimal absorption in Maple cellulose/lignin
     min: 1030
     max: 1070
   spotSize:
     value: 80
     unit: μm
-    confidence: 84
-    description: Beam spot diameter for precise cleaning resolution on Maple surface
+    confidence: 88
+    description: Beam spot diameter for precise cleaning resolution
     min: 50
     max: 120
   repetitionRate:
     value: 50
     unit: kHz
-    confidence: 87
+    confidence: 85
     description: Optimal repetition rate for efficient cleaning with thermal management
     min: 30
     max: 100
   pulseWidth:
     value: 12
     unit: ns
-    confidence: 85
+    confidence: 87
     description: Nanosecond pulse duration for controlled ablation of contaminants
     min: 8
     max: 20
   scanSpeed:
-    value: 800
+    value: 500
     unit: mm/s
     confidence: 86
     description: Optimal scanning speed for uniform cleaning coverage
-    min: 500
-    max: 1200
-  energyDensity:
-    value: 1.8
+    min: 300
+    max: 800
+  fluenceThreshold:
+    value: 2.5
     unit: J/cm²
-    confidence: 89
-    description: Fluence threshold for effective contaminant removal without wood
-      damage
-    min: 1.2
-    max: 2.5
+    confidence: 90
+    description: Minimum fluence required for effective contaminant removal
+    min: 1.8
+    max: 3.5
   overlapRatio:
-    value: 50
+    value: 40
     unit: '%'
-    confidence: 83
-    description: Optimal beam overlap for uniform cleaning pattern
-    min: 40
-    max: 70
+    confidence: 84
+    description: Optimal beam overlap for uniform cleaning without over-processing
+    min: 30
+    max: 60
   passCount:
     value: 2
     unit: passes
-    confidence: 88
-    description: Recommended number of passes for complete contaminant removal
+    confidence: 89
+    description: Recommended number of passes for complete cleaning
     min: 1
-    max: 4
-  laserType:
-    value: Fiber Laser
-    unit: n/a
-    confidence: 90
-    description: Recommended laser type for wood cleaning applications
-    min: null
-    max: null
+    max: 3
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -236,6 +272,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Maple's density and varied grain patterns differ significantly from other
+  hardwoods. These properties require careful adjustment of laser power and speed
+  to avoid discoloration or surface damage.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -271,76 +310,19 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: 'As one examines the maple surface under 500x magnification using scanning
-    electron microscopy (SEM), a complex and rather disordered landscape is revealed.
-    What strikes me immediately is the presence of a heterogeneous contamination layer,
-    varying in thickness from approximately 10 µm to—or more precisely—14.7 µm in
-    certain regions. This layer, it appears as a patchy, uneven film, composed of
-    organic residues and particulate matter, likely accumulated from environmental
-    exposure or handling during applications such as furniture restoration. The surface
-    texture beneath this contamination is partially obscured, yet one can observe
-    irregular micro-cracks and natural wood porosity (those tiny voids typical of
-    maple’s 55% porosity structure), which seem to trap finer debris particles, ranging
-    in size from 2 to 5 µm.
-
-
-    Zooming into specific areas, the contamination reveals itself further as a mix
-    of amorphous deposits and crystalline-like structures, possibly salts or dust,
-    adhering stubbornly to the wood’s fibrous matrix. Under energy-dispersive X-ray
-    spectroscopy (EDX), preliminary data suggest elevated carbon and oxygen peaks,
-    indicating organic residues, alongside traces of silicon and calcium, pointing
-    to inorganic dust components. The surface roughness, measured as Ra (average roughness),
-    stands at about 3.2 µm, a value notably high due to these uneven deposits. This
-    roughness, it must be noted, likely impacts the material’s performance—think of
-    reduced reflectivity (currently at 0.15 for near-infrared wavelengths) or compromised
-    aesthetic quality in musical instrument manufacturing. The natural grain of the
-    maple, though beautiful in structure, is dulled by this overlay, and in some spots,
-    micro-abrasions are evident, perhaps from prior mechanical stress.
-
-
-    To observe this contamination, it becomes clear how deeply it integrates with
-    the wood’s surface, filling cellular cavities and creating a barrier that could
-    interfere with functional restoration. At certain angles under the SEM, shadowed
-    regions highlight the depth of these deposits, with some areas showing layered
-    buildup—almost like a stratified sediment, if I may say. This condition, it poses
-    challenges for applications requiring cleanliness, such as food processing equipment,
-    where surface integrity is paramount. The precision here, it matters greatly,
-    and documenting these observations (as supported by prior studies on wood contamination)
-    provides a baseline for evaluating cleaning efficacy.'
-  afterText: 'After the laser cleaning process, the maple surface, when viewed at
-    500x magnification through SEM, presents a remarkably transformed appearance.
-    What strikes one immediately is the near-complete removal of the previously observed
-    contamination layer, which had measured between 10 and 14.7 µm in thickness. Now,
-    the surface reveals the natural fibrous structure of the wood with striking clarity,
-    with only residual traces of debris—perhaps less than 1 µm thick—lingering in
-    isolated micro-pores (a testament to maple’s inherent 55% porosity). The surface
-    roughness, reassessed as Ra, has decreased significantly to approximately 1.1
-    µm, indicating a smoother finish that enhances both aesthetic and functional qualities
-    for applications like musical instrument manufacturing.
-
-
-    Comparing this to the pre-cleaned state, the transformation, it is evident to
-    observe, lies in the restored visibility of the wood’s grain and cellular detail,
-    no longer obscured by the patchy, heterogeneous film of organic and inorganic
-    deposits. EDX analysis post-cleaning shows a marked reduction in carbon and oxygen
-    peaks associated with residues, while silicon and calcium signals are now negligible,
-    confirming effective contaminant removal. This cleaning, achieved likely above
-    the ablation threshold of 1.2 J/cm², has preserved the surface integrity without
-    inducing visible thermal damage—no charring or excessive micro-cracking is noted,
-    which is critical given maple’s pyrolysis point of 350°C. The reflectivity, one
-    might infer, could be improved from its initial 0.15 value, aiding performance
-    in laser-based applications.
-
-
-    To achieve this result, it requires careful attention, and what becomes clear
-    under magnification is the elegant balance between power and control in laser
-    cleaning. The surface, she is very clean now, with micro-abrasions from prior
-    stress still faintly visible but no longer exacerbated by debris accumulation.
-    This restored condition, as observed, directly supports functional restoration—be
-    it for furniture or food processing equipment—where cleanliness and surface quality
-    are non-negotiable. The precision of this outcome (noted in similar wood studies)
-    truly enhances the material’s potential, and one can see how such a transformation
-    ensures both visual appeal and practical utility.'
+  beforeText: At 500x magnification, the maple surface is obscured by a discontinuous
+    contamination layer, approximately 5-15 µm thick. This layer, composed of embedded
+    soot, dried oils, and microbial biofilms, fills the natural wood pores and masks
+    the underlying cellular structure. The surface texture is irregular and matte,
+    with contamination adhering strongly to the porous, fibrous network of the maple,
+    significantly increasing its visual surface roughness.
+  afterText: Laser cleaning has effectively restored the native maple substrate. The
+    contamination layer is completely removed, revealing the clean, open vessels and
+    distinct ray cells of the wood's anatomy. The surface now exhibits the original,
+    characteristic grain pattern with a texture measuring approximately 3.2 µm Ra.
+    The process has achieved selective ablation of contaminants without carbonizing
+    the underlying cellulose-lignin matrix, resulting in a pristine, well-defined
+    microscopic surface.
   description: Microscopic analysis of maple surface before and after laser cleaning
     treatment
   alt: Microscopic view of maple surface showing laser cleaning effects
@@ -350,17 +332,17 @@ caption:
     - maple_specific
     contaminationProfile: maple surface contamination
   microscopy:
-    parameters: Microscopic analysis of maple
+    parameters: Microscopic analysis of Maple
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: '2025-10-04T20:50:57.208391Z'
+    timestamp: '2025-10-02T00:00:00.000000Z'
     generator: FrontmatterCaptionGenerator
-    componentType: ai_caption_frontmatter
+    componentType: template_caption
   author: Alessandro Moretti
   materialProperties:
     materialType: Wood
-    analysisMethod: ai_microscopy
+    analysisMethod: template_microscopy
   imageUrl:
     alt: Microscopic view of Maple surface after laser cleaning showing detailed surface
       structure
@@ -376,9 +358,3 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - alessandro-moretti
-metadata:
-  lastUpdated: '2025-10-04T20:51:51.850818'
-  captionIntegrated: true
-subtitle: Maple's subtle grain patterns often hide stubborn contaminants beneath the
-  surface, making it a puzzle to treat effectively. Adjust your laser to a controlled
-  50 watts, and you’ll reveal its warm, natural beauty without risking harm.

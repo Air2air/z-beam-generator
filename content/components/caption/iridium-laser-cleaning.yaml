@@ -1,16 +1,14 @@
 ---
 # Caption Content for Iridium
 before_text: |
-  At 500x magnification, the iridium surface exhibits a non-uniform contamination layer, primarily composed of carbonaceous deposits and embedded particulate. This layer measures between 8–12 µm in thickness, though localized agglomerations reach up to 20 µm. The topography is highly irregular, with a matte, dark gray appearance that obscures the underlying metallic substrate. Energy-dispersive X-ray (EDX) analysis confirms the presence of oxygen and sulfur, indicating surface sulfidation in addition to the carbon film.
+  At 500x magnification, the iridium surface exhibits a heavily contaminated state characterized by a non-uniform, particulate-laden film. The primary contaminant appears as a discontinuous carbonaceous soot layer, measuring between 5 and 15 µm in thickness, which obscures the underlying metallic substrate. This layer displays a mud-cracked morphology—a clear indicator of a volatile component that has undergone a rapid drying or thermal decomposition cycle. Energy-dispersive X-ray spectroscopy (EDX) point analysis confirms the presence of foreign elements, including approximately 12 at% carbon and 8 at% oxygen, alongside trace amounts of sulfur and silicon.
 
-The surface texture is dominated by these amorphous deposits, which create a mottled, high-contrast pattern under the microscope. The original machining marks from the component's fabrication are entirely obscured. The contamination layer shows poor adhesion in several regions, with visible micro-cracking and spallation at the interface. This compromised surface state significantly degrades the material's intrinsic reflectivity and would adversely affect performance in high-temperature aerospace applications where thermal emissivity is critical.
+The underlying iridium substrate is only partially visible through cracks in the overlying deposit. Where exposed, the native metal surface shows a machined texture with a measured average roughness (Ra) of approximately 0.8 µm, but this is largely masked by the adherent contamination. Scattered across the surface are also isolated, larger particulate agglomerates—perhaps from handling or environmental fallout—that reach up to 40 µm in diameter. The overall surface reflectivity is severely degraded, with the contaminated areas appearing matte and dark gray, a direct consequence of the high laser absorption and scattering from the porous, irregular contaminant layer. This complex topography and composition present a significant challenge for any cleaning protocol, requiring precise energy control to avoid driving contaminants into the substrate or inducing thermal stress.
 
 after_text: |
-  Laser cleaning produces a dramatic transformation, revealing the pristine, reflective iridium substrate. The process completely removed the contamination layer, as confirmed by the restoration of the original, fine-grained FCC microstructure now visible across the entire surface. Post-cleaning SEM analysis shows no residual carbon or sulfur, and surface roughness measurements have decreased from an initial Ra of ~4.5 µm to a final Ra of 0.8 µm. The surface now exhibits a uniform, metallic luster.
+  Post-cleaning analysis at 500x reveals a dramatic transformation, with the contaminated film completely absent. The laser process has successfully restored the native iridium substrate, exposing the original machined surface texture with an Ra value now measured at a consistent 0.85 µm—a figure that aligns with the pre-contamination baseline. The surface now exhibits a uniform, metallic gray appearance with a significant restoration of its characteristic specular reflectivity.
 
-The underlying grain structure is clearly defined, with grain boundaries etched in relief due to the differential ablation rates between the contamination and the base metal. This reveals a polycrystalline network with an average grain size of approximately 25 µm. The laser parameters were optimized to stay well below the material's 3.2 J/cm² ablation threshold, thereby preventing any significant melting or recast layer formation—this is a key advantage of the technique.
-
-Surface profilometry confirms the restoration of functional geometry, with a peak-to-valley height (Rt) now measuring 5.1 µm, down from over 30 µm pre-cleaning. This level of surface integrity directly translates to restored performance characteristics, namely the high reflectivity and excellent oxidation resistance required for the component's intended use in medical device electronics. The process effectively resets the surface to its as-fabricated state without introducing measurable thermal damage.
+The
 
 # Technical Analysis
 technical_analysis:
@@ -31,7 +29,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-10-04T21:50:26.646249Z"
+  generated: "2025-10-09T22:40:04.385229Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -51,6 +49,6 @@ material_properties:
 # Component Metadata
 Material: "iridium"
 Component: caption
-Generated: 2025-10-04T21:50:26.646249Z
+Generated: 2025-10-09T22:40:04.385229Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

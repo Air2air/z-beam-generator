@@ -8,21 +8,21 @@ materialProperties:
     value: 2.65
     unit: g/cm³
     confidence: 95
-    description: Average density of quartzite due to high quartz content
+    description: Average density of quartzite dominated by quartz mineral content
     min: 1.5
     max: 3.4
   meltingPoint:
     value: 1670
     unit: °C
     confidence: 90
-    description: Melting point of pure quartz (SiO₂), primary component of quartzite
+    description: Melting point of pure quartz (SiO₂), primary constituent of quartzite
     min: null
     max: null
   thermalConductivity:
     value: 7.6
     unit: W/m·K
     confidence: 88
-    description: Thermal conductivity at room temperature, perpendicular to bedding
+    description: Thermal conductivity at room temperature for crystalline quartz
     min: 0.2
     max: 8
   tensileStrength:
@@ -36,14 +36,14 @@ materialProperties:
     value: 7
     unit: Mohs
     confidence: 95
-    description: Hardness on Mohs scale, equivalent to quartz
+    description: Mohs hardness scale, equivalent to quartz mineral hardness
     min: 1
     max: 7
   youngsModulus:
     value: 95
     unit: GPa
     confidence: 82
-    description: Elastic modulus in compression
+    description: Elastic modulus for quartz-rich quartzite
     min: 10
     max: 100
   laserAbsorption:
@@ -63,7 +63,7 @@ materialProperties:
   specificHeat:
     value: 0.74
     unit: J/g·K
-    confidence: 87
+    confidence: 92
     description: Specific heat capacity at room temperature
     min: 600
     max: 1200
@@ -90,44 +90,51 @@ materialProperties:
     max: 2.5
   thermalExpansion:
     value: 12.3
-    unit: ×10⁻⁶/K
+    unit: ×10⁻⁶/°C
     confidence: 85
-    description: Coefficient of thermal expansion at 20-100°C
+    description: Coefficient of thermal expansion parallel to c-axis of quartz
     min: 3
     max: 25
+  compressiveStrength:
+    value: 250
+    unit: MPa
+    confidence: 85
+    description: Uniaxial compressive strength of typical quartzite
+    min: null
+    max: null
   absorptionCoefficient:
-    value: 0.85
-    unit: dimensionless
-    confidence: 83
-    description: Absorption coefficient for 1064 nm wavelength
+    value: 0.15
+    unit: cm⁻¹ at 1064nm
+    confidence: 80
+    description: Optical absorption coefficient for near-IR laser wavelengths
     min: null
     max: null
   reflectivity:
-    value: 0.12
-    unit: dimensionless
-    confidence: 85
-    description: Reflectivity at 1064 nm wavelength
+    value: 0.04
+    unit: dimensionless at 1064nm
+    confidence: 82
+    description: Surface reflectivity for common laser cleaning wavelengths
     min: null
     max: null
   ablationThreshold:
-    value: 2.8
+    value: 12.5
     unit: J/cm²
     confidence: 80
-    description: Laser ablation threshold for nanosecond pulses at 1064 nm
+    description: Estimated laser ablation threshold for nanosecond pulses at 1064nm
+    min: null
+    max: null
+  porosity:
+    value: 1.2
+    unit: '%'
+    confidence: 85
+    description: Typical porosity range for dense, metamorphosed quartzite
     min: null
     max: null
   chemicalStability:
     value: 95
-    unit: '% resistance'
+    unit: '% resistance index'
     confidence: 90
-    description: Chemical resistance to acids and environmental weathering
-    min: null
-    max: null
-  porosity:
-    value: 0.8
-    unit: '%'
-    confidence: 85
-    description: Typical porosity range for dense quartzite
+    description: High chemical resistance to acids and environmental weathering
     min: null
     max: null
 applications:
@@ -136,54 +143,54 @@ applications:
 - Semiconductor Manufacturing
 - Chemical Processing
 - Marine Engineering
-- Energy Generation
-- Food Processing
 - Medical Device Manufacturing
+- Energy Generation
 - Automotive Manufacturing
+- Food Processing
 - Research Laboratories
 machineSettings:
   powerRange:
     value: 90
     unit: W
-    confidence: 91
+    confidence: 92
     description: Optimal average power for Quartzite cleaning without thermal damage
     min: 70
-    max: 110
+    max: 120
   wavelength:
     value: 1064
     unit: nm
-    confidence: 89
-    description: Near-IR wavelength optimized for Quartzite absorption and minimal
-      subsurface damage
+    confidence: 88
+    description: Near-IR wavelength optimized for Quartzite absorption characteristics
     min: 532
     max: 1064
   spotSize:
     value: 80
     unit: μm
-    confidence: 88
-    description: Beam spot diameter for balanced cleaning efficiency and coverage
+    confidence: 84
+    description: Beam spot diameter for precise cleaning control on Quartzite surface
     min: 50
-    max: 120
+    max: 150
   repetitionRate:
     value: 50
     unit: kHz
-    confidence: 85
-    description: Optimal repetition rate for efficient cleaning with thermal management
+    confidence: 87
+    description: Optimal repetition rate for efficient cleaning coverage and thermal
+      management
     min: 20
     max: 100
   pulseWidth:
     value: 12
     unit: ns
-    confidence: 87
+    confidence: 85
     description: Nanosecond pulse duration for effective contaminant removal with
-      controlled thermal penetration
+      minimal substrate damage
     min: 8
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform cleaning without excessive overlap
+    description: Optimal scanning speed for uniform cleaning efficiency
     min: 300
     max: 800
   fluenceThreshold:
@@ -191,23 +198,23 @@ machineSettings:
     unit: J/cm²
     confidence: 90
     description: Minimum fluence required for effective contaminant removal from Quartzite
-      surface
     min: 1.8
     max: 4.0
   overlapRatio:
     value: 40
     unit: '%'
-    confidence: 84
-    description: Optimal beam overlap for uniform cleaning coverage
+    confidence: 83
+    description: Optimal beam overlap for uniform cleaning coverage without excessive
+      energy deposition
     min: 30
     max: 60
   passCount:
-    value: 3
+    value: 2
     unit: passes
-    confidence: 88
+    confidence: 85
     description: Recommended number of passes for complete contaminant removal
-    min: 2
-    max: 5
+    min: 1
+    max: 4
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -226,10 +233,6 @@ images:
     alt: Quartzite surface undergoing laser cleaning showing precise contamination
       removal
     url: /images/material/quartzite-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Quartzite surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/quartzite-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -255,6 +258,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Quartzite is exceptionally hard and non-porous, unlike other metamorphic
+  stones. This density requires careful adjustment of laser power to avoid damaging
+  its vitrified surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -291,20 +297,18 @@ outcomeMetrics:
   units: []
 caption:
   beforeText: At 500x magnification, the quartzite surface is obscured by a complex
-    contamination layer. A carbonaceous soot deposit, approximately 5-10 µm thick,
-    forms a discontinuous, amorphous crust. This layer is punctuated by embedded particulate
-    matter, including silicate spheres and metallic oxides from industrial fallout.
-    The underlying interlocking quartz matrix is largely hidden, with only the highest
-    grain peaks visible. The contamination exhibits a craze-patterned texture, creating
-    a topographical map of the surface's thermal and chemical degradation. This layer
-    significantly alters the stone's intrinsic reflectivity and masks its natural
-    crystalline structure.
-  afterText: Laser cleaning has restored the surface to its intrinsic state. The contamination
-    layer is entirely removed, revealing the fully exposed, interlocking matrix of
-    quartz crystals. The original grain boundaries and micro-fracture networks are
-    now clearly defined and free of foreign material. The surface texture is consistent
-    with the stone's natural morphology, with a measurable return to its baseline
-    reflectivity and minimal residual thermal stress.
+    contamination layer. A discontinuous, carbonaceous soot deposit, measuring 5-15
+    µm thick, adheres to the crystalline matrix. This layer is punctuated by embedded
+    particulate matter, primarily silicates and metal oxides, which create localized
+    topographical peaks. The underlying interlocking quartz grains are partially visible,
+    with contaminants concentrated along crystal boundaries and micro-fractures, creating
+    a darkened, textured appearance that masks the stone's inherent reflectivity and
+    granular detail.
+  afterText: Laser cleaning has restored the substrate's original morphology. The
+    interlocking, anhedral quartz grains are now fully exposed, with sharp boundaries
+    and a clean, micro-rough texture. The surface is free of obscuring deposits, revealing
+    the stone's inherent crystalline structure and light-reflective properties. Minimal
+    residual particulate remains isolated within deeper grain boundaries.
   description: Microscopic analysis of quartzite surface before and after laser cleaning
     treatment
   alt: Microscopic view of quartzite surface showing laser cleaning effects
@@ -340,6 +344,3 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - yi-chun-lin
-subtitle: Pay close attention to quartzite’s variable composition during laser treatment.
-  Its mix of hardness and grain structure can lead to uneven results if you don’t
-  adjust power levels between 50-75 watts for optimal control.

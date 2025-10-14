@@ -8,7 +8,7 @@ materialProperties:
     value: 7.14
     unit: g/cm³
     confidence: 98
-    description: Density of pure zinc at room temperature (20°C)
+    description: Density of pure zinc at room temperature
     min: 0.53
     max: 22.6
   meltingPoint:
@@ -36,7 +36,7 @@ materialProperties:
     value: 2.5
     unit: Mohs
     confidence: 85
-    description: Mohs hardness scale for pure zinc
+    description: Mohs hardness scale value
     min: 0.5
     max: 3500
   youngsModulus:
@@ -82,7 +82,7 @@ materialProperties:
     min: null
     max: null
   thermalDiffusivity:
-    value: 42.1
+    value: 42.0
     unit: mm²/s
     confidence: 90
     description: Thermal diffusivity at room temperature
@@ -98,21 +98,21 @@ materialProperties:
   reflectivity:
     value: 80
     unit: '%'
-    confidence: 86
+    confidence: 90
     description: Optical reflectivity at 1064 nm wavelength
     min: null
     max: null
   absorptionCoefficient:
     value: 12000000.0
     unit: m⁻¹
-    confidence: 82
-    description: Absorption coefficient for IR lasers (1064 nm)
+    confidence: 85
+    description: Absorption coefficient for near-IR lasers
     min: null
     max: null
   ablationThreshold:
     value: 0.8
     unit: J/cm²
-    confidence: 81
+    confidence: 82
     description: Approximate laser ablation threshold for nanosecond pulses
     min: null
     max: null
@@ -126,14 +126,14 @@ materialProperties:
   crystallineStructure:
     value: HCP
     unit: crystal system
-    confidence: 96
+    confidence: 98
     description: Hexagonal close-packed structure at room temperature
     min: null
     max: null
   electricalConductivity:
     value: 16.6
     unit: '% IACS'
-    confidence: 93
+    confidence: 92
     description: Electrical conductivity relative to copper standard
     min: null
     max: null
@@ -141,7 +141,7 @@ materialProperties:
     value: 907
     unit: °C
     confidence: 95
-    description: Boiling point of zinc, critical for laser ablation
+    description: Boiling point of zinc
     min: null
     max: null
 applications:
@@ -152,11 +152,11 @@ applications:
 - Hardware Manufacturing
 machineSettings:
   powerRange:
-    value: 100
+    value: 90
     unit: W
     confidence: 92
     description: Optimal average power for Zinc oxide removal without substrate damage
-    min: 80
+    min: 70
     max: 120
   wavelength:
     value: 1064
@@ -166,58 +166,52 @@ machineSettings:
     min: 532
     max: 1064
   spotSize:
-    value: 50
+    value: 80
     unit: μm
     confidence: 84
-    description: Optimal spot diameter for balancing cleaning efficiency and processing
-      speed
-    min: 30
-    max: 100
+    description: Beam spot diameter for efficient cleaning resolution
+    min: 50
+    max: 120
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning coverage while maintaining
-      thermal control
+    description: Optimal repetition rate for continuous cleaning with thermal management
     min: 20
     max: 100
   pulseWidth:
-    value: 10
+    value: 12
     unit: ns
     confidence: 85
-    description: Nanosecond pulses for efficient oxide layer ablation with controlled
-      thermal effects
-    min: 5
+    description: Nanosecond pulse duration for efficient oxide layer ablation
+    min: 8
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform oxide removal without Zinc substrate
-      melting
-    min: 200
-    max: 1000
+    description: Optimal scanning speed for uniform oxide removal
+    min: 300
+    max: 800
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Minimum fluence required for effective Zinc oxide ablation threshold
-    min: 1.5
+    description: Minimum fluence required for Zinc oxide ablation threshold
+    min: 1.8
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for uniform cleaning while preventing excessive
-      heat accumulation
-    min: 30
+    description: Optimal beam overlap for uniform cleaning coverage
+    min: 40
     max: 70
   passCount:
     value: 2
     unit: passes
     confidence: 85
-    description: Recommended number of passes for complete oxide removal without substrate
-      damage
+    description: Recommended number of passes for complete oxide removal
     min: 1
     max: 4
 regulatoryStandards:
@@ -237,10 +231,6 @@ images:
   hero:
     alt: Zinc surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/zinc-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Zinc surface after laser cleaning showing detailed surface
-      structure
-    url: /images/material/zinc-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -266,6 +256,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Zinc has a lower melting point and develops a tenacious oxide layer compared
+  to other non-ferrous metals. These traits require careful control of laser power
+  and pulse settings to avoid surface damage while effectively removing corrosion.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -302,19 +295,17 @@ outcomeMetrics:
   units: []
 caption:
   beforeText: At 500x magnification, the zinc surface is obscured by a complex contamination
-    layer. A porous, amorphous oxide/hydroxide matrix, measuring 5-15 µm thick, forms
-    the base stratum. This is overlaid with localized carbonaceous deposits from environmental
-    exposure and embedded particulate matter, primarily silica and alumina, from industrial
-    fallout. The underlying zinc substrate's characteristic hexagonal close-packed
-    (HCP) crystalline structure is entirely concealed. The surface texture is irregular
-    and fractured, with contamination filling the natural grain boundaries and micro-impurities
-    of the base metal.
-  afterText: Post-cleaning, the surface reveals the pristine, metallic zinc substrate.
-    The contamination layer has been completely ablated, exposing the fine, polygonal
-    grain structure characteristic of the HCP lattice. The surface is now uniformly
-    textured with minimal micro-pitting, and the original metallic luster is restored.
-    Grain boundaries are clearly defined and free of occluding oxides, confirming
-    a return to the base material's inherent properties.
+    layer. A porous, amorphous oxide/hydroxide matrix, approximately 5-15 µm thick,
+    forms the base. This is overlaid with localized carbonaceous soot deposits and
+    embedded particulate matter, creating a topographically rough and irregular surface.
+    The underlying metallic grain structure is entirely concealed. The contamination
+    exhibits a non-uniform, patchy distribution, with areas of thick crust formation
+    adjacent to regions of thinner, more adherent tarnish.
+  afterText: Laser cleaning has fully restored the native zinc surface. The contamination
+    layer is completely ablated, revealing the underlying metallic grain structure
+    with high clarity. The surface is now topographically uniform, exhibiting only
+    the natural micro-texture of the base metal. The reflectivity is significantly
+    increased, confirming the removal of light-absorbing oxides and particulates.
   description: Microscopic analysis of zinc surface before and after laser cleaning
     treatment
   alt: Microscopic view of zinc surface showing laser cleaning effects
@@ -350,6 +341,3 @@ tags:
 - reflective-surface
 - conductive
 - yi-chun-lin
-subtitle: Pay close attention to zinc’s soft nature during laser treatment. Even a
-  slight overstep with power above 50 watts can distort its thin coating, so always
-  start low and adjust slowly.

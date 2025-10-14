@@ -36,14 +36,14 @@ materialProperties:
     value: 7.5
     unit: GPa
     confidence: 85
-    description: Knoop hardness at 100g load
+    description: Knoop hardness at room temperature
     min: 2
     max: 9.5
   youngsModulus:
     value: 85.3
     unit: GPa
-    confidence: 92
-    description: Young's modulus along <100> direction at 300K
+    confidence: 90
+    description: Young's modulus along <100> direction
     min: 5
     max: 190
   laserAbsorption:
@@ -63,8 +63,8 @@ materialProperties:
   specificHeat:
     value: 0.327
     unit: J/g·K
-    confidence: 90
-    description: Specific heat capacity at constant pressure, 300K
+    confidence: 92
+    description: Specific heat capacity at 300K
     min: 300
     max: 900
   thermalDestructionPoint:
@@ -98,36 +98,36 @@ materialProperties:
   absorptionCoefficient:
     value: 1.0
     unit: ×10⁴ cm⁻¹
-    confidence: 88
-    description: Absorption coefficient at 532nm wavelength
+    confidence: 92
+    description: Absorption coefficient at 532 nm wavelength
     min: null
     max: null
   reflectivity:
     value: 0.35
     unit: dimensionless
     confidence: 90
-    description: Reflectivity at 1064nm wavelength
+    description: Reflectivity at 1064 nm wavelength
     min: null
     max: null
   refractiveIndex:
     value: 3.45
     unit: dimensionless
-    confidence: 92
-    description: Refractive index at 1064nm wavelength
+    confidence: 95
+    description: Refractive index at 1064 nm wavelength
     min: null
     max: null
   ablationThreshold:
     value: 0.5
     unit: J/cm²
     confidence: 85
-    description: Approximate ablation threshold for nanosecond pulses at 1064nm
+    description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   laserDamageThreshold:
     value: 1.2
     unit: J/cm²
     confidence: 82
-    description: Single pulse laser-induced damage threshold at 1064nm
+    description: Single-shot laser-induced damage threshold at 1064 nm
     min: null
     max: null
   crystallineStructure:
@@ -138,30 +138,30 @@ materialProperties:
     min: null
     max: null
   bandgap:
-    value: 1.424
+    value: 1.42
     unit: eV
     confidence: 98
     description: Direct bandgap energy at 300K
     min: null
     max: null
   fractureToughness:
-    value: 0.43
+    value: 0.44
     unit: MPa·m¹/²
     confidence: 85
-    description: Fracture toughness for brittle fracture
+    description: Fracture toughness for brittle fracture behavior
     min: null
     max: null
 applications:
-- Semiconductor Manufacturing
-- Aerospace & Defense
+- Aerospace
+- Electronics Manufacturing
 - Medical Devices
 - Telecommunications
-- Research & Development
 - Automotive Electronics
-- Renewable Energy
-- Cultural Heritage Preservation
-- Industrial Manufacturing
-- Military Electronics
+- Research and Development
+- Defense Systems
+- Energy Sector
+- Cultural Heritage Instrumentation
+- Marine Electronics
 machineSettings:
   powerRange:
     value: 8
@@ -175,25 +175,25 @@ machineSettings:
     value: 532
     unit: nm
     confidence: 92
-    description: Green wavelength optimized for GaAs absorption characteristics and
-      oxide removal
+    description: Green wavelength optimized for GaAs absorption characteristics near
+      bandgap
     min: 355
     max: 1064
   spotSize:
     value: 50
     unit: μm
     confidence: 87
-    description: Beam spot diameter for precise cleaning with adequate energy density
+    description: Beam diameter for precise cleaning with adequate energy density
     min: 30
     max: 100
   repetitionRate:
-    value: 50
+    value: 20
     unit: kHz
     confidence: 85
     description: Optimal repetition rate balancing cleaning efficiency and thermal
       management
-    min: 20
-    max: 100
+    min: 10
+    max: 50
   pulseWidth:
     value: 8
     unit: ns
@@ -203,13 +203,13 @@ machineSettings:
     min: 5
     max: 15
   fluence:
-    value: 1.2
+    value: 0.8
     unit: J/cm²
     confidence: 91
     description: Energy density threshold for effective contaminant removal below
       GaAs damage threshold
-    min: 0.8
-    max: 2.0
+    min: 0.5
+    max: 1.2
   scanSpeed:
     value: 200
     unit: mm/s
@@ -221,25 +221,17 @@ machineSettings:
     value: 50
     unit: '%'
     confidence: 86
-    description: Beam overlap percentage ensuring complete surface coverage without
-      excessive processing
+    description: Beam overlap percentage for complete surface coverage without excessive
+      heating
     min: 40
     max: 70
   passCount:
     value: 2
     unit: passes
-    confidence: 89
+    confidence: 83
     description: Number of cleaning passes for complete contaminant removal
     min: 1
     max: 4
-  laserType:
-    value: Nd:YAG
-    unit: laser_type
-    confidence: 90
-    description: Recommended laser type for GaAs processing with harmonic generation
-      capability
-    min: null
-    max: null
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -258,10 +250,6 @@ images:
     alt: Gallium Arsenide surface undergoing laser cleaning showing precise contamination
       removal
     url: /images/material/gallium-arsenide-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Gallium Arsenide surface after laser cleaning showing
-      detailed surface structure
-    url: /images/material/gallium-arsenide-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -287,6 +275,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Gallium arsenide is more fragile and heat-sensitive than silicon, its common
+  counterpart. This demands laser cleaning with lower power and shorter pulses to
+  prevent surface damage.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -323,17 +314,19 @@ outcomeMetrics:
   units: []
 caption:
   beforeText: At 500x magnification, the GaAs surface is obscured by a non-uniform
-    contamination layer. Particulate matter, approximately 2-5 µm in diameter, is
-    scattered across the surface and embedded in a thin, amorphous carbonaceous film.
-    This film, with an estimated thickness of 100-500 nm, creates a textured, matte
-    appearance that significantly scatters light. The underlying crystalline structure
-    and polished finish of the GaAs are entirely masked by this adherent layer of
-    organic and inorganic residues, which follows a streaked pattern indicative of
-    prior handling or processing.
-  afterText: Laser cleaning restores the intrinsic GaAs surface. The contamination
-    layer is completely removed, revealing the original, smooth substrate with its
-    characteristic crystalline grain. The surface is now continuous and reflective,
-    with no residual particulates or film obscuring the material.
+    contamination layer, typically 1-5 µm thick. This layer consists of particulate
+    matter, hydrocarbon films, and adsorbed moisture, creating a textured, matte appearance.
+    The contaminants scatter light and mask the underlying crystalline structure,
+    forming irregular patterns of residue that compromise surface integrity and interfere
+    with subsequent processing steps. The native substrate is not visible through
+    this film.
+  afterText: Following laser cleaning, the surface reveals a dramatic transformation.
+    The contamination layer has been completely removed, exposing the pristine, monolithic
+    GaAs crystal. At 500x, the surface is now continuous and smooth, with the material's
+    inherent granularity from its zinc blende structure clearly visible. Laser parameters
+    are tuned to remain below the 0.5 J/cm² ablation threshold, ensuring no phase
+    change or subsurface damage. This results in an atomically clean surface with
+    restored optical and electronic properties.
   description: Microscopic analysis of gallium arsenide surface before and after laser
     cleaning treatment
   alt: Microscopic view of gallium arsenide surface showing laser cleaning effects
@@ -369,6 +362,3 @@ tags:
 - industrial-grade
 - processed
 - ikmanda-roswati
-subtitle: Gallium Arsenide often poses a real puzzle during laser treatment due to
-  its varying sensitivity across batches. Adjust your controls carefully for each
-  session—it's very-very critical to monitor the layer response at every step.

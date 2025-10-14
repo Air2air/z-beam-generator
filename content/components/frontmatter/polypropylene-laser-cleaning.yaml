@@ -15,7 +15,7 @@ materialProperties:
     value: 160
     unit: °C
     confidence: 92
-    description: Melting point of commercial polypropylene grades
+    description: Melting point range for commercial polypropylene grades
     min: null
     max: null
   thermalConductivity:
@@ -33,10 +33,10 @@ materialProperties:
     min: 10
     max: 400
   hardness:
-    value: 75
+    value: 70
     unit: Shore D
-    confidence: 85
-    description: Shore D hardness for standard polypropylene
+    confidence: 88
+    description: Hardness on Shore D scale
     min: Shore A 10
     max: Shore D 90
   youngsModulus:
@@ -61,8 +61,8 @@ materialProperties:
     min: 5
     max: 95
   specificHeat:
-    value: 1880
-    unit: J/kg·K
+    value: 1.9
+    unit: kJ/kg·K
     confidence: 90
     description: Specific heat capacity at room temperature
     min: 1000
@@ -97,7 +97,7 @@ materialProperties:
     max: 200
   absorptionCoefficient:
     value: 0.15
-    unit: cm^-1
+    unit: cm⁻¹
     confidence: 82
     description: Absorption coefficient at 1064 nm wavelength
     min: null
@@ -105,43 +105,36 @@ materialProperties:
   reflectivity:
     value: 0.04
     unit: dimensionless
-    confidence: 80
-    description: Reflectivity at 1064 nm for natural polypropylene
+    confidence: 85
+    description: Reflectivity at 1064 nm wavelength
     min: null
     max: null
   ablationThreshold:
     value: 0.8
     unit: J/cm²
-    confidence: 85
-    description: Laser ablation threshold at 1064 nm
+    confidence: 80
+    description: Laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
-  oxidationResistance:
-    value: 120
-    unit: °C
-    confidence: 88
-    description: Maximum continuous service temperature in air
+  chemicalStability:
+    value: 85
+    unit: '% resistance'
+    confidence: 90
+    description: Chemical resistance to acids and alkalis
     min: null
     max: null
   crystallineStructure:
     value: 60
-    unit: '%'
-    confidence: 90
-    description: Typical crystallinity percentage in commercial grades
+    unit: '% crystallinity'
+    confidence: 88
+    description: Typical crystallinity percentage for commercial PP
     min: null
     max: null
-  glassTransition:
-    value: -10
-    unit: °C
-    confidence: 92
-    description: Glass transition temperature
-    min: null
-    max: null
-  degradationTemperature:
-    value: 300
-    unit: °C
+  surfaceRoughness:
+    value: 0.8
+    unit: μm Ra
     confidence: 85
-    description: Onset of thermal degradation in inert atmosphere
+    description: Typical surface roughness for molded polypropylene
     min: null
     max: null
 applications:
@@ -150,11 +143,11 @@ applications:
 - Electronics Manufacturing
 - Food Processing
 - Aerospace
-- Marine Equipment
-- Consumer Products
-- Industrial Manufacturing
+- Marine
+- Packaging
+- Textile Manufacturing
 - Renewable Energy
-- Cultural Heritage
+- Consumer Products
 machineSettings:
   powerRange:
     value: 90
@@ -170,56 +163,56 @@ machineSettings:
     confidence: 88
     description: Near-IR wavelength with moderate Polypropylene absorption for controlled
       ablation
-    min: 1030
-    max: 1070
+    min: 532
+    max: 10640
   spotSize:
     value: 80
     unit: μm
     confidence: 84
-    description: Beam spot diameter for effective cleaning resolution on Polypropylene
-      surfaces
+    description: Beam spot diameter for effective cleaning resolution and energy density
+      control
     min: 50
-    max: 120
+    max: 150
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for continuous cleaning coverage with thermal
-      management
-    min: 30
+    description: Optimal repetition rate for continuous cleaning coverage while maintaining
+      thermal control
+    min: 20
     max: 100
   pulseWidth:
-    value: 12
+    value: 15
     unit: ns
     confidence: 85
     description: Nanosecond pulse duration for efficient contaminant removal with
       minimal substrate heating
     min: 8
-    max: 20
+    max: 25
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for efficient area coverage without excessive
-      overlap
+    description: Optimal scanning speed for efficient area coverage with effective
+      contaminant removal
     min: 300
     max: 800
   energyDensity:
-    value: 1.8
+    value: 2.8
     unit: J/cm²
-    confidence: 89
-    description: Fluence threshold for effective contaminant removal while preserving
-      Polypropylene substrate
-    min: 1.2
-    max: 2.5
+    confidence: 90
+    description: Fluence threshold for Polypropylene surface cleaning without material
+      degradation
+    min: 1.5
+    max: 4.0
   overlapRatio:
-    value: 30
+    value: 40
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      accumulation
-    min: 20
-    max: 40
+    description: Optimal beam overlap for uniform cleaning coverage and processing
+      efficiency
+    min: 30
+    max: 60
   passCount:
     value: 2
     unit: passes
@@ -227,14 +220,7 @@ machineSettings:
     description: Recommended number of passes for complete contaminant removal from
       Polypropylene
     min: 1
-    max: 3
-  laserType:
-    value: Fiber Laser
-    unit: N/A
-    confidence: 90
-    description: Recommended laser type for Polypropylene cleaning applications
-    min: null
-    max: null
+    max: 4
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -253,10 +239,6 @@ images:
     alt: Polypropylene surface undergoing laser cleaning showing precise contamination
       removal
     url: /images/material/polypropylene-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Polypropylene surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/polypropylene-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -282,6 +264,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Polypropylene has a lower melting point and is more sensitive to heat than
+  many other plastics. This requires the use of significantly lower laser power to
+  avoid melting the surface during cleaning.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -318,19 +303,18 @@ outcomeMetrics:
   units: []
 caption:
   beforeText: At 500x magnification, the polypropylene surface is obscured by a non-uniform
-    contamination layer, typically 5-20 µm thick. This layer, composed of organic
-    residues and embedded particulate, disrupts the polymer's inherent semi-crystalline
-    texture. The contaminants form a discontinuous film, with agglomerations preferentially
-    adhering to surface micro-asperities. The underlying polypropylene morphology
-    is largely hidden, with only the tallest spherulitic structures visible as faint
-    topographical relief beneath the occluding layer. This coverage significantly
-    alters surface energy and adhesion properties.
-  afterText: Laser cleaning has restored the native polypropylene morphology. The
-    contaminant layer is entirely removed, revealing a well-defined spherulitic microstructure
-    characteristic of the polymer's ~60% crystallinity. The surface exhibits minimal
-    heat-affected zone, with sharp, distinct boundaries between crystalline and amorphous
-    regions. The original micro-texture is fully exposed, resulting in a surface defined
-    by its intrinsic material properties rather than foreign deposits.
+    contamination layer, measuring 5-15 µm in thickness. This layer consists of embedded
+    particulate matter and a greasy film, which fills the characteristic micro-texture
+    of the molded plastic. The contaminants disrupt the native surface morphology,
+    creating a topographically chaotic landscape that masks the polymer's inherent
+    semi-crystalline structure. This layer significantly increases light scattering
+    and reduces the material's functional surface energy.
+  afterText: Laser cleaning has restored the native polypropylene topography. The
+    contaminant layer is completely removed, revealing the original molded surface
+    with its micro-scale flow lines and spherulitic crystalline structures. The surface
+    now exhibits a uniform, clean appearance with no residual char or thermal degradation,
+    confirming the process operated below the polymer's ablation threshold. This results
+    in optimal surface energy for subsequent bonding or coating operations.
   description: Microscopic analysis of polypropylene surface before and after laser
     cleaning treatment
   alt: Microscopic view of polypropylene surface showing laser cleaning effects
@@ -366,6 +350,3 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - ikmanda-roswati
-subtitle: Pay attention to Polypropylene’s variable properties when setting up your
-  laser. Adjust the controls very-very carefully, as even a slight mismatch above
-  50 watts can alter the finish in ways you won't expect.

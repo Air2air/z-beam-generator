@@ -28,7 +28,7 @@ materialProperties:
   tensileStrength:
     value: 462
     unit: MPa
-    confidence: 88
+    confidence: 90
     description: Ultimate tensile strength of pure vanadium
     min: 3.0
     max: 3000.0
@@ -42,7 +42,7 @@ materialProperties:
   youngsModulus:
     value: 128
     unit: GPa
-    confidence: 92
+    confidence: 95
     description: Young's modulus of elasticity
     min: 5
     max: 411
@@ -84,58 +84,57 @@ materialProperties:
   thermalDiffusivity:
     value: 8.3
     unit: mm²/s
-    confidence: 85
-    description: Thermal diffusivity at room temperature
+    confidence: 95
+    description: thermalDiffusivity from Materials.yaml
     min: 0.2
     max: 174
   thermalExpansion:
     value: 8.4
-    unit: ×10⁻⁶/K
+    unit: μm/m·K
     confidence: 90
     description: Coefficient of linear thermal expansion (20-100°C)
     min: 0.5
     max: 29.1
-  absorptionCoefficient:
-    value: 0.45
-    unit: dimensionless
+  reflectivity:
+    value: 61
+    unit: '%'
     confidence: 82
-    description: Estimated absorption coefficient for common laser wavelengths (1064
-      nm)
+    description: Optical reflectivity at 1064 nm wavelength
     min: null
     max: null
-  reflectivity:
-    value: 0.62
-    unit: dimensionless
+  absorptionCoefficient:
+    value: 4200000.0
+    unit: m⁻¹
     confidence: 80
-    description: Estimated reflectivity at 1064 nm wavelength
+    description: Approximate absorption coefficient for Nd:YAG lasers
     min: null
     max: null
   ablationThreshold:
     value: 2.8
     unit: J/cm²
-    confidence: 82
+    confidence: 85
     description: Estimated laser ablation threshold for nanosecond pulses
     min: null
     max: null
   oxidationResistance:
-    value: Moderate
-    unit: qualitative
-    confidence: 85
-    description: Forms protective oxide layer but oxidizes above 660°C
+    value: 600
+    unit: °C
+    confidence: 88
+    description: Maximum temperature for adequate oxidation resistance in air
     min: null
     max: null
   crystallineStructure:
     value: BCC
-    unit: crystal system
-    confidence: 95
-    description: Body-centered cubic structure at room temperature
+    unit: none
+    confidence: 98
+    description: Body-centered cubic crystal structure
     min: null
     max: null
   electricalResistivity:
-    value: 197
-    unit: nΩ·m
-    confidence: 90
-    description: Electrical resistivity at 20°C
+    value: 19.7
+    unit: μΩ·cm
+    confidence: 94
+    description: Electrical resistivity at room temperature
     min: null
     max: null
 applications:
@@ -147,72 +146,72 @@ applications:
 - Electronics Manufacturing
 - Marine Engineering
 - Cultural Heritage
-- Additive Manufacturing
 - Research Laboratories
+- Additive Manufacturing
 machineSettings:
   powerRange:
-    value: 90
+    value: 100
     unit: W
-    confidence: 88
+    confidence: 92
     description: Optimal average power for Vanadium oxide removal without substrate
       damage
-    min: 70
-    max: 110
+    min: 80
+    max: 120
   wavelength:
     value: 1064
     unit: nm
-    confidence: 85
-    description: Near-IR wavelength with good absorption in Vanadium oxides
+    confidence: 88
+    description: Near-IR wavelength optimized for Vanadium's absorption characteristics
     min: 532
     max: 1064
   spotSize:
-    value: 80
+    value: 50
     unit: μm
-    confidence: 86
-    description: Beam spot diameter for controlled material removal
-    min: 50
-    max: 120
+    confidence: 84
+    description: Beam spot diameter for precise cleaning control
+    min: 30
+    max: 100
   repetitionRate:
     value: 50
     unit: kHz
-    confidence: 84
+    confidence: 87
     description: Optimal repetition rate for continuous cleaning coverage
     min: 20
     max: 100
   pulseWidth:
-    value: 15
+    value: 10
     unit: ns
-    confidence: 82
-    description: Nanosecond pulse duration for efficient oxide ablation
-    min: 8
-    max: 25
+    confidence: 85
+    description: Nanosecond pulse duration for efficient oxide layer ablation
+    min: 5
+    max: 20
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 83
-    description: Optimal scanning speed for uniform cleaning
-    min: 300
-    max: 800
+    confidence: 86
+    description: Optimal scanning speed for efficient surface coverage
+    min: 200
+    max: 1000
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
-    confidence: 87
+    confidence: 89
     description: Minimum fluence required for Vanadium oxide removal
-    min: 1.8
+    min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 85
-    description: Optimal beam overlap for uniform cleaning coverage
+    confidence: 83
+    description: Optimal beam overlap for uniform cleaning results
     min: 40
-    max: 60
+    max: 70
   passCount:
     value: 3
     unit: passes
-    confidence: 82
-    description: Recommended number of passes for complete oxide removal
-    min: 2
+    confidence: 85
+    description: Recommended number of passes for complete contamination removal
+    min: 1
     max: 5
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
@@ -232,10 +231,6 @@ images:
     alt: Vanadium surface undergoing laser cleaning showing precise contamination
       removal
     url: /images/material/vanadium-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Vanadium surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/vanadium-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -261,6 +256,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Vanadium's properties can vary significantly, unlike many other refractory
+  metals. This variability demands a more tailored approach to laser settings to ensure
+  effective and safe cleaning.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -297,18 +295,24 @@ outcomeMetrics:
   units: []
 caption:
   beforeText: At 500x magnification, the vanadium surface is obscured by a non-uniform
-    contamination layer. This layer, ranging from 5-20 micrometers in thickness, consists
-    of embedded particulate and a discontinuous oxide scale. The underlying metal's
-    BCC grain structure is entirely hidden. The surface texture is highly irregular,
-    with contamination filling the natural micro-valleys and creating a topographically
-    complex, matte finish that significantly increases light scattering and reduces
-    the material's inherent metallic reflectivity.
-  afterText: Laser cleaning has restored the pristine metallic substrate. The contamination
-    layer is completely removed, revealing the distinct, clean boundaries of the body-centered
-    cubic grain structure. The surface is now uniform, with a significant reduction
-    in light-scattering features. The inherent micro-texture of the polycrystalline
-    vanadium is visible, resulting in a specular, reflective finish that confirms
-    the return to base metal properties and a contaminant-free state.
+    contamination layer, typically 5-20 µm thick. This layer consists of embedded
+    oxides and carbonaceous deposits, forming a textured, matte topography. The underlying
+    metal's grain structure is entirely concealed by this discontinuous, particulate-laden
+    film, which exhibits micro-cracking and localized spallation.
+  afterText: 'Laser cleaning has fully restored the native metallic surface, revealing
+    the fine, polygonal grain structure characteristic of vanadium''s body-centered
+    cubic lattice. The contamination layer has been completely ablated, with no residual
+    oxide islands or embedded particulates.
+
+
+    The surface now exhibits a uniform, matte-grey metallic finish with clearly defined
+    grain boundaries. The process has achieved this result without inducing surface
+    melting or heat-affected zone microcracking, preserving the substrate''s integrity.
+
+
+    This pristine surface condition, free from the 5-20 µm contamination layer, ensures
+    optimal performance for subsequent operations in demanding applications, providing
+    a clean interface for bonding, coating, or service.'
   description: Microscopic analysis of vanadium surface before and after laser cleaning
     treatment
   alt: Microscopic view of vanadium surface showing laser cleaning effects
@@ -344,6 +348,3 @@ tags:
 - reflective-surface
 - conductive
 - alessandro-moretti
-subtitle: Vanadium’s stubborn oxide layer often poses a real hurdle during laser treatment.
-  Adjusting the power to stay below 50 watts, though, helps preserve its rugged, metallic
-  finish while still clearing away unwanted residues.

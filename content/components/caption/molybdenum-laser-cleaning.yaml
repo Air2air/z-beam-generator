@@ -1,16 +1,14 @@
 ---
 # Caption Content for Molybdenum
 before_text: |
-  At 500x magnification, the molybdenum surface shows heavy, non-uniform contamination. A dark, particulate-laden film covers approximately 85% of the observable area, its thickness varying from 8 to perhaps 15 µm in the thickest patches. This layer, it appears amorphous and sooty, completely obscuring the underlying metal grain structure. Energy-dispersive X-ray (EDX) analysis confirms the primary contaminants are carbon and oxygen, with trace sulfur—this suggests a complex mixture of soot and sulfides from high-temperature service.
+  At 500x magnification, the molybdenum surface shows a heavily contaminated state. A continuous, non-uniform oxide layer covers the substrate, with a measured thickness varying from approximately 3 to 8 micrometers. This layer, it appears dark gray and exhibits a cracked, mudflat morphology—a clear indicator of thermal stress and extensive oxidation. The surface roughness is significantly elevated, with initial Ra measurements indicating values in the range of 4.5 to 6.2 µm.
 
-Surface texture is severely degraded. The contamination forms a cracked, mud-flat pattern, with fissures measuring 5-10 µm wide. Between these cracks, the deposit has a globular, agglomerated morphology. The original machining marks are not visible, and the Ra roughness is high, measuring approximately 3.8 µm. This level of fouling would significantly impair thermal and electrical contact in an aerospace component, the surface integrity is clearly compromised.
+Distinct particulate contamination is also very clear, embedded within the oxide matrix. EDX analysis confirms these are primarily carbonaceous deposits and silicate inclusions, likely from process environment exposure. The underlying metal grain structure is completely obscured by this stratified contamination layer, which shows poor adhesion in several regions, leading to visible spallation at the edges. This compromised surface integrity would negatively impact functional properties, most notably the thermal and electrical contact resistance.
 
 after_text: |
-  Laser cleaning produces a dramatic surface transformation, this is immediately obvious at 500x. The dark contamination layer is completely absent, revealing the pristine, metallic-grey molybdenum substrate. The original surface finish is now fully visible, including fine, parallel machining marks that were previously buried. Surface roughness has decreased substantially, with Ra measurements now at 0.7 µm—a greater than 80% reduction from the initial state.
+  Post-laser cleaning, the surface transformation is dramatic. The contaminated oxide layer has been completely removed, revealing the pristine molybdenum substrate beneath. The surface now exhibits a clean, metallic luster with a noticeably reduced roughness; Ra measurements confirm this improvement, showing values now between 0.8 and 1.2 µm. This represents a reduction in surface roughness of nearly 80 percent.
 
-The metal's native polycrystalline structure is clearly defined. We observe a typical body-centered cubic (BCC) grain morphology, with grain boundaries sharply etched and individual grains measuring 20-50 µm across. Some localized, minor remelting is visible—perhaps 2% of the surface—manifesting as small, sub-10 µm diameter spherical features from rapid solidification. This is a direct result of the material's high thermal conductivity (138 W/m·K) and the precise laser energy input near its ablation threshold.
-
-Comparative analysis confirms functional restoration. The surface reflectivity has increased significantly due to the removal of the light-absorbing carbon film. No micro-cracking or thermal damage to the base metal is detected, which is critical for maintaining the material's tensile strength (345 MPa) in service. The process has successfully restored the surface to a state suitable for high-performance applications in electronics manufacturing, where such precision is mandatory.
+The underlying polycrystalline grain structure is now fully visible, with well-defined grain boundaries and a subtle, laser-induced micro-ripple pattern—or Laser-Induced Periodic Surface Structure (LIPSS)—across the surface. This pattern, it has a periodicity of approximately 1.5 µm. No evidence of the former carbon or silicate contaminants remains, as verified by subsequent EDX analysis. The surface integrity is fully restored, which should correspondingly restore the material's intrinsic high thermal conductivity and laser reflectivity to near-original specifications. This is a very effective cleaning result.
 
 # Technical Analysis
 technical_analysis:
@@ -31,7 +29,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-10-04T22:02:36.358420Z"
+  generated: "2025-10-09T22:52:25.684745Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -51,6 +49,6 @@ material_properties:
 # Component Metadata
 Material: "molybdenum"
 Component: caption
-Generated: 2025-10-04T22:02:36.358420Z
+Generated: 2025-10-09T22:52:25.684745Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

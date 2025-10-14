@@ -1,6 +1,6 @@
 name: Pine
 category: Wood
-subcategory: Pine
+subcategory: softwood
 title: Pine Laser Cleaning
 description: Laser cleaning parameters for Pine
 materialProperties:
@@ -22,13 +22,13 @@ materialProperties:
     value: 0.14
     unit: W/m·K
     confidence: 88
-    description: Thermal conductivity perpendicular to grain direction
+    description: Thermal conductivity parallel to grain at room temperature
     min: 0.04
     max: 0.4
   tensileStrength:
     value: 85
     unit: MPa
-    confidence: 88
+    confidence: 90
     description: Tensile strength parallel to grain direction
     min: 20
     max: 200
@@ -42,51 +42,78 @@ materialProperties:
   youngsModulus:
     value: 10.5
     unit: GPa
-    confidence: 90
+    confidence: 91
     description: Modulus of elasticity parallel to grain
     min: 5
     max: 25
-  thermalExpansion:
-    value: 3.4e-05
-    unit: 1/°C
-    confidence: 82
-    description: Linear thermal expansion coefficient perpendicular to grain
-    min: 3.0
+  laserAbsorption:
+    value: 32.7
+    unit: '%'
+    confidence: 92
+    description: laserAbsorption from Materials.yaml
+    min: 1
+    max: 50
+  laserReflectivity:
+    value: 42.7
+    unit: '%'
+    confidence: 92
+    description: laserReflectivity from Materials.yaml
+    min: 10
     max: 60
-  thermalDiffusivity:
-    value: 0.00018
-    unit: m²/s
-    confidence: 84
-    description: Thermal diffusivity at room temperature
-    min: 0.0001
-    max: 0.4
   specificHeat:
-    value: 1500
+    value: 1380
     unit: J/kg·K
-    confidence: 90
+    confidence: 86
     description: Specific heat capacity at room temperature
     min: 800
     max: 2500
+  thermalDestructionPoint:
+    value: 427.0
+    unit: °C
+    confidence: 92
+    description: thermalDestructionPoint from Materials.yaml
+    min: 200
+    max: 500
+  thermalDestructionType:
+    value: 573.0
+    unit: K
+    confidence: 92
+    description: thermalDestructionType from Materials.yaml
+    min: null
+    max: null
+  thermalDiffusivity:
+    value: 0.18
+    unit: mm²/s
+    confidence: 84
+    description: Thermal diffusivity at room temperature for dry pine
+    min: 0.0001
+    max: 0.4
+  thermalExpansion:
+    value: 5.4
+    unit: μm/m·°C
+    confidence: 82
+    description: Linear thermal expansion coefficient parallel to grain
+    min: 3.0
+    max: 60
   absorptionCoefficient:
     value: 0.75
     unit: dimensionless
     confidence: 82
-    description: Average absorption coefficient for near-infrared wavelengths (1064
-      nm)
+    description: Average absorption coefficient for near-infrared laser wavelengths
     min: null
     max: null
   reflectivity:
-    value: 0.2
+    value: 0.22
     unit: dimensionless
     confidence: 80
-    description: Reflectivity at 1064 nm laser wavelength
+    description: Reflectivity at common laser cleaning wavelengths (1064 nm)
     min: null
     max: null
   ablationThreshold:
     value: 1.2
     unit: J/cm²
-    confidence: 85
-    description: Minimum fluence required for material removal at 1064 nm
+    confidence: 83
+    description: Minimum fluence required for material removal with nanosecond pulses
     min: null
     max: null
   porosity:
@@ -99,92 +126,93 @@ materialProperties:
   surfaceRoughness:
     value: 25
     unit: μm
-    confidence: 82
-    description: Average surface roughness parameter Ra for planed pine
+    confidence: 84
+    description: Average surface roughness (Ra) for planed pine surfaces
+    min: null
+    max: null
+  chemicalStability:
+    value: 3
+    unit: rating (1-10)
+    confidence: 85
+    description: Chemical stability rating against common solvents and mild acids
     min: null
     max: null
 applications:
-- Furniture Manufacturing
 - Cultural Heritage Restoration
-- Construction and Timber Framing
 - Marine and Shipbuilding
+- Furniture Manufacturing
+- Construction and Timber Framing
 - Musical Instrument Manufacturing
-- Packaging and Pallet Manufacturing
-- Antique Restoration
-- Architectural Millwork
-- Museum and Exhibition Preparation
 - Food Processing Facilities
+- Agricultural Equipment
+- Art and Sculpture Conservation
+- Packaging and Pallet Manufacturing
+- Architectural Millwork
 machineSettings:
   powerRange:
     value: 90
     unit: W
-    confidence: 92
+    confidence: 88
     description: Optimal average power for Pine surface cleaning without charring
     min: 70
-    max: 120
+    max: 110
   wavelength:
     value: 1064
     unit: nm
-    confidence: 88
-    description: Near-IR wavelength optimized for Pine cellulose/lignin absorption
+    confidence: 85
+    description: Near-IR wavelength for optimal Pine wood absorption with minimal
+      penetration
     min: 532
-    max: 1064
+    max: 10640
   spotSize:
     value: 80
     unit: μm
-    confidence: 84
-    description: Recommended beam spot diameter for Pine surface treatment
+    confidence: 86
+    description: Beam spot diameter for precise cleaning resolution on Pine surface
     min: 50
     max: 120
   repetitionRate:
     value: 50
     unit: kHz
-    confidence: 87
-    description: Optimal repetition rate for efficient Pine cleaning
-    min: 30
+    confidence: 84
+    description: Optimal repetition rate for efficient cleaning with thermal management
+    min: 20
     max: 100
-  laserType:
-    value: Fiber Laser
-    unit: n/a
-    confidence: 90
-    description: Recommended laser type for Pine cleaning applications
-    min: null
-    max: null
   pulseWidth:
-    value: 12
+    value: 15
     unit: ns
-    confidence: 85
-    description: Optimal pulse duration for controlled Pine ablation
+    confidence: 82
+    description: Nanosecond pulse duration for controlled ablation of surface contaminants
     min: 8
-    max: 20
+    max: 25
   scanSpeed:
-    value: 800
+    value: 500
     unit: mm/s
-    confidence: 86
-    description: Optimal scanning speed for uniform Pine cleaning
-    min: 500
-    max: 1200
-  energyDensity:
-    value: 1.8
-    unit: J/cm²
-    confidence: 89
-    description: Fluence threshold for effective Pine surface removal
-    min: 1.2
-    max: 2.5
-  passCount:
-    value: 2
-    unit: passes
     confidence: 83
-    description: Recommended number of passes for complete Pine cleaning
-    min: 1
-    max: 4
+    description: Optimal scanning speed for uniform cleaning without thermal damage
+    min: 300
+    max: 800
+  fluenceThreshold:
+    value: 2.5
+    unit: J/cm²
+    confidence: 87
+    description: Minimum fluence required for effective contaminant removal from Pine
+    min: 1.8
+    max: 4.0
   overlapRatio:
     value: 40
     unit: '%'
     confidence: 85
-    description: Optimal beam overlap for uniform Pine surface treatment
+    description: Optimal beam overlap for uniform cleaning coverage on Pine surface
     min: 30
     max: 60
+  passCount:
+    value: 2
+    unit: passes
+    confidence: 89
+    description: Recommended number of passes for complete cleaning without wood damage
+    min: 1
+    max: 4
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -227,6 +255,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Pine has a soft, porous structure with significant natural resin content.
+  This requires careful control of laser power to avoid resin bleeding and prevent
+  surface scorching.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -262,76 +293,17 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: 'At 500x magnification, the surface of the pine wood, it reveals a quite
-    complex and uneven topography, burdened by a heterogeneous layer of contamination.
-    What strikes one immediately is the presence of a dark, irregular film—perhaps
-    a mix of organic residues and environmental deposits—that obscures the natural
-    grain structure. This layer, measured via Scanning Electron Microscopy (SEM),
-    varies in thickness from approximately 10 µm to—or more precisely—14.7 µm in denser
-    patches, particularly within the porous regions of the wood (as observed in prior
-    studies of softwood degradation). The contamination appears as a mottled, semi-opaque
-    coating, with granular particulates embedded sporadically, likely composed of
-    dust or soot, ranging in size from 2 to 5 µm as confirmed by Energy-Dispersive
-    X-ray Spectroscopy (EDX) analysis.
-
-
-    Zooming into specific areas, one can see how the contamination infiltrates the
-    natural porosity of the pine, which, with its average porosity of 65%, offers
-    numerous cavities for debris to settle. The surface roughness, initially measured
-    at an Ra value of 25 µm, seems exacerbated by these deposits, creating micro-scale
-    irregularities that disrupt the otherwise smooth planed texture. What is evident
-    to observe is the partial masking of the wood’s cellular structure—tracheids and
-    resin canals are barely discernible beneath this film. Additionally, localized
-    discoloration, possibly from fungal spores or oxidative reactions, manifests as
-    darker streaks across the field of view, suggesting a chemical alteration of the
-    surface (a phenomenon often linked to prolonged exposure). This contamination,
-    it undoubtedly compromises the material’s aesthetic and functional integrity,
-    likely reducing reflectivity from its baseline of 0.2 at 1064 nm wavelength.
-
-
-    In certain regions, particularly near the edges of the sample, the layer appears
-    cracked or flaking, exposing fragmented glimpses of the underlying wood. However,
-    these exposed areas are minimal, and the overall impression remains one of a heavily
-    burdened surface. Through X-ray Photoelectron Spectroscopy (XPS), preliminary
-    data indicate a high carbon content in the contamination, pointing to organic
-    pollutants or char residues. Such a condition, it poses challenges for applications
-    like furniture manufacturing or cultural heritage restoration, where surface purity
-    and structural clarity are paramount.'
-  afterText: 'Following laser cleaning, the pine surface at 500x magnification, it
-    presents a remarkably transformed appearance, one that highlights the efficacy
-    of the process with striking clarity. Where once a thick, uneven film of contamination—ranging
-    from 10 to 14.7 µm—obscured the wood’s natural features, now the grain structure
-    and cellular details are distinctly visible. The laser interaction, conducted
-    above the ablation threshold of 1.2 J/cm², has effectively removed the mottled
-    layer of organic residues and particulates (as previously identified via EDX),
-    leaving behind a surface that appears significantly smoother. Post-cleaning surface
-    roughness measurements, taken via profilometry, indicate a reduced Ra value of
-    approximately 18 µm—a notable improvement over the initial 25 µm—suggesting enhanced
-    uniformity (a critical factor for functional restoration).
-
-
-    What strikes me particularly is the restoration of the wood’s inherent porosity
-    and texture, with tracheids and resin canals now clearly discernible under the
-    microscope. The dark streaks of discoloration, likely fungal or oxidative in origin,
-    have been largely eradicated, though faint traces remain in deeper pores, visible
-    as subtle shadows rather than dominant features. SEM imaging confirms that the
-    cleaned surface exhibits minimal residual debris, with only occasional micro-particles—sized
-    below 1 µm—detected in isolated cavities. Reflectivity, previously diminished
-    by the contamination, is likely improved closer to its baseline of 0.2 at 1064
-    nm, enhancing the material’s suitability for applications like furniture manufacturing.
-    The precision here, it creates really good results, balancing material removal
-    with the preservation of the pine’s structural integrity.
-
-
-    In a direct comparison, the transformation is evident to observe: the once-opaque
-    coating is gone, replaced by a surface that, while not entirely pristine, shows
-    a restored natural appearance. XPS analysis post-cleaning indicates a significant
-    reduction in surface carbon content, corroborating the removal of organic pollutants.
-    Some micro-scale thermal effects—perhaps from localized heating near the pyrolysis
-    onset of 280°C—are noted as faint discoloration in high-energy zones, yet these
-    do not compromise overall integrity. This cleaned surface, she is very clean now,
-    and offers a renewed potential for both aesthetic and structural performance in
-    practical contexts like construction or heritage restoration.'
+  beforeText: At 500x magnification, the pine surface is obscured by a discontinuous
+    contamination layer, approximately 5-15 µm thick. This layer, composed of embedded
+    soot, microbial biofilm, and particulate matter, fills the porous tracheid structure
+    and adheres to the 25 µm surface roughness. The underlying wood grain and earlywood/latewood
+    boundaries are partially masked, with contaminants forming a textured, matte-black
+    crust that reduces the native reflectivity to below 22%.
+  afterText: Post-cleaning, the 500x view reveals the restored wood microstructure.
+    The porous tracheid network is fully exposed, with clear delineation between earlywood
+    and latewood bands. The original 25 µm surface roughness is now visible, free
+    of embedded contaminants. The surface exhibits a clean, micro-textured profile
+    with a reflectivity restored to its intrinsic value.
   description: Microscopic analysis of pine surface before and after laser cleaning
     treatment
   alt: Microscopic view of pine surface showing laser cleaning effects
@@ -341,17 +313,17 @@ caption:
     - pine_specific
     contaminationProfile: pine surface contamination
   microscopy:
-    parameters: Microscopic analysis of pine
+    parameters: Microscopic analysis of Pine
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: '2025-10-04T21:06:52.596491Z'
+    timestamp: '2025-10-02T00:00:00.000000Z'
     generator: FrontmatterCaptionGenerator
-    componentType: ai_caption_frontmatter
+    componentType: template_caption
   author: Alessandro Moretti
   materialProperties:
     materialType: Wood
-    analysisMethod: ai_microscopy
+    analysisMethod: template_microscopy
   imageUrl:
     alt: Microscopic view of Pine surface after laser cleaning showing detailed surface
       structure
@@ -367,9 +339,3 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - alessandro-moretti
-metadata:
-  lastUpdated: '2025-10-04T21:07:48.670574'
-  captionIntegrated: true
-subtitle: Pine’s subtle grain patterns can pose a real hurdle in laser treatment.
-  I’ve noticed, especially at power levels above 50 watts, that its softer layers
-  absorb heat unevenly, so targeted adjustments are essential to protect the finish.

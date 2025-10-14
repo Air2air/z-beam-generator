@@ -8,20 +8,28 @@ materialProperties:
     value: 0.64
     unit: g/cm³
     confidence: 95
-    description: Average density of mahogany wood at 12% moisture content
+    description: Average density of genuine mahogany (Swietenia genus) at 12% moisture
+      content
     min: 0.12
     max: 1.25
+  meltingPoint:
+    value: 380
+    unit: °C
+    confidence: 85
+    description: Charring/thermal decomposition temperature for mahogany wood
+    min: null
+    max: null
   thermalConductivity:
-    value: 0.16
+    value: 0.14
     unit: W/m·K
-    confidence: 88
-    description: Thermal conductivity perpendicular to grain direction
+    confidence: 90
+    description: Thermal conductivity perpendicular to grain direction at room temperature
     min: 0.04
     max: 0.4
   tensileStrength:
     value: 85
     unit: MPa
-    confidence: 92
+    confidence: 90
     description: Tensile strength parallel to grain direction
     min: 20
     max: 200
@@ -29,14 +37,14 @@ materialProperties:
     value: 4.2
     unit: kN
     confidence: 88
-    description: Janka hardness test value
+    description: Janka hardness test value for side hardness
     min: 20
     max: 5000
   youngsModulus:
     value: 9.7
     unit: GPa
-    confidence: 90
-    description: Modulus of elasticity parallel to grain
+    confidence: 92
+    description: Modulus of elasticity parallel to grain direction
     min: 5
     max: 25
   laserAbsorption:
@@ -54,9 +62,9 @@ materialProperties:
     min: 10
     max: 60
   specificHeat:
-    value: 1.8
-    unit: kJ/kg·K
-    confidence: 90
+    value: 1800
+    unit: J/kg·K
+    confidence: 92
     description: Specific heat capacity at room temperature
     min: 800
     max: 2500
@@ -82,55 +90,48 @@ materialProperties:
     min: 0.0001
     max: 0.4
   thermalExpansion:
-    value: 45.0
-    unit: 10^-6/K
-    confidence: 92
-    description: thermalExpansion from Materials.yaml
+    value: 3.4e-05
+    unit: 1/°C
+    confidence: 88
+    description: Coefficient of thermal expansion perpendicular to grain direction
     min: 3.0
     max: 60
   absorptionCoefficient:
-    value: 0.85
+    value: 0.75
     unit: dimensionless
     confidence: 85
-    description: Estimated absorption coefficient for near-infrared laser wavelengths
-      (800-1100 nm)
+    description: Optical absorption coefficient for common laser wavelengths (1064
+      nm)
     min: null
     max: null
   reflectivity:
     value: 0.15
     unit: dimensionless
     confidence: 82
-    description: Reflectivity at common laser cleaning wavelengths
+    description: Surface reflectivity for near-infrared laser wavelengths
     min: null
     max: null
   ablationThreshold:
-    value: 0.8
+    value: 1.2
     unit: J/cm²
     confidence: 80
-    description: Estimated laser ablation threshold for nanosecond pulses
+    description: Estimated laser ablation threshold for 1064 nm wavelength
     min: null
     max: null
   porosity:
     value: 55
     unit: '%'
-    confidence: 85
-    description: Typical porosity percentage in mahogany wood structure
-    min: null
-    max: null
-  moistureContent:
-    value: 12
-    unit: '%'
-    confidence: 95
-    description: Equilibrium moisture content at standard conditions
+    confidence: 91
+    description: Average porosity percentage in mahogany wood structure
     min: null
     max: null
 applications:
 - Marine
 - Aerospace
 - Cultural Heritage
-- Musical Instrument Manufacturing
-- Architectural Restoration
-- Luxury Automotive
+- Musical Instruments
+- Architectural Woodwork
+- Automotive
 - Furniture Manufacturing
 - Energy Sector
 - Medical Equipment
@@ -139,7 +140,7 @@ machineSettings:
   powerRange:
     value: 45
     unit: W
-    confidence: 92
+    confidence: 90
     description: Optimal average power for Mahogany surface cleaning without charring
     min: 30
     max: 60
@@ -147,29 +148,30 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength for optimal absorption in Mahogany lignin and
-      contaminants
+    description: Near-IR wavelength for optimal absorption in Mahogany cellulose and
+      lignin
     min: 532
     max: 1064
   spotSize:
     value: 100
     unit: μm
-    confidence: 90
-    description: Beam spot diameter for precise cleaning control
+    confidence: 89
+    description: Beam spot diameter for precise cleaning control on Mahogany surface
     min: 50
     max: 200
   repetitionRate:
     value: 20
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning with thermal management
+    description: Repetition rate for efficient contaminant removal with controlled
+      thermal input
     min: 10
     max: 50
   pulseWidth:
     value: 100
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for controlled material removal
+    description: Pulse duration balancing cleaning efficiency and thermal damage prevention
     min: 50
     max: 200
   scanSpeed:
@@ -177,36 +179,36 @@ machineSettings:
     unit: mm/s
     confidence: 86
     description: Optimal scanning speed for uniform cleaning coverage
-    min: 200
-    max: 1000
+    min: 300
+    max: 800
   energyDensity:
     value: 2.5
     unit: J/cm²
-    confidence: 89
+    confidence: 91
     description: Fluence threshold for effective contaminant removal without wood
-      damage
+      substrate damage
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 84
-    description: Optimal beam overlap for uniform cleaning without excessive heat
-      accumulation
-    min: 30
+    description: Optimal beam overlap for uniform cleaning without excessive thermal
+      buildup
+    min: 40
     max: 70
   passCount:
     value: 2
     unit: passes
     confidence: 88
-    description: Recommended number of passes for complete cleaning
+    description: Number of cleaning passes for complete contaminant removal
     min: 1
     max: 4
   dwellTime:
     value: 200
     unit: μs
     confidence: 83
-    description: Optimal dwell time per spot for effective material removal
+    description: Maximum dwell time per spot to prevent thermal degradation
     min: 100
     max: 500
 regulatoryStandards:
@@ -229,10 +231,6 @@ images:
     alt: Mahogany surface undergoing laser cleaning showing precise contamination
       removal
     url: /images/material/mahogany-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Mahogany surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/mahogany-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -258,6 +256,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Mahogany has a unique pore structure and natural oil content that differs
+  from other hardwoods. These properties require careful adjustment of laser settings
+  to avoid resin activation or surface scorching.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -293,28 +294,19 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: 'At 500x magnification, the mahogany surface is obscured by a complex
-    contamination layer. A discontinuous film, ranging from 5 to 50 micrometers in
-    thickness, adheres to the wood''s cellular structure. This layer consists of embedded
-    particulate matter, oxidized resin residues, and microbial biofilms that fill
-    the porous vessel elements.
-
-
-    The underlying wood texture is partially masked. Contaminants have preferentially
-    accumulated within the lumens of the large, open vessels characteristic of mahogany,
-    creating a speckled pattern. The surface topography is irregular, with the foreign
-    material forming a crust that bridges across the natural grain, obscuring the
-    fine details of the cellular anatomy and creating a matte, occluded appearance.'
-  afterText: 'Laser cleaning has restored the surface to its native state. The contamination
-    layer has been completely removed via selective photoablation, revealing the clean,
-    open vessels and the distinct, honeycombed structure of the wood''s parenchyma
-    cells.
-
-
-    The original surface texture is now fully visible, with no thermal damage to the
-    delicate cell walls. The laser process has effectively cleared all occluding residues,
-    resulting in a microscopically clean surface that exposes the intrinsic, porous
-    architecture of the mahogany.'
+  beforeText: At 500x magnification, the mahogany surface is obscured by a dense,
+    stratified contamination layer approximately 50-200 µm thick. This layer, composed
+    of embedded soot, degraded organic films, and particulate matter, fills the wood's
+    porous structure and masks the characteristic grain. The surface texture is irregular
+    and crust-like, with fissures and agglomerated deposits that disrupt the underlying
+    cellular anatomy. The contamination exhibits poor adhesion to the substrate, creating
+    distinct interfacial boundaries prone to delamination.
+  afterText: Following laser cleaning, the 500x view reveals the restored mahogany
+    substrate. The porous, open-cell structure of the wood is fully exposed, with
+    clear lumens and intact cell walls. The contamination layer has been completely
+    removed via selective ablation, leaving a clean, well-defined surface. The original
+    grain pattern is now distinct and unobstructed, with minimal residual carbonization
+    or thermal alteration to the underlying wood fibers.
   description: Microscopic analysis of mahogany surface before and after laser cleaning
     treatment
   alt: Microscopic view of mahogany surface showing laser cleaning effects
@@ -350,6 +342,3 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - todd-dunning
-subtitle: Pay close attention to mahogany’s varying grain density during laser treatment.
-  If you push power beyond 50 watts on denser sections, you’ll risk uneven removal
-  and compromise the wood’s natural finish.

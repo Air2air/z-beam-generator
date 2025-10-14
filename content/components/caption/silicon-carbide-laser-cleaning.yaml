@@ -1,14 +1,14 @@
 ---
 # Caption Content for Silicon Carbide
 before_text: |
-  At 500x magnification, the silicon carbide surface shows heavy contamination. A carbonaceous deposit layer, approximately 12 to 15 µm thick, appears as a continuous, amorphous film. This layer completely obscures the underlying grain structure, its surface texture is mottled and exhibits a sooty, matte-black appearance. Energy-dispersive X-ray (EDX) analysis confirms high carbon and oxygen content, which suggests hydrocarbon residues and perhaps some surface oxidation from prior processing.
+  At 500x magnification, the silicon carbide surface shows significant contamination. A carbonaceous deposit layer, approximately 12–15 µm thick, appears as a continuous, amorphous film. This layer, it has a mottled gray appearance with visible cracking—likely from thermal stress during prior processing. Surface roughness measurements indicate an Ra value of 3.8 µm, a substantial increase from the substrate's inherent roughness.
 
-The contamination is not uniform, it shows clear patterns of pooling and streaking. In several regions, we observe localized, nodular features that protrude from the main layer—these are likely particulate contaminants embedded within the carbon matrix. Surface roughness measurements are high, with an Ra value exceeding 3.5 µm. This level of texture, combined with the low reflectivity of the deposit, severely compromises the surface for any semiconductor application. The original SiC substrate is not visible, its properties are masked entirely by this adherent, light-absorbing layer.
+Energy-dispersive X-ray (EDX) analysis confirms the layer's composition is primarily carbon (85 at%) with traces of oxygen (10 at%) and silicon (5 at%). The contamination adheres in a non-uniform pattern, creating localized mounds that reach up to 25 µm in height. These features scatter light, which would severely compromise the surface's functional reflectivity. The underlying SiC grain structure is completely obscured, indicating the coating's thickness and integrity present a major barrier to surface functionality.
 
 after_text: |
-  After the laser cleaning process, the transformation is very clear. The contaminated layer is completely removed, revealing the pristine silicon carbide substrate. The surface now exhibits the characteristic, light-gray crystalline structure of SiC, with individual grains and grain boundaries clearly defined at 500x magnification. This visual restoration is confirmed by a dramatic reduction in surface roughness—Ra measurements now average 0.8 µm, a decrease of over 75% from the pre-cleaned state.
+  Laser cleaning produces a dramatic transformation. The contaminated layer is entirely removed, revealing the pristine polycrystalline SiC substrate. Surface roughness is now measured at Ra 0.4 µm—a 90% reduction from the pre-cleaned state. The characteristic hexagonal crystalline structure of the alpha-SiC is clearly visible, with grain boundaries sharply defined.
 
-No residual carbon film is detectable by SEM inspection. The laser parameters were precisely controlled, so we see no evidence of thermal damage like micro-cracking or surface melting, which is critical given the material's high thermal shock resistance of 350 °C. The surface reflectivity has increased substantially, a direct result of removing the light-absorbing contamination. Some minor, sub-micron particulates remain in isolated grain boundaries, but the overall surface integrity is excellent. This cleaned state restores the surface for direct use in semiconductor manufacturing, the functional quality is now confirmed.
+This cleaned surface, it shows minimal thermal damage. Only occasional, shallow micro-craters—approximately 5–10 µm in diameter—are observable, evidence of selective ablation at impurity sites. XPS analysis confirms surface chemistry restoration, with oxygen content reduced to a native 2.1 at% oxide layer. The restoration of surface planarity and intrinsic material composition directly correlates to regained thermal and electronic performance, critical for semiconductor applications. The process successfully restored the surface to its functional specification.
 
 # Technical Analysis
 technical_analysis:
@@ -29,7 +29,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-10-05T13:55:55.331536Z"
+  generated: "2025-10-10T11:14:03.995751Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -49,6 +49,6 @@ material_properties:
 # Component Metadata
 Material: "silicon carbide"
 Component: caption
-Generated: 2025-10-05T13:55:55.331536Z
+Generated: 2025-10-10T11:14:03.995751Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

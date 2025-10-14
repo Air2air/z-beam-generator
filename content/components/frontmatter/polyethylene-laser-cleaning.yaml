@@ -8,42 +8,42 @@ materialProperties:
     value: 0.94
     unit: g/cm³
     confidence: 95
-    description: Density of high-density polyethylene at room temperature
+    description: Density of high-density polyethylene (HDPE) at room temperature
     min: 0.85
     max: 2.2
   meltingPoint:
     value: 130
     unit: °C
     confidence: 92
-    description: Melting point of high-density polyethylene
+    description: Melting point range for HDPE, critical for laser thermal damage assessment
     min: null
     max: null
   thermalConductivity:
-    value: 0.44
+    value: 0.45
     unit: W/m·K
     confidence: 88
-    description: Thermal conductivity at room temperature
+    description: Thermal conductivity of polyethylene at room temperature
     min: 0.02
     max: 3
   tensileStrength:
-    value: 30
+    value: 32
     unit: MPa
     confidence: 92
-    description: Tensile strength of high-density polyethylene
+    description: Tensile strength at yield for HDPE
     min: 10
     max: 400
   hardness:
     value: 65
     unit: Shore D
-    confidence: 88
-    description: Hardness on Shore D scale
+    confidence: 85
+    description: Hardness measurement on Shore D scale for HDPE
     min: Shore A 10
     max: Shore D 90
   youngsModulus:
     value: 1.1
     unit: GPa
     confidence: 90
-    description: Young's modulus in tension
+    description: Young's modulus of elasticity for HDPE
     min: 0.01
     max: 5
   laserAbsorption:
@@ -90,132 +90,141 @@ materialProperties:
     max: 1
   thermalExpansion:
     value: 200
-    unit: ×10⁻⁶/°C
+    unit: 10^-6/°C
     confidence: 85
-    description: Coefficient of linear thermal expansion
+    description: Coefficient of linear thermal expansion for HDPE
     min: 10
     max: 200
   absorptionCoefficient:
     value: 0.85
-    unit: cm⁻¹
+    unit: dimensionless
     confidence: 82
-    description: Absorption coefficient at 1064 nm wavelength
+    description: Typical absorption coefficient for IR wavelengths (1064 nm)
     min: null
     max: null
   reflectivity:
-    value: 0.08
+    value: 0.12
     unit: dimensionless
-    confidence: 85
-    description: Reflectivity at 1064 nm wavelength
+    confidence: 80
+    description: Reflectivity at common laser wavelengths (1064 nm)
     min: null
     max: null
   ablationThreshold:
     value: 0.8
     unit: J/cm²
+    confidence: 82
+    description: Approximate laser ablation threshold for nanosecond pulses at 1064
+      nm
+    min: null
+    max: null
+  laserDamageThreshold:
+    value: 1.2
+    unit: J/cm²
     confidence: 80
-    description: Laser ablation threshold for nanosecond pulses at 1064 nm
+    description: Laser damage threshold for continuous wave irradiation
     min: null
     max: null
   oxidationResistance:
-    value: 85
-    unit: rating
+    value: High
+    unit: qualitative
     confidence: 88
-    description: Relative oxidation resistance rating (0-100 scale)
+    description: Resistance to oxidation at room temperature, but degrades under UV
+      exposure
     min: null
     max: null
   crystallineStructure:
     value: Semi-crystalline
-    unit: text
-    confidence: 95
-    description: Molecular structure classification
+    unit: qualitative
+    confidence: 92
+    description: Polyethylene exhibits semi-crystalline structure with amorphous regions
     min: null
     max: null
   surfaceRoughness:
     value: 0.8
     unit: μm Ra
-    confidence: 82
-    description: Typical surface roughness of molded polyethylene
+    confidence: 85
+    description: Typical surface roughness for molded polyethylene surfaces
     min: null
     max: null
 applications:
 - Medical Device Manufacturing
-- Aerospace Components
-- Automotive Manufacturing
+- Food Packaging
+- Automotive Components
 - Marine Equipment
+- Aerospace Composites
 - Electronics Manufacturing
-- Food Processing Equipment
 - Renewable Energy
 - Cultural Heritage Preservation
 - Chemical Processing
-- Packaging Manufacturing
+- Consumer Products Manufacturing
 machineSettings:
   powerRange:
-    value: 90
+    value: 45
     unit: W
-    confidence: 92
+    confidence: 90
     description: Optimal average power for Polyethylene surface cleaning without thermal
       damage
-    min: 70
-    max: 120
+    min: 30
+    max: 60
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength with good Polyethylene absorption and minimal
-      substrate damage
+    description: Near-IR wavelength with moderate Polyethylene absorption for controlled
+      ablation
     min: 532
     max: 10640
   spotSize:
     value: 80
     unit: μm
-    confidence: 84
-    description: Beam spot diameter for effective cleaning resolution on Polyethylene
-      surfaces
+    confidence: 86
+    description: Optimal beam spot diameter for balance between cleaning efficiency
+      and resolution
     min: 50
     max: 150
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning with thermal management
+    description: High repetition rate for efficient cleaning while maintaining thermal
+      control
     min: 20
     max: 100
   pulseWidth:
-    value: 12
+    value: 8
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for controlled ablation of Polyethylene
-      surface contaminants
-    min: 8
-    max: 20
+    description: Nanosecond pulse duration for efficient material removal with minimal
+      heat diffusion
+    min: 5
+    max: 15
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 86
-    description: Optimal scanning speed for uniform cleaning coverage on Polyethylene
-    min: 300
-    max: 800
+    confidence: 84
+    description: Optimal scanning speed for effective material removal without excessive
+      dwell time
+    min: 200
+    max: 1000
   fluenceThreshold:
     value: 1.2
     unit: J/cm²
     confidence: 89
-    description: Minimum fluence required for effective Polyethylene contaminant removal
+    description: Minimum fluence required for Polyethylene ablation threshold
     min: 0.8
     max: 2.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      buildup
-    min: 40
+    description: Optimal beam overlap percentage for uniform cleaning coverage
+    min: 30
     max: 70
   passCount:
     value: 2
     unit: passes
     confidence: 85
-    description: Recommended number of passes for complete contaminant removal from
-      Polyethylene
+    description: Recommended number of passes for complete contaminant removal
     min: 1
     max: 4
 regulatoryStandards:
@@ -236,10 +245,6 @@ images:
     alt: Polyethylene surface undergoing laser cleaning showing precise contamination
       removal
     url: /images/material/polyethylene-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Polyethylene surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/polyethylene-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -265,6 +270,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Polyethylene has a lower melting point and is more chemically resistant
+  than other plastics. These traits demand lower laser power and specific wavelength
+  settings to avoid surface damage.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -301,18 +309,21 @@ outcomeMetrics:
   units: []
 caption:
   beforeText: At 500x magnification, the polyethylene surface is obscured by a non-uniform
-    contaminant layer, measuring 5-15 µm in thickness. This layer, composed of organic
-    residues and embedded particulates, creates a topographically complex and matte-textured
-    landscape. The underlying semi-crystalline polymer structure is entirely masked.
-    The contamination adheres tenaciously within the native surface micro-asperities,
-    which have a baseline roughness of 0.8 µm Ra, creating a mechanically interlocked,
-    high-surface-area interface that compromises substrate integrity.
-  afterText: Laser cleaning has restored the native polymer morphology, revealing
-    the characteristic semi-crystalline microstructure of the polyethylene. The contaminant
-    layer has been completely ablated, eliminating the previous 5-15 µm thickness.
-    The surface now exhibits a uniform texture with a reduced roughness near the intrinsic
-    0.8 µm Ra, free from residue and with sharply defined micro-features. This results
-    in a clean, low-particulate surface ideal for subsequent processing.
+    contaminant layer, approximately 5-10 µm thick. This layer, composed of organic
+    residues and particulate matter, disrupts the native semi-crystalline texture.
+    The underlying polymer morphology is concealed, with contaminants filling the
+    micro-scale valleys of the 0.8 µm Ra surface, creating an irregular, occluded
+    topography that compromises surface energy and adhesion.
+  afterText: 'Laser cleaning effectively removes the contaminant layer, revealing
+    the pristine, semi-crystalline microstructure of the polyethylene substrate. The
+    original surface texture, with a characteristic roughness of 0.8 µm Ra, is now
+    fully exposed and undamaged.
+
+
+    The process has selectively ablated the contaminants without reaching the polymer''s
+    melting point of 130°C, preserving the material''s integrity. The surface is now
+    uniformly clean, with no residual film or heat-induced deformation, restoring
+    optimal properties for subsequent manufacturing processes.'
   description: Microscopic analysis of polyethylene surface before and after laser
     cleaning treatment
   alt: Microscopic view of polyethylene surface showing laser cleaning effects
@@ -348,6 +359,3 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - alessandro-moretti
-subtitle: Polyethylene often presents a subtle challenge during laser treatment due
-  to its varying density across batches. Adjust your power levels with care, ideally
-  below 50 watts initially, to protect the delicate outer layer from unintended stress.

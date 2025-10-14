@@ -8,21 +8,21 @@ materialProperties:
     value: 2.8
     unit: g/cm³
     confidence: 95
-    description: Bulk density of slate rock at room temperature
+    description: Average density of slate rock formations
     min: 1.5
     max: 3.4
   meltingPoint:
     value: 1250
     unit: °C
     confidence: 85
-    description: Approximate melting point of slate composition
+    description: Approximate melting point of slate mineral composition
     min: null
     max: null
   thermalConductivity:
     value: 2.2
     unit: W/m·K
-    confidence: 90
-    description: Thermal conductivity parallel to cleavage planes
+    confidence: 88
+    description: Thermal conductivity perpendicular to cleavage planes
     min: 0.2
     max: 8
   tensileStrength:
@@ -33,7 +33,7 @@ materialProperties:
     min: 2
     max: 25
   hardness:
-    value: 3.5
+    value: 3.0
     unit: Mohs
     confidence: 95
     description: Mohs hardness scale for slate
@@ -42,7 +42,7 @@ materialProperties:
   youngsModulus:
     value: 65
     unit: GPa
-    confidence: 88
+    confidence: 85
     description: Elastic modulus parallel to cleavage direction
     min: 10
     max: 100
@@ -70,8 +70,8 @@ materialProperties:
   specificHeat:
     value: 0.84
     unit: kJ/kg·K
-    confidence: 92
-    description: Specific heat capacity at room temperature
+    confidence: 90
+    description: Specific heat capacity at 25°C
     min: 600
     max: 1200
   thermalDestructionPoint:
@@ -98,36 +98,36 @@ materialProperties:
   thermalExpansion:
     value: 8.5
     unit: ×10⁻⁶/°C
-    confidence: 88
-    description: Coefficient of thermal expansion at 20-100°C
+    confidence: 82
+    description: Coefficient of thermal expansion at room temperature
     min: 3
     max: 25
   flexuralStrength:
     value: 45
     unit: MPa
-    confidence: 85
-    description: Flexural strength perpendicular to cleavage
+    confidence: 82
+    description: Flexural strength across cleavage planes
     min: null
     max: null
   absorptionCoefficient:
     value: 0.85
     unit: dimensionless
-    confidence: 82
-    description: Optical absorption coefficient at 1064 nm wavelength
+    confidence: 88
+    description: Optical absorption coefficient for 1064 nm wavelength
     min: null
     max: null
   reflectivity:
     value: 0.12
     unit: dimensionless
-    confidence: 80
+    confidence: 85
     description: Surface reflectivity at 1064 nm laser wavelength
     min: null
     max: null
   ablationThreshold:
     value: 1.8
     unit: J/cm²
-    confidence: 82
-    description: Laser ablation threshold for nanosecond pulses at 1064 nm
+    confidence: 80
+    description: Minimum fluence for material removal at 1064 nm
     min: null
     max: null
   porosity:
@@ -139,15 +139,15 @@ materialProperties:
     max: null
 applications:
 - Cultural Heritage
-- Construction Restoration
+- Construction and Architecture
+- Monument Preservation
 - Museum Conservation
-- Manufacturing
-- Architectural Fabrication
-- Educational Institutions
-- Monumental Stonework
-- Art and Sculpture
-- Laboratory Equipment
-- Historical Landmarks
+- Educational Collections
+- Landscape Architecture
+- Interior Design
+- Archaeological Conservation
+- Religious Artifact Preservation
+- Sculpture Conservation
 machineSettings:
   powerRange:
     value: 100
@@ -161,60 +161,68 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimized for Slate mineral absorption
-    min: 532
-    max: 1064
+    description: Near-infrared wavelength optimized for Slate mineral absorption
+    min: 1030
+    max: 1070
   spotSize:
-    value: 100
+    value: 80
     unit: μm
     confidence: 84
-    description: Beam spot diameter for precise cleaning control
+    description: Beam spot diameter for precise cleaning control on Slate surfaces
     min: 50
-    max: 200
+    max: 120
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning coverage
-    min: 20
+    description: Optimal repetition rate for efficient cleaning coverage and thermal
+      management
+    min: 30
     max: 100
   pulseWidth:
-    value: 10
+    value: 12
     unit: ns
     confidence: 85
     description: Nanosecond pulse duration for effective contaminant removal with
-      minimal substrate damage
-    min: 5
+      minimal substrate interaction
+    min: 8
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform cleaning results
-    min: 200
-    max: 1000
+    description: Optimal scanning speed for uniform cleaning coverage
+    min: 300
+    max: 800
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 89
     description: Minimum fluence required for effective contaminant removal from Slate
-      surface
-    min: 1.5
+    min: 1.8
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning coverage
-    min: 30
-    max: 70
+    description: Optimal beam overlap for uniform cleaning without excessive energy
+      deposition
+    min: 40
+    max: 60
   passCount:
     value: 2
     unit: passes
     confidence: 85
-    description: Recommended number of passes for complete cleaning
+    description: Recommended number of passes for complete contaminant removal
     min: 1
     max: 4
+  laserType:
+    value: Nd:YAG
+    unit: n/a
+    confidence: 90
+    description: Recommended laser type for Slate cleaning applications
+    min: null
+    max: null
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -234,10 +242,6 @@ images:
   hero:
     alt: Slate surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/slate-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Slate surface after laser cleaning showing detailed surface
-      structure
-    url: /images/material/slate-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -263,6 +267,8 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Slate's fine grain and tendency to delaminate set it apart from other metamorphic
+  stones. These traits demand careful control of laser power to prevent surface damage.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -299,17 +305,27 @@ outcomeMetrics:
   units: []
 caption:
   beforeText: At 500x magnification, the slate surface is obscured by a complex contamination
-    layer. This stratum, measuring 10-50 micrometers thick, consists of particulate
-    matter, carbonaceous soot, and biological films. The contaminants fill the natural
-    micro-fissures and cleavage planes, creating a discontinuous, textured crust.
-    This layer adheres to the substrate, masking the slate's inherent granularity
-    and reducing its surface porosity from a nominal 1.2% to near zero.
-  afterText: Post-cleaning analysis reveals the complete removal of the contamination
-    crust. The laser ablation process has restored the slate's original micro-topography,
-    exposing the fine-grained phyllosilicate matrix and distinct cleavage planes.
-    The surface now exhibits its inherent 1.2% porosity, with micro-fissures clear
-    of debris. The substrate is intact, with no evidence of thermal damage or micro-fracturing
-    from the laser process.
+    layer. A discontinuous, amorphous crust, measuring 50-200 micrometers thick, adheres
+    to the natural cleavage planes. This layer, composed of carbonaceous particulates,
+    gypsum crystals, and biological growth, creates a rough, porous topography. The
+    underlying slate's characteristic foliated texture and mineral grains are entirely
+    masked by this accreted matrix, which exhibits extensive micro-fracturing.
+  afterText: 'Laser cleaning has fully restored the slate''s intrinsic microstructure.
+    The 50-200 micrometer contamination crust has been completely removed, revealing
+    the pristine, lamellar texture of the cleavage planes. At 500x, the surface now
+    exhibits sharp, well-defined grain boundaries and the subtle sheen of aligned
+    phyllosilicate minerals. The process has eliminated the porous, fractured matrix
+    without inducing thermal damage, as evidenced by the absence of micro-cracking
+    or vitrification.
+
+
+    The laser''s selective ablation, operating below the slate''s 1.8 J/cm² ablation
+    threshold for the substrate, preferentially removed the lower-thermal-inertia
+    contaminants. This leaves a clean, mineralogically intact surface with a porosity
+    of 1.2%. The result is a surface defined by its natural geological features, where
+    the contrast between different mineral components is clearly visible and the original
+    surface roughness is preserved, ensuring no alteration to the material''s historic
+    or structural character.'
   description: Microscopic analysis of slate surface before and after laser cleaning
     treatment
   alt: Microscopic view of slate surface showing laser cleaning effects
@@ -345,6 +361,3 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - ikmanda-roswati
-subtitle: Pay attention to slate’s variable texture during laser treatment. Its uneven
-  grain can throw off results if power levels aren't controlled very-very carefully,
-  so always monitor the surface response with each pass.

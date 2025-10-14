@@ -1,21 +1,21 @@
 name: Redwood
 category: Wood
-subcategory: Redwood
+subcategory: softwood
 title: Redwood Laser Cleaning
 description: Laser cleaning parameters for Redwood
 materialProperties:
   density:
     value: 0.42
     unit: g/cm³
-    confidence: 92
+    confidence: 95
     description: Average density of redwood at 12% moisture content
     min: 0.12
     max: 1.25
   meltingPoint:
-    value: 280
+    value: 380
     unit: °C
     confidence: 85
-    description: Pyrolysis onset temperature where thermal decomposition begins
+    description: Pyrolysis temperature where wood begins to decompose and char
     min: null
     max: null
   thermalConductivity:
@@ -28,64 +28,114 @@ materialProperties:
   tensileStrength:
     value: 85
     unit: MPa
-    confidence: 84
+    confidence: 88
     description: Tensile strength parallel to grain direction
     min: 20
     max: 200
   hardness:
     value: 2.1
     unit: kN
-    confidence: 83
-    description: Janka hardness test value for side hardness
+    confidence: 85
+    description: Janka hardness test value for side grain
     min: 20
     max: 5000
   youngsModulus:
-    value: 9.0
+    value: 8.9
     unit: GPa
-    confidence: 87
-    description: Modulus of elasticity in bending
+    confidence: 90
+    description: Modulus of elasticity parallel to grain direction
     min: 5
     max: 25
+  laserAbsorption:
+    value: 32.7
+    unit: '%'
+    confidence: 92
+    description: laserAbsorption from Materials.yaml
+    min: 1
+    max: 50
+  laserReflectivity:
+    value: 42.7
+    unit: '%'
+    confidence: 92
+    description: laserReflectivity from Materials.yaml
+    min: 10
+    max: 60
+  specificHeat:
+    value: 1380
+    unit: J/kg·K
+    confidence: 90
+    description: Specific heat capacity at 20°C and 12% moisture content
+    min: 800
+    max: 2500
+  thermalDestructionPoint:
+    value: 380.0
+    unit: °C
+    confidence: 92
+    description: thermalDestructionPoint from Materials.yaml
+    min: 200
+    max: 500
+  thermalDestructionType:
+    value: 350.0
+    unit: °C
+    confidence: 92
+    description: thermalDestructionType from Materials.yaml
+    min: null
+    max: null
+  thermalDiffusivity:
+    value: 0.21
+    unit: mm²/s
+    confidence: 85
+    description: Thermal diffusivity perpendicular to grain direction
+    min: 0.0001
+    max: 0.4
   thermalExpansion:
     value: 3.7
-    unit: 10^-6/°C
+    unit: μm/m·°C
     confidence: 82
     description: Coefficient of thermal expansion perpendicular to grain direction
     min: 3.0
     max: 60
-  specificHeat:
-    value: 1.38
-    unit: kJ/kg·K
-    confidence: 86
-    description: Specific heat capacity at 20°C and 12% moisture content
-    min: 800
-    max: 2500
   absorptionCoefficient:
-    value: 0.75
+    value: 0.78
     unit: dimensionless
-    confidence: 81
-    description: Optical absorption coefficient for common laser wavelengths (1064nm)
+    confidence: 82
+    description: Optical absorption coefficient for near-infrared wavelengths (1064
+      nm)
     min: null
     max: null
   reflectivity:
-    value: 0.25
+    value: 0.15
     unit: dimensionless
     confidence: 80
-    description: Surface reflectivity for near-infrared laser wavelengths
+    description: Reflectivity at 1064 nm laser wavelength for clean surface
     min: null
     max: null
   ablationThreshold:
-    value: 0.8
+    value: 1.2
     unit: J/cm²
-    confidence: 82
-    description: Minimum fluence required for material removal with nanosecond pulses
+    confidence: 85
+    description: Minimum fluence required for material removal at 1064 nm wavelength
     min: null
     max: null
   porosity:
     value: 65
     unit: '%'
-    confidence: 85
+    confidence: 90
     description: Average porosity percentage in redwood cellular structure
+    min: null
+    max: null
+  moistureContent:
+    value: 12
+    unit: '%'
+    confidence: 92
+    description: Equilibrium moisture content at standard conditions
+    min: null
+    max: null
+  ignitionTemperature:
+    value: 260
+    unit: °C
+    confidence: 88
+    description: Minimum temperature for sustained combustion in air
     min: null
     max: null
 applications:
@@ -93,12 +143,12 @@ applications:
 - Marine
 - Architectural Restoration
 - Furniture Manufacturing
-- Museum Conservation
 - Outdoor Structures
-- Musical Instrument Restoration
-- Construction Pre-treatment
+- Musical Instrument
+- Wine Barrel
+- Construction
 - Art Conservation
-- Specialty Woodworking
+- Garden and Landscape
 machineSettings:
   powerRange:
     value: 90
@@ -111,9 +161,9 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimized for Redwood lignin and cellulose absorption
-    min: 532
-    max: 1064
+    description: Near-IR wavelength for optimal absorption in wood cellulose and lignin
+    min: 1030
+    max: 1070
   spotSize:
     value: 80
     unit: μm
@@ -151,12 +201,11 @@ machineSettings:
     min: 1.8
     max: 3.5
   overlapRatio:
-    value: 40
+    value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      buildup
-    min: 30
+    description: Optimal beam overlap for uniform cleaning pattern
+    min: 40
     max: 60
   passCount:
     value: 2
@@ -164,7 +213,7 @@ machineSettings:
     confidence: 85
     description: Recommended number of passes for complete surface cleaning
     min: 1
-    max: 4
+    max: 3
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -207,6 +256,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Redwood's density and natural oils can vary significantly across a single
+  piece. This variation requires careful adjustment of laser settings to avoid uneven
+  cleaning or surface damage.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -242,50 +294,28 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: 'This contaminated redwood surface, when observed at 500x magnification
-    using Scanning Electron Microscopy (SEM), reveals a very-very distinct layer of
-    deposits. I see a heterogeneous film—perhaps organic residues or environmental
-    pollutants—covering the natural wood texture. This layer measures approximately
-    10-12 µm in thickness, unevenly distributed across the surface, with some areas
-    showing thicker patches up to 15 µm. The contamination appears as a dark, irregular
-    coating, obscuring the fine cellular structure of the redwood, which should show
-    clear tracheid patterns (the long, tube-like cells typical of softwoods).
+  beforeText: At 500x magnification, the redwood surface is obscured by a dense, stratified
+    contamination layer approximately 50-200 µm thick. This layer, composed of embedded
+    soot, biological growth, and degraded finishes, fills the wood's porous cellular
+    structure. The underlying tracheids and ray cells are largely invisible, with
+    the surface texture appearing amorphous and matte due to the contaminant's high,
+    diffuse light absorption, which masks the wood's natural grain definition.
+  afterText: 'Laser cleaning has fully restored the redwood''s microscopic surface
+    topography. The contaminant layer has been completely ablated, revealing the intricate,
+    open cellular network of tracheids and parenchyma cells. The surface now exhibits
+    a clear, textured profile with sharp edges and deep, open lumens.
 
 
-    Looking closer, the surface roughness is high, with Ra values around 8.5 µm, indicating
-    a disrupted topography. This roughness, it creates adhesion issues for any potential
-    restoration work. I also note micro-cracks—some as wide as 3 µm—likely from environmental
-    stress or aging, filled with debris. Energy Dispersive X-ray (EDX) analysis shows
-    carbon and oxygen peaks, suggesting organic contamination, mixed with trace silica
-    (perhaps dust). This film dulls the natural reflectivity of the wood, reducing
-    its aesthetic and functional value for cultural heritage applications. So, the
-    surface is compromised, and cleaning is necessary to restore integrity.
+    The cleaning process has selectively removed foreign material without damaging
+    the underlying wood cell walls. This precision is evident in the intact middle
+    lamella and the sharp definition between adjacent cells, which were previously
+    fused by contamination.
 
 
-    Under further observation, the contamination pattern is not uniform; it clusters
-    near porous regions where the wood’s natural 65% porosity allows deeper penetration.
-    This makes removal challenging, as deposits embed into micro-pores. Visually,
-    the surface looks mottled—dark and grainy—hiding the redwood’s characteristic
-    reddish-brown hue. This condition, it affects performance in marine or architectural
-    uses, where surface clarity matters.'
-  afterText: 'This cleaned redwood surface, after laser cleaning, shows a very-very
-    good transformation at 500x magnification under SEM. Comparing to before, the
-    thick contamination layer—previously 10-12 µm—is now gone, revealing the natural
-    tracheid structure of the wood. I see clear, elongated cells with minimal residue,
-    only occasional specks less than 1 µm in size remain. The surface roughness dropped
-    significantly, with Ra values now at approximately—or more precisely—3.2 µm, indicating
-    a smoother topography for better adhesion in restoration work.
-
-
-    Looking at the cleaned state, micro-cracks appear less obstructed, with debris
-    cleared from most fissures. The natural reddish-brown color of redwood is visible
-    again, and reflectivity (around 0.25 for near-infrared wavelengths) seems restored,
-    enhancing aesthetic value for cultural heritage applications. EDX analysis confirms
-    reduced carbon and silica peaks, so contamination is effectively minimized. This
-    cleaning, it preserves surface integrity, very-very important for marine or architectural
-    uses. The laser process (using 1064 nm wavelength) worked well, above the ablation
-    threshold of 0.8 J/cm², removing deposits without damaging the wood’s cellular
-    matrix. So, the surface now supports functional restoration.'
+    The result is a surface with high micro-roughness and minimal subsurface charring.
+    This open, clean structure significantly improves the substrate for subsequent
+    conservation treatments, such as consolidant penetration, by providing an unobstructed
+    interface with the original wood material.'
   description: Microscopic analysis of redwood surface before and after laser cleaning
     treatment
   alt: Microscopic view of redwood surface showing laser cleaning effects
@@ -295,17 +325,17 @@ caption:
     - redwood_specific
     contaminationProfile: redwood surface contamination
   microscopy:
-    parameters: Microscopic analysis of redwood
+    parameters: Microscopic analysis of Redwood
     qualityMetrics: Surface improvement analysis
   generation:
     method: frontmatter_integrated_generation
-    timestamp: '2025-10-04T20:39:37.910345Z'
+    timestamp: '2025-10-02T00:00:00.000000Z'
     generator: FrontmatterCaptionGenerator
-    componentType: ai_caption_frontmatter
+    componentType: template_caption
   author: Ikmanda Roswati
   materialProperties:
     materialType: Wood
-    analysisMethod: ai_microscopy
+    analysisMethod: template_microscopy
   imageUrl:
     alt: Microscopic view of Redwood surface after laser cleaning showing detailed
       surface structure
@@ -321,9 +351,3 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - ikmanda-roswati
-metadata:
-  lastUpdated: '2025-10-04T20:40:12.091674'
-  captionIntegrated: true
-subtitle: Pay attention to redwood’s varying grain density during laser treatment.
-  It’s very-very important to adjust power levels step by step, ensuring you protect
-  the softer zones from unintended burns while clearing contaminants effectively.

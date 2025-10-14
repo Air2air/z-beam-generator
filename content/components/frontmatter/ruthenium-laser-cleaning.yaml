@@ -14,7 +14,7 @@ materialProperties:
   meltingPoint:
     value: 2334
     unit: °C
-    confidence: 95
+    confidence: 97
     description: Melting point of pure ruthenium
     min: null
     max: null
@@ -35,14 +35,14 @@ materialProperties:
   hardness:
     value: 6.5
     unit: Mohs
-    confidence: 88
+    confidence: 86
     description: Mohs hardness scale
     min: 0.5
     max: 3500
   youngsModulus:
     value: 447
     unit: GPa
-    confidence: 90
+    confidence: 89
     description: Young's modulus of elasticity
     min: 5
     max: 411
@@ -82,8 +82,8 @@ materialProperties:
     min: null
     max: null
   thermalDiffusivity:
-    value: 0.248
-    unit: cm²/s
+    value: 24.1
+    unit: mm²/s
     confidence: 85
     description: Thermal diffusivity at room temperature
     min: 0.2
@@ -92,13 +92,13 @@ materialProperties:
     value: 6.4
     unit: μm/m·K
     confidence: 88
-    description: Coefficient of thermal expansion (20-100°C)
+    description: Coefficient of linear thermal expansion (20-100°C)
     min: 0.5
     max: 29.1
   vickersHardness:
     value: 2400
     unit: MPa
-    confidence: 85
+    confidence: 84
     description: Vickers hardness of annealed ruthenium
     min: null
     max: null
@@ -110,10 +110,10 @@ materialProperties:
     min: null
     max: null
   absorptionCoefficient:
-    value: 48000000.0
-    unit: m⁻¹
+    value: 4.8
+    unit: ×10⁵ cm⁻¹
     confidence: 80
-    description: Approximate absorption coefficient for near-IR lasers
+    description: Absorption coefficient for visible light
     min: null
     max: null
   crystallineStructure:
@@ -123,32 +123,25 @@ materialProperties:
     description: Hexagonal Close-Packed crystal structure
     min: null
     max: null
-  oxidationResistance:
-    value: Excellent
-    unit: qualitative
-    confidence: 88
-    description: High resistance to oxidation up to 1000°C
-    min: null
-    max: null
   ablationThreshold:
     value: 2.8
     unit: J/cm²
     confidence: 82
-    description: Estimated ablation threshold for nanosecond pulses at 1064 nm
+    description: Estimated laser ablation threshold at 1064 nm
+    min: null
+    max: null
+  oxidationResistance:
+    value: Excellent
+    unit: qualitative
+    confidence: 88
+    description: Resistance to oxidation up to 1000°C
     min: null
     max: null
   electricalResistivity:
     value: 7.1
     unit: μΩ·cm
-    confidence: 92
+    confidence: 91
     description: Electrical resistivity at 20°C
-    min: null
-    max: null
-  boilingPoint:
-    value: 4150
-    unit: °C
-    confidence: 90
-    description: Boiling point of ruthenium
     min: null
     max: null
 applications:
@@ -160,8 +153,8 @@ applications:
 - Research and Laboratory
 - Energy Storage
 - Marine Engineering
-- Automotive Electronics
-- Cultural Heritage Conservation
+- Automotive Sensors
+- Cultural Heritage
 machineSettings:
   powerRange:
     value: 45
@@ -185,12 +178,12 @@ machineSettings:
     confidence: 86
     description: Beam spot diameter for precise cleaning control
     min: 30
-    max: 80
+    max: 100
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning with thermal management
+    description: Optimal repetition rate for efficient cleaning with thermal management
     min: 20
     max: 100
   pulseWidth:
@@ -205,7 +198,7 @@ machineSettings:
     unit: mm/s
     confidence: 84
     description: Optimal scanning speed for uniform cleaning coverage
-    min: 300
+    min: 200
     max: 800
   fluenceThreshold:
     value: 2.5
@@ -219,16 +212,16 @@ machineSettings:
     value: 40
     unit: '%'
     confidence: 83
-    description: Beam overlap percentage for uniform cleaning pattern
+    description: Optimal beam overlap for uniform cleaning pattern
     min: 30
     max: 60
   passCount:
-    value: 3
+    value: 2
     unit: passes
-    confidence: 85
-    description: Number of cleaning passes for complete contaminant removal
-    min: 2
-    max: 5
+    confidence: 88
+    description: Recommended number of passes for complete contaminant removal
+    min: 1
+    max: 4
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -247,10 +240,6 @@ images:
     alt: Ruthenium surface undergoing laser cleaning showing precise contamination
       removal
     url: /images/material/ruthenium-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Ruthenium surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/ruthenium-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -276,6 +265,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Ruthenium is a hard, brittle metal that is highly resistant to corrosion
+  and oxidation. These traits demand careful laser parameter adjustment to effectively
+  remove contaminants without damaging the underlying surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -313,17 +305,19 @@ outcomeMetrics:
 caption:
   beforeText: At 500x magnification, the ruthenium surface is obscured by a non-uniform
     contamination layer, typically 5-20 µm thick. This layer consists of particulate
-    matter, carbonaceous soot, and localized oxide films, which form irregular, blotchy
-    patterns across the substrate. The underlying metallic grain structure is entirely
-    masked. The contaminant morphology is porous and loosely adhered, creating a topographically
-    complex and textured surface that scatters light, giving it a matte, dark appearance
-    and compromising its functional properties.
-  afterText: Post-cleaning, the surface reveals a stark transformation. The contamination
-    layer has been completely removed, exposing the pristine, polycrystalline grain
-    structure of the ruthenium substrate. The surface is now continuous and smooth,
-    with clearly defined grain boundaries. This restoration of the native metallic
-    surface results in a characteristically high reflectivity, with a mirror-like
-    finish evident at the microscopic level.
+    matter, carbonaceous soot, and localized oxide patches, which form irregular,
+    dendritic patterns across the substrate. The underlying metal's characteristic
+    HCP crystalline structure and fine machining marks are entirely masked. The contaminants
+    create a topographically complex and optically matte surface, significantly increasing
+    light scattering and reducing the material's inherent 65% reflectivity.
+  afterText: Laser cleaning restores the pristine ruthenium surface, revealing the
+    substrate's true microstructure at 500x magnification. The contamination layer
+    is completely ablated, exposing the fine, parallel striations from the original
+    machining process and the uniform grain boundaries of the HCP crystalline structure.
+    The surface is now continuous and topographically even, with no evidence of thermal
+    damage or melting, confirming the process remained below the 2607 K thermal destruction
+    point. This results in a specular, highly reflective finish consistent with the
+    metal's intrinsic properties.
   description: Microscopic analysis of ruthenium surface before and after laser cleaning
     treatment
   alt: Microscopic view of ruthenium surface showing laser cleaning effects
@@ -359,6 +353,3 @@ tags:
 - reflective-surface
 - conductive
 - yi-chun-lin
-subtitle: Ruthenium can be a real puzzle during laser treatment. Its variable hardness
-  often means you’ve got to adjust power levels on the fly to protect the finish from
-  unintended pitting or burns.

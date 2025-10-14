@@ -8,7 +8,7 @@ materialProperties:
     value: 2.65
     unit: g/cm³
     confidence: 95
-    description: Average bulk density of typical granite
+    description: Average bulk density of granite at room temperature
     min: 1.5
     max: 3.4
   meltingPoint:
@@ -19,31 +19,31 @@ materialProperties:
     min: null
     max: null
   thermalConductivity:
-    value: 2.9
+    value: 2.8
     unit: W/m·K
     confidence: 88
     description: Thermal conductivity at room temperature
     min: 0.2
     max: 8
   tensileStrength:
-    value: 7.5
+    value: 15
     unit: MPa
-    confidence: 95
-    description: tensileStrength from Materials.yaml
+    confidence: 85
+    description: Indirect tensile strength (Brazilian test)
     min: 2
     max: 25
   hardness:
     value: 6.5
     unit: Mohs
     confidence: 92
-    description: Mohs hardness scale for granite
+    description: Average Mohs hardness scale for granite
     min: 1
     max: 7
   youngsModulus:
     value: 50
     unit: GPa
-    confidence: 85
-    description: Young's modulus of elasticity
+    confidence: 87
+    description: Static Young's modulus of elasticity
     min: 10
     max: 100
   compressiveStrength:
@@ -68,9 +68,9 @@ materialProperties:
     min: 5
     max: 80
   specificHeat:
-    value: 0.79
-    unit: kJ/kg·K
-    confidence: 87
+    value: 790
+    unit: J/kg·K
+    confidence: 90
     description: Specific heat capacity at room temperature
     min: 600
     max: 1200
@@ -91,29 +91,29 @@ materialProperties:
   thermalDiffusivity:
     value: 1.3
     unit: mm²/s
-    confidence: 82
-    description: Thermal diffusivity at 20°C
+    confidence: 85
+    description: Thermal diffusivity calculated from thermal properties
     min: 0.2
     max: 2.5
   thermalExpansion:
     value: 8.0
     unit: 10⁻⁶/°C
     confidence: 85
-    description: Coefficient of thermal expansion
+    description: Coefficient of linear thermal expansion
     min: 3
     max: 25
   absorptionCoefficient:
     value: 0.85
     unit: dimensionless
-    confidence: 80
-    description: Typical absorption coefficient for IR lasers
+    confidence: 82
+    description: Average absorption coefficient for common laser wavelengths
     min: null
     max: null
   reflectivity:
     value: 0.15
     unit: dimensionless
-    confidence: 82
-    description: Reflectivity at common laser wavelengths (1064 nm)
+    confidence: 80
+    description: Average reflectivity at common laser wavelengths
     min: null
     max: null
   ablationThreshold:
@@ -124,30 +124,30 @@ materialProperties:
     min: null
     max: null
   porosity:
-    value: 1.0
+    value: 1.2
     unit: '%'
-    confidence: 86
-    description: Typical porosity of dense granite
+    confidence: 90
+    description: Average porosity of commercial granite
     min: null
     max: null
   chemicalStability:
     value: 8
-    unit: scale 1-10
-    confidence: 90
+    unit: 1-10 scale
+    confidence: 88
     description: Chemical stability rating in normal environments
     min: null
     max: null
 applications:
 - Cultural Heritage
 - Architecture and Construction
-- Monument Manufacturing
-- Marine Infrastructure
+- Monument Restoration
+- Manufacturing
 - Food Processing
-- Laboratory and Healthcare
+- Marine Infrastructure
 - Energy Sector
 - Transportation Infrastructure
-- Manufacturing and Tooling
-- Restoration and Conservation
+- Electronics Manufacturing
+- Aerospace
 machineSettings:
   powerRange:
     value: 100
@@ -162,15 +162,15 @@ machineSettings:
     unit: nm
     confidence: 88
     description: Near-infrared wavelength optimal for granite mineral absorption
-    min: 532
-    max: 1064
+    min: 1030
+    max: 1070
   spotSize:
-    value: 100
+    value: 80
     unit: μm
     confidence: 83
-    description: Beam spot diameter for balanced cleaning efficiency and resolution
+    description: Beam spot diameter for precise cleaning control
     min: 50
-    max: 200
+    max: 120
   repetitionRate:
     value: 50
     unit: kHz
@@ -179,41 +179,40 @@ machineSettings:
     min: 20
     max: 100
   pulseWidth:
-    value: 10
+    value: 12
     unit: ns
     confidence: 85
     description: Nanosecond pulse duration for effective contaminant removal without
       substrate damage
-    min: 5
+    min: 8
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 85
-    description: Optimal scanning speed for uniform cleaning coverage
-    min: 200
-    max: 1000
+    confidence: 84
+    description: Optimal scanning speed for uniform cleaning results
+    min: 300
+    max: 800
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
-    confidence: 90
+    confidence: 89
     description: Minimum fluence required for effective contaminant removal from granite
-    min: 1.5
+    min: 1.8
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 82
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      buildup
-    min: 30
-    max: 70
+    description: Optimal beam overlap for uniform cleaning coverage
+    min: 40
+    max: 60
   passCount:
     value: 3
     unit: passes
-    confidence: 84
-    description: Recommended number of passes for complete contaminant removal
-    min: 1
+    confidence: 86
+    description: Recommended number of passes for complete cleaning
+    min: 2
     max: 5
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
@@ -234,10 +233,6 @@ images:
   hero:
     alt: Granite surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/granite-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Granite surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/granite-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
@@ -263,6 +258,10 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
+subtitle: Granite's unique composition of interlocking crystals and varied mineral
+  hardness creates a distinct surface profile. This requires careful calibration of
+  laser parameters to effectively remove contaminants without affecting the stone's
+  integrity.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -298,21 +297,18 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the granite surface is obscured by a dense, heterogeneous
-    contamination layer averaging 15-25 µm thick. This layer, composed of particulate
-    matter, soot, and biological growth, fills the natural crystalline micro-texture.
-    The surface appears matte and irregular, with contaminants adhering to grain boundaries
-    and fissures, masking the stone's inherent mineralogical features.
-  afterText: 'Laser cleaning has restored the granite''s native micro-topography.
-    The contamination layer is completely removed, revealing the distinct, interlocking
-    crystals of quartz, feldspar, and mica. The surface texture is now well-defined,
-    with grain boundaries and micro-fissures clearly visible and free of foreign material.
-
-
-    The process has effectively ablated contaminants without inducing macroscopic
-    damage to the underlying mineral structure. The surface exhibits a clean, unaltered
-    appearance, with the stone''s intrinsic porosity and crystalline reflectivity
-    restored. This confirms the selective nature of the laser ablation process.'
+  beforeText: At 500x magnification, the granite surface is obscured by a discontinuous
+    contamination layer, approximately 10-50 micrometers thick. This layer, composed
+    of soot, biological growth, and mineral deposits, fills the natural micro-fissures
+    and pits of the stone. The underlying crystalline structure of feldspar, quartz,
+    and biotite is partially masked, with contaminants forming a cohesive, textured
+    crust that alters the stone's intrinsic roughness and color.
+  afterText: Laser cleaning has effectively removed the contamination crust, revealing
+    the pristine mineralogical microstructure. The original interlocking crystals
+    of feldspar and quartz are now fully exposed, with their distinct cleavage planes
+    and grain boundaries clearly visible. The surface exhibits restored micro-texture,
+    with open pits and fissures free of foreign material, returning the granite to
+    its native state.
   description: Microscopic analysis of granite surface before and after laser cleaning
     treatment
   alt: Microscopic view of granite surface showing laser cleaning effects
@@ -348,6 +344,3 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - todd-dunning
-subtitle: Granite presents a unique hurdle in laser cleaning due to its variable hardness
-  across the surface. Adjust your controls carefully to around 50-70 watts, ensuring
-  you preserve the stone’s natural texture during treatment.
