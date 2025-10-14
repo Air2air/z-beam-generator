@@ -165,6 +165,13 @@ materialProperties:
     description: Typical surface roughness for polished optical grade sapphire
     min: null
     max: null
+  softeningPoint:
+    value: 2040
+    unit: °C
+    confidence: 97
+    description: Temperature where glass transitions from rigid to pliable state
+    min: null
+    max: null
 applications:
 - Aerospace
 - Medical Devices

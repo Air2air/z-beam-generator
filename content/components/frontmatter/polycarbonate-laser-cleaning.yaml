@@ -137,6 +137,13 @@ materialProperties:
     description: Typical surface roughness for injection molded parts
     min: null
     max: null
+  degradationPoint:
+    value: 155
+    unit: °C
+    confidence: 90
+    description: Temperature where polymer chain breakdown begins
+    min: null
+    max: null
 applications:
 - Aerospace
 - Automotive

@@ -151,6 +151,13 @@ materialProperties:
     description: Average surface roughness of molded fiberglass surfaces
     min: null
     max: null
+  degradationPoint:
+    value: 1120
+    unit: °C
+    confidence: 92
+    description: Temperature where polymer matrix decomposition begins
+    min: null
+    max: null
 applications:
 - Aerospace
 - Marine

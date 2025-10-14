@@ -131,6 +131,13 @@ materialProperties:
     description: Maximum continuous service temperature in air before oxidative degradation
     min: null
     max: null
+  degradationPoint:
+    value: 427
+    unit: °C
+    confidence: 88
+    description: Temperature where polymer matrix decomposition begins
+    min: null
+    max: null
 applications:
 - Aerospace
 - Automotive Racing

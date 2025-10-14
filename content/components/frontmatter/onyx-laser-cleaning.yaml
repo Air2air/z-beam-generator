@@ -130,6 +130,13 @@ materialProperties:
     description: Chemical stability rating (1-10 scale) against common solvents
     min: null
     max: null
+  thermalDegradationPoint:
+    value: 1723
+    unit: °C
+    confidence: 90
+    description: Temperature where structural breakdown begins
+    min: null
+    max: null
 applications:
 - Cultural Heritage
 - Architecture and Construction

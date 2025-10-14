@@ -144,6 +144,13 @@ materialProperties:
     description: Typical surface roughness of pristine float glass surface
     min: null
     max: null
+  softeningPoint:
+    value: 1000
+    unit: °C
+    confidence: 95
+    description: Temperature where glass transitions from rigid to pliable state
+    min: null
+    max: null
 applications:
 - Architectural Glass Manufacturing
 - Solar Panel Manufacturing

@@ -147,6 +147,13 @@ materialProperties:
     description: Average surface roughness for molded polyester composite surfaces
     min: null
     max: null
+  degradationPoint:
+    value: 180
+    unit: °C
+    confidence: 88
+    description: Temperature where polymer matrix decomposition begins
+    min: null
+    max: null
 applications:
 - Aerospace
 - Automotive

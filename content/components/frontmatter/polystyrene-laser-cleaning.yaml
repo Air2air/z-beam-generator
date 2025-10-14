@@ -151,6 +151,13 @@ materialProperties:
     description: Typical surface roughness for molded PS
     min: null
     max: null
+  degradationPoint:
+    value: 240
+    unit: °C
+    confidence: 90
+    description: Temperature where polymer chain breakdown begins
+    min: null
+    max: null
 applications:
 - Electronics Manufacturing
 - Medical Device Manufacturing

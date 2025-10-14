@@ -153,6 +153,13 @@ materialProperties:
     description: Good resistance to solvents and chemicals when fully cured
     min: null
     max: null
+  degradationPoint:
+    value: N/A
+    unit: °C
+    confidence: 90
+    description: Temperature where polymer matrix decomposition begins
+    min: null
+    max: null
 applications:
 - Aerospace
 - Automotive
@@ -311,7 +318,7 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeTbeforeT 500x magnification, the epoxy composite surface is obscured by a
+  beforeText: At 500x magnification, the epoxy composite surface is obscured by a
     non-uniform contamination layer, typically 5-20 µm thick. This layer, composed
     of embedded particulates, organic residues, and oxides, masks the underlying fiber
     reinforcement and matrix texture. The contamination adheres tenaciously, creating
@@ -358,4 +365,3 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - yi-chun-lin
-un-lin

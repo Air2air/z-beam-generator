@@ -123,6 +123,13 @@ materialProperties:
     description: Moderate chemical stability rating
     min: null
     max: null
+  degradationPoint:
+    value: 180
+    unit: °C
+    confidence: 80
+    description: Temperature where polymer matrix decomposition begins
+    min: null
+    max: null
 applications:
 - Aerospace
 - Automotive

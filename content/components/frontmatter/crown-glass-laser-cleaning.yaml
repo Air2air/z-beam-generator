@@ -152,6 +152,13 @@ materialProperties:
     description: Typical surface roughness for polished crown glass
     min: null
     max: null
+  softeningPoint:
+    value: 1400
+    unit: °C
+    confidence: 90
+    description: Temperature where glass transitions from rigid to pliable state
+    min: null
+    max: null
 applications:
 - Aerospace
 - Medical Devices

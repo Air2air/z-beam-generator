@@ -130,6 +130,13 @@ materialProperties:
     description: Typical as-manufactured surface roughness for GFRP
     min: null
     max: null
+  degradationPoint:
+    value: 1150
+    unit: °C
+    confidence: 90
+    description: Temperature where polymer matrix decomposition begins
+    min: null
+    max: null
 applications:
 - Aerospace
 - Automotive

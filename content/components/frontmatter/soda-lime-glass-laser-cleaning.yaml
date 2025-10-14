@@ -151,6 +151,13 @@ materialProperties:
     description: Typical surface roughness of polished soda-lime glass substrates
     min: null
     max: null
+  softeningPoint:
+    value: 1000
+    unit: °C
+    confidence: 90
+    description: Temperature where glass transitions from rigid to pliable state
+    min: null
+    max: null
 applications:
 - Aerospace
 - Automotive

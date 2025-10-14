@@ -125,6 +125,13 @@ materialProperties:
     description: Estimated laser ablation threshold for 1064 nm wavelength
     min: null
     max: null
+  thermalDegradationPoint:
+    value: 1250
+    unit: °C
+    confidence: 85
+    description: Temperature where structural breakdown begins
+    min: null
+    max: null
 applications:
 - Cultural Heritage
 - Architecture and Construction

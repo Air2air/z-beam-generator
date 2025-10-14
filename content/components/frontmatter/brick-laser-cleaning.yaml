@@ -131,6 +131,13 @@ materialProperties:
     description: Approximate laser ablation threshold for ns-pulse lasers
     min: null
     max: null
+  thermalDegradationPoint:
+    value: 1450
+    unit: °C
+    confidence: 88
+    description: Temperature where structural breakdown begins
+    min: null
+    max: null
 applications:
 - Cultural Heritage
 - Construction and Restoration

@@ -137,6 +137,13 @@ materialProperties:
     description: Resistance to chemical attack and weathering
     min: null
     max: null
+  thermalDegradationPoint:
+    value: 1400
+    unit: °C
+    confidence: 85
+    description: Temperature where structural breakdown begins
+    min: null
+    max: null
 applications:
 - Cultural Heritage
 - Aerospace

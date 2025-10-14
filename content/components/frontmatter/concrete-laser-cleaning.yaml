@@ -130,6 +130,13 @@ materialProperties:
     description: Typical porosity range for standard concrete
     min: null
     max: null
+  thermalDegradationPoint:
+    value: 1450
+    unit: °C
+    confidence: 90
+    description: Temperature where structural breakdown begins
+    min: null
+    max: null
 applications:
 - Civil Infrastructure
 - Nuclear Decommissioning

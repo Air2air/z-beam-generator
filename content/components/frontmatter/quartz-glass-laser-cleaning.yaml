@@ -151,6 +151,13 @@ materialProperties:
     description: Maximum temperature difference for thermal shock resistance
     min: null
     max: null
+  softeningPoint:
+    value: 1730
+    unit: °C
+    confidence: 95
+    description: Temperature where glass transitions from rigid to pliable state
+    min: null
+    max: null
 applications:
 - Semiconductor Manufacturing
 - Aerospace & Defense

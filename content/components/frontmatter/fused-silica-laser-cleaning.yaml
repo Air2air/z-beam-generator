@@ -144,6 +144,13 @@ materialProperties:
     description: Typical surface roughness for polished fused silica
     min: null
     max: null
+  softeningPoint:
+    value: 1713
+    unit: °C
+    confidence: 95
+    description: Temperature where glass transitions from rigid to pliable state
+    min: null
+    max: null
 applications:
 - Aerospace
 - Semiconductor Manufacturing

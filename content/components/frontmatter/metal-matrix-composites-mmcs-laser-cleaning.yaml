@@ -131,6 +131,13 @@ materialProperties:
     description: Typical as-machined surface roughness for MMCs
     min: null
     max: null
+  degradationPoint:
+    value: 640
+    unit: °C
+    confidence: 88
+    description: Temperature where polymer matrix decomposition begins
+    min: null
+    max: null
 applications:
 - Aerospace
 - Automotive

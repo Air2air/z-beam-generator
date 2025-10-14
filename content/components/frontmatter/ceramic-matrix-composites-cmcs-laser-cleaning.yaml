@@ -151,6 +151,13 @@ materialProperties:
     description: Three-point bend flexural strength of CMC materials
     min: null
     max: null
+  degradationPoint:
+    value: 2700
+    unit: °C
+    confidence: 88
+    description: Temperature where polymer matrix decomposition begins
+    min: null
+    max: null
 applications:
 - Aerospace
 - Automotive

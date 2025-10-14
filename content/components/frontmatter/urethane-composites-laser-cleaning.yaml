@@ -145,6 +145,13 @@ materialProperties:
     description: Average surface roughness of as-manufactured urethane composite surfaces
     min: null
     max: null
+  degradationPoint:
+    value: 180
+    unit: °C
+    confidence: 85
+    description: Temperature where polymer matrix decomposition begins
+    min: null
+    max: null
 applications:
 - Aerospace
 - Automotive

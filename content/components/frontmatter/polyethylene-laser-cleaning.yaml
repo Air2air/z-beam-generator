@@ -146,6 +146,13 @@ materialProperties:
     description: Typical surface roughness for molded polyethylene surfaces
     min: null
     max: null
+  degradationPoint:
+    value: 130
+    unit: °C
+    confidence: 92
+    description: Temperature where polymer chain breakdown begins
+    min: null
+    max: null
 applications:
 - Medical Device Manufacturing
 - Food Packaging
