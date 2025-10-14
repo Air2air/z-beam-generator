@@ -74,13 +74,6 @@ materialProperties:
     description: Temperature where pyrolysis (thermal decomposition) begins
     min: 200
     max: 500
-  thermalDestructionType:
-    value: 573.0
-    unit: K
-    confidence: 92
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 0.16
     unit: mm²/s
@@ -99,8 +92,7 @@ materialProperties:
     value: 0.75
     unit: dimensionless
     confidence: 82
-    description: Optical absorption coefficient for near-infrared wavelengths (1064
-      nm)
+    description: Optical absorption coefficient for near-infrared wavelengths (1064 nm)
     min: null
     max: null
   reflectivity:
@@ -124,6 +116,7 @@ materialProperties:
     description: Average porosity including cell lumen and pit structures
     min: null
     max: null
+  thermalDestructionType: pyrolysis
 applications:
 - Cultural Heritage
 - Aerospace
@@ -248,9 +241,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Fir has a relatively soft, resinous surface that can be easily marked. This
-  requires careful control of the laser's power to clean effectively without scorching
-  the wood.
+subtitle: Fir has a relatively soft, resinous surface that can be easily marked. This requires careful control of the laser's power to clean effectively without scorching the wood.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -286,21 +277,9 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the fir surface is obscured by a complex contamination
-    layer, typically 50-200 µm thick. This stratum consists of particulate matter,
-    soot, and embedded grime that fills the porous wood structure. The underlying
-    tracheids and ray cells are no longer visible, masked by a discontinuous, amorphous
-    film that alters the surface texture and reflects light unevenly. The contamination
-    adheres strongly within the 65% porosity, creating a blotchy, occluded appearance
-    that compromises the substrate's integrity.
-  afterText: Laser cleaning has effectively restored the native fir surface. The contamination
-    layer is entirely removed, revealing the clean, open cellular structure of the
-    wood. Individual tracheids and ray parenchyma are now clearly defined, with sharp
-    edges and a uniform, light-toned appearance. The surface texture is consistent,
-    with the material's inherent 65% porosity fully exposed, resulting in a substrate
-    that is visually coherent and mechanically sound for further treatment.
-  description: Microscopic analysis of fir surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the fir surface is obscured by a complex contamination layer, typically 50-200 µm thick. This stratum consists of particulate matter, soot, and embedded grime that fills the porous wood structure. The underlying tracheids and ray cells are no longer visible, masked by a discontinuous, amorphous film that alters the surface texture and reflects light unevenly. The contamination adheres strongly within the 65% porosity, creating a blotchy, occluded appearance that compromises the substrate's integrity.
+  afterText: Laser cleaning has effectively restored the native fir surface. The contamination layer is entirely removed, revealing the clean, open cellular structure of the wood. Individual tracheids and ray parenchyma are now clearly defined, with sharp edges and a uniform, light-toned appearance. The surface texture is consistent, with the material's inherent 65% porosity fully exposed, resulting in a substrate that is visually coherent and mechanically sound for further treatment.
+  description: Microscopic analysis of fir surface before and after laser cleaning treatment
   alt: Microscopic view of fir surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -320,8 +299,7 @@ caption:
     materialType: Wood
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Fir surface after laser cleaning showing detailed surface
-      structure
+    alt: Microscopic view of Fir surface after laser cleaning showing detailed surface structure
     url: /images/material/fir-laser-cleaning-micro.jpg
 tags:
 - wood

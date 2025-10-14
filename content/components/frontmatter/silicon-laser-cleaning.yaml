@@ -67,13 +67,6 @@ materialProperties:
     description: Specific heat capacity at 300K
     min: 300
     max: 900
-  thermalDestructionType:
-    value: 1687.0
-    unit: K
-    confidence: 95
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 88.7
     unit: mm²/s
@@ -144,6 +137,14 @@ materialProperties:
     description: Fracture toughness, important for thermal stress resistance
     min: null
     max: null
+  thermalDestructionPoint:
+    value: 1414
+    unit: °C
+    confidence: 97
+    description: Temperature where solid-to-liquid phase transition occurs
+    min: null
+    max: null
+  thermalDestructionType: melting
 applications:
 - Semiconductor Manufacturing
 - Solar Cell Production
@@ -167,8 +168,7 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength with good Silicon penetration and thermal processing
-      characteristics
+    description: Near-IR wavelength with good Silicon penetration and thermal processing characteristics
     min: 532
     max: 1064
   spotSize:
@@ -189,8 +189,7 @@ machineSettings:
     value: 100
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant ablation with
-      controlled thermal diffusion
+    description: Nanosecond pulse duration for effective contaminant ablation with controlled thermal diffusion
     min: 50
     max: 200
   scanSpeed:
@@ -204,16 +203,14 @@ machineSettings:
     value: 2.5
     unit: J/cm²
     confidence: 91
-    description: Minimum fluence required for effective contaminant removal from Silicon
-      surface
+    description: Minimum fluence required for effective contaminant removal from Silicon surface
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 84
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      accumulation
+    description: Optimal beam overlap for uniform cleaning without excessive thermal accumulation
     min: 30
     max: 70
   passCount:
@@ -268,9 +265,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Silicon is extremely brittle and easily forms a native oxide layer. These
-  traits demand careful control of laser energy to prevent micro-cracks and ensure
-  complete oxide removal.
+subtitle: Silicon is extremely brittle and easily forms a native oxide layer. These traits demand careful control of laser energy to prevent micro-cracks and ensure complete oxide removal.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -306,34 +301,15 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: 'At 500x magnification, the silicon surface is obscured by a non-uniform
-    contamination layer. Particulate matter, ranging from 1-10 µm in diameter, is
-    scattered across the surface and embedded in a thin, amorphous film. This film,
-    estimated at 50-200 nm thick, exhibits a mottled, textured appearance that scatters
-    light and masks the underlying crystalline structure of the silicon substrate.
-    The contaminants create a topographically complex landscape, with visible streaks
-    and agglomerations that follow prior handling or processing directions.
+  beforeText: 'At 500x magnification, the silicon surface is obscured by a non-uniform contamination layer. Particulate matter, ranging from 1-10 µm in diameter, is scattered across the surface and embedded in a thin, amorphous film. This film, estimated at 50-200 nm thick, exhibits a mottled, textured appearance that scatters light and masks the underlying crystalline structure of the silicon substrate. The contaminants create a topographically complex landscape, with visible streaks and agglomerations that follow prior handling or processing directions.
 
 
-    The inherent high reflectivity (38.5% at 1064nm) of the pristine silicon is significantly
-    reduced by this layer. The contaminants disrupt the smooth surface, increasing
-    diffuse scattering and creating localized points for potential electrical leakage
-    or defect nucleation in subsequent manufacturing steps. This state is incompatible
-    with the precision required for semiconductor device fabrication.'
-  afterText: 'Laser cleaning produces a transformative surface restoration. At 500x
-    magnification, the contamination layer is entirely absent, revealing the pristine,
-    planar silicon substrate. The surface is now uniform and smooth, with the characteristic
-    features of the diamond cubic crystal structure becoming clearly visible. The
-    previously obscured grain boundaries and atomic lattice orientation are now distinct.
+    The inherent high reflectivity (38.5% at 1064nm) of the pristine silicon is significantly reduced by this layer. The contaminants disrupt the smooth surface, increasing diffuse scattering and creating localized points for potential electrical leakage or defect nucleation in subsequent manufacturing steps. This state is incompatible with the precision required for semiconductor device fabrication.'
+  afterText: 'Laser cleaning produces a transformative surface restoration. At 500x magnification, the contamination layer is entirely absent, revealing the pristine, planar silicon substrate. The surface is now uniform and smooth, with the characteristic features of the diamond cubic crystal structure becoming clearly visible. The previously obscured grain boundaries and atomic lattice orientation are now distinct.
 
 
-    The removal of the light-scattering film restores the material''s intrinsic optical
-    properties, resulting in a highly reflective surface with a consistent 38.5% reflectivity
-    at 1064nm. All particulate embedment and amorphous residues have been eliminated,
-    leaving a defect-free surface ready for subsequent processes like oxidation, etching,
-    or thin-film deposition.'
-  description: Microscopic analysis of silicon surface before and after laser cleaning
-    treatment
+    The removal of the light-scattering film restores the material''s intrinsic optical properties, resulting in a highly reflective surface with a consistent 38.5% reflectivity at 1064nm. All particulate embedment and amorphous residues have been eliminated, leaving a defect-free surface ready for subsequent processes like oxidation, etching, or thin-film deposition.'
+  description: Microscopic analysis of silicon surface before and after laser cleaning treatment
   alt: Microscopic view of silicon surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -353,8 +329,7 @@ caption:
     materialType: Semiconductor
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Silicon surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Silicon surface after laser cleaning showing detailed surface structure
     url: /images/material/silicon-laser-cleaning-micro.jpg
 tags:
 - semiconductor

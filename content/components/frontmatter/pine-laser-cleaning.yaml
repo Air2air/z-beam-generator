@@ -74,13 +74,6 @@ materialProperties:
     description: Temperature where pyrolysis (thermal decomposition) begins
     min: 200
     max: 500
-  thermalDestructionType:
-    value: 573.0
-    unit: K
-    confidence: 92
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 0.18
     unit: mm²/s
@@ -137,6 +130,7 @@ materialProperties:
     description: Chemical stability rating against common solvents and mild acids
     min: null
     max: null
+  thermalDestructionType: pyrolysis
 applications:
 - Cultural Heritage Restoration
 - Marine and Shipbuilding
@@ -160,8 +154,7 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 85
-    description: Near-IR wavelength for optimal Pine wood absorption with minimal
-      penetration
+    description: Near-IR wavelength for optimal Pine wood absorption with minimal penetration
     min: 532
     max: 10640
   spotSize:
@@ -255,9 +248,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Pine has a soft, porous structure with significant natural resin content.
-  This requires careful control of laser power to avoid resin bleeding and prevent
-  surface scorching.
+subtitle: Pine has a soft, porous structure with significant natural resin content. This requires careful control of laser power to avoid resin bleeding and prevent surface scorching.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -293,19 +284,9 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the pine surface is obscured by a discontinuous
-    contamination layer, approximately 5-15 µm thick. This layer, composed of embedded
-    soot, microbial biofilm, and particulate matter, fills the porous tracheid structure
-    and adheres to the 25 µm surface roughness. The underlying wood grain and earlywood/latewood
-    boundaries are partially masked, with contaminants forming a textured, matte-black
-    crust that reduces the native reflectivity to below 22%.
-  afterText: Post-cleaning, the 500x view reveals the restored wood microstructure.
-    The porous tracheid network is fully exposed, with clear delineation between earlywood
-    and latewood bands. The original 25 µm surface roughness is now visible, free
-    of embedded contaminants. The surface exhibits a clean, micro-textured profile
-    with a reflectivity restored to its intrinsic value.
-  description: Microscopic analysis of pine surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the pine surface is obscured by a discontinuous contamination layer, approximately 5-15 µm thick. This layer, composed of embedded soot, microbial biofilm, and particulate matter, fills the porous tracheid structure and adheres to the 25 µm surface roughness. The underlying wood grain and earlywood/latewood boundaries are partially masked, with contaminants forming a textured, matte-black crust that reduces the native reflectivity to below 22%.
+  afterText: Post-cleaning, the 500x view reveals the restored wood microstructure. The porous tracheid network is fully exposed, with clear delineation between earlywood and latewood bands. The original 25 µm surface roughness is now visible, free of embedded contaminants. The surface exhibits a clean, micro-textured profile with a reflectivity restored to its intrinsic value.
+  description: Microscopic analysis of pine surface before and after laser cleaning treatment
   alt: Microscopic view of pine surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -325,8 +306,7 @@ caption:
     materialType: Wood
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Pine surface after laser cleaning showing detailed surface
-      structure
+    alt: Microscopic view of Pine surface after laser cleaning showing detailed surface structure
     url: /images/material/pine-laser-cleaning-micro.jpg
 tags:
 - wood

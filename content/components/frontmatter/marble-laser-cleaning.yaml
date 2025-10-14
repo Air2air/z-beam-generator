@@ -74,13 +74,6 @@ materialProperties:
     description: Specific heat capacity at room temperature
     min: 600
     max: 1200
-  thermalDestructionType:
-    value: 2.1
-    unit: MW/m²
-    confidence: 92
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 1.18
     unit: mm²/s
@@ -130,13 +123,14 @@ materialProperties:
     description: Reacts with acids due to calcite composition
     min: null
     max: null
-  thermalDegradationPoint:
+  thermalDestructionPoint:
     value: 1339
     unit: °C
     confidence: 90
     description: Temperature where structural breakdown begins
     min: null
     max: null
+  thermalDestructionType: structural_breakdown
 applications:
 - Cultural Heritage
 - Construction and Architecture
@@ -195,8 +189,7 @@ machineSettings:
     value: 1.2
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without substrate
-      damage
+    description: Fluence threshold for effective contaminant removal without substrate damage
     min: 0.8
     max: 2.0
   overlapRatio:
@@ -265,9 +258,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Marble is a softer and more porous stone with unique veining patterns. These
-  properties demand careful laser calibration to prevent etching and preserve its
-  intricate surface details.
+subtitle: Marble is a softer and more porous stone with unique veining patterns. These properties demand careful laser calibration to prevent etching and preserve its intricate surface details.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -303,25 +294,9 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the marble surface is obscured by a complex,
-    stratified contamination layer. This layer, measuring 50-200 micrometers thick,
-    consists of particulate matter (carbon soot, silica dust) embedded within a gypsum-rich
-    matrix. The contaminants fill the natural calcite crystal boundaries and micro-fissures,
-    creating a dark, cohesive crust that masks the stone's inherent crystalline structure.
-    The surface texture is highly irregular, with the crust forming brittle, dendritic
-    patterns that follow moisture pathways and previous weathering. This layer significantly
-    increases light absorption and scattering, giving the macroscopic surface its
-    darkened, blotchy appearance.
-  afterText: Following laser cleaning, the 500x view reveals the restored marble substrate.
-    The contamination crust has been completely removed via selective laser ablation,
-    exposing the interlocking calcite crystal structure. The surface now exhibits
-    sub-micrometer roughness, with crystal boundaries and cleavage planes clearly
-    defined. Minor, pre-existing micro-fissures are now visible but free of foreign
-    material. The primary visual improvement is the restoration of the stone's inherent
-    light reflectivity and mineralogical texture, confirming the removal of the obscuring
-    layer without mechanical damage to the underlying calcite.
-  description: Microscopic analysis of marble surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the marble surface is obscured by a complex, stratified contamination layer. This layer, measuring 50-200 micrometers thick, consists of particulate matter (carbon soot, silica dust) embedded within a gypsum-rich matrix. The contaminants fill the natural calcite crystal boundaries and micro-fissures, creating a dark, cohesive crust that masks the stone's inherent crystalline structure. The surface texture is highly irregular, with the crust forming brittle, dendritic patterns that follow moisture pathways and previous weathering. This layer significantly increases light absorption and scattering, giving the macroscopic surface its darkened, blotchy appearance.
+  afterText: Following laser cleaning, the 500x view reveals the restored marble substrate. The contamination crust has been completely removed via selective laser ablation, exposing the interlocking calcite crystal structure. The surface now exhibits sub-micrometer roughness, with crystal boundaries and cleavage planes clearly defined. Minor, pre-existing micro-fissures are now visible but free of foreign material. The primary visual improvement is the restoration of the stone's inherent light reflectivity and mineralogical texture, confirming the removal of the obscuring layer without mechanical damage to the underlying calcite.
+  description: Microscopic analysis of marble surface before and after laser cleaning treatment
   alt: Microscopic view of marble surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -341,8 +316,7 @@ caption:
     materialType: Stone
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Marble surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Marble surface after laser cleaning showing detailed surface structure
     url: /images/material/marble-laser-cleaning-micro.jpg
 tags:
 - stone

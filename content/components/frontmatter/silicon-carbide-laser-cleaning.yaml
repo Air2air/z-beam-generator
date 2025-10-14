@@ -67,13 +67,6 @@ materialProperties:
     description: Specific heat capacity at room temperature
     min: 300
     max: 900
-  thermalDestructionType:
-    value: 2973.0
-    unit: K
-    confidence: 95
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 65
     unit: mm²/s
@@ -144,6 +137,14 @@ materialProperties:
     description: Critical temperature difference for thermal shock failure
     min: null
     max: null
+  thermalDestructionPoint:
+    value: 2730
+    unit: °C
+    confidence: 95
+    description: Temperature where solid-to-liquid phase transition occurs
+    min: null
+    max: null
+  thermalDestructionType: melting
 applications:
 - Semiconductor Manufacturing
 - Aerospace
@@ -167,8 +168,7 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimized for SiC absorption and minimal substrate
-      damage
+    description: Near-IR wavelength optimized for SiC absorption and minimal substrate damage
     min: 532
     max: 1064
   spotSize:
@@ -182,16 +182,14 @@ machineSettings:
     value: 100
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning coverage while maintaining
-      thermal control
+    description: High repetition rate for efficient cleaning coverage while maintaining thermal control
     min: 50
     max: 200
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with
-      controlled thermal effects
+    description: Nanosecond pulse duration for effective contaminant removal with controlled thermal effects
     min: 5
     max: 20
   scanSpeed:
@@ -212,8 +210,7 @@ machineSettings:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      accumulation
+    description: Optimal beam overlap for uniform cleaning without excessive thermal accumulation
     min: 40
     max: 70
   passCount:
@@ -245,8 +242,7 @@ author:
   image: /images/author/yi-chun-lin.jpg
 images:
   hero:
-    alt: Silicon Carbide surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Silicon Carbide surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/silicon-carbide-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -273,9 +269,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Silicon carbide is exceptionally hard and thermally robust compared to other
-  semiconductors. These properties demand specific laser settings to effectively remove
-  contaminants without damaging the underlying surface.
+subtitle: Silicon carbide is exceptionally hard and thermally robust compared to other semiconductors. These properties demand specific laser settings to effectively remove contaminants without damaging the underlying surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -311,24 +305,9 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the silicon carbide surface is obscured by a
-    non-uniform contamination layer, measuring 5-15 µm in thickness. This layer exhibits
-    a complex topography of particulate agglomerates and amorphous carbonaceous deposits,
-    which form irregular, blotchy patterns across the substrate. The underlying SiC
-    microstructure, including fine polishing lines and grain boundaries, is entirely
-    masked. The contaminants create a textured, matte appearance that significantly
-    alters the surface's intrinsic reflectivity and masks its true morphology.
-  afterText: Following laser cleaning, the surface reveals a stark transformation.
-    The contamination layer has been completely removed, exposing the pristine, monolithic
-    SiC substrate. At 500x, the original surface texture is now clearly visible, characterized
-    by uniform, sub-micron polishing marks and well-defined grain boundaries. The
-    surface reflectivity has increased significantly, returning to its inherent state.
-    The process has achieved selective ablation, eliminating contaminants without
-    inducing micro-cracks or surface melting, as evidenced by the intact polycrystalline
-    structure. This results in a surface with restored thermal and electrical properties,
-    free of any residual film or particulate shadowing.
-  description: Microscopic analysis of silicon carbide surface before and after laser
-    cleaning treatment
+  beforeText: At 500x magnification, the silicon carbide surface is obscured by a non-uniform contamination layer, measuring 5-15 µm in thickness. This layer exhibits a complex topography of particulate agglomerates and amorphous carbonaceous deposits, which form irregular, blotchy patterns across the substrate. The underlying SiC microstructure, including fine polishing lines and grain boundaries, is entirely masked. The contaminants create a textured, matte appearance that significantly alters the surface's intrinsic reflectivity and masks its true morphology.
+  afterText: Following laser cleaning, the surface reveals a stark transformation. The contamination layer has been completely removed, exposing the pristine, monolithic SiC substrate. At 500x, the original surface texture is now clearly visible, characterized by uniform, sub-micron polishing marks and well-defined grain boundaries. The surface reflectivity has increased significantly, returning to its inherent state. The process has achieved selective ablation, eliminating contaminants without inducing micro-cracks or surface melting, as evidenced by the intact polycrystalline structure. This results in a surface with restored thermal and electrical properties, free of any residual film or particulate shadowing.
+  description: Microscopic analysis of silicon carbide surface before and after laser cleaning treatment
   alt: Microscopic view of silicon carbide surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -348,8 +327,7 @@ caption:
     materialType: Semiconductor
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Silicon Carbide surface after laser cleaning showing
-      detailed surface structure
+    alt: Microscopic view of Silicon Carbide surface after laser cleaning showing detailed surface structure
     url: /images/material/silicon-carbide-laser-cleaning-micro.jpg
 tags:
 - semiconductor

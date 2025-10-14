@@ -74,13 +74,6 @@ materialProperties:
     description: Temperature where pyrolysis (thermal decomposition) begins
     min: 200
     max: 500
-  thermalDestructionType:
-    value: 280.0
-    unit: °C
-    confidence: 92
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 0.15
     unit: mm²/s
@@ -99,8 +92,7 @@ materialProperties:
     value: 0.85
     unit: dimensionless
     confidence: 88
-    description: Average absorption coefficient for near-infrared laser wavelengths
-      (1064 nm)
+    description: Average absorption coefficient for near-infrared laser wavelengths (1064 nm)
     min: null
     max: null
   reflectivity:
@@ -114,8 +106,7 @@ materialProperties:
     value: 0.8
     unit: J/cm²
     confidence: 82
-    description: Approximate laser ablation threshold for nanosecond pulses at 1064
-      nm
+    description: Approximate laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   porosity:
@@ -146,6 +137,7 @@ materialProperties:
     description: Average lignin content affecting thermal degradation behavior
     min: null
     max: null
+  thermalDestructionType: pyrolysis
 applications:
 - Cultural Heritage
 - Marine
@@ -204,8 +196,7 @@ machineSettings:
     value: 2.8
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without wood
-      damage
+    description: Fluence threshold for effective contaminant removal without wood damage
     min: 1.5
     max: 4.0
   overlapRatio:
@@ -272,9 +263,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Oak has a prominent grain structure and high tannin content, unlike many
-  other hardwoods. These traits require careful laser power adjustment to clean effectively
-  without leaving shadows or causing discoloration.
+subtitle: Oak has a prominent grain structure and high tannin content, unlike many other hardwoods. These traits require careful laser power adjustment to clean effectively without leaving shadows or causing discoloration.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -310,35 +299,15 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the oak surface is obscured by a dense, amorphous
-    contamination layer approximately 50-200 µm thick. This layer, composed of soot,
-    grime, and degraded organic matter, fills the wood's porous structure, masking
-    the characteristic cellular anatomy. The surface texture is homogenized, presenting
-    a cracked, crust-like morphology that completely conceals the underlying wood
-    grain and vessel elements.
-  afterText: 'Laser cleaning effectively removes the contamination layer, revealing
-    the intact oak substrate. The surface now displays a clear, open cellular structure
-    with distinct longitudinal tracheids and large vessel elements characteristic
-    of oak. The original wood grain pattern is fully exposed, with a return to a textured,
-    micro-rough surface topography that corresponds to the natural hardness variations
-    between earlywood and latewood.
+  beforeText: At 500x magnification, the oak surface is obscured by a dense, amorphous contamination layer approximately 50-200 µm thick. This layer, composed of soot, grime, and degraded organic matter, fills the wood's porous structure, masking the characteristic cellular anatomy. The surface texture is homogenized, presenting a cracked, crust-like morphology that completely conceals the underlying wood grain and vessel elements.
+  afterText: 'Laser cleaning effectively removes the contamination layer, revealing the intact oak substrate. The surface now displays a clear, open cellular structure with distinct longitudinal tracheids and large vessel elements characteristic of oak. The original wood grain pattern is fully exposed, with a return to a textured, micro-rough surface topography that corresponds to the natural hardness variations between earlywood and latewood.
 
 
-    The removal process is highly selective, ablating the contaminant crust at approximately
-    400°C while the underlying wood, with a pyrolysis point of 280°C, remains structurally
-    sound. This is evidenced by the sharp, well-defined edges of the cell walls and
-    the absence of charring or thermal degradation halos. The cleaning parameters
-    are calibrated to the oak''s ablation threshold of 0.8 J/cm², ensuring precise
-    energy delivery.
+    The removal process is highly selective, ablating the contaminant crust at approximately 400°C while the underlying wood, with a pyrolysis point of 280°C, remains structurally sound. This is evidenced by the sharp, well-defined edges of the cell walls and the absence of charring or thermal degradation halos. The cleaning parameters are calibrated to the oak''s ablation threshold of 0.8 J/cm², ensuring precise energy delivery.
 
 
-    The resulting surface exhibits a porosity of 55%, restoring the material''s inherent
-    hygroscopic properties. The contrast between the dense, lignin-rich cell walls
-    and the open lumens is now visually distinct, confirming the restoration of the
-    wood''s original microstructural integrity without mechanical abrasion or chemical
-    residue.'
-  description: Microscopic analysis of oak surface before and after laser cleaning
-    treatment
+    The resulting surface exhibits a porosity of 55%, restoring the material''s inherent hygroscopic properties. The contrast between the dense, lignin-rich cell walls and the open lumens is now visually distinct, confirming the restoration of the wood''s original microstructural integrity without mechanical abrasion or chemical residue.'
+  description: Microscopic analysis of oak surface before and after laser cleaning treatment
   alt: Microscopic view of oak surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -358,8 +327,7 @@ caption:
     materialType: Wood
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Oak surface after laser cleaning showing detailed surface
-      structure
+    alt: Microscopic view of Oak surface after laser cleaning showing detailed surface structure
     url: /images/material/oak-laser-cleaning-micro.jpg
 tags:
 - wood

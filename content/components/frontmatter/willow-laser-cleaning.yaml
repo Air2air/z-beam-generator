@@ -74,13 +74,6 @@ materialProperties:
     description: Temperature where pyrolysis (thermal decomposition) begins
     min: 200
     max: 500
-  thermalDestructionType:
-    value: 573.0
-    unit: K
-    confidence: 92
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 0.16
     unit: mm²/s
@@ -123,6 +116,7 @@ materialProperties:
     description: Average porosity percentage in willow wood structure
     min: null
     max: null
+  thermalDestructionType: pyrolysis
 applications:
 - Cultural Heritage
 - Musical Instruments
@@ -139,16 +133,14 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Willow surface cleaning without thermal
-      damage
+    description: Optimal average power for Willow surface cleaning without thermal damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimized for Willow absorption and minimal penetration
-      depth
+    description: Near-IR wavelength optimized for Willow absorption and minimal penetration depth
     min: 1030
     max: 1070
   spotSize:
@@ -162,40 +154,35 @@ machineSettings:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning coverage and thermal
-      management
+    description: Optimal repetition rate for efficient cleaning coverage and thermal management
     min: 30
     max: 100
   pulseWidth:
     value: 12
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with
-      controlled thermal effects
+    description: Nanosecond pulse duration for effective contaminant removal with controlled thermal effects
     min: 8
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform cleaning coverage and process
-      efficiency
+    description: Optimal scanning speed for uniform cleaning coverage and process efficiency
     min: 300
     max: 800
   energyDensity:
     value: 2.0
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without substrate
-      damage
+    description: Fluence threshold for effective contaminant removal without substrate damage
     min: 1.5
     max: 3.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning coverage without excessive
-      thermal buildup
+    description: Optimal beam overlap for uniform cleaning coverage without excessive thermal buildup
     min: 40
     max: 60
   passCount:
@@ -247,9 +234,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Willow has a softer, more porous surface with prominent grain patterns than
-  most softwoods. This requires lower laser power settings and careful beam scanning
-  to avoid scorching the delicate fibers.
+subtitle: Willow has a softer, more porous surface with prominent grain patterns than most softwoods. This requires lower laser power settings and careful beam scanning to avoid scorching the delicate fibers.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -285,31 +270,15 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the willow surface is obscured by a stratified
-    contamination layer approximately 50-200 µm thick. This layer consists of particulate
-    matter, embedded within a matrix of aged, cross-linked organic residues. The underlying
-    wood cell structure is partially masked, with contaminants filling the porous
-    lumen of vessels and fibers. The surface texture appears uneven and occluded,
-    disrupting the natural grain pattern.
-  afterText: 'Following laser cleaning, the microscopic view reveals a complete restoration
-    of the willow''s native surface topography. The contamination layer has been entirely
-    removed, exposing the well-defined cellular structure of the wood. Vessel elements
-    and fiber cells are now clearly visible, with their open lumens and distinct cell
-    walls.
+  beforeText: At 500x magnification, the willow surface is obscured by a stratified contamination layer approximately 50-200 µm thick. This layer consists of particulate matter, embedded within a matrix of aged, cross-linked organic residues. The underlying wood cell structure is partially masked, with contaminants filling the porous lumen of vessels and fibers. The surface texture appears uneven and occluded, disrupting the natural grain pattern.
+  afterText: 'Following laser cleaning, the microscopic view reveals a complete restoration of the willow''s native surface topography. The contamination layer has been entirely removed, exposing the well-defined cellular structure of the wood. Vessel elements and fiber cells are now clearly visible, with their open lumens and distinct cell walls.
 
 
-    The process has successfully ablated the foreign material without inducing thermal
-    degradation to the underlying wood substrate, which has a pyrolysis temperature
-    of 280°C. The laser''s precise energy delivery, calibrated below the 1.8 J/cm²
-    ablation threshold of clean willow, selectively targeted the contaminants.
+    The process has successfully ablated the foreign material without inducing thermal degradation to the underlying wood substrate, which has a pyrolysis temperature of 280°C. The laser''s precise energy delivery, calibrated below the 1.8 J/cm² ablation threshold of clean willow, selectively targeted the contaminants.
 
 
-    The resulting surface exhibits the intrinsic porosity (approximately 65%) and
-    grain pattern of the wood. This non-abrasive cleaning preserves the structural
-    integrity of the delicate surface fibers, maintaining the material''s original
-    mechanical and aesthetic properties for applications demanding precision.'
-  description: Microscopic analysis of willow surface before and after laser cleaning
-    treatment
+    The resulting surface exhibits the intrinsic porosity (approximately 65%) and grain pattern of the wood. This non-abrasive cleaning preserves the structural integrity of the delicate surface fibers, maintaining the material''s original mechanical and aesthetic properties for applications demanding precision.'
+  description: Microscopic analysis of willow surface before and after laser cleaning treatment
   alt: Microscopic view of willow surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -329,8 +298,7 @@ caption:
     materialType: Wood
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Willow surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Willow surface after laser cleaning showing detailed surface structure
     url: /images/material/willow-laser-cleaning-micro.jpg
 tags:
 - wood

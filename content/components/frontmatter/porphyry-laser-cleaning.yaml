@@ -67,19 +67,11 @@ materialProperties:
     description: Specific heat capacity at 20°C
     min: 600
     max: 1200
-  thermalDestructionType:
-    value: 8.2
-    unit: MPa·m¹/²
-    confidence: 92
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 1.4
     unit: mm²/s
     confidence: 85
-    description: Thermal diffusivity calculated from conductivity, density and specific
-      heat
+    description: Thermal diffusivity calculated from conductivity, density and specific heat
     min: 0.2
     max: 2.5
   thermalExpansion:
@@ -107,8 +99,7 @@ materialProperties:
     value: 0.85
     unit: dimensionless
     confidence: 82
-    description: Optical absorption coefficient for near-infrared wavelengths (1064
-      nm)
+    description: Optical absorption coefficient for near-infrared wavelengths (1064 nm)
     min: null
     max: null
   ablationThreshold:
@@ -118,13 +109,14 @@ materialProperties:
     description: Estimated laser ablation threshold for 1064 nm wavelength
     min: null
     max: null
-  thermalDegradationPoint:
+  thermalDestructionPoint:
     value: 1250
     unit: °C
     confidence: 85
     description: Temperature where structural breakdown begins
     min: null
     max: null
+  thermalDestructionType: structural_breakdown
 applications:
 - Cultural Heritage
 - Architecture and Construction
@@ -141,8 +133,7 @@ machineSettings:
     value: 90
     unit: W
     confidence: 92
-    description: Optimal average power for Porphyry surface cleaning without thermal
-      damage
+    description: Optimal average power for Porphyry surface cleaning without thermal damage
     min: 70
     max: 120
   wavelength:
@@ -216,8 +207,7 @@ author:
   image: /images/author/ikmanda-roswati.jpg
 images:
   hero:
-    alt: Porphyry surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Porphyry surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/porphyry-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -244,9 +234,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Porphyry's unique, coarse-grained crystals are embedded in a finer, softer
-  matrix. This composition demands careful laser calibration to avoid differential
-  erosion between these two components.
+subtitle: Porphyry's unique, coarse-grained crystals are embedded in a finer, softer matrix. This composition demands careful laser calibration to avoid differential erosion between these two components.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -282,32 +270,15 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: 'At 500x magnification, the porphyry surface is obscured by a complex,
-    stratified contamination layer. A dark, carbonaceous crust, measuring 50-200 micrometers
-    thick, adheres tenaciously to the stone matrix. This crust, composed of soot,
-    hydrocarbons, and gypsum, fills the micro-porosity and blankets the distinct phenocrysts
-    of quartz and feldspar.
+  beforeText: 'At 500x magnification, the porphyry surface is obscured by a complex, stratified contamination layer. A dark, carbonaceous crust, measuring 50-200 micrometers thick, adheres tenaciously to the stone matrix. This crust, composed of soot, hydrocarbons, and gypsum, fills the micro-porosity and blankets the distinct phenocrysts of quartz and feldspar.
 
 
-    Beneath this crust, a sub-layer of biological growth, including fungal hyphae
-    and cyanobacteria, penetrates the stone''s natural micropores (approx. 1.2% porosity).
-    The contamination creates a uniform, matte-black topography that completely masks
-    the inherent mineralogical contrast and micro-fracture network of the underlying
-    porphyry, compromising its visual and material integrity.'
-  afterText: 'Following laser cleaning, the 500x view reveals a complete restoration
-    of the porphyry''s intrinsic microstructure. The contamination crust has been
-    selectively ablated, exposing the clean, unaltered matrix. The sharp geometric
-    boundaries of quartz and feldspar phenocrysts are now clearly defined against
-    the finer-grained groundmass.
+    Beneath this crust, a sub-layer of biological growth, including fungal hyphae and cyanobacteria, penetrates the stone''s natural micropores (approx. 1.2% porosity). The contamination creates a uniform, matte-black topography that completely masks the inherent mineralogical contrast and micro-fracture network of the underlying porphyry, compromising its visual and material integrity.'
+  afterText: 'Following laser cleaning, the 500x view reveals a complete restoration of the porphyry''s intrinsic microstructure. The contamination crust has been selectively ablated, exposing the clean, unaltered matrix. The sharp geometric boundaries of quartz and feldspar phenocrysts are now clearly defined against the finer-grained groundmass.
 
 
-    The stone''s natural micro-fracture network and original surface texture are fully
-    visible, with no residual soiling within the pores. The laser process has successfully
-    removed the biological sub-layer without inducing thermal damage, such as melting
-    or micro-fissuring, to the primary minerals. The surface exhibits its native hardness
-    and reflectivity.'
-  description: Microscopic analysis of porphyry surface before and after laser cleaning
-    treatment
+    The stone''s natural micro-fracture network and original surface texture are fully visible, with no residual soiling within the pores. The laser process has successfully removed the biological sub-layer without inducing thermal damage, such as melting or micro-fissuring, to the primary minerals. The surface exhibits its native hardness and reflectivity.'
+  description: Microscopic analysis of porphyry surface before and after laser cleaning treatment
   alt: Microscopic view of porphyry surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -327,8 +298,7 @@ caption:
     materialType: Stone
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Porphyry surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Porphyry surface after laser cleaning showing detailed surface structure
     url: /images/material/porphyry-laser-cleaning-micro.jpg
 tags:
 - stone

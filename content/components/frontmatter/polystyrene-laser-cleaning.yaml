@@ -67,13 +67,6 @@ materialProperties:
     description: Specific heat capacity at room temperature
     min: 1000
     max: 2500
-  thermalDestructionType:
-    value: 300.0
-    unit: °C
-    confidence: 95
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 0.53
     unit: mm²/s
@@ -144,13 +137,14 @@ materialProperties:
     description: Typical surface roughness for molded PS
     min: null
     max: null
-  degradationPoint:
+  thermalDestructionPoint:
     value: 240
     unit: °C
     confidence: 90
     description: Temperature where polymer chain breakdown begins
     min: null
     max: null
+  thermalDestructionType: polymer_degradation
 applications:
 - Electronics Manufacturing
 - Medical Device Manufacturing
@@ -174,8 +168,7 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength providing good absorption in Polystyrene with
-      minimal reflection
+    description: Near-IR wavelength providing good absorption in Polystyrene with minimal reflection
     min: 532
     max: 1064
   spotSize:
@@ -249,8 +242,7 @@ author:
   image: /images/author/alessandro-moretti.jpg
 images:
   hero:
-    alt: Polystyrene surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Polystyrene surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/polystyrene-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -277,9 +269,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Polystyrene is uniquely sensitive to heat and prone to melting compared
-  to other plastics. This requires using very low laser power and rapid pulses to
-  avoid damaging the surface.
+subtitle: Polystyrene is uniquely sensitive to heat and prone to melting compared to other plastics. This requires using very low laser power and rapid pulses to avoid damaging the surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -315,32 +305,15 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the polystyrene surface is obscured by a non-uniform
-    contamination layer, measuring 5-15 µm in thickness. This layer exhibits a particulate
-    and film-like morphology, with agglomerates distorting the underlying substrate's
-    topography. The native surface roughness of approximately 0.1 µm Ra is entirely
-    masked, creating a textured, high-relief profile that scatters light and compromises
-    the material's intrinsic optical clarity and adhesion properties.
-  afterText: 'Laser cleaning produces a distinct transformation, restoring the substrate''s
-    native amorphous polymer structure. The 5-15 µm contamination layer has been completely
-    removed via selective laser ablation. The process successfully vaporized the foreign
-    material, which has a lower ablation threshold than the polystyrene, without initiating
-    thermal degradation in the base polymer.
+  beforeText: At 500x magnification, the polystyrene surface is obscured by a non-uniform contamination layer, measuring 5-15 µm in thickness. This layer exhibits a particulate and film-like morphology, with agglomerates distorting the underlying substrate's topography. The native surface roughness of approximately 0.1 µm Ra is entirely masked, creating a textured, high-relief profile that scatters light and compromises the material's intrinsic optical clarity and adhesion properties.
+  afterText: 'Laser cleaning produces a distinct transformation, restoring the substrate''s native amorphous polymer structure. The 5-15 µm contamination layer has been completely removed via selective laser ablation. The process successfully vaporized the foreign material, which has a lower ablation threshold than the polystyrene, without initiating thermal degradation in the base polymer.
 
 
-    The underlying polystyrene surface is now fully exposed, revealing its characteristic
-    smooth morphology with a measured roughness of 0.1 µm Ra. The surface is free
-    of the previous particulate agglomerates and film residues. At the micron scale,
-    the laser interaction preserves the polymer''s integrity, with no evidence of
-    melting, cracking, or surface oxidation that would indicate thermal damage.
+    The underlying polystyrene surface is now fully exposed, revealing its characteristic smooth morphology with a measured roughness of 0.1 µm Ra. The surface is free of the previous particulate agglomerates and film residues. At the micron scale, the laser interaction preserves the polymer''s integrity, with no evidence of melting, cracking, or surface oxidation that would indicate thermal damage.
 
 
-    This precise material removal results in a surface with restored optical properties
-    and chemical functionality. The reflectivity and clarity inherent to the pristine
-    polymer are recovered, providing an optimal surface for subsequent manufacturing
-    steps such as bonding, coating, or assembly in sensitive applications.'
-  description: Microscopic analysis of polystyrene surface before and after laser
-    cleaning treatment
+    This precise material removal results in a surface with restored optical properties and chemical functionality. The reflectivity and clarity inherent to the pristine polymer are recovered, providing an optimal surface for subsequent manufacturing steps such as bonding, coating, or assembly in sensitive applications.'
+  description: Microscopic analysis of polystyrene surface before and after laser cleaning treatment
   alt: Microscopic view of polystyrene surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -360,8 +333,7 @@ caption:
     materialType: Plastic
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Polystyrene surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Polystyrene surface after laser cleaning showing detailed surface structure
     url: /images/material/polystyrene-laser-cleaning-micro.jpg
 tags:
 - plastic

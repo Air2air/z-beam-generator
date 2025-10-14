@@ -15,8 +15,7 @@ materialProperties:
     value: 280
     unit: °C
     confidence: 85
-    description: Approximate pyrolysis onset temperature where thermal decomposition
-      begins
+    description: Approximate pyrolysis onset temperature where thermal decomposition begins
     min: null
     max: null
   thermalConductivity:
@@ -75,13 +74,6 @@ materialProperties:
     description: Temperature where pyrolysis (thermal decomposition) begins
     min: 200
     max: 500
-  thermalDestructionType:
-    value: 573.0
-    unit: K
-    confidence: 92
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 0.165
     unit: mm²/s
@@ -145,6 +137,7 @@ materialProperties:
     description: Lignin content influencing char formation during laser interaction
     min: null
     max: null
+  thermalDestructionType: pyrolysis
 applications:
 - Aerospace
 - Automotive
@@ -269,9 +262,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Beech has a fine, uniform grain but its density can vary significantly.
-  This requires careful calibration of laser settings to avoid uneven cleaning or
-  surface discoloration.
+subtitle: Beech has a fine, uniform grain but its density can vary significantly. This requires careful calibration of laser settings to avoid uneven cleaning or surface discoloration.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -307,20 +298,9 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the beech surface is obscured by a discontinuous
-    contamination layer averaging 15-45 µm in thickness. This layer, composed of embedded
-    soot, dust, and degraded organic residues, fills the natural wood porosity (55%)
-    and masks the underlying cellular structure. The surface texture is highly irregular,
-    with particulate agglomerates creating a topographically complex and optically
-    dense film that scatters light and alters the material's intrinsic reflectivity
-    of 15%.
-  afterText: Laser cleaning has restored the surface to its native state. The contamination
-    layer is completely removed, revealing the clean, open lumens of the beech's cellular
-    structure with no measurable substrate damage. The surface topography is now defined
-    by the wood's natural grain and porosity, resulting in a uniform surface with
-    restored optical properties.
-  description: Microscopic analysis of beech surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the beech surface is obscured by a discontinuous contamination layer averaging 15-45 µm in thickness. This layer, composed of embedded soot, dust, and degraded organic residues, fills the natural wood porosity (55%) and masks the underlying cellular structure. The surface texture is highly irregular, with particulate agglomerates creating a topographically complex and optically dense film that scatters light and alters the material's intrinsic reflectivity of 15%.
+  afterText: Laser cleaning has restored the surface to its native state. The contamination layer is completely removed, revealing the clean, open lumens of the beech's cellular structure with no measurable substrate damage. The surface topography is now defined by the wood's natural grain and porosity, resulting in a uniform surface with restored optical properties.
+  description: Microscopic analysis of beech surface before and after laser cleaning treatment
   alt: Microscopic view of beech surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -340,8 +320,7 @@ caption:
     materialType: Wood
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Beech surface after laser cleaning showing detailed surface
-      structure
+    alt: Microscopic view of Beech surface after laser cleaning showing detailed surface structure
     url: /images/material/beech-laser-cleaning-micro.jpg
 tags:
 - wood

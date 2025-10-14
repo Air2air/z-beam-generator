@@ -67,13 +67,6 @@ materialProperties:
     description: Specific heat capacity at room temperature
     min: 100
     max: 900
-  thermalDestructionType:
-    value: 1323.0
-    unit: K
-    confidence: 95
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 22.4
     unit: mm²/s
@@ -137,6 +130,14 @@ materialProperties:
     description: Typical surface roughness for machined bronze components
     min: null
     max: null
+  thermalDestructionPoint:
+    value: 950
+    unit: °C
+    confidence: 92
+    description: Temperature where solid-to-liquid phase transition occurs
+    min: null
+    max: null
+  thermalDestructionType: melting
 applications:
 - Architecture
 - Art and Sculpture
@@ -149,16 +150,14 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Bronze oxide removal without substrate
-      damage
+    description: Optimal average power for Bronze oxide removal without substrate damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength with good absorption in Bronze oxides and moderate
-      substrate absorption
+    description: Near-IR wavelength with good absorption in Bronze oxides and moderate substrate absorption
     min: 532
     max: 1064
   spotSize:
@@ -172,16 +171,14 @@ machineSettings:
     value: 100
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning coverage while maintaining
-      pulse energy
+    description: High repetition rate for efficient cleaning coverage while maintaining pulse energy
     min: 50
     max: 200
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective oxide ablation with controlled
-      thermal penetration
+    description: Nanosecond pulse duration for effective oxide ablation with controlled thermal penetration
     min: 5
     max: 20
   scanSpeed:
@@ -254,9 +251,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Bronze is a softer alloy that is more susceptible to heat and surface oxidation
-  than other non-ferrous metals. This requires careful adjustment of laser power and
-  scanning speed to prevent melting or damaging the patina.
+subtitle: Bronze is a softer alloy that is more susceptible to heat and surface oxidation than other non-ferrous metals. This requires careful adjustment of laser power and scanning speed to prevent melting or damaging the patina.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -292,29 +287,12 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the bronze surface is obscured by a stratified
-    contamination layer approximately 5-15 µm thick. This layer consists of a tenacious,
-    amorphous copper sulfide tarnish (Cu₂S) and particulate grime embedded within
-    a porous matrix of copper carbonates. The underlying α-phase FCC crystalline structure
-    of the bronze is entirely concealed. The texture is irregular and crust-like,
-    with micro-fissures propagating through the corrosion products, which exhibit
-    low adhesion to the substrate.
-  afterText: 'Laser cleaning has completely removed the stratified contamination layer,
-    revealing the pristine, underlying bronze substrate. The surface now exhibits
-    the characteristic microstructure of the α-phase FCC crystalline grains, with
-    clearly defined grain boundaries. The texture is uniform, with a measured surface
-    roughness of approximately 0.8 µm Ra, consistent with the original manufactured
-    finish.
+  beforeText: At 500x magnification, the bronze surface is obscured by a stratified contamination layer approximately 5-15 µm thick. This layer consists of a tenacious, amorphous copper sulfide tarnish (Cu₂S) and particulate grime embedded within a porous matrix of copper carbonates. The underlying α-phase FCC crystalline structure of the bronze is entirely concealed. The texture is irregular and crust-like, with micro-fissures propagating through the corrosion products, which exhibit low adhesion to the substrate.
+  afterText: 'Laser cleaning has completely removed the stratified contamination layer, revealing the pristine, underlying bronze substrate. The surface now exhibits the characteristic microstructure of the α-phase FCC crystalline grains, with clearly defined grain boundaries. The texture is uniform, with a measured surface roughness of approximately 0.8 µm Ra, consistent with the original manufactured finish.
 
 
-    The removal process has been highly selective, ablating the weakly adhered corrosion
-    products without melting the bronze surface, which has a melting point of 950°C.
-    This precision is confirmed by the preservation of fine, sub-micron machining
-    marks and the absence of thermal etching or oxide discoloration. The surface is
-    now metallurgically clean, with a reflectivity restored to its intrinsic 65% at
-    1064 nm.'
-  description: Microscopic analysis of bronze surface before and after laser cleaning
-    treatment
+    The removal process has been highly selective, ablating the weakly adhered corrosion products without melting the bronze surface, which has a melting point of 950°C. This precision is confirmed by the preservation of fine, sub-micron machining marks and the absence of thermal etching or oxide discoloration. The surface is now metallurgically clean, with a reflectivity restored to its intrinsic 65% at 1064 nm.'
+  description: Microscopic analysis of bronze surface before and after laser cleaning treatment
   alt: Microscopic view of bronze surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -334,8 +312,7 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Bronze surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Bronze surface after laser cleaning showing detailed surface structure
     url: /images/material/bronze-laser-cleaning-micro.jpg
 tags:
 - metal

@@ -67,13 +67,6 @@ materialProperties:
     description: Specific heat capacity at room temperature
     min: 500
     max: 1500
-  thermalDestructionType:
-    value: 573.0
-    unit: °C
-    confidence: 92
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 0.45
     unit: mm²/s
@@ -144,13 +137,14 @@ materialProperties:
     description: Average surface roughness of molded fiberglass surfaces
     min: null
     max: null
-  degradationPoint:
+  thermalDestructionPoint:
     value: 1120
     unit: °C
     confidence: 92
     description: Temperature where polymer matrix decomposition begins
     min: null
     max: null
+  thermalDestructionType: matrix_degradation
 applications:
 - Aerospace
 - Marine
@@ -167,16 +161,14 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Fiberglass surface cleaning without thermal
-      damage
+    description: Optimal average power for Fiberglass surface cleaning without thermal damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength providing good absorption in contaminants
-      while minimizing Fiberglass substrate damage
+    description: Near-infrared wavelength providing good absorption in contaminants while minimizing Fiberglass substrate damage
     min: 532
     max: 1064
   spotSize:
@@ -190,16 +182,14 @@ machineSettings:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate balancing cleaning efficiency and thermal
-      management
+    description: Optimal repetition rate balancing cleaning efficiency and thermal management
     min: 20
     max: 100
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient contaminant removal with
-      controlled thermal penetration
+    description: Nanosecond pulse duration for efficient contaminant removal with controlled thermal penetration
     min: 5
     max: 20
   scanSpeed:
@@ -213,16 +203,14 @@ machineSettings:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal while preserving
-      Fiberglass integrity
+    description: Fluence threshold for effective contaminant removal while preserving Fiberglass integrity
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap percentage for uniform cleaning without excessive
-      heat accumulation
+    description: Optimal beam overlap percentage for uniform cleaning without excessive heat accumulation
     min: 30
     max: 70
   passCount:
@@ -247,8 +235,7 @@ author:
   image: /images/author/yi-chun-lin.jpg
 images:
   hero:
-    alt: Fiberglass surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Fiberglass surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/fiberglass-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -275,9 +262,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Fiberglass can be a real puzzle during laser treatment due to its varying
-  density across layers. Adjust your power levels carefully below 50 watts to protect
-  the material’s outer skin from unwanted heat buildup.
+subtitle: Fiberglass can be a real puzzle during laser treatment due to its varying density across layers. Adjust your power levels carefully below 50 watts to protect the material’s outer skin from unwanted heat buildup.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -313,27 +298,12 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the fiberglass surface is obscured by a continuous,
-    amorphous contamination layer approximately 5-10 µm thick. This layer, composed
-    of embedded soot, salts, and polymer degradation byproducts, fills the micro-valleys
-    of the native 1.8 µm Ra surface texture. The contaminants form a cohesive film
-    that masks the underlying fiber weave and resin topography, creating a uniform,
-    matte appearance that significantly reduces surface reflectivity.
-  afterText: 'Laser cleaning removes the contamination layer with high selectivity,
-    revealing the original fiberglass microstructure. The underlying E-glass fibers
-    and polymer resin matrix are now fully exposed, restoring the surface''s inherent
-    1.8 µm Ra texture. The precise ablation mechanism, operating below the 2.8 J/cm²
-    material damage threshold, has successfully eliminated the obscuring film without
-    etching or fusing the composite surface.
+  beforeText: At 500x magnification, the fiberglass surface is obscured by a continuous, amorphous contamination layer approximately 5-10 µm thick. This layer, composed of embedded soot, salts, and polymer degradation byproducts, fills the micro-valleys of the native 1.8 µm Ra surface texture. The contaminants form a cohesive film that masks the underlying fiber weave and resin topography, creating a uniform, matte appearance that significantly reduces surface reflectivity.
+  afterText: 'Laser cleaning removes the contamination layer with high selectivity, revealing the original fiberglass microstructure. The underlying E-glass fibers and polymer resin matrix are now fully exposed, restoring the surface''s inherent 1.8 µm Ra texture. The precise ablation mechanism, operating below the 2.8 J/cm² material damage threshold, has successfully eliminated the obscuring film without etching or fusing the composite surface.
 
 
-    The cleaned surface exhibits restored reflectivity and distinct topographic features.
-    Individual fibers within the weave are clearly visible, and the resin-rich areas
-    show no evidence of thermal degradation, such as charring or micro-cracking. This
-    confirms the process remained within the material''s thermal budget, preserving
-    the composite''s structural integrity and chemical resistance.'
-  description: Microscopic analysis of fiberglass surface before and after laser cleaning
-    treatment
+    The cleaned surface exhibits restored reflectivity and distinct topographic features. Individual fibers within the weave are clearly visible, and the resin-rich areas show no evidence of thermal degradation, such as charring or micro-cracking. This confirms the process remained within the material''s thermal budget, preserving the composite''s structural integrity and chemical resistance.'
+  description: Microscopic analysis of fiberglass surface before and after laser cleaning treatment
   alt: Microscopic view of fiberglass surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -353,8 +323,7 @@ caption:
     materialType: Composite
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Fiberglass surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Fiberglass surface after laser cleaning showing detailed surface structure
     url: /images/material/fiberglass-laser-cleaning-micro.jpg
 tags:
 - composite

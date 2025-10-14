@@ -67,13 +67,6 @@ materialProperties:
     description: Specific heat capacity at 25°C
     min: 100
     max: 900
-  thermalDestructionType:
-    value: 429.75
-    unit: K
-    confidence: 95
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 4.8
     unit: mm²/s
@@ -137,6 +130,14 @@ materialProperties:
     description: Boiling point of indium
     min: null
     max: null
+  thermalDestructionPoint:
+    value: 156.6
+    unit: °C
+    confidence: 97
+    description: Temperature where solid-to-liquid phase transition occurs
+    min: null
+    max: null
+  thermalDestructionType: melting
 applications:
 - Electronics Manufacturing
 - Aerospace Components
@@ -153,8 +154,7 @@ machineSettings:
     value: 25
     unit: W
     confidence: 90
-    description: Optimal average power for Indium oxide removal without substrate
-      damage
+    description: Optimal average power for Indium oxide removal without substrate damage
     min: 15
     max: 40
   wavelength:
@@ -175,16 +175,14 @@ machineSettings:
     value: 50
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient surface coverage with controlled
-      thermal input
+    description: High repetition rate for efficient surface coverage with controlled thermal input
     min: 20
     max: 100
   pulseWidth:
     value: 100
     unit: ns
     confidence: 85
-    description: Nanosecond pulses for efficient oxide removal with minimal thermal
-      diffusion
+    description: Nanosecond pulses for efficient oxide removal with minimal thermal diffusion
     min: 50
     max: 200
   scanSpeed:
@@ -257,8 +255,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Indium is a very soft metal with a low melting point. These properties require
-  careful laser settings to avoid surface damage during cleaning.
+subtitle: Indium is a very soft metal with a low melting point. These properties require careful laser settings to avoid surface damage during cleaning.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -294,21 +291,9 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the indium surface is obscured by a non-uniform
-    contamination layer, typically 5-20 µm thick. This layer consists of particulate
-    matter, organic residues, and a thin, discontinuous oxide film (In₂O₃). The underlying
-    metal's soft, ductile character is masked by this topography, which exhibits a
-    mottled, high-relief texture. Contaminants adhere within the natural grain boundaries
-    and surface imperfections, creating a complex, irregular pattern that compromises
-    surface integrity and electrical properties.
-  afterText: Laser cleaning restores the intrinsic surface, revealing the pure indium's
-    fine, coherent grain structure at 500x magnification. The contamination layer
-    is entirely removed, leaving a smooth, reflective plane with minimal micro-roughness.
-    The surface is now defined by its metallic luster and clean grain boundaries,
-    free from embedded particulates and oxide films. This state ensures optimal electrical
-    contact and adhesion for subsequent processes.
-  description: Microscopic analysis of indium surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the indium surface is obscured by a non-uniform contamination layer, typically 5-20 µm thick. This layer consists of particulate matter, organic residues, and a thin, discontinuous oxide film (In₂O₃). The underlying metal's soft, ductile character is masked by this topography, which exhibits a mottled, high-relief texture. Contaminants adhere within the natural grain boundaries and surface imperfections, creating a complex, irregular pattern that compromises surface integrity and electrical properties.
+  afterText: Laser cleaning restores the intrinsic surface, revealing the pure indium's fine, coherent grain structure at 500x magnification. The contamination layer is entirely removed, leaving a smooth, reflective plane with minimal micro-roughness. The surface is now defined by its metallic luster and clean grain boundaries, free from embedded particulates and oxide films. This state ensures optimal electrical contact and adhesion for subsequent processes.
+  description: Microscopic analysis of indium surface before and after laser cleaning treatment
   alt: Microscopic view of indium surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -328,8 +313,7 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Indium surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Indium surface after laser cleaning showing detailed surface structure
     url: /images/material/indium-laser-cleaning-micro.jpg
 tags:
 - metal

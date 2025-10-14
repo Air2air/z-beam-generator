@@ -67,13 +67,6 @@ materialProperties:
     description: Specific heat capacity at 25°C
     min: 100
     max: 900
-  thermalDestructionType:
-    value: 933.47
-    unit: K
-    confidence: 98
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 97.1
     unit: mm²/s
@@ -137,6 +130,14 @@ materialProperties:
     description: Damage threshold for millisecond pulses at 1064 nm
     min: null
     max: null
+  thermalDestructionPoint:
+    value: 660
+    unit: °C
+    confidence: 95
+    description: Temperature where solid-to-liquid phase transition occurs
+    min: null
+    max: null
+  thermalDestructionType: melting
 applications:
 - Aerospace
 - Automotive
@@ -226,8 +227,7 @@ author:
   image: /images/author/todd-dunning.jpg
 images:
   hero:
-    alt: Aluminum surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Aluminum surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/aluminum-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -254,9 +254,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Aluminum's softness and high reflectivity distinguish it from other non-ferrous
-  metals. These traits require carefully calibrated laser settings to effectively
-  remove contaminants without damaging the underlying surface.
+subtitle: Aluminum's softness and high reflectivity distinguish it from other non-ferrous metals. These traits require carefully calibrated laser settings to effectively remove contaminants without damaging the underlying surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -292,22 +290,9 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the aluminum surface is obscured by a complex
-    contamination layer. A porous, amorphous oxide film, approximately 2.5-5 nm thick,
-    forms the base, overlaid with patches of carbonaceous soot and embedded abrasive
-    particles from prior processing. The topography is irregular, with contamination
-    filling the natural grain boundaries and micro-valleys of the substrate. This
-    layer significantly increases surface roughness and creates a barrier that degrades
-    performance for subsequent processes like welding or bonding, masking the metal's
-    inherent properties.
-  afterText: Laser cleaning removes all foreign material, revealing the substrate's
-    true microstructure. The surface now exhibits a clean, defined grain structure
-    with sharp boundaries, free of oxide and particulate residue. Minor sub-surface
-    pitting from prior corrosion may remain visible, but the surface roughness is
-    substantially reduced. This pristine, metallurgically pure surface provides optimal
-    conditions for high-integrity material joining and coating adhesion.
-  description: Microscopic analysis of aluminum surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the aluminum surface is obscured by a complex contamination layer. A porous, amorphous oxide film, approximately 2.5-5 nm thick, forms the base, overlaid with patches of carbonaceous soot and embedded abrasive particles from prior processing. The topography is irregular, with contamination filling the natural grain boundaries and micro-valleys of the substrate. This layer significantly increases surface roughness and creates a barrier that degrades performance for subsequent processes like welding or bonding, masking the metal's inherent properties.
+  afterText: Laser cleaning removes all foreign material, revealing the substrate's true microstructure. The surface now exhibits a clean, defined grain structure with sharp boundaries, free of oxide and particulate residue. Minor sub-surface pitting from prior corrosion may remain visible, but the surface roughness is substantially reduced. This pristine, metallurgically pure surface provides optimal conditions for high-integrity material joining and coating adhesion.
+  description: Microscopic analysis of aluminum surface before and after laser cleaning treatment
   alt: Microscopic view of aluminum surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -327,8 +312,7 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Aluminum surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Aluminum surface after laser cleaning showing detailed surface structure
     url: /images/material/aluminum-laser-cleaning-micro.jpg
 tags:
 - metal

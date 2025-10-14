@@ -74,13 +74,6 @@ materialProperties:
     description: Temperature where pyrolysis (thermal decomposition) begins
     min: 200
     max: 500
-  thermalDestructionType:
-    value: 350.0
-    unit: °C
-    confidence: 92
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 0.21
     unit: mm²/s
@@ -99,8 +92,7 @@ materialProperties:
     value: 0.78
     unit: dimensionless
     confidence: 82
-    description: Optical absorption coefficient for near-infrared wavelengths (1064
-      nm)
+    description: Optical absorption coefficient for near-infrared wavelengths (1064 nm)
     min: null
     max: null
   reflectivity:
@@ -138,6 +130,7 @@ materialProperties:
     description: Minimum temperature for sustained combustion in air
     min: null
     max: null
+  thermalDestructionType: pyrolysis
 applications:
 - Cultural Heritage
 - Marine
@@ -196,8 +189,7 @@ machineSettings:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Energy density threshold for effective contaminant removal without
-      wood damage
+    description: Energy density threshold for effective contaminant removal without wood damage
     min: 1.8
     max: 3.5
   overlapRatio:
@@ -256,9 +248,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Redwood's density and natural oils can vary significantly across a single
-  piece. This variation requires careful adjustment of laser settings to avoid uneven
-  cleaning or surface damage.
+subtitle: Redwood's density and natural oils can vary significantly across a single piece. This variation requires careful adjustment of laser settings to avoid uneven cleaning or surface damage.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -294,30 +284,15 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the redwood surface is obscured by a dense, stratified
-    contamination layer approximately 50-200 µm thick. This layer, composed of embedded
-    soot, biological growth, and degraded finishes, fills the wood's porous cellular
-    structure. The underlying tracheids and ray cells are largely invisible, with
-    the surface texture appearing amorphous and matte due to the contaminant's high,
-    diffuse light absorption, which masks the wood's natural grain definition.
-  afterText: 'Laser cleaning has fully restored the redwood''s microscopic surface
-    topography. The contaminant layer has been completely ablated, revealing the intricate,
-    open cellular network of tracheids and parenchyma cells. The surface now exhibits
-    a clear, textured profile with sharp edges and deep, open lumens.
+  beforeText: At 500x magnification, the redwood surface is obscured by a dense, stratified contamination layer approximately 50-200 µm thick. This layer, composed of embedded soot, biological growth, and degraded finishes, fills the wood's porous cellular structure. The underlying tracheids and ray cells are largely invisible, with the surface texture appearing amorphous and matte due to the contaminant's high, diffuse light absorption, which masks the wood's natural grain definition.
+  afterText: 'Laser cleaning has fully restored the redwood''s microscopic surface topography. The contaminant layer has been completely ablated, revealing the intricate, open cellular network of tracheids and parenchyma cells. The surface now exhibits a clear, textured profile with sharp edges and deep, open lumens.
 
 
-    The cleaning process has selectively removed foreign material without damaging
-    the underlying wood cell walls. This precision is evident in the intact middle
-    lamella and the sharp definition between adjacent cells, which were previously
-    fused by contamination.
+    The cleaning process has selectively removed foreign material without damaging the underlying wood cell walls. This precision is evident in the intact middle lamella and the sharp definition between adjacent cells, which were previously fused by contamination.
 
 
-    The result is a surface with high micro-roughness and minimal subsurface charring.
-    This open, clean structure significantly improves the substrate for subsequent
-    conservation treatments, such as consolidant penetration, by providing an unobstructed
-    interface with the original wood material.'
-  description: Microscopic analysis of redwood surface before and after laser cleaning
-    treatment
+    The result is a surface with high micro-roughness and minimal subsurface charring. This open, clean structure significantly improves the substrate for subsequent conservation treatments, such as consolidant penetration, by providing an unobstructed interface with the original wood material.'
+  description: Microscopic analysis of redwood surface before and after laser cleaning treatment
   alt: Microscopic view of redwood surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -337,8 +312,7 @@ caption:
     materialType: Wood
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Redwood surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Redwood surface after laser cleaning showing detailed surface structure
     url: /images/material/redwood-laser-cleaning-micro.jpg
 tags:
 - wood

@@ -67,13 +67,6 @@ materialProperties:
     description: Specific heat capacity at 25°C
     min: 100
     max: 900
-  thermalDestructionType:
-    value: 3186.0
-    unit: °C
-    confidence: 95
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 24.7
     unit: mm²/s
@@ -123,6 +116,14 @@ materialProperties:
     description: Hexagonal close-packed structure at room temperature
     min: null
     max: null
+  thermalDestructionPoint:
+    value: 3186
+    unit: °C
+    confidence: 97
+    description: Temperature where solid-to-liquid phase transition occurs
+    min: null
+    max: null
+  thermalDestructionType: melting
 applications:
 - Aerospace
 - Electronics
@@ -139,8 +140,7 @@ machineSettings:
     value: 90
     unit: W
     confidence: 91
-    description: Optimal average power for Rhenium oxide removal without substrate
-      damage
+    description: Optimal average power for Rhenium oxide removal without substrate damage
     min: 70
     max: 110
   wavelength:
@@ -241,9 +241,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Rhenium has an extremely high melting point and work-hardens quickly, unlike
-  other precious metals. These traits demand careful control of laser power and scanning
-  patterns to avoid damaging the component.
+subtitle: Rhenium has an extremely high melting point and work-hardens quickly, unlike other precious metals. These traits demand careful control of laser power and scanning patterns to avoid damaging the component.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -279,19 +277,9 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the rhenium surface is obscured by a non-uniform
-    contamination layer, approximately 5-15 µm thick. This layer, composed of oxides
-    and embedded carbonaceous deposits, exhibits a coarse, granular texture. The underlying
-    HCP crystalline structure of the rhenium is entirely masked by this discontinuous,
-    splotchy film, which disrupts the metal's intrinsic reflectivity and creates a
-    matte, topographically complex finish.
-  afterText: Laser cleaning has fully restored the substrate, revealing the pristine
-    rhenium surface. The contamination layer is completely absent, exposing the characteristic
-    grain boundaries and fine microstructure of the HCP crystal lattice. The surface
-    now displays a uniform, metallic luster with significantly improved reflectivity,
-    confirming the removal of all obscuring oxides and deposits.
-  description: Microscopic analysis of rhenium surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the rhenium surface is obscured by a non-uniform contamination layer, approximately 5-15 µm thick. This layer, composed of oxides and embedded carbonaceous deposits, exhibits a coarse, granular texture. The underlying HCP crystalline structure of the rhenium is entirely masked by this discontinuous, splotchy film, which disrupts the metal's intrinsic reflectivity and creates a matte, topographically complex finish.
+  afterText: Laser cleaning has fully restored the substrate, revealing the pristine rhenium surface. The contamination layer is completely absent, exposing the characteristic grain boundaries and fine microstructure of the HCP crystal lattice. The surface now displays a uniform, metallic luster with significantly improved reflectivity, confirming the removal of all obscuring oxides and deposits.
+  description: Microscopic analysis of rhenium surface before and after laser cleaning treatment
   alt: Microscopic view of rhenium surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -311,8 +299,7 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Rhenium surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Rhenium surface after laser cleaning showing detailed surface structure
     url: /images/material/rhenium-laser-cleaning-micro.jpg
 tags:
 - metal

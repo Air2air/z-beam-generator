@@ -67,13 +67,6 @@ materialProperties:
     description: Specific heat capacity at 25°C
     min: 100
     max: 900
-  thermalDestructionType:
-    value: 505.08
-    unit: K
-    confidence: 95
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 40.2
     unit: mm²/s
@@ -144,6 +137,14 @@ materialProperties:
     description: Latent heat of fusion
     min: null
     max: null
+  thermalDestructionPoint:
+    value: 231.93
+    unit: °C
+    confidence: 99
+    description: Temperature where solid-to-liquid phase transition occurs
+    min: null
+    max: null
+  thermalDestructionType: melting
 applications:
 - Electronics Manufacturing
 - Aerospace Components
@@ -167,8 +168,7 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 89
-    description: Near-IR wavelength for efficient Tin oxide absorption with minimal
-      substrate heating
+    description: Near-IR wavelength for efficient Tin oxide absorption with minimal substrate heating
     min: 532
     max: 1064
   spotSize:
@@ -262,9 +262,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Tin has a very low melting point and is relatively soft compared to other
-  non-ferrous metals. These traits demand careful control of laser power and scanning
-  speed to prevent surface melting.
+subtitle: Tin has a very low melting point and is relatively soft compared to other non-ferrous metals. These traits demand careful control of laser power and scanning speed to prevent surface melting.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -300,28 +298,15 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the tin surface is obscured by a non-uniform
-    contamination layer, approximately 5-15 µm thick. This layer consists of embedded
-    oxides, carbonaceous deposits, and particulate matter, creating a topographically
-    complex and irregular texture. The underlying metallic luster of the tin substrate
-    is entirely masked, compromising its surface integrity and functional properties.
-  afterText: 'Laser cleaning effectively removes the contamination layer, revealing
-    the pristine, underlying tin substrate. The surface now exhibits a uniform, matte-grey
-    metallic appearance with the characteristic fine-grain structure of the tetragonal
-    crystalline lattice clearly visible.
+  beforeText: At 500x magnification, the tin surface is obscured by a non-uniform contamination layer, approximately 5-15 µm thick. This layer consists of embedded oxides, carbonaceous deposits, and particulate matter, creating a topographically complex and irregular texture. The underlying metallic luster of the tin substrate is entirely masked, compromising its surface integrity and functional properties.
+  afterText: 'Laser cleaning effectively removes the contamination layer, revealing the pristine, underlying tin substrate. The surface now exhibits a uniform, matte-grey metallic appearance with the characteristic fine-grain structure of the tetragonal crystalline lattice clearly visible.
 
 
-    The process eliminates all foreign material without fluid residue or secondary
-    contamination. The cleaned surface displays minimal micro-roughness and no evidence
-    of melting or heat distortion, confirming precise ablation at energy densities
-    below the material''s damage threshold.
+    The process eliminates all foreign material without fluid residue or secondary contamination. The cleaned surface displays minimal micro-roughness and no evidence of melting or heat distortion, confirming precise ablation at energy densities below the material''s damage threshold.
 
 
-    This restoration results in a surface with optimized reflectivity and improved
-    adhesion properties, directly enhancing performance in applications such as soldering
-    and coating. The base metal is now fully exposed and functionally intact.'
-  description: Microscopic analysis of tin surface before and after laser cleaning
-    treatment
+    This restoration results in a surface with optimized reflectivity and improved adhesion properties, directly enhancing performance in applications such as soldering and coating. The base metal is now fully exposed and functionally intact.'
+  description: Microscopic analysis of tin surface before and after laser cleaning treatment
   alt: Microscopic view of tin surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -341,8 +326,7 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Tin surface after laser cleaning showing detailed surface
-      structure
+    alt: Microscopic view of Tin surface after laser cleaning showing detailed surface structure
     url: /images/material/tin-laser-cleaning-micro.jpg
 tags:
 - metal

@@ -74,13 +74,6 @@ materialProperties:
     description: Temperature where pyrolysis (thermal decomposition) begins
     min: 200
     max: 500
-  thermalDestructionType:
-    value: 573.0
-    unit: K
-    confidence: 92
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 0.16
     unit: mm²/s
@@ -99,8 +92,7 @@ materialProperties:
     value: 0.75
     unit: dimensionless
     confidence: 88
-    description: Optical absorption coefficient for typical laser wavelengths (1064
-      nm)
+    description: Optical absorption coefficient for typical laser wavelengths (1064 nm)
     min: null
     max: null
   reflectivity:
@@ -131,6 +123,7 @@ materialProperties:
     description: Chemical stability in ambient atmospheric conditions
     min: null
     max: null
+  thermalDestructionType: pyrolysis
 applications:
 - Cultural Heritage Restoration
 - Aerospace Component Manufacturing
@@ -147,8 +140,7 @@ machineSettings:
     value: 90
     unit: W
     confidence: 92
-    description: Optimal average power for efficient ash removal without substrate
-      damage
+    description: Optimal average power for efficient ash removal without substrate damage
     min: 70
     max: 120
   wavelength:
@@ -183,16 +175,14 @@ machineSettings:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Scanning speed for efficient ash removal while maintaining cleaning
-      quality
+    description: Scanning speed for efficient ash removal while maintaining cleaning quality
     min: 300
     max: 800
   energyDensity:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Fluence level sufficient for ash ablation without damaging underlying
-      surfaces
+    description: Fluence level sufficient for ash ablation without damaging underlying surfaces
     min: 1.5
     max: 4.0
   overlapRatio:
@@ -259,9 +249,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Ash has a unique, prominent grain structure with significant density variations.
-  This requires careful laser parameter adjustments to clean the porous earlywood
-  without damaging the denser latewood.
+subtitle: Ash has a unique, prominent grain structure with significant density variations. This requires careful laser parameter adjustments to clean the porous earlywood without damaging the denser latewood.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -297,18 +285,9 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the ash surface is obscured by a discontinuous,
-    granular contamination layer measuring 5-15 µm thick. This layer, composed of
-    soot, dust, and environmental particulates, adheres within the porous surface
-    structure. The underlying wood grain and cellular detail are partially masked,
-    creating a mottled, high-contrast topography that appears dark and textured.
-  afterText: Laser cleaning removes the superficial contamination layer, revealing
-    the intact, original ash substrate. The surface now exhibits a clearly defined,
-    open-pore structure with distinct wood grain patterns. At 500x, the cellular anatomy
-    is fully visible, showing a uniform, light-toned surface free from embedded particulates.
-    The result is a return to the material's inherent, unadulterated texture.
-  description: Microscopic analysis of ash surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the ash surface is obscured by a discontinuous, granular contamination layer measuring 5-15 µm thick. This layer, composed of soot, dust, and environmental particulates, adheres within the porous surface structure. The underlying wood grain and cellular detail are partially masked, creating a mottled, high-contrast topography that appears dark and textured.
+  afterText: Laser cleaning removes the superficial contamination layer, revealing the intact, original ash substrate. The surface now exhibits a clearly defined, open-pore structure with distinct wood grain patterns. At 500x, the cellular anatomy is fully visible, showing a uniform, light-toned surface free from embedded particulates. The result is a return to the material's inherent, unadulterated texture.
+  description: Microscopic analysis of ash surface before and after laser cleaning treatment
   alt: Microscopic view of ash surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -328,8 +307,7 @@ caption:
     materialType: Wood
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Ash surface after laser cleaning showing detailed surface
-      structure
+    alt: Microscopic view of Ash surface after laser cleaning showing detailed surface structure
     url: /images/material/ash-laser-cleaning-micro.jpg
 tags:
 - wood

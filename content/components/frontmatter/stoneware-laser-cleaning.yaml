@@ -67,13 +67,6 @@ materialProperties:
     description: Specific heat capacity at room temperature
     min: 200
     max: 1200
-  thermalDestructionType:
-    value: 180.0
-    unit: °C
-    confidence: 92
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 0.85
     unit: mm²/s
@@ -130,13 +123,14 @@ materialProperties:
     description: Resistance to common chemical agents and weathering
     min: null
     max: null
-  sinteringPoint:
+  thermalDestructionPoint:
     value: 1250
     unit: °C
     confidence: 88
     description: Temperature where particle fusion or decomposition occurs
     min: null
     max: null
+  thermalDestructionType: sintering
 applications:
 - Cultural Heritage
 - Food Processing
@@ -153,16 +147,14 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Stoneware surface cleaning without thermal
-      damage
+    description: Optimal average power for Stoneware surface cleaning without thermal damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength optimized for Stoneware absorption and minimal
-      substrate damage
+    description: Near-infrared wavelength optimized for Stoneware absorption and minimal substrate damage
     min: 1030
     max: 1070
   spotSize:
@@ -176,16 +168,14 @@ machineSettings:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning coverage and thermal
-      management
+    description: Optimal repetition rate for efficient cleaning coverage and thermal management
     min: 20
     max: 100
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal while
-      preserving Stoneware surface
+    description: Nanosecond pulse duration for effective contaminant removal while preserving Stoneware surface
     min: 5
     max: 20
   scanSpeed:
@@ -199,8 +189,7 @@ machineSettings:
     value: 12.7
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant ablation without Stoneware
-      damage
+    description: Fluence threshold for effective contaminant ablation without Stoneware damage
     min: 8
     max: 16
   overlapRatio:
@@ -239,8 +228,7 @@ author:
   image: /images/author/ikmanda-roswati.jpg
 images:
   hero:
-    alt: Stoneware surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Stoneware surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/stoneware-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -267,9 +255,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Pay close attention to stoneware during laser treatment—its varying hardness
-  can throw off results very, very fast. Adjust the power levels with exact care to
-  protect the surface and ensure a good, good finish.
+subtitle: Pay close attention to stoneware during laser treatment—its varying hardness can throw off results very, very fast. Adjust the power levels with exact care to protect the surface and ensure a good, good finish.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -305,29 +291,12 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the stoneware surface is obscured by a dense,
-    irregular contamination layer measuring 15-50 µm thick. This layer exhibits a
-    complex topography of particulate agglomerates and amorphous deposits, which fill
-    the inherent micro-porosity of the ceramic body. The contaminants create a discontinuous,
-    textured crust that masks the underlying vitrified ceramic structure and its characteristic
-    surface morphology.
-  afterText: 'Laser cleaning has completely removed the contamination crust, revealing
-    the original stoneware substrate. The surface now displays the intrinsic micro-texture
-    of the vitrified ceramic, characterized by a network of fine, interlocking crystalline
-    phases and a low, approximately 3.5%, porosity. The laser process has successfully
-    ablated the foreign material without inducing micro-fractures or significant alteration
-    to the primary mineral matrix.
+  beforeText: At 500x magnification, the stoneware surface is obscured by a dense, irregular contamination layer measuring 15-50 µm thick. This layer exhibits a complex topography of particulate agglomerates and amorphous deposits, which fill the inherent micro-porosity of the ceramic body. The contaminants create a discontinuous, textured crust that masks the underlying vitrified ceramic structure and its characteristic surface morphology.
+  afterText: 'Laser cleaning has completely removed the contamination crust, revealing the original stoneware substrate. The surface now displays the intrinsic micro-texture of the vitrified ceramic, characterized by a network of fine, interlocking crystalline phases and a low, approximately 3.5%, porosity. The laser process has successfully ablated the foreign material without inducing micro-fractures or significant alteration to the primary mineral matrix.
 
 
-    The ablation threshold was precisely controlled to remain below the 2.8 J/cm²
-    damage threshold of the stoneware, ensuring selective removal. This has restored
-    the material''s original reflectivity of approximately 15% and exposed its uniform,
-    grain-like structure. The cleaned surface demonstrates the efficacy of laser parameters
-    tuned to the material''s specific thermal diffusivity (0.85 mm²/s) and absorption
-    characteristics, resulting in a contaminant-free interface ready for further analysis
-    or protective coating.'
-  description: Microscopic analysis of stoneware surface before and after laser cleaning
-    treatment
+    The ablation threshold was precisely controlled to remain below the 2.8 J/cm² damage threshold of the stoneware, ensuring selective removal. This has restored the material''s original reflectivity of approximately 15% and exposed its uniform, grain-like structure. The cleaned surface demonstrates the efficacy of laser parameters tuned to the material''s specific thermal diffusivity (0.85 mm²/s) and absorption characteristics, resulting in a contaminant-free interface ready for further analysis or protective coating.'
+  description: Microscopic analysis of stoneware surface before and after laser cleaning treatment
   alt: Microscopic view of stoneware surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -347,8 +316,7 @@ caption:
     materialType: Ceramic
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Stoneware surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Stoneware surface after laser cleaning showing detailed surface structure
     url: /images/material/stoneware-laser-cleaning-micro.jpg
 tags:
 - ceramic

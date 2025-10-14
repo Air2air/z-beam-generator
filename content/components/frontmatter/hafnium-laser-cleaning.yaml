@@ -67,13 +67,6 @@ materialProperties:
     description: Specific heat capacity at room temperature
     min: 100
     max: 900
-  thermalDestructionType:
-    value: 2503.0
-    unit: K
-    confidence: 95
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 12.0
     unit: mm²/s
@@ -130,6 +123,14 @@ materialProperties:
     description: Estimated laser-induced damage threshold
     min: null
     max: null
+  thermalDestructionPoint:
+    value: 2233
+    unit: °C
+    confidence: 97
+    description: Temperature where solid-to-liquid phase transition occurs
+    min: null
+    max: null
+  thermalDestructionType: melting
 applications:
 - Nuclear Reactor Components
 - Aerospace Turbine Components
@@ -247,9 +248,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Hafnium's unique reactivity and variable oxide layer demand careful attention.
-  This requires tailored laser settings to effectively remove contaminants without
-  damaging the underlying material.
+subtitle: Hafnium's unique reactivity and variable oxide layer demand careful attention. This requires tailored laser settings to effectively remove contaminants without damaging the underlying material.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -285,23 +284,9 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the hafnium surface is obscured by a non-uniform
-    contamination layer. This layer, ranging from 5 to 20 micrometers in thickness,
-    consists of embedded particulates and a discontinuous oxide scale. The underlying
-    metal's HCP crystalline structure is entirely hidden. The topography is irregular,
-    with contamination accumulating in the micro-valleys of the machined surface texture,
-    creating a matte, dark appearance that significantly increases light absorption
-    and scattering. This layer compromises the material's inherent properties and
-    provides initiation sites for further corrosion.
-  afterText: Following laser cleaning, the surface at 500x magnification reveals the
-    native hafnium microstructure. The contamination layer has been completely removed
-    via ablation, exposing the fine, uniform grain boundaries of the HCP lattice.
-    The surface texture is now defined by the metal's intrinsic micro-topography,
-    with a consistent, light-grey metallic lustre. The reflectivity has increased
-    to the material's inherent 45-48%, and the surface is free of embedded oxides
-    and particulates, restoring the substrate's baseline mechanical and chemical properties.
-  description: Microscopic analysis of hafnium surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the hafnium surface is obscured by a non-uniform contamination layer. This layer, ranging from 5 to 20 micrometers in thickness, consists of embedded particulates and a discontinuous oxide scale. The underlying metal's HCP crystalline structure is entirely hidden. The topography is irregular, with contamination accumulating in the micro-valleys of the machined surface texture, creating a matte, dark appearance that significantly increases light absorption and scattering. This layer compromises the material's inherent properties and provides initiation sites for further corrosion.
+  afterText: Following laser cleaning, the surface at 500x magnification reveals the native hafnium microstructure. The contamination layer has been completely removed via ablation, exposing the fine, uniform grain boundaries of the HCP lattice. The surface texture is now defined by the metal's intrinsic micro-topography, with a consistent, light-grey metallic lustre. The reflectivity has increased to the material's inherent 45-48%, and the surface is free of embedded oxides and particulates, restoring the substrate's baseline mechanical and chemical properties.
+  description: Microscopic analysis of hafnium surface before and after laser cleaning treatment
   alt: Microscopic view of hafnium surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -321,8 +306,7 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Hafnium surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Hafnium surface after laser cleaning showing detailed surface structure
     url: /images/material/hafnium-laser-cleaning-micro.jpg
 tags:
 - metal

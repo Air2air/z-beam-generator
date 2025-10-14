@@ -67,13 +67,6 @@ materialProperties:
     description: Specific heat capacity at 25°C
     min: 100
     max: 900
-  thermalDestructionType:
-    value: 1337.33
-    unit: K
-    confidence: 98
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 127
     unit: mm²/s
@@ -137,6 +130,14 @@ materialProperties:
     description: Laser-induced damage threshold for polished surfaces
     min: null
     max: null
+  thermalDestructionPoint:
+    value: 1064
+    unit: °C
+    confidence: 97
+    description: Temperature where solid-to-liquid phase transition occurs
+    min: null
+    max: null
+  thermalDestructionType: melting
 applications:
 - Electronics Manufacturing
 - Aerospace
@@ -160,8 +161,7 @@ machineSettings:
     value: 532
     unit: nm
     confidence: 88
-    description: Green wavelength optimized for Gold's high reflectivity in IR and
-      better absorption in visible spectrum
+    description: Green wavelength optimized for Gold's high reflectivity in IR and better absorption in visible spectrum
     min: 355
     max: 1064
   spotSize:
@@ -175,32 +175,28 @@ machineSettings:
     value: 50
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning while maintaining thermal
-      control
+    description: High repetition rate for efficient cleaning while maintaining thermal control
     min: 20
     max: 100
   pulseWidth:
     value: 8
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for controlled ablation of contaminants
-      without substrate damage
+    description: Nanosecond pulse duration for controlled ablation of contaminants without substrate damage
     min: 5
     max: 15
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Scan speed for efficient area coverage while maintaining cleaning
-      effectiveness
+    description: Scan speed for efficient area coverage while maintaining cleaning effectiveness
     min: 300
     max: 800
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without damaging
-      Gold substrate
+    description: Fluence threshold for effective contaminant removal without damaging Gold substrate
     min: 1.8
     max: 3.5
   overlapRatio:
@@ -221,8 +217,7 @@ machineSettings:
     value: Nd:YAG
     unit: laser_type
     confidence: 90
-    description: Q-switched Nd:YAG laser with frequency doubling capability for optimal
-      Gold processing
+    description: Q-switched Nd:YAG laser with frequency doubling capability for optimal Gold processing
     min: null
     max: null
 regulatoryStandards:
@@ -267,9 +262,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Gold is exceptionally soft and prone to surface damage compared to other
-  precious metals. This requires laser settings with very low energy and rapid pulses
-  to remove contaminants without altering the surface.
+subtitle: Gold is exceptionally soft and prone to surface damage compared to other precious metals. This requires laser settings with very low energy and rapid pulses to remove contaminants without altering the surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -305,22 +298,9 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the gold surface is obscured by a non-uniform
-    contamination layer. This layer, ranging from 0.5 to 5 micrometers in thickness,
-    consists of carbonaceous deposits, adsorbed organic films, and particulate matter.
-    The underlying gold's metallic luster is muted, and its native micro-texture is
-    concealed. The contaminants form irregular, patchy patterns, creating a topographically
-    complex and optically dull surface that compromises its functional properties
-    and aesthetic signature.
-  afterText: Laser cleaning restores the pristine gold substrate, revealing a continuous,
-    specularly reflective surface at 500x magnification. The contamination layer is
-    entirely removed, exposing the native grain structure and micro-polishing lines
-    of the pure gold. The surface is now topographically uniform, with no evidence
-    of thermal damage or ablation to the substrate. This results in a surface with
-    restored reflectivity exceeding 97% and optimal performance for its intended electrical
-    or optical application.
-  description: Microscopic analysis of gold surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the gold surface is obscured by a non-uniform contamination layer. This layer, ranging from 0.5 to 5 micrometers in thickness, consists of carbonaceous deposits, adsorbed organic films, and particulate matter. The underlying gold's metallic luster is muted, and its native micro-texture is concealed. The contaminants form irregular, patchy patterns, creating a topographically complex and optically dull surface that compromises its functional properties and aesthetic signature.
+  afterText: Laser cleaning restores the pristine gold substrate, revealing a continuous, specularly reflective surface at 500x magnification. The contamination layer is entirely removed, exposing the native grain structure and micro-polishing lines of the pure gold. The surface is now topographically uniform, with no evidence of thermal damage or ablation to the substrate. This results in a surface with restored reflectivity exceeding 97% and optimal performance for its intended electrical or optical application.
+  description: Microscopic analysis of gold surface before and after laser cleaning treatment
   alt: Microscopic view of gold surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -340,8 +320,7 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Gold surface after laser cleaning showing detailed surface
-      structure
+    alt: Microscopic view of Gold surface after laser cleaning showing detailed surface structure
     url: /images/material/gold-laser-cleaning-micro.jpg
 tags:
 - metal

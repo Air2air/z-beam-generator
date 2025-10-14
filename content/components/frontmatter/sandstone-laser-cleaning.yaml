@@ -74,13 +74,6 @@ materialProperties:
     description: Specific heat capacity at constant pressure
     min: 600
     max: 1200
-  thermalDestructionType:
-    value: 2.8
-    unit: MW/m²
-    confidence: 92
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 1.1
     unit: mm²/s
@@ -130,13 +123,14 @@ materialProperties:
     description: Chemical stability range in aqueous environments
     min: null
     max: null
-  thermalDegradationPoint:
+  thermalDestructionPoint:
     value: 1710
     unit: °C
     confidence: 90
     description: Temperature where structural breakdown begins
     min: null
     max: null
+  thermalDestructionType: structural_breakdown
 applications:
 - Cultural Heritage
 - Building Restoration
@@ -181,8 +175,7 @@ machineSettings:
     value: 12
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with
-      minimal substrate damage
+    description: Nanosecond pulse duration for effective contaminant removal with minimal substrate damage
     min: 8
     max: 20
   scanSpeed:
@@ -237,8 +230,7 @@ author:
   image: /images/author/alessandro-moretti.jpg
 images:
   hero:
-    alt: Sandstone surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Sandstone surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/sandstone-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -265,9 +257,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Sandstone's variable porosity and mineral composition make it distinct from
-  other sedimentary stones. These variations require careful adjustment of laser settings
-  to prevent damage during cleaning.
+subtitle: Sandstone's variable porosity and mineral composition make it distinct from other sedimentary stones. These variations require careful adjustment of laser settings to prevent damage during cleaning.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -303,22 +293,9 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the sandstone surface is obscured by a dense,
-    heterogeneous contamination layer approximately 50-200 µm thick. This crust, composed
-    of carbonaceous particulates, gypsum crystals, and biological growth, fills the
-    natural pore network. The original grain structure is largely hidden, with only
-    the highest quartz protrusions visible through the amorphous, soiling matrix.
-    The surface texture is irregular and roughened by the accreted material.
-  afterText: Laser cleaning has removed the opaque contamination crust, fully revealing
-    the underlying sandstone microstructure. The interlocking quartz grains, now clearly
-    defined, exhibit their original crystalline facets and sharp boundaries. The high
-    porosity (18.5%) is restored, with open pore throats visible and free of particulate
-    fill. The surface reflectivity has increased from 12% to 38.2% due to the exposure
-    of the native mineral substrate. This precise ablation, achieved without thermal
-    damage to the quartz grains (Mohs 6.5), preserves the stone's intrinsic mechanical
-    integrity.
-  description: Microscopic analysis of sandstone surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the sandstone surface is obscured by a dense, heterogeneous contamination layer approximately 50-200 µm thick. This crust, composed of carbonaceous particulates, gypsum crystals, and biological growth, fills the natural pore network. The original grain structure is largely hidden, with only the highest quartz protrusions visible through the amorphous, soiling matrix. The surface texture is irregular and roughened by the accreted material.
+  afterText: Laser cleaning has removed the opaque contamination crust, fully revealing the underlying sandstone microstructure. The interlocking quartz grains, now clearly defined, exhibit their original crystalline facets and sharp boundaries. The high porosity (18.5%) is restored, with open pore throats visible and free of particulate fill. The surface reflectivity has increased from 12% to 38.2% due to the exposure of the native mineral substrate. This precise ablation, achieved without thermal damage to the quartz grains (Mohs 6.5), preserves the stone's intrinsic mechanical integrity.
+  description: Microscopic analysis of sandstone surface before and after laser cleaning treatment
   alt: Microscopic view of sandstone surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -338,8 +315,7 @@ caption:
     materialType: Stone
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Sandstone surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Sandstone surface after laser cleaning showing detailed surface structure
     url: /images/material/sandstone-laser-cleaning-micro.jpg
 tags:
 - stone

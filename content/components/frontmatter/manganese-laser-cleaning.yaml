@@ -67,13 +67,6 @@ materialProperties:
     description: Specific heat capacity at room temperature
     min: 100
     max: 900
-  thermalDestructionType:
-    value: 1519.0
-    unit: K
-    confidence: 95
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 2.26
     unit: mm²/s
@@ -92,8 +85,7 @@ materialProperties:
     value: 0.65
     unit: dimensionless
     confidence: 82
-    description: Estimated absorption coefficient for common laser wavelengths (1064
-      nm)
+    description: Estimated absorption coefficient for common laser wavelengths (1064 nm)
     min: null
     max: null
   reflectivity:
@@ -131,6 +123,14 @@ materialProperties:
     description: Electrical resistivity at room temperature
     min: null
     max: null
+  thermalDestructionPoint:
+    value: 1246
+    unit: °C
+    confidence: 94
+    description: Temperature where solid-to-liquid phase transition occurs
+    min: null
+    max: null
+  thermalDestructionType: melting
 applications:
 - Steel Manufacturing
 - Battery Production
@@ -147,8 +147,7 @@ machineSettings:
     value: 90
     unit: W
     confidence: 88
-    description: Optimal average power for Manganese oxide removal without substrate
-      damage
+    description: Optimal average power for Manganese oxide removal without substrate damage
     min: 70
     max: 120
   wavelength:
@@ -222,8 +221,7 @@ author:
   image: /images/author/todd-dunning.jpg
 images:
   hero:
-    alt: Manganese surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Manganese surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/manganese-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -250,9 +248,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Manganese's variable properties and hard oxide layers differ from typical
-  ferrous metals. These require tailored laser settings to effectively remove oxides
-  without damaging the base metal.
+subtitle: Manganese's variable properties and hard oxide layers differ from typical ferrous metals. These require tailored laser settings to effectively remove oxides without damaging the base metal.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -288,21 +284,9 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the manganese surface is obscured by a non-uniform
-    contamination layer, typically 5-20 µm thick. This layer consists of adherent
-    oxide scales, primarily MnO and Mn3O4, appearing as a matte, dark grey crust.
-    The underlying metallic surface texture is completely masked. Particulate contaminants
-    are embedded within this brittle oxide matrix, creating a rough, discontinuous
-    topography with visible micro-cracks that propagate into the substrate.
-  afterText: Laser cleaning has restored the native metallic surface, revealing the
-    fine-grained, polycrystalline structure of the α-Mn phase. The tenacious oxide
-    layer and embedded particulates have been completely removed via ablation, eliminating
-    the micro-cracks and leaving a uniform, light-grey metallic finish. The process
-    reduces average surface roughness (Ra) significantly, exposing the material's
-    intrinsic grain boundaries and subtle polishing marks from the original fabrication,
-    with no measurable thermal damage to the underlying microstructure.
-  description: Microscopic analysis of manganese surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the manganese surface is obscured by a non-uniform contamination layer, typically 5-20 µm thick. This layer consists of adherent oxide scales, primarily MnO and Mn3O4, appearing as a matte, dark grey crust. The underlying metallic surface texture is completely masked. Particulate contaminants are embedded within this brittle oxide matrix, creating a rough, discontinuous topography with visible micro-cracks that propagate into the substrate.
+  afterText: Laser cleaning has restored the native metallic surface, revealing the fine-grained, polycrystalline structure of the α-Mn phase. The tenacious oxide layer and embedded particulates have been completely removed via ablation, eliminating the micro-cracks and leaving a uniform, light-grey metallic finish. The process reduces average surface roughness (Ra) significantly, exposing the material's intrinsic grain boundaries and subtle polishing marks from the original fabrication, with no measurable thermal damage to the underlying microstructure.
+  description: Microscopic analysis of manganese surface before and after laser cleaning treatment
   alt: Microscopic view of manganese surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -322,8 +306,7 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Manganese surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Manganese surface after laser cleaning showing detailed surface structure
     url: /images/material/manganese-laser-cleaning-micro.jpg
 tags:
 - metal

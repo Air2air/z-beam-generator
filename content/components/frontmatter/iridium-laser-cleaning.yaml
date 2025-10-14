@@ -67,13 +67,6 @@ materialProperties:
     description: Specific heat capacity at 25°C
     min: 100
     max: 900
-  thermalDestructionType:
-    value: 2716.0
-    unit: K
-    confidence: 95
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 0.31
     unit: cm²/s
@@ -106,8 +99,7 @@ materialProperties:
     value: 2.8
     unit: J/cm²
     confidence: 82
-    description: Estimated laser ablation threshold for nanosecond pulses at 1064
-      nm
+    description: Estimated laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   oxidationResistance:
@@ -135,10 +127,17 @@ materialProperties:
     value: High
     unit: qualitative
     confidence: 85
-    description: Excellent thermal shock resistance due to high melting point and
-      strength
+    description: Excellent thermal shock resistance due to high melting point and strength
     min: null
     max: null
+  thermalDestructionPoint:
+    value: 2466
+    unit: °C
+    confidence: 95
+    description: Temperature where solid-to-liquid phase transition occurs
+    min: null
+    max: null
+  thermalDestructionType: melting
 applications:
 - Aerospace
 - Medical Devices
@@ -155,8 +154,7 @@ machineSettings:
     value: 45
     unit: W
     confidence: 90
-    description: Optimal average power for Iridium oxide removal without substrate
-      damage
+    description: Optimal average power for Iridium oxide removal without substrate damage
     min: 30
     max: 65
   wavelength:
@@ -177,40 +175,35 @@ machineSettings:
     value: 50
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning coverage while maintaining
-      pulse energy
+    description: High repetition rate for efficient cleaning coverage while maintaining pulse energy
     min: 20
     max: 100
   pulseWidth:
     value: 8
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient contaminant ablation with
-      minimal thermal diffusion
+    description: Nanosecond pulse duration for efficient contaminant ablation with minimal thermal diffusion
     min: 5
     max: 15
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 84
-    description: Scan speed providing effective material removal with controlled thermal
-      input
+    description: Scan speed providing effective material removal with controlled thermal input
     min: 300
     max: 800
   fluence:
     value: 4.5
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for Iridium oxide removal while preserving base
-      metal
+    description: Fluence threshold for Iridium oxide removal while preserving base metal
     min: 3.0
     max: 6.5
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for uniform cleaning without excessive thermal
-      accumulation
+    description: Optimal pulse overlap for uniform cleaning without excessive thermal accumulation
     min: 40
     max: 70
   passCount:
@@ -262,9 +255,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Iridium is exceptionally hard and has an extremely high melting point. These
-  properties demand a laser with higher power and precise control to avoid surface
-  damage.
+subtitle: Iridium is exceptionally hard and has an extremely high melting point. These properties demand a laser with higher power and precise control to avoid surface damage.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -300,23 +291,9 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the iridium surface is obscured by a non-uniform
-    contamination layer, typically 5-20 µm thick. This layer consists of carbonaceous
-    deposits and embedded particulate matter, forming a topographically complex and
-    discontinuous film. The underlying iridium substrate, with its inherent FCC crystalline
-    structure, is not visible. The contamination creates a matte, textured appearance,
-    masking the metal's high natural reflectivity and compromising its functional
-    surface properties. The deposits exhibit a cracked, island-like pattern, indicative
-    of thermal stress and oxidation cycles.
-  afterText: Laser cleaning has completely removed the contamination layer, revealing
-    the pristine iridium substrate. The surface now displays the characteristic grain
-    structure of the polycrystalline metal, with clear, well-defined grain boundaries
-    visible at 500x magnification. The high reflectivity (78% at 1064 nm) of the bare
-    metal is restored, resulting in a smooth, specular surface. The process has eliminated
-    all particulate embedment and surface oxides, restoring the material's intrinsic
-    hardness and oxidation resistance without substrate damage.
-  description: Microscopic analysis of iridium surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the iridium surface is obscured by a non-uniform contamination layer, typically 5-20 µm thick. This layer consists of carbonaceous deposits and embedded particulate matter, forming a topographically complex and discontinuous film. The underlying iridium substrate, with its inherent FCC crystalline structure, is not visible. The contamination creates a matte, textured appearance, masking the metal's high natural reflectivity and compromising its functional surface properties. The deposits exhibit a cracked, island-like pattern, indicative of thermal stress and oxidation cycles.
+  afterText: Laser cleaning has completely removed the contamination layer, revealing the pristine iridium substrate. The surface now displays the characteristic grain structure of the polycrystalline metal, with clear, well-defined grain boundaries visible at 500x magnification. The high reflectivity (78% at 1064 nm) of the bare metal is restored, resulting in a smooth, specular surface. The process has eliminated all particulate embedment and surface oxides, restoring the material's intrinsic hardness and oxidation resistance without substrate damage.
+  description: Microscopic analysis of iridium surface before and after laser cleaning treatment
   alt: Microscopic view of iridium surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -336,8 +313,7 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Iridium surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Iridium surface after laser cleaning showing detailed surface structure
     url: /images/material/iridium-laser-cleaning-micro.jpg
 tags:
 - metal

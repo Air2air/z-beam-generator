@@ -74,13 +74,6 @@ materialProperties:
     description: Temperature where pyrolysis (thermal decomposition) begins
     min: 200
     max: 500
-  thermalDestructionType:
-    value: 280.0
-    unit: °C
-    confidence: 92
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 0.17
     unit: mm²/s
@@ -144,6 +137,7 @@ materialProperties:
     description: Average cellulose content in bamboo composition
     min: null
     max: null
+  thermalDestructionType: pyrolysis
 applications:
 - Cultural Heritage
 - Aerospace
@@ -202,16 +196,14 @@ machineSettings:
     value: 2.8
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without substrate
-      damage
+    description: Fluence threshold for effective contaminant removal without substrate damage
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 40
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      buildup
+    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
     min: 30
     max: 60
   passCount:
@@ -272,9 +264,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Bamboo's fibrous, hollow structure and thin-walled culms differ from dense
-  exotic woods. This requires careful adjustment of laser power and scanning patterns
-  to avoid burning or damaging the material.
+subtitle: Bamboo's fibrous, hollow structure and thin-walled culms differ from dense exotic woods. This requires careful adjustment of laser power and scanning patterns to avoid burning or damaging the material.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -310,23 +300,9 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the bamboo surface is obscured by a dense, amorphous
-    contamination layer approximately 15-25 µm thick. This layer, composed of accumulated
-    soot, grime, and degraded organic matter, fills the natural micro-pores and fissures
-    of the bamboo structure. The underlying fiber bundles and vascular channels are
-    completely masked, presenting a uniformly occluded and texturally flat topography
-    with no visible cellular detail.
-  afterText: Laser cleaning has completely removed the contamination layer, revealing
-    the intricate, native microstructure of the bamboo. The surface now exhibits clearly
-    defined longitudinal fiber bundles with a distinct, aligned grain pattern. Individual
-    vascular channels and parenchyma cells are fully exposed, restoring the material's
-    characteristic micro-roughness of approximately 8.5 µm Ra. The cleaning process
-    has selectively ablated the contaminants without damaging the primary cellulose
-    cell walls, as evidenced by the sharp, well-preserved edges of the fiber structures.
-    This results in a surface with restored morphological integrity and no evidence
-    of charring or thermal degradation.
-  description: Microscopic analysis of bamboo surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the bamboo surface is obscured by a dense, amorphous contamination layer approximately 15-25 µm thick. This layer, composed of accumulated soot, grime, and degraded organic matter, fills the natural micro-pores and fissures of the bamboo structure. The underlying fiber bundles and vascular channels are completely masked, presenting a uniformly occluded and texturally flat topography with no visible cellular detail.
+  afterText: Laser cleaning has completely removed the contamination layer, revealing the intricate, native microstructure of the bamboo. The surface now exhibits clearly defined longitudinal fiber bundles with a distinct, aligned grain pattern. Individual vascular channels and parenchyma cells are fully exposed, restoring the material's characteristic micro-roughness of approximately 8.5 µm Ra. The cleaning process has selectively ablated the contaminants without damaging the primary cellulose cell walls, as evidenced by the sharp, well-preserved edges of the fiber structures. This results in a surface with restored morphological integrity and no evidence of charring or thermal degradation.
+  description: Microscopic analysis of bamboo surface before and after laser cleaning treatment
   alt: Microscopic view of bamboo surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -346,8 +322,7 @@ caption:
     materialType: Wood
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Bamboo surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Bamboo surface after laser cleaning showing detailed surface structure
     url: /images/material/bamboo-laser-cleaning-micro.jpg
 tags:
 - wood

@@ -67,13 +67,6 @@ materialProperties:
     description: Specific heat capacity at room temperature
     min: 600
     max: 1200
-  thermalDestructionType:
-    value: 2.3
-    unit: W/(m·K)
-    confidence: 92
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 1.32
     unit: mm²/s
@@ -123,13 +116,14 @@ materialProperties:
     description: Susceptible to acid attack but stable in alkaline conditions
     min: null
     max: null
-  thermalDegradationPoint:
+  thermalDestructionPoint:
     value: 1339
     unit: °C
     confidence: 90
     description: Temperature where structural breakdown begins
     min: null
     max: null
+  thermalDestructionType: structural_breakdown
 applications:
 - Cultural Heritage
 - Aerospace
@@ -146,16 +140,14 @@ machineSettings:
     value: 90
     unit: W
     confidence: 92
-    description: Optimal average power for Travertine surface cleaning without thermal
-      damage
+    description: Optimal average power for Travertine surface cleaning without thermal damage
     min: 70
     max: 110
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength optimal for Travertine absorption and contamination
-      removal
+    description: Near-infrared wavelength optimal for Travertine absorption and contamination removal
     min: 1030
     max: 1070
   spotSize:
@@ -190,16 +182,14 @@ machineSettings:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without substrate
-      damage
+    description: Fluence threshold for effective contaminant removal without substrate damage
     min: 1.8
     max: 3.5
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive energy
-      deposition
+    description: Optimal beam overlap for uniform cleaning without excessive energy deposition
     min: 40
     max: 70
   passCount:
@@ -231,8 +221,7 @@ author:
   image: /images/author/yi-chun-lin.jpg
 images:
   hero:
-    alt: Travertine surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Travertine surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/travertine-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -259,9 +248,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Travertine is a porous, sedimentary stone with a distinctive pitted surface
-  texture. These unique features require careful laser parameter adjustments to clean
-  effectively without causing damage.
+subtitle: Travertine is a porous, sedimentary stone with a distinctive pitted surface texture. These unique features require careful laser parameter adjustments to clean effectively without causing damage.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -297,23 +284,9 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the travertine surface is obscured by a dense,
-    heterogeneous contamination layer, typically 50-200 micrometers thick. This layer,
-    composed of particulate matter, carbonaceous soot, and biological growth, fills
-    the stone's characteristic macro-pores and micro-fissures. The underlying calcite
-    matrix is largely hidden, with contaminants forming a continuous, textured crust
-    that masks the stone's natural granularity and compromises its vapor permeability.
-    The surface appears dark and occluded, with the original crystalline structure
-    only partially visible in isolated, cleaner pockets.
-  afterText: Post-cleaning, the 500x view reveals a complete restoration of the travertine's
-    micro-topography. The contaminant crust has been selectively ablated, exposing
-    the intact, interlocking calcite crystals. The stone's inherent porosity is now
-    fully open and clearly defined, with no residual deposits within the pore throats.
-    The surface texture is restored to its original granular state, with sharp crystal
-    boundaries and a uniform, light-toned appearance, confirming the removal of subsurface
-    staining without damage to the calcite matrix.
-  description: Microscopic analysis of travertine surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the travertine surface is obscured by a dense, heterogeneous contamination layer, typically 50-200 micrometers thick. This layer, composed of particulate matter, carbonaceous soot, and biological growth, fills the stone's characteristic macro-pores and micro-fissures. The underlying calcite matrix is largely hidden, with contaminants forming a continuous, textured crust that masks the stone's natural granularity and compromises its vapor permeability. The surface appears dark and occluded, with the original crystalline structure only partially visible in isolated, cleaner pockets.
+  afterText: Post-cleaning, the 500x view reveals a complete restoration of the travertine's micro-topography. The contaminant crust has been selectively ablated, exposing the intact, interlocking calcite crystals. The stone's inherent porosity is now fully open and clearly defined, with no residual deposits within the pore throats. The surface texture is restored to its original granular state, with sharp crystal boundaries and a uniform, light-toned appearance, confirming the removal of subsurface staining without damage to the calcite matrix.
+  description: Microscopic analysis of travertine surface before and after laser cleaning treatment
   alt: Microscopic view of travertine surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -333,8 +306,7 @@ caption:
     materialType: Stone
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Travertine surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Travertine surface after laser cleaning showing detailed surface structure
     url: /images/material/travertine-laser-cleaning-micro.jpg
 tags:
 - stone

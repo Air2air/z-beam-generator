@@ -74,13 +74,6 @@ materialProperties:
     description: Temperature where pyrolysis (thermal decomposition) begins
     min: 200
     max: 500
-  thermalDestructionType:
-    value: 573.0
-    unit: K
-    confidence: 92
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 0.00018
     unit: m²/s
@@ -99,8 +92,7 @@ materialProperties:
     value: 0.85
     unit: dimensionless
     confidence: 90
-    description: Optical absorption coefficient for common laser wavelengths (1064
-      nm)
+    description: Optical absorption coefficient for common laser wavelengths (1064 nm)
     min: null
     max: null
   reflectivity:
@@ -145,6 +137,7 @@ materialProperties:
     description: Resistance to chemical degradation and environmental factors
     min: null
     max: null
+  thermalDestructionType: pyrolysis
 applications:
 - Aerospace
 - Automotive
@@ -270,9 +263,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Walnut's grain can be very porous and its color is valued, unlike many other
-  hardwoods. These traits require careful laser settings to clean effectively without
-  altering the wood's natural appearance.
+subtitle: Walnut's grain can be very porous and its color is valued, unlike many other hardwoods. These traits require careful laser settings to clean effectively without altering the wood's natural appearance.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -308,23 +299,9 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the walnut surface is obscured by a dense, non-uniform
-    contamination layer measuring 15-45 µm thick. This layer, composed of embedded
-    soot, oxidized oils, and particulate matter, fills the wood's porous structure
-    and adheres to the grain. The original cellular detail is lost beneath a topographical
-    crust that exhibits micro-fissures and a matte, amorphous texture. The contaminant's
-    high absorption coefficient (0.85) gives it a dark, featureless appearance, masking
-    the underlying wood's characteristic anatomy.
-  afterText: Following laser cleaning at 500x magnification, the walnut surface reveals
-    a distinct transformation. The contaminant crust is entirely removed, exposing
-    the intact, open cellular structure with a porosity of 55%. The original grain
-    pattern is now clearly defined, with a surface roughness of approximately 3.2
-    µm Ra. The laser process has selectively ablated the contamination, which has
-    a thermal destruction point of 401°C, without carbonizing the underlying wood
-    substrate. This results in a clean, topographically detailed surface where the
-    natural wood anatomy is fully visible and unobscured.
-  description: Microscopic analysis of walnut surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the walnut surface is obscured by a dense, non-uniform contamination layer measuring 15-45 µm thick. This layer, composed of embedded soot, oxidized oils, and particulate matter, fills the wood's porous structure and adheres to the grain. The original cellular detail is lost beneath a topographical crust that exhibits micro-fissures and a matte, amorphous texture. The contaminant's high absorption coefficient (0.85) gives it a dark, featureless appearance, masking the underlying wood's characteristic anatomy.
+  afterText: Following laser cleaning at 500x magnification, the walnut surface reveals a distinct transformation. The contaminant crust is entirely removed, exposing the intact, open cellular structure with a porosity of 55%. The original grain pattern is now clearly defined, with a surface roughness of approximately 3.2 µm Ra. The laser process has selectively ablated the contamination, which has a thermal destruction point of 401°C, without carbonizing the underlying wood substrate. This results in a clean, topographically detailed surface where the natural wood anatomy is fully visible and unobscured.
+  description: Microscopic analysis of walnut surface before and after laser cleaning treatment
   alt: Microscopic view of walnut surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -344,8 +321,7 @@ caption:
     materialType: Wood
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Walnut surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Walnut surface after laser cleaning showing detailed surface structure
     url: /images/material/walnut-laser-cleaning-micro.jpg
 tags:
 - wood

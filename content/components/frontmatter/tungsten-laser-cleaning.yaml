@@ -67,13 +67,6 @@ materialProperties:
     description: Specific heat capacity at room temperature
     min: 100
     max: 900
-  thermalDestructionType:
-    value: 3695.0
-    unit: K
-    confidence: 98
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 68.2
     unit: mm²/s
@@ -137,6 +130,14 @@ materialProperties:
     description: Resistance to thermal shock despite high melting point
     min: null
     max: null
+  thermalDestructionPoint:
+    value: 3422
+    unit: °C
+    confidence: 97
+    description: Temperature where solid-to-liquid phase transition occurs
+    min: null
+    max: null
+  thermalDestructionType: melting
 applications:
 - Aerospace
 - Defense
@@ -152,8 +153,7 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Tungsten oxide removal without substrate
-      damage
+    description: Optimal average power for Tungsten oxide removal without substrate damage
     min: 80
     max: 120
   wavelength:
@@ -227,8 +227,7 @@ author:
   image: /images/author/yi-chun-lin.jpg
 images:
   hero:
-    alt: Tungsten surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Tungsten surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/tungsten-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -255,9 +254,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Tungsten has an exceptionally high melting point and is very dense compared
-  to other refractory metals. These traits demand careful control of laser power to
-  avoid surface damage while still effectively removing contaminants.
+subtitle: Tungsten has an exceptionally high melting point and is very dense compared to other refractory metals. These traits demand careful control of laser power to avoid surface damage while still effectively removing contaminants.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -293,21 +290,9 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the tungsten surface is obscured by a non-uniform
-    contamination layer, typically 5-20 µm thick. This layer consists of adhered particulate
-    matter and a discontinuous oxide scale, primarily volatile WO₃, which forms above
-    500°C. The underlying tungsten's characteristic grain structure is entirely masked.
-    The texture is irregular, with patches of discoloration and embedded foreign particles
-    creating a topographically complex and optically obstructive film that compromises
-    the material's intrinsic metallic properties.
-  afterText: Laser cleaning reveals the pristine tungsten substrate, with a distinct
-    polycrystalline grain structure now fully visible at 500x magnification. The surface
-    is free of oxide scale and particulate contamination, restoring the material's
-    native metallic luster and smooth topography. Minor, sub-micron surface texturing
-    from the laser ablation process is evident, but it does not compromise the atomic-level
-    cleanliness or the exposed, well-defined grain boundaries of the pure tungsten.
-  description: Microscopic analysis of tungsten surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the tungsten surface is obscured by a non-uniform contamination layer, typically 5-20 µm thick. This layer consists of adhered particulate matter and a discontinuous oxide scale, primarily volatile WO₃, which forms above 500°C. The underlying tungsten's characteristic grain structure is entirely masked. The texture is irregular, with patches of discoloration and embedded foreign particles creating a topographically complex and optically obstructive film that compromises the material's intrinsic metallic properties.
+  afterText: Laser cleaning reveals the pristine tungsten substrate, with a distinct polycrystalline grain structure now fully visible at 500x magnification. The surface is free of oxide scale and particulate contamination, restoring the material's native metallic luster and smooth topography. Minor, sub-micron surface texturing from the laser ablation process is evident, but it does not compromise the atomic-level cleanliness or the exposed, well-defined grain boundaries of the pure tungsten.
+  description: Microscopic analysis of tungsten surface before and after laser cleaning treatment
   alt: Microscopic view of tungsten surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -327,8 +312,7 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Tungsten surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Tungsten surface after laser cleaning showing detailed surface structure
     url: /images/material/tungsten-laser-cleaning-micro.jpg
 tags:
 - metal

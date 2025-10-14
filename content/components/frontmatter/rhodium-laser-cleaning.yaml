@@ -67,13 +67,6 @@ materialProperties:
     description: Specific heat capacity at 25°C
     min: 100
     max: 900
-  thermalDestructionType:
-    value: 2237.0
-    unit: °C
-    confidence: 95
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 0.247
     unit: cm²/s
@@ -130,6 +123,14 @@ materialProperties:
     description: Electrical resistivity at 20°C
     min: null
     max: null
+  thermalDestructionPoint:
+    value: 1964
+    unit: °C
+    confidence: 97
+    description: Temperature where solid-to-liquid phase transition occurs
+    min: null
+    max: null
+  thermalDestructionType: melting
 applications:
 - Aerospace
 - Electronics
@@ -146,8 +147,7 @@ machineSettings:
     value: 45
     unit: W
     confidence: 90
-    description: Optimal average power for Rhodium oxide removal without substrate
-      damage
+    description: Optimal average power for Rhodium oxide removal without substrate damage
     min: 30
     max: 65
   wavelength:
@@ -196,8 +196,7 @@ machineSettings:
     value: 65
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      buildup
+    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
     min: 50
     max: 80
   passCount:
@@ -256,9 +255,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Rhodium has an extremely hard and durable surface that is highly reflective.
-  These traits require careful laser parameter adjustments to avoid damaging its polished
-  finish.
+subtitle: Rhodium has an extremely hard and durable surface that is highly reflective. These traits require careful laser parameter adjustments to avoid damaging its polished finish.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -294,20 +291,9 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the rhodium surface is obscured by a non-uniform
-    contamination layer, measuring 2-5 micrometers in thickness. This layer consists
-    of accumulated carbonaceous deposits, particulate matter, and adsorbed organic
-    films. The underlying metal's characteristic fine grain structure is entirely
-    masked. The contaminants exhibit a mottled, textured pattern, creating a topographically
-    complex and optically diffuse surface that scatters light and significantly reduces
-    reflectivity.
-  afterText: Laser cleaning has fully restored the substrate, revealing the intrinsic,
-    fine-grained microstructure of the rhodium. The surface is now continuous and
-    uniform, with contamination completely absent. This results in a microscopically
-    smooth finish that maximizes the metal's inherent high reflectivity and surface
-    integrity.
-  description: Microscopic analysis of rhodium surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the rhodium surface is obscured by a non-uniform contamination layer, measuring 2-5 micrometers in thickness. This layer consists of accumulated carbonaceous deposits, particulate matter, and adsorbed organic films. The underlying metal's characteristic fine grain structure is entirely masked. The contaminants exhibit a mottled, textured pattern, creating a topographically complex and optically diffuse surface that scatters light and significantly reduces reflectivity.
+  afterText: Laser cleaning has fully restored the substrate, revealing the intrinsic, fine-grained microstructure of the rhodium. The surface is now continuous and uniform, with contamination completely absent. This results in a microscopically smooth finish that maximizes the metal's inherent high reflectivity and surface integrity.
+  description: Microscopic analysis of rhodium surface before and after laser cleaning treatment
   alt: Microscopic view of rhodium surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -327,8 +313,7 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Rhodium surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Rhodium surface after laser cleaning showing detailed surface structure
     url: /images/material/rhodium-laser-cleaning-micro.jpg
 tags:
 - metal

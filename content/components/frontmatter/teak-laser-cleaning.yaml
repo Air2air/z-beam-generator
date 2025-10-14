@@ -74,13 +74,6 @@ materialProperties:
     description: Temperature where pyrolysis (thermal decomposition) begins
     min: 200
     max: 500
-  thermalDestructionType:
-    value: 573.0
-    unit: K
-    confidence: 92
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 0.16
     unit: mm²/s
@@ -144,6 +137,7 @@ materialProperties:
     description: Average lignin content influencing char formation
     min: null
     max: null
+  thermalDestructionType: pyrolysis
 applications:
 - Marine
 - Aerospace
@@ -202,8 +196,7 @@ machineSettings:
     value: 2.5
     unit: J/cm²
     confidence: 90
-    description: Fluence threshold for effective contaminant removal without wood
-      damage
+    description: Fluence threshold for effective contaminant removal without wood damage
     min: 1.8
     max: 3.5
   overlapRatio:
@@ -271,9 +264,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Teak contains unique natural oils and silica that protect it from the elements.
-  These components require careful laser parameter adjustment to avoid damaging the
-  wood's protective surface.
+subtitle: Teak contains unique natural oils and silica that protect it from the elements. These components require careful laser parameter adjustment to avoid damaging the wood's protective surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -309,25 +300,9 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the teak surface is obscured by a stratified
-    contamination layer approximately 50-200 micrometers thick. This layer consists
-    of embedded particulates, such as carbon soot and mineral dust, bound within a
-    matrix of oxidized organic residues and degraded finish. The underlying wood grain
-    is completely masked, with contaminants filling the porous vessel structures characteristic
-    of teak's 55% porosity. The surface texture is irregular and crust-like, with
-    fissures caused by differential thermal expansion between the contaminants and
-    the wood substrate. This layer significantly alters the surface's thermal and
-    optical properties, increasing its laser absorption and trapping moisture against
-    the primary cell wall.
-  afterText: Laser cleaning has successfully ablated the contamination layer, revealing
-    the intact cellular structure of the teak wood. The original grain pattern is
-    now fully visible, with open vessel elements and clear delineation between the
-    dense summer growth and porous spring growth rings. The surface texture is restored
-    to its native state, exhibiting minimal residual charring. The process has preserved
-    the wood's structural integrity, removing only the superficial contaminants that
-    occupied the porous network.
-  description: Microscopic analysis of teak surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the teak surface is obscured by a stratified contamination layer approximately 50-200 micrometers thick. This layer consists of embedded particulates, such as carbon soot and mineral dust, bound within a matrix of oxidized organic residues and degraded finish. The underlying wood grain is completely masked, with contaminants filling the porous vessel structures characteristic of teak's 55% porosity. The surface texture is irregular and crust-like, with fissures caused by differential thermal expansion between the contaminants and the wood substrate. This layer significantly alters the surface's thermal and optical properties, increasing its laser absorption and trapping moisture against the primary cell wall.
+  afterText: Laser cleaning has successfully ablated the contamination layer, revealing the intact cellular structure of the teak wood. The original grain pattern is now fully visible, with open vessel elements and clear delineation between the dense summer growth and porous spring growth rings. The surface texture is restored to its native state, exhibiting minimal residual charring. The process has preserved the wood's structural integrity, removing only the superficial contaminants that occupied the porous network.
+  description: Microscopic analysis of teak surface before and after laser cleaning treatment
   alt: Microscopic view of teak surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -347,8 +322,7 @@ caption:
     materialType: Wood
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Teak surface after laser cleaning showing detailed surface
-      structure
+    alt: Microscopic view of Teak surface after laser cleaning showing detailed surface structure
     url: /images/material/teak-laser-cleaning-micro.jpg
 tags:
 - wood

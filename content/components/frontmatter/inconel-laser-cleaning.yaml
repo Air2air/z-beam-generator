@@ -67,13 +67,6 @@ materialProperties:
     description: Specific heat capacity at room temperature
     min: 100
     max: 900
-  thermalDestructionType:
-    value: 1673.0
-    unit: K
-    confidence: 95
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 3.2
     unit: mm²/s
@@ -120,10 +113,17 @@ materialProperties:
     value: FCC
     unit: crystal system
     confidence: 96
-    description: Face-centered cubic gamma matrix with gamma prime/gamma double prime
-      precipitates
+    description: Face-centered cubic gamma matrix with gamma prime/gamma double prime precipitates
     min: null
     max: null
+  thermalDestructionPoint:
+    value: 1430
+    unit: °C
+    confidence: 92
+    description: Temperature where solid-to-liquid phase transition occurs
+    min: null
+    max: null
+  thermalDestructionType: melting
 applications:
 - Aerospace
 - Chemical Processing
@@ -138,8 +138,7 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Inconel oxide removal without substrate
-      damage
+    description: Optimal average power for Inconel oxide removal without substrate damage
     min: 80
     max: 120
   wavelength:
@@ -167,8 +166,7 @@ machineSettings:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient oxide ablation with minimal
-      HAZ
+    description: Nanosecond pulse duration for efficient oxide ablation with minimal HAZ
     min: 5
     max: 20
   scanSpeed:
@@ -189,8 +187,7 @@ machineSettings:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      input
+    description: Optimal beam overlap for uniform cleaning without excessive thermal input
     min: 40
     max: 70
   passCount:
@@ -249,9 +246,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Inconel forms a tough, protective oxide layer when heated, unlike many other
-  specialty metals. This layer requires specific laser settings to remove effectively
-  without damaging the base material.
+subtitle: Inconel forms a tough, protective oxide layer when heated, unlike many other specialty metals. This layer requires specific laser settings to remove effectively without damaging the base material.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -287,23 +282,9 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the Inconel surface is obscured by a non-uniform
-    contamination layer, typically 5-20 µm thick. This layer consists of complex oxides,
-    carbon deposits, and embedded foreign particles, forming a topographically rough
-    and discontinuous crust. The underlying alloy's fine-grained, FCC microstructure
-    is entirely concealed. The surface exhibits a cracked, sintered appearance with
-    low reflectivity, a direct result of prolonged exposure to high-temperature, oxidizing
-    service environments.
-  afterText: Laser cleaning reveals the pristine, metallurgically intact Inconel substrate.
-    The contaminant crust is completely removed, exposing the original, fine-grained
-    gamma matrix with its characteristic precipitate structure. The surface texture
-    is now defined by the material's intrinsic grain boundaries, not foreign deposits.
-    Reflectivity increases significantly due to the restoration of the bare metal
-    surface. The process achieves this transformation with minimal thermal input,
-    preserving the base material's hardness and strength by avoiding microstructural
-    alterations like recrystallization or phase changes.
-  description: Microscopic analysis of inconel surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the Inconel surface is obscured by a non-uniform contamination layer, typically 5-20 µm thick. This layer consists of complex oxides, carbon deposits, and embedded foreign particles, forming a topographically rough and discontinuous crust. The underlying alloy's fine-grained, FCC microstructure is entirely concealed. The surface exhibits a cracked, sintered appearance with low reflectivity, a direct result of prolonged exposure to high-temperature, oxidizing service environments.
+  afterText: Laser cleaning reveals the pristine, metallurgically intact Inconel substrate. The contaminant crust is completely removed, exposing the original, fine-grained gamma matrix with its characteristic precipitate structure. The surface texture is now defined by the material's intrinsic grain boundaries, not foreign deposits. Reflectivity increases significantly due to the restoration of the bare metal surface. The process achieves this transformation with minimal thermal input, preserving the base material's hardness and strength by avoiding microstructural alterations like recrystallization or phase changes.
+  description: Microscopic analysis of inconel surface before and after laser cleaning treatment
   alt: Microscopic view of inconel surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -323,8 +304,7 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Inconel surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Inconel surface after laser cleaning showing detailed surface structure
     url: /images/material/inconel-laser-cleaning-micro.jpg
 tags:
 - metal

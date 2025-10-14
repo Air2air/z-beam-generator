@@ -67,13 +67,6 @@ materialProperties:
     description: Specific heat capacity at 25°C
     min: 100
     max: 900
-  thermalDestructionType:
-    value: 2896.0
-    unit: K
-    confidence: 95
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 54.2
     unit: mm²/s
@@ -106,8 +99,7 @@ materialProperties:
     value: 2.8
     unit: J/cm²
     confidence: 80
-    description: Estimated laser ablation threshold for nanosecond pulses at 1064
-      nm
+    description: Estimated laser ablation threshold for nanosecond pulses at 1064 nm
     min: null
     max: null
   oxidationResistance:
@@ -138,6 +130,14 @@ materialProperties:
     description: Thermal shock resistance parameter (σ·k/E·α)
     min: null
     max: null
+  thermalDestructionPoint:
+    value: 2623
+    unit: °C
+    confidence: 97
+    description: Temperature where solid-to-liquid phase transition occurs
+    min: null
+    max: null
+  thermalDestructionType: melting
 applications:
 - Aerospace
 - Chemical Processing
@@ -152,8 +152,7 @@ machineSettings:
     value: 90
     unit: W
     confidence: 92
-    description: Optimal average power for Molybdenum oxide removal without substrate
-      damage
+    description: Optimal average power for Molybdenum oxide removal without substrate damage
     min: 70
     max: 120
   wavelength:
@@ -174,16 +173,14 @@ machineSettings:
     value: 100
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning coverage while maintaining
-      pulse energy
+    description: High repetition rate for efficient cleaning coverage while maintaining pulse energy
     min: 50
     max: 200
   pulseWidth:
     value: 12
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient oxide ablation with minimal
-      thermal diffusion
+    description: Nanosecond pulse duration for efficient oxide ablation with minimal thermal diffusion
     min: 8
     max: 20
   scanSpeed:
@@ -204,8 +201,7 @@ machineSettings:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for uniform cleaning without excessive thermal
-      buildup
+    description: Optimal pulse overlap for uniform cleaning without excessive thermal buildup
     min: 40
     max: 70
   passCount:
@@ -237,8 +233,7 @@ author:
   image: /images/author/yi-chun-lin.jpg
 images:
   hero:
-    alt: Molybdenum surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Molybdenum surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/molybdenum-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -265,9 +260,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Molybdenum has an exceptionally high melting point and retains its strength
-  at extreme temperatures. These properties demand careful laser power control to
-  remove contaminants without damaging the base material.
+subtitle: Molybdenum has an exceptionally high melting point and retains its strength at extreme temperatures. These properties demand careful laser power control to remove contaminants without damaging the base material.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -303,26 +296,12 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the molybdenum surface is obscured by a non-uniform
-    contamination layer, approximately 5-15 µm thick. This layer consists of amorphous
-    carbon deposits and discrete oxide particles (MoO₃), which form a textured, matte
-    topography. The underlying metallic grain structure is entirely masked, and the
-    surface exhibits a high degree of diffuse scattering due to this porous, light-absorbing
-    crust.
-  afterText: 'Following laser cleaning, the surface reveals a dramatic transformation.
-    The contamination layer has been completely ablated, exposing the pristine, polycrystalline
-    grain structure of the base molybdenum. The surface now exhibits a specular, metallic
-    luster with clearly defined grain boundaries.
+  beforeText: At 500x magnification, the molybdenum surface is obscured by a non-uniform contamination layer, approximately 5-15 µm thick. This layer consists of amorphous carbon deposits and discrete oxide particles (MoO₃), which form a textured, matte topography. The underlying metallic grain structure is entirely masked, and the surface exhibits a high degree of diffuse scattering due to this porous, light-absorbing crust.
+  afterText: 'Following laser cleaning, the surface reveals a dramatic transformation. The contamination layer has been completely ablated, exposing the pristine, polycrystalline grain structure of the base molybdenum. The surface now exhibits a specular, metallic luster with clearly defined grain boundaries.
 
 
-    The process has restored the material''s native reflectivity, measured at approximately
-    57% for the 1064 nm wavelength used. At the operational scale, this translates
-    to a surface free of particulate inclusions and oxide films, with a roughness
-    profile now dictated by the metal''s original microstructure rather than foreign
-    deposits. This state is critical for applications requiring optimal thermal and
-    electrical contact.'
-  description: Microscopic analysis of molybdenum surface before and after laser cleaning
-    treatment
+    The process has restored the material''s native reflectivity, measured at approximately 57% for the 1064 nm wavelength used. At the operational scale, this translates to a surface free of particulate inclusions and oxide films, with a roughness profile now dictated by the metal''s original microstructure rather than foreign deposits. This state is critical for applications requiring optimal thermal and electrical contact.'
+  description: Microscopic analysis of molybdenum surface before and after laser cleaning treatment
   alt: Microscopic view of molybdenum surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -342,8 +321,7 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Molybdenum surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Molybdenum surface after laser cleaning showing detailed surface structure
     url: /images/material/molybdenum-laser-cleaning-micro.jpg
 tags:
 - metal

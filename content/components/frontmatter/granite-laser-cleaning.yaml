@@ -74,13 +74,6 @@ materialProperties:
     description: Specific heat capacity at room temperature
     min: 600
     max: 1200
-  thermalDestructionType:
-    value: 2.8
-    unit: MW/m²
-    confidence: 92
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 1.3
     unit: mm²/s
@@ -130,13 +123,14 @@ materialProperties:
     description: Chemical stability rating in normal environments
     min: null
     max: null
-  thermalDegradationPoint:
+  thermalDestructionPoint:
     value: 1215
     unit: °C
     confidence: 90
     description: Temperature where structural breakdown begins
     min: null
     max: null
+  thermalDestructionType: structural_breakdown
 applications:
 - Cultural Heritage
 - Architecture and Construction
@@ -153,8 +147,7 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for granite surface cleaning without thermal
-      damage
+    description: Optimal average power for granite surface cleaning without thermal damage
     min: 80
     max: 120
   wavelength:
@@ -182,8 +175,7 @@ machineSettings:
     value: 12
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal without
-      substrate damage
+    description: Nanosecond pulse duration for effective contaminant removal without substrate damage
     min: 8
     max: 20
   scanSpeed:
@@ -258,10 +250,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Granite's unique composition of interlocking crystals and varied mineral
-  hardness creates a distinct surface profile. This requires careful calibration of
-  laser parameters to effectively remove contaminants without affecting the stone's
-  integrity.
+subtitle: Granite's unique composition of interlocking crystals and varied mineral hardness creates a distinct surface profile. This requires careful calibration of laser parameters to effectively remove contaminants without affecting the stone's integrity.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -297,20 +286,9 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the granite surface is obscured by a discontinuous
-    contamination layer, approximately 10-50 micrometers thick. This layer, composed
-    of soot, biological growth, and mineral deposits, fills the natural micro-fissures
-    and pits of the stone. The underlying crystalline structure of feldspar, quartz,
-    and biotite is partially masked, with contaminants forming a cohesive, textured
-    crust that alters the stone's intrinsic roughness and color.
-  afterText: Laser cleaning has effectively removed the contamination crust, revealing
-    the pristine mineralogical microstructure. The original interlocking crystals
-    of feldspar and quartz are now fully exposed, with their distinct cleavage planes
-    and grain boundaries clearly visible. The surface exhibits restored micro-texture,
-    with open pits and fissures free of foreign material, returning the granite to
-    its native state.
-  description: Microscopic analysis of granite surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the granite surface is obscured by a discontinuous contamination layer, approximately 10-50 micrometers thick. This layer, composed of soot, biological growth, and mineral deposits, fills the natural micro-fissures and pits of the stone. The underlying crystalline structure of feldspar, quartz, and biotite is partially masked, with contaminants forming a cohesive, textured crust that alters the stone's intrinsic roughness and color.
+  afterText: Laser cleaning has effectively removed the contamination crust, revealing the pristine mineralogical microstructure. The original interlocking crystals of feldspar and quartz are now fully exposed, with their distinct cleavage planes and grain boundaries clearly visible. The surface exhibits restored micro-texture, with open pits and fissures free of foreign material, returning the granite to its native state.
+  description: Microscopic analysis of granite surface before and after laser cleaning treatment
   alt: Microscopic view of granite surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -330,8 +308,7 @@ caption:
     materialType: Stone
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Granite surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Granite surface after laser cleaning showing detailed surface structure
     url: /images/material/granite-laser-cleaning-micro.jpg
 tags:
 - stone

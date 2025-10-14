@@ -67,13 +67,6 @@ materialProperties:
     description: Specific heat capacity at room temperature
     min: 100
     max: 900
-  thermalDestructionType:
-    value: 2125.0
-    unit: K
-    confidence: 95
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 7.2
     unit: mm²/s
@@ -130,6 +123,14 @@ materialProperties:
     description: Typical surface roughness of polished zirconium
     min: null
     max: null
+  thermalDestructionPoint:
+    value: 1855
+    unit: °C
+    confidence: 97
+    description: Temperature where solid-to-liquid phase transition occurs
+    min: null
+    max: null
+  thermalDestructionType: melting
 applications:
 - Nuclear Power
 - Aerospace
@@ -146,40 +147,35 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Zirconium oxide removal without substrate
-      damage
+    description: Optimal average power for Zirconium oxide removal without substrate damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength with good absorption in Zirconium oxides and surface
-      contaminants
+    description: Near-IR wavelength with good absorption in Zirconium oxides and surface contaminants
     min: 532
     max: 1064
   spotSize:
     value: 50
     unit: μm
     confidence: 84
-    description: Optimal spot size for balancing cleaning efficiency and processing
-      speed
+    description: Optimal spot size for balancing cleaning efficiency and processing speed
     min: 30
     max: 100
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning coverage while maintaining
-      pulse energy
+    description: High repetition rate for efficient cleaning coverage while maintaining pulse energy
     min: 20
     max: 100
   pulseWidth:
     value: 8
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient oxide layer ablation with
-      minimal thermal diffusion
+    description: Nanosecond pulse duration for efficient oxide layer ablation with minimal thermal diffusion
     min: 5
     max: 15
   scanSpeed:
@@ -200,8 +196,7 @@ machineSettings:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for uniform cleaning without excessive heat
-      accumulation
+    description: Optimal pulse overlap for uniform cleaning without excessive heat accumulation
     min: 30
     max: 70
   passCount:
@@ -233,8 +228,7 @@ author:
   image: /images/author/ikmanda-roswati.jpg
 images:
   hero:
-    alt: Zirconium surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Zirconium surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/zirconium-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -261,9 +255,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Zirconium forms a tenacious oxide layer and can become reactive when heated.
-  These traits demand careful control of laser settings to remove contaminants without
-  damaging the base material.
+subtitle: Zirconium forms a tenacious oxide layer and can become reactive when heated. These traits demand careful control of laser settings to remove contaminants without damaging the base material.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -299,21 +291,9 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the zirconium surface is obscured by a non-uniform
-    contamination layer, measuring 5-15 µm thick. This layer consists of embedded
-    carbonaceous particulates and a discontinuous oxide scale, creating a topographically
-    complex and rough surface. The underlying metal's fine grain structure is entirely
-    masked. The contamination adheres in a patchy, dendritic pattern, which compromises
-    the material's inherent corrosion resistance and creates potential sites for localized
-    pitting.
-  afterText: Laser cleaning has restored the native zirconium surface, revealing a
-    uniform, light-grey metallic substrate. The fine, equiaxed grain structure of
-    the HCP matrix is now clearly visible at 500x. Surface roughness is significantly
-    reduced to its intrinsic 0.4 µm Ra, with the process completely removing all oxide
-    scale and embedded contaminants without imparting any macroscopic damage to the
-    underlying metal.
-  description: Microscopic analysis of zirconium surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the zirconium surface is obscured by a non-uniform contamination layer, measuring 5-15 µm thick. This layer consists of embedded carbonaceous particulates and a discontinuous oxide scale, creating a topographically complex and rough surface. The underlying metal's fine grain structure is entirely masked. The contamination adheres in a patchy, dendritic pattern, which compromises the material's inherent corrosion resistance and creates potential sites for localized pitting.
+  afterText: Laser cleaning has restored the native zirconium surface, revealing a uniform, light-grey metallic substrate. The fine, equiaxed grain structure of the HCP matrix is now clearly visible at 500x. Surface roughness is significantly reduced to its intrinsic 0.4 µm Ra, with the process completely removing all oxide scale and embedded contaminants without imparting any macroscopic damage to the underlying metal.
+  description: Microscopic analysis of zirconium surface before and after laser cleaning treatment
   alt: Microscopic view of zirconium surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -333,8 +313,7 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Zirconium surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Zirconium surface after laser cleaning showing detailed surface structure
     url: /images/material/zirconium-laser-cleaning-micro.jpg
 tags:
 - metal

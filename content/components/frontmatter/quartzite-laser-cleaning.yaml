@@ -67,13 +67,6 @@ materialProperties:
     description: Specific heat capacity at room temperature
     min: 600
     max: 1200
-  thermalDestructionType:
-    value: 2.1
-    unit: W/(m·K)
-    confidence: 92
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 1.32
     unit: mm²/s
@@ -130,13 +123,14 @@ materialProperties:
     description: High chemical resistance to acids and environmental weathering
     min: null
     max: null
-  thermalDegradationPoint:
+  thermalDestructionPoint:
     value: 1670
     unit: °C
     confidence: 90
     description: Temperature where structural breakdown begins
     min: null
     max: null
+  thermalDestructionType: structural_breakdown
 applications:
 - Aerospace
 - Architectural Restoration
@@ -174,16 +168,14 @@ machineSettings:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning coverage and thermal
-      management
+    description: Optimal repetition rate for efficient cleaning coverage and thermal management
     min: 20
     max: 100
   pulseWidth:
     value: 12
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with
-      minimal substrate damage
+    description: Nanosecond pulse duration for effective contaminant removal with minimal substrate damage
     min: 8
     max: 20
   scanSpeed:
@@ -204,8 +196,7 @@ machineSettings:
     value: 40
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning coverage without excessive
-      energy deposition
+    description: Optimal beam overlap for uniform cleaning coverage without excessive energy deposition
     min: 30
     max: 60
   passCount:
@@ -230,8 +221,7 @@ author:
   image: /images/author/yi-chun-lin.jpg
 images:
   hero:
-    alt: Quartzite surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Quartzite surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/quartzite-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -258,9 +248,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Quartzite is exceptionally hard and non-porous, unlike other metamorphic
-  stones. This density requires careful adjustment of laser power to avoid damaging
-  its vitrified surface.
+subtitle: Quartzite is exceptionally hard and non-porous, unlike other metamorphic stones. This density requires careful adjustment of laser power to avoid damaging its vitrified surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -296,21 +284,9 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the quartzite surface is obscured by a complex
-    contamination layer. A discontinuous, carbonaceous soot deposit, measuring 5-15
-    µm thick, adheres to the crystalline matrix. This layer is punctuated by embedded
-    particulate matter, primarily silicates and metal oxides, which create localized
-    topographical peaks. The underlying interlocking quartz grains are partially visible,
-    with contaminants concentrated along crystal boundaries and micro-fractures, creating
-    a darkened, textured appearance that masks the stone's inherent reflectivity and
-    granular detail.
-  afterText: Laser cleaning has restored the substrate's original morphology. The
-    interlocking, anhedral quartz grains are now fully exposed, with sharp boundaries
-    and a clean, micro-rough texture. The surface is free of obscuring deposits, revealing
-    the stone's inherent crystalline structure and light-reflective properties. Minimal
-    residual particulate remains isolated within deeper grain boundaries.
-  description: Microscopic analysis of quartzite surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the quartzite surface is obscured by a complex contamination layer. A discontinuous, carbonaceous soot deposit, measuring 5-15 µm thick, adheres to the crystalline matrix. This layer is punctuated by embedded particulate matter, primarily silicates and metal oxides, which create localized topographical peaks. The underlying interlocking quartz grains are partially visible, with contaminants concentrated along crystal boundaries and micro-fractures, creating a darkened, textured appearance that masks the stone's inherent reflectivity and granular detail.
+  afterText: Laser cleaning has restored the substrate's original morphology. The interlocking, anhedral quartz grains are now fully exposed, with sharp boundaries and a clean, micro-rough texture. The surface is free of obscuring deposits, revealing the stone's inherent crystalline structure and light-reflective properties. Minimal residual particulate remains isolated within deeper grain boundaries.
+  description: Microscopic analysis of quartzite surface before and after laser cleaning treatment
   alt: Microscopic view of quartzite surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -330,8 +306,7 @@ caption:
     materialType: Stone
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Quartzite surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Quartzite surface after laser cleaning showing detailed surface structure
     url: /images/material/quartzite-laser-cleaning-micro.jpg
 tags:
 - stone

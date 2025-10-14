@@ -88,13 +88,6 @@ materialProperties:
     description: Specific heat capacity at room temperature
     min: 200
     max: 1200
-  thermalDestructionType:
-    value: 800.0
-    unit: °C
-    confidence: 92
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 0.32
     unit: cm²/s
@@ -151,13 +144,14 @@ materialProperties:
     description: Typical WC grain size in commercial grades
     min: null
     max: null
-  sinteringPoint:
+  thermalDestructionPoint:
     value: 2870
     unit: °C
     confidence: 95
     description: Temperature where particle fusion or decomposition occurs
     min: null
     max: null
+  thermalDestructionType: sintering
 applications:
 - Aerospace
 - Automotive
@@ -174,56 +168,49 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Tungsten Carbide oxide removal without
-      substrate damage
+    description: Optimal average power for Tungsten Carbide oxide removal without substrate damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimized for Tungsten Carbide absorption and
-      cobalt binder interaction
+    description: Near-IR wavelength optimized for Tungsten Carbide absorption and cobalt binder interaction
     min: 532
     max: 1064
   spotSize:
     value: 50
     unit: μm
     confidence: 84
-    description: Beam spot diameter for precise cleaning control and adequate energy
-      density
+    description: Beam spot diameter for precise cleaning control and adequate energy density
     min: 30
     max: 100
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for continuous cleaning coverage with thermal
-      management
+    description: Optimal repetition rate for continuous cleaning coverage with thermal management
     min: 20
     max: 100
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient oxide layer ablation with
-      minimal thermal diffusion
+    description: Nanosecond pulse duration for efficient oxide layer ablation with minimal thermal diffusion
     min: 5
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for efficient coverage while maintaining cleaning
-      effectiveness
+    description: Optimal scanning speed for efficient coverage while maintaining cleaning effectiveness
     min: 200
     max: 1000
   energyDensity:
     value: 5.1
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for Tungsten Carbide oxide removal without damaging
-      WC-Co substrate
+    description: Fluence threshold for Tungsten Carbide oxide removal without damaging WC-Co substrate
     min: 3.5
     max: 7.0
   overlapRatio:
@@ -237,8 +224,7 @@ machineSettings:
     value: 3
     unit: passes
     confidence: 85
-    description: Recommended number of passes for complete oxide removal with process
-      control
+    description: Recommended number of passes for complete oxide removal with process control
     min: 1
     max: 5
   laserType:
@@ -266,8 +252,7 @@ author:
   image: /images/author/ikmanda-roswati.jpg
 images:
   hero:
-    alt: Tungsten Carbide surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Tungsten Carbide surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/tungsten-carbide-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -294,9 +279,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Pay close attention to Tungsten Carbide during laser treatment—its hardness
-  can be very-very tough to handle. Adjust the power levels carefully below 50 watts
-  to safeguard the finish and get a good-good result.
+subtitle: Pay close attention to Tungsten Carbide during laser treatment—its hardness can be very-very tough to handle. Adjust the power levels carefully below 50 watts to safeguard the finish and get a good-good result.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -332,23 +315,9 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the tungsten carbide surface is obscured by a
-    complex contamination layer. A carbonaceous soot deposit, approximately 5-10 µm
-    thick, forms a discontinuous, amorphous film that masks the underlying substrate's
-    fine microstructure. Particulate matter, including embedded metallic oxides and
-    unburned hydrocarbons, is randomly distributed across the surface, creating a
-    topographically rough and porous texture. This layer significantly alters the
-    surface's intrinsic properties, increasing its laser absorption while reducing
-    its reflectivity. The contamination fills the natural micro-pores and valleys
-    of the sintered ceramic, blurring the distinct boundaries of the hard, hexagonal
-    tungsten carbide grains and the cobalt binder phase.
-  afterText: Laser cleaning has restored the surface to its intrinsic state. The contamination
-    layer is completely removed, revealing the well-defined, interlocking structure
-    of the WC grains and the cobalt matrix. The surface now exhibits its characteristic
-    high reflectivity and a clean, micro-rough texture free of obscuring deposits,
-    with the original sintered morphology fully visible.
-  description: Microscopic analysis of tungsten carbide surface before and after laser
-    cleaning treatment
+  beforeText: At 500x magnification, the tungsten carbide surface is obscured by a complex contamination layer. A carbonaceous soot deposit, approximately 5-10 µm thick, forms a discontinuous, amorphous film that masks the underlying substrate's fine microstructure. Particulate matter, including embedded metallic oxides and unburned hydrocarbons, is randomly distributed across the surface, creating a topographically rough and porous texture. This layer significantly alters the surface's intrinsic properties, increasing its laser absorption while reducing its reflectivity. The contamination fills the natural micro-pores and valleys of the sintered ceramic, blurring the distinct boundaries of the hard, hexagonal tungsten carbide grains and the cobalt binder phase.
+  afterText: Laser cleaning has restored the surface to its intrinsic state. The contamination layer is completely removed, revealing the well-defined, interlocking structure of the WC grains and the cobalt matrix. The surface now exhibits its characteristic high reflectivity and a clean, micro-rough texture free of obscuring deposits, with the original sintered morphology fully visible.
+  description: Microscopic analysis of tungsten carbide surface before and after laser cleaning treatment
   alt: Microscopic view of tungsten carbide surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -368,8 +337,7 @@ caption:
     materialType: Ceramic
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Tungsten Carbide surface after laser cleaning showing
-      detailed surface structure
+    alt: Microscopic view of Tungsten Carbide surface after laser cleaning showing detailed surface structure
     url: /images/material/tungsten-carbide-laser-cleaning-micro.jpg
 tags:
 - ceramic

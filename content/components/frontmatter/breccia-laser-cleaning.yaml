@@ -67,13 +67,6 @@ materialProperties:
     description: Specific heat capacity at room temperature
     min: 600
     max: 1200
-  thermalDestructionType:
-    value: 2.8
-    unit: MW/m²
-    confidence: 92
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 1.32
     unit: mm²/s
@@ -123,13 +116,14 @@ materialProperties:
     description: Typical porosity range for consolidated breccia
     min: null
     max: null
-  thermalDegradationPoint:
+  thermalDestructionPoint:
     value: 1250
     unit: °C
     confidence: 82
     description: Temperature where structural breakdown begins
     min: null
     max: null
+  thermalDestructionType: structural_breakdown
 applications:
 - Cultural Heritage
 - Architecture and Construction
@@ -146,8 +140,7 @@ machineSettings:
     value: 90
     unit: W
     confidence: 88
-    description: Optimal average power for Breccia surface cleaning without thermal
-      damage
+    description: Optimal average power for Breccia surface cleaning without thermal damage
     min: 70
     max: 110
   wavelength:
@@ -248,9 +241,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Breccia is a composite stone with varied, loosely cemented fragments. This
-  inconsistent composition requires careful adjustment of laser settings to clean
-  without damaging its delicate bindings.
+subtitle: Breccia is a composite stone with varied, loosely cemented fragments. This inconsistent composition requires careful adjustment of laser settings to clean without damaging its delicate bindings.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -286,35 +277,15 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the breccia surface is obscured by a discontinuous,
-    particulate-rich contamination layer averaging 15-45 µm thick. This layer, composed
-    of soot, dust, and biological growth, fills the natural micro-fissures and pores
-    of the stone matrix. The underlying angular clasts and cementing minerals are
-    partially masked, with the contamination adhering most densely within the stone's
-    inherent porosity, creating a mottled, occluded surface texture.
-  afterText: 'Laser cleaning has effectively restored the intrinsic lithic character
-    of the breccia. The previously occluding contamination layer has been entirely
-    removed, revealing the sharp, angular boundaries of individual clasts and the
-    complex, interlocking texture of the mineral cement. The surface now exhibits
-    its natural micro-relief, with open pores and fissures cleared of particulate
-    matter.
+  beforeText: At 500x magnification, the breccia surface is obscured by a discontinuous, particulate-rich contamination layer averaging 15-45 µm thick. This layer, composed of soot, dust, and biological growth, fills the natural micro-fissures and pores of the stone matrix. The underlying angular clasts and cementing minerals are partially masked, with the contamination adhering most densely within the stone's inherent porosity, creating a mottled, occluded surface texture.
+  afterText: 'Laser cleaning has effectively restored the intrinsic lithic character of the breccia. The previously occluding contamination layer has been entirely removed, revealing the sharp, angular boundaries of individual clasts and the complex, interlocking texture of the mineral cement. The surface now exhibits its natural micro-relief, with open pores and fissures cleared of particulate matter.
 
 
-    The selective nature of the laser process is evident. The ablation threshold was
-    precisely calibrated to target the contaminant''s binding organics and particulate
-    matter, which vaporized at energy densities below the stone''s own ablation threshold
-    of 2.8 J/cm². This has preserved the structural integrity of the mineral grains,
-    leaving no thermal stress microfractures or mineral phase alterations visible
-    at this magnification.
+    The selective nature of the laser process is evident. The ablation threshold was precisely calibrated to target the contaminant''s binding organics and particulate matter, which vaporized at energy densities below the stone''s own ablation threshold of 2.8 J/cm². This has preserved the structural integrity of the mineral grains, leaving no thermal stress microfractures or mineral phase alterations visible at this magnification.
 
 
-    The result is a surface defined by its original geological composition. The contrast
-    between clasts of varying hardness and color is now fully apparent, and the stone''s
-    natural porosity (approximately 8%) is visibly open and unobstructed, indicating
-    a successful return to the substrate''s authentic, unweathered state without mechanical
-    or chemical residue.'
-  description: Microscopic analysis of breccia surface before and after laser cleaning
-    treatment
+    The result is a surface defined by its original geological composition. The contrast between clasts of varying hardness and color is now fully apparent, and the stone''s natural porosity (approximately 8%) is visibly open and unobstructed, indicating a successful return to the substrate''s authentic, unweathered state without mechanical or chemical residue.'
+  description: Microscopic analysis of breccia surface before and after laser cleaning treatment
   alt: Microscopic view of breccia surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -334,8 +305,7 @@ caption:
     materialType: Stone
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Breccia surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Breccia surface after laser cleaning showing detailed surface structure
     url: /images/material/breccia-laser-cleaning-micro.jpg
 tags:
 - stone

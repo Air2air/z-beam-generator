@@ -67,13 +67,6 @@ materialProperties:
     description: Specific heat capacity at 25°C
     min: 100
     max: 900
-  thermalDestructionType:
-    value: 1828.05
-    unit: K
-    confidence: 95
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 25.1
     unit: mm²/s
@@ -130,6 +123,14 @@ materialProperties:
     description: Electrical resistivity at 20°C
     min: null
     max: null
+  thermalDestructionPoint:
+    value: 1554.9
+    unit: °C
+    confidence: 97
+    description: Temperature where solid-to-liquid phase transition occurs
+    min: null
+    max: null
+  thermalDestructionType: melting
 applications:
 - Aerospace
 - Electronics
@@ -220,8 +221,7 @@ author:
   image: /images/author/yi-chun-lin.jpg
 images:
   hero:
-    alt: Palladium surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Palladium surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/palladium-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -248,9 +248,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Palladium is softer and more prone to oxidation than other precious metals.
-  Its surface requires lower laser power and careful parameter control to prevent
-  melting or discoloration.
+subtitle: Palladium is softer and more prone to oxidation than other precious metals. Its surface requires lower laser power and careful parameter control to prevent melting or discoloration.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -286,22 +284,9 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the palladium surface is obscured by a non-uniform
-    contamination layer, approximately 5-15 micrometers thick. This layer consists
-    of carbonaceous deposits and adsorbed oxides, forming a topographically complex
-    crust. The underlying FCC crystalline structure of the palladium is entirely masked.
-    The contaminant exhibits a cracked, mudflat-like morphology, with particulate
-    inclusions embedded throughout. This layer significantly degrades the metal's
-    intrinsic reflectivity and compromises the surface integrity for functional applications.
-  afterText: Laser cleaning has fully restored the pristine metallic surface. The
-    contamination layer is completely ablated, revealing the underlying grain structure
-    of the palladium substrate. The surface now exhibits minimal micro-roughness and
-    the characteristic high reflectivity (72.5% at 1064 nm) of the pure metal. No
-    thermal damage, such as melting or grain boundary oxidation, is observed, confirming
-    the process remained well below palladium's 1554.9°C melting point. The surface
-    is now optimally prepared for subsequent manufacturing steps.
-  description: Microscopic analysis of palladium surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the palladium surface is obscured by a non-uniform contamination layer, approximately 5-15 micrometers thick. This layer consists of carbonaceous deposits and adsorbed oxides, forming a topographically complex crust. The underlying FCC crystalline structure of the palladium is entirely masked. The contaminant exhibits a cracked, mudflat-like morphology, with particulate inclusions embedded throughout. This layer significantly degrades the metal's intrinsic reflectivity and compromises the surface integrity for functional applications.
+  afterText: Laser cleaning has fully restored the pristine metallic surface. The contamination layer is completely ablated, revealing the underlying grain structure of the palladium substrate. The surface now exhibits minimal micro-roughness and the characteristic high reflectivity (72.5% at 1064 nm) of the pure metal. No thermal damage, such as melting or grain boundary oxidation, is observed, confirming the process remained well below palladium's 1554.9°C melting point. The surface is now optimally prepared for subsequent manufacturing steps.
+  description: Microscopic analysis of palladium surface before and after laser cleaning treatment
   alt: Microscopic view of palladium surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -321,8 +306,7 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Palladium surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Palladium surface after laser cleaning showing detailed surface structure
     url: /images/material/palladium-laser-cleaning-micro.jpg
 tags:
 - metal

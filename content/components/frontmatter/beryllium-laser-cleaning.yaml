@@ -67,13 +67,6 @@ materialProperties:
     description: Specific heat capacity at 25°C
     min: 100
     max: 900
-  thermalDestructionType:
-    value: 1287.0
-    unit: °C
-    confidence: 95
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 0.53
     unit: cm²/s
@@ -127,10 +120,17 @@ materialProperties:
     value: High
     unit: qualitative
     confidence: 90
-    description: Excellent thermal shock resistance due to high thermal conductivity
-      and moderate CTE
+    description: Excellent thermal shock resistance due to high thermal conductivity and moderate CTE
     min: null
     max: null
+  thermalDestructionPoint:
+    value: 1287
+    unit: °C
+    confidence: 97
+    description: Temperature where solid-to-liquid phase transition occurs
+    min: null
+    max: null
+  thermalDestructionType: melting
 applications:
 - Aerospace and Defense
 - Nuclear Technology
@@ -154,8 +154,7 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 90
-    description: Optimal wavelength for Beryllium absorption and minimal substrate
-      damage
+    description: Optimal wavelength for Beryllium absorption and minimal substrate damage
     min: 532
     max: 1064
   spotSize:
@@ -222,8 +221,7 @@ author:
   image: /images/author/yi-chun-lin.jpg
 images:
   hero:
-    alt: Beryllium surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Beryllium surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/beryllium-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -250,9 +248,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Beryllium is uniquely lightweight and stiff, but its dust can be toxic when
-  inhaled. This requires laser cleaning processes that rigorously control airborne
-  particles to ensure operator safety.
+subtitle: Beryllium is uniquely lightweight and stiff, but its dust can be toxic when inhaled. This requires laser cleaning processes that rigorously control airborne particles to ensure operator safety.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -288,26 +284,12 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the beryllium surface is obscured by a non-uniform
-    contamination layer, typically 5-20 µm thick. This layer consists of embedded
-    particulate, amorphous carbon deposits, and localized oxide patches, creating
-    a topographically complex and textured landscape. The underlying metallic grain
-    structure is entirely masked. The contaminants exhibit a mottled, splotchy pattern,
-    indicating areas of preferential adhesion and oxidation, which disrupts the native
-    surface morphology.
-  afterText: 'Following laser cleaning, the surface reveals a stark transformation.
-    The contamination layer has been completely ablated, exposing the pristine, polycrystalline
-    metallic substrate. The characteristic grain structure of the beryllium, with
-    its HCP crystalline arrangement, is now clearly visible and well-defined.
+  beforeText: At 500x magnification, the beryllium surface is obscured by a non-uniform contamination layer, typically 5-20 µm thick. This layer consists of embedded particulate, amorphous carbon deposits, and localized oxide patches, creating a topographically complex and textured landscape. The underlying metallic grain structure is entirely masked. The contaminants exhibit a mottled, splotchy pattern, indicating areas of preferential adhesion and oxidation, which disrupts the native surface morphology.
+  afterText: 'Following laser cleaning, the surface reveals a stark transformation. The contamination layer has been completely ablated, exposing the pristine, polycrystalline metallic substrate. The characteristic grain structure of the beryllium, with its HCP crystalline arrangement, is now clearly visible and well-defined.
 
 
-    The surface texture is significantly smoother and more uniform, with only minimal,
-    sub-micron scale pitting remaining from the removal of tenacious oxide inclusions.
-    This process restores the material''s native reflectivity and creates a surface
-    free of obscuring films, directly exposing the bare metal for subsequent processing
-    or analysis.'
-  description: Microscopic analysis of beryllium surface before and after laser cleaning
-    treatment
+    The surface texture is significantly smoother and more uniform, with only minimal, sub-micron scale pitting remaining from the removal of tenacious oxide inclusions. This process restores the material''s native reflectivity and creates a surface free of obscuring films, directly exposing the bare metal for subsequent processing or analysis.'
+  description: Microscopic analysis of beryllium surface before and after laser cleaning treatment
   alt: Microscopic view of beryllium surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -327,8 +309,7 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Beryllium surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Beryllium surface after laser cleaning showing detailed surface structure
     url: /images/material/beryllium-laser-cleaning-micro.jpg
 tags:
 - metal

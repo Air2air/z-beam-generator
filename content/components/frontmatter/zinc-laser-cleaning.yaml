@@ -67,13 +67,6 @@ materialProperties:
     description: Specific heat capacity at 25°C
     min: 100
     max: 900
-  thermalDestructionType:
-    value: 692.68
-    unit: K
-    confidence: 95
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 42.0
     unit: mm²/s
@@ -137,6 +130,14 @@ materialProperties:
     description: Boiling point of zinc
     min: null
     max: null
+  thermalDestructionPoint:
+    value: 419.5
+    unit: °C
+    confidence: 97
+    description: Temperature where solid-to-liquid phase transition occurs
+    min: null
+    max: null
+  thermalDestructionType: melting
 applications:
 - Automotive
 - Construction
@@ -249,9 +250,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Zinc has a lower melting point and develops a tenacious oxide layer compared
-  to other non-ferrous metals. These traits require careful control of laser power
-  and pulse settings to avoid surface damage while effectively removing corrosion.
+subtitle: Zinc has a lower melting point and develops a tenacious oxide layer compared to other non-ferrous metals. These traits require careful control of laser power and pulse settings to avoid surface damage while effectively removing corrosion.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -287,20 +286,9 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the zinc surface is obscured by a complex contamination
-    layer. A porous, amorphous oxide/hydroxide matrix, approximately 5-15 µm thick,
-    forms the base. This is overlaid with localized carbonaceous soot deposits and
-    embedded particulate matter, creating a topographically rough and irregular surface.
-    The underlying metallic grain structure is entirely concealed. The contamination
-    exhibits a non-uniform, patchy distribution, with areas of thick crust formation
-    adjacent to regions of thinner, more adherent tarnish.
-  afterText: Laser cleaning has fully restored the native zinc surface. The contamination
-    layer is completely ablated, revealing the underlying metallic grain structure
-    with high clarity. The surface is now topographically uniform, exhibiting only
-    the natural micro-texture of the base metal. The reflectivity is significantly
-    increased, confirming the removal of light-absorbing oxides and particulates.
-  description: Microscopic analysis of zinc surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the zinc surface is obscured by a complex contamination layer. A porous, amorphous oxide/hydroxide matrix, approximately 5-15 µm thick, forms the base. This is overlaid with localized carbonaceous soot deposits and embedded particulate matter, creating a topographically rough and irregular surface. The underlying metallic grain structure is entirely concealed. The contamination exhibits a non-uniform, patchy distribution, with areas of thick crust formation adjacent to regions of thinner, more adherent tarnish.
+  afterText: Laser cleaning has fully restored the native zinc surface. The contamination layer is completely ablated, revealing the underlying metallic grain structure with high clarity. The surface is now topographically uniform, exhibiting only the natural micro-texture of the base metal. The reflectivity is significantly increased, confirming the removal of light-absorbing oxides and particulates.
+  description: Microscopic analysis of zinc surface before and after laser cleaning treatment
   alt: Microscopic view of zinc surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -320,8 +308,7 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Zinc surface after laser cleaning showing detailed surface
-      structure
+    alt: Microscopic view of Zinc surface after laser cleaning showing detailed surface structure
     url: /images/material/zinc-laser-cleaning-micro.jpg
 tags:
 - metal

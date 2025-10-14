@@ -67,13 +67,6 @@ materialProperties:
     description: Specific heat capacity at room temperature
     min: 600
     max: 1200
-  thermalDestructionType:
-    value: 2.8
-    unit: MW/m²
-    confidence: 92
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 1.32
     unit: mm²/s
@@ -123,13 +116,14 @@ materialProperties:
     description: Chemical stability rating (1-10 scale) against common solvents
     min: null
     max: null
-  thermalDegradationPoint:
+  thermalDestructionPoint:
     value: 1723
     unit: °C
     confidence: 90
     description: Temperature where structural breakdown begins
     min: null
     max: null
+  thermalDestructionType: structural_breakdown
 applications:
 - Cultural Heritage
 - Architecture and Construction
@@ -153,8 +147,7 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimized for Onyx absorption and minimal subsurface
-      damage
+    description: Near-IR wavelength optimized for Onyx absorption and minimal subsurface damage
     min: 532
     max: 1064
   spotSize:
@@ -189,16 +182,14 @@ machineSettings:
     value: 4.5
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without damaging
-      Onyx substrate
+    description: Fluence threshold for effective contaminant removal without damaging Onyx substrate
     min: 3.0
     max: 6.5
   overlapRatio:
     value: 40
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      buildup
+    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
     min: 30
     max: 60
   passCount:
@@ -257,9 +248,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Onyx is a softer, more translucent stone that is often banded with multiple
-  colors. These properties require lower laser power and careful scanning to prevent
-  damage and discoloration.
+subtitle: Onyx is a softer, more translucent stone that is often banded with multiple colors. These properties require lower laser power and careful scanning to prevent damage and discoloration.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -295,21 +284,9 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the onyx surface is obscured by a complex contamination
-    layer. Particulate matter, ranging from 5-50 µm in diameter, is embedded in a
-    continuous film of organic residue approximately 10-15 µm thick. This layer fills
-    the natural micro-fissures and intercrystalline boundaries of the stone, creating
-    a matte, occluded appearance. The contaminants exhibit poor adhesion to the substrate,
-    forming a discontinuous, flaking stratum that masks the inherent translucency
-    and crystalline structure of the onyx.
-  afterText: Post-cleaning analysis at 500x reveals the pristine onyx substrate. The
-    contamination layer has been completely removed, exposing the stone's intrinsic
-    micro-topography of interlocking quartz crystals. The surface now displays sharp,
-    well-defined grain boundaries and open micro-fissures, restoring its natural translucency.
-    The laser process has eliminated all foreign material without inducing thermal
-    cracking or altering the underlying crystalline structure.
-  description: Microscopic analysis of onyx surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the onyx surface is obscured by a complex contamination layer. Particulate matter, ranging from 5-50 µm in diameter, is embedded in a continuous film of organic residue approximately 10-15 µm thick. This layer fills the natural micro-fissures and intercrystalline boundaries of the stone, creating a matte, occluded appearance. The contaminants exhibit poor adhesion to the substrate, forming a discontinuous, flaking stratum that masks the inherent translucency and crystalline structure of the onyx.
+  afterText: Post-cleaning analysis at 500x reveals the pristine onyx substrate. The contamination layer has been completely removed, exposing the stone's intrinsic micro-topography of interlocking quartz crystals. The surface now displays sharp, well-defined grain boundaries and open micro-fissures, restoring its natural translucency. The laser process has eliminated all foreign material without inducing thermal cracking or altering the underlying crystalline structure.
+  description: Microscopic analysis of onyx surface before and after laser cleaning treatment
   alt: Microscopic view of onyx surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -329,8 +306,7 @@ caption:
     materialType: Stone
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Onyx surface after laser cleaning showing detailed surface
-      structure
+    alt: Microscopic view of Onyx surface after laser cleaning showing detailed surface structure
     url: /images/material/onyx-laser-cleaning-micro.jpg
 tags:
 - stone

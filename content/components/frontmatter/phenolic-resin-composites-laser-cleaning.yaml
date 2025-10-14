@@ -15,8 +15,7 @@ materialProperties:
     value: N/A
     unit: °C
     confidence: 85
-    description: Phenolic resins decompose rather than melt; decomposition begins
-      around 300°C
+    description: Phenolic resins decompose rather than melt; decomposition begins around 300°C
     min: null
     max: null
   thermalConductivity:
@@ -68,13 +67,6 @@ materialProperties:
     description: Specific heat capacity at room temperature
     min: 500
     max: 1500
-  thermalDestructionType:
-    value: 623.15
-    unit: K
-    confidence: 95
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 0.18
     unit: mm²/s
@@ -159,13 +151,14 @@ materialProperties:
     description: Char yield at 800°C in inert atmosphere
     min: null
     max: null
-  degradationPoint:
+  thermalDestructionPoint:
     value: N/A
     unit: °C
     confidence: 85
     description: Temperature where polymer matrix decomposition begins
     min: null
     max: null
+  thermalDestructionType: matrix_degradation
 applications:
 - Aerospace
 - Automotive
@@ -182,8 +175,7 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for phenolic resin composite cleaning without
-      thermal damage
+    description: Optimal average power for phenolic resin composite cleaning without thermal damage
     min: 80
     max: 120
   wavelength:
@@ -232,8 +224,7 @@ machineSettings:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive heat
-      accumulation
+    description: Optimal beam overlap for uniform cleaning without excessive heat accumulation
     min: 30
     max: 70
   passCount:
@@ -265,8 +256,7 @@ author:
   image: /images/author/todd-dunning.jpg
 images:
   hero:
-    alt: Phenolic Resin Composites surface undergoing laser cleaning showing precise
-      contamination removal
+    alt: Phenolic Resin Composites surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/phenolic-resin-composites-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -293,9 +283,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Phenolic Resin Composites can throw curveballs during laser treatment due
-  to their inconsistent heat resistance. Adjust your power levels below 50 watts initially,
-  then ramp up slowly to protect the material’s surface from unintended scorching.
+subtitle: Phenolic Resin Composites can throw curveballs during laser treatment due to their inconsistent heat resistance. Adjust your power levels below 50 watts initially, then ramp up slowly to protect the material’s surface from unintended scorching.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -331,24 +319,10 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the phenolic resin composite surface is obscured
-    by a non-uniform contamination layer, approximately 5-15 µm thick. This layer
-    consists of embedded particulate matter and a carbonaceous film, which masks the
-    substrate's original molded texture. The contaminants create a discontinuous,
-    mottled pattern, filling the micro-porosity of the composite and significantly
-    increasing surface roughness. This layer disrupts the material's inherent low
-    reflectivity and compromises surface-dependent properties.
-  afterText: Laser cleaning effectively restores the substrate, revealing the pristine
-    phenolic resin composite surface. At 500x magnification, the contamination layer
-    is entirely removed, exposing the original, finely textured mold pattern and the
-    distinct, fibrous reinforcement material. Surface roughness is reduced to the
-    material's intrinsic 0.8 µm Ra, and the micro-porosity is now clean and open.
-    The surface is uniform, with no evidence of thermal degradation, demonstrating
-    a complete return to baseline topography.
-  description: Microscopic analysis of phenolic resin composites surface before and
-    after laser cleaning treatment
-  alt: Microscopic view of phenolic resin composites surface showing laser cleaning
-    effects
+  beforeText: At 500x magnification, the phenolic resin composite surface is obscured by a non-uniform contamination layer, approximately 5-15 µm thick. This layer consists of embedded particulate matter and a carbonaceous film, which masks the substrate's original molded texture. The contaminants create a discontinuous, mottled pattern, filling the micro-porosity of the composite and significantly increasing surface roughness. This layer disrupts the material's inherent low reflectivity and compromises surface-dependent properties.
+  afterText: Laser cleaning effectively restores the substrate, revealing the pristine phenolic resin composite surface. At 500x magnification, the contamination layer is entirely removed, exposing the original, finely textured mold pattern and the distinct, fibrous reinforcement material. Surface roughness is reduced to the material's intrinsic 0.8 µm Ra, and the micro-porosity is now clean and open. The surface is uniform, with no evidence of thermal degradation, demonstrating a complete return to baseline topography.
+  description: Microscopic analysis of phenolic resin composites surface before and after laser cleaning treatment
+  alt: Microscopic view of phenolic resin composites surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
     uniqueCharacteristics:
@@ -367,8 +341,7 @@ caption:
     materialType: Composite
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Phenolic Resin Composites surface after laser cleaning
-      showing detailed surface structure
+    alt: Microscopic view of Phenolic Resin Composites surface after laser cleaning showing detailed surface structure
     url: /images/material/phenolic-resin-composites-laser-cleaning-micro.jpg
 tags:
 - composite

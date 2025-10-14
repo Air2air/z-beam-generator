@@ -67,13 +67,6 @@ materialProperties:
     description: Specific heat capacity at room temperature
     min: 500
     max: 900
-  thermalDestructionType:
-    value: 823.0
-    unit: °C
-    confidence: 95
-    description: thermalDestructionType from Materials.yaml
-    min: null
-    max: null
   thermalDiffusivity:
     value: 0.65
     unit: mm²/s
@@ -158,13 +151,14 @@ materialProperties:
     description: Typical surface roughness for polished Pyrex
     min: null
     max: null
-  softeningPoint:
+  thermalDestructionPoint:
     value: 820
     unit: °C
     confidence: 90
     description: Temperature where glass transitions from rigid to pliable state
     min: null
     max: null
+  thermalDestructionType: softening
 applications:
 - Laboratory and Scientific Equipment
 - Pharmaceutical Manufacturing
@@ -181,16 +175,14 @@ machineSettings:
     value: 15
     unit: W
     confidence: 90
-    description: Optimal average power for Pyrex surface cleaning without thermal
-      damage
+    description: Optimal average power for Pyrex surface cleaning without thermal damage
     min: 8
     max: 25
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength providing good absorption in surface contaminants
-      while minimizing bulk glass absorption
+    description: Near-IR wavelength providing good absorption in surface contaminants while minimizing bulk glass absorption
     min: 532
     max: 1064
   spotSize:
@@ -204,16 +196,14 @@ machineSettings:
     value: 20
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate balancing cleaning efficiency and thermal
-      management
+    description: Optimal repetition rate balancing cleaning efficiency and thermal management
     min: 10
     max: 50
   pulseWidth:
     value: 100
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with
-      controlled thermal effects
+    description: Nanosecond pulse duration for effective contaminant removal with controlled thermal effects
     min: 50
     max: 200
   scanSpeed:
@@ -227,16 +217,14 @@ machineSettings:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Energy density threshold for effective contaminant removal without
-      glass damage
+    description: Energy density threshold for effective contaminant removal without glass damage
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      buildup
+    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
     min: 30
     max: 70
   passCount:
@@ -288,9 +276,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Operators have noticed that Pyrex can be surprisingly delicate under laser
-  treatment, even with its reputation for durability. Adjust your controls carefully
-  to below 50 watts, ensuring the glass face stays pristine during the removal process.
+subtitle: Operators have noticed that Pyrex can be surprisingly delicate under laser treatment, even with its reputation for durability. Adjust your controls carefully to below 50 watts, ensuring the glass face stays pristine during the removal process.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -326,22 +312,9 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the Pyrex surface is obscured by a non-uniform
-    contamination layer. Particulate matter, ranging from 1-10 µm in diameter, is
-    embedded in a thin, amorphous film approximately 0.5-2 µm thick. This film disrupts
-    the native surface, creating a textured, matte appearance that scatters light.
-    The underlying glass substrate is partially visible but its characteristic smoothness
-    and clarity are compromised by this adherent layer of foreign material.
-  afterText: Laser cleaning restores the Pyrex surface to its intrinsic state. The
-    contamination layer has been completely removed via selective laser ablation,
-    revealing the pristine, homogeneous glass substrate. At 500x magnification, the
-    surface is now continuous and smooth, with a measured roughness (Ra) of approximately
-    0.5 nm. The laser process has eliminated all particulate matter and the amorphous
-    film, restoring optical clarity. The surface exhibits minimal sub-surface damage,
-    confirming the non-contact process effectively cleared contaminants without mechanically
-    compromising the glass integrity.
-  description: Microscopic analysis of pyrex surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the Pyrex surface is obscured by a non-uniform contamination layer. Particulate matter, ranging from 1-10 µm in diameter, is embedded in a thin, amorphous film approximately 0.5-2 µm thick. This film disrupts the native surface, creating a textured, matte appearance that scatters light. The underlying glass substrate is partially visible but its characteristic smoothness and clarity are compromised by this adherent layer of foreign material.
+  afterText: Laser cleaning restores the Pyrex surface to its intrinsic state. The contamination layer has been completely removed via selective laser ablation, revealing the pristine, homogeneous glass substrate. At 500x magnification, the surface is now continuous and smooth, with a measured roughness (Ra) of approximately 0.5 nm. The laser process has eliminated all particulate matter and the amorphous film, restoring optical clarity. The surface exhibits minimal sub-surface damage, confirming the non-contact process effectively cleared contaminants without mechanically compromising the glass integrity.
+  description: Microscopic analysis of pyrex surface before and after laser cleaning treatment
   alt: Microscopic view of pyrex surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -361,8 +334,7 @@ caption:
     materialType: Glass
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Pyrex surface after laser cleaning showing detailed surface
-      structure
+    alt: Microscopic view of Pyrex surface after laser cleaning showing detailed surface structure
     url: /images/material/pyrex-laser-cleaning-micro.jpg
 tags:
 - glass
