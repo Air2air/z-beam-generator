@@ -44,15 +44,15 @@ materialProperties:
     unit: MPa
     confidence: 92
     description: compressiveStrength from Materials.yaml
-    min: null
-    max: null
+    min: 500
+    max: 5000
   flexuralStrength:
     value: 480
     unit: MPa
     confidence: 85
     description: Flexural strength of sintered TiC
-    min: null
-    max: null
+    min: 50
+    max: 1000
   laserAbsorption:
     value: 32.7
     unit: '%'
@@ -93,29 +93,29 @@ materialProperties:
     unit: dimensionless
     confidence: 82
     description: Absorption coefficient for common laser wavelengths (1-10μm)
-    min: null
-    max: null
+    min: 0.3
+    max: 0.9
   reflectivity:
     value: 0.45
     unit: dimensionless
     confidence: 80
     description: Reflectivity at 1064 nm wavelength
-    min: null
-    max: null
+    min: 0.1
+    max: 0.7
   ablationThreshold:
     value: 2.8
     unit: J/cm²
     confidence: 82
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
-    min: null
-    max: null
+    min: 2.0
+    max: 15.0
   oxidationResistance:
     value: 1200
     unit: °C
     confidence: 88
     description: Maximum service temperature in oxidizing environments
-    min: null
-    max: null
+    min: 1000
+    max: 2500
   crystallineStructure:
     value: FCC
     unit: crystal system
@@ -128,15 +128,15 @@ materialProperties:
     unit: '%'
     confidence: 85
     description: Typical porosity of sintered TiC components
-    min: null
-    max: null
+    min: 0.1
+    max: 50.0
   thermalDestructionPoint:
     value: 3140
     unit: °C
     confidence: 92
     description: Temperature where particle fusion or decomposition occurs
-    min: null
-    max: null
+    min: 1000
+    max: 3827
   thermalDestructionType: Sintering
 applications:
 - Aerospace
@@ -154,7 +154,8 @@ machineSettings:
     value: 45
     unit: W
     confidence: 90
-    description: Optimal average power for TiC surface cleaning without substrate damage
+    description: Optimal average power for TiC surface cleaning without substrate
+      damage
     min: 30
     max: 60
   wavelength:
@@ -182,7 +183,8 @@ machineSettings:
     value: 8
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for controlled ablation of TiC surface contaminants
+    description: Nanosecond pulse duration for controlled ablation of TiC surface
+      contaminants
     min: 5
     max: 15
   scanSpeed:
@@ -192,6 +194,14 @@ machineSettings:
     description: Optimal scanning speed for uniform cleaning coverage
     min: 300
     max: 800
+  fluence:
+    value: 4.0
+    unit: J/cm²
+    confidence: 88
+    description: Energy density threshold for effective Titanium Carbide cleaning
+      - Energy density threshold for effective contaminant removal from ceramic surfaces
+    min: 2.0
+    max: 8.0
   fluenceThreshold:
     value: 2.8
     unit: J/cm²
@@ -203,7 +213,8 @@ machineSettings:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
+    description: Optimal beam overlap for uniform cleaning without excessive thermal
+      buildup
     min: 40
     max: 70
   passCount:
@@ -230,7 +241,8 @@ author:
   image: /images/author/alessandro-moretti.jpg
 images:
   hero:
-    alt: Titanium Carbide surface undergoing laser cleaning showing precise contamination removal
+    alt: Titanium Carbide surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/titanium-carbide-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -257,7 +269,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Titanium Carbide often surprises with its stubborn residue under high heat, making laser treatment a delicate balance. Adjust power levels gradually to around 50 watts, ensuring you preserve the ceramic’s rugged yet elegant finish.
+subtitle: Titanium Carbide often surprises with its stubborn residue under high heat,
+  making laser treatment a delicate balance. Adjust power levels gradually to around
+  50 watts, ensuring you preserve the ceramic’s rugged yet elegant finish.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -293,9 +307,20 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the titanium carbide surface is obscured by a non-uniform contamination layer, approximately 5-15 µm thick. This layer exhibits a porous, granular texture, with agglomerated particles and localized oxide films creating a topographically complex and irregular profile. The underlying TiC substrate's intrinsic hardness and fine-grained microstructure are entirely masked by this adherent, discontinuous film, which disrupts the surface's thermal and mechanical properties.
-  afterText: Laser cleaning has restored the substrate to its native state, revealing the fine-grained, sintered microstructure of the titanium carbide. The surface is now characterized by a uniform, clean texture with clearly defined grain boundaries. All superficial contamination has been completely removed without inducing micro-cracks or surface damage to the underlying ceramic.
-  description: Microscopic analysis of titanium carbide surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the titanium carbide surface is obscured by a
+    non-uniform contamination layer, approximately 5-15 µm thick. This layer exhibits
+    a porous, granular texture, with agglomerated particles and localized oxide films
+    creating a topographically complex and irregular profile. The underlying TiC substrate's
+    intrinsic hardness and fine-grained microstructure are entirely masked by this
+    adherent, discontinuous film, which disrupts the surface's thermal and mechanical
+    properties.
+  afterText: Laser cleaning has restored the substrate to its native state, revealing
+    the fine-grained, sintered microstructure of the titanium carbide. The surface
+    is now characterized by a uniform, clean texture with clearly defined grain boundaries.
+    All superficial contamination has been completely removed without inducing micro-cracks
+    or surface damage to the underlying ceramic.
+  description: Microscopic analysis of titanium carbide surface before and after laser
+    cleaning treatment
   alt: Microscopic view of titanium carbide surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -315,7 +340,8 @@ caption:
     materialType: Ceramic
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Titanium Carbide surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Titanium Carbide surface after laser cleaning showing
+      detailed surface structure
     url: /images/material/titanium-carbide-laser-cleaning-micro.jpg
 tags:
 - ceramic

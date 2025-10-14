@@ -79,29 +79,29 @@ materialProperties:
     unit: dimensionless
     confidence: 80
     description: Estimated absorption coefficient for near-IR lasers (1064 nm)
-    min: null
-    max: null
+    min: 0.02
+    max: 0.6
   reflectivity:
     value: 0.65
     unit: dimensionless
     confidence: 82
     description: Approximate reflectivity for stainless steel at common laser wavelengths
-    min: null
-    max: null
+    min: 0.4
+    max: 0.98
   ablationThreshold:
     value: 0.8
     unit: J/cm²
     confidence: 85
     description: Estimated laser ablation threshold for nanosecond pulses
-    min: null
-    max: null
+    min: 0.5
+    max: 50.0
   oxidationResistance:
     value: 925
     unit: °C
     confidence: 90
     description: Continuous service temperature in air without excessive oxidation
-    min: null
-    max: null
+    min: 200
+    max: 2000
   crystallineStructure:
     value: FCC
     unit: crystal system
@@ -114,15 +114,15 @@ materialProperties:
     unit: μm Ra
     confidence: 85
     description: Typical surface roughness for mill-finished stainless steel
-    min: null
-    max: null
+    min: 0.05
+    max: 25.0
   thermalDestructionPoint:
     value: 1400
     unit: °C
     confidence: 92
     description: Temperature where solid-to-liquid phase transition occurs
-    min: null
-    max: null
+    min: -38.8
+    max: 3422
   thermalDestructionType: Melting
 applications:
 - Aerospace
@@ -178,11 +178,21 @@ machineSettings:
     description: Optimal scanning speed for uniform cleaning results
     min: 200
     max: 1000
+  fluence:
+    value: 6.0
+    unit: J/cm²
+    confidence: 92
+    description: Energy density threshold for effective Stainless Steel cleaning -
+      Energy density threshold for effective oxide and contaminant removal from metallic
+      surfaces
+    min: 3.0
+    max: 12.0
   energyDensity:
     value: 5.1
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without substrate damage
+    description: Fluence threshold for effective contaminant removal without substrate
+      damage
     min: 3.0
     max: 8.0
   overlapRatio:
@@ -221,7 +231,8 @@ author:
   image: /images/author/alessandro-moretti.jpg
 images:
   hero:
-    alt: Stainless Steel surface undergoing laser cleaning showing precise contamination removal
+    alt: Stainless Steel surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/stainless-steel-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -248,7 +259,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Stainless steel's chromium content creates a protective oxide layer that resists rust. This layer requires specific laser settings to remove contaminants without damaging the underlying surface.
+subtitle: Stainless steel's chromium content creates a protective oxide layer that
+  resists rust. This layer requires specific laser settings to remove contaminants
+  without damaging the underlying surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -284,15 +297,32 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the stainless steel surface is obscured by a discontinuous contamination layer, typically 5-20 µm thick. This layer consists of embedded carbonaceous soot, oxide scale from thermal exposure, and particulate matter. The underlying metal's fine grinding marks are partially visible beneath this porous, textured crust, which disrupts the substrate's natural reflectivity and creates a matte, non-uniform appearance.
-  afterText: 'Following laser cleaning, the surface reveals the unaltered, homogeneous austenitic grain structure of the stainless steel substrate. The process has completely removed the contamination layer without mechanical abrasion, preserving the original mill-finish topography characterized by shallow, parallel grooves with an average roughness (Ra) of approximately 0.8 µm.
+  beforeText: At 500x magnification, the stainless steel surface is obscured by a
+    discontinuous contamination layer, typically 5-20 µm thick. This layer consists
+    of embedded carbonaceous soot, oxide scale from thermal exposure, and particulate
+    matter. The underlying metal's fine grinding marks are partially visible beneath
+    this porous, textured crust, which disrupts the substrate's natural reflectivity
+    and creates a matte, non-uniform appearance.
+  afterText: 'Following laser cleaning, the surface reveals the unaltered, homogeneous
+    austenitic grain structure of the stainless steel substrate. The process has completely
+    removed the contamination layer without mechanical abrasion, preserving the original
+    mill-finish topography characterized by shallow, parallel grooves with an average
+    roughness (Ra) of approximately 0.8 µm.
 
 
-    The primary visual transformation is the restoration of the metal''s inherent reflectivity, as the high laser reflectivity (≈65%) of the base material prevented significant energy absorption and subsequent melting. This results in a surface free of heat-affected zones or oxide discoloration.
+    The primary visual transformation is the restoration of the metal''s inherent
+    reflectivity, as the high laser reflectivity (≈65%) of the base material prevented
+    significant energy absorption and subsequent melting. This results in a surface
+    free of heat-affected zones or oxide discoloration.
 
 
-    The cleaning mechanism relied on the selective ablation of contaminants, which have a significantly lower vaporization threshold than the steel''s melting point of 1400°C. The surface now exhibits a clean, metallurgically intact profile, restoring its corrosion-resistant properties and providing an optimal foundation for subsequent finishing or coating processes.'
-  description: Microscopic analysis of stainless steel surface before and after laser cleaning treatment
+    The cleaning mechanism relied on the selective ablation of contaminants, which
+    have a significantly lower vaporization threshold than the steel''s melting point
+    of 1400°C. The surface now exhibits a clean, metallurgically intact profile, restoring
+    its corrosion-resistant properties and providing an optimal foundation for subsequent
+    finishing or coating processes.'
+  description: Microscopic analysis of stainless steel surface before and after laser
+    cleaning treatment
   alt: Microscopic view of stainless steel surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -312,7 +342,8 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Stainless Steel surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Stainless Steel surface after laser cleaning showing
+      detailed surface structure
     url: /images/material/stainless-steel-laser-cleaning-micro.jpg
 tags:
 - metal

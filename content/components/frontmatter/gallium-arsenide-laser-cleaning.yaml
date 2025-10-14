@@ -79,36 +79,36 @@ materialProperties:
     unit: ×10⁴ cm⁻¹
     confidence: 92
     description: Absorption coefficient at 532 nm wavelength
-    min: null
-    max: null
+    min: 0.1
+    max: 0.7
   reflectivity:
     value: 0.35
     unit: dimensionless
     confidence: 90
     description: Reflectivity at 1064 nm wavelength
-    min: null
-    max: null
+    min: 0.3
+    max: 0.7
   refractiveIndex:
     value: 3.45
     unit: dimensionless
     confidence: 95
     description: Refractive index at 1064 nm wavelength
-    min: null
-    max: null
+    min: 2.4
+    max: 4.5
   ablationThreshold:
     value: 0.5
     unit: J/cm²
     confidence: 85
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
-    min: null
-    max: null
+    min: 0.1
+    max: 10.0
   laserDamageThreshold:
     value: 1.2
     unit: J/cm²
     confidence: 82
     description: Single-shot laser-induced damage threshold at 1064 nm
-    min: null
-    max: null
+    min: 0.05
+    max: 5.0
   crystallineStructure:
     value: Zinc blende
     unit: crystal structure
@@ -121,22 +121,22 @@ materialProperties:
     unit: eV
     confidence: 98
     description: Direct bandgap energy at 300K
-    min: null
-    max: null
+    min: 0.1
+    max: 6.0
   fractureToughness:
     value: 0.44
     unit: MPa·m¹/²
     confidence: 85
     description: Fracture toughness for brittle fracture behavior
-    min: null
-    max: null
+    min: 0.7
+    max: 5.0
   thermalDestructionPoint:
     value: 1238
     unit: °C
     confidence: 95
     description: Temperature where solid-to-liquid phase transition occurs
-    min: null
-    max: null
+    min: 100
+    max: 1414
   thermalDestructionType: Melting
 applications:
 - Aerospace

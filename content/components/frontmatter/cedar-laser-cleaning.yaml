@@ -61,12 +61,13 @@ materialProperties:
     min: 800
     max: 2500
   thermalDestructionPoint:
-    value: 380.0
+    value: 400.0
     unit: °C
     confidence: 92
     description: Temperature where thermal decomposition begins
     min: 200
     max: 500
+  thermalDestructionType: Decomposition
   thermalDiffusivity:
     value: 0.16
     unit: mm²/s
@@ -85,38 +86,39 @@ materialProperties:
     value: 0.85
     unit: dimensionless
     confidence: 82
-    description: Estimated absorption coefficient for near-infrared laser wavelengths (1064 nm)
-    min: null
-    max: null
+    description: Estimated absorption coefficient for near-infrared laser wavelengths
+      (1064 nm)
+    min: 0.7
+    max: 0.95
   reflectivity:
     value: 0.15
     unit: dimensionless
     confidence: 80
     description: Approximate reflectivity for wood surfaces at common laser wavelengths
-    min: null
-    max: null
+    min: 0.05
+    max: 0.3
   ablationThreshold:
     value: 1.2
     unit: J/cm²
     confidence: 81
-    description: Estimated laser ablation threshold for nanosecond pulses at 1064 nm
-    min: null
-    max: null
+    description: Estimated laser ablation threshold for nanosecond pulses at 1064
+      nm
+    min: 0.5
+    max: 3.0
   porosity:
     value: 65
     unit: '%'
     confidence: 87
     description: Typical porosity percentage in cedar wood structure
-    min: null
-    max: null
+    min: 5.0
+    max: 75.0
   moistureContent:
     value: 12
     unit: '%'
     confidence: 90
     description: Equilibrium moisture content at standard conditions
-    min: null
-    max: null
-  thermalDestructionType: Decomposition
+    min: 6.0
+    max: 20.0
 applications:
 - Cultural Heritage
 - Marine
@@ -171,18 +173,29 @@ machineSettings:
     description: Optimal scanning speed for uniform cleaning coverage
     min: 500
     max: 1200
+  fluence:
+    value: 4.5
+    unit: J/cm²
+    confidence: 88
+    description: Energy density threshold for effective Cedar cleaning - Energy density
+      threshold for effective organic contaminant removal from wood without charring
+      or thermal damage
+    min: 2.0
+    max: 8.0
   energyDensity:
     value: 1.8
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without wood damage
+    description: Fluence threshold for effective contaminant removal without wood
+      damage
     min: 1.2
     max: 2.5
   overlapRatio:
     value: 65
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive heat accumulation
+    description: Optimal beam overlap for uniform cleaning without excessive heat
+      accumulation
     min: 50
     max: 75
   passCount:
@@ -242,7 +255,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Cedar's softness and varied density distinguish it from other softwoods. These properties demand careful adjustment of laser power and speed to avoid damaging the wood's surface.
+subtitle: Cedar's softness and varied density distinguish it from other softwoods.
+  These properties demand careful adjustment of laser power and speed to avoid damaging
+  the wood's surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -278,9 +293,23 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the cedar surface is obscured by a complex contamination layer averaging 50-200 micrometers thick. This stratum consists of embedded particulate matter, soot, and biological growth, which fills the porous wood structure. The contaminants form a discontinuous, crust-like film that masks the underlying cellular anatomy of the cedar, including tracheids and ray cells. This layer significantly increases surface roughness and creates an uneven topography that alters the wood's intrinsic optical and tactile properties. The foreign material has a higher laser absorption coefficient than the native cedar, creating a non-uniform thermal interface.
-  afterText: Post-cleaning, the 500x view reveals the restored cedar surface, with the contamination layer entirely removed. The underlying cellular structure, including the distinct longitudinal tracheids and medullary rays, is now fully exposed and clearly defined. The surface topography is significantly smoother, with a measured roughness (Ra) reduction of approximately 85%. The wood's natural, open porosity is re-established, restoring its original material characteristics and providing a clean substrate for any subsequent conservation treatments.
-  description: Microscopic analysis of cedar surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the cedar surface is obscured by a complex contamination
+    layer averaging 50-200 micrometers thick. This stratum consists of embedded particulate
+    matter, soot, and biological growth, which fills the porous wood structure. The
+    contaminants form a discontinuous, crust-like film that masks the underlying cellular
+    anatomy of the cedar, including tracheids and ray cells. This layer significantly
+    increases surface roughness and creates an uneven topography that alters the wood's
+    intrinsic optical and tactile properties. The foreign material has a higher laser
+    absorption coefficient than the native cedar, creating a non-uniform thermal interface.
+  afterText: Post-cleaning, the 500x view reveals the restored cedar surface, with
+    the contamination layer entirely removed. The underlying cellular structure, including
+    the distinct longitudinal tracheids and medullary rays, is now fully exposed and
+    clearly defined. The surface topography is significantly smoother, with a measured
+    roughness (Ra) reduction of approximately 85%. The wood's natural, open porosity
+    is re-established, restoring its original material characteristics and providing
+    a clean substrate for any subsequent conservation treatments.
+  description: Microscopic analysis of cedar surface before and after laser cleaning
+    treatment
   alt: Microscopic view of cedar surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -300,7 +329,8 @@ caption:
     materialType: Wood
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Cedar surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Cedar surface after laser cleaning showing detailed surface
+      structure
     url: /images/material/cedar-laser-cleaning-micro.jpg
 tags:
 - wood

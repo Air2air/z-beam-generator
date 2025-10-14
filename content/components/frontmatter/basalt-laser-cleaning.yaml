@@ -79,36 +79,36 @@ materialProperties:
     unit: MPa
     confidence: 85
     description: Uniaxial compressive strength
-    min: null
-    max: null
+    min: 20
+    max: 400
   absorptionCoefficient:
     value: 0.85
     unit: dimensionless
     confidence: 80
     description: Typical absorption coefficient for near-IR wavelengths
-    min: null
-    max: null
+    min: 0.4
+    max: 0.85
   reflectivity:
     value: 0.12
     unit: dimensionless
     confidence: 80
     description: Reflectivity at common laser wavelengths (1064 nm)
-    min: null
-    max: null
+    min: 0.15
+    max: 0.6
   ablationThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 82
     description: Estimated ablation threshold for nanosecond pulses at 1064 nm
-    min: null
-    max: null
+    min: 1.0
+    max: 10.0
   porosity:
     value: 1.5
     unit: '%'
     confidence: 85
     description: Typical porosity of dense basalt
-    min: null
-    max: null
+    min: 0.5
+    max: 50.0
   chemicalStability:
     value: high
     unit: qualitative
@@ -121,8 +121,8 @@ materialProperties:
     unit: °C
     confidence: 90
     description: Temperature where structural breakdown begins
-    min: null
-    max: null
+    min: 600
+    max: 1700
   thermalDestructionType: Structural breakdown
 applications:
 - Aerospace
@@ -140,7 +140,8 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Basalt surface cleaning without thermal damage
+    description: Optimal average power for Basalt surface cleaning without thermal
+      damage
     min: 80
     max: 120
   wavelength:
@@ -178,6 +179,15 @@ machineSettings:
     description: Optimal scanning speed for uniform surface treatment
     min: 300
     max: 800
+  fluence:
+    value: 3.5
+    unit: J/cm²
+    confidence: 86
+    description: Energy density threshold for effective Basalt cleaning - Energy density
+      threshold for effective contaminant removal from stone surfaces without substrate
+      damage
+    min: 1.5
+    max: 7.0
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
@@ -241,7 +251,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Basalt is a dense, fine-grained igneous stone that can vary in hardness and mineral composition. These variations require careful adjustment of laser settings to effectively remove contaminants without damaging the surface.
+subtitle: Basalt is a dense, fine-grained igneous stone that can vary in hardness
+  and mineral composition. These variations require careful adjustment of laser settings
+  to effectively remove contaminants without damaging the surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -277,9 +289,24 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the basalt surface is obscured by a complex contamination layer. A carbonaceous soot and particulate matrix, approximately 10-50 micrometers thick, adheres tenaciously to the stone's micro-texture. This layer infiltrates the natural micro-fractures and vesicles inherent to the basalt, creating a deep-seated, interlocked bond. The underlying crystalline structure of the feldspar and pyroxene minerals is completely masked. The contaminant's low reflectivity results in a visually homogeneous, matte black appearance that obscures the stone's intrinsic granularity and color variation.
-  afterText: Laser cleaning has restored the basalt to its intrinsic mineralogical state. The contaminant layer has been completely ablated, revealing a clean, well-defined grain boundary network between the feldspar and pyroxene crystals. The surface now exhibits its natural micro-roughness and the distinct geometries of individual mineral grains. The process has effectively cleared the vesicles and micro-fractures, eliminating the binding points for contaminants. This results in a surface with higher light reflectivity, showcasing the material's authentic texture and subtle color gradations.
-  description: Microscopic analysis of basalt surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the basalt surface is obscured by a complex contamination
+    layer. A carbonaceous soot and particulate matrix, approximately 10-50 micrometers
+    thick, adheres tenaciously to the stone's micro-texture. This layer infiltrates
+    the natural micro-fractures and vesicles inherent to the basalt, creating a deep-seated,
+    interlocked bond. The underlying crystalline structure of the feldspar and pyroxene
+    minerals is completely masked. The contaminant's low reflectivity results in a
+    visually homogeneous, matte black appearance that obscures the stone's intrinsic
+    granularity and color variation.
+  afterText: Laser cleaning has restored the basalt to its intrinsic mineralogical
+    state. The contaminant layer has been completely ablated, revealing a clean, well-defined
+    grain boundary network between the feldspar and pyroxene crystals. The surface
+    now exhibits its natural micro-roughness and the distinct geometries of individual
+    mineral grains. The process has effectively cleared the vesicles and micro-fractures,
+    eliminating the binding points for contaminants. This results in a surface with
+    higher light reflectivity, showcasing the material's authentic texture and subtle
+    color gradations.
+  description: Microscopic analysis of basalt surface before and after laser cleaning
+    treatment
   alt: Microscopic view of basalt surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -299,7 +326,8 @@ caption:
     materialType: Stone
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Basalt surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Basalt surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/basalt-laser-cleaning-micro.jpg
 tags:
 - stone

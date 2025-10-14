@@ -44,8 +44,8 @@ materialProperties:
     unit: MPa
     confidence: 90
     description: Uniaxial compressive strength of intact limestone
-    min: null
-    max: null
+    min: 20
+    max: 400
   laserAbsorption:
     value: 8.7
     unit: '%'
@@ -85,30 +85,31 @@ materialProperties:
     value: 0.85
     unit: dimensionless
     confidence: 82
-    description: Optical absorption coefficient for common laser wavelengths (1064 nm)
-    min: null
-    max: null
+    description: Optical absorption coefficient for common laser wavelengths (1064
+      nm)
+    min: 0.4
+    max: 0.85
   reflectivity:
     value: 0.15
     unit: dimensionless
     confidence: 85
     description: Surface reflectivity at 1064 nm wavelength
-    min: null
-    max: null
+    min: 0.15
+    max: 0.6
   ablationThreshold:
     value: 1.5
     unit: J/cm²
     confidence: 80
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
-    min: null
-    max: null
+    min: 1.0
+    max: 10.0
   porosity:
     value: 5.0
     unit: '%'
     confidence: 92
     description: Typical porosity range for dense limestone
-    min: null
-    max: null
+    min: 0.5
+    max: 50.0
   chemicalStability:
     value: Moderate
     unit: qualitative
@@ -121,8 +122,8 @@ materialProperties:
     unit: °C
     confidence: 90
     description: Temperature where structural breakdown begins
-    min: null
-    max: null
+    min: 600
+    max: 1700
   thermalDestructionType: Structural breakdown
 applications:
 - Cultural Heritage
@@ -147,7 +148,8 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimized for limestone absorption and minimal substrate damage
+    description: Near-IR wavelength optimized for limestone absorption and minimal
+      substrate damage
     min: 532
     max: 1064
   spotSize:
@@ -161,23 +163,35 @@ machineSettings:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning coverage and process speed
+    description: Optimal repetition rate for efficient cleaning coverage and process
+      speed
     min: 20
     max: 100
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with controlled thermal effects
+    description: Nanosecond pulse duration for effective contaminant removal with
+      controlled thermal effects
     min: 5
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform cleaning without excessive dwell time
+    description: Optimal scanning speed for uniform cleaning without excessive dwell
+      time
     min: 200
     max: 1000
+  fluence:
+    value: 3.5
+    unit: J/cm²
+    confidence: 86
+    description: Energy density threshold for effective Limestone cleaning - Energy
+      density threshold for effective contaminant removal from stone surfaces without
+      substrate damage
+    min: 1.5
+    max: 7.0
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
@@ -223,7 +237,8 @@ author:
   image: /images/author/yi-chun-lin.jpg
 images:
   hero:
-    alt: Limestone surface undergoing laser cleaning showing precise contamination removal
+    alt: Limestone surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/limestone-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -250,7 +265,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Limestone is a relatively soft and porous sedimentary stone with variable composition. These traits require careful adjustment of laser power and scanning speed to prevent surface damage.
+subtitle: Limestone is a relatively soft and porous sedimentary stone with variable
+  composition. These traits require careful adjustment of laser power and scanning
+  speed to prevent surface damage.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -286,9 +303,21 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the limestone surface is obscured by a complex contamination layer. A heterogeneous crust, 50-200 micrometers thick, adheres tenaciously to the calcite matrix. This layer is a composite of particulate matter, gypsum-rich black crusts, and biological films, which fill the natural micropores (approx. 5% porosity). The original crystalline texture is masked, and micro-fractures are often bridged by these deposits, creating a continuous, degraded surface profile that compromises the stone's integrity and appearance.
-  afterText: Laser cleaning reveals the pristine calcite matrix, restoring the stone's intrinsic micro-topography. At 500x, the surface exhibits a clean, interlocking crystalline structure with clearly defined grain boundaries. The 5% micro-porosity is now fully open and free of occluding deposits. The process has successfully removed the contamination crust without inducing micro-fractures or thermal alteration, leaving a mineralogically intact surface that reflects the original stone fabric.
-  description: Microscopic analysis of limestone surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the limestone surface is obscured by a complex
+    contamination layer. A heterogeneous crust, 50-200 micrometers thick, adheres
+    tenaciously to the calcite matrix. This layer is a composite of particulate matter,
+    gypsum-rich black crusts, and biological films, which fill the natural micropores
+    (approx. 5% porosity). The original crystalline texture is masked, and micro-fractures
+    are often bridged by these deposits, creating a continuous, degraded surface profile
+    that compromises the stone's integrity and appearance.
+  afterText: Laser cleaning reveals the pristine calcite matrix, restoring the stone's
+    intrinsic micro-topography. At 500x, the surface exhibits a clean, interlocking
+    crystalline structure with clearly defined grain boundaries. The 5% micro-porosity
+    is now fully open and free of occluding deposits. The process has successfully
+    removed the contamination crust without inducing micro-fractures or thermal alteration,
+    leaving a mineralogically intact surface that reflects the original stone fabric.
+  description: Microscopic analysis of limestone surface before and after laser cleaning
+    treatment
   alt: Microscopic view of limestone surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -308,7 +337,8 @@ caption:
     materialType: Stone
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Limestone surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Limestone surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/limestone-laser-cleaning-micro.jpg
 tags:
 - stone

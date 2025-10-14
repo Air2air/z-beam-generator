@@ -79,22 +79,22 @@ materialProperties:
     unit: '%'
     confidence: 90
     description: Optical reflectivity at 1064 nm wavelength
-    min: null
-    max: null
+    min: 0.4
+    max: 0.98
   absorptionCoefficient:
     value: 12000000.0
     unit: m⁻¹
     confidence: 85
     description: Absorption coefficient for near-IR lasers
-    min: null
-    max: null
+    min: 0.02
+    max: 0.6
   ablationThreshold:
     value: 0.8
     unit: J/cm²
     confidence: 82
     description: Approximate laser ablation threshold for nanosecond pulses
-    min: null
-    max: null
+    min: 0.5
+    max: 50.0
   oxidationResistance:
     value: Moderate
     unit: qualitative
@@ -114,22 +114,22 @@ materialProperties:
     unit: '% IACS'
     confidence: 92
     description: Electrical conductivity relative to copper standard
-    min: null
-    max: null
+    min: 100000.0
+    max: 65000000.0
   vaporizationPoint:
     value: 907
     unit: °C
     confidence: 95
     description: Boiling point of zinc
-    min: null
-    max: null
+    min: 1500
+    max: 5900
   thermalDestructionPoint:
     value: 419.5
     unit: °C
     confidence: 97
     description: Temperature where solid-to-liquid phase transition occurs
-    min: null
-    max: null
+    min: -38.8
+    max: 3422
   thermalDestructionType: Melting
 applications:
 - Automotive
@@ -180,6 +180,14 @@ machineSettings:
     description: Optimal scanning speed for uniform oxide removal
     min: 300
     max: 800
+  fluence:
+    value: 6.0
+    unit: J/cm²
+    confidence: 92
+    description: Energy density threshold for effective Zinc cleaning - Energy density
+      threshold for effective oxide and contaminant removal from metallic surfaces
+    min: 3.0
+    max: 12.0
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
@@ -243,7 +251,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Zinc has a lower melting point and develops a tenacious oxide layer compared to other non-ferrous metals. These traits require careful control of laser power and pulse settings to avoid surface damage while effectively removing corrosion.
+subtitle: Zinc has a lower melting point and develops a tenacious oxide layer compared
+  to other non-ferrous metals. These traits require careful control of laser power
+  and pulse settings to avoid surface damage while effectively removing corrosion.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -279,9 +289,20 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the zinc surface is obscured by a complex contamination layer. A porous, amorphous oxide/hydroxide matrix, approximately 5-15 µm thick, forms the base. This is overlaid with localized carbonaceous soot deposits and embedded particulate matter, creating a topographically rough and irregular surface. The underlying metallic grain structure is entirely concealed. The contamination exhibits a non-uniform, patchy distribution, with areas of thick crust formation adjacent to regions of thinner, more adherent tarnish.
-  afterText: Laser cleaning has fully restored the native zinc surface. The contamination layer is completely ablated, revealing the underlying metallic grain structure with high clarity. The surface is now topographically uniform, exhibiting only the natural micro-texture of the base metal. The reflectivity is significantly increased, confirming the removal of light-absorbing oxides and particulates.
-  description: Microscopic analysis of zinc surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the zinc surface is obscured by a complex contamination
+    layer. A porous, amorphous oxide/hydroxide matrix, approximately 5-15 µm thick,
+    forms the base. This is overlaid with localized carbonaceous soot deposits and
+    embedded particulate matter, creating a topographically rough and irregular surface.
+    The underlying metallic grain structure is entirely concealed. The contamination
+    exhibits a non-uniform, patchy distribution, with areas of thick crust formation
+    adjacent to regions of thinner, more adherent tarnish.
+  afterText: Laser cleaning has fully restored the native zinc surface. The contamination
+    layer is completely ablated, revealing the underlying metallic grain structure
+    with high clarity. The surface is now topographically uniform, exhibiting only
+    the natural micro-texture of the base metal. The reflectivity is significantly
+    increased, confirming the removal of light-absorbing oxides and particulates.
+  description: Microscopic analysis of zinc surface before and after laser cleaning
+    treatment
   alt: Microscopic view of zinc surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -301,7 +322,8 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Zinc surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Zinc surface after laser cleaning showing detailed surface
+      structure
     url: /images/material/zinc-laser-cleaning-micro.jpg
 tags:
 - metal

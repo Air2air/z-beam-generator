@@ -79,43 +79,43 @@ materialProperties:
     unit: MPa
     confidence: 88
     description: Flexural strength of high-purity YSZ
-    min: null
-    max: null
+    min: 50
+    max: 1000
   absorptionCoefficient:
     value: 8500
     unit: cm⁻¹
     confidence: 82
     description: Absorption coefficient at 1064 nm wavelength
-    min: null
-    max: null
+    min: 0.3
+    max: 0.9
   reflectivity:
     value: 0.15
     unit: dimensionless
     confidence: 85
     description: Reflectivity at 1064 nm for polished surface
-    min: null
-    max: null
+    min: 0.1
+    max: 0.7
   refractiveIndex:
     value: 2.2
     unit: dimensionless
     confidence: 90
     description: Refractive index at visible wavelengths
-    min: null
-    max: null
+    min: 1.5
+    max: 2.7
   ablationThreshold:
     value: 2.8
     unit: J/cm²
     confidence: 80
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
-    min: null
-    max: null
+    min: 2.0
+    max: 15.0
   laserDamageThreshold:
     value: 15
     unit: J/cm²
     confidence: 82
     description: Laser-induced damage threshold for femtosecond pulses
-    min: null
-    max: null
+    min: 1.0
+    max: 10.0
   oxidationResistance:
     value: Excellent
     unit: qualitative
@@ -142,15 +142,15 @@ materialProperties:
     unit: '%'
     confidence: 88
     description: Typical porosity for sintered technical zirconia
-    min: null
-    max: null
+    min: 0.1
+    max: 50.0
   thermalDestructionPoint:
     value: 2715
     unit: °C
     confidence: 90
     description: Temperature where particle fusion or decomposition occurs
-    min: null
-    max: null
+    min: 1000
+    max: 3827
   thermalDestructionType: Sintering
 applications:
 - Aerospace
@@ -168,7 +168,8 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Zirconia surface cleaning without thermal damage
+    description: Optimal average power for Zirconia surface cleaning without thermal
+      damage
     min: 80
     max: 120
   wavelength:
@@ -182,42 +183,56 @@ machineSettings:
     value: 50
     unit: μm
     confidence: 84
-    description: Beam spot diameter optimized for precision cleaning and energy density control
+    description: Beam spot diameter optimized for precision cleaning and energy density
+      control
     min: 30
     max: 100
   repetitionRate:
     value: 100
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning coverage while maintaining thermal control
+    description: High repetition rate for efficient cleaning coverage while maintaining
+      thermal control
     min: 50
     max: 200
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with minimal substrate interaction
+    description: Nanosecond pulse duration for effective contaminant removal with
+      minimal substrate interaction
     min: 5
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform cleaning coverage and process efficiency
+    description: Optimal scanning speed for uniform cleaning coverage and process
+      efficiency
     min: 300
     max: 1000
+  fluence:
+    value: 4.0
+    unit: J/cm²
+    confidence: 88
+    description: Energy density threshold for effective Zirconia cleaning - Energy
+      density threshold for effective contaminant removal from ceramic surfaces
+    min: 2.0
+    max: 8.0
   energyDensity:
     value: 5.1
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal while preserving Zirconia substrate
+    description: Fluence threshold for effective contaminant removal while preserving
+      Zirconia substrate
     min: 3.5
     max: 8.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive thermal accumulation
+    description: Optimal beam overlap for uniform cleaning without excessive thermal
+      accumulation
     min: 40
     max: 70
   passCount:
@@ -249,7 +264,8 @@ author:
   image: /images/author/todd-dunning.jpg
 images:
   hero:
-    alt: Zirconia surface undergoing laser cleaning showing precise contamination removal
+    alt: Zirconia surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/zirconia-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -276,7 +292,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Zirconia often throws curveballs during laser treatment due to its varying hardness across samples. Adjust your power levels incrementally, starting below 50 watts, to protect the ceramic’s surface from unintended etching.
+subtitle: Zirconia often throws curveballs during laser treatment due to its varying
+  hardness across samples. Adjust your power levels incrementally, starting below
+  50 watts, to protect the ceramic’s surface from unintended etching.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -312,9 +330,22 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the zirconia surface is obscured by a non-uniform contamination layer. This layer, measuring 5-15 micrometers thick, consists of carbonaceous soot, metallic oxides, and adhered organic residues. The contaminants form a discontinuous, splotchy pattern that masks the underlying ceramic's fine-grain microstructure. The surface texture appears matte and irregular, with the foreign material filling the natural micro-porosity of the sintered ceramic, significantly reducing its inherent reflectivity.
-  afterText: Following laser cleaning, the surface at 500x magnification reveals a complete transformation. The contamination layer has been entirely removed, exposing the pristine, polycrystalline grain structure of the zirconia. The surface is now characterized by a uniform, micro-rough texture consistent with the material's intrinsic 2.5% porosity. This restoration results in a visually clean, homogenous substrate with restored reflectivity, free from any residual film or heat-affected zone that could compromise its mechanical integrity.
-  description: Microscopic analysis of zirconia surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the zirconia surface is obscured by a non-uniform
+    contamination layer. This layer, measuring 5-15 micrometers thick, consists of
+    carbonaceous soot, metallic oxides, and adhered organic residues. The contaminants
+    form a discontinuous, splotchy pattern that masks the underlying ceramic's fine-grain
+    microstructure. The surface texture appears matte and irregular, with the foreign
+    material filling the natural micro-porosity of the sintered ceramic, significantly
+    reducing its inherent reflectivity.
+  afterText: Following laser cleaning, the surface at 500x magnification reveals a
+    complete transformation. The contamination layer has been entirely removed, exposing
+    the pristine, polycrystalline grain structure of the zirconia. The surface is
+    now characterized by a uniform, micro-rough texture consistent with the material's
+    intrinsic 2.5% porosity. This restoration results in a visually clean, homogenous
+    substrate with restored reflectivity, free from any residual film or heat-affected
+    zone that could compromise its mechanical integrity.
+  description: Microscopic analysis of zirconia surface before and after laser cleaning
+    treatment
   alt: Microscopic view of zirconia surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -334,7 +365,8 @@ caption:
     materialType: Ceramic
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Zirconia surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Zirconia surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/zirconia-laser-cleaning-micro.jpg
 tags:
 - ceramic

@@ -79,22 +79,22 @@ materialProperties:
     unit: '%'
     confidence: 82
     description: Approximate reflectivity in visible to near-IR range
-    min: null
-    max: null
+    min: 0.4
+    max: 0.98
   absorptionCoefficient:
     value: 1200000.0
     unit: m⁻¹
     confidence: 80
     description: Estimated absorption coefficient for common laser wavelengths
-    min: null
-    max: null
+    min: 0.02
+    max: 0.6
   ablationThreshold:
     value: 0.8
     unit: J/cm²
     confidence: 81
     description: Estimated laser ablation threshold for nanosecond pulses
-    min: null
-    max: null
+    min: 0.5
+    max: 50.0
   oxidationResistance:
     value: Poor
     unit: Qualitative
@@ -114,15 +114,15 @@ materialProperties:
     unit: μm Ra
     confidence: 82
     description: Typical surface roughness of polished lead surfaces
-    min: null
-    max: null
+    min: 0.05
+    max: 25.0
   thermalDestructionPoint:
     value: 327.5
     unit: °C
     confidence: 97
     description: Temperature where solid-to-liquid phase transition occurs
-    min: null
-    max: null
+    min: -38.8
+    max: 3422
   thermalDestructionType: Melting
 applications:
 - Nuclear Energy
@@ -178,6 +178,14 @@ machineSettings:
     description: Optimal scanning speed for uniform cleaning
     min: 300
     max: 800
+  fluence:
+    value: 6.0
+    unit: J/cm²
+    confidence: 92
+    description: Energy density threshold for effective Lead cleaning - Energy density
+      threshold for effective oxide and contaminant removal from metallic surfaces
+    min: 3.0
+    max: 12.0
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
@@ -248,7 +256,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Lead is a soft, low-melting-point metal that is easily damaged. This requires careful control of laser power to effectively remove contaminants without melting the surface.
+subtitle: Lead is a soft, low-melting-point metal that is easily damaged. This requires
+  careful control of laser power to effectively remove contaminants without melting
+  the surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -284,9 +294,25 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the lead surface is heavily obscured by a complex contamination layer. A stratified crust, approximately 10-20 µm thick, adheres to the substrate. This layer consists of a porous matrix of lead carbonates and sulfates, intermixed with embedded particulate matter. The underlying lead's characteristic FCC crystalline structure is entirely hidden. The surface texture is highly irregular, with fissures and dendritic oxidation patterns propagating from initial nucleation sites. This heterogeneous layer significantly alters the surface's reflectivity and masks the native metallic properties of the soft lead substrate.
-  afterText: Laser cleaning has restored the surface to its native metallic state. At 500x magnification, the contamination crust has been completely ablated, revealing the underlying FCC crystalline grain structure of the pure lead. The surface now exhibits a uniform, micro-roughened texture with an average roughness (Ra) near 0.1 µm, a direct result of the laser's selective interaction with the contaminants. The process has eliminated the stratified oxides and fissures, leaving a clean, homogenous surface. This restoration significantly increases reflectivity and provides a pristine, metallurgically pure substrate for subsequent applications or analysis.
-  description: Microscopic analysis of lead surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the lead surface is heavily obscured by a complex
+    contamination layer. A stratified crust, approximately 10-20 µm thick, adheres
+    to the substrate. This layer consists of a porous matrix of lead carbonates and
+    sulfates, intermixed with embedded particulate matter. The underlying lead's characteristic
+    FCC crystalline structure is entirely hidden. The surface texture is highly irregular,
+    with fissures and dendritic oxidation patterns propagating from initial nucleation
+    sites. This heterogeneous layer significantly alters the surface's reflectivity
+    and masks the native metallic properties of the soft lead substrate.
+  afterText: Laser cleaning has restored the surface to its native metallic state.
+    At 500x magnification, the contamination crust has been completely ablated, revealing
+    the underlying FCC crystalline grain structure of the pure lead. The surface now
+    exhibits a uniform, micro-roughened texture with an average roughness (Ra) near
+    0.1 µm, a direct result of the laser's selective interaction with the contaminants.
+    The process has eliminated the stratified oxides and fissures, leaving a clean,
+    homogenous surface. This restoration significantly increases reflectivity and
+    provides a pristine, metallurgically pure substrate for subsequent applications
+    or analysis.
+  description: Microscopic analysis of lead surface before and after laser cleaning
+    treatment
   alt: Microscopic view of lead surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -306,7 +332,8 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Lead surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Lead surface after laser cleaning showing detailed surface
+      structure
     url: /images/material/lead-laser-cleaning-micro.jpg
 tags:
 - metal

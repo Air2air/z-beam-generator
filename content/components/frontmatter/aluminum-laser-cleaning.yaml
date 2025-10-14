@@ -79,29 +79,29 @@ materialProperties:
     unit: '%'
     confidence: 89
     description: Optical reflectivity at 1064 nm wavelength
-    min: null
-    max: null
+    min: 0.4
+    max: 0.98
   absorptionCoefficient:
     value: 12000000.0
     unit: m⁻¹
     confidence: 84
     description: Absorption coefficient at 1064 nm wavelength
-    min: null
-    max: null
+    min: 0.02
+    max: 0.6
   ablationThreshold:
     value: 3.5
     unit: J/cm²
     confidence: 81
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
-    min: null
-    max: null
+    min: 0.5
+    max: 50.0
   oxidationResistance:
     value: 2.5
     unit: nm/hour
     confidence: 87
     description: Native oxide layer growth rate at room temperature
-    min: null
-    max: null
+    min: 0.1
+    max: 10.0
   crystallineStructure:
     value: FCC
     unit: none
@@ -114,22 +114,22 @@ materialProperties:
     unit: MS/m
     confidence: 95
     description: Electrical conductivity of pure aluminum
-    min: null
-    max: null
+    min: 100000.0
+    max: 65000000.0
   laserDamageThreshold:
     value: 15
     unit: J/cm²
     confidence: 80
     description: Damage threshold for millisecond pulses at 1064 nm
-    min: null
-    max: null
+    min: 0.3
+    max: 20.0
   thermalDestructionPoint:
     value: 660
     unit: °C
     confidence: 95
     description: Temperature where solid-to-liquid phase transition occurs
-    min: null
-    max: null
+    min: -38.8
+    max: 3422
   thermalDestructionType: Melting
 applications:
 - Aerospace
@@ -184,6 +184,15 @@ machineSettings:
     description: Optimal scanning speed for uniform cleaning efficiency
     min: 200
     max: 1000
+  fluence:
+    value: 6.0
+    unit: J/cm²
+    confidence: 92
+    description: Energy density threshold for effective Aluminum cleaning - Energy
+      density threshold for effective oxide and contaminant removal from metallic
+      surfaces
+    min: 3.0
+    max: 12.0
   energyDensity:
     value: 5.1
     unit: J/cm²
@@ -220,7 +229,8 @@ author:
   image: /images/author/todd-dunning.jpg
 images:
   hero:
-    alt: Aluminum surface undergoing laser cleaning showing precise contamination removal
+    alt: Aluminum surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/aluminum-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -247,7 +257,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Aluminum's softness and high reflectivity distinguish it from other non-ferrous metals. These traits require carefully calibrated laser settings to effectively remove contaminants without damaging the underlying surface.
+subtitle: Aluminum's softness and high reflectivity distinguish it from other non-ferrous
+  metals. These traits require carefully calibrated laser settings to effectively
+  remove contaminants without damaging the underlying surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -283,9 +295,22 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the aluminum surface is obscured by a complex contamination layer. A porous, amorphous oxide film, approximately 2.5-5 nm thick, forms the base, overlaid with patches of carbonaceous soot and embedded abrasive particles from prior processing. The topography is irregular, with contamination filling the natural grain boundaries and micro-valleys of the substrate. This layer significantly increases surface roughness and creates a barrier that degrades performance for subsequent processes like welding or bonding, masking the metal's inherent properties.
-  afterText: Laser cleaning removes all foreign material, revealing the substrate's true microstructure. The surface now exhibits a clean, defined grain structure with sharp boundaries, free of oxide and particulate residue. Minor sub-surface pitting from prior corrosion may remain visible, but the surface roughness is substantially reduced. This pristine, metallurgically pure surface provides optimal conditions for high-integrity material joining and coating adhesion.
-  description: Microscopic analysis of aluminum surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the aluminum surface is obscured by a complex
+    contamination layer. A porous, amorphous oxide film, approximately 2.5-5 nm thick,
+    forms the base, overlaid with patches of carbonaceous soot and embedded abrasive
+    particles from prior processing. The topography is irregular, with contamination
+    filling the natural grain boundaries and micro-valleys of the substrate. This
+    layer significantly increases surface roughness and creates a barrier that degrades
+    performance for subsequent processes like welding or bonding, masking the metal's
+    inherent properties.
+  afterText: Laser cleaning removes all foreign material, revealing the substrate's
+    true microstructure. The surface now exhibits a clean, defined grain structure
+    with sharp boundaries, free of oxide and particulate residue. Minor sub-surface
+    pitting from prior corrosion may remain visible, but the surface roughness is
+    substantially reduced. This pristine, metallurgically pure surface provides optimal
+    conditions for high-integrity material joining and coating adhesion.
+  description: Microscopic analysis of aluminum surface before and after laser cleaning
+    treatment
   alt: Microscopic view of aluminum surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -305,7 +330,8 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Aluminum surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Aluminum surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/aluminum-laser-cleaning-micro.jpg
 tags:
 - metal

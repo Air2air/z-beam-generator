@@ -79,57 +79,57 @@ materialProperties:
     unit: MPa
     confidence: 90
     description: Flexural strength after chemical strengthening
-    min: null
-    max: null
+    min: 30
+    max: 500
   refractiveIndex:
     value: 1.51
     unit: dimensionless
     confidence: 96
     description: Refractive index at 589 nm wavelength
-    min: null
-    max: null
+    min: 1.45
+    max: 2.0
   transmissivity:
     value: 91.5
     unit: '%'
     confidence: 95
     description: Optical transmittance in visible spectrum (0.55 mm thickness)
-    min: null
-    max: null
+    min: 0.6
+    max: 0.95
   laserDamageThreshold:
     value: 15
     unit: J/cm²
     confidence: 85
     description: Approximate laser damage threshold for nanosecond pulses at 1064 nm
-    min: null
-    max: null
+    min: 2.0
+    max: 50.0
   chemicalStability:
     value: 95
     unit: '% weight retention'
     confidence: 88
     description: Chemical durability in acidic environments (24h exposure)
-    min: null
-    max: null
+    min: 70
+    max: 99
   surfaceRoughness:
     value: 0.5
     unit: nm Ra
     confidence: 90
     description: Typical surface roughness after manufacturing
-    min: null
-    max: null
+    min: 0.001
+    max: 5.0
   compressiveStress:
     value: 800
     unit: MPa
     confidence: 92
     description: Surface compressive stress from ion exchange strengthening
-    min: null
-    max: null
+    min: 50
+    max: 1000
   thermalDestructionPoint:
     value: 850
     unit: °C
     confidence: 90
     description: Temperature where glass transitions from rigid to pliable state
-    min: null
-    max: null
+    min: 500
+    max: 1723
   thermalDestructionType: Softening
 applications:
 - Electronics Manufacturing

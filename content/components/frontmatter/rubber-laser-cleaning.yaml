@@ -79,36 +79,36 @@ materialProperties:
     unit: dimensionless
     confidence: 82
     description: High absorption coefficient for IR wavelengths
-    min: null
-    max: null
+    min: 0.5
+    max: 0.95
   reflectivity:
     value: 0.08
     unit: dimensionless
     confidence: 81
     description: Low reflectivity at common laser wavelengths
-    min: null
-    max: null
+    min: 0.05
+    max: 0.5
   ablationThreshold:
     value: 0.8
     unit: J/cm²
     confidence: 80
     description: Threshold fluence for 1064 nm laser ablation
-    min: null
-    max: null
+    min: 0.5
+    max: 8.0
   chemicalStability:
     value: 70
     unit: rating
     confidence: 83
     description: Moderate chemical stability rating
-    min: null
-    max: null
+    min: 1
+    max: 10
   thermalDestructionPoint:
     value: 180
     unit: °C
     confidence: 80
     description: Temperature where polymer matrix decomposition begins
-    min: null
-    max: null
+    min: 150
+    max: 2000
   thermalDestructionType: Matrix degradation
 applications:
 - Aerospace
@@ -147,7 +147,8 @@ machineSettings:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient Rubber cleaning with thermal management
+    description: Optimal repetition rate for efficient Rubber cleaning with thermal
+      management
     min: 20
     max: 100
   pulseWidth:
@@ -164,6 +165,15 @@ machineSettings:
     description: Optimal scanning speed for Rubber surface treatment
     min: 200
     max: 1000
+  fluence:
+    value: 3.0
+    unit: J/cm²
+    confidence: 86
+    description: Energy density threshold for effective Rubber cleaning - Energy density
+      threshold for composite material cleaning considering matrix and reinforcement
+      properties
+    min: 1.5
+    max: 6.0
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
@@ -227,7 +237,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Operators have learned that rubber performs best when you start with minimal power, around 20 watts. Gradually increase to match its variable density, ensuring the laser doesn’t overheat the outer layer during treatment.
+subtitle: Operators have learned that rubber performs best when you start with minimal
+  power, around 20 watts. Gradually increase to match its variable density, ensuring
+  the laser doesn’t overheat the outer layer during treatment.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -263,9 +275,27 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the rubber surface is obscured by a complex contamination layer. This layer, measuring 5-15 micrometers thick, consists of embedded carbonaceous soot, oxidized polymer chains, and particulate matter. The contaminants form a discontinuous, crust-like film that masks the underlying rubber's texture, filling the natural micro-fissures and valleys. The surface morphology is highly irregular, with agglomerated particles creating a topographically rough and uneven profile. This layer significantly alters the surface's properties, increasing its roughness and reducing its effective coefficient of friction. The original elastomeric matrix is no longer visible, as the contaminants have created a brittle, composite crust on the compliant substrate.
-  afterText: Laser cleaning has restored the surface to its native elastomeric state. At 500x magnification, the contaminant crust is entirely absent, revealing the rubber's intrinsic micro-texture of interconnected fibrils and shallow pores. The surface is now uniform and continuous, with no evidence of thermal damage or ablation of the base material. The removal of the particulate-filled layer has re-established the material's original surface energy and topography. This results in a clean, chemically active surface that is optimal for subsequent processes like bonding or coating, with the rubber's fundamental viscoelastic properties fully preserved.
-  description: Microscopic analysis of rubber surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the rubber surface is obscured by a complex contamination
+    layer. This layer, measuring 5-15 micrometers thick, consists of embedded carbonaceous
+    soot, oxidized polymer chains, and particulate matter. The contaminants form a
+    discontinuous, crust-like film that masks the underlying rubber's texture, filling
+    the natural micro-fissures and valleys. The surface morphology is highly irregular,
+    with agglomerated particles creating a topographically rough and uneven profile.
+    This layer significantly alters the surface's properties, increasing its roughness
+    and reducing its effective coefficient of friction. The original elastomeric matrix
+    is no longer visible, as the contaminants have created a brittle, composite crust
+    on the compliant substrate.
+  afterText: Laser cleaning has restored the surface to its native elastomeric state.
+    At 500x magnification, the contaminant crust is entirely absent, revealing the
+    rubber's intrinsic micro-texture of interconnected fibrils and shallow pores.
+    The surface is now uniform and continuous, with no evidence of thermal damage
+    or ablation of the base material. The removal of the particulate-filled layer
+    has re-established the material's original surface energy and topography. This
+    results in a clean, chemically active surface that is optimal for subsequent processes
+    like bonding or coating, with the rubber's fundamental viscoelastic properties
+    fully preserved.
+  description: Microscopic analysis of rubber surface before and after laser cleaning
+    treatment
   alt: Microscopic view of rubber surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -285,7 +315,8 @@ caption:
     materialType: Composite
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Rubber surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Rubber surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/rubber-laser-cleaning-micro.jpg
 tags:
 - composite

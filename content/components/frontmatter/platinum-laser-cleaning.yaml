@@ -79,22 +79,22 @@ materialProperties:
     unit: '%'
     confidence: 90
     description: Reflectivity at 1064 nm wavelength (common laser)
-    min: null
-    max: null
+    min: 0.4
+    max: 0.98
   absorptionCoefficient:
     value: 0.85
     unit: 1/μm
     confidence: 85
     description: Absorption coefficient at 1064 nm wavelength
-    min: null
-    max: null
+    min: 0.02
+    max: 0.6
   ablationThreshold:
     value: 2.8
     unit: J/cm²
     confidence: 82
     description: Estimated laser ablation threshold for nanosecond pulses
-    min: null
-    max: null
+    min: 0.5
+    max: 50.0
   oxidationResistance:
     value: Excellent
     unit: qualitative
@@ -114,15 +114,15 @@ materialProperties:
     unit: MS/m
     confidence: 96
     description: Electrical conductivity at 20°C
-    min: null
-    max: null
+    min: 100000.0
+    max: 65000000.0
   thermalDestructionPoint:
     value: 1768
     unit: °C
     confidence: 97
     description: Temperature where solid-to-liquid phase transition occurs
-    min: null
-    max: null
+    min: -38.8
+    max: 3422
   thermalDestructionType: Melting
 applications:
 - Aerospace
@@ -147,7 +147,8 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimized for Platinum's moderate reflectivity and thermal processing
+    description: Near-IR wavelength optimized for Platinum's moderate reflectivity
+      and thermal processing
     min: 532
     max: 1064
   spotSize:
@@ -161,7 +162,8 @@ machineSettings:
     value: 50
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning while maintaining thermal control
+    description: High repetition rate for efficient cleaning while maintaining thermal
+      control
     min: 20
     max: 100
   pulseWidth:
@@ -178,6 +180,15 @@ machineSettings:
     description: Scan speed balancing cleaning efficiency and thermal management
     min: 300
     max: 800
+  fluence:
+    value: 6.0
+    unit: J/cm²
+    confidence: 92
+    description: Energy density threshold for effective Platinum cleaning - Energy
+      density threshold for effective oxide and contaminant removal from metallic
+      surfaces
+    min: 3.0
+    max: 12.0
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
@@ -196,7 +207,8 @@ machineSettings:
     value: 3
     unit: passes
     confidence: 85
-    description: Recommended number of passes for thorough cleaning without substrate damage
+    description: Recommended number of passes for thorough cleaning without substrate
+      damage
     min: 2
     max: 5
   laserType:
@@ -221,7 +233,8 @@ author:
   image: /images/author/ikmanda-roswati.jpg
 images:
   hero:
-    alt: Platinum surface undergoing laser cleaning showing precise contamination removal
+    alt: Platinum surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/platinum-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -248,7 +261,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Platinum has an extremely high melting point and is very resistant to chemical reactions. These traits demand careful laser settings to effectively remove contaminants without affecting the underlying metal.
+subtitle: Platinum has an extremely high melting point and is very resistant to chemical
+  reactions. These traits demand careful laser settings to effectively remove contaminants
+  without affecting the underlying metal.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -284,9 +299,23 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the platinum surface is obscured by a non-uniform contamination layer, typically 5-20 µm thick. This layer consists of carbonaceous deposits, adsorbed atmospheric compounds, and fine particulate matter. The underlying platinum's metallic luster is absent, replaced by a matte, topographically complex surface. Contaminants fill the native grain structure, creating a smeared, occluded appearance that masks the true substrate. The surface exhibits poor reflectivity due to this light-scattering layer.
-  afterText: Following laser cleaning, the surface at 500x magnification reveals a complete transformation. The contamination layer has been entirely removed via selective laser ablation, exposing the pristine, polycrystalline platinum substrate. The metal's characteristic grain boundaries are now clearly defined, and the surface exhibits its inherent metallic reflectivity. Minor, sub-micron surface texturing from the laser process is visible, but without thermal damage or alteration to the bulk material's microstructure. The surface is restored to a clean, metallurgically intact state.
-  description: Microscopic analysis of platinum surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the platinum surface is obscured by a non-uniform
+    contamination layer, typically 5-20 µm thick. This layer consists of carbonaceous
+    deposits, adsorbed atmospheric compounds, and fine particulate matter. The underlying
+    platinum's metallic luster is absent, replaced by a matte, topographically complex
+    surface. Contaminants fill the native grain structure, creating a smeared, occluded
+    appearance that masks the true substrate. The surface exhibits poor reflectivity
+    due to this light-scattering layer.
+  afterText: Following laser cleaning, the surface at 500x magnification reveals a
+    complete transformation. The contamination layer has been entirely removed via
+    selective laser ablation, exposing the pristine, polycrystalline platinum substrate.
+    The metal's characteristic grain boundaries are now clearly defined, and the surface
+    exhibits its inherent metallic reflectivity. Minor, sub-micron surface texturing
+    from the laser process is visible, but without thermal damage or alteration to
+    the bulk material's microstructure. The surface is restored to a clean, metallurgically
+    intact state.
+  description: Microscopic analysis of platinum surface before and after laser cleaning
+    treatment
   alt: Microscopic view of platinum surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -306,7 +335,8 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Platinum surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Platinum surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/platinum-laser-cleaning-micro.jpg
 tags:
 - metal

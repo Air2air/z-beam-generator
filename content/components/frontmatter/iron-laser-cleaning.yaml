@@ -79,29 +79,29 @@ materialProperties:
     unit: dimensionless
     confidence: 82
     description: Absorption coefficient for 1064 nm laser wavelength
-    min: null
-    max: null
+    min: 0.02
+    max: 0.6
   reflectivity:
     value: 0.35
     unit: dimensionless
     confidence: 83
     description: Reflectivity for 1064 nm laser wavelength
-    min: null
-    max: null
+    min: 0.4
+    max: 0.98
   ablationThreshold:
     value: 1.2
     unit: J/cm²
     confidence: 80
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
-    min: null
-    max: null
+    min: 0.5
+    max: 50.0
   oxidationResistance:
     value: 2.8
     unit: mg/cm²·h
     confidence: 85
     description: Oxidation rate in air at 800°C
-    min: null
-    max: null
+    min: 0.1
+    max: 10.0
   crystallineStructure:
     value: BCC
     unit: none
@@ -114,22 +114,22 @@ materialProperties:
     unit: μΩ·cm
     confidence: 92
     description: Electrical resistivity at 20°C
-    min: null
-    max: null
+    min: 1.5e-06
+    max: 0.0001
   laserDamageThreshold:
     value: 0.8
     unit: J/cm²
     confidence: 81
     description: Laser-induced damage threshold for surface modification
-    min: null
-    max: null
+    min: 0.3
+    max: 20.0
   thermalDestructionPoint:
     value: 1538
     unit: °C
     confidence: 97
     description: Temperature where solid-to-liquid phase transition occurs
-    min: null
-    max: null
+    min: -38.8
+    max: 3422
   thermalDestructionType: Melting
 applications:
 - Aerospace
@@ -154,7 +154,8 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength with good absorption in iron oxides and minimal substrate damage
+    description: Near-IR wavelength with good absorption in iron oxides and minimal
+      substrate damage
     min: 1030
     max: 1070
   spotSize:
@@ -185,6 +186,14 @@ machineSettings:
     description: Optimal scanning speed for uniform cleaning
     min: 500
     max: 2000
+  fluence:
+    value: 6.0
+    unit: J/cm²
+    confidence: 92
+    description: Energy density threshold for effective Iron cleaning - Energy density
+      threshold for effective oxide and contaminant removal from metallic surfaces
+    min: 3.0
+    max: 12.0
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
@@ -248,7 +257,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Iron is highly prone to oxidation, forming tenacious rust layers unlike other ferrous metals. This requires careful adjustment of laser parameters to effectively remove corrosion without damaging the underlying base metal.
+subtitle: Iron is highly prone to oxidation, forming tenacious rust layers unlike
+  other ferrous metals. This requires careful adjustment of laser parameters to effectively
+  remove corrosion without damaging the underlying base metal.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -284,9 +295,22 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the iron surface is obscured by a complex contamination layer. A porous, amorphous oxide scale, primarily Fe2O3 and Fe3O4, forms a crust ranging from 5-50 µm in thickness. This brittle, fractured layer exhibits poor adhesion to the underlying metal substrate. Embedded particulate matter, including carbonaceous soot and silica dust, is distributed non-uniformly across the surface, creating a topographically rough and irregular profile that masks the native metallic grain structure.
-  afterText: Following laser cleaning, the surface reveals a distinct transformation at 500x magnification. The contamination layer has been completely ablated, exposing the underlying polycrystalline grain structure of the pure iron substrate. The surface now exhibits a clean, micro-rough texture with an average roughness (Ra) below 2 µm, a direct result of the selective removal process. The well-defined grain boundaries and a uniform, light-gray metallic appearance confirm the restoration of the base material.
-  description: Microscopic analysis of iron surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the iron surface is obscured by a complex contamination
+    layer. A porous, amorphous oxide scale, primarily Fe2O3 and Fe3O4, forms a crust
+    ranging from 5-50 µm in thickness. This brittle, fractured layer exhibits poor
+    adhesion to the underlying metal substrate. Embedded particulate matter, including
+    carbonaceous soot and silica dust, is distributed non-uniformly across the surface,
+    creating a topographically rough and irregular profile that masks the native metallic
+    grain structure.
+  afterText: Following laser cleaning, the surface reveals a distinct transformation
+    at 500x magnification. The contamination layer has been completely ablated, exposing
+    the underlying polycrystalline grain structure of the pure iron substrate. The
+    surface now exhibits a clean, micro-rough texture with an average roughness (Ra)
+    below 2 µm, a direct result of the selective removal process. The well-defined
+    grain boundaries and a uniform, light-gray metallic appearance confirm the restoration
+    of the base material.
+  description: Microscopic analysis of iron surface before and after laser cleaning
+    treatment
   alt: Microscopic view of iron surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -306,7 +330,8 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Iron surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Iron surface after laser cleaning showing detailed surface
+      structure
     url: /images/material/iron-laser-cleaning-micro.jpg
 tags:
 - metal

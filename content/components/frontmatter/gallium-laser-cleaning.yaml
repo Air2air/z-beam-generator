@@ -79,64 +79,64 @@ materialProperties:
     unit: °C
     confidence: 92
     description: Boiling point of gallium
-    min: null
-    max: null
+    min: 1500
+    max: 5900
   latentHeatOfFusion:
     value: 80.1
     unit: kJ/kg
     confidence: 88
     description: Heat required for solid-liquid phase change
-    min: null
-    max: null
+    min: 10
+    max: 400
   surfaceTension:
     value: 0.708
     unit: N/m
     confidence: 86
     description: Surface tension of liquid gallium at 30°C
-    min: null
-    max: null
+    min: 0.3
+    max: 2.0
   viscosity:
     value: 1.9
     unit: mPa·s
     confidence: 84
     description: Dynamic viscosity of liquid gallium at 30°C
-    min: null
-    max: null
+    min: 0.3
+    max: 10.0
   reflectivity:
     value: 71
     unit: '%'
     confidence: 85
     description: Optical reflectivity at 500 nm wavelength
-    min: null
-    max: null
+    min: 0.4
+    max: 0.98
   absorptionCoefficient:
     value: 1200000.0
     unit: cm⁻¹
     confidence: 82
     description: Approximate absorption coefficient for visible light
-    min: null
-    max: null
+    min: 0.02
+    max: 0.6
   electricalResistivity:
     value: 14
     unit: nΩ·m
     confidence: 94
     description: Electrical resistivity at 20°C
-    min: null
-    max: null
+    min: 1.5e-06
+    max: 0.0001
   ablationThreshold:
     value: 0.15
     unit: J/cm²
     confidence: 80
     description: Estimated laser ablation threshold for nanosecond pulses
-    min: null
-    max: null
+    min: 0.5
+    max: 50.0
   thermalDestructionPoint:
     value: 29.76
     unit: °C
     confidence: 99
     description: Temperature where solid-to-liquid phase transition occurs
-    min: null
-    max: null
+    min: -38.8
+    max: 3422
   thermalDestructionType: Melting
 applications:
 - Semiconductor Manufacturing
@@ -182,7 +182,8 @@ machineSettings:
     value: 8
     unit: ns
     confidence: 85
-    description: Nanosecond pulses for controlled oxide ablation with minimal thermal damage
+    description: Nanosecond pulses for controlled oxide ablation with minimal thermal
+      damage
     min: 5
     max: 15
   scanSpeed:
@@ -192,6 +193,15 @@ machineSettings:
     description: Optimal scanning speed for uniform oxide removal
     min: 100
     max: 400
+  fluence:
+    value: 6.0
+    unit: J/cm²
+    confidence: 92
+    description: Energy density threshold for effective Gallium cleaning - Energy
+      density threshold for effective oxide and contaminant removal from metallic
+      surfaces
+    min: 3.0
+    max: 12.0
   fluenceThreshold:
     value: 1.2
     unit: J/cm²
@@ -262,7 +272,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Gallium has a uniquely low melting point and soft texture compared to other specialty metals. These traits demand careful control of laser power to avoid surface melting during cleaning.
+subtitle: Gallium has a uniquely low melting point and soft texture compared to other
+  specialty metals. These traits demand careful control of laser power to avoid surface
+  melting during cleaning.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -298,15 +310,33 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: 'At 500x magnification, the gallium surface is obscured by a complex contamination layer. A discontinuous film, measuring 5-15 µm thick, adheres to the substrate. This layer consists of amorphous carbonaceous deposits and fine, embedded particulate matter, creating a topographically varied and irregular surface texture. The underlying gallium''s metallic luster is entirely absent, replaced by a matte, dark appearance.
+  beforeText: 'At 500x magnification, the gallium surface is obscured by a complex
+    contamination layer. A discontinuous film, measuring 5-15 µm thick, adheres to
+    the substrate. This layer consists of amorphous carbonaceous deposits and fine,
+    embedded particulate matter, creating a topographically varied and irregular surface
+    texture. The underlying gallium''s metallic luster is entirely absent, replaced
+    by a matte, dark appearance.
 
 
-    The contamination does not form a uniform coat but exhibits island-like growth patterns and dendritic spreading. These features suggest the contaminants migrated across the surface while the gallium was in its liquid phase, solidifying into a mechanically bonded, non-uniform crust. This layer significantly disrupts the native surface morphology and compromises the material''s functional properties.'
-  afterText: 'Following laser cleaning, the surface at 500x magnification reveals a complete transformation. The contamination layer has been entirely removed via selective laser ablation, exposing the pristine gallium substrate. The surface now exhibits a uniform, clean metallic luster with clearly defined grain boundaries. Minor, sub-micrometer laser texturing is visible, resulting from the precise vaporization of contaminants without damaging the underlying metal.
+    The contamination does not form a uniform coat but exhibits island-like growth
+    patterns and dendritic spreading. These features suggest the contaminants migrated
+    across the surface while the gallium was in its liquid phase, solidifying into
+    a mechanically bonded, non-uniform crust. This layer significantly disrupts the
+    native surface morphology and compromises the material''s functional properties.'
+  afterText: 'Following laser cleaning, the surface at 500x magnification reveals
+    a complete transformation. The contamination layer has been entirely removed via
+    selective laser ablation, exposing the pristine gallium substrate. The surface
+    now exhibits a uniform, clean metallic luster with clearly defined grain boundaries.
+    Minor, sub-micrometer laser texturing is visible, resulting from the precise vaporization
+    of contaminants without damaging the underlying metal.
 
 
-    The process has restored the surface to its native state, eliminating the previous non-uniform crust. The reflectivity and surface energy are now consistent with pure gallium, providing an optimal base for subsequent manufacturing steps. The cleaning has achieved a visually and functionally homogeneous surface.'
-  description: Microscopic analysis of gallium surface before and after laser cleaning treatment
+    The process has restored the surface to its native state, eliminating the previous
+    non-uniform crust. The reflectivity and surface energy are now consistent with
+    pure gallium, providing an optimal base for subsequent manufacturing steps. The
+    cleaning has achieved a visually and functionally homogeneous surface.'
+  description: Microscopic analysis of gallium surface before and after laser cleaning
+    treatment
   alt: Microscopic view of gallium surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -326,7 +356,8 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Gallium surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Gallium surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/gallium-laser-cleaning-micro.jpg
 tags:
 - metal

@@ -44,8 +44,8 @@ materialProperties:
     unit: MPa
     confidence: 89
     description: Compressive strength of hardened stucco
-    min: null
-    max: null
+    min: 5
+    max: 80
   laserAbsorption:
     value: 8.2
     unit: cm⁻¹
@@ -86,50 +86,50 @@ materialProperties:
     unit: dimensionless
     confidence: 88
     description: Optical absorption coefficient for 1064 nm wavelength
-    min: null
-    max: null
+    min: 0.5
+    max: 0.85
   reflectivity:
     value: 0.35
     unit: dimensionless
     confidence: 85
     description: Surface reflectivity at 1064 nm laser wavelength
-    min: null
-    max: null
+    min: 0.15
+    max: 0.5
   ablationThreshold:
     value: 2.8
     unit: J/cm²
     confidence: 84
     description: Minimum fluence required for material removal at 1064 nm
-    min: null
-    max: null
+    min: 1.0
+    max: 8.0
   porosity:
     value: 25
     unit: '%'
     confidence: 90
     description: Typical porosity of cured stucco material
-    min: null
-    max: null
+    min: 10.0
+    max: 40.0
   surfaceRoughness:
     value: 45
     unit: μm Ra
     confidence: 83
     description: Average surface roughness of typical stucco finish
-    min: null
-    max: null
+    min: 5.0
+    max: 100.0
   chemicalStability:
     value: 8
     unit: rating 1-10
     confidence: 88
     description: Chemical stability rating against environmental exposure
-    min: null
-    max: null
+    min: 1
+    max: 10
   thermalDestructionPoint:
     value: 1450
     unit: °C
     confidence: 88
     description: Temperature where structural breakdown begins
-    min: null
-    max: null
+    min: 500
+    max: 1200
   thermalDestructionType: Structural breakdown
 applications:
 - Cultural Heritage
@@ -147,14 +147,16 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Stucco surface cleaning without substrate damage
+    description: Optimal average power for Stucco surface cleaning without substrate
+      damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimized for Stucco absorption and minimal substrate interaction
+    description: Near-IR wavelength optimized for Stucco absorption and minimal substrate
+      interaction
     min: 1030
     max: 1070
   spotSize:
@@ -168,14 +170,16 @@ machineSettings:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning coverage and process speed
+    description: Optimal repetition rate for efficient cleaning coverage and process
+      speed
     min: 20
     max: 100
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with controlled thermal effects
+    description: Nanosecond pulse duration for effective contaminant removal with
+      controlled thermal effects
     min: 5
     max: 20
   scanSpeed:
@@ -185,18 +189,28 @@ machineSettings:
     description: Optimal scanning speed for uniform cleaning without thermal accumulation
     min: 200
     max: 1000
+  fluence:
+    value: 3.0
+    unit: J/cm²
+    confidence: 85
+    description: Energy density threshold for effective Stucco cleaning - Energy density
+      threshold for effective cleaning of porous masonry materials
+    min: 1.5
+    max: 6.0
   energyDensity:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal while preserving Stucco substrate
+    description: Fluence threshold for effective contaminant removal while preserving
+      Stucco substrate
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning coverage without excessive processing
+    description: Optimal beam overlap for uniform cleaning coverage without excessive
+      processing
     min: 30
     max: 70
   passCount:
@@ -255,7 +269,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Stucco has a uniquely textured and porous surface compared to smoother masonry. This texture requires careful adjustment of laser settings to clean effectively without damaging the fragile peaks.
+subtitle: Stucco has a uniquely textured and porous surface compared to smoother masonry.
+  This texture requires careful adjustment of laser settings to clean effectively
+  without damaging the fragile peaks.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -291,9 +307,20 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the stucco surface is obscured by a dense, stratified contamination layer approximately 50-200 µm thick. This layer consists of particulate matter, carbonaceous soot, and biological growth deeply embedded within the material's inherent porosity. The original surface texture, characterized by crystalline hydrates and a rough matrix, is largely undetectable beneath this cohesive, dark biofilm.
-  afterText: Laser cleaning reveals the original stucco matrix, characterized by interlocking calcium silicate hydrate crystals and a porosity of approximately 25%. The surface roughness (45 µm Ra) is now fully visible, free from embedded contaminants. The process has selectively ablated the surface layer without inducing micro-fractures, preserving the substrate's compressive strength of 15 MPa and restoring the material's intrinsic, light-toned appearance.
-  description: Microscopic analysis of stucco surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the stucco surface is obscured by a dense, stratified
+    contamination layer approximately 50-200 µm thick. This layer consists of particulate
+    matter, carbonaceous soot, and biological growth deeply embedded within the material's
+    inherent porosity. The original surface texture, characterized by crystalline
+    hydrates and a rough matrix, is largely undetectable beneath this cohesive, dark
+    biofilm.
+  afterText: Laser cleaning reveals the original stucco matrix, characterized by interlocking
+    calcium silicate hydrate crystals and a porosity of approximately 25%. The surface
+    roughness (45 µm Ra) is now fully visible, free from embedded contaminants. The
+    process has selectively ablated the surface layer without inducing micro-fractures,
+    preserving the substrate's compressive strength of 15 MPa and restoring the material's
+    intrinsic, light-toned appearance.
+  description: Microscopic analysis of stucco surface before and after laser cleaning
+    treatment
   alt: Microscopic view of stucco surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -313,7 +340,8 @@ caption:
     materialType: Masonry
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Stucco surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Stucco surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/stucco-laser-cleaning-micro.jpg
 tags:
 - masonry

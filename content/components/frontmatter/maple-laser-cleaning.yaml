@@ -61,12 +61,13 @@ materialProperties:
     min: 800
     max: 2500
   thermalDestructionPoint:
-    value: 230.0
+    value: 400.0
     unit: °C
     confidence: 92
     description: Temperature where thermal decomposition begins
     min: 200
     max: 500
+  thermalDestructionType: Decomposition
   thermalDiffusivity:
     value: 0.165
     unit: mm²/s
@@ -85,59 +86,60 @@ materialProperties:
     value: 0.85
     unit: dimensionless
     confidence: 82
-    description: Estimated absorption coefficient for near-infrared wavelengths (1064 nm)
-    min: null
-    max: null
+    description: Estimated absorption coefficient for near-infrared wavelengths (1064
+      nm)
+    min: 0.7
+    max: 0.95
   reflectivity:
     value: 0.12
     unit: dimensionless
     confidence: 80
     description: Approximate reflectivity at common laser cleaning wavelengths
-    min: null
-    max: null
+    min: 0.05
+    max: 0.3
   ablationThreshold:
     value: 0.8
     unit: J/cm²
     confidence: 85
-    description: Estimated laser ablation threshold for nanosecond pulses at 1064 nm
-    min: null
-    max: null
+    description: Estimated laser ablation threshold for nanosecond pulses at 1064
+      nm
+    min: 0.5
+    max: 3.0
   porosity:
     value: 55
     unit: '%'
     confidence: 88
     description: Typical porosity percentage in maple wood structure
-    min: null
-    max: null
+    min: 5.0
+    max: 75.0
   surfaceRoughness:
     value: 3.2
     unit: μm Ra
     confidence: 85
     description: Average surface roughness of planed maple wood
-    min: null
-    max: null
+    min: 1.0
+    max: 50.0
   moistureContent:
     value: 12
     unit: '%'
     confidence: 95
     description: Equilibrium moisture content at standard conditions
-    min: null
-    max: null
+    min: 6.0
+    max: 20.0
   celluloseContent:
     value: 45
     unit: '%'
     confidence: 90
     description: Average cellulose content affecting laser interaction
-    min: null
-    max: null
+    min: 35.0
+    max: 55.0
   ligninContent:
     value: 25
     unit: '%'
     confidence: 90
     description: Average lignin content influencing thermal degradation behavior
-    min: null
-    max: null
-  thermalDestructionType: Decomposition
+    min: 15.0
+    max: 40.0
 applications:
 - Musical Instrument Manufacturing
 - Furniture Restoration
@@ -192,6 +194,15 @@ machineSettings:
     description: Optimal scanning speed for uniform cleaning coverage
     min: 300
     max: 800
+  fluence:
+    value: 4.5
+    unit: J/cm²
+    confidence: 88
+    description: Energy density threshold for effective Maple cleaning - Energy density
+      threshold for effective organic contaminant removal from wood without charring
+      or thermal damage
+    min: 2.0
+    max: 8.0
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
@@ -257,7 +268,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Maple's density and varied grain patterns differ significantly from other hardwoods. These properties require careful adjustment of laser power and speed to avoid discoloration or surface damage.
+subtitle: Maple's density and varied grain patterns differ significantly from other
+  hardwoods. These properties require careful adjustment of laser power and speed
+  to avoid discoloration or surface damage.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -293,9 +306,21 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the maple surface is obscured by a discontinuous contamination layer, approximately 5-15 µm thick. This layer, composed of embedded soot, dried oils, and microbial biofilms, fills the natural wood pores and masks the underlying cellular structure. The surface texture is irregular and matte, with contamination adhering strongly to the porous, fibrous network of the maple, significantly increasing its visual surface roughness.
-  afterText: Laser cleaning has effectively restored the native maple substrate. The contamination layer is completely removed, revealing the clean, open vessels and distinct ray cells of the wood's anatomy. The surface now exhibits the original, characteristic grain pattern with a texture measuring approximately 3.2 µm Ra. The process has achieved selective ablation of contaminants without carbonizing the underlying cellulose-lignin matrix, resulting in a pristine, well-defined microscopic surface.
-  description: Microscopic analysis of maple surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the maple surface is obscured by a discontinuous
+    contamination layer, approximately 5-15 µm thick. This layer, composed of embedded
+    soot, dried oils, and microbial biofilms, fills the natural wood pores and masks
+    the underlying cellular structure. The surface texture is irregular and matte,
+    with contamination adhering strongly to the porous, fibrous network of the maple,
+    significantly increasing its visual surface roughness.
+  afterText: Laser cleaning has effectively restored the native maple substrate. The
+    contamination layer is completely removed, revealing the clean, open vessels and
+    distinct ray cells of the wood's anatomy. The surface now exhibits the original,
+    characteristic grain pattern with a texture measuring approximately 3.2 µm Ra.
+    The process has achieved selective ablation of contaminants without carbonizing
+    the underlying cellulose-lignin matrix, resulting in a pristine, well-defined
+    microscopic surface.
+  description: Microscopic analysis of maple surface before and after laser cleaning
+    treatment
   alt: Microscopic view of maple surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -315,7 +340,8 @@ caption:
     materialType: Wood
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Maple surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Maple surface after laser cleaning showing detailed surface
+      structure
     url: /images/material/maple-laser-cleaning-micro.jpg
 tags:
 - wood

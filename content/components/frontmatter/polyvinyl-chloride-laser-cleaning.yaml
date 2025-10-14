@@ -79,36 +79,36 @@ materialProperties:
     unit: cm⁻¹
     confidence: 82
     description: Absorption coefficient at 1064 nm wavelength
-    min: null
-    max: null
+    min: 0.6
+    max: 0.95
   reflectivity:
     value: 0.08
     unit: dimensionless
     confidence: 85
     description: Reflectivity at 1064 nm wavelength
-    min: null
-    max: null
+    min: 0.05
+    max: 0.4
   ablationThreshold:
     value: 0.8
     unit: J/cm²
     confidence: 80
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
-    min: null
-    max: null
+    min: 0.2
+    max: 2.0
   chemicalStability:
     value: 85
     unit: '% resistance'
     confidence: 90
     description: Chemical resistance to acids and alkalis
-    min: null
-    max: null
+    min: 50
+    max: 99
   thermalDestructionPoint:
     value: 160
     unit: °C
     confidence: 90
     description: Temperature where polymer chain breakdown begins
-    min: null
-    max: null
+    min: 80
+    max: 400
   thermalDestructionType: Degradation
 applications:
 - Medical Device Manufacturing
@@ -133,7 +133,8 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength providing optimal absorption in PVC contaminants while minimizing substrate damage
+    description: Near-IR wavelength providing optimal absorption in PVC contaminants
+      while minimizing substrate damage
     min: 532
     max: 1064
   spotSize:
@@ -171,6 +172,14 @@ machineSettings:
     description: Optimal scanning speed for PVC laser cleaning applications
     min: 300
     max: 800
+  fluence:
+    value: 2.0
+    unit: J/cm²
+    confidence: 87
+    description: Energy density threshold for effective PVC cleaning - Energy density
+      threshold for polymer surface cleaning without thermal degradation or melting
+    min: 0.8
+    max: 4.0
   fluenceThreshold:
     value: 1.2
     unit: J/cm²
@@ -207,7 +216,8 @@ author:
   image: /images/author/alessandro-moretti.jpg
 images:
   hero:
-    alt: Polyvinyl Chloride surface undergoing laser cleaning showing precise contamination removal
+    alt: Polyvinyl Chloride surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/polyvinyl-chloride-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -234,7 +244,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: PVC has a lower heat tolerance and can release harmful chlorine gas when overheated. This requires careful control of laser settings to avoid melting and ensure safe fume extraction.
+subtitle: PVC has a lower heat tolerance and can release harmful chlorine gas when
+  overheated. This requires careful control of laser settings to avoid melting and
+  ensure safe fume extraction.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -270,9 +282,20 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the PVC surface is obscured by a non-uniform contamination layer, typically measuring 5-20 µm in thickness. This layer consists of embedded particulate matter, organic residues, and a discontinuous film that disrupts the substrate's inherent micro-texture. The contaminants exhibit poor adhesion, forming crack networks and creating shadowed voids where further degradation can initiate. The underlying PVC morphology is largely invisible, with only occasional topographic features hinting at the intact polymer beneath the occluding film.
-  afterText: Laser cleaning has restored the native PVC surface, revealing its characteristic micro-texture with high fidelity. The contaminant layer is entirely removed, eliminating shadowed voids and exposing a continuous, uniform substrate. The surface now displays minimal laser interaction, confirming the process operated effectively below the material's 0.8 J/cm² ablation threshold.
-  description: Microscopic analysis of polyvinyl chloride surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the PVC surface is obscured by a non-uniform
+    contamination layer, typically measuring 5-20 µm in thickness. This layer consists
+    of embedded particulate matter, organic residues, and a discontinuous film that
+    disrupts the substrate's inherent micro-texture. The contaminants exhibit poor
+    adhesion, forming crack networks and creating shadowed voids where further degradation
+    can initiate. The underlying PVC morphology is largely invisible, with only occasional
+    topographic features hinting at the intact polymer beneath the occluding film.
+  afterText: Laser cleaning has restored the native PVC surface, revealing its characteristic
+    micro-texture with high fidelity. The contaminant layer is entirely removed, eliminating
+    shadowed voids and exposing a continuous, uniform substrate. The surface now displays
+    minimal laser interaction, confirming the process operated effectively below the
+    material's 0.8 J/cm² ablation threshold.
+  description: Microscopic analysis of polyvinyl chloride surface before and after
+    laser cleaning treatment
   alt: Microscopic view of polyvinyl chloride surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -292,7 +315,8 @@ caption:
     materialType: Plastic
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Polyvinyl Chloride surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Polyvinyl Chloride surface after laser cleaning showing
+      detailed surface structure
     url: /images/material/polyvinyl-chloride-laser-cleaning-micro.jpg
 tags:
 - plastic

@@ -44,8 +44,8 @@ materialProperties:
     unit: MPa
     confidence: 95
     description: Characteristic compressive strength (C30 concrete)
-    min: null
-    max: null
+    min: 5
+    max: 80
   laserAbsorption:
     value: 8.2
     unit: '%'
@@ -86,36 +86,36 @@ materialProperties:
     unit: dimensionless
     confidence: 85
     description: Laser absorption coefficient for near-IR wavelengths
-    min: null
-    max: null
+    min: 0.5
+    max: 0.85
   reflectivity:
     value: 0.15
     unit: dimensionless
     confidence: 83
     description: Surface reflectivity at common laser wavelengths (1064nm)
-    min: null
-    max: null
+    min: 0.15
+    max: 0.5
   ablationThreshold:
     value: 1.2
     unit: J/cm²
     confidence: 80
     description: Minimum fluence for concrete ablation with pulsed lasers
-    min: null
-    max: null
+    min: 1.0
+    max: 8.0
   porosity:
     value: 12
     unit: '%'
     confidence: 87
     description: Typical porosity range for standard concrete
-    min: null
-    max: null
+    min: 10.0
+    max: 40.0
   thermalDestructionPoint:
     value: 1450
     unit: °C
     confidence: 90
     description: Temperature where structural breakdown begins
-    min: null
-    max: null
+    min: 500
+    max: 1200
   thermalDestructionType: Structural breakdown
 applications:
 - Civil Infrastructure
@@ -133,35 +133,40 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for concrete surface cleaning and contamination removal
+    description: Optimal average power for concrete surface cleaning and contamination
+      removal
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength optimal for concrete mineral absorption and contaminant removal
+    description: Near-infrared wavelength optimal for concrete mineral absorption
+      and contaminant removal
     min: null
     max: null
   spotSize:
     value: 0.8
     unit: mm
     confidence: 84
-    description: Beam spot diameter for effective coverage and energy density on concrete surfaces
+    description: Beam spot diameter for effective coverage and energy density on concrete
+      surfaces
     min: 0.5
     max: 1.2
   repetitionRate:
     value: 20
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient concrete cleaning with adequate cooling between pulses
+    description: Optimal repetition rate for efficient concrete cleaning with adequate
+      cooling between pulses
     min: 10
     max: 50
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective concrete surface ablation without excessive thermal damage
+    description: Nanosecond pulse duration for effective concrete surface ablation
+      without excessive thermal damage
     min: 5
     max: 20
   scanSpeed:
@@ -171,11 +176,20 @@ machineSettings:
     description: Optimal scanning speed for uniform concrete surface treatment
     min: 300
     max: 800
+  fluence:
+    value: 3.0
+    unit: J/cm²
+    confidence: 85
+    description: Energy density threshold for effective Concrete cleaning - Energy
+      density threshold for effective cleaning of porous masonry materials
+    min: 1.5
+    max: 6.0
   energyDensity:
     value: 2.0
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective concrete surface cleaning without substrate damage
+    description: Fluence threshold for effective concrete surface cleaning without
+      substrate damage
     min: 1.5
     max: 3.0
   overlapRatio:
@@ -214,7 +228,8 @@ author:
   image: /images/author/todd-dunning.jpg
 images:
   hero:
-    alt: Concrete surface undergoing laser cleaning showing precise contamination removal
+    alt: Concrete surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/concrete-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -241,7 +256,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Concrete surfaces often have a variable composition and porosity. This requires careful adjustment of laser settings to effectively remove contaminants without damaging the underlying material.
+subtitle: Concrete surfaces often have a variable composition and porosity. This requires
+  careful adjustment of laser settings to effectively remove contaminants without
+  damaging the underlying material.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -277,9 +294,24 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the concrete surface is obscured by a stratified contamination layer, typically 50-200 µm thick. This layer consists of embedded particulate matter, carbonaceous soot, and biological growth, which fill the natural surface pores (approx. 12% porosity). The original texture is masked, and the contamination forms a cohesive, low-reflectivity film that significantly reduces the substrate's inherent laser absorption properties. The interface between the contaminant and the concrete matrix is diffuse, indicating deep penetration into the microstructure.
-  afterText: Post-cleaning analysis at 500x reveals the restored concrete substrate. The contamination layer has been completely removed via selective laser ablation, exposing the unaltered cement paste and aggregate. The original surface texture, including micro-cracks and pores, is now fully visible and structurally intact. The process has not induced melting or glazing, preserving the concrete's compressive strength (35 MPa) and porosity. The surface exhibits higher reflectivity, confirming the removal of the light-absorbing contaminant film and a return to the substrate's baseline optical properties.
-  description: Microscopic analysis of concrete surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the concrete surface is obscured by a stratified
+    contamination layer, typically 50-200 µm thick. This layer consists of embedded
+    particulate matter, carbonaceous soot, and biological growth, which fill the natural
+    surface pores (approx. 12% porosity). The original texture is masked, and the
+    contamination forms a cohesive, low-reflectivity film that significantly reduces
+    the substrate's inherent laser absorption properties. The interface between the
+    contaminant and the concrete matrix is diffuse, indicating deep penetration into
+    the microstructure.
+  afterText: Post-cleaning analysis at 500x reveals the restored concrete substrate.
+    The contamination layer has been completely removed via selective laser ablation,
+    exposing the unaltered cement paste and aggregate. The original surface texture,
+    including micro-cracks and pores, is now fully visible and structurally intact.
+    The process has not induced melting or glazing, preserving the concrete's compressive
+    strength (35 MPa) and porosity. The surface exhibits higher reflectivity, confirming
+    the removal of the light-absorbing contaminant film and a return to the substrate's
+    baseline optical properties.
+  description: Microscopic analysis of concrete surface before and after laser cleaning
+    treatment
   alt: Microscopic view of concrete surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -299,7 +331,8 @@ caption:
     materialType: Masonry
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Concrete surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Concrete surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/concrete-laser-cleaning-micro.jpg
 tags:
 - masonry

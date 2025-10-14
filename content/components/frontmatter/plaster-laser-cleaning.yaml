@@ -44,8 +44,8 @@ materialProperties:
     unit: MPa
     confidence: 94
     description: Uniaxial compressive strength
-    min: null
-    max: null
+    min: 5
+    max: 80
   laserAbsorption:
     value: 8.2
     unit: '%'
@@ -86,50 +86,52 @@ materialProperties:
     unit: dimensionless
     confidence: 82
     description: Estimated absorption coefficient for common laser wavelengths (1-10μm)
-    min: null
-    max: null
+    min: 0.5
+    max: 0.85
   reflectivity:
     value: 0.12
     unit: dimensionless
     confidence: 80
     description: Approximate reflectivity at common laser cleaning wavelengths
-    min: null
-    max: null
+    min: 0.15
+    max: 0.5
   porosity:
     value: 45
     unit: '%'
     confidence: 94
-    description: Typical porosity of set plaster affecting thermal and mechanical properties
-    min: null
-    max: null
+    description: Typical porosity of set plaster affecting thermal and mechanical
+      properties
+    min: 10.0
+    max: 40.0
   ablationThreshold:
     value: 1.2
     unit: J/cm²
     confidence: 85
     description: Estimated laser ablation threshold for common cleaning wavelengths
-    min: null
-    max: null
+    min: 1.0
+    max: 8.0
   dehydrationTemperature:
     value: 128
     unit: °C
     confidence: 96
-    description: Critical temperature where plaster loses water and converts back to hemihydrate
-    min: null
-    max: null
+    description: Critical temperature where plaster loses water and converts back
+      to hemihydrate
+    min: 100
+    max: 200
   waterContent:
     value: 18.6
     unit: '%'
     confidence: 98
     description: Theoretical water content in calcium sulfate dihydrate (by weight)
-    min: null
-    max: null
+    min: 1.0
+    max: 25.0
   thermalDestructionPoint:
     value: 1450
     unit: °C
     confidence: 90
     description: Temperature where structural breakdown begins
-    min: null
-    max: null
+    min: 500
+    max: 1200
   thermalDestructionType: Structural breakdown
 applications:
 - Cultural Heritage
@@ -154,7 +156,8 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimized for plaster absorption and minimal substrate damage
+    description: Near-IR wavelength optimized for plaster absorption and minimal substrate
+      damage
     min: 532
     max: 1064
   spotSize:
@@ -175,16 +178,26 @@ machineSettings:
     value: 15
     unit: ns
     confidence: 85
-    description: Short pulse duration for efficient plaster ablation with minimal heat diffusion
+    description: Short pulse duration for efficient plaster ablation with minimal
+      heat diffusion
     min: 8
     max: 30
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Scanning speed for efficient plaster removal with controlled ablation depth
+    description: Scanning speed for efficient plaster removal with controlled ablation
+      depth
     min: 200
     max: 1000
+  fluence:
+    value: 3.0
+    unit: J/cm²
+    confidence: 85
+    description: Energy density threshold for effective Plaster cleaning - Energy
+      density threshold for effective cleaning of porous masonry materials
+    min: 1.5
+    max: 6.0
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
@@ -203,7 +216,8 @@ machineSettings:
     value: 3
     unit: passes
     confidence: 85
-    description: Recommended number of passes for complete plaster removal without substrate damage
+    description: Recommended number of passes for complete plaster removal without
+      substrate damage
     min: 1
     max: 5
 regulatoryStandards:
@@ -248,7 +262,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Plaster is softer and more porous than other masonry, with a highly variable composition. This requires careful calibration of laser settings to prevent surface damage and ensure uniform cleaning.
+subtitle: Plaster is softer and more porous than other masonry, with a highly variable
+  composition. This requires careful calibration of laser settings to prevent surface
+  damage and ensure uniform cleaning.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -284,9 +300,21 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the plaster surface is obscured by a complex contamination layer, typically 50-200 µm thick. This layer consists of particulate matter (e.g., soot, dust) embedded in a matrix of organic films, such as lipids or hydrocarbons. The underlying plaster's micro-porous structure is filled, and its natural crystalline texture is masked. The contaminants form a continuous, obscuring film that alters the surface's original reflectance and topography.
-  afterText: Laser cleaning selectively removes the contamination layer, revealing the original plaster substrate. The micro-porous network, with pore sizes ranging from 5-50 µm, is now fully exposed and free of foreign material. The intrinsic crystalline structure of the calcium sulfate dihydrate is visible, restoring the surface's natural micro-roughness and light reflectance profile. No mechanical abrasion or residue from the cleaning process is detectable, confirming the non-contact precision of the method.
-  description: Microscopic analysis of plaster surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the plaster surface is obscured by a complex
+    contamination layer, typically 50-200 µm thick. This layer consists of particulate
+    matter (e.g., soot, dust) embedded in a matrix of organic films, such as lipids
+    or hydrocarbons. The underlying plaster's micro-porous structure is filled, and
+    its natural crystalline texture is masked. The contaminants form a continuous,
+    obscuring film that alters the surface's original reflectance and topography.
+  afterText: Laser cleaning selectively removes the contamination layer, revealing
+    the original plaster substrate. The micro-porous network, with pore sizes ranging
+    from 5-50 µm, is now fully exposed and free of foreign material. The intrinsic
+    crystalline structure of the calcium sulfate dihydrate is visible, restoring the
+    surface's natural micro-roughness and light reflectance profile. No mechanical
+    abrasion or residue from the cleaning process is detectable, confirming the non-contact
+    precision of the method.
+  description: Microscopic analysis of plaster surface before and after laser cleaning
+    treatment
   alt: Microscopic view of plaster surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -306,7 +334,8 @@ caption:
     materialType: Masonry
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Plaster surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Plaster surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/plaster-laser-cleaning-micro.jpg
 tags:
 - masonry

@@ -72,15 +72,15 @@ materialProperties:
     unit: μΩ·cm
     confidence: 96
     description: electricalResistivity from Materials.yaml
-    min: null
-    max: null
+    min: 1.5e-06
+    max: 0.0001
   corrosionResistance:
     value: 9.3
     unit: rating_0_10
     confidence: 98
     description: corrosionResistance from Materials.yaml
-    min: null
-    max: null
+    min: 0
+    max: 10
   thermalDiffusivity:
     value: 7.2
     unit: mm²/s
@@ -93,22 +93,22 @@ materialProperties:
     unit: '%'
     confidence: 82
     description: Approximate reflectivity at common laser wavelengths (500-1100 nm)
-    min: null
-    max: null
+    min: 0.4
+    max: 0.98
   absorptionCoefficient:
     value: 1200000.0
     unit: m⁻¹
     confidence: 80
     description: Absorption coefficient for near-infrared lasers
-    min: null
-    max: null
+    min: 0.02
+    max: 0.6
   ablationThreshold:
     value: 0.8
     unit: J/cm²
     confidence: 83
     description: Approximate laser ablation threshold for nanosecond pulses
-    min: null
-    max: null
+    min: 0.5
+    max: 50.0
   oxidationResistance:
     value: High
     unit: qualitative
@@ -128,15 +128,15 @@ materialProperties:
     unit: J/cm²
     confidence: 81
     description: Laser-induced damage threshold for short pulses
-    min: null
-    max: null
+    min: 0.3
+    max: 20.0
   thermalDestructionPoint:
     value: 1668
     unit: °C
     confidence: 97
     description: Temperature where solid-to-liquid phase transition occurs
-    min: null
-    max: null
+    min: -38.8
+    max: 3422
   thermalDestructionType: Melting
 applications:
 - Aerospace
@@ -153,35 +153,40 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Titanium oxide layer removal without substrate damage
+    description: Optimal average power for Titanium oxide layer removal without substrate
+      damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength with good Titanium absorption for surface cleaning applications
+    description: Near-IR wavelength with good Titanium absorption for surface cleaning
+      applications
     min: 1030
     max: 1070
   spotSize:
     value: 50
     unit: μm
     confidence: 84
-    description: Optimal spot diameter for balancing cleaning efficiency and processing speed
+    description: Optimal spot diameter for balancing cleaning efficiency and processing
+      speed
     min: 30
     max: 100
   repetitionRate:
     value: 100
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient surface coverage while maintaining cleaning quality
+    description: High repetition rate for efficient surface coverage while maintaining
+      cleaning quality
     min: 50
     max: 200
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient oxide layer ablation with minimal heat affected zone
+    description: Nanosecond pulse duration for efficient oxide layer ablation with
+      minimal heat affected zone
     min: 5
     max: 20
   scanSpeed:
@@ -191,6 +196,15 @@ machineSettings:
     description: Optimal scanning speed for uniform oxide layer removal
     min: 200
     max: 1000
+  fluence:
+    value: 6.0
+    unit: J/cm²
+    confidence: 92
+    description: Energy density threshold for effective Titanium cleaning - Energy
+      density threshold for effective oxide and contaminant removal from metallic
+      surfaces
+    min: 3.0
+    max: 12.0
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
@@ -202,7 +216,8 @@ machineSettings:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for uniform surface cleaning without excessive processing
+    description: Optimal pulse overlap for uniform surface cleaning without excessive
+      processing
     min: 40
     max: 70
   passCount:
@@ -216,7 +231,8 @@ machineSettings:
     value: Fiber Laser
     unit: n/a
     confidence: 90
-    description: Preferred laser type for Titanium cleaning applications due to reliability and beam quality
+    description: Preferred laser type for Titanium cleaning applications due to reliability
+      and beam quality
     min: null
     max: null
 regulatoryStandards:
@@ -224,8 +240,10 @@ regulatoryStandards:
 - ANSI Z136.1 - Safe Use of Lasers
 - IEC 60825 - Safety of Laser Products
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-- ASTM B265 - Standard Specification for Titanium and Titanium Alloy Strip, Sheet, and Plate
-- ASTM F136 - Standard Specification for Wrought Titanium-6Aluminum-4Vanadium ELI Alloy for Surgical Implant Applications
+- ASTM B265 - Standard Specification for Titanium and Titanium Alloy Strip, Sheet,
+  and Plate
+- ASTM F136 - Standard Specification for Wrought Titanium-6Aluminum-4Vanadium ELI
+  Alloy for Surgical Implant Applications
 - ISO 5832-2 - Implants for surgery - Metallic materials - Part 2 Unalloyed titanium
 - AMS 4900 - Titanium Alloy Sheet, Strip, and Plate
 - FDA 21 CFR 177.2600 - Rubber articles intended for repeated use (titanium dioxide)
@@ -239,7 +257,8 @@ author:
   image: /images/author/alessandro-moretti.jpg
 images:
   hero:
-    alt: Titanium surface undergoing laser cleaning showing precise contamination removal
+    alt: Titanium surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/titanium-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -266,7 +285,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Titanium's reactive nature and variable surface oxides set it apart from other specialty metals. These properties demand precise control of laser settings to remove contaminants without damaging the underlying material.
+subtitle: Titanium's reactive nature and variable surface oxides set it apart from
+  other specialty metals. These properties demand precise control of laser settings
+  to remove contaminants without damaging the underlying material.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -302,9 +323,21 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the titanium surface is obscured by a non-uniform contamination layer, typically 5-20 µm thick. This layer consists of embedded oxides, carbonaceous soot, and salt crystals, which form a discontinuous, crust-like topography. The underlying titanium's characteristic machining marks and grain structure are entirely masked. The contaminants exhibit a porous, agglomerated morphology, creating a high surface area that promotes further corrosion and compromises the material's intrinsic properties.
-  afterText: Laser cleaning has restored the surface to its native state. The contamination layer is completely removed, revealing the original substrate with its fine machining striations and uniform grain structure. The surface is now topographically consistent, with no evidence of the prior oxide crust or embedded particulates. This results in a metallurgically clean interface, restoring the titanium's high corrosion resistance and optimal surface energy for subsequent processing.
-  description: Microscopic analysis of titanium surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the titanium surface is obscured by a non-uniform
+    contamination layer, typically 5-20 µm thick. This layer consists of embedded
+    oxides, carbonaceous soot, and salt crystals, which form a discontinuous, crust-like
+    topography. The underlying titanium's characteristic machining marks and grain
+    structure are entirely masked. The contaminants exhibit a porous, agglomerated
+    morphology, creating a high surface area that promotes further corrosion and compromises
+    the material's intrinsic properties.
+  afterText: Laser cleaning has restored the surface to its native state. The contamination
+    layer is completely removed, revealing the original substrate with its fine machining
+    striations and uniform grain structure. The surface is now topographically consistent,
+    with no evidence of the prior oxide crust or embedded particulates. This results
+    in a metallurgically clean interface, restoring the titanium's high corrosion
+    resistance and optimal surface energy for subsequent processing.
+  description: Microscopic analysis of titanium surface before and after laser cleaning
+    treatment
   alt: Microscopic view of titanium surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -324,7 +357,8 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Titanium surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Titanium surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/titanium-laser-cleaning-micro.jpg
 tags:
 - metal

@@ -79,57 +79,57 @@ materialProperties:
     unit: cm⁻¹
     confidence: 82
     description: Absorption coefficient at 1064 nm wavelength
-    min: null
-    max: null
+    min: 0.6
+    max: 0.95
   reflectivity:
     value: 0.12
     unit: dimensionless
     confidence: 80
     description: Reflectivity at 1064 nm wavelength
-    min: null
-    max: null
+    min: 0.05
+    max: 0.4
   ablationThreshold:
     value: 0.8
     unit: J/cm²
     confidence: 82
     description: Laser ablation threshold for 1064 nm Nd:YAG laser
-    min: null
-    max: null
+    min: 0.2
+    max: 2.0
   chemicalStability:
     value: 98
     unit: '% resistance'
     confidence: 95
     description: Chemical resistance rating across common solvents and acids
-    min: null
-    max: null
+    min: 50
+    max: 99
   crystallineStructure:
     value: 95
     unit: '% crystallinity'
     confidence: 90
     description: Typical crystallinity percentage in virgin PTFE
-    min: null
-    max: null
+    min: 0
+    max: 100
   surfaceEnergy:
     value: 18
     unit: mN/m
     confidence: 92
     description: Surface energy contributing to non-stick properties
-    min: null
-    max: null
+    min: 10
+    max: 50
   dielectricStrength:
     value: 60
     unit: kV/mm
     confidence: 88
     description: Electrical breakdown strength at room temperature
-    min: null
-    max: null
+    min: 10
+    max: 300
   thermalDestructionPoint:
     value: 327
     unit: °C
     confidence: 92
     description: Temperature where polymer chain breakdown begins
-    min: null
-    max: null
+    min: 80
+    max: 400
   thermalDestructionType: Degradation
 applications:
 - Aerospace

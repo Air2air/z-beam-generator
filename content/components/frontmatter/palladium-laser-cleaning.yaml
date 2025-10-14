@@ -79,22 +79,22 @@ materialProperties:
     unit: '%'
     confidence: 85
     description: Optical reflectivity at 1064 nm wavelength
-    min: null
-    max: null
+    min: 0.4
+    max: 0.98
   absorptionCoefficient:
     value: 6.8
     unit: 10⁵ cm⁻¹
     confidence: 82
     description: Absorption coefficient for visible light
-    min: null
-    max: null
+    min: 0.02
+    max: 0.6
   ablationThreshold:
     value: 2.1
     unit: J/cm²
     confidence: 84
     description: Approximate laser ablation threshold at 1064 nm
-    min: null
-    max: null
+    min: 0.5
+    max: 50.0
   oxidationResistance:
     value: High
     unit: qualitative
@@ -114,15 +114,15 @@ materialProperties:
     unit: nΩ·m
     confidence: 94
     description: Electrical resistivity at 20°C
-    min: null
-    max: null
+    min: 1.5e-06
+    max: 0.0001
   thermalDestructionPoint:
     value: 1554.9
     unit: °C
     confidence: 97
     description: Temperature where solid-to-liquid phase transition occurs
-    min: null
-    max: null
+    min: -38.8
+    max: 3422
   thermalDestructionType: Melting
 applications:
 - Aerospace

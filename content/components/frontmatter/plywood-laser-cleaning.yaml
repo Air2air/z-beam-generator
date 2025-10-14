@@ -8,7 +8,8 @@ materialProperties:
     value: 0.6
     unit: g/cm³
     confidence: 92
-    description: Average density of standard plywood, varies with wood species and adhesive content
+    description: Average density of standard plywood, varies with wood species and
+      adhesive content
     min: 0.12
     max: 1.25
   thermalConductivity:
@@ -61,12 +62,13 @@ materialProperties:
     min: 800
     max: 2500
   thermalDestructionPoint:
-    value: 300.0
+    value: 400.0
     unit: °C
     confidence: 92
     description: Temperature where thermal decomposition begins
     min: 200
     max: 500
+  thermalDestructionType: Decomposition
   thermalDiffusivity:
     value: 0.15
     unit: mm²/s
@@ -85,38 +87,38 @@ materialProperties:
     value: 0.75
     unit: dimensionless
     confidence: 84
-    description: Optical absorption coefficient for common laser wavelengths (1064 nm)
-    min: null
-    max: null
+    description: Optical absorption coefficient for common laser wavelengths (1064
+      nm)
+    min: 0.7
+    max: 0.95
   reflectivity:
     value: 0.25
     unit: dimensionless
     confidence: 82
     description: Surface reflectivity for infrared laser wavelengths
-    min: null
-    max: null
+    min: 0.05
+    max: 0.3
   ablationThreshold:
     value: 1.2
     unit: J/cm²
     confidence: 80
     description: Minimum laser fluence required for material removal at 1064 nm wavelength
-    min: null
-    max: null
+    min: 0.5
+    max: 3.0
   porosity:
     value: 15
     unit: '%'
     confidence: 83
     description: Average porosity affecting laser energy absorption and thermal response
-    min: null
-    max: null
+    min: 5.0
+    max: 75.0
   surfaceRoughness:
     value: 3.5
     unit: μm Ra
     confidence: 85
     description: Typical surface roughness of finished plywood surfaces
-    min: null
-    max: null
-  thermalDestructionType: Decomposition
+    min: 1.0
+    max: 50.0
 applications:
 - Aerospace
 - Marine
@@ -140,7 +142,8 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength for optimal wood absorption and minimal glue layer damage
+    description: Near-infrared wavelength for optimal wood absorption and minimal
+      glue layer damage
     min: 1030
     max: 1070
   spotSize:
@@ -154,23 +157,35 @@ machineSettings:
     value: 50
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient surface cleaning with minimal thermal accumulation
+    description: High repetition rate for efficient surface cleaning with minimal
+      thermal accumulation
     min: 30
     max: 100
   pulseWidth:
     value: 12
     unit: ns
     confidence: 85
-    description: Short pulse duration for controlled ablation of contaminants without deep wood penetration
+    description: Short pulse duration for controlled ablation of contaminants without
+      deep wood penetration
     min: 8
     max: 20
   scanSpeed:
     value: 800
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for efficient coverage while maintaining cleaning effectiveness
+    description: Optimal scanning speed for efficient coverage while maintaining cleaning
+      effectiveness
     min: 500
     max: 1200
+  fluence:
+    value: 4.5
+    unit: J/cm²
+    confidence: 88
+    description: Energy density threshold for effective Plywood cleaning - Energy
+      density threshold for effective organic contaminant removal from wood without
+      charring or thermal damage
+    min: 2.0
+    max: 8.0
   energyDensity:
     value: 1.8
     unit: J/cm²
@@ -182,14 +197,16 @@ machineSettings:
     value: 40
     unit: '%'
     confidence: 83
-    description: Optimal overlap between adjacent scan lines for uniform cleaning coverage
+    description: Optimal overlap between adjacent scan lines for uniform cleaning
+      coverage
     min: 30
     max: 60
   passCount:
     value: 2
     unit: passes
     confidence: 88
-    description: Recommended number of passes for complete contaminant removal with safety margin
+    description: Recommended number of passes for complete contaminant removal with
+      safety margin
     min: 1
     max: 3
   laserType:
@@ -241,7 +258,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Plywood's layered adhesive construction and variable veneer quality distinguish it from other engineered woods. These features demand careful power calibration and beam angle control to avoid delamination or surface scorching.
+subtitle: Plywood's layered adhesive construction and variable veneer quality distinguish
+  it from other engineered woods. These features demand careful power calibration
+  and beam angle control to avoid delamination or surface scorching.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -277,12 +296,25 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the plywood surface is obscured by a continuous, amorphous contamination layer approximately 5-15 µm thick. This layer, composed of embedded soot, dust, and organic residues, fills the natural wood pores and creates a textured, matte topography. The underlying wood grain and cellular structure are entirely masked, with the contaminant forming a non-uniform, occluding film that significantly alters the surface's intrinsic properties.
-  afterText: 'Laser cleaning effectively ablates the contamination layer, restoring the plywood''s original micro-topography. The wood''s cellular structure, including tracheids and vessel elements, is now fully exposed and clearly defined. The surface texture reverts to its inherent roughness of approximately 3.5 µm Ra.
+  beforeText: At 500x magnification, the plywood surface is obscured by a continuous,
+    amorphous contamination layer approximately 5-15 µm thick. This layer, composed
+    of embedded soot, dust, and organic residues, fills the natural wood pores and
+    creates a textured, matte topography. The underlying wood grain and cellular structure
+    are entirely masked, with the contaminant forming a non-uniform, occluding film
+    that significantly alters the surface's intrinsic properties.
+  afterText: 'Laser cleaning effectively ablates the contamination layer, restoring
+    the plywood''s original micro-topography. The wood''s cellular structure, including
+    tracheids and vessel elements, is now fully exposed and clearly defined. The surface
+    texture reverts to its inherent roughness of approximately 3.5 µm Ra.
 
 
-    The process selectively removes the contaminant with minimal thermal penetration, preserving the integrity of the underlying wood fibers. No charring or heat-affected zone is visible, confirming precise energy control below the material''s thermal destruction threshold of 300°C. The surface exhibits restored porosity and a clean, open-pore structure.'
-  description: Microscopic analysis of plywood surface before and after laser cleaning treatment
+    The process selectively removes the contaminant with minimal thermal penetration,
+    preserving the integrity of the underlying wood fibers. No charring or heat-affected
+    zone is visible, confirming precise energy control below the material''s thermal
+    destruction threshold of 300°C. The surface exhibits restored porosity and a clean,
+    open-pore structure.'
+  description: Microscopic analysis of plywood surface before and after laser cleaning
+    treatment
   alt: Microscopic view of plywood surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -302,7 +334,8 @@ caption:
     materialType: Wood
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Plywood surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Plywood surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/plywood-laser-cleaning-micro.jpg
 tags:
 - wood

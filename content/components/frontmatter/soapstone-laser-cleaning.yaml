@@ -79,50 +79,50 @@ materialProperties:
     unit: MPa
     confidence: 90
     description: Uniaxial compressive strength
-    min: null
-    max: null
+    min: 20
+    max: 400
   absorptionCoefficient:
     value: 0.65
     unit: dimensionless
     confidence: 82
     description: Optical absorption coefficient at 1064 nm wavelength
-    min: null
-    max: null
+    min: 0.4
+    max: 0.85
   reflectivity:
     value: 0.25
     unit: dimensionless
     confidence: 80
     description: Surface reflectivity at common laser wavelengths
-    min: null
-    max: null
+    min: 0.15
+    max: 0.6
   ablationThreshold:
     value: 2.8
     unit: J/cm²
     confidence: 85
     description: Laser ablation threshold for nanosecond pulses at 1064 nm
-    min: null
-    max: null
+    min: 1.0
+    max: 10.0
   porosity:
     value: 1.2
     unit: '%'
     confidence: 88
     description: Average porosity percentage in dense soapstone varieties
-    min: null
-    max: null
+    min: 0.5
+    max: 50.0
   chemicalStability:
     value: 8.5
     unit: rating 1-10
     confidence: 90
     description: Resistance to chemical attack and weathering
-    min: null
-    max: null
+    min: 1
+    max: 10
   thermalDestructionPoint:
     value: 1400
     unit: °C
     confidence: 85
     description: Temperature where structural breakdown begins
-    min: null
-    max: null
+    min: 600
+    max: 1700
   thermalDestructionType: Structural breakdown
 applications:
 - Cultural Heritage
@@ -178,6 +178,15 @@ machineSettings:
     description: Scanning speed for efficient area coverage
     min: 300
     max: 800
+  fluence:
+    value: 3.5
+    unit: J/cm²
+    confidence: 86
+    description: Energy density threshold for effective Soapstone cleaning - Energy
+      density threshold for effective contaminant removal from stone surfaces without
+      substrate damage
+    min: 1.5
+    max: 7.0
   energyDensity:
     value: 2.5
     unit: J/cm²
@@ -214,7 +223,8 @@ author:
   image: /images/author/ikmanda-roswati.jpg
 images:
   hero:
-    alt: Soapstone surface undergoing laser cleaning showing precise contamination removal
+    alt: Soapstone surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/soapstone-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -241,7 +251,8 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Soapstone is uniquely soft and non-porous, unlike harder stones like granite. Its softness requires lower laser power to prevent etching the surface during cleaning.
+subtitle: Soapstone is uniquely soft and non-porous, unlike harder stones like granite.
+  Its softness requires lower laser power to prevent etching the surface during cleaning.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -277,15 +288,35 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: 'At 500x magnification, the soapstone surface is obscured by a complex contamination layer averaging 15-25 µm in thickness. This layer consists of particulate matter (primarily carbonaceous soot and silica dust) embedded within a matrix of aged organic binders, such as oxidized oils or resins. The contaminants have infiltrated the stone''s micro-porosity, creating a discontinuous, crust-like morphology that masks the underlying mineralogical texture.
+  beforeText: 'At 500x magnification, the soapstone surface is obscured by a complex
+    contamination layer averaging 15-25 µm in thickness. This layer consists of particulate
+    matter (primarily carbonaceous soot and silica dust) embedded within a matrix
+    of aged organic binders, such as oxidized oils or resins. The contaminants have
+    infiltrated the stone''s micro-porosity, creating a discontinuous, crust-like
+    morphology that masks the underlying mineralogical texture.
 
 
-    The surface exhibits a high degree of topographical variation, with contamination accumulating preferentially in micro-fissures and along the boundaries of talc crystals. This results in a darkened, mottled appearance at the microscopic level. The fragile, low-density contamination crust exhibits poor adhesion to the soft soapstone substrate, creating a risk of material loss that includes both the contaminant and friable stone particles during mechanical intervention.'
-  afterText: 'Laser cleaning has effectively removed the contamination crust, revealing the intact, primary surface of the soapstone. At 500x magnification, the homogeneous texture of the interlocking talc crystals is now fully visible, displaying a characteristic platy morphology and a consistent, light-gray hue. The micro-topography is clean and well-defined, with no evidence of residual carbonaceous or particulate matter.
+    The surface exhibits a high degree of topographical variation, with contamination
+    accumulating preferentially in micro-fissures and along the boundaries of talc
+    crystals. This results in a darkened, mottled appearance at the microscopic level.
+    The fragile, low-density contamination crust exhibits poor adhesion to the soft
+    soapstone substrate, creating a risk of material loss that includes both the contaminant
+    and friable stone particles during mechanical intervention.'
+  afterText: 'Laser cleaning has effectively removed the contamination crust, revealing
+    the intact, primary surface of the soapstone. At 500x magnification, the homogeneous
+    texture of the interlocking talc crystals is now fully visible, displaying a characteristic
+    platy morphology and a consistent, light-gray hue. The micro-topography is clean
+    and well-defined, with no evidence of residual carbonaceous or particulate matter.
 
 
-    The process has successfully preserved the stone''s inherent micro-porosity and delicate crystal structure. A direct comparison with the pre-cleaned state shows the elimination of the 15-25 µm contamination layer and the restoration of the original surface geometry. The laser parameters were calibrated to remain well below the stone''s 2.8 J/cm² ablation threshold, ensuring selective contaminant removal without thermal alteration or mechanical damage to the soft substrate.'
-  description: Microscopic analysis of soapstone surface before and after laser cleaning treatment
+    The process has successfully preserved the stone''s inherent micro-porosity and
+    delicate crystal structure. A direct comparison with the pre-cleaned state shows
+    the elimination of the 15-25 µm contamination layer and the restoration of the
+    original surface geometry. The laser parameters were calibrated to remain well
+    below the stone''s 2.8 J/cm² ablation threshold, ensuring selective contaminant
+    removal without thermal alteration or mechanical damage to the soft substrate.'
+  description: Microscopic analysis of soapstone surface before and after laser cleaning
+    treatment
   alt: Microscopic view of soapstone surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -305,7 +336,8 @@ caption:
     materialType: Stone
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Soapstone surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Soapstone surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/soapstone-laser-cleaning-micro.jpg
 tags:
 - stone

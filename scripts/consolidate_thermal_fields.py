@@ -15,6 +15,19 @@ from pathlib import Path
 from typing import Dict, Any, Optional
 import sys
 
+# Category ranges from Categories.yaml (for min/max population)
+CATEGORY_THERMAL_RANGES = {
+    'wood': {'min': 200, 'max': 500, 'unit': '°C'},
+    'ceramic': {'min': 1000, 'max': 3827, 'unit': '°C'},
+    'stone': {'min': 600, 'max': 1700, 'unit': '°C'},
+    'composite': {'min': 150, 'max': 2000, 'unit': '°C'},
+    'plastic': {'min': 80, 'max': 400, 'unit': '°C'},
+    'glass': {'min': 500, 'max': 1723, 'unit': '°C'},
+    'masonry': {'min': 500, 'max': 1200, 'unit': '°C'},
+    'metal': {'min': -38.8, 'max': 3422, 'unit': '°C'},
+    'semiconductor': {'min': 100, 'max': 1414, 'unit': '°C'}
+}
+
 # Mapping of categories to thermal destruction types
 THERMAL_TYPE_MAP = {
     'wood': {
@@ -137,6 +150,12 @@ def consolidate_thermal_fields(data: Dict[str, Any]) -> tuple[bool, str]:
     # Create new thermalDestructionPoint field (preserve existing structure)
     new_thermal_point = thermal_point.copy()
     new_thermal_point['description'] = thermal_config['description']
+    
+    # Populate min/max from category ranges
+    category_range = CATEGORY_THERMAL_RANGES.get(category)
+    if category_range:
+        new_thermal_point['min'] = category_range['min']
+        new_thermal_point['max'] = category_range['max']
     
     # Remove old category-specific fields FIRST
     removed_fields = []

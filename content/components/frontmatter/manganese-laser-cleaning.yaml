@@ -79,22 +79,22 @@ materialProperties:
     unit: dimensionless
     confidence: 82
     description: Estimated absorption coefficient for common laser wavelengths (1064 nm)
-    min: null
-    max: null
+    min: 0.02
+    max: 0.6
   reflectivity:
     value: 0.35
     unit: dimensionless
     confidence: 80
     description: Estimated reflectivity for common laser wavelengths
-    min: null
-    max: null
+    min: 0.4
+    max: 0.98
   ablationThreshold:
     value: 1.8
     unit: J/cm²
     confidence: 82
     description: Estimated laser ablation threshold for nanosecond pulses
-    min: null
-    max: null
+    min: 0.5
+    max: 50.0
   crystallineStructure:
     value: α-Mn (complex cubic)
     unit: crystal system
@@ -114,15 +114,15 @@ materialProperties:
     unit: μΩ·cm
     confidence: 92
     description: Electrical resistivity at room temperature
-    min: null
-    max: null
+    min: 1.5e-06
+    max: 0.0001
   thermalDestructionPoint:
     value: 1246
     unit: °C
     confidence: 94
     description: Temperature where solid-to-liquid phase transition occurs
-    min: null
-    max: null
+    min: -38.8
+    max: 3422
   thermalDestructionType: Melting
 applications:
 - Steel Manufacturing

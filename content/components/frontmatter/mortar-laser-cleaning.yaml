@@ -44,8 +44,8 @@ materialProperties:
     unit: MPa
     confidence: 95
     description: compressiveStrength from Materials.yaml
-    min: null
-    max: null
+    min: 5
+    max: 80
   laserAbsorption:
     value: 0.5
     unit: 1/cm
@@ -86,43 +86,43 @@ materialProperties:
     unit: dimensionless
     confidence: 85
     description: Optical absorption coefficient for common laser wavelengths
-    min: null
-    max: null
+    min: 0.5
+    max: 0.85
   reflectivity:
     value: 0.25
     unit: dimensionless
     confidence: 83
     description: Surface reflectivity at typical laser cleaning wavelengths
-    min: null
-    max: null
+    min: 0.15
+    max: 0.5
   ablationThreshold:
     value: 1.2
     unit: J/cm²
     confidence: 80
     description: Approximate laser ablation threshold for mortar surfaces
-    min: null
-    max: null
+    min: 1.0
+    max: 8.0
   porosity:
     value: 15
     unit: '%'
     confidence: 91
     description: Typical porosity of standard cement mortar
-    min: null
-    max: null
+    min: 10.0
+    max: 40.0
   chemicalStability:
     value: 7.2
     unit: pH
     confidence: 93
     description: Natural alkalinity providing chemical stability
-    min: null
-    max: null
+    min: 2.0
+    max: 14.0
   thermalDestructionPoint:
     value: 1450
     unit: °C
     confidence: 85
     description: Temperature where structural breakdown begins
-    min: null
-    max: null
+    min: 500
+    max: 1200
   thermalDestructionType: Structural breakdown
 applications:
 - Cultural Heritage
@@ -147,7 +147,8 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength for effective mortar ablation with good absorption
+    description: Near-infrared wavelength for effective mortar ablation with good
+      absorption
     min: 1030
     max: 1070
   spotSize:
@@ -178,6 +179,14 @@ machineSettings:
     description: Optimal scanning speed for uniform mortar cleaning
     min: 200
     max: 1000
+  fluence:
+    value: 3.0
+    unit: J/cm²
+    confidence: 85
+    description: Energy density threshold for effective Mortar cleaning - Energy density
+      threshold for effective cleaning of porous masonry materials
+    min: 1.5
+    max: 6.0
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
@@ -241,7 +250,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Mortar is a softer, more porous material than brick or stone, and its composition can vary significantly. This requires careful adjustment of laser settings to effectively remove contaminants without damaging the underlying surface.
+subtitle: Mortar is a softer, more porous material than brick or stone, and its composition
+  can vary significantly. This requires careful adjustment of laser settings to effectively
+  remove contaminants without damaging the underlying surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -277,15 +288,31 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the mortar surface is obscured by a dense, stratified contamination layer approximately 50-200 µm thick. This layer consists of particulate matter, carbonaceous soot, and biological growth, which fill the natural surface pores and create a rough, uneven texture. The contaminants form a cohesive, dark crust that masks the underlying mortar's granular structure and mineral composition, significantly altering its visual and surface properties.
-  afterText: 'Following laser cleaning, the surface reveals the intrinsic granular matrix of the mortar. The contamination crust has been entirely removed, exposing individual sand grains and cementitious binder. The original surface texture, characterized by micro-porosity of approximately 15%, is now fully visible and unobstructed.
+  beforeText: At 500x magnification, the mortar surface is obscured by a dense, stratified
+    contamination layer approximately 50-200 µm thick. This layer consists of particulate
+    matter, carbonaceous soot, and biological growth, which fill the natural surface
+    pores and create a rough, uneven texture. The contaminants form a cohesive, dark
+    crust that masks the underlying mortar's granular structure and mineral composition,
+    significantly altering its visual and surface properties.
+  afterText: 'Following laser cleaning, the surface reveals the intrinsic granular
+    matrix of the mortar. The contamination crust has been entirely removed, exposing
+    individual sand grains and cementitious binder. The original surface texture,
+    characterized by micro-porosity of approximately 15%, is now fully visible and
+    unobstructed.
 
 
-    The laser process has effectively ablated the foreign layers without damaging the substrate. This is evidenced by the sharp, well-defined edges of the cement paste and aggregate particles, confirming the laser''s selective removal at its ablation threshold of ~1.2 J/cm².
+    The laser process has effectively ablated the foreign layers without damaging
+    the substrate. This is evidenced by the sharp, well-defined edges of the cement
+    paste and aggregate particles, confirming the laser''s selective removal at its
+    ablation threshold of ~1.2 J/cm².
 
 
-    The resulting surface is clean and topographically precise, restoring the material''s authentic light-gray color and natural reflectivity. No micro-fracturing or thermal degradation is observed, indicating a controlled removal process that preserved the mortar''s structural integrity.'
-  description: Microscopic analysis of mortar surface before and after laser cleaning treatment
+    The resulting surface is clean and topographically precise, restoring the material''s
+    authentic light-gray color and natural reflectivity. No micro-fracturing or thermal
+    degradation is observed, indicating a controlled removal process that preserved
+    the mortar''s structural integrity.'
+  description: Microscopic analysis of mortar surface before and after laser cleaning
+    treatment
   alt: Microscopic view of mortar surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -305,7 +332,8 @@ caption:
     materialType: Masonry
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Mortar surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Mortar surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/mortar-laser-cleaning-micro.jpg
 tags:
 - masonry

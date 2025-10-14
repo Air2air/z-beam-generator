@@ -79,64 +79,65 @@ materialProperties:
     unit: MPa
     confidence: 85
     description: Bending strength of pristine crown glass
-    min: null
-    max: null
+    min: 30
+    max: 500
   refractiveIndex:
     value: 1.523
     unit: dimensionless
     confidence: 96
     description: Refractive index at 589 nm (sodium D-line)
-    min: null
-    max: null
+    min: 1.45
+    max: 2.0
   absorptionCoefficient:
     value: 0.001
     unit: cm⁻¹
     confidence: 88
     description: Absorption coefficient at 1064 nm (common laser wavelength)
-    min: null
-    max: null
+    min: 0.01
+    max: 0.4
   reflectivity:
     value: 4.2
     unit: '%'
     confidence: 90
     description: Surface reflectivity at normal incidence for 1064 nm wavelength
-    min: null
-    max: null
+    min: 0.04
+    max: 0.92
   ablationThreshold:
     value: 15
     unit: J/cm²
     confidence: 82
-    description: Approximate laser ablation threshold for nanosecond pulses at 1064 nm
-    min: null
-    max: null
+    description: Approximate laser ablation threshold for nanosecond pulses at 1064
+      nm
+    min: 3.0
+    max: 20.0
   laserDamageThreshold:
     value: 25
     unit: J/cm²
     confidence: 80
     description: Laser-induced damage threshold for high-quality crown glass surfaces
-    min: null
-    max: null
+    min: 2.0
+    max: 50.0
   chemicalStability:
     value: 95
     unit: '% resistance'
     confidence: 92
     description: Chemical durability rating against water and mild acids
-    min: null
-    max: null
+    min: 70
+    max: 99
   surfaceRoughness:
     value: 0.5
     unit: nm Ra
     confidence: 88
     description: Typical surface roughness for polished crown glass
-    min: null
-    max: null
+    min: 0.001
+    max: 5.0
   thermalDestructionPoint:
     value: 1400
     unit: °C
     confidence: 90
     description: Temperature where glass transitions from rigid to pliable state
-    min: null
-    max: null
+    min: 500
+    max: 1723
   thermalDestructionType: Softening
 applications:
 - Aerospace
@@ -154,14 +155,16 @@ machineSettings:
     value: 8
     unit: W
     confidence: 90
-    description: Optimal average power for Crown Glass surface cleaning without thermal damage
+    description: Optimal average power for Crown Glass surface cleaning without thermal
+      damage
     min: 5
     max: 15
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength providing optimal absorption in surface contaminants while minimizing glass substrate damage
+    description: Near-IR wavelength providing optimal absorption in surface contaminants
+      while minimizing glass substrate damage
     min: 532
     max: 1064
   spotSize:
@@ -175,14 +178,16 @@ machineSettings:
     value: 20
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate balancing cleaning efficiency and thermal management
+    description: Optimal repetition rate balancing cleaning efficiency and thermal
+      management
     min: 10
     max: 50
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient contaminant removal with controlled thermal effects
+    description: Nanosecond pulse duration for efficient contaminant removal with
+      controlled thermal effects
     min: 5
     max: 20
   scanSpeed:
@@ -192,18 +197,29 @@ machineSettings:
     description: Optimal scanning speed for uniform cleaning coverage
     min: 50
     max: 200
+  fluence:
+    value: 2.5
+    unit: J/cm²
+    confidence: 90
+    description: Energy density threshold for effective Crown Glass cleaning - Energy
+      density threshold for surface cleaning without inducing optical damage or stress
+      fractures
+    min: 1.0
+    max: 5.0
   fluenceThreshold:
     value: 1.2
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal while below Crown Glass damage threshold
+    description: Fluence threshold for effective contaminant removal while below Crown
+      Glass damage threshold
     min: 0.8
     max: 2.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive energy deposition
+    description: Optimal beam overlap for uniform cleaning without excessive energy
+      deposition
     min: 40
     max: 70
   passCount:
@@ -228,7 +244,8 @@ author:
   image: /images/author/ikmanda-roswati.jpg
 images:
   hero:
-    alt: Crown Glass surface undergoing laser cleaning showing precise contamination removal
+    alt: Crown Glass surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/crown-glass-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -255,7 +272,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Pay close attention to Crown Glass during laser treatment—its varying properties can throw off results if you're not careful. Adjust the power controls step by step; even a slight mismatch might harm the delicate finish.
+subtitle: Pay close attention to Crown Glass during laser treatment—its varying properties
+  can throw off results if you're not careful. Adjust the power controls step by step;
+  even a slight mismatch might harm the delicate finish.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -291,9 +310,22 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the crown glass surface is obscured by a heterogeneous contamination layer approximately 2-5 µm thick. This layer consists of particulate matter, including sub-micron silicate dust and carbonaceous soot, embedded in a thin, amorphous film of organic residues. The underlying glass substrate, with its characteristic hardness of 5.5 Mohs, is partially visible through localized microfractures and pinhole defects within the contaminant matrix. The contamination disrupts the native surface, which typically exhibits a roughness of 0.5 nm Ra, creating a topographically complex and optically scattering interface that significantly degrades light transmission and introduces wavefront error.
-  afterText: Laser cleaning has restored the substrate to its pristine state. The contaminant layer is entirely removed, revealing the original polished surface with its 0.5 nm Ra roughness. The glass now exhibits its intrinsic 1.523 refractive index and high laser damage threshold of 25 J/cm², with no observable subsurface damage or micro-fractures from the cleaning process.
-  description: Microscopic analysis of crown glass surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the crown glass surface is obscured by a heterogeneous
+    contamination layer approximately 2-5 µm thick. This layer consists of particulate
+    matter, including sub-micron silicate dust and carbonaceous soot, embedded in
+    a thin, amorphous film of organic residues. The underlying glass substrate, with
+    its characteristic hardness of 5.5 Mohs, is partially visible through localized
+    microfractures and pinhole defects within the contaminant matrix. The contamination
+    disrupts the native surface, which typically exhibits a roughness of 0.5 nm Ra,
+    creating a topographically complex and optically scattering interface that significantly
+    degrades light transmission and introduces wavefront error.
+  afterText: Laser cleaning has restored the substrate to its pristine state. The
+    contaminant layer is entirely removed, revealing the original polished surface
+    with its 0.5 nm Ra roughness. The glass now exhibits its intrinsic 1.523 refractive
+    index and high laser damage threshold of 25 J/cm², with no observable subsurface
+    damage or micro-fractures from the cleaning process.
+  description: Microscopic analysis of crown glass surface before and after laser
+    cleaning treatment
   alt: Microscopic view of crown glass surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -313,7 +345,8 @@ caption:
     materialType: Glass
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Crown Glass surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Crown Glass surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/crown-glass-laser-cleaning-micro.jpg
 tags:
 - glass

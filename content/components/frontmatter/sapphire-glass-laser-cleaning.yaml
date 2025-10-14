@@ -79,57 +79,57 @@ materialProperties:
     unit: MPa
     confidence: 85
     description: Flexural strength of polished sapphire
-    min: null
-    max: null
+    min: 30
+    max: 500
   absorptionCoefficient:
     value: 0.02
     unit: cm⁻¹
     confidence: 86
     description: Absorption coefficient at 1064 nm wavelength
-    min: null
-    max: null
+    min: 0.01
+    max: 0.4
   reflectivity:
     value: 7.5
     unit: '%'
     confidence: 89
     description: Reflectivity at normal incidence for 1064 nm laser
-    min: null
-    max: null
+    min: 0.04
+    max: 0.92
   refractiveIndex:
     value: 1.76
     unit: dimensionless
     confidence: 96
     description: Refractive index at 1064 nm wavelength
-    min: null
-    max: null
+    min: 1.45
+    max: 2.0
   transmissivity:
     value: 85
     unit: '%'
     confidence: 90
     description: Transmission in visible to near-IR range (0.3-4.5 μm)
-    min: null
-    max: null
+    min: 0.6
+    max: 0.95
   ablationThreshold:
     value: 15
     unit: J/cm²
     confidence: 82
     description: Approximate ablation threshold for nanosecond pulses at 1064 nm
-    min: null
-    max: null
+    min: 3.0
+    max: 20.0
   laserDamageThreshold:
     value: 25
     unit: J/cm²
     confidence: 84
     description: Laser-induced damage threshold for high-quality polished surfaces
-    min: null
-    max: null
+    min: 2.0
+    max: 50.0
   chemicalStability:
     value: 95
     unit: '% resistance'
     confidence: 94
     description: Chemical resistance to most acids and alkalis at room temperature
-    min: null
-    max: null
+    min: 70
+    max: 99
   crystallineStructure:
     value: Hexagonal
     unit: crystal system
@@ -142,15 +142,15 @@ materialProperties:
     unit: nm Ra
     confidence: 85
     description: Typical surface roughness for polished optical grade sapphire
-    min: null
-    max: null
+    min: 0.001
+    max: 5.0
   thermalDestructionPoint:
     value: 2040
     unit: °C
     confidence: 97
     description: Temperature where glass transitions from rigid to pliable state
-    min: null
-    max: null
+    min: 500
+    max: 1723
   thermalDestructionType: Softening
 applications:
 - Aerospace
@@ -168,14 +168,16 @@ machineSettings:
     value: 8
     unit: W
     confidence: 90
-    description: Average power for effective contamination removal without substrate damage
+    description: Average power for effective contamination removal without substrate
+      damage
     min: 5
     max: 12
   wavelength:
     value: 355
     unit: nm
     confidence: 92
-    description: UV wavelength for high absorption in contaminants while minimizing sapphire substrate damage
+    description: UV wavelength for high absorption in contaminants while minimizing
+      sapphire substrate damage
     min: 266
     max: 532
   spotSize:
@@ -189,14 +191,16 @@ machineSettings:
     value: 30
     unit: kHz
     confidence: 85
-    description: Optimal repetition rate for efficient cleaning with adequate cooling between pulses
+    description: Optimal repetition rate for efficient cleaning with adequate cooling
+      between pulses
     min: 10
     max: 50
   pulseWidth:
     value: 10
     unit: ns
     confidence: 88
-    description: Nanosecond pulse duration for efficient contaminant ablation with controlled thermal effects
+    description: Nanosecond pulse duration for efficient contaminant ablation with
+      controlled thermal effects
     min: 5
     max: 20
   scanSpeed:
@@ -206,18 +210,29 @@ machineSettings:
     description: Optimal scanning speed for uniform cleaning coverage
     min: 200
     max: 800
+  fluence:
+    value: 2.5
+    unit: J/cm²
+    confidence: 90
+    description: Energy density threshold for effective Sapphire Glass cleaning -
+      Energy density threshold for surface cleaning without inducing optical damage
+      or stress fractures
+    min: 1.0
+    max: 5.0
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 91
-    description: Fluence level above which contaminant removal occurs but below sapphire damage threshold
+    description: Fluence level above which contaminant removal occurs but below sapphire
+      damage threshold
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive energy deposition
+    description: Optimal beam overlap for uniform cleaning without excessive energy
+      deposition
     min: 40
     max: 70
   passCount:
@@ -249,7 +264,8 @@ author:
   image: /images/author/ikmanda-roswati.jpg
 images:
   hero:
-    alt: Sapphire Glass surface undergoing laser cleaning showing precise contamination removal
+    alt: Sapphire Glass surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/sapphire-glass-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -276,7 +292,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Pay close attention to Sapphire Glass during laser treatment—its hardness can be very-very tricky to handle. Adjust the power levels carefully below 50 watts to protect the finish from unintended etching or cracks.
+subtitle: Pay close attention to Sapphire Glass during laser treatment—its hardness
+  can be very-very tricky to handle. Adjust the power levels carefully below 50 watts
+  to protect the finish from unintended etching or cracks.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -312,9 +330,21 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the sapphire surface is obscured by a discontinuous contamination layer, approximately 0.5–2 µm thick. This layer consists of fine particulate matter embedded in a thin, amorphous film, likely hydrocarbon-based. The contaminants disrupt the substrate's inherent smoothness, creating a textured, irregular topography that scatters light and masks the true surface. Isolated micro-scratches from prior handling are also visible, filled with this foreign material.
-  afterText: Laser cleaning has restored the pristine sapphire substrate. The contamination layer is completely removed, revealing the original surface with a roughness of approximately 0.5 nm Ra. The surface is now continuous and uniform, with no residual film or particulates. Pre-existing micro-features like scratches are now clean and sharply defined, demonstrating the process's selectivity and the material's underlying integrity.
-  description: Microscopic analysis of sapphire glass surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the sapphire surface is obscured by a discontinuous
+    contamination layer, approximately 0.5–2 µm thick. This layer consists of fine
+    particulate matter embedded in a thin, amorphous film, likely hydrocarbon-based.
+    The contaminants disrupt the substrate's inherent smoothness, creating a textured,
+    irregular topography that scatters light and masks the true surface. Isolated
+    micro-scratches from prior handling are also visible, filled with this foreign
+    material.
+  afterText: Laser cleaning has restored the pristine sapphire substrate. The contamination
+    layer is completely removed, revealing the original surface with a roughness of
+    approximately 0.5 nm Ra. The surface is now continuous and uniform, with no residual
+    film or particulates. Pre-existing micro-features like scratches are now clean
+    and sharply defined, demonstrating the process's selectivity and the material's
+    underlying integrity.
+  description: Microscopic analysis of sapphire glass surface before and after laser
+    cleaning treatment
   alt: Microscopic view of sapphire glass surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -334,7 +364,8 @@ caption:
     materialType: Glass
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Sapphire Glass surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Sapphire Glass surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/sapphire-glass-laser-cleaning-micro.jpg
 tags:
 - glass

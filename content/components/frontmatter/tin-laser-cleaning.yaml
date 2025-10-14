@@ -79,22 +79,22 @@ materialProperties:
     unit: '%'
     confidence: 90
     description: Optical reflectivity at 1064 nm wavelength
-    min: null
-    max: null
+    min: 0.4
+    max: 0.98
   absorptionCoefficient:
     value: 12000000.0
     unit: m⁻¹
     confidence: 85
     description: Absorption coefficient for near-IR lasers
-    min: null
-    max: null
+    min: 0.02
+    max: 0.6
   ablationThreshold:
     value: 0.8
     unit: J/cm²
     confidence: 82
     description: Approximate laser ablation threshold for nanosecond pulses
-    min: null
-    max: null
+    min: 0.5
+    max: 50.0
   crystallineStructure:
     value: Tetragonal
     unit: none
@@ -114,29 +114,29 @@ materialProperties:
     unit: μΩ·cm
     confidence: 96
     description: Electrical resistivity at 20°C
-    min: null
-    max: null
+    min: 1.5e-06
+    max: 0.0001
   vaporizationTemperature:
     value: 2602
     unit: °C
     confidence: 92
     description: Boiling point of tin
-    min: null
-    max: null
+    min: 1500
+    max: 5900
   latentHeatOfFusion:
     value: 59.2
     unit: kJ/kg
     confidence: 91
     description: Latent heat of fusion
-    min: null
-    max: null
+    min: 10
+    max: 400
   thermalDestructionPoint:
     value: 231.93
     unit: °C
     confidence: 99
     description: Temperature where solid-to-liquid phase transition occurs
-    min: null
-    max: null
+    min: -38.8
+    max: 3422
   thermalDestructionType: Melting
 applications:
 - Electronics Manufacturing
@@ -161,7 +161,8 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 89
-    description: Near-IR wavelength for efficient Tin oxide absorption with minimal substrate heating
+    description: Near-IR wavelength for efficient Tin oxide absorption with minimal
+      substrate heating
     min: 532
     max: 1064
   spotSize:
@@ -192,6 +193,14 @@ machineSettings:
     description: Optimal scanning speed for uniform cleaning
     min: 300
     max: 800
+  fluence:
+    value: 6.0
+    unit: J/cm²
+    confidence: 92
+    description: Energy density threshold for effective Tin cleaning - Energy density
+      threshold for effective oxide and contaminant removal from metallic surfaces
+    min: 3.0
+    max: 12.0
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
@@ -255,7 +264,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Tin has a very low melting point and is relatively soft compared to other non-ferrous metals. These traits demand careful control of laser power and scanning speed to prevent surface melting.
+subtitle: Tin has a very low melting point and is relatively soft compared to other
+  non-ferrous metals. These traits demand careful control of laser power and scanning
+  speed to prevent surface melting.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -291,15 +302,28 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the tin surface is obscured by a non-uniform contamination layer, approximately 5-15 µm thick. This layer consists of embedded oxides, carbonaceous deposits, and particulate matter, creating a topographically complex and irregular texture. The underlying metallic luster of the tin substrate is entirely masked, compromising its surface integrity and functional properties.
-  afterText: 'Laser cleaning effectively removes the contamination layer, revealing the pristine, underlying tin substrate. The surface now exhibits a uniform, matte-grey metallic appearance with the characteristic fine-grain structure of the tetragonal crystalline lattice clearly visible.
+  beforeText: At 500x magnification, the tin surface is obscured by a non-uniform
+    contamination layer, approximately 5-15 µm thick. This layer consists of embedded
+    oxides, carbonaceous deposits, and particulate matter, creating a topographically
+    complex and irregular texture. The underlying metallic luster of the tin substrate
+    is entirely masked, compromising its surface integrity and functional properties.
+  afterText: 'Laser cleaning effectively removes the contamination layer, revealing
+    the pristine, underlying tin substrate. The surface now exhibits a uniform, matte-grey
+    metallic appearance with the characteristic fine-grain structure of the tetragonal
+    crystalline lattice clearly visible.
 
 
-    The process eliminates all foreign material without fluid residue or secondary contamination. The cleaned surface displays minimal micro-roughness and no evidence of melting or heat distortion, confirming precise ablation at energy densities below the material''s damage threshold.
+    The process eliminates all foreign material without fluid residue or secondary
+    contamination. The cleaned surface displays minimal micro-roughness and no evidence
+    of melting or heat distortion, confirming precise ablation at energy densities
+    below the material''s damage threshold.
 
 
-    This restoration results in a surface with optimized reflectivity and improved adhesion properties, directly enhancing performance in applications such as soldering and coating. The base metal is now fully exposed and functionally intact.'
-  description: Microscopic analysis of tin surface before and after laser cleaning treatment
+    This restoration results in a surface with optimized reflectivity and improved
+    adhesion properties, directly enhancing performance in applications such as soldering
+    and coating. The base metal is now fully exposed and functionally intact.'
+  description: Microscopic analysis of tin surface before and after laser cleaning
+    treatment
   alt: Microscopic view of tin surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -319,7 +343,8 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Tin surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Tin surface after laser cleaning showing detailed surface
+      structure
     url: /images/material/tin-laser-cleaning-micro.jpg
 tags:
 - metal

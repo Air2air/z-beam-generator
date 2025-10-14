@@ -79,22 +79,22 @@ materialProperties:
     unit: '%'
     confidence: 80
     description: Approximate reflectivity in visible to near-IR range
-    min: null
-    max: null
+    min: 0.4
+    max: 0.98
   absorptionCoefficient:
     value: 1200000.0
     unit: m⁻¹
     confidence: 78
     description: Absorption coefficient for common laser wavelengths (1064 nm)
-    min: null
-    max: null
+    min: 0.02
+    max: 0.6
   ablationThreshold:
     value: 1.8
     unit: J/cm²
     confidence: 82
     description: Estimated laser ablation threshold for nanosecond pulses
-    min: null
-    max: null
+    min: 0.5
+    max: 50.0
   oxidationResistance:
     value: Moderate
     unit: qualitative
@@ -121,15 +121,15 @@ materialProperties:
     unit: μm Ra
     confidence: 80
     description: Typical surface roughness for machined brass surfaces
-    min: null
-    max: null
+    min: 0.05
+    max: 25.0
   thermalDestructionPoint:
     value: 930
     unit: °C
     confidence: 90
     description: Temperature where solid-to-liquid phase transition occurs
-    min: null
-    max: null
+    min: -38.8
+    max: 3422
   thermalDestructionType: Melting
 applications:
 - Architecture
@@ -150,28 +150,32 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength providing good absorption in Brass oxides with minimal substrate interaction
+    description: Near-IR wavelength providing good absorption in Brass oxides with
+      minimal substrate interaction
     min: 532
     max: 1064
   spotSize:
     value: 80
     unit: μm
     confidence: 84
-    description: Beam spot diameter for effective cleaning resolution and energy density control
+    description: Beam spot diameter for effective cleaning resolution and energy density
+      control
     min: 50
     max: 120
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate balancing cleaning efficiency and thermal management
+    description: Optimal repetition rate balancing cleaning efficiency and thermal
+      management
     min: 20
     max: 100
   pulseWidth:
     value: 12
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient oxide layer ablation with controlled thermal penetration
+    description: Nanosecond pulse duration for efficient oxide layer ablation with
+      controlled thermal penetration
     min: 8
     max: 20
   scanSpeed:
@@ -181,25 +185,36 @@ machineSettings:
     description: Optimal scanning speed for uniform oxide removal across Brass surface
     min: 300
     max: 800
+  fluence:
+    value: 6.0
+    unit: J/cm²
+    confidence: 92
+    description: Energy density threshold for effective Brass cleaning - Energy density
+      threshold for effective oxide and contaminant removal from metallic surfaces
+    min: 3.0
+    max: 12.0
   energyDensity:
     value: 3.5
     unit: J/cm²
     confidence: 90
-    description: Fluence threshold for effective Brass oxide removal while preserving substrate
+    description: Fluence threshold for effective Brass oxide removal while preserving
+      substrate
     min: 2.0
     max: 5.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning coverage without excessive heat accumulation
+    description: Optimal beam overlap for uniform cleaning coverage without excessive
+      heat accumulation
     min: 40
     max: 70
   passCount:
     value: 3
     unit: passes
     confidence: 85
-    description: Recommended number of passes for complete oxide removal from Brass surfaces
+    description: Recommended number of passes for complete oxide removal from Brass
+      surfaces
     min: 2
     max: 5
 regulatoryStandards:
@@ -244,7 +259,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Brass is a softer metal with a lower melting point than materials like aluminum or titanium. This requires careful adjustment of laser power and speed to effectively remove contaminants without damaging the surface.
+subtitle: Brass is a softer metal with a lower melting point than materials like aluminum
+  or titanium. This requires careful adjustment of laser power and speed to effectively
+  remove contaminants without damaging the surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -280,15 +297,31 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the brass surface is obscured by a non-uniform contamination layer, approximately 5-15 µm thick. This layer consists of adherent oxides, primarily copper carbonate (verdigris), and embedded particulate matter. The underlying brass microstructure, including grain boundaries and machining marks, is partially obscured. The surface exhibits a rough, textured topography with localized pitting and areas of delamination, indicating active corrosion beneath the contamination.
-  afterText: 'Laser cleaning has removed the contamination layer, revealing the pristine, underlying brass substrate. The surface now displays a well-defined microstructure with clear grain boundaries and the original machining striations, measuring 0.8 µm Ra in roughness. The uniform, metallic surface is free of oxides and particulates.
+  beforeText: At 500x magnification, the brass surface is obscured by a non-uniform
+    contamination layer, approximately 5-15 µm thick. This layer consists of adherent
+    oxides, primarily copper carbonate (verdigris), and embedded particulate matter.
+    The underlying brass microstructure, including grain boundaries and machining
+    marks, is partially obscured. The surface exhibits a rough, textured topography
+    with localized pitting and areas of delamination, indicating active corrosion
+    beneath the contamination.
+  afterText: 'Laser cleaning has removed the contamination layer, revealing the pristine,
+    underlying brass substrate. The surface now displays a well-defined microstructure
+    with clear grain boundaries and the original machining striations, measuring 0.8
+    µm Ra in roughness. The uniform, metallic surface is free of oxides and particulates.
 
 
-    The process has eliminated the previous pitting and delamination, resulting in a topographically consistent plane. The primary visual improvement is the restoration of the metal''s intrinsic reflectivity, now measured at approximately 65%, a direct result of exposing the uncontaminated, face-centered cubic crystal structure.
+    The process has eliminated the previous pitting and delamination, resulting in
+    a topographically consistent plane. The primary visual improvement is the restoration
+    of the metal''s intrinsic reflectivity, now measured at approximately 65%, a direct
+    result of exposing the uncontaminated, face-centered cubic crystal structure.
 
 
-    This transformation is achieved through precise laser ablation, where controlled pulses vaporize contaminants without thermally damaging the brass substrate, which has a melting point of 930°C. The cleaned surface exhibits enhanced material integrity, providing an optimal foundation for subsequent finishing or protective coating.'
-  description: Microscopic analysis of brass surface before and after laser cleaning treatment
+    This transformation is achieved through precise laser ablation, where controlled
+    pulses vaporize contaminants without thermally damaging the brass substrate, which
+    has a melting point of 930°C. The cleaned surface exhibits enhanced material integrity,
+    providing an optimal foundation for subsequent finishing or protective coating.'
+  description: Microscopic analysis of brass surface before and after laser cleaning
+    treatment
   alt: Microscopic view of brass surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -308,7 +341,8 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Brass surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Brass surface after laser cleaning showing detailed surface
+      structure
     url: /images/material/brass-laser-cleaning-micro.jpg
 tags:
 - metal

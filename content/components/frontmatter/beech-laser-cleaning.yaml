@@ -61,12 +61,13 @@ materialProperties:
     min: 800
     max: 2500
   thermalDestructionPoint:
-    value: 380.0
+    value: 400.0
     unit: °C
     confidence: 92
     description: Temperature where thermal decomposition begins
     min: 200
     max: 500
+  thermalDestructionType: Decomposition
   thermalDiffusivity:
     value: 0.165
     unit: mm²/s
@@ -86,51 +87,50 @@ materialProperties:
     unit: dimensionless
     confidence: 82
     description: Optical absorption coefficient for near-infrared lasers (1064 nm)
-    min: null
-    max: null
+    min: 0.7
+    max: 0.95
   reflectivity:
     value: 0.15
     unit: dimensionless
     confidence: 80
     description: Reflectivity for common laser wavelengths (1064 nm)
-    min: null
-    max: null
+    min: 0.05
+    max: 0.3
   ablationThreshold:
     value: 0.8
     unit: J/cm²
     confidence: 85
     description: Minimum fluence required for material removal with nanosecond pulses
-    min: null
-    max: null
+    min: 0.5
+    max: 3.0
   porosity:
     value: 55
     unit: '%'
     confidence: 91
     description: Typical porosity of beech wood structure
-    min: null
-    max: null
+    min: 5.0
+    max: 75.0
   moistureContent:
     value: 12
     unit: '%'
     confidence: 94
     description: Equilibrium moisture content at standard conditions
-    min: null
-    max: null
+    min: 6.0
+    max: 20.0
   celluloseContent:
     value: 45
     unit: '%'
     confidence: 92
     description: Average cellulose content affecting thermal behavior
-    min: null
-    max: null
+    min: 35.0
+    max: 55.0
   ligninContent:
     value: 25
     unit: '%'
     confidence: 90
     description: Lignin content influencing char formation during laser interaction
-    min: null
-    max: null
-  thermalDestructionType: Decomposition
+    min: 15.0
+    max: 40.0
 applications:
 - Aerospace
 - Automotive
@@ -185,6 +185,15 @@ machineSettings:
     description: Optimal scanning speed for uniform cleaning without thermal damage
     min: 300
     max: 800
+  fluence:
+    value: 4.5
+    unit: J/cm²
+    confidence: 88
+    description: Energy density threshold for effective Beech cleaning - Energy density
+      threshold for effective organic contaminant removal from wood without charring
+      or thermal damage
+    min: 2.0
+    max: 8.0
   energyDensity:
     value: 1.8
     unit: J/cm²
@@ -255,7 +264,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Beech has a fine, uniform grain but its density can vary significantly. This requires careful calibration of laser settings to avoid uneven cleaning or surface discoloration.
+subtitle: Beech has a fine, uniform grain but its density can vary significantly.
+  This requires careful calibration of laser settings to avoid uneven cleaning or
+  surface discoloration.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -291,9 +302,20 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the beech surface is obscured by a discontinuous contamination layer averaging 15-45 µm in thickness. This layer, composed of embedded soot, dust, and degraded organic residues, fills the natural wood porosity (55%) and masks the underlying cellular structure. The surface texture is highly irregular, with particulate agglomerates creating a topographically complex and optically dense film that scatters light and alters the material's intrinsic reflectivity of 15%.
-  afterText: Laser cleaning has restored the surface to its native state. The contamination layer is completely removed, revealing the clean, open lumens of the beech's cellular structure with no measurable substrate damage. The surface topography is now defined by the wood's natural grain and porosity, resulting in a uniform surface with restored optical properties.
-  description: Microscopic analysis of beech surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the beech surface is obscured by a discontinuous
+    contamination layer averaging 15-45 µm in thickness. This layer, composed of embedded
+    soot, dust, and degraded organic residues, fills the natural wood porosity (55%)
+    and masks the underlying cellular structure. The surface texture is highly irregular,
+    with particulate agglomerates creating a topographically complex and optically
+    dense film that scatters light and alters the material's intrinsic reflectivity
+    of 15%.
+  afterText: Laser cleaning has restored the surface to its native state. The contamination
+    layer is completely removed, revealing the clean, open lumens of the beech's cellular
+    structure with no measurable substrate damage. The surface topography is now defined
+    by the wood's natural grain and porosity, resulting in a uniform surface with
+    restored optical properties.
+  description: Microscopic analysis of beech surface before and after laser cleaning
+    treatment
   alt: Microscopic view of beech surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -313,7 +335,8 @@ caption:
     materialType: Wood
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Beech surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Beech surface after laser cleaning showing detailed surface
+      structure
     url: /images/material/beech-laser-cleaning-micro.jpg
 tags:
 - wood

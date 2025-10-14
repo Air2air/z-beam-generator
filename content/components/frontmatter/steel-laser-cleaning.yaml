@@ -79,29 +79,29 @@ materialProperties:
     unit: '%'
     confidence: 82
     description: Average reflectivity for steel at common laser wavelengths (1μm)
-    min: null
-    max: null
+    min: 0.4
+    max: 0.98
   absorptionCoefficient:
     value: 1200000.0
     unit: m⁻¹
     confidence: 80
     description: Absorption coefficient for steel at 1μm wavelength
-    min: null
-    max: null
+    min: 0.02
+    max: 0.6
   ablationThreshold:
     value: 1.8
     unit: J/cm²
     confidence: 85
     description: Approximate ablation threshold for nanosecond pulses at 1μm
-    min: null
-    max: null
+    min: 0.5
+    max: 50.0
   oxidationResistance:
     value: 3
     unit: rating (1-10)
     confidence: 88
     description: Relative oxidation resistance scale for carbon steel
-    min: null
-    max: null
+    min: 1
+    max: 10
   crystallineStructure:
     value: BCC/FCC
     unit: crystal system
@@ -114,15 +114,15 @@ materialProperties:
     unit: μm Ra
     confidence: 82
     description: Typical surface roughness for mill-finished steel
-    min: null
-    max: null
+    min: 0.05
+    max: 25.0
   thermalDestructionPoint:
     value: 1427
     unit: °C
     confidence: 95
     description: Temperature where solid-to-liquid phase transition occurs
-    min: null
-    max: null
+    min: -38.8
+    max: 3422
   thermalDestructionType: Melting
 applications:
 - Automotive
@@ -136,7 +136,8 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Steel surface cleaning without substrate damage
+    description: Optimal average power for Steel surface cleaning without substrate
+      damage
     min: 80
     max: 120
   wavelength:
@@ -150,21 +151,24 @@ machineSettings:
     value: 50
     unit: μm
     confidence: 84
-    description: Optimal spot diameter for balancing cleaning efficiency and processing speed
+    description: Optimal spot diameter for balancing cleaning efficiency and processing
+      speed
     min: 30
     max: 100
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient area coverage while maintaining cleaning quality
+    description: High repetition rate for efficient area coverage while maintaining
+      cleaning quality
     min: 20
     max: 100
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with minimal thermal diffusion
+    description: Nanosecond pulse duration for effective contaminant removal with
+      minimal thermal diffusion
     min: 5
     max: 20
   scanSpeed:
@@ -174,18 +178,28 @@ machineSettings:
     description: Optimal scanning speed for uniform cleaning coverage
     min: 200
     max: 1000
+  fluence:
+    value: 6.0
+    unit: J/cm²
+    confidence: 92
+    description: Energy density threshold for effective Steel cleaning - Energy density
+      threshold for effective oxide and contaminant removal from metallic surfaces
+    min: 3.0
+    max: 12.0
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Minimum fluence required for effective contaminant removal from Steel surfaces
+    description: Minimum fluence required for effective contaminant removal from Steel
+      surfaces
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for uniform cleaning without excessive thermal buildup
+    description: Optimal pulse overlap for uniform cleaning without excessive thermal
+      buildup
     min: 30
     max: 70
   passCount:
@@ -199,7 +213,8 @@ machineSettings:
     value: Fiber Laser
     unit: N/A
     confidence: 90
-    description: Preferred laser type for Steel cleaning applications due to reliability and beam quality
+    description: Preferred laser type for Steel cleaning applications due to reliability
+      and beam quality
     min: null
     max: null
 regulatoryStandards:
@@ -244,7 +259,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Steel's composition and surface conditions can vary significantly, unlike more uniform ferrous metals. This variability demands adaptable laser settings to effectively remove contaminants without damaging the base material.
+subtitle: Steel's composition and surface conditions can vary significantly, unlike
+  more uniform ferrous metals. This variability demands adaptable laser settings to
+  effectively remove contaminants without damaging the base material.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -280,9 +297,21 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the steel surface is obscured by a complex, non-uniform contamination layer. This layer, ranging from 5 to 50 micrometers thick, consists of porous iron oxide (Fe₂O₃/Fe₃O₄) scales, carbonaceous soot deposits, and embedded particulate. The underlying steel's crystalline grain structure is entirely hidden. The texture is highly irregular, with fissures and protrusions creating a high surface area that promotes further corrosion. The reflectivity is significantly reduced from steel's typical 55-60% due to this rough, light-absorbing crust.
-  afterText: Laser cleaning has completely removed the contamination layer, revealing the pristine, underlying steel substrate. The surface now displays a distinct, clean grain structure with a micro-roughness of approximately 0.8 µm Ra. The laser's selective ablation has vaporized contaminants without melting the steel bulk, preserving the original metallurgy. This results in a surface with high reflectivity, free of oxides and residues, and restored to its base material integrity.
-  description: Microscopic analysis of steel surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the steel surface is obscured by a complex, non-uniform
+    contamination layer. This layer, ranging from 5 to 50 micrometers thick, consists
+    of porous iron oxide (Fe₂O₃/Fe₃O₄) scales, carbonaceous soot deposits, and embedded
+    particulate. The underlying steel's crystalline grain structure is entirely hidden.
+    The texture is highly irregular, with fissures and protrusions creating a high
+    surface area that promotes further corrosion. The reflectivity is significantly
+    reduced from steel's typical 55-60% due to this rough, light-absorbing crust.
+  afterText: Laser cleaning has completely removed the contamination layer, revealing
+    the pristine, underlying steel substrate. The surface now displays a distinct,
+    clean grain structure with a micro-roughness of approximately 0.8 µm Ra. The laser's
+    selective ablation has vaporized contaminants without melting the steel bulk,
+    preserving the original metallurgy. This results in a surface with high reflectivity,
+    free of oxides and residues, and restored to its base material integrity.
+  description: Microscopic analysis of steel surface before and after laser cleaning
+    treatment
   alt: Microscopic view of steel surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -302,7 +331,8 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Steel surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Steel surface after laser cleaning showing detailed surface
+      structure
     url: /images/material/steel-laser-cleaning-micro.jpg
 tags:
 - metal

@@ -61,12 +61,13 @@ materialProperties:
     min: 800
     max: 2500
   thermalDestructionPoint:
-    value: 380.0
+    value: 400.0
     unit: °C
     confidence: 92
     description: Temperature where thermal decomposition begins
     min: 200
     max: 500
+  thermalDestructionType: Decomposition
   thermalDiffusivity:
     value: 0.00022
     unit: m²/s
@@ -85,52 +86,52 @@ materialProperties:
     value: 0.85
     unit: dimensionless
     confidence: 82
-    description: Average absorption coefficient for near-infrared wavelengths (1064 nm)
-    min: null
-    max: null
+    description: Average absorption coefficient for near-infrared wavelengths (1064
+      nm)
+    min: 0.7
+    max: 0.95
   reflectivity:
     value: 0.12
     unit: dimensionless
     confidence: 80
     description: Reflectivity at 1064 nm wavelength for clean birch surface
-    min: null
-    max: null
+    min: 0.05
+    max: 0.3
   ablationThreshold:
     value: 1.2
     unit: J/cm²
     confidence: 85
     description: Minimum fluence required for material removal at 1064 nm wavelength
-    min: null
-    max: null
+    min: 0.5
+    max: 3.0
   porosity:
     value: 55
     unit: '%'
     confidence: 90
     description: Average porosity percentage in birch wood structure
-    min: null
-    max: null
+    min: 5.0
+    max: 75.0
   moistureContent:
     value: 12
     unit: '%'
     confidence: 95
     description: Equilibrium moisture content at standard room conditions
-    min: null
-    max: null
+    min: 6.0
+    max: 20.0
   celluloseContent:
     value: 42
     unit: '%'
     confidence: 92
     description: Average cellulose content in birch wood composition
-    min: null
-    max: null
+    min: 35.0
+    max: 55.0
   ligninContent:
     value: 19
     unit: '%'
     confidence: 90
     description: Average lignin content affecting thermal degradation behavior
-    min: null
-    max: null
-  thermalDestructionType: Decomposition
+    min: 15.0
+    max: 40.0
 applications:
 - Aerospace
 - Automotive
@@ -154,7 +155,8 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength for optimal absorption in Birch cellulose and lignin
+    description: Near-IR wavelength for optimal absorption in Birch cellulose and
+      lignin
     min: 1030
     max: 1070
   spotSize:
@@ -185,6 +187,15 @@ machineSettings:
     description: Optimal scanning speed for uniform cleaning coverage
     min: 300
     max: 800
+  fluence:
+    value: 4.5
+    unit: J/cm²
+    confidence: 88
+    description: Energy density threshold for effective Birch cleaning - Energy density
+      threshold for effective organic contaminant removal from wood without charring
+      or thermal damage
+    min: 2.0
+    max: 8.0
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
@@ -249,7 +260,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Birch has a light color and relatively soft, uniform surface for a hardwood. These traits require lower power settings to avoid discoloration or surface damage during cleaning.
+subtitle: Birch has a light color and relatively soft, uniform surface for a hardwood.
+  These traits require lower power settings to avoid discoloration or surface damage
+  during cleaning.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -285,9 +298,22 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the birch surface is obscured by a complex contamination layer, measuring 50-200 micrometers thick. This stratum consists of deeply embedded particulate matter, soot, and organic residues that fill the porous wood structure. The contaminants form a discontinuous, crust-like film that masks the underlying cellular anatomy. The native texture of the birch, including its vessel elements and medullary rays, is largely undiscernible beneath this occluding layer, which exhibits a rough, amorphous topography with significant surface shadowing.
-  afterText: Post-cleaning analysis at 500x magnification reveals a complete restoration of the birch's anatomical features. The porous, cellular structure is now fully exposed, with individual tracheids and vessel elements clearly defined. The surface exhibits minimal thermal alteration, characterized only by a lightening of the lignin-rich cell walls. The previously obscured grain pattern and natural micro-texture are now visible, with a measured surface roughness reduction of over 85% compared to the contaminated state.
-  description: Microscopic analysis of birch surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the birch surface is obscured by a complex contamination
+    layer, measuring 50-200 micrometers thick. This stratum consists of deeply embedded
+    particulate matter, soot, and organic residues that fill the porous wood structure.
+    The contaminants form a discontinuous, crust-like film that masks the underlying
+    cellular anatomy. The native texture of the birch, including its vessel elements
+    and medullary rays, is largely undiscernible beneath this occluding layer, which
+    exhibits a rough, amorphous topography with significant surface shadowing.
+  afterText: Post-cleaning analysis at 500x magnification reveals a complete restoration
+    of the birch's anatomical features. The porous, cellular structure is now fully
+    exposed, with individual tracheids and vessel elements clearly defined. The surface
+    exhibits minimal thermal alteration, characterized only by a lightening of the
+    lignin-rich cell walls. The previously obscured grain pattern and natural micro-texture
+    are now visible, with a measured surface roughness reduction of over 85% compared
+    to the contaminated state.
+  description: Microscopic analysis of birch surface before and after laser cleaning
+    treatment
   alt: Microscopic view of birch surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -307,7 +333,8 @@ caption:
     materialType: Wood
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Birch surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Birch surface after laser cleaning showing detailed surface
+      structure
     url: /images/material/birch-laser-cleaning-micro.jpg
 tags:
 - wood

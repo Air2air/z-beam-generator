@@ -79,22 +79,23 @@ materialProperties:
     unit: '%'
     confidence: 85
     description: Optical reflectivity at 1064 nm wavelength
-    min: null
-    max: null
+    min: 0.4
+    max: 0.98
   absorptionCoefficient:
     value: 12000000.0
     unit: m⁻¹
     confidence: 82
     description: Absorption coefficient for near-infrared lasers
-    min: null
-    max: null
+    min: 0.02
+    max: 0.6
   ablationThreshold:
     value: 1.8
     unit: J/cm²
     confidence: 80
-    description: Approximate laser ablation threshold for nanosecond pulses at 1064 nm
-    min: null
-    max: null
+    description: Approximate laser ablation threshold for nanosecond pulses at 1064
+      nm
+    min: 0.5
+    max: 50.0
   crystallineStructure:
     value: BCC
     unit: none
@@ -121,8 +122,8 @@ materialProperties:
     unit: °C
     confidence: 97
     description: Temperature where solid-to-liquid phase transition occurs
-    min: null
-    max: null
+    min: -38.8
+    max: 3422
   thermalDestructionType: Melting
 applications:
 - Aerospace
@@ -138,14 +139,16 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Chromium oxide removal without substrate damage
+    description: Optimal average power for Chromium oxide removal without substrate
+      damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength with good Chromium absorption for oxide layer removal
+    description: Near-IR wavelength with good Chromium absorption for oxide layer
+      removal
     min: 532
     max: 1064
   spotSize:
@@ -176,6 +179,15 @@ machineSettings:
     description: Optimal scanning speed for uniform Chromium surface cleaning
     min: 300
     max: 800
+  fluence:
+    value: 6.0
+    unit: J/cm²
+    confidence: 92
+    description: Energy density threshold for effective Chromium cleaning - Energy
+      density threshold for effective oxide and contaminant removal from metallic
+      surfaces
+    min: 3.0
+    max: 12.0
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
@@ -212,7 +224,8 @@ author:
   image: /images/author/todd-dunning.jpg
 images:
   hero:
-    alt: Chromium surface undergoing laser cleaning showing precise contamination removal
+    alt: Chromium surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/chromium-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -239,7 +252,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Chromium's surface can form a hard, protective oxide layer that varies in composition. This variability requires careful adjustment of laser parameters to effectively remove contaminants without damaging the underlying material.
+subtitle: Chromium's surface can form a hard, protective oxide layer that varies in
+  composition. This variability requires careful adjustment of laser parameters to
+  effectively remove contaminants without damaging the underlying material.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -275,12 +290,28 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the chromium surface is obscured by a non-uniform contamination layer, approximately 5-15 µm thick. This layer consists of embedded particulate matter and a discontinuous film of oxides and adsorbed hydrocarbons. The underlying metallic substrate exhibits a loss of reflectivity, with its characteristic micro-texture masked by the contamination, which appears as dark, amorphous patches and localized, crust-like deposits.
-  afterText: 'Laser cleaning has restored the chromium surface to its native state. The previously obscuring contamination layer has been completely ablated, revealing the substrate''s fine micro-texture and restoring its high optical reflectivity. The process has not induced surface melting or significant topographical alteration, preserving the original grain structure.
+  beforeText: At 500x magnification, the chromium surface is obscured by a non-uniform
+    contamination layer, approximately 5-15 µm thick. This layer consists of embedded
+    particulate matter and a discontinuous film of oxides and adsorbed hydrocarbons.
+    The underlying metallic substrate exhibits a loss of reflectivity, with its characteristic
+    micro-texture masked by the contamination, which appears as dark, amorphous patches
+    and localized, crust-like deposits.
+  afterText: 'Laser cleaning has restored the chromium surface to its native state.
+    The previously obscuring contamination layer has been completely ablated, revealing
+    the substrate''s fine micro-texture and restoring its high optical reflectivity.
+    The process has not induced surface melting or significant topographical alteration,
+    preserving the original grain structure.
 
 
-    The surface now displays a uniform, clean metallic appearance with clearly defined grain boundaries. The high reflectivity (approximately 67% at 1064 nm) is evident, with a mirror-like sheen at the microscopic level. The cleaning process has successfully removed the contaminants without compromising the protective chromium oxide layer, ensuring the material''s inherent corrosion resistance remains intact. The result is a surface that is visually and functionally pristine, meeting the stringent requirements for high-performance applications.'
-  description: Microscopic analysis of chromium surface before and after laser cleaning treatment
+    The surface now displays a uniform, clean metallic appearance with clearly defined
+    grain boundaries. The high reflectivity (approximately 67% at 1064 nm) is evident,
+    with a mirror-like sheen at the microscopic level. The cleaning process has successfully
+    removed the contaminants without compromising the protective chromium oxide layer,
+    ensuring the material''s inherent corrosion resistance remains intact. The result
+    is a surface that is visually and functionally pristine, meeting the stringent
+    requirements for high-performance applications.'
+  description: Microscopic analysis of chromium surface before and after laser cleaning
+    treatment
   alt: Microscopic view of chromium surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -300,7 +331,8 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Chromium surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Chromium surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/chromium-laser-cleaning-micro.jpg
 tags:
 - metal

@@ -79,43 +79,43 @@ materialProperties:
     unit: MPa
     confidence: 89
     description: Typical compressive strength of bluestone
-    min: null
-    max: null
+    min: 20
+    max: 400
   absorptionCoefficient:
     value: 0.75
     unit: dimensionless
     confidence: 82
     description: Optical absorption coefficient for near-IR wavelengths
-    min: null
-    max: null
+    min: 0.4
+    max: 0.85
   reflectivity:
     value: 0.25
     unit: dimensionless
     confidence: 84
     description: Surface reflectivity at common laser wavelengths (1064nm)
-    min: null
-    max: null
+    min: 0.15
+    max: 0.6
   ablationThreshold:
     value: 2.8
     unit: J/cm²
     confidence: 80
     description: Estimated ablation threshold for nanosecond pulsed lasers
-    min: null
-    max: null
+    min: 1.0
+    max: 10.0
   porosity:
     value: 8.5
     unit: '%'
     confidence: 91
     description: Typical porosity range for dense bluestone
-    min: null
-    max: null
+    min: 0.5
+    max: 50.0
   thermalDestructionPoint:
     value: 1700
     unit: °C
     confidence: 88
     description: Temperature where structural breakdown begins
-    min: null
-    max: null
+    min: 600
+    max: 1700
   thermalDestructionType: Structural breakdown
 applications:
 - Cultural Heritage
@@ -133,7 +133,8 @@ machineSettings:
     value: 90
     unit: W
     confidence: 92
-    description: Optimal average power for Bluestone surface cleaning without thermal damage
+    description: Optimal average power for Bluestone surface cleaning without thermal
+      damage
     min: 70
     max: 120
   wavelength:
@@ -171,11 +172,21 @@ machineSettings:
     description: Optimal scanning speed for uniform cleaning coverage
     min: 300
     max: 800
+  fluence:
+    value: 3.5
+    unit: J/cm²
+    confidence: 86
+    description: Energy density threshold for effective Bluestone cleaning - Energy
+      density threshold for effective contaminant removal from stone surfaces without
+      substrate damage
+    min: 1.5
+    max: 7.0
   energyDensity:
     value: 3.5
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without substrate damage
+    description: Fluence threshold for effective contaminant removal without substrate
+      damage
     min: 2.0
     max: 5.0
   overlapRatio:
@@ -214,7 +225,8 @@ author:
   image: /images/author/alessandro-moretti.jpg
 images:
   hero:
-    alt: Bluestone surface undergoing laser cleaning showing precise contamination removal
+    alt: Bluestone surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/bluestone-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -241,7 +253,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Bluestone's composition and porosity can vary significantly between slabs. This variability requires careful adjustment of laser settings to effectively clean without damaging the stone's surface.
+subtitle: Bluestone's composition and porosity can vary significantly between slabs.
+  This variability requires careful adjustment of laser settings to effectively clean
+  without damaging the stone's surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -277,9 +291,25 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the bluestone surface is obscured by a complex contamination layer, typically 50-200 micrometers thick. This layer consists of particulate matter (soot, dust) embedded within a matrix of organic and inorganic deposits, such as gypsum crusts from atmospheric sulfur. The underlying quartz and feldspar grains of the stone are partially masked, with contaminants filling the natural micro-pores (8.5% porosity) and creating a discontinuous, crust-like texture. The original surface morphology is lost, replaced by an amorphous, pitted topography that increases light scattering and gives the stone its darkened, dull appearance.
-  afterText: Post-cleaning analysis at 500x magnification reveals a restored bluestone substrate. The contamination layer has been selectively ablated, exposing the original mineral grains and the stone's intrinsic micro-texture. The surface now displays clear intergranular boundaries and open pores, with minimal residual particulate matter. The removal of the light-scattering crust results in a surface with defined topography and restored reflectivity. This state confirms the successful elimination of damaging salts and biological films, returning the stone to a stable, clean condition without subsurface thermal damage.
-  description: Microscopic analysis of bluestone surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the bluestone surface is obscured by a complex
+    contamination layer, typically 50-200 micrometers thick. This layer consists of
+    particulate matter (soot, dust) embedded within a matrix of organic and inorganic
+    deposits, such as gypsum crusts from atmospheric sulfur. The underlying quartz
+    and feldspar grains of the stone are partially masked, with contaminants filling
+    the natural micro-pores (8.5% porosity) and creating a discontinuous, crust-like
+    texture. The original surface morphology is lost, replaced by an amorphous, pitted
+    topography that increases light scattering and gives the stone its darkened, dull
+    appearance.
+  afterText: Post-cleaning analysis at 500x magnification reveals a restored bluestone
+    substrate. The contamination layer has been selectively ablated, exposing the
+    original mineral grains and the stone's intrinsic micro-texture. The surface now
+    displays clear intergranular boundaries and open pores, with minimal residual
+    particulate matter. The removal of the light-scattering crust results in a surface
+    with defined topography and restored reflectivity. This state confirms the successful
+    elimination of damaging salts and biological films, returning the stone to a stable,
+    clean condition without subsurface thermal damage.
+  description: Microscopic analysis of bluestone surface before and after laser cleaning
+    treatment
   alt: Microscopic view of bluestone surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -299,7 +329,8 @@ caption:
     materialType: Stone
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Bluestone surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Bluestone surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/bluestone-laser-cleaning-micro.jpg
 tags:
 - stone
