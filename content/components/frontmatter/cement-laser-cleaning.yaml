@@ -12,8 +12,8 @@ materialProperties:
         unit: MPa
         confidence: 92
         description: 28-day compressive strength of standard cement paste
-        min: null
-        max: null
+        min: 12.4
+        max: 45.0
       hardness:
         value: 4.5
         unit: Mohs
@@ -35,8 +35,7 @@ materialProperties:
         description: Elastic modulus of hardened cement paste
         min: 5
         max: 50
-    description: 'Physical reaction to thermal stress: how material responds structurally
-      to rapid heating'
+    description: 'Physical reaction to thermal stress: how material responds structurally to rapid heating'
     percentage: 18.2
   material_properties:
     label: Material Properties
@@ -53,17 +52,16 @@ materialProperties:
         unit: '%'
         confidence: 90
         description: Typical porosity of hardened cement paste
-        min: null
-        max: null
+        min: 12.0
+        max: 45.0
       chemicalStability:
         value: 7
         unit: pH
         confidence: 92
         description: Natural pH of cement pore solution indicating alkaline nature
-        min: null
-        max: null
-    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
-      finish, contaminant adhesion, and process efficiency'
+        min: 7.0
+        max: 8.0
+    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface finish, contaminant adhesion, and process efficiency'
     percentage: 40.0
   energy_coupling:
     label: Energy Coupling Properties
@@ -87,16 +85,15 @@ materialProperties:
         unit: dimensionless
         confidence: 85
         description: Surface reflectivity for typical cement surfaces at laser wavelengths
-        min: null
-        max: null
+        min: 0.12
+        max: 0.35
       ablationThreshold:
         value: 1.2
         unit: J/cm²
         confidence: 83
-        description: Approximate laser ablation threshold for cement surfaces at 1064
-          nm
-        min: null
-        max: null
+        description: Approximate laser ablation threshold for cement surfaces at 1064 nm
+        min: 1.2
+        max: 2.5
       specificHeat:
         value: 0.9
         unit: kJ/kg·K
@@ -139,18 +136,16 @@ materialProperties:
         unit: °C
         confidence: 92
         description: Temperature where structural integrity fails
-        min: null
-        max: null
+        min: 450.0
+        max: 1073.15
       absorptionCoefficient:
         value: 0.85
         unit: dimensionless
         confidence: 88
-        description: Optical absorption coefficient for common laser wavelengths (1064
-          nm)
-        min: null
-        max: null
-    description: 'First-order photon coupling: how laser energy enters the material
-      vs. reflects away'
+        description: Optical absorption coefficient for common laser wavelengths (1064 nm)
+        min: 0.65
+        max: 0.85
+    description: 'First-order photon coupling: how laser energy enters the material vs. reflects away'
     percentage: 16.4
 applications:
 - Construction and Infrastructure
@@ -168,8 +163,7 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for cement surface cleaning without thermal
-      damage
+    description: Optimal average power for cement surface cleaning without thermal damage
     min: 80
     max: 120
   wavelength:
@@ -211,8 +205,7 @@ machineSettings:
     value: 3.0
     unit: J/cm²
     confidence: 85
-    description: Energy density threshold for effective Cement cleaning - Energy density
-      threshold for effective cleaning of porous masonry materials
+    description: Energy density threshold for effective Cement cleaning - Energy density threshold for effective cleaning of porous masonry materials
     min: 1.5
     max: 6.0
   fluenceThreshold:
@@ -278,9 +271,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Cement surfaces often have a porous and variable texture unlike denser masonry.
-  This requires careful adjustment of laser settings to effectively remove contaminants
-  without damaging the fragile surface.
+subtitle: Cement surfaces often have a porous and variable texture unlike denser masonry. This requires careful adjustment of laser settings to effectively remove contaminants without damaging the fragile surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -316,20 +307,9 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the cement surface is obscured by a complex contamination
-    layer, typically 50-200 µm thick. This stratum consists of embedded particulate
-    matter, soot, and biological growth, filling the natural 28% porosity of the cement
-    matrix. The surface texture is irregular and matte, with a high degree of laser
-    light scattering due to the uneven, low-reflectivity contaminants. The original
-    cementitious microstructure is entirely masked, compromising its functional and
-    aesthetic properties.
-  afterText: Post-cleaning, the surface reveals the intrinsic cementitious microstructure.
-    The contamination layer is completely removed, exposing the original porosity
-    and aggregate boundaries. The surface texture is uniform, with a measurable increase
-    in reflectivity to approximately 15%, restoring the substrate's inherent profile
-    without thermal damage to the underlying matrix.
-  description: Microscopic analysis of cement surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the cement surface is obscured by a complex contamination layer, typically 50-200 µm thick. This stratum consists of embedded particulate matter, soot, and biological growth, filling the natural 28% porosity of the cement matrix. The surface texture is irregular and matte, with a high degree of laser light scattering due to the uneven, low-reflectivity contaminants. The original cementitious microstructure is entirely masked, compromising its functional and aesthetic properties.
+  afterText: Post-cleaning, the surface reveals the intrinsic cementitious microstructure. The contamination layer is completely removed, exposing the original porosity and aggregate boundaries. The surface texture is uniform, with a measurable increase in reflectivity to approximately 15%, restoring the substrate's inherent profile without thermal damage to the underlying matrix.
+  description: Microscopic analysis of cement surface before and after laser cleaning treatment
   alt: Microscopic view of cement surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -349,8 +329,7 @@ caption:
     materialType: Masonry
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Cement surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Cement surface after laser cleaning showing detailed surface structure
     url: /images/material/cement-laser-cleaning-micro.jpg
 tags:
 - masonry

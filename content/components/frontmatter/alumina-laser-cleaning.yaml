@@ -12,15 +12,15 @@ materialProperties:
         unit: MPa
         confidence: 95
         description: compressiveStrength from Materials.yaml
-        min: null
-        max: null
+        min: 410.0
+        max: 6700.0
       flexuralStrength:
         value: 400
         unit: MPa
         confidence: 85
         description: Flexural strength of high-purity alumina
-        min: null
-        max: null
+        min: 45.0
+        max: 3500.0
       hardness:
         value: 9
         unit: Mohs
@@ -65,17 +65,19 @@ materialProperties:
       porosity:
         value: 0.5
         unit: '%'
-        confidence: 88
+        confidence: 80
         description: Typical porosity for high-purity sintered alumina
-        min: null
-        max: null
+        min: 0
+        max: 30
+        source: ASM Handbook - Ceramics and Glasses
+        notes: Dense ceramics 0-5%, porous ceramics 10-30%
       chemicalStability:
         value: Excellent
         unit: qualitative
         confidence: 95
         description: Resistance to most chemicals and solvents
-        min: null
-        max: null
+        min: 90.0
+        max: 95.0
     description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
       finish, contaminant adhesion, and process efficiency'
     percentage: 40.0
@@ -101,15 +103,17 @@ materialProperties:
         unit: dimensionless
         confidence: 80
         description: Reflectivity at common laser wavelengths
-        min: null
-        max: null
+        min: 0.12
+        max: 0.45
       ablationThreshold:
         value: 2.5
         unit: J/cm²
-        confidence: 85
+        confidence: 75
         description: Laser ablation threshold for nanosecond pulses
-        min: null
-        max: null
+        min: 1.5
+        max: 5.0
+        source: RP Photonics Encyclopedia, Oxide Ceramics
+        notes: Alumina, zirconia, silicon carbide - nanosecond pulses
       specificHeat:
         value: 880
         unit: J/kg·K
@@ -119,11 +123,13 @@ materialProperties:
         max: 1200
       thermalConductivity:
         value: 30
-        unit: W/m·K
-        confidence: 90
+        unit: W/(m·K)
+        confidence: 80
         description: Thermal conductivity at room temperature for high-purity alumina
-        min: 0.03
-        max: 2000.0
+        min: 1
+        max: 150
+        source: MatWeb Materials Database
+        notes: Typical range for ceramic materials at room temperature
       thermalDiffusivity:
         value: 0.12
         unit: cm²/s
@@ -152,8 +158,8 @@ materialProperties:
         unit: dimensionless
         confidence: 82
         description: Absorption coefficient for common laser wavelengths (1064 nm)
-        min: null
-        max: null
+        min: 0.8
+        max: 0.85
     description: 'First-order photon coupling: how laser energy enters the material
       vs. reflects away'
     percentage: 16.4

@@ -17,17 +17,19 @@ materialProperties:
       porosity:
         value: 12
         unit: '%'
-        confidence: 84
+        confidence: 75
         description: Typical porosity affecting laser interaction depth
-        min: null
-        max: null
+        min: 12
+        max: 65
+        source: Wood Science and Technology Database
+        notes: Hardwoods 12-45%, softwoods 30-65%
       surfaceRoughness:
         value: 3.2
         unit: μm Ra
         confidence: 86
         description: Average surface roughness of standard MDF
-        min: null
-        max: null
+        min: 3.2
+        max: 12.5
     description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
       finish, contaminant adhesion, and process efficiency'
     percentage: 40.0
@@ -80,15 +82,15 @@ materialProperties:
         unit: dimensionless
         confidence: 88
         description: Low reflectivity at common laser cleaning wavelengths
-        min: null
-        max: null
+        min: 0.12
+        max: 0.25
       ablationThreshold:
         value: 0.8
         unit: J/cm²
         confidence: 82
         description: Minimum fluence required for material removal at 1064nm
-        min: null
-        max: null
+        min: 0.8
+        max: 1.8
       specificHeat:
         value: 1380
         unit: J/kg·K
@@ -131,8 +133,8 @@ materialProperties:
         unit: dimensionless
         confidence: 90
         description: High absorption coefficient for common laser wavelengths (1064nm)
-        min: null
-        max: null
+        min: 0.75
+        max: 0.85
     description: 'First-order photon coupling: how laser energy enters the material
       vs. reflects away'
     percentage: 16.4

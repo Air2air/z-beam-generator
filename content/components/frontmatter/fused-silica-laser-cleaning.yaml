@@ -19,22 +19,22 @@ materialProperties:
         unit: '% resistance'
         confidence: 96
         description: Chemical resistance to acids and solvents
-        min: null
-        max: null
+        min: 0.7
+        max: 99.5
       porosity:
         value: 0.1
         unit: '%'
         confidence: 88
         description: Typical porosity in high-quality fused silica
-        min: null
-        max: null
+        min: 0.0
+        max: 0.1
       surfaceRoughness:
         value: 0.5
         unit: nm Ra
         confidence: 85
         description: Typical surface roughness for polished fused silica
-        min: null
-        max: null
+        min: 0.005
+        max: 0.5
     description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
       finish, contaminant adhesion, and process efficiency'
     percentage: 40.0
@@ -67,8 +67,8 @@ materialProperties:
         unit: MPa
         confidence: 88
         description: Flexural strength of pristine material
-        min: null
-        max: null
+        min: 50.0
+        max: 690.0
     description: 'Physical reaction to thermal stress: how material responds structurally
       to rapid heating'
     percentage: 18.2
@@ -94,22 +94,24 @@ materialProperties:
         unit: dimensionless
         confidence: 99
         description: Refractive index at 587.6 nm (nd)
-        min: null
-        max: null
+        min: 1.458
+        max: 1.76
       laserDamageThreshold:
         value: 15
         unit: J/cm²
         confidence: 85
         description: Laser damage threshold for 1064 nm, 10 ns pulses
-        min: null
-        max: null
+        min: 2.5
+        max: 15.0
       ablationThreshold:
         value: 2.5
         unit: J/cm²
-        confidence: 82
+        confidence: 80
         description: Ablation threshold for UV lasers (248 nm)
-        min: null
-        max: null
+        min: 2.0
+        max: 6.0
+        source: Laser-Induced Damage in Optical Materials (NIST)
+        notes: Silica, borosilicate - nanosecond pulses at 1064nm
       specificHeat:
         value: 740
         unit: J/kg·K
@@ -119,11 +121,13 @@ materialProperties:
         max: 900
       thermalConductivity:
         value: 1.38
-        unit: W/m·K
-        confidence: 92
+        unit: W/(m·K)
+        confidence: 85
         description: Thermal conductivity at room temperature
-        min: 0.02
-        max: 40
+        min: 0.8
+        max: 1.4
+        source: MatWeb Materials Database
+        notes: Typical range for glass materials at room temperature
       thermalDiffusivity:
         value: 0.85
         unit: mm²/s
@@ -152,8 +156,8 @@ materialProperties:
         unit: K
         confidence: 95
         description: Temperature where glass transitions from rigid to pliable state
-        min: null
-        max: null
+        min: 820.0
+        max: 2040.0
     description: 'First-order photon coupling: how laser energy enters the material
       vs. reflects away'
     percentage: 16.4

@@ -17,17 +17,19 @@ materialProperties:
       porosity:
         value: 15
         unit: '%'
-        confidence: 87
+        confidence: 75
         description: Average porosity of bamboo culm wall material
-        min: null
-        max: null
+        min: 12
+        max: 65
+        source: Wood Science and Technology Database
+        notes: Hardwoods 12-45%, softwoods 30-65%
       surfaceRoughness:
         value: 8.5
         unit: μm Ra
         confidence: 85
         description: Average surface roughness of untreated bamboo exterior
-        min: null
-        max: null
+        min: 3.2
+        max: 12.5
       chemicalStability:
         value: 65
         unit: '% resistance'
@@ -87,16 +89,16 @@ materialProperties:
         unit: dimensionless
         confidence: 83
         description: Surface reflectivity at common laser cleaning wavelengths
-        min: null
-        max: null
+        min: 0.12
+        max: 0.25
       ablationThreshold:
         value: 0.8
         unit: J/cm²
         confidence: 82
         description: Minimum fluence required for material removal with nanosecond
           pulses
-        min: null
-        max: null
+        min: 0.8
+        max: 1.8
       specificHeat:
         value: 1600
         unit: J/kg·K
@@ -140,8 +142,8 @@ materialProperties:
         confidence: 86
         description: Optical absorption coefficient for near-infrared laser wavelengths
           (1064 nm)
-        min: null
-        max: null
+        min: 0.75
+        max: 0.85
     description: 'First-order photon coupling: how laser energy enters the material
       vs. reflects away'
     percentage: 16.4

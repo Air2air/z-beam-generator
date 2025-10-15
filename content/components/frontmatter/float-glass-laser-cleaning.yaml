@@ -19,15 +19,15 @@ materialProperties:
         unit: scale 1-10
         confidence: 88
         description: Resistance to chemical attack and environmental degradation
-        min: null
-        max: null
+        min: 0.7
+        max: 99.5
       surfaceRoughness:
         value: 0.5
         unit: nm RMS
         confidence: 92
         description: Typical surface roughness of pristine float glass
-        min: null
-        max: null
+        min: 0.005
+        max: 0.5
     description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
       finish, contaminant adhesion, and process efficiency'
     percentage: 40.0
@@ -60,8 +60,8 @@ materialProperties:
         unit: MPa
         confidence: 90
         description: Bending strength of pristine float glass
-        min: null
-        max: null
+        min: 50.0
+        max: 690.0
     description: 'Physical reaction to thermal stress: how material responds structurally
       to rapid heating'
     percentage: 18.2
@@ -87,15 +87,15 @@ materialProperties:
         unit: dimensionless
         confidence: 98
         description: Refractive index at 589 nm wavelength
-        min: null
-        max: null
+        min: 1.458
+        max: 1.76
       laserDamageThreshold:
         value: 10
         unit: J/cm²
         confidence: 82
         description: Estimated damage threshold for nanosecond pulses at 1064 nm
-        min: null
-        max: null
+        min: 2.5
+        max: 15.0
       specificHeat:
         value: 840
         unit: J/kg·K
@@ -105,11 +105,13 @@ materialProperties:
         max: 900
       thermalConductivity:
         value: 1.0
-        unit: W/m·K
-        confidence: 92
+        unit: W/(m·K)
+        confidence: 85
         description: Low thermal conductivity typical of silicate glasses
-        min: 0.02
-        max: 40
+        min: 0.8
+        max: 1.4
+        source: MatWeb Materials Database
+        notes: Typical range for glass materials at room temperature
       thermalDiffusivity:
         value: 0.84
         unit: mm²/s
@@ -138,22 +140,22 @@ materialProperties:
         unit: K
         confidence: 95
         description: Temperature where glass transitions from rigid to pliable state
-        min: null
-        max: null
+        min: 820.0
+        max: 2040.0
       transmissivity:
         value: 92
         unit: '%'
         confidence: 95
         description: Visible light transmission for clear float glass
-        min: null
-        max: null
+        min: 85.0
+        max: 93.0
       absorptionCoefficient:
         value: 0.1
         unit: cm⁻¹
         confidence: 85
         description: Approximate absorption coefficient in visible spectrum
-        min: null
-        max: null
+        min: 0.001
+        max: 0.15
     description: 'First-order photon coupling: how laser energy enters the material
       vs. reflects away'
     percentage: 16.4

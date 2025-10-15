@@ -1,127 +1,155 @@
 name: GFRP
-category: composite
-subcategory: glass fiber reinforced polymers (gfrp)
+category: Composite
+subcategory: Glass Fiber Reinforced Polymers (GFRP)
 title: GFRP Laser Cleaning
 description: Laser cleaning parameters for Glass Fiber Reinforced Polymers GFRP (GFRP)
 materialProperties:
-  density:
-    value: 1.8
-    unit: g/cm³
-    confidence: 95
-    description: Typical density for GFRP composites with 50-60% glass fiber content
-    min: 0.5
-    max: 8
-  thermalConductivity:
-    value: 0.35
-    unit: W/m·K
-    confidence: 88
-    description: Through-thickness thermal conductivity of typical GFRP
-    min: 0.1
-    max: 400
-  tensileStrength:
-    value: 350
-    unit: MPa
-    confidence: 92
-    description: Tensile strength along fiber direction for typical GFRP
-    min: 50
-    max: 6000
-  hardness:
-    value: 85
-    unit: Barcol
-    confidence: 82
-    description: Barcol hardness for cured GFRP composite
-    min: 20
-    max: 90
-  youngsModulus:
-    value: 25
-    unit: GPa
-    confidence: 94
-    description: Elastic modulus in fiber direction
-    min: 0.001
-    max: 500
-  laserAbsorption:
-    value: 0.9
-    unit: unitless
-    confidence: 92
-    description: laserAbsorption from Materials.yaml
-    min: 0.05
-    max: 200
-  laserReflectivity:
-    value: 38.5
-    unit: '%'
-    confidence: 92
-    description: laserReflectivity from Materials.yaml
-    min: 2
-    max: 80
-  specificHeat:
-    value: 1100
-    unit: J/kg·K
-    confidence: 87
-    description: Specific heat capacity at room temperature
-    min: 500
-    max: 1500
-  thermalDiffusivity:
-    value: 0.18
-    unit: mm²/s
-    confidence: 83
-    description: Thermal diffusivity governing heat propagation during laser interaction
-    min: 0.1
-    max: 180
-  thermalExpansion:
-    value: 25
-    unit: μm/m·°C
-    confidence: 85
-    description: Coefficient of thermal expansion in fiber direction
-    min: -1
-    max: 250
-  absorptionCoefficient:
-    value: 0.65
-    unit: unitless
-    confidence: 80
-    description: Typical absorption coefficient for near-infrared lasers (1064 nm)
-    min: 0.5
-    max: 0.95
-  reflectivity:
-    value: 0.25
-    unit: unitless
-    confidence: 82
-    description: Reflectivity at common laser wavelengths (1064 nm)
-    min: 0.05
-    max: 0.5
-  ablationThreshold:
-    value: 2.5
-    unit: J/cm²
-    confidence: 85
-    description: Laser ablation threshold for nanosecond pulses at 1064 nm
-    min: 0.5
-    max: 8.0
-  flexuralStrength:
-    value: 450
-    unit: MPa
-    confidence: 90
-    description: Flexural strength for structural GFRP applications
-    min: 50
-    max: 800
-  surfaceRoughness:
-    value: 1.2
-    unit: μm Ra
-    confidence: 88
-    description: Typical as-manufactured surface roughness for GFRP
-    min: 0.5
-    max: 20.0
-  thermalDestructionPoint:
-    value: 1150
-    unit: °C
-    confidence: 90
-    description: Temperature where polymer matrix decomposition begins
-    min: 150
-    max: 2000
-  thermalDestructionType: Matrix degradation
+  material_properties:
+    label: Material Properties
+    description: Intrinsic material characteristics affecting process efficiency and cleaning outcomes
+    percentage: 34.5
+    properties:
+      density:
+        value: 1.8
+        unit: g/cm³
+        confidence: 95
+        description: Typical density for GFRP composites with 50-60% glass fiber content
+        min: 0.5
+        max: 8
+  structural_response:
+    label: Structural Response Properties
+    description: 'How material responds physically to thermal stress: strength, elasticity, and deformation characteristics'
+    percentage: 18.2
+    properties:
+      hardness:
+        value: 80
+        unit: Barcol
+        confidence: 85
+        description: Typical Barcol hardness for cured GFRP composites
+        min: 20
+        max: 90
+      tensileStrength:
+        value: 350
+        unit: MPa
+        confidence: 90
+        description: Tensile strength along fiber direction for typical GFRP with 60% fiber volume
+        min: 50
+        max: 6000
+      youngsModulus:
+        value: 25
+        unit: GPa
+        confidence: 92
+        description: Elastic modulus in fiber direction for standard GFRP composites
+        min: 0.001
+        max: 500
+  energy_coupling:
+    label: Energy Coupling Properties
+    description: 'How laser energy enters material and propagates as heat: absorption, reflection, and thermal dissipation'
+    percentage: 47.3
+    properties:
+      laserAbsorption:
+        value: 0.9
+        unit: unitless
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.05
+        max: 200
+      laserReflectivity:
+        value: 38.5
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 2
+        max: 80
+      specificHeat:
+        value: 1100
+        unit: J/kg·K
+        confidence: 85
+        description: Specific heat capacity at room temperature for epoxy-based GFRP
+        min: 500
+        max: 1500
+      thermalConductivity:
+        value: 0.3
+        unit: W/m·K
+        confidence: 92
+        description: Low thermal conductivity typical for polymer composites, anisotropic depending on fiber orientation
+        min: 0.1
+        max: 400
+      thermalDiffusivity:
+        value: 90.05
+        unit: mm²/s
+        confidence: 90
+        description: thermalDiffusivity from Materials.yaml
+        min: 0.1
+        max: 180
+      thermalExpansion:
+        value: 20
+        unit: μm/m·°C
+        confidence: 88
+        description: Coefficient of thermal expansion in transverse direction to fibers
+        min: -1
+        max: 250
+      thermalDestruction:
+        point:
+          value: 573.15
+          unit: K
+          confidence: 92
+          description: Thermal destruction point
+          min: 150
+          max: 2000
+        type: decomposition
+      absorptionCoefficient:
+        value: 0.85
+        unit: dimensionless
+        confidence: 82
+        description: Absorption coefficient for near-infrared lasers (1064 nm) due to polymer matrix and glass fibers
+        min: 0.15
+        max: 8500.0
+      reflectivity:
+        value: 0.15
+        unit: dimensionless
+        confidence: 80
+        description: Reflectivity at 1064 nm wavelength, relatively low due to composite nature
+        min: 0.12
+        max: 85.0
+      ablationThreshold:
+        value: 1.5
+        unit: J/cm²
+        confidence: 85
+        description: Minimum laser fluence required for material removal at 1064 nm wavelength
+        min: 0.8
+        max: 2.8
+      laserDamageThreshold:
+        value: 0.8
+        unit: J/cm²
+        confidence: 82
+        description: Fluence level where permanent damage begins to occur in GFRP
+        min: 0.8
+        max: 1.2
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 0
+    properties:
+      degradationTemperature:
+        value: 350
+        unit: °C
+        confidence: 88
+        description: Temperature at which polymer matrix begins thermal degradation
+        min: null
+        max: null
+      glassTransitionTemperature:
+        value: 120
+        unit: °C
+        confidence: 90
+        description: Typical Tg for epoxy-based GFRP composites
+        min: null
+        max: null
 applications:
 - Aerospace
-- Automotive
 - Marine
 - Wind Energy
+- Automotive
 - Electronics Manufacturing
 - Medical Equipment
 - Construction and Infrastructure
@@ -140,35 +168,28 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength for optimal absorption in contaminants while minimizing GFRP damage
+    description: Near-IR wavelength providing optimal absorption balance for polymer matrix and glass fibers
     min: 1030
     max: 1070
   spotSize:
-    value: 80
+    value: 50
     unit: μm
     confidence: 84
-    description: Beam spot diameter for precise cleaning control on GFRP surfaces
-    min: 50
-    max: 120
+    description: Optimal spot diameter for precision cleaning of GFRP surfaces
+    min: 30
+    max: 100
   repetitionRate:
-    value: 50
+    value: 100
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning with thermal management
-    min: 20
-    max: 100
-  fluenceThreshold:
-    value: 2.5
-    unit: J/cm²
-    confidence: 88
-    description: Threshold fluence for effective contaminant removal without fiber damage
-    min: 1.8
-    max: 3.2
+    description: High repetition rate for efficient cleaning while maintaining thermal control
+    min: 50
+    max: 200
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Optimal pulse duration for thermal confinement in GFRP matrix
+    description: Nanosecond pulse duration for controlled ablation of contaminants without thermal damage to substrate
     min: 5
     max: 20
   scanSpeed:
@@ -178,14 +199,13 @@ machineSettings:
     description: Optimal scanning speed for uniform cleaning coverage
     min: 300
     max: 800
-  fluence:
-    value: 3.0
+  fluenceThreshold:
+    value: 2.5
     unit: J/cm²
-    confidence: 86
-    description: Energy density threshold for effective GFRP cleaning - Energy density threshold for composite material cleaning
-      considering matrix and reinforcement properties
-    min: 1.5
-    max: 6.0
+    confidence: 90
+    description: Critical fluence threshold for GFRP surface cleaning without damaging glass fibers
+    min: 1.8
+    max: 3.2
   overlapRatio:
     value: 50
     unit: '%'
@@ -194,19 +214,12 @@ machineSettings:
     min: 40
     max: 60
   passCount:
-    value: 2
+    value: 3
     unit: passes
     confidence: 85
     description: Recommended number of passes for complete contaminant removal
-    min: 1
-    max: 3
-  laserType:
-    value: Fiber Laser
-    unit: N/A
-    confidence: 90
-    description: Preferred laser type for GFRP cleaning applications
-    min: null
-    max: null
+    min: 2
+    max: 5
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -249,9 +262,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Pay attention to Glass Fiber Reinforced Polymers (GFRP) because their layered structure can be very-very sensitive
-  under laser treatment. Adjust your power levels carefully below 50 watts to safeguard the composite finish during general
-  cleaning operations.
+subtitle: The biggest challenge with GFRP is its inconsistent resin-to-fiber ratio. You must use very specific power adjustments to remove contaminants without affecting the underlying composite structure.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -287,16 +298,8 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the GFRP surface is obscured by a discontinuous contaminant layer, measuring 5-15 µm
-    thick. This layer, composed of embedded particulates and amorphous carbonaceous deposits, masks the underlying composite
-    texture. The topography is irregular, with agglomerated soot particles filling the valleys between fiber bundles, creating
-    a matte, non-reflective surface. This contamination layer disrupts the intended surface profile, increasing roughness
-    to an estimated 4-5 µm Ra and compromising interfacial bonding potential.
-  afterText: Laser cleaning effectively restores the native GFRP topography. The contaminant layer is completely removed,
-    revealing the distinct, undulating texture of the glass fiber weave and polymer matrix. Individual fibers are now clearly
-    visible, with surface roughness returning to its intrinsic 1.2 µm Ra. The interface between fibers and matrix is sharply
-    defined, free of residual debris. This exposes the original, slightly textured composite surface, which exhibits a uniform,
-    clean appearance ideal for subsequent processing or adhesion.
+  beforeText: At 500x magnification, the GFRP surface is obscured by a discontinuous contaminant layer, measuring 5-15 µm thick. This layer, composed of accumulated soot, salt crystals, and organic residues, creates a coarse, uneven texture that masks the underlying composite structure. The contamination adheres in patches, with particulate matter embedded within a thin, amorphous film. This obscures the individual glass fibers and the polymer matrix, preventing a clear assessment of the substrate's condition.
+  afterText: Following laser cleaning, the 500x magnification reveals a complete removal of the contaminant layer, exposing the pristine GFRP substrate. The individual glass filaments, typically 10-20 µm in diameter, are now fully visible and distinct, embedded within the undamaged polymer matrix. The surface texture is significantly smoother, transitioning from a coarse, occluded profile to the characteristic micro-texture of the composite itself. This process effectively ablates contaminants without generating mechanical striations or causing observable thermal degradation to the matrix, preserving the structural integrity of the fibers and their interfacial bond. The cleaned surface allows for accurate inspection for pre-existing microcracks or fiber damage.
   description: Microscopic analysis of glass fiber reinforced polymers gfrp surface before and after laser cleaning treatment
   alt: Microscopic view of glass fiber reinforced polymers gfrp surface showing laser cleaning effects
   technicalAnalysis:
@@ -327,6 +330,6 @@ tags:
 - surface-preparation
 - contamination-removal
 - maintenance
-- thermal-sensitive
 - industrial-grade
+- processed
 - ikmanda-roswati

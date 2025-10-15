@@ -19,8 +19,8 @@ materialProperties:
         unit: qualitative
         confidence: 94
         description: Reacts with acids, susceptible to dissolution in water
-        min: null
-        max: null
+        min: 8.0
+        max: 95.0
       crystallineStructure:
         value: Rhombohedral
         unit: crystal system
@@ -31,10 +31,12 @@ materialProperties:
       porosity:
         value: 0.5
         unit: '%'
-        confidence: 82
+        confidence: 75
         description: Typical porosity for high-purity calcite crystals
-        min: null
-        max: null
+        min: 0.5
+        max: 25
+        source: Geological Survey Professional Papers
+        notes: Granite/marble 0.5-3%, sandstone 5-25%
     description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
       finish, contaminant adhesion, and process efficiency'
     percentage: 40.0
@@ -67,8 +69,8 @@ materialProperties:
         unit: MPa
         confidence: 81
         description: Flexural strength for calcite specimens
-        min: null
-        max: null
+        min: 25.0
+        max: 45.0
     description: 'Physical reaction to thermal stress: how material responds structurally
       to rapid heating'
     percentage: 18.2
@@ -94,8 +96,8 @@ materialProperties:
         unit: dimensionless
         confidence: 86
         description: Reflectivity at normal incidence for 1064 nm laser
-        min: null
-        max: null
+        min: 0.04
+        max: 0.35
       refractiveIndex:
         value: 1.66
         unit: dimensionless
@@ -108,15 +110,15 @@ materialProperties:
         unit: J/cm²
         confidence: 82
         description: Laser ablation threshold for nanosecond pulses at 1064 nm
-        min: null
-        max: null
+        min: 1.2
+        max: 12.5
       laserDamageThreshold:
         value: 4.2
         unit: J/cm²
         confidence: 80
         description: Damage threshold for single pulse irradiation
-        min: null
-        max: null
+        min: 1.2
+        max: 15.0
       specificHeat:
         value: 0.82
         unit: J/g·K
@@ -159,15 +161,15 @@ materialProperties:
         unit: °C
         confidence: 95
         description: Temperature where mineral structure breaks down
-        min: null
-        max: null
+        min: 573.0
+        max: 1470.0
       absorptionCoefficient:
         value: 0.15
         unit: cm⁻¹
         confidence: 84
         description: Absorption coefficient at 1064 nm wavelength
-        min: null
-        max: null
+        min: 0.15
+        max: 0.85
     description: 'First-order photon coupling: how laser energy enters the material
       vs. reflects away'
     percentage: 16.4

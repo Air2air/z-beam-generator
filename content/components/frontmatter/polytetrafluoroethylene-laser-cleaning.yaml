@@ -28,8 +28,7 @@ materialProperties:
         description: Typical crystallinity percentage in processed PTFE
         min: null
         max: null
-    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
-      finish, contaminant adhesion, and process efficiency'
+    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface finish, contaminant adhesion, and process efficiency'
     percentage: 40.0
   structural_response:
     label: Structural Response Properties
@@ -55,8 +54,7 @@ materialProperties:
         description: Young's modulus at room temperature
         min: 0.01
         max: 5
-    description: 'Physical reaction to thermal stress: how material responds structurally
-      to rapid heating'
+    description: 'Physical reaction to thermal stress: how material responds structurally to rapid heating'
     percentage: 18.2
   energy_coupling:
     label: Energy Coupling Properties
@@ -80,15 +78,15 @@ materialProperties:
         unit: dimensionless
         confidence: 80
         description: Reflectivity at 1064 nm wavelength
-        min: null
-        max: null
+        min: 0.08
+        max: 0.12
       ablationThreshold:
         value: 0.8
         unit: J/cm²
         confidence: 82
         description: Ablation threshold for nanosecond pulses at 1064 nm
-        min: null
-        max: null
+        min: 0.8
+        max: 0.8
       specificHeat:
         value: 1050
         unit: J/kg·K
@@ -131,10 +129,9 @@ materialProperties:
         unit: cm⁻¹
         confidence: 82
         description: Absorption coefficient at 1064 nm wavelength
-        min: null
-        max: null
-    description: 'First-order photon coupling: how laser energy enters the material
-      vs. reflects away'
+        min: 0.85
+        max: 0.85
+    description: 'First-order photon coupling: how laser energy enters the material vs. reflects away'
     percentage: 16.4
 applications:
 - Aerospace
@@ -226,8 +223,7 @@ author:
   image: /images/author/ikmanda-roswati.jpg
 images:
   hero:
-    alt: Polytetrafluoroethylene surface undergoing laser cleaning showing precise
-      contamination removal
+    alt: Polytetrafluoroethylene surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/polytetrafluoroethylene-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -254,9 +250,7 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: The biggest challenge with PTFE is its variable reaction to heat, so you
-  must use very specific power levels. This ensures the material's integrity remains
-  good-good throughout the cleaning process.
+subtitle: The biggest challenge with PTFE is its variable reaction to heat, so you must use very specific power levels. This ensures the material's integrity remains good-good throughout the cleaning process.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -292,25 +286,10 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the polytetrafluoroethylene surface is obscured
-    by a discontinuous layer of amorphous carbonaceous contamination. This layer,
-    measuring 5-15 micrometers thick, adheres to the native PTFE microstructure, masking
-    its characteristic node-and-fibril texture. Particulate matter, including sub-10
-    micrometer silicate spheres, is embedded within this matrix. The contamination
-    creates a topographically varied surface with visible cracking and delamination
-    at the interface with the underlying polymer, indicating poor adhesion and compromised
-    surface integrity.
-  afterText: Laser cleaning effectively ablates the contamination layer, restoring
-    the intrinsic PTFE morphology. The underlying node-and-fibril structure, with
-    features on the order of 1-5 micrometers, is now fully exposed and undamaged.
-    The surface exhibits a uniform, micro-porous texture, free of residual carbonaceous
-    film or embedded particulates. This process eliminates the previous interfacial
-    cracking, resulting in a clean substrate with restored chemical and topographical
-    properties.
-  description: Microscopic analysis of polytetrafluoroethylene surface before and
-    after laser cleaning treatment
-  alt: Microscopic view of polytetrafluoroethylene surface showing laser cleaning
-    effects
+  beforeText: At 500x magnification, the polytetrafluoroethylene surface is obscured by a discontinuous layer of amorphous carbonaceous contamination. This layer, measuring 5-15 micrometers thick, adheres to the native PTFE microstructure, masking its characteristic node-and-fibril texture. Particulate matter, including sub-10 micrometer silicate spheres, is embedded within this matrix. The contamination creates a topographically varied surface with visible cracking and delamination at the interface with the underlying polymer, indicating poor adhesion and compromised surface integrity.
+  afterText: Laser cleaning effectively ablates the contamination layer, restoring the intrinsic PTFE morphology. The underlying node-and-fibril structure, with features on the order of 1-5 micrometers, is now fully exposed and undamaged. The surface exhibits a uniform, micro-porous texture, free of residual carbonaceous film or embedded particulates. This process eliminates the previous interfacial cracking, resulting in a clean substrate with restored chemical and topographical properties.
+  description: Microscopic analysis of polytetrafluoroethylene surface before and after laser cleaning treatment
+  alt: Microscopic view of polytetrafluoroethylene surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
     uniqueCharacteristics:
@@ -329,8 +308,7 @@ caption:
     materialType: Plastic
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Polytetrafluoroethylene surface after laser cleaning
-      showing detailed surface structure
+    alt: Microscopic view of Polytetrafluoroethylene surface after laser cleaning showing detailed surface structure
     url: /images/material/polytetrafluoroethylene-laser-cleaning-micro.jpg
 tags:
 - plastic

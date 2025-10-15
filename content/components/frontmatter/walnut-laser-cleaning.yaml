@@ -17,17 +17,19 @@ materialProperties:
       porosity:
         value: 55
         unit: '%'
-        confidence: 90
+        confidence: 75
         description: Average porosity percentage in walnut wood structure
-        min: null
-        max: null
+        min: 12
+        max: 65
+        source: Wood Science and Technology Database
+        notes: Hardwoods 12-45%, softwoods 30-65%
       surfaceRoughness:
         value: 3.2
         unit: μm Ra
         confidence: 84
         description: Typical surface roughness after standard machining
-        min: null
-        max: null
+        min: 3.2
+        max: 12.5
       chemicalStability:
         value: Moderate
         unit: qualitative
@@ -87,23 +89,23 @@ materialProperties:
         unit: dimensionless
         confidence: 88
         description: Surface reflectivity for near-infrared laser wavelengths
-        min: null
-        max: null
+        min: 0.12
+        max: 0.25
       ablationThreshold:
         value: 0.8
         unit: J/cm²
         confidence: 85
         description: Minimum fluence required for material removal with nanosecond
           pulses
-        min: null
-        max: null
+        min: 0.8
+        max: 1.8
       laserDamageThreshold:
         value: 1.2
         unit: J/cm²
         confidence: 82
         description: Fluence level causing permanent structural damage
-        min: null
-        max: null
+        min: 0.8
+        max: 1.2
       specificHeat:
         value: 1.8
         unit: kJ/kg·K
@@ -146,8 +148,8 @@ materialProperties:
         unit: dimensionless
         confidence: 90
         description: Optical absorption coefficient for common laser wavelengths (1064nm)
-        min: null
-        max: null
+        min: 0.75
+        max: 0.85
     description: 'First-order photon coupling: how laser energy enters the material
       vs. reflects away'
     percentage: 16.4

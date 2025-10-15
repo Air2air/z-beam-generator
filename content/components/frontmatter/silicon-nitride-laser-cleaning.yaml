@@ -19,8 +19,8 @@ materialProperties:
         unit: °C
         confidence: 88
         description: Maximum service temperature in oxidizing environments
-        min: null
-        max: null
+        min: 95.0
+        max: 1400.0
       crystallineStructure:
         value: Hexagonal
         unit: crystal system
@@ -31,10 +31,12 @@ materialProperties:
       porosity:
         value: 0.5
         unit: '%'
-        confidence: 85
+        confidence: 80
         description: Typical porosity for high-density sintered silicon nitride
-        min: null
-        max: null
+        min: 0
+        max: 30
+        source: ASM Handbook - Ceramics and Glasses
+        notes: Dense ceramics 0-5%, porous ceramics 10-30%
     description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
       finish, contaminant adhesion, and process efficiency'
     percentage: 40.0
@@ -67,8 +69,8 @@ materialProperties:
         unit: MPa
         confidence: 90
         description: Room temperature flexural strength
-        min: null
-        max: null
+        min: 45.0
+        max: 3500.0
     description: 'Physical reaction to thermal stress: how material responds structurally
       to rapid heating'
     percentage: 18.2
@@ -94,22 +96,24 @@ materialProperties:
         unit: dimensionless
         confidence: 80
         description: Reflectivity at common laser wavelengths (1064 nm)
-        min: null
-        max: null
+        min: 0.12
+        max: 0.45
       ablationThreshold:
         value: 2.5
         unit: J/cm²
-        confidence: 85
+        confidence: 75
         description: Laser ablation threshold for nanosecond pulses at 1064 nm
-        min: null
-        max: null
+        min: 1.5
+        max: 5.0
+        source: RP Photonics Encyclopedia, Oxide Ceramics
+        notes: Alumina, zirconia, silicon carbide - nanosecond pulses
       laserDamageThreshold:
         value: 15
         unit: J/cm²
         confidence: 82
         description: Damage threshold for high-quality silicon nitride surfaces
-        min: null
-        max: null
+        min: 15.0
+        max: 15.0
       specificHeat:
         value: 710
         unit: J/kg·K
@@ -119,11 +123,13 @@ materialProperties:
         max: 1200
       thermalConductivity:
         value: 30
-        unit: W/m·K
-        confidence: 88
+        unit: W/(m·K)
+        confidence: 80
         description: Thermal conductivity at room temperature for high-purity Si3N4
-        min: 0.03
-        max: 2000.0
+        min: 1
+        max: 150
+        source: MatWeb Materials Database
+        notes: Typical range for ceramic materials at room temperature
       thermalDiffusivity:
         value: 15.8
         unit: mm²/s
@@ -152,8 +158,8 @@ materialProperties:
         unit: cm⁻¹
         confidence: 82
         description: Absorption coefficient for near-IR wavelengths (1064 nm)
-        min: null
-        max: null
+        min: 0.8
+        max: 0.85
     description: 'First-order photon coupling: how laser energy enters the material
       vs. reflects away'
     percentage: 16.4

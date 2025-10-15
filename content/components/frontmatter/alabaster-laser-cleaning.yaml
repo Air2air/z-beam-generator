@@ -17,10 +17,12 @@ materialProperties:
       porosity:
         value: 8.5
         unit: '%'
-        confidence: 90
+        confidence: 75
         description: Average porosity of natural alabaster
-        min: null
-        max: null
+        min: 0.5
+        max: 25
+        source: Geological Survey Professional Papers
+        notes: Granite/marble 0.5-3%, sandstone 5-25%
       waterSolubility:
         value: 2.41
         unit: g/L
@@ -60,8 +62,8 @@ materialProperties:
         unit: MPa
         confidence: 88
         description: Uniaxial compressive strength
-        min: null
-        max: null
+        min: 45.0
+        max: 250.0
     description: 'Physical reaction to thermal stress: how material responds structurally
       to rapid heating'
     percentage: 18.2
@@ -87,15 +89,15 @@ materialProperties:
         unit: dimensionless
         confidence: 85
         description: Surface reflectivity at 1064 nm wavelength
-        min: null
-        max: null
+        min: 0.04
+        max: 0.35
       ablationThreshold:
         value: 1.8
         unit: J/cm²
         confidence: 80
         description: Laser ablation threshold for Nd:YAG lasers
-        min: null
-        max: null
+        min: 1.2
+        max: 12.5
       specificHeat:
         value: 1085
         unit: J/kg·K
@@ -138,15 +140,15 @@ materialProperties:
         unit: K
         confidence: 92
         description: Temperature where mineral structure breaks down
-        min: null
-        max: null
+        min: 573.0
+        max: 1470.0
       absorptionCoefficient:
         value: 0.85
         unit: dimensionless
         confidence: 82
         description: Optical absorption coefficient for visible wavelengths
-        min: null
-        max: null
+        min: 0.15
+        max: 0.85
     description: 'First-order photon coupling: how laser energy enters the material
       vs. reflects away'
     percentage: 16.4

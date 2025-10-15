@@ -12,8 +12,8 @@ materialProperties:
         unit: MPa
         confidence: 95
         description: compressiveStrength from Materials.yaml
-        min: null
-        max: null
+        min: 45.0
+        max: 250.0
       hardness:
         value: 6.5
         unit: Mohs
@@ -51,17 +51,19 @@ materialProperties:
       porosity:
         value: 15.2
         unit: '%'
-        confidence: 92
+        confidence: 75
         description: Typical porosity range for medium-grained sandstone
-        min: null
-        max: null
+        min: 0.5
+        max: 25
+        source: Geological Survey Professional Papers
+        notes: Granite/marble 0.5-3%, sandstone 5-25%
       chemicalStability:
         value: 8.2
         unit: pH resistance scale
         confidence: 89
         description: Resistance to chemical degradation on 1-10 scale (10=most stable)
-        min: null
-        max: null
+        min: 8.0
+        max: 95.0
     description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
       finish, contaminant adhesion, and process efficiency'
     percentage: 40.0
@@ -87,22 +89,22 @@ materialProperties:
         unit: dimensionless
         confidence: 80
         description: Surface reflectivity at common laser cleaning wavelengths
-        min: null
-        max: null
+        min: 0.04
+        max: 0.35
       ablationThreshold:
         value: 2.8
         unit: J/cm²
         confidence: 83
         description: Minimum fluence required for material removal at 1064 nm wavelength
-        min: null
-        max: null
+        min: 1.2
+        max: 12.5
       laserDamageThreshold:
         value: 4.2
         unit: J/cm²
         confidence: 81
         description: Fluence level causing permanent structural damage
-        min: null
-        max: null
+        min: 1.2
+        max: 15.0
       specificHeat:
         value: 920
         unit: J/kg·K
@@ -146,16 +148,16 @@ materialProperties:
         unit: °C
         confidence: 92
         description: Temperature where mineral structure breaks down
-        min: null
-        max: null
+        min: 573.0
+        max: 1470.0
       absorptionCoefficient:
         value: 0.85
         unit: dimensionless
         confidence: 82
         description: Optical absorption coefficient for near-infrared wavelengths
           (1064 nm)
-        min: null
-        max: null
+        min: 0.15
+        max: 0.85
     description: 'First-order photon coupling: how laser energy enters the material
       vs. reflects away'
     percentage: 16.4

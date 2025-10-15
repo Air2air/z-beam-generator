@@ -17,10 +17,12 @@ materialProperties:
       oxidationResistance:
         value: 400
         unit: °C
-        confidence: 92
+        confidence: 80
         description: Maximum temperature for protective oxide layer stability
-        min: null
-        max: null
+        min: 200
+        max: 1200
+        source: ASM Metals Handbook - Corrosion
+        notes: 'Oxidation onset: Steel 200-400°C, Stainless 400-800°C, Ni alloys 800-1200°C'
       crystallineStructure:
         value: BCC
         unit: none
@@ -33,8 +35,8 @@ materialProperties:
         unit: μΩ·cm
         confidence: 95
         description: Electrical resistivity at room temperature
-        min: null
-        max: null
+        min: 0.197
+        max: 48.0
     description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
       finish, contaminant adhesion, and process efficiency'
     percentage: 40.0
@@ -83,26 +85,48 @@ materialProperties:
         min: 5
         max: 98
       reflectivity:
-        value: 58
-        unit: '%'
-        confidence: 82
-        description: Optical reflectivity at 1064 nm wavelength
-        min: null
-        max: null
-      ablationThreshold:
-        value: 2.8
-        unit: J/cm²
+        at_1064nm:
+          min: 85
+          max: 98
+          unit: '%'
+        at_532nm:
+          min: 70
+          max: 95
+          unit: '%'
+        at_355nm:
+          min: 55
+          max: 85
+          unit: '%'
+        at_10640nm:
+          min: 95
+          max: 99
+          unit: '%'
+        source: Handbook of Optical Constants (Palik)
         confidence: 85
-        description: Laser ablation threshold for nanosecond pulses at 1064 nm
-        min: null
-        max: null
+        measurement_context: Varies by laser wavelength
+      ablationThreshold:
+        nanosecond:
+          min: 2.0
+          max: 8.0
+          unit: J/cm²
+        picosecond:
+          min: 0.1
+          max: 2.0
+          unit: J/cm²
+        femtosecond:
+          min: 0.14
+          max: 1.7
+          unit: J/cm²
+        source: Marks et al. 2022, Precision Engineering
+        confidence: 90
+        measurement_context: Varies by pulse duration (ns/ps/fs)
       laserDamageThreshold:
         value: 3.5
         unit: J/cm²
         confidence: 82
         description: Damage threshold for pulsed laser irradiation
-        min: null
-        max: null
+        min: 1.2
+        max: 15.0
       specificHeat:
         value: 265
         unit: J/kg·K
@@ -112,11 +136,13 @@ materialProperties:
         max: 900
       thermalConductivity:
         value: 53.7
-        unit: W/m·K
-        confidence: 92
+        unit: W/(m·K)
+        confidence: 85
         description: Thermal conductivity at room temperature
-        min: 6.0
-        max: 429.0
+        min: 15
+        max: 400
+        source: MatWeb Materials Database
+        notes: Typical range for metal materials at room temperature
       thermalDiffusivity:
         value: 23.7
         unit: mm²/s
@@ -145,8 +171,8 @@ materialProperties:
         unit: 10⁵ cm⁻¹
         confidence: 80
         description: Absorption coefficient for near-IR lasers
-        min: null
-        max: null
+        min: 0.03
+        max: 12000000.0
     description: 'First-order photon coupling: how laser energy enters the material
       vs. reflects away'
     percentage: 16.4

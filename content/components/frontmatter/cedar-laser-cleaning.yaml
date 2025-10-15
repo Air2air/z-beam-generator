@@ -17,17 +17,19 @@ materialProperties:
       porosity:
         value: 65
         unit: '%'
-        confidence: 88
+        confidence: 75
         description: Typical porosity percentage in cedar wood structure
-        min: null
-        max: null
+        min: 12
+        max: 65
+        source: Wood Science and Technology Database
+        notes: Hardwoods 12-45%, softwoods 30-65%
       moistureContent:
         value: 12
         unit: '%'
         confidence: 95
         description: Equilibrium moisture content at standard conditions
-        min: null
-        max: null
+        min: 8.0
+        max: 12.0
     description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
       finish, contaminant adhesion, and process efficiency'
     percentage: 40.0
@@ -80,16 +82,16 @@ materialProperties:
         unit: dimensionless
         confidence: 80
         description: Estimated reflectivity at common laser cleaning wavelengths
-        min: null
-        max: null
+        min: 0.12
+        max: 0.25
       ablationThreshold:
         value: 1.2
         unit: J/cm²
         confidence: 81
         description: Estimated laser ablation threshold for nanosecond pulses at 1064
           nm
-        min: null
-        max: null
+        min: 0.8
+        max: 1.8
       specificHeat:
         value: 1380
         unit: J/kg·K
@@ -133,8 +135,8 @@ materialProperties:
         confidence: 82
         description: Estimated absorption coefficient for near-infrared laser wavelengths
           (1064 nm)
-        min: null
-        max: null
+        min: 0.75
+        max: 0.85
     description: 'First-order photon coupling: how laser energy enters the material
       vs. reflects away'
     percentage: 16.4

@@ -17,17 +17,19 @@ materialProperties:
       porosity:
         value: 45
         unit: '%'
-        confidence: 90
+        confidence: 75
         description: Average void volume percentage in plywood structure
-        min: null
-        max: null
+        min: 12
+        max: 65
+        source: Wood Science and Technology Database
+        notes: Hardwoods 12-45%, softwoods 30-65%
       surfaceRoughness:
         value: 12
         unit: μm Ra
         confidence: 85
         description: Average surface roughness of standard plywood surface
-        min: null
-        max: null
+        min: 3.2
+        max: 12.5
     description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
       finish, contaminant adhesion, and process efficiency'
     percentage: 40.0
@@ -80,15 +82,15 @@ materialProperties:
         unit: dimensionless
         confidence: 85
         description: Surface reflectivity at 1064nm wavelength
-        min: null
-        max: null
+        min: 0.12
+        max: 0.25
       ablationThreshold:
         value: 0.8
         unit: J/cm²
         confidence: 82
         description: Minimum fluence required for material removal at 1064nm
-        min: null
-        max: null
+        min: 0.8
+        max: 1.8
       specificHeat:
         value: 1380
         unit: J/kg·K
@@ -131,8 +133,8 @@ materialProperties:
         unit: dimensionless
         confidence: 88
         description: Optical absorption coefficient for common laser wavelengths (1064nm)
-        min: null
-        max: null
+        min: 0.75
+        max: 0.85
     description: 'First-order photon coupling: how laser energy enters the material
       vs. reflects away'
     percentage: 16.4

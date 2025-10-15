@@ -16,18 +16,20 @@ materialProperties:
         max: 22.6
       oxidationResistance:
         value: 85
-        unit: '% relative'
-        confidence: 88
+        unit: °C
+        confidence: 80
         description: Relative oxidation resistance compared to pure copper
-        min: null
-        max: null
+        min: 200
+        max: 1200
+        source: ASM Metals Handbook - Corrosion
+        notes: 'Oxidation onset: Steel 200-400°C, Stainless 400-800°C, Ni alloys 800-1200°C'
       corrosionResistance:
         value: 78
         unit: '% relative'
         confidence: 85
         description: General corrosion resistance in atmospheric conditions
-        min: null
-        max: null
+        min: 9.3
+        max: 78.0
       crystallineStructure:
         value: FCC
         unit: crystal system
@@ -38,10 +40,12 @@ materialProperties:
       surfaceRoughness:
         value: 0.8
         unit: μm Ra
-        confidence: 80
+        confidence: 85
         description: Typical surface roughness for machined brass surfaces
-        min: null
-        max: null
+        min: 0.4
+        max: 150
+        source: Engineering ToolBox
+        notes: Industrial metal finishing processes
     description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
       finish, contaminant adhesion, and process efficiency'
     percentage: 40.0
@@ -90,19 +94,41 @@ materialProperties:
         min: 5
         max: 98
       reflectivity:
-        value: 65
-        unit: '%'
-        confidence: 82
-        description: Average reflectivity in visible to near-IR spectrum
-        min: null
-        max: null
+        at_1064nm:
+          min: 85
+          max: 98
+          unit: '%'
+        at_532nm:
+          min: 70
+          max: 95
+          unit: '%'
+        at_355nm:
+          min: 55
+          max: 85
+          unit: '%'
+        at_10640nm:
+          min: 95
+          max: 99
+          unit: '%'
+        source: Handbook of Optical Constants (Palik)
+        confidence: 85
+        measurement_context: Varies by laser wavelength
       ablationThreshold:
-        value: 2.5
-        unit: J/cm²
-        confidence: 82
-        description: Laser ablation threshold for nanosecond pulses at 1064 nm
-        min: null
-        max: null
+        nanosecond:
+          min: 2.0
+          max: 8.0
+          unit: J/cm²
+        picosecond:
+          min: 0.1
+          max: 2.0
+          unit: J/cm²
+        femtosecond:
+          min: 0.14
+          max: 1.7
+          unit: J/cm²
+        source: Marks et al. 2022, Precision Engineering
+        confidence: 90
+        measurement_context: Varies by pulse duration (ns/ps/fs)
       specificHeat:
         value: 380
         unit: J/kg·K
@@ -112,11 +138,13 @@ materialProperties:
         max: 900
       thermalConductivity:
         value: 120
-        unit: W/m·K
-        confidence: 92
+        unit: W/(m·K)
+        confidence: 85
         description: Thermal conductivity of typical brass alloys
-        min: 6.0
-        max: 429.0
+        min: 15
+        max: 400
+        source: MatWeb Materials Database
+        notes: Typical range for metal materials at room temperature
       thermalDiffusivity:
         value: 35.2
         unit: mm²/s
@@ -145,8 +173,8 @@ materialProperties:
         unit: μm⁻¹
         confidence: 80
         description: Optical absorption coefficient at 1064 nm wavelength
-        min: null
-        max: null
+        min: 0.03
+        max: 12000000.0
     description: 'First-order photon coupling: how laser energy enters the material
       vs. reflects away'
     percentage: 16.4

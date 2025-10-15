@@ -12,15 +12,15 @@ materialProperties:
         unit: MPa
         confidence: 95
         description: compressiveStrength from Materials.yaml
-        min: null
-        max: null
+        min: 410.0
+        max: 6700.0
       flexuralStrength:
         value: 3500
         unit: MPa
         confidence: 88
         description: Transverse rupture strength for WC-6%Co
-        min: null
-        max: null
+        min: 45.0
+        max: 3500.0
       hardness:
         value: 1600
         unit: HV
@@ -60,8 +60,8 @@ materialProperties:
         unit: °C
         confidence: 85
         description: Maximum temperature for oxidation resistance in air
-        min: null
-        max: null
+        min: 95.0
+        max: 1400.0
       crystallineStructure:
         value: Hexagonal
         unit: crystal system
@@ -101,15 +101,17 @@ materialProperties:
         unit: dimensionless
         confidence: 80
         description: Estimated reflectivity at 1064 nm laser wavelength
-        min: null
-        max: null
+        min: 0.12
+        max: 0.45
       ablationThreshold:
         value: 2.5
         unit: J/cm²
-        confidence: 82
+        confidence: 75
         description: Estimated ablation threshold for nanosecond pulses at 1064 nm
-        min: null
-        max: null
+        min: 1.5
+        max: 5.0
+        source: RP Photonics Encyclopedia, Oxide Ceramics
+        notes: Alumina, zirconia, silicon carbide - nanosecond pulses
       specificHeat:
         value: 0.22
         unit: J/g·K
@@ -119,11 +121,13 @@ materialProperties:
         max: 1200
       thermalConductivity:
         value: 110
-        unit: W/m·K
-        confidence: 88
+        unit: W/(m·K)
+        confidence: 80
         description: Thermal conductivity for WC-6%Co composition at room temperature
-        min: 0.03
-        max: 2000.0
+        min: 1
+        max: 150
+        source: MatWeb Materials Database
+        notes: Typical range for ceramic materials at room temperature
       thermalDiffusivity:
         value: 0.18
         unit: cm²/s
@@ -160,8 +164,8 @@ materialProperties:
         confidence: 80
         description: Estimated absorption coefficient for near-IR wavelengths (1064
           nm)
-        min: null
-        max: null
+        min: 0.8
+        max: 0.85
     description: 'First-order photon coupling: how laser energy enters the material
       vs. reflects away'
     percentage: 16.4

@@ -19,8 +19,8 @@ materialProperties:
         unit: '% resistance'
         confidence: 94
         description: Chemical resistance to acids and alkalis at room temperature
-        min: null
-        max: null
+        min: 0.7
+        max: 99.5
       crystallineStructure:
         value: Rhombohedral
         unit: crystal system
@@ -33,8 +33,8 @@ materialProperties:
         unit: nm Ra
         confidence: 88
         description: Typical surface roughness for polished sapphire
-        min: null
-        max: null
+        min: 0.005
+        max: 0.5
     description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
       finish, contaminant adhesion, and process efficiency'
     percentage: 40.0
@@ -67,8 +67,8 @@ materialProperties:
         unit: MPa
         confidence: 85
         description: Flexural strength of polished sapphire
-        min: null
-        max: null
+        min: 50.0
+        max: 690.0
     description: 'Physical reaction to thermal stress: how material responds structurally
       to rapid heating'
     percentage: 18.2
@@ -94,22 +94,24 @@ materialProperties:
         unit: dimensionless
         confidence: 96
         description: Refractive index at 589 nm wavelength
-        min: null
-        max: null
+        min: 1.458
+        max: 1.76
       laserDamageThreshold:
         value: 15
         unit: J/cm²
         confidence: 85
         description: Laser damage threshold for nanosecond pulses at 1064 nm
-        min: null
-        max: null
+        min: 2.5
+        max: 15.0
       ablationThreshold:
         value: 2.5
         unit: J/cm²
-        confidence: 82
+        confidence: 80
         description: Ablation threshold for femtosecond laser pulses
-        min: null
-        max: null
+        min: 2.0
+        max: 6.0
+        source: Laser-Induced Damage in Optical Materials (NIST)
+        notes: Silica, borosilicate - nanosecond pulses at 1064nm
       specificHeat:
         value: 750
         unit: J/kg·K
@@ -119,11 +121,13 @@ materialProperties:
         max: 900
       thermalConductivity:
         value: 35
-        unit: W/m·K
-        confidence: 92
+        unit: W/(m·K)
+        confidence: 85
         description: Thermal conductivity at room temperature along c-axis
-        min: 0.02
-        max: 40
+        min: 0.8
+        max: 1.4
+        source: MatWeb Materials Database
+        notes: Typical range for glass materials at room temperature
       thermalDiffusivity:
         value: 12.5
         unit: mm²/s
@@ -152,15 +156,15 @@ materialProperties:
         unit: K
         confidence: 95
         description: Temperature where glass transitions from rigid to pliable state
-        min: null
-        max: null
+        min: 820.0
+        max: 2040.0
       transmissivity:
         value: 85
         unit: '%'
         confidence: 90
         description: Transmission in visible spectrum for 1mm thickness
-        min: null
-        max: null
+        min: 85.0
+        max: 93.0
     description: 'First-order photon coupling: how laser energy enters the material
       vs. reflects away'
     percentage: 16.4

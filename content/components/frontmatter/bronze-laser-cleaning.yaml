@@ -16,19 +16,21 @@ materialProperties:
         max: 22.6
       oxidationResistance:
         value: High
-        unit: qualitative
-        confidence: 90
+        unit: °C
+        confidence: 80
         description: Excellent oxidation resistance due to protective oxide layer
           formation
-        min: null
-        max: null
+        min: 200
+        max: 1200
+        source: ASM Metals Handbook - Corrosion
+        notes: 'Oxidation onset: Steel 200-400°C, Stainless 400-800°C, Ni alloys 800-1200°C'
       corrosionResistance:
         value: Excellent
         unit: qualitative
         confidence: 92
         description: Superior corrosion resistance in marine and chemical environments
-        min: null
-        max: null
+        min: 9.3
+        max: 78.0
       crystallineStructure:
         value: α-phase FCC
         unit: crystal system
@@ -41,8 +43,10 @@ materialProperties:
         unit: μm Ra
         confidence: 85
         description: Typical as-cast surface roughness before laser treatment
-        min: null
-        max: null
+        min: 0.4
+        max: 150
+        source: Engineering ToolBox
+        notes: Industrial metal finishing processes
     description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
       finish, contaminant adhesion, and process efficiency'
     percentage: 40.0
@@ -91,12 +95,21 @@ materialProperties:
         min: 5
         max: 98
       ablationThreshold:
-        value: 1.8
-        unit: J/cm²
-        confidence: 85
-        description: Laser ablation threshold for nanosecond pulses at 1064 nm
-        min: null
-        max: null
+        nanosecond:
+          min: 2.0
+          max: 8.0
+          unit: J/cm²
+        picosecond:
+          min: 0.1
+          max: 2.0
+          unit: J/cm²
+        femtosecond:
+          min: 0.14
+          max: 1.7
+          unit: J/cm²
+        source: Marks et al. 2022, Precision Engineering
+        confidence: 90
+        measurement_context: Varies by pulse duration (ns/ps/fs)
       specificHeat:
         value: 380
         unit: J/kg·K
@@ -106,11 +119,13 @@ materialProperties:
         max: 900
       thermalConductivity:
         value: 75
-        unit: W/m·K
-        confidence: 90
+        unit: W/(m·K)
+        confidence: 85
         description: Thermal conductivity of standard bronze alloys
-        min: 6.0
-        max: 429.0
+        min: 15
+        max: 400
+        source: MatWeb Materials Database
+        notes: Typical range for metal materials at room temperature
       thermalDiffusivity:
         value: 22.7
         unit: mm²/s
@@ -139,8 +154,8 @@ materialProperties:
         unit: ×10⁵ m⁻¹
         confidence: 80
         description: Optical absorption coefficient at 1064 nm wavelength
-        min: null
-        max: null
+        min: 0.03
+        max: 12000000.0
     description: 'First-order photon coupling: how laser energy enters the material
       vs. reflects away'
     percentage: 16.4
