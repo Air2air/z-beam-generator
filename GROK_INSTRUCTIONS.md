@@ -1,6 +1,36 @@
-# Grok Instructions for Z-Beam Generator
+# ⚠️ DOCUMENTATION CONSOLIDATED
 
-## 🎯 Mission Statement
+**This file has been merged into the unified AI Assistant Instructions.**
+
+## 👉 NEW LOCATION: [.github/copilot-instructions.md](.github/copilot-instructions.md)
+
+All AI assistant instructions (GitHub Copilot, Grok AI, and others) are now maintained in a single comprehensive file to ensure consistency and eliminate duplication.
+
+### What Changed?
+- **Merged**: Both Copilot and Grok instructions into one unified guide
+- **Enhanced**: Added all unique content from both files
+- **Organized**: Quick reference at top, detailed sections below
+- **Updated**: Added latest documentation and known issues
+- **AI-Specific**: Sections for different AI assistants at the end
+
+### Quick Access
+Jump directly to relevant sections in the unified file:
+- 🎯 **[Quick Reference Card](.github/copilot-instructions.md#-quick-reference-card)** - Read this first
+- 📋 **[Pre-Change Checklist](.github/copilot-instructions.md#-mandatory-pre-change-checklist)** - Complete before ANY change
+- 🚨 **[Damage Warning Signs](.github/copilot-instructions.md#-damage-warning-signs)** - Monitor actively
+- 🚑 **[Emergency Recovery](.github/copilot-instructions.md#-emergency-recovery-procedures)** - If you break something
+- 🤖 **[Grok-Specific Guidance](.github/copilot-instructions.md#-ai-specific-guidance)** - Grok AI section
+
+---
+
+## 📖 Legacy Content Preserved Below
+
+The following content is preserved for reference but may be outdated. **Use the unified file above for current instructions.**
+
+<details>
+<summary>Click to expand legacy Grok instructions</summary>
+
+## 🎯 Mission Statement (Legacy)
 You are working on a **laser cleaning content generation system** with strict fail-fast architecture. Your role is to make **minimal, targeted fixes** while preserving all working functionality.
 
 ## ⚡ Quick Reference Card
@@ -306,3 +336,9 @@ git revert <commit>  # Revert to known working state
 - [ ] No working functionality was broken
 - [ ] The solution is complete and secure
 - [ ] I haven't expanded beyond the requested scope
+
+</details>
+
+---
+
+**Again**: Please use [.github/copilot-instructions.md](.github/copilot-instructions.md) for current instructions.
