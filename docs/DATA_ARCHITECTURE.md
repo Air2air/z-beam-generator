@@ -403,6 +403,145 @@ properties:
 
 ---
 
+## Property Data Patterns (as of Oct 2025)
+
+### Pattern Evolution
+
+The system supports **4 property data patterns**, reflecting the evolution from AI-generated to research-backed authoritative data:
+
+#### 1. Legacy Format (Original - 70-85% confidence)
+```yaml
+ablationThreshold:
+  value: 0.8
+  unit: "J/cm²"
+  confidence: 80
+  description: "Laser ablation threshold"
+  min: null
+  max: null
+```
+- **Used by**: ~800 properties across 122 materials
+- **Source**: Original AI generation
+- **Status**: Still valid, maintained for backward compatibility
+
+#### 2. Pulse-Specific Format (Priority 2 Authoritative - 90% confidence)
+```yaml
+ablationThreshold:
+  nanosecond:
+    min: 2.0
+    max: 8.0
+    unit: "J/cm²"
+  picosecond:
+    min: 0.1
+    max: 2.0
+    unit: "J/cm²"
+  femtosecond:
+    min: 0.14
+    max: 1.7
+    unit: "J/cm²"
+  source: "Marks et al. 2022, Precision Engineering"
+  confidence: 90
+  measurement_context: "Varies by pulse duration (ns/ps/fs)"
+```
+- **Used by**: 45 properties (36 metals, 7 ceramics, 2 glasses)
+- **Source**: Peer-reviewed research (Priority 2 automation)
+- **Properties**: ablationThreshold
+- **Impact**: Enables pulse-duration-specific laser parameter optimization
+
+#### 3. Wavelength-Specific Format (Priority 2 Authoritative - 85% confidence)
+```yaml
+reflectivity:
+  at_1064nm:    # Nd:YAG, Fiber lasers
+    min: 85
+    max: 98
+    unit: "%"
+  at_532nm:     # Green doubled Nd:YAG
+    min: 70
+    max: 95
+    unit: "%"
+  at_355nm:     # UV tripled Nd:YAG
+    min: 55
+    max: 85
+    unit: "%"
+  at_10640nm:   # CO2 lasers
+    min: 95
+    max: 99
+    unit: "%"
+  source: "Handbook of Optical Constants (Palik)"
+  confidence: 85
+  measurement_context: "Varies by laser wavelength"
+```
+- **Used by**: 35 properties (metals only)
+- **Source**: Handbook of Optical Constants (Palik)
+- **Properties**: reflectivity
+- **Impact**: Enables wavelength-specific laser selection and parameter optimization
+
+#### 4. Authoritative Format (Priority 2 Enhanced Legacy - 75-90% confidence)
+```yaml
+thermalConductivity:
+  value: 401
+  unit: "W/(m·K)"
+  confidence: 85
+  description: "Thermal conductivity of pure copper at 20°C"
+  min: 15
+  max: 400
+  source: "MatWeb Materials Database"
+  notes: "Typical range for metal materials at room temperature"
+```
+- **Used by**: ~144 properties across ~60 materials
+- **Source**: Research databases (NIST, ASM Handbook, MatWeb, Engineering ToolBox, etc.)
+- **Properties**: thermalConductivity, porosity, oxidationResistance, surfaceRoughness
+- **Enhancement**: Legacy format + source attribution + contextual notes
+
+### Pattern Detection & Value Extraction
+
+**Generators use pattern-aware methods**:
+- `_detect_property_pattern(prop_data)` → Returns: `'pulse-specific'`, `'wavelength-specific'`, `'authoritative'`, `'legacy-sourced'`, or `'legacy'`
+- `_extract_property_value(prop_data, prefer_wavelength='1064nm', prefer_pulse='nanosecond')` → Returns numeric value
+
+**Detection Logic**:
+1. Check for `nanosecond/picosecond/femtosecond` keys → pulse-specific
+2. Check for `at_1064nm/at_532nm/at_355nm/at_10640nm` keys → wavelength-specific
+3. Check for `source` + confidence > 85% → authoritative
+4. Check for `source` or `notes` → legacy-sourced
+5. Default → legacy
+
+**Value Extraction**:
+- Pulse-specific: Returns average of preferred pulse duration (default: nanosecond)
+- Wavelength-specific: Returns average of preferred wavelength (default: 1064nm for Nd:YAG)
+- Legacy/Authoritative: Returns `value` field or min/max average
+- Fallback: Returns 0
+
+### Generator Compatibility
+
+**Updated Generators** (Oct 2025):
+- ✅ `streamlined_generator.py` - Pattern-aware value extraction
+- ✅ Preserves pulse-specific and wavelength-specific structures during operations
+- ✅ Handles all 4 patterns transparently for tag generation and property access
+- ✅ Comprehensive test coverage (15 tests in `test_property_pattern_detection.py`)
+
+**Critical Preservation Rule**:
+Generators must NOT overwrite pulse-specific or wavelength-specific patterns during regeneration. Always check pattern type before regenerating any property with confidence > 85% and source attribution.
+
+### Data Distribution
+
+| Pattern | Properties | Files | Confidence | Status |
+|---------|-----------|-------|------------|--------|
+| Legacy | ~800 | 122 | 70-85% | ✅ Maintained |
+| Pulse-specific | 45 | 45 | 90% | ✅ Priority 2 |
+| Wavelength-specific | 35 | 35 | 85% | ✅ Priority 2 |
+| Authoritative | 144 | ~60 | 75-90% | ✅ Priority 2 |
+
+**Total Priority 2 Updates**: 224 authoritative properties across 91 materials
+
+### Related Documentation
+
+- **Normalization Analysis**: `FRONTMATTER_NORMALIZATION_REPORT.md`
+- **Generator Updates**: `GENERATOR_PATTERN_AWARENESS_UPDATE.md`
+- **Priority 2 Research**: `docs/PRIORITY2_COMPLETE.md`
+- **Test Suite**: `tests/test_property_pattern_detection.py`
+
+---
+
 ## Migration Notes
 
 ### Pre-October 2025 System

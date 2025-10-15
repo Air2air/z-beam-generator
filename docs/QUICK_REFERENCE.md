@@ -98,6 +98,25 @@ is_valid, errors = frontmatter_manager.validate_material("Steel")
 **→ Results**: 0.0% → 59.5% automatic improvement for technical content
 **→ Documentation**: [Winston Composite Scoring](WINSTON_COMPOSITE_SCORING_INTEGRATION.md)
 
+### "Property format questions" / "What property data formats are supported?"
+**→ Immediate Response**: ✅ **4 PATTERNS SUPPORTED** (as of Oct 2025)
+**→ Pattern 1**: **Legacy** - Single value: `{value, unit, min, max, confidence, description}` (~800 properties)
+**→ Pattern 2**: **Pulse-specific** - NS/PS/FS: `{nanosecond: {min, max, unit}, picosecond: {...}, femtosecond: {...}}` (45 properties)
+**→ Pattern 3**: **Wavelength-specific** - 4 wavelengths: `{at_1064nm: {min, max, unit}, at_532nm: {...}, at_355nm: {...}, at_10640nm: {...}}` (35 properties)
+**→ Pattern 4**: **Authoritative** - Legacy + source: `{value, unit, min, max, source, notes, confidence}` (144 properties)
+**→ Detection**: Generators use `_detect_property_pattern()` to identify format
+**→ Extraction**: Use `_extract_property_value()` for pattern-aware value retrieval
+**→ Documentation**: `FRONTMATTER_NORMALIZATION_REPORT.md`, `GENERATOR_PATTERN_AWARENESS_UPDATE.md`
+**→ Testing**: `python3 -m pytest tests/test_property_pattern_detection.py -v` (15 tests)
+
+### "Generator not handling pulse/wavelength data" / "Pattern awareness needed"
+**→ Immediate Response**: ✅ **UPDATED October 2025** - Pattern-aware value extraction implemented
+**→ Quick Fix**: Generators automatically recognize and preserve pulse-specific and wavelength-specific patterns
+**→ Methods Added**: `_detect_property_pattern()` and `_extract_property_value()` in `streamlined_generator.py`
+**→ Preservation**: High-confidence (>85%) authoritative data with sources is automatically preserved
+**→ Example**: Copper ablation threshold (pulse-specific) and reflectivity (wavelength-specific) maintained
+**→ Documentation**: `GENERATOR_PATTERN_AWARENESS_UPDATE.md`
+
 ### "Table components missing min/max columns"
 **→ Immediate Response**: ✅ **VERIFIED WORKING** - Min/Max columns are present and correct
 **→ Quick Fix**: Check frontend Next.js table rendering component
