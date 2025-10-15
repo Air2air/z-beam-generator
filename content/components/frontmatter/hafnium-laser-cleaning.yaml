@@ -4,10 +4,8 @@ subcategory: refractory
 title: Hafnium Laser Cleaning
 description: Laser cleaning parameters for Hafnium
 materialProperties:
-  physical_structural:
-    label: Physical/Structural Properties
-    description: Basic physical characteristics
-    percentage: 3.6
+  material_properties:
+    label: Material Properties
     properties:
       density:
         value: 13.31
@@ -16,10 +14,25 @@ materialProperties:
         description: Density of pure hafnium at room temperature
         min: 0.53
         max: 22.6
-  mechanical:
-    label: Mechanical Properties
-    description: Strength, elasticity, and structural characteristics
-    percentage: 18.2
+      crystallineStructure:
+        value: HCP
+        unit: crystal system
+        confidence: 95
+        description: Hexagonal close-packed structure at room temperature
+        min: null
+        max: null
+      oxidationResistance:
+        value: High
+        unit: qualitative
+        confidence: 85
+        description: Forms protective oxide layer, good oxidation resistance
+        min: null
+        max: null
+    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
+      finish, contaminant adhesion, and process efficiency'
+    percentage: 40.0
+  structural_response:
+    label: Structural Response Properties
     properties:
       hardness:
         value: 170
@@ -42,10 +55,11 @@ materialProperties:
         description: Young's modulus of elasticity
         min: 5
         max: 411
-  optical_laser:
-    label: Optical/Laser Properties
-    description: Light interaction and laser response characteristics
-    percentage: 16.4
+    description: 'Physical reaction to thermal stress: how material responds structurally
+      to rapid heating'
+    percentage: 18.2
+  energy_coupling:
+    label: Energy Coupling Properties
     properties:
       laserAbsorption:
         value: 42.7
@@ -75,11 +89,6 @@ materialProperties:
         description: Estimated laser ablation threshold for nanosecond pulses
         min: null
         max: null
-  thermal:
-    label: Thermal Properties
-    description: Heat-related material characteristics including conductivity, expansion, and destruction points
-    percentage: 29.1
-    properties:
       specificHeat:
         value: 144
         unit: J/kg·K
@@ -117,42 +126,17 @@ materialProperties:
           confidence: 95
           description: Thermal destruction point
         type: melting
-  compositional:
-    label: Compositional Properties
-    description: Material composition characteristics
-    percentage: 5.5
-    properties:
-      crystallineStructure:
-        value: HCP
-        unit: crystal system
-        confidence: 95
-        description: Hexagonal close-packed structure at room temperature
-        min: null
-        max: null
-  chemical:
-    label: Chemical Properties
-    description: Chemical reactivity and stability
-    percentage: 5.5
-    properties:
-      oxidationResistance:
-        value: High
-        unit: qualitative
-        confidence: 85
-        description: Forms protective oxide layer, good oxidation resistance
-        min: null
-        max: null
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 0
-    properties:
       absorptionCoefficient:
         value: 0.65
         unit: dimensionless
         confidence: 82
-        description: Estimated absorption coefficient for common laser wavelengths (1.06 μm)
+        description: Estimated absorption coefficient for common laser wavelengths
+          (1.06 μm)
         min: null
         max: null
+    description: 'First-order photon coupling: how laser energy enters the material
+      vs. reflects away'
+    percentage: 16.4
 applications:
 - Nuclear Reactor Components
 - Aerospace Turbine Components
@@ -211,8 +195,9 @@ machineSettings:
     value: 6.0
     unit: J/cm²
     confidence: 92
-    description: Energy density threshold for effective Hafnium cleaning - Energy density threshold for effective oxide and
-      contaminant removal from metallic surfaces
+    description: Energy density threshold for effective Hafnium cleaning - Energy
+      density threshold for effective oxide and contaminant removal from metallic
+      surfaces
     min: 3.0
     max: 12.0
   fluenceThreshold:
@@ -278,8 +263,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Hafnium's unique reactivity and variable oxide layer demand careful attention. This requires tailored laser settings
-  to effectively remove contaminants without damaging the underlying material.
+subtitle: Hafnium's unique reactivity and variable oxide layer demand careful attention.
+  This requires tailored laser settings to effectively remove contaminants without
+  damaging the underlying material.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -315,18 +301,23 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the hafnium surface is obscured by a non-uniform contamination layer. This layer, ranging
-    from 5 to 20 micrometers in thickness, consists of embedded particulates and a discontinuous oxide scale. The underlying
-    metal's HCP crystalline structure is entirely hidden. The topography is irregular, with contamination accumulating in
-    the micro-valleys of the machined surface texture, creating a matte, dark appearance that significantly increases light
-    absorption and scattering. This layer compromises the material's inherent properties and provides initiation sites for
-    further corrosion.
-  afterText: Following laser cleaning, the surface at 500x magnification reveals the native hafnium microstructure. The contamination
-    layer has been completely removed via ablation, exposing the fine, uniform grain boundaries of the HCP lattice. The surface
-    texture is now defined by the metal's intrinsic micro-topography, with a consistent, light-grey metallic lustre. The reflectivity
-    has increased to the material's inherent 45-48%, and the surface is free of embedded oxides and particulates, restoring
-    the substrate's baseline mechanical and chemical properties.
-  description: Microscopic analysis of hafnium surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the hafnium surface is obscured by a non-uniform
+    contamination layer. This layer, ranging from 5 to 20 micrometers in thickness,
+    consists of embedded particulates and a discontinuous oxide scale. The underlying
+    metal's HCP crystalline structure is entirely hidden. The topography is irregular,
+    with contamination accumulating in the micro-valleys of the machined surface texture,
+    creating a matte, dark appearance that significantly increases light absorption
+    and scattering. This layer compromises the material's inherent properties and
+    provides initiation sites for further corrosion.
+  afterText: Following laser cleaning, the surface at 500x magnification reveals the
+    native hafnium microstructure. The contamination layer has been completely removed
+    via ablation, exposing the fine, uniform grain boundaries of the HCP lattice.
+    The surface texture is now defined by the metal's intrinsic micro-topography,
+    with a consistent, light-grey metallic lustre. The reflectivity has increased
+    to the material's inherent 45-48%, and the surface is free of embedded oxides
+    and particulates, restoring the substrate's baseline mechanical and chemical properties.
+  description: Microscopic analysis of hafnium surface before and after laser cleaning
+    treatment
   alt: Microscopic view of hafnium surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -346,7 +337,8 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Hafnium surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Hafnium surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/hafnium-laser-cleaning-micro.jpg
 tags:
 - metal

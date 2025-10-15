@@ -4,10 +4,8 @@ subcategory: specialty
 title: Indium Laser Cleaning
 description: Laser cleaning parameters for Indium
 materialProperties:
-  physical_structural:
-    label: Physical/Structural Properties
-    description: Basic physical characteristics
-    percentage: 3.6
+  material_properties:
+    label: Material Properties
     properties:
       density:
         value: 7.31
@@ -16,10 +14,25 @@ materialProperties:
         description: Density of pure indium at 20°C
         min: 0.53
         max: 22.6
-  mechanical:
-    label: Mechanical Properties
-    description: Strength, elasticity, and structural characteristics
-    percentage: 18.2
+      crystallineStructure:
+        value: Tetragonal
+        unit: none
+        confidence: 95
+        description: Crystal structure type
+        min: null
+        max: null
+      oxidationResistance:
+        value: Low
+        unit: qualitative
+        confidence: 88
+        description: Forms thin oxide layer but oxidizes readily in air
+        min: null
+        max: null
+    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
+      finish, contaminant adhesion, and process efficiency'
+    percentage: 40.0
+  structural_response:
+    label: Structural Response Properties
     properties:
       hardness:
         value: 0.9
@@ -42,10 +55,11 @@ materialProperties:
         description: Young's modulus of elasticity
         min: 5
         max: 411
-  optical_laser:
-    label: Optical/Laser Properties
-    description: Light interaction and laser response characteristics
-    percentage: 16.4
+    description: 'Physical reaction to thermal stress: how material responds structurally
+      to rapid heating'
+    percentage: 18.2
+  energy_coupling:
+    label: Energy Coupling Properties
     properties:
       laserAbsorption:
         value: 58.7
@@ -75,11 +89,6 @@ materialProperties:
         description: Estimated laser ablation threshold for nanosecond pulses at 1064nm
         min: null
         max: null
-  thermal:
-    label: Thermal Properties
-    description: Heat-related material characteristics including conductivity, expansion, and destruction points
-    percentage: 29.1
-    properties:
       specificHeat:
         value: 233
         unit: J/kg·K
@@ -117,35 +126,6 @@ materialProperties:
           confidence: 95
           description: Thermal destruction point
         type: melting
-  compositional:
-    label: Compositional Properties
-    description: Material composition characteristics
-    percentage: 5.5
-    properties:
-      crystallineStructure:
-        value: Tetragonal
-        unit: none
-        confidence: 95
-        description: Crystal structure type
-        min: null
-        max: null
-  chemical:
-    label: Chemical Properties
-    description: Chemical reactivity and stability
-    percentage: 5.5
-    properties:
-      oxidationResistance:
-        value: Low
-        unit: qualitative
-        confidence: 88
-        description: Forms thin oxide layer but oxidizes readily in air
-        min: null
-        max: null
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 0
-    properties:
       absorptionCoefficient:
         value: 6.8
         unit: ×10⁵ cm⁻¹
@@ -153,6 +133,9 @@ materialProperties:
         description: Absorption coefficient at 1064nm
         min: null
         max: null
+    description: 'First-order photon coupling: how laser energy enters the material
+      vs. reflects away'
+    percentage: 16.4
 applications:
 - Electronics Manufacturing
 - Aerospace Components
@@ -169,7 +152,8 @@ machineSettings:
     value: 25
     unit: W
     confidence: 90
-    description: Optimal average power for Indium oxide removal without substrate damage
+    description: Optimal average power for Indium oxide removal without substrate
+      damage
     min: 15
     max: 40
   wavelength:
@@ -190,14 +174,16 @@ machineSettings:
     value: 50
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient surface coverage with controlled thermal input
+    description: High repetition rate for efficient surface coverage with controlled
+      thermal input
     min: 20
     max: 100
   pulseWidth:
     value: 100
     unit: ns
     confidence: 85
-    description: Nanosecond pulses for efficient oxide removal with minimal thermal diffusion
+    description: Nanosecond pulses for efficient oxide removal with minimal thermal
+      diffusion
     min: 50
     max: 200
   scanSpeed:
@@ -211,8 +197,8 @@ machineSettings:
     value: 6.0
     unit: J/cm²
     confidence: 92
-    description: Energy density threshold for effective Indium cleaning - Energy density threshold for effective oxide and
-      contaminant removal from metallic surfaces
+    description: Energy density threshold for effective Indium cleaning - Energy density
+      threshold for effective oxide and contaminant removal from metallic surfaces
     min: 3.0
     max: 12.0
   fluenceThreshold:
@@ -278,8 +264,8 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Indium is a very soft metal with a low melting point. These properties require careful laser settings to avoid surface
-  damage during cleaning.
+subtitle: Indium is a very soft metal with a low melting point. These properties require
+  careful laser settings to avoid surface damage during cleaning.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -315,16 +301,21 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the indium surface is obscured by a non-uniform contamination layer, typically 5-20 µm
-    thick. This layer consists of particulate matter, organic residues, and a thin, discontinuous oxide film (In₂O₃). The
-    underlying metal's soft, ductile character is masked by this topography, which exhibits a mottled, high-relief texture.
-    Contaminants adhere within the natural grain boundaries and surface imperfections, creating a complex, irregular pattern
-    that compromises surface integrity and electrical properties.
-  afterText: Laser cleaning restores the intrinsic surface, revealing the pure indium's fine, coherent grain structure at
-    500x magnification. The contamination layer is entirely removed, leaving a smooth, reflective plane with minimal micro-roughness.
-    The surface is now defined by its metallic luster and clean grain boundaries, free from embedded particulates and oxide
-    films. This state ensures optimal electrical contact and adhesion for subsequent processes.
-  description: Microscopic analysis of indium surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the indium surface is obscured by a non-uniform
+    contamination layer, typically 5-20 µm thick. This layer consists of particulate
+    matter, organic residues, and a thin, discontinuous oxide film (In₂O₃). The underlying
+    metal's soft, ductile character is masked by this topography, which exhibits a
+    mottled, high-relief texture. Contaminants adhere within the natural grain boundaries
+    and surface imperfections, creating a complex, irregular pattern that compromises
+    surface integrity and electrical properties.
+  afterText: Laser cleaning restores the intrinsic surface, revealing the pure indium's
+    fine, coherent grain structure at 500x magnification. The contamination layer
+    is entirely removed, leaving a smooth, reflective plane with minimal micro-roughness.
+    The surface is now defined by its metallic luster and clean grain boundaries,
+    free from embedded particulates and oxide films. This state ensures optimal electrical
+    contact and adhesion for subsequent processes.
+  description: Microscopic analysis of indium surface before and after laser cleaning
+    treatment
   alt: Microscopic view of indium surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -344,7 +335,8 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Indium surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Indium surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/indium-laser-cleaning-micro.jpg
 tags:
 - metal

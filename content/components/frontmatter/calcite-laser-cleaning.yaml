@@ -4,10 +4,8 @@ subcategory: mineral
 title: Calcite Laser Cleaning
 description: Laser cleaning parameters for Calcite
 materialProperties:
-  physical_structural:
-    label: Physical/Structural Properties
-    description: Basic physical characteristics
-    percentage: 3.6
+  material_properties:
+    label: Material Properties
     properties:
       density:
         value: 2.71
@@ -16,10 +14,32 @@ materialProperties:
         description: Density of pure calcite at room temperature
         min: 1.5
         max: 3.4
-  mechanical:
-    label: Mechanical Properties
-    description: Strength, elasticity, and structural characteristics
-    percentage: 18.2
+      chemicalStability:
+        value: Low
+        unit: qualitative
+        confidence: 94
+        description: Reacts with acids, susceptible to dissolution in water
+        min: null
+        max: null
+      crystallineStructure:
+        value: Rhombohedral
+        unit: crystal system
+        confidence: 98
+        description: Trigonal crystal system, space group R3̄c
+        min: null
+        max: null
+      porosity:
+        value: 0.5
+        unit: '%'
+        confidence: 82
+        description: Typical porosity for high-purity calcite crystals
+        min: null
+        max: null
+    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
+      finish, contaminant adhesion, and process efficiency'
+    percentage: 40.0
+  structural_response:
+    label: Structural Response Properties
     properties:
       hardness:
         value: 3
@@ -49,10 +69,11 @@ materialProperties:
         description: Flexural strength for calcite specimens
         min: null
         max: null
-  optical_laser:
-    label: Optical/Laser Properties
-    description: Light interaction and laser response characteristics
-    percentage: 16.4
+    description: 'Physical reaction to thermal stress: how material responds structurally
+      to rapid heating'
+    percentage: 18.2
+  energy_coupling:
+    label: Energy Coupling Properties
     properties:
       laserAbsorption:
         value: 8.7
@@ -96,11 +117,6 @@ materialProperties:
         description: Damage threshold for single pulse irradiation
         min: null
         max: null
-  thermal:
-    label: Thermal Properties
-    description: Heat-related material characteristics including conductivity, expansion, and destruction points
-    percentage: 29.1
-    properties:
       specificHeat:
         value: 0.82
         unit: J/g·K
@@ -138,47 +154,6 @@ materialProperties:
           confidence: 95
           description: Thermal destruction point
         type: thermal_shock
-  chemical:
-    label: Chemical Properties
-    description: Chemical reactivity and stability
-    percentage: 5.5
-    properties:
-      chemicalStability:
-        value: Low
-        unit: qualitative
-        confidence: 94
-        description: Reacts with acids, susceptible to dissolution in water
-        min: null
-        max: null
-  compositional:
-    label: Compositional Properties
-    description: Material composition characteristics
-    percentage: 5.5
-    properties:
-      crystallineStructure:
-        value: Rhombohedral
-        unit: crystal system
-        confidence: 98
-        description: Trigonal crystal system, space group R3̄c
-        min: null
-        max: null
-  surface:
-    label: Surface Properties
-    description: Surface characteristics and texture
-    percentage: 9.1
-    properties:
-      porosity:
-        value: 0.5
-        unit: '%'
-        confidence: 82
-        description: Typical porosity for high-purity calcite crystals
-        min: null
-        max: null
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 0
-    properties:
       thermalDegradationPoint:
         value: 898.0
         unit: °C
@@ -193,6 +168,9 @@ materialProperties:
         description: Absorption coefficient at 1064 nm wavelength
         min: null
         max: null
+    description: 'First-order photon coupling: how laser energy enters the material
+      vs. reflects away'
+    percentage: 16.4
 applications:
 - Cultural Heritage
 - Geology and Mineralogy
@@ -216,7 +194,8 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength for efficient Calcite processing with minimal absorption in underlying substrates
+    description: Near-IR wavelength for efficient Calcite processing with minimal
+      absorption in underlying substrates
     min: 532
     max: 1064
   spotSize:
@@ -237,7 +216,8 @@ machineSettings:
     value: 8
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for controlled ablation of Calcite surface contaminants
+    description: Nanosecond pulse duration for controlled ablation of Calcite surface
+      contaminants
     min: 5
     max: 15
   scanSpeed:
@@ -251,8 +231,9 @@ machineSettings:
     value: 3.5
     unit: J/cm²
     confidence: 86
-    description: Energy density threshold for effective Calcite cleaning - Energy density threshold for effective contaminant
-      removal from stone surfaces without substrate damage
+    description: Energy density threshold for effective Calcite cleaning - Energy
+      density threshold for effective contaminant removal from stone surfaces without
+      substrate damage
     min: 1.5
     max: 7.0
   fluenceThreshold:
@@ -266,7 +247,8 @@ machineSettings:
     value: 50
     unit: '%'
     confidence: 84
-    description: Optimal beam overlap for uniform cleaning without excessive energy deposition
+    description: Optimal beam overlap for uniform cleaning without excessive energy
+      deposition
     min: 40
     max: 60
   passCount:
@@ -318,8 +300,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Calcite is a soft and chemically reactive mineral, unlike harder, more inert stones. Its sensitivity therefore demands
-  lower laser power and careful wavelength selection to prevent damage.
+subtitle: Calcite is a soft and chemically reactive mineral, unlike harder, more inert
+  stones. Its sensitivity therefore demands lower laser power and careful wavelength
+  selection to prevent damage.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -355,15 +338,19 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the calcite surface is obscured by a discontinuous contamination layer, approximately
-    5-20 µm thick. This layer, composed of particulate matter and organic films, masks the underlying crystalline structure
-    and rhombohedral cleavage planes. The surface texture appears irregular and matte, with contaminants filling micro-fractures
-    and adhering to topographic features, creating a heterogeneous and occluded appearance.
-  afterText: Laser cleaning has restored the surface to its intrinsic state. The contamination layer is entirely removed,
-    revealing the pristine, well-defined rhombohedral cleavage planes and crystal facets. The surface now exhibits a uniform,
-    vitreous luster with sub-micron precision, eliminating all observed particulate matter and organic residues without subsurface
-    damage.
-  description: Microscopic analysis of calcite surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the calcite surface is obscured by a discontinuous
+    contamination layer, approximately 5-20 µm thick. This layer, composed of particulate
+    matter and organic films, masks the underlying crystalline structure and rhombohedral
+    cleavage planes. The surface texture appears irregular and matte, with contaminants
+    filling micro-fractures and adhering to topographic features, creating a heterogeneous
+    and occluded appearance.
+  afterText: Laser cleaning has restored the surface to its intrinsic state. The contamination
+    layer is entirely removed, revealing the pristine, well-defined rhombohedral cleavage
+    planes and crystal facets. The surface now exhibits a uniform, vitreous luster
+    with sub-micron precision, eliminating all observed particulate matter and organic
+    residues without subsurface damage.
+  description: Microscopic analysis of calcite surface before and after laser cleaning
+    treatment
   alt: Microscopic view of calcite surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -383,7 +370,8 @@ caption:
     materialType: Stone
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Calcite surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Calcite surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/calcite-laser-cleaning-micro.jpg
 tags:
 - stone

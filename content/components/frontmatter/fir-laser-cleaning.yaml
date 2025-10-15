@@ -4,10 +4,8 @@ subcategory: softwood
 title: Fir Laser Cleaning
 description: Laser cleaning parameters for Fir
 materialProperties:
-  physical_structural:
-    label: Physical/Structural Properties
-    description: Basic physical characteristics
-    percentage: 3.6
+  material_properties:
+    label: Material Properties
     properties:
       density:
         value: 0.45
@@ -16,10 +14,18 @@ materialProperties:
         description: Average density of European fir wood at 12% moisture content
         min: 0.12
         max: 1.25
-  mechanical:
-    label: Mechanical Properties
-    description: Strength, elasticity, and structural characteristics
-    percentage: 18.2
+      porosity:
+        value: 65
+        unit: '%'
+        confidence: 91
+        description: Average porosity of fir wood structure
+        min: null
+        max: null
+    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
+      finish, contaminant adhesion, and process efficiency'
+    percentage: 40.0
+  structural_response:
+    label: Structural Response Properties
     properties:
       hardness:
         value: 2.8
@@ -42,10 +48,11 @@ materialProperties:
         description: Modulus of elasticity parallel to grain
         min: 5
         max: 25
-  optical_laser:
-    label: Optical/Laser Properties
-    description: Light interaction and laser response characteristics
-    percentage: 16.4
+    description: 'Physical reaction to thermal stress: how material responds structurally
+      to rapid heating'
+    percentage: 18.2
+  energy_coupling:
+    label: Energy Coupling Properties
     properties:
       laserAbsorption:
         value: 88.2
@@ -75,11 +82,6 @@ materialProperties:
         description: Minimum fluence required for material removal at 1064 nm
         min: null
         max: null
-  thermal:
-    label: Thermal Properties
-    description: Heat-related material characteristics including conductivity, expansion, and destruction points
-    percentage: 29.1
-    properties:
       specificHeat:
         value: 1380
         unit: J/kg·K
@@ -117,30 +119,17 @@ materialProperties:
           confidence: 92
           description: Thermal destruction point
         type: carbonization
-  surface:
-    label: Surface Properties
-    description: Surface characteristics and texture
-    percentage: 9.1
-    properties:
-      porosity:
-        value: 65
-        unit: '%'
-        confidence: 91
-        description: Average porosity of fir wood structure
-        min: null
-        max: null
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 0
-    properties:
       absorptionCoefficient:
         value: 0.75
         unit: dimensionless
         confidence: 86
-        description: Optical absorption coefficient for near-infrared wavelengths (1064 nm)
+        description: Optical absorption coefficient for near-infrared wavelengths
+          (1064 nm)
         min: null
         max: null
+    description: 'First-order photon coupling: how laser energy enters the material
+      vs. reflects away'
+    percentage: 16.4
 applications:
 - Cultural Heritage
 - Aerospace
@@ -199,8 +188,9 @@ machineSettings:
     value: 4.5
     unit: J/cm²
     confidence: 88
-    description: Energy density threshold for effective Fir cleaning - Energy density threshold for effective organic contaminant
-      removal from wood without charring or thermal damage
+    description: Energy density threshold for effective Fir cleaning - Energy density
+      threshold for effective organic contaminant removal from wood without charring
+      or thermal damage
     min: 2.0
     max: 8.0
   energyDensity:
@@ -273,8 +263,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Fir has a relatively soft, resinous surface that can be easily marked. This requires careful control of the laser's
-  power to clean effectively without scorching the wood.
+subtitle: Fir has a relatively soft, resinous surface that can be easily marked. This
+  requires careful control of the laser's power to clean effectively without scorching
+  the wood.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -310,16 +301,21 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the fir surface is obscured by a complex contamination layer, typically 50-200 µm thick.
-    This stratum consists of particulate matter, soot, and embedded grime that fills the porous wood structure. The underlying
-    tracheids and ray cells are no longer visible, masked by a discontinuous, amorphous film that alters the surface texture
-    and reflects light unevenly. The contamination adheres strongly within the 65% porosity, creating a blotchy, occluded
-    appearance that compromises the substrate's integrity.
-  afterText: Laser cleaning has effectively restored the native fir surface. The contamination layer is entirely removed,
-    revealing the clean, open cellular structure of the wood. Individual tracheids and ray parenchyma are now clearly defined,
-    with sharp edges and a uniform, light-toned appearance. The surface texture is consistent, with the material's inherent
-    65% porosity fully exposed, resulting in a substrate that is visually coherent and mechanically sound for further treatment.
-  description: Microscopic analysis of fir surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the fir surface is obscured by a complex contamination
+    layer, typically 50-200 µm thick. This stratum consists of particulate matter,
+    soot, and embedded grime that fills the porous wood structure. The underlying
+    tracheids and ray cells are no longer visible, masked by a discontinuous, amorphous
+    film that alters the surface texture and reflects light unevenly. The contamination
+    adheres strongly within the 65% porosity, creating a blotchy, occluded appearance
+    that compromises the substrate's integrity.
+  afterText: Laser cleaning has effectively restored the native fir surface. The contamination
+    layer is entirely removed, revealing the clean, open cellular structure of the
+    wood. Individual tracheids and ray parenchyma are now clearly defined, with sharp
+    edges and a uniform, light-toned appearance. The surface texture is consistent,
+    with the material's inherent 65% porosity fully exposed, resulting in a substrate
+    that is visually coherent and mechanically sound for further treatment.
+  description: Microscopic analysis of fir surface before and after laser cleaning
+    treatment
   alt: Microscopic view of fir surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -339,7 +335,8 @@ caption:
     materialType: Wood
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Fir surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Fir surface after laser cleaning showing detailed surface
+      structure
     url: /images/material/fir-laser-cleaning-micro.jpg
 tags:
 - wood

@@ -4,10 +4,8 @@ subcategory: exotic
 title: Rosewood Laser Cleaning
 description: Laser cleaning parameters for Rosewood
 materialProperties:
-  physical_structural:
-    label: Physical/Structural Properties
-    description: Basic physical characteristics
-    percentage: 3.6
+  material_properties:
+    label: Material Properties
     properties:
       density:
         value: 0.85
@@ -16,10 +14,18 @@ materialProperties:
         description: Average density of rosewood species at 12% moisture content
         min: 0.12
         max: 1.25
-  mechanical:
-    label: Mechanical Properties
-    description: Strength, elasticity, and structural characteristics
-    percentage: 18.2
+      porosity:
+        value: 12
+        unit: '%'
+        confidence: 85
+        description: Average porosity affecting laser absorption and thermal response
+        min: null
+        max: null
+    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
+      finish, contaminant adhesion, and process efficiency'
+    percentage: 40.0
+  structural_response:
+    label: Structural Response Properties
     properties:
       hardness:
         value: 7.2
@@ -42,10 +48,11 @@ materialProperties:
         description: Modulus of elasticity parallel to grain
         min: 5
         max: 25
-  optical_laser:
-    label: Optical/Laser Properties
-    description: Light interaction and laser response characteristics
-    percentage: 16.4
+    description: 'Physical reaction to thermal stress: how material responds structurally
+      to rapid heating'
+    percentage: 18.2
+  energy_coupling:
+    label: Energy Coupling Properties
     properties:
       laserAbsorption:
         value: 32.7
@@ -75,11 +82,6 @@ materialProperties:
         description: Minimum fluence required for material removal at 1064 nm
         min: null
         max: null
-  thermal:
-    label: Thermal Properties
-    description: Heat-related material characteristics including conductivity, expansion, and destruction points
-    percentage: 29.1
-    properties:
       specificHeat:
         value: 1.8
         unit: kJ/kg·K
@@ -117,23 +119,6 @@ materialProperties:
           confidence: 92
           description: Thermal destruction point
         type: carbonization
-  surface:
-    label: Surface Properties
-    description: Surface characteristics and texture
-    percentage: 9.1
-    properties:
-      porosity:
-        value: 12
-        unit: '%'
-        confidence: 85
-        description: Average porosity affecting laser absorption and thermal response
-        min: null
-        max: null
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 0
-    properties:
       absorptionCoefficient:
         value: 0.75
         unit: dimensionless
@@ -141,6 +126,9 @@ materialProperties:
         description: Optical absorption coefficient at 1064 nm wavelength
         min: null
         max: null
+    description: 'First-order photon coupling: how laser energy enters the material
+      vs. reflects away'
+    percentage: 16.4
 applications:
 - Aerospace
 - Automotive
@@ -157,14 +145,16 @@ machineSettings:
     value: 90
     unit: W
     confidence: 92
-    description: Optimal average power for Rosewood surface cleaning without thermal damage
+    description: Optimal average power for Rosewood surface cleaning without thermal
+      damage
     min: 70
     max: 110
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength optimized for Rosewood absorption and minimal penetration depth
+    description: Near-infrared wavelength optimized for Rosewood absorption and minimal
+      penetration depth
     min: 532
     max: 1064
   spotSize:
@@ -178,50 +168,57 @@ machineSettings:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning coverage while maintaining thermal control
+    description: Optimal repetition rate for efficient cleaning coverage while maintaining
+      thermal control
     min: 30
     max: 100
   pulseWidth:
     value: 12
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with minimal substrate heating
+    description: Nanosecond pulse duration for effective contaminant removal with
+      minimal substrate heating
     min: 8
     max: 20
   scanSpeed:
     value: 800
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for efficient material removal without excessive heat accumulation
+    description: Optimal scanning speed for efficient material removal without excessive
+      heat accumulation
     min: 500
     max: 1200
   fluence:
     value: 4.5
     unit: J/cm²
     confidence: 88
-    description: Energy density threshold for effective Rosewood cleaning - Energy density threshold for effective organic
-      contaminant removal from wood without charring or thermal damage
+    description: Energy density threshold for effective Rosewood cleaning - Energy
+      density threshold for effective organic contaminant removal from wood without
+      charring or thermal damage
     min: 2.0
     max: 8.0
   energyDensity:
     value: 1.8
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant ablation while preserving Rosewood substrate
+    description: Fluence threshold for effective contaminant ablation while preserving
+      Rosewood substrate
     min: 1.2
     max: 2.5
   overlapRatio:
     value: 40
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning coverage without excessive energy deposition
+    description: Optimal beam overlap for uniform cleaning coverage without excessive
+      energy deposition
     min: 30
     max: 60
   passCount:
     value: 2
     unit: passes
     confidence: 85
-    description: Recommended number of passes for thorough cleaning with minimal thermal impact
+    description: Recommended number of passes for thorough cleaning with minimal thermal
+      impact
     min: 1
     max: 4
   laserType:
@@ -246,7 +243,8 @@ author:
   image: /images/author/yi-chun-lin.jpg
 images:
   hero:
-    alt: Rosewood surface undergoing laser cleaning showing precise contamination removal
+    alt: Rosewood surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/rosewood-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -273,8 +271,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Rosewood features a unique, dense grain and natural oils that distinguish it from other exotic woods. These properties
-  demand precise laser settings to effectively lift contaminants without damaging the wood's rich patina.
+subtitle: Rosewood features a unique, dense grain and natural oils that distinguish
+  it from other exotic woods. These properties demand precise laser settings to effectively
+  lift contaminants without damaging the wood's rich patina.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -310,24 +309,32 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the rosewood surface is obscured by a discontinuous contamination layer, measuring 5-15
-    µm in thickness. This layer consists of embedded particulate matter and amorphous organic deposits that fill the natural
-    cellular pores and vessel structures. The underlying grain texture is partially masked, with contaminants forming a crust-like
-    film that disrupts the wood's intrinsic topography and reflectance properties.
-  afterText: 'Laser cleaning has restored the surface to its native state, revealing the intricate anatomical features of
-    the rosewood. The cellular lumen and vessel structures are now fully exposed and clearly defined, free from obstructive
-    deposits. The original grain pattern is sharply delineated, with a measurable reduction in surface roughness.
+  beforeText: At 500x magnification, the rosewood surface is obscured by a discontinuous
+    contamination layer, measuring 5-15 µm in thickness. This layer consists of embedded
+    particulate matter and amorphous organic deposits that fill the natural cellular
+    pores and vessel structures. The underlying grain texture is partially masked,
+    with contaminants forming a crust-like film that disrupts the wood's intrinsic
+    topography and reflectance properties.
+  afterText: 'Laser cleaning has restored the surface to its native state, revealing
+    the intricate anatomical features of the rosewood. The cellular lumen and vessel
+    structures are now fully exposed and clearly defined, free from obstructive deposits.
+    The original grain pattern is sharply delineated, with a measurable reduction
+    in surface roughness.
 
 
-    The process has selectively removed the contamination layer without inducing macroscopic charring or altering the fundamental
-    wood structure. The characteristic density and hardness of the material are preserved, as the laser parameters were maintained
-    below the 0.8 J/cm² damage threshold to prevent any modification to the cellulose-lignin matrix.
+    The process has selectively removed the contamination layer without inducing macroscopic
+    charring or altering the fundamental wood structure. The characteristic density
+    and hardness of the material are preserved, as the laser parameters were maintained
+    below the 0.8 J/cm² damage threshold to prevent any modification to the cellulose-lignin
+    matrix.
 
 
-    This results in a surface with optimal reflectivity and minimal subsurface thermal stress. The cleaned wood exhibits its
-    inherent physical properties, including a tensile strength of 157 MPa and a Young''s Modulus of 12.5 GPa, ensuring structural
+    This results in a surface with optimal reflectivity and minimal subsurface thermal
+    stress. The cleaned wood exhibits its inherent physical properties, including
+    a tensile strength of 157 MPa and a Young''s Modulus of 12.5 GPa, ensuring structural
     integrity is maintained for high-performance applications.'
-  description: Microscopic analysis of rosewood surface before and after laser cleaning treatment
+  description: Microscopic analysis of rosewood surface before and after laser cleaning
+    treatment
   alt: Microscopic view of rosewood surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -347,7 +354,8 @@ caption:
     materialType: Wood
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Rosewood surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Rosewood surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/rosewood-laser-cleaning-micro.jpg
 tags:
 - wood

@@ -4,10 +4,8 @@ subcategory: porcelain
 title: Porcelain Laser Cleaning
 description: Laser cleaning parameters for Porcelain
 materialProperties:
-  physical_structural:
-    label: Physical/Structural Properties
-    description: Basic physical characteristics
-    percentage: 3.6
+  material_properties:
+    label: Material Properties
     properties:
       density:
         value: 2.4
@@ -16,10 +14,25 @@ materialProperties:
         description: Typical density of vitrified porcelain ceramic
         min: 2.2
         max: 19.3
-  mechanical:
-    label: Mechanical Properties
-    description: Strength, elasticity, and structural characteristics
-    percentage: 18.2
+      porosity:
+        value: 2.0
+        unit: '%'
+        confidence: 91
+        description: Typical porosity of vitrified porcelain
+        min: null
+        max: null
+      chemicalStability:
+        value: 95
+        unit: '% resistance'
+        confidence: 93
+        description: Chemical resistance to common solvents and mild acids
+        min: null
+        max: null
+    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
+      finish, contaminant adhesion, and process efficiency'
+    percentage: 40.0
+  structural_response:
+    label: Structural Response Properties
     properties:
       hardness:
         value: 7.0
@@ -49,10 +62,11 @@ materialProperties:
         description: Three-point bending strength
         min: null
         max: null
-  optical_laser:
-    label: Optical/Laser Properties
-    description: Light interaction and laser response characteristics
-    percentage: 16.4
+    description: 'Physical reaction to thermal stress: how material responds structurally
+      to rapid heating'
+    percentage: 18.2
+  energy_coupling:
+    label: Energy Coupling Properties
     properties:
       laserAbsorption:
         value: 32.7
@@ -82,11 +96,6 @@ materialProperties:
         description: Laser ablation threshold for nanosecond pulses at 1064 nm
         min: null
         max: null
-  thermal:
-    label: Thermal Properties
-    description: Heat-related material characteristics including conductivity, expansion, and destruction points
-    percentage: 29.1
-    properties:
       specificHeat:
         value: 1080
         unit: J/kg·K
@@ -124,35 +133,6 @@ materialProperties:
           confidence: 95
           description: Thermal destruction point
         type: thermal_shock
-  surface:
-    label: Surface Properties
-    description: Surface characteristics and texture
-    percentage: 9.1
-    properties:
-      porosity:
-        value: 2.0
-        unit: '%'
-        confidence: 91
-        description: Typical porosity of vitrified porcelain
-        min: null
-        max: null
-  chemical:
-    label: Chemical Properties
-    description: Chemical reactivity and stability
-    percentage: 5.5
-    properties:
-      chemicalStability:
-        value: 95
-        unit: '% resistance'
-        confidence: 93
-        description: Chemical resistance to common solvents and mild acids
-        min: null
-        max: null
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 0
-    properties:
       absorptionCoefficient:
         value: 0.85
         unit: dimensionless
@@ -160,6 +140,9 @@ materialProperties:
         description: Optical absorption coefficient for common laser wavelengths
         min: null
         max: null
+    description: 'First-order photon coupling: how laser energy enters the material
+      vs. reflects away'
+    percentage: 16.4
 applications:
 - Cultural Heritage
 - Medical Devices
@@ -175,14 +158,16 @@ machineSettings:
     value: 90
     unit: W
     confidence: 92
-    description: Optimal average power for Porcelain surface cleaning without thermal damage
+    description: Optimal average power for Porcelain surface cleaning without thermal
+      damage
     min: 70
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength optimized for Porcelain absorption and minimal substrate damage
+    description: Near-infrared wavelength optimized for Porcelain absorption and minimal
+      substrate damage
     min: 532
     max: 1064
   spotSize:
@@ -196,14 +181,16 @@ machineSettings:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning with controlled thermal input
+    description: Optimal repetition rate for efficient cleaning with controlled thermal
+      input
     min: 20
     max: 100
   pulseWidth:
     value: 12
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal while preserving Porcelain surface
+    description: Nanosecond pulse duration for effective contaminant removal while
+      preserving Porcelain surface
     min: 8
     max: 20
   scanSpeed:
@@ -217,15 +204,16 @@ machineSettings:
     value: 4.0
     unit: J/cm²
     confidence: 88
-    description: Energy density threshold for effective Porcelain cleaning - Energy density threshold for effective contaminant
-      removal from ceramic surfaces
+    description: Energy density threshold for effective Porcelain cleaning - Energy
+      density threshold for effective contaminant removal from ceramic surfaces
     min: 2.0
     max: 8.0
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Energy density threshold for effective contaminant removal without Porcelain damage
+    description: Energy density threshold for effective contaminant removal without
+      Porcelain damage
     min: 1.8
     max: 3.5
   overlapRatio:
@@ -257,7 +245,8 @@ author:
   image: /images/author/ikmanda-roswati.jpg
 images:
   hero:
-    alt: Porcelain surface undergoing laser cleaning showing precise contamination removal
+    alt: Porcelain surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/porcelain-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -284,8 +273,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Pay close attention to porcelain’s fragile nature when starting laser treatment. It often shows micro-cracks under
-  high power, so dial down to below 50 watts and adjust slowly for a very-very safe operation.
+subtitle: Pay close attention to porcelain’s fragile nature when starting laser treatment.
+  It often shows micro-cracks under high power, so dial down to below 50 watts and
+  adjust slowly for a very-very safe operation.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -321,25 +311,33 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: 'At 500x magnification, the porcelain surface is obscured by a discontinuous contamination layer, measuring
-    5-15 µm thick. This layer exhibits a complex topography of particulate matter, organic residues, and micro-fractures.
-    The underlying porcelain''s vitreous, high-density structure is partially visible only in isolated areas where the contaminant
-    has delaminated, revealing the substrate''s intrinsic 7.0 Mohs hardness.
+  beforeText: 'At 500x magnification, the porcelain surface is obscured by a discontinuous
+    contamination layer, measuring 5-15 µm thick. This layer exhibits a complex topography
+    of particulate matter, organic residues, and micro-fractures. The underlying porcelain''s
+    vitreous, high-density structure is partially visible only in isolated areas where
+    the contaminant has delaminated, revealing the substrate''s intrinsic 7.0 Mohs
+    hardness.
 
 
-    The contamination adheres tenaciously within the microscopic surface porosity (<2.5%), creating a textured, matte appearance.
-    This layer significantly alters the surface''s optical properties, increasing light scattering and reducing the inherent
-    reflectivity of the glazed ceramic body. The contaminants fill the natural micro-valleys of the porcelain, masking its
-    true surface morphology.'
-  afterText: 'Laser cleaning has fully removed the contamination layer, restoring the original porcelain substrate. The surface
-    now displays a continuous, homogeneous vitreous phase with a reflectivity of approximately 12%. The inherent micro-topography,
-    including minor polishing lines and the subtle grain structure from the firing process, is clearly defined and unobstructed.
+    The contamination adheres tenaciously within the microscopic surface porosity
+    (<2.5%), creating a textured, matte appearance. This layer significantly alters
+    the surface''s optical properties, increasing light scattering and reducing the
+    inherent reflectivity of the glazed ceramic body. The contaminants fill the natural
+    micro-valleys of the porcelain, masking its true surface morphology.'
+  afterText: 'Laser cleaning has fully removed the contamination layer, restoring
+    the original porcelain substrate. The surface now displays a continuous, homogeneous
+    vitreous phase with a reflectivity of approximately 12%. The inherent micro-topography,
+    including minor polishing lines and the subtle grain structure from the firing
+    process, is clearly defined and unobstructed.
 
 
-    The process has successfully cleared all porosity and micro-fractures previously filled with foreign material. This results
-    in a surface with minimal light scattering and restored optical clarity. The laser''s selective ablation has preserved
-    the substrate''s structural integrity, leaving no thermal stress marks or subsurface damage visible at this magnification.'
-  description: Microscopic analysis of porcelain surface before and after laser cleaning treatment
+    The process has successfully cleared all porosity and micro-fractures previously
+    filled with foreign material. This results in a surface with minimal light scattering
+    and restored optical clarity. The laser''s selective ablation has preserved the
+    substrate''s structural integrity, leaving no thermal stress marks or subsurface
+    damage visible at this magnification.'
+  description: Microscopic analysis of porcelain surface before and after laser cleaning
+    treatment
   alt: Microscopic view of porcelain surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -359,7 +357,8 @@ caption:
     materialType: Ceramic
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Porcelain surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Porcelain surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/porcelain-laser-cleaning-micro.jpg
 tags:
 - ceramic

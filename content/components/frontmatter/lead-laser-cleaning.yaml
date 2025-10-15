@@ -4,10 +4,8 @@ subcategory: non_ferrous
 title: Lead Laser Cleaning
 description: Laser cleaning parameters for Lead
 materialProperties:
-  physical_structural:
-    label: Physical/Structural Properties
-    description: Basic physical characteristics
-    percentage: 3.6
+  material_properties:
+    label: Material Properties
     properties:
       density:
         value: 11.34
@@ -16,10 +14,32 @@ materialProperties:
         description: Density of pure lead at room temperature
         min: 0.53
         max: 22.6
-  mechanical:
-    label: Mechanical Properties
-    description: Strength, elasticity, and structural characteristics
-    percentage: 18.2
+      oxidationResistance:
+        value: Low
+        unit: qualitative
+        confidence: 95
+        description: Forms protective oxide layer but susceptible to corrosion
+        min: null
+        max: null
+      crystallineStructure:
+        value: FCC
+        unit: crystal system
+        confidence: 98
+        description: Face-centered cubic crystal structure
+        min: null
+        max: null
+      electricalConductivity:
+        value: 4.8
+        unit: MS/m
+        confidence: 94
+        description: Electrical conductivity at 20°C
+        min: null
+        max: null
+    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
+      finish, contaminant adhesion, and process efficiency'
+    percentage: 40.0
+  structural_response:
+    label: Structural Response Properties
     properties:
       hardness:
         value: 38
@@ -42,10 +62,11 @@ materialProperties:
         description: Young's modulus of elasticity
         min: 5
         max: 411
-  optical_laser:
-    label: Optical/Laser Properties
-    description: Light interaction and laser response characteristics
-    percentage: 16.4
+    description: 'Physical reaction to thermal stress: how material responds structurally
+      to rapid heating'
+    percentage: 18.2
+  energy_coupling:
+    label: Energy Coupling Properties
     properties:
       laserAbsorption:
         value: 38.5
@@ -75,11 +96,6 @@ materialProperties:
         description: Estimated laser ablation threshold for nanosecond pulses
         min: null
         max: null
-  thermal:
-    label: Thermal Properties
-    description: Heat-related material characteristics including conductivity, expansion, and destruction points
-    percentage: 29.1
-    properties:
       specificHeat:
         value: 129
         unit: J/kg·K
@@ -124,47 +140,6 @@ materialProperties:
           confidence: 95
           description: Thermal destruction point
         type: melting
-  chemical:
-    label: Chemical Properties
-    description: Chemical reactivity and stability
-    percentage: 5.5
-    properties:
-      oxidationResistance:
-        value: Low
-        unit: qualitative
-        confidence: 95
-        description: Forms protective oxide layer but susceptible to corrosion
-        min: null
-        max: null
-  compositional:
-    label: Compositional Properties
-    description: Material composition characteristics
-    percentage: 5.5
-    properties:
-      crystallineStructure:
-        value: FCC
-        unit: crystal system
-        confidence: 98
-        description: Face-centered cubic crystal structure
-        min: null
-        max: null
-  electrical:
-    label: Electrical Properties
-    description: Electrical conductivity and resistance
-    percentage: 7.3
-    properties:
-      electricalConductivity:
-        value: 4.8
-        unit: MS/m
-        confidence: 94
-        description: Electrical conductivity at 20°C
-        min: null
-        max: null
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 0
-    properties:
       absorptionCoefficient:
         value: 12000000.0
         unit: m⁻¹
@@ -172,6 +147,9 @@ materialProperties:
         description: Approximate absorption coefficient for IR lasers
         min: null
         max: null
+    description: 'First-order photon coupling: how laser energy enters the material
+      vs. reflects away'
+    percentage: 16.4
 applications:
 - Nuclear Energy
 - Battery Manufacturing
@@ -230,8 +208,8 @@ machineSettings:
     value: 6.0
     unit: J/cm²
     confidence: 92
-    description: Energy density threshold for effective Lead cleaning - Energy density threshold for effective oxide and contaminant
-      removal from metallic surfaces
+    description: Energy density threshold for effective Lead cleaning - Energy density
+      threshold for effective oxide and contaminant removal from metallic surfaces
     min: 3.0
     max: 12.0
   fluenceThreshold:
@@ -304,8 +282,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Lead is a soft, low-melting-point metal that is easily damaged. This requires careful control of laser power to
-  effectively remove contaminants without melting the surface.
+subtitle: Lead is a soft, low-melting-point metal that is easily damaged. This requires
+  careful control of laser power to effectively remove contaminants without melting
+  the surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -341,19 +320,25 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the lead surface is heavily obscured by a complex contamination layer. A stratified crust,
-    approximately 10-20 µm thick, adheres to the substrate. This layer consists of a porous matrix of lead carbonates and
-    sulfates, intermixed with embedded particulate matter. The underlying lead's characteristic FCC crystalline structure
-    is entirely hidden. The surface texture is highly irregular, with fissures and dendritic oxidation patterns propagating
-    from initial nucleation sites. This heterogeneous layer significantly alters the surface's reflectivity and masks the
-    native metallic properties of the soft lead substrate.
-  afterText: Laser cleaning has restored the surface to its native metallic state. At 500x magnification, the contamination
-    crust has been completely ablated, revealing the underlying FCC crystalline grain structure of the pure lead. The surface
-    now exhibits a uniform, micro-roughened texture with an average roughness (Ra) near 0.1 µm, a direct result of the laser's
-    selective interaction with the contaminants. The process has eliminated the stratified oxides and fissures, leaving a
-    clean, homogenous surface. This restoration significantly increases reflectivity and provides a pristine, metallurgically
-    pure substrate for subsequent applications or analysis.
-  description: Microscopic analysis of lead surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the lead surface is heavily obscured by a complex
+    contamination layer. A stratified crust, approximately 10-20 µm thick, adheres
+    to the substrate. This layer consists of a porous matrix of lead carbonates and
+    sulfates, intermixed with embedded particulate matter. The underlying lead's characteristic
+    FCC crystalline structure is entirely hidden. The surface texture is highly irregular,
+    with fissures and dendritic oxidation patterns propagating from initial nucleation
+    sites. This heterogeneous layer significantly alters the surface's reflectivity
+    and masks the native metallic properties of the soft lead substrate.
+  afterText: Laser cleaning has restored the surface to its native metallic state.
+    At 500x magnification, the contamination crust has been completely ablated, revealing
+    the underlying FCC crystalline grain structure of the pure lead. The surface now
+    exhibits a uniform, micro-roughened texture with an average roughness (Ra) near
+    0.1 µm, a direct result of the laser's selective interaction with the contaminants.
+    The process has eliminated the stratified oxides and fissures, leaving a clean,
+    homogenous surface. This restoration significantly increases reflectivity and
+    provides a pristine, metallurgically pure substrate for subsequent applications
+    or analysis.
+  description: Microscopic analysis of lead surface before and after laser cleaning
+    treatment
   alt: Microscopic view of lead surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -373,7 +358,8 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Lead surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Lead surface after laser cleaning showing detailed surface
+      structure
     url: /images/material/lead-laser-cleaning-micro.jpg
 tags:
 - metal

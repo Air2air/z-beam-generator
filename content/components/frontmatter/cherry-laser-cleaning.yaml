@@ -4,10 +4,8 @@ subcategory: hardwood
 title: Cherry Laser Cleaning
 description: Laser cleaning parameters for Cherry
 materialProperties:
-  physical_structural:
-    label: Physical/Structural Properties
-    description: Basic physical characteristics
-    percentage: 3.6
+  material_properties:
+    label: Material Properties
     properties:
       density:
         value: 0.63
@@ -16,10 +14,18 @@ materialProperties:
         description: Average density of cherry wood at 12% moisture content
         min: 0.12
         max: 1.25
-  mechanical:
-    label: Mechanical Properties
-    description: Strength, elasticity, and structural characteristics
-    percentage: 18.2
+      porosity:
+        value: 55
+        unit: '%'
+        confidence: 88
+        description: Average porosity of cherry wood structure
+        min: null
+        max: null
+    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
+      finish, contaminant adhesion, and process efficiency'
+    percentage: 40.0
+  structural_response:
+    label: Structural Response Properties
     properties:
       hardness:
         value: 4220
@@ -42,10 +48,11 @@ materialProperties:
         description: Modulus of elasticity parallel to grain
         min: 5
         max: 25
-  optical_laser:
-    label: Optical/Laser Properties
-    description: Light interaction and laser response characteristics
-    percentage: 16.4
+    description: 'Physical reaction to thermal stress: how material responds structurally
+      to rapid heating'
+    percentage: 18.2
+  energy_coupling:
+    label: Energy Coupling Properties
     properties:
       laserAbsorption:
         value: 30.0
@@ -75,11 +82,6 @@ materialProperties:
         description: Laser ablation threshold for nanosecond pulses at 1064 nm
         min: null
         max: null
-  thermal:
-    label: Thermal Properties
-    description: Heat-related material characteristics including conductivity, expansion, and destruction points
-    percentage: 29.1
-    properties:
       specificHeat:
         value: 1800
         unit: J/kg·K
@@ -117,30 +119,17 @@ materialProperties:
           confidence: 92
           description: Thermal destruction point
         type: carbonization
-  surface:
-    label: Surface Properties
-    description: Surface characteristics and texture
-    percentage: 9.1
-    properties:
-      porosity:
-        value: 55
-        unit: '%'
-        confidence: 88
-        description: Average porosity of cherry wood structure
-        min: null
-        max: null
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 0
-    properties:
       absorptionCoefficient:
         value: 0.75
         unit: dimensionless
         confidence: 82
-        description: Optical absorption coefficient for common laser wavelengths (1064 nm)
+        description: Optical absorption coefficient for common laser wavelengths (1064
+          nm)
         min: null
         max: null
+    description: 'First-order photon coupling: how laser energy enters the material
+      vs. reflects away'
+    percentage: 16.4
 applications:
 - Furniture Manufacturing
 - Musical Instrument Manufacturing
@@ -185,7 +174,8 @@ machineSettings:
     value: 100
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with minimal substrate damage
+    description: Nanosecond pulse duration for effective contaminant removal with
+      minimal substrate damage
     min: 50
     max: 200
   scanSpeed:
@@ -199,8 +189,9 @@ machineSettings:
     value: 4.5
     unit: J/cm²
     confidence: 88
-    description: Energy density threshold for effective Cherry cleaning - Energy density threshold for effective organic contaminant
-      removal from wood without charring or thermal damage
+    description: Energy density threshold for effective Cherry cleaning - Energy density
+      threshold for effective organic contaminant removal from wood without charring
+      or thermal damage
     min: 2.0
     max: 8.0
   fluenceThreshold:
@@ -267,8 +258,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Cherry wood has a softer surface and darkens significantly with age and exposure to light. These traits demand lower
-  laser power and careful handling to avoid etching the delicate grain or altering its natural color development.
+subtitle: Cherry wood has a softer surface and darkens significantly with age and
+  exposure to light. These traits demand lower laser power and careful handling to
+  avoid etching the delicate grain or altering its natural color development.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -304,16 +296,21 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the cherry surface is obscured by a discontinuous contamination layer, approximately
-    5-15 µm thick. This layer, composed of embedded particulates and organic residues, fills the wood's cellular pores and
-    micro-fissures. The underlying grain texture is partially masked, and the natural porosity is compromised, reducing the
-    substrate's inherent tactile and visual properties. The contaminant exhibits poor adhesion and a non-uniform distribution
-    across the surface.
-  afterText: Laser cleaning has restored the surface to its native state. At 500x magnification, the cellular structure and
-    grain pattern are fully exposed, with no residual contamination within the 45% porous network. The process has selectively
-    removed the foreign layer without carbonizing the underlying wood, which retains its original micro-texture. The surface
-    now displays clean, open lumens and sharp cell wall boundaries.
-  description: Microscopic analysis of cherry surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the cherry surface is obscured by a discontinuous
+    contamination layer, approximately 5-15 µm thick. This layer, composed of embedded
+    particulates and organic residues, fills the wood's cellular pores and micro-fissures.
+    The underlying grain texture is partially masked, and the natural porosity is
+    compromised, reducing the substrate's inherent tactile and visual properties.
+    The contaminant exhibits poor adhesion and a non-uniform distribution across the
+    surface.
+  afterText: Laser cleaning has restored the surface to its native state. At 500x
+    magnification, the cellular structure and grain pattern are fully exposed, with
+    no residual contamination within the 45% porous network. The process has selectively
+    removed the foreign layer without carbonizing the underlying wood, which retains
+    its original micro-texture. The surface now displays clean, open lumens and sharp
+    cell wall boundaries.
+  description: Microscopic analysis of cherry surface before and after laser cleaning
+    treatment
   alt: Microscopic view of cherry surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -333,7 +330,8 @@ caption:
     materialType: Wood
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Cherry surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Cherry surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/cherry-laser-cleaning-micro.jpg
 tags:
 - wood

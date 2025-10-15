@@ -10,7 +10,7 @@ The Property Categories system provides a **lightweight, read-only taxonomy** fo
 
 **Process-Driven Organization**: Categories mirror the actual laser cleaning process:
 1. **Energy Coupling** → How laser energy enters and propagates as heat
-2. **Structural Response** → How material responds physically to thermal stress
+2. **Structural Response** → How material responds physically to thermal stress  
 3. **Material Properties** → Intrinsic characteristics affecting process efficiency
 
 **GROK Principles Applied:**
@@ -80,21 +80,21 @@ LASER BEAM
 **Properties**:
 - hardness, tensileStrength, youngsModulus, yieldStrength, elasticity, bulkModulus, shearModulus, compressiveStrength, flexuralStrength, fractureResistance
 
-**Why it matters**: Thermal expansion creates mechanical stress - these determine whether material ablates cleanly or damages structurally.
+**Why it matters**: Determines material's ability to withstand thermal stress without permanent deformation or failure. Critical for contaminant ejection.
 
 ---
 
-### 4. **Material Characteristics** (40.0% - 22 properties)
+### 3. **Material Properties** (34.5% - 19 properties)
 
-**Physics Stage**: Supporting Properties  
-**ID**: `material_characteristics`
+**Process Stage**: Supporting Characteristics  
+**ID**: `material_properties`
 
-**What it governs**: Intrinsic characteristics affecting secondary outcomes like surface finish and process efficiency.
+**What it governs**: Intrinsic material characteristics that affect process efficiency and cleaning outcomes but aren't directly part of the energy-response chain.
 
 **Properties**:
-- density, viscosity, porosity, surfaceRoughness, permeability, surfaceEnergy, wettability, electricalResistivity, electricalConductivity, dielectricConstant, dielectricStrength, chemicalStability, oxidationResistance, corrosionResistance, moistureContent, waterSolubility, weatherResistance, crystallineStructure, celluloseContent, grainSize, magneticPermeability, photonPenetrationDepth
+- density, viscosity, porosity, surfaceRoughness, permeability, surfaceEnergy, wettability, electricalResistivity, electricalConductivity, dielectricConstant, dielectricStrength, chemicalStability, oxidationResistance, corrosionResistance, moistureContent, waterSolubility, weatherResistance, crystallineStructure, celluloseContent, grainSize, magneticPermeability, ligninContent, degradationPoint, softeningPoint, surfaceTension
 
-**Why it matters**: While not directly driving the laser-thermal-mechanical cascade, these affect cleaning quality and process efficiency.
+**Why it matters**: Affects secondary outcomes like surface finish quality, contamination adhesion, and process optimization.
 
 ---
 
@@ -105,22 +105,22 @@ from utils.core.property_categorizer import get_property_categorizer
 
 categorizer = get_property_categorizer()
 
-# Get category by physics stage
+# Get category by process stage
 category = categorizer.get_category('laserAbsorption')
-# Returns: 'laser_interaction'
+# Returns: 'energy_coupling'
 
 category = categorizer.get_category('thermalConductivity')
-# Returns: 'thermal_response'
+# Returns: 'energy_coupling'
 
 category = categorizer.get_category('hardness')
-# Returns: 'mechanical_response'
+# Returns: 'structural_response'
 
 category = categorizer.get_category('density')
-# Returns: 'material_characteristics'
+# Returns: 'material_properties'
 
-# Get all categories (physics-based)
+# Get all categories (process-driven)
 categories = categorizer.get_all_categories()
-# Returns: ['laser_interaction', 'thermal_response', 'mechanical_response', 'material_characteristics']
+# Returns: ['energy_coupling', 'structural_response', 'material_properties']
 ```
 
 ---
@@ -129,8 +129,8 @@ categories = categorizer.get_all_categories()
 
 - **Total Properties**: 55 unique
 - **Total Materials**: 122 with complete property data
-- **Categories**: 4 physics-based groupings
-- **Physics Flow**: Energy Absorption → Dissipation → Material Response → Supporting Properties
+- **Categories**: 3 process-driven groupings
+- **Process Flow**: Energy Input & Propagation → Material Response → Supporting Characteristics
 
 ---
 
@@ -141,22 +141,42 @@ from utils.core.property_categorizer import get_property_categorizer
 
 categorizer = get_property_categorizer()
 
-# Understand the physics flow
+# Understand the process flow
 for cat in categorizer.get_all_categories():
     info = categorizer.get_category_info(cat)
-    print(f"{info['physics_stage']}: {info['label']}")
+    print(f"{info['process_stage']}: {info['label']}")
 
 # Output:
-# Energy Absorption: Laser Interaction Properties
-# Energy Dissipation: Thermal Response Properties
-# Material Response: Mechanical Response Properties
-# Supporting Properties: Material Characteristics
+# Energy Input & Propagation: Energy Coupling Properties
+# Material Response: Structural Response Properties
+# Supporting Characteristics: Material Properties
 ```
 
 ---
 
-**Status**: ✅ Implemented (Physics-Based Structure v3.0.0)  
-**Version**: 3.0.0 (Categories.yaml v3.0.0)  
+## 📜 Version History
+
+### v4.0.0 (October 14, 2025)
+- **Breaking Change**: Consolidated from 5 categories to 3
+- Eliminated "other" category - all properties assigned
+- Merged laser_interaction + thermal_response + other → energy_coupling
+- Renamed mechanical_response → structural_response
+- Renamed material_characteristics → material_properties
+- Updated 118 frontmatter files via migration script
+- Cleaner taxonomy with no catch-all category
+
+### v3.0.0 (October 14, 2025)
+- Physics-based reorganization into 4 categories + "other"
+- Followed laser cleaning process: absorption → dissipation → response → characteristics
+- Migrated 114 frontmatter files
+
+### v2.0.0 (Previous)
+- 9-category granular structure
+
+---
+
+**Status**: ✅ Implemented (Process-Driven Structure v4.0.0)  
+**Version**: 4.0.0 (Categories.yaml v4.0.0)  
 **GROK Compliance**: ✅ Full compliance  
 **Code Impact**: Zero - taxonomy-driven via Categories.yaml  
-**Physics-Based**: 4 categories following laser cleaning process (Oct 14, 2025)
+**Process-Driven**: 3 categories following laser cleaning process (Oct 14, 2025)

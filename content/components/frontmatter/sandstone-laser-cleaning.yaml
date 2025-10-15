@@ -4,10 +4,8 @@ subcategory: sedimentary
 title: Sandstone Laser Cleaning
 description: Laser cleaning parameters for Sandstone
 materialProperties:
-  mechanical:
-    label: Mechanical Properties
-    description: Strength, elasticity, and structural characteristics
-    percentage: 18.2
+  structural_response:
+    label: Structural Response Properties
     properties:
       compressiveStrength:
         value: 55.0
@@ -37,10 +35,11 @@ materialProperties:
         description: Static Young's modulus under uniaxial compression
         min: 10
         max: 100
-  physical_structural:
-    label: Physical/Structural Properties
-    description: Basic physical characteristics
-    percentage: 3.6
+    description: 'Physical reaction to thermal stress: how material responds structurally
+      to rapid heating'
+    percentage: 18.2
+  material_properties:
+    label: Material Properties
     properties:
       density:
         value: 2.32
@@ -49,10 +48,25 @@ materialProperties:
         description: Bulk density of typical sandstone with moderate porosity
         min: 1.5
         max: 3.4
-  optical_laser:
-    label: Optical/Laser Properties
-    description: Light interaction and laser response characteristics
-    percentage: 16.4
+      porosity:
+        value: 15.2
+        unit: '%'
+        confidence: 92
+        description: Typical porosity range for medium-grained sandstone
+        min: null
+        max: null
+      chemicalStability:
+        value: 8.2
+        unit: pH resistance scale
+        confidence: 89
+        description: Resistance to chemical degradation on 1-10 scale (10=most stable)
+        min: null
+        max: null
+    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
+      finish, contaminant adhesion, and process efficiency'
+    percentage: 40.0
+  energy_coupling:
+    label: Energy Coupling Properties
     properties:
       laserAbsorption:
         value: 8.7
@@ -89,11 +103,6 @@ materialProperties:
         description: Fluence level causing permanent structural damage
         min: null
         max: null
-  thermal:
-    label: Thermal Properties
-    description: Heat-related material characteristics including conductivity, expansion, and destruction points
-    percentage: 29.1
-    properties:
       specificHeat:
         value: 920
         unit: J/kg·K
@@ -112,7 +121,8 @@ materialProperties:
         value: 1.17
         unit: mm²/s
         confidence: 85
-        description: Thermal diffusivity calculated from conductivity, density, and specific heat
+        description: Thermal diffusivity calculated from conductivity, density, and
+          specific heat
         min: 0.2
         max: 2.5
       thermalExpansion:
@@ -131,35 +141,6 @@ materialProperties:
           confidence: 92
           description: Thermal destruction point
         type: thermal_shock
-  surface:
-    label: Surface Properties
-    description: Surface characteristics and texture
-    percentage: 9.1
-    properties:
-      porosity:
-        value: 15.2
-        unit: '%'
-        confidence: 92
-        description: Typical porosity range for medium-grained sandstone
-        min: null
-        max: null
-  chemical:
-    label: Chemical Properties
-    description: Chemical reactivity and stability
-    percentage: 5.5
-    properties:
-      chemicalStability:
-        value: 8.2
-        unit: pH resistance scale
-        confidence: 89
-        description: Resistance to chemical degradation on 1-10 scale (10=most stable)
-        min: null
-        max: null
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 0
-    properties:
       thermalDegradationPoint:
         value: 573.0
         unit: °C
@@ -171,9 +152,13 @@ materialProperties:
         value: 0.85
         unit: dimensionless
         confidence: 82
-        description: Optical absorption coefficient for near-infrared wavelengths (1064 nm)
+        description: Optical absorption coefficient for near-infrared wavelengths
+          (1064 nm)
         min: null
         max: null
+    description: 'First-order photon coupling: how laser energy enters the material
+      vs. reflects away'
+    percentage: 16.4
 applications:
 - Cultural Heritage
 - Building Restoration
@@ -218,7 +203,8 @@ machineSettings:
     value: 12
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with minimal substrate damage
+    description: Nanosecond pulse duration for effective contaminant removal with
+      minimal substrate damage
     min: 8
     max: 20
   scanSpeed:
@@ -232,8 +218,9 @@ machineSettings:
     value: 3.5
     unit: J/cm²
     confidence: 86
-    description: Energy density threshold for effective Sandstone cleaning - Energy density threshold for effective contaminant
-      removal from stone surfaces without substrate damage
+    description: Energy density threshold for effective Sandstone cleaning - Energy
+      density threshold for effective contaminant removal from stone surfaces without
+      substrate damage
     min: 1.5
     max: 7.0
   fluenceThreshold:
@@ -281,7 +268,8 @@ author:
   image: /images/author/alessandro-moretti.jpg
 images:
   hero:
-    alt: Sandstone surface undergoing laser cleaning showing precise contamination removal
+    alt: Sandstone surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/sandstone-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -308,8 +296,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Sandstone's variable porosity and mineral composition make it distinct from other sedimentary stones. These variations
-  require careful adjustment of laser settings to prevent damage during cleaning.
+subtitle: Sandstone's variable porosity and mineral composition make it distinct from
+  other sedimentary stones. These variations require careful adjustment of laser settings
+  to prevent damage during cleaning.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -345,16 +334,22 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the sandstone surface is obscured by a dense, heterogeneous contamination layer approximately
-    50-200 µm thick. This crust, composed of carbonaceous particulates, gypsum crystals, and biological growth, fills the
-    natural pore network. The original grain structure is largely hidden, with only the highest quartz protrusions visible
-    through the amorphous, soiling matrix. The surface texture is irregular and roughened by the accreted material.
-  afterText: Laser cleaning has removed the opaque contamination crust, fully revealing the underlying sandstone microstructure.
-    The interlocking quartz grains, now clearly defined, exhibit their original crystalline facets and sharp boundaries. The
-    high porosity (18.5%) is restored, with open pore throats visible and free of particulate fill. The surface reflectivity
-    has increased from 12% to 38.2% due to the exposure of the native mineral substrate. This precise ablation, achieved without
-    thermal damage to the quartz grains (Mohs 6.5), preserves the stone's intrinsic mechanical integrity.
-  description: Microscopic analysis of sandstone surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the sandstone surface is obscured by a dense,
+    heterogeneous contamination layer approximately 50-200 µm thick. This crust, composed
+    of carbonaceous particulates, gypsum crystals, and biological growth, fills the
+    natural pore network. The original grain structure is largely hidden, with only
+    the highest quartz protrusions visible through the amorphous, soiling matrix.
+    The surface texture is irregular and roughened by the accreted material.
+  afterText: Laser cleaning has removed the opaque contamination crust, fully revealing
+    the underlying sandstone microstructure. The interlocking quartz grains, now clearly
+    defined, exhibit their original crystalline facets and sharp boundaries. The high
+    porosity (18.5%) is restored, with open pore throats visible and free of particulate
+    fill. The surface reflectivity has increased from 12% to 38.2% due to the exposure
+    of the native mineral substrate. This precise ablation, achieved without thermal
+    damage to the quartz grains (Mohs 6.5), preserves the stone's intrinsic mechanical
+    integrity.
+  description: Microscopic analysis of sandstone surface before and after laser cleaning
+    treatment
   alt: Microscopic view of sandstone surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -374,7 +369,8 @@ caption:
     materialType: Stone
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Sandstone surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Sandstone surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/sandstone-laser-cleaning-micro.jpg
 tags:
 - stone

@@ -4,10 +4,8 @@ subcategory: non_ferrous
 title: Zinc Laser Cleaning
 description: Laser cleaning parameters for Zinc
 materialProperties:
-  physical_structural:
-    label: Physical/Structural Properties
-    description: Basic physical characteristics
-    percentage: 3.6
+  material_properties:
+    label: Material Properties
     properties:
       density:
         value: 7.14
@@ -16,10 +14,32 @@ materialProperties:
         description: Density of pure zinc at 20°C
         min: 0.53
         max: 22.6
-  mechanical:
-    label: Mechanical Properties
-    description: Strength, elasticity, and structural characteristics
-    percentage: 18.2
+      oxidationResistance:
+        value: Moderate
+        unit: qualitative
+        confidence: 88
+        description: Forms protective zinc oxide layer in air
+        min: null
+        max: null
+      crystallineStructure:
+        value: HCP
+        unit: crystal system
+        confidence: 98
+        description: Hexagonal close-packed structure at room temperature
+        min: null
+        max: null
+      electricalConductivity:
+        value: 16.6
+        unit: '% IACS'
+        confidence: 92
+        description: Electrical conductivity relative to copper standard
+        min: null
+        max: null
+    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
+      finish, contaminant adhesion, and process efficiency'
+    percentage: 40.0
+  structural_response:
+    label: Structural Response Properties
     properties:
       hardness:
         value: 2.5
@@ -42,10 +62,11 @@ materialProperties:
         description: Young's modulus of elasticity
         min: 5
         max: 411
-  optical_laser:
-    label: Optical/Laser Properties
-    description: Light interaction and laser response characteristics
-    percentage: 16.4
+    description: 'Physical reaction to thermal stress: how material responds structurally
+      to rapid heating'
+    percentage: 18.2
+  energy_coupling:
+    label: Energy Coupling Properties
     properties:
       laserAbsorption:
         value: 38.0
@@ -75,11 +96,6 @@ materialProperties:
         description: Approximate laser ablation threshold for nanosecond pulses
         min: null
         max: null
-  thermal:
-    label: Thermal Properties
-    description: Heat-related material characteristics including conductivity, expansion, and destruction points
-    percentage: 29.1
-    properties:
       specificHeat:
         value: 0.387
         unit: J/g·K
@@ -117,47 +133,6 @@ materialProperties:
           confidence: 95
           description: Thermal destruction point
         type: melting
-  chemical:
-    label: Chemical Properties
-    description: Chemical reactivity and stability
-    percentage: 5.5
-    properties:
-      oxidationResistance:
-        value: Moderate
-        unit: qualitative
-        confidence: 88
-        description: Forms protective zinc oxide layer in air
-        min: null
-        max: null
-  compositional:
-    label: Compositional Properties
-    description: Material composition characteristics
-    percentage: 5.5
-    properties:
-      crystallineStructure:
-        value: HCP
-        unit: crystal system
-        confidence: 98
-        description: Hexagonal close-packed structure at room temperature
-        min: null
-        max: null
-  electrical:
-    label: Electrical Properties
-    description: Electrical conductivity and resistance
-    percentage: 7.3
-    properties:
-      electricalConductivity:
-        value: 16.6
-        unit: '% IACS'
-        confidence: 92
-        description: Electrical conductivity relative to copper standard
-        min: null
-        max: null
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 0
-    properties:
       absorptionCoefficient:
         value: 12000000.0
         unit: m⁻¹
@@ -172,6 +147,9 @@ materialProperties:
         description: Boiling point of zinc, critical for laser ablation
         min: null
         max: null
+    description: 'First-order photon coupling: how laser energy enters the material
+      vs. reflects away'
+    percentage: 16.4
 applications:
 - Automotive
 - Construction
@@ -225,8 +203,8 @@ machineSettings:
     value: 6.0
     unit: J/cm²
     confidence: 92
-    description: Energy density threshold for effective Zinc cleaning - Energy density threshold for effective oxide and contaminant
-      removal from metallic surfaces
+    description: Energy density threshold for effective Zinc cleaning - Energy density
+      threshold for effective oxide and contaminant removal from metallic surfaces
     min: 3.0
     max: 12.0
   fluenceThreshold:
@@ -292,8 +270,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Zinc has a lower melting point and develops a tenacious oxide layer compared to other non-ferrous metals. These
-  traits require careful control of laser power and pulse settings to avoid surface damage while effectively removing corrosion.
+subtitle: Zinc has a lower melting point and develops a tenacious oxide layer compared
+  to other non-ferrous metals. These traits require careful control of laser power
+  and pulse settings to avoid surface damage while effectively removing corrosion.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -329,16 +308,20 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the zinc surface is obscured by a complex contamination layer. A porous, amorphous oxide/hydroxide
-    matrix, approximately 5-15 µm thick, forms the base. This is overlaid with localized carbonaceous soot deposits and embedded
-    particulate matter, creating a topographically rough and irregular surface. The underlying metallic grain structure is
-    entirely concealed. The contamination exhibits a non-uniform, patchy distribution, with areas of thick crust formation
+  beforeText: At 500x magnification, the zinc surface is obscured by a complex contamination
+    layer. A porous, amorphous oxide/hydroxide matrix, approximately 5-15 µm thick,
+    forms the base. This is overlaid with localized carbonaceous soot deposits and
+    embedded particulate matter, creating a topographically rough and irregular surface.
+    The underlying metallic grain structure is entirely concealed. The contamination
+    exhibits a non-uniform, patchy distribution, with areas of thick crust formation
     adjacent to regions of thinner, more adherent tarnish.
-  afterText: Laser cleaning has fully restored the native zinc surface. The contamination layer is completely ablated, revealing
-    the underlying metallic grain structure with high clarity. The surface is now topographically uniform, exhibiting only
-    the natural micro-texture of the base metal. The reflectivity is significantly increased, confirming the removal of light-absorbing
-    oxides and particulates.
-  description: Microscopic analysis of zinc surface before and after laser cleaning treatment
+  afterText: Laser cleaning has fully restored the native zinc surface. The contamination
+    layer is completely ablated, revealing the underlying metallic grain structure
+    with high clarity. The surface is now topographically uniform, exhibiting only
+    the natural micro-texture of the base metal. The reflectivity is significantly
+    increased, confirming the removal of light-absorbing oxides and particulates.
+  description: Microscopic analysis of zinc surface before and after laser cleaning
+    treatment
   alt: Microscopic view of zinc surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -358,7 +341,8 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Zinc surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Zinc surface after laser cleaning showing detailed surface
+      structure
     url: /images/material/zinc-laser-cleaning-micro.jpg
 tags:
 - metal

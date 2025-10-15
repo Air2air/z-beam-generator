@@ -4,10 +4,8 @@ subcategory: hardwood
 title: Walnut Laser Cleaning
 description: Laser cleaning parameters for Walnut
 materialProperties:
-  physical_structural:
-    label: Physical/Structural Properties
-    description: Basic physical characteristics
-    percentage: 3.6
+  material_properties:
+    label: Material Properties
     properties:
       density:
         value: 0.64
@@ -16,10 +14,32 @@ materialProperties:
         description: Average density of walnut wood at 12% moisture content
         min: 0.12
         max: 1.25
-  mechanical:
-    label: Mechanical Properties
-    description: Strength, elasticity, and structural characteristics
-    percentage: 18.2
+      porosity:
+        value: 55
+        unit: '%'
+        confidence: 90
+        description: Average porosity percentage in walnut wood structure
+        min: null
+        max: null
+      surfaceRoughness:
+        value: 3.2
+        unit: μm Ra
+        confidence: 84
+        description: Typical surface roughness after standard machining
+        min: null
+        max: null
+      chemicalStability:
+        value: Moderate
+        unit: qualitative
+        confidence: 88
+        description: Resistance to chemical degradation and environmental factors
+        min: null
+        max: null
+    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
+      finish, contaminant adhesion, and process efficiency'
+    percentage: 40.0
+  structural_response:
+    label: Structural Response Properties
     properties:
       hardness:
         value: 4.5
@@ -42,10 +62,11 @@ materialProperties:
         description: Modulus of elasticity parallel to grain
         min: 5
         max: 25
-  optical_laser:
-    label: Optical/Laser Properties
-    description: Light interaction and laser response characteristics
-    percentage: 16.4
+    description: 'Physical reaction to thermal stress: how material responds structurally
+      to rapid heating'
+    percentage: 18.2
+  energy_coupling:
+    label: Energy Coupling Properties
     properties:
       laserAbsorption:
         value: 32.7
@@ -72,7 +93,8 @@ materialProperties:
         value: 0.8
         unit: J/cm²
         confidence: 85
-        description: Minimum fluence required for material removal with nanosecond pulses
+        description: Minimum fluence required for material removal with nanosecond
+          pulses
         min: null
         max: null
       laserDamageThreshold:
@@ -82,11 +104,6 @@ materialProperties:
         description: Fluence level causing permanent structural damage
         min: null
         max: null
-  thermal:
-    label: Thermal Properties
-    description: Heat-related material characteristics including conductivity, expansion, and destruction points
-    percentage: 29.1
-    properties:
       specificHeat:
         value: 1.8
         unit: kJ/kg·K
@@ -124,42 +141,6 @@ materialProperties:
           confidence: 92
           description: Thermal destruction point
         type: carbonization
-  surface:
-    label: Surface Properties
-    description: Surface characteristics and texture
-    percentage: 9.1
-    properties:
-      porosity:
-        value: 55
-        unit: '%'
-        confidence: 90
-        description: Average porosity percentage in walnut wood structure
-        min: null
-        max: null
-      surfaceRoughness:
-        value: 3.2
-        unit: μm Ra
-        confidence: 84
-        description: Typical surface roughness after standard machining
-        min: null
-        max: null
-  chemical:
-    label: Chemical Properties
-    description: Chemical reactivity and stability
-    percentage: 5.5
-    properties:
-      chemicalStability:
-        value: Moderate
-        unit: qualitative
-        confidence: 88
-        description: Resistance to chemical degradation and environmental factors
-        min: null
-        max: null
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 0
-    properties:
       absorptionCoefficient:
         value: 0.85
         unit: dimensionless
@@ -167,6 +148,9 @@ materialProperties:
         description: Optical absorption coefficient for common laser wavelengths (1064nm)
         min: null
         max: null
+    description: 'First-order photon coupling: how laser energy enters the material
+      vs. reflects away'
+    percentage: 16.4
 applications:
 - Aerospace
 - Automotive
@@ -225,8 +209,9 @@ machineSettings:
     value: 4.5
     unit: J/cm²
     confidence: 88
-    description: Energy density threshold for effective Walnut cleaning - Energy density threshold for effective organic contaminant
-      removal from wood without charring or thermal damage
+    description: Energy density threshold for effective Walnut cleaning - Energy density
+      threshold for effective organic contaminant removal from wood without charring
+      or thermal damage
     min: 2.0
     max: 8.0
   fluenceThreshold:
@@ -300,8 +285,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Walnut's grain can be very porous and its color is valued, unlike many other hardwoods. These traits require careful
-  laser settings to clean effectively without altering the wood's natural appearance.
+subtitle: Walnut's grain can be very porous and its color is valued, unlike many other
+  hardwoods. These traits require careful laser settings to clean effectively without
+  altering the wood's natural appearance.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -337,17 +323,23 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the walnut surface is obscured by a dense, non-uniform contamination layer measuring
-    15-45 µm thick. This layer, composed of embedded soot, oxidized oils, and particulate matter, fills the wood's porous
-    structure and adheres to the grain. The original cellular detail is lost beneath a topographical crust that exhibits micro-fissures
-    and a matte, amorphous texture. The contaminant's high absorption coefficient (0.85) gives it a dark, featureless appearance,
-    masking the underlying wood's characteristic anatomy.
-  afterText: Following laser cleaning at 500x magnification, the walnut surface reveals a distinct transformation. The contaminant
-    crust is entirely removed, exposing the intact, open cellular structure with a porosity of 55%. The original grain pattern
-    is now clearly defined, with a surface roughness of approximately 3.2 µm Ra. The laser process has selectively ablated
-    the contamination, which has a thermal destruction point of 401°C, without carbonizing the underlying wood substrate.
-    This results in a clean, topographically detailed surface where the natural wood anatomy is fully visible and unobscured.
-  description: Microscopic analysis of walnut surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the walnut surface is obscured by a dense, non-uniform
+    contamination layer measuring 15-45 µm thick. This layer, composed of embedded
+    soot, oxidized oils, and particulate matter, fills the wood's porous structure
+    and adheres to the grain. The original cellular detail is lost beneath a topographical
+    crust that exhibits micro-fissures and a matte, amorphous texture. The contaminant's
+    high absorption coefficient (0.85) gives it a dark, featureless appearance, masking
+    the underlying wood's characteristic anatomy.
+  afterText: Following laser cleaning at 500x magnification, the walnut surface reveals
+    a distinct transformation. The contaminant crust is entirely removed, exposing
+    the intact, open cellular structure with a porosity of 55%. The original grain
+    pattern is now clearly defined, with a surface roughness of approximately 3.2
+    µm Ra. The laser process has selectively ablated the contamination, which has
+    a thermal destruction point of 401°C, without carbonizing the underlying wood
+    substrate. This results in a clean, topographically detailed surface where the
+    natural wood anatomy is fully visible and unobscured.
+  description: Microscopic analysis of walnut surface before and after laser cleaning
+    treatment
   alt: Microscopic view of walnut surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -367,7 +359,8 @@ caption:
     materialType: Wood
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Walnut surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Walnut surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/walnut-laser-cleaning-micro.jpg
 tags:
 - wood

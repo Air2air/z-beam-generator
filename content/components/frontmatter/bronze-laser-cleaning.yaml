@@ -4,10 +4,8 @@ subcategory: non_ferrous
 title: Bronze Laser Cleaning
 description: Laser cleaning parameters for Bronze
 materialProperties:
-  physical_structural:
-    label: Physical/Structural Properties
-    description: Basic physical characteristics
-    percentage: 3.6
+  material_properties:
+    label: Material Properties
     properties:
       density:
         value: 8.7
@@ -16,10 +14,40 @@ materialProperties:
         description: Typical density for tin bronze alloys (88% Cu, 12% Sn)
         min: 0.53
         max: 22.6
-  mechanical:
-    label: Mechanical Properties
-    description: Strength, elasticity, and structural characteristics
-    percentage: 18.2
+      oxidationResistance:
+        value: High
+        unit: qualitative
+        confidence: 90
+        description: Excellent oxidation resistance due to protective oxide layer
+          formation
+        min: null
+        max: null
+      corrosionResistance:
+        value: Excellent
+        unit: qualitative
+        confidence: 92
+        description: Superior corrosion resistance in marine and chemical environments
+        min: null
+        max: null
+      crystallineStructure:
+        value: α-phase FCC
+        unit: crystal system
+        confidence: 95
+        description: Face-centered cubic structure typical of copper-rich bronze alloys
+        min: null
+        max: null
+      surfaceRoughness:
+        value: 0.8
+        unit: μm Ra
+        confidence: 85
+        description: Typical as-cast surface roughness before laser treatment
+        min: null
+        max: null
+    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
+      finish, contaminant adhesion, and process efficiency'
+    percentage: 40.0
+  structural_response:
+    label: Structural Response Properties
     properties:
       hardness:
         value: 75
@@ -42,10 +70,11 @@ materialProperties:
         description: Elastic modulus of bronze alloys
         min: 5
         max: 411
-  optical_laser:
-    label: Optical/Laser Properties
-    description: Light interaction and laser response characteristics
-    percentage: 16.4
+    description: 'Physical reaction to thermal stress: how material responds structurally
+      to rapid heating'
+    percentage: 18.2
+  energy_coupling:
+    label: Energy Coupling Properties
     properties:
       laserAbsorption:
         value: 38.5
@@ -68,11 +97,6 @@ materialProperties:
         description: Laser ablation threshold for nanosecond pulses at 1064 nm
         min: null
         max: null
-  thermal:
-    label: Thermal Properties
-    description: Heat-related material characteristics including conductivity, expansion, and destruction points
-    percentage: 29.1
-    properties:
       specificHeat:
         value: 380
         unit: J/kg·K
@@ -110,54 +134,6 @@ materialProperties:
           confidence: 92
           description: Thermal destruction point
         type: melting
-  chemical:
-    label: Chemical Properties
-    description: Chemical reactivity and stability
-    percentage: 5.5
-    properties:
-      oxidationResistance:
-        value: High
-        unit: qualitative
-        confidence: 90
-        description: Excellent oxidation resistance due to protective oxide layer formation
-        min: null
-        max: null
-      corrosionResistance:
-        value: Excellent
-        unit: qualitative
-        confidence: 92
-        description: Superior corrosion resistance in marine and chemical environments
-        min: null
-        max: null
-  compositional:
-    label: Compositional Properties
-    description: Material composition characteristics
-    percentage: 5.5
-    properties:
-      crystallineStructure:
-        value: α-phase FCC
-        unit: crystal system
-        confidence: 95
-        description: Face-centered cubic structure typical of copper-rich bronze alloys
-        min: null
-        max: null
-  surface:
-    label: Surface Properties
-    description: Surface characteristics and texture
-    percentage: 9.1
-    properties:
-      surfaceRoughness:
-        value: 0.8
-        unit: μm Ra
-        confidence: 85
-        description: Typical as-cast surface roughness before laser treatment
-        min: null
-        max: null
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 0
-    properties:
       absorptionCoefficient:
         value: 4.2
         unit: ×10⁵ m⁻¹
@@ -165,6 +141,9 @@ materialProperties:
         description: Optical absorption coefficient at 1064 nm wavelength
         min: null
         max: null
+    description: 'First-order photon coupling: how laser energy enters the material
+      vs. reflects away'
+    percentage: 16.4
 applications:
 - Architecture
 - Art and Sculpture
@@ -177,14 +156,16 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Bronze oxide removal without substrate damage
+    description: Optimal average power for Bronze oxide removal without substrate
+      damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength with good absorption in Bronze oxides and moderate substrate absorption
+    description: Near-IR wavelength with good absorption in Bronze oxides and moderate
+      substrate absorption
     min: 532
     max: 1064
   spotSize:
@@ -198,14 +179,16 @@ machineSettings:
     value: 100
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning coverage while maintaining pulse energy
+    description: High repetition rate for efficient cleaning coverage while maintaining
+      pulse energy
     min: 50
     max: 200
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective oxide ablation with controlled thermal penetration
+    description: Nanosecond pulse duration for effective oxide ablation with controlled
+      thermal penetration
     min: 5
     max: 20
   scanSpeed:
@@ -219,8 +202,8 @@ machineSettings:
     value: 6.0
     unit: J/cm²
     confidence: 92
-    description: Energy density threshold for effective Bronze cleaning - Energy density threshold for effective oxide and
-      contaminant removal from metallic surfaces
+    description: Energy density threshold for effective Bronze cleaning - Energy density
+      threshold for effective oxide and contaminant removal from metallic surfaces
     min: 3.0
     max: 12.0
   fluenceThreshold:
@@ -286,8 +269,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Bronze is a softer alloy that is more susceptible to heat and surface oxidation than other non-ferrous metals. This
-  requires careful adjustment of laser power and scanning speed to prevent melting or damaging the patina.
+subtitle: Bronze is a softer alloy that is more susceptible to heat and surface oxidation
+  than other non-ferrous metals. This requires careful adjustment of laser power and
+  scanning speed to prevent melting or damaging the patina.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -323,22 +307,29 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the bronze surface is obscured by a stratified contamination layer approximately 5-15
-    µm thick. This layer consists of a tenacious, amorphous copper sulfide tarnish (Cu₂S) and particulate grime embedded within
-    a porous matrix of copper carbonates. The underlying α-phase FCC crystalline structure of the bronze is entirely concealed.
-    The texture is irregular and crust-like, with micro-fissures propagating through the corrosion products, which exhibit
+  beforeText: At 500x magnification, the bronze surface is obscured by a stratified
+    contamination layer approximately 5-15 µm thick. This layer consists of a tenacious,
+    amorphous copper sulfide tarnish (Cu₂S) and particulate grime embedded within
+    a porous matrix of copper carbonates. The underlying α-phase FCC crystalline structure
+    of the bronze is entirely concealed. The texture is irregular and crust-like,
+    with micro-fissures propagating through the corrosion products, which exhibit
     low adhesion to the substrate.
-  afterText: 'Laser cleaning has completely removed the stratified contamination layer, revealing the pristine, underlying
-    bronze substrate. The surface now exhibits the characteristic microstructure of the α-phase FCC crystalline grains, with
-    clearly defined grain boundaries. The texture is uniform, with a measured surface roughness of approximately 0.8 µm Ra,
-    consistent with the original manufactured finish.
+  afterText: 'Laser cleaning has completely removed the stratified contamination layer,
+    revealing the pristine, underlying bronze substrate. The surface now exhibits
+    the characteristic microstructure of the α-phase FCC crystalline grains, with
+    clearly defined grain boundaries. The texture is uniform, with a measured surface
+    roughness of approximately 0.8 µm Ra, consistent with the original manufactured
+    finish.
 
 
-    The removal process has been highly selective, ablating the weakly adhered corrosion products without melting the bronze
-    surface, which has a melting point of 950°C. This precision is confirmed by the preservation of fine, sub-micron machining
-    marks and the absence of thermal etching or oxide discoloration. The surface is now metallurgically clean, with a reflectivity
-    restored to its intrinsic 65% at 1064 nm.'
-  description: Microscopic analysis of bronze surface before and after laser cleaning treatment
+    The removal process has been highly selective, ablating the weakly adhered corrosion
+    products without melting the bronze surface, which has a melting point of 950°C.
+    This precision is confirmed by the preservation of fine, sub-micron machining
+    marks and the absence of thermal etching or oxide discoloration. The surface is
+    now metallurgically clean, with a reflectivity restored to its intrinsic 65% at
+    1064 nm.'
+  description: Microscopic analysis of bronze surface before and after laser cleaning
+    treatment
   alt: Microscopic view of bronze surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -358,7 +349,8 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Bronze surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Bronze surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/bronze-laser-cleaning-micro.jpg
 tags:
 - metal

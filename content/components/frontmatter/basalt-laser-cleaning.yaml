@@ -4,10 +4,8 @@ subcategory: igneous
 title: Basalt Laser Cleaning
 description: Laser cleaning parameters for Basalt
 materialProperties:
-  physical_structural:
-    label: Physical/Structural Properties
-    description: Basic physical characteristics
-    percentage: 3.6
+  material_properties:
+    label: Material Properties
     properties:
       density:
         value: 2.9
@@ -16,10 +14,18 @@ materialProperties:
         description: Typical density of basalt rock at room temperature
         min: 1.5
         max: 3.4
-  mechanical:
-    label: Mechanical Properties
-    description: Strength, elasticity, and structural characteristics
-    percentage: 18.2
+      porosity:
+        value: 1.5
+        unit: '%'
+        confidence: 88
+        description: Typical porosity of dense basalt
+        min: null
+        max: null
+    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
+      finish, contaminant adhesion, and process efficiency'
+    percentage: 40.0
+  structural_response:
+    label: Structural Response Properties
     properties:
       hardness:
         value: 6.0
@@ -49,10 +55,11 @@ materialProperties:
         description: Uniaxial compressive strength
         min: null
         max: null
-  optical_laser:
-    label: Optical/Laser Properties
-    description: Light interaction and laser response characteristics
-    percentage: 16.4
+    description: 'Physical reaction to thermal stress: how material responds structurally
+      to rapid heating'
+    percentage: 18.2
+  energy_coupling:
+    label: Energy Coupling Properties
     properties:
       laserAbsorption:
         value: 8.7
@@ -82,11 +89,6 @@ materialProperties:
         description: Laser ablation threshold for nanosecond pulses
         min: null
         max: null
-  thermal:
-    label: Thermal Properties
-    description: Heat-related material characteristics including conductivity, expansion, and destruction points
-    percentage: 29.1
-    properties:
       specificHeat:
         value: 840
         unit: J/kg·K
@@ -124,23 +126,6 @@ materialProperties:
           confidence: 92
           description: Thermal destruction point
         type: thermal_shock
-  surface:
-    label: Surface Properties
-    description: Surface characteristics and texture
-    percentage: 9.1
-    properties:
-      porosity:
-        value: 1.5
-        unit: '%'
-        confidence: 88
-        description: Typical porosity of dense basalt
-        min: null
-        max: null
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 0
-    properties:
       thermalDegradationPoint:
         value: 1100.0
         unit: °C
@@ -155,6 +140,9 @@ materialProperties:
         description: Optical absorption coefficient for common laser wavelengths
         min: null
         max: null
+    description: 'First-order photon coupling: how laser energy enters the material
+      vs. reflects away'
+    percentage: 16.4
 applications:
 - Aerospace
 - Architectural Restoration
@@ -171,7 +159,8 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Basalt surface cleaning without thermal damage
+    description: Optimal average power for Basalt surface cleaning without thermal
+      damage
     min: 80
     max: 120
   wavelength:
@@ -213,8 +202,9 @@ machineSettings:
     value: 3.5
     unit: J/cm²
     confidence: 86
-    description: Energy density threshold for effective Basalt cleaning - Energy density threshold for effective contaminant
-      removal from stone surfaces without substrate damage
+    description: Energy density threshold for effective Basalt cleaning - Energy density
+      threshold for effective contaminant removal from stone surfaces without substrate
+      damage
     min: 1.5
     max: 7.0
   fluenceThreshold:
@@ -280,8 +270,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Basalt is a dense, fine-grained igneous stone that can vary in hardness and mineral composition. These variations
-  require careful adjustment of laser settings to effectively remove contaminants without damaging the surface.
+subtitle: Basalt is a dense, fine-grained igneous stone that can vary in hardness
+  and mineral composition. These variations require careful adjustment of laser settings
+  to effectively remove contaminants without damaging the surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -317,18 +308,24 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the basalt surface is obscured by a complex contamination layer. A carbonaceous soot
-    and particulate matrix, approximately 10-50 micrometers thick, adheres tenaciously to the stone's micro-texture. This
-    layer infiltrates the natural micro-fractures and vesicles inherent to the basalt, creating a deep-seated, interlocked
-    bond. The underlying crystalline structure of the feldspar and pyroxene minerals is completely masked. The contaminant's
-    low reflectivity results in a visually homogeneous, matte black appearance that obscures the stone's intrinsic granularity
-    and color variation.
-  afterText: Laser cleaning has restored the basalt to its intrinsic mineralogical state. The contaminant layer has been completely
-    ablated, revealing a clean, well-defined grain boundary network between the feldspar and pyroxene crystals. The surface
-    now exhibits its natural micro-roughness and the distinct geometries of individual mineral grains. The process has effectively
-    cleared the vesicles and micro-fractures, eliminating the binding points for contaminants. This results in a surface with
-    higher light reflectivity, showcasing the material's authentic texture and subtle color gradations.
-  description: Microscopic analysis of basalt surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the basalt surface is obscured by a complex contamination
+    layer. A carbonaceous soot and particulate matrix, approximately 10-50 micrometers
+    thick, adheres tenaciously to the stone's micro-texture. This layer infiltrates
+    the natural micro-fractures and vesicles inherent to the basalt, creating a deep-seated,
+    interlocked bond. The underlying crystalline structure of the feldspar and pyroxene
+    minerals is completely masked. The contaminant's low reflectivity results in a
+    visually homogeneous, matte black appearance that obscures the stone's intrinsic
+    granularity and color variation.
+  afterText: Laser cleaning has restored the basalt to its intrinsic mineralogical
+    state. The contaminant layer has been completely ablated, revealing a clean, well-defined
+    grain boundary network between the feldspar and pyroxene crystals. The surface
+    now exhibits its natural micro-roughness and the distinct geometries of individual
+    mineral grains. The process has effectively cleared the vesicles and micro-fractures,
+    eliminating the binding points for contaminants. This results in a surface with
+    higher light reflectivity, showcasing the material's authentic texture and subtle
+    color gradations.
+  description: Microscopic analysis of basalt surface before and after laser cleaning
+    treatment
   alt: Microscopic view of basalt surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -348,7 +345,8 @@ caption:
     materialType: Stone
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Basalt surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Basalt surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/basalt-laser-cleaning-micro.jpg
 tags:
 - stone

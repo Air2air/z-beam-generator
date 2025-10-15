@@ -4,10 +4,8 @@ subcategory: terracotta
 title: Terracotta Laser Cleaning
 description: Laser cleaning parameters for Terracotta
 materialProperties:
-  mechanical:
-    label: Mechanical Properties
-    description: Strength, elasticity, and structural characteristics
-    percentage: 18.2
+  structural_response:
+    label: Structural Response Properties
     properties:
       compressiveStrength:
         value: 45.0
@@ -44,10 +42,11 @@ materialProperties:
         description: Modulus of rupture for typical terracotta composition
         min: null
         max: null
-  physical_structural:
-    label: Physical/Structural Properties
-    description: Basic physical characteristics
-    percentage: 3.6
+    description: 'Physical reaction to thermal stress: how material responds structurally
+      to rapid heating'
+    percentage: 18.2
+  material_properties:
+    label: Material Properties
     properties:
       density:
         value: 1.8
@@ -56,10 +55,18 @@ materialProperties:
         description: Bulk density accounting for porosity in fired clay
         min: 0.6
         max: 2.8
-  optical_laser:
-    label: Optical/Laser Properties
-    description: Light interaction and laser response characteristics
-    percentage: 16.4
+      porosity:
+        value: 15
+        unit: '%'
+        confidence: 90
+        description: Open porosity percentage affecting laser absorption
+        min: null
+        max: null
+    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
+      finish, contaminant adhesion, and process efficiency'
+    percentage: 40.0
+  energy_coupling:
+    label: Energy Coupling Properties
     properties:
       laserAbsorption:
         value: 8.2
@@ -96,11 +103,6 @@ materialProperties:
         description: Fluence causing permanent surface modification
         min: null
         max: null
-  thermal:
-    label: Thermal Properties
-    description: Heat-related material characteristics including conductivity, expansion, and destruction points
-    percentage: 29.1
-    properties:
       specificHeat:
         value: 880
         unit: J/kg·K
@@ -138,23 +140,6 @@ materialProperties:
           confidence: 92
           description: Thermal destruction point
         type: spalling
-  surface:
-    label: Surface Properties
-    description: Surface characteristics and texture
-    percentage: 9.1
-    properties:
-      porosity:
-        value: 15
-        unit: '%'
-        confidence: 90
-        description: Open porosity percentage affecting laser absorption
-        min: null
-        max: null
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 0
-    properties:
       thermalDegradationPoint:
         value: 870.0
         unit: °C
@@ -169,6 +154,9 @@ materialProperties:
         description: Optical absorption coefficient at 1064 nm wavelength
         min: null
         max: null
+    description: 'First-order photon coupling: how laser energy enters the material
+      vs. reflects away'
+    percentage: 16.4
 applications:
 - Cultural Heritage
 - Architecture and Construction
@@ -185,7 +173,8 @@ machineSettings:
     value: 90
     unit: W
     confidence: 92
-    description: Optimal average power for Terracotta surface cleaning without thermal damage
+    description: Optimal average power for Terracotta surface cleaning without thermal
+      damage
     min: 70
     max: 110
   wavelength:
@@ -227,15 +216,16 @@ machineSettings:
     value: 3.0
     unit: J/cm²
     confidence: 85
-    description: Energy density threshold for effective Terracotta cleaning - Energy density threshold for effective cleaning
-      of porous masonry materials
+    description: Energy density threshold for effective Terracotta cleaning - Energy
+      density threshold for effective cleaning of porous masonry materials
     min: 1.5
     max: 6.0
   energyDensity:
     value: 1.8
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without substrate damage
+    description: Fluence threshold for effective contaminant removal without substrate
+      damage
     min: 1.2
     max: 2.5
   overlapRatio:
@@ -274,7 +264,8 @@ author:
   image: /images/author/yi-chun-lin.jpg
 images:
   hero:
-    alt: Terracotta surface undergoing laser cleaning showing precise contamination removal
+    alt: Terracotta surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/terracotta-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -301,8 +292,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Terracotta is a porous, low-fired clay with a delicate, often uneven surface glaze. This requires careful laser
-  calibration to clean effectively without damaging the underlying material or its finish.
+subtitle: Terracotta is a porous, low-fired clay with a delicate, often uneven surface
+  glaze. This requires careful laser calibration to clean effectively without damaging
+  the underlying material or its finish.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -338,15 +330,18 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the terracotta surface is obscured by a stratified contamination layer approximately
-    50-200 µm thick. A porous crust of gypsum and carbon particulates is anchored within the material's inherent 15% porosity.
-    This layer exhibits micro-fracturing and conceals the original fired-clay microstructure, including fine-grained mineral
-    inclusions and the subtle, vitrified surface texture.
-  afterText: Laser cleaning has selectively removed the contamination crust, revealing the intact terracotta substrate. The
-    original surface texture, characterized by a fine-grained, vitrified matrix and distinct mineral inclusions, is now fully
-    exposed. The process has cleared the material's micro-porosity without inducing micro-fractures or thermal alteration
-    to the underlying clay body.
-  description: Microscopic analysis of terracotta surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the terracotta surface is obscured by a stratified
+    contamination layer approximately 50-200 µm thick. A porous crust of gypsum and
+    carbon particulates is anchored within the material's inherent 15% porosity. This
+    layer exhibits micro-fracturing and conceals the original fired-clay microstructure,
+    including fine-grained mineral inclusions and the subtle, vitrified surface texture.
+  afterText: Laser cleaning has selectively removed the contamination crust, revealing
+    the intact terracotta substrate. The original surface texture, characterized by
+    a fine-grained, vitrified matrix and distinct mineral inclusions, is now fully
+    exposed. The process has cleared the material's micro-porosity without inducing
+    micro-fractures or thermal alteration to the underlying clay body.
+  description: Microscopic analysis of terracotta surface before and after laser cleaning
+    treatment
   alt: Microscopic view of terracotta surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -366,7 +361,8 @@ caption:
     materialType: Masonry
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Terracotta surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Terracotta surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/terracotta-laser-cleaning-micro.jpg
 tags:
 - masonry

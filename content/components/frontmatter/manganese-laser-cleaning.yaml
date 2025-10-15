@@ -4,10 +4,8 @@ subcategory: ferrous
 title: Manganese Laser Cleaning
 description: Laser cleaning parameters for Manganese
 materialProperties:
-  physical_structural:
-    label: Physical/Structural Properties
-    description: Basic physical characteristics
-    percentage: 3.6
+  material_properties:
+    label: Material Properties
     properties:
       density:
         value: 7.21
@@ -16,10 +14,32 @@ materialProperties:
         description: Density of pure manganese at room temperature
         min: 0.53
         max: 22.6
-  mechanical:
-    label: Mechanical Properties
-    description: Strength, elasticity, and structural characteristics
-    percentage: 18.2
+      oxidationResistance:
+        value: 3
+        unit: rating 1-10
+        confidence: 85
+        description: Poor oxidation resistance, forms oxide layers rapidly
+        min: null
+        max: null
+      crystallineStructure:
+        value: Complex cubic
+        unit: crystal system
+        confidence: 92
+        description: Alpha-Mn has complex cubic structure with 58 atoms per unit cell
+        min: null
+        max: null
+      electricalResistivity:
+        value: 1.44
+        unit: μΩ·m
+        confidence: 90
+        description: Electrical resistivity at 20°C
+        min: null
+        max: null
+    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
+      finish, contaminant adhesion, and process efficiency'
+    percentage: 40.0
+  structural_response:
+    label: Structural Response Properties
     properties:
       hardness:
         value: 210
@@ -42,10 +62,11 @@ materialProperties:
         description: Young's modulus of elasticity
         min: 5
         max: 411
-  optical_laser:
-    label: Optical/Laser Properties
-    description: Light interaction and laser response characteristics
-    percentage: 16.4
+    description: 'Physical reaction to thermal stress: how material responds structurally
+      to rapid heating'
+    percentage: 18.2
+  energy_coupling:
+    label: Energy Coupling Properties
     properties:
       laserAbsorption:
         value: 62.3
@@ -75,11 +96,6 @@ materialProperties:
         description: Estimated laser ablation threshold for nanosecond pulses
         min: null
         max: null
-  thermal:
-    label: Thermal Properties
-    description: Heat-related material characteristics including conductivity, expansion, and destruction points
-    percentage: 29.1
-    properties:
       specificHeat:
         value: 479
         unit: J/kg·K
@@ -124,54 +140,17 @@ materialProperties:
           confidence: 95
           description: Thermal destruction point
         type: melting
-  chemical:
-    label: Chemical Properties
-    description: Chemical reactivity and stability
-    percentage: 5.5
-    properties:
-      oxidationResistance:
-        value: 3
-        unit: rating 1-10
-        confidence: 85
-        description: Poor oxidation resistance, forms oxide layers rapidly
-        min: null
-        max: null
-  compositional:
-    label: Compositional Properties
-    description: Material composition characteristics
-    percentage: 5.5
-    properties:
-      crystallineStructure:
-        value: Complex cubic
-        unit: crystal system
-        confidence: 92
-        description: Alpha-Mn has complex cubic structure with 58 atoms per unit cell
-        min: null
-        max: null
-  electrical:
-    label: Electrical Properties
-    description: Electrical conductivity and resistance
-    percentage: 7.3
-    properties:
-      electricalResistivity:
-        value: 1.44
-        unit: μΩ·m
-        confidence: 90
-        description: Electrical resistivity at 20°C
-        min: null
-        max: null
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 0
-    properties:
       absorptionCoefficient:
         value: 0.65
         unit: dimensionless
         confidence: 80
-        description: Estimated absorption coefficient for common laser wavelengths (1064 nm)
+        description: Estimated absorption coefficient for common laser wavelengths
+          (1064 nm)
         min: null
         max: null
+    description: 'First-order photon coupling: how laser energy enters the material
+      vs. reflects away'
+    percentage: 16.4
 applications:
 - Steel Manufacturing
 - Battery Production
@@ -188,7 +167,8 @@ machineSettings:
     value: 90
     unit: W
     confidence: 88
-    description: Optimal average power for Manganese oxide removal without substrate damage
+    description: Optimal average power for Manganese oxide removal without substrate
+      damage
     min: 70
     max: 120
   wavelength:
@@ -262,7 +242,8 @@ author:
   image: /images/author/todd-dunning.jpg
 images:
   hero:
-    alt: Manganese surface undergoing laser cleaning showing precise contamination removal
+    alt: Manganese surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/manganese-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -289,8 +270,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Manganese's variable properties and hard oxide layers differ from typical ferrous metals. These require tailored
-  laser settings to effectively remove oxides without damaging the base metal.
+subtitle: Manganese's variable properties and hard oxide layers differ from typical
+  ferrous metals. These require tailored laser settings to effectively remove oxides
+  without damaging the base metal.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -326,16 +308,21 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the manganese surface is obscured by a non-uniform contamination layer, typically 5-20
-    µm thick. This layer consists of adherent oxide scales, primarily MnO and Mn3O4, appearing as a matte, dark grey crust.
-    The underlying metallic surface texture is completely masked. Particulate contaminants are embedded within this brittle
-    oxide matrix, creating a rough, discontinuous topography with visible micro-cracks that propagate into the substrate.
-  afterText: Laser cleaning has restored the native metallic surface, revealing the fine-grained, polycrystalline structure
-    of the α-Mn phase. The tenacious oxide layer and embedded particulates have been completely removed via ablation, eliminating
-    the micro-cracks and leaving a uniform, light-grey metallic finish. The process reduces average surface roughness (Ra)
-    significantly, exposing the material's intrinsic grain boundaries and subtle polishing marks from the original fabrication,
+  beforeText: At 500x magnification, the manganese surface is obscured by a non-uniform
+    contamination layer, typically 5-20 µm thick. This layer consists of adherent
+    oxide scales, primarily MnO and Mn3O4, appearing as a matte, dark grey crust.
+    The underlying metallic surface texture is completely masked. Particulate contaminants
+    are embedded within this brittle oxide matrix, creating a rough, discontinuous
+    topography with visible micro-cracks that propagate into the substrate.
+  afterText: Laser cleaning has restored the native metallic surface, revealing the
+    fine-grained, polycrystalline structure of the α-Mn phase. The tenacious oxide
+    layer and embedded particulates have been completely removed via ablation, eliminating
+    the micro-cracks and leaving a uniform, light-grey metallic finish. The process
+    reduces average surface roughness (Ra) significantly, exposing the material's
+    intrinsic grain boundaries and subtle polishing marks from the original fabrication,
     with no measurable thermal damage to the underlying microstructure.
-  description: Microscopic analysis of manganese surface before and after laser cleaning treatment
+  description: Microscopic analysis of manganese surface before and after laser cleaning
+    treatment
   alt: Microscopic view of manganese surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -355,7 +342,8 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Manganese surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Manganese surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/manganese-laser-cleaning-micro.jpg
 tags:
 - metal

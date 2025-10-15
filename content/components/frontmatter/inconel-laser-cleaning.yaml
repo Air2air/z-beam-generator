@@ -4,10 +4,8 @@ subcategory: specialty
 title: Inconel Laser Cleaning
 description: Laser cleaning parameters for Inconel
 materialProperties:
-  physical_structural:
-    label: Physical/Structural Properties
-    description: Basic physical characteristics
-    percentage: 3.6
+  material_properties:
+    label: Material Properties
     properties:
       density:
         value: 8.19
@@ -16,10 +14,33 @@ materialProperties:
         description: Typical density for Inconel 718 at room temperature
         min: 0.53
         max: 22.6
-  mechanical:
-    label: Mechanical Properties
-    description: Strength, elasticity, and structural characteristics
-    percentage: 18.2
+      oxidationResistance:
+        value: 980
+        unit: °C
+        confidence: 88
+        description: Maximum continuous service temperature in oxidizing environments
+        min: null
+        max: null
+      crystallineStructure:
+        value: FCC
+        unit: crystal system
+        confidence: 95
+        description: Face-centered cubic gamma matrix with gamma prime/gamma double
+          prime precipitates
+        min: null
+        max: null
+      surfaceRoughness:
+        value: 0.8
+        unit: μm Ra
+        confidence: 82
+        description: Typical as-machined surface roughness before laser cleaning
+        min: null
+        max: null
+    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
+      finish, contaminant adhesion, and process efficiency'
+    percentage: 40.0
+  structural_response:
+    label: Structural Response Properties
     properties:
       hardness:
         value: 35
@@ -32,7 +53,8 @@ materialProperties:
         value: 1240
         unit: MPa
         confidence: 92
-        description: Room temperature ultimate tensile strength for solution-treated Inconel 718
+        description: Room temperature ultimate tensile strength for solution-treated
+          Inconel 718
         min: 3.0
         max: 3000.0
       youngsModulus:
@@ -42,10 +64,11 @@ materialProperties:
         description: Elastic modulus at room temperature for Inconel 718
         min: 5
         max: 411
-  optical_laser:
-    label: Optical/Laser Properties
-    description: Light interaction and laser response characteristics
-    percentage: 16.4
+    description: 'Physical reaction to thermal stress: how material responds structurally
+      to rapid heating'
+    percentage: 18.2
+  energy_coupling:
+    label: Energy Coupling Properties
     properties:
       laserAbsorption:
         value: 38.7
@@ -65,21 +88,18 @@ materialProperties:
         value: 0.35
         unit: dimensionless
         confidence: 80
-        description: Estimated reflectivity at 1064 nm wavelength for laser cleaning applications
+        description: Estimated reflectivity at 1064 nm wavelength for laser cleaning
+          applications
         min: null
         max: null
       ablationThreshold:
         value: 2.5
         unit: J/cm²
         confidence: 85
-        description: Estimated laser ablation threshold for nanosecond pulses at 1064 nm
+        description: Estimated laser ablation threshold for nanosecond pulses at 1064
+          nm
         min: null
         max: null
-  thermal:
-    label: Thermal Properties
-    description: Heat-related material characteristics including conductivity, expansion, and destruction points
-    percentage: 29.1
-    properties:
       specificHeat:
         value: 435
         unit: J/kg·K
@@ -117,54 +137,17 @@ materialProperties:
           confidence: 95
           description: Thermal destruction point
         type: melting
-  chemical:
-    label: Chemical Properties
-    description: Chemical reactivity and stability
-    percentage: 5.5
-    properties:
-      oxidationResistance:
-        value: 980
-        unit: °C
-        confidence: 88
-        description: Maximum continuous service temperature in oxidizing environments
-        min: null
-        max: null
-  compositional:
-    label: Compositional Properties
-    description: Material composition characteristics
-    percentage: 5.5
-    properties:
-      crystallineStructure:
-        value: FCC
-        unit: crystal system
-        confidence: 95
-        description: Face-centered cubic gamma matrix with gamma prime/gamma double prime precipitates
-        min: null
-        max: null
-  surface:
-    label: Surface Properties
-    description: Surface characteristics and texture
-    percentage: 9.1
-    properties:
-      surfaceRoughness:
-        value: 0.8
-        unit: μm Ra
-        confidence: 82
-        description: Typical as-machined surface roughness before laser cleaning
-        min: null
-        max: null
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 0
-    properties:
       absorptionCoefficient:
         value: 0.65
         unit: dimensionless
         confidence: 82
-        description: Estimated absorption coefficient for near-infrared lasers (1064 nm)
+        description: Estimated absorption coefficient for near-infrared lasers (1064
+          nm)
         min: null
         max: null
+    description: 'First-order photon coupling: how laser energy enters the material
+      vs. reflects away'
+    percentage: 16.4
 applications:
 - Aerospace
 - Chemical Processing
@@ -179,7 +162,8 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Inconel oxide removal without substrate damage
+    description: Optimal average power for Inconel oxide removal without substrate
+      damage
     min: 80
     max: 120
   wavelength:
@@ -207,7 +191,8 @@ machineSettings:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient oxide ablation with minimal HAZ
+    description: Nanosecond pulse duration for efficient oxide ablation with minimal
+      HAZ
     min: 5
     max: 20
   scanSpeed:
@@ -221,8 +206,9 @@ machineSettings:
     value: 6.0
     unit: J/cm²
     confidence: 92
-    description: Energy density threshold for effective Inconel cleaning - Energy density threshold for effective oxide and
-      contaminant removal from metallic surfaces
+    description: Energy density threshold for effective Inconel cleaning - Energy
+      density threshold for effective oxide and contaminant removal from metallic
+      surfaces
     min: 3.0
     max: 12.0
   fluenceThreshold:
@@ -236,7 +222,8 @@ machineSettings:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive thermal input
+    description: Optimal beam overlap for uniform cleaning without excessive thermal
+      input
     min: 40
     max: 70
   passCount:
@@ -295,8 +282,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Inconel forms a tough, protective oxide layer when heated, unlike many other specialty metals. This layer requires
-  specific laser settings to remove effectively without damaging the base material.
+subtitle: Inconel forms a tough, protective oxide layer when heated, unlike many other
+  specialty metals. This layer requires specific laser settings to remove effectively
+  without damaging the base material.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -332,18 +320,23 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the Inconel surface is obscured by a non-uniform contamination layer, typically 5-20
-    µm thick. This layer consists of complex oxides, carbon deposits, and embedded foreign particles, forming a topographically
-    rough and discontinuous crust. The underlying alloy's fine-grained, FCC microstructure is entirely concealed. The surface
-    exhibits a cracked, sintered appearance with low reflectivity, a direct result of prolonged exposure to high-temperature,
-    oxidizing service environments.
-  afterText: Laser cleaning reveals the pristine, metallurgically intact Inconel substrate. The contaminant crust is completely
-    removed, exposing the original, fine-grained gamma matrix with its characteristic precipitate structure. The surface texture
-    is now defined by the material's intrinsic grain boundaries, not foreign deposits. Reflectivity increases significantly
-    due to the restoration of the bare metal surface. The process achieves this transformation with minimal thermal input,
-    preserving the base material's hardness and strength by avoiding microstructural alterations like recrystallization or
-    phase changes.
-  description: Microscopic analysis of inconel surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the Inconel surface is obscured by a non-uniform
+    contamination layer, typically 5-20 µm thick. This layer consists of complex oxides,
+    carbon deposits, and embedded foreign particles, forming a topographically rough
+    and discontinuous crust. The underlying alloy's fine-grained, FCC microstructure
+    is entirely concealed. The surface exhibits a cracked, sintered appearance with
+    low reflectivity, a direct result of prolonged exposure to high-temperature, oxidizing
+    service environments.
+  afterText: Laser cleaning reveals the pristine, metallurgically intact Inconel substrate.
+    The contaminant crust is completely removed, exposing the original, fine-grained
+    gamma matrix with its characteristic precipitate structure. The surface texture
+    is now defined by the material's intrinsic grain boundaries, not foreign deposits.
+    Reflectivity increases significantly due to the restoration of the bare metal
+    surface. The process achieves this transformation with minimal thermal input,
+    preserving the base material's hardness and strength by avoiding microstructural
+    alterations like recrystallization or phase changes.
+  description: Microscopic analysis of inconel surface before and after laser cleaning
+    treatment
   alt: Microscopic view of inconel surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -363,7 +356,8 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Inconel surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Inconel surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/inconel-laser-cleaning-micro.jpg
 tags:
 - metal

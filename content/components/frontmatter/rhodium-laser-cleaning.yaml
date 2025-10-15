@@ -4,10 +4,8 @@ subcategory: precious
 title: Rhodium Laser Cleaning
 description: Laser cleaning parameters for Rhodium
 materialProperties:
-  physical_structural:
-    label: Physical/Structural Properties
-    description: Basic physical characteristics
-    percentage: 3.6
+  material_properties:
+    label: Material Properties
     properties:
       density:
         value: 12.41
@@ -16,10 +14,32 @@ materialProperties:
         description: Density of pure rhodium at 20°C
         min: 0.53
         max: 22.6
-  mechanical:
-    label: Mechanical Properties
-    description: Strength, elasticity, and structural characteristics
-    percentage: 18.2
+      oxidationResistance:
+        value: Excellent
+        unit: qualitative
+        confidence: 95
+        description: Resistance to oxidation up to 600°C
+        min: null
+        max: null
+      crystallineStructure:
+        value: FCC
+        unit: crystal system
+        confidence: 98
+        description: Face-centered cubic crystal structure
+        min: null
+        max: null
+      electricalResistivity:
+        value: 4.3
+        unit: μΩ·cm
+        confidence: 94
+        description: Electrical resistivity at 20°C
+        min: null
+        max: null
+    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
+      finish, contaminant adhesion, and process efficiency'
+    percentage: 40.0
+  structural_response:
+    label: Structural Response Properties
     properties:
       hardness:
         value: 800
@@ -42,10 +62,11 @@ materialProperties:
         description: Young's modulus of elasticity
         min: 5
         max: 411
-  optical_laser:
-    label: Optical/Laser Properties
-    description: Light interaction and laser response characteristics
-    percentage: 16.4
+    description: 'Physical reaction to thermal stress: how material responds structurally
+      to rapid heating'
+    percentage: 18.2
+  energy_coupling:
+    label: Energy Coupling Properties
     properties:
       laserAbsorption:
         value: 38.0
@@ -75,11 +96,6 @@ materialProperties:
         description: Estimated laser ablation threshold for nanosecond pulses
         min: null
         max: null
-  thermal:
-    label: Thermal Properties
-    description: Heat-related material characteristics including conductivity, expansion, and destruction points
-    percentage: 29.1
-    properties:
       specificHeat:
         value: 0.242
         unit: J/g·K
@@ -117,47 +133,6 @@ materialProperties:
           confidence: 95
           description: Thermal destruction point
         type: melting
-  chemical:
-    label: Chemical Properties
-    description: Chemical reactivity and stability
-    percentage: 5.5
-    properties:
-      oxidationResistance:
-        value: Excellent
-        unit: qualitative
-        confidence: 95
-        description: Resistance to oxidation up to 600°C
-        min: null
-        max: null
-  compositional:
-    label: Compositional Properties
-    description: Material composition characteristics
-    percentage: 5.5
-    properties:
-      crystallineStructure:
-        value: FCC
-        unit: crystal system
-        confidence: 98
-        description: Face-centered cubic crystal structure
-        min: null
-        max: null
-  electrical:
-    label: Electrical Properties
-    description: Electrical conductivity and resistance
-    percentage: 7.3
-    properties:
-      electricalResistivity:
-        value: 4.3
-        unit: μΩ·cm
-        confidence: 94
-        description: Electrical resistivity at 20°C
-        min: null
-        max: null
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 0
-    properties:
       absorptionCoefficient:
         value: 4.8
         unit: ×10⁵ cm⁻¹
@@ -165,6 +140,9 @@ materialProperties:
         description: Absorption coefficient for Nd:YAG laser (1064 nm)
         min: null
         max: null
+    description: 'First-order photon coupling: how laser energy enters the material
+      vs. reflects away'
+    percentage: 16.4
 applications:
 - Aerospace
 - Electronics
@@ -181,7 +159,8 @@ machineSettings:
     value: 45
     unit: W
     confidence: 90
-    description: Optimal average power for Rhodium oxide removal without substrate damage
+    description: Optimal average power for Rhodium oxide removal without substrate
+      damage
     min: 30
     max: 65
   wavelength:
@@ -230,7 +209,8 @@ machineSettings:
     value: 65
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
+    description: Optimal beam overlap for uniform cleaning without excessive thermal
+      buildup
     min: 50
     max: 80
   passCount:
@@ -289,8 +269,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Rhodium has an extremely hard and durable surface that is highly reflective. These traits require careful laser
-  parameter adjustments to avoid damaging its polished finish.
+subtitle: Rhodium has an extremely hard and durable surface that is highly reflective.
+  These traits require careful laser parameter adjustments to avoid damaging its polished
+  finish.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -326,15 +307,20 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the rhodium surface is obscured by a non-uniform contamination layer, measuring 2-5 micrometers
-    in thickness. This layer consists of accumulated carbonaceous deposits, particulate matter, and adsorbed organic films.
-    The underlying metal's characteristic fine grain structure is entirely masked. The contaminants exhibit a mottled, textured
-    pattern, creating a topographically complex and optically diffuse surface that scatters light and significantly reduces
+  beforeText: At 500x magnification, the rhodium surface is obscured by a non-uniform
+    contamination layer, measuring 2-5 micrometers in thickness. This layer consists
+    of accumulated carbonaceous deposits, particulate matter, and adsorbed organic
+    films. The underlying metal's characteristic fine grain structure is entirely
+    masked. The contaminants exhibit a mottled, textured pattern, creating a topographically
+    complex and optically diffuse surface that scatters light and significantly reduces
     reflectivity.
-  afterText: Laser cleaning has fully restored the substrate, revealing the intrinsic, fine-grained microstructure of the
-    rhodium. The surface is now continuous and uniform, with contamination completely absent. This results in a microscopically
-    smooth finish that maximizes the metal's inherent high reflectivity and surface integrity.
-  description: Microscopic analysis of rhodium surface before and after laser cleaning treatment
+  afterText: Laser cleaning has fully restored the substrate, revealing the intrinsic,
+    fine-grained microstructure of the rhodium. The surface is now continuous and
+    uniform, with contamination completely absent. This results in a microscopically
+    smooth finish that maximizes the metal's inherent high reflectivity and surface
+    integrity.
+  description: Microscopic analysis of rhodium surface before and after laser cleaning
+    treatment
   alt: Microscopic view of rhodium surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -354,7 +340,8 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Rhodium surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Rhodium surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/rhodium-laser-cleaning-micro.jpg
 tags:
 - metal

@@ -4,11 +4,8 @@ subcategory: non_ferrous
 title: Copper Laser Cleaning
 description: Laser cleaning parameters for Copper
 materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
-      finish, contaminant adhesion, and process efficiency'
-    percentage: 40.0
+  material_properties:
+    label: Material Properties
     properties:
       density:
         value: 8.96
@@ -38,11 +35,11 @@ materialProperties:
         description: Forms protective oxide layer but susceptible to atmospheric corrosion
         min: null
         max: null
-  mechanical_response:
-    label: Mechanical Response Properties
-    description: 'Physical reaction to thermal stress: how material responds structurally
-      to rapid heating'
-    percentage: 18.2
+    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
+      finish, contaminant adhesion, and process efficiency'
+    percentage: 40.0
+  structural_response:
+    label: Structural Response Properties
     properties:
       hardness:
         value: 87
@@ -65,11 +62,11 @@ materialProperties:
         description: Young's modulus of elasticity
         min: 5
         max: 411
-  laser_interaction:
-    label: Laser Interaction Properties
-    description: 'First-order photon coupling: how laser energy enters the material
-      vs. reflects away'
-    percentage: 16.4
+    description: 'Physical reaction to thermal stress: how material responds structurally
+      to rapid heating'
+    percentage: 18.2
+  energy_coupling:
+    label: Energy Coupling Properties
     properties:
       laserAbsorption:
         value: 3.5
@@ -99,12 +96,6 @@ materialProperties:
         description: Laser ablation threshold for nanosecond pulses at 1064 nm
         min: null
         max: null
-  thermal_response:
-    label: Thermal Response Properties
-    description: 'Heat propagation and dissipation: how absorbed energy distributes
-      and when phase transitions occur'
-    percentage: 25.5
-    properties:
       specificHeat:
         value: 385
         unit: J/kg·K
@@ -142,11 +133,6 @@ materialProperties:
           min: -38.8
           max: 3422
         type: melting
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 0
-    properties:
       absorptionCoefficient:
         value: 1.2
         unit: ×10⁷ m⁻¹
@@ -154,6 +140,9 @@ materialProperties:
         description: Absorption coefficient at 1064 nm
         min: null
         max: null
+    description: 'First-order photon coupling: how laser energy enters the material
+      vs. reflects away'
+    percentage: 16.4
 applications:
 - Architecture
 - Electronics Manufacturing

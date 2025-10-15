@@ -4,10 +4,8 @@ subcategory: metamorphic
 title: Marble Laser Cleaning
 description: Laser cleaning parameters for Marble
 materialProperties:
-  mechanical:
-    label: Mechanical Properties
-    description: Strength, elasticity, and structural characteristics
-    percentage: 18.2
+  structural_response:
+    label: Structural Response Properties
     properties:
       compressiveStrength:
         value: 115
@@ -37,10 +35,11 @@ materialProperties:
         description: Elastic modulus of marble
         min: 10
         max: 100
-  physical_structural:
-    label: Physical/Structural Properties
-    description: Basic physical characteristics
-    percentage: 3.6
+    description: 'Physical reaction to thermal stress: how material responds structurally
+      to rapid heating'
+    percentage: 18.2
+  material_properties:
+    label: Material Properties
     properties:
       density:
         value: 2.7
@@ -49,10 +48,25 @@ materialProperties:
         description: Average density of calcite-based marble
         min: 1.5
         max: 3.4
-  optical_laser:
-    label: Optical/Laser Properties
-    description: Light interaction and laser response characteristics
-    percentage: 16.4
+      porosity:
+        value: 0.7
+        unit: '%'
+        confidence: 85
+        description: Typical porosity range for high-quality marble
+        min: null
+        max: null
+      chemicalStability:
+        value: Low
+        unit: qualitative
+        confidence: 90
+        description: Susceptible to acid attack and weathering
+        min: null
+        max: null
+    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
+      finish, contaminant adhesion, and process efficiency'
+    percentage: 40.0
+  energy_coupling:
+    label: Energy Coupling Properties
     properties:
       laserAbsorption:
         value: 0.5
@@ -82,11 +96,6 @@ materialProperties:
         description: Laser ablation threshold for nanosecond pulses at 1064 nm
         min: null
         max: null
-  thermal:
-    label: Thermal Properties
-    description: Heat-related material characteristics including conductivity, expansion, and destruction points
-    percentage: 29.1
-    properties:
       specificHeat:
         value: 880
         unit: J/kg·K
@@ -124,35 +133,6 @@ materialProperties:
           confidence: 92
           description: Thermal destruction point
         type: thermal_shock
-  surface:
-    label: Surface Properties
-    description: Surface characteristics and texture
-    percentage: 9.1
-    properties:
-      porosity:
-        value: 0.7
-        unit: '%'
-        confidence: 85
-        description: Typical porosity range for high-quality marble
-        min: null
-        max: null
-  chemical:
-    label: Chemical Properties
-    description: Chemical reactivity and stability
-    percentage: 5.5
-    properties:
-      chemicalStability:
-        value: Low
-        unit: qualitative
-        confidence: 90
-        description: Susceptible to acid attack and weathering
-        min: null
-        max: null
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 0
-    properties:
       thermalDegradationPoint:
         value: 825.0
         unit: °C
@@ -167,6 +147,9 @@ materialProperties:
         description: Average absorption coefficient for visible to IR wavelengths
         min: null
         max: null
+    description: 'First-order photon coupling: how laser energy enters the material
+      vs. reflects away'
+    percentage: 16.4
 applications:
 - Cultural Heritage
 - Construction and Architecture
@@ -225,15 +208,17 @@ machineSettings:
     value: 3.5
     unit: J/cm²
     confidence: 86
-    description: Energy density threshold for effective Marble cleaning - Energy density threshold for effective contaminant
-      removal from stone surfaces without substrate damage
+    description: Energy density threshold for effective Marble cleaning - Energy density
+      threshold for effective contaminant removal from stone surfaces without substrate
+      damage
     min: 1.5
     max: 7.0
   energyDensity:
     value: 1.2
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without substrate damage
+    description: Fluence threshold for effective contaminant removal without substrate
+      damage
     min: 0.8
     max: 2.0
   overlapRatio:
@@ -302,8 +287,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Marble is a softer and more porous stone with unique veining patterns. These properties demand careful laser calibration
-  to prevent etching and preserve its intricate surface details.
+subtitle: Marble is a softer and more porous stone with unique veining patterns. These
+  properties demand careful laser calibration to prevent etching and preserve its
+  intricate surface details.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -339,19 +325,25 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the marble surface is obscured by a complex, stratified contamination layer. This layer,
-    measuring 50-200 micrometers thick, consists of particulate matter (carbon soot, silica dust) embedded within a gypsum-rich
-    matrix. The contaminants fill the natural calcite crystal boundaries and micro-fissures, creating a dark, cohesive crust
-    that masks the stone's inherent crystalline structure. The surface texture is highly irregular, with the crust forming
-    brittle, dendritic patterns that follow moisture pathways and previous weathering. This layer significantly increases
-    light absorption and scattering, giving the macroscopic surface its darkened, blotchy appearance.
-  afterText: Following laser cleaning, the 500x view reveals the restored marble substrate. The contamination crust has been
-    completely removed via selective laser ablation, exposing the interlocking calcite crystal structure. The surface now
-    exhibits sub-micrometer roughness, with crystal boundaries and cleavage planes clearly defined. Minor, pre-existing micro-fissures
-    are now visible but free of foreign material. The primary visual improvement is the restoration of the stone's inherent
-    light reflectivity and mineralogical texture, confirming the removal of the obscuring layer without mechanical damage
-    to the underlying calcite.
-  description: Microscopic analysis of marble surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the marble surface is obscured by a complex,
+    stratified contamination layer. This layer, measuring 50-200 micrometers thick,
+    consists of particulate matter (carbon soot, silica dust) embedded within a gypsum-rich
+    matrix. The contaminants fill the natural calcite crystal boundaries and micro-fissures,
+    creating a dark, cohesive crust that masks the stone's inherent crystalline structure.
+    The surface texture is highly irregular, with the crust forming brittle, dendritic
+    patterns that follow moisture pathways and previous weathering. This layer significantly
+    increases light absorption and scattering, giving the macroscopic surface its
+    darkened, blotchy appearance.
+  afterText: Following laser cleaning, the 500x view reveals the restored marble substrate.
+    The contamination crust has been completely removed via selective laser ablation,
+    exposing the interlocking calcite crystal structure. The surface now exhibits
+    sub-micrometer roughness, with crystal boundaries and cleavage planes clearly
+    defined. Minor, pre-existing micro-fissures are now visible but free of foreign
+    material. The primary visual improvement is the restoration of the stone's inherent
+    light reflectivity and mineralogical texture, confirming the removal of the obscuring
+    layer without mechanical damage to the underlying calcite.
+  description: Microscopic analysis of marble surface before and after laser cleaning
+    treatment
   alt: Microscopic view of marble surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -371,7 +363,8 @@ caption:
     materialType: Stone
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Marble surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Marble surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/marble-laser-cleaning-micro.jpg
 tags:
 - stone

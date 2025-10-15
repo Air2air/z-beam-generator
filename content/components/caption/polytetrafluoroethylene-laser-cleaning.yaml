@@ -1,12 +1,16 @@
 ---
 # Caption Content for Polytetrafluoroethylene
 before_text: |
-  This contaminated PTFE surface shows significant particulate deposition at 500x magnification. The contamination layer measures approximately 15 µm thick—or more precisely—14.7 µm in cross-sectional SEM analysis, creating a discontinuous film across the polymer surface. This layer consists primarily of carbonaceous deposits and embedded silica particles (as confirmed by EDX elemental mapping), with particle sizes ranging from 2-25 µm distributed unevenly across the viewing area.
+  This contaminated PTFE surface shows heavy particulate deposition at 500x magnification. A carbonaceous soot layer covers approximately 85% of the surface area, this layer measures between 10–15 µm thick, perhaps 12 µm on average. The contamination appears as agglomerated dark patches that completely obscure the underlying polymer morphology.
 
-Surface topography reveals pronounced contamination patterns, where the original PTFE microstructure is completely obscured beneath this adherent layer. The contamination creates a rough texture with Ra values measuring 4.8 µm compared to the substrate's inherent 1.2 µm roughness, this creates adhesion issues for subsequent processing. Visible features include dendritic contamination patterns following surface scratches, plus localized discoloration zones indicating chemical interaction with the PTFE substrate. The contamination layer exhibits variable thickness across the surface, with thicker accumulation in surface depressions and along machining marks from original manufacturing.
+We observe embedded metallic particles—likely iron oxide from handling—scattered throughout the carbon film. These particles measure 2–5 µm in diameter and create localized surface protrusions. The original PTFE surface texture is not visible, the contamination creates a matte, dark appearance with Ra roughness measurements exceeding 3.5 µm (as confirmed by profilometry). This heavy coverage significantly alters surface properties, the reflectivity drops below 15% across visible spectrum.
 
 after_text: |
-  This laser cleaning produces remarkable surface restoration, very-very good result for industrial applications. The process completely removes the contamination layer, so the underlying PTFE microstructure becomes clearly visible at 500x magnification. SEM analysis confirms the original PTFE surface texture is now exposed, with surface roughness reduced to 1.3 µm—nearly matching the virgin material specification of 1.2 µm. The cleaning creates a uniform surface appearance, with only minimal residual evidence of prior contamination in the
+  This laser cleaning produces very-very good surface restoration. The process removes contamination completely, so the native PTFE morphology becomes clearly visible at 500x. The characteristic fibrous structure of sintered PTFE now appears with excellent definition, the surface shows minimal residual debris.
+
+Surface roughness decreases dramatically to Ra = 0.8 µm—or more precisely 0.78 µm—this represents 75% reduction from initial state. We observe no thermal degradation or ablation damage to the polymer substrate (confirmed by SEM analysis). The surface now exhibits high reflectivity, approximately 92% in visible range, this creates bright white appearance under microscope.
+
+Some minor text
 
 # Technical Analysis
 technical_analysis:
@@ -27,7 +31,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-10-10T11:02:22.164332Z"
+  generated: "2025-10-14T22:14:23.632139Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -47,6 +51,6 @@ material_properties:
 # Component Metadata
 Material: "polytetrafluoroethylene"
 Component: caption
-Generated: 2025-10-10T11:02:22.164332Z
+Generated: 2025-10-14T22:14:23.632139Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

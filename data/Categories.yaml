@@ -33,24 +33,24 @@ universal_regulatory_standards:
 - IEC 60825 - Safety of Laser Products
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
 
-# Property Categories Taxonomy - Physics-based organization for laser cleaning
+# Property Categories Taxonomy - Process-driven organization for laser cleaning
 propertyCategories:
   metadata:
-    version: "3.0.0"
-    total_categories: 4
+    version: "4.0.0"
+    total_categories: 3
     total_properties: 55
     last_updated: "2025-10-14"
-    description: "Physics-based taxonomy organized by laser cleaning process stages"
-    reorganization_note: "Categories follow laser cleaning physics: photon coupling → thermal propagation → mechanical response → material characteristics"
+    description: "Process-driven 3-category taxonomy for laser cleaning operations"
+    reorganization_note: "Categories follow laser cleaning process: energy coupling → structural response → material properties"
     
   categories:
-    laser_interaction:
-      id: "laser_interaction"
-      label: "Laser Interaction Properties"
-      description: "First-order photon coupling: how laser energy enters the material vs. reflects away"
-      physics_stage: "Energy Absorption"
-      percentage: 16.4
-      property_count: 9
+    energy_coupling:
+      id: "energy_coupling"
+      label: "Energy Coupling Properties"
+      description: "How laser energy enters material and propagates as heat: absorption, reflection, and thermal dissipation"
+      process_stage: "Energy Input & Propagation"
+      percentage: 47.3
+      property_count: 26
       properties:
         - laserAbsorption
         - laserReflectivity
@@ -61,15 +61,6 @@ propertyCategories:
         - refractiveIndex
         - laserDamageThreshold
         - opticalTransmittance
-      
-    thermal_response:
-      id: "thermal_response"
-      label: "Thermal Response Properties"
-      description: "Heat propagation and dissipation: how absorbed energy distributes and when phase transitions occur"
-      physics_stage: "Energy Dissipation"
-      percentage: 25.5
-      property_count: 14
-      properties:
         - thermalConductivity
         - specificHeat
         - thermalDiffusivity
@@ -84,12 +75,15 @@ propertyCategories:
         - decompositionTemperature
         - sublimationPoint
         - thermalStability
+        - absorptionCoefficient
+        - thermalDegradationPoint
+        - photonPenetrationDepth
       
-    mechanical_response:
-      id: "mechanical_response"
-      label: "Mechanical Response Properties"
-      description: "Physical reaction to thermal stress: how material responds structurally to rapid heating"
-      physics_stage: "Material Response"
+    structural_response:
+      id: "structural_response"
+      label: "Structural Response Properties"
+      description: "How material responds physically to thermal stress: strength, elasticity, and deformation characteristics"
+      process_stage: "Material Response"
       percentage: 18.2
       property_count: 10
       properties:
@@ -104,13 +98,13 @@ propertyCategories:
         - flexuralStrength
         - fractureResistance
       
-    material_characteristics:
-      id: "material_characteristics"
-      label: "Material Characteristics"
-      description: "Intrinsic properties affecting secondary cleaning outcomes: surface finish, contaminant adhesion, and process efficiency"
-      physics_stage: "Supporting Properties"
-      percentage: 40.0
-      property_count: 22
+    material_properties:
+      id: "material_properties"
+      label: "Material Properties"
+      description: "Intrinsic material characteristics affecting process efficiency and cleaning outcomes"
+      process_stage: "Supporting Characteristics"
+      percentage: 34.5
+      property_count: 19
       properties:
         - density
         - viscosity
@@ -133,7 +127,10 @@ propertyCategories:
         - celluloseContent
         - grainSize
         - magneticPermeability
-        - photonPenetrationDepth
+        - ligninContent
+        - degradationPoint
+        - softeningPoint
+        - surfaceTension
 
   # Usage tier classification based on frequency across 122 materials
   usage_tiers:

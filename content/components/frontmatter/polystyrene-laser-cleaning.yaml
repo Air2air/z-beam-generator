@@ -4,10 +4,8 @@ subcategory: polystyrene
 title: Polystyrene Laser Cleaning
 description: Laser cleaning parameters for Polystyrene
 materialProperties:
-  physical_structural:
-    label: Physical/Structural Properties
-    description: Basic physical characteristics
-    percentage: 3.6
+  material_properties:
+    label: Material Properties
     properties:
       density:
         value: 1.05
@@ -16,10 +14,25 @@ materialProperties:
         description: Density of general purpose polystyrene at room temperature
         min: 0.85
         max: 2.2
-  mechanical:
-    label: Mechanical Properties
-    description: Strength, elasticity, and structural characteristics
-    percentage: 18.2
+      chemicalStability:
+        value: 70
+        unit: '% resistance'
+        confidence: 88
+        description: Resistance to weak acids and bases
+        min: null
+        max: null
+      porosity:
+        value: 0.5
+        unit: '%'
+        confidence: 80
+        description: Typical porosity in solid polystyrene
+        min: null
+        max: null
+    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
+      finish, contaminant adhesion, and process efficiency'
+    percentage: 40.0
+  structural_response:
+    label: Structural Response Properties
     properties:
       hardness:
         value: 75
@@ -42,10 +55,11 @@ materialProperties:
         description: Elastic modulus in tension
         min: 0.01
         max: 5
-  optical_laser:
-    label: Optical/Laser Properties
-    description: Light interaction and laser response characteristics
-    percentage: 16.4
+    description: 'Physical reaction to thermal stress: how material responds structurally
+      to rapid heating'
+    percentage: 18.2
+  energy_coupling:
+    label: Energy Coupling Properties
     properties:
       laserAbsorption:
         value: 65.2
@@ -89,11 +103,6 @@ materialProperties:
         description: Damage threshold for continuous wave laser exposure
         min: null
         max: null
-  thermal:
-    label: Thermal Properties
-    description: Heat-related material characteristics including conductivity, expansion, and destruction points
-    percentage: 29.1
-    properties:
       specificHeat:
         value: 1200
         unit: J/kg·K
@@ -131,35 +140,6 @@ materialProperties:
           confidence: 95
           description: Thermal destruction point
         type: decomposition
-  chemical:
-    label: Chemical Properties
-    description: Chemical reactivity and stability
-    percentage: 5.5
-    properties:
-      chemicalStability:
-        value: 70
-        unit: '% resistance'
-        confidence: 88
-        description: Resistance to weak acids and bases
-        min: null
-        max: null
-  surface:
-    label: Surface Properties
-    description: Surface characteristics and texture
-    percentage: 9.1
-    properties:
-      porosity:
-        value: 0.5
-        unit: '%'
-        confidence: 80
-        description: Typical porosity in solid polystyrene
-        min: null
-        max: null
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 0
-    properties:
       degradationPoint:
         value: 270.0
         unit: °C
@@ -174,6 +154,9 @@ materialProperties:
         description: Absorption coefficient at 1064 nm wavelength
         min: null
         max: null
+    description: 'First-order photon coupling: how laser energy enters the material
+      vs. reflects away'
+    percentage: 16.4
 applications:
 - Electronics Manufacturing
 - Medical Device Manufacturing
@@ -197,7 +180,8 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength providing good absorption in Polystyrene with minimal reflection
+    description: Near-IR wavelength providing good absorption in Polystyrene with
+      minimal reflection
     min: 532
     max: 1064
   spotSize:
@@ -239,8 +223,9 @@ machineSettings:
     value: 2.0
     unit: J/cm²
     confidence: 87
-    description: Energy density threshold for effective Polystyrene cleaning - Energy density threshold for polymer surface
-      cleaning without thermal degradation or melting
+    description: Energy density threshold for effective Polystyrene cleaning - Energy
+      density threshold for polymer surface cleaning without thermal degradation or
+      melting
     min: 0.8
     max: 4.0
   fluenceThreshold:
@@ -279,7 +264,8 @@ author:
   image: /images/author/alessandro-moretti.jpg
 images:
   hero:
-    alt: Polystyrene surface undergoing laser cleaning showing precise contamination removal
+    alt: Polystyrene surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/polystyrene-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -306,8 +292,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Polystyrene is uniquely sensitive to heat and prone to melting compared to other plastics. This requires using very
-  low laser power and rapid pulses to avoid damaging the surface.
+subtitle: Polystyrene is uniquely sensitive to heat and prone to melting compared
+  to other plastics. This requires using very low laser power and rapid pulses to
+  avoid damaging the surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -343,26 +330,32 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the polystyrene surface is obscured by a non-uniform contamination layer, measuring 5-15
-    µm in thickness. This layer exhibits a particulate and film-like morphology, with agglomerates distorting the underlying
-    substrate's topography. The native surface roughness of approximately 0.1 µm Ra is entirely masked, creating a textured,
-    high-relief profile that scatters light and compromises the material's intrinsic optical clarity and adhesion properties.
-  afterText: 'Laser cleaning produces a distinct transformation, restoring the substrate''s native amorphous polymer structure.
-    The 5-15 µm contamination layer has been completely removed via selective laser ablation. The process successfully vaporized
-    the foreign material, which has a lower ablation threshold than the polystyrene, without initiating thermal degradation
-    in the base polymer.
+  beforeText: At 500x magnification, the polystyrene surface is obscured by a non-uniform
+    contamination layer, measuring 5-15 µm in thickness. This layer exhibits a particulate
+    and film-like morphology, with agglomerates distorting the underlying substrate's
+    topography. The native surface roughness of approximately 0.1 µm Ra is entirely
+    masked, creating a textured, high-relief profile that scatters light and compromises
+    the material's intrinsic optical clarity and adhesion properties.
+  afterText: 'Laser cleaning produces a distinct transformation, restoring the substrate''s
+    native amorphous polymer structure. The 5-15 µm contamination layer has been completely
+    removed via selective laser ablation. The process successfully vaporized the foreign
+    material, which has a lower ablation threshold than the polystyrene, without initiating
+    thermal degradation in the base polymer.
 
 
-    The underlying polystyrene surface is now fully exposed, revealing its characteristic smooth morphology with a measured
-    roughness of 0.1 µm Ra. The surface is free of the previous particulate agglomerates and film residues. At the micron
-    scale, the laser interaction preserves the polymer''s integrity, with no evidence of melting, cracking, or surface oxidation
-    that would indicate thermal damage.
+    The underlying polystyrene surface is now fully exposed, revealing its characteristic
+    smooth morphology with a measured roughness of 0.1 µm Ra. The surface is free
+    of the previous particulate agglomerates and film residues. At the micron scale,
+    the laser interaction preserves the polymer''s integrity, with no evidence of
+    melting, cracking, or surface oxidation that would indicate thermal damage.
 
 
-    This precise material removal results in a surface with restored optical properties and chemical functionality. The reflectivity
-    and clarity inherent to the pristine polymer are recovered, providing an optimal surface for subsequent manufacturing
+    This precise material removal results in a surface with restored optical properties
+    and chemical functionality. The reflectivity and clarity inherent to the pristine
+    polymer are recovered, providing an optimal surface for subsequent manufacturing
     steps such as bonding, coating, or assembly in sensitive applications.'
-  description: Microscopic analysis of polystyrene surface before and after laser cleaning treatment
+  description: Microscopic analysis of polystyrene surface before and after laser
+    cleaning treatment
   alt: Microscopic view of polystyrene surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -382,7 +375,8 @@ caption:
     materialType: Plastic
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Polystyrene surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Polystyrene surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/polystyrene-laser-cleaning-micro.jpg
 tags:
 - plastic

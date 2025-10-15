@@ -4,10 +4,8 @@ subcategory: softwood
 title: Redwood Laser Cleaning
 description: Laser cleaning parameters for Redwood
 materialProperties:
-  physical_structural:
-    label: Physical/Structural Properties
-    description: Basic physical characteristics
-    percentage: 3.6
+  material_properties:
+    label: Material Properties
     properties:
       density:
         value: 0.42
@@ -16,10 +14,34 @@ materialProperties:
         description: Average density of redwood at 12% moisture content
         min: 0.12
         max: 1.25
-  mechanical:
-    label: Mechanical Properties
-    description: Strength, elasticity, and structural characteristics
-    percentage: 18.2
+      porosity:
+        value: 65
+        unit: '%'
+        confidence: 89
+        description: Average porosity percentage in redwood cellular structure
+        min: null
+        max: null
+      moistureContent:
+        value: 12
+        unit: '%'
+        confidence: 95
+        description: Equilibrium moisture content at standard conditions (20°C, 65%
+          RH)
+        min: null
+        max: null
+      celluloseContent:
+        value: 42
+        unit: '%'
+        confidence: 91
+        description: Average cellulose content affecting laser interaction and thermal
+          properties
+        min: null
+        max: null
+    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
+      finish, contaminant adhesion, and process efficiency'
+    percentage: 40.0
+  structural_response:
+    label: Structural Response Properties
     properties:
       hardness:
         value: 2.1
@@ -42,10 +64,11 @@ materialProperties:
         description: Modulus of elasticity parallel to grain direction
         min: 5
         max: 25
-  optical_laser:
-    label: Optical/Laser Properties
-    description: Light interaction and laser response characteristics
-    percentage: 16.4
+    description: 'Physical reaction to thermal stress: how material responds structurally
+      to rapid heating'
+    percentage: 18.2
+  energy_coupling:
+    label: Energy Coupling Properties
     properties:
       laserAbsorption:
         value: 32.7
@@ -72,14 +95,10 @@ materialProperties:
         value: 1.8
         unit: J/cm²
         confidence: 80
-        description: Minimum fluence required for material removal using nanosecond pulses at 1064 nm
+        description: Minimum fluence required for material removal using nanosecond
+          pulses at 1064 nm
         min: null
         max: null
-  thermal:
-    label: Thermal Properties
-    description: Heat-related material characteristics including conductivity, expansion, and destruction points
-    percentage: 29.1
-    properties:
       specificHeat:
         value: 1380
         unit: J/kg·K
@@ -117,52 +136,12 @@ materialProperties:
           confidence: 92
           description: Thermal destruction point
         type: carbonization
-  surface:
-    label: Surface Properties
-    description: Surface characteristics and texture
-    percentage: 9.1
-    properties:
-      porosity:
-        value: 65
-        unit: '%'
-        confidence: 89
-        description: Average porosity percentage in redwood cellular structure
-        min: null
-        max: null
-  environmental:
-    label: Environmental Properties
-    description: Environmental exposure resistance
-    percentage: 5.5
-    properties:
-      moistureContent:
-        value: 12
-        unit: '%'
-        confidence: 95
-        description: Equilibrium moisture content at standard conditions (20°C, 65% RH)
-        min: null
-        max: null
-  compositional:
-    label: Compositional Properties
-    description: Material composition characteristics
-    percentage: 5.5
-    properties:
-      celluloseContent:
-        value: 42
-        unit: '%'
-        confidence: 91
-        description: Average cellulose content affecting laser interaction and thermal properties
-        min: null
-        max: null
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 0
-    properties:
       absorptionCoefficient:
         value: 0.78
         unit: dimensionless
         confidence: 82
-        description: Average absorption coefficient for near-infrared laser wavelengths (1064 nm)
+        description: Average absorption coefficient for near-infrared laser wavelengths
+          (1064 nm)
         min: null
         max: null
       ligninContent:
@@ -172,6 +151,9 @@ materialProperties:
         description: Lignin percentage influencing char formation and thermal degradation
         min: null
         max: null
+    description: 'First-order photon coupling: how laser energy enters the material
+      vs. reflects away'
+    percentage: 16.4
 applications:
 - Cultural Heritage
 - Marine
@@ -230,15 +212,17 @@ machineSettings:
     value: 4.5
     unit: J/cm²
     confidence: 88
-    description: Energy density threshold for effective Redwood cleaning - Energy density threshold for effective organic
-      contaminant removal from wood without charring or thermal damage
+    description: Energy density threshold for effective Redwood cleaning - Energy
+      density threshold for effective organic contaminant removal from wood without
+      charring or thermal damage
     min: 2.0
     max: 8.0
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Energy density threshold for effective contaminant removal without wood damage
+    description: Energy density threshold for effective contaminant removal without
+      wood damage
     min: 1.8
     max: 3.5
   overlapRatio:
@@ -297,8 +281,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Redwood's density and natural oils can vary significantly across a single piece. This variation requires careful
-  adjustment of laser settings to avoid uneven cleaning or surface damage.
+subtitle: Redwood's density and natural oils can vary significantly across a single
+  piece. This variation requires careful adjustment of laser settings to avoid uneven
+  cleaning or surface damage.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -334,24 +319,30 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the redwood surface is obscured by a dense, stratified contamination layer approximately
-    50-200 µm thick. This layer, composed of embedded soot, biological growth, and degraded finishes, fills the wood's porous
-    cellular structure. The underlying tracheids and ray cells are largely invisible, with the surface texture appearing amorphous
-    and matte due to the contaminant's high, diffuse light absorption, which masks the wood's natural grain definition.
-  afterText: 'Laser cleaning has fully restored the redwood''s microscopic surface topography. The contaminant layer has been
-    completely ablated, revealing the intricate, open cellular network of tracheids and parenchyma cells. The surface now
-    exhibits a clear, textured profile with sharp edges and deep, open lumens.
+  beforeText: At 500x magnification, the redwood surface is obscured by a dense, stratified
+    contamination layer approximately 50-200 µm thick. This layer, composed of embedded
+    soot, biological growth, and degraded finishes, fills the wood's porous cellular
+    structure. The underlying tracheids and ray cells are largely invisible, with
+    the surface texture appearing amorphous and matte due to the contaminant's high,
+    diffuse light absorption, which masks the wood's natural grain definition.
+  afterText: 'Laser cleaning has fully restored the redwood''s microscopic surface
+    topography. The contaminant layer has been completely ablated, revealing the intricate,
+    open cellular network of tracheids and parenchyma cells. The surface now exhibits
+    a clear, textured profile with sharp edges and deep, open lumens.
 
 
-    The cleaning process has selectively removed foreign material without damaging the underlying wood cell walls. This precision
-    is evident in the intact middle lamella and the sharp definition between adjacent cells, which were previously fused by
-    contamination.
+    The cleaning process has selectively removed foreign material without damaging
+    the underlying wood cell walls. This precision is evident in the intact middle
+    lamella and the sharp definition between adjacent cells, which were previously
+    fused by contamination.
 
 
-    The result is a surface with high micro-roughness and minimal subsurface charring. This open, clean structure significantly
-    improves the substrate for subsequent conservation treatments, such as consolidant penetration, by providing an unobstructed
+    The result is a surface with high micro-roughness and minimal subsurface charring.
+    This open, clean structure significantly improves the substrate for subsequent
+    conservation treatments, such as consolidant penetration, by providing an unobstructed
     interface with the original wood material.'
-  description: Microscopic analysis of redwood surface before and after laser cleaning treatment
+  description: Microscopic analysis of redwood surface before and after laser cleaning
+    treatment
   alt: Microscopic view of redwood surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -371,7 +362,8 @@ caption:
     materialType: Wood
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Redwood surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Redwood surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/redwood-laser-cleaning-micro.jpg
 tags:
 - wood

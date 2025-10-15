@@ -4,10 +4,8 @@ subcategory: mineral
 title: Alabaster Laser Cleaning
 description: Laser cleaning parameters for Alabaster
 materialProperties:
-  physical_structural:
-    label: Physical/Structural Properties
-    description: Basic physical characteristics
-    percentage: 3.6
+  material_properties:
+    label: Material Properties
     properties:
       density:
         value: 2.32
@@ -16,10 +14,25 @@ materialProperties:
         description: Average density of alabaster (gypsum variety)
         min: 1.5
         max: 3.4
-  mechanical:
-    label: Mechanical Properties
-    description: Strength, elasticity, and structural characteristics
-    percentage: 18.2
+      porosity:
+        value: 8.5
+        unit: '%'
+        confidence: 90
+        description: Average porosity of natural alabaster
+        min: null
+        max: null
+      waterSolubility:
+        value: 2.41
+        unit: g/L
+        confidence: 95
+        description: Solubility in water at 20°C
+        min: null
+        max: null
+    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
+      finish, contaminant adhesion, and process efficiency'
+    percentage: 40.0
+  structural_response:
+    label: Structural Response Properties
     properties:
       hardness:
         value: 2.0
@@ -49,10 +62,11 @@ materialProperties:
         description: Uniaxial compressive strength
         min: null
         max: null
-  optical_laser:
-    label: Optical/Laser Properties
-    description: Light interaction and laser response characteristics
-    percentage: 16.4
+    description: 'Physical reaction to thermal stress: how material responds structurally
+      to rapid heating'
+    percentage: 18.2
+  energy_coupling:
+    label: Energy Coupling Properties
     properties:
       laserAbsorption:
         value: 85.0
@@ -82,11 +96,6 @@ materialProperties:
         description: Laser ablation threshold for Nd:YAG lasers
         min: null
         max: null
-  thermal:
-    label: Thermal Properties
-    description: Heat-related material characteristics including conductivity, expansion, and destruction points
-    percentage: 29.1
-    properties:
       specificHeat:
         value: 1085
         unit: J/kg·K
@@ -124,35 +133,6 @@ materialProperties:
           confidence: 92
           description: Thermal destruction point
         type: thermal_shock
-  surface:
-    label: Surface Properties
-    description: Surface characteristics and texture
-    percentage: 9.1
-    properties:
-      porosity:
-        value: 8.5
-        unit: '%'
-        confidence: 90
-        description: Average porosity of natural alabaster
-        min: null
-        max: null
-  environmental:
-    label: Environmental Properties
-    description: Environmental exposure resistance
-    percentage: 5.5
-    properties:
-      waterSolubility:
-        value: 2.41
-        unit: g/L
-        confidence: 95
-        description: Solubility in water at 20°C
-        min: null
-        max: null
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 0
-    properties:
       thermalDegradationPoint:
         value: 1073.15
         unit: K
@@ -167,6 +147,9 @@ materialProperties:
         description: Optical absorption coefficient for visible wavelengths
         min: null
         max: null
+    description: 'First-order photon coupling: how laser energy enters the material
+      vs. reflects away'
+    percentage: 16.4
 applications:
 - Cultural Heritage
 - Museum Conservation
@@ -183,14 +166,16 @@ machineSettings:
     value: 90
     unit: W
     confidence: 92
-    description: Optimal average power for Alabaster surface cleaning without thermal damage
+    description: Optimal average power for Alabaster surface cleaning without thermal
+      damage
     min: 70
     max: 110
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength providing good absorption in surface contaminants while minimizing substrate damage
+    description: Near-IR wavelength providing good absorption in surface contaminants
+      while minimizing substrate damage
     min: 532
     max: 1064
   spotSize:
@@ -204,14 +189,16 @@ machineSettings:
     value: 50
     unit: kHz
     confidence: 87
-    description: High repetition rate for uniform cleaning coverage while maintaining thermal control
+    description: High repetition rate for uniform cleaning coverage while maintaining
+      thermal control
     min: 30
     max: 100
   pulseWidth:
     value: 12
     unit: ns
     confidence: 85
-    description: Short pulse duration for efficient contaminant removal with minimal heat transfer to substrate
+    description: Short pulse duration for efficient contaminant removal with minimal
+      heat transfer to substrate
     min: 8
     max: 20
   scanSpeed:
@@ -225,22 +212,25 @@ machineSettings:
     value: 3.5
     unit: J/cm²
     confidence: 86
-    description: Energy density threshold for effective Alabaster cleaning - Energy density threshold for effective contaminant
-      removal from stone surfaces without substrate damage
+    description: Energy density threshold for effective Alabaster cleaning - Energy
+      density threshold for effective contaminant removal from stone surfaces without
+      substrate damage
     min: 1.5
     max: 7.0
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Energy density threshold for effective contaminant removal without damaging Alabaster substrate
+    description: Energy density threshold for effective contaminant removal without
+      damaging Alabaster substrate
     min: 1.8
     max: 3.5
   overlapRatio:
     value: 40
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning coverage without excessive energy deposition
+    description: Optimal beam overlap for uniform cleaning coverage without excessive
+      energy deposition
     min: 30
     max: 60
   passCount:
@@ -265,7 +255,8 @@ author:
   image: /images/author/alessandro-moretti.jpg
 images:
   hero:
-    alt: Alabaster surface undergoing laser cleaning showing precise contamination removal
+    alt: Alabaster surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/alabaster-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -292,8 +283,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Alabaster is a softer, more porous stone that is sensitive to heat and prone to staining. This requires careful
-  laser parameter selection to prevent surface damage or discoloration during cleaning.
+subtitle: Alabaster is a softer, more porous stone that is sensitive to heat and prone
+  to staining. This requires careful laser parameter selection to prevent surface
+  damage or discoloration during cleaning.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -329,19 +321,26 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the alabaster surface is obscured by a stratified contamination layer, typically 50-200
-    µm thick. This layer consists of particulate matter (e.g., soot, dust) embedded within a matrix of sulfation crusts and
-    organic deposits. The underlying stone's micro-crystalline structure is masked, and the surface texture appears irregular
-    and occluded. The contaminants exhibit patchy, non-uniform adhesion, creating a discontinuous film that alters the stone's
-    intrinsic reflectivity and obscures its fine grain.
-  afterText: Following laser cleaning, the 500x magnification reveals a significant restoration of the original alabaster
-    substrate. The superficial contamination layer has been entirely removed, exposing the intact, micro-crystalline gypsum
-    structure. The surface now displays a uniform, finely pitted texture consistent with the stone's natural 8.5% porosity,
-    free from embedded particulates. The laser process has effectively eliminated the sulfation crusts without inducing micro-fractures
-    or thermal alteration, preserving the delicate crystalline boundaries. This results in a surface with restored optical
-    properties, where the inherent translucency and reflectivity of the alabaster are fully recovered. The cleaning has achieved
-    a precise, substrate-selective ablation, halting precisely at the ablation threshold of the contaminants.
-  description: Microscopic analysis of alabaster surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the alabaster surface is obscured by a stratified
+    contamination layer, typically 50-200 µm thick. This layer consists of particulate
+    matter (e.g., soot, dust) embedded within a matrix of sulfation crusts and organic
+    deposits. The underlying stone's micro-crystalline structure is masked, and the
+    surface texture appears irregular and occluded. The contaminants exhibit patchy,
+    non-uniform adhesion, creating a discontinuous film that alters the stone's intrinsic
+    reflectivity and obscures its fine grain.
+  afterText: Following laser cleaning, the 500x magnification reveals a significant
+    restoration of the original alabaster substrate. The superficial contamination
+    layer has been entirely removed, exposing the intact, micro-crystalline gypsum
+    structure. The surface now displays a uniform, finely pitted texture consistent
+    with the stone's natural 8.5% porosity, free from embedded particulates. The laser
+    process has effectively eliminated the sulfation crusts without inducing micro-fractures
+    or thermal alteration, preserving the delicate crystalline boundaries. This results
+    in a surface with restored optical properties, where the inherent translucency
+    and reflectivity of the alabaster are fully recovered. The cleaning has achieved
+    a precise, substrate-selective ablation, halting precisely at the ablation threshold
+    of the contaminants.
+  description: Microscopic analysis of alabaster surface before and after laser cleaning
+    treatment
   alt: Microscopic view of alabaster surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -361,7 +360,8 @@ caption:
     materialType: Stone
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Alabaster surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Alabaster surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/alabaster-laser-cleaning-micro.jpg
 tags:
 - stone

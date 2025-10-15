@@ -4,10 +4,8 @@ subcategory: mineral
 title: Soapstone Laser Cleaning
 description: Laser cleaning parameters for Soapstone
 materialProperties:
-  physical_structural:
-    label: Physical/Structural Properties
-    description: Basic physical characteristics
-    percentage: 3.6
+  material_properties:
+    label: Material Properties
     properties:
       density:
         value: 2.75
@@ -16,10 +14,25 @@ materialProperties:
         description: Average density of soapstone due to talc content
         min: 1.5
         max: 3.4
-  mechanical:
-    label: Mechanical Properties
-    description: Strength, elasticity, and structural characteristics
-    percentage: 18.2
+      porosity:
+        value: 1.2
+        unit: '%'
+        confidence: 90
+        description: Low porosity typical of high-quality soapstone
+        min: null
+        max: null
+      chemicalStability:
+        value: 8.5
+        unit: pH range
+        confidence: 92
+        description: Resistance range from acidic to basic conditions (2-10.5 pH)
+        min: null
+        max: null
+    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
+      finish, contaminant adhesion, and process efficiency'
+    percentage: 40.0
+  structural_response:
+    label: Structural Response Properties
     properties:
       hardness:
         value: 1.0
@@ -42,10 +55,11 @@ materialProperties:
         description: Elastic modulus showing relatively low stiffness
         min: 10
         max: 100
-  optical_laser:
-    label: Optical/Laser Properties
-    description: Light interaction and laser response characteristics
-    percentage: 16.4
+    description: 'Physical reaction to thermal stress: how material responds structurally
+      to rapid heating'
+    percentage: 18.2
+  energy_coupling:
+    label: Energy Coupling Properties
     properties:
       laserAbsorption:
         value: 8.7
@@ -72,14 +86,10 @@ materialProperties:
         value: 2.8
         unit: J/cm²
         confidence: 80
-        description: Minimum fluence required for material removal with nanosecond pulses
+        description: Minimum fluence required for material removal with nanosecond
+          pulses
         min: null
         max: null
-  thermal:
-    label: Thermal Properties
-    description: Heat-related material characteristics including conductivity, expansion, and destruction points
-    percentage: 29.1
-    properties:
       specificHeat:
         value: 980
         unit: J/kg·K
@@ -117,35 +127,6 @@ materialProperties:
           confidence: 92
           description: Thermal destruction point
         type: thermal_shock
-  surface:
-    label: Surface Properties
-    description: Surface characteristics and texture
-    percentage: 9.1
-    properties:
-      porosity:
-        value: 1.2
-        unit: '%'
-        confidence: 90
-        description: Low porosity typical of high-quality soapstone
-        min: null
-        max: null
-  chemical:
-    label: Chemical Properties
-    description: Chemical reactivity and stability
-    percentage: 5.5
-    properties:
-      chemicalStability:
-        value: 8.5
-        unit: pH range
-        confidence: 92
-        description: Resistance range from acidic to basic conditions (2-10.5 pH)
-        min: null
-        max: null
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 0
-    properties:
       thermalDegradationPoint:
         value: 1200.0
         unit: °C
@@ -157,9 +138,13 @@ materialProperties:
         value: 0.65
         unit: dimensionless
         confidence: 82
-        description: Optical absorption coefficient for typical laser wavelengths (1064 nm)
+        description: Optical absorption coefficient for typical laser wavelengths
+          (1064 nm)
         min: null
         max: null
+    description: 'First-order photon coupling: how laser energy enters the material
+      vs. reflects away'
+    percentage: 16.4
 applications:
 - Cultural Heritage
 - Aerospace
@@ -218,8 +203,9 @@ machineSettings:
     value: 3.5
     unit: J/cm²
     confidence: 86
-    description: Energy density threshold for effective Soapstone cleaning - Energy density threshold for effective contaminant
-      removal from stone surfaces without substrate damage
+    description: Energy density threshold for effective Soapstone cleaning - Energy
+      density threshold for effective contaminant removal from stone surfaces without
+      substrate damage
     min: 1.5
     max: 7.0
   energyDensity:
@@ -258,7 +244,8 @@ author:
   image: /images/author/ikmanda-roswati.jpg
 images:
   hero:
-    alt: Soapstone surface undergoing laser cleaning showing precise contamination removal
+    alt: Soapstone surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/soapstone-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -285,8 +272,8 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Soapstone is uniquely soft and non-porous, unlike harder stones like granite. Its softness requires lower laser
-  power to prevent etching the surface during cleaning.
+subtitle: Soapstone is uniquely soft and non-porous, unlike harder stones like granite.
+  Its softness requires lower laser power to prevent etching the surface during cleaning.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -322,27 +309,35 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: 'At 500x magnification, the soapstone surface is obscured by a complex contamination layer averaging 15-25 µm
-    in thickness. This layer consists of particulate matter (primarily carbonaceous soot and silica dust) embedded within
-    a matrix of aged organic binders, such as oxidized oils or resins. The contaminants have infiltrated the stone''s micro-porosity,
-    creating a discontinuous, crust-like morphology that masks the underlying mineralogical texture.
+  beforeText: 'At 500x magnification, the soapstone surface is obscured by a complex
+    contamination layer averaging 15-25 µm in thickness. This layer consists of particulate
+    matter (primarily carbonaceous soot and silica dust) embedded within a matrix
+    of aged organic binders, such as oxidized oils or resins. The contaminants have
+    infiltrated the stone''s micro-porosity, creating a discontinuous, crust-like
+    morphology that masks the underlying mineralogical texture.
 
 
-    The surface exhibits a high degree of topographical variation, with contamination accumulating preferentially in micro-fissures
-    and along the boundaries of talc crystals. This results in a darkened, mottled appearance at the microscopic level. The
-    fragile, low-density contamination crust exhibits poor adhesion to the soft soapstone substrate, creating a risk of material
-    loss that includes both the contaminant and friable stone particles during mechanical intervention.'
-  afterText: 'Laser cleaning has effectively removed the contamination crust, revealing the intact, primary surface of the
-    soapstone. At 500x magnification, the homogeneous texture of the interlocking talc crystals is now fully visible, displaying
-    a characteristic platy morphology and a consistent, light-gray hue. The micro-topography is clean and well-defined, with
-    no evidence of residual carbonaceous or particulate matter.
+    The surface exhibits a high degree of topographical variation, with contamination
+    accumulating preferentially in micro-fissures and along the boundaries of talc
+    crystals. This results in a darkened, mottled appearance at the microscopic level.
+    The fragile, low-density contamination crust exhibits poor adhesion to the soft
+    soapstone substrate, creating a risk of material loss that includes both the contaminant
+    and friable stone particles during mechanical intervention.'
+  afterText: 'Laser cleaning has effectively removed the contamination crust, revealing
+    the intact, primary surface of the soapstone. At 500x magnification, the homogeneous
+    texture of the interlocking talc crystals is now fully visible, displaying a characteristic
+    platy morphology and a consistent, light-gray hue. The micro-topography is clean
+    and well-defined, with no evidence of residual carbonaceous or particulate matter.
 
 
-    The process has successfully preserved the stone''s inherent micro-porosity and delicate crystal structure. A direct comparison
-    with the pre-cleaned state shows the elimination of the 15-25 µm contamination layer and the restoration of the original
-    surface geometry. The laser parameters were calibrated to remain well below the stone''s 2.8 J/cm² ablation threshold,
-    ensuring selective contaminant removal without thermal alteration or mechanical damage to the soft substrate.'
-  description: Microscopic analysis of soapstone surface before and after laser cleaning treatment
+    The process has successfully preserved the stone''s inherent micro-porosity and
+    delicate crystal structure. A direct comparison with the pre-cleaned state shows
+    the elimination of the 15-25 µm contamination layer and the restoration of the
+    original surface geometry. The laser parameters were calibrated to remain well
+    below the stone''s 2.8 J/cm² ablation threshold, ensuring selective contaminant
+    removal without thermal alteration or mechanical damage to the soft substrate.'
+  description: Microscopic analysis of soapstone surface before and after laser cleaning
+    treatment
   alt: Microscopic view of soapstone surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -362,7 +357,8 @@ caption:
     materialType: Stone
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Soapstone surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Soapstone surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/soapstone-laser-cleaning-micro.jpg
 tags:
 - stone

@@ -4,10 +4,8 @@ subcategory: hardwood
 title: Hickory Laser Cleaning
 description: Laser cleaning parameters for Hickory
 materialProperties:
-  physical_structural:
-    label: Physical/Structural Properties
-    description: Basic physical characteristics
-    percentage: 3.6
+  material_properties:
+    label: Material Properties
     properties:
       density:
         value: 0.82
@@ -16,10 +14,25 @@ materialProperties:
         description: Average density of hickory wood at 12% moisture content
         min: 0.12
         max: 1.25
-  mechanical:
-    label: Mechanical Properties
-    description: Strength, elasticity, and structural characteristics
-    percentage: 18.2
+      porosity:
+        value: 55
+        unit: '%'
+        confidence: 88
+        description: Average porosity of hickory wood structure
+        min: null
+        max: null
+      moistureContent:
+        value: 12
+        unit: '%'
+        confidence: 95
+        description: Equilibrium moisture content at standard conditions
+        min: null
+        max: null
+    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
+      finish, contaminant adhesion, and process efficiency'
+    percentage: 40.0
+  structural_response:
+    label: Structural Response Properties
     properties:
       hardness:
         value: 7.2
@@ -42,10 +55,11 @@ materialProperties:
         description: Modulus of elasticity parallel to grain
         min: 5
         max: 25
-  optical_laser:
-    label: Optical/Laser Properties
-    description: Light interaction and laser response characteristics
-    percentage: 16.4
+    description: 'Physical reaction to thermal stress: how material responds structurally
+      to rapid heating'
+    percentage: 18.2
+  energy_coupling:
+    label: Energy Coupling Properties
     properties:
       laserAbsorption:
         value: 32.7
@@ -75,11 +89,6 @@ materialProperties:
         description: Minimum fluence required for material removal at 1064 nm
         min: null
         max: null
-  thermal:
-    label: Thermal Properties
-    description: Heat-related material characteristics including conductivity, expansion, and destruction points
-    percentage: 29.1
-    properties:
       specificHeat:
         value: 1.38
         unit: kJ/kg·K
@@ -117,42 +126,17 @@ materialProperties:
           confidence: 92
           description: Thermal destruction point
         type: carbonization
-  surface:
-    label: Surface Properties
-    description: Surface characteristics and texture
-    percentage: 9.1
-    properties:
-      porosity:
-        value: 55
-        unit: '%'
-        confidence: 88
-        description: Average porosity of hickory wood structure
-        min: null
-        max: null
-  environmental:
-    label: Environmental Properties
-    description: Environmental exposure resistance
-    percentage: 5.5
-    properties:
-      moistureContent:
-        value: 12
-        unit: '%'
-        confidence: 95
-        description: Equilibrium moisture content at standard conditions
-        min: null
-        max: null
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 0
-    properties:
       absorptionCoefficient:
         value: 0.85
         unit: dimensionless
         confidence: 92
-        description: Optical absorption coefficient for near-infrared wavelengths (1064 nm)
+        description: Optical absorption coefficient for near-infrared wavelengths
+          (1064 nm)
         min: null
         max: null
+    description: 'First-order photon coupling: how laser energy enters the material
+      vs. reflects away'
+    percentage: 16.4
 applications:
 - Aerospace
 - Automotive
@@ -211,8 +195,9 @@ machineSettings:
     value: 4.5
     unit: J/cm²
     confidence: 88
-    description: Energy density threshold for effective Hickory cleaning - Energy density threshold for effective organic
-      contaminant removal from wood without charring or thermal damage
+    description: Energy density threshold for effective Hickory cleaning - Energy
+      density threshold for effective organic contaminant removal from wood without
+      charring or thermal damage
     min: 2.0
     max: 8.0
   fluenceThreshold:
@@ -278,8 +263,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Hickory is an exceptionally dense and hard wood with a prominent grain structure. These properties require careful
-  adjustment of laser power and speed to avoid surface etching.
+subtitle: Hickory is an exceptionally dense and hard wood with a prominent grain structure.
+  These properties require careful adjustment of laser power and speed to avoid surface
+  etching.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -315,27 +301,34 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: 'At 500x magnification, the hickory surface is obscured by a discontinuous layer of particulate and organic
-    contamination. This layer, averaging 15-25 micrometers in thickness, fills the natural wood porosity and adheres to the
-    cell structure. The underlying grain pattern is partially visible but muted, with contaminants forming a crust-like matrix
-    that bridges the lumens of the vessel elements and fibers.
+  beforeText: 'At 500x magnification, the hickory surface is obscured by a discontinuous
+    layer of particulate and organic contamination. This layer, averaging 15-25 micrometers
+    in thickness, fills the natural wood porosity and adheres to the cell structure.
+    The underlying grain pattern is partially visible but muted, with contaminants
+    forming a crust-like matrix that bridges the lumens of the vessel elements and
+    fibers.
 
 
-    The surface texture is highly irregular, with contamination deposits creating peaks and valleys that disrupt the wood''s
-    inherent topography. Particulates, including carbonaceous soot and embedded silica, are bound by a tenacious, amorphous
-    film. This composite layer significantly alters the surface''s thermal and optical properties, increasing its laser absorption
-    and masking the wood''s natural, open-pore structure.'
-  afterText: 'Following laser cleaning, microscopic analysis reveals the complete restoration of the hickory''s native surface
-    morphology. The 15-25 micrometer contamination layer has been entirely removed via selective laser ablation, exposing
-    the clean, open lumens of the wood''s cellular structure. The grain pattern is now sharply defined, with no residual film
-    or particulates.
+    The surface texture is highly irregular, with contamination deposits creating
+    peaks and valleys that disrupt the wood''s inherent topography. Particulates,
+    including carbonaceous soot and embedded silica, are bound by a tenacious, amorphous
+    film. This composite layer significantly alters the surface''s thermal and optical
+    properties, increasing its laser absorption and masking the wood''s natural, open-pore
+    structure.'
+  afterText: 'Following laser cleaning, microscopic analysis reveals the complete
+    restoration of the hickory''s native surface morphology. The 15-25 micrometer
+    contamination layer has been entirely removed via selective laser ablation, exposing
+    the clean, open lumens of the wood''s cellular structure. The grain pattern is
+    now sharply defined, with no residual film or particulates.
 
 
-    The surface texture has been returned to its original state, characterized by the distinct, undulating topography of the
-    vessel elements and fibers. The process has successfully cleared all pores without inducing micro-fractures or charring,
-    preserving the structural integrity of the cell walls. The cleaned surface exhibits the expected reflectivity and porosity
-    of untreated hickory.'
-  description: Microscopic analysis of hickory surface before and after laser cleaning treatment
+    The surface texture has been returned to its original state, characterized by
+    the distinct, undulating topography of the vessel elements and fibers. The process
+    has successfully cleared all pores without inducing micro-fractures or charring,
+    preserving the structural integrity of the cell walls. The cleaned surface exhibits
+    the expected reflectivity and porosity of untreated hickory.'
+  description: Microscopic analysis of hickory surface before and after laser cleaning
+    treatment
   alt: Microscopic view of hickory surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -355,7 +348,8 @@ caption:
     materialType: Wood
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Hickory surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Hickory surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/hickory-laser-cleaning-micro.jpg
 tags:
 - wood

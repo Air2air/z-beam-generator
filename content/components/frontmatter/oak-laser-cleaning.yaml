@@ -4,10 +4,8 @@ subcategory: hardwood
 title: Oak Laser Cleaning
 description: Laser cleaning parameters for Oak
 materialProperties:
-  physical_structural:
-    label: Physical/Structural Properties
-    description: Basic physical characteristics
-    percentage: 3.6
+  material_properties:
+    label: Material Properties
     properties:
       density:
         value: 0.75
@@ -16,10 +14,39 @@ materialProperties:
         description: Average density of European oak at 12% moisture content
         min: 0.12
         max: 1.25
-  mechanical:
-    label: Mechanical Properties
-    description: Strength, elasticity, and structural characteristics
-    percentage: 18.2
+      porosity:
+        value: 45
+        unit: '%'
+        confidence: 92
+        description: Typical porosity range for oak wood structure
+        min: null
+        max: null
+      surfaceRoughness:
+        value: 3.5
+        unit: μm Ra
+        confidence: 85
+        description: Average surface roughness for planed oak surfaces
+        min: null
+        max: null
+      moistureContent:
+        value: 12
+        unit: '%'
+        confidence: 95
+        description: Equilibrium moisture content at standard conditions
+        min: null
+        max: null
+      celluloseContent:
+        value: 42
+        unit: '%'
+        confidence: 90
+        description: Average cellulose content affecting thermal decomposition behavior
+        min: null
+        max: null
+    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
+      finish, contaminant adhesion, and process efficiency'
+    percentage: 40.0
+  structural_response:
+    label: Structural Response Properties
     properties:
       hardness:
         value: 5.0
@@ -42,10 +69,11 @@ materialProperties:
         description: Modulus of elasticity parallel to grain
         min: 5
         max: 25
-  optical_laser:
-    label: Optical/Laser Properties
-    description: Light interaction and laser response characteristics
-    percentage: 16.4
+    description: 'Physical reaction to thermal stress: how material responds structurally
+      to rapid heating'
+    percentage: 18.2
+  energy_coupling:
+    label: Energy Coupling Properties
     properties:
       laserAbsorption:
         value: 32.7
@@ -72,14 +100,10 @@ materialProperties:
         value: 1.2
         unit: J/cm²
         confidence: 80
-        description: Estimated ablation threshold for nanosecond pulsed lasers at 1064 nm
+        description: Estimated ablation threshold for nanosecond pulsed lasers at
+          1064 nm
         min: null
         max: null
-  thermal:
-    label: Thermal Properties
-    description: Heat-related material characteristics including conductivity, expansion, and destruction points
-    percentage: 29.1
-    properties:
       specificHeat:
         value: 1.8
         unit: kJ/kg·K
@@ -91,7 +115,8 @@ materialProperties:
         value: 0.17
         unit: W/m·K
         confidence: 90
-        description: Thermal conductivity perpendicular to grain direction at room temperature
+        description: Thermal conductivity perpendicular to grain direction at room
+          temperature
         min: 0.04
         max: 0.4
       thermalDiffusivity:
@@ -117,61 +142,17 @@ materialProperties:
           confidence: 92
           description: Thermal destruction point
         type: carbonization
-  surface:
-    label: Surface Properties
-    description: Surface characteristics and texture
-    percentage: 9.1
-    properties:
-      porosity:
-        value: 45
-        unit: '%'
-        confidence: 92
-        description: Typical porosity range for oak wood structure
-        min: null
-        max: null
-      surfaceRoughness:
-        value: 3.5
-        unit: μm Ra
-        confidence: 85
-        description: Average surface roughness for planed oak surfaces
-        min: null
-        max: null
-  environmental:
-    label: Environmental Properties
-    description: Environmental exposure resistance
-    percentage: 5.5
-    properties:
-      moistureContent:
-        value: 12
-        unit: '%'
-        confidence: 95
-        description: Equilibrium moisture content at standard conditions
-        min: null
-        max: null
-  compositional:
-    label: Compositional Properties
-    description: Material composition characteristics
-    percentage: 5.5
-    properties:
-      celluloseContent:
-        value: 42
-        unit: '%'
-        confidence: 90
-        description: Average cellulose content affecting thermal decomposition behavior
-        min: null
-        max: null
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 0
-    properties:
       absorptionCoefficient:
         value: 0.85
         unit: dimensionless
         confidence: 85
-        description: Approximate absorption coefficient for near-infrared laser wavelengths (1064 nm)
+        description: Approximate absorption coefficient for near-infrared laser wavelengths
+          (1064 nm)
         min: null
         max: null
+    description: 'First-order photon coupling: how laser energy enters the material
+      vs. reflects away'
+    percentage: 16.4
 applications:
 - Cultural Heritage
 - Marine
@@ -202,7 +183,8 @@ machineSettings:
     value: 80
     unit: μm
     confidence: 84
-    description: Beam spot diameter for effective cleaning resolution on Oak grain structure
+    description: Beam spot diameter for effective cleaning resolution on Oak grain
+      structure
     min: 50
     max: 120
   repetitionRate:
@@ -216,7 +198,8 @@ machineSettings:
     value: 12
     unit: ns
     confidence: 85
-    description: Short pulse duration for efficient contaminant removal with minimal thermal damage
+    description: Short pulse duration for efficient contaminant removal with minimal
+      thermal damage
     min: 8
     max: 20
   scanSpeed:
@@ -230,7 +213,8 @@ machineSettings:
     value: 1.8
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without damaging Oak substrate
+    description: Fluence threshold for effective contaminant removal without damaging
+      Oak substrate
     min: 1.2
     max: 2.5
   overlapRatio:
@@ -297,8 +281,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Oak's grain pattern, with its alternating hard and soft bands, can result in uneven cleaning if the laser's energy
-  isn't uniformly distributed across the surface.
+subtitle: Oak's grain pattern, with its alternating hard and soft bands, can result
+  in uneven cleaning if the laser's energy isn't uniformly distributed across the
+  surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -334,21 +319,26 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the oak surface is obscured by a dense, amorphous contamination layer, approximately
-    20-50 micrometers thick. This layer, composed of soot, dust, and biological films, fills the wood's cellular lumen and
-    macro-pores. The underlying grain texture is largely undetectable, with only the most prominent growth rings visible as
-    faint undulations beneath the uniform, matte-black coating.
-  afterText: 'Laser ablation has removed the opaque contamination layer, fully restoring the oak''s microscopic topography.
-    The cellular structure, including lumen, rays, and macro-pores, is now clearly defined and free of obstructive debris.
-    The original wood surface is exposed, revealing the distinct, undulating pattern of growth rings and the sharp boundaries
-    between earlywood and latewood.
+  beforeText: At 500x magnification, the oak surface is obscured by a dense, amorphous
+    contamination layer, approximately 20-50 micrometers thick. This layer, composed
+    of soot, dust, and biological films, fills the wood's cellular lumen and macro-pores.
+    The underlying grain texture is largely undetectable, with only the most prominent
+    growth rings visible as faint undulations beneath the uniform, matte-black coating.
+  afterText: 'Laser ablation has removed the opaque contamination layer, fully restoring
+    the oak''s microscopic topography. The cellular structure, including lumen, rays,
+    and macro-pores, is now clearly defined and free of obstructive debris. The original
+    wood surface is exposed, revealing the distinct, undulating pattern of growth
+    rings and the sharp boundaries between earlywood and latewood.
 
 
-    The cleaning process has selectively vaporized the contaminant layer with minimal thermal alteration to the underlying
-    wood substrate. The surface exhibits a clean, sharp interface between the remaining wood cells and the now-open pores.
-    This precision results in a surface where the intrinsic, complex texture of the oak is the dominant visual feature, with
-    no residual film to obscure its structural details.'
-  description: Microscopic analysis of oak surface before and after laser cleaning treatment
+    The cleaning process has selectively vaporized the contaminant layer with minimal
+    thermal alteration to the underlying wood substrate. The surface exhibits a clean,
+    sharp interface between the remaining wood cells and the now-open pores. This
+    precision results in a surface where the intrinsic, complex texture of the oak
+    is the dominant visual feature, with no residual film to obscure its structural
+    details.'
+  description: Microscopic analysis of oak surface before and after laser cleaning
+    treatment
   alt: Microscopic view of oak surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -368,7 +358,8 @@ caption:
     materialType: Wood
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Oak surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Oak surface after laser cleaning showing detailed surface
+      structure
     url: /images/material/oak-laser-cleaning-micro.jpg
 tags:
 - wood

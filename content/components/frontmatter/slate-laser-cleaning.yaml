@@ -4,10 +4,8 @@ subcategory: metamorphic
 title: Slate Laser Cleaning
 description: Laser cleaning parameters for Slate
 materialProperties:
-  mechanical:
-    label: Mechanical Properties
-    description: Strength, elasticity, and structural characteristics
-    percentage: 18.2
+  structural_response:
+    label: Structural Response Properties
     properties:
       compressiveStrength:
         value: 175.0
@@ -44,10 +42,11 @@ materialProperties:
         description: Flexural strength across cleavage planes
         min: null
         max: null
-  physical_structural:
-    label: Physical/Structural Properties
-    description: Basic physical characteristics
-    percentage: 3.6
+    description: 'Physical reaction to thermal stress: how material responds structurally
+      to rapid heating'
+    percentage: 18.2
+  material_properties:
+    label: Material Properties
     properties:
       density:
         value: 2.8
@@ -56,10 +55,32 @@ materialProperties:
         description: Average density of slate rock formations
         min: 1.5
         max: 3.4
-  optical_laser:
-    label: Optical/Laser Properties
-    description: Light interaction and laser response characteristics
-    percentage: 16.4
+      porosity:
+        value: 1.2
+        unit: '%'
+        confidence: 90
+        description: Average porosity of high-quality slate
+        min: null
+        max: null
+      surfaceRoughness:
+        value: 2.8
+        unit: μm Ra
+        confidence: 88
+        description: Average surface roughness of natural slate surfaces
+        min: null
+        max: null
+      chemicalStability:
+        value: 8.5
+        unit: rating (1-10)
+        confidence: 90
+        description: Chemical stability rating against environmental exposure
+        min: null
+        max: null
+    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
+      finish, contaminant adhesion, and process efficiency'
+    percentage: 40.0
+  energy_coupling:
+    label: Energy Coupling Properties
     properties:
       laserAbsorption:
         value: 8.7
@@ -89,11 +110,6 @@ materialProperties:
         description: Laser ablation threshold for nanosecond pulses at 1064 nm
         min: null
         max: null
-  thermal:
-    label: Thermal Properties
-    description: Heat-related material characteristics including conductivity, expansion, and destruction points
-    percentage: 29.1
-    properties:
       specificHeat:
         value: 0.84
         unit: kJ/kg·K
@@ -131,42 +147,6 @@ materialProperties:
           confidence: 92
           description: Thermal destruction point
         type: thermal_shock
-  surface:
-    label: Surface Properties
-    description: Surface characteristics and texture
-    percentage: 9.1
-    properties:
-      porosity:
-        value: 1.2
-        unit: '%'
-        confidence: 90
-        description: Average porosity of high-quality slate
-        min: null
-        max: null
-      surfaceRoughness:
-        value: 2.8
-        unit: μm Ra
-        confidence: 88
-        description: Average surface roughness of natural slate surfaces
-        min: null
-        max: null
-  chemical:
-    label: Chemical Properties
-    description: Chemical reactivity and stability
-    percentage: 5.5
-    properties:
-      chemicalStability:
-        value: 8.5
-        unit: rating (1-10)
-        confidence: 90
-        description: Chemical stability rating against environmental exposure
-        min: null
-        max: null
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 0
-    properties:
       thermalDegradationPoint:
         value: 650.0
         unit: °C
@@ -181,6 +161,9 @@ materialProperties:
         description: Optical absorption coefficient for near-IR wavelengths
         min: null
         max: null
+    description: 'First-order photon coupling: how laser energy enters the material
+      vs. reflects away'
+    percentage: 16.4
 applications:
 - Cultural Heritage
 - Construction and Architecture
@@ -197,7 +180,8 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Slate surface cleaning without thermal damage
+    description: Optimal average power for Slate surface cleaning without thermal
+      damage
     min: 80
     max: 120
   wavelength:
@@ -218,14 +202,16 @@ machineSettings:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning coverage and thermal management
+    description: Optimal repetition rate for efficient cleaning coverage and thermal
+      management
     min: 30
     max: 100
   pulseWidth:
     value: 12
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with minimal substrate interaction
+    description: Nanosecond pulse duration for effective contaminant removal with
+      minimal substrate interaction
     min: 8
     max: 20
   scanSpeed:
@@ -239,8 +225,9 @@ machineSettings:
     value: 3.5
     unit: J/cm²
     confidence: 86
-    description: Energy density threshold for effective Slate cleaning - Energy density threshold for effective contaminant
-      removal from stone surfaces without substrate damage
+    description: Energy density threshold for effective Slate cleaning - Energy density
+      threshold for effective contaminant removal from stone surfaces without substrate
+      damage
     min: 1.5
     max: 7.0
   fluenceThreshold:
@@ -254,7 +241,8 @@ machineSettings:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive energy deposition
+    description: Optimal beam overlap for uniform cleaning without excessive energy
+      deposition
     min: 40
     max: 60
   passCount:
@@ -315,8 +303,8 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Slate's fine grain and tendency to delaminate set it apart from other metamorphic stones. These traits demand careful
-  control of laser power to prevent surface damage.
+subtitle: Slate's fine grain and tendency to delaminate set it apart from other metamorphic
+  stones. These traits demand careful control of laser power to prevent surface damage.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -352,23 +340,30 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the slate surface is obscured by a complex contamination layer. A discontinuous, amorphous
-    crust, measuring 50-200 micrometers thick, adheres to the natural cleavage planes. This layer, composed of carbonaceous
-    particulates, gypsum crystals, and biological growth, creates a rough, porous topography. The underlying slate's characteristic
-    foliated texture and mineral grains are entirely masked by this accreted matrix, which exhibits extensive micro-fracturing.
-  afterText: 'Laser cleaning has fully restored the slate''s intrinsic microstructure. The 50-200 micrometer contamination
-    crust has been completely removed, revealing the pristine, lamellar texture of the cleavage planes. At 500x, the surface
-    now exhibits sharp, well-defined grain boundaries and the subtle sheen of aligned phyllosilicate minerals. The process
-    has eliminated the porous, fractured matrix without inducing thermal damage, as evidenced by the absence of micro-cracking
+  beforeText: At 500x magnification, the slate surface is obscured by a complex contamination
+    layer. A discontinuous, amorphous crust, measuring 50-200 micrometers thick, adheres
+    to the natural cleavage planes. This layer, composed of carbonaceous particulates,
+    gypsum crystals, and biological growth, creates a rough, porous topography. The
+    underlying slate's characteristic foliated texture and mineral grains are entirely
+    masked by this accreted matrix, which exhibits extensive micro-fracturing.
+  afterText: 'Laser cleaning has fully restored the slate''s intrinsic microstructure.
+    The 50-200 micrometer contamination crust has been completely removed, revealing
+    the pristine, lamellar texture of the cleavage planes. At 500x, the surface now
+    exhibits sharp, well-defined grain boundaries and the subtle sheen of aligned
+    phyllosilicate minerals. The process has eliminated the porous, fractured matrix
+    without inducing thermal damage, as evidenced by the absence of micro-cracking
     or vitrification.
 
 
-    The laser''s selective ablation, operating below the slate''s 1.8 J/cm² ablation threshold for the substrate, preferentially
-    removed the lower-thermal-inertia contaminants. This leaves a clean, mineralogically intact surface with a porosity of
-    1.2%. The result is a surface defined by its natural geological features, where the contrast between different mineral
-    components is clearly visible and the original surface roughness is preserved, ensuring no alteration to the material''s
-    historic or structural character.'
-  description: Microscopic analysis of slate surface before and after laser cleaning treatment
+    The laser''s selective ablation, operating below the slate''s 1.8 J/cm² ablation
+    threshold for the substrate, preferentially removed the lower-thermal-inertia
+    contaminants. This leaves a clean, mineralogically intact surface with a porosity
+    of 1.2%. The result is a surface defined by its natural geological features, where
+    the contrast between different mineral components is clearly visible and the original
+    surface roughness is preserved, ensuring no alteration to the material''s historic
+    or structural character.'
+  description: Microscopic analysis of slate surface before and after laser cleaning
+    treatment
   alt: Microscopic view of slate surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -388,7 +383,8 @@ caption:
     materialType: Stone
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Slate surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Slate surface after laser cleaning showing detailed surface
+      structure
     url: /images/material/slate-laser-cleaning-micro.jpg
 tags:
 - stone

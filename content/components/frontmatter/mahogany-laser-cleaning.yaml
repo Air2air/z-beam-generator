@@ -4,22 +4,37 @@ subcategory: hardwood
 title: Mahogany Laser Cleaning
 description: Laser cleaning parameters for Mahogany
 materialProperties:
-  physical_structural:
-    label: Physical/Structural Properties
-    description: Basic physical characteristics
-    percentage: 3.6
+  material_properties:
+    label: Material Properties
     properties:
       density:
         value: 0.64
         unit: g/cm³
         confidence: 92
-        description: Average density of genuine mahogany (Swietenia genus) at 12% moisture content
+        description: Average density of genuine mahogany (Swietenia genus) at 12%
+          moisture content
         min: 0.12
         max: 1.25
-  mechanical:
-    label: Mechanical Properties
-    description: Strength, elasticity, and structural characteristics
-    percentage: 18.2
+      porosity:
+        value: 55
+        unit: '%'
+        confidence: 88
+        description: Typical porosity percentage including cell lumen and pit structures
+        min: null
+        max: null
+      moistureContent:
+        value: 12
+        unit: '%'
+        confidence: 91
+        description: Equilibrium moisture content at standard room conditions (20°C,
+          65% RH)
+        min: null
+        max: null
+    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
+      finish, contaminant adhesion, and process efficiency'
+    percentage: 40.0
+  structural_response:
+    label: Structural Response Properties
     properties:
       hardness:
         value: 4.2
@@ -42,10 +57,11 @@ materialProperties:
         description: Modulus of elasticity in bending
         min: 5
         max: 25
-  optical_laser:
-    label: Optical/Laser Properties
-    description: Light interaction and laser response characteristics
-    percentage: 16.4
+    description: 'Physical reaction to thermal stress: how material responds structurally
+      to rapid heating'
+    percentage: 18.2
+  energy_coupling:
+    label: Energy Coupling Properties
     properties:
       laserAbsorption:
         value: 28.7
@@ -65,33 +81,32 @@ materialProperties:
         value: 0.25
         unit: dimensionless
         confidence: 81
-        description: Estimated reflectivity for near-infrared laser wavelengths on natural wood surface
+        description: Estimated reflectivity for near-infrared laser wavelengths on
+          natural wood surface
         min: null
         max: null
       ablationThreshold:
         value: 0.8
         unit: J/cm²
         confidence: 80
-        description: Estimated laser ablation threshold for nanosecond pulses at 1064 nm wavelength
+        description: Estimated laser ablation threshold for nanosecond pulses at 1064
+          nm wavelength
         min: null
         max: null
-  thermal:
-    label: Thermal Properties
-    description: Heat-related material characteristics including conductivity, expansion, and destruction points
-    percentage: 29.1
-    properties:
       specificHeat:
         value: 1.8
         unit: kJ/kg·K
         confidence: 86
-        description: Specific heat capacity at room temperature, accounting for moisture content
+        description: Specific heat capacity at room temperature, accounting for moisture
+          content
         min: 800
         max: 2500
       thermalConductivity:
         value: 0.16
         unit: W/m·K
         confidence: 88
-        description: Thermal conductivity perpendicular to grain direction at room temperature
+        description: Thermal conductivity perpendicular to grain direction at room
+          temperature
         min: 0.04
         max: 0.4
       thermalDiffusivity:
@@ -117,42 +132,17 @@ materialProperties:
           confidence: 92
           description: Thermal destruction point
         type: carbonization
-  surface:
-    label: Surface Properties
-    description: Surface characteristics and texture
-    percentage: 9.1
-    properties:
-      porosity:
-        value: 55
-        unit: '%'
-        confidence: 88
-        description: Typical porosity percentage including cell lumen and pit structures
-        min: null
-        max: null
-  environmental:
-    label: Environmental Properties
-    description: Environmental exposure resistance
-    percentage: 5.5
-    properties:
-      moistureContent:
-        value: 12
-        unit: '%'
-        confidence: 91
-        description: Equilibrium moisture content at standard room conditions (20°C, 65% RH)
-        min: null
-        max: null
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 0
-    properties:
       absorptionCoefficient:
         value: 0.75
         unit: dimensionless
         confidence: 82
-        description: Estimated absorption coefficient for near-infrared laser wavelengths (1064 nm)
+        description: Estimated absorption coefficient for near-infrared laser wavelengths
+          (1064 nm)
         min: null
         max: null
+    description: 'First-order photon coupling: how laser energy enters the material
+      vs. reflects away'
+    percentage: 16.4
 applications:
 - Marine
 - Aerospace
@@ -176,7 +166,8 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength for optimal absorption in Mahogany cellulose and lignin
+    description: Near-IR wavelength for optimal absorption in Mahogany cellulose and
+      lignin
     min: 532
     max: 1064
   spotSize:
@@ -190,7 +181,8 @@ machineSettings:
     value: 20
     unit: kHz
     confidence: 87
-    description: Repetition rate for efficient contaminant removal with controlled thermal input
+    description: Repetition rate for efficient contaminant removal with controlled
+      thermal input
     min: 10
     max: 50
   pulseWidth:
@@ -211,22 +203,25 @@ machineSettings:
     value: 4.5
     unit: J/cm²
     confidence: 88
-    description: Energy density threshold for effective Mahogany cleaning - Energy density threshold for effective organic
-      contaminant removal from wood without charring or thermal damage
+    description: Energy density threshold for effective Mahogany cleaning - Energy
+      density threshold for effective organic contaminant removal from wood without
+      charring or thermal damage
     min: 2.0
     max: 8.0
   energyDensity:
     value: 2.5
     unit: J/cm²
     confidence: 91
-    description: Fluence threshold for effective contaminant removal without wood substrate damage
+    description: Fluence threshold for effective contaminant removal without wood
+      substrate damage
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 84
-    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
+    description: Optimal beam overlap for uniform cleaning without excessive thermal
+      buildup
     min: 40
     max: 70
   passCount:
@@ -260,7 +255,8 @@ author:
   image: /images/author/todd-dunning.jpg
 images:
   hero:
-    alt: Mahogany surface undergoing laser cleaning showing precise contamination removal
+    alt: Mahogany surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/mahogany-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -287,8 +283,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Mahogany has a unique pore structure and natural oil content that differs from other hardwoods. These properties
-  require careful adjustment of laser settings to avoid resin activation or surface scorching.
+subtitle: Mahogany has a unique pore structure and natural oil content that differs
+  from other hardwoods. These properties require careful adjustment of laser settings
+  to avoid resin activation or surface scorching.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -324,16 +321,21 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the mahogany surface is obscured by a dense, stratified contamination layer approximately
-    50-200 µm thick. This layer, composed of embedded soot, degraded organic films, and particulate matter, fills the wood's
-    porous structure and masks the characteristic grain. The surface texture is irregular and crust-like, with fissures and
-    agglomerated deposits that disrupt the underlying cellular anatomy. The contamination exhibits poor adhesion to the substrate,
-    creating distinct interfacial boundaries prone to delamination.
-  afterText: Following laser cleaning, the 500x view reveals the restored mahogany substrate. The porous, open-cell structure
-    of the wood is fully exposed, with clear lumens and intact cell walls. The contamination layer has been completely removed
-    via selective ablation, leaving a clean, well-defined surface. The original grain pattern is now distinct and unobstructed,
-    with minimal residual carbonization or thermal alteration to the underlying wood fibers.
-  description: Microscopic analysis of mahogany surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the mahogany surface is obscured by a dense,
+    stratified contamination layer approximately 50-200 µm thick. This layer, composed
+    of embedded soot, degraded organic films, and particulate matter, fills the wood's
+    porous structure and masks the characteristic grain. The surface texture is irregular
+    and crust-like, with fissures and agglomerated deposits that disrupt the underlying
+    cellular anatomy. The contamination exhibits poor adhesion to the substrate, creating
+    distinct interfacial boundaries prone to delamination.
+  afterText: Following laser cleaning, the 500x view reveals the restored mahogany
+    substrate. The porous, open-cell structure of the wood is fully exposed, with
+    clear lumens and intact cell walls. The contamination layer has been completely
+    removed via selective ablation, leaving a clean, well-defined surface. The original
+    grain pattern is now distinct and unobstructed, with minimal residual carbonization
+    or thermal alteration to the underlying wood fibers.
+  description: Microscopic analysis of mahogany surface before and after laser cleaning
+    treatment
   alt: Microscopic view of mahogany surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -353,7 +355,8 @@ caption:
     materialType: Wood
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Mahogany surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Mahogany surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/mahogany-laser-cleaning-micro.jpg
 tags:
 - wood

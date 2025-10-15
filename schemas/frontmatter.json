@@ -1315,9 +1315,9 @@
     },
     "MaterialProperties": {
       "type": "object",
-      "description": "Categorized material properties organized by laser cleaning physics stages (physics-based structure v3.0)",
+      "description": "Categorized material properties organized by laser cleaning process stages (process-driven structure v4.0 - 3 categories)",
       "patternProperties": {
-        "^(laser_interaction|thermal_response|mechanical_response|material_characteristics|other)$": {
+        "^(energy_coupling|structural_response|material_properties)$": {
           "$ref": "#/definitions/PropertyCategory"
         }
       },

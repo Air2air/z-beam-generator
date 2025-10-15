@@ -4,10 +4,8 @@ subcategory: metamorphic
 title: Schist Laser Cleaning
 description: Laser cleaning parameters for Schist
 materialProperties:
-  physical_structural:
-    label: Physical/Structural Properties
-    description: Basic physical characteristics
-    percentage: 3.6
+  material_properties:
+    label: Material Properties
     properties:
       density:
         value: 2.75
@@ -16,10 +14,18 @@ materialProperties:
         description: Average bulk density of schist based on mineral composition
         min: 1.5
         max: 3.4
-  mechanical:
-    label: Mechanical Properties
-    description: Strength, elasticity, and structural characteristics
-    percentage: 18.2
+      porosity:
+        value: 2.5
+        unit: '%'
+        confidence: 87
+        description: Average porosity affecting laser interaction and cleaning efficiency
+        min: null
+        max: null
+    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
+      finish, contaminant adhesion, and process efficiency'
+    percentage: 40.0
+  structural_response:
+    label: Structural Response Properties
     properties:
       hardness:
         value: 5.5
@@ -42,10 +48,11 @@ materialProperties:
         description: Elastic modulus parallel to foliation direction
         min: 10
         max: 100
-  optical_laser:
-    label: Optical/Laser Properties
-    description: Light interaction and laser response characteristics
-    percentage: 16.4
+    description: 'Physical reaction to thermal stress: how material responds structurally
+      to rapid heating'
+    percentage: 18.2
+  energy_coupling:
+    label: Energy Coupling Properties
     properties:
       laserAbsorption:
         value: 8.72
@@ -75,11 +82,6 @@ materialProperties:
         description: Minimum fluence required for material removal at 1064 nm
         min: null
         max: null
-  thermal:
-    label: Thermal Properties
-    description: Heat-related material characteristics including conductivity, expansion, and destruction points
-    percentage: 29.1
-    properties:
       specificHeat:
         value: 0.85
         unit: J/g·K
@@ -117,23 +119,6 @@ materialProperties:
           confidence: 92
           description: Thermal destruction point
         type: thermal_shock
-  surface:
-    label: Surface Properties
-    description: Surface characteristics and texture
-    percentage: 9.1
-    properties:
-      porosity:
-        value: 2.5
-        unit: '%'
-        confidence: 87
-        description: Average porosity affecting laser interaction and cleaning efficiency
-        min: null
-        max: null
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 0
-    properties:
       thermalDegradationPoint:
         value: 850.0
         unit: °C
@@ -148,6 +133,9 @@ materialProperties:
         description: Optical absorption coefficient at 1064 nm wavelength
         min: null
         max: null
+    description: 'First-order photon coupling: how laser energy enters the material
+      vs. reflects away'
+    percentage: 16.4
 applications:
 - Cultural Heritage
 - Construction and Architecture
@@ -164,7 +152,8 @@ machineSettings:
     value: 90
     unit: W
     confidence: 92
-    description: Optimal average power for Schist surface cleaning without thermal damage
+    description: Optimal average power for Schist surface cleaning without thermal
+      damage
     min: 70
     max: 120
   wavelength:
@@ -206,22 +195,25 @@ machineSettings:
     value: 3.5
     unit: J/cm²
     confidence: 86
-    description: Energy density threshold for effective Schist cleaning - Energy density threshold for effective contaminant
-      removal from stone surfaces without substrate damage
+    description: Energy density threshold for effective Schist cleaning - Energy density
+      threshold for effective contaminant removal from stone surfaces without substrate
+      damage
     min: 1.5
     max: 7.0
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Energy density threshold for effective contaminant removal without substrate damage
+    description: Energy density threshold for effective contaminant removal without
+      substrate damage
     min: 1.8
     max: 3.5
   overlapRatio:
     value: 40
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
+    description: Optimal beam overlap for uniform cleaning without excessive thermal
+      buildup
     min: 30
     max: 60
   passCount:
@@ -280,8 +272,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Schist has a unique, flaky layered structure and variable mineral composition. This requires careful adjustment
-  of laser settings to clean effectively without damaging its delicate surface.
+subtitle: Schist has a unique, flaky layered structure and variable mineral composition.
+  This requires careful adjustment of laser settings to clean effectively without
+  damaging its delicate surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -317,15 +310,20 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the schist surface is obscured by a complex contamination layer. A discontinuous crust,
-    measuring 50-200 micrometers thick, adheres to the foliated stone matrix. This layer consists of particulate matter, carbonaceous
-    deposits, and biological growth, filling the natural micro-fissures and foliation planes. The contaminants form an irregular,
-    matte-textured film that masks the underlying mineralogy and surface topography, significantly reducing light reflectivity.
-  afterText: Laser cleaning has effectively removed the contamination crust, revealing the pristine schist substrate. The
-    distinct foliation planes and interlocking crystals of mica and quartz are now fully exposed, restoring the stone's inherent
-    texture. The surface exhibits a clean, well-defined topography with a measurable increase in reflectivity, confirming
-    the selective and non-abrasive nature of the contaminant removal.
-  description: Microscopic analysis of schist surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the schist surface is obscured by a complex contamination
+    layer. A discontinuous crust, measuring 50-200 micrometers thick, adheres to the
+    foliated stone matrix. This layer consists of particulate matter, carbonaceous
+    deposits, and biological growth, filling the natural micro-fissures and foliation
+    planes. The contaminants form an irregular, matte-textured film that masks the
+    underlying mineralogy and surface topography, significantly reducing light reflectivity.
+  afterText: Laser cleaning has effectively removed the contamination crust, revealing
+    the pristine schist substrate. The distinct foliation planes and interlocking
+    crystals of mica and quartz are now fully exposed, restoring the stone's inherent
+    texture. The surface exhibits a clean, well-defined topography with a measurable
+    increase in reflectivity, confirming the selective and non-abrasive nature of
+    the contaminant removal.
+  description: Microscopic analysis of schist surface before and after laser cleaning
+    treatment
   alt: Microscopic view of schist surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -345,7 +343,8 @@ caption:
     materialType: Stone
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Schist surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Schist surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/schist-laser-cleaning-micro.jpg
 tags:
 - stone

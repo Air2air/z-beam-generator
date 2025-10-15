@@ -4,10 +4,8 @@ subcategory: sedimentary
 title: Travertine Laser Cleaning
 description: Laser cleaning parameters for Travertine
 materialProperties:
-  physical_structural:
-    label: Physical/Structural Properties
-    description: Basic physical characteristics
-    percentage: 3.6
+  material_properties:
+    label: Material Properties
     properties:
       density:
         value: 2.4
@@ -16,10 +14,25 @@ materialProperties:
         description: Bulk density of typical travertine with natural porosity
         min: 1.5
         max: 3.4
-  mechanical:
-    label: Mechanical Properties
-    description: Strength, elasticity, and structural characteristics
-    percentage: 18.2
+      porosity:
+        value: 12
+        unit: '%'
+        confidence: 93
+        description: Total porosity including micro and macro pores
+        min: null
+        max: null
+      chemicalStability:
+        value: low
+        unit: qualitative
+        confidence: 96
+        description: Susceptible to acid attack and chemical weathering
+        min: null
+        max: null
+    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
+      finish, contaminant adhesion, and process efficiency'
+    percentage: 40.0
+  structural_response:
+    label: Structural Response Properties
     properties:
       hardness:
         value: 4.0
@@ -49,10 +62,11 @@ materialProperties:
         description: Uniaxial compressive strength perpendicular to bedding
         min: null
         max: null
-  optical_laser:
-    label: Optical/Laser Properties
-    description: Light interaction and laser response characteristics
-    percentage: 16.4
+    description: 'Physical reaction to thermal stress: how material responds structurally
+      to rapid heating'
+    percentage: 18.2
+  energy_coupling:
+    label: Energy Coupling Properties
     properties:
       laserAbsorption:
         value: 8.7
@@ -75,11 +89,6 @@ materialProperties:
         description: Estimated damage threshold for nanosecond pulses at 1064 nm
         min: null
         max: null
-  thermal:
-    label: Thermal Properties
-    description: Heat-related material characteristics including conductivity, expansion, and destruction points
-    percentage: 29.1
-    properties:
       specificHeat:
         value: 0.84
         unit: kJ/kg·K
@@ -117,35 +126,6 @@ materialProperties:
           confidence: 92
           description: Thermal destruction point
         type: thermal_shock
-  surface:
-    label: Surface Properties
-    description: Surface characteristics and texture
-    percentage: 9.1
-    properties:
-      porosity:
-        value: 12
-        unit: '%'
-        confidence: 93
-        description: Total porosity including micro and macro pores
-        min: null
-        max: null
-  chemical:
-    label: Chemical Properties
-    description: Chemical reactivity and stability
-    percentage: 5.5
-    properties:
-      chemicalStability:
-        value: low
-        unit: qualitative
-        confidence: 96
-        description: Susceptible to acid attack and chemical weathering
-        min: null
-        max: null
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 0
-    properties:
       thermalDegradationPoint:
         value: 825.0
         unit: °C
@@ -160,6 +140,9 @@ materialProperties:
         description: Optical absorption coefficient at 1064 nm wavelength
         min: null
         max: null
+    description: 'First-order photon coupling: how laser energy enters the material
+      vs. reflects away'
+    percentage: 16.4
 applications:
 - Cultural Heritage
 - Aerospace
@@ -176,14 +159,16 @@ machineSettings:
     value: 90
     unit: W
     confidence: 92
-    description: Optimal average power for Travertine surface cleaning without thermal damage
+    description: Optimal average power for Travertine surface cleaning without thermal
+      damage
     min: 70
     max: 110
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength optimal for Travertine absorption and contamination removal
+    description: Near-infrared wavelength optimal for Travertine absorption and contamination
+      removal
     min: 1030
     max: 1070
   spotSize:
@@ -218,22 +203,25 @@ machineSettings:
     value: 3.5
     unit: J/cm²
     confidence: 86
-    description: Energy density threshold for effective Travertine cleaning - Energy density threshold for effective contaminant
-      removal from stone surfaces without substrate damage
+    description: Energy density threshold for effective Travertine cleaning - Energy
+      density threshold for effective contaminant removal from stone surfaces without
+      substrate damage
     min: 1.5
     max: 7.0
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without substrate damage
+    description: Fluence threshold for effective contaminant removal without substrate
+      damage
     min: 1.8
     max: 3.5
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive energy deposition
+    description: Optimal beam overlap for uniform cleaning without excessive energy
+      deposition
     min: 40
     max: 70
   passCount:
@@ -265,7 +253,8 @@ author:
   image: /images/author/yi-chun-lin.jpg
 images:
   hero:
-    alt: Travertine surface undergoing laser cleaning showing precise contamination removal
+    alt: Travertine surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/travertine-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -292,8 +281,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Travertine is a porous, sedimentary stone with a distinctive pitted surface texture. These unique features require
-  careful laser parameter adjustments to clean effectively without causing damage.
+subtitle: Travertine is a porous, sedimentary stone with a distinctive pitted surface
+  texture. These unique features require careful laser parameter adjustments to clean
+  effectively without causing damage.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -329,18 +319,23 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the travertine surface is obscured by a dense, heterogeneous contamination layer, typically
-    50-200 micrometers thick. This layer, composed of particulate matter, carbonaceous soot, and biological growth, fills
-    the stone's characteristic macro-pores and micro-fissures. The underlying calcite matrix is largely hidden, with contaminants
-    forming a continuous, textured crust that masks the stone's natural granularity and compromises its vapor permeability.
-    The surface appears dark and occluded, with the original crystalline structure only partially visible in isolated, cleaner
-    pockets.
-  afterText: Post-cleaning, the 500x view reveals a complete restoration of the travertine's micro-topography. The contaminant
-    crust has been selectively ablated, exposing the intact, interlocking calcite crystals. The stone's inherent porosity
-    is now fully open and clearly defined, with no residual deposits within the pore throats. The surface texture is restored
-    to its original granular state, with sharp crystal boundaries and a uniform, light-toned appearance, confirming the removal
-    of subsurface staining without damage to the calcite matrix.
-  description: Microscopic analysis of travertine surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the travertine surface is obscured by a dense,
+    heterogeneous contamination layer, typically 50-200 micrometers thick. This layer,
+    composed of particulate matter, carbonaceous soot, and biological growth, fills
+    the stone's characteristic macro-pores and micro-fissures. The underlying calcite
+    matrix is largely hidden, with contaminants forming a continuous, textured crust
+    that masks the stone's natural granularity and compromises its vapor permeability.
+    The surface appears dark and occluded, with the original crystalline structure
+    only partially visible in isolated, cleaner pockets.
+  afterText: Post-cleaning, the 500x view reveals a complete restoration of the travertine's
+    micro-topography. The contaminant crust has been selectively ablated, exposing
+    the intact, interlocking calcite crystals. The stone's inherent porosity is now
+    fully open and clearly defined, with no residual deposits within the pore throats.
+    The surface texture is restored to its original granular state, with sharp crystal
+    boundaries and a uniform, light-toned appearance, confirming the removal of subsurface
+    staining without damage to the calcite matrix.
+  description: Microscopic analysis of travertine surface before and after laser cleaning
+    treatment
   alt: Microscopic view of travertine surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -360,7 +355,8 @@ caption:
     materialType: Stone
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Travertine surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Travertine surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/travertine-laser-cleaning-micro.jpg
 tags:
 - stone
