@@ -96,6 +96,8 @@ This is a laser cleaning content generation system with strict fail-fast archite
 - **"Setup help"** → `setup/API_CONFIGURATION.md` or `API_SETUP.md`
 - **"Winston SSL error"** → Known issue, configuration fixed
 - **"How to generate content"** → `python3 run.py --material "MaterialName"`
+- **"Min/max ranges missing"** → `docs/DATA_ARCHITECTURE.md` - Null ranges are correct by design
+- **"Range propagation"** → `docs/DATA_ARCHITECTURE.md` + `tests/test_range_propagation.py`
 
 ### Critical Known Issues for AI Awareness
 1. **Winston API SSL fixed**: Now uses `https://api.gowinston.ai`

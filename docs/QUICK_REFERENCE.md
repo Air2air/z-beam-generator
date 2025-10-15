@@ -50,6 +50,14 @@ is_valid, errors = frontmatter_manager.validate_material("Steel")
 **→ Essential Fields Kept**: `value`, `unit`, `confidence`, `description`, `min`, `max`
 **→ Better Readability**: Clean, focused machine settings without verbose standardized descriptions
 
+### "Min/max ranges missing" / "Properties have null ranges"
+**→ Immediate Response**: ✅ **CORRECT BEHAVIOR** - Null ranges are intentional when no category range exists
+**→ Understanding**: Min/max represent CATEGORY-WIDE ranges for comparison, not material-specific tolerances
+**→ Example**: Copper density: value=8.96, min=0.53 (all metals), max=22.6 (all metals)
+**→ Documentation**: `docs/DATA_ARCHITECTURE.md` - Complete explanation of three range types
+**→ Testing**: `python3 -m pytest tests/test_range_propagation.py -v` - Verify correct behavior
+**→ Don't Fix**: System is working correctly - only 12 properties have category ranges (by design)
+
 ### "Component generation failed" / "Required fields missing"
 **→ Immediate Response**: Enhanced fail-fast validation with specific field requirements
 **→ Quick Fix**: Check component-specific requirements in error message
@@ -419,7 +427,8 @@ find content/components -name "*.md" -exec grep -l "before significant" {} \;
 ### Primary Entry Points
 1. **This file** (`docs/QUICK_REFERENCE.md`) - For immediate problem resolution
 2. **Index** (`docs/INDEX.md`) - For comprehensive navigation
-3. **Component docs** (`components/[name]/README.md`) - For component-specific help
+3. **Data Architecture** (`docs/DATA_ARCHITECTURE.md`) - For range propagation and data flow
+4. **Component docs** (`components/[name]/README.md`) - For component-specific help
 
 ### Legacy Files (Still Valid but Being Reorganized)
 - `API_SETUP.md` - Moving to `api/PROVIDERS.md`

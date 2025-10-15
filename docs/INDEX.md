@@ -25,6 +25,7 @@
 ### 🏗️ **Core System Knowledge**
 Understanding how Z-Beam works fundamentally
 - [**ARCHITECTURE.md**](core/ARCHITECTURE.md) - System design and fail-fast principles
+- [**DATA_ARCHITECTURE.md**](DATA_ARCHITECTURE.md) - ✅ Range propagation: Categories → Materials → Frontmatter *(Oct 2025)*
 - [**AI_DETECTION_LOCALIZATION_CHAIN_ARCHITECTURE.md**](AI_DETECTION_LOCALIZATION_CHAIN_ARCHITECTURE.md) - AI detection + localization prompt chain
 - [**LOCALIZATION_PROMPT_CHAIN_SYSTEM.md**](LOCALIZATION_PROMPT_CHAIN_SYSTEM.md) - Cultural localization system
 - [**WINSTON_AI_COMPLETE_GUIDE.md**](WINSTON_AI_COMPLETE_GUIDE.md) - Complete Winston.ai integration and bias correction
@@ -72,6 +73,13 @@ New centralized frontmatter architecture deployed
 - [**completion_summaries/**](completion_summaries/) - Historical completion summaries (consolidated)
 - [**frontmatter/API_DOCUMENTATION.md**](../frontmatter/API_DOCUMENTATION.md) - FrontmatterManager API reference
 
+### 🔬 **Property System** *(October 2025 - NEW)*
+Material property organization and categorization
+- [**PROPERTY_CATEGORIES.md**](reference/PROPERTY_CATEGORIES.md) - ✅ 9-category taxonomy for 55 properties
+- **Categories**: Thermal, Mechanical, Optical/Laser, Surface, Electrical, Chemical, Environmental, Compositional, Physical
+- **Usage Tiers**: Core (15), Common (6), Specialized (34)
+- **Architecture**: Option A minimal integration (GROK compliant)
+
 ### 🌐 **API Management**
 Working with external API providers
 - [**PROVIDERS.md**](api/PROVIDERS.md) - Supported API providers (DeepSeek, Grok, Winston)
@@ -89,6 +97,7 @@ Day-to-day usage and content generation
 ### 🧪 **Testing & Validation** *(October 2025 - Updated)*
 Ensuring system reliability and correctness
 - [**TEST_IMPROVEMENTS_SUMMARY.md**](testing/TEST_IMPROVEMENTS_SUMMARY.md) - ✅ Recent test suite improvements (Oct 2025)
+- [**test_range_propagation.py**](../tests/test_range_propagation.py) - ✅ E2E range validation (14 tests) *(Oct 2025)*
 - [**TESTING_STRATEGY.md**](testing/TESTING_STRATEGY.md) - Overall testing approach
 - [**API_TESTING.md**](testing/API_TESTING.md) - API connectivity and health tests
 - [**COMPONENT_TESTING.md**](testing/COMPONENT_TESTING.md) - Component validation procedures
