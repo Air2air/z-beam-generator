@@ -34,6 +34,7 @@ class MaterialNameResolver:
         self._material_index = None
         self._canonical_names = None
         self._name_mappings = None
+        self._abbrev_mappings = None
     
     @property
     def materials_data(self) -> Dict:
@@ -90,6 +91,70 @@ class MaterialNameResolver:
             self._name_mappings = mappings
         return self._name_mappings
     
+    @property
+    def abbrev_mappings(self) -> Dict[str, str]:
+        """
+        Create mappings from abbreviations to full canonical names.
+        Handles bidirectional name resolution for materials with industry-standard abbreviations.
+        
+        Examples:
+            "CMCs" -> "Ceramic Matrix Composites CMCs"
+            "FRPU" -> "Fiber Reinforced Polyurethane FRPU"
+            "PTFE" -> "Polytetrafluoroethylene"
+        """
+        if self._abbrev_mappings is None:
+            mappings = {}
+            
+            # Extract from MATERIAL_ABBREVIATIONS constant
+            try:
+                from components.frontmatter.core.streamlined_generator import MATERIAL_ABBREVIATIONS
+                
+                for full_name_key, abbrev_data in MATERIAL_ABBREVIATIONS.items():
+                    abbrev = abbrev_data['abbreviation']
+                    
+                    # Find the canonical name in materials.yaml that matches
+                    # Try exact match first
+                    if full_name_key in self.canonical_names:
+                        canonical = full_name_key
+                    else:
+                        # Try to find matching canonical name
+                        canonical = None
+                        full_name_normalized = full_name_key.lower().replace(' ', '').replace('-', '')
+                        
+                        for candidate in self.canonical_names:
+                            candidate_normalized = candidate.lower().replace(' ', '').replace('-', '')
+                            if full_name_normalized in candidate_normalized or candidate_normalized in full_name_normalized:
+                                canonical = candidate
+                                break
+                    
+                    if canonical:
+                        # Map abbreviation to canonical name (all case variations)
+                        mappings[abbrev] = canonical
+                        mappings[abbrev.lower()] = canonical
+                        mappings[abbrev.upper()] = canonical
+                        mappings[abbrev.title()] = canonical
+                        mappings[abbrev.capitalize()] = canonical
+            except ImportError:
+                # If import fails, fall back to parsing from canonical names
+                pass
+            
+            # Also parse abbreviations from materials.yaml names
+            # e.g., "Ceramic Matrix Composites CMCs" -> extract "CMCs"
+            for canonical_name in self.canonical_names:
+                words = canonical_name.split()
+                if len(words) > 1:
+                    last_word = words[-1]
+                    # Check if last word looks like an abbreviation (all caps, 2-5 chars)
+                    if last_word.isupper() and 2 <= len(last_word) <= 5:
+                        mappings[last_word] = canonical_name
+                        mappings[last_word.lower()] = canonical_name
+                        mappings[last_word.upper()] = canonical_name
+                        mappings[last_word.title()] = canonical_name
+                        mappings[last_word.capitalize()] = canonical_name
+            
+            self._abbrev_mappings = mappings
+        return self._abbrev_mappings
+    
     def resolve_canonical_name(self, input_name: str) -> Optional[str]:
         """
         Resolve any name variation to the canonical name from Materials.yaml.
@@ -119,7 +184,11 @@ class MaterialNameResolver:
                 cleaned_name = cleaned_name[:-len(suffix)]
                 break
         
-        # Try direct lookup first
+        # Try abbreviation mappings first (highest priority for exact matches)
+        if cleaned_name in self.abbrev_mappings:
+            return self.abbrev_mappings[cleaned_name]
+        
+        # Try direct lookup in name mappings
         if cleaned_name in self.name_mappings:
             return self.name_mappings[cleaned_name]
         
@@ -220,8 +289,14 @@ class MaterialNameResolver:
             Material data dictionary or None if not found
         """
         canonical = self.resolve_canonical_name(input_name)
-        if canonical and canonical in self.material_index:
-            return self.material_index[canonical]
+        if not canonical:
+            return None
+            
+        # material_index can be either a dict of material data or a string category
+        # Need to check the materials dict directly
+        materials = self.materials_data.get('materials', {})
+        if canonical in materials:
+            return materials[canonical]
         
         return None
     

@@ -1,122 +1,172 @@
 name: Concrete
-category: Masonry
-subcategory: Concrete
+category: masonry
+subcategory: concrete
 title: Concrete Laser Cleaning
 description: Laser cleaning parameters for Concrete
 materialProperties:
-  density:
-    value: 2.4
-    unit: g/cm³
-    confidence: 95
-    description: Average density of standard concrete mix
-    min: 0.6
-    max: 2.8
-  thermalConductivity:
-    value: 1.7
-    unit: W/m·K
-    confidence: 92
-    description: Thermal conductivity of standard concrete at 20°C
-    min: 0.08
-    max: 2.5
-  tensileStrength:
-    value: 3.5
-    unit: MPa
-    confidence: 90
-    description: Direct tensile strength of standard concrete
-    min: 1
-    max: 15
-  hardness:
-    value: 6
-    unit: Mohs
-    confidence: 82
-    description: Approximate Mohs hardness of concrete surface
-    min: 2
-    max: 6
-  youngsModulus:
-    value: 30
-    unit: GPa
-    confidence: 88
-    description: Static modulus of elasticity for concrete
-    min: 5
-    max: 50
-  compressiveStrength:
-    value: 35
-    unit: MPa
-    confidence: 95
-    description: Characteristic compressive strength (C30 concrete)
-    min: 5
-    max: 80
-  laserAbsorption:
-    value: 8.2
-    unit: '%'
-    confidence: 92
-    description: laserAbsorption from Materials.yaml
-    min: 0.5
-    max: 15
-  laserReflectivity:
-    value: 32.5
-    unit: '%'
-    confidence: 92
-    description: laserReflectivity from Materials.yaml
-    min: 10
-    max: 70
-  specificHeat:
-    value: 880
-    unit: J/kg·K
-    confidence: 85
-    description: Specific heat capacity at room temperature
-    min: 700
-    max: 1100
-  thermalDiffusivity:
-    value: 0.8
-    unit: mm²/s
-    confidence: 84
-    description: Thermal diffusivity at room temperature
-    min: 0.1
-    max: 1
-  thermalExpansion:
-    value: 10
-    unit: μm/m·°C
-    confidence: 88
-    description: Coefficient of thermal expansion for concrete
-    min: 5
-    max: 20
-  absorptionCoefficient:
-    value: 0.85
-    unit: dimensionless
-    confidence: 85
-    description: Laser absorption coefficient for near-IR wavelengths
-    min: 0.5
-    max: 0.85
-  reflectivity:
-    value: 0.15
-    unit: dimensionless
-    confidence: 83
-    description: Surface reflectivity at common laser wavelengths (1064nm)
-    min: 0.15
-    max: 0.5
-  ablationThreshold:
-    value: 1.2
-    unit: J/cm²
-    confidence: 80
-    description: Minimum fluence for concrete ablation with pulsed lasers
-    min: 1.0
-    max: 8.0
-  porosity:
-    value: 12
-    unit: '%'
-    confidence: 87
-    description: Typical porosity range for standard concrete
-    min: 10.0
-    max: 40.0
-  thermalDestructionPoint:
-    value: 1450
-    unit: °C
-    confidence: 90
-    description: Temperature where structural breakdown begins
-    min: 500
-    max: 1200
-  thermalDestructionType: Structural breakdown
+  mechanical:
+    label: Mechanical Properties
+    description: Strength, elasticity, and structural characteristics
+    percentage: 18.2
+    properties:
+      compressiveStrength:
+        value: 35
+        unit: MPa
+        confidence: 96
+        description: Characteristic compressive strength
+        min: null
+        max: null
+      hardness:
+        value: 6
+        unit: Mohs
+        confidence: 85
+        description: Mohs hardness scale
+        min: 2
+        max: 6
+      tensileStrength:
+        value: 3.5
+        unit: MPa
+        confidence: 92
+        description: Direct tensile strength
+        min: 1
+        max: 15
+      youngsModulus:
+        value: 30
+        unit: GPa
+        confidence: 94
+        description: Elastic modulus of standard concrete
+        min: 5
+        max: 50
+  physical_structural:
+    label: Physical/Structural Properties
+    description: Basic physical characteristics
+    percentage: 3.6
+    properties:
+      density:
+        value: 2.4
+        unit: g/cm³
+        confidence: 95
+        description: Average density of standard concrete mix
+        min: 0.6
+        max: 2.8
+  optical_laser:
+    label: Optical/Laser Properties
+    description: Light interaction and laser response characteristics
+    percentage: 16.4
+    properties:
+      laserAbsorption:
+        value: 8.2
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.5
+        max: 15
+      laserReflectivity:
+        value: 32.5
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 10
+        max: 70
+      reflectivity:
+        value: 0.15
+        unit: dimensionless
+        confidence: 82
+        description: Surface reflectivity at typical laser cleaning wavelengths
+        min: null
+        max: null
+      ablationThreshold:
+        value: 1.2
+        unit: J/cm²
+        confidence: 85
+        description: Minimum energy density for material removal
+        min: null
+        max: null
+  thermal:
+    label: Thermal Properties
+    description: Heat-related material characteristics including conductivity, expansion, and destruction points
+    percentage: 29.1
+    properties:
+      specificHeat:
+        value: 880
+        unit: J/kg·K
+        confidence: 90
+        description: Specific heat capacity
+        min: 700
+        max: 1100
+      thermalConductivity:
+        value: 1.7
+        unit: W/m·K
+        confidence: 90
+        description: Thermal conductivity of standard concrete
+        min: 0.08
+        max: 2.5
+      thermalDiffusivity:
+        value: 0.75
+        unit: mm²/s
+        confidence: 82
+        description: Thermal diffusivity at room temperature
+        min: 0.1
+        max: 1
+      thermalExpansion:
+        value: 10
+        unit: μm/m·°C
+        confidence: 88
+        description: Coefficient of thermal expansion
+        min: 5
+        max: 20
+      thermalDestruction:
+        point:
+          value: 450.0
+          unit: °C
+          min: 500
+          max: 1200
+          confidence: 95
+          description: Thermal destruction point
+        type: spalling
+  surface:
+    label: Surface Properties
+    description: Surface characteristics and texture
+    percentage: 9.1
+    properties:
+      porosity:
+        value: 12
+        unit: '%'
+        confidence: 88
+        description: Typical porosity of hardened concrete
+        min: null
+        max: null
+  chemical:
+    label: Chemical Properties
+    description: Chemical reactivity and stability
+    percentage: 5.5
+    properties:
+      chemicalStability:
+        value: 8
+        unit: rating 1-10
+        confidence: 90
+        description: Chemical stability rating in normal environments
+        min: null
+        max: null
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 0
+    properties:
+      thermalDegradationPoint:
+        value: 450.0
+        unit: °C
+        confidence: 95
+        description: Temperature where structural integrity fails
+        min: null
+        max: null
+      absorptionCoefficient:
+        value: 0.85
+        unit: dimensionless
+        confidence: 80
+        description: Optical absorption coefficient for common laser wavelengths
+        min: null
+        max: null
 applications:
 - Civil Infrastructure
 - Nuclear Decommissioning
@@ -133,40 +183,35 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for concrete surface cleaning and contamination
-      removal
+    description: Optimal average power for concrete surface cleaning and contamination removal
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength optimal for concrete mineral absorption
-      and contaminant removal
+    description: Near-infrared wavelength optimal for concrete mineral absorption and contaminant removal
     min: null
     max: null
   spotSize:
     value: 0.8
     unit: mm
     confidence: 84
-    description: Beam spot diameter for effective coverage and energy density on concrete
-      surfaces
+    description: Beam spot diameter for effective coverage and energy density on concrete surfaces
     min: 0.5
     max: 1.2
   repetitionRate:
     value: 20
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient concrete cleaning with adequate
-      cooling between pulses
+    description: Optimal repetition rate for efficient concrete cleaning with adequate cooling between pulses
     min: 10
     max: 50
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective concrete surface ablation
-      without excessive thermal damage
+    description: Nanosecond pulse duration for effective concrete surface ablation without excessive thermal damage
     min: 5
     max: 20
   scanSpeed:
@@ -180,16 +225,15 @@ machineSettings:
     value: 3.0
     unit: J/cm²
     confidence: 85
-    description: Energy density threshold for effective Concrete cleaning - Energy
-      density threshold for effective cleaning of porous masonry materials
+    description: Energy density threshold for effective Concrete cleaning - Energy density threshold for effective cleaning
+      of porous masonry materials
     min: 1.5
     max: 6.0
   energyDensity:
     value: 2.0
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective concrete surface cleaning without
-      substrate damage
+    description: Fluence threshold for effective concrete surface cleaning without substrate damage
     min: 1.5
     max: 3.0
   overlapRatio:
@@ -228,8 +272,7 @@ author:
   image: /images/author/todd-dunning.jpg
 images:
   hero:
-    alt: Concrete surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Concrete surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/concrete-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -256,9 +299,8 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Concrete surfaces often have a variable composition and porosity. This requires
-  careful adjustment of laser settings to effectively remove contaminants without
-  damaging the underlying material.
+subtitle: Concrete surfaces often have a variable composition and porosity. This requires careful adjustment of laser settings
+  to effectively remove contaminants without damaging the underlying material.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -294,24 +336,17 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the concrete surface is obscured by a stratified
-    contamination layer, typically 50-200 µm thick. This layer consists of embedded
-    particulate matter, carbonaceous soot, and biological growth, which fill the natural
-    surface pores (approx. 12% porosity). The original texture is masked, and the
-    contamination forms a cohesive, low-reflectivity film that significantly reduces
-    the substrate's inherent laser absorption properties. The interface between the
-    contaminant and the concrete matrix is diffuse, indicating deep penetration into
-    the microstructure.
-  afterText: Post-cleaning analysis at 500x reveals the restored concrete substrate.
-    The contamination layer has been completely removed via selective laser ablation,
-    exposing the unaltered cement paste and aggregate. The original surface texture,
-    including micro-cracks and pores, is now fully visible and structurally intact.
-    The process has not induced melting or glazing, preserving the concrete's compressive
-    strength (35 MPa) and porosity. The surface exhibits higher reflectivity, confirming
-    the removal of the light-absorbing contaminant film and a return to the substrate's
-    baseline optical properties.
-  description: Microscopic analysis of concrete surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the concrete surface is obscured by a stratified contamination layer, typically 50-200
+    µm thick. This layer consists of embedded particulate matter, carbonaceous soot, and biological growth, which fill the
+    natural surface pores (approx. 12% porosity). The original texture is masked, and the contamination forms a cohesive,
+    low-reflectivity film that significantly reduces the substrate's inherent laser absorption properties. The interface between
+    the contaminant and the concrete matrix is diffuse, indicating deep penetration into the microstructure.
+  afterText: Post-cleaning analysis at 500x reveals the restored concrete substrate. The contamination layer has been completely
+    removed via selective laser ablation, exposing the unaltered cement paste and aggregate. The original surface texture,
+    including micro-cracks and pores, is now fully visible and structurally intact. The process has not induced melting or
+    glazing, preserving the concrete's compressive strength (35 MPa) and porosity. The surface exhibits higher reflectivity,
+    confirming the removal of the light-absorbing contaminant film and a return to the substrate's baseline optical properties.
+  description: Microscopic analysis of concrete surface before and after laser cleaning treatment
   alt: Microscopic view of concrete surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -331,8 +366,7 @@ caption:
     materialType: Masonry
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Concrete surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Concrete surface after laser cleaning showing detailed surface structure
     url: /images/material/concrete-laser-cleaning-micro.jpg
 tags:
 - masonry

@@ -1,144 +1,186 @@
 name: Crown Glass
-category: Glass
-subcategory: Crown Glass
+category: glass
+subcategory: crown glass
 title: Crown Glass Laser Cleaning
 description: Laser cleaning parameters for Crown Glass
 materialProperties:
-  density:
-    value: 2.52
-    unit: g/cm³
-    confidence: 95
-    description: Typical density for borosilicate crown glass compositions
-    min: 1.2
-    max: 7.6
-  thermalConductivity:
-    value: 1.1
-    unit: W/m·K
-    confidence: 92
-    description: Low thermal conductivity typical of silicate glasses
-    min: 0.02
-    max: 40
-  tensileStrength:
-    value: 35.0
-    unit: MPa
-    confidence: 92
-    description: tensileStrength from Materials.yaml
-    min: 30
-    max: 2000
-  hardness:
-    value: 5.5
-    unit: Mohs
-    confidence: 92
-    description: Mohs hardness scale for crown glass
-    min: 4.5
-    max: 9
-  youngsModulus:
-    value: 72
-    unit: GPa
-    confidence: 94
-    description: Elastic modulus for standard crown glass
-    min: 10
-    max: 400
-  laserAbsorption:
-    value: 4.0
-    unit: '%'
-    confidence: 92
-    description: laserAbsorption from Materials.yaml
-    min: 0.001
-    max: 10
-  laserReflectivity:
-    value: 4.2
-    unit: '%'
-    confidence: 95
-    description: laserReflectivity from Materials.yaml
-    min: 4
-    max: 92
-  specificHeat:
-    value: 750
-    unit: J/kg·K
-    confidence: 90
-    description: Specific heat capacity at room temperature
-    min: 500
-    max: 900
-  thermalDiffusivity:
-    value: 0.65
-    unit: mm²/s
-    confidence: 85
-    description: Thermal diffusivity calculated from thermal properties
-    min: 0.01
-    max: 15
-  thermalExpansion:
-    value: 8.5
-    unit: 10⁻⁶/K
-    confidence: 88
-    description: Coefficient of thermal expansion at room temperature
-    min: 0.1
-    max: 15
-  flexuralStrength:
-    value: 70
-    unit: MPa
-    confidence: 85
-    description: Bending strength of pristine crown glass
-    min: 30
-    max: 500
-  refractiveIndex:
-    value: 1.523
-    unit: dimensionless
-    confidence: 96
-    description: Refractive index at 589 nm (sodium D-line)
-    min: 1.45
-    max: 2.0
-  absorptionCoefficient:
-    value: 0.001
-    unit: cm⁻¹
-    confidence: 88
-    description: Absorption coefficient at 1064 nm (common laser wavelength)
-    min: 0.01
-    max: 0.4
-  reflectivity:
-    value: 4.2
-    unit: '%'
-    confidence: 90
-    description: Surface reflectivity at normal incidence for 1064 nm wavelength
-    min: 0.04
-    max: 0.92
-  ablationThreshold:
-    value: 15
-    unit: J/cm²
-    confidence: 82
-    description: Approximate laser ablation threshold for nanosecond pulses at 1064
-      nm
-    min: 3.0
-    max: 20.0
-  laserDamageThreshold:
-    value: 25
-    unit: J/cm²
-    confidence: 80
-    description: Laser-induced damage threshold for high-quality crown glass surfaces
-    min: 2.0
-    max: 50.0
-  chemicalStability:
-    value: 95
-    unit: '% resistance'
-    confidence: 92
-    description: Chemical durability rating against water and mild acids
-    min: 70
-    max: 99
-  surfaceRoughness:
-    value: 0.5
-    unit: nm Ra
-    confidence: 88
-    description: Typical surface roughness for polished crown glass
-    min: 0.001
-    max: 5.0
-  thermalDestructionPoint:
-    value: 1400
-    unit: °C
-    confidence: 90
-    description: Temperature where glass transitions from rigid to pliable state
-    min: 500
-    max: 1723
-  thermalDestructionType: Softening
+  physical_structural:
+    label: Physical/Structural Properties
+    description: Basic physical characteristics
+    percentage: 3.6
+    properties:
+      density:
+        value: 2.52
+        unit: g/cm³
+        confidence: 95
+        description: Typical density for borosilicate crown glass compositions
+        min: 1.2
+        max: 7.6
+  mechanical:
+    label: Mechanical Properties
+    description: Strength, elasticity, and structural characteristics
+    percentage: 18.2
+    properties:
+      hardness:
+        value: 5.5
+        unit: Mohs
+        confidence: 92
+        description: Mohs hardness scale value
+        min: 4.5
+        max: 9
+      tensileStrength:
+        value: 35.0
+        unit: MPa
+        confidence: 92
+        description: tensileStrength from Materials.yaml
+        min: 30
+        max: 2000
+      youngsModulus:
+        value: 72
+        unit: GPa
+        confidence: 94
+        description: Elastic modulus for standard crown glass
+        min: 10
+        max: 400
+      flexuralStrength:
+        value: 70
+        unit: MPa
+        confidence: 85
+        description: Bending strength of pristine glass surfaces
+        min: null
+        max: null
+  optical_laser:
+    label: Optical/Laser Properties
+    description: Light interaction and laser response characteristics
+    percentage: 16.4
+    properties:
+      laserAbsorption:
+        value: 4.0
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.001
+        max: 10
+      laserReflectivity:
+        value: 4.2
+        unit: '%'
+        confidence: 95
+        description: laserReflectivity from Materials.yaml
+        min: 4
+        max: 92
+      refractiveIndex:
+        value: 1.523
+        unit: dimensionless
+        confidence: 96
+        description: Standard refractive index at 589 nm wavelength
+        min: null
+        max: null
+      reflectivity:
+        value: 4.2
+        unit: '%'
+        confidence: 90
+        description: Surface reflectivity at normal incidence for visible light
+        min: null
+        max: null
+      ablationThreshold:
+        value: 2.5
+        unit: J/cm²
+        confidence: 82
+        description: Approximate laser ablation threshold for nanosecond pulses
+        min: null
+        max: null
+      laserDamageThreshold:
+        value: 15
+        unit: J/cm²
+        confidence: 85
+        description: Damage threshold for short pulse laser irradiation
+        min: null
+        max: null
+  thermal:
+    label: Thermal Properties
+    description: Heat-related material characteristics including conductivity, expansion, and destruction points
+    percentage: 29.1
+    properties:
+      specificHeat:
+        value: 750
+        unit: J/kg·K
+        confidence: 90
+        description: Specific heat capacity at room temperature
+        min: 500
+        max: 900
+      thermalConductivity:
+        value: 1.2
+        unit: W/m·K
+        confidence: 92
+        description: Low thermal conductivity typical of silicate glasses
+        min: 0.02
+        max: 40
+      thermalDiffusivity:
+        value: 0.65
+        unit: mm²/s
+        confidence: 85
+        description: Thermal diffusivity calculated from thermal properties
+        min: 0.01
+        max: 15
+      thermalExpansion:
+        value: 8.5
+        unit: 10⁻⁶/K
+        confidence: 88
+        description: Coefficient of thermal expansion at room temperature
+        min: 0.1
+        max: 15
+      thermalDestruction:
+        point:
+          value: 1123.15
+          unit: K
+          min: 500
+          max: 1723
+          confidence: 92
+          description: Thermal destruction point
+        type: melting
+  chemical:
+    label: Chemical Properties
+    description: Chemical reactivity and stability
+    percentage: 5.5
+    properties:
+      chemicalStability:
+        value: 8
+        unit: scale 1-10
+        confidence: 90
+        description: Resistance to chemical attack and environmental degradation
+        min: null
+        max: null
+  surface:
+    label: Surface Properties
+    description: Surface characteristics and texture
+    percentage: 9.1
+    properties:
+      surfaceRoughness:
+        value: 0.5
+        unit: nm Ra
+        confidence: 88
+        description: Typical surface roughness for polished crown glass
+        min: null
+        max: null
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 0
+    properties:
+      softeningPoint:
+        value: 1123.15
+        unit: K
+        confidence: 92
+        description: Temperature where glass transitions from rigid to pliable state
+        min: null
+        max: null
+      absorptionCoefficient:
+        value: 0.02
+        unit: cm⁻¹
+        confidence: 88
+        description: Absorption coefficient for visible wavelengths
+        min: null
+        max: null
 applications:
 - Aerospace
 - Medical Devices
@@ -155,16 +197,15 @@ machineSettings:
     value: 8
     unit: W
     confidence: 90
-    description: Optimal average power for Crown Glass surface cleaning without thermal
-      damage
+    description: Optimal average power for Crown Glass surface cleaning without thermal damage
     min: 5
     max: 15
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength providing optimal absorption in surface contaminants
-      while minimizing glass substrate damage
+    description: Near-IR wavelength providing optimal absorption in surface contaminants while minimizing glass substrate
+      damage
     min: 532
     max: 1064
   spotSize:
@@ -178,16 +219,14 @@ machineSettings:
     value: 20
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate balancing cleaning efficiency and thermal
-      management
+    description: Optimal repetition rate balancing cleaning efficiency and thermal management
     min: 10
     max: 50
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient contaminant removal with
-      controlled thermal effects
+    description: Nanosecond pulse duration for efficient contaminant removal with controlled thermal effects
     min: 5
     max: 20
   scanSpeed:
@@ -201,25 +240,22 @@ machineSettings:
     value: 2.5
     unit: J/cm²
     confidence: 90
-    description: Energy density threshold for effective Crown Glass cleaning - Energy
-      density threshold for surface cleaning without inducing optical damage or stress
-      fractures
+    description: Energy density threshold for effective Crown Glass cleaning - Energy density threshold for surface cleaning
+      without inducing optical damage or stress fractures
     min: 1.0
     max: 5.0
   fluenceThreshold:
     value: 1.2
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal while below Crown
-      Glass damage threshold
+    description: Fluence threshold for effective contaminant removal while below Crown Glass damage threshold
     min: 0.8
     max: 2.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive energy
-      deposition
+    description: Optimal beam overlap for uniform cleaning without excessive energy deposition
     min: 40
     max: 70
   passCount:
@@ -244,8 +280,7 @@ author:
   image: /images/author/ikmanda-roswati.jpg
 images:
   hero:
-    alt: Crown Glass surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Crown Glass surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/crown-glass-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -272,9 +307,8 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Pay close attention to Crown Glass during laser treatment—its varying properties
-  can throw off results if you're not careful. Adjust the power controls step by step;
-  even a slight mismatch might harm the delicate finish.
+subtitle: Pay close attention to Crown Glass during laser treatment—its varying properties can throw off results if you're
+  not careful. Adjust the power controls step by step; even a slight mismatch might harm the delicate finish.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -310,22 +344,17 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the crown glass surface is obscured by a heterogeneous
-    contamination layer approximately 2-5 µm thick. This layer consists of particulate
-    matter, including sub-micron silicate dust and carbonaceous soot, embedded in
-    a thin, amorphous film of organic residues. The underlying glass substrate, with
-    its characteristic hardness of 5.5 Mohs, is partially visible through localized
-    microfractures and pinhole defects within the contaminant matrix. The contamination
-    disrupts the native surface, which typically exhibits a roughness of 0.5 nm Ra,
-    creating a topographically complex and optically scattering interface that significantly
-    degrades light transmission and introduces wavefront error.
-  afterText: Laser cleaning has restored the substrate to its pristine state. The
-    contaminant layer is entirely removed, revealing the original polished surface
-    with its 0.5 nm Ra roughness. The glass now exhibits its intrinsic 1.523 refractive
-    index and high laser damage threshold of 25 J/cm², with no observable subsurface
-    damage or micro-fractures from the cleaning process.
-  description: Microscopic analysis of crown glass surface before and after laser
-    cleaning treatment
+  beforeText: At 500x magnification, the crown glass surface is obscured by a heterogeneous contamination layer approximately
+    2-5 µm thick. This layer consists of particulate matter, including sub-micron silicate dust and carbonaceous soot, embedded
+    in a thin, amorphous film of organic residues. The underlying glass substrate, with its characteristic hardness of 5.5
+    Mohs, is partially visible through localized microfractures and pinhole defects within the contaminant matrix. The contamination
+    disrupts the native surface, which typically exhibits a roughness of 0.5 nm Ra, creating a topographically complex and
+    optically scattering interface that significantly degrades light transmission and introduces wavefront error.
+  afterText: Laser cleaning has restored the substrate to its pristine state. The contaminant layer is entirely removed, revealing
+    the original polished surface with its 0.5 nm Ra roughness. The glass now exhibits its intrinsic 1.523 refractive index
+    and high laser damage threshold of 25 J/cm², with no observable subsurface damage or micro-fractures from the cleaning
+    process.
+  description: Microscopic analysis of crown glass surface before and after laser cleaning treatment
   alt: Microscopic view of crown glass surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -345,8 +374,7 @@ caption:
     materialType: Glass
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Crown Glass surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Crown Glass surface after laser cleaning showing detailed surface structure
     url: /images/material/crown-glass-laser-cleaning-micro.jpg
 tags:
 - glass

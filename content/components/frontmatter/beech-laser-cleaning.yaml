@@ -1,136 +1,146 @@
 name: Beech
-category: Wood
+category: wood
 subcategory: hardwood
 title: Beech Laser Cleaning
 description: Laser cleaning parameters for Beech
 materialProperties:
-  density:
-    value: 720
-    unit: kg/m³
-    confidence: 95
-    description: Average density of European beech wood at 12% moisture content
-    min: 0.12
-    max: 1.25
-  thermalConductivity:
-    value: 0.16
-    unit: W/m·K
-    confidence: 90
-    description: Thermal conductivity parallel to grain at room temperature
-    min: 0.04
-    max: 0.4
-  tensileStrength:
-    value: 120
-    unit: MPa
-    confidence: 90
-    description: Tensile strength parallel to grain
-    min: 20
-    max: 200
-  hardness:
-    value: 65
-    unit: N/mm²
-    confidence: 88
-    description: Brinell hardness perpendicular to grain
-    min: 20
-    max: 5000
-  youngsModulus:
-    value: 14
-    unit: GPa
-    confidence: 93
-    description: Modulus of elasticity parallel to grain
-    min: 5
-    max: 25
-  laserAbsorption:
-    value: 32.7
-    unit: '%'
-    confidence: 92
-    description: laserAbsorption from Materials.yaml
-    min: 1
-    max: 50
-  laserReflectivity:
-    value: 42.7
-    unit: '%'
-    confidence: 92
-    description: laserReflectivity from Materials.yaml
-    min: 10
-    max: 60
-  specificHeat:
-    value: 1800
-    unit: J/kg·K
-    confidence: 92
-    description: Specific heat capacity at room temperature
-    min: 800
-    max: 2500
-  thermalDestructionPoint:
-    value: 400.0
-    unit: °C
-    confidence: 92
-    description: Temperature where thermal decomposition begins
-    min: 200
-    max: 500
-  thermalDestructionType: Decomposition
-  thermalDiffusivity:
-    value: 0.165
-    unit: mm²/s
-    confidence: 92
-    description: thermalDiffusivity from Materials.yaml
-    min: 0.0001
-    max: 0.4
-  thermalExpansion:
-    value: 0.005
-    unit: mm/m·K
-    confidence: 88
-    description: Linear thermal expansion coefficient parallel to grain
-    min: 3.0
-    max: 60
-  absorptionCoefficient:
-    value: 0.85
-    unit: dimensionless
-    confidence: 82
-    description: Optical absorption coefficient for near-infrared lasers (1064 nm)
-    min: 0.7
-    max: 0.95
-  reflectivity:
-    value: 0.15
-    unit: dimensionless
-    confidence: 80
-    description: Reflectivity for common laser wavelengths (1064 nm)
-    min: 0.05
-    max: 0.3
-  ablationThreshold:
-    value: 0.8
-    unit: J/cm²
-    confidence: 85
-    description: Minimum fluence required for material removal with nanosecond pulses
-    min: 0.5
-    max: 3.0
-  porosity:
-    value: 55
-    unit: '%'
-    confidence: 91
-    description: Typical porosity of beech wood structure
-    min: 5.0
-    max: 75.0
-  moistureContent:
-    value: 12
-    unit: '%'
-    confidence: 94
-    description: Equilibrium moisture content at standard conditions
-    min: 6.0
-    max: 20.0
-  celluloseContent:
-    value: 45
-    unit: '%'
-    confidence: 92
-    description: Average cellulose content affecting thermal behavior
-    min: 35.0
-    max: 55.0
-  ligninContent:
-    value: 25
-    unit: '%'
-    confidence: 90
-    description: Lignin content influencing char formation during laser interaction
-    min: 15.0
-    max: 40.0
+  physical_structural:
+    label: Physical/Structural Properties
+    description: Basic physical characteristics
+    percentage: 3.6
+    properties:
+      density:
+        value: 720
+        unit: kg/m³
+        confidence: 95
+        description: Average density of European beech wood at 12% moisture content
+        min: 0.12
+        max: 1.25
+  mechanical:
+    label: Mechanical Properties
+    description: Strength, elasticity, and structural characteristics
+    percentage: 18.2
+    properties:
+      hardness:
+        value: 65
+        unit: N/mm²
+        confidence: 88
+        description: Brinell hardness perpendicular to grain
+        min: 20
+        max: 5000
+      tensileStrength:
+        value: 120
+        unit: MPa
+        confidence: 90
+        description: Tensile strength parallel to grain
+        min: 20
+        max: 200
+      youngsModulus:
+        value: 14
+        unit: GPa
+        confidence: 92
+        description: Modulus of elasticity parallel to grain
+        min: 5
+        max: 25
+  optical_laser:
+    label: Optical/Laser Properties
+    description: Light interaction and laser response characteristics
+    percentage: 16.4
+    properties:
+      laserAbsorption:
+        value: 32.7
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 1
+        max: 50
+      laserReflectivity:
+        value: 42.7
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 10
+        max: 60
+      reflectivity:
+        value: 0.15
+        unit: dimensionless
+        confidence: 82
+        description: Reflectivity at common laser cleaning wavelengths
+        min: null
+        max: null
+      ablationThreshold:
+        value: 0.8
+        unit: J/cm²
+        confidence: 80
+        description: Approximate laser fluence threshold for material removal
+        min: null
+        max: null
+  thermal:
+    label: Thermal Properties
+    description: Heat-related material characteristics including conductivity, expansion, and destruction points
+    percentage: 29.1
+    properties:
+      specificHeat:
+        value: 1800
+        unit: J/kg·K
+        confidence: 92
+        description: Specific heat capacity at room temperature
+        min: 800
+        max: 2500
+      thermalConductivity:
+        value: 0.16
+        unit: W/m·K
+        confidence: 90
+        description: Thermal conductivity parallel to grain at room temperature
+        min: 0.04
+        max: 0.4
+      thermalDiffusivity:
+        value: 0.165
+        unit: mm²/s
+        confidence: 92
+        description: thermalDiffusivity from Materials.yaml
+        min: 0.0001
+        max: 0.4
+      thermalExpansion:
+        value: 5.5
+        unit: 10^-6/K
+        confidence: 88
+        description: Linear thermal expansion coefficient parallel to grain
+        min: 3.0
+        max: 60
+      thermalDestruction:
+        point:
+          value: 380.0
+          unit: °C
+          min: 200
+          max: 500
+          confidence: 92
+          description: Thermal destruction point
+        type: carbonization
+  surface:
+    label: Surface Properties
+    description: Surface characteristics and texture
+    percentage: 9.1
+    properties:
+      porosity:
+        value: 55
+        unit: '%'
+        confidence: 90
+        description: Typical porosity of beech wood structure
+        min: null
+        max: null
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 0
+    properties:
+      absorptionCoefficient:
+        value: 0.85
+        unit: dimensionless
+        confidence: 85
+        description: Optical absorption coefficient for common laser wavelengths (1064 nm)
+        min: null
+        max: null
 applications:
 - Aerospace
 - Automotive
@@ -189,9 +199,8 @@ machineSettings:
     value: 4.5
     unit: J/cm²
     confidence: 88
-    description: Energy density threshold for effective Beech cleaning - Energy density
-      threshold for effective organic contaminant removal from wood without charring
-      or thermal damage
+    description: Energy density threshold for effective Beech cleaning - Energy density threshold for effective organic contaminant
+      removal from wood without charring or thermal damage
     min: 2.0
     max: 8.0
   energyDensity:
@@ -264,9 +273,8 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Beech has a fine, uniform grain but its density can vary significantly.
-  This requires careful calibration of laser settings to avoid uneven cleaning or
-  surface discoloration.
+subtitle: Beech has a fine, uniform grain but its density can vary significantly. This requires careful calibration of laser
+  settings to avoid uneven cleaning or surface discoloration.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -302,20 +310,15 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the beech surface is obscured by a discontinuous
-    contamination layer averaging 15-45 µm in thickness. This layer, composed of embedded
-    soot, dust, and degraded organic residues, fills the natural wood porosity (55%)
-    and masks the underlying cellular structure. The surface texture is highly irregular,
-    with particulate agglomerates creating a topographically complex and optically
-    dense film that scatters light and alters the material's intrinsic reflectivity
+  beforeText: At 500x magnification, the beech surface is obscured by a discontinuous contamination layer averaging 15-45
+    µm in thickness. This layer, composed of embedded soot, dust, and degraded organic residues, fills the natural wood porosity
+    (55%) and masks the underlying cellular structure. The surface texture is highly irregular, with particulate agglomerates
+    creating a topographically complex and optically dense film that scatters light and alters the material's intrinsic reflectivity
     of 15%.
-  afterText: Laser cleaning has restored the surface to its native state. The contamination
-    layer is completely removed, revealing the clean, open lumens of the beech's cellular
-    structure with no measurable substrate damage. The surface topography is now defined
-    by the wood's natural grain and porosity, resulting in a uniform surface with
-    restored optical properties.
-  description: Microscopic analysis of beech surface before and after laser cleaning
-    treatment
+  afterText: Laser cleaning has restored the surface to its native state. The contamination layer is completely removed, revealing
+    the clean, open lumens of the beech's cellular structure with no measurable substrate damage. The surface topography is
+    now defined by the wood's natural grain and porosity, resulting in a uniform surface with restored optical properties.
+  description: Microscopic analysis of beech surface before and after laser cleaning treatment
   alt: Microscopic view of beech surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -335,8 +338,7 @@ caption:
     materialType: Wood
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Beech surface after laser cleaning showing detailed surface
-      structure
+    alt: Microscopic view of Beech surface after laser cleaning showing detailed surface structure
     url: /images/material/beech-laser-cleaning-micro.jpg
 tags:
 - wood

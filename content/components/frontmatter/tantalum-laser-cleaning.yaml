@@ -1,137 +1,177 @@
 name: Tantalum
-category: Metal
+category: metal
 subcategory: refractory
 title: Tantalum Laser Cleaning
 description: Laser cleaning parameters for Tantalum
 materialProperties:
-  density:
-    value: 16.69
-    unit: g/cm³
-    confidence: 98
-    description: High density of pure tantalum at room temperature
-    min: 0.53
-    max: 22.6
-  thermalConductivity:
-    value: 57.5
-    unit: W/m·K
-    confidence: 92
-    description: Thermal conductivity at room temperature
-    min: 6.0
-    max: 429.0
-  tensileStrength:
-    value: 345
-    unit: MPa
-    confidence: 89
-    description: Typical tensile strength for annealed tantalum
-    min: 3.0
-    max: 3000.0
-  hardness:
-    value: 120
-    unit: HV
-    confidence: 87
-    description: Vickers hardness of annealed tantalum
-    min: 0.5
-    max: 3500
-  youngsModulus:
-    value: 186
-    unit: GPa
-    confidence: 94
-    description: Elastic modulus of pure tantalum
-    min: 5
-    max: 411
-  laserAbsorption:
-    value: 40.0
-    unit: '%'
-    confidence: 92
-    description: laserAbsorption from Materials.yaml
-    min: 0.02
-    max: 100
-  laserReflectivity:
-    value: 52.3
-    unit: '%'
-    confidence: 92
-    description: laserReflectivity from Materials.yaml
-    min: 5
-    max: 98
-  specificHeat:
-    value: 140
-    unit: J/kg·K
-    confidence: 91
-    description: Specific heat capacity at room temperature
-    min: 100
-    max: 900
-  thermalDiffusivity:
-    value: 23.7
-    unit: mm²/s
-    confidence: 88
-    description: Thermal diffusivity at room temperature
-    min: 0.2
-    max: 174
-  thermalExpansion:
-    value: 6.3
-    unit: ×10⁻⁶/K
-    confidence: 90
-    description: Coefficient of thermal expansion at 20°C
-    min: 0.5
-    max: 29.1
-  absorptionCoefficient:
-    value: 0.45
-    unit: dimensionless
-    confidence: 85
-    description: Typical absorption coefficient for near-IR lasers (1064 nm)
-    min: 0.02
-    max: 0.6
-  reflectivity:
-    value: 0.78
-    unit: dimensionless
-    confidence: 83
-    description: Reflectivity at 1064 nm wavelength
-    min: 0.4
-    max: 0.98
-  ablationThreshold:
-    value: 2.8
-    unit: J/cm²
-    confidence: 82
-    description: Approximate laser ablation threshold for nanosecond pulses at 1064
-      nm
-    min: 0.5
-    max: 50.0
-  oxidationResistance:
-    value: Excellent
-    unit: qualitative
-    confidence: 95
-    description: Forms protective oxide layer (Ta₂O₅) with excellent corrosion resistance
-    min: null
-    max: null
-  crystallineStructure:
-    value: BCC
-    unit: crystal system
-    confidence: 98
-    description: Body-centered cubic crystal structure
-    min: null
-    max: null
-  electricalResistivity:
-    value: 13.5
-    unit: μΩ·cm
-    confidence: 93
-    description: Electrical resistivity at 20°C
-    min: 1.5e-06
-    max: 0.0001
-  laserDamageThreshold:
-    value: 15
-    unit: J/cm²
-    confidence: 80
-    description: Estimated laser-induced damage threshold for short pulses
-    min: 0.3
-    max: 20.0
-  thermalDestructionPoint:
-    value: 3017
-    unit: °C
-    confidence: 97
-    description: Temperature where solid-to-liquid phase transition occurs
-    min: -38.8
-    max: 3422
-  thermalDestructionType: Melting
+  physical_structural:
+    label: Physical/Structural Properties
+    description: Basic physical characteristics
+    percentage: 3.6
+    properties:
+      density:
+        value: 16.69
+        unit: g/cm³
+        confidence: 98
+        description: High density of pure tantalum at room temperature
+        min: 0.53
+        max: 22.6
+  mechanical:
+    label: Mechanical Properties
+    description: Strength, elasticity, and structural characteristics
+    percentage: 18.2
+    properties:
+      hardness:
+        value: 120
+        unit: HV
+        confidence: 87
+        description: Vickers hardness for annealed tantalum
+        min: 0.5
+        max: 3500
+      tensileStrength:
+        value: 345
+        unit: MPa
+        confidence: 89
+        description: Typical tensile strength for annealed tantalum
+        min: 3.0
+        max: 3000.0
+      youngsModulus:
+        value: 186
+        unit: GPa
+        confidence: 94
+        description: Elastic modulus at room temperature
+        min: 5
+        max: 411
+  optical_laser:
+    label: Optical/Laser Properties
+    description: Light interaction and laser response characteristics
+    percentage: 16.4
+    properties:
+      laserAbsorption:
+        value: 40.0
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.02
+        max: 100
+      laserReflectivity:
+        value: 52.3
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 98
+      reflectivity:
+        value: 0.78
+        unit: dimensionless
+        confidence: 83
+        description: Reflectivity at 1064 nm laser wavelength
+        min: null
+        max: null
+      ablationThreshold:
+        value: 2.8
+        unit: J/cm²
+        confidence: 82
+        description: Approximate laser ablation threshold for nanosecond pulses at 1064 nm
+        min: null
+        max: null
+      laserDamageThreshold:
+        value: 15
+        unit: J/cm²
+        confidence: 80
+        description: Estimated laser-induced damage threshold for short pulses
+        min: null
+        max: null
+  thermal:
+    label: Thermal Properties
+    description: Heat-related material characteristics including conductivity, expansion, and destruction points
+    percentage: 29.1
+    properties:
+      specificHeat:
+        value: 140
+        unit: J/kg·K
+        confidence: 91
+        description: Specific heat capacity at 25°C
+        min: 100
+        max: 900
+      thermalConductivity:
+        value: 57.5
+        unit: W/m·K
+        confidence: 92
+        description: Thermal conductivity at room temperature
+        min: 6.0
+        max: 429.0
+      thermalDiffusivity:
+        value: 24.7
+        unit: mm²/s
+        confidence: 88
+        description: Thermal diffusivity at room temperature
+        min: 0.2
+        max: 174
+      thermalExpansion:
+        value: 6.3
+        unit: ×10⁻⁶/K
+        confidence: 90
+        description: Coefficient of thermal expansion at 20°C
+        min: 0.5
+        max: 29.1
+      thermalDestruction:
+        point:
+          value: 1668.0
+          unit: °C
+          min: -38.8
+          max: 3422
+          confidence: 95
+          description: Thermal destruction point
+        type: melting
+  chemical:
+    label: Chemical Properties
+    description: Chemical reactivity and stability
+    percentage: 5.5
+    properties:
+      oxidationResistance:
+        value: Excellent
+        unit: qualitative
+        confidence: 95
+        description: Forms protective oxide layer (Ta₂O₅) with excellent corrosion resistance
+        min: null
+        max: null
+  compositional:
+    label: Compositional Properties
+    description: Material composition characteristics
+    percentage: 5.5
+    properties:
+      crystallineStructure:
+        value: BCC
+        unit: crystal system
+        confidence: 98
+        description: Body-centered cubic crystal structure (space group Im-3m)
+        min: null
+        max: null
+  electrical:
+    label: Electrical Properties
+    description: Electrical conductivity and resistance
+    percentage: 7.3
+    properties:
+      electricalResistivity:
+        value: 13.5
+        unit: μΩ·cm
+        confidence: 93
+        description: Electrical resistivity at 20°C
+        min: null
+        max: null
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 0
+    properties:
+      absorptionCoefficient:
+        value: 0.45
+        unit: dimensionless
+        confidence: 85
+        description: Typical absorption coefficient for 1064 nm laser wavelength
+        min: null
+        max: null
 applications:
 - Aerospace
 - Medical Devices
@@ -148,8 +188,7 @@ machineSettings:
     value: 90
     unit: W
     confidence: 92
-    description: Optimal average power for Tantalum oxide removal without substrate
-      damage
+    description: Optimal average power for Tantalum oxide removal without substrate damage
     min: 70
     max: 120
   wavelength:
@@ -191,9 +230,8 @@ machineSettings:
     value: 6.0
     unit: J/cm²
     confidence: 92
-    description: Energy density threshold for effective Tantalum cleaning - Energy
-      density threshold for effective oxide and contaminant removal from metallic
-      surfaces
+    description: Energy density threshold for effective Tantalum cleaning - Energy density threshold for effective oxide and
+      contaminant removal from metallic surfaces
     min: 3.0
     max: 12.0
   fluenceThreshold:
@@ -232,8 +270,7 @@ author:
   image: /images/author/yi-chun-lin.jpg
 images:
   hero:
-    alt: Tantalum surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Tantalum surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/tantalum-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -260,9 +297,8 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Tantalum has exceptional resistance to heat and corrosion, unlike other
-  refractory metals. This demands precise laser settings to effectively remove contaminants
-  without damaging its protective surface oxide layer.
+subtitle: Tantalum has exceptional resistance to heat and corrosion, unlike other refractory metals. This demands precise
+  laser settings to effectively remove contaminants without damaging its protective surface oxide layer.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -298,19 +334,14 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the tantalum surface is obscured by a non-uniform
-    contamination layer, typically 5-20 µm thick. This layer consists of embedded
-    carbonaceous particulates and discontinuous oxide scales, creating a topographically
-    complex and rough texture. The underlying metal's grain structure is entirely
-    masked. The contaminants form irregular, splotchy patterns, significantly increasing
-    surface roughness and compromising the material's intrinsic properties.
-  afterText: Post-cleaning, the surface reveals a stark transformation. The contamination
-    layer is completely removed, exposing the pristine, fine-grained metallic structure
-    of the tantalum substrate. The surface is now uniform and smooth, with a consistent,
-    clean metallic luster and sharply defined grain boundaries, restoring the material's
-    native surface characteristics.
-  description: Microscopic analysis of tantalum surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the tantalum surface is obscured by a non-uniform contamination layer, typically 5-20
+    µm thick. This layer consists of embedded carbonaceous particulates and discontinuous oxide scales, creating a topographically
+    complex and rough texture. The underlying metal's grain structure is entirely masked. The contaminants form irregular,
+    splotchy patterns, significantly increasing surface roughness and compromising the material's intrinsic properties.
+  afterText: Post-cleaning, the surface reveals a stark transformation. The contamination layer is completely removed, exposing
+    the pristine, fine-grained metallic structure of the tantalum substrate. The surface is now uniform and smooth, with a
+    consistent, clean metallic luster and sharply defined grain boundaries, restoring the material's native surface characteristics.
+  description: Microscopic analysis of tantalum surface before and after laser cleaning treatment
   alt: Microscopic view of tantalum surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -330,8 +361,7 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Tantalum surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Tantalum surface after laser cleaning showing detailed surface structure
     url: /images/material/tantalum-laser-cleaning-micro.jpg
 tags:
 - metal

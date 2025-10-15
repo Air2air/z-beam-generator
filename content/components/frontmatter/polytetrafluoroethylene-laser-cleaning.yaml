@@ -1,6 +1,6 @@
 name: PTFE
-category: Plastic
-subcategory: Polytetrafluoroethylene (PTFE)
+category: plastic
+subcategory: polytetrafluoroethylene (ptfe)
 title: PTFE Laser Cleaning
 description: Laser cleaning parameters for Polytetrafluoroethylene (PTFE)
 materialProperties:
@@ -83,7 +83,7 @@ materialProperties:
     max: 0.95
   reflectivity:
     value: 0.12
-    unit: dimensionless
+    unit: unitless
     confidence: 80
     description: Reflectivity at 1064 nm wavelength
     min: 0.05
@@ -248,7 +248,8 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: PTFE has a uniquely non-stick and chemically inert surface compared to other plastics. This requires specific laser settings to effectively remove contaminants without damaging the low-friction surface.
+subtitle: PTFE has a uniquely non-stick and chemically inert surface compared to other plastics. This requires specific laser
+  settings to effectively remove contaminants without damaging the low-friction surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -284,8 +285,14 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the PTFE surface is obscured by a discontinuous contamination layer, approximately 5-15 µm thick. This layer exhibits a particulate morphology, with agglomerated carbonaceous soot and embedded inorganic crystals. The underlying PTFE microstructure, characterized by its semi-crystalline domains, is entirely masked. The contaminants create a textured, matte topography that disrupts the material's inherent low surface energy.
-  afterText: Laser cleaning has restored the native PTFE morphology. The contaminant layer is completely removed, revealing the underlying semi-crystalline structure with its characteristic smooth, lamellar domains. The surface is now continuous and uniform, with a measurable reduction in surface roughness. This exposes the material's intrinsic low-surface-energy profile, which is critical for its non-stick and chemical-resistant performance.
+  beforeText: At 500x magnification, the PTFE surface is obscured by a discontinuous contamination layer, approximately 5-15
+    µm thick. This layer exhibits a particulate morphology, with agglomerated carbonaceous soot and embedded inorganic crystals.
+    The underlying PTFE microstructure, characterized by its semi-crystalline domains, is entirely masked. The contaminants
+    create a textured, matte topography that disrupts the material's inherent low surface energy.
+  afterText: Laser cleaning has restored the native PTFE morphology. The contaminant layer is completely removed, revealing
+    the underlying semi-crystalline structure with its characteristic smooth, lamellar domains. The surface is now continuous
+    and uniform, with a measurable reduction in surface roughness. This exposes the material's intrinsic low-surface-energy
+    profile, which is critical for its non-stick and chemical-resistant performance.
   description: Microscopic analysis of polytetrafluoroethylene surface before and after laser cleaning treatment
   alt: Microscopic view of polytetrafluoroethylene surface showing laser cleaning effects
   technicalAnalysis:

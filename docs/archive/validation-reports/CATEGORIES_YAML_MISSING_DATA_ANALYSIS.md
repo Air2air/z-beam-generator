@@ -96,10 +96,10 @@ subcategories: {}
 #### Line 375: Ceramic - dielectric_constant unit
 ```yaml
 dielectric_constant:
-  unit: null  # ⚠️ Should be dimensionless or ""
+  unit: null  # ⚠️ Should be unitless or ""
 ```
 
-**Fix**: Unit should be `""` (empty string) or `dimensionless` since dielectric constant is a ratio.
+**Fix**: Unit should be `""` (empty string) or `unitless` since dielectric constant is a ratio.
 
 #### Line 1020: Stone - mineral_composition empty value
 ```yaml
@@ -171,7 +171,7 @@ mineral_composition:
    # Change from:
    unit: null
    # To:
-   unit: ""  # or "dimensionless"
+   unit: ""  # or "unitless"
    ```
 
 3. **Clean Mineral Composition Data** (Line 1020)

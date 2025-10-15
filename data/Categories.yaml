@@ -1,6 +1,6 @@
 metadata:
-  version: 2.6.0
-  generated_date: '2025-09-27T12:41:15.000000'
+  version: 3.0.0
+  generated_date: '2025-10-14T12:00:00.000000'
   source_materials_yaml_hash: fc69e9d44790542345aed7d97e63b2ef
   research_confidence_threshold: 75
   total_categories: 9
@@ -32,6 +32,149 @@ universal_regulatory_standards:
 - ANSI Z136.1 - Safe Use of Lasers
 - IEC 60825 - Safety of Laser Products
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+
+# Property Categories Taxonomy - Physics-based organization for laser cleaning
+propertyCategories:
+  metadata:
+    version: "3.0.0"
+    total_categories: 4
+    total_properties: 55
+    last_updated: "2025-10-14"
+    description: "Physics-based taxonomy organized by laser cleaning process stages"
+    reorganization_note: "Categories follow laser cleaning physics: photon coupling → thermal propagation → mechanical response → material characteristics"
+    
+  categories:
+    laser_interaction:
+      id: "laser_interaction"
+      label: "Laser Interaction Properties"
+      description: "First-order photon coupling: how laser energy enters the material vs. reflects away"
+      physics_stage: "Energy Absorption"
+      percentage: 16.4
+      property_count: 9
+      properties:
+        - laserAbsorption
+        - laserReflectivity
+        - reflectivity
+        - ablationThreshold
+        - absorptivity
+        - emissivity
+        - refractiveIndex
+        - laserDamageThreshold
+        - opticalTransmittance
+      
+    thermal_response:
+      id: "thermal_response"
+      label: "Thermal Response Properties"
+      description: "Heat propagation and dissipation: how absorbed energy distributes and when phase transitions occur"
+      physics_stage: "Energy Dissipation"
+      percentage: 25.5
+      property_count: 14
+      properties:
+        - thermalConductivity
+        - specificHeat
+        - thermalDiffusivity
+        - thermalExpansion
+        - thermalDestruction
+        - boilingPoint
+        - heatCapacity
+        - glasTransitionTemperature
+        - sinteringTemperature
+        - ignitionTemperature
+        - autoignitionTemperature
+        - decompositionTemperature
+        - sublimationPoint
+        - thermalStability
+      
+    mechanical_response:
+      id: "mechanical_response"
+      label: "Mechanical Response Properties"
+      description: "Physical reaction to thermal stress: how material responds structurally to rapid heating"
+      physics_stage: "Material Response"
+      percentage: 18.2
+      property_count: 10
+      properties:
+        - hardness
+        - tensileStrength
+        - youngsModulus
+        - yieldStrength
+        - elasticity
+        - bulkModulus
+        - shearModulus
+        - compressiveStrength
+        - flexuralStrength
+        - fractureResistance
+      
+    material_characteristics:
+      id: "material_characteristics"
+      label: "Material Characteristics"
+      description: "Intrinsic properties affecting secondary cleaning outcomes: surface finish, contaminant adhesion, and process efficiency"
+      physics_stage: "Supporting Properties"
+      percentage: 40.0
+      property_count: 22
+      properties:
+        - density
+        - viscosity
+        - porosity
+        - surfaceRoughness
+        - permeability
+        - surfaceEnergy
+        - wettability
+        - electricalResistivity
+        - electricalConductivity
+        - dielectricConstant
+        - dielectricStrength
+        - chemicalStability
+        - oxidationResistance
+        - corrosionResistance
+        - moistureContent
+        - waterSolubility
+        - weatherResistance
+        - crystallineStructure
+        - celluloseContent
+        - grainSize
+        - magneticPermeability
+        - photonPenetrationDepth
+
+  # Usage tier classification based on frequency across 122 materials
+  usage_tiers:
+    core:
+      description: "Present in >100 materials (universal/essential properties)"
+      threshold: 100
+      property_count: 15
+      properties:
+        - density
+        - thermalConductivity
+        - specificHeat
+        - thermalExpansion
+        - hardness
+        - tensileStrength
+        - youngsModulus
+        - laserAbsorption
+        - reflectivity
+        - laserReflectivity
+        - ablationThreshold
+        - thermalDestructionPoint
+        - electricalResistivity
+        - thermalDestructionType
+    
+    common:
+      description: "Present in 30-100 materials (important but not universal)"
+      threshold: 30
+      property_count: 6
+      properties:
+        - boilingPoint
+        - porosity
+        - electricalConductivity
+        - laserDamageThreshold
+        - compressiveStrength
+        - flexuralStrength
+    
+    specialized:
+      description: "Present in <30 materials (material-specific properties)"
+      threshold: 0
+      property_count: 34
+      note: "All properties not listed in core or common tiers"
+
 machineSettingsDescriptions:
   ablationThreshold:
     description: Minimum energy density required to initiate material removal from
@@ -176,20 +319,20 @@ materialPropertyDescriptions:
       stone: 1.5-3.2
       masonry: 1.8-2.8
       semiconductor: 2.3-19.3
-  thermalDestructionPoint:
-    description: Temperature at which thermal damage begins (replaces melting point for accuracy)
-    unit: °C
-    relevance: Critical threshold for thermal damage assessment across all material types
-    laser_cleaning_impact: Determines safe operating temperature limits for substrate protection
-    safety_considerations: Stay well below destruction point to prevent substrate damage
+  thermalDestruction:
+    description: Comprehensive thermal failure characteristics including temperature threshold and mechanism type
+    structure:
+      point:
+        description: Temperature at which thermal damage begins (replaces melting point for accuracy)
+        unit: °C or K
+        relevance: Critical threshold for thermal damage assessment across all material types
+      type:
+        description: Primary mechanism of thermal failure for this material category
+        unit: categorical
+        valid_values: ["melting", "decomposition", "carbonization", "oxidation", "sublimation", "thermal_shock", "softening", "spalling", "calcination", "delamination"]
+    laser_cleaning_impact: Determines safe operating temperature limits and appropriate damage assessment methods
+    safety_considerations: Stay well below destruction point; different destruction types require different preventive measures
     scientific_accuracy: Accounts for various thermal destruction mechanisms beyond simple melting
-  thermalDestructionType:
-    description: Primary mechanism of thermal failure for this material category
-    unit: categorical
-    relevance: Determines appropriate temperature monitoring and safety protocols
-    laser_cleaning_impact: Influences parameter selection and damage assessment methods
-    safety_considerations: Different destruction types require different preventive measures
-    valid_values: ["melting", "decomposition", "carbonization", "oxidation", "sublimation", "thermal_shock", "softening", "spalling", "calcination", "delamination"]
   thermalConductivity:
     description: Rate of heat transfer through the material
     unit: W/m·K
@@ -996,11 +1139,12 @@ categories:
         max: 2000.0
         min: 0.03
         unit: W/m·K
-      thermalDestructionPoint:
-        max: 3827
-        min: 1000
-        unit: °C
-      thermalDestructionType: thermal_shock
+      thermalDestruction:
+        point:
+          max: 3827
+          min: 1000
+          unit: °C
+        type: thermal_shock
       thermalDiffusivity:
         max: 120
         min: 0.05
@@ -1139,11 +1283,12 @@ categories:
         max: 400
         min: 0.1
         unit: W/m·K
-      thermalDestructionPoint:
-        max: 2000
-        min: 150
-        unit: °C
-      thermalDestructionType: decomposition
+      thermalDestruction:
+        point:
+          max: 2000
+          min: 150
+          unit: °C
+        type: decomposition
       thermalDiffusivity:
         max: 180
         min: 0.1
@@ -1209,11 +1354,12 @@ categories:
         max: 40
         min: 0.02
         unit: W/m·K
-      thermalDestructionPoint:
-        max: 1723
-        min: 500
-        unit: °C
-      thermalDestructionType: melting
+      thermalDestruction:
+        point:
+          max: 1723
+          min: 500
+          unit: °C
+        type: melting
       thermalDiffusivity:
         max: 15
         min: 0.01
@@ -1287,11 +1433,12 @@ categories:
         max: 2.5
         min: 0.08
         unit: W/m·K
-      thermalDestructionPoint:
-        max: 1200
-        min: 500
-        unit: °C
-      thermalDestructionType: spalling
+      thermalDestruction:
+        point:
+          max: 1200
+          min: 500
+          unit: °C
+        type: spalling
       thermalDiffusivity:
         max: 1
         min: 0.1
@@ -1370,11 +1517,12 @@ categories:
         max: 429.0
         min: 6.0
         unit: W/m·K
-      thermalDestructionPoint:
-        max: 3422
-        min: -38.8
-        unit: °C
-      thermalDestructionType: melting
+      thermalDestruction:
+        point:
+          max: 3422
+          min: -38.8
+          unit: °C
+        type: melting
       thermalDiffusivity:
         max: 174
         min: 0.2
@@ -1395,7 +1543,8 @@ categories:
         category_ranges:
           density: {min: 7.2, max: 8.0, unit: "g/cm³"}
           thermalConductivity: {min: 15.0, max: 80.0, unit: "W/m·K"}
-          thermalDestructionPoint: {min: 1370, max: 1538, unit: "°C"}
+          thermalDestruction:
+            point: {min: 1370, max: 1538, unit: "°C"}
           hardness: {min: 120, max: 700, unit: "HV"}
         special_considerations:
           - "Magnetic properties require special handling"
@@ -1408,7 +1557,8 @@ categories:
         category_ranges:
           density: {min: 2.7, max: 11.34, unit: "g/cm³"}
           thermalConductivity: {min: 60.0, max: 429.0, unit: "W/m·K"}
-          thermalDestructionPoint: {min: 232, max: 1085, unit: "°C"}
+          thermalDestruction:
+            point: {min: 232, max: 1085, unit: "°C"}
           laserReflectivity: {min: 60, max: 98, unit: "%"}
         special_considerations:
           - "High reflectivity requires power adjustment"
@@ -1421,7 +1571,8 @@ categories:
         category_ranges:
           density: {min: 10.5, max: 22.6, unit: "g/cm³"}
           thermalConductivity: {min: 70.0, max: 429.0, unit: "W/m·K"}
-          thermalDestructionPoint: {min: 962, max: 3422, unit: "°C"}
+          thermalDestruction:
+            point: {min: 962, max: 3422, unit: "°C"}
           laserReflectivity: {min: 80, max: 98, unit: "%"}
         special_considerations:
           - "Extremely high reflectivity requires specialized optics"
@@ -1434,7 +1585,8 @@ categories:
         category_ranges:
           density: {min: 6.0, max: 19.3, unit: "g/cm³"}
           thermalConductivity: {min: 22.0, max: 174.0, unit: "W/m·K"}
-          thermalDestructionPoint: {min: 1855, max: 3422, unit: "°C"}
+          thermalDestruction:
+            point: {min: 1855, max: 3422, unit: "°C"}
           hardness: {min: 150, max: 3500, unit: "HV"}
         special_considerations:
           - "Extremely high melting points allow aggressive cleaning"
@@ -1447,7 +1599,8 @@ categories:
         category_ranges:
           density: {min: 0.53, max: 8.9, unit: "g/cm³"}
           thermalConductivity: {min: 6.0, max: 100.0, unit: "W/m·K"}
-          thermalDestructionPoint: {min: 30, max: 1907, unit: "°C"}
+          thermalDestruction:
+            point: {min: 30, max: 1907, unit: "°C"}
           hardness: {min: 0.5, max: 1200, unit: "HV"}
         special_considerations:
           - "Beryllium - EXTREME TOXICITY, requires sealed processing"
@@ -1560,11 +1713,12 @@ categories:
         max: 3
         min: 0.02
         unit: W/m·K
-      thermalDestructionPoint:
-        max: 400
-        min: 80
-        unit: °C
-      thermalDestructionType: decomposition
+      thermalDestruction:
+        point:
+          max: 400
+          min: 80
+          unit: °C
+        type: decomposition
       thermalDiffusivity:
         max: 1
         min: 0.05
@@ -1630,11 +1784,12 @@ categories:
         max: 156
         min: 0.2
         unit: W/m·K
-      thermalDestructionPoint:
-        max: 1414
-        min: 100
-        unit: °C
-      thermalDestructionType: melting
+      thermalDestruction:
+        point:
+          max: 1414
+          min: 100
+          unit: °C
+        type: melting
       thermalDiffusivity:
         max: 90
         min: 0.1
@@ -1735,11 +1890,12 @@ categories:
         max: 8
         min: 0.2
         unit: W/m·K
-      thermalDestructionPoint:
-        max: 1700
-        min: 600
-        unit: °C
-      thermalDestructionType: thermal_shock
+      thermalDestruction:
+        point:
+          max: 1700
+          min: 600
+          unit: °C
+        type: thermal_shock
       thermalDiffusivity:
         max: 2.5
         min: 0.2
@@ -1912,11 +2068,12 @@ categories:
         max: 0.4
         min: 0.04
         unit: W/m·K
-      thermalDestructionPoint:
-        max: 500
-        min: 200
-        unit: °C
-      thermalDestructionType: carbonization
+      thermalDestruction:
+        point:
+          max: 500
+          min: 200
+          unit: °C
+        type: carbonization
       thermalDiffusivity:
         max: 0.4
         min: 0.0001
@@ -1938,7 +2095,8 @@ categories:
           density: {min: 0.5, max: 1.25, unit: "g/cm³"}
           hardness: {min: 900, max: 5000, unit: "lbf"}
           moistureContent: {min: 6.0, max: 12.0, unit: "%"}
-          thermalDestructionPoint: {min: 300, max: 450, unit: "°C"}
+          thermalDestruction:
+            point: {min: 300, max: 450, unit: "°C"}
         special_considerations:
           - "Dense grain structure requires precise cleaning"
           - "Higher value than softwoods - minimize surface damage"
@@ -1953,7 +2111,8 @@ categories:
           density: {min: 0.3, max: 0.6, unit: "g/cm³"}
           hardness: {min: 20, max: 900, unit: "lbf"}
           moistureContent: {min: 8.0, max: 15.0, unit: "%"}
-          thermalDestructionPoint: {min: 250, max: 380, unit: "°C"}
+          thermalDestruction:
+            point: {min: 250, max: 380, unit: "°C"}
         special_considerations:
           - "Softer structure - gentler cleaning required"
           - "Resin content in pine requires special attention"
@@ -1968,7 +2127,8 @@ categories:
           density: {min: 0.5, max: 0.85, unit: "g/cm³"}
           hardness: {min: 500, max: 1500, unit: "lbf"}
           moistureContent: {min: 6.0, max: 10.0, unit: "%"}
-          thermalDestructionPoint: {min: 200, max: 350, unit: "°C"}
+          thermalDestruction:
+            point: {min: 200, max: 350, unit: "°C"}
         special_considerations:
           - "Adhesives require careful temperature control"
           - "Layered structure (plywood) needs even heating"
@@ -1983,7 +2143,8 @@ categories:
           density: {min: 0.6, max: 1.2, unit: "g/cm³"}
           hardness: {min: 1000, max: 4500, unit: "lbf"}
           moistureContent: {min: 6.0, max: 12.0, unit: "%"}
-          thermalDestructionPoint: {min: 300, max: 450, unit: "°C"}
+          thermalDestruction:
+            point: {min: 300, max: 450, unit: "°C"}
         special_considerations:
           - "Bamboo technically grass - very hard, fast-growing"
           - "Rosewood endangered - CITES regulations apply"
@@ -2065,10 +2226,6 @@ materialPropertiesDefinitions:
         description: Heat capacity per unit mass
         unit: J/(kg·K)
         measurement_method: ASTM C351 - Mean Specific Heat
-      meltingPoint:
-        description: Temperature at which material transitions to liquid
-        unit: °C
-        measurement_method: ASTM D3418 - Transition Temperatures
       operatingTemperature:
         description: Safe operational temperature range
         unit: °C

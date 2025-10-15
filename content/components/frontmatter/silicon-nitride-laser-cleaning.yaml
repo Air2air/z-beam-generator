@@ -1,144 +1,184 @@
 name: Silicon Nitride
-category: Ceramic
-subcategory: Silicon Nitride
+category: ceramic
+subcategory: silicon nitride
 title: Silicon Nitride Laser Cleaning
 description: Laser cleaning parameters for Silicon Nitride
 materialProperties:
-  density:
-    value: 3.2
-    unit: g/cm³
-    confidence: 95
-    description: Typical density for hot-pressed silicon nitride
-    min: 2.2
-    max: 19.3
-  thermalConductivity:
-    value: 30
-    unit: W/m·K
-    confidence: 92
-    description: Room temperature thermal conductivity for high-purity Si3N4
-    min: 0.03
-    max: 2000.0
-  tensileStrength:
-    value: 550.0
-    unit: MPa
-    confidence: 95
-    description: tensileStrength from Materials.yaml
-    min: 50
-    max: 1000
-  hardness:
-    value: 16
-    unit: GPa
-    confidence: 93
-    description: Vickers hardness for sintered silicon nitride
-    min: 1.0
-    max: 10.0
-  youngsModulus:
-    value: 310
-    unit: GPa
-    confidence: 96
-    description: Elastic modulus for dense silicon nitride
-    min: 50
-    max: 800
-  laserAbsorption:
-    value: 0.5
-    unit: '%'
-    confidence: 92
-    description: laserAbsorption from Materials.yaml
-    min: 0.1
-    max: 50
-  laserReflectivity:
-    value: 42.3
-    unit: '%'
-    confidence: 92
-    description: laserReflectivity from Materials.yaml
-    min: 5
-    max: 90
-  specificHeat:
-    value: 710
-    unit: J/kg·K
-    confidence: 88
-    description: Specific heat capacity at room temperature
-    min: 200
-    max: 1200
-  thermalDiffusivity:
-    value: 15.8
-    unit: mm²/s
-    confidence: 95
-    description: thermalDiffusivity from Materials.yaml
-    min: 0.05
-    max: 120
-  thermalExpansion:
-    value: 3.2
-    unit: ×10^-6 /K
-    confidence: 94
-    description: Coefficient of thermal expansion at room temperature
-    min: 0.1
-    max: 14
-  flexuralStrength:
-    value: 850
-    unit: MPa
-    confidence: 90
-    description: Room temperature flexural strength
-    min: 50
-    max: 1000
-  absorptionCoefficient:
-    value: 0.8
-    unit: cm^-1
-    confidence: 85
-    description: Approximate absorption coefficient for near-IR wavelengths
-    min: 0.3
-    max: 0.9
-  reflectivity:
-    value: 0.15
-    unit: dimensionless
-    confidence: 82
-    description: Typical reflectivity at 1064 nm wavelength
-    min: 0.1
-    max: 0.7
-  ablationThreshold:
-    value: 2.5
-    unit: J/cm²
-    confidence: 85
-    description: Approximate laser ablation threshold for nanosecond pulses at 1064
-      nm
-    min: 2.0
-    max: 15.0
-  laserDamageThreshold:
-    value: 15
-    unit: J/cm²
-    confidence: 83
-    description: Damage threshold for high-quality silicon nitride surfaces
-    min: 1.0
-    max: 10.0
-  oxidationResistance:
-    value: 1400
-    unit: °C
-    confidence: 94
-    description: Maximum service temperature in oxidizing environments
-    min: 1000
-    max: 2500
-  crystallineStructure:
-    value: Hexagonal
-    unit: none
-    confidence: 98
-    description: α-Si3N4 and β-Si3N4 both have hexagonal crystal structures
-    min: null
-    max: null
-  porosity:
-    value: 2
-    unit: '%'
-    confidence: 89
-    description: Typical porosity for high-density sintered silicon nitride
-    min: 0.1
-    max: 50.0
-  thermalDestructionPoint:
-    value: 1900
-    unit: °C
-    confidence: 90
-    description: Temperature where particle fusion or decomposition occurs
-    min: 1000
-    max: 3827
-  thermalDestructionType: Sintering
+  physical_structural:
+    label: Physical/Structural Properties
+    description: Basic physical characteristics
+    percentage: 3.6
+    properties:
+      density:
+        value: 3.2
+        unit: g/cm³
+        confidence: 95
+        description: Theoretical density of fully dense silicon nitride
+        min: 2.2
+        max: 19.3
+  mechanical:
+    label: Mechanical Properties
+    description: Strength, elasticity, and structural characteristics
+    percentage: 18.2
+    properties:
+      hardness:
+        value: 16
+        unit: GPa
+        confidence: 92
+        description: Vickers hardness of sintered silicon nitride
+        min: 1.0
+        max: 10.0
+      tensileStrength:
+        value: 550.0
+        unit: MPa
+        confidence: 95
+        description: tensileStrength from Materials.yaml
+        min: 50
+        max: 1000
+      youngsModulus:
+        value: 310
+        unit: GPa
+        confidence: 94
+        description: Elastic modulus of dense silicon nitride
+        min: 50
+        max: 800
+      flexuralStrength:
+        value: 850
+        unit: MPa
+        confidence: 90
+        description: Room temperature flexural strength
+        min: null
+        max: null
+  optical_laser:
+    label: Optical/Laser Properties
+    description: Light interaction and laser response characteristics
+    percentage: 16.4
+    properties:
+      laserAbsorption:
+        value: 0.5
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.1
+        max: 50
+      laserReflectivity:
+        value: 42.3
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 90
+      reflectivity:
+        value: 0.15
+        unit: dimensionless
+        confidence: 80
+        description: Reflectivity at common laser wavelengths (1064 nm)
+        min: null
+        max: null
+      ablationThreshold:
+        value: 2.5
+        unit: J/cm²
+        confidence: 85
+        description: Laser ablation threshold for nanosecond pulses at 1064 nm
+        min: null
+        max: null
+      laserDamageThreshold:
+        value: 15
+        unit: J/cm²
+        confidence: 82
+        description: Damage threshold for high-quality silicon nitride surfaces
+        min: null
+        max: null
+  thermal:
+    label: Thermal Properties
+    description: Heat-related material characteristics including conductivity, expansion, and destruction points
+    percentage: 29.1
+    properties:
+      specificHeat:
+        value: 710
+        unit: J/kg·K
+        confidence: 85
+        description: Specific heat capacity at room temperature
+        min: 200
+        max: 1200
+      thermalConductivity:
+        value: 30
+        unit: W/m·K
+        confidence: 88
+        description: Thermal conductivity at room temperature for high-purity Si3N4
+        min: 0.03
+        max: 2000.0
+      thermalDiffusivity:
+        value: 15.8
+        unit: mm²/s
+        confidence: 95
+        description: thermalDiffusivity from Materials.yaml
+        min: 0.05
+        max: 120
+      thermalExpansion:
+        value: 3.2
+        unit: ×10⁻⁶/K
+        confidence: 92
+        description: Coefficient of thermal expansion (20-1000°C)
+        min: 0.1
+        max: 14
+      thermalDestruction:
+        point:
+          value: 2173.15
+          unit: K
+          min: 1000
+          max: 3827
+          confidence: 95
+          description: Thermal destruction point
+        type: thermal_shock
+  chemical:
+    label: Chemical Properties
+    description: Chemical reactivity and stability
+    percentage: 5.5
+    properties:
+      oxidationResistance:
+        value: 1400
+        unit: °C
+        confidence: 88
+        description: Maximum service temperature in oxidizing environments
+        min: null
+        max: null
+  compositional:
+    label: Compositional Properties
+    description: Material composition characteristics
+    percentage: 5.5
+    properties:
+      crystallineStructure:
+        value: Hexagonal
+        unit: crystal system
+        confidence: 95
+        description: Primary crystal structure (α-Si3N4 and β-Si3N4 phases)
+        min: null
+        max: null
+  surface:
+    label: Surface Properties
+    description: Surface characteristics and texture
+    percentage: 9.1
+    properties:
+      porosity:
+        value: 0.5
+        unit: '%'
+        confidence: 85
+        description: Typical porosity for high-density sintered silicon nitride
+        min: null
+        max: null
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 0
+    properties:
+      absorptionCoefficient:
+        value: 0.8
+        unit: cm⁻¹
+        confidence: 82
+        description: Absorption coefficient for near-IR wavelengths (1064 nm)
+        min: null
+        max: null
 applications:
 - Aerospace
 - Medical Devices
@@ -155,8 +195,7 @@ machineSettings:
     value: 90
     unit: W
     confidence: 92
-    description: Optimal average power for Silicon Nitride surface cleaning without
-      thermal damage
+    description: Optimal average power for Silicon Nitride surface cleaning without thermal damage
     min: 70
     max: 110
   wavelength:
@@ -177,16 +216,14 @@ machineSettings:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning coverage and thermal
-      management
+    description: Optimal repetition rate for efficient cleaning coverage and thermal management
     min: 20
     max: 100
   pulseWidth:
     value: 12
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient contaminant removal with
-      minimal substrate interaction
+    description: Nanosecond pulse duration for efficient contaminant removal with minimal substrate interaction
     min: 8
     max: 20
   scanSpeed:
@@ -200,24 +237,22 @@ machineSettings:
     value: 4.0
     unit: J/cm²
     confidence: 88
-    description: Energy density threshold for effective Silicon Nitride cleaning -
-      Energy density threshold for effective contaminant removal from ceramic surfaces
+    description: Energy density threshold for effective Silicon Nitride cleaning - Energy density threshold for effective
+      contaminant removal from ceramic surfaces
     min: 2.0
     max: 8.0
   energyDensity:
     value: 4.5
     unit: J/cm²
     confidence: 90
-    description: Fluence threshold for effective contaminant removal without damaging
-      Silicon Nitride substrate
+    description: Fluence threshold for effective contaminant removal without damaging Silicon Nitride substrate
     min: 3.0
     max: 6.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      buildup
+    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
     min: 40
     max: 70
   passCount:
@@ -249,8 +284,7 @@ author:
   image: /images/author/yi-chun-lin.jpg
 images:
   hero:
-    alt: Silicon Nitride surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Silicon Nitride surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/silicon-nitride-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -277,9 +311,8 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Pay attention to Silicon Nitride’s unique density when you’re setting up
-  for treatment. With its value around 3.2 g/cm³, it absorbs laser energy differently,
-  so you’ll need to adjust power levels carefully to prevent uneven results.
+subtitle: Pay attention to Silicon Nitride’s unique density when you’re setting up for treatment. With its value around 3.2
+  g/cm³, it absorbs laser energy differently, so you’ll need to adjust power levels carefully to prevent uneven results.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -315,32 +348,24 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the silicon nitride surface is obscured by a
-    non-uniform contamination layer, approximately 2-5 µm thick. This layer consists
-    of particulate matter and a carbonaceous film, which agglomerates in the surface's
-    micro-textured valleys. The underlying ceramic's fine-grained, polycrystalline
-    structure is largely hidden, with contamination forming a discontinuous, blotchy
-    pattern that scatters light and masks the substrate's intrinsic properties.
-  afterText: 'Following laser cleaning, the surface reveals its native polycrystalline
-    microstructure. The fine, interlocking grains of the hexagonal β-Si3N4 phase are
-    now clearly defined, with grain boundaries sharply visible. The contamination
-    layer has been completely removed via ablation, leaving no residual film or particulate
-    agglomerates.
+  beforeText: At 500x magnification, the silicon nitride surface is obscured by a non-uniform contamination layer, approximately
+    2-5 µm thick. This layer consists of particulate matter and a carbonaceous film, which agglomerates in the surface's micro-textured
+    valleys. The underlying ceramic's fine-grained, polycrystalline structure is largely hidden, with contamination forming
+    a discontinuous, blotchy pattern that scatters light and masks the substrate's intrinsic properties.
+  afterText: 'Following laser cleaning, the surface reveals its native polycrystalline microstructure. The fine, interlocking
+    grains of the hexagonal β-Si3N4 phase are now clearly defined, with grain boundaries sharply visible. The contamination
+    layer has been completely removed via ablation, leaving no residual film or particulate agglomerates.
 
 
-    The surface texture is restored to its original state, characterized by sub-micron
-    surface roughness. The laser process has effectively cleared the valleys and pores,
-    with the material''s 2% porosity now apparent as distinct, clean micro-features.
-    This exposes the intrinsic high hardness (16 GPa) and flexural strength (850 MPa)
-    of the underlying ceramic.
+    The surface texture is restored to its original state, characterized by sub-micron surface roughness. The laser process
+    has effectively cleared the valleys and pores, with the material''s 2% porosity now apparent as distinct, clean micro-features.
+    This exposes the intrinsic high hardness (16 GPa) and flexural strength (850 MPa) of the underlying ceramic.
 
 
-    The transformation is evident in the surface''s reflectivity, which has increased
-    from a diffuse, scattered appearance to a more consistent, specular finish. This
-    confirms the removal of light-scattering contaminants and the restoration of a
-    pristine, high-performance ceramic surface suitable for demanding applications.'
-  description: Microscopic analysis of silicon nitride surface before and after laser
-    cleaning treatment
+    The transformation is evident in the surface''s reflectivity, which has increased from a diffuse, scattered appearance
+    to a more consistent, specular finish. This confirms the removal of light-scattering contaminants and the restoration
+    of a pristine, high-performance ceramic surface suitable for demanding applications.'
+  description: Microscopic analysis of silicon nitride surface before and after laser cleaning treatment
   alt: Microscopic view of silicon nitride surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -360,8 +385,7 @@ caption:
     materialType: Ceramic
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Silicon Nitride surface after laser cleaning showing
-      detailed surface structure
+    alt: Microscopic view of Silicon Nitride surface after laser cleaning showing detailed surface structure
     url: /images/material/silicon-nitride-laser-cleaning-micro.jpg
 tags:
 - ceramic

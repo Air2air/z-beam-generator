@@ -1,149 +1,188 @@
 name: Oak
-category: Wood
+category: wood
 subcategory: hardwood
 title: Oak Laser Cleaning
 description: Laser cleaning parameters for Oak
 materialProperties:
-  density:
-    value: 0.75
-    unit: g/cm³
-    confidence: 95
-    description: Average density of European oak at 12% moisture content
-    min: 0.12
-    max: 1.25
-  thermalConductivity:
-    value: 0.17
-    unit: W/m·K
-    confidence: 90
-    description: Thermal conductivity perpendicular to grain direction at room temperature
-    min: 0.04
-    max: 0.4
-  tensileStrength:
-    value: 95
-    unit: MPa
-    confidence: 90
-    description: Tensile strength parallel to grain direction
-    min: 20
-    max: 200
-  hardness:
-    value: 5.0
-    unit: kN
-    confidence: 88
-    description: Brinell hardness perpendicular to grain
-    min: 20
-    max: 5000
-  youngsModulus:
-    value: 12.0
-    unit: GPa
-    confidence: 92
-    description: Modulus of elasticity parallel to grain
-    min: 5
-    max: 25
-  laserAbsorption:
-    value: 32.7
-    unit: '%'
-    confidence: 92
-    description: laserAbsorption from Materials.yaml
-    min: 1
-    max: 50
-  laserReflectivity:
-    value: 32.5
-    unit: '%'
-    confidence: 92
-    description: laserReflectivity from Materials.yaml
-    min: 10
-    max: 60
-  specificHeat:
-    value: 1.38
-    unit: kJ/kg·K
-    confidence: 92
-    description: Specific heat capacity at 20°C and 12% moisture content
-    min: 800
-    max: 2500
-  thermalDestructionPoint:
-    value: 400.0
-    unit: °C
-    confidence: 92
-    description: Temperature where thermal decomposition begins
-    min: 200
-    max: 500
-  thermalDestructionType: Decomposition
-  thermalDiffusivity:
-    value: 0.15
-    unit: mm²/s
-    confidence: 82
-    description: Thermal diffusivity at room temperature
-    min: 0.0001
-    max: 0.4
-  thermalExpansion:
-    value: 4.9
-    unit: 10^-6/°C
-    confidence: 88
-    description: Coefficient of thermal expansion perpendicular to grain
-    min: 3.0
-    max: 60
-  absorptionCoefficient:
-    value: 0.85
-    unit: dimensionless
-    confidence: 88
-    description: Average absorption coefficient for near-infrared laser wavelengths
-      (1064 nm)
-    min: 0.7
-    max: 0.95
-  reflectivity:
-    value: 0.12
-    unit: dimensionless
-    confidence: 85
-    description: Reflectivity at 1064 nm wavelength
-    min: 0.05
-    max: 0.3
-  ablationThreshold:
-    value: 0.8
-    unit: J/cm²
-    confidence: 82
-    description: Approximate laser ablation threshold for nanosecond pulses at 1064
-      nm
-    min: 0.5
-    max: 3.0
-  porosity:
-    value: 55
-    unit: '%'
-    confidence: 85
-    description: Typical porosity range for oak wood structure
-    min: 5.0
-    max: 75.0
-  moistureContent:
-    value: 12
-    unit: '%'
-    confidence: 95
-    description: Equilibrium moisture content at standard conditions
-    min: 6.0
-    max: 20.0
-  celluloseContent:
-    value: 45
-    unit: '%'
-    confidence: 90
-    description: Average cellulose content in oak wood composition
-    min: 35.0
-    max: 55.0
-  ligninContent:
-    value: 25
-    unit: '%'
-    confidence: 90
-    description: Average lignin content affecting thermal degradation behavior
-    min: 15.0
-    max: 40.0
+  physical_structural:
+    label: Physical/Structural Properties
+    description: Basic physical characteristics
+    percentage: 3.6
+    properties:
+      density:
+        value: 0.75
+        unit: g/cm³
+        confidence: 95
+        description: Average density of European oak at 12% moisture content
+        min: 0.12
+        max: 1.25
+  mechanical:
+    label: Mechanical Properties
+    description: Strength, elasticity, and structural characteristics
+    percentage: 18.2
+    properties:
+      hardness:
+        value: 5.0
+        unit: kN
+        confidence: 88
+        description: Janka hardness test value for European oak
+        min: 20
+        max: 5000
+      tensileStrength:
+        value: 95
+        unit: MPa
+        confidence: 90
+        description: Tensile strength parallel to grain direction
+        min: 20
+        max: 200
+      youngsModulus:
+        value: 12.0
+        unit: GPa
+        confidence: 94
+        description: Modulus of elasticity parallel to grain
+        min: 5
+        max: 25
+  optical_laser:
+    label: Optical/Laser Properties
+    description: Light interaction and laser response characteristics
+    percentage: 16.4
+    properties:
+      laserAbsorption:
+        value: 32.7
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 1
+        max: 50
+      laserReflectivity:
+        value: 32.5
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 10
+        max: 60
+      reflectivity:
+        value: 0.12
+        unit: dimensionless
+        confidence: 82
+        description: Reflectivity at common laser cleaning wavelengths (1064 nm)
+        min: null
+        max: null
+      ablationThreshold:
+        value: 1.2
+        unit: J/cm²
+        confidence: 80
+        description: Estimated ablation threshold for nanosecond pulsed lasers at 1064 nm
+        min: null
+        max: null
+  thermal:
+    label: Thermal Properties
+    description: Heat-related material characteristics including conductivity, expansion, and destruction points
+    percentage: 29.1
+    properties:
+      specificHeat:
+        value: 1.8
+        unit: kJ/kg·K
+        confidence: 92
+        description: Specific heat capacity at room temperature
+        min: 800
+        max: 2500
+      thermalConductivity:
+        value: 0.17
+        unit: W/m·K
+        confidence: 90
+        description: Thermal conductivity perpendicular to grain direction at room temperature
+        min: 0.04
+        max: 0.4
+      thermalDiffusivity:
+        value: 0.15
+        unit: mm²/s
+        confidence: 82
+        description: Thermal diffusivity across grain direction
+        min: 0.0001
+        max: 0.4
+      thermalExpansion:
+        value: 4.9
+        unit: 10^-6/°C
+        confidence: 88
+        description: Linear thermal expansion coefficient perpendicular to grain
+        min: 3.0
+        max: 60
+      thermalDestruction:
+        point:
+          value: 400.0
+          unit: °C
+          min: 200
+          max: 500
+          confidence: 92
+          description: Thermal destruction point
+        type: carbonization
+  surface:
+    label: Surface Properties
+    description: Surface characteristics and texture
+    percentage: 9.1
+    properties:
+      porosity:
+        value: 45
+        unit: '%'
+        confidence: 92
+        description: Typical porosity range for oak wood structure
+        min: null
+        max: null
+      surfaceRoughness:
+        value: 3.5
+        unit: μm Ra
+        confidence: 85
+        description: Average surface roughness for planed oak surfaces
+        min: null
+        max: null
+  environmental:
+    label: Environmental Properties
+    description: Environmental exposure resistance
+    percentage: 5.5
+    properties:
+      moistureContent:
+        value: 12
+        unit: '%'
+        confidence: 95
+        description: Equilibrium moisture content at standard conditions
+        min: null
+        max: null
+  compositional:
+    label: Compositional Properties
+    description: Material composition characteristics
+    percentage: 5.5
+    properties:
+      celluloseContent:
+        value: 42
+        unit: '%'
+        confidence: 90
+        description: Average cellulose content affecting thermal decomposition behavior
+        min: null
+        max: null
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 0
+    properties:
+      absorptionCoefficient:
+        value: 0.85
+        unit: dimensionless
+        confidence: 85
+        description: Approximate absorption coefficient for near-infrared laser wavelengths (1064 nm)
+        min: null
+        max: null
 applications:
 - Cultural Heritage
 - Marine
 - Aerospace
-- Furniture Manufacturing
 - Automotive
-- Construction
-- Musical Instrument Manufacturing
-- Food Processing
+- Manufacturing
 - Energy
+- Electronics
 - Medical
+- Food Processing
+- Construction
 machineSettings:
   powerRange:
     value: 90
@@ -156,71 +195,61 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength for optimal absorption in Oak cellulose and lignin
+    description: Near-IR wavelength for optimal absorption in Oak lignin and contaminants
     min: 1030
     max: 1070
   spotSize:
     value: 80
     unit: μm
     confidence: 84
-    description: Beam spot diameter for precise cleaning control on Oak surface
+    description: Beam spot diameter for effective cleaning resolution on Oak grain structure
     min: 50
     max: 120
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning with thermal management
+    description: Optimal repetition rate for continuous cleaning coverage on Oak surfaces
     min: 30
     max: 100
   pulseWidth:
     value: 12
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for controlled ablation of contaminants
+    description: Short pulse duration for efficient contaminant removal with minimal thermal damage
     min: 8
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform cleaning coverage
+    description: Optimal scanning speed for efficient Oak surface cleaning
     min: 300
     max: 800
-  fluence:
-    value: 4.5
-    unit: J/cm²
-    confidence: 88
-    description: Energy density threshold for effective Oak cleaning - Energy density
-      threshold for effective organic contaminant removal from wood without charring
-      or thermal damage
-    min: 2.0
-    max: 8.0
   energyDensity:
-    value: 2.8
+    value: 1.8
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without wood
-      damage
-    min: 1.5
-    max: 4.0
+    description: Fluence threshold for effective contaminant removal without damaging Oak substrate
+    min: 1.2
+    max: 2.5
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning pattern
+    description: Optimal beam overlap for uniform cleaning coverage on Oak surfaces
     min: 40
-    max: 60
+    max: 70
   passCount:
     value: 2
     unit: passes
-    confidence: 88
-    description: Recommended number of passes for complete contaminant removal
+    confidence: 85
+    description: Recommended number of passes for thorough Oak surface cleaning
     min: 1
-    max: 3
+    max: 4
   laserType:
     value: Fiber Laser
-    unit: n/a
+    unit: N/A
     confidence: 90
     description: Recommended laser type for Oak cleaning applications
     min: null
@@ -268,9 +297,8 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Oak has a prominent grain structure and high tannin content, unlike many
-  other hardwoods. These traits require careful laser power adjustment to clean effectively
-  without leaving shadows or causing discoloration.
+subtitle: Oak's grain pattern, with its alternating hard and soft bands, can result in uneven cleaning if the laser's energy
+  isn't uniformly distributed across the surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -306,35 +334,21 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the oak surface is obscured by a dense, amorphous
-    contamination layer approximately 50-200 µm thick. This layer, composed of soot,
-    grime, and degraded organic matter, fills the wood's porous structure, masking
-    the characteristic cellular anatomy. The surface texture is homogenized, presenting
-    a cracked, crust-like morphology that completely conceals the underlying wood
-    grain and vessel elements.
-  afterText: 'Laser cleaning effectively removes the contamination layer, revealing
-    the intact oak substrate. The surface now displays a clear, open cellular structure
-    with distinct longitudinal tracheids and large vessel elements characteristic
-    of oak. The original wood grain pattern is fully exposed, with a return to a textured,
-    micro-rough surface topography that corresponds to the natural hardness variations
+  beforeText: At 500x magnification, the oak surface is obscured by a dense, amorphous contamination layer, approximately
+    20-50 micrometers thick. This layer, composed of soot, dust, and biological films, fills the wood's cellular lumen and
+    macro-pores. The underlying grain texture is largely undetectable, with only the most prominent growth rings visible as
+    faint undulations beneath the uniform, matte-black coating.
+  afterText: 'Laser ablation has removed the opaque contamination layer, fully restoring the oak''s microscopic topography.
+    The cellular structure, including lumen, rays, and macro-pores, is now clearly defined and free of obstructive debris.
+    The original wood surface is exposed, revealing the distinct, undulating pattern of growth rings and the sharp boundaries
     between earlywood and latewood.
 
 
-    The removal process is highly selective, ablating the contaminant crust at approximately
-    400°C while the underlying wood, with a pyrolysis point of 280°C, remains structurally
-    sound. This is evidenced by the sharp, well-defined edges of the cell walls and
-    the absence of charring or thermal degradation halos. The cleaning parameters
-    are calibrated to the oak''s ablation threshold of 0.8 J/cm², ensuring precise
-    energy delivery.
-
-
-    The resulting surface exhibits a porosity of 55%, restoring the material''s inherent
-    hygroscopic properties. The contrast between the dense, lignin-rich cell walls
-    and the open lumens is now visually distinct, confirming the restoration of the
-    wood''s original microstructural integrity without mechanical abrasion or chemical
-    residue.'
-  description: Microscopic analysis of oak surface before and after laser cleaning
-    treatment
+    The cleaning process has selectively vaporized the contaminant layer with minimal thermal alteration to the underlying
+    wood substrate. The surface exhibits a clean, sharp interface between the remaining wood cells and the now-open pores.
+    This precision results in a surface where the intrinsic, complex texture of the oak is the dominant visual feature, with
+    no residual film to obscure its structural details.'
+  description: Microscopic analysis of oak surface before and after laser cleaning treatment
   alt: Microscopic view of oak surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -354,8 +368,7 @@ caption:
     materialType: Wood
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Oak surface after laser cleaning showing detailed surface
-      structure
+    alt: Microscopic view of Oak surface after laser cleaning showing detailed surface structure
     url: /images/material/oak-laser-cleaning-micro.jpg
 tags:
 - wood
@@ -365,6 +378,6 @@ tags:
 - surface-preparation
 - contamination-removal
 - maintenance
-- thermal-sensitive
 - industrial-grade
+- processed
 - alessandro-moretti

@@ -1,129 +1,170 @@
 name: Vanadium
-category: Metal
+category: metal
 subcategory: refractory
 title: Vanadium Laser Cleaning
 description: Laser cleaning parameters for Vanadium
 materialProperties:
-  density:
-    value: 6.11
-    unit: g/cm³
-    confidence: 98
-    description: Density of pure vanadium at room temperature
-    min: 0.53
-    max: 22.6
-  thermalConductivity:
-    value: 30.7
-    unit: W/m·K
-    confidence: 92
-    description: Thermal conductivity at room temperature
-    min: 6.0
-    max: 429.0
-  tensileStrength:
-    value: 462
-    unit: MPa
-    confidence: 90
-    description: Ultimate tensile strength of pure vanadium
-    min: 3.0
-    max: 3000.0
-  hardness:
-    value: 264
-    unit: HV
-    confidence: 85
-    description: Vickers hardness of annealed vanadium
-    min: 0.5
-    max: 3500
-  youngsModulus:
-    value: 128
-    unit: GPa
-    confidence: 95
-    description: Young's modulus of elasticity
-    min: 5
-    max: 411
-  laserAbsorption:
-    value: 42.7
-    unit: '%'
-    confidence: 92
-    description: laserAbsorption from Materials.yaml
-    min: 0.02
-    max: 100
-  laserReflectivity:
-    value: 48.2
-    unit: '%'
-    confidence: 92
-    description: laserReflectivity from Materials.yaml
-    min: 5
-    max: 98
-  specificHeat:
-    value: 489
-    unit: J/kg·K
-    confidence: 88
-    description: Specific heat capacity at room temperature
-    min: 100
-    max: 900
-  thermalDiffusivity:
-    value: 8.3
-    unit: mm²/s
-    confidence: 95
-    description: thermalDiffusivity from Materials.yaml
-    min: 0.2
-    max: 174
-  thermalExpansion:
-    value: 8.4
-    unit: μm/m·K
-    confidence: 90
-    description: Coefficient of linear thermal expansion (20-100°C)
-    min: 0.5
-    max: 29.1
-  reflectivity:
-    value: 61
-    unit: '%'
-    confidence: 82
-    description: Optical reflectivity at 1064 nm wavelength
-    min: 0.4
-    max: 0.98
-  absorptionCoefficient:
-    value: 4200000.0
-    unit: m⁻¹
-    confidence: 80
-    description: Approximate absorption coefficient for Nd:YAG lasers
-    min: 0.02
-    max: 0.6
-  ablationThreshold:
-    value: 2.8
-    unit: J/cm²
-    confidence: 85
-    description: Estimated laser ablation threshold for nanosecond pulses
-    min: 0.5
-    max: 50.0
-  oxidationResistance:
-    value: 600
-    unit: °C
-    confidence: 88
-    description: Maximum temperature for adequate oxidation resistance in air
-    min: 200
-    max: 2000
-  crystallineStructure:
-    value: BCC
-    unit: none
-    confidence: 98
-    description: Body-centered cubic crystal structure
-    min: null
-    max: null
-  electricalResistivity:
-    value: 19.7
-    unit: μΩ·cm
-    confidence: 94
-    description: Electrical resistivity at room temperature
-    min: 1.5e-06
-    max: 0.0001
-  thermalDestructionPoint:
-    value: 1910
-    unit: °C
-    confidence: 97
-    description: Temperature where solid-to-liquid phase transition occurs
-    min: -38.8
-    max: 3422
-  thermalDestructionType: Melting
+  physical_structural:
+    label: Physical/Structural Properties
+    description: Basic physical characteristics
+    percentage: 3.6
+    properties:
+      density:
+        value: 6.11
+        unit: g/cm³
+        confidence: 98
+        description: Density of pure vanadium at room temperature
+        min: 0.53
+        max: 22.6
+  mechanical:
+    label: Mechanical Properties
+    description: Strength, elasticity, and structural characteristics
+    percentage: 18.2
+    properties:
+      hardness:
+        value: 264
+        unit: HV
+        confidence: 90
+        description: Vickers hardness of annealed vanadium
+        min: 0.5
+        max: 3500
+      tensileStrength:
+        value: 345
+        unit: MPa
+        confidence: 89
+        description: Ultimate tensile strength of pure vanadium
+        min: 3.0
+        max: 3000.0
+      youngsModulus:
+        value: 128
+        unit: GPa
+        confidence: 93
+        description: Young's modulus of elasticity
+        min: 5
+        max: 411
+  optical_laser:
+    label: Optical/Laser Properties
+    description: Light interaction and laser response characteristics
+    percentage: 16.4
+    properties:
+      laserAbsorption:
+        value: 42.7
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.02
+        max: 100
+      laserReflectivity:
+        value: 48.2
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 98
+      reflectivity:
+        value: 0.62
+        unit: dimensionless
+        confidence: 82
+        description: Reflectivity at 1064 nm laser wavelength
+        min: null
+        max: null
+      ablationThreshold:
+        value: 2.8
+        unit: J/cm²
+        confidence: 80
+        description: Estimated laser ablation threshold for nanosecond pulses at 1064 nm
+        min: null
+        max: null
+  thermal:
+    label: Thermal Properties
+    description: Heat-related material characteristics including conductivity, expansion, and destruction points
+    percentage: 29.1
+    properties:
+      specificHeat:
+        value: 489
+        unit: J/kg·K
+        confidence: 94
+        description: Specific heat capacity at room temperature
+        min: 100
+        max: 900
+      thermalConductivity:
+        value: 30.7
+        unit: W/m·K
+        confidence: 92
+        description: Thermal conductivity at room temperature
+        min: 6.0
+        max: 429.0
+      thermalDiffusivity:
+        value: 8.3
+        unit: mm²/s
+        confidence: 88
+        description: Thermal diffusivity at room temperature
+        min: 0.2
+        max: 174
+      thermalExpansion:
+        value: 8.4
+        unit: μm/m·K
+        confidence: 90
+        description: Coefficient of linear thermal expansion (20-100°C)
+        min: 0.5
+        max: 29.1
+      thermalDestruction:
+        point:
+          value: 1910.0
+          unit: °C
+          min: -38.8
+          max: 3422
+          confidence: 95
+          description: Thermal destruction point
+        type: melting
+  chemical:
+    label: Chemical Properties
+    description: Chemical reactivity and stability
+    percentage: 5.5
+    properties:
+      oxidationResistance:
+        value: 600
+        unit: °C
+        confidence: 88
+        description: Maximum service temperature in oxidizing environments before significant oxidation
+        min: null
+        max: null
+  compositional:
+    label: Compositional Properties
+    description: Material composition characteristics
+    percentage: 5.5
+    properties:
+      crystallineStructure:
+        value: BCC
+        unit: none
+        confidence: 99
+        description: Body-centered cubic crystal structure at room temperature
+        min: null
+        max: null
+  electrical:
+    label: Electrical Properties
+    description: Electrical conductivity and resistance
+    percentage: 7.3
+    properties:
+      electricalResistivity:
+        value: 0.197
+        unit: μΩ·m
+        confidence: 95
+        description: Electrical resistivity at room temperature
+        min: null
+        max: null
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 0
+    properties:
+      absorptionCoefficient:
+        value: 0.45
+        unit: μm⁻¹
+        confidence: 85
+        description: Approximate absorption coefficient for 1064 nm laser wavelength
+        min: null
+        max: null
 applications:
 - Aerospace
 - Nuclear Energy
@@ -140,8 +181,7 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Vanadium oxide removal without substrate
-      damage
+    description: Optimal average power for Vanadium oxide removal without substrate damage
     min: 80
     max: 120
   wavelength:
@@ -183,9 +223,8 @@ machineSettings:
     value: 6.0
     unit: J/cm²
     confidence: 92
-    description: Energy density threshold for effective Vanadium cleaning - Energy
-      density threshold for effective oxide and contaminant removal from metallic
-      surfaces
+    description: Energy density threshold for effective Vanadium cleaning - Energy density threshold for effective oxide and
+      contaminant removal from metallic surfaces
     min: 3.0
     max: 12.0
   fluenceThreshold:
@@ -224,8 +263,7 @@ author:
   image: /images/author/alessandro-moretti.jpg
 images:
   hero:
-    alt: Vanadium surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Vanadium surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/vanadium-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -252,9 +290,8 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Vanadium's properties can vary significantly, unlike many other refractory
-  metals. This variability demands a more tailored approach to laser settings to ensure
-  effective and safe cleaning.
+subtitle: Vanadium's properties can vary significantly, unlike many other refractory metals. This variability demands a more
+  tailored approach to laser settings to ensure effective and safe cleaning.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -290,27 +327,23 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the vanadium surface is obscured by a non-uniform
-    contamination layer, typically 5-20 µm thick. This layer consists of embedded
-    oxides and carbonaceous deposits, forming a textured, matte topography. The underlying
-    metal's grain structure is entirely concealed by this discontinuous, particulate-laden
-    film, which exhibits micro-cracking and localized spallation.
-  afterText: 'Laser cleaning has fully restored the native metallic surface, revealing
-    the fine, polygonal grain structure characteristic of vanadium''s body-centered
-    cubic lattice. The contamination layer has been completely ablated, with no residual
-    oxide islands or embedded particulates.
+  beforeText: At 500x magnification, the vanadium surface is obscured by a non-uniform contamination layer, typically 5-20
+    µm thick. This layer consists of embedded oxides and carbonaceous deposits, forming a textured, matte topography. The
+    underlying metal's grain structure is entirely concealed by this discontinuous, particulate-laden film, which exhibits
+    micro-cracking and localized spallation.
+  afterText: 'Laser cleaning has fully restored the native metallic surface, revealing the fine, polygonal grain structure
+    characteristic of vanadium''s body-centered cubic lattice. The contamination layer has been completely ablated, with no
+    residual oxide islands or embedded particulates.
 
 
-    The surface now exhibits a uniform, matte-grey metallic finish with clearly defined
-    grain boundaries. The process has achieved this result without inducing surface
-    melting or heat-affected zone microcracking, preserving the substrate''s integrity.
+    The surface now exhibits a uniform, matte-grey metallic finish with clearly defined grain boundaries. The process has
+    achieved this result without inducing surface melting or heat-affected zone microcracking, preserving the substrate''s
+    integrity.
 
 
-    This pristine surface condition, free from the 5-20 µm contamination layer, ensures
-    optimal performance for subsequent operations in demanding applications, providing
-    a clean interface for bonding, coating, or service.'
-  description: Microscopic analysis of vanadium surface before and after laser cleaning
-    treatment
+    This pristine surface condition, free from the 5-20 µm contamination layer, ensures optimal performance for subsequent
+    operations in demanding applications, providing a clean interface for bonding, coating, or service.'
+  description: Microscopic analysis of vanadium surface before and after laser cleaning treatment
   alt: Microscopic view of vanadium surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -330,8 +363,7 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Vanadium surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Vanadium surface after laser cleaning showing detailed surface structure
     url: /images/material/vanadium-laser-cleaning-micro.jpg
 tags:
 - metal

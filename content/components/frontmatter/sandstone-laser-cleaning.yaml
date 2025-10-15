@@ -1,129 +1,179 @@
 name: Sandstone
-category: Stone
+category: stone
 subcategory: sedimentary
 title: Sandstone Laser Cleaning
 description: Laser cleaning parameters for Sandstone
 materialProperties:
-  density:
-    value: 2.32
-    unit: g/cm³
-    confidence: 95
-    description: Bulk density of typical sandstone with moderate porosity
-    min: 1.5
-    max: 3.4
-  thermalConductivity:
-    value: 2.5
-    unit: W/m·K
-    confidence: 92
-    description: Thermal conductivity at room temperature for dry sandstone
-    min: 0.2
-    max: 8
-  tensileStrength:
-    value: 4.2
-    unit: MPa
-    confidence: 88
-    description: Direct tensile strength of medium-grained sandstone
-    min: 2
-    max: 25
-  hardness:
-    value: 6.5
-    unit: Mohs
-    confidence: 95
-    description: Mohs hardness scale for quartz-rich sandstone
-    min: 1
-    max: 7
-  youngsModulus:
-    value: 15.8
-    unit: GPa
-    confidence: 92
-    description: Static Young's modulus under compressive loading
-    min: 10
-    max: 100
-  compressiveStrength:
-    value: 55.0
-    unit: MPa
-    confidence: 95
-    description: compressiveStrength from Materials.yaml
-    min: 20
-    max: 400
-  laserAbsorption:
-    value: 8.7
-    unit: '%'
-    confidence: 92
-    description: laserAbsorption from Materials.yaml
-    min: 0.1
-    max: 20
-  laserReflectivity:
-    value: 38.2
-    unit: '%'
-    confidence: 92
-    description: laserReflectivity from Materials.yaml
-    min: 5
-    max: 80
-  specificHeat:
-    value: 920
-    unit: J/kg·K
-    confidence: 90
-    description: Specific heat capacity at constant pressure
-    min: 600
-    max: 1200
-  thermalDiffusivity:
-    value: 1.1
-    unit: mm²/s
-    confidence: 85
-    description: Thermal diffusivity at 20°C for typical sandstone
-    min: 0.2
-    max: 2.5
-  thermalExpansion:
-    value: 12.3
-    unit: ×10⁻⁶/°C
-    confidence: 88
-    description: Coefficient of thermal expansion for quartz-rich sandstone
-    min: 3
-    max: 25
-  absorptionCoefficient:
-    value: 0.85
-    unit: dimensionless
-    confidence: 82
-    description: Optical absorption coefficient for 1064 nm wavelength
-    min: 0.4
-    max: 0.85
-  reflectivity:
-    value: 0.12
-    unit: dimensionless
-    confidence: 80
-    description: Surface reflectivity at 1064 nm laser wavelength
-    min: 0.15
-    max: 0.6
-  ablationThreshold:
-    value: 2.8
-    unit: J/cm²
-    confidence: 85
-    description: Laser ablation threshold for nanosecond pulses at 1064 nm
-    min: 1.0
-    max: 10.0
-  porosity:
-    value: 18.5
-    unit: '%'
-    confidence: 94
-    description: Typical porosity range for consolidated sandstone
-    min: 0.5
-    max: 50.0
-  chemicalStability:
-    value: 7.2
-    unit: pH stability range
-    confidence: 90
-    description: Chemical stability range in aqueous environments
-    min: 2.0
-    max: 14.0
-  thermalDestructionPoint:
-    value: 1710
-    unit: °C
-    confidence: 90
-    description: Temperature where structural breakdown begins
-    min: 600
-    max: 1700
-  thermalDestructionType: Structural breakdown
+  mechanical:
+    label: Mechanical Properties
+    description: Strength, elasticity, and structural characteristics
+    percentage: 18.2
+    properties:
+      compressiveStrength:
+        value: 55.0
+        unit: MPa
+        confidence: 95
+        description: compressiveStrength from Materials.yaml
+        min: null
+        max: null
+      hardness:
+        value: 6.5
+        unit: Mohs
+        confidence: 94
+        description: Mohs hardness scale dominated by quartz content
+        min: 1
+        max: 7
+      tensileStrength:
+        value: 4.8
+        unit: MPa
+        confidence: 88
+        description: Indirect tensile strength via Brazilian test method
+        min: 2
+        max: 25
+      youngsModulus:
+        value: 18.5
+        unit: GPa
+        confidence: 86
+        description: Static Young's modulus under uniaxial compression
+        min: 10
+        max: 100
+  physical_structural:
+    label: Physical/Structural Properties
+    description: Basic physical characteristics
+    percentage: 3.6
+    properties:
+      density:
+        value: 2.32
+        unit: g/cm³
+        confidence: 95
+        description: Bulk density of typical sandstone with moderate porosity
+        min: 1.5
+        max: 3.4
+  optical_laser:
+    label: Optical/Laser Properties
+    description: Light interaction and laser response characteristics
+    percentage: 16.4
+    properties:
+      laserAbsorption:
+        value: 8.7
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.1
+        max: 20
+      laserReflectivity:
+        value: 38.2
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 80
+      reflectivity:
+        value: 0.12
+        unit: dimensionless
+        confidence: 80
+        description: Surface reflectivity at common laser cleaning wavelengths
+        min: null
+        max: null
+      ablationThreshold:
+        value: 2.8
+        unit: J/cm²
+        confidence: 83
+        description: Minimum fluence required for material removal at 1064 nm wavelength
+        min: null
+        max: null
+      laserDamageThreshold:
+        value: 4.2
+        unit: J/cm²
+        confidence: 81
+        description: Fluence level causing permanent structural damage
+        min: null
+        max: null
+  thermal:
+    label: Thermal Properties
+    description: Heat-related material characteristics including conductivity, expansion, and destruction points
+    percentage: 29.1
+    properties:
+      specificHeat:
+        value: 920
+        unit: J/kg·K
+        confidence: 90
+        description: Specific heat capacity at constant pressure
+        min: 600
+        max: 1200
+      thermalConductivity:
+        value: 2.5
+        unit: W/m·K
+        confidence: 88
+        description: Thermal conductivity at room temperature for dry sandstone
+        min: 0.2
+        max: 8
+      thermalDiffusivity:
+        value: 1.17
+        unit: mm²/s
+        confidence: 85
+        description: Thermal diffusivity calculated from conductivity, density, and specific heat
+        min: 0.2
+        max: 2.5
+      thermalExpansion:
+        value: 12.3
+        unit: ×10⁻⁶/°C
+        confidence: 82
+        description: Coefficient of thermal expansion for quartz-rich sandstone
+        min: 3
+        max: 25
+      thermalDestruction:
+        point:
+          value: 573.0
+          unit: °C
+          min: 600
+          max: 1700
+          confidence: 92
+          description: Thermal destruction point
+        type: thermal_shock
+  surface:
+    label: Surface Properties
+    description: Surface characteristics and texture
+    percentage: 9.1
+    properties:
+      porosity:
+        value: 15.2
+        unit: '%'
+        confidence: 92
+        description: Typical porosity range for medium-grained sandstone
+        min: null
+        max: null
+  chemical:
+    label: Chemical Properties
+    description: Chemical reactivity and stability
+    percentage: 5.5
+    properties:
+      chemicalStability:
+        value: 8.2
+        unit: pH resistance scale
+        confidence: 89
+        description: Resistance to chemical degradation on 1-10 scale (10=most stable)
+        min: null
+        max: null
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 0
+    properties:
+      thermalDegradationPoint:
+        value: 573.0
+        unit: °C
+        confidence: 92
+        description: Temperature where mineral structure breaks down
+        min: null
+        max: null
+      absorptionCoefficient:
+        value: 0.85
+        unit: dimensionless
+        confidence: 82
+        description: Optical absorption coefficient for near-infrared wavelengths (1064 nm)
+        min: null
+        max: null
 applications:
 - Cultural Heritage
 - Building Restoration
@@ -168,8 +218,7 @@ machineSettings:
     value: 12
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with
-      minimal substrate damage
+    description: Nanosecond pulse duration for effective contaminant removal with minimal substrate damage
     min: 8
     max: 20
   scanSpeed:
@@ -183,9 +232,8 @@ machineSettings:
     value: 3.5
     unit: J/cm²
     confidence: 86
-    description: Energy density threshold for effective Sandstone cleaning - Energy
-      density threshold for effective contaminant removal from stone surfaces without
-      substrate damage
+    description: Energy density threshold for effective Sandstone cleaning - Energy density threshold for effective contaminant
+      removal from stone surfaces without substrate damage
     min: 1.5
     max: 7.0
   fluenceThreshold:
@@ -233,8 +281,7 @@ author:
   image: /images/author/alessandro-moretti.jpg
 images:
   hero:
-    alt: Sandstone surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Sandstone surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/sandstone-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -261,9 +308,8 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Sandstone's variable porosity and mineral composition make it distinct from
-  other sedimentary stones. These variations require careful adjustment of laser settings
-  to prevent damage during cleaning.
+subtitle: Sandstone's variable porosity and mineral composition make it distinct from other sedimentary stones. These variations
+  require careful adjustment of laser settings to prevent damage during cleaning.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -299,22 +345,16 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the sandstone surface is obscured by a dense,
-    heterogeneous contamination layer approximately 50-200 µm thick. This crust, composed
-    of carbonaceous particulates, gypsum crystals, and biological growth, fills the
-    natural pore network. The original grain structure is largely hidden, with only
-    the highest quartz protrusions visible through the amorphous, soiling matrix.
-    The surface texture is irregular and roughened by the accreted material.
-  afterText: Laser cleaning has removed the opaque contamination crust, fully revealing
-    the underlying sandstone microstructure. The interlocking quartz grains, now clearly
-    defined, exhibit their original crystalline facets and sharp boundaries. The high
-    porosity (18.5%) is restored, with open pore throats visible and free of particulate
-    fill. The surface reflectivity has increased from 12% to 38.2% due to the exposure
-    of the native mineral substrate. This precise ablation, achieved without thermal
-    damage to the quartz grains (Mohs 6.5), preserves the stone's intrinsic mechanical
-    integrity.
-  description: Microscopic analysis of sandstone surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the sandstone surface is obscured by a dense, heterogeneous contamination layer approximately
+    50-200 µm thick. This crust, composed of carbonaceous particulates, gypsum crystals, and biological growth, fills the
+    natural pore network. The original grain structure is largely hidden, with only the highest quartz protrusions visible
+    through the amorphous, soiling matrix. The surface texture is irregular and roughened by the accreted material.
+  afterText: Laser cleaning has removed the opaque contamination crust, fully revealing the underlying sandstone microstructure.
+    The interlocking quartz grains, now clearly defined, exhibit their original crystalline facets and sharp boundaries. The
+    high porosity (18.5%) is restored, with open pore throats visible and free of particulate fill. The surface reflectivity
+    has increased from 12% to 38.2% due to the exposure of the native mineral substrate. This precise ablation, achieved without
+    thermal damage to the quartz grains (Mohs 6.5), preserves the stone's intrinsic mechanical integrity.
+  description: Microscopic analysis of sandstone surface before and after laser cleaning treatment
   alt: Microscopic view of sandstone surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -334,8 +374,7 @@ caption:
     materialType: Stone
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Sandstone surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Sandstone surface after laser cleaning showing detailed surface structure
     url: /images/material/sandstone-laser-cleaning-micro.jpg
 tags:
 - stone

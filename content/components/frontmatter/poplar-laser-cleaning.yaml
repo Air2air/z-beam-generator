@@ -1,130 +1,172 @@
 name: Poplar
-category: Wood
+category: wood
 subcategory: hardwood
 title: Poplar Laser Cleaning
 description: Laser cleaning parameters for Poplar
 materialProperties:
-  density:
-    value: 0.45
-    unit: g/cm³
-    confidence: 92
-    description: Average density of dry poplar wood at 12% moisture content
-    min: 0.12
-    max: 1.25
-  thermalConductivity:
-    value: 0.12
-    unit: W/m·K
-    confidence: 88
-    description: Thermal conductivity perpendicular to grain direction
-    min: 0.04
-    max: 0.4
-  tensileStrength:
-    value: 38
-    unit: MPa
-    confidence: 87
-    description: Tensile strength parallel to grain direction
-    min: 20
-    max: 200
-  hardness:
-    value: 1.7
-    unit: kN
-    confidence: 84
-    description: Janka hardness test value
-    min: 20
-    max: 5000
-  youngsModulus:
-    value: 10.8
-    unit: GPa
-    confidence: 90
-    description: Modulus of elasticity parallel to grain
-    min: 5
-    max: 25
-  laserAbsorption:
-    value: 32.7
-    unit: '%'
-    confidence: 92
-    description: laserAbsorption from Materials.yaml
-    min: 1
-    max: 50
-  laserReflectivity:
-    value: 42.7
-    unit: '%'
-    confidence: 92
-    description: laserReflectivity from Materials.yaml
-    min: 10
-    max: 60
-  specificHeat:
-    value: 1380
-    unit: J/kg·K
-    confidence: 85
-    description: Specific heat capacity at room temperature
-    min: 800
-    max: 2500
-  thermalDestructionPoint:
-    value: 400.0
-    unit: °C
-    confidence: 92
-    description: Temperature where thermal decomposition begins
-    min: 200
-    max: 500
-  thermalDestructionType: Decomposition
-  thermalDiffusivity:
-    value: 0.00017
-    unit: m²/s
-    confidence: 92
-    description: thermalDiffusivity from Materials.yaml
-    min: 0.0001
-    max: 0.4
-  thermalExpansion:
-    value: 4.5e-05
-    unit: 1/°C
-    confidence: 82
-    description: Linear thermal expansion coefficient tangential to grain
-    min: 3.0
-    max: 60
-  absorptionCoefficient:
-    value: 0.85
-    unit: dimensionless
-    confidence: 82
-    description: Optical absorption coefficient for common laser wavelengths (1064
-      nm)
-    min: 0.7
-    max: 0.95
-  reflectivity:
-    value: 0.12
-    unit: dimensionless
-    confidence: 80
-    description: Reflectivity at 1064 nm wavelength
-    min: 0.05
-    max: 0.3
-  ablationThreshold:
-    value: 0.8
-    unit: J/cm²
-    confidence: 81
-    description: Minimum fluence required for material removal with nanosecond pulses
-    min: 0.5
-    max: 3.0
-  porosity:
-    value: 65
-    unit: '%'
-    confidence: 88
-    description: Average porosity of poplar wood structure
-    min: 5.0
-    max: 75.0
-  moistureContent:
-    value: 12
-    unit: '%'
-    confidence: 92
-    description: Equilibrium moisture content at standard conditions
-    min: 6.0
-    max: 20.0
-  celluloseContent:
-    value: 48
-    unit: '%'
-    confidence: 90
-    description: Average cellulose content affecting laser interaction
-    min: 35.0
-    max: 55.0
+  physical_structural:
+    label: Physical/Structural Properties
+    description: Basic physical characteristics
+    percentage: 3.6
+    properties:
+      density:
+        value: 0.45
+        unit: g/cm³
+        confidence: 92
+        description: Average density of dry poplar wood at 12% moisture content
+        min: 0.12
+        max: 1.25
+  mechanical:
+    label: Mechanical Properties
+    description: Strength, elasticity, and structural characteristics
+    percentage: 18.2
+    properties:
+      hardness:
+        value: 2.1
+        unit: kN
+        confidence: 87
+        description: Janka hardness test value
+        min: 20
+        max: 5000
+      tensileStrength:
+        value: 85
+        unit: MPa
+        confidence: 89
+        description: Tensile strength parallel to grain direction
+        min: 20
+        max: 200
+      youngsModulus:
+        value: 10.9
+        unit: GPa
+        confidence: 91
+        description: Modulus of elasticity parallel to grain
+        min: 5
+        max: 25
+  optical_laser:
+    label: Optical/Laser Properties
+    description: Light interaction and laser response characteristics
+    percentage: 16.4
+    properties:
+      laserAbsorption:
+        value: 32.7
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 1
+        max: 50
+      laserReflectivity:
+        value: 42.7
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 10
+        max: 60
+      reflectivity:
+        value: 0.12
+        unit: dimensionless
+        confidence: 88
+        description: Surface reflectivity at 1064 nm laser wavelength
+        min: null
+        max: null
+      ablationThreshold:
+        value: 1.2
+        unit: J/cm²
+        confidence: 85
+        description: Minimum fluence required for material removal at 1064 nm
+        min: null
+        max: null
+      laserDamageThreshold:
+        value: 0.8
+        unit: J/cm²
+        confidence: 83
+        description: Fluence level causing permanent surface modification
+        min: null
+        max: null
+  thermal:
+    label: Thermal Properties
+    description: Heat-related material characteristics including conductivity, expansion, and destruction points
+    percentage: 29.1
+    properties:
+      specificHeat:
+        value: 1.38
+        unit: kJ/kg·K
+        confidence: 85
+        description: Specific heat capacity at room temperature
+        min: 800
+        max: 2500
+      thermalConductivity:
+        value: 0.12
+        unit: W/m·K
+        confidence: 88
+        description: Thermal conductivity perpendicular to grain direction
+        min: 0.04
+        max: 0.4
+      thermalDiffusivity:
+        value: 0.19
+        unit: mm²/s
+        confidence: 82
+        description: Thermal diffusivity across grain direction
+        min: 0.0001
+        max: 0.4
+      thermalExpansion:
+        value: 4.5
+        unit: μm/m·°C
+        confidence: 92
+        description: thermalExpansion from Materials.yaml
+        min: 3.0
+        max: 60
+      ignitionTemperature:
+        value: 380
+        unit: °C
+        confidence: 86
+        description: Minimum temperature for sustained combustion
+        min: null
+        max: null
+      thermalDestruction:
+        point:
+          value: 380.0
+          unit: °C
+          min: 200
+          max: 500
+          confidence: 92
+          description: Thermal destruction point
+        type: carbonization
+  surface:
+    label: Surface Properties
+    description: Surface characteristics and texture
+    percentage: 9.1
+    properties:
+      porosity:
+        value: 65
+        unit: '%'
+        confidence: 90
+        description: Average void volume percentage in cellular structure
+        min: null
+        max: null
+  environmental:
+    label: Environmental Properties
+    description: Environmental exposure resistance
+    percentage: 5.5
+    properties:
+      moistureContent:
+        value: 12
+        unit: '%'
+        confidence: 94
+        description: Equilibrium moisture content at standard conditions
+        min: null
+        max: null
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 0
+    properties:
+      absorptionCoefficient:
+        value: 0.85
+        unit: dimensionless
+        confidence: 90
+        description: Optical absorption coefficient for near-infrared wavelengths (1064 nm)
+        min: null
+        max: null
 applications:
 - Aerospace
 - Automotive
@@ -183,17 +225,15 @@ machineSettings:
     value: 4.5
     unit: J/cm²
     confidence: 88
-    description: Energy density threshold for effective Poplar cleaning - Energy density
-      threshold for effective organic contaminant removal from wood without charring
-      or thermal damage
+    description: Energy density threshold for effective Poplar cleaning - Energy density threshold for effective organic contaminant
+      removal from wood without charring or thermal damage
     min: 2.0
     max: 8.0
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 88
-    description: Fluence threshold for effective contaminant removal without wood
-      damage
+    description: Fluence threshold for effective contaminant removal without wood damage
     min: 1.5
     max: 4.0
   overlapRatio:
@@ -253,9 +293,8 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Poplar's density and natural tannin content can vary significantly between
-  boards. This variability requires careful calibration of laser settings to avoid
-  uneven cleaning or tannin burn marks.
+subtitle: Poplar's density and natural tannin content can vary significantly between boards. This variability requires careful
+  calibration of laser settings to avoid uneven cleaning or tannin burn marks.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -291,27 +330,20 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the poplar surface is obscured by a dense, amorphous
-    contamination layer approximately 15-25 µm thick. This layer, composed of embedded
-    soot, dust, and organic residues, fills the wood's porous structure, masking the
-    characteristic cellular anatomy. The surface texture is irregular and crust-like,
-    with no visible wood grain or cell wall definition, indicating significant particulate
-    accumulation within the lumen of the vessels and fibers.
-  afterText: 'Laser cleaning effectively removes the contamination layer, revealing
-    the intact, underlying wood microstructure. The porous network of vessels and
-    fibers is now fully exposed, with cell walls appearing sharp and well-defined.
-    The original surface texture is restored, showing the natural grain pattern and
-    anatomical features without the masking crust.
+  beforeText: At 500x magnification, the poplar surface is obscured by a dense, amorphous contamination layer approximately
+    15-25 µm thick. This layer, composed of embedded soot, dust, and organic residues, fills the wood's porous structure,
+    masking the characteristic cellular anatomy. The surface texture is irregular and crust-like, with no visible wood grain
+    or cell wall definition, indicating significant particulate accumulation within the lumen of the vessels and fibers.
+  afterText: 'Laser cleaning effectively removes the contamination layer, revealing the intact, underlying wood microstructure.
+    The porous network of vessels and fibers is now fully exposed, with cell walls appearing sharp and well-defined. The original
+    surface texture is restored, showing the natural grain pattern and anatomical features without the masking crust.
 
 
-    The process achieves selective ablation, vaporizing contaminants at 380°C while
-    the poplar substrate, with its low thermal conductivity of 0.12 W/m·K, remains
-    largely unaffected. This precision prevents collateral thermal damage, preserving
-    the structural integrity of the delicate cell walls. The result is a topographically
-    clean surface with restored porosity and minimal residue, ready for further conservation
-    or finishing steps.'
-  description: Microscopic analysis of poplar surface before and after laser cleaning
-    treatment
+    The process achieves selective ablation, vaporizing contaminants at 380°C while the poplar substrate, with its low thermal
+    conductivity of 0.12 W/m·K, remains largely unaffected. This precision prevents collateral thermal damage, preserving
+    the structural integrity of the delicate cell walls. The result is a topographically clean surface with restored porosity
+    and minimal residue, ready for further conservation or finishing steps.'
+  description: Microscopic analysis of poplar surface before and after laser cleaning treatment
   alt: Microscopic view of poplar surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -331,8 +363,7 @@ caption:
     materialType: Wood
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Poplar surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Poplar surface after laser cleaning showing detailed surface structure
     url: /images/material/poplar-laser-cleaning-micro.jpg
 tags:
 - wood

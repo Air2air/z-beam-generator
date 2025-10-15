@@ -392,7 +392,7 @@ thermalProperties:
 electricalProperties:
   conductivity: number  # MS/m
   resistivity: number  # Ω·m
-  dielectricConstant: number  # dimensionless
+  dielectricConstant: number  # unitless
   # ... more properties (if applicable)
 ```
 

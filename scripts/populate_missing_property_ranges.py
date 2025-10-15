@@ -27,30 +27,30 @@ CATEGORY_PROPERTY_RANGES = {
         'semiconductor': {'min': 0.1, 'max': 10.0, 'unit': 'J/cm²'}
     },
     
-    # Absorption Coefficient (dimensionless, 0-1)
+    # Absorption Coefficient (unitless, 0-1)
     'absorptionCoefficient': {
-        'wood': {'min': 0.70, 'max': 0.95, 'unit': 'dimensionless'},
-        'ceramic': {'min': 0.30, 'max': 0.90, 'unit': 'dimensionless'},
-        'stone': {'min': 0.40, 'max': 0.85, 'unit': 'dimensionless'},
-        'composite': {'min': 0.50, 'max': 0.95, 'unit': 'dimensionless'},
-        'plastic': {'min': 0.60, 'max': 0.95, 'unit': 'dimensionless'},
-        'glass': {'min': 0.01, 'max': 0.40, 'unit': 'dimensionless'},
-        'masonry': {'min': 0.50, 'max': 0.85, 'unit': 'dimensionless'},
-        'metal': {'min': 0.02, 'max': 0.60, 'unit': 'dimensionless'},
-        'semiconductor': {'min': 0.10, 'max': 0.70, 'unit': 'dimensionless'}
+        'wood': {'min': 0.70, 'max': 0.95, 'unit': 'unitless'},
+        'ceramic': {'min': 0.30, 'max': 0.90, 'unit': 'unitless'},
+        'stone': {'min': 0.40, 'max': 0.85, 'unit': 'unitless'},
+        'composite': {'min': 0.50, 'max': 0.95, 'unit': 'unitless'},
+        'plastic': {'min': 0.60, 'max': 0.95, 'unit': 'unitless'},
+        'glass': {'min': 0.01, 'max': 0.40, 'unit': 'unitless'},
+        'masonry': {'min': 0.50, 'max': 0.85, 'unit': 'unitless'},
+        'metal': {'min': 0.02, 'max': 0.60, 'unit': 'unitless'},
+        'semiconductor': {'min': 0.10, 'max': 0.70, 'unit': 'unitless'}
     },
     
-    # Reflectivity (dimensionless, 0-1)
+    # Reflectivity (unitless, 0-1)
     'reflectivity': {
-        'wood': {'min': 0.05, 'max': 0.30, 'unit': 'dimensionless'},
-        'ceramic': {'min': 0.10, 'max': 0.70, 'unit': 'dimensionless'},
-        'stone': {'min': 0.15, 'max': 0.60, 'unit': 'dimensionless'},
-        'composite': {'min': 0.05, 'max': 0.50, 'unit': 'dimensionless'},
-        'plastic': {'min': 0.05, 'max': 0.40, 'unit': 'dimensionless'},
-        'glass': {'min': 0.04, 'max': 0.92, 'unit': 'dimensionless'},
-        'masonry': {'min': 0.15, 'max': 0.50, 'unit': 'dimensionless'},
-        'metal': {'min': 0.40, 'max': 0.98, 'unit': 'dimensionless'},
-        'semiconductor': {'min': 0.30, 'max': 0.70, 'unit': 'dimensionless'}
+        'wood': {'min': 0.05, 'max': 0.30, 'unit': 'unitless'},
+        'ceramic': {'min': 0.10, 'max': 0.70, 'unit': 'unitless'},
+        'stone': {'min': 0.15, 'max': 0.60, 'unit': 'unitless'},
+        'composite': {'min': 0.05, 'max': 0.50, 'unit': 'unitless'},
+        'plastic': {'min': 0.05, 'max': 0.40, 'unit': 'unitless'},
+        'glass': {'min': 0.04, 'max': 0.92, 'unit': 'unitless'},
+        'masonry': {'min': 0.15, 'max': 0.50, 'unit': 'unitless'},
+        'metal': {'min': 0.40, 'max': 0.98, 'unit': 'unitless'},
+        'semiconductor': {'min': 0.30, 'max': 0.70, 'unit': 'unitless'}
     },
     
     # Laser Damage Threshold (J/cm²)
@@ -91,13 +91,13 @@ CATEGORY_PROPERTY_RANGES = {
         'wood': {'min': 6.0, 'max': 20.0, 'unit': '%'}
     },
     
-    # Refractive Index (dimensionless)
+    # Refractive Index (unitless)
     'refractiveIndex': {
-        'glass': {'min': 1.45, 'max': 2.00, 'unit': 'dimensionless'},
-        'ceramic': {'min': 1.50, 'max': 2.70, 'unit': 'dimensionless'},
-        'plastic': {'min': 1.30, 'max': 1.70, 'unit': 'dimensionless'},
-        'semiconductor': {'min': 2.40, 'max': 4.50, 'unit': 'dimensionless'},
-        'stone': {'min': 1.50, 'max': 1.75, 'unit': 'dimensionless'}
+        'glass': {'min': 1.45, 'max': 2.00, 'unit': 'unitless'},
+        'ceramic': {'min': 1.50, 'max': 2.70, 'unit': 'unitless'},
+        'plastic': {'min': 1.30, 'max': 1.70, 'unit': 'unitless'},
+        'semiconductor': {'min': 2.40, 'max': 4.50, 'unit': 'unitless'},
+        'stone': {'min': 1.50, 'max': 1.75, 'unit': 'unitless'}
     },
     
     # Compressive Strength (MPa)
@@ -132,9 +132,9 @@ CATEGORY_PROPERTY_RANGES = {
         'wood': {'min': 15.0, 'max': 40.0, 'unit': '%'}
     },
     
-    # Transmissivity (dimensionless, 0-1)
+    # Transmissivity (unitless, 0-1)
     'transmissivity': {
-        'glass': {'min': 0.60, 'max': 0.95, 'unit': 'dimensionless'}
+        'glass': {'min': 0.60, 'max': 0.95, 'unit': 'unitless'}
     },
     
     # Electrical Resistivity (Ω·cm)

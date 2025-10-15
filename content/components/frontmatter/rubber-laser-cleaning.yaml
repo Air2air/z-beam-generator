@@ -1,115 +1,153 @@
 name: Rubber
-category: Composite
-subcategory: Rubber
+category: composite
+subcategory: rubber
 title: Rubber Laser Cleaning
 description: Laser cleaning parameters for Rubber
 materialProperties:
-  density:
-    value: 1.15
-    unit: g/cm³
-    confidence: 85
-    description: Typical density for natural rubber compounds
-    min: 0.5
-    max: 8
-  thermalConductivity:
-    value: 0.15
-    unit: W/m·K
-    confidence: 82
-    description: Low thermal conductivity typical of elastomers
-    min: 0.1
-    max: 400
-  tensileStrength:
-    value: 25
-    unit: MPa
-    confidence: 85
-    description: Typical tensile strength for natural rubber
-    min: 50
-    max: 6000
-  hardness:
-    value: 60
-    unit: Shore A
-    confidence: 87
-    description: Typical hardness for medium-grade rubber
-    min: 20
-    max: 90
-  youngsModulus:
-    value: 0.01
-    unit: GPa
-    confidence: 86
-    description: Low elastic modulus characteristic of elastomers
-    min: 0.001
-    max: 500
-  laserAbsorption:
-    value: 95.2
-    unit: '%'
-    confidence: 92
-    description: laserAbsorption from Materials.yaml
-    min: 0.05
-    max: 200
-  laserReflectivity:
-    value: 38.5
-    unit: '%'
-    confidence: 92
-    description: laserReflectivity from Materials.yaml
-    min: 2
-    max: 80
-  specificHeat:
-    value: 1.88
-    unit: J/g·K
-    confidence: 84
-    description: Specific heat capacity at room temperature
-    min: 500
-    max: 1500
-  thermalDiffusivity:
-    value: 0.089
-    unit: mm²/s
-    confidence: 92
-    description: thermalDiffusivity from Materials.yaml
-    min: 0.1
-    max: 180
-  thermalExpansion:
-    value: 220
-    unit: ×10⁻⁶/°C
-    confidence: 83
-    description: High coefficient of thermal expansion
-    min: -1
-    max: 250
-  absorptionCoefficient:
-    value: 0.85
-    unit: dimensionless
-    confidence: 82
-    description: High absorption coefficient for IR wavelengths
-    min: 0.5
-    max: 0.95
-  reflectivity:
-    value: 0.08
-    unit: dimensionless
-    confidence: 81
-    description: Low reflectivity at common laser wavelengths
-    min: 0.05
-    max: 0.5
-  ablationThreshold:
-    value: 0.8
-    unit: J/cm²
-    confidence: 80
-    description: Threshold fluence for 1064 nm laser ablation
-    min: 0.5
-    max: 8.0
-  chemicalStability:
-    value: 70
-    unit: rating
-    confidence: 83
-    description: Moderate chemical stability rating
-    min: 1
-    max: 10
-  thermalDestructionPoint:
-    value: 180
-    unit: °C
-    confidence: 80
-    description: Temperature where polymer matrix decomposition begins
-    min: 150
-    max: 2000
-  thermalDestructionType: Matrix degradation
+  physical_structural:
+    label: Physical/Structural Properties
+    description: Basic physical characteristics
+    percentage: 3.6
+    properties:
+      density:
+        value: 1.15
+        unit: g/cm³
+        confidence: 92
+        description: Typical density for natural rubber at room temperature
+        min: 0.5
+        max: 8
+  mechanical:
+    label: Mechanical Properties
+    description: Strength, elasticity, and structural characteristics
+    percentage: 18.2
+    properties:
+      hardness:
+        value: 40
+        unit: Shore A
+        confidence: 88
+        description: Typical hardness on Shore A scale for natural rubber
+        min: 20
+        max: 90
+      tensileStrength:
+        value: 25
+        unit: MPa
+        confidence: 90
+        description: Typical tensile strength for natural rubber
+        min: 50
+        max: 6000
+      youngsModulus:
+        value: 0.01
+        unit: GPa
+        confidence: 92
+        description: Low Young's modulus reflecting high elasticity
+        min: 0.001
+        max: 500
+  optical_laser:
+    label: Optical/Laser Properties
+    description: Light interaction and laser response characteristics
+    percentage: 16.4
+    properties:
+      laserAbsorption:
+        value: 95.2
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.05
+        max: 200
+      laserReflectivity:
+        value: 38.5
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 2
+        max: 80
+      reflectivity:
+        value: 0.08
+        unit: dimensionless
+        confidence: 85
+        description: Low reflectivity at common laser wavelengths
+        min: null
+        max: null
+      ablationThreshold:
+        value: 0.8
+        unit: J/cm²
+        confidence: 80
+        description: Approximate ablation threshold for nanosecond pulses at 1064 nm
+        min: null
+        max: null
+  thermal:
+    label: Thermal Properties
+    description: Heat-related material characteristics including conductivity, expansion, and destruction points
+    percentage: 29.1
+    properties:
+      specificHeat:
+        value: 1.88
+        unit: J/g·K
+        confidence: 87
+        description: Specific heat capacity at room temperature
+        min: 500
+        max: 1500
+      thermalConductivity:
+        value: 0.14
+        unit: W/m·K
+        confidence: 88
+        description: Low thermal conductivity typical of rubber materials
+        min: 0.1
+        max: 400
+      thermalDiffusivity:
+        value: 0.089
+        unit: mm²/s
+        confidence: 92
+        description: thermalDiffusivity from Materials.yaml
+        min: 0.1
+        max: 180
+      thermalExpansion:
+        value: 220
+        unit: ×10⁻⁶/°C
+        confidence: 85
+        description: High coefficient of thermal expansion characteristic of elastomers
+        min: -1
+        max: 250
+      thermalDestruction:
+        point:
+          value: 623.0
+          unit: K
+          min: 150
+          max: 2000
+          confidence: 92
+          description: Thermal destruction point
+        type: decomposition
+  chemical:
+    label: Chemical Properties
+    description: Chemical reactivity and stability
+    percentage: 5.5
+    properties:
+      oxidationResistance:
+        value: 65
+        unit: relative scale 0-100
+        confidence: 88
+        description: Moderate oxidation resistance, susceptible to ozone and UV degradation
+        min: null
+        max: null
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 0
+    properties:
+      degradationPoint:
+        value: 623.0
+        unit: K
+        confidence: 92
+        description: Temperature where polymer matrix decomposes
+        min: null
+        max: null
+      absorptionCoefficient:
+        value: 8500
+        unit: cm⁻¹
+        confidence: 82
+        description: Absorption coefficient at 1064 nm wavelength
+        min: null
+        max: null
 applications:
 - Aerospace
 - Automotive
@@ -147,8 +185,7 @@ machineSettings:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient Rubber cleaning with thermal
-      management
+    description: Optimal repetition rate for efficient Rubber cleaning with thermal management
     min: 20
     max: 100
   pulseWidth:
@@ -169,9 +206,8 @@ machineSettings:
     value: 3.0
     unit: J/cm²
     confidence: 86
-    description: Energy density threshold for effective Rubber cleaning - Energy density
-      threshold for composite material cleaning considering matrix and reinforcement
-      properties
+    description: Energy density threshold for effective Rubber cleaning - Energy density threshold for composite material
+      cleaning considering matrix and reinforcement properties
     min: 1.5
     max: 6.0
   fluenceThreshold:
@@ -237,9 +273,8 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Operators have learned that rubber performs best when you start with minimal
-  power, around 20 watts. Gradually increase to match its variable density, ensuring
-  the laser doesn’t overheat the outer layer during treatment.
+subtitle: Operators have learned that rubber performs best when you start with minimal power, around 20 watts. Gradually increase
+  to match its variable density, ensuring the laser doesn’t overheat the outer layer during treatment.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -275,27 +310,20 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the rubber surface is obscured by a complex contamination
-    layer. This layer, measuring 5-15 micrometers thick, consists of embedded carbonaceous
-    soot, oxidized polymer chains, and particulate matter. The contaminants form a
-    discontinuous, crust-like film that masks the underlying rubber's texture, filling
-    the natural micro-fissures and valleys. The surface morphology is highly irregular,
-    with agglomerated particles creating a topographically rough and uneven profile.
-    This layer significantly alters the surface's properties, increasing its roughness
-    and reducing its effective coefficient of friction. The original elastomeric matrix
-    is no longer visible, as the contaminants have created a brittle, composite crust
-    on the compliant substrate.
-  afterText: Laser cleaning has restored the surface to its native elastomeric state.
-    At 500x magnification, the contaminant crust is entirely absent, revealing the
-    rubber's intrinsic micro-texture of interconnected fibrils and shallow pores.
-    The surface is now uniform and continuous, with no evidence of thermal damage
-    or ablation of the base material. The removal of the particulate-filled layer
-    has re-established the material's original surface energy and topography. This
-    results in a clean, chemically active surface that is optimal for subsequent processes
-    like bonding or coating, with the rubber's fundamental viscoelastic properties
-    fully preserved.
-  description: Microscopic analysis of rubber surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the rubber surface is obscured by a complex contamination layer. This layer, measuring
+    5-15 micrometers thick, consists of embedded carbonaceous soot, oxidized polymer chains, and particulate matter. The contaminants
+    form a discontinuous, crust-like film that masks the underlying rubber's texture, filling the natural micro-fissures and
+    valleys. The surface morphology is highly irregular, with agglomerated particles creating a topographically rough and
+    uneven profile. This layer significantly alters the surface's properties, increasing its roughness and reducing its effective
+    coefficient of friction. The original elastomeric matrix is no longer visible, as the contaminants have created a brittle,
+    composite crust on the compliant substrate.
+  afterText: Laser cleaning has restored the surface to its native elastomeric state. At 500x magnification, the contaminant
+    crust is entirely absent, revealing the rubber's intrinsic micro-texture of interconnected fibrils and shallow pores.
+    The surface is now uniform and continuous, with no evidence of thermal damage or ablation of the base material. The removal
+    of the particulate-filled layer has re-established the material's original surface energy and topography. This results
+    in a clean, chemically active surface that is optimal for subsequent processes like bonding or coating, with the rubber's
+    fundamental viscoelastic properties fully preserved.
+  description: Microscopic analysis of rubber surface before and after laser cleaning treatment
   alt: Microscopic view of rubber surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -315,8 +343,7 @@ caption:
     materialType: Composite
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Rubber surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Rubber surface after laser cleaning showing detailed surface structure
     url: /images/material/rubber-laser-cleaning-micro.jpg
 tags:
 - composite

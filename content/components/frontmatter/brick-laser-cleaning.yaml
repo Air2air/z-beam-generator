@@ -1,123 +1,172 @@
 name: Brick
-category: Masonry
-subcategory: Brick
+category: masonry
+subcategory: brick
 title: Brick Laser Cleaning
 description: Laser cleaning parameters for Brick
 materialProperties:
-  density:
-    value: 1.8
-    unit: g/cm³
-    confidence: 92
-    description: Typical density of fired clay brick
-    min: 0.6
-    max: 2.8
-  thermalConductivity:
-    value: 0.72
-    unit: W/m·K
-    confidence: 85
-    description: Thermal conductivity of standard clay brick
-    min: 0.08
-    max: 2.5
-  tensileStrength:
-    value: 3.4
-    unit: MPa
-    confidence: 95
-    description: tensileStrength from Materials.yaml
-    min: 1
-    max: 15
-  hardness:
-    value: 4.5
-    unit: Mohs
-    confidence: 82
-    description: Mohs hardness scale for fired clay brick
-    min: 2
-    max: 6
-  youngsModulus:
-    value: 16.7
-    unit: GPa
-    confidence: 92
-    description: youngsModulus from Materials.yaml
-    min: 5
-    max: 50
-  compressiveStrength:
-    value: 35
-    unit: MPa
-    confidence: 88
-    description: Average compressive strength of structural brick
-    min: 5
-    max: 80
-  laserAbsorption:
-    value: 8.2
-    unit: '%'
-    confidence: 92
-    description: laserAbsorption from Materials.yaml
-    min: 0.5
-    max: 15
-  laserReflectivity:
-    value: 36.2
-    unit: '%'
-    confidence: 92
-    description: laserReflectivity from Materials.yaml
-    min: 10
-    max: 70
-  specificHeat:
-    value: 840
-    unit: J/kg·K
-    confidence: 84
-    description: Specific heat capacity at room temperature
-    min: 700
-    max: 1100
-  thermalDiffusivity:
-    value: 0.48
-    unit: mm²/s
-    confidence: 82
-    description: Thermal diffusivity calculated from thermal properties
-    min: 0.1
-    max: 1
-  thermalExpansion:
-    value: 5.5
-    unit: ×10⁻⁶/°C
-    confidence: 82
-    description: Coefficient of thermal expansion for fired clay brick
-    min: 5
-    max: 20
-  porosity:
-    value: 25
-    unit: '%'
-    confidence: 90
-    description: Typical porosity percentage in fired clay bricks
-    min: 10.0
-    max: 40.0
-  absorptionCoefficient:
-    value: 0.85
-    unit: dimensionless
-    confidence: 85
-    description: Optical absorption coefficient for common laser wavelengths (1064
-      nm)
-    min: 0.5
-    max: 0.85
-  reflectivity:
-    value: 0.15
-    unit: dimensionless
-    confidence: 83
-    description: Surface reflectivity at typical laser cleaning wavelengths
-    min: 0.15
-    max: 0.5
-  ablationThreshold:
-    value: 1.2
-    unit: J/cm²
-    confidence: 80
-    description: Approximate laser ablation threshold for ns-pulse lasers
-    min: 1.0
-    max: 8.0
-  thermalDestructionPoint:
-    value: 1450
-    unit: °C
-    confidence: 88
-    description: Temperature where structural breakdown begins
-    min: 500
-    max: 1200
-  thermalDestructionType: Structural breakdown
+  mechanical:
+    label: Mechanical Properties
+    description: Strength, elasticity, and structural characteristics
+    percentage: 18.2
+    properties:
+      compressiveStrength:
+        value: 35
+        unit: MPa
+        confidence: 93
+        description: Average compressive strength of structural brick
+        min: null
+        max: null
+      hardness:
+        value: 4.5
+        unit: Mohs
+        confidence: 90
+        description: Mohs hardness scale for fired clay brick
+        min: 2
+        max: 6
+      tensileStrength:
+        value: 3.5
+        unit: MPa
+        confidence: 87
+        description: Direct tensile strength of brick material
+        min: 1
+        max: 15
+      youngsModulus:
+        value: 20
+        unit: GPa
+        confidence: 88
+        description: Elastic modulus of fired clay brick
+        min: 5
+        max: 50
+  physical_structural:
+    label: Physical/Structural Properties
+    description: Basic physical characteristics
+    percentage: 3.6
+    properties:
+      density:
+        value: 1.8
+        unit: g/cm³
+        confidence: 92
+        description: Average bulk density of fired clay brick
+        min: 0.6
+        max: 2.8
+  optical_laser:
+    label: Optical/Laser Properties
+    description: Light interaction and laser response characteristics
+    percentage: 16.4
+    properties:
+      laserAbsorption:
+        value: 8.2
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.5
+        max: 15
+      laserReflectivity:
+        value: 36.2
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 10
+        max: 70
+      reflectivity:
+        value: 0.15
+        unit: dimensionless
+        confidence: 82
+        description: Surface reflectivity at typical laser cleaning wavelengths
+        min: null
+        max: null
+      ablationThreshold:
+        value: 1.2
+        unit: J/cm²
+        confidence: 83
+        description: Approximate laser ablation threshold for ns-pulse lasers
+        min: null
+        max: null
+  thermal:
+    label: Thermal Properties
+    description: Heat-related material characteristics including conductivity, expansion, and destruction points
+    percentage: 29.1
+    properties:
+      specificHeat:
+        value: 840
+        unit: J/kg·K
+        confidence: 89
+        description: Specific heat capacity at room temperature
+        min: 700
+        max: 1100
+      thermalConductivity:
+        value: 0.72
+        unit: W/m·K
+        confidence: 90
+        description: Thermal conductivity of common fired clay brick
+        min: 0.08
+        max: 2.5
+      thermalDiffusivity:
+        value: 0.48
+        unit: mm²/s
+        confidence: 86
+        description: Thermal diffusivity calculated from thermal properties
+        min: 0.1
+        max: 1
+      thermalExpansion:
+        value: 5.5
+        unit: 10⁻⁶/K
+        confidence: 85
+        description: Coefficient of thermal expansion for clay brick
+        min: 5
+        max: 20
+      thermalDestruction:
+        point:
+          value: 950.0
+          unit: °C
+          min: 500
+          max: 1200
+          confidence: 92
+          description: Thermal destruction point
+        type: spalling
+  surface:
+    label: Surface Properties
+    description: Surface characteristics and texture
+    percentage: 9.1
+    properties:
+      porosity:
+        value: 25
+        unit: '%'
+        confidence: 91
+        description: Typical porosity percentage in fired clay brick
+        min: null
+        max: null
+  chemical:
+    label: Chemical Properties
+    description: Chemical reactivity and stability
+    percentage: 5.5
+    properties:
+      chemicalStability:
+        value: 8
+        unit: 1-10 scale
+        confidence: 92
+        description: Chemical stability rating in atmospheric conditions
+        min: null
+        max: null
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 0
+    properties:
+      thermalDegradationPoint:
+        value: 950.0
+        unit: °C
+        confidence: 92
+        description: Temperature where structural integrity fails
+        min: null
+        max: null
+      absorptionCoefficient:
+        value: 0.85
+        unit: dimensionless
+        confidence: 84
+        description: Optical absorption coefficient for common laser wavelengths
+        min: null
+        max: null
 applications:
 - Cultural Heritage
 - Construction and Restoration
@@ -134,64 +183,57 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for brick surface cleaning without thermal
-      damage
+    description: Optimal average power for brick surface cleaning without thermal damage
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimized for brick absorption and contaminant
-      removal
+    description: Near-IR wavelength optimized for brick absorption and contaminant removal
     min: 532
     max: 1064
   spotSize:
     value: 100
     unit: μm
     confidence: 84
-    description: Beam spot diameter for optimal energy density distribution on brick
-      surface
+    description: Beam spot diameter for optimal energy density distribution on brick surface
     min: 50
     max: 200
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning coverage while maintaining
-      thermal control
+    description: High repetition rate for efficient cleaning coverage while maintaining thermal control
     min: 20
     max: 100
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant ablation with
-      minimal substrate interaction
+    description: Nanosecond pulse duration for effective contaminant ablation with minimal substrate interaction
     min: 5
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform cleaning efficiency across brick
-      surface
+    description: Optimal scanning speed for uniform cleaning efficiency across brick surface
     min: 200
     max: 1000
   fluence:
     value: 3.0
     unit: J/cm²
     confidence: 85
-    description: Energy density threshold for effective Brick cleaning - Energy density
-      threshold for effective cleaning of porous masonry materials
+    description: Energy density threshold for effective Brick cleaning - Energy density threshold for effective cleaning of
+      porous masonry materials
     min: 1.5
     max: 6.0
   energyDensity:
     value: 12.7
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without damaging
-      brick substrate
+    description: Fluence threshold for effective contaminant removal without damaging brick substrate
     min: 8
     max: 16
   overlapRatio:
@@ -205,8 +247,7 @@ machineSettings:
     value: 3
     unit: passes
     confidence: 85
-    description: Recommended number of passes for thorough cleaning of porous brick
-      surfaces
+    description: Recommended number of passes for thorough cleaning of porous brick surfaces
     min: 1
     max: 5
 regulatoryStandards:
@@ -251,9 +292,8 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Brick surfaces have a unique combination of porosity and variable mineral
-  composition. This requires careful adjustment of laser settings to effectively remove
-  contaminants without damaging the fragile clay surface.
+subtitle: Brick surfaces have a unique combination of porosity and variable mineral composition. This requires careful adjustment
+  of laser settings to effectively remove contaminants without damaging the fragile clay surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -289,24 +329,18 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the brick surface is obscured by a stratified
-    contamination layer approximately 50-200 µm thick. This layer consists of particulate
-    matter (soot, dust) embedded in a matrix of organic binders like pollution-derived
-    sulfates and biological growth. The underlying brick texture is masked, with contaminants
-    filling the natural micro-pores and fissures. The surface exhibits a caked, irregular
-    topography that disrupts the original substrate's morphology, creating a non-uniform,
-    occluded appearance.
-  afterText: Post-cleaning analysis at 500x reveals the restoration of the original
-    brick substrate. The contamination layer has been completely removed via laser
-    ablation, exposing the intrinsic micro-structure. The brick's characteristic porosity,
-    with pore diameters ranging from 10-100 µm, is now fully visible and unobstructed.
-    The surface texture is defined by the mineral grains and a clean, sharp interface.
-    The process has selectively eliminated the foreign contaminants without thermal
-    damage to the brick body, as evidenced by the absence of melting, vitrification,
-    or micro-cracking at the grain boundaries. The surface now presents its authentic,
-    unaltered morphology.
-  description: Microscopic analysis of brick surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the brick surface is obscured by a stratified contamination layer approximately 50-200
+    µm thick. This layer consists of particulate matter (soot, dust) embedded in a matrix of organic binders like pollution-derived
+    sulfates and biological growth. The underlying brick texture is masked, with contaminants filling the natural micro-pores
+    and fissures. The surface exhibits a caked, irregular topography that disrupts the original substrate's morphology, creating
+    a non-uniform, occluded appearance.
+  afterText: Post-cleaning analysis at 500x reveals the restoration of the original brick substrate. The contamination layer
+    has been completely removed via laser ablation, exposing the intrinsic micro-structure. The brick's characteristic porosity,
+    with pore diameters ranging from 10-100 µm, is now fully visible and unobstructed. The surface texture is defined by the
+    mineral grains and a clean, sharp interface. The process has selectively eliminated the foreign contaminants without thermal
+    damage to the brick body, as evidenced by the absence of melting, vitrification, or micro-cracking at the grain boundaries.
+    The surface now presents its authentic, unaltered morphology.
+  description: Microscopic analysis of brick surface before and after laser cleaning treatment
   alt: Microscopic view of brick surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -326,8 +360,7 @@ caption:
     materialType: Masonry
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Brick surface after laser cleaning showing detailed surface
-      structure
+    alt: Microscopic view of Brick surface after laser cleaning showing detailed surface structure
     url: /images/material/brick-laser-cleaning-micro.jpg
 tags:
 - masonry

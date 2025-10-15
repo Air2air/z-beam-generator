@@ -32,6 +32,14 @@ from components.frontmatter.ordering.field_ordering_service import FieldOrdering
 from components.frontmatter.core.validation_helpers import ValidationHelpers
 from components.frontmatter.research.property_value_researcher import PropertyValueResearcher
 
+# Optional: Property categorizer for analysis and validation
+try:
+    from utils.core.property_categorizer import get_property_categorizer
+    PROPERTY_CATEGORIZER_AVAILABLE = True
+except ImportError:
+    PROPERTY_CATEGORIZER_AVAILABLE = False
+    get_property_categorizer = None
+
 
 class PropertyDiscoveryError(Exception):
     """Raised when property discovery fails - no fallbacks allowed per GROK_INSTRUCTIONS.md"""
@@ -97,7 +105,7 @@ THERMAL_PROPERTY_MAP = {
         'label': 'Sintering/Decomposition Point',
         'description': 'Temperature where ceramic particles fuse or decompose',
         'scientific_process': 'Sintering or Decomposition',
-        'yaml_field': 'meltingPoint'  # Ceramics use meltingPoint in Materials.yaml
+        'yaml_field': 'thermalDestruction'
     },
     'stone': {
         'field': 'thermalDegradationPoint',
@@ -132,14 +140,14 @@ THERMAL_PROPERTY_MAP = {
         'label': 'Melting Point',
         'description': 'Temperature where solid metal transitions to liquid phase',
         'scientific_process': 'Phase Transition',
-        'yaml_field': 'meltingPoint'
+        'yaml_field': 'thermalDestruction'  # Now uses nested thermalDestruction
     },
     'semiconductor': {
         'field': 'meltingPoint',
         'label': 'Melting Point',
         'description': 'Temperature where crystalline structure melts',
         'scientific_process': 'Phase Transition',
-        'yaml_field': 'meltingPoint'
+        'yaml_field': 'thermalDestruction'  # Now uses nested thermalDestruction
     },
     'masonry': {
         'field': 'thermalDegradationPoint',
@@ -345,7 +353,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 # Pure AI generation for unknown materials
                 content = self._generate_from_api(material_name, {})
             
-            # Apply field ordering
+            # Apply field ordering (handles both flat and categorized structures)
             ordered_content = self.field_ordering_service.apply_field_ordering(content)
             
             # Enforce camelCase for caption keys (fix snake_case if present)
@@ -541,10 +549,96 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             raise GenerationError(f"Failed to generate from YAML for {material_name}: {str(e)}")
 
     def _generate_properties_with_ranges(self, material_data: Dict, material_name: str) -> Dict:
-        """Generate properties with Min/Max ranges - required for DataMetrics schema"""
-        # Use the working implementation to provide required Min/Max structure
-        return self._generate_basic_properties(material_data, material_name)
+        """Generate properties with Min/Max ranges organized by category"""
+        # Generate basic properties first
+        basic_properties = self._generate_basic_properties(material_data, material_name)
+        
+        # Organize by category (REQUIRED - per GROK_INSTRUCTIONS.md no fallbacks)
+        if not PROPERTY_CATEGORIZER_AVAILABLE:
+            raise PropertyDiscoveryError(
+                "Property categorizer not available - categorized structure is required per GROK fail-fast principles. "
+                "No fallback to flat structure allowed."
+            )
+        
+        # Categorize properties (FAIL-FAST if fails)
+        try:
+            categorized = self._organize_properties_by_category(basic_properties)
+            self.logger.info(f"✅ Organized {len(basic_properties)} properties into {len(categorized)} categories for {material_name}")
+            return categorized
+        except Exception as e:
+            # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallback to flat structure
+            raise PropertyDiscoveryError(
+                f"Failed to categorize properties for {material_name}: {e}. "
+                "Categorized structure is required - no fallback to flat structure per GROK principles."
+            )
 
+    def _organize_properties_by_category(self, properties: Dict) -> Dict:
+        """
+        Organize properties by category with metadata.
+        
+        Returns hierarchical structure:
+        {
+            'thermal': {
+                'label': 'Thermal Properties',
+                'description': '...',
+                'percentage': 29.1,
+                'properties': { thermalConductivity: {...}, meltingPoint: {...} }
+            },
+            'mechanical': { ... },
+            ...
+        }
+        """
+        try:
+            categorizer = get_property_categorizer()
+            categorized = {}
+            uncategorized = {}
+            
+            # Get category metadata from Categories.yaml
+            category_metadata = {}
+            if hasattr(self, 'categories_data') and 'propertyCategories' in self.categories_data:
+                prop_cats = self.categories_data['propertyCategories']
+                if 'categories' in prop_cats:
+                    for cat_id, cat_data in prop_cats['categories'].items():
+                        category_metadata[cat_id] = {
+                            'label': cat_data.get('label', cat_id.replace('_', ' ').title()),
+                            'description': cat_data.get('description', ''),
+                            'percentage': cat_data.get('percentage', 0)
+                        }
+            
+            # Categorize each property
+            for prop_name, prop_data in properties.items():
+                category_id = categorizer.get_category(prop_name)
+                
+                if category_id:
+                    # Add to appropriate category
+                    if category_id not in categorized:
+                        categorized[category_id] = {
+                            'label': category_metadata.get(category_id, {}).get('label', category_id.replace('_', ' ').title()),
+                            'description': category_metadata.get(category_id, {}).get('description', ''),
+                            'percentage': category_metadata.get(category_id, {}).get('percentage', 0),
+                            'properties': {}
+                        }
+                    categorized[category_id]['properties'][prop_name] = prop_data
+                else:
+                    # Track uncategorized properties
+                    uncategorized[prop_name] = prop_data
+            
+            # Add uncategorized properties to a special category if any exist
+            if uncategorized:
+                categorized['other'] = {
+                    'label': 'Other Properties',
+                    'description': 'Additional material-specific properties',
+                    'percentage': 0,
+                    'properties': uncategorized
+                }
+                self.logger.info(f"Found {len(uncategorized)} uncategorized properties")
+            
+            return categorized
+            
+        except Exception as e:
+            self.logger.error(f"Property categorization failed: {e}")
+            raise PropertyDiscoveryError(f"Failed to organize properties by category: {e}")
+    
     def _generate_basic_properties(self, material_data: Dict, material_name: str) -> Dict:
         """Generate properties with DataMetrics structure using YAML-first approach with AI fallback (OPTIMIZED)"""
         properties = {}
@@ -563,6 +657,37 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             # PHASE 1: Use high-confidence YAML properties first (OPTIMIZATION)
             for prop_name, yaml_prop in yaml_properties.items():
                 if isinstance(yaml_prop, dict):
+                    # Special handling for nested thermalDestruction structure
+                    if prop_name == 'thermalDestruction' and 'point' in yaml_prop:
+                        yaml_count += 1
+                        point_data = yaml_prop['point']
+                        
+                        # Build point structure with value/unit/confidence from materials.yaml
+                        point_structure = {
+                            'value': point_data.get('value'),
+                            'unit': point_data.get('unit', '°C'),
+                            'confidence': int(point_data.get('confidence', 0) * 100) if point_data.get('confidence', 0) < 1 else int(point_data.get('confidence', 0)),
+                            'description': point_data.get('description', 'Thermal destruction point'),
+                            'min': None,
+                            'max': None
+                        }
+                        
+                        # Get category-wide min/max ranges from Categories.yaml (like other properties)
+                        category_ranges = self._get_category_ranges_for_property(material_data.get('category'), prop_name)
+                        if category_ranges and 'point' in category_ranges:
+                            # Extract point ranges from nested structure
+                            point_ranges = category_ranges['point']
+                            point_structure['min'] = point_ranges.get('min')
+                            point_structure['max'] = point_ranges.get('max')
+                        
+                        properties[prop_name] = {
+                            'point': point_structure,
+                            'type': yaml_prop.get('type', 'melting')
+                        }
+                        self.logger.info(f"✅ YAML: {prop_name} = {point_data.get('value')} {point_data.get('unit', '°C')} (type: {yaml_prop.get('type')})")
+                        continue
+                    
+                    # Regular flat properties
                     confidence = yaml_prop.get('confidence', 0)
                     if confidence >= 0.85:  # High confidence threshold
                         yaml_count += 1
@@ -574,7 +699,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                             'min': None,
                             'max': None
                         }
-                        # Get min/max from Categories.yaml
+                        # Get category-wide min/max ranges from Categories.yaml (not material-specific)
                         category_ranges = self._get_category_ranges_for_property(material_data.get('category'), prop_name)
                         if category_ranges:
                             properties[prop_name]['min'] = category_ranges.get('min')
@@ -594,6 +719,11 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             
             # Use discovered properties for anything not already in YAML
             for prop_name, prop_data in discovered_properties.items():
+                # Skip meltingPoint if we already have thermalDestruction (meltingPoint is redundant)
+                if prop_name == 'meltingPoint' and 'thermalDestruction' in properties:
+                    self.logger.info(f"⏭️  Skipping meltingPoint - using thermalDestruction instead")
+                    continue
+                
                 if prop_name not in properties:  # Only if not already from YAML
                     ai_count += 1
                 try:
@@ -847,8 +977,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             'tensileStrength': 'tensileStrength',
             'youngsModulus': 'youngsModulus',
             'hardness': 'hardness',
-            'electricalConductivity': 'electricalConductivity',
-            'meltingPoint': 'thermalDestructionPoint'
+            'electricalConductivity': 'electricalConductivity'
         }
         
         # Map machine settings to range keys
@@ -1145,8 +1274,7 @@ Return YAML format with materialProperties, machineSettings, and structured appl
                 'youngsModulus': 'youngsModulus',
                 'hardness': 'hardness',
                 'electricalConductivity': 'electricalConductivity',
-                'meltingPoint': 'thermalDestructionPoint',  # Fixed mapping
-                'thermalDestructionPoint': 'thermalDestructionPoint',  # Direct mapping
+                'thermalDestruction': 'thermalDestruction',  # Nested structure
                 'thermalExpansion': 'thermalExpansion',
                 'thermalDiffusivity': 'thermalDiffusivity',
                 'specificHeat': 'specificHeat',
@@ -1364,7 +1492,10 @@ Return YAML format with materialProperties, machineSettings, and structured appl
             raise PropertyDiscoveryError(f"Property inheritance failed for {material_name}: {str(e)}")
     
     def _get_category_ranges_for_property(self, category: str, property_name: str) -> Optional[Dict]:
-        """Get min/max ranges for a property from Categories.yaml category_ranges"""
+        """Get min/max ranges for a property from Categories.yaml category_ranges
+        
+        Handles both flat properties (density, hardness) and nested properties (thermalDestruction)
+        """
         try:
             if not category or category not in self.category_ranges:
                 return None
@@ -1373,6 +1504,13 @@ Return YAML format with materialProperties, machineSettings, and structured appl
             
             if property_name in category_ranges:
                 ranges = category_ranges[property_name]
+                
+                # Handle nested thermalDestruction structure
+                if property_name == 'thermalDestruction' and isinstance(ranges, dict) and 'point' in ranges:
+                    # Return the full nested structure for special handling
+                    return ranges
+                
+                # Handle regular flat properties
                 if 'min' in ranges and 'max' in ranges:
                     if 'unit' not in ranges:
                         self.logger.warning(f"Unit missing for {category}.{property_name} in Categories.yaml")

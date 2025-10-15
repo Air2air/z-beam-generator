@@ -1,130 +1,165 @@
 name: Cobalt
-category: Metal
+category: metal
 subcategory: specialty
 title: Cobalt Laser Cleaning
 description: Laser cleaning parameters for Cobalt
 materialProperties:
-  density:
-    value: 8.9
-    unit: g/cm³
-    confidence: 98
-    description: Density of pure cobalt at room temperature
-    min: 0.53
-    max: 22.6
-  thermalConductivity:
-    value: 100
-    unit: W/m·K
-    confidence: 92
-    description: Thermal conductivity at room temperature
-    min: 6.0
-    max: 429.0
-  tensileStrength:
-    value: 760
-    unit: MPa
-    confidence: 85
-    description: Ultimate tensile strength of annealed cobalt
-    min: 3.0
-    max: 3000.0
-  hardness:
-    value: 125
-    unit: HV
-    confidence: 89
-    description: Vickers hardness of annealed cobalt
-    min: 0.5
-    max: 3500
-  youngsModulus:
-    value: 209
-    unit: GPa
-    confidence: 93
-    description: Young's modulus of elasticity
-    min: 5
-    max: 411
-  laserAbsorption:
-    value: 35.2
-    unit: '%'
-    confidence: 92
-    description: laserAbsorption from Materials.yaml
-    min: 0.02
-    max: 100
-  laserReflectivity:
-    value: 67.2
-    unit: '%'
-    confidence: 92
-    description: laserReflectivity from Materials.yaml
-    min: 5
-    max: 98
-  specificHeat:
-    value: 421
-    unit: J/kg·K
-    confidence: 91
-    description: Specific heat capacity at room temperature
-    min: 100
-    max: 900
-  thermalDiffusivity:
-    value: 18.7
-    unit: mm²/s
-    confidence: 88
-    description: Thermal diffusivity at room temperature
-    min: 0.2
-    max: 174
-  thermalExpansion:
-    value: 13.0
-    unit: μm/m·K
-    confidence: 90
-    description: Coefficient of thermal expansion (20-100°C)
-    min: 0.5
-    max: 29.1
-  absorptionCoefficient:
-    value: 0.65
-    unit: dimensionless
-    confidence: 82
-    description: Approximate absorption coefficient for common laser wavelengths (1.06
-      μm)
-    min: 0.02
-    max: 0.6
-  reflectivity:
-    value: 0.35
-    unit: dimensionless
-    confidence: 80
-    description: Reflectivity at common laser wavelengths (1.06 μm)
-    min: 0.4
-    max: 0.98
-  ablationThreshold:
-    value: 2.8
-    unit: J/cm²
-    confidence: 85
-    description: Estimated laser ablation threshold for nanosecond pulses
-    min: 0.5
-    max: 50.0
-  oxidationResistance:
-    value: moderate
-    unit: qualitative
-    confidence: 88
-    description: Oxidation resistance in air at elevated temperatures
-    min: null
-    max: null
-  crystallineStructure:
-    value: HCP
-    unit: crystal system
-    confidence: 95
-    description: Hexagonal close-packed structure at room temperature
-    min: null
-    max: null
-  surfaceRoughness:
-    value: 0.8
-    unit: μm Ra
-    confidence: 82
-    description: Typical surface roughness of polished cobalt
-    min: 0.05
-    max: 25.0
-  thermalDestructionPoint:
-    value: 1495
-    unit: °C
-    confidence: 97
-    description: Temperature where solid-to-liquid phase transition occurs
-    min: -38.8
-    max: 3422
-  thermalDestructionType: Melting
+  physical_structural:
+    label: Physical/Structural Properties
+    description: Basic physical characteristics
+    percentage: 3.6
+    properties:
+      density:
+        value: 8.9
+        unit: g/cm³
+        confidence: 98
+        description: Density of pure cobalt at room temperature
+        min: 0.53
+        max: 22.6
+  mechanical:
+    label: Mechanical Properties
+    description: Strength, elasticity, and structural characteristics
+    percentage: 18.2
+    properties:
+      hardness:
+        value: 125
+        unit: HV
+        confidence: 89
+        description: Vickers hardness of annealed cobalt
+        min: 0.5
+        max: 3500
+      tensileStrength:
+        value: 760
+        unit: MPa
+        confidence: 85
+        description: Ultimate tensile strength of annealed cobalt
+        min: 3.0
+        max: 3000.0
+      youngsModulus:
+        value: 209
+        unit: GPa
+        confidence: 93
+        description: Young's modulus of elasticity
+        min: 5
+        max: 411
+  optical_laser:
+    label: Optical/Laser Properties
+    description: Light interaction and laser response characteristics
+    percentage: 16.4
+    properties:
+      laserAbsorption:
+        value: 35.2
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.02
+        max: 100
+      laserReflectivity:
+        value: 67.2
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 98
+      reflectivity:
+        value: 0.35
+        unit: dimensionless
+        confidence: 80
+        description: Reflectivity at common laser wavelengths (1.06 μm)
+        min: null
+        max: null
+      ablationThreshold:
+        value: 2.8
+        unit: J/cm²
+        confidence: 85
+        description: Estimated laser ablation threshold for nanosecond pulses
+        min: null
+        max: null
+  thermal:
+    label: Thermal Properties
+    description: Heat-related material characteristics including conductivity, expansion, and destruction points
+    percentage: 29.1
+    properties:
+      specificHeat:
+        value: 421
+        unit: J/kg·K
+        confidence: 91
+        description: Specific heat capacity at room temperature
+        min: 100
+        max: 900
+      thermalConductivity:
+        value: 100
+        unit: W/m·K
+        confidence: 92
+        description: Thermal conductivity at room temperature
+        min: 6.0
+        max: 429.0
+      thermalDiffusivity:
+        value: 18.7
+        unit: mm²/s
+        confidence: 88
+        description: Thermal diffusivity at room temperature
+        min: 0.2
+        max: 174
+      thermalExpansion:
+        value: 13.0
+        unit: μm/m·K
+        confidence: 90
+        description: Coefficient of thermal expansion (20-100°C)
+        min: 0.5
+        max: 29.1
+      thermalDestruction:
+        point:
+          value: 1768.0
+          unit: K
+          min: -38.8
+          max: 3422
+          confidence: 95
+          description: Thermal destruction point
+        type: melting
+  compositional:
+    label: Compositional Properties
+    description: Material composition characteristics
+    percentage: 5.5
+    properties:
+      crystallineStructure:
+        value: HCP
+        unit: crystal system
+        confidence: 95
+        description: Hexagonal close-packed structure at room temperature
+        min: null
+        max: null
+  chemical:
+    label: Chemical Properties
+    description: Chemical reactivity and stability
+    percentage: 5.5
+    properties:
+      oxidationResistance:
+        value: moderate
+        unit: qualitative
+        confidence: 88
+        description: Forms protective oxide layer but oxidizes at high temperatures
+        min: null
+        max: null
+      corrosionResistance:
+        value: good
+        unit: qualitative
+        confidence: 86
+        description: Good resistance to atmospheric corrosion and many chemicals
+        min: null
+        max: null
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 0
+    properties:
+      absorptionCoefficient:
+        value: 0.65
+        unit: dimensionless
+        confidence: 82
+        description: Approximate absorption coefficient for common laser wavelengths (1.06 μm)
+        min: null
+        max: null
 applications:
 - Aerospace
 - Chemical Processing
@@ -139,40 +174,35 @@ machineSettings:
     value: 90
     unit: W
     confidence: 92
-    description: Optimal average power for Cobalt oxide removal without substrate
-      damage
+    description: Optimal average power for Cobalt oxide removal without substrate damage
     min: 70
     max: 110
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength with good absorption in Cobalt oxides and minimal
-      substrate heating
+    description: Near-IR wavelength with good absorption in Cobalt oxides and minimal substrate heating
     min: 532
     max: 1064
   spotSize:
     value: 80
     unit: μm
     confidence: 84
-    description: Beam spot diameter for effective cleaning resolution and processing
-      efficiency
+    description: Beam spot diameter for effective cleaning resolution and processing efficiency
     min: 50
     max: 120
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for continuous cleaning coverage with adequate
-      cooling between pulses
+    description: Optimal repetition rate for continuous cleaning coverage with adequate cooling between pulses
     min: 20
     max: 100
   pulseWidth:
     value: 12
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient oxide layer ablation with
-      controlled thermal effects
+    description: Nanosecond pulse duration for efficient oxide layer ablation with controlled thermal effects
     min: 8
     max: 20
   scanSpeed:
@@ -186,8 +216,8 @@ machineSettings:
     value: 6.0
     unit: J/cm²
     confidence: 92
-    description: Energy density threshold for effective Cobalt cleaning - Energy density
-      threshold for effective oxide and contaminant removal from metallic surfaces
+    description: Energy density threshold for effective Cobalt cleaning - Energy density threshold for effective oxide and
+      contaminant removal from metallic surfaces
     min: 3.0
     max: 12.0
   fluenceThreshold:
@@ -201,16 +231,14 @@ machineSettings:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for uniform cleaning without excessive heat
-      accumulation
+    description: Optimal pulse overlap for uniform cleaning without excessive heat accumulation
     min: 40
     max: 65
   passCount:
     value: 2
     unit: passes
     confidence: 85
-    description: Recommended number of passes for complete oxide removal from Cobalt
-      surfaces
+    description: Recommended number of passes for complete oxide removal from Cobalt surfaces
     min: 1
     max: 4
 regulatoryStandards:
@@ -255,9 +283,8 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Cobalt's unique magnetic properties and variable surface hardness distinguish
-  it from other specialty metals. These traits require careful adjustment of laser
-  power and scanning patterns to prevent surface modification.
+subtitle: Cobalt's unique magnetic properties and variable surface hardness distinguish it from other specialty metals. These
+  traits require careful adjustment of laser power and scanning patterns to prevent surface modification.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -293,19 +320,14 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the cobalt surface is obscured by a non-uniform
-    contamination layer, approximately 5-15 µm thick. This layer exhibits a complex
-    topography of particulate inclusions and amorphous oxide scales, which create
-    a textured, matte appearance. The underlying metallic substrate is largely hidden,
-    with only intermittent glimpses of the native cobalt's fine grain structure visible
-    through cracks in the overlying deposits.
-  afterText: Laser cleaning has fully removed the contamination layer, revealing the
-    pristine cobalt substrate. The surface now displays a clean, uniform grain structure
-    with minimal micro-fissuring. The reflectivity is significantly increased, and
-    the original metallic luster is restored, confirming the elimination of surface
-    oxides and embedded particles.
-  description: Microscopic analysis of cobalt surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the cobalt surface is obscured by a non-uniform contamination layer, approximately 5-15
+    µm thick. This layer exhibits a complex topography of particulate inclusions and amorphous oxide scales, which create
+    a textured, matte appearance. The underlying metallic substrate is largely hidden, with only intermittent glimpses of
+    the native cobalt's fine grain structure visible through cracks in the overlying deposits.
+  afterText: Laser cleaning has fully removed the contamination layer, revealing the pristine cobalt substrate. The surface
+    now displays a clean, uniform grain structure with minimal micro-fissuring. The reflectivity is significantly increased,
+    and the original metallic luster is restored, confirming the elimination of surface oxides and embedded particles.
+  description: Microscopic analysis of cobalt surface before and after laser cleaning treatment
   alt: Microscopic view of cobalt surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -325,8 +347,7 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Cobalt surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Cobalt surface after laser cleaning showing detailed surface structure
     url: /images/material/cobalt-laser-cleaning-micro.jpg
 tags:
 - metal

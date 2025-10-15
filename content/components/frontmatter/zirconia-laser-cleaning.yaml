@@ -1,157 +1,198 @@
 name: Zirconia
-category: Ceramic
-subcategory: Zirconia
+category: ceramic
+subcategory: zirconia
 title: Zirconia Laser Cleaning
 description: Laser cleaning parameters for Zirconia
 materialProperties:
-  density:
-    value: 6.0
-    unit: g/cm³
-    confidence: 95
-    description: Density of yttria-stabilized zirconia (YSZ) at room temperature
-    min: 2.2
-    max: 19.3
-  thermalConductivity:
-    value: 2.7
-    unit: W/m·K
-    confidence: 88
-    description: Thermal conductivity of YSZ at room temperature
-    min: 0.03
-    max: 2000.0
-  tensileStrength:
-    value: 500.0
-    unit: MPa
-    confidence: 95
-    description: tensileStrength from Materials.yaml
-    min: 50
-    max: 1000
-  hardness:
-    value: 12.5
-    unit: GPa
-    confidence: 92
-    description: Vickers hardness of sintered YSZ
-    min: 1.0
-    max: 10.0
-  youngsModulus:
-    value: 200
-    unit: GPa
-    confidence: 94
-    description: Young's modulus of fully dense YSZ
-    min: 50
-    max: 800
-  laserAbsorption:
-    value: 32.7
-    unit: '%'
-    confidence: 92
-    description: laserAbsorption from Materials.yaml
-    min: 0.1
-    max: 50
-  laserReflectivity:
-    value: 52.3
-    unit: '%'
-    confidence: 92
-    description: laserReflectivity from Materials.yaml
-    min: 5
-    max: 90
-  specificHeat:
-    value: 455
-    unit: J/kg·K
-    confidence: 90
-    description: Specific heat capacity of zirconia at 25°C
-    min: 200
-    max: 1200
-  thermalDiffusivity:
-    value: 0.008
-    unit: cm²/s
-    confidence: 85
-    description: Thermal diffusivity of zirconia at room temperature
-    min: 0.05
-    max: 120
-  thermalExpansion:
-    value: 10.5
-    unit: ×10⁻⁶/K
-    confidence: 92
-    description: Coefficient of thermal expansion for YSZ (20-1000°C)
-    min: 0.1
-    max: 14
-  flexuralStrength:
-    value: 900
-    unit: MPa
-    confidence: 88
-    description: Flexural strength of high-purity YSZ
-    min: 50
-    max: 1000
-  absorptionCoefficient:
-    value: 8500
-    unit: cm⁻¹
-    confidence: 82
-    description: Absorption coefficient at 1064 nm wavelength
-    min: 0.3
-    max: 0.9
-  reflectivity:
-    value: 0.15
-    unit: dimensionless
-    confidence: 85
-    description: Reflectivity at 1064 nm for polished surface
-    min: 0.1
-    max: 0.7
-  refractiveIndex:
-    value: 2.2
-    unit: dimensionless
-    confidence: 90
-    description: Refractive index at visible wavelengths
-    min: 1.5
-    max: 2.7
-  ablationThreshold:
-    value: 2.8
-    unit: J/cm²
-    confidence: 80
-    description: Laser ablation threshold for nanosecond pulses at 1064 nm
-    min: 2.0
-    max: 15.0
-  laserDamageThreshold:
-    value: 15
-    unit: J/cm²
-    confidence: 82
-    description: Laser-induced damage threshold for femtosecond pulses
-    min: 1.0
-    max: 10.0
-  oxidationResistance:
-    value: Excellent
-    unit: qualitative
-    confidence: 95
-    description: Inherent oxidation resistance as oxide ceramic
-    min: null
-    max: null
-  chemicalStability:
-    value: High
-    unit: qualitative
-    confidence: 92
-    description: Chemical stability in most environments except strong acids
-    min: null
-    max: null
-  crystallineStructure:
-    value: Tetragonal
-    unit: crystal system
-    confidence: 94
-    description: Room temperature crystal structure of YSZ
-    min: null
-    max: null
-  porosity:
-    value: 2.5
-    unit: '%'
-    confidence: 88
-    description: Typical porosity for sintered technical zirconia
-    min: 0.1
-    max: 50.0
-  thermalDestructionPoint:
-    value: 2715
-    unit: °C
-    confidence: 90
-    description: Temperature where particle fusion or decomposition occurs
-    min: 1000
-    max: 3827
-  thermalDestructionType: Sintering
+  physical_structural:
+    label: Physical/Structural Properties
+    description: Basic physical characteristics
+    percentage: 3.6
+    properties:
+      density:
+        value: 6.0
+        unit: g/cm³
+        confidence: 95
+        description: Density of yttria-stabilized zirconia (YSZ) at room temperature
+        min: 2.2
+        max: 19.3
+  mechanical:
+    label: Mechanical Properties
+    description: Strength, elasticity, and structural characteristics
+    percentage: 18.2
+    properties:
+      hardness:
+        value: 12.5
+        unit: GPa
+        confidence: 90
+        description: Vickers hardness of fully dense zirconia
+        min: 1.0
+        max: 10.0
+      tensileStrength:
+        value: 500.0
+        unit: MPa
+        confidence: 95
+        description: tensileStrength from Materials.yaml
+        min: 50
+        max: 1000
+      youngsModulus:
+        value: 200
+        unit: GPa
+        confidence: 92
+        description: Young's modulus of elasticity for dense zirconia
+        min: 50
+        max: 800
+      flexuralStrength:
+        value: 900
+        unit: MPa
+        confidence: 88
+        description: Flexural strength of transformation-toughened zirconia
+        min: null
+        max: null
+  optical_laser:
+    label: Optical/Laser Properties
+    description: Light interaction and laser response characteristics
+    percentage: 16.4
+    properties:
+      laserAbsorption:
+        value: 32.7
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.1
+        max: 50
+      laserReflectivity:
+        value: 52.3
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 90
+      reflectivity:
+        value: 0.15
+        unit: dimensionless
+        confidence: 82
+        description: Reflectivity at 1064 nm laser wavelength
+        min: null
+        max: null
+      refractiveIndex:
+        value: 2.2
+        unit: dimensionless
+        confidence: 90
+        description: Refractive index in visible spectrum
+        min: null
+        max: null
+      ablationThreshold:
+        value: 3.5
+        unit: J/cm²
+        confidence: 85
+        description: Laser ablation threshold for nanosecond pulses at 1064 nm
+        min: null
+        max: null
+      laserDamageThreshold:
+        value: 15.0
+        unit: J/cm²
+        confidence: 82
+        description: Damage threshold for short pulse lasers
+        min: null
+        max: null
+  thermal:
+    label: Thermal Properties
+    description: Heat-related material characteristics including conductivity, expansion, and destruction points
+    percentage: 29.1
+    properties:
+      specificHeat:
+        value: 455
+        unit: J/kg·K
+        confidence: 90
+        description: Specific heat capacity at room temperature
+        min: 200
+        max: 1200
+      thermalConductivity:
+        value: 2.7
+        unit: W/m·K
+        confidence: 90
+        description: Thermal conductivity of YSZ at room temperature
+        min: 0.03
+        max: 2000.0
+      thermalDiffusivity:
+        value: 0.008
+        unit: cm²/s
+        confidence: 85
+        description: Thermal diffusivity at room temperature
+        min: 0.05
+        max: 120
+      thermalExpansion:
+        value: 10.5
+        unit: ×10⁻⁶/K
+        confidence: 88
+        description: Coefficient of thermal expansion for stabilized zirconia
+        min: 0.1
+        max: 14
+      thermalDestruction:
+        point:
+          value: 2680.0
+          unit: °C
+          min: 1000
+          max: 3827
+          confidence: 95
+          description: Thermal destruction point
+        type: thermal_shock
+  chemical:
+    label: Chemical Properties
+    description: Chemical reactivity and stability
+    percentage: 5.5
+    properties:
+      oxidationResistance:
+        value: 95
+        unit: '%'
+        confidence: 95
+        description: Oxidation resistance rating in high-temperature environments
+        min: null
+        max: null
+      chemicalStability:
+        value: 90
+        unit: '%'
+        confidence: 92
+        description: Chemical stability in various environments
+        min: null
+        max: null
+  compositional:
+    label: Compositional Properties
+    description: Material composition characteristics
+    percentage: 5.5
+    properties:
+      crystallineStructure:
+        value: Tetragonal
+        unit: n/a
+        confidence: 90
+        description: Primary crystalline phase in yttria-stabilized zirconia
+        min: null
+        max: null
+  surface:
+    label: Surface Properties
+    description: Surface characteristics and texture
+    percentage: 9.1
+    properties:
+      porosity:
+        value: 2.0
+        unit: '%'
+        confidence: 85
+        description: Typical porosity in fully sintered zirconia
+        min: null
+        max: null
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 0
+    properties:
+      absorptionCoefficient:
+        value: 0.85
+        unit: dimensionless
+        confidence: 85
+        description: Absorption coefficient for near-infrared wavelengths (1064 nm)
+        min: null
+        max: null
 applications:
 - Aerospace
 - Medical Devices
@@ -168,8 +209,7 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Zirconia surface cleaning without thermal
-      damage
+    description: Optimal average power for Zirconia surface cleaning without thermal damage
     min: 80
     max: 120
   wavelength:
@@ -183,56 +223,50 @@ machineSettings:
     value: 50
     unit: μm
     confidence: 84
-    description: Beam spot diameter optimized for precision cleaning and energy density
-      control
+    description: Beam spot diameter optimized for precision cleaning and energy density control
     min: 30
     max: 100
   repetitionRate:
     value: 100
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning coverage while maintaining
-      thermal control
+    description: High repetition rate for efficient cleaning coverage while maintaining thermal control
     min: 50
     max: 200
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with
-      minimal substrate interaction
+    description: Nanosecond pulse duration for effective contaminant removal with minimal substrate interaction
     min: 5
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform cleaning coverage and process
-      efficiency
+    description: Optimal scanning speed for uniform cleaning coverage and process efficiency
     min: 300
     max: 1000
   fluence:
     value: 4.0
     unit: J/cm²
     confidence: 88
-    description: Energy density threshold for effective Zirconia cleaning - Energy
-      density threshold for effective contaminant removal from ceramic surfaces
+    description: Energy density threshold for effective Zirconia cleaning - Energy density threshold for effective contaminant
+      removal from ceramic surfaces
     min: 2.0
     max: 8.0
   energyDensity:
     value: 5.1
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal while preserving
-      Zirconia substrate
+    description: Fluence threshold for effective contaminant removal while preserving Zirconia substrate
     min: 3.5
     max: 8.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      accumulation
+    description: Optimal beam overlap for uniform cleaning without excessive thermal accumulation
     min: 40
     max: 70
   passCount:
@@ -264,8 +298,7 @@ author:
   image: /images/author/todd-dunning.jpg
 images:
   hero:
-    alt: Zirconia surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Zirconia surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/zirconia-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -292,9 +325,8 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Zirconia often throws curveballs during laser treatment due to its varying
-  hardness across samples. Adjust your power levels incrementally, starting below
-  50 watts, to protect the ceramic’s surface from unintended etching.
+subtitle: Zirconia often throws curveballs during laser treatment due to its varying hardness across samples. Adjust your
+  power levels incrementally, starting below 50 watts, to protect the ceramic’s surface from unintended etching.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -330,22 +362,17 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the zirconia surface is obscured by a non-uniform
-    contamination layer. This layer, measuring 5-15 micrometers thick, consists of
-    carbonaceous soot, metallic oxides, and adhered organic residues. The contaminants
-    form a discontinuous, splotchy pattern that masks the underlying ceramic's fine-grain
-    microstructure. The surface texture appears matte and irregular, with the foreign
-    material filling the natural micro-porosity of the sintered ceramic, significantly
+  beforeText: At 500x magnification, the zirconia surface is obscured by a non-uniform contamination layer. This layer, measuring
+    5-15 micrometers thick, consists of carbonaceous soot, metallic oxides, and adhered organic residues. The contaminants
+    form a discontinuous, splotchy pattern that masks the underlying ceramic's fine-grain microstructure. The surface texture
+    appears matte and irregular, with the foreign material filling the natural micro-porosity of the sintered ceramic, significantly
     reducing its inherent reflectivity.
-  afterText: Following laser cleaning, the surface at 500x magnification reveals a
-    complete transformation. The contamination layer has been entirely removed, exposing
-    the pristine, polycrystalline grain structure of the zirconia. The surface is
-    now characterized by a uniform, micro-rough texture consistent with the material's
-    intrinsic 2.5% porosity. This restoration results in a visually clean, homogenous
-    substrate with restored reflectivity, free from any residual film or heat-affected
+  afterText: Following laser cleaning, the surface at 500x magnification reveals a complete transformation. The contamination
+    layer has been entirely removed, exposing the pristine, polycrystalline grain structure of the zirconia. The surface is
+    now characterized by a uniform, micro-rough texture consistent with the material's intrinsic 2.5% porosity. This restoration
+    results in a visually clean, homogenous substrate with restored reflectivity, free from any residual film or heat-affected
     zone that could compromise its mechanical integrity.
-  description: Microscopic analysis of zirconia surface before and after laser cleaning
-    treatment
+  description: Microscopic analysis of zirconia surface before and after laser cleaning treatment
   alt: Microscopic view of zirconia surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -365,8 +392,7 @@ caption:
     materialType: Ceramic
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Zirconia surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Zirconia surface after laser cleaning showing detailed surface structure
     url: /images/material/zirconia-laser-cleaning-micro.jpg
 tags:
 - ceramic

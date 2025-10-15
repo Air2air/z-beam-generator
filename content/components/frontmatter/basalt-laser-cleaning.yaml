@@ -1,129 +1,160 @@
 name: Basalt
-category: Stone
+category: stone
 subcategory: igneous
 title: Basalt Laser Cleaning
 description: Laser cleaning parameters for Basalt
 materialProperties:
-  density:
-    value: 2.9
-    unit: g/cm³
-    confidence: 95
-    description: Typical density of basalt rock at room temperature
-    min: 1.5
-    max: 3.4
-  thermalConductivity:
-    value: 1.7
-    unit: W/m·K
-    confidence: 88
-    description: Thermal conductivity at room temperature
-    min: 0.2
-    max: 8
-  tensileStrength:
-    value: 15
-    unit: MPa
-    confidence: 82
-    description: Indirect tensile strength
-    min: 2
-    max: 25
-  hardness:
-    value: 6
-    unit: Mohs
-    confidence: 92
-    description: Mohs hardness scale
-    min: 1
-    max: 7
-  youngsModulus:
-    value: 70
-    unit: GPa
-    confidence: 88
-    description: Elastic modulus of basalt
-    min: 10
-    max: 100
-  laserAbsorption:
-    value: 8.7
-    unit: '%'
-    confidence: 92
-    description: laserAbsorption from Materials.yaml
-    min: 0.1
-    max: 20
-  laserReflectivity:
-    value: 38.2
-    unit: '%'
-    confidence: 92
-    description: laserReflectivity from Materials.yaml
-    min: 5
-    max: 80
-  specificHeat:
-    value: 840
-    unit: J/kg·K
-    confidence: 90
-    description: Specific heat capacity at room temperature
-    min: 600
-    max: 1200
-  thermalDiffusivity:
-    value: 0.7
-    unit: mm²/s
-    confidence: 85
-    description: Thermal diffusivity calculated from thermal properties
-    min: 0.2
-    max: 2.5
-  thermalExpansion:
-    value: 8.0
-    unit: 10⁻⁶/K
-    confidence: 85
-    description: Coefficient of thermal expansion
-    min: 3
-    max: 25
-  compressiveStrength:
-    value: 200
-    unit: MPa
-    confidence: 85
-    description: Uniaxial compressive strength
-    min: 20
-    max: 400
-  absorptionCoefficient:
-    value: 0.85
-    unit: dimensionless
-    confidence: 80
-    description: Typical absorption coefficient for near-IR wavelengths
-    min: 0.4
-    max: 0.85
-  reflectivity:
-    value: 0.12
-    unit: dimensionless
-    confidence: 80
-    description: Reflectivity at common laser wavelengths (1064 nm)
-    min: 0.15
-    max: 0.6
-  ablationThreshold:
-    value: 2.5
-    unit: J/cm²
-    confidence: 82
-    description: Estimated ablation threshold for nanosecond pulses at 1064 nm
-    min: 1.0
-    max: 10.0
-  porosity:
-    value: 1.5
-    unit: '%'
-    confidence: 85
-    description: Typical porosity of dense basalt
-    min: 0.5
-    max: 50.0
-  chemicalStability:
-    value: high
-    unit: qualitative
-    confidence: 90
-    description: High resistance to chemical weathering and corrosion
-    min: null
-    max: null
-  thermalDestructionPoint:
-    value: 1250
-    unit: °C
-    confidence: 90
-    description: Temperature where structural breakdown begins
-    min: 600
-    max: 1700
-  thermalDestructionType: Structural breakdown
+  physical_structural:
+    label: Physical/Structural Properties
+    description: Basic physical characteristics
+    percentage: 3.6
+    properties:
+      density:
+        value: 2.9
+        unit: g/cm³
+        confidence: 95
+        description: Typical density of basalt rock at room temperature
+        min: 1.5
+        max: 3.4
+  mechanical:
+    label: Mechanical Properties
+    description: Strength, elasticity, and structural characteristics
+    percentage: 18.2
+    properties:
+      hardness:
+        value: 6.0
+        unit: Mohs
+        confidence: 92
+        description: Mohs hardness scale
+        min: 1
+        max: 7
+      tensileStrength:
+        value: 10.0
+        unit: MPa
+        confidence: 95
+        description: tensileStrength from Materials.yaml
+        min: 2
+        max: 25
+      youngsModulus:
+        value: 70
+        unit: GPa
+        confidence: 88
+        description: Elastic modulus of basalt
+        min: 10
+        max: 100
+      compressiveStrength:
+        value: 200
+        unit: MPa
+        confidence: 85
+        description: Uniaxial compressive strength
+        min: null
+        max: null
+  optical_laser:
+    label: Optical/Laser Properties
+    description: Light interaction and laser response characteristics
+    percentage: 16.4
+    properties:
+      laserAbsorption:
+        value: 8.7
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.1
+        max: 20
+      laserReflectivity:
+        value: 38.2
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 80
+      reflectivity:
+        value: 0.15
+        unit: dimensionless
+        confidence: 80
+        description: Surface reflectivity for IR laser wavelengths
+        min: null
+        max: null
+      ablationThreshold:
+        value: 2.5
+        unit: J/cm²
+        confidence: 82
+        description: Laser ablation threshold for nanosecond pulses
+        min: null
+        max: null
+  thermal:
+    label: Thermal Properties
+    description: Heat-related material characteristics including conductivity, expansion, and destruction points
+    percentage: 29.1
+    properties:
+      specificHeat:
+        value: 840
+        unit: J/kg·K
+        confidence: 90
+        description: Specific heat capacity at room temperature
+        min: 600
+        max: 1200
+      thermalConductivity:
+        value: 1.7
+        unit: W/m·K
+        confidence: 88
+        description: Thermal conductivity at room temperature
+        min: 0.2
+        max: 8
+      thermalDiffusivity:
+        value: 0.83
+        unit: mm²/s
+        confidence: 92
+        description: thermalDiffusivity from Materials.yaml
+        min: 0.2
+        max: 2.5
+      thermalExpansion:
+        value: 8.0
+        unit: 10⁻⁶/K
+        confidence: 85
+        description: Coefficient of thermal expansion
+        min: 3
+        max: 25
+      thermalDestruction:
+        point:
+          value: 1100.0
+          unit: °C
+          min: 600
+          max: 1700
+          confidence: 92
+          description: Thermal destruction point
+        type: thermal_shock
+  surface:
+    label: Surface Properties
+    description: Surface characteristics and texture
+    percentage: 9.1
+    properties:
+      porosity:
+        value: 1.5
+        unit: '%'
+        confidence: 88
+        description: Typical porosity of dense basalt
+        min: null
+        max: null
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 0
+    properties:
+      thermalDegradationPoint:
+        value: 1100.0
+        unit: °C
+        confidence: 92
+        description: Temperature where mineral structure breaks down
+        min: null
+        max: null
+      absorptionCoefficient:
+        value: 0.85
+        unit: dimensionless
+        confidence: 82
+        description: Optical absorption coefficient for common laser wavelengths
+        min: null
+        max: null
 applications:
 - Aerospace
 - Architectural Restoration
@@ -140,8 +171,7 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Basalt surface cleaning without thermal
-      damage
+    description: Optimal average power for Basalt surface cleaning without thermal damage
     min: 80
     max: 120
   wavelength:
@@ -183,9 +213,8 @@ machineSettings:
     value: 3.5
     unit: J/cm²
     confidence: 86
-    description: Energy density threshold for effective Basalt cleaning - Energy density
-      threshold for effective contaminant removal from stone surfaces without substrate
-      damage
+    description: Energy density threshold for effective Basalt cleaning - Energy density threshold for effective contaminant
+      removal from stone surfaces without substrate damage
     min: 1.5
     max: 7.0
   fluenceThreshold:
@@ -251,9 +280,8 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Basalt is a dense, fine-grained igneous stone that can vary in hardness
-  and mineral composition. These variations require careful adjustment of laser settings
-  to effectively remove contaminants without damaging the surface.
+subtitle: Basalt is a dense, fine-grained igneous stone that can vary in hardness and mineral composition. These variations
+  require careful adjustment of laser settings to effectively remove contaminants without damaging the surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -289,24 +317,18 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the basalt surface is obscured by a complex contamination
-    layer. A carbonaceous soot and particulate matrix, approximately 10-50 micrometers
-    thick, adheres tenaciously to the stone's micro-texture. This layer infiltrates
-    the natural micro-fractures and vesicles inherent to the basalt, creating a deep-seated,
-    interlocked bond. The underlying crystalline structure of the feldspar and pyroxene
-    minerals is completely masked. The contaminant's low reflectivity results in a
-    visually homogeneous, matte black appearance that obscures the stone's intrinsic
-    granularity and color variation.
-  afterText: Laser cleaning has restored the basalt to its intrinsic mineralogical
-    state. The contaminant layer has been completely ablated, revealing a clean, well-defined
-    grain boundary network between the feldspar and pyroxene crystals. The surface
-    now exhibits its natural micro-roughness and the distinct geometries of individual
-    mineral grains. The process has effectively cleared the vesicles and micro-fractures,
-    eliminating the binding points for contaminants. This results in a surface with
-    higher light reflectivity, showcasing the material's authentic texture and subtle
-    color gradations.
-  description: Microscopic analysis of basalt surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the basalt surface is obscured by a complex contamination layer. A carbonaceous soot
+    and particulate matrix, approximately 10-50 micrometers thick, adheres tenaciously to the stone's micro-texture. This
+    layer infiltrates the natural micro-fractures and vesicles inherent to the basalt, creating a deep-seated, interlocked
+    bond. The underlying crystalline structure of the feldspar and pyroxene minerals is completely masked. The contaminant's
+    low reflectivity results in a visually homogeneous, matte black appearance that obscures the stone's intrinsic granularity
+    and color variation.
+  afterText: Laser cleaning has restored the basalt to its intrinsic mineralogical state. The contaminant layer has been completely
+    ablated, revealing a clean, well-defined grain boundary network between the feldspar and pyroxene crystals. The surface
+    now exhibits its natural micro-roughness and the distinct geometries of individual mineral grains. The process has effectively
+    cleared the vesicles and micro-fractures, eliminating the binding points for contaminants. This results in a surface with
+    higher light reflectivity, showcasing the material's authentic texture and subtle color gradations.
+  description: Microscopic analysis of basalt surface before and after laser cleaning treatment
   alt: Microscopic view of basalt surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -326,8 +348,7 @@ caption:
     materialType: Stone
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Basalt surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Basalt surface after laser cleaning showing detailed surface structure
     url: /images/material/basalt-laser-cleaning-micro.jpg
 tags:
 - stone

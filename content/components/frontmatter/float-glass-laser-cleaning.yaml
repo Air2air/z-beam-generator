@@ -1,136 +1,179 @@
 name: Float Glass
-category: Glass
-subcategory: Float Glass
+category: glass
+subcategory: float glass
 title: Float Glass Laser Cleaning
 description: Laser cleaning parameters for Float Glass
 materialProperties:
-  density:
-    value: 2.5
-    unit: g/cm³
-    confidence: 98
-    description: Density of standard soda-lime float glass at 20°C
-    min: 1.2
-    max: 7.6
-  thermalConductivity:
-    value: 1.0
-    unit: W/m·K
-    confidence: 92
-    description: Thermal conductivity at room temperature
-    min: 0.02
-    max: 40
-  tensileStrength:
-    value: 40.0
-    unit: MPa
-    confidence: 95
-    description: tensileStrength from Materials.yaml
-    min: 30
-    max: 2000
-  hardness:
-    value: 6.0
-    unit: Mohs
-    confidence: 85
-    description: Mohs hardness scale value
-    min: 4.5
-    max: 9
-  youngsModulus:
-    value: 70
-    unit: GPa
-    confidence: 95
-    description: Young's modulus of elasticity
-    min: 10
-    max: 400
-  laserAbsorption:
-    value: 4.0
-    unit: '%'
-    confidence: 95
-    description: laserAbsorption from Materials.yaml
-    min: 0.001
-    max: 10
-  laserReflectivity:
-    value: 4.2
-    unit: '%'
-    confidence: 92
-    description: laserReflectivity from Materials.yaml
-    min: 4
-    max: 92
-  specificHeat:
-    value: 840
-    unit: J/kg·K
-    confidence: 88
-    description: Specific heat capacity at room temperature
-    min: 500
-    max: 900
-  thermalDiffusivity:
-    value: 0.84
-    unit: mm²/s
-    confidence: 95
-    description: thermalDiffusivity from Materials.yaml
-    min: 0.01
-    max: 15
-  thermalExpansion:
-    value: 8.5
-    unit: ×10⁻⁶/°C
-    confidence: 90
-    description: Coefficient of linear thermal expansion (20-300°C)
-    min: 0.1
-    max: 15
-  flexuralStrength:
-    value: 50
-    unit: MPa
-    confidence: 90
-    description: Modulus of rupture for annealed float glass
-    min: 30
-    max: 500
-  refractiveIndex:
-    value: 1.52
-    unit: dimensionless
-    confidence: 98
-    description: Refractive index at 589 nm wavelength
-    min: 1.45
-    max: 2.0
-  transmissivity:
-    value: 91
-    unit: '%'
-    confidence: 95
-    description: Visible light transmission for 4mm thick glass
-    min: 0.6
-    max: 0.95
-  absorptionCoefficient:
-    value: 0.02
-    unit: cm⁻¹
-    confidence: 85
-    description: Absorption coefficient at 1064 nm (common laser wavelength)
-    min: 0.01
-    max: 0.4
-  laserDamageThreshold:
-    value: 15
-    unit: J/cm²
-    confidence: 82
-    description: Approximate damage threshold for nanosecond pulses at 1064 nm
-    min: 2.0
-    max: 50.0
-  chemicalStability:
-    value: 8
-    unit: scale 1-10
-    confidence: 88
-    description: Resistance to water and atmospheric corrosion (10 = highest)
-    min: 1
-    max: 10
-  surfaceRoughness:
-    value: 0.5
-    unit: nm Ra
-    confidence: 90
-    description: Typical surface roughness of pristine float glass surface
-    min: 0.001
-    max: 5.0
-  thermalDestructionPoint:
-    value: 1000
-    unit: °C
-    confidence: 95
-    description: Temperature where glass transitions from rigid to pliable state
-    min: 500
-    max: 1723
-  thermalDestructionType: Softening
+  physical_structural:
+    label: Physical/Structural Properties
+    description: Basic physical characteristics
+    percentage: 3.6
+    properties:
+      density:
+        value: 2.5
+        unit: g/cm³
+        confidence: 95
+        description: Typical density of soda-lime-silica float glass
+        min: 1.2
+        max: 7.6
+  mechanical:
+    label: Mechanical Properties
+    description: Strength, elasticity, and structural characteristics
+    percentage: 18.2
+    properties:
+      hardness:
+        value: 6.0
+        unit: Mohs
+        confidence: 85
+        description: Mohs hardness scale value
+        min: 4.5
+        max: 9
+      tensileStrength:
+        value: 40.0
+        unit: MPa
+        confidence: 95
+        description: tensileStrength from Materials.yaml
+        min: 30
+        max: 2000
+      youngsModulus:
+        value: 70
+        unit: GPa
+        confidence: 96
+        description: Elastic modulus of float glass
+        min: 10
+        max: 400
+      flexuralStrength:
+        value: 50
+        unit: MPa
+        confidence: 90
+        description: Bending strength of pristine float glass
+        min: null
+        max: null
+  optical_laser:
+    label: Optical/Laser Properties
+    description: Light interaction and laser response characteristics
+    percentage: 16.4
+    properties:
+      laserAbsorption:
+        value: 4.0
+        unit: '%'
+        confidence: 95
+        description: laserAbsorption from Materials.yaml
+        min: 0.001
+        max: 10
+      laserReflectivity:
+        value: 4.2
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 4
+        max: 92
+      refractiveIndex:
+        value: 1.52
+        unit: dimensionless
+        confidence: 98
+        description: Refractive index at 589 nm wavelength
+        min: null
+        max: null
+      laserDamageThreshold:
+        value: 10
+        unit: J/cm²
+        confidence: 82
+        description: Estimated damage threshold for nanosecond pulses at 1064 nm
+        min: null
+        max: null
+  thermal:
+    label: Thermal Properties
+    description: Heat-related material characteristics including conductivity, expansion, and destruction points
+    percentage: 29.1
+    properties:
+      specificHeat:
+        value: 840
+        unit: J/kg·K
+        confidence: 88
+        description: Specific heat capacity at room temperature
+        min: 500
+        max: 900
+      thermalConductivity:
+        value: 1.0
+        unit: W/m·K
+        confidence: 92
+        description: Low thermal conductivity typical of silicate glasses
+        min: 0.02
+        max: 40
+      thermalDiffusivity:
+        value: 0.84
+        unit: mm²/s
+        confidence: 95
+        description: thermalDiffusivity from Materials.yaml
+        min: 0.01
+        max: 15
+      thermalExpansion:
+        value: 8.5
+        unit: ×10⁻⁶/°C
+        confidence: 94
+        description: Coefficient of linear thermal expansion for soda-lime glass
+        min: 0.1
+        max: 15
+      thermalDestruction:
+        point:
+          value: 1100.0
+          unit: K
+          min: 500
+          max: 1723
+          confidence: 95
+          description: Thermal destruction point
+        type: melting
+  chemical:
+    label: Chemical Properties
+    description: Chemical reactivity and stability
+    percentage: 5.5
+    properties:
+      chemicalStability:
+        value: 8
+        unit: scale 1-10
+        confidence: 88
+        description: Resistance to chemical attack and environmental degradation
+        min: null
+        max: null
+  surface:
+    label: Surface Properties
+    description: Surface characteristics and texture
+    percentage: 9.1
+    properties:
+      surfaceRoughness:
+        value: 0.5
+        unit: nm RMS
+        confidence: 92
+        description: Typical surface roughness of pristine float glass
+        min: null
+        max: null
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 0
+    properties:
+      softeningPoint:
+        value: 1100.0
+        unit: K
+        confidence: 95
+        description: Temperature where glass transitions from rigid to pliable state
+        min: null
+        max: null
+      transmissivity:
+        value: 92
+        unit: '%'
+        confidence: 95
+        description: Visible light transmission for clear float glass
+        min: null
+        max: null
+      absorptionCoefficient:
+        value: 0.1
+        unit: cm⁻¹
+        confidence: 85
+        description: Approximate absorption coefficient in visible spectrum
+        min: null
+        max: null
 applications:
 - Architectural Glass Manufacturing
 - Solar Panel Manufacturing
@@ -147,16 +190,14 @@ machineSettings:
     value: 90
     unit: W
     confidence: 91
-    description: Optimal average power for Float Glass surface cleaning without thermal
-      damage
+    description: Optimal average power for Float Glass surface cleaning without thermal damage
     min: 70
     max: 110
   wavelength:
     value: 1064
     unit: nm
     confidence: 89
-    description: Near-IR wavelength with good transmission through glass while effectively
-      removing surface contaminants
+    description: Near-IR wavelength with good transmission through glass while effectively removing surface contaminants
     min: 1030
     max: 1070
   spotSize:
@@ -170,57 +211,50 @@ machineSettings:
     value: 50
     unit: kHz
     confidence: 85
-    description: Optimal repetition rate for efficient cleaning coverage while maintaining
-      thermal management
+    description: Optimal repetition rate for efficient cleaning coverage while maintaining thermal management
     min: 30
     max: 100
   pulseWidth:
     value: 12
     unit: ns
     confidence: 87
-    description: Nanosecond pulse duration for efficient contaminant removal with
-      minimal substrate heating
+    description: Nanosecond pulse duration for efficient contaminant removal with minimal substrate heating
     min: 8
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for efficient area coverage with effective
-      contaminant removal
+    description: Optimal scanning speed for efficient area coverage with effective contaminant removal
     min: 300
     max: 800
   fluence:
     value: 2.5
     unit: J/cm²
     confidence: 90
-    description: Energy density threshold for effective Float Glass cleaning - Energy
-      density threshold for surface cleaning without inducing optical damage or stress
-      fractures
+    description: Energy density threshold for effective Float Glass cleaning - Energy density threshold for surface cleaning
+      without inducing optical damage or stress fractures
     min: 1.0
     max: 5.0
   energyDensity:
     value: 2.5
     unit: J/cm²
     confidence: 90
-    description: Fluence threshold for effective contaminant ablation without damaging
-      glass substrate
+    description: Fluence threshold for effective contaminant ablation without damaging glass substrate
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 84
-    description: Optimal beam overlap for uniform cleaning coverage without excessive
-      energy deposition
+    description: Optimal beam overlap for uniform cleaning coverage without excessive energy deposition
     min: 40
     max: 70
   passCount:
     value: 2
     unit: passes
     confidence: 88
-    description: Recommended number of passes for complete contaminant removal with
-      safety margin
+    description: Recommended number of passes for complete contaminant removal with safety margin
     min: 1
     max: 4
 regulatoryStandards:
@@ -238,8 +272,7 @@ author:
   image: /images/author/ikmanda-roswati.jpg
 images:
   hero:
-    alt: Float Glass surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Float Glass surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/float-glass-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -266,9 +299,8 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Pay close attention to float glass during laser treatment—its smooth finish
-  can hide tiny flaws. Adjusting the power levels to stay below 50 watts ensures you
-  safeguard the layer from unintended etching.
+subtitle: Pay close attention to float glass during laser treatment—its smooth finish can hide tiny flaws. Adjusting the power
+  levels to stay below 50 watts ensures you safeguard the layer from unintended etching.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -304,23 +336,17 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the float glass surface is obscured by a discontinuous
-    layer of particulate and hydrocarbon contamination. This layer, ranging from 100
-    nm to 5 µm in thickness, consists of imbedded silica and alumina particles, carbonaceous
-    soot, and organic residues. The contaminants create a topographical landscape
-    of peaks and valleys, disrupting the pristine surface roughness of approximately
-    0.5 nm Ra. This layer significantly scatters incident light, reducing optical
-    clarity and increasing light diffusion across the surface.
-  afterText: Laser cleaning restores the surface to its intrinsic state, revealing
-    the original, atomically smooth substrate with a characteristic roughness near
-    0.5 nm Ra. At 500x magnification, all exogenous particulate and hydrocarbon films
-    have been completely removed, eliminating the previous light-scattering topography.
-    The surface is now a continuous, homogeneous plane with no evidence of laser-induced
-    micro-fractures or thermal stress marks. This pristine condition ensures minimal
-    light diffusion, allowing the glass to achieve its inherent transmissivity of
-    approximately 91% for visible light.
-  description: Microscopic analysis of float glass surface before and after laser
-    cleaning treatment
+  beforeText: At 500x magnification, the float glass surface is obscured by a discontinuous layer of particulate and hydrocarbon
+    contamination. This layer, ranging from 100 nm to 5 µm in thickness, consists of imbedded silica and alumina particles,
+    carbonaceous soot, and organic residues. The contaminants create a topographical landscape of peaks and valleys, disrupting
+    the pristine surface roughness of approximately 0.5 nm Ra. This layer significantly scatters incident light, reducing
+    optical clarity and increasing light diffusion across the surface.
+  afterText: Laser cleaning restores the surface to its intrinsic state, revealing the original, atomically smooth substrate
+    with a characteristic roughness near 0.5 nm Ra. At 500x magnification, all exogenous particulate and hydrocarbon films
+    have been completely removed, eliminating the previous light-scattering topography. The surface is now a continuous, homogeneous
+    plane with no evidence of laser-induced micro-fractures or thermal stress marks. This pristine condition ensures minimal
+    light diffusion, allowing the glass to achieve its inherent transmissivity of approximately 91% for visible light.
+  description: Microscopic analysis of float glass surface before and after laser cleaning treatment
   alt: Microscopic view of float glass surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -340,8 +366,7 @@ caption:
     materialType: Glass
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Float Glass surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Float Glass surface after laser cleaning showing detailed surface structure
     url: /images/material/float-glass-laser-cleaning-micro.jpg
 tags:
 - glass

@@ -1,138 +1,172 @@
 name: Polyethylene
-category: Plastic
-subcategory: Polyethylene
+category: plastic
+subcategory: polyethylene
 title: Polyethylene Laser Cleaning
 description: Laser cleaning parameters for Polyethylene
 materialProperties:
-  density:
-    value: 0.94
-    unit: g/cm³
-    confidence: 95
-    description: Density of high-density polyethylene (HDPE) at room temperature
-    min: 0.85
-    max: 2.2
-  thermalConductivity:
-    value: 0.45
-    unit: W/m·K
-    confidence: 88
-    description: Thermal conductivity of polyethylene at room temperature
-    min: 0.02
-    max: 3
-  tensileStrength:
-    value: 32
-    unit: MPa
-    confidence: 92
-    description: Tensile strength at yield for HDPE
-    min: 10
-    max: 400
-  hardness:
-    value: 65
-    unit: Shore D
-    confidence: 85
-    description: Hardness measurement on Shore D scale for HDPE
-    min: Shore A 10
-    max: Shore D 90
-  youngsModulus:
-    value: 1.1
-    unit: GPa
-    confidence: 90
-    description: Young's modulus of elasticity for HDPE
-    min: 0.01
-    max: 5
-  laserAbsorption:
-    value: 65.2
-    unit: '%'
-    confidence: 92
-    description: laserAbsorption from Materials.yaml
-    min: 0.1
-    max: 100
-  laserReflectivity:
-    value: 5.0
-    unit: '%'
-    confidence: 95
-    description: laserReflectivity from Materials.yaml
-    min: 5
-    max: 95
-  specificHeat:
-    value: 1900
-    unit: J/kg·K
-    confidence: 90
-    description: Specific heat capacity at room temperature
-    min: 1000
-    max: 2500
-  thermalDiffusivity:
-    value: 0.22
-    unit: mm²/s
-    confidence: 95
-    description: thermalDiffusivity from Materials.yaml
-    min: 0.05
-    max: 1
-  thermalExpansion:
-    value: 200
-    unit: 10^-6/°C
-    confidence: 85
-    description: Coefficient of linear thermal expansion for HDPE
-    min: 10
-    max: 200
-  absorptionCoefficient:
-    value: 0.85
-    unit: dimensionless
-    confidence: 82
-    description: Typical absorption coefficient for IR wavelengths (1064 nm)
-    min: 0.6
-    max: 0.95
-  reflectivity:
-    value: 0.12
-    unit: dimensionless
-    confidence: 80
-    description: Reflectivity at common laser wavelengths (1064 nm)
-    min: 0.05
-    max: 0.4
-  ablationThreshold:
-    value: 0.8
-    unit: J/cm²
-    confidence: 82
-    description: Approximate laser ablation threshold for nanosecond pulses at 1064
-      nm
-    min: 0.2
-    max: 2.0
-  laserDamageThreshold:
-    value: 1.2
-    unit: J/cm²
-    confidence: 80
-    description: Laser damage threshold for continuous wave irradiation
-    min: 0.1
-    max: 1.0
-  oxidationResistance:
-    value: High
-    unit: qualitative
-    confidence: 88
-    description: Resistance to oxidation at room temperature, but degrades under UV
-      exposure
-    min: null
-    max: null
-  crystallineStructure:
-    value: Semi-crystalline
-    unit: qualitative
-    confidence: 92
-    description: Polyethylene exhibits semi-crystalline structure with amorphous regions
-    min: null
-    max: null
-  surfaceRoughness:
-    value: 0.8
-    unit: μm Ra
-    confidence: 85
-    description: Typical surface roughness for molded polyethylene surfaces
-    min: 0.1
-    max: 10.0
-  thermalDestructionPoint:
-    value: 130
-    unit: °C
-    confidence: 92
-    description: Temperature where polymer chain breakdown begins
-    min: 80
-    max: 400
-  thermalDestructionType: Degradation
+  physical_structural:
+    label: Physical/Structural Properties
+    description: Basic physical characteristics
+    percentage: 3.6
+    properties:
+      density:
+        value: 0.94
+        unit: g/cm³
+        confidence: 95
+        description: Density of high-density polyethylene at room temperature
+        min: 0.85
+        max: 2.2
+  mechanical:
+    label: Mechanical Properties
+    description: Strength, elasticity, and structural characteristics
+    percentage: 18.2
+    properties:
+      hardness:
+        value: 65
+        unit: Shore D
+        confidence: 85
+        description: Hardness on Shore D scale for HDPE
+        min: Shore A 10
+        max: Shore D 90
+      tensileStrength:
+        value: 32
+        unit: MPa
+        confidence: 92
+        description: Tensile strength of high-density polyethylene
+        min: 10
+        max: 400
+      youngsModulus:
+        value: 1.1
+        unit: GPa
+        confidence: 90
+        description: Elastic modulus in tension for HDPE
+        min: 0.01
+        max: 5
+  optical_laser:
+    label: Optical/Laser Properties
+    description: Light interaction and laser response characteristics
+    percentage: 16.4
+    properties:
+      laserAbsorption:
+        value: 65.2
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.1
+        max: 100
+      laserReflectivity:
+        value: 5.0
+        unit: '%'
+        confidence: 95
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 95
+      reflectivity:
+        value: 0.12
+        unit: dimensionless
+        confidence: 80
+        description: Reflectivity at common laser wavelengths (IR region)
+        min: null
+        max: null
+      ablationThreshold:
+        value: 0.8
+        unit: J/cm²
+        confidence: 82
+        description: Estimated laser ablation threshold for nanosecond pulses at 1064 nm
+        min: null
+        max: null
+      laserDamageThreshold:
+        value: 1.2
+        unit: J/cm²
+        confidence: 80
+        description: Laser-induced damage threshold for continuous wave irradiation
+        min: null
+        max: null
+  thermal:
+    label: Thermal Properties
+    description: Heat-related material characteristics including conductivity, expansion, and destruction points
+    percentage: 29.1
+    properties:
+      specificHeat:
+        value: 1900
+        unit: J/kg·K
+        confidence: 90
+        description: Specific heat capacity at room temperature
+        min: 1000
+        max: 2500
+      thermalConductivity:
+        value: 0.44
+        unit: W/m·K
+        confidence: 88
+        description: Low thermal conductivity typical of polymers
+        min: 0.02
+        max: 3
+      thermalDiffusivity:
+        value: 0.22
+        unit: mm²/s
+        confidence: 95
+        description: thermalDiffusivity from Materials.yaml
+        min: 0.05
+        max: 1
+      thermalExpansion:
+        value: 200
+        unit: 10^-6/°C
+        confidence: 85
+        description: Coefficient of linear thermal expansion for HDPE
+        min: 10
+        max: 200
+      thermalDestruction:
+        point:
+          value: 385.0
+          unit: °C
+          min: 80
+          max: 400
+          confidence: 95
+          description: Thermal destruction point
+        type: decomposition
+  chemical:
+    label: Chemical Properties
+    description: Chemical reactivity and stability
+    percentage: 5.5
+    properties:
+      oxidationResistance:
+        value: Good
+        unit: qualitative
+        confidence: 88
+        description: Resistance to oxidative degradation at moderate temperatures
+        min: null
+        max: null
+  compositional:
+    label: Compositional Properties
+    description: Material composition characteristics
+    percentage: 5.5
+    properties:
+      crystallineStructure:
+        value: Semi-crystalline
+        unit: qualitative
+        confidence: 95
+        description: Polyethylene exhibits semi-crystalline morphology with amorphous regions
+        min: null
+        max: null
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 0
+    properties:
+      degradationPoint:
+        value: 385.0
+        unit: °C
+        confidence: 95
+        description: Temperature where polymer chains break down
+        min: null
+        max: null
+      absorptionCoefficient:
+        value: 0.85
+        unit: dimensionless
+        confidence: 82
+        description: Estimated absorption coefficient for IR wavelengths (1064 nm)
+        min: null
+        max: null
 applications:
 - Medical Device Manufacturing
 - Food Packaging
@@ -149,57 +183,50 @@ machineSettings:
     value: 45
     unit: W
     confidence: 90
-    description: Optimal average power for Polyethylene surface cleaning without thermal
-      damage
+    description: Optimal average power for Polyethylene surface cleaning without thermal damage
     min: 30
     max: 60
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength with moderate Polyethylene absorption for controlled
-      ablation
+    description: Near-IR wavelength with moderate Polyethylene absorption for controlled ablation
     min: 532
     max: 10640
   spotSize:
     value: 80
     unit: μm
     confidence: 86
-    description: Optimal beam spot diameter for balance between cleaning efficiency
-      and resolution
+    description: Optimal beam spot diameter for balance between cleaning efficiency and resolution
     min: 50
     max: 150
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning while maintaining thermal
-      control
+    description: High repetition rate for efficient cleaning while maintaining thermal control
     min: 20
     max: 100
   pulseWidth:
     value: 8
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient material removal with minimal
-      heat diffusion
+    description: Nanosecond pulse duration for efficient material removal with minimal heat diffusion
     min: 5
     max: 15
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 84
-    description: Optimal scanning speed for effective material removal without excessive
-      dwell time
+    description: Optimal scanning speed for effective material removal without excessive dwell time
     min: 200
     max: 1000
   fluence:
     value: 2.0
     unit: J/cm²
     confidence: 87
-    description: Energy density threshold for effective Polyethylene cleaning - Energy
-      density threshold for polymer surface cleaning without thermal degradation or
-      melting
+    description: Energy density threshold for effective Polyethylene cleaning - Energy density threshold for polymer surface
+      cleaning without thermal degradation or melting
     min: 0.8
     max: 4.0
   fluenceThreshold:
@@ -238,8 +265,7 @@ author:
   image: /images/author/alessandro-moretti.jpg
 images:
   hero:
-    alt: Polyethylene surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Polyethylene surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/polyethylene-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -266,9 +292,8 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Polyethylene has a lower melting point and is more chemically resistant
-  than other plastics. These traits demand lower laser power and specific wavelength
-  settings to avoid surface damage.
+subtitle: Polyethylene has a lower melting point and is more chemically resistant than other plastics. These traits demand
+  lower laser power and specific wavelength settings to avoid surface damage.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -304,24 +329,19 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the polyethylene surface is obscured by a non-uniform
-    contaminant layer, approximately 5-10 µm thick. This layer, composed of organic
-    residues and particulate matter, disrupts the native semi-crystalline texture.
-    The underlying polymer morphology is concealed, with contaminants filling the
-    micro-scale valleys of the 0.8 µm Ra surface, creating an irregular, occluded
-    topography that compromises surface energy and adhesion.
-  afterText: 'Laser cleaning effectively removes the contaminant layer, revealing
-    the pristine, semi-crystalline microstructure of the polyethylene substrate. The
-    original surface texture, with a characteristic roughness of 0.8 µm Ra, is now
-    fully exposed and undamaged.
+  beforeText: At 500x magnification, the polyethylene surface is obscured by a non-uniform contaminant layer, approximately
+    5-10 µm thick. This layer, composed of organic residues and particulate matter, disrupts the native semi-crystalline texture.
+    The underlying polymer morphology is concealed, with contaminants filling the micro-scale valleys of the 0.8 µm Ra surface,
+    creating an irregular, occluded topography that compromises surface energy and adhesion.
+  afterText: 'Laser cleaning effectively removes the contaminant layer, revealing the pristine, semi-crystalline microstructure
+    of the polyethylene substrate. The original surface texture, with a characteristic roughness of 0.8 µm Ra, is now fully
+    exposed and undamaged.
 
 
-    The process has selectively ablated the contaminants without reaching the polymer''s
-    melting point of 130°C, preserving the material''s integrity. The surface is now
-    uniformly clean, with no residual film or heat-induced deformation, restoring
+    The process has selectively ablated the contaminants without reaching the polymer''s melting point of 130°C, preserving
+    the material''s integrity. The surface is now uniformly clean, with no residual film or heat-induced deformation, restoring
     optimal properties for subsequent manufacturing processes.'
-  description: Microscopic analysis of polyethylene surface before and after laser
-    cleaning treatment
+  description: Microscopic analysis of polyethylene surface before and after laser cleaning treatment
   alt: Microscopic view of polyethylene surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -341,8 +361,7 @@ caption:
     materialType: Plastic
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Polyethylene surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Polyethylene surface after laser cleaning showing detailed surface structure
     url: /images/material/polyethylene-laser-cleaning-micro.jpg
 tags:
 - plastic

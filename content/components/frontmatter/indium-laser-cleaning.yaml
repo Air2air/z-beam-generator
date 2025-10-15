@@ -1,136 +1,158 @@
 name: Indium
-category: Metal
+category: metal
 subcategory: specialty
 title: Indium Laser Cleaning
 description: Laser cleaning parameters for Indium
 materialProperties:
-  density:
-    value: 7.31
-    unit: g/cm³
-    confidence: 98
-    description: Density of pure indium at 20°C
-    min: 0.53
-    max: 22.6
-  thermalConductivity:
-    value: 81.8
-    unit: W/m·K
-    confidence: 92
-    description: Thermal conductivity at 27°C
-    min: 6.0
-    max: 429.0
-  tensileStrength:
-    value: 2.5
-    unit: MPa
-    confidence: 82
-    description: Ultimate tensile strength
-    min: 3.0
-    max: 3000.0
-  hardness:
-    value: 0.9
-    unit: Mohs
-    confidence: 88
-    description: Mohs hardness scale
-    min: 0.5
-    max: 3500
-  youngsModulus:
-    value: 11
-    unit: GPa
-    confidence: 86
-    description: Young's modulus of elasticity
-    min: 5
-    max: 411
-  laserAbsorption:
-    value: 58.7
-    unit: '%'
-    confidence: 92
-    description: laserAbsorption from Materials.yaml
-    min: 0.02
-    max: 100
-  laserReflectivity:
-    value: 51.5
-    unit: '%'
-    confidence: 92
-    description: laserReflectivity from Materials.yaml
-    min: 5
-    max: 98
-  specificHeat:
-    value: 233
-    unit: J/kg·K
-    confidence: 88
-    description: Specific heat capacity at 25°C
-    min: 100
-    max: 900
-  thermalDiffusivity:
-    value: 4.8
-    unit: mm²/s
-    confidence: 85
-    description: Thermal diffusivity calculated from thermal properties
-    min: 0.2
-    max: 174
-  thermalExpansion:
-    value: 32.1
-    unit: μm/m·K
-    confidence: 90
-    description: Coefficient of linear thermal expansion at 25°C
-    min: 0.5
-    max: 29.1
-  reflectivity:
-    value: 74
-    unit: '%'
-    confidence: 84
-    description: Optical reflectivity at 10.6 μm (CO₂ laser wavelength)
-    min: 0.4
-    max: 0.98
-  absorptionCoefficient:
-    value: 1200000.0
-    unit: m⁻¹
-    confidence: 80
-    description: Approximate absorption coefficient for IR wavelengths
-    min: 0.02
-    max: 0.6
-  ablationThreshold:
-    value: 0.15
-    unit: J/cm²
-    confidence: 82
-    description: Estimated laser ablation threshold for nanosecond pulses
-    min: 0.5
-    max: 50.0
-  oxidationResistance:
-    value: Low
-    unit: qualitative
-    confidence: 90
-    description: Forms thin oxide layer but has poor high-temperature oxidation resistance
-    min: null
-    max: null
-  crystallineStructure:
-    value: Tetragonal
-    unit: crystal system
-    confidence: 95
-    description: Body-centered tetragonal structure
-    min: null
-    max: null
-  electricalResistivity:
-    value: 83.7
-    unit: nΩ·m
-    confidence: 92
-    description: Electrical resistivity at 20°C
-    min: 1.5e-06
-    max: 0.0001
-  vaporizationTemperature:
-    value: 2072
-    unit: °C
-    confidence: 88
-    description: Boiling point of indium
-    min: 1500
-    max: 5900
-  thermalDestructionPoint:
-    value: 156.6
-    unit: °C
-    confidence: 97
-    description: Temperature where solid-to-liquid phase transition occurs
-    min: -38.8
-    max: 3422
-  thermalDestructionType: Melting
+  physical_structural:
+    label: Physical/Structural Properties
+    description: Basic physical characteristics
+    percentage: 3.6
+    properties:
+      density:
+        value: 7.31
+        unit: g/cm³
+        confidence: 98
+        description: Density of pure indium at 20°C
+        min: 0.53
+        max: 22.6
+  mechanical:
+    label: Mechanical Properties
+    description: Strength, elasticity, and structural characteristics
+    percentage: 18.2
+    properties:
+      hardness:
+        value: 0.9
+        unit: Mohs
+        confidence: 87
+        description: Mohs hardness scale
+        min: 0.5
+        max: 3500
+      tensileStrength:
+        value: 2.5
+        unit: MPa
+        confidence: 84
+        description: Ultimate tensile strength
+        min: 3.0
+        max: 3000.0
+      youngsModulus:
+        value: 11
+        unit: GPa
+        confidence: 89
+        description: Young's modulus of elasticity
+        min: 5
+        max: 411
+  optical_laser:
+    label: Optical/Laser Properties
+    description: Light interaction and laser response characteristics
+    percentage: 16.4
+    properties:
+      laserAbsorption:
+        value: 58.7
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.02
+        max: 100
+      laserReflectivity:
+        value: 51.5
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 98
+      reflectivity:
+        value: 74
+        unit: '%'
+        confidence: 86
+        description: Optical reflectivity at 1064nm wavelength
+        min: null
+        max: null
+      ablationThreshold:
+        value: 0.15
+        unit: J/cm²
+        confidence: 81
+        description: Estimated laser ablation threshold for nanosecond pulses at 1064nm
+        min: null
+        max: null
+  thermal:
+    label: Thermal Properties
+    description: Heat-related material characteristics including conductivity, expansion, and destruction points
+    percentage: 29.1
+    properties:
+      specificHeat:
+        value: 233
+        unit: J/kg·K
+        confidence: 88
+        description: Specific heat capacity at 25°C
+        min: 100
+        max: 900
+      thermalConductivity:
+        value: 81.8
+        unit: W/m·K
+        confidence: 92
+        description: Thermal conductivity at 300K
+        min: 6.0
+        max: 429.0
+      thermalDiffusivity:
+        value: 4.8
+        unit: mm²/s
+        confidence: 85
+        description: Thermal diffusivity at room temperature
+        min: 0.2
+        max: 174
+      thermalExpansion:
+        value: 32.1
+        unit: μm/m·K
+        confidence: 90
+        description: Linear thermal expansion coefficient at 25°C
+        min: 0.5
+        max: 29.1
+      thermalDestruction:
+        point:
+          value: 2000.0
+          unit: K
+          min: -38.8
+          max: 3422
+          confidence: 95
+          description: Thermal destruction point
+        type: melting
+  compositional:
+    label: Compositional Properties
+    description: Material composition characteristics
+    percentage: 5.5
+    properties:
+      crystallineStructure:
+        value: Tetragonal
+        unit: none
+        confidence: 95
+        description: Crystal structure type
+        min: null
+        max: null
+  chemical:
+    label: Chemical Properties
+    description: Chemical reactivity and stability
+    percentage: 5.5
+    properties:
+      oxidationResistance:
+        value: Low
+        unit: qualitative
+        confidence: 88
+        description: Forms thin oxide layer but oxidizes readily in air
+        min: null
+        max: null
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 0
+    properties:
+      absorptionCoefficient:
+        value: 6.8
+        unit: ×10⁵ cm⁻¹
+        confidence: 82
+        description: Absorption coefficient at 1064nm
+        min: null
+        max: null
 applications:
 - Electronics Manufacturing
 - Aerospace Components
@@ -147,8 +169,7 @@ machineSettings:
     value: 25
     unit: W
     confidence: 90
-    description: Optimal average power for Indium oxide removal without substrate
-      damage
+    description: Optimal average power for Indium oxide removal without substrate damage
     min: 15
     max: 40
   wavelength:
@@ -169,16 +190,14 @@ machineSettings:
     value: 50
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient surface coverage with controlled
-      thermal input
+    description: High repetition rate for efficient surface coverage with controlled thermal input
     min: 20
     max: 100
   pulseWidth:
     value: 100
     unit: ns
     confidence: 85
-    description: Nanosecond pulses for efficient oxide removal with minimal thermal
-      diffusion
+    description: Nanosecond pulses for efficient oxide removal with minimal thermal diffusion
     min: 50
     max: 200
   scanSpeed:
@@ -192,8 +211,8 @@ machineSettings:
     value: 6.0
     unit: J/cm²
     confidence: 92
-    description: Energy density threshold for effective Indium cleaning - Energy density
-      threshold for effective oxide and contaminant removal from metallic surfaces
+    description: Energy density threshold for effective Indium cleaning - Energy density threshold for effective oxide and
+      contaminant removal from metallic surfaces
     min: 3.0
     max: 12.0
   fluenceThreshold:
@@ -259,8 +278,8 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Indium is a very soft metal with a low melting point. These properties require
-  careful laser settings to avoid surface damage during cleaning.
+subtitle: Indium is a very soft metal with a low melting point. These properties require careful laser settings to avoid surface
+  damage during cleaning.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -296,21 +315,16 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the indium surface is obscured by a non-uniform
-    contamination layer, typically 5-20 µm thick. This layer consists of particulate
-    matter, organic residues, and a thin, discontinuous oxide film (In₂O₃). The underlying
-    metal's soft, ductile character is masked by this topography, which exhibits a
-    mottled, high-relief texture. Contaminants adhere within the natural grain boundaries
-    and surface imperfections, creating a complex, irregular pattern that compromises
-    surface integrity and electrical properties.
-  afterText: Laser cleaning restores the intrinsic surface, revealing the pure indium's
-    fine, coherent grain structure at 500x magnification. The contamination layer
-    is entirely removed, leaving a smooth, reflective plane with minimal micro-roughness.
-    The surface is now defined by its metallic luster and clean grain boundaries,
-    free from embedded particulates and oxide films. This state ensures optimal electrical
-    contact and adhesion for subsequent processes.
-  description: Microscopic analysis of indium surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the indium surface is obscured by a non-uniform contamination layer, typically 5-20 µm
+    thick. This layer consists of particulate matter, organic residues, and a thin, discontinuous oxide film (In₂O₃). The
+    underlying metal's soft, ductile character is masked by this topography, which exhibits a mottled, high-relief texture.
+    Contaminants adhere within the natural grain boundaries and surface imperfections, creating a complex, irregular pattern
+    that compromises surface integrity and electrical properties.
+  afterText: Laser cleaning restores the intrinsic surface, revealing the pure indium's fine, coherent grain structure at
+    500x magnification. The contamination layer is entirely removed, leaving a smooth, reflective plane with minimal micro-roughness.
+    The surface is now defined by its metallic luster and clean grain boundaries, free from embedded particulates and oxide
+    films. This state ensures optimal electrical contact and adhesion for subsequent processes.
+  description: Microscopic analysis of indium surface before and after laser cleaning treatment
   alt: Microscopic view of indium surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -330,8 +344,7 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Indium surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Indium surface after laser cleaning showing detailed surface structure
     url: /images/material/indium-laser-cleaning-micro.jpg
 tags:
 - metal

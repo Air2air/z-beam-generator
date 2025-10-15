@@ -113,7 +113,7 @@ categories:
       dielectric_constant:
         min: 2.0
         max: 25.0
-        unit: dimensionless
+        unit: unitless
         confidence: 90
       electricalResistivity:
         min: 1e10

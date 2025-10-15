@@ -1,0 +1,173 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Property Categories Schema",
+  "description": "Taxonomy for material property categorization - validates propertyCategories section in Categories.yaml",
+  "type": "object",
+  "required": ["metadata", "categories", "usage_tiers"],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "description": "Metadata about the property taxonomy",
+      "required": ["version", "total_categories", "total_properties", "last_updated"],
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": "Semantic version of the taxonomy",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "total_categories": {
+          "type": "integer",
+          "description": "Total number of property categories",
+          "minimum": 1
+        },
+        "total_properties": {
+          "type": "integer",
+          "description": "Total number of unique properties across all categories",
+          "minimum": 1
+        },
+        "last_updated": {
+          "type": "string",
+          "description": "Last update date",
+          "format": "date"
+        },
+        "description": {
+          "type": "string",
+          "description": "Brief description of the taxonomy"
+        }
+      }
+    },
+    "categories": {
+      "type": "object",
+      "description": "Property category definitions",
+      "patternProperties": {
+        "^[a-z_]+$": {
+          "type": "object",
+          "required": ["id", "label", "description", "properties"],
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Unique category identifier",
+              "pattern": "^[a-z_]+$"
+            },
+            "label": {
+              "type": "string",
+              "description": "Human-readable category name"
+            },
+            "description": {
+              "type": "string",
+              "description": "Detailed description of category purpose"
+            },
+            "percentage": {
+              "type": "number",
+              "description": "Percentage of total properties in this category",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "property_count": {
+              "type": "integer",
+              "description": "Number of properties in this category",
+              "minimum": 1
+            },
+            "properties": {
+              "type": "array",
+              "description": "List of property names in this category",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            }
+          }
+        }
+      },
+      "minProperties": 1
+    },
+    "usage_tiers": {
+      "type": "object",
+      "description": "Property usage frequency tiers",
+      "required": ["core", "common", "specialized"],
+      "properties": {
+        "core": {
+          "type": "object",
+          "description": "Core properties present in >100 materials",
+          "required": ["description", "threshold", "properties"],
+          "properties": {
+            "description": {
+              "type": "string"
+            },
+            "threshold": {
+              "type": "integer",
+              "description": "Minimum material count for core tier",
+              "minimum": 0
+            },
+            "property_count": {
+              "type": "integer",
+              "description": "Number of core properties",
+              "minimum": 0
+            },
+            "properties": {
+              "type": "array",
+              "description": "List of core property names",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            }
+          }
+        },
+        "common": {
+          "type": "object",
+          "description": "Common properties present in 30-100 materials",
+          "required": ["description", "threshold", "properties"],
+          "properties": {
+            "description": {
+              "type": "string"
+            },
+            "threshold": {
+              "type": "integer",
+              "description": "Minimum material count for common tier",
+              "minimum": 0
+            },
+            "property_count": {
+              "type": "integer",
+              "description": "Number of common properties",
+              "minimum": 0
+            },
+            "properties": {
+              "type": "array",
+              "description": "List of common property names",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            }
+          }
+        },
+        "specialized": {
+          "type": "object",
+          "description": "Specialized properties present in <30 materials",
+          "required": ["description", "threshold"],
+          "properties": {
+            "description": {
+              "type": "string"
+            },
+            "threshold": {
+              "type": "integer",
+              "description": "Minimum material count for specialized tier (typically 0)",
+              "minimum": 0
+            },
+            "property_count": {
+              "type": "integer",
+              "description": "Number of specialized properties",
+              "minimum": 0
+            },
+            "note": {
+              "type": "string",
+              "description": "Additional information about specialized tier"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -445,21 +445,6 @@
       "description": "Heat-related properties and behavior",
       "additionalProperties": false,
       "properties": {
-        "meltingPoint": {
-          "type": "number"
-        },
-        "meltingPointNumeric": {
-          "type": "number"
-        },
-        "meltingPointUnit": {
-          "type": "string"
-        },
-        "meltingPointMin": {
-          "type": "number"
-        },
-        "meltingPointMax": {
-          "type": "number"
-        },
         "thermalConductivity": {
           "type": "number"
         },
@@ -517,17 +502,55 @@
         "specificHeatMax": {
           "type": "number"
         },
-        "thermalDestructionPoint": {
-          "type": "number"
+        "thermalDestruction": {
+          "$ref": "#/definitions/ThermalDestructionProperty"
+        }
+      }
+    },
+    "ThermalDestructionProperty": {
+      "type": "object",
+      "description": "Nested thermal destruction property with point and type",
+      "required": ["point", "type"],
+      "additionalProperties": false,
+      "properties": {
+        "point": {
+          "type": "object",
+          "description": "Thermal destruction temperature data",
+          "required": ["value", "unit"],
+          "additionalProperties": false,
+          "properties": {
+            "value": {
+              "type": "number",
+              "description": "Thermal destruction temperature value"
+            },
+            "unit": {
+              "type": "string",
+              "description": "Temperature unit (K, °C, °F)"
+            },
+            "confidence": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100,
+              "description": "Data confidence level (0-100)"
+            },
+            "description": {
+              "type": "string",
+              "description": "Property description"
+            },
+            "min": {
+              "type": "number",
+              "description": "Category-wide minimum value"
+            },
+            "max": {
+              "type": "number",
+              "description": "Category-wide maximum value"
+            }
+          }
         },
-        "thermalDestructionPointNumeric": {
-          "type": "number"
-        },
-        "thermalDestructionPointUnit": {
-          "type": "string"
-        },
-        "thermalDestructionType": {
-          "type": "string"
+        "type": {
+          "type": "string",
+          "enum": ["melting", "thermal_shock", "decomposition", "carbonization", "spalling"],
+          "description": "Type of thermal destruction mechanism"
         }
       }
     },
@@ -1222,249 +1245,83 @@
         }
       }
     },
-    "MaterialProperties": {
+    "PropertyValue": {
+      "oneOf": [
+        {
+          "type": "object",
+          "description": "Standard property value with metadata",
+          "properties": {
+            "value": {
+              "oneOf": [
+                {"type": "number"},
+                {"type": "string"}
+              ]
+            },
+            "unit": {
+              "type": "string"
+            },
+            "confidence": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "description": {
+              "type": "string"
+            },
+            "min": {
+              "type": "number"
+            },
+            "max": {
+              "type": "number"
+            },
+            "source": {
+              "type": "string"
+            }
+          }
+        },
+        {
+          "$ref": "#/definitions/ThermalDestructionProperty",
+          "description": "Nested thermal destruction property"
+        }
+      ]
+    },
+    "PropertyCategory": {
       "type": "object",
-      "description": "Consolidated material properties structure with units, ranges, and comprehensive characteristics",
-      "additionalProperties": false,
+      "description": "Property category with metadata and nested properties",
+      "required": ["label", "properties"],
       "properties": {
-        "density": {
-          "type": "number"
-        },
-        "densityNumeric": {
-          "type": "number"
-        },
-        "densityUnit": {
-          "type": "string"
-        },
-        "densityMin": {
-          "type": "number"
-        },
-        "densityMinNumeric": {
-          "type": "number"
-        },
-        "densityMax": {
-          "type": "number"
-        },
-        "densityMaxNumeric": {
-          "type": "number"
-        },
-        "meltingPoint": {
-          "type": "number"
-        },
-        "meltingPointNumeric": {
-          "type": "number"
-        },
-        "meltingPointUnit": {
-          "type": "string"
-        },
-        "meltingPointMin": {
-          "type": "number"
-        },
-        "meltingPointMax": {
-          "type": "number"
-        },
-        "thermalConductivity": {
-          "type": "number"
-        },
-        "thermalConductivityNumeric": {
-          "type": "number"
-        },
-        "thermalConductivityUnit": {
-          "type": "string"
-        },
-        "thermalConductivityMin": {
-          "type": "number"
-        },
-        "thermalConductivityMax": {
-          "type": "number"
-        },
-        "tensileStrength": {
-          "type": "number"
-        },
-        "tensileStrengthNumeric": {
-          "type": "number"
-        },
-        "tensileStrengthUnit": {
-          "type": "string"
-        },
-        "tensileStrengthMin": {
-          "type": "number"
-        },
-        "tensileStrengthMax": {
-          "type": "number"
-        },
-        "hardness": {
-          "type": "number"
-        },
-        "hardnessNumeric": {
-          "type": "number"
-        },
-        "hardnessUnit": {
-          "type": "string"
-        },
-        "hardnessMin": {
-          "type": "number"
-        },
-        "hardnessMinNumeric": {
-          "type": "number"
-        },
-        "hardnessMax": {
-          "type": "number"
-        },
-        "hardnessMaxNumeric": {
-          "type": "number"
-        },
-        "youngsModulus": {
-          "type": "number"
-        },
-        "youngsModulusNumeric": {
-          "type": "number"
-        },
-        "youngsModulusUnit": {
-          "type": "string"
-        },
-        "youngsModulusMin": {
-          "type": "number"
-        },
-        "youngsModulusMax": {
-          "type": "number"
-        },
-        "modulusMin": {
-          "type": "number"
-        },
-        "modulusMinNumeric": {
-          "type": "number"
-        },
-        "modulusMax": {
-          "type": "number"
-        },
-        "modulusMaxNumeric": {
-          "type": "number"
-        },
-        "thermalExpansion": {
-          "type": "number"
-        },
-        "thermalExpansionMin": {
-          "type": "number"
-        },
-        "thermalExpansionMax": {
-          "type": "number"
-        },
-        "thermalExpansionUnit": {
-          "type": "string"
-        },
-        "electricalResistivity": {
-          "type": "number"
-        },
-        "yieldStrength": {
-          "type": "number"
-        },
-        "yieldStrengthNumeric": {
-          "type": "number"
-        },
-        "yieldStrengthUnit": {
-          "type": "string"
-        },
-        "yieldStrengthMin": {
-          "type": "number"
-        },
-        "yieldStrengthMax": {
-          "type": "number"
-        },
-        "crystalStructure": {
-          "type": "string"
-        },
-        "corrosionResistance": {
-          "type": "string"
-        },
-        "biocompatibility": {
-          "type": "string"
-        },
-        "laserAbsorption": {
-          "type": "number"
-        },
-        "laserAbsorptionNumeric": {
-          "type": "number"
-        },
-        "laserAbsorptionUnit": {
-          "type": "string"
-        },
-        "laserAbsorptionMin": {
-          "type": "string"
-        },
-        "laserAbsorptionMax": {
-          "type": "string"
-        },
-        "laserReflectivity": {
-          "type": "number"
-        },
-        "laserReflectivityNumeric": {
-          "type": "number"
-        },
-        "laserReflectivityUnit": {
-          "type": "string"
-        },
-        "laserReflectivityMin": {
-          "type": "string"
-        },
-        "laserReflectivityMax": {
-          "type": "string"
-        },
-        "thermalDiffusivity": {
-          "type": "number"
-        },
-        "thermalDiffusivityNumeric": {
-          "type": "number"
-        },
-        "thermalDiffusivityUnit": {
-          "type": "string"
-        },
-        "thermalDiffusivityMin": {
-          "type": "string"
-        },
-        "thermalDiffusivityMax": {
-          "type": "string"
-        },
-        "specificHeat": {
-          "type": "number"
-        },
-        "specificHeatNumeric": {
-          "type": "number"
-        },
-        "specificHeatUnit": {
-          "type": "string"
-        },
-        "specificHeatMin": {
-          "type": "number"
-        },
-        "specificHeatMax": {
-          "type": "number"
-        },
-        "thermalDestructionPoint": {
-          "type": "number"
-        },
-        "thermalDestructionPointNumeric": {
-          "type": "number"
-        },
-        "thermalDestructionPointUnit": {
-          "type": "string"
-        },
-        "thermalDestructionType": {
-          "type": "string"
-        },
-        "laserType": {
-          "type": "string"
-        },
-        "wavelength": {
-          "type": "string"
-        },
-        "fluenceRange": {
-          "type": "string"
-        },
-        "chemicalFormula": {
-          "type": "string"
+        "label": {
+          "type": "string",
+          "description": "Human-readable category name"
+        },
+        "description": {
+          "type": "string",
+          "description": "Category description"
+        },
+        "percentage": {
+          "type": "number",
+          "description": "Percentage of total properties in this category"
+        },
+        "properties": {
+          "type": "object",
+          "description": "Properties within this category",
+          "patternProperties": {
+            "^[a-zA-Z]+$": {
+              "$ref": "#/definitions/PropertyValue"
+            }
+          }
         }
       }
+    },
+    "MaterialProperties": {
+      "type": "object",
+      "description": "Categorized material properties organized by laser cleaning physics stages (physics-based structure v3.0)",
+      "patternProperties": {
+        "^(laser_interaction|thermal_response|mechanical_response|material_characteristics|other)$": {
+          "$ref": "#/definitions/PropertyCategory"
+        }
+      },
+      "additionalProperties": false
     },
     "MachineSettings": {
       "type": "object",

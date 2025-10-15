@@ -95,7 +95,24 @@ class FieldOrderingService:
 
     @staticmethod
     def _create_clean_properties_structure(properties: Dict) -> Dict:
-        """Create clean properties structure with logical grouping and proper formatting"""
+        """
+        Create clean properties structure - PRESERVES CATEGORIZED STRUCTURE.
+        
+        Per GROK_INSTRUCTIONS.md: No fallbacks. If categorized structure exists, preserve it.
+        Only process flat structure if no categories detected.
+        """
+        # Check if this is a categorized structure (has category objects with 'label' and 'properties')
+        if properties and isinstance(properties, dict):
+            first_key = next(iter(properties.keys()), None)
+            if first_key and isinstance(properties[first_key], dict):
+                first_value = properties[first_key]
+                if 'label' in first_value and 'properties' in first_value:
+                    # CATEGORIZED STRUCTURE - return as-is (already organized by category)
+                    logger.debug(f"Preserving categorized material properties structure with {len(properties)} categories")
+                    return properties
+        
+        # FLAT STRUCTURE - apply legacy ordering (for backward compatibility only)
+        logger.debug("Processing flat material properties structure (legacy)")
         clean_properties = {}
         
         # Property groups in logical order

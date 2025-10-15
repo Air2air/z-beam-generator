@@ -1,157 +1,172 @@
 name: Pyrex
-category: Glass
-subcategory: Pyrex
+category: glass
+subcategory: pyrex
 title: Pyrex Laser Cleaning
 description: Laser cleaning parameters for Pyrex
 materialProperties:
-  density:
-    value: 2.23
-    unit: g/cm³
-    confidence: 95
-    description: Density of Pyrex borosilicate glass at room temperature
-    min: 1.2
-    max: 7.6
-  thermalConductivity:
-    value: 1.1
-    unit: W/m·K
-    confidence: 92
-    description: Thermal conductivity at room temperature
-    min: 0.02
-    max: 40
-  tensileStrength:
-    value: 70.0
-    unit: MPa
-    confidence: 95
-    description: tensileStrength from Materials.yaml
-    min: 30
-    max: 2000
-  hardness:
-    value: 6.5
-    unit: Mohs
-    confidence: 92
-    description: Hardness on Mohs scale
-    min: 4.5
-    max: 9
-  youngsModulus:
-    value: 62
-    unit: GPa
-    confidence: 94
-    description: Young's modulus of elasticity
-    min: 10
-    max: 400
-  laserAbsorption:
-    value: 3.2
-    unit: '%'
-    confidence: 92
-    description: laserAbsorption from Materials.yaml
-    min: 0.001
-    max: 10
-  laserReflectivity:
-    value: 4.0
-    unit: '%'
-    confidence: 95
-    description: laserReflectivity from Materials.yaml
-    min: 4
-    max: 92
-  specificHeat:
-    value: 750
-    unit: J/kg·K
-    confidence: 90
-    description: Specific heat capacity at room temperature
-    min: 500
-    max: 900
-  thermalDiffusivity:
-    value: 0.65
-    unit: mm²/s
-    confidence: 88
-    description: Thermal diffusivity at room temperature
-    min: 0.01
-    max: 15
-  thermalExpansion:
-    value: 3.25
-    unit: ×10⁻⁶/°C
-    confidence: 96
-    description: Coefficient of linear thermal expansion (20-300°C)
-    min: 0.1
-    max: 15
-  flexuralStrength:
-    value: 69
-    unit: MPa
-    confidence: 85
-    description: Flexural strength under three-point bending
-    min: 30
-    max: 500
-  refractiveIndex:
-    value: 1.474
-    unit: dimensionless
-    confidence: 95
-    description: Refractive index at 589 nm wavelength
-    min: 1.45
-    max: 2.0
-  transmissivity:
-    value: 92
-    unit: '%'
-    confidence: 90
-    description: Visible light transmission for 2mm thickness
-    min: 0.6
-    max: 0.95
-  absorptionCoefficient:
-    value: 0.15
-    unit: cm⁻¹
-    confidence: 85
-    description: Absorption coefficient at 1064 nm (common laser wavelength)
-    min: 0.01
-    max: 0.4
-  ablationThreshold:
-    value: 12
-    unit: J/cm²
-    confidence: 82
-    description: Laser ablation threshold for nanosecond pulses at 1064 nm
-    min: 3.0
-    max: 20.0
-  laserDamageThreshold:
-    value: 25
-    unit: J/cm²
-    confidence: 80
-    description: Laser-induced damage threshold for short pulses
-    min: 2.0
-    max: 50.0
-  chemicalStability:
-    value: 95
-    unit: '% resistance'
-    confidence: 94
-    description: Chemical resistance to water and acids (weight loss after 24h)
-    min: 70
-    max: 99
-  crystallineStructure:
-    value: 0
-    unit: '% crystallinity'
-    confidence: 98
-    description: Amorphous glass structure with no crystalline phases
-    min: 0
-    max: 100
-  porosity:
-    value: 0
-    unit: '%'
-    confidence: 96
-    description: Non-porous glass structure
-    min: 0.0
-    max: 30.0
-  surfaceRoughness:
-    value: 0.5
-    unit: nm Ra
-    confidence: 88
-    description: Typical surface roughness for polished Pyrex
-    min: 0.001
-    max: 5.0
-  thermalDestructionPoint:
-    value: 820
-    unit: °C
-    confidence: 90
-    description: Temperature where glass transitions from rigid to pliable state
-    min: 500
-    max: 1723
-  thermalDestructionType: Softening
+  physical_structural:
+    label: Physical/Structural Properties
+    description: Basic physical characteristics
+    percentage: 3.6
+    properties:
+      density:
+        value: 2.23
+        unit: g/cm³
+        confidence: 95
+        description: Density of Pyrex borosilicate glass at room temperature
+        min: 1.2
+        max: 7.6
+  mechanical:
+    label: Mechanical Properties
+    description: Strength, elasticity, and structural characteristics
+    percentage: 18.2
+    properties:
+      hardness:
+        value: 6.5
+        unit: Mohs
+        confidence: 85
+        description: Mohs hardness scale value
+        min: 4.5
+        max: 9
+      tensileStrength:
+        value: 70.0
+        unit: MPa
+        confidence: 95
+        description: tensileStrength from Materials.yaml
+        min: 30
+        max: 2000
+      youngsModulus:
+        value: 64
+        unit: GPa
+        confidence: 93
+        description: Young's modulus of elasticity
+        min: 10
+        max: 400
+      flexuralStrength:
+        value: 69
+        unit: MPa
+        confidence: 87
+        description: Modulus of rupture (flexural strength)
+        min: null
+        max: null
+  optical_laser:
+    label: Optical/Laser Properties
+    description: Light interaction and laser response characteristics
+    percentage: 16.4
+    properties:
+      laserAbsorption:
+        value: 3.2
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.001
+        max: 10
+      laserReflectivity:
+        value: 4.0
+        unit: '%'
+        confidence: 95
+        description: laserReflectivity from Materials.yaml
+        min: 4
+        max: 92
+      refractiveIndex:
+        value: 1.474
+        unit: dimensionless
+        confidence: 96
+        description: Refractive index at 589 nm wavelength
+        min: null
+        max: null
+      laserDamageThreshold:
+        value: 15
+        unit: J/cm²
+        confidence: 82
+        description: Approximate laser damage threshold for nanosecond pulses at 1064 nm
+        min: null
+        max: null
+  thermal:
+    label: Thermal Properties
+    description: Heat-related material characteristics including conductivity, expansion, and destruction points
+    percentage: 29.1
+    properties:
+      specificHeat:
+        value: 0.75
+        unit: J/g·K
+        confidence: 90
+        description: Specific heat capacity at room temperature
+        min: 500
+        max: 900
+      thermalConductivity:
+        value: 1.13
+        unit: W/m·K
+        confidence: 92
+        description: Thermal conductivity at 20°C for Pyrex borosilicate glass
+        min: 0.02
+        max: 40
+      thermalDiffusivity:
+        value: 0.65
+        unit: mm²/s
+        confidence: 88
+        description: Thermal diffusivity at room temperature
+        min: 0.01
+        max: 15
+      thermalExpansion:
+        value: 3.25
+        unit: ×10⁻⁶/°C
+        confidence: 94
+        description: Coefficient of linear thermal expansion (20-300°C)
+        min: 0.1
+        max: 15
+      thermalDestruction:
+        point:
+          value: 823.0
+          unit: K
+          min: 500
+          max: 1723
+          confidence: 95
+          description: Thermal destruction point
+        type: melting
+  chemical:
+    label: Chemical Properties
+    description: Chemical reactivity and stability
+    percentage: 5.5
+    properties:
+      chemicalStability:
+        value: 0.7
+        unit: mg/cm²
+        confidence: 89
+        description: Weight loss in 5% HCl after 24 hours at 95°C
+        min: null
+        max: null
+  surface:
+    label: Surface Properties
+    description: Surface characteristics and texture
+    percentage: 9.1
+    properties:
+      porosity:
+        value: 0
+        unit: '%'
+        confidence: 95
+        description: Non-porous glass structure
+        min: null
+        max: null
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 0
+    properties:
+      softeningPoint:
+        value: 823.0
+        unit: K
+        confidence: 95
+        description: Temperature where glass transitions from rigid to pliable state
+        min: null
+        max: null
+      transmissivity:
+        value: 92
+        unit: '%'
+        confidence: 91
+        description: Visible light transmission for 2mm thickness
+        min: null
+        max: null
 applications:
 - Laboratory and Scientific Equipment
 - Pharmaceutical Manufacturing
@@ -168,16 +183,14 @@ machineSettings:
     value: 15
     unit: W
     confidence: 90
-    description: Optimal average power for Pyrex surface cleaning without thermal
-      damage
+    description: Optimal average power for Pyrex surface cleaning without thermal damage
     min: 8
     max: 25
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength providing good absorption in surface contaminants
-      while minimizing bulk glass absorption
+    description: Near-IR wavelength providing good absorption in surface contaminants while minimizing bulk glass absorption
     min: 532
     max: 1064
   spotSize:
@@ -191,16 +204,14 @@ machineSettings:
     value: 20
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate balancing cleaning efficiency and thermal
-      management
+    description: Optimal repetition rate balancing cleaning efficiency and thermal management
     min: 10
     max: 50
   pulseWidth:
     value: 100
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with
-      controlled thermal effects
+    description: Nanosecond pulse duration for effective contaminant removal with controlled thermal effects
     min: 50
     max: 200
   scanSpeed:
@@ -214,24 +225,22 @@ machineSettings:
     value: 2.5
     unit: J/cm²
     confidence: 90
-    description: Energy density threshold for effective Pyrex cleaning - Energy density
-      threshold for surface cleaning without inducing optical damage or stress fractures
+    description: Energy density threshold for effective Pyrex cleaning - Energy density threshold for surface cleaning without
+      inducing optical damage or stress fractures
     min: 1.0
     max: 5.0
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Energy density threshold for effective contaminant removal without
-      glass damage
+    description: Energy density threshold for effective contaminant removal without glass damage
     min: 1.5
     max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      buildup
+    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
     min: 30
     max: 70
   passCount:
@@ -283,9 +292,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Operators have noticed that Pyrex can be surprisingly delicate under laser
-  treatment, even with its reputation for durability. Adjust your controls carefully
-  to below 50 watts, ensuring the glass face stays pristine during the removal process.
+subtitle: Operators have noticed that Pyrex can be surprisingly delicate under laser treatment, even with its reputation for
+  durability. Adjust your controls carefully to below 50 watts, ensuring the glass face stays pristine during the removal
+  process.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -321,22 +330,16 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the Pyrex surface is obscured by a non-uniform
-    contamination layer. Particulate matter, ranging from 1-10 µm in diameter, is
-    embedded in a thin, amorphous film approximately 0.5-2 µm thick. This film disrupts
-    the native surface, creating a textured, matte appearance that scatters light.
-    The underlying glass substrate is partially visible but its characteristic smoothness
-    and clarity are compromised by this adherent layer of foreign material.
-  afterText: Laser cleaning restores the Pyrex surface to its intrinsic state. The
-    contamination layer has been completely removed via selective laser ablation,
-    revealing the pristine, homogeneous glass substrate. At 500x magnification, the
-    surface is now continuous and smooth, with a measured roughness (Ra) of approximately
-    0.5 nm. The laser process has eliminated all particulate matter and the amorphous
-    film, restoring optical clarity. The surface exhibits minimal sub-surface damage,
-    confirming the non-contact process effectively cleared contaminants without mechanically
-    compromising the glass integrity.
-  description: Microscopic analysis of pyrex surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the Pyrex surface is obscured by a non-uniform contamination layer. Particulate matter,
+    ranging from 1-10 µm in diameter, is embedded in a thin, amorphous film approximately 0.5-2 µm thick. This film disrupts
+    the native surface, creating a textured, matte appearance that scatters light. The underlying glass substrate is partially
+    visible but its characteristic smoothness and clarity are compromised by this adherent layer of foreign material.
+  afterText: Laser cleaning restores the Pyrex surface to its intrinsic state. The contamination layer has been completely
+    removed via selective laser ablation, revealing the pristine, homogeneous glass substrate. At 500x magnification, the
+    surface is now continuous and smooth, with a measured roughness (Ra) of approximately 0.5 nm. The laser process has eliminated
+    all particulate matter and the amorphous film, restoring optical clarity. The surface exhibits minimal sub-surface damage,
+    confirming the non-contact process effectively cleared contaminants without mechanically compromising the glass integrity.
+  description: Microscopic analysis of pyrex surface before and after laser cleaning treatment
   alt: Microscopic view of pyrex surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -356,8 +359,7 @@ caption:
     materialType: Glass
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Pyrex surface after laser cleaning showing detailed surface
-      structure
+    alt: Microscopic view of Pyrex surface after laser cleaning showing detailed surface structure
     url: /images/material/pyrex-laser-cleaning-micro.jpg
 tags:
 - glass

@@ -1,129 +1,170 @@
 name: Platinum
-category: Metal
+category: metal
 subcategory: precious
 title: Platinum Laser Cleaning
 description: Laser cleaning parameters for Platinum
 materialProperties:
-  density:
-    value: 21.45
-    unit: g/cm³
-    confidence: 98
-    description: Density of pure platinum at 20°C
-    min: 0.53
-    max: 22.6
-  thermalConductivity:
-    value: 71.6
-    unit: W/m·K
-    confidence: 95
-    description: Thermal conductivity at 20°C
-    min: 6.0
-    max: 429.0
-  tensileStrength:
-    value: 125
-    unit: MPa
-    confidence: 88
-    description: Tensile strength of annealed platinum
-    min: 3.0
-    max: 3000.0
-  hardness:
-    value: 40
-    unit: HV
-    confidence: 85
-    description: Vickers hardness of annealed platinum
-    min: 0.5
-    max: 3500
-  youngsModulus:
-    value: 168
-    unit: GPa
-    confidence: 92
-    description: Young's modulus of elasticity
-    min: 5
-    max: 411
-  laserAbsorption:
-    value: 36.5
-    unit: '%'
-    confidence: 92
-    description: laserAbsorption from Materials.yaml
-    min: 0.02
-    max: 100
-  laserReflectivity:
-    value: 73.2
-    unit: '%'
-    confidence: 95
-    description: laserReflectivity from Materials.yaml
-    min: 5
-    max: 98
-  specificHeat:
-    value: 0.133
-    unit: J/g·K
-    confidence: 94
-    description: Specific heat capacity at 20°C
-    min: 100
-    max: 900
-  thermalDiffusivity:
-    value: 24.7
-    unit: mm²/s
-    confidence: 90
-    description: Thermal diffusivity at room temperature
-    min: 0.2
-    max: 174
-  thermalExpansion:
-    value: 8.8
-    unit: μm/m·K
-    confidence: 92
-    description: Coefficient of linear thermal expansion (20-100°C)
-    min: 0.5
-    max: 29.1
-  reflectivity:
-    value: 73
-    unit: '%'
-    confidence: 90
-    description: Reflectivity at 1064 nm wavelength (common laser)
-    min: 0.4
-    max: 0.98
-  absorptionCoefficient:
-    value: 0.85
-    unit: 1/μm
-    confidence: 85
-    description: Absorption coefficient at 1064 nm wavelength
-    min: 0.02
-    max: 0.6
-  ablationThreshold:
-    value: 2.8
-    unit: J/cm²
-    confidence: 82
-    description: Estimated laser ablation threshold for nanosecond pulses
-    min: 0.5
-    max: 50.0
-  oxidationResistance:
-    value: Excellent
-    unit: qualitative
-    confidence: 95
-    description: Resistance to oxidation at high temperatures
-    min: null
-    max: null
-  crystallineStructure:
-    value: FCC
-    unit: crystal system
-    confidence: 98
-    description: Face-centered cubic crystal structure
-    min: null
-    max: null
-  electricalConductivity:
-    value: 9.43
-    unit: MS/m
-    confidence: 96
-    description: Electrical conductivity at 20°C
-    min: 100000.0
-    max: 65000000.0
-  thermalDestructionPoint:
-    value: 1768
-    unit: °C
-    confidence: 97
-    description: Temperature where solid-to-liquid phase transition occurs
-    min: -38.8
-    max: 3422
-  thermalDestructionType: Melting
+  physical_structural:
+    label: Physical/Structural Properties
+    description: Basic physical characteristics
+    percentage: 3.6
+    properties:
+      density:
+        value: 21.45
+        unit: g/cm³
+        confidence: 98
+        description: Density of pure platinum at 20°C
+        min: 0.53
+        max: 22.6
+  mechanical:
+    label: Mechanical Properties
+    description: Strength, elasticity, and structural characteristics
+    percentage: 18.2
+    properties:
+      hardness:
+        value: 40
+        unit: HV
+        confidence: 92
+        description: Vickers hardness of annealed platinum
+        min: 0.5
+        max: 3500
+      tensileStrength:
+        value: 125
+        unit: MPa
+        confidence: 91
+        description: Tensile strength of annealed platinum
+        min: 3.0
+        max: 3000.0
+      youngsModulus:
+        value: 168
+        unit: GPa
+        confidence: 94
+        description: Young's modulus of elasticity
+        min: 5
+        max: 411
+  optical_laser:
+    label: Optical/Laser Properties
+    description: Light interaction and laser response characteristics
+    percentage: 16.4
+    properties:
+      laserAbsorption:
+        value: 36.5
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.02
+        max: 100
+      laserReflectivity:
+        value: 73.2
+        unit: '%'
+        confidence: 95
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 98
+      reflectivity:
+        value: 73
+        unit: '%'
+        confidence: 88
+        description: Reflectivity at 1064 nm wavelength (common laser wavelength)
+        min: null
+        max: null
+      ablationThreshold:
+        value: 2.8
+        unit: J/cm²
+        confidence: 82
+        description: Estimated laser ablation threshold for nanosecond pulses at 1064 nm
+        min: null
+        max: null
+  thermal:
+    label: Thermal Properties
+    description: Heat-related material characteristics including conductivity, expansion, and destruction points
+    percentage: 29.1
+    properties:
+      specificHeat:
+        value: 133
+        unit: J/kg·K
+        confidence: 93
+        description: Specific heat capacity at 25°C
+        min: 100
+        max: 900
+      thermalConductivity:
+        value: 71.6
+        unit: W/m·K
+        confidence: 95
+        description: Thermal conductivity at 20°C
+        min: 6.0
+        max: 429.0
+      thermalDiffusivity:
+        value: 24.9
+        unit: mm²/s
+        confidence: 90
+        description: Thermal diffusivity at room temperature
+        min: 0.2
+        max: 174
+      thermalExpansion:
+        value: 8.8
+        unit: μm/m·K
+        confidence: 92
+        description: Coefficient of linear thermal expansion (20-100°C)
+        min: 0.5
+        max: 29.1
+      thermalDestruction:
+        point:
+          value: 2041.15
+          unit: K
+          min: -38.8
+          max: 3422
+          confidence: 95
+          description: Thermal destruction point
+        type: melting
+  chemical:
+    label: Chemical Properties
+    description: Chemical reactivity and stability
+    percentage: 5.5
+    properties:
+      oxidationResistance:
+        value: Excellent
+        unit: qualitative
+        confidence: 96
+        description: Resistance to oxidation even at high temperatures
+        min: null
+        max: null
+  compositional:
+    label: Compositional Properties
+    description: Material composition characteristics
+    percentage: 5.5
+    properties:
+      crystallineStructure:
+        value: FCC
+        unit: crystal system
+        confidence: 98
+        description: Face-centered cubic crystal structure
+        min: null
+        max: null
+  electrical:
+    label: Electrical Properties
+    description: Electrical conductivity and resistance
+    percentage: 7.3
+    properties:
+      electricalResistivity:
+        value: 10.6
+        unit: μΩ·cm
+        confidence: 95
+        description: Electrical resistivity at 20°C
+        min: null
+        max: null
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 0
+    properties:
+      absorptionCoefficient:
+        value: 4.2
+        unit: ×10⁷ m⁻¹
+        confidence: 85
+        description: Optical absorption coefficient at 1064 nm
+        min: null
+        max: null
 applications:
 - Aerospace
 - Medical Devices
@@ -147,8 +188,7 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength optimized for Platinum's moderate reflectivity
-      and thermal processing
+    description: Near-IR wavelength optimized for Platinum's moderate reflectivity and thermal processing
     min: 532
     max: 1064
   spotSize:
@@ -162,8 +202,7 @@ machineSettings:
     value: 50
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning while maintaining thermal
-      control
+    description: High repetition rate for efficient cleaning while maintaining thermal control
     min: 20
     max: 100
   pulseWidth:
@@ -184,9 +223,8 @@ machineSettings:
     value: 6.0
     unit: J/cm²
     confidence: 92
-    description: Energy density threshold for effective Platinum cleaning - Energy
-      density threshold for effective oxide and contaminant removal from metallic
-      surfaces
+    description: Energy density threshold for effective Platinum cleaning - Energy density threshold for effective oxide and
+      contaminant removal from metallic surfaces
     min: 3.0
     max: 12.0
   fluenceThreshold:
@@ -207,8 +245,7 @@ machineSettings:
     value: 3
     unit: passes
     confidence: 85
-    description: Recommended number of passes for thorough cleaning without substrate
-      damage
+    description: Recommended number of passes for thorough cleaning without substrate damage
     min: 2
     max: 5
   laserType:
@@ -233,8 +270,7 @@ author:
   image: /images/author/ikmanda-roswati.jpg
 images:
   hero:
-    alt: Platinum surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Platinum surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/platinum-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -261,9 +297,8 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Platinum has an extremely high melting point and is very resistant to chemical
-  reactions. These traits demand careful laser settings to effectively remove contaminants
-  without affecting the underlying metal.
+subtitle: Platinum has an extremely high melting point and is very resistant to chemical reactions. These traits demand careful
+  laser settings to effectively remove contaminants without affecting the underlying metal.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -299,23 +334,17 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the platinum surface is obscured by a non-uniform
-    contamination layer, typically 5-20 µm thick. This layer consists of carbonaceous
-    deposits, adsorbed atmospheric compounds, and fine particulate matter. The underlying
-    platinum's metallic luster is absent, replaced by a matte, topographically complex
-    surface. Contaminants fill the native grain structure, creating a smeared, occluded
-    appearance that masks the true substrate. The surface exhibits poor reflectivity
-    due to this light-scattering layer.
-  afterText: Following laser cleaning, the surface at 500x magnification reveals a
-    complete transformation. The contamination layer has been entirely removed via
-    selective laser ablation, exposing the pristine, polycrystalline platinum substrate.
-    The metal's characteristic grain boundaries are now clearly defined, and the surface
-    exhibits its inherent metallic reflectivity. Minor, sub-micron surface texturing
-    from the laser process is visible, but without thermal damage or alteration to
-    the bulk material's microstructure. The surface is restored to a clean, metallurgically
-    intact state.
-  description: Microscopic analysis of platinum surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the platinum surface is obscured by a non-uniform contamination layer, typically 5-20
+    µm thick. This layer consists of carbonaceous deposits, adsorbed atmospheric compounds, and fine particulate matter. The
+    underlying platinum's metallic luster is absent, replaced by a matte, topographically complex surface. Contaminants fill
+    the native grain structure, creating a smeared, occluded appearance that masks the true substrate. The surface exhibits
+    poor reflectivity due to this light-scattering layer.
+  afterText: Following laser cleaning, the surface at 500x magnification reveals a complete transformation. The contamination
+    layer has been entirely removed via selective laser ablation, exposing the pristine, polycrystalline platinum substrate.
+    The metal's characteristic grain boundaries are now clearly defined, and the surface exhibits its inherent metallic reflectivity.
+    Minor, sub-micron surface texturing from the laser process is visible, but without thermal damage or alteration to the
+    bulk material's microstructure. The surface is restored to a clean, metallurgically intact state.
+  description: Microscopic analysis of platinum surface before and after laser cleaning treatment
   alt: Microscopic view of platinum surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -335,8 +364,7 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Platinum surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Platinum surface after laser cleaning showing detailed surface structure
     url: /images/material/platinum-laser-cleaning-micro.jpg
 tags:
 - metal

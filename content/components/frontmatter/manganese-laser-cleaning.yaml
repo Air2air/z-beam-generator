@@ -1,129 +1,177 @@
 name: Manganese
-category: Metal
+category: metal
 subcategory: ferrous
 title: Manganese Laser Cleaning
 description: Laser cleaning parameters for Manganese
 materialProperties:
-  density:
-    value: 7.21
-    unit: g/cm³
-    confidence: 95
-    description: Density of pure manganese at room temperature
-    min: 0.53
-    max: 22.6
-  thermalConductivity:
-    value: 7.8
-    unit: W/m·K
-    confidence: 90
-    description: Thermal conductivity at room temperature
-    min: 6.0
-    max: 429.0
-  tensileStrength:
-    value: 276
-    unit: MPa
-    confidence: 85
-    description: Ultimate tensile strength
-    min: 3.0
-    max: 3000.0
-  hardness:
-    value: 210
-    unit: HV
-    confidence: 86
-    description: Vickers hardness of pure manganese
-    min: 0.5
-    max: 3500
-  youngsModulus:
-    value: 198
-    unit: GPa
-    confidence: 88
-    description: Young's modulus of elasticity
-    min: 5
-    max: 411
-  laserAbsorption:
-    value: 62.3
-    unit: '%'
-    confidence: 92
-    description: laserAbsorption from Materials.yaml
-    min: 0.02
-    max: 100
-  laserReflectivity:
-    value: 52.0
-    unit: '%'
-    confidence: 92
-    description: laserReflectivity from Materials.yaml
-    min: 5
-    max: 98
-  specificHeat:
-    value: 479
-    unit: J/kg·K
-    confidence: 92
-    description: Specific heat capacity at room temperature
-    min: 100
-    max: 900
-  thermalDiffusivity:
-    value: 2.26
-    unit: mm²/s
-    confidence: 85
-    description: Thermal diffusivity calculated from thermal properties
-    min: 0.2
-    max: 174
-  thermalExpansion:
-    value: 21.7
-    unit: μm/m·K
-    confidence: 88
-    description: Coefficient of linear thermal expansion at 25°C
-    min: 0.5
-    max: 29.1
-  absorptionCoefficient:
-    value: 0.65
-    unit: dimensionless
-    confidence: 82
-    description: Estimated absorption coefficient for common laser wavelengths (1064 nm)
-    min: 0.02
-    max: 0.6
-  reflectivity:
-    value: 0.35
-    unit: dimensionless
-    confidence: 80
-    description: Estimated reflectivity for common laser wavelengths
-    min: 0.4
-    max: 0.98
-  ablationThreshold:
-    value: 1.8
-    unit: J/cm²
-    confidence: 82
-    description: Estimated laser ablation threshold for nanosecond pulses
-    min: 0.5
-    max: 50.0
-  crystallineStructure:
-    value: α-Mn (complex cubic)
-    unit: crystal system
-    confidence: 95
-    description: Room temperature crystal structure with 58 atoms per unit cell
-    min: null
-    max: null
-  oxidationResistance:
-    value: Poor
-    unit: qualitative rating
-    confidence: 90
-    description: Manganese oxidizes readily in air forming MnO and Mn3O4
-    min: null
-    max: null
-  electricalResistivity:
-    value: 144
-    unit: μΩ·cm
-    confidence: 92
-    description: Electrical resistivity at room temperature
-    min: 1.5e-06
-    max: 0.0001
-  thermalDestructionPoint:
-    value: 1246
-    unit: °C
-    confidence: 94
-    description: Temperature where solid-to-liquid phase transition occurs
-    min: -38.8
-    max: 3422
-  thermalDestructionType: Melting
+  physical_structural:
+    label: Physical/Structural Properties
+    description: Basic physical characteristics
+    percentage: 3.6
+    properties:
+      density:
+        value: 7.21
+        unit: g/cm³
+        confidence: 95
+        description: Density of pure manganese at room temperature
+        min: 0.53
+        max: 22.6
+  mechanical:
+    label: Mechanical Properties
+    description: Strength, elasticity, and structural characteristics
+    percentage: 18.2
+    properties:
+      hardness:
+        value: 210
+        unit: HV
+        confidence: 88
+        description: Vickers hardness of pure manganese
+        min: 0.5
+        max: 3500
+      tensileStrength:
+        value: 276
+        unit: MPa
+        confidence: 82
+        description: Ultimate tensile strength
+        min: 3.0
+        max: 3000.0
+      youngsModulus:
+        value: 198
+        unit: GPa
+        confidence: 85
+        description: Young's modulus of elasticity
+        min: 5
+        max: 411
+  optical_laser:
+    label: Optical/Laser Properties
+    description: Light interaction and laser response characteristics
+    percentage: 16.4
+    properties:
+      laserAbsorption:
+        value: 62.3
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.02
+        max: 100
+      laserReflectivity:
+        value: 52.0
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 98
+      reflectivity:
+        value: 0.35
+        unit: dimensionless
+        confidence: 80
+        description: Estimated reflectivity for common laser wavelengths
+        min: null
+        max: null
+      ablationThreshold:
+        value: 1.8
+        unit: J/cm²
+        confidence: 78
+        description: Estimated laser ablation threshold for nanosecond pulses
+        min: null
+        max: null
+  thermal:
+    label: Thermal Properties
+    description: Heat-related material characteristics including conductivity, expansion, and destruction points
+    percentage: 29.1
+    properties:
+      specificHeat:
+        value: 479
+        unit: J/kg·K
+        confidence: 90
+        description: Specific heat capacity at room temperature
+        min: 100
+        max: 900
+      thermalConductivity:
+        value: 7.81
+        unit: W/m·K
+        confidence: 88
+        description: Thermal conductivity at room temperature
+        min: 6.0
+        max: 429.0
+      thermalDiffusivity:
+        value: 2.26
+        unit: mm²/s
+        confidence: 82
+        description: Thermal diffusivity calculated from thermal properties
+        min: 0.2
+        max: 174
+      thermalExpansion:
+        value: 21.7
+        unit: μm/m·K
+        confidence: 85
+        description: Coefficient of linear thermal expansion (25°C)
+        min: 0.5
+        max: 29.1
+      boilingPoint:
+        value: 2061
+        unit: °C
+        confidence: 88
+        description: Boiling point of pure manganese
+        min: null
+        max: null
+      thermalDestruction:
+        point:
+          value: 1519.0
+          unit: K
+          min: -38.8
+          max: 3422
+          confidence: 95
+          description: Thermal destruction point
+        type: melting
+  chemical:
+    label: Chemical Properties
+    description: Chemical reactivity and stability
+    percentage: 5.5
+    properties:
+      oxidationResistance:
+        value: 3
+        unit: rating 1-10
+        confidence: 85
+        description: Poor oxidation resistance, forms oxide layers rapidly
+        min: null
+        max: null
+  compositional:
+    label: Compositional Properties
+    description: Material composition characteristics
+    percentage: 5.5
+    properties:
+      crystallineStructure:
+        value: Complex cubic
+        unit: crystal system
+        confidence: 92
+        description: Alpha-Mn has complex cubic structure with 58 atoms per unit cell
+        min: null
+        max: null
+  electrical:
+    label: Electrical Properties
+    description: Electrical conductivity and resistance
+    percentage: 7.3
+    properties:
+      electricalResistivity:
+        value: 1.44
+        unit: μΩ·m
+        confidence: 90
+        description: Electrical resistivity at 20°C
+        min: null
+        max: null
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 0
+    properties:
+      absorptionCoefficient:
+        value: 0.65
+        unit: dimensionless
+        confidence: 80
+        description: Estimated absorption coefficient for common laser wavelengths (1064 nm)
+        min: null
+        max: null
 applications:
 - Steel Manufacturing
 - Battery Production
@@ -241,7 +289,8 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Manganese's variable properties and hard oxide layers differ from typical ferrous metals. These require tailored laser settings to effectively remove oxides without damaging the base metal.
+subtitle: Manganese's variable properties and hard oxide layers differ from typical ferrous metals. These require tailored
+  laser settings to effectively remove oxides without damaging the base metal.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -277,8 +326,15 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the manganese surface is obscured by a non-uniform contamination layer, typically 5-20 µm thick. This layer consists of adherent oxide scales, primarily MnO and Mn3O4, appearing as a matte, dark grey crust. The underlying metallic surface texture is completely masked. Particulate contaminants are embedded within this brittle oxide matrix, creating a rough, discontinuous topography with visible micro-cracks that propagate into the substrate.
-  afterText: Laser cleaning has restored the native metallic surface, revealing the fine-grained, polycrystalline structure of the α-Mn phase. The tenacious oxide layer and embedded particulates have been completely removed via ablation, eliminating the micro-cracks and leaving a uniform, light-grey metallic finish. The process reduces average surface roughness (Ra) significantly, exposing the material's intrinsic grain boundaries and subtle polishing marks from the original fabrication, with no measurable thermal damage to the underlying microstructure.
+  beforeText: At 500x magnification, the manganese surface is obscured by a non-uniform contamination layer, typically 5-20
+    µm thick. This layer consists of adherent oxide scales, primarily MnO and Mn3O4, appearing as a matte, dark grey crust.
+    The underlying metallic surface texture is completely masked. Particulate contaminants are embedded within this brittle
+    oxide matrix, creating a rough, discontinuous topography with visible micro-cracks that propagate into the substrate.
+  afterText: Laser cleaning has restored the native metallic surface, revealing the fine-grained, polycrystalline structure
+    of the α-Mn phase. The tenacious oxide layer and embedded particulates have been completely removed via ablation, eliminating
+    the micro-cracks and leaving a uniform, light-grey metallic finish. The process reduces average surface roughness (Ra)
+    significantly, exposing the material's intrinsic grain boundaries and subtle polishing marks from the original fabrication,
+    with no measurable thermal damage to the underlying microstructure.
   description: Microscopic analysis of manganese surface before and after laser cleaning treatment
   alt: Microscopic view of manganese surface showing laser cleaning effects
   technicalAnalysis:

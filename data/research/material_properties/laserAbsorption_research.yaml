@@ -198,7 +198,7 @@ materials:
     verification_date: '2025-10-03T22:48:37.791852'
   Fiberglass:
     current_value: 0.92
-    unit: dimensionless
+    unit: unitless
     confidence: 0.92
     source: ai_research
     description: ''
@@ -296,7 +296,7 @@ materials:
     verification_date: '2025-10-03T22:49:50.572728'
   Glass Fiber Reinforced Polymers GFRP:
     current_value: 0.85
-    unit: dimensionless
+    unit: unitless
     confidence: 0.92
     source: ai_research
     description: ''
@@ -326,7 +326,7 @@ materials:
 
       Property: laserAbsorption
 
-      Current Value: 0.85 dimensionless
+      Current Value: 0.85 unitless
 
 
       Task:
@@ -343,7 +343,7 @@ materials:
 
       Response Format:
 
-      VERIFIED_VALUE: [your verified value] dimensionless
+      VERIFIED_VALUE: [your verified value] unitless
 
       CONFIDENCE: [0-100]
 
@@ -354,7 +354,7 @@ materials:
       VARIANCE: [percentage difference from current value, if any]
 
       '
-    ai_response: "VERIFIED_VALUE: 0.90 - 0.98 dimensionless\nCONFIDENCE: 85\nREFERENCES:\
+    ai_response: "VERIFIED_VALUE: 0.90 - 0.98 unitless\nCONFIDENCE: 85\nREFERENCES:\
       \ ASM Handbook, Volume 21: Composites, CRC Handbook of Laser Science & Technology,\
       \ Supplement 2\nREASONING: The laser absorption of GFRP is not a single fixed\
       \ value but a range dependent on factors like laser wavelength (most data is\

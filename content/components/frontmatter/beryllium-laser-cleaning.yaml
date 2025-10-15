@@ -1,130 +1,165 @@
 name: Beryllium
-category: Metal
+category: metal
 subcategory: specialty
 title: Beryllium Laser Cleaning
 description: Laser cleaning parameters for Beryllium
 materialProperties:
-  density:
-    value: 1.85
-    unit: g/cm³
-    confidence: 98
-    description: Density of pure beryllium at room temperature
-    min: 0.53
-    max: 22.6
-  thermalConductivity:
-    value: 216
-    unit: W/m·K
-    confidence: 95
-    description: Thermal conductivity at room temperature
-    min: 6.0
-    max: 429.0
-  tensileStrength:
-    value: 370
-    unit: MPa
-    confidence: 88
-    description: Typical tensile strength for wrought beryllium
-    min: 3.0
-    max: 3000.0
-  hardness:
-    value: 150
-    unit: HV
-    confidence: 85
-    description: Vickers hardness of pure beryllium
-    min: 0.5
-    max: 3500
-  youngsModulus:
-    value: 303
-    unit: GPa
-    confidence: 96
-    description: Young's modulus of elasticity
-    min: 5
-    max: 411
-  laserAbsorption:
-    value: 38.7
-    unit: '%'
-    confidence: 92
-    description: laserAbsorption from Materials.yaml
-    min: 0.02
-    max: 100
-  laserReflectivity:
-    value: 54.2
-    unit: '%'
-    confidence: 92
-    description: laserReflectivity from Materials.yaml
-    min: 5
-    max: 98
-  specificHeat:
-    value: 1.825
-    unit: J/g·K
-    confidence: 94
-    description: Specific heat capacity at 25°C
-    min: 100
-    max: 900
-  thermalDiffusivity:
-    value: 0.53
-    unit: cm²/s
-    confidence: 90
-    description: Thermal diffusivity at room temperature
-    min: 0.2
-    max: 174
-  thermalExpansion:
-    value: 11.3
-    unit: μm/m·K
-    confidence: 92
-    description: Coefficient of thermal expansion at 20°C
-    min: 0.5
-    max: 29.1
-  reflectivity:
-    value: 55
-    unit: '%'
-    confidence: 82
-    description: Approximate reflectivity for visible to near-IR wavelengths
-    min: 0.4
-    max: 0.98
-  absorptionCoefficient:
-    value: 0.45
-    unit: μm⁻¹
-    confidence: 80
-    description: Estimated absorption coefficient for common laser wavelengths
-    min: 0.02
-    max: 0.6
-  ablationThreshold:
-    value: 2.8
-    unit: J/cm²
-    confidence: 82
-    description: Estimated laser ablation threshold for nanosecond pulses
-    min: 0.5
-    max: 50.0
-  oxidationResistance:
-    value: Moderate
-    unit: qualitative
-    confidence: 88
-    description: Forms protective oxide layer but oxidizes above 600°C
-    min: null
-    max: null
-  crystallineStructure:
-    value: HCP
-    unit: crystal system
-    confidence: 98
-    description: Hexagonal Close-Packed crystal structure
-    min: null
-    max: null
-  thermalShockResistance:
-    value: High
-    unit: qualitative
-    confidence: 90
-    description: Excellent thermal shock resistance due to high thermal conductivity
-      and moderate CTE
-    min: null
-    max: null
-  thermalDestructionPoint:
-    value: 1287
-    unit: °C
-    confidence: 97
-    description: Temperature where solid-to-liquid phase transition occurs
-    min: -38.8
-    max: 3422
-  thermalDestructionType: Melting
+  physical_structural:
+    label: Physical/Structural Properties
+    description: Basic physical characteristics
+    percentage: 3.6
+    properties:
+      density:
+        value: 1.85
+        unit: g/cm³
+        confidence: 98
+        description: Density of pure beryllium at room temperature
+        min: 0.53
+        max: 22.6
+  mechanical:
+    label: Mechanical Properties
+    description: Strength, elasticity, and structural characteristics
+    percentage: 18.2
+    properties:
+      hardness:
+        value: 150
+        unit: HV
+        confidence: 85
+        description: Vickers hardness of pure beryllium
+        min: 0.5
+        max: 3500
+      tensileStrength:
+        value: 370
+        unit: MPa
+        confidence: 88
+        description: Typical tensile strength for wrought beryllium
+        min: 3.0
+        max: 3000.0
+      youngsModulus:
+        value: 303
+        unit: GPa
+        confidence: 96
+        description: Young's modulus of elasticity
+        min: 5
+        max: 411
+  optical_laser:
+    label: Optical/Laser Properties
+    description: Light interaction and laser response characteristics
+    percentage: 16.4
+    properties:
+      laserAbsorption:
+        value: 38.7
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.02
+        max: 100
+      laserReflectivity:
+        value: 54.2
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 98
+      reflectivity:
+        value: 0.55
+        unit: dimensionless
+        confidence: 84
+        description: Average reflectivity in visible spectrum
+        min: null
+        max: null
+      ablationThreshold:
+        value: 1.2
+        unit: J/cm²
+        confidence: 80
+        description: Estimated laser ablation threshold for nanosecond pulses
+        min: null
+        max: null
+  thermal:
+    label: Thermal Properties
+    description: Heat-related material characteristics including conductivity, expansion, and destruction points
+    percentage: 29.1
+    properties:
+      specificHeat:
+        value: 1925
+        unit: J/kg·K
+        confidence: 93
+        description: Specific heat capacity at room temperature
+        min: 100
+        max: 900
+      thermalConductivity:
+        value: 216
+        unit: W/m·K
+        confidence: 95
+        description: Thermal conductivity at room temperature
+        min: 6.0
+        max: 429.0
+      thermalDiffusivity:
+        value: 0.07
+        unit: m²/s
+        confidence: 90
+        description: Thermal diffusivity at room temperature
+        min: 0.2
+        max: 174
+      thermalExpansion:
+        value: 11.3
+        unit: μm/m·K
+        confidence: 92
+        description: Coefficient of thermal expansion at 20°C
+        min: 0.5
+        max: 29.1
+      thermalDestruction:
+        point:
+          value: 1560.0
+          unit: K
+          min: -38.8
+          max: 3422
+          confidence: 95
+          description: Thermal destruction point
+        type: melting
+  chemical:
+    label: Chemical Properties
+    description: Chemical reactivity and stability
+    percentage: 5.5
+    properties:
+      oxidationResistance:
+        value: Low
+        unit: qualitative
+        confidence: 90
+        description: Forms protective oxide layer but can oxidize rapidly at high temperatures
+        min: null
+        max: null
+  compositional:
+    label: Compositional Properties
+    description: Material composition characteristics
+    percentage: 5.5
+    properties:
+      crystallineStructure:
+        value: HCP
+        unit: crystal system
+        confidence: 99
+        description: Hexagonal Close-Packed crystal structure
+        min: null
+        max: null
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 0
+    properties:
+      absorptionCoefficient:
+        value: 0.65
+        unit: dimensionless
+        confidence: 82
+        description: Typical absorption coefficient for visible to near-IR wavelengths
+        min: null
+        max: null
+      thermalShockResistance:
+        value: High
+        unit: qualitative
+        confidence: 88
+        description: Good thermal shock resistance due to high thermal conductivity and moderate expansion
+        min: null
+        max: null
 applications:
 - Aerospace and Defense
 - Nuclear Technology
@@ -148,8 +183,7 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 90
-    description: Optimal wavelength for Beryllium absorption and minimal substrate
-      damage
+    description: Optimal wavelength for Beryllium absorption and minimal substrate damage
     min: 532
     max: 1064
   spotSize:
@@ -191,9 +225,8 @@ machineSettings:
     value: 6.0
     unit: J/cm²
     confidence: 92
-    description: Energy density threshold for effective Beryllium cleaning - Energy
-      density threshold for effective oxide and contaminant removal from metallic
-      surfaces
+    description: Energy density threshold for effective Beryllium cleaning - Energy density threshold for effective oxide
+      and contaminant removal from metallic surfaces
     min: 3.0
     max: 12.0
   overlapRatio:
@@ -225,8 +258,7 @@ author:
   image: /images/author/yi-chun-lin.jpg
 images:
   hero:
-    alt: Beryllium surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Beryllium surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/beryllium-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -253,9 +285,8 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Beryllium is uniquely lightweight and stiff, but its dust can be toxic when
-  inhaled. This requires laser cleaning processes that rigorously control airborne
-  particles to ensure operator safety.
+subtitle: Beryllium is uniquely lightweight and stiff, but its dust can be toxic when inhaled. This requires laser cleaning
+  processes that rigorously control airborne particles to ensure operator safety.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -291,26 +322,20 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the beryllium surface is obscured by a non-uniform
-    contamination layer, typically 5-20 µm thick. This layer consists of embedded
-    particulate, amorphous carbon deposits, and localized oxide patches, creating
-    a topographically complex and textured landscape. The underlying metallic grain
-    structure is entirely masked. The contaminants exhibit a mottled, splotchy pattern,
-    indicating areas of preferential adhesion and oxidation, which disrupts the native
+  beforeText: At 500x magnification, the beryllium surface is obscured by a non-uniform contamination layer, typically 5-20
+    µm thick. This layer consists of embedded particulate, amorphous carbon deposits, and localized oxide patches, creating
+    a topographically complex and textured landscape. The underlying metallic grain structure is entirely masked. The contaminants
+    exhibit a mottled, splotchy pattern, indicating areas of preferential adhesion and oxidation, which disrupts the native
     surface morphology.
-  afterText: 'Following laser cleaning, the surface reveals a stark transformation.
-    The contamination layer has been completely ablated, exposing the pristine, polycrystalline
-    metallic substrate. The characteristic grain structure of the beryllium, with
-    its HCP crystalline arrangement, is now clearly visible and well-defined.
+  afterText: 'Following laser cleaning, the surface reveals a stark transformation. The contamination layer has been completely
+    ablated, exposing the pristine, polycrystalline metallic substrate. The characteristic grain structure of the beryllium,
+    with its HCP crystalline arrangement, is now clearly visible and well-defined.
 
 
-    The surface texture is significantly smoother and more uniform, with only minimal,
-    sub-micron scale pitting remaining from the removal of tenacious oxide inclusions.
-    This process restores the material''s native reflectivity and creates a surface
-    free of obscuring films, directly exposing the bare metal for subsequent processing
-    or analysis.'
-  description: Microscopic analysis of beryllium surface before and after laser cleaning
-    treatment
+    The surface texture is significantly smoother and more uniform, with only minimal, sub-micron scale pitting remaining
+    from the removal of tenacious oxide inclusions. This process restores the material''s native reflectivity and creates
+    a surface free of obscuring films, directly exposing the bare metal for subsequent processing or analysis.'
+  description: Microscopic analysis of beryllium surface before and after laser cleaning treatment
   alt: Microscopic view of beryllium surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -330,8 +355,7 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Beryllium surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Beryllium surface after laser cleaning showing detailed surface structure
     url: /images/material/beryllium-laser-cleaning-micro.jpg
 tags:
 - metal

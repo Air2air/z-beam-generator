@@ -1,6 +1,6 @@
 name: FRPU
-category: Composite
-subcategory: Fiber Reinforced Polyurethane (FRPU)
+category: composite
+subcategory: fiber reinforced polyurethane (frpu)
 title: FRPU Laser Cleaning
 description: Laser cleaning parameters for Fiber Reinforced Polyurethane FRPU (FRPU)
 materialProperties:
@@ -76,14 +76,14 @@ materialProperties:
     max: 250
   absorptionCoefficient:
     value: 0.75
-    unit: dimensionless
+    unit: unitless
     confidence: 82
     description: Typical absorption coefficient for IR wavelengths (1064 nm)
     min: 0.5
     max: 0.95
   reflectivity:
     value: 0.15
-    unit: dimensionless
+    unit: unitless
     confidence: 81
     description: Reflectivity at common laser cleaning wavelengths
     min: 0.05
@@ -140,16 +140,14 @@ machineSettings:
     value: 90
     unit: W
     confidence: 88
-    description: Optimal average power for FRPU cleaning without thermal damage to
-      fibers
+    description: Optimal average power for FRPU cleaning without thermal damage to fibers
     min: 70
     max: 110
   wavelength:
     value: 1064
     unit: nm
     confidence: 85
-    description: Near-IR wavelength for optimal polyurethane absorption with minimal
-      fiber damage
+    description: Near-IR wavelength for optimal polyurethane absorption with minimal fiber damage
     min: 1030
     max: 1070
   spotSize:
@@ -184,9 +182,8 @@ machineSettings:
     value: 3.0
     unit: J/cm²
     confidence: 86
-    description: Energy density threshold for effective FRPU cleaning - Energy density
-      threshold for composite material cleaning considering matrix and reinforcement
-      properties
+    description: Energy density threshold for effective FRPU cleaning - Energy density threshold for composite material cleaning
+      considering matrix and reinforcement properties
     min: 1.5
     max: 6.0
   fluenceThreshold:
@@ -225,8 +222,7 @@ author:
   image: /images/author/alessandro-moretti.jpg
 images:
   hero:
-    alt: Fiber Reinforced Polyurethane Frpu surface undergoing laser cleaning showing
-      precise contamination removal
+    alt: Fiber Reinforced Polyurethane Frpu surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/fiber-reinforced-polyurethane-frpu-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -253,9 +249,8 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Fiber Reinforced Polyurethane, or FRPU, often poses a unique puzzle during
-  laser treatment due to its varying hardness across layers. Adjust your power controls
-  carefully around 50 watts to safeguard the composite’s intricate surface texture.
+subtitle: Fiber Reinforced Polyurethane, or FRPU, often poses a unique puzzle during laser treatment due to its varying hardness
+  across layers. Adjust your power controls carefully around 50 watts to safeguard the composite’s intricate surface texture.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -291,23 +286,17 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the FRPU surface is obscured by a non-uniform
-    contamination layer, measuring 5-15 µm in thickness. This layer, composed of embedded
-    particulates and a carbonaceous film, masks the underlying composite texture.
-    The contaminants form irregular, dendritic patterns that follow the micro-topography,
-    filling the valleys of the original 1.2 µm Ra surface roughness. This coverage
-    significantly alters the material's surface energy and optical properties, increasing
-    light scattering and reducing functional performance.
-  afterText: Laser cleaning has restored the native FRPU topography. The contamination
-    layer is completely removed, revealing the distinct, undulating texture of the
-    fiber-reinforced composite matrix. The original surface roughness of approximately
-    1.2 µm Ra is now fully exposed, with no evidence of thermal degradation or fiber
-    damage. The surface exhibits uniform laser absorption characteristics, indicating
-    a pristine, performance-ready state.
-  description: Microscopic analysis of fiber reinforced polyurethane frpu surface
-    before and after laser cleaning treatment
-  alt: Microscopic view of fiber reinforced polyurethane frpu surface showing laser
-    cleaning effects
+  beforeText: At 500x magnification, the FRPU surface is obscured by a non-uniform contamination layer, measuring 5-15 µm
+    in thickness. This layer, composed of embedded particulates and a carbonaceous film, masks the underlying composite texture.
+    The contaminants form irregular, dendritic patterns that follow the micro-topography, filling the valleys of the original
+    1.2 µm Ra surface roughness. This coverage significantly alters the material's surface energy and optical properties,
+    increasing light scattering and reducing functional performance.
+  afterText: Laser cleaning has restored the native FRPU topography. The contamination layer is completely removed, revealing
+    the distinct, undulating texture of the fiber-reinforced composite matrix. The original surface roughness of approximately
+    1.2 µm Ra is now fully exposed, with no evidence of thermal degradation or fiber damage. The surface exhibits uniform
+    laser absorption characteristics, indicating a pristine, performance-ready state.
+  description: Microscopic analysis of fiber reinforced polyurethane frpu surface before and after laser cleaning treatment
+  alt: Microscopic view of fiber reinforced polyurethane frpu surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
     uniqueCharacteristics:
@@ -326,8 +315,7 @@ caption:
     materialType: Composite
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Fiber Reinforced Polyurethane FRPU surface after laser
-      cleaning showing detailed surface structure
+    alt: Microscopic view of Fiber Reinforced Polyurethane FRPU surface after laser cleaning showing detailed surface structure
     url: /images/material/fiber-reinforced-polyurethane-frpu-laser-cleaning-micro.jpg
 tags:
 - composite

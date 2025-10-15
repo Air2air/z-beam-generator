@@ -1,136 +1,165 @@
 name: Iridium
-category: Metal
+category: metal
 subcategory: precious
 title: Iridium Laser Cleaning
 description: Laser cleaning parameters for Iridium
 materialProperties:
-  density:
-    value: 22.56
-    unit: g/cm³
-    confidence: 98
-    description: Highest density of all elements at room temperature
-    min: 0.53
-    max: 22.6
-  thermalConductivity:
-    value: 147
-    unit: W/m·K
-    confidence: 90
-    description: Thermal conductivity at 20°C
-    min: 6.0
-    max: 429.0
-  tensileStrength:
-    value: 1120
-    unit: MPa
-    confidence: 85
-    description: Ultimate tensile strength of annealed iridium
-    min: 3.0
-    max: 3000.0
-  hardness:
-    value: 1760
-    unit: HV
-    confidence: 88
-    description: Vickers hardness of annealed iridium
-    min: 0.5
-    max: 3500
-  youngsModulus:
-    value: 528
-    unit: GPa
-    confidence: 92
-    description: Young's modulus of elasticity
-    min: 5
-    max: 411
-  laserAbsorption:
-    value: 38.7
-    unit: '%'
-    confidence: 92
-    description: laserAbsorption from Materials.yaml
-    min: 0.02
-    max: 100
-  laserReflectivity:
-    value: 51.5
-    unit: '%'
-    confidence: 90
-    description: laserReflectivity from Materials.yaml
-    min: 5
-    max: 98
-  specificHeat:
-    value: 0.131
-    unit: J/g·K
-    confidence: 92
-    description: Specific heat capacity at 25°C
-    min: 100
-    max: 900
-  thermalDiffusivity:
-    value: 0.31
-    unit: cm²/s
-    confidence: 85
-    description: Thermal diffusivity at room temperature
-    min: 0.2
-    max: 174
-  thermalExpansion:
-    value: 6.4
-    unit: ×10⁻⁶/K
-    confidence: 88
-    description: Coefficient of linear thermal expansion at 25°C
-    min: 0.5
-    max: 29.1
-  reflectivity:
-    value: 78
-    unit: '%'
-    confidence: 82
-    description: Optical reflectivity at 1064 nm wavelength
-    min: 0.4
-    max: 0.98
-  absorptionCoefficient:
-    value: 4.2
-    unit: ×10⁵ cm⁻¹
-    confidence: 80
-    description: Absorption coefficient for visible light
-    min: 0.02
-    max: 0.6
-  ablationThreshold:
-    value: 2.8
-    unit: J/cm²
-    confidence: 82
-    description: Estimated laser ablation threshold for nanosecond pulses at 1064 nm
-    min: 0.5
-    max: 50.0
-  oxidationResistance:
-    value: 2000
-    unit: °C
-    confidence: 90
-    description: Temperature at which significant oxidation begins in air
-    min: 200
-    max: 2000
-  crystallineStructure:
-    value: FCC
-    unit: none
-    confidence: 98
-    description: Face-centered cubic crystal structure
-    min: null
-    max: null
-  electricalResistivity:
-    value: 4.71
-    unit: μΩ·cm
-    confidence: 92
-    description: Electrical resistivity at 20°C
-    min: 1.5e-06
-    max: 0.0001
-  thermalShockResistance:
-    value: High
-    unit: qualitative
-    confidence: 85
-    description: Excellent thermal shock resistance due to high melting point and strength
-    min: null
-    max: null
-  thermalDestructionPoint:
-    value: 2466
-    unit: °C
-    confidence: 95
-    description: Temperature where solid-to-liquid phase transition occurs
-    min: -38.8
-    max: 3422
-  thermalDestructionType: Melting
+  physical_structural:
+    label: Physical/Structural Properties
+    description: Basic physical characteristics
+    percentage: 3.6
+    properties:
+      density:
+        value: 22.56
+        unit: g/cm³
+        confidence: 98
+        description: Highest density of all elements at room temperature
+        min: 0.53
+        max: 22.6
+  mechanical:
+    label: Mechanical Properties
+    description: Strength, elasticity, and structural characteristics
+    percentage: 18.2
+    properties:
+      hardness:
+        value: 1760
+        unit: MPa
+        confidence: 89
+        description: Vickers hardness of annealed iridium
+        min: 0.5
+        max: 3500
+      tensileStrength:
+        value: 490
+        unit: MPa
+        confidence: 87
+        description: Ultimate tensile strength of annealed iridium
+        min: 3.0
+        max: 3000.0
+      youngsModulus:
+        value: 528
+        unit: GPa
+        confidence: 94
+        description: Elastic modulus of polycrystalline iridium
+        min: 5
+        max: 411
+  optical_laser:
+    label: Optical/Laser Properties
+    description: Light interaction and laser response characteristics
+    percentage: 16.4
+    properties:
+      laserAbsorption:
+        value: 38.7
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.02
+        max: 100
+      laserReflectivity:
+        value: 51.5
+        unit: '%'
+        confidence: 90
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 98
+      reflectivity:
+        value: 0.78
+        unit: dimensionless
+        confidence: 85
+        description: Average reflectivity in visible to near-IR spectrum
+        min: null
+        max: null
+      ablationThreshold:
+        value: 3.8
+        unit: J/cm²
+        confidence: 80
+        description: Estimated laser ablation threshold for nanosecond pulses at 1064 nm
+        min: null
+        max: null
+      laserDamageThreshold:
+        value: 4.2
+        unit: J/cm²
+        confidence: 81
+        description: Estimated laser-induced damage threshold for polished surfaces
+        min: null
+        max: null
+  thermal:
+    label: Thermal Properties
+    description: Heat-related material characteristics including conductivity, expansion, and destruction points
+    percentage: 29.1
+    properties:
+      specificHeat:
+        value: 0.131
+        unit: J/g·K
+        confidence: 91
+        description: Specific heat capacity at 25°C
+        min: 100
+        max: 900
+      thermalConductivity:
+        value: 147
+        unit: W/m·K
+        confidence: 92
+        description: Thermal conductivity at 20°C
+        min: 6.0
+        max: 429.0
+      thermalDiffusivity:
+        value: 0.32
+        unit: cm²/s
+        confidence: 88
+        description: Thermal diffusivity at room temperature
+        min: 0.2
+        max: 174
+      thermalExpansion:
+        value: 6.4
+        unit: ×10⁻⁶/K
+        confidence: 90
+        description: Coefficient of linear thermal expansion at 25°C
+        min: 0.5
+        max: 29.1
+      thermalDestruction:
+        point:
+          value: 1691.6
+          unit: K
+          min: -38.8
+          max: 3422
+          confidence: 95
+          description: Thermal destruction point
+        type: melting
+  chemical:
+    label: Chemical Properties
+    description: Chemical reactivity and stability
+    percentage: 5.5
+    properties:
+      oxidationResistance:
+        value: Excellent
+        unit: qualitative
+        confidence: 95
+        description: Maintains stability in air up to 1600°C without significant oxidation
+        min: null
+        max: null
+  compositional:
+    label: Compositional Properties
+    description: Material composition characteristics
+    percentage: 5.5
+    properties:
+      crystallineStructure:
+        value: FCC
+        unit: crystal system
+        confidence: 98
+        description: Face-centered cubic structure with lattice parameter 3.839 Å
+        min: null
+        max: null
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 0
+    properties:
+      absorptionCoefficient:
+        value: 12000000.0
+        unit: m⁻¹
+        confidence: 82
+        description: Approximate absorption coefficient for 1064 nm laser wavelength
+        min: null
+        max: null
 applications:
 - Aerospace
 - Medical Devices
@@ -248,7 +277,8 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Iridium is exceptionally hard and has an extremely high melting point. These properties demand a laser with higher power and precise control to avoid surface damage.
+subtitle: Iridium is exceptionally hard and has an extremely high melting point. These properties demand a laser with higher
+  power and precise control to avoid surface damage.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -284,8 +314,17 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the iridium surface is obscured by a non-uniform contamination layer, typically 5-20 µm thick. This layer consists of carbonaceous deposits and embedded particulate matter, forming a topographically complex and discontinuous film. The underlying iridium substrate, with its inherent FCC crystalline structure, is not visible. The contamination creates a matte, textured appearance, masking the metal's high natural reflectivity and compromising its functional surface properties. The deposits exhibit a cracked, island-like pattern, indicative of thermal stress and oxidation cycles.
-  afterText: Laser cleaning has completely removed the contamination layer, revealing the pristine iridium substrate. The surface now displays the characteristic grain structure of the polycrystalline metal, with clear, well-defined grain boundaries visible at 500x magnification. The high reflectivity (78% at 1064 nm) of the bare metal is restored, resulting in a smooth, specular surface. The process has eliminated all particulate embedment and surface oxides, restoring the material's intrinsic hardness and oxidation resistance without substrate damage.
+  beforeText: At 500x magnification, the iridium surface is obscured by a non-uniform contamination layer, typically 5-20
+    µm thick. This layer consists of carbonaceous deposits and embedded particulate matter, forming a topographically complex
+    and discontinuous film. The underlying iridium substrate, with its inherent FCC crystalline structure, is not visible.
+    The contamination creates a matte, textured appearance, masking the metal's high natural reflectivity and compromising
+    its functional surface properties. The deposits exhibit a cracked, island-like pattern, indicative of thermal stress and
+    oxidation cycles.
+  afterText: Laser cleaning has completely removed the contamination layer, revealing the pristine iridium substrate. The
+    surface now displays the characteristic grain structure of the polycrystalline metal, with clear, well-defined grain boundaries
+    visible at 500x magnification. The high reflectivity (78% at 1064 nm) of the bare metal is restored, resulting in a smooth,
+    specular surface. The process has eliminated all particulate embedment and surface oxides, restoring the material's intrinsic
+    hardness and oxidation resistance without substrate damage.
   description: Microscopic analysis of iridium surface before and after laser cleaning treatment
   alt: Microscopic view of iridium surface showing laser cleaning effects
   technicalAnalysis:

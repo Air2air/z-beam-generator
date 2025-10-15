@@ -21,7 +21,7 @@ This document outlines a systematic approach to research, validate, and verify e
 
 #### **1. UNIQUENESS REQUIREMENT**
 - **Every material MUST have unique property values** reflecting actual material characteristics
-- **No two materials may share identical property values** except for dimensionless properties where scientifically accurate
+- **No two materials may share identical property values** except for unitless properties where scientifically accurate
 - **Category-based defaults are PROHIBITED** in production data
 - **Generic midpoint calculations are FORBIDDEN**
 

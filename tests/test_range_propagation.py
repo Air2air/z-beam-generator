@@ -1,14 +1,16 @@
 """
-Test suite for verifying correct range propagation from Categories → Materials → Frontmatter
+Test suite for verifying complete pipeline normalization from Categories → Materials → Frontmatter
 
 These tests ensure that:
 1. Category ranges load correctly from Categories.yaml
-2. Frontmatter uses category ranges (NOT material-specific tolerances)
-3. Null ranges are preserved when no category range exists
-4. Material-specific tolerances in materials.yaml are NOT propagated to frontmatter
+2. Materials.yaml has NO min/max (values only)
+3. Frontmatter uses category ranges from Categories.yaml
+4. Nested thermalDestruction structure works correctly
+5. Null ranges are preserved when no category range exists
 
 Created: October 14, 2025
-Related: docs/DATA_ARCHITECTURE.md, MISSING_RANGE_VALUES_FIXED.md
+Updated: October 14, 2025 (Complete normalization achieved)
+Related: docs/DATA_ARCHITECTURE.md, COMPLETE_PIPELINE_NORMALIZATION.md
 """
 
 import pytest
@@ -27,7 +29,7 @@ class TestCategoryRangesLoading:
             return yaml.safe_load(f)
     
     def test_all_nine_categories_exist(self, categories_data):
-        """Verify all 9 categories are defined"""
+        """Verify all 9 material categories are defined (distinct from 4 property categories)"""
         expected_categories = [
             'ceramic', 'composite', 'glass', 'masonry', 'metal',
             'plastic', 'semiconductor', 'stone', 'wood'
@@ -49,21 +51,23 @@ class TestCategoryRangesLoading:
             assert isinstance(ranges, dict), \
                 f"Category '{category_name}' category_ranges should be dict"
     
-    def test_category_ranges_have_twelve_properties(self, categories_data):
-        """Each category should have exactly 12 properties with ranges"""
+    def test_category_ranges_have_eleven_properties(self, categories_data):
+        """Each category should have exactly 11 properties with ranges"""
         expected_properties = [
             'density', 'hardness', 'laserAbsorption', 'laserReflectivity',
             'specificHeat', 'tensileStrength', 'thermalConductivity',
-            'thermalDestructionPoint', 'thermalDestructionType',
+            'thermalDestruction',  # Nested structure (point + type) - counts as ONE property
             'thermalDiffusivity', 'thermalExpansion', 'youngsModulus'
         ]
+        
+        # Note: Property count is 11 (was 12 before nesting thermalDestructionPoint/Type into thermalDestruction)
         
         for category_name, category_data in categories_data['categories'].items():
             ranges = category_data['category_ranges']
             
             # Check count
-            assert len(ranges) == 12, \
-                f"Category '{category_name}' has {len(ranges)} properties, expected 12"
+            assert len(ranges) == 11, \
+                f"Category '{category_name}' has {len(ranges)} properties, expected 11"
             
             # Check all expected properties present
             for prop in expected_properties:
@@ -71,15 +75,32 @@ class TestCategoryRangesLoading:
                     f"Category '{category_name}' missing property '{prop}'"
     
     def test_range_structure_valid(self, categories_data):
-        """Each range should have min, max, and unit (except thermalDestructionType)"""
+        """Each range should have min, max, and unit (thermalDestruction is nested)"""
         for category_name, category_data in categories_data['categories'].items():
             ranges = category_data['category_ranges']
             
             for prop_name, prop_data in ranges.items():
-                # thermalDestructionType is a string, not a range
-                if prop_name == 'thermalDestructionType':
-                    assert isinstance(prop_data, str), \
-                        f"{category_name}.thermalDestructionType should be string"
+                # thermalDestruction is nested structure with point and type
+                if prop_name == 'thermalDestruction':
+                    assert isinstance(prop_data, dict), \
+                        f"{category_name}.thermalDestruction should be dict"
+                    
+                    # Check nested structure
+                    assert 'point' in prop_data, \
+                        f"{category_name}.thermalDestruction missing 'point'"
+                    assert 'type' in prop_data, \
+                        f"{category_name}.thermalDestruction missing 'type'"
+                    
+                    # Check point structure
+                    point = prop_data['point']
+                    assert isinstance(point, dict), "point should be dict"
+                    assert 'min' in point, "point missing 'min'"
+                    assert 'max' in point, "point missing 'max'"
+                    assert 'unit' in point, "point missing 'unit'"
+                    assert point['min'] < point['max'], "min should be less than max"
+                    
+                    # Check type is string
+                    assert isinstance(prop_data['type'], str), "type should be string"
                     continue
                 
                 # All other properties should have min, max, unit
@@ -131,52 +152,46 @@ class TestMaterialsYamlStructure:
                 'plastic', 'semiconductor', 'stone', 'wood'
             ], f"Material '{mat_name}' has invalid category: {mat_data['category']}"
     
-    def test_identify_category_range_duplicates(self, materials_data, categories_data):
-        """Identify materials that duplicate category ranges exactly"""
-        duplicates = []
+    def test_materials_have_no_min_max(self, materials_data):
+        """Verify complete normalization: materials.yaml should have NO min/max anywhere"""
+        properties_with_ranges = []
         
         for mat_name, mat_data in materials_data['materials'].items():
-            if 'category' not in mat_data or 'properties' not in mat_data:
+            if 'properties' not in mat_data:
                 continue
-            
-            category = mat_data['category']
-            if category not in categories_data['categories']:
-                continue
-            
-            category_ranges = categories_data['categories'][category].get('category_ranges', {})
             
             for prop_name, prop_data in mat_data['properties'].items():
                 if not isinstance(prop_data, dict):
                     continue
-                if 'min' not in prop_data or 'max' not in prop_data:
-                    continue
-                if prop_name not in category_ranges:
-                    continue
                 
-                cat_range = category_ranges[prop_name]
-                if not isinstance(cat_range, dict):
-                    continue
-                
-                # Check for exact match
-                if (prop_data['min'] == cat_range.get('min') and 
-                    prop_data['max'] == cat_range.get('max')):
-                    duplicates.append({
+                # Check regular properties for min/max
+                if 'min' in prop_data or 'max' in prop_data:
+                    properties_with_ranges.append({
                         'material': mat_name,
-                        'category': category,
                         'property': prop_name,
-                        'range': f"{prop_data['min']}-{prop_data['max']}"
+                        'has_min': 'min' in prop_data,
+                        'has_max': 'max' in prop_data
                     })
+                
+                # Check nested thermalDestruction.point for min/max
+                if prop_name == 'thermalDestruction' and isinstance(prop_data, dict):
+                    if 'point' in prop_data and isinstance(prop_data['point'], dict):
+                        point = prop_data['point']
+                        if 'min' in point or 'max' in point:
+                            properties_with_ranges.append({
+                                'material': mat_name,
+                                'property': 'thermalDestruction.point',
+                                'has_min': 'min' in point,
+                                'has_max': 'max' in point
+                            })
         
-        # Log duplicates for awareness (not a failure - known issue)
-        if duplicates:
-            print(f"\n⚠️  Found {len(duplicates)} category range duplicates in materials.yaml:")
-            for dup in duplicates[:10]:  # Show first 10
-                print(f"  - {dup['material']} ({dup['category']}) - {dup['property']}")
-            
-            # This is a known data quality issue, not a test failure
-            # But we document it for awareness
-            assert len(duplicates) <= 10, \
-                f"Too many duplicates found ({len(duplicates)}). Expected ~8 known issues."
+        if properties_with_ranges:
+            print(f"\n❌ Found {len(properties_with_ranges)} properties with min/max in materials.yaml:")
+            for prop in properties_with_ranges[:10]:
+                print(f"  - {prop['material']}.{prop['property']}")
+        
+        assert len(properties_with_ranges) == 0, \
+            f"Complete normalization violated: {len(properties_with_ranges)} properties have min/max in materials.yaml. They should ONLY be in Categories.yaml."
 
 
 class TestGeneratorBehavior:
@@ -208,7 +223,8 @@ class TestGeneratorBehavior:
         
         # Check metal category as example
         assert 'metal' in category_ranges
-        assert len(category_ranges['metal']) == 12
+        assert len(category_ranges['metal']) == 11, \
+            "Metal category should have 11 properties (thermalDestruction is now nested, counting as one)"
     
     def test_get_category_ranges_for_property_logic(self, category_ranges):
         """Test the logic of _get_category_ranges_for_property"""
@@ -274,15 +290,21 @@ class TestFrontmatterRangePropagation:
     def test_copper_density_uses_category_ranges(
         self, copper_frontmatter, copper_material, metal_category_ranges
     ):
-        """Copper density in frontmatter should use metal category ranges, not material tolerances"""
-        # Get density from frontmatter
-        fm_density = copper_frontmatter['materialProperties']['physical_structural']['properties']['density']
+        """Copper density in frontmatter should use metal category ranges from Categories.yaml"""
+        # Get density from frontmatter (now in material_characteristics property category)
+        fm_density = copper_frontmatter['materialProperties']['material_characteristics']['properties']['density']
         
-        # Get material tolerance ranges
+        # Get material value (should have NO min/max)
         mat_density = copper_material['properties']['density']
         
         # Get category ranges
         cat_density = metal_category_ranges['density']
+        
+        # Verify material has NO min/max (complete normalization)
+        assert 'min' not in mat_density, \
+            "Material should not have 'min' - ranges come from Categories.yaml only"
+        assert 'max' not in mat_density, \
+            "Material should not have 'max' - ranges come from Categories.yaml only"
         
         # Frontmatter value should match material value
         assert fm_density['value'] == mat_density['value'], \
@@ -293,10 +315,43 @@ class TestFrontmatterRangePropagation:
             f"Frontmatter min ({fm_density['min']}) should match category min ({cat_density['min']})"
         assert fm_density['max'] == cat_density['max'], \
             f"Frontmatter max ({fm_density['max']}) should match category max ({cat_density['max']})"
+    
+    def test_copper_thermal_destruction_nested_structure(
+        self, copper_frontmatter, copper_material, metal_category_ranges
+    ):
+        """Verify thermalDestruction uses nested structure correctly"""
+        # Get thermalDestruction from frontmatter
+        fm_td = copper_frontmatter['materialProperties']['thermal']['properties']['thermalDestruction']
         
-        # Frontmatter ranges should NOT match material tolerance ranges
-        assert fm_density['min'] != mat_density['min'] or fm_density['max'] != mat_density['max'], \
-            "Frontmatter should NOT use material-specific tolerance ranges"
+        # Get material thermalDestruction (should be nested with NO min/max)
+        mat_td = copper_material['properties']['thermalDestruction']
+        
+        # Get category thermalDestruction (nested structure)
+        cat_td = metal_category_ranges['thermalDestruction']
+        
+        # Verify material has nested structure with NO min/max in point
+        assert 'point' in mat_td, "Material should have nested 'point'"
+        assert 'type' in mat_td, "Material should have 'type'"
+        assert 'min' not in mat_td['point'], "Material point should not have 'min'"
+        assert 'max' not in mat_td['point'], "Material point should not have 'max'"
+        
+        # Verify frontmatter has nested structure
+        assert 'point' in fm_td, "Frontmatter should have nested 'point'"
+        assert 'type' in fm_td, "Frontmatter should have 'type'"
+        
+        # Verify frontmatter point.value matches material
+        assert fm_td['point']['value'] == mat_td['point']['value'], \
+            "Frontmatter point.value should come from materials.yaml"
+        
+        # Verify frontmatter point ranges match category ranges
+        assert fm_td['point']['min'] == cat_td['point']['min'], \
+            f"Frontmatter point.min should match category ({cat_td['point']['min']})"
+        assert fm_td['point']['max'] == cat_td['point']['max'], \
+            f"Frontmatter point.max should match category ({cat_td['point']['max']})"
+        
+        # Verify type matches category
+        assert fm_td['type'] == cat_td['type'], \
+            f"Frontmatter type should match category ({cat_td['type']})"
     
     def test_stucco_null_ranges_when_no_category_range(self):
         """Properties without category ranges should have null min/max in frontmatter"""

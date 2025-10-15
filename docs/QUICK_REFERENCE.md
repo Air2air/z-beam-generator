@@ -12,6 +12,15 @@
 
 ## 🎯 Most Common User Questions → Direct Solutions
 
+### "thermalDestructionPoint/Type missing" / "meltingPoint removed"
+**→ Immediate Response**: ✅ **RESTRUCTURED October 2025** - Combined into nested `thermalDestruction` object
+**→ New Structure**: `thermalDestruction: { point: {value, unit, min, max, confidence}, type }`
+**→ Old Properties Removed**: `thermalDestructionPoint`, `thermalDestructionType`, `meltingPoint`
+**→ Complete Normalization**: ALL properties now follow same pattern (Categories=ranges, materials=values)
+**→ Documentation**: `docs/DATA_ARCHITECTURE.md` and `COMPLETE_PIPELINE_NORMALIZATION.md`
+**→ Categories**: All lowercase system-wide (ceramic, metal, wood, etc.)
+**→ Materials.yaml**: NO min/max anywhere - category ranges only in Categories.yaml
+
 ### "Frontmatter not found" / "No frontmatter data"
 **→ Immediate Response**: ✅ **ENHANCED with Root-Level System** - Use new FrontmatterManager
 **→ Quick Fix**: `python3 frontmatter/management/migrator.py --dry-run` to check status

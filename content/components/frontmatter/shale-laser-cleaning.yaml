@@ -1,122 +1,153 @@
 name: Shale
-category: Stone
+category: stone
 subcategory: sedimentary
 title: Shale Laser Cleaning
 description: Laser cleaning parameters for Shale
 materialProperties:
-  density:
-    value: 2.4
-    unit: g/cm³
-    confidence: 92
-    description: Average bulk density of shale formations
-    min: 1.5
-    max: 3.4
-  thermalConductivity:
-    value: 1.8
-    unit: W/m·K
-    confidence: 88
-    description: Thermal conductivity at room temperature
-    min: 0.2
-    max: 8
-  tensileStrength:
-    value: 8.5
-    unit: MPa
-    confidence: 85
-    description: Indirect tensile strength via Brazilian test
-    min: 2
-    max: 25
-  hardness:
-    value: 3.5
-    unit: Mohs
-    confidence: 90
-    description: Mohs hardness scale for shale minerals
-    min: 1
-    max: 7
-  youngsModulus:
-    value: 25
-    unit: GPa
-    confidence: 87
-    description: Elastic modulus from compression testing
-    min: 10
-    max: 100
-  laserAbsorption:
-    value: 8.7
-    unit: '%'
-    confidence: 92
-    description: laserAbsorption from Materials.yaml
-    min: 0.1
-    max: 20
-  laserReflectivity:
-    value: 38.2
-    unit: '%'
-    confidence: 92
-    description: laserReflectivity from Materials.yaml
-    min: 5
-    max: 80
-  specificHeat:
-    value: 880
-    unit: J/kg·K
-    confidence: 86
-    description: Specific heat capacity at constant pressure
-    min: 600
-    max: 1200
-  thermalDiffusivity:
-    value: 0.85
-    unit: mm²/s
-    confidence: 84
-    description: Thermal diffusivity for heat transfer calculations
-    min: 0.2
-    max: 2.5
-  thermalExpansion:
-    value: 8.2
-    unit: 10⁻⁶/K
-    confidence: 82
-    description: Coefficient of thermal expansion
-    min: 3
-    max: 25
-  absorptionCoefficient:
-    value: 0.75
-    unit: dimensionless
-    confidence: 82
-    description: Optical absorption coefficient for common laser wavelengths
-    min: 0.4
-    max: 0.85
-  reflectivity:
-    value: 0.25
-    unit: dimensionless
-    confidence: 80
-    description: Surface reflectivity at 1064 nm wavelength
-    min: 0.15
-    max: 0.6
-  ablationThreshold:
-    value: 2.8
-    unit: J/cm²
-    confidence: 83
-    description: Minimum fluence for material removal at 1064 nm
-    min: 1.0
-    max: 10.0
-  porosity:
-    value: 12
-    unit: '%'
-    confidence: 89
-    description: Typical porosity range affecting laser interaction
-    min: 0.5
-    max: 50.0
-  chemicalStability:
-    value: Moderate
-    unit: qualitative
-    confidence: 88
-    description: Resistance to chemical degradation and weathering
-    min: null
-    max: null
-  thermalDestructionPoint:
-    value: 1250
-    unit: °C
-    confidence: 85
-    description: Temperature where structural breakdown begins
-    min: 600
-    max: 1700
-  thermalDestructionType: Structural breakdown
+  physical_structural:
+    label: Physical/Structural Properties
+    description: Basic physical characteristics
+    percentage: 3.6
+    properties:
+      density:
+        value: 2.4
+        unit: g/cm³
+        confidence: 92
+        description: Average bulk density of shale formations
+        min: 1.5
+        max: 3.4
+  mechanical:
+    label: Mechanical Properties
+    description: Strength, elasticity, and structural characteristics
+    percentage: 18.2
+    properties:
+      hardness:
+        value: 3.5
+        unit: Mohs
+        confidence: 90
+        description: Mohs hardness scale for shale
+        min: 1
+        max: 7
+      tensileStrength:
+        value: 8.5
+        unit: MPa
+        confidence: 85
+        description: Indirect tensile strength of shale
+        min: 2
+        max: 25
+      youngsModulus:
+        value: 25
+        unit: GPa
+        confidence: 88
+        description: Elastic modulus of shale formations
+        min: 10
+        max: 100
+  optical_laser:
+    label: Optical/Laser Properties
+    description: Light interaction and laser response characteristics
+    percentage: 16.4
+    properties:
+      laserAbsorption:
+        value: 8.7
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.1
+        max: 20
+      laserReflectivity:
+        value: 38.2
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 80
+      reflectivity:
+        value: 0.25
+        unit: dimensionless
+        confidence: 80
+        description: Surface reflectivity at typical laser wavelengths
+        min: null
+        max: null
+      ablationThreshold:
+        value: 2.8
+        unit: J/cm²
+        confidence: 85
+        description: Laser ablation threshold for 1064 nm wavelength
+        min: null
+        max: null
+  thermal:
+    label: Thermal Properties
+    description: Heat-related material characteristics including conductivity, expansion, and destruction points
+    percentage: 29.1
+    properties:
+      specificHeat:
+        value: 0.85
+        unit: kJ/kg·K
+        confidence: 90
+        description: Specific heat capacity at room temperature
+        min: 600
+        max: 1200
+      thermalConductivity:
+        value: 1.8
+        unit: W/m·K
+        confidence: 88
+        description: Thermal conductivity at room temperature
+        min: 0.2
+        max: 8
+      thermalDiffusivity:
+        value: 1.32
+        unit: mm²/s
+        confidence: 92
+        description: thermalDiffusivity from Materials.yaml
+        min: 0.2
+        max: 2.5
+      thermalExpansion:
+        value: 8.2
+        unit: 10⁻⁶/K
+        confidence: 82
+        description: Coefficient of thermal expansion
+        min: 3
+        max: 25
+      thermalDestruction:
+        point:
+          value: 1073.15
+          unit: K
+          min: 600
+          max: 1700
+          confidence: 92
+          description: Thermal destruction point
+        type: thermal_shock
+  surface:
+    label: Surface Properties
+    description: Surface characteristics and texture
+    percentage: 9.1
+    properties:
+      porosity:
+        value: 12
+        unit: '%'
+        confidence: 92
+        description: Average porosity of shale formations
+        min: null
+        max: null
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 0
+    properties:
+      thermalDegradationPoint:
+        value: 1073.15
+        unit: K
+        confidence: 92
+        description: Temperature where mineral structure breaks down
+        min: null
+        max: null
+      absorptionCoefficient:
+        value: 0.75
+        unit: dimensionless
+        confidence: 82
+        description: Optical absorption coefficient for common laser wavelengths
+        min: null
+        max: null
 applications:
 - Cultural Heritage
 - Energy
@@ -133,8 +164,7 @@ machineSettings:
     value: 90
     unit: W
     confidence: 92
-    description: Optimal average power for shale surface cleaning without thermal
-      damage
+    description: Optimal average power for shale surface cleaning without thermal damage
     min: 70
     max: 120
   wavelength:
@@ -155,16 +185,14 @@ machineSettings:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for shale cleaning efficiency and surface
-      quality
+    description: Optimal repetition rate for shale cleaning efficiency and surface quality
     min: 20
     max: 100
   pulseWidth:
     value: 12
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient shale ablation with minimal
-      heat diffusion
+    description: Nanosecond pulse duration for efficient shale ablation with minimal heat diffusion
     min: 8
     max: 20
   scanSpeed:
@@ -178,9 +206,8 @@ machineSettings:
     value: 3.5
     unit: J/cm²
     confidence: 86
-    description: Energy density threshold for effective Shale cleaning - Energy density
-      threshold for effective contaminant removal from stone surfaces without substrate
-      damage
+    description: Energy density threshold for effective Shale cleaning - Energy density threshold for effective contaminant
+      removal from stone surfaces without substrate damage
     min: 1.5
     max: 7.0
   fluenceThreshold:
@@ -246,9 +273,8 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Shale is a uniquely soft and finely layered sedimentary stone. These properties
-  require careful laser power adjustment to effectively remove contaminants without
-  damaging the fragile surface.
+subtitle: Shale is a uniquely soft and finely layered sedimentary stone. These properties require careful laser power adjustment
+  to effectively remove contaminants without damaging the fragile surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -284,21 +310,15 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the shale surface is obscured by a complex contamination
-    layer, typically 50-200 micrometers thick. This layer consists of particulate
-    matter, such as soot and dust, embedded within a matrix of organic and inorganic
-    deposits like salts and oxidized pollutants. The contaminants fill the natural
-    micro-fissures and pores of the shale, creating a discontinuous, crust-like texture
-    that masks the underlying mineralogical features. This crust exhibits poor adhesion
-    to the substrate, with visible delamination at the interface, indicating a weak
-    boundary prone to selective removal.
-  afterText: Laser cleaning has effectively removed the contamination crust, fully
-    revealing the pristine shale substrate. The surface now displays the material's
-    intrinsic micro-texture, with clearly defined grain boundaries and open porosity.
-    All foreign deposits have been eliminated without mechanical alteration to the
-    underlying stone.
-  description: Microscopic analysis of shale surface before and after laser cleaning
-    treatment
+  beforeText: At 500x magnification, the shale surface is obscured by a complex contamination layer, typically 50-200 micrometers
+    thick. This layer consists of particulate matter, such as soot and dust, embedded within a matrix of organic and inorganic
+    deposits like salts and oxidized pollutants. The contaminants fill the natural micro-fissures and pores of the shale,
+    creating a discontinuous, crust-like texture that masks the underlying mineralogical features. This crust exhibits poor
+    adhesion to the substrate, with visible delamination at the interface, indicating a weak boundary prone to selective removal.
+  afterText: Laser cleaning has effectively removed the contamination crust, fully revealing the pristine shale substrate.
+    The surface now displays the material's intrinsic micro-texture, with clearly defined grain boundaries and open porosity.
+    All foreign deposits have been eliminated without mechanical alteration to the underlying stone.
+  description: Microscopic analysis of shale surface before and after laser cleaning treatment
   alt: Microscopic view of shale surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -318,8 +338,7 @@ caption:
     materialType: Stone
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Shale surface after laser cleaning showing detailed surface
-      structure
+    alt: Microscopic view of Shale surface after laser cleaning showing detailed surface structure
     url: /images/material/shale-laser-cleaning-micro.jpg
 tags:
 - stone

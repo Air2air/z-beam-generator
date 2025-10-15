@@ -1,136 +1,170 @@
 name: Gold
-category: Metal
+category: metal
 subcategory: precious
 title: Gold Laser Cleaning
 description: Laser cleaning parameters for Gold
 materialProperties:
-  density:
-    value: 19.32
-    unit: g/cm³
-    confidence: 98
-    description: Density of pure gold at room temperature
-    min: 0.53
-    max: 22.6
-  thermalConductivity:
-    value: 318
-    unit: W/m·K
-    confidence: 95
-    description: Thermal conductivity at 300K
-    min: 6.0
-    max: 429.0
-  tensileStrength:
-    value: 220.0
-    unit: MPa
-    confidence: 95
-    description: tensileStrength from Materials.yaml
-    min: 3.0
-    max: 3000.0
-  hardness:
-    value: 25
-    unit: HV
-    confidence: 88
-    description: Vickers hardness of annealed gold
-    min: 0.5
-    max: 3500
-  youngsModulus:
-    value: 79
-    unit: GPa
-    confidence: 94
-    description: Young's modulus of elasticity
-    min: 5
-    max: 411
-  laserAbsorption:
-    value: 2.5
-    unit: '%'
-    confidence: 95
-    description: laserAbsorption from Materials.yaml
-    min: 0.02
-    max: 100
-  laserReflectivity:
-    value: 97.8
-    unit: '%'
-    confidence: 98
-    description: laserReflectivity from Materials.yaml
-    min: 5
-    max: 98
-  specificHeat:
-    value: 0.129
-    unit: J/g·K
-    confidence: 93
-    description: Specific heat capacity at 25°C
-    min: 100
-    max: 900
-  thermalDiffusivity:
-    value: 127
-    unit: mm²/s
-    confidence: 90
-    description: Thermal diffusivity at room temperature
-    min: 0.2
-    max: 174
-  thermalExpansion:
-    value: 14.2
-    unit: μm/m·K
-    confidence: 92
-    description: Coefficient of linear thermal expansion at 25°C
-    min: 0.5
-    max: 29.1
-  reflectivity:
-    value: 98
-    unit: '%'
-    confidence: 96
-    description: Reflectivity at 1064 nm wavelength
-    min: 0.4
-    max: 0.98
-  absorptionCoefficient:
-    value: 1.2
-    unit: ×10⁷ m⁻¹
-    confidence: 85
-    description: Absorption coefficient at 532 nm wavelength
-    min: 0.02
-    max: 0.6
-  ablationThreshold:
-    value: 0.8
-    unit: J/cm²
-    confidence: 82
-    description: Approximate ablation threshold for nanosecond pulses at 1064 nm
-    min: 0.5
-    max: 50.0
-  oxidationResistance:
-    value: Excellent
-    unit: Qualitative
-    confidence: 98
-    description: Gold does not oxidize in air at any temperature
-    min: null
-    max: null
-  crystallineStructure:
-    value: FCC
-    unit: Crystal System
-    confidence: 99
-    description: Face-centered cubic crystal structure
-    min: null
-    max: null
-  electricalConductivity:
-    value: 45.2
-    unit: MS/m
-    confidence: 96
-    description: Electrical conductivity at 20°C
-    min: 100000.0
-    max: 65000000.0
-  laserDamageThreshold:
-    value: 2.5
-    unit: J/cm²
-    confidence: 80
-    description: Laser-induced damage threshold for polished surfaces
-    min: 0.3
-    max: 20.0
-  thermalDestructionPoint:
-    value: 1064
-    unit: °C
-    confidence: 97
-    description: Temperature where solid-to-liquid phase transition occurs
-    min: -38.8
-    max: 3422
-  thermalDestructionType: Melting
+  physical_structural:
+    label: Physical/Structural Properties
+    description: Basic physical characteristics
+    percentage: 3.6
+    properties:
+      density:
+        value: 19.32
+        unit: g/cm³
+        confidence: 98
+        description: Density of pure gold at room temperature
+        min: 0.53
+        max: 22.6
+  mechanical:
+    label: Mechanical Properties
+    description: Strength, elasticity, and structural characteristics
+    percentage: 18.2
+    properties:
+      hardness:
+        value: 25
+        unit: HV
+        confidence: 88
+        description: Vickers hardness of annealed gold
+        min: 0.5
+        max: 3500
+      tensileStrength:
+        value: 220.0
+        unit: MPa
+        confidence: 95
+        description: tensileStrength from Materials.yaml
+        min: 3.0
+        max: 3000.0
+      youngsModulus:
+        value: 79
+        unit: GPa
+        confidence: 94
+        description: Young's modulus of elasticity
+        min: 5
+        max: 411
+  optical_laser:
+    label: Optical/Laser Properties
+    description: Light interaction and laser response characteristics
+    percentage: 16.4
+    properties:
+      laserAbsorption:
+        value: 2.5
+        unit: '%'
+        confidence: 95
+        description: laserAbsorption from Materials.yaml
+        min: 0.02
+        max: 100
+      laserReflectivity:
+        value: 97.8
+        unit: '%'
+        confidence: 98
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 98
+      reflectivity:
+        value: 98
+        unit: '%'
+        confidence: 96
+        description: Reflectivity in infrared region (1064 nm)
+        min: null
+        max: null
+      ablationThreshold:
+        value: 0.5
+        unit: J/cm²
+        confidence: 82
+        description: Approximate ablation threshold for nanosecond pulses at 1064 nm
+        min: null
+        max: null
+  thermal:
+    label: Thermal Properties
+    description: Heat-related material characteristics including conductivity, expansion, and destruction points
+    percentage: 29.1
+    properties:
+      specificHeat:
+        value: 0.129
+        unit: J/g·K
+        confidence: 93
+        description: Specific heat capacity at 25°C
+        min: 100
+        max: 900
+      thermalConductivity:
+        value: 318
+        unit: W/m·K
+        confidence: 95
+        description: Thermal conductivity at 300K
+        min: 6.0
+        max: 429.0
+      thermalDiffusivity:
+        value: 127
+        unit: mm²/s
+        confidence: 90
+        description: Thermal diffusivity at room temperature
+        min: 0.2
+        max: 174
+      thermalExpansion:
+        value: 14.2
+        unit: μm/m·K
+        confidence: 92
+        description: Coefficient of linear thermal expansion at 25°C
+        min: 0.5
+        max: 29.1
+      thermalDestruction:
+        point:
+          value: 1337.33
+          unit: K
+          min: -38.8
+          max: 3422
+          confidence: 95
+          description: Thermal destruction point
+        type: melting
+  chemical:
+    label: Chemical Properties
+    description: Chemical reactivity and stability
+    percentage: 5.5
+    properties:
+      oxidationResistance:
+        value: Excellent
+        unit: qualitative
+        confidence: 98
+        description: Gold does not oxidize in air at any temperature
+        min: null
+        max: null
+  compositional:
+    label: Compositional Properties
+    description: Material composition characteristics
+    percentage: 5.5
+    properties:
+      crystallineStructure:
+        value: FCC
+        unit: crystal system
+        confidence: 99
+        description: Face-centered cubic crystal structure
+        min: null
+        max: null
+  electrical:
+    label: Electrical Properties
+    description: Electrical conductivity and resistance
+    percentage: 7.3
+    properties:
+      electricalConductivity:
+        value: 45.2
+        unit: MS/m
+        confidence: 96
+        description: Electrical conductivity at 20°C
+        min: null
+        max: null
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 0
+    properties:
+      absorptionCoefficient:
+        value: 12000000.0
+        unit: m⁻¹
+        confidence: 85
+        description: Absorption coefficient at 532 nm wavelength
+        min: null
+        max: null
 applications:
 - Electronics Manufacturing
 - Aerospace
@@ -154,8 +188,7 @@ machineSettings:
     value: 532
     unit: nm
     confidence: 88
-    description: Green wavelength optimized for Gold's high reflectivity in IR and
-      better absorption in visible spectrum
+    description: Green wavelength optimized for Gold's high reflectivity in IR and better absorption in visible spectrum
     min: 355
     max: 1064
   spotSize:
@@ -169,40 +202,36 @@ machineSettings:
     value: 50
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient cleaning while maintaining thermal
-      control
+    description: High repetition rate for efficient cleaning while maintaining thermal control
     min: 20
     max: 100
   pulseWidth:
     value: 8
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for controlled ablation of contaminants
-      without substrate damage
+    description: Nanosecond pulse duration for controlled ablation of contaminants without substrate damage
     min: 5
     max: 15
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Scan speed for efficient area coverage while maintaining cleaning
-      effectiveness
+    description: Scan speed for efficient area coverage while maintaining cleaning effectiveness
     min: 300
     max: 800
   fluence:
     value: 6.0
     unit: J/cm²
     confidence: 92
-    description: Energy density threshold for effective Gold cleaning - Energy density
-      threshold for effective oxide and contaminant removal from metallic surfaces
+    description: Energy density threshold for effective Gold cleaning - Energy density threshold for effective oxide and contaminant
+      removal from metallic surfaces
     min: 3.0
     max: 12.0
   fluenceThreshold:
     value: 2.5
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without damaging
-      Gold substrate
+    description: Fluence threshold for effective contaminant removal without damaging Gold substrate
     min: 1.8
     max: 3.5
   overlapRatio:
@@ -223,8 +252,7 @@ machineSettings:
     value: Nd:YAG
     unit: laser_type
     confidence: 90
-    description: Q-switched Nd:YAG laser with frequency doubling capability for optimal
-      Gold processing
+    description: Q-switched Nd:YAG laser with frequency doubling capability for optimal Gold processing
     min: null
     max: null
 regulatoryStandards:
@@ -269,9 +297,8 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Gold is exceptionally soft and prone to surface damage compared to other
-  precious metals. This requires laser settings with very low energy and rapid pulses
-  to remove contaminants without altering the surface.
+subtitle: Gold is exceptionally soft and prone to surface damage compared to other precious metals. This requires laser settings
+  with very low energy and rapid pulses to remove contaminants without altering the surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -307,22 +334,17 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the gold surface is obscured by a non-uniform
-    contamination layer. This layer, ranging from 0.5 to 5 micrometers in thickness,
-    consists of carbonaceous deposits, adsorbed organic films, and particulate matter.
-    The underlying gold's metallic luster is muted, and its native micro-texture is
-    concealed. The contaminants form irregular, patchy patterns, creating a topographically
-    complex and optically dull surface that compromises its functional properties
+  beforeText: At 500x magnification, the gold surface is obscured by a non-uniform contamination layer. This layer, ranging
+    from 0.5 to 5 micrometers in thickness, consists of carbonaceous deposits, adsorbed organic films, and particulate matter.
+    The underlying gold's metallic luster is muted, and its native micro-texture is concealed. The contaminants form irregular,
+    patchy patterns, creating a topographically complex and optically dull surface that compromises its functional properties
     and aesthetic signature.
-  afterText: Laser cleaning restores the pristine gold substrate, revealing a continuous,
-    specularly reflective surface at 500x magnification. The contamination layer is
-    entirely removed, exposing the native grain structure and micro-polishing lines
-    of the pure gold. The surface is now topographically uniform, with no evidence
-    of thermal damage or ablation to the substrate. This results in a surface with
-    restored reflectivity exceeding 97% and optimal performance for its intended electrical
-    or optical application.
-  description: Microscopic analysis of gold surface before and after laser cleaning
-    treatment
+  afterText: Laser cleaning restores the pristine gold substrate, revealing a continuous, specularly reflective surface at
+    500x magnification. The contamination layer is entirely removed, exposing the native grain structure and micro-polishing
+    lines of the pure gold. The surface is now topographically uniform, with no evidence of thermal damage or ablation to
+    the substrate. This results in a surface with restored reflectivity exceeding 97% and optimal performance for its intended
+    electrical or optical application.
+  description: Microscopic analysis of gold surface before and after laser cleaning treatment
   alt: Microscopic view of gold surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -342,8 +364,7 @@ caption:
     materialType: Metal
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Gold surface after laser cleaning showing detailed surface
-      structure
+    alt: Microscopic view of Gold surface after laser cleaning showing detailed surface structure
     url: /images/material/gold-laser-cleaning-micro.jpg
 tags:
 - metal

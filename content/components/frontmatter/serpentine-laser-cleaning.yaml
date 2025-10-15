@@ -1,123 +1,165 @@
 name: Serpentine
-category: Stone
+category: stone
 subcategory: metamorphic
 title: Serpentine Laser Cleaning
 description: Laser cleaning parameters for Serpentine
 materialProperties:
-  density:
-    value: 2.55
-    unit: g/cm³
-    confidence: 95
-    description: Average density of serpentine minerals including antigorite, chrysotile,
-      and lizardite
-    min: 1.5
-    max: 3.4
-  thermalConductivity:
-    value: 2.1
-    unit: W/m·K
-    confidence: 88
-    description: Thermal conductivity at room temperature for compact serpentine
-    min: 0.2
-    max: 8
-  tensileStrength:
-    value: 15.2
-    unit: MPa
-    confidence: 92
-    description: tensileStrength from Materials.yaml
-    min: 2
-    max: 25
-  hardness:
-    value: 3.5
-    unit: Mohs
-    confidence: 95
-    description: Mohs hardness scale value for serpentine minerals
-    min: 1
-    max: 7
-  youngsModulus:
-    value: 75
-    unit: GPa
-    confidence: 86
-    description: Young's modulus for polycrystalline serpentine aggregate
-    min: 10
-    max: 100
-  laserAbsorption:
-    value: 8.7
-    unit: '%'
-    confidence: 92
-    description: laserAbsorption from Materials.yaml
-    min: 0.1
-    max: 20
-  laserReflectivity:
-    value: 38.2
-    unit: '%'
-    confidence: 92
-    description: laserReflectivity from Materials.yaml
-    min: 5
-    max: 80
-  specificHeat:
-    value: 850
-    unit: J/kg·K
-    confidence: 92
-    description: Specific heat capacity at room temperature
-    min: 600
-    max: 1200
-  thermalDiffusivity:
-    value: 1.32
-    unit: mm²/s
-    confidence: 92
-    description: thermalDiffusivity from Materials.yaml
-    min: 0.2
-    max: 2.5
-  thermalExpansion:
-    value: 8.5
-    unit: ×10⁻⁶/K
-    confidence: 85
-    description: Coefficient of thermal expansion parallel to cleavage planes
-    min: 3
-    max: 25
-  absorptionCoefficient:
-    value: 0.45
-    unit: cm⁻¹
-    confidence: 82
-    description: Optical absorption coefficient at 1064 nm wavelength
-    min: 0.4
-    max: 0.85
-  reflectivity:
-    value: 0.12
-    unit: dimensionless
-    confidence: 85
-    description: Reflectivity at 1064 nm for typical serpentine surfaces
-    min: 0.15
-    max: 0.6
-  ablationThreshold:
-    value: 2.8
-    unit: J/cm²
-    confidence: 80
-    description: Laser ablation threshold for nanosecond pulses at 1064 nm
-    min: 1.0
-    max: 10.0
-  chemicalStability:
-    value: 7
-    unit: pH range
-    confidence: 88
-    description: Stable pH range from 4 to 11 before significant dissolution
-    min: 2.0
-    max: 14.0
-  porosity:
-    value: 2.5
-    unit: '%'
-    confidence: 84
-    description: Typical porosity for dense serpentine rock specimens
-    min: 0.5
-    max: 50.0
-  thermalDestructionPoint:
-    value: 1550
-    unit: °C
-    confidence: 90
-    description: Temperature where structural breakdown begins
-    min: 600
-    max: 1700
-  thermalDestructionType: Structural breakdown
+  physical_structural:
+    label: Physical/Structural Properties
+    description: Basic physical characteristics
+    percentage: 3.6
+    properties:
+      density:
+        value: 2.55
+        unit: g/cm³
+        confidence: 95
+        description: Average density of serpentine group minerals
+        min: 1.5
+        max: 3.4
+  mechanical:
+    label: Mechanical Properties
+    description: Strength, elasticity, and structural characteristics
+    percentage: 18.2
+    properties:
+      hardness:
+        value: 3.5
+        unit: Mohs
+        confidence: 95
+        description: Mohs hardness scale
+        min: 1
+        max: 7
+      tensileStrength:
+        value: 15.2
+        unit: MPa
+        confidence: 92
+        description: tensileStrength from Materials.yaml
+        min: 2
+        max: 25
+      youngsModulus:
+        value: 75
+        unit: GPa
+        confidence: 85
+        description: Elastic modulus of serpentine minerals
+        min: 10
+        max: 100
+  optical_laser:
+    label: Optical/Laser Properties
+    description: Light interaction and laser response characteristics
+    percentage: 16.4
+    properties:
+      laserAbsorption:
+        value: 8.7
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.1
+        max: 20
+      laserReflectivity:
+        value: 38.2
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 80
+      reflectivity:
+        value: 0.35
+        unit: dimensionless
+        confidence: 82
+        description: Surface reflectivity at 1064 nm wavelength
+        min: null
+        max: null
+      ablationThreshold:
+        value: 2.8
+        unit: J/cm²
+        confidence: 80
+        description: Laser ablation threshold for Nd:YAG lasers
+        min: null
+        max: null
+  thermal:
+    label: Thermal Properties
+    description: Heat-related material characteristics including conductivity, expansion, and destruction points
+    percentage: 29.1
+    properties:
+      specificHeat:
+        value: 850
+        unit: J/kg·K
+        confidence: 90
+        description: Specific heat capacity at 25°C
+        min: 600
+        max: 1200
+      thermalConductivity:
+        value: 2.1
+        unit: W/m·K
+        confidence: 88
+        description: Thermal conductivity at room temperature
+        min: 0.2
+        max: 8
+      thermalDiffusivity:
+        value: 1.32
+        unit: mm²/s
+        confidence: 92
+        description: thermalDiffusivity from Materials.yaml
+        min: 0.2
+        max: 2.5
+      thermalExpansion:
+        value: 8.5
+        unit: ×10⁻⁶/K
+        confidence: 82
+        description: Coefficient of thermal expansion
+        min: 3
+        max: 25
+      thermalDestruction:
+        point:
+          value: 600.0
+          unit: °C
+          min: 600
+          max: 1700
+          confidence: 92
+          description: Thermal destruction point
+        type: thermal_shock
+  chemical:
+    label: Chemical Properties
+    description: Chemical reactivity and stability
+    percentage: 5.5
+    properties:
+      chemicalStability:
+        value: 85
+        unit: '% stability'
+        confidence: 88
+        description: Chemical stability in ambient conditions
+        min: null
+        max: null
+  surface:
+    label: Surface Properties
+    description: Surface characteristics and texture
+    percentage: 9.1
+    properties:
+      porosity:
+        value: 12
+        unit: '%'
+        confidence: 85
+        description: Typical porosity range in natural serpentine
+        min: null
+        max: null
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 0
+    properties:
+      thermalDegradationPoint:
+        value: 600.0
+        unit: °C
+        confidence: 92
+        description: Temperature where mineral structure breaks down
+        min: null
+        max: null
+      absorptionCoefficient:
+        value: 0.45
+        unit: dimensionless
+        confidence: 80
+        description: Optical absorption coefficient for visible light
+        min: null
+        max: null
 applications:
 - Cultural Heritage
 - Aerospace
@@ -134,8 +176,7 @@ machineSettings:
     value: 90
     unit: W
     confidence: 91
-    description: Optimal average power for Serpentine surface cleaning without thermal
-      damage
+    description: Optimal average power for Serpentine surface cleaning without thermal damage
     min: 70
     max: 110
   wavelength:
@@ -177,9 +218,8 @@ machineSettings:
     value: 3.5
     unit: J/cm²
     confidence: 86
-    description: Energy density threshold for effective Serpentine cleaning - Energy
-      density threshold for effective contaminant removal from stone surfaces without
-      substrate damage
+    description: Energy density threshold for effective Serpentine cleaning - Energy density threshold for effective contaminant
+      removal from stone surfaces without substrate damage
     min: 1.5
     max: 7.0
   fluenceThreshold:
@@ -193,8 +233,7 @@ machineSettings:
     value: 50
     unit: '%'
     confidence: 84
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      buildup
+    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
     min: 40
     max: 70
   passCount:
@@ -226,8 +265,7 @@ author:
   image: /images/author/todd-dunning.jpg
 images:
   hero:
-    alt: Serpentine surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Serpentine surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/serpentine-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -254,8 +292,8 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Serpentine has a variable composition and can be relatively soft. This variability
-  demands careful calibration of laser settings to prevent surface damage during cleaning.
+subtitle: Serpentine has a variable composition and can be relatively soft. This variability demands careful calibration of
+  laser settings to prevent surface damage during cleaning.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -291,32 +329,25 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the serpentine surface is obscured by a discontinuous
-    contamination layer, measuring 5-20 µm thick. This layer consists of particulate
-    matter, carbonaceous soot, and biological films, which fill the natural micro-fissures
-    and pores of the stone. The underlying crystalline structure and phyllosilicate
-    texture are entirely masked, creating a topographically uneven and occluded surface.
-  afterText: 'Laser cleaning has removed the opaque contamination layer, revealing
-    the intrinsic microstructure of the serpentine. The surface now exhibits a well-defined
-    phyllosilicate plate structure, with individual crystalline domains clearly visible.
-    The cleaning process has effectively excavated particulate matter from micro-fissures
-    without widening them, restoring the stone''s original micro-topography.
+  beforeText: At 500x magnification, the serpentine surface is obscured by a discontinuous contamination layer, measuring
+    5-20 µm thick. This layer consists of particulate matter, carbonaceous soot, and biological films, which fill the natural
+    micro-fissures and pores of the stone. The underlying crystalline structure and phyllosilicate texture are entirely masked,
+    creating a topographically uneven and occluded surface.
+  afterText: 'Laser cleaning has removed the opaque contamination layer, revealing the intrinsic microstructure of the serpentine.
+    The surface now exhibits a well-defined phyllosilicate plate structure, with individual crystalline domains clearly visible.
+    The cleaning process has effectively excavated particulate matter from micro-fissures without widening them, restoring
+    the stone''s original micro-topography.
 
 
-    The contrast between the cleaned mineral surface and the previously filled pores
-    is distinct. The laser parameters were calibrated to remain below the serpentine''s
-    2.8 J/cm² ablation threshold, ensuring selective removal of contaminants. This
-    precision prevents subsurface thermal stress and micro-fracturing, preserving
-    the structural integrity of the stone.
+    The contrast between the cleaned mineral surface and the previously filled pores is distinct. The laser parameters were
+    calibrated to remain below the serpentine''s 2.8 J/cm² ablation threshold, ensuring selective removal of contaminants.
+    This precision prevents subsurface thermal stress and micro-fracturing, preserving the structural integrity of the stone.
 
 
-    Post-cleaning, the surface reflectivity has increased measurably, consistent with
-    the removal of light-absorbing deposits. The mineral''s natural green hue and
-    subtle veining are now apparent at the microscopic scale, confirming the restoration
-    of the authentic substrate without chemical or mechanical alteration to the primary
-    material.'
-  description: Microscopic analysis of serpentine surface before and after laser cleaning
-    treatment
+    Post-cleaning, the surface reflectivity has increased measurably, consistent with the removal of light-absorbing deposits.
+    The mineral''s natural green hue and subtle veining are now apparent at the microscopic scale, confirming the restoration
+    of the authentic substrate without chemical or mechanical alteration to the primary material.'
+  description: Microscopic analysis of serpentine surface before and after laser cleaning treatment
   alt: Microscopic view of serpentine surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -336,8 +367,7 @@ caption:
     materialType: Stone
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Serpentine surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Serpentine surface after laser cleaning showing detailed surface structure
     url: /images/material/serpentine-laser-cleaning-micro.jpg
 tags:
 - stone

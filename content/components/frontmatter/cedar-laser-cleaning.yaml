@@ -1,124 +1,158 @@
 name: Cedar
-category: Wood
+category: wood
 subcategory: softwood
 title: Cedar Laser Cleaning
 description: Laser cleaning parameters for Cedar
 materialProperties:
-  density:
-    value: 0.37
-    unit: g/cm³
-    confidence: 92
-    description: Average density of Western Red Cedar at 12% moisture content
-    min: 0.12
-    max: 1.25
-  thermalConductivity:
-    value: 0.12
-    unit: W/m·K
-    confidence: 88
-    description: Thermal conductivity perpendicular to grain at room temperature
-    min: 0.04
-    max: 0.4
-  tensileStrength:
-    value: 75
-    unit: MPa
-    confidence: 84
-    description: Tensile strength parallel to grain direction
-    min: 20
-    max: 200
-  hardness:
-    value: 2.1
-    unit: kN
-    confidence: 83
-    description: Janka hardness test value for side grain
-    min: 20
-    max: 5000
-  youngsModulus:
-    value: 7.6
-    unit: GPa
-    confidence: 85
-    description: Modulus of elasticity parallel to grain direction
-    min: 5
-    max: 25
-  laserAbsorption:
-    value: 32.7
-    unit: '%'
-    confidence: 92
-    description: laserAbsorption from Materials.yaml
-    min: 1
-    max: 50
-  laserReflectivity:
-    value: 42.7
-    unit: '%'
-    confidence: 92
-    description: laserReflectivity from Materials.yaml
-    min: 10
-    max: 60
-  specificHeat:
-    value: 1380
-    unit: J/kg·K
-    confidence: 86
-    description: Specific heat capacity at room temperature and 12% moisture content
-    min: 800
-    max: 2500
-  thermalDestructionPoint:
-    value: 400.0
-    unit: °C
-    confidence: 92
-    description: Temperature where thermal decomposition begins
-    min: 200
-    max: 500
-  thermalDestructionType: Decomposition
-  thermalDiffusivity:
-    value: 0.16
-    unit: mm²/s
-    confidence: 92
-    description: thermalDiffusivity from Materials.yaml
-    min: 0.0001
-    max: 0.4
-  thermalExpansion:
-    value: 3.7
-    unit: 10^-6/°C
-    confidence: 82
-    description: Coefficient of thermal expansion perpendicular to grain direction
-    min: 3.0
-    max: 60
-  absorptionCoefficient:
-    value: 0.85
-    unit: dimensionless
-    confidence: 82
-    description: Estimated absorption coefficient for near-infrared laser wavelengths
-      (1064 nm)
-    min: 0.7
-    max: 0.95
-  reflectivity:
-    value: 0.15
-    unit: dimensionless
-    confidence: 80
-    description: Approximate reflectivity for wood surfaces at common laser wavelengths
-    min: 0.05
-    max: 0.3
-  ablationThreshold:
-    value: 1.2
-    unit: J/cm²
-    confidence: 81
-    description: Estimated laser ablation threshold for nanosecond pulses at 1064
-      nm
-    min: 0.5
-    max: 3.0
-  porosity:
-    value: 65
-    unit: '%'
-    confidence: 87
-    description: Typical porosity percentage in cedar wood structure
-    min: 5.0
-    max: 75.0
-  moistureContent:
-    value: 12
-    unit: '%'
-    confidence: 90
-    description: Equilibrium moisture content at standard conditions
-    min: 6.0
-    max: 20.0
+  physical_structural:
+    label: Physical/Structural Properties
+    description: Basic physical characteristics
+    percentage: 3.6
+    properties:
+      density:
+        value: 0.37
+        unit: g/cm³
+        confidence: 92
+        description: Average density of Western Red Cedar at 12% moisture content
+        min: 0.12
+        max: 1.25
+  mechanical:
+    label: Mechanical Properties
+    description: Strength, elasticity, and structural characteristics
+    percentage: 18.2
+    properties:
+      hardness:
+        value: 2.1
+        unit: kN
+        confidence: 84
+        description: Janka hardness test value for side grain
+        min: 20
+        max: 5000
+      tensileStrength:
+        value: 75
+        unit: MPa
+        confidence: 85
+        description: Tensile strength parallel to grain direction
+        min: 20
+        max: 200
+      youngsModulus:
+        value: 7.6
+        unit: GPa
+        confidence: 87
+        description: Modulus of elasticity parallel to grain direction
+        min: 5
+        max: 25
+  optical_laser:
+    label: Optical/Laser Properties
+    description: Light interaction and laser response characteristics
+    percentage: 16.4
+    properties:
+      laserAbsorption:
+        value: 32.7
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 1
+        max: 50
+      laserReflectivity:
+        value: 42.7
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 10
+        max: 60
+      reflectivity:
+        value: 0.15
+        unit: dimensionless
+        confidence: 80
+        description: Estimated reflectivity at common laser cleaning wavelengths
+        min: null
+        max: null
+      ablationThreshold:
+        value: 1.2
+        unit: J/cm²
+        confidence: 81
+        description: Estimated laser ablation threshold for nanosecond pulses at 1064 nm
+        min: null
+        max: null
+  thermal:
+    label: Thermal Properties
+    description: Heat-related material characteristics including conductivity, expansion, and destruction points
+    percentage: 29.1
+    properties:
+      specificHeat:
+        value: 1380
+        unit: J/kg·K
+        confidence: 90
+        description: Specific heat capacity at room temperature and 12% moisture content
+        min: 800
+        max: 2500
+      thermalConductivity:
+        value: 0.12
+        unit: W/m·K
+        confidence: 88
+        description: Thermal conductivity perpendicular to grain at room temperature
+        min: 0.04
+        max: 0.4
+      thermalDiffusivity:
+        value: 0.16
+        unit: mm²/s
+        confidence: 92
+        description: thermalDiffusivity from Materials.yaml
+        min: 0.0001
+        max: 0.4
+      thermalExpansion:
+        value: 3.7
+        unit: 10^-6/°C
+        confidence: 82
+        description: Coefficient of thermal expansion perpendicular to grain direction
+        min: 3.0
+        max: 60
+      thermalDestruction:
+        point:
+          value: 380.0
+          unit: °C
+          min: 200
+          max: 500
+          confidence: 92
+          description: Thermal destruction point
+        type: carbonization
+  surface:
+    label: Surface Properties
+    description: Surface characteristics and texture
+    percentage: 9.1
+    properties:
+      porosity:
+        value: 65
+        unit: '%'
+        confidence: 88
+        description: Typical porosity percentage in cedar wood structure
+        min: null
+        max: null
+  environmental:
+    label: Environmental Properties
+    description: Environmental exposure resistance
+    percentage: 5.5
+    properties:
+      moistureContent:
+        value: 12
+        unit: '%'
+        confidence: 95
+        description: Equilibrium moisture content at standard conditions
+        min: null
+        max: null
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 0
+    properties:
+      absorptionCoefficient:
+        value: 0.85
+        unit: dimensionless
+        confidence: 82
+        description: Estimated absorption coefficient for near-infrared laser wavelengths (1064 nm)
+        min: null
+        max: null
 applications:
 - Cultural Heritage
 - Marine
@@ -177,25 +211,22 @@ machineSettings:
     value: 4.5
     unit: J/cm²
     confidence: 88
-    description: Energy density threshold for effective Cedar cleaning - Energy density
-      threshold for effective organic contaminant removal from wood without charring
-      or thermal damage
+    description: Energy density threshold for effective Cedar cleaning - Energy density threshold for effective organic contaminant
+      removal from wood without charring or thermal damage
     min: 2.0
     max: 8.0
   energyDensity:
     value: 1.8
     unit: J/cm²
     confidence: 89
-    description: Fluence threshold for effective contaminant removal without wood
-      damage
+    description: Fluence threshold for effective contaminant removal without wood damage
     min: 1.2
     max: 2.5
   overlapRatio:
     value: 65
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive heat
-      accumulation
+    description: Optimal beam overlap for uniform cleaning without excessive heat accumulation
     min: 50
     max: 75
   passCount:
@@ -255,9 +286,8 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Cedar's softness and varied density distinguish it from other softwoods.
-  These properties demand careful adjustment of laser power and speed to avoid damaging
-  the wood's surface.
+subtitle: Cedar's softness and varied density distinguish it from other softwoods. These properties demand careful adjustment
+  of laser power and speed to avoid damaging the wood's surface.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -293,23 +323,18 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the cedar surface is obscured by a complex contamination
-    layer averaging 50-200 micrometers thick. This stratum consists of embedded particulate
-    matter, soot, and biological growth, which fills the porous wood structure. The
-    contaminants form a discontinuous, crust-like film that masks the underlying cellular
-    anatomy of the cedar, including tracheids and ray cells. This layer significantly
-    increases surface roughness and creates an uneven topography that alters the wood's
-    intrinsic optical and tactile properties. The foreign material has a higher laser
-    absorption coefficient than the native cedar, creating a non-uniform thermal interface.
-  afterText: Post-cleaning, the 500x view reveals the restored cedar surface, with
-    the contamination layer entirely removed. The underlying cellular structure, including
-    the distinct longitudinal tracheids and medullary rays, is now fully exposed and
-    clearly defined. The surface topography is significantly smoother, with a measured
-    roughness (Ra) reduction of approximately 85%. The wood's natural, open porosity
-    is re-established, restoring its original material characteristics and providing
+  beforeText: At 500x magnification, the cedar surface is obscured by a complex contamination layer averaging 50-200 micrometers
+    thick. This stratum consists of embedded particulate matter, soot, and biological growth, which fills the porous wood
+    structure. The contaminants form a discontinuous, crust-like film that masks the underlying cellular anatomy of the cedar,
+    including tracheids and ray cells. This layer significantly increases surface roughness and creates an uneven topography
+    that alters the wood's intrinsic optical and tactile properties. The foreign material has a higher laser absorption coefficient
+    than the native cedar, creating a non-uniform thermal interface.
+  afterText: Post-cleaning, the 500x view reveals the restored cedar surface, with the contamination layer entirely removed.
+    The underlying cellular structure, including the distinct longitudinal tracheids and medullary rays, is now fully exposed
+    and clearly defined. The surface topography is significantly smoother, with a measured roughness (Ra) reduction of approximately
+    85%. The wood's natural, open porosity is re-established, restoring its original material characteristics and providing
     a clean substrate for any subsequent conservation treatments.
-  description: Microscopic analysis of cedar surface before and after laser cleaning
-    treatment
+  description: Microscopic analysis of cedar surface before and after laser cleaning treatment
   alt: Microscopic view of cedar surface showing laser cleaning effects
   technicalAnalysis:
     focus: surface_analysis
@@ -329,8 +354,7 @@ caption:
     materialType: Wood
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Cedar surface after laser cleaning showing detailed surface
-      structure
+    alt: Microscopic view of Cedar surface after laser cleaning showing detailed surface structure
     url: /images/material/cedar-laser-cleaning-micro.jpg
 tags:
 - wood

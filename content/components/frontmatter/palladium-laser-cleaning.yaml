@@ -1,129 +1,158 @@
 name: Palladium
-category: Metal
+category: metal
 subcategory: precious
 title: Palladium Laser Cleaning
 description: Laser cleaning parameters for Palladium
 materialProperties:
-  density:
-    value: 12.02
-    unit: g/cm³
-    confidence: 98
-    description: Density of pure palladium at 20°C
-    min: 0.53
-    max: 22.6
-  thermalConductivity:
-    value: 71.8
-    unit: W/m·K
-    confidence: 92
-    description: Thermal conductivity at room temperature
-    min: 6.0
-    max: 429.0
-  tensileStrength:
-    value: 180
-    unit: MPa
-    confidence: 87
-    description: Tensile strength of annealed palladium
-    min: 3.0
-    max: 3000.0
-  hardness:
-    value: 37.3
-    unit: HV
-    confidence: 89
-    description: Vickers hardness of annealed palladium
-    min: 0.5
-    max: 3500
-  youngsModulus:
-    value: 121
-    unit: GPa
-    confidence: 93
-    description: Young's modulus of elasticity
-    min: 5
-    max: 411
-  laserAbsorption:
-    value: 39.5
-    unit: '%'
-    confidence: 92
-    description: laserAbsorption from Materials.yaml
-    min: 0.02
-    max: 100
-  laserReflectivity:
-    value: 72.3
-    unit: '%'
-    confidence: 95
-    description: laserReflectivity from Materials.yaml
-    min: 5
-    max: 98
-  specificHeat:
-    value: 0.244
-    unit: J/g·K
-    confidence: 91
-    description: Specific heat capacity at 25°C
-    min: 100
-    max: 900
-  thermalDiffusivity:
-    value: 25.1
-    unit: mm²/s
-    confidence: 88
-    description: Thermal diffusivity at room temperature
-    min: 0.2
-    max: 174
-  thermalExpansion:
-    value: 11.8
-    unit: 10⁻⁶/K
-    confidence: 90
-    description: Linear thermal expansion coefficient at 25°C
-    min: 0.5
-    max: 29.1
-  reflectivity:
-    value: 72.5
-    unit: '%'
-    confidence: 85
-    description: Optical reflectivity at 1064 nm wavelength
-    min: 0.4
-    max: 0.98
-  absorptionCoefficient:
-    value: 6.8
-    unit: 10⁵ cm⁻¹
-    confidence: 82
-    description: Absorption coefficient for visible light
-    min: 0.02
-    max: 0.6
-  ablationThreshold:
-    value: 2.1
-    unit: J/cm²
-    confidence: 84
-    description: Approximate laser ablation threshold at 1064 nm
-    min: 0.5
-    max: 50.0
-  oxidationResistance:
-    value: High
-    unit: qualitative
-    confidence: 90
-    description: Resistance to oxidation up to ~800°C
-    min: null
-    max: null
-  crystallineStructure:
-    value: FCC
-    unit: crystal system
-    confidence: 98
-    description: Face-centered cubic crystal structure
-    min: null
-    max: null
-  electricalResistivity:
-    value: 10.8
-    unit: nΩ·m
-    confidence: 94
-    description: Electrical resistivity at 20°C
-    min: 1.5e-06
-    max: 0.0001
-  thermalDestructionPoint:
-    value: 1554.9
-    unit: °C
-    confidence: 97
-    description: Temperature where solid-to-liquid phase transition occurs
-    min: -38.8
-    max: 3422
-  thermalDestructionType: Melting
+  physical_structural:
+    label: Physical/Structural Properties
+    description: Basic physical characteristics
+    percentage: 3.6
+    properties:
+      density:
+        value: 12.02
+        unit: g/cm³
+        confidence: 98
+        description: Density of pure palladium at 20°C
+        min: 0.53
+        max: 22.6
+  mechanical:
+    label: Mechanical Properties
+    description: Strength, elasticity, and structural characteristics
+    percentage: 18.2
+    properties:
+      hardness:
+        value: 37.3
+        unit: HV
+        confidence: 89
+        description: Vickers hardness of annealed palladium
+        min: 0.5
+        max: 3500
+      tensileStrength:
+        value: 180
+        unit: MPa
+        confidence: 87
+        description: Tensile strength of annealed palladium
+        min: 3.0
+        max: 3000.0
+      youngsModulus:
+        value: 121
+        unit: GPa
+        confidence: 93
+        description: Young's modulus of elasticity
+        min: 5
+        max: 411
+  optical_laser:
+    label: Optical/Laser Properties
+    description: Light interaction and laser response characteristics
+    percentage: 16.4
+    properties:
+      laserAbsorption:
+        value: 39.5
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.02
+        max: 100
+      laserReflectivity:
+        value: 72.3
+        unit: '%'
+        confidence: 95
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 98
+      reflectivity:
+        value: 65
+        unit: '%'
+        confidence: 85
+        description: Optical reflectivity at 1064 nm wavelength
+        min: null
+        max: null
+      ablationThreshold:
+        value: 0.8
+        unit: J/cm²
+        confidence: 80
+        description: Estimated laser ablation threshold for nanosecond pulses
+        min: null
+        max: null
+  thermal:
+    label: Thermal Properties
+    description: Heat-related material characteristics including conductivity, expansion, and destruction points
+    percentage: 29.1
+    properties:
+      specificHeat:
+        value: 0.244
+        unit: J/g·K
+        confidence: 91
+        description: Specific heat capacity at 25°C
+        min: 100
+        max: 900
+      thermalConductivity:
+        value: 71.8
+        unit: W/m·K
+        confidence: 92
+        description: Thermal conductivity at 20°C
+        min: 6.0
+        max: 429.0
+      thermalDiffusivity:
+        value: 25.7
+        unit: mm²/s
+        confidence: 88
+        description: Thermal diffusivity at room temperature
+        min: 0.2
+        max: 174
+      thermalExpansion:
+        value: 11.8
+        unit: μm/m·K
+        confidence: 90
+        description: Linear thermal expansion coefficient at 25°C
+        min: 0.5
+        max: 29.1
+      thermalDestruction:
+        point:
+          value: 1828.05
+          unit: K
+          min: -38.8
+          max: 3422
+          confidence: 95
+          description: Thermal destruction point
+        type: melting
+  compositional:
+    label: Compositional Properties
+    description: Material composition characteristics
+    percentage: 5.5
+    properties:
+      crystallineStructure:
+        value: FCC
+        unit: none
+        confidence: 98
+        description: Face-centered cubic crystal structure
+        min: null
+        max: null
+  chemical:
+    label: Chemical Properties
+    description: Chemical reactivity and stability
+    percentage: 5.5
+    properties:
+      oxidationResistance:
+        value: High
+        unit: qualitative
+        confidence: 90
+        description: Excellent oxidation resistance below 400°C
+        min: null
+        max: null
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 0
+    properties:
+      absorptionCoefficient:
+        value: 12000000.0
+        unit: m⁻¹
+        confidence: 82
+        description: Absorption coefficient for Nd:YAG laser (1064 nm)
+        min: null
+        max: null
 applications:
 - Aerospace
 - Electronics
@@ -241,7 +270,8 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Palladium is softer and more prone to oxidation than other precious metals. Its surface requires lower laser power and careful parameter control to prevent melting or discoloration.
+subtitle: Palladium is softer and more prone to oxidation than other precious metals. Its surface requires lower laser power
+  and careful parameter control to prevent melting or discoloration.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -277,8 +307,16 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the palladium surface is obscured by a non-uniform contamination layer, approximately 5-15 micrometers thick. This layer consists of carbonaceous deposits and adsorbed oxides, forming a topographically complex crust. The underlying FCC crystalline structure of the palladium is entirely masked. The contaminant exhibits a cracked, mudflat-like morphology, with particulate inclusions embedded throughout. This layer significantly degrades the metal's intrinsic reflectivity and compromises the surface integrity for functional applications.
-  afterText: Laser cleaning has fully restored the pristine metallic surface. The contamination layer is completely ablated, revealing the underlying grain structure of the palladium substrate. The surface now exhibits minimal micro-roughness and the characteristic high reflectivity (72.5% at 1064 nm) of the pure metal. No thermal damage, such as melting or grain boundary oxidation, is observed, confirming the process remained well below palladium's 1554.9°C melting point. The surface is now optimally prepared for subsequent manufacturing steps.
+  beforeText: At 500x magnification, the palladium surface is obscured by a non-uniform contamination layer, approximately
+    5-15 micrometers thick. This layer consists of carbonaceous deposits and adsorbed oxides, forming a topographically complex
+    crust. The underlying FCC crystalline structure of the palladium is entirely masked. The contaminant exhibits a cracked,
+    mudflat-like morphology, with particulate inclusions embedded throughout. This layer significantly degrades the metal's
+    intrinsic reflectivity and compromises the surface integrity for functional applications.
+  afterText: Laser cleaning has fully restored the pristine metallic surface. The contamination layer is completely ablated,
+    revealing the underlying grain structure of the palladium substrate. The surface now exhibits minimal micro-roughness
+    and the characteristic high reflectivity (72.5% at 1064 nm) of the pure metal. No thermal damage, such as melting or grain
+    boundary oxidation, is observed, confirming the process remained well below palladium's 1554.9°C melting point. The surface
+    is now optimally prepared for subsequent manufacturing steps.
   description: Microscopic analysis of palladium surface before and after laser cleaning treatment
   alt: Microscopic view of palladium surface showing laser cleaning effects
   technicalAnalysis:
