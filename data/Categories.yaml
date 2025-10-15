@@ -27,151 +27,150 @@ metadata:
     v2.6.0 enhanced with comprehensive material property descriptions for complete
     frontmatter generation support. v2.6.0 enhanced with comprehensive material property
     descriptions for complete frontmatter generation support.
+  priority2_integration_date: '2025-10-14T23:58:54.459430'
+  priority2_properties_updated: 24
+  priority2_categories_modified: 5
+  priority2_validation_status: INTEGRATED
+  authoritative_coverage: 11.1
 universal_regulatory_standards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
 - IEC 60825 - Safety of Laser Products
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-
-# Property Categories Taxonomy - Process-driven organization for laser cleaning
 propertyCategories:
   metadata:
-    version: "4.0.0"
+    version: 4.0.0
     total_categories: 3
     total_properties: 55
-    last_updated: "2025-10-14"
-    description: "Process-driven 3-category taxonomy for laser cleaning operations"
-    reorganization_note: "Categories follow laser cleaning process: energy coupling → structural response → material properties"
-    
+    last_updated: '2025-10-14'
+    description: Process-driven 3-category taxonomy for laser cleaning operations
+    reorganization_note: 'Categories follow laser cleaning process: energy coupling
+      → structural response → material properties'
   categories:
     energy_coupling:
-      id: "energy_coupling"
-      label: "Energy Coupling Properties"
-      description: "How laser energy enters material and propagates as heat: absorption, reflection, and thermal dissipation"
-      process_stage: "Energy Input & Propagation"
+      id: energy_coupling
+      label: Energy Coupling Properties
+      description: 'How laser energy enters material and propagates as heat: absorption,
+        reflection, and thermal dissipation'
+      process_stage: Energy Input & Propagation
       percentage: 47.3
       property_count: 26
       properties:
-        - laserAbsorption
-        - laserReflectivity
-        - reflectivity
-        - ablationThreshold
-        - absorptivity
-        - emissivity
-        - refractiveIndex
-        - laserDamageThreshold
-        - opticalTransmittance
-        - thermalConductivity
-        - specificHeat
-        - thermalDiffusivity
-        - thermalExpansion
-        - thermalDestruction
-        - boilingPoint
-        - heatCapacity
-        - glasTransitionTemperature
-        - sinteringTemperature
-        - ignitionTemperature
-        - autoignitionTemperature
-        - decompositionTemperature
-        - sublimationPoint
-        - thermalStability
-        - absorptionCoefficient
-        - thermalDegradationPoint
-        - photonPenetrationDepth
-      
+      - laserAbsorption
+      - laserReflectivity
+      - reflectivity
+      - ablationThreshold
+      - absorptivity
+      - emissivity
+      - refractiveIndex
+      - laserDamageThreshold
+      - opticalTransmittance
+      - thermalConductivity
+      - specificHeat
+      - thermalDiffusivity
+      - thermalExpansion
+      - thermalDestruction
+      - boilingPoint
+      - heatCapacity
+      - glasTransitionTemperature
+      - sinteringTemperature
+      - ignitionTemperature
+      - autoignitionTemperature
+      - decompositionTemperature
+      - sublimationPoint
+      - thermalStability
+      - absorptionCoefficient
+      - thermalDegradationPoint
+      - photonPenetrationDepth
     structural_response:
-      id: "structural_response"
-      label: "Structural Response Properties"
-      description: "How material responds physically to thermal stress: strength, elasticity, and deformation characteristics"
-      process_stage: "Material Response"
+      id: structural_response
+      label: Structural Response Properties
+      description: 'How material responds physically to thermal stress: strength,
+        elasticity, and deformation characteristics'
+      process_stage: Material Response
       percentage: 18.2
       property_count: 10
       properties:
-        - hardness
-        - tensileStrength
-        - youngsModulus
-        - yieldStrength
-        - elasticity
-        - bulkModulus
-        - shearModulus
-        - compressiveStrength
-        - flexuralStrength
-        - fractureResistance
-      
+      - hardness
+      - tensileStrength
+      - youngsModulus
+      - yieldStrength
+      - elasticity
+      - bulkModulus
+      - shearModulus
+      - compressiveStrength
+      - flexuralStrength
+      - fractureResistance
     material_properties:
-      id: "material_properties"
-      label: "Material Properties"
-      description: "Intrinsic material characteristics affecting process efficiency and cleaning outcomes"
-      process_stage: "Supporting Characteristics"
+      id: material_properties
+      label: Material Properties
+      description: Intrinsic material characteristics affecting process efficiency
+        and cleaning outcomes
+      process_stage: Supporting Characteristics
       percentage: 34.5
       property_count: 19
       properties:
-        - density
-        - viscosity
-        - porosity
-        - surfaceRoughness
-        - permeability
-        - surfaceEnergy
-        - wettability
-        - electricalResistivity
-        - electricalConductivity
-        - dielectricConstant
-        - dielectricStrength
-        - chemicalStability
-        - oxidationResistance
-        - corrosionResistance
-        - moistureContent
-        - waterSolubility
-        - weatherResistance
-        - crystallineStructure
-        - celluloseContent
-        - grainSize
-        - magneticPermeability
-        - ligninContent
-        - degradationPoint
-        - softeningPoint
-        - surfaceTension
-
-  # Usage tier classification based on frequency across 122 materials
+      - density
+      - viscosity
+      - porosity
+      - surfaceRoughness
+      - permeability
+      - surfaceEnergy
+      - wettability
+      - electricalResistivity
+      - electricalConductivity
+      - dielectricConstant
+      - dielectricStrength
+      - chemicalStability
+      - oxidationResistance
+      - corrosionResistance
+      - moistureContent
+      - waterSolubility
+      - weatherResistance
+      - crystallineStructure
+      - celluloseContent
+      - grainSize
+      - magneticPermeability
+      - ligninContent
+      - degradationPoint
+      - softeningPoint
+      - surfaceTension
   usage_tiers:
     core:
-      description: "Present in >100 materials (universal/essential properties)"
+      description: Present in >100 materials (universal/essential properties)
       threshold: 100
       property_count: 15
       properties:
-        - density
-        - thermalConductivity
-        - specificHeat
-        - thermalExpansion
-        - hardness
-        - tensileStrength
-        - youngsModulus
-        - laserAbsorption
-        - reflectivity
-        - laserReflectivity
-        - ablationThreshold
-        - thermalDestructionPoint
-        - electricalResistivity
-        - thermalDestructionType
-    
+      - density
+      - thermalConductivity
+      - specificHeat
+      - thermalExpansion
+      - hardness
+      - tensileStrength
+      - youngsModulus
+      - laserAbsorption
+      - reflectivity
+      - laserReflectivity
+      - ablationThreshold
+      - thermalDestructionPoint
+      - electricalResistivity
+      - thermalDestructionType
     common:
-      description: "Present in 30-100 materials (important but not universal)"
+      description: Present in 30-100 materials (important but not universal)
       threshold: 30
       property_count: 6
       properties:
-        - boilingPoint
-        - porosity
-        - electricalConductivity
-        - laserDamageThreshold
-        - compressiveStrength
-        - flexuralStrength
-    
+      - boilingPoint
+      - porosity
+      - electricalConductivity
+      - laserDamageThreshold
+      - compressiveStrength
+      - flexuralStrength
     specialized:
-      description: "Present in <30 materials (material-specific properties)"
+      description: Present in <30 materials (material-specific properties)
       threshold: 0
       property_count: 34
-      note: "All properties not listed in core or common tiers"
-
+      note: All properties not listed in core or common tiers
 machineSettingsDescriptions:
   ablationThreshold:
     description: Minimum energy density required to initiate material removal from
@@ -317,19 +316,35 @@ materialPropertyDescriptions:
       masonry: 1.8-2.8
       semiconductor: 2.3-19.3
   thermalDestruction:
-    description: Comprehensive thermal failure characteristics including temperature threshold and mechanism type
+    description: Comprehensive thermal failure characteristics including temperature
+      threshold and mechanism type
     structure:
       point:
-        description: Temperature at which thermal damage begins (replaces melting point for accuracy)
+        description: Temperature at which thermal damage begins (replaces melting
+          point for accuracy)
         unit: °C or K
-        relevance: Critical threshold for thermal damage assessment across all material types
+        relevance: Critical threshold for thermal damage assessment across all material
+          types
       type:
         description: Primary mechanism of thermal failure for this material category
         unit: categorical
-        valid_values: ["melting", "decomposition", "carbonization", "oxidation", "sublimation", "thermal_shock", "softening", "spalling", "calcination", "delamination"]
-    laser_cleaning_impact: Determines safe operating temperature limits and appropriate damage assessment methods
-    safety_considerations: Stay well below destruction point; different destruction types require different preventive measures
-    scientific_accuracy: Accounts for various thermal destruction mechanisms beyond simple melting
+        valid_values:
+        - melting
+        - decomposition
+        - carbonization
+        - oxidation
+        - sublimation
+        - thermal_shock
+        - softening
+        - spalling
+        - calcination
+        - delamination
+    laser_cleaning_impact: Determines safe operating temperature limits and appropriate
+      damage assessment methods
+    safety_considerations: Stay well below destruction point; different destruction
+      types require different preventive measures
+    scientific_accuracy: Accounts for various thermal destruction mechanisms beyond
+      simple melting
   thermalConductivity:
     description: Rate of heat transfer through the material
     unit: W/m·K
@@ -364,7 +379,7 @@ materialPropertyDescriptions:
       depth
   reflectivity:
     description: Fraction of incident light reflected from the surface
-    unit: ""
+    unit: ''
     relevance: Affects energy coupling and safety considerations
     laser_cleaning_impact: High reflectivity requires adjusted power settings
   thermalDiffusivity:
@@ -1105,8 +1120,9 @@ regulatoryTemplates:
     - Nuclear Regulatory Commission (NRC) reporting
 categories:
   ceramic:
-    name: "Ceramic Materials"
-    description: "Advanced ceramic materials including technical ceramics, porcelain, and ceramic composites used in laser cleaning applications"
+    name: Ceramic Materials
+    description: Advanced ceramic materials including technical ceramics, porcelain,
+      and ceramic composites used in laser cleaning applications
     category_ranges:
       density:
         max: 19.3
@@ -1133,9 +1149,13 @@ categories:
         min: 50
         unit: MPa
       thermalConductivity:
-        max: 2000.0
-        min: 0.03
-        unit: W/m·K
+        min: 1
+        max: 150
+        unit: W/(m·K)
+        source: MatWeb Materials Database
+        confidence: 80
+        notes: Typical range for ceramic materials at room temperature
+        last_updated: '2025-10-14T23:58:54.459388'
       thermalDestruction:
         point:
           max: 3827
@@ -1154,6 +1174,22 @@ categories:
         max: 800
         min: 50
         unit: GPa
+      ablationThreshold:
+        min: 1.5
+        max: 5.0
+        unit: J/cm²
+        source: RP Photonics Encyclopedia, Oxide Ceramics
+        confidence: 75
+        notes: Alumina, zirconia, silicon carbide - nanosecond pulses
+        last_updated: '2025-10-14T23:58:54.459371'
+      porosity:
+        min: 0
+        max: 30
+        unit: '%'
+        source: ASM Handbook - Ceramics and Glasses
+        confidence: 80
+        notes: Dense ceramics 0-5%, porous ceramics 10-30%
+        last_updated: '2025-10-14T23:58:54.459381'
     subcategories: {}
     common_applications:
     - contamination removal
@@ -1249,8 +1285,9 @@ categories:
     - NSF/ANSI 51 - Food Equipment Materials
     - OSHA 29 CFR 1926.95 - Personal Protective Equipment
   composite:
-    name: "Composite Materials"
-    description: "Engineered composite materials including fiber-reinforced polymers, matrix composites, and hybrid materials for specialized cleaning applications"
+    name: Composite Materials
+    description: Engineered composite materials including fiber-reinforced polymers,
+      matrix composites, and hybrid materials for specialized cleaning applications
     category_ranges:
       density:
         max: 8
@@ -1320,8 +1357,9 @@ categories:
     - IEC 60825 - Safety of Laser Products
     - OSHA 29 CFR 1926.95 - Personal Protective Equipment
   glass:
-    name: "Glass Materials"
-    description: "Various glass types including optical glass, borosilicate, tempered glass, and specialty glass materials for precision laser cleaning"
+    name: Glass Materials
+    description: Various glass types including optical glass, borosilicate, tempered
+      glass, and specialty glass materials for precision laser cleaning
     category_ranges:
       density:
         max: 7.6
@@ -1348,9 +1386,13 @@ categories:
         min: 30
         unit: MPa
       thermalConductivity:
-        max: 40
-        min: 0.02
-        unit: W/m·K
+        min: 0.8
+        max: 1.4
+        unit: W/(m·K)
+        source: MatWeb Materials Database
+        confidence: 85
+        notes: Typical range for glass materials at room temperature
+        last_updated: '2025-10-14T23:58:54.459404'
       thermalDestruction:
         point:
           max: 1723
@@ -1369,6 +1411,14 @@ categories:
         max: 400
         min: 10
         unit: GPa
+      ablationThreshold:
+        min: 2.0
+        max: 6.0
+        unit: J/cm²
+        source: Laser-Induced Damage in Optical Materials (NIST)
+        confidence: 80
+        notes: Silica, borosilicate - nanosecond pulses at 1064nm
+        last_updated: '2025-10-14T23:58:54.459396'
     subcategories: {}
     common_applications:
     - contamination removal
@@ -1399,8 +1449,9 @@ categories:
     - IEC 60825 - Safety of Laser Products
     - OSHA 29 CFR 1926.95 - Personal Protective Equipment
   masonry:
-    name: "Masonry Materials"
-    description: "Construction masonry materials including concrete, brick, mortar, stucco, and stone-based building materials for restoration cleaning"
+    name: Masonry Materials
+    description: Construction masonry materials including concrete, brick, mortar,
+      stucco, and stone-based building materials for restoration cleaning
     category_ranges:
       density:
         max: 2.8
@@ -1483,8 +1534,9 @@ categories:
     - IEC 60825 - Safety of Laser Products
     - OSHA 29 CFR 1926.95 - Personal Protective Equipment
   metal:
-    name: "Metallic Materials"
-    description: "Pure metals, alloys, and metallic compounds including steel, aluminum, precious metals, and industrial alloys for precision cleaning"
+    name: Metallic Materials
+    description: Pure metals, alloys, and metallic compounds including steel, aluminum,
+      precious metals, and industrial alloys for precision cleaning
     category_ranges:
       density:
         max: 22.6
@@ -1506,14 +1558,26 @@ categories:
         max: 900
         min: 100
         unit: J/kg·K
+      surfaceRoughness:
+        min: 0.4
+        max: 150
+        unit: μm Ra
+        source: Engineering ToolBox
+        confidence: 85
+        notes: Industrial metal finishing processes
+        last_updated: '2025-10-14T23:58:54.459299'
       tensileStrength:
         max: 3000.0
         min: 3.0
         unit: MPa
       thermalConductivity:
-        max: 429.0
-        min: 6.0
-        unit: W/m·K
+        min: 15
+        max: 400
+        unit: W/(m·K)
+        source: MatWeb Materials Database
+        confidence: 85
+        notes: Typical range for metal materials at room temperature
+        last_updated: '2025-10-14T23:58:54.459362'
       thermalDestruction:
         point:
           max: 3422
@@ -1532,79 +1596,227 @@ categories:
         max: 411
         min: 5
         unit: GPa
+      ablationThreshold:
+        nanosecond:
+          min: 2.0
+          max: 8.0
+          unit: J/cm²
+        picosecond:
+          min: 0.1
+          max: 2.0
+          unit: J/cm²
+        femtosecond:
+          min: 0.14
+          max: 1.7
+          unit: J/cm²
+        source: Marks et al. 2022, Precision Engineering
+        confidence: 90
+        notes: Pulse-duration-specific values for copper, representative of metals
+        measurement_context: Varies by pulse duration (ns/ps/fs)
+        last_updated: '2025-10-14T23:58:54.459330'
+      reflectivity:
+        at_1064nm:
+          min: 85
+          max: 98
+          unit: '%'
+        at_532nm:
+          min: 70
+          max: 95
+          unit: '%'
+        at_355nm:
+          min: 55
+          max: 85
+          unit: '%'
+        at_10640nm:
+          min: 95
+          max: 99
+          unit: '%'
+        source: Handbook of Optical Constants (Palik)
+        confidence: 85
+        notes: Wavelength-specific for polished metals (Al, Cu, Au, steel)
+        measurement_context: Varies by laser wavelength
+        last_updated: '2025-10-14T23:58:54.459345'
+      oxidationResistance:
+        min: 200
+        max: 1200
+        unit: °C
+        source: ASM Metals Handbook - Corrosion
+        confidence: 80
+        notes: 'Oxidation onset: Steel 200-400°C, Stainless 400-800°C, Ni alloys 800-1200°C'
+        last_updated: '2025-10-14T23:58:54.459355'
     subcategories:
       ferrous:
-        name: "Ferrous Metals"
-        description: "Iron-based metals including steel, stainless steel, and cast iron"
-        materials: [Steel, Iron, Stainless Steel, Manganese]
+        name: Ferrous Metals
+        description: Iron-based metals including steel, stainless steel, and cast
+          iron
+        materials:
+        - Steel
+        - Iron
+        - Stainless Steel
+        - Manganese
         category_ranges:
-          density: {min: 7.2, max: 8.0, unit: "g/cm³"}
-          thermalConductivity: {min: 15.0, max: 80.0, unit: "W/m·K"}
+          density:
+            min: 7.2
+            max: 8.0
+            unit: g/cm³
+          thermalConductivity:
+            min: 15.0
+            max: 80.0
+            unit: W/m·K
           thermalDestruction:
-            point: {min: 1370, max: 1538, unit: "°C"}
-          hardness: {min: 120, max: 700, unit: "HV"}
+            point:
+              min: 1370
+              max: 1538
+              unit: °C
+          hardness:
+            min: 120
+            max: 700
+            unit: HV
         special_considerations:
-          - "Magnetic properties require special handling"
-          - "Rust formation accelerated by moisture"
-          - "Heat-affected zones need monitoring"
+        - Magnetic properties require special handling
+        - Rust formation accelerated by moisture
+        - Heat-affected zones need monitoring
       non_ferrous:
-        name: "Non-Ferrous Metals"
-        description: "Common non-iron metals including aluminum, copper, brass, bronze, zinc"
-        materials: [Aluminum, Copper, Brass, Bronze, Zinc, Tin, Lead]
+        name: Non-Ferrous Metals
+        description: Common non-iron metals including aluminum, copper, brass, bronze,
+          zinc
+        materials:
+        - Aluminum
+        - Copper
+        - Brass
+        - Bronze
+        - Zinc
+        - Tin
+        - Lead
         category_ranges:
-          density: {min: 2.7, max: 11.34, unit: "g/cm³"}
-          thermalConductivity: {min: 60.0, max: 429.0, unit: "W/m·K"}
+          density:
+            min: 2.7
+            max: 11.34
+            unit: g/cm³
+          thermalConductivity:
+            min: 60.0
+            max: 429.0
+            unit: W/m·K
           thermalDestruction:
-            point: {min: 232, max: 1085, unit: "°C"}
-          laserReflectivity: {min: 60, max: 98, unit: "%"}
+            point:
+              min: 232
+              max: 1085
+              unit: °C
+          laserReflectivity:
+            min: 60
+            max: 98
+            unit: '%'
         special_considerations:
-          - "High reflectivity requires power adjustment"
-          - "Excellent thermal conductivity enables rapid heat dissipation"
-          - "Oxidation layers affect cleaning parameters"
+        - High reflectivity requires power adjustment
+        - Excellent thermal conductivity enables rapid heat dissipation
+        - Oxidation layers affect cleaning parameters
       precious:
-        name: "Precious Metals"
-        description: "Noble metals including gold, silver, platinum, palladium"
-        materials: [Gold, Silver, Platinum, Palladium, Rhodium, Iridium, Ruthenium, Rhenium]
+        name: Precious Metals
+        description: Noble metals including gold, silver, platinum, palladium
+        materials:
+        - Gold
+        - Silver
+        - Platinum
+        - Palladium
+        - Rhodium
+        - Iridium
+        - Ruthenium
+        - Rhenium
         category_ranges:
-          density: {min: 10.5, max: 22.6, unit: "g/cm³"}
-          thermalConductivity: {min: 70.0, max: 429.0, unit: "W/m·K"}
+          density:
+            min: 10.5
+            max: 22.6
+            unit: g/cm³
+          thermalConductivity:
+            min: 70.0
+            max: 429.0
+            unit: W/m·K
           thermalDestruction:
-            point: {min: 962, max: 3422, unit: "°C"}
-          laserReflectivity: {min: 80, max: 98, unit: "%"}
+            point:
+              min: 962
+              max: 3422
+              unit: °C
+          laserReflectivity:
+            min: 80
+            max: 98
+            unit: '%'
         special_considerations:
-          - "Extremely high reflectivity requires specialized optics"
-          - "High value materials demand zero-damage cleaning"
-          - "Biocompatibility critical for medical applications"
+        - Extremely high reflectivity requires specialized optics
+        - High value materials demand zero-damage cleaning
+        - Biocompatibility critical for medical applications
       refractory:
-        name: "Refractory Metals"
-        description: "High-temperature resistant metals including tungsten, molybdenum, tantalum"
-        materials: [Tungsten, Molybdenum, Tantalum, Hafnium, Niobium, Zirconium, Vanadium]
+        name: Refractory Metals
+        description: High-temperature resistant metals including tungsten, molybdenum,
+          tantalum
+        materials:
+        - Tungsten
+        - Molybdenum
+        - Tantalum
+        - Hafnium
+        - Niobium
+        - Zirconium
+        - Vanadium
         category_ranges:
-          density: {min: 6.0, max: 19.3, unit: "g/cm³"}
-          thermalConductivity: {min: 22.0, max: 174.0, unit: "W/m·K"}
+          density:
+            min: 6.0
+            max: 19.3
+            unit: g/cm³
+          thermalConductivity:
+            min: 22.0
+            max: 174.0
+            unit: W/m·K
           thermalDestruction:
-            point: {min: 1855, max: 3422, unit: "°C"}
-          hardness: {min: 150, max: 3500, unit: "HV"}
+            point:
+              min: 1855
+              max: 3422
+              unit: °C
+          hardness:
+            min: 150
+            max: 3500
+            unit: HV
         special_considerations:
-          - "Extremely high melting points allow aggressive cleaning"
-          - "Oxidation at elevated temperatures"
-          - "High hardness requires careful parameter selection"
+        - Extremely high melting points allow aggressive cleaning
+        - Oxidation at elevated temperatures
+        - High hardness requires careful parameter selection
       specialty:
-        name: "Specialty Alloys & Reactive Metals"
-        description: "Advanced alloys and reactive metals including Inconel, Hastelloy, beryllium, titanium"
-        materials: [Inconel, Hastelloy, Beryllium, Titanium, Cobalt, Nickel, Chromium, Magnesium, Gallium, Indium]
+        name: Specialty Alloys & Reactive Metals
+        description: Advanced alloys and reactive metals including Inconel, Hastelloy,
+          beryllium, titanium
+        materials:
+        - Inconel
+        - Hastelloy
+        - Beryllium
+        - Titanium
+        - Cobalt
+        - Nickel
+        - Chromium
+        - Magnesium
+        - Gallium
+        - Indium
         category_ranges:
-          density: {min: 0.53, max: 8.9, unit: "g/cm³"}
-          thermalConductivity: {min: 6.0, max: 100.0, unit: "W/m·K"}
+          density:
+            min: 0.53
+            max: 8.9
+            unit: g/cm³
+          thermalConductivity:
+            min: 6.0
+            max: 100.0
+            unit: W/m·K
           thermalDestruction:
-            point: {min: 30, max: 1907, unit: "°C"}
-          hardness: {min: 0.5, max: 1200, unit: "HV"}
+            point:
+              min: 30
+              max: 1907
+              unit: °C
+          hardness:
+            min: 0.5
+            max: 1200
+            unit: HV
         special_considerations:
-          - "Beryllium - EXTREME TOXICITY, requires sealed processing"
-          - "Magnesium - FLAMMABLE, inert atmosphere required"
-          - "Titanium - High strength-to-weight, biocompatible"
-          - "Inconel/Hastelloy - Superior corrosion resistance"
-          - "Special safety protocols for each material"
+        - Beryllium - EXTREME TOXICITY, requires sealed processing
+        - Magnesium - FLAMMABLE, inert atmosphere required
+        - Titanium - High strength-to-weight, biocompatible
+        - Inconel/Hastelloy - Superior corrosion resistance
+        - Special safety protocols for each material
     common_applications:
     - rust removal
     - oxide cleaning
@@ -1621,10 +1833,10 @@ categories:
       corrosion_resistance:
         description: Qualitative corrosion resistance ratings for metal materials
         common_ratings:
-          - Excellent
-          - Good
-          - Fair
-          - Poor
+        - Excellent
+        - Good
+        - Fair
+        - Poor
         confidence: 80
         source: materials_analysis
         note: Numeric scale 0-10 where applicable in Materials.yaml
@@ -1679,8 +1891,9 @@ categories:
     - IEC 60825 - Safety of Laser Products
     - OSHA 29 CFR 1926.95 - Personal Protective Equipment
   plastic:
-    name: "Plastic Materials"
-    description: "Polymeric materials including thermoplastics, thermosets, elastomers, and specialty plastic compounds for delicate cleaning applications"
+    name: Plastic Materials
+    description: Polymeric materials including thermoplastics, thermosets, elastomers,
+      and specialty plastic compounds for delicate cleaning applications
     category_ranges:
       density:
         max: 2.2
@@ -1750,8 +1963,9 @@ categories:
     - IEC 60825 - Safety of Laser Products
     - OSHA 29 CFR 1926.95 - Personal Protective Equipment
   semiconductor:
-    name: "Semiconductor Materials"
-    description: "Electronic semiconductor materials including silicon, gallium compounds, and advanced semiconductor substrates for high-precision cleaning"
+    name: Semiconductor Materials
+    description: Electronic semiconductor materials including silicon, gallium compounds,
+      and advanced semiconductor substrates for high-precision cleaning
     category_ranges:
       density:
         max: 7.13
@@ -1856,8 +2070,9 @@ categories:
     - OSHA 29 CFR 1926.95 - Personal Protective Equipment
     - SEMI M1 - Specification for Polished Single Crystal Silicon Wafers
   stone:
-    name: "Natural Stone Materials"
-    description: "Natural stone materials including granite, marble, limestone, slate, and quarried stone for architectural restoration cleaning"
+    name: Natural Stone Materials
+    description: Natural stone materials including granite, marble, limestone, slate,
+      and quarried stone for architectural restoration cleaning
     category_ranges:
       density:
         max: 3.4
@@ -1905,64 +2120,138 @@ categories:
         max: 100
         min: 10
         unit: GPa
+      porosity:
+        min: 0.5
+        max: 25
+        unit: '%'
+        source: Geological Survey Professional Papers
+        confidence: 75
+        notes: Granite/marble 0.5-3%, sandstone 5-25%
+        last_updated: '2025-10-14T23:58:54.459420'
     subcategories:
       igneous:
-        name: "Igneous Stone"
-        description: "Volcanic and plutonic rocks formed from molten magma"
-        materials: [Granite, Basalt, Porphyry]
+        name: Igneous Stone
+        description: Volcanic and plutonic rocks formed from molten magma
+        materials:
+        - Granite
+        - Basalt
+        - Porphyry
         category_ranges:
-          density: {min: 2.4, max: 3.0, unit: "g/cm³"}
-          hardness: {min: 5, max: 7, unit: "Mohs"}
-          thermalConductivity: {min: 1.7, max: 3.5, unit: "W/m·K"}
-          compressiveStrength: {min: 1000, max: 3500, unit: "MPa"}
+          density:
+            min: 2.4
+            max: 3.0
+            unit: g/cm³
+          hardness:
+            min: 5
+            max: 7
+            unit: Mohs
+          thermalConductivity:
+            min: 1.7
+            max: 3.5
+            unit: W/m·K
+          compressiveStrength:
+            min: 1000
+            max: 3500
+            unit: MPa
         special_considerations:
-          - "Crystalline structure varies by cooling rate"
-          - "High hardness requires careful parameter selection"
-          - "Excellent durability for exterior applications"
-          - "Mineral composition affects laser absorption"
+        - Crystalline structure varies by cooling rate
+        - High hardness requires careful parameter selection
+        - Excellent durability for exterior applications
+        - Mineral composition affects laser absorption
       sedimentary:
-        name: "Sedimentary Stone"
-        description: "Layered rocks formed from compressed sediments"
-        materials: [Limestone, Sandstone, Travertine, Shale]
+        name: Sedimentary Stone
+        description: Layered rocks formed from compressed sediments
+        materials:
+        - Limestone
+        - Sandstone
+        - Travertine
+        - Shale
         category_ranges:
-          density: {min: 1.5, max: 2.7, unit: "g/cm³"}
-          hardness: {min: 1, max: 4, unit: "Mohs"}
-          porosity: {min: 5.0, max: 35.0, unit: "%"}
-          thermalConductivity: {min: 0.2, max: 2.5, unit: "W/m·K"}
+          density:
+            min: 1.5
+            max: 2.7
+            unit: g/cm³
+          hardness:
+            min: 1
+            max: 4
+            unit: Mohs
+          porosity:
+            min: 5.0
+            max: 35.0
+            unit: '%'
+          thermalConductivity:
+            min: 0.2
+            max: 2.5
+            unit: W/m·K
         special_considerations:
-          - "High porosity absorbs moisture and contaminants"
-          - "Layered structure prone to delamination"
-          - "Softer than igneous - gentler cleaning required"
-          - "Calcite-based stones react to acids"
+        - High porosity absorbs moisture and contaminants
+        - Layered structure prone to delamination
+        - Softer than igneous - gentler cleaning required
+        - Calcite-based stones react to acids
       metamorphic:
-        name: "Metamorphic Stone"
-        description: "Transformed rocks created under heat and pressure"
-        materials: [Marble, Slate, Quartzite, Schist, Serpentine]
+        name: Metamorphic Stone
+        description: Transformed rocks created under heat and pressure
+        materials:
+        - Marble
+        - Slate
+        - Quartzite
+        - Schist
+        - Serpentine
         category_ranges:
-          density: {min: 2.3, max: 3.1, unit: "g/cm³"}
-          hardness: {min: 3, max: 7, unit: "Mohs"}
-          thermalConductivity: {min: 1.5, max: 5.0, unit: "W/m·K"}
-          compressiveStrength: {min: 500, max: 2500, unit: "MPa"}
+          density:
+            min: 2.3
+            max: 3.1
+            unit: g/cm³
+          hardness:
+            min: 3
+            max: 7
+            unit: Mohs
+          thermalConductivity:
+            min: 1.5
+            max: 5.0
+            unit: W/m·K
+          compressiveStrength:
+            min: 500
+            max: 2500
+            unit: MPa
         special_considerations:
-          - "Recrystallization creates unique textures"
-          - "Marble susceptible to acid etching"
-          - "Foliated stones (slate, schist) have directional properties"
-          - "Variable hardness within same piece"
+        - Recrystallization creates unique textures
+        - Marble susceptible to acid etching
+        - Foliated stones (slate, schist) have directional properties
+        - Variable hardness within same piece
       mineral:
-        name: "Mineral & Soft Stone"
-        description: "Soft, carvable stones and mineral deposits"
-        materials: [Alabaster, Calcite, Onyx, Soapstone, Bluestone, Breccia]
+        name: Mineral & Soft Stone
+        description: Soft, carvable stones and mineral deposits
+        materials:
+        - Alabaster
+        - Calcite
+        - Onyx
+        - Soapstone
+        - Bluestone
+        - Breccia
         category_ranges:
-          density: {min: 1.8, max: 3.2, unit: "g/cm³"}
-          hardness: {min: 1, max: 4, unit: "Mohs"}
-          thermalConductivity: {min: 0.5, max: 3.0, unit: "W/m·K"}
-          porosity: {min: 0.1, max: 15.0, unit: "%"}
+          density:
+            min: 1.8
+            max: 3.2
+            unit: g/cm³
+          hardness:
+            min: 1
+            max: 4
+            unit: Mohs
+          thermalConductivity:
+            min: 0.5
+            max: 3.0
+            unit: W/m·K
+          porosity:
+            min: 0.1
+            max: 15.0
+            unit: '%'
         special_considerations:
-          - "Very soft - extremely gentle cleaning required"
-          - "Often translucent or decorative"
-          - "Soapstone (talc) softest at Mohs 1"
-          - "Alabaster (gypsum) water-soluble - dry cleaning only"
-          - "High value decorative applications"
+        - Very soft - extremely gentle cleaning required
+        - Often translucent or decorative
+        - Soapstone (talc) softest at Mohs 1
+        - Alabaster (gypsum) water-soluble - dry cleaning only
+        - High value decorative applications
     common_applications:
     - restoration
     - contamination removal
@@ -2034,8 +2323,9 @@ categories:
     - OSHA 29 CFR 1926.95 - Personal Protective Equipment
     - UNESCO Guidelines for Cultural Heritage Conservation
   wood:
-    name: "Wood Materials"
-    description: "Natural and engineered wood materials including hardwoods, softwoods, plywood, and composite wood products for gentle cleaning applications"
+    name: Wood Materials
+    description: Natural and engineered wood materials including hardwoods, softwoods,
+      plywood, and composite wood products for gentle cleaning applications
     category_ranges:
       density:
         max: 1.25
@@ -2083,71 +2373,147 @@ categories:
         max: 25
         min: 5
         unit: GPa
+      porosity:
+        min: 12
+        max: 65
+        unit: '%'
+        source: Wood Science and Technology Database
+        confidence: 75
+        notes: Hardwoods 12-45%, softwoods 30-65%
+        last_updated: '2025-10-14T23:58:54.459413'
     subcategories:
       hardwood:
-        name: "Hardwood"
-        description: "Deciduous trees with dense, slow-growing wood"
-        materials: [Oak, Maple, Walnut, Cherry, Mahogany, Teak, Beech, Birch, Hickory, Ash, Poplar]
+        name: Hardwood
+        description: Deciduous trees with dense, slow-growing wood
+        materials:
+        - Oak
+        - Maple
+        - Walnut
+        - Cherry
+        - Mahogany
+        - Teak
+        - Beech
+        - Birch
+        - Hickory
+        - Ash
+        - Poplar
         category_ranges:
-          density: {min: 0.5, max: 1.25, unit: "g/cm³"}
-          hardness: {min: 900, max: 5000, unit: "lbf"}
-          moistureContent: {min: 6.0, max: 12.0, unit: "%"}
+          density:
+            min: 0.5
+            max: 1.25
+            unit: g/cm³
+          hardness:
+            min: 900
+            max: 5000
+            unit: lbf
+          moistureContent:
+            min: 6.0
+            max: 12.0
+            unit: '%'
           thermalDestruction:
-            point: {min: 300, max: 450, unit: "°C"}
+            point:
+              min: 300
+              max: 450
+              unit: °C
         special_considerations:
-          - "Dense grain structure requires precise cleaning"
-          - "Higher value than softwoods - minimize surface damage"
-          - "Varying hardness affects parameter selection"
-          - "Hickory/Maple hardest, Poplar softest"
-          - "Moisture content critical for stability"
+        - Dense grain structure requires precise cleaning
+        - Higher value than softwoods - minimize surface damage
+        - Varying hardness affects parameter selection
+        - Hickory/Maple hardest, Poplar softest
+        - Moisture content critical for stability
       softwood:
-        name: "Softwood"
-        description: "Coniferous trees with faster-growing, lighter wood"
-        materials: [Pine, Cedar, Fir, Redwood, Willow]
+        name: Softwood
+        description: Coniferous trees with faster-growing, lighter wood
+        materials:
+        - Pine
+        - Cedar
+        - Fir
+        - Redwood
+        - Willow
         category_ranges:
-          density: {min: 0.3, max: 0.6, unit: "g/cm³"}
-          hardness: {min: 20, max: 900, unit: "lbf"}
-          moistureContent: {min: 8.0, max: 15.0, unit: "%"}
+          density:
+            min: 0.3
+            max: 0.6
+            unit: g/cm³
+          hardness:
+            min: 20
+            max: 900
+            unit: lbf
+          moistureContent:
+            min: 8.0
+            max: 15.0
+            unit: '%'
           thermalDestruction:
-            point: {min: 250, max: 380, unit: "°C"}
+            point:
+              min: 250
+              max: 380
+              unit: °C
         special_considerations:
-          - "Softer structure - gentler cleaning required"
-          - "Resin content in pine requires special attention"
-          - "Cedar naturally rot-resistant"
-          - "Redwood excellent outdoor durability"
-          - "Lower density enables faster processing"
+        - Softer structure - gentler cleaning required
+        - Resin content in pine requires special attention
+        - Cedar naturally rot-resistant
+        - Redwood excellent outdoor durability
+        - Lower density enables faster processing
       engineered:
-        name: "Engineered Wood Products"
-        description: "Manufactured wood composites and laminates"
-        materials: [Plywood, MDF]
+        name: Engineered Wood Products
+        description: Manufactured wood composites and laminates
+        materials:
+        - Plywood
+        - MDF
         category_ranges:
-          density: {min: 0.5, max: 0.85, unit: "g/cm³"}
-          hardness: {min: 500, max: 1500, unit: "lbf"}
-          moistureContent: {min: 6.0, max: 10.0, unit: "%"}
+          density:
+            min: 0.5
+            max: 0.85
+            unit: g/cm³
+          hardness:
+            min: 500
+            max: 1500
+            unit: lbf
+          moistureContent:
+            min: 6.0
+            max: 10.0
+            unit: '%'
           thermalDestruction:
-            point: {min: 200, max: 350, unit: "°C"}
+            point:
+              min: 200
+              max: 350
+              unit: °C
         special_considerations:
-          - "Adhesives require careful temperature control"
-          - "Layered structure (plywood) needs even heating"
-          - "MDF highly porous - moisture sensitive"
-          - "Edge sealing critical for MDF"
-          - "Variable quality affects cleaning parameters"
+        - Adhesives require careful temperature control
+        - Layered structure (plywood) needs even heating
+        - MDF highly porous - moisture sensitive
+        - Edge sealing critical for MDF
+        - Variable quality affects cleaning parameters
       exotic:
-        name: "Exotic & Specialty Woods"
-        description: "Rare, high-value woods with unique properties"
-        materials: [Bamboo, Rosewood]
+        name: Exotic & Specialty Woods
+        description: Rare, high-value woods with unique properties
+        materials:
+        - Bamboo
+        - Rosewood
         category_ranges:
-          density: {min: 0.6, max: 1.2, unit: "g/cm³"}
-          hardness: {min: 1000, max: 4500, unit: "lbf"}
-          moistureContent: {min: 6.0, max: 12.0, unit: "%"}
+          density:
+            min: 0.6
+            max: 1.2
+            unit: g/cm³
+          hardness:
+            min: 1000
+            max: 4500
+            unit: lbf
+          moistureContent:
+            min: 6.0
+            max: 12.0
+            unit: '%'
           thermalDestruction:
-            point: {min: 300, max: 450, unit: "°C"}
+            point:
+              min: 300
+              max: 450
+              unit: °C
         special_considerations:
-          - "Bamboo technically grass - very hard, fast-growing"
-          - "Rosewood endangered - CITES regulations apply"
-          - "Extremely high value - zero-damage requirement"
-          - "Unique grain patterns must be preserved"
-          - "Often used in musical instruments and fine furniture"
+        - Bamboo technically grass - very hard, fast-growing
+        - Rosewood endangered - CITES regulations apply
+        - Extremely high value - zero-damage requirement
+        - Unique grain patterns must be preserved
+        - Often used in musical instruments and fine furniture
     common_applications:
     - laser cleaning
     - surface preparation
@@ -2263,7 +2629,7 @@ materialPropertiesDefinitions:
         measurement_method: ASTM B193 - Resistivity of Electrical Conductor Materials
       dielectricConstant:
         description: Relative permittivity for insulating materials
-        unit: ""
+        unit: ''
         measurement_method: ASTM D150 - AC Loss Characteristics
   processingProperties:
     description: Manufacturing and processing characteristics

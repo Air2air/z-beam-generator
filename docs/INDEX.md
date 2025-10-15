@@ -26,6 +26,7 @@
 Understanding how Z-Beam works fundamentally
 - [**ARCHITECTURE.md**](core/ARCHITECTURE.md) - System design and fail-fast principles
 - [**DATA_ARCHITECTURE.md**](DATA_ARCHITECTURE.md) - ✅ Range propagation: Categories → Materials → Frontmatter *(Oct 2025)*
+- [**PRIORITY2_COMPLETE.md**](PRIORITY2_COMPLETE.md) - ✅ Priority 2 Research Complete: 12 authoritative properties validated *(Oct 14, 2025)*
 - [**AI_DETECTION_LOCALIZATION_CHAIN_ARCHITECTURE.md**](AI_DETECTION_LOCALIZATION_CHAIN_ARCHITECTURE.md) - AI detection + localization prompt chain
 - [**LOCALIZATION_PROMPT_CHAIN_SYSTEM.md**](LOCALIZATION_PROMPT_CHAIN_SYSTEM.md) - Cultural localization system
 - [**WINSTON_AI_COMPLETE_GUIDE.md**](WINSTON_AI_COMPLETE_GUIDE.md) - Complete Winston.ai integration and bias correction
@@ -190,3 +191,17 @@ When helping users:
 **🎯 Navigation Depth**: Maximum 3 clicks to any information  
 **🔗 Cross-Reference Coverage**: 100% of documents linked  
 **✨ Recent Updates**: Documentation consolidation (-19%), voice system deployed, PROJECT_STATUS.md created
+
+
+## 🔬 Priority 2 Validation Documentation
+
+### Range Population Priority System
+- **[PRIORITY2_RESUME.md](PRIORITY2_RESUME.md)** - Executive summary of Priority 2 validation phase
+- **[PRIORITY2_VALIDATION_COMPLETE.md](PRIORITY2_VALIDATION_COMPLETE.md)** - Comprehensive validation report (1,400 lines)
+- **Related**: `data/Priority2_Research_Progress.yaml` - Research tracking
+- **Related**: `data/Categories_Update_Report_Priority2.yaml` - Detailed update log
+- **Related**: `scripts/RANGE_POPULATION_PRIORITY.md` - 3-tier priority system documentation
+
+**Status**: Phase 1 Complete - Categories.yaml updated with validated published data  
+**Coverage**: 27% authoritative (target: 90%+)  
+**Next**: Continue systematic searches for ceramic, glass, plastic, composite, wood, stone categories

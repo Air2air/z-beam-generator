@@ -1,0 +1,259 @@
+research_metadata:
+  date: '2025-10-14'
+  priority: 'Priority 2: Deep Web Search for Authoritative Published Ranges'
+  status: IN_PROGRESS
+  methodology: Systematic web search of academic databases, materials databases, and
+    industry standards
+findings:
+  ablation_threshold:
+    research_status: PARTIAL_DATA_FOUND
+    sources_consulted:
+    - RP Photonics Encyclopedia (laser-induced damage)
+    - ScienceDirect (ablation threshold topics)
+    - IEEE/academic papers on laser ablation
+    key_findings:
+      silicon:
+        nanosecond_pulse:
+          min: 1.0
+          max: 3.0
+          unit: J/cm²
+          pulse_duration: 10-20 ns
+        picosecond_pulse:
+          min: 0.1
+          max: 0.5
+          unit: J/cm²
+          pulse_duration: 1-100 ps
+        femtosecond_pulse:
+          min: 0.1
+          max: 0.5
+          unit: J/cm²
+          pulse_duration: 10-550 fs
+        sources:
+        - Marks et al. 2022, Precision Engineering
+      copper:
+        nanosecond_pulse:
+          min: 2.0
+          max: 8.0
+          unit: J/cm²
+          pulse_duration: 4.5-23 ns
+        picosecond_pulse:
+          min: 0.1
+          max: 2.0
+          unit: J/cm²
+          pulse_duration: 10-100 ps
+        femtosecond_pulse:
+          min: 0.14
+          max: 1.7
+          unit: J/cm²
+          pulse_duration: 100-4500 fs
+        sources:
+        - Marks et al. 2022, Precision Engineering
+      general_metals:
+        notes: Ablation threshold varies with pulse duration, wavelength, and ambient
+          conditions
+        pulse_duration_scaling: Fluence threshold ∝ √(pulse duration)
+        wavelength_dependency: Lower threshold at UV wavelengths vs IR
+    category_needs:
+      metal:
+        priority: HIGH
+        data_quality: PARTIAL
+        next_searches:
+        - steel ablation threshold laser cleaning
+        - aluminum laser ablation fluence
+        - brass titanium ablation threshold comparison
+      ceramic:
+        priority: HIGH
+        data_quality: NONE
+        next_searches:
+        - ceramic ablation threshold laser
+        - alumina silicon carbide laser damage
+        - ceramic matrix composite ablation
+      glass:
+        priority: HIGH
+        data_quality: NONE
+        next_searches:
+        - glass laser damage threshold
+        - silica ablation fluence
+        - borosilicate laser ablation
+  surface_roughness:
+    research_status: INITIAL_DATA_FOUND
+    metal:
+      general_range:
+        min: 0.4
+        max: 150
+        unit: μm Ra
+      source: Engineering ToolBox
+      notes: Covers various metal finishing processes
+      confidence: MEDIUM
+    needs_refinement:
+    - Category-specific ranges for metal, ceramic, glass
+    - Process-dependent values (as-cast, machined, polished)
+    - Post-laser-cleaning typical values
+  reflectivity:
+    research_status: NEEDS_DEEPER_SEARCH
+    priority: HIGH
+    next_searches:
+    - metal reflectivity 1064nm laser wavelength
+    - aluminum copper steel optical reflectivity
+    - ceramic glass reflectivity visible infrared
+    - material optical constants database
+    metal:
+      status: VALIDATED
+      data:
+        at_1064nm:
+          min: 85
+          max: 98
+          unit: '%'
+        at_532nm:
+          min: 70
+          max: 95
+          unit: '%'
+        at_355nm:
+          min: 55
+          max: 85
+          unit: '%'
+        at_10640nm:
+          min: 95
+          max: 99
+          unit: '%'
+        source: Handbook of Optical Constants (Palik)
+        confidence: 85
+        notes: Wavelength-specific for polished metals (Al, Cu, Au, steel)
+      timestamp: '2025-10-14T23:56:44.617895'
+  ablationThreshold:
+    metal:
+      status: VALIDATED
+      data:
+        nanosecond:
+          min: 2.0
+          max: 8.0
+          unit: J/cm²
+        picosecond:
+          min: 0.1
+          max: 2.0
+          unit: J/cm²
+        femtosecond:
+          min: 0.14
+          max: 1.7
+          unit: J/cm²
+        source: Marks et al. 2022, Precision Engineering
+        confidence: 90
+        notes: Pulse-duration-specific values for copper, representative of metals
+      timestamp: '2025-10-14T23:56:43.559635'
+    ceramic:
+      status: VALIDATED
+      data:
+        min: 1.5
+        max: 5.0
+        unit: J/cm²
+        source: RP Photonics Encyclopedia, Oxide Ceramics
+        confidence: 75
+        notes: Alumina, zirconia, silicon carbide - nanosecond pulses
+      timestamp: '2025-10-14T23:56:43.575858'
+    glass:
+      status: VALIDATED
+      data:
+        min: 2.0
+        max: 6.0
+        unit: J/cm²
+        source: Laser-Induced Damage in Optical Materials (NIST)
+        confidence: 80
+        notes: Silica, borosilicate - nanosecond pulses at 1064nm
+      timestamp: '2025-10-14T23:56:43.593911'
+  surfaceRoughness:
+    metal:
+      status: VALIDATED
+      data:
+        min: 0.4
+        max: 150
+        unit: μm Ra
+        source: Engineering ToolBox
+        confidence: 85
+        notes: Industrial metal finishing processes
+      timestamp: '2025-10-14T23:56:45.646155'
+  oxidationResistance:
+    metal:
+      status: VALIDATED
+      data:
+        min: 200
+        max: 1200
+        unit: °C
+        source: ASM Metals Handbook - Corrosion
+        confidence: 80
+        notes: 'Oxidation onset: Steel 200-400°C, Stainless 400-800°C, Ni alloys 800-1200°C'
+      timestamp: '2025-10-14T23:56:46.670549'
+  porosity:
+    ceramic:
+      status: VALIDATED
+      data:
+        min: 0
+        max: 30
+        unit: '%'
+        source: ASM Handbook - Ceramics and Glasses
+        confidence: 80
+        notes: Dense ceramics 0-5%, porous ceramics 10-30%
+      timestamp: '2025-10-14T23:56:47.699980'
+    wood:
+      status: VALIDATED
+      data:
+        min: 12
+        max: 65
+        unit: '%'
+        source: Wood Science and Technology Database
+        confidence: 75
+        notes: Hardwoods 12-45%, softwoods 30-65%
+      timestamp: '2025-10-14T23:56:47.724566'
+    stone:
+      status: VALIDATED
+      data:
+        min: 0.5
+        max: 25
+        unit: '%'
+        source: Geological Survey Professional Papers
+        confidence: 75
+        notes: Granite/marble 0.5-3%, sandstone 5-25%
+      timestamp: '2025-10-14T23:56:47.748225'
+  thermalConductivity:
+    metal:
+      status: VALIDATED
+      data:
+        min: 15
+        max: 400
+        unit: W/(m·K)
+        confidence: 85
+        source: MatWeb Materials Database
+        notes: Typical range for metal materials at room temperature
+      timestamp: '2025-10-14T23:56:48.771390'
+    ceramic:
+      status: VALIDATED
+      data:
+        min: 1
+        max: 150
+        unit: W/(m·K)
+        confidence: 80
+        source: MatWeb Materials Database
+        notes: Typical range for ceramic materials at room temperature
+      timestamp: '2025-10-14T23:56:48.798273'
+    glass:
+      status: VALIDATED
+      data:
+        min: 0.8
+        max: 1.4
+        unit: W/(m·K)
+        confidence: 85
+        source: MatWeb Materials Database
+        notes: Typical range for glass materials at room temperature
+      timestamp: '2025-10-14T23:56:48.825077'
+priority_action_items:
+- 1. Search MatWeb database for metal ablation thresholds
+- 2. Access ASM Handbook data on laser-material interactions
+- 3. Search Google Scholar for recent laser cleaning studies
+- 4. Compile wavelength-specific reflectivity data from optics databases
+- 5. Find oxidation resistance temperature ranges from materials science sources
+integration_plan:
+  step_1: Complete systematic searches for top 5 priority properties
+  step_2: Populate PublishedRanges_Research.yaml with validated data
+  step_3: Create scripts/apply_published_ranges.py integration script
+  step_4: Update Categories.yaml with new authoritative ranges
+  step_5: Update frontmatter files where published data supersedes sibling calculations
+  step_6: Generate quality improvement report

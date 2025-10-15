@@ -1,0 +1,272 @@
+metal:
+  surfaceRoughness:
+    research_status: DATA_FOUND
+    recommended_range:
+      min: 0.4
+      max: 150
+      unit: μm Ra
+      source: Engineering ToolBox
+      confidence: 85
+      notes: Industrial metal finishing processes
+    last_updated: '2025-10-14T23:56:45.646113'
+  ablationThreshold:
+    research_status: DATA_FOUND
+    recommended_range:
+      nanosecond:
+        min: 2.0
+        max: 8.0
+        unit: J/cm²
+      picosecond:
+        min: 0.1
+        max: 2.0
+        unit: J/cm²
+      femtosecond:
+        min: 0.14
+        max: 1.7
+        unit: J/cm²
+      source: Marks et al. 2022, Precision Engineering
+      confidence: 90
+      notes: Pulse-duration-specific values for copper, representative of metals
+    last_updated: '2025-10-14T23:56:43.559626'
+  reflectivity:
+    research_status: DATA_FOUND
+    recommended_range:
+      at_1064nm:
+        min: 85
+        max: 98
+        unit: '%'
+      at_532nm:
+        min: 70
+        max: 95
+        unit: '%'
+      at_355nm:
+        min: 55
+        max: 85
+        unit: '%'
+      at_10640nm:
+        min: 95
+        max: 99
+        unit: '%'
+      source: Handbook of Optical Constants (Palik)
+      confidence: 85
+      notes: Wavelength-specific for polished metals (Al, Cu, Au, steel)
+    last_updated: '2025-10-14T23:56:44.617870'
+  oxidationResistance:
+    research_status: DATA_FOUND
+    recommended_range:
+      min: 200
+      max: 1200
+      unit: °C
+      source: ASM Metals Handbook - Corrosion
+      confidence: 80
+      notes: 'Oxidation onset: Steel 200-400°C, Stainless 400-800°C, Ni alloys 800-1200°C'
+    last_updated: '2025-10-14T23:56:46.670519'
+  thermalConductivity:
+    research_status: DATA_FOUND
+    recommended_range:
+      min: 15
+      max: 400
+      unit: W/(m·K)
+      confidence: 85
+      source: MatWeb Materials Database
+      notes: Typical range for metal materials at room temperature
+    last_updated: '2025-10-14T23:56:48.771370'
+ceramic:
+  ablationThreshold:
+    research_status: DATA_FOUND
+    recommended_range:
+      min: 1.5
+      max: 5.0
+      unit: J/cm²
+      source: RP Photonics Encyclopedia, Oxide Ceramics
+      confidence: 75
+      notes: Alumina, zirconia, silicon carbide - nanosecond pulses
+    last_updated: '2025-10-14T23:56:43.575845'
+  flexuralStrength:
+    research_status: NEEDS_RESEARCH
+    search_queries_needed:
+    - ceramic flexural strength range MPa typical
+    - oxide ceramics bending strength variation
+    - ASM handbook ceramic mechanical properties
+    recommended_range:
+      status: PLACEHOLDER - NEEDS RESEARCH
+      notes: Current sibling data shows 45 - 3500 MPa, very wide range needs validation
+  porosity:
+    research_status: DATA_FOUND
+    recommended_range:
+      min: 0
+      max: 30
+      unit: '%'
+      source: ASM Handbook - Ceramics and Glasses
+      confidence: 80
+      notes: Dense ceramics 0-5%, porous ceramics 10-30%
+    last_updated: '2025-10-14T23:56:47.699961'
+  thermalConductivity:
+    research_status: DATA_FOUND
+    recommended_range:
+      min: 1
+      max: 150
+      unit: W/(m·K)
+      confidence: 80
+      source: MatWeb Materials Database
+      notes: Typical range for ceramic materials at room temperature
+    last_updated: '2025-10-14T23:56:48.798261'
+glass:
+  refractiveIndex:
+    research_status: NEEDS_RESEARCH
+    search_queries_needed:
+    - glass refractive index range optical
+    - typical n value glasses 589nm
+    - glass optical properties database
+    recommended_range:
+      status: PLACEHOLDER - NEEDS RESEARCH
+      notes: Current sibling data shows 1.458 - 1.76, typical for optical glasses
+  ablationThreshold:
+    research_status: DATA_FOUND
+    recommended_range:
+      min: 2.0
+      max: 6.0
+      unit: J/cm²
+      source: Laser-Induced Damage in Optical Materials (NIST)
+      confidence: 80
+      notes: Silica, borosilicate - nanosecond pulses at 1064nm
+    last_updated: '2025-10-14T23:56:43.593899'
+  thermalConductivity:
+    research_status: DATA_FOUND
+    recommended_range:
+      min: 0.8
+      max: 1.4
+      unit: W/(m·K)
+      confidence: 85
+      source: MatWeb Materials Database
+      notes: Typical range for glass materials at room temperature
+    last_updated: '2025-10-14T23:56:48.825064'
+wood:
+  porosity:
+    research_status: DATA_FOUND
+    recommended_range:
+      min: 12
+      max: 65
+      unit: '%'
+      source: Wood Science and Technology Database
+      confidence: 75
+      notes: Hardwoods 12-45%, softwoods 30-65%
+    last_updated: '2025-10-14T23:56:47.724547'
+  ablationThreshold:
+    research_status: NEEDS_RESEARCH
+    search_queries_needed:
+    - wood laser ablation threshold typical
+    - timber laser processing fluence
+    - wood combustion threshold laser
+stone:
+  compressiveStrength:
+    research_status: NEEDS_RESEARCH
+    search_queries_needed:
+    - stone compressive strength range MPa
+    - natural stone mechanical properties typical
+    - granite marble limestone strength variation
+    recommended_range:
+      status: PLACEHOLDER - NEEDS RESEARCH
+      notes: Current sibling data shows 45 - 250 MPa, reasonable for natural stones
+  porosity:
+    research_status: DATA_FOUND
+    recommended_range:
+      min: 0.5
+      max: 25
+      unit: '%'
+      source: Geological Survey Professional Papers
+      confidence: 75
+      notes: Granite/marble 0.5-3%, sandstone 5-25%
+    last_updated: '2025-10-14T23:56:47.748212'
+composite:
+  degradationPoint:
+    research_status: NEEDS_RESEARCH
+    search_queries_needed:
+    - composite material thermal degradation temperature
+    - fiber reinforced polymer decomposition range
+    - composite resin degradation temperature typical
+semiconductor:
+  bandGap:
+    research_status: NEEDS_RESEARCH
+    search_queries_needed:
+    - semiconductor band gap range eV typical
+    - silicon germanium gallium arsenide band gap
+    - semiconductor optical properties database
+    recommended_range:
+      status: PLACEHOLDER - NEEDS RESEARCH
+      notes: Current sibling data shows 1.03 - 1.424 eV, typical for common semiconductors
+priority_searches:
+  high_priority:
+  - property: surfaceRoughness
+    categories:
+    - metal
+    - ceramic
+    - glass
+    - wood
+    - stone
+    reason: Most commonly queried property, affects laser cleaning effectiveness
+  - property: ablationThreshold
+    categories:
+    - metal
+    - ceramic
+    - glass
+    - wood
+    - stone
+    - plastic
+    reason: Critical for laser parameter selection
+  - property: reflectivity
+    categories:
+    - metal
+    - ceramic
+    - glass
+    reason: Determines laser absorption efficiency
+  medium_priority:
+  - property: oxidationResistance
+    categories:
+    - metal
+    - composite
+  - property: porosity
+    categories:
+    - ceramic
+    - wood
+    - stone
+    - masonry
+  - property: chemicalStability
+    categories:
+    - ceramic
+    - glass
+    - stone
+  low_priority:
+  - property: electricalResistivity
+    categories:
+    - metal
+  - property: refractiveIndex
+    categories:
+    - glass
+    - semiconductor
+    - plastic
+methodology:
+  step_1_academic_databases:
+  - 'Google Scholar: peer-reviewed papers'
+  - 'ResearchGate: research publications'
+  - 'IEEE Xplore: technical papers'
+  step_2_materials_databases:
+  - 'ASM International: metals handbook'
+  - 'MatWeb: comprehensive material properties'
+  - 'NIST: standards data'
+  - 'SpringerMaterials: peer-reviewed data'
+  step_3_industry_standards:
+  - 'ASTM International: testing standards'
+  - 'ISO: international standards'
+  - 'SAE: aerospace/automotive standards'
+  step_4_validation:
+  - Cross-reference multiple sources
+  - Verify units and measurement conditions
+  - Document confidence levels
+  - Note any categorical subdivisions
+notes:
+- This is a working document for collecting published ranges
+- Each property needs minimum 2-3 authoritative sources for validation
+- Ranges should represent the CATEGORY, not individual materials
+- Include measurement conditions (wavelength, pulse duration, etc.) where relevant
+- Prioritize laser-relevant properties over general material properties

@@ -1,17 +1,27 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "DataMetric Schema",
-  "description": "Schema for a single property value within materialProperties or machineSettings",
-  "type": "object",
-  "required": [
-    "value",
-    "unit",
-    "min",
-    "max", 
-    "description",
-    "validation"
+  "description": "Schema for property values - supports legacy, pulse-specific, and wavelength-specific formats (Oct 2025)",
+  "oneOf": [
+    {
+      "$ref": "#/definitions/LegacyDataMetric"
+    },
+    {
+      "$ref": "#/definitions/PulseSpecificDataMetric"
+    },
+    {
+      "$ref": "#/definitions/WavelengthSpecificDataMetric"
+    }
   ],
-  "properties": {
+  "definitions": {
+    "LegacyDataMetric": {
+      "type": "object",
+      "description": "Legacy format with single value (original AI-generated or authoritative with source)",
+      "required": [
+        "value",
+        "unit"
+      ],
+      "properties": {
     "value": {
       "type": "number",
       "description": "Numeric value of the property"

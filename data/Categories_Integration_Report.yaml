@@ -1,0 +1,150 @@
+integration_metadata:
+  timestamp: '2025-10-14T23:58:54.594903'
+  properties_updated: 24
+  categories_modified:
+  - ceramic
+  - glass
+  - metal
+  - stone
+  - wood
+  total_updates: 24
+updates_applied:
+- property: reflectivity
+  category: metal
+  type: wavelength-specific
+  wavelengths:
+  - at_1064nm
+  - at_532nm
+  - at_355nm
+  - at_10640nm
+  confidence: 85
+- property: ablationThreshold
+  category: metal
+  type: pulse-specific
+  regimes:
+  - nanosecond
+  - picosecond
+  - femtosecond
+  confidence: 90
+- property: ablationThreshold
+  category: ceramic
+  range: 1.5-5.0 J/cm²
+  source: RP Photonics Encyclopedia, Oxide Ceramics
+  confidence: 75
+- property: ablationThreshold
+  category: glass
+  range: 2.0-6.0 J/cm²
+  source: Laser-Induced Damage in Optical Materials (NIST)
+  confidence: 80
+- property: surfaceRoughness
+  category: metal
+  range: 0.4-150 μm Ra
+  source: Engineering ToolBox
+  confidence: 85
+- property: oxidationResistance
+  category: metal
+  range: 200-1200 °C
+  source: ASM Metals Handbook - Corrosion
+  confidence: 80
+- property: porosity
+  category: ceramic
+  range: 0-30 %
+  source: ASM Handbook - Ceramics and Glasses
+  confidence: 80
+- property: porosity
+  category: wood
+  range: 12-65 %
+  source: Wood Science and Technology Database
+  confidence: 75
+- property: porosity
+  category: stone
+  range: 0.5-25 %
+  source: Geological Survey Professional Papers
+  confidence: 75
+- property: thermalConductivity
+  category: metal
+  range: 15-400 W/(m·K)
+  source: MatWeb Materials Database
+  confidence: 85
+- property: thermalConductivity
+  category: ceramic
+  range: 1-150 W/(m·K)
+  source: MatWeb Materials Database
+  confidence: 80
+- property: thermalConductivity
+  category: glass
+  range: 0.8-1.4 W/(m·K)
+  source: MatWeb Materials Database
+  confidence: 85
+- property: surfaceRoughness
+  category: metal
+  range: 0.4-150 μm Ra
+  source: Engineering ToolBox
+  confidence: 85
+- property: ablationThreshold
+  category: metal
+  type: pulse-specific
+  regimes:
+  - nanosecond
+  - picosecond
+  - femtosecond
+  confidence: 90
+- property: reflectivity
+  category: metal
+  type: wavelength-specific
+  wavelengths:
+  - at_1064nm
+  - at_532nm
+  - at_355nm
+  - at_10640nm
+  confidence: 85
+- property: oxidationResistance
+  category: metal
+  range: 200-1200 °C
+  source: ASM Metals Handbook - Corrosion
+  confidence: 80
+- property: thermalConductivity
+  category: metal
+  range: 15-400 W/(m·K)
+  source: MatWeb Materials Database
+  confidence: 85
+- property: ablationThreshold
+  category: ceramic
+  range: 1.5-5.0 J/cm²
+  source: RP Photonics Encyclopedia, Oxide Ceramics
+  confidence: 75
+- property: porosity
+  category: ceramic
+  range: 0-30 %
+  source: ASM Handbook - Ceramics and Glasses
+  confidence: 80
+- property: thermalConductivity
+  category: ceramic
+  range: 1-150 W/(m·K)
+  source: MatWeb Materials Database
+  confidence: 80
+- property: ablationThreshold
+  category: glass
+  range: 2.0-6.0 J/cm²
+  source: Laser-Induced Damage in Optical Materials (NIST)
+  confidence: 80
+- property: thermalConductivity
+  category: glass
+  range: 0.8-1.4 W/(m·K)
+  source: MatWeb Materials Database
+  confidence: 85
+- property: porosity
+  category: wood
+  range: 12-65 %
+  source: Wood Science and Technology Database
+  confidence: 75
+- property: porosity
+  category: stone
+  range: 0.5-25 %
+  source: Geological Survey Professional Papers
+  confidence: 75
+next_steps:
+- Regenerate frontmatter files to inherit new ranges
+- Run test_range_quality.py to verify improvements
+- Generate final Priority 2 completion documentation
+- Update PROJECT_STATUS.md with completion metrics
