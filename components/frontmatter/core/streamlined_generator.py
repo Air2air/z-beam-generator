@@ -1237,6 +1237,128 @@ Return YAML format with materialProperties, machineSettings, and structured appl
         
         return None
 
+    def _detect_property_pattern(self, prop_data) -> str:
+        """
+        Detect property data pattern type.
+        
+        PROPERTY DATA PATTERNS (as of Oct 2025):
+        
+        1. LEGACY FORMAT (original AI-generated):
+           {value, unit, confidence, description, min, max}
+        
+        2. PULSE-SPECIFIC (Priority 2 authoritative data):
+           {nanosecond: {min, max, unit}, picosecond: {...}, femtosecond: {...},
+            source, confidence, measurement_context}
+           Used for: ablationThreshold (45 materials)
+        
+        3. WAVELENGTH-SPECIFIC (Priority 2 authoritative data):
+           {at_1064nm: {min, max, unit}, at_532nm: {...}, at_355nm: {...}, at_10640nm: {...},
+            source, confidence, measurement_context}
+           Used for: reflectivity (35 metals)
+        
+        4. AUTHORITATIVE (Priority 2 enhanced legacy):
+           Legacy format + {source, notes, measurement_context}
+           Used for: thermal properties, porosity, oxidation resistance
+        
+        CRITICAL: Generators must preserve patterns 2-4 during regeneration!
+        """
+        if not isinstance(prop_data, dict):
+            return 'simple'
+        
+        # Check for pulse-specific pattern
+        if 'nanosecond' in prop_data or 'picosecond' in prop_data or 'femtosecond' in prop_data:
+            return 'pulse-specific'
+        
+        # Check for wavelength-specific pattern
+        if 'at_1064nm' in prop_data or 'at_532nm' in prop_data or 'at_355nm' in prop_data or 'at_10640nm' in prop_data:
+            return 'wavelength-specific'
+        
+        # Check for authoritative pattern (high confidence with source)
+        if 'source' in prop_data and prop_data.get('confidence', 0) > 85:
+            return 'authoritative'
+        
+        # Check for legacy with source
+        if 'source' in prop_data or 'notes' in prop_data:
+            return 'legacy-sourced'
+        
+        # Standard legacy format
+        return 'legacy'
+
+    def _extract_property_value(self, prop_data, prefer_wavelength: str = '1064nm', prefer_pulse: str = 'nanosecond'):
+        """
+        Extract value from property data, handling multiple formats.
+        
+        Args:
+            prop_data: Property data dictionary or simple value
+            prefer_wavelength: Preferred wavelength for wavelength-specific (default: 1064nm - most common Nd:YAG)
+            prefer_pulse: Preferred pulse duration for pulse-specific (default: nanosecond - most common)
+        
+        Returns:
+            Numeric value suitable for comparisons and calculations
+        """
+        if not isinstance(prop_data, dict):
+            return prop_data
+        
+        pattern = self._detect_property_pattern(prop_data)
+        
+        # Pattern 1: Pulse-specific (nanosecond/picosecond/femtosecond)
+        if pattern == 'pulse-specific':
+            pulse_key = prefer_pulse
+            if pulse_key in prop_data and isinstance(prop_data[pulse_key], dict):
+                pulse_data = prop_data[pulse_key]
+                # Calculate average of min/max
+                min_val = pulse_data.get('min', 0)
+                max_val = pulse_data.get('max', 0)
+                if min_val is not None and max_val is not None:
+                    return (float(min_val) + float(max_val)) / 2
+                return min_val or max_val or 0
+            # Fallback to any available pulse duration
+            for key in ['nanosecond', 'picosecond', 'femtosecond']:
+                if key in prop_data and isinstance(prop_data[key], dict):
+                    pulse_data = prop_data[key]
+                    min_val = pulse_data.get('min', 0)
+                    max_val = pulse_data.get('max', 0)
+                    if min_val is not None and max_val is not None:
+                        return (float(min_val) + float(max_val)) / 2
+        
+        # Pattern 2: Wavelength-specific (at_1064nm/at_532nm/at_355nm/at_10640nm)
+        if pattern == 'wavelength-specific':
+            wavelength_key = f'at_{prefer_wavelength}'
+            if wavelength_key in prop_data and isinstance(prop_data[wavelength_key], dict):
+                wave_data = prop_data[wavelength_key]
+                # Calculate average of min/max
+                min_val = wave_data.get('min', 0)
+                max_val = wave_data.get('max', 0)
+                if min_val is not None and max_val is not None:
+                    return (float(min_val) + float(max_val)) / 2
+                return min_val or max_val or 0
+            # Fallback to any available wavelength
+            for key in ['at_1064nm', 'at_532nm', 'at_355nm', 'at_10640nm']:
+                if key in prop_data and isinstance(prop_data[key], dict):
+                    wave_data = prop_data[key]
+                    min_val = wave_data.get('min', 0)
+                    max_val = wave_data.get('max', 0)
+                    if min_val is not None and max_val is not None:
+                        return (float(min_val) + float(max_val)) / 2
+        
+        # Pattern 3 & 4: Legacy format (with or without source/notes)
+        # Try value field first
+        if 'value' in prop_data:
+            return prop_data['value']
+        
+        # Try min/max average
+        if 'min' in prop_data and 'max' in prop_data:
+            min_val = prop_data.get('min')
+            max_val = prop_data.get('max')
+            if min_val is not None and max_val is not None:
+                try:
+                    return (float(min_val) + float(max_val)) / 2
+                except (ValueError, TypeError):
+                    pass
+        
+        # Fallback to 0
+        return 0
+
     def _get_category_unit(self, material_category: str, prop_key: str) -> Optional[str]:
         """Get unit for property from Categories.yaml enhanced data"""
         try:
@@ -2040,7 +2162,8 @@ Generate exactly two text blocks:
             
             # Check for thermal sensitivity
             if 'thermalConductivity' in props:
-                thermal_val = props['thermalConductivity'].get('value', 0) if isinstance(props['thermalConductivity'], dict) else props['thermalConductivity']
+                # Use pattern-aware extraction
+                thermal_val = self._extract_property_value(props['thermalConductivity'])
                 try:
                     if float(thermal_val) < 10:
                         characteristics.append('thermal-sensitive')
@@ -2049,7 +2172,8 @@ Generate exactly two text blocks:
             
             # Check for reflectivity
             if 'reflectivity' in props and len(characteristics) < 2:
-                reflectivity_val = props['reflectivity'].get('value', 0) if isinstance(props['reflectivity'], dict) else props['reflectivity']
+                # Use pattern-aware extraction (handles wavelength-specific reflectivity)
+                reflectivity_val = self._extract_property_value(props['reflectivity'])
                 try:
                     if float(reflectivity_val) > 0.5:
                         characteristics.append('reflective-surface')
