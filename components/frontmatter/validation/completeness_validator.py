@@ -52,8 +52,8 @@ class CompletenessValidator:
     # Comprehensive essential properties per category
     ESSENTIAL_PROPERTIES = {
         'metal': {
-            # Thermal properties
-            'thermalDestructionPoint', 'meltingPoint', 'thermalConductivity',
+            # Thermal properties (NEW: thermalDestruction replaces thermalDestructionPoint/meltingPoint)
+            'thermalDestruction', 'thermalConductivity',
             # Physical properties
             'density', 'hardness', 'elasticModulus', 'tensileStrength',
             # Optical properties
@@ -79,7 +79,7 @@ class CompletenessValidator:
             'absorptionCoefficient', 'ablationThreshold', 'surfaceRoughness'
         },
         'wood': {
-            'thermalDestructionPoint', 'density', 'thermalConductivity',
+            'thermalDestruction', 'density', 'thermalConductivity',
             'hardness', 'moistureContent', 'reflectivity',
             'absorptionCoefficient', 'ablationThreshold'
         },
@@ -94,7 +94,7 @@ class CompletenessValidator:
             'absorptionCoefficient', 'ablationThreshold', 'surfaceRoughness'
         },
         'semiconductor': {
-            'thermalDestructionPoint', 'thermalConductivity', 'density',
+            'thermalDestruction', 'thermalConductivity', 'density',
             'hardness', 'bandGap', 'reflectivity',
             'absorptionCoefficient', 'ablationThreshold', 'surfaceRoughness'
         },
@@ -225,7 +225,15 @@ class CompletenessValidator:
         
         for category_name, category_data in material_properties.items():
             if isinstance(category_data, dict) and 'properties' in category_data:
-                properties.update(category_data['properties'].keys())
+                for prop_name, prop_data in category_data['properties'].items():
+                    properties.add(prop_name)
+                    
+                    # Handle nested thermalDestruction structure
+                    # thermalDestruction: { point: {...}, type: 'melting' }
+                    if prop_name == 'thermalDestruction' and isinstance(prop_data, dict):
+                        if 'point' in prop_data and isinstance(prop_data['point'], dict):
+                            # Valid nested structure - count as thermalDestruction present
+                            pass
         
         return properties
     
@@ -266,6 +274,18 @@ class CompletenessValidator:
             
             for prop_name, prop_data in category_data['properties'].items():
                 if not isinstance(prop_data, dict):
+                    continue
+                
+                # Handle nested thermalDestruction structure
+                if prop_name == 'thermalDestruction':
+                    if 'point' in prop_data and isinstance(prop_data['point'], dict):
+                        # Check nested point has confidence
+                        if 'confidence' not in prop_data['point']:
+                            unvalidated.append(f"{category_name}.{prop_name}.point")
+                            continue
+                        confidence = prop_data['point'].get('confidence', 0)
+                        if not isinstance(confidence, (int, float)) or confidence <= 0:
+                            unvalidated.append(f"{category_name}.{prop_name}.point")
                     continue
                 
                 # Check for confidence score

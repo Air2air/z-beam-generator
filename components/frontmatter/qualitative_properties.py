@@ -135,6 +135,13 @@ QUALITATIVE_PROPERTIES: Dict[str, QualitativePropertyDefinition] = {
         allowed_values=['ultrafine', 'fine', 'medium', 'coarse', 'very-coarse'],
         description='Grain size classification',
         unit='classification'
+    ),
+    'crystallineStructure': QualitativePropertyDefinition(
+        name='crystallineStructure',
+        category='material_classification',
+        allowed_values=['FCC', 'BCC', 'HCP', 'amorphous', 'cubic', 'hexagonal', 'tetragonal', 'orthorhombic', 'monoclinic', 'triclinic'],
+        description='Crystalline lattice structure type (synonym for crystalStructure)',
+        unit='structure'
     )
 }
 
