@@ -143,13 +143,11 @@ class PreGenerationValidationService:
         all_warnings.extend(categories_result.warnings)
         all_errors.extend(categories_result.errors)
         
-        if categories_result.has_critical_issues and self.fail_fast:
-            return ValidationResult(
-                success=False,
-                validation_type="hierarchical",
-                issues=all_issues,
-                warnings=all_warnings,
-                errors=all_errors
+        # Fail-fast: Always fail on critical issues (per GROK_INSTRUCTIONS.md)
+        if categories_result.has_critical_issues:
+            raise ConfigurationError(
+                f"Categories validation failed with {len(categories_result.errors)} critical issues:\n" +
+                "\n".join(f"  - {e}" for e in categories_result.errors[:5])
             )
         
         # Step 2: Validate Materials.yaml
@@ -158,13 +156,11 @@ class PreGenerationValidationService:
         all_warnings.extend(materials_result.warnings)
         all_errors.extend(materials_result.errors)
         
-        if materials_result.has_critical_issues and self.fail_fast:
-            return ValidationResult(
-                success=False,
-                validation_type="hierarchical",
-                issues=all_issues,
-                warnings=all_warnings,
-                errors=all_errors
+        # Fail-fast: Always fail on critical issues (per GROK_INSTRUCTIONS.md)
+        if materials_result.has_critical_issues:
+            raise MaterialsValidationError(
+                f"Materials validation failed with {len(materials_result.errors)} critical issues:\n" +
+                "\n".join(f"  - {e}" for e in materials_result.errors[:5])
             )
         
         # Step 3: Validate Frontmatter files
@@ -1096,13 +1092,11 @@ class PreGenerationValidationService:
         all_warnings.extend(hierarchical_result.warnings)
         all_errors.extend(hierarchical_result.errors)
         
-        if hierarchical_result.has_critical_issues and self.fail_fast:
-            return ValidationResult(
-                success=False,
-                validation_type="comprehensive",
-                issues=all_issues,
-                warnings=all_warnings,
-                errors=all_errors
+        # Fail-fast: Always fail on critical issues (per GROK_INSTRUCTIONS.md)
+        if hierarchical_result.has_critical_issues:
+            raise MaterialsValidationError(
+                f"Hierarchical validation failed with {len(hierarchical_result.errors)} critical issues:\n" +
+                "\n".join(f"  - {e}" for e in hierarchical_result.errors[:5])
             )
         
         # Load materials for per-material validation

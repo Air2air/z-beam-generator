@@ -27,10 +27,18 @@ import re
 import yaml
 from typing import Dict, Optional
 
-from generators.component_generators import APIComponentGenerator, ComponentResult, GenerationError
+from generators.component_generators import APIComponentGenerator, ComponentResult
 from components.frontmatter.ordering.field_ordering_service import FieldOrderingService
 from components.frontmatter.core.validation_helpers import ValidationHelpers
 from components.frontmatter.research.property_value_researcher import PropertyValueResearcher
+
+# Import unified exception classes from validation system
+from validation.errors import (
+    PropertyDiscoveryError,
+    ConfigurationError,
+    MaterialDataError,
+    GenerationError
+)
 
 # Optional: Property categorizer for analysis and validation
 try:
@@ -39,19 +47,6 @@ try:
 except ImportError:
     PROPERTY_CATEGORIZER_AVAILABLE = False
     get_property_categorizer = None
-
-
-class PropertyDiscoveryError(Exception):
-    """Raised when property discovery fails - no fallbacks allowed per GROK_INSTRUCTIONS.md"""
-    pass
-
-class ConfigurationError(Exception):
-    """Raised when required configuration data is missing - fail-fast per GROK_INSTRUCTIONS.md"""
-    pass
-
-class MaterialDataError(Exception):
-    """Raised when required material data is missing - fail-fast per GROK_INSTRUCTIONS.md"""
-    pass
 
 logger = logging.getLogger(__name__)
 
