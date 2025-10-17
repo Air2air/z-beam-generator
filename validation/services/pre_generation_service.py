@@ -3,13 +3,17 @@
 Pre-Generation Validation Service
 
 Unified pre-generation validation service consolidating:
-- comprehensive_validation_agent.py
+- comprehensive_validation_agent.py logic (property, relationship, category validation)
 - fail_fast_materials_validator.py  
 - materials_validator.py
 - material_data_gap_analyzer.py
 - analyze_ratio_errors.py
 
 STRICT FAIL-FAST ARCHITECTURE - ZERO TOLERANCE for mocks/fallbacks
+Per GROK_INSTRUCTIONS.md:
+- CRITICAL/ERROR severity: System MUST fail immediately
+- No optional validation - all checks are required
+- No degraded operation modes
 """
 
 import yaml
@@ -22,70 +26,33 @@ from collections import defaultdict
 import math
 import logging
 
+# Import unified error types
+from validation.errors import (
+    ValidationError as VError,
+    ValidationResult,
+    ErrorSeverity,
+    ErrorType,
+    ConfigurationError,
+    MaterialsValidationError
+)
+
+# Import validation rules from comprehensive_validation_agent
+from scripts.validation.comprehensive_validation_agent import (
+    PropertyRule,
+    RelationshipRule,
+    CategoryRule,
+    PROPERTY_RULES,
+    RELATIONSHIP_RULES,
+    CATEGORY_RULES,
+    QUALITATIVE_ONLY_PROPERTIES
+)
+
 logger = logging.getLogger(__name__)
 
 
 # ============================================================================
-# VALIDATION RULES DATABASE (from comprehensive_validation_agent.py)
+# GAP ANALYSIS RESULT
 # ============================================================================
-
-@dataclass
-class PropertyRule:
-    """Validation rules for a specific property"""
-    property_name: str
-    unit: str
-    min_value: Optional[float] = None
-    max_value: Optional[float] = None
-    allowed_units: List[str] = field(default_factory=list)
-    category_specific_ranges: Dict[str, Tuple[float, float]] = field(default_factory=dict)
-    formula_dependencies: List[str] = field(default_factory=list)
-    validation_function: Optional[str] = None
-    physical_constraints: List[str] = field(default_factory=list)
-    typical_values: Dict[str, float] = field(default_factory=dict)
-    measurement_method: Optional[str] = None
-    confidence_threshold: int = 70
-
-
-@dataclass
-class RelationshipRule:
-    """Rules for relationships between properties"""
-    name: str
-    properties: List[str]
-    relationship_type: str
-    formula: Optional[str] = None
-    expected_ratio_range: Optional[Tuple[float, float]] = None
-    tolerance_percent: float = 20.0
-    applies_to_categories: List[str] = field(default_factory=list)
-
-
-@dataclass
-class CategoryRule:
-    """Validation rules for material categories"""
-    category_name: str
-    required_properties: List[str]
-    optional_properties: List[str]
-    forbidden_properties: List[str]
-    typical_property_ranges: Dict[str, Tuple[float, float]]
-
-
-@dataclass
-class ValidationResult:
-    """Result of validation operation"""
-    success: bool
-    validation_type: str
-    issues: List[Dict[str, Any]] = field(default_factory=list)
-    warnings: List[Dict[str, Any]] = field(default_factory=list)
-    errors: List[Dict[str, Any]] = field(default_factory=list)
-    timestamp: str = field(default_factory=lambda: datetime.now().isoformat())
-    
-    @property
-    def has_critical_issues(self) -> bool:
-        return len(self.errors) > 0
-    
-    @property
-    def has_warnings(self) -> bool:
-        return len(self.warnings) > 0
-
 
 @dataclass
 class GapAnalysisResult:
@@ -99,15 +66,6 @@ class GapAnalysisResult:
     completion_percentage: float
 
 
-# Import property rules from comprehensive_validation_agent
-from scripts.validation.comprehensive_validation_agent import (
-    PROPERTY_RULES,
-    RELATIONSHIP_RULES,
-    CATEGORY_RULES,
-    QUALITATIVE_ONLY_PROPERTIES
-)
-
-
 # ============================================================================
 # PRE-GENERATION VALIDATION SERVICE
 # ============================================================================
@@ -118,29 +76,50 @@ class PreGenerationValidationService:
     
     Consolidates validation logic from multiple scripts into single service.
     Enforces strict fail-fast architecture per GROK_INSTRUCTIONS.md.
+    
+    ZERO TOLERANCE:
+    - No optional validation (all checks are required)
+    - No degraded operation modes  
+    - CRITICAL/ERROR severity = immediate failure
     """
     
-    def __init__(self, data_dir: Path = None, fail_fast: bool = True):
+    def __init__(self, data_dir: Path = None):
         """
         Initialize validation service.
         
         Args:
             data_dir: Root directory for data files
-            fail_fast: If True, fail immediately on critical errors (always True per GROK_INSTRUCTIONS)
+        
+        Raises:
+            ConfigurationError: If required files are missing
         """
         self.data_dir = data_dir or Path(".")
-        self.fail_fast = True  # ALWAYS True per GROK_INSTRUCTIONS.md
         
         self.frontmatter_dir = self.data_dir / "content" / "components" / "frontmatter"
         self.categories_file = self.data_dir / "data" / "Categories.yaml"
         self.materials_file = self.data_dir / "data" / "Materials.yaml"
         
-        # Validation state
+        # Validate required files exist (fail-fast)
+        if not self.categories_file.exists():
+            raise ConfigurationError(
+                f"Categories.yaml not found at {self.categories_file}. "
+                "This file is required for validation. "
+                "Ensure data/Categories.yaml exists."
+            )
+        
+        if not self.materials_file.exists():
+            raise ConfigurationError(
+                f"Materials.yaml not found at {self.materials_file}. "
+                "This file is required for validation. "
+                "Ensure data/Materials.yaml exists."
+            )
+        
+        # Load validation rules from comprehensive_validation_agent
         self.property_rules = PROPERTY_RULES
         self.relationship_rules = RELATIONSHIP_RULES
         self.category_rules = CATEGORY_RULES
         
-        logger.info("✅ PreGenerationValidationService initialized (fail-fast mode)")
+        logger.info("✅ PreGenerationValidationService initialized (strict fail-fast mode)")
     
     # ========================================================================
     # HIERARCHICAL VALIDATION (Categories → Materials → Frontmatter)
