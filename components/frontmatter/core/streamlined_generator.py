@@ -965,72 +965,39 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             self.logger.error(f"Machine settings research failed for {material_name}: {e}")
             raise PropertyDiscoveryError(f"Cannot generate machineSettings for {material_name}: {e}")
 
+    # ============================================================================
+    # DEPRECATED METHODS - Now handled by PropertyProcessor
+    # Kept for backward compatibility, will be removed in Step 5
+    # ============================================================================
+
     def _create_datametrics_property(self, material_value, prop_key: str, material_category: str = 'metal') -> Dict:
-        """Create DataMetrics structure with research-based Min/Max ranges"""
-        # Extract numeric value and unit
-        numeric_value = self._extract_numeric_only(material_value)
-        if numeric_value is None:
-            return None
-        
-        # Get unit from Categories.yaml first, then extraction from material_value - FAIL-FAST: no empty fallbacks
-        unit = self._get_category_unit(material_category, prop_key)
-        if not unit:
-            unit = self._extract_unit(material_value)
-        if not unit:
-            raise ValueError(f"No unit found for property '{prop_key}' in material '{material_category}' - GROK requires explicit unit data")
-        
-        # Get research-based ranges for this property and material category
-        min_val, max_val = self._get_research_based_range(prop_key, material_category, numeric_value)
-        
-        # FAIL-FAST: No default confidence - must be calculated from data quality
-        confidence = self._calculate_property_confidence(prop_key, material_category, numeric_value)
-        
-        # Create basic DataMetrics structure
-        property_data = {
-            'value': numeric_value,
-            'unit': unit,
-            'confidence': confidence,
-            'description': f'{prop_key} property',
-            'min': min_val,
-            'max': max_val
-        }
-        
-        return property_data
+        """
+        DEPRECATED: Use PropertyProcessor.create_datametrics_property() instead.
+        This method is no longer used internally and will be removed in Step 5.
+        """
+        self.logger.warning("DEPRECATED: _create_datametrics_property() - Use PropertyProcessor instead")
+        return self.property_processor.create_datametrics_property(material_value, prop_key, material_category)
 
     def _calculate_property_confidence(self, prop_key: str, material_category: str, numeric_value: float) -> float:
-        """Calculate confidence based on data quality - FAIL-FAST: no defaults allowed."""
-        # Base confidence from data source
-        if hasattr(self, 'property_researcher') and self.property_researcher:
-            # Research-backed values get higher confidence
-            base_confidence = 0.90
-        elif self._has_category_data(material_category, prop_key):
-            # Category-based values get medium confidence
-            base_confidence = 0.75
-        else:
-            # FAIL-FAST: If no data source, we shouldn't have gotten this far
-            raise ValueError(f"No data source found for property '{prop_key}' - GROK requires explicit data backing")
-        
-        # Adjust based on numeric value reasonableness (if value seems extreme, reduce confidence)
-        if numeric_value <= 0:
-            # Non-positive values are suspicious for most physical properties
-            confidence_adjustment = -0.10
-        else:
-            confidence_adjustment = 0.0
-            
-        final_confidence = max(0.1, min(1.0, base_confidence + confidence_adjustment))
-        return round(final_confidence, 2)
+        """
+        DEPRECATED: Confidence calculation now handled by PropertyProcessor.
+        This method is kept for backward compatibility only.
+        """
+        self.logger.warning("DEPRECATED: _calculate_property_confidence() - Use PropertyProcessor instead")
+        # Delegate to PropertyProcessor's internal method
+        return self.property_processor._calculate_property_confidence(prop_key, material_category, numeric_value)
 
     def _has_category_data(self, material_category: str, prop_key: str) -> bool:
-        """Check if we have category-specific data for this property."""
-        try:
-            if material_category not in self.categories_data:
-                return False
-            category_data = self.categories_data[material_category]
-            if 'properties' not in category_data:
-                return False
-            return prop_key in category_data['properties']
-        except Exception:
-            return False
+        """
+        DEPRECATED: Category data checking now handled by PropertyProcessor.
+        This method is kept for backward compatibility only.
+        """
+        self.logger.warning("DEPRECATED: _has_category_data() - Use PropertyProcessor instead")
+        return self.property_processor._has_category_data(material_category, prop_key)
+    
+    # ============================================================================
+    # END DEPRECATED PROPERTY PROCESSING METHODS
+    # ============================================================================
     
     def _update_categories_yaml_with_range(self, category: str, property_name: str, range_data: Dict) -> None:
         """
