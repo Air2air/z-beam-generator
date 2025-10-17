@@ -24,6 +24,20 @@ materialProperties:
         description: Typical hardness for hardened tool steel (Rockwell C scale)
         min: 0.5
         max: 3500
+      oxidationResistance:
+        value: 550
+        unit: °C
+        confidence: 86
+        description: Maximum temperature for significant oxidation resistance in air
+        min: 200
+        max: 1200
+      corrosionResistance:
+        value: moderate
+        unit: qualitative
+        confidence: 85
+        description: General corrosion resistance in atmospheric conditions
+        min: 1
+        max: 10
       tensileStrength:
         value: 2200
         unit: MPa
@@ -38,13 +52,6 @@ materialProperties:
         description: Elastic modulus for tool steel at room temperature
         min: 5
         max: 600
-      oxidationResistance:
-        value: 550
-        unit: °C
-        confidence: 86
-        description: Maximum temperature for significant oxidation resistance in air
-        min: 200
-        max: 1200
       surfaceRoughness:
         value: 0.8
         unit: μm Ra
@@ -52,21 +59,6 @@ materialProperties:
         description: Typical surface roughness for machined tool steel surfaces
         min: 0.4
         max: 150
-      corrosionResistance:
-        value: moderate
-        unit: qualitative
-        confidence: 85
-        description: Moderate corrosion resistance depending on alloying elements
-        min: null
-        max: null
-      crystallineStructure:
-        value: BCC
-        unit: none
-        confidence: 95
-        description: Body-centered cubic structure (martensitic) for hardened tool
-          steel
-        min: null
-        max: null
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -94,20 +86,6 @@ materialProperties:
         description: Thermal conductivity at room temperature for hardened tool steel
         min: 7.0
         max: 430
-      specificHeat:
-        value: 460
-        unit: J/kg·K
-        confidence: 87
-        description: Specific heat capacity at room temperature
-        min: 100
-        max: 2000
-      thermalExpansion:
-        value: 12.5
-        unit: μm/m·°C
-        confidence: 85
-        description: Coefficient of thermal expansion at 20-100°C range
-        min: 0.5
-        max: 33
       thermalDiffusivity:
         value: 6.9
         unit: mm²/s
@@ -115,6 +93,20 @@ materialProperties:
         description: Thermal diffusivity calculated from thermal properties
         min: 0.06
         max: 174
+      thermalExpansion:
+        value: 12.5
+        unit: μm/m·°C
+        confidence: 85
+        description: Coefficient of thermal expansion at 20-100°C range
+        min: 0.5
+        max: 33
+      specificHeat:
+        value: 460
+        unit: J/kg·K
+        confidence: 87
+        description: Specific heat capacity at room temperature
+        min: 100
+        max: 2000
       reflectivity:
         value: 65
         unit: '%'
@@ -124,10 +116,37 @@ materialProperties:
         min: null
         max: null
       ablationThreshold:
-        value: 2.5
+        value: 2.8
         unit: J/cm²
-        confidence: 88
-        description: Laser ablation threshold for nanosecond pulses
+        confidence: 82
+        description: Estimated laser ablation threshold for nanosecond pulses at 1064
+          nm
+        min: null
+        max: null
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 0
+    properties:
+      thermalDestructionPoint:
+        value: 1673.0
+        unit: K
+        confidence: 94
+        description: thermalDestructionPoint from Materials.yaml
+        min: null
+        max: null
+      thermalDestructionType:
+        value: melting
+        unit: type
+        confidence: 99
+        description: thermalDestructionType from Materials.yaml
+        min: null
+        max: null
+      meltingPoint:
+        value: 1425
+        unit: °C
+        confidence: 90
+        description: Average melting point for common tool steel compositions
         min: null
         max: null
       absorptionCoefficient:
@@ -137,11 +156,12 @@ materialProperties:
         description: Optical absorption coefficient for near-IR laser wavelengths
         min: null
         max: null
-      thermalDestruction:
-        value: 1673.0
-        unit: K
-        confidence: 94
-        description: Thermal destruction/melting point temperature
+      crystallineStructure:
+        value: BCC
+        unit: none
+        confidence: 95
+        description: Body-centered cubic structure (martensitic) for hardened tool
+          steel
         min: null
         max: null
 applications:
@@ -311,27 +331,18 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: 'At 500x magnification, the tool steel surface is obscured by a complex
-    layer of contamination. A carbon-rich residue, from lubricant breakdown and heat
-    exposure, forms a discontinuous, sooty film measuring 5-15 micrometers thick.
-    This layer is punctuated by embedded metallic smears and microscopic oxide particles.
-
-
-    The underlying steel''s microstructure is entirely hidden. The surface texture
-    is irregular and matte, with contamination filling the natural micro-valleys of
-    the metal. This layer creates a physical barrier that can interfere with subsequent
-    processes like coating adhesion or precision measurement, and its uneven thickness
-    indicates inconsistent prior surface conditions.'
-  afterText: 'Laser cleaning has completely removed the contamination layer, revealing
-    the pristine, unaltered tool steel substrate. The surface now exhibits a uniform,
-    light gray, matte finish with a consistent micro-texture. The laser process has
-    selectively ablated contaminants without damaging the underlying metal.
-
-
-    At 500x, the steel''s inherent grain structure and fine machining marks are now
-    clearly visible. The surface is free of residue, exposing a clean, metallurgically
-    intact surface with a peak-to-valley roughness typically under 0.5 micrometers.
-    This state provides an optimal foundation for further manufacturing operations.'
+  beforeText: At 500x magnification, the tool steel surface is obscured by a complex
+    contamination layer. A carbon-rich oxide scale, approximately 5-15 micrometers
+    thick, forms a brittle, fractured crust. Embedded within this matrix are fine
+    particulate contaminants, including silica dust and residual lubricants, which
+    fill the micro-valleys of the original surface texture. This layer completely
+    masks the underlying steel's grain structure and micro-features.
+  afterText: Following laser cleaning, the surface reveals the tool steel's inherent
+    metallurgical structure. The contaminant layer is entirely removed, exposing a
+    clean, micro-rough surface with a distinct grain boundary pattern. The underlying
+    machining marks or mill finish are now fully visible, free of embedded particulates.
+    This results in a surface defined by its base metal topography, with no chemical
+    or physical alteration to the steel substrate.
   description: Microscopic analysis of tool steel surface before and after laser cleaning
     treatment
   alt: Microscopic view of tool steel surface showing laser cleaning effects
