@@ -2055,45 +2055,23 @@ categories:
         min: 5
         unit: GPa
       ablationThreshold:
-        nanosecond:
-          min: 2.0
-          max: 8.0
-          unit: J/cm²
-        picosecond:
-          min: 0.1
-          max: 2.0
-          unit: J/cm²
-        femtosecond:
-          min: 0.14
-          max: 1.7
-          unit: J/cm²
+        min: 2.0
+        max: 8.0
+        unit: J/cm²
         source: Marks et al. 2022, Precision Engineering
         confidence: 90
-        notes: Pulse-duration-specific values for copper, representative of metals
-        measurement_context: Varies by pulse duration (ns/ps/fs)
-        last_updated: '2025-10-14T23:58:54.459330'
+        notes: Nanosecond pulse range for metals (most common industrial laser cleaning)
+        measurement_context: Nanosecond pulses (picosecond 0.1-2.0, femtosecond 0.14-1.7)
+        last_updated: '2025-10-17T00:00:00.000000'
       reflectivity:
-        at_1064nm:
-          min: 85
-          max: 98
-          unit: '%'
-        at_532nm:
-          min: 70
-          max: 95
-          unit: '%'
-        at_355nm:
-          min: 55
-          max: 85
-          unit: '%'
-        at_10640nm:
-          min: 95
-          max: 99
-          unit: '%'
+        min: 85
+        max: 98
+        unit: '%'
         source: Handbook of Optical Constants (Palik)
         confidence: 85
-        notes: Wavelength-specific for polished metals (Al, Cu, Au, steel)
-        measurement_context: Varies by laser wavelength
-        last_updated: '2025-10-14T23:58:54.459345'
+        notes: At 1064nm for polished metals (532nm 70-95%, 355nm 55-85%, 10640nm 95-99%)
+        measurement_context: 1064nm wavelength (most common Nd:YAG)
+        last_updated: '2025-10-17T00:00:00.000000'
       oxidationResistance:
         min: 200
         max: 1200

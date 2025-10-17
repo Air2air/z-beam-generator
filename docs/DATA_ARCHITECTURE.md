@@ -21,6 +21,89 @@ The system follows a strict **separation of concerns**:
 
 **Material Variance Handling**: If a material property has an inherent range (e.g., alloy composition variations, grade differences), the value field in materials.yaml MUST contain the **averaged/consolidated single number**. The range information should be documented in the `research_basis` or `validation_method` fields for context, but min/max fields must never be present at the material level.
 
+**VITAL PROPERTY VALIDATION RULE**: If a property is **NOT** defined in Categories.yaml for a given category, it **MUST NOT** be added to any material in that category in materials.yaml. Only properties that exist in the category's definition are permitted in materials. This ensures:
+- Consistency across all materials in a category
+- Generator can properly orchestrate data (no orphaned properties)
+- Schema validation works correctly
+- No undefined property behavior in frontmatter generation
+
+---
+
+## Nested Range Flattening (October 17, 2025)
+
+### Problem: Generator Incompatibility with Nested Structures
+
+Prior to October 17, 2025, some category ranges used **nested structures** that the generator couldn't parse:
+
+**Nested ablationThreshold (DEPRECATED)**:
+```yaml
+ablationThreshold:
+  nanosecond:      # ❌ Nested structure
+    min: 2.0
+    max: 8.0
+    unit: J/cm²
+  picosecond:      # ❌ Nested structure
+    min: 0.1
+    max: 2.0
+    unit: J/cm²
+  # ... etc
+```
+
+**Nested reflectivity (DEPRECATED)**:
+```yaml
+reflectivity:
+  at_1064nm:       # ❌ Nested structure
+    min: 85
+    max: 98
+    unit: '%'
+  at_532nm:        # ❌ Nested structure
+    min: 70
+    max: 95
+    unit: '%'
+  # ... etc
+```
+
+### Solution: Flattened Range Structure
+
+**Flattened ablationThreshold (CURRENT)**:
+```yaml
+ablationThreshold:
+  min: 2.0                    # ✅ Direct min/max
+  max: 8.0                    # ✅ Direct min/max
+  unit: J/cm²
+  source: Marks et al. 2022, Precision Engineering
+  confidence: 90
+  notes: Nanosecond pulse range for metals (most common industrial laser cleaning)
+  measurement_context: Nanosecond pulses (picosecond 0.1-2.0, femtosecond 0.14-1.7)
+  last_updated: '2025-10-17T00:00:00.000000'
+```
+
+**Flattened reflectivity (CURRENT)**:
+```yaml
+reflectivity:
+  min: 85                     # ✅ Direct min/max
+  max: 98                     # ✅ Direct min/max
+  unit: '%'
+  source: Handbook of Optical Constants (Palik)
+  confidence: 85
+  notes: At 1064nm for polished metals (532nm 70-95%, 355nm 55-85%, 10640nm 95-99%)
+  measurement_context: 1064nm wavelength (most common Nd:YAG)
+  last_updated: '2025-10-17T00:00:00.000000'
+```
+
+### Key Changes
+
+1. **Primary range**: Uses most common industrial value (nanosecond pulses, 1064nm wavelength)
+2. **Preserved context**: Alternative values documented in `notes` field
+3. **Generator compatible**: Direct `min`/`max` fields at property root level
+4. **No data loss**: All wavelength/pulse duration info retained in notes
+
+### Impact
+
+- ✅ **Before flattening**: Properties with nested ranges showed `min: null, max: null` in frontmatter
+- ✅ **After flattening**: Properties correctly show category ranges in frontmatter
+- ✅ **Example**: Aluminum's `reflectivity` now shows `min: 85, max: 98` instead of null values
+
 ---
 
 ## Data Structure
@@ -392,7 +475,9 @@ materialProperties:
 
 When adding a new property to the system:
 
-1. **Add to Categories.yaml** (if category-wide ranges apply):
+**CRITICAL ORDER - MUST FOLLOW**:
+
+1. **FIRST: Add to Categories.yaml** (define property for ALL relevant categories):
 ```yaml
 categories:
   metal:
@@ -401,12 +486,23 @@ categories:
         min: 0.0
         max: 100.0
         unit: unit_name
+        source: data_source
+        confidence: 85
+        notes: Context about range
+  ceramic:
+    category_ranges:
+      newProperty:
+        min: 0.0
+        max: 50.0
+        unit: unit_name
+        # ... etc
 ```
 
-2. **Add to materials.yaml** (value only, NO min/max):
+2. **SECOND: Add to materials.yaml** (value only, NO min/max, ONLY if property exists in category):
 ```yaml
 materials:
   Copper:
+    category: metal  # ← Property MUST exist in metal category_ranges
     properties:
       newProperty:
         value: 42.5
@@ -416,12 +512,39 @@ materials:
         source: ai_research
 ```
 
+**VALIDATION RULE**: A property can ONLY be added to a material if:
+- ✅ The property exists in Categories.yaml for the material's category
+- ✅ The property uses simple min/max structure (NOT nested)
+- ✅ The material property has ONLY value/unit/confidence (NO min/max)
+
+**REJECTION EXAMPLES**:
+```yaml
+# ❌ WRONG: Adding property not in category definition
+materials:
+  Steel:
+    category: metal
+    properties:
+      customProperty:      # ❌ Not defined in metal.category_ranges
+        value: 100
+        unit: custom
+
+# ❌ WRONG: Adding property with nested ranges to material
+materials:
+  Aluminum:
+    category: metal
+    properties:
+      reflectivity:
+        at_1064nm:          # ❌ Nested structure not allowed in materials
+          value: 92
+```
+
 3. **Generator automatically handles it** - no code changes needed for standard properties
 
-4. **For nested structures** (like thermalDestruction):
-   - Follow the nested pattern in both files
-   - Update `_populate_property()` if special handling needed
-   - Update `_get_category_ranges_for_property()` to handle nesting
+4. **For nested structures in Categories.yaml**:
+   - Flatten to simple min/max (see "Nested Range Flattening" section above)
+   - Store alternative values in `notes` field
+   - Use measurement_context to explain primary range choice
+   - Never use nested structures in materials.yaml
 
 ### Common Pitfalls to Avoid
 
@@ -446,6 +569,30 @@ properties:
     research_basis: "Range for ASTM A48 Class 30: 190-250 HB"
 ```
 
+❌ **DON'T**: Add properties to materials that aren't in Categories.yaml
+```yaml
+# WRONG - property not defined in category
+materials:
+  Steel:
+    category: metal
+    properties:
+      customMetric:       # ❌ NOT in metal.category_ranges!
+        value: 42.0
+        unit: custom
+```
+
+❌ **DON'T**: Use nested structures in materials.yaml
+```yaml
+# WRONG - nested structures only allowed in Categories.yaml (and must be flattened)
+materials:
+  Aluminum:
+    properties:
+      reflectivity:
+        at_1064nm:        # ❌ Nested structure not allowed in materials!
+          value: 92
+          unit: '%'
+```
+
 ✅ **DO**: Add only single values to materials.yaml
 ```yaml
 # CORRECT - exclusive value-only structure
@@ -467,6 +614,32 @@ properties:
     confidence: 95
     research_basis: "ASTM A48 Class 30 gray cast iron hardness range 190-250 HB (1900-2500 HV)"
     validation_method: "Value represents mid-range for typical applications"
+```
+
+✅ **DO**: Only add properties defined in Categories.yaml
+```yaml
+# CORRECT - property exists in metal.category_ranges
+materials:
+  Copper:
+    category: metal
+    properties:
+      thermalConductivity:  # ✅ Defined in Categories.yaml metal ranges
+        value: 401
+        unit: W/(m·K)
+        confidence: 95
+```
+
+✅ **DO**: Use flattened ranges in Categories.yaml
+```yaml
+# CORRECT - simple min/max structure
+categories:
+  metal:
+    category_ranges:
+      reflectivity:
+        min: 85          # ✅ Direct min/max
+        max: 98          # ✅ Direct min/max
+        unit: '%'
+        notes: At 1064nm for polished metals (other wavelengths in notes)
 ```
 
 ---
