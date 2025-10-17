@@ -45,6 +45,9 @@ from validation.errors import (
     GenerationError
 )
 
+# Phase 3.3: Import validation utilities for confidence normalization
+from components.frontmatter.services.validation_utils import ValidationUtils
+
 # Property categorizer for analysis and validation (REQUIRED per fail-fast)
 from utils.core.property_categorizer import get_property_categorizer
 
@@ -600,7 +603,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                         point_structure = {
                             'value': point_data.get('value'),
                             'unit': point_data.get('unit', '°C'),
-                            'confidence': int(point_data.get('confidence', 0) * 100) if point_data.get('confidence', 0) < 1 else int(point_data.get('confidence', 0)),
+                            'confidence': ValidationUtils.normalize_confidence(point_data.get('confidence', 0)),
                             'description': point_data.get('description', 'Thermal destruction point'),
                             'min': None,
                             'max': None
@@ -628,7 +631,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                         properties[prop_name] = {
                             'value': yaml_prop.get('value'),
                             'unit': yaml_prop.get('unit', ''),
-                            'confidence': int(confidence * 100) if confidence < 1 else int(confidence),
+                            'confidence': ValidationUtils.normalize_confidence(confidence),
                             'description': yaml_prop.get('description', f'{prop_name} from Materials.yaml'),
                             'min': None,
                             'max': None

@@ -23,6 +23,9 @@ from typing import Dict, Optional, Callable
 from components.frontmatter.research.property_value_researcher import PropertyValueResearcher
 from validation.errors import PropertyDiscoveryError
 
+# Phase 3.3: Import validation utilities
+from components.frontmatter.services.validation_utils import ValidationUtils
+
 logger = logging.getLogger(__name__)
 
 
@@ -272,7 +275,7 @@ class PropertyResearchService:
             properties[category_field] = {
                 'value': thermal_value,
                 'unit': thermal_unit or '°C',
-                'confidence': int(thermal_confidence * 100) if thermal_confidence < 1 else int(thermal_confidence),
+                'confidence': ValidationUtils.normalize_confidence(thermal_confidence),
                 'description': thermal_description or thermal_info['description'],
                 'min': None,
                 'max': None
