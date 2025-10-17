@@ -25,6 +25,7 @@ Follows GROK fail-fast principles:
 import logging
 import re
 import yaml
+from pathlib import Path
 from typing import Dict, Optional
 
 from generators.component_generators import APIComponentGenerator, ComponentResult
@@ -50,108 +51,50 @@ except ImportError:
 
 logger = logging.getLogger(__name__)
 
-# Abbreviation mappings for standardized naming
-MATERIAL_ABBREVIATIONS = {
-    'Fiber Reinforced Polyurethane FRPU': {
-        'abbreviation': 'FRPU',
-        'full_name': 'Fiber Reinforced Polyurethane'
-    },
-    'Glass Fiber Reinforced Polymers GFRP': {
-        'abbreviation': 'GFRP', 
-        'full_name': 'Glass Fiber Reinforced Polymers'
-    },
-    'Carbon Fiber Reinforced Polymer': {
-        'abbreviation': 'CFRP',
-        'full_name': 'Carbon Fiber Reinforced Polymer'
-    },
-    'Metal Matrix Composites MMCs': {
-        'abbreviation': 'MMCs',
-        'full_name': 'Metal Matrix Composites'
-    },
-    'Ceramic Matrix Composites CMCs': {
-        'abbreviation': 'CMCs', 
-        'full_name': 'Ceramic Matrix Composites'
-    },
-    'MDF': {
-        'abbreviation': 'MDF',
-        'full_name': 'Medium Density Fiberboard'
-    },
-    'Polyvinyl Chloride': {
-        'abbreviation': 'PVC',
-        'full_name': 'Polyvinyl Chloride'
-    },
-    'Polytetrafluoroethylene': {
-        'abbreviation': 'PTFE',
-        'full_name': 'Polytetrafluoroethylene'
-    }
-}
+def _load_frontmatter_config() -> Dict:
+    """
+    Load frontmatter generation configuration from YAML file.
+    Fails fast if configuration file is missing or invalid.
+    
+    Returns:
+        Dict containing material_abbreviations and thermal_property_mapping
+        
+    Raises:
+        ConfigurationError: If configuration file missing or invalid
+    """
+    config_path = Path(__file__).parent.parent.parent.parent / 'config' / 'frontmatter_generation.yaml'
+    
+    if not config_path.exists():
+        raise ConfigurationError(
+            f"Frontmatter configuration not found at {config_path}. "
+            "This file is required for generation. Ensure config/frontmatter_generation.yaml exists."
+        )
+    
+    try:
+        with open(config_path, 'r', encoding='utf-8') as f:
+            config = yaml.safe_load(f)
+        
+        # Validate required sections
+        required_sections = ['material_abbreviations', 'thermal_property_mapping']
+        for section in required_sections:
+            if section not in config:
+                raise ConfigurationError(
+                    f"Configuration missing required section '{section}'. "
+                    f"Check {config_path} for proper structure."
+                )
+        
+        logger.info(f"Loaded frontmatter configuration from {config_path}")
+        return config
+        
+    except yaml.YAMLError as e:
+        raise ConfigurationError(f"Invalid YAML in {config_path}: {e}")
+    except Exception as e:
+        raise ConfigurationError(f"Failed to load configuration from {config_path}: {e}")
 
-# Category-specific thermal property mapping (dual-field approach for backward compatibility)
-THERMAL_PROPERTY_MAP = {
-    'wood': {
-        'field': 'thermalDestructionPoint',
-        'label': 'Decomposition Point',
-        'description': 'Temperature where pyrolysis (thermal decomposition) begins',
-        'scientific_process': 'Pyrolysis',
-        'yaml_field': 'thermalDestructionPoint'  # Field name in Materials.yaml
-    },
-    'ceramic': {
-        'field': 'sinteringPoint',
-        'label': 'Sintering/Decomposition Point',
-        'description': 'Temperature where ceramic particles fuse or decompose',
-        'scientific_process': 'Sintering or Decomposition',
-        'yaml_field': 'thermalDestruction'
-    },
-    'stone': {
-        'field': 'thermalDegradationPoint',
-        'label': 'Thermal Degradation Point',
-        'description': 'Temperature where mineral structure breaks down',
-        'scientific_process': 'Thermal Degradation',
-        'yaml_field': 'thermalDestructionPoint'  # If available
-    },
-    'composite': {
-        'field': 'degradationPoint',
-        'label': 'Degradation Point',
-        'description': 'Temperature where polymer matrix decomposes',
-        'scientific_process': 'Polymer Decomposition',
-        'yaml_field': 'thermalDestructionPoint'
-    },
-    'plastic': {
-        'field': 'degradationPoint',
-        'label': 'Degradation Point',
-        'description': 'Temperature where polymer chains break down',
-        'scientific_process': 'Polymer Decomposition',
-        'yaml_field': 'thermalDestructionPoint'
-    },
-    'glass': {
-        'field': 'softeningPoint',
-        'label': 'Softening Point',
-        'description': 'Temperature where glass transitions from rigid to pliable state',
-        'scientific_process': 'Glass Transition',
-        'yaml_field': 'thermalDestructionPoint'
-    },
-    'metal': {
-        'field': 'meltingPoint',
-        'label': 'Melting Point',
-        'description': 'Temperature where solid metal transitions to liquid phase',
-        'scientific_process': 'Phase Transition',
-        'yaml_field': 'thermalDestruction'  # Now uses nested thermalDestruction
-    },
-    'semiconductor': {
-        'field': 'meltingPoint',
-        'label': 'Melting Point',
-        'description': 'Temperature where crystalline structure melts',
-        'scientific_process': 'Phase Transition',
-        'yaml_field': 'thermalDestruction'  # Now uses nested thermalDestruction
-    },
-    'masonry': {
-        'field': 'thermalDegradationPoint',
-        'label': 'Thermal Degradation Point',
-        'description': 'Temperature where structural integrity fails',
-        'scientific_process': 'Thermal Degradation',
-        'yaml_field': 'thermalDestructionPoint'
-    }
-}
+# Load configuration at module level (fail-fast if config missing)
+_FRONTMATTER_CONFIG = _load_frontmatter_config()
+MATERIAL_ABBREVIATIONS = _FRONTMATTER_CONFIG['material_abbreviations']
+THERMAL_PROPERTY_MAP = _FRONTMATTER_CONFIG['thermal_property_mapping']
 
 # Enhanced schema validation (optional)
 try:

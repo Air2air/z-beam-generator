@@ -1,0 +1,104 @@
+# Frontmatter Generation Configuration
+# Extracted from streamlined_generator.py to enable easier maintenance
+# Last Updated: October 16, 2025
+
+# Material abbreviations for standardized naming
+# Used when generating titles, descriptions, and filenames
+material_abbreviations:
+  'Fiber Reinforced Polyurethane FRPU':
+    abbreviation: FRPU
+    full_name: Fiber Reinforced Polyurethane
+  
+  'Glass Fiber Reinforced Polymers GFRP':
+    abbreviation: GFRP
+    full_name: Glass Fiber Reinforced Polymers
+  
+  'Carbon Fiber Reinforced Polymer':
+    abbreviation: CFRP
+    full_name: Carbon Fiber Reinforced Polymer
+  
+  'Metal Matrix Composites MMCs':
+    abbreviation: MMCs
+    full_name: Metal Matrix Composites
+  
+  'Ceramic Matrix Composites CMCs':
+    abbreviation: CMCs
+    full_name: Ceramic Matrix Composites
+  
+  'MDF':
+    abbreviation: MDF
+    full_name: Medium Density Fiberboard
+  
+  'Polyvinyl Chloride':
+    abbreviation: PVC
+    full_name: Polyvinyl Chloride
+  
+  'Polytetrafluoroethylene':
+    abbreviation: PTFE
+    full_name: Polytetrafluoroethylene
+
+# Category-specific thermal property mapping
+# Maps material categories to their specific thermal destruction properties
+thermal_property_mapping:
+  wood:
+    field: thermalDestructionPoint
+    label: Decomposition Point
+    description: Temperature where pyrolysis (thermal decomposition) begins
+    scientific_process: Pyrolysis
+    yaml_field: thermalDestructionPoint
+  
+  ceramic:
+    field: sinteringPoint
+    label: Sintering/Decomposition Point
+    description: Temperature where ceramic particles fuse or decompose
+    scientific_process: Sintering or Decomposition
+    yaml_field: thermalDestruction
+  
+  stone:
+    field: thermalDegradationPoint
+    label: Thermal Degradation Point
+    description: Temperature where mineral structure breaks down
+    scientific_process: Thermal Degradation
+    yaml_field: thermalDestructionPoint
+  
+  composite:
+    field: degradationPoint
+    label: Degradation Point
+    description: Temperature where polymer matrix decomposes
+    scientific_process: Polymer Decomposition
+    yaml_field: thermalDestructionPoint
+  
+  plastic:
+    field: degradationPoint
+    label: Degradation Point
+    description: Temperature where polymer chains break down
+    scientific_process: Polymer Decomposition
+    yaml_field: thermalDestructionPoint
+  
+  glass:
+    field: softeningPoint
+    label: Softening Point
+    description: Temperature where glass transitions from rigid to pliable state
+    scientific_process: Glass Transition
+    yaml_field: thermalDestructionPoint
+  
+  metal:
+    field: meltingPoint
+    label: Melting Point
+    description: Temperature where solid metal transitions to liquid phase
+    scientific_process: Phase Transition
+    yaml_field: thermalDestruction
+  
+  semiconductor:
+    field: meltingPoint
+    label: Melting Point
+    description: Temperature where crystalline structure melts
+    scientific_process: Phase Transition
+    yaml_field: thermalDestruction
+  
+  masonry:
+    field: thermalDegradationPoint
+    label: Thermal Degradation Point
+    description: Temperature where structural integrity fails
+    scientific_process: Thermal Degradation
+    yaml_field: thermalDestructionPoint
