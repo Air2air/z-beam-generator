@@ -466,13 +466,19 @@ class PreGenerationValidationService:
             
             return result
             
+        except MaterialsValidationError:
+            # Let fail-fast exceptions propagate (per GROK_INSTRUCTIONS.md)
+            raise
         except Exception as e:
+            # Only catch YAML/file errors, not our intentional fail-fast exceptions
             errors.append({
                 "type": "validation_error",
                 "material": material_name,
                 "message": f"Property validation failed: {str(e)}"
             })
-            return ValidationResult(False, "property_rules", issues, warnings, errors)
+            raise MaterialsValidationError(
+                f"Property validation error for {material_name}: {str(e)}"
+            )
     
     def _validate_property_fields(self, material: str, prop_name: str, 
                                   prop_data: Dict) -> List[Dict]:
@@ -645,13 +651,14 @@ class PreGenerationValidationService:
             
             return result
             
+        except MaterialsValidationError:
+            # Let fail-fast exceptions propagate (per GROK_INSTRUCTIONS.md)
+            raise
         except Exception as e:
-            errors.append({
-                "type": "validation_error",
-                "material": material_name,
-                "message": f"Relationship validation failed: {str(e)}"
-            })
-            return ValidationResult(False, "relationships", issues, warnings, errors)
+            # Only catch YAML/file errors, not our intentional fail-fast exceptions
+            raise MaterialsValidationError(
+                f"Relationship validation error for {material_name}: {str(e)}"
+            )
     
     def _validate_optical_energy(self, material: str, category: str, props: Dict) -> List[Dict]:
         """Validate optical energy conservation - delegates to RelationshipValidators"""
@@ -870,13 +877,14 @@ class PreGenerationValidationService:
             
             return result
             
+        except MaterialsValidationError:
+            # Let fail-fast exceptions propagate (per GROK_INSTRUCTIONS.md)
+            raise
         except Exception as e:
-            errors.append({
-                "type": "validation_error",
-                "material": material_name,
-                "message": f"Completeness validation failed: {str(e)}"
-            })
-            return ValidationResult(False, "completeness", issues, warnings, errors)
+            # Only catch YAML/file errors, not our intentional fail-fast exceptions
+            raise MaterialsValidationError(
+                f"Completeness validation error for {material_name}: {str(e)}"
+            )
     
     # ========================================================================
     # UTILITY METHODS
