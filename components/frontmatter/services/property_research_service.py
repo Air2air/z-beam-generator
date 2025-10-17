@@ -26,6 +26,14 @@ from validation.errors import PropertyDiscoveryError
 # Phase 3.3: Import validation utilities
 from components.frontmatter.services.validation_utils import ValidationUtils
 
+# Phase 4: Import qualitative property definitions
+from components.frontmatter.qualitative_properties import (
+    QUALITATIVE_PROPERTIES,
+    is_qualitative_property,
+    get_property_definition,
+    validate_qualitative_value
+)
+
 logger = logging.getLogger(__name__)
 
 
@@ -103,7 +111,13 @@ class PropertyResearchService:
                     self.logger.info(f"Skipping redundant thermalDestructionPoint (thermalDestruction already exists)")
                     continue
                 
-                # Build property structure
+                # REQUIREMENT 1: Check if this is a qualitative property (categorical)
+                if is_qualitative_property(prop_name):
+                    # Skip - qualitative properties handled by research_material_characteristics()
+                    self.logger.debug(f"Skipping qualitative property '{prop_name}' - will be handled by materialCharacteristics research")
+                    continue
+                
+                # Build property structure (quantitative only from here on)
                 property_data = {
                     'value': prop_data['value'],
                     'unit': prop_data['unit'],
@@ -113,14 +127,17 @@ class PropertyResearchService:
                     'max': None
                 }
                 
-                # Check if property value is qualitative (string, not numeric)
-                is_qualitative = isinstance(prop_data['value'], str) and not self._is_numeric_string(prop_data['value'])
+                # Check if property value is qualitative by inspection (backup for undefined qualitative props)
+                is_qualitative_value = isinstance(prop_data['value'], str) and not self._is_numeric_string(prop_data['value'])
                 
-                if is_qualitative:
-                    # Qualitative property - no min/max ranges needed
-                    self.logger.debug(f"Skipping range validation for qualitative property: {prop_name}={prop_data['value']}")
-                    property_data['min'] = None
-                    property_data['max'] = None
+                if is_qualitative_value:
+                    # Discovered qualitative property not in definitions - log warning
+                    self.logger.warning(
+                        f"Discovered qualitative property '{prop_name}' not in QUALITATIVE_PROPERTIES definitions. "
+                        f"Value: {prop_data['value']}. Consider adding to qualitative_properties.py"
+                    )
+                    # Skip this property - should be added to qualitative definitions first
+                    continue
                 else:
                     # Apply category ranges if available
                     if self.get_category_ranges:
@@ -252,6 +269,81 @@ class PropertyResearchService:
             self.logger.error(f"Machine settings research failed for {material_name}: {e}")
             raise PropertyDiscoveryError(
                 f"Failed to research machine settings for {material_name}: {e}"
+            )
+    
+    def research_material_characteristics(
+        self,
+        material_name: str,
+        material_category: str,
+        existing_characteristics: Optional[Dict] = None
+    ) -> Dict[str, Dict]:
+        """
+        Research qualitative material characteristics using AI discovery.
+        
+        Args:
+            material_name: Name of the material
+            material_category: Category (metal, plastic, etc.)
+            existing_characteristics: Characteristics already present (from YAML)
+            
+        Returns:
+            Dict of researched qualitative characteristics organized by category
+            
+        Raises:
+            PropertyDiscoveryError: If research fails
+        """
+        try:
+            existing_characteristics = existing_characteristics or {}
+            discovered = {}
+            
+            # Research each qualitative property
+            for prop_name, prop_def in QUALITATIVE_PROPERTIES.items():
+                # Skip if already present with valid value
+                if prop_name in existing_characteristics:
+                    existing_value = existing_characteristics[prop_name]
+                    if isinstance(existing_value, dict) and 'value' in existing_value:
+                        # Validate against allowedValues
+                        if validate_qualitative_value(prop_name, existing_value['value']):
+                            discovered[prop_name] = existing_value
+                            continue
+                
+                # Use AI to research the characteristic value
+                try:
+                    result = self.property_researcher.discover_property_value(
+                        material_name=material_name,
+                        property_name=prop_name,
+                        material_category=material_category
+                    )
+                    
+                    if result and 'value' in result:
+                        # Validate the discovered value
+                        if validate_qualitative_value(prop_name, result['value']):
+                            discovered[prop_name] = {
+                                'value': result['value'],
+                                'confidence': result.get('confidence', 80),
+                                'description': prop_def.description,
+                                'allowedValues': prop_def.allowed_values,
+                                'unit': prop_def.unit
+                            }
+                            self.logger.info(
+                                f"🎯 Discovered {prop_name}: {result['value']} "
+                                f"(confidence: {result.get('confidence', 80)}%)"
+                            )
+                        else:
+                            self.logger.warning(
+                                f"Invalid value '{result['value']}' for {prop_name}. "
+                                f"Must be one of: {prop_def.allowed_values}"
+                            )
+                except Exception as e:
+                    self.logger.debug(f"Could not discover {prop_name} for {material_name}: {e}")
+                    continue
+            
+            self.logger.info(f"Researched {len(discovered)} material characteristics for {material_name}")
+            return discovered
+            
+        except Exception as e:
+            self.logger.error(f"Material characteristics research failed for {material_name}: {e}")
+            raise PropertyDiscoveryError(
+                f"Failed to research material characteristics for {material_name}: {e}"
             )
     
     def add_category_thermal_property(

@@ -512,6 +512,40 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 
                 # PHASE 4: Separate qualitative and quantitative properties
                 frontmatter['materialProperties'], frontmatter['materialCharacteristics'] = self._separate_qualitative_properties(all_properties)
+                
+                # PHASE 4.1: Research additional qualitative characteristics if needed
+                if self.property_research_service:
+                    try:
+                        material_category = material_data.get('category', 'metal')
+                        existing_chars = {prop: data for cat_data in frontmatter.get('materialCharacteristics', {}).values() 
+                                        if isinstance(cat_data, dict) and 'properties' in cat_data
+                                        for prop, data in cat_data['properties'].items()}
+                        
+                        additional_chars = self.property_research_service.research_material_characteristics(
+                            material_name, material_category, existing_chars
+                        )
+                        
+                        # Merge additional characteristics if any were discovered
+                        if additional_chars:
+                            for prop_name, prop_data in additional_chars.items():
+                                if prop_name in QUALITATIVE_PROPERTIES:
+                                    qual_def = QUALITATIVE_PROPERTIES[prop_name]
+                                    char_category = qual_def.category
+                                    
+                                    if char_category not in frontmatter['materialCharacteristics']:
+                                        cat_metadata = MATERIAL_CHARACTERISTICS_CATEGORIES.get(char_category, {})
+                                        frontmatter['materialCharacteristics'][char_category] = {
+                                            'label': cat_metadata.get('label', char_category.replace('_', ' ').title()),
+                                            'description': cat_metadata.get('description', ''),
+                                            'properties': {}
+                                        }
+                                    
+                                    frontmatter['materialCharacteristics'][char_category]['properties'][prop_name] = prop_data
+                            
+                            self.logger.info(f"Added {len(additional_chars)} researched characteristics for {material_name}")
+                    except Exception as e:
+                        self.logger.warning(f"Could not research additional characteristics: {e}")
+                
                 self.logger.info(f"Separated properties for {material_name}: {len(frontmatter['materialProperties'])} quantitative categories, "
                                f"{len(frontmatter.get('materialCharacteristics', {}))} qualitative categories")
             else:

@@ -16451,14 +16451,6 @@ materials:
         source: ai_research
         research_basis: Gray cast iron melting point range 1150-1250°C (1423-1523K)
         research_date: '2025-10-16T00:00:00.000000'
-      thermalDestructionType:
-        value: melting
-        unit: type
-        confidence: 0.99
-        source: materials_science
-        research_basis: Gray cast iron undergoes melting as primary thermal destruction
-          mechanism at approximately 1200°C
-        research_date: '2025-10-16T18:00:00.000000'
       oxidationResistance:
         value: 750.0
         unit: °C
@@ -16580,15 +16572,6 @@ materials:
         research_basis: Typical as-cast surface roughness for gray iron, Ra value
         research_date: '2025-10-17T00:00:00.000000'
         validation_method: Surface finish standards for cast iron components
-      toxicity:
-        value: Low
-        unit: rating
-        confidence: 0.95
-        source: ai_research
-        research_basis: Cast iron is non-toxic in solid form, minimal health hazards
-          during handling
-        research_date: '2025-10-17T00:00:00.000000'
-        validation_method: OSHA and material safety data for iron alloys
       thermalDestruction:
         point:
           value: 1200.0
@@ -16613,6 +16596,32 @@ materials:
     - 'Manufacturing: Cast components and tooling requiring contamination removal'
     - 'Heavy Machinery: Equipment parts needing oxide and rust removal'
     - 'Construction: Structural components requiring surface preparation'
+    materialCharacteristics:
+      safety_handling:
+        label: Safety & Handling
+        description: Safety, toxicity, and handling characteristic ratings
+        properties:
+          toxicity:
+            value: Low
+            unit: rating
+            confidence: 0.95
+            source: ai_research
+            research_basis: Cast iron is non-toxic in solid form, minimal health hazards
+              during handling
+            research_date: '2025-10-17T00:00:00.000000'
+            validation_method: OSHA and material safety data for iron alloys
+      thermal_behavior:
+        label: Thermal Behavior
+        description: Qualitative thermal response and degradation characteristics
+        properties:
+          thermalDestructionType:
+            value: melting
+            unit: type
+            confidence: 0.99
+            source: materials_science
+            research_basis: Gray cast iron undergoes melting as primary thermal destruction
+              mechanism at approximately 1200°C
+            research_date: '2025-10-16T18:00:00.000000'
   Tool Steel:
     author:
       id: 2
@@ -16719,14 +16728,6 @@ materials:
         research_basis: Tool steel solidus temperature 1350-1450°C (1623-1723K) depending
           on composition
         research_date: '2025-10-16T00:00:00.000000'
-      thermalDestructionType:
-        value: melting
-        unit: type
-        confidence: 0.99
-        source: materials_science
-        research_basis: Tool steel undergoes melting as primary thermal destruction
-          mechanism. High carbide content results in solidus temperature around 1400°C.
-        research_date: '2025-10-16T18:00:00.000000'
       oxidationResistance:
         value: 550.0
         unit: °C
@@ -16787,6 +16788,20 @@ materials:
       - Precision Manufacturing
       - Metal Forming
     subcategory: ferrous
+    materialCharacteristics:
+      thermal_behavior:
+        label: Thermal Behavior
+        description: Qualitative thermal response and degradation characteristics
+        properties:
+          thermalDestructionType:
+            value: melting
+            unit: type
+            confidence: 0.99
+            source: materials_science
+            research_basis: Tool steel undergoes melting as primary thermal destruction
+              mechanism. High carbide content results in solidus temperature around
+              1400°C.
+            research_date: '2025-10-16T18:00:00.000000'
   Tantalum:
     author:
       id: 1

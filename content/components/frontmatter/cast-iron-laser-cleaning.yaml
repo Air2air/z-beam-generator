@@ -373,18 +373,24 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the cast iron surface is obscured by a complex
-    contamination layer, typically measuring 50-200 microns thick. This layer consists
-    of a porous, amorphous matrix of iron oxide (Fe₃O₄/Fe₂O₃), carbonaceous soot,
-    and embedded silica particles from ambient dust. The underlying metal's graphite
-    flakes and pearlitic grain structure are entirely hidden. The texture is highly
-    irregular, with micro-fissures and particulate agglomerations creating a topographically
-    complex, non-uniform surface that disrupts the substrate's metallurgical integrity
-    and promotes further corrosive activity.
-  afterText: The laser-cleaned surface reveals the intact metallurgical microstructure.
-    The lamellar pattern of the pearlitic matrix and the distinct, flake-shaped graphite
-    inclusions are now fully exposed and clearly defined. The surface is returned
-    to its native state, free of obstructive oxides and debris.
+  beforeText: At 500x magnification, the surface is obscured by a thick, non-uniform
+    contamination layer, approximately 50-200 micrometers deep. This layer consists
+    of embedded oxides (rust), carbonaceous soot, and residual lubricants. The underlying
+    cast iron's graphite flakes and grain structure are completely masked, presenting
+    a rough, porous topography that promotes further corrosion.
+  afterText: 'Laser cleaning effectively ablates the contamination layer, revealing
+    the true metallographic structure of the cast iron. The surface now exhibits a
+    distinct contrast between the iron matrix and the exposed graphite flakes, which
+    appear as dark, elongated formations. The original micro-peaks and valleys from
+    the casting process are fully restored, presenting a uniform, matte-gray finish.
+
+
+    The removal of the porous oxide layer eliminates pathways for moisture and corrosive
+    agents, significantly improving the substrate''s corrosion resistance. The process
+    does not melt the underlying metal, preserving the part''s dimensional integrity.
+    The resulting clean, oxide-free surface provides an optimal foundation for subsequent
+    processes like welding, bonding, or coating application, ensuring superior adhesion
+    and long-term performance.'
   description: Microscopic analysis of cast iron surface before and after laser cleaning
     treatment
   alt: Microscopic view of cast iron surface showing laser cleaning effects
@@ -427,7 +433,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: false
   persona_country: N/A
   author_id: 0
-  verification_timestamp: '2025-10-17T18:06:43.883190+00:00'
+  verification_timestamp: '2025-10-17T18:16:54.888413+00:00'
   prompt_components_integrated: 1
   human_authenticity_focus: false
   cultural_adaptation_applied: false
