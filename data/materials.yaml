@@ -16356,8 +16356,6 @@ materials:
       density:
         value: 7.2
         unit: g/cm³
-        min: 7.1
-        max: 7.3
         confidence: 0.98
         source: ai_research
         research_basis: 'ASM Handbook, Volume 1: Properties and Selection: Irons,
@@ -16368,8 +16366,6 @@ materials:
       hardness:
         value: 2200.0
         unit: HV
-        min: 1900.0
-        max: 2500.0
         confidence: 0.95
         source: ai_research
         research_basis: ASM Handbook, Volume 1 - Gray cast iron hardness range 190-250
@@ -16379,8 +16375,6 @@ materials:
       laserAbsorption:
         value: 55.0
         unit: '%'
-        min: 50.0
-        max: 60.0
         confidence: 0.9
         source: ai_research
         research_basis: Cast iron absorption at 1064nm wavelength - higher carbon
@@ -16390,8 +16384,6 @@ materials:
       laserReflectivity:
         value: 45.0
         unit: '%'
-        min: 40.0
-        max: 50.0
         confidence: 0.9
         source: ai_research
         research_basis: Complementary to absorption at 1064nm, accounting for surface
@@ -16400,8 +16392,6 @@ materials:
       thermalConductivity:
         value: 50.0
         unit: W/(m·K)
-        min: 46.0
-        max: 54.0
         confidence: 0.95
         source: ai_research
         research_basis: ASM Handbook - Gray cast iron thermal conductivity at room
@@ -16410,8 +16400,6 @@ materials:
       thermalDiffusivity:
         value: 12.5
         unit: mm²/s
-        min: 11.0
-        max: 14.0
         confidence: 0.92
         source: ai_research
         research_basis: 'ASM Handbook, Volume 1: Gray cast iron thermal diffusivity
@@ -16423,8 +16411,6 @@ materials:
       thermalExpansion:
         value: 11.0
         unit: 10⁻⁶/K
-        min: 10.0
-        max: 12.0
         confidence: 0.95
         source: ai_research
         research_basis: 'ASM Handbook, Volume 1: Gray cast iron coefficient of thermal
@@ -16435,8 +16421,6 @@ materials:
       specificHeat:
         value: 540.0
         unit: J/(kg·K)
-        min: 520.0
-        max: 560.0
         confidence: 0.92
         source: ai_research
         research_basis: Cast iron specific heat capacity - slightly higher than pure
@@ -16445,8 +16429,6 @@ materials:
       thermalDestructionPoint:
         value: 1473.0
         unit: K
-        min: 1423.0
-        max: 1523.0
         confidence: 0.95
         source: ai_research
         research_basis: Gray cast iron melting point range 1150-1250°C (1423-1523K)
@@ -16454,8 +16436,6 @@ materials:
       oxidationResistance:
         value: 750.0
         unit: °C
-        min: 700.0
-        max: 800.0
         confidence: 0.9
         source: ai_research
         research_basis: 'ASM Handbook, Volume 1: Gray cast iron begins significant
@@ -16467,8 +16447,6 @@ materials:
       corrosionResistance:
         value: 5.0
         unit: rating
-        min: 4.0
-        max: 6.0
         confidence: 0.88
         source: ai_research
         research_basis: 'ASM Handbook, Volume 13A: Gray cast iron has moderate corrosion
@@ -16481,8 +16459,6 @@ materials:
       tensileStrength:
         value: 250.0
         unit: MPa
-        min: 200.0
-        max: 300.0
         confidence: 0.95
         source: ai_research
         research_basis: ASTM A48 Class 30 gray cast iron - tensile strength 207-276
@@ -16491,8 +16467,6 @@ materials:
       youngsModulus:
         value: 110.0
         unit: GPa
-        min: 100.0
-        max: 120.0
         confidence: 0.93
         source: ai_research
         research_basis: Gray cast iron elastic modulus - lower than steel due to graphite
@@ -16501,8 +16475,6 @@ materials:
       reflectivity:
         value: 45.0
         unit: '%'
-        min: 40.0
-        max: 50.0
         confidence: 0.85
         source: ai_research
         research_basis: ASM Metals Handbook - Cast iron reflectivity at 1064nm, typical
@@ -16512,8 +16484,6 @@ materials:
       absorptivity:
         value: 55.0
         unit: '%'
-        min: 50.0
-        max: 60.0
         confidence: 0.85
         source: ai_research
         research_basis: Complementary to reflectivity at 1064nm wavelength for cast
@@ -16523,8 +16493,6 @@ materials:
       vaporPressure:
         value: 1.0e-07
         unit: Pa
-        min: 1.0e-08
-        max: 1.0e-06
         confidence: 0.75
         source: ai_research
         research_basis: Typical vapor pressure for iron alloys at room temperature
@@ -16533,8 +16501,6 @@ materials:
       ablationThreshold:
         value: 8.5
         unit: J/cm²
-        min: 7.0
-        max: 10.0
         confidence: 0.8
         source: ai_research
         research_basis: Laser ablation threshold for cast iron at 1064nm, typical
@@ -16544,8 +16510,6 @@ materials:
       electricalResistivity:
         value: 60.0
         unit: µΩ·cm
-        min: 50.0
-        max: 70.0
         confidence: 0.9
         source: ai_research
         research_basis: ASM Handbook - Gray cast iron electrical resistivity range
@@ -16554,8 +16518,6 @@ materials:
       porosity:
         value: 2.5
         unit: '%'
-        min: 1.0
-        max: 5.0
         confidence: 0.85
         source: ai_research
         research_basis: Typical porosity for gray cast iron (Class 30), graphite flake
@@ -16565,8 +16527,6 @@ materials:
       surfaceRoughness:
         value: 3.2
         unit: µm
-        min: 1.6
-        max: 6.3
         confidence: 0.8
         source: ai_research
         research_basis: Typical as-cast surface roughness for gray iron, Ra value
@@ -16631,8 +16591,6 @@ materials:
       density:
         value: 7.85
         unit: g/cm³
-        min: 7.75
-        max: 7.95
         confidence: 0.97
         source: ai_research
         research_basis: ASM Handbook, Volume 1 - High-speed steel (HSS) M2 tool steel
@@ -16642,8 +16600,6 @@ materials:
       hardness:
         value: 6500.0
         unit: HV
-        min: 6000.0
-        max: 7000.0
         confidence: 0.96
         source: ai_research
         research_basis: Hardened tool steel (HRC 60-64) converted to Vickers hardness
@@ -16653,8 +16609,6 @@ materials:
       laserAbsorption:
         value: 42.0
         unit: '%'
-        min: 38.0
-        max: 46.0
         confidence: 0.88
         source: ai_research
         research_basis: Tool steel absorption at 1064nm wavelength - similar to carbon
@@ -16665,8 +16619,6 @@ materials:
       laserReflectivity:
         value: 58.0
         unit: '%'
-        min: 54.0
-        max: 62.0
         confidence: 0.88
         source: ai_research
         research_basis: Complementary to absorption, polished tool steel surface reflectivity
@@ -16675,8 +16627,6 @@ materials:
       thermalConductivity:
         value: 28.0
         unit: W/(m·K)
-        min: 24.0
-        max: 32.0
         confidence: 0.93
         source: ai_research
         research_basis: ASM Handbook - High-speed steel thermal conductivity (lower
@@ -16685,8 +16635,6 @@ materials:
       thermalDiffusivity:
         value: 7.8
         unit: mm²/s
-        min: 7.0
-        max: 8.6
         confidence: 0.91
         source: ai_research
         research_basis: 'ASM Handbook, Volume 1: Tool steel (M2 high-speed steel)
@@ -16698,8 +16646,6 @@ materials:
       thermalExpansion:
         value: 11.5
         unit: 10⁻⁶/K
-        min: 10.5
-        max: 12.5
         confidence: 0.94
         source: ai_research
         research_basis: 'ASM Handbook, Volume 1: Tool steel coefficient of thermal
@@ -16711,8 +16657,6 @@ materials:
       specificHeat:
         value: 460.0
         unit: J/(kg·K)
-        min: 440.0
-        max: 480.0
         confidence: 0.91
         source: ai_research
         research_basis: Tool steel specific heat capacity - typical for high-alloy
@@ -16721,8 +16665,6 @@ materials:
       thermalDestructionPoint:
         value: 1673.0
         unit: K
-        min: 1623.0
-        max: 1723.0
         confidence: 0.94
         source: ai_research
         research_basis: Tool steel solidus temperature 1350-1450°C (1623-1723K) depending
@@ -16731,8 +16673,6 @@ materials:
       oxidationResistance:
         value: 550.0
         unit: °C
-        min: 500.0
-        max: 600.0
         confidence: 0.89
         source: ai_research
         research_basis: 'ASM Handbook, Volume 1: Tool steels begin significant oxidation
@@ -16745,8 +16685,6 @@ materials:
       corrosionResistance:
         value: 6.0
         unit: rating
-        min: 5.0
-        max: 7.0
         confidence: 0.87
         source: ai_research
         research_basis: 'ASM Handbook, Volume 13A: Tool steels have moderate to good
@@ -16760,8 +16698,6 @@ materials:
       tensileStrength:
         value: 2100.0
         unit: MPa
-        min: 1900.0
-        max: 2300.0
         confidence: 0.94
         source: ai_research
         research_basis: Hardened M2 high-speed steel tensile strength - typical for
@@ -16770,8 +16706,6 @@ materials:
       youngsModulus:
         value: 210.0
         unit: GPa
-        min: 200.0
-        max: 220.0
         confidence: 0.95
         source: ai_research
         research_basis: Tool steel elastic modulus - similar to other steels, minimal

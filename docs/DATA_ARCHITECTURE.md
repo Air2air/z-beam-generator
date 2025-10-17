@@ -13,11 +13,13 @@ This document describes the **fully normalized** data flow through the Z-Beam Ge
 The system follows a strict **separation of concerns**:
 
 - **Categories.yaml**: Category-wide min/max ranges (comparison context)
-- **materials.yaml**: Material-specific values (individual material data)
+- **materials.yaml**: Material-specific values ONLY (individual material data)
 - **Generator**: Combines both sources
 - **Frontmatter**: Displays complete property data
 
-**Critical Rule**: Min/max ranges exist ONLY in Categories.yaml, NEVER in materials.yaml.
+**CRITICAL RULE**: Min/max ranges exist **EXCLUSIVELY** in Categories.yaml, **NEVER** in materials.yaml.
+
+**Material Variance Handling**: If a material property has an inherent range (e.g., alloy composition variations, grade differences), the value field in materials.yaml MUST contain the **averaged/consolidated single number**. The range information should be documented in the `research_basis` or `validation_method` fields for context, but min/max fields must never be present at the material level.
 
 ---
 
@@ -89,6 +91,8 @@ materials:
 **Count**: 122 materials with properties
 
 **Key Point**: Properties contain value, unit, confidence, description, source - but **NEVER min/max**.
+
+**Enforcement**: Zero tolerance policy - any min/max fields found in materials.yaml properties are **architectural violations** and must be removed immediately. Material variance must be consolidated to a single averaged value.
 
 ---
 
@@ -287,20 +291,21 @@ The generator has special handling for nested structures in `_populate_property(
 
 ### ❌ INCORRECT Behavior (What We Avoid)
 
-1. **DO NOT add min/max to materials.yaml**
-   - Would create redundancy
-   - Would violate single source of truth
-   - Would confuse category ranges with material variance
+1. **DO NOT add min/max to materials.yaml - ZERO TOLERANCE**
+   - Violates single source of truth principle
+   - Creates ambiguity between category ranges and material values
+   - Even if material has inherent variance (alloys, grades), use ONLY averaged value
+   - Document variance context in research_basis/validation_method fields instead
 
 2. **DO NOT use material min/max in frontmatter**
-   - System used to have material-specific ranges (pre-Oct 2025)
-   - These were removed during normalization
-   - All ranges now come from categories
+   - Frontmatter min/max MUST come exclusively from Categories.yaml
+   - No exceptions - even for materials with wide tolerance ranges
+   - All ranges represent category-wide comparison context
 
-3. **DO NOT duplicate category ranges in materials**
-   - Some materials previously had exact category range duplicates
-   - These have been removed
-   - Category ranges live ONLY in Categories.yaml
+3. **DO NOT store material variance as min/max**
+   - **WRONG**: `density: {value: 7.2, min: 7.1, max: 7.3}`
+   - **CORRECT**: `density: {value: 7.2}` with note in research_basis: "Range 7.1-7.3 g/cm³ for ASTM A48 Class 30"
+   - Average the range to a single representative value
 
 ---
 
@@ -420,24 +425,48 @@ materials:
 
 ### Common Pitfalls to Avoid
 
-❌ **DON'T**: Add min/max to materials.yaml properties
+❌ **DON'T**: Add min/max to materials.yaml properties - EVER
 ```yaml
-# WRONG - violates normalization
+# WRONG - violates exclusive rule
 properties:
   density:
     value: 8.96
-    min: 0.53    # ❌ NO! This belongs in Categories.yaml only
-    max: 22.6    # ❌ NO! This belongs in Categories.yaml only
+    min: 0.53    # ❌ ARCHITECTURAL VIOLATION!
+    max: 22.6    # ❌ ARCHITECTURAL VIOLATION!
 ```
 
-✅ **DO**: Add only value data to materials.yaml
+❌ **DON'T**: Store material variance as min/max
 ```yaml
-# CORRECT - normalized structure
+# WRONG - even for material-specific ranges
+properties:
+  hardness:
+    value: 2200.0
+    min: 1900.0  # ❌ NO! Average to single value
+    max: 2500.0  # ❌ NO! Average to single value
+    research_basis: "Range for ASTM A48 Class 30: 190-250 HB"
+```
+
+✅ **DO**: Add only single values to materials.yaml
+```yaml
+# CORRECT - exclusive value-only structure
 properties:
   density:
     value: 8.96
     unit: g/cm³
     confidence: 98
+    research_basis: "Pure copper density at 20°C"
+```
+
+✅ **DO**: Document material variance in metadata
+```yaml
+# CORRECT - variance documented, not stored as min/max
+properties:
+  hardness:
+    value: 2200.0  # Averaged from 1900-2500 range
+    unit: HV
+    confidence: 95
+    research_basis: "ASTM A48 Class 30 gray cast iron hardness range 190-250 HB (1900-2500 HV)"
+    validation_method: "Value represents mid-range for typical applications"
 ```
 
 ---
