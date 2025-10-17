@@ -2176,6 +2176,42 @@ categories:
         notes: Cast iron ~50-100°C, Steel ~150-250°C, Nickel alloys ~300-400°C
         measurement_context: Resistance to thermal stress cracking during rapid temperature changes
         last_updated: '2025-10-17T00:00:00.000000'
+      absorptivity:
+        min: 2.0
+        max: 65.0
+        unit: '%'
+        source: Laser Material Processing (Steen & Mazumder)
+        confidence: 85
+        notes: Polished metals 2-10%, Oxidized surfaces 30-65%, wavelength and temperature dependent
+        measurement_context: Near-IR wavelengths (1064nm Nd:YAG), room temperature
+        last_updated: '2025-10-17T00:00:00.000000'
+      porosity:
+        min: 0.0
+        max: 15.0
+        unit: '%'
+        source: ASM Metals Handbook - Powder Metallurgy
+        confidence: 90
+        notes: Wrought metals 0-0.1%, Cast metals 0.5-5%, Sintered metals 2-15%
+        measurement_context: Volumetric porosity, varies significantly by manufacturing process
+        last_updated: '2025-10-17T00:00:00.000000'
+      thermalDestructionPoint:
+        min: 873
+        max: 3695
+        unit: K
+        source: CRC Handbook - Boiling Points of Elements
+        confidence: 95
+        notes: Zinc 1180K, Iron 3134K, Steel 1473-1673K, Tungsten 3695K (boiling point)
+        measurement_context: Temperature at which material structurally fails or vaporizes
+        last_updated: '2025-10-17T00:00:00.000000'
+      vaporPressure:
+        min: 1.0e-10
+        max: 1.0e-3
+        unit: Pa
+        source: NIST Thermophysical Properties Database
+        confidence: 80
+        notes: Room temperature vapor pressure, exponentially increases with temperature
+        measurement_context: 20°C ambient conditions, critical for vacuum applications
+        last_updated: '2025-10-17T00:00:00.000000'
     subcategories:
       ferrous:
         name: Ferrous Metals
