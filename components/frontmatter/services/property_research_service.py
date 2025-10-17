@@ -113,12 +113,62 @@ class PropertyResearchService:
                     'max': None
                 }
                 
-                # Apply category ranges if available
-                if self.get_category_ranges:
-                    category_ranges = self.get_category_ranges(material_category, prop_name)
-                    if category_ranges:
-                        property_data['min'] = category_ranges.get('min')
-                        property_data['max'] = category_ranges.get('max')
+                # Check if property value is qualitative (string, not numeric)
+                is_qualitative = isinstance(prop_data['value'], str) and not self._is_numeric_string(prop_data['value'])
+                
+                if is_qualitative:
+                    # Qualitative property - no min/max ranges needed
+                    self.logger.debug(f"Skipping range validation for qualitative property: {prop_name}={prop_data['value']}")
+                    property_data['min'] = None
+                    property_data['max'] = None
+                else:
+                    # Apply category ranges if available
+                    if self.get_category_ranges:
+                        category_ranges = self.get_category_ranges(material_category, prop_name)
+                        
+                        # AUTO-REMEDIATION: Research and populate missing/incomplete ranges
+                        needs_research = (
+                            not category_ranges or 
+                            category_ranges.get('min') is None or 
+                            category_ranges.get('max') is None
+                        )
+                        
+                        if needs_research:
+                            self.logger.warning(f"Property '{prop_name}' missing/incomplete in Categories.yaml - researching ranges...")
+                            
+                            try:
+                                from research.category_range_researcher import CategoryRangeResearcher
+                                researcher = CategoryRangeResearcher()
+                                
+                                range_data = researcher.research_property_range(
+                                    property_name=prop_name,
+                                    category=material_category,
+                                    material_name=material_name
+                                )
+                                
+                                if range_data and 'min' in range_data and 'max' in range_data:
+                                    # Update Categories.yaml with researched range
+                                    self._update_categories_yaml_with_range(
+                                        category=material_category,
+                                        property_name=prop_name,
+                                        range_data=range_data
+                                    )
+                                    
+                                    # Use the researched ranges
+                                    property_data['min'] = range_data['min']
+                                    property_data['max'] = range_data['max']
+                                    self.logger.info(f"✅ Auto-researched and populated {prop_name} range for {material_category}")
+                                else:
+                                    self.logger.warning(f"Could not research range for '{prop_name}' - setting to None")
+                                    property_data['min'] = None
+                                    property_data['max'] = None
+                            except Exception as e:
+                                self.logger.warning(f"Auto-remediation failed for '{prop_name}': {e} - setting to None")
+                                property_data['min'] = None
+                                property_data['max'] = None
+                        else:
+                            property_data['min'] = category_ranges.get('min')
+                            property_data['max'] = category_ranges.get('max')
                 
                 # Enhance with standardized descriptions if available
                 if self.enhance_descriptions:
@@ -295,3 +345,51 @@ class PropertyResearchService:
             return True
         
         return False
+    
+    def _is_numeric_string(self, value: str) -> bool:
+        """Check if a string represents a numeric value"""
+        try:
+            float(value)
+            return True
+        except (ValueError, TypeError):
+            return False
+    
+    def _update_categories_yaml_with_range(self, category: str, property_name: str, range_data: Dict) -> None:
+        """Update Categories.yaml with a researched range for a property"""
+        try:
+            import yaml
+            from pathlib import Path
+            
+            categories_file = Path(__file__).parent.parent.parent.parent / 'data' / 'Categories.yaml'
+            
+            # Read current Categories.yaml
+            with open(categories_file, 'r', encoding='utf-8') as f:
+                categories_data = yaml.safe_load(f)
+            
+            # Add the property range to the category
+            if 'categories' not in categories_data:
+                self.logger.error("Categories.yaml missing 'categories' section")
+                return
+            
+            if category not in categories_data['categories']:
+                self.logger.error(f"Category '{category}' not found in Categories.yaml")
+                return
+            
+            if 'properties' not in categories_data['categories'][category]:
+                categories_data['categories'][category]['properties'] = {}
+            
+            # Add the new property range
+            categories_data['categories'][category]['properties'][property_name] = {
+                'min': range_data['min'],
+                'max': range_data['max'],
+                'unit': range_data.get('unit', '')
+            }
+            
+            # Write back to file
+            with open(categories_file, 'w', encoding='utf-8') as f:
+                yaml.dump(categories_data, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
+            
+            self.logger.info(f"✅ Added {property_name} range to Categories.yaml: min={range_data['min']}, max={range_data['max']} {range_data.get('unit', '')}")
+            
+        except Exception as e:
+            self.logger.error(f"Failed to update Categories.yaml with {property_name}: {e}")

@@ -149,8 +149,8 @@ materialProperties:
         unit: J/cm²
         confidence: 85
         description: Laser ablation threshold for nanosecond pulses at 1064 nm
-        min: null
-        max: null
+        min: 0.1
+        max: 50.0
   other:
     label: Other Properties
     description: Additional material-specific properties
@@ -350,22 +350,22 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the cast iron surface is obscured by a thick,
-    non-uniform contamination layer, measuring 10-50 micrometers. This layer consists
-    of amorphous carbonaceous deposits and embedded iron oxide (Fe₂O₃) particles,
-    creating a porous, textured topography. The underlying metal's graphite flakes
-    and micro-peaks are entirely masked. The contamination exhibits a cracked, mudflat-like
-    pattern, indicating poor adhesion and brittleness, which compromises the substrate's
-    integrity and interferes with subsequent processes.
-  afterText: Laser cleaning removes the contamination layer, revealing the true cast
-    iron microstructure. The surface now exhibits a distinct contrast between the
-    ferritic matrix and the lamellar graphite flakes, which are clearly defined and
-    undamaged. The micro-topography shows a cleaned, textured profile with peaks and
-    valleys corresponding to the original casting grain. At 500x, the surface is free
-    of non-metallic deposits and oxide residues. This exposes the substrate's natural
-    porosity and micro-features without the abrasive scarring typical of mechanical
-    methods. The result is a metallurgically pure surface with increased surface energy,
-    optimized for adhesion in coating or bonding applications.
+  beforeText: At 500x magnification, the surface is obscured by a thick, non-uniform
+    oxide layer (Fe₃O₄/Fe₂O₃), measuring 50-150 µm. This scale exhibits a porous,
+    crystalline structure, with embedded carbonaceous soot and micro-fractures. The
+    underlying cast iron's graphite flakes and grain boundaries are entirely concealed
+    by this contaminated stratum.
+  afterText: 'The laser ablation process has completely removed the contaminant layer,
+    revealing the authentic cast iron microstructure. The surface now displays a distinct
+    contrast between the ferrite matrix and the exposed graphite flakes, which appear
+    as dark, elongated formations.
+
+
+    The original rough, porous texture of the oxide scale has been replaced by the
+    metal''s inherent grain structure. This results in a topographically cleaner surface
+    with reduced micro-fissures that previously harbored contaminants. The cleaning
+    process selectively removes surface impurities without altering the substrate''s
+    dimensional integrity.'
   description: Microscopic analysis of cast iron surface before and after laser cleaning
     treatment
   alt: Microscopic view of cast iron surface showing laser cleaning effects
@@ -408,7 +408,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: false
   persona_country: N/A
   author_id: 0
-  verification_timestamp: '2025-10-17T08:39:57.669709+00:00'
+  verification_timestamp: '2025-10-17T17:39:44.342944+00:00'
   prompt_components_integrated: 1
   human_authenticity_focus: false
   cultural_adaptation_applied: false
