@@ -163,20 +163,6 @@ materialProperties:
         description: thermalDestructionPoint from Materials.yaml
         min: 273.0
         max: 3695.0
-      thermalDestructionType:
-        value: melting
-        unit: type
-        confidence: 99
-        description: thermalDestructionType from Materials.yaml
-        min: null
-        max: null
-      toxicity:
-        value: Low
-        unit: rating
-        confidence: 95
-        description: toxicity from Materials.yaml
-        min: null
-        max: null
       meltingPoint:
         value: 1150
         unit: °C
@@ -315,6 +301,43 @@ environmentalImpact:
 subtitle: The biggest challenge with cast iron is its inconsistent graphite content,
   which can cause uneven cleaning. You'll need very-good power control to remove oxides
   without altering the underlying metal.
+materialCharacteristics:
+  thermal_behavior:
+    label: Thermal Behavior
+    description: Qualitative thermal response and degradation characteristics
+    properties:
+      thermalDestructionType:
+        value: melting
+        unit: type
+        confidence: 99
+        description: thermalDestructionType from Materials.yaml
+        min: null
+        max: null
+        allowedValues:
+        - melting
+        - decomposition
+        - sublimation
+        - vaporization
+        - oxidation
+        - charring
+        - pyrolysis
+  safety_handling:
+    label: Safety & Handling
+    description: Safety, toxicity, and handling characteristic ratings
+    properties:
+      toxicity:
+        value: Low
+        unit: rating
+        confidence: 95
+        description: toxicity from Materials.yaml
+        min: null
+        max: null
+        allowedValues:
+        - None
+        - Low
+        - Medium
+        - High
+        - Extreme
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -350,22 +373,18 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the surface is obscured by a thick, non-uniform
-    oxide layer (Fe₃O₄/Fe₂O₃), measuring 50-150 µm. This scale exhibits a porous,
-    crystalline structure, with embedded carbonaceous soot and micro-fractures. The
-    underlying cast iron's graphite flakes and grain boundaries are entirely concealed
-    by this contaminated stratum.
-  afterText: 'The laser ablation process has completely removed the contaminant layer,
-    revealing the authentic cast iron microstructure. The surface now displays a distinct
-    contrast between the ferrite matrix and the exposed graphite flakes, which appear
-    as dark, elongated formations.
-
-
-    The original rough, porous texture of the oxide scale has been replaced by the
-    metal''s inherent grain structure. This results in a topographically cleaner surface
-    with reduced micro-fissures that previously harbored contaminants. The cleaning
-    process selectively removes surface impurities without altering the substrate''s
-    dimensional integrity.'
+  beforeText: At 500x magnification, the cast iron surface is obscured by a complex
+    contamination layer, typically measuring 50-200 microns thick. This layer consists
+    of a porous, amorphous matrix of iron oxide (Fe₃O₄/Fe₂O₃), carbonaceous soot,
+    and embedded silica particles from ambient dust. The underlying metal's graphite
+    flakes and pearlitic grain structure are entirely hidden. The texture is highly
+    irregular, with micro-fissures and particulate agglomerations creating a topographically
+    complex, non-uniform surface that disrupts the substrate's metallurgical integrity
+    and promotes further corrosive activity.
+  afterText: The laser-cleaned surface reveals the intact metallurgical microstructure.
+    The lamellar pattern of the pearlitic matrix and the distinct, flake-shaped graphite
+    inclusions are now fully exposed and clearly defined. The surface is returned
+    to its native state, free of obstructive oxides and debris.
   description: Microscopic analysis of cast iron surface before and after laser cleaning
     treatment
   alt: Microscopic view of cast iron surface showing laser cleaning effects
@@ -408,7 +427,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: false
   persona_country: N/A
   author_id: 0
-  verification_timestamp: '2025-10-17T17:39:44.342944+00:00'
+  verification_timestamp: '2025-10-17T18:06:43.883190+00:00'
   prompt_components_integrated: 1
   human_authenticity_focus: false
   cultural_adaptation_applied: false

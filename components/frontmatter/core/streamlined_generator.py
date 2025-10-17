@@ -48,6 +48,13 @@ from validation.errors import (
 # Phase 3.3: Import validation utilities for confidence normalization
 from components.frontmatter.services.validation_utils import ValidationUtils
 
+# Qualitative property definitions and classification
+from components.frontmatter.qualitative_properties import (
+    QUALITATIVE_PROPERTIES,
+    MATERIAL_CHARACTERISTICS_CATEGORIES,
+    is_qualitative_property
+)
+
 # Property categorizer for analysis and validation (REQUIRED per fail-fast)
 from utils.core.property_categorizer import get_property_categorizer
 
@@ -501,8 +508,12 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 for prop_type, props in unified_properties.items():
                     material_data_with_unified[prop_type] = props
                 
-                generated_properties = self._generate_properties_with_ranges(material_data_with_unified, material_name)
-                frontmatter['materialProperties'] = generated_properties  # Our enhanced structure
+                all_properties = self._generate_properties_with_ranges(material_data_with_unified, material_name)
+                
+                # PHASE 4: Separate qualitative and quantitative properties
+                frontmatter['materialProperties'], frontmatter['materialCharacteristics'] = self._separate_qualitative_properties(all_properties)
+                self.logger.info(f"Separated properties for {material_name}: {len(frontmatter['materialProperties'])} quantitative categories, "
+                               f"{len(frontmatter.get('materialCharacteristics', {}))} qualitative categories")
             else:
                 # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
                 raise PropertyDiscoveryError(f"PropertyValueResearcher required for materialProperties generation for {material_name}")
@@ -621,6 +632,77 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         except Exception as e:
             self.logger.error(f"Property categorization failed: {e}")
             raise PropertyDiscoveryError(f"Failed to organize properties by category: {e}")
+    
+    def _separate_qualitative_properties(self, all_properties: Dict) -> tuple[Dict, Dict]:
+        """
+        Separate qualitative (categorical) from quantitative (numeric) properties.
+        
+        Args:
+            all_properties: Categorized properties dict with categories as keys
+            
+        Returns:
+            Tuple of (quantitative_properties, qualitative_properties)
+            - quantitative_properties: Properties with min/max ranges for materialProperties
+            - qualitative_properties: Properties with allowedValues for materialCharacteristics
+        """
+        quantitative = {}
+        qualitative_by_category = {}
+        
+        for category_name, category_data in all_properties.items():
+            if not isinstance(category_data, dict) or 'properties' not in category_data:
+                # Keep non-property categories as-is in quantitative
+                quantitative[category_name] = category_data
+                continue
+                
+            properties = category_data['properties']
+            quant_props = {}
+            qual_props = {}
+            
+            for prop_name, prop_data in properties.items():
+                if is_qualitative_property(prop_name):
+                    # This is a qualitative property - move to materialCharacteristics
+                    qual_props[prop_name] = prop_data
+                    
+                    # Add allowedValues if defined
+                    if prop_name in QUALITATIVE_PROPERTIES:
+                        qual_def = QUALITATIVE_PROPERTIES[prop_name]
+                        if isinstance(prop_data, dict):
+                            prop_data['allowedValues'] = qual_def.allowed_values
+                            prop_data['unit'] = qual_def.unit
+                else:
+                    # Quantitative property - stays in materialProperties
+                    quant_props[prop_name] = prop_data
+            
+            # Keep category in quantitative if it has any quantitative properties
+            if quant_props:
+                quantitative[category_name] = {
+                    'label': category_data.get('label', category_name.replace('_', ' ').title()),
+                    'description': category_data.get('description', ''),
+                    'percentage': category_data.get('percentage', 0),
+                    'properties': quant_props
+                }
+            
+            # Organize qualitative properties by their characteristic category
+            for prop_name in qual_props:
+                if prop_name in QUALITATIVE_PROPERTIES:
+                    qual_def = QUALITATIVE_PROPERTIES[prop_name]
+                    char_category = qual_def.category
+                    
+                    if char_category not in qualitative_by_category:
+                        # Get metadata from MATERIAL_CHARACTERISTICS_CATEGORIES
+                        cat_metadata = MATERIAL_CHARACTERISTICS_CATEGORIES.get(char_category, {})
+                        qualitative_by_category[char_category] = {
+                            'label': cat_metadata.get('label', char_category.replace('_', ' ').title()),
+                            'description': cat_metadata.get('description', ''),
+                            'properties': {}
+                        }
+                    
+                    qualitative_by_category[char_category]['properties'][prop_name] = qual_props[prop_name]
+        
+        self.logger.info(f"Property separation: {len(quantitative)} quantitative categories, "
+                        f"{len(qualitative_by_category)} qualitative categories")
+        
+        return quantitative, qualitative_by_category
     
     def _generate_basic_properties(self, material_data: Dict, material_name: str) -> Dict:
         """Generate properties with DataMetrics structure using YAML-first approach with AI fallback (OPTIMIZED)"""
