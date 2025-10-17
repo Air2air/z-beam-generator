@@ -121,37 +121,18 @@ materialProperties:
         description: Laser ablation threshold for nanosecond pulses
         min: null
         max: null
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 0
-    properties:
-      thermalDestructionPoint:
+      absorptionCoefficient:
+        value: 0.65
+        unit: 1/cm
+        confidence: 82
+        description: Absorption coefficient for near-infrared lasers (1064 nm)
+        min: null
+        max: null
+      thermalDestruction:
         value: 1473.0
         unit: K
         confidence: 95
-        description: thermalDestructionPoint from Materials.yaml
-        min: null
-        max: null
-      thermalDestructionType:
-        value: melting
-        unit: ''
-        confidence: 99
-        description: thermalDestructionType from Materials.yaml
-        min: null
-        max: null
-      meltingPoint:
-        value: 1150
-        unit: °C
-        confidence: 92
-        description: Average melting temperature for cast iron alloys
-        min: null
-        max: null
-      absorptionCoefficient:
-        value: 0.65
-        unit: dimensionless
-        confidence: 82
-        description: Absorption coefficient for near-infrared lasers (1064 nm)
+        description: Thermal destruction/melting point temperature
         min: null
         max: null
 applications:

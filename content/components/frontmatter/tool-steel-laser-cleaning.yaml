@@ -56,9 +56,17 @@ materialProperties:
         value: moderate
         unit: qualitative
         confidence: 85
-        description: General corrosion resistance in atmospheric conditions
-        min: 1
-        max: 10
+        description: Moderate corrosion resistance depending on alloying elements
+        min: null
+        max: null
+      crystallineStructure:
+        value: BCC
+        unit: none
+        confidence: 95
+        description: Body-centered cubic structure (martensitic) for hardened tool
+          steel
+        min: null
+        max: null
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -116,37 +124,10 @@ materialProperties:
         min: null
         max: null
       ablationThreshold:
-        value: 2.8
+        value: 2.5
         unit: J/cm²
-        confidence: 82
-        description: Estimated laser ablation threshold for nanosecond pulses at 1064
-          nm
-        min: null
-        max: null
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 0
-    properties:
-      thermalDestructionPoint:
-        value: 1673.0
-        unit: K
-        confidence: 94
-        description: thermalDestructionPoint from Materials.yaml
-        min: null
-        max: null
-      thermalDestructionType:
-        value: melting
-        unit: ''
-        confidence: 99
-        description: thermalDestructionType from Materials.yaml
-        min: null
-        max: null
-      meltingPoint:
-        value: 1425
-        unit: °C
-        confidence: 90
-        description: Average melting point for common tool steel compositions
+        confidence: 88
+        description: Laser ablation threshold for nanosecond pulses
         min: null
         max: null
       absorptionCoefficient:
@@ -156,12 +137,11 @@ materialProperties:
         description: Optical absorption coefficient for near-IR laser wavelengths
         min: null
         max: null
-      crystallineStructure:
-        value: BCC
-        unit: none
-        confidence: 95
-        description: Body-centered cubic structure (martensitic) for hardened tool
-          steel
+      thermalDestruction:
+        value: 1673.0
+        unit: K
+        confidence: 94
+        description: Thermal destruction/melting point temperature
         min: null
         max: null
 applications:

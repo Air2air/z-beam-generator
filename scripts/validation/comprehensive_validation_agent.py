@@ -818,6 +818,56 @@ class DataQualityValidationAgent:
         
         return issues
     
+    def validate_two_category_system(self, material: str, material_properties: Dict) -> List[Dict]:
+        """Validate that frontmatter uses only the two-category system"""
+        issues = []
+        
+        ALLOWED_CATEGORIES = {'laser_material_interaction', 'material_characteristics'}
+        found_categories = set(material_properties.keys())
+        
+        # Check for 'other' category (strictly forbidden)
+        if 'other' in found_categories:
+            issues.append({
+                'severity': 'ERROR',
+                'type': 'invalid_category',
+                'material': material,
+                'category': 'other',
+                'message': "FORBIDDEN: 'other' category found. System uses ONLY two categories: laser_material_interaction and material_characteristics"
+            })
+        
+        # Check for any invalid categories
+        invalid_categories = found_categories - ALLOWED_CATEGORIES
+        for invalid_cat in invalid_categories:
+            if invalid_cat != 'other':  # Already reported
+                issues.append({
+                    'severity': 'ERROR',
+                    'type': 'invalid_category',
+                    'material': material,
+                    'category': invalid_cat,
+                    'message': f"Invalid category '{invalid_cat}'. Only 'laser_material_interaction' and 'material_characteristics' allowed"
+                })
+        
+        # Check both required categories exist
+        if 'laser_material_interaction' not in found_categories:
+            issues.append({
+                'severity': 'WARNING',
+                'type': 'missing_category',
+                'material': material,
+                'category': 'laser_material_interaction',
+                'message': "Missing required category 'laser_material_interaction'"
+            })
+        
+        if 'material_characteristics' not in found_categories:
+            issues.append({
+                'severity': 'WARNING',
+                'type': 'missing_category',
+                'material': material,
+                'category': 'material_characteristics',
+                'message': "Missing required category 'material_characteristics'"
+            })
+        
+        return issues
+    
     def validate_youngs_tensile_ratio(self, material: str, category: str,
                                       props: Dict) -> List[Dict]:
         """Validate E/TS ratio is physically reasonable with category-specific thresholds"""
@@ -957,8 +1007,14 @@ class DataQualityValidationAgent:
                 if verbose:
                     print(f"Validating {material} ({category})...")
                 
-                # Level 1: Property validation
+                # Level 1: Category structure validation
                 if 'materialProperties' in data:
+                    # Validate two-category system
+                    issues = self.validate_two_category_system(material, data['materialProperties'])
+                    for issue in issues:
+                        all_issues[issue['severity']].append(issue)
+                    
+                    # Property validation
                     for group_name, group_data in data['materialProperties'].items():
                         if 'properties' not in group_data:
                             continue
