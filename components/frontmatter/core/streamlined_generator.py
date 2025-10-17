@@ -1054,56 +1054,13 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         self.logger.info(f"✅ Updated Categories.yaml: {category}.{property_name} = [{range_data['min']}, {range_data['max']}] {range_data.get('unit', '')}")
     
     def _get_research_based_range(self, prop_key: str, material_category: str, current_value: float) -> tuple[float, float]:
-        """Get research-based min/max ranges for a property based on materials science data"""
-        # Map property keys to Materials.yaml range keys
-        property_mapping = {
-            'density': 'density',
-            'thermalConductivity': 'thermalConductivity', 
-            'tensileStrength': 'tensileStrength',
-            'youngsModulus': 'youngsModulus',
-            'hardness': 'hardness',
-            'electricalConductivity': 'electricalConductivity'
-        }
-        
-        # Map machine settings to range keys
-        machine_mapping = {
-            'powerRange': 'powerRange',
-            'pulseDuration': 'pulseDuration',
-            'spotSize': 'spotSize',
-            'repetitionRate': 'repetitionRate',
-            'fluenceRange': 'fluenceThreshold'
-        }
-        
-        # Try material property ranges first
-        if prop_key in property_mapping:
-            range_key = property_mapping[prop_key]
-            if material_category in self.category_ranges and range_key in self.category_ranges[material_category]:
-                category_range = self.category_ranges[material_category][range_key]
-                
-                # Handle Categories.yaml format (separate unit field) vs Materials.yaml format (inline units)
-                if ('min' in category_range and 'max' in category_range and 
-                    isinstance(category_range['min'], (int, float)) and isinstance(category_range['max'], (int, float))):
-                    # Categories.yaml format: numeric min/max with separate unit field
-                    min_val = float(category_range['min'])
-                    max_val = float(category_range['max'])
-                else:
-                    # Legacy Materials.yaml format: string values with inline units
-                    min_val = self._extract_numeric_only(category_range['min'])
-                    max_val = self._extract_numeric_only(category_range['max'])
-                    
-                return min_val, max_val
-        
-        # Try machine settings ranges 
-        if prop_key in machine_mapping:
-            range_key = machine_mapping[prop_key]
-            if range_key in self.machine_settings_ranges:
-                machine_range = self.machine_settings_ranges[range_key]
-                min_val = self._extract_numeric_only(machine_range['min'])
-                max_val = self._extract_numeric_only(machine_range['max'])
-                return min_val, max_val
-        
-        # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed, must have research data
-        raise PropertyDiscoveryError(f"No research data available for {prop_key} in {material_category} - comprehensive AI discovery required")
+        """
+        DEPRECATED: Not used anywhere in code. Range logic now in PropertyProcessor.
+        This method will be removed in Step 5.
+        """
+        self.logger.warning("DEPRECATED: _get_research_based_range() is not used and will be removed")
+        # Delegate to PropertyProcessor if ever called
+        return self.property_processor._get_category_range(prop_key, material_category, current_value)
 
     def _generate_from_api(self, material_name: str, material_data: Dict) -> Dict:
         """Generate frontmatter content using AI - FAIL-FAST: no fallbacks allowed per GROK"""
@@ -1138,25 +1095,12 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             raise GenerationError(f"Failed to generate frontmatter for {material_name}: {str(e)}")
     
     def _merge_with_ranges(self, ai_properties: Dict, range_properties: Dict) -> Dict:
-        """Merge AI-generated content with range-generated Min/Max and description fields"""
-        merged = ai_properties.copy()
-        
-        for prop_key, range_data in range_properties.items():
-            if prop_key in merged:
-                # Ensure AI content has required Min/Max and description
-                if isinstance(merged[prop_key], dict) and isinstance(range_data, dict):
-                    # Add missing Min/Max from range data
-                    if 'min' not in merged[prop_key] and 'min' in range_data:
-                        merged[prop_key]['min'] = range_data['min']
-                    if 'max' not in merged[prop_key] and 'max' in range_data:
-                        merged[prop_key]['max'] = range_data['max']
-                    if 'description' not in merged[prop_key] and 'description' in range_data:
-                        merged[prop_key]['description'] = range_data['description']
-            else:
-                # Add entire property if missing from AI content
-                merged[prop_key] = range_data
-                
-        return merged
+        """
+        DEPRECATED: Use PropertyProcessor.merge_with_ranges() instead.
+        Kept for backward compatibility - delegates to PropertyProcessor.
+        """
+        self.logger.warning("DEPRECATED: _merge_with_ranges() - Use PropertyProcessor.merge_with_ranges() instead")
+        return self.property_processor.merge_with_ranges(ai_properties, range_properties)
     
     def _call_api_for_generation(self, material_name: str, material_data: Dict) -> str:
         """Call API to generate frontmatter content"""
