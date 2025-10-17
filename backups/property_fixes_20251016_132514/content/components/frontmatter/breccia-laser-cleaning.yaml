@@ -1,0 +1,334 @@
+name: Breccia
+category: stone
+subcategory: mineral
+title: Breccia Laser Cleaning
+description: Laser cleaning parameters for Breccia
+materialProperties:
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    properties:
+      laserAbsorption:
+        value: 8.72
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.1
+        max: 100
+      laserReflectivity:
+        value: 38.2
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 80
+        source: Geological Survey Optical Properties Database
+        notes: Light colored stones 40-80%, dark stones 5-20%, varies with mineral
+          composition
+      specificHeat:
+        value: 850
+        unit: J/kg·K
+        confidence: 83
+        description: Specific heat capacity at room temperature
+        min: 400
+        max: 1200
+      thermalConductivity:
+        value: 3.8
+        unit: W/(m·K)
+        confidence: 80
+        description: Thermal conductivity of consolidated breccia rock
+        min: 0.2
+        max: 8
+        source: Engineering ToolBox - Building Materials
+        notes: Most stones 1-4 W/m·K, granite ~2.8, limestone ~1.3, marble ~2.5
+      thermalDiffusivity:
+        value: 1.32
+        unit: mm²/s
+        confidence: 92
+        description: thermalDiffusivity from Materials.yaml
+        min: 0.2
+        max: 2.5
+      thermalExpansion:
+        value: 8.2
+        unit: 10⁻⁶/K
+        confidence: 82
+        description: Coefficient of thermal expansion for mixed mineral composition
+        min: 3
+        max: 30
+      thermalDegradationPoint:
+        value: 1120.0
+        unit: °C
+        confidence: 92
+        description: Temperature where mineral structure breaks down
+        min: 573.0
+        max: 1470.0
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
+    properties:
+      density:
+        value: 2.6
+        unit: g/cm³
+        confidence: 85
+        description: Average density of consolidated breccia rock formations
+        min: 1.5
+        max: 6.0
+      hardness:
+        value: 3.0
+        unit: Mohs
+        confidence: 85
+        description: Mohs hardness scale for typical breccia with mixed mineral content
+        min: 1
+        max: 7
+      tensileStrength:
+        value: 8.2
+        unit: MPa
+        confidence: 92
+        description: tensileStrength from Materials.yaml
+        min: 2
+        max: 25
+      youngsModulus:
+        value: 68.2
+        unit: GPa
+        confidence: 82
+        description: Elastic modulus for consolidated breccia formations
+        min: 10
+        max: 100
+      compressiveStrength:
+        value: 180
+        unit: MPa
+        confidence: 84
+        description: Uniaxial compressive strength of intact breccia
+        min: 20
+        max: 500
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
+applications:
+- Cultural Heritage
+- Architecture and Construction
+- Museum Conservation
+- Monument Preservation
+- Archaeological Research
+- Stone Fabrication
+- Landscape Architecture
+- Interior Design
+- Religious Architecture
+- Educational Collections
+machineSettings:
+  powerRange:
+    value: 90
+    unit: W
+    confidence: 88
+    description: Optimal average power for Breccia surface cleaning without thermal
+      damage
+    min: 70
+    max: 110
+  wavelength:
+    value: 1064
+    unit: nm
+    confidence: 85
+    description: Near-IR wavelength for effective absorption in mineral components
+    min: 532
+    max: 1064
+  spotSize:
+    value: 80
+    unit: μm
+    confidence: 86
+    description: Beam spot diameter for precise cleaning resolution
+    min: 50
+    max: 120
+  repetitionRate:
+    value: 50
+    unit: kHz
+    confidence: 84
+    description: Optimal repetition rate for continuous cleaning coverage
+    min: 20
+    max: 100
+  pulseWidth:
+    value: 15
+    unit: ns
+    confidence: 82
+    description: Short pulse duration for efficient ablation of surface contaminants
+    min: 8
+    max: 25
+  scanSpeed:
+    value: 500
+    unit: mm/s
+    confidence: 83
+    description: Optimal scanning speed for efficient area coverage
+    min: 300
+    max: 800
+  fluence:
+    value: 3.5
+    unit: J/cm²
+    confidence: 86
+    description: Energy density threshold for effective Breccia cleaning - Energy
+      density threshold for effective contaminant removal from stone surfaces without
+      substrate damage
+    min: 1.5
+    max: 7.0
+  overlapRatio:
+    value: 40
+    unit: '%'
+    confidence: 85
+    description: Optimal beam overlap for uniform cleaning results
+    min: 30
+    max: 60
+  passCount:
+    value: 3
+    unit: passes
+    confidence: 82
+    description: Recommended number of passes for complete cleaning
+    min: 2
+    max: 5
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author:
+  id: 3
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  image: /images/author/ikmanda-roswati.jpg
+images:
+  hero:
+    alt: Breccia surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/breccia-laser-cleaning-hero.jpg
+environmentalImpact:
+- benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+  sustainabilityBenefit: ''
+- benefit: Water Usage Reduction
+  description: Dry process requires no water
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+- benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+subtitle: Breccia is a composite stone with varied, loosely cemented fragments. This
+  inconsistent composition requires careful adjustment of laser settings to clean
+  without damaging its delicate bindings.
+outcomeMetrics:
+- metric: Contaminant Removal Efficiency
+  description: Percentage of target contaminants successfully removed from surface
+  measurementMethods:
+  - Before/after microscopy
+  - Chemical analysis
+  - Mass spectrometry
+  typicalRanges: 95-99.9% depending on application and material
+  factorsAffecting:
+  - Contamination type
+  - Adhesion strength
+  - Surface geometry
+  units: []
+- metric: Processing Speed
+  description: Rate of surface area processed per unit time
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- metric: Surface Quality Preservation
+  description: Maintenance of original surface characteristics after cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+- metric: Thermal Damage Avoidance
+  description: Prevention of heat-related material alterations during cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+caption:
+  beforeText: At 500x magnification, the breccia surface is obscured by a discontinuous,
+    particulate-rich contamination layer averaging 15-45 µm thick. This layer, composed
+    of soot, dust, and biological growth, fills the natural micro-fissures and pores
+    of the stone matrix. The underlying angular clasts and cementing minerals are
+    partially masked, with the contamination adhering most densely within the stone's
+    inherent porosity, creating a mottled, occluded surface texture.
+  afterText: 'Laser cleaning has effectively restored the intrinsic lithic character
+    of the breccia. The previously occluding contamination layer has been entirely
+    removed, revealing the sharp, angular boundaries of individual clasts and the
+    complex, interlocking texture of the mineral cement. The surface now exhibits
+    its natural micro-relief, with open pores and fissures cleared of particulate
+    matter.
+
+
+    The selective nature of the laser process is evident. The ablation threshold was
+    precisely calibrated to target the contaminant''s binding organics and particulate
+    matter, which vaporized at energy densities below the stone''s own ablation threshold
+    of 2.8 J/cm². This has preserved the structural integrity of the mineral grains,
+    leaving no thermal stress microfractures or mineral phase alterations visible
+    at this magnification.
+
+
+    The result is a surface defined by its original geological composition. The contrast
+    between clasts of varying hardness and color is now fully apparent, and the stone''s
+    natural porosity (approximately 8%) is visibly open and unobstructed, indicating
+    a successful return to the substrate''s authentic, unweathered state without mechanical
+    or chemical residue.'
+  description: Microscopic analysis of breccia surface before and after laser cleaning
+    treatment
+  alt: Microscopic view of breccia surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - breccia_specific
+    contaminationProfile: breccia surface contamination
+  microscopy:
+    parameters: Microscopic analysis of Breccia
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-10-02T00:00:00.000000Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: template_caption
+  author: Ikmanda Roswati
+  materialProperties:
+    materialType: Stone
+    analysisMethod: template_microscopy
+  imageUrl:
+    alt: Microscopic view of Breccia surface after laser cleaning showing detailed
+      surface structure
+    url: /images/material/breccia-laser-cleaning-micro.jpg
+tags:
+- stone
+- cultural-heritage
+- architecture
+- restoration
+- surface-preparation
+- contamination-removal
+- maintenance
+- thermal-sensitive
+- industrial-grade
+- ikmanda-roswati
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:15.944978'
+  sources_added: 2
+processing:
+  last_sync: '2025-10-15T19:39:33.101462Z'
+  sync_source: Materials.yaml

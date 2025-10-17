@@ -1240,19 +1240,64 @@ def generate_safe_filename(material_name: str) -> str:
 def main():
     """Main application entry point with basic command line interface."""
     
-    # FAIL-FAST VALIDATION (Per GROK_INSTRUCTIONS.md: ZERO TOLERANCE FOR DEFAULTS/FALLBACKS)
-    print("🚨 ENFORCING FAIL-FAST VALIDATION")
-    print("Per GROK_INSTRUCTIONS.md: ZERO TOLERANCE FOR MOCKS/FALLBACKS/DEFAULTS")
+    # ═══════════════════════════════════════════════════════════════════════════
+    # 🚨 CONSOLIDATED SERVICE INITIALIZATION
+    # ═══════════════════════════════════════════════════════════════════════════
+    print("🔧 Initializing consolidated validation & research services...")
+    
     try:
-        from scripts.validation.fail_fast_materials_validator import fail_fast_validate_materials
-        fail_fast_validate_materials()
-        print("✅ Materials database validation PASSED - System approved for operation")
+        # Initialize singleton services (lazy initialization on first use)
+        from scripts.pipeline_integration import (
+            get_pre_generation_service,
+            get_research_service, 
+            get_quality_service
+        )
+        
+        # Validate services are available (triggers initialization)
+        pre_gen_service = get_pre_generation_service()
+        research_service = get_research_service()
+        quality_service = get_quality_service()
+        
+        print("✅ All services initialized successfully")
+        print(f"  • Pre-Generation Validation: {len(pre_gen_service.property_rules)} property rules")
+        print(f"  • AI Research Enrichment: Ready")
+        print(f"  • Post-Generation Quality: Schema & integration validation ready")
+        
     except Exception as e:
-        print("🚨 CRITICAL: System cannot start due to validation failure")
+        print(f"🚨 CRITICAL: Service initialization failed: {e}")
+        print("🚫 Per GROK_INSTRUCTIONS.md: ZERO TOLERANCE FOR DEFAULTS/FALLBACKS")
+        return False
+    
+    # ═══════════════════════════════════════════════════════════════════════════
+    # 🚨 FAIL-FAST VALIDATION (Per GROK_INSTRUCTIONS.md)
+    # ═══════════════════════════════════════════════════════════════════════════
+    print("\n🚨 ENFORCING FAIL-FAST VALIDATION")
+    print("Per GROK_INSTRUCTIONS.md: ZERO TOLERANCE FOR MOCKS/FALLBACKS/DEFAULTS")
+    
+    try:
+        # Run hierarchical validation via pre-generation service
+        validation_result = pre_gen_service.validate_hierarchical()
+        
+        if validation_result.success:
+            print(f"✅ Materials database validation PASSED - System approved for operation")
+            
+            if validation_result.warnings:
+                print(f"  ⚠️ {len(validation_result.warnings)} warnings detected")
+                for warning in validation_result.warnings[:3]:  # Show first 3
+                    print(f"     - {warning}")
+        else:
+            print("🚨 CRITICAL: System cannot start due to validation failure")
+            print(f"  • {len(validation_result.errors)} critical errors detected")
+            for error in validation_result.errors[:5]:  # Show first 5
+                print(f"     💥 {error}")
+            print("\n🚫 Per GROK_INSTRUCTIONS.md: ZERO TOLERANCE FOR DEFAULTS/FALLBACKS")
+            print("� Run: python3 scripts/validation/fail_fast_materials_validator.py")
+            return False
+            
+    except Exception as e:
+        print("🚨 CRITICAL: Validation service failed")
         print(f"💥 Error: {e}")
         print("🚫 Per GROK_INSTRUCTIONS.md: ZERO TOLERANCE FOR DEFAULTS/FALLBACKS")
-        print("📋 See MATERIALS_REMEDIATION_PLAN.md for remediation instructions.")
-        print("🔧 Run: python3 scripts/validation/fail_fast_materials_validator.py")
         return False
     
     import argparse
@@ -1496,20 +1541,40 @@ def main():
             print(f"📋 Found {len(all_materials)} materials to process")
             
             # 🔍 INVISIBLE PIPELINE: Batch validation for all materials
+            # ═══════════════════════════════════════════════════════════════════════
+            # 🔍 BATCH PRE-GENERATION VALIDATION
+            # ═══════════════════════════════════════════════════════════════════
+            print("\n🔍 Running batch pre-generation validation...")
+            
             try:
                 from scripts.pipeline_integration import validate_batch_generation
                 material_names = [material[0] for material in all_materials]
                 batch_validation = validate_batch_generation(material_names)
+                
+                if batch_validation['valid']:
+                    print(f"✅ Batch validation: {batch_validation['total_materials']} materials ready")
+                    print(f"   Data completion: {batch_validation.get('data_completion', 'N/A'):.1f}%")
+                    
+                    # Show critical gaps if any
+                    if batch_validation.get('critical_gaps'):
+                        print(f"   ⚠️ {len(batch_validation['critical_gaps'])} critical data gaps detected")
+                        for gap in batch_validation['critical_gaps'][:3]:
+                            print(f"      - {gap}")
+                else:
+                    print(f"⚠️ Batch validation issues detected:")
+                    
+                if batch_validation.get('errors'):
+                    print(f"   ❌ {len(batch_validation['errors'])} errors")
+                    for error in batch_validation['errors'][:3]:
+                        print(f"      - {error}")
+                        
+                if batch_validation.get('warnings'):
+                    print(f"   ⚠️ {len(batch_validation['warnings'])} warnings")
+                    
             except ImportError:
-                # Fallback if pipeline_integration not available
-                material_names = [material[0] for material in all_materials]
-                batch_validation = {'valid': True, 'total_materials': len(material_names), 'errors': [], 'warnings': []}
-            if batch_validation['valid']:
-                print(f"🔍 Batch validation: {batch_validation['total_materials']} materials ready for processing")
-            if batch_validation.get('errors'):
-                print(f"⚠️ {len(batch_validation['errors'])} validation errors detected")
-            if batch_validation.get('warnings'):
-                print(f"⚠️ {len(batch_validation['warnings'])} validation warnings detected")
+                print("⚠️ Pipeline integration not available, skipping batch validation")
+            except Exception as e:
+                print(f"⚠️ Batch validation failed: {e}")
             
             # Check if any components require API clients
             requires_api = any(
@@ -1599,7 +1664,26 @@ def main():
                             with open(output_file, 'w') as f:
                                 f.write(result.content)
                             
-                            print(f"  ✅ {component_type} → {output_file}")
+                            # 🔍 POST-GENERATION QUALITY VALIDATION (if frontmatter)
+                            if component_type == 'frontmatter':
+                                try:
+                                    quality_validation = quality_service.validate_quality(
+                                        result.content, 
+                                        material_name
+                                    )
+                                    
+                                    if quality_validation.success:
+                                        print(f"  ✅ {component_type} → {output_file} (Quality: {quality_validation.quality_score.total_score:.0f}%)")
+                                    else:
+                                        print(f"  ⚠️ {component_type} saved but quality issues detected")
+                                        for issue in quality_validation.issues[:3]:  # Show first 3
+                                            print(f"      - {issue}")
+                                except Exception as qe:
+                                    print(f"  ⚠️ Quality validation failed: {qe}")
+                                    print(f"  ✅ {component_type} → {output_file}")
+                            else:
+                                print(f"  ✅ {component_type} → {output_file}")
+                            
                             success_count += 1
                         else:
                             print(f"  ❌ {component_type} failed: {result.error_message}")

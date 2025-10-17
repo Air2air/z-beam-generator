@@ -800,7 +800,29 @@ materials:
 4. Add validation schema if needed
 
 ### Schema Updates
-Update schemas in `schemas/` directory to modify validation rules.
+
+#### Automated Schema Updates (New!)
+```bash
+# Validate schemas match current data
+python3 scripts/tools/schema_updater.py --validate-only
+
+# Update all schemas automatically
+python3 scripts/tools/schema_updater.py --update all
+
+# Preview changes without applying
+python3 scripts/tools/schema_updater.py --update all --dry-run
+```
+
+**Automatically syncs**:
+- Category enums from Categories.yaml
+- Subcategory enums from frontmatter.json (predefined list)
+- Property categories from Categories.yaml
+- Schema metadata and statistics
+
+See `docs/AUTOMATED_SCHEMA_UPDATES.md` for complete documentation.
+
+#### Manual Schema Editing
+For structural changes not covered by automation, manually edit schemas in `schemas/` directory.
 
 ## 🧪 Testing
 

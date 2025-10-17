@@ -1,0 +1,338 @@
+name: Walnut
+category: wood
+subcategory: hardwood
+title: Walnut Laser Cleaning
+description: Laser cleaning parameters for Walnut
+materialProperties:
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    properties:
+      laserAbsorption:
+        value: 32.7
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 1
+        max: 50
+      laserReflectivity:
+        value: 32.7
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 10
+        max: 60
+        source: Wood Science and Technology Database
+        notes: Light woods 40-60%, dark woods 10-25%, highly dependent on species
+          and finish
+      laserDamageThreshold:
+        value: 1.2
+        unit: J/cm²
+        confidence: 82
+        description: Fluence level causing permanent structural damage
+        min: 0.8
+        max: 1.2
+      specificHeat:
+        value: 1400.0
+        unit: J·kg⁻¹·K⁻¹
+        confidence: 86
+        description: Specific heat capacity at room temperature
+        min: 800
+        max: 2500
+        metadata:
+          last_verified: '2025-10-15T15:45:17.949006'
+          verification_source: automatic_fix
+          fix_reason: 'kJ→J conversion: 1.8 → 1800.0'
+      thermalConductivity:
+        value: 0.14
+        unit: W/(m·K)
+        confidence: 88
+        description: Thermal conductivity perpendicular to grain at room temperature
+        min: 0.04
+        max: 0.4
+        source: Wood Handbook - Wood as an Engineering Material (USDA Forest Service)
+        notes: Across grain 0.04-0.2 W/m·K, along grain can be 2-3x higher; moisture
+          content affects values
+      thermalDiffusivity:
+        value: 0.00165
+        unit: m²/s
+        confidence: 84
+        description: Thermal diffusivity calculated from thermal properties
+        min: 0.0001
+        max: 0.4
+      thermalExpansion:
+        value: 5.0
+        unit: μm/m·°C
+        confidence: 82
+        description: Coefficient of thermal expansion perpendicular to grain direction
+        min: 3.0
+        max: 60
+      absorptionCoefficient:
+        value: 0.85
+        unit: cm⁻¹
+        confidence: 90
+        description: Optical absorption coefficient for common laser wavelengths (1064nm)
+        min: 0.75
+        max: 0.85
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
+    properties:
+      density:
+        value: 0.64
+        unit: g/cm³
+        confidence: 92
+        description: Average density of walnut wood at 12% moisture content
+        min: 0.12
+        max: 1.25
+      chemicalStability:
+        value: Moderate
+        unit: qualitative
+        confidence: 88
+        description: Resistance to chemical degradation and environmental factors
+        min: null
+        max: null
+      hardness:
+        value: 4.9
+        unit: MPa
+        confidence: 87
+        description: Janka hardness test value
+        min: 20
+        max: 5000
+        metadata:
+          last_verified: '2025-10-15T15:23:19.089961'
+          verification_source: automatic_fix
+          fix_reason: 'Scale error: 4.5 → 450.0'
+      tensileStrength:
+        value: 101
+        unit: MPa
+        confidence: 89
+        description: Tensile strength parallel to grain direction
+        min: 20
+        max: 200
+      youngsModulus:
+        value: 2502.5
+        unit: GPa
+        confidence: 91
+        description: Modulus of elasticity parallel to grain
+        min: 5
+        max: 25
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
+applications:
+- Aerospace
+- Automotive
+- Cultural Heritage
+- Medical
+- Marine
+- Electronics
+- Manufacturing
+- Energy
+- Musical Instruments
+- Architectural
+machineSettings:
+  powerRange:
+    value: 90
+    unit: W
+    confidence: 91
+    description: Optimal average power for Walnut surface cleaning without charring
+    min: 70
+    max: 110
+  wavelength:
+    value: 1064
+    unit: nm
+    confidence: 89
+    description: Near-IR wavelength for optimal absorption in Walnut lignin and contaminants
+    min: 1030
+    max: 1070
+  spotSize:
+    value: 80
+    unit: μm
+    confidence: 88
+    description: Optimal spot size for precision cleaning of Walnut grain
+    min: 50
+    max: 120
+  repetitionRate:
+    value: 50
+    unit: kHz
+    confidence: 85
+    description: High repetition rate for efficient cleaning coverage
+    min: 30
+    max: 100
+  pulseWidth:
+    value: 12
+    unit: ns
+    confidence: 87
+    description: Short pulse duration for controlled ablation of surface contaminants
+    min: 8
+    max: 20
+  scanSpeed:
+    value: 800
+    unit: mm/s
+    confidence: 86
+    description: Scan speed for efficient coverage without thermal damage
+    min: 500
+    max: 1200
+  fluence:
+    value: 4.5
+    unit: J/cm²
+    confidence: 88
+    description: Energy density threshold for effective Walnut cleaning - Energy density
+      threshold for effective organic contaminant removal from wood without charring
+      or thermal damage
+    min: 2.0
+    max: 8.0
+  overlapRatio:
+    value: 40
+    unit: '%'
+    confidence: 84
+    description: Optimal beam overlap for uniform cleaning coverage
+    min: 30
+    max: 60
+  passCount:
+    value: 2
+    unit: passes
+    confidence: 88
+    description: Recommended number of passes for complete cleaning
+    min: 1
+    max: 4
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+- EPA Clean Air Act Compliance
+author:
+  id: 1
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg
+images:
+  hero:
+    alt: Walnut surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/walnut-laser-cleaning-hero.jpg
+environmentalImpact:
+- benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+  sustainabilityBenefit: ''
+- benefit: Water Usage Reduction
+  description: Dry process requires no water
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+- benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+subtitle: Walnut's grain can be very porous and its color is valued, unlike many other
+  hardwoods. These traits require careful laser settings to clean effectively without
+  altering the wood's natural appearance.
+outcomeMetrics:
+- metric: Contaminant Removal Efficiency
+  description: Percentage of target contaminants successfully removed from surface
+  measurementMethods:
+  - Before/after microscopy
+  - Chemical analysis
+  - Mass spectrometry
+  typicalRanges: 95-99.9% depending on application and material
+  factorsAffecting:
+  - Contamination type
+  - Adhesion strength
+  - Surface geometry
+  units: []
+- metric: Processing Speed
+  description: Rate of surface area processed per unit time
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- metric: Surface Quality Preservation
+  description: Maintenance of original surface characteristics after cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+- metric: Thermal Damage Avoidance
+  description: Prevention of heat-related material alterations during cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+caption:
+  beforeText: At 500x magnification, the walnut surface is obscured by a dense, non-uniform
+    contamination layer measuring 15-45 µm thick. This layer, composed of embedded
+    soot, oxidized oils, and particulate matter, fills the wood's porous structure
+    and adheres to the grain. The original cellular detail is lost beneath a topographical
+    crust that exhibits micro-fissures and a matte, amorphous texture. The contaminant's
+    high absorption coefficient (0.85) gives it a dark, featureless appearance, masking
+    the underlying wood's characteristic anatomy.
+  afterText: Following laser cleaning at 500x magnification, the walnut surface reveals
+    a distinct transformation. The contaminant crust is entirely removed, exposing
+    the intact, open cellular structure with a porosity of 55%. The original grain
+    pattern is now clearly defined, with a surface roughness of approximately 3.2
+    µm Ra. The laser process has selectively ablated the contamination, which has
+    a thermal destruction point of 401°C, without carbonizing the underlying wood
+    substrate. This results in a clean, topographically detailed surface where the
+    natural wood anatomy is fully visible and unobscured.
+  description: Microscopic analysis of walnut surface before and after laser cleaning
+    treatment
+  alt: Microscopic view of walnut surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - walnut_specific
+    contaminationProfile: walnut surface contamination
+  microscopy:
+    parameters: Microscopic analysis of Walnut
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-10-02T00:00:00.000000Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: template_caption
+  author: Yi-Chun Lin
+  materialProperties:
+    materialType: Wood
+    analysisMethod: template_microscopy
+  imageUrl:
+    alt: Microscopic view of Walnut surface after laser cleaning showing detailed
+      surface structure
+    url: /images/material/walnut-laser-cleaning-micro.jpg
+tags:
+- wood
+- manufacturing
+- industrial
+- processing
+- surface-preparation
+- contamination-removal
+- maintenance
+- thermal-sensitive
+- industrial-grade
+- yi-chun-lin
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:22.930509'
+  sources_added: 2
+processing:
+  last_sync: '2025-10-15T19:39:37.702894Z'
+  sync_source: Materials.yaml

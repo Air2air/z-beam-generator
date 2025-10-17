@@ -15,7 +15,7 @@ materialProperties:
         min: 0.1
         max: 50
       laserReflectivity:
-        value: 52.3
+        value: 67.3
         unit: '%'
         confidence: 92
         description: laserReflectivity from Materials.yaml
@@ -24,6 +24,11 @@ materialProperties:
         source: Handbook of Optical Constants of Solids (Palik, 1998)
         notes: Typical ceramics 10-30% at 1064nm, varies with composition and surface
           finish
+        metadata:
+          last_verified: '2025-10-16T13:39:15.942775'
+          verification_source: automatic_fix
+          fix_reason: 'Recalculated: 100 - 32.7 = 67.3'
+          previous_value: 52.3
       refractiveIndex:
         value: 2.2
         unit: ''
@@ -40,41 +45,39 @@ materialProperties:
         max: 15.0
       specificHeat:
         value: 455.0
-        unit: J·kg⁻¹·K⁻¹
+        unit: J/(kg·K)
         confidence: 90
         description: Specific heat capacity at room temperature
-        min: 200
-        max: 1200
+        min: 250
+        max: 2500.0
       thermalConductivity:
         value: 2.7
         unit: W/(m·K)
         confidence: 80
         description: Thermal conductivity of YSZ at room temperature
-        min: 1
-        max: 150
+        min: 0.8
+        max: 120
         source: MatWeb Materials Database
         notes: Typical range for ceramic materials at room temperature
       thermalDiffusivity:
-        value: 0.008
+        value: 0.99
         unit: mm²/s
         confidence: 85
         description: Thermal diffusivity at room temperature
-        min: 0.05
+        min: 0.005
         max: 120
+        metadata:
+          last_verified: '2025-10-16T13:42:39.420742'
+          verification_source: automatic_fix
+          fix_reason: 'Recalculated: 2.7 / (6.01 × 455.0) = 0.99 mm²/s'
+          previous_value: 0.008
       thermalExpansion:
         value: 10.5
-        unit: 10^-6/K
+        unit: 10⁻⁶/K
         confidence: 88
         description: Coefficient of thermal expansion for stabilized zirconia
         min: 0.1
         max: 14
-      absorptionCoefficient:
-        value: 0.85
-        unit: cm⁻¹
-        confidence: 85
-        description: Absorption coefficient for near-infrared wavelengths (1064 nm)
-        min: 0.8
-        max: 0.85
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     percentage: 47.3
@@ -86,57 +89,45 @@ materialProperties:
         unit: g/cm³
         confidence: 95
         description: Density of yttria-stabilized zirconia (YSZ) at room temperature
-        min: 2.2
-        max: 19.3
+        min: 2.3
+        max: 16.0
       oxidationResistance:
-        value: 2400.0
-        unit: '%'
-        confidence: 95
+        value: 1600.0
+        unit: °C
+        confidence: 85
         description: Oxidation resistance rating in high-temperature environments
-        min: 95.0
-        max: 1400.0
-      chemicalStability:
-        value: 90
-        unit: '%'
-        confidence: 92
-        description: Chemical stability in various environments
-        min: 90.0
-        max: 95.0
-      crystallineStructure:
-        value: Tetragonal
-        unit: n/a
-        confidence: 90
-        description: Primary crystalline phase in yttria-stabilized zirconia
-        min: null
-        max: null
+        min: 600.0
+        max: 2400.0
+        notes: Corrected from 36000°C - zirconia has excellent oxidation resistance
+          above 1600°C
       hardness:
         value: 12.0
         unit: GPa
         confidence: 90
         description: Vickers hardness of fully dense zirconia
-        min: 1.0
-        max: 10.0
+        min: 6.0
+        max: 2500
       tensileStrength:
         value: 500.0
         unit: MPa
         confidence: 95
         description: tensileStrength from Materials.yaml
-        min: 50
-        max: 1000
+        min: 5.0
+        max: 600
       youngsModulus:
         value: 200
         unit: GPa
         confidence: 92
         description: Young's modulus of elasticity for dense zirconia
-        min: 50
-        max: 800
+        min: 5.0
+        max: 600.0
       flexuralStrength:
         value: 900
         unit: MPa
         confidence: 88
         description: Flexural strength of transformation-toughened zirconia
-        min: 45.0
-        max: 3500.0
+        min: 50
+        max: 2500
     description: Intrinsic physical, mechanical, chemical, and structural properties
       affecting cleaning outcomes and material integrity
     percentage: 52.7

@@ -1,0 +1,340 @@
+name: Crown Glass
+category: glass
+subcategory: crown glass
+title: Crown Glass Laser Cleaning
+description: Laser cleaning parameters for Crown Glass
+materialProperties:
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    properties:
+      laserAbsorption:
+        value: 4.0
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.001
+        max: 10
+      laserReflectivity:
+        value: 4.2
+        unit: '%'
+        confidence: 95
+        description: laserReflectivity from Materials.yaml
+        min: 4
+        max: 92
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        notes: Typical glasses 4-8% at normal incidence, varies with composition and
+          wavelength
+      refractiveIndex:
+        value: 1.523
+        unit: ''
+        confidence: 96
+        description: Standard refractive index at 589 nm wavelength
+        min: 1.458
+        max: 1.76
+      laserDamageThreshold:
+        value: 15
+        unit: J/cm²
+        confidence: 85
+        description: Damage threshold for short pulse laser irradiation
+        min: 2.5
+        max: 15.0
+      specificHeat:
+        value: 670.0
+        unit: J·kg⁻¹·K⁻¹
+        confidence: 90
+        description: Specific heat capacity at room temperature
+        min: 500
+        max: 900
+      thermalConductivity:
+        value: 1.0
+        unit: W/(m·K)
+        confidence: 85
+        description: Low thermal conductivity typical of silicate glasses
+        min: 0.8
+        max: 1.4
+        source: MatWeb Materials Database
+        notes: Typical range for glass materials at room temperature
+      thermalDiffusivity:
+        value: 0.57
+        unit: mm²/s
+        confidence: 85
+        description: Thermal diffusivity calculated from thermal properties
+        min: 0.01
+        max: 15
+      thermalExpansion:
+        value: 9.0
+        unit: 10⁻⁶/K
+        confidence: 88
+        description: Coefficient of thermal expansion at room temperature
+        min: 0.1
+        max: 15
+      softeningPoint:
+        value: 1123.15
+        unit: K
+        confidence: 92
+        description: Temperature where glass transitions from rigid to pliable state
+        min: 820.0
+        max: 2040.0
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
+    properties:
+      density:
+        value: 2.52
+        unit: g/cm³
+        confidence: 95
+        description: Typical density for borosilicate crown glass compositions
+        min: 1.2
+        max: 7.6
+      hardness:
+        value: 5.5
+        unit: Mohs
+        confidence: 92
+        description: Mohs hardness scale value
+        min: 4.5
+        max: 9
+      tensileStrength:
+        value: 35.0
+        unit: MPa
+        confidence: 92
+        description: tensileStrength from Materials.yaml
+        min: 30
+        max: 2000
+      youngsModulus:
+        value: 72
+        unit: GPa
+        confidence: 94
+        description: Elastic modulus for standard crown glass
+        min: 10
+        max: 400
+      flexuralStrength:
+        value: 70
+        unit: MPa
+        confidence: 85
+        description: Bending strength of pristine glass surfaces
+        min: 50.0
+        max: 690.0
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
+applications:
+- Aerospace
+- Medical Devices
+- Cultural Heritage
+- Electronics Manufacturing
+- Automotive
+- Marine
+- Energy Sector
+- Research Laboratories
+- Telecommunications
+- Defense Systems
+machineSettings:
+  powerRange:
+    value: 8
+    unit: W
+    confidence: 90
+    description: Optimal average power for Crown Glass surface cleaning without thermal
+      damage
+    min: 5
+    max: 15
+  wavelength:
+    value: 1064
+    unit: nm
+    confidence: 88
+    description: Near-IR wavelength providing optimal absorption in surface contaminants
+      while minimizing glass substrate damage
+    min: 532
+    max: 1064
+  spotSize:
+    value: 50
+    unit: μm
+    confidence: 82
+    description: Beam spot diameter for precise cleaning with adequate energy density
+    min: 30
+    max: 100
+  repetitionRate:
+    value: 20
+    unit: kHz
+    confidence: 87
+    description: Optimal repetition rate balancing cleaning efficiency and thermal
+      management
+    min: 10
+    max: 50
+  pulseWidth:
+    value: 10
+    unit: ns
+    confidence: 85
+    description: Nanosecond pulse duration for efficient contaminant removal with
+      controlled thermal effects
+    min: 5
+    max: 20
+  scanSpeed:
+    value: 100
+    unit: mm/s
+    confidence: 84
+    description: Optimal scanning speed for uniform cleaning coverage
+    min: 50
+    max: 200
+  fluence:
+    value: 2.5
+    unit: J/cm²
+    confidence: 90
+    description: Energy density threshold for effective Crown Glass cleaning - Energy
+      density threshold for surface cleaning without inducing optical damage or stress
+      fractures
+    min: 1.0
+    max: 5.0
+  overlapRatio:
+    value: 50
+    unit: '%'
+    confidence: 83
+    description: Optimal beam overlap for uniform cleaning without excessive energy
+      deposition
+    min: 40
+    max: 70
+  passCount:
+    value: 2
+    unit: passes
+    confidence: 86
+    description: Recommended number of cleaning passes for complete contaminant removal
+    min: 1
+    max: 4
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author:
+  id: 3
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  image: /images/author/ikmanda-roswati.jpg
+images:
+  hero:
+    alt: Crown Glass surface undergoing laser cleaning showing precise contamination
+      removal
+    url: /images/material/crown-glass-laser-cleaning-hero.jpg
+environmentalImpact:
+- benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+  sustainabilityBenefit: ''
+- benefit: Water Usage Reduction
+  description: Dry process requires no water
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+- benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+subtitle: Pay close attention to Crown Glass during laser treatment—its varying properties
+  can throw off results if you're not careful. Adjust the power controls step by step;
+  even a slight mismatch might harm the delicate finish.
+outcomeMetrics:
+- metric: Contaminant Removal Efficiency
+  description: Percentage of target contaminants successfully removed from surface
+  measurementMethods:
+  - Before/after microscopy
+  - Chemical analysis
+  - Mass spectrometry
+  typicalRanges: 95-99.9% depending on application and material
+  factorsAffecting:
+  - Contamination type
+  - Adhesion strength
+  - Surface geometry
+  units: []
+- metric: Processing Speed
+  description: Rate of surface area processed per unit time
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- metric: Surface Quality Preservation
+  description: Maintenance of original surface characteristics after cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+- metric: Thermal Damage Avoidance
+  description: Prevention of heat-related material alterations during cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+caption:
+  beforeText: At 500x magnification, the crown glass surface is obscured by a heterogeneous
+    contamination layer approximately 2-5 µm thick. This layer consists of particulate
+    matter, including sub-micron silicate dust and carbonaceous soot, embedded in
+    a thin, amorphous film of organic residues. The underlying glass substrate, with
+    its characteristic hardness of 5.5 Mohs, is partially visible through localized
+    microfractures and pinhole defects within the contaminant matrix. The contamination
+    disrupts the native surface, which typically exhibits a roughness of 0.5 nm Ra,
+    creating a topographically complex and optically scattering interface that significantly
+    degrades light transmission and introduces wavefront error.
+  afterText: Laser cleaning has restored the substrate to its pristine state. The
+    contaminant layer is entirely removed, revealing the original polished surface
+    with its 0.5 nm Ra roughness. The glass now exhibits its intrinsic 1.523 refractive
+    index and high laser damage threshold of 25 J/cm², with no observable subsurface
+    damage or micro-fractures from the cleaning process.
+  description: Microscopic analysis of crown glass surface before and after laser
+    cleaning treatment
+  alt: Microscopic view of crown glass surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - crown glass_specific
+    contaminationProfile: crown glass surface contamination
+  microscopy:
+    parameters: Microscopic analysis of Crown Glass
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-10-02T00:00:00.000000Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: template_caption
+  author: Ikmanda Roswati
+  materialProperties:
+    materialType: Glass
+    analysisMethod: template_microscopy
+  imageUrl:
+    alt: Microscopic view of Crown Glass surface after laser cleaning showing detailed
+      surface structure
+    url: /images/material/crown-glass-laser-cleaning-micro.jpg
+tags:
+- glass
+- manufacturing
+- industrial
+- processing
+- surface-preparation
+- contamination-removal
+- maintenance
+- thermal-sensitive
+- reflective-surface
+- ikmanda-roswati
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:16.850378'
+  sources_added: 1
+processing:
+  last_sync: '2025-10-15T19:39:33.641178Z'
+  sync_source: Materials.yaml

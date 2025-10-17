@@ -1,0 +1,333 @@
+name: Aluminum
+category: metal
+subcategory: non_ferrous
+title: Aluminum Laser Cleaning
+description: Laser cleaning parameters for Aluminum
+materialProperties:
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    properties:
+      laserAbsorption:
+        value: 4.0
+        unit: '%'
+        confidence: 95
+        description: laserAbsorption from Materials.yaml
+        min: 0.02
+        max: 100
+      laserReflectivity:
+        value: 91.2
+        unit: '%'
+        confidence: 95
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 98
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with
+          surface condition'
+      specificHeat:
+        value: 897.0
+        unit: J·kg⁻¹·K⁻¹
+        confidence: 88
+        description: Specific heat capacity at room temperature
+        min: 100
+        max: 900
+      thermalConductivity:
+        value: 237
+        unit: W/(m·K)
+        confidence: 85
+        description: Thermal conductivity of pure aluminum at 20°C
+        min: 15
+        max: 400
+        source: MatWeb Materials Database
+        notes: Typical range for metal materials at room temperature
+      thermalDiffusivity:
+        value: 97.1
+        unit: mm²/s
+        confidence: 85
+        description: Thermal diffusivity at room temperature
+        min: 0.2
+        max: 174
+      thermalExpansion:
+        value: 23.1
+        unit: μm/m·K
+        confidence: 90
+        description: Linear thermal expansion coefficient at 20°C
+        min: 0.5
+        max: 29.1
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
+    properties:
+      density:
+        value: 2.7
+        unit: g/cm³
+        confidence: 98
+        description: Pure aluminum density at room temperature
+        min: 0.53
+        max: 22.6
+      oxidationResistance:
+        value: 250.0
+        unit: °C
+        confidence: 80
+        description: Natural oxide layer growth rate in air at room temperature
+        min: 200
+        max: 1200
+        source: ASM Metals Handbook - Corrosion
+        notes: 'Oxidation onset: Steel 200-400°C, Stainless 400-800°C, Ni alloys 800-1200°C'
+        metadata:
+          last_verified: '2025-10-15T15:23:15.964387'
+          verification_source: automatic_fix
+          fix_reason: 'Decimal error: 2.5 → 250.0'
+      electricalConductivity:
+        value: 37.7
+        unit: MS/m
+        confidence: 90
+        description: Electrical conductivity of pure aluminum
+        min: 4.8
+        max: 63.0
+      surfaceEnergy:
+        value: 1.08
+        unit: J/m²
+        confidence: 82
+        description: Surface energy of clean aluminum
+        min: null
+        max: null
+      hardness:
+        value: 245.0
+        unit: MPa
+        confidence: 85
+        description: Vickers hardness of pure aluminum
+        min: 0.5
+        max: 3500
+      tensileStrength:
+        value: 310.0
+        unit: MPa
+        confidence: 88
+        description: Ultimate tensile strength of pure aluminum
+        min: 3.0
+        max: 3000.0
+      youngsModulus:
+        value: 70.0
+        unit: GPa
+        confidence: 92
+        description: Young's modulus of pure aluminum
+        min: 5
+        max: 411
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
+applications:
+- Aerospace
+- Automotive
+- Construction
+- Electronics Manufacturing
+- Food and Beverage Processing
+- Marine
+- Packaging
+- Rail Transport
+- Renewable Energy
+machineSettings:
+  powerRange:
+    value: 100
+    unit: W
+    confidence: 92
+    description: Optimal average power for Aluminum oxide layer removal
+    min: 80
+    max: 120
+  wavelength:
+    value: 1064
+    unit: nm
+    confidence: 88
+    description: Near-IR wavelength with good Aluminum absorption for surface cleaning
+    min: null
+    max: null
+  spotSize:
+    value: 50
+    unit: μm
+    confidence: 84
+    description: Beam spot diameter for precise cleaning resolution
+    min: 30
+    max: 100
+  repetitionRate:
+    value: 50
+    unit: kHz
+    confidence: 87
+    description: High repetition rate for efficient cleaning coverage
+    min: 20
+    max: 100
+  pulseWidth:
+    value: 10
+    unit: ns
+    confidence: 85
+    description: Nanosecond pulse duration for controlled ablation of contaminants
+    min: 5
+    max: 20
+  scanSpeed:
+    value: 500
+    unit: mm/s
+    confidence: 86
+    description: Optimal scanning speed for uniform cleaning efficiency
+    min: 200
+    max: 1000
+  fluence:
+    value: 6.0
+    unit: J/cm²
+    confidence: 92
+    description: Energy density threshold for effective Aluminum cleaning - Energy
+      density threshold for effective oxide and contaminant removal from metallic
+      surfaces
+    min: 3.0
+    max: 12.0
+  overlapRatio:
+    value: 50
+    unit: '%'
+    confidence: 83
+    description: Optimal beam overlap for complete coverage without excessive heating
+    min: 40
+    max: 70
+  passCount:
+    value: 2
+    unit: passes
+    confidence: 85
+    description: Number of cleaning passes for complete contaminant removal
+    min: 1
+    max: 4
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author:
+  id: 4
+  name: Todd Dunning
+  sex: m
+  title: MA
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  image: /images/author/todd-dunning.jpg
+images:
+  hero:
+    alt: Aluminum surface undergoing laser cleaning showing precise contamination
+      removal
+    url: /images/material/aluminum-laser-cleaning-hero.jpg
+environmentalImpact:
+- benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+  sustainabilityBenefit: ''
+- benefit: Water Usage Reduction
+  description: Dry process requires no water
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+- benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+subtitle: Aluminum's softness and high reflectivity distinguish it from other non-ferrous
+  metals. These traits require carefully calibrated laser settings to effectively
+  remove contaminants without damaging the underlying surface.
+outcomeMetrics:
+- metric: Contaminant Removal Efficiency
+  description: Percentage of target contaminants successfully removed from surface
+  measurementMethods:
+  - Before/after microscopy
+  - Chemical analysis
+  - Mass spectrometry
+  typicalRanges: 95-99.9% depending on application and material
+  factorsAffecting:
+  - Contamination type
+  - Adhesion strength
+  - Surface geometry
+  units: []
+- metric: Processing Speed
+  description: Rate of surface area processed per unit time
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- metric: Surface Quality Preservation
+  description: Maintenance of original surface characteristics after cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+- metric: Thermal Damage Avoidance
+  description: Prevention of heat-related material alterations during cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+caption:
+  beforeText: At 500x magnification, the aluminum surface is obscured by a complex
+    contamination layer. A porous, amorphous oxide film, approximately 2.5-5 nm thick,
+    forms the base, overlaid with patches of carbonaceous soot and embedded abrasive
+    particles from prior processing. The topography is irregular, with contamination
+    filling the natural grain boundaries and micro-valleys of the substrate. This
+    layer significantly increases surface roughness and creates a barrier that degrades
+    performance for subsequent processes like welding or bonding, masking the metal's
+    inherent properties.
+  afterText: Laser cleaning removes all foreign material, revealing the substrate's
+    true microstructure. The surface now exhibits a clean, defined grain structure
+    with sharp boundaries, free of oxide and particulate residue. Minor sub-surface
+    pitting from prior corrosion may remain visible, but the surface roughness is
+    substantially reduced. This pristine, metallurgically pure surface provides optimal
+    conditions for high-integrity material joining and coating adhesion.
+  description: Microscopic analysis of aluminum surface before and after laser cleaning
+    treatment
+  alt: Microscopic view of aluminum surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - aluminum_specific
+    contaminationProfile: aluminum surface contamination
+  microscopy:
+    parameters: Microscopic analysis of Aluminum
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-10-02T00:00:00.000000Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: template_caption
+  author: Todd Dunning
+  materialProperties:
+    materialType: Metal
+    analysisMethod: template_microscopy
+  imageUrl:
+    alt: Microscopic view of Aluminum surface after laser cleaning showing detailed
+      surface structure
+    url: /images/material/aluminum-laser-cleaning-micro.jpg
+tags:
+- metal
+- manufacturing
+- aerospace
+- automotive
+- decoating
+- oxide-removal
+- surface-preparation
+- reflective-surface
+- conductive
+- todd-dunning
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:15.327491'
+  sources_added: 1
+processing:
+  last_sync: '2025-10-15T19:39:32.665674Z'
+  sync_source: Materials.yaml

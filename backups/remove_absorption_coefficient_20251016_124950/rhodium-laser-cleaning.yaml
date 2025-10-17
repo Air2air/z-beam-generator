@@ -1,0 +1,338 @@
+name: Rhodium
+category: metal
+subcategory: precious
+title: Rhodium Laser Cleaning
+description: Laser cleaning parameters for Rhodium
+materialProperties:
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    properties:
+      laserAbsorption:
+        value: 38.0
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.02
+        max: 100
+      laserReflectivity:
+        value: 78.2
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 98
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with
+          surface condition'
+      specificHeat:
+        value: 243.0
+        unit: J·kg⁻¹·K⁻¹
+        confidence: 91
+        description: Specific heat capacity at 25°C
+        min: 100
+        max: 900
+        metadata:
+          last_verified: '2025-10-15T15:43:05.053199'
+          verification_source: automatic_fix
+          fix_reason: 'kJ→J conversion: 0.242 → 242.0'
+      thermalConductivity:
+        value: 150
+        unit: W/(m·K)
+        confidence: 85
+        description: Thermal conductivity at room temperature
+        min: 15
+        max: 400
+        source: MatWeb Materials Database
+        notes: Typical range for metal materials at room temperature
+      thermalDiffusivity:
+        value: 24.9
+        unit: mm²/s
+        confidence: 88
+        description: Thermal diffusivity at room temperature
+        min: 0.2
+        max: 174
+      thermalExpansion:
+        value: 8.3
+        unit: 10^-6/K
+        confidence: 90
+        description: Coefficient of linear thermal expansion (20-100°C)
+        min: 0.5
+        max: 29.1
+      absorptionCoefficient:
+        value: 4.8
+        unit: ×10⁵ cm⁻¹
+        confidence: 82
+        description: Absorption coefficient for Nd:YAG laser (1064 nm)
+        min: 0.03
+        max: 12000000.0
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
+    properties:
+      density:
+        value: 12.41
+        unit: g/cm³
+        confidence: 98
+        description: Density of pure rhodium at 20°C
+        min: 0.53
+        max: 22.6
+      oxidationResistance:
+        value: 600.0
+        unit: °C
+        confidence: 80
+        description: Resistance to oxidation up to 600°C
+        min: 200
+        max: 1200
+        source: ASM Metals Handbook - Corrosion
+        notes: 'Oxidation onset: Steel 200-400°C, Stainless 400-800°C, Ni alloys 800-1200°C'
+      crystallineStructure:
+        value: FCC
+        unit: crystal system
+        confidence: 98
+        description: Face-centered cubic crystal structure
+        min: null
+        max: null
+      electricalResistivity:
+        value: 4.33e-08
+        unit: Ω·m
+        confidence: 94
+        description: Electrical resistivity at 20°C
+        min: 0.197
+        max: 48.0
+      hardness:
+        value: 1100.0
+        unit: HV
+        confidence: 89
+        description: Vickers hardness of annealed rhodium
+        min: 0.5
+        max: 3500
+      tensileStrength:
+        value: 951.0
+        unit: MPa
+        confidence: 95
+        description: tensileStrength from Materials.yaml
+        min: 3.0
+        max: 3000.0
+      youngsModulus:
+        value: 380
+        unit: GPa
+        confidence: 93
+        description: Young's modulus of elasticity
+        min: 5
+        max: 411
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
+applications:
+- Aerospace
+- Electronics
+- Medical Devices
+- Jewelry Manufacturing
+- Automotive
+- Chemical Processing
+- Marine Engineering
+- Research Instrumentation
+- Energy Sector
+- Cultural Heritage
+machineSettings:
+  powerRange:
+    value: 45
+    unit: W
+    confidence: 90
+    description: Optimal average power for Rhodium oxide removal without substrate
+      damage
+    min: 30
+    max: 65
+  wavelength:
+    value: 1064
+    unit: nm
+    confidence: 88
+    description: Near-IR wavelength for optimal Rhodium absorption and thermal processing
+    min: 532
+    max: 1064
+  spotSize:
+    value: 80
+    unit: μm
+    confidence: 86
+    description: Beam spot diameter for precise cleaning control on Rhodium surfaces
+    min: 50
+    max: 150
+  repetitionRate:
+    value: 50
+    unit: kHz
+    confidence: 87
+    description: Optimal repetition rate for efficient cleaning with thermal management
+    min: 20
+    max: 100
+  pulseWidth:
+    value: 12
+    unit: ns
+    confidence: 85
+    description: Nanosecond pulse duration for controlled ablation of surface contaminants
+    min: 8
+    max: 20
+  scanSpeed:
+    value: 500
+    unit: mm/s
+    confidence: 84
+    description: Optimal scanning speed for uniform cleaning coverage
+    min: 300
+    max: 800
+  fluence:
+    value: 8.5
+    unit: J/cm²
+    confidence: 89
+    description: Fluence threshold for effective contaminant removal from Rhodium
+    min: 5.0
+    max: 12.0
+  overlapRatio:
+    value: 65
+    unit: '%'
+    confidence: 83
+    description: Optimal beam overlap for uniform cleaning without excessive thermal
+      buildup
+    min: 50
+    max: 80
+  passCount:
+    value: 3
+    unit: passes
+    confidence: 85
+    description: Recommended number of passes for complete contaminant removal
+    min: 1
+    max: 5
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author:
+  id: 4
+  name: Todd Dunning
+  sex: m
+  title: MA
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  image: /images/author/todd-dunning.jpg
+images:
+  hero:
+    alt: Rhodium surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/rhodium-laser-cleaning-hero.jpg
+environmentalImpact:
+- benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+  sustainabilityBenefit: ''
+- benefit: Water Usage Reduction
+  description: Dry process requires no water
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+- benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+subtitle: Rhodium has an extremely hard and durable surface that is highly reflective.
+  These traits require careful laser parameter adjustments to avoid damaging its polished
+  finish.
+outcomeMetrics:
+- metric: Contaminant Removal Efficiency
+  description: Percentage of target contaminants successfully removed from surface
+  measurementMethods:
+  - Before/after microscopy
+  - Chemical analysis
+  - Mass spectrometry
+  typicalRanges: 95-99.9% depending on application and material
+  factorsAffecting:
+  - Contamination type
+  - Adhesion strength
+  - Surface geometry
+  units: []
+- metric: Processing Speed
+  description: Rate of surface area processed per unit time
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- metric: Surface Quality Preservation
+  description: Maintenance of original surface characteristics after cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+- metric: Thermal Damage Avoidance
+  description: Prevention of heat-related material alterations during cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+caption:
+  beforeText: At 500x magnification, the rhodium surface is obscured by a non-uniform
+    contamination layer, measuring 2-5 micrometers in thickness. This layer consists
+    of accumulated carbonaceous deposits, particulate matter, and adsorbed organic
+    films. The underlying metal's characteristic fine grain structure is entirely
+    masked. The contaminants exhibit a mottled, textured pattern, creating a topographically
+    complex and optically diffuse surface that scatters light and significantly reduces
+    reflectivity.
+  afterText: Laser cleaning has fully restored the substrate, revealing the intrinsic,
+    fine-grained microstructure of the rhodium. The surface is now continuous and
+    uniform, with contamination completely absent. This results in a microscopically
+    smooth finish that maximizes the metal's inherent high reflectivity and surface
+    integrity.
+  description: Microscopic analysis of rhodium surface before and after laser cleaning
+    treatment
+  alt: Microscopic view of rhodium surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - rhodium_specific
+    contaminationProfile: rhodium surface contamination
+  microscopy:
+    parameters: Microscopic analysis of Rhodium
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-10-02T00:00:00.000000Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: template_caption
+  author: Todd Dunning
+  materialProperties:
+    materialType: Metal
+    analysisMethod: template_microscopy
+  imageUrl:
+    alt: Microscopic view of Rhodium surface after laser cleaning showing detailed
+      surface structure
+    url: /images/material/rhodium-laser-cleaning-micro.jpg
+tags:
+- metal
+- manufacturing
+- aerospace
+- automotive
+- decoating
+- oxide-removal
+- surface-preparation
+- reflective-surface
+- conductive
+- todd-dunning
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:20.615616'
+  sources_added: 1
+processing:
+  last_sync: '2025-10-15T19:47:09.377877Z'
+  sync_source: Materials.yaml

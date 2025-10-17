@@ -1,0 +1,313 @@
+name: GFRP
+category: Composite
+subcategory: Glass Fiber Reinforced Polymers (GFRP)
+title: GFRP Laser Cleaning
+description: Laser cleaning parameters for Glass Fiber Reinforced Polymers GFRP (GFRP)
+materialProperties:
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    properties:
+      laserAbsorption:
+        value: 0.9
+        unit: unitless
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.05
+        max: 200
+      laserReflectivity:
+        value: 38.5
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 2
+        max: 80
+        source: Composite Materials Handbook (MIL-HDBK-17)
+        notes: 'Wide range reflects diversity: polymer matrix composites 5-30%, metal
+          matrix composites 40-80%'
+      specificHeat:
+        value: 1100
+        unit: J/kg·K
+        confidence: 85
+        description: Specific heat capacity at room temperature for epoxy-based GFRP
+        min: 500
+        max: 1500
+      thermalConductivity:
+        value: 0.3
+        unit: W/m·K
+        confidence: 92
+        description: Low thermal conductivity typical for polymer composites, anisotropic
+          depending on fiber orientation
+        min: 0.1
+        max: 400
+        source: ASM Handbook - Composites
+        notes: 'Wide range (0.1-400 W/m·K): polymer matrix ~0.2, carbon fiber ~10,
+          metal matrix 50-400'
+      thermalDiffusivity:
+        value: 90.05
+        unit: mm²/s
+        confidence: 90
+        description: thermalDiffusivity from Materials.yaml
+        min: 0.1
+        max: 180
+      thermalExpansion:
+        value: 20
+        unit: 10⁻⁶/K
+        confidence: 88
+        description: Coefficient of thermal expansion in transverse direction to fibers
+        min: -1
+        max: 250
+      laserDamageThreshold:
+        value: 0.8
+        unit: J/cm²
+        confidence: 82
+        description: Fluence level where permanent damage begins to occur in GFRP
+        min: 0.8
+        max: 1.2
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
+    properties:
+      density:
+        value: 1.8
+        unit: g/cm³
+        confidence: 95
+        description: Typical density for GFRP composites with 50-60% glass fiber content
+        min: 0.5
+        max: 8
+      hardness:
+        value: 80
+        unit: Barcol
+        confidence: 85
+        description: Typical Barcol hardness for cured GFRP composites
+        min: 20
+        max: 90
+      tensileStrength:
+        value: 350
+        unit: MPa
+        confidence: 90
+        description: Tensile strength along fiber direction for typical GFRP with
+          60% fiber volume
+        min: 50
+        max: 6000
+      youngsModulus:
+        value: 25
+        unit: GPa
+        confidence: 92
+        description: Elastic modulus in fiber direction for standard GFRP composites
+        min: 0.001
+        max: 500
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
+applications:
+- Aerospace
+- Marine
+- Wind Energy
+- Automotive
+- Electronics Manufacturing
+- Medical Equipment
+- Construction and Infrastructure
+- Rail Transportation
+- Sports Equipment
+- Cultural Heritage
+machineSettings:
+  powerRange:
+    value: 100
+    unit: W
+    confidence: 92
+    description: Optimal average power for GFRP surface cleaning without matrix damage
+    min: 80
+    max: 120
+  wavelength:
+    value: 1064
+    unit: nm
+    confidence: 88
+    description: Near-IR wavelength providing optimal absorption balance for polymer
+      matrix and glass fibers
+    min: 1030
+    max: 1070
+  spotSize:
+    value: 50
+    unit: μm
+    confidence: 84
+    description: Optimal spot diameter for precision cleaning of GFRP surfaces
+    min: 30
+    max: 100
+  repetitionRate:
+    value: 100
+    unit: kHz
+    confidence: 87
+    description: High repetition rate for efficient cleaning while maintaining thermal
+      control
+    min: 50
+    max: 200
+  pulseWidth:
+    value: 10
+    unit: ns
+    confidence: 85
+    description: Nanosecond pulse duration for controlled ablation of contaminants
+      without thermal damage to substrate
+    min: 5
+    max: 20
+  scanSpeed:
+    value: 500
+    unit: mm/s
+    confidence: 86
+    description: Optimal scanning speed for uniform cleaning coverage
+    min: 300
+    max: 800
+  overlapRatio:
+    value: 50
+    unit: '%'
+    confidence: 83
+    description: Optimal beam overlap for uniform cleaning without excessive thermal
+      buildup
+    min: 40
+    max: 60
+  passCount:
+    value: 3
+    unit: passes
+    confidence: 85
+    description: Recommended number of passes for complete contaminant removal
+    min: 2
+    max: 5
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author:
+  id: 3
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  image: /images/author/ikmanda-roswati.jpg
+images:
+  hero:
+    alt: Glass Fiber Reinforced Polymers Gfrp surface undergoing laser cleaning showing
+      precise contamination removal
+    url: /images/material/glass-fiber-reinforced-polymers-gfrp-laser-cleaning-hero.jpg
+environmentalImpact:
+- benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+  sustainabilityBenefit: ''
+- benefit: Water Usage Reduction
+  description: Dry process requires no water
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+- benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+subtitle: The biggest challenge with GFRP is its inconsistent resin-to-fiber ratio.
+  You must use very specific power adjustments to remove contaminants without affecting
+  the underlying composite structure.
+outcomeMetrics:
+- metric: Contaminant Removal Efficiency
+  description: Percentage of target contaminants successfully removed from surface
+  measurementMethods:
+  - Before/after microscopy
+  - Chemical analysis
+  - Mass spectrometry
+  typicalRanges: 95-99.9% depending on application and material
+  factorsAffecting:
+  - Contamination type
+  - Adhesion strength
+  - Surface geometry
+  units: []
+- metric: Processing Speed
+  description: Rate of surface area processed per unit time
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- metric: Surface Quality Preservation
+  description: Maintenance of original surface characteristics after cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+- metric: Thermal Damage Avoidance
+  description: Prevention of heat-related material alterations during cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+caption:
+  beforeText: At 500x magnification, the GFRP surface is obscured by a discontinuous
+    contaminant layer, measuring 5-15 µm thick. This layer, composed of accumulated
+    soot, salt crystals, and organic residues, creates a coarse, uneven texture that
+    masks the underlying composite structure. The contamination adheres in patches,
+    with particulate matter embedded within a thin, amorphous film. This obscures
+    the individual glass fibers and the polymer matrix, preventing a clear assessment
+    of the substrate's condition.
+  afterText: Following laser cleaning, the 500x magnification reveals a complete removal
+    of the contaminant layer, exposing the pristine GFRP substrate. The individual
+    glass filaments, typically 10-20 µm in diameter, are now fully visible and distinct,
+    embedded within the undamaged polymer matrix. The surface texture is significantly
+    smoother, transitioning from a coarse, occluded profile to the characteristic
+    micro-texture of the composite itself. This process effectively ablates contaminants
+    without generating mechanical striations or causing observable thermal degradation
+    to the matrix, preserving the structural integrity of the fibers and their interfacial
+    bond. The cleaned surface allows for accurate inspection for pre-existing microcracks
+    or fiber damage.
+  description: Microscopic analysis of glass fiber reinforced polymers gfrp surface
+    before and after laser cleaning treatment
+  alt: Microscopic view of glass fiber reinforced polymers gfrp surface showing laser
+    cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - glass fiber reinforced polymers gfrp_specific
+    contaminationProfile: glass fiber reinforced polymers gfrp surface contamination
+  microscopy:
+    parameters: Microscopic analysis of Glass Fiber Reinforced Polymers GFRP
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-10-02T00:00:00.000000Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: template_caption
+  author: Ikmanda Roswati
+  materialProperties:
+    materialType: Composite
+    analysisMethod: template_microscopy
+  imageUrl:
+    alt: Microscopic view of Glass Fiber Reinforced Polymers GFRP surface after laser
+      cleaning showing detailed surface structure
+    url: /images/material/glass-fiber-reinforced-polymers-gfrp-laser-cleaning-micro.jpg
+tags:
+- composite
+- manufacturing
+- industrial
+- processing
+- surface-preparation
+- contamination-removal
+- maintenance
+- industrial-grade
+- processed
+- ikmanda-roswati
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:17.460991'
+  sources_added: 2

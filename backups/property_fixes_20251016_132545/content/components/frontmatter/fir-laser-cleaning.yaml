@@ -1,0 +1,310 @@
+name: Fir
+category: wood
+subcategory: softwood
+title: Fir Laser Cleaning
+description: Laser cleaning parameters for Fir
+materialProperties:
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    properties:
+      laserAbsorption:
+        value: 8.82
+        unit: cm⁻¹
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 1
+        max: 50
+      laserReflectivity:
+        value: 32.7
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 10
+        max: 60
+        source: Wood Science and Technology Database
+        notes: Light woods 40-60%, dark woods 10-25%, highly dependent on species
+          and finish
+      specificHeat:
+        value: 1630.0
+        unit: J/(kg·K)
+        confidence: 90
+        description: Specific heat capacity at room temperature
+        min: 800
+        max: 2500
+      thermalConductivity:
+        value: 0.12
+        unit: W/(m·K)
+        confidence: 88
+        description: Thermal conductivity perpendicular to grain direction
+        min: 0.04
+        max: 0.4
+        source: Wood Handbook - Wood as an Engineering Material (USDA Forest Service)
+        notes: Across grain 0.04-0.2 W/m·K, along grain can be 2-3x higher; moisture
+          content affects values
+      thermalDiffusivity:
+        value: 0.16
+        unit: mm²/s
+        confidence: 92
+        description: thermalDiffusivity from Materials.yaml
+        min: 0.0001
+        max: 0.4
+      thermalExpansion:
+        value: 5.0
+        unit: 10⁻⁶/K
+        confidence: 82
+        description: Coefficient of thermal expansion in radial direction
+        min: 3.0
+        max: 60
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
+    properties:
+      density:
+        value: 0.42
+        unit: g/cm³
+        confidence: 92
+        description: Average density of European fir wood at 12% moisture content
+        min: 0.12
+        max: 1.5
+      hardness:
+        value: 38.0
+        unit: MPa
+        confidence: 84
+        description: Brinell hardness perpendicular to grain surface
+        min: 1
+        max: 5000
+        metadata:
+          last_verified: '2025-10-15T15:23:16.706386'
+          verification_source: automatic_fix
+          fix_reason: 'Scale error: 2.8 → 280.0'
+      tensileStrength:
+        value: 85
+        unit: MPa
+        confidence: 87
+        description: Tensile strength parallel to grain direction
+        min: 20
+        max: 200
+      youngsModulus:
+        value: 12.0
+        unit: GPa
+        confidence: 89
+        description: Modulus of elasticity parallel to grain
+        min: 5
+        max: 20000
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
+applications:
+- Cultural Heritage
+- Aerospace
+- Marine
+- Furniture Manufacturing
+- Construction
+- Musical Instrument Manufacturing
+- Energy
+- Automotive
+- Medical Equipment
+- Electronics Manufacturing
+machineSettings:
+  powerRange:
+    value: 90
+    unit: W
+    confidence: 92
+    description: Optimal average power for Fir surface cleaning without charring
+    min: 70
+    max: 110
+  wavelength:
+    value: 1064
+    unit: nm
+    confidence: 88
+    description: Near-IR wavelength for optimal absorption in wood cellulose and lignin
+    min: 1030
+    max: 1070
+  spotSize:
+    value: 80
+    unit: μm
+    confidence: 84
+    description: Focused spot size for precise cleaning resolution
+    min: 50
+    max: 120
+  repetitionRate:
+    value: 50
+    unit: kHz
+    confidence: 87
+    description: High repetition rate for efficient cleaning coverage
+    min: 30
+    max: 100
+  pulseWidth:
+    value: 12
+    unit: ns
+    confidence: 85
+    description: Nanosecond pulse duration for controlled ablation of contaminants
+    min: 8
+    max: 20
+  scanSpeed:
+    value: 500
+    unit: mm/s
+    confidence: 86
+    description: Optimal scanning speed for uniform cleaning without thermal damage
+    min: 300
+    max: 800
+  fluence:
+    value: 4.5
+    unit: J/cm²
+    confidence: 88
+    description: Energy density threshold for effective Fir cleaning - Energy density
+      threshold for effective organic contaminant removal from wood without charring
+      or thermal damage
+    min: 2.0
+    max: 8.0
+  overlapRatio:
+    value: 50
+    unit: '%'
+    confidence: 83
+    description: Optimal beam overlap for uniform cleaning coverage
+    min: 40
+    max: 60
+  passCount:
+    value: 2
+    unit: passes
+    confidence: 88
+    description: Recommended number of passes for complete cleaning
+    min: 1
+    max: 3
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author:
+  id: 3
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  image: /images/author/ikmanda-roswati.jpg
+images:
+  hero:
+    alt: Fir surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/fir-laser-cleaning-hero.jpg
+environmentalImpact:
+- benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+  sustainabilityBenefit: ''
+- benefit: Water Usage Reduction
+  description: Dry process requires no water
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+- benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+subtitle: Fir has a relatively soft, resinous surface that can be easily marked. This
+  requires careful control of the laser's power to clean effectively without scorching
+  the wood.
+outcomeMetrics:
+- metric: Contaminant Removal Efficiency
+  description: Percentage of target contaminants successfully removed from surface
+  measurementMethods:
+  - Before/after microscopy
+  - Chemical analysis
+  - Mass spectrometry
+  typicalRanges: 95-99.9% depending on application and material
+  factorsAffecting:
+  - Contamination type
+  - Adhesion strength
+  - Surface geometry
+  units: []
+- metric: Processing Speed
+  description: Rate of surface area processed per unit time
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- metric: Surface Quality Preservation
+  description: Maintenance of original surface characteristics after cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+- metric: Thermal Damage Avoidance
+  description: Prevention of heat-related material alterations during cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+caption:
+  beforeText: At 500x magnification, the fir surface is obscured by a complex contamination
+    layer, typically 50-200 µm thick. This stratum consists of particulate matter,
+    soot, and embedded grime that fills the porous wood structure. The underlying
+    tracheids and ray cells are no longer visible, masked by a discontinuous, amorphous
+    film that alters the surface texture and reflects light unevenly. The contamination
+    adheres strongly within the 65% porosity, creating a blotchy, occluded appearance
+    that compromises the substrate's integrity.
+  afterText: Laser cleaning has effectively restored the native fir surface. The contamination
+    layer is entirely removed, revealing the clean, open cellular structure of the
+    wood. Individual tracheids and ray parenchyma are now clearly defined, with sharp
+    edges and a uniform, light-toned appearance. The surface texture is consistent,
+    with the material's inherent 65% porosity fully exposed, resulting in a substrate
+    that is visually coherent and mechanically sound for further treatment.
+  description: Microscopic analysis of fir surface before and after laser cleaning
+    treatment
+  alt: Microscopic view of fir surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - fir_specific
+    contaminationProfile: fir surface contamination
+  microscopy:
+    parameters: Microscopic analysis of Fir
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-10-02T00:00:00.000000Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: template_caption
+  author: Ikmanda Roswati
+  materialProperties:
+    materialType: Wood
+    analysisMethod: template_microscopy
+  imageUrl:
+    alt: Microscopic view of Fir surface after laser cleaning showing detailed surface
+      structure
+    url: /images/material/fir-laser-cleaning-micro.jpg
+tags:
+- wood
+- manufacturing
+- industrial
+- processing
+- surface-preparation
+- contamination-removal
+- maintenance
+- thermal-sensitive
+- industrial-grade
+- ikmanda-roswati
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:17.126518'
+  sources_added: 2
+processing:
+  last_sync: '2025-10-15T19:39:33.789295Z'
+  sync_source: Materials.yaml

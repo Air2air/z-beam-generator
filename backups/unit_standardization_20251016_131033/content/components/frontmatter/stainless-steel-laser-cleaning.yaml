@@ -1,0 +1,327 @@
+name: Stainless Steel
+category: metal
+subcategory: ferrous
+title: Stainless Steel Laser Cleaning
+description: Laser cleaning parameters for Stainless Steel
+materialProperties:
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    properties:
+      laserAbsorption:
+        value: 35.2
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.02
+        max: 100
+      laserReflectivity:
+        value: 65.2
+        unit: '%'
+        confidence: 94
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 98
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with
+          surface condition'
+      specificHeat:
+        value: 500.0
+        unit: J·kg⁻¹·K⁻¹
+        confidence: 85
+        description: Specific heat capacity at room temperature
+        min: 100
+        max: 900
+      thermalConductivity:
+        value: 15
+        unit: W/(m·K)
+        confidence: 85
+        description: Thermal conductivity at room temperature for 304 stainless steel
+        min: 15
+        max: 400
+        source: MatWeb Materials Database
+        notes: Typical range for metal materials at room temperature
+      thermalDiffusivity:
+        value: 4.2
+        unit: mm²/s
+        confidence: 95
+        description: thermalDiffusivity from Materials.yaml
+        min: 0.2
+        max: 174
+      thermalExpansion:
+        value: 17.3
+        unit: μm/m·°C
+        confidence: 88
+        description: Coefficient of thermal expansion (20-100°C) for 304 stainless
+        min: 0.5
+        max: 29.1
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
+    properties:
+      density:
+        value: 7.93
+        unit: g/cm³
+        confidence: 95
+        description: Typical density for austenitic stainless steel (304/316 grades)
+        min: 0.53
+        max: 22.6
+      oxidationResistance:
+        value: 925
+        unit: °C
+        confidence: 80
+        description: Maximum continuous service temperature in air without excessive
+          scaling
+        min: 200
+        max: 1200
+        source: ASM Metals Handbook - Corrosion
+        notes: 'Oxidation onset: Steel 200-400°C, Stainless 400-800°C, Ni alloys 800-1200°C'
+      hardness:
+        value: 1750.0
+        unit: MPa
+        confidence: 88
+        description: Vickers hardness for annealed 304 stainless steel
+        min: 0.5
+        max: 3500
+      tensileStrength:
+        value: 515
+        unit: MPa
+        confidence: 90
+        description: Typical tensile strength for annealed 304 stainless steel
+        min: 3.0
+        max: 3000.0
+      youngsModulus:
+        value: 200.0
+        unit: GPa
+        confidence: 92
+        description: Elastic modulus at room temperature
+        min: 5
+        max: 411
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
+applications:
+- Aerospace
+- Architecture
+- Automotive
+- Chemical Processing
+- Food Processing
+- Marine
+- Medical Devices
+- Oil & Gas
+- Pharmaceutical
+- Power Generation
+machineSettings:
+  powerRange:
+    value: 100
+    unit: W
+    confidence: 92
+    description: Optimal average power for Stainless Steel oxide layer removal
+    min: 80
+    max: 120
+  wavelength:
+    value: 1064
+    unit: nm
+    confidence: 88
+    description: Near-infrared wavelength for optimal Stainless Steel absorption
+    min: 1030
+    max: 1070
+  spotSize:
+    value: 50
+    unit: μm
+    confidence: 84
+    description: Beam spot diameter for precise cleaning resolution
+    min: 30
+    max: 100
+  repetitionRate:
+    value: 50
+    unit: kHz
+    confidence: 87
+    description: Optimal repetition rate for efficient cleaning coverage
+    min: 20
+    max: 100
+  pulseWidth:
+    value: 10
+    unit: ns
+    confidence: 85
+    description: Nanosecond pulse duration for controlled ablation of contaminants
+    min: 5
+    max: 20
+  scanSpeed:
+    value: 500
+    unit: mm/s
+    confidence: 86
+    description: Optimal scanning speed for uniform cleaning results
+    min: 200
+    max: 1000
+  fluence:
+    value: 6.0
+    unit: J/cm²
+    confidence: 92
+    description: Energy density threshold for effective Stainless Steel cleaning -
+      Energy density threshold for effective oxide and contaminant removal from metallic
+      surfaces
+    min: 3.0
+    max: 12.0
+  overlapRatio:
+    value: 50
+    unit: '%'
+    confidence: 83
+    description: Optimal beam overlap for uniform cleaning coverage
+    min: 40
+    max: 70
+  passCount:
+    value: 3
+    unit: passes
+    confidence: 85
+    description: Recommended number of passes for complete contaminant removal
+    min: 1
+    max: 5
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author:
+  id: 2
+  name: Alessandro Moretti
+  sex: m
+  title: Ph.D.
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  image: /images/author/alessandro-moretti.jpg
+images:
+  hero:
+    alt: Stainless Steel surface undergoing laser cleaning showing precise contamination
+      removal
+    url: /images/material/stainless-steel-laser-cleaning-hero.jpg
+environmentalImpact:
+- benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+  sustainabilityBenefit: ''
+- benefit: Water Usage Reduction
+  description: Dry process requires no water
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+- benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+subtitle: Stainless steel's chromium content creates a protective oxide layer that
+  resists rust. This layer requires specific laser settings to remove contaminants
+  without damaging the underlying surface.
+outcomeMetrics:
+- metric: Contaminant Removal Efficiency
+  description: Percentage of target contaminants successfully removed from surface
+  measurementMethods:
+  - Before/after microscopy
+  - Chemical analysis
+  - Mass spectrometry
+  typicalRanges: 95-99.9% depending on application and material
+  factorsAffecting:
+  - Contamination type
+  - Adhesion strength
+  - Surface geometry
+  units: []
+- metric: Processing Speed
+  description: Rate of surface area processed per unit time
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- metric: Surface Quality Preservation
+  description: Maintenance of original surface characteristics after cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+- metric: Thermal Damage Avoidance
+  description: Prevention of heat-related material alterations during cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+caption:
+  beforeText: At 500x magnification, the stainless steel surface is obscured by a
+    discontinuous contamination layer, typically 5-20 µm thick. This layer consists
+    of embedded carbonaceous soot, oxide scale from thermal exposure, and particulate
+    matter. The underlying metal's fine grinding marks are partially visible beneath
+    this porous, textured crust, which disrupts the substrate's natural reflectivity
+    and creates a matte, non-uniform appearance.
+  afterText: 'Following laser cleaning, the surface reveals the unaltered, homogeneous
+    austenitic grain structure of the stainless steel substrate. The process has completely
+    removed the contamination layer without mechanical abrasion, preserving the original
+    mill-finish topography characterized by shallow, parallel grooves with an average
+    roughness (Ra) of approximately 0.8 µm.
+
+
+    The primary visual transformation is the restoration of the metal''s inherent
+    reflectivity, as the high laser reflectivity (≈65%) of the base material prevented
+    significant energy absorption and subsequent melting. This results in a surface
+    free of heat-affected zones or oxide discoloration.
+
+
+    The cleaning mechanism relied on the selective ablation of contaminants, which
+    have a significantly lower vaporization threshold than the steel''s melting point
+    of 1400°C. The surface now exhibits a clean, metallurgically intact profile, restoring
+    its corrosion-resistant properties and providing an optimal foundation for subsequent
+    finishing or coating processes.'
+  description: Microscopic analysis of stainless steel surface before and after laser
+    cleaning treatment
+  alt: Microscopic view of stainless steel surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - stainless steel_specific
+    contaminationProfile: stainless steel surface contamination
+  microscopy:
+    parameters: Microscopic analysis of Stainless Steel
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-10-02T00:00:00.000000Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: template_caption
+  author: Alessandro Moretti
+  materialProperties:
+    materialType: Metal
+    analysisMethod: template_microscopy
+  imageUrl:
+    alt: Microscopic view of Stainless Steel surface after laser cleaning showing
+      detailed surface structure
+    url: /images/material/stainless-steel-laser-cleaning-micro.jpg
+tags:
+- metal
+- manufacturing
+- aerospace
+- automotive
+- decoating
+- oxide-removal
+- surface-preparation
+- reflective-surface
+- conductive
+- alessandro-moretti
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:21.801886'
+  sources_added: 1
+processing:
+  last_sync: '2025-10-15T19:39:36.920482Z'
+  sync_source: Materials.yaml

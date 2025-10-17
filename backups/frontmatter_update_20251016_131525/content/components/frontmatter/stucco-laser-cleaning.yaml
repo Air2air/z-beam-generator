@@ -1,0 +1,329 @@
+name: Stucco
+category: masonry
+subcategory: stucco
+title: Stucco Laser Cleaning
+description: Laser cleaning parameters for Stucco
+materialProperties:
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    properties:
+      laserAbsorption:
+        value: 8.2
+        unit: cm⁻¹
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.5
+        max: 15
+      laserReflectivity:
+        value: 35.2
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 10
+        max: 70
+        source: Building Materials Optical Properties Database
+        notes: Concrete 20-40%, brick 20-50%, varies with color and surface texture
+      laserDamageThreshold:
+        value: 0.8
+        unit: J/cm²
+        confidence: 81
+        description: Damage threshold for surface modification without ablation
+        min: 0.8
+        max: 1.8
+      specificHeat:
+        value: 840.0
+        unit: J/(kg·K)
+        confidence: 87
+        description: Specific heat capacity at constant pressure
+        min: 700
+        max: 1100
+      thermalConductivity:
+        value: 0.72
+        unit: W/(m·K)
+        confidence: 90
+        description: Thermal conductivity at room temperature
+        min: 0.08
+        max: 2.5
+        source: ASHRAE Handbook - Fundamentals
+        notes: Concrete ~1.0, brick ~0.6, lightweight concrete 0.1-0.5, varies with
+          density and moisture
+      thermalDiffusivity:
+        value: 0.48
+        unit: mm²/s
+        confidence: 83
+        description: Thermal diffusivity calculated from thermal properties
+        min: 0.1
+        max: 1
+      thermalExpansion:
+        value: 10.0
+        unit: 10⁻⁶/K
+        confidence: 85
+        description: Coefficient of thermal expansion
+        min: 5
+        max: 20
+      thermalDegradationPoint:
+        value: 750.0
+        unit: °C
+        confidence: 92
+        description: Temperature where structural integrity fails
+        min: 450.0
+        max: 1073.15
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
+    properties:
+      compressiveStrength:
+        value: 24.1
+        unit: MPa
+        confidence: 89
+        description: Compressive strength of hardened stucco
+        min: 12.4
+        max: 45.0
+      hardness:
+        value: 2.0
+        unit: Mohs
+        confidence: 88
+        description: Mohs hardness scale
+        min: 2
+        max: 6
+      tensileStrength:
+        value: 1.4
+        unit: MPa
+        confidence: 86
+        description: Direct tensile strength
+        min: 1
+        max: 15
+      youngsModulus:
+        value: 20.7
+        unit: GPa
+        confidence: 84
+        description: Elastic modulus in compression
+        min: 5
+        max: 50
+      density:
+        value: 1.5
+        unit: g/cm³
+        confidence: 92
+        description: Bulk density of cured stucco material
+        min: 0.6
+        max: 2.8
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
+applications:
+- Cultural Heritage
+- Aerospace
+- Marine
+- Construction Restoration
+- Manufacturing
+- Energy Sector
+- Automotive
+- Electronics Manufacturing
+- Food Processing
+- Historical Monument Preservation
+machineSettings:
+  powerRange:
+    value: 100
+    unit: W
+    confidence: 92
+    description: Optimal average power for Stucco surface cleaning without substrate
+      damage
+    min: 80
+    max: 120
+  wavelength:
+    value: 1064
+    unit: nm
+    confidence: 88
+    description: Near-IR wavelength optimized for Stucco absorption and minimal substrate
+      interaction
+    min: 1030
+    max: 1070
+  spotSize:
+    value: 100
+    unit: μm
+    confidence: 84
+    description: Beam spot diameter for balanced cleaning efficiency and resolution
+    min: 50
+    max: 200
+  repetitionRate:
+    value: 50
+    unit: kHz
+    confidence: 87
+    description: Optimal repetition rate for efficient cleaning coverage and process
+      speed
+    min: 20
+    max: 100
+  pulseWidth:
+    value: 10
+    unit: ns
+    confidence: 85
+    description: Nanosecond pulse duration for effective contaminant removal with
+      controlled thermal effects
+    min: 5
+    max: 20
+  scanSpeed:
+    value: 500
+    unit: mm/s
+    confidence: 86
+    description: Optimal scanning speed for uniform cleaning without thermal accumulation
+    min: 200
+    max: 1000
+  fluence:
+    value: 3.0
+    unit: J/cm²
+    confidence: 85
+    description: Energy density threshold for effective Stucco cleaning - Energy density
+      threshold for effective cleaning of porous masonry materials
+    min: 1.5
+    max: 6.0
+  overlapRatio:
+    value: 50
+    unit: '%'
+    confidence: 83
+    description: Optimal beam overlap for uniform cleaning coverage without excessive
+      processing
+    min: 30
+    max: 70
+  passCount:
+    value: 2
+    unit: passes
+    confidence: 85
+    description: Recommended number of passes for complete contaminant removal
+    min: 1
+    max: 4
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author:
+  id: 3
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  image: /images/author/ikmanda-roswati.jpg
+images:
+  hero:
+    alt: Stucco surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/stucco-laser-cleaning-hero.jpg
+environmentalImpact:
+- benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+  sustainabilityBenefit: ''
+- benefit: Water Usage Reduction
+  description: Dry process requires no water
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+- benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+subtitle: Stucco has a uniquely textured and porous surface compared to smoother masonry.
+  This texture requires careful adjustment of laser settings to clean effectively
+  without damaging the fragile peaks.
+outcomeMetrics:
+- metric: Contaminant Removal Efficiency
+  description: Percentage of target contaminants successfully removed from surface
+  measurementMethods:
+  - Before/after microscopy
+  - Chemical analysis
+  - Mass spectrometry
+  typicalRanges: 95-99.9% depending on application and material
+  factorsAffecting:
+  - Contamination type
+  - Adhesion strength
+  - Surface geometry
+  units: []
+- metric: Processing Speed
+  description: Rate of surface area processed per unit time
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- metric: Surface Quality Preservation
+  description: Maintenance of original surface characteristics after cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+- metric: Thermal Damage Avoidance
+  description: Prevention of heat-related material alterations during cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+caption:
+  beforeText: At 500x magnification, the stucco surface is obscured by a dense, stratified
+    contamination layer approximately 50-200 µm thick. This layer consists of particulate
+    matter, carbonaceous soot, and biological growth deeply embedded within the material's
+    inherent porosity. The original surface texture, characterized by crystalline
+    hydrates and a rough matrix, is largely undetectable beneath this cohesive, dark
+    biofilm.
+  afterText: Laser cleaning reveals the original stucco matrix, characterized by interlocking
+    calcium silicate hydrate crystals and a porosity of approximately 25%. The surface
+    roughness (45 µm Ra) is now fully visible, free from embedded contaminants. The
+    process has selectively ablated the surface layer without inducing micro-fractures,
+    preserving the substrate's compressive strength of 15 MPa and restoring the material's
+    intrinsic, light-toned appearance.
+  description: Microscopic analysis of stucco surface before and after laser cleaning
+    treatment
+  alt: Microscopic view of stucco surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - stucco_specific
+    contaminationProfile: stucco surface contamination
+  microscopy:
+    parameters: Microscopic analysis of Stucco
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-10-02T00:00:00.000000Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: template_caption
+  author: Ikmanda Roswati
+  materialProperties:
+    materialType: Masonry
+    analysisMethod: template_microscopy
+  imageUrl:
+    alt: Microscopic view of Stucco surface after laser cleaning showing detailed
+      surface structure
+    url: /images/material/stucco-laser-cleaning-micro.jpg
+tags:
+- masonry
+- manufacturing
+- industrial
+- processing
+- surface-preparation
+- contamination-removal
+- maintenance
+- thermal-sensitive
+- industrial-grade
+- ikmanda-roswati
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:22.005555'
+  sources_added: 2
+processing:
+  last_sync: '2025-10-15T19:39:37.056261Z'
+  sync_source: Materials.yaml

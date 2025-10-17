@@ -1,0 +1,104 @@
+name: Data Quality Validation
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'content/components/frontmatter/**/*.yaml'
+      - 'data/Categories.yaml'
+      - 'data/Materials.yaml'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'content/components/frontmatter/**/*.yaml'
+      - 'data/Categories.yaml'
+      - 'data/Materials.yaml'
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  validate-data-quality:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    
+    - name: Run comprehensive validation
+      id: validation
+      run: |
+        python3 scripts/validation/comprehensive_validation_agent.py
+      continue-on-error: true
+    
+    - name: Upload validation report
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: validation-report
+        path: validation_report.json
+        retention-days: 30
+    
+    - name: Check validation results
+      if: steps.validation.outcome == 'failure'
+      run: |
+        echo "❌ Data validation failed!"
+        echo "Check the validation report artifact for details."
+        exit 1
+    
+    - name: Post validation summary
+      if: always()
+      run: |
+        echo "## 📊 Data Validation Results" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        if [ -f validation_report.json ]; then
+          python3 scripts/validation/generate_summary.py >> $GITHUB_STEP_SUMMARY
+        fi
+    
+    - name: Comment on PR (if applicable)
+      if: github.event_name == 'pull_request' && always()
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const fs = require('fs');
+          
+          if (!fs.existsSync('validation_report.json')) {
+            return;
+          }
+          
+          const report = JSON.parse(fs.readFileSync('validation_report.json', 'utf8'));
+          const errors = report.ERROR?.length || 0;
+          const warnings = report.WARNING?.length || 0;
+          
+          let comment = '## 📊 Data Validation Results\n\n';
+          comment += '| Severity | Count |\n';
+          comment += '|----------|-------|\n';
+          comment += `| 🔴 Errors | ${errors} |\n`;
+          comment += `| 🟡 Warnings | ${warnings} |\n\n`;
+          
+          if (errors > 0) {
+            comment += '### ❌ Critical Errors Found\n\n';
+            comment += 'Please fix the errors before merging. ';
+            comment += 'Download the validation report artifact for details.\n';
+          } else if (warnings > 0) {
+            comment += '### ⚠️ Warnings Found\n\n';
+            comment += 'Review recommended but not blocking merge.\n';
+          } else {
+            comment += '### ✅ All Validations Passed!\n';
+          }
+          
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: comment
+          });

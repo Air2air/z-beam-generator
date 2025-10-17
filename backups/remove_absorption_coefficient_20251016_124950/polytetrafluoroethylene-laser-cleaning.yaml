@@ -1,0 +1,319 @@
+name: PTFE
+category: Plastic
+subcategory: Polytetrafluoroethylene (PTFE)
+title: PTFE Laser Cleaning
+description: Laser cleaning parameters for Polytetrafluoroethylene (PTFE)
+materialProperties:
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    properties:
+      laserAbsorption:
+        value: 4.2
+        unit: '%'
+        confidence: 95
+        description: laserAbsorption from Materials.yaml
+        min: 0.1
+        max: 100
+      laserReflectivity:
+        value: 94.5
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 95
+        source: Polymer Optical Properties Database
+        notes: Highly variable with color, additives, and surface finish; translucent
+          materials lower reflectivity
+      specificHeat:
+        value: 1050
+        unit: J/kg·K
+        confidence: 85
+        description: Specific heat capacity at room temperature
+        min: 1000
+        max: 2500
+      thermalConductivity:
+        value: 0.25
+        unit: W/m·K
+        confidence: 90
+        description: Thermal conductivity at room temperature
+        min: 0.02
+        max: 3
+        source: MatWeb Materials Database - Polymers
+        notes: Wide range includes specialty filled polymers (0.02-3 W/m·K); typical
+          unfilled polymers 0.15-0.35 W/m·K
+      thermalDiffusivity:
+        value: 0.124
+        unit: mm²/s
+        confidence: 95
+        description: thermalDiffusivity from Materials.yaml
+        min: 0.05
+        max: 1
+      thermalExpansion:
+        value: 135
+        unit: ×10⁻⁶/°C
+        confidence: 88
+        description: Linear thermal expansion coefficient (20-100°C)
+        min: 10
+        max: 200
+      absorptionCoefficient:
+        value: 0.85
+        unit: cm⁻¹
+        confidence: 82
+        description: Absorption coefficient at 1064 nm wavelength
+        min: 0.85
+        max: 0.85
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
+    properties:
+      density:
+        value: 2.2
+        unit: g/cm³
+        confidence: 95
+        description: Density of virgin PTFE at room temperature
+        min: 0.85
+        max: 2.2
+      chemicalStability:
+        value: 99
+        unit: '% resistance'
+        confidence: 95
+        description: Chemical resistance rating against common solvents
+        min: null
+        max: null
+      crystallineStructure:
+        value: 95
+        unit: '% crystallinity'
+        confidence: 90
+        description: Typical crystallinity percentage in processed PTFE
+        min: null
+        max: null
+      hardness:
+        value: 55
+        unit: Shore D
+        confidence: 85
+        description: Hardness on Shore D scale
+        min: Shore A 10
+        max: Shore D 90
+      tensileStrength:
+        value: 25
+        unit: MPa
+        confidence: 90
+        description: Tensile strength of unfilled PTFE
+        min: 10
+        max: 400
+      youngsModulus:
+        value: 500
+        unit: MPa
+        confidence: 88
+        description: Young's modulus at room temperature
+        min: 0.01
+        max: 5
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
+applications:
+- Aerospace
+- Medical Devices
+- Electronics Manufacturing
+- Chemical Processing
+- Food Processing
+- Automotive
+- Semiconductor Manufacturing
+- Marine Engineering
+- Pharmaceutical Manufacturing
+- Energy Sector
+machineSettings:
+  powerRange:
+    value: 25
+    unit: W
+    confidence: 90
+    description: Optimal average power for PTFE cleaning without thermal degradation
+    min: 15
+    max: 40
+  wavelength:
+    value: 1064
+    unit: nm
+    confidence: 88
+    description: Near-IR wavelength providing optimal absorption in PTFE
+    min: 532
+    max: 10640
+  spotSize:
+    value: 50
+    unit: μm
+    confidence: 86
+    description: Beam spot diameter for precise PTFE cleaning
+    min: 30
+    max: 100
+  repetitionRate:
+    value: 20
+    unit: kHz
+    confidence: 87
+    description: Optimal repetition rate for efficient PTFE removal
+    min: 10
+    max: 50
+  pulseWidth:
+    value: 100
+    unit: ns
+    confidence: 85
+    description: Nanosecond pulse duration for controlled ablation of PTFE
+    min: 50
+    max: 200
+  scanSpeed:
+    value: 500
+    unit: mm/s
+    confidence: 84
+    description: Optimal scanning speed for uniform PTFE removal
+    min: 200
+    max: 1000
+  overlapRatio:
+    value: 50
+    unit: '%'
+    confidence: 83
+    description: Optimal beam overlap for uniform PTFE cleaning
+    min: 30
+    max: 70
+  passCount:
+    value: 3
+    unit: passes
+    confidence: 85
+    description: Recommended number of passes for complete PTFE removal
+    min: 1
+    max: 5
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author:
+  id: 3
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  image: /images/author/ikmanda-roswati.jpg
+images:
+  hero:
+    alt: Polytetrafluoroethylene surface undergoing laser cleaning showing precise
+      contamination removal
+    url: /images/material/polytetrafluoroethylene-laser-cleaning-hero.jpg
+environmentalImpact:
+- benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+  sustainabilityBenefit: ''
+- benefit: Water Usage Reduction
+  description: Dry process requires no water
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+- benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+subtitle: The biggest challenge with PTFE is its variable reaction to heat, so you
+  must use very specific power levels. This ensures the material's integrity remains
+  good-good throughout the cleaning process.
+outcomeMetrics:
+- metric: Contaminant Removal Efficiency
+  description: Percentage of target contaminants successfully removed from surface
+  measurementMethods:
+  - Before/after microscopy
+  - Chemical analysis
+  - Mass spectrometry
+  typicalRanges: 95-99.9% depending on application and material
+  factorsAffecting:
+  - Contamination type
+  - Adhesion strength
+  - Surface geometry
+  units: []
+- metric: Processing Speed
+  description: Rate of surface area processed per unit time
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- metric: Surface Quality Preservation
+  description: Maintenance of original surface characteristics after cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+- metric: Thermal Damage Avoidance
+  description: Prevention of heat-related material alterations during cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+caption:
+  beforeText: At 500x magnification, the polytetrafluoroethylene surface is obscured
+    by a discontinuous layer of amorphous carbonaceous contamination. This layer,
+    measuring 5-15 micrometers thick, adheres to the native PTFE microstructure, masking
+    its characteristic node-and-fibril texture. Particulate matter, including sub-10
+    micrometer silicate spheres, is embedded within this matrix. The contamination
+    creates a topographically varied surface with visible cracking and delamination
+    at the interface with the underlying polymer, indicating poor adhesion and compromised
+    surface integrity.
+  afterText: Laser cleaning effectively ablates the contamination layer, restoring
+    the intrinsic PTFE morphology. The underlying node-and-fibril structure, with
+    features on the order of 1-5 micrometers, is now fully exposed and undamaged.
+    The surface exhibits a uniform, micro-porous texture, free of residual carbonaceous
+    film or embedded particulates. This process eliminates the previous interfacial
+    cracking, resulting in a clean substrate with restored chemical and topographical
+    properties.
+  description: Microscopic analysis of polytetrafluoroethylene surface before and
+    after laser cleaning treatment
+  alt: Microscopic view of polytetrafluoroethylene surface showing laser cleaning
+    effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - polytetrafluoroethylene_specific
+    contaminationProfile: polytetrafluoroethylene surface contamination
+  microscopy:
+    parameters: Microscopic analysis of Polytetrafluoroethylene
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-10-02T00:00:00.000000Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: template_caption
+  author: Ikmanda Roswati
+  materialProperties:
+    materialType: Plastic
+    analysisMethod: template_microscopy
+  imageUrl:
+    alt: Microscopic view of Polytetrafluoroethylene surface after laser cleaning
+      showing detailed surface structure
+    url: /images/material/polytetrafluoroethylene-laser-cleaning-micro.jpg
+tags:
+- plastic
+- manufacturing
+- industrial
+- processing
+- surface-preparation
+- contamination-removal
+- maintenance
+- industrial-grade
+- processed
+- ikmanda-roswati
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:19.925442'
+  sources_added: 2

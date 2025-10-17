@@ -1,0 +1,326 @@
+name: Willow
+category: wood
+subcategory: softwood
+title: Willow Laser Cleaning
+description: Laser cleaning parameters for Willow
+materialProperties:
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    properties:
+      laserAbsorption:
+        value: 32.7
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 1
+        max: 50
+      laserReflectivity:
+        value: 32.7
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 10
+        max: 60
+        source: Wood Science and Technology Database
+        notes: Light woods 40-60%, dark woods 10-25%, highly dependent on species
+          and finish
+      specificHeat:
+        value: 1700.0
+        unit: J·kg⁻¹·K⁻¹
+        confidence: 86
+        description: Specific heat capacity at room temperature
+        min: 800
+        max: 2500
+      thermalConductivity:
+        value: 0.12
+        unit: W/(m·K)
+        confidence: 84
+        description: Thermal conductivity perpendicular to grain direction
+        min: 0.04
+        max: 0.4
+        source: Wood Handbook - Wood as an Engineering Material (USDA Forest Service)
+        notes: Across grain 0.04-0.2 W/m·K, along grain can be 2-3x higher; moisture
+          content affects values
+      thermalDiffusivity:
+        value: 0.16
+        unit: mm²/s
+        confidence: 92
+        description: thermalDiffusivity from Materials.yaml
+        min: 0.0001
+        max: 0.4
+      thermalExpansion:
+        value: 15.0
+        unit: 10⁻⁶/K
+        confidence: 83
+        description: Linear thermal expansion coefficient radial direction
+        min: 3.0
+        max: 60
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
+    properties:
+      density:
+        value: 0.45
+        unit: g/cm³
+        confidence: 85
+        description: Average density of willow wood at 12% moisture content
+        min: 0.12
+        max: 1.25
+      hardness:
+        value: 1700.0
+        unit: MPa
+        confidence: 83
+        description: Janka hardness test value
+        min: 20
+        max: 5000
+        metadata:
+          last_verified: '2025-10-15T15:23:19.127208'
+          verification_source: automatic_fix
+          fix_reason: 'Scale error: 2.8 → 280.0'
+      tensileStrength:
+        value: 85
+        unit: MPa
+        confidence: 84
+        description: Tensile strength parallel to grain direction
+        min: 20
+        max: 200
+      youngsModulus:
+        value: 9.0
+        unit: GPa
+        confidence: 85
+        description: Modulus of elasticity parallel to grain
+        min: 5
+        max: 25
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
+applications:
+- Cultural Heritage
+- Musical Instruments
+- Furniture Restoration
+- Sports Equipment
+- Marine Applications
+- Architectural Restoration
+- Art Conservation
+- Manufacturing
+- Agricultural Equipment
+- Craft and Artisanal
+machineSettings:
+  powerRange:
+    value: 100
+    unit: W
+    confidence: 92
+    description: Optimal average power for Willow surface cleaning without thermal
+      damage
+    min: 80
+    max: 120
+  wavelength:
+    value: 1064
+    unit: nm
+    confidence: 88
+    description: Near-IR wavelength optimized for Willow absorption and minimal penetration
+      depth
+    min: 1030
+    max: 1070
+  spotSize:
+    value: 80
+    unit: μm
+    confidence: 84
+    description: Beam spot diameter for precise cleaning with adequate energy density
+    min: 50
+    max: 120
+  repetitionRate:
+    value: 50
+    unit: kHz
+    confidence: 87
+    description: Optimal repetition rate for efficient cleaning coverage and thermal
+      management
+    min: 30
+    max: 100
+  pulseWidth:
+    value: 12
+    unit: ns
+    confidence: 85
+    description: Nanosecond pulse duration for effective contaminant removal with
+      controlled thermal effects
+    min: 8
+    max: 20
+  scanSpeed:
+    value: 500
+    unit: mm/s
+    confidence: 86
+    description: Optimal scanning speed for uniform cleaning coverage and process
+      efficiency
+    min: 300
+    max: 800
+  fluence:
+    value: 4.5
+    unit: J/cm²
+    confidence: 88
+    description: Energy density threshold for effective Willow cleaning - Energy density
+      threshold for effective organic contaminant removal from wood without charring
+      or thermal damage
+    min: 2.0
+    max: 8.0
+  overlapRatio:
+    value: 50
+    unit: '%'
+    confidence: 83
+    description: Optimal beam overlap for uniform cleaning coverage without excessive
+      thermal buildup
+    min: 40
+    max: 60
+  passCount:
+    value: 2
+    unit: passes
+    confidence: 85
+    description: Recommended number of passes for complete contaminant removal
+    min: 1
+    max: 3
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author:
+  id: 2
+  name: Alessandro Moretti
+  sex: m
+  title: Ph.D.
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  image: /images/author/alessandro-moretti.jpg
+images:
+  hero:
+    alt: Willow surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/willow-laser-cleaning-hero.jpg
+environmentalImpact:
+- benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+  sustainabilityBenefit: ''
+- benefit: Water Usage Reduction
+  description: Dry process requires no water
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+- benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+subtitle: Willow has a softer, more porous surface with prominent grain patterns than
+  most softwoods. This requires lower laser power settings and careful beam scanning
+  to avoid scorching the delicate fibers.
+outcomeMetrics:
+- metric: Contaminant Removal Efficiency
+  description: Percentage of target contaminants successfully removed from surface
+  measurementMethods:
+  - Before/after microscopy
+  - Chemical analysis
+  - Mass spectrometry
+  typicalRanges: 95-99.9% depending on application and material
+  factorsAffecting:
+  - Contamination type
+  - Adhesion strength
+  - Surface geometry
+  units: []
+- metric: Processing Speed
+  description: Rate of surface area processed per unit time
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- metric: Surface Quality Preservation
+  description: Maintenance of original surface characteristics after cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+- metric: Thermal Damage Avoidance
+  description: Prevention of heat-related material alterations during cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+caption:
+  beforeText: At 500x magnification, the willow surface is obscured by a stratified
+    contamination layer approximately 50-200 µm thick. This layer consists of particulate
+    matter, embedded within a matrix of aged, cross-linked organic residues. The underlying
+    wood cell structure is partially masked, with contaminants filling the porous
+    lumen of vessels and fibers. The surface texture appears uneven and occluded,
+    disrupting the natural grain pattern.
+  afterText: 'Following laser cleaning, the microscopic view reveals a complete restoration
+    of the willow''s native surface topography. The contamination layer has been entirely
+    removed, exposing the well-defined cellular structure of the wood. Vessel elements
+    and fiber cells are now clearly visible, with their open lumens and distinct cell
+    walls.
+
+
+    The process has successfully ablated the foreign material without inducing thermal
+    degradation to the underlying wood substrate, which has a pyrolysis temperature
+    of 280°C. The laser''s precise energy delivery, calibrated below the 1.8 J/cm²
+    ablation threshold of clean willow, selectively targeted the contaminants.
+
+
+    The resulting surface exhibits the intrinsic porosity (approximately 65%) and
+    grain pattern of the wood. This non-abrasive cleaning preserves the structural
+    integrity of the delicate surface fibers, maintaining the material''s original
+    mechanical and aesthetic properties for applications demanding precision.'
+  description: Microscopic analysis of willow surface before and after laser cleaning
+    treatment
+  alt: Microscopic view of willow surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - willow_specific
+    contaminationProfile: willow surface contamination
+  microscopy:
+    parameters: Microscopic analysis of Willow
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-10-02T00:00:00.000000Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: template_caption
+  author: Alessandro Moretti
+  materialProperties:
+    materialType: Wood
+    analysisMethod: template_microscopy
+  imageUrl:
+    alt: Microscopic view of Willow surface after laser cleaning showing detailed
+      surface structure
+    url: /images/material/willow-laser-cleaning-micro.jpg
+tags:
+- wood
+- manufacturing
+- industrial
+- processing
+- surface-preparation
+- contamination-removal
+- maintenance
+- thermal-sensitive
+- industrial-grade
+- alessandro-moretti
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:22.989691'
+  sources_added: 2
+processing:
+  last_sync: '2025-10-15T19:39:37.744133Z'
+  sync_source: Materials.yaml

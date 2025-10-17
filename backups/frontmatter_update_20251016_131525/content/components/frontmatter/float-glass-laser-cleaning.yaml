@@ -1,0 +1,350 @@
+name: Float Glass
+category: glass
+subcategory: float glass
+title: Float Glass Laser Cleaning
+description: Laser cleaning parameters for Float Glass
+materialProperties:
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    properties:
+      laserAbsorption:
+        value: 4.0
+        unit: '%'
+        confidence: 95
+        description: laserAbsorption from Materials.yaml
+        min: 0.001
+        max: 10
+      laserReflectivity:
+        value: 4.2
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 4
+        max: 92
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        notes: Typical glasses 4-8% at normal incidence, varies with composition and
+          wavelength
+      refractiveIndex:
+        value: 1.52
+        unit: ''
+        confidence: 98
+        description: Refractive index at 589 nm wavelength
+        min: 1.458
+        max: 1.76
+      laserDamageThreshold:
+        value: 10
+        unit: J/cm²
+        confidence: 82
+        description: Estimated damage threshold for nanosecond pulses at 1064 nm
+        min: 2.5
+        max: 15.0
+      specificHeat:
+        value: 840.0
+        unit: J·kg⁻¹·K⁻¹
+        confidence: 88
+        description: Specific heat capacity at room temperature
+        min: 500
+        max: 900
+      thermalConductivity:
+        value: 1.0
+        unit: W/(m·K)
+        confidence: 85
+        description: Low thermal conductivity typical of silicate glasses
+        min: 0.8
+        max: 1.4
+        source: MatWeb Materials Database
+        notes: Typical range for glass materials at room temperature
+      thermalDiffusivity:
+        value: 0.84
+        unit: mm²/s
+        confidence: 95
+        description: thermalDiffusivity from Materials.yaml
+        min: 0.01
+        max: 15
+      thermalExpansion:
+        value: 8.5
+        unit: 10⁻⁶/K
+        confidence: 94
+        description: Coefficient of linear thermal expansion for soda-lime glass
+        min: 0.1
+        max: 15
+      softeningPoint:
+        value: 1100.0
+        unit: K
+        confidence: 95
+        description: Temperature where glass transitions from rigid to pliable state
+        min: 820.0
+        max: 2040.0
+      transmissivity:
+        value: 92
+        unit: '%'
+        confidence: 95
+        description: Visible light transmission for clear float glass
+        min: 85.0
+        max: 93.0
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
+    properties:
+      density:
+        value: 2.52
+        unit: g/cm³
+        confidence: 95
+        description: Typical density of soda-lime-silica float glass
+        min: 1.2
+        max: 7.6
+      hardness:
+        value: 5.5
+        unit: Mohs
+        confidence: 85
+        description: Mohs hardness scale value
+        min: 4.5
+        max: 9
+      tensileStrength:
+        value: 40.0
+        unit: MPa
+        confidence: 95
+        description: tensileStrength from Materials.yaml
+        min: 30
+        max: 2000
+      youngsModulus:
+        value: 72.0
+        unit: GPa
+        confidence: 96
+        description: Elastic modulus of float glass
+        min: 10
+        max: 400
+      flexuralStrength:
+        value: 45.0
+        unit: MPa
+        confidence: 90
+        description: Bending strength of pristine float glass
+        min: 50.0
+        max: 690.0
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
+applications:
+- Architectural Glass Manufacturing
+- Solar Panel Manufacturing
+- Automotive Glass Production
+- Electronics Display Manufacturing
+- Aerospace Canopy Maintenance
+- Marine Window Systems
+- Medical Device Manufacturing
+- Cultural Heritage Conservation
+- Food Processing Equipment
+- Energy Sector Instrumentation
+machineSettings:
+  powerRange:
+    value: 90
+    unit: W
+    confidence: 91
+    description: Optimal average power for Float Glass surface cleaning without thermal
+      damage
+    min: 70
+    max: 110
+  wavelength:
+    value: 1064
+    unit: nm
+    confidence: 89
+    description: Near-IR wavelength with good transmission through glass while effectively
+      removing surface contaminants
+    min: 1030
+    max: 1070
+  spotSize:
+    value: 80
+    unit: μm
+    confidence: 88
+    description: Beam spot diameter for precise cleaning with adequate energy density
+    min: 50
+    max: 120
+  repetitionRate:
+    value: 50
+    unit: kHz
+    confidence: 85
+    description: Optimal repetition rate for efficient cleaning coverage while maintaining
+      thermal management
+    min: 30
+    max: 100
+  pulseWidth:
+    value: 12
+    unit: ns
+    confidence: 87
+    description: Nanosecond pulse duration for efficient contaminant removal with
+      minimal substrate heating
+    min: 8
+    max: 20
+  scanSpeed:
+    value: 500
+    unit: mm/s
+    confidence: 86
+    description: Optimal scanning speed for efficient area coverage with effective
+      contaminant removal
+    min: 300
+    max: 800
+  fluence:
+    value: 2.5
+    unit: J/cm²
+    confidence: 90
+    description: Energy density threshold for effective Float Glass cleaning - Energy
+      density threshold for surface cleaning without inducing optical damage or stress
+      fractures
+    min: 1.0
+    max: 5.0
+  overlapRatio:
+    value: 50
+    unit: '%'
+    confidence: 84
+    description: Optimal beam overlap for uniform cleaning coverage without excessive
+      energy deposition
+    min: 40
+    max: 70
+  passCount:
+    value: 2
+    unit: passes
+    confidence: 88
+    description: Recommended number of passes for complete contaminant removal with
+      safety margin
+    min: 1
+    max: 4
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author:
+  id: 3
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  image: /images/author/ikmanda-roswati.jpg
+images:
+  hero:
+    alt: Float Glass surface undergoing laser cleaning showing precise contamination
+      removal
+    url: /images/material/float-glass-laser-cleaning-hero.jpg
+environmentalImpact:
+- benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+  sustainabilityBenefit: ''
+- benefit: Water Usage Reduction
+  description: Dry process requires no water
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+- benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+subtitle: Pay close attention to float glass during laser treatment—its smooth finish
+  can hide tiny flaws. Adjusting the power levels to stay below 50 watts ensures you
+  safeguard the layer from unintended etching.
+outcomeMetrics:
+- metric: Contaminant Removal Efficiency
+  description: Percentage of target contaminants successfully removed from surface
+  measurementMethods:
+  - Before/after microscopy
+  - Chemical analysis
+  - Mass spectrometry
+  typicalRanges: 95-99.9% depending on application and material
+  factorsAffecting:
+  - Contamination type
+  - Adhesion strength
+  - Surface geometry
+  units: []
+- metric: Processing Speed
+  description: Rate of surface area processed per unit time
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- metric: Surface Quality Preservation
+  description: Maintenance of original surface characteristics after cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+- metric: Thermal Damage Avoidance
+  description: Prevention of heat-related material alterations during cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+caption:
+  beforeText: At 500x magnification, the float glass surface is obscured by a discontinuous
+    layer of particulate and hydrocarbon contamination. This layer, ranging from 100
+    nm to 5 µm in thickness, consists of imbedded silica and alumina particles, carbonaceous
+    soot, and organic residues. The contaminants create a topographical landscape
+    of peaks and valleys, disrupting the pristine surface roughness of approximately
+    0.5 nm Ra. This layer significantly scatters incident light, reducing optical
+    clarity and increasing light diffusion across the surface.
+  afterText: Laser cleaning restores the surface to its intrinsic state, revealing
+    the original, atomically smooth substrate with a characteristic roughness near
+    0.5 nm Ra. At 500x magnification, all exogenous particulate and hydrocarbon films
+    have been completely removed, eliminating the previous light-scattering topography.
+    The surface is now a continuous, homogeneous plane with no evidence of laser-induced
+    micro-fractures or thermal stress marks. This pristine condition ensures minimal
+    light diffusion, allowing the glass to achieve its inherent transmissivity of
+    approximately 91% for visible light.
+  description: Microscopic analysis of float glass surface before and after laser
+    cleaning treatment
+  alt: Microscopic view of float glass surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - float glass_specific
+    contaminationProfile: float glass surface contamination
+  microscopy:
+    parameters: Microscopic analysis of Float Glass
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-10-02T00:00:00.000000Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: template_caption
+  author: Ikmanda Roswati
+  materialProperties:
+    materialType: Glass
+    analysisMethod: template_microscopy
+  imageUrl:
+    alt: Microscopic view of Float Glass surface after laser cleaning showing detailed
+      surface structure
+    url: /images/material/float-glass-laser-cleaning-micro.jpg
+tags:
+- glass
+- manufacturing
+- industrial
+- processing
+- surface-preparation
+- contamination-removal
+- maintenance
+- thermal-sensitive
+- industrial-grade
+- ikmanda-roswati
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:17.194483'
+  sources_added: 1
+processing:
+  last_sync: '2025-10-15T19:39:33.832261Z'
+  sync_source: Materials.yaml

@@ -1,0 +1,309 @@
+name: Epoxy Resin Composites
+category: composite
+subcategory: epoxy resin composites
+title: Epoxy Resin Composites Laser Cleaning
+description: Laser cleaning parameters for Epoxy Resin Composites
+materialProperties:
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    properties:
+      laserAbsorption:
+        value: 92.7
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.05
+        max: 200
+      laserReflectivity:
+        value: 38.5
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 2
+        max: 80
+      specificHeat:
+        value: 1000.0
+        unit: J·kg⁻¹·K⁻¹
+        confidence: 90
+        description: Specific heat capacity at room temperature
+        min: 500
+        max: 1500
+      thermalConductivity:
+        value: 0.2
+        unit: W/(m·K)
+        confidence: 88
+        description: Thermal conductivity perpendicular to fiber direction
+        min: 0.03
+        max: 400
+      thermalDiffusivity:
+        value: 0.12
+        unit: mm²/s
+        confidence: 92
+        description: thermalDiffusivity from Materials.yaml
+        min: 0.1
+        max: 180
+      thermalExpansion:
+        value: 30.0
+        unit: 10⁻⁶/K
+        confidence: 85
+        description: Coefficient of thermal expansion in transverse direction
+        min: -1
+        max: 250
+      decompositionTemperature:
+        value: 350
+        unit: °C
+        confidence: 90
+        description: Onset temperature for thermal decomposition
+        min: null
+        max: null
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
+    properties:
+      density:
+        value: 1.25
+        unit: g/cm³
+        confidence: 95
+        description: Typical density for epoxy resin composites with fiber reinforcement
+        min: 0.5
+        max: 8
+      hardness:
+        value: 85
+        unit: Shore D
+        confidence: 88
+        description: Hardness on Shore D scale for cured epoxy
+        min: 20
+        max: 120
+      tensileStrength:
+        value: 3100.0
+        unit: MPa
+        confidence: 92
+        description: Tensile strength parallel to fiber direction
+        min: 20
+        max: 6000
+      youngsModulus:
+        value: 3.2
+        unit: GPa
+        confidence: 94
+        description: Elastic modulus in fiber direction
+        min: 0.001
+        max: 3000
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
+applications:
+- Aerospace
+- Automotive
+- Wind Energy
+- Marine
+- Electronics
+- Medical Devices
+- Cultural Heritage
+- Sports Equipment
+- Construction
+- Rail Transportation
+machineSettings:
+  powerRange:
+    value: 100
+    unit: W
+    confidence: 92
+    description: Optimal average power for epoxy resin removal without substrate damage
+    min: 80
+    max: 120
+  wavelength:
+    value: 1064
+    unit: nm
+    confidence: 88
+    description: Near-IR wavelength optimized for epoxy resin absorption characteristics
+    min: null
+    max: null
+  spotSize:
+    value: 50
+    unit: μm
+    confidence: 84
+    description: Optimal beam spot diameter for precision cleaning of epoxy surfaces
+    min: 30
+    max: 100
+  repetitionRate:
+    value: 50
+    unit: kHz
+    confidence: 87
+    description: Optimal repetition rate for efficient cleaning with thermal management
+    min: 20
+    max: 100
+  pulseWidth:
+    value: 10
+    unit: ns
+    confidence: 85
+    description: Optimal pulse duration for controlled epoxy removal with minimal
+      thermal damage
+    min: 5
+    max: 20
+  scanSpeed:
+    value: 500
+    unit: mm/s
+    confidence: 86
+    description: Optimal scanning speed for uniform epoxy removal
+    min: 300
+    max: 800
+  fluence:
+    value: 3.0
+    unit: J/cm²
+    confidence: 86
+    description: Energy density threshold for effective Epoxy Resin Composites cleaning
+      - Energy density threshold for composite material cleaning considering matrix
+      and reinforcement properties
+    min: 1.5
+    max: 6.0
+  overlapRatio:
+    value: 50
+    unit: '%'
+    confidence: 83
+    description: Optimal beam overlap for uniform epoxy removal without excessive
+      heating
+    min: 40
+    max: 60
+  passCount:
+    value: 3
+    unit: passes
+    confidence: 85
+    description: Recommended number of passes for complete epoxy removal
+    min: 2
+    max: 5
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author:
+  id: 1
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg
+images:
+  hero:
+    alt: Epoxy Resin Composites surface undergoing laser cleaning showing precise
+      contamination removal
+    url: /images/material/epoxy-resin-composites-laser-cleaning-hero.jpg
+environmentalImpact:
+- benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+  sustainabilityBenefit: ''
+- benefit: Water Usage Reduction
+  description: Dry process requires no water
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+- benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+subtitle: Epoxy Resin Composites behave differently under laser treatment, so operators
+  must watch the coating closely. Adjust power levels to a controlled range, like
+  20-30 watts, to protect the finish from unintended harm.
+outcomeMetrics:
+- metric: Contaminant Removal Efficiency
+  description: Percentage of target contaminants successfully removed from surface
+  measurementMethods:
+  - Before/after microscopy
+  - Chemical analysis
+  - Mass spectrometry
+  typicalRanges: 95-99.9% depending on application and material
+  factorsAffecting:
+  - Contamination type
+  - Adhesion strength
+  - Surface geometry
+  units: []
+- metric: Processing Speed
+  description: Rate of surface area processed per unit time
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- metric: Surface Quality Preservation
+  description: Maintenance of original surface characteristics after cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+- metric: Thermal Damage Avoidance
+  description: Prevention of heat-related material alterations during cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+caption:
+  beforeText: At 500x magnification, the epoxy composite surface is obscured by a
+    non-uniform contamination layer, typically 5-20 µm thick. This layer, composed
+    of embedded particulates, organic residues, and oxides, masks the underlying fiber
+    reinforcement and matrix texture. The contamination adheres tenaciously, creating
+    a topographically complex and irregular surface that increases light scattering
+    and reduces surface energy. The native 1.5 µm Ra surface roughness of the composite
+    is significantly amplified by this adherent debris.
+  afterText: Laser cleaning effectively ablates the contamination layer, restoring
+    the original composite topography. The cleaned surface reveals the distinct fiber
+    weave pattern and the epoxy matrix, with roughness returning to its intrinsic
+    ~1.5 µm Ra. The process leaves a visually uniform, residue-free surface with no
+    observable thermal degradation, charring, or fiber damage at this magnification.
+  description: Microscopic analysis of epoxy resin composites surface before and after
+    laser cleaning treatment
+  alt: Microscopic view of epoxy resin composites surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - epoxy resin composites_specific
+    contaminationProfile: epoxy resin composites surface contamination
+  microscopy:
+    parameters: Microscopic analysis of Epoxy Resin Composites
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-10-02T00:00:00.000000Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: template_caption
+  author: Yi-Chun Lin
+  materialProperties:
+    materialType: Composite
+    analysisMethod: template_microscopy
+  imageUrl:
+    alt: Microscopic view of Epoxy Resin Composites surface after laser cleaning showing
+      detailed surface structure
+    url: /images/material/epoxy-resin-composites-laser-cleaning-micro.jpg
+tags:
+- composite
+- manufacturing
+- industrial
+- processing
+- surface-preparation
+- contamination-removal
+- maintenance
+- thermal-sensitive
+- industrial-grade
+- yi-chun-lin
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:16.921886'
+  sources_added: 2
+processing:
+  last_sync: '2025-10-15T19:39:33.682367Z'
+  sync_source: Materials.yaml

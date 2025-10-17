@@ -273,18 +273,17 @@ class PreGenerationValidationService:
             return ValidationResult(False, "materials", issues, warnings, errors)
     
     def _validate_all_frontmatter(self) -> ValidationResult:
-        """Validate all frontmatter files"""
-        issues = []
-        warnings = []
-        errors = []
+        """Validate all frontmatter files including two-category compliance"""
+        result = ValidationResult(success=True, validation_type="frontmatter")
         
         if not self.frontmatter_dir.exists():
-            warnings.append({
-                "type": "directory_not_found",
-                "directory": str(self.frontmatter_dir),
-                "message": "Frontmatter directory not found"
-            })
-            return ValidationResult(True, "frontmatter", issues, warnings, errors)
+            result.add_error(VError(
+                severity=ErrorSeverity.WARNING,
+                error_type=ErrorType.MISSING_CONFIG,
+                message=f"Frontmatter directory not found: {self.frontmatter_dir}",
+                file_path=str(self.frontmatter_dir)
+            ))
+            return result
         
         files = list(self.frontmatter_dir.glob("*.yaml"))
         
@@ -294,11 +293,12 @@ class PreGenerationValidationService:
                     frontmatter_data = yaml.safe_load(f)
                 
                 if not frontmatter_data:
-                    warnings.append({
-                        "type": "empty_file",
-                        "file": file_path.name,
-                        "message": f"Empty frontmatter file: {file_path.name}"
-                    })
+                    result.add_error(VError(
+                        severity=ErrorSeverity.WARNING,
+                        error_type=ErrorType.INVALID_CONFIG,
+                        message=f"Empty frontmatter file",
+                        file_path=file_path.name
+                    ))
                     continue
                 
                 # Basic structure validation
@@ -306,22 +306,37 @@ class PreGenerationValidationService:
                 missing = [f for f in required_fields if f not in frontmatter_data]
                 
                 if missing:
-                    warnings.append({
-                        "type": "missing_fields",
-                        "file": file_path.name,
-                        "missing_fields": missing,
-                        "message": f"Missing required fields: {missing}"
-                    })
+                    result.add_error(VError(
+                        severity=ErrorSeverity.WARNING,
+                        error_type=ErrorType.MISSING_FIELD,
+                        message=f"Missing required fields: {', '.join(missing)}",
+                        file_path=file_path.name
+                    ))
+                
+                # Two-category system validation
+                material_name = frontmatter_data.get('name', file_path.stem)
+                
+                # Extract property categories (look for laser_material_interaction, material_characteristics, other)
+                property_categories = {}
+                for key in frontmatter_data.keys():
+                    if key in ['laser_material_interaction', 'material_characteristics', 'other']:
+                        property_categories[key] = frontmatter_data[key]
+                
+                if property_categories:
+                    category_errors = self._validate_two_category_system(material_name, property_categories)
+                    for error in category_errors:
+                        error.file_path = file_path.name
+                        result.add_error(error)
                     
             except Exception as e:
-                errors.append({
-                    "type": "validation_error",
-                    "file": file_path.name,
-                    "message": f"Error validating {file_path.name}: {str(e)}"
-                })
+                result.add_error(VError(
+                    severity=ErrorSeverity.ERROR,
+                    error_type=ErrorType.VALIDATION_ERROR,
+                    message=f"Error validating frontmatter: {str(e)}",
+                    file_path=file_path.name
+                ))
         
-        success = len(errors) == 0
-        return ValidationResult(success, "frontmatter", issues, warnings, errors)
+        return result
     
     # ========================================================================
     # PROPERTY-LEVEL VALIDATION
@@ -808,6 +823,74 @@ class PreGenerationValidationService:
             pass
         
         return issues
+    
+    def _validate_two_category_system(self, material: str, material_properties: Dict) -> List[VError]:
+        """
+        Validate that frontmatter uses only the two-category system.
+        
+        Per system requirements:
+        - ONLY two categories allowed: laser_material_interaction, material_characteristics
+        - 'other' category is STRICTLY FORBIDDEN (ERROR severity)
+        - Both categories should be present (WARNING if missing)
+        
+        Args:
+            material: Material name
+            material_properties: Dictionary with category keys
+        
+        Returns:
+            List of ValidationError objects
+        """
+        errors = []
+        
+        ALLOWED_CATEGORIES = {'laser_material_interaction', 'material_characteristics'}
+        found_categories = set(material_properties.keys())
+        
+        # Check for 'other' category (strictly forbidden)
+        if 'other' in found_categories:
+            errors.append(VError(
+                severity=ErrorSeverity.ERROR,
+                error_type=ErrorType.FORBIDDEN_CATEGORY,
+                message="FORBIDDEN: 'other' category found. System uses ONLY two categories: laser_material_interaction and material_characteristics",
+                material=material,
+                category='other',
+                suggestion="Move properties to laser_material_interaction or material_characteristics"
+            ))
+        
+        # Check for any invalid categories
+        invalid_categories = found_categories - ALLOWED_CATEGORIES
+        for invalid_cat in invalid_categories:
+            if invalid_cat != 'other':  # Already reported
+                errors.append(VError(
+                    severity=ErrorSeverity.ERROR,
+                    error_type=ErrorType.INCORRECT_CATEGORIZATION,
+                    message=f"Invalid category '{invalid_cat}'. Only 'laser_material_interaction' and 'material_characteristics' allowed",
+                    material=material,
+                    category=invalid_cat,
+                    suggestion="Use only the two allowed categories"
+                ))
+        
+        # Check both required categories exist
+        if 'laser_material_interaction' not in found_categories:
+            errors.append(VError(
+                severity=ErrorSeverity.WARNING,
+                error_type=ErrorType.MISSING_CATEGORY,
+                message="Missing required category 'laser_material_interaction'",
+                material=material,
+                category='laser_material_interaction',
+                suggestion="Add laser-material interaction properties"
+            ))
+        
+        if 'material_characteristics' not in found_categories:
+            errors.append(VError(
+                severity=ErrorSeverity.WARNING,
+                error_type=ErrorType.MISSING_CATEGORY,
+                message="Missing required category 'material_characteristics'",
+                material=material,
+                category='material_characteristics',
+                suggestion="Add material characteristics properties"
+            ))
+        
+        return errors
     
     # ========================================================================
     # GAP ANALYSIS
