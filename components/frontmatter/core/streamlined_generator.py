@@ -33,6 +33,7 @@ from components.frontmatter.ordering.field_ordering_service import FieldOrdering
 from components.frontmatter.core.validation_helpers import ValidationHelpers
 from components.frontmatter.research.property_value_researcher import PropertyValueResearcher
 from components.frontmatter.services.property_discovery_service import PropertyDiscoveryService
+from components.frontmatter.services.property_research_service import PropertyResearchService
 
 # Import unified exception classes from validation system
 from validation.errors import (
@@ -137,6 +138,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         
         # Initialize service placeholders (will be set during data loading)
         self.property_discovery_service = None  # Initialized in _load_categories_data()
+        self.property_research_service = None  # Initialized in _load_categories_data()
         
         # Load materials research data for range calculations
         self._load_materials_research_data()
@@ -230,6 +232,14 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             # Initialize PropertyDiscoveryService with categories data
             self.property_discovery_service = PropertyDiscoveryService(categories_data=categories_data)
             self.logger.info("PropertyDiscoveryService initialized with categories data")
+            
+            # Initialize PropertyResearchService with researcher and helper functions
+            self.property_research_service = PropertyResearchService(
+                property_researcher=self.property_researcher,
+                get_category_ranges_func=self._get_category_ranges_for_property,
+                enhance_descriptions_func=self._enhance_with_standardized_descriptions
+            )
+            self.logger.info("PropertyResearchService initialized with property researcher")
             
             if 'materialPropertyDescriptions' not in categories_data:
                 raise ConfigurationError("materialPropertyDescriptions section required in Categories.yaml")
@@ -654,7 +664,15 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             
             # PHASE 1.5: Add category-specific thermal property field (dual-field approach)
             material_category = material_data.get('category', 'metal').lower()
-            thermal_field_added = self._add_category_thermal_property(properties, yaml_properties, material_category, material_data)
+            if not self.property_research_service:
+                raise PropertyDiscoveryError("PropertyResearchService not initialized")
+            
+            thermal_field_added = self.property_research_service.add_category_thermal_property(
+                properties=properties,
+                yaml_properties=yaml_properties,
+                material_category=material_category,
+                thermal_property_map=THERMAL_PROPERTY_MAP
+            )
             if thermal_field_added:
                 yaml_count += 1
             
@@ -673,52 +691,19 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             for prop, reason in skip_reasons.items():
                 self.logger.info(f"⏭️  Skipping {prop}: {reason}")
             
-            # AI discovery for properties that need research
-            discovered_properties = self.property_researcher.discover_all_material_properties(material_name)
+            # Use PropertyResearchService for AI research
+            if not self.property_research_service:
+                raise PropertyDiscoveryError("PropertyResearchService not initialized")
             
-            self.logger.info(f"AI discovery found {len(discovered_properties)} properties for {material_name}")
+            researched_properties = self.property_research_service.research_material_properties(
+                material_name=material_name,
+                material_category=material_category,
+                existing_properties=properties
+            )
             
-            # Use discovered properties for anything not already in YAML
-            for prop_name, prop_data in discovered_properties.items():
-                # Skip meltingPoint if we already have thermalDestruction (meltingPoint is redundant)
-                if prop_name == 'meltingPoint' and 'thermalDestruction' in properties:
-                    self.logger.info(f"⏭️  Skipping meltingPoint - using thermalDestruction instead")
-                    continue
-                
-                if prop_name not in properties:  # Only if not already from YAML
-                    ai_count += 1
-                try:
-                    # Property data from AI discovery, but min/max from Categories.yaml ranges
-                    property_data = {
-                        'value': prop_data['value'],
-                        'unit': prop_data['unit'],
-                        'confidence': prop_data['confidence'],
-                        'description': prop_data['description']
-                    }
-                    
-                    # Get min/max from Categories.yaml category ranges - REQUIRED per data source policy
-                    category_ranges = self._get_category_ranges_for_property(material_data.get('category'), prop_name)
-                    if category_ranges:
-                        property_data['min'] = category_ranges.get('min')
-                        property_data['max'] = category_ranges.get('max')
-                    else:
-                        # No min/max available from Categories.yaml - omit rather than use AI values
-                        property_data['min'] = None
-                        property_data['max'] = None
-                    
-                    # Enhance with standardized descriptions from Categories.yaml
-                    property_data = self._enhance_with_standardized_descriptions(
-                        property_data, prop_name, 'materialProperties'
-                    )
-                    
-                    properties[prop_name] = property_data
-                    self.logger.info(f"🤖 AI: {prop_name} = {prop_data['value']} {prop_data['unit']} (confidence: {prop_data['confidence']}%)")
-                except Exception as e:
-                    self.logger.warning(f"Error processing discovered property {prop_name}: {e}")
-                        
-                except Exception as e:
-                    self.logger.warning(f"Property research failed for {prop_name}: {e}")
-                    # Continue with other properties - don't fail entire generation for one property
+            # Add researched properties to our collection
+            properties.update(researched_properties)
+            ai_count = len(researched_properties)
                     
         except Exception as e:
             self.logger.error(f"Property discovery failed for {material_name}: {e}")
@@ -830,53 +815,16 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
 
     def _generate_machine_settings_with_ranges(self, material_data: Dict, material_name: str) -> Dict:
         """Generate machine settings with DataMetrics structure using comprehensive AI discovery (GROK compliant - no fallbacks)"""
-        machine_settings = {}
+        # Use PropertyResearchService for comprehensive machine settings discovery
+        if not self.property_research_service:
+            raise PropertyDiscoveryError("PropertyResearchService required for machine settings discovery")
         
-        # Use PropertyValueResearcher for comprehensive machine settings discovery
-        if not self.property_researcher:
-            # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
-            raise PropertyDiscoveryError("PropertyValueResearcher required for comprehensive machine settings discovery")
-            
         try:
-            # Use comprehensive AI discovery to find ALL relevant machine settings
-            discovered_settings = self.property_researcher.discover_all_machine_settings(material_name)
-            
-            self.logger.info(f"Comprehensive AI discovery found {len(discovered_settings)} machine settings for {material_name}")
-            
-            # Use discovered settings directly (no need for additional research)
-            for setting_name, setting_data in discovered_settings.items():
-                try:
-                    # Machine setting data already complete from AI discovery
-                    machine_setting_data = {
-                        'value': setting_data['value'],
-                        'unit': setting_data['unit'],
-                        'confidence': setting_data['confidence'],
-                        'description': setting_data['description'],
-                        'min': setting_data['min'] if 'min' in setting_data else None,
-                        'max': setting_data['max'] if 'max' in setting_data else None
-                    }
-                    
-                    # Enhance with standardized descriptions from Categories.yaml
-                    machine_setting_data = self._enhance_with_standardized_descriptions(
-                        machine_setting_data, setting_name, 'machineSettings'
-                    )
-                    
-                    machine_settings[setting_name] = machine_setting_data
-                    self.logger.info(f"AI-discovered machine setting {setting_name}: {setting_data['value']} {setting_data['unit']} (confidence: {setting_data['confidence']}%)")
-                except Exception as e:
-                    self.logger.warning(f"Error processing discovered machine setting {setting_name}: {e}")
-                    # Continue with other settings - don't fail entire generation for one setting
-                    
+            machine_settings = self.property_research_service.research_machine_settings(material_name)
+            return machine_settings
         except Exception as e:
-            self.logger.error(f"Comprehensive machine settings discovery failed for {material_name}: {e}")
-            # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
-            raise PropertyDiscoveryError(f"Cannot generate machineSettings without comprehensive discovery for {material_name}: {e}")
-        
-        if not machine_settings:
-            # FAIL-FAST - must have at least some machine settings for valid frontmatter
-            raise PropertyDiscoveryError(f"No machine settings discovered for {material_name} - comprehensive discovery required")
-        
-        return machine_settings
+            self.logger.error(f"Machine settings research failed for {material_name}: {e}")
+            raise PropertyDiscoveryError(f"Cannot generate machineSettings for {material_name}: {e}")
 
     def _create_datametrics_property(self, material_value, prop_key: str, material_category: str = 'metal') -> Dict:
         """Create DataMetrics structure with research-based Min/Max ranges"""
