@@ -37,6 +37,10 @@ from components.frontmatter.services.property_research_service import PropertyRe
 from components.frontmatter.services.template_service import TemplateService
 from components.frontmatter.services.pipeline_process_service import PipelineProcessService
 
+# Refactored services (Step 1 & 2 of refactoring plan)
+from components.frontmatter.services.property_manager import PropertyManager
+from components.frontmatter.core.property_processor import PropertyProcessor
+
 # Import unified exception classes from validation system
 from validation.errors import (
     PropertyDiscoveryError,
@@ -248,6 +252,21 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 enhance_descriptions_func=self.template_service.enhance_with_standardized_descriptions
             )
             self.logger.info("PropertyResearchService initialized with property researcher")
+            
+            # Initialize PropertyManager (refactored unified service - Step 1)
+            self.property_manager = PropertyManager(
+                property_researcher=self.property_researcher,
+                categories_data=categories_data,
+                get_category_ranges_func=self.template_service.get_category_ranges_for_property
+            )
+            self.logger.info("PropertyManager initialized (refactored unified service)")
+            
+            # Initialize PropertyProcessor (refactored processing service - Step 2)
+            self.property_processor = PropertyProcessor(
+                categories_data=categories_data,
+                category_ranges=self.category_ranges
+            )
+            self.logger.info("PropertyProcessor initialized (refactored processing service)")
             
             if 'materialPropertyDescriptions' not in categories_data:
                 raise ConfigurationError("materialPropertyDescriptions section required in Categories.yaml")
@@ -501,56 +520,45 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             # Generate properties with Min/Max ranges using unified inheritance
             unified_properties = self._get_unified_material_properties(material_name, material_data)
             
-            # Always generate materialProperties using AI discovery (GROK compliant - comprehensive research required)
-            if self.property_researcher:
-                # Merge unified properties with any existing materialProperties
-                material_data_with_unified = material_data.copy()
+            # REFACTORED: Use PropertyManager for discovery + research (Step 1)
+            if self.property_manager:
+                material_category = material_data.get('category', 'metal')
+                
+                # Merge unified properties with existing properties from YAML
+                existing_properties = material_data.get('properties', {})
                 for prop_type, props in unified_properties.items():
-                    material_data_with_unified[prop_type] = props
+                    if prop_type == 'properties':
+                        existing_properties.update(props)
                 
-                all_properties = self._generate_properties_with_ranges(material_data_with_unified, material_name)
+                # Use PropertyManager for complete discovery → research → categorization pipeline
+                research_result = self.property_manager.discover_and_research_properties(
+                    material_name=material_name,
+                    material_category=material_category,
+                    existing_properties=existing_properties
+                )
                 
-                # PHASE 4: Separate qualitative and quantitative properties
-                frontmatter['materialProperties'], frontmatter['materialCharacteristics'] = self._separate_qualitative_properties(all_properties)
+                # Use PropertyProcessor to organize and apply ranges (Step 2)
+                categorized_quantitative = self.property_processor.organize_properties_by_category(
+                    research_result.quantitative_properties
+                )
                 
-                # PHASE 4.1: Research additional qualitative characteristics if needed
-                if self.property_research_service:
-                    try:
-                        material_category = material_data.get('category', 'metal')
-                        existing_chars = {prop: data for cat_data in frontmatter.get('materialCharacteristics', {}).values() 
-                                        if isinstance(cat_data, dict) and 'properties' in cat_data
-                                        for prop, data in cat_data['properties'].items()}
-                        
-                        additional_chars = self.property_research_service.research_material_characteristics(
-                            material_name, material_category, existing_chars
-                        )
-                        
-                        # Merge additional characteristics if any were discovered
-                        if additional_chars:
-                            for prop_name, prop_data in additional_chars.items():
-                                if prop_name in QUALITATIVE_PROPERTIES:
-                                    qual_def = QUALITATIVE_PROPERTIES[prop_name]
-                                    char_category = qual_def.category
-                                    
-                                    if char_category not in frontmatter['materialCharacteristics']:
-                                        cat_metadata = MATERIAL_CHARACTERISTICS_CATEGORIES.get(char_category, {})
-                                        frontmatter['materialCharacteristics'][char_category] = {
-                                            'label': cat_metadata.get('label', char_category.replace('_', ' ').title()),
-                                            'description': cat_metadata.get('description', ''),
-                                            'properties': {}
-                                        }
-                                    
-                                    frontmatter['materialCharacteristics'][char_category]['properties'][prop_name] = prop_data
-                            
-                            self.logger.info(f"Added {len(additional_chars)} researched characteristics for {material_name}")
-                    except Exception as e:
-                        self.logger.warning(f"Could not research additional characteristics: {e}")
+                # Apply category ranges to quantitative properties
+                frontmatter['materialProperties'] = self.property_processor.apply_category_ranges(
+                    categorized_quantitative,
+                    material_category
+                )
                 
-                self.logger.info(f"Separated properties for {material_name}: {len(frontmatter['materialProperties'])} quantitative categories, "
-                               f"{len(frontmatter.get('materialCharacteristics', {}))} qualitative categories")
+                # Qualitative characteristics already organized by PropertyManager
+                frontmatter['materialCharacteristics'] = research_result.qualitative_characteristics
+                
+                self.logger.info(
+                    f"✅ Refactored property generation for {material_name}: "
+                    f"{len(frontmatter['materialProperties'])} quantitative categories, "
+                    f"{len(frontmatter.get('materialCharacteristics', {}))} qualitative categories"
+                )
             else:
                 # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
-                raise PropertyDiscoveryError(f"PropertyValueResearcher required for materialProperties generation for {material_name}")
+                raise PropertyDiscoveryError(f"PropertyManager required for property generation for {material_name}")
             
             # Generate machine settings with Min/Max ranges (always generate for shared architecture)
             frontmatter['machineSettings'] = self._generate_machine_settings_with_ranges(material_data, material_name)
@@ -583,160 +591,45 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             self.logger.error(f"YAML generation failed for {material_name}: {str(e)}")
             raise GenerationError(f"Failed to generate from YAML for {material_name}: {str(e)}")
 
+    # ============================================================================
+    # DEPRECATED METHODS - Now handled by PropertyProcessor (Step 2)
+    # These methods are kept for backward compatibility but should not be used
+    # Will be removed in Step 5 of refactoring plan
+    # ============================================================================
+    
     def _generate_properties_with_ranges(self, material_data: Dict, material_name: str) -> Dict:
-        """Generate properties with Min/Max ranges organized by category"""
+        """
+        DEPRECATED: Use PropertyProcessor.organize_properties_by_category() instead.
+        This method is kept for backward compatibility only.
+        """
+        self.logger.warning("DEPRECATED: _generate_properties_with_ranges() - Use PropertyProcessor instead")
         # Generate basic properties first
         basic_properties = self._generate_basic_properties(material_data, material_name)
         
-        # Categorize properties (FAIL-FAST if fails - no flat structure fallback)
-        try:
-            categorized = self._organize_properties_by_category(basic_properties)
-            self.logger.info(f"✅ Organized {len(basic_properties)} properties into {len(categorized)} categories for {material_name}")
-            return categorized
-        except Exception as e:
-            # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallback to flat structure
-            raise PropertyDiscoveryError(
-                f"Failed to categorize properties for {material_name}: {e}. "
-                "Categorized structure is required - no fallback to flat structure per GROK principles."
-            )
+        # Categorize properties using PropertyProcessor
+        categorized = self.property_processor.organize_properties_by_category(basic_properties)
+        self.logger.info(f"✅ Organized {len(basic_properties)} properties into {len(categorized)} categories for {material_name}")
+        return categorized
 
     def _organize_properties_by_category(self, properties: Dict) -> Dict:
         """
-        Organize properties by category with metadata.
-        
-        Returns hierarchical structure:
-        {
-            'thermal': {
-                'label': 'Thermal Properties',
-                'description': '...',
-                'percentage': 29.1,
-                'properties': { thermalConductivity: {...}, meltingPoint: {...} }
-            },
-            'mechanical': { ... },
-            ...
-        }
+        DEPRECATED: Use PropertyProcessor.organize_properties_by_category() instead.
+        This method is kept for backward compatibility only.
         """
-        try:
-            categorizer = get_property_categorizer()
-            categorized = {}
-            uncategorized = {}
-            
-            # Get category metadata from Categories.yaml
-            category_metadata = {}
-            if hasattr(self, 'categories_data') and 'propertyCategories' in self.categories_data:
-                prop_cats = self.categories_data['propertyCategories']
-                if 'categories' in prop_cats:
-                    for cat_id, cat_data in prop_cats['categories'].items():
-                        category_metadata[cat_id] = {
-                            'label': cat_data.get('label', cat_id.replace('_', ' ').title()),
-                            'description': cat_data.get('description', ''),
-                            'percentage': cat_data.get('percentage', 0)
-                        }
-            
-            # Categorize each property
-            for prop_name, prop_data in properties.items():
-                category_id = categorizer.get_category(prop_name)
-                
-                if category_id:
-                    # Add to appropriate category
-                    if category_id not in categorized:
-                        categorized[category_id] = {
-                            'label': category_metadata.get(category_id, {}).get('label', category_id.replace('_', ' ').title()),
-                            'description': category_metadata.get(category_id, {}).get('description', ''),
-                            'percentage': category_metadata.get(category_id, {}).get('percentage', 0),
-                            'properties': {}
-                        }
-                    categorized[category_id]['properties'][prop_name] = prop_data
-                else:
-                    # Track uncategorized properties
-                    uncategorized[prop_name] = prop_data
-            
-            # Add uncategorized properties to a special category if any exist
-            if uncategorized:
-                categorized['other'] = {
-                    'label': 'Other Properties',
-                    'description': 'Additional material-specific properties',
-                    'percentage': 0,
-                    'properties': uncategorized
-                }
-                self.logger.info(f"Found {len(uncategorized)} uncategorized properties")
-            
-            return categorized
-            
-        except Exception as e:
-            self.logger.error(f"Property categorization failed: {e}")
-            raise PropertyDiscoveryError(f"Failed to organize properties by category: {e}")
+        self.logger.warning("DEPRECATED: _organize_properties_by_category() - Use PropertyProcessor instead")
+        return self.property_processor.organize_properties_by_category(properties)
     
     def _separate_qualitative_properties(self, all_properties: Dict) -> tuple[Dict, Dict]:
         """
-        Separate qualitative (categorical) from quantitative (numeric) properties.
-        
-        Args:
-            all_properties: Categorized properties dict with categories as keys
-            
-        Returns:
-            Tuple of (quantitative_properties, qualitative_properties)
-            - quantitative_properties: Properties with min/max ranges for materialProperties
-            - qualitative_properties: Properties with allowedValues for materialCharacteristics
+        DEPRECATED: Use PropertyProcessor.separate_qualitative_properties() instead.
+        This method is kept for backward compatibility only.
         """
-        quantitative = {}
-        qualitative_by_category = {}
-        
-        for category_name, category_data in all_properties.items():
-            if not isinstance(category_data, dict) or 'properties' not in category_data:
-                # Keep non-property categories as-is in quantitative
-                quantitative[category_name] = category_data
-                continue
-                
-            properties = category_data['properties']
-            quant_props = {}
-            qual_props = {}
-            
-            for prop_name, prop_data in properties.items():
-                if is_qualitative_property(prop_name):
-                    # This is a qualitative property - move to materialCharacteristics
-                    qual_props[prop_name] = prop_data
-                    
-                    # Add allowedValues if defined
-                    if prop_name in QUALITATIVE_PROPERTIES:
-                        qual_def = QUALITATIVE_PROPERTIES[prop_name]
-                        if isinstance(prop_data, dict):
-                            prop_data['allowedValues'] = qual_def.allowed_values
-                            prop_data['unit'] = qual_def.unit
-                else:
-                    # Quantitative property - stays in materialProperties
-                    quant_props[prop_name] = prop_data
-            
-            # Keep category in quantitative if it has any quantitative properties
-            if quant_props:
-                quantitative[category_name] = {
-                    'label': category_data.get('label', category_name.replace('_', ' ').title()),
-                    'description': category_data.get('description', ''),
-                    'percentage': category_data.get('percentage', 0),
-                    'properties': quant_props
-                }
-            
-            # Organize qualitative properties by their characteristic category
-            for prop_name in qual_props:
-                if prop_name in QUALITATIVE_PROPERTIES:
-                    qual_def = QUALITATIVE_PROPERTIES[prop_name]
-                    char_category = qual_def.category
-                    
-                    if char_category not in qualitative_by_category:
-                        # Get metadata from MATERIAL_CHARACTERISTICS_CATEGORIES
-                        cat_metadata = MATERIAL_CHARACTERISTICS_CATEGORIES.get(char_category, {})
-                        qualitative_by_category[char_category] = {
-                            'label': cat_metadata.get('label', char_category.replace('_', ' ').title()),
-                            'description': cat_metadata.get('description', ''),
-                            'properties': {}
-                        }
-                    
-                    qualitative_by_category[char_category]['properties'][prop_name] = qual_props[prop_name]
-        
-        self.logger.info(f"Property separation: {len(quantitative)} quantitative categories, "
-                        f"{len(qualitative_by_category)} qualitative categories")
-        
-        return quantitative, qualitative_by_category
+        self.logger.warning("DEPRECATED: _separate_qualitative_properties() - Use PropertyProcessor instead")
+        return self.property_processor.separate_qualitative_properties(all_properties)
+    
+    # ============================================================================
+    # END DEPRECATED METHODS
+    # ============================================================================
     
     def _generate_basic_properties(self, material_data: Dict, material_name: str) -> Dict:
         """Generate properties with DataMetrics structure using YAML-first approach with AI fallback (OPTIMIZED)"""
