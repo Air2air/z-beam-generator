@@ -592,9 +592,8 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             raise GenerationError(f"Failed to generate from YAML for {material_name}: {str(e)}")
 
     # ============================================================================
-    # DEPRECATED METHODS - Now handled by PropertyProcessor (Step 2)
-    # These methods are kept for backward compatibility but should not be used
-    # Will be removed in Step 5 of refactoring plan
+    # DEPRECATED METHODS - Delegating to PropertyProcessor/PropertyManager
+    # Kept for backward compatibility, will be removed in Step 5
     # ============================================================================
     
     def _generate_properties_with_ranges(self, material_data: Dict, material_name: str) -> Dict:
@@ -627,10 +626,6 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         self.logger.warning("DEPRECATED: _separate_qualitative_properties() - Use PropertyProcessor instead")
         return self.property_processor.separate_qualitative_properties(all_properties)
     
-    # ============================================================================
-    # END DEPRECATED METHODS
-    # ============================================================================
-    
     def _generate_basic_properties(self, material_data: Dict, material_name: str) -> Dict:
         """Generate properties with DataMetrics structure using YAML-first approach with AI fallback (OPTIMIZED)"""
         properties = {}
@@ -640,10 +635,10 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         yaml_count = 0
         ai_count = 0
         
-        # PHASE 3.2 OPTIMIZATION: Pre-load all category ranges at once (batch loading)
+        # Pre-load all category ranges (batch optimization)
         material_category = material_data.get('category', 'metal').lower()
         all_category_ranges = self.template_service.get_all_category_ranges(material_category)
-        self.logger.debug(f"Phase 3.2: Pre-loaded {len(all_category_ranges)} category ranges for {material_category}")
+        self.logger.debug(f"Pre-loaded {len(all_category_ranges)} category ranges for {material_category}")
         
         # Use PropertyValueResearcher for AI discovery of missing properties only
         if not self.property_researcher:
@@ -651,7 +646,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             raise PropertyDiscoveryError("PropertyValueResearcher required for property discovery")
             
         try:
-            # PHASE 1: Use high-confidence YAML properties first (OPTIMIZATION)
+            # Use high-confidence YAML properties first
             for prop_name, yaml_prop in yaml_properties.items():
                 if isinstance(yaml_prop, dict):
                     # Special handling for nested thermalDestruction structure
@@ -667,7 +662,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                             'description': point_data.get('description', 'Thermal destruction point')
                         }
                         
-                        # PHASE 3.2 OPTIMIZATION: Use pre-loaded category ranges (dict lookup instead of method call)
+                        # Use pre-loaded category ranges (dict lookup)
                         # AUTO-REMEDIATION: Research and populate missing ranges instead of failing
                         category_ranges = all_category_ranges.get(prop_name)
                         if not category_ranges or 'point' not in category_ranges:
@@ -882,11 +877,11 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             properties=properties
         )
         
-        # PHASE 3.2 OPTIMIZATION: Log cache statistics for performance monitoring
+        # Log cache statistics for performance monitoring
         cache_stats = self.template_service.get_cache_stats()
         if cache_stats['hits'] + cache_stats['misses'] > 0:
             self.logger.info(
-                f"🚀 Phase 3.2 cache performance: {cache_stats['hits']} hits, "
+                f"Cache performance: {cache_stats['hits']} hits, "
                 f"{cache_stats['misses']} misses, {cache_stats['hit_rate']:.1%} hit rate"
             )
                         
@@ -965,11 +960,6 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             self.logger.error(f"Machine settings research failed for {material_name}: {e}")
             raise PropertyDiscoveryError(f"Cannot generate machineSettings for {material_name}: {e}")
 
-    # ============================================================================
-    # DEPRECATED METHODS - Now handled by PropertyProcessor
-    # Kept for backward compatibility, will be removed in Step 5
-    # ============================================================================
-
     def _create_datametrics_property(self, material_value, prop_key: str, material_category: str = 'metal') -> Dict:
         """
         DEPRECATED: Use PropertyProcessor.create_datametrics_property() instead.
@@ -994,10 +984,6 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         """
         self.logger.warning("DEPRECATED: _has_category_data() - Use PropertyProcessor instead")
         return self.property_processor._has_category_data(material_category, prop_key)
-    
-    # ============================================================================
-    # END DEPRECATED PROPERTY PROCESSING METHODS
-    # ============================================================================
     
     def _update_categories_yaml_with_range(self, category: str, property_name: str, range_data: Dict) -> None:
         """
