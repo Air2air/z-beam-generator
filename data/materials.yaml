@@ -99,7 +99,7 @@ property_groups:
   - thermalConductivity
   - thermalExpansion
   - specificHeat
-  - meltingPoint
+  - thermalDestructionPoint
   - operatingTemperature
 materials:
   Alumina:
@@ -350,7 +350,7 @@ materials:
         research_date: '2025-10-15T20:39:27.022057'
         ai_verified: true
     thermalProperties:
-      meltingPoint: 2072°C
+      thermalDestructionPoint: 2072°C
       thermalConductivity: 35 W/(m·K)
       thermalExpansion: 8.1×10⁻⁶/K
   Titanium Carbide:
@@ -835,7 +835,7 @@ materials:
         research_date: '2025-10-15T20:51:16.468094'
         ai_verified: true
     thermalProperties:
-      meltingPoint: 2715°C
+      thermalDestructionPoint: 2715°C
       thermalConductivity: 2.0 W/(m·K)
       thermalExpansion: 10.5×10⁻⁶/K
   Porcelain:
@@ -9976,7 +9976,7 @@ materials:
         research_date: '2025-10-15T21:28:14.419500'
         ai_verified: true
     thermalProperties:
-      meltingPoint: 900-940°C
+      thermalDestructionPoint: 900-940°C
       thermalConductivity: 109-125 W/(m·K)
     subcategory: ferrous
   Beryllium:
@@ -10224,7 +10224,7 @@ materials:
         ai_verified: true
     strength: 10% denser than steel
     thermalProperties:
-      meltingPoint: 1025°C (88% Cu, 12% Sn phosphor bronze)
+      thermalDestructionPoint: 1025°C (88% Cu, 12% Sn phosphor bronze)
       thermalConductivity: 26 W/(m·K)
     subcategory: specialty
   Brass:
@@ -10463,7 +10463,7 @@ materials:
         research_date: '2025-10-15T21:24:13.781716'
         ai_verified: true
     thermalProperties:
-      meltingPoint: 1495°C
+      thermalDestructionPoint: 1495°C
       thermalConductivity: 100 W/(m·K)
     yield_strength: 470-3000 MPa
     material_metadata:
@@ -13627,7 +13627,7 @@ materials:
         research_date: '2025-10-15T21:28:00.801657'
         ai_verified: true
     thermalProperties:
-      meltingPoint: 1455°C
+      thermalDestructionPoint: 1455°C
       thermalConductivity: 90.9 W/(m·K)
     yield_strength: 638 MPa
     subcategory: specialty
@@ -15590,7 +15590,7 @@ materials:
         research_date: '2025-10-15T21:31:29.796831'
         ai_verified: true
     thermalProperties:
-      meltingPoint: 1325-1530°C
+      thermalDestructionPoint: 1325-1530°C
       thermalConductivity: 16.2 W/(m·K)
     subcategory: precious
   Silver:
@@ -16895,7 +16895,7 @@ materials:
         research_date: '2025-10-15T21:33:14.661643'
         ai_verified: true
     thermalProperties:
-      meltingPoint: 3422°C
+      thermalDestructionPoint: 3422°C
       thermalConductivity: 173 W/(m·K)
       thermalExpansion: 4.42×10⁻⁶/K
     yield_strength: 2000-4000 MPa
@@ -19965,7 +19965,7 @@ materials:
         ai_verified: true
       fractureToughness: 0.44
     thermalProperties:
-      meltingPoint: 1238°C
+      thermalDestructionPoint: 1238°C
       thermalConductivity: 55 W/(m·K)
   Silicon:
     author:
@@ -20223,7 +20223,7 @@ materials:
         research_date: '2025-10-15T21:32:05.639157'
         ai_verified: true
     thermalProperties:
-      meltingPoint: 1414°C
+      thermalDestructionPoint: 1414°C
       thermalConductivity: 149 W/(m·K)
       thermalExpansion: 2.6×10⁻⁶/K
   Silicon Carbide:
@@ -20453,7 +20453,7 @@ materials:
         research_date: '2025-10-15T21:32:12.191819'
         ai_verified: true
     thermalProperties:
-      meltingPoint: 2830°C
+      thermalDestructionPoint: 2830°C
       thermalConductivity: 490 W/(m·K)
   Silicon Germanium:
     author:
@@ -20696,7 +20696,7 @@ materials:
         research_date: '2025-10-15T21:32:20.281180'
         ai_verified: true
     thermalProperties:
-      meltingPoint: 1350°C
+      thermalDestructionPoint: 1350°C
       thermalConductivity: 80 W/(m·K)
   Alabaster:
     author:

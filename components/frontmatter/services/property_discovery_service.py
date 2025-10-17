@@ -41,14 +41,14 @@ class PropertyDiscoveryService:
     
     # Category-specific essential properties
     CATEGORY_ESSENTIALS = {
-        'metal': {'meltingPoint', 'thermalConductivity', 'density', 'hardness'},
+        'metal': {'thermalDestructionPoint', 'thermalConductivity', 'density', 'hardness'},
         'ceramic': {'sinteringPoint', 'thermalConductivity', 'density', 'hardness'},
         'plastic': {'degradationPoint', 'thermalConductivity', 'density'},
         'composite': {'degradationPoint', 'thermalConductivity', 'density'},
         'wood': {'thermalDestructionPoint', 'density'},
         'stone': {'thermalDegradationPoint', 'density', 'hardness'},
         'glass': {'softeningPoint', 'thermalConductivity', 'density'},
-        'semiconductor': {'meltingPoint', 'thermalConductivity', 'density'},
+        'semiconductor': {'thermalDestructionPoint', 'thermalConductivity', 'density'},
         'masonry': {'thermalDegradationPoint', 'density', 'hardness'}
     }
     

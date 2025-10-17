@@ -98,9 +98,9 @@ class PropertyResearchService:
                 if prop_name in existing_properties:
                     continue
                 
-                # Skip redundant meltingPoint if thermalDestruction exists
-                if prop_name == 'meltingPoint' and 'thermalDestruction' in existing_properties:
-                    self.logger.info(f"⏭️  Skipping {prop_name} - using thermalDestruction instead")
+                # Skip redundant thermalDestructionPoint if thermalDestruction exists
+                if prop_name == 'thermalDestructionPoint' and 'thermalDestruction' in existing_properties:
+                    self.logger.info(f"Skipping redundant thermalDestructionPoint (thermalDestruction already exists)")
                     continue
                 
                 # Build property structure
@@ -238,8 +238,8 @@ class PropertyResearchService:
         category_field = thermal_info['field']
         yaml_field = thermal_info['yaml_field']
         
-        # Skip if category field is same as meltingPoint (metals, semiconductors)
-        if category_field == 'meltingPoint':
+        # Skip if category field is same as thermalDestructionPoint (metals, semiconductors)
+        if category_field == 'thermalDestructionPoint':
             return False
         
         # Skip if category-specific field already exists
@@ -261,14 +261,14 @@ class PropertyResearchService:
                 thermal_confidence = yaml_thermal.get('confidence', 0.85)
                 thermal_description = yaml_thermal.get('description', '')
         
-        # Fallback: copy from meltingPoint if available
-        if thermal_value is None and 'meltingPoint' in properties:
-            melting_data = properties['meltingPoint']
+        # Fallback: copy from thermalDestructionPoint if available
+        if thermal_value is None and 'thermalDestructionPoint' in properties:
+            melting_data = properties['thermalDestructionPoint']
             thermal_value = melting_data.get('value')
             thermal_unit = melting_data.get('unit', '°C')
             thermal_confidence = melting_data.get('confidence', 85)
             thermal_description = thermal_info['description']
-            self.logger.info(f"📋 Copying thermal data from meltingPoint to {category_field}")
+            self.logger.info(f"📋 Copying thermal data from thermalDestructionPoint to {category_field}")
         
         # Only add if we have a value
         if thermal_value is not None:

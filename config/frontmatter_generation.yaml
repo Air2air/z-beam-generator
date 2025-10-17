@@ -83,15 +83,15 @@ thermal_property_mapping:
     yaml_field: thermalDestructionPoint
   
   metal:
-    field: meltingPoint
-    label: Melting Point
+    field: thermalDestructionPoint
+    label: Thermal Destruction Point
     description: Temperature where solid metal transitions to liquid phase
     scientific_process: Phase Transition
     yaml_field: thermalDestruction
   
   semiconductor:
-    field: meltingPoint
-    label: Melting Point
+    field: thermalDestructionPoint
+    label: Thermal Destruction Point
     description: Temperature where crystalline structure melts
     scientific_process: Phase Transition
     yaml_field: thermalDestruction

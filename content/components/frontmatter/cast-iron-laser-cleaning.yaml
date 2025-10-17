@@ -328,24 +328,18 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the surface is dominated by a non-uniform oxide
-    layer (mill scale) measuring 50-150 micrometers thick. This brittle, crystalline
-    layer exhibits extensive cracking and spalling, creating a porous, fragmented
-    topography. Embedded within these fissures are pockets of carbonaceous soot and
-    fine abrasive particulates, typically 5-20 micrometers in size. The underlying
-    cast iron's characteristic graphite flake structure is completely obscured by
-    this stratified, contaminated crust.
-  afterText: 'Laser cleaning has removed the entire contamination layer, revealing
-    the true metallographic surface of the cast iron. The mill scale, soot, and embedded
-    particulates have been completely ablated, exposing the lamellar graphite flakes
-    within the pearlitic iron matrix. This results in a distinct, high-contrast micro-topography.
-
-
-    The process selectively removes contaminants without damaging the substrate. The
-    surface now displays the material''s inherent micro-features, including the subtle
-    porosity from the original casting process. The primary visual improvement is
-    the restoration of the metal''s native texture and the elimination of the non-adherent,
-    fractured oxide layer that characterized the initial state.'
+  beforeText: At 500x magnification, the cast iron surface is obscured by a complex
+    contamination layer approximately 50-200 micrometers thick. This layer consists
+    of amorphous carbon deposits from thermal degradation and embedded iron oxide
+    (Fe₂O₃) particles, creating a porous, non-uniform texture. The underlying metal's
+    graphite flakes and grain boundaries are entirely hidden. Fine abrasive particulates
+    are mechanically lodged within this matrix, further increasing surface roughness
+    and compromising substrate integrity.
+  afterText: Post-cleaning, the surface reveals the cast iron's inherent microstructure.
+    The graphite flakes and ferrite grain boundaries are now fully exposed and clearly
+    defined. The removal of the contamination layer restores the original surface
+    topography, significantly reducing micro-scale roughness. This results in a clean,
+    metallurgically pure substrate free of non-ferrous deposits.
   description: Microscopic analysis of cast iron surface before and after laser cleaning
     treatment
   alt: Microscopic view of cast iron surface showing laser cleaning effects
@@ -381,3 +375,14 @@ tags:
 - conductive
 - reflective-surface
 - ikmanda-roswati
+prompt_chain_verification:
+  base_config_loaded: true
+  persona_config_loaded: false
+  formatting_config_loaded: false
+  ai_detection_config_loaded: false
+  persona_country: N/A
+  author_id: 0
+  verification_timestamp: '2025-10-17T05:49:04.544274+00:00'
+  prompt_components_integrated: 1
+  human_authenticity_focus: false
+  cultural_adaptation_applied: false
