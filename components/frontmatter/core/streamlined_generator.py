@@ -647,18 +647,19 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                             'value': point_data.get('value'),
                             'unit': point_data.get('unit', '°C'),
                             'confidence': ValidationUtils.normalize_confidence(point_data.get('confidence', 0)),
-                            'description': point_data.get('description', 'Thermal destruction point'),
-                            'min': None,
-                            'max': None
+                            'description': point_data.get('description', 'Thermal destruction point')
                         }
                         
                         # PHASE 3.2 OPTIMIZATION: Use pre-loaded category ranges (dict lookup instead of method call)
+                        # Only add min/max if they exist (no null values)
                         category_ranges = all_category_ranges.get(prop_name)
                         if category_ranges and 'point' in category_ranges:
                             # Extract point ranges from nested structure
                             point_ranges = category_ranges['point']
-                            point_structure['min'] = point_ranges.get('min')
-                            point_structure['max'] = point_ranges.get('max')
+                            if point_ranges.get('min') is not None:
+                                point_structure['min'] = point_ranges['min']
+                            if point_ranges.get('max') is not None:
+                                point_structure['max'] = point_ranges['max']
                         
                         properties[prop_name] = {
                             'point': point_structure,
@@ -675,15 +676,16 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                             'value': yaml_prop.get('value'),
                             'unit': yaml_prop.get('unit', ''),
                             'confidence': ValidationUtils.normalize_confidence(confidence),
-                            'description': yaml_prop.get('description', f'{prop_name} from Materials.yaml'),
-                            'min': None,
-                            'max': None
+                            'description': yaml_prop.get('description', f'{prop_name} from Materials.yaml')
                         }
                         # PHASE 3.2 OPTIMIZATION: Use pre-loaded category ranges (dict lookup instead of method call)
+                        # Only add min/max if they exist (no null values)
                         category_ranges = all_category_ranges.get(prop_name)
                         if category_ranges:
-                            properties[prop_name]['min'] = category_ranges.get('min')
-                            properties[prop_name]['max'] = category_ranges.get('max')
+                            if category_ranges.get('min') is not None:
+                                properties[prop_name]['min'] = category_ranges['min']
+                            if category_ranges.get('max') is not None:
+                                properties[prop_name]['max'] = category_ranges['max']
                         self.logger.info(f"✅ YAML: {prop_name} = {yaml_prop.get('value')} {yaml_prop.get('unit', '')} (confidence: {confidence})")
             
             # PHASE 1.5: Add category-specific thermal property field (dual-field approach)

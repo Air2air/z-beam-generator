@@ -15,43 +15,31 @@ materialProperties:
         unit: g/cm³
         confidence: 98
         description: density from Materials.yaml
-        min: null
-        max: null
       hardness:
         value: 2200.0
         unit: HV
         confidence: 95
         description: hardness from Materials.yaml
-        min: null
-        max: null
       oxidationResistance:
         value: 750.0
         unit: °C
         confidence: 90
         description: oxidationResistance from Materials.yaml
-        min: null
-        max: null
       corrosionResistance:
         value: 5.0
         unit: rating
         confidence: 88
         description: corrosionResistance from Materials.yaml
-        min: null
-        max: null
       tensileStrength:
         value: 250.0
         unit: MPa
         confidence: 95
         description: tensileStrength from Materials.yaml
-        min: null
-        max: null
       youngsModulus:
         value: 110.0
         unit: GPa
         confidence: 93
         description: youngsModulus from Materials.yaml
-        min: null
-        max: null
       porosity:
         value: 2.5
         unit: '%'
@@ -77,43 +65,31 @@ materialProperties:
         unit: '%'
         confidence: 90
         description: laserAbsorption from Materials.yaml
-        min: null
-        max: null
       laserReflectivity:
         value: 45.0
         unit: '%'
         confidence: 90
         description: laserReflectivity from Materials.yaml
-        min: null
-        max: null
       thermalConductivity:
         value: 50.0
         unit: W/(m·K)
         confidence: 95
         description: thermalConductivity from Materials.yaml
-        min: null
-        max: null
       thermalDiffusivity:
         value: 12.5
         unit: mm²/s
         confidence: 92
         description: thermalDiffusivity from Materials.yaml
-        min: null
-        max: null
       thermalExpansion:
         value: 11.0
         unit: 10⁻⁶/K
         confidence: 95
         description: thermalExpansion from Materials.yaml
-        min: null
-        max: null
       specificHeat:
         value: 540.0
         unit: J/(kg·K)
         confidence: 92
         description: specificHeat from Materials.yaml
-        min: null
-        max: null
       reflectivity:
         value: 0.35
         unit: dimensionless
@@ -138,15 +114,11 @@ materialProperties:
         unit: K
         confidence: 95
         description: thermalDestructionPoint from Materials.yaml
-        min: null
-        max: null
       thermalDestructionType:
         value: melting
         unit: type
         confidence: 99
         description: thermalDestructionType from Materials.yaml
-        min: null
-        max: null
       meltingPoint:
         value: 1150
         unit: °C
@@ -328,18 +300,23 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the cast iron surface is obscured by a complex
-    contamination layer approximately 50-200 micrometers thick. This layer consists
-    of amorphous carbon deposits from thermal degradation and embedded iron oxide
-    (Fe₂O₃) particles, creating a porous, non-uniform texture. The underlying metal's
-    graphite flakes and grain boundaries are entirely hidden. Fine abrasive particulates
-    are mechanically lodged within this matrix, further increasing surface roughness
-    and compromising substrate integrity.
-  afterText: Post-cleaning, the surface reveals the cast iron's inherent microstructure.
-    The graphite flakes and ferrite grain boundaries are now fully exposed and clearly
-    defined. The removal of the contamination layer restores the original surface
-    topography, significantly reducing micro-scale roughness. This results in a clean,
-    metallurgically pure substrate free of non-ferrous deposits.
+  beforeText: At 500x magnification, the surface is dominated by a non-uniform oxide
+    layer (Fe₃O₄/Fe₂O₃), measuring 10-50 µm thick. This porous, crystalline scale
+    is interlocked with embedded carbonaceous deposits from combustion or lubricants.
+    The underlying cast iron's graphite flakes and micro-peaks are entirely obscured
+    by this stratified, high-surface-area contamination.
+  afterText: 'Laser cleaning selectively ablates the contamination layers, revealing
+    the authentic cast iron substrate. The tenacious oxide scale and carbon deposits
+    are removed, exposing the material''s inherent microstructure. The surface now
+    displays a distinct grain boundary network and the characteristic flake graphite
+    morphology.
+
+
+    The process reduces average surface roughness (Ra) by 60-80%, measured from >15
+    µm to <5 µm. This creates a more uniform, metallurgically clean surface with increased
+    surface energy, which is optimal for subsequent coatings or adhesion. The laser''s
+    non-abrasive nature preserves the dimensional integrity of the base material,
+    eliminating sub-surface damage common with mechanical methods.'
   description: Microscopic analysis of cast iron surface before and after laser cleaning
     treatment
   alt: Microscopic view of cast iron surface showing laser cleaning effects
@@ -382,7 +359,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: false
   persona_country: N/A
   author_id: 0
-  verification_timestamp: '2025-10-17T05:49:04.544274+00:00'
+  verification_timestamp: '2025-10-17T06:29:58.326534+00:00'
   prompt_components_integrated: 1
   human_authenticity_focus: false
   cultural_adaptation_applied: false
