@@ -10,6 +10,7 @@
     "description",
     "name",
     "materialProperties",
+    "materialCharacteristics",
     "subcategory",
     "title"
   ],
@@ -187,7 +188,11 @@
     },
     "materialProperties": {
       "$ref": "#/definitions/Properties",
-      "description": "Consolidated material properties including density, thermal, and chemical characteristics"
+      "description": "Consolidated material properties with nested categories for physical, thermal, optical, mechanical, electrical, and chemical properties"
+    },
+    "materialCharacteristics": {
+      "$ref": "#/definitions/MaterialCharacteristics",
+      "description": "Qualitative categorical properties including thermal behavior, safety ratings, physical appearance, and material classification"
     },
     "machineSettings": {
       "$ref": "#/definitions/MachineSettings",
@@ -1343,6 +1348,12 @@
         }
       }
     },
+    "PropertyDataMetricLegacy": {
+      "type": "object",
+      "description": "Legacy flat property structure",
+      "additionalProperties": true,
+      "properties": {
+        "thermalConductivityNumeric": {
           "type": "number"
         },
         "thermalConductivityMax": {
@@ -1532,6 +1543,99 @@
         },
         "chemicalFormula": {
           "type": "string"
+        }
+      }
+    },
+    "MaterialCharacteristics": {
+      "type": "object",
+      "description": "Qualitative categorical material characteristics",
+      "additionalProperties": true,
+      "properties": {
+        "thermal_behavior": {
+          "type": "object",
+          "description": "Thermal response and degradation characteristics",
+          "properties": {
+            "label": { "type": "string" },
+            "description": { "type": "string" },
+            "properties": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/QualitativeProperty"
+              }
+            }
+          }
+        },
+        "safety_handling": {
+          "type": "object",
+          "description": "Safety, toxicity, and handling characteristics",
+          "properties": {
+            "label": { "type": "string" },
+            "description": { "type": "string" },
+            "properties": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/QualitativeProperty"
+              }
+            }
+          }
+        },
+        "physical_appearance": {
+          "type": "object",
+          "description": "Visual and surface appearance characteristics",
+          "properties": {
+            "label": { "type": "string" },
+            "description": { "type": "string" },
+            "properties": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/QualitativeProperty"
+              }
+            }
+          }
+        },
+        "material_classification": {
+          "type": "object",
+          "description": "Structural and processing classification",
+          "properties": {
+            "label": { "type": "string" },
+            "description": { "type": "string" },
+            "properties": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/QualitativeProperty"
+              }
+            }
+          }
+        }
+      }
+    },
+    "QualitativeProperty": {
+      "type": "object",
+      "description": "Qualitative (categorical) property structure",
+      "required": ["value", "confidence"],
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "Categorical value from allowed values list"
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Confidence score (0-100)"
+        },
+        "description": {
+          "type": "string",
+          "description": "Property description"
+        },
+        "allowedValues": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "List of allowed categorical values"
+        },
+        "unit": {
+          "type": "string",
+          "description": "Unit or classification type"
         }
       }
     },
