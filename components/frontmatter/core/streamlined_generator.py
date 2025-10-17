@@ -45,13 +45,8 @@ from validation.errors import (
     GenerationError
 )
 
-# Optional: Property categorizer for analysis and validation
-try:
-    from utils.core.property_categorizer import get_property_categorizer
-    PROPERTY_CATEGORIZER_AVAILABLE = True
-except ImportError:
-    PROPERTY_CATEGORIZER_AVAILABLE = False
-    get_property_categorizer = None
+# Property categorizer for analysis and validation (REQUIRED per fail-fast)
+from utils.core.property_categorizer import get_property_categorizer
 
 logger = logging.getLogger(__name__)
 
@@ -100,27 +95,14 @@ _FRONTMATTER_CONFIG = _load_frontmatter_config()
 MATERIAL_ABBREVIATIONS = _FRONTMATTER_CONFIG['material_abbreviations']
 THERMAL_PROPERTY_MAP = _FRONTMATTER_CONFIG['thermal_property_mapping']
 
-# Enhanced schema validation (optional)
-try:
-    from scripts.validation.enhanced_schema_validator import EnhancedSchemaValidator
-    ENHANCED_VALIDATION_AVAILABLE = True
-    logger.info("Enhanced schema validation loaded successfully")
-except ImportError as e:
-    ENHANCED_VALIDATION_AVAILABLE = False
-    EnhancedSchemaValidator = None
-    logger.info(f"Enhanced schema validation not available - using basic validation: {e}")
+# Enhanced schema validation (REQUIRED per fail-fast)
+from scripts.validation.enhanced_schema_validator import EnhancedSchemaValidator
+logger.info("Enhanced schema validation loaded successfully")
 
-# Import material-aware prompt system
-try:
-    from material_prompting.core.material_aware_generator import MaterialAwarePromptGenerator
-    from material_prompting.exceptions.handler import AIPromptExceptionHandler as MaterialExceptionHandler
-    MATERIAL_AWARE_PROMPTS_AVAILABLE = True
-    logger.info("Material-aware prompt system loaded successfully")
-except ImportError as e:
-    MATERIAL_AWARE_PROMPTS_AVAILABLE = False
-    MaterialAwarePromptGenerator = None
-    MaterialExceptionHandler = None
-    logger.warning(f"Material-aware prompt system not available - using basic prompts: {e}")
+# Import material-aware prompt system (REQUIRED per fail-fast)
+from material_prompting.core.material_aware_generator import MaterialAwarePromptGenerator
+from material_prompting.exceptions.handler import MaterialExceptionHandler
+logger.info("Material-aware prompt system loaded successfully")
 
 
 class StreamlinedFrontmatterGenerator(APIComponentGenerator):
@@ -151,23 +133,19 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         self.validation_helpers = ValidationHelpers()
         self.field_ordering_service = FieldOrderingService()
         
-        # Enhanced validation setup (optional)
-        self.enhanced_validator = None
-        if ENHANCED_VALIDATION_AVAILABLE:
-            try:
-                self.enhanced_validator = EnhancedSchemaValidator()
-                self.logger.info("Enhanced validation initialized")
-            except Exception as e:
-                self.logger.warning(f"Enhanced validation setup failed: {e}")
+        # Enhanced validation setup (REQUIRED)
+        try:
+            self.enhanced_validator = EnhancedSchemaValidator()
+            self.logger.info("Enhanced validation initialized")
+        except Exception as e:
+            raise ConfigurationError(f"Enhanced validation required but setup failed: {e}")
         
-        # Material-aware prompt system (optional)
-        self.material_aware_generator = None
-        if MATERIAL_AWARE_PROMPTS_AVAILABLE:
-            try:
-                self.material_aware_generator = MaterialAwarePromptGenerator()
-                self.logger.info("Material-aware prompt system initialized")
-            except Exception as e:
-                self.logger.warning(f"Material-aware prompt system setup failed: {e}")
+        # Material-aware prompt system (REQUIRED)
+        try:
+            self.material_aware_generator = MaterialAwarePromptGenerator()
+            self.logger.info("Material-aware prompt system initialized")
+        except Exception as e:
+            raise ConfigurationError(f"Material-aware prompt system required but setup failed: {e}")
 
     def _load_materials_research_data(self):
         """Load materials science research data for accurate range calculations"""
@@ -379,29 +357,6 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 error_message=str(e)
             )
 
-    def _apply_abbreviation_template(self, material_name: str) -> Dict[str, str]:
-        """Apply abbreviation template formatting for materials with known abbreviations"""
-        # Check for exact matches or close matches
-        for pattern, mapping in MATERIAL_ABBREVIATIONS.items():
-            if (pattern.lower() == material_name.lower() or 
-                mapping['full_name'].lower() == material_name.lower() or
-                pattern.lower().replace(' ', '').replace('-', '') in material_name.lower().replace(' ', '').replace('-', '')):
-                
-                return {
-                    'name': mapping['abbreviation'],
-                    'subcategory': f"{mapping['full_name']} ({mapping['abbreviation']})",
-                    'title': f"{mapping['abbreviation']} Laser Cleaning",
-                    'description_suffix': f" ({mapping['abbreviation']})"
-                }
-        
-        # No abbreviation template found - use standard formatting
-        return {
-            'name': material_name.title(),
-            'subcategory': material_name.title(),
-            'title': f"{material_name.title()} Laser Cleaning",
-            'description_suffix': ''
-        }
-
     def _generate_from_yaml(self, material_name: str, material_data: Dict) -> Dict:
         """Generate frontmatter using YAML data with AI enhancement"""
         try:
@@ -534,14 +489,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         # Generate basic properties first
         basic_properties = self._generate_basic_properties(material_data, material_name)
         
-        # Organize by category (REQUIRED - per GROK_INSTRUCTIONS.md no fallbacks)
-        if not PROPERTY_CATEGORIZER_AVAILABLE:
-            raise PropertyDiscoveryError(
-                "Property categorizer not available - categorized structure is required per GROK fail-fast principles. "
-                "No fallback to flat structure allowed."
-            )
-        
-        # Categorize properties (FAIL-FAST if fails)
+        # Categorize properties (FAIL-FAST if fails - no flat structure fallback)
         try:
             categorized = self._organize_properties_by_category(basic_properties)
             self.logger.info(f"✅ Organized {len(basic_properties)} properties into {len(categorized)} categories for {material_name}")
@@ -763,81 +711,6 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                         
         return properties
     
-    def _add_category_thermal_property(self, properties: Dict, yaml_properties: Dict, 
-                                      material_category: str, material_data: Dict) -> bool:
-        """
-        Add category-specific thermal property field (dual-field approach).
-        Keeps meltingPoint for backward compatibility, adds category-specific field.
-        
-        Returns True if a new field was added, False otherwise.
-        """
-        # Skip if no thermal mapping for this category
-        if material_category not in THERMAL_PROPERTY_MAP:
-            self.logger.debug(f"No thermal property mapping for category: {material_category}")
-            return False
-        
-        thermal_info = THERMAL_PROPERTY_MAP[material_category]
-        category_field = thermal_info['field']
-        yaml_field = thermal_info['yaml_field']
-        
-        # Skip if category field is same as meltingPoint (metals, semiconductors)
-        if category_field == 'meltingPoint':
-            return False
-        
-        # Skip if category-specific field already exists in properties
-        if category_field in properties:
-            self.logger.debug(f"Category thermal field {category_field} already exists")
-            return False
-        
-        # Try to get thermal data from Materials.yaml
-        thermal_value = None
-        thermal_unit = None
-        thermal_confidence = None
-        thermal_description = None
-        
-        # Check yaml_properties for the appropriate field
-        if yaml_field in yaml_properties:
-            yaml_thermal = yaml_properties[yaml_field]
-            if isinstance(yaml_thermal, dict):
-                thermal_value = yaml_thermal.get('value')
-                thermal_unit = yaml_thermal.get('unit', '°C')
-                thermal_confidence = yaml_thermal.get('confidence', 0.85)
-                thermal_description = yaml_thermal.get('description', '')
-        
-        # If no data from YAML, try to copy from meltingPoint if it exists
-        if thermal_value is None and 'meltingPoint' in properties:
-            melting_data = properties['meltingPoint']
-            thermal_value = melting_data.get('value')
-            thermal_unit = melting_data.get('unit', '°C')
-            thermal_confidence = melting_data.get('confidence', 85)
-            # Use category-specific description
-            thermal_description = thermal_info['description']
-            self.logger.info(f"📋 Copying thermal data from meltingPoint to {category_field}")
-        
-        # Only add if we have a value
-        if thermal_value is not None:
-            # Create the category-specific field
-            properties[category_field] = {
-                'value': thermal_value,
-                'unit': thermal_unit or '°C',
-                'confidence': int(thermal_confidence * 100) if thermal_confidence < 1 else int(thermal_confidence),
-                'description': thermal_description or thermal_info['description'],
-                'min': None,
-                'max': None
-            }
-            
-            # Get min/max from Categories.yaml if available
-            category_ranges = self._get_category_ranges_for_property(material_category, category_field)
-            if category_ranges:
-                properties[category_field]['min'] = category_ranges.get('min')
-                properties[category_field]['max'] = category_ranges.get('max')
-            
-            self.logger.info(f"✅ Added {category_field} = {thermal_value} {thermal_unit} "
-                           f"(label: '{thermal_info['label']}')")
-            return True
-        
-        return False
-
     def _generate_machine_settings_with_ranges(self, material_data: Dict, material_name: str) -> Dict:
         """Generate machine settings with DataMetrics structure using comprehensive AI discovery (GROK compliant - no fallbacks)"""
         # Use PropertyResearchService for comprehensive machine settings discovery
@@ -1451,78 +1324,6 @@ Return YAML format with materialProperties, machineSettings, and structured appl
             # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
             raise PropertyDiscoveryError(f"Images section generation required: {e}")
 
-    def _enhance_with_standardized_descriptions(self, property_data: Dict, property_name: str, property_type: str) -> Dict:
-        """Enhance property data with standardized descriptions from Categories.yaml"""
-        try:
-            enhanced_data = property_data.copy()
-            
-            if property_type == 'machineSettings':
-                # Skip adding standardized machine settings descriptions to reduce verbosity
-                # The AI-generated description is sufficient
-                pass
-                        
-            elif property_type == 'materialProperties':
-                # Skip adding standardized material property descriptions to reduce verbosity
-                # The AI-generated description is sufficient
-                pass
-                        
-            return enhanced_data
-            
-        except Exception as e:
-            self.logger.warning(f"Failed to enhance {property_name} with standardized descriptions: {e}")
-            return property_data  # Return original data if enhancement fails
-
-    def _add_environmental_impact_section(self, frontmatter: Dict, material_data: Dict) -> Dict:
-        """Add environmental impact section using standardized templates"""
-        try:
-            environmental_impact = []
-            
-            # Apply relevant environmental impact templates
-            for impact_type, template in self.environmental_impact_templates.items():
-                environmental_impact.append({
-                    'benefit': impact_type.replace('_', ' ').title(),
-                    'description': template['description'] if 'description' in template else '',
-                    'applicableIndustries': template['applicable_industries'] if 'applicable_industries' in template else [],
-                    'quantifiedBenefits': template['quantified_benefits'] if 'quantified_benefits' in template else '',
-                    'sustainabilityBenefit': template['sustainability_benefit'] if 'sustainability_benefit' in template else ''
-                })
-                
-            if environmental_impact:
-                frontmatter['environmentalImpact'] = environmental_impact
-                
-            return frontmatter
-            
-        except Exception as e:
-            self.logger.warning(f"Failed to add environmental impact section: {e}")
-            return frontmatter
-
-    # _add_application_types_section REMOVED per GROK_INSTRUCTIONS.md - NO FALLBACKS
-    # applicationTypes must be explicit in Materials.yaml, not generated from templates
-
-    def _add_outcome_metrics_section(self, frontmatter: Dict, material_data: Dict) -> Dict:
-        """Add outcome metrics section using standardized metrics"""
-        try:
-            outcome_metrics = []
-            
-            # Apply relevant standard outcome metrics
-            for metric_type, metric_def in self.standard_outcome_metrics.items():
-                outcome_metrics.append({
-                    'metric': metric_type.replace('_', ' ').title(),
-                    'description': metric_def['description'] if 'description' in metric_def else '',
-                    'measurementMethods': metric_def['measurement_methods'] if 'measurement_methods' in metric_def else [],
-                    'typicalRanges': metric_def['typical_ranges'] if 'typical_ranges' in metric_def else '',
-                    'factorsAffecting': metric_def['factors_affecting'] if 'factors_affecting' in metric_def else [],
-                    'units': metric_def['units'] if 'units' in metric_def else []
-                })
-                
-            if outcome_metrics:
-                frontmatter['outcomeMetrics'] = outcome_metrics
-                
-            return frontmatter
-        except Exception as e:
-            self.logger.error(f"Failed to add outcome metrics: {e}")
-            return frontmatter
-
     def _get_unified_material_properties(self, material_name: str, material_data: Dict) -> Dict:
         """Get material properties using unified inheritance from category definitions"""
         try:
@@ -1563,87 +1364,6 @@ Return YAML format with materialProperties, machineSettings, and structured appl
             self.logger.error(f"Failed to get unified properties for {material_name}: {str(e)}")
             raise PropertyDiscoveryError(f"Property inheritance failed for {material_name}: {str(e)}")
     
-    def _get_category_ranges_for_property(self, category: str, property_name: str) -> Optional[Dict]:
-        """Get min/max ranges for a property from Categories.yaml category_ranges
-        
-        Handles both flat properties (density, hardness) and nested properties (thermalDestruction)
-        """
-        try:
-            if not category or category not in self.category_ranges:
-                return None
-                
-            category_ranges = self.category_ranges[category]
-            
-            if property_name in category_ranges:
-                ranges = category_ranges[property_name]
-                
-                # Handle nested thermalDestruction structure
-                if property_name == 'thermalDestruction' and isinstance(ranges, dict) and 'point' in ranges:
-                    # Return the full nested structure for special handling
-                    return ranges
-                
-                # Handle regular flat properties
-                if 'min' in ranges and 'max' in ranges:
-                    if 'unit' not in ranges:
-                        self.logger.warning(f"Unit missing for {category}.{property_name} in Categories.yaml")
-                        return None  # Fail-fast - no fallback defaults per GROK_INSTRUCTIONS.md
-                    return {
-                        'min': ranges['min'],
-                        'max': ranges['max'],
-                        'unit': ranges['unit']
-                    }
-            
-            return None
-            
-        except Exception as e:
-            self.logger.warning(f"Failed to get category ranges for {property_name} in {category}: {e}")
-            return None
-    
-    def _generate_applications_from_unified_industry_data(self, material_name: str, material_data: Dict) -> list:
-        """Generate applications using unified industry data structure (post-consolidation)"""
-        try:
-            applications = []
-            if 'category' not in material_data:
-                raise MaterialDataError("Material category required for industry data generation - no fallbacks allowed per GROK_INSTRUCTIONS.md")
-            material_category = material_data['category']
-            
-            # Get category primary industries from Categories.yaml (unified source)
-            category_primary_industries = []
-            if material_category in self.category_enhanced_data:
-                enhanced_data = self.category_enhanced_data[material_category]
-                if 'industryTags' in enhanced_data:
-                    industry_tags_data = enhanced_data['industryTags']
-                    if 'primary_industries' in industry_tags_data:
-                        category_primary_industries = industry_tags_data['primary_industries']
-            
-            # Check for material-specific industry overrides (preserved unique tags)
-            material_specific_industries = []
-            if 'material_metadata' in material_data and 'industryTags' in material_data['material_metadata']:
-                material_specific_industries = material_data['material_metadata']['industryTags']
-            
-            # Combine category primary + material-specific industries
-            all_industries = list(set(category_primary_industries + material_specific_industries))
-            
-            # Generate applications from industries (simple industry names only - no descriptions)
-            if all_industries:
-                # Just use industry names directly (removed descriptions per user request)
-                for industry in all_industries[:10]:
-                    # Convert slug to display format
-                    industry_display = industry.replace('-', ' ').title()
-                    applications.append(industry_display)
-            
-            # FAIL-FAST per GROK_INSTRUCTIONS.md - must have industry data
-            if not applications:
-                raise GenerationError(f"No industry data available for {material_name} - cannot generate applications")
-                
-            self.logger.info(f"Generated {len(applications)} applications from unified industry data for {material_name}")
-            return applications
-            
-        except Exception as e:
-            self.logger.error(f"Failed to generate applications from unified industry data: {e}")
-            # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
-            raise GenerationError(f"Applications generation failed for {material_name}: {e}")
-
     def _generate_subtitle(self, material_name: str, category: str, subcategory: str, material_data: Dict) -> str:
         """Generate AI-powered subtitle highlighting material-specific characteristics and treatment differences"""
         try:
@@ -2147,46 +1867,3 @@ Generate exactly two text blocks:
         
         return characteristics[:2]
 
-    def _add_regulatory_standards_section(self, frontmatter: Dict, material_data: Dict) -> Dict:
-        """Add regulatory standards combining universal standards from Categories.yaml with material-specific standards"""
-        try:
-            all_regulatory_standards = []
-            
-            # Add universal regulatory standards from Categories.yaml (applies to ALL materials)
-            if hasattr(self, 'universal_regulatory_standards') and self.universal_regulatory_standards:
-                all_regulatory_standards.extend(self.universal_regulatory_standards)
-                self.logger.info(f"Added {len(self.universal_regulatory_standards)} universal regulatory standards")
-            
-            # Add material-specific regulatory standards from Materials.yaml
-            material_specific_standards = []
-            
-            # Check for standards in material_metadata (optimized structure)
-            if 'material_metadata' in material_data and 'regulatoryStandards' in material_data['material_metadata']:
-                material_specific_standards = material_data['material_metadata']['regulatoryStandards']
-            # Fallback to direct field (legacy structure)
-            elif 'regulatoryStandards' in material_data:
-                material_specific_standards = material_data['regulatoryStandards']
-            
-            if material_specific_standards:
-                all_regulatory_standards.extend(material_specific_standards)
-                self.logger.info(f"Added {len(material_specific_standards)} material-specific regulatory standards")
-            
-            # Add combined regulatory standards to frontmatter
-            if all_regulatory_standards:
-                frontmatter['regulatoryStandards'] = all_regulatory_standards
-                self.logger.info(f"Total regulatory standards: {len(all_regulatory_standards)} (universal + specific)")
-            else:
-                # Ensure universal standards are always present
-                frontmatter['regulatoryStandards'] = self.universal_regulatory_standards if hasattr(self, 'universal_regulatory_standards') else []
-                
-            return frontmatter
-        except Exception as e:
-            self.logger.error(f"Failed to add regulatory standards: {e}")
-            # Ensure universal standards are preserved even on error
-            if hasattr(self, 'universal_regulatory_standards'):
-                frontmatter['regulatoryStandards'] = self.universal_regulatory_standards
-            return frontmatter
-            
-        except Exception as e:
-            self.logger.warning(f"Failed to add outcome metrics section: {e}")
-            return frontmatter
