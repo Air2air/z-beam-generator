@@ -216,7 +216,16 @@ class PreGenerationValidationService:
                         })
             
             success = len(errors) == 0
-            return ValidationResult(success, "categories", issues, warnings, errors)
+            result = ValidationResult(success, "categories", issues, warnings, errors)
+            
+            # Fail-fast: Always raise exception on critical errors (per GROK_INSTRUCTIONS.md)
+            if not success:
+                raise ConfigurationError(
+                    f"Categories.yaml validation failed:\n" +
+                    "\n".join(f"  - {e.get('message', str(e))}" for e in errors[:3])
+                )
+            
+            return result
             
         except Exception as e:
             errors.append({
@@ -256,10 +265,19 @@ class PreGenerationValidationService:
                     warnings.append({
                         "type": "missing_index",
                         "message": "Materials.yaml missing material_index"
-                    })
+                        })
             
             success = len(errors) == 0
-            return ValidationResult(success, "materials", issues, warnings, errors)
+            result = ValidationResult(success, "materials", issues, warnings, errors)
+            
+            # Fail-fast: Always raise exception on critical errors (per GROK_INSTRUCTIONS.md)
+            if not success:
+                raise ConfigurationError(
+                    f"Materials.yaml validation failed:\n" +
+                    "\n".join(f"  - {e.get('message', str(e))}" for e in errors[:3])
+                )
+            
+            return result
             
         except Exception as e:
             errors.append({
@@ -424,8 +442,25 @@ class PreGenerationValidationService:
                     else:
                         issues.append(issue)
             
+            # Check optical energy conservation (A + R ≤ 100%)
+            optical_issues = self._validate_optical_energy(material_name, category, material_properties)
+            for issue in optical_issues:
+                if issue['severity'] == 'ERROR':
+                    errors.append(issue)
+                elif issue['severity'] == 'WARNING':
+                    warnings.append(issue)
+            
             success = len(errors) == 0
-            return ValidationResult(success, "property_rules", issues, warnings, errors)
+            result = ValidationResult(success, "property_rules", issues, warnings, errors)
+            
+            # Fail-fast: Always raise exception on critical errors (per GROK_INSTRUCTIONS.md)
+            if not success:
+                raise MaterialsValidationError(
+                    f"Property validation failed for {material_name} ({category}):\n" +
+                    "\n".join(f"  - {e.get('message', str(e))}" for e in errors[:5])
+                )
+            
+            return result
             
         except Exception as e:
             errors.append({
@@ -666,7 +701,16 @@ class PreGenerationValidationService:
                         warnings.append(issue)
             
             success = len(errors) == 0
-            return ValidationResult(success, "relationships", issues, warnings, errors)
+            result = ValidationResult(success, "relationships", issues, warnings, errors)
+            
+            # Fail-fast: Always raise exception on critical errors (per GROK_INSTRUCTIONS.md)
+            if not success:
+                raise MaterialsValidationError(
+                    f"Relationship validation failed for {material_name}:\n" +
+                    "\n".join(f"  - {e.get('message', str(e))}" for e in errors[:5])
+                )
+            
+            return result
             
         except Exception as e:
             errors.append({
@@ -1060,7 +1104,16 @@ class PreGenerationValidationService:
                 })
             
             success = len(errors) == 0
-            return ValidationResult(success, "completeness", issues, warnings, errors)
+            result = ValidationResult(success, "completeness", issues, warnings, errors)
+            
+            # Fail-fast: Always raise exception on critical errors (per GROK_INSTRUCTIONS.md)
+            if not success:
+                raise MaterialsValidationError(
+                    f"Completeness validation failed for {material_name}:\n" +
+                    "\n".join(f"  - {e.get('message', str(e))}" for e in errors[:5])
+                )
+            
+            return result
             
         except Exception as e:
             errors.append({

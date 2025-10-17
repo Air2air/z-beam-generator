@@ -175,36 +175,67 @@ class MaterialDataError(Exception):
 
 @dataclass
 class ValidationResult:
-    """Result of validation operation with structured errors"""
+    """
+    Result of validation operation with structured errors.
+    Supports both new VError format and legacy dict format for backwards compatibility.
+    """
     
-    success: bool
-    validation_type: str
-    errors: List[ValidationError] = field(default_factory=list)
-    timestamp: str = field(default_factory=lambda: datetime.now().isoformat())
+    def __init__(self, success: bool, validation_type: str, 
+                 issues: Optional[List[Dict]] = None,
+                 warnings: Optional[List[Dict]] = None,
+                 errors: Optional[List] = None,  # Can be VError or dict
+                 timestamp: Optional[str] = None):
+        """
+        Initialize ValidationResult with backwards compatibility.
+        
+        Args:
+            success: Whether validation passed
+            validation_type: Type of validation performed
+            issues: Legacy dict-based issues (INFO level) - optional
+            warnings: Legacy dict-based warnings (WARNING level) - optional
+            errors: Can be list of VError objects or legacy dict-based errors (ERROR level) - optional
+            timestamp: ISO timestamp - optional
+        """
+        self.success = success
+        self.validation_type = validation_type
+        self.timestamp = timestamp or datetime.now().isoformat()
+        
+        # Handle legacy dict-based format
+        self.issues = issues or []
+        self.warnings = warnings or []
+        
+        if errors and len(errors) > 0 and isinstance(errors[0], dict):
+            # Legacy dict format - store separately
+            self._errors_dicts = errors or []
+            self.errors = []
+        else:
+            # New VError format
+            self.errors = errors or []
+            self._errors_dicts = []
     
     @property
-    def has_critical_errors(self) -> bool:
-        """Check if any critical errors exist (must fail immediately)"""
+    def has_critical_issues(self) -> bool:
+        """Check if has critical issues (for backwards compatibility with old code)"""
+        return not self.success or len(self._errors_dicts) > 0 or self.has_critical_errors_new
+    
+    @property
+    def has_critical_errors_new(self) -> bool:
+        """Check if any critical VError objects exist"""
         return any(error.is_critical() for error in self.errors)
     
     @property
-    def has_warnings(self) -> bool:
-        """Check if any warnings exist"""
-        return any(error.is_warning() for error in self.errors)
-    
-    @property
     def critical_errors(self) -> List[ValidationError]:
-        """Get all critical errors"""
+        """Get all critical VError objects"""
         return [e for e in self.errors if e.is_critical()]
     
     @property
-    def warnings(self) -> List[ValidationError]:
-        """Get all warnings"""
+    def warning_errors(self) -> List[ValidationError]:
+        """Get all warning VError objects (different from self.warnings dict list)"""
         return [e for e in self.errors if e.is_warning()]
     
     @property
     def info_messages(self) -> List[ValidationError]:
-        """Get all info messages"""
+        """Get all info VError objects"""
         return [e for e in self.errors if e.is_info()]
     
     def add_error(self, error: ValidationError) -> None:
