@@ -1252,27 +1252,20 @@ Return YAML format with materialProperties, machineSettings, and structured appl
             return False
     
     def _extract_numeric_only(self, value) -> Optional[float]:
-        """Extract numeric value from string or return number directly"""
-        if isinstance(value, (int, float)):
-            return float(value)
-        
-        if isinstance(value, str):
-            # Extract first number from string
-            match = re.search(r'(\d+(?:\.\d+)?)', value)
-            if match:
-                return float(match.group(1))
-        
-        return None
+        """
+        DEPRECATED: Use PropertyProcessor._extract_numeric_only() instead.
+        This method is kept for backward compatibility with tests.
+        """
+        self.logger.warning("DEPRECATED: _extract_numeric_only() - Use PropertyProcessor instead")
+        return self.property_processor._extract_numeric_only(value)
 
     def _extract_unit(self, value) -> Optional[str]:
-        """Extract unit from string value"""
-        if isinstance(value, str):
-            # Extract unit after number - improved regex for special characters
-            match = re.search(r'\d+(?:\.\d+)?\s*([a-zA-Z/°³²¹⁰⁻⁺μ]+)', value)
-            if match:
-                return match.group(1)
-        
-        return None
+        """
+        DEPRECATED: Use PropertyProcessor._extract_unit() instead.
+        This method is kept for backward compatibility with tests.
+        """
+        self.logger.warning("DEPRECATED: _extract_unit() - Use PropertyProcessor instead")
+        return self.property_processor._extract_unit(value)
 
     def _detect_property_pattern(self, prop_data) -> str:
         """
@@ -1397,72 +1390,12 @@ Return YAML format with materialProperties, machineSettings, and structured appl
         return 0
 
     def _get_category_unit(self, material_category: str, prop_key: str) -> Optional[str]:
-        """Get unit for property from Categories.yaml enhanced data"""
-        try:
-            # Map machine settings to machineSettingsDescriptions keys - FIX for min/max unit extraction
-            machine_settings_mapping = {
-                'powerRange': 'powerRange',
-                'spotSize': 'spotSize',
-                'repetitionRate': 'repetitionRate',
-                'fluenceThreshold': 'fluenceThreshold',
-                'pulseDuration': 'pulseDuration',
-                'scanningSpeed': 'scanningSpeed',
-                'processingSpeed': 'processingSpeed',
-                'ablationThreshold': 'ablationThreshold',
-                'thermalDamageThreshold': 'thermalDamageThreshold'
-            }
-            
-            # Check machine settings first (these come from machineSettingsDescriptions)
-            if prop_key in machine_settings_mapping:
-                desc_key = machine_settings_mapping[prop_key]
-                if (hasattr(self, 'machine_settings_descriptions') and 
-                    desc_key in self.machine_settings_descriptions and
-                    isinstance(self.machine_settings_descriptions[desc_key], dict) and
-                    'unit' in self.machine_settings_descriptions[desc_key]):
-                    unit = self.machine_settings_descriptions[desc_key]['unit']
-                    # Handle multi-unit strings like "ns, ps, fs" - take first unit
-                    if ',' in unit:
-                        unit = unit.split(',')[0].strip()
-                    return unit
-            
-            # Map material property keys to Categories.yaml range keys
-            property_mapping = {
-                'density': 'density',
-                'thermalConductivity': 'thermalConductivity', 
-                'tensileStrength': 'tensileStrength',
-                'youngsModulus': 'youngsModulus',
-                'hardness': 'hardness',
-                'electricalConductivity': 'electricalConductivity',
-                'thermalDestruction': 'thermalDestruction',  # Nested structure
-                'thermalExpansion': 'thermalExpansion',
-                'thermalDiffusivity': 'thermalDiffusivity',
-                'specificHeat': 'specificHeat',
-                'laserAbsorption': 'laserAbsorption',
-                'laserReflectivity': 'laserReflectivity',
-                'thermalDestructionType': 'thermalDestructionType'  # Add missing property
-            }
-            
-            if prop_key in property_mapping:
-                range_key = property_mapping[prop_key]
-                if (material_category in self.category_ranges and 
-                    range_key in self.category_ranges[material_category] and
-                    'unit' in self.category_ranges[material_category][range_key]):
-                    return self.category_ranges[material_category][range_key]['unit']
-                    
-            # Check enhanced properties for electrical, processing, chemical properties
-            if material_category in self.category_enhanced_data:
-                enhanced_data = self.category_enhanced_data[material_category]
-                
-                for property_type in ['electricalProperties', 'processingParameters', 'chemicalProperties']:
-                    if property_type in enhanced_data and prop_key in enhanced_data[property_type]:
-                        prop_data = enhanced_data[property_type][prop_key]
-                        if isinstance(prop_data, dict) and 'unit' in prop_data:
-                            return prop_data['unit']
-                            
-        except Exception as e:
-            self.logger.warning(f"Could not get unit for {prop_key} in {material_category}: {e}")
-            
-        return None
+        """
+        DEPRECATED: Use PropertyProcessor._get_category_unit() instead.
+        This method is kept for backward compatibility.
+        """
+        self.logger.warning("DEPRECATED: _get_category_unit() - Use PropertyProcessor instead")
+        return self.property_processor._get_category_unit(material_category, prop_key)
 
     def _generate_author(self, material_data: Dict) -> Dict:
         """Generate author from material data author.id"""
