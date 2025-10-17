@@ -577,6 +577,11 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         yaml_count = 0
         ai_count = 0
         
+        # PHASE 3.2 OPTIMIZATION: Pre-load all category ranges at once (batch loading)
+        material_category = material_data.get('category', 'metal').lower()
+        all_category_ranges = self.template_service.get_all_category_ranges(material_category)
+        self.logger.debug(f"Phase 3.2: Pre-loaded {len(all_category_ranges)} category ranges for {material_category}")
+        
         # Use PropertyValueResearcher for AI discovery of missing properties only
         if not self.property_researcher:
             # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
@@ -601,8 +606,8 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                             'max': None
                         }
                         
-                        # Get category-wide min/max ranges from Categories.yaml (like other properties)
-                        category_ranges = self.template_service.get_category_ranges_for_property(material_data.get('category'), prop_name)
+                        # PHASE 3.2 OPTIMIZATION: Use pre-loaded category ranges (dict lookup instead of method call)
+                        category_ranges = all_category_ranges.get(prop_name)
                         if category_ranges and 'point' in category_ranges:
                             # Extract point ranges from nested structure
                             point_ranges = category_ranges['point']
@@ -628,8 +633,8 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                             'min': None,
                             'max': None
                         }
-                        # Get category-wide min/max ranges from Categories.yaml (not material-specific)
-                        category_ranges = self.template_service.get_category_ranges_for_property(material_data.get('category'), prop_name)
+                        # PHASE 3.2 OPTIMIZATION: Use pre-loaded category ranges (dict lookup instead of method call)
+                        category_ranges = all_category_ranges.get(prop_name)
                         if category_ranges:
                             properties[prop_name]['min'] = category_ranges.get('min')
                             properties[prop_name]['max'] = category_ranges.get('max')
@@ -708,6 +713,14 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             material_category=material_category,
             properties=properties
         )
+        
+        # PHASE 3.2 OPTIMIZATION: Log cache statistics for performance monitoring
+        cache_stats = self.template_service.get_cache_stats()
+        if cache_stats['hits'] + cache_stats['misses'] > 0:
+            self.logger.info(
+                f"🚀 Phase 3.2 cache performance: {cache_stats['hits']} hits, "
+                f"{cache_stats['misses']} misses, {cache_stats['hit_rate']:.1%} hit rate"
+            )
                         
         return properties
     
