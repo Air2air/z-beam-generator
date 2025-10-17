@@ -263,13 +263,16 @@ class ValidationService:
 - [x] Implement `merge_with_ranges()` ✅
 - [ ] Unit tests for PropertyProcessor (TODO)
 
-### Step 3: Refactor StreamlinedGenerator (Day 2)
-- [ ] Update imports to use PropertyManager
-- [ ] Simplify `generate_frontmatter()` to orchestration only
-- [ ] Remove duplicated property processing code
-- [ ] Delegate to PropertyProcessor
-- [ ] Update all helper methods
-- [ ] Integration tests
+### Step 3: Refactor StreamlinedGenerator (Day 2) ✅ IN PROGRESS (60% COMPLETE)
+- [x] Update imports to use PropertyManager and PropertyProcessor ✅
+- [x] Initialize new services in __init__ → _load_categories_data() ✅
+- [x] Replace property generation flow with PropertyManager ✅
+- [x] Replace property processing with PropertyProcessor ✅
+- [x] Deprecate duplicate methods with backward compatibility ✅
+- [x] Reduce line count from 2,280 to 2,172 (108 lines / 4.7%) ✅
+- [ ] Continue identifying duplicate/removable code (TODO)
+- [ ] Target final reduction to < 1,500 lines (TODO)
+- [ ] Integration tests (TODO)
 
 ### Step 4: Consolidate Validation (Day 2)
 - [ ] Create unified ValidationService
