@@ -2436,6 +2436,22 @@ categories:
       hardness:
         min: 0.9
         max: 3430.0
+      thermalDestructionPoint:
+        min: 273.0
+        max: 3695.0
+        unit: K
+      reflectivity:
+        min: 5.0
+        max: 98.0
+        unit: '%'
+      absorptivity:
+        min: 0.02
+        max: 0.95
+        unit: ''
+      porosity:
+        min: 0.0
+        max: 30.0
+        unit: '%'
   plastic:
     name: Plastic Materials
     description: Polymeric materials including thermoplastics, thermosets, elastomers,

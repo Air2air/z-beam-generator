@@ -125,6 +125,15 @@ GLOBAL_OPERATIONAL_CONFIG = {
         "hierarchical_validation_post_generation": True, # Run hierarchical validation after content generation
     },
     
+    # Data Completeness Enforcement
+    "data_completeness": {
+        "enforce_before_generation": False,  # Set to True to block generation if data incomplete
+        "warn_before_generation": True,     # Show warnings about incomplete data
+        "completeness_threshold": 95.0,     # Minimum acceptable completeness %
+        "block_on_critical_gaps": False,    # Block if critical properties missing
+        "show_action_plan_link": True,      # Direct users to DATA_COMPLETION_ACTION_PLAN.md
+    },
+    
     # Research component API settings
     "research_defaults": {
         "property_researcher": {
@@ -1139,6 +1148,180 @@ def run_frontmatter_sanitization(specific_file=None):
 
 
 # =================================================================================
+# DATA COMPLETENESS REPORTING & ANALYSIS
+# =================================================================================
+
+def handle_data_completeness_report():
+    """Generate comprehensive data completeness report"""
+    try:
+        # Use the property completeness analysis tool
+        import subprocess
+        import sys
+        
+        print("="*80)
+        print("DATA COMPLETENESS REPORT")
+        print("="*80)
+        print()
+        
+        # Run the property completeness report script
+        script_path = "scripts/analysis/property_completeness_report.py"
+        result = subprocess.run(
+            [sys.executable, script_path],
+            capture_output=True,
+            text=True,
+            timeout=60
+        )
+        
+        if result.returncode == 0:
+            # Print the output
+            print(result.stdout)
+            
+            # Add next actions
+            print()
+            print("="*80)
+            print("NEXT ACTIONS")
+            print("="*80)
+            print()
+            print("📋 Complete Action Plan: docs/DATA_COMPLETION_ACTION_PLAN.md")
+            print("🔬 Research Tools: components/frontmatter/research/")
+            print("⚡ Quick Win: Research 2 category ranges (30 mins)")
+            print()
+            print("To see research priorities:")
+            print("  python3 run.py --data-gaps")
+            print()
+            
+            return True
+        else:
+            print(f"❌ Script error: {result.stderr}")
+            return False
+        
+    except Exception as e:
+        print(f"❌ Data completeness report error: {e}")
+        import traceback
+        traceback.print_exc()
+        return False
+
+
+def handle_data_gaps():
+    """Show data gaps with research priorities"""
+    try:
+        import subprocess
+        import sys
+        import yaml
+        from pathlib import Path
+        from collections import defaultdict
+        
+        print("="*80)
+        print("DATA GAPS & RESEARCH PRIORITIES")
+        print("="*80)
+        print()
+        
+        # Load Materials.yaml to analyze gaps
+        materials_file = Path("data/Materials.yaml")
+        if not materials_file.exists():
+            print("❌ Materials.yaml not found")
+            return False
+        
+        with open(materials_file) as f:
+            materials_data = yaml.safe_load(f)
+        
+        # Track property gaps across all materials
+        property_gaps = defaultdict(int)
+        material_gaps = []
+        total_materials = 0
+        total_gaps = 0
+        
+        # All expected properties (meltingPoint removed - replaced by thermalDestruction)
+        all_properties = [
+            'density', 'thermalConductivity', 'specificHeat',
+            'thermalExpansion', 'youngsModulus', 'tensileStrength', 'hardness',
+            'reflectivity', 'absorptivity', 'vaporPressure', 'ablationThreshold',
+            'electricalResistivity', 'porosity', 'surfaceRoughness', 'oxidationResistance',
+            'corrosionResistance', 'toxicity', 'laserAbsorption', 'laserReflectivity',
+            'thermalDiffusivity', 'thermalDestruction'
+        ]
+        
+        materials_section = materials_data.get('materials', {})
+        
+        # Materials are direct keys, not nested in items
+        for material_name, material_data in materials_section.items():
+            if not isinstance(material_data, dict):
+                continue
+                
+            properties = material_data.get('properties', {})
+            total_materials += 1
+            
+            missing_props = []
+            for prop in all_properties:
+                if prop not in properties or properties[prop] is None:
+                    property_gaps[prop] += 1
+                    missing_props.append(prop)
+                    total_gaps += 1
+            
+            if missing_props:
+                category = material_data.get('category', 'unknown')
+                material_gaps.append({
+                    'name': material_name,
+                    'category': category,
+                    'missing_count': len(missing_props),
+                    'missing_props': missing_props
+                })
+        
+        # Sort materials by gap count
+        material_gaps.sort(key=lambda x: x['missing_count'], reverse=True)
+        
+        # Sort properties by impact
+        sorted_props = sorted(property_gaps.items(), key=lambda x: x[1], reverse=True)
+        
+        # Show top materials needing research
+        print("Top 10 Materials Needing Research:")
+        print("-"*80)
+        for i, material in enumerate(material_gaps[:10], 1):
+            print(f"{i:2d}. {material['name']:30s} - {material['missing_count']:2d} gaps")
+        
+        print()
+        print("Research Priority Order (Properties with Most Gaps):")
+        print("-"*80)
+        
+        for i, (prop_name, count) in enumerate(sorted_props[:10], 1):
+            pct = (count / total_gaps * 100) if total_gaps > 0 else 0
+            print(f"{i:2d}. {prop_name:30s} - {count:3d} materials affected ({pct:5.1f}%)")
+        
+        # Calculate impact of top 5 properties
+        top5_count = sum(count for _, count in sorted_props[:5]) if len(sorted_props) >= 5 else 0
+        
+        print()
+        print("="*80)
+        print("RECOMMENDED ACTIONS")
+        print("="*80)
+        print()
+        
+        if total_gaps > 0:
+            pct = (top5_count/total_gaps*100) if top5_count > 0 else 0
+            print(f"🎯 Focus on top 5 properties → fixes {top5_count} gaps ({pct:.1f}% of total)")
+            print()
+            print("Start with:")
+            for i, (prop_name, count) in enumerate(sorted_props[:5], 1):
+                prop_pct = (count / total_gaps * 100) if total_gaps > 0 else 0
+                print(f"  {i}. Research {prop_name} ({count} gaps, {prop_pct:.1f}% of total)")
+        else:
+            print("✅ No data gaps found! All properties are complete.")
+        
+        print()
+        print("📋 Complete methodology: docs/DATA_COMPLETION_ACTION_PLAN.md")
+        print("🔬 Research tools: components/frontmatter/research/")
+        print()
+        
+        return True
+        
+    except Exception as e:
+        print(f"❌ Data gaps analysis error: {e}")
+        import traceback
+        traceback.print_exc()
+        return False
+
+
+# =================================================================================
 # UTILITY FUNCTIONS
 # =================================================================================
 
@@ -1331,8 +1514,19 @@ def main():
     parser.add_argument("--validate", action="store_true", help="Run hierarchical validation (Categories.yaml → Materials.yaml → Frontmatter) and auto-fix issues")
     parser.add_argument("--validate-report", help="Generate hierarchical validation report to file")
     parser.add_argument("--data", nargs='?', const='--all', help="Systematically verify Materials.yaml data with AI research (use --data=critical, --data=all, or --data=test)")
+    parser.add_argument("--data-completeness-report", action="store_true", help="Generate comprehensive data completeness report")
+    parser.add_argument("--data-gaps", action="store_true", help="Analyze data gaps and show research priorities")
+    parser.add_argument("--enforce-completeness", action="store_true", help="Block generation if data completeness below threshold (strict mode)")
     
     args = parser.parse_args()
+    
+    # Handle data completeness reporting
+    if args.data_completeness_report:
+        return handle_data_completeness_report()
+    
+    # Handle data gaps analysis
+    if args.data_gaps:
+        return handle_data_gaps()
     
     # Handle systematic data verification
     if args.data is not None:
@@ -1345,6 +1539,11 @@ def main():
     # Handle data validation without regeneration
     if args.validate or args.validate_report:
         return run_data_validation(args.validate_report)
+    
+    # Apply enforcement flag if specified
+    if hasattr(args, 'enforce_completeness') and args.enforce_completeness:
+        GLOBAL_OPERATIONAL_CONFIG['data_completeness']['enforce_before_generation'] = True
+        print("🔒 Strict mode enabled: Will block generation if data incomplete")
     
     # Handle frontmatter sanitization (post-processor)
     if args.sanitize or args.sanitize_file:

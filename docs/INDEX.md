@@ -6,10 +6,12 @@
 
 | I want to... | Go to |
 |--------------|-------|
+| **Fix missing property data** | [DATA_COMPLETION_ACTION_PLAN.md](DATA_COMPLETION_ACTION_PLAN.md) ✨ NEW |
 | **Get started immediately** | [setup/INSTALLATION.md](setup/INSTALLATION.md) |
 | **Check project status** | [../PROJECT_STATUS.md](../PROJECT_STATUS.md) |
 | **Fix API connection issues** | [api/ERROR_HANDLING.md](api/ERROR_HANDLING.md) |
 | **Generate content for materials** | [operations/CONTENT_GENERATION.md](operations/CONTENT_GENERATION.md) |
+| **Understand data architecture** | [DATA_ARCHITECTURE.md](DATA_ARCHITECTURE.md) |
 | **Understand voice system** | [../voice/VOICE_SYSTEM_COMPLETE.md](../voice/VOICE_SYSTEM_COMPLETE.md) |
 | **Set up API keys** | [setup/API_CONFIGURATION.md](setup/API_CONFIGURATION.md) |
 | **Understand Winston.ai system** | [WINSTON_AI_COMPLETE_GUIDE.md](WINSTON_AI_COMPLETE_GUIDE.md) |
@@ -26,6 +28,9 @@
 Understanding how Z-Beam works fundamentally
 - [**ARCHITECTURE.md**](core/ARCHITECTURE.md) - System design and fail-fast principles
 - [**DATA_ARCHITECTURE.md**](DATA_ARCHITECTURE.md) - ✅ Range propagation: Categories → Materials → Frontmatter *(Oct 2025)*
+- [**DATA_COMPLETION_ACTION_PLAN.md**](DATA_COMPLETION_ACTION_PLAN.md) - ✅ **NEW** Complete plan to achieve 100% data coverage *(Oct 16, 2025)*
+- [**ZERO_NULL_POLICY.md**](ZERO_NULL_POLICY.md) - ✅ Zero null value policy and AI research methodology *(Oct 16, 2025)*
+- [**DATA_VALIDATION_STRATEGY.md**](DATA_VALIDATION_STRATEGY.md) - ✅ 4-layer validation architecture *(Oct 16, 2025)*
 - [**PRIORITY2_COMPLETE.md**](PRIORITY2_COMPLETE.md) - ✅ Priority 2 Research Complete: 12 authoritative properties validated *(Oct 14, 2025)*
 - [**AI_DETECTION_LOCALIZATION_CHAIN_ARCHITECTURE.md**](AI_DETECTION_LOCALIZATION_CHAIN_ARCHITECTURE.md) - AI detection + localization prompt chain
 - [**LOCALIZATION_PROMPT_CHAIN_SYSTEM.md**](LOCALIZATION_PROMPT_CHAIN_SYSTEM.md) - Cultural localization system

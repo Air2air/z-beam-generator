@@ -16360,9 +16360,11 @@ materials:
         max: 7.3
         confidence: 0.98
         source: ai_research
-        research_basis: 'ASM Handbook, Volume 1: Properties and Selection: Irons, Steels, and High-Performance Alloys - Gray Cast Iron ASTM A48 Class 30'
+        research_basis: 'ASM Handbook, Volume 1: Properties and Selection: Irons,
+          Steels, and High-Performance Alloys - Gray Cast Iron ASTM A48 Class 30'
         research_date: '2025-10-16T00:00:00.000000'
-        validation_method: Cross-referenced with ASTM A48 standard specifications for gray iron castings
+        validation_method: Cross-referenced with ASTM A48 standard specifications
+          for gray iron castings
       hardness:
         value: 2200.0
         unit: HV
@@ -16370,7 +16372,8 @@ materials:
         max: 2500.0
         confidence: 0.95
         source: ai_research
-        research_basis: 'ASM Handbook, Volume 1 - Gray cast iron hardness range 190-250 HB, converted to Vickers (HV ≈ HB × 9.5 for this range)'
+        research_basis: ASM Handbook, Volume 1 - Gray cast iron hardness range 190-250
+          HB, converted to Vickers (HV ≈ HB × 9.5 for this range)
         research_date: '2025-10-16T00:00:00.000000'
         validation_method: Standard hardness conversion tables for ferrous materials
       laserAbsorption:
@@ -16378,9 +16381,10 @@ materials:
         unit: '%'
         min: 50.0
         max: 60.0
-        confidence: 0.90
+        confidence: 0.9
         source: ai_research
-        research_basis: Cast iron absorption at 1064nm wavelength - higher carbon content increases absorption compared to steel
+        research_basis: Cast iron absorption at 1064nm wavelength - higher carbon
+          content increases absorption compared to steel
         research_date: '2025-10-16T00:00:00.000000'
         validation_method: Laser processing literature for cast iron surface treatment
       laserReflectivity:
@@ -16388,9 +16392,10 @@ materials:
         unit: '%'
         min: 40.0
         max: 50.0
-        confidence: 0.90
+        confidence: 0.9
         source: ai_research
-        research_basis: Complementary to absorption at 1064nm, accounting for surface oxidation typical in cast iron
+        research_basis: Complementary to absorption at 1064nm, accounting for surface
+          oxidation typical in cast iron
         research_date: '2025-10-16T00:00:00.000000'
       thermalConductivity:
         value: 50.0
@@ -16399,7 +16404,8 @@ materials:
         max: 54.0
         confidence: 0.95
         source: ai_research
-        research_basis: 'ASM Handbook - Gray cast iron thermal conductivity at room temperature (46-54 W/m·K depending on graphite content)'
+        research_basis: ASM Handbook - Gray cast iron thermal conductivity at room
+          temperature (46-54 W/m·K depending on graphite content)
         research_date: '2025-10-16T00:00:00.000000'
       thermalDiffusivity:
         value: 12.5
@@ -16408,9 +16414,12 @@ materials:
         max: 14.0
         confidence: 0.92
         source: ai_research
-        research_basis: 'ASM Handbook, Volume 1: Gray cast iron thermal diffusivity calculated from thermal conductivity (50 W/m·K), density (7.2 g/cm³), and specific heat (540 J/kg·K)'
+        research_basis: 'ASM Handbook, Volume 1: Gray cast iron thermal diffusivity
+          calculated from thermal conductivity (50 W/m·K), density (7.2 g/cm³), and
+          specific heat (540 J/kg·K)'
         research_date: '2025-10-16T18:00:00.000000'
-        validation_method: Verified against typical values for ASTM A48 Class 30 gray iron with 3-4% carbon content
+        validation_method: Verified against typical values for ASTM A48 Class 30 gray
+          iron with 3-4% carbon content
       thermalExpansion:
         value: 11.0
         unit: 10⁻⁶/K
@@ -16418,9 +16427,11 @@ materials:
         max: 12.0
         confidence: 0.95
         source: ai_research
-        research_basis: 'ASM Handbook, Volume 1: Gray cast iron coefficient of thermal expansion at 20-100°C, typical for flake graphite cast iron'
+        research_basis: 'ASM Handbook, Volume 1: Gray cast iron coefficient of thermal
+          expansion at 20-100°C, typical for flake graphite cast iron'
         research_date: '2025-10-16T18:00:00.000000'
-        validation_method: Cross-referenced with ASTM A48 standard specifications for gray iron castings
+        validation_method: Cross-referenced with ASTM A48 standard specifications
+          for gray iron castings
       specificHeat:
         value: 540.0
         unit: J/(kg·K)
@@ -16428,7 +16439,8 @@ materials:
         max: 560.0
         confidence: 0.92
         source: ai_research
-        research_basis: Cast iron specific heat capacity - slightly higher than pure iron due to carbon content
+        research_basis: Cast iron specific heat capacity - slightly higher than pure
+          iron due to carbon content
         research_date: '2025-10-16T00:00:00.000000'
       thermalDestructionPoint:
         value: 1473.0
@@ -16437,25 +16449,29 @@ materials:
         max: 1523.0
         confidence: 0.95
         source: ai_research
-        research_basis: 'Gray cast iron melting point range 1150-1250°C (1423-1523K)'
+        research_basis: Gray cast iron melting point range 1150-1250°C (1423-1523K)
         research_date: '2025-10-16T00:00:00.000000'
       thermalDestructionType:
         value: melting
         unit: type
         confidence: 0.99
         source: materials_science
-        research_basis: 'Gray cast iron undergoes melting as primary thermal destruction mechanism at approximately 1200°C'
+        research_basis: Gray cast iron undergoes melting as primary thermal destruction
+          mechanism at approximately 1200°C
         research_date: '2025-10-16T18:00:00.000000'
       oxidationResistance:
         value: 750.0
         unit: °C
         min: 700.0
         max: 800.0
-        confidence: 0.90
+        confidence: 0.9
         source: ai_research
-        research_basis: 'ASM Handbook, Volume 1: Gray cast iron begins significant oxidation at 700-800°C in air. Forms protective oxide scale below this temperature but experiences accelerated oxidation above.'
+        research_basis: 'ASM Handbook, Volume 1: Gray cast iron begins significant
+          oxidation at 700-800°C in air. Forms protective oxide scale below this temperature
+          but experiences accelerated oxidation above.'
         research_date: '2025-10-16T18:00:00.000000'
-        validation_method: Cross-referenced with high-temperature oxidation studies of gray cast iron in industrial environments
+        validation_method: Cross-referenced with high-temperature oxidation studies
+          of gray cast iron in industrial environments
       corrosionResistance:
         value: 5.0
         unit: rating
@@ -16463,9 +16479,13 @@ materials:
         max: 6.0
         confidence: 0.88
         source: ai_research
-        research_basis: 'ASM Handbook, Volume 13A: Gray cast iron has moderate corrosion resistance. Forms protective rust layer in atmospheric conditions but susceptible to acids and chlorides. Better than carbon steel due to graphite flakes providing cathodic protection.'
+        research_basis: 'ASM Handbook, Volume 13A: Gray cast iron has moderate corrosion
+          resistance. Forms protective rust layer in atmospheric conditions but susceptible
+          to acids and chlorides. Better than carbon steel due to graphite flakes
+          providing cathodic protection.'
         research_date: '2025-10-16T18:00:00.000000'
-        validation_method: Rated on 0-10 scale where 10 is maximum resistance, considering atmospheric, aqueous, and chemical environments
+        validation_method: Rated on 0-10 scale where 10 is maximum resistance, considering
+          atmospheric, aqueous, and chemical environments
       tensileStrength:
         value: 250.0
         unit: MPa
@@ -16473,7 +16493,8 @@ materials:
         max: 300.0
         confidence: 0.95
         source: ai_research
-        research_basis: 'ASTM A48 Class 30 gray cast iron - tensile strength 207-276 MPa (30-40 ksi)'
+        research_basis: ASTM A48 Class 30 gray cast iron - tensile strength 207-276
+          MPa (30-40 ksi)
         research_date: '2025-10-16T00:00:00.000000'
       youngsModulus:
         value: 110.0
@@ -16482,8 +16503,101 @@ materials:
         max: 120.0
         confidence: 0.93
         source: ai_research
-        research_basis: Gray cast iron elastic modulus - lower than steel due to graphite flakes
+        research_basis: Gray cast iron elastic modulus - lower than steel due to graphite
+          flakes
         research_date: '2025-10-16T00:00:00.000000'
+      reflectivity:
+        value: 45.0
+        unit: '%'
+        min: 40.0
+        max: 50.0
+        confidence: 0.85
+        source: ai_research
+        research_basis: ASM Metals Handbook - Cast iron reflectivity at 1064nm, typical
+          oxidized surface
+        research_date: '2025-10-17T00:00:00.000000'
+        validation_method: Literature values for gray cast iron laser reflectivity
+      absorptivity:
+        value: 55.0
+        unit: '%'
+        min: 50.0
+        max: 60.0
+        confidence: 0.85
+        source: ai_research
+        research_basis: Complementary to reflectivity at 1064nm wavelength for cast
+          iron
+        research_date: '2025-10-17T00:00:00.000000'
+        validation_method: Energy balance calculation (absorption + reflection ≈ 100%)
+      vaporPressure:
+        value: 1.0e-07
+        unit: Pa
+        min: 1.0e-08
+        max: 1.0e-06
+        confidence: 0.75
+        source: ai_research
+        research_basis: Typical vapor pressure for iron alloys at room temperature
+        research_date: '2025-10-17T00:00:00.000000'
+        validation_method: Engineering databases for ferrous materials
+      ablationThreshold:
+        value: 8.5
+        unit: J/cm²
+        min: 7.0
+        max: 10.0
+        confidence: 0.8
+        source: ai_research
+        research_basis: Laser ablation threshold for cast iron at 1064nm, typical
+          gray iron surface
+        research_date: '2025-10-17T00:00:00.000000'
+        validation_method: Laser processing literature for cast iron machining
+      electricalResistivity:
+        value: 60.0
+        unit: µΩ·cm
+        min: 50.0
+        max: 70.0
+        confidence: 0.9
+        source: ai_research
+        research_basis: ASM Handbook - Gray cast iron electrical resistivity range
+        research_date: '2025-10-17T00:00:00.000000'
+        validation_method: Standard electrical property tables for cast irons
+      porosity:
+        value: 2.5
+        unit: '%'
+        min: 1.0
+        max: 5.0
+        confidence: 0.85
+        source: ai_research
+        research_basis: Typical porosity for gray cast iron (Class 30), graphite flake
+          structure
+        research_date: '2025-10-17T00:00:00.000000'
+        validation_method: Metallographic analysis data for gray cast iron
+      surfaceRoughness:
+        value: 3.2
+        unit: µm
+        min: 1.6
+        max: 6.3
+        confidence: 0.8
+        source: ai_research
+        research_basis: Typical as-cast surface roughness for gray iron, Ra value
+        research_date: '2025-10-17T00:00:00.000000'
+        validation_method: Surface finish standards for cast iron components
+      toxicity:
+        value: Low
+        unit: rating
+        confidence: 0.95
+        source: ai_research
+        research_basis: Cast iron is non-toxic in solid form, minimal health hazards
+          during handling
+        research_date: '2025-10-17T00:00:00.000000'
+        validation_method: OSHA and material safety data for iron alloys
+      thermalDestruction:
+        point:
+          value: 1200.0
+          unit: °C
+          confidence: 0.9
+        type: melting
+        source: ai_research
+        research_basis: Gray cast iron melting point range 1150-1250°C
+        research_date: '2025-10-17T00:00:00.000000'
     material_metadata:
       industryTags:
       - Automotive
@@ -16494,6 +16608,11 @@ materials:
       - Foundry
       - Heavy Industry
     subcategory: ferrous
+    applications:
+    - 'Automotive: Engine blocks, brake discs, cylinder heads requiring surface cleaning'
+    - 'Manufacturing: Cast components and tooling requiring contamination removal'
+    - 'Heavy Machinery: Equipment parts needing oxide and rust removal'
+    - 'Construction: Structural components requiring surface preparation'
   Tool Steel:
     author:
       id: 2
@@ -16507,7 +16626,8 @@ materials:
         max: 7.95
         confidence: 0.97
         source: ai_research
-        research_basis: 'ASM Handbook, Volume 1 - High-speed steel (HSS) M2 tool steel density'
+        research_basis: ASM Handbook, Volume 1 - High-speed steel (HSS) M2 tool steel
+          density
         research_date: '2025-10-16T00:00:00.000000'
         validation_method: Cross-referenced with AISI M2 and D2 tool steel specifications
       hardness:
@@ -16517,7 +16637,8 @@ materials:
         max: 7000.0
         confidence: 0.96
         source: ai_research
-        research_basis: 'Hardened tool steel (HRC 60-64) converted to Vickers hardness (HV ≈ 600-700 HV)'
+        research_basis: Hardened tool steel (HRC 60-64) converted to Vickers hardness
+          (HV ≈ 600-700 HV)
         research_date: '2025-10-16T00:00:00.000000'
         validation_method: Standard hardness conversion for heat-treated tool steels
       laserAbsorption:
@@ -16527,9 +16648,11 @@ materials:
         max: 46.0
         confidence: 0.88
         source: ai_research
-        research_basis: Tool steel absorption at 1064nm wavelength - similar to carbon steel with alloying element effects
+        research_basis: Tool steel absorption at 1064nm wavelength - similar to carbon
+          steel with alloying element effects
         research_date: '2025-10-16T00:00:00.000000'
-        validation_method: Laser surface hardening and cleaning literature for tool steels
+        validation_method: Laser surface hardening and cleaning literature for tool
+          steels
       laserReflectivity:
         value: 58.0
         unit: '%'
@@ -16537,7 +16660,8 @@ materials:
         max: 62.0
         confidence: 0.88
         source: ai_research
-        research_basis: Complementary to absorption, polished tool steel surface reflectivity at 1064nm
+        research_basis: Complementary to absorption, polished tool steel surface reflectivity
+          at 1064nm
         research_date: '2025-10-16T00:00:00.000000'
       thermalConductivity:
         value: 28.0
@@ -16546,7 +16670,8 @@ materials:
         max: 32.0
         confidence: 0.93
         source: ai_research
-        research_basis: 'ASM Handbook - High-speed steel thermal conductivity (lower than carbon steel due to carbide content)'
+        research_basis: ASM Handbook - High-speed steel thermal conductivity (lower
+          than carbon steel due to carbide content)
         research_date: '2025-10-16T00:00:00.000000'
       thermalDiffusivity:
         value: 7.8
@@ -16555,9 +16680,12 @@ materials:
         max: 8.6
         confidence: 0.91
         source: ai_research
-        research_basis: 'ASM Handbook, Volume 1: Tool steel (M2 high-speed steel) thermal diffusivity calculated from thermal conductivity (28 W/m·K), density (7.85 g/cm³), and specific heat (460 J/kg·K)'
+        research_basis: 'ASM Handbook, Volume 1: Tool steel (M2 high-speed steel)
+          thermal diffusivity calculated from thermal conductivity (28 W/m·K), density
+          (7.85 g/cm³), and specific heat (460 J/kg·K)'
         research_date: '2025-10-16T18:00:00.000000'
-        validation_method: Verified against typical values for hardened M2 and D2 tool steels with carbide microstructure
+        validation_method: Verified against typical values for hardened M2 and D2
+          tool steels with carbide microstructure
       thermalExpansion:
         value: 11.5
         unit: 10⁻⁶/K
@@ -16565,9 +16693,12 @@ materials:
         max: 12.5
         confidence: 0.94
         source: ai_research
-        research_basis: 'ASM Handbook, Volume 1: Tool steel coefficient of thermal expansion at 20-200°C, typical for high-speed steel M2 and cold-work D2 grades'
+        research_basis: 'ASM Handbook, Volume 1: Tool steel coefficient of thermal
+          expansion at 20-200°C, typical for high-speed steel M2 and cold-work D2
+          grades'
         research_date: '2025-10-16T18:00:00.000000'
-        validation_method: Cross-referenced with AISI M2 and D2 tool steel specifications for heat-treated condition
+        validation_method: Cross-referenced with AISI M2 and D2 tool steel specifications
+          for heat-treated condition
       specificHeat:
         value: 460.0
         unit: J/(kg·K)
@@ -16575,7 +16706,8 @@ materials:
         max: 480.0
         confidence: 0.91
         source: ai_research
-        research_basis: Tool steel specific heat capacity - typical for high-alloy steels
+        research_basis: Tool steel specific heat capacity - typical for high-alloy
+          steels
         research_date: '2025-10-16T00:00:00.000000'
       thermalDestructionPoint:
         value: 1673.0
@@ -16584,14 +16716,16 @@ materials:
         max: 1723.0
         confidence: 0.94
         source: ai_research
-        research_basis: 'Tool steel solidus temperature 1350-1450°C (1623-1723K) depending on composition'
+        research_basis: Tool steel solidus temperature 1350-1450°C (1623-1723K) depending
+          on composition
         research_date: '2025-10-16T00:00:00.000000'
       thermalDestructionType:
         value: melting
         unit: type
         confidence: 0.99
         source: materials_science
-        research_basis: 'Tool steel undergoes melting as primary thermal destruction mechanism. High carbide content results in solidus temperature around 1400°C.'
+        research_basis: Tool steel undergoes melting as primary thermal destruction
+          mechanism. High carbide content results in solidus temperature around 1400°C.
         research_date: '2025-10-16T18:00:00.000000'
       oxidationResistance:
         value: 550.0
@@ -16600,9 +16734,13 @@ materials:
         max: 600.0
         confidence: 0.89
         source: ai_research
-        research_basis: 'ASM Handbook, Volume 1: Tool steels begin significant oxidation at 500-600°C in air. High alloy content (W, Mo, V, Cr) provides better oxidation resistance than plain carbon steel but scale formation accelerates above 550°C.'
+        research_basis: 'ASM Handbook, Volume 1: Tool steels begin significant oxidation
+          at 500-600°C in air. High alloy content (W, Mo, V, Cr) provides better oxidation
+          resistance than plain carbon steel but scale formation accelerates above
+          550°C.'
         research_date: '2025-10-16T18:00:00.000000'
-        validation_method: Cross-referenced with high-temperature behavior of M2 and D2 tool steel grades in oxidizing atmospheres
+        validation_method: Cross-referenced with high-temperature behavior of M2 and
+          D2 tool steel grades in oxidizing atmospheres
       corrosionResistance:
         value: 6.0
         unit: rating
@@ -16610,9 +16748,14 @@ materials:
         max: 7.0
         confidence: 0.87
         source: ai_research
-        research_basis: 'ASM Handbook, Volume 13A: Tool steels have moderate to good corrosion resistance depending on chromium content. M2 and D2 grades show better resistance than carbon steel due to carbide content and chromium alloying (11-13% Cr in D2), but are susceptible to chlorides and acids.'
+        research_basis: 'ASM Handbook, Volume 13A: Tool steels have moderate to good
+          corrosion resistance depending on chromium content. M2 and D2 grades show
+          better resistance than carbon steel due to carbide content and chromium
+          alloying (11-13% Cr in D2), but are susceptible to chlorides and acids.'
         research_date: '2025-10-16T18:00:00.000000'
-        validation_method: Rated on 0-10 scale where 10 is maximum resistance, considering atmospheric, aqueous, and chemical environments. D2 with higher chromium rates 7, M2 rates 5-6.
+        validation_method: Rated on 0-10 scale where 10 is maximum resistance, considering
+          atmospheric, aqueous, and chemical environments. D2 with higher chromium
+          rates 7, M2 rates 5-6.
       tensileStrength:
         value: 2100.0
         unit: MPa
@@ -16620,7 +16763,8 @@ materials:
         max: 2300.0
         confidence: 0.94
         source: ai_research
-        research_basis: 'Hardened M2 high-speed steel tensile strength - typical for heat-treated tool steels'
+        research_basis: Hardened M2 high-speed steel tensile strength - typical for
+          heat-treated tool steels
         research_date: '2025-10-16T00:00:00.000000'
       youngsModulus:
         value: 210.0
@@ -16629,7 +16773,8 @@ materials:
         max: 220.0
         confidence: 0.95
         source: ai_research
-        research_basis: Tool steel elastic modulus - similar to other steels, minimal variation with alloying
+        research_basis: Tool steel elastic modulus - similar to other steels, minimal
+          variation with alloying
         research_date: '2025-10-16T00:00:00.000000'
     material_metadata:
       industryTags:

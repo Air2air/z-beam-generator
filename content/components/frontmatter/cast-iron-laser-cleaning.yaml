@@ -15,45 +15,64 @@ materialProperties:
         unit: g/cm³
         confidence: 98
         description: density from Materials.yaml
+        min: 0.53
+        max: 22.6
       hardness:
         value: 2200.0
         unit: HV
         confidence: 95
         description: hardness from Materials.yaml
+        min: 0.5
+        max: 3500
       oxidationResistance:
         value: 750.0
         unit: °C
         confidence: 90
         description: oxidationResistance from Materials.yaml
+        min: 200
+        max: 1200
       corrosionResistance:
         value: 5.0
         unit: rating
         confidence: 88
         description: corrosionResistance from Materials.yaml
+        min: 1
+        max: 10
       tensileStrength:
         value: 250.0
         unit: MPa
         confidence: 95
         description: tensileStrength from Materials.yaml
+        min: 3.0
+        max: 3000.0
       youngsModulus:
         value: 110.0
         unit: GPa
         confidence: 93
         description: youngsModulus from Materials.yaml
+        min: 5
+        max: 600
+      electricalResistivity:
+        value: 60.0
+        unit: µΩ·cm
+        confidence: 90
+        description: electricalResistivity from Materials.yaml
+        min: 1.0e-08
+        max: 1.5e-06
       porosity:
         value: 2.5
         unit: '%'
         confidence: 85
-        description: Typical porosity percentage in cast iron components
-        min: null
-        max: null
+        description: porosity from Materials.yaml
+        min: 0.0
+        max: 30.0
       surfaceRoughness:
         value: 3.2
         unit: μm Ra
         confidence: 82
         description: Average surface roughness as-cast condition
-        min: null
-        max: null
+        min: 0.4
+        max: 150
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -65,38 +84,66 @@ materialProperties:
         unit: '%'
         confidence: 90
         description: laserAbsorption from Materials.yaml
+        min: 0.02
+        max: 100
       laserReflectivity:
         value: 45.0
         unit: '%'
         confidence: 90
         description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 99.9
       thermalConductivity:
         value: 50.0
         unit: W/(m·K)
         confidence: 95
         description: thermalConductivity from Materials.yaml
+        min: 7.0
+        max: 430
       thermalDiffusivity:
         value: 12.5
         unit: mm²/s
         confidence: 92
         description: thermalDiffusivity from Materials.yaml
+        min: 0.06
+        max: 174
       thermalExpansion:
         value: 11.0
         unit: 10⁻⁶/K
         confidence: 95
         description: thermalExpansion from Materials.yaml
+        min: 0.5
+        max: 33
       specificHeat:
         value: 540.0
         unit: J/(kg·K)
         confidence: 92
         description: specificHeat from Materials.yaml
+        min: 100
+        max: 2000
       reflectivity:
-        value: 0.35
-        unit: dimensionless
-        confidence: 80
-        description: Reflectivity at 1064 nm wavelength
-        min: null
-        max: null
+        value: 45.0
+        unit: '%'
+        confidence: 85
+        description: reflectivity from Materials.yaml
+        min: 5.0
+        max: 98.0
+      absorptivity:
+        value: 55.0
+        unit: '%'
+        confidence: 85
+        description: absorptivity from Materials.yaml
+        min: 0.02
+        max: 0.95
+      thermalDestruction:
+        point:
+          value: 1200.0
+          unit: °C
+          confidence: 90
+          description: Thermal destruction point
+          min: -38.8
+          max: 3422
+        type: melting
       ablationThreshold:
         value: 1.8
         unit: J/cm²
@@ -114,11 +161,22 @@ materialProperties:
         unit: K
         confidence: 95
         description: thermalDestructionPoint from Materials.yaml
+        min: 273.0
+        max: 3695.0
       thermalDestructionType:
         value: melting
         unit: type
         confidence: 99
         description: thermalDestructionType from Materials.yaml
+        min: null
+        max: null
+      toxicity:
+        value: Low
+        unit: rating
+        confidence: 95
+        description: toxicity from Materials.yaml
+        min: null
+        max: null
       meltingPoint:
         value: 1150
         unit: °C
@@ -154,71 +212,63 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength with good absorption in Cast Iron oxides and rust
-    min: 1030
-    max: 1070
+    description: Near-infrared wavelength optimized for Cast Iron absorption and rust
+      removal efficiency
+    min: null
+    max: null
   spotSize:
     value: 50
     unit: μm
-    confidence: 84
-    description: Beam spot diameter for balanced cleaning efficiency and coverage
-      area
+    confidence: 83
+    description: Beam spot diameter for balanced cleaning resolution and throughput
     min: 30
     max: 100
   repetitionRate:
-    value: 20
+    value: 50
     unit: kHz
     confidence: 87
     description: Optimal repetition rate for efficient cleaning coverage and process
-      stability
-    min: 10
-    max: 50
+      speed
+    min: 20
+    max: 100
   pulseWidth:
-    value: 100
+    value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with
-      controlled thermal effects
-    min: 50
-    max: 200
+    description: Nanosecond pulse duration for effective rust ablation with minimal
+      thermal diffusion
+    min: 5
+    max: 20
   scanSpeed:
     value: 500
     unit: mm/s
-    confidence: 86
-    description: Optimal scanning speed for uniform cleaning with sufficient energy
-      deposition
+    confidence: 85
+    description: Optimal scanning speed for uniform cleaning without excessive overlap
     min: 200
     max: 1000
-  energyDensity:
-    value: 5.1
+  fluenceThreshold:
+    value: 2.5
     unit: J/cm²
-    confidence: 89
-    description: Fluence threshold for effective contaminant removal from Cast Iron
+    confidence: 90
+    description: Minimum fluence required for effective rust removal from Cast Iron
       surface
-    min: 3.0
-    max: 8.0
+    min: 1.5
+    max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
-    confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      accumulation
-    min: 40
+    confidence: 82
+    description: Optimal beam overlap percentage for uniform cleaning coverage
+    min: 30
     max: 70
   passCount:
     value: 2
     unit: passes
-    confidence: 85
-    description: Recommended number of passes for complete contaminant removal
+    confidence: 84
+    description: Recommended number of passes for complete rust removal from Cast
+      Iron
     min: 1
     max: 4
-  laserType:
-    value: Fiber Laser
-    unit: n/a
-    confidence: 90
-    description: Preferred laser type for Cast Iron cleaning applications
-    min: null
-    max: null
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -262,9 +312,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: The biggest challenge with cast iron is its variable composition, which
-  can cause inconsistent cleaning results. That's why a very-very specific power range
-  must be established for each piece to ensure a uniform finish.
+subtitle: The biggest challenge with cast iron is its inconsistent graphite content,
+  which can cause uneven cleaning. You'll need very-good power control to remove oxides
+  without altering the underlying metal.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -300,23 +350,22 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the surface is dominated by a non-uniform oxide
-    layer (Fe₃O₄/Fe₂O₃), measuring 10-50 µm thick. This porous, crystalline scale
-    is interlocked with embedded carbonaceous deposits from combustion or lubricants.
-    The underlying cast iron's graphite flakes and micro-peaks are entirely obscured
-    by this stratified, high-surface-area contamination.
-  afterText: 'Laser cleaning selectively ablates the contamination layers, revealing
-    the authentic cast iron substrate. The tenacious oxide scale and carbon deposits
-    are removed, exposing the material''s inherent microstructure. The surface now
-    displays a distinct grain boundary network and the characteristic flake graphite
-    morphology.
-
-
-    The process reduces average surface roughness (Ra) by 60-80%, measured from >15
-    µm to <5 µm. This creates a more uniform, metallurgically clean surface with increased
-    surface energy, which is optimal for subsequent coatings or adhesion. The laser''s
-    non-abrasive nature preserves the dimensional integrity of the base material,
-    eliminating sub-surface damage common with mechanical methods.'
+  beforeText: At 500x magnification, the cast iron surface is obscured by a thick,
+    non-uniform contamination layer, measuring 10-50 micrometers. This layer consists
+    of amorphous carbonaceous deposits and embedded iron oxide (Fe₂O₃) particles,
+    creating a porous, textured topography. The underlying metal's graphite flakes
+    and micro-peaks are entirely masked. The contamination exhibits a cracked, mudflat-like
+    pattern, indicating poor adhesion and brittleness, which compromises the substrate's
+    integrity and interferes with subsequent processes.
+  afterText: Laser cleaning removes the contamination layer, revealing the true cast
+    iron microstructure. The surface now exhibits a distinct contrast between the
+    ferritic matrix and the lamellar graphite flakes, which are clearly defined and
+    undamaged. The micro-topography shows a cleaned, textured profile with peaks and
+    valleys corresponding to the original casting grain. At 500x, the surface is free
+    of non-metallic deposits and oxide residues. This exposes the substrate's natural
+    porosity and micro-features without the abrasive scarring typical of mechanical
+    methods. The result is a metallurgically pure surface with increased surface energy,
+    optimized for adhesion in coating or bonding applications.
   description: Microscopic analysis of cast iron surface before and after laser cleaning
     treatment
   alt: Microscopic view of cast iron surface showing laser cleaning effects
@@ -359,7 +408,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: false
   persona_country: N/A
   author_id: 0
-  verification_timestamp: '2025-10-17T06:29:58.326534+00:00'
+  verification_timestamp: '2025-10-17T08:39:57.669709+00:00'
   prompt_components_integrated: 1
   human_authenticity_focus: false
   cultural_adaptation_applied: false

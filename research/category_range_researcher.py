@@ -275,6 +275,264 @@ class CategoryRangeResearcher:
         
         return ranges
     
+    def research_property_range(self, property_name: str, category: str, 
+                               material_name: Optional[str] = None) -> Optional[Dict[str, Any]]:
+        """
+        Research and return min/max range for a property in a category.
+        
+        Args:
+            property_name: Name of the property to research
+            category: Material category (e.g., 'metal', 'polymer')
+            material_name: Optional specific material for targeted research
+            
+        Returns:
+            Dict with 'min', 'max', 'unit' keys, or None if research fails
+        """
+        # Check if we have pre-researched ranges for this property
+        if category in self.research_ranges:
+            if property_name in self.research_ranges[category]:
+                range_obj = self.research_ranges[category][property_name]
+                return {
+                    'min': range_obj.min_value,
+                    'max': range_obj.max_value,
+                    'unit': range_obj.unit,
+                    'confidence': range_obj.confidence_score,
+                    'source': 'category_research_ranges'
+                }
+        
+        # If not in pre-researched ranges, use default ranges for known properties
+        default_ranges = self._get_default_property_ranges(category)
+        
+        if property_name in default_ranges:
+            return default_ranges[property_name]
+        
+        # Property not found in either source
+        return None
+    
+    def _get_default_property_ranges(self, category: str) -> Dict[str, Dict[str, Any]]:
+        """Get default ranges for properties not in research_ranges"""
+        
+        # Metal-specific default ranges
+        if category == 'metal':
+            return {
+                'thermalDestructionPoint': {
+                    'min': 273.0,  # 0°C (minimum for metals)
+                    'max': 3695.0,  # Tungsten melting point (highest for metals)
+                    'unit': 'K',
+                    'confidence': 0.7,
+                    'source': 'default_metal_thermal_destruction'
+                },
+                'thermal_destruction': {  # Alternative naming
+                    'min': 273.0,
+                    'max': 3695.0,
+                    'unit': 'K',
+                    'confidence': 0.7,
+                    'source': 'default_metal_thermal_destruction'
+                },
+                'surfaceRoughness': {
+                    'min': 0.1,  # Polished metal
+                    'max': 50.0,  # Rough casting
+                    'unit': 'µm',
+                    'confidence': 0.75,
+                    'source': 'default_metal_surface_roughness'
+                },
+                'surface_roughness': {  # Alternative naming
+                    'min': 0.1,
+                    'max': 50.0,
+                    'unit': 'µm',
+                    'confidence': 0.75,
+                    'source': 'default_metal_surface_roughness'
+                },
+                'ablationThreshold': {
+                    'min': 0.1,  # Low threshold metals
+                    'max': 50.0,  # High threshold metals
+                    'unit': 'J/cm²',
+                    'confidence': 0.7,
+                    'source': 'default_metal_ablation'
+                },
+                'ablation_threshold': {  # Alternative naming
+                    'min': 0.1,
+                    'max': 50.0,
+                    'unit': 'J/cm²',
+                    'confidence': 0.7,
+                    'source': 'default_metal_ablation'
+                },
+                'reflectivity': {
+                    'min': 5.0,  # Low reflectivity metals (oxidized, rough)
+                    'max': 98.0,  # High reflectivity metals (polished silver, aluminum)
+                    'unit': '%',
+                    'confidence': 0.75,
+                    'source': 'default_metal_reflectivity'
+                },
+                'absorptivity': {
+                    'min': 0.02,  # Low absorptivity metals (polished, high reflectivity)
+                    'max': 0.95,  # High absorptivity metals (oxidized, black)
+                    'unit': '',  # Dimensionless (fraction)
+                    'confidence': 0.75,
+                    'source': 'default_metal_absorptivity'
+                },
+                'porosity': {
+                    'min': 0.0,  # Fully dense metals
+                    'max': 30.0,  # Sintered/cast metals with high porosity
+                    'unit': '%',
+                    'confidence': 0.7,
+                    'source': 'default_metal_porosity'
+                },
+                'vaporPressure': {
+                    'min': 1e-10,  # Very low volatility metals
+                    'max': 1e5,  # High vapor pressure metals
+                    'unit': 'Pa',
+                    'confidence': 0.65,
+                    'source': 'default_metal_vapor_pressure'
+                },
+                'vapor_pressure': {  # Alternative naming
+                    'min': 1e-10,
+                    'max': 1e5,
+                    'unit': 'Pa',
+                    'confidence': 0.65,
+                    'source': 'default_metal_vapor_pressure'
+                },
+                'toxicity': {
+                    'min': 0.0,  # Non-toxic
+                    'max': 10.0,  # Highly toxic
+                    'unit': 'toxicity_index',
+                    'confidence': 0.6,
+                    'source': 'default_metal_toxicity'
+                },
+                'electricalResistivity': {
+                    'min': 1.59e-8,  # Silver (lowest)
+                    'max': 1.0e-5,  # High resistivity alloys
+                    'unit': 'Ω·m',
+                    'confidence': 0.75,
+                    'source': 'default_metal_electrical_resistivity'
+                },
+                'electrical_resistivity': {  # Alternative naming
+                    'min': 1.59e-8,
+                    'max': 1.0e-5,
+                    'unit': 'Ω·m',
+                    'confidence': 0.75,
+                    'source': 'default_metal_electrical_resistivity'
+                },
+                'laserAbsorption': {
+                    'min': 0.02,  # Low absorption (high reflectivity)
+                    'max': 0.98,  # High absorption (oxidized, rough)
+                    'unit': '',  # Dimensionless (fraction)
+                    'confidence': 0.75,
+                    'source': 'default_metal_laser_absorption'
+                },
+                'laser_absorption': {  # Alternative naming
+                    'min': 0.02,
+                    'max': 0.98,
+                    'unit': '',
+                    'confidence': 0.75,
+                    'source': 'default_metal_laser_absorption'
+                },
+                'laserReflectivity': {
+                    'min': 2.0,  # Low reflectivity (oxidized)
+                    'max': 98.0,  # High reflectivity (polished)
+                    'unit': '%',
+                    'confidence': 0.75,
+                    'source': 'default_metal_laser_reflectivity'
+                },
+                'laser_reflectivity': {  # Alternative naming
+                    'min': 2.0,
+                    'max': 98.0,
+                    'unit': '%',
+                    'confidence': 0.75,
+                    'source': 'default_metal_laser_reflectivity'
+                },
+                'oxidationResistance': {
+                    'min': 1.0,  # Poor resistance
+                    'max': 10.0,  # Excellent resistance
+                    'unit': 'rating',
+                    'confidence': 0.65,
+                    'source': 'default_metal_oxidation_resistance'
+                },
+                'oxidation_resistance': {  # Alternative naming
+                    'min': 1.0,
+                    'max': 10.0,
+                    'unit': 'rating',
+                    'confidence': 0.65,
+                    'source': 'default_metal_oxidation_resistance'
+                },
+                'corrosionResistance': {
+                    'min': 1.0,  # Poor resistance
+                    'max': 10.0,  # Excellent resistance
+                    'unit': 'rating',
+                    'confidence': 0.65,
+                    'source': 'default_metal_corrosion_resistance'
+                },
+                'corrosion_resistance': {  # Alternative naming
+                    'min': 1.0,
+                    'max': 10.0,
+                    'unit': 'rating',
+                    'confidence': 0.65,
+                    'source': 'default_metal_corrosion_resistance'
+                },
+                'wavelength': {  # This might be machine setting, not material property
+                    'min': 355.0,  # UV lasers
+                    'max': 10600.0,  # CO2 lasers
+                    'unit': 'nm',
+                    'confidence': 0.8,
+                    'source': 'default_laser_wavelengths'
+                }
+            }
+        
+        # Polymer-specific default ranges
+        elif category == 'polymer':
+            return {
+                'thermalDestructionPoint': {
+                    'min': 373.0,  # ~100°C (low temp polymers)
+                    'max': 773.0,  # ~500°C (high temp polymers)
+                    'unit': 'K',
+                    'confidence': 0.7,
+                    'source': 'default_polymer_thermal_destruction'
+                },
+                'thermal_destruction': {
+                    'min': 373.0,
+                    'max': 773.0,
+                    'unit': 'K',
+                    'confidence': 0.7,
+                    'source': 'default_polymer_thermal_destruction'
+                },
+                'surfaceRoughness': {
+                    'min': 0.05,  # Smooth extruded polymer
+                    'max': 25.0,  # Textured surface
+                    'unit': 'µm',
+                    'confidence': 0.75,
+                    'source': 'default_polymer_surface_roughness'
+                },
+                'ablationThreshold': {
+                    'min': 0.05,  # Low threshold polymers
+                    'max': 10.0,  # High threshold polymers
+                    'unit': 'J/cm²',
+                    'confidence': 0.7,
+                    'source': 'default_polymer_ablation'
+                }
+            }
+        
+        # Composite-specific default ranges
+        elif category == 'composite':
+            return {
+                'thermalDestructionPoint': {
+                    'min': 373.0,  # Matrix-dependent
+                    'max': 1273.0,  # Ceramic composites
+                    'unit': 'K',
+                    'confidence': 0.6,
+                    'source': 'default_composite_thermal_destruction'
+                },
+                'surfaceRoughness': {
+                    'min': 0.5,
+                    'max': 100.0,
+                    'unit': 'µm',
+                    'confidence': 0.65,
+                    'source': 'default_composite_surface_roughness'
+                }
+            }
+        
+        return {}
+
+    
     def validate_material_ranges(self, material_name: str) -> List[RangeValidationResult]:
         """Validate all property ranges for a specific material"""
         results = []

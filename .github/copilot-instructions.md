@@ -260,6 +260,9 @@ git revert <commit>  # Revert to known working state
 6. **Data Architecture**: `docs/DATA_ARCHITECTURE.md` (range propagation, null ranges explained)
 
 ### Common User Query Patterns
+- **"Check data completeness"** → `python3 run.py --data-completeness-report`
+- **"See data gaps / research priorities"** → `python3 run.py --data-gaps`
+- **"Enforce completeness (strict mode)"** → `python3 run.py --enforce-completeness`
 - **"API not working"** → `docs/api/ERROR_HANDLING.md#winston-ssl-issues`
 - **"Content incomplete"** → `docs/api/ERROR_HANDLING.md#content-impact`
 - **"Setup help"** → `setup/API_CONFIGURATION.md` or `API_SETUP.md`
@@ -283,6 +286,28 @@ git revert <commit>  # Revert to known working state
 - Reference specific file paths, not just general descriptions
 - Recommend terminal output analysis for API issues
 - Point to both immediate fixes and comprehensive documentation
+
+### Critical Documentation for AI Assistants
+**BEFORE** any data-related work, review these files:
+1. **`docs/QUICK_REFERENCE.md`** - Fastest path to common solutions
+2. **`docs/DATA_COMPLETION_ACTION_PLAN.md`** - Complete plan to achieve 100% data coverage
+3. **`docs/ZERO_NULL_POLICY.md`** - Zero null policy & AI research methodology
+4. **`docs/DATA_ARCHITECTURE.md`** - How ranges propagate through the system
+5. **`docs/DATA_VALIDATION_STRATEGY.md`** - Validation architecture and quality gates
+
+### Data Completion Context (October 17, 2025)
+**Current Status**: 93.5% complete (1,975/2,240 properties)
+**Missing**: 265 property values + 2 category ranges
+**Priority**: 5 properties = 96% of all gaps
+**Action Plan**: Fully documented in `docs/DATA_COMPLETION_ACTION_PLAN.md`
+**Tools**: PropertyValueResearcher, CategoryRangeResearcher (operational)
+**Quality**: Multi-strategy validation with 4 quality gates
+**Timeline**: 1 week to 100% completeness
+**✨ NEW Commands** (October 17, 2025):
+  - `python3 run.py --data-completeness-report` - Full status report
+  - `python3 run.py --data-gaps` - Research priorities
+  - `python3 run.py --enforce-completeness` - Strict mode (blocks if incomplete)
+**Enforcement**: Automatic linking to action plan when gaps detected
 
 ### Mandatory Documentation Review
 **BEFORE** making ANY changes to text component code, you MUST:

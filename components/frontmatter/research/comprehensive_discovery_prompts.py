@@ -84,7 +84,7 @@ MACHINE SETTINGS CATEGORIES TO INVESTIGATE:
 1. **Power Control**: powerRange, fluenceThreshold, energyDensity
 2. **Temporal Parameters**: pulseWidth, pulseDuration, repetitionRate
 3. **Spatial Parameters**: spotSize, beamDiameter, scanSpeed
-4. **Wavelength Optimization**: wavelength, laserType
+4. **Wavelength Optimization**: wavelength
 5. **Processing Control**: passCount, overlapRatio, dwellTime
 
 RESPOND WITH VALID JSON (provide COMPLETE setting data):

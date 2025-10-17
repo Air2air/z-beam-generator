@@ -268,7 +268,7 @@ class FieldOrderingService:
                     ordered_properties["modulusPercentile"] = properties["modulusPercentile"]
         
         # Add laser-specific properties at the end
-        for field in ["laserType", "wavelength", "fluenceRange", "chemicalFormula"]:
+        for field in ["wavelength", "fluenceRange", "chemicalFormula"]:
             if field in properties:
                 ordered_properties[field] = properties[field]
                 

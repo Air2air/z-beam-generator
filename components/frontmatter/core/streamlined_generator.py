@@ -206,6 +206,14 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             
             # Extract category ranges from Categories.yaml structure
             self.category_ranges = {}
+            if 'categories' in categories_data:
+                for category_name, category_data in categories_data['categories'].items():
+                    if 'properties' in category_data:
+                        self.category_ranges[category_name] = category_data['properties']
+                self.logger.info(f"Loaded category ranges for {len(self.category_ranges)} categories")
+            else:
+                raise ConfigurationError("'categories' section missing from Categories.yaml")
+            
             self.category_enhanced_data = {}
             self.categories_data = categories_data  # Store full categories data for unified industry access
             
@@ -651,15 +659,56 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                         }
                         
                         # PHASE 3.2 OPTIMIZATION: Use pre-loaded category ranges (dict lookup instead of method call)
-                        # Only add min/max if they exist (no null values)
+                        # AUTO-REMEDIATION: Research and populate missing ranges instead of failing
                         category_ranges = all_category_ranges.get(prop_name)
-                        if category_ranges and 'point' in category_ranges:
-                            # Extract point ranges from nested structure
-                            point_ranges = category_ranges['point']
-                            if point_ranges.get('min') is not None:
-                                point_structure['min'] = point_ranges['min']
-                            if point_ranges.get('max') is not None:
-                                point_structure['max'] = point_ranges['max']
+                        if not category_ranges or 'point' not in category_ranges:
+                            self.logger.warning(f"Property '{prop_name}' missing from Categories.yaml - researching ranges...")
+                            
+                            # Use CategoryRangeResearcher to find and populate the missing range
+                            try:
+                                from research.category_range_researcher import CategoryRangeResearcher
+                                researcher = CategoryRangeResearcher()
+                                
+                                # Research the missing property range for this category
+                                range_data = researcher.research_property_range(
+                                    property_name=prop_name,
+                                    category=material_category,
+                                    material_name=material_name
+                                )
+                                
+                                if range_data and 'min' in range_data and 'max' in range_data:
+                                    # Update Categories.yaml with the researched range
+                                    self._update_categories_yaml_with_range(
+                                        category=material_category,
+                                        property_name=prop_name,
+                                        range_data=range_data
+                                    )
+                                    
+                                    # Reload category ranges
+                                    all_category_ranges = self.template_service.get_all_category_ranges(material_category)
+                                    category_ranges = all_category_ranges.get(prop_name)
+                                    self.logger.info(f"✅ Researched and populated {prop_name} range for {material_category}")
+                                else:
+                                    raise PropertyDiscoveryError(
+                                        f"Failed to research range for '{prop_name}' in category '{material_category}'. "
+                                        f"Cannot proceed without valid min/max ranges."
+                                    )
+                            except Exception as e:
+                                raise PropertyDiscoveryError(
+                                    f"Property '{prop_name}' missing from Categories.yaml and auto-research failed: {e}"
+                                )
+                        
+                        # Extract point ranges from nested structure
+                        point_ranges = category_ranges.get('point', category_ranges) if 'point' in category_ranges else category_ranges
+                        if point_ranges.get('min') is None or point_ranges.get('max') is None:
+                            raise PropertyDiscoveryError(
+                                f"Property '{prop_name}.point' has incomplete ranges in Categories.yaml. "
+                                f"Found min={point_ranges.get('min')}, max={point_ranges.get('max')}. "
+                                f"Both min and max MUST be defined."
+                            )
+                        
+                        point_structure['min'] = point_ranges['min']
+                        point_structure['max'] = point_ranges['max']
                         
                         properties[prop_name] = {
                             'point': point_structure,
@@ -679,13 +728,75 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                             'description': yaml_prop.get('description', f'{prop_name} from Materials.yaml')
                         }
                         # PHASE 3.2 OPTIMIZATION: Use pre-loaded category ranges (dict lookup instead of method call)
-                        # Only add min/max if they exist (no null values)
-                        category_ranges = all_category_ranges.get(prop_name)
-                        if category_ranges:
-                            if category_ranges.get('min') is not None:
-                                properties[prop_name]['min'] = category_ranges['min']
-                            if category_ranges.get('max') is not None:
-                                properties[prop_name]['max'] = category_ranges['max']
+                        # AUTO-REMEDIATION: Research and populate missing ranges instead of failing
+                        # SKIP qualitative properties (string values like 'melting', 'oxidation', etc.)
+                        prop_value = yaml_prop.get('value')
+                        is_qualitative = isinstance(prop_value, str) and not self._is_numeric_string(prop_value)
+                        
+                        if is_qualitative:
+                            # Qualitative property - no min/max ranges needed
+                            self.logger.debug(f"Skipping range validation for qualitative property: {prop_name}={prop_value}")
+                            properties[prop_name]['min'] = None
+                            properties[prop_name]['max'] = None
+                        else:
+                            # Quantitative property - needs min/max ranges
+                            category_ranges = all_category_ranges.get(prop_name)
+                            
+                            # Check if ranges are missing or incomplete
+                            needs_research = (
+                                not category_ranges or 
+                                category_ranges.get('min') is None or 
+                                category_ranges.get('max') is None
+                            )
+                            
+                            if needs_research:
+                                self.logger.warning(f"Property '{prop_name}' missing or incomplete in Categories.yaml - researching ranges...")
+                                
+                                # Use CategoryRangeResearcher to find and populate the missing range
+                                try:
+                                    from research.category_range_researcher import CategoryRangeResearcher
+                                    researcher = CategoryRangeResearcher()
+                                    
+                                    # Research the missing property range for this category
+                                    range_data = researcher.research_property_range(
+                                        property_name=prop_name,
+                                        category=material_category,
+                                        material_name=material_name
+                                    )
+                                    
+                                    if range_data and 'min' in range_data and 'max' in range_data:
+                                        # Update Categories.yaml with the researched range
+                                        self._update_categories_yaml_with_range(
+                                            category=material_category,
+                                            property_name=prop_name,
+                                            range_data=range_data
+                                        )
+                                        
+                                        # Reload category ranges
+                                        all_category_ranges = self.template_service.get_all_category_ranges(material_category)
+                                        category_ranges = all_category_ranges.get(prop_name)
+                                        self.logger.info(f"✅ Researched and populated {prop_name} range for {material_category}")
+                                    else:
+                                        raise PropertyDiscoveryError(
+                                            f"Failed to research range for '{prop_name}' in category '{material_category}'. "
+                                            f"Cannot proceed without valid min/max ranges."
+                                        )
+                                except Exception as e:
+                                    raise PropertyDiscoveryError(
+                                        f"Property '{prop_name}' missing/incomplete in Categories.yaml and auto-research failed: {e}"
+                                    )
+                            
+                            # Final validation - should never fail if auto-remediation worked
+                            if category_ranges.get('min') is None or category_ranges.get('max') is None:
+                                raise PropertyDiscoveryError(
+                                    f"Property '{prop_name}' STILL has incomplete ranges after auto-remediation. "
+                                    f"Found min={category_ranges.get('min')}, max={category_ranges.get('max')}. "
+                                    f"This indicates a bug in auto-remediation logic."
+                                )
+                            
+                            properties[prop_name]['min'] = category_ranges['min']
+                            properties[prop_name]['max'] = category_ranges['max']
+                        
                         self.logger.info(f"✅ YAML: {prop_name} = {yaml_prop.get('value')} {yaml_prop.get('unit', '')} (confidence: {confidence})")
             
             # PHASE 1.5: Add category-specific thermal property field (dual-field approach)
@@ -772,6 +883,66 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                         
         return properties
     
+    def _update_categories_yaml_with_range(self, property_name: str, category: str, min_val: float, max_val: float, unit: str) -> bool:
+        """
+        Update Categories.yaml with a researched range for a property.
+        
+        Args:
+            property_name: Name of the property to add
+            category: Material category (metal, ceramic, etc.)
+            min_val: Minimum value for the range
+            max_val: Maximum value for the range
+            unit: Unit of measurement
+            
+        Returns:
+            True if successfully updated, False otherwise
+        """
+        try:
+            categories_file = Path(__file__).parent.parent.parent.parent / 'data' / 'Categories.yaml'
+            
+            # Read current Categories.yaml
+            with open(categories_file, 'r', encoding='utf-8') as f:
+                categories_data = yaml.safe_load(f)
+            
+            # Add the property range to the category
+            if 'categories' not in categories_data:
+                self.logger.error("Categories.yaml missing 'categories' section")
+                return False
+            
+            if category not in categories_data['categories']:
+                self.logger.error(f"Category '{category}' not found in Categories.yaml")
+                return False
+            
+            if 'properties' not in categories_data['categories'][category]:
+                categories_data['categories'][category]['properties'] = {}
+            
+            # Add the new property range
+            categories_data['categories'][category]['properties'][property_name] = {
+                'min': min_val,
+                'max': max_val,
+                'unit': unit
+            }
+            
+            # Write back to file
+            with open(categories_file, 'w', encoding='utf-8') as f:
+                yaml.dump(categories_data, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
+            
+            # Update in-memory cache
+            if category not in self.category_ranges:
+                self.category_ranges[category] = {}
+            self.category_ranges[category][property_name] = {
+                'min': min_val,
+                'max': max_val,
+                'unit': unit
+            }
+            
+            self.logger.info(f"✅ Added {property_name} range to Categories.yaml: min={min_val}, max={max_val} {unit}")
+            return True
+            
+        except Exception as e:
+            self.logger.error(f"Failed to update Categories.yaml with {property_name}: {e}")
+            return False
+    
     def _generate_machine_settings_with_ranges(self, material_data: Dict, material_name: str) -> Dict:
         """Generate machine settings with DataMetrics structure using comprehensive AI discovery (GROK compliant - no fallbacks)"""
         # Use PropertyResearchService for comprehensive machine settings discovery
@@ -851,6 +1022,60 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             return prop_key in category_data['properties']
         except Exception:
             return False
+    
+    def _update_categories_yaml_with_range(self, category: str, property_name: str, range_data: Dict) -> None:
+        """
+        Update Categories.yaml with researched property range.
+        
+        Args:
+            category: Material category (metal, ceramic, etc.)
+            property_name: Name of the property to update
+            range_data: Dict with min, max, unit, and optional description
+        """
+        import yaml
+        from pathlib import Path
+        
+        categories_file = Path('data/Categories.yaml')
+        
+        # Read current data
+        with open(categories_file, 'r', encoding='utf-8') as f:
+            categories_data = yaml.safe_load(f)
+        
+        # Navigate to the category's properties section
+        if 'categories' not in categories_data:
+            categories_data['categories'] = {}
+        
+        if category not in categories_data['categories']:
+            categories_data['categories'][category] = {'properties': {}}
+        
+        if 'properties' not in categories_data['categories'][category]:
+            categories_data['categories'][category]['properties'] = {}
+        
+        # Add the researched range
+        categories_data['categories'][category]['properties'][property_name] = {
+            'min': range_data['min'],
+            'max': range_data['max'],
+            'unit': range_data.get('unit', '')
+        }
+        
+        # Write back to file
+        with open(categories_file, 'w', encoding='utf-8') as f:
+            yaml.dump(categories_data, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
+        
+        # Update in-memory category ranges
+        if category not in self.category_ranges:
+            self.category_ranges[category] = {}
+        self.category_ranges[category][property_name] = {
+            'min': range_data['min'],
+            'max': range_data['max'],
+            'unit': range_data.get('unit', '')
+        }
+        
+        # Update template service's cache
+        if hasattr(self, 'template_service'):
+            self.template_service.category_ranges = self.category_ranges
+        
+        self.logger.info(f"✅ Updated Categories.yaml: {category}.{property_name} = [{range_data['min']}, {range_data['max']}] {range_data.get('unit', '')}")
     
     def _get_research_based_range(self, prop_key: str, material_category: str, current_value: float) -> tuple[float, float]:
         """Get research-based min/max ranges for a property based on materials science data"""
@@ -1098,6 +1323,14 @@ Return YAML format with materialProperties, machineSettings, and structured appl
             self.logger.error(f"Failed to parse API response: {str(e)}")
             raise GenerationError(f"Response parsing failed: {str(e)}")
 
+    def _is_numeric_string(self, value: str) -> bool:
+        """Check if a string represents a numeric value"""
+        try:
+            float(value)
+            return True
+        except (ValueError, TypeError):
+            return False
+    
     def _extract_numeric_only(self, value) -> Optional[float]:
         """Extract numeric value from string or return number directly"""
         if isinstance(value, (int, float)):

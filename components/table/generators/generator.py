@@ -453,15 +453,6 @@ class TableComponentGenerator(StaticComponentGenerator):
                 unit
             ))
         
-        # Laser Type
-        if machine_settings.get("laserType"):
-            rows.append(self._create_simple_property_row(
-                'Laser Type',
-                machine_settings["laserType"],
-                '-',
-                'System'
-            ))
-        
         # Beam Profile
         if machine_settings.get("beamProfile"):
             rows.append(self._create_simple_property_row(
