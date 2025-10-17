@@ -32,6 +32,7 @@ from generators.component_generators import APIComponentGenerator, ComponentResu
 from components.frontmatter.ordering.field_ordering_service import FieldOrderingService
 from components.frontmatter.core.validation_helpers import ValidationHelpers
 from components.frontmatter.research.property_value_researcher import PropertyValueResearcher
+from components.frontmatter.services.property_discovery_service import PropertyDiscoveryService
 
 # Import unified exception classes from validation system
 from validation.errors import (
@@ -134,6 +135,9 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         # API client is only required for pure AI generation
         # For YAML-based generation with research enhancement, we can work without it
         
+        # Initialize service placeholders (will be set during data loading)
+        self.property_discovery_service = None  # Initialized in _load_categories_data()
+        
         # Load materials research data for range calculations
         self._load_materials_research_data()
         
@@ -222,6 +226,10 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             if 'machineSettingsDescriptions' not in categories_data:
                 raise ConfigurationError("machineSettingsDescriptions section required in Categories.yaml")
             self.machine_settings_descriptions = categories_data['machineSettingsDescriptions']
+            
+            # Initialize PropertyDiscoveryService with categories data
+            self.property_discovery_service = PropertyDiscoveryService(categories_data=categories_data)
+            self.logger.info("PropertyDiscoveryService initialized with categories data")
             
             if 'materialPropertyDescriptions' not in categories_data:
                 raise ConfigurationError("materialPropertyDescriptions section required in Categories.yaml")
@@ -650,7 +658,22 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             if thermal_field_added:
                 yaml_count += 1
             
-            # PHASE 2: AI discovery for missing/low-confidence properties only
+            # PHASE 2: Use PropertyDiscoveryService to determine what needs research
+            if not self.property_discovery_service:
+                raise PropertyDiscoveryError("PropertyDiscoveryService not initialized")
+            
+            # Discover which properties need AI research
+            to_research, skip_reasons = self.property_discovery_service.discover_properties_to_research(
+                material_name=material_name,
+                material_category=material_category,
+                yaml_properties=yaml_properties
+            )
+            
+            # Log what we're skipping and why
+            for prop, reason in skip_reasons.items():
+                self.logger.info(f"⏭️  Skipping {prop}: {reason}")
+            
+            # AI discovery for properties that need research
             discovered_properties = self.property_researcher.discover_all_material_properties(material_name)
             
             self.logger.info(f"AI discovery found {len(discovered_properties)} properties for {material_name}")
@@ -706,11 +729,27 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             # FAIL-FAST - must have at least some properties for valid frontmatter
             raise PropertyDiscoveryError(f"No properties found for {material_name}")
         
-        # Log optimization statistics
-        total = yaml_count + ai_count
-        if total > 0:
-            yaml_pct = (yaml_count / total) * 100
-            self.logger.info(f"📊 Property sources: {yaml_count} from YAML ({yaml_pct:.1f}%), {ai_count} from AI ({100-yaml_pct:.1f}%)")
+        # Calculate and log comprehensive coverage statistics
+        ai_properties = {k: v for k, v in properties.items() if k not in yaml_properties or yaml_properties[k].get('confidence', 0) < 0.85}
+        coverage_stats = self.property_discovery_service.calculate_coverage(
+            material_category=material_category,
+            yaml_properties=yaml_properties,
+            researched_properties=ai_properties
+        )
+        
+        self.logger.info(
+            f"📊 Property coverage for {material_name}: "
+            f"{coverage_stats['yaml_count']} YAML ({coverage_stats['yaml_percentage']}%), "
+            f"{coverage_stats['ai_count']} AI ({coverage_stats['ai_percentage']}%), "
+            f"Essential coverage: {coverage_stats['essential_coverage']}%"
+        )
+        
+        # Validate essential properties are present
+        self.property_discovery_service.validate_property_completeness(
+            material_name=material_name,
+            material_category=material_category,
+            properties=properties
+        )
                         
         return properties
     
