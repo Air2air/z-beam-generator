@@ -19,6 +19,7 @@ Follows fail-fast principles:
 """
 
 import logging
+from functools import lru_cache
 from typing import Dict, Optional
 from validation.errors import ConfigurationError
 
@@ -92,23 +93,22 @@ class TemplateService:
             'description_suffix': ''
         }
     
-    def get_category_ranges_for_property(
-        self,
-        category: str,
-        property_name: str
-    ) -> Optional[Dict]:
+    @lru_cache(maxsize=256)
+    def get_category_ranges_for_property(self, category: str, property_name: str) -> Optional[Dict]:
         """
         Get min/max ranges for a property from Categories.yaml category_ranges.
         
-        Handles both flat properties (density, hardness) and nested properties
-        (thermalDestruction).
+        Cached with LRU to avoid repeated YAML lookups. Cache can hold 256 entries
+        (9 categories * ~20 properties = ~180 typical entries).
+        
+        Handles both flat properties (density, hardness) and nested properties (thermalDestruction).
         
         Args:
-            category: Material category (metal, plastic, etc.)
-            property_name: Property name
+            category: Material category (metal, ceramic, etc.)
+            property_name: Property to get ranges for
             
         Returns:
-            Dict with min, max, unit if ranges exist, None otherwise
+            Dict with min/max/unit or None if not found (cached result)
         """
         try:
             if not category or category not in self.category_ranges:
@@ -263,4 +263,54 @@ class TemplateService:
         return {
             mapping['full_name']: mapping['abbreviation']
             for mapping in self.material_abbreviations.values()
+        }
+    
+    def get_all_category_ranges(self, category: str) -> Dict[str, Dict]:
+        """
+        Load all property ranges for a category at once (batch loading).
+        
+        This is more efficient than calling get_category_ranges_for_property()
+        multiple times when you need ranges for many properties.
+        
+        Args:
+            category: Material category (metal, ceramic, etc.)
+            
+        Returns:
+            Dict mapping property names to their range dicts {min, max, unit}
+            Returns empty dict if category not found
+            
+        Example:
+            ranges = service.get_all_category_ranges('metal')
+            density_range = ranges.get('density')  # {min: X, max: Y, unit: 'g/cm³'}
+        """
+        if not category or category not in self.category_ranges:
+            return {}
+        
+        # Return a copy to prevent external modification
+        return self.category_ranges[category].copy()
+    
+    def clear_range_cache(self):
+        """
+        Clear the category ranges cache.
+        
+        Call this between material generations to ensure fresh lookups
+        if category_ranges dict is modified (shouldn't happen, but safe).
+        """
+        self.get_category_ranges_for_property.cache_clear()
+        logger.debug("Category ranges cache cleared")
+    
+    def get_cache_stats(self) -> Dict:
+        """
+        Get cache statistics for performance monitoring.
+        
+        Returns:
+            Dict with cache hits, misses, size, maxsize
+        """
+        cache_info = self.get_category_ranges_for_property.cache_info()
+        return {
+            'hits': cache_info.hits,
+            'misses': cache_info.misses,
+            'size': cache_info.currsize,
+            'maxsize': cache_info.maxsize,
+            'hit_rate': cache_info.hits / (cache_info.hits + cache_info.misses) if (cache_info.hits + cache_info.misses) > 0 else 0.0
         }
