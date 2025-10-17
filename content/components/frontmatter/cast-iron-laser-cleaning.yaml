@@ -11,54 +11,61 @@ materialProperties:
     percentage: 52.7
     properties:
       density:
-        value: 7.1
+        value: 7.2
         unit: g/cm³
-        confidence: 95
-        description: Typical density for gray cast iron at room temperature
-        min: 0.53
-        max: 22.6
+        confidence: 98
+        description: density from Materials.yaml
+        min: null
+        max: null
       hardness:
-        value: 180
-        unit: HB
-        confidence: 90
-        description: Brinell hardness for typical cast iron
-        min: 0.5
-        max: 3500
-      tensileStrength:
-        value: 250
-        unit: MPa
-        confidence: 88
-        description: Typical tensile strength for gray cast iron
-        min: 3.0
-        max: 3000.0
-      youngsModulus:
-        value: 110
-        unit: GPa
-        confidence: 92
-        description: Elastic modulus of cast iron
-        min: 5
-        max: 600
+        value: 2200.0
+        unit: HV
+        confidence: 95
+        description: hardness from Materials.yaml
+        min: null
+        max: null
       oxidationResistance:
-        value: 0.15
-        unit: mm/year
+        value: 750.0
+        unit: °C
+        confidence: 90
+        description: oxidationResistance from Materials.yaml
+        min: null
+        max: null
+      corrosionResistance:
+        value: 5.0
+        unit: rating
         confidence: 88
-        description: Oxidation rate in air at 500°C
-        min: 200
-        max: 1200
+        description: corrosionResistance from Materials.yaml
+        min: null
+        max: null
+      tensileStrength:
+        value: 250.0
+        unit: MPa
+        confidence: 95
+        description: tensileStrength from Materials.yaml
+        min: null
+        max: null
+      youngsModulus:
+        value: 110.0
+        unit: GPa
+        confidence: 93
+        description: youngsModulus from Materials.yaml
+        min: null
+        max: null
       porosity:
         value: 2.5
         unit: '%'
-        confidence: 86
-        description: Typical porosity percentage in cast iron
+        confidence: 85
+        description: Typical porosity percentage in cast iron components
         min: null
         max: null
       surfaceRoughness:
         value: 3.2
         unit: μm Ra
-        confidence: 84
-        description: Average surface roughness after casting
-        min: 0.4
-        max: 150
+        confidence: 82
+        description: Average surface roughness as-cast condition
+        min: null
+        max: null
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -70,43 +77,43 @@ materialProperties:
         unit: '%'
         confidence: 90
         description: laserAbsorption from Materials.yaml
-        min: 0.02
-        max: 100
+        min: null
+        max: null
       laserReflectivity:
         value: 45.0
         unit: '%'
         confidence: 90
         description: laserReflectivity from Materials.yaml
-        min: 5
-        max: 99.9
+        min: null
+        max: null
       thermalConductivity:
-        value: 52
-        unit: W/m·K
-        confidence: 90
-        description: Thermal conductivity of gray cast iron at 20°C
-        min: 7.0
-        max: 430
-      specificHeat:
-        value: 460
-        unit: J/kg·K
-        confidence: 90
-        description: Specific heat capacity at 20°C
-        min: 100
-        max: 2000
-      thermalExpansion:
-        value: 11.5
-        unit: μm/m·°C
-        confidence: 88
-        description: Coefficient of thermal expansion (20-200°C)
-        min: 0.5
-        max: 33
+        value: 50.0
+        unit: W/(m·K)
+        confidence: 95
+        description: thermalConductivity from Materials.yaml
+        min: null
+        max: null
       thermalDiffusivity:
-        value: 14.2
+        value: 12.5
         unit: mm²/s
-        confidence: 85
-        description: Thermal diffusivity at room temperature
-        min: 0.06
-        max: 174
+        confidence: 92
+        description: thermalDiffusivity from Materials.yaml
+        min: null
+        max: null
+      thermalExpansion:
+        value: 11.0
+        unit: 10⁻⁶/K
+        confidence: 95
+        description: thermalExpansion from Materials.yaml
+        min: null
+        max: null
+      specificHeat:
+        value: 540.0
+        unit: J/(kg·K)
+        confidence: 92
+        description: specificHeat from Materials.yaml
+        min: null
+        max: null
       reflectivity:
         value: 0.35
         unit: dimensionless
@@ -118,21 +125,40 @@ materialProperties:
         value: 1.8
         unit: J/cm²
         confidence: 85
-        description: Laser ablation threshold for nanosecond pulses
+        description: Laser ablation threshold for nanosecond pulses at 1064 nm
+        min: null
+        max: null
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 0
+    properties:
+      thermalDestructionPoint:
+        value: 1473.0
+        unit: K
+        confidence: 95
+        description: thermalDestructionPoint from Materials.yaml
+        min: null
+        max: null
+      thermalDestructionType:
+        value: melting
+        unit: type
+        confidence: 99
+        description: thermalDestructionType from Materials.yaml
+        min: null
+        max: null
+      meltingPoint:
+        value: 1150
+        unit: °C
+        confidence: 92
+        description: Average melting temperature range for cast iron alloys
         min: null
         max: null
       absorptionCoefficient:
         value: 0.65
-        unit: 1/cm
+        unit: dimensionless
         confidence: 82
         description: Absorption coefficient for near-infrared lasers (1064 nm)
-        min: null
-        max: null
-      thermalDestruction:
-        value: 1473.0
-        unit: K
-        confidence: 95
-        description: Thermal destruction/melting point temperature
         min: null
         max: null
 applications:
@@ -302,20 +328,24 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the cast iron surface is obscured by a complex,
-    stratified contamination layer approximately 50-200 micrometers thick. The base
-    layer consists of a tenacious, amorphous oxide scale (mill scale) firmly bonded
-    to the substrate. Above this, a porous matrix of carbonaceous deposits and embedded
-    particulate matter from environmental exposure is visible. This layer exhibits
-    micro-fissures and a non-uniform topography that masks the underlying metal's
-    grain structure and micro-shrinkage porosity. The surface texture is highly irregular,
-    dominated by the contamination's morphology rather than the cast iron's own.
-  afterText: Laser cleaning has removed the entire contamination stratum, revealing
-    the true cast iron substrate. The surface now displays a clear, etched micro-topography
-    where the fine lamellar graphite flakes and the pearlitic metal matrix are distinctly
-    visible. The process has restored the original surface texture without the abrasive
-    damage associated with mechanical methods, leaving a clean, metallurgically pure
-    surface.
+  beforeText: At 500x magnification, the surface is dominated by a non-uniform oxide
+    layer (mill scale) measuring 50-150 micrometers thick. This brittle, crystalline
+    layer exhibits extensive cracking and spalling, creating a porous, fragmented
+    topography. Embedded within these fissures are pockets of carbonaceous soot and
+    fine abrasive particulates, typically 5-20 micrometers in size. The underlying
+    cast iron's characteristic graphite flake structure is completely obscured by
+    this stratified, contaminated crust.
+  afterText: 'Laser cleaning has removed the entire contamination layer, revealing
+    the true metallographic surface of the cast iron. The mill scale, soot, and embedded
+    particulates have been completely ablated, exposing the lamellar graphite flakes
+    within the pearlitic iron matrix. This results in a distinct, high-contrast micro-topography.
+
+
+    The process selectively removes contaminants without damaging the substrate. The
+    surface now displays the material''s inherent micro-features, including the subtle
+    porosity from the original casting process. The primary visual improvement is
+    the restoration of the metal''s native texture and the elimination of the non-adherent,
+    fractured oxide layer that characterized the initial state.'
   description: Microscopic analysis of cast iron surface before and after laser cleaning
     treatment
   alt: Microscopic view of cast iron surface showing laser cleaning effects

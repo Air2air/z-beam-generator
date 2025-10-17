@@ -35,6 +35,7 @@ from components.frontmatter.research.property_value_researcher import PropertyVa
 from components.frontmatter.services.property_discovery_service import PropertyDiscoveryService
 from components.frontmatter.services.property_research_service import PropertyResearchService
 from components.frontmatter.services.template_service import TemplateService
+from components.frontmatter.services.pipeline_process_service import PipelineProcessService
 
 # Import unified exception classes from validation system
 from validation.errors import (
@@ -141,6 +142,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         self.property_discovery_service = None  # Initialized in _load_categories_data()
         self.property_research_service = None  # Initialized in _load_categories_data()
         self.template_service = None  # Initialized in _load_categories_data()
+        self.pipeline_process_service = None  # Initialized in _load_categories_data()
         
         # Load materials research data for range calculations
         self._load_materials_research_data()
@@ -272,6 +274,15 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             if 'universal_regulatory_standards' not in categories_data:
                 raise ConfigurationError("universal_regulatory_standards section required in Categories.yaml")
             self.universal_regulatory_standards = categories_data['universal_regulatory_standards']
+            
+            # Initialize PipelineProcessService AFTER loading all required templates/standards
+            self.pipeline_process_service = PipelineProcessService(
+                environmental_impact_templates=self.environmental_impact_templates,
+                standard_outcome_metrics=self.standard_outcome_metrics,
+                universal_regulatory_standards=self.universal_regulatory_standards,
+                category_enhanced_data=self.category_enhanced_data
+            )
+            self.logger.info("PipelineProcessService initialized with pipeline templates")
             
             if 'categories' in categories_data:
                 for category_name, category_info in categories_data['categories'].items():
@@ -494,12 +505,14 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             frontmatter['images'] = self._generate_images_section(material_name)
             
             # Add standardized sections from Categories.yaml
-            frontmatter = self._add_environmental_impact_section(frontmatter, material_data)
+            if not self.pipeline_process_service:
+                raise ConfigurationError("PipelineProcessService not initialized")
+            frontmatter = self.pipeline_process_service.add_environmental_impact_section(frontmatter, material_data)
             # applicationTypes removed per GROK_INSTRUCTIONS.md - NO FALLBACKS
-            frontmatter = self._add_outcome_metrics_section(frontmatter, material_data)
+            frontmatter = self.pipeline_process_service.add_outcome_metrics_section(frontmatter, material_data)
             
             # Add regulatory standards (universal + material-specific)
-            frontmatter = self._add_regulatory_standards_section(frontmatter, material_data)
+            frontmatter = self.pipeline_process_service.add_regulatory_standards_section(frontmatter, material_data)
             
             # Generate author (required by schema) - must come before caption/tags that reference it
             frontmatter.update(self._generate_author(material_data))
