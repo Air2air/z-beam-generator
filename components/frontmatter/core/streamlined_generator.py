@@ -526,39 +526,6 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             self.logger.error(f"YAML generation failed for {material_name}: {str(e)}")
             raise GenerationError(f"Failed to generate from YAML for {material_name}: {str(e)}")
     # ============================================================================
-    # DEPRECATED METHODS - Delegating to PropertyProcessor/PropertyManager
-    # Kept for backward compatibility, will be removed in Step 5
-    # ============================================================================
-    
-    def _generate_properties_with_ranges(self, material_data: Dict, material_name: str) -> Dict:
-        """
-        DEPRECATED: Use PropertyProcessor.organize_properties_by_category() instead.
-        This method is kept for backward compatibility only.
-        """
-        self.logger.warning("DEPRECATED: _generate_properties_with_ranges() - Use PropertyProcessor instead")
-        # Generate basic properties first
-        basic_properties = self._generate_basic_properties(material_data, material_name)
-        # Categorize properties using PropertyProcessor
-        categorized = self.property_processor.organize_properties_by_category(basic_properties)
-        self.logger.info(f"✅ Organized {len(basic_properties)} properties into {len(categorized)} categories for {material_name}")
-        return categorized
-
-    def _organize_properties_by_category(self, properties: Dict) -> Dict:
-        """
-        DEPRECATED: Use PropertyProcessor.organize_properties_by_category() instead.
-        This method is kept for backward compatibility only.
-        """
-        self.logger.warning("DEPRECATED: _organize_properties_by_category() - Use PropertyProcessor instead")
-        return self.property_processor.organize_properties_by_category(properties)
-    
-    def _separate_qualitative_properties(self, all_properties: Dict) -> tuple[Dict, Dict]:
-        """
-        DEPRECATED: Use PropertyProcessor.separate_qualitative_properties() instead.
-        This method is kept for backward compatibility only.
-        """
-        self.logger.warning("DEPRECATED: _separate_qualitative_properties() - Use PropertyProcessor instead")
-        return self.property_processor.separate_qualitative_properties(all_properties)
-    
     def _generate_basic_properties(self, material_data: Dict, material_name: str) -> Dict:
         """Generate properties with DataMetrics structure using YAML-first approach with AI fallback (OPTIMIZED)"""
         properties = {}
@@ -875,31 +842,6 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             self.logger.error(f"Machine settings research failed for {material_name}: {e}")
             raise PropertyDiscoveryError(f"Cannot generate machineSettings for {material_name}: {e}")
 
-    def _create_datametrics_property(self, material_value, prop_key: str, material_category: str = 'metal') -> Dict:
-        """
-        DEPRECATED: Use PropertyProcessor.create_datametrics_property() instead.
-        This method is no longer used internally and will be removed in Step 5.
-        """
-        self.logger.warning("DEPRECATED: _create_datametrics_property() - Use PropertyProcessor instead")
-        return self.property_processor.create_datametrics_property(material_value, prop_key, material_category)
-
-    def _calculate_property_confidence(self, prop_key: str, material_category: str, numeric_value: float) -> float:
-        """
-        DEPRECATED: Confidence calculation now handled by PropertyProcessor.
-        This method is kept for backward compatibility only.
-        """
-        self.logger.warning("DEPRECATED: _calculate_property_confidence() - Use PropertyProcessor instead")
-        # Delegate to PropertyProcessor's internal method
-        return self.property_processor._calculate_property_confidence(prop_key, material_category, numeric_value)
-
-    def _has_category_data(self, material_category: str, prop_key: str) -> bool:
-        """
-        DEPRECATED: Category data checking now handled by PropertyProcessor.
-        This method is kept for backward compatibility only.
-        """
-        self.logger.warning("DEPRECATED: _has_category_data() - Use PropertyProcessor instead")
-        return self.property_processor._has_category_data(material_category, prop_key)
-    
     def _update_categories_yaml_with_range(self, category: str, property_name: str, range_data: Dict) -> None:
         """
         Update Categories.yaml with researched property range.
@@ -948,15 +890,6 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             self.template_service.category_ranges = self.category_ranges
         self.logger.info(f"✅ Updated Categories.yaml: {category}.{property_name} = [{range_data['min']}, {range_data['max']}] {range_data.get('unit', '')}")
     
-    def _get_research_based_range(self, prop_key: str, material_category: str, current_value: float) -> tuple[float, float]:
-        """
-        DEPRECATED: Not used anywhere in code. Range logic now in PropertyProcessor.
-        This method will be removed in Step 5.
-        """
-        self.logger.warning("DEPRECATED: _get_research_based_range() is not used and will be removed")
-        # Delegate to PropertyProcessor if ever called
-        return self.property_processor._get_category_range(prop_key, material_category, current_value)
-
     def _generate_from_api(self, material_name: str, material_data: Dict) -> Dict:
         """Generate frontmatter content using AI - FAIL-FAST: no fallbacks allowed per GROK"""
         if not self.api_client:
@@ -970,28 +903,27 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 raise GenerationError(f"Failed to generate AI content for {material_name}")
             # Parse AI response and merge with Min/Max from range functions
             parsed_content = self._parse_api_response(ai_content, material_data)
-            # Ensure Min/Max and description fields are present using range functions
+            # Ensure Min/Max using PropertyProcessor (Step 5: Direct usage, no deprecated wrappers)
             if 'materialProperties' in parsed_content:
-                range_properties = self._generate_properties_with_ranges(material_data)
-                parsed_content['materialProperties'] = self._merge_with_ranges(parsed_content['materialProperties'], range_properties)
+                # Generate properties with ranges using PropertyProcessor
+                basic_properties = self._generate_basic_properties(material_data, material_name)
+                categorized = self.property_processor.organize_properties_by_category(basic_properties)
+                parsed_content['materialProperties'] = self.property_processor.merge_with_ranges(
+                    parsed_content['materialProperties'], categorized
+                )
             
             if 'machineSettings' in parsed_content:
-                range_machine_settings = self._generate_machine_settings_with_ranges(material_data)
-                parsed_content['machineSettings'] = self._merge_with_ranges(parsed_content['machineSettings'], range_machine_settings)
+                # Generate machine settings using PropertyResearchService
+                machine_settings = self.property_research_service.research_machine_settings(material_name)
+                parsed_content['machineSettings'] = self.property_processor.merge_with_ranges(
+                    parsed_content['machineSettings'], machine_settings
+                )
             self.logger.info(f"Successfully generated frontmatter for {material_name} with Min/Max ranges")
             return parsed_content
             
         except Exception as e:
             self.logger.error(f"API generation failed for {material_name}: {str(e)}")
             raise GenerationError(f"Failed to generate frontmatter for {material_name}: {str(e)}")
-    
-    def _merge_with_ranges(self, ai_properties: Dict, range_properties: Dict) -> Dict:
-        """
-        DEPRECATED: Use PropertyProcessor.merge_with_ranges() instead.
-        Kept for backward compatibility - delegates to PropertyProcessor.
-        """
-        self.logger.warning("DEPRECATED: _merge_with_ranges() - Use PropertyProcessor.merge_with_ranges() instead")
-        return self.property_processor.merge_with_ranges(ai_properties, range_properties)
     
     def _call_api_for_generation(self, material_name: str, material_data: Dict) -> str:
         """Call API to generate frontmatter content"""
@@ -1132,22 +1064,6 @@ Return YAML format with materialProperties, machineSettings, and structured appl
         except (ValueError, TypeError):
             return False
     
-    def _extract_numeric_only(self, value) -> Optional[float]:
-        """
-        DEPRECATED: Use PropertyProcessor._extract_numeric_only() instead.
-        This method is kept for backward compatibility with tests.
-        """
-        self.logger.warning("DEPRECATED: _extract_numeric_only() - Use PropertyProcessor instead")
-        return self.property_processor._extract_numeric_only(value)
-
-    def _extract_unit(self, value) -> Optional[str]:
-        """
-        DEPRECATED: Use PropertyProcessor._extract_unit() instead.
-        This method is kept for backward compatibility with tests.
-        """
-        self.logger.warning("DEPRECATED: _extract_unit() - Use PropertyProcessor instead")
-        return self.property_processor._extract_unit(value)
-
     def _detect_property_pattern(self, prop_data) -> str:
         """
         Detect property data pattern type.
@@ -1268,14 +1184,6 @@ Return YAML format with materialProperties, machineSettings, and structured appl
         
         # Fallback to 0
         return 0
-
-    def _get_category_unit(self, material_category: str, prop_key: str) -> Optional[str]:
-        """
-        DEPRECATED: Use PropertyProcessor._get_category_unit() instead.
-        This method is kept for backward compatibility.
-        """
-        self.logger.warning("DEPRECATED: _get_category_unit() - Use PropertyProcessor instead")
-        return self.property_processor._get_category_unit(material_category, prop_key)
 
     def _generate_author(self, material_data: Dict) -> Dict:
         """Generate author from material data author.id"""
