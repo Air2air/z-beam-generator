@@ -20,7 +20,17 @@
 **→ Current Status**: 93.5% complete (1,975/2,240 properties)
 **→ What You See**: Category ranges (98.7%), material values (88.2%), top missing properties
 **→ Next Steps**: Automatically links to action plan and research tools
-**→ Documentation**: `docs/DATA_COMPLETENESS_ENFORCEMENT_SYSTEM.md`
+**→ Documentation**: 
+  - `docs/DATA_COMPLETENESS_POLICY.md` - Requirements and usage
+  - `docs/COMPLETE_FEATURE_INVENTORY.md` - All completeness features
+  - `DATA_COMPLETENESS_IMPLEMENTATION.md` - Implementation summary
+
+**✨ NEW (October 17, 2025)**: 100% completeness validation runs **automatically** during generation:
+- **Legacy Migration**: Auto-moves qualitative properties to material_characteristics
+- **Empty Detection**: Triggers PropertyManager research for missing data
+- **Strict Mode**: `--enforce-completeness` fails generation if incomplete
+- **Auto-Remediation**: Fills gaps automatically via AI research
+- **14 Tests**: Complete test coverage in `tests/test_data_completeness.py`
 
 ### "How do I fix missing property data?" / "What's the data completion plan?"
 **→ Immediate Response**: ✅ **COMPREHENSIVE PLAN READY** - 93.5% complete, path to 100% documented
