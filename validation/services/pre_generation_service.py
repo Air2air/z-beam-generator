@@ -231,12 +231,14 @@ class PreGenerationValidationService:
             
             return result
             
+        except ConfigurationError:
+            # Let fail-fast exceptions propagate (per GROK_INSTRUCTIONS.md)
+            raise
         except Exception as e:
-            errors.append({
-                "type": "validation_error",
-                "message": f"Categories validation failed: {str(e)}"
-            })
-            return ValidationResult(False, "categories", issues, warnings, errors)
+            # Only catch YAML/file errors, not our intentional fail-fast exceptions
+            raise ConfigurationError(
+                f"Categories validation error: {str(e)}"
+            )
     
     def _validate_materials(self) -> ValidationResult:
         """Validate Materials.yaml structure and content"""
@@ -283,12 +285,14 @@ class PreGenerationValidationService:
             
             return result
             
+        except ConfigurationError:
+            # Let fail-fast exceptions propagate (per GROK_INSTRUCTIONS.md)
+            raise
         except Exception as e:
-            errors.append({
-                "type": "validation_error",
-                "message": f"Materials validation failed: {str(e)}"
-            })
-            return ValidationResult(False, "materials", issues, warnings, errors)
+            # Only catch YAML/file errors, not our intentional fail-fast exceptions
+            raise ConfigurationError(
+                f"Materials validation error: {str(e)}"
+            )
     
     def _validate_all_frontmatter(self) -> ValidationResult:
         """Validate all frontmatter files including two-category compliance"""
@@ -383,12 +387,10 @@ class PreGenerationValidationService:
                 category = material_index.get(material_name)
                 
                 if not category:
-                    errors.append({
-                        "type": "material_not_found",
-                        "material": material_name,
-                        "message": f"Material {material_name} not found in material_index"
-                    })
-                    return ValidationResult(False, "property_rules", issues, warnings, errors)
+                    # Fail-fast: Material not found is a critical error
+                    raise MaterialsValidationError(
+                        f"Material '{material_name}' not found in material_index"
+                    )
             
             # Find material properties
             material_properties = {}
@@ -602,12 +604,10 @@ class PreGenerationValidationService:
             category = material_index.get(material_name)
             
             if not category:
-                errors.append({
-                    "type": "material_not_found",
-                    "material": material_name,
-                    "message": f"Material {material_name} not found"
-                })
-                return ValidationResult(False, "relationships", issues, warnings, errors)
+                # Fail-fast: Material not found is a critical error
+                raise MaterialsValidationError(
+                    f"Material '{material_name}' not found in material_index"
+                )
             
             # Find material properties
             material_properties = {}
@@ -786,16 +786,14 @@ class PreGenerationValidationService:
                 completion_percentage=completion_percentage
             )
             
+        except (ConfigurationError, MaterialsValidationError):
+            # Let fail-fast exceptions propagate (per GROK_INSTRUCTIONS.md)
+            raise
         except Exception as e:
+            # Only catch unexpected errors like file I/O issues
             logger.error(f"❌ Gap analysis failed: {e}")
-            return GapAnalysisResult(
-                total_materials=0,
-                total_gaps=0,
-                critical_gaps=0,
-                gaps_by_priority={},
-                gaps_by_type={},
-                materials_needing_research=[],
-                completion_percentage=0.0
+            raise ConfigurationError(
+                f"Gap analysis error: {str(e)}"
             )
     
     # ========================================================================
@@ -816,12 +814,10 @@ class PreGenerationValidationService:
             category = material_index.get(material_name)
             
             if not category:
-                errors.append({
-                    "type": "material_not_found",
-                    "material": material_name,
-                    "message": f"Material {material_name} not found"
-                })
-                return ValidationResult(False, "completeness", issues, warnings, errors)
+                # Fail-fast: Material not found is a critical error
+                raise MaterialsValidationError(
+                    f"Material '{material_name}' not found in material_index"
+                )
             
             if category not in self.category_rules:
                 warnings.append({
