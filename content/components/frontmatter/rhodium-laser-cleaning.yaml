@@ -4,8 +4,72 @@ subcategory: precious
 title: Rhodium Laser Cleaning
 description: Laser cleaning parameters for Rhodium
 materialProperties:
-  material_properties:
-    label: Material Properties
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    properties:
+      laserAbsorption:
+        value: 38.0
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.02
+        max: 100
+      laserReflectivity:
+        value: 78.2
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 98
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with
+          surface condition'
+      specificHeat:
+        value: 243.0
+        unit: J·kg⁻¹·K⁻¹
+        confidence: 91
+        description: Specific heat capacity at 25°C
+        min: 100
+        max: 900
+        metadata:
+          last_verified: '2025-10-15T15:43:05.053199'
+          verification_source: automatic_fix
+          fix_reason: 'kJ→J conversion: 0.242 → 242.0'
+      thermalConductivity:
+        value: 150
+        unit: W/(m·K)
+        confidence: 85
+        description: Thermal conductivity at room temperature
+        min: 15
+        max: 400
+        source: MatWeb Materials Database
+        notes: Typical range for metal materials at room temperature
+      thermalDiffusivity:
+        value: 24.9
+        unit: mm²/s
+        confidence: 88
+        description: Thermal diffusivity at room temperature
+        min: 0.2
+        max: 174
+      thermalExpansion:
+        value: 8.3
+        unit: 10^-6/K
+        confidence: 90
+        description: Coefficient of linear thermal expansion (20-100°C)
+        min: 0.5
+        max: 29.1
+      absorptionCoefficient:
+        value: 4.8
+        unit: ×10⁵ cm⁻¹
+        confidence: 82
+        description: Absorption coefficient for Nd:YAG laser (1064 nm)
+        min: 0.03
+        max: 12000000.0
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
     properties:
       density:
         value: 12.41
@@ -15,7 +79,7 @@ materialProperties:
         min: 0.53
         max: 22.6
       oxidationResistance:
-        value: Excellent
+        value: 600.0
         unit: °C
         confidence: 80
         description: Resistance to oxidation up to 600°C
@@ -31,20 +95,14 @@ materialProperties:
         min: null
         max: null
       electricalResistivity:
-        value: 4.3
-        unit: μΩ·cm
+        value: 4.33e-08
+        unit: Ω·m
         confidence: 94
         description: Electrical resistivity at 20°C
         min: 0.197
         max: 48.0
-    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
-      finish, contaminant adhesion, and process efficiency'
-    percentage: 40.0
-  structural_response:
-    label: Structural Response Properties
-    properties:
       hardness:
-        value: 800
+        value: 1100.0
         unit: HV
         confidence: 89
         description: Vickers hardness of annealed rhodium
@@ -64,111 +122,9 @@ materialProperties:
         description: Young's modulus of elasticity
         min: 5
         max: 411
-    description: 'Physical reaction to thermal stress: how material responds structurally
-      to rapid heating'
-    percentage: 18.2
-  energy_coupling:
-    label: Energy Coupling Properties
-    properties:
-      laserAbsorption:
-        value: 38.0
-        unit: '%'
-        confidence: 92
-        description: laserAbsorption from Materials.yaml
-        min: 0.02
-        max: 100
-      laserReflectivity:
-        value: 78.2
-        unit: '%'
-        confidence: 92
-        description: laserReflectivity from Materials.yaml
-        min: 5
-        max: 98
-      reflectivity:
-        at_1064nm:
-          min: 85
-          max: 98
-          unit: '%'
-        at_532nm:
-          min: 70
-          max: 95
-          unit: '%'
-        at_355nm:
-          min: 55
-          max: 85
-          unit: '%'
-        at_10640nm:
-          min: 95
-          max: 99
-          unit: '%'
-        source: Handbook of Optical Constants (Palik)
-        confidence: 85
-        measurement_context: Varies by laser wavelength
-      ablationThreshold:
-        nanosecond:
-          min: 2.0
-          max: 8.0
-          unit: J/cm²
-        picosecond:
-          min: 0.1
-          max: 2.0
-          unit: J/cm²
-        femtosecond:
-          min: 0.14
-          max: 1.7
-          unit: J/cm²
-        source: Marks et al. 2022, Precision Engineering
-        confidence: 90
-        measurement_context: Varies by pulse duration (ns/ps/fs)
-      specificHeat:
-        value: 0.242
-        unit: J/g·K
-        confidence: 91
-        description: Specific heat capacity at 25°C
-        min: 100
-        max: 900
-      thermalConductivity:
-        value: 150
-        unit: W/(m·K)
-        confidence: 85
-        description: Thermal conductivity at room temperature
-        min: 15
-        max: 400
-        source: MatWeb Materials Database
-        notes: Typical range for metal materials at room temperature
-      thermalDiffusivity:
-        value: 0.247
-        unit: cm²/s
-        confidence: 88
-        description: Thermal diffusivity at room temperature
-        min: 0.2
-        max: 174
-      thermalExpansion:
-        value: 8.2
-        unit: μm/m·K
-        confidence: 90
-        description: Coefficient of linear thermal expansion (20-100°C)
-        min: 0.5
-        max: 29.1
-      thermalDestruction:
-        point:
-          value: 1966.0
-          unit: °C
-          min: -38.8
-          max: 3422
-          confidence: 95
-          description: Thermal destruction point
-        type: melting
-      absorptionCoefficient:
-        value: 4.8
-        unit: ×10⁵ cm⁻¹
-        confidence: 82
-        description: Absorption coefficient for Nd:YAG laser (1064 nm)
-        min: 0.03
-        max: 12000000.0
-    description: 'First-order photon coupling: how laser energy enters the material
-      vs. reflects away'
-    percentage: 16.4
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
 applications:
 - Aerospace
 - Electronics
@@ -246,13 +202,6 @@ machineSettings:
     description: Recommended number of passes for complete contaminant removal
     min: 1
     max: 5
-  laserType:
-    value: Nd:YAG
-    unit: n/a
-    confidence: 90
-    description: Recommended laser type for Rhodium cleaning applications
-    min: null
-    max: null
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -380,3 +329,10 @@ tags:
 - reflective-surface
 - conductive
 - todd-dunning
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:20.615616'
+  sources_added: 1
+processing:
+  last_sync: '2025-10-15T19:47:09.377877Z'
+  sync_source: Materials.yaml

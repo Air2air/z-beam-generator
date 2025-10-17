@@ -4,8 +4,68 @@ subcategory: titanium carbide
 title: Titanium Carbide Laser Cleaning
 description: Laser cleaning parameters for Titanium Carbide
 materialProperties:
-  structural_response:
-    label: Structural Response Properties
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    properties:
+      laserAbsorption:
+        value: 32.7
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.1
+        max: 50
+      laserReflectivity:
+        value: 52.3
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 90
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        notes: Typical ceramics 10-30% at 1064nm, varies with composition and surface
+          finish
+      specificHeat:
+        value: 568.0
+        unit: J/(kg·K)
+        confidence: 85
+        description: Specific heat capacity at room temperature
+        min: 200
+        max: 1200
+      thermalConductivity:
+        value: 21
+        unit: W/(m·K)
+        confidence: 80
+        description: Thermal conductivity at room temperature
+        min: 1
+        max: 150
+        source: MatWeb Materials Database
+        notes: Typical range for ceramic materials at room temperature
+      thermalDiffusivity:
+        value: 7.2
+        unit: mm²/s
+        confidence: 82
+        description: Thermal diffusivity at room temperature
+        min: 0.05
+        max: 120
+      thermalExpansion:
+        value: 7.4
+        unit: 10^-6/K
+        confidence: 90
+        description: Coefficient of thermal expansion (20-1000°C)
+        min: 0.1
+        max: 14
+      absorptionCoefficient:
+        value: 0.85
+        unit: cm⁻¹
+        confidence: 88
+        description: Optical absorption coefficient for visible light
+        min: 0.8
+        max: 0.85
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
     properties:
       compressiveStrength:
         value: 410.0
@@ -15,15 +75,15 @@ materialProperties:
         min: 410.0
         max: 6700.0
       flexuralStrength:
-        value: 350
+        value: 480.0
         unit: MPa
         confidence: 85
         description: Room temperature flexural strength
         min: 45.0
         max: 3500.0
       hardness:
-        value: 28
-        unit: GPa
+        value: 9.0
+        unit: Mohs
         confidence: 94
         description: Vickers hardness (HV) at room temperature
         min: 1.0
@@ -42,12 +102,6 @@ materialProperties:
         description: Young's modulus of elasticity
         min: 50
         max: 800
-    description: 'Physical reaction to thermal stress: how material responds structurally
-      to rapid heating'
-    percentage: 18.2
-  material_properties:
-    label: Material Properties
-    properties:
       density:
         value: 4.93
         unit: g/cm³
@@ -56,7 +110,7 @@ materialProperties:
         min: 2.2
         max: 19.3
       oxidationResistance:
-        value: 1200
+        value: 1100.0
         unit: °C
         confidence: 90
         description: Maximum service temperature in oxidizing environments
@@ -69,100 +123,9 @@ materialProperties:
         description: Face-centered cubic (NaCl-type) crystal structure
         min: null
         max: null
-      porosity:
-        value: 2.5
-        unit: '%'
-        confidence: 80
-        description: Typical porosity in sintered TiC ceramics
-        min: 0
-        max: 30
-        source: ASM Handbook - Ceramics and Glasses
-        notes: Dense ceramics 0-5%, porous ceramics 10-30%
-    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
-      finish, contaminant adhesion, and process efficiency'
-    percentage: 40.0
-  energy_coupling:
-    label: Energy Coupling Properties
-    properties:
-      laserAbsorption:
-        value: 32.7
-        unit: '%'
-        confidence: 92
-        description: laserAbsorption from Materials.yaml
-        min: 0.1
-        max: 50
-      laserReflectivity:
-        value: 52.3
-        unit: '%'
-        confidence: 92
-        description: laserReflectivity from Materials.yaml
-        min: 5
-        max: 90
-      reflectivity:
-        value: 0.45
-        unit: dimensionless
-        confidence: 85
-        description: Reflectivity at 1064 nm wavelength
-        min: 0.12
-        max: 0.45
-      ablationThreshold:
-        value: 2.8
-        unit: J/cm²
-        confidence: 75
-        description: Laser ablation threshold for nanosecond pulses at 1064 nm
-        min: 1.5
-        max: 5.0
-        source: RP Photonics Encyclopedia, Oxide Ceramics
-        notes: Alumina, zirconia, silicon carbide - nanosecond pulses
-      specificHeat:
-        value: 840
-        unit: J/kg·K
-        confidence: 85
-        description: Specific heat capacity at room temperature
-        min: 200
-        max: 1200
-      thermalConductivity:
-        value: 21
-        unit: W/(m·K)
-        confidence: 80
-        description: Thermal conductivity at room temperature
-        min: 1
-        max: 150
-        source: MatWeb Materials Database
-        notes: Typical range for ceramic materials at room temperature
-      thermalDiffusivity:
-        value: 5.1
-        unit: mm²/s
-        confidence: 82
-        description: Thermal diffusivity at room temperature
-        min: 0.05
-        max: 120
-      thermalExpansion:
-        value: 7.4
-        unit: ×10⁻⁶/K
-        confidence: 90
-        description: Coefficient of thermal expansion (20-1000°C)
-        min: 0.1
-        max: 14
-      thermalDestruction:
-        point:
-          value: 2467.0
-          unit: °C
-          min: 1000
-          max: 3827
-          confidence: 95
-          description: Thermal destruction point
-        type: thermal_shock
-      absorptionCoefficient:
-        value: 0.85
-        unit: dimensionless
-        confidence: 88
-        description: Optical absorption coefficient for visible light
-        min: 0.8
-        max: 0.85
-    description: 'First-order photon coupling: how laser energy enters the material
-      vs. reflects away'
-    percentage: 16.4
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
 applications:
 - Aerospace
 - Automotive
@@ -227,13 +190,6 @@ machineSettings:
       - Energy density threshold for effective contaminant removal from ceramic surfaces
     min: 2.0
     max: 8.0
-  fluenceThreshold:
-    value: 2.8
-    unit: J/cm²
-    confidence: 89
-    description: Threshold fluence for effective TiC contaminant removal
-    min: 1.5
-    max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
@@ -379,3 +335,10 @@ tags:
 - thermal-resistant
 - hard-material
 - alessandro-moretti
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:22.481292'
+  sources_added: 1
+processing:
+  last_sync: '2025-10-15T19:39:37.376851Z'
+  sync_source: Materials.yaml

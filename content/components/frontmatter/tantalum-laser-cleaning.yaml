@@ -4,8 +4,75 @@ subcategory: refractory
 title: Tantalum Laser Cleaning
 description: Laser cleaning parameters for Tantalum
 materialProperties:
-  material_properties:
-    label: Material Properties
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    properties:
+      laserAbsorption:
+        value: 40.0
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.02
+        max: 100
+      laserReflectivity:
+        value: 52.3
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 98
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with
+          surface condition'
+      laserDamageThreshold:
+        value: 15
+        unit: J/cm²
+        confidence: 80
+        description: Estimated laser-induced damage threshold for short pulses
+        min: 1.2
+        max: 15.0
+      specificHeat:
+        value: 140.0
+        unit: J/(kg·K)
+        confidence: 91
+        description: Specific heat capacity at 25°C
+        min: 100
+        max: 900
+      thermalConductivity:
+        value: 57.5
+        unit: W/(m·K)
+        confidence: 85
+        description: Thermal conductivity at room temperature
+        min: 15
+        max: 400
+        source: MatWeb Materials Database
+        notes: Typical range for metal materials at room temperature
+      thermalDiffusivity:
+        value: 24.1
+        unit: mm²/s
+        confidence: 88
+        description: Thermal diffusivity at room temperature
+        min: 0.2
+        max: 174
+      thermalExpansion:
+        value: 6.53
+        unit: 10^-6/K
+        confidence: 90
+        description: Coefficient of thermal expansion at 20°C
+        min: 0.5
+        max: 29.1
+      absorptionCoefficient:
+        value: 0.45
+        unit: cm⁻¹
+        confidence: 85
+        description: Typical absorption coefficient for 1064 nm laser wavelength
+        min: 0.03
+        max: 12000000.0
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
     properties:
       density:
         value: 16.69
@@ -15,7 +82,7 @@ materialProperties:
         min: 0.53
         max: 22.6
       oxidationResistance:
-        value: Excellent
+        value: 300.0
         unit: °C
         confidence: 80
         description: Forms protective oxide layer (Ta₂O₅) with excellent corrosion
@@ -32,20 +99,14 @@ materialProperties:
         min: null
         max: null
       electricalResistivity:
-        value: 13.5
-        unit: μΩ·cm
+        value: 1.35e-07
+        unit: Ω·m
         confidence: 93
         description: Electrical resistivity at 20°C
         min: 0.197
         max: 48.0
-    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
-      finish, contaminant adhesion, and process efficiency'
-    percentage: 40.0
-  structural_response:
-    label: Structural Response Properties
-    properties:
       hardness:
-        value: 120
+        value: 343.0
         unit: HV
         confidence: 87
         description: Vickers hardness for annealed tantalum
@@ -59,124 +120,15 @@ materialProperties:
         min: 3.0
         max: 3000.0
       youngsModulus:
-        value: 186
+        value: 185.7
         unit: GPa
         confidence: 94
         description: Elastic modulus at room temperature
         min: 5
         max: 411
-    description: 'Physical reaction to thermal stress: how material responds structurally
-      to rapid heating'
-    percentage: 18.2
-  energy_coupling:
-    label: Energy Coupling Properties
-    properties:
-      laserAbsorption:
-        value: 40.0
-        unit: '%'
-        confidence: 92
-        description: laserAbsorption from Materials.yaml
-        min: 0.02
-        max: 100
-      laserReflectivity:
-        value: 52.3
-        unit: '%'
-        confidence: 92
-        description: laserReflectivity from Materials.yaml
-        min: 5
-        max: 98
-      reflectivity:
-        at_1064nm:
-          min: 85
-          max: 98
-          unit: '%'
-        at_532nm:
-          min: 70
-          max: 95
-          unit: '%'
-        at_355nm:
-          min: 55
-          max: 85
-          unit: '%'
-        at_10640nm:
-          min: 95
-          max: 99
-          unit: '%'
-        source: Handbook of Optical Constants (Palik)
-        confidence: 85
-        measurement_context: Varies by laser wavelength
-      ablationThreshold:
-        nanosecond:
-          min: 2.0
-          max: 8.0
-          unit: J/cm²
-        picosecond:
-          min: 0.1
-          max: 2.0
-          unit: J/cm²
-        femtosecond:
-          min: 0.14
-          max: 1.7
-          unit: J/cm²
-        source: Marks et al. 2022, Precision Engineering
-        confidence: 90
-        measurement_context: Varies by pulse duration (ns/ps/fs)
-      laserDamageThreshold:
-        value: 15
-        unit: J/cm²
-        confidence: 80
-        description: Estimated laser-induced damage threshold for short pulses
-        min: 1.2
-        max: 15.0
-      specificHeat:
-        value: 140
-        unit: J/kg·K
-        confidence: 91
-        description: Specific heat capacity at 25°C
-        min: 100
-        max: 900
-      thermalConductivity:
-        value: 57.5
-        unit: W/(m·K)
-        confidence: 85
-        description: Thermal conductivity at room temperature
-        min: 15
-        max: 400
-        source: MatWeb Materials Database
-        notes: Typical range for metal materials at room temperature
-      thermalDiffusivity:
-        value: 24.7
-        unit: mm²/s
-        confidence: 88
-        description: Thermal diffusivity at room temperature
-        min: 0.2
-        max: 174
-      thermalExpansion:
-        value: 6.3
-        unit: ×10⁻⁶/K
-        confidence: 90
-        description: Coefficient of thermal expansion at 20°C
-        min: 0.5
-        max: 29.1
-      thermalDestruction:
-        point:
-          value: 1668.0
-          unit: °C
-          min: -38.8
-          max: 3422
-          confidence: 95
-          description: Thermal destruction point
-        type: melting
-      absorptionCoefficient:
-        value: 0.45
-        unit: dimensionless
-        confidence: 85
-        description: Typical absorption coefficient for 1064 nm laser wavelength
-        min: 0.03
-        max: 12000000.0
-    description: 'First-order photon coupling: how laser energy enters the material
-      vs. reflects away'
-    percentage: 16.4
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
 applications:
 - Aerospace
 - Medical Devices
@@ -241,13 +193,6 @@ machineSettings:
       surfaces
     min: 3.0
     max: 12.0
-  fluenceThreshold:
-    value: 3.5
-    unit: J/cm²
-    confidence: 89
-    description: Minimum fluence required for effective Tantalum oxide removal
-    min: 2.5
-    max: 5.0
   overlapRatio:
     value: 50
     unit: '%'
@@ -389,3 +334,10 @@ tags:
 - reflective-surface
 - conductive
 - yi-chun-lin
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:22.071361'
+  sources_added: 1
+processing:
+  last_sync: '2025-10-15T19:47:10.049896Z'
+  sync_source: Materials.yaml

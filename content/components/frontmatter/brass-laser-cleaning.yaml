@@ -4,80 +4,8 @@ subcategory: non_ferrous
 title: Brass Laser Cleaning
 description: Laser cleaning parameters for Brass
 materialProperties:
-  material_properties:
-    label: Material Properties
-    properties:
-      density:
-        value: 8.5
-        unit: g/cm³
-        confidence: 95
-        description: Typical density for common brass alloys (60-70% Cu, 30-40% Zn)
-        min: 0.53
-        max: 22.6
-      oxidationResistance:
-        value: 85
-        unit: °C
-        confidence: 80
-        description: Relative oxidation resistance compared to pure copper
-        min: 200
-        max: 1200
-        source: ASM Metals Handbook - Corrosion
-        notes: 'Oxidation onset: Steel 200-400°C, Stainless 400-800°C, Ni alloys 800-1200°C'
-      corrosionResistance:
-        value: 78
-        unit: '% relative'
-        confidence: 85
-        description: General corrosion resistance in atmospheric conditions
-        min: 9.3
-        max: 78.0
-      crystallineStructure:
-        value: FCC
-        unit: crystal system
-        confidence: 95
-        description: Face-centered cubic structure typical for alpha-brass
-        min: null
-        max: null
-      surfaceRoughness:
-        value: 0.8
-        unit: μm Ra
-        confidence: 85
-        description: Typical surface roughness for machined brass surfaces
-        min: 0.4
-        max: 150
-        source: Engineering ToolBox
-        notes: Industrial metal finishing processes
-    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
-      finish, contaminant adhesion, and process efficiency'
-    percentage: 40.0
-  structural_response:
-    label: Structural Response Properties
-    properties:
-      hardness:
-        value: 75
-        unit: HV
-        confidence: 85
-        description: Vickers hardness for typical brass compositions
-        min: 0.5
-        max: 3500
-      tensileStrength:
-        value: 340
-        unit: MPa
-        confidence: 88
-        description: Typical tensile strength for annealed brass
-        min: 3.0
-        max: 3000.0
-      youngsModulus:
-        value: 110
-        unit: GPa
-        confidence: 92
-        description: Elastic modulus of brass alloys
-        min: 5
-        max: 411
-    description: 'Physical reaction to thermal stress: how material responds structurally
-      to rapid heating'
-    percentage: 18.2
-  energy_coupling:
-    label: Energy Coupling Properties
+  laser_material_interaction:
+    label: Laser-Material Interaction
     properties:
       laserAbsorption:
         value: 38.5
@@ -93,51 +21,18 @@ materialProperties:
         description: laserReflectivity from Materials.yaml
         min: 5
         max: 98
-      reflectivity:
-        at_1064nm:
-          min: 85
-          max: 98
-          unit: '%'
-        at_532nm:
-          min: 70
-          max: 95
-          unit: '%'
-        at_355nm:
-          min: 55
-          max: 85
-          unit: '%'
-        at_10640nm:
-          min: 95
-          max: 99
-          unit: '%'
-        source: Handbook of Optical Constants (Palik)
-        confidence: 85
-        measurement_context: Varies by laser wavelength
-      ablationThreshold:
-        nanosecond:
-          min: 2.0
-          max: 8.0
-          unit: J/cm²
-        picosecond:
-          min: 0.1
-          max: 2.0
-          unit: J/cm²
-        femtosecond:
-          min: 0.14
-          max: 1.7
-          unit: J/cm²
-        source: Marks et al. 2022, Precision Engineering
-        confidence: 90
-        measurement_context: Varies by pulse duration (ns/ps/fs)
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with
+          surface condition'
       specificHeat:
-        value: 380
-        unit: J/kg·K
+        value: 375.0
+        unit: J·kg⁻¹·K⁻¹
         confidence: 90
         description: Specific heat capacity at constant pressure
         min: 100
         max: 900
       thermalConductivity:
-        value: 120
+        value: 109.0
         unit: W/(m·K)
         confidence: 85
         description: Thermal conductivity of typical brass alloys
@@ -146,28 +41,19 @@ materialProperties:
         source: MatWeb Materials Database
         notes: Typical range for metal materials at room temperature
       thermalDiffusivity:
-        value: 35.2
+        value: 34.2
         unit: mm²/s
         confidence: 85
         description: Thermal diffusivity at room temperature
         min: 0.2
         max: 174
       thermalExpansion:
-        value: 19.0
-        unit: μm/m·°C
+        value: 18.7
+        unit: 10^-6/K
         confidence: 88
         description: Coefficient of thermal expansion at 20-100°C
         min: 0.5
         max: 29.1
-      thermalDestruction:
-        point:
-          value: 1713.15
-          unit: K
-          min: -38.8
-          max: 3422
-          confidence: 92
-          description: Thermal destruction point
-        type: melting
       absorptionCoefficient:
         value: 0.85
         unit: μm⁻¹
@@ -175,9 +61,66 @@ materialProperties:
         description: Optical absorption coefficient at 1064 nm wavelength
         min: 0.03
         max: 12000000.0
-    description: 'First-order photon coupling: how laser energy enters the material
-      vs. reflects away'
-    percentage: 16.4
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
+    properties:
+      density:
+        value: 8.47
+        unit: g/cm³
+        confidence: 95
+        description: Typical density for common brass alloys (60-70% Cu, 30-40% Zn)
+        min: 0.53
+        max: 22.6
+      oxidationResistance:
+        value: 300.0
+        unit: °C
+        confidence: 80
+        description: Relative oxidation resistance compared to pure copper
+        min: 200
+        max: 1200
+        source: ASM Metals Handbook - Corrosion
+        notes: 'Oxidation onset: Steel 200-400°C, Stainless 400-800°C, Ni alloys 800-1200°C'
+      corrosionResistance:
+        value: 7.8
+        unit: rating
+        confidence: 85
+        description: General corrosion resistance in atmospheric conditions
+        min: 9.3
+        max: 78.0
+      crystallineStructure:
+        value: FCC
+        unit: crystal system
+        confidence: 95
+        description: Face-centered cubic structure typical for alpha-brass
+        min: null
+        max: null
+      hardness:
+        value: 155.0
+        unit: HV
+        confidence: 85
+        description: Vickers hardness for typical brass compositions
+        min: 0.5
+        max: 3500
+      tensileStrength:
+        value: 338.0
+        unit: MPa
+        confidence: 88
+        description: Typical tensile strength for annealed brass
+        min: 3.0
+        max: 3000.0
+      youngsModulus:
+        value: 110
+        unit: GPa
+        confidence: 92
+        description: Elastic modulus of brass alloys
+        min: 5
+        max: 411
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
 applications:
 - Architecture
 - Hardware Manufacturing
@@ -240,14 +183,6 @@ machineSettings:
       threshold for effective oxide and contaminant removal from metallic surfaces
     min: 3.0
     max: 12.0
-  energyDensity:
-    value: 3.5
-    unit: J/cm²
-    confidence: 90
-    description: Fluence threshold for effective Brass oxide removal while preserving
-      substrate
-    min: 2.0
-    max: 5.0
   overlapRatio:
     value: 50
     unit: '%'
@@ -402,3 +337,10 @@ tags:
 - reflective-surface
 - conductive
 - alessandro-moretti
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:15.878530'
+  sources_added: 1
+processing:
+  last_sync: '2025-10-15T19:45:16.454362Z'
+  sync_source: Materials.yaml

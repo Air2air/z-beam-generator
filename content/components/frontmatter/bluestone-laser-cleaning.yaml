@@ -4,64 +4,8 @@ subcategory: mineral
 title: Bluestone Laser Cleaning
 description: Laser cleaning parameters for Bluestone
 materialProperties:
-  material_properties:
-    label: Material Properties
-    properties:
-      density:
-        value: 2.65
-        unit: g/cm³
-        confidence: 95
-        description: Typical density for sandstone-based bluestone
-        min: 1.5
-        max: 3.4
-      porosity:
-        value: 3.5
-        unit: '%'
-        confidence: 75
-        description: Typical porosity for dense bluestone varieties
-        min: 0.5
-        max: 25
-        source: Geological Survey Professional Papers
-        notes: Granite/marble 0.5-3%, sandstone 5-25%
-    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
-      finish, contaminant adhesion, and process efficiency'
-    percentage: 40.0
-  structural_response:
-    label: Structural Response Properties
-    properties:
-      hardness:
-        value: 6.5
-        unit: Mohs
-        confidence: 92
-        description: Mohs hardness scale for quartz-rich bluestone
-        min: 1
-        max: 7
-      tensileStrength:
-        value: 12.4
-        unit: MPa
-        confidence: 92
-        description: tensileStrength from Materials.yaml
-        min: 2
-        max: 25
-      youngsModulus:
-        value: 45
-        unit: GPa
-        confidence: 85
-        description: Elastic modulus of sandstone-based bluestone
-        min: 10
-        max: 100
-      compressiveStrength:
-        value: 180
-        unit: MPa
-        confidence: 88
-        description: Typical compressive strength of dense bluestone
-        min: 45.0
-        max: 250.0
-    description: 'Physical reaction to thermal stress: how material responds structurally
-      to rapid heating'
-    percentage: 18.2
-  energy_coupling:
-    label: Energy Coupling Properties
+  laser_material_interaction:
+    label: Laser-Material Interaction
     properties:
       laserAbsorption:
         value: 8.7
@@ -77,34 +21,29 @@ materialProperties:
         description: laserReflectivity from Materials.yaml
         min: 5
         max: 80
-      reflectivity:
-        value: 0.25
-        unit: dimensionless
-        confidence: 80
-        description: Reflectivity at common laser wavelengths (1064 nm)
-        min: 0.04
-        max: 0.35
-      ablationThreshold:
-        value: 2.8
-        unit: J/cm²
-        confidence: 85
-        description: Estimated ablation threshold for nanosecond pulses at 1064 nm
-        min: 1.2
-        max: 12.5
+        source: Geological Survey Optical Properties Database
+        notes: Light colored stones 40-80%, dark stones 5-20%, varies with mineral
+          composition
       specificHeat:
-        value: 0.92
-        unit: kJ/kg·K
+        value: 1000.0
+        unit: J/kg·K
         confidence: 90
         description: Specific heat capacity of sandstone
         min: 600
         max: 1200
+        metadata:
+          last_verified: '2025-10-15T15:45:14.955724'
+          verification_source: automatic_fix
+          fix_reason: 'kJ→J conversion: 0.92 → 920.0'
       thermalConductivity:
-        value: 2.9
-        unit: W/m·K
+        value: 3.8
+        unit: W/(m·K)
         confidence: 88
         description: Thermal conductivity of sandstone at room temperature
         min: 0.2
         max: 8
+        source: Engineering ToolBox - Building Materials
+        notes: Most stones 1-4 W/m·K, granite ~2.8, limestone ~1.3, marble ~2.5
       thermalDiffusivity:
         value: 1.32
         unit: mm²/s
@@ -113,21 +52,12 @@ materialProperties:
         min: 0.2
         max: 2.5
       thermalExpansion:
-        value: 12.3
-        unit: μm/m·°C
+        value: 7.5
+        unit: 10^-6/K
         confidence: 82
         description: Coefficient of thermal expansion for quartz sandstone
         min: 3
         max: 25
-      thermalDestruction:
-        point:
-          value: 1120.0
-          unit: °C
-          min: 600
-          max: 1700
-          confidence: 92
-          description: Thermal destruction point
-        type: thermal_shock
       thermalDegradationPoint:
         value: 1120.0
         unit: °C
@@ -137,14 +67,55 @@ materialProperties:
         max: 1470.0
       absorptionCoefficient:
         value: 0.75
-        unit: dimensionless
+        unit: cm⁻¹
         confidence: 82
         description: Optical absorption coefficient for near-IR wavelengths
         min: 0.15
         max: 0.85
-    description: 'First-order photon coupling: how laser energy enters the material
-      vs. reflects away'
-    percentage: 16.4
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
+    properties:
+      density:
+        value: 2.65
+        unit: g/cm³
+        confidence: 95
+        description: Typical density for sandstone-based bluestone
+        min: 1.5
+        max: 3.4
+      hardness:
+        value: 3.8
+        unit: Mohs
+        confidence: 92
+        description: Mohs hardness scale for quartz-rich bluestone
+        min: 1
+        max: 7
+      tensileStrength:
+        value: 12.4
+        unit: MPa
+        confidence: 92
+        description: tensileStrength from Materials.yaml
+        min: 2
+        max: 25
+      youngsModulus:
+        value: 68.0
+        unit: GPa
+        confidence: 85
+        description: Elastic modulus of sandstone-based bluestone
+        min: 10
+        max: 100
+      compressiveStrength:
+        value: 180
+        unit: MPa
+        confidence: 88
+        description: Typical compressive strength of dense bluestone
+        min: 45.0
+        max: 250.0
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
 applications:
 - Cultural Heritage
 - Architectural Restoration
@@ -209,14 +180,6 @@ machineSettings:
       substrate damage
     min: 1.5
     max: 7.0
-  energyDensity:
-    value: 3.5
-    unit: J/cm²
-    confidence: 89
-    description: Fluence threshold for effective contaminant removal without substrate
-      damage
-    min: 2.0
-    max: 5.0
   overlapRatio:
     value: 50
     unit: '%'
@@ -231,13 +194,6 @@ machineSettings:
     description: Recommended number of passes for complete cleaning
     min: 1
     max: 4
-  laserType:
-    value: Nd:YAG
-    unit: laser_type
-    confidence: 90
-    description: Recommended laser type for Bluestone cleaning applications
-    min: null
-    max: null
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -371,3 +327,10 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - alessandro-moretti
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:15.749650'
+  sources_added: 2
+processing:
+  last_sync: '2025-10-15T19:39:32.962182Z'
+  sync_source: Materials.yaml

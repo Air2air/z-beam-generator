@@ -4,11 +4,71 @@ subcategory: non_ferrous
 title: Bronze Laser Cleaning
 description: Laser cleaning parameters for Bronze
 materialProperties:
-  material_properties:
-    label: Material Properties
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    properties:
+      laserAbsorption:
+        value: 38.5
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.02
+        max: 100
+      laserReflectivity:
+        value: 58.2
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 98
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with
+          surface condition'
+      specificHeat:
+        value: 380.0
+        unit: J·kg⁻¹·K⁻¹
+        confidence: 85
+        description: Specific heat capacity at room temperature
+        min: 100
+        max: 900
+      thermalConductivity:
+        value: 42.0
+        unit: W/(m·K)
+        confidence: 85
+        description: Thermal conductivity of standard bronze alloys
+        min: 15
+        max: 400
+        source: MatWeb Materials Database
+        notes: Typical range for metal materials at room temperature
+      thermalDiffusivity:
+        value: 42.7
+        unit: mm²/s
+        confidence: 82
+        description: Thermal diffusivity calculated from thermal properties
+        min: 0.2
+        max: 174
+      thermalExpansion:
+        value: 18.0
+        unit: 10^-6/K
+        confidence: 88
+        description: Coefficient of thermal expansion at 20-100°C
+        min: 0.5
+        max: 29.1
+      absorptionCoefficient:
+        value: 4.2
+        unit: ×10⁵ m⁻¹
+        confidence: 80
+        description: Optical absorption coefficient at 1064 nm wavelength
+        min: 0.03
+        max: 12000000.0
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
     properties:
       density:
-        value: 8.7
+        value: 8.8
         unit: g/cm³
         confidence: 95
         description: Typical density for tin bronze alloys (88% Cu, 12% Sn)
@@ -38,30 +98,15 @@ materialProperties:
         description: Face-centered cubic structure typical of copper-rich bronze alloys
         min: null
         max: null
-      surfaceRoughness:
-        value: 0.8
-        unit: μm Ra
-        confidence: 85
-        description: Typical as-cast surface roughness before laser treatment
-        min: 0.4
-        max: 150
-        source: Engineering ToolBox
-        notes: Industrial metal finishing processes
-    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
-      finish, contaminant adhesion, and process efficiency'
-    percentage: 40.0
-  structural_response:
-    label: Structural Response Properties
-    properties:
       hardness:
-        value: 75
+        value: 70.0
         unit: HB
         confidence: 88
         description: Brinell hardness for standard bronze
         min: 0.5
         max: 3500
       tensileStrength:
-        value: 350
+        value: 379.0
         unit: MPa
         confidence: 90
         description: Typical tensile strength for cast bronze
@@ -74,91 +119,9 @@ materialProperties:
         description: Elastic modulus of bronze alloys
         min: 5
         max: 411
-    description: 'Physical reaction to thermal stress: how material responds structurally
-      to rapid heating'
-    percentage: 18.2
-  energy_coupling:
-    label: Energy Coupling Properties
-    properties:
-      laserAbsorption:
-        value: 38.5
-        unit: '%'
-        confidence: 92
-        description: laserAbsorption from Materials.yaml
-        min: 0.02
-        max: 100
-      laserReflectivity:
-        value: 58.2
-        unit: '%'
-        confidence: 92
-        description: laserReflectivity from Materials.yaml
-        min: 5
-        max: 98
-      ablationThreshold:
-        nanosecond:
-          min: 2.0
-          max: 8.0
-          unit: J/cm²
-        picosecond:
-          min: 0.1
-          max: 2.0
-          unit: J/cm²
-        femtosecond:
-          min: 0.14
-          max: 1.7
-          unit: J/cm²
-        source: Marks et al. 2022, Precision Engineering
-        confidence: 90
-        measurement_context: Varies by pulse duration (ns/ps/fs)
-      specificHeat:
-        value: 380
-        unit: J/kg·K
-        confidence: 85
-        description: Specific heat capacity at room temperature
-        min: 100
-        max: 900
-      thermalConductivity:
-        value: 75
-        unit: W/(m·K)
-        confidence: 85
-        description: Thermal conductivity of standard bronze alloys
-        min: 15
-        max: 400
-        source: MatWeb Materials Database
-        notes: Typical range for metal materials at room temperature
-      thermalDiffusivity:
-        value: 22.7
-        unit: mm²/s
-        confidence: 82
-        description: Thermal diffusivity calculated from thermal properties
-        min: 0.2
-        max: 174
-      thermalExpansion:
-        value: 18.5
-        unit: μm/m·°C
-        confidence: 88
-        description: Coefficient of thermal expansion at 20-100°C
-        min: 0.5
-        max: 29.1
-      thermalDestruction:
-        point:
-          value: 1598.15
-          unit: K
-          min: -38.8
-          max: 3422
-          confidence: 92
-          description: Thermal destruction point
-        type: melting
-      absorptionCoefficient:
-        value: 4.2
-        unit: ×10⁵ m⁻¹
-        confidence: 80
-        description: Optical absorption coefficient at 1064 nm wavelength
-        min: 0.03
-        max: 12000000.0
-    description: 'First-order photon coupling: how laser energy enters the material
-      vs. reflects away'
-    percentage: 16.4
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
 applications:
 - Architecture
 - Art and Sculpture
@@ -221,13 +184,6 @@ machineSettings:
       threshold for effective oxide and contaminant removal from metallic surfaces
     min: 3.0
     max: 12.0
-  fluenceThreshold:
-    value: 2.5
-    unit: J/cm²
-    confidence: 89
-    description: Minimum fluence required for effective Bronze oxide removal
-    min: 1.5
-    max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
@@ -378,3 +334,10 @@ tags:
 - reflective-surface
 - conductive
 - ikmanda-roswati
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:16.069273'
+  sources_added: 1
+processing:
+  last_sync: '2025-10-15T19:39:33.189460Z'
+  sync_source: Materials.yaml

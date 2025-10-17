@@ -4,57 +4,8 @@ subcategory: metamorphic
 title: Schist Laser Cleaning
 description: Laser cleaning parameters for Schist
 materialProperties:
-  material_properties:
-    label: Material Properties
-    properties:
-      density:
-        value: 2.75
-        unit: g/cm³
-        confidence: 92
-        description: Average bulk density of schist based on mineral composition
-        min: 1.5
-        max: 3.4
-      porosity:
-        value: 2.5
-        unit: '%'
-        confidence: 75
-        description: Average porosity affecting laser interaction and cleaning efficiency
-        min: 0.5
-        max: 25
-        source: Geological Survey Professional Papers
-        notes: Granite/marble 0.5-3%, sandstone 5-25%
-    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
-      finish, contaminant adhesion, and process efficiency'
-    percentage: 40.0
-  structural_response:
-    label: Structural Response Properties
-    properties:
-      hardness:
-        value: 5.5
-        unit: Mohs
-        confidence: 90
-        description: Average Mohs hardness based on mica and quartz content
-        min: 1
-        max: 7
-      tensileStrength:
-        value: 8.2
-        unit: MPa
-        confidence: 92
-        description: tensileStrength from Materials.yaml
-        min: 2
-        max: 25
-      youngsModulus:
-        value: 65
-        unit: GPa
-        confidence: 85
-        description: Elastic modulus parallel to foliation direction
-        min: 10
-        max: 100
-    description: 'Physical reaction to thermal stress: how material responds structurally
-      to rapid heating'
-    percentage: 18.2
-  energy_coupling:
-    label: Energy Coupling Properties
+  laser_material_interaction:
+    label: Laser-Material Interaction
     properties:
       laserAbsorption:
         value: 8.72
@@ -70,57 +21,43 @@ materialProperties:
         description: laserReflectivity from Materials.yaml
         min: 5
         max: 80
-      reflectivity:
-        value: 0.35
-        unit: dimensionless
-        confidence: 83
-        description: Surface reflectivity for common laser wavelengths
-        min: 0.04
-        max: 0.35
-      ablationThreshold:
-        value: 2.8
-        unit: J/cm²
-        confidence: 80
-        description: Minimum fluence required for material removal at 1064 nm
-        min: 1.2
-        max: 12.5
+        source: Geological Survey Optical Properties Database
+        notes: Light colored stones 40-80%, dark stones 5-20%, varies with mineral
+          composition
       specificHeat:
-        value: 0.85
-        unit: J/g·K
+        value: 800.0
+        unit: J/kg·K
         confidence: 86
         description: Specific heat capacity at constant pressure
         min: 600
         max: 1200
+        metadata:
+          last_verified: '2025-10-15T15:43:05.211123'
+          verification_source: automatic_fix
+          fix_reason: 'kJ→J conversion: 0.85 → 850.0'
       thermalConductivity:
-        value: 2.8
-        unit: W/m·K
+        value: 2.5
+        unit: W/(m·K)
         confidence: 88
         description: Thermal conductivity perpendicular to foliation planes
         min: 0.2
         max: 8
+        source: Engineering ToolBox - Building Materials
+        notes: Most stones 1-4 W/m·K, granite ~2.8, limestone ~1.3, marble ~2.5
       thermalDiffusivity:
-        value: 1.1
+        value: 1.42
         unit: mm²/s
         confidence: 84
         description: Thermal diffusivity for heat propagation calculations
         min: 0.2
         max: 2.5
       thermalExpansion:
-        value: 8.2
-        unit: 10⁻⁶/K
+        value: 11.2
+        unit: 10^-6/K
         confidence: 82
         description: Coefficient of thermal expansion at room temperature
         min: 3
         max: 25
-      thermalDestruction:
-        point:
-          value: 850.0
-          unit: °C
-          min: 600
-          max: 1700
-          confidence: 92
-          description: Thermal destruction point
-        type: thermal_shock
       thermalDegradationPoint:
         value: 850.0
         unit: °C
@@ -130,14 +67,48 @@ materialProperties:
         max: 1470.0
       absorptionCoefficient:
         value: 0.45
-        unit: dimensionless
+        unit: cm⁻¹
         confidence: 82
         description: Optical absorption coefficient at 1064 nm wavelength
         min: 0.15
         max: 0.85
-    description: 'First-order photon coupling: how laser energy enters the material
-      vs. reflects away'
-    percentage: 16.4
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
+    properties:
+      density:
+        value: 2.72
+        unit: g/cm³
+        confidence: 92
+        description: Average bulk density of schist based on mineral composition
+        min: 1.5
+        max: 3.4
+      hardness:
+        value: 3.5
+        unit: Mohs
+        confidence: 90
+        description: Average Mohs hardness based on mica and quartz content
+        min: 1
+        max: 7
+      tensileStrength:
+        value: 8.2
+        unit: MPa
+        confidence: 92
+        description: tensileStrength from Materials.yaml
+        min: 2
+        max: 25
+      youngsModulus:
+        value: 70.0
+        unit: GPa
+        confidence: 85
+        description: Elastic modulus parallel to foliation direction
+        min: 10
+        max: 100
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
 applications:
 - Cultural Heritage
 - Construction and Architecture
@@ -202,14 +173,6 @@ machineSettings:
       damage
     min: 1.5
     max: 7.0
-  fluenceThreshold:
-    value: 2.5
-    unit: J/cm²
-    confidence: 89
-    description: Energy density threshold for effective contaminant removal without
-      substrate damage
-    min: 1.8
-    max: 3.5
   overlapRatio:
     value: 40
     unit: '%'
@@ -225,13 +188,6 @@ machineSettings:
     description: Recommended number of passes for complete contaminant removal
     min: 1
     max: 4
-  laserType:
-    value: Nd:YAG
-    unit: n/a
-    confidence: 90
-    description: Recommended laser type for Schist cleaning applications
-    min: null
-    max: null
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -359,3 +315,10 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - todd-dunning
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:21.050014'
+  sources_added: 2
+processing:
+  last_sync: '2025-10-15T19:39:36.415649Z'
+  sync_source: Materials.yaml

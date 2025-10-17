@@ -4,71 +4,8 @@ subcategory: refractory
 title: Niobium Laser Cleaning
 description: Laser cleaning parameters for Niobium
 materialProperties:
-  material_properties:
-    label: Material Properties
-    properties:
-      density:
-        value: 8.57
-        unit: g/cm³
-        confidence: 98
-        description: Density of pure niobium at room temperature
-        min: 0.53
-        max: 22.6
-      oxidationResistance:
-        value: 400
-        unit: °C
-        confidence: 80
-        description: Maximum temperature for protective oxide layer stability
-        min: 200
-        max: 1200
-        source: ASM Metals Handbook - Corrosion
-        notes: 'Oxidation onset: Steel 200-400°C, Stainless 400-800°C, Ni alloys 800-1200°C'
-      crystallineStructure:
-        value: BCC
-        unit: none
-        confidence: 98
-        description: Body-centered cubic crystal structure
-        min: null
-        max: null
-      electricalResistivity:
-        value: 15.2
-        unit: μΩ·cm
-        confidence: 95
-        description: Electrical resistivity at room temperature
-        min: 0.197
-        max: 48.0
-    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
-      finish, contaminant adhesion, and process efficiency'
-    percentage: 40.0
-  structural_response:
-    label: Structural Response Properties
-    properties:
-      hardness:
-        value: 75
-        unit: HV
-        confidence: 88
-        description: Vickers hardness of annealed niobium
-        min: 0.5
-        max: 3500
-      tensileStrength:
-        value: 275
-        unit: MPa
-        confidence: 90
-        description: Tensile strength of annealed niobium
-        min: 3.0
-        max: 3000.0
-      youngsModulus:
-        value: 105
-        unit: GPa
-        confidence: 94
-        description: Young's modulus of elasticity
-        min: 5
-        max: 411
-    description: 'Physical reaction to thermal stress: how material responds structurally
-      to rapid heating'
-    percentage: 18.2
-  energy_coupling:
-    label: Energy Coupling Properties
+  laser_material_interaction:
+    label: Laser-Material Interaction
     properties:
       laserAbsorption:
         value: 38.0
@@ -84,42 +21,9 @@ materialProperties:
         description: laserReflectivity from Materials.yaml
         min: 5
         max: 98
-      reflectivity:
-        at_1064nm:
-          min: 85
-          max: 98
-          unit: '%'
-        at_532nm:
-          min: 70
-          max: 95
-          unit: '%'
-        at_355nm:
-          min: 55
-          max: 85
-          unit: '%'
-        at_10640nm:
-          min: 95
-          max: 99
-          unit: '%'
-        source: Handbook of Optical Constants (Palik)
-        confidence: 85
-        measurement_context: Varies by laser wavelength
-      ablationThreshold:
-        nanosecond:
-          min: 2.0
-          max: 8.0
-          unit: J/cm²
-        picosecond:
-          min: 0.1
-          max: 2.0
-          unit: J/cm²
-        femtosecond:
-          min: 0.14
-          max: 1.7
-          unit: J/cm²
-        source: Marks et al. 2022, Precision Engineering
-        confidence: 90
-        measurement_context: Varies by pulse duration (ns/ps/fs)
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with
+          surface condition'
       laserDamageThreshold:
         value: 3.5
         unit: J/cm²
@@ -128,8 +32,8 @@ materialProperties:
         min: 1.2
         max: 15.0
       specificHeat:
-        value: 265
-        unit: J/kg·K
+        value: 265.0
+        unit: J/(kg·K)
         confidence: 88
         description: Specific heat capacity at room temperature
         min: 100
@@ -144,7 +48,7 @@ materialProperties:
         source: MatWeb Materials Database
         notes: Typical range for metal materials at room temperature
       thermalDiffusivity:
-        value: 23.7
+        value: 24.1
         unit: mm²/s
         confidence: 85
         description: Thermal diffusivity at room temperature
@@ -152,20 +56,11 @@ materialProperties:
         max: 174
       thermalExpansion:
         value: 7.3
-        unit: 10⁻⁶/K
+        unit: 10^-6/K
         confidence: 90
         description: Coefficient of thermal expansion (20-100°C)
         min: 0.5
         max: 29.1
-      thermalDestruction:
-        point:
-          value: 2468.0
-          unit: °C
-          min: -38.8
-          max: 3422
-          confidence: 95
-          description: Thermal destruction point
-        type: melting
       absorptionCoefficient:
         value: 4.2
         unit: 10⁵ cm⁻¹
@@ -173,9 +68,66 @@ materialProperties:
         description: Absorption coefficient for near-IR lasers
         min: 0.03
         max: 12000000.0
-    description: 'First-order photon coupling: how laser energy enters the material
-      vs. reflects away'
-    percentage: 16.4
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
+    properties:
+      density:
+        value: 8.57
+        unit: g/cm³
+        confidence: 98
+        description: Density of pure niobium at room temperature
+        min: 0.53
+        max: 22.6
+      oxidationResistance:
+        value: 300.0
+        unit: °C
+        confidence: 80
+        description: Maximum temperature for protective oxide layer stability
+        min: 200
+        max: 1200
+        source: ASM Metals Handbook - Corrosion
+        notes: 'Oxidation onset: Steel 200-400°C, Stainless 400-800°C, Ni alloys 800-1200°C'
+      crystallineStructure:
+        value: BCC
+        unit: none
+        confidence: 98
+        description: Body-centered cubic crystal structure
+        min: null
+        max: null
+      electricalResistivity:
+        value: 1.5199999999999998e-07
+        unit: Ω·m
+        confidence: 95
+        description: Electrical resistivity at room temperature
+        min: 0.197
+        max: 48.0
+      hardness:
+        value: 80.0
+        unit: HV
+        confidence: 88
+        description: Vickers hardness of annealed niobium
+        min: 0.5
+        max: 3500
+      tensileStrength:
+        value: 275
+        unit: MPa
+        confidence: 90
+        description: Tensile strength of annealed niobium
+        min: 3.0
+        max: 3000.0
+      youngsModulus:
+        value: 103.0
+        unit: GPa
+        confidence: 94
+        description: Young's modulus of elasticity
+        min: 5
+        max: 411
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
 applications:
 - Aerospace
 - Medical Implants
@@ -245,13 +197,6 @@ machineSettings:
       surfaces
     min: 3.0
     max: 12.0
-  fluenceThreshold:
-    value: 2.5
-    unit: J/cm²
-    confidence: 90
-    description: Minimum fluence required for effective Nb₂O₅ oxide layer removal
-    min: 1.8
-    max: 3.5
   overlapRatio:
     value: 50
     unit: '%'
@@ -268,13 +213,6 @@ machineSettings:
       surface
     min: 1
     max: 3
-  laserType:
-    value: Nd:YAG
-    unit: n/a
-    confidence: 92
-    description: Fiber laser preferred for industrial cleaning applications with Niobium
-    min: null
-    max: null
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -404,3 +342,10 @@ tags:
 - reflective-surface
 - conductive
 - alessandro-moretti
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:19.036734'
+  sources_added: 1
+processing:
+  last_sync: '2025-10-15T19:45:17.693831Z'
+  sync_source: Materials.yaml

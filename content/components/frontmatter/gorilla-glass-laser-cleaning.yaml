@@ -4,62 +4,8 @@ subcategory: gorilla glass
 title: Gorilla Glass Laser Cleaning
 description: Laser cleaning parameters for Gorilla Glass
 materialProperties:
-  material_properties:
-    label: Material Properties
-    properties:
-      density:
-        value: 2.42
-        unit: g/cm³
-        confidence: 95
-        description: Density of Gorilla Glass 6 at room temperature
-        min: 1.2
-        max: 7.6
-      chemicalStability:
-        value: 95
-        unit: '% weight retention'
-        confidence: 88
-        description: Chemical durability in acidic environments after 24h exposure
-        min: 0.7
-        max: 99.5
-    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
-      finish, contaminant adhesion, and process efficiency'
-    percentage: 40.0
-  structural_response:
-    label: Structural Response Properties
-    properties:
-      hardness:
-        value: 6.5
-        unit: Mohs
-        confidence: 92
-        description: Hardness on Mohs scale for Gorilla Glass 6
-        min: 4.5
-        max: 9
-      tensileStrength:
-        value: 900.0
-        unit: MPa
-        confidence: 95
-        description: tensileStrength from Materials.yaml
-        min: 30
-        max: 2000
-      youngsModulus:
-        value: 75
-        unit: GPa
-        confidence: 94
-        description: Young's modulus of elasticity for Gorilla Glass
-        min: 10
-        max: 400
-      flexuralStrength:
-        value: 100
-        unit: MPa
-        confidence: 90
-        description: Flexural strength after chemical strengthening
-        min: 50.0
-        max: 690.0
-    description: 'Physical reaction to thermal stress: how material responds structurally
-      to rapid heating'
-    percentage: 18.2
-  energy_coupling:
-    label: Energy Coupling Properties
+  laser_material_interaction:
+    label: Laser-Material Interaction
     properties:
       laserAbsorption:
         value: 3.8
@@ -75,9 +21,12 @@ materialProperties:
         description: laserReflectivity from Materials.yaml
         min: 4
         max: 92
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        notes: Typical glasses 4-8% at normal incidence, varies with composition and
+          wavelength
       refractiveIndex:
         value: 1.51
-        unit: dimensionless
+        unit: ''
         confidence: 96
         description: Refractive index at 589 nm wavelength
         min: 1.458
@@ -91,8 +40,8 @@ materialProperties:
         min: 2.5
         max: 15.0
       specificHeat:
-        value: 750
-        unit: J/kg·K
+        value: 790.0
+        unit: J/(kg·K)
         confidence: 85
         description: Specific heat capacity at room temperature
         min: 500
@@ -114,21 +63,12 @@ materialProperties:
         min: 0.01
         max: 15
       thermalExpansion:
-        value: 8.2
-        unit: ×10⁻⁶/°C
+        value: 7.8
+        unit: 10⁻⁶/K
         confidence: 88
         description: Coefficient of thermal expansion for Gorilla Glass
         min: 0.1
         max: 15
-      thermalDestruction:
-        point:
-          value: 820.0
-          unit: °C
-          min: 500
-          max: 1723
-          confidence: 95
-          description: Thermal destruction point
-        type: melting
       softeningPoint:
         value: 820.0
         unit: °C
@@ -143,9 +83,57 @@ materialProperties:
         description: Visible light transmission for 1mm thickness
         min: 85.0
         max: 93.0
-    description: 'First-order photon coupling: how laser energy enters the material
-      vs. reflects away'
-    percentage: 16.4
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
+    properties:
+      density:
+        value: 2.42
+        unit: g/cm³
+        confidence: 95
+        description: Density of Gorilla Glass 6 at room temperature
+        min: 1.2
+        max: 7.6
+      chemicalStability:
+        value: 95
+        unit: '% weight retention'
+        confidence: 88
+        description: Chemical durability in acidic environments after 24h exposure
+        min: 0.7
+        max: 99.5
+      hardness:
+        value: 6.75
+        unit: GPa
+        confidence: 92
+        description: Hardness on Mohs scale for Gorilla Glass 6
+        min: 4.5
+        max: 9
+      tensileStrength:
+        value: 900.0
+        unit: MPa
+        confidence: 95
+        description: tensileStrength from Materials.yaml
+        min: 30
+        max: 2000
+      youngsModulus:
+        value: 75.8
+        unit: GPa
+        confidence: 94
+        description: Young's modulus of elasticity for Gorilla Glass
+        min: 10
+        max: 400
+      flexuralStrength:
+        value: 900.0
+        unit: MPa
+        confidence: 90
+        description: Flexural strength after chemical strengthening
+        min: 50.0
+        max: 690.0
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
 applications:
 - Electronics Manufacturing
 - Aerospace
@@ -227,13 +215,6 @@ machineSettings:
     description: Recommended number of passes for complete contaminant removal
     min: 1
     max: 5
-  laserType:
-    value: Fiber Laser
-    unit: N/A
-    confidence: 90
-    description: Recommended laser type for Gorilla Glass cleaning applications
-    min: null
-    max: null
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -363,3 +344,10 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - todd-dunning
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:17.592395'
+  sources_added: 1
+processing:
+  last_sync: '2025-10-15T19:39:34.084503Z'
+  sync_source: Materials.yaml

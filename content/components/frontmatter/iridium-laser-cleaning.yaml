@@ -4,8 +4,79 @@ subcategory: precious
 title: Iridium Laser Cleaning
 description: Laser cleaning parameters for Iridium
 materialProperties:
-  material_properties:
-    label: Material Properties
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    properties:
+      laserAbsorption:
+        value: 38.7
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.02
+        max: 100
+      laserReflectivity:
+        value: 51.5
+        unit: '%'
+        confidence: 90
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 98
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with
+          surface condition'
+      laserDamageThreshold:
+        value: 4.2
+        unit: J/cm²
+        confidence: 81
+        description: Estimated laser-induced damage threshold for polished surfaces
+        min: 1.2
+        max: 15.0
+      specificHeat:
+        value: 131.0
+        unit: J/(kg·K)
+        confidence: 91
+        description: Specific heat capacity at 25°C
+        min: 100
+        max: 900
+        metadata:
+          last_verified: '2025-10-15T15:43:03.869468'
+          verification_source: automatic_fix
+          fix_reason: 'kJ→J conversion: 0.131 → 131.0'
+      thermalConductivity:
+        value: 147
+        unit: W/(m·K)
+        confidence: 85
+        description: Thermal conductivity at 20°C
+        min: 15
+        max: 400
+        source: MatWeb Materials Database
+        notes: Typical range for metal materials at room temperature
+      thermalDiffusivity:
+        value: 31.5
+        unit: mm²/s
+        confidence: 88
+        description: Thermal diffusivity at room temperature
+        min: 0.2
+        max: 174
+      thermalExpansion:
+        value: 6.4
+        unit: 10^-6/K
+        confidence: 90
+        description: Coefficient of linear thermal expansion at 25°C
+        min: 0.5
+        max: 29.1
+      absorptionCoefficient:
+        value: 12000000.0
+        unit: m⁻¹
+        confidence: 82
+        description: Approximate absorption coefficient for 1064 nm laser wavelength
+        min: 0.03
+        max: 12000000.0
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
     properties:
       density:
         value: 22.56
@@ -15,7 +86,7 @@ materialProperties:
         min: 0.53
         max: 22.6
       oxidationResistance:
-        value: Excellent
+        value: 1100.0
         unit: °C
         confidence: 80
         description: Maintains stability in air up to 1600°C without significant oxidation
@@ -30,15 +101,9 @@ materialProperties:
         description: Face-centered cubic structure with lattice parameter 3.839 Å
         min: null
         max: null
-    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
-      finish, contaminant adhesion, and process efficiency'
-    percentage: 40.0
-  structural_response:
-    label: Structural Response Properties
-    properties:
       hardness:
-        value: 1760
-        unit: MPa
+        value: 1760.0
+        unit: HV
         confidence: 89
         description: Vickers hardness of annealed iridium
         min: 0.5
@@ -57,118 +122,9 @@ materialProperties:
         description: Elastic modulus of polycrystalline iridium
         min: 5
         max: 411
-    description: 'Physical reaction to thermal stress: how material responds structurally
-      to rapid heating'
-    percentage: 18.2
-  energy_coupling:
-    label: Energy Coupling Properties
-    properties:
-      laserAbsorption:
-        value: 38.7
-        unit: '%'
-        confidence: 92
-        description: laserAbsorption from Materials.yaml
-        min: 0.02
-        max: 100
-      laserReflectivity:
-        value: 51.5
-        unit: '%'
-        confidence: 90
-        description: laserReflectivity from Materials.yaml
-        min: 5
-        max: 98
-      reflectivity:
-        at_1064nm:
-          min: 85
-          max: 98
-          unit: '%'
-        at_532nm:
-          min: 70
-          max: 95
-          unit: '%'
-        at_355nm:
-          min: 55
-          max: 85
-          unit: '%'
-        at_10640nm:
-          min: 95
-          max: 99
-          unit: '%'
-        source: Handbook of Optical Constants (Palik)
-        confidence: 85
-        measurement_context: Varies by laser wavelength
-      ablationThreshold:
-        nanosecond:
-          min: 2.0
-          max: 8.0
-          unit: J/cm²
-        picosecond:
-          min: 0.1
-          max: 2.0
-          unit: J/cm²
-        femtosecond:
-          min: 0.14
-          max: 1.7
-          unit: J/cm²
-        source: Marks et al. 2022, Precision Engineering
-        confidence: 90
-        measurement_context: Varies by pulse duration (ns/ps/fs)
-      laserDamageThreshold:
-        value: 4.2
-        unit: J/cm²
-        confidence: 81
-        description: Estimated laser-induced damage threshold for polished surfaces
-        min: 1.2
-        max: 15.0
-      specificHeat:
-        value: 0.131
-        unit: J/g·K
-        confidence: 91
-        description: Specific heat capacity at 25°C
-        min: 100
-        max: 900
-      thermalConductivity:
-        value: 147
-        unit: W/(m·K)
-        confidence: 85
-        description: Thermal conductivity at 20°C
-        min: 15
-        max: 400
-        source: MatWeb Materials Database
-        notes: Typical range for metal materials at room temperature
-      thermalDiffusivity:
-        value: 0.32
-        unit: cm²/s
-        confidence: 88
-        description: Thermal diffusivity at room temperature
-        min: 0.2
-        max: 174
-      thermalExpansion:
-        value: 6.4
-        unit: ×10⁻⁶/K
-        confidence: 90
-        description: Coefficient of linear thermal expansion at 25°C
-        min: 0.5
-        max: 29.1
-      thermalDestruction:
-        point:
-          value: 1691.6
-          unit: K
-          min: -38.8
-          max: 3422
-          confidence: 95
-          description: Thermal destruction point
-        type: melting
-      absorptionCoefficient:
-        value: 12000000.0
-        unit: m⁻¹
-        confidence: 82
-        description: Approximate absorption coefficient for 1064 nm laser wavelength
-        min: 0.03
-        max: 12000000.0
-    description: 'First-order photon coupling: how laser energy enters the material
-      vs. reflects away'
-    percentage: 16.4
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
 applications:
 - Aerospace
 - Medical Devices
@@ -380,3 +336,10 @@ tags:
 - reflective-surface
 - conductive
 - todd-dunning
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:18.028031'
+  sources_added: 1
+processing:
+  last_sync: '2025-10-15T19:39:34.396286Z'
+  sync_source: Materials.yaml

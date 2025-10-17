@@ -4,71 +4,8 @@ subcategory: specialty
 title: Nickel Laser Cleaning
 description: Laser cleaning parameters for Nickel
 materialProperties:
-  material_properties:
-    label: Material Properties
-    properties:
-      density:
-        value: 8.908
-        unit: g/cm³
-        confidence: 98
-        description: Density of pure nickel at 20°C
-        min: 0.53
-        max: 22.6
-      oxidationResistance:
-        value: High
-        unit: °C
-        confidence: 80
-        description: Forms protective oxide layer, resistant to further oxidation
-        min: 200
-        max: 1200
-        source: ASM Metals Handbook - Corrosion
-        notes: 'Oxidation onset: Steel 200-400°C, Stainless 400-800°C, Ni alloys 800-1200°C'
-      crystallineStructure:
-        value: FCC
-        unit: Crystal System
-        confidence: 98
-        description: Face-centered cubic structure with lattice parameter 0.352 nm
-        min: null
-        max: null
-      electricalResistivity:
-        value: 6.9
-        unit: μΩ·cm
-        confidence: 94
-        description: Electrical resistivity at 20°C
-        min: 0.197
-        max: 48.0
-    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
-      finish, contaminant adhesion, and process efficiency'
-    percentage: 40.0
-  structural_response:
-    label: Structural Response Properties
-    properties:
-      hardness:
-        value: 80
-        unit: HV
-        confidence: 85
-        description: Vickers hardness of annealed pure nickel
-        min: 0.5
-        max: 3500
-      tensileStrength:
-        value: 317
-        unit: MPa
-        confidence: 88
-        description: Ultimate tensile strength of annealed pure nickel
-        min: 3.0
-        max: 3000.0
-      youngsModulus:
-        value: 200
-        unit: GPa
-        confidence: 95
-        description: Young's modulus of elasticity
-        min: 5
-        max: 411
-    description: 'Physical reaction to thermal stress: how material responds structurally
-      to rapid heating'
-    percentage: 18.2
-  energy_coupling:
-    label: Energy Coupling Properties
+  laser_material_interaction:
+    label: Laser-Material Interaction
     properties:
       laserAbsorption:
         value: 38.7
@@ -84,42 +21,9 @@ materialProperties:
         description: laserReflectivity from Materials.yaml
         min: 5
         max: 98
-      reflectivity:
-        at_1064nm:
-          min: 85
-          max: 98
-          unit: '%'
-        at_532nm:
-          min: 70
-          max: 95
-          unit: '%'
-        at_355nm:
-          min: 55
-          max: 85
-          unit: '%'
-        at_10640nm:
-          min: 95
-          max: 99
-          unit: '%'
-        source: Handbook of Optical Constants (Palik)
-        confidence: 85
-        measurement_context: Varies by laser wavelength
-      ablationThreshold:
-        nanosecond:
-          min: 2.0
-          max: 8.0
-          unit: J/cm²
-        picosecond:
-          min: 0.1
-          max: 2.0
-          unit: J/cm²
-        femtosecond:
-          min: 0.14
-          max: 1.7
-          unit: J/cm²
-        source: Marks et al. 2022, Precision Engineering
-        confidence: 90
-        measurement_context: Varies by pulse duration (ns/ps/fs)
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with
+          surface condition'
       laserDamageThreshold:
         value: 3.5
         unit: J/cm²
@@ -128,14 +32,14 @@ materialProperties:
         min: 1.2
         max: 15.0
       specificHeat:
-        value: 444
-        unit: J/kg·K
+        value: 444.0
+        unit: J·kg⁻¹·K⁻¹
         confidence: 93
         description: Specific heat capacity at 25°C
         min: 100
         max: 900
       thermalConductivity:
-        value: 90.9
+        value: 90.7
         unit: W/(m·K)
         confidence: 85
         description: Thermal conductivity at room temperature
@@ -144,28 +48,19 @@ materialProperties:
         source: MatWeb Materials Database
         notes: Typical range for metal materials at room temperature
       thermalDiffusivity:
-        value: 23.1
+        value: 23.0
         unit: mm²/s
         confidence: 90
         description: Thermal diffusivity at room temperature
         min: 0.2
         max: 174
       thermalExpansion:
-        value: 13.4
-        unit: μm/m·K
+        value: 13.3
+        unit: 10^-6/K
         confidence: 92
         description: Coefficient of linear thermal expansion (20-100°C)
         min: 0.5
         max: 29.1
-      thermalDestruction:
-        point:
-          value: 1726.0
-          unit: K
-          min: -38.8
-          max: 3422
-          confidence: 95
-          description: Thermal destruction point
-        type: melting
       absorptionCoefficient:
         value: 6.8
         unit: ×10⁵ cm⁻¹
@@ -173,9 +68,66 @@ materialProperties:
         description: Absorption coefficient for 1064 nm laser radiation
         min: 0.03
         max: 12000000.0
-    description: 'First-order photon coupling: how laser energy enters the material
-      vs. reflects away'
-    percentage: 16.4
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
+    properties:
+      density:
+        value: 8.9
+        unit: g/cm³
+        confidence: 98
+        description: Density of pure nickel at 20°C
+        min: 0.53
+        max: 22.6
+      oxidationResistance:
+        value: 316.0
+        unit: °C
+        confidence: 80
+        description: Forms protective oxide layer, resistant to further oxidation
+        min: 200
+        max: 1200
+        source: ASM Metals Handbook - Corrosion
+        notes: 'Oxidation onset: Steel 200-400°C, Stainless 400-800°C, Ni alloys 800-1200°C'
+      crystallineStructure:
+        value: FCC
+        unit: Crystal System
+        confidence: 98
+        description: Face-centered cubic structure with lattice parameter 0.352 nm
+        min: null
+        max: null
+      electricalResistivity:
+        value: 6.93e-08
+        unit: Ω·m
+        confidence: 94
+        description: Electrical resistivity at 20°C
+        min: 0.197
+        max: 48.0
+      hardness:
+        value: 638.0
+        unit: MPa
+        confidence: 85
+        description: Vickers hardness of annealed pure nickel
+        min: 0.5
+        max: 3500
+      tensileStrength:
+        value: 345.0
+        unit: MPa
+        confidence: 88
+        description: Ultimate tensile strength of annealed pure nickel
+        min: 3.0
+        max: 3000.0
+      youngsModulus:
+        value: 200
+        unit: GPa
+        confidence: 95
+        description: Young's modulus of elasticity
+        min: 5
+        max: 411
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
 applications:
 - Aerospace
 - Chemical Processing
@@ -377,3 +329,10 @@ tags:
 - reflective-surface
 - conductive
 - yi-chun-lin
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:18.972618'
+  sources_added: 1
+processing:
+  last_sync: '2025-10-15T19:45:17.655306Z'
+  sync_source: Materials.yaml

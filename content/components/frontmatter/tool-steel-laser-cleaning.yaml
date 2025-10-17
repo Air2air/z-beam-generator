@@ -1,0 +1,389 @@
+name: Tool Steel
+category: Metal
+subcategory: ferrous
+title: Tool Steel Laser Cleaning
+description: Laser cleaning parameters for Tool Steel
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
+    properties:
+      density:
+        value: 7.85
+        unit: g/cm³
+        confidence: 95
+        description: Typical density for hardened tool steel alloys
+        min: 0.53
+        max: 22.6
+      hardness:
+        value: 62
+        unit: HRC
+        confidence: 92
+        description: Typical hardness for hardened tool steel (Rockwell C scale)
+        min: 0.5
+        max: 3500
+      tensileStrength:
+        value: 2200
+        unit: MPa
+        confidence: 89
+        description: Ultimate tensile strength for hardened tool steel
+        min: 3.0
+        max: 3000.0
+      youngsModulus:
+        value: 210
+        unit: GPa
+        confidence: 94
+        description: Elastic modulus for tool steel at room temperature
+        min: 5
+        max: 600
+      oxidationResistance:
+        value: 550
+        unit: °C
+        confidence: 86
+        description: Maximum temperature for significant oxidation resistance in air
+        min: 200
+        max: 1200
+      surfaceRoughness:
+        value: 0.8
+        unit: μm Ra
+        confidence: 88
+        description: Typical surface roughness for machined tool steel surfaces
+        min: 0.4
+        max: 150
+      corrosionResistance:
+        value: moderate
+        unit: qualitative
+        confidence: 85
+        description: General corrosion resistance in atmospheric conditions
+        min: 1
+        max: 10
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+    properties:
+      laserAbsorption:
+        value: 42.0
+        unit: '%'
+        confidence: 88
+        description: laserAbsorption from Materials.yaml
+        min: 0.02
+        max: 100
+      laserReflectivity:
+        value: 58.0
+        unit: '%'
+        confidence: 88
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 99.9
+      thermalConductivity:
+        value: 25
+        unit: W/m·K
+        confidence: 88
+        description: Thermal conductivity at room temperature for hardened tool steel
+        min: 7.0
+        max: 430
+      specificHeat:
+        value: 460
+        unit: J/kg·K
+        confidence: 87
+        description: Specific heat capacity at room temperature
+        min: 100
+        max: 2000
+      thermalExpansion:
+        value: 12.5
+        unit: μm/m·°C
+        confidence: 85
+        description: Coefficient of thermal expansion at 20-100°C range
+        min: 0.5
+        max: 33
+      thermalDiffusivity:
+        value: 6.9
+        unit: mm²/s
+        confidence: 82
+        description: Thermal diffusivity calculated from thermal properties
+        min: 0.06
+        max: 174
+      reflectivity:
+        value: 65
+        unit: '%'
+        confidence: 85
+        description: Approximate reflectivity for 1064 nm laser wavelength on steel
+          surface
+        min: null
+        max: null
+      ablationThreshold:
+        value: 2.8
+        unit: J/cm²
+        confidence: 82
+        description: Estimated laser ablation threshold for nanosecond pulses at 1064
+          nm
+        min: null
+        max: null
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 0
+    properties:
+      thermalDestructionPoint:
+        value: 1673.0
+        unit: K
+        confidence: 94
+        description: thermalDestructionPoint from Materials.yaml
+        min: null
+        max: null
+      thermalDestructionType:
+        value: melting
+        unit: ''
+        confidence: 99
+        description: thermalDestructionType from Materials.yaml
+        min: null
+        max: null
+      meltingPoint:
+        value: 1425
+        unit: °C
+        confidence: 90
+        description: Average melting point for common tool steel compositions
+        min: null
+        max: null
+      absorptionCoefficient:
+        value: 0.35
+        unit: 1/μm
+        confidence: 80
+        description: Optical absorption coefficient for near-IR laser wavelengths
+        min: null
+        max: null
+      crystallineStructure:
+        value: BCC
+        unit: none
+        confidence: 95
+        description: Body-centered cubic structure (martensitic) for hardened tool
+          steel
+        min: null
+        max: null
+applications:
+- Manufacturing
+- Tooling
+- Machining
+- Die & Mold
+- Automotive
+- Aerospace
+- Precision Manufacturing
+- Metal Forming
+machineSettings:
+  powerRange:
+    value: 100
+    unit: W
+    confidence: 92
+    description: Optimal average power for Tool Steel oxide removal without substrate
+      damage
+    min: 80
+    max: 120
+  wavelength:
+    value: 1064
+    unit: nm
+    confidence: 88
+    description: Near-IR wavelength with good absorption in Tool Steel oxides and
+      contaminants
+    min: 1030
+    max: 1070
+  spotSize:
+    value: 50
+    unit: μm
+    confidence: 84
+    description: Optimal spot size for balancing cleaning efficiency and processing
+      speed
+    min: 30
+    max: 100
+  repetitionRate:
+    value: 100
+    unit: kHz
+    confidence: 87
+    description: High repetition rate for efficient cleaning coverage while maintaining
+      pulse energy
+    min: 50
+    max: 200
+  pulseWidth:
+    value: 10
+    unit: ns
+    confidence: 85
+    description: Nanosecond pulse duration for efficient contaminant ablation with
+      minimal heat input
+    min: 5
+    max: 20
+  scanSpeed:
+    value: 1000
+    unit: mm/s
+    confidence: 86
+    description: Optimal scanning speed for uniform cleaning coverage
+    min: 500
+    max: 2000
+  energyDensity:
+    value: 5.1
+    unit: J/cm²
+    confidence: 89
+    description: Fluence threshold for effective contaminant removal on Tool Steel
+    min: 3.0
+    max: 8.0
+  overlapRatio:
+    value: 50
+    unit: '%'
+    confidence: 83
+    description: Optimal pulse overlap for uniform cleaning without excessive heat
+      accumulation
+    min: 40
+    max: 70
+  passCount:
+    value: 3
+    unit: passes
+    confidence: 85
+    description: Recommended number of passes for complete contaminant removal
+    min: 1
+    max: 5
+  laserType:
+    value: Fiber Laser
+    unit: N/A
+    confidence: 90
+    description: Preferred laser type for Tool Steel cleaning applications
+    min: null
+    max: null
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author:
+  id: 2
+  name: Alessandro Moretti
+  sex: m
+  title: Ph.D.
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  image: /images/author/alessandro-moretti.jpg
+images:
+  hero:
+    alt: Tool Steel surface undergoing laser cleaning showing precise contamination
+      removal
+    url: /images/material/tool-steel-laser-cleaning-hero.jpg
+environmentalImpact:
+- benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+  sustainabilityBenefit: ''
+- benefit: Water Usage Reduction
+  description: Dry process requires no water
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+- benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+subtitle: Tool steel's hardness can vary significantly between grades, so you can't
+  rely on a single set of parameters. This variability means we must carefully assess
+  each piece to select the appropriate power and pulse frequency.
+outcomeMetrics:
+- metric: Contaminant Removal Efficiency
+  description: Percentage of target contaminants successfully removed from surface
+  measurementMethods:
+  - Before/after microscopy
+  - Chemical analysis
+  - Mass spectrometry
+  typicalRanges: 95-99.9% depending on application and material
+  factorsAffecting:
+  - Contamination type
+  - Adhesion strength
+  - Surface geometry
+  units: []
+- metric: Processing Speed
+  description: Rate of surface area processed per unit time
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- metric: Surface Quality Preservation
+  description: Maintenance of original surface characteristics after cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+- metric: Thermal Damage Avoidance
+  description: Prevention of heat-related material alterations during cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+caption:
+  beforeText: 'At 500x magnification, the tool steel surface is obscured by a complex
+    layer of contamination. A carbon-rich residue, from lubricant breakdown and heat
+    exposure, forms a discontinuous, sooty film measuring 5-15 micrometers thick.
+    This layer is punctuated by embedded metallic smears and microscopic oxide particles.
+
+
+    The underlying steel''s microstructure is entirely hidden. The surface texture
+    is irregular and matte, with contamination filling the natural micro-valleys of
+    the metal. This layer creates a physical barrier that can interfere with subsequent
+    processes like coating adhesion or precision measurement, and its uneven thickness
+    indicates inconsistent prior surface conditions.'
+  afterText: 'Laser cleaning has completely removed the contamination layer, revealing
+    the pristine, unaltered tool steel substrate. The surface now exhibits a uniform,
+    light gray, matte finish with a consistent micro-texture. The laser process has
+    selectively ablated contaminants without damaging the underlying metal.
+
+
+    At 500x, the steel''s inherent grain structure and fine machining marks are now
+    clearly visible. The surface is free of residue, exposing a clean, metallurgically
+    intact surface with a peak-to-valley roughness typically under 0.5 micrometers.
+    This state provides an optimal foundation for further manufacturing operations.'
+  description: Microscopic analysis of tool steel surface before and after laser cleaning
+    treatment
+  alt: Microscopic view of tool steel surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - tool steel_specific
+    contaminationProfile: tool steel surface contamination
+  microscopy:
+    parameters: Microscopic analysis of Tool Steel
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-10-02T00:00:00.000000Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: template_caption
+  author: Alessandro Moretti
+  materialProperties:
+    materialType: Metal
+    analysisMethod: template_microscopy
+  imageUrl:
+    alt: Microscopic view of Tool Steel surface after laser cleaning showing detailed
+      surface structure
+    url: /images/material/tool-steel-laser-cleaning-micro.jpg
+tags:
+- metal
+- manufacturing
+- aerospace
+- automotive
+- decoating
+- oxide-removal
+- surface-preparation
+- conductive
+- reflective-surface
+- alessandro-moretti

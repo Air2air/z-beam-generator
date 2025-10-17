@@ -71,10 +71,10 @@ def session_test_data() -> Dict[str, Any]:
 def session_mock_client():
     """Session-scoped mock API client."""
     try:
-        from tests.fixtures.mocks.mock_api_client import MockAPIClient
+        from tests.fixtures.mocks.simple_mock_client import MockAPIClient
         client = MockAPIClient("grok")
         # Configure for maximum speed
-        client.response_delay = 0.001
+        client.response_delay = 0.0
         return client
     except ImportError:
         from unittest.mock import MagicMock

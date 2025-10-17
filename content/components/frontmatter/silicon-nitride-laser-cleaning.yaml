@@ -4,78 +4,8 @@ subcategory: silicon nitride
 title: Silicon Nitride Laser Cleaning
 description: Laser cleaning parameters for Silicon Nitride
 materialProperties:
-  material_properties:
-    label: Material Properties
-    properties:
-      density:
-        value: 3.2
-        unit: g/cm³
-        confidence: 95
-        description: Theoretical density of fully dense silicon nitride
-        min: 2.2
-        max: 19.3
-      oxidationResistance:
-        value: 1400
-        unit: °C
-        confidence: 88
-        description: Maximum service temperature in oxidizing environments
-        min: 95.0
-        max: 1400.0
-      crystallineStructure:
-        value: Hexagonal
-        unit: crystal system
-        confidence: 95
-        description: Primary crystal structure (α-Si3N4 and β-Si3N4 phases)
-        min: null
-        max: null
-      porosity:
-        value: 0.5
-        unit: '%'
-        confidence: 80
-        description: Typical porosity for high-density sintered silicon nitride
-        min: 0
-        max: 30
-        source: ASM Handbook - Ceramics and Glasses
-        notes: Dense ceramics 0-5%, porous ceramics 10-30%
-    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
-      finish, contaminant adhesion, and process efficiency'
-    percentage: 40.0
-  structural_response:
-    label: Structural Response Properties
-    properties:
-      hardness:
-        value: 16
-        unit: GPa
-        confidence: 92
-        description: Vickers hardness of sintered silicon nitride
-        min: 1.0
-        max: 10.0
-      tensileStrength:
-        value: 550.0
-        unit: MPa
-        confidence: 95
-        description: tensileStrength from Materials.yaml
-        min: 50
-        max: 1000
-      youngsModulus:
-        value: 310
-        unit: GPa
-        confidence: 94
-        description: Elastic modulus of dense silicon nitride
-        min: 50
-        max: 800
-      flexuralStrength:
-        value: 850
-        unit: MPa
-        confidence: 90
-        description: Room temperature flexural strength
-        min: 45.0
-        max: 3500.0
-    description: 'Physical reaction to thermal stress: how material responds structurally
-      to rapid heating'
-    percentage: 18.2
-  energy_coupling:
-    label: Energy Coupling Properties
+  laser_material_interaction:
+    label: Laser-Material Interaction
     properties:
       laserAbsorption:
         value: 0.5
@@ -91,22 +21,9 @@ materialProperties:
         description: laserReflectivity from Materials.yaml
         min: 5
         max: 90
-      reflectivity:
-        value: 0.15
-        unit: dimensionless
-        confidence: 80
-        description: Reflectivity at common laser wavelengths (1064 nm)
-        min: 0.12
-        max: 0.45
-      ablationThreshold:
-        value: 2.5
-        unit: J/cm²
-        confidence: 75
-        description: Laser ablation threshold for nanosecond pulses at 1064 nm
-        min: 1.5
-        max: 5.0
-        source: RP Photonics Encyclopedia, Oxide Ceramics
-        notes: Alumina, zirconia, silicon carbide - nanosecond pulses
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        notes: Typical ceramics 10-30% at 1064nm, varies with composition and surface
+          finish
       laserDamageThreshold:
         value: 15
         unit: J/cm²
@@ -115,8 +32,8 @@ materialProperties:
         min: 15.0
         max: 15.0
       specificHeat:
-        value: 710
-        unit: J/kg·K
+        value: 750.0
+        unit: J·kg⁻¹·K⁻¹
         confidence: 85
         description: Specific heat capacity at room temperature
         min: 200
@@ -138,21 +55,12 @@ materialProperties:
         min: 0.05
         max: 120
       thermalExpansion:
-        value: 3.2
-        unit: ×10⁻⁶/K
+        value: 3.3
+        unit: 10⁻⁶/K
         confidence: 92
         description: Coefficient of thermal expansion (20-1000°C)
         min: 0.1
         max: 14
-      thermalDestruction:
-        point:
-          value: 2173.15
-          unit: K
-          min: 1000
-          max: 3827
-          confidence: 95
-          description: Thermal destruction point
-        type: thermal_shock
       absorptionCoefficient:
         value: 0.8
         unit: cm⁻¹
@@ -160,9 +68,64 @@ materialProperties:
         description: Absorption coefficient for near-IR wavelengths (1064 nm)
         min: 0.8
         max: 0.85
-    description: 'First-order photon coupling: how laser energy enters the material
-      vs. reflects away'
-    percentage: 16.4
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
+    properties:
+      density:
+        value: 3.2
+        unit: g/cm³
+        confidence: 95
+        description: Theoretical density of fully dense silicon nitride
+        min: 2.2
+        max: 19.3
+      oxidationResistance:
+        value: 1200.0
+        unit: °C
+        confidence: 88
+        description: Maximum service temperature in oxidizing environments
+        min: 95.0
+        max: 1400.0
+      crystallineStructure:
+        value: Hexagonal
+        unit: crystal system
+        confidence: 95
+        description: Primary crystal structure (α-Si3N4 and β-Si3N4 phases)
+        min: null
+        max: null
+      hardness:
+        value: 17.0
+        unit: GPa
+        confidence: 92
+        description: Vickers hardness of sintered silicon nitride
+        min: 1.0
+        max: 10.0
+      tensileStrength:
+        value: 550.0
+        unit: MPa
+        confidence: 95
+        description: tensileStrength from Materials.yaml
+        min: 50
+        max: 1000
+      youngsModulus:
+        value: 310
+        unit: GPa
+        confidence: 94
+        description: Elastic modulus of dense silicon nitride
+        min: 50
+        max: 800
+      flexuralStrength:
+        value: 800.0
+        unit: MPa
+        confidence: 90
+        description: Room temperature flexural strength
+        min: 45.0
+        max: 3500.0
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
 applications:
 - Aerospace
 - Medical Devices
@@ -228,14 +191,6 @@ machineSettings:
       Energy density threshold for effective contaminant removal from ceramic surfaces
     min: 2.0
     max: 8.0
-  energyDensity:
-    value: 4.5
-    unit: J/cm²
-    confidence: 90
-    description: Fluence threshold for effective contaminant removal without damaging
-      Silicon Nitride substrate
-    min: 3.0
-    max: 6.0
   overlapRatio:
     value: 50
     unit: '%'
@@ -251,13 +206,6 @@ machineSettings:
     description: Recommended number of passes for complete contaminant removal
     min: 1
     max: 4
-  laserType:
-    value: Nd:YAG
-    unit: n/a
-    confidence: 89
-    description: Recommended laser type for Silicon Nitride cleaning applications
-    min: null
-    max: null
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -398,3 +346,10 @@ tags:
 - thermal-resistant
 - hard-material
 - yi-chun-lin
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:21.454912'
+  sources_added: 1
+processing:
+  last_sync: '2025-10-15T19:39:36.690644Z'
+  sync_source: Materials.yaml

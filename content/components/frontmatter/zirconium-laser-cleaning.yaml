@@ -4,74 +4,8 @@ subcategory: refractory
 title: Zirconium Laser Cleaning
 description: Laser cleaning parameters for Zirconium
 materialProperties:
-  material_properties:
-    label: Material Properties
-    properties:
-      density:
-        value: 6.52
-        unit: g/cm³
-        confidence: 98
-        description: Density of pure zirconium at room temperature
-        min: 0.53
-        max: 22.6
-      oxidationResistance:
-        value: High
-        unit: °C
-        confidence: 80
-        description: Excellent oxidation resistance due to protective oxide layer
-          formation
-        min: 200
-        max: 1200
-        source: ASM Metals Handbook - Corrosion
-        notes: 'Oxidation onset: Steel 200-400°C, Stainless 400-800°C, Ni alloys 800-1200°C'
-      crystallineStructure:
-        value: HCP
-        unit: crystal system
-        confidence: 98
-        description: Hexagonal close-packed structure at room temperature
-        min: null
-        max: null
-      surfaceRoughness:
-        value: 0.8
-        unit: μm Ra
-        confidence: 85
-        description: Typical surface roughness of polished zirconium
-        min: 0.4
-        max: 150
-        source: Engineering ToolBox
-        notes: Industrial metal finishing processes
-    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
-      finish, contaminant adhesion, and process efficiency'
-    percentage: 40.0
-  structural_response:
-    label: Structural Response Properties
-    properties:
-      hardness:
-        value: 120
-        unit: HV
-        confidence: 90
-        description: Vickers hardness of pure zirconium
-        min: 0.5
-        max: 3500
-      tensileStrength:
-        value: 330
-        unit: MPa
-        confidence: 92
-        description: Ultimate tensile strength of annealed zirconium
-        min: 3.0
-        max: 3000.0
-      youngsModulus:
-        value: 88
-        unit: GPa
-        confidence: 95
-        description: Young's modulus of elasticity
-        min: 5
-        max: 411
-    description: 'Physical reaction to thermal stress: how material responds structurally
-      to rapid heating'
-    percentage: 18.2
-  energy_coupling:
-    label: Energy Coupling Properties
+  laser_material_interaction:
+    label: Laser-Material Interaction
     properties:
       laserAbsorption:
         value: 38.0
@@ -87,45 +21,12 @@ materialProperties:
         description: laserReflectivity from Materials.yaml
         min: 5
         max: 98
-      reflectivity:
-        at_1064nm:
-          min: 85
-          max: 98
-          unit: '%'
-        at_532nm:
-          min: 70
-          max: 95
-          unit: '%'
-        at_355nm:
-          min: 55
-          max: 85
-          unit: '%'
-        at_10640nm:
-          min: 95
-          max: 99
-          unit: '%'
-        source: Handbook of Optical Constants (Palik)
-        confidence: 85
-        measurement_context: Varies by laser wavelength
-      ablationThreshold:
-        nanosecond:
-          min: 2.0
-          max: 8.0
-          unit: J/cm²
-        picosecond:
-          min: 0.1
-          max: 2.0
-          unit: J/cm²
-        femtosecond:
-          min: 0.14
-          max: 1.7
-          unit: J/cm²
-        source: Marks et al. 2022, Precision Engineering
-        confidence: 90
-        measurement_context: Varies by pulse duration (ns/ps/fs)
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with
+          surface condition'
       specificHeat:
-        value: 278
-        unit: J/kg·K
+        value: 278.0
+        unit: J·kg⁻¹·K⁻¹
         confidence: 94
         description: Specific heat capacity at room temperature
         min: 100
@@ -140,7 +41,7 @@ materialProperties:
         source: MatWeb Materials Database
         notes: Typical range for metal materials at room temperature
       thermalDiffusivity:
-        value: 7.2
+        value: 12.2
         unit: mm²/s
         confidence: 90
         description: Thermal diffusivity at room temperature
@@ -148,31 +49,73 @@ materialProperties:
         max: 174
       thermalExpansion:
         value: 5.7
-        unit: μm/m·K
+        unit: 10^-6/K
         confidence: 92
         description: Coefficient of thermal expansion (20-100°C)
         min: 0.5
         max: 29.1
-      thermalDestruction:
-        point:
-          value: 2128.0
-          unit: K
-          min: -38.8
-          max: 3422
-          confidence: 95
-          description: Thermal destruction point
-        type: melting
       absorptionCoefficient:
         value: 0.65
-        unit: dimensionless
+        unit: cm⁻¹
         confidence: 85
         description: Estimated absorption coefficient for common laser wavelengths
           (1064 nm)
         min: 0.03
         max: 12000000.0
-    description: 'First-order photon coupling: how laser energy enters the material
-      vs. reflects away'
-    percentage: 16.4
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
+    properties:
+      density:
+        value: 6.52
+        unit: g/cm³
+        confidence: 98
+        description: Density of pure zirconium at room temperature
+        min: 0.53
+        max: 22.6
+      oxidationResistance:
+        value: 540.0
+        unit: °C
+        confidence: 80
+        description: Excellent oxidation resistance due to protective oxide layer
+          formation
+        min: 200
+        max: 1200
+        source: ASM Metals Handbook - Corrosion
+        notes: 'Oxidation onset: Steel 200-400°C, Stainless 400-800°C, Ni alloys 800-1200°C'
+      crystallineStructure:
+        value: HCP
+        unit: crystal system
+        confidence: 98
+        description: Hexagonal close-packed structure at room temperature
+        min: null
+        max: null
+      hardness:
+        value: 125.0
+        unit: HV
+        confidence: 90
+        description: Vickers hardness of pure zirconium
+        min: 0.5
+        max: 3500
+      tensileStrength:
+        value: 379.0
+        unit: MPa
+        confidence: 92
+        description: Ultimate tensile strength of annealed zirconium
+        min: 3.0
+        max: 3000.0
+      youngsModulus:
+        value: 97.9
+        unit: GPa
+        confidence: 95
+        description: Young's modulus of elasticity
+        min: 5
+        max: 411
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
 applications:
 - Nuclear Power
 - Aerospace
@@ -241,13 +184,6 @@ machineSettings:
       surfaces
     min: 3.0
     max: 12.0
-  energyDensity:
-    value: 5.1
-    unit: J/cm²
-    confidence: 89
-    description: Fluence optimized for Zirconium oxide ablation threshold
-    min: 3.5
-    max: 7.0
   overlapRatio:
     value: 50
     unit: '%'
@@ -263,13 +199,6 @@ machineSettings:
     description: Recommended number of passes for complete oxide layer removal
     min: 1
     max: 5
-  laserType:
-    value: Nd:YAG
-    unit: none
-    confidence: 90
-    description: Solid-state laser type suitable for Zirconium processing applications
-    min: null
-    max: null
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -399,3 +328,10 @@ tags:
 - reflective-surface
 - conductive
 - ikmanda-roswati
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:23.180428'
+  sources_added: 1
+processing:
+  last_sync: '2025-10-15T19:39:37.881093Z'
+  sync_source: Materials.yaml

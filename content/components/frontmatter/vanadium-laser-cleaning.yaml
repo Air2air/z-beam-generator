@@ -4,72 +4,8 @@ subcategory: refractory
 title: Vanadium Laser Cleaning
 description: Laser cleaning parameters for Vanadium
 materialProperties:
-  material_properties:
-    label: Material Properties
-    properties:
-      density:
-        value: 6.11
-        unit: g/cm³
-        confidence: 98
-        description: Density of pure vanadium at room temperature
-        min: 0.53
-        max: 22.6
-      oxidationResistance:
-        value: 600
-        unit: °C
-        confidence: 80
-        description: Maximum service temperature in oxidizing environments before
-          significant oxidation
-        min: 200
-        max: 1200
-        source: ASM Metals Handbook - Corrosion
-        notes: 'Oxidation onset: Steel 200-400°C, Stainless 400-800°C, Ni alloys 800-1200°C'
-      crystallineStructure:
-        value: BCC
-        unit: none
-        confidence: 99
-        description: Body-centered cubic crystal structure at room temperature
-        min: null
-        max: null
-      electricalResistivity:
-        value: 0.197
-        unit: μΩ·m
-        confidence: 95
-        description: Electrical resistivity at room temperature
-        min: 0.197
-        max: 48.0
-    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
-      finish, contaminant adhesion, and process efficiency'
-    percentage: 40.0
-  structural_response:
-    label: Structural Response Properties
-    properties:
-      hardness:
-        value: 264
-        unit: HV
-        confidence: 90
-        description: Vickers hardness of annealed vanadium
-        min: 0.5
-        max: 3500
-      tensileStrength:
-        value: 345
-        unit: MPa
-        confidence: 89
-        description: Ultimate tensile strength of pure vanadium
-        min: 3.0
-        max: 3000.0
-      youngsModulus:
-        value: 128
-        unit: GPa
-        confidence: 93
-        description: Young's modulus of elasticity
-        min: 5
-        max: 411
-    description: 'Physical reaction to thermal stress: how material responds structurally
-      to rapid heating'
-    percentage: 18.2
-  energy_coupling:
-    label: Energy Coupling Properties
+  laser_material_interaction:
+    label: Laser-Material Interaction
     properties:
       laserAbsorption:
         value: 42.7
@@ -85,45 +21,12 @@ materialProperties:
         description: laserReflectivity from Materials.yaml
         min: 5
         max: 98
-      reflectivity:
-        at_1064nm:
-          min: 85
-          max: 98
-          unit: '%'
-        at_532nm:
-          min: 70
-          max: 95
-          unit: '%'
-        at_355nm:
-          min: 55
-          max: 85
-          unit: '%'
-        at_10640nm:
-          min: 95
-          max: 99
-          unit: '%'
-        source: Handbook of Optical Constants (Palik)
-        confidence: 85
-        measurement_context: Varies by laser wavelength
-      ablationThreshold:
-        nanosecond:
-          min: 2.0
-          max: 8.0
-          unit: J/cm²
-        picosecond:
-          min: 0.1
-          max: 2.0
-          unit: J/cm²
-        femtosecond:
-          min: 0.14
-          max: 1.7
-          unit: J/cm²
-        source: Marks et al. 2022, Precision Engineering
-        confidence: 90
-        measurement_context: Varies by pulse duration (ns/ps/fs)
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with
+          surface condition'
       specificHeat:
-        value: 489
-        unit: J/kg·K
+        value: 489.0
+        unit: J·kg⁻¹·K⁻¹
         confidence: 94
         description: Specific heat capacity at room temperature
         min: 100
@@ -145,21 +48,12 @@ materialProperties:
         min: 0.2
         max: 174
       thermalExpansion:
-        value: 8.4
-        unit: μm/m·K
+        value: 8.3
+        unit: 10^-6/K
         confidence: 90
         description: Coefficient of linear thermal expansion (20-100°C)
         min: 0.5
         max: 29.1
-      thermalDestruction:
-        point:
-          value: 1910.0
-          unit: °C
-          min: -38.8
-          max: 3422
-          confidence: 95
-          description: Thermal destruction point
-        type: melting
       absorptionCoefficient:
         value: 0.45
         unit: μm⁻¹
@@ -167,9 +61,67 @@ materialProperties:
         description: Approximate absorption coefficient for 1064 nm laser wavelength
         min: 0.03
         max: 12000000.0
-    description: 'First-order photon coupling: how laser energy enters the material
-      vs. reflects away'
-    percentage: 16.4
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
+    properties:
+      density:
+        value: 6.11
+        unit: g/cm³
+        confidence: 98
+        description: Density of pure vanadium at room temperature
+        min: 0.53
+        max: 22.6
+      oxidationResistance:
+        value: 660.0
+        unit: °C
+        confidence: 80
+        description: Maximum service temperature in oxidizing environments before
+          significant oxidation
+        min: 200
+        max: 1200
+        source: ASM Metals Handbook - Corrosion
+        notes: 'Oxidation onset: Steel 200-400°C, Stainless 400-800°C, Ni alloys 800-1200°C'
+      crystallineStructure:
+        value: BCC
+        unit: none
+        confidence: 99
+        description: Body-centered cubic crystal structure at room temperature
+        min: null
+        max: null
+      electricalResistivity:
+        value: 1.97e-07
+        unit: Ω·m
+        confidence: 95
+        description: Electrical resistivity at room temperature
+        min: 0.197
+        max: 48.0
+      hardness:
+        value: 628.0
+        unit: MPa
+        confidence: 90
+        description: Vickers hardness of annealed vanadium
+        min: 0.5
+        max: 3500
+      tensileStrength:
+        value: 462.0
+        unit: MPa
+        confidence: 89
+        description: Ultimate tensile strength of pure vanadium
+        min: 3.0
+        max: 3000.0
+      youngsModulus:
+        value: 127.6
+        unit: GPa
+        confidence: 93
+        description: Young's modulus of elasticity
+        min: 5
+        max: 411
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
 applications:
 - Aerospace
 - Nuclear Energy
@@ -234,13 +186,6 @@ machineSettings:
       surfaces
     min: 3.0
     max: 12.0
-  fluenceThreshold:
-    value: 2.5
-    unit: J/cm²
-    confidence: 89
-    description: Minimum fluence required for Vanadium oxide removal
-    min: 1.5
-    max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
@@ -390,3 +335,10 @@ tags:
 - reflective-surface
 - conductive
 - alessandro-moretti
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:22.870016'
+  sources_added: 1
+processing:
+  last_sync: '2025-10-15T19:48:54.738596Z'
+  sync_source: Materials.yaml

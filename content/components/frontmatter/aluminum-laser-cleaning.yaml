@@ -4,78 +4,8 @@ subcategory: non_ferrous
 title: Aluminum Laser Cleaning
 description: Laser cleaning parameters for Aluminum
 materialProperties:
-  material_properties:
-    label: Material Properties
-    properties:
-      density:
-        value: 2.7
-        unit: g/cm³
-        confidence: 98
-        description: Pure aluminum density at room temperature
-        min: 0.53
-        max: 22.6
-      oxidationResistance:
-        value: 2.5
-        unit: °C
-        confidence: 80
-        description: Natural oxide layer growth rate in air at room temperature
-        min: 200
-        max: 1200
-        source: ASM Metals Handbook - Corrosion
-        notes: 'Oxidation onset: Steel 200-400°C, Stainless 400-800°C, Ni alloys 800-1200°C'
-      crystallineStructure:
-        value: FCC
-        unit: none
-        confidence: 95
-        description: Face-centered cubic crystal structure
-        min: null
-        max: null
-      electricalConductivity:
-        value: 37.7
-        unit: MS/m
-        confidence: 90
-        description: Electrical conductivity of pure aluminum
-        min: 4.8
-        max: 63.0
-      surfaceEnergy:
-        value: 1.08
-        unit: J/m²
-        confidence: 82
-        description: Surface energy of clean aluminum
-        min: null
-        max: null
-    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
-      finish, contaminant adhesion, and process efficiency'
-    percentage: 40.0
-  structural_response:
-    label: Structural Response Properties
-    properties:
-      hardness:
-        value: 25
-        unit: HV
-        confidence: 85
-        description: Vickers hardness of pure aluminum
-        min: 0.5
-        max: 3500
-      tensileStrength:
-        value: 90
-        unit: MPa
-        confidence: 88
-        description: Ultimate tensile strength of pure aluminum
-        min: 3.0
-        max: 3000.0
-      youngsModulus:
-        value: 69
-        unit: GPa
-        confidence: 92
-        description: Young's modulus of pure aluminum
-        min: 5
-        max: 411
-    description: 'Physical reaction to thermal stress: how material responds structurally
-      to rapid heating'
-    percentage: 18.2
-  energy_coupling:
-    label: Energy Coupling Properties
+  laser_material_interaction:
+    label: Laser-Material Interaction
     properties:
       laserAbsorption:
         value: 4.0
@@ -91,45 +21,12 @@ materialProperties:
         description: laserReflectivity from Materials.yaml
         min: 5
         max: 98
-      reflectivity:
-        at_1064nm:
-          min: 85
-          max: 98
-          unit: '%'
-        at_532nm:
-          min: 70
-          max: 95
-          unit: '%'
-        at_355nm:
-          min: 55
-          max: 85
-          unit: '%'
-        at_10640nm:
-          min: 95
-          max: 99
-          unit: '%'
-        source: Handbook of Optical Constants (Palik)
-        confidence: 85
-        measurement_context: Varies by laser wavelength
-      ablationThreshold:
-        nanosecond:
-          min: 2.0
-          max: 8.0
-          unit: J/cm²
-        picosecond:
-          min: 0.1
-          max: 2.0
-          unit: J/cm²
-        femtosecond:
-          min: 0.14
-          max: 1.7
-          unit: J/cm²
-        source: Marks et al. 2022, Precision Engineering
-        confidence: 90
-        measurement_context: Varies by pulse duration (ns/ps/fs)
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with
+          surface condition'
       specificHeat:
-        value: 900
-        unit: J/kg·K
+        value: 897.0
+        unit: J·kg⁻¹·K⁻¹
         confidence: 88
         description: Specific heat capacity at room temperature
         min: 100
@@ -152,20 +49,11 @@ materialProperties:
         max: 174
       thermalExpansion:
         value: 23.1
-        unit: μm/m·°C
+        unit: μm/m·K
         confidence: 90
         description: Linear thermal expansion coefficient at 20°C
         min: 0.5
         max: 29.1
-      thermalDestruction:
-        point:
-          value: 933.47
-          unit: K
-          min: -38.8
-          max: 3422
-          confidence: 95
-          description: Thermal destruction point
-        type: melting
       absorptionCoefficient:
         value: 1.2
         unit: ×10⁷ m⁻¹
@@ -173,9 +61,77 @@ materialProperties:
         description: Absorption coefficient at 1064 nm wavelength
         min: 0.03
         max: 12000000.0
-    description: 'First-order photon coupling: how laser energy enters the material
-      vs. reflects away'
-    percentage: 16.4
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
+    properties:
+      density:
+        value: 2.7
+        unit: g/cm³
+        confidence: 98
+        description: Pure aluminum density at room temperature
+        min: 0.53
+        max: 22.6
+      oxidationResistance:
+        value: 250.0
+        unit: °C
+        confidence: 80
+        description: Natural oxide layer growth rate in air at room temperature
+        min: 200
+        max: 1200
+        source: ASM Metals Handbook - Corrosion
+        notes: 'Oxidation onset: Steel 200-400°C, Stainless 400-800°C, Ni alloys 800-1200°C'
+        metadata:
+          last_verified: '2025-10-15T15:23:15.964387'
+          verification_source: automatic_fix
+          fix_reason: 'Decimal error: 2.5 → 250.0'
+      crystallineStructure:
+        value: FCC
+        unit: none
+        confidence: 95
+        description: Face-centered cubic crystal structure
+        min: null
+        max: null
+      electricalConductivity:
+        value: 37.7
+        unit: MS/m
+        confidence: 90
+        description: Electrical conductivity of pure aluminum
+        min: 4.8
+        max: 63.0
+      surfaceEnergy:
+        value: 1.08
+        unit: J/m²
+        confidence: 82
+        description: Surface energy of clean aluminum
+        min: null
+        max: null
+      hardness:
+        value: 245.0
+        unit: MPa
+        confidence: 85
+        description: Vickers hardness of pure aluminum
+        min: 0.5
+        max: 3500
+      tensileStrength:
+        value: 310.0
+        unit: MPa
+        confidence: 88
+        description: Ultimate tensile strength of pure aluminum
+        min: 3.0
+        max: 3000.0
+      youngsModulus:
+        value: 70.0
+        unit: GPa
+        confidence: 92
+        description: Young's modulus of pure aluminum
+        min: 5
+        max: 411
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
 applications:
 - Aerospace
 - Automotive
@@ -238,13 +194,6 @@ machineSettings:
       surfaces
     min: 3.0
     max: 12.0
-  energyDensity:
-    value: 5.1
-    unit: J/cm²
-    confidence: 89
-    description: Fluence threshold for Aluminum oxide removal without substrate damage
-    min: 3.0
-    max: 8.0
   overlapRatio:
     value: 50
     unit: '%'
@@ -389,3 +338,10 @@ tags:
 - reflective-surface
 - conductive
 - todd-dunning
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:15.327491'
+  sources_added: 1
+processing:
+  last_sync: '2025-10-15T19:39:32.665674Z'
+  sync_source: Materials.yaml

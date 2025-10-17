@@ -4,62 +4,8 @@ subcategory: borosilicate glass
 title: Borosilicate Glass Laser Cleaning
 description: Laser cleaning parameters for Borosilicate Glass
 materialProperties:
-  material_properties:
-    label: Material Properties
-    properties:
-      density:
-        value: 2.23
-        unit: g/cm³
-        confidence: 95
-        description: Density of borosilicate glass at room temperature
-        min: 1.2
-        max: 7.6
-      chemicalStability:
-        value: 1
-        unit: mg/cm²
-        confidence: 90
-        description: Acid resistance measured as weight loss in 6N HCl after 24h
-        min: 0.7
-        max: 99.5
-    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
-      finish, contaminant adhesion, and process efficiency'
-    percentage: 40.0
-  structural_response:
-    label: Structural Response Properties
-    properties:
-      hardness:
-        value: 5.5
-        unit: Mohs
-        confidence: 85
-        description: Mohs hardness scale value
-        min: 4.5
-        max: 9
-      tensileStrength:
-        value: 35.0
-        unit: MPa
-        confidence: 95
-        description: tensileStrength from Materials.yaml
-        min: 30
-        max: 2000
-      youngsModulus:
-        value: 64
-        unit: GPa
-        confidence: 92
-        description: Young's modulus of elasticity
-        min: 10
-        max: 400
-      flexuralStrength:
-        value: 70
-        unit: MPa
-        confidence: 90
-        description: Flexural strength under three-point bending
-        min: 50.0
-        max: 690.0
-    description: 'Physical reaction to thermal stress: how material responds structurally
-      to rapid heating'
-    percentage: 18.2
-  energy_coupling:
-    label: Energy Coupling Properties
+  laser_material_interaction:
+    label: Laser-Material Interaction
     properties:
       laserAbsorption:
         value: 0.5
@@ -75,9 +21,12 @@ materialProperties:
         description: laserReflectivity from Materials.yaml
         min: 4
         max: 92
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        notes: Typical glasses 4-8% at normal incidence, varies with composition and
+          wavelength
       refractiveIndex:
         value: 1.474
-        unit: dimensionless
+        unit: ''
         confidence: 95
         description: Refractive index at 589 nm wavelength
         min: 1.458
@@ -90,8 +39,8 @@ materialProperties:
         min: 2.5
         max: 15.0
       specificHeat:
-        value: 830
-        unit: J/kg·K
+        value: 830.0
+        unit: J·kg⁻¹·K⁻¹
         confidence: 88
         description: Specific heat capacity at room temperature
         min: 500
@@ -113,21 +62,12 @@ materialProperties:
         min: 0.01
         max: 15
       thermalExpansion:
-        value: 3.3
+        value: 3.25
         unit: 10⁻⁶/K
         confidence: 95
         description: Coefficient of linear thermal expansion (20-300°C)
         min: 0.1
         max: 15
-      thermalDestruction:
-        point:
-          value: 821.0
-          unit: °C
-          min: 500
-          max: 1723
-          confidence: 95
-          description: Thermal destruction point
-        type: melting
       softeningPoint:
         value: 821.0
         unit: °C
@@ -142,9 +82,57 @@ materialProperties:
         description: Absorption coefficient in visible spectrum
         min: 0.001
         max: 0.15
-    description: 'First-order photon coupling: how laser energy enters the material
-      vs. reflects away'
-    percentage: 16.4
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
+    properties:
+      density:
+        value: 2.23
+        unit: g/cm³
+        confidence: 95
+        description: Density of borosilicate glass at room temperature
+        min: 1.2
+        max: 7.6
+      chemicalStability:
+        value: 1
+        unit: mg/cm²
+        confidence: 90
+        description: Acid resistance measured as weight loss in 6N HCl after 24h
+        min: 0.7
+        max: 99.5
+      hardness:
+        value: 5.5
+        unit: Mohs
+        confidence: 85
+        description: Mohs hardness scale value
+        min: 4.5
+        max: 9
+      tensileStrength:
+        value: 35.0
+        unit: MPa
+        confidence: 95
+        description: tensileStrength from Materials.yaml
+        min: 30
+        max: 2000
+      youngsModulus:
+        value: 63.0
+        unit: GPa
+        confidence: 92
+        description: Young's modulus of elasticity
+        min: 10
+        max: 400
+      flexuralStrength:
+        value: 70
+        unit: MPa
+        confidence: 90
+        description: Flexural strength under three-point bending
+        min: 50.0
+        max: 690.0
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
 applications:
 - Laboratory and Scientific Equipment
 - Pharmaceutical Manufacturing
@@ -212,14 +200,6 @@ machineSettings:
       or stress fractures
     min: 1.0
     max: 5.0
-  fluenceThreshold:
-    value: 2.5
-    unit: J/cm²
-    confidence: 89
-    description: Fluence threshold for effective contaminant removal without damaging
-      glass substrate
-    min: 1.5
-    max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
@@ -234,13 +214,6 @@ machineSettings:
     description: Recommended number of passes for complete contaminant removal
     min: 1
     max: 5
-  laserType:
-    value: Nd:YAG
-    unit: n/a
-    confidence: 90
-    description: Recommended laser type for Borosilicate Glass cleaning applications
-    min: null
-    max: null
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -383,3 +356,10 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - yi-chun-lin
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:15.811038'
+  sources_added: 1
+processing:
+  last_sync: '2025-10-15T19:39:33.008492Z'
+  sync_source: Materials.yaml

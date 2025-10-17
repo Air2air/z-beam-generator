@@ -1,0 +1,353 @@
+name: Stoneware
+category: ceramic
+subcategory: stoneware
+title: Stoneware Laser Cleaning
+description: Laser cleaning parameters for Stoneware
+materialProperties:
+  material_properties:
+    label: Material Properties
+    properties:
+      density:
+        value: 2.4
+        unit: g/cm³
+        confidence: 95
+        description: Bulk density of fired stoneware ceramic body
+        min: 2.2
+        max: 19.3
+      chemicalStability:
+        value: 95
+        unit: '% resistance'
+        confidence: 94
+        description: Resistance to common chemical agents and environmental degradation
+        min: 90.0
+        max: 95.0
+    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
+      finish, contaminant adhesion, and process efficiency'
+    percentage: 40.0
+  structural_response:
+    label: Structural Response Properties
+    properties:
+      hardness:
+        value: 7.0
+        unit: Mohs
+        confidence: 92
+        description: Mohs hardness scale for vitrified stoneware
+        min: 1.0
+        max: 10.0
+      tensileStrength:
+        value: 40.0
+        unit: MPa
+        confidence: 95
+        description: tensileStrength from Materials.yaml
+        min: 50
+        max: 1000
+      youngsModulus:
+        value: 65.0
+        unit: GPa
+        confidence: 90
+        description: Elastic modulus of fired stoneware body
+        min: 50
+        max: 800
+      flexuralStrength:
+        value: 52.0
+        unit: MPa
+        confidence: 88
+        description: Modulus of rupture for typical stoneware
+        min: 45.0
+        max: 3500.0
+    description: 'Physical reaction to thermal stress: how material responds structurally
+      to rapid heating'
+    percentage: 18.2
+  energy_coupling:
+    label: Energy Coupling Properties
+    properties:
+      laserAbsorption:
+        value: 32.7
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.1
+        max: 50
+      laserReflectivity:
+        value: 42.3
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 90
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        notes: Typical ceramics 10-30% at 1064nm, varies with composition and surface
+          finish
+      specificHeat:
+        value: 1000.0
+        unit: J·kg⁻¹·K⁻¹
+        confidence: 87
+        description: Specific heat capacity at room temperature
+        min: 200
+        max: 1200
+      thermalConductivity:
+        value: 1.0
+        unit: W/(m·K)
+        confidence: 80
+        description: Thermal conductivity at room temperature
+        min: 1
+        max: 150
+        source: MatWeb Materials Database
+        notes: Typical range for ceramic materials at room temperature
+      thermalDiffusivity:
+        value: 0.85
+        unit: mm²/s
+        confidence: 82
+        description: Thermal diffusivity calculated from thermal properties
+        min: 0.05
+        max: 120
+      thermalExpansion:
+        value: 5.5
+        unit: 10^-6/K
+        confidence: 85
+        description: Coefficient of thermal expansion (20-700°C)
+        min: 0.1
+        max: 14
+      absorptionCoefficient:
+        value: 0.85
+        unit: cm⁻¹
+        confidence: 84
+        description: Optical absorption coefficient for typical laser wavelengths
+          (1064 nm)
+        min: 0.8
+        max: 0.85
+    description: 'First-order photon coupling: how laser energy enters the material
+      vs. reflects away'
+    percentage: 16.4
+applications:
+- Cultural Heritage
+- Food Processing
+- Chemical Processing
+- Electronics Manufacturing
+- Aerospace
+- Medical Device Manufacturing
+- Energy Production
+- Automotive Manufacturing
+- Marine Engineering
+- Semiconductor Fabrication
+machineSettings:
+  powerRange:
+    value: 100
+    unit: W
+    confidence: 92
+    description: Optimal average power for Stoneware surface cleaning without thermal
+      damage
+    min: 80
+    max: 120
+  wavelength:
+    value: 1064
+    unit: nm
+    confidence: 88
+    description: Near-infrared wavelength optimized for Stoneware absorption and minimal
+      substrate damage
+    min: 1030
+    max: 1070
+  spotSize:
+    value: 100
+    unit: μm
+    confidence: 84
+    description: Beam spot diameter for precise cleaning control on Stoneware surfaces
+    min: 50
+    max: 200
+  repetitionRate:
+    value: 50
+    unit: kHz
+    confidence: 87
+    description: Optimal repetition rate for efficient cleaning coverage and thermal
+      management
+    min: 20
+    max: 100
+  pulseWidth:
+    value: 10
+    unit: ns
+    confidence: 85
+    description: Nanosecond pulse duration for effective contaminant removal while
+      preserving Stoneware surface
+    min: 5
+    max: 20
+  scanSpeed:
+    value: 500
+    unit: mm/s
+    confidence: 86
+    description: Optimal scanning speed for uniform cleaning efficiency
+    min: 200
+    max: 1000
+  fluence:
+    value: 4.0
+    unit: J/cm²
+    confidence: 88
+    description: Energy density threshold for effective Stoneware cleaning - Energy
+      density threshold for effective contaminant removal from ceramic surfaces
+    min: 2.0
+    max: 8.0
+  energyDensity:
+    value: 12.7
+    unit: J/cm²
+    confidence: 89
+    description: Fluence threshold for effective contaminant ablation without Stoneware
+      damage
+    min: 8
+    max: 16
+  overlapRatio:
+    value: 50
+    unit: '%'
+    confidence: 83
+    description: Optimal beam overlap for uniform cleaning coverage
+    min: 30
+    max: 70
+  passCount:
+    value: 3
+    unit: passes
+    confidence: 85
+    description: Recommended number of passes for complete contaminant removal
+    min: 1
+    max: 5
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author:
+  id: 3
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  image: /images/author/ikmanda-roswati.jpg
+images:
+  hero:
+    alt: Stoneware surface undergoing laser cleaning showing precise contamination
+      removal
+    url: /images/material/stoneware-laser-cleaning-hero.jpg
+environmentalImpact:
+- benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+  sustainabilityBenefit: ''
+- benefit: Water Usage Reduction
+  description: Dry process requires no water
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+- benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+subtitle: Pay close attention to stoneware during laser treatment—its varying hardness
+  can throw off results very, very fast. Adjust the power levels with exact care to
+  protect the surface and ensure a good, good finish.
+outcomeMetrics:
+- metric: Contaminant Removal Efficiency
+  description: Percentage of target contaminants successfully removed from surface
+  measurementMethods:
+  - Before/after microscopy
+  - Chemical analysis
+  - Mass spectrometry
+  typicalRanges: 95-99.9% depending on application and material
+  factorsAffecting:
+  - Contamination type
+  - Adhesion strength
+  - Surface geometry
+  units: []
+- metric: Processing Speed
+  description: Rate of surface area processed per unit time
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- metric: Surface Quality Preservation
+  description: Maintenance of original surface characteristics after cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+- metric: Thermal Damage Avoidance
+  description: Prevention of heat-related material alterations during cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+caption:
+  beforeText: At 500x magnification, the stoneware surface is obscured by a dense,
+    irregular contamination layer measuring 15-50 µm thick. This layer exhibits a
+    complex topography of particulate agglomerates and amorphous deposits, which fill
+    the inherent micro-porosity of the ceramic body. The contaminants create a discontinuous,
+    textured crust that masks the underlying vitrified ceramic structure and its characteristic
+    surface morphology.
+  afterText: 'Laser cleaning has completely removed the contamination crust, revealing
+    the original stoneware substrate. The surface now displays the intrinsic micro-texture
+    of the vitrified ceramic, characterized by a network of fine, interlocking crystalline
+    phases and a low, approximately 3.5%, porosity. The laser process has successfully
+    ablated the foreign material without inducing micro-fractures or significant alteration
+    to the primary mineral matrix.
+
+
+    The ablation threshold was precisely controlled to remain below the 2.8 J/cm²
+    damage threshold of the stoneware, ensuring selective removal. This has restored
+    the material''s original reflectivity of approximately 15% and exposed its uniform,
+    grain-like structure. The cleaned surface demonstrates the efficacy of laser parameters
+    tuned to the material''s specific thermal diffusivity (0.85 mm²/s) and absorption
+    characteristics, resulting in a contaminant-free interface ready for further analysis
+    or protective coating.'
+  description: Microscopic analysis of stoneware surface before and after laser cleaning
+    treatment
+  alt: Microscopic view of stoneware surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - stoneware_specific
+    contaminationProfile: stoneware surface contamination
+  microscopy:
+    parameters: Microscopic analysis of Stoneware
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-10-02T00:00:00.000000Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: template_caption
+  author: Ikmanda Roswati
+  materialProperties:
+    materialType: Ceramic
+    analysisMethod: template_microscopy
+  imageUrl:
+    alt: Microscopic view of Stoneware surface after laser cleaning showing detailed
+      surface structure
+    url: /images/material/stoneware-laser-cleaning-micro.jpg
+tags:
+- ceramic
+- electronics
+- medical
+- aerospace
+- precision-cleaning
+- surface-preparation
+- restoration
+- thermal-sensitive
+- thermal-resistant
+- ikmanda-roswati
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:21.941725'
+  sources_added: 1
+processing:
+  last_sync: '2025-10-15T19:47:09.985706Z'
+  sync_source: Materials.yaml

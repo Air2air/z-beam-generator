@@ -4,8 +4,68 @@ subcategory: alumina
 title: Alumina Laser Cleaning
 description: Laser cleaning parameters for Alumina
 materialProperties:
-  structural_response:
-    label: Structural Response Properties
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    properties:
+      laserAbsorption:
+        value: 18.7
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.1
+        max: 50
+      laserReflectivity:
+        value: 42.3
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 90
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        notes: Typical ceramics 10-30% at 1064nm, varies with composition and surface
+          finish
+      specificHeat:
+        value: 880.0
+        unit: J·kg⁻¹·K⁻¹
+        confidence: 94
+        description: Specific heat capacity at room temperature
+        min: 200
+        max: 1200
+      thermalConductivity:
+        value: 30
+        unit: W/(m·K)
+        confidence: 80
+        description: Thermal conductivity at room temperature for high-purity alumina
+        min: 1
+        max: 150
+        source: MatWeb Materials Database
+        notes: Typical range for ceramic materials at room temperature
+      thermalDiffusivity:
+        value: 12.0
+        unit: mm²/s
+        confidence: 88
+        description: Thermal diffusivity at room temperature
+        min: 0.05
+        max: 120
+      thermalExpansion:
+        value: 8.1
+        unit: 10⁻⁶/K
+        confidence: 92
+        description: Coefficient of thermal expansion (20-1000°C)
+        min: 0.1
+        max: 14
+      absorptionCoefficient:
+        value: 0.85
+        unit: cm⁻¹
+        confidence: 82
+        description: Absorption coefficient for common laser wavelengths (1064 nm)
+        min: 0.8
+        max: 0.85
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
     properties:
       compressiveStrength:
         value: 2600.0
@@ -15,7 +75,7 @@ materialProperties:
         min: 410.0
         max: 6700.0
       flexuralStrength:
-        value: 400
+        value: 379.0
         unit: MPa
         confidence: 85
         description: Flexural strength of high-purity alumina
@@ -36,20 +96,14 @@ materialProperties:
         min: 50
         max: 1000
       youngsModulus:
-        value: 370
+        value: 393.0
         unit: GPa
         confidence: 96
         description: Young's modulus of elasticity
         min: 50
         max: 800
-    description: 'Physical reaction to thermal stress: how material responds structurally
-      to rapid heating'
-    percentage: 18.2
-  material_properties:
-    label: Material Properties
-    properties:
       density:
-        value: 3.97
+        value: 3.987
         unit: g/cm³
         confidence: 98
         description: Theoretical density of pure alpha-alumina
@@ -62,15 +116,6 @@ materialProperties:
         description: Alpha-alumina crystal structure (corundum)
         min: null
         max: null
-      porosity:
-        value: 0.5
-        unit: '%'
-        confidence: 80
-        description: Typical porosity for high-purity sintered alumina
-        min: 0
-        max: 30
-        source: ASM Handbook - Ceramics and Glasses
-        notes: Dense ceramics 0-5%, porous ceramics 10-30%
       chemicalStability:
         value: Excellent
         unit: qualitative
@@ -78,91 +123,9 @@ materialProperties:
         description: Resistance to most chemicals and solvents
         min: 90.0
         max: 95.0
-    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
-      finish, contaminant adhesion, and process efficiency'
-    percentage: 40.0
-  energy_coupling:
-    label: Energy Coupling Properties
-    properties:
-      laserAbsorption:
-        value: 18.7
-        unit: '%'
-        confidence: 92
-        description: laserAbsorption from Materials.yaml
-        min: 0.1
-        max: 50
-      laserReflectivity:
-        value: 42.3
-        unit: '%'
-        confidence: 92
-        description: laserReflectivity from Materials.yaml
-        min: 5
-        max: 90
-      reflectivity:
-        value: 0.15
-        unit: dimensionless
-        confidence: 80
-        description: Reflectivity at common laser wavelengths
-        min: 0.12
-        max: 0.45
-      ablationThreshold:
-        value: 2.5
-        unit: J/cm²
-        confidence: 75
-        description: Laser ablation threshold for nanosecond pulses
-        min: 1.5
-        max: 5.0
-        source: RP Photonics Encyclopedia, Oxide Ceramics
-        notes: Alumina, zirconia, silicon carbide - nanosecond pulses
-      specificHeat:
-        value: 880
-        unit: J/kg·K
-        confidence: 94
-        description: Specific heat capacity at room temperature
-        min: 200
-        max: 1200
-      thermalConductivity:
-        value: 30
-        unit: W/(m·K)
-        confidence: 80
-        description: Thermal conductivity at room temperature for high-purity alumina
-        min: 1
-        max: 150
-        source: MatWeb Materials Database
-        notes: Typical range for ceramic materials at room temperature
-      thermalDiffusivity:
-        value: 0.12
-        unit: cm²/s
-        confidence: 88
-        description: Thermal diffusivity at room temperature
-        min: 0.05
-        max: 120
-      thermalExpansion:
-        value: 8.1
-        unit: ×10⁻⁶/K
-        confidence: 92
-        description: Coefficient of thermal expansion (20-1000°C)
-        min: 0.1
-        max: 14
-      thermalDestruction:
-        point:
-          value: 2323.0
-          unit: K
-          min: 1000
-          max: 3827
-          confidence: 95
-          description: Thermal destruction point
-        type: thermal_shock
-      absorptionCoefficient:
-        value: 0.85
-        unit: dimensionless
-        confidence: 82
-        description: Absorption coefficient for common laser wavelengths (1064 nm)
-        min: 0.8
-        max: 0.85
-    description: 'First-order photon coupling: how laser energy enters the material
-      vs. reflects away'
-    percentage: 16.4
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
 applications:
 - Aerospace
 - Medical Devices
@@ -229,14 +192,6 @@ machineSettings:
       density threshold for effective contaminant removal from ceramic surfaces
     min: 2.0
     max: 8.0
-  fluenceThreshold:
-    value: 2.5
-    unit: J/cm²
-    confidence: 89
-    description: Minimum fluence required for effective contaminant ablation from
-      Alumina surface
-    min: 1.5
-    max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
@@ -252,13 +207,6 @@ machineSettings:
     description: Recommended number of passes for complete contaminant removal
     min: 1
     max: 5
-  laserType:
-    value: Nd:YAG
-    unit: n/a
-    confidence: 90
-    description: Solid-state laser type optimal for Alumina cleaning applications
-    min: null
-    max: null
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -389,3 +337,10 @@ tags:
 - thermal-resistant
 - hard-material
 - alessandro-moretti
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:15.262994'
+  sources_added: 1
+processing:
+  last_sync: '2025-10-15T19:39:32.619543Z'
+  sync_source: Materials.yaml

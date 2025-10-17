@@ -4,8 +4,89 @@ subcategory: crown glass
 title: Crown Glass Laser Cleaning
 description: Laser cleaning parameters for Crown Glass
 materialProperties:
-  material_properties:
-    label: Material Properties
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    properties:
+      laserAbsorption:
+        value: 4.0
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.001
+        max: 10
+      laserReflectivity:
+        value: 4.2
+        unit: '%'
+        confidence: 95
+        description: laserReflectivity from Materials.yaml
+        min: 4
+        max: 92
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        notes: Typical glasses 4-8% at normal incidence, varies with composition and
+          wavelength
+      refractiveIndex:
+        value: 1.523
+        unit: ''
+        confidence: 96
+        description: Standard refractive index at 589 nm wavelength
+        min: 1.458
+        max: 1.76
+      laserDamageThreshold:
+        value: 15
+        unit: J/cm²
+        confidence: 85
+        description: Damage threshold for short pulse laser irradiation
+        min: 2.5
+        max: 15.0
+      specificHeat:
+        value: 670.0
+        unit: J·kg⁻¹·K⁻¹
+        confidence: 90
+        description: Specific heat capacity at room temperature
+        min: 500
+        max: 900
+      thermalConductivity:
+        value: 1.0
+        unit: W/(m·K)
+        confidence: 85
+        description: Low thermal conductivity typical of silicate glasses
+        min: 0.8
+        max: 1.4
+        source: MatWeb Materials Database
+        notes: Typical range for glass materials at room temperature
+      thermalDiffusivity:
+        value: 0.57
+        unit: mm²/s
+        confidence: 85
+        description: Thermal diffusivity calculated from thermal properties
+        min: 0.01
+        max: 15
+      thermalExpansion:
+        value: 9.0
+        unit: 10^-6/K
+        confidence: 88
+        description: Coefficient of thermal expansion at room temperature
+        min: 0.1
+        max: 15
+      softeningPoint:
+        value: 1123.15
+        unit: K
+        confidence: 92
+        description: Temperature where glass transitions from rigid to pliable state
+        min: 820.0
+        max: 2040.0
+      absorptionCoefficient:
+        value: 0.02
+        unit: cm⁻¹
+        confidence: 88
+        description: Absorption coefficient for visible wavelengths
+        min: 0.001
+        max: 0.15
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
     properties:
       density:
         value: 2.52
@@ -21,19 +102,6 @@ materialProperties:
         description: Resistance to chemical attack and environmental degradation
         min: 0.7
         max: 99.5
-      surfaceRoughness:
-        value: 0.5
-        unit: nm Ra
-        confidence: 88
-        description: Typical surface roughness for polished crown glass
-        min: 0.005
-        max: 0.5
-    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
-      finish, contaminant adhesion, and process efficiency'
-    percentage: 40.0
-  structural_response:
-    label: Structural Response Properties
-    properties:
       hardness:
         value: 5.5
         unit: Mohs
@@ -62,112 +130,9 @@ materialProperties:
         description: Bending strength of pristine glass surfaces
         min: 50.0
         max: 690.0
-    description: 'Physical reaction to thermal stress: how material responds structurally
-      to rapid heating'
-    percentage: 18.2
-  energy_coupling:
-    label: Energy Coupling Properties
-    properties:
-      laserAbsorption:
-        value: 4.0
-        unit: '%'
-        confidence: 92
-        description: laserAbsorption from Materials.yaml
-        min: 0.001
-        max: 10
-      laserReflectivity:
-        value: 4.2
-        unit: '%'
-        confidence: 95
-        description: laserReflectivity from Materials.yaml
-        min: 4
-        max: 92
-      refractiveIndex:
-        value: 1.523
-        unit: dimensionless
-        confidence: 96
-        description: Standard refractive index at 589 nm wavelength
-        min: 1.458
-        max: 1.76
-      reflectivity:
-        value: 4.2
-        unit: '%'
-        confidence: 90
-        description: Surface reflectivity at normal incidence for visible light
-        min: 0.04
-        max: 4.2
-      ablationThreshold:
-        value: 2.5
-        unit: J/cm²
-        confidence: 80
-        description: Approximate laser ablation threshold for nanosecond pulses
-        min: 2.0
-        max: 6.0
-        source: Laser-Induced Damage in Optical Materials (NIST)
-        notes: Silica, borosilicate - nanosecond pulses at 1064nm
-      laserDamageThreshold:
-        value: 15
-        unit: J/cm²
-        confidence: 85
-        description: Damage threshold for short pulse laser irradiation
-        min: 2.5
-        max: 15.0
-      specificHeat:
-        value: 750
-        unit: J/kg·K
-        confidence: 90
-        description: Specific heat capacity at room temperature
-        min: 500
-        max: 900
-      thermalConductivity:
-        value: 1.2
-        unit: W/(m·K)
-        confidence: 85
-        description: Low thermal conductivity typical of silicate glasses
-        min: 0.8
-        max: 1.4
-        source: MatWeb Materials Database
-        notes: Typical range for glass materials at room temperature
-      thermalDiffusivity:
-        value: 0.65
-        unit: mm²/s
-        confidence: 85
-        description: Thermal diffusivity calculated from thermal properties
-        min: 0.01
-        max: 15
-      thermalExpansion:
-        value: 8.5
-        unit: 10⁻⁶/K
-        confidence: 88
-        description: Coefficient of thermal expansion at room temperature
-        min: 0.1
-        max: 15
-      thermalDestruction:
-        point:
-          value: 1123.15
-          unit: K
-          min: 500
-          max: 1723
-          confidence: 92
-          description: Thermal destruction point
-        type: melting
-      softeningPoint:
-        value: 1123.15
-        unit: K
-        confidence: 92
-        description: Temperature where glass transitions from rigid to pliable state
-        min: 820.0
-        max: 2040.0
-      absorptionCoefficient:
-        value: 0.02
-        unit: cm⁻¹
-        confidence: 88
-        description: Absorption coefficient for visible wavelengths
-        min: 0.001
-        max: 0.15
-    description: 'First-order photon coupling: how laser energy enters the material
-      vs. reflects away'
-    percentage: 16.4
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
 applications:
 - Aerospace
 - Medical Devices
@@ -235,14 +200,6 @@ machineSettings:
       fractures
     min: 1.0
     max: 5.0
-  fluenceThreshold:
-    value: 1.2
-    unit: J/cm²
-    confidence: 89
-    description: Fluence threshold for effective contaminant removal while below Crown
-      Glass damage threshold
-    min: 0.8
-    max: 2.0
   overlapRatio:
     value: 50
     unit: '%'
@@ -388,3 +345,10 @@ tags:
 - thermal-sensitive
 - reflective-surface
 - ikmanda-roswati
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:16.850378'
+  sources_added: 1
+processing:
+  last_sync: '2025-10-15T19:39:33.641178Z'
+  sync_source: Materials.yaml

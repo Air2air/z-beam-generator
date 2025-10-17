@@ -1,0 +1,350 @@
+name: Bluestone
+category: stone
+subcategory: mineral
+title: Bluestone Laser Cleaning
+description: Laser cleaning parameters for Bluestone
+materialProperties:
+  material_properties:
+    label: Material Properties
+    properties:
+      density:
+        value: 2.65
+        unit: g/cm³
+        confidence: 95
+        description: Typical density for sandstone-based bluestone
+        min: 1.5
+        max: 3.4
+    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
+      finish, contaminant adhesion, and process efficiency'
+    percentage: 40.0
+  structural_response:
+    label: Structural Response Properties
+    properties:
+      hardness:
+        value: 3.8
+        unit: Mohs
+        confidence: 92
+        description: Mohs hardness scale for quartz-rich bluestone
+        min: 1
+        max: 7
+      tensileStrength:
+        value: 12.4
+        unit: MPa
+        confidence: 92
+        description: tensileStrength from Materials.yaml
+        min: 2
+        max: 25
+      youngsModulus:
+        value: 68.0
+        unit: GPa
+        confidence: 85
+        description: Elastic modulus of sandstone-based bluestone
+        min: 10
+        max: 100
+      compressiveStrength:
+        value: 180
+        unit: MPa
+        confidence: 88
+        description: Typical compressive strength of dense bluestone
+        min: 45.0
+        max: 250.0
+    description: 'Physical reaction to thermal stress: how material responds structurally
+      to rapid heating'
+    percentage: 18.2
+  energy_coupling:
+    label: Energy Coupling Properties
+    properties:
+      laserAbsorption:
+        value: 8.7
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.1
+        max: 20
+      laserReflectivity:
+        value: 38.2
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 80
+        source: Geological Survey Optical Properties Database
+        notes: Light colored stones 40-80%, dark stones 5-20%, varies with mineral
+          composition
+      specificHeat:
+        value: 1000.0
+        unit: J/kg·K
+        confidence: 90
+        description: Specific heat capacity of sandstone
+        min: 600
+        max: 1200
+        metadata:
+          last_verified: '2025-10-15T15:45:14.955724'
+          verification_source: automatic_fix
+          fix_reason: 'kJ→J conversion: 0.92 → 920.0'
+      thermalConductivity:
+        value: 3.8
+        unit: W/(m·K)
+        confidence: 88
+        description: Thermal conductivity of sandstone at room temperature
+        min: 0.2
+        max: 8
+        source: Engineering ToolBox - Building Materials
+        notes: Most stones 1-4 W/m·K, granite ~2.8, limestone ~1.3, marble ~2.5
+      thermalDiffusivity:
+        value: 1.32
+        unit: mm²/s
+        confidence: 92
+        description: thermalDiffusivity from Materials.yaml
+        min: 0.2
+        max: 2.5
+      thermalExpansion:
+        value: 7.5
+        unit: 10^-6/K
+        confidence: 82
+        description: Coefficient of thermal expansion for quartz sandstone
+        min: 3
+        max: 25
+      thermalDegradationPoint:
+        value: 1120.0
+        unit: °C
+        confidence: 92
+        description: Temperature where mineral structure breaks down
+        min: 573.0
+        max: 1470.0
+      absorptionCoefficient:
+        value: 0.75
+        unit: cm⁻¹
+        confidence: 82
+        description: Optical absorption coefficient for near-IR wavelengths
+        min: 0.15
+        max: 0.85
+    description: 'First-order photon coupling: how laser energy enters the material
+      vs. reflects away'
+    percentage: 16.4
+applications:
+- Cultural Heritage
+- Architectural Restoration
+- Monument Conservation
+- Manufacturing
+- Construction
+- Marine Infrastructure
+- Landscape Architecture
+- Museum Conservation
+- Civil Engineering
+- Interior Design
+machineSettings:
+  powerRange:
+    value: 90
+    unit: W
+    confidence: 92
+    description: Optimal average power for Bluestone surface cleaning without thermal
+      damage
+    min: 70
+    max: 120
+  wavelength:
+    value: 1064
+    unit: nm
+    confidence: 88
+    description: Near-IR wavelength optimized for Bluestone mineral absorption
+    min: 532
+    max: 1064
+  spotSize:
+    value: 80
+    unit: μm
+    confidence: 84
+    description: Beam spot diameter for precise cleaning control
+    min: 50
+    max: 150
+  repetitionRate:
+    value: 50
+    unit: kHz
+    confidence: 87
+    description: Optimal repetition rate for efficient cleaning with thermal management
+    min: 20
+    max: 100
+  pulseWidth:
+    value: 12
+    unit: ns
+    confidence: 85
+    description: Nanosecond pulse duration for controlled ablation of surface contaminants
+    min: 8
+    max: 20
+  scanSpeed:
+    value: 500
+    unit: mm/s
+    confidence: 86
+    description: Optimal scanning speed for uniform cleaning coverage
+    min: 300
+    max: 800
+  fluence:
+    value: 3.5
+    unit: J/cm²
+    confidence: 86
+    description: Energy density threshold for effective Bluestone cleaning - Energy
+      density threshold for effective contaminant removal from stone surfaces without
+      substrate damage
+    min: 1.5
+    max: 7.0
+  energyDensity:
+    value: 3.5
+    unit: J/cm²
+    confidence: 89
+    description: Fluence threshold for effective contaminant removal without substrate
+      damage
+    min: 2.0
+    max: 5.0
+  overlapRatio:
+    value: 50
+    unit: '%'
+    confidence: 83
+    description: Optimal beam overlap for uniform cleaning pattern
+    min: 40
+    max: 70
+  passCount:
+    value: 2
+    unit: passes
+    confidence: 85
+    description: Recommended number of passes for complete cleaning
+    min: 1
+    max: 4
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author:
+  id: 2
+  name: Alessandro Moretti
+  sex: m
+  title: Ph.D.
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  image: /images/author/alessandro-moretti.jpg
+images:
+  hero:
+    alt: Bluestone surface undergoing laser cleaning showing precise contamination
+      removal
+    url: /images/material/bluestone-laser-cleaning-hero.jpg
+environmentalImpact:
+- benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+  sustainabilityBenefit: ''
+- benefit: Water Usage Reduction
+  description: Dry process requires no water
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+- benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+subtitle: Bluestone's composition and porosity can vary significantly between slabs.
+  This variability requires careful adjustment of laser settings to effectively clean
+  without damaging the stone's surface.
+outcomeMetrics:
+- metric: Contaminant Removal Efficiency
+  description: Percentage of target contaminants successfully removed from surface
+  measurementMethods:
+  - Before/after microscopy
+  - Chemical analysis
+  - Mass spectrometry
+  typicalRanges: 95-99.9% depending on application and material
+  factorsAffecting:
+  - Contamination type
+  - Adhesion strength
+  - Surface geometry
+  units: []
+- metric: Processing Speed
+  description: Rate of surface area processed per unit time
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- metric: Surface Quality Preservation
+  description: Maintenance of original surface characteristics after cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+- metric: Thermal Damage Avoidance
+  description: Prevention of heat-related material alterations during cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+caption:
+  beforeText: At 500x magnification, the bluestone surface is obscured by a complex
+    contamination layer, typically 50-200 micrometers thick. This layer consists of
+    particulate matter (soot, dust) embedded within a matrix of organic and inorganic
+    deposits, such as gypsum crusts from atmospheric sulfur. The underlying quartz
+    and feldspar grains of the stone are partially masked, with contaminants filling
+    the natural micro-pores (8.5% porosity) and creating a discontinuous, crust-like
+    texture. The original surface morphology is lost, replaced by an amorphous, pitted
+    topography that increases light scattering and gives the stone its darkened, dull
+    appearance.
+  afterText: Post-cleaning analysis at 500x magnification reveals a restored bluestone
+    substrate. The contamination layer has been selectively ablated, exposing the
+    original mineral grains and the stone's intrinsic micro-texture. The surface now
+    displays clear intergranular boundaries and open pores, with minimal residual
+    particulate matter. The removal of the light-scattering crust results in a surface
+    with defined topography and restored reflectivity. This state confirms the successful
+    elimination of damaging salts and biological films, returning the stone to a stable,
+    clean condition without subsurface thermal damage.
+  description: Microscopic analysis of bluestone surface before and after laser cleaning
+    treatment
+  alt: Microscopic view of bluestone surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - bluestone_specific
+    contaminationProfile: bluestone surface contamination
+  microscopy:
+    parameters: Microscopic analysis of Bluestone
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-10-02T00:00:00.000000Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: template_caption
+  author: Alessandro Moretti
+  materialProperties:
+    materialType: Stone
+    analysisMethod: template_microscopy
+  imageUrl:
+    alt: Microscopic view of Bluestone surface after laser cleaning showing detailed
+      surface structure
+    url: /images/material/bluestone-laser-cleaning-micro.jpg
+tags:
+- stone
+- cultural-heritage
+- architecture
+- restoration
+- surface-preparation
+- contamination-removal
+- maintenance
+- thermal-sensitive
+- industrial-grade
+- alessandro-moretti
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:15.749650'
+  sources_added: 2
+processing:
+  last_sync: '2025-10-15T19:39:32.962182Z'
+  sync_source: Materials.yaml

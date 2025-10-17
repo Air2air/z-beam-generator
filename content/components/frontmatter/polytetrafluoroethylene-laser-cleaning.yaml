@@ -4,8 +4,69 @@ subcategory: Polytetrafluoroethylene (PTFE)
 title: PTFE Laser Cleaning
 description: Laser cleaning parameters for Polytetrafluoroethylene (PTFE)
 materialProperties:
-  material_properties:
-    label: Material Properties
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    properties:
+      laserAbsorption:
+        value: 4.2
+        unit: '%'
+        confidence: 95
+        description: laserAbsorption from Materials.yaml
+        min: 0.1
+        max: 100
+      laserReflectivity:
+        value: 94.5
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 95
+        source: Polymer Optical Properties Database
+        notes: Highly variable with color, additives, and surface finish; translucent
+          materials lower reflectivity
+      specificHeat:
+        value: 1050
+        unit: J/kg·K
+        confidence: 85
+        description: Specific heat capacity at room temperature
+        min: 1000
+        max: 2500
+      thermalConductivity:
+        value: 0.25
+        unit: W/m·K
+        confidence: 90
+        description: Thermal conductivity at room temperature
+        min: 0.02
+        max: 3
+        source: MatWeb Materials Database - Polymers
+        notes: Wide range includes specialty filled polymers (0.02-3 W/m·K); typical
+          unfilled polymers 0.15-0.35 W/m·K
+      thermalDiffusivity:
+        value: 0.124
+        unit: mm²/s
+        confidence: 95
+        description: thermalDiffusivity from Materials.yaml
+        min: 0.05
+        max: 1
+      thermalExpansion:
+        value: 135
+        unit: ×10⁻⁶/°C
+        confidence: 88
+        description: Linear thermal expansion coefficient (20-100°C)
+        min: 10
+        max: 200
+      absorptionCoefficient:
+        value: 0.85
+        unit: cm⁻¹
+        confidence: 82
+        description: Absorption coefficient at 1064 nm wavelength
+        min: 0.85
+        max: 0.85
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
     properties:
       density:
         value: 2.2
@@ -28,11 +89,6 @@ materialProperties:
         description: Typical crystallinity percentage in processed PTFE
         min: null
         max: null
-    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface finish, contaminant adhesion, and process efficiency'
-    percentage: 40.0
-  structural_response:
-    label: Structural Response Properties
-    properties:
       hardness:
         value: 55
         unit: Shore D
@@ -54,85 +110,9 @@ materialProperties:
         description: Young's modulus at room temperature
         min: 0.01
         max: 5
-    description: 'Physical reaction to thermal stress: how material responds structurally to rapid heating'
-    percentage: 18.2
-  energy_coupling:
-    label: Energy Coupling Properties
-    properties:
-      laserAbsorption:
-        value: 4.2
-        unit: '%'
-        confidence: 95
-        description: laserAbsorption from Materials.yaml
-        min: 0.1
-        max: 100
-      laserReflectivity:
-        value: 95.2
-        unit: '%'
-        confidence: 92
-        description: laserReflectivity from Materials.yaml
-        min: 5
-        max: 95
-      reflectivity:
-        value: 0.08
-        unit: dimensionless
-        confidence: 80
-        description: Reflectivity at 1064 nm wavelength
-        min: 0.08
-        max: 0.12
-      ablationThreshold:
-        value: 0.8
-        unit: J/cm²
-        confidence: 82
-        description: Ablation threshold for nanosecond pulses at 1064 nm
-        min: 0.8
-        max: 0.8
-      specificHeat:
-        value: 1050
-        unit: J/kg·K
-        confidence: 85
-        description: Specific heat capacity at room temperature
-        min: 1000
-        max: 2500
-      thermalConductivity:
-        value: 0.25
-        unit: W/m·K
-        confidence: 90
-        description: Thermal conductivity at room temperature
-        min: 0.02
-        max: 3
-      thermalDiffusivity:
-        value: 0.124
-        unit: mm²/s
-        confidence: 95
-        description: thermalDiffusivity from Materials.yaml
-        min: 0.05
-        max: 1
-      thermalExpansion:
-        value: 135
-        unit: ×10⁻⁶/°C
-        confidence: 88
-        description: Linear thermal expansion coefficient (20-100°C)
-        min: 10
-        max: 200
-      thermalDestruction:
-        point:
-          value: 327.0
-          unit: °C
-          confidence: 95
-          description: Thermal destruction point
-          min: 80
-          max: 400
-        type: decomposition
-      absorptionCoefficient:
-        value: 0.85
-        unit: cm⁻¹
-        confidence: 82
-        description: Absorption coefficient at 1064 nm wavelength
-        min: 0.85
-        max: 0.85
-    description: 'First-order photon coupling: how laser energy enters the material vs. reflects away'
-    percentage: 16.4
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
 applications:
 - Aerospace
 - Medical Devices
@@ -187,13 +167,6 @@ machineSettings:
     description: Optimal scanning speed for uniform PTFE removal
     min: 200
     max: 1000
-  fluenceThreshold:
-    value: 2.5
-    unit: J/cm²
-    confidence: 89
-    description: Minimum fluence required for PTFE ablation
-    min: 1.5
-    max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
@@ -223,7 +196,8 @@ author:
   image: /images/author/ikmanda-roswati.jpg
 images:
   hero:
-    alt: Polytetrafluoroethylene surface undergoing laser cleaning showing precise contamination removal
+    alt: Polytetrafluoroethylene surface undergoing laser cleaning showing precise
+      contamination removal
     url: /images/material/polytetrafluoroethylene-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -250,7 +224,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: The biggest challenge with PTFE is its variable reaction to heat, so you must use very specific power levels. This ensures the material's integrity remains good-good throughout the cleaning process.
+subtitle: The biggest challenge with PTFE is its variable reaction to heat, so you
+  must use very specific power levels. This ensures the material's integrity remains
+  good-good throughout the cleaning process.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -286,10 +262,25 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the polytetrafluoroethylene surface is obscured by a discontinuous layer of amorphous carbonaceous contamination. This layer, measuring 5-15 micrometers thick, adheres to the native PTFE microstructure, masking its characteristic node-and-fibril texture. Particulate matter, including sub-10 micrometer silicate spheres, is embedded within this matrix. The contamination creates a topographically varied surface with visible cracking and delamination at the interface with the underlying polymer, indicating poor adhesion and compromised surface integrity.
-  afterText: Laser cleaning effectively ablates the contamination layer, restoring the intrinsic PTFE morphology. The underlying node-and-fibril structure, with features on the order of 1-5 micrometers, is now fully exposed and undamaged. The surface exhibits a uniform, micro-porous texture, free of residual carbonaceous film or embedded particulates. This process eliminates the previous interfacial cracking, resulting in a clean substrate with restored chemical and topographical properties.
-  description: Microscopic analysis of polytetrafluoroethylene surface before and after laser cleaning treatment
-  alt: Microscopic view of polytetrafluoroethylene surface showing laser cleaning effects
+  beforeText: At 500x magnification, the polytetrafluoroethylene surface is obscured
+    by a discontinuous layer of amorphous carbonaceous contamination. This layer,
+    measuring 5-15 micrometers thick, adheres to the native PTFE microstructure, masking
+    its characteristic node-and-fibril texture. Particulate matter, including sub-10
+    micrometer silicate spheres, is embedded within this matrix. The contamination
+    creates a topographically varied surface with visible cracking and delamination
+    at the interface with the underlying polymer, indicating poor adhesion and compromised
+    surface integrity.
+  afterText: Laser cleaning effectively ablates the contamination layer, restoring
+    the intrinsic PTFE morphology. The underlying node-and-fibril structure, with
+    features on the order of 1-5 micrometers, is now fully exposed and undamaged.
+    The surface exhibits a uniform, micro-porous texture, free of residual carbonaceous
+    film or embedded particulates. This process eliminates the previous interfacial
+    cracking, resulting in a clean substrate with restored chemical and topographical
+    properties.
+  description: Microscopic analysis of polytetrafluoroethylene surface before and
+    after laser cleaning treatment
+  alt: Microscopic view of polytetrafluoroethylene surface showing laser cleaning
+    effects
   technicalAnalysis:
     focus: surface_analysis
     uniqueCharacteristics:
@@ -308,7 +299,8 @@ caption:
     materialType: Plastic
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Polytetrafluoroethylene surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Polytetrafluoroethylene surface after laser cleaning
+      showing detailed surface structure
     url: /images/material/polytetrafluoroethylene-laser-cleaning-micro.jpg
 tags:
 - plastic
@@ -321,3 +313,7 @@ tags:
 - industrial-grade
 - processed
 - ikmanda-roswati
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:19.925442'
+  sources_added: 2

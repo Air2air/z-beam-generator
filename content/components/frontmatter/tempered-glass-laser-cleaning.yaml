@@ -4,69 +4,8 @@ subcategory: tempered glass
 title: Tempered Glass Laser Cleaning
 description: Laser cleaning parameters for Tempered Glass
 materialProperties:
-  material_properties:
-    label: Material Properties
-    properties:
-      density:
-        value: 2.5
-        unit: g/cm³
-        confidence: 95
-        description: Typical density of soda-lime tempered glass
-        min: 1.2
-        max: 7.6
-      chemicalStability:
-        value: 8.5
-        unit: rating (1-10)
-        confidence: 88
-        description: Resistance to chemical attack and environmental degradation
-        min: 0.7
-        max: 99.5
-      surfaceRoughness:
-        value: 0.005
-        unit: μm Ra
-        confidence: 85
-        description: Typical surface roughness after tempering process
-        min: 0.005
-        max: 0.5
-    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
-      finish, contaminant adhesion, and process efficiency'
-    percentage: 40.0
-  structural_response:
-    label: Structural Response Properties
-    properties:
-      hardness:
-        value: 6.0
-        unit: Mohs
-        confidence: 88
-        description: Mohs hardness scale for tempered glass
-        min: 4.5
-        max: 9
-      tensileStrength:
-        value: 120
-        unit: MPa
-        confidence: 90
-        description: Surface compressive strength due to tempering process
-        min: 30
-        max: 2000
-      youngsModulus:
-        value: 70
-        unit: GPa
-        confidence: 95
-        description: Elastic modulus of soda-lime glass
-        min: 10
-        max: 400
-      flexuralStrength:
-        value: 165
-        unit: MPa
-        confidence: 92
-        description: Bending strength enhanced by tempering process
-        min: 50.0
-        max: 690.0
-    description: 'Physical reaction to thermal stress: how material responds structurally
-      to rapid heating'
-    percentage: 18.2
-  energy_coupling:
-    label: Energy Coupling Properties
+  laser_material_interaction:
+    label: Laser-Material Interaction
     properties:
       laserAbsorption:
         value: 4.2
@@ -82,29 +21,16 @@ materialProperties:
         description: laserReflectivity from Materials.yaml
         min: 4
         max: 92
-      reflectivity:
-        value: 0.04
-        unit: dimensionless
-        confidence: 90
-        description: Surface reflectivity at normal incidence
-        min: 0.04
-        max: 4.2
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        notes: Typical glasses 4-8% at normal incidence, varies with composition and
+          wavelength
       refractiveIndex:
         value: 1.52
-        unit: dimensionless
+        unit: ''
         confidence: 95
         description: Refractive index at 589 nm wavelength
         min: 1.458
         max: 1.76
-      ablationThreshold:
-        value: 5.0
-        unit: J/cm²
-        confidence: 80
-        description: Approximate laser ablation threshold for nanosecond pulses
-        min: 2.0
-        max: 6.0
-        source: Laser-Induced Damage in Optical Materials (NIST)
-        notes: Silica, borosilicate - nanosecond pulses at 1064nm
       laserDamageThreshold:
         value: 2.5
         unit: J/cm²
@@ -113,8 +39,8 @@ materialProperties:
         min: 2.5
         max: 15.0
       specificHeat:
-        value: 840
-        unit: J/kg·K
+        value: 840.0
+        unit: J/(kg·K)
         confidence: 85
         description: Specific heat capacity at room temperature
         min: 500
@@ -136,21 +62,12 @@ materialProperties:
         min: 0.01
         max: 15
       thermalExpansion:
-        value: 9.0
-        unit: 10⁻⁶/°C
+        value: 8.5
+        unit: 10^-6/K
         confidence: 92
         description: Coefficient of thermal expansion for soda-lime glass
         min: 0.1
         max: 15
-      thermalDestruction:
-        point:
-          value: 1150.0
-          unit: K
-          min: 500
-          max: 1723
-          confidence: 92
-          description: Thermal destruction point
-        type: melting
       softeningPoint:
         value: 1150.0
         unit: K
@@ -165,9 +82,57 @@ materialProperties:
         description: Optical absorption coefficient at visible wavelengths
         min: 0.001
         max: 0.15
-    description: 'First-order photon coupling: how laser energy enters the material
-      vs. reflects away'
-    percentage: 16.4
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
+    properties:
+      density:
+        value: 2.52
+        unit: g/cm³
+        confidence: 95
+        description: Typical density of soda-lime tempered glass
+        min: 1.2
+        max: 7.6
+      chemicalStability:
+        value: 8.5
+        unit: rating (1-10)
+        confidence: 88
+        description: Resistance to chemical attack and environmental degradation
+        min: 0.7
+        max: 99.5
+      hardness:
+        value: 5.5
+        unit: Mohs
+        confidence: 88
+        description: Mohs hardness scale for tempered glass
+        min: 4.5
+        max: 9
+      tensileStrength:
+        value: 165.0
+        unit: MPa
+        confidence: 90
+        description: Surface compressive strength due to tempering process
+        min: 30
+        max: 2000
+      youngsModulus:
+        value: 73.0
+        unit: GPa
+        confidence: 95
+        description: Elastic modulus of soda-lime glass
+        min: 10
+        max: 400
+      flexuralStrength:
+        value: 120.0
+        unit: MPa
+        confidence: 92
+        description: Bending strength enhanced by tempering process
+        min: 50.0
+        max: 690.0
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
 applications:
 - Aerospace
 - Automotive
@@ -236,14 +201,6 @@ machineSettings:
       or stress fractures
     min: 1.0
     max: 5.0
-  fluenceThreshold:
-    value: 2.5
-    unit: J/cm²
-    confidence: 90
-    description: Energy density threshold for effective contaminant removal without
-      damaging tempered glass substrate
-    min: 1.8
-    max: 3.5
   overlapRatio:
     value: 50
     unit: '%'
@@ -259,13 +216,6 @@ machineSettings:
     description: Recommended number of cleaning passes for complete contaminant removal
     min: 1
     max: 3
-  laserType:
-    value: Nd:YAG
-    unit: none
-    confidence: 89
-    description: Recommended laser type for tempered glass cleaning applications
-    min: null
-    max: null
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -397,3 +347,10 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - alessandro-moretti
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:22.202557'
+  sources_added: 1
+processing:
+  last_sync: '2025-10-15T19:39:37.192884Z'
+  sync_source: Materials.yaml

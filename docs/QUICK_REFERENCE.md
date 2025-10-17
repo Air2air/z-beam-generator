@@ -98,6 +98,19 @@ is_valid, errors = frontmatter_manager.validate_material("Steel")
 **→ Results**: 0.0% → 59.5% automatic improvement for technical content
 **→ Documentation**: [Winston Composite Scoring](WINSTON_COMPOSITE_SCORING_INTEGRATION.md)
 
+### "Property access complexity" / "How do I work with nested properties?"
+**→ Immediate Response**: ✅ **SOLVED October 15, 2025** - PropertyAccessor helpers now available
+**→ Quick Fix**: 
+```python
+from utils.property_helpers import PropertyAccessor
+temp = PropertyAccessor.get_thermal_destruction_point(material)
+threshold = PropertyAccessor.get_ablation_threshold(material, 'femtosecond')
+```
+**→ Examples**: `python3 examples/property_access_examples.py` (9 complete examples)
+**→ Tests**: `python3 -m pytest tests/test_property_helpers.py -v` (23 tests)
+**→ Documentation**: [Data System Complete Guide](DATA_SYSTEM_COMPLETE_GUIDE.md)
+**→ Features**: Handles all 4 property patterns (simple, nested, pulse-specific, wavelength-specific)
+
 ### "Property format questions" / "What property data formats are supported?"
 **→ Immediate Response**: ✅ **4 PATTERNS SUPPORTED** (as of Oct 2025)
 **→ Pattern 1**: **Legacy** - Single value: `{value, unit, min, max, confidence, description}` (~800 properties)

@@ -4,62 +4,8 @@ subcategory: lead crystal
 title: Lead Crystal Laser Cleaning
 description: Laser cleaning parameters for Lead Crystal
 materialProperties:
-  material_properties:
-    label: Material Properties
-    properties:
-      density:
-        value: 3.1
-        unit: g/cm³
-        confidence: 95
-        description: High density due to lead oxide content (typically 24-32% PbO)
-        min: 1.2
-        max: 7.6
-      chemicalStability:
-        value: 85
-        unit: '% resistance'
-        confidence: 90
-        description: Resistance to chemical attack and weathering
-        min: 0.7
-        max: 99.5
-      surfaceRoughness:
-        value: 0.005
-        unit: μm Ra
-        confidence: 88
-        description: Typical surface roughness of polished lead crystal
-        min: 0.005
-        max: 0.5
-    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
-      finish, contaminant adhesion, and process efficiency'
-    percentage: 40.0
-  structural_response:
-    label: Structural Response Properties
-    properties:
-      hardness:
-        value: 380
-        unit: HV
-        confidence: 88
-        description: Vickers hardness - softer than ordinary glass
-        min: 4.5
-        max: 9
-      tensileStrength:
-        value: 35.0
-        unit: MPa
-        confidence: 92
-        description: tensileStrength from Materials.yaml
-        min: 30
-        max: 2000
-      youngsModulus:
-        value: 60
-        unit: GPa
-        confidence: 90
-        description: Elastic modulus - lower than ordinary glass
-        min: 10
-        max: 400
-    description: 'Physical reaction to thermal stress: how material responds structurally
-      to rapid heating'
-    percentage: 18.2
-  energy_coupling:
-    label: Energy Coupling Properties
+  laser_material_interaction:
+    label: Laser-Material Interaction
     properties:
       laserAbsorption:
         value: 0.1
@@ -75,9 +21,12 @@ materialProperties:
         description: laserReflectivity from Materials.yaml
         min: 4
         max: 92
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        notes: Typical glasses 4-8% at normal incidence, varies with composition and
+          wavelength
       refractiveIndex:
         value: 1.56
-        unit: dimensionless
+        unit: ''
         confidence: 95
         description: High refractive index providing brilliance
         min: 1.458
@@ -90,12 +39,16 @@ materialProperties:
         min: 2.5
         max: 15.0
       specificHeat:
-        value: 0.67
-        unit: J/g·K
+        value: 130.0
+        unit: J/(kg·K)
         confidence: 82
         description: Heat capacity at room temperature
         min: 500
         max: 900
+        metadata:
+          last_verified: '2025-10-15T15:43:03.970155'
+          verification_source: automatic_fix
+          fix_reason: 'kJ→J conversion: 0.67 → 670.0'
       thermalConductivity:
         value: 0.78
         unit: W/(m·K)
@@ -113,21 +66,12 @@ materialProperties:
         min: 0.01
         max: 15
       thermalExpansion:
-        value: 9.2
-        unit: 10⁻⁶/K
+        value: 9.0
+        unit: 10^-6/K
         confidence: 85
         description: Coefficient of linear thermal expansion
         min: 0.1
         max: 15
-      thermalDestruction:
-        point:
-          value: 1083.15
-          unit: K
-          min: 500
-          max: 1723
-          confidence: 92
-          description: Thermal destruction point
-        type: melting
       softeningPoint:
         value: 1083.15
         unit: K
@@ -142,9 +86,50 @@ materialProperties:
         description: Optical absorption coefficient at 1064 nm wavelength
         min: 0.001
         max: 0.15
-    description: 'First-order photon coupling: how laser energy enters the material
-      vs. reflects away'
-    percentage: 16.4
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
+    properties:
+      density:
+        value: 3.1
+        unit: g/cm³
+        confidence: 95
+        description: High density due to lead oxide content (typically 24-32% PbO)
+        min: 1.2
+        max: 7.6
+      chemicalStability:
+        value: 85
+        unit: '% resistance'
+        confidence: 90
+        description: Resistance to chemical attack and weathering
+        min: 0.7
+        max: 99.5
+      hardness:
+        value: 3.8
+        unit: Mohs
+        confidence: 88
+        description: Vickers hardness - softer than ordinary glass
+        min: 4.5
+        max: 9
+      tensileStrength:
+        value: 35.0
+        unit: MPa
+        confidence: 92
+        description: tensileStrength from Materials.yaml
+        min: 30
+        max: 2000
+      youngsModulus:
+        value: 67.0
+        unit: GPa
+        confidence: 90
+        description: Elastic modulus - lower than ordinary glass
+        min: 10
+        max: 400
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
 applications:
 - Cultural Heritage
 - Aerospace
@@ -212,14 +197,6 @@ machineSettings:
       fractures
     min: 1.0
     max: 5.0
-  energyDensity:
-    value: 1.2
-    unit: J/cm²
-    confidence: 86
-    description: Fluence threshold for effective contaminant removal without damaging
-      Lead Crystal substrate
-    min: 0.8
-    max: 2.0
   overlapRatio:
     value: 50
     unit: '%'
@@ -367,3 +344,10 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - yi-chun-lin
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:18.222966'
+  sources_added: 1
+processing:
+  last_sync: '2025-10-15T19:39:34.533275Z'
+  sync_source: Materials.yaml

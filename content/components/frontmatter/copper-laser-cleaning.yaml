@@ -4,8 +4,68 @@ subcategory: non_ferrous
 title: Copper Laser Cleaning
 description: Laser cleaning parameters for Copper
 materialProperties:
-  material_properties:
-    label: Material Properties
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    properties:
+      laserAbsorption:
+        value: 3.5
+        unit: '%'
+        confidence: 95
+        description: laserAbsorption from Materials.yaml
+        min: 0.02
+        max: 100
+      laserReflectivity:
+        value: 98.6
+        unit: '%'
+        confidence: 95
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 98
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with
+          surface condition'
+      specificHeat:
+        value: 385.0
+        unit: J/(kg·K)
+        confidence: 93
+        description: Specific heat capacity at 20°C
+        min: 100
+        max: 900
+      thermalConductivity:
+        value: 401
+        unit: W/(m·K)
+        confidence: 85
+        description: Thermal conductivity of pure copper at 20°C
+        min: 15
+        max: 400
+        source: MatWeb Materials Database
+        notes: Typical range for metal materials at room temperature
+      thermalDiffusivity:
+        value: 112.3
+        unit: mm²/s
+        confidence: 90
+        description: Thermal diffusivity at room temperature
+        min: 0.2
+        max: 174
+      thermalExpansion:
+        value: 16.5
+        unit: 10^-6/K
+        confidence: 92
+        description: Coefficient of thermal expansion at 20°C
+        min: 0.5
+        max: 29.1
+      absorptionCoefficient:
+        value: 1.2
+        unit: ×10⁷ m⁻¹
+        confidence: 82
+        description: Absorption coefficient at 1064 nm
+        min: null
+        max: null
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
     properties:
       density:
         value: 8.96
@@ -29,7 +89,7 @@ materialProperties:
         min: null
         max: null
       oxidationResistance:
-        value: Moderate
+        value: 300.0
         unit: °C
         confidence: 80
         description: Forms protective oxide layer but susceptible to atmospheric corrosion
@@ -37,15 +97,9 @@ materialProperties:
         max: 1200
         source: ASM Metals Handbook - Corrosion
         notes: 'Oxidation onset: Steel 200-400°C, Stainless 400-800°C, Ni alloys 800-1200°C'
-    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
-      finish, contaminant adhesion, and process efficiency'
-    percentage: 40.0
-  structural_response:
-    label: Structural Response Properties
-    properties:
       hardness:
-        value: 87
-        unit: HV
+        value: 369.0
+        unit: MPa
         confidence: 88
         description: Vickers hardness for annealed copper
         min: 0.5
@@ -64,111 +118,9 @@ materialProperties:
         description: Young's modulus of elasticity
         min: 5
         max: 411
-    description: 'Physical reaction to thermal stress: how material responds structurally
-      to rapid heating'
-    percentage: 18.2
-  energy_coupling:
-    label: Energy Coupling Properties
-    properties:
-      laserAbsorption:
-        value: 3.5
-        unit: '%'
-        confidence: 95
-        description: laserAbsorption from Materials.yaml
-        min: 0.02
-        max: 100
-      laserReflectivity:
-        value: 98.6
-        unit: '%'
-        confidence: 95
-        description: laserReflectivity from Materials.yaml
-        min: 5
-        max: 98
-      reflectivity:
-        at_1064nm:
-          min: 85
-          max: 98
-          unit: '%'
-        at_532nm:
-          min: 70
-          max: 95
-          unit: '%'
-        at_355nm:
-          min: 55
-          max: 85
-          unit: '%'
-        at_10640nm:
-          min: 95
-          max: 99
-          unit: '%'
-        source: Handbook of Optical Constants (Palik)
-        confidence: 85
-        measurement_context: Varies by laser wavelength
-      ablationThreshold:
-        nanosecond:
-          min: 2.0
-          max: 8.0
-          unit: J/cm²
-        picosecond:
-          min: 0.1
-          max: 2.0
-          unit: J/cm²
-        femtosecond:
-          min: 0.14
-          max: 1.7
-          unit: J/cm²
-        source: Marks et al. 2022, Precision Engineering
-        confidence: 90
-        measurement_context: Varies by pulse duration (ns/ps/fs)
-      specificHeat:
-        value: 385
-        unit: J/kg·K
-        confidence: 93
-        description: Specific heat capacity at 20°C
-        min: 100
-        max: 900
-      thermalConductivity:
-        value: 401
-        unit: W/(m·K)
-        confidence: 85
-        description: Thermal conductivity of pure copper at 20°C
-        min: 15
-        max: 400
-        source: MatWeb Materials Database
-        notes: Typical range for metal materials at room temperature
-      thermalDiffusivity:
-        value: 117
-        unit: mm²/s
-        confidence: 90
-        description: Thermal diffusivity at room temperature
-        min: 0.2
-        max: 174
-      thermalExpansion:
-        value: 16.5
-        unit: μm/m·K
-        confidence: 92
-        description: Coefficient of thermal expansion at 20°C
-        min: 0.5
-        max: 29.1
-      thermalDestruction:
-        point:
-          value: 1357.77
-          unit: K
-          confidence: 98
-          description: Thermal destruction point
-          min: -38.8
-          max: 3422
-        type: melting
-      absorptionCoefficient:
-        value: 1.2
-        unit: ×10⁷ m⁻¹
-        confidence: 82
-        description: Absorption coefficient at 1064 nm
-        min: null
-        max: null
-    description: 'First-order photon coupling: how laser energy enters the material
-      vs. reflects away'
-    percentage: 16.4
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
 applications:
 - Architecture
 - Electronics Manufacturing
@@ -222,13 +174,6 @@ machineSettings:
     description: Optimal scanning speed for uniform cleaning coverage
     min: 200
     max: 1000
-  fluenceThreshold:
-    value: 2.5
-    unit: J/cm²
-    confidence: 89
-    description: Minimum fluence required for effective Copper oxide removal
-    min: 1.5
-    max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
@@ -244,13 +189,6 @@ machineSettings:
     description: Recommended number of passes for complete contaminant removal
     min: 1
     max: 5
-  laserType:
-    value: Fiber Laser
-    unit: 'null'
-    confidence: 90
-    description: Recommended laser type for Copper cleaning applications
-    min: null
-    max: null
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -389,3 +327,10 @@ tags:
 - conductive
 - reflective-surface
 - alessandro-moretti
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:16.776411'
+  sources_added: 1
+processing:
+  last_sync: '2025-10-15T19:39:33.595536Z'
+  sync_source: Materials.yaml

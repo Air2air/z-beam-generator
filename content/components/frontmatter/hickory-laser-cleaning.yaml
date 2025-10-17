@@ -4,64 +4,8 @@ subcategory: hardwood
 title: Hickory Laser Cleaning
 description: Laser cleaning parameters for Hickory
 materialProperties:
-  material_properties:
-    label: Material Properties
-    properties:
-      density:
-        value: 0.82
-        unit: g/cm³
-        confidence: 95
-        description: Average density of hickory wood at 12% moisture content
-        min: 0.12
-        max: 1.25
-      porosity:
-        value: 55
-        unit: '%'
-        confidence: 75
-        description: Average porosity of hickory wood structure
-        min: 12
-        max: 65
-        source: Wood Science and Technology Database
-        notes: Hardwoods 12-45%, softwoods 30-65%
-      moistureContent:
-        value: 12
-        unit: '%'
-        confidence: 95
-        description: Equilibrium moisture content at standard conditions
-        min: 8.0
-        max: 12.0
-    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
-      finish, contaminant adhesion, and process efficiency'
-    percentage: 40.0
-  structural_response:
-    label: Structural Response Properties
-    properties:
-      hardness:
-        value: 7.2
-        unit: kN
-        confidence: 94
-        description: Janka hardness test value
-        min: 20
-        max: 5000
-      tensileStrength:
-        value: 105
-        unit: MPa
-        confidence: 90
-        description: Tensile strength parallel to grain direction
-        min: 20
-        max: 200
-      youngsModulus:
-        value: 15.2
-        unit: GPa
-        confidence: 92
-        description: Modulus of elasticity parallel to grain
-        min: 5
-        max: 25
-    description: 'Physical reaction to thermal stress: how material responds structurally
-      to rapid heating'
-    percentage: 18.2
-  energy_coupling:
-    label: Energy Coupling Properties
+  laser_material_interaction:
+    label: Laser-Material Interaction
     properties:
       laserAbsorption:
         value: 32.7
@@ -77,37 +21,33 @@ materialProperties:
         description: laserReflectivity from Materials.yaml
         min: 10
         max: 60
-      reflectivity:
-        value: 0.12
-        unit: dimensionless
-        confidence: 88
-        description: Reflectivity at 1064 nm laser wavelength
-        min: 0.12
-        max: 0.25
-      ablationThreshold:
-        value: 1.2
-        unit: J/cm²
-        confidence: 85
-        description: Minimum fluence required for material removal at 1064 nm
-        min: 0.8
-        max: 1.8
+        source: Wood Science and Technology Database
+        notes: Light woods 40-60%, dark woods 10-25%, highly dependent on species
+          and finish
       specificHeat:
-        value: 1.38
-        unit: kJ/kg·K
+        value: 1630.0
+        unit: J·kg⁻¹·K⁻¹
         confidence: 90
         description: Specific heat capacity at room temperature
         min: 800
         max: 2500
+        metadata:
+          last_verified: '2025-10-15T15:45:15.792853'
+          verification_source: automatic_fix
+          fix_reason: 'kJ→J conversion: 1.38 → 1380.0'
       thermalConductivity:
-        value: 0.16
-        unit: W/m·K
+        value: 0.155
+        unit: W/(m·K)
         confidence: 88
         description: Thermal conductivity perpendicular to grain direction
         min: 0.04
         max: 0.4
+        source: Wood Handbook - Wood as an Engineering Material (USDA Forest Service)
+        notes: Across grain 0.04-0.2 W/m·K, along grain can be 2-3x higher; moisture
+          content affects values
       thermalDiffusivity:
-        value: 0.14
-        unit: mm²/s
+        value: 0.00165
+        unit: m²/s
         confidence: 85
         description: Thermal diffusivity across grain direction
         min: 0.0001
@@ -119,26 +59,62 @@ materialProperties:
         description: thermalExpansion from Materials.yaml
         min: 3.0
         max: 60
-      thermalDestruction:
-        point:
-          value: 287.0
-          unit: °C
-          min: 200
-          max: 500
-          confidence: 92
-          description: Thermal destruction point
-        type: carbonization
       absorptionCoefficient:
         value: 0.85
-        unit: dimensionless
+        unit: cm⁻¹
         confidence: 92
         description: Optical absorption coefficient for near-infrared wavelengths
           (1064 nm)
         min: 0.75
         max: 0.85
-    description: 'First-order photon coupling: how laser energy enters the material
-      vs. reflects away'
-    percentage: 16.4
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
+    properties:
+      density:
+        value: 0.72
+        unit: g/cm³
+        confidence: 95
+        description: Average density of hickory wood at 12% moisture content
+        min: 0.12
+        max: 1.25
+      moistureContent:
+        value: 12
+        unit: '%'
+        confidence: 95
+        description: Equilibrium moisture content at standard conditions
+        min: 8.0
+        max: 12.0
+      hardness:
+        value: 7.08
+        unit: N/mm²
+        confidence: 94
+        description: Janka hardness test value
+        min: 20
+        max: 5000
+        metadata:
+          last_verified: '2025-10-15T15:23:16.999878'
+          verification_source: automatic_fix
+          fix_reason: 'Scale error: 7.2 → 720.0'
+      tensileStrength:
+        value: 139.0
+        unit: MPa
+        confidence: 90
+        description: Tensile strength parallel to grain direction
+        min: 20
+        max: 200
+      youngsModulus:
+        value: 11.9
+        unit: GPa
+        confidence: 92
+        description: Modulus of elasticity parallel to grain
+        min: 5
+        max: 25
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
 applications:
 - Aerospace
 - Automotive
@@ -202,13 +178,6 @@ machineSettings:
       charring or thermal damage
     min: 2.0
     max: 8.0
-  fluenceThreshold:
-    value: 2.5
-    unit: J/cm²
-    confidence: 89
-    description: Minimum fluence required for effective contaminant removal
-    min: 1.8
-    max: 3.5
   overlapRatio:
     value: 40
     unit: '%'
@@ -364,3 +333,10 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - todd-dunning
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:17.838549'
+  sources_added: 2
+processing:
+  last_sync: '2025-10-15T19:39:34.262913Z'
+  sync_source: Materials.yaml

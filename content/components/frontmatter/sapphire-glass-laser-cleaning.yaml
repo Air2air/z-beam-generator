@@ -4,8 +4,89 @@ subcategory: sapphire glass
 title: Sapphire Glass Laser Cleaning
 description: Laser cleaning parameters for Sapphire Glass
 materialProperties:
-  material_properties:
-    label: Material Properties
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    properties:
+      laserAbsorption:
+        value: 8.2
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.001
+        max: 10
+      laserReflectivity:
+        value: 7.2
+        unit: '%'
+        confidence: 95
+        description: laserReflectivity from Materials.yaml
+        min: 4
+        max: 92
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        notes: Typical glasses 4-8% at normal incidence, varies with composition and
+          wavelength
+      refractiveIndex:
+        value: 1.76
+        unit: ''
+        confidence: 96
+        description: Refractive index at 589 nm wavelength
+        min: 1.458
+        max: 1.76
+      laserDamageThreshold:
+        value: 15
+        unit: J/cm²
+        confidence: 85
+        description: Laser damage threshold for nanosecond pulses at 1064 nm
+        min: 2.5
+        max: 15.0
+      specificHeat:
+        value: 761.0
+        unit: J·kg⁻¹·K⁻¹
+        confidence: 91
+        description: Specific heat capacity at room temperature
+        min: 500
+        max: 900
+      thermalConductivity:
+        value: 27.0
+        unit: W/(m·K)
+        confidence: 85
+        description: Thermal conductivity at room temperature along c-axis
+        min: 0.8
+        max: 1.4
+        source: MatWeb Materials Database
+        notes: Typical range for glass materials at room temperature
+      thermalDiffusivity:
+        value: 13.0
+        unit: mm²/s
+        confidence: 88
+        description: Thermal diffusivity at room temperature
+        min: 0.01
+        max: 15
+      thermalExpansion:
+        value: 5.3
+        unit: 10⁻⁶/K
+        confidence: 90
+        description: Coefficient of thermal expansion parallel to c-axis at 20°C
+        min: 0.1
+        max: 15
+      softeningPoint:
+        value: 2040.0
+        unit: K
+        confidence: 95
+        description: Temperature where glass transitions from rigid to pliable state
+        min: 820.0
+        max: 2040.0
+      transmissivity:
+        value: 85
+        unit: '%'
+        confidence: 90
+        description: Transmission in visible spectrum for 1mm thickness
+        min: 85.0
+        max: 93.0
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
     properties:
       density:
         value: 3.98
@@ -28,19 +109,6 @@ materialProperties:
         description: Hexagonal crystal structure (corundum structure)
         min: null
         max: null
-      surfaceRoughness:
-        value: 0.5
-        unit: nm Ra
-        confidence: 88
-        description: Typical surface roughness for polished sapphire
-        min: 0.005
-        max: 0.5
-    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
-      finish, contaminant adhesion, and process efficiency'
-    percentage: 40.0
-  structural_response:
-    label: Structural Response Properties
-    properties:
       hardness:
         value: 9
         unit: Mohs
@@ -69,105 +137,9 @@ materialProperties:
         description: Flexural strength of polished sapphire
         min: 50.0
         max: 690.0
-    description: 'Physical reaction to thermal stress: how material responds structurally
-      to rapid heating'
-    percentage: 18.2
-  energy_coupling:
-    label: Energy Coupling Properties
-    properties:
-      laserAbsorption:
-        value: 8.2
-        unit: '%'
-        confidence: 92
-        description: laserAbsorption from Materials.yaml
-        min: 0.001
-        max: 10
-      laserReflectivity:
-        value: 7.2
-        unit: '%'
-        confidence: 95
-        description: laserReflectivity from Materials.yaml
-        min: 4
-        max: 92
-      refractiveIndex:
-        value: 1.76
-        unit: dimensionless
-        confidence: 96
-        description: Refractive index at 589 nm wavelength
-        min: 1.458
-        max: 1.76
-      laserDamageThreshold:
-        value: 15
-        unit: J/cm²
-        confidence: 85
-        description: Laser damage threshold for nanosecond pulses at 1064 nm
-        min: 2.5
-        max: 15.0
-      ablationThreshold:
-        value: 2.5
-        unit: J/cm²
-        confidence: 80
-        description: Ablation threshold for femtosecond laser pulses
-        min: 2.0
-        max: 6.0
-        source: Laser-Induced Damage in Optical Materials (NIST)
-        notes: Silica, borosilicate - nanosecond pulses at 1064nm
-      specificHeat:
-        value: 750
-        unit: J/kg·K
-        confidence: 91
-        description: Specific heat capacity at room temperature
-        min: 500
-        max: 900
-      thermalConductivity:
-        value: 35
-        unit: W/(m·K)
-        confidence: 85
-        description: Thermal conductivity at room temperature along c-axis
-        min: 0.8
-        max: 1.4
-        source: MatWeb Materials Database
-        notes: Typical range for glass materials at room temperature
-      thermalDiffusivity:
-        value: 12.5
-        unit: mm²/s
-        confidence: 88
-        description: Thermal diffusivity at room temperature
-        min: 0.01
-        max: 15
-      thermalExpansion:
-        value: 5.3
-        unit: ×10⁻⁶/K
-        confidence: 90
-        description: Coefficient of thermal expansion parallel to c-axis at 20°C
-        min: 0.1
-        max: 15
-      thermalDestruction:
-        point:
-          value: 2040.0
-          unit: K
-          min: 500
-          max: 1723
-          confidence: 95
-          description: Thermal destruction point
-        type: melting
-      softeningPoint:
-        value: 2040.0
-        unit: K
-        confidence: 95
-        description: Temperature where glass transitions from rigid to pliable state
-        min: 820.0
-        max: 2040.0
-      transmissivity:
-        value: 85
-        unit: '%'
-        confidence: 90
-        description: Transmission in visible spectrum for 1mm thickness
-        min: 85.0
-        max: 93.0
-    description: 'First-order photon coupling: how laser energy enters the material
-      vs. reflects away'
-    percentage: 16.4
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
 applications:
 - Aerospace
 - Medical Devices
@@ -235,14 +207,6 @@ machineSettings:
       or stress fractures
     min: 1.0
     max: 5.0
-  fluenceThreshold:
-    value: 2.5
-    unit: J/cm²
-    confidence: 91
-    description: Fluence level above which contaminant removal occurs but below sapphire
-      damage threshold
-    min: 1.5
-    max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
@@ -258,13 +222,6 @@ machineSettings:
     description: Number of cleaning passes for complete contaminant removal
     min: 1
     max: 5
-  laserType:
-    value: Nd:YAG (3rd harmonic)
-    unit: laser_type
-    confidence: 89
-    description: UV nanosecond pulsed laser optimized for sapphire glass cleaning
-    min: null
-    max: null
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -394,3 +351,10 @@ tags:
 - reflective-surface
 - industrial-grade
 - ikmanda-roswati
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:20.988086'
+  sources_added: 1
+processing:
+  last_sync: '2025-10-15T19:39:36.368909Z'
+  sync_source: Materials.yaml

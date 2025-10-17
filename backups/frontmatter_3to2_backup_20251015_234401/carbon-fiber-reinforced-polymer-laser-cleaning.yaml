@@ -1,0 +1,341 @@
+name: CFRP
+category: Composite
+subcategory: Carbon Fiber Reinforced Polymer (CFRP)
+title: CFRP Laser Cleaning
+description: Laser cleaning parameters for Carbon Fiber Reinforced Polymer (CFRP)
+materialProperties:
+  material_properties:
+    label: Material Properties
+    properties:
+      density:
+        value: 1.6
+        unit: g/cm³
+        confidence: 95
+        description: Typical density for CFRP composites with 60-70% fiber volume
+          fraction
+        min: 0.5
+        max: 8
+      oxidationResistance:
+        value: 400
+        unit: °C
+        confidence: 88
+        description: Maximum temperature before significant oxidative degradation
+          in air
+        min: 3.0
+        max: 1600.0
+    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
+      finish, contaminant adhesion, and process efficiency'
+    percentage: 40.0
+  structural_response:
+    label: Structural Response Properties
+    properties:
+      hardness:
+        value: 62.3
+        unit: HRM
+        confidence: 92
+        description: hardness from Materials.yaml
+        min: 20
+        max: 90
+      tensileStrength:
+        value: 1500
+        unit: MPa
+        confidence: 94
+        description: Tensile strength in fiber direction for high-performance CFRP
+        min: 50
+        max: 6000
+      youngsModulus:
+        value: 140
+        unit: GPa
+        confidence: 96
+        description: Elastic modulus in fiber direction
+        min: 0.001
+        max: 500
+    description: 'Physical reaction to thermal stress: how material responds structurally
+      to rapid heating'
+    percentage: 18.2
+  energy_coupling:
+    label: Energy Coupling Properties
+    properties:
+      laserAbsorption:
+        value: 95.2
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.05
+        max: 200
+      laserReflectivity:
+        value: 4.2
+        unit: '%'
+        confidence: 95
+        description: laserReflectivity from Materials.yaml
+        min: 2
+        max: 80
+        source: Composite Materials Handbook (MIL-HDBK-17)
+        notes: 'Wide range reflects diversity: polymer matrix composites 5-30%, metal
+          matrix composites 40-80%'
+      laserDamageThreshold:
+        value: 1.2
+        unit: J/cm²
+        confidence: 82
+        description: Fluence level causing permanent damage to carbon fibers
+        min: 0.8
+        max: 1.2
+      specificHeat:
+        value: 1100
+        unit: J/kg·K
+        confidence: 92
+        description: Specific heat capacity at room temperature
+        min: 500
+        max: 1500
+      thermalConductivity:
+        value: 5.0
+        unit: W/m·K
+        confidence: 88
+        description: Anisotropic thermal conductivity; value represents in-plane conductivity
+        min: 0.1
+        max: 400
+        source: ASM Handbook - Composites
+        notes: 'Wide range (0.1-400 W/m·K): polymer matrix ~0.2, carbon fiber ~10,
+          metal matrix 50-400'
+      thermalDiffusivity:
+        value: 2.8
+        unit: mm²/s
+        confidence: 95
+        description: thermalDiffusivity from Materials.yaml
+        min: 0.1
+        max: 180
+      thermalExpansion:
+        value: 2.0
+        unit: ×10⁻⁶/°C
+        confidence: 85
+        description: Coefficient of thermal expansion in fiber direction
+        min: -1
+        max: 250
+      absorptionCoefficient:
+        value: 0.85
+        unit: cm⁻¹
+        confidence: 82
+        description: Absorption coefficient for near-infrared lasers (1064 nm)
+        min: 0.15
+        max: 8500.0
+    description: 'First-order photon coupling: how laser energy enters the material
+      vs. reflects away'
+    percentage: 16.4
+applications:
+- Aerospace
+- Automotive
+- Wind Energy
+- Medical Devices
+- Marine
+- Electronics Manufacturing
+- Sports Equipment
+- Cultural Heritage
+- Rail Transportation
+- Construction
+machineSettings:
+  powerRange:
+    value: 45
+    unit: W
+    confidence: 90
+    description: Optimal average power for CFRP surface cleaning without matrix damage
+    min: 30
+    max: 60
+  wavelength:
+    value: 1064
+    unit: nm
+    confidence: 88
+    description: Near-IR wavelength providing optimal absorption in contaminants while
+      minimizing CFRP substrate damage
+    min: 1030
+    max: 1070
+  spotSize:
+    value: 80
+    unit: μm
+    confidence: 86
+    description: Beam spot diameter for precise cleaning control on CFRP surfaces
+    min: 50
+    max: 120
+  repetitionRate:
+    value: 50
+    unit: kHz
+    confidence: 87
+    description: Optimal repetition rate balancing cleaning efficiency and thermal
+      management
+    min: 20
+    max: 100
+  pulseWidth:
+    value: 100
+    unit: ns
+    confidence: 85
+    description: Nanosecond pulse duration for efficient contaminant removal with
+      controlled thermal penetration
+    min: 50
+    max: 200
+  scanSpeed:
+    value: 500
+    unit: mm/s
+    confidence: 84
+    description: Optimal scanning speed for uniform cleaning coverage
+    min: 300
+    max: 800
+  fluenceThreshold:
+    value: 2.5
+    unit: J/cm²
+    confidence: 89
+    description: Critical fluence threshold for CFRP-safe contaminant removal
+    min: 1.8
+    max: 3.5
+  overlapRatio:
+    value: 50
+    unit: '%'
+    confidence: 83
+    description: Optimal beam overlap percentage for uniform cleaning without excessive
+      thermal buildup
+    min: 40
+    max: 70
+  passCount:
+    value: 2
+    unit: passes
+    confidence: 85
+    description: Recommended number of cleaning passes for complete contaminant removal
+    min: 1
+    max: 4
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author:
+  id: 1
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg
+images:
+  hero:
+    alt: Carbon Fiber Reinforced Polymer surface undergoing laser cleaning showing
+      precise contamination removal
+    url: /images/material/carbon-fiber-reinforced-polymer-laser-cleaning-hero.jpg
+environmentalImpact:
+- benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+  sustainabilityBenefit: ''
+- benefit: Water Usage Reduction
+  description: Dry process requires no water
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+- benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+subtitle: CFRP's resin matrix can't handle the same energy levels as its carbon fibers.
+  You'll need to adjust your power settings to remove contaminants without affecting
+  the underlying composite.
+outcomeMetrics:
+- metric: Contaminant Removal Efficiency
+  description: Percentage of target contaminants successfully removed from surface
+  measurementMethods:
+  - Before/after microscopy
+  - Chemical analysis
+  - Mass spectrometry
+  typicalRanges: 95-99.9% depending on application and material
+  factorsAffecting:
+  - Contamination type
+  - Adhesion strength
+  - Surface geometry
+  units: []
+- metric: Processing Speed
+  description: Rate of surface area processed per unit time
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- metric: Surface Quality Preservation
+  description: Maintenance of original surface characteristics after cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+- metric: Thermal Damage Avoidance
+  description: Prevention of heat-related material alterations during cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+caption:
+  beforeText: At 500x magnification, the CFRP surface is obscured by a non-uniform
+    contamination layer, typically 5-20 µm thick. This layer consists of organic residues
+    and embedded particulate, which mask the underlying fiber weave and matrix texture.
+    The contaminants form discontinuous, agglomerated patches that create a topographically
+    complex and irregular surface profile, disrupting the intended composite morphology.
+  afterText: 'Laser cleaning effectively removes the contamination layer, revealing
+    the pristine composite substrate. The carbon fiber tows and the surrounding polymer
+    matrix are now fully exposed, displaying their characteristic woven architecture
+    and original surface texture. The removal is highly selective, eliminating contaminants
+    without observable ablation of the underlying polymer resin.
+
+
+    The surface topography is significantly smoother and more uniform, with the primary
+    features now being the intrinsic grooves of the fiber weave and minor, sub-micron
+    porosity from the manufacturing process. This restoration of the original surface
+    geometry eliminates the stress concentrations previously posed by particulate
+    agglomerates. The process results in a clean, well-defined interface, restoring
+    the substrate for subsequent bonding or coating operations.'
+  description: Microscopic analysis of carbon fiber reinforced polymer surface before
+    and after laser cleaning treatment
+  alt: Microscopic view of carbon fiber reinforced polymer surface showing laser cleaning
+    effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - carbon fiber reinforced polymer_specific
+    contaminationProfile: carbon fiber reinforced polymer surface contamination
+  microscopy:
+    parameters: Microscopic analysis of Carbon Fiber Reinforced Polymer
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-10-02T00:00:00.000000Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: template_caption
+  author: Yi-Chun Lin
+  materialProperties:
+    materialType: Composite
+    analysisMethod: template_microscopy
+  imageUrl:
+    alt: Microscopic view of Carbon Fiber Reinforced Polymer surface after laser cleaning
+      showing detailed surface structure
+    url: /images/material/carbon-fiber-reinforced-polymer-laser-cleaning-micro.jpg
+tags:
+- composite
+- manufacturing
+- industrial
+- processing
+- surface-preparation
+- contamination-removal
+- maintenance
+- industrial-grade
+- processed
+- yi-chun-lin
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:16.192595'
+  sources_added: 2

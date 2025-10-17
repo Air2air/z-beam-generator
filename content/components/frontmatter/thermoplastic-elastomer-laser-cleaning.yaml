@@ -4,60 +4,8 @@ subcategory: thermoplastic elastomer
 title: Thermoplastic Elastomer Laser Cleaning
 description: Laser cleaning parameters for Thermoplastic Elastomer
 materialProperties:
-  material_properties:
-    label: Material Properties
-    properties:
-      density:
-        value: 0.95
-        unit: g/cm³
-        confidence: 92
-        description: Typical density range for common TPE formulations
-        min: 0.5
-        max: 8
-      oxidationResistance:
-        value: 85
-        unit: relative scale 0-100
-        confidence: 86
-        description: Good resistance to oxidative degradation under normal conditions
-        min: 65.0
-        max: 300.0
-      surfaceRoughness:
-        value: 1.2
-        unit: μm Ra
-        confidence: 88
-        description: Typical surface roughness for molded TPE components
-        min: 1.2
-        max: 1.8
-    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface finish, contaminant adhesion, and process efficiency'
-    percentage: 40.0
-  structural_response:
-    label: Structural Response Properties
-    properties:
-      hardness:
-        value: 75
-        unit: Shore A
-        confidence: 91
-        description: Typical hardness range for flexible TPE applications
-        min: 20
-        max: 90
-      tensileStrength:
-        value: 25
-        unit: MPa
-        confidence: 90
-        description: Typical tensile strength for medium-hardness TPE
-        min: 50
-        max: 6000
-      youngsModulus:
-        value: 150
-        unit: MPa
-        confidence: 89
-        description: Elastic modulus showing flexible rubber-like behavior
-        min: 0.001
-        max: 500
-    description: 'Physical reaction to thermal stress: how material responds structurally to rapid heating'
-    percentage: 18.2
-  energy_coupling:
-    label: Energy Coupling Properties
+  laser_material_interaction:
+    label: Laser-Material Interaction
     properties:
       laserAbsorption:
         value: 92.5
@@ -73,20 +21,9 @@ materialProperties:
         description: laserReflectivity from Materials.yaml
         min: 2
         max: 80
-      reflectivity:
-        value: 0.12
-        unit: dimensionless
-        confidence: 83
-        description: Low reflectivity at common laser cleaning wavelengths (1064 nm)
-        min: 0.08
-        max: 12.0
-      ablationThreshold:
-        value: 1.2
-        unit: J/cm²
-        confidence: 80
-        description: Laser fluence threshold for material ablation at 1064 nm
-        min: 0.8
-        max: 2.8
+        source: Composite Materials Handbook (MIL-HDBK-17)
+        notes: 'Wide range reflects diversity: polymer matrix composites 5-30%, metal
+          matrix composites 40-80%'
       laserDamageThreshold:
         value: 0.8
         unit: J/cm²
@@ -102,12 +39,15 @@ materialProperties:
         min: 500
         max: 1500
       thermalConductivity:
-        value: 0.22
-        unit: W/m·K
+        value: 0.2
+        unit: W/(m·K)
         confidence: 85
         description: Low thermal conductivity typical of polymeric materials
         min: 0.1
         max: 400
+        source: ASM Handbook - Composites
+        notes: 'Wide range (0.1-400 W/m·K): polymer matrix ~0.2, carbon fiber ~10,
+          metal matrix 50-400'
       thermalDiffusivity:
         value: 0.12
         unit: mm²/s
@@ -116,21 +56,12 @@ materialProperties:
         min: 0.1
         max: 180
       thermalExpansion:
-        value: 150
-        unit: ×10⁻⁶/°C
+        value: 100.0
+        unit: 10^-6/K
         confidence: 87
         description: Coefficient of linear thermal expansion for TPE materials
         min: -1
         max: 250
-      thermalDestruction:
-        point:
-          value: 473.15
-          unit: K
-          min: 150
-          max: 2000
-          confidence: 92
-          description: Thermal destruction point
-        type: decomposition
       degradationPoint:
         value: 473.15
         unit: K
@@ -140,13 +71,55 @@ materialProperties:
         max: 1073.15
       absorptionCoefficient:
         value: 0.85
-        unit: dimensionless
+        unit: cm⁻¹
         confidence: 82
         description: High absorption coefficient for near-infrared laser wavelengths
         min: 0.75
         max: 8500.0
-    description: 'First-order photon coupling: how laser energy enters the material vs. reflects away'
-    percentage: 16.4
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
+    properties:
+      density:
+        value: 1.1
+        unit: g/cm³
+        confidence: 92
+        description: Typical density range for common TPE formulations
+        min: 0.5
+        max: 8
+      oxidationResistance:
+        value: 135.0
+        unit: relative scale 0-100
+        confidence: 86
+        description: Good resistance to oxidative degradation under normal conditions
+        min: 65.0
+        max: 300.0
+      hardness:
+        value: 55.0
+        unit: Shore A
+        confidence: 91
+        description: Typical hardness range for flexible TPE applications
+        min: 20
+        max: 90
+      tensileStrength:
+        value: 25
+        unit: MPa
+        confidence: 90
+        description: Typical tensile strength for medium-hardness TPE
+        min: 50
+        max: 6000
+      youngsModulus:
+        value: 10.0
+        unit: MPa
+        confidence: 89
+        description: Elastic modulus showing flexible rubber-like behavior
+        min: 0.001
+        max: 500
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
 applications:
 - Aerospace
 - Automotive
@@ -187,13 +160,6 @@ machineSettings:
     description: Optimal repetition rate for efficient TPE cleaning
     min: 20
     max: 100
-  laserType:
-    value: Fiber Laser
-    unit: n/a
-    confidence: 90
-    description: Recommended laser type for TPE cleaning applications
-    min: null
-    max: null
   pulseWidth:
     value: 15
     unit: ns
@@ -212,16 +178,11 @@ machineSettings:
     value: 3.0
     unit: J/cm²
     confidence: 86
-    description: Energy density threshold for effective Thermoplastic Elastomer cleaning - Energy density threshold for composite material cleaning considering matrix and reinforcement properties
+    description: Energy density threshold for effective Thermoplastic Elastomer cleaning
+      - Energy density threshold for composite material cleaning considering matrix
+      and reinforcement properties
     min: 1.5
     max: 6.0
-  energyDensity:
-    value: 1.8
-    unit: J/cm²
-    confidence: 89
-    description: Optimal fluence for TPE contaminant removal without substrate damage
-    min: 1.2
-    max: 2.5
   passCount:
     value: 2
     unit: passes
@@ -251,7 +212,8 @@ author:
   image: /images/author/todd-dunning.jpg
 images:
   hero:
-    alt: Thermoplastic Elastomer surface undergoing laser cleaning showing precise contamination removal
+    alt: Thermoplastic Elastomer surface undergoing laser cleaning showing precise
+      contamination removal
     url: /images/material/thermoplastic-elastomer-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
@@ -278,7 +240,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: Thermoplastic Elastomer throws a curveball with its inconsistent response to laser treatment. Adjust your power levels below 50 watts initially, then ramp up slowly to protect the outer layer from unintended thermal shifts.
+subtitle: Thermoplastic Elastomer throws a curveball with its inconsistent response
+  to laser treatment. Adjust your power levels below 50 watts initially, then ramp
+  up slowly to protect the outer layer from unintended thermal shifts.
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
   description: Percentage of target contaminants successfully removed from surface
@@ -314,10 +278,23 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the TPE surface is obscured by a non-uniform contamination layer, measuring 5-15 µm in thickness. This layer consists of embedded particulate matter and a continuous film of organic residues, which fills the native micro-texture of the polymer. The original surface roughness of approximately 1.2 µm Ra is masked, creating a topographically flat but contaminated plane that disrupts the material's inherent properties and compromises adhesion for subsequent processing.
-  afterText: Post-cleaning analysis reveals the complete restoration of the native TPE substrate. The contaminant layer has been entirely removed, exposing the original micro-texture with a measured roughness of 1.2 µm Ra. The surface is now free of residual films and particulates, presenting a clean, homogeneous polymer matrix. This pristine condition is optimal for bonding, coating, or assembly, with no evidence of laser-induced thermal degradation to the underlying material.
-  description: Microscopic analysis of thermoplastic elastomer surface before and after laser cleaning treatment
-  alt: Microscopic view of thermoplastic elastomer surface showing laser cleaning effects
+  beforeText: At 500x magnification, the TPE surface is obscured by a non-uniform
+    contamination layer, measuring 5-15 µm in thickness. This layer consists of embedded
+    particulate matter and a continuous film of organic residues, which fills the
+    native micro-texture of the polymer. The original surface roughness of approximately
+    1.2 µm Ra is masked, creating a topographically flat but contaminated plane that
+    disrupts the material's inherent properties and compromises adhesion for subsequent
+    processing.
+  afterText: Post-cleaning analysis reveals the complete restoration of the native
+    TPE substrate. The contaminant layer has been entirely removed, exposing the original
+    micro-texture with a measured roughness of 1.2 µm Ra. The surface is now free
+    of residual films and particulates, presenting a clean, homogeneous polymer matrix.
+    This pristine condition is optimal for bonding, coating, or assembly, with no
+    evidence of laser-induced thermal degradation to the underlying material.
+  description: Microscopic analysis of thermoplastic elastomer surface before and
+    after laser cleaning treatment
+  alt: Microscopic view of thermoplastic elastomer surface showing laser cleaning
+    effects
   technicalAnalysis:
     focus: surface_analysis
     uniqueCharacteristics:
@@ -336,7 +313,8 @@ caption:
     materialType: Composite
     analysisMethod: template_microscopy
   imageUrl:
-    alt: Microscopic view of Thermoplastic Elastomer surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Thermoplastic Elastomer surface after laser cleaning
+      showing detailed surface structure
     url: /images/material/thermoplastic-elastomer-laser-cleaning-micro.jpg
 tags:
 - composite
@@ -349,3 +327,10 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - todd-dunning
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:22.337323'
+  sources_added: 2
+processing:
+  last_sync: '2025-10-15T19:39:37.284240Z'
+  sync_source: Materials.yaml

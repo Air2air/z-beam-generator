@@ -4,69 +4,8 @@ subcategory: float glass
 title: Float Glass Laser Cleaning
 description: Laser cleaning parameters for Float Glass
 materialProperties:
-  material_properties:
-    label: Material Properties
-    properties:
-      density:
-        value: 2.5
-        unit: g/cm³
-        confidence: 95
-        description: Typical density of soda-lime-silica float glass
-        min: 1.2
-        max: 7.6
-      chemicalStability:
-        value: 8
-        unit: scale 1-10
-        confidence: 88
-        description: Resistance to chemical attack and environmental degradation
-        min: 0.7
-        max: 99.5
-      surfaceRoughness:
-        value: 0.5
-        unit: nm RMS
-        confidence: 92
-        description: Typical surface roughness of pristine float glass
-        min: 0.005
-        max: 0.5
-    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
-      finish, contaminant adhesion, and process efficiency'
-    percentage: 40.0
-  structural_response:
-    label: Structural Response Properties
-    properties:
-      hardness:
-        value: 6.0
-        unit: Mohs
-        confidence: 85
-        description: Mohs hardness scale value
-        min: 4.5
-        max: 9
-      tensileStrength:
-        value: 40.0
-        unit: MPa
-        confidence: 95
-        description: tensileStrength from Materials.yaml
-        min: 30
-        max: 2000
-      youngsModulus:
-        value: 70
-        unit: GPa
-        confidence: 96
-        description: Elastic modulus of float glass
-        min: 10
-        max: 400
-      flexuralStrength:
-        value: 50
-        unit: MPa
-        confidence: 90
-        description: Bending strength of pristine float glass
-        min: 50.0
-        max: 690.0
-    description: 'Physical reaction to thermal stress: how material responds structurally
-      to rapid heating'
-    percentage: 18.2
-  energy_coupling:
-    label: Energy Coupling Properties
+  laser_material_interaction:
+    label: Laser-Material Interaction
     properties:
       laserAbsorption:
         value: 4.0
@@ -82,9 +21,12 @@ materialProperties:
         description: laserReflectivity from Materials.yaml
         min: 4
         max: 92
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        notes: Typical glasses 4-8% at normal incidence, varies with composition and
+          wavelength
       refractiveIndex:
         value: 1.52
-        unit: dimensionless
+        unit: ''
         confidence: 98
         description: Refractive index at 589 nm wavelength
         min: 1.458
@@ -97,8 +39,8 @@ materialProperties:
         min: 2.5
         max: 15.0
       specificHeat:
-        value: 840
-        unit: J/kg·K
+        value: 840.0
+        unit: J·kg⁻¹·K⁻¹
         confidence: 88
         description: Specific heat capacity at room temperature
         min: 500
@@ -121,20 +63,11 @@ materialProperties:
         max: 15
       thermalExpansion:
         value: 8.5
-        unit: ×10⁻⁶/°C
+        unit: 10^-6/K
         confidence: 94
         description: Coefficient of linear thermal expansion for soda-lime glass
         min: 0.1
         max: 15
-      thermalDestruction:
-        point:
-          value: 1100.0
-          unit: K
-          min: 500
-          max: 1723
-          confidence: 95
-          description: Thermal destruction point
-        type: melting
       softeningPoint:
         value: 1100.0
         unit: K
@@ -156,9 +89,57 @@ materialProperties:
         description: Approximate absorption coefficient in visible spectrum
         min: 0.001
         max: 0.15
-    description: 'First-order photon coupling: how laser energy enters the material
-      vs. reflects away'
-    percentage: 16.4
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
+    properties:
+      density:
+        value: 2.52
+        unit: g/cm³
+        confidence: 95
+        description: Typical density of soda-lime-silica float glass
+        min: 1.2
+        max: 7.6
+      chemicalStability:
+        value: 8
+        unit: scale 1-10
+        confidence: 88
+        description: Resistance to chemical attack and environmental degradation
+        min: 0.7
+        max: 99.5
+      hardness:
+        value: 5.5
+        unit: Mohs
+        confidence: 85
+        description: Mohs hardness scale value
+        min: 4.5
+        max: 9
+      tensileStrength:
+        value: 40.0
+        unit: MPa
+        confidence: 95
+        description: tensileStrength from Materials.yaml
+        min: 30
+        max: 2000
+      youngsModulus:
+        value: 72.0
+        unit: GPa
+        confidence: 96
+        description: Elastic modulus of float glass
+        min: 10
+        max: 400
+      flexuralStrength:
+        value: 45.0
+        unit: MPa
+        confidence: 90
+        description: Bending strength of pristine float glass
+        min: 50.0
+        max: 690.0
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
 applications:
 - Architectural Glass Manufacturing
 - Solar Panel Manufacturing
@@ -227,14 +208,6 @@ machineSettings:
       fractures
     min: 1.0
     max: 5.0
-  energyDensity:
-    value: 2.5
-    unit: J/cm²
-    confidence: 90
-    description: Fluence threshold for effective contaminant ablation without damaging
-      glass substrate
-    min: 1.5
-    max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
@@ -382,3 +355,10 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - ikmanda-roswati
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:17.194483'
+  sources_added: 1
+processing:
+  last_sync: '2025-10-15T19:39:33.832261Z'
+  sync_source: Materials.yaml

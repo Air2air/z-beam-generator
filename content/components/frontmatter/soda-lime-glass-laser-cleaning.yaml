@@ -4,11 +4,85 @@ subcategory: soda-lime glass
 title: Soda-Lime Glass Laser Cleaning
 description: Laser cleaning parameters for Soda-Lime Glass
 materialProperties:
-  material_properties:
-    label: Material Properties
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    properties:
+      laserAbsorption:
+        value: 4.0
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.001
+        max: 10
+      laserReflectivity:
+        value: 4.2
+        unit: '%'
+        confidence: 95
+        description: laserReflectivity from Materials.yaml
+        min: 4
+        max: 92
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        notes: Typical glasses 4-8% at normal incidence, varies with composition and
+          wavelength
+      refractiveIndex:
+        value: 1.52
+        unit: ''
+        confidence: 98
+        description: Refractive index at 589 nm wavelength
+        min: 1.458
+        max: 1.76
+      specificHeat:
+        value: 840.0
+        unit: J/(kg·K)
+        confidence: 88
+        description: Specific heat capacity at room temperature
+        min: 500
+        max: 900
+      thermalConductivity:
+        value: 1.0
+        unit: W/(m·K)
+        confidence: 85
+        description: Thermal conductivity at room temperature
+        min: 0.8
+        max: 1.4
+        source: MatWeb Materials Database
+        notes: Typical range for glass materials at room temperature
+      thermalDiffusivity:
+        value: 0.84
+        unit: mm²/s
+        confidence: 95
+        description: thermalDiffusivity from Materials.yaml
+        min: 0.01
+        max: 15
+      thermalExpansion:
+        value: 8.5
+        unit: 10^-6/K
+        confidence: 90
+        description: Coefficient of linear thermal expansion (20-300°C)
+        min: 0.1
+        max: 15
+      softeningPoint:
+        value: 1083.15
+        unit: K
+        confidence: 95
+        description: Temperature where glass transitions from rigid to pliable state
+        min: 820.0
+        max: 2040.0
+      absorptionCoefficient:
+        value: 0.1
+        unit: cm⁻¹
+        confidence: 85
+        description: Approximate absorption coefficient for visible light
+        min: 0.001
+        max: 0.15
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
     properties:
       density:
-        value: 2.5
+        value: 2.52
         unit: g/cm³
         confidence: 98
         description: Typical density of commercial soda-lime glass at room temperature
@@ -21,14 +95,8 @@ materialProperties:
         description: Chemical stability rating against common solvents and mild acids
         min: 0.7
         max: 99.5
-    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
-      finish, contaminant adhesion, and process efficiency'
-    percentage: 40.0
-  structural_response:
-    label: Structural Response Properties
-    properties:
       hardness:
-        value: 6.0
+        value: 5.5
         unit: Mohs
         confidence: 85
         description: Mohs hardness scale value
@@ -55,99 +123,9 @@ materialProperties:
         description: Typical flexural/bending strength
         min: 50.0
         max: 690.0
-    description: 'Physical reaction to thermal stress: how material responds structurally
-      to rapid heating'
-    percentage: 18.2
-  energy_coupling:
-    label: Energy Coupling Properties
-    properties:
-      laserAbsorption:
-        value: 4.0
-        unit: '%'
-        confidence: 92
-        description: laserAbsorption from Materials.yaml
-        min: 0.001
-        max: 10
-      laserReflectivity:
-        value: 4.2
-        unit: '%'
-        confidence: 95
-        description: laserReflectivity from Materials.yaml
-        min: 4
-        max: 92
-      refractiveIndex:
-        value: 1.52
-        unit: dimensionless
-        confidence: 98
-        description: Refractive index at 589 nm wavelength
-        min: 1.458
-        max: 1.76
-      ablationThreshold:
-        value: 2.5
-        unit: J/cm²
-        confidence: 80
-        description: Estimated laser ablation threshold for nanosecond pulses at 1064
-          nm
-        min: 2.0
-        max: 6.0
-        source: Laser-Induced Damage in Optical Materials (NIST)
-        notes: Silica, borosilicate - nanosecond pulses at 1064nm
-      specificHeat:
-        value: 840
-        unit: J/kg·K
-        confidence: 88
-        description: Specific heat capacity at room temperature
-        min: 500
-        max: 900
-      thermalConductivity:
-        value: 1.0
-        unit: W/(m·K)
-        confidence: 85
-        description: Thermal conductivity at room temperature
-        min: 0.8
-        max: 1.4
-        source: MatWeb Materials Database
-        notes: Typical range for glass materials at room temperature
-      thermalDiffusivity:
-        value: 0.84
-        unit: mm²/s
-        confidence: 95
-        description: thermalDiffusivity from Materials.yaml
-        min: 0.01
-        max: 15
-      thermalExpansion:
-        value: 9.0
-        unit: 10⁻⁶/K
-        confidence: 90
-        description: Coefficient of linear thermal expansion (20-300°C)
-        min: 0.1
-        max: 15
-      thermalDestruction:
-        point:
-          value: 1083.15
-          unit: K
-          min: 500
-          max: 1723
-          confidence: 95
-          description: Thermal destruction point
-        type: melting
-      softeningPoint:
-        value: 1083.15
-        unit: K
-        confidence: 95
-        description: Temperature where glass transitions from rigid to pliable state
-        min: 820.0
-        max: 2040.0
-      absorptionCoefficient:
-        value: 0.1
-        unit: cm⁻¹
-        confidence: 85
-        description: Approximate absorption coefficient for visible light
-        min: 0.001
-        max: 0.15
-    description: 'First-order photon coupling: how laser energy enters the material
-      vs. reflects away'
-    percentage: 16.4
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
 applications:
 - Aerospace
 - Automotive
@@ -216,14 +194,6 @@ machineSettings:
       or stress fractures
     min: 1.0
     max: 5.0
-  fluenceThreshold:
-    value: 2.5
-    unit: J/cm²
-    confidence: 89
-    description: Fluence threshold for contaminant removal while staying below glass
-      damage threshold
-    min: 1.5
-    max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
@@ -239,13 +209,6 @@ machineSettings:
     description: Recommended number of cleaning passes for complete contaminant removal
     min: 1
     max: 4
-  laserType:
-    value: Nd:YAG
-    unit: n/a
-    confidence: 90
-    description: Recommended laser type for Soda-Lime Glass cleaning applications
-    min: null
-    max: null
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -378,3 +341,10 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - yi-chun-lin
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:21.735266'
+  sources_added: 1
+processing:
+  last_sync: '2025-10-15T19:39:36.872865Z'
+  sync_source: Materials.yaml

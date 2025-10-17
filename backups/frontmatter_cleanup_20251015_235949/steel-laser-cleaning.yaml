@@ -1,0 +1,340 @@
+name: Steel
+category: metal
+subcategory: ferrous
+title: Steel Laser Cleaning
+description: Laser cleaning parameters for Steel
+materialProperties:
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    properties:
+      laserAbsorption:
+        value: 35.2
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.02
+        max: 100
+      laserReflectivity:
+        value: 56.2
+        unit: '%'
+        confidence: 92
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 98
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with
+          surface condition'
+      specificHeat:
+        value: 486.0
+        unit: J·kg⁻¹·K⁻¹
+        confidence: 88
+        description: Specific heat capacity at room temperature
+        min: 100
+        max: 900
+      thermalConductivity:
+        value: 50.0
+        unit: W/(m·K)
+        confidence: 85
+        description: Thermal conductivity of carbon steel at room temperature
+        min: 15
+        max: 400
+        source: MatWeb Materials Database
+        notes: Typical range for metal materials at room temperature
+      thermalDiffusivity:
+        value: 12.5
+        unit: mm²/s
+        confidence: 85
+        description: Thermal diffusivity calculated from thermal properties
+        min: 0.2
+        max: 174
+      thermalExpansion:
+        value: 11.7
+        unit: 10^-6/K
+        confidence: 90
+        description: Linear thermal expansion coefficient at 20-100°C
+        min: 0.5
+        max: 29.1
+      absorptionCoefficient:
+        value: 1200000.0
+        unit: m⁻¹
+        confidence: 82
+        description: Absorption coefficient for near-infrared laser radiation
+        min: 0.03
+        max: 12000000.0
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
+    properties:
+      density:
+        value: 7.85
+        unit: g/cm³
+        confidence: 98
+        description: Typical density for carbon steel at room temperature
+        min: 0.53
+        max: 22.6
+      oxidationResistance:
+        value: 540.0
+        unit: °C
+        confidence: 80
+        description: Relative oxidation resistance scale for carbon steel
+        min: 200
+        max: 1200
+        source: ASM Metals Handbook - Corrosion
+        notes: 'Oxidation onset: Steel 200-400°C, Stainless 400-800°C, Ni alloys 800-1200°C'
+        metadata:
+          last_verified: '2025-10-15T15:23:18.652201'
+          verification_source: automatic_fix
+          fix_reason: 'Decimal error: 3.0 → 300.0'
+      crystallineStructure:
+        value: BCC
+        unit: crystal system
+        confidence: 95
+        description: Body-centered cubic structure at room temperature
+        min: null
+        max: null
+      hardness:
+        value: 1750.0
+        unit: HV
+        confidence: 88
+        description: Vickers hardness for annealed carbon steel
+        min: 0.5
+        max: 3500
+      tensileStrength:
+        value: 1501.5
+        unit: MPa
+        confidence: 90
+        description: Typical tensile strength for mild carbon steel
+        min: 3.0
+        max: 3000.0
+      youngsModulus:
+        value: 200
+        unit: GPa
+        confidence: 95
+        description: Young's modulus of elasticity for steel
+        min: 5
+        max: 411
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
+applications:
+- Automotive
+- Construction
+- Manufacturing
+- Oil & Gas
+- Rail Transport
+- Shipbuilding
+machineSettings:
+  powerRange:
+    value: 100
+    unit: W
+    confidence: 92
+    description: Optimal average power for Steel surface cleaning without substrate
+      damage
+    min: 80
+    max: 120
+  wavelength:
+    value: 1064
+    unit: nm
+    confidence: 88
+    description: Near-IR wavelength with good Steel absorption for efficient cleaning
+    min: 1030
+    max: 1070
+  spotSize:
+    value: 50
+    unit: μm
+    confidence: 84
+    description: Optimal spot diameter for balancing cleaning efficiency and processing
+      speed
+    min: 30
+    max: 100
+  repetitionRate:
+    value: 50
+    unit: kHz
+    confidence: 87
+    description: High repetition rate for efficient area coverage while maintaining
+      cleaning quality
+    min: 20
+    max: 100
+  pulseWidth:
+    value: 10
+    unit: ns
+    confidence: 85
+    description: Nanosecond pulse duration for effective contaminant removal with
+      minimal thermal diffusion
+    min: 5
+    max: 20
+  scanSpeed:
+    value: 500
+    unit: mm/s
+    confidence: 86
+    description: Optimal scanning speed for uniform cleaning coverage
+    min: 200
+    max: 1000
+  fluence:
+    value: 6.0
+    unit: J/cm²
+    confidence: 92
+    description: Energy density threshold for effective Steel cleaning - Energy density
+      threshold for effective oxide and contaminant removal from metallic surfaces
+    min: 3.0
+    max: 12.0
+  fluenceThreshold:
+    value: 2.5
+    unit: J/cm²
+    confidence: 89
+    description: Minimum fluence required for effective contaminant removal from Steel
+      surfaces
+    min: 1.5
+    max: 4.0
+  overlapRatio:
+    value: 50
+    unit: '%'
+    confidence: 83
+    description: Optimal pulse overlap for uniform cleaning without excessive thermal
+      buildup
+    min: 30
+    max: 70
+  passCount:
+    value: 2
+    unit: passes
+    confidence: 85
+    description: Recommended number of passes for complete contaminant removal
+    min: 1
+    max: 5
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author:
+  id: 3
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  image: /images/author/ikmanda-roswati.jpg
+images:
+  hero:
+    alt: Steel surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/steel-laser-cleaning-hero.jpg
+environmentalImpact:
+- benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+  sustainabilityBenefit: ''
+- benefit: Water Usage Reduction
+  description: Dry process requires no water
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+- benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+subtitle: Steel's composition and surface conditions can vary significantly, unlike
+  more uniform ferrous metals. This variability demands adaptable laser settings to
+  effectively remove contaminants without damaging the base material.
+outcomeMetrics:
+- metric: Contaminant Removal Efficiency
+  description: Percentage of target contaminants successfully removed from surface
+  measurementMethods:
+  - Before/after microscopy
+  - Chemical analysis
+  - Mass spectrometry
+  typicalRanges: 95-99.9% depending on application and material
+  factorsAffecting:
+  - Contamination type
+  - Adhesion strength
+  - Surface geometry
+  units: []
+- metric: Processing Speed
+  description: Rate of surface area processed per unit time
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- metric: Surface Quality Preservation
+  description: Maintenance of original surface characteristics after cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+- metric: Thermal Damage Avoidance
+  description: Prevention of heat-related material alterations during cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+caption:
+  beforeText: At 500x magnification, the steel surface is obscured by a complex, non-uniform
+    contamination layer. This layer, ranging from 5 to 50 micrometers thick, consists
+    of porous iron oxide (Fe₂O₃/Fe₃O₄) scales, carbonaceous soot deposits, and embedded
+    particulate. The underlying steel's crystalline grain structure is entirely hidden.
+    The texture is highly irregular, with fissures and protrusions creating a high
+    surface area that promotes further corrosion. The reflectivity is significantly
+    reduced from steel's typical 55-60% due to this rough, light-absorbing crust.
+  afterText: Laser cleaning has completely removed the contamination layer, revealing
+    the pristine, underlying steel substrate. The surface now displays a distinct,
+    clean grain structure with a micro-roughness of approximately 0.8 µm Ra. The laser's
+    selective ablation has vaporized contaminants without melting the steel bulk,
+    preserving the original metallurgy. This results in a surface with high reflectivity,
+    free of oxides and residues, and restored to its base material integrity.
+  description: Microscopic analysis of steel surface before and after laser cleaning
+    treatment
+  alt: Microscopic view of steel surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - steel_specific
+    contaminationProfile: steel surface contamination
+  microscopy:
+    parameters: Microscopic analysis of Steel
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-10-02T00:00:00.000000Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: template_caption
+  author: Ikmanda Roswati
+  materialProperties:
+    materialType: Metal
+    analysisMethod: template_microscopy
+  imageUrl:
+    alt: Microscopic view of Steel surface after laser cleaning showing detailed surface
+      structure
+    url: /images/material/steel-laser-cleaning-micro.jpg
+tags:
+- metal
+- manufacturing
+- aerospace
+- automotive
+- decoating
+- oxide-removal
+- surface-preparation
+- reflective-surface
+- conductive
+- ikmanda-roswati
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:21.872013'
+  sources_added: 1
+processing:
+  last_sync: '2025-10-15T19:39:36.966091Z'
+  sync_source: Materials.yaml

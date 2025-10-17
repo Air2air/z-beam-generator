@@ -1,0 +1,350 @@
+name: Iron
+category: metal
+subcategory: ferrous
+title: Iron Laser Cleaning
+description: Laser cleaning parameters for Iron
+materialProperties:
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    properties:
+      laserAbsorption:
+        value: 64.2
+        unit: '%'
+        confidence: 95
+        description: laserAbsorption from Materials.yaml
+        min: 0.02
+        max: 100
+      laserReflectivity:
+        value: 64.2
+        unit: '%'
+        confidence: 95
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 98
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with
+          surface condition'
+      specificHeat:
+        value: 449.0
+        unit: J·kg⁻¹·K⁻¹
+        confidence: 91
+        description: Specific heat capacity at 25°C
+        min: 100
+        max: 900
+      thermalConductivity:
+        value: 80.2
+        unit: W/(m·K)
+        confidence: 85
+        description: Thermal conductivity of pure iron at 20°C
+        min: 15
+        max: 400
+        source: MatWeb Materials Database
+        notes: Typical range for metal materials at room temperature
+      thermalDiffusivity:
+        value: 23.1
+        unit: mm²/s
+        confidence: 88
+        description: Thermal diffusivity at room temperature
+        min: 0.2
+        max: 174
+      thermalExpansion:
+        value: 11.8
+        unit: 10^-6/K
+        confidence: 90
+        description: Linear thermal expansion coefficient at 25°C
+        min: 0.5
+        max: 29.1
+      absorptionCoefficient:
+        value: 0.65
+        unit: cm⁻¹
+        confidence: 82
+        description: Optical absorption coefficient for 1064 nm wavelength
+        min: 0.03
+        max: 12000000.0
+      thermalShockResistance:
+        value: 380
+        unit: W/m
+        confidence: 83
+        description: Thermal shock resistance parameter
+        min: 350.0
+        max: 380.0
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
+    properties:
+      density:
+        value: 7.874
+        unit: g/cm³
+        confidence: 98
+        description: Density of pure iron at room temperature
+        min: 0.53
+        max: 22.6
+      oxidationResistance:
+        value: 700.0
+        unit: °C
+        confidence: 80
+        description: Oxidation rate in air at 500°C
+        min: 200
+        max: 1200
+        source: ASM Metals Handbook - Corrosion
+        notes: 'Oxidation onset: Steel 200-400°C, Stainless 400-800°C, Ni alloys 800-1200°C'
+      crystallineStructure:
+        value: BCC
+        unit: crystal system
+        confidence: 98
+        description: Body-centered cubic structure (alpha-iron) at room temperature
+        min: null
+        max: null
+      electricalResistivity:
+        value: 9.710000000000002e-08
+        unit: Ω·m
+        confidence: 92
+        description: Electrical resistivity at 20°C
+        min: 0.197
+        max: 48.0
+      hardness:
+        value: 80
+        unit: HV
+        confidence: 86
+        description: Vickers hardness of pure annealed iron
+        min: 0.5
+        max: 3500
+      tensileStrength:
+        value: 210.0
+        unit: MPa
+        confidence: 85
+        description: Ultimate tensile strength of annealed pure iron
+        min: 3.0
+        max: 3000.0
+      youngsModulus:
+        value: 211.5
+        unit: GPa
+        confidence: 95
+        description: Young's modulus of elasticity
+        min: 5
+        max: 411
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
+applications:
+- Aerospace
+- Automotive Manufacturing
+- Marine Engineering
+- Cultural Heritage Conservation
+- Power Generation
+- Rail Transportation
+- Heavy Equipment Manufacturing
+- Medical Device Manufacturing
+- Oil and Gas Infrastructure
+- Electronics Manufacturing
+machineSettings:
+  powerRange:
+    value: 100
+    unit: W
+    confidence: 92
+    description: Optimal average power for Iron oxide removal without substrate damage
+    min: 80
+    max: 120
+  wavelength:
+    value: 1064
+    unit: nm
+    confidence: 88
+    description: Near-IR wavelength with good absorption in iron oxides and minimal
+      substrate damage
+    min: 1030
+    max: 1070
+  spotSize:
+    value: 50
+    unit: μm
+    confidence: 84
+    description: Optimal spot size for balancing cleaning efficiency and coverage
+    min: 30
+    max: 100
+  repetitionRate:
+    value: 100
+    unit: kHz
+    confidence: 87
+    description: High repetition rate for efficient cleaning coverage
+    min: 50
+    max: 200
+  pulseWidth:
+    value: 10
+    unit: ns
+    confidence: 85
+    description: Nanosecond pulse duration for efficient oxide layer removal
+    min: 5
+    max: 20
+  scanSpeed:
+    value: 1000
+    unit: mm/s
+    confidence: 86
+    description: Optimal scanning speed for uniform cleaning
+    min: 500
+    max: 2000
+  fluence:
+    value: 6.0
+    unit: J/cm²
+    confidence: 92
+    description: Energy density threshold for effective Iron cleaning - Energy density
+      threshold for effective oxide and contaminant removal from metallic surfaces
+    min: 3.0
+    max: 12.0
+  fluenceThreshold:
+    value: 2.5
+    unit: J/cm²
+    confidence: 89
+    description: Minimum fluence required for effective oxide layer removal
+    min: 1.5
+    max: 4.0
+  overlapRatio:
+    value: 50
+    unit: '%'
+    confidence: 83
+    description: Optimal overlap between adjacent scan lines for uniform cleaning
+    min: 40
+    max: 70
+  passCount:
+    value: 3
+    unit: passes
+    confidence: 85
+    description: Typical number of passes required for complete oxide removal
+    min: 1
+    max: 5
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author:
+  id: 3
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  image: /images/author/ikmanda-roswati.jpg
+images:
+  hero:
+    alt: Iron surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/iron-laser-cleaning-hero.jpg
+environmentalImpact:
+- benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+  sustainabilityBenefit: ''
+- benefit: Water Usage Reduction
+  description: Dry process requires no water
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+- benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+  applicableIndustries: []
+  quantifiedBenefits: ''
+  sustainabilityBenefit: ''
+subtitle: Iron is highly prone to oxidation, forming tenacious rust layers unlike
+  other ferrous metals. This requires careful adjustment of laser parameters to effectively
+  remove corrosion without damaging the underlying base metal.
+outcomeMetrics:
+- metric: Contaminant Removal Efficiency
+  description: Percentage of target contaminants successfully removed from surface
+  measurementMethods:
+  - Before/after microscopy
+  - Chemical analysis
+  - Mass spectrometry
+  typicalRanges: 95-99.9% depending on application and material
+  factorsAffecting:
+  - Contamination type
+  - Adhesion strength
+  - Surface geometry
+  units: []
+- metric: Processing Speed
+  description: Rate of surface area processed per unit time
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- metric: Surface Quality Preservation
+  description: Maintenance of original surface characteristics after cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+- metric: Thermal Damage Avoidance
+  description: Prevention of heat-related material alterations during cleaning
+  measurementMethods: []
+  typicalRanges: ''
+  factorsAffecting: []
+  units: []
+caption:
+  beforeText: At 500x magnification, the iron surface is obscured by a complex contamination
+    layer. A porous, amorphous oxide scale, primarily Fe2O3 and Fe3O4, forms a crust
+    ranging from 5-50 µm in thickness. This brittle, fractured layer exhibits poor
+    adhesion to the underlying metal substrate. Embedded particulate matter, including
+    carbonaceous soot and silica dust, is distributed non-uniformly across the surface,
+    creating a topographically rough and irregular profile that masks the native metallic
+    grain structure.
+  afterText: Following laser cleaning, the surface reveals a distinct transformation
+    at 500x magnification. The contamination layer has been completely ablated, exposing
+    the underlying polycrystalline grain structure of the pure iron substrate. The
+    surface now exhibits a clean, micro-rough texture with an average roughness (Ra)
+    below 2 µm, a direct result of the selective removal process. The well-defined
+    grain boundaries and a uniform, light-gray metallic appearance confirm the restoration
+    of the base material.
+  description: Microscopic analysis of iron surface before and after laser cleaning
+    treatment
+  alt: Microscopic view of iron surface showing laser cleaning effects
+  technicalAnalysis:
+    focus: surface_analysis
+    uniqueCharacteristics:
+    - iron_specific
+    contaminationProfile: iron surface contamination
+  microscopy:
+    parameters: Microscopic analysis of Iron
+    qualityMetrics: Surface improvement analysis
+  generation:
+    method: frontmatter_integrated_generation
+    timestamp: '2025-10-02T00:00:00.000000Z'
+    generator: FrontmatterCaptionGenerator
+    componentType: template_caption
+  author: Ikmanda Roswati
+  materialProperties:
+    materialType: Metal
+    analysisMethod: template_microscopy
+  imageUrl:
+    alt: Microscopic view of Iron surface after laser cleaning showing detailed surface
+      structure
+    url: /images/material/iron-laser-cleaning-micro.jpg
+tags:
+- metal
+- manufacturing
+- aerospace
+- automotive
+- decoating
+- oxide-removal
+- surface-preparation
+- conductive
+- reflective-surface
+- ikmanda-roswati
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:18.093420'
+  sources_added: 1
+processing:
+  last_sync: '2025-10-15T19:45:17.278366Z'
+  sync_source: Materials.yaml

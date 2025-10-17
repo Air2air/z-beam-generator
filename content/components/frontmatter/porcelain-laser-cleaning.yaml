@@ -4,71 +4,8 @@ subcategory: porcelain
 title: Porcelain Laser Cleaning
 description: Laser cleaning parameters for Porcelain
 materialProperties:
-  material_properties:
-    label: Material Properties
-    properties:
-      density:
-        value: 2.4
-        unit: g/cm³
-        confidence: 95
-        description: Typical density of vitrified porcelain ceramic
-        min: 2.2
-        max: 19.3
-      porosity:
-        value: 2.0
-        unit: '%'
-        confidence: 80
-        description: Typical porosity of vitrified porcelain
-        min: 0
-        max: 30
-        source: ASM Handbook - Ceramics and Glasses
-        notes: Dense ceramics 0-5%, porous ceramics 10-30%
-      chemicalStability:
-        value: 95
-        unit: '% resistance'
-        confidence: 93
-        description: Chemical resistance to common solvents and mild acids
-        min: 90.0
-        max: 95.0
-    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
-      finish, contaminant adhesion, and process efficiency'
-    percentage: 40.0
-  structural_response:
-    label: Structural Response Properties
-    properties:
-      hardness:
-        value: 7.0
-        unit: Mohs
-        confidence: 94
-        description: Mohs hardness scale for porcelain
-        min: 1.0
-        max: 10.0
-      tensileStrength:
-        value: 50.0
-        unit: MPa
-        confidence: 95
-        description: tensileStrength from Materials.yaml
-        min: 50
-        max: 1000
-      youngsModulus:
-        value: 70
-        unit: GPa
-        confidence: 92
-        description: Elastic modulus of porcelain material
-        min: 50
-        max: 800
-      flexuralStrength:
-        value: 50
-        unit: MPa
-        confidence: 89
-        description: Three-point bending strength
-        min: 45.0
-        max: 3500.0
-    description: 'Physical reaction to thermal stress: how material responds structurally
-      to rapid heating'
-    percentage: 18.2
-  energy_coupling:
-    label: Energy Coupling Properties
+  laser_material_interaction:
+    label: Laser-Material Interaction
     properties:
       laserAbsorption:
         value: 32.7
@@ -84,25 +21,12 @@ materialProperties:
         description: laserReflectivity from Materials.yaml
         min: 5
         max: 90
-      reflectivity:
-        value: 0.12
-        unit: dimensionless
-        confidence: 83
-        description: Surface reflectivity at 1064 nm wavelength
-        min: 0.12
-        max: 0.45
-      ablationThreshold:
-        value: 2.5
-        unit: J/cm²
-        confidence: 75
-        description: Laser ablation threshold for nanosecond pulses at 1064 nm
-        min: 1.5
-        max: 5.0
-        source: RP Photonics Encyclopedia, Oxide Ceramics
-        notes: Alumina, zirconia, silicon carbide - nanosecond pulses
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        notes: Typical ceramics 10-30% at 1064nm, varies with composition and surface
+          finish
       specificHeat:
-        value: 1080
-        unit: J/kg·K
+        value: 1085.0
+        unit: J·kg⁻¹·K⁻¹
         confidence: 87
         description: Specific heat capacity at room temperature
         min: 200
@@ -125,30 +49,69 @@ materialProperties:
         max: 120
       thermalExpansion:
         value: 6.0
-        unit: ×10⁻⁶/K
+        unit: 10^-6 /K
         confidence: 85
         description: Coefficient of thermal expansion (20-700°C)
         min: 0.1
         max: 14
-      thermalDestruction:
-        point:
-          value: 1923.15
-          unit: K
-          min: 1000
-          max: 3827
-          confidence: 95
-          description: Thermal destruction point
-        type: thermal_shock
       absorptionCoefficient:
         value: 0.85
-        unit: dimensionless
+        unit: cm⁻¹
         confidence: 82
         description: Optical absorption coefficient for common laser wavelengths
         min: 0.8
         max: 0.85
-    description: 'First-order photon coupling: how laser energy enters the material
-      vs. reflects away'
-    percentage: 16.4
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
+    properties:
+      density:
+        value: 2.4
+        unit: g/cm³
+        confidence: 95
+        description: Typical density of vitrified porcelain ceramic
+        min: 2.2
+        max: 19.3
+      chemicalStability:
+        value: 95
+        unit: '% resistance'
+        confidence: 93
+        description: Chemical resistance to common solvents and mild acids
+        min: 90.0
+        max: 95.0
+      hardness:
+        value: 7.0
+        unit: Mohs
+        confidence: 94
+        description: Mohs hardness scale for porcelain
+        min: 1.0
+        max: 10.0
+      tensileStrength:
+        value: 50.0
+        unit: MPa
+        confidence: 95
+        description: tensileStrength from Materials.yaml
+        min: 50
+        max: 1000
+      youngsModulus:
+        value: 70.3
+        unit: GPa
+        confidence: 92
+        description: Elastic modulus of porcelain material
+        min: 50
+        max: 800
+      flexuralStrength:
+        value: 50
+        unit: MPa
+        confidence: 89
+        description: Three-point bending strength
+        min: 45.0
+        max: 3500.0
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
 applications:
 - Cultural Heritage
 - Medical Devices
@@ -214,14 +177,6 @@ machineSettings:
       density threshold for effective contaminant removal from ceramic surfaces
     min: 2.0
     max: 8.0
-  fluenceThreshold:
-    value: 2.5
-    unit: J/cm²
-    confidence: 89
-    description: Energy density threshold for effective contaminant removal without
-      Porcelain damage
-    min: 1.8
-    max: 3.5
   overlapRatio:
     value: 40
     unit: '%'
@@ -377,3 +332,10 @@ tags:
 - thermal-sensitive
 - thermal-resistant
 - ikmanda-roswati
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:20.116653'
+  sources_added: 1
+processing:
+  last_sync: '2025-10-15T19:39:35.826728Z'
+  sync_source: Materials.yaml

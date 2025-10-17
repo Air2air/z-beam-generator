@@ -4,8 +4,89 @@ subcategory: quartz glass
 title: Quartz Glass Laser Cleaning
 description: Laser cleaning parameters for Quartz Glass
 materialProperties:
-  material_properties:
-    label: Material Properties
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    properties:
+      laserAbsorption:
+        value: 0.999
+        unit: 1/m
+        confidence: 95
+        description: laserAbsorption from Materials.yaml
+        min: 0.001
+        max: 10
+      laserReflectivity:
+        value: 3.6
+        unit: '%'
+        confidence: 95
+        description: laserReflectivity from Materials.yaml
+        min: 4
+        max: 92
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        notes: Typical glasses 4-8% at normal incidence, varies with composition and
+          wavelength
+      refractiveIndex:
+        value: 1.458
+        unit: ''
+        confidence: 98
+        description: Refractive index at 589 nm wavelength
+        min: 1.458
+        max: 1.76
+      laserDamageThreshold:
+        value: 15
+        unit: J/cm²
+        confidence: 85
+        description: Laser damage threshold for nanosecond pulses at 1064 nm
+        min: 2.5
+        max: 15.0
+      specificHeat:
+        value: 741.0
+        unit: J·kg⁻¹·K⁻¹
+        confidence: 90
+        description: Specific heat capacity at room temperature
+        min: 500
+        max: 900
+      thermalConductivity:
+        value: 1.38
+        unit: W/(m·K)
+        confidence: 85
+        description: Thermal conductivity at room temperature
+        min: 0.8
+        max: 1.4
+        source: MatWeb Materials Database
+        notes: Typical range for glass materials at room temperature
+      thermalDiffusivity:
+        value: 8.5
+        unit: mm²/s
+        confidence: 88
+        description: Thermal diffusivity at room temperature
+        min: 0.01
+        max: 15
+      thermalExpansion:
+        value: 0.55
+        unit: 10⁻⁶/K
+        confidence: 96
+        description: Coefficient of thermal expansion (20-300°C)
+        min: 0.1
+        max: 15
+      softeningPoint:
+        value: 1683.0
+        unit: K
+        confidence: 95
+        description: Temperature where glass transitions from rigid to pliable state
+        min: 820.0
+        max: 2040.0
+      transmissivity:
+        value: 93
+        unit: '%'
+        confidence: 95
+        description: Transmission in visible spectrum (2mm thickness)
+        min: 85.0
+        max: 93.0
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
     properties:
       density:
         value: 2.2
@@ -28,21 +109,8 @@ materialProperties:
         description: Amorphous structure with no long-range order
         min: null
         max: null
-      porosity:
-        value: 0
-        unit: '%'
-        confidence: 96
-        description: Non-porous material structure
-        min: 0.0
-        max: 0.1
-    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
-      finish, contaminant adhesion, and process efficiency'
-    percentage: 40.0
-  structural_response:
-    label: Structural Response Properties
-    properties:
       hardness:
-        value: 6.5
+        value: 7.0
         unit: Mohs
         confidence: 92
         description: Mohs hardness scale
@@ -56,118 +124,22 @@ materialProperties:
         min: 30
         max: 2000
       youngsModulus:
-        value: 73
+        value: 72.0
         unit: GPa
         confidence: 94
         description: Young's modulus of elasticity
         min: 10
         max: 400
       flexuralStrength:
-        value: 69
+        value: 50.0
         unit: MPa
         confidence: 85
         description: Flexural strength of pristine quartz glass
         min: 50.0
         max: 690.0
-    description: 'Physical reaction to thermal stress: how material responds structurally
-      to rapid heating'
-    percentage: 18.2
-  energy_coupling:
-    label: Energy Coupling Properties
-    properties:
-      laserAbsorption:
-        value: 0.999
-        unit: 1/m
-        confidence: 95
-        description: laserAbsorption from Materials.yaml
-        min: 0.001
-        max: 10
-      laserReflectivity:
-        value: 3.6
-        unit: '%'
-        confidence: 95
-        description: laserReflectivity from Materials.yaml
-        min: 4
-        max: 92
-      refractiveIndex:
-        value: 1.458
-        unit: dimensionless
-        confidence: 98
-        description: Refractive index at 589 nm wavelength
-        min: 1.458
-        max: 1.76
-      laserDamageThreshold:
-        value: 15
-        unit: J/cm²
-        confidence: 85
-        description: Laser damage threshold for nanosecond pulses at 1064 nm
-        min: 2.5
-        max: 15.0
-      ablationThreshold:
-        value: 2.5
-        unit: J/cm²
-        confidence: 80
-        description: Ablation threshold for femtosecond pulses at 800 nm
-        min: 2.0
-        max: 6.0
-        source: Laser-Induced Damage in Optical Materials (NIST)
-        notes: Silica, borosilicate - nanosecond pulses at 1064nm
-      specificHeat:
-        value: 750
-        unit: J/kg·K
-        confidence: 90
-        description: Specific heat capacity at room temperature
-        min: 500
-        max: 900
-      thermalConductivity:
-        value: 1.4
-        unit: W/(m·K)
-        confidence: 85
-        description: Thermal conductivity at room temperature
-        min: 0.8
-        max: 1.4
-        source: MatWeb Materials Database
-        notes: Typical range for glass materials at room temperature
-      thermalDiffusivity:
-        value: 0.85
-        unit: mm²/s
-        confidence: 88
-        description: Thermal diffusivity at room temperature
-        min: 0.01
-        max: 15
-      thermalExpansion:
-        value: 0.55
-        unit: ×10⁻⁶/°C
-        confidence: 96
-        description: Coefficient of thermal expansion (20-300°C)
-        min: 0.1
-        max: 15
-      thermalDestruction:
-        point:
-          value: 1683.0
-          unit: K
-          min: 500
-          max: 1723
-          confidence: 95
-          description: Thermal destruction point
-        type: melting
-      softeningPoint:
-        value: 1683.0
-        unit: K
-        confidence: 95
-        description: Temperature where glass transitions from rigid to pliable state
-        min: 820.0
-        max: 2040.0
-      transmissivity:
-        value: 93
-        unit: '%'
-        confidence: 95
-        description: Transmission in visible spectrum (2mm thickness)
-        min: 85.0
-        max: 93.0
-    description: 'First-order photon coupling: how laser energy enters the material
-      vs. reflects away'
-    percentage: 16.4
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
 applications:
 - Semiconductor Manufacturing
 - Aerospace & Defense
@@ -237,14 +209,6 @@ machineSettings:
       fractures
     min: 1.0
     max: 5.0
-  fluenceThreshold:
-    value: 2.5
-    unit: J/cm²
-    confidence: 89
-    description: Energy density threshold for effective contaminant removal without
-      damaging Quartz Glass substrate
-    min: 1.5
-    max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
@@ -261,13 +225,6 @@ machineSettings:
       safety margin
     min: 1
     max: 3
-  laserType:
-    value: Nd:YAG
-    unit: type
-    confidence: 90
-    description: Recommended laser type for Quartz Glass cleaning applications
-    min: null
-    max: null
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -408,3 +365,10 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - ikmanda-roswati
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:20.320143'
+  sources_added: 1
+processing:
+  last_sync: '2025-10-15T19:39:35.959855Z'
+  sync_source: Materials.yaml

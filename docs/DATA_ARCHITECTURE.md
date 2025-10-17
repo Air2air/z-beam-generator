@@ -1,10 +1,10 @@
 # Data Architecture: Complete Pipeline Normalization
 
 ## Overview
-This document describes the **fully normalized** data flow through the Z-Beam Generator system after October 2025 restructuring.
+This document describes the **fully normalized** data flow through the Z-Beam Generator system after October 2025 restructuring with 2-category materialProperties taxonomy.
 
-**Last Updated**: October 14, 2025  
-**Status**: ✅ Complete normalization achieved - all properties follow same pattern
+**Last Updated**: October 15, 2025  
+**Status**: ✅ Complete normalization achieved with 2-category system (laser_material_interaction + material_characteristics)
 
 ---
 
@@ -126,27 +126,67 @@ materials:
                        │
                        ↓
 ┌──────────────────────────────────────────────────────────────────────┐
-│ 4. Frontmatter YAML Output                                           │
+│ 4. Frontmatter YAML Output (2-Category Structure)                    │
 │    content/components/frontmatter/[material]-laser-cleaning.yaml     │
 │    materialProperties:                                                │
-│      physical_structural:                                             │
+│      laser_material_interaction:                                      │
+│        label: Laser-Material Interaction                              │
+│        percentage: 47.3                                               │
+│        properties:                                                    │
+│          laserAbsorption:                                             │
+│            value: 47.5     ← From materials.yaml                     │
+│            min: 0.02       ← From Categories.yaml (metal range)      │
+│            max: 100        ← From Categories.yaml (metal range)      │
+│            unit: %                                                    │
+│          thermalConductivity:                                         │
+│            value: 401      ← From materials.yaml                     │
+│            min: 15         ← From Categories.yaml (metal range)      │
+│            max: 400        ← From Categories.yaml (metal range)      │
+│            unit: W/(m·K)                                              │
+│      material_characteristics:                                        │
+│        label: Material Characteristics                                │
+│        percentage: 52.7                                               │
 │        properties:                                                    │
 │          density:                                                     │
 │            value: 8.96     ← From materials.yaml                     │
 │            min: 0.53       ← From Categories.yaml (metal range)      │
 │            max: 22.6       ← From Categories.yaml (metal range)      │
 │            unit: g/cm³                                                │
-│      thermal:                                                         │
-│        properties:                                                    │
-│          thermalDestruction:                                          │
-│            point:                                                     │
-│              value: 1357.77   ← From materials.yaml                  │
-│              min: -38.8       ← From Categories.yaml (metal range)   │
-│              max: 3422        ← From Categories.yaml (metal range)   │
-│              unit: K                                                  │
-│            type: melting      ← From category                        │
+│          hardness:                                                    │
+│            value: 369      ← From materials.yaml                     │
+│            min: 2.5        ← From Categories.yaml (metal range)      │
+│            max: 3500       ← From Categories.yaml (metal range)      │
+│            unit: MPa                                                  │
 └──────────────────────────────────────────────────────────────────────┘
 ```
+
+---
+
+## Two-Category materialProperties System
+
+### Overview (as of October 15, 2025)
+The frontmatter uses a **2-category taxonomy** for organizing material properties:
+
+1. **`laser_material_interaction`** (26 properties, 47.3%)
+   - Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+   - Includes: laserAbsorption, laserReflectivity, thermalConductivity, specificHeat, ablationThreshold, etc.
+
+2. **`material_characteristics`** (29 properties, 52.7%)
+   - Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes
+   - Includes: density, hardness, tensileStrength, youngsModulus, corrosionResistance, etc.
+
+### Scientific Rationale
+This structure aligns with:
+- **Materials Science**: Mechanical properties (hardness, strength, modulus) are material properties, not separate
+- **Laser Processing Physics**: Clear distinction between laser-material interaction and material nature
+- **Industry Standards**: Matches standard materials databases (ASM, MatWeb, NIST)
+
+### Migration from 3-Category System
+Previous system (DEPRECATED v4.0.0):
+- `energy_coupling` → Renamed to `laser_material_interaction`
+- `structural_response` + `material_properties` → Merged into `material_characteristics`
+
+See `docs/TWO_CATEGORY_SYSTEM.md` for complete details.
 
 ---
 
@@ -190,16 +230,15 @@ materials:
 #### Generated Frontmatter:
 ```yaml
 materialProperties:
-  thermal:
+  laser_material_interaction:
+    label: Laser-Material Interaction
     properties:
-      thermalDestruction:
-        point:
-          value: 1357.77    # From material
-          unit: K
-          confidence: 98
-          min: -38.8        # From category
-          max: 3422         # From category
-        type: melting       # From category
+      thermalDegradationPoint:
+        value: 1357.77    # From material
+        unit: °C
+        confidence: 98
+        min: -38.8        # From category
+        max: 3422         # From category
 ```
 
 ### Destruction Types by Category:

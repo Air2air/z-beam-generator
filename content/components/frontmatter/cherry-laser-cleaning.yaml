@@ -4,57 +4,8 @@ subcategory: hardwood
 title: Cherry Laser Cleaning
 description: Laser cleaning parameters for Cherry
 materialProperties:
-  material_properties:
-    label: Material Properties
-    properties:
-      density:
-        value: 0.63
-        unit: g/cm³
-        confidence: 92
-        description: Average density of cherry wood at 12% moisture content
-        min: 0.12
-        max: 1.25
-      porosity:
-        value: 55
-        unit: '%'
-        confidence: 75
-        description: Average porosity of cherry wood structure
-        min: 12
-        max: 65
-        source: Wood Science and Technology Database
-        notes: Hardwoods 12-45%, softwoods 30-65%
-    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
-      finish, contaminant adhesion, and process efficiency'
-    percentage: 40.0
-  structural_response:
-    label: Structural Response Properties
-    properties:
-      hardness:
-        value: 4220
-        unit: N
-        confidence: 85
-        description: Janka hardness test value
-        min: 20
-        max: 5000
-      tensileStrength:
-        value: 85
-        unit: MPa
-        confidence: 84
-        description: Tensile strength parallel to grain
-        min: 20
-        max: 200
-      youngsModulus:
-        value: 10.3
-        unit: GPa
-        confidence: 87
-        description: Modulus of elasticity parallel to grain
-        min: 5
-        max: 25
-    description: 'Physical reaction to thermal stress: how material responds structurally
-      to rapid heating'
-    percentage: 18.2
-  energy_coupling:
-    label: Energy Coupling Properties
+  laser_material_interaction:
+    label: Laser-Material Interaction
     properties:
       laserAbsorption:
         value: 30.0
@@ -70,34 +21,26 @@ materialProperties:
         description: laserReflectivity from Materials.yaml
         min: 10
         max: 60
-      reflectivity:
-        value: 0.25
-        unit: dimensionless
-        confidence: 80
-        description: Surface reflectivity for near-infrared laser wavelengths
-        min: 0.12
-        max: 0.25
-      ablationThreshold:
-        value: 1.2
-        unit: J/cm²
-        confidence: 81
-        description: Laser ablation threshold for nanosecond pulses at 1064 nm
-        min: 0.8
-        max: 1.8
+        source: Wood Science and Technology Database
+        notes: Light woods 40-60%, dark woods 10-25%, highly dependent on species
+          and finish
       specificHeat:
-        value: 1800
-        unit: J/kg·K
+        value: 1600.0
+        unit: J·kg⁻¹·K⁻¹
         confidence: 86
         description: Specific heat capacity at room temperature
         min: 800
         max: 2500
       thermalConductivity:
         value: 0.15
-        unit: W/m·K
+        unit: W/(m·K)
         confidence: 88
         description: Thermal conductivity perpendicular to grain at room temperature
         min: 0.04
         max: 0.4
+        source: Wood Handbook - Wood as an Engineering Material (USDA Forest Service)
+        notes: Across grain 0.04-0.2 W/m·K, along grain can be 2-3x higher; moisture
+          content affects values
       thermalDiffusivity:
         value: 0.16
         unit: mm²/s
@@ -106,32 +49,61 @@ materialProperties:
         min: 0.0001
         max: 0.4
       thermalExpansion:
-        value: 4.5e-05
-        unit: 1/°C
+        value: 3.7
+        unit: 10^-6/K
         confidence: 82
         description: Coefficient of thermal expansion perpendicular to grain
         min: 3.0
         max: 60
-      thermalDestruction:
-        point:
-          value: 427.0
-          unit: °C
-          min: 200
-          max: 500
-          confidence: 92
-          description: Thermal destruction point
-        type: carbonization
+        metadata:
+          last_verified: '2025-10-15T15:43:03.194799'
+          verification_source: automatic_fix
+          fix_reason: 'Scientific notation: 4.5e-05 → 45.0'
       absorptionCoefficient:
         value: 0.75
-        unit: dimensionless
+        unit: cm⁻¹
         confidence: 82
         description: Optical absorption coefficient for common laser wavelengths (1064
           nm)
         min: 0.75
         max: 0.85
-    description: 'First-order photon coupling: how laser energy enters the material
-      vs. reflects away'
-    percentage: 16.4
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
+    properties:
+      density:
+        value: 0.62
+        unit: g/cm³
+        confidence: 92
+        description: Average density of cherry wood at 12% moisture content
+        min: 0.12
+        max: 1.25
+      hardness:
+        value: 84.3
+        unit: N/mm²
+        confidence: 85
+        description: Janka hardness test value
+        min: 20
+        max: 5000
+      tensileStrength:
+        value: 95.0
+        unit: MPa
+        confidence: 84
+        description: Tensile strength parallel to grain
+        min: 20
+        max: 200
+      youngsModulus:
+        value: 10.0
+        unit: GPa
+        confidence: 87
+        description: Modulus of elasticity parallel to grain
+        min: 5
+        max: 25
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
 applications:
 - Furniture Manufacturing
 - Musical Instrument Manufacturing
@@ -196,13 +168,6 @@ machineSettings:
       or thermal damage
     min: 2.0
     max: 8.0
-  fluenceThreshold:
-    value: 2.5
-    unit: J/cm²
-    confidence: 89
-    description: Fluence threshold for effective contaminant removal from Cherry surface
-    min: 1.5
-    max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
@@ -346,3 +311,10 @@ tags:
 - thermal-sensitive
 - industrial-grade
 - todd-dunning
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:16.481236'
+  sources_added: 2
+processing:
+  last_sync: '2025-10-15T19:39:33.415617Z'
+  sync_source: Materials.yaml

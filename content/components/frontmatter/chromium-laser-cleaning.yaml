@@ -4,8 +4,69 @@ subcategory: specialty
 title: Chromium Laser Cleaning
 description: Laser cleaning parameters for Chromium
 materialProperties:
-  material_properties:
-    label: Material Properties
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    properties:
+      laserAbsorption:
+        value: 60.5
+        unit: '%'
+        confidence: 92
+        description: laserAbsorption from Materials.yaml
+        min: 0.02
+        max: 100
+      laserReflectivity:
+        value: 64.2
+        unit: '%'
+        confidence: 95
+        description: laserReflectivity from Materials.yaml
+        min: 5
+        max: 98
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with
+          surface condition'
+      specificHeat:
+        value: 449.0
+        unit: J/(kg·K)
+        confidence: 94
+        description: Specific heat capacity at 25°C
+        min: 100
+        max: 900
+      thermalConductivity:
+        value: 93.9
+        unit: W/(m·K)
+        confidence: 85
+        description: Thermal conductivity at room temperature
+        min: 15
+        max: 400
+        source: MatWeb Materials Database
+        notes: Typical range for metal materials at room temperature
+      thermalDiffusivity:
+        value: 23.1
+        unit: mm²/s
+        confidence: 88
+        description: Thermal diffusivity at room temperature
+        min: 0.2
+        max: 174
+      thermalExpansion:
+        value: 4.9
+        unit: 10^-6/K
+        confidence: 90
+        description: Coefficient of linear thermal expansion (25°C)
+        min: 0.5
+        max: 29.1
+      absorptionCoefficient:
+        value: 0.45
+        unit: cm⁻¹
+        confidence: 85
+        description: Average absorption coefficient for common laser wavelengths (500-1100
+          nm)
+        min: 0.03
+        max: 12000000.0
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 47.3
+  material_characteristics:
+    label: Material Characteristics
     properties:
       density:
         value: 7.19
@@ -31,21 +92,15 @@ materialProperties:
         min: null
         max: null
       electricalResistivity:
-        value: 12.5
-        unit: nΩ·m
+        value: 1.25e-07
+        unit: Ω·m
         confidence: 93
         description: Electrical resistivity at 20°C
         min: 0.197
         max: 48.0
-    description: 'Intrinsic properties affecting secondary cleaning outcomes: surface
-      finish, contaminant adhesion, and process efficiency'
-    percentage: 40.0
-  structural_response:
-    label: Structural Response Properties
-    properties:
       hardness:
-        value: 8.5
-        unit: Mohs
+        value: 1060.0
+        unit: MPa
         confidence: 92
         description: Mohs hardness scale
         min: 0.5
@@ -64,119 +119,9 @@ materialProperties:
         description: Young's modulus of elasticity
         min: 5
         max: 411
-    description: 'Physical reaction to thermal stress: how material responds structurally
-      to rapid heating'
-    percentage: 18.2
-  energy_coupling:
-    label: Energy Coupling Properties
-    properties:
-      laserAbsorption:
-        value: 60.5
-        unit: '%'
-        confidence: 92
-        description: laserAbsorption from Materials.yaml
-        min: 0.02
-        max: 100
-      laserReflectivity:
-        value: 64.2
-        unit: '%'
-        confidence: 95
-        description: laserReflectivity from Materials.yaml
-        min: 5
-        max: 98
-      reflectivity:
-        at_1064nm:
-          min: 85
-          max: 98
-          unit: '%'
-        at_532nm:
-          min: 70
-          max: 95
-          unit: '%'
-        at_355nm:
-          min: 55
-          max: 85
-          unit: '%'
-        at_10640nm:
-          min: 95
-          max: 99
-          unit: '%'
-        source: Handbook of Optical Constants (Palik)
-        confidence: 85
-        measurement_context: Varies by laser wavelength
-      ablationThreshold:
-        nanosecond:
-          min: 2.0
-          max: 8.0
-          unit: J/cm²
-        picosecond:
-          min: 0.1
-          max: 2.0
-          unit: J/cm²
-        femtosecond:
-          min: 0.14
-          max: 1.7
-          unit: J/cm²
-        source: Marks et al. 2022, Precision Engineering
-        confidence: 90
-        measurement_context: Varies by pulse duration (ns/ps/fs)
-      specificHeat:
-        value: 449
-        unit: J/kg·K
-        confidence: 94
-        description: Specific heat capacity at 25°C
-        min: 100
-        max: 900
-      thermalConductivity:
-        value: 93.9
-        unit: W/(m·K)
-        confidence: 85
-        description: Thermal conductivity at room temperature
-        min: 15
-        max: 400
-        source: MatWeb Materials Database
-        notes: Typical range for metal materials at room temperature
-      thermalDiffusivity:
-        value: 22.3
-        unit: mm²/s
-        confidence: 88
-        description: Thermal diffusivity at room temperature
-        min: 0.2
-        max: 174
-      thermalExpansion:
-        value: 4.9
-        unit: μm/m·K
-        confidence: 90
-        description: Coefficient of linear thermal expansion (25°C)
-        min: 0.5
-        max: 29.1
-      thermalDestruction:
-        point:
-          value: 1863.0
-          unit: °C
-          min: -38.8
-          max: 3422
-          confidence: 95
-          description: Thermal destruction point
-        type: melting
-      absorptionCoefficient:
-        value: 0.45
-        unit: dimensionless
-        confidence: 85
-        description: Average absorption coefficient for common laser wavelengths (500-1100
-          nm)
-        min: 0.03
-        max: 12000000.0
-      vaporizationTemperature:
-        value: 2671
-        unit: °C
-        confidence: 95
-        description: Boiling point of chromium
-        min: null
-        max: null
-    description: 'First-order photon coupling: how laser energy enters the material
-      vs. reflects away'
-    percentage: 16.4
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.7
 applications:
 - Aerospace
 - Automotive
@@ -240,13 +185,6 @@ machineSettings:
       surfaces
     min: 3.0
     max: 12.0
-  fluenceThreshold:
-    value: 2.5
-    unit: J/cm²
-    confidence: 89
-    description: Minimum fluence required for effective Chromium oxide removal
-    min: 1.8
-    max: 3.5
   overlapRatio:
     value: 50
     unit: '%'
@@ -397,3 +335,10 @@ tags:
 - reflective-surface
 - conductive
 - todd-dunning
+metadata:
+  source_enhancement_applied: true
+  source_enhancement_date: '2025-10-15T14:27:16.557691'
+  sources_added: 1
+processing:
+  last_sync: '2025-10-15T19:45:16.711699Z'
+  sync_source: Materials.yaml

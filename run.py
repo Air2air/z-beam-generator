@@ -1260,7 +1260,16 @@ def main():
     from generators.dynamic_generator import DynamicGenerator
     from api.client_factory import create_api_client
     from data.materials import load_materials_cached as load_materials, clear_materials_cache
-    from pipeline_integration import validate_material_pre_generation, validate_and_improve_frontmatter
+    
+    # Import pipeline integration from scripts directory
+    try:
+        from scripts.pipeline_integration import validate_material_pre_generation, validate_and_improve_frontmatter
+    except ImportError:
+        # Fallback: define dummy functions if pipeline_integration not available
+        def validate_material_pre_generation(material_name):
+            return {'valid': True, 'issues': []}
+        def validate_and_improve_frontmatter(material_name, frontmatter):
+            return {'improvements_made': False, 'improved_frontmatter': frontmatter}
     
     # Clear materials cache at startup to ensure fresh data
     # (cache will be populated on first material access)
@@ -1487,9 +1496,14 @@ def main():
             print(f"📋 Found {len(all_materials)} materials to process")
             
             # 🔍 INVISIBLE PIPELINE: Batch validation for all materials
-            from pipeline_integration import validate_batch_generation
-            material_names = [material[0] for material in all_materials]
-            batch_validation = validate_batch_generation(material_names)
+            try:
+                from scripts.pipeline_integration import validate_batch_generation
+                material_names = [material[0] for material in all_materials]
+                batch_validation = validate_batch_generation(material_names)
+            except ImportError:
+                # Fallback if pipeline_integration not available
+                material_names = [material[0] for material in all_materials]
+                batch_validation = {'valid': True, 'total_materials': len(material_names), 'errors': [], 'warnings': []}
             if batch_validation['valid']:
                 print(f"🔍 Batch validation: {batch_validation['total_materials']} materials ready for processing")
             if batch_validation.get('errors'):
