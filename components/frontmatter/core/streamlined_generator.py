@@ -30,6 +30,9 @@ from components.frontmatter.services.pipeline_process_service import PipelinePro
 from components.frontmatter.services.property_manager import PropertyManager
 from components.frontmatter.core.property_processor import PropertyProcessor
 
+# Completeness validation (100% data coverage enforcement)
+from components.frontmatter.validation.completeness_validator import CompletenessValidator
+
 # Import unified exception classes from validation system
 from validation.errors import (
     PropertyDiscoveryError,
@@ -102,13 +105,15 @@ logger.info("Material-aware prompt system loaded successfully")
 
 class StreamlinedFrontmatterGenerator(APIComponentGenerator):
     """Consolidated frontmatter generator with integrated services"""
-    def __init__(self, api_client=None, config=None):
+    def __init__(self, api_client=None, config=None, **kwargs):
         """Initialize with required dependencies"""
         super().__init__("frontmatter")
         self.logger = logging.getLogger(__name__)
         # Store api_client and config for use
         self.api_client = api_client
         self.config = config
+        # Store additional kwargs for completeness validation
+        self._init_kwargs = kwargs
         
         # API client is only required for pure AI generation
         # For YAML-based generation with research enhancement, we can work without it
@@ -121,7 +126,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         # Load materials research data for range calculations
         self._load_materials_research_data()
         # Initialize integrated services
-        self.validation_helpers = ValidationHelpers()
+        # Note: ValidationHelpers removed in Step 6 - using ValidationService instead
         self.field_ordering_service = FieldOrderingService()
         # Enhanced validation setup (REQUIRED)
         try:
@@ -129,6 +134,12 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             self.logger.info("Enhanced validation initialized")
         except Exception as e:
             raise ConfigurationError(f"Enhanced validation required but setup failed: {e}")
+        
+        # Completeness validation (100% data coverage)
+        # Check for --enforce-completeness flag from kwargs
+        strict_mode = self._init_kwargs.get('enforce_completeness', False)
+        self.completeness_validator = CompletenessValidator(strict_mode=strict_mode)
+        self.logger.info(f"Completeness validation initialized (strict_mode={strict_mode})")
         # Material-aware prompt system (REQUIRED)
         try:
             self.material_aware_generator = MaterialAwarePromptGenerator()
@@ -307,6 +318,12 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 content = self._generate_from_api(material_name, {})
             # Apply field ordering (handles both flat and categorized structures)
             ordered_content = self.field_ordering_service.apply_field_ordering(content)
+            
+            # Completeness validation and legacy migration
+            ordered_content = self._apply_completeness_validation(
+                ordered_content, material_name, material_data.get('category', 'metal')
+            )
+            
             # Add prompt chain verification metadata
             ordered_content = self._add_prompt_chain_verification(ordered_content)
             # Enforce camelCase for caption keys (fix snake_case if present)
@@ -387,6 +404,122 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         content['prompt_chain_verification'] = verification
         self.logger.info(f"✅ Added prompt chain verification metadata: {len(verification)} fields")
         return content
+    
+    def _apply_completeness_validation(
+        self,
+        frontmatter: Dict,
+        material_name: str,
+        material_category: str
+    ) -> Dict:
+        """
+        Apply 100% completeness validation and automatic remediation.
+        
+        Steps:
+        1. Detect and migrate legacy qualitative properties
+        2. Validate all sections are populated
+        3. Check essential properties coverage
+        4. Validate all values have confidence scores
+        5. Trigger research for missing properties (if not strict mode)
+        
+        Args:
+            frontmatter: Generated frontmatter content
+            material_name: Material name
+            material_category: Category (metal, plastic, etc.)
+            
+        Returns:
+            Updated frontmatter with completeness fixes applied
+            
+        Raises:
+            GenerationError: If strict mode enabled and data incomplete
+        """
+        self.logger.info(f"🔍 Validating 100% data completeness for {material_name}...")
+        
+        # Step 1: Migrate legacy qualitative properties
+        if frontmatter.get('materialProperties'):
+            updated_props, migration_log = self.completeness_validator.migrate_legacy_qualitative(
+                frontmatter['materialProperties']
+            )
+            if migration_log:
+                self.logger.info(f"✅ Migrated {len(migration_log)} legacy qualitative properties")
+                for log_entry in migration_log:
+                    self.logger.debug(f"  - {log_entry}")
+                frontmatter['materialProperties'] = updated_props
+        
+        # Step 2: Validate completeness
+        result = self.completeness_validator.validate_completeness(
+            frontmatter, material_name, material_category
+        )
+        
+        # Log warnings
+        for warning in result.warnings:
+            self.logger.warning(f"⚠️ {warning}")
+        
+        # Step 3: Handle empty sections - trigger research
+        if result.empty_sections:
+            self.logger.warning(
+                f"⚠️ Empty sections detected: {', '.join(result.empty_sections)}"
+            )
+            
+            # Auto-remediate: trigger property research if properties empty
+            if 'materialProperties' in result.empty_sections:
+                self.logger.info("🔧 Auto-remediating: researching missing properties...")
+                try:
+                    # Use property_manager to discover and research
+                    if hasattr(self, 'property_manager') and self.property_manager:
+                        research_result = self.property_manager.discover_and_research_properties(
+                            material_name=material_name,
+                            material_category=material_category,
+                            existing_properties={}
+                        )
+                        
+                        # Apply discovered properties
+                        if research_result.quantitative_properties:
+                            categorized = self.property_processor.organize_properties_by_category(
+                                research_result.quantitative_properties
+                            )
+                            frontmatter['materialProperties'] = self.property_processor.apply_category_ranges(
+                                categorized, material_category
+                            )
+                            self.logger.info(f"✅ Auto-remediated: added {len(research_result.quantitative_properties)} properties")
+                except Exception as e:
+                    self.logger.error(f"Failed to auto-remediate properties: {e}")
+            
+            # Re-validate after remediation
+            result = self.completeness_validator.validate_completeness(
+                frontmatter, material_name, material_category
+            )
+        
+        # Step 4: Check if complete
+        if not result.is_complete:
+            error_summary = (
+                f"Data completeness validation failed for {material_name}:\n"
+                f"  - Missing properties: {len(result.missing_properties)}\n"
+                f"  - Empty sections: {len(result.empty_sections)}\n"
+                f"  - Errors: {len(result.error_messages)}"
+            )
+            
+            if self.completeness_validator.strict_mode:
+                # Strict mode: fail generation
+                self.logger.error(f"❌ STRICT MODE: {error_summary}")
+                for error in result.error_messages:
+                    self.logger.error(f"  - {error}")
+                raise GenerationError(
+                    f"STRICT MODE: Incomplete data for {material_name}. "
+                    f"Missing {len(result.missing_properties)} properties, "
+                    f"{len(result.empty_sections)} empty sections. "
+                    f"Run with --data-gaps to see research priorities."
+                )
+            else:
+                # Non-strict: log warnings and continue
+                self.logger.warning(f"⚠️ {error_summary}")
+                for error in result.error_messages[:5]:  # Show first 5
+                    self.logger.warning(f"  - {error}")
+                if len(result.error_messages) > 5:
+                    self.logger.warning(f"  ... and {len(result.error_messages) - 5} more")
+        else:
+            self.logger.info(f"✅ 100% data completeness validated for {material_name}")
+        
+        return frontmatter
 
     def _generate_from_yaml(self, material_name: str, material_data: Dict) -> Dict:
         """Generate frontmatter using YAML data with AI enhancement"""

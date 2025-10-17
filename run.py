@@ -1666,7 +1666,8 @@ def main():
                     component_type=component_type,
                     api_client=api_client,
                     frontmatter_data=frontmatter_data,
-                    material_data=material_info
+                    material_data=material_info,
+                    enforce_completeness=args.enforce_completeness if hasattr(args, 'enforce_completeness') else False
                 )
                 
                 if result.success:

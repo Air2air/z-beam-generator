@@ -154,6 +154,7 @@ class DynamicGenerator:
         author_info: Optional[Dict] = None,
         frontmatter_data: Optional[Dict] = None,
         material_data: Optional[Dict] = None,
+        **kwargs  # Pass through additional flags like enforce_completeness
     ) -> ComponentResult:
         """Generate a single component for a material"""
         try:
@@ -227,6 +228,7 @@ class DynamicGenerator:
                 api_client=api_client,
                 author_info=author_info,
                 frontmatter_data=frontmatter_data,
+                **kwargs  # Pass through flags like enforce_completeness
             )
 
             # Convert to expected format with token_count
