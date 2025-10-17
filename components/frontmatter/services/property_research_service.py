@@ -23,8 +23,8 @@ from typing import Dict, Optional, Callable
 from components.frontmatter.research.property_value_researcher import PropertyValueResearcher
 from validation.errors import PropertyDiscoveryError
 
-# Phase 3.3: Import validation utilities
-from components.frontmatter.services.validation_utils import ValidationUtils
+# Import validation utilities (Step 4 refactored)
+from components.frontmatter.services.validation_service import ValidationService
 
 # Phase 4: Import qualitative property definitions
 from components.frontmatter.qualitative_properties import (
@@ -417,7 +417,7 @@ class PropertyResearchService:
             properties[category_field] = {
                 'value': thermal_value,
                 'unit': thermal_unit or '°C',
-                'confidence': ValidationUtils.normalize_confidence(thermal_confidence),
+                'confidence': ValidationService.normalize_confidence(thermal_confidence),
                 'description': thermal_description or thermal_info['description'],
                 'min': None,
                 'max': None

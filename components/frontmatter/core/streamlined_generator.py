@@ -590,7 +590,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                         point_structure = {
                             'value': point_data.get('value'),
                             'unit': point_data.get('unit', '°C'),
-                            'confidence': ValidationUtils.normalize_confidence(point_data.get('confidence', 0)),
+                            'confidence': ValidationService.normalize_confidence(point_data.get('confidence', 0)),
                             'description': point_data.get('description', 'Thermal destruction point')
                         }
                         # Use pre-loaded category ranges (dict lookup)
@@ -658,7 +658,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                         properties[prop_name] = {
                             'value': yaml_prop.get('value'),
                             'unit': yaml_prop.get('unit', ''),
-                            'confidence': ValidationUtils.normalize_confidence(confidence),
+                            'confidence': ValidationService.normalize_confidence(confidence),
                             'description': yaml_prop.get('description', f'{prop_name} from Materials.yaml')
                         }
                         # Use pre-loaded category ranges

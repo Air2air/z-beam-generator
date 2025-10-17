@@ -125,9 +125,9 @@ environmentalImpact:
   applicableIndustries: []
   quantifiedBenefits: ''
   sustainabilityBenefit: ''
-subtitle: The biggest challenge with cast iron is its inconsistent graphite content,
-  which can cause uneven cleaning. You'll need very-good power control to remove oxides
-  without altering the underlying metal.
+subtitle: The biggest challenge with cast iron is its variable composition, which
+  can cause inconsistent cleaning results. You'll need to adjust the laser's fluence
+  carefully to remove oxides without affecting the underlying metal.
 materialCharacteristics: {}
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
@@ -164,33 +164,17 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the cast iron surface is obscured by a non-uniform,
-    multi-layered contamination matrix. A porous, carbon-rich crust, approximately
-    10-50 µm thick, forms the outermost layer, embedding fine particulate matter.
-    Beneath this, a continuous oxide layer (mill scale) exhibits micro-cracking and
-    spallation. The underlying metal's graphite flakes and microporosity are completely
-    masked, with contamination filling surface valleys and creating a textured, high-relief
-    topography.
-  afterText: 'Laser cleaning removes the contamination matrix, revealing the true
-    metallographic structure of the cast iron substrate. The surface now displays
-    a distinct contrast between the ferritic or pearlitic metal matrix and the exposed
-    graphite flakes, which appear as dark, elongated particles uniformly distributed
-    throughout the material. The original microporosity, inherent to the casting process,
-    is also clearly visible as fine, dark voids.
-
-
-    The removal of the 10-50 µm crust and oxide layers results in a significant reduction
-    in surface roughness. The previous high-relief topography is replaced by a more
-    uniform surface profile that corresponds directly to the underlying metal''s microstructure.
-    The process eliminates the micro-cracks and spallation present in the mill scale,
-    leaving a chemically pure, oxide-free surface.
-
-
-    This cleaned state provides an optimal foundation for subsequent processes. The
-    exposed, active metal surface enhances adhesion for coatings like paint or plating,
-    while the removal of embedded particulate eliminates potential initiation sites
-    for corrosion. The surface is now defined by its intrinsic metallurgical features
-    rather than extrinsic contaminants.'
+  beforeText: At 500x magnification, the cast iron surface is obscured by a thick,
+    non-uniform contamination layer, typically 10-50 micrometers deep. This layer
+    consists of amorphous carbonaceous deposits and embedded iron oxide (Fe₃O₄) particles,
+    which fill the natural graphite flake valleys and micro-cracks of the substrate.
+    The surface texture is irregular and porous, with contamination adhering more
+    densely within the material's inherent microstructural imperfections, creating
+    a discontinuous, high-relief topography.
+  afterText: The laser-cleaned surface reveals the underlying cast iron microstructure.
+    The contamination layer is entirely removed, exposing the distinct graphite flakes
+    and ferrite grain boundaries. The surface is now uniform, with restored micro-texture
+    and no residual oxides or carbon deposits.
   description: Microscopic analysis of cast iron surface before and after laser cleaning
     treatment
   alt: Microscopic view of cast iron surface showing laser cleaning effects
@@ -233,7 +217,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: false
   persona_country: N/A
   author_id: 0
-  verification_timestamp: '2025-10-17T19:37:41.174786+00:00'
+  verification_timestamp: '2025-10-17T20:05:20.874514+00:00'
   prompt_components_integrated: 1
   human_authenticity_focus: false
   cultural_adaptation_applied: false
