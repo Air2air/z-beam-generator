@@ -164,21 +164,33 @@ outcomeMetrics:
   factorsAffecting: []
   units: []
 caption:
-  beforeText: At 500x magnification, the cast iron surface is obscured by a complex,
-    multi-layered contamination matrix. A porous, amorphous carbon layer, approximately
-    10-30 micrometers thick, forms the base, embedding fine abrasive silica particles
-    (2-10 µm) from foundry sand. The surface topology is dominated by irregular, non-uniform
-    oxide scales (Fe3O4, Fe2O3), which form brittle, crystalline structures that penetrate
-    the metal's micro-pores. This composite layer completely masks the underlying
-    metallic grain structure and graphite flakes, creating a rough, high-friction
-    texture prone to initiating micro-cracks and corrosion.
-  afterText: Laser cleaning selectively ablates the contamination matrix, revealing
-    the true metallographic surface. The underlying pearlitic grain structure and
-    the distinct, lamellar morphology of the graphite flakes are now fully exposed
-    and sharply defined. The process removes all oxide scale and embedded particles,
-    restoring the original micro-topography. This results in a clean, metallurgically
-    pure surface with reduced microscopic roughness, which minimizes sites for corrosion
-    initiation.
+  beforeText: At 500x magnification, the cast iron surface is obscured by a non-uniform,
+    multi-layered contamination matrix. A porous, carbon-rich crust, approximately
+    10-50 µm thick, forms the outermost layer, embedding fine particulate matter.
+    Beneath this, a continuous oxide layer (mill scale) exhibits micro-cracking and
+    spallation. The underlying metal's graphite flakes and microporosity are completely
+    masked, with contamination filling surface valleys and creating a textured, high-relief
+    topography.
+  afterText: 'Laser cleaning removes the contamination matrix, revealing the true
+    metallographic structure of the cast iron substrate. The surface now displays
+    a distinct contrast between the ferritic or pearlitic metal matrix and the exposed
+    graphite flakes, which appear as dark, elongated particles uniformly distributed
+    throughout the material. The original microporosity, inherent to the casting process,
+    is also clearly visible as fine, dark voids.
+
+
+    The removal of the 10-50 µm crust and oxide layers results in a significant reduction
+    in surface roughness. The previous high-relief topography is replaced by a more
+    uniform surface profile that corresponds directly to the underlying metal''s microstructure.
+    The process eliminates the micro-cracks and spallation present in the mill scale,
+    leaving a chemically pure, oxide-free surface.
+
+
+    This cleaned state provides an optimal foundation for subsequent processes. The
+    exposed, active metal surface enhances adhesion for coatings like paint or plating,
+    while the removal of embedded particulate eliminates potential initiation sites
+    for corrosion. The surface is now defined by its intrinsic metallurgical features
+    rather than extrinsic contaminants.'
   description: Microscopic analysis of cast iron surface before and after laser cleaning
     treatment
   alt: Microscopic view of cast iron surface showing laser cleaning effects
@@ -221,7 +233,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: false
   persona_country: N/A
   author_id: 0
-  verification_timestamp: '2025-10-17T19:29:14.927104+00:00'
+  verification_timestamp: '2025-10-17T19:37:41.174786+00:00'
   prompt_components_integrated: 1
   human_authenticity_focus: false
   cultural_adaptation_applied: false
