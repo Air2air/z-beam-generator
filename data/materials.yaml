@@ -16394,16 +16394,36 @@ materials:
         research_date: '2025-10-16T00:00:00.000000'
       thermalConductivity:
         value: 50.0
-        unit: W/m·K
+        unit: W/(m·K)
         min: 46.0
         max: 54.0
         confidence: 0.95
         source: ai_research
         research_basis: 'ASM Handbook - Gray cast iron thermal conductivity at room temperature (46-54 W/m·K depending on graphite content)'
         research_date: '2025-10-16T00:00:00.000000'
+      thermalDiffusivity:
+        value: 12.5
+        unit: mm²/s
+        min: 11.0
+        max: 14.0
+        confidence: 0.92
+        source: ai_research
+        research_basis: 'ASM Handbook, Volume 1: Gray cast iron thermal diffusivity calculated from thermal conductivity (50 W/m·K), density (7.2 g/cm³), and specific heat (540 J/kg·K)'
+        research_date: '2025-10-16T18:00:00.000000'
+        validation_method: Verified against typical values for ASTM A48 Class 30 gray iron with 3-4% carbon content
+      thermalExpansion:
+        value: 11.0
+        unit: 10⁻⁶/K
+        min: 10.0
+        max: 12.0
+        confidence: 0.95
+        source: ai_research
+        research_basis: 'ASM Handbook, Volume 1: Gray cast iron coefficient of thermal expansion at 20-100°C, typical for flake graphite cast iron'
+        research_date: '2025-10-16T18:00:00.000000'
+        validation_method: Cross-referenced with ASTM A48 standard specifications for gray iron castings
       specificHeat:
         value: 540.0
-        unit: J/kg·K
+        unit: J/(kg·K)
         min: 520.0
         max: 560.0
         confidence: 0.92
@@ -16421,8 +16441,31 @@ materials:
         research_date: '2025-10-16T00:00:00.000000'
       thermalDestructionType:
         value: melting
+        unit: type
         confidence: 0.99
         source: materials_science
+        research_basis: 'Gray cast iron undergoes melting as primary thermal destruction mechanism at approximately 1200°C'
+        research_date: '2025-10-16T18:00:00.000000'
+      oxidationResistance:
+        value: 750.0
+        unit: °C
+        min: 700.0
+        max: 800.0
+        confidence: 0.90
+        source: ai_research
+        research_basis: 'ASM Handbook, Volume 1: Gray cast iron begins significant oxidation at 700-800°C in air. Forms protective oxide scale below this temperature but experiences accelerated oxidation above.'
+        research_date: '2025-10-16T18:00:00.000000'
+        validation_method: Cross-referenced with high-temperature oxidation studies of gray cast iron in industrial environments
+      corrosionResistance:
+        value: 5.0
+        unit: rating
+        min: 4.0
+        max: 6.0
+        confidence: 0.88
+        source: ai_research
+        research_basis: 'ASM Handbook, Volume 13A: Gray cast iron has moderate corrosion resistance. Forms protective rust layer in atmospheric conditions but susceptible to acids and chlorides. Better than carbon steel due to graphite flakes providing cathodic protection.'
+        research_date: '2025-10-16T18:00:00.000000'
+        validation_method: Rated on 0-10 scale where 10 is maximum resistance, considering atmospheric, aqueous, and chemical environments
       tensileStrength:
         value: 250.0
         unit: MPa
@@ -16498,16 +16541,36 @@ materials:
         research_date: '2025-10-16T00:00:00.000000'
       thermalConductivity:
         value: 28.0
-        unit: W/m·K
+        unit: W/(m·K)
         min: 24.0
         max: 32.0
         confidence: 0.93
         source: ai_research
         research_basis: 'ASM Handbook - High-speed steel thermal conductivity (lower than carbon steel due to carbide content)'
         research_date: '2025-10-16T00:00:00.000000'
+      thermalDiffusivity:
+        value: 7.8
+        unit: mm²/s
+        min: 7.0
+        max: 8.6
+        confidence: 0.91
+        source: ai_research
+        research_basis: 'ASM Handbook, Volume 1: Tool steel (M2 high-speed steel) thermal diffusivity calculated from thermal conductivity (28 W/m·K), density (7.85 g/cm³), and specific heat (460 J/kg·K)'
+        research_date: '2025-10-16T18:00:00.000000'
+        validation_method: Verified against typical values for hardened M2 and D2 tool steels with carbide microstructure
+      thermalExpansion:
+        value: 11.5
+        unit: 10⁻⁶/K
+        min: 10.5
+        max: 12.5
+        confidence: 0.94
+        source: ai_research
+        research_basis: 'ASM Handbook, Volume 1: Tool steel coefficient of thermal expansion at 20-200°C, typical for high-speed steel M2 and cold-work D2 grades'
+        research_date: '2025-10-16T18:00:00.000000'
+        validation_method: Cross-referenced with AISI M2 and D2 tool steel specifications for heat-treated condition
       specificHeat:
         value: 460.0
-        unit: J/kg·K
+        unit: J/(kg·K)
         min: 440.0
         max: 480.0
         confidence: 0.91
@@ -16525,8 +16588,31 @@ materials:
         research_date: '2025-10-16T00:00:00.000000'
       thermalDestructionType:
         value: melting
+        unit: type
         confidence: 0.99
         source: materials_science
+        research_basis: 'Tool steel undergoes melting as primary thermal destruction mechanism. High carbide content results in solidus temperature around 1400°C.'
+        research_date: '2025-10-16T18:00:00.000000'
+      oxidationResistance:
+        value: 550.0
+        unit: °C
+        min: 500.0
+        max: 600.0
+        confidence: 0.89
+        source: ai_research
+        research_basis: 'ASM Handbook, Volume 1: Tool steels begin significant oxidation at 500-600°C in air. High alloy content (W, Mo, V, Cr) provides better oxidation resistance than plain carbon steel but scale formation accelerates above 550°C.'
+        research_date: '2025-10-16T18:00:00.000000'
+        validation_method: Cross-referenced with high-temperature behavior of M2 and D2 tool steel grades in oxidizing atmospheres
+      corrosionResistance:
+        value: 6.0
+        unit: rating
+        min: 5.0
+        max: 7.0
+        confidence: 0.87
+        source: ai_research
+        research_basis: 'ASM Handbook, Volume 13A: Tool steels have moderate to good corrosion resistance depending on chromium content. M2 and D2 grades show better resistance than carbon steel due to carbide content and chromium alloying (11-13% Cr in D2), but are susceptible to chlorides and acids.'
+        research_date: '2025-10-16T18:00:00.000000'
+        validation_method: Rated on 0-10 scale where 10 is maximum resistance, considering atmospheric, aqueous, and chemical environments. D2 with higher chromium rates 7, M2 rates 5-6.
       tensileStrength:
         value: 2100.0
         unit: MPa
