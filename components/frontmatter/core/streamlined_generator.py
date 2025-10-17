@@ -20,7 +20,6 @@ from typing import Dict, Optional
 
 from generators.component_generators import APIComponentGenerator, ComponentResult
 from components.frontmatter.ordering.field_ordering_service import FieldOrderingService
-from components.frontmatter.core.validation_helpers import ValidationHelpers
 from components.frontmatter.research.property_value_researcher import PropertyValueResearcher
 from components.frontmatter.services.property_discovery_service import PropertyDiscoveryService
 from components.frontmatter.services.property_research_service import PropertyResearchService
@@ -38,8 +37,6 @@ from validation.errors import (
     MaterialDataError,
     GenerationError
 )
-# Phase 3.3: Import validation utilities for confidence normalization
-from components.frontmatter.services.validation_utils import ValidationUtils
 
 # Qualitative property definitions and classification
 from components.frontmatter.qualitative_properties import (
