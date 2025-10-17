@@ -10,5 +10,6 @@ Extracted services for specialized frontmatter generation tasks:
 
 from components.frontmatter.services.property_discovery_service import PropertyDiscoveryService
 from components.frontmatter.services.property_research_service import PropertyResearchService
+from components.frontmatter.services.template_service import TemplateService
 
-__all__ = ['PropertyDiscoveryService', 'PropertyResearchService']
+__all__ = ['PropertyDiscoveryService', 'PropertyResearchService', 'TemplateService']

@@ -34,6 +34,7 @@ from components.frontmatter.core.validation_helpers import ValidationHelpers
 from components.frontmatter.research.property_value_researcher import PropertyValueResearcher
 from components.frontmatter.services.property_discovery_service import PropertyDiscoveryService
 from components.frontmatter.services.property_research_service import PropertyResearchService
+from components.frontmatter.services.template_service import TemplateService
 
 # Import unified exception classes from validation system
 from validation.errors import (
@@ -139,6 +140,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         # Initialize service placeholders (will be set during data loading)
         self.property_discovery_service = None  # Initialized in _load_categories_data()
         self.property_research_service = None  # Initialized in _load_categories_data()
+        self.template_service = None  # Initialized in _load_categories_data()
         
         # Load materials research data for range calculations
         self._load_materials_research_data()
@@ -233,11 +235,19 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             self.property_discovery_service = PropertyDiscoveryService(categories_data=categories_data)
             self.logger.info("PropertyDiscoveryService initialized with categories data")
             
-            # Initialize PropertyResearchService with researcher and helper functions
+            # Initialize TemplateService with configuration and ranges
+            self.template_service = TemplateService(
+                material_abbreviations=MATERIAL_ABBREVIATIONS,
+                thermal_property_map=THERMAL_PROPERTY_MAP,
+                category_ranges=self.category_ranges
+            )
+            self.logger.info("TemplateService initialized with abbreviations and thermal mappings")
+            
+            # Initialize PropertyResearchService with researcher and template service functions
             self.property_research_service = PropertyResearchService(
                 property_researcher=self.property_researcher,
-                get_category_ranges_func=self._get_category_ranges_for_property,
-                enhance_descriptions_func=self._enhance_with_standardized_descriptions
+                get_category_ranges_func=self.template_service.get_category_ranges_for_property,
+                enhance_descriptions_func=self.template_service.enhance_with_standardized_descriptions
             )
             self.logger.info("PropertyResearchService initialized with property researcher")
             
@@ -387,7 +397,9 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             self.logger.info(f"Generating frontmatter for {material_name} using YAML data")
             
             # Apply abbreviation template if applicable
-            abbreviation_format = self._apply_abbreviation_template(material_name)
+            if not self.template_service:
+                raise ConfigurationError("TemplateService not initialized")
+            abbreviation_format = self.template_service.apply_abbreviation_template(material_name)
             
             # Build base structure from YAML with all required schema fields - FAIL-FAST per GROK_INSTRUCTIONS.md
             category = (material_data['category'] if 'category' in material_data else 'materials').title()
@@ -629,7 +641,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                         }
                         
                         # Get category-wide min/max ranges from Categories.yaml (like other properties)
-                        category_ranges = self._get_category_ranges_for_property(material_data.get('category'), prop_name)
+                        category_ranges = self.template_service.get_category_ranges_for_property(material_data.get('category'), prop_name)
                         if category_ranges and 'point' in category_ranges:
                             # Extract point ranges from nested structure
                             point_ranges = category_ranges['point']
@@ -656,7 +668,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                             'max': None
                         }
                         # Get category-wide min/max ranges from Categories.yaml (not material-specific)
-                        category_ranges = self._get_category_ranges_for_property(material_data.get('category'), prop_name)
+                        category_ranges = self.template_service.get_category_ranges_for_property(material_data.get('category'), prop_name)
                         if category_ranges:
                             properties[prop_name]['min'] = category_ranges.get('min')
                             properties[prop_name]['max'] = category_ranges.get('max')
