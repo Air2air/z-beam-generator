@@ -36,6 +36,10 @@ from validation.errors import (
     MaterialsValidationError
 )
 
+# Import validation helpers
+from validation.helpers.property_validators import PropertyValidators
+from validation.helpers.relationship_validators import RelationshipValidators
+
 # Import validation rules from comprehensive_validation_agent
 from scripts.validation.comprehensive_validation_agent import (
     PropertyRule,
@@ -472,79 +476,8 @@ class PreGenerationValidationService:
     
     def _validate_property_fields(self, material: str, prop_name: str, 
                                   prop_data: Dict) -> List[Dict]:
-        """
-        Validate that a property has all required metadata fields.
-        
-        Required fields for all properties:
-        - value: The actual property value
-        - unit: Units of measurement
-        - confidence: Confidence score (0-1)
-        - source: Data source ('ai_research' for new materials)
-        - research_basis: Explanation of research methodology
-        - research_date: When the research was conducted
-        
-        This ensures complete traceability and quality control.
-        """
-        issues = []
-        
-        # Required fields for all properties
-        required_fields = {
-            'value': 'Property value',
-            'unit': 'Units of measurement',
-            'confidence': 'Confidence score',
-            'source': 'Data source',
-            'research_basis': 'Research methodology',
-            'research_date': 'Research date'
-        }
-        
-        # Check for missing required fields
-        for field, description in required_fields.items():
-            if field not in prop_data or prop_data[field] is None:
-                issues.append({
-                    'severity': 'ERROR',
-                    'type': 'missing_property_field',
-                    'material': material,
-                    'property': prop_name,
-                    'field': field,
-                    'message': f"Property '{prop_name}' missing required field '{field}' ({description})"
-                })
-        
-        # Validate confidence is between 0 and 1
-        if 'confidence' in prop_data:
-            try:
-                conf = float(prop_data['confidence'])
-                if not (0 <= conf <= 1):
-                    issues.append({
-                        'severity': 'ERROR',
-                        'type': 'invalid_confidence',
-                        'material': material,
-                        'property': prop_name,
-                        'confidence': conf,
-                        'message': f"Property '{prop_name}' has invalid confidence {conf} (must be 0-1)"
-                    })
-            except (ValueError, TypeError):
-                issues.append({
-                    'severity': 'ERROR',
-                    'type': 'invalid_confidence',
-                    'material': material,
-                    'property': prop_name,
-                    'message': f"Property '{prop_name}' has non-numeric confidence value"
-                })
-        
-        # Validate source is 'ai_research' for new materials
-        if 'source' in prop_data:
-            source = prop_data['source']
-            if source not in ['ai_research', 'materials_science', 'published_data']:
-                issues.append({
-                    'severity': 'WARNING',
-                    'type': 'non_standard_source',
-                    'material': material,
-                    'property': prop_name,
-                    'source': source,
-                    'message': f"Property '{prop_name}' has non-standard source '{source}' (expected: ai_research)"
-                })
-        
-        return issues
+        """Validate property metadata fields - delegates to PropertyValidators"""
+        return PropertyValidators.validate_property_fields(material, prop_name, prop_data)
     
     def _validate_property_value(self, material: str, category: str, 
                                  prop_name: str, prop_data: Dict) -> List[Dict]:
@@ -721,216 +654,38 @@ class PreGenerationValidationService:
             return ValidationResult(False, "relationships", issues, warnings, errors)
     
     def _validate_optical_energy(self, material: str, category: str, props: Dict) -> List[Dict]:
-        """Validate A + R ≤ 100% (conservation of energy)"""
-        issues = []
-        
-        absorption = props.get('laserAbsorption', {}).get('value')
-        reflectivity = props.get('laserReflectivity', {}).get('value')
-        
-        if absorption is None or reflectivity is None:
-            return issues
-        
-        try:
-            A = float(absorption)
-            R = float(reflectivity)
-            total = A + R
-            
-            if total > 105:
-                issues.append({
-                    'severity': 'ERROR',
-                    'type': 'optical_sum_high',
-                    'material': material,
-                    'category': category,
-                    'absorption': A,
-                    'reflectivity': R,
-                    'sum': total,
-                    'message': f"A + R = {total:.1f}% > 105% (violates conservation of energy)"
-                })
-            elif total < 80:
-                issues.append({
-                    'severity': 'WARNING',
-                    'type': 'optical_sum_low',
-                    'material': material,
-                    'category': category,
-                    'absorption': A,
-                    'reflectivity': R,
-                    'sum': total,
-                    'message': f"A + R = {total:.1f}% < 80% (may have transmittance)"
-                })
-        except (ValueError, TypeError):
-            pass
-        
-        return issues
+        """Validate optical energy conservation - delegates to RelationshipValidators"""
+        return RelationshipValidators.validate_optical_energy(material, category, props)
     
     def _validate_thermal_diffusivity(self, material: str, category: str, props: Dict) -> List[Dict]:
-        """Validate α = k / (ρ × Cp)"""
-        issues = []
-        
-        alpha = props.get('thermalDiffusivity', {}).get('value')
-        k = props.get('thermalConductivity', {}).get('value')
-        cp = props.get('specificHeat', {}).get('value')
-        rho = props.get('density', {}).get('value')
-        
-        if any(v is None for v in [alpha, k, cp, rho]):
-            return issues
-        
-        try:
-            alpha_measured = float(alpha)
-            k_val = float(k)
-            cp_val = float(cp)
-            rho_val = float(rho) * 1000  # g/cm³ to kg/m³
-            
-            # Calculate expected: α = k / (ρ × Cp) × 10^6 (mm²/s)
-            alpha_calculated = (k_val / (rho_val * cp_val)) * 1e6
-            
-            error_percent = abs(alpha_calculated - alpha_measured) / alpha_calculated * 100
-            
-            if error_percent > 20:
-                issues.append({
-                    'severity': 'ERROR',
-                    'type': 'formula_violation',
-                    'material': material,
-                    'category': category,
-                    'property': 'thermalDiffusivity',
-                    'measured': alpha_measured,
-                    'calculated': alpha_calculated,
-                    'error_percent': error_percent,
-                    'message': f"α measured {alpha_measured:.2f} vs calculated {alpha_calculated:.2f} mm²/s ({error_percent:.1f}% error)"
-                })
-        except (ValueError, TypeError, ZeroDivisionError):
-            pass
-        
-        return issues
+        """Validate thermal diffusivity formula - delegates to RelationshipValidators"""
+        return RelationshipValidators.validate_thermal_diffusivity(material, category, props)
     
     def _validate_youngs_tensile_ratio(self, material: str, category: str, props: Dict) -> List[Dict]:
-        """Validate E/TS ratio is physically reasonable"""
-        issues = []
-        
-        E = props.get('youngsModulus', {}).get('value')
-        TS = props.get('tensileStrength', {}).get('value')
-        
-        if E is None or TS is None:
-            return issues
-        
-        try:
-            E_val = float(E)
-            TS_val = float(TS)
-            
-            E_MPa = E_val * 1000
-            ratio = E_MPa / TS_val if TS_val > 0 else float('inf')
-            
-            # Category-specific expected ranges
-            category_ranges = {
-                'metal': (100, 500),
-                'ceramic': (500, 2000),
-                'stone': (500, 15000),
-                'glass': (500, 3000),
-                'wood': (50, 300),
-                'plastic': (30, 200),
-                'composite': (30, 500),
-                'semiconductor': (100, 1000),
-                'masonry': (500, 10000)
-            }
-            
-            expected_range = category_ranges.get(category, (50, 500))
-            min_ratio, max_ratio = expected_range
-            
-            if ratio > max_ratio:
-                issues.append({
-                    'severity': 'ERROR',
-                    'type': 'ratio_too_high',
-                    'material': material,
-                    'category': category,
-                    'E_GPa': E_val,
-                    'TS_MPa': TS_val,
-                    'ratio': ratio,
-                    'expected_range': expected_range,
-                    'message': f"E/TS ratio {ratio:.1f} > {max_ratio} (exceeds {category} range)"
-                })
-            elif ratio < min_ratio:
-                issues.append({
-                    'severity': 'WARNING',
-                    'type': 'ratio_too_low',
-                    'material': material,
-                    'category': category,
-                    'E_GPa': E_val,
-                    'TS_MPa': TS_val,
-                    'ratio': ratio,
-                    'expected_range': expected_range,
-                    'message': f"E/TS ratio {ratio:.1f} < {min_ratio} (unusually low for {category})"
-                })
-        except (ValueError, TypeError, ZeroDivisionError):
-            pass
-        
-        return issues
+        """Validate Young's modulus / tensile strength ratio - delegates to RelationshipValidators"""
+        return RelationshipValidators.validate_youngs_tensile_ratio(material, category, props)
     
-    def _validate_two_category_system(self, material: str, material_properties: Dict) -> List[VError]:
-        """
-        Validate that frontmatter uses only the two-category system.
-        
-        Per system requirements:
-        - ONLY two categories allowed: laser_material_interaction, material_characteristics
-        - 'other' category is STRICTLY FORBIDDEN (ERROR severity)
-        - Both categories should be present (WARNING if missing)
-        
-        Args:
-            material: Material name
-            material_properties: Dictionary with category keys
-        
-        Returns:
-            List of ValidationError objects
-        """
-        errors = []
-        
-        ALLOWED_CATEGORIES = {'laser_material_interaction', 'material_characteristics'}
-        found_categories = set(material_properties.keys())
-        
-        # Check for 'other' category (strictly forbidden)
-        if 'other' in found_categories:
-            errors.append(VError(
-                severity=ErrorSeverity.ERROR,
-                error_type=ErrorType.FORBIDDEN_CATEGORY,
-                message="FORBIDDEN: 'other' category found. System uses ONLY two categories: laser_material_interaction and material_characteristics",
-                material=material,
-                category='other',
-                suggestion="Move properties to laser_material_interaction or material_characteristics"
-            ))
-        
-        # Check for any invalid categories
-        invalid_categories = found_categories - ALLOWED_CATEGORIES
-        for invalid_cat in invalid_categories:
-            if invalid_cat != 'other':  # Already reported
-                errors.append(VError(
-                    severity=ErrorSeverity.ERROR,
-                    error_type=ErrorType.INCORRECT_CATEGORIZATION,
-                    message=f"Invalid category '{invalid_cat}'. Only 'laser_material_interaction' and 'material_characteristics' allowed",
-                    material=material,
-                    category=invalid_cat,
-                    suggestion="Use only the two allowed categories"
-                ))
-        
-        # Check both required categories exist
-        if 'laser_material_interaction' not in found_categories:
-            errors.append(VError(
-                severity=ErrorSeverity.WARNING,
-                error_type=ErrorType.MISSING_CATEGORY,
-                message="Missing required category 'laser_material_interaction'",
-                material=material,
-                category='laser_material_interaction',
-                suggestion="Add laser-material interaction properties"
-            ))
-        
-        if 'material_characteristics' not in found_categories:
-            errors.append(VError(
-                severity=ErrorSeverity.WARNING,
-                error_type=ErrorType.MISSING_CATEGORY,
-                message="Missing required category 'material_characteristics'",
-                material=material,
-                category='material_characteristics',
-                suggestion="Add material characteristics properties"
-            ))
-        
-        return errors
+    def _validate_two_category_system(self, frontmatter_path: Path) -> List[VError]:
+        """Validate two-category system - delegates to RelationshipValidators"""
+        # Read frontmatter to get categories
+        try:
+            with open(frontmatter_path) as f:
+                frontmatter_data = yaml.safe_load(f)
+            
+            material_name = frontmatter_data.get('material', 'unknown')
+            categories = frontmatter_data.get('categories', [])
+            
+            # Convert list to dict format expected by validator
+            material_properties = {}
+            for cat in categories:
+                cat_id = cat.get('id', '')
+                if cat_id:
+                    material_properties[cat_id] = cat.get('properties', [])
+            
+            return RelationshipValidators.validate_two_category_system(material_name, material_properties)
+        except Exception as e:
+            logger.error(f"Error validating two-category system for {frontmatter_path}: {e}")
+            return []
     
     # ========================================================================
     # GAP ANALYSIS
