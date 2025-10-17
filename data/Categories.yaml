@@ -2122,6 +2122,60 @@ categories:
         sample_count: 34
         auto_generated: true
         generated_date: '2025-10-16'
+      laserDamageThreshold:
+        min: 0.1
+        max: 20.0
+        unit: J/cm²
+        source: Laser-Induced Damage in Optical Materials (NIST)
+        confidence: 85
+        notes: Millisecond to nanosecond pulses for metal surfaces (polished vs. rough)
+        measurement_context: Surface finish dependent (polished surfaces higher threshold)
+        last_updated: '2025-10-17T00:00:00.000000'
+      boilingPoint:
+        min: 907
+        max: 5870
+        unit: °C
+        source: CRC Handbook of Chemistry and Physics
+        confidence: 95
+        notes: Mercury 357°C, Zinc 907°C, Tungsten 5555°C, Rhenium 5870°C
+        measurement_context: Standard atmospheric pressure (1 atm)
+        last_updated: '2025-10-17T00:00:00.000000'
+      electricalConductivity:
+        min: 0.67
+        max: 63.0
+        unit: MS/m
+        source: Materials Handbook (ASM International)
+        confidence: 90
+        notes: Bismuth 0.77 MS/m, Aluminum 37.7 MS/m, Copper 59.6 MS/m, Silver 63.0 MS/m
+        measurement_context: Room temperature (20°C), pure elements
+        last_updated: '2025-10-17T00:00:00.000000'
+      meltingPoint:
+        min: -39
+        max: 3422
+        unit: °C
+        source: CRC Handbook of Chemistry and Physics
+        confidence: 95
+        notes: Mercury -38.8°C, Aluminum 660°C, Steel 1370-1540°C, Tungsten 3422°C
+        measurement_context: Standard atmospheric pressure (1 atm)
+        last_updated: '2025-10-17T00:00:00.000000'
+      absorptionCoefficient:
+        min: 100000
+        max: 50000000
+        unit: m⁻¹
+        source: Optical Properties of Metals (Palik)
+        confidence: 80
+        notes: At 1064nm wavelength - varies with surface oxide, roughness, temperature
+        measurement_context: Near-IR wavelength (1064nm Nd:YAG laser)
+        last_updated: '2025-10-17T00:00:00.000000'
+      thermalShockResistance:
+        min: 50
+        max: 400
+        unit: ΔT °C
+        source: Materials Science and Engineering (Callister)
+        confidence: 75
+        notes: Cast iron ~50-100°C, Steel ~150-250°C, Nickel alloys ~300-400°C
+        measurement_context: Resistance to thermal stress cracking during rapid temperature changes
+        last_updated: '2025-10-17T00:00:00.000000'
     subcategories:
       ferrous:
         name: Ferrous Metals

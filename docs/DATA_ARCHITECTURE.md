@@ -21,11 +21,75 @@ The system follows a strict **separation of concerns**:
 
 **Material Variance Handling**: If a material property has an inherent range (e.g., alloy composition variations, grade differences), the value field in materials.yaml MUST contain the **averaged/consolidated single number**. The range information should be documented in the `research_basis` or `validation_method` fields for context, but min/max fields must never be present at the material level.
 
-**VITAL PROPERTY VALIDATION RULE**: If a property is **NOT** defined in Categories.yaml for a given category, it **MUST NOT** be added to any material in that category in materials.yaml. Only properties that exist in the category's definition are permitted in materials. This ensures:
+**VITAL PROPERTY VALIDATION RULE**: If a property is **NOT** defined in Categories.yaml 
+for a given category, it **MUST NOT** be added to any material in that category in 
+materials.yaml. Only properties that exist in the category's definition are permitted 
+in materials. This ensures:
 - Consistency across all materials in a category
 - Generator can properly orchestrate data (no orphaned properties)
 - Schema validation works correctly
 - No undefined property behavior in frontmatter generation
+
+**QUALITATIVE PROPERTIES RULE**: Properties with **non-numerical values** (text, enums, 
+ratings) MUST be handled differently from quantitative properties:
+
+1. **No min/max ranges**: Qualitative properties have `min: null, max: null` (always)
+2. **Move to materialCharacteristics**: If found in legacy materials.yaml, move them out of numerical property sections
+3. **Separate categorization**: Store qualitative properties in their own section to avoid mixing with numerical data
+4. **Examples**: 
+   - `crystallineStructure`: "FCC" → No numerical range
+   - `oxidationResistance`: "high" → No numerical range  
+   - `corrosionResistance`: "excellent" → No numerical range
+
+**ZERO NULL POLICY FOR NUMERICAL PROPERTIES**: All numerical material properties **MUST** have 
+min/max ranges. If ranges don't exist in Categories.yaml:
+- Add category ranges through AI research OR
+- Calculate from sibling materials in the same category
+- NO EXCEPTIONS - null min/max only allowed for qualitative properties and machine settings
+
+**QUALITATIVE PROPERTIES HANDLING RULE** (October 17, 2025): Qualitative properties (non-numerical descriptive values) **MUST NOT** have `min`/`max` ranges and **MUST** be stored in the `materialCharacteristics` section of frontmatter, separate from quantitative material properties. This ensures:
+- Clear separation between numerical (measurable) and qualitative (descriptive) data
+- No null min/max values for descriptive properties
+- Proper categorization in frontmatter output structure
+- Schema validation compatibility
+
+**📖 For comprehensive guidance, see**: `docs/QUALITATIVE_PROPERTIES_HANDLING.md`
+
+**Examples of Qualitative Properties**:
+- `crystallineStructure`: "FCC", "BCC", "HCP", "amorphous", etc.
+- `oxidationResistance`: "poor", "moderate", "excellent"
+- `surfaceFinish`: "polished", "rough", "textured"
+- `corrosionBehavior`: "resistant", "susceptible", "immune"
+
+**Treatment in Data Files**:
+```yaml
+# ✅ CORRECT: Qualitative property in materials.yaml
+materials:
+  Aluminum:
+    properties:
+      crystallineStructure:
+        value: "FCC"
+        confidence: 99
+        description: Face-centered cubic crystal structure
+        # NO min/max fields
+```
+
+**Treatment in Frontmatter**:
+```yaml
+# ✅ CORRECT: Qualitative properties in materialCharacteristics
+materialCharacteristics:
+  crystallineStructure:
+    value: "FCC"
+    confidence: 99
+    description: Face-centered cubic crystal structure
+    # NO min/max fields (null not allowed)
+```
+
+**Migration Strategy**: When encountering qualitative properties in legacy data:
+1. **Identify**: Check if property has non-numerical values or allowedValues list
+2. **Validate**: Confirm property should not have numerical ranges
+3. **Relocate**: Move from quantitative properties to materialCharacteristics
+4. **Document**: Update schema to reflect qualitative nature
 
 ---
 
