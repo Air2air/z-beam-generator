@@ -1,42 +1,18 @@
 #!/usr/bin/env python3
 """
-Z-Beam Generator - User Configuration & Quick Start Guide
+Z-Beam Generator - Command Line Interface
 
-This file contains ALL user-configurable settings and instructions.
-The main applic        "api_provider": "none",  # ❌ NO API - static/deterministic generation
-        "priority": 3,
-        "enabled": False,  # DISABLED for caption-focused generation
-        "data_provider": "static",  # No API calls needed, deterministic
-    },
-    "text": {has been moved to main_runner.py for better organization.
-
-═══════════════════════════════════════════════════════════════════════════════
-📋 CONFIGURATION STATUS: ALL HARDCODED CONFIGS REMOVED
-═══════════════════════════════════════════════════════════════════════════════
-
-✅ CENTRALIZED CONFIGURATIONS:
-  • API Provider Settings (timeout, retries, tokens, temperature)
-  • Component Generation Settings (priorities, enabled/disabled)
-  • AI Detection & Optimization Settings
-  • Batch Operation Timeouts (caption, frontmatter, jsonld, tags)
-  • Enhanced API Client Settings (timeouts, retries, jitter)
-  • Circuit Breaker Settings (failure thresholds, recovery)
-  • Optimizer Service Settings (personas, quality thresholds)
-
-🚫 REMOVED HARDCODED CONFIGS FROM:
-  • api/enhanced_client.py - Now uses GLOBAL_OPERATIONAL_CONFIG
-  • api/config.py - Now uses centralized fallbacks
-
-  • scripts/batch_*.py - Now uses centralized timeouts
-  • generate_all_*.py - Now uses centralized timeouts
+Entry point for the Z-Beam Generator system.
+All configurations have been moved to config/settings.py for better organization.
 
 ═══════════════════════════════════════════════════════════════════════════════
 📋 QUICK START GUIDE
 ═══════════════════════════════════════════════════════════════════════════════
 
 🎯 GENERATE CONTENT:
-  python3 run.py --material "Aluminum"     # Specific material
-  python3 run.py --all                     # All materials
+  python3 run.py --material "Aluminum"     # Specific material (no AI fields)
+  python3 run.py --all                     # All materials (no AI fields)
+  python3 run.py --material "Aluminum" --generate-subtitle --generate-caption  # With AI fields
   python3 run.py --content-batch           # First 8 categories
 
 🚀 DEPLOYMENT:
@@ -54,7 +30,16 @@ The main applic        "api_provider": "none",  # ❌ NO API - static/determinis
   python3 run.py --validate              # Run hierarchical validation & auto-fix
   python3 run.py --validate-report FILE  # Generate detailed validation report
 
-🔬 SYSTEMATIC DATA VERIFICATION (AI Research):
+🔬 STAGE 0: AI RESEARCH & DATA COMPLETION (⚡ MANDATORY):
+  python3 run.py --data-completeness-report  # Check current status (75.8% complete)
+  python3 run.py --data-gaps                 # Show research priorities (635 gaps)
+  python3 run.py --research-missing-properties  # Fill ALL missing properties
+  python3 run.py --research-properties "porosity,electricalResistivity"  # Specific properties
+  python3 run.py --research-materials "Copper,Steel"  # Specific materials
+  python3 run.py --research-batch-size 20    # Parallel research (default: 10)
+  python3 run.py --enforce-completeness      # Strict mode - block if incomplete
+
+🔬 SYSTEMATIC DATA VERIFICATION (Legacy):
   python3 run.py --data                  # Verify ALL properties (18 hours, $14.64)
   python3 run.py --data=critical         # Verify critical properties (3 hours, $1.20)
   python3 run.py --data=test             # Safe test run (15 min, $0.10, dry-run)
@@ -74,584 +59,57 @@ The main applic        "api_provider": "none",  # ❌ NO API - static/determinis
 💡 For complete command reference: python3 run.py --help
 
 ═══════════════════════════════════════════════════════════════════════════════
-📝 GLOBAL CONFIGURATION SETTINGS - USER SETTABLE
+📝 CONFIGURATION
+═══════════════════════════════════════════════════════════════════════════════
+
+All user-configurable settings are in: config/settings.py
+
+To modify system behavior, edit config/settings.py:
+  • GLOBAL_OPERATIONAL_CONFIG - Timeouts, retries, operational parameters
+  • API_PROVIDERS - API provider settings (DeepSeek, Winston, Grok)
+  • COMPONENT_CONFIG - Component enable/disable and priorities
+  • AI_DETECTION_CONFIG - AI detection behavior
+  • OPTIMIZER_CONFIG - Optimizer and text generation settings
+
 ═══════════════════════════════════════════════════════════════════════════════
 """
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# 📝 GLOBAL CONFIGURATION SETTINGS - USER SETTABLE
-# ═══════════════════════════════════════════════════════════════════════════════
+# Import all configuration from centralized location
+from config.settings import (
+    GLOBAL_OPERATIONAL_CONFIG,
+    API_PROVIDERS,
+    COMPONENT_CONFIG,
+    AI_DETECTION_CONFIG,
+    OPTIMIZER_CONFIG,
+    get_optimizer_config,
+    get_global_operational_config,
+    get_batch_timeout,
+    get_enhanced_client_config,
+    get_research_config,
+    get_component_generation_config,
+    get_validation_config,
+    get_api_providers,
+    get_api_config_fallbacks,
+    get_ai_detection_config,
+    get_workflow_config,
+    get_optimization_config,
+    get_text_optimization_config,
+    get_persona_config,
+    get_dynamic_config_for_component,
+    create_dynamic_ai_detection_config,
+    extract_numeric_value,
+)
 
-# Global Timeout and Operational Settings - USER SETTABLE
-# All timeout values, retry settings, and operational parameters
-GLOBAL_OPERATIONAL_CONFIG = {
-    # Default timeout settings for scripts and batch operations
-    "batch_timeouts": {
-        "default_per_material": 120,  # 2 minutes per material
-        "caption_generation": 60,     # 1 minute for caption generation  
-        "frontmatter_generation": 60, # 1 minute for frontmatter
-        "jsonld_generation": 120,     # 2 minutes for JSON-LD
-        "tags_generation": 120,       # 2 minutes for tags
-    },
-    
-    # Enhanced API Client Default Settings
-    "enhanced_client_defaults": {
-        "connect_timeout": 15.0,      # Increased for slow networks
-        "read_timeout": 90.0,         # Increased for complex content generation
-        "total_timeout": 120.0,       # Maximum total request time
-        "max_retries": 5,             # More retries for intermittent issues
-        "base_retry_delay": 2.0,      # Longer base delay
-        "max_retry_delay": 30.0,      # Cap exponential backoff
-        "jitter_factor": 0.1,         # Add randomness to prevent thundering herd
-    },
-    
-    # Invisible Pipeline Integration Settings
-    "pipeline_integration": {
-        "enabled": True,              # Enable invisible pipeline during content generation
-        "silent_mode": False,         # Show verbose AI research logging by default
-        "max_validation_time": 15,    # Maximum time to spend on validation (seconds) - increased for AI
-        "cache_validations": True,    # Cache validation results to avoid redundant work
-        "auto_improve_frontmatter": True,  # Automatically improve frontmatter quality
-        "batch_validation": True,     # Run batch validation for --all operations
-        "quality_threshold": 0.6,     # Minimum quality score to pass validation
-        "ai_validation_enabled": True, # Enable AI cross-checking of critical properties
-        "ai_validation_critical_only": True, # Only validate critical properties with AI (faster)
-        "ai_confidence_threshold": 0.7, # Minimum AI confidence for passing validation
-        "ai_verbose_logging": True,   # Enable detailed AI research call logging
-        "ai_log_prompts": True,       # Log AI prompts and responses
-        "ai_log_timing": True,        # Log AI request timing information
-        "hierarchical_validation_enabled": True, # Enable hierarchical validation (Categories.yaml → Materials.yaml → Frontmatter)
-        "hierarchical_validation_pre_generation": True, # Run hierarchical validation before content generation
-        "hierarchical_validation_post_generation": True, # Run hierarchical validation after content generation
-    },
-    
-    # Data Completeness Enforcement
-    "data_completeness": {
-        "enforce_before_generation": False,  # Set to True to block generation if data incomplete
-        "warn_before_generation": True,     # Show warnings about incomplete data
-        "completeness_threshold": 95.0,     # Minimum acceptable completeness %
-        "block_on_critical_gaps": False,    # Block if critical properties missing
-        "show_action_plan_link": True,      # Direct users to DATA_COMPLETION_ACTION_PLAN.md
-    },
-    
-    # Research component API settings
-    "research_defaults": {
-        "property_researcher": {
-            "api_timeout": 30,
-            "max_tokens": 500,
-            "temperature": 0.1,       # Low temperature for factual accuracy
-        },
-        "property_value_researcher": {
-            "comprehensive_max_tokens": 1500,
-            "comprehensive_temperature": 0.3,  # Lower temperature for consistent research
-            "validation_max_tokens": 1200,
-            "validation_temperature": 0.3,
-        }
-    },
-    
-    # Component-specific generation settings
-    "component_generation": {
-        "frontmatter": {
-            "max_tokens": 4000,
-            "temperature": 0.3,
-        },
-        "test_connection": {
-            "max_tokens": 10,           # Test requests
-        }
-    },
-    
-    # Validation and utility settings
-    "validation": {
-        "layer_validator_recovery_timeout": 300,   # 5 minutes
-        "quality_validator_recovery_timeout": 600, # 10 minutes
-        "quality_validator_short_timeout": 300,    # 5 minutes
-    },
-    
-    # No circuit breaker fallbacks allowed in fail-fast architecture
-}
-
-# API Provider Configuration - USER SETTABLE
-# Configure which API providers to use for different operations
-# FAIL-FAST: Each provider must be explicitly configured with valid credentials
-API_PROVIDERS = {
-    "deepseek": {
-        "name": "DeepSeek",
-        "type": "deepseek",
-        "env_var": "DEEPSEEK_API_KEY",
-        "base_url": "https://api.deepseek.com",
-        "model": "deepseek-chat",
-        "max_tokens": 4000,  # Default - will be overridden by component-specific settings
-        "temperature": 0.1,  # Default - will be overridden by component-specific settings
-        "timeout_connect": 30,  # Increased for better reliability with large prompts
-        "timeout_read": 120,    # Increased for better reliability with complex content
-        "max_retries": 5,       # More retries for robustness
-        "retry_delay": 2.0,     # Longer delays between retries
-        "enabled": True,
-        "timeout": 30,
-        "rate_limit": {
-            "requests_per_minute": 60,
-            "tokens_per_minute": 30000,
-        },
-        "fallback_provider": None,  # FAIL-FAST: No fallbacks allowed
-    },
-    "winston": {
-        "name": "Winston AI Detection",
-        "type": "winston", 
-        "env_var": "WINSTON_API_KEY",
-        "base_url": "https://api.gowinston.ai",
-        "model": "winston-ai-detector",
-        "max_tokens": 1000,
-        "temperature": 0.1,
-        "timeout_connect": 30,  # Updated for consistency
-        "timeout_read": 120,    # Updated for consistency
-        "max_retries": 5,       # Updated for consistency
-        "retry_delay": 2.0,     # Updated for consistency
-        "enabled": True,
-        "timeout": 30,
-        "rate_limit": {
-            "requests_per_minute": 100,
-            "tokens_per_minute": 10000,
-        },
-        "fallback_provider": None,  # FAIL-FAST: No fallbacks allowed
-    },
-    "grok": {
-        "name": "Grok",
-        "type": "grok",
-        "env_var": "GROK_API_KEY",
-        "base_url": "https://api.x.ai",
-        "model": "grok-3",
-        "max_tokens": 550,  # Final optimized setting to consistently produce 400-500 total words
-        "temperature": 0.2,  # Slightly higher for creative caption generation
-        "timeout_connect": 30,
-        "timeout_read": 120,
-        "max_retries": 5,
-        "retry_delay": 2.0,
-        "enabled": True,
-        "timeout": 30,
-        "rate_limit": {
-            "requests_per_minute": 60,
-            "tokens_per_minute": 30000,
-        },
-        "fallback_provider": None,  # FAIL-FAST: No fallbacks allowed
-    },
-}
-
-# Component Configuration - USER SETTABLE
-# Enable/disable components and set their generation priority
-# Lower priority numbers = generated first
-COMPONENT_CONFIG = {
-    "frontmatter": {
-        "api_provider": "deepseek",  # ✅ API-BASED COMPONENT
-        "priority": 1,
-        "enabled": True,  # ENABLED - for comprehensive discovery testing
-        "data_provider": "hybrid",  # Uses frontmatter data + AI generation
-    },
-    "metatags": {
-        "api_provider": "none",  # ❌ NO API - uses frontmatter exclusively
-        "priority": 2,
-        "enabled": False,  # DISABLED for caption-focused generation
-        "data_provider": "frontmatter",  # Uses frontmatter data exclusively
-    },
-    "badgesymbol": {
-        "api_provider": "none",  # ❌ NO API - static/deterministic generation
-        "priority": 3,
-        "enabled": False,  # DISABLED for caption-focused generation
-        "data_provider": "static",  # No API calls needed, deterministic
-    },
-    "caption": {
-        "api_provider": "grok",  # ✅ API-BASED COMPONENT - Enhanced AI generation with Grok
-        "priority": 5,
-        "enabled": True,  # ENABLED for caption generation
-        "data_provider": "hybrid",  # Uses frontmatter data + AI generation
-    },
-    "text": {
-        "api_provider": "deepseek",  # ✅ API-BASED COMPONENT
-        "priority": 6,
-        "enabled": False,  # DISABLED for caption-focused generation
-        "data_provider": "hybrid",  # Uses frontmatter data + AI generation
-    },
-    "table": {
-        "api_provider": "none",  # ❌ NO API - static/deterministic generation
-        "priority": 7,
-        "enabled": False,  # DISABLED for caption-focused generation
-        "data_provider": "static",  # No API calls needed, no frontmatter dependency
-    },
-    "tags": {
-        "api_provider": "none",  # ✅ NO API - now uses frontmatter data only
-        "priority": 8,
-        "enabled": True,  # ENABLED for tags generation
-        "data_provider": "static",  # Uses frontmatter data only
-    },
-    "jsonld": {
-        "api_provider": "none",  # ❌ NO API - uses frontmatter extraction only
-        "priority": 9,
-        "enabled": False,  # ENABLED for JSON-LD generation
-        "data_provider": "static",  # Uses frontmatter data only
-    },
-    "author": {
-        "api_provider": "none",  # ❌ NO API - static component
-        "priority": 10,
-        "enabled": False,  # DISABLED for caption-focused generation
-        "data_provider": "static",  # Static data, no dependencies
-    },
-}
-
-# AI Detection Configuration - USER SETTABLE
-# Configure AI detection behavior - FAIL-FAST: No fallbacks allowed
-AI_DETECTION_CONFIG = {
-    "enabled": True,
-    "provider": "winston",  # FAIL-FAST: Must be explicitly provided, no fallbacks
-    "target_score": 70.0,
-    "max_iterations": 3,
-    "improvement_threshold": 5.0,
-    "timeout": 30,
-    "retry_attempts": 3,  # FAIL-FAST: Validate configuration, then fail immediately
-}
-
-
-# Optimizer Configuration - USER SETTABLE
-# Modify these settings to customize optimizer behavior
-OPTIMIZER_CONFIG = {
-    # AI Detection Service Configuration
-    "ai_detection_service": {
-        "enabled": True,
-        "version": "1.0.0",
-        "config": {
-            "providers": {
-                "winston": {
-                    "type": "winston",
-                    "enabled": True,
-                    "target_score": 70.0,
-                    "max_iterations": 5,
-                }
-            },
-            # Global AI detection settings
-            "target_score": 70.0,
-            "max_iterations": 5,
-            "improvement_threshold": 3.0,
-            "cache_ttl_hours": 1,
-            "max_workers": 4,
-            "detection_threshold": 0.7,
-            "confidence_threshold": 0.8,
-        }
-    },
-
-    # Iterative Workflow Service Configuration
-    "iterative_workflow_service": {
-        "enabled": True,
-        "version": "1.0.0",
-        "config": {
-            "max_iterations": 10,
-            "quality_threshold": 0.9,
-            "time_limit_seconds": 300,
-            "convergence_threshold": 0.01,
-            "backoff_factor": 2.0,
-            "min_delay": 0.1,
-            "max_delay": 10.0,
-        }
-    },
-
-    # Optimization Configuration
-    "optimization": {
-        "target_score": 75.0,
-        "max_iterations": 5,
-        "improvement_threshold": 3.0,
-        "time_limit_seconds": None,
-        "convergence_threshold": 0.01,
-    },
-
-    # Text Optimization Settings
-    "text_optimization": {
-        "dynamic_prompts": {
-            "enabled": True,
-            "enhancement_flags": {
-                "conversational_boost": True,
-                "natural_language_patterns": True,
-                "cultural_adaptation": True,
-                "sentence_variability": True,
-                "ai_detection_focus": True,
-            }
-        },
-        "quality_scorer": {
-            "human_threshold": 75.0,
-            "technical_accuracy_weight": 0.3,
-            "author_authenticity_weight": 0.3,
-            "readability_weight": 0.2,
-            "human_believability_weight": 0.2,
-        }
-    },
-
-    # Author Personas Configuration
-    "personas": {
-        "taiwan": {
-            "word_limit": 380,
-            "language_patterns": {
-                "signature_phrases": [
-                    "systematic approach enables",
-                    "careful analysis shows",
-                    "methodical investigation reveals"
-                ]
-            }
-        },
-        "italy": {
-            "word_limit": 450,
-            "language_patterns": {
-                "signature_phrases": [
-                    "precision meets innovation",
-                    "technical elegance",
-                    "meticulous approach"
-                ]
-            }
-        },
-        "indonesia": {
-            "word_limit": 250,
-            "language_patterns": {
-                "signature_phrases": [
-                    "practical applications",
-                    "efficient solutions",
-                    "renewable energy focus"
-                ]
-            }
-        },
-        "usa": {
-            "word_limit": 320,
-            "language_patterns": {
-                "signature_phrases": [
-                    "innovative solutions",
-                    "efficient processes",
-                    "conversational expertise"
-                ]
-            }
-        }
-    },
-
-    # Logging Configuration
-    "logging": {
-        "level": "DEBUG",              # DEBUG level for detailed AI research logging
-        "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-        "ai_research_logger": True,    # Enable dedicated AI research logger
-    },
-
-    # Test Mode Configuration
-    "test_mode": False,
-}
-
-# END OF USER-CONTROLLED CONFIGURATION
-# =================================================================================
-
-# Configuration Helper Functions
-def get_optimizer_config(service_name: str = None):
-    """Get optimizer configuration for a specific service or all services."""
-    if service_name:
-        if service_name not in OPTIMIZER_CONFIG:
-            raise KeyError(f"Service '{service_name}' not found in OPTIMIZER_CONFIG - no fallback allowed")
-        return OPTIMIZER_CONFIG[service_name]
-    return OPTIMIZER_CONFIG
-
-
-def get_global_operational_config():
-    """Get global operational configuration."""
-    return GLOBAL_OPERATIONAL_CONFIG
-
-
-def get_batch_timeout(operation_type: str = "default_per_material"):
-    """Get timeout for batch operations."""
-    if operation_type not in GLOBAL_OPERATIONAL_CONFIG["batch_timeouts"]:
-        raise KeyError(f"Operation type '{operation_type}' not found in batch_timeouts - no fallback allowed")
-    return GLOBAL_OPERATIONAL_CONFIG["batch_timeouts"][operation_type]
-
-
-def get_enhanced_client_config():
-    """Get enhanced API client configuration."""
-    return GLOBAL_OPERATIONAL_CONFIG["enhanced_client_defaults"]
-
-
-def get_research_config(component_name: str = None):
-    """Get research component configuration."""
-    if component_name:
-        if component_name not in GLOBAL_OPERATIONAL_CONFIG["research_defaults"]:
-            raise KeyError(f"Research component '{component_name}' not found in configuration - no fallback allowed")
-        return GLOBAL_OPERATIONAL_CONFIG["research_defaults"][component_name]
-    return GLOBAL_OPERATIONAL_CONFIG["research_defaults"]
-
-
-def get_component_generation_config(component_name: str = None):
-    """Get component generation configuration."""
-    if component_name:
-        if component_name not in GLOBAL_OPERATIONAL_CONFIG["component_generation"]:
-            raise KeyError(f"Component '{component_name}' not found in generation configuration - no fallback allowed")
-        return GLOBAL_OPERATIONAL_CONFIG["component_generation"][component_name]
-    return GLOBAL_OPERATIONAL_CONFIG["component_generation"]
-
-
-def get_validation_config():
-    """Get validation configuration."""
-    return GLOBAL_OPERATIONAL_CONFIG["validation"]
-
-
-def get_api_providers():
-    """Get API providers configuration."""
-    return API_PROVIDERS
-
-
-def get_api_config_fallbacks():
-    """Get API configuration fallback values (deprecated - will be removed)."""
-    # This function exists for backward compatibility only
-    # All configurations should now use the centralized approach
-    return {
-        "max_tokens": 4000,
-        "temperature": 0.7, 
-        "timeout_connect": 10,
-        "timeout_read": 30,
-        "max_retries": 3,
-        "retry_delay": 1.0,
-    }
-
-
-# Circuit breaker configuration removed - fail-fast architecture
-    """Get API configuration fallback values."""
-    return GLOBAL_OPERATIONAL_CONFIG["api_config_fallbacks"]
-
-
-def get_ai_detection_config():
-    """Get AI detection configuration."""
-    return get_optimizer_config("ai_detection_service")
-
-
-def extract_numeric_value(value):
-    """Extract numeric value from various formats, including Shore hardness scales."""
-    import re
-    
-    if isinstance(value, (int, float)):
-        return float(value)
-    
-    if isinstance(value, str):
-        # Remove common units and multipliers first
-        cleaned = value.replace(',', '')
-        
-        # Handle Shore hardness ranges specifically (Shore D 60-70, Shore A 10-20)
-        shore_range_match = re.search(r'Shore\s+[AD]\s+(\d+(?:\.\d+)?)-(\d+(?:\.\d+)?)', cleaned, re.IGNORECASE)
-        if shore_range_match:
-            # Return midpoint of the range
-            min_val = float(shore_range_match.group(1))
-            max_val = float(shore_range_match.group(2))
-            return (min_val + max_val) / 2.0
-        
-        # Handle Shore hardness single values (Shore A 10, Shore D 90)
-        shore_match = re.search(r'Shore\s+[AD]\s+(\d+(?:\.\d+)?)', cleaned, re.IGNORECASE)
-        if shore_match:
-            return float(shore_match.group(1))
-        
-        # Handle scientific notation markers like ×10⁻⁶
-        if '×10⁻' in cleaned:
-            parts = cleaned.split('×10⁻')
-            if len(parts) == 2:
-                try:
-                    base = float(parts[0])
-                    exp = int(parts[1].split('/')[0])  # Handle cases like ×10⁻⁶/K
-                    return base * (10 ** -exp)
-                except ValueError:
-                    pass
-        
-        # Handle regular scientific notation
-        if 'e-' in cleaned.lower() or 'e+' in cleaned.lower():
-            try:
-                return float(cleaned.split()[0])
-            except ValueError:
-                pass
-        
-        # Extract first number from string
-        number_match = re.search(r'-?\d+\.?\d*', cleaned)
-        if number_match:
-            try:
-                return float(number_match.group())
-            except ValueError:
-                pass
-    
-    return None
-
-
-def get_workflow_config():
-    """Get workflow configuration."""
-    return get_optimizer_config("iterative_workflow_service")
-
-
-def get_optimization_config():
-    """Get optimization configuration."""
-    return get_optimizer_config("optimization")
-
-
-def get_text_optimization_config():
-    """Get text optimization configuration."""
-    return get_optimizer_config("text_optimization")
-
-
-def get_persona_config(country: str = None):
-    """Get persona configuration for a specific country or all personas."""
-    personas = get_optimizer_config("personas")
-    if country:
-        country_key = country.lower()
-        if country_key not in personas:
-            raise KeyError(f"Country '{country}' not found in personas config - no fallback allowed")
-        return personas[country_key]
-    return personas
-
-
-def get_dynamic_config_for_component(component_type: str, material_data: dict = None):
-    """Get dynamic configuration for content generation."""
-    if component_type not in COMPONENT_CONFIG:
-        raise KeyError(f"Component type '{component_type}' not found in COMPONENT_CONFIG - no fallback allowed")
-    base_config = COMPONENT_CONFIG[component_type]
-
-    if material_data:
-        # Apply material-specific optimizations
-        material_name = material_data.get("name", "").lower()
-
-        # Special handling for different material types
-        if "steel" in material_name or "iron" in material_name:
-            base_config["temperature"] = 0.6  # More precise for metals
-        elif "plastic" in material_name or "polymer" in material_name:
-            base_config["temperature"] = 0.8  # More creative for plastics
-        elif "ceramic" in material_name:
-            base_config["temperature"] = 0.5  # Very precise for ceramics
-
-    return base_config
-
-
-def create_dynamic_ai_detection_config(
-    content_type: str = "technical",
-    author_country: str = "usa",
-    content_length: int = 1000,
-):
-    """Create dynamic AI detection configuration based on content parameters."""
-    base_config = AI_DETECTION_CONFIG.copy()
-
-    # Adjust configuration based on content type
-    if content_type == "technical":
-        base_config["target_score"] = 75.0
-    elif content_type == "creative":
-        base_config["target_score"] = 65.0
-    else:
-        base_config["target_score"] = 70.0
-
-    # Adjust based on author country
-    if author_country.lower() == "usa":
-        base_config["language_patterns"] = "american_english"
-    elif author_country.lower() == "uk":
-        base_config["language_patterns"] = "british_english"
-    else:
-        base_config["language_patterns"] = "international_english"
-
-    # Adjust based on content length
-    if content_length < 500:
-        base_config["min_text_length"] = 100
-    elif content_length > 2000:
-        base_config["min_text_length"] = 500
-    else:
-        base_config["min_text_length"] = 200
-
-    return base_config
-
+# Standard library imports
+import os
+import sys
+import re
+import yaml
+import shutil
+import traceback
+import subprocess
+import argparse
+from pathlib import Path
 
 # =================================================================================
 # DEPLOYMENT FUNCTIONS
@@ -1210,10 +668,17 @@ def handle_data_gaps():
         import yaml
         from pathlib import Path
         from collections import defaultdict
+        from utils.category_property_cache import get_category_property_cache
         
         print("="*80)
         print("DATA GAPS & RESEARCH PRIORITIES")
         print("="*80)
+        print()
+        
+        # Load category property cache
+        cache = get_category_property_cache()
+        valid_properties_by_category = cache.load()
+        print(f"✅ Loaded property definitions for {len(valid_properties_by_category)} categories")
         print()
         
         # Load Materials.yaml to analyze gaps
@@ -1225,34 +690,31 @@ def handle_data_gaps():
         with open(materials_file) as f:
             materials_data = yaml.safe_load(f)
         
-        # Track property gaps across all materials
+        # Track property gaps across all materials (only valid properties per category)
         property_gaps = defaultdict(int)
         material_gaps = []
         total_materials = 0
         total_gaps = 0
         
-        # All expected properties (meltingPoint removed - replaced by thermalDestruction)
-        all_properties = [
-            'density', 'thermalConductivity', 'specificHeat',
-            'thermalExpansion', 'youngsModulus', 'tensileStrength', 'hardness',
-            'reflectivity', 'absorptivity', 'vaporPressure', 'ablationThreshold',
-            'electricalResistivity', 'porosity', 'surfaceRoughness', 'oxidationResistance',
-            'corrosionResistance', 'toxicity', 'laserAbsorption', 'laserReflectivity',
-            'thermalDiffusivity', 'thermalDestruction'
-        ]
-        
         materials_section = materials_data.get('materials', {})
         
-        # Materials are direct keys, not nested in items
+        # Analyze gaps per material, respecting category property definitions
         for material_name, material_data in materials_section.items():
             if not isinstance(material_data, dict):
                 continue
-                
+            
+            category = material_data.get('category', 'unknown')
+            valid_properties = valid_properties_by_category.get(category, set())
+            
+            if not valid_properties:
+                continue  # Skip materials with unknown categories
+            
             properties = material_data.get('properties', {})
             total_materials += 1
             
             missing_props = []
-            for prop in all_properties:
+            # Only check properties valid for this category
+            for prop in valid_properties:
                 if prop not in properties or properties[prop] is None:
                     property_gaps[prop] += 1
                     missing_props.append(prop)
@@ -1316,6 +778,306 @@ def handle_data_gaps():
         
     except Exception as e:
         print(f"❌ Data gaps analysis error: {e}")
+        import traceback
+        traceback.print_exc()
+        return False
+
+
+def handle_research_missing_properties(batch_size=10, confidence_threshold=70, 
+                                       specific_properties=None, specific_materials=None):
+    """
+    Run AI research to fill missing property values (Stage 0 requirement)
+    
+    This function implements the automated AI research system to achieve 100% data completeness.
+    It uses PropertyValueResearcher to fill missing property values in materials.yaml.
+    
+    Args:
+        batch_size: Number of properties to research in parallel
+        confidence_threshold: Minimum confidence for accepting results
+        specific_properties: Optional list of specific properties to research
+        specific_materials: Optional list of specific materials to research
+    """
+    try:
+        import yaml
+        from pathlib import Path
+        from collections import defaultdict
+        import sys
+        from datetime import datetime
+        
+        # Import research infrastructure
+        sys.path.insert(0, str(Path(__file__).parent))
+        from components.frontmatter.research.property_value_researcher import PropertyValueResearcher, ResearchContext
+        from api.client_factory import create_api_client
+        
+        print("="*80)
+        print("🔬 STAGE 0: AI RESEARCH & DATA COMPLETION")
+        print("="*80)
+        print()
+        print("⚡ MANDATORY REQUIREMENT - Filling missing property values")
+        print(f"📊 Batch size: {batch_size}")
+        print(f"🎯 Confidence threshold: {confidence_threshold}%")
+        print()
+        
+        # Load category property cache (validates property applicability per category)
+        from utils.category_property_cache import get_category_property_cache
+        
+        print("📂 Loading category property definitions...")
+        cache = get_category_property_cache()
+        valid_properties_by_category = cache.load()
+        
+        cache_stats = cache.get_stats()
+        print(f"✅ Loaded {cache_stats['categories']} categories with {cache_stats['total_properties']} total property definitions")
+        print(f"📋 Cache: {cache_stats['cache_file']} ({'exists' if cache_stats['cache_exists'] else 'created'})")
+        print()
+        
+        # Load materials.yaml
+        materials_file = Path("data/Materials.yaml")
+        if not materials_file.exists():
+            print("❌ Materials.yaml not found")
+            return False
+        
+        print("📂 Loading Materials.yaml...")
+        with open(materials_file) as f:
+            materials_data = yaml.safe_load(f)
+        
+        # Analyze gaps
+        print("🔍 Analyzing data gaps...")
+        materials_section = materials_data.get('materials', {})
+        
+        # Find missing values (only for properties valid in each material's category)
+        missing_by_material = {}
+        missing_by_property = defaultdict(list)
+        total_gaps = 0
+        skipped_invalid = 0
+        
+        for material_name, material_data in materials_section.items():
+            if not isinstance(material_data, dict):
+                continue
+            
+            # Get material category
+            category = material_data.get('category', 'unknown')
+            valid_properties = valid_properties_by_category.get(category, set())
+            
+            if not valid_properties:
+                print(f"⚠️  Warning: Material '{material_name}' has unknown category '{category}'")
+                continue
+            
+            properties = material_data.get('properties', {})
+            missing_props = []
+            
+            # Only check properties that are valid for this category
+            for prop_name in valid_properties:
+                if prop_name not in properties or properties[prop_name] is None:
+                    missing_props.append(prop_name)
+                    missing_by_property[prop_name].append(material_name)
+                    total_gaps += 1
+            
+            if missing_props:
+                missing_by_material[material_name] = {
+                    'category': category,
+                    'missing_properties': missing_props
+                }
+        
+        print(f"📊 Found {total_gaps} missing property values across {len(missing_by_material)} materials")
+        print(f"✅ All properties validated against category definitions")
+        print()
+        
+        # Filter by specific properties/materials if requested
+        if specific_properties:
+            missing_by_property = {k: v for k, v in missing_by_property.items() if k in specific_properties}
+            print(f"🎯 Filtering to specific properties: {', '.join(specific_properties)}")
+        
+        if specific_materials:
+            # Filter materials first
+            missing_by_material = {k: v for k, v in missing_by_material.items() if k in specific_materials}
+            # Rebuild missing_by_property to only include filtered materials
+            filtered_missing_by_property = defaultdict(list)
+            for material_name, material_info in missing_by_material.items():
+                for prop_name in material_info['missing_properties']:
+                    if not specific_properties or prop_name in specific_properties:
+                        filtered_missing_by_property[prop_name].append(material_name)
+            missing_by_property = dict(filtered_missing_by_property)
+            print(f"🎯 Filtering to specific materials: {', '.join(specific_materials)}")
+        
+        if not missing_by_property:
+            print("✅ No missing properties found! Data is 100% complete.")
+            return True
+        
+        # Show top priorities
+        sorted_props = sorted(missing_by_property.items(), key=lambda x: len(x[1]), reverse=True)
+        print("🎯 Research Priorities (Top 10):")
+        print("-"*80)
+        for i, (prop_name, materials) in enumerate(sorted_props[:10], 1):
+            pct = (len(materials) / total_gaps * 100) if total_gaps > 0 else 0
+            print(f"{i:2d}. {prop_name:30s} - {len(materials):3d} materials ({pct:5.1f}%)")
+        print()
+        
+        # Confirm before proceeding
+        print("⚠️  This will use AI API calls to research missing properties.")
+        response = input("Continue? (yes/no): ").strip().lower()
+        if response not in ['yes', 'y']:
+            print("❌ Research cancelled by user")
+            return False
+        
+        print()
+        print("🚀 Starting AI research...")
+        print("="*80)
+        print()
+        
+        # Initialize researcher - Use AIResearchEnrichmentService (not PropertyValueResearcher)
+        from research.services.ai_research_service import AIResearchEnrichmentService
+        researcher = AIResearchEnrichmentService(api_provider="deepseek")
+        print("✅ AI Research Service initialized with DeepSeek API")
+        print()
+        
+        # Research missing properties
+        research_results = {}
+        successful_research = 0
+        failed_research = 0
+        research_count = 0
+        
+        # Process by priority (most missing first)
+        for prop_name, materials in sorted_props:
+            print(f"\n📊 Researching {prop_name} for {len(materials)} materials...")
+            print("-"*80)
+            
+            for material_name in materials:
+                research_count += 1
+                print(f"[{research_count}/{total_gaps}] Researching {material_name}.{prop_name}...", end=" ")
+                
+                try:
+                    # Get material category for context
+                    category = missing_by_material[material_name]['category']
+                    
+                    # ⚡ CRITICAL VALIDATION: Verify property is valid for this category
+                    valid_properties = valid_properties_by_category.get(category, set())
+                    if prop_name not in valid_properties:
+                        print(f"⚠️  SKIPPED (property not defined for {category} category)")
+                        failed_research += 1
+                        continue
+                    
+                    # Research the property using AIResearchEnrichmentService
+                    result = researcher.research_property(
+                        material_name=material_name,
+                        property_name=prop_name,
+                        category=category,
+                        confidence_threshold=confidence_threshold / 100.0  # Convert to 0-1 scale
+                    )
+                    
+                    if result.success and result.confidence >= (confidence_threshold / 100.0):
+                        # Store result in format compatible with Materials.yaml
+                        if material_name not in research_results:
+                            research_results[material_name] = {}
+                        research_results[material_name][prop_name] = {
+                            'value': result.researched_value,
+                            'unit': result.unit,
+                            'confidence': int(result.confidence * 100),
+                            'source': result.source,
+                            'research_date': result.research_date
+                        }
+                        
+                        print(f"✅ {result.researched_value} {result.unit} (confidence: {int(result.confidence * 100)}%)")
+                        successful_research += 1
+                    else:
+                        error_msg = result.error_message if hasattr(result, 'error_message') and result.error_message else "Unknown error"
+                        print(f"❌ Low confidence ({int(result.confidence * 100)}%) or failed: {error_msg}")
+                        failed_research += 1
+                
+                except Exception as e:
+                    print(f"❌ Error: {str(e)}")
+                    failed_research += 1
+                
+                # Progress update every 10 items
+                if research_count % 10 == 0:
+                    pct = (successful_research / research_count * 100) if research_count > 0 else 0
+                    print(f"\n   Progress: {research_count}/{total_gaps} ({pct:.1f}% success rate)")
+        
+        print()
+        print("="*80)
+        print("📊 RESEARCH SUMMARY")
+        print("="*80)
+        print(f"Total researched: {research_count}")
+        print(f"✅ Successful: {successful_research}")
+        print(f"❌ Failed: {failed_research}")
+        print(f"Success rate: {(successful_research/research_count*100):.1f}%")
+        print()
+        
+        if successful_research == 0:
+            print("⚠️  No successful research results. Materials.yaml not updated.")
+            return False
+        
+        # Update materials.yaml
+        print("💾 Updating Materials.yaml...")
+        
+        # Create backup
+        backup_file = materials_file.with_suffix(f'.backup_{datetime.now().strftime("%Y%m%d_%H%M%S")}.yaml')
+        import shutil
+        shutil.copy2(materials_file, backup_file)
+        print(f"   Backup created: {backup_file.name}")
+        
+        # Apply updates
+        updates_applied = 0
+        for material_name, properties in research_results.items():
+            if material_name not in materials_section:
+                print(f"⚠️  Warning: Material '{material_name}' not found in Materials.yaml, skipping...")
+                continue
+                
+            if 'properties' not in materials_section[material_name]:
+                materials_section[material_name]['properties'] = {}
+            
+            for prop_name, prop_data in properties.items():
+                materials_section[material_name]['properties'][prop_name] = prop_data
+                updates_applied += 1
+        
+        # Save updated file
+        with open(materials_file, 'w') as f:
+            yaml.dump(materials_data, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
+        
+        print(f"   Applied {updates_applied} property updates")
+        print()
+        
+        # Run completeness report
+        print("="*80)
+        print("📊 UPDATED DATA COMPLETENESS")
+        print("="*80)
+        print()
+        
+        # Re-run completeness report
+        import subprocess
+        result = subprocess.run(
+            [sys.executable, "scripts/analysis/property_completeness_report.py"],
+            capture_output=True,
+            text=True,
+            timeout=60
+        )
+        
+        if result.returncode == 0:
+            # Show relevant sections of output
+            lines = result.stdout.split('\n')
+            # Find and print the summary section
+            for i, line in enumerate(lines):
+                if 'Overall' in line or '✅' in line or '⚠️' in line or '❌' in line:
+                    print(line)
+        
+        print()
+        print("="*80)
+        print("✅ STAGE 0 COMPLETE")
+        print("="*80)
+        print()
+        print(f"📊 Researched {successful_research} property values")
+        print(f"💾 Updated Materials.yaml")
+        print(f"🔒 Backup saved: {backup_file.name}")
+        print()
+        print("Next steps:")
+        print("  1. Review updated data: data/Materials.yaml")
+        print("  2. Verify zero nulls: python3 scripts/validation/validate_zero_nulls.py --materials")
+        print("  3. Generate content: python3 run.py --material \"MaterialName\"")
+        print()
+        
+        return True
+        
+    except Exception as e:
+        print(f"❌ AI research error: {e}")
         import traceback
         traceback.print_exc()
         return False
@@ -1516,7 +1278,13 @@ def main():
     parser.add_argument("--data", nargs='?', const='--all', help="Systematically verify Materials.yaml data with AI research (use --data=critical, --data=all, or --data=test)")
     parser.add_argument("--data-completeness-report", action="store_true", help="Generate comprehensive data completeness report")
     parser.add_argument("--data-gaps", action="store_true", help="Analyze data gaps and show research priorities")
+    parser.add_argument("--research-missing-properties", action="store_true", help="Run AI research to fill missing property values (Stage 0 requirement)")
+    parser.add_argument("--research-properties", help="Research specific properties (comma-separated list)")
+    parser.add_argument("--research-materials", help="Research properties for specific materials (comma-separated list)")
+    parser.add_argument("--research-batch-size", type=int, default=10, help="Number of properties to research in parallel (default: 10)")
+    parser.add_argument("--research-confidence-threshold", type=int, default=70, help="Minimum confidence threshold for research results (default: 70)")
     parser.add_argument("--enforce-completeness", action="store_true", help="Block generation if data completeness below threshold (strict mode)")
+    parser.add_argument("--generate-caption", action="store_true", help="Generate AI caption section (disabled by default to skip caption parsing issues)")
     
     args = parser.parse_args()
     
@@ -1527,6 +1295,15 @@ def main():
     # Handle data gaps analysis
     if args.data_gaps:
         return handle_data_gaps()
+    
+    # Handle AI research automation (Stage 0 requirement)
+    if args.research_missing_properties:
+        return handle_research_missing_properties(
+            batch_size=args.research_batch_size,
+            confidence_threshold=args.research_confidence_threshold,
+            specific_properties=args.research_properties.split(',') if args.research_properties else None,
+            specific_materials=args.research_materials.split(',') if args.research_materials else None
+        )
     
     # Handle systematic data verification
     if args.data is not None:
@@ -1614,7 +1391,7 @@ def main():
                 
                 # Load frontmatter data for components that need it
                 frontmatter_data = None
-                if component_type in ['table', 'author', 'metatags', 'jsonld', 'caption', 'tags', 'propertiestable']:
+                if component_type in ['table', 'author', 'metatags', 'jsonld', 'caption', 'propertiestable']:
                     # Try to load existing frontmatter - prioritize .yaml format
                     base_name = generate_safe_filename(args.material)
                     frontmatter_paths = [
@@ -1661,13 +1438,27 @@ def main():
                         print(f"❌ No frontmatter data found for {args.material} - {component_type} component requires frontmatter")
                         continue
                 
+                # Prepare kwargs for component generation
+                generation_kwargs = {
+                    'enforce_completeness': args.enforce_completeness if hasattr(args, 'enforce_completeness') else False,
+                }
+                
+                # Add AI field control flags for frontmatter
+                if component_type == 'frontmatter':
+                    if hasattr(args, 'skip_ai_fields') and args.skip_ai_fields:
+                        generation_kwargs['skip_subtitle'] = True
+                        generation_kwargs['skip_caption'] = True
+                    else:
+                        generation_kwargs['skip_subtitle'] = not (hasattr(args, 'generate_subtitle') and args.generate_subtitle)
+                        generation_kwargs['skip_caption'] = not (hasattr(args, 'generate_caption') and args.generate_caption)
+                
                 result = generator.generate_component(
                     material=args.material,
                     component_type=component_type,
                     api_client=api_client,
                     frontmatter_data=frontmatter_data,
                     material_data=material_info,
-                    enforce_completeness=args.enforce_completeness if hasattr(args, 'enforce_completeness') else False
+                    **generation_kwargs
                 )
                 
                 if result.success:
@@ -1813,7 +1604,7 @@ def main():
                     try:
                         # Load frontmatter data for components that need it
                         frontmatter_data = None
-                        if component_type in ['table', 'author', 'metatags', 'jsonld', 'caption', 'tags', 'propertiestable']:
+                        if component_type in ['table', 'author', 'metatags', 'jsonld', 'caption', 'propertiestable']:
                             # Try to load existing frontmatter
                             material_slug = generate_safe_filename(material_name)
                             frontmatter_paths = [
@@ -1859,7 +1650,7 @@ def main():
                             output_dir = f"content/components/{component_type}"
                             os.makedirs(output_dir, exist_ok=True)
                             filename = generate_safe_filename(material_name)
-                            output_file = f"{output_dir}/{filename}-laser-cleaning.json" if component_type == 'jsonld' else f"{output_dir}/{filename}-laser-cleaning.yaml" if component_type in ['frontmatter', 'table', 'metatags', 'author', 'caption', 'tags'] else f"{output_dir}/{filename}-laser-cleaning.md"
+                            output_file = f"{output_dir}/{filename}-laser-cleaning.json" if component_type == 'jsonld' else f"{output_dir}/{filename}-laser-cleaning.yaml" if component_type in ['frontmatter', 'table', 'metatags', 'author', 'caption'] else f"{output_dir}/{filename}-laser-cleaning.md"
                             
                             with open(output_file, 'w') as f:
                                 f.write(result.content)
