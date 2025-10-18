@@ -82,13 +82,18 @@ class PipelineProcessService:
             
             # Apply relevant environmental impact templates
             for impact_type, template in self.environmental_impact_templates.items():
-                environmental_impact.append({
+                impact_entry = {
                     'benefit': impact_type.replace('_', ' ').title(),
-                    'description': template.get('description', ''),
-                    'applicableIndustries': template.get('applicable_industries', []),
-                    'quantifiedBenefits': template.get('quantified_benefits', ''),
-                    'sustainabilityBenefit': template.get('sustainability_benefit', '')
-                })
+                    'applicableIndustries': template.get('applicable_industries', [])
+                }
+                # Zero Null Policy: Only add fields if they have non-empty values
+                if template.get('description'):
+                    impact_entry['description'] = template['description']
+                if template.get('quantified_benefits'):
+                    impact_entry['quantifiedBenefits'] = template['quantified_benefits']
+                if template.get('sustainability_benefit'):
+                    impact_entry['sustainabilityBenefit'] = template['sustainability_benefit']
+                environmental_impact.append(impact_entry)
                 
             if environmental_impact:
                 frontmatter['environmentalImpact'] = environmental_impact
@@ -116,14 +121,18 @@ class PipelineProcessService:
             
             # Apply relevant standard outcome metrics
             for metric_type, metric_def in self.standard_outcome_metrics.items():
-                outcome_metrics.append({
+                metric_entry = {
                     'metric': metric_type.replace('_', ' ').title(),
-                    'description': metric_def.get('description', ''),
                     'measurementMethods': metric_def.get('measurement_methods', []),
-                    'typicalRanges': metric_def.get('typical_ranges', ''),
                     'factorsAffecting': metric_def.get('factors_affecting', []),
                     'units': metric_def.get('units', [])
-                })
+                }
+                # Zero Null Policy: Only add fields if they have non-empty values
+                if metric_def.get('description'):
+                    metric_entry['description'] = metric_def['description']
+                if metric_def.get('typical_ranges'):
+                    metric_entry['typicalRanges'] = metric_def['typical_ranges']
+                outcome_metrics.append(metric_entry)
                 
             if outcome_metrics:
                 frontmatter['outcomeMetrics'] = outcome_metrics

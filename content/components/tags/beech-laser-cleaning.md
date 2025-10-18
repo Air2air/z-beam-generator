@@ -1,1 +1,0 @@
-Tags integrated into frontmatter: wood, restoration, insulating, durable, porous, lightweight, expansive, strong, rigid, todd-dunning

@@ -302,17 +302,24 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             self.logger.error(f"Failed to load Categories.yaml: {e}")
             raise
 
-    def generate(self, material_name: str, **kwargs) -> ComponentResult:
-        """Generate frontmatter content"""
+    def generate(self, material_name: str, skip_caption: bool = True, skip_subtitle: bool = True, **kwargs) -> ComponentResult:
+        """Generate frontmatter content
+        
+        Args:
+            material_name: Name of material to generate frontmatter for
+            skip_caption: If True, skip AI caption generation (default True)
+            skip_subtitle: If True, skip AI subtitle generation (default True)
+            **kwargs: Additional generation parameters
+        """
         try:
-            self.logger.info(f"Generating frontmatter for {material_name}")
+            self.logger.info(f"Generating frontmatter for {material_name} (skip_subtitle={skip_subtitle}, skip_caption={skip_caption})")
             # Load material data first (using cached version for performance)
             from data.materials import get_material_by_name_cached
             material_data = get_material_by_name_cached(material_name)
             
             if material_data:
                 # Use YAML data with AI enhancement
-                content = self._generate_from_yaml(material_name, material_data)
+                content = self._generate_from_yaml(material_name, material_data, skip_caption=skip_caption, skip_subtitle=skip_subtitle)
             else:
                 # Pure AI generation for unknown materials
                 content = self._generate_from_api(material_name, {})
@@ -521,8 +528,15 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         
         return frontmatter
 
-    def _generate_from_yaml(self, material_name: str, material_data: Dict) -> Dict:
-        """Generate frontmatter using YAML data with AI enhancement"""
+    def _generate_from_yaml(self, material_name: str, material_data: Dict, skip_caption: bool = True, skip_subtitle: bool = True) -> Dict:
+        """Generate frontmatter using YAML data with AI enhancement
+        
+        Args:
+            material_name: Name of material
+            material_data: Material data from Materials.yaml
+            skip_caption: If True, skip AI caption generation (default True)
+            skip_subtitle: If True, skip AI subtitle generation (default True)
+        """
         try:
             self.logger.info(f"Generating frontmatter for {material_name} using YAML data")
             # Apply abbreviation template if applicable
@@ -532,15 +546,22 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             # Build base structure from YAML with all required schema fields
             category = (material_data['category'] if 'category' in material_data else 'materials').title()
             subcategory = material_data['subcategory'] if 'subcategory' in material_data else abbreviation_format['subcategory']
-            frontmatter = {
-                'name': abbreviation_format['name'],
-                'title': material_data['title'] if 'title' in material_data else abbreviation_format['title'],
-                'subtitle': self._generate_subtitle(
+            # Generate subtitle only if not skipped
+            if skip_subtitle:
+                subtitle_text = f"Laser cleaning parameters and specifications for {abbreviation_format['name']}"
+                self.logger.info(f"⏭️  Skipping AI subtitle generation for {material_name}")
+            else:
+                subtitle_text = self._generate_subtitle(
                     material_name=abbreviation_format['name'],
                     category=category,
                     subcategory=subcategory,
                     material_data=material_data
-                ),
+                )
+            
+            frontmatter = {
+                'name': abbreviation_format['name'],
+                'title': material_data['title'] if 'title' in material_data else abbreviation_format['title'],
+                'subtitle': subtitle_text,
                 'description': material_data['description'] if 'description' in material_data else f"Laser cleaning parameters for {material_data['name'] if 'name' in material_data else material_name}{abbreviation_format['description_suffix']}",
                 'category': category,
                 'subcategory': subcategory,
@@ -644,12 +665,14 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             frontmatter = self.pipeline_process_service.add_outcome_metrics_section(frontmatter, material_data)
             # Add regulatory standards (universal + material-specific)
             frontmatter = self.pipeline_process_service.add_regulatory_standards_section(frontmatter, material_data)
-            # Generate author (must come before caption/tags)
+            # Generate author
             frontmatter.update(self._generate_author(material_data))
-            # Add caption section (AI-generated before/after text)
-            frontmatter = self._add_caption_section(frontmatter, material_data, material_name)
-            # Add tags section (10 essential tags for frontmatter)
-            frontmatter = self._add_tags_section(frontmatter, material_data, material_name)
+            # Add caption section (AI-generated before/after text) - skip by default
+            if not skip_caption:
+                self.logger.info(f"Generating AI caption for {material_name}...")
+                frontmatter = self._add_caption_section(frontmatter, material_data, material_name)
+            else:
+                self.logger.info(f"⏭️  Skipping AI caption generation for {material_name} (use --generate-caption to enable)")
             return frontmatter
             
         except Exception as e:
@@ -765,10 +788,10 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                         is_qualitative = isinstance(prop_value, str) and not self._is_numeric_string(prop_value)
                         
                         if is_qualitative:
-                            # Qualitative property - no min/max ranges needed
+                            # Qualitative property - OMIT min/max fields entirely (Zero Null Policy)
                             self.logger.debug(f"Skipping range validation for qualitative property: {prop_name}={prop_value}")
-                            properties[prop_name]['min'] = None
-                            properties[prop_name]['max'] = None
+                            # ✅ NO min/max fields at all - complete omission per Zero Null Policy
+                            # Fields are simply not added to the properties dict
                         else:
                             # Quantitative property - needs min/max ranges
                             category_ranges = all_category_ranges.get(prop_name)
@@ -1719,175 +1742,5 @@ Generate exactly two text blocks:
             # FAIL-FAST per GROK_INSTRUCTIONS.md - caption is required
             raise GenerationError(f"Caption generation failed for {material_name}: {e}")
 
-    def _add_tags_section(self, frontmatter: Dict, material_data: Dict, material_name: str) -> Dict:
-        """Add tags section with 10 tags: 1 category + 3 industries + 3 processes + 2 characteristics + 1 author"""
-        try:
-            self.logger.info(f"Starting tags generation for {material_name}")
-            tags = []
-            
-            # 1. CORE: Category
-            category_raw = frontmatter.get('category', material_data.get('category', 'material'))
-            category = category_raw.lower() if isinstance(category_raw, str) else str(category_raw).lower()
-            tags.append(category)
-            self.logger.info(f"Added category tag: {category}")
-            # 2-4. INDUSTRIES: Extract from applicationTypes
-            industry_tags = self._extract_industry_tags_for_tags(frontmatter, category)
-            tags.extend(industry_tags[:3])
-            # 5-7. PROCESSES: Extract from applicationTypes
-            process_tags = self._extract_process_tags_for_tags(frontmatter, category)
-            tags.extend(process_tags[:3])
-            # 8-9. CHARACTERISTICS: Extract from materialProperties
-            characteristic_tags = self._extract_characteristic_tags_for_tags(frontmatter, material_data, category)
-            tags.extend(characteristic_tags[:2])
-            # 10. AUTHOR: Author name slug
-            author_info = frontmatter.get('author', {})
-            if isinstance(author_info, dict):
-                author_raw = author_info.get('name', '')
-            else:
-                author_raw = str(author_info)
-            author_slug = author_raw.lower().replace(' ', '-').replace('.', '').replace(',', '') if author_raw else 'unknown-author'
-            tags.append(author_slug)
-            # Validation: Ensure exactly 10 tags
-            while len(tags) < 10:
-                tags.append('laser-processing')
-            tags = tags[:10]
-            frontmatter['tags'] = tags
-            self.logger.info(f"✅ Successfully added {len(tags)} tags for {material_name}: {tags}")
-            return frontmatter
-            
-        except Exception as e:
-            self.logger.error(f"❌ FAILED to add tags section for {material_name}: {e}")
-            import traceback
-            self.logger.error(f"Traceback: {traceback.format_exc()}")
-            return frontmatter
 
-    def _extract_industry_tags_for_tags(self, frontmatter: Dict, category: str) -> list:
-        """Extract 3 industry tags from applications (supports both string and structured formats)"""
-        industries = []
-        
-        # Extract from applications field (both string and structured formats)
-        if 'applications' in frontmatter:
-            apps = frontmatter['applications']
-            if isinstance(apps, list):
-                for app in apps:
-                    industry = None
-                    
-                    # Structured format: {industry: "Aerospace", detail: "..."}
-                    if isinstance(app, dict) and 'industry' in app:
-                        industry = app['industry']
-                    # String format: "Aerospace: Description..."
-                    elif isinstance(app, str) and ':' in app:
-                        industry = app.split(':')[0].strip()
-                    
-                    if industry:
-                        industry_slug = industry.lower().replace(' ', '-').replace('_', '-').replace('&', 'and')
-                        if industry_slug not in industries:
-                            industries.append(industry_slug)
-                        if len(industries) >= 3:
-                            return industries[:3]
-        
-        # Fallback from legacy applicationTypes if present
-        if 'applicationTypes' in frontmatter:
-            app_types = frontmatter['applicationTypes']
-            if isinstance(app_types, list):
-                for app_type in app_types:
-                    if isinstance(app_type, dict) and 'industries' in app_type:
-                        app_industries = app_type['industries']
-                        if isinstance(app_industries, list):
-                            for industry in app_industries:
-                                if isinstance(industry, str):
-                                    industry_slug = industry.lower().replace(' ', '-').replace('_', '-').replace('&', 'and')
-                                    if industry_slug not in industries:
-                                        industries.append(industry_slug)
-                                    if len(industries) >= 3:
-                                        return industries[:3]
-        
-        # Final fallback: category-specific defaults
-        fallback_industries = {
-            'metal': ['manufacturing', 'aerospace', 'automotive'],
-            'metals': ['manufacturing', 'aerospace', 'automotive'],
-            'ceramic': ['electronics', 'medical', 'aerospace'],
-            'ceramics': ['electronics', 'medical', 'aerospace'],
-            'stone': ['cultural-heritage', 'architecture', 'restoration'],
-        }
-        category_fallbacks = fallback_industries.get(category, ['manufacturing', 'industrial', 'processing'])
-        for fallback in category_fallbacks:
-            if fallback not in industries:
-                industries.append(fallback)
-            if len(industries) >= 3:
-                break
-        return industries[:3]
-
-    def _extract_process_tags_for_tags(self, frontmatter: Dict, category: str) -> list:
-        """Extract 3 process tags from applicationTypes"""
-        processes = []
-        
-        if 'applicationTypes' in frontmatter:
-            app_types = frontmatter['applicationTypes']
-            if isinstance(app_types, list):
-                for app_type in app_types:
-                    if isinstance(app_type, dict) and 'type' in app_type:
-                        process_type = app_type['type']
-                        if isinstance(process_type, str):
-                            process_slug = process_type.lower().replace(' ', '-').replace('_', '-')
-                            if process_slug not in processes:
-                                processes.append(process_slug)
-                            if len(processes) >= 3:
-                                return processes
-        
-        # Fallback: category-specific
-        fallback_processes = {
-            'metal': ['decoating', 'oxide-removal', 'surface-preparation'],
-            'metals': ['decoating', 'oxide-removal', 'surface-preparation'],
-            'ceramic': ['precision-cleaning', 'surface-preparation', 'restoration'],
-        }
-        category_fallbacks = fallback_processes.get(category, ['surface-preparation', 'contamination-removal', 'maintenance'])
-        for fallback in category_fallbacks:
-            if fallback not in processes:
-                processes.append(fallback)
-            if len(processes) >= 3:
-                break
-        return processes[:3]
-
-    def _extract_characteristic_tags_for_tags(self, frontmatter: Dict, material_data: Dict, category: str) -> list:
-        """Extract 2 material characteristic tags from materialProperties"""
-        characteristics = []
-        
-        if 'materialProperties' in frontmatter:
-            props = frontmatter['materialProperties']
-            
-            # Check for thermal sensitivity
-            if 'thermalConductivity' in props:
-                # Use pattern-aware extraction
-                thermal_val = self._extract_property_value(props['thermalConductivity'])
-                try:
-                    if float(thermal_val) < 10:
-                        characteristics.append('thermal-sensitive')
-                except (ValueError, TypeError):
-                    pass
-            
-            # Check for reflectivity
-            if 'reflectivity' in props and len(characteristics) < 2:
-                # Use pattern-aware extraction (handles wavelength-specific reflectivity)
-                reflectivity_val = self._extract_property_value(props['reflectivity'])
-                try:
-                    if float(reflectivity_val) > 0.5:
-                        characteristics.append('reflective-surface')
-                except (ValueError, TypeError):
-                    pass
-        
-        # Fallback: category-specific
-        if len(characteristics) < 2:
-            fallback_chars = {
-                'metal': ['conductive', 'reflective-surface'],
-                'metals': ['conductive', 'reflective-surface'],
-                'ceramic': ['thermal-resistant', 'hard-material'],
-            }
-            category_fallbacks = fallback_chars.get(category, ['industrial-grade', 'processed'])
-            for fallback in category_fallbacks:
-                if len(characteristics) >= 2:
-                    break
-                if fallback not in characteristics:
-                    characteristics.append(fallback)
-        return characteristics[:2]
 

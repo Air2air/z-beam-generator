@@ -159,12 +159,6 @@ Generate high-quality, accurate, and professional content that follows industry 
 - Include relevant keywords naturally and appropriately
 - Follow SEO best practices for technical content
 - Ensure meta descriptions are under 160 characters""",
-            "tags": """
-- Generate relevant, specific tags for categorization and SEO
-- Include technical terms, industry keywords, and material properties
-- Balance broad and specific tags for optimal discoverability
-- Avoid overly generic tags, focus on technical accuracy
-- Include both material-specific and process-specific tags""",
             "text": """
 - Generate concise, informative bullet points
 - Focus on key technical features and benefits

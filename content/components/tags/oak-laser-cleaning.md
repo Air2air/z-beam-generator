@@ -1,1 +1,0 @@
-Tags integrated into frontmatter: wood, construction, absorptive, insulating, porous, lightweight, stable, fusible, strong, todd-dunning

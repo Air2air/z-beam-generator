@@ -237,9 +237,6 @@
         },
         "metatags": {
           "$ref": "#/definitions/MetatagsOutput"
-        },
-        "tags": {
-          "$ref": "#/definitions/TagsOutput"
         }
       }
     }
@@ -1759,45 +1756,6 @@
             "method": {
               "type": "string",
               "description": "Generation method used"
-            }
-          }
-        }
-      }
-    },
-    "TagsOutput": {
-      "type": "object",
-      "description": "Essential content tags output for frontmatter (max 10 tags)",
-      "additionalProperties": false,
-      "properties": {
-        "essentialTags": {
-          "type": "array",
-          "items": {"type": "string"},
-          "maxItems": 10,
-          "minItems": 5,
-          "description": "Essential tags including category, author, material, and key descriptors"
-        },
-        "generation": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "generated": {
-              "type": "string",
-              "format": "date-time",
-              "description": "Timestamp of tags generation"
-            },
-            "method": {
-              "type": "string",
-              "description": "Generation method used"
-            },
-            "totalTags": {
-              "type": "integer",
-              "maximum": 10,
-              "description": "Total number of essential tags generated"
-            },
-            "tagPriority": {
-              "type": "string",
-              "enum": ["essential", "minimal", "core"],
-              "description": "Priority level for frontmatter tags"
             }
           }
         }

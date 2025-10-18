@@ -392,6 +392,7 @@ Ensure all content is scientifically accurate but prioritize clarity and readabi
         author_info: Optional[Dict] = None,
         frontmatter_data: Optional[Dict] = None,
         schema_fields: Optional[Dict] = None,
+        **kwargs  # Accept enforce_completeness and other optional parameters
     ):
         """Generate AI-powered caption content - FAIL FAST ARCHITECTURE"""
         

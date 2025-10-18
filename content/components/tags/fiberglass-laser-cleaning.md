@@ -1,1 +1,0 @@
-Tags integrated into frontmatter: composite, medical, aerospace, automotive, absorptive, conductive, durable, strong, corrosion-resistant, yi-chun-lin

@@ -1,1 +1,0 @@
-Tags integrated into frontmatter: metal, aerospace, restoration, manufacturing, absorptive, dense, strong, rigid, todd-dunning

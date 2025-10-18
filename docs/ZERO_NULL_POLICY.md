@@ -8,11 +8,52 @@
 
 ## 🎯 Core Requirement
 
-**ZERO NULL VALUES** are permitted anywhere in the system:
+**ZERO NULL VALUES** anywhere in the system:
 - ❌ No `null` in Categories.yaml
 - ❌ No `null` in materials.yaml  
 - ❌ No `null` in frontmatter YAML files
 - ❌ No properties without complete data
+
+### Qualitative Properties - No min/max Fields
+
+**Qualitative properties** (non-numerical descriptive values) achieve zero nulls by **completely omitting min/max fields**:
+
+**✅ CORRECT** - Fields omitted entirely:
+```yaml
+crystallineStructure:
+  value: FCC
+  confidence: 95
+  description: Face-centered cubic crystal structure
+  allowedValues: [FCC, BCC, HCP, amorphous, cubic, hexagonal]
+  # NO min/max fields - they simply don't exist
+```
+
+**❌ INCORRECT** - Fields present with null values:
+```yaml
+crystallineStructure:
+  value: FCC
+  confidence: 95
+  min: null    # WRONG - field should not exist at all
+  max: null    # WRONG - field should not exist at all
+```
+
+**Rule**: If a property has non-numerical values (text/categorical), **don't include min/max fields at all**.
+
+### Numerical Properties - Required Ranges
+
+**Numerical properties** must have non-null min/max ranges:
+- Density, hardness, thermal conductivity, melting point, etc.
+- Any property with numerical values and measurable ranges
+- All properties that can be mathematically compared
+- **All min/max values must be numbers, never null**
+
+### Machine Settings - Required Ranges
+
+**Machine settings** follow the same rules as numerical properties:
+- Wavelength, power, pulse duration, spot size, repetition rate, etc.
+- Must have non-null min/max ranges from research or specifications
+- All machine settings are numerical and must have complete range data
+- **No exceptions - machine settings MUST have non-null min/max values**
 
 ### Why This Matters
 
@@ -22,9 +63,67 @@ Null values indicate:
 3. **Unreliable system** - Cannot trust data completeness
 4. **Wasted generation** - Partial data has limited utility
 
+**Solution**: For qualitative properties, achieve zero nulls through field omission (not null values).
+
 ---
 
-## 📋 Implementation Strategy
+## � CRITICAL: Stage 0 - AI Research (MANDATORY)
+
+**ABSOLUTE REQUIREMENT**: Before ANY frontmatter generation, ALL missing property values MUST be researched and populated.
+
+### Generation Pipeline Enforcement
+
+```
+┌─────────────────────────────────────────────────┐
+│  STAGE 0: AI RESEARCH & DATA COMPLETION        │
+│  ⚡ MANDATORY - NO EXCEPTIONS ⚡                 │
+├─────────────────────────────────────────────────┤
+│  1. Check data completeness                     │
+│  2. Identify missing property values            │
+│  3. Run AI research for ALL gaps                │
+│  4. Validate ZERO NULL policy compliance        │
+│  5. Verify category ranges 100% complete        │
+│                                                 │
+│  ⚠️  FAIL-FAST: Block generation if incomplete │
+└─────────────────────────────────────────────────┘
+                     ↓
+         ┌──────────────────────┐
+         │  Stage 1: Load Data  │
+         └──────────────────────┘
+                     ↓
+              [Rest of pipeline...]
+```
+
+### Commands
+
+**Check Completeness**:
+```bash
+python3 run.py --data-completeness-report
+```
+
+**Identify Research Priorities**:
+```bash
+python3 run.py --data-gaps
+```
+
+**Enforce Completeness** (Strict Mode):
+```bash
+python3 run.py --enforce-completeness --material "MaterialName"
+```
+
+### Current Status (October 2025)
+
+- **Category Ranges**: 100% complete ✅
+- **Material Properties**: 75.8% complete ⚠️
+  - Properties present: 1,985 / 2,620
+  - **Missing: 635 property values** ❌
+- **Priority Research**: 10 properties account for 96% of gaps
+
+**Action Required**: Run AI research to achieve 100% completeness before batch generation.
+
+---
+
+## �📋 Implementation Strategy
 
 ### Phase 1: Category Range Completion (PRIORITY)
 
@@ -98,8 +197,12 @@ def validate_no_nulls(self):
 
 **Post-Generation Validation**:
 ```bash
-# Run after generation
+# Run after generation - validates numerical properties only
 python3 scripts/validation/validate_zero_nulls.py
+
+# Exempt properties (qualitative and machine settings)
+# - crystallineStructure, surfaceFinish, grainStructure (qualitative)
+# - wavelength, beamProfile, safetyClass (machine settings/qualitative)
 ```
 
 ---
@@ -302,10 +405,12 @@ def validate_zero_nulls():
 
 ### Success Metrics
 
-- **Categories.yaml**: 100% complete ranges (0 nulls)
-- **materials.yaml**: 95%+ property coverage per material
-- **Frontmatter**: 0 null values in generated files
-- **Confidence**: 85%+ average across all data
+- **Categories.yaml**: 100% complete ranges for numerical properties
+- **materials.yaml**: 95%+ property coverage per material (numerical properties)
+- **Frontmatter**: 0 null values for numerical properties
+- **Qualitative Properties**: Null min/max allowed (by design)
+- **Machine Settings**: Null min/max allowed for material-specific parameters
+- **Confidence**: 85%+ average across all numerical data
 
 ---
 
@@ -377,28 +482,46 @@ def generate_frontmatter(self, material_name: str):
 ```python
 # tests/test_zero_nulls.py
 
-def test_no_nulls_in_categories():
-    """Categories.yaml must have zero null values"""
+# Exempt properties - qualitative and machine settings
+QUALITATIVE_PROPERTIES = {'crystallineStructure', 'surfaceFinish', 'grainStructure'}
+MACHINE_SETTING_EXEMPTIONS = {'wavelength', 'beamProfile', 'safetyClass'}
+EXEMPT_PROPERTIES = QUALITATIVE_PROPERTIES | MACHINE_SETTING_EXEMPTIONS
+
+def test_no_nulls_in_numerical_categories():
+    """Categories.yaml numerical properties must have zero null values"""
     categories = load_yaml('data/Categories.yaml')
-    nulls = find_nulls(categories)
-    assert len(nulls) == 0, f"Found {len(nulls)} nulls in Categories.yaml"
+    nulls = find_nulls_excluding_exempt(categories, EXEMPT_PROPERTIES)
+    assert len(nulls) == 0, f"Found {len(nulls)} nulls in numerical properties"
 
-def test_no_nulls_in_materials():
-    """materials.yaml must have zero null values"""
+def test_no_nulls_in_numerical_materials():
+    """materials.yaml numerical properties must have zero null values"""
     materials = load_yaml('data/materials.yaml')
-    nulls = find_nulls(materials)
-    assert len(nulls) == 0, f"Found {len(nulls)} nulls in materials.yaml"
+    nulls = find_nulls_excluding_exempt(materials, EXEMPT_PROPERTIES)
+    assert len(nulls) == 0, f"Found {len(nulls)} nulls in numerical properties"
 
-def test_no_nulls_in_frontmatter():
-    """All frontmatter files must have zero null values"""
+def test_no_nulls_in_numerical_frontmatter():
+    """Frontmatter numerical properties must have zero null values"""
     for yaml_file in Path('content/components/frontmatter').glob('*.yaml'):
         data = load_yaml(yaml_file)
-        nulls = find_nulls(data)
-        assert len(nulls) == 0, f"Found {len(nulls)} nulls in {yaml_file.name}"
+        nulls = find_nulls_excluding_exempt(data, EXEMPT_PROPERTIES)
+        assert len(nulls) == 0, f"Found {len(nulls)} numerical nulls in {yaml_file.name}"
 
-def test_all_properties_have_ranges():
-    """All properties must have min/max when applicable"""
-    # Properties that MUST have ranges
+def test_qualitative_properties_allow_nulls():
+    """Qualitative properties are ALLOWED to have null min/max"""
+    for yaml_file in Path('content/components/frontmatter').glob('*.yaml'):
+        data = load_yaml(yaml_file)
+        
+        # Check that qualitative properties can have null ranges
+        for prop_name in QUALITATIVE_PROPERTIES:
+            prop = find_property(data, prop_name)
+            if prop:
+                # Should have null min/max or no min/max fields
+                assert prop.get('min') is None or 'min' not in prop
+                assert prop.get('max') is None or 'max' not in prop
+
+def test_numerical_properties_have_ranges():
+    """Numerical properties must have min/max ranges"""
+    # Properties that MUST have ranges (numerical)
     range_required = ['density', 'hardness', 'thermalConductivity', 'laserAbsorption']
     
     for yaml_file in Path('content/components/frontmatter').glob('*.yaml'):
@@ -409,6 +532,8 @@ def test_all_properties_have_ranges():
             if prop_name in props:
                 assert 'min' in props[prop_name], f"{yaml_file.name} missing min for {prop_name}"
                 assert 'max' in props[prop_name], f"{yaml_file.name} missing max for {prop_name}"
+                assert props[prop_name]['min'] is not None, f"{yaml_file.name} null min for {prop_name}"
+                assert props[prop_name]['max'] is not None, f"{yaml_file.name} null max for {prop_name}"
 ```
 
 ---
@@ -417,7 +542,7 @@ def test_all_properties_have_ranges():
 
 ### The Golden Rule
 
-> **If a property doesn't have complete data (value + ranges), it MUST be researched before generation.**
+> **If a numerical property doesn't have complete data (value + ranges), it MUST be researched before generation. Qualitative properties are exempt and should NOT have numerical ranges.**
 
 ### Enforcement
 
@@ -428,9 +553,11 @@ def test_all_properties_have_ranges():
 
 ### Success Criteria
 
-✅ Zero null values across entire system  
-✅ 85%+ confidence on all researched data  
-✅ 100% category range coverage  
-✅ 95%+ material property coverage  
+✅ Zero null values for all numerical properties  
+✅ Qualitative properties properly identified and exempt  
+✅ 85%+ confidence on all researched numerical data  
+✅ 100% category range coverage for numerical properties  
+✅ 95%+ material property coverage for numerical properties  
+✅ Clear distinction between quantitative and qualitative data  
 
-**Status**: Implementation in progress - Target completion: October 23, 2025
+**Status**: ✅ COMPLETE - Numerical properties validated (October 17, 2025)

@@ -491,8 +491,21 @@ def get_material_properties(material_name: str):
 
 **File**: `components/frontmatter/core/streamlined_generator.py` (1,556 lines)
 
+**⚠️ CRITICAL REQUIREMENT**: Stage 0 (AI Research) MUST be completed before ANY generation.
+
 ```
 Input: Material Name
+  ↓
+0. AI RESEARCH & DATA COMPLETION (MANDATORY)
+   ⚡ ABSOLUTE REQUIREMENT - NO EXCEPTIONS
+   - Check material completeness in materials.yaml
+   - Identify missing property values (635 gaps as of Oct 2025)
+   - Run AI research to fill ALL missing properties
+   - Validate category ranges complete (100% required)
+   - Ensure ZERO NULL values before proceeding
+   - Tools: PropertyValueResearcher, CategoryRangeResearcher
+   - Command: python3 run.py --data-gaps
+   ⚠️  FAIL-FAST: Generation blocked if properties incomplete
   ↓
 1. Load Material Data
    - Get material from materials.yaml

@@ -115,12 +115,6 @@ properties:
 - **API Required**: ✅ DeepSeek/Grok
 - **Output**: `{material}-laser-cleaning.yaml`
 
-#### Tags Component
-- **Purpose**: Content categorization tags
-- **Dependencies**: ✅ Frontmatter (material context)
-- **API Required**: ✅ DeepSeek/Grok
-- **Output**: `{material}-laser-cleaning.yaml`
-
 ---
 
 ## 🔄 Component Lifecycle
@@ -138,7 +132,6 @@ class ComponentGeneratorFactory:
         'bullets': BulletsGenerator,
         'metatags': MetatagsGenerator,
         'jsonld': JsonldGenerator,
-        'tags': TagsGenerator,
         'caption': CaptionGenerator,
     }
 ```

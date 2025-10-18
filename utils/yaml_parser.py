@@ -21,7 +21,6 @@ class YAMLParser:
             "caption": Path("content/components/caption"),
             "jsonld": Path("content/components/jsonld"),
             "metatags": Path("content/components/metatags"),
-            "tags": Path("content/components/tags"),
             "table": Path("content/components/table"),
             "author": Path("content/components/author"),
             "badgesymbol": Path("content/components/badgesymbol")

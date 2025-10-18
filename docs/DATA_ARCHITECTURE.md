@@ -45,11 +45,11 @@ ratings) MUST be handled differently from quantitative properties:
 min/max ranges. If ranges don't exist in Categories.yaml:
 - Add category ranges through AI research OR
 - Calculate from sibling materials in the same category
-- NO EXCEPTIONS - null min/max only allowed for qualitative properties and machine settings
+- NO EXCEPTIONS - all numerical properties must have non-null min/max ranges
 
-**QUALITATIVE PROPERTIES HANDLING RULE** (October 17, 2025): Qualitative properties (non-numerical descriptive values) **MUST NOT** have `min`/`max` ranges and **MUST** be stored in the `materialCharacteristics` section of frontmatter, separate from quantitative material properties. This ensures:
+**QUALITATIVE PROPERTIES HANDLING RULE** (October 17, 2025): Qualitative properties (non-numerical descriptive values) **MUST NOT** have `min`/`max` **fields at all** and **MUST** be stored in the `materialCharacteristics` section of frontmatter, separate from quantitative material properties. This ensures:
 - Clear separation between numerical (measurable) and qualitative (descriptive) data
-- No null min/max values for descriptive properties
+- Zero null values system-wide (qualitative properties achieve this by omitting min/max fields entirely)
 - Proper categorization in frontmatter output structure
 - Schema validation compatibility
 

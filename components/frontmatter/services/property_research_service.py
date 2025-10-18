@@ -243,10 +243,23 @@ class PropertyResearchService:
                     'value': setting_data['value'],
                     'unit': setting_data['unit'],
                     'confidence': setting_data['confidence'],
-                    'description': setting_data['description'],
-                    'min': setting_data.get('min'),
-                    'max': setting_data.get('max')
+                    'description': setting_data['description']
                 }
+                
+                # Machine settings follow same rules as material properties - must have non-null min/max
+                min_val = setting_data.get('min')
+                max_val = setting_data.get('max')
+                
+                if min_val is None or max_val is None:
+                    # ❌ FAIL-FAST: Machine settings MUST have ranges (Zero Null Policy)
+                    raise PropertyDiscoveryError(
+                        f"Machine setting '{setting_name}' missing min/max ranges for {material_name}. "
+                        f"Zero Null Policy violation - all machine settings must have non-null min/max ranges. "
+                        f"Got min={min_val}, max={max_val}"
+                    )
+                
+                machine_setting_data['min'] = min_val
+                machine_setting_data['max'] = max_val
                 
                 # Enhance with standardized descriptions if available
                 if self.enhance_descriptions:
@@ -257,7 +270,7 @@ class PropertyResearchService:
                 researched[setting_name] = machine_setting_data
                 self.logger.info(
                     f"🤖 Researched {setting_name}: {setting_data['value']} {setting_data['unit']} "
-                    f"(confidence: {setting_data['confidence']}%)"
+                    f"(min: {min_val}, max: {max_val}, confidence: {setting_data['confidence']}%)"
                 )
             
             return researched
@@ -423,16 +436,25 @@ class PropertyResearchService:
                 'max': None
             }
             
-            # Apply category ranges if available
+            # Apply category ranges (REQUIRED - Zero Null Policy)
             if self.get_category_ranges:
                 category_ranges = self.get_category_ranges(material_category, category_field)
-                if category_ranges:
-                    properties[category_field]['min'] = category_ranges.get('min')
-                    properties[category_field]['max'] = category_ranges.get('max')
+                if category_ranges and category_ranges.get('min') is not None and category_ranges.get('max') is not None:
+                    properties[category_field]['min'] = category_ranges['min']
+                    properties[category_field]['max'] = category_ranges['max']
+                else:
+                    # ❌ FAIL-FAST: Thermal properties MUST have ranges (Zero Null Policy)
+                    raise PropertyDiscoveryError(
+                        f"Thermal property '{category_field}' missing category ranges for {material_category}. "
+                        f"Zero Null Policy violation - all numerical properties must have non-null min/max ranges."
+                    )
+            else:
+                raise PropertyDiscoveryError(f"Category range service not available for '{category_field}'")
             
             self.logger.info(
                 f"✅ Added category thermal field {category_field} = {thermal_value} {thermal_unit} "
-                f"(label: '{thermal_info['label']}')"
+                f"(min: {properties[category_field]['min']}, max: {properties[category_field]['max']}, "
+                f"label: '{thermal_info['label']}')"
             )
             return True
         

@@ -106,8 +106,8 @@ RESPOND WITH VALID JSON (provide COMPLETE setting data):
             "unit": "nm",
             "confidence": 88,
             "description": "Optimal wavelength for {material_name} processing",
-            "min": null,
-            "max": null
+            "min": 532,
+            "max": 10600
         }},
         "pulseWidth": {{
             "value": 10,
@@ -127,11 +127,14 @@ RESPOND WITH VALID JSON (provide COMPLETE setting data):
 }}
 
 CRITICAL REQUIREMENTS:
-- Provide COMPLETE machine setting data (value, unit, confidence, description, ranges)
+- Provide COMPLETE machine setting data (value, unit, confidence, description, min, max)
+- **ALL machine settings MUST have non-null min/max ranges** - NO EXCEPTIONS
+- min/max ranges must be realistic engineering values based on standard laser equipment
 - Include MINIMUM 4-8 settings (comprehensive laser parameter optimization)
 - All confidence scores 80-95% (realistic engineering estimates)
 - Consider {material_name}-specific thermal and optical properties
-- Use standard laser engineering units and practical value ranges"""
+- Use standard laser engineering units and practical value ranges
+- **NEVER use null for min or max - always provide numeric range values**"""
 
 COMPREHENSIVE_RESEARCH_PROMPT = """
 You are conducting a complete material analysis for {material_name} in laser cleaning applications.

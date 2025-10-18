@@ -1,1 +1,0 @@
-Tags integrated into frontmatter: metal, aerospace, nuclear, food-processing, reflective, conductive, soft, dense, expansive, todd-dunning

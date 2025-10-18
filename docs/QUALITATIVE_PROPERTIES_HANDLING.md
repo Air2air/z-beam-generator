@@ -15,10 +15,10 @@ This document defines how **qualitative (non-numerical) properties** are handled
 
 **QUALITATIVE PROPERTIES HANDLING RULE**: Properties with **non-numerical values** (text, enums, ratings) MUST be handled separately from quantitative properties:
 
-1. **No min/max ranges**: Qualitative properties have `min: null, max: null` (always)
+1. **No min/max fields**: Qualitative properties **MUST NOT include min/max fields at all** (not even as null)
 2. **Separate storage**: Store in `materialCharacteristics` section (NOT mixed with numerical data)
-3. **Zero Null Policy exemption**: Null ranges are ALLOWED for qualitative properties
-4. **Legacy migration**: If found in legacy materials.yaml with ranges, remove ranges and move to appropriate section
+3. **Zero Null Policy compliance**: Achieve zero nulls through field omission, not null values
+4. **Legacy migration**: If found in legacy materials.yaml with min/max fields (even null), remove those fields entirely
 
 ---
 
@@ -62,27 +62,27 @@ thermalConductivity:
 
 **Examples**:
 ```yaml
-# Qualitative - MUST NOT have min/max ranges
+# Qualitative - NO min/max fields at all
 crystallineStructure:
   value: FCC
   confidence: 95
   description: Face-centered cubic crystal structure
-  min: null    # ✅ Always null for qualitative
-  max: null    # ✅ Always null for qualitative
+  allowedValues: [FCC, BCC, HCP, amorphous, cubic, hexagonal, orthorhombic, tetragonal]
+  # ✅ NO min/max fields - they simply don't exist
 
 oxidationResistance:
   value: high
   confidence: 85
   description: Resistance to surface oxidation
-  min: null    # ✅ Always null for qualitative
-  max: null    # ✅ Always null for qualitative
+  allowedValues: [poor, low, moderate, high, excellent]
+  # ✅ NO min/max fields - they simply don't exist
 
 corrosionResistance:
   value: excellent
   unit: rating
   confidence: 90
-  min: null    # ✅ Always null for qualitative
-  max: null    # ✅ Always null for qualitative
+  allowedValues: [poor, fair, good, excellent]
+  # ✅ NO min/max fields - they simply don't exist
 ```
 
 ---
@@ -145,14 +145,14 @@ def generate_property(prop_name, prop_value, category_ranges):
     
     # Check if qualitative
     if isinstance(prop_value['value'], str):
-        # Qualitative property
+        # Qualitative property - OMIT min/max fields entirely
         return {
             'value': prop_value['value'],
             'unit': prop_value.get('unit', ''),
             'confidence': prop_value.get('confidence', 80),
             'description': prop_value.get('description', ''),
-            'min': None,  # ✅ Always null
-            'max': None   # ✅ Always null
+            'allowedValues': category_ranges.get('allowedValues', [])
+            # ✅ NO min/max fields at all - complete omission
         }
     else:
         # Quantitative property

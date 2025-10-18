@@ -128,6 +128,17 @@ class PropertyValueResearcher:
     5. Estimation: Fallback estimates based on material category
     """
     
+    # Property alias mapping for legacy property migration
+    # Maps old property names to new unified property names
+    PROPERTY_ALIASES = {
+        'meltingPoint': 'thermalDestruction',  # Legacy: meltingPoint → thermalDestruction
+        'thermalDestructionPoint': 'thermalDestruction',  # Legacy: point-based → full structure
+        'sinteringPoint': 'thermalDestruction',  # Ceramics: sinteringPoint → thermalDestruction
+        'degradationPoint': 'thermalDestruction',  # Plastics: degradationPoint → thermalDestruction
+        'softeningPoint': 'thermalDestruction',  # Glass: softeningPoint → thermalDestruction
+        'thermalDegradationPoint': 'thermalDestruction',  # Stone/masonry: degradation → thermalDestruction
+    }
+    
     def __init__(self, 
                  api_client,  # REQUIRED per GROK - no fallbacks allowed
                  min_confidence_threshold: int = 50,
@@ -181,6 +192,28 @@ class PropertyValueResearcher:
                 # Initialize LRU caches for performance
         self.research_cache = {}
         self.cache_stats = {'hits': 0, 'misses': 0}
+    
+    @classmethod
+    def resolve_property_alias(cls, property_name: str) -> str:
+        """
+        Resolve property alias to canonical property name.
+        
+        This method handles the migration from legacy property names to the
+        unified thermalDestruction property system.
+        
+        Args:
+            property_name: Property name (may be legacy alias)
+            
+        Returns:
+            Canonical property name
+            
+        Example:
+            >>> PropertyValueResearcher.resolve_property_alias('meltingPoint')
+            'thermalDestruction'
+            >>> PropertyValueResearcher.resolve_property_alias('density')
+            'density'
+        """
+        return cls.PROPERTY_ALIASES.get(property_name, property_name)
     
     def research_property_value(self, 
                               material_name: str, 

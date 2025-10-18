@@ -1,1 +1,0 @@
-Tags integrated into frontmatter: stone, oil-and-gas, absorptive, insulating, porous, brittle, alessandro-moretti

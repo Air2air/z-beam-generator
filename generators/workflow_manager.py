@@ -104,7 +104,7 @@ def run_dynamic_generation(
             
             if should_use_api(component_type, api_client):
                 print(f"    🔌 Using API for {component_type} (hybrid mode)")
-            elif api_client is None and component_type in ["frontmatter", "metatags", "propertiestable", "caption", "tags"]:
+            elif api_client is None and component_type in ["frontmatter", "metatags", "propertiestable", "caption"]:
                 print(f"    ⚠️  Warning: {component_type} is configured as a hybrid component but no API client is available")
                 print("    🔧 Falling back to static generation mode")
             

@@ -1,1 +1,0 @@
-Tags integrated into frontmatter: stone, restoration, manufacturing, jewelry, insulating, porous, brittle, absorptive, alessandro-moretti

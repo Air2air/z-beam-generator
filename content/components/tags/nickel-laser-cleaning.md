@@ -1,1 +1,0 @@
-Tags integrated into frontmatter: metal, food-processing, semiconductor, jewelry, durable, dense, strong, rigid, todd-dunning
