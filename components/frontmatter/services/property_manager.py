@@ -62,17 +62,19 @@ class PropertyManager:
     """
     
     # Essential properties by category
+    # NOTE: thermalDestruction is the unified property (replaces meltingPoint, thermalDegradationPoint, etc.)
+    # PropertyValueResearcher handles alias resolution automatically
     ESSENTIAL_PROPERTIES = {
-        'universal': {'thermalConductivity', 'density', 'hardness', 'reflectivity'},
+        'universal': {'thermalConductivity', 'density', 'hardness', 'laserReflectivity'},  # Changed reflectivity → laserReflectivity
         'metal': {'thermalDestruction', 'thermalConductivity', 'density', 'hardness'},
-        'ceramic': {'sinteringPoint', 'thermalConductivity', 'density', 'hardness'},
-        'plastic': {'degradationPoint', 'thermalConductivity', 'density'},
-        'composite': {'degradationPoint', 'thermalConductivity', 'density'},
+        'ceramic': {'thermalDestruction', 'thermalConductivity', 'density', 'hardness'},  # Changed sinteringPoint → thermalDestruction
+        'plastic': {'thermalDestruction', 'thermalConductivity', 'density'},  # Changed degradationPoint → thermalDestruction
+        'composite': {'thermalDestruction', 'thermalConductivity', 'density'},  # Changed degradationPoint → thermalDestruction
         'wood': {'thermalDestruction', 'density'},
-        'stone': {'thermalDegradationPoint', 'density', 'hardness'},
-        'glass': {'softeningPoint', 'thermalConductivity', 'density'},
+        'stone': {'thermalDestruction', 'density', 'hardness'},  # Changed thermalDegradationPoint → thermalDestruction
+        'glass': {'thermalDestruction', 'thermalConductivity', 'density'},  # Changed softeningPoint → thermalDestruction
         'semiconductor': {'thermalDestruction', 'thermalConductivity', 'density'},
-        'masonry': {'thermalDegradationPoint', 'density', 'hardness'}
+        'masonry': {'thermalDestruction', 'density', 'hardness'}  # Changed thermalDegradationPoint → thermalDestruction
     }
     
     # Confidence thresholds
@@ -353,40 +355,60 @@ class PropertyManager:
         Returns:
             Tuple of (quantitative_properties, qualitative_characteristics)
         """
+        from components.frontmatter.research.property_value_researcher import PropertyValueResearcher
+        
         quantitative = {}
         qualitative = {}
         
         for prop_name, prop_data in discovered.items():
-            # Skip if already in YAML (YAML takes precedence)
-            if prop_name in existing_properties:
+            # Resolve property aliases (e.g., meltingPoint → thermalDestruction)
+            canonical_prop_name = PropertyValueResearcher.resolve_property_alias(prop_name)
+            
+            if canonical_prop_name != prop_name:
+                self.logger.info(
+                    f"🔄 Property alias resolved: '{prop_name}' → '{canonical_prop_name}' for {material_name}"
+                )
+            
+            # Skip if already in YAML (YAML takes precedence) - check both names
+            if prop_name in existing_properties or canonical_prop_name in existing_properties:
                 continue
             
             # Skip redundant thermalDestructionPoint
-            if prop_name == 'thermalDestructionPoint' and 'thermalDestruction' in existing_properties:
-                self.logger.debug("Skipping redundant thermalDestructionPoint")
+            if canonical_prop_name == 'thermalDestruction' and 'thermalDestruction' in existing_properties:
+                self.logger.debug(f"Skipping redundant {prop_name} (already have thermalDestruction)")
                 continue
             
             # Check if qualitative (defined in taxonomy)
-            if is_qualitative_property(prop_name):
-                self.logger.debug(f"Property '{prop_name}' is qualitative - routing to characteristics")
-                qualitative[prop_name] = self._build_qualitative_property(prop_name, prop_data)
+            if is_qualitative_property(canonical_prop_name):
+                self.logger.debug(f"Property '{canonical_prop_name}' is qualitative - routing to characteristics")
+                qualitative[canonical_prop_name] = self._build_qualitative_property(canonical_prop_name, prop_data)
                 continue
             
             # Check if value is qualitative (backup check)
             if self._is_qualitative_value(prop_data.get('value')):
                 self.logger.warning(
-                    f"Property '{prop_name}' has qualitative value '{prop_data['value']}' "
+                    f"Property '{canonical_prop_name}' has qualitative value '{prop_data['value']}' "
                     f"but not in QUALITATIVE_PROPERTIES. Consider adding to definitions."
                 )
                 continue
             
-            # Process as quantitative
-            quantitative[prop_name] = self._build_quantitative_property(
-                prop_name,
-                prop_data,
-                material_category,
-                material_name
-            )
+            # Process as quantitative - but skip if no category ranges available
+            # Use canonical name for range lookup
+            try:
+                quantitative[canonical_prop_name] = self._build_quantitative_property(
+                    canonical_prop_name,
+                    prop_data,
+                    material_category,
+                    material_name
+                )
+            except ValueError as e:
+                if "missing category ranges" in str(e):
+                    self.logger.warning(
+                        f"Skipping discovered property '{prop_name}' for {material_category} "
+                        f"- no category ranges defined. Property not applicable to this category."
+                    )
+                else:
+                    raise
         
         return quantitative, qualitative
     
@@ -407,7 +429,7 @@ class PropertyManager:
             'max': None
         }
         
-        # Apply category ranges if available
+        # Apply category ranges (REQUIRED for quantitative properties - Zero Null Policy)
         if self.get_category_ranges:
             category_ranges = self.get_category_ranges(material_category, prop_name)
             
@@ -415,7 +437,11 @@ class PropertyManager:
                 property_data['min'] = category_ranges['min']
                 property_data['max'] = category_ranges['max']
             else:
-                self.logger.debug(f"No category range for '{prop_name}' - setting to None")
+                # ❌ FAIL-FAST: Quantitative properties MUST have ranges (Zero Null Policy)
+                raise ValueError(
+                    f"Quantitative property '{prop_name}' missing category ranges for {material_category}. "
+                    f"Zero Null Policy violation - all numerical properties must have non-null min/max ranges."
+                )
         
         # Enhance with standardized descriptions
         if self.enhance_descriptions:
@@ -438,9 +464,8 @@ class PropertyManager:
             'value': prop_data['value'],
             'unit': prop_data.get('unit', prop_def.unit if prop_def else 'type'),
             'confidence': prop_data['confidence'],
-            'description': prop_data['description'],
-            'min': None,
-            'max': None
+            'description': prop_data['description']
+            # ✅ NO min/max fields at all - complete omission per Zero Null Policy
         }
         
         # Add allowedValues if defined

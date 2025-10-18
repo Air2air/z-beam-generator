@@ -50,9 +50,16 @@ class CompletenessValidator:
     """
     
     # Comprehensive essential properties per category
+    # NOTE: All categories now use unified 'thermalDestruction' property
+    # PropertyValueResearcher handles automatic alias resolution for legacy names:
+    # - meltingPoint → thermalDestruction (type: melting)
+    # - sinteringPoint → thermalDestruction (type: sintering)
+    # - degradationPoint → thermalDestruction (type: degradation)
+    # - thermalDegradationPoint → thermalDestruction (type: degradation)
+    # - softeningPoint → thermalDestruction (type: softening)
     ESSENTIAL_PROPERTIES = {
         'metal': {
-            # Thermal properties (NEW: thermalDestruction replaces thermalDestructionPoint/meltingPoint)
+            # Thermal properties (unified thermalDestruction replaces meltingPoint)
             'thermalDestruction', 'thermalConductivity',
             # Physical properties
             'density', 'hardness', 'elasticModulus', 'tensileStrength',
@@ -64,32 +71,31 @@ class CompletenessValidator:
             'ablationThreshold'
         },
         'ceramic': {
-            'sinteringPoint', 'thermalConductivity', 'density', 'hardness',
+            'thermalDestruction', 'thermalConductivity', 'density', 'hardness',  # Changed sinteringPoint → thermalDestruction
             'elasticModulus', 'compressiveStrength', 'reflectivity',
             'absorptionCoefficient', 'ablationThreshold', 'surfaceRoughness'
         },
         'plastic': {
-            'degradationPoint', 'meltingPoint', 'thermalConductivity', 'density',
+            'thermalDestruction', 'thermalConductivity', 'density',  # Changed degradationPoint/meltingPoint → thermalDestruction
             'tensileStrength', 'elasticModulus', 'reflectivity',
             'absorptionCoefficient', 'ablationThreshold', 'surfaceRoughness'
         },
         'composite': {
-            'degradationPoint', 'thermalConductivity', 'density',
+            'thermalDestruction', 'thermalConductivity', 'density',  # Changed degradationPoint → thermalDestruction
             'tensileStrength', 'elasticModulus', 'reflectivity',
             'absorptionCoefficient', 'ablationThreshold', 'surfaceRoughness'
         },
         'wood': {
             'thermalDestruction', 'density', 'thermalConductivity',
-            'hardness', 'moistureContent', 'reflectivity',
-            'absorptionCoefficient', 'ablationThreshold'
+            'hardness', 'laserAbsorption', 'laserReflectivity'
         },
         'stone': {
-            'thermalDegradationPoint', 'density', 'hardness',
+            'thermalDestruction', 'density', 'hardness',  # Changed thermalDegradationPoint → thermalDestruction
             'compressiveStrength', 'thermalConductivity', 'reflectivity',
             'absorptionCoefficient', 'ablationThreshold', 'surfaceRoughness'
         },
         'glass': {
-            'softeningPoint', 'thermalConductivity', 'density',
+            'thermalDestruction', 'thermalConductivity', 'density',  # Changed softeningPoint → thermalDestruction
             'hardness', 'elasticModulus', 'reflectivity',
             'absorptionCoefficient', 'ablationThreshold', 'surfaceRoughness'
         },
@@ -99,7 +105,7 @@ class CompletenessValidator:
             'absorptionCoefficient', 'ablationThreshold', 'surfaceRoughness'
         },
         'masonry': {
-            'thermalDegradationPoint', 'density', 'hardness',
+            'thermalDestruction', 'density', 'hardness',  # Changed thermalDegradationPoint → thermalDestruction
             'compressiveStrength', 'thermalConductivity', 'reflectivity',
             'absorptionCoefficient', 'ablationThreshold'
         }
