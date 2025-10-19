@@ -357,7 +357,8 @@ class PropertyManager:
         """
         from components.frontmatter.research.property_value_researcher import PropertyValueResearcher
         
-        quantitative = {}
+        # Start with existing YAML properties (YAML takes precedence)
+        quantitative = dict(existing_properties)
         qualitative = {}
         
         for prop_name, prop_data in discovered.items():

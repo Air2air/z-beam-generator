@@ -39,6 +39,7 @@ from validation.errors import (
 # Import validation helpers
 from validation.helpers.property_validators import PropertyValidators
 from validation.helpers.relationship_validators import RelationshipValidators
+from validation.helpers.unit_converter import UnitConverter, UnitConversionError
 
 # Import validation rules from comprehensive_validation_agent
 from scripts.validation.comprehensive_validation_agent import (
@@ -523,27 +524,43 @@ class PreGenerationValidationService:
                     'message': f"Invalid unit '{unit}' for {prop_name}"
                 })
             
-            # Check global range
-            if rule.min_value is not None and val < rule.min_value:
+            # ⚡ UNIT NORMALIZATION (Fix for electricalConductivity bug)
+            # Convert to normalized unit before range validation
+            # Example: 37,700,000 S/m → 37.7 MS/m before comparing to max 70 MS/m
+            try:
+                normalized_val, normalized_unit = UnitConverter.normalize(prop_name, val, unit)
+            except Exception:
+                # If conversion fails, use original value (backward compatible)
+                normalized_val = val
+                normalized_unit = unit
+            
+            # Check global range (using normalized value)
+            if rule.min_value is not None and normalized_val < rule.min_value:
                 issues.append({
                     'severity': 'ERROR',
                     'type': 'out_of_range',
                     'material': material,
                     'property': prop_name,
                     'value': val,
+                    'normalized_value': normalized_val,
+                    'unit': unit,
+                    'normalized_unit': normalized_unit,
                     'min': rule.min_value,
-                    'message': f"{prop_name} = {val} < {rule.min_value} (global min)"
+                    'message': f"{prop_name} = {normalized_val:.2f} {normalized_unit} < {rule.min_value} (global min)"
                 })
             
-            if rule.max_value is not None and val > rule.max_value:
+            if rule.max_value is not None and normalized_val > rule.max_value:
                 issues.append({
                     'severity': 'ERROR',
                     'type': 'out_of_range',
                     'material': material,
                     'property': prop_name,
                     'value': val,
+                    'normalized_value': normalized_val,
+                    'unit': unit,
+                    'normalized_unit': normalized_unit,
                     'max': rule.max_value,
-                    'message': f"{prop_name} = {val} > {rule.max_value} (global max)"
+                    'message': f"{prop_name} = {normalized_val:.2f} {normalized_unit} > {rule.max_value} (global max)"
                 })
             
             # Check category-specific range
