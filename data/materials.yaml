@@ -40249,6 +40249,20 @@ materials:
         description: Oxidation rate in air at room temperature
         min: 300
         max: 600
+      thermalDestruction:
+        value: 1024
+        unit: "\xB0C"
+        confidence: 92
+        description: Melting point of pure neodymium
+        min: 1000
+        max: 1700
+      laserReflectivity:
+        value: 0.65
+        unit: dimensionless
+        confidence: 85
+        description: Surface reflectivity at 1064 nm wavelength
+        min: 40
+        max: 75
   Dysprosium:
     name: Dysprosium
     category: rare-earth
@@ -40299,6 +40313,70 @@ materials:
         - orthorhombic
         - monoclinic
         - triclinic
+    properties:
+      density:
+        value: 8.55
+        unit: "g/cm\xB3"
+        confidence: 95
+        description: Density of pure dysprosium at room temperature
+        min: 6.1
+        max: 9.8
+      thermalDestruction:
+        value: 1412
+        unit: "\xB0C"
+        confidence: 94
+        description: Melting point of pure dysprosium
+        min: 1000
+        max: 1700
+      thermalConductivity:
+        value: 10.7
+        unit: "W/(m\xB7K)"
+        confidence: 90
+        description: Thermal conductivity at room temperature
+        min: 10
+        max: 17
+      thermalExpansion:
+        value: 9.9
+        unit: "\u03BCm/m\xB7K"
+        confidence: 88
+        description: "Coefficient of linear thermal expansion (25\xB0C)"
+        min: 5.0
+        max: 12.0
+      specificHeat:
+        value: 170.0
+        unit: "J/(kg\xB7K)"
+        confidence: 92
+        description: Specific heat capacity at room temperature
+        min: 150
+        max: 200
+      youngsModulus:
+        value: 61.4
+        unit: GPa
+        confidence: 85
+        description: Young's modulus of elasticity
+        min: 25
+        max: 65
+      hardness:
+        value: 0.41159999999999997
+        unit: GPa
+        confidence: 87
+        description: Vickers hardness of pure dysprosium
+        min: 25
+        max: 60
+      laserReflectivity:
+        value: 0.72
+        unit: dimensionless
+        confidence: 80
+        description: Optical reflectivity at visible wavelengths
+        min: 40
+        max: 75
+      oxidationResistance:
+        value: 3
+        unit: rating 1-10
+        confidence: 90
+        description: Oxidation resistance rating in air (1=poor, 10=excellent)
+        min: 300
+        max: 600
   Terbium:
     name: Terbium
     category: rare-earth

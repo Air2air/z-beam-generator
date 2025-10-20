@@ -658,7 +658,16 @@ class PropertyValueResearcher:
                     raise GenerationError(f"Insufficient properties discovered for {material_name}: {len(discovered_properties)} < 6 minimum")
                 
                 self.logger.info(f"🔬 AI discovered {len(discovered_properties)} properties for {material_name}")
-                return discovered_properties
+                
+                # Apply property name mapping before returning
+                mapped_properties = {}
+                for prop_name, prop_data in discovered_properties.items():
+                    canonical_name = self._map_discovered_property_name(prop_name)
+                    if canonical_name != prop_name:
+                        self.logger.info(f"🔄 Property name mapped: '{prop_name}' → '{canonical_name}' for {material_name}")
+                    mapped_properties[canonical_name] = prop_data
+                
+                return mapped_properties
                 
             except json.JSONDecodeError as e:
                 raise GenerationError(f"Failed to parse AI discovery response for {material_name}: {e}")
@@ -776,7 +785,8 @@ class PropertyValueResearcher:
             'crystallinestructure': 'crystallineStructure',
             'surfaceroughness': 'surfaceRoughness',
             'youngsmodulus': 'youngsModulus',
-            'grainsize': 'grainSize'
+            'grainsize': 'grainSize',
+            'reflectivity': 'laserReflectivity'  # Map reflectivity to laserReflectivity
         }
         
         # Return mapped name if available, otherwise original
