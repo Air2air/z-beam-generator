@@ -49,7 +49,8 @@ class PropertyDiscoveryService:
         'stone': {'thermalDegradationPoint', 'density', 'hardness'},
         'glass': {'softeningPoint', 'thermalConductivity', 'density'},
         'semiconductor': {'thermalDestruction', 'thermalConductivity', 'density'},
-        'masonry': {'thermalDegradationPoint', 'density', 'hardness'}
+        'masonry': {'thermalDegradationPoint', 'density', 'hardness'},
+        'rare-earth': {'meltingPoint', 'thermalConductivity', 'density', 'hardness', 'laserReflectivity'}
     }
     
     # Minimum confidence threshold for YAML properties (85%)

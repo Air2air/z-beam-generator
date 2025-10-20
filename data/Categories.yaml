@@ -3,7 +3,7 @@ metadata:
   generated_date: '2025-10-14T12:00:00.000000'
   source_materials_yaml_hash: fc69e9d44790542345aed7d97e63b2ef
   research_confidence_threshold: 75
-  total_categories: 9
+  total_categories: 10
   total_subcategories: 0
   enhancement_applied: true
   additional_field_categories: 6
@@ -3655,6 +3655,163 @@ categories:
       hardness:
         min: 2.4
         max: 2720.0
+  rare-earth:
+    name: Rare-Earth Elements
+    description: Lanthanide series elements with unique magnetic and optical properties used in laser cleaning applications
+    category_ranges:
+      density:
+        min: 6.1
+        max: 9.8
+        unit: g/cm³
+        research_basis: Lanthanides range from La (6.15 g/cm³) to Lu (9.84 g/cm³)
+        confidence: 98
+      hardness:
+        min: 25
+        max: 60
+        unit: HV
+        research_basis: Vickers hardness for rare-earth elements typically 25-60 HV
+        confidence: 90
+      laserReflectivity:
+        min: 40
+        max: 75
+        unit: '%'
+        research_basis: Metallic rare-earths have moderate to high reflectivity at 1064nm
+        confidence: 85
+      thermalConductivity:
+        min: 10
+        max: 17
+        unit: W/(m·K)
+        research_basis: Rare-earth thermal conductivity ranges from 10-17 W/(m·K) at room temperature
+        confidence: 92
+      thermalExpansion:
+        min: 5.0
+        max: 12.0
+        unit: 10⁻⁶/K
+        research_basis: Lanthanide thermal expansion coefficients typically 5-12 × 10⁻⁶/K
+        confidence: 90
+      specificHeat:
+        min: 150
+        max: 200
+        unit: J/(kg·K)
+        research_basis: Rare-earth specific heat capacities range 150-200 J/(kg·K)
+        confidence: 88
+      youngsModulus:
+        min: 25
+        max: 65
+        unit: GPa
+        research_basis: Elastic modulus for lanthanides typically 25-65 GPa
+        confidence: 85
+      meltingPoint:
+        min: 1000
+        max: 1700
+        unit: K
+        research_basis: Lanthanide melting points range from ~1000K (Ce) to ~1700K (Lu)
+        confidence: 98
+      boilingPoint:
+        min: 2800
+        max: 3700
+        unit: K
+        research_basis: Lanthanide boiling points range from ~2800K to ~3700K
+        confidence: 95
+      absorptivity:
+        min: 0.25
+        max: 0.60
+        unit: dimensionless
+        research_basis: Rare-earth metals have moderate to high absorption at laser wavelengths
+        confidence: 85
+      oxidationResistance:
+        min: 300
+        max: 600
+        unit: °C
+        research_basis: Lanthanides oxidize readily above 300-600°C depending on element
+        confidence: 88
+    subcategories:
+      lanthanide:
+        name: Lanthanides
+        description: Elements 57-71 with f-orbital electron configurations
+        materials:
+        - Neodymium
+        - Dysprosium
+        - Terbium
+        - Praseodymium
+        category_ranges:
+          density:
+            min: 6.1
+            max: 9.8
+            unit: g/cm³
+          hardness:
+            min: 25
+            max: 60
+            unit: HV
+          meltingPoint:
+            min: 1000
+            max: 1700
+            unit: K
+        special_considerations:
+        - Highly reactive - oxidize rapidly in air
+        - Magnetic properties critical for applications
+        - Expensive and strategically important materials
+        - Essential for permanent magnets and optical devices
+        - Require inert atmosphere for processing
+    common_applications:
+    - laser cleaning
+    - electronics manufacturing
+    - magnet production
+    industryTags:
+      primary_industries:
+      - Electronics Manufacturing
+      - Aerospace
+      - Medical
+      - Renewable Energy
+      - Defense
+      - Automotive
+      - Industrial
+      industry_count: 7
+      description: Primary industries using rare-earth elements
+      confidence: 95
+      source: materials_analysis
+    regulatory_standards:
+    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
+    - ANSI Z136.1 - Safe Use of Lasers
+    - IEC 60825 - Safety of Laser Products
+    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - EPA Toxic Substances Control Act (TSCA)
+    - DOE Critical Materials Strategy
+    - Export Control Regulations for Strategic Materials
+    properties:
+      density:
+        min: 6.1
+        max: 9.8
+      hardness:
+        min: 25
+        max: 60
+      thermalConductivity:
+        min: 10
+        max: 17
+      thermalExpansion:
+        min: 5.0
+        max: 12.0
+      specificHeat:
+        min: 150
+        max: 200
+      youngsModulus:
+        min: 25
+        max: 65
+      laserReflectivity:
+        min: 40
+        max: 75
+      meltingPoint:
+        min: 1000
+        max: 1700
+      boilingPoint:
+        min: 2800
+        max: 3700
+      absorptivity:
+        min: 0.25
+        max: 0.60
+      oxidationResistance:
+        min: 300
+        max: 600
 materialPropertiesDefinitions:
   thermalProperties:
     description: Thermal behavior and heat transfer characteristics

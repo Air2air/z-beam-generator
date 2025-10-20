@@ -81,7 +81,8 @@ class PropertyManager:
         'stone': {'thermalDestruction', 'density', 'hardness'},  # Changed thermalDegradationPoint → thermalDestruction
         'glass': {'thermalDestruction', 'thermalConductivity', 'density'},  # Changed softeningPoint → thermalDestruction
         'semiconductor': {'thermalDestruction', 'thermalConductivity', 'density'},
-        'masonry': {'thermalDestruction', 'density', 'hardness'}  # Changed thermalDegradationPoint → thermalDestruction
+        'masonry': {'thermalDestruction', 'density', 'hardness'},  # Changed thermalDegradationPoint → thermalDestruction
+        'rare-earth': {'thermalDestruction', 'thermalConductivity', 'density', 'hardness', 'laserReflectivity'}
     }
     
     # Confidence thresholds
