@@ -1356,6 +1356,200 @@ Return YAML format with materialProperties, machineSettings, and structured appl
             # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
             raise PropertyDiscoveryError(f"Author system required for content generation: {e}")
 
+    def _apply_author_voice_to_text_fields(
+        self,
+        frontmatter: Dict,
+        material_data: Dict,
+        author_country: str
+    ) -> Dict:
+        """
+        Apply author voice characteristics to non-numeric text fields.
+        
+        Uses VoiceOrchestrator to transform generic text into author-specific
+        linguistic patterns while preserving technical accuracy.
+        
+        Args:
+            frontmatter: Generated frontmatter dictionary
+            material_data: Source material data from Materials.yaml
+            author_country: Author's country for voice profile
+            
+        Returns:
+            Enhanced frontmatter with author-voiced text fields
+        """
+        try:
+            from voice.orchestrator import VoiceOrchestrator
+            
+            self.logger.info(f"🎭 Applying {author_country} author voice to text fields...")
+            
+            # Initialize voice orchestrator
+            voice = VoiceOrchestrator(country=author_country)
+            voice_profile = voice.profile
+            
+            # Transform applications if present
+            if 'applications' in frontmatter and frontmatter['applications']:
+                frontmatter['applications'] = self._voice_transform_applications(
+                    frontmatter['applications'],
+                    voice_profile
+                )
+            
+            # Transform materialProperties category descriptions
+            if 'materialProperties' in frontmatter:
+                for category_key, category_data in frontmatter['materialProperties'].items():
+                    if isinstance(category_data, dict) and 'description' in category_data:
+                        category_data['description'] = self._voice_transform_text(
+                            category_data['description'],
+                            voice_profile
+                        )
+            
+            # Transform materialCharacteristics descriptions
+            if 'materialCharacteristics' in frontmatter:
+                for category_key, category_data in frontmatter['materialCharacteristics'].items():
+                    if isinstance(category_data, dict) and 'description' in category_data:
+                        category_data['description'] = self._voice_transform_text(
+                            category_data['description'],
+                            voice_profile
+                        )
+            
+            self.logger.info("✅ Author voice applied successfully")
+            return frontmatter
+            
+        except Exception as e:
+            # Graceful fallback - don't fail generation if voice transformation fails
+            self.logger.warning(f"⚠️  Voice transformation failed, using original text: {e}")
+            return frontmatter
+
+    def _voice_transform_applications(
+        self,
+        applications: list,
+        voice_profile: Dict
+    ) -> list:
+        """
+        Transform application descriptions with author voice.
+        
+        Format: "Industry: Description"
+        Enhanced: "Industry: Author-voiced description"
+        """
+        transformed = []
+        
+        for app in applications:
+            if isinstance(app, str) and ':' in app:
+                industry, description = app.split(':', 1)
+                # Transform description part only
+                voiced_desc = self._voice_transform_text(
+                    description.strip(),
+                    voice_profile
+                )
+                transformed.append(f"{industry}: {voiced_desc}")
+            else:
+                transformed.append(app)
+        
+        return transformed
+
+    def _voice_transform_text(
+        self,
+        text: str,
+        voice_profile: Dict
+    ) -> str:
+        """
+        Transform descriptive text to match author voice.
+        
+        Preserves technical accuracy while adjusting:
+        - Sentence structure
+        - Connectors and transitions
+        - Formality level
+        """
+        if not text or not isinstance(text, str):
+            return text
+        
+        linguistic = voice_profile.get('linguistic_characteristics', {})
+        sentence_structure = linguistic.get('sentence_structure', {})
+        tendencies = sentence_structure.get('tendencies', [])
+        grammar = linguistic.get('grammar_characteristics', {})
+        natural_patterns = grammar.get('natural_patterns', [])
+        
+        # Detect author style from patterns
+        tendencies_text = ' '.join(tendencies).lower() if tendencies else ''
+        patterns_text = ' '.join(natural_patterns).lower() if natural_patterns else ''
+        
+        # Taiwan: Add systematic connectors
+        if 'systematic' in tendencies_text or 'formal academic' in patterns_text:
+            text = self._add_systematic_connectors(text)
+        
+        # Italy: Enhance descriptive richness  
+        elif 'descriptive' in tendencies_text or 'flowing' in tendencies_text:
+            text = self._add_descriptive_elements(text)
+        
+        # Indonesia: Simplify for accessibility
+        elif 'accessible' in tendencies_text or 'practical' in tendencies_text:
+            text = self._simplify_for_accessibility(text)
+        
+        # USA: Add conversational tone
+        elif 'conversational' in tendencies_text or 'innovation' in tendencies_text:
+            text = self._add_conversational_tone(text)
+        
+        return text
+
+    def _add_systematic_connectors(self, text: str) -> str:
+        """Add Taiwan-style systematic connectors"""
+        # Don't transform if already has systematic language
+        if any(word in text.lower() for word in ['therefore', 'furthermore', 'consequently', 'systematic']):
+            return text
+        
+        sentences = text.split('. ')
+        if len(sentences) > 1 and len(sentences[1]) > 10:
+            # Add connector to second sentence
+            sentences[1] = f"Furthermore, {sentences[1][0].lower()}{sentences[1][1:]}"
+        
+        return '. '.join(sentences)
+
+    def _add_descriptive_elements(self, text: str) -> str:
+        """Enhance with Italy-style descriptive richness"""
+        # Add descriptive qualifiers where appropriate
+        replacements = {
+            'process': 'sophisticated process',
+            'technique': 'elegant technique',
+            'method': 'refined method',
+            'approach': 'comprehensive approach'
+        }
+        
+        for old, new in replacements.items():
+            if old in text.lower() and new not in text.lower():
+                text = text.replace(old, new)
+                break  # Only apply one transformation to avoid over-enhancement
+        
+        return text
+
+    def _simplify_for_accessibility(self, text: str) -> str:
+        """Simplify for Indonesia-style practical accessibility"""
+        # Replace complex terms with simpler alternatives
+        replacements = {
+            'utilize': 'use',
+            'facilitate': 'help',
+            'demonstrate': 'show',
+            'substantial': 'large',
+            'comprehensive': 'complete'
+        }
+        
+        for old, new in replacements.items():
+            if old in text.lower():
+                # Case-insensitive replacement
+                import re
+                text = re.sub(re.escape(old), new, text, flags=re.IGNORECASE)
+        
+        return text
+
+    def _add_conversational_tone(self, text: str) -> str:
+        """Add USA-style conversational tone"""
+        # Don't transform if already conversational
+        if any(word in text.lower() for word in ['great', 'ideal', 'perfect', 'excellent']):
+            return text
+        
+        # Add conversational enhancers
+        if text.startswith(('This ', 'These ')):
+            text = text.replace('This ', 'This great ', 1).replace('These ', 'These excellent ', 1)
+        
+        return text
+
     def _generate_images_section(self, material_name: str) -> Dict:
         """
         Generate images section with material-specific URLs and alt text
@@ -1489,10 +1683,7 @@ Return YAML format with materialProperties, machineSettings, and structured appl
             # Extract linguistic characteristics for prompt
             linguistic = voice_profile.get('linguistic_characteristics', {})
             sentence_structure = linguistic.get('sentence_structure', {})
-            patterns = sentence_structure.get('patterns', [])
             tendencies = sentence_structure.get('tendencies', [])
-            grammar = linguistic.get('grammar_characteristics', {})
-            common_patterns = grammar.get('common_patterns', [])
             # Build author voice guidance (SUBTLE - don't dominate the output)
             author_voice = f"""
 SUBTLE AUTHOR INFLUENCE (let personality show naturally, don't force patterns):
