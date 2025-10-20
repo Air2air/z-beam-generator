@@ -15,7 +15,14 @@ The system follows a strict **separation of concerns**:
 - **Categories.yaml**: Category-wide min/max ranges (comparison context)
 - **materials.yaml**: Material-specific values ONLY (individual material data)
 - **Generator**: Combines both sources
-- **Frontmatter**: Displays complete property data
+- **Frontmatter**: Displays complete property data (OUTPUT ONLY)
+
+**🔥 CRITICAL DATA STORAGE POLICY**:
+- ✅ **Materials.yaml** - Single source of truth for all material data (READ/WRITE)
+- ✅ **Categories.yaml** - Single source of truth for category ranges (READ/WRITE)
+- ❌ **Frontmatter files** - OUTPUT ONLY, never data storage (WRITE ONLY)
+- **Data Flow**: Materials.yaml → Frontmatter (one-way only)
+- **See**: `docs/DATA_STORAGE_POLICY.md` for complete policy
 
 **CRITICAL RULE**: Min/max ranges exist **EXCLUSIVELY** in Categories.yaml, **NEVER** in materials.yaml.
 

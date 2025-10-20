@@ -45,10 +45,22 @@ System must fail immediately if dependencies are missing. **ZERO TOLERANCE** for
 ### 2. **Explicit Dependencies**
 All required components must be explicitly provided - no silent degradation.
 
-### 3. **Component Architecture**
+### 3. **Data Storage Policy** 🔥 **CRITICAL**
+**ALL data updates MUST be saved to Materials.yaml or Categories.yaml.**
+
+- ✅ **Materials.yaml** - Single source of truth for all material data
+- ✅ **Categories.yaml** - Single source of truth for all category data
+- ❌ **Frontmatter files** - OUTPUT ONLY, never data storage
+- ✅ **Data Flow**: Materials.yaml → Frontmatter (one-way only)
+- ✅ **Persistence**: All AI research saves to Materials.yaml immediately
+- ❌ **Never read frontmatter** for data persistence (only for output verification)
+
+See `docs/DATA_STORAGE_POLICY.md` for complete policy.
+
+### 4. **Component Architecture**
 Use ComponentGeneratorFactory pattern for all generators.
 
-### 4. **Fail-Fast Design**
+### 5. **Fail-Fast Design**
 - ✅ **What it IS**: Validate inputs, configurations, and dependencies immediately at startup
 - ✅ **What it IS**: Throw specific exceptions (ConfigurationError, GenerationError) with clear messages
 - ❌ **What it's NOT**: Removing runtime error recovery like API retries for transient issues

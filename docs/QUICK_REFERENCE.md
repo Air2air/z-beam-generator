@@ -10,6 +10,18 @@
 
 ---
 
+## 🚨 Data Storage Policy - CRITICAL
+
+**ALL data updates MUST be saved to Materials.yaml or Categories.yaml.**
+
+- ✅ **Materials.yaml** = Source of truth (read/write)
+- ✅ **Categories.yaml** = Source of truth (read/write)
+- ❌ **Frontmatter files** = Output only (write only, never read for data)
+- **Data Flow**: Materials.yaml → Frontmatter (one-way only)
+- **See**: `docs/DATA_STORAGE_POLICY.md` for complete policy
+
+---
+
 ## 🎯 Most Common User Questions → Direct Solutions
 
 ### "How do I check if data is complete before generating?" / "How can I see data gaps?"

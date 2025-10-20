@@ -2,7 +2,17 @@
 
 The frontmatter component generates YAML frontmatter for laser cleaning materials with a **hierarchical structure**, clean unit separation, and **streamlined standardized descriptions** from Categories.yaml v2.2.1.
 
-## 🚀 Production Status (September 26, 2025)
+## � CRITICAL - Data Storage Policy
+
+**ALL frontmatter files are OUTPUT ONLY - never data storage.**
+
+- ✅ **Materials.yaml** - Single source of truth for material data (READ/WRITE)
+- ✅ **Categories.yaml** - Single source of truth for category ranges (READ/WRITE)
+- ❌ **Frontmatter files** - OUTPUT ONLY, never read for data persistence (WRITE ONLY)
+- **Data Flow**: Materials.yaml → Frontmatter (one-way only)
+- **See**: `docs/DATA_STORAGE_POLICY.md` for complete policy
+
+## �🚀 Production Status (September 26, 2025)
 
 ### ✅ **PRODUCTION READY**
 - **123 Materials Supported**: Full production database with comprehensive material coverage
