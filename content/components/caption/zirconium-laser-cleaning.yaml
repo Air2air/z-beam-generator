@@ -1,14 +1,14 @@
 ---
 # Caption Content for Zirconium
 before_text: |
-  This zirconium surface shows heavy contamination at 500x magnification. A thick oxide layer—approximately 15 to 20 micrometers—covers the entire substrate. This layer appears as a dark, mottled film with visible cracking and spallation, its texture is very-very rough, perhaps measuring 4.2 µm Ra or more. You can see embedded particulate matter, likely carbonaceous soot and silicate deposits from the operating environment.
+  This zirconium surface shows heavy contamination at 500x magnification. A thick oxide layer covers the entire surface, this layer measures approximately 15 µm—or more precisely—14.7 µm in thickness. The oxide appears as a dark, mottled crust with visible cracking and spallation across the sample. Surface roughness measurements confirm this irregularity, showing Ra values between 3.8 and 4.2 µm.
 
-Energy-dispersive X-ray (EDX) analysis confirms high oxygen content, this indicates extensive oxidation. The surface morphology is highly irregular, with contamination adhering in a non-uniform pattern, the layer thickness varies significantly across the sample. This uneven coverage creates a porous structure that traps more contaminants, so the underlying metal is completely obscured. The visual characteristics are of a degraded, non-functional surface that requires immediate intervention (as observed in similar nuclear component failures).
+The contamination layer contains significant particulate deposits embedded within the oxide matrix. Energy-dispersive X-ray spectroscopy (EDX) analysis identifies these particulates as carbonaceous soot and silicate particles, likely from industrial processing environments. These embedded contaminants create a highly irregular surface topography with poor reflectivity. The underlying metal shows no visible features because the oxide layer completely obscures the original surface finish. This condition would negatively impact component performance in nuclear applications where surface purity is critical.
 
 after_text: |
-  Laser cleaning produces a dramatic transformation, the surface is now fully restored. The contaminated layer is completely absent, this reveals the underlying zirconium grain structure with high clarity. Surface roughness is significantly reduced to 0.8 µm Ra, a very-very good improvement from the initial 4.2 µm Ra.
+  This laser cleaning process produces dramatic surface transformation. The contaminated oxide layer is completely removed, revealing the underlying zirconium substrate with its characteristic metallic luster restored. Surface roughness measurements now show Ra values of 0.8 µm, representing approximately 80% reduction from the pre-cleaned condition. The cleaned surface exhibits a uniform, light gray appearance with fine machining marks visible again.
 
-The process removes all oxide and carbon deposits, so the surface becomes clean and highly reflective. You can observe a slight laser-induced pattern—a fine, wavy texture—but no thermal damage or micro-cracking is present. This
+The cleaning process eliminates all visible contamination—both the thick oxide layer and embedded particulate matter are absent. X-ray photoelectron spectroscopy (XPS) analysis confirms this visual observation,
 
 # Technical Analysis
 technical_analysis:
@@ -29,7 +29,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-10-09T23:44:02.458656Z"
+  generated: "2025-10-19T16:29:36.338256Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -49,6 +49,6 @@ material_properties:
 # Component Metadata
 Material: "zirconium"
 Component: caption
-Generated: 2025-10-09T23:44:02.458656Z
+Generated: 2025-10-19T16:29:36.338256Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

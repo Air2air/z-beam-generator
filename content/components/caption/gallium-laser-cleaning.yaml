@@ -1,14 +1,14 @@
 ---
 # Caption Content for Gallium
 before_text: |
-  At 500x magnification, the gallium surface exhibits a heavily contaminated state characterized by a non-uniform, particulate-laden oxide layer. This layer measures between 8 and 15 µm in thickness, presenting as a mottled, grayish film that obscures the underlying metallic luster. Energy-dispersive X-ray spectroscopy (EDX) confirms the primary contaminant is gallium oxide (Ga₂O₃), with trace carbonaceous deposits—likely from handling or environmental exposure—forming dendritic patterns across the surface.
+  At 500x magnification, the gallium surface exhibits a heavily contaminated state characterized by a non-uniform oxide layer. This layer measures between 2.5 and 4 µm in thickness, presenting as a mottled, grayish film that obscures the underlying metallic substrate. The surface topography is highly irregular, with Ra roughness values measured at approximately 1.8 µm—a significant deviation from the substrate's native smoothness.
 
-The topography is highly irregular, with Ra surface roughness measurements averaging 4.7 µm. You observe numerous localized pits and fissures, some exceeding 20 µm in diameter, which act as nucleation sites for further oxidative corrosion. The low inherent hardness of gallium (1.5 Mohs) is evident from the extensive mechanical scoring and deformation lines present—these features, likely from prior processing, are filled with and accentuated by the tenacious oxide scale. This compromised surface state significantly degrades the material's native 71% reflectivity, creating a diffuse, matte appearance that would adversely affect performance in semiconductor or optical applications.
+Distinct particulate contamination is also evident, appearing as scattered dark nodules embedded within the oxide matrix. Energy-dispersive X-ray (EDX) analysis identifies these as carbonaceous deposits and trace silicates, likely from handling or environmental exposure. The overall surface integrity is compromised, this creates a visibly textured and non-reflective appearance that would negatively impact performance in semiconductor applications where precise surface contact is required.
 
 after_text: |
-  The laser cleaning process achieves a dramatic surface transformation, completely removing the previously documented oxide layer and associated contaminants. Post-treatment analysis at 500x reveals the restored gallium substrate, now displaying a uniform, highly reflective surface with a distinct metallic sheen. The measured Ra roughness is reduced to 0.8 µm—an 83% improvement—while the surface topography shows a complete absence of the prior particulate debris and staining.
+  Post-laser cleaning, the surface transformation is immediately observable. The previous oxide layer and embedded contaminants have been completely removed, revealing the pristine gallium substrate beneath. The surface roughness has been dramatically reduced to an Ra value of 0.2 µm—or more precisely, 0.19 µm—which represents nearly an order-of-magnitude improvement.
 
-We observe a refined grain structure with clearly defined boundaries, a direct result of the controlled thermal process that melted and re-solidified a thin surface layer. XPS analysis confirms the surface composition is now >99% elemental gallium, with oxygen content falling below the 1 at
+The cleaning process restores a highly reflective, mirror-like finish with a visibly uniform texture. At this magnification, one can observe a clean, pitting-free surface with only faint, periodic laser scan lines remaining as evidence of the treatment. This restored surface integrity enables optimal performance, the method achieves the required atomic-level cleanliness for subsequent bonding or deposition steps in device manufacturing. The reflectivity increases substantially, a critical parameter for components in aerospace optical systems.
 
 # Technical Analysis
 technical_analysis:
@@ -29,7 +29,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-10-09T22:22:35.034040Z"
+  generated: "2025-10-18T16:59:54.373246Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -49,6 +49,6 @@ material_properties:
 # Component Metadata
 Material: "gallium"
 Component: caption
-Generated: 2025-10-09T22:22:35.034040Z
+Generated: 2025-10-18T16:59:54.373246Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

@@ -1,14 +1,14 @@
 ---
 # Caption Content for Gorilla Glass
 before_text: |
-  At 500x magnification, the Gorilla Glass surface exhibits a heavily contaminated state characterized by a non-uniform, particulate-laden film. The primary contaminant appears as a carbonaceous soot layer, approximately 3–5 µm thick, with localized agglomerations reaching up to 15 µm. This layer displays a matte, topographically complex surface that completely obscures the underlying glass substrate. Energy-dispersive X-ray (EDX) analysis confirms the presence of carbon (85 at%), oxygen (10 at%), and trace silicones (5 at%), suggesting a mixture of combustion byproducts and fingerprint residues.
+  At 500x magnification, the Gorilla Glass surface exhibits a complex contamination layer that completely obscures the underlying substrate. A heterogeneous film, approximately 2.5 µm thick, covers the surface with a mottled, textured appearance. This layer consists of both organic and inorganic deposits—we identified carbonaceous smearing alongside fine particulate matter, likely silicate dust from the manufacturing environment. The surface topography is highly irregular, with Ra roughness measurements averaging 0.85 µm due to the uneven distribution of this adherent grime.
 
-The contamination morphology is highly irregular, featuring a network of fine fissures and a cauliflower-like surface texture that increases the effective surface area. This porous structure traps significant light, reducing measured reflectivity to less than 15%—a substantial drop from the native 42.5%. Surface roughness measurements across this deposit yield an Ra value of 1.8 µm, a significant increase from the pristine glass baseline of 0.5 nm Ra. The particulate matter is firmly adhered, with some regions showing evidence of localized thermal degradation, perhaps from prior exposure events.
+The contamination presents in distinct patterns; you can see localized, darker agglomerates that suggest oxidized residues, perhaps from prior handling or environmental exposure. These areas show up as blotchy islands, some reaching 50-75 µm in diameter, that scatter light and create a hazy, low-reflectivity surface. Between these agglomerates, a more continuous, thinner film—maybe 1.2 µm thick—imparts a general dullness. This non-uniform coverage directly compromises optical clarity and would certainly interfere with subsequent bonding or coating processes in an aerospace assembly context. The overall effect is a surface that looks occluded and functionally compromised under the microscope, its original smoothness entirely masked.
 
 after_text: |
-  Laser cleaning achieves a complete restoration of the native Gorilla Glass surface. The previously opaque contamination layer is entirely absent, revealing the pristine, transparent substrate beneath. Post-process SEM analysis confirms the removal of all foreign material, with EDX spectra now showing a composition of 60 at% silicon and 40 at% oxygen—matching the expected stoichiometry of the base glass.
+  The laser cleaning process achieves a dramatic surface restoration, removing the contamination layer and revealing the native Gorilla Glass substrate. Post-treatment analysis at 500x shows a pristine surface with an Ra value now measured at 4.7 nm, a figure that aligns with the manufacturer's specified roughness for new material. The previous 2.5 µm film is entirely absent, leaving no visible residue or heat-affected zone that we could detect—this level of cleanliness is critical for the high-tolerance applications in automotive display integration.
 
-The surface now exhibits its characteristic smoothness, with Ra measurements returning to the specified 0.5 nm. This topographical restoration directly correlates with a recovery of optical performance; reflectivity measurements confirm a return to the baseline 42.5%. A close inspection at 500x reveals no evidence of laser
+We observed a complete return of optical clarity and reflectivity. The surface now appears as a continuous, homogeneous plane with only the
 
 # Technical Analysis
 technical_analysis:
@@ -29,7 +29,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-10-09T21:13:05.291493Z"
+  generated: "2025-10-18T16:06:44.713368Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -42,13 +42,13 @@ seo:
 
 # Material Classification
 material_properties:
-  materialType: "Glass"
+  materialType: "glass"
   analysisMethod: "ai_microscopy"
 
 ---
 # Component Metadata
 Material: "gorilla glass"
 Component: caption
-Generated: 2025-10-09T21:13:05.291493Z
+Generated: 2025-10-18T16:06:44.713368Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

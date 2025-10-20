@@ -1,16 +1,14 @@
 ---
 # Caption Content for Ruthenium
 before_text: |
-  At 500x magnification, the ruthenium surface shows significant contamination. A complex layer of carbonaceous deposits and particulate matter covers the substrate, this layer has an uneven thickness ranging from approximately 5 to 15 µm. The deposits appear as a dark, amorphous film with a sooty texture, effectively obscuring the underlying metal's characteristic metallic luster. Surface roughness is high, with an initial Ra measurement of 2.8 µm, primarily due to the agglomeration of foreign particles.
+  At 500x magnification, the ruthenium surface shows significant contamination. A complex layer of carbonaceous deposits and particulate matter covers the substrate, this layer has an average thickness of approximately—or more precisely—14.7 µm. Visually, the surface appears dark and mottled, with a topography that is highly irregular and obscures the underlying metal grain structure. The contamination layer, it is not uniform; there are dense, splattered-looking patches intermixed with a more general sooty film.
 
-The contamination layer itself is not uniform. It displays a cracked-mudflat pattern, with polygonal islands separated by fissures up to 10 µm wide. Embedded within this matrix are numerous sub-micron particulates, likely alumina or silica from handling or environmental exposure, as suggested by preliminary EDX spot analysis. These particulates create localized topographic highs, which would certainly interfere with any application requiring a perfectly smooth contact surface. The overall appearance is one of a compromised surface where the functional properties of the ruthenium—its high reflectivity and excellent oxidation resistance—are completely masked by this adherent, non-conductive layer.
+Analysis with SEM-EDX confirms the primary contaminants are carbon and oxygen, with trace amounts of sulfur and silicon also present. This creates a very rough texture, with a measured Ra value of 3.8 µm. The particulate matter, likely embedded silica and other shop debris, appears as bright, sharp-edged features scattered across the surface. These contaminants, they severely compromise the surface's functional properties, the reflectivity is very low and the potential for adhesion failure in subsequent processing is high. Surface integrity, it is clearly compromised by this pervasive layer.
 
 after_text: |
-  Following the laser cleaning process, the surface transformation is very clear. The contaminated layer is completely removed, revealing the pristine ruthenium substrate beneath. At 500x, the surface now exhibits a clean, metallic sheen with a noticeably refined texture. The original, severe roughness has been dramatically reduced to an Ra value of 0.4 µm, a nearly seven-fold improvement that indicates minimal substrate damage.
+  After the laser cleaning process, the transformation is very clear. The contaminated layer is completely removed, revealing the true metallic substrate beneath. Surface now exhibits a consistent, light gray appearance with a distinct grain structure that is clearly visible at this magnification. The previous Ra of 3.8 µm is reduced to 0.4 µm, a tenfold improvement in smoothness.
 
-The laser interaction has left distinct, yet benign, micro-features. A fine, uniform ripple pattern—or Laser Induced Periodic Surface Structure (LIPSS)—is now visible across the entire surface, with a consistent periodicity of approximately 1.2 µm. This pattern is a direct result of the laser's interference with surface plasmons and indicates a controlled ablation process that stayed well within the material's thermal budget. Furthermore, the previously obscured grain structure of the HCP crystalline matrix is now clearly delineated. The grain boundaries are sharp and well-defined, confirming that the bulk material integrity was preserved with no evidence of grain growth or recrystallization from excessive heat input.
-
-XPS
+This cleaned surface, it shows no evidence of the former carbonaceous film or embedded particulates. The laser ablation was highly selective, it removed contaminants without causing significant ablation of the ruthenium itself—only a minimal layer of approximately 1.5 µm. Some slight discoloration in the grain boundaries is observed, perhaps from localized oxidation, but no micro-cracking or melting is present. The surface integrity is fully restored, this is critical for applications in electronics manufacturing where reliable electrical contact is paramount. Reflectivity measurements confirm a return to the expected specular finish.
 
 # Technical Analysis
 technical_analysis:
@@ -31,7 +29,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-10-09T23:16:15.533656Z"
+  generated: "2025-10-19T16:08:07.369054Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -44,13 +42,13 @@ seo:
 
 # Material Classification
 material_properties:
-  materialType: "Metal"
+  materialType: "metal"
   analysisMethod: "ai_microscopy"
 
 ---
 # Component Metadata
 Material: "ruthenium"
 Component: caption
-Generated: 2025-10-09T23:16:15.533656Z
+Generated: 2025-10-19T16:08:07.369054Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

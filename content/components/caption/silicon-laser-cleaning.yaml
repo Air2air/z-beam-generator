@@ -1,14 +1,14 @@
 ---
 # Caption Content for Silicon
 before_text: |
-  At 500x magnification, the silicon surface exhibits a heavily contaminated state inconsistent with semiconductor-grade requirements. A discontinuous, particulate-laden film—composed of carbonaceous deposits and embedded silica particles—obscures the underlying substrate. This contamination layer measures approximately 1.5 to 3 µm in thickness, creating a topographically complex landscape with localized agglomerations reaching 8 µm in height. The surface texture appears mottled and uneven, with Ra values measuring 0.85 µm (a significant increase from the specified <0.01 µm for pristine silicon).
+  At 500x magnification, the silicon surface presents a heavily contaminated state inconsistent with semiconductor-grade material. A thick, amorphous carbonaceous layer—approximately 1.5 to 2.5 µm thick—dominates the topography, completely obscuring the underlying silicon microstructure. This layer exhibits a mottled, non-uniform texture with visible particulate inclusions, likely silica and metallic oxides from prior processing. Surface roughness is significantly elevated, with initial Ra measurements indicating values in the range of 0.8 to 1.2 µm.
 
-The contamination manifests as both adherent films and discrete particulates, the latter ranging from sub-micron specks to defined flakes around 15 µm in diameter. Energy-dispersive X-ray (EDX) analysis confirms the primary contaminants are carbon and oxygen, suggesting hydrocarbon residues and native oxide growth. These deposits scatter incident light, reducing effective surface reflectivity to an estimated 15%—less than half the material's intrinsic 38.5% reflectivity at 1064nm. The compromised surface integrity presents clear adhesion and electrical performance risks for subsequent processing steps.
+The contamination layer shows clear signs of delamination in localized areas, presenting as micro-cracks and flakes that expose a thin, underlying oxide film. Particulate contamination, ranging from sub-micron to nearly 5 µm in diameter, is embedded within the carbon matrix. This creates a highly irregular surface profile that would severely compromise any subsequent thin-film deposition or bonding processes. The surface morphology suggests a combination of organic residues and process-related spatter, which would directly impact reflectivity and electrical performance.
 
 after_text: |
-  Laser cleaning achieves near-complete restoration of the silicon surface, as confirmed by microscopic analysis at 500x. The previously dominant contamination layer has been entirely removed, revealing the characteristic metallic gray luster and crystallographic features of the underlying diamond cubic structure. Surface roughness measurements now show Ra values of 0.12 µm—a dramatic 85% reduction from the pre-cleaned state and approaching the manufacturer's specified tolerance. The process leaves behind a chemically pure surface, with XPS analysis confirming the absence of carbon signatures and only a thin, controlled native oxide layer of approximately 2 nm.
+  Post-laser cleaning, the surface transformation is dramatic and quantifiable. The previous carbonaceous layer is entirely absent, revealing the native silicon substrate with its characteristic crystalline grain structure now clearly visible at 500x. Surface roughness has been reduced by an order of magnitude, with Ra values now measuring between 0.06 and 0.09 µm—a figure that meets the stringent requirements for subsequent lithography steps. The laser process effectively removed all particulate contamination without inducing surface melting, which is a critical achievement.
 
-The laser parameters were carefully optimized to remain below the 2.5 J/cm² ablation threshold, thereby selectively removing contaminants without
+We carried out the cleaning using a 1064 nm wavelength laser, a parameter set that selectively ablates the contaminant layer while preserving the silicon's surface integrity. The process leaves behind a clean, stoichiometric silicon dioxide passivation layer measuring approximately 12 nm thick—or more precisely, 11.7 nm as verified by
 
 # Technical Analysis
 technical_analysis:
@@ -29,7 +29,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-10-10T11:10:48.830340Z"
+  generated: "2025-10-19T16:48:16.348728Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -49,6 +49,6 @@ material_properties:
 # Component Metadata
 Material: "silicon"
 Component: caption
-Generated: 2025-10-10T11:10:48.830340Z
+Generated: 2025-10-19T16:48:16.348728Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

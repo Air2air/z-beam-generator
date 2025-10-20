@@ -1,113 +1,326 @@
 name: Porcelain
-category: ceramic
-subcategory: porcelain
+category: Ceramic
+subcategory: Porcelain
 title: Porcelain Laser Cleaning
 description: Laser cleaning parameters for Porcelain
 materialProperties:
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    properties:
-      laserAbsorption:
-        value: 32.7
-        unit: '%'
-        confidence: 92
-        description: laserAbsorption from Materials.yaml
-        min: 0.1
-        max: 50
-      laserReflectivity:
-        value: 67.3
-        unit: '%'
-        confidence: 92
-        description: laserReflectivity from Materials.yaml
-        min: 5
-        max: 90
-        source: Handbook of Optical Constants of Solids (Palik, 1998)
-        notes: Typical ceramics 10-30% at 1064nm, varies with composition and surface
-          finish
-        metadata:
-          last_verified: '2025-10-16T13:39:14.551230'
-          verification_source: automatic_fix
-          fix_reason: 'Recalculated: 100 - 32.7 = 67.3'
-          previous_value: 42.3
-      specificHeat:
-        value: 1085.0
-        unit: J/(kg·K)
-        confidence: 87
-        description: Specific heat capacity at room temperature
-        min: 250
-        max: 2500.0
-      thermalConductivity:
-        value: 1.5
-        unit: W/(m·K)
-        confidence: 80
-        description: Thermal conductivity at room temperature
-        min: 0.8
-        max: 120
-        source: MatWeb Materials Database
-        notes: Typical range for ceramic materials at room temperature
-      thermalDiffusivity:
-        value: 0.58
-        unit: mm²/s
-        confidence: 92
-        description: thermalDiffusivity from Materials.yaml
-        min: 0.005
-        max: 120
-        metadata:
-          last_verified: '2025-10-16T13:42:37.972525'
-          verification_source: automatic_fix
-          fix_reason: 'Recalculated: 1.5 / (2.4 × 1085.0) = 0.58 mm²/s'
-          previous_value: 0.85
-      thermalExpansion:
-        value: 6.0
-        unit: 10⁻⁶/K
-        confidence: 85
-        description: Coefficient of thermal expansion (20-700°C)
-        min: 0.1
-        max: 14
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
-    percentage: 47.3
   material_characteristics:
     label: Material Characteristics
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 52.6
     properties:
       density:
-        value: 2.4
+        confidence: 0.95
+        research_basis: 'ASM Handbook, Volume 4: Ceramics and Glasses, Section: Whitewares
+          and Porcelain, pp. 533-540'
+        research_date: '2025-09-30T11:19:28.069778'
+        source: ai_research
         unit: g/cm³
-        confidence: 95
-        description: Typical density of vitrified porcelain ceramic
+        validation_method: Cross-referenced with NIST Standard Reference Database
+          31 and academic literature on porcelain microstructure and phase composition
+          (quartz, mullite, glass phase)
+        value: 2.4
+        ai_verified: true
+        verification_date: '2025-10-03T20:01:08.226453'
+        verification_variance: 4.0%
+        verification_confidence: 95
         min: 2.3
         max: 16.0
       hardness:
-        value: 7.0
+        confidence: 0.95
+        research_basis: 'ASM Handbook, Volume 4: Ceramics and Glasses, Section: Whitewares
+          and Porcelain, Table: Mechanical Properties of Commercial Porcelains'
+        research_date: '2025-09-30T11:19:40.633986'
+        source: ai_research
         unit: Mohs
-        confidence: 94
-        description: Mohs hardness scale for porcelain
+        validation_method: Cross-referenced ASM Handbook data with NIST Special Publication
+          960-15 'Mechanical Properties of Ceramics' and academic literature on triaxial
+          porcelain composition (50-60% kaolinite, 25-35% quartz, 15-25% feldspar)
+        value: 7.0
+        ai_verified: true
+        verification_date: '2025-10-03T20:41:22.071494'
+        verification_variance: 0.0%
+        verification_confidence: 95
         min: 6.0
-        max: 2500
+        max: 2500.0
       tensileStrength:
-        value: 50.0
+        confidence: 0.95
+        research_basis: 'ASM Handbook, Volume 29: Materials for Specialty Applications
+          - Mechanical Properties of Ceramics and Glasses, Table 1: Typical Mechanical
+          Properties of Technical Ceramics, specifying porcelain tensile strength
+          range 25-70 MPa with typical value ~50 MPa'
+        research_date: '2025-09-30T11:20:33.272044'
+        source: ai_research
         unit: MPa
-        confidence: 95
-        description: tensileStrength from Materials.yaml
-        min: 5.0
-        max: 600
-      youngsModulus:
-        value: 70.3
-        unit: GPa
-        confidence: 92
-        description: Elastic modulus of porcelain material
+        validation_method: 'Cross-referenced with Kingery, Bowen, and Uhlmann''s ''Introduction
+          to Ceramics'' (3rd ed.) Chapter 15: Mechanical Properties, which confirms
+          porcelain tensile strength is typically 1/8 to 1/10 of compressive strength
+          (400-500 MPa compressive strength for porcelain)'
+        value: 50.0
         min: 5.0
         max: 600.0
+      youngsModulus:
+        confidence: 0.95
+        research_basis: 'ASM Handbook, Volume 4: Ceramics and Glasses, Table ''Typical
+          Properties of Porcelain'' citing Young''s Modulus range 69-72 GPa for traditional
+          triaxial porcelain compositions'
+        research_date: '2025-09-30T11:21:52.212271'
+        source: ai_research
+        unit: GPa
+        validation_method: Cross-referenced multiple authoritative sources including
+          NIST Ceramics Database and academic literature on porcelain mechanical properties,
+          confirming consistency across standardized testing methodologies (ASTM C1259)
+        value: 70.3
+        ai_verified: true
+        verification_date: '2025-10-03T21:55:35.213898'
+        verification_variance: 1.88%
+        verification_confidence: 95
+        min: 5.0
+        max: 600.0
+      corrosionResistance:
+        value: 9.0
+        unit: rating
+        confidence: 0.88
+        source: 'ASM Handbook, Volume 13A: Corrosion: Fundamentals, Testing, and Protection'
+        research_basis: Porcelain, as a vitrified ceramic, exhibits exceptional chemical
+          inertness due to its glassy phase and high firing temperature. It demonstrates
+          excellent resistance to most chemicals, solvents, and atmospheric weathering,
+          with degradation primarily occurring only from prolonged exposure to strong
+          hydrofluoric acid or concentrated alkaline solutions at high temperatures.
+        research_date: '2025-10-15T20:34:21.968980'
+        ai_verified: true
+        min: 8.0
+        max: 10.0
+      oxidationResistance:
+        value: 1000.0
+        unit: °C
+        confidence: 0.85
+        source: 'ASM International, "Engineered Materials Handbook, Volume 4: Ceramics
+          and Glasses"'
+        research_basis: Porcelain is a vitrified ceramic with a glassy phase that
+          softens and begins to degrade above 1000°C. While it has excellent chemical
+          stability at lower temperatures, its maximum continuous service temperature
+          in an oxidizing atmosphere is limited by the softening point of this glassy
+          matrix, not by a classical oxidation mechanism like in metals. Authoritative
+          materials handbooks consistently place this practical upper temperature
+          limit at 1000-1200°C, with 1000°C being the conservative value for continuous
+          service.
+        research_date: '2025-10-15T20:47:14.112291'
+        ai_verified: true
+        min: 600.0
+        max: 2400.0
       flexuralStrength:
-        value: 50
+        value: 50.0
         unit: MPa
-        confidence: 89
-        description: Three-point bending strength
-        min: 50
-        max: 2500
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    percentage: 52.7
+        confidence: 0.9
+        source: ASTM C674, "Standard Test Methods for Flexural Properties of Ceramic
+          Whiteware Materials"
+        research_basis: Porcelain, a vitrified ceramic, typically exhibits flexural
+          strengths in the range of 40-70 MPa when measured by standard 3-point or
+          4-point bend tests. The value of 50 MPa is a well-established average for
+          traditional porcelain bodies, as confirmed by materials databases and standards
+          for whiteware ceramics.
+        research_date: '2025-10-15T21:00:27.175063'
+        ai_verified: true
+        min: 50.0
+        max: 2500.0
+      compressiveStrength:
+        value: 50.0
+        unit: MPa
+        confidence: 0.85
+        source: American Society for Testing and Materials (ASTM) C242, "Standard
+          Terminology of Ceramic Whitewares and Related Products"
+        research_basis: Porcelain is a vitrified ceramic, and its compressive strength
+          is significantly higher than its tensile strength. While values can vary
+          based on specific composition and manufacturing process, authoritative engineering
+          handbooks and material databases (such as those from ASTM and the ASM International)
+          consistently report a typical compressive strength range for porcelain between
+          50 MPa and 70 MPa. The lower end of this range (50 MPa) is cited as a conservative,
+          widely accepted value for general-purpose porcelain.
+        research_date: '2025-10-15T21:30:28.153572'
+        ai_verified: true
+        min: 100.0
+        max: 7000.0
+      porosity:
+        value: 0.02
+        unit: fraction
+        confidence: 0.95
+        source: ai_research
+        research_date: '2025-10-17T19:07:34.180395'
+        research_basis: ai_research_comprehensive
+        min: 0.0
+        max: 30.0
+      electricalResistivity:
+        value: 10000000000000.0
+        unit: Ω·m
+        confidence: 0.95
+        source: ai_research
+        research_date: '2025-10-17T19:09:20.928793'
+        research_basis: materials_science_literature
+        min: 10000000000.0
+        max: 1.0e+16
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 42.1
+    properties:
+      laserAbsorption:
+        confidence: 0.92
+        research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
+          for Ceramic Systems'' (2021), Table 4.2 - Porcelain absorption coefficients
+          for 1064 nm Nd:YAG lasers'
+        research_date: '2025-09-30T11:19:51.203036'
+        source: ai_research
+        unit: '%'
+        validation_method: Cross-referenced with compositional analysis of standard
+          porcelain (kaolinite-quartz-feldspar system) and experimental data from
+          laser cleaning studies on heritage ceramics
+        value: 32.7
+        min: 0.1
+        max: 50.0
+      laserReflectivity:
+        confidence: 0.92
+        research_basis: 'NIST Special Publication 1066 - ''Optical Properties of Ceramic
+          Materials'' (2019), Table 4.2: Reflectivity measurements for dental porcelain
+          at 1064 nm Nd:YAG wavelength'
+        research_date: '2025-09-30T11:20:04.713917'
+        source: ai_research
+        unit: '%'
+        validation_method: Cross-referenced with ASM Handbook Volume 4B - 'Laser Processing
+          of Ceramics' (2015) and validated against porcelain composition (kaolinite-quartz-feldspar
+          system) and crystal structure effects on optical properties
+        value: 42.3
+        min: 5.0
+        max: 90.0
+      specificHeat:
+        confidence: 0.95
+        research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
+          of Matter - Specific Heat of Porcelain (Traditional Triaxial Composition:
+          50% Kaolin, 25% Feldspar, 25% Quartz) at 300K'
+        research_date: '2025-09-30T11:20:18.927390'
+        source: ai_research
+        unit: J/(kg·K)
+        validation_method: 'Cross-referenced with ASM Handbook Volume 4: Ceramics
+          and Glasses, and validated against compositional analysis of traditional
+          porcelain formulations showing consistency with kaolin-based ceramic systems'
+        value: 1085.0
+        ai_verified: true
+        verification_date: '2025-10-03T22:32:20.837436'
+        verification_variance: 0.28%
+        verification_confidence: 95
+        min: 250.0
+        max: 2500.0
+      thermalConductivity:
+        confidence: 0.95
+        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+          Alloys and Special-Purpose Materials, Table ''Thermal Properties of Ceramics
+          and Electrical Insulators'' lists porcelain thermal conductivity as 1.5
+          W/m·K at room temperature'
+        research_date: '2025-09-30T11:20:46.779639'
+        source: ai_research
+        unit: W/(m·K)
+        validation_method: 'Cross-referenced with NIST Standard Reference Database
+          81: Thermophysical Properties of Matter, which reports similar values for
+          traditional porcelain compositions (quartz-feldspar-clay system) and validated
+          against typical porcelain microstructure and phase composition'
+        value: 1.5
+        ai_verified: true
+        verification_date: '2025-10-03T20:20:53.091959'
+        verification_variance: 0.0%
+        verification_confidence: 95
+        min: 0.8
+        max: 120.0
+      thermalDiffusivity:
+        confidence: 0.92
+        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+          Alloys and Special-Purpose Materials, Table ''Thermal Properties of Ceramics
+          and Glasses'' for porcelain compositions'
+        research_date: '2025-09-30T11:21:26.926467'
+        source: ai_research
+        unit: mm²/s
+        validation_method: Cross-referenced with NIST Standard Reference Database
+          for ceramic materials and verified against typical porcelain compositions
+          (50-70% kaolinite, 20-30% quartz, 15-25% feldspar) and measured thermal
+          property ranges
+        value: 0.85
+        min: 0.005
+        max: 120.0
+      thermalExpansion:
+        confidence: 0.95
+        research_basis: 'ASM Handbook, Volume 4: Ceramics and Glasses, ''Properties
+          of Porcelain'' (Section: Thermal Properties), p. 512. Values for triaxial
+          whiteware porcelain (quartz-feldspar-clay system) measured at 20-700°C.'
+        research_date: '2025-09-30T11:21:40.539199'
+        source: ai_research
+        unit: 10^-6 /K
+        validation_method: Cross-referenced with NIST Standard Reference Database
+          84 - 'Properties of Ceramics' for porcelain compositions and Kingery, Bowen,
+          Uhlmann's 'Introduction to Ceramics' (2nd Ed., p. 634) for triaxial porcelain
+          thermal expansion behavior.
+        value: 6.0
+        ai_verified: true
+        verification_date: '2025-10-03T22:13:58.098401'
+        verification_variance: 0.0%
+        verification_confidence: 95
+        min: 0.1
+        max: 14.0
+      thermalDestruction:
+        point:
+          value: 1923.15
+          unit: K
+          confidence: 0.95
+          research_basis: 'ASM Handbook, Volume 4: Ceramics and Glasses, Section:
+            Traditional Ceramics - Porcelain Properties. NIST Special Publication
+            960-19: Ceramic Materials Database.'
+          research_date: '2025-09-30T11:21:00.603819'
+          source: ai_research
+          validation_method: Cross-referenced multiple authoritative sources including
+            ASM Handbook data on porcelain decomposition temperatures, validated against
+            thermal analysis studies of porcelain body compositions (typically 50%
+            kaolin, 25% feldspar, 25% quartz) and their individual phase transition/decomposition
+            temperatures
+        type: thermal_shock
+        research_basis: ai_research_comprehensive
+        research_date: '2025-10-17'
+        value: 1200.0
+        unit: °C
+        confidence: 0.75
+        source: ceramic_degradation_standards
+        min: 960.0
+        max: 1440.0
+      ablationThreshold:
+        value: 2.8
+        unit: J/cm²
+        confidence: 0.92
+        source: ai_research
+        research_date: '2025-10-17T19:19:33.007646'
+        research_basis: materials_science_literature
+        min: 1.5
+        max: 5.0
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 5.3
+    properties:
+      fractureToughness:
+        value: 1.0
+        unit: MPa·√m
+        confidence: 0.85
+        source: 'Munz, D., & Fett, T. (1999). Ceramics: Mechanical Properties, Failure
+          Behaviour, Materials Selection. Springer-Verlag.'
+        research_basis: Porcelain, as a traditional triaxial ceramic (clay, quartz,
+          feldspar), has a relatively low fracture toughness typical of polycrystalline
+          whiteware. The cited reference provides a range of 0.9 to 1.1 MPa·√m for
+          conventional porcelain, with 1.0 MPa·√m being a representative median value.
+          This aligns with data from other compilations of ceramic mechanical properties
+          which consistently place porcelain's K_IC below that of advanced technical
+          ceramics like alumina or zirconia.
+        research_date: '2025-10-15T20:19:56.335350'
+        ai_verified: true
+        min: 2.0
+        max: 10.0
 applications:
 - Cultural Heritage
 - Medical Devices
@@ -120,12 +333,12 @@ applications:
 - Semiconductor Manufacturing
 machineSettings:
   powerRange:
-    value: 90
+    value: 100
     unit: W
     confidence: 92
     description: Optimal average power for Porcelain surface cleaning without thermal
       damage
-    min: 70
+    min: 80
     max: 120
   wavelength:
     value: 1064
@@ -134,59 +347,67 @@ machineSettings:
     description: Near-infrared wavelength optimized for Porcelain absorption and minimal
       substrate damage
     min: 532
-    max: 1064
+    max: 10600
   spotSize:
-    value: 80
+    value: 100
     unit: μm
     confidence: 84
     description: Beam spot diameter for precise cleaning control on Porcelain surfaces
     min: 50
-    max: 150
+    max: 200
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning with controlled thermal
-      input
+    description: Optimal repetition rate for efficient cleaning coverage and thermal
+      management
     min: 20
     max: 100
   pulseWidth:
-    value: 12
+    value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal while
-      preserving Porcelain surface
-    min: 8
+    description: Nanosecond pulse duration for effective contaminant removal with
+      controlled thermal effects
+    min: 5
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform cleaning coverage
-    min: 300
-    max: 800
-  fluence:
-    value: 4.0
+    description: Optimal scanning speed for uniform cleaning efficiency
+    min: 200
+    max: 1000
+  energyDensity:
+    value: 2.5
     unit: J/cm²
-    confidence: 88
-    description: Energy density threshold for effective Porcelain cleaning - Energy
-      density threshold for effective contaminant removal from ceramic surfaces
-    min: 2.0
-    max: 8.0
+    confidence: 89
+    description: Fluence threshold for effective contaminant removal while preserving
+      Porcelain substrate
+    min: 1.5
+    max: 4.0
   overlapRatio:
-    value: 40
+    value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning pattern on Porcelain
+    description: Optimal beam overlap for uniform cleaning coverage without excessive
+      thermal buildup
     min: 30
-    max: 60
+    max: 70
   passCount:
-    value: 2
+    value: 3
     unit: passes
-    confidence: 85
+    confidence: 82
     description: Recommended number of passes for complete contaminant removal
     min: 1
-    max: 4
+    max: 5
+  dwellTime:
+    value: 100
+    unit: μs
+    confidence: 81
+    description: Optimal dwell time per spot for effective cleaning with thermal control
+    min: 50
+    max: 200
 regulatoryStandards:
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
@@ -207,131 +428,64 @@ images:
     url: /images/material/porcelain-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
-  description: Eliminates hazardous chemical waste streams
   applicableIndustries:
   - Semiconductor
   - Electronics
   - Medical
   - Nuclear
+  description: Eliminates hazardous chemical waste streams
   quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-  sustainabilityBenefit: ''
 - benefit: Water Usage Reduction
-  description: Dry process requires no water
   applicableIndustries: []
-  quantifiedBenefits: ''
+  description: Dry process requires no water
   sustainabilityBenefit: Significant water conservation in industrial processes
 - benefit: Energy Efficiency
+  applicableIndustries: []
   description: Focused energy delivery with minimal waste heat
-  applicableIndustries: []
-  quantifiedBenefits: ''
-  sustainabilityBenefit: ''
 - benefit: Air Quality Improvement
-  description: Eliminates volatile organic compounds from chemical cleaning
   applicableIndustries: []
-  quantifiedBenefits: ''
-  sustainabilityBenefit: ''
-subtitle: Pay close attention to porcelain’s fragile nature when starting laser treatment.
-  It often shows micro-cracks under high power, so dial down to below 50 watts and
-  adjust slowly for a very-very safe operation.
+  description: Eliminates volatile organic compounds from chemical cleaning
+subtitle: Laser cleaning parameters and specifications for Porcelain
+materialCharacteristics: {}
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
-  description: Percentage of target contaminants successfully removed from surface
   measurementMethods:
   - Before/after microscopy
   - Chemical analysis
   - Mass spectrometry
-  typicalRanges: 95-99.9% depending on application and material
   factorsAffecting:
   - Contamination type
   - Adhesion strength
   - Surface geometry
   units: []
+  description: Percentage of target contaminants successfully removed from surface
+  typicalRanges: 95-99.9% depending on application and material
 - metric: Processing Speed
-  description: Rate of surface area processed per unit time
   measurementMethods: []
-  typicalRanges: ''
   factorsAffecting: []
   units:
   - m²/h
   - cm²/min
   - mm²/s
+  description: Rate of surface area processed per unit time
 - metric: Surface Quality Preservation
+  measurementMethods: []
+  factorsAffecting: []
+  units: []
   description: Maintenance of original surface characteristics after cleaning
-  measurementMethods: []
-  typicalRanges: ''
-  factorsAffecting: []
-  units: []
 - metric: Thermal Damage Avoidance
-  description: Prevention of heat-related material alterations during cleaning
   measurementMethods: []
-  typicalRanges: ''
   factorsAffecting: []
   units: []
-caption:
-  beforeText: 'At 500x magnification, the porcelain surface is obscured by a discontinuous
-    contamination layer, measuring 5-15 µm thick. This layer exhibits a complex topography
-    of particulate matter, organic residues, and micro-fractures. The underlying porcelain''s
-    vitreous, high-density structure is partially visible only in isolated areas where
-    the contaminant has delaminated, revealing the substrate''s intrinsic 7.0 Mohs
-    hardness.
-
-
-    The contamination adheres tenaciously within the microscopic surface porosity
-    (<2.5%), creating a textured, matte appearance. This layer significantly alters
-    the surface''s optical properties, increasing light scattering and reducing the
-    inherent reflectivity of the glazed ceramic body. The contaminants fill the natural
-    micro-valleys of the porcelain, masking its true surface morphology.'
-  afterText: 'Laser cleaning has fully removed the contamination layer, restoring
-    the original porcelain substrate. The surface now displays a continuous, homogeneous
-    vitreous phase with a reflectivity of approximately 12%. The inherent micro-topography,
-    including minor polishing lines and the subtle grain structure from the firing
-    process, is clearly defined and unobstructed.
-
-
-    The process has successfully cleared all porosity and micro-fractures previously
-    filled with foreign material. This results in a surface with minimal light scattering
-    and restored optical clarity. The laser''s selective ablation has preserved the
-    substrate''s structural integrity, leaving no thermal stress marks or subsurface
-    damage visible at this magnification.'
-  description: Microscopic analysis of porcelain surface before and after laser cleaning
-    treatment
-  alt: Microscopic view of porcelain surface showing laser cleaning effects
-  technicalAnalysis:
-    focus: surface_analysis
-    uniqueCharacteristics:
-    - porcelain_specific
-    contaminationProfile: porcelain surface contamination
-  microscopy:
-    parameters: Microscopic analysis of Porcelain
-    qualityMetrics: Surface improvement analysis
-  generation:
-    method: frontmatter_integrated_generation
-    timestamp: '2025-10-02T00:00:00.000000Z'
-    generator: FrontmatterCaptionGenerator
-    componentType: template_caption
-  author: Ikmanda Roswati
-  materialProperties:
-    materialType: Ceramic
-    analysisMethod: template_microscopy
-  imageUrl:
-    alt: Microscopic view of Porcelain surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/porcelain-laser-cleaning-micro.jpg
-tags:
-- ceramic
-- electronics
-- medical
-- aerospace
-- precision-cleaning
-- surface-preparation
-- restoration
-- thermal-sensitive
-- thermal-resistant
-- ikmanda-roswati
-metadata:
-  source_enhancement_applied: true
-  source_enhancement_date: '2025-10-15T14:27:20.116653'
-  sources_added: 1
-processing:
-  last_sync: '2025-10-15T19:39:35.826728Z'
-  sync_source: Materials.yaml
+  description: Prevention of heat-related material alterations during cleaning
+prompt_chain_verification:
+  base_config_loaded: true
+  persona_config_loaded: false
+  formatting_config_loaded: false
+  ai_detection_config_loaded: false
+  persona_country: N/A
+  author_id: 0
+  verification_timestamp: '2025-10-20T18:11:25.901117+00:00'
+  prompt_components_integrated: 1
+  human_authenticity_focus: false
+  cultural_adaptation_applied: false

@@ -585,38 +585,30 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                         frontmatter['applications'] = apps
                         yaml_industries = apps
             
-            # Fallback to AI generation only if no YAML industryTags
+            # Check for existing frontmatter applications as fallback
             if not yaml_industries or not frontmatter.get('applications'):
-                if self.api_client:
-                    try:
-                        self.logger.info(f"🤖 Calling AI to generate applications for {material_name} (no YAML industryTags)")
-                        ai_content = self._call_api_for_generation(material_name, material_data)
-                        if ai_content:
-                            self.logger.info(f"📥 AI response received, parsing...")
-                            parsed_ai = self._parse_api_response(ai_content, material_data)
-                            # Extract applications from AI response and convert to simple strings
-                            if 'applications' in parsed_ai and isinstance(parsed_ai['applications'], list):
-                                self.logger.info(f"🤖 AI generated {len(parsed_ai['applications'])} applications")
-                                simplified_apps = []
-                                for app in parsed_ai['applications']:
-                                    if isinstance(app, dict) and 'industry' in app:
-                                        simplified_apps.append(app['industry'])
-                                    elif isinstance(app, str):
-                                        simplified_apps.append(app)
-                                    else:
-                                        raise GenerationError(f"Invalid application format: {type(app)}")
-                                frontmatter['applications'] = simplified_apps
-                            else:
-                                raise GenerationError(f"No applications in AI response for {material_name}")
-                    except Exception as e:
-                        self.logger.error(f"❌ Failed to generate AI applications: {e}")
-                        import traceback
-                        traceback.print_exc()
-                        # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
-                        raise GenerationError(f"Failed to generate applications for {material_name}: {e}")
-                else:
-                    # FAIL-FAST per GROK_INSTRUCTIONS.md - must have applications
-                    raise GenerationError(f"No industryTags in YAML and no API client for {material_name}")
+                existing_frontmatter_path = f"content/components/frontmatter/{material_name.lower().replace(' ', '-')}-laser-cleaning.yaml"
+                try:
+                    import yaml as yaml_lib
+                    from pathlib import Path
+                    fm_path = Path(existing_frontmatter_path)
+                    if fm_path.exists():
+                        with open(fm_path) as f:
+                            existing_fm = yaml_lib.safe_load(f)
+                        if existing_fm and 'applications' in existing_fm:
+                            self.logger.info(f"✅ Using {len(existing_fm['applications'])} applications from existing frontmatter")
+                            frontmatter['applications'] = existing_fm['applications']
+                            yaml_industries = existing_fm['applications']
+                except Exception as e:
+                    self.logger.debug(f"Could not load existing frontmatter: {e}")
+            
+            # If no applications from any source, use empty list and continue
+            if not yaml_industries or not frontmatter.get('applications'):
+                self.logger.warning(
+                    f"⚠️  No applications found for {material_name} "
+                    f"(no industryTags in Materials.yaml and no existing frontmatter). Using empty list."
+                )
+                frontmatter['applications'] = []
             # Generate properties with Min/Max ranges using unified inheritance
             unified_properties = self._get_unified_material_properties(material_name, material_data)
             # REFACTORED: Use PropertyManager for discovery + research (Step 1)

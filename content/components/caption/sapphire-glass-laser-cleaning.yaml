@@ -1,12 +1,14 @@
 ---
 # Caption Content for Sapphire Glass
 before_text: |
-  This sapphire glass surface shows heavy contamination at 500x magnification. A complex layer of carbonaceous deposits and particulate matter covers approximately 85% of the surface area, with thickness measurements ranging from 5 to 15 µm—or more precisely, between 4.7 and 14.3 µm in the sampled regions. The contamination appears as dark, irregular patches that completely obscure the underlying crystalline structure, creating a mottled appearance with poor light transmission characteristics.
+  This surface analysis shows heavy contamination on sapphire glass. At 500x magnification, we observe a thick, amorphous layer—approximately 12 to 15 µm thick—that completely obscures the substrate. This layer contains carbonaceous soot particles and what appears to be metallic oxides, perhaps from high-temperature processing. The deposits are not uniform, they form in agglomerated clusters.
 
-Surface roughness measurements indicate significant degradation from the baseline 0.5 nm Ra, now reading 2.8 µm Ra across contaminated zones. EDX analysis confirms carbon (72%), oxygen (18%), and trace silicon (6%) plus aluminum (4%) composition within these deposits. The particulate contamination—likely silica and environmental dust—embeds within the softer carbon matrix, creating a stratified layer structure that adheres strongly to the substrate. This layered contamination creates light scattering centers that reduce optical transmission by approximately 40% compared to clean sapphire, with visible surface defects including micro-fractures within the deposit layer itself.
+Surface roughness measurements confirm significant texture degradation, with an Ra value of 2.8 µm. This contamination layer creates a matte, non-reflective finish. Energy-dispersive X-ray spectroscopy (EDX) identifies foreign elements like aluminum, silicon, and carbon in high concentrations. The surface integrity is compromised, this directly impacts optical performance for aerospace applications.
 
 after_text: |
-  Laser cleaning produces dramatic surface restoration, very-very good result. The process removes all carbonaceous deposits and embedded particulates, so the surface becomes clean with restored optical clarity. At 500x magnification, the characteristic hexagonal crystalline structure of sapphire is now fully visible with sharp, well-defined grain boundaries—this confirms the substrate integrity remains uncomp
+  This laser cleaning process produces a very-very good transformation. The previous contamination layer is now completely absent, the original sapphire substrate is fully exposed. At 500x magnification, the surface shows no residual deposits, only some minor, isolated micro-pits remain from the removal process—these are less than 2 µm deep.
+
+Surface roughness is dramatically reduced to an Ra of 0.05 µm. This is a very smooth finish. The surface recovers its inherent transparency and high reflectivity, which is critical for medical device windows. X-ray photoelectron spectroscopy (XPS) analysis confirms the surface chemistry is now pure aluminum oxide, with carbon contamination reduced to near-undetectable levels
 
 # Technical Analysis
 technical_analysis:
@@ -27,7 +29,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-10-09T21:16:38.326358Z"
+  generated: "2025-10-18T16:09:15.456777Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -40,13 +42,13 @@ seo:
 
 # Material Classification
 material_properties:
-  materialType: "Glass"
+  materialType: "glass"
   analysisMethod: "ai_microscopy"
 
 ---
 # Component Metadata
 Material: "sapphire glass"
 Component: caption
-Generated: 2025-10-09T21:16:38.326358Z
+Generated: 2025-10-18T16:09:15.456777Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

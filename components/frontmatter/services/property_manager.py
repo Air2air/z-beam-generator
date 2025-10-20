@@ -11,6 +11,7 @@ Responsibilities:
 - Automatic categorization (quantitative/qualitative)
 - Validation and normalization
 - Machine settings research
+- Materials.yaml persistence (AI research writeback)
 
 Follows fail-fast principles:
 - No mocks or default values in production
@@ -18,14 +19,20 @@ Follows fail-fast principles:
 - Validates all inputs immediately
 
 Author: Refactoring - October 17, 2025
+Updated: October 20, 2025 - Added Materials.yaml writeback
 """
 
 import logging
+import shutil
+import yaml
+from pathlib import Path
+from datetime import datetime
 from typing import Dict, List, Set, Optional, Tuple, Callable
 from dataclasses import dataclass
 
 from components.frontmatter.research.property_value_researcher import PropertyValueResearcher
 from validation.errors import PropertyDiscoveryError, ConfigurationError
+from validation.helpers.unit_converter import UnitConverter
 
 # Qualitative property definitions
 from components.frontmatter.qualitative_properties import (
@@ -110,6 +117,93 @@ class PropertyManager:
         self.enhance_descriptions = enhance_descriptions_func
         self.categories_data = categories_data or {}
         self.logger = logger
+        self.materials_file = Path("data/Materials.yaml")
+    
+    # ===== PERSISTENCE METHODS =====
+    
+    def persist_researched_properties(
+        self,
+        material_name: str,
+        researched_properties: Dict[str, Dict]
+    ) -> bool:
+        """
+        Persist AI-researched properties back to Materials.yaml.
+        
+        This ensures research results accumulate in the database rather than being
+        regenerated on every frontmatter generation.
+        
+        Args:
+            material_name: Name of the material
+            researched_properties: Dict of property_name -> property_data
+            
+        Returns:
+            True if successful, False otherwise
+            
+        Side Effects:
+            - Creates timestamped backup of Materials.yaml
+            - Updates Materials.yaml with new property values
+        """
+        if not researched_properties:
+            self.logger.debug(f"No researched properties to persist for {material_name}")
+            return True
+        
+        try:
+            # Create backup before modification
+            if self.materials_file.exists():
+                backup_file = self.materials_file.with_suffix(
+                    f'.backup_{datetime.now().strftime("%Y%m%d_%H%M%S")}.yaml'
+                )
+                shutil.copy2(self.materials_file, backup_file)
+                self.logger.info(f"📦 Backup created: {backup_file.name}")
+            
+            # Load Materials.yaml
+            with open(self.materials_file) as f:
+                materials_data = yaml.safe_load(f)
+            
+            # Find and update material
+            if material_name not in materials_data.get('materials', {}):
+                self.logger.warning(f"Material '{material_name}' not found in Materials.yaml")
+                return False
+            
+            material_entry = materials_data['materials'][material_name]
+            
+            # Ensure properties dict exists
+            if 'properties' not in material_entry:
+                material_entry['properties'] = {}
+            
+            # Update with researched properties
+            updates_count = 0
+            for prop_name, prop_data in researched_properties.items():
+                # Only persist if not already in YAML or has higher confidence
+                existing = material_entry['properties'].get(prop_name)
+                
+                if existing is None:
+                    # New property - add it
+                    material_entry['properties'][prop_name] = prop_data
+                    updates_count += 1
+                    self.logger.debug(f"  ✅ Added {prop_name}: {prop_data.get('value')} {prop_data.get('unit')}")
+                elif existing.get('source') != 'ai_research':
+                    # Existing property but not from AI - upgrade it
+                    material_entry['properties'][prop_name] = prop_data
+                    updates_count += 1
+                    self.logger.debug(f"  🔄 Updated {prop_name}: {prop_data.get('value')} {prop_data.get('unit')}")
+                else:
+                    self.logger.debug(f"  ⏭️  Skipped {prop_name} (already has AI research)")
+            
+            if updates_count > 0:
+                # Write updated data back
+                with open(self.materials_file, 'w') as f:
+                    yaml.dump(materials_data, f, default_flow_style=False, indent=2, sort_keys=False)
+                
+                self.logger.info(f"💾 Persisted {updates_count} properties to Materials.yaml for {material_name}")
+                return True
+            else:
+                self.logger.debug(f"No new properties to persist for {material_name}")
+                return True
+                
+        except Exception as e:
+            self.logger.error(f"❌ Failed to persist properties for {material_name}: {e}")
+            return False
     
     # ===== MAIN INTERFACE =====
     
@@ -166,6 +260,11 @@ class PropertyManager:
                 discovered,
                 existing_properties
             )
+            
+            # Step 3.5: Persist researched properties back to Materials.yaml
+            if quantitative:
+                self.logger.info(f"💾 Persisting {len(quantitative)} researched properties to Materials.yaml...")
+                self.persist_researched_properties(material_name, quantitative)
             
             # Step 4: Validation
             self._validate_essential_coverage(
@@ -357,8 +456,32 @@ class PropertyManager:
         """
         from components.frontmatter.research.property_value_researcher import PropertyValueResearcher
         
-        # Start with existing YAML properties (YAML takes precedence)
-        quantitative = dict(existing_properties)
+        # Start with existing YAML properties - but normalize their units first
+        quantitative = {}
+        for prop_name, prop_data in existing_properties.items():
+            if isinstance(prop_data, dict) and 'value' in prop_data and 'unit' in prop_data:
+                # Normalize units for existing YAML properties
+                normalized_prop = dict(prop_data)  # Copy
+                try:
+                    normalized_value, normalized_unit = UnitConverter.normalize(
+                        prop_name, prop_data['value'], prop_data['unit']
+                    )
+                    if normalized_value is not None and normalized_unit is not None:
+                        normalized_prop['value'] = normalized_value
+                        normalized_prop['unit'] = normalized_unit
+                        self.logger.debug(
+                            f"Unit normalized (YAML): {prop_name}: {prop_data['value']} {prop_data['unit']} "
+                            f"→ {normalized_value} {normalized_unit}"
+                        )
+                except Exception as e:
+                    # Keep original if normalization fails
+                    self.logger.debug(f"Unit normalization not applicable for YAML {prop_name}: {e}")
+                
+                quantitative[prop_name] = normalized_prop
+            else:
+                # Non-property data, keep as-is
+                quantitative[prop_name] = prop_data
+        
         qualitative = {}
         
         for prop_name, prop_data in discovered.items():
@@ -420,10 +543,26 @@ class PropertyManager:
         material_category: str,
         material_name: str
     ) -> Dict:
-        """Build quantitative property structure with ranges."""
+        """Build quantitative property structure with ranges and normalized units."""
+        # Apply unit normalization before building property structure
+        value = prop_data['value']
+        unit = prop_data['unit']
+        
+        try:
+            normalized_value, normalized_unit = UnitConverter.normalize(prop_name, value, unit)
+            if normalized_value is not None and normalized_unit is not None:
+                self.logger.debug(
+                    f"Unit normalized for {prop_name}: {value} {unit} → {normalized_value} {normalized_unit}"
+                )
+                value = normalized_value
+                unit = normalized_unit
+        except Exception as e:
+            # If normalization fails, keep original (backward compatible)
+            self.logger.debug(f"Unit normalization not applicable for {prop_name}: {e}")
+        
         property_data = {
-            'value': prop_data['value'],
-            'unit': prop_data['unit'],
+            'value': value,
+            'unit': unit,
             'confidence': prop_data['confidence'],
             'description': prop_data['description'],
             'min': None,

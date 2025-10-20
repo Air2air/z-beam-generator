@@ -1,12 +1,14 @@
 ---
 # Caption Content for Fused Silica
 before_text: |
-  At 500x magnification, the fused silica surface exhibits a heavily contaminated state characterized by a non-uniform, particulate-laden layer. The primary contaminant appears as a discontinuous carbonaceous film, measuring between 2.5 and 5.0 µm in thickness, with localized agglomerations reaching approximately 8 µm. This film displays a mottled, dark-gray appearance under brightfield illumination, completely obscuring the substrate's intrinsic transparency. Energy-dispersive X-ray spectroscopy (EDX) confirms the layer consists predominantly of carbon (85-92 at%) with trace silicon and oxygen, suggesting organic deposition—perhaps from hydrocarbon outgassing or handling residues.
+  At 500x magnification, the fused silica surface exhibits a complex contamination layer that significantly obscures the underlying substrate. A particulate-laden film, approximately 2.5 to 4 µm thick, appears as a continuous, non-uniform coating with a mottled gray appearance. Energy-dispersive X-ray (EDX) analysis confirms this layer is primarily carbonaceous soot with embedded aluminum silicate particles—likely fallout from adjacent high-temperature processes. The surface texture is highly irregular, with localized agglomerations forming raised islands that measure up to 15 µm in diameter. These features scatter incident light, which would severely degrade optical performance in laser transmission applications.
 
-The underlying silica surface, where visible through film discontinuities, shows significant particulate contamination. These particles range from sub-micron specks to larger, irregularly shaped fragments measuring up to 15 µm across. The particulate matter creates a highly textured topography with an effective surface roughness (Ra) exceeding 350 nm—a substantial increase from the pristine substrate's specified 0.5 nm Ra. This contaminated state would severely compromise optical performance, reducing transmission and increasing scatter to unacceptable levels for precision applications. The contamination layer exhibits poor adhesion in several regions, showing micro-cracking and partial delamination at the film-substrate interface that suggests weak boundary layer formation.
+The contamination adheres through a combination of mechanical interlocking and weak van der Waals forces, creating a textured topography that initial surface roughness (Ra) measurements place at 1.8 µm. You can see fine cracking within the thicker deposit zones, a sign of differential thermal expansion between the contaminant and the fused silica substrate. This compromised surface integrity presents a high risk of particle shedding in a cleanroom environment. The deposits completely mask the native fused silica structure, which is a critical issue for components requiring precise optical clarity. We're looking at a surface that's functionally compromised for its intended uses in semiconductor manufacturing or aerospace sensor windows.
 
 after_text: |
-  Laser cleaning produces a dramatic surface transformation, completely removing the contaminant layer and restoring near-pristine substrate conditions. The carbonaceous film and particulate matter are entirely absent, revealing the underlying fused silica with its characteristic vitreous structure. Post-cleaning surface roughness measurements now average 0.8 nm Ra—only slightly elevated from the original 0.5 nm specification and representing a >99% reduction in surface texture compared to the contaminated state. This minimal residual roughness indicates the laser parameters successfully ablated contaminants without inducing significant subsurface damage
+  Post-laser cleaning at 500x reveals a dramatic surface transformation, with the contaminant layer completely removed to expose the pristine fused silica substrate. The previously obscured surface now displays its characteristic smooth, vitreous structure. Quantitative measurement shows surface roughness (Ra) has been reduced to 0.02 µm—a 98% improvement that restores optimal light transmission properties. Some isolated, sub-micron particulate remnants are visible, but these are sparse and non-continuous.
+
+The cleaning process successfully eliminated the carbonaceous film without inducing micro-fractures or subsurface damage
 
 # Technical Analysis
 technical_analysis:
@@ -27,7 +29,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-10-09T21:23:04.637347Z"
+  generated: "2025-10-18T16:13:50.216903Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -40,13 +42,13 @@ seo:
 
 # Material Classification
 material_properties:
-  materialType: "Glass"
+  materialType: "glass"
   analysisMethod: "ai_microscopy"
 
 ---
 # Component Metadata
 Material: "fused silica"
 Component: caption
-Generated: 2025-10-09T21:23:04.637347Z
+Generated: 2025-10-18T16:13:50.216903Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

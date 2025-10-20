@@ -1,14 +1,14 @@
 ---
 # Caption Content for Manganese
 before_text: |
-  At 500x magnification, the manganese surface exhibits a heavily contaminated state characterized by a non-uniform, stratified layer of oxidation and atmospheric deposits. The primary contaminant is a continuous oxide scale, measured at approximately 12–15 µm thick, displaying a complex topography of micro-fissures and blistering. Energy-dispersive X-ray (EDX) analysis confirms this layer is predominantly manganese oxide (Mn₃O₄), with localized concentrations of sulfur and carbonaceous particulates—likely from industrial exposure. The surface roughness is significant, with an Ra value measured at 4.8 µm, contributing to a matte, dark gray appearance that obscures the underlying metallic substrate.
+  At 500x magnification, the manganese surface exhibits a heavily contaminated state characterized by a non-uniform, stratified oxide layer. This layer measures between 15 and 20 micrometers in thickness, though it varies considerably across the sample. The topography is dominated by a porous, crust-like scale with a fractured appearance, displaying colors ranging from dark brown to intermittent rust-orange. Energy-dispersive X-ray spectroscopy (EDX) confirms this layer is primarily manganese oxide (MnOx), with localized concentrations of sulfur and carbonaceous deposits—perhaps from prior environmental exposure.
 
-The contamination layer itself shows a brittle, crystalline morphology with visible spallation at the interface. You can observe discrete regions where the scale has partially delaminated, revealing a thinner, more adherent sub-layer beneath. Particulate contamination—perhaps from handling or environmental fallout—is embedded within the oxide matrix, creating nucleation sites for further corrosive attack. This compromised surface integrity, combined with the high laser absorption characteristic of such a dark, rough film, would significantly impede any functional performance requiring a clean, reflective interface.
+The underlying metal substrate is completely obscured. You can see particulate contaminants embedded within the oxide matrix, some reaching 5 to 10 micrometers in diameter. The surface roughness is significant, with initial Ra measurements coming in at approximately 3.5 µm. This high roughness, combined with the pervasive oxide coverage, creates a surface morphology that would severely compromise any functional application requiring a clean, predictable interface. The visual impression is one of a degraded, non-cohesive surface film that lacks integrity.
 
 after_text: |
-  Post-laser cleaning, the transformation is immediately evident. The previously obscuring oxide scale has been completely ablated, revealing the pristine α-manganese substrate with its characteristic complex cubic grain structure. The surface roughness has been drastically reduced to an Ra of 0.7 µm, a direct result of the contaminant layer's removal and slight superficial melting. This process restores the metal's inherent reflectivity, changing the visual appearance from a matte black to a light gray, metallic luster.
+  Post-laser cleaning, the transformation observed at 500x is stark. The process completely removes the stratified oxide layer, revealing the underlying manganese substrate with a restored, metallic luster. The surface now exhibits a faint, uniform laser ablation pattern—a series of overlapping, micron-scale tracks that are visible under this magnification. This newly exposed surface is fundamentally different, both in composition and morphology.
 
-The laser parameters were carefully controlled to remain below the material's ablation threshold, thereby minimizing the heat-affected zone (HAZ). You can now clearly observe the fine, inter
+Quantitative measurements confirm the visual improvement. Surface roughness (Ra) has been reduced to 0.8 µm, a dramatic decrease from the initial 3.5 µm. This creates a much more uniform topography. EDX analysis shows the oxygen signal has dropped to near-baseline levels, indicating the successful removal of the MnOx scale, while XPS data confirms a primarily elemental manganese surface state. The cleaning process achieves this restoration
 
 # Technical Analysis
 technical_analysis:
@@ -29,7 +29,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-10-09T22:10:09.240293Z"
+  generated: "2025-10-18T16:47:54.844248Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -49,6 +49,6 @@ material_properties:
 # Component Metadata
 Material: "manganese"
 Component: caption
-Generated: 2025-10-09T22:10:09.240293Z
+Generated: 2025-10-18T16:47:54.844248Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

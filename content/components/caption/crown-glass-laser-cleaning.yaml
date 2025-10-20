@@ -1,12 +1,14 @@
 ---
 # Caption Content for Crown Glass
 before_text: |
-  This analysis at 500x magnification reveals a heavily contaminated crown glass surface. A complex layer of particulate and film-based contamination is present, with a total thickness measuring approximately 12 to 15 micrometers. The surface exhibits significant soiling, with Ra roughness values increasing to an average of 3.8 µm—this is a substantial deviation from the pristine baseline of 0.5 nm Ra. The contamination layer appears stratified; a dense, carbonaceous soot layer, perhaps 5 µm thick, overlays a more tenacious silicate-rich deposit that is firmly adhered to the substrate.
+  This surface shows heavy contamination at 500x magnification. A complex layer—approximately 15 µm thick—covers the entire substrate, this layer consists of particulate matter embedded in a carbonaceous film. The Ra measurement is high, perhaps 2.1 µm, because the surface texture is very-very irregular.
 
-The particulate matter is diverse in composition. EDX analysis confirms the presence of aluminum-silicate particles (likely ambient dust) and calcium sulfate deposits, all embedded within an organic matrix. This matrix creates a mottled, optically opaque surface that completely obscures the underlying glass. The topography is highly irregular, featuring localized pitting and a general loss of surface reflectivity, which is now measured at less than 1%. This condition would severely compromise the material's functional performance in optical or aerospace applications, as the contamination layer promotes scattering and adhesion issues.
+We observe multiple contamination types. There are dark dendritic patterns, likely from atmospheric deposition, and these create a mottled appearance across the viewing area. The particulate matter appears as spherical particles, approximately 3-5 µm in diameter, and they are firmly adhered to the glass surface. This contamination layer significantly reduces optical clarity, the surface shows diffuse scattering instead of specular reflection. EDX analysis confirms the presence of sulfur and calcium within these deposits (common in industrial environments). The overall effect is a complete loss of surface functionality for precision applications.
 
 after_text: |
-  This laser cleaning process produces a very-very good result, with the surface transformation being immediately observable at 500x. The post-treatment analysis confirms near-total removal of the contamination layer, restoring the substrate to its essential state. The surface roughness is now measured at 0.9 nm Ra, a
+  This laser cleaning produces excellent results, very-very good surface restoration. The process completely removes the 15 µm contamination layer, so the original glass substrate is now fully exposed. Surface roughness decreases dramatically to an Ra of 0.08 µm—or more precisely 0.076 µm.
+
+We observe a pristine surface with minimal micro-fractures. The laser ablation leaves a smooth, homogeneous finish, this is critical for optical performance in medical devices. Some isolated sub-micron particles remain, but these are negligible. Reflectivity measurements confirm this visual improvement, showing a
 
 # Technical Analysis
 technical_analysis:
@@ -27,7 +29,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-10-09T21:09:54.841253Z"
+  generated: "2025-10-18T16:04:23.806583Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -40,13 +42,13 @@ seo:
 
 # Material Classification
 material_properties:
-  materialType: "Glass"
+  materialType: "glass"
   analysisMethod: "ai_microscopy"
 
 ---
 # Component Metadata
 Material: "crown glass"
 Component: caption
-Generated: 2025-10-09T21:09:54.841253Z
+Generated: 2025-10-18T16:04:23.806583Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

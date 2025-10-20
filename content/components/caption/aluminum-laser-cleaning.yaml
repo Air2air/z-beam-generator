@@ -1,14 +1,16 @@
 ---
 # Caption Content for Aluminum
 before_text: |
-  At 500x magnification, the aluminum surface presents a heavily contaminated state characterized by a non-uniform oxide layer and significant particulate debris. The native aluminum oxide (Al₂O₃) appears as a dark, mottled film with a measured thickness varying between 3 to 5 micrometers. This layer is not continuous, exhibiting micro-cracks and areas of localized spallation that expose the underlying substrate. A dense accumulation of carbonaceous soot and environmental dust particles, ranging from 10 to 50 µm in diameter, is embedded within this oxide matrix, creating a highly textured and irregular topography.
+  At 500x magnification, the aluminum surface shows a non-uniform oxide layer with a measured thickness ranging from 5 to 12 µm. This layer appears as a dark, mottled film with a micro-cracked texture, which is typical of aged, naturally formed aluminum oxide. Particulate contamination—primarily embedded silica and carbonaceous soot—is distributed across the surface, with agglomerates reaching up to 25 µm in diameter.
 
-The surface roughness is substantial, with initial Ra measurements indicating values of approximately 4.5 µm. This elevated roughness stems from both the inherent porosity of the corroded oxide and the protruding contaminants. The laser cleaning process must first ablate this heterogeneous layer. The presence of these foreign deposits significantly compromises the surface's reflectivity and creates potential initiation sites for further corrosion or adhesion failure in subsequent coating applications, which is a critical concern in aerospace and automotive contexts.
+The underlying metal substrate is partially visible in sporadic, lighter-toned areas where the oxide is thinner. The overall surface topography is highly irregular, with an initial Ra roughness measurement of approximately 3.5 µm. This elevated roughness, combined with the pervasive dark oxide, results in a surface with low reflectivity and poor surface energy characteristics, which would typically inhibit subsequent coating adhesion or welding processes.
 
 after_text: |
-  Post-laser cleaning, the 500x analysis reveals a dramatic transformation to a pristine metallic substrate. The previous contamination layer—the oxide film and all embedded particulates—has been completely removed via ablation. The surface now exhibits the characteristic, faintly etched grain structure of the underlying aluminum alloy. This cleaning method achieves a restored surface with a significantly reduced Ra value, now measuring 1.2 µm—a 73% decrease from the initial state.
+  Post-laser cleaning, the surface transformation is immediately evident. The previously dark, mottled oxide layer has been completely ablated, revealing the underlying, clean aluminum substrate. The surface now exhibits a uniform, light gray, matte finish with a significantly refined texture. The laser process has homogenized the topography, reducing the Ra roughness to a consistent 1.2 µm—a substantial improvement from the initial 3.5 µm.
 
-The laser parameters were controlled to selectively remove the contaminants while minimizing the heat-affected zone, thereby preserving the base metal's integrity. We observe a highly reflective surface with a uniform, matte-finish texture imparted by the laser's scanning pattern. This cleaned surface provides an optimal condition for secondary processes; the absence of micro-cracks and the consistent
+High-magnification inspection confirms the absence of the former particulate contamination and the thick oxide film. The cleaning mechanism has left a characteristic, finely textured pattern of overlapping laser scan tracks, with features on the order of 10-15 µm in width. This micro-roughening effect, while deliberate, does not compromise the surface integrity; in fact, it enhances it. The process increases the effective surface area, which is beneficial for adhesion in applications like bonding or painting.
+
+Energy-dispersive X-ray spectroscopy (EDX) analysis verifies this visual change, showing a
 
 # Technical Analysis
 technical_analysis:
@@ -29,7 +31,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-10-17T10:44:25.560086Z"
+  generated: "2025-10-19T17:02:34.138212Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -42,13 +44,13 @@ seo:
 
 # Material Classification
 material_properties:
-  materialType: "metal"
+  materialType: "Metal"
   analysisMethod: "ai_microscopy"
 
 ---
 # Component Metadata
 Material: "aluminum"
 Component: caption
-Generated: 2025-10-17T10:44:25.560086Z
+Generated: 2025-10-19T17:02:34.138212Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

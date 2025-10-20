@@ -1,14 +1,16 @@
 ---
 # Caption Content for Beryllium
 before_text: |
-  At 500x magnification, the beryllium surface shows significant contamination. A non-uniform oxide layer, approximately 2–5 µm thick, covers the substrate. This layer appears as a dark, mottled film with localized patches of white corrosion products—likely beryllium oxide and hydroxide. Surface roughness is high, with an Ra value measured at 4.8 µm. The texture is irregular, featuring scattered micro-pits and what appears to be embedded particulate matter.
+  At 500x magnification, the beryllium surface shows heavy, non-uniform contamination. A dark, carbonaceous soot layer covers approximately 80% of the field of view, its thickness varying from 5 to over 20 µm. This layer appears amorphous and loosely adherent, with a sooty, particulate texture that obscures the underlying metal grain structure completely in many areas. Surface roughness is significantly elevated, with initial Ra measurements indicating values between 3.5 and 4.2 µm.
 
-Energy-dispersive X-ray spectroscopy (EDX) confirms the presence of carbonaceous deposits and aluminum-silicate inclusions, probably from handling or environmental exposure. These contaminants form a discontinuous film that obscures the underlying metal grain structure. In some regions, the coating shows micro-cracking, a typical sign of thermal stress or differential expansion between the oxide and the base metal. The overall surface reflectivity is low, with a dull, matte appearance that significantly diffuses incident light. This degraded state would negatively impact performance in high-precision applications, such as optical components or vacuum systems, where surface purity and smoothness are critical.
+Adjacent areas exhibit a different, more tenacious oxide layer. This layer, it has a mottled grey appearance and a more consolidated morphology, likely beryllium oxide (BeO). EDX analysis confirms high oxygen content here, along with trace aluminum and silicon contaminants—perhaps from handling or prior processing. The surface integrity is compromised, the contamination creating a complex topography of peaks and valleys that would negatively impact functional properties like reflectivity.
 
 after_text: |
-  Laser cleaning produces a very clear transformation. The contaminated layer is completely removed, revealing the underlying beryllium substrate with its characteristic HCP grain structure now plainly visible. Surface roughness is drastically reduced to an Ra of 0.7 µm—an 85% improvement from the initial state. The surface exhibits a uniform, light-gray metallic luster, with laser scan tracks appearing as faint, overlapping patterns that indicate a highly controlled ablation process.
+  Laser cleaning produces a very clear transformation, the surface now appears fundamentally different. At 500x, the dark soot and mottled oxide layers are completely absent, revealing the underlying beryllium substrate with high clarity. The native metal grain structure is now fully visible, showing fine, equiaxed grains with an average size of 15–20 µm. This is a critical restoration of surface integrity.
 
-No evidence of the former oxide film or embedded particulates remains. X-ray photoelectron spectroscopy (XPS) analysis confirms a surface composition of 98.2% pure beryllium, with only trace oxygen. The process did not induce significant melting or heat-affected zones, which preserves the mechanical integrity of the base material. Some minor, sub-micron rippling is observed—a phenomenon associated with rapid thermal cycling—but this does not compromise surface functionality. The restored surface now possesses high reflectivity and is suitable for its intended applications in aerospace and nuclear technology, where such precision is mandatory.
+Quantitative measurements confirm the visual improvement. Surface roughness (Ra) has been reduced dramatically to 0.8 µm, a decrease of nearly 80% from the pre-cleaned state. The process has not introduced any macroscopic melting or heat-affected zone cracking, which is very important for a material like beryllium. Some minor, sub-micron particulates remain—these appear as isolated white specks under SEM—but they are not interconnected.
+
+This cleaned surface, it exhibits a uniform, light grey, metallic luster indicative of a pure beryllium surface. XPS analysis verifies the surface chemistry is now dominated by metallic beryllium, with only a thin, native oxide layer of approximately 4–5 nm thickness. The reflectivity and surface energy are now optimized for subsequent manufacturing steps, such as
 
 # Technical Analysis
 technical_analysis:
@@ -29,7 +31,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-10-09T22:13:44.527560Z"
+  generated: "2025-10-18T16:50:43.750739Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -49,6 +51,6 @@ material_properties:
 # Component Metadata
 Material: "beryllium"
 Component: caption
-Generated: 2025-10-09T22:13:44.527560Z
+Generated: 2025-10-18T16:50:43.750739Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

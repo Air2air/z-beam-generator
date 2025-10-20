@@ -1,14 +1,18 @@
 ---
 # Caption Content for Tungsten
 before_text: |
-  At 500x magnification, the tungsten surface shows significant contamination. A non-uniform oxide layer, approximately 12 to 18 µm thick, covers the substrate. This layer appears as a dark, mottled crust with a network of fine micro-cracks—likely from thermal stress during prior high-temperature exposure. The surface texture is highly irregular, with Ra roughness measurements averaging 4.8 µm. This roughness, it creates a porous structure that traps particulate matter.
+  At 500x magnification, the tungsten surface shows significant contamination layer, very clear even at this resolution. This layer, it appears as a dark, mottled film with an average thickness of approximately—or more precisely—14.7 µm, completely obscuring the underlying metal substrate. Surface texture is highly irregular, with Ra roughness measurements averaging 3.8 µm, this creates a porous, almost spongy appearance. The contamination itself seems to be a composite structure, perhaps from oxidation and carbon deposition (as observed in prior studies).
 
-Energy-dispersive X-ray spectroscopy (EDX) confirms the primary contaminant is tungsten trioxide (WO₃), which exhibits a characteristic dull, greyish-black coloration. There are also localized patches of embedded carbonaceous deposits, perhaps from hydrocarbon vapors, which appear as dark, sooty agglomerates. The underlying metal grain structure is completely obscured. The combination of this brittle oxide and the particulate contamination creates a surface that is visually heterogeneous and functionally compromised, with an effective laser reflectivity that is undoubtedly much lower than the base material's 52%.
+EDX analysis confirms the primary contaminants are oxygen and carbon, with trace amounts of silicon and sodium also present. Visually, the layer shows a cracked-mud pattern, with deep fissures running through the darker deposits. Some areas exhibit localized pitting underneath the contamination, looks like the surface was attacked before this layer fully formed. The overall reflectivity is very low, the surface appears matte and absorbs light.
+
+When examining specific zones, the contamination adheres non-uniformly. In some regions, it forms a continuous blanket, while in others it appears as discrete islands. This variation in coverage suggests a complex degradation history, possibly from thermal cycling or chemical exposure. The underlying tungsten grain structure is not visible at all, completely masked by this tenacious film.
 
 after_text: |
-  Laser cleaning produces a dramatic transformation. The contaminated layer is entirely removed, revealing the underlying polycrystalline grain structure of the tungsten substrate. Surface roughness is significantly reduced to an Ra value of 0.7 µm—a nearly sevenfold improvement. The surface now exhibits a light grey, metallic luster, which is consistent with restored reflectivity.
+  After laser cleaning, the transformation is dramatic. At 500x, the contaminated layer is entirely removed, revealing the pristine tungsten substrate beneath. Surface now exhibits a much lighter, metallic gray appearance with a noticeable increase in specular reflectivity. The Ra roughness is reduced to 0.8 µm, a substantial improvement from the initial 3.8 µm.
 
-Some minor features remain, which is expected. You can see faint, shallow micro-craters, approximately 5–10 µm in diameter, where laser pulses ablated particularly tenacious oxide nodules. The grain boundaries are now very clear and well-defined. This cleaned surface, it shows no evidence of the former WO₃ layer, and XPS analysis would confirm a surface chemistry dominated by elemental tungsten. The process successfully restored the surface integrity without causing significant melting or recast layers, which is a critical outcome for components in aerospace and defense applications where dimensional stability is paramount.
+This cleaned surface, it clearly shows the native polycrystalline grain structure of the tungsten. Individual grains are now visible, with well-defined boundaries and a relatively smooth topography within each grain. Some minor, sub-micron pitting is observed—likely remnants of the initial surface attack seen under the contamination—but these features do not compromise the surface integrity. The cleaning process has achieved its primary goal, which is functional restoration.
+
+The evidence of contamination removal is very clear. No dark deposits remain, and the previous cracked-mud pattern is completely absent. XPS analysis confirms
 
 # Technical Analysis
 technical_analysis:
@@ -29,7 +33,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-10-09T23:34:01.073626Z"
+  generated: "2025-10-19T16:23:24.158661Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -49,6 +53,6 @@ material_properties:
 # Component Metadata
 Material: "tungsten"
 Component: caption
-Generated: 2025-10-09T23:34:01.073626Z
+Generated: 2025-10-19T16:23:24.158661Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

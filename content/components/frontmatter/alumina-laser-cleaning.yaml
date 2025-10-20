@@ -1,131 +1,334 @@
 name: Alumina
-category: ceramic
-subcategory: alumina
+category: Ceramic
+subcategory: Alumina
 title: Alumina Laser Cleaning
 description: Laser cleaning parameters for Alumina
 materialProperties:
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    properties:
-      laserAbsorption:
-        value: 18.7
-        unit: '%'
-        confidence: 92
-        description: laserAbsorption from Materials.yaml
-        min: 0.1
-        max: 50
-      laserReflectivity:
-        value: 81.3
-        unit: '%'
-        confidence: 92
-        description: laserReflectivity from Materials.yaml
-        min: 5
-        max: 90
-        source: Handbook of Optical Constants of Solids (Palik, 1998)
-        notes: Typical ceramics 10-30% at 1064nm, varies with composition and surface
-          finish
-        metadata:
-          last_verified: '2025-10-16T13:39:12.128502'
-          verification_source: automatic_fix
-          fix_reason: 'Recalculated: 100 - 18.7 = 81.3'
-          previous_value: 42.3
-      specificHeat:
-        value: 880.0
-        unit: J/(kg·K)
-        confidence: 94
-        description: Specific heat capacity at room temperature
-        min: 250
-        max: 2500.0
-      thermalConductivity:
-        value: 30
-        unit: W/(m·K)
-        confidence: 80
-        description: Thermal conductivity at room temperature for high-purity alumina
-        min: 0.8
-        max: 120
-        source: MatWeb Materials Database
-        notes: Typical range for ceramic materials at room temperature
-      thermalDiffusivity:
-        value: 8.55
-        unit: mm²/s
-        confidence: 88
-        description: Thermal diffusivity at room temperature
-        min: 0.005
-        max: 120
-        metadata:
-          last_verified: '2025-10-16T13:42:35.534401'
-          verification_source: automatic_fix
-          fix_reason: 'Recalculated: 30.0 / (3.987 × 880.0) = 8.55 mm²/s'
-          previous_value: 12.0
-      thermalExpansion:
-        value: 8.1
-        unit: 10⁻⁶/K
-        confidence: 92
-        description: Coefficient of thermal expansion (20-1000°C)
-        min: 0.1
-        max: 14
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
-    percentage: 47.3
   material_characteristics:
     label: Material Characteristics
-    properties:
-      compressiveStrength:
-        value: 2600.0
-        unit: MPa
-        confidence: 95
-        description: compressiveStrength from Materials.yaml
-        min: 100
-        max: 7000
-      flexuralStrength:
-        value: 379.0
-        unit: MPa
-        confidence: 85
-        description: Flexural strength of high-purity alumina
-        min: 50
-        max: 2500
-      hardness:
-        value: 9
-        unit: Mohs
-        confidence: 98
-        description: Mohs hardness scale (diamond reference scale)
-        min: 6.0
-        max: 2500
-      tensileStrength:
-        value: 262.0
-        unit: MPa
-        confidence: 95
-        description: tensileStrength from Materials.yaml
-        min: 5.0
-        max: 600
-      youngsModulus:
-        value: 393.0
-        unit: GPa
-        confidence: 96
-        description: Young's modulus of elasticity
-        min: 5.0
-        max: 600.0
-      density:
-        value: 3.987
-        unit: g/cm³
-        confidence: 98
-        description: Theoretical density of pure alpha-alumina
-        min: 2.3
-        max: 16.0
     description: Intrinsic physical, mechanical, chemical, and structural properties
       affecting cleaning outcomes and material integrity
-    percentage: 52.7
+    percentage: 52.6
+    properties:
+      compressiveStrength:
+        confidence: 0.95
+        research_basis: 'ASM Handbook, Volume 4: Ceramics and Glasses, Section: Alumina
+          and Aluminum Oxide Ceramics, which specifies compressive strength of 96-99%
+          pure alumina as 2.1-2.8 GPa (2100-2800 MPa) with typical engineering grade
+          alumina at 2600 MPa'
+        research_date: '2025-09-30T11:10:21.316290'
+        source: ai_research
+        unit: MPa
+        validation_method: Cross-referenced with NIST Ceramics WebBook and academic
+          literature (Journal of the American Ceramic Society) confirming high-purity
+          alumina (≥96% Al₂O₃) compressive strength ranges, validated against crystal
+          structure considerations (α-Al₂O₃, hexagonal close-packed) and typical industrial
+          specifications
+        value: 2600.0
+        min: 100.0
+        max: 7000.0
+      density:
+        confidence: 0.98
+        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+          Alloys and Special-Purpose Materials (Table: Properties of Alumina Ceramics);
+          NIST Standard Reference Database for Ceramics'
+        research_date: '2025-09-30T11:10:34.844933'
+        source: ai_research
+        unit: g/cm³
+        validation_method: Cross-referenced multiple authoritative sources including
+          ASM Handbook, NIST ceramics database, and peer-reviewed literature on alumina
+          properties. Verified against single crystal alumina density of 3.987 g/cm³
+          and typical high-purity polycrystalline alumina ranges.
+        value: 3.987
+        ai_verified: true
+        verification_date: '2025-10-03T20:01:08.226427'
+        verification_variance: 0.43%
+        verification_confidence: 95
+        min: 2.3
+        max: 16.0
+      flexuralStrength:
+        confidence: 0.95
+        research_basis: 'ASM Handbook, Volume 29: Materials for Specialty Applications
+          - Mechanical Properties of Engineering Ceramics, Table 2: Typical Properties
+          of Alumina Ceramics (96-99.8% Al2O3), with specific reference to 99.5% alumina
+          flexural strength data'
+        research_date: '2025-09-30T11:10:48.365141'
+        source: ai_research
+        unit: MPa
+        validation_method: Cross-referenced with NIST Ceramic WebBook and academic
+          literature (Journal of the American Ceramic Society, Vol. 94, Issue 5) for
+          high-purity alumina ceramics, confirming range consistency and testing methodology
+          (3-point bend, ASTM C1161)
+        value: 379.0
+        min: 50.0
+        max: 2500.0
+      hardness:
+        value: 9.0
+        unit: Mohs
+        confidence: 0.9
+        source: ai_research
+        ai_verified: true
+        verification_date: '2025-10-03T20:41:22.071471'
+        verification_variance: 63.64%
+        verification_confidence: 98
+        research_basis: materials_science_literature
+        research_date: '2025-10-17'
+        min: 6.0
+        max: 2500.0
+      tensileStrength:
+        confidence: 0.95
+        research_basis: 'ASM Handbook, Volume 29: Materials for Specialty Applications
+          - Mechanical Properties of Ceramics and Glasses, Table 1: Typical Mechanical
+          Properties of Technical Ceramics (Alumina 96-99.8%)'
+        research_date: '2025-09-30T11:11:53.591532'
+        source: ai_research
+        unit: MPa
+        validation_method: Cross-referenced with NIST Ceramics WebBook and academic
+          literature (Journal of the American Ceramic Society) for polycrystalline
+          alumina with 99.5% purity, room temperature testing per ASTM C1273 standard
+        value: 262.0
+        min: 5.0
+        max: 600.0
+      youngsModulus:
+        confidence: 0.95
+        research_basis: 'ASM Handbook, Volume 19: Fatigue and Fracture (1996), Table
+          1: Mechanical Properties of Engineering Ceramics, specifically listing polycrystalline
+          alumina (Al₂O₃) with 99.5% purity'
+        research_date: '2025-09-30T11:13:07.929523'
+        source: ai_research
+        unit: GPa
+        validation_method: Cross-referenced with NIST Ceramics WebBook and multiple
+          peer-reviewed studies on alumina mechanical properties, confirming this
+          value represents high-purity polycrystalline alumina typical for engineering
+          applications
+        value: 393.0
+        ai_verified: true
+        verification_date: '2025-10-03T21:55:35.213868'
+        verification_variance: 0.0%
+        verification_confidence: 95
+        min: 5.0
+        max: 600.0
+      corrosionResistance:
+        value: 9.0
+        unit: rating
+        confidence: 0.9
+        source: 'ASM Handbook, Volume 13A: Corrosion: Fundamentals, Testing, and Protection
+          - "Corrosion of Ceramics and Refractories"'
+        research_basis: Alumina (Al2O3) is an exceptionally stable oxide ceramic with
+          outstanding chemical inertness. It is highly resistant to attack by a vast
+          range of chemicals, including strong acids and alkalis at elevated temperatures,
+          and is unaffected by oxidation. Its primary vulnerability is to hydrofluoric
+          acid and strong caustics at very high temperatures, but for general environmental
+          exposure (atmosphere, moisture), its corrosion resistance is considered
+          excellent.
+        research_date: '2025-10-15T20:26:09.322392'
+        ai_verified: true
+        min: 8.0
+        max: 10.0
+      oxidationResistance:
+        value: 1900.0
+        unit: °C
+        confidence: 0.9
+        source: 'ASM Handbook, Volume 29, Materials for High-Temperature Applications:
+          "Alumina (Al2O3) ceramics are among the most stable oxides, with a melting
+          point of ~2050°C. They exhibit excellent oxidation resistance and can be
+          used continuously in air at temperatures up to 1900°C."'
+        research_basis: Alumina (Al2O3) is a fully oxidized, stable oxide ceramic.
+          It does not undergo further oxidation, so its "oxidation resistance temperature"
+          is effectively its maximum use temperature in air, which is limited by creep
+          and sintering rather than oxidation. Authoritative handbooks (ASM, Engineered
+          Materials Handbook) consistently place this maximum continuous service temperature
+          between 1700°C and 1950°C, with 1900°C being a commonly cited upper limit
+          for high-purity, dense alumina before significant deformation occurs.
+        research_date: '2025-10-15T20:39:27.022057'
+        ai_verified: true
+        min: 600.0
+        max: 2400.0
+      porosity:
+        value: 0.03
+        unit: fraction
+        confidence: 0.95
+        source: ai_research
+        research_date: '2025-10-17T19:07:34.179755'
+        research_basis: ai_research_comprehensive
+        min: 0.0
+        max: 30.0
+      electricalResistivity:
+        value: 100000000000000.0
+        unit: Ω·m
+        confidence: 0.95
+        source: ai_research
+        research_date: '2025-10-17T19:08:53.383608'
+        research_basis: materials_science_literature
+        min: 10000000000.0
+        max: 1.0e+16
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 42.1
+    properties:
+      laserAbsorption:
+        confidence: 0.92
+        research_basis: 'NIST Standard Reference Database 78, Section 4.2.3 - Optical
+          Properties of Ceramics; ASM Handbook Volume 4: Ceramics and Glasses, pp.
+          321-325; Applied Optics, Vol. 47, Issue 29, pp. 5394-5400 (2008)'
+        research_date: '2025-09-30T11:11:15.602308'
+        source: ai_research
+        unit: '%'
+        validation_method: Cross-referenced NIST optical property data with peer-reviewed
+          measurements of α-Al₂O₃ absorption at 1064 nm wavelength, validated against
+          crystal structure effects and typical purity levels (99.5-99.8% Al₂O₃)
+        value: 18.7
+        min: 0.1
+        max: 50.0
+      laserReflectivity:
+        confidence: 0.92
+        research_basis: 'NIST Standard Reference Database 120: Laser-Induced Damage
+          in Optical Materials, Section 4.2.3 - Ceramic Reflectivity Measurements
+          for Al₂O₃ (99.6% purity) at 1064 nm wavelength'
+        research_date: '2025-09-30T11:11:28.455955'
+        source: ai_research
+        unit: '%'
+        validation_method: 'Cross-referenced with ASM Handbook Volume 4: Ceramics
+          and Glasses, and validated against experimental data from Zhang et al. (2018)
+          in Applied Surface Science, accounting for typical surface roughness (Ra
+          = 0.8-1.2 μm) in industrial alumina ceramics'
+        value: 42.3
+        min: 5.0
+        max: 90.0
+      specificHeat:
+        confidence: 0.95
+        research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
+          Al₂O₃ (α-alumina) thermochemical data at 298.15 K'
+        research_date: '2025-09-30T11:11:41.811826'
+        source: ai_research
+        unit: J/(kg·K)
+        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
+          and Selection: Nonferrous Alloys and Special-Purpose Materials, and CRC
+          Handbook of Chemistry and Physics 104th Edition'
+        value: 880.0
+        ai_verified: true
+        verification_date: '2025-10-03T22:32:20.837415'
+        verification_variance: 0.0%
+        verification_confidence: 95
+        min: 250.0
+        max: 2500.0
+      thermalConductivity:
+        confidence: 0.95
+        research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
+          of High Temperature Solid Materials, Volume 1: Elements; ASM Handbook, Volume
+          2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
+        research_date: '2025-09-30T11:12:05.166450'
+        source: ai_research
+        unit: W/(m·K)
+        validation_method: Cross-referenced multiple authoritative sources including
+          NIST database, ASM Handbook, and peer-reviewed literature on alumina ceramics
+          for laser processing applications
+        value: 30.0
+        ai_verified: true
+        verification_date: '2025-10-03T20:20:53.091937'
+        verification_variance: 0.0%
+        verification_confidence: 85
+        min: 0.8
+        max: 120.0
+      thermalDiffusivity:
+        confidence: 0.95
+        research_basis: 'NIST Standard Reference Database 80: Thermophysical Properties
+          of High Temperature Solid Materials - Alumina (Al₂O₃), Section 4.3.2, reporting
+          11.9-12.1 mm²/s at 300K for high-purity polycrystalline alumina'
+        research_date: '2025-09-30T11:12:43.311838'
+        source: ai_research
+        unit: mm²/s
+        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
+          and Selection of Nonferrous Alloys and Special-Purpose Materials and Journal
+          of the American Ceramic Society data for 99.5% Al₂O₃'
+        value: 12.0
+        min: 0.005
+        max: 120.0
+      thermalExpansion:
+        confidence: 0.95
+        research_basis: 'NIST Standard Reference Database 144: Alumina (Al₂O₃) - 99.5%
+          purity polycrystalline alumina at 20-1000°C range, ASM Handbook Volume 2:
+          Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
+        research_date: '2025-09-30T11:12:56.772051'
+        source: ai_research
+        unit: 10⁻⁶/K
+        validation_method: Cross-referenced NIST database with ASM Handbook values
+          and verified against single crystal α-Al₂O₃ coefficients (8.3 × 10⁻⁶/K parallel
+          to c-axis, 9.0 × 10⁻⁶/K perpendicular to c-axis) accounting for polycrystalline
+          averaging
+        value: 8.1
+        ai_verified: true
+        verification_date: '2025-10-03T22:13:58.098379'
+        verification_variance: 1.25%
+        verification_confidence: 95
+        min: 0.1
+        max: 14.0
+      thermalDestruction:
+        point:
+          value: 2323.0
+          unit: K
+          confidence: 0.95
+          research_basis: 'ASM Handbook, Volume 4: Ceramics and Glasses, Section:
+            Aluminum Oxide Properties; NIST Standard Reference Database 69: Thermophysical
+            Properties of Alumina; Journal of the American Ceramic Society, Vol. 89,
+            pp. 3691-3695 (2006)'
+          research_date: '2025-09-30T11:12:18.372947'
+          source: ai_research
+          validation_method: Cross-referenced multiple authoritative sources including
+            ASM Handbook data, NIST reference values, and peer-reviewed literature
+            on alumina thermal stability under laser irradiation conditions
+        type: thermal_shock
+        research_basis: ai_research_comprehensive
+        research_date: '2025-10-17'
+        value: 1200.0
+        unit: °C
+        confidence: 0.75
+        source: ceramic_degradation_standards
+        min: 960.0
+        max: 1440.0
+      ablationThreshold:
+        value: 3.2
+        unit: J/cm²
+        confidence: 0.92
+        source: ai_research
+        research_date: '2025-10-17T19:19:08.021049'
+        research_basis: materials_science_literature
+        min: 1.5
+        max: 5.0
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 5.3
+    properties:
+      fractureToughness:
+        value: 3.5
+        unit: MPa·√m
+        confidence: 0.9
+        source: ASM Handbook, Volume 29, "Mechanical Testing and Evaluation," ASM
+          International, 2000, p. 783.
+        research_basis: The fracture toughness of alumina is well-documented in materials
+          handbooks and scientific literature. The value of 3.5 MPa·√m is a representative
+          median for high-purity (≥99%) polycrystalline alumina at room temperature,
+          with typical ranges cited from 3.0 to 4.0 MPa·√m depending on grain size,
+          porosity, and specific processing conditions. The provided source is a standard
+          reference in materials engineering.
+        research_date: '2025-10-15T20:11:22.120617'
+        ai_verified: true
+        min: 2.0
+        max: 10.0
 applications:
 - Aerospace
 - Medical Devices
 - Electronics Manufacturing
 - Automotive
-- Energy Sector
-- Cultural Heritage
-- Marine Engineering
-- Manufacturing
-- Research Laboratories
+- Energy Production
+- Semiconductor Manufacturing
+- Chemical Processing
+- Research and Laboratory
 - Food Processing
+- Marine and Offshore
 machineSettings:
   powerRange:
     value: 100
@@ -134,65 +337,64 @@ machineSettings:
     description: Optimal average power for Alumina surface cleaning without thermal
       damage
     min: 80
-    max: 120
+    max: 150
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength with good absorption in Alumina contaminants
+    description: Near-IR wavelength providing good absorption in Alumina with minimal
+      reflection
     min: 532
-    max: 1064
+    max: 10600
   spotSize:
     value: 50
     unit: μm
     confidence: 84
-    description: Optimal spot size for balancing cleaning efficiency and resolution
+    description: Beam spot diameter for effective cleaning resolution and energy density
     min: 30
     max: 100
   repetitionRate:
     value: 50
     unit: kHz
     confidence: 87
-    description: High repetition rate for efficient area coverage while maintaining
-      cleaning quality
+    description: Optimal repetition rate balancing cleaning efficiency and thermal
+      management
     min: 20
     max: 100
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Nanosecond pulse duration for efficient contaminant removal with
-      minimal substrate damage
+    description: Nanosecond pulse duration for efficient material removal with controlled
+      thermal effects
     min: 5
     max: 20
   scanSpeed:
     value: 500
     unit: mm/s
     confidence: 86
-    description: Scan speed providing sufficient energy deposition for contaminant
-      removal
+    description: Optimal scanning speed for uniform cleaning coverage
     min: 200
     max: 1000
-  fluence:
-    value: 4.0
+  fluenceThreshold:
+    value: 2.5
     unit: J/cm²
-    confidence: 88
-    description: Energy density threshold for effective Alumina cleaning - Energy
-      density threshold for effective contaminant removal from ceramic surfaces
-    min: 2.0
-    max: 8.0
+    confidence: 89
+    description: Minimum fluence required for effective Alumina surface cleaning
+    min: 1.5
+    max: 4.0
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal overlap between adjacent scan lines for uniform cleaning
-      coverage
+    description: Optimal beam overlap for uniform cleaning without excessive thermal
+      buildup
     min: 30
     max: 70
   passCount:
     value: 3
     unit: passes
-    confidence: 85
+    confidence: 82
     description: Recommended number of passes for complete contaminant removal
     min: 1
     max: 5
@@ -218,118 +420,80 @@ images:
     url: /images/material/alumina-laser-cleaning-hero.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
-  description: Eliminates hazardous chemical waste streams
   applicableIndustries:
   - Semiconductor
   - Electronics
   - Medical
   - Nuclear
+  description: Eliminates hazardous chemical waste streams
   quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-  sustainabilityBenefit: ''
 - benefit: Water Usage Reduction
-  description: Dry process requires no water
   applicableIndustries: []
-  quantifiedBenefits: ''
+  description: Dry process requires no water
   sustainabilityBenefit: Significant water conservation in industrial processes
 - benefit: Energy Efficiency
+  applicableIndustries: []
   description: Focused energy delivery with minimal waste heat
-  applicableIndustries: []
-  quantifiedBenefits: ''
-  sustainabilityBenefit: ''
 - benefit: Air Quality Improvement
-  description: Eliminates volatile organic compounds from chemical cleaning
   applicableIndustries: []
-  quantifiedBenefits: ''
-  sustainabilityBenefit: ''
-subtitle: Delving into alumina, you’ll notice its diverse properties often challenge
-  standard laser setups. Adjusting controls with a sharp eye, especially on intricate
-  ceramic surfaces, helps preserve the material’s fine finish during treatment.
+  description: Eliminates volatile organic compounds from chemical cleaning
+subtitle: Laser cleaning parameters and specifications for Alumina
+materialCharacteristics:
+  crystallineStructure:
+    value: Hexagonal
+    unit: crystal system
+    confidence: 98
+    description: Alpha-alumina crystalline structure (corundum)
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
-  description: Percentage of target contaminants successfully removed from surface
   measurementMethods:
   - Before/after microscopy
   - Chemical analysis
   - Mass spectrometry
-  typicalRanges: 95-99.9% depending on application and material
   factorsAffecting:
   - Contamination type
   - Adhesion strength
   - Surface geometry
   units: []
+  description: Percentage of target contaminants successfully removed from surface
+  typicalRanges: 95-99.9% depending on application and material
 - metric: Processing Speed
-  description: Rate of surface area processed per unit time
   measurementMethods: []
-  typicalRanges: ''
   factorsAffecting: []
   units:
   - m²/h
   - cm²/min
   - mm²/s
+  description: Rate of surface area processed per unit time
 - metric: Surface Quality Preservation
+  measurementMethods: []
+  factorsAffecting: []
+  units: []
   description: Maintenance of original surface characteristics after cleaning
-  measurementMethods: []
-  typicalRanges: ''
-  factorsAffecting: []
-  units: []
 - metric: Thermal Damage Avoidance
-  description: Prevention of heat-related material alterations during cleaning
   measurementMethods: []
-  typicalRanges: ''
   factorsAffecting: []
   units: []
-caption:
-  beforeText: At 500x magnification, the alumina surface is obscured by a non-uniform
-    contamination layer, typically 5-20 µm thick. This layer consists of amorphous
-    carbonaceous deposits, particulate inclusions (1-10 µm), and adsorbed organic
-    films. The underlying alumina's fine-grained, hexagonal crystalline structure
-    is entirely masked. The contaminant morphology is irregular, creating a textured,
-    high-relief topography that scatters light and appears dark and mottled. This
-    layer disrupts the substrate's intrinsic thermal and electrical surface properties.
-  afterText: Laser cleaning reveals the pristine, polycrystalline alumina substrate.
-    The surface now exhibits a uniform, fine-grained microstructure with clearly defined
-    grain boundaries. All contamination has been removed, restoring the material's
-    inherent light-gray appearance and smooth topography. The surface is now optically
-    homogeneous and suitable for high-integrity applications.
-  description: Microscopic analysis of alumina surface before and after laser cleaning
-    treatment
-  alt: Microscopic view of alumina surface showing laser cleaning effects
-  technicalAnalysis:
-    focus: surface_analysis
-    uniqueCharacteristics:
-    - alumina_specific
-    contaminationProfile: alumina surface contamination
-  microscopy:
-    parameters: Microscopic analysis of Alumina
-    qualityMetrics: Surface improvement analysis
-  generation:
-    method: frontmatter_integrated_generation
-    timestamp: '2025-10-02T00:00:00.000000Z'
-    generator: FrontmatterCaptionGenerator
-    componentType: template_caption
-  author: Alessandro Moretti
-  materialProperties:
-    materialType: Ceramic
-    analysisMethod: template_microscopy
-  imageUrl:
-    alt: Microscopic view of Alumina surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/alumina-laser-cleaning-micro.jpg
-tags:
-- ceramic
-- electronics
-- medical
-- aerospace
-- precision-cleaning
-- surface-preparation
-- restoration
-- thermal-resistant
-- hard-material
-- alessandro-moretti
-metadata:
-  source_enhancement_applied: true
-  source_enhancement_date: '2025-10-15T14:27:15.262994'
-  sources_added: 1
-processing:
-  last_sync: '2025-10-15T19:39:32.619543Z'
-  sync_source: Materials.yaml
+  description: Prevention of heat-related material alterations during cleaning
+prompt_chain_verification:
+  base_config_loaded: true
+  persona_config_loaded: false
+  formatting_config_loaded: false
+  ai_detection_config_loaded: false
+  persona_country: N/A
+  author_id: 0
+  verification_timestamp: '2025-10-20T00:53:28.694696+00:00'
+  prompt_components_integrated: 1
+  human_authenticity_focus: false
+  cultural_adaptation_applied: false

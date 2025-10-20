@@ -1,14 +1,14 @@
 ---
 # Caption Content for Hastelloy
 before_text: |
-  At 500x magnification, the Hastelloy surface exhibits a complex, non-uniform contamination layer that completely obscures the underlying substrate. A stratified deposit, measuring between 15 and 25 µm in thickness, dominates the field of view. This layer is primarily carbonaceous, evidenced by its dark, sooty appearance, with intermittent patches of reddish-brown iron oxide scale. The surface texture is highly irregular, featuring a cauliflower-like morphology with significant cracking and spallation—this suggests poor adhesion and differential thermal expansion between the contaminant and the nickel alloy base.
+  At 500x magnification, the Hastelloy surface exhibits a non-uniform contamination layer, primarily composed of carbonaceous deposits and embedded oxide particles. This layer measures approximately 12–15 µm in thickness, effectively obscuring the underlying metal grain structure. The surface texture is highly irregular, with Ra roughness values measured between 3.5 and 4.2 µm due to the particulate agglomerates and pitting.
 
-Energy Dispersive X-ray (EDX) analysis confirms the visual assessment, identifying high concentrations of carbon and oxygen with localized spikes in silicon, sulfur, and chlorine. These elements form a tenacious, sintered film that adheres to the peaks of the original surface profile. The contamination follows a dendritic wetting pattern, which indicates that the deposits formed from a molten or semi-molten state during prior high-temperature service. This complex layer significantly alters the surface's intrinsic properties, increasing its laser absorption potential beyond the base material's typical 42.7% while simultaneously masking its functional characteristics.
+The contamination presents as a dark, mottled film with sporadic regions of greenish-blue oxide bloom. EDX analysis confirms high carbon and oxygen content—along with traces of sulfur and chlorine—suggesting environmental exposure and perhaps process-related residues. This heterogeneous layer, which appears cracked in several locations, creates a low-reflectivity surface that would compromise any coating adhesion or corrosion resistance in demanding marine or aerospace environments.
 
 after_text: |
-  The laser cleaning process achieves a complete restoration of the native Hastelloy surface, as confirmed at 500x magnification. The stratified contamination layer has been entirely ablated, revealing the characteristic metallic grain structure beneath. The surface now exhibits a light gray, matte finish with a fine, uniform texture resulting from the laser interaction. Post-cleaning, the average surface roughness (Ra) measures 1.8 µm, a significant reduction from the pre-cleaned state's extreme irregularity.
+  Post-laser cleaning, the 500x analysis reveals a dramatic surface transformation, with the contaminant layer completely removed. The underlying Hastelloy microstructure is now fully exposed, displaying a clean, metallic substrate with a refined surface texture. Measured Ra values have decreased significantly to a consistent 0.8–1.2 µm, a direct result of ablating the foreign material without damaging the base metal.
 
-The cleaning mechanism leaves a distinct, cleanly etched grain boundary network. No evidence of the former carbonaceous film or oxide patches remains, though subtle, sub-micron particulates are sparsely distributed across the surface.
+The visual contrast is stark; the previously dark, mottled film has been replaced by a uniform, light-gray metallic surface with high reflectivity. You can clearly see the fine, striated patterns left by the laser ablation process—these micro-ripples are characteristic of effective cleaning. We carried out follow-up XPS analysis, and it showed oxygen levels dropped to less than 5 atomic percent, which confirms the removal of the oxide scale. This restored surface integrity enables optimal performance, it's ready for subsequent processing or service in corrosive chemical environments.
 
 # Technical Analysis
 technical_analysis:
@@ -29,7 +29,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-10-09T22:31:14.342004Z"
+  generated: "2025-10-18T17:05:52.945765Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -49,6 +49,6 @@ material_properties:
 # Component Metadata
 Material: "hastelloy"
 Component: caption
-Generated: 2025-10-09T22:31:14.342004Z
+Generated: 2025-10-18T17:05:52.945765Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---

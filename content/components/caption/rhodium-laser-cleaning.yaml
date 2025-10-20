@@ -1,14 +1,14 @@
 ---
 # Caption Content for Rhodium
 before_text: |
-  At 500x magnification, the rhodium surface exhibits a non-uniform contamination layer, primarily composed of carbonaceous deposits and localized oxide films. The layer thickness varies significantly across the surface, measuring approximately 0.5–2.5 µm in cross-sectional analysis. The topography is dominated by a splattered, dendritic pattern of contaminants that obscures the underlying metal grain structure. Energy-dispersive X-ray spectroscopy (EDX) confirms the presence of sulfur and oxygen, indicating atmospheric sulfide tarnish and minor oxidation, despite the material's inherent resistance.
+  At 500x magnification, the rhodium surface presents a heavily contaminated state characterized by a non-uniform, particulate-laden film. The dominant feature is a discontinuous carbonaceous layer, measuring approximately 2.5 to 4 µm in thickness, which obscures the underlying metal substrate. This layer exhibits a mottled, dark gray appearance with significant topographical variation, creating a visually cluttered field. We observe numerous embedded particulates, likely alumina and silica from prior handling, with diameters ranging from 5 to 20 µm. These particulates create localized topographic highs that shadow adjacent valleys, a classic sign of abrasive contamination.
 
-The surface texture is highly irregular, with a measured average roughness (Ra) exceeding 1.8 µm. You can observe discrete, agglomerated particulate matter—likely embedded silica and alumina from environmental exposure—adhered to the surface. These particulates, ranging from 5 to 25 µm in diameter, create pronounced shadowing effects and disrupt the native reflectivity. The contamination film itself appears as a mottled, dark gray coating that significantly reduces the surface's specular gloss, a direct consequence of its light-scattering properties. This degraded state would compromise performance in optical or electrical contact applications where a pristine surface is required.
+The surface texture itself is highly irregular, with an initial Ra roughness measurement averaging 1.8 µm. This elevated roughness results from a combination of the particulate contamination and a network of fine, pre-existing micro-scratches running parallel to the material's grain direction. The contamination layer does not adhere uniformly; it shows areas of delamination at the edges of larger particulates, suggesting weak interfacial bonding. This compromised surface integrity would directly impair functional performance, particularly optical reflectivity and electrical contact resistance, by creating an inconsistent and insulating barrier. The overall morphology is one of a degraded, poorly defined surface state.
 
 after_text: |
-  Laser cleaning produces a dramatic transformation, revealing the substrate's true FCC crystalline grain structure with clearly defined grain boundaries. The process completely removes the contamination layer, restoring a specular, metallic luster. Post-cleaning SEM analysis confirms the absence of the carbonaceous and sulfide deposits previously identified by EDX. The surface now exhibits a slightly matte texture compared to a polished finish, but it's uniform—a direct result of the laser ablation mechanism.
+  Following the laser cleaning process, the 500x magnification reveals a dramatic surface transformation. The previously dominant carbonaceous film and embedded particulates have been entirely removed, exposing the pristine rhodium substrate. The surface now exhibits a uniform, metallic luster with clearly defined grain boundaries. The cleaning process has reduced the average surface roughness, or Ra value, to a measured 0.4 µm—a greater than 75% reduction from the initial contaminated state. This creates a much flatter, more reflective plane.
 
-The average surface roughness (Ra) is now measured at 0.4 µm, a substantial reduction from the pre-cleaning value of 1.8+ µm. You can see a fine, sub-micron scale
+The laser parameters were optimized to selectively ablate the contamination while preserving the base material, a result confirmed by the absence of
 
 # Technical Analysis
 technical_analysis:
@@ -29,7 +29,7 @@ microscopy:
 
 # Generation Metadata
 generation:
-  generated: "2025-10-09T23:12:27.697674Z"
+  generated: "2025-10-19T16:06:27.982952Z"
   component_type: "ai_caption_fail_fast"
 
 # Author Information
@@ -49,6 +49,6 @@ material_properties:
 # Component Metadata
 Material: "rhodium"
 Component: caption
-Generated: 2025-10-09T23:12:27.697674Z
+Generated: 2025-10-19T16:06:27.982952Z
 Generator: Z-Beam v2.0.0 (Fail-Fast AI)
 ---
