@@ -658,7 +658,19 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             # Add regulatory standards (universal + material-specific)
             frontmatter = self.pipeline_process_service.add_regulatory_standards_section(frontmatter, material_data)
             # Generate author
-            frontmatter.update(self._generate_author(material_data))
+            author_info = self._generate_author(material_data)
+            frontmatter.update(author_info)
+            
+            # Apply author voice transformation to text fields
+            try:
+                self.logger.info("🎭 Preparing author voice transformation...")
+                voice_profile = self._get_author_voice_profile(author_info)
+                self.logger.info(f"🎭 Voice profile loaded for {voice_profile['country']}")
+                frontmatter = self._apply_author_voice_to_text_fields(frontmatter, voice_profile)
+                self.logger.info(f"✨ Applied {voice_profile['country']} voice transformation")
+            except Exception as e:
+                self.logger.error(f"❌ Voice transformation failed: {e}", exc_info=True)
+            
             # Add caption section (AI-generated before/after text) - skip by default
             if not skip_caption:
                 self.logger.info(f"Generating AI caption for {material_name}...")
@@ -1356,34 +1368,85 @@ Return YAML format with materialProperties, machineSettings, and structured appl
             # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
             raise PropertyDiscoveryError(f"Author system required for content generation: {e}")
 
+    def _get_author_voice_profile(self, author_info: Dict) -> Dict:
+        """
+        Extract voice profile from author information.
+        
+        Args:
+            author_info: Author information dictionary with 'author' key
+            
+        Returns:
+            Voice profile dictionary with country and linguistic characteristics
+        """
+        author = author_info.get('author', {})
+        country = author.get('country', 'United States')
+        
+        # Map country to voice profiles
+        voice_profiles = {
+            'Taiwan': {
+                'country': 'Taiwan',
+                'linguistic_characteristics': {
+                    'sentence_structure': {
+                        'patterns': ['systematic', 'logical', 'formal'],
+                        'connectors': ['Furthermore', 'Therefore', 'Consequently', 'Additionally']
+                    }
+                }
+            },
+            'Italy': {
+                'country': 'Italy',
+                'linguistic_characteristics': {
+                    'sentence_structure': {
+                        'patterns': ['descriptive', 'elegant', 'sophisticated'],
+                        'descriptive_terms': ['sophisticated', 'elegant', 'refined', 'meticulous']
+                    }
+                }
+            },
+            'Indonesia': {
+                'country': 'Indonesia',
+                'linguistic_characteristics': {
+                    'sentence_structure': {
+                        'patterns': ['accessible', 'practical', 'simplified'],
+                        'simplifications': {
+                            'utilize': 'use', 'facilitate': 'help', 
+                            'demonstrate': 'show', 'implement': 'apply'
+                        }
+                    }
+                }
+            }
+        }
+        
+        # Default to USA conversational if not found
+        return voice_profiles.get(country, {
+            'country': 'USA',
+            'linguistic_characteristics': {
+                'sentence_structure': {
+                    'patterns': ['conversational', 'engaging', 'direct'],
+                    'conversational_starters': ['This great', 'excellent', 'really effective']
+                }
+            }
+        })
+
     def _apply_author_voice_to_text_fields(
         self,
         frontmatter: Dict,
-        material_data: Dict,
-        author_country: str
+        voice_profile: Dict
     ) -> Dict:
         """
         Apply author voice characteristics to non-numeric text fields.
         
-        Uses VoiceOrchestrator to transform generic text into author-specific
+        Uses voice profile to transform generic text into author-specific
         linguistic patterns while preserving technical accuracy.
         
         Args:
             frontmatter: Generated frontmatter dictionary
-            material_data: Source material data from Materials.yaml
-            author_country: Author's country for voice profile
+            voice_profile: Author's voice profile with linguistic characteristics
             
         Returns:
             Enhanced frontmatter with author-voiced text fields
         """
         try:
-            from voice.orchestrator import VoiceOrchestrator
-            
-            self.logger.info(f"🎭 Applying {author_country} author voice to text fields...")
-            
-            # Initialize voice orchestrator
-            voice = VoiceOrchestrator(country=author_country)
-            voice_profile = voice.profile
+            country = voice_profile.get('country', 'USA')
+            self.logger.info(f"🎭 Applying {country} author voice to text fields...")
             
             # Transform applications if present
             if 'applications' in frontmatter and frontmatter['applications']:
@@ -1407,6 +1470,24 @@ Return YAML format with materialProperties, machineSettings, and structured appl
                     if isinstance(category_data, dict) and 'description' in category_data:
                         category_data['description'] = self._voice_transform_text(
                             category_data['description'],
+                            voice_profile
+                        )
+            
+            # Transform environmentalImpact descriptions
+            if 'environmentalImpact' in frontmatter:
+                for impact_item in frontmatter['environmentalImpact']:
+                    if isinstance(impact_item, dict) and 'description' in impact_item:
+                        impact_item['description'] = self._voice_transform_text(
+                            impact_item['description'],
+                            voice_profile
+                        )
+            
+            # Transform outcomeMetrics descriptions
+            if 'outcomeMetrics' in frontmatter:
+                for metric_item in frontmatter['outcomeMetrics']:
+                    if isinstance(metric_item, dict) and 'description' in metric_item:
+                        metric_item['description'] = self._voice_transform_text(
+                            metric_item['description'],
                             voice_profile
                         )
             
