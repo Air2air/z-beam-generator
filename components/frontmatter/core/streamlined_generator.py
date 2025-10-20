@@ -266,14 +266,14 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 raise ConfigurationError("universal_regulatory_standards section required in Categories.yaml")
             self.universal_regulatory_standards = categories_data['universal_regulatory_standards']
             
-            # Initialize PipelineProcessService
+            # Initialize PipelineProcessService with API client for AI generation
             self.pipeline_process_service = PipelineProcessService(
+                api_client=self.api_client,
                 environmental_impact_templates=self.environmental_impact_templates,
                 standard_outcome_metrics=self.standard_outcome_metrics,
-                universal_regulatory_standards=self.universal_regulatory_standards,
-                category_enhanced_data=self.category_enhanced_data
+                universal_regulatory_standards=self.universal_regulatory_standards
             )
-            self.logger.info("PipelineProcessService initialized with pipeline templates")
+            self.logger.info("PipelineProcessService initialized with AI client (NO TEMPLATES)")
             
             if 'categories' in categories_data:
                 for category_name, category_info in categories_data['categories'].items():
