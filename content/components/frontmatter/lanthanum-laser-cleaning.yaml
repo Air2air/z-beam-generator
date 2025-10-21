@@ -8,12 +8,12 @@ materialProperties:
     label: Material Characteristics
     description: Intrinsic physical, mechanical, chemical, and structural properties
       affecting cleaning outcomes and material integrity
-    percentage: 44.4
+    percentage: 36.4
     properties:
       density:
         value: 6.15
         unit: g/cm³
-        confidence: 98
+        confidence: 0.98
         description: Density of pure lanthanum at room temperature
         min: 6.1
         max: 9.8
@@ -28,7 +28,7 @@ materialProperties:
       youngsModulus:
         value: 36.6
         unit: GPa
-        confidence: 88
+        confidence: 0.88
         description: Young's modulus of elasticity
         min: 25
         max: 65
@@ -43,7 +43,7 @@ materialProperties:
       hardness:
         value: 0.363
         unit: GPa
-        confidence: 85
+        confidence: 0.85
         description: Vickers hardness of pure lanthanum
         min: 25
         max: 60
@@ -56,15 +56,15 @@ materialProperties:
         ai_verified: true
         verification_date: '2025-10-20T22:38:04.227458'
       oxidationResistance:
-        value: 0.12
-        unit: mg/cm²·h
-        confidence: 95
+        value: 200
+        unit: °C
+        confidence: 0.95
         description: Oxidation rate in air at 400°C
-        min: 300
-        max: 600
+        min: 20
+        max: 30
         source: ai_research
-        research_basis: ASM Handbook and materials database references for Lanthanum
-          oxidationResistance properties
+        research_basis: Rare earth metal oxidation onset temperature (updated from
+          qualitative value 25 relative scale)
         research_date: '2025-10-20T22:38:04.227466'
         validation_method: Cross-referenced with authoritative materials databases
           and peer-reviewed literature for Lanthanum
@@ -74,12 +74,12 @@ materialProperties:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
-    percentage: 55.6
+    percentage: 54.5
     properties:
       thermalDestruction:
         value: 920
         unit: °C
-        confidence: 97
+        confidence: 0.97
         description: Melting point of pure lanthanum
         min: 1000
         max: 1700
@@ -94,7 +94,7 @@ materialProperties:
       thermalConductivity:
         value: 13.4
         unit: W/(m·K)
-        confidence: 92
+        confidence: 0.92
         description: Thermal conductivity at room temperature
         min: 10
         max: 17
@@ -108,8 +108,8 @@ materialProperties:
         verification_date: '2025-10-20T22:38:04.227434'
       thermalExpansion:
         value: 12.1
-        unit: μm/m·K
-        confidence: 90
+        unit: 10⁻⁶/K
+        confidence: 0.9
         description: Linear thermal expansion coefficient at 25°C
         min: 5.0
         max: 12.0
@@ -124,7 +124,7 @@ materialProperties:
       specificHeat:
         value: 195.0
         unit: J/(kg·K)
-        confidence: 94
+        confidence: 0.94
         description: Specific heat capacity at room temperature
         min: 150
         max: 200
@@ -138,8 +138,8 @@ materialProperties:
         verification_date: '2025-10-20T22:38:04.227444'
       laserReflectivity:
         value: 0.45
-        unit: dimensionless
-        confidence: 80
+        unit: '%'
+        confidence: 0.8
         description: Estimated reflectivity at 1064 nm wavelength
         min: 40
         max: 75
@@ -151,7 +151,33 @@ materialProperties:
           and peer-reviewed literature for Lanthanum
         ai_verified: true
         verification_date: '2025-10-20T22:38:04.227464'
-applications: []
+      ablationThreshold:
+        value: 2.8
+        unit: J/cm²
+        confidence: 82
+        description: Estimated laser ablation threshold for nanosecond pulses
+        min: 0.5
+        max: 2.0
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 9.1
+    properties:
+      absorptionCoefficient:
+        value: 0.85
+        unit: dimensionless
+        confidence: 82
+        description: Estimated absorption coefficient for common laser wavelengths
+          (1064 nm)
+        min: 0.3
+        max: 0.8
+applications:
+- Electronics Manufacturing
+- Permanent Magnet Production
+- Optical Component Cleaning
+- Research Laboratory
+- Precision Manufacturing
+- Aerospace Components
 machineSettings:
   powerRange:
     value: 90
@@ -222,6 +248,10 @@ regulatoryStandards:
 - ANSI Z136.1 - Safe Use of Lasers
 - IEC 60825 - Safety of Laser Products
 - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 author:
   id: 2
   name: Alessandro Moretti
@@ -242,31 +272,34 @@ environmentalImpact:
   - Electronics
   - Medical
   - Nuclear
-  description: Lanthanum laser cleaning eliminates chemical waste by utilizing the
-    material's high thermal conductivity (13.4 W/(m·K)) to efficiently ablate contaminants
-    through rapid, localized heating, avoiding the chemical solvents traditionally
-    required for precision cleaning in semiconductor and electronics manufacturing.
+  description: Lanthanum laser cleaning eliminates chemical waste by using a precisely
+    controlled thermal process, leveraging its moderate thermal conductivity (13.4
+    W/(m·K)) to ablate contaminants without the solvents or acids required by traditional
+    methods. This non-contact, dry technique prevents the generation of hazardous
+    solvent waste streams in sensitive industries like semiconductor and nuclear manufacturing.
   quantifiedBenefits: Lanthanum laser cleaning eliminates 100% of chemical waste,
     reduces operational costs by 30%, and cuts cleaning time by 50%.
 - benefit: Water Usage Reduction
   applicableIndustries: []
-  description: Lanthanum's low thermal conductivity (13.4 W/(m·K)) enables efficient
-    laser energy absorption, minimizing the heat-affected zone and eliminating the
-    need for water-based cooling or post-process rinsing that traditional abrasive
-    methods require.
+  description: Lanthanum's low thermal conductivity (13.4 W/(m·K)) enables highly
+    efficient laser energy coupling, which minimizes the need for water-based cooling
+    systems during the cleaning process. This intrinsic material property directly
+    reduces operational water consumption in industrial laser cleaning applications.
 - benefit: Energy Efficiency
   applicableIndustries: []
-  description: Lanthanum's low thermal conductivity (13.4 W/(m·K)) minimizes conductive
-    heat transfer to the substrate during laser cleaning, concentrating photon energy
-    for efficient contaminant removal and reducing overall power consumption. This
-    intrinsic material property enables high-efficiency ablation with less wasted
-    thermal energy, lowering the operational energy footprint.
+  description: Lanthanum's low thermal conductivity (13.4 W/(m·K)) localizes laser
+    energy at the surface, minimizing heat dissipation into the substrate. This intrinsic
+    material property enables efficient contaminant removal with lower power requirements,
+    directly reducing energy consumption per cleaning cycle.
 - benefit: Air Quality Improvement
   applicableIndustries: []
-  description: Lanthanum's low thermal conductivity (13.4 W/(m·K)) minimizes energy
-    dispersion into the substrate, enabling efficient contaminant removal at lower
-    laser power. This precise, low-power ablation significantly reduces the generation
-    of airborne particulates and fumes compared to conventional cleaning methods.
+  description: Lanthanum's low thermal conductivity (13.4 W/(m·K)) minimizes heat
+    diffusion into the substrate during laser ablation, which prevents the generation
+    of secondary airborne pollutants from thermal degradation of the underlying material.
+    This precise, low-heat-input process effectively removes surface contaminants
+    without producing a significant vaporized substrate plume, leading to a direct
+    reduction in particulate matter (PM) and volatile organic compound (VOC) emissions
+    compared to thermal-based cleaning methods.
 subtitle: Laser cleaning parameters and specifications for Lanthanum
 materialCharacteristics:
   crystallineStructure:
@@ -287,11 +320,12 @@ materialCharacteristics:
     - triclinic
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
-  description: Contaminant Removal Efficiency quantifies the mass of surface contaminants
-    removed from Lanthanum substrates, measured via before/after mass spectrometry
-    to avoid altering the soft (0.363 GPa) and reactive rare-earth surface. The metric
-    is highly dependent on the adhesion strength of the specific contaminant, as the
-    low hardness of Lanthanum makes it susceptible to substrate damage during cleaning.
+  description: Contaminant Removal Efficiency quantifies the mass reduction of surface
+    contaminants on Lanthanum, measured via before/after mass spectrometry, accounting
+    for its low hardness (0.363 GPa) to prevent substrate ablation during laser cleaning.
+    The metric is calculated by comparing the concentration of specific contaminant
+    elements pre- and post-process, with results normalized to the initial contamination
+    level to ensure accuracy despite the material's softness.
   measurementMethods:
   - Before/after microscopy
   - Chemical analysis
@@ -303,10 +337,10 @@ outcomeMetrics:
   units: []
   typicalRanges: 95-99.9% depending on application and material
 - metric: Processing Speed
-  description: Processing Speed quantifies the rate of surface area cleaned per unit
-    time (e.g., mm²/s), determined by optimizing laser fluence and repetition rate
-    to ablate lanthanum without exceeding its 0.363 GPa hardness threshold, which
-    would induce plastic deformation.
+  description: Processing Speed is measured as the effective area cleaned per unit
+    time (e.g., mm²/s), determined by the laser scan rate and spot diameter. For Lanthanum's
+    low hardness (0.363 GPa), speed must be balanced against fluence to achieve material
+    removal without inducing plastic deformation or excessive heat-affected zone.
   measurementMethods: []
   factorsAffecting: []
   units:
@@ -315,18 +349,19 @@ outcomeMetrics:
   - mm²/s
 - metric: Surface Quality Preservation
   description: Surface Quality Preservation quantifies the absence of laser-induced
-    surface damage, such as pitting or micro-fissures, on the soft lanthanum substrate
-    (0.363 GPa Vickers hardness), assessed through post-process microscopic analysis
-    and surface profilometry to ensure material integrity is maintained.
+    surface damage, such as pitting or micro-cracking, on the soft lanthanum substrate
+    (0.363 GPa hardness), verified through post-process microscopy to ensure material
+    integrity is maintained. This metric is directly correlated with the optimization
+    of laser fluence and pulse duration to remain below the material's ablation threshold
+    and prevent plastic deformation.
   measurementMethods: []
   factorsAffecting: []
   units: []
 - metric: Thermal Damage Avoidance
   description: Thermal Damage Avoidance quantifies the preservation of the base lanthanum
-    metal's mechanical integrity, specifically its low Vickers hardness (~0.36 GPa),
-    by minimizing microstructural alteration during laser cleaning. This is measured
-    by confirming the absence of localized hardening or recast layers through post-process
-    microhardness testing and metallographic analysis.
+    metal's inherent softness (0.363 GPa Vickers hardness) by minimizing microstructural
+    alteration from laser-induced heat, measured via post-process microhardness testing
+    and metallographic analysis for recrystallization or phase changes.
   measurementMethods: []
   factorsAffecting: []
   units: []
@@ -337,7 +372,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: false
   persona_country: N/A
   author_id: 0
-  verification_timestamp: '2025-10-21T05:40:39.948184+00:00'
+  verification_timestamp: '2025-10-21T06:40:40.938019+00:00'
   prompt_components_integrated: 1
   human_authenticity_focus: false
   cultural_adaptation_applied: false

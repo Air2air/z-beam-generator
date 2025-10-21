@@ -8,7 +8,7 @@ materialProperties:
     label: Material Characteristics
     description: Intrinsic physical, mechanical, chemical, and structural properties
       affecting cleaning outcomes and material integrity
-    percentage: 44.4
+    percentage: 36.4
     properties:
       density:
         value: 6.77
@@ -56,15 +56,15 @@ materialProperties:
         ai_verified: true
         verification_date: '2025-10-20T22:38:04.227379'
       oxidationResistance:
-        value: 25
-        unit: scale
+        value: 150
+        unit: °C
         confidence: 0.9
         description: Oxidation rate in air at 400°C
         min: 20
         max: 30
         source: ai_research
-        research_basis: ASM Handbook and materials database references for Cerium
-          oxidationResistance properties
+        research_basis: Rare earth metal oxidation onset temperature (updated from
+          qualitative value 25 relative scale)
         research_date: '2025-10-20T22:38:04.227386'
         validation_method: Cross-referenced with authoritative materials databases
           and peer-reviewed literature for Cerium
@@ -74,7 +74,7 @@ materialProperties:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
-    percentage: 55.6
+    percentage: 54.5
     properties:
       thermalDestruction:
         value: 795
@@ -151,7 +151,42 @@ materialProperties:
           and peer-reviewed literature for Cerium
         ai_verified: true
         verification_date: '2025-10-20T22:38:04.227383'
-applications: []
+      ablationThreshold:
+        value: 1.2
+        unit: J/cm²
+        confidence: 0.8
+        description: Estimated laser ablation threshold for nanosecond pulses at 1064
+          nm
+        min: 0.5
+        max: 2.0
+        source: ai_research
+        research_basis: Estimated from rare earth metal thermal properties and typical
+          nanosecond laser ablation thresholds
+        research_date: '2025-01-16'
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 9.1
+    properties:
+      absorptionCoefficient:
+        value: 0.85
+        unit: dimensionless
+        confidence: 0.8
+        description: Estimated absorption coefficient for common laser wavelengths
+          (1064 nm)
+        min: 0.3
+        max: 0.8
+        source: ai_research
+        research_basis: Estimated from rare earth metal optical properties and typical
+          laser-material interaction parameters
+        research_date: '2025-01-16'
+applications:
+- Electronics Manufacturing
+- Permanent Magnet Production
+- Optical Component Cleaning
+- Research Laboratory
+- Precision Manufacturing
+- Aerospace Components
 machineSettings:
   powerRange:
     value: 100
@@ -218,6 +253,10 @@ machineSettings:
     min: 1
     max: 5
 regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
 - IEC 60825 - Safety of Laser Products
@@ -343,7 +382,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: false
   persona_country: N/A
   author_id: 0
-  verification_timestamp: '2025-10-21T06:04:54.428275+00:00'
+  verification_timestamp: '2025-10-21T06:37:49.365873+00:00'
   prompt_components_integrated: 1
   human_authenticity_focus: false
   cultural_adaptation_applied: false

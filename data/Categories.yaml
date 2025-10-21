@@ -3732,6 +3732,18 @@ categories:
         unit: °C
         research_basis: Lanthanides oxidize readily above 300-600°C depending on element
         confidence: 88
+      absorptionCoefficient:
+        min: 0.3
+        max: 0.8
+        unit: dimensionless
+        research_basis: Rare-earth metals have moderate to high absorption coefficients at laser wavelengths
+        confidence: 85
+      ablationThreshold:
+        min: 0.5
+        max: 2.0
+        unit: J/cm²
+        research_basis: Lanthanide ablation thresholds typically range 0.5-2.0 J/cm² for 1064nm
+        confidence: 87
     subcategories:
       lanthanide:
         name: Lanthanides
