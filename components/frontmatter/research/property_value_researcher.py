@@ -772,7 +772,7 @@ class PropertyValueResearcher:
         """
         # Direct mapping for known compound properties
         property_mapping = {
-            'meltingpoint': 'meltingPoint',
+            'meltingpoint': 'meltingPoint',  # First normalize to camelCase
             'thermalconductivity': 'thermalConductivity',
             'thermalexpansion': 'thermalExpansion',
             'thermaldiffusivity': 'thermalDiffusivity', 
@@ -789,8 +789,11 @@ class PropertyValueResearcher:
             'reflectivity': 'laserReflectivity'  # Map reflectivity to laserReflectivity
         }
         
-        # Return mapped name if available, otherwise original
-        return property_mapping.get(discovered_name.lower(), discovered_name)
+        # First normalize to camelCase
+        mapped_name = property_mapping.get(discovered_name.lower(), discovered_name)
+        
+        # Then apply alias resolution for legacy property migration
+        return self.resolve_property_alias(mapped_name)
         
     def _map_discovered_setting_name(self, discovered_name: str) -> str:
         """

@@ -2035,11 +2035,12 @@ categories:
         phase2_adjustment: Manganese at 7.81 W/(m·K)
         adjustment_date: '2025-10-15'
       thermalDestruction:
-        point:
-          max: 3422
-          min: -38.8
-          unit: °C
+        min: -38.8
+        max: 3422
+        unit: °C
         type: melting
+        research_basis: Metal melting points from Mercury (-38.8°C) to Tungsten (3422°C)
+        confidence: 98
       thermalDiffusivity:
         max: 174
         min: 0.06
