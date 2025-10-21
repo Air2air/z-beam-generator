@@ -3,7 +3,7 @@
 Materials Architecture Migration Script
 
 Transforms Materials.yaml to match new Next.js frontend architecture:
-1. Reorganizes properties into three categories (material_characteristics, laser_material_interaction, other)
+1. Reorganizes properties into two categories (material_characteristics, laser_material_interaction)
 2. Adds subcategory field for each material
 3. Adds crystallineStructure to materialCharacteristics
 4. Updates machineSettings structure with enhanced metadata
@@ -23,7 +23,7 @@ PROPERTY_CATEGORIES = {
     'material_characteristics': {
         'label': 'Material Characteristics',
         'description': 'Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity',
-        'percentage': 40.0,
+        'percentage': 52.7,
         'properties': [
             'density', 'hardness', 'tensileStrength', 'youngsModulus', 'compressiveStrength',
             'flexuralStrength', 'shearModulus', 'bulkModulus', 'poissonsRatio', 'fatigueLimit',
@@ -31,13 +31,14 @@ PROPERTY_CATEGORIES = {
             'chemicalStability', 'biocompatibility', 'toxicity', 'flammability', 'smokeDensity',
             'crystallineStructure', 'grainSize', 'porosity', 'permeability', 'solubility',
             'diffusivity', 'viscosity', 'surfaceTension', 'electricalResistivity',
-            'electricalConductivity', 'dielectricConstant', 'magneticPermeability'
+            'electricalConductivity', 'dielectricConstant', 'magneticPermeability',
+            'fractureToughness', 'moistureContent', 'resinContent', 'grainStructureType'
         ]
     },
     'laser_material_interaction': {
         'label': 'Laser-Material Interaction',
         'description': 'Optical, thermal, and surface properties governing laser processing behavior',
-        'percentage': 40.0,
+        'percentage': 47.3,
         'properties': [
             'laserAbsorption', 'laserReflectivity', 'reflectivity', 'absorptivity', 'emissivity',
             'refractiveIndex', 'laserDamageThreshold', 'ablationThreshold', 'opticalTransmittance',
@@ -46,18 +47,11 @@ PROPERTY_CATEGORIES = {
             'thermalDestruction', 'glasTransitionTemperature', 'sinteringTemperature',
             'ignitionTemperature', 'autoignitionTemperature', 'decompositionTemperature',
             'sublimationPoint', 'thermalStability', 'thermalDegradationPoint',
-            'photonPenetrationDepth', 'thermalShockResistance'
+            'photonPenetrationDepth', 'thermalShockResistance', 'vaporPressure',
+            'firingTemperature', 'operatingTemperature'
         ]
     },
-    'other': {
-        'label': 'Other Properties',
-        'description': 'Additional material-specific properties',
-        'percentage': 20.0,
-        'properties': [
-            'fractureToughness', 'vaporPressure', 'moistureContent', 'resinContent',
-            'grainStructureType', 'firingTemperature', 'operatingTemperature'
-        ]
-    }
+
 }
 
 # Subcategory mapping by category
@@ -122,7 +116,7 @@ def categorize_property(prop_name: str) -> str:
     for category, info in PROPERTY_CATEGORIES.items():
         if prop_name in info['properties']:
             return category
-    return 'other'  # Default fallback
+    return 'material_characteristics'  # Default fallback - material intrinsic properties
 
 
 def get_subcategory(material_name: str, category: str) -> str:
@@ -164,12 +158,6 @@ def migrate_properties(material_data: Dict[str, Any], material_name: str, catego
             'label': PROPERTY_CATEGORIES['laser_material_interaction']['label'],
             'description': PROPERTY_CATEGORIES['laser_material_interaction']['description'],
             'percentage': PROPERTY_CATEGORIES['laser_material_interaction']['percentage'],
-            'properties': {}
-        },
-        'other': {
-            'label': PROPERTY_CATEGORIES['other']['label'],
-            'description': PROPERTY_CATEGORIES['other']['description'],
-            'percentage': PROPERTY_CATEGORIES['other']['percentage'],
             'properties': {}
         }
     }
@@ -299,11 +287,11 @@ def main():
     with open(materials_path, 'w', encoding='utf-8') as f:
         yaml.dump(data, f, default_flow_style=False, allow_unicode=True, sort_keys=False, indent=2)
     
-    print(f"\n✅ Migration complete!")
+    print("\n✅ Migration complete!")
     print(f"   - Migrated: {len(migrated_materials)} materials")
     print(f"   - Backup: {backup_path}")
-    print(f"   - New architecture: 3 property categories (40/40/20)")
-    print(f"\n⚠️  Review the output and run validation tests before committing!")
+    print("   - New architecture: 2 property categories (52.7/47.3)")
+    print("\n⚠️  Review the output and run validation tests before committing!")
 
 
 if __name__ == '__main__':

@@ -45,9 +45,14 @@ class MaterialNameResolver:
     
     @property
     def material_index(self) -> Dict:
-        """Get material index from materials data"""
+        """Get material index from materials data - use materials as authoritative source"""
         if self._material_index is None:
-            self._material_index = self.materials_data.get('material_index', {})
+            # Use materials section as authoritative source, fallback to material_index
+            materials = self.materials_data.get('materials', {})
+            if materials:
+                self._material_index = materials
+            else:
+                self._material_index = self.materials_data.get('material_index', {})
         return self._material_index
     
     @property

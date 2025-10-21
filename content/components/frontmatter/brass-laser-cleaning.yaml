@@ -1,0 +1,309 @@
+name: Brass
+category: Metal
+subcategory: non-ferrous
+title: Brass Laser Cleaning
+description: Laser cleaning parameters for Brass
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 38.5
+    properties:
+      density:
+        value: 8.5
+        unit: g/cm³
+        confidence: 95
+        description: Typical density for common brass alloys (Cu-Zn)
+        min: 0.53
+        max: 22.6
+      tensileStrength:
+        value: 340.0
+        unit: MPa
+        confidence: 88
+        description: Typical tensile strength for annealed brass
+        min: 3.0
+        max: 3000.0
+      youngsModulus:
+        value: 110.0
+        unit: GPa
+        confidence: 92
+        description: Young's modulus of elasticity for brass alloys
+        min: 5
+        max: 600
+      hardness:
+        value: 0.637
+        unit: GPa
+        confidence: 85
+        description: Vickers hardness for annealed brass
+        min: 0.5
+        max: 3500
+      surfaceRoughness:
+        value: 0.4
+        unit: μm Ra
+        confidence: 85
+        description: Typical surface roughness for polished brass surfaces
+        min: 0.4
+        max: 150
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 53.8
+    properties:
+      thermalDestruction:
+        value: 900
+        unit: °C
+        confidence: 90
+        description: Average melting point for brass alloys, varies with zinc content
+        min: -38.8
+        max: 3422
+      thermalConductivity:
+        value: 120.0
+        unit: W/(m·K)
+        confidence: 92
+        description: Thermal conductivity for 70/30 brass at room temperature
+        min: 7.0
+        max: 430
+      thermalExpansion:
+        value: 18.7
+        unit: 10⁻⁶/K
+        confidence: 88
+        description: Coefficient of thermal expansion for brass at 20-300°C
+        min: 0.5
+        max: 33
+      thermalDiffusivity:
+        value: 35.2
+        unit: mm²/s
+        confidence: 85
+        description: Thermal diffusivity of brass at room temperature
+        min: 0.06
+        max: 174
+      specificHeat:
+        value: 380.0
+        unit: J/(kg·K)
+        confidence: 90
+        description: Specific heat capacity of brass at room temperature
+        min: 100
+        max: 2000
+      laserReflectivity:
+        value: 65
+        unit: '%'
+        confidence: 82
+        description: Average reflectivity in visible to near-IR range for laser applications
+        min: 5
+        max: 99.9
+      ablationThreshold:
+        value: 0.8
+        unit: J/cm²
+        confidence: 82
+        description: Approximate laser ablation threshold for nanosecond pulses at
+          1064 nm
+        min: 2.0
+        max: 8.0
+  other:
+    label: Other Properties
+    description: Additional material-specific properties
+    percentage: 7.7
+    properties:
+      absorptionCoefficient:
+        value: 1200000.0
+        unit: m⁻¹
+        confidence: 80
+        description: Absorption coefficient for brass at 1064 nm wavelength
+        min: 100000
+        max: 50000000
+applications: []
+machineSettings:
+  powerRange:
+    value: 100
+    unit: W
+    confidence: 92
+    description: Optimal average power for Brass oxide removal without substrate damage
+    min: 80
+    max: 150
+  wavelength:
+    value: 1064
+    unit: nm
+    confidence: 88
+    description: Near-IR wavelength for optimal Brass absorption and minimal reflectivity
+    min: 532
+    max: 1064
+  spotSize:
+    value: 50
+    unit: μm
+    confidence: 84
+    description: Beam spot diameter for precise cleaning resolution
+    min: 30
+    max: 100
+  repetitionRate:
+    value: 50
+    unit: kHz
+    confidence: 87
+    description: Optimal repetition rate for efficient cleaning with thermal management
+    min: 20
+    max: 100
+  pulseWidth:
+    value: 10
+    unit: ns
+    confidence: 85
+    description: Nanosecond pulse duration for controlled ablation of surface contaminants
+    min: 5
+    max: 20
+  scanSpeed:
+    value: 500
+    unit: mm/s
+    confidence: 86
+    description: Optimal scanning speed for uniform cleaning coverage
+    min: 200
+    max: 1000
+  energyDensity:
+    value: 5.1
+    unit: J/cm²
+    confidence: 89
+    description: Fluence threshold for effective contaminant removal on Brass
+    min: 2.5
+    max: 8.0
+  overlapRatio:
+    value: 50
+    unit: '%'
+    confidence: 83
+    description: Optimal beam overlap for uniform cleaning without excessive heat
+      accumulation
+    min: 30
+    max: 70
+  passCount:
+    value: 3
+    unit: passes
+    confidence: 85
+    description: Recommended number of passes for complete oxide layer removal
+    min: 1
+    max: 5
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author:
+  id: 2
+  name: Alessandro Moretti
+  sex: m
+  title: Ph.D.
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  image: /images/author/alessandro-moretti.jpg
+images:
+  hero:
+    alt: Brass surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/brass-laser-cleaning-hero.jpg
+environmentalImpact:
+- benefit: Chemical Waste Elimination
+  applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  description: Brass laser cleaning eliminates chemical waste streams by removing
+    contaminants and oxides through ablation, avoiding the use of acidic pickling
+    solutions or solvent-based degreasers. This process produces only minute, collectable
+    solid waste, preventing the generation of hazardous liquid effluents and spent
+    chemical baths.
+  quantifiedBenefits: Brass laser cleaning eliminates 100% of chemical waste, reduces
+    operational costs by 15%, and increases processing speed by 25%.
+- benefit: Water Usage Reduction
+  applicableIndustries: []
+  description: Brass laser cleaning eliminates the need for chemical solvents and
+    abrasive media, directly conserving water by removing the requirement for post-process
+    rinsing and media slurry management. This dry process prevents the generation
+    of contaminated wastewater streams associated with traditional cleaning methods.
+- benefit: Energy Efficiency
+  applicableIndustries: []
+  description: Brass laser cleaning achieves energy efficiency by utilizing high absorption
+    of laser wavelengths, enabling rapid contaminant removal with minimal energy input.
+    This process eliminates the need for secondary drying or chemical heating stages
+    required by wet methods, reducing total energy consumption per unit.
+- benefit: Air Quality Improvement
+  applicableIndustries: []
+  description: Brass laser cleaning eliminates the use of chemical solvents and abrasive
+    media, preventing the release of volatile organic compounds (VOCs) and particulate
+    matter (PM) into the atmosphere. The process is a dry, non-abrasive method that
+    converts contaminants into easily collectable fumes, ensuring no secondary pollutants
+    are generated from the brass substrate itself.
+subtitle: Laser cleaning parameters and specifications for Brass
+materialCharacteristics:
+  crystallineStructure:
+    value: FCC
+    unit: crystal system
+    confidence: 95
+    description: Face-centered cubic structure typical for alpha-brass alloys
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+outcomeMetrics:
+- metric: Contaminant Removal Efficiency
+  description: Contaminant Removal Efficiency for Brass laser cleaning is quantified
+    by the mass reduction of surface oxides, measured via before/after mass spectrometry
+    to detect trace metallic elements from corrosion products. The analysis must account
+    for the potential for zinc evaporation from the brass substrate, which can be
+    differentiated from contaminant mass loss through targeted chemical analysis.
+  measurementMethods:
+  - Before/after microscopy
+  - Chemical analysis
+  - Mass spectrometry
+  factorsAffecting:
+  - Contamination type
+  - Adhesion strength
+  - Surface geometry
+  units: []
+  typicalRanges: 95-99.9% depending on application and material
+- metric: Processing Speed
+  description: Processing Speed for brass laser cleaning is measured in cm²/min, with
+    the optimal rate determined by the ablation threshold of the surface zinc content
+    and the specific oxide layer composition. The maximum speed is constrained by
+    the need to fully remove contaminants without causing surface melting or undesirable
+    discoloration of the brass substrate.
+  measurementMethods: []
+  factorsAffecting: []
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- metric: Surface Quality Preservation
+  description: Surface Quality Preservation for Brass laser cleaning is quantified
+    by the absence of surface melting, discoloration (annealing colors), and micro-pitting,
+    measured via visual inspection per standards like ASTM D5064 and surface roughness
+    (Ra) comparison pre- and post-process. The outcome is directly governed by the
+    optimization of process parameters (e.g., fluence, pulse duration, repetition
+    rate) to remain below the ablation threshold of the base brass while effectively
+    removing contaminants.
+  measurementMethods: []
+  factorsAffecting: []
+  units: []
+- metric: Thermal Damage Avoidance
+  description: Thermal Damage Avoidance quantifies the prevention of metallurgical
+    alterations, such as annealing or grain growth, in the brass substrate during
+    laser cleaning. It is measured by verifying the post-process microstructure and
+    microhardness remain consistent with the base material, ensuring process parameters
+    do not induce recrystallization or softening.
+  measurementMethods: []
+  factorsAffecting: []
+  units: []
+prompt_chain_verification:
+  base_config_loaded: true
+  persona_config_loaded: false
+  formatting_config_loaded: false
+  ai_detection_config_loaded: false
+  persona_country: N/A
+  author_id: 0
+  verification_timestamp: '2025-10-21T03:28:47.395205+00:00'
+  prompt_components_integrated: 1
+  human_authenticity_focus: false
+  cultural_adaptation_applied: false

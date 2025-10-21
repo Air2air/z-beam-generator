@@ -30,7 +30,8 @@
         "stone",
         "wood",
         "plastic",
-        "masonry"
+        "masonry",
+        "rare-earth"
       ],
       "description": "Material category"
     },
@@ -74,7 +75,9 @@
         "compound",
         "fired",
         "concrete",
-        "natural"
+        "natural",
+        "lanthanide",
+        "actinide"
       ],
       "description": "Material subcategory including aerospace for advanced materials"
     },
@@ -184,7 +187,91 @@
     },
     "materialProperties": {
       "type": "object",
-      "description": "Enhanced material material properties with nested structure and research validation metadata",
+      "description": "Enhanced material properties with nested structure and research validation metadata",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^(material_characteristics|laser_material_interaction|other)$": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "description": "Human-readable category label"
+            },
+            "description": {
+              "type": "string", 
+              "description": "Category description"
+            },
+            "percentage": {
+              "type": "number",
+              "description": "Percentage weight of this category"
+            },
+            "properties": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "oneOf": [
+                      {"type": "number"},
+                      {"type": "string"},
+                      {"type": "object"}
+                    ],
+                    "description": "Property value (numeric, string, or nested object)"
+                  },
+                  "unit": {
+                    "type": "string",
+                    "description": "Unit of measurement"
+                  },
+                  "confidence": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Data confidence level (0-1)"
+                  },
+                  "source": {
+                    "type": "string",
+                    "description": "Data source information"
+                  },
+                  "research_basis": {
+                    "type": "string",
+                    "description": "Research methodology basis"
+                  },
+                  "research_date": {
+                    "type": "string",
+                    "description": "Research date"
+                  },
+                  "validation_method": {
+                    "type": "string",
+                    "description": "Validation approach used"
+                  },
+                  "ai_verified": {
+                    "type": "boolean",
+                    "description": "AI verification status"
+                  },
+                  "verification_date": {
+                    "type": "string",
+                    "description": "Verification timestamp"
+                  },
+                  "verification_variance": {
+                    "type": "string",
+                    "description": "Verification variance percentage"
+                  },
+                  "verification_confidence": {
+                    "type": "integer",
+                    "description": "Verification confidence percentage"
+                  }
+                },
+                "required": ["value", "unit"]
+              }
+            }
+          },
+          "required": ["label", "properties"]
+        }
+      }
+    },
+    "legacyMaterialProperties": {
+      "type": "object",
+      "description": "Legacy flat material properties structure",
       "additionalProperties": {
         "type": "object",
         "properties": {

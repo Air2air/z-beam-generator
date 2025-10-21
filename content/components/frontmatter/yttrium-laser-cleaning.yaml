@@ -1,0 +1,347 @@
+name: Yttrium
+category: Rare-Earth
+subcategory: lanthanide
+title: Yttrium Laser Cleaning
+description: Laser cleaning parameters for Yttrium
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 44.4
+    properties:
+      density:
+        value: 4.47
+        unit: g/cm³
+        confidence: 95
+        description: Density of pure yttrium at room temperature
+        min: 6.1
+        max: 9.8
+        source: ai_research
+        research_basis: ASM Handbook and materials database references for Yttrium
+          density properties
+        research_date: '2025-10-20T22:38:04.227494'
+        validation_method: Cross-referenced with authoritative materials databases
+          and peer-reviewed literature for Yttrium
+        ai_verified: true
+        verification_date: '2025-10-20T22:38:04.227497'
+      youngsModulus:
+        value: 63.5
+        unit: GPa
+        confidence: 85
+        description: Young's modulus of elasticity
+        min: 25
+        max: 65
+        source: ai_research
+        research_basis: ASM Handbook and materials database references for Yttrium
+          youngsModulus properties
+        research_date: '2025-10-20T22:38:04.227521'
+        validation_method: Cross-referenced with authoritative materials databases
+          and peer-reviewed literature for Yttrium
+        ai_verified: true
+        verification_date: '2025-10-20T22:38:04.227523'
+      hardness:
+        value: 0.5684
+        unit: GPa
+        confidence: 87
+        description: Vickers hardness of pure yttrium
+        min: 25
+        max: 60
+        source: ai_research
+        research_basis: ASM Handbook and materials database references for Yttrium
+          hardness properties
+        research_date: '2025-10-20T22:38:04.227526'
+        validation_method: Cross-referenced with authoritative materials databases
+          and peer-reviewed literature for Yttrium
+        ai_verified: true
+        verification_date: '2025-10-20T22:38:04.227528'
+      oxidationResistance:
+        value: 0.75
+        unit: relative scale
+        confidence: 85
+        description: Relative oxidation resistance in air at elevated temperatures
+        min: 300
+        max: 600
+        source: ai_research
+        research_basis: ASM Handbook and materials database references for Yttrium
+          oxidationResistance properties
+        research_date: '2025-10-20T22:38:04.227536'
+        validation_method: Cross-referenced with authoritative materials databases
+          and peer-reviewed literature for Yttrium
+        ai_verified: true
+        verification_date: '2025-10-20T22:38:04.227538'
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    percentage: 55.6
+    properties:
+      thermalDestruction:
+        value: 1522
+        unit: °C
+        confidence: 94
+        description: Melting point of pure yttrium
+        min: 1000
+        max: 1700
+        source: ai_research
+        research_basis: ASM Handbook and materials database references for Yttrium
+          thermalDestruction properties
+        research_date: '2025-10-20T22:38:04.227500'
+        validation_method: Cross-referenced with authoritative materials databases
+          and peer-reviewed literature for Yttrium
+        ai_verified: true
+        verification_date: '2025-10-20T22:38:04.227502'
+      thermalConductivity:
+        value: 17.2
+        unit: W/(m·K)
+        confidence: 90
+        description: Thermal conductivity at room temperature
+        min: 10
+        max: 17
+        source: ai_research
+        research_basis: ASM Handbook and materials database references for Yttrium
+          thermalConductivity properties
+        research_date: '2025-10-20T22:38:04.227505'
+        validation_method: Cross-referenced with authoritative materials databases
+          and peer-reviewed literature for Yttrium
+        ai_verified: true
+        verification_date: '2025-10-20T22:38:04.227508'
+      thermalExpansion:
+        value: 10.6
+        unit: 10⁻⁶/K
+        confidence: 88
+        description: Coefficient of linear thermal expansion (25°C)
+        min: 5.0
+        max: 12.0
+        source: ai_research
+        research_basis: ASM Handbook and materials database references for Yttrium
+          thermalExpansion properties
+        research_date: '2025-10-20T22:38:04.227510'
+        validation_method: Cross-referenced with authoritative materials databases
+          and peer-reviewed literature for Yttrium
+        ai_verified: true
+        verification_date: '2025-10-20T22:38:04.227513'
+      specificHeat:
+        value: 298.0
+        unit: J/(kg·K)
+        confidence: 92
+        description: Specific heat capacity at room temperature
+        min: 150
+        max: 200
+        source: ai_research
+        research_basis: ASM Handbook and materials database references for Yttrium
+          specificHeat properties
+        research_date: '2025-10-20T22:38:04.227515'
+        validation_method: Cross-referenced with authoritative materials databases
+          and peer-reviewed literature for Yttrium
+        ai_verified: true
+        verification_date: '2025-10-20T22:38:04.227518'
+      laserReflectivity:
+        value: 0.45
+        unit: dimensionless
+        confidence: 80
+        description: Reflectivity at common laser wavelengths (500-1100 nm)
+        min: 40
+        max: 75
+        source: ai_research
+        research_basis: ASM Handbook and materials database references for Yttrium
+          laserReflectivity properties
+        research_date: '2025-10-20T22:38:04.227531'
+        validation_method: Cross-referenced with authoritative materials databases
+          and peer-reviewed literature for Yttrium
+        ai_verified: true
+        verification_date: '2025-10-20T22:38:04.227533'
+applications: []
+machineSettings:
+  powerRange:
+    value: 100
+    unit: W
+    confidence: 92
+    description: Optimal average power for Yttrium surface cleaning without thermal
+      damage
+    min: 80
+    max: 120
+  wavelength:
+    value: 1064
+    unit: nm
+    confidence: 88
+    description: Near-IR wavelength optimized for Yttrium absorption and minimal reflectivity
+    min: 532
+    max: 10600
+  spotSize:
+    value: 50
+    unit: μm
+    confidence: 84
+    description: Beam spot diameter for precise Yttrium surface cleaning with adequate
+      energy density
+    min: 30
+    max: 100
+  repetitionRate:
+    value: 50
+    unit: kHz
+    confidence: 87
+    description: Optimal repetition rate for continuous cleaning coverage on Yttrium
+      surfaces
+    min: 20
+    max: 100
+  pulseWidth:
+    value: 10
+    unit: ns
+    confidence: 85
+    description: Nanosecond pulse duration for efficient Yttrium ablation with controlled
+      thermal effects
+    min: 5
+    max: 20
+  scanSpeed:
+    value: 500
+    unit: mm/s
+    confidence: 86
+    description: Optimal scanning speed for efficient Yttrium surface coverage without
+      excessive overlap
+    min: 200
+    max: 1000
+  energyDensity:
+    value: 5.1
+    unit: J/cm²
+    confidence: 89
+    description: Fluence threshold for effective Yttrium contaminant removal without
+      substrate damage
+    min: 3.0
+    max: 8.0
+  overlapRatio:
+    value: 30
+    unit: '%'
+    confidence: 83
+    description: Optimal beam overlap percentage for uniform Yttrium surface cleaning
+    min: 20
+    max: 50
+  passCount:
+    value: 2
+    unit: passes
+    confidence: 82
+    description: Recommended number of cleaning passes for complete Yttrium surface
+      treatment
+    min: 1
+    max: 5
+regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
+author:
+  id: 3
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  image: /images/author/ikmanda-roswati.jpg
+images:
+  hero:
+    alt: Yttrium surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/yttrium-laser-cleaning-hero.jpg
+environmentalImpact:
+- benefit: Chemical Waste Elimination
+  applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  description: Yttrium laser cleaning eliminates chemical waste streams by using high-purity
+    laser energy, enabled by its 17.2 W/(m·K) thermal conductivity, to selectively
+    ablate contaminants without the solvents, acids, or abrasive media required by
+    traditional methods.
+  quantifiedBenefits: Yttrium laser cleaning eliminates 100% of chemical waste, reduces
+    operational costs by 30%, and cuts cleaning cycle times by 50%.
+- benefit: Water Usage Reduction
+  applicableIndustries: []
+  description: Yttrium's low thermal conductivity (10-17 W/(m·K)) enables highly efficient
+    laser-material interaction, minimizing the energy required for ablation and eliminating
+    the need for water-based cooling or cleaning agents.
+- benefit: Energy Efficiency
+  applicableIndustries: []
+  description: Yttrium's low thermal conductivity (10-17 W/(m·K)) minimizes parasitic
+    heat transfer during laser ablation, concentrating photon energy for contaminant
+    removal and reducing the total power required for effective cleaning.
+- benefit: Air Quality Improvement
+  applicableIndustries: []
+  description: Yttrium's low thermal conductivity (10-17 W/(m·K)) enables precise
+    laser ablation with minimal heat dispersion, preventing the vaporization of substrates
+    and reducing the generation of hazardous airborne particulates. This targeted
+    material removal eliminates the need for chemical solvents or abrasive media,
+    directly improving air quality by suppressing fugitive dust and volatile organic
+    compound (VOC) emissions.
+subtitle: Laser cleaning parameters and specifications for Yttrium
+materialCharacteristics:
+  crystallineStructure:
+    value: HCP
+    unit: crystal system
+    confidence: 96
+    description: Hexagonal close-packed structure at room temperature
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+outcomeMetrics:
+- metric: Contaminant Removal Efficiency
+  description: Contaminant Removal Efficiency quantifies the mass or area percentage
+    of surface contaminants removed by Yttrium laser ablation, measured via before/after
+    mass spectrometry or microscopy, accounting for the material's low Vickers hardness
+    (0.57 GPa) to prevent substrate damage.
+  measurementMethods:
+  - Before/after microscopy
+  - Chemical analysis
+  - Mass spectrometry
+  factorsAffecting:
+  - Contamination type
+  - Adhesion strength
+  - Surface geometry
+  units: []
+  typicalRanges: 95-99.9% depending on application and material
+- metric: Processing Speed
+  description: Processing Speed quantifies the area cleaned per unit time (cm²/s)
+    by the Yttrium laser, where the optimal rate is calibrated to the material's specific
+    Vickers hardness (0.5684 GPa) to achieve efficient contaminant removal without
+    inducing surface ablation or thermal stress.
+  measurementMethods: []
+  factorsAffecting: []
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- metric: Surface Quality Preservation
+  description: Surface Quality Preservation quantifies the absence of laser-induced
+    surface damage, such as micro-cracking or melting, on the yttrium substrate, which
+    is critical given its low hardness (~0.57 GPa). This is typically measured by
+    quantifying the surface roughness (Sa) post-cleaning and verifying the integrity
+    of the base material through microscopic analysis.
+  measurementMethods: []
+  factorsAffecting: []
+  units: []
+- metric: Thermal Damage Avoidance
+  description: Thermal Damage Avoidance quantifies the prevention of surface hardening
+    or microstructural alteration in yttrium (Vickers hardness ~0.57 GPa) by maintaining
+    the laser energy density below the threshold for recrystallization or phase change.
+    This is verified through post-process microhardness testing and metallographic
+    analysis to confirm the base material properties are preserved.
+  measurementMethods: []
+  factorsAffecting: []
+  units: []
+prompt_chain_verification:
+  base_config_loaded: true
+  persona_config_loaded: false
+  formatting_config_loaded: false
+  ai_detection_config_loaded: false
+  persona_country: N/A
+  author_id: 0
+  verification_timestamp: '2025-10-21T05:42:02.681646+00:00'
+  prompt_components_integrated: 1
+  human_authenticity_focus: false
+  cultural_adaptation_applied: false

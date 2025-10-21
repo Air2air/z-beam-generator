@@ -30,7 +30,14 @@
         "stone",
         "wood",
         "plastic",
-        "masonry"
+        "masonry",
+        "polymer",
+        "fabric",
+        "biomaterial",
+        "nanomaterial",
+        "crystal",
+        "powder",
+        "rare-earth"
       ],
       "description": "Material category"
     },
@@ -38,14 +45,20 @@
       "type": "string",
       "enum": [
         "precious", "ferrous", "non-ferrous", "refractory", "reactive", "specialty",
-        "oxide", "nitride", "carbide", "traditional",
-        "fiber-reinforced", "matrix", "resin", "elastomeric",
-        "borosilicate", "soda-lime", "lead", "specialty-glass",
-        "igneous", "metamorphic", "sedimentary", "architectural", "composite",
-        "hardwood", "softwood", "engineered", "grass",
-        "thermoplastic", "thermoset", "engineering", "biodegradable",
-        "intrinsic", "doped", "compound",
-        "fired", "concrete", "natural"
+        "aerospace", "automotive", "medical",
+        "oxide", "nitride", "carbide", "silicate", "traditional", "advanced",
+        "structural", "functional", "fiber-reinforced", "matrix", "resin", "elastomeric",
+        "laminate", "hybrid", "borosilicate", "soda-lime", "lead", "specialty-glass",
+        "optical", "safety", "igneous", "metamorphic", "sedimentary", "architectural",
+        "decorative", "industrial", "hardwood", "softwood", "engineered", "bamboo",
+        "cork", "composite-wood", "thermoplastic", "thermoset", "engineering",
+        "biodegradable", "recycled", "intrinsic", "doped", "compound", "quantum",
+        "photonic", "natural", "synthetic", "organic", "woven", "nonwoven", "technical",
+        "tissue", "implant", "drug-delivery", "diagnostic", "scaffold", "carbon",
+        "metallic", "ceramic-nano", "polymer-nano", "quantum-dot", "single",
+        "polycrystalline", "amorphous", "liquid", "quasicrystal", "metal", "ceramic",
+        "polymer", "composite", "specialty-powder", "lanthanide", "actinide",
+        "fired", "concrete"
       ],
       "description": "Material subcategory for enhanced classification and intelligent tagging"
     },
@@ -1251,7 +1264,8 @@
             "value": {
               "oneOf": [
                 {"type": "number"},
-                {"type": "string"}
+                {"type": "string"},
+                {"type": "object"}
               ]
             },
             "unit": {
@@ -1272,6 +1286,30 @@
               "type": "number"
             },
             "source": {
+              "type": "string"
+            },
+            "research_basis": {
+              "type": "string"
+            },
+            "research_date": {
+              "type": "string"
+            },
+            "validation_method": {
+              "type": "string"
+            },
+            "ai_verified": {
+              "type": "boolean"
+            },
+            "verification_date": {
+              "type": "string"
+            },
+            "verification_variance": {
+              "type": "string"
+            },
+            "verification_confidence": {
+              "type": "integer"
+            },
+            "type": {
               "type": "string"
             }
           }
@@ -1312,9 +1350,9 @@
     },
     "MaterialProperties": {
       "type": "object",
-      "description": "Categorized material properties organized by laser cleaning process stages (process-driven structure v4.0 - 3 categories)",
+      "description": "Categorized material properties organized by laser cleaning process stages",
       "patternProperties": {
-        "^(energy_coupling|structural_response|material_properties)$": {
+        "^(material_characteristics|laser_material_interaction|other|energy_coupling|structural_response|material_properties)$": {
           "$ref": "#/definitions/PropertyCategory"
         }
       },
@@ -1483,6 +1521,36 @@
         },
         "safetyClass": {
           "type": "string"
+        },
+        "fluenceThreshold": {
+          "type": "number"
+        },
+        "fluenceThresholdNumeric": {
+          "type": "number"
+        },
+        "fluenceThresholdUnit": {
+          "type": "string"
+        },
+        "fluenceThresholdMin": {
+          "type": "number"
+        },
+        "fluenceThresholdMax": {
+          "type": "number"
+        },
+        "energyDensity": {
+          "type": "number"
+        },
+        "energyDensityNumeric": {
+          "type": "number"
+        },
+        "energyDensityUnit": {
+          "type": "string"
+        },
+        "energyDensityMin": {
+          "type": "number"
+        },
+        "energyDensityMax": {
+          "type": "number"
         }
       }
     },
@@ -1758,6 +1826,37 @@
               "description": "Generation method used"
             }
           }
+        }
+      }
+    },
+    "PromptChainVerification": {
+      "type": "object",
+      "description": "Verification metadata for prompt chain integration",
+      "additionalProperties": false,
+      "properties": {
+        "base_config_loaded": {
+          "type": "boolean",
+          "description": "Whether base configuration was loaded"
+        },
+        "persona_config_loaded": {
+          "type": "boolean",
+          "description": "Whether persona configuration was loaded"
+        },
+        "formatting_config_loaded": {
+          "type": "boolean",
+          "description": "Whether formatting configuration was loaded"
+        },
+        "ai_detection_config_loaded": {
+          "type": "boolean",
+          "description": "Whether AI detection configuration was loaded"
+        },
+        "total_components_loaded": {
+          "type": "integer",
+          "description": "Total number of components loaded"
+        },
+        "chain_verified": {
+          "type": "boolean",
+          "description": "Whether the complete chain was verified"
         }
       }
     }

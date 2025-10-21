@@ -3658,7 +3658,8 @@ categories:
         max: 2720.0
   rare-earth:
     name: Rare-Earth Elements
-    description: Lanthanide series elements with unique magnetic and optical properties used in laser cleaning applications
+    description: Lanthanide series elements with unique magnetic and optical properties
+      used in laser cleaning applications
     category_ranges:
       density:
         min: 6.1
@@ -3676,19 +3677,22 @@ categories:
         min: 40
         max: 75
         unit: '%'
-        research_basis: Metallic rare-earths have moderate to high reflectivity at 1064nm
+        research_basis: Metallic rare-earths have moderate to high reflectivity at
+          1064nm
         confidence: 85
       thermalConductivity:
         min: 10
         max: 17
         unit: W/(m·K)
-        research_basis: Rare-earth thermal conductivity ranges from 10-17 W/(m·K) at room temperature
+        research_basis: Rare-earth thermal conductivity ranges from 10-17 W/(m·K)
+          at room temperature
         confidence: 92
       thermalExpansion:
         min: 5.0
         max: 12.0
         unit: 10⁻⁶/K
-        research_basis: Lanthanide thermal expansion coefficients typically 5-12 × 10⁻⁶/K
+        research_basis: Lanthanide thermal expansion coefficients typically 5-12 ×
+          10⁻⁶/K
         confidence: 90
       specificHeat:
         min: 150
@@ -3706,7 +3710,8 @@ categories:
         min: 1000
         max: 1700
         unit: K
-        research_basis: Lanthanide thermal destruction points range from ~1000K (Ce) to ~1700K (Lu)
+        research_basis: Lanthanide thermal destruction points range from ~1000K (Ce)
+          to ~1700K (Lu)
         confidence: 98
       boilingPoint:
         min: 2800
@@ -3716,9 +3721,10 @@ categories:
         confidence: 95
       absorptivity:
         min: 0.25
-        max: 0.60
+        max: 0.6
         unit: dimensionless
-        research_basis: Rare-earth metals have moderate to high absorption at laser wavelengths
+        research_basis: Rare-earth metals have moderate to high absorption at laser
+          wavelengths
         confidence: 85
       oxidationResistance:
         min: 300
@@ -3735,6 +3741,10 @@ categories:
         - Dysprosium
         - Terbium
         - Praseodymium
+        - Cerium
+        - Lanthanum
+        - Yttrium
+        - Europium
         category_ranges:
           density:
             min: 6.1
@@ -3809,7 +3819,7 @@ categories:
         max: 3700
       absorptivity:
         min: 0.25
-        max: 0.60
+        max: 0.6
       oxidationResistance:
         min: 300
         max: 600

@@ -5,7 +5,6 @@
   "type": "object",
   "required": [
     "applications",
-    "author_id",
     "category",
     "description",
     "name",
@@ -31,7 +30,8 @@
         "stone",
         "wood",
         "plastic",
-        "masonry"
+        "masonry",
+        "rare-earth"
       ],
       "description": "Material category"
     },
@@ -46,7 +46,7 @@
         "hardwood", "softwood", "engineered", "grass",
         "thermoplastic", "thermoset", "engineering", "biodegradable",
         "intrinsic", "doped", "compound",
-        "fired", "concrete", "natural"
+        "fired", "concrete", "natural", "lanthanide"
       ],
       "description": "Material subcategory for enhanced classification and intelligent tagging"
     },
@@ -67,9 +67,9 @@
     },
     "author_id": {
       "type": "integer",
-      "minimum": 1,
+      "minimum": 0,
       "maximum": 4,
-      "description": "Author ID"
+      "description": "Author ID (0 for system-generated content)"
     },
     "title": {
       "type": "string",
@@ -187,8 +187,8 @@
       "description": "Legacy compatibility field - use laserProcessing.compatibility for new implementations"
     },
     "materialProperties": {
-      "$ref": "#/definitions/Properties",
-      "description": "Consolidated material properties with nested categories for physical, thermal, optical, mechanical, electrical, and chemical properties"
+      "$ref": "#/definitions/MaterialProperties",
+      "description": "Categorized material properties organized by laser cleaning process stages (2-category structure: material_characteristics and laser_material_interaction)"
     },
     "materialCharacteristics": {
       "$ref": "#/definitions/MaterialCharacteristics",
@@ -1668,6 +1668,76 @@
           "type": "string"
         },
         "materialType": {
+          "type": "string"
+        }
+      }
+    },
+    "MaterialProperties": {
+      "type": "object",
+      "description": "Categorized material properties organized by laser cleaning process stages (2-category structure)",
+      "patternProperties": {
+        "^(material_characteristics|laser_material_interaction)$": {
+          "$ref": "#/definitions/PropertyCategory"
+        }
+      },
+      "additionalProperties": false
+    },
+    "PropertyCategory": {
+      "type": "object",
+      "description": "Property category with metadata and nested properties",
+      "required": ["label", "properties"],
+      "properties": {
+        "label": {
+          "type": "string",
+          "description": "Human-readable category name"
+        },
+        "description": {
+          "type": "string",
+          "description": "Category description"
+        },
+        "percentage": {
+          "type": "number",
+          "description": "Percentage of total properties in this category"
+        },
+        "properties": {
+          "type": "object",
+          "description": "Properties within this category",
+          "patternProperties": {
+            "^[a-zA-Z]+$": {
+              "$ref": "#/definitions/PropertyValue"
+            }
+          }
+        }
+      }
+    },
+    "PropertyValue": {
+      "type": "object",
+      "description": "Individual property value with metadata",
+      "properties": {
+        "value": {
+          "oneOf": [
+            {"type": "number"},
+            {"type": "string"}
+          ]
+        },
+        "unit": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "description": {
+          "type": "string"
+        },
+        "min": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        },
+        "source": {
           "type": "string"
         }
       }
