@@ -3789,6 +3789,55 @@ categories:
     - EPA Toxic Substances Control Act (TSCA)
     - DOE Critical Materials Strategy
     - Export Control Regulations for Strategic Materials
+    electricalProperties:
+      electrical_resistivity:
+        min: 50
+        max: 150
+        unit: μΩ·cm
+        confidence: 90
+        typical: 75
+        description: Electrical resistivity for lanthanide elements
+    chemicalProperties:
+      oxidation_tendency:
+        min: 85
+        max: 98
+        unit: '%'
+        confidence: 95
+        typical: 92
+        description: High oxidation tendency in air at room temperature
+      chemical_stability:
+        min: 20
+        max: 45
+        unit: 'relative scale'
+        confidence: 85
+        typical: 30
+        description: Generally poor chemical stability due to reactivity
+    processingParameters:
+      melting_point:
+        min: 1000.0
+        max: 1700.0
+        unit: K
+        confidence: 98
+        typical: 1350.0
+        description: Melting points across lanthanide series
+      processing_atmosphere:
+        required: inert
+        description: Requires inert atmosphere due to high reactivity
+        confidence: 100
+    structuralProperties:
+      crystal_structure:
+        common_types:
+        - HCP
+        - FCC
+        - BCC
+        description: Most lanthanides adopt hexagonal close-packed structure
+        confidence: 95
+      lattice_parameters:
+        min: 3.5
+        max: 4.0
+        unit: Å
+        confidence: 90
+        description: Typical lattice parameter range for lanthanide crystal structures
     properties:
       density:
         min: 6.1
