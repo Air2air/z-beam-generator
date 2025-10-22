@@ -4,422 +4,128 @@ subcategory: ferrous
 title: Stainless Steel Laser Cleaning
 description: Laser cleaning parameters for Stainless Steel
 materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    percentage: 40.0
-    properties:
-      density:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 1: Properties and Selection: Irons,
-          Steels, and High-Performance Alloys - Specific reference to AISI 304 stainless
-          steel density at 20°C'
-        research_date: '2025-09-30T13:44:02.904327'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced with NIST Materials Data Repository and
-          verified against typical composition ranges for austenitic stainless steels
-          (Fe-18Cr-8Ni base composition)
-        value: 7.93
-        ai_verified: true
-        verification_date: '2025-10-03T20:01:08.226651'
-        verification_variance: 0.38%
-        verification_confidence: 95
-        min: 0.53
-        max: 22.6
-      hardness:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 1: Properties and Selection: Irons,
-          Steels, and High-Performance Alloys - Austenitic Stainless Steel 304 typical
-          hardness range 1500-2000 MPa (Brinell HB 150-200)'
-        research_date: '2025-09-30T13:44:15.311308'
-        source: ai_research
-        unit: GPa
-        validation_method: Cross-referenced ASM Handbook data with NIST Materials
-          Data Repository for stainless steel mechanical properties and verified against
-          typical austenitic stainless steel composition (Fe-Cr-Ni alloy with 18%
-          Cr, 8% Ni)
-        value: 1.75
-        min: 0.5
-        max: 3500.0
-      tensileStrength:
-        confidence: 0.95
-        research_basis: 'ASM Handbook Volume 1: Properties and Selection: Irons, Steels,
-          and High-Performance Alloys - AISI 304 stainless steel tensile strength
-          range 515-620 MPa (typical annealed condition)'
-        research_date: '2025-09-30T13:45:02.904742'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced ASM Handbook data with NIST Materials
-          Data Repository and ASTM A240/A240M standard for chromium and chromium-nickel
-          stainless steel plate, sheet, and strip
-        value: 515.0
-        min: 3.0
-        max: 3000.0
-      youngsModulus:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 1: Properties and Selection: Irons,
-          Steels, and High-Performance Alloys, Section: Stainless Steels, Table: Typical
-          Room-Temperature Mechanical Properties of Austenitic Stainless Steels'
-        research_date: '2025-09-30T13:46:15.207002'
-        source: ai_research
-        unit: GPa
-        validation_method: Cross-referenced ASM Handbook data with NIST Materials
-          Data Repository and peer-reviewed literature on austenitic stainless steel
-          mechanical properties, confirming 200 GPa as the standard reference value
-          for 300-series stainless steels
-        value: 200.0
-        ai_verified: true
-        verification_date: '2025-10-03T21:55:35.214101'
-        verification_variance: 3.63%
-        verification_confidence: 95
-        min: 5.0
-        max: 600.0
-      corrosionResistance:
-        value: 8.0
-        unit: rating
-        confidence: 0.88
-        source: ASM International - "Corrosion of Stainless Steels" (Chapter 1, ASM
-          Handbook, Volume 13C)
-        research_basis: Stainless steel's chromium content (typically >10.5%) forms
-          a passive oxide layer that provides excellent resistance to general atmospheric
-          corrosion and many chemical environments. While specific ratings vary by
-          grade (304, 316, etc.), stainless steel consistently ranks high in corrosion
-          resistance compared to other metals, though not perfect in all environments
-          (e.g., chloride exposure).
-        research_date: '2025-10-15T20:37:07.757506'
-        ai_verified: true
-        min: 1.0
-        max: 10.0
-      oxidationResistance:
-        value: 925.0
-        unit: °C
-        confidence: 0.9
-        source: 'ASM International, "ASM Handbook, Volume 1: Properties and Selection:
-          Irons, Steels, and High-Performance Alloys" (specifically for austenitic
-          stainless steels like Type 304 in continuous service)'
-        research_basis: The oxidation resistance of stainless steel is highly dependent
-          on its specific grade. For common austenitic grades (e.g., 304, 316), the
-          maximum continuous service temperature in air is typically 870-925°C. The
-          925°C value represents the upper limit for intermittent service for many
-          grades, while continuous service is often limited to 815-870°C. The chromium
-          content (typically 17-20% in austenitic steels) forms a protective oxide
-          scale, but breakdown occurs rapidly above this range, leading to significant
-          oxidation.
-        research_date: '2025-10-15T20:49:43.694800'
-        ai_verified: true
-        min: 200.0
-        max: 1200.0
-      flexuralStrength:
-        value: 290.0
-        unit: MPa
-        confidence: 0.85
-        source: ASM Aerospace Specification Metals Inc., "Stainless Steel - Grade
-          304 (UNS S30400)"
-        research_basis: The flexural strength of stainless steel is not a single fixed
-          value and depends heavily on the specific alloy (e.g., 304, 316) and its
-          temper condition. For common austenitic grades like 304 in the annealed
-          condition, the yield strength (which is closely related to and often used
-          as a conservative estimate for flexural strength in ductile metals) is typically
-          in the range of 215-290 MPa. The provided value of 290 MPa is a representative
-          upper value for the yield strength of annealed 304 stainless steel, which
-          is a standard reference point for bending strength in the absence of a specific
-          alloy designation.
-        research_date: '2025-10-15T21:02:53.203276'
-        ai_verified: true
-        min: 2.5
-        max: 1050.0
-      compressiveStrength:
-        value: 210.0
-        unit: MPa
-        confidence: 0.9
-        source: ASM Aerospace Specification Metals Inc., "AISI Type 304 Stainless
-          Steel"
-        research_basis: The compressive strength of stainless steel is not a single
-          fixed value and depends heavily on the specific alloy (e.g., 304, 316) and
-          its temper condition. For the most common grade, AISI 304 annealed stainless
-          steel, the compressive yield strength (the standard measure for compressive
-          strength in metals) is approximately 210 MPa. This value is consistently
-          reported across materials databases for this specific, widely-used condition.
-          The provided material properties in the query are generic and do not specify
-          an alloy, making this the most authoritative and probable value.
-        research_date: '2025-10-15T21:32:53.253974'
-        ai_verified: true
-        min: 50.0
-        max: 2000.0
-      porosity:
-        value: 0.0001
-        unit: '%'
-        confidence: 0.95
-        source: ai_research
-        research_date: '2025-10-17T19:07:34.186252'
-        research_basis: ai_research_comprehensive
-        min: 0.0
-        max: 15.0
-      electricalResistivity:
-        value: 7.2e-07
-        unit: Ω·m
-        confidence: 0.95
-        source: ai_research
-        research_date: '2025-10-17T19:16:41.793147'
-        research_basis: materials_science_literature
-        min: 1.0e-08
-        max: 1.5e-06
-      electricalConductivity:
-        value: 1.45
-        unit: MS/m
-        confidence: 0.95
-        source: ai_research
-        research_date: '2025-10-17T19:57:09.205570'
-        research_basis: materials_science_literature
-        min: 0.67
-        max: 63.0
-      surfaceRoughness:
-        value: 0.8
-        unit: µm
-        confidence: 0.95
-        source: ai_research
-        research_date: '2025-10-17T20:11:42.197524'
-        research_basis: materials_science_literature
-        min: 0.4
-        max: 150.0
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
-    percentage: 40.0
+    percentage: 46.7
     properties:
-      laserAbsorption:
-        confidence: 0.92
-        research_basis: 'NIST Standard Reference Database 73: Thermophysical Properties
-          of Stainless Steel 304L at 1064 nm wavelength, combined with ASM Handbook
-          Volume 4: Heat Treating - Laser Processing Data'
-        research_date: '2025-09-30T13:44:27.885367'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced NIST thermophysical data with ASM laser
-          processing parameters and validated against experimental measurements for
-          304 stainless steel at 1064 nm Nd:YAG laser wavelength commonly used in
-          industrial laser cleaning applications
-        value: 35.2
-        min: 0.02
-        max: 100.0
-      laserReflectivity:
-        confidence: 0.94
-        research_basis: 'NIST Standard Reference Database 120: ''Optical Properties
-          of Metallic Materials for Laser Applications'' (2021), specifically Table
-          4.3 for AISI 304 stainless steel at 1064 nm wavelength'
-        research_date: '2025-09-30T13:44:39.446309'
-        source: ai_research
-        unit: '%'
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection of Metals and experimental data from Applied Surface Science
-          journal (Vol. 528, 2020) for common laser cleaning wavelengths (1064 nm
-          Nd:YAG)'
-        value: 65.2
-        min: 5.0
-        max: 99.9
-      specificHeat:
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
-          SRD 69 - Specific heat capacity of AISI 304 stainless steel at 300K'
-        research_date: '2025-09-30T13:44:52.156155'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: 'Cross-referenced with ASM Handbook Volume 1: Properties
-          and Selection: Irons, Steels, and High-Performance Alloys for AISI 304 composition
-          (Fe-18Cr-8Ni) and verified against experimental data from Journal of Chemical
-          & Engineering Data'
-        value: 500.0
-        ai_verified: true
-        verification_date: '2025-10-03T22:32:20.837683'
-        verification_variance: 0.48%
-        verification_confidence: 95
-        min: 100.0
-        max: 2000.0
-      thermalConductivity:
-        confidence: 0.95
-        research_basis: 'ASM Handbook Volume 1: Properties and Selection: Irons, Steels,
-          and High-Performance Alloys (1990), Table 1 for AISI 304 stainless steel
-          at 20°C'
-        research_date: '2025-09-30T13:45:14.582869'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: Cross-referenced with NIST Materials Data Repository and
-          verified against typical austenitic stainless steel composition (Fe-18Cr-8Ni)
-          with face-centered cubic crystal structure
-        value: 15.0
-        ai_verified: true
-        verification_date: '2025-10-03T20:20:53.092171'
-        verification_variance: 0.0%
-        verification_confidence: 85
-        min: 7.0
-        max: 430.0
-      thermalDiffusivity:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 1: Properties and Selection: Irons,
-          Steels, and High-Performance Alloys, specific data for AISI 304 stainless
-          steel at 20°C'
-        research_date: '2025-09-30T13:45:51.242919'
-        source: ai_research
-        unit: mm²/s
-        validation_method: Cross-referenced with NIST Materials Data Repository and
-          verified against typical austenitic stainless steel composition (Fe-18Cr-8Ni)
-          and crystal structure (FCC)
-        value: 4.2
-        min: 0.06
-        max: 174.0
-      thermalExpansion:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 1: Properties and Selection: Irons,
-          Steels, and High-Performance Alloys - Table ''Thermal Expansion of Austenitic
-          Stainless Steels'' for Type 304 stainless steel at 20-100°C'
-        research_date: '2025-09-30T13:46:02.884131'
-        source: ai_research
-        unit: 10⁻⁶/K
-        validation_method: Cross-referenced with NIST Materials Data Repository and
-          verified against ASTM E228 standard test method for linear thermal expansion
-        value: 17.3
-        ai_verified: true
-        verification_date: '2025-10-03T22:13:58.098617'
-        verification_variance: 0.0%
-        verification_confidence: 95
-        min: 0.5
-        max: 33.0
-      thermalDestruction:
-        point:
-          value: 1670.0
-          unit: K
-          confidence: 0.95
-          research_basis: 'ASM Handbook, Volume 1: Properties and Selection: Irons,
-            Steels, and High-Performance Alloys. Specific reference to AISI 304 stainless
-            steel solidus temperature range of 1670-1690 K.'
-          research_date: '2025-09-30T13:45:26.123033'
-          source: ai_research
-          validation_method: Cross-referenced ASM Handbook data with NIST Materials
-            Data Repository for stainless steel thermal properties and validated against
-            laser ablation threshold studies in Applied Surface Science (vol. 258,
-            pp. 9433-9439)
-        type: melting
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        value: 500.0
-        unit: °C
-        confidence: 0.65
-        source: thermal_degradation_standards
-        min: 400.0
-        max: 600.0
       ablationThreshold:
-        value: 0.45
-        unit: J/cm²
-        confidence: 0.92
-        source: ai_research
-        research_date: '2025-10-17T19:25:31.417941'
-        research_basis: materials_science_literature
-        min: 2.0
+        confidence: 80
+        description: Approximate laser ablation threshold for nanosecond pulses
         max: 8.0
-      boilingPoint:
-        value: 3090.0
-        unit: K
-        confidence: 0.92
-        source: ai_research
-        research_date: '2025-10-17T19:35:25.794927'
-        research_basis: materials_science_literature
-        min: 907.0
-        max: 5870.0
-      laserDamageThreshold:
-        value: 1.8
-        unit: J/cm²
-        confidence: 0.92
-        source: ai_research
-        research_date: '2025-10-17T19:40:55.529132'
-        research_basis: materials_science_literature
-        min: 0.1
-        max: 20.0
-      reflectivity:
-        value: 0.65
-        unit: dimensionless
-        confidence: 0.92
-        source: ai_research
-        research_date: '2025-10-17T20:02:20.184812'
-        research_basis: materials_science_literature
-        min: 85.0
-        max: 98.0
-      absorptivity:
-        value: 0.35
-        unit: dimensionless
-        confidence: 0.92
-        source: ai_research
-        research_date: '2025-10-17T20:16:37.701746'
-        research_basis: materials_science_literature
         min: 2.0
-        max: 65.0
+        unit: J/cm²
+        value: 0.8
+      laserReflectivity:
+        confidence: 85
+        description: Approximate reflectivity at common laser wavelengths (1μm)
+        max: 99.9
+        min: 5
+        unit: '%'
+        value: 65
+      specificHeat:
+        confidence: 85
+        description: Specific heat capacity at room temperature
+        max: 2000
+        min: 100
+        unit: J/(kg·K)
+        value: 500.0
+      thermalConductivity:
+        confidence: 90
+        description: Thermal conductivity at room temperature for 304 stainless steel
+        max: 430
+        min: 7.0
+        unit: W/(m·K)
+        value: 15.0
+      thermalDestruction:
+        confidence: 92
+        description: Average melting point for common stainless steel alloys
+        max: 3422
+        min: -38.8
+        unit: °C
+        value: 1400
+      thermalDiffusivity:
+        confidence: 82
+        description: Thermal diffusivity calculated from thermal properties
+        max: 174
+        min: 0.06
+        unit: mm²/s
+        value: 3.8
+      thermalExpansion:
+        confidence: 88
+        description: Coefficient of thermal expansion (20-100°C) for 304 stainless
+        max: 33
+        min: 0.5
+        unit: 10⁻⁶/K
+        value: 17.3
+  material_characteristics:
+    label: Material Characteristics
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    percentage: 46.7
+    properties:
+      corrosionResistance:
+        confidence: 88
+        description: Effective corrosion resistance pH range (4-10.5)
+        max: 10
+        min: 1
+        unit: pH_range
+        value: 6.5
+      density:
+        confidence: 95
+        description: Typical density for austenitic stainless steel (304/316 grades)
+        max: 22.6
+        min: 0.53
+        unit: g/cm³
+        value: 7.9
+      hardness:
+        confidence: 88
+        description: Vickers hardness for annealed 304 stainless steel
+        max: 3500
+        min: 0.5
+        unit: GPa
+        value: 1.9698
+      oxidationResistance:
+        confidence: 90
+        description: Maximum continuous service temperature in air
+        max: 1200
+        min: 200
+        unit: °C
+        value: 925
+      surfaceRoughness:
+        confidence: 85
+        description: Typical surface roughness for polished stainless steel
+        max: 150
+        min: 0.4
+        unit: μm Ra
+        value: 0.4
+      tensileStrength:
+        confidence: 90
+        description: Typical tensile strength for annealed 304 stainless steel
+        max: 3000.0
+        min: 3.0
+        unit: MPa
+        value: 515.0
+      youngsModulus:
+        confidence: 92
+        description: Elastic modulus at room temperature
+        max: 600
+        min: 5
+        unit: GPa
+        value: 193.0
   other:
     label: Other Properties
     description: Additional material-specific properties
-    percentage: 20.0
+    percentage: 6.7
     properties:
-      fractureToughness:
-        value: 137.5
-        unit: MPa·√m
-        confidence: 0.87
-        source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture Toughness
-          of Stainless Steels"'
-        research_basis: Stainless steel fracture toughness varies significantly by
-          specific alloy and heat treatment. Austenitic grades (e.g., 304, 316) typically
-          range 75-200 MPa·√m, while martensitic grades are lower (25-75 MPa·√m).
-          The provided material properties don't specify the stainless steel type,
-          requiring a broad range covering common structural stainless steels.
-        research_date: '2025-10-15T20:23:13.494320'
-        ai_verified: true
-        min: 20.0
-        max: 200.0
       absorptionCoefficient:
+        confidence: 82
+        description: Absorption coefficient for near-IR laser wavelengths
+        max: 50000000
+        min: 100000
+        unit: 1/μm
         value: 0.35
-        unit: dimensionless
-        confidence: 0.92
-        source: ai_research
-        research_date: '2025-10-17T19:30:33.630438'
-        research_basis: materials_science_literature
-        min: 100000.0
-        max: 50000000.0
-      meltingPoint:
-        value: 1400.0
-        unit: °C
-        confidence: 0.92
-        source: ai_research
-        research_date: '2025-10-17T19:45:48.985234'
-        research_basis: materials_science_literature
-        min: -39.0
-        max: 3422.0
-      thermalShockResistance:
-        value: 0.75
-        unit: MPa·m^0.5
-        confidence: 0.92
-        source: ai_research
-        research_date: '2025-10-17T19:51:27.706613'
-        research_basis: materials_science_literature
-        min: 50.0
-        max: 400.0
-      vaporPressure:
-        value: 0.00133
-        unit: Pa
-        confidence: 0.92
-        source: ai_research
-        research_date: '2025-10-17T20:06:51.988078'
-        research_basis: materials_science_literature
-        min: 1.0e-10
-        max: 0.001
-      thermalDestructionPoint:
-        value: 1673.0
-        unit: K
-        confidence: 0.95
-        source: ai_research
-        research_date: '2025-10-17T20:21:22.003329'
-        research_basis: materials_science_literature
-        min: 873.0
-        max: 3695.0
 applications:
 - Aerospace
 - Architecture
@@ -443,7 +149,7 @@ machineSettings:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-infrared wavelength optimized for Stainless Steel absorption
+    description: Near-infrared wavelength for optimal Stainless Steel absorption
     min: 532
     max: 10600
   spotSize:
@@ -457,8 +163,7 @@ machineSettings:
     value: 50
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning with minimal heat
-      accumulation
+    description: Optimal repetition rate for efficient cleaning with thermal management
     min: 20
     max: 100
   pulseWidth:
@@ -476,25 +181,25 @@ machineSettings:
     min: 200
     max: 1000
   energyDensity:
-    value: 5.1
+    value: 5
     unit: J/cm²
     confidence: 89
     description: Fluence threshold for effective contaminant removal without substrate
       damage
-    min: 3.0
-    max: 8.0
+    min: 2
+    max: 8
   overlapRatio:
     value: 50
     unit: '%'
     confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive processing
+    description: Optimal beam overlap for uniform cleaning coverage
     min: 30
     max: 70
   passCount:
     value: 3
     unit: passes
     confidence: 82
-    description: Recommended number of passes for complete contaminant removal
+    description: Number of cleaning passes for complete contaminant removal
     min: 1
     max: 5
   dwellTime:
@@ -505,6 +210,10 @@ machineSettings:
     min: 50
     max: 200
 regulatoryStandards:
+- FDA 21 CFR 1040.10 - Laser Product Performance Standards
+- ANSI Z136.1 - Safe Use of Lasers
+- IEC 60825 - Safety of Laser Products
+- OSHA 29 CFR 1926.95 - Personal Protective Equipment
 - FDA 21 CFR 1040.10 - Laser Product Performance Standards
 - ANSI Z136.1 - Safe Use of Lasers
 - IEC 60825 - Safety of Laser Products
@@ -529,38 +238,43 @@ environmentalImpact:
   - Electronics
   - Medical
   - Nuclear
-  description: Eliminates hazardous chemical waste streams
-  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+  description: The process eliminates chemical solvents and acidic passivation wastes
+    by utilizing a high-intensity laser to ablate contaminants from the stainless
+    steel surface through photothermal and photomechanical interactions, leaving no
+    secondary chemical residue.
+  quantifiedBenefits: Stainless steel laser cleaning eliminates 100% of chemical waste,
+    reduces operational costs by 15%, and cuts hazardous material handling time by
+    40%.
 - benefit: Water Usage Reduction
   applicableIndustries: []
-  description: Dry process requires no water
-  sustainabilityBenefit: Significant water conservation in industrial processes
+  description: Stainless steel's low thermal conductivity (15.0 W/(m·K)) enables highly
+    efficient laser cleaning, concentrating energy to remove contaminants with minimal
+    water volume compared to traditional high-pressure aqueous methods. This intrinsic
+    material property eliminates the need for water as a coolant or process medium,
+    directly reducing industrial wastewater generation.
 - benefit: Energy Efficiency
   applicableIndustries: []
-  description: Focused energy delivery with minimal waste heat
+  description: Stainless steel's low thermal conductivity (approx. 15 W/(m·K)) localizes
+    laser energy, minimizing heat dissipation and reducing the total power required
+    for ablation. This inherent material property directly lowers electricity consumption
+    per unit area cleaned compared to metals with higher conductivity.
 - benefit: Air Quality Improvement
   applicableIndustries: []
-  description: Eliminates volatile organic compounds from chemical cleaning
+  description: Laser cleaning of stainless steel eliminates chemical solvents and
+    abrasive media, reducing VOC and particulate matter emissions. The process's precise
+    energy control leverages stainless steel's moderate thermal conductivity to ablate
+    contaminants without substrate vaporization, minimizing hazardous metallic fume
+    generation.
 subtitle: Laser cleaning parameters and specifications for Stainless Steel
-materialCharacteristics:
-  crystallineStructure:
-    value: FCC
-    unit: crystal system
-    confidence: 95
-    description: Face-centered cubic structure for austenitic stainless steels
-    allowedValues:
-    - FCC
-    - BCC
-    - HCP
-    - amorphous
-    - cubic
-    - hexagonal
-    - tetragonal
-    - orthorhombic
-    - monoclinic
-    - triclinic
+materialCharacteristics: {}
 outcomeMetrics:
 - metric: Contaminant Removal Efficiency
+  description: Contaminant Removal Efficiency quantifies the mass or area fraction
+    of surface contaminants (e.g., oxides, paints) removed from a stainless steel
+    substrate, as measured by mass spectrometry or chemical analysis to detect residual
+    elements. The metric must account for the material's high reflectivity and low
+    surface absorption to avoid underestimating removal, particularly for thin, tenacious
+    films.
   measurementMethods:
   - Before/after microscopy
   - Chemical analysis
@@ -570,34 +284,34 @@ outcomeMetrics:
   - Adhesion strength
   - Surface geometry
   units: []
-  description: Percentage of target contaminants successfully removed from surface
   typicalRanges: 95-99.9% depending on application and material
 - metric: Processing Speed
+  description: Processing Speed quantifies the linear or areal rate (e.g., m/min or
+    m²/hr) at which surface contaminants are removed from polished stainless steel
+    (typically ~0.4 µm Ra) without inducing surface modification, measured by the
+    ablation threshold for the specific alloy's hardness (~1.97 GPa for annealed 304).
   measurementMethods: []
   factorsAffecting: []
   units:
   - m²/h
   - cm²/min
   - mm²/s
-  description: Rate of surface area processed per unit time
 - metric: Surface Quality Preservation
+  description: Surface Quality Preservation quantifies the post-cleaning surface roughness,
+    targeting a maximum deviation of +0.2 µm Ra from the base material's initial polished
+    state (e.g., 0.4 µm Ra) to prevent micro-scale pitting or oxidation. This is verified
+    using contact profilometry to ensure the laser parameters do not ablate the underlying
+    austenitic matrix and alter its hardness.
   measurementMethods: []
   factorsAffecting: []
   units: []
-  description: Maintenance of original surface characteristics after cleaning
 - metric: Thermal Damage Avoidance
+  description: Thermal Damage Avoidance quantifies the successful prevention of detrimental
+    microstructural changes, such as carbide precipitation or surface oxidation, which
+    would degrade the corrosion resistance and mechanical properties of the stainless
+    steel substrate. It is assessed by verifying that post-process Vickers hardness
+    remains within the specified range for the annealed condition and that the passive
+    oxide layer is intact.
   measurementMethods: []
   factorsAffecting: []
   units: []
-  description: Prevention of heat-related material alterations during cleaning
-prompt_chain_verification:
-  base_config_loaded: true
-  persona_config_loaded: false
-  formatting_config_loaded: false
-  ai_detection_config_loaded: false
-  persona_country: N/A
-  author_id: 0
-  verification_timestamp: '2025-10-20T18:40:55.663705+00:00'
-  prompt_components_integrated: 1
-  human_authenticity_focus: false
-  cultural_adaptation_applied: false

@@ -9,7 +9,10 @@ for all text-based content generation components.
 from pathlib import Path
 from typing import Dict, Any, Optional
 import yaml
+import logging
 from functools import lru_cache
+
+logger = logging.getLogger(__name__)
 
 
 class VoiceOrchestrator:
@@ -26,6 +29,7 @@ class VoiceOrchestrator:
         "italy": "italy",
         "indonesia": "indonesia",
         "united states": "united_states",
+        "united_states": "united_states",
         "united states (california)": "united_states",
         "usa": "united_states",
         "us": "united_states",
@@ -99,14 +103,23 @@ class VoiceOrchestrator:
     
     @lru_cache(maxsize=5)
     def _load_base_voice(self) -> Dict[str, Any]:
-        """Load shared base voice characteristics"""
+        """Load base voice characteristics"""
         base_path = Path(__file__).parent / "base" / "voice_base.yaml"
-        
         if not base_path.exists():
-            # Base voice is optional - country profiles can stand alone
+            logger.warning(f"Base voice file not found: {base_path}")
             return {}
         
         with open(base_path, 'r', encoding='utf-8') as f:
+            return yaml.safe_load(f)
+    
+    def _load_unified_voice_system(self) -> Dict[str, Any]:
+        """Load unified voice prompting system"""
+        unified_path = Path(__file__).parent / "prompts" / "unified_voice_system.yaml"
+        if not unified_path.exists():
+            logger.warning(f"Unified voice system not found: {unified_path}")
+            return {}
+        
+        with open(unified_path, 'r', encoding='utf-8') as f:
             return yaml.safe_load(f)
     
     def get_voice_for_component(
@@ -136,6 +149,67 @@ class VoiceOrchestrator:
         )
         
         return instructions
+    
+    def get_unified_prompt(
+        self,
+        component_type: str,
+        material_context: Dict[str, Any],
+        author: Dict[str, Any],
+        **kwargs
+    ) -> str:
+        """
+        Generate complete prompt using unified voice system.
+        
+        Args:
+            component_type: Type of component (caption_generation, text_generation, etc.)
+            material_context: Material name, category, properties, etc.
+            author: Author name, country, expertise, etc.
+            **kwargs: Additional template variables
+        
+        Returns:
+            Complete formatted prompt string
+        """
+        # Load unified voice system
+        unified_system = self._load_unified_voice_system()
+        
+        if not unified_system:
+            # Fallback to old system
+            return self.get_voice_for_component(component_type, material_context)
+        
+        # Get base template for component type
+        templates = unified_system.get('prompt_templates', {})
+        if component_type not in templates:
+            raise ValueError(f"Component type '{component_type}' not found in unified voice system")
+        
+        base_template = templates[component_type]['base_template']
+        
+        # Build voice characteristics
+        voice_characteristics = self._build_voice_characteristics(unified_system)
+        
+        # Build AI evasion instructions
+        ai_evasion_instructions = self._build_ai_evasion_instructions(unified_system)
+        
+        # Build AI detectability avoidance instructions
+        ai_detectability_avoidance = self._build_ai_detectability_avoidance(unified_system)
+        
+        # Format the complete prompt with all required variables
+        # Note: before_paragraphs, after_paragraphs, before_target, after_target come from kwargs
+        format_vars = {
+            'author_name': author.get('name', 'Technical Expert'),
+            'author_country': author.get('country', 'usa'),
+            'author_expertise': author.get('expertise', 'laser cleaning technology'),
+            'material_name': material_context.get('material_name', 'material'),
+            'category': material_context.get('category', 'material'),
+            'properties': material_context.get('properties', 'Standard material characteristics'),
+            'applications': material_context.get('applications', 'General cleaning applications'),
+            'voice_characteristics': voice_characteristics,
+            'ai_evasion_instructions': ai_evasion_instructions,
+            'ai_detectability_avoidance': ai_detectability_avoidance,
+            'technical_focus': material_context.get('technical_focus', 'laser cleaning analysis'),
+            **kwargs  # This includes before_paragraphs, after_paragraphs, before_target, after_target
+        }
+        
+        return base_template.format(**format_vars)
     
     def _build_voice_instructions(
         self,
@@ -338,6 +412,100 @@ Consider incorporating these natural expressions when appropriate:
             "supported_components": list(self.profile.get("voice_adaptation", {}).keys())
         }
 
+
+    def _build_voice_characteristics(self, unified_system: Dict[str, Any]) -> str:
+        """Build voice characteristics section from unified system"""
+        voice_templates = unified_system.get('voice_characteristics_templates', {})
+        country_template = voice_templates.get(self.country)
+        
+        if not country_template:
+            return "Standard technical communication guidelines apply."
+        
+        # Get voice profile parameters
+        adaptation = self.profile.get('voice_adaptation', {}).get('caption_generation', {})
+        ai_params = self.profile.get('ai_evasion_parameters', {})
+        
+        # Get all template variables needed
+        author_specific = ai_params.get('author_specific', {})
+        sentence_targets = ai_params.get('sentence_length_targets', {})
+        
+        return country_template['template'].format(
+            word_limit=adaptation.get('word_limit', 300),
+            minimum_sentences=adaptation.get('validation_requirements', {}).get('minimum_sentences', 5),
+            measurement_first_rate=author_specific.get('measurement_first_rate', 40),
+            phrasal_verb_density=author_specific.get('phrasal_verb_density', 4.0),
+            active_voice_rate=author_specific.get('active_voice_rate', 85),
+            emphatic_pronoun_limit=author_specific.get('emphatic_pronoun_limit', 2),
+            very_short=sentence_targets.get('very_short', 15),
+            medium=sentence_targets.get('medium', 35),
+            long=sentence_targets.get('long', 35),
+            very_long=sentence_targets.get('very_long', 15),
+            academic_hedging_frequency=author_specific.get('academic_hedging_frequency', 2),
+            serial_comma_usage=author_specific.get('serial_comma_usage', 85),
+            lexical_variety_target=ai_params.get('lexical_variety_target', 0.65),
+            hesitation_markers_per_200_words=ai_params.get('hesitation_markers_per_200_words', 1.5),
+            comma_splices_per_100_words=ai_params.get('comma_splices_per_100_words', 1.0),
+            parenthetical_asides_per_300_words=ai_params.get('parenthetical_asides_per_300_words', 2.0)
+        )
+    
+    def _build_ai_evasion_instructions(self, unified_system: Dict[str, Any]) -> str:
+        """Build AI evasion instructions from unified system"""
+        evasion_templates = unified_system.get('ai_evasion_templates', {})
+        detectability_templates = unified_system.get('ai_detectability_avoidance_templates', {})
+        
+        # Get AI detectability avoidance instructions (NEW - critical for human-like output)
+        universal_detection = detectability_templates.get('universal_detection_avoidance', {}).get('template', '')
+        country_detection = detectability_templates.get('country_detection_avoidance', {}).get(self.country, {}).get('template', '')
+        
+        # Get traditional evasion templates
+        universal = evasion_templates.get('natural_variation', {}).get('template', '')
+        country_specific = evasion_templates.get('country_specific', {}).get(self.country, {}).get('template', '')
+        
+        ai_params = self.profile.get('ai_evasion_parameters', {})
+        
+        # Format universal instructions
+        universal_formatted = universal.format(
+            very_short=ai_params.get('sentence_length_targets', {}).get('very_short', 20),
+            medium=ai_params.get('sentence_length_targets', {}).get('medium', 40),
+            long=ai_params.get('sentence_length_targets', {}).get('long', 30),
+            very_long=ai_params.get('sentence_length_targets', {}).get('very_long', 10),
+            lexical_variety_target=ai_params.get('lexical_variety_target', 0.75),
+            hesitation_markers_per_200_words=ai_params.get('hesitation_markers_per_200_words', 1.0),
+            comma_splices_per_100_words=ai_params.get('comma_splices_per_100_words', 1.5),
+            parenthetical_asides_per_300_words=ai_params.get('parenthetical_asides_per_300_words', 2.5)
+        )
+        
+        # Format country-specific instructions
+        author_specific = ai_params.get('author_specific', {})
+        sentence_targets = ai_params.get('sentence_length_targets', {})
+        
+        # Build complete format context with all possible variables
+        format_context = {
+            **author_specific,
+            'minimum_sentences': self.profile.get('voice_adaptation', {}).get('caption_generation', {}).get('validation_requirements', {}).get('minimum_sentences', 5),
+            'very_short': sentence_targets.get('very_short', 15),
+            'medium': sentence_targets.get('medium', 35),
+            'long': sentence_targets.get('long', 35),
+            'very_long': sentence_targets.get('very_long', 15),
+            'lexical_variety_target': ai_params.get('lexical_variety_target', 0.65),
+            'hesitation_markers_per_200_words': ai_params.get('hesitation_markers_per_200_words', 1.5),
+            'comma_splices_per_100_words': ai_params.get('comma_splices_per_100_words', 1.0),
+            'parenthetical_asides_per_300_words': ai_params.get('parenthetical_asides_per_300_words', 2.0)
+        }
+        country_formatted = country_specific.format(**format_context) if country_specific else ''
+        
+        # Combine all instructions: detectability avoidance (priority) + traditional evasion
+        return f"{universal_detection}\n\n{country_detection}\n\n{universal_formatted}\n\n{country_formatted}".strip()
+    
+    def _build_ai_detectability_avoidance(self, unified_system: Dict[str, Any]) -> str:
+        """Build AI detectability avoidance instructions"""
+        detectability_templates = unified_system.get('ai_detectability_avoidance_templates', {})
+        
+        # Get universal and country-specific detectability avoidance
+        universal_detection = detectability_templates.get('universal_detection_avoidance', {}).get('template', '')
+        country_detection = detectability_templates.get('country_detection_avoidance', {}).get(self.country, {}).get('template', '')
+        
+        return f"{universal_detection}\n\n{country_detection}".strip()
 
 # Convenience function for quick access
 def get_voice_instructions(country: str, component_type: str, context: Optional[Dict] = None) -> str:

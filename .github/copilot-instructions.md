@@ -129,11 +129,11 @@ Use ComponentGeneratorFactory pattern for all generators.
 - **No scope expansion** - fix X means fix only X
 - **Complete solutions** - don't leave parts for user to debug
 
-### Rule 6: 🔍 Prompt Chain Verification
-- **VERIFY prompt chain integration** in frontmatter using `prompt_chain_verification` metadata
-- **CHECK frontmatter** contains verification fields: base_config_loaded, persona_config_loaded, etc.
-- **VALIDATE** all 4 prompt components (base, persona, formatting, AI detection) were integrated
-- **USE** `verify_frontmatter_prompt_chain.py` script to validate generated content
+### Rule 6: 🔍 Content Quality Verification
+- **VALIDATE** generated content meets quality standards
+- **CHECK frontmatter** structure and required fields
+- **ENSURE** proper YAML formatting and schema compliance
+- **USE** validation tools to verify content integrity
 
 ---
 
@@ -298,6 +298,33 @@ git revert <commit>  # Revert to known working state
 - Reference specific file paths, not just general descriptions
 - Recommend terminal output analysis for API issues
 - Point to both immediate fixes and comprehensive documentation
+
+## 🔧 **Terminal & Script Execution Settings**
+
+### **Auto-Confirmation for Batch Operations**
+When running cleanup scripts or batch operations, use these patterns:
+- `rm -f` instead of `rm -i` (force, no confirmation)
+- `yes | command` for auto-confirmation
+- Check for `BATCH_MODE=1` environment variable in scripts
+- Use `--yes` or `-y` flags when available
+
+### **Environment Variables**
+The following environment variables are set for auto-confirmation:
+- `BATCH_MODE=1` - Skip interactive prompts
+- `FORCE_YES=true` - Auto-confirm with "yes"
+- `AUTO_CONFIRM=y` - Default response for prompts
+
+### **Script Best Practices**
+```bash
+# Check for batch mode in scripts
+if [[ -n "$BATCH_MODE" ]]; then
+    # Skip confirmations
+    rm -f files*
+else
+    # Normal interactive mode
+    read -p "Continue? (y/N) " response
+fi
+```
 
 ### Critical Documentation for AI Assistants
 **BEFORE** any data-related work, review these files:

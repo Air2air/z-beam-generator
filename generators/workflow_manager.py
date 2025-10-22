@@ -38,7 +38,7 @@ def run_dynamic_generation(
     generator: DynamicGenerator,
     material: str,
     component_types: List[str],
-    author_info: Dict[str, Any] = None,
+    author: Dict[str, Any] = None,
 ) -> Dict[str, Any]:
     """
     Run dynamic generation for specific material and components.
@@ -47,7 +47,7 @@ def run_dynamic_generation(
         generator: DynamicGenerator instance
         material: Material name
         component_types: List of component types to generate
-        author_info: Optional author information
+        author: Optional author information
 
     Returns:
         Dictionary with generation results
@@ -114,7 +114,7 @@ def run_dynamic_generation(
                 material=material,
                 component_type=component_type,
                 api_client=api_client,
-                author_info=author_info,
+                author=author,
                 frontmatter_data=frontmatter_data,  # Pass frontmatter data if available
             )
             component_time = time.time() - component_start
@@ -222,7 +222,7 @@ def run_batch_generation(
         Dictionary with batch generation results
     """
     generator = DynamicGenerator()
-    author_info = get_author_info_for_generation(author_id)
+    author = get_author_info_for_generation(author_id)
 
     # Apply filtering
     if start_index > 0:
@@ -243,8 +243,8 @@ def run_batch_generation(
 
     print(f"🚀 Starting batch generation for {len(materials)} materials")
     print(f"📝 Components: {', '.join(component_types)}")
-    if author_info.get("name") != "AI Assistant":
-        print(f"👤 Author: {author_info['name']} ({author_info['country']})")
+    if author.get("name") != "AI Assistant":
+        print(f"👤 Author: {author['name']} ({author['country']})")
 
     for i, material in enumerate(materials, 1):
         print(f"\n{'='*60}")
@@ -256,7 +256,7 @@ def run_batch_generation(
                 generator=generator,
                 material=material,
                 component_types=component_types,
-                author_info=author_info,
+                author=author,
             )
 
             batch_results["materials_processed"].append(
@@ -345,12 +345,12 @@ def run_material_generation(
                 if material_data:
                     break
     
-    author_info = get_author_info_for_material(material_data, author_id)
+    author = get_author_info_for_material(material_data, author_id)
 
     # Generate content
     return run_dynamic_generation(
         generator=generator,
         material=material,
         component_types=component_types,
-        author_info=author_info,
+        author=author,
     )

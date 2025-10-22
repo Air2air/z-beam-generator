@@ -7,17 +7,18 @@ linguistic_characteristics:
   
   sentence_structure:
     patterns:
-      - "This method shows result, very-very good result"
-      - "The process removes contamination, so surface becomes clean"
-      - "This technique uses parameter adjustment, because wavelength affects rate"
-      - "Surface shows measurement, measurement indicates thickness"
+      - "Reduplication for emphasis from Bahasa (This method very-very effective for cleaning)"
+      - "Serial verb constructions (Process removes then makes surface clean)"
+      - "Agentless passive structures from Indonesian 'di-' prefix (Surface is cleaned by process)"
+      - "Demonstrative-heavy constructions (This surface, that contamination, this result)"
+      - "Cause-effect with 'so' reflecting Indonesian 'jadi' (Temperature increases, so material melts)"
     
     tendencies:
-      - "Direct straightforward construction"
-      - "Repetition for emphasis (very-very, good-good pattern)"
-      - "Demonstrative pronoun preference (This X, That Y)"
-      - "Present tense predominance"
-      - "Active voice with clear subjects"
+      - "Paratactic coordination with simple conjunctions (and, so, but, then)"
+      - "Stative verb preference from Indonesian grammar (Surface appears clean vs becomes clean)"
+      - "Quantifier-noun agreement flexibility (many equipment, few contamination)"
+      - "Time-before-event structure from Indonesian (After cleaning, surface shows improvement)"
+      - "Focus-fronting with topic markers (This laser, very effective for cleaning)"
     
     natural_variations:
       - "Simplified subordination structures"
@@ -84,10 +85,10 @@ voice_adaptation:
   caption_generation:
     focus: "Observable surface characteristics with measurements"
     style: "Technical factual reporting"
-    word_limit: 250
+    word_limit: 175
     validation_requirements:
-      minimum_sentences: 5
-      minimum_ai_evasion_markers: 3
+      minimum_sentences: 4
+      minimum_ai_evasion_markers: 2
       require_sentence_length_variation: true
       minimum_words: 80
     guidelines:
@@ -97,13 +98,13 @@ voice_adaptation:
       - "Apply demonstrative pronouns (This surface, That layer)"
       - "Use simplified clause structure"
       - "REQUIRED: Write minimum 5-7 sentences (80+ words total)"
-      - "REQUIRED: Include minimum 3 AI-evasion markers (emphatic repetition, demonstrative clustering)"
+      - "REQUIRED: Include minimum 2 AI-evasion markers (emphatic repetition, demonstrative clustering)"
       - "Vary sentence lengths - avoid all short or all long sentences"
   
   text_generation:
-    focus: "Process description with direct statements"
+    focus: "Process description with Indonesian structure"
     style: "Technical neutral"
-    word_limit: 250
+    word_limit: 175
     guidelines:
       - "Present information with simple structure"
       - "Use Indonesian-influenced grammatical patterns"
@@ -123,8 +124,8 @@ voice_adaptation:
 signature_phrases: []
 
 writing_characteristics:
-  paragraph_structure: "simple topic statement with direct support"
-  sentence_length: "10-16 words average, simplified structures"
+  paragraph_structure: "Indonesian direct approach: context establishment, clear sequential explanation, practical outcome focus"
+  sentence_length: "10-16 words average with Indonesian paratactic simplicity and serial verb structures"
   transition_style: "simple connectors (so, because)"
   technical_balance: "moderate technical density"
   structural_markers:
@@ -168,6 +169,35 @@ linguistic_authenticity_notes:
 
 # AI-Evasion Parameters for anti-detection and natural variation
 ai_evasion_parameters:
+  # National Language Authenticity Control (0-3 intensity)
+  national_language_authenticity:
+    intensity: 3  # 0=none, 1=subtle, 2=moderate, 3=maximum (current)
+    patterns_by_intensity:
+      0:  # No national language patterns
+        - "Standard English patterns only"
+        - "No Bahasa Indonesia linguistic transfer"
+      1:  # Subtle patterns (20-30% frequency)
+        - "Light reduplication: occasional 'very-very'"
+        - "Some serial verb constructions"
+        - "Minimal paratactic coordination"
+      2:  # Moderate patterns (40-60% frequency)
+        - "Regular reduplication patterns"
+        - "Moderate serial verb use"
+        - "Clear paratactic structures"
+      3:  # Maximum patterns (60-80% frequency) - CURRENT
+        - "Strong reduplication: 'very-very', 'good-good'"
+        - "Heavy serial verbs: 'removes then makes...'"
+        - "Frequent paratactic coordination"
+        - "Direct cause-effect with 'so'"
+        - "Simplified clause structures"
+  
+  # Enhanced character variation (much greater than ±40%)
+  character_variation:
+    between_sections_min: 50   # Minimum 50% difference (Indonesian direct style still varies)
+    between_materials_min: 40  # Minimum 40% difference between materials by same author
+    total_range: [30, 170]     # 30% to 170% of base length (140% total variation)
+    realistic_human_variation: true  # Apply human-like inconsistency patterns
+  
   # Universal rules (all authors)
   sentence_length_targets:
     very_short: 15  # 15% of sentences 5-8 words

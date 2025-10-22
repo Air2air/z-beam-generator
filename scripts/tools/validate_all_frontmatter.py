@@ -56,13 +56,7 @@ class FrontmatterValidator:
             if field not in data:
                 issues.append(f"Missing required field: {field}")
         
-        # Check prompt_chain_verification
-        if 'prompt_chain_verification' not in data:
-            warnings.append("Missing prompt_chain_verification metadata")
-        else:
-            verif = data['prompt_chain_verification']
-            if not verif.get('base_config_loaded'):
-                issues.append("prompt_chain_verification: base_config_loaded is False")
+        # Legacy prompt_chain_verification check removed
         
         # Check materialProperties structure
         if 'materialProperties' in data:

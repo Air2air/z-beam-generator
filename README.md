@@ -901,6 +901,7 @@ All component consolidation work has been completed successfully:
 ## 📚 Documentation
 
 - **[AI-Researched Validation System](docs/AI_RESEARCHED_VALIDATION_SYSTEM.md)** 🔬 **NEW** - Complete validation system documentation
+- **[GROK Instructions](docs/GROK_INSTRUCTIONS.md)** 🚨 **Critical** - Fail-fast architecture principles and AI assistant guidelines
 - [Three-Layer Architecture](docs/CLEAN_ARCHITECTURE_SUMMARY.md)
 - [AI Detection Integration](docs/WINSTON_AI_INTEGRATION.md)
 - [Robustness Framework](docs/z-beam_ROBUSTNESS_IMPROVEMENTS.md)

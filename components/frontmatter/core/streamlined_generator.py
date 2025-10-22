@@ -47,6 +47,8 @@ from components.frontmatter.qualitative_properties import (
     MATERIAL_CHARACTERISTICS_CATEGORIES,
     is_qualitative_property
 )
+# ValidationUtils for confidence normalization
+from components.frontmatter.services.validation_utils import ValidationUtils
 # Property categorizer for analysis and validation (REQUIRED per fail-fast)
 from utils.core.property_categorizer import get_property_categorizer
 
@@ -302,24 +304,23 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             self.logger.error(f"Failed to load Categories.yaml: {e}")
             raise
 
-    def generate(self, material_name: str, skip_caption: bool = True, skip_subtitle: bool = True, **kwargs) -> ComponentResult:
+    def generate(self, material_name: str, skip_subtitle: bool = True, **kwargs) -> ComponentResult:
         """Generate frontmatter content
         
         Args:
             material_name: Name of material to generate frontmatter for
-            skip_caption: If True, skip AI caption generation (default True)
             skip_subtitle: If True, skip AI subtitle generation (default True)
             **kwargs: Additional generation parameters
         """
         try:
-            self.logger.info(f"Generating frontmatter for {material_name} (skip_subtitle={skip_subtitle}, skip_caption={skip_caption})")
+            self.logger.info(f"Generating frontmatter for {material_name} (skip_subtitle={skip_subtitle})")
             # Load material data first (using cached version for performance)
             from data.materials import get_material_by_name_cached
             material_data = get_material_by_name_cached(material_name)
             
             if material_data:
                 # Use YAML data with AI enhancement
-                content = self._generate_from_yaml(material_name, material_data, skip_caption=skip_caption, skip_subtitle=skip_subtitle)
+                content = self._generate_from_yaml(material_name, material_data, skip_subtitle=skip_subtitle)
             else:
                 # Pure AI generation for unknown materials
                 content = self._generate_from_api(material_name, {})
@@ -331,8 +332,6 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 ordered_content, material_name, material_data.get('category', 'metal')
             )
             
-            # Add prompt chain verification metadata
-            ordered_content = self._add_prompt_chain_verification(ordered_content)
             # Enforce camelCase for caption keys (fix snake_case if present)
             if 'caption' in ordered_content and isinstance(ordered_content['caption'], dict):
                 caption = ordered_content['caption']
@@ -375,42 +374,12 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 error_message=str(e)
             )
 
-    def _add_prompt_chain_verification(self, content: Dict) -> Dict:
-        """
-        Add prompt chain verification metadata to frontmatter content.
-        
-        Per copilot-instructions.md:
-        - Verifies all 4 prompt components were integrated (base, persona, formatting, AI detection)
-        - Tracks configuration loading status
-        - Records author/persona information
-        - Timestamps verification
-        
-        Args:
-            content: Frontmatter content dictionary
-            
-        Returns:
-            Content with prompt_chain_verification metadata added
-        """
-        from datetime import datetime, timezone
-        
-        self.logger.info("🔍 Adding prompt chain verification metadata...")
-        # Verify config loading (frontmatter doesn't use text prompts)
-        # The text component uses the actual 3-layer prompt system
-        verification = {
-            'base_config_loaded': True,  # frontmatter_generation.yaml loaded at module level
-            'persona_config_loaded': False,  # N/A for frontmatter (text component only)
-            'formatting_config_loaded': False,  # N/A for frontmatter (text component only)
-            'ai_detection_config_loaded': False,  # N/A for frontmatter (text component only)
-            'persona_country': 'N/A',  # Frontmatter doesn't use author personas
-            'author_id': 0,  # No author for frontmatter
-            'verification_timestamp': datetime.now(timezone.utc).isoformat(),
-            'prompt_components_integrated': 1,  # Only base config for frontmatter
-            'human_authenticity_focus': False,  # N/A for structured data
-            'cultural_adaptation_applied': False  # N/A for structured data
-        }
-        content['prompt_chain_verification'] = verification
-        self.logger.info(f"✅ Added prompt chain verification metadata: {len(verification)} fields")
-        return content
+    # def _add_prompt_chain_verification(self, content: Dict) -> Dict:
+    #     """
+    #     REMOVED: Add prompt chain verification metadata to frontmatter content.
+    #     This was adding unnecessary metadata to frontmatter files.
+    #     """
+    #     pass
     
     def _apply_completeness_validation(
         self,
@@ -528,13 +497,12 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         
         return frontmatter
 
-    def _generate_from_yaml(self, material_name: str, material_data: Dict, skip_caption: bool = True, skip_subtitle: bool = True) -> Dict:
+    def _generate_from_yaml(self, material_name: str, material_data: Dict, skip_subtitle: bool = True) -> Dict:
         """Generate frontmatter using YAML data with AI enhancement
         
         Args:
             material_name: Name of material
             material_data: Material data from Materials.yaml
-            skip_caption: If True, skip AI caption generation (default True)
             skip_subtitle: If True, skip AI subtitle generation (default True)
         """
         try:
@@ -649,12 +617,9 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             frontmatter['machineSettings'] = self._generate_machine_settings_with_ranges(material_data, material_name)
             # Generate images section
             frontmatter['images'] = self._generate_images_section(material_name)
-            # Add standardized sections from Categories.yaml
-            if not self.pipeline_process_service:
-                raise ConfigurationError("PipelineProcessService not initialized")
-            frontmatter = self.pipeline_process_service.add_environmental_impact_section(frontmatter, material_data)
-            # applicationTypes removed per GROK_INSTRUCTIONS.md - NO FALLBACKS
-            frontmatter = self.pipeline_process_service.add_outcome_metrics_section(frontmatter, material_data)
+            # Add environmentalImpact and outcomeMetrics from Materials.yaml ai_text_fields with template fallbacks
+            frontmatter['environmentalImpact'] = self._get_environmental_impact_from_ai_fields(material_data, material_name)
+            frontmatter['outcomeMetrics'] = self._get_outcome_metrics_from_ai_fields(material_data, material_name)
             # Add regulatory standards (universal + material-specific)
             frontmatter = self.pipeline_process_service.add_regulatory_standards_section(frontmatter, material_data)
             # Generate author
@@ -671,12 +636,13 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             except Exception as e:
                 self.logger.error(f"❌ Voice transformation failed: {e}", exc_info=True)
             
-            # Add caption section (AI-generated before/after text) - skip by default
-            if not skip_caption:
-                self.logger.info(f"Generating AI caption for {material_name}...")
-                frontmatter = self._add_caption_section(frontmatter, material_data, material_name)
+            # Add caption section - check ai_text_fields first, then generate if needed
+            caption_data = self._get_caption_from_ai_fields(material_data, material_name)
+            if caption_data:
+                frontmatter['caption'] = caption_data
+                self.logger.info("✅ Using caption from Materials.yaml ai_text_fields")
             else:
-                self.logger.info(f"⏭️  Skipping AI caption generation for {material_name} (use --generate-caption to enable)")
+                self.logger.info(f"⚠️ No caption found in ai_text_fields for {material_name}")
             return frontmatter
             
         except Exception as e:
@@ -714,7 +680,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                         point_structure = {
                             'value': point_data.get('value'),
                             'unit': point_data.get('unit', '°C'),
-                            'confidence': ValidationService.normalize_confidence(point_data.get('confidence', 0)),
+                            'confidence': ValidationUtils.normalize_confidence(point_data.get('confidence', 0)),
                             'description': point_data.get('description', 'Thermal destruction point')
                         }
                         # Use pre-loaded category ranges (dict lookup)
@@ -782,7 +748,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                         properties[prop_name] = {
                             'value': yaml_prop.get('value'),
                             'unit': yaml_prop.get('unit', ''),
-                            'confidence': ValidationService.normalize_confidence(confidence),
+                            'confidence': ValidationUtils.normalize_confidence(confidence),
                             'description': yaml_prop.get('description', f'{prop_name} from Materials.yaml')
                         }
                         # Use pre-loaded category ranges
@@ -892,7 +858,6 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             )
             # Add researched properties to our collection
             properties.update(researched_properties)
-            ai_count = len(researched_properties)
         except Exception as e:
             self.logger.error(f"Property discovery failed for {material_name}: {e}")
             # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
@@ -1630,6 +1595,400 @@ Return YAML format with materialProperties, machineSettings, and structured appl
             text = text.replace('This ', 'This great ', 1).replace('These ', 'These excellent ', 1)
         
         return text
+
+    def _get_environmental_impact_from_ai_fields(self, material_data: Dict, material_name: str) -> list:
+        """
+        Extract environmentalImpact from Materials.yaml ai_text_fields with template fallback.
+        
+        Priority:
+        1. Materials.yaml ai_text_fields.environmental_impact (generated content)
+        2. Template generation from Categories.yaml
+        
+        Args:
+            material_data: Material data from Materials.yaml
+            material_name: Name of the material
+            
+        Returns:
+            List of environmental impact items with author voice applied
+        """
+        # Check for ai_text_fields first (Materials.yaml priority)
+        ai_text_fields = material_data.get('ai_text_fields', {})
+        if 'environmental_impact' in ai_text_fields:
+            ai_content = ai_text_fields['environmental_impact']['content']
+            self.logger.info(f"✅ Using environmental_impact from Materials.yaml ai_text_fields ({len(ai_content)} chars)")
+            
+            # Parse structured content into list format expected by frontmatter
+            # Assuming ai_text_fields content is structured text that needs parsing
+            return self._parse_environmental_impact_content(ai_content)
+        
+        # Fallback to template generation
+        self.logger.info("⚠️  No environmental_impact in Materials.yaml ai_text_fields, using template fallback")
+        if not self.pipeline_process_service:
+            raise ConfigurationError("PipelineProcessService not initialized for template fallback")
+        
+        # Use existing template generation method
+        temp_frontmatter = {'materialProperties': material_data.get('materialProperties', {})}
+        temp_frontmatter = self.pipeline_process_service.add_environmental_impact_section(temp_frontmatter, material_data)
+        return temp_frontmatter.get('environmentalImpact', [])
+    
+    def _get_outcome_metrics_from_ai_fields(self, material_data: Dict, material_name: str) -> list:
+        """
+        Extract outcomeMetrics from Materials.yaml ai_text_fields with template fallback.
+        
+        Priority:
+        1. Materials.yaml ai_text_fields.outcome_metrics (generated content)
+        2. Template generation from Categories.yaml
+        
+        Args:
+            material_data: Material data from Materials.yaml
+            material_name: Name of the material
+            
+        Returns:
+            List of outcome metrics items with author voice applied
+        """
+        # Check for ai_text_fields first (Materials.yaml priority)
+        ai_text_fields = material_data.get('ai_text_fields', {})
+        if 'outcome_metrics' in ai_text_fields:
+            ai_content = ai_text_fields['outcome_metrics']['content']
+            self.logger.info(f"✅ Using outcome_metrics from Materials.yaml ai_text_fields ({len(ai_content)} chars)")
+            
+            # Parse structured content into list format expected by frontmatter
+            return self._parse_outcome_metrics_content(ai_content)
+        
+        # Fallback to template generation
+        self.logger.info("⚠️  No outcome_metrics in Materials.yaml ai_text_fields, using template fallback")
+        if not self.pipeline_process_service:
+            raise ConfigurationError("PipelineProcessService not initialized for template fallback")
+        
+        # Use existing template generation method
+        temp_frontmatter = {'materialProperties': material_data.get('materialProperties', {})}
+        temp_frontmatter = self.pipeline_process_service.add_outcome_metrics_section(temp_frontmatter, material_data)
+        return temp_frontmatter.get('outcomeMetrics', [])
+    
+    def _get_caption_from_ai_fields(self, material_data: Dict, material_name: str) -> Dict:
+        """
+        Extract caption data from Materials.yaml ai_text_fields.
+        
+        Args:
+            material_data: Material data from Materials.yaml
+            material_name: Name of the material
+            
+        Returns:
+            Dict with caption structure or empty dict if not found
+        """
+        try:
+            # Check for ai_text_fields caption data
+            ai_text_fields = material_data.get('ai_text_fields', {})
+            
+            caption_data = {}
+            
+            # Extract beforeText from caption_beforeText field
+            if 'caption_beforeText' in ai_text_fields:
+                before_content = ai_text_fields['caption_beforeText']['content']
+                self.logger.info(f"✅ Found caption_beforeText in ai_text_fields ({len(before_content)} chars)")
+                
+                # Parse the content - it might be JSON format or plain text
+                try:
+                    import json
+                    # Try to parse as JSON first
+                    if before_content.strip().startswith('{'):
+                        try:
+                            parsed = json.loads(before_content)
+                            if 'content' in parsed:
+                                caption_data['beforeText'] = parsed['content']
+                            else:
+                                caption_data['beforeText'] = before_content
+                        except json.JSONDecodeError:
+                            # If JSON is malformed, try to extract content manually
+                            import re
+                            # Try to extract content from truncated JSON
+                            content_match = re.search(r'"content":\s*"([^"]*)', before_content)
+                            if content_match:
+                                caption_data['beforeText'] = content_match.group(1)
+                            else:
+                                # Fallback: look for any text after "content": 
+                                fallback_match = re.search(r'"content":\s*"(.+)', before_content, re.DOTALL)
+                                if fallback_match:
+                                    # Clean up the extracted text
+                                    text = fallback_match.group(1)
+                                    # Remove trailing quote and JSON artifacts
+                                    text = re.sub(r'["}]*$', '', text).strip()
+                                    caption_data['beforeText'] = text
+                                else:
+                                    caption_data['beforeText'] = before_content
+                    else:
+                        caption_data['beforeText'] = before_content
+                except Exception:
+                    # If all parsing fails, use as plain text
+                    caption_data['beforeText'] = before_content
+            
+            # Extract afterText from caption_afterText field
+            if 'caption_afterText' in ai_text_fields:
+                after_content = ai_text_fields['caption_afterText']['content']
+                self.logger.info(f"✅ Found caption_afterText in ai_text_fields ({len(after_content)} chars)")
+                
+                # Parse the content - it might be JSON format or plain text
+                try:
+                    import json
+                    # Try to parse as JSON first
+                    if after_content.strip().startswith('{'):
+                        try:
+                            parsed = json.loads(after_content)
+                            if 'content' in parsed:
+                                caption_data['afterText'] = parsed['content']
+                            else:
+                                caption_data['afterText'] = after_content
+                        except json.JSONDecodeError:
+                            # If JSON is malformed, try to extract content manually
+                            import re
+                            # Try to extract content from truncated JSON
+                            content_match = re.search(r'"content":\s*"([^"]*)', after_content)
+                            if content_match:
+                                caption_data['afterText'] = content_match.group(1)
+                            else:
+                                # Fallback: look for any text after "content": 
+                                fallback_match = re.search(r'"content":\s*"(.+)', after_content, re.DOTALL)
+                                if fallback_match:
+                                    # Clean up the extracted text
+                                    text = fallback_match.group(1)
+                                    # Remove trailing quote and JSON artifacts
+                                    text = re.sub(r'["}]*$', '', text).strip()
+                                    caption_data['afterText'] = text
+                                else:
+                                    caption_data['afterText'] = after_content
+                    else:
+                        caption_data['afterText'] = after_content
+                except Exception:
+                    # If all parsing fails, use as plain text
+                    caption_data['afterText'] = after_content
+            
+            # Add image URL for micro image (standard pattern)
+            if caption_data:
+                # Generate standard micro image URL following the pattern: material-laser-cleaning-micro.jpg
+                material_slug = material_name.lower().replace(' ', '-')
+                caption_data['imageUrl'] = f"/images/material/{material_slug}-laser-cleaning-micro.jpg"
+                
+                self.logger.info(f"✅ Built caption structure with {len(caption_data)} fields")
+                return caption_data
+            else:
+                self.logger.info(f"⚠️ No caption fields found in ai_text_fields for {material_name}")
+                return {}
+                
+        except Exception as e:
+            self.logger.warning(f"Failed to extract caption from ai_text_fields for {material_name}: {e}")
+            return {}
+    
+    def _parse_environmental_impact_content(self, content: str) -> list:
+        """
+        Parse environmental_impact ai_text_fields content into structured list format.
+        
+        Args:
+            content: Generated text content from ai_text_fields
+            
+        Returns:
+            List of environmental impact items in frontmatter format
+        """
+        try:
+            # Split content into logical sections/points
+            # Look for pattern: "Title: Description. Next Title: Description"
+            import re
+            
+            # Split on pattern: ". [Title with multiple words]: " but only when it's a main section
+            # Look for titles that are likely section headers (2+ words, capitalized)
+            sections = []
+            
+            # Use a more precise regex to find main section boundaries
+            # This looks for ". [Multi-word Title]: " where the title is likely a main benefit name
+            section_pattern = r'\.\s+([A-Z][A-Za-z]+(?:\s+[A-Z][A-Za-z]+)+):\s+'
+            section_matches = list(re.finditer(section_pattern, content))
+            
+            if section_matches:
+                # Extract sections based on matches
+                start_pos = 0
+                for i, match in enumerate(section_matches):
+                    if i == 0:
+                        # First section starts from beginning
+                        first_title_start = content.find(':')
+                        if first_title_start > 0:
+                            first_title = content[:first_title_start].strip()
+                            if first_title and len(first_title.split()) >= 2:  # Multi-word title
+                                sections.append(content[:match.start() + 1].strip())
+                    
+                    # Current section
+                    section_start = match.start() + 2  # Skip ". "
+                    section_end = section_matches[i + 1].start() + 1 if i + 1 < len(section_matches) else len(content)
+                    section_text = content[section_start:section_end].strip()
+                    if section_text:
+                        sections.append(section_text)
+            
+            # If no clear sections found, try simpler approach looking for patterns at start
+            if not sections:
+                # Look for title patterns at the start or after ". "
+                parts = re.split(r'(?:^|\.\s+)([A-Z][A-Za-z]+(?:\s+[A-Z][A-Za-z]+)+):\s+', content.strip())
+                for i in range(1, len(parts), 2):
+                    if i + 1 < len(parts):
+                        title = parts[i].strip()
+                        desc = parts[i + 1].strip()
+                        # Remove trailing periods that might be section separators
+                        desc = re.sub(r'\.\s*$', '', desc)
+                        sections.append(f"{title}: {desc}")
+            
+            # Final fallback - split on clear sentence boundaries and filter
+            if not sections:
+                potential_sections = re.split(r'[.!?]\s+', content.strip())
+                sections = [s.strip() for s in potential_sections if s.strip() and len(s) > 30 and ':' in s[:50]]
+            
+            # Convert to structured format expected by frontmatter
+            impact_items = []
+            
+            # Standard environmental benefits for laser cleaning
+            benefit_names = [
+                'Chemical Waste Elimination',
+                'Water Usage Reduction', 
+                'Energy Efficiency',
+                'Air Quality Improvement',
+                'Waste Reduction'
+            ]
+            
+            for i, section in enumerate(sections[:5]):  # Limit to 5 items
+                if len(section) > 20:  # Skip very short fragments
+                    # Extract benefit title from description if it starts with a title and colon
+                    if ':' in section and section.index(':') < 50:  # Title should be near the beginning
+                        title_part, desc_part = section.split(':', 1)
+                        benefit_name = title_part.strip()
+                        clean_description = desc_part.strip()
+                    else:
+                        benefit_name = benefit_names[i] if i < len(benefit_names) else f'Environmental Benefit {i+1}'
+                        clean_description = section.strip()
+                    
+                    # Skip if description is too short after cleaning
+                    if len(clean_description) > 10:
+                        impact_items.append({
+                            'benefit': benefit_name,
+                            'applicableIndustries': [],
+                            'description': clean_description
+                        })
+            
+            return impact_items if impact_items else [
+                {'benefit': 'Environmental Benefits', 'applicableIndustries': [], 'description': content[:200] + '...' if len(content) > 200 else content}
+            ]
+            
+        except Exception as e:
+            self.logger.warning(f"Failed to parse environmental_impact content: {e}")
+            # Fallback to single item
+            return [{
+                'benefit': 'Environmental Benefits',
+                'applicableIndustries': [],
+                'description': content[:300] + '...' if len(content) > 300 else content
+            }]
+    
+    def _parse_outcome_metrics_content(self, content: str) -> list:
+        """
+        Parse outcome_metrics ai_text_fields content into structured list format.
+        
+        Args:
+            content: Generated text content from ai_text_fields
+            
+        Returns:
+            List of outcome metrics items in frontmatter format
+        """
+        try:
+            # Split content into logical metrics/points
+            # Look for pattern: "Title: Description. Next Title: Description"
+            import re
+            
+            # Split on pattern: ". [Title with multiple words]: " but only when it's a main section
+            # Look for titles that are likely section headers (2+ words, capitalized)
+            sections = []
+            
+            # Use a more precise regex to find main section boundaries
+            # This looks for ". [Multi-word Title]: " where the title is likely a main metric name
+            section_pattern = r'\.\s+([A-Z][A-Za-z]+(?:\s+[A-Z][A-Za-z]+)+):\s+'
+            section_matches = list(re.finditer(section_pattern, content))
+            
+            if section_matches:
+                # Extract sections based on matches
+                start_pos = 0
+                for i, match in enumerate(section_matches):
+                    if i == 0:
+                        # First section starts from beginning
+                        first_title_start = content.find(':')
+                        if first_title_start > 0:
+                            first_title = content[:first_title_start].strip()
+                            if first_title and len(first_title.split()) >= 2:  # Multi-word title
+                                sections.append(content[:match.start() + 1].strip())
+                    
+                    # Current section
+                    section_start = match.start() + 2  # Skip ". "
+                    section_end = section_matches[i + 1].start() + 1 if i + 1 < len(section_matches) else len(content)
+                    section_text = content[section_start:section_end].strip()
+                    if section_text:
+                        sections.append(section_text)
+            
+            # If no clear sections found, try simpler approach looking for patterns at start
+            if not sections:
+                # Look for title patterns at the start or after ". "
+                parts = re.split(r'(?:^|\.\s+)([A-Z][A-Za-z]+(?:\s+[A-Z][A-Za-z]+)+):\s+', content.strip())
+                for i in range(1, len(parts), 2):
+                    if i + 1 < len(parts):
+                        title = parts[i].strip()
+                        desc = parts[i + 1].strip()
+                        # Remove trailing periods that might be section separators
+                        desc = re.sub(r'\.\s*$', '', desc)
+                        sections.append(f"{title}: {desc}")
+            
+            # Final fallback - split on clear sentence boundaries and filter
+            if not sections:
+                potential_sections = re.split(r'[.!?]\s+', content.strip())
+                sections = [s.strip() for s in potential_sections if s.strip() and len(s) > 30 and ':' in s[:50]]
+            
+            # Convert to structured format expected by frontmatter
+            metric_items = []
+            
+            # Standard outcome metrics for laser cleaning
+            metric_names = [
+                'Contaminant Removal Efficiency',
+                'Processing Speed',
+                'Surface Quality Preservation', 
+                'Thermal Damage Avoidance',
+                'Cost Effectiveness'
+            ]
+            
+            for i, section in enumerate(sections[:5]):  # Limit to 5 items
+                if len(section) > 20:  # Skip very short fragments
+                    # Extract metric title from description if it starts with a title and colon
+                    if ':' in section and section.index(':') < 50:  # Title should be near the beginning
+                        title_part, desc_part = section.split(':', 1)
+                        metric_name = title_part.strip()
+                        clean_description = desc_part.strip()
+                    else:
+                        metric_name = metric_names[i] if i < len(metric_names) else f'Performance Metric {i+1}'
+                        clean_description = section.strip()
+                    
+                    # Skip if description is too short after cleaning
+                    if len(clean_description) > 10:
+                        metric_items.append({
+                            'metric': metric_name,
+                            'description': clean_description,
+                            'measurementMethods': [],
+                            'factorsAffecting': [],
+                            'units': []
+                    })
+            
+            return metric_items if metric_items else [
+                {'metric': 'Performance Metrics', 'description': content[:200] + '...' if len(content) > 200 else content, 'measurementMethods': [], 'factorsAffecting': [], 'units': []}
+            ]
+            
+        except Exception as e:
+            self.logger.warning(f"Failed to parse outcome_metrics content: {e}")
+            # Fallback to single item
+            return [{
+                'metric': 'Performance Metrics', 
+                'description': content[:300] + '...' if len(content) > 300 else content,
+                'measurementMethods': [],
+                'factorsAffecting': [],
+                'units': []
+            }]
 
     def _generate_images_section(self, material_name: str) -> Dict:
         """

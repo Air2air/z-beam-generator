@@ -36,7 +36,7 @@ class HybridComponentGenerator(APIComponentGenerator):
         material_name: str,
         material_data: Dict,
         api_client=None,
-        author_info: Optional[Dict] = None,
+        author: Optional[Dict] = None,
         frontmatter_data: Optional[Dict] = None,
         schema_fields: Optional[Dict] = None,
     ) -> ComponentResult:
@@ -91,7 +91,7 @@ class HybridComponentGenerator(APIComponentGenerator):
                 material_name=material_name,
                 material_data=material_data,
                 api_client=api_client,
-                author_info=author_info,
+                author=author,
                 frontmatter_data=frontmatter_data,
                 schema_fields=schema_fields,
             )
@@ -115,7 +115,7 @@ class HybridComponentGenerator(APIComponentGenerator):
         self,
         material_name: str,
         material_data: Dict,
-        author_info: Optional[Dict] = None,
+        author: Optional[Dict] = None,
         frontmatter_data: Optional[Dict] = None,
         schema_fields: Optional[Dict] = None,
     ) -> str:
@@ -157,7 +157,7 @@ class HybridComponentGenerator(APIComponentGenerator):
         material_name: str,
         material_data: Dict,
         api_client,
-        author_info: Optional[Dict],
+        author: Optional[Dict],
         frontmatter_data: Dict,
         base_content: str,
     ) -> str:
@@ -169,7 +169,7 @@ class HybridComponentGenerator(APIComponentGenerator):
             material_name: Name of the material
             material_data: Dictionary containing material data
             api_client: API client to use for generation
-            author_info: Optional dictionary containing author information
+            author: Optional dictionary containing author information
             frontmatter_data: Dictionary containing frontmatter data
             base_content: Base content to enhance
             
@@ -182,7 +182,7 @@ class HybridComponentGenerator(APIComponentGenerator):
         # Default implementation just delegates to the API
         # Component classes should override this with more sophisticated logic
         prompt = self._build_prompt(
-            material_name, material_data, author_info, frontmatter_data
+            material_name, material_data, author, frontmatter_data
         )
         try:
             response = api_client.generate(prompt)

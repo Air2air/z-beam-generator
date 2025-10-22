@@ -172,10 +172,18 @@ API_PROVIDERS = {
 # Lower priority numbers = generated first
 COMPONENT_CONFIG = {
     "frontmatter": {
-        "api_provider": "deepseek",  # ✅ API-BASED COMPONENT
+        "api_provider": "deepseek",  # ✅ API-BASED COMPONENT (for non-text fields)
+        "text_api_provider": "grok",  # ✅ TEXT-ONLY COMPONENT (for text fields with linguistic technicalities)
         "priority": 1,
         "enabled": True,  # ENABLED - for comprehensive discovery testing
         "data_provider": "hybrid",  # Uses frontmatter data + AI generation
+        "generation_modes": {
+            "data_only": {"api_provider": "none", "description": "Refresh non-text data from Materials.yaml only"},
+            "text_only": {"api_provider": "grok", "description": "Update text fields with Grok AI"},
+            "hybrid": {"api_provider": "grok", "description": "Data from Materials.yaml + Grok text generation"},
+            "full": {"api_provider": "deepseek", "description": "Complete AI generation with DeepSeek"}
+        },
+        "default_mode": "hybrid",  # Recommended mode for most use cases
     },
     "metatags": {
         "api_provider": "none",  # ❌ NO API - uses frontmatter exclusively
@@ -196,7 +204,7 @@ COMPONENT_CONFIG = {
         "data_provider": "hybrid",  # Uses frontmatter data + AI generation
     },
     "text": {
-        "api_provider": "deepseek",  # ✅ API-BASED COMPONENT
+        "api_provider": "deepseek",  # ✅ API-BASED COMPONENT (for non-text processing)
         "priority": 6,
         "enabled": False,  # DISABLED for caption-focused generation
         "data_provider": "hybrid",  # Uses frontmatter data + AI generation

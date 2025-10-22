@@ -86,26 +86,29 @@ voice_adaptation:
   caption_generation:
     focus: "Observable characteristics with measurements"
     style: "Technical factual"
-    word_limit: 320
+    word_limit: 196
     validation_requirements:
-      minimum_sentences: 6
-      minimum_ai_evasion_markers: 3
+      minimum_sentences: 5
+      minimum_ai_evasion_markers: 2
       require_sentence_length_variation: true
       lexical_variety_minimum: 0.75
     guidelines:
-      - "Use phrasal verbs naturally (set up, figure out)"
+      - "Use authoritative, professional tone - avoid casual greetings or familiar language"
+      - "Begin with direct observations, not personal introductions"
+      - "Use phrasal verbs naturally (set up, figure out) but maintain formal register"
       - "Include measurements with units"
       - "Use active voice with clear subjects"
-      - "Apply idiomatic structures without emotion"
+      - "Apply technical language without colloquialisms"
       - "Maintain standard American English patterns"
       - "REQUIRED: Maintain 75%+ lexical variety - avoid word repetition, use synonyms"
       - "REQUIRED: Mix sentence lengths - 20% short (5-8 words), 40% medium (10-18), 30% long (20-28), 10% very long (30+)"
-      - "Include minimum 3-4 AI-evasion markers for natural flow"
+      - "Include minimum 2-3 AI-evasion markers for natural flow"
+      - "Focus on technical observations rather than personal commentary"
   
   text_generation:
     focus: "Process description with measurements"
     style: "Technical neutral"
-    word_limit: 320
+    word_limit: 196
     guidelines:
       - "Present processes with phrasal verbs"
       - "Include technical measurements"
@@ -127,8 +130,8 @@ voice_adaptation:
 signature_phrases: []
 
 writing_characteristics:
-  paragraph_structure: "topic sentence, evidence/examples, outcome focus"
-  sentence_length: "15-22 words average, varied for engagement"
+  paragraph_structure: "American academic format: topic sentence, supporting evidence with data, analysis, concluding statement"
+  sentence_length: "16-22 words average with American preference for clarity and directness over complexity"
   transition_style: "direct connectors, action-oriented flow"
   technical_balance: "medium technical density with business context"
   voice_preference: "active voice, results-focused, confident tone"
@@ -165,6 +168,35 @@ linguistic_authenticity_notes:
 
 # AI-Evasion Parameters for anti-detection and natural variation
 ai_evasion_parameters:
+  # National Language Authenticity Control (0-3 intensity)
+  national_language_authenticity:
+    intensity: 3  # 0=none, 1=subtle, 2=moderate, 3=maximum (current)
+    patterns_by_intensity:
+      0:  # No enhanced patterns - baseline standard English
+        - "Neutral academic English"
+        - "No regional American markers"
+      1:  # Subtle patterns (20-30% frequency)
+        - "Light phrasal verb use"
+        - "Some quantified results"
+        - "Minimal conditional structures"
+      2:  # Moderate patterns (40-60% frequency)
+        - "Regular phrasal verbs"
+        - "Moderate quantification"
+        - "Clear conditional patterns"
+      3:  # Maximum patterns (60-80% frequency) - CURRENT
+        - "Heavy phrasal verb use: 'sets up', 'figures out'"
+        - "Strong quantification: '97.8% removal'"
+        - "Clear conditional structures: 'If... then...'"
+        - "American academic directness"
+        - "Subject-verb-object clarity"
+  
+  # Enhanced character variation (much greater than ±40%)
+  character_variation:
+    between_sections_min: 55   # Minimum 55% difference between sections
+    between_materials_min: 45  # Minimum 45% difference between materials by same author
+    total_range: [30, 170]     # 30% to 170% of base length (140% total variation)
+    realistic_human_variation: true  # Apply human-like inconsistency patterns
+  
   # Universal rules (all authors)
   sentence_length_targets:
     very_short: 20  # 20% of sentences 5-8 words (more short sentences)

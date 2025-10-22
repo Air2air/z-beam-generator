@@ -248,9 +248,7 @@
       },
       "description": "Material tags"
     },
-    "prompt_chain_verification": {
-      "$ref": "#/definitions/PromptChainVerification"
-    },
+
     "compatibleLaserTypes": {
       "type": "array",
       "items": {
@@ -1254,54 +1252,6 @@
         },
         "metric": {
           "type": "string"
-        }
-      }
-    },
-    "PromptChainVerification": {
-      "type": "object",
-      "required": [
-        "base_config_loaded",
-        "persona_config_loaded",
-        "formatting_config_loaded",
-        "ai_detection_config_loaded",
-        "persona_country",
-        "author_id",
-        "verification_timestamp",
-        "prompt_components_integrated",
-        "human_authenticity_focus",
-        "cultural_adaptation_applied"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "base_config_loaded": {
-          "type": "boolean"
-        },
-        "persona_config_loaded": {
-          "type": "boolean"
-        },
-        "formatting_config_loaded": {
-          "type": "boolean"
-        },
-        "ai_detection_config_loaded": {
-          "type": "boolean"
-        },
-        "persona_country": {
-          "type": "string"
-        },
-        "author_id": {
-          "type": "integer"
-        },
-        "verification_timestamp": {
-          "type": "string"
-        },
-        "prompt_components_integrated": {
-          "type": "integer"
-        },
-        "human_authenticity_focus": {
-          "type": "boolean"
-        },
-        "cultural_adaptation_applied": {
-          "type": "boolean"
         }
       }
     },

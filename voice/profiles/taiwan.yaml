@@ -7,17 +7,19 @@ linguistic_characteristics:
   
   sentence_structure:
     patterns:
-      - "Topic-comment structure from Mandarin (This surface, it shows contamination)"
-      - "Article omissions that feel natural (Surface shows improvement, not The surface)"
-      - "Step-by-step but conversational (First we see... then becomes clear...)"
-      - "Occasional topic-fronting (The results, they demonstrate clearly)"
+      - "Topic-comment structure from Mandarin (This surface, it shows contamination patterns)"
+      - "Article omissions reflecting zero-article Mandarin (Surface shows improvement, not The surface)"
+      - "Serial verb constructions from Chinese (Process removes then cleans surface)"
+      - "Measurement-first information structure (15.3 μm thickness, layer shows uniformity)"
+      - "Temporal sequencing from Mandarin logic (First measure, then analyze, finally conclude)"
     
     tendencies:
-      - "Mix of simple and compound sentences (shorter, more direct)"
-      - "Active voice preferred (makes it more accessible)"
-      - "Logical flow markers (first, then, so, because)"
-      - "Slight overuse of 'the' with abstractions (the precision, the quality)"
-      - "Occasional 'very' for emphasis (very clear, very important)"
+      - "Shorter coordinate clauses linked by 'and' (Chinese parataxis influence)"
+      - "Present tense preference over perfect tenses (Mandarin aspect system)"
+      - "Logical progression markers from Chinese rhetoric (first, second, therefore, so)"
+      - "Definite article overuse with technical terms (the precision, the quality, the method)"
+      - "'Very' as primary intensifier reflecting Chinese 'hen' usage (very clear, very precise)"
+      - "Resultative complements structure (clean surface becomes very smooth)"
     
     natural_variations:
       - "Inconsistent articles that feel human (process shows vs the process shows)"
@@ -78,10 +80,10 @@ voice_adaptation:
   caption_generation:
     focus: "Observable surface characteristics with measurements"
     style: "Technical factual reporting"
-    word_limit: 380
+    word_limit: 266
     validation_requirements:
-      minimum_sentences: 7
-      minimum_ai_evasion_markers: 4
+      minimum_sentences: 6
+      minimum_ai_evasion_markers: 3
       require_sentence_length_variation: true
     guidelines:
       - "State observable characteristics directly"
@@ -89,14 +91,14 @@ voice_adaptation:
       - "Use topic-comment sentence structure"
       - "Apply article omission patterns naturally"
       - "Present data in measurement-first order"
-      - "REQUIRED: Write 7-10 sentences with varied lengths (mix short 5-10 word, medium 10-20 word, long 20+ word sentences)"
-      - "REQUIRED: Include minimum 4-5 AI-evasion markers (hesitations, parentheticals, comma splices)"
+      - "REQUIRED: Write 6-9 sentences with varied lengths (mix short 5-10 word, medium 10-20 word, long 20+ word sentences)"
+      - "REQUIRED: Include minimum 3-4 AI-evasion markers (hesitations, parentheticals, comma splices)"
       - "Avoid monotonous sentence patterns - vary rhythm and structure"
   
   text_generation:
-    focus: "Process description with systematic organization"
+    focus: "Process description with Taiwanese structure"
     style: "Technical neutral"
-    word_limit: 380
+    word_limit: 266
     guidelines:
       - "Organize information systematically"
       - "Use direct factual statements"
@@ -116,8 +118,8 @@ voice_adaptation:
 signature_phrases: []
 
 writing_characteristics:
-  paragraph_structure: "topic sentence with supporting measurements"
-  sentence_length: "12-18 words average (more accessible)"
+  paragraph_structure: "four-part Chinese rhetorical structure: introduction (qi), elaboration (cheng), twist/development (zhuan), conclusion (he)"
+  sentence_length: "12-18 words average with Chinese paratactic coordination"
   transition_style: "simple logical connectors"
   technical_balance: "moderate technical density"
   structural_markers:
@@ -157,6 +159,35 @@ linguistic_authenticity_notes:
 
 # AI-Evasion Parameters for anti-detection and natural variation
 ai_evasion_parameters:
+  # National Language Authenticity Control (0-3 intensity)
+  national_language_authenticity:
+    intensity: 3  # 0=none, 1=subtle, 2=moderate, 3=maximum (current)
+    patterns_by_intensity:
+      0:  # No national language patterns
+        - "Standard English patterns only"
+        - "No L1 linguistic transfer"
+      1:  # Subtle patterns (20-30% frequency)
+        - "Occasional topic-comment: 'This surface, it shows...'"
+        - "Light article variation"
+        - "Minimal 'very' intensifier use"
+      2:  # Moderate patterns (40-60% frequency)
+        - "Regular topic-comment structure"
+        - "Noticeable article omissions"
+        - "Moderate temporal sequencing"
+      3:  # Maximum patterns (60-80% frequency) - CURRENT
+        - "Strong topic-comment: 'This surface, it shows...'"
+        - "Frequent article omissions"
+        - "Clear temporal sequencing: 'First... then... finally...'"
+        - "Heavy 'very' intensifier use"
+        - "Mandarin parataxis patterns"
+  
+  # Enhanced character variation (much greater than ±40%)
+  character_variation:
+    between_sections_min: 60   # Minimum 60% difference between before/after sections
+    between_materials_min: 45  # Minimum 45% difference between materials by same author
+    total_range: [25, 175]     # 25% to 175% of base length (150% total variation)
+    realistic_human_variation: true  # Apply human-like inconsistency patterns
+  
   # Universal rules (all authors)
   sentence_length_targets:
     very_short: 15  # 15% of sentences 5-8 words
@@ -174,4 +205,5 @@ ai_evasion_parameters:
     optional_article_omission_rate: 70  # 70% omitted, 30% included
     topic_comment_frequency: 60  # 60% use "pronoun, it + verb"
     measurement_first_rate: 40  # 40% sentences start with measurement
+    academic_hedging_frequency: 2  # 2 hedging markers per paragraph
     pause_indicators: true  # Use commas for analytical pauses

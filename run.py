@@ -10,9 +10,8 @@ All configurations have been moved to config/settings.py for better organization
 ═══════════════════════════════════════════════════════════════════════════════
 
 🎯 GENERATE CONTENT:
-  python3 run.py --material "Aluminum"     # Specific material (no AI fields)
-  python3 run.py --all                     # All materials (no AI fields)
-  python3 run.py --material "Aluminum" --generate-subtitle --generate-caption  # With AI fields
+  python3 run.py --material "Aluminum"     # Specific material (Materials.yaml-only)
+  python3 run.py --all                     # All materials (Materials.yaml-only)
   python3 run.py --content-batch           # First 8 categories
 
 🚀 DEPLOYMENT:
@@ -1284,7 +1283,7 @@ def main():
     parser.add_argument("--research-batch-size", type=int, default=10, help="Number of properties to research in parallel (default: 10)")
     parser.add_argument("--research-confidence-threshold", type=int, default=70, help="Minimum confidence threshold for research results (default: 70)")
     parser.add_argument("--enforce-completeness", action="store_true", help="Block generation if data completeness below threshold (strict mode)")
-    parser.add_argument("--generate-caption", action="store_true", help="Generate AI caption section (disabled by default to skip caption parsing issues)")
+
     
     args = parser.parse_args()
     
@@ -1443,14 +1442,7 @@ def main():
                     'enforce_completeness': args.enforce_completeness if hasattr(args, 'enforce_completeness') else False,
                 }
                 
-                # Add AI field control flags for frontmatter
-                if component_type == 'frontmatter':
-                    if hasattr(args, 'skip_ai_fields') and args.skip_ai_fields:
-                        generation_kwargs['skip_subtitle'] = True
-                        generation_kwargs['skip_caption'] = True
-                    else:
-                        generation_kwargs['skip_subtitle'] = not (hasattr(args, 'generate_subtitle') and args.generate_subtitle)
-                        generation_kwargs['skip_caption'] = not (hasattr(args, 'generate_caption') and args.generate_caption)
+                # Frontmatter generation is now Materials.yaml-only - no AI flags needed
                 
                 result = generator.generate_component(
                     material=args.material,

@@ -1,71 +1,58 @@
 #!/usr/bin/env python3
 """
-Placeholder Content Validation Utility
+Placeholder Content Validator
 
-Consolidated validation logic for detecting placeholder content across all components.
-This eliminates code duplication and centralizes placeholder validation.
+Validates content to ensure no placeholder text remains in generated content.
 """
 
+import re
 from typing import List
 
 
-def validate_placeholder_content(content: str, extended_check: bool = False) -> List[str]:
+def validate_placeholder_content(content: str) -> List[str]:
     """
-    Validate content for placeholder text (TBD, TODO, brackets).
-
-    This function consolidates the placeholder validation logic that was
-    previously duplicated across multiple component validators.
-
+    Validate that content doesn't contain placeholder text.
+    
     Args:
-        content: The content string to validate
-        extended_check: If True, includes additional placeholder patterns
-
+        content: The content to validate
+        
     Returns:
-        List of validation error messages (empty if no placeholders found)
+        List of validation errors (empty if valid)
     """
     errors = []
-
-    # Basic placeholder patterns
-    basic_placeholders = ["TBD", "TODO"]
-    found_basic = [p for p in basic_placeholders if p in content]
-
-    # Check for brackets
-    has_brackets = "[" in content and "]" in content
-
-    if found_basic or has_brackets:
-        if extended_check:
-            # Extended patterns for more comprehensive checking
-            extended_placeholders = [
-                "[INSERT", "[PLACEHOLDER", "XXXX", "..."
-            ]
-            found_extended = [p for p in extended_placeholders if p in content.upper()]
-
-            all_found = found_basic + found_extended
-            if has_brackets:
-                all_found.append("brackets")
-
-            if all_found:
-                errors.append(f"Contains placeholder content: {', '.join(all_found)}")
-        else:
-            # Basic check for backward compatibility
-            placeholder_list = found_basic[:]
-            if has_brackets:
-                placeholder_list.append("brackets")
-
-            if placeholder_list:
-                errors.append("Contains placeholder content (TBD, TODO, or [brackets])")
-
+    
+    if not content or not content.strip():
+        return errors
+    
+    # Common placeholder patterns
+    placeholder_patterns = [
+        r'\[.*?\]',  # [placeholder text]
+        r'\{.*?\}',  # {placeholder text}
+        r'TODO:',    # TODO markers
+        r'FIXME:',   # FIXME markers  
+        r'XXX',      # XXX markers
+        r'TBD',      # To Be Determined
+        r'placeholder',  # literal "placeholder"
+        r'example',      # literal "example" (context-dependent)
+        r'sample',       # literal "sample" (context-dependent)
+    ]
+    
+    for pattern in placeholder_patterns:
+        matches = re.findall(pattern, content, re.IGNORECASE)
+        if matches:
+            errors.append(f"Found placeholder content: {matches}")
+    
     return errors
 
 
 def has_placeholder_content(content: str) -> bool:
     """
-    Check if content contains any placeholder text.
-
+    Check if content contains placeholder text.
+    
     Args:
-        content: The content string to check
-
+        content: The content to check
+        
     Returns:
         True if placeholder content is found, False otherwise
     """
-    return bool("TBD" in content or "TODO" in content or ("[" in content and "]" in content))
+    return len(validate_placeholder_content(content)) > 0
