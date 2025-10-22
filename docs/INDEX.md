@@ -22,13 +22,21 @@
 | **CLI commands reference** | [reference/CLI_COMMANDS.md](reference/CLI_COMMANDS.md) |
 | **View completion history** | [completion_summaries/INDEX.md](completion_summaries/INDEX.md) |
 
-## 📚 Documentation by Category
+## � **Documentation Consolidation** *(NEW - October 22, 2025)*
+**Streamlined Documentation**: Major consolidation reducing 40 root-level files to 15 essential guides
+- [**DOCUMENTATION_CONSOLIDATION_PLAN.md**](DOCUMENTATION_CONSOLIDATION_PLAN.md) - Complete consolidation plan and migration guide
+- **Consolidated Guides**: Architecture, Data Completeness, Property System now in single comprehensive references
+- **Improved Navigation**: Cleaner structure with better topic organization
+- **Archive Management**: Historical documents preserved but organized
+
+## �📚 Documentation by Category
 
 ### 🏗️ **Core System Knowledge**
 Understanding how Z-Beam works fundamentally
-- [**ARCHITECTURE.md**](core/ARCHITECTURE.md) - System design and fail-fast principles
+- [**ARCHITECTURE_COMPLETE.md**](core/ARCHITECTURE_COMPLETE.md) - ✅ **CONSOLIDATED** Complete system architecture guide *(Oct 22, 2025)*
 - [**DATA_ARCHITECTURE.md**](DATA_ARCHITECTURE.md) - ✅ Range propagation: Categories → Materials → Frontmatter *(Oct 2025)*
-- [**DATA_COMPLETION_ACTION_PLAN.md**](DATA_COMPLETION_ACTION_PLAN.md) - ✅ **NEW** Complete plan to achieve 100% data coverage *(Oct 16, 2025)*
+- [**DATA_COMPLETENESS_COMPLETE_GUIDE.md**](guides/DATA_COMPLETENESS_COMPLETE_GUIDE.md) - ✅ **CONSOLIDATED** Complete data completeness guide *(Oct 22, 2025)*
+- [**PROPERTY_SYSTEM_COMPLETE.md**](guides/PROPERTY_SYSTEM_COMPLETE.md) - ✅ **CONSOLIDATED** Complete property system guide *(Oct 22, 2025)*
 - [**ZERO_NULL_POLICY.md**](ZERO_NULL_POLICY.md) - ✅ Zero null value policy and AI research methodology *(Oct 16, 2025)*
 - [**DATA_VALIDATION_STRATEGY.md**](DATA_VALIDATION_STRATEGY.md) - ✅ 4-layer validation architecture *(Oct 16, 2025)*
 - [**PRIORITY2_COMPLETE.md**](PRIORITY2_COMPLETE.md) - ✅ Priority 2 Research Complete: 12 authoritative properties validated *(Oct 14, 2025)*

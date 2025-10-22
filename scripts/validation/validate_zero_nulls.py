@@ -115,7 +115,7 @@ def validate_materials_yaml() -> Tuple[List[str], Dict[str, List[str]]]:
 
 def validate_frontmatter_files() -> Tuple[List[str], Dict[str, int]]:
     """Validate all frontmatter files for null values"""
-    frontmatter_dir = Path('content/components/frontmatter')
+    frontmatter_dir = Path('content/frontmatter')
     if not frontmatter_dir.exists():
         return [f"ERROR: {frontmatter_dir} not found"], {}
     

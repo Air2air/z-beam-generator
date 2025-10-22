@@ -52,7 +52,7 @@ def main():
     """Clean up all frontmatter files."""
     
     # Find all frontmatter YAML files
-    frontmatter_dir = Path("content/components/frontmatter")
+    frontmatter_dir = Path("content/frontmatter")
     
     if not frontmatter_dir.exists():
         print(f"❌ Frontmatter directory not found: {frontmatter_dir}")

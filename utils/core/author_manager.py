@@ -22,7 +22,7 @@ def load_authors() -> List[Dict[str, Any]]:
         FileNotFoundError: If authors file doesn't exist
         json.JSONDecodeError: If authors file is invalid JSON
     """
-    authors_file = Path("components/author/authors.json")
+    authors_file = Path("data/authors/authors.json")
 
     if not authors_file.exists():
         raise FileNotFoundError(f"Authors file not found: {authors_file}")

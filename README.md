@@ -8,6 +8,9 @@ A dynamic, schema-driven content generator for laser cleaning technical document
 
 ## ✨ Features
 
+- **🚀 NEW: Unified Pipeline Architecture**: Single robust pipeline consolidating all operations (October 2025)
+- **🔍 NEW: Comprehensive Material Auditing**: 8-category audit system with auto-fix capabilities
+- **⚡ NEW: Consolidated Command Interface**: Unified CLI replacing scattered functions
 - **✨ NEW: 100% Data Completeness Validation**: Automatic validation with strict mode enforcement
 - **🔄 NEW: Legacy Property Migration**: Automatic re-categorization of qualitative properties
 - **🤖 NEW: Auto-Remediation**: Triggers research for missing properties during generation
@@ -373,7 +376,7 @@ The frontmatter component now generates a unified structure containing:
 - `author` - Author name from frontmatter
 
 #### For All Components
-- Complete frontmatter file at: `content/components/frontmatter/{material}-laser-cleaning.md`
+- Complete frontmatter file at: `content/frontmatter/{material}-laser-cleaning.yaml`
 
 ### Cascading Failure Behavior
 
@@ -522,7 +525,7 @@ python3 tests/test_frontmatter_validation.py
 #### Debugging Steps
 1. Check frontmatter file:
    ```bash
-   cat content/components/frontmatter/aluminum-laser-cleaning.md
+   cat content/frontmatter/aluminum-laser-cleaning.yaml
    ```
 
 2. Run dependency tests:
@@ -532,7 +535,7 @@ python3 tests/test_frontmatter_validation.py
 
 3. Validate frontmatter structure:
    ```bash
-   python3 -c "import yaml; print(yaml.safe_load(open('content/components/frontmatter/aluminum-laser-cleaning.md')))"
+   python3 -c "import yaml; print(yaml.safe_load(open('content/frontmatter/aluminum-laser-cleaning.yaml')))"
    ```
 
 ### Component Configuration Notes

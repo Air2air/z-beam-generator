@@ -100,7 +100,7 @@ class PreGenerationValidationService:
         """
         self.data_dir = data_dir or Path(".")
         
-        self.frontmatter_dir = self.data_dir / "content" / "components" / "frontmatter"
+        self.frontmatter_dir = self.data_dir / "content" / "frontmatter"
         self.categories_file = self.data_dir / "data" / "Categories.yaml"
         self.materials_file = self.data_dir / "data" / "Materials.yaml"
         

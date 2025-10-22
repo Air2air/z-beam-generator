@@ -94,7 +94,7 @@ def add_material_with_generation(material_name: str, category: str, subcategory:
         
         if result.returncode == 0:
             print(f"   ✅ Generated frontmatter for {material_name}")
-            print("   📄 Check content/components/frontmatter/ for new files")
+            print("   📄 Check content/frontmatter/ for new files")
         else:
             print("   ⚠️  Frontmatter generation had issues:")
             print(f"   {result.stderr}")
@@ -107,7 +107,7 @@ def add_material_with_generation(material_name: str, category: str, subcategory:
     
     try:
         # Check file existence
-        frontmatter_path = f"content/components/frontmatter/{material_name.lower().replace(' ', '-')}.md"
+        frontmatter_path = f"content/frontmatter/{material_name.lower().replace(' ', '-')}.md"
         if os.path.exists(frontmatter_path):
             with open(frontmatter_path, 'r') as f:
                 content = f.read()

@@ -150,7 +150,7 @@ def main():
     print(f"Error threshold: {error_threshold}%")
     print()
     
-    frontmatter_dir = Path("content/components/frontmatter")
+    frontmatter_dir = Path("content/frontmatter")
     files = list(frontmatter_dir.glob("*.yaml"))
     
     results = []

@@ -266,8 +266,8 @@ Examples:
     parser.add_argument(
         '--directory',
         type=Path,
-        default=Path('content/components/frontmatter'),
-        help='Directory containing frontmatter YAML files (default: content/components/frontmatter)'
+        default=Path('content/frontmatter'),
+        help='Directory containing frontmatter YAML files (default: content/frontmatter)'
     )
     
     args = parser.parse_args()

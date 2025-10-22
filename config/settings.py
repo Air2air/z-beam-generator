@@ -167,15 +167,15 @@ API_PROVIDERS = {
     },
 }
 
-# Component Configuration - USER SETTABLE
-# Enable/disable components and set their generation priority
-# Lower priority numbers = generated first
+# Component Configuration - FRONTMATTER-ONLY ARCHITECTURE
+# Only frontmatter component is enabled - all content consolidated into frontmatter YAML
+# Frontend extracts specific components from frontmatter structure
 COMPONENT_CONFIG = {
     "frontmatter": {
         "api_provider": "deepseek",  # ✅ API-BASED COMPONENT (for non-text fields)
         "text_api_provider": "grok",  # ✅ TEXT-ONLY COMPONENT (for text fields with linguistic technicalities)
         "priority": 1,
-        "enabled": True,  # ENABLED - for comprehensive discovery testing
+        "enabled": True,  # ENABLED - Only component in frontmatter-only architecture
         "data_provider": "hybrid",  # Uses frontmatter data + AI generation
         "generation_modes": {
             "data_only": {"api_provider": "none", "description": "Refresh non-text data from Materials.yaml only"},
@@ -185,48 +185,16 @@ COMPONENT_CONFIG = {
         },
         "default_mode": "hybrid",  # Recommended mode for most use cases
     },
-    "metatags": {
-        "api_provider": "none",  # ❌ NO API - uses frontmatter exclusively
-        "priority": 2,
-        "enabled": False,  # DISABLED for caption-focused generation
-        "data_provider": "frontmatter",  # Uses frontmatter data exclusively
-    },
-    "badgesymbol": {
-        "api_provider": "none",  # ❌ NO API - static/deterministic generation
-        "priority": 3,
-        "enabled": False,  # DISABLED for caption-focused generation
-        "data_provider": "static",  # No API calls needed, deterministic
-    },
-    "caption": {
-        "api_provider": "grok",  # ✅ API-BASED COMPONENT - Enhanced AI generation with Grok
-        "priority": 5,
-        "enabled": True,  # ENABLED for caption generation
-        "data_provider": "hybrid",  # Uses frontmatter data + AI generation
-    },
-    "text": {
-        "api_provider": "deepseek",  # ✅ API-BASED COMPONENT (for non-text processing)
-        "priority": 6,
-        "enabled": False,  # DISABLED for caption-focused generation
-        "data_provider": "hybrid",  # Uses frontmatter data + AI generation
-    },
-    "table": {
-        "api_provider": "none",  # ❌ NO API - static/deterministic generation
-        "priority": 7,
-        "enabled": False,  # DISABLED for caption-focused generation
-        "data_provider": "static",  # No API calls needed, no frontmatter dependency
-    },
-    "jsonld": {
-        "api_provider": "none",  # ❌ NO API - uses frontmatter extraction only
-        "priority": 8,
-        "enabled": False,  # ENABLED for JSON-LD generation
-        "data_provider": "static",  # Uses frontmatter data only
-    },
-    "author": {
-        "api_provider": "none",  # ❌ NO API - static component
-        "priority": 9,
-        "enabled": False,  # DISABLED for caption-focused generation
-        "data_provider": "static",  # Static data, no dependencies
-    },
+    # ========================================================================
+    # REMOVED COMPONENTS - Frontend extracts from frontmatter structure:
+    # - metatags: Extracted from frontmatter metadata
+    # - badgesymbol: Extracted from frontmatter material properties  
+    # - caption: Extracted from frontmatter.caption section
+    # - text: Extracted from frontmatter text fields
+    # - table: Extracted from frontmatter.machineSettings section
+    # - jsonld: Extracted from frontmatter structured data
+    # - author: Extracted from frontmatter.author section
+    # ========================================================================
 }
 
 # AI Detection Configuration - USER SETTABLE

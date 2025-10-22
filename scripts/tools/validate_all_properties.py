@@ -495,7 +495,7 @@ class PropertyValidationAgent:
     
     def __init__(self, categories_file: str = "data/Categories.yaml"):
         self.categories_file = Path(categories_file)
-        self.frontmatter_dir = Path("content/components/frontmatter")
+        self.frontmatter_dir = Path("content/frontmatter")
         
         # Load Categories.yaml
         with open(self.categories_file) as f:

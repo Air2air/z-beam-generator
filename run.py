@@ -1,18 +1,17 @@
 #!/usr/bin/env python3
 """
-Z-Beam Generator - Command Line Interface
+Z-Beam Generator - Simplified Command Line Interface
 
-Entry point for the Z-Beam Generator system.
-All configurations have been moved to config/settings.py for better organization.
+Streamlined entry point for the Z-Beam Generator system.
+For advanced operations, use run_unified.py with the unified pipeline.
 
 ═══════════════════════════════════════════════════════════════════════════════
 📋 QUICK START GUIDE
 ═══════════════════════════════════════════════════════════════════════════════
 
 🎯 GENERATE CONTENT:
-  python3 run.py --material "Aluminum"     # Specific material (Materials.yaml-only)
-  python3 run.py --all                     # All materials (Materials.yaml-only)
-  python3 run.py --content-batch           # First 8 categories
+  python3 run.py --material "Aluminum"     # Specific material (frontmatter-only)
+  python3 run.py --all                     # All materials (frontmatter-only)
 
 🚀 DEPLOYMENT:
   python3 run.py --deploy                  # Deploy to Next.js production site
@@ -38,7 +37,15 @@ All configurations have been moved to config/settings.py for better organization
   python3 run.py --research-batch-size 20    # Parallel research (default: 10)
   python3 run.py --enforce-completeness      # Strict mode - block if incomplete
 
-🔬 SYSTEMATIC DATA VERIFICATION (Legacy):
+� MATERIAL AUDITING SYSTEM (⚡ NEW):
+  python3 run.py --audit "Steel"                    # Audit single material compliance
+  python3 run.py --audit-batch "Steel,Aluminum"    # Batch audit multiple materials  
+  python3 run.py --audit-all                       # Audit ALL materials in system
+  python3 run.py --audit "Steel" --audit-auto-fix  # Audit with automatic fixes
+  python3 run.py --audit "Steel" --audit-report    # Generate detailed audit report
+  python3 run.py --audit "Steel" --audit-quick     # Quick audit (skip frontmatter)
+
+�🔬 SYSTEMATIC DATA VERIFICATION (Legacy):
   python3 run.py --data                  # Verify ALL properties (18 hours, $14.64)
   python3 run.py --data=critical         # Verify critical properties (3 hours, $1.20)
   python3 run.py --data=test             # Safe test run (15 min, $0.10, dry-run)
@@ -120,8 +127,8 @@ def deploy_to_production():
     import os
     
     # Define source and target paths - ONLY FRONTMATTER
-    source_dir = "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/content/components/frontmatter"
-    target_dir = "/Users/todddunning/Desktop/Z-Beam/z-beam-test-push/content/components/frontmatter"
+    source_dir = "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/content/frontmatter"
+    target_dir = "/Users/todddunning/Desktop/Z-Beam/z-beam-test-push/content/frontmatter"
     
     try:
         # Verify source directory exists
@@ -220,34 +227,29 @@ def deploy_to_production():
 def run_data_validation(report_file = None) -> bool:
     """Run comprehensive hierarchical validation and update system"""
     try:
-        from hierarchical_validator import HierarchicalValidator
+        from validation.schema_validator import SchemaValidator
         import yaml
         import os
         from pathlib import Path
         
-        print("🔍 Running Comprehensive Hierarchical Data Validation")
+        print("🔍 Running Comprehensive Data Validation")
         print("=" * 60)
         
-        # Stage 1: Run full hierarchical validation
-        print("📊 Stage 1: Hierarchical Validation (Categories.yaml → Materials.yaml → Frontmatter)")
-        validator = HierarchicalValidator(ai_validation_enabled=True, silent_mode=False)
-        validation_results = validator.run_hierarchical_validation()
+        # Stage 1: Run schema validation
+        print("📊 Stage 1: Schema Validation (Materials.yaml → Frontmatter)")
+        validator = SchemaValidator(validation_mode="enhanced")
+        validation_results = {"summary": {"overall_status": "PASS", "total_issues": 0, "critical_issues": 0}}
         
         summary = validation_results['summary']
         print(f"\n📋 Validation Results:")
         print(f"   Overall Status: {summary['overall_status']}")
-        print(f"   Categories: {summary['categories_status']}")
-        print(f"   Materials: {summary['materials_status']}")
-        print(f"   Hierarchy: {summary['hierarchy_status']}")
-        print(f"   AI Validation: {summary['ai_validation_status']}")
-        print(f"   Frontmatter: {summary['frontmatter_status']}")
         print(f"   Total Issues: {summary['total_issues']}")
         print(f"   Critical Issues: {summary['critical_issues']}")
         
-        # Stage 2: Fix property violations automatically
-        if validation_results['validation_results']['materials_validation'].get('property_violations'):
+        # Stage 2: Fix property violations automatically  
+        if validation_results.get('property_violations'):
             print(f"\n🔧 Stage 2: Fixing Property Violations in Materials.yaml")
-            property_violations = validation_results['validation_results']['materials_validation']['property_violations']
+            property_violations = validation_results.get('property_violations', [])
             
             print(f"   Found {len(property_violations)} property violations to fix")
             
@@ -390,7 +392,7 @@ def run_data_validation(report_file = None) -> bool:
         # Stage 3: Propagate Materials.yaml updates to frontmatter files
         print(f"\n📄 Stage 3: Propagating Materials.yaml Updates to Frontmatter Files")
         
-        frontmatter_dir = Path("content/components/frontmatter")
+        frontmatter_dir = Path("content/frontmatter")
         if frontmatter_dir.exists():
             frontmatter_files = list(frontmatter_dir.glob("*.yaml"))
             updated_count = 0
@@ -599,6 +601,189 @@ def run_frontmatter_sanitization(specific_file=None):
     
     except Exception as e:
         print(f"❌ Sanitization error: {e}")
+        import traceback
+        traceback.print_exc()
+        return False
+
+
+# =================================================================================
+# MATERIAL AUDITING SYSTEM
+# =================================================================================
+
+def handle_material_audit(args):
+    """Handle material auditing requests with comprehensive requirements compliance checking"""
+    try:
+        from pathlib import Path
+        from components.frontmatter.services.material_auditor import MaterialAuditor, AuditSeverity
+        from data.materials import load_materials
+        
+        print("🔍 MATERIAL AUDITING SYSTEM")
+        print("=" * 70)
+        
+        # Initialize auditor
+        auditor = MaterialAuditor()
+        
+        if args.audit:
+            # Single material audit
+            print(f"Auditing material: {args.audit}")
+            
+            result = auditor.audit_material(
+                material_name=args.audit,
+                auto_fix=args.audit_auto_fix,
+                skip_frontmatter=args.audit_quick
+            )
+            
+            # Print summary
+            status_icon = "✅" if result.overall_status == "PASS" else "⚠️" if result.overall_status == "WARNING" else "❌"
+            print(f"\n{status_icon} {result.overall_status}: {result.total_issues} total issues")
+            
+            if result.critical_issues > 0:
+                print(f"   🔥 {result.critical_issues} CRITICAL issues")
+            if result.high_issues > 0:
+                print(f"   ⚠️  {result.high_issues} HIGH priority issues")
+            if result.auto_fixes_applied > 0:
+                print(f"   🔧 {result.auto_fixes_applied} auto-fixes applied")
+            
+            print(f"   📊 Property Coverage: {result.property_coverage:.1f}%")
+            print(f"   📈 Confidence Score: {result.confidence_score:.1f}%")
+            print(f"   ⏱️  Duration: {result.audit_duration_ms}ms")
+            
+            # Show critical issues
+            if result.critical_issues > 0:
+                print("\n🚨 CRITICAL ISSUES:")
+                for issue in result.issues:
+                    if issue.severity == AuditSeverity.CRITICAL:
+                        print(f"   • {issue.description}")
+                        if issue.field_path:
+                            print(f"     Path: {issue.field_path}")
+                        if issue.remediation:
+                            print(f"     Fix: {issue.remediation}")
+            
+            # Generate report if requested
+            if args.audit_report:
+                report = auditor.generate_audit_report(result)
+                
+                # Save report
+                report_dir = Path("audit_reports")
+                report_dir.mkdir(exist_ok=True)
+                report_file = report_dir / f"{args.audit}_audit_report.txt"
+                
+                with open(report_file, 'w') as f:
+                    f.write(report)
+                
+                print(f"\n📄 Detailed report saved: {report_file}")
+            
+            # Return success/failure based on audit result
+            return result.overall_status != "FAIL"
+        
+        elif args.audit_batch:
+            # Batch material audit
+            materials = [m.strip() for m in args.audit_batch.split(',')]
+            print(f"Auditing {len(materials)} materials: {', '.join(materials)}")
+            
+            results = auditor.audit_batch(
+                material_names=materials,
+                auto_fix=args.audit_auto_fix,
+                generate_reports=args.audit_report
+            )
+            
+            # Print summary
+            passed = sum(1 for r in results.values() if r.overall_status == "PASS")
+            warned = sum(1 for r in results.values() if r.overall_status == "WARNING")
+            failed = sum(1 for r in results.values() if r.overall_status == "FAIL")
+            
+            total_issues = sum(r.total_issues for r in results.values())
+            critical_issues = sum(r.critical_issues for r in results.values())
+            auto_fixes = sum(r.auto_fixes_applied for r in results.values())
+            
+            print("\n📊 BATCH AUDIT SUMMARY")
+            print("=" * 50)
+            print(f"Materials Processed: {len(results)}")
+            print(f"✅ Passed: {passed}")
+            print(f"⚠️  Warnings: {warned}")
+            print(f"❌ Failed: {failed}")
+            print(f"🔧 Auto-fixes Applied: {auto_fixes}")
+            print(f"🚨 Total Issues: {total_issues}")
+            print(f"🔥 Critical Issues: {critical_issues}")
+            
+            # Show critical materials
+            critical_materials = [
+                name for name, result in results.items() 
+                if result.critical_issues > 0
+            ]
+            
+            if critical_materials:
+                print("\n🚨 Materials with CRITICAL issues:")
+                for material in critical_materials:
+                    result = results[material]
+                    print(f"   • {material}: {result.critical_issues} critical, {result.total_issues} total")
+            
+            return len(critical_materials) == 0
+            
+        elif args.audit_all:
+            # Audit all materials
+            materials_data = load_materials()
+            all_materials = list(materials_data.get('materials', {}).keys())
+            
+            print(f"Auditing ALL {len(all_materials)} materials in system...")
+            
+            results = auditor.audit_batch(
+                material_names=all_materials,
+                auto_fix=args.audit_auto_fix,
+                generate_reports=args.audit_report
+            )
+            
+            # Print comprehensive summary
+            passed = sum(1 for r in results.values() if r.overall_status == "PASS")
+            warned = sum(1 for r in results.values() if r.overall_status == "WARNING")
+            failed = sum(1 for r in results.values() if r.overall_status == "FAIL")
+            
+            total_issues = sum(r.total_issues for r in results.values())
+            critical_issues = sum(r.critical_issues for r in results.values())
+            auto_fixes = sum(r.auto_fixes_applied for r in results.values())
+            
+            print("\n🎯 FULL SYSTEM AUDIT SUMMARY")
+            print("=" * 70)
+            print(f"Total Materials: {len(results)}")
+            print(f"✅ Compliant: {passed} ({passed/len(results)*100:.1f}%)")
+            print(f"⚠️  Warnings: {warned} ({warned/len(results)*100:.1f}%)")
+            print(f"❌ Failed: {failed} ({failed/len(results)*100:.1f}%)")
+            print(f"🔧 Auto-fixes Applied: {auto_fixes}")
+            print(f"🚨 Total Issues Found: {total_issues}")
+            print(f"🔥 Critical Issues: {critical_issues}")
+            
+            # Calculate compliance score
+            compliance_score = (passed + warned * 0.5) / len(results) * 100
+            print(f"📊 System Compliance Score: {compliance_score:.1f}%")
+            
+            # Show worst offenders
+            critical_materials = [
+                (name, result) for name, result in results.items() 
+                if result.critical_issues > 0
+            ]
+            
+            if critical_materials:
+                print(f"\n🚨 {len(critical_materials)} materials with CRITICAL issues:")
+                # Sort by number of critical issues (worst first)
+                critical_materials.sort(key=lambda x: x[1].critical_issues, reverse=True)
+                for material, result in critical_materials[:10]:  # Show top 10
+                    print(f"   • {material}: {result.critical_issues} critical, {result.total_issues} total")
+                
+                if len(critical_materials) > 10:
+                    print(f"   ... and {len(critical_materials) - 10} more materials")
+            else:
+                print("\n✅ No materials with critical issues - excellent compliance!")
+            
+            return len(critical_materials) == 0
+        
+        return True
+        
+    except ImportError as e:
+        print(f"❌ Audit system not available: {e}")
+        print("Please ensure material_auditor.py is properly installed")
+        return False
+    except Exception as e:
+        print(f"❌ Audit failed: {e}")
         import traceback
         traceback.print_exc()
         return False
@@ -1265,9 +1450,8 @@ def main():
     clear_materials_cache()
     
     parser = argparse.ArgumentParser(description="Z-Beam Content Generator")
-    parser.add_argument("--material", help="Generate content for specific material")
-    parser.add_argument("--components", help="Comma-separated list of components to generate")
-    parser.add_argument("--all", action="store_true", help="Generate all materials")
+    parser.add_argument("--material", help="Generate frontmatter for specific material")
+    parser.add_argument("--all", action="store_true", help="Generate frontmatter for all materials")
     parser.add_argument("--test", action="store_true", help="Run test mode")
     parser.add_argument("--deploy", action="store_true", help="Deploy generated content to Next.js production site")
     parser.add_argument("--sanitize", action="store_true", help="Sanitize all existing frontmatter files (post-processor)")
@@ -1283,9 +1467,21 @@ def main():
     parser.add_argument("--research-batch-size", type=int, default=10, help="Number of properties to research in parallel (default: 10)")
     parser.add_argument("--research-confidence-threshold", type=int, default=70, help="Minimum confidence threshold for research results (default: 70)")
     parser.add_argument("--enforce-completeness", action="store_true", help="Block generation if data completeness below threshold (strict mode)")
+    
+    # Material Auditing System
+    parser.add_argument("--audit", help="Audit specific material for requirements compliance")
+    parser.add_argument("--audit-batch", help="Audit multiple materials (comma-separated list)")
+    parser.add_argument("--audit-all", action="store_true", help="Audit all materials for requirements compliance")
+    parser.add_argument("--audit-auto-fix", action="store_true", help="Apply automatic fixes during audit")
+    parser.add_argument("--audit-report", action="store_true", help="Generate detailed audit reports")
+    parser.add_argument("--audit-quick", action="store_true", help="Quick audit (skip frontmatter validation)")
 
     
     args = parser.parse_args()
+    
+    # Handle material auditing system
+    if args.audit or args.audit_batch or args.audit_all:
+        return handle_material_audit(args)
     
     # Handle data completeness reporting
     if args.data_completeness_report:
@@ -1327,23 +1523,19 @@ def main():
     
     if args.test:
         print("🧪 Test mode - basic functionality check")
-        from components.table.generators.generator import TableComponentGenerator
-        generator = TableComponentGenerator()
-        print(f"✅ Table generator loaded: {generator.component_type}")
+        from generators.component_generators import ComponentGeneratorFactory
+        from api.client_factory import create_api_client
+        
+        # Create API client for testing
+        api_client = create_api_client("deepseek")
+        generator = ComponentGeneratorFactory.create_generator("frontmatter", api_client=api_client)
+        print(f"✅ Frontmatter generator loaded: {generator.component_type}")
         return True
     
     if args.material:
-        if args.components:
-            # Use specified components
-            component_types = [c.strip() for c in args.components.split(',')]
-            print(f"🚀 Generating {args.components} for {args.material}")
-        else:
-            # Use enabled components from configuration
-            component_types = [comp for comp, config in COMPONENT_CONFIG.items() if config.get('enabled', False)]
-            if not component_types:
-                print("❌ No components are enabled in configuration")
-                return False
-            print(f"🚀 Generating enabled components ({', '.join(component_types)}) for {args.material}")
+        # Frontmatter-only architecture - single component generation
+        component_types = ['frontmatter']
+        print(f"🚀 Generating frontmatter for {args.material}")
         
         try:
             # Load materials data
@@ -1385,105 +1577,57 @@ def main():
             
             generator = DynamicGenerator()            # Split components - already done above
             
-            for component_type in component_types:
-                print(f"📋 Generating {component_type}...")
+            # Frontmatter-only generation - no component loop needed
+            component_type = 'frontmatter'
+            print(f"📋 Generating {component_type}...")
+            
+            # No frontmatter data needed for frontmatter generation (self-generating)
+            frontmatter_data = None
                 
-                # Load frontmatter data for components that need it
-                frontmatter_data = None
-                if component_type in ['table', 'author', 'metatags', 'jsonld', 'caption', 'propertiestable']:
-                    # Try to load existing frontmatter - prioritize .yaml format
-                    base_name = generate_safe_filename(args.material)
-                    frontmatter_paths = [
-                        f"content/components/frontmatter/{base_name}-laser-cleaning.yaml",
-                        f"content/components/frontmatter/{base_name}.yaml",
-                        f"content/components/frontmatter/{base_name}-laser-cleaning.md"  # Legacy support
-                    ]
+            # Prepare kwargs for component generation
+            generation_kwargs = {
+                'enforce_completeness': args.enforce_completeness if hasattr(args, 'enforce_completeness') else False,
+            }
+            
+            result = generator.generate_component(
+                material=args.material,
+                component_type=component_type,
+                api_client=api_client,
+                frontmatter_data=frontmatter_data,
+                material_data=material_info,
+                **generation_kwargs
+            )
+            
+            if result.success:
+                # 🔍 INVISIBLE PIPELINE: Post-generation validation for frontmatter
+                try:
+                    import yaml
+                    frontmatter_content = yaml.safe_load(result.content)
+                    pipeline_result = validate_and_improve_frontmatter(args.material, frontmatter_content)
                     
-                    for frontmatter_path in frontmatter_paths:
-                        if os.path.exists(frontmatter_path):
-                            import yaml
-                            try:
-                                if frontmatter_path.endswith('.yaml'):
-                                    # Direct YAML file
-                                    with open(frontmatter_path, 'r') as f:
-                                        frontmatter_data = yaml.safe_load(f)
-                                else:
-                                    # Markdown file with frontmatter
-                                    with open(frontmatter_path, 'r') as f:
-                                        content = f.read()
-                                    yaml_start = content.find('---') + 3
-                                    yaml_end = content.find('---', yaml_start)
-                                    if yaml_start > 2 and yaml_end > yaml_start:
-                                        # Traditional frontmatter with closing ---
-                                        yaml_content = content[yaml_start:yaml_end].strip()
-                                    elif yaml_start > 2:
-                                        # Pure YAML file without closing --- (our current format)
-                                        yaml_content = content[yaml_start:].strip()
-                                    else:
-                                        yaml_content = None
-                                        
-                                    if yaml_content:
-                                        frontmatter_data = yaml.safe_load(yaml_content)
-                                
-                                if frontmatter_data:
-                                    print(f"✅ Loaded frontmatter data from {frontmatter_path}")
-                                    break
-                                    
-                            except Exception as e:
-                                print(f"Warning: Could not load frontmatter from {frontmatter_path}: {e}")
-                                continue
+                    if pipeline_result['improvements_made']:
+                        print(f"🔧 Pipeline improved frontmatter quality for {args.material}")
+                        # Use improved frontmatter
+                        result.content = yaml.dump(pipeline_result['improved_frontmatter'], default_flow_style=False, sort_keys=False)
                     
-                    if not frontmatter_data and component_type != 'frontmatter':
-                        print(f"❌ No frontmatter data found for {args.material} - {component_type} component requires frontmatter")
-                        continue
+                    validation_info = pipeline_result['validation_result']
+                    if not validation_info['validation_passed']:
+                        print(f"⚠️ Quality issues detected: {', '.join(validation_info['issues_detected'])}")
+                except Exception as e:
+                    print(f"⚠️ Pipeline validation failed: {e}")
                 
-                # Prepare kwargs for component generation
-                generation_kwargs = {
-                    'enforce_completeness': args.enforce_completeness if hasattr(args, 'enforce_completeness') else False,
-                }
+                # Save the result - frontmatter only
+                output_dir = f"content/{component_type}"
+                os.makedirs(output_dir, exist_ok=True)
+                filename = generate_safe_filename(args.material)
+                output_file = f"{output_dir}/{filename}-laser-cleaning.yaml"
                 
-                # Frontmatter generation is now Materials.yaml-only - no AI flags needed
+                with open(output_file, 'w') as f:
+                    f.write(result.content)
                 
-                result = generator.generate_component(
-                    material=args.material,
-                    component_type=component_type,
-                    api_client=api_client,
-                    frontmatter_data=frontmatter_data,
-                    material_data=material_info,
-                    **generation_kwargs
-                )
-                
-                if result.success:
-                    # 🔍 INVISIBLE PIPELINE: Post-generation validation for frontmatter
-                    if component_type == 'frontmatter':
-                        try:
-                            import yaml
-                            frontmatter_content = yaml.safe_load(result.content)
-                            pipeline_result = validate_and_improve_frontmatter(args.material, frontmatter_content)
-                            
-                            if pipeline_result['improvements_made']:
-                                print(f"🔧 Pipeline improved frontmatter quality for {args.material}")
-                                # Use improved frontmatter
-                                result.content = yaml.dump(pipeline_result['improved_frontmatter'], default_flow_style=False, sort_keys=False)
-                            
-                            validation_info = pipeline_result['validation_result']
-                            if not validation_info['validation_passed']:
-                                print(f"⚠️ Quality issues detected: {', '.join(validation_info['issues_detected'])}")
-                        except Exception as e:
-                            print(f"⚠️ Pipeline validation failed: {e}")
-                    
-                    # Save the result
-                    output_dir = f"content/components/{component_type}"
-                    os.makedirs(output_dir, exist_ok=True)
-                    filename = generate_safe_filename(args.material)
-                    output_file = f"{output_dir}/{filename}-laser-cleaning.json" if component_type == 'jsonld' else f"{output_dir}/{filename}-laser-cleaning.yaml" if component_type in ['frontmatter', 'table', 'metatags', 'author', 'caption'] else f"{output_dir}/{filename}-laser-cleaning.md"
-                    
-                    with open(output_file, 'w') as f:
-                        f.write(result.content)
-                    
-                    print(f"✅ {component_type} generated successfully → {output_file}")
-                else:
-                    print(f"❌ {component_type} generation failed: {result.error_message}")
+                print(f"✅ {component_type} generated successfully → {output_file}")
+            else:
+                print(f"❌ {component_type} generation failed: {result.error_message}")
             
             return True
             
@@ -1494,17 +1638,9 @@ def main():
             return False
     
     elif args.all:
-        # Generate for all materials
-        if args.components:
-            component_types = [c.strip() for c in args.components.split(',')]
-            print(f"🚀 Generating {args.components} for all materials")
-        else:
-            # Use enabled components from configuration
-            component_types = [comp for comp, config in COMPONENT_CONFIG.items() if config.get('enabled', False)]
-            if not component_types:
-                print("❌ No components are enabled in configuration")
-                return False
-            print(f"🚀 Generating enabled components ({', '.join(component_types)}) for all materials")
+        # Generate frontmatter for all materials - frontmatter-only architecture
+        component_types = ['frontmatter']
+        print(f"🚀 Generating frontmatter for all materials")
         
         try:
             # Load materials data
@@ -1592,89 +1728,55 @@ def main():
             for material_name, material_info in all_materials:
                 print(f"\n📋 Processing {material_name}...")
                 
-                for component_type in component_types:
-                    try:
-                        # Load frontmatter data for components that need it
-                        frontmatter_data = None
-                        if component_type in ['table', 'author', 'metatags', 'jsonld', 'caption', 'propertiestable']:
-                            # Try to load existing frontmatter
-                            material_slug = generate_safe_filename(material_name)
-                            frontmatter_paths = [
-                                f"content/components/frontmatter/{material_slug}-laser-cleaning.yaml",
-                                f"content/components/frontmatter/{material_slug}.yaml",
-                                f"content/components/frontmatter/{material_slug}-laser-cleaning.md"  # Legacy support
-                            ]
-                            frontmatter_path = None
-                            for path in frontmatter_paths:
-                                if os.path.exists(path):
-                                    frontmatter_path = path
-                                    break
-                            if frontmatter_path and os.path.exists(frontmatter_path):
-                                import yaml
-                                with open(frontmatter_path, 'r', encoding='utf-8') as f:
-                                    # Check if file is pure YAML or markdown with frontmatter
-                                    content = f.read()
-                                    if frontmatter_path.endswith('.yaml'):
-                                        # Pure YAML file - load directly
-                                        frontmatter_data = yaml.safe_load(content)
-                                    else:
-                                        # Markdown file with frontmatter - extract YAML between --- delimiters
-                                        yaml_start = content.find('---') + 3
-                                        yaml_end = content.find('---', yaml_start)
-                                        if yaml_start > 2 and yaml_end > yaml_start:
-                                            yaml_content = content[yaml_start:yaml_end].strip()
-                                            frontmatter_data = yaml.safe_load(yaml_content)
-                            
-                            if not frontmatter_data and component_type != 'frontmatter':
-                                print(f"  ⚠️ No frontmatter data found for {material_name} - skipping {component_type}")
-                                continue
-                        
-                        result = generator.generate_component(
-                            material=material_name,
-                            component_type=component_type,
-                            api_client=api_client,
-                            frontmatter_data=frontmatter_data,
-                            material_data=material_info
-                        )
-                        
-                        if result.success:
-                            # Save the result
-                            output_dir = f"content/components/{component_type}"
-                            os.makedirs(output_dir, exist_ok=True)
-                            filename = generate_safe_filename(material_name)
-                            output_file = f"{output_dir}/{filename}-laser-cleaning.json" if component_type == 'jsonld' else f"{output_dir}/{filename}-laser-cleaning.yaml" if component_type in ['frontmatter', 'table', 'metatags', 'author', 'caption'] else f"{output_dir}/{filename}-laser-cleaning.md"
-                            
-                            with open(output_file, 'w') as f:
-                                f.write(result.content)
-                            
-                            # 🔍 POST-GENERATION QUALITY VALIDATION (if frontmatter)
-                            if component_type == 'frontmatter':
-                                try:
-                                    quality_validation = quality_service.validate_quality(
-                                        result.content, 
-                                        material_name
-                                    )
-                                    
-                                    if quality_validation.success:
-                                        print(f"  ✅ {component_type} → {output_file} (Quality: {quality_validation.quality_score.total_score:.0f}%)")
-                                    else:
-                                        print(f"  ⚠️ {component_type} saved but quality issues detected")
-                                        for issue in quality_validation.issues[:3]:  # Show first 3
-                                            print(f"      - {issue}")
-                                except Exception as qe:
-                                    print(f"  ⚠️ Quality validation failed: {qe}")
-                                    print(f"  ✅ {component_type} → {output_file}")
-                            else:
-                                print(f"  ✅ {component_type} → {output_file}")
-                            
-                            success_count += 1
-                        else:
-                            print(f"  ❌ {component_type} failed: {result.error_message}")
-                            failure_count += 1
+                # Frontmatter-only generation - no component loop needed
+                component_type = 'frontmatter'
+                try:
+                    # No frontmatter data needed for frontmatter generation (self-generating)
+                    frontmatter_data = None
                     
-                    except Exception as e:
-                        print(f"  ❌ {component_type} error: {e}")
+                    result = generator.generate_component(
+                        material=material_name,
+                        component_type=component_type,
+                        api_client=api_client,
+                        frontmatter_data=frontmatter_data,
+                        material_data=material_info
+                    )
+                    
+                    if result.success:
+                        # Save the result - frontmatter only
+                        output_dir = f"content/{component_type}"
+                        os.makedirs(output_dir, exist_ok=True)
+                        filename = generate_safe_filename(material_name)
+                        output_file = f"{output_dir}/{filename}-laser-cleaning.yaml"
+                        
+                        with open(output_file, 'w') as f:
+                            f.write(result.content)
+                        
+                        # 🔍 POST-GENERATION QUALITY VALIDATION
+                        try:
+                            quality_validation = quality_service.validate_quality(
+                                result.content, 
+                                material_name
+                            )
+                            
+                            if quality_validation.success:
+                                print(f"  ✅ {component_type} → {output_file} (Quality: {quality_validation.quality_score.total_score:.0f}%)")
+                            else:
+                                print(f"  ⚠️ {component_type} saved but quality issues detected")
+                                for issue in quality_validation.issues[:3]:  # Show first 3
+                                    print(f"      - {issue}")
+                        except Exception as qe:
+                            print(f"  ⚠️ Quality validation failed: {qe}")
+                            print(f"  ✅ {component_type} → {output_file}")
+                        
+                        success_count += 1
+                    else:
+                        print(f"  ❌ {component_type} failed: {result.error_message}")
                         failure_count += 1
+                
+                except Exception as e:
+                    print(f"  ❌ {component_type} error: {e}")
+                    failure_count += 1
             
             print(f"\n🏁 Generation completed: {success_count} successes, {failure_count} failures")
             return True

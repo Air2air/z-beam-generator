@@ -200,7 +200,7 @@ REMEMBER: These variations create NATURAL human writing patterns. AI writes too 
 
     def _load_frontmatter_data(self, material_name: str) -> Dict:
         """Load frontmatter data for the material - case-insensitive search"""
-        content_dir = Path("content/components/frontmatter")
+        content_dir = Path("content/frontmatter")
         
         # Normalize material name for more flexible matching
         normalized_name = material_name.lower().replace('_', ' ').replace(' ', '-')

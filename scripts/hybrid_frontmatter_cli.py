@@ -78,7 +78,7 @@ def generate_single_material(
     try:
         # Get existing frontmatter if it exists
         existing_frontmatter = None
-        frontmatter_path = Path(f"content/components/frontmatter/{material_name.lower().replace(' ', '-')}-laser-cleaning.yaml")
+        frontmatter_path = Path(f"content/frontmatter/{material_name.lower().replace(' ', '-')}-laser-cleaning.yaml")
         
         if frontmatter_path.exists():
             try:

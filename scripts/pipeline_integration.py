@@ -14,24 +14,24 @@ from pathlib import Path
 from typing import Dict, Any, Optional
 
 # Import consolidated services
-from validation.services.pre_generation_service import PreGenerationValidationService
-from research.services.ai_research_service import AIResearchEnrichmentService
-from validation.services.post_generation_service import PostGenerationQualityService
+from services.validation import ValidationOrchestrator
+from services.research import AIResearchEnrichmentService
+from services.property import MaterialAuditor
 
 logger = logging.getLogger(__name__)
 
 # Initialize services globally (singleton pattern)
-_pre_gen_service = None
+_validation_service = None
 _research_service = None
-_quality_service = None
+_material_auditor = None
 
 
-def get_pre_generation_service() -> PreGenerationValidationService:
-    """Get or create pre-generation validation service"""
-    global _pre_gen_service
-    if _pre_gen_service is None:
-        _pre_gen_service = PreGenerationValidationService()
-    return _pre_gen_service
+def get_validation_service() -> ValidationOrchestrator:
+    """Get or create unified validation service"""
+    global _validation_service
+    if _validation_service is None:
+        _validation_service = ValidationOrchestrator()
+    return _validation_service
 
 
 def get_research_service() -> AIResearchEnrichmentService:
@@ -46,9 +46,23 @@ def get_research_service() -> AIResearchEnrichmentService:
     return _research_service
 
 
-def get_quality_service() -> PostGenerationQualityService:
-    """Get or create post-generation quality service"""
-    global _quality_service
+def get_material_auditor() -> MaterialAuditor:
+    """Get or create material auditor service"""
+    global _material_auditor
+    if _material_auditor is None:
+        _material_auditor = MaterialAuditor()
+    return _material_auditor
+
+
+# Legacy compatibility functions
+def get_pre_generation_service() -> ValidationOrchestrator:
+    """Legacy compatibility - now returns ValidationOrchestrator"""
+    return get_validation_service()
+
+
+def get_quality_service() -> ValidationOrchestrator:
+    """Legacy compatibility - now returns ValidationOrchestrator"""
+    return get_validation_service()
     if _quality_service is None:
         _quality_service = PostGenerationQualityService()
     return _quality_service

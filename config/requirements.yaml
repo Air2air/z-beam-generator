@@ -1,0 +1,1100 @@
+# =============================================================================
+# Z-BEAM GENERATOR COMPREHENSIVE REQUIREMENTS
+# Single Source of Truth for ALL Generation, Validation, and Auditing Rules
+# =============================================================================
+# 
+# This file consolidates ALL requirements from:
+# - Documentation (docs/validation/, docs/architecture/)
+# - Schema definitions (schemas/active/)
+# - Test specifications (tests/)
+# - System constraints (.github/copilot-instructions.md)
+#
+# CRITICAL: This is the ONLY place where requirements are defined.
+# All generation and auditing systems MUST use this configuration.
+# =============================================================================
+
+version: "2.0"
+last_updated: "2025-10-22"
+source: "Consolidated from docs, schemas, tests, and system constraints"
+
+# =============================================================================
+# 1. DATA ARCHITECTURE REQUIREMENTS
+# =============================================================================
+data_architecture:
+  # Single source of truth principle
+  materials_yaml:
+    role: "Single source of truth for material data"
+    prohibited_fields:
+      - "min"          # ZERO TOLERANCE - ranges come from Categories.yaml
+      - "max"          # ZERO TOLERANCE - ranges come from Categories.yaml  
+      - "range"        # Use separate min/max in Categories.yaml
+      - "bounds"       # Use category ranges instead
+    
+    required_property_fields:
+      mandatory:
+        - "value"      # The actual property value
+        - "unit"       # Standard SI or industry units
+        - "confidence" # 0-100 confidence score
+      recommended:
+        - "source"     # Data source attribution
+        - "description" # Human-readable description
+        - "research_basis" # Research methodology used
+        - "research_date"  # When research was conducted
+        - "validation_method" # How value was validated
+    
+    prohibited_values:
+      - "TODO"
+      - "TBD"
+      - "unknown"
+      - "placeholder"
+      - "N/A"
+      - "default"
+      - "mock"
+      - "test"
+  
+  categories_yaml:
+    role: "Single source of truth for category ranges and definitions"
+    required_sections:
+      - "categories"     # Category definitions
+      - "category_ranges" # Min/max ranges by category
+    
+    range_requirements:
+      format: "Dictionary with min/max keys"
+      validation: "All ranges must have scientific basis"
+      coverage: "Must cover all properties used in materials"
+  
+  frontmatter_files:
+    role: "OUTPUT ONLY - generated from Materials.yaml"
+    prohibition: "NEVER read frontmatter for data persistence"
+    data_flow: "Materials.yaml → Generation → Frontmatter (one-way)"
+
+# =============================================================================
+# 2. SCHEMA COMPLIANCE REQUIREMENTS  
+# =============================================================================
+schema_compliance:
+  validation_hierarchy:
+    primary: "schemas/active/frontmatter_enhanced.json"
+    fallback_1: "schemas/active/frontmatter.json"
+    emergency: "Built-in minimal schema"
+  
+  required_root_fields:
+    mandatory:
+      - "name"           # Material name
+      - "category"       # Material category
+      - "subcategory"    # Material subcategory
+      - "title"          # Display title
+      - "description"    # Material description
+      - "materialProperties" # Property groups
+      - "applications"   # Use cases (≥2 items)
+      - "author"         # Author information
+    optional:
+      - "images"         # Image data
+      - "environmentalImpact" # Environmental data
+      - "outcomeMetrics" # Performance metrics
+      - "regulatoryStandards" # Compliance standards
+      - "tags"           # SEO tags (4-10 items)
+  
+  category_enum:
+    - "metal"           # Metallic materials
+    - "ceramic"         # Ceramic materials  
+    - "composite"       # Composite materials
+    - "semiconductor"   # Semiconductor materials
+    - "glass"           # Glass materials
+    - "stone"           # Stone materials
+    - "wood"            # Wood materials
+    - "plastic"         # Plastic materials
+    - "masonry"         # Masonry materials
+    - "rare-earth"      # Rare earth materials
+  
+  subcategory_enum:
+    metal:
+      - "precious"       # Gold, silver, platinum
+      - "ferrous"        # Iron-based alloys
+      - "non-ferrous"    # Aluminum, copper, etc.
+      - "refractory"     # High-temperature metals
+      - "reactive"       # Reactive metals
+      - "specialty"      # Specialty alloys
+      - "aerospace"      # Aerospace alloys
+    ceramic:
+      - "oxide"          # Oxide ceramics
+      - "nitride"        # Nitride ceramics
+      - "carbide"        # Carbide ceramics
+      - "traditional"    # Traditional ceramics
+    # Additional subcategories per schema
+  
+  validation_modes:
+    basic:
+      description: "Core field validation only"
+      requirements: ["Required fields present", "Basic type checking"]
+    enhanced:
+      description: "Extended validation with quality checks"
+      requirements: ["All basic checks", "Format validation", "Range checking"]
+    research:
+      description: "Research-grade validation with metadata"
+      requirements: ["All enhanced checks", "Source attribution", "Confidence validation"]
+
+# =============================================================================
+# 3. PROPERTY VALIDATION REQUIREMENTS
+# =============================================================================
+property_validation:
+  # Essential properties by material category (from testing and docs)
+  category_requirements:
+    metal:
+      essential_properties:
+        - "density"           # g/cm³ or kg/m³
+        - "thermalConductivity" # W/(m·K)
+        - "hardness"          # Various scales (HB, HV, HRC)
+        - "meltingPoint"      # °C or K
+        - "electricalConductivity" # S/m
+      minimum_coverage: 0.5    # Must have ≥50% of essential properties
+      minimum_total: 5         # Must have ≥5 total properties
+      typical_range: [8, 15]   # Typical property count range
+    
+    ceramic:
+      essential_properties:
+        - "density"
+        - "hardness"
+        - "thermalDestruction" # Melting/decomposition point
+        - "thermalConductivity"
+        - "compressiveStrength"
+      minimum_coverage: 0.5
+      minimum_total: 5
+      typical_range: [6, 12]
+    
+    plastic:
+      essential_properties:
+        - "density"
+        - "thermalDestruction" # Glass transition/melting
+        - "tensileStrength"
+        - "youngsModulus"
+      minimum_coverage: 0.5
+      minimum_total: 4
+      typical_range: [5, 10]
+    
+    glass:
+      essential_properties:
+        - "density"
+        - "thermalDestruction" # Softening point
+        - "refractiveIndex"
+        - "thermalExpansion"
+      minimum_coverage: 0.5
+      minimum_total: 4
+      typical_range: [5, 10]
+    
+    wood:
+      essential_properties:
+        - "density"
+        - "thermalDestruction" # Ignition temperature
+        - "moistureContent"
+      minimum_coverage: 0.5
+      minimum_total: 3
+      typical_range: [4, 8]
+    
+    stone:
+      essential_properties:
+        - "density"
+        - "hardness"
+        - "compressiveStrength"
+      minimum_coverage: 0.5
+      minimum_total: 3
+      typical_range: [4, 8]
+    
+    composite:
+      essential_properties:
+        - "density"
+        - "tensileStrength"
+        - "youngsModulus"
+      minimum_coverage: 0.5
+      minimum_total: 4
+      typical_range: [5, 12]
+    
+    semiconductor:
+      essential_properties:
+        - "density"
+        - "bandGap"
+        - "thermalConductivity"
+      minimum_coverage: 0.5
+      minimum_total: 4
+      typical_range: [5, 10]
+  
+  # Property structure validation
+  property_structure:
+    required_fields:
+      - "value"        # Numeric value
+      - "unit"         # Standard unit
+    
+    optional_fields:
+      - "confidence"   # 0-100 confidence score
+      - "description"  # Human-readable description
+      - "source"       # Data source
+      - "min"          # Minimum range (Categories.yaml only)
+      - "max"          # Maximum range (Categories.yaml only)
+    
+    nested_structures:
+      thermalDestruction:
+        required:
+          - "point"      # Temperature value object
+          - "type"       # Type: melting, decomposition, etc.
+        point_structure:
+          - "value"      # Numeric temperature
+          - "unit"       # Temperature unit (°C, K)
+  
+  # Confidence scoring
+  confidence_requirements:
+    score_ranges:
+      ai_research: [80, 95]     # AI-researched values
+      handbook: [90, 99]        # Reference handbook values
+      database: [85, 98]        # Database values (NIST, etc.)
+      literature: [75, 90]      # Literature values
+      experimental: [85, 95]    # Experimental measurements
+      calculated: [70, 85]      # Calculated/derived values
+    
+    minimum_thresholds:
+      production: 70            # Minimum for production use
+      research: 80              # Minimum for research grade
+      reference: 90             # Minimum for reference data
+    
+    suspicious_patterns:
+      all_100_percent: "Unrealistic - flag for review"
+      all_below_70: "Low confidence - needs improvement"
+      no_confidence: "Missing confidence scores"
+
+# =============================================================================
+# 4. TEXT CONTENT QUALITY REQUIREMENTS
+# =============================================================================
+text_quality:
+  # Line formatting (YAML readability)
+  line_formatting:
+    max_line_length: 120      # Characters per line in YAML output
+    soft_limit: 100           # Preferred line length
+    hard_break_required: true # Must use hard line breaks
+  
+  # Content formatting
+  formatting_rules:
+    no_markdown_artifacts: true    # No **, *, `, #, [], etc.
+    no_double_spaces: true         # Single spaces only
+    proper_capitalization: true    # Sentences start with capitals
+    strip_whitespace: true         # No leading/trailing whitespace
+    consistent_punctuation: true   # Proper sentence endings
+  
+  # Prohibited patterns (from validation docs)
+  prohibited_patterns:
+    markdown:
+      - "**"          # Bold markdown
+      - "*"           # Italic markdown (single)
+      - "`"           # Code markdown
+      - "#"           # Header markdown
+      - "["           # Link markdown start
+      - "]"           # Link markdown end
+      - "(http"       # URL patterns
+    
+    placeholders:
+      - "TODO"
+      - "TBD"
+      - "PLACEHOLDER"
+      - "FIXME"
+      - "XXX"
+    
+    quality_indicators:
+      suspicious_phrases:
+        - "lorem ipsum"
+        - "sample text"
+        - "example content"
+      
+      ai_detection_flags:
+        - "as an AI"
+        - "I cannot"
+        - "I'm unable"
+        - "unfortunately"
+  
+  # Content quality thresholds
+  quality_thresholds:
+    winston_ai_score_minimum: 70   # Human believability
+    human_believability_target: 80 # Target score
+    technical_accuracy_minimum: 85 # Technical content accuracy
+  
+  # Text length requirements (from validation docs)
+  text_length:
+    description:
+      minimum: 50               # Minimum characters
+      maximum: 500              # Maximum characters
+    
+    applications:
+      minimum_count: 2          # Must have ≥2 applications
+      format: "Industry: Description" # Required format
+      min_length_each: 20       # Minimum per application
+    
+    environmental_impact:
+      description_min: 100      # Minimum description length
+      quantified_benefits_min: 50 # Minimum quantified benefits
+
+# =============================================================================
+# 5. AUTHOR VOICE REQUIREMENTS
+# =============================================================================
+author_voice:
+  # Country-specific linguistic characteristics
+  countries:
+    taiwan:
+      writing_characteristics:
+        - "Precision-oriented language"
+        - "Technical exactness emphasis"
+        - "Efficiency and optimization focus"
+        - "Detailed methodology descriptions"
+      
+      vocabulary_indicators:
+        primary:
+          - "precisely"
+          - "methodology"
+          - "systematic"
+          - "optimization"
+          - "efficiency"
+        secondary:
+          - "accuracy"
+          - "calibration"
+          - "specification"
+          - "measurement"
+          - "standardization"
+      
+      sentence_patterns:
+        - "Precise control of..."
+        - "Systematic approach to..."
+        - "Optimized parameters for..."
+        - "Calibrated settings ensure..."
+      
+      technical_emphasis:
+        - "Numerical precision"
+        - "Process optimization"
+        - "Quality control metrics"
+      
+      validation_thresholds:
+        minimum_indicators: 2
+        strength_threshold: 0.3
+        cultural_authenticity_min: 75
+    
+    germany:
+      writing_characteristics:
+        - "Engineering precision"
+        - "Technical thoroughness"
+        - "Systematic methodology"
+        - "Industrial efficiency focus"
+      
+      vocabulary_indicators:
+        primary:
+          - "engineering"
+          - "systematic"
+          - "efficiency"
+          - "precision"
+          - "industrial"
+        secondary:
+          - "optimization"
+          - "methodology"
+          - "specification"
+          - "standardization"
+          - "reliability"
+      
+      sentence_patterns:
+        - "Engineered for optimal..."
+        - "Systematic integration of..."
+        - "Industrial-grade precision..."
+        - "Reliable performance through..."
+      
+      technical_emphasis:
+        - "Engineering principles"
+        - "Industrial applications"
+        - "Process reliability"
+      
+      validation_thresholds:
+        minimum_indicators: 2
+        strength_threshold: 0.3
+        cultural_authenticity_min: 75
+    
+    "united states":
+      writing_characteristics:
+        - "Innovation and advancement focus"
+        - "Performance-oriented language"
+        - "Practical application emphasis"
+        - "Results-driven descriptions"
+      
+      vocabulary_indicators:
+        primary:
+          - "performance"
+          - "innovation"
+          - "advanced"
+          - "cutting-edge"
+          - "breakthrough"
+        secondary:
+          - "superior"
+          - "enhanced"
+          - "optimized"
+          - "state-of-the-art"
+          - "next-generation"
+      
+      sentence_patterns:
+        - "Advanced technology enables..."
+        - "Superior performance through..."
+        - "Innovative approach to..."
+        - "Enhanced capabilities for..."
+      
+      technical_emphasis:
+        - "Performance metrics"
+        - "Innovation benefits"
+        - "Competitive advantages"
+      
+      validation_thresholds:
+        minimum_indicators: 2
+        strength_threshold: 0.3
+        cultural_authenticity_min: 75
+    
+    japan:
+      writing_characteristics:
+        - "Precision manufacturing focus"
+        - "Quality-oriented language"
+        - "Meticulous attention to detail"
+        - "Continuous improvement mindset"
+      
+      vocabulary_indicators:
+        primary:
+          - "precision"
+          - "quality"
+          - "meticulous"
+          - "refinement"
+          - "perfection"
+        secondary:
+          - "excellence"
+          - "mastery"
+          - "craftsmanship"
+          - "dedication"
+          - "attention"
+      
+      sentence_patterns:
+        - "Precisely controlled..."
+        - "Meticulous attention to..."
+        - "Refined process for..."
+        - "Excellence in manufacturing..."
+      
+      technical_emphasis:
+        - "Manufacturing precision"
+        - "Quality assurance"
+        - "Process refinement"
+      
+      validation_thresholds:
+        minimum_indicators: 2
+        strength_threshold: 0.3
+        cultural_authenticity_min: 75
+  
+  # Voice validation requirements
+  validation_requirements:
+    authenticity_scoring:
+      cultural_markers_required: 2    # Minimum cultural indicators
+      linguistic_patterns_min: 1      # Minimum linguistic patterns
+      strength_threshold: 0.3         # Voice strength threshold
+    
+    quality_thresholds:
+      voice_authenticity_min: 75      # Minimum authenticity score
+      human_believability_min: 70     # Must sound human
+      cultural_accuracy_min: 80       # Cultural accuracy
+    
+    detection_methods:
+      vocabulary_analysis: true        # Analyze word choice
+      sentence_structure: true        # Analyze sentence patterns
+      cultural_context: true          # Check cultural references
+      technical_terminology: true     # Verify technical language
+
+# =============================================================================
+# 6. FRONTMATTER STRUCTURE REQUIREMENTS
+# =============================================================================
+frontmatter_structure:
+  # Root-level fields (from schema and validation docs)
+  required_fields:
+    core:
+      - "name"           # Material name (string)
+      - "category"       # Material category (enum)
+      - "subcategory"    # Material subcategory (enum)
+      - "title"          # Display title
+      - "description"    # Material description
+    
+    properties:
+      - "materialProperties" # Property groups object
+    
+    content:
+      - "applications"   # Applications array (≥2 items)
+    
+    metadata:
+      - "author"         # Author object with id, name, etc.
+  
+  # Optional but recommended fields
+  optional_fields:
+    - "subtitle"        # Subtitle text
+    - "images"          # Image data object
+    - "environmentalImpact" # Environmental impact array
+    - "outcomeMetrics"  # Outcome metrics array
+    - "regulatoryStandards" # Standards array
+    - "tags"            # SEO tags array (4-10 items)
+    - "materialCharacteristics" # Additional characteristics
+  
+  # Applications structure (from validation docs)
+  applications:
+    format: "Array of strings"
+    required_format: "Industry: Description"
+    minimum_count: 2
+    maximum_count: 10
+    validation_rules:
+      - "Must contain colon separator"
+      - "Industry must be valid industry name"
+      - "Description must be ≥20 characters"
+    
+    example:
+      - "Aerospace: Precision cleaning of turbine components"
+      - "Electronics: Circuit board contamination removal"
+  
+  # Tags structure (from validation docs)
+  tags:
+    format: "Array of strings"
+    count_range: [4, 10]
+    required_categories:
+      - "category"       # Material category (1 item)
+      - "industries"     # Target industries (2-4 items)
+      - "processes"      # Related processes (1-3 items)
+      - "characteristics" # Material characteristics (1-2 items)
+    
+    validation_rules:
+      - "Must include material category"
+      - "Must include relevant industries"
+      - "No duplicate tags"
+      - "All lowercase with hyphens"
+  
+  # Author structure
+  author:
+    required_fields:
+      - "id"            # Author ID (1-4)
+      - "name"          # Full name
+      - "country"       # Country of origin
+      - "expertise"     # Technical expertise area
+    
+    optional_fields:
+      - "sex"           # Gender (m/f)
+      - "title"         # Academic/professional title
+      - "image"         # Profile image path
+    
+    validation:
+      id_range: [1, 4]           # Valid author IDs
+      countries: ["Taiwan", "Germany", "United States", "Japan"]
+  
+  # Images structure
+  images:
+    hero:
+      required_fields:
+        - "url"          # Image URL/path
+        - "alt"          # Alt text description
+      
+      validation:
+        alt_min_length: 20       # Minimum alt text length
+        url_pattern: "/images/material/"
+  
+  # Material properties structure
+  materialProperties:
+    structure: "Nested object with property groups"
+    property_groups:
+      common:
+        - "laser_material_interaction"
+        - "material_characteristics"
+        - "processing_parameters"
+      
+      validation:
+        min_groups: 1            # Minimum property groups
+        min_properties_per_group: 2 # Minimum properties per group
+    
+    property_structure:
+      required:
+        - "value"        # Property value
+        - "unit"         # Property unit
+        - "confidence"   # Confidence score
+        - "description"  # Property description
+      
+      optional:
+        - "min"          # Minimum value (from Categories.yaml)
+        - "max"          # Maximum value (from Categories.yaml)
+        - "source"       # Data source
+        - "research_basis" # Research methodology
+
+# =============================================================================
+# 7. VALIDATION & AUDIT SEVERITY LEVELS
+# =============================================================================
+validation_severity:
+  # Critical violations (system-breaking)
+  critical:
+    description: "Architectural violations that break system integrity"
+    fail_fast: true
+    examples:
+      data_architecture:
+        - "min/max fields in materials.yaml"
+        - "Mock/fallback sources in production"
+        - "Silent failure patterns"
+        - "Default value bypasses"
+      
+      schema_compliance:
+        - "Missing required root fields"
+        - "Invalid data types"
+        - "Schema validation failures"
+      
+      fail_fast_violations:
+        - "Zero tolerance rule violations"
+        - "Production mock usage"
+        - "Configuration bypass attempts"
+    
+    remediation_priority: "Immediate - blocks generation"
+    escalation: "System administrator"
+  
+  # High priority violations (major issues)
+  high:
+    description: "Major requirement violations affecting quality"
+    fail_fast: false
+    examples:
+      property_coverage:
+        - "Low essential property coverage (<50%)"
+        - "Missing category-required properties"
+        - "Insufficient total property count"
+      
+      content_quality:
+        - "Text quality below thresholds"
+        - "Author voice not detected"
+        - "Format violations"
+      
+      data_completeness:
+        - "Missing confidence scores"
+        - "Unattributed sources"
+        - "Incomplete research metadata"
+    
+    remediation_priority: "High - address within 24 hours"
+    escalation: "Development team"
+  
+  # Medium priority violations (best practices)
+  medium:
+    description: "Best practice violations and quality improvements"
+    fail_fast: false
+    examples:
+      text_quality:
+        - "Weak author voice characteristics"
+        - "Minor formatting issues"
+        - "Line length violations"
+      
+      data_quality:
+        - "Missing optional metadata"
+        - "Confidence patterns suspicious"
+        - "Source attribution incomplete"
+      
+      structure:
+        - "Suboptimal property organization"
+        - "Missing recommended fields"
+        - "Tag count not optimal"
+    
+    remediation_priority: "Medium - address within 1 week"
+    escalation: "Content reviewer"
+  
+  # Low priority violations (optimization)
+  low:
+    description: "Style and optimization suggestions"
+    fail_fast: false
+    examples:
+      optimization:
+        - "Very high confidence patterns (>95% average)"
+        - "Minor formatting improvements"
+        - "Style consistency suggestions"
+      
+      enhancement:
+        - "Additional property opportunities"
+        - "Extended metadata suggestions"
+        - "SEO optimization recommendations"
+    
+    remediation_priority: "Low - address when convenient"
+    escalation: "Content optimizer"
+  
+  # Informational findings
+  info:
+    description: "Informational findings and system status"
+    fail_fast: false
+    examples:
+      status:
+        - "Generation completed successfully"
+        - "No validation issues found"
+        - "Compliance achievements"
+      
+      metrics:
+        - "Performance statistics"
+        - "Quality score improvements"
+        - "System health indicators"
+    
+    remediation_priority: "None - informational only"
+    escalation: "None"
+
+# =============================================================================
+# 8. AUDIT REPORTING CONFIGURATION
+# =============================================================================
+audit_reporting:
+  # Terminal report settings
+  terminal_report:
+    enabled: true
+    show_after_generation: true
+    max_issues_per_severity: 5
+    show_remediation_tips: true
+    include_compliance_status: true
+    include_performance_metrics: true
+    include_text_quality_summary: true
+    
+    # Report sections
+    sections:
+      header:
+        show_material_name: true
+        show_timestamp: true
+        show_overall_status: true
+      
+      summary:
+        show_issue_counts: true
+        show_property_coverage: true
+        show_confidence_score: true
+        show_audit_duration: true
+        show_auto_fixes: true
+      
+      compliance:
+        show_data_storage_policy: true
+        show_data_architecture: true
+        show_schema_compliance: true
+        show_fail_fast_compliance: true
+      
+      issues:
+        group_by_severity: true
+        show_field_paths: true
+        show_remediation: true
+        show_requirement_source: true
+      
+      text_quality:
+        show_formatting_issues: true
+        show_line_break_issues: true
+        show_author_voice_issues: true
+  
+  # Visual indicators
+  icons:
+    severity:
+      critical: "🔥"
+      high: "🚨"
+      medium: "⚠️"
+      low: "💡"
+      info: "ℹ️"
+    
+    status:
+      pass: "✅"
+      fail: "❌"
+      warning: "⚠️"
+      unknown: "❓"
+    
+    categories:
+      data_storage: "💾"
+      architecture: "🏗️"
+      schema: "📋"
+      properties: "🔧"
+      text_quality: "📝"
+      author_voice: "🎭"
+      formatting: "📐"
+      line_breaks: "📏"
+  
+  # Report generation
+  file_reports:
+    enabled: true
+    directory: "audit_reports"
+    filename_pattern: "{material_name}_audit_report.txt"
+    include_timestamp: true
+    detailed_mode: true
+    
+    sections:
+      - "header"
+      - "summary"
+      - "compliance_status"
+      - "issues_by_severity"
+      - "recommendations"
+      - "requirement_sources"
+      - "footer"
+
+# =============================================================================
+# 9. FAIL-FAST ENFORCEMENT RULES
+# =============================================================================
+fail_fast:
+  # Zero tolerance violations (from copilot-instructions.md)
+  zero_tolerance:
+    production_mocks:
+      description: "No mock/fallback sources in production data"
+      examples:
+        - "MockAPIClient usage"
+        - "Fallback response values"
+        - "Default source attribution"
+        - "Placeholder data sources"
+      enforcement: "Immediate system halt"
+    
+    architectural_violations:
+      description: "No min/max in materials.yaml"
+      examples:
+        - "Property min field in materials"
+        - "Property max field in materials"
+        - "Range fields in material properties"
+      enforcement: "Generation blocked"
+    
+    silent_failures:
+      description: "No silent failure patterns"
+      examples:
+        - "except: pass blocks"
+        - "Default values bypassing validation"
+        - "Skip logic (if not exists: return True)"
+        - "Empty error handling"
+      enforcement: "Code review failure"
+  
+  # Pre-execution validation
+  pre_execution_checks:
+    system_requirements:
+      - "Python version ≥3.8"
+      - "Required packages installed"
+      - "Sufficient disk space"
+      - "Network connectivity"
+    
+    configuration_validation:
+      required_files:
+        - "data/Materials.yaml"
+        - "data/Categories.yaml"
+        - "config/requirements.yaml"
+        - "schemas/active/frontmatter_enhanced.json"
+      
+      required_env_vars:
+        - "DEEPSEEK_API_KEY"
+        - "WINSTON_API_KEY"
+      
+      configuration_integrity:
+        - "Materials.yaml schema compliance"
+        - "Categories.yaml completeness"
+        - "No circular dependencies"
+        - "API endpoint accessibility"
+    
+  # Runtime enforcement
+  runtime_validation:
+    property_structure:
+      - "All properties have required fields"
+      - "No prohibited fields in materials"
+      - "Confidence scores within range"
+      - "Sources properly attributed"
+    
+    content_quality:
+      - "No prohibited text patterns"
+      - "Author voice detection passes"
+      - "Text formatting compliance"
+      - "Schema validation passes"
+    
+    data_integrity:
+      - "No duplicate property definitions"
+      - "Category ranges properly applied"
+      - "Research metadata complete"
+      - "Source attribution valid"
+  
+  # Error handling requirements
+  error_handling:
+    required_practices:
+      - "Specific exception types"
+      - "Clear error messages"
+      - "Proper error logging"
+      - "Fail-fast on critical errors"
+    
+    prohibited_practices:
+      - "Generic exception catching"
+      - "Silent error suppression"
+      - "Default value fallbacks"
+      - "Skip-on-error logic"
+    
+    exception_types:
+      - "ConfigurationError"    # Missing/invalid config
+      - "ValidationError"       # Data validation failures
+      - "GenerationError"       # Content generation issues
+      - "SchemaComplianceError" # Schema validation failures
+      - "PropertyDiscoveryError" # Property research failures
+
+# =============================================================================
+# 10. TESTING & QUALITY ASSURANCE REQUIREMENTS
+# =============================================================================
+testing_requirements:
+  # Test coverage requirements
+  coverage_requirements:
+    unit_tests:
+      minimum_coverage: 85      # Minimum unit test coverage
+      critical_paths: 95        # Critical path coverage
+      edge_cases: 90            # Edge case coverage
+    
+    integration_tests:
+      api_integration: true     # API integration tests
+      schema_validation: true   # Schema validation tests
+      end_to_end: true          # Full generation pipeline
+    
+    validation_tests:
+      property_validation: true # Property structure tests
+      content_quality: true     # Text quality tests
+      author_voice: true        # Author voice tests
+      fail_fast: true          # Fail-fast behavior tests
+  
+  # Test data requirements
+  test_data:
+    materials_coverage:
+      - "All 10 material categories"
+      - "All major subcategories"
+      - "Edge cases (minimal properties)"
+      - "Complex cases (many properties)"
+    
+    property_coverage:
+      - "All essential properties by category"
+      - "Nested structures (thermalDestruction)"
+      - "Various confidence levels"
+      - "Different source types"
+    
+    validation_scenarios:
+      - "Valid materials (should pass)"
+      - "Invalid materials (should fail)"
+      - "Edge cases (boundary conditions)"
+      - "Error conditions (missing data)"
+  
+  # Quality gates
+  quality_gates:
+    pre_commit:
+      - "Unit tests pass"
+      - "Linting passes"
+      - "Type checking passes"
+      - "No prohibited patterns"
+    
+    pre_merge:
+      - "All tests pass"
+      - "Integration tests pass"
+      - "Performance benchmarks"
+      - "Security scanning"
+    
+    pre_release:
+      - "End-to-end tests pass"
+      - "Load testing passes"
+      - "Documentation complete"
+      - "Audit compliance verified"
+  
+  # Performance requirements
+  performance_benchmarks:
+    generation_speed:
+      single_material: "<30 seconds" # Single material generation
+      batch_generation: "<5 minutes for 10 materials"
+      audit_speed: "<5 seconds per material"
+    
+    memory_usage:
+      peak_memory: "<2GB"        # Peak memory usage
+      memory_leaks: "None"       # No memory leaks
+      garbage_collection: "Efficient"
+    
+    api_performance:
+      response_time: "<10 seconds" # API response time
+      retry_logic: "3 attempts"   # Retry attempts
+      timeout_handling: "60 seconds" # Request timeout
+
+# =============================================================================
+# 11. SYSTEM INTEGRATION REQUIREMENTS
+# =============================================================================
+system_integration:
+  # Component integration
+  component_requirements:
+    frontmatter_generator:
+      input: "Materials.yaml + Categories.yaml"
+      output: "Validated frontmatter files"
+      validation: "Schema compliance + content quality"
+      error_handling: "Fail-fast with specific errors"
+    
+    property_manager:
+      input: "Material name + category"
+      output: "Property structure with ranges"
+      validation: "Category compliance + data integrity"
+      auditing: "Post-update audit integration"
+    
+    schema_validator:
+      input: "Generated frontmatter content"
+      output: "Validation result + error details"
+      modes: ["basic", "enhanced", "research"]
+      fallback: "Schema hierarchy with emergency mode"
+    
+    audit_system:
+      input: "Material data + frontmatter"
+      output: "Compliance report + remediation"
+      integration: "Property manager post-update hook"
+      reporting: "Terminal + file reports"
+  
+  # Data flow requirements
+  data_flow:
+    primary_flow:
+      - "Materials.yaml (source)"
+      - "Categories.yaml (ranges)"
+      - "Property research/discovery"
+      - "Content generation"
+      - "Schema validation"
+      - "Quality assessment"
+      - "Audit compliance"
+      - "Frontmatter output"
+    
+    validation_checkpoints:
+      - "Pre-generation: Input validation"
+      - "During generation: Content quality"
+      - "Post-generation: Schema compliance"
+      - "Pre-save: Final audit"
+    
+    error_propagation:
+      - "Fail-fast on critical errors"
+      - "Warning accumulation for non-critical"
+      - "Detailed error reporting"
+      - "Remediation suggestions"
+  
+  # API integration
+  api_requirements:
+    deepseek_integration:
+      purpose: "Content generation and research"
+      validation: "Response quality + authenticity"
+      error_handling: "Retry logic + fallback"
+      monitoring: "Response time + success rate"
+    
+    winston_integration:
+      purpose: "AI detection and quality scoring"
+      validation: "Human believability thresholds"
+      error_handling: "Graceful degradation"
+      monitoring: "API availability + accuracy"
+    
+    rate_limiting:
+      deepseek: "Respect API rate limits"
+      winston: "Batch processing optimization"
+      error_handling: "Queue management + retry"
+  
+  # File system integration
+  file_system:
+    directory_structure:
+      data: "Source data files (Materials.yaml, Categories.yaml)"
+      content: "Generated content output"
+      schemas: "Validation schema files"
+      config: "System configuration"
+      logs: "System logs and reports"
+    
+    file_permissions:
+      read_access: "All system components"
+      write_access: "Generation and audit systems only"
+      backup_strategy: "Automatic backup before modifications"
+    
+    file_validation:
+      yaml_syntax: "All YAML files must be valid"
+      json_syntax: "All JSON files must be valid"
+      encoding: "UTF-8 encoding required"
+      line_endings: "Consistent line endings"
+
+# =============================================================================
+# END OF COMPREHENSIVE REQUIREMENTS
+# =============================================================================
+# 
+# This configuration file serves as the SINGLE SOURCE OF TRUTH for all
+# generation, validation, and auditing requirements in the Z-Beam Generator.
+# 
+# All system components MUST reference this file for requirements.
+# No hardcoded requirements are permitted elsewhere in the codebase.
+# 
+# Version: 2.0
+# Consolidation Date: October 22, 2025
+# Coverage: Complete system requirements from all sources
+# =============================================================================

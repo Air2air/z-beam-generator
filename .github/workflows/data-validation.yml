@@ -4,13 +4,13 @@ on:
   push:
     branches: [ main, develop ]
     paths:
-      - 'content/components/frontmatter/**/*.yaml'
+      - 'content/frontmatter/**/*.yaml'
       - 'data/Categories.yaml'
       - 'data/Materials.yaml'
   pull_request:
     branches: [ main, develop ]
     paths:
-      - 'content/components/frontmatter/**/*.yaml'
+      - 'content/frontmatter/**/*.yaml'
       - 'data/Categories.yaml'
       - 'data/Materials.yaml'
   workflow_dispatch:  # Allow manual trigger

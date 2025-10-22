@@ -234,7 +234,7 @@ def validate_frontmatter_file(file_path: Path) -> Dict[str, Any]:
 def validate_all_frontmatter_files() -> Dict[str, Any]:
     """Validate all frontmatter files for caption integration."""
     
-    frontmatter_dir = Path("content/components/frontmatter")
+    frontmatter_dir = Path("content/frontmatter")
     
     if not frontmatter_dir.exists():
         return {

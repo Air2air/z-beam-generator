@@ -555,7 +555,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             
             # Check for existing frontmatter applications as fallback
             if not yaml_industries or not frontmatter.get('applications'):
-                existing_frontmatter_path = f"content/components/frontmatter/{material_name.lower().replace(' ', '-')}-laser-cleaning.yaml"
+                existing_frontmatter_path = f"content/frontmatter/{material_name.lower().replace(' ', '-')}-laser-cleaning.yaml"
                 try:
                     import yaml as yaml_lib
                     from pathlib import Path

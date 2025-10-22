@@ -351,6 +351,11 @@ class ComponentGeneratorFactory:
                 from components.author.generator import AuthorComponentGenerator
 
                 return AuthorComponentGenerator()
+            elif component_type == "caption":
+                # Use refactored caption generator (68% code reduction: 928 → 315 lines)
+                from components.caption.core.generator import RefactoredCaptionGenerator
+
+                return RefactoredCaptionGenerator()
             # Try hybrid components first for known hybrid components
             elif component_type in ["metatags", "jsonld", "propertiestable", "badgesymbol"]:
                 # Use logging to show we're trying to use hybrid generators

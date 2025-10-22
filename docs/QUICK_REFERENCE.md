@@ -29,6 +29,8 @@
 - `python3 run.py --data-completeness-report` (full status report)
 - `python3 run.py --data-gaps` (research priorities)
 - `python3 run.py --enforce-completeness` (strict mode - blocks if incomplete)
+- `python3 run_unified.py --data-completion` (unified pipeline - data completeness)
+- `python3 run_unified.py --data-gaps` (unified pipeline - research priorities)
 **→ Current Status**: 93.5% complete (1,975/2,240 properties)
 **→ What You See**: Category ranges (98.7%), material values (88.2%), top missing properties
 **→ Next Steps**: Automatically links to action plan and research tools
@@ -43,6 +45,12 @@
 - **Strict Mode**: `--enforce-completeness` fails generation if incomplete
 - **Auto-Remediation**: Fills gaps automatically via AI research
 - **14 Tests**: Complete test coverage in `tests/test_data_completeness.py`
+
+**🚀 NEW (October 22, 2025)**: Unified Pipeline Architecture:
+- **Single Entry Point**: `run_unified.py` consolidates all operations
+- **13 Operation Modes**: Material generation, auditing, research, validation, system management
+- **Robust Error Handling**: Fail-fast validation with comprehensive error reporting
+- **Service Integration**: All scattered functions consolidated into unified handlers
 
 ### "How do I fix missing property data?" / "What's the data completion plan?"
 **→ Immediate Response**: ✅ **COMPREHENSIVE PLAN READY** - 93.5% complete, path to 100% documented
@@ -286,7 +294,7 @@ grep -A5 -B5 "METADATA START\|CONTENT START" content/components/text/testmateria
 **→ Immediate Response**: Intentional verbosity reduction - essential information preserved
 **→ Quick Check**: Verify streamlined sections contain core data (description, industries, metrics)
 **→ Missing Verbose Fields**: This is expected behavior for cleaner output
-**→ Validation**: `python3 -c "import yaml; data=yaml.safe_load(open('content/components/frontmatter/[material]-laser-cleaning.yaml')); print('✅' if all(len(data.get(s, [])) == 4 for s in ['environmentalImpact', 'applicationTypes', 'outcomeMetrics']) else '❌')"`
+**→ Validation**: `python3 -c "import yaml; data=yaml.safe_load(open('content/frontmatter/[material]-laser-cleaning.yaml')); print('✅' if all(len(data.get(s, [])) == 4 for s in ['environmentalImpact', 'applicationTypes', 'outcomeMetrics']) else '❌')"`
 **→ Rollback**: If verbose fields are required, revert to Categories.yaml v2.2.0
 
 ### "Test failures after verbosity reduction"

@@ -1,11 +1,25 @@
 """
-Validation Utilities for Frontmatter Generation
+DEPRECATED: Validation Utilities for Frontmatter Generation
 
-Phase 3.3 optimization: Consolidate duplicate validation logic into reusable utilities.
-This prevents code duplication without creating a heavyweight validation service.
+This file is deprecated as part of the service consolidation plan.
+Use services.validation.ValidationOrchestrator instead.
 
-Last Updated: October 16, 2025
+Functionality moved to:
+- services.validation.ValidationOrchestrator (main validation interface)
+- services.validation.UnifiedSchemaValidator (schema validation)
+
+Last Updated: October 22, 2025 - Deprecated
 """
+
+import warnings
+
+# Issue deprecation warning
+warnings.warn(
+    "components.frontmatter.services.validation_utils is deprecated. "
+    "Use services.validation.ValidationOrchestrator instead.",
+    DeprecationWarning,
+    stacklevel=2
+)
 
 from typing import Union
 

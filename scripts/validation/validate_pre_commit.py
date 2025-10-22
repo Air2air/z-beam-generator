@@ -29,7 +29,7 @@ def get_staged_yaml_files():
     # Filter for relevant files
     relevant = []
     for f in yaml_files:
-        if 'content/components/frontmatter' in f or \
+        if 'content/frontmatter' in f or \
            'data/Categories.yaml' in f or \
            'data/Materials.yaml' in f:
             relevant.append(f)
