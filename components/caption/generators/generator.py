@@ -592,7 +592,10 @@ REMEMBER: These variations create NATURAL human writing patterns. AI writes too 
             actual_material_key = None
             materials_section = materials_data['materials']
             for key in materials_section.keys():
-                if key.lower() == material_name.lower():
+                # Handle space vs underscore variations and case insensitive matching
+                key_normalized = key.lower().replace('_', ' ').replace('-', ' ')
+                material_normalized = material_name.lower().replace('_', ' ').replace('-', ' ')
+                if key_normalized == material_normalized:
                     actual_material_key = key
                     break
             
@@ -601,10 +604,11 @@ REMEMBER: These variations create NATURAL human writing patterns. AI writes too 
                 return False
             
             # Add caption data to the material using the actual key
-            if 'captions' not in materials_section[actual_material_key]:
-                materials_section[actual_material_key]['captions'] = {}
+            if 'caption' not in materials_section[actual_material_key]:
+                materials_section[actual_material_key]['caption'] = {}
             
-            materials_section[actual_material_key]['captions'].update(caption_data)
+            # Update caption data
+            materials_section[actual_material_key]['caption'].update(caption_data)
             
             # Create backup
             backup_path = materials_path.with_suffix(f'.backup_{caption_data["generated"].replace(":", "").replace("-", "").replace("Z", "")}.yaml')

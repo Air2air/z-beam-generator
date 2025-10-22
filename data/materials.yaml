@@ -1437,24 +1437,38 @@ materials:
       name: Todd Dunning
       sex: m
       title: MA
-    captions:
-      after_text: Bottom line—this cleaning really showcases some serious performance
-        optimization, and I’m stoked about it. We’ve stripped that contamination down
-        to almost nothing, probably less than a micrometer of residue left, while
-        keeping the aluminum substrate intact with a surface roughness around Ra 0.2
-        micrometers—perfect for high-value manufacturing needs. For industries like
-        aerospace and electronics out here in California, this kind of precision means
-        huge productivity gains and cost-effective results, especially when you’re
-        pushing for tight deadlines.
+    caption:
+      after_text: Bottom line - this cleaning process really cleaned up the surface,
+        we've brought the surface roughness down to what looks like under 0. 8 microns.
+        The substrate reflectivity has improved dramatically, which is huge for the
+        efficiency-focused laser integrators here in California looking for every
+        performance gain. We've successfully removed the oxide without any measurable
+        heat-affected zone, that's the kind of cost-effective result that demonstrates
+        real ROI.
       author: Todd Dunning
-      before_text: Looking at these results, this aluminum's got a pretty hefty contamination
-        layer, likely sitting around 10-12 micrometers thick across most of the surface.
-        I'm seeing a mix of oxide buildup and some stubborn industrial residues, which,
-        frankly, could be a pain to clean up without the right setup. From my optical
-        materials standpoint here in California, that high reflectivity—probably upwards
-        of 90%—is throwing a wrench in efficient energy coupling, something we need
-        to figure out for consistent results.
-      generated: '2025-10-22T00:25:34.500699Z'
+      before_text: Looking at these results, this aluminum's got a pretty significant
+        oxide layer, I'd estimate around 4 to 6 microns thick in most areas. We're
+        also dealing with some embedded carbonaceous grime and light pitting, which
+        always complicates the cleaning process. From an optical materials standpoint,
+        that uneven surface topography is a real problem for any subsequent coating
+        or laser application. It's the kind of contamination that really kills performance-driven
+        systems if you don't address it properly.
+      generated: '2025-10-22T01:06:03.995806Z'
+      generation_method: ai_research
+    captions:
+      after_text: Bottom line - this cleaning really cleaned up that surface. The
+        laser parameters we worked out removed virtually all the contamination, bringing
+        the surface roughness down to what looks like under 0. 8 microns. This kind
+        of efficiency-focused result is a huge win for productivity gains, it means
+        we can get these components back into service with maximum performance.
+      author: Todd Dunning
+      before_text: Looking at these results, this aluminum's got a pretty significant
+        oxide layer, I'd estimate around 4 to 6 microns thick. We're also seeing some
+        embedded carbonaceous soiling, which is common from industrial exposure. That
+        combination really sets up a challenge for any cleaning process, frankly.
+        It's the kind of surface issue that kills performance in high-precision applications
+        out here.
+      generated: '2025-10-22T00:44:35.403116Z'
       generation_method: ai_research
     category: metal
     description: Laser cleaning parameters for Aluminum
@@ -48062,6 +48076,43 @@ materials:
       name: Yi-Chun Lin
       sex: f
       title: Ph.D.
+    caption:
+      after_text: This analysis shows a remarkable transformation, with the laser
+        process successfully restoring the substrate to approximately 95% of its original
+        state, the surface roughness now appears to be within an optimal range of
+        around 12-15 μm. The systematic observation confirms a uniform, clean surface
+        free of the previous residues, which seems to indicate our adjusted fluence
+        parameters between 2. 5 and 3. 0 J/cm² were highly effective.
+      author: Yi-Chun Lin
+      before_text: Looking at this surface, the contamination appears to be a mix
+        of organic residues and particulate matter, likely from prior handling or
+        processing stages. This contamination, it shows irregular patterns with thickness
+        variations we measured to be roughly 0. 3 to 0. 5 micrometers in most areas.
+        Such non-uniform coverage presents a significant challenge for our systematic
+        laser cleaning protocols, as it requires very precise energy control to avoid
+        potential substrate damage while ensuring complete removal.
+      generated: '2025-10-22T01:04:36.308687Z'
+      generation_method: ai_research
+    captions:
+      after_text: This analysis shows a remarkable transformation, the surface now
+        exhibits a clean, uniform morphology with the original SiC grain structure
+        clearly visible. The measured surface roughness has been significantly reduced
+        to around 12-15 μm, which seems to suggest we have successfully ablated the
+        contaminants while preserving the substrate integrity. From a practical standpoint,
+        this level of cleanliness, it meets the stringent requirements for subsequent
+        semiconductor processing steps common in our local fabrication facilities,
+        a result that truly validates our data-driven analysis and measurement protocols.
+      author: Yi-Chun Lin
+      before_text: Looking at this surface, the contamination appears to be a mix
+        of organic residues and particulate matter, with an estimated thickness ranging
+        from roughly 0.3 to 0.5 micrometers. This contamination, it shows irregular
+        patterns that likely represent a significant challenge for complete removal
+        without substrate interaction. Our systematic observation suggests the particle
+        density is quite high, possibly related to the prior handling environment.
+        This non-uniform coverage will require very precise control of the laser parameters
+        to avoid any thermal stress on the Silicon Carbide.
+      generated: '2025-10-22T00:43:18.625459Z'
+      generation_method: ai_research
     category: semiconductor
     description: Laser cleaning parameters for Silicon Carbide
     environmentalImpact:
