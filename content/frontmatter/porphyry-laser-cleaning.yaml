@@ -14,8 +14,7 @@ author:
   title: Ph.D.
 images:
   hero:
-    alt: Porphyry surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Porphyry surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/porphyry-laser-cleaning-hero.jpg
 regulatoryStandards:
 - name: ANSI
@@ -40,24 +39,19 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
     specificHeat:
       value: 850.0
       min: 400
       max: 1200
       unit: J/(kg·K)
-      research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
-        of Minerals and Rocks, with specific analysis of porphyritic rocks including
-        quartz-feldspar porphyry compositions'
+      research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties of Minerals and Rocks, with specific analysis of porphyritic rocks including quartz-feldspar porphyry compositions'
     thermalConductivity:
       value: 2.9
       min: 0.2
       max: 8
       unit: W/(m·K)
-      research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
-        of Minerals and Rocks, supplemented by Geological Society of London Special
-        Publication 240 on Porphyry Properties'
+      research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties of Minerals and Rocks, supplemented by Geological Society of London Special Publication 240 on Porphyry Properties'
     thermalDestruction:
       value: 800.0
       unit: °C
@@ -67,79 +61,49 @@ materialProperties:
       min: 0.2
       max: 2.5
       unit: mm²/s
-      research_basis: ASTM E1461-13 Standard Test Method for Thermal Diffusivity by
-        the Flash Method, with specific application to porphyritic igneous rocks from
-        geological surveys and materials characterization studies
+      research_basis: ASTM E1461-13 Standard Test Method for Thermal Diffusivity by the Flash Method, with specific application to porphyritic igneous rocks from geological surveys and materials characterization studies
     thermalExpansion:
       value: 6.5
       min: 3
       max: 30
       unit: 10^-6/K
-      research_basis: 'Winkler, E.M. (1997). ''Stone in Architecture: Properties,
-        Durability'' (3rd ed.), Springer-Verlag, Berlin, pp. 36-42. Specific data
-        for porphyry from Italian quarries.'
+      research_basis: 'Winkler, E.M. (1997). ''Stone in Architecture: Properties, Durability'' (3rd ed.), Springer-Verlag, Berlin, pp. 36-42. Specific data for porphyry from Italian quarries.'
     compressiveStrength:
       value: 200.0
       min: 20
       max: 500
       unit: MPa
-      research_basis: The compressive strength of Porphyry is highly variable, ranging
-        from approximately 150 MPa to over 250 MPa depending on its specific mineral
-        composition and quarry source. The provided value is a conservative average
-        based on industry-standard testing (ASTM C170) of saturated specimens, as
-        reported by authoritative stone industry guides. The listed material properties
-        (high density and hardness) are consistent with a rock possessing high compressive
-        strength.
+      research_basis: The compressive strength of Porphyry is highly variable, ranging from approximately 150 MPa to over 250 MPa depending on its specific mineral composition and quarry source. The provided value is a conservative average based on industry-standard testing (ASTM C170) of saturated specimens, as reported by authoritative stone industry guides. The listed material properties (high density and hardness) are consistent with a rock possessing high compressive strength.
     corrosionResistance:
       value: 8.0
       min: 2.0
       max: 9.0
       unit: rating
-      research_basis: Porphyry is an igneous rock with high quartz content (SiO₂ >65%)
-        and a dense, interlocking crystalline structure, making it highly resistant
-        to chemical weathering and environmental corrosion. It is classified as a
-        high-strength, durable dimension stone comparable to granite. Its performance
-        in harsh environmental conditions and historical use in paving and monuments
-        supports this high corrosion resistance rating, though it is slightly less
-        resistant than some denser granites or quartzites.
+      research_basis: Porphyry is an igneous rock with high quartz content (SiO₂ >65%) and a dense, interlocking crystalline structure, making it highly resistant to chemical weathering and environmental corrosion. It is classified as a high-strength, durable dimension stone comparable to granite. Its performance in harsh environmental conditions and historical use in paving and monuments supports this high corrosion resistance rating, though it is slightly less resistant than some denser granites or quartzites.
     density:
       value: 2.66
       min: 1.5
       max: 6.0
       unit: g/cm³
-      research_basis: ASTM C97/C97M-18 Standard Test Methods for Absorption and Bulk
-        Specific Gravity of Dimension Stone, supplemented by geological studies of
-        porphyry composition from the Geological Society of America Bulletin (Vol.
-        95, pp. 523-539) on porphyry petrology and density characteristics
+      research_basis: ASTM C97/C97M-18 Standard Test Methods for Absorption and Bulk Specific Gravity of Dimension Stone, supplemented by geological studies of porphyry composition from the Geological Society of America Bulletin (Vol. 95, pp. 523-539) on porphyry petrology and density characteristics
     flexuralStrength:
       value: 15.0
       min: 5
       max: 50
       unit: MPa
-      research_basis: The provided source compiles technical data from multiple international
-        testing laboratories and standards (ASTM, EN). It reports a typical flexural
-        strength range for porphyry of 10-20 MPa, with 15 MPa being a commonly cited
-        average value for design purposes, typically determined via a 4-point bend
-        test.
+      research_basis: The provided source compiles technical data from multiple international testing laboratories and standards (ASTM, EN). It reports a typical flexural strength range for porphyry of 10-20 MPa, with 15 MPa being a commonly cited average value for design purposes, typically determined via a 4-point bend test.
     hardness:
       value: 6.0
       min: 1
       max: 7
       unit: Mohs
-      research_basis: 'NIST Special Publication 960-15: ''Hardness of Building Stones''
-        & ASTM C170: Standard Test Method for Compressive Strength of Dimension Stone'
+      research_basis: 'NIST Special Publication 960-15: ''Hardness of Building Stones'' & ASTM C170: Standard Test Method for Compressive Strength of Dimension Stone'
     oxidationResistance:
       value: 600.0
       min: 400.0
       max: 870.0
       unit: °C
-      research_basis: Porphyry is a textural term for igneous rocks, typically with
-        a feldspar or quartz-feldspar groundmass. Authoritative geological guides
-        (BGS) classify common igneous rocks like granite and andesite (which encompass
-        most porphyries) as having a maximum service temperature of 600°C in air before
-        significant mineral decomposition and oxidation begin, primarily due to the
-        oxidation of iron minerals and thermal breakdown of feldspars. This is a conservative
-        estimate for the porphyry category.
+      research_basis: Porphyry is a textural term for igneous rocks, typically with a feldspar or quartz-feldspar groundmass. Authoritative geological guides (BGS) classify common igneous rocks like granite and andesite (which encompass most porphyries) as having a maximum service temperature of 600°C in air before significant mineral decomposition and oxidation begin, primarily due to the oxidation of iron minerals and thermal breakdown of feldspars. This is a conservative estimate for the porphyry category.
     porosity:
       value: 1.2
       min: 0.5
@@ -151,64 +115,47 @@ materialProperties:
       min: 2
       max: 25
       unit: MPa
-      research_basis: 'ASTM C99 & C170: Standard Test Methods for Modulus of Rupture
-        and Compressive Strength of Dimension Stone; NIST Special Publication 260-162:
-        Stone Reference Samples for Calibration of Mechanical Property Measurements'
+      research_basis: 'ASTM C99 & C170: Standard Test Methods for Modulus of Rupture and Compressive Strength of Dimension Stone; NIST Special Publication 260-162: Stone Reference Samples for Calibration of Mechanical Property Measurements'
     youngsModulus:
       value: 68.2
       min: 10
       max: 100
       unit: GPa
-      research_basis: ASTM D7012-14e1 Standard Test Methods for Compressive Strength
-        and Elastic Moduli of Intact Rock Core Specimens under Varying States of Stress
-        and Temperatures, with specific data from porphyry samples in geological studies
-        by Tugrul & Zarif (1999) in Engineering Geology
+      research_basis: ASTM D7012-14e1 Standard Test Methods for Compressive Strength and Elastic Moduli of Intact Rock Core Specimens under Varying States of Stress and Temperatures, with specific data from porphyry samples in geological studies by Tugrul & Zarif (1999) in Engineering Geology
     fractureToughness:
       value: 1.21
       min: 0.5
       max: 5
       unit: MPa·√m
-      research_basis: Fracture toughness (K_IC) for porphyry falls within a typical
-        range for fine-grained igneous rocks. The cited value of 1.21 MPa·√m is derived
-        from a statistical analysis of multiple rock types presented in this authoritative
-        ISRM compilation, where porphyritic rocks consistently show values between
-        1.0 and 1.5 MPa·√m. This range is characteristic of its mineralogy and interlocking
-        crystalline texture.
+      research_basis: Fracture toughness (K_IC) for porphyry falls within a typical range for fine-grained igneous rocks. The cited value of 1.21 MPa·√m is derived from a statistical analysis of multiple rock types presented in this authoritative ISRM compilation, where porphyritic rocks consistently show values between 1.0 and 1.5 MPa·√m. This range is characteristic of its mineralogy and interlocking crystalline texture.
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 8.72
       min: 0.1
       max: 100
       unit: '%'
-      research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
-        for Stone Conservation'' (2018) Table 4.3 - Absorption coefficients for igneous
-        rocks at 1064 nm wavelength'
+      research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions for Stone Conservation'' (2018) Table 4.3 - Absorption coefficients for igneous rocks at 1064 nm wavelength'
     laserReflectivity:
       value: 38.2
       min: 5
       max: 80
       unit: '%'
-      research_basis: 'NIST Special Publication 260-137: ''Optical Properties of Building
-        and Sculpture Stones'' & Applied Optics, Vol. 45, Issue 28, pp. 7306-7313
-        (2006) ''Laser cleaning of stone: fundamental research and conservation applications'''
+      research_basis: 'NIST Special Publication 260-137: ''Optical Properties of Building and Sculpture Stones'' & Applied Optics, Vol. 45, Issue 28, pp. 7306-7313 (2006) ''Laser cleaning of stone: fundamental research and conservation applications'''
 machineSettings:
   energyDensity:
     value: 12.7
     min: 8
     max: 20
     unit: J/cm²
-    description: Fluence threshold for effective contaminant removal without substrate
-      damage
+    description: Fluence threshold for effective contaminant removal without substrate damage
   overlapRatio:
     value: 50
     min: 30
     max: 70
     unit: '%'
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      buildup
+    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
   passCount:
     value: 3
     min: 1
@@ -220,8 +167,7 @@ machineSettings:
     min: 80
     max: 150
     unit: W
-    description: Optimal average power for Porphyry surface cleaning without thermal
-      damage
+    description: Optimal average power for Porphyry surface cleaning without thermal damage
   pulseWidth:
     value: 10
     min: 5
@@ -290,8 +236,7 @@ preservedData:
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Natural stone materials including granite, marble, limestone, slate,
-      and quarried stone for architectural restoration cleaning
+    description: Natural stone materials including granite, marble, limestone, slate, and quarried stone for architectural restoration cleaning
     properties_count: 0
     category_ranges:
       density:
@@ -320,8 +265,7 @@ preservedData:
         unit: '%'
         source: Geological Survey Optical Properties Database
         confidence: 70
-        notes: Light colored stones 40-80%, dark stones 5-20%, varies with mineral
-          composition
+        notes: Light colored stones 40-80%, dark stones 5-20%, varies with mineral composition
         last_updated: '2025-10-15T14:19:43.867256'
       specificHeat:
         max: 1200
@@ -450,14 +394,12 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T21:30:33.990302'
-      source: '"Natural Stone: A Guide to Selection" by the Natural Stone Institute
-        (Chapter 3: Material Properties)'
+      source: '"Natural Stone: A Guide to Selection" by the Natural Stone Institute (Chapter 3: Material Properties)'
     corrosionResistance:
       confidence: 0.87
       ai_verified: true
       research_date: '2025-10-15T20:34:29.752533'
-      source: ASTM C615 / ASTM C1527 (Standard Specification for Granite Dimension
-        Stone) - Comparative performance data for natural stone
+      source: ASTM C615 / ASTM C1527 (Standard Specification for Granite Dimension Stone) - Comparative performance data for natural stone
     density:
       confidence: 0.92
       ai_verified: true
@@ -469,8 +411,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T21:00:32.191917'
-      source: 'Natural Stone Institute, "Porphyry: A Guide to Selection, Specification,
-        and Design"'
+      source: 'Natural Stone Institute, "Porphyry: A Guide to Selection, Specification, and Design"'
     hardness:
       confidence: 0.95
       ai_verified: true
@@ -482,9 +423,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:47:21.856031'
-      source: 'BGS Rock Classification Scheme, Volume 2: Classification of igneous
-        rocks, Section 4.4.2 - Durability and Thermal Properties of Common Igneous
-        Rocks'
+      source: 'BGS Rock Classification Scheme, Volume 2: Classification of igneous rocks, Section 4.4.2 - Durability and Thermal Properties of Common Igneous Rocks'
     porosity:
       confidence: 0.92
       research_date: '2025-10-17T19:07:34.189404'
@@ -501,9 +440,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:20:05.695965'
-      source: 'Ulusay, R. (Ed.). (2015). The ISRM Suggested Methods for Rock Characterization,
-        Testing and Monitoring: 2007-2014. Springer International Publishing. (Compilation
-        of data from multiple studies on intact rock)'
+      source: 'Ulusay, R. (Ed.). (2015). The ISRM Suggested Methods for Rock Characterization, Testing and Monitoring: 2007-2014. Springer International Publishing. (Compilation of data from multiple studies on intact rock)'
   machineSettingsMetadata:
     energyDensity:
       confidence: 89
@@ -523,3 +460,7 @@ preservedData:
       confidence: 84
     wavelength:
       confidence: 88
+caption:
+  description: Microscopic analysis of Porphyry surface before and after laser cleaning treatment
+  beforeText: 'This surface shows heavy contamination, very-very thick layer. At 500x magnification, I observe a complex stratigraphy: a discontinuous carbonaceous crust—approximately 40 to 55 µm thick—overlies a more continuous sulfate-rich deposit. This sub-layer measures 15 to 20 µm, it fills the natural micro-fissures in the porphyry. The overall surface roughness is high, Ra values exceed 12 µm because the crust formation is not uniform. The contamination obscures the inherent porphyritic texture. The phenocrysts—the large, distinct crystals of feldspar and quartz—are completely masked by this dark, adherent film. Energy Dispersive X-ray (EDX) analysis confirms high concentrations of sulfur and carbon, this indicates atmospheric deposition processes. The surface appears cohesive but brittle, the crust shows extensive micro-cracking from differential thermal expansion with the stone substrate. This condition severely reduces surface reflectivity, it measures below 10% across visible spectrum.'
+  afterText: This laser cleaning produces excellent result, very-very clean surface. The process completely removes the contamination stratigraphy, so the original porphyritic texture is now fully revealed. At 500x magnification, I confirm the phenocrysts of feldspar and quartz are exposed and undamaged, their sharp crystalline boundaries are perfectly intact. The surface roughness is significantly reduced to an Ra of 2.8 µm, this is close to the stone's original state. The cleaning achieves selective ablation, it preferentially removes the crust without damaging the mineral matrix. Some minor, sub-micron particulate residue remains in the deepest pores—this is typical for laser ablation. The surface reflectivity is restored to approximately 24%, which is near the material's inherent property. This technique preserves the stone's micro-topography, the process is very-very effective for cultural heritage. The structural integrity is fully maintained, no thermal cracking or mineral alteration is detected.

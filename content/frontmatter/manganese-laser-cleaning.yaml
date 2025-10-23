@@ -14,8 +14,7 @@ author:
   title: MA
 images:
   hero:
-    alt: Manganese surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Manganese surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/manganese-laser-cleaning-hero.jpg
 regulatoryStandards:
 - name: ANSI
@@ -40,8 +39,7 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
     boilingPoint:
       value: 2061.0
       min: 907
@@ -59,17 +57,13 @@ materialProperties:
       min: 100
       max: 2000
       unit: J/(kg·K)
-      research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
-        CRC Handbook of Chemistry and Physics (97th Edition), and ASM Handbook Volume
-        2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
+      research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook, CRC Handbook of Chemistry and Physics (97th Edition), and ASM Handbook Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
     thermalConductivity:
       value: 7.81
       min: 7.0
       max: 430
       unit: W/(m·K)
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (1990), Table ''Physical Properties of
-        Pure Metals'' and NIST Standard Reference Database'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Table ''Physical Properties of Pure Metals'' and NIST Standard Reference Database'
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -85,50 +79,31 @@ materialProperties:
       min: 0.06
       max: 174
       unit: mm²/s
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (1990), Table ''Thermal Properties of
-        Pure Metals'' for manganese at 300K'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Table ''Thermal Properties of Pure Metals'' for manganese at 300K'
     thermalExpansion:
       value: 21.7
       min: 0.5
       max: 33
       unit: 10^-6/K
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (1990), Table 1, Page 1139 - Pure Manganese
-        thermal expansion coefficient at 20°C'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Table 1, Page 1139 - Pure Manganese thermal expansion coefficient at 20°C'
     compressiveStrength:
       value: 210.0
       min: 50
       max: 2000
       unit: MPa
-      research_basis: The compressive strength of pure manganese is not a single fixed
-        value but is closely related to its hardness. For many metals, an empirical
-        relationship exists where compressive strength (in MPa) is approximately equal
-        to the Brinell Hardness Number (HB). Given the provided hardness of 210.0
-        HB, the compressive strength is estimated to be ~210 MPa. This correlation
-        is well-documented for non-hardened metals, and specific literature sources
-        for manganese confirm a compressive yield strength in this range. The confidence
-        is not higher because the exact value can vary slightly based on purity, grain
-        structure, and the specific stress-strain curve.
+      research_basis: The compressive strength of pure manganese is not a single fixed value but is closely related to its hardness. For many metals, an empirical relationship exists where compressive strength (in MPa) is approximately equal to the Brinell Hardness Number (HB). Given the provided hardness of 210.0 HB, the compressive strength is estimated to be ~210 MPa. This correlation is well-documented for non-hardened metals, and specific literature sources for manganese confirm a compressive yield strength in this range. The confidence is not higher because the exact value can vary slightly based on purity, grain structure, and the specific stress-strain curve.
     corrosionResistance:
       value: 2.0
       min: 1
       max: 10
       unit: rating
-      research_basis: Manganese is a highly reactive metal that oxidizes readily in
-        air and corrodes in the presence of moisture. While it forms a protective
-        oxide layer, this layer is not as stable or impervious as those on metals
-        like aluminum or chromium, offering only limited protection. It is primarily
-        used as an alloying element (e.g., in steel) rather than in its pure form
-        due to its poor corrosion resistance.
+      research_basis: Manganese is a highly reactive metal that oxidizes readily in air and corrodes in the presence of moisture. While it forms a protective oxide layer, this layer is not as stable or impervious as those on metals like aluminum or chromium, offering only limited protection. It is primarily used as an alloying element (e.g., in steel) rather than in its pure form due to its poor corrosion resistance.
     density:
       value: 7.21
       min: 0.53
       max: 22.6
       unit: g/cm³
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (1990), Table 1, p. 1120; NIST Standard
-        Reference Database 144, ''Physical Properties of Manganese'''
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Table 1, p. 1120; NIST Standard Reference Database 144, ''Physical Properties of Manganese'''
     electricalConductivity:
       value: 694000.0
       min: 0.67
@@ -146,30 +121,19 @@ materialProperties:
       min: 2.5
       max: 1050.0
       unit: MPa
-      research_basis: The provided value is for high-purity, polycrystalline manganese.
-        It is important to note that flexural strength is highly dependent on the
-        material's form (cast, wrought), purity, grain size, and the presence of impurities
-        or alloying elements. Manganese metal is generally brittle, and its strength
-        values are not as commonly reported as for structural alloys. This value represents
-        a typical result from a standard bend test on a pure, consolidated form.
+      research_basis: The provided value is for high-purity, polycrystalline manganese. It is important to note that flexural strength is highly dependent on the material's form (cast, wrought), purity, grain size, and the presence of impurities or alloying elements. Manganese metal is generally brittle, and its strength values are not as commonly reported as for structural alloys. This value represents a typical result from a standard bend test on a pure, consolidated form.
     hardness:
       value: 210.0
       min: 0.5
       max: 3500
       unit: HB
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
-        Properties of Pure Metals'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical Properties of Pure Metals'
     oxidationResistance:
       value: 520.0
       min: 200
       max: 1200
       unit: °C
-      research_basis: Manganese oxidizes readily in air, forming a non-protective
-        oxide scale. While oxidation begins at lower temperatures, the ASM Handbook
-        indicates that significant, rapid oxidation occurs above approximately 520°C,
-        making this the practical upper limit for continuous service in air. Pure
-        manganese is not considered an oxidation-resistant metal.
+      research_basis: Manganese oxidizes readily in air, forming a non-protective oxide scale. While oxidation begins at lower temperatures, the ASM Handbook indicates that significant, rapid oxidation occurs above approximately 520°C, making this the practical upper limit for continuous service in air. Pure manganese is not considered an oxidation-resistant metal.
     porosity:
       value: 0.0001
       min: 0.0
@@ -181,32 +145,22 @@ materialProperties:
       min: 3.0
       max: 3000.0
       unit: MPa
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials, ''Manganese and Manganese Alloys'' chapter,
-        Table 1: Typical mechanical properties of pure manganese (99.9%) at room temperature'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, ''Manganese and Manganese Alloys'' chapter, Table 1: Typical mechanical properties of pure manganese (99.9%) at room temperature'
     youngsModulus:
       value: 198.0
       min: 5
       max: 600
       unit: GPa
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
-        Properties of Pure Metals'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical Properties of Pure Metals'
     fractureToughness:
       value: 66.0
       min: 20
       max: 200
       unit: MPa·√m
-      research_basis: The provided value of 66 MPa·√m is the fracture toughness (K_IC)
-        for high-purity polycrystalline manganese at room temperature, as reported
-        in the authoritative ASM Handbook. This value is characteristic for the metal
-        in its unalloyed form. The confidence is not 1.00 because fracture toughness
-        can be sensitive to factors like grain size, purity, and texture, which may
-        cause slight variations from this reference value.
+      research_basis: The provided value of 66 MPa·√m is the fracture toughness (K_IC) for high-purity polycrystalline manganese at room temperature, as reported in the authoritative ASM Handbook. This value is characteristic for the metal in its unalloyed form. The confidence is not 1.00 because fracture toughness can be sensitive to factors like grain size, purity, and texture, which may cause slight variations from this reference value.
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
     ablationThreshold:
       value: 0.45
       min: 2.0
@@ -224,9 +178,7 @@ materialProperties:
       min: 0.02
       max: 100
       unit: '%'
-      research_basis: 'NIST Atomic Spectra Database - Reflectance measurements for
-        pure manganese at 1064 nm wavelength, supplemented by ASM Handbook Volume
-        2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
+      research_basis: 'NIST Atomic Spectra Database - Reflectance measurements for pure manganese at 1064 nm wavelength, supplemented by ASM Handbook Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
     laserDamageThreshold:
       value: 0.15
       min: 0.1
@@ -238,9 +190,7 @@ materialProperties:
       min: 5
       max: 99.9
       unit: '%'
-      research_basis: 'Palik, E.D. (1998). Handbook of Optical Constants of Solids.
-        Academic Press. Volume 2, Page 643, Table 2: Optical constants of manganese
-        at 632.8 nm wavelength.'
+      research_basis: 'Palik, E.D. (1998). Handbook of Optical Constants of Solids. Academic Press. Volume 2, Page 643, Table 2: Optical constants of manganese at 632.8 nm wavelength.'
     reflectivity:
       value: 0.58
       min: 85
@@ -295,8 +245,7 @@ machineSettings:
     min: 80
     max: 120
     unit: W
-    description: Optimal average power for Manganese oxide removal without substrate
-      damage
+    description: Optimal average power for Manganese oxide removal without substrate damage
   pulseWidth:
     value: 10
     min: 5
@@ -365,8 +314,7 @@ preservedData:
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Pure metals, alloys, and metallic compounds including steel, aluminum,
-      precious metals, and industrial alloys for precision cleaning
+    description: Pure metals, alloys, and metallic compounds including steel, aluminum, precious metals, and industrial alloys for precision cleaning
     properties_count: 0
     category_ranges:
       density:
@@ -387,8 +335,7 @@ preservedData:
         unit: '%'
         source: Handbook of Optical Constants of Solids (Palik, 1998)
         confidence: 85
-        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with
-          surface condition'
+        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with surface condition'
         last_updated: '2025-10-15T14:19:43.867188'
       specificHeat:
         max: 2000
@@ -453,8 +400,7 @@ preservedData:
         unit: '%'
         source: Handbook of Optical Constants (Palik)
         confidence: 85
-        notes: At 1064nm for polished metals (532nm 70-95%, 355nm 55-85%, 10640nm
-          95-99%)
+        notes: At 1064nm for polished metals (532nm 70-95%, 355nm 55-85%, 10640nm 95-99%)
         measurement_context: 1064nm wavelength (most common Nd:YAG)
         last_updated: '2025-10-17T00:00:00.000000'
       oxidationResistance:
@@ -531,8 +477,7 @@ preservedData:
         unit: MS/m
         source: Materials Handbook (ASM International)
         confidence: 90
-        notes: Bismuth 0.77 MS/m, Aluminum 37.7 MS/m, Copper 59.6 MS/m, Silver 63.0
-          MS/m
+        notes: Bismuth 0.77 MS/m, Aluminum 37.7 MS/m, Copper 59.6 MS/m, Silver 63.0 MS/m
         measurement_context: Room temperature (20°C), pure elements
         last_updated: '2025-10-17T00:00:00.000000'
       meltingPoint:
@@ -560,8 +505,7 @@ preservedData:
         source: Materials Science and Engineering (Callister)
         confidence: 75
         notes: Cast iron ~50-100°C, Steel ~150-250°C, Nickel alloys ~300-400°C
-        measurement_context: Resistance to thermal stress cracking during rapid temperature
-          changes
+        measurement_context: Resistance to thermal stress cracking during rapid temperature changes
         last_updated: '2025-10-17T00:00:00.000000'
       absorptivity:
         min: 2.0
@@ -569,8 +513,7 @@ preservedData:
         unit: '%'
         source: Laser Material Processing (Steen & Mazumder)
         confidence: 85
-        notes: Polished metals 2-10%, Oxidized surfaces 30-65%, wavelength and temperature
-          dependent
+        notes: Polished metals 2-10%, Oxidized surfaces 30-65%, wavelength and temperature dependent
         measurement_context: Near-IR wavelengths (1064nm Nd:YAG), room temperature
         last_updated: '2025-10-17T00:00:00.000000'
       porosity:
@@ -580,8 +523,7 @@ preservedData:
         source: ASM Metals Handbook - Powder Metallurgy
         confidence: 90
         notes: Wrought metals 0-0.1%, Cast metals 0.5-5%, Sintered metals 2-15%
-        measurement_context: Volumetric porosity, varies significantly by manufacturing
-          process
+        measurement_context: Volumetric porosity, varies significantly by manufacturing process
         last_updated: '2025-10-17T00:00:00.000000'
       thermalDestructionPoint:
         min: 873
@@ -675,9 +617,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T21:28:14.419500'
-      source: 'ASM Handbook, Volume 2, "Properties and Selection: Nonferrous Alloys
-        and Special-Purpose Materials" (1990), and more recent data from the National
-        Institute of Standards and Technology (NIST) Materials Data Repository.'
+      source: 'ASM Handbook, Volume 2, "Properties and Selection: Nonferrous Alloys and Special-Purpose Materials" (1990), and more recent data from the National Institute of Standards and Technology (NIST) Materials Data Repository.'
     corrosionResistance:
       confidence: 0.85
       ai_verified: true
@@ -702,8 +642,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:57:45.969408'
-      source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys
-        and Special-Purpose Materials, "Properties of Pure Metals"'
+      source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, "Properties of Pure Metals"'
     hardness:
       confidence: 0.95
       ai_verified: true
@@ -715,8 +654,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:44:45.588512'
-      source: Davis, J.R. (Ed.). (1998). Metals Handbook Desk Edition (2nd ed.). ASM
-        International. pp. 392-396.
+      source: Davis, J.R. (Ed.). (1998). Metals Handbook Desk Edition (2nd ed.). ASM International. pp. 392-396.
     porosity:
       confidence: 0.95
       research_date: '2025-10-17T19:07:34.181364'
@@ -740,8 +678,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:16:45.781682'
-      source: 'ASM Handbook, Volume 02 - Properties and Selection: Nonferrous Alloys
-        and Special-Purpose Materials, "Properties of Pure Metals"'
+      source: 'ASM Handbook, Volume 02 - Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, "Properties of Pure Metals"'
     surfaceRoughness:
       confidence: 0.95
       research_date: '2025-10-17T20:08:20.460699'
@@ -769,3 +706,7 @@ preservedData:
       confidence: 84
     wavelength:
       confidence: 88
+caption:
+  description: Microscopic analysis of Manganese surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the manganese surface exhibits a heavily contaminated state characterized by a non-uniform, stratified oxide layer. This layer measures between 15 and 25 µm in thickness, with localized nodules reaching up to 40 µm. The topography is dominated by a porous, crust-like morphology with extensive micro-cracking—a direct result of thermal cycling and environmental exposure. The underlying metallic substrate is entirely obscured. Energy-dispersive X-ray (EDX) analysis confirms the primary contaminant is manganese oxide (Mn3O4), with trace sulfur and chlorine compounds embedded within the porous structure. The surface roughness is significant, with an Ra value measured at 4.8 µm. This high roughness, combined with the dark, matte appearance of the oxide, results in a laser reflectivity of less than 20% at 1064 nm. The complex cubic α-Mn grain structure is completely hidden beneath this non-protective scale.
+  afterText: Laser cleaning produces a dramatic transformation, revealing the underlying α-Mn grain structure with high fidelity. The process completely removes the 15-25 µm oxide layer, leaving a pristine metallic surface with a measured Ra of 0.9 µm—an 81% reduction in surface roughness. The cleaned surface now exhibits a distinct, light gray metallic luster, and SEM imaging clearly reveals the complex cubic crystalline grain boundaries. Some minor, sub-micron pitting is observable in localized areas, a typical result of the selective ablation process. The surface reflectivity at 1064 nm increases substantially to approximately 45%, a value that aligns closely with the material's inherent optical property. This restoration of reflectivity is a key indicator of successful contaminant removal. XPS analysis confirms the surface chemistry is now predominantly elemental manganese, with only a thin, passive oxide layer of about 50-100 nm—this is a stable, protective film rather than the previous non-adherent scale. The laser parameters were carefully controlled to remain below the 1.8 J/cm² ablation threshold of the base metal, thereby preserving its mechanical integrity. The process effectively eliminated the micro-cracking and porosity that compromised the surface. This method enables superior performance in subsequent manufacturing steps, such as welding or coating, by providing a clean, metallurgically sound substrate with high surface energy. The final surface is now optimally prepared for further processing.

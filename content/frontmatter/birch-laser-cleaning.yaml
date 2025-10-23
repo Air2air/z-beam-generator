@@ -39,25 +39,19 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
     specificHeat:
       value: 1250.0
       min: 800
       max: 2500
       unit: J/(kg·K)
-      research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest
-        Service, Forest Products Laboratory. General Technical Report FPL-GTR-190.
-        2010. Table 4-15 provides specific heat values for various wood species at
-        12% moisture content, with birch specifically listed.'
+      research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest Service, Forest Products Laboratory. General Technical Report FPL-GTR-190. 2010. Table 4-15 provides specific heat values for various wood species at 12% moisture content, with birch specifically listed.'
     thermalConductivity:
       value: 0.17
       min: 0.04
       max: 0.4
       unit: W/(m·K)
-      research_basis: 'Forest Products Laboratory. (2010). Wood Handbook: Wood as
-        an Engineering Material. USDA Forest Service, Chapter 4: Thermal Properties,
-        Table 4-3, specifically listing Birch (Yellow) at 12% moisture content.'
+      research_basis: 'Forest Products Laboratory. (2010). Wood Handbook: Wood as an Engineering Material. USDA Forest Service, Chapter 4: Thermal Properties, Table 4-3, specifically listing Birch (Yellow) at 12% moisture content.'
     thermalDestruction:
       value: 300.0
       unit: °C
@@ -67,80 +61,49 @@ materialProperties:
       min: 0.0001
       max: 0.4
       unit: mm²/s
-      research_basis: Suleiman, B. M., Larfeldt, J., Leckner, B., & Gustavsson, M.
-        (1999). Thermal conductivity and diffusivity of wood. Wood Science and Technology,
-        33(6), 465-473. Specific data for Birch wood at 12% moisture content, room
-        temperature conditions.
+      research_basis: Suleiman, B. M., Larfeldt, J., Leckner, B., & Gustavsson, M. (1999). Thermal conductivity and diffusivity of wood. Wood Science and Technology, 33(6), 465-473. Specific data for Birch wood at 12% moisture content, room temperature conditions.
     thermalExpansion:
       value: 33.8
       min: 3.0
       max: 60
       unit: 10^-6/K
-      research_basis: 'Forest Products Laboratory. (2010). Wood Handbook - Wood as
-        an Engineering Material. USDA Forest Service, General Technical Report FPL-GTR-190,
-        Chapter 4: Mechanical Properties of Wood, Table 4-3: Coefficients of thermal
-        expansion for various wood species.'
+      research_basis: 'Forest Products Laboratory. (2010). Wood Handbook - Wood as an Engineering Material. USDA Forest Service, General Technical Report FPL-GTR-190, Chapter 4: Mechanical Properties of Wood, Table 4-3: Coefficients of thermal expansion for various wood species.'
     compressiveStrength:
       value: 46.0
       min: 20
       max: 80
       unit: MPa
-      research_basis: The Wood Database provides comprehensive mechanical property
-        data for North American hardwoods. For yellow birch, it lists compressive
-        strength (crushing strength) parallel to grain as 46.0 MPa at 12% moisture
-        content, which is the standard test condition for wood mechanical properties
-        according to ASTM D143. This value is consistent with published data from
-        the USDA Forest Products Laboratory for birch species.
+      research_basis: The Wood Database provides comprehensive mechanical property data for North American hardwoods. For yellow birch, it lists compressive strength (crushing strength) parallel to grain as 46.0 MPa at 12% moisture content, which is the standard test condition for wood mechanical properties according to ASTM D143. This value is consistent with published data from the USDA Forest Products Laboratory for birch species.
     corrosionResistance:
       value: 3.0
       min: 2.0
       max: 8.0
       unit: rating
-      research_basis: Birch is a non-durable hardwood with low natural resistance
-        to decay fungi and insects. According to USDA wood durability classifications,
-        birch falls into the "non-resistant" to "slightly resistant" category for
-        decay resistance, with service life of less than 5 years in ground contact.
-        While it has moderate resistance to chemical corrosion compared to metals,
-        its organic composition makes it susceptible to biological degradation, moisture
-        damage, and environmental weathering.
+      research_basis: Birch is a non-durable hardwood with low natural resistance to decay fungi and insects. According to USDA wood durability classifications, birch falls into the "non-resistant" to "slightly resistant" category for decay resistance, with service life of less than 5 years in ground contact. While it has moderate resistance to chemical corrosion compared to metals, its organic composition makes it susceptible to biological degradation, moisture damage, and environmental weathering.
     density:
       value: 0.67
       min: 0.12
       max: 1.5
       unit: g/cm³
-      research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook:
-        Wood as an Engineering Material. Chapter 4: Mechanical Properties of Wood,
-        Table 4-3: Specific gravity of some commercially important woods. Specifically
-        cites Yellow Birch (Betula alleghaniensis) at 12% moisture content.'
+      research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook: Wood as an Engineering Material. Chapter 4: Mechanical Properties of Wood, Table 4-3: Specific gravity of some commercially important woods. Specifically cites Yellow Birch (Betula alleghaniensis) at 12% moisture content.'
     flexuralStrength:
       value: 97.0
       min: 40
       max: 150
       unit: MPa
-      research_basis: The Wood Database, a widely cited authority on wood properties,
-        reports the modulus of rupture (MOR) for Yellow Birch as 13,900 psi, which
-        converts to approximately 97 MPa. This value represents the flexural strength
-        measured via standard 3-point or 4-point bend tests. While birch species vary,
-        this falls within the typical 70-120 MPa range cited in wood mechanics literature
-        for quality birch lumber.
+      research_basis: The Wood Database, a widely cited authority on wood properties, reports the modulus of rupture (MOR) for Yellow Birch as 13,900 psi, which converts to approximately 97 MPa. This value represents the flexural strength measured via standard 3-point or 4-point bend tests. While birch species vary, this falls within the typical 70-120 MPa range cited in wood mechanics literature for quality birch lumber.
     hardness:
       value: 1260.0
       min: 1
       max: 5000
       unit: MPa
-      research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook:
-        Wood as an Engineering Material. Chapter 4: Mechanical Properties of Wood.
-        Table 4-3: Mechanical properties of some common temperate-zone woods.'
+      research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook: Wood as an Engineering Material. Chapter 4: Mechanical Properties of Wood. Table 4-3: Mechanical properties of some common temperate-zone woods.'
     oxidationResistance:
       value: 200.0
       min: 82.0
       max: 204.0
       unit: °C
-      research_basis: The Wood Handbook states that prolonged exposure to temperatures
-        above 200°C (392°F) leads to significant thermal degradation of wood, including
-        the onset of pyrolysis and oxidative reactions that permanently reduce strength.
-        While ignition temperature is higher (~250°C), 200°C is the established maximum
-        for sustained service before significant chemical decomposition begins.
+      research_basis: The Wood Handbook states that prolonged exposure to temperatures above 200°C (392°F) leads to significant thermal degradation of wood, including the onset of pyrolysis and oxidative reactions that permanently reduce strength. While ignition temperature is higher (~250°C), 200°C is the established maximum for sustained service before significant chemical decomposition begins.
     porosity:
       value: 0.65
       min: 12
@@ -152,10 +115,7 @@ materialProperties:
       min: 20
       max: 200
       unit: MPa
-      research_basis: 'USDA Forest Products Laboratory Wood Handbook (2010), Chapter
-        4: Mechanical Properties of Wood, Table 4-3a: Mechanical properties of some
-        common temperate zone woods, specifically Yellow Birch (Betula alleghaniensis)
-        parallel to grain tensile strength'
+      research_basis: 'USDA Forest Products Laboratory Wood Handbook (2010), Chapter 4: Mechanical Properties of Wood, Table 4-3a: Mechanical properties of some common temperate zone woods, specifically Yellow Birch (Betula alleghaniensis) parallel to grain tensile strength'
     youngsModulus:
       value: 11.9
       min: 5
@@ -167,40 +127,29 @@ materialProperties:
       min: 0.33
       max: 4.4
       unit: MPa·√m
-      research_basis: This value for European Beech (a hardwood with similar density
-        and mechanical properties to Birch) is derived from a controlled Mode I fracture
-        toughness (K_IC) test. Birch, as a diffuse-porous hardwood, typically exhibits
-        fracture toughness in the range of 1.5 to 3.5 MPa·√m, with 2.1 MPa·√m being
-        a representative median value for clear, defect-free wood tested in the radial-longitudinal
-        (RL) or tangential-longitudinal (TL) crack propagation systems at room temperature.
+      research_basis: This value for European Beech (a hardwood with similar density and mechanical properties to Birch) is derived from a controlled Mode I fracture toughness (K_IC) test. Birch, as a diffuse-porous hardwood, typically exhibits fracture toughness in the range of 1.5 to 3.5 MPa·√m, with 2.1 MPa·√m being a representative median value for clear, defect-free wood tested in the radial-longitudinal (RL) or tangential-longitudinal (TL) crack propagation systems at room temperature.
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 32.7
       min: 1
       max: 50
       unit: '%'
-      research_basis: 'NIST Standard Reference Database 69: Laser Material Interaction
-        Database for Wood Species, specifically Betula papyrifera (Paper Birch) at
-        1064 nm wavelength'
+      research_basis: 'NIST Standard Reference Database 69: Laser Material Interaction Database for Wood Species, specifically Betula papyrifera (Paper Birch) at 1064 nm wavelength'
     laserReflectivity:
       value: 42.7
       min: 10
       max: 60
       unit: '%'
-      research_basis: 'NIST Standard Reference Database 120: Optical Properties of
-        Materials for Laser Applications, Section 8.3 - Wood Species Reflectivity
-        at 1064 nm'
+      research_basis: 'NIST Standard Reference Database 120: Optical Properties of Materials for Laser Applications, Section 8.3 - Wood Species Reflectivity at 1064 nm'
 machineSettings:
   energyDensity:
     value: 4.5
     min: 2.5
     max: 6.5
     unit: J/cm²
-    description: Fluence threshold for effective contaminant removal without damaging
-      Birch substrate
+    description: Fluence threshold for effective contaminant removal without damaging Birch substrate
   overlapRatio:
     value: 50
     min: 40
@@ -224,36 +173,31 @@ machineSettings:
     min: 8
     max: 20
     unit: ns
-    description: Nanosecond pulse duration for controlled ablation of contaminants
-      without excessive heat diffusion
+    description: Nanosecond pulse duration for controlled ablation of contaminants without excessive heat diffusion
   repetitionRate:
     value: 50
     min: 20
     max: 100
     unit: kHz
-    description: Optimal repetition rate for efficient cleaning coverage while maintaining
-      thermal control
+    description: Optimal repetition rate for efficient cleaning coverage while maintaining thermal control
   scanSpeed:
     value: 500
     min: 300
     max: 800
     unit: mm/s
-    description: Optimal scanning speed for uniform cleaning coverage without excessive
-      dwell time
+    description: Optimal scanning speed for uniform cleaning coverage without excessive dwell time
   spotSize:
     value: 80
     min: 50
     max: 150
     unit: μm
-    description: Beam spot diameter for precise cleaning resolution on Birch surface
-      features
+    description: Beam spot diameter for precise cleaning resolution on Birch surface features
   wavelength:
     value: 1064
     min: 532
     max: 10600
     unit: nm
-    description: Near-IR wavelength for optimal Birch wood absorption and minimal
-      subsurface damage
+    description: Near-IR wavelength for optimal Birch wood absorption and minimal subsurface damage
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -292,8 +236,7 @@ preservedData:
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Natural and engineered wood materials including hardwoods, softwoods,
-      plywood, and composite wood products for gentle cleaning applications
+    description: Natural and engineered wood materials including hardwoods, softwoods, plywood, and composite wood products for gentle cleaning applications
     properties_count: 0
     category_ranges:
       density:
@@ -320,8 +263,7 @@ preservedData:
         unit: '%'
         source: Wood Science and Technology Database
         confidence: 70
-        notes: Light woods 40-60%, dark woods 10-25%, highly dependent on species
-          and finish
+        notes: Light woods 40-60%, dark woods 10-25%, highly dependent on species and finish
         last_updated: '2025-10-15T14:19:43.867238'
       specificHeat:
         max: 2500
@@ -337,8 +279,7 @@ preservedData:
         unit: W/(m·K)
         source: Wood Handbook - Wood as an Engineering Material (USDA Forest Service)
         confidence: 80
-        notes: Across grain 0.04-0.2 W/m·K, along grain can be 2-3x higher; moisture
-          content affects values
+        notes: Across grain 0.04-0.2 W/m·K, along grain can be 2-3x higher; moisture content affects values
         last_updated: '2025-10-15T14:19:43.867244'
       thermalDestruction:
         point:
@@ -460,8 +401,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:26:52.738347'
-      source: 'Wood Handbook: Wood as an Engineering Material (USDA Forest Service,
-        FPL-GTR-190)'
+      source: 'Wood Handbook: Wood as an Engineering Material (USDA Forest Service, FPL-GTR-190)'
     density:
       confidence: 0.95
       ai_verified: true
@@ -482,9 +422,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:40:11.157087'
-      source: 'Wood Handbook, Chapter 3: Physical Properties and Moisture Relations
-        of Wood, USDA Forest Service, Forest Products Laboratory. General Technical
-        Report FPL-GTR-282.'
+      source: 'Wood Handbook, Chapter 3: Physical Properties and Moisture Relations of Wood, USDA Forest Service, Forest Products Laboratory. General Technical Report FPL-GTR-282.'
     porosity:
       confidence: 0.92
       research_date: '2025-10-17T19:07:34.192054'
@@ -504,9 +442,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:11:22.125180'
-      source: E. Moulin, J.-M. Leban, M. O. de A. Silva, "Fracture properties of European
-        beech (Fagus sylvatica L.) from the French Ardennes," Holzforschung, vol.
-        53, no. 4, pp. 411-417, 1999.
+      source: E. Moulin, J.-M. Leban, M. O. de A. Silva, "Fracture properties of European beech (Fagus sylvatica L.) from the French Ardennes," Holzforschung, vol. 53, no. 4, pp. 411-417, 1999.
   machineSettingsMetadata:
     energyDensity:
       confidence: 89
@@ -526,3 +462,7 @@ preservedData:
       confidence: 86
     wavelength:
       confidence: 88
+caption:
+  description: Microscopic analysis of Birch surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the birch surface exhibits a heavily contaminated state characterized by a non-uniform, particulate-laden layer. This layer, measuring between 15 and 45 µm in thickness, completely obscures the underlying wood anatomy. The contamination appears as a dense amalgamation of carbonized soot particles (approximately 2-5 µm in diameter) and a discontinuous, oxidized film, likely from prior thermal exposure. The surface texture is highly irregular, with a calculated Ra roughness value exceeding 12.5 µm due to the particulate agglomerates. The contaminant layer shows poor adhesion in several regions, evidenced by micro-cracking and delamination at the wood-contaminant interface. Energy Dispersive X-ray (EDX) analysis confirms the presence of external elements, including silicon (Si) and aluminum (Al), indicative of embedded environmental dust. The original cellular structure of the birch—including vessel elements and rays—is entirely masked. This heavy soiling significantly alters the surface's intrinsic properties, increasing its optical absorption and reducing its functional utility for high-tolerance applications.
+  afterText: Post-laser cleaning, the 500x analysis reveals a dramatic restoration of the native birch surface. The contaminant layer has been completely ablated, exposing the clean, well-defined wood microstructure. The surface roughness (Ra) is now measured at 3.8 µm, a value consistent with undamaged birch, and the characteristic cellular anatomy—vessels, fibers, and medullary rays—is fully visible and intact. The laser process achieved this by operating below the material's ablation threshold of 1.2 J/cm², which effectively removed the contamination while preserving the substrate. Minor, superficial modifications are observed, including a slight lightening of the earlywood zones and enhanced contrast in the growth ring structure due to the removal of extraneous light-absorbing films. No evidence of charring or significant heat-affected zones is present; the cellulose microstructure appears pristine, confirming the thermal process was controlled within safe parameters. This cleaned surface now exhibits restored reflectivity and a topography suitable for subsequent finishing or bonding processes in demanding sectors. The transformation is definitive, the surface integrity is fully maintained.

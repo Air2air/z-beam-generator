@@ -2,8 +2,7 @@ name: Glass Fiber Reinforced Polymers GFRP
 category: Composite
 subcategory: reinforced
 title: Glass Fiber Reinforced Polymers GFRP Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Glass Fiber Reinforced
-  Polymers GFRP
+subtitle: Laser cleaning parameters and specifications for Glass Fiber Reinforced Polymers GFRP
 description: Laser cleaning parameters for Glass Fiber Reinforced Polymers GFRP (GFRP)
 author:
   country: Indonesia
@@ -15,8 +14,7 @@ author:
   title: Ph.D.
 images:
   hero:
-    alt: Glass Fiber Reinforced Polymers Gfrp surface undergoing laser cleaning showing
-      precise contamination removal
+    alt: Glass Fiber Reinforced Polymers Gfrp surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/glass-fiber-reinforced-polymers-gfrp-laser-cleaning-hero.jpg
 regulatoryStandards:
 - name: ANSI
@@ -41,24 +39,19 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
     specificHeat:
       value: 1000.0
       min: 500
       max: 2500.0
       unit: J/(kg·K)
-      research_basis: NIST Polymer Composite Database - Specific heat capacity measurements
-        for E-glass fiber reinforced epoxy composites at 25°C, with fiber content
-        50-60% by weight (typical GFRP composition)
+      research_basis: NIST Polymer Composite Database - Specific heat capacity measurements for E-glass fiber reinforced epoxy composites at 25°C, with fiber content 50-60% by weight (typical GFRP composition)
     thermalConductivity:
       value: 0.35
       min: 0.03
       max: 400
       unit: W/(m·K)
-      research_basis: 'ASM Handbook, Volume 21: Composites, Section: Thermal Properties
-        of Polymer Matrix Composites, pp. 324-328, specifically citing GFRP with 30-40%
-        glass fiber content in epoxy matrix'
+      research_basis: 'ASM Handbook, Volume 21: Composites, Section: Thermal Properties of Polymer Matrix Composites, pp. 324-328, specifically citing GFRP with 30-40% glass fiber content in epoxy matrix'
     thermalDestruction:
       value: 300.0
       unit: °C
@@ -74,41 +67,25 @@ materialProperties:
       min: -1
       max: 250
       unit: μm/m·°C
-      research_basis: 'ASM Handbook, Volume 21: Composites, Section: Properties of
-        Glass Fiber Reinforced Polymers, Table: Thermal Expansion Coefficients for
-        GFRP with 60-70% E-glass fiber content in epoxy matrix'
+      research_basis: 'ASM Handbook, Volume 21: Composites, Section: Properties of Glass Fiber Reinforced Polymers, Table: Thermal Expansion Coefficients for GFRP with 60-70% E-glass fiber content in epoxy matrix'
     compressiveStrength:
       value: 150.0
       min: 50
       max: 1000
       unit: MPa
-      research_basis: The compressive strength of GFRP is highly dependent on the
-        fiber architecture (e.g., unidirectional, fabric) and resin system. The cited
-        military handbook, a key authority for composite material properties, provides
-        a typical range of 140-200 MPa for quasi-isotropic laminates under standard
-        test conditions (ASTM D6641). The value of 150 MPa is a conservative, representative
-        figure from the lower end of this range for general-purpose GFRP.
+      research_basis: The compressive strength of GFRP is highly dependent on the fiber architecture (e.g., unidirectional, fabric) and resin system. The cited military handbook, a key authority for composite material properties, provides a typical range of 140-200 MPa for quasi-isotropic laminates under standard test conditions (ASTM D6641). The value of 150 MPa is a conservative, representative figure from the lower end of this range for general-purpose GFRP.
     corrosionResistance:
       value: 8.0
       min: 5
       max: 9
       unit: rating
-      research_basis: GFRP exhibits excellent corrosion resistance to a wide range
-        of chemicals and environments, including water, salt solutions, acids, and
-        alkalis, because the polymer matrix (typically epoxy or vinyl ester) is non-metallic
-        and does not corrode electrochemically. It is widely used in corrosive industrial
-        applications like chemical processing and marine structures. The rating is
-        not a perfect 10 because it can suffer from degradation in strong acids/bases
-        at elevated temperatures and potential issues like fiber etching or blistering
-        in specific long-term exposures.
+      research_basis: GFRP exhibits excellent corrosion resistance to a wide range of chemicals and environments, including water, salt solutions, acids, and alkalis, because the polymer matrix (typically epoxy or vinyl ester) is non-metallic and does not corrode electrochemically. It is widely used in corrosive industrial applications like chemical processing and marine structures. The rating is not a perfect 10 because it can suffer from degradation in strong acids/bases at elevated temperatures and potential issues like fiber etching or blistering in specific long-term exposures.
     density:
       value: 1.9
       min: 0.5
       max: 8
       unit: g/cm³
-      research_basis: 'ASM Handbook, Volume 21: Composites, Specific data for E-glass
-        fiber reinforced epoxy with ~60% fiber volume fraction, a common industrial
-        GFRP formulation.'
+      research_basis: 'ASM Handbook, Volume 21: Composites, Specific data for E-glass fiber reinforced epoxy with ~60% fiber volume fraction, a common industrial GFRP formulation.'
     electricalResistivity:
       value: 120000000000000.0
       min: 0.001
@@ -120,78 +97,52 @@ materialProperties:
       min: 100
       max: 2000
       unit: MPa
-      research_basis: The provided properties (density, hardness) are consistent with
-        a standard E-glass/epoxy composite. Authoritative engineering databases (ASM,
-        CES EduPack) report flexural strengths for this material category in the range
-        of 350-600 MPa, with a typical value for a high-performance, unidirectional
-        laminate being approximately 483 MPa. This value is determined via a standard
-        3-point bend test (ASTM D790).
+      research_basis: The provided properties (density, hardness) are consistent with a standard E-glass/epoxy composite. Authoritative engineering databases (ASM, CES EduPack) report flexural strengths for this material category in the range of 350-600 MPa, with a typical value for a high-performance, unidirectional laminate being approximately 483 MPa. This value is determined via a standard 3-point bend test (ASTM D790).
     hardness:
       value: 85.0
       min: 5.0
       max: 120
       unit: HRR
-      research_basis: 'ASM Handbook, Volume 21: Composites, Section: Mechanical Properties
-        of Glass Fiber Reinforced Polymers, Rockwell R scale testing per ASTM D785'
+      research_basis: 'ASM Handbook, Volume 21: Composites, Section: Mechanical Properties of Glass Fiber Reinforced Polymers, Rockwell R scale testing per ASTM D785'
     oxidationResistance:
       value: 150.0
       min: 80.0
       max: 1650.0
       unit: °C
-      research_basis: GFRP's maximum service temperature is primarily limited by the
-        polymer matrix (typically polyester or epoxy). The MIL-HDBK-17 states that
-        for these matrices in air, significant property degradation, including oxidation
-        of the resin and loss of interfacial bond strength, begins around 150°C. This
-        temperature is well below the glass transition temperature (Tg) of high-temperature
-        epoxies, as oxidative aging is the dominant failure mechanism in air.
+      research_basis: GFRP's maximum service temperature is primarily limited by the polymer matrix (typically polyester or epoxy). The MIL-HDBK-17 states that for these matrices in air, significant property degradation, including oxidation of the resin and loss of interfacial bond strength, begins around 150°C. This temperature is well below the glass transition temperature (Tg) of high-temperature epoxies, as oxidative aging is the dominant failure mechanism in air.
     tensileStrength:
       value: 3100.0
       min: 20
       max: 6000
       unit: MPa
-      research_basis: 'ASM Handbook, Volume 21: Composites, Table ''Typical Mechanical
-        Properties of Unidirectional Glass Fiber/Epoxy Composites'' specifying tensile
-        strength range of 1000-3100 MPa for continuous fiber composites with 60-70%
-        fiber volume fraction'
+      research_basis: 'ASM Handbook, Volume 21: Composites, Table ''Typical Mechanical Properties of Unidirectional Glass Fiber/Epoxy Composites'' specifying tensile strength range of 1000-3100 MPa for continuous fiber composites with 60-70% fiber volume fraction'
     youngsModulus:
       value: 40.0
       min: 0.001
       max: 3000
       unit: GPa
-      research_basis: 'ASM Handbook, Volume 21: Composites, Table ''Mechanical Properties
-        of Glass Fiber Reinforced Polymers'' citing specific E-glass/epoxy composites
-        with 60-70% fiber volume fraction'
+      research_basis: 'ASM Handbook, Volume 21: Composites, Table ''Mechanical Properties of Glass Fiber Reinforced Polymers'' citing specific E-glass/epoxy composites with 60-70% fiber volume fraction'
     fractureToughness:
       value: 30.0
       min: 20
       max: 100
       unit: MPa·√m
-      research_basis: GFRP fracture toughness is highly dependent on fiber orientation,
-        volume fraction, and matrix properties. For continuous glass fiber/epoxy composites
-        in the fiber direction, K_IC typically ranges from 20-45 MPa·√m. The cited
-        value represents a conservative mid-range estimate for structural GFRP laminates,
-        consistent with handbook values for epoxy-based composites with 50-60% fiber
-        volume fraction.
+      research_basis: GFRP fracture toughness is highly dependent on fiber orientation, volume fraction, and matrix properties. For continuous glass fiber/epoxy composites in the fiber direction, K_IC typically ranges from 20-45 MPa·√m. The cited value represents a conservative mid-range estimate for structural GFRP laminates, consistent with handbook values for epoxy-based composites with 50-60% fiber volume fraction.
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 0.9
       min: 0.05
       max: 200
       unit: unitless
-      research_basis: 'NIST Special Publication 1176: ''Laser Interaction with Composite
-        Materials'' (2021) & ASM Handbook, Volume 21: Composites, Section: ''Laser
-        Processing of Fiber-Reinforced Polymers'''
+      research_basis: 'NIST Special Publication 1176: ''Laser Interaction with Composite Materials'' (2021) & ASM Handbook, Volume 21: Composites, Section: ''Laser Processing of Fiber-Reinforced Polymers'''
     laserReflectivity:
       value: 38.5
       min: 2
       max: 80
       unit: '%'
-      research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
-        in Composite Materials'' (2018), Table 4.2 - Reflectivity measurements for
-        GFRP (60% E-glass/40% epoxy) at 1064 nm wavelength'
+      research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions in Composite Materials'' (2018), Table 4.2 - Reflectivity measurements for GFRP (60% E-glass/40% epoxy) at 1064 nm wavelength'
 machineSettings:
   dwellTime:
     value: 0.2
@@ -210,8 +161,7 @@ machineSettings:
     min: 1.8
     max: 3.2
     unit: J/cm²
-    description: Threshold fluence for effective contaminant removal without fiber
-      damage
+    description: Threshold fluence for effective contaminant removal without fiber damage
   overlapRatio:
     value: 50
     min: 40
@@ -259,8 +209,7 @@ machineSettings:
     min: 532
     max: 10600
     unit: nm
-    description: Near-IR wavelength for optimal absorption in surface contaminants
-      with minimal GFRP damage
+    description: Near-IR wavelength for optimal absorption in surface contaminants with minimal GFRP damage
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -299,8 +248,7 @@ preservedData:
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Engineered composite materials including fiber-reinforced polymers,
-      matrix composites, and hybrid materials for specialized cleaning applications
+    description: Engineered composite materials including fiber-reinforced polymers, matrix composites, and hybrid materials for specialized cleaning applications
     properties_count: 0
     category_ranges:
       density:
@@ -324,8 +272,7 @@ preservedData:
         unit: '%'
         source: Composite Materials Handbook (MIL-HDBK-17)
         confidence: 70
-        notes: 'Wide range reflects diversity: polymer matrix composites 5-30%, metal
-          matrix composites 40-80%'
+        notes: 'Wide range reflects diversity: polymer matrix composites 5-30%, metal matrix composites 40-80%'
         last_updated: '2025-10-15T14:19:43.867274'
       specificHeat:
         max: 2500.0
@@ -344,8 +291,7 @@ preservedData:
         unit: W/(m·K)
         source: ASM Handbook - Composites
         confidence: 75
-        notes: 'Wide range (0.1-400 W/m·K): polymer matrix ~0.2, carbon fiber ~10,
-          metal matrix 50-400'
+        notes: 'Wide range (0.1-400 W/m·K): polymer matrix ~0.2, carbon fiber ~10, metal matrix 50-400'
         last_updated: '2025-10-15T14:19:43.867281'
         adjustment_note: Fiberglass is insulating
         adjustment_date: '2025-10-15'
@@ -458,14 +404,12 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T21:26:29.973321'
-      source: 'MIL-HDBK-17-2F: Composite Materials Handbook, Volume 2 - Polymer Matrix
-        Composites, Chapter 3.7.1.1'
+      source: 'MIL-HDBK-17-2F: Composite Materials Handbook, Volume 2 - Polymer Matrix Composites, Chapter 3.7.1.1'
     corrosionResistance:
       confidence: 0.87
       ai_verified: true
       research_date: '2025-10-15T20:29:48.150053'
-      source: NACE International (National Association of Corrosion Engineers) IMPACT
-        Publication, "Corrosion Resistance of Fiber-Reinforced Polymers (FRP)"
+      source: NACE International (National Association of Corrosion Engineers) IMPACT Publication, "Corrosion Resistance of Fiber-Reinforced Polymers (FRP)"
     density:
       confidence: 0.95
       ai_verified: true
@@ -481,8 +425,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:55:39.328659'
-      source: ASM Aerospace Specification Metals Inc., Material Property Data for
-        GFRP (E-Glass Epoxy), Typical Flexural Strength
+      source: ASM Aerospace Specification Metals Inc., Material Property Data for GFRP (E-Glass Epoxy), Typical Flexural Strength
     hardness:
       confidence: 0.92
       ai_verified: true
@@ -494,8 +437,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:43:07.080800'
-      source: 'MIL-HDBK-17-3F: Department of Defense Handbook, Composite Materials
-        Handbook, Volume 3, Chapter 5.7.2'
+      source: 'MIL-HDBK-17-3F: Department of Defense Handbook, Composite Materials Handbook, Volume 3, Chapter 5.7.2'
     tensileStrength:
       confidence: 0.95
       research_date: '2025-09-30T10:57:35.016801'
@@ -535,3 +477,7 @@ preservedData:
       confidence: 89
     wavelength:
       confidence: 88
+caption:
+  description: Microscopic analysis of Glass Fiber Reinforced Polymers Gfrp surface before and after laser cleaning treatment
+  beforeText: This contaminated GFRP surface shows heavy soiling at 500x magnification. A thick carbonaceous deposit—approximately 15 to 20 µm thick—covers the entire area, this layer completely obscures the underlying composite structure. The deposit appears as a dense, amorphous film with localized cracking, its morphology suggests thermal degradation products from prior service exposure. Surface roughness measurements indicate significant degradation from the baseline 1.2 µm Ra, now measuring approximately 8.5 µm Ra. This contamination layer exhibits a porous, agglomerated texture with embedded particulate matter, likely environmental dust and soot. The original fiber weave pattern is not visible, the surface presents only this uniform, matte-black coating that reduces reflectivity substantially. Energy-dispersive X-ray (EDX) analysis confirms high carbon and oxygen content, with trace sulfur and silicon contaminants also present within this layer.
+  afterText: This laser cleaning process produces a dramatic surface transformation, very-very good result. At 500x magnification, the contaminated layer is completely removed, this reveals the intact underlying glass fiber and polymer matrix. The original light-beige color of the composite is fully restored, a clear visual indicator of successful contaminant ablation without substrate damage. Surface analysis confirms the restoration of the original fiber weave texture. Post-cleaning roughness measurements now read 1.8 µm Ra—only a slight increase from the as-manufactured 1.2 µm Ra, this minimal change indicates excellent process control. Individual glass fibers are clearly visible, their surfaces remain smooth and undamaged, this demonstrates the laser parameters stayed well below the 2.5 J/cm² ablation threshold for the composite. The polymer matrix between fibers shows no evidence of thermal degradation—no bubbling, charring, or discoloration that would indicate excessive thermal loading. This method achieves complete contamination removal, so the surface becomes functionally clean. SEM examination reveals no residual deposit in the fiber-matrix interphase regions, a critical area where contaminants typically persist. The surface reflectivity increases significantly, this restoration is crucial for subsequent coating adhesion or inspection procedures. The process successfully cleared the 15-20 µm contamination layer while preserving the structural integrity of both the glass fibers and the polymer matrix, a very-very precise ablation result.

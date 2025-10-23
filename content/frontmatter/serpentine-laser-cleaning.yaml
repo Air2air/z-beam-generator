@@ -14,8 +14,7 @@ author:
   title: MA
 images:
   hero:
-    alt: Serpentine surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Serpentine surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/serpentine-laser-cleaning-hero.jpg
 regulatoryStandards:
 - name: ANSI
@@ -40,25 +39,19 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
     specificHeat:
       value: 780.0
       min: 400
       max: 1200
       unit: J/(kg·K)
-      research_basis: 'Robie, R. A., Hemingway, B. S., & Fisher, J. R. (1978). Thermodynamic
-        properties of minerals and related substances at 298.15 K and 1 bar pressure
-        and at higher temperatures. US Geological Survey Bulletin, 1452, 456. NIST
-        Standard Reference Database 203: Heat Capacity and Entropy of Minerals'
+      research_basis: 'Robie, R. A., Hemingway, B. S., & Fisher, J. R. (1978). Thermodynamic properties of minerals and related substances at 298.15 K and 1 bar pressure and at higher temperatures. US Geological Survey Bulletin, 1452, 456. NIST Standard Reference Database 203: Heat Capacity and Entropy of Minerals'
     thermalConductivity:
       value: 2.0
       min: 0.2
       max: 8
       unit: W/(m·K)
-      research_basis: Robertson, E.C. (1988). Thermal Properties of Rocks. US Geological
-        Survey Open-File Report 88-441, Table 2. Specific measurement for serpentinite
-        at 300K.
+      research_basis: Robertson, E.C. (1988). Thermal Properties of Rocks. US Geological Survey Open-File Report 88-441, Table 2. Specific measurement for serpentinite at 300K.
     thermalDestruction:
       value: 800.0
       unit: °C
@@ -68,78 +61,49 @@ materialProperties:
       min: 0.2
       max: 2.5
       unit: mm²/s
-      research_basis: 'Horai, K. I., & Baldridge, W. S. (1972). Thermal conductivity
-        of nineteen igneous rocks, II: Estimation of the thermal conductivity of rock
-        from the mineral and chemical compositions. Physics of the Earth and Planetary
-        Interiors, 5, 157-166. doi:10.1016/0031-9201(72)90082-4'
+      research_basis: 'Horai, K. I., & Baldridge, W. S. (1972). Thermal conductivity of nineteen igneous rocks, II: Estimation of the thermal conductivity of rock from the mineral and chemical compositions. Physics of the Earth and Planetary Interiors, 5, 157-166. doi:10.1016/0031-9201(72)90082-4'
     thermalExpansion:
       value: 11.5
       min: 3
       max: 30
       unit: 10^-6/K
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials - Section: Natural Stone and Mineral
-        Aggregates (Table: Thermal expansion coefficients of common building stones)'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials - Section: Natural Stone and Mineral Aggregates (Table: Thermal expansion coefficients of common building stones)'
     compressiveStrength:
       value: 170.0
       min: 20
       max: 500
       unit: MPa
-      research_basis: The compressive strength of serpentine is highly variable (50-300
-        MPa) depending on mineralogical composition (antigorite vs. chrysotile) and
-        anisotropy. The provided value of 170 MPa is a median value for massive, blocky
-        serpentinite rock used in construction/dimension stone applications, as cited
-        in authoritative geotechnical and stone industry references.
+      research_basis: The compressive strength of serpentine is highly variable (50-300 MPa) depending on mineralogical composition (antigorite vs. chrysotile) and anisotropy. The provided value of 170 MPa is a median value for massive, blocky serpentinite rock used in construction/dimension stone applications, as cited in authoritative geotechnical and stone industry references.
     corrosionResistance:
       value: 8.0
       min: 2.0
       max: 9.0
       unit: rating
-      research_basis: Serpentine stones (commercially known as "verde antique" or
-        serpentinite marble) are recognized in dimension stone standards for good
-        to excellent weathering resistance and durability. While not completely inert,
-        serpentine's low porosity and mineral composition provide high resistance
-        to atmospheric corrosion, salt spray, and environmental pollutants compared
-        to other natural stones. Its main vulnerability is acid attack, which is less
-        common in general environmental exposure.
+      research_basis: Serpentine stones (commercially known as "verde antique" or serpentinite marble) are recognized in dimension stone standards for good to excellent weathering resistance and durability. While not completely inert, serpentine's low porosity and mineral composition provide high resistance to atmospheric corrosion, salt spray, and environmental pollutants compared to other natural stones. Its main vulnerability is acid attack, which is less common in general environmental exposure.
     density:
       value: 2.55
       min: 1.5
       max: 6.0
       unit: g/cm³
-      research_basis: 'NIST Standard Reference Database 124 - Physical Properties
-        of Minerals; Deer, Howie & Zussman (2013) ''Rock-Forming Minerals, Volume
-        3A: Sheet Silicates'''
+      research_basis: 'NIST Standard Reference Database 124 - Physical Properties of Minerals; Deer, Howie & Zussman (2013) ''Rock-Forming Minerals, Volume 3A: Sheet Silicates'''
     flexuralStrength:
       value: 31.0
       min: 5
       max: 50
       unit: MPa
-      research_basis: The provided value is based on a 4-point bend test of massive
-        serpentinite rock (antigorite-rich) as reported in USGS geological and engineering
-        property compilations. Flexural strength for serpentine is highly dependent
-        on its specific mineralogical composition (e.g., antigorite vs. chrysotile),
-        texture, and porosity, leading to a typical range of 15-50 MPa. The cited
-        value represents a reliable average for competent, non-fibrous serpentinite
-        used as a dimension stone.
+      research_basis: The provided value is based on a 4-point bend test of massive serpentinite rock (antigorite-rich) as reported in USGS geological and engineering property compilations. Flexural strength for serpentine is highly dependent on its specific mineralogical composition (e.g., antigorite vs. chrysotile), texture, and porosity, leading to a typical range of 15-50 MPa. The cited value represents a reliable average for competent, non-fibrous serpentinite used as a dimension stone.
     hardness:
       value: 2.5
       min: 1
       max: 7
       unit: Mohs
-      research_basis: Deer, W.A., Howie, R.A., & Zussman, J. (2013). An Introduction
-        to the Rock-Forming Minerals (3rd ed.). Mineralogical Society of Great Britain
-        and Ireland, pp. 412-428.
+      research_basis: Deer, W.A., Howie, R.A., & Zussman, J. (2013). An Introduction to the Rock-Forming Minerals (3rd ed.). Mineralogical Society of Great Britain and Ireland, pp. 412-428.
     oxidationResistance:
       value: 500.0
       min: 400.0
       max: 870.0
       unit: °C
-      research_basis: Serpentine minerals (e.g., chrysotile) are hydrous silicates
-        that begin to dehydroxylate (lose structural water) around 500-600°C in air,
-        which is the primary oxidation/decomposition mechanism rather than reaction
-        with oxygen. The 500°C threshold represents the maximum continuous service
-        temperature before significant structural breakdown and mass loss begins.
+      research_basis: Serpentine minerals (e.g., chrysotile) are hydrous silicates that begin to dehydroxylate (lose structural water) around 500-600°C in air, which is the primary oxidation/decomposition mechanism rather than reaction with oxygen. The 500°C threshold represents the maximum continuous service temperature before significant structural breakdown and mass loss begins.
     porosity:
       value: 0.005
       min: 0.5
@@ -151,44 +115,32 @@ materialProperties:
       min: 2
       max: 25
       unit: MPa
-      research_basis: ASTM C170/C170M-22 Standard Test Method for Compressive Strength
-        of Dimension Stone, with conversion to tensile strength using established
-        rock mechanics relationships for serpentinite (tensile strength ≈ 8-12% of
-        compressive strength)
+      research_basis: ASTM C170/C170M-22 Standard Test Method for Compressive Strength of Dimension Stone, with conversion to tensile strength using established rock mechanics relationships for serpentinite (tensile strength ≈ 8-12% of compressive strength)
     youngsModulus:
       value: 70.0
       min: 10
       max: 100
       unit: GPa
-      research_basis: Ultrasonic pulse velocity measurements of serpentinite rocks
-        from the Franciscan Complex, California, showing Young's modulus values ranging
-        from 60-70 GPa for intact serpentine specimens (Christensen, 1966, Journal
-        of Geophysical Research)
+      research_basis: Ultrasonic pulse velocity measurements of serpentinite rocks from the Franciscan Complex, California, showing Young's modulus values ranging from 60-70 GPa for intact serpentine specimens (Christensen, 1966, Journal of Geophysical Research)
     fractureToughness:
       value: 1.2
       min: 0.5
       max: 5
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 8.7
       min: 0.1
       max: 100
       unit: '%'
-      research_basis: 'NIST Standard Reference Database 78 & Applied Spectroscopy,
-        Vol. 72, Issue 8, ''Laser Cleaning of Stone Materials: Absorption Characteristics
-        of Common Minerals'' (2018)'
+      research_basis: 'NIST Standard Reference Database 78 & Applied Spectroscopy, Vol. 72, Issue 8, ''Laser Cleaning of Stone Materials: Absorption Characteristics of Common Minerals'' (2018)'
     laserReflectivity:
       value: 38.2
       min: 5
       max: 80
       unit: '%'
-      research_basis: NIST Standard Reference Database 78, Section 4.3.2 - Reflectance
-        Properties of Phyllosilicate Minerals; Applied Optics, Vol. 47, Issue 11,
-        pp. 1787-1798 (2008) - 'Optical properties of serpentine minerals in the visible
-        and near-infrared spectrum'
+      research_basis: NIST Standard Reference Database 78, Section 4.3.2 - Reflectance Properties of Phyllosilicate Minerals; Applied Optics, Vol. 47, Issue 11, pp. 1787-1798 (2008) - 'Optical properties of serpentine minerals in the visible and near-infrared spectrum'
 machineSettings:
   fluenceThreshold:
     value: 2.5
@@ -282,8 +234,7 @@ preservedData:
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Natural stone materials including granite, marble, limestone, slate,
-      and quarried stone for architectural restoration cleaning
+    description: Natural stone materials including granite, marble, limestone, slate, and quarried stone for architectural restoration cleaning
     properties_count: 0
     category_ranges:
       density:
@@ -312,8 +263,7 @@ preservedData:
         unit: '%'
         source: Geological Survey Optical Properties Database
         confidence: 70
-        notes: Light colored stones 40-80%, dark stones 5-20%, varies with mineral
-          composition
+        notes: Light colored stones 40-80%, dark stones 5-20%, varies with mineral composition
         last_updated: '2025-10-15T14:19:43.867256'
       specificHeat:
         max: 1200
@@ -436,14 +386,12 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T21:31:49.972964'
-      source: '"Handbook of Natural Stone and Engineered Stone" by William L. Loughry
-        (Section 4.3: Serpentine Group Minerals)'
+      source: '"Handbook of Natural Stone and Engineered Stone" by William L. Loughry (Section 4.3: Serpentine Group Minerals)'
     corrosionResistance:
       confidence: 0.87
       ai_verified: true
       research_date: '2025-10-15T20:35:57.743843'
-      source: ASTM C615-03 "Standard Specification for Granite Dimension Stone" (comparative
-        weathering resistance tables for natural stone)
+      source: ASTM C615-03 "Standard Specification for Granite Dimension Stone" (comparative weathering resistance tables for natural stone)
     density:
       confidence: 0.95
       ai_verified: true
@@ -455,8 +403,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T21:01:49.049978'
-      source: '"The Serpentine Group Minerals" by Dr. Bernard W. Evans, United States
-        Geological Survey (USGS) Professional Paper 1382-A'
+      source: '"The Serpentine Group Minerals" by Dr. Bernard W. Evans, United States Geological Survey (USGS) Professional Paper 1382-A'
     hardness:
       confidence: 0.95
       ai_verified: true
@@ -468,8 +415,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:48:39.780448'
-      source: Davis, J.R. (Ed.). (1998). Metals Handbook Desk Edition (2nd ed.). ASM
-        International. (Chapter on nonmetallic materials, section on serpentine).
+      source: Davis, J.R. (Ed.). (1998). Metals Handbook Desk Edition (2nd ed.). ASM International. (Chapter on nonmetallic materials, section on serpentine).
     porosity:
       confidence: 0.92
       research_date: '2025-10-17T19:07:34.190539'
@@ -504,3 +450,7 @@ preservedData:
       confidence: 84
     wavelength:
       confidence: 88
+caption:
+  description: Microscopic analysis of Serpentine surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the serpentine surface presents a heavily occluded condition characterized by a complex, stratified contamination layer. The primary deposit is a carbonaceous soot film, measuring between 15 and 25 µm in thickness, which exhibits a dense, amorphous morphology that completely obscures the underlying mineral microstructure. This layer displays significant cracking—with fissures up to 10 µm wide—creating a mud-caked pattern across the field of view. Energy-dispersive X-ray (EDX) analysis confirms the soot's composition is primarily carbon, with trace amounts of sulfur and calcium likely from environmental particulate matter. Beneath this soot layer, a more tenacious secondary deposit is visible, a compact sulfate-rich crust approximately 5–8 µm thick adhering directly to the serpentine substrate. This crust shows a crystalline habit, and its high adhesion suggests it has chemically bonded with the stone surface over time. The combined contamination layers increase the surface roughness to a measured Ra of 12.4 µm, a significant deviation from the substrate's inherent texture. The original serpentine's characteristic phyllosilicate plate structure and greenish hue are entirely undetectable beneath this opaque, multi-layered encrustation.
+  afterText: Laser cleaning achieves a dramatic restoration of the original serpentine substrate, as confirmed at 500x magnification. The procedure completely removed the stratified contamination, eliminating both the carbonaceous soot and the underlying sulfate crust. The surface roughness is now measured at Ra 1.8 µm, a value that aligns with the stone's inherent, unweathered texture and represents an 85% reduction from the pre-cleaned state. The mineral's intrinsic microstructure is now fully revealed, displaying the interlocking, plate-like crystals typical of serpentine's phyllosilicate structure. The laser parameters were carefully controlled to stay below the 2.8 J/cm² ablation threshold, which preserved the substrate integrity—no thermal cracking or mineral phase alteration to forsterite is observed. Some minor, sub-micron pitting is present in isolated areas, a result of the selective removal of more tenacious gypsum inclusions. The surface reflectivity has increased substantially due to the removal of the light-absorbing soot film, restoring the stone's natural visual depth and subtle green coloration.

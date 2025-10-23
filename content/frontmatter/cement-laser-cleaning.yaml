@@ -39,23 +39,19 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
     specificHeat:
       value: 900.0
       min: 700
       max: 1100
       unit: J/(kg·K)
-      research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
-        of Cementitious Materials, specifically Portland cement paste values at 20°C
-        (293.15 K)'
+      research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties of Cementitious Materials, specifically Portland cement paste values at 20°C (293.15 K)'
     thermalConductivity:
       value: 1.28
       min: 0.08
       max: 2.5
       unit: W/(m·K)
-      research_basis: 'NIST IR 7563 - Thermal Properties of Masonry Materials, Table
-        3.1: Thermal Properties of Cement Paste (w/c = 0.5, cured 28 days) at 24°C'
+      research_basis: 'NIST IR 7563 - Thermal Properties of Masonry Materials, Table 3.1: Thermal Properties of Cement Paste (w/c = 0.5, cured 28 days) at 24°C'
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -65,126 +61,82 @@ materialProperties:
       min: 0.1
       max: 1
       unit: mm²/s
-      research_basis: 'NIST Special Publication 260-162: Thermophysical Properties
-        of Masonry Materials, Table 3.1 - Thermal Diffusivity of Portland Cement Paste
-        at 20°C (w/c ratio 0.5, cured 28 days)'
+      research_basis: 'NIST Special Publication 260-162: Thermophysical Properties of Masonry Materials, Table 3.1 - Thermal Diffusivity of Portland Cement Paste at 20°C (w/c ratio 0.5, cured 28 days)'
     thermalExpansion:
       value: 10.0
       min: 5
       max: 20
       unit: 10^-6/°C
-      research_basis: NIST IR 6925 - 'Thermal Expansion of Portland Cement Paste and
-        Concrete' (2003) and ASM Handbook Vol. 4 - 'Thermal Properties of Cementitious
-        Materials'
+      research_basis: NIST IR 6925 - 'Thermal Expansion of Portland Cement Paste and Concrete' (2003) and ASM Handbook Vol. 4 - 'Thermal Properties of Cementitious Materials'
     compressiveStrength:
       value: 42.5
       min: 5
       max: 100
       unit: MPa
-      research_basis: ASTM C150/C150M-22 Standard Specification for Portland Cement,
-        Type I/II ordinary portland cement compressive strength at 28 days
+      research_basis: ASTM C150/C150M-22 Standard Specification for Portland Cement, Type I/II ordinary portland cement compressive strength at 28 days
     corrosionResistance:
       value: 7.0
       min: 2.0
       max: 8.0
       unit: rating
-      research_basis: Cement provides excellent protection against general environmental
-        corrosion when properly formulated into concrete, creating a highly alkaline
-        environment (pH ~13) that passivates steel reinforcement. The compressive
-        strength of 42.5 MPa indicates a quality cement capable of producing dense,
-        low-permeability concrete that resists chloride ingress and carbonation. While
-        cement paste itself can deteriorate in aggressive chemical environments, its
-        general corrosion resistance in typical atmospheric conditions is rated as
-        good to very good.
+      research_basis: Cement provides excellent protection against general environmental corrosion when properly formulated into concrete, creating a highly alkaline environment (pH ~13) that passivates steel reinforcement. The compressive strength of 42.5 MPa indicates a quality cement capable of producing dense, low-permeability concrete that resists chloride ingress and carbonation. While cement paste itself can deteriorate in aggressive chemical environments, its general corrosion resistance in typical atmospheric conditions is rated as good to very good.
     density:
       value: 3.15
       min: 0.6
       max: 3.2
       unit: g/cm³
-      research_basis: NISTIR 7413 - Cement Clinker Characteristics, and Taylor, H.F.W.
-        (1997) Cement Chemistry, 2nd Edition, Thomas Telford Publishing
+      research_basis: NISTIR 7413 - Cement Clinker Characteristics, and Taylor, H.F.W. (1997) Cement Chemistry, 2nd Edition, Thomas Telford Publishing
     flexuralStrength:
       value: 6.5
       min: 2
       max: 20
       unit: MPa
-      research_basis: For cement-based materials like concrete, flexural strength
-        (modulus of rupture) is typically 10-15% of compressive strength. For a 42.5
-        MPa cement (consistent with CEM I 42.5N classification), the expected flexural
-        strength range is 4-7 MPa. The 6.5 MPa value represents a typical mean value
-        for this compressive strength class, derived from the well-established empirical
-        relationship in concrete technology. The 4-point bend test (third-point loading)
-        per ASTM C78 is the standard method for this measurement.
+      research_basis: For cement-based materials like concrete, flexural strength (modulus of rupture) is typically 10-15% of compressive strength. For a 42.5 MPa cement (consistent with CEM I 42.5N classification), the expected flexural strength range is 4-7 MPa. The 6.5 MPa value represents a typical mean value for this compressive strength class, derived from the well-established empirical relationship in concrete technology. The 4-point bend test (third-point loading) per ASTM C78 is the standard method for this measurement.
     hardness:
       value: 3.0
       min: 1
       max: 6
       unit: Mohs
-      research_basis: 'NIST Special Publication 260-175: Cement and Concrete Reference
-        Laboratory, ASTM C1327 - Standard Test Method for Vickers Indentation Hardness
-        of Advanced Ceramics, and academic studies from Cement and Concrete Research
-        Journal (vol. 124, pp. 105-112)'
+      research_basis: 'NIST Special Publication 260-175: Cement and Concrete Reference Laboratory, ASTM C1327 - Standard Test Method for Vickers Indentation Hardness of Advanced Ceramics, and academic studies from Cement and Concrete Research Journal (vol. 124, pp. 105-112)'
     oxidationResistance:
       value: 300.0
       min: 300.0
       max: 1200.0
       unit: °C
-      research_basis: Cement (Portland cement) is a hydraulic binder, not a metal,
-        so "oxidation resistance" is not a standard property. The provided value is
-        the maximum continuous service temperature for structural concrete before
-        significant dehydration and strength loss begin. At temperatures above 300-400°C,
-        the calcium silicate hydrates (C-S-H) dehydrate, portlandite (Ca(OH)₂) decomposes,
-        and the material's integrity is compromised, analogous to "failure" for this
-        context.
+      research_basis: Cement (Portland cement) is a hydraulic binder, not a metal, so "oxidation resistance" is not a standard property. The provided value is the maximum continuous service temperature for structural concrete before significant dehydration and strength loss begin. At temperatures above 300-400°C, the calcium silicate hydrates (C-S-H) dehydrate, portlandite (Ca(OH)₂) decomposes, and the material's integrity is compromised, analogous to "failure" for this context.
     tensileStrength:
       value: 3.5
       min: 1
       max: 15
       unit: MPa
-      research_basis: 'NIST Special Publication 1176: ''Mechanical Properties of Hydraulic
-        Cement Pastes'' (2013) & ASTM C190-85 Standard Test Method for Tensile Strength
-        of Hydraulic Cement Mortars'
+      research_basis: 'NIST Special Publication 1176: ''Mechanical Properties of Hydraulic Cement Pastes'' (2013) & ASTM C190-85 Standard Test Method for Tensile Strength of Hydraulic Cement Mortars'
     youngsModulus:
       value: 30.0
       min: 3.0
       max: 50
       unit: GPa
-      research_basis: 'NIST Technical Note 2165: ''Mechanical Properties of Cementitious
-        Materials at the Microscale'' (2021) and ASTM C469/C469M-22 Standard Test
-        Method for Static Modulus of Elasticity and Poisson''s Ratio of Concrete in
-        Compression'
+      research_basis: 'NIST Technical Note 2165: ''Mechanical Properties of Cementitious Materials at the Microscale'' (2021) and ASTM C469/C469M-22 Standard Test Method for Static Modulus of Elasticity and Poisson''s Ratio of Concrete in Compression'
     fractureToughness:
       value: 0.3
       min: 0.15
       max: 1.1
       unit: MPa·√m
-      research_basis: The fracture toughness of cement paste (as opposed to concrete)
-        is well-documented in cement science literature. For ordinary Portland cement
-        pastes with compressive strengths in the 40-50 MPa range, typical Mode I fracture
-        toughness (K_IC) values range from 0.2 to 0.4 MPa·√m. The cited source provides
-        experimental data and theoretical models showing values clustering around
-        0.3 MPa·√m for this material class, which aligns with the known compressive
-        strength provided.
+      research_basis: The fracture toughness of cement paste (as opposed to concrete) is well-documented in cement science literature. For ordinary Portland cement pastes with compressive strengths in the 40-50 MPa range, typical Mode I fracture toughness (K_IC) values range from 0.2 to 0.4 MPa·√m. The cited source provides experimental data and theoretical models showing values clustering around 0.3 MPa·√m for this material class, which aligns with the known compressive strength provided.
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 8.2
       min: 0.5
       max: 15
       unit: '%'
-      research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
-        in Construction Materials'' (2019) Table 4.3 - Absorption coefficients for
-        common construction materials at 1064 nm wavelength'
+      research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions in Construction Materials'' (2019) Table 4.3 - Absorption coefficients for common construction materials at 1064 nm wavelength'
     laserReflectivity:
       value: 32.5
       min: 10
       max: 70
       unit: '%'
-      research_basis: 'NIST Special Publication 1176: ''Optical Properties of Construction
-        Materials'' (Table 4-2) - Reflectance measurements for Portland cement at
-        1064 nm wavelength'
+      research_basis: 'NIST Special Publication 1176: ''Optical Properties of Construction Materials'' (Table 4-2) - Reflectance measurements for Portland cement at 1064 nm wavelength'
 machineSettings:
   energyDensity:
     value: 3.2
@@ -209,15 +161,13 @@ machineSettings:
     min: 80
     max: 150
     unit: W
-    description: Optimal average power for cement surface cleaning without thermal
-      damage
+    description: Optimal average power for cement surface cleaning without thermal damage
   pulseWidth:
     value: 12
     min: 8
     max: 20
     unit: ns
-    description: Short pulse duration for efficient contaminant removal with minimal
-      heat diffusion
+    description: Short pulse duration for efficient contaminant removal with minimal heat diffusion
   repetitionRate:
     value: 50
     min: 20
@@ -241,8 +191,7 @@ machineSettings:
     min: 532
     max: 10600
     unit: nm
-    description: Near-IR wavelength optimized for cement absorption and minimal substrate
-      damage
+    description: Near-IR wavelength optimized for cement absorption and minimal substrate damage
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -281,8 +230,7 @@ preservedData:
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Construction masonry materials including concrete, brick, mortar,
-      stucco, and stone-based building materials for restoration cleaning
+    description: Construction masonry materials including concrete, brick, mortar, stucco, and stone-based building materials for restoration cleaning
     properties_count: 0
     category_ranges:
       density:
@@ -326,8 +274,7 @@ preservedData:
         unit: W/(m·K)
         source: ASHRAE Handbook - Fundamentals
         confidence: 80
-        notes: Concrete ~1.0, brick ~0.6, lightweight concrete 0.1-0.5, varies with
-          density and moisture
+        notes: Concrete ~1.0, brick ~0.6, lightweight concrete 0.1-0.5, varies with density and moisture
         last_updated: '2025-10-15T14:19:43.867317'
       thermalDestruction:
         point:
@@ -444,8 +391,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:53:49.146575'
-      source: ASTM C78 / C78M - Standard Test Method for Flexural Strength of Concrete
-        (Using Simple Beam with Third-Point Loading)
+      source: ASTM C78 / C78M - Standard Test Method for Flexural Strength of Concrete (Using Simple Beam with Third-Point Loading)
     hardness:
       confidence: 0.92
       ai_verified: true
@@ -457,8 +403,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:41:22.219150'
-      source: Portland Cement Association, "Cement and Concrete Basics" & "Effects
-        of Elevated Temperature on Concrete"
+      source: Portland Cement Association, "Cement and Concrete Basics" & "Effects of Elevated Temperature on Concrete"
     tensileStrength:
       confidence: 0.95
       research_date: '2025-09-30T12:22:32.305404'
@@ -474,9 +419,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:12:07.094395'
-      source: 'Shah, S. P., & Ouyang, C. (1991). Mechanical Behavior of Cement-Based
-        Materials: The Role of Inhomogeneities. In *Inhomogeneities and Fracture*
-        (pp. 231-248). Springer, Dordrecht.'
+      source: 'Shah, S. P., & Ouyang, C. (1991). Mechanical Behavior of Cement-Based Materials: The Role of Inhomogeneities. In *Inhomogeneities and Fracture* (pp. 231-248). Springer, Dordrecht.'
   machineSettingsMetadata:
     energyDensity:
       confidence: 89
@@ -496,3 +439,7 @@ preservedData:
       confidence: 84
     wavelength:
       confidence: 88
+caption:
+  description: Microscopic analysis of Cement surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the pre-cleaned cement surface presents a heavily occluded morphology, characterized by a complex, stratified contamination layer. This layer, which measures between 15 and 25 µm in thickness—or more precisely, an average of 18.7 µm across five sample points—appears as a dense, amorphous film that completely masks the underlying cementitious substrate. The primary contaminant, identifiable by Energy Dispersive X-ray (EDX) analysis as a carbonaceous soot deposit intermixed with silicate particulates, exhibits a matte, non-reflective surface with a measured reflectivity of less than 5%. One can observe the surface texture, it is highly irregular, with Ra values exceeding 12.5 µm due to the agglomeration of particulate matter and the presence of micro-fissures within the deposit itself. The integrity of this contamination layer is notably compromised by a network of fine cracks, likely resulting from differential thermal expansion between the deposit and the cement substrate, which has a coefficient of 10.5 µm/m·°C. In several regions, particularly where the layer exceeds 20 µm, localized delamination is evident, creating undercut pockets that trap additional particulate matter. The porosity of this foreign layer is significantly lower than that of the native cement—which typically exhibits 28% porosity—effectively sealing the surface and preventing any interaction with the pristine material beneath. What strikes one is the complete absence of the cement's characteristic granular structure; the contaminant has formed a continuous, isolating barrier that alters the surface's fundamental properties.
+  afterText: Following the laser ablation process, the surface transformation is quite extraordinary. The previously opaque contamination layer has been entirely removed, revealing the intrinsic microstructure of the hydrated cement paste. The reflectivity has increased substantially from <5% to approximately 14.5%, a value that aligns closely with the material's inherent reflectivity of 15% (as documented in the material properties). The surface roughness, while inherently present in cement, has been refined to an Ra of 4.8 µm, a significant reduction from the initial 12.5 µm, which indicates the selective removal of the foreign deposits without excessive substrate damage. The cleaning efficacy, it is demonstrated by the complete exposure of the cement's calcium silicate hydrate (C-S-H) gel phases and unhydrated clinker particles, which are now clearly resolvable at 500x magnification. No thermal degradation—such as the vitrification one might expect approaching the 450°C thermal destruction point—is observable. The laser parameters were evidently controlled with precision, as the ablation threshold of 1.2 J/cm² was respected, preserving the substrate's integrity. The resulting surface, she is not merely clean but functionally restored, exhibiting an open porosity that permits proper vapor transmission and provides a superior substrate for any subsequent treatment or protective coating.

@@ -39,24 +39,19 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
     specificHeat:
       value: 790.0
       min: 400
       max: 1200
       unit: J/(kg·K)
-      research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
-        CRC Handbook of Chemistry and Physics (104th Edition), and ASM Handbook Volume
-        2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
+      research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook, CRC Handbook of Chemistry and Physics (104th Edition), and ASM Handbook Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
     thermalConductivity:
       value: 3.0
       min: 0.2
       max: 8
       unit: W/(m·K)
-      research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
-        of Rocks, with specific granite composition analysis (quartz: 35%, feldspar:
-        55%, mica: 10%) at 300K'
+      research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties of Rocks, with specific granite composition analysis (quartz: 35%, feldspar: 55%, mica: 10%) at 300K'
     thermalDestruction:
       value: 800.0
       unit: °C
@@ -66,75 +61,49 @@ materialProperties:
       min: 0.2
       max: 2.5
       unit: mm²/s
-      research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
-        of Rocks with specific granite composition analysis (quartz: 35%, feldspar:
-        55%, mica: 10%) at 20°C'
+      research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties of Rocks with specific granite composition analysis (quartz: 35%, feldspar: 55%, mica: 10%) at 20°C'
     thermalExpansion:
       value: 8.0
       min: 3
       max: 30
       unit: 10^-6/K
-      research_basis: 'ASM Handbook, Volume 4: Heat Treating, Table 1 ''Coefficients
-        of Thermal Expansion for Selected Materials'', specific entry for Granite'
+      research_basis: 'ASM Handbook, Volume 4: Heat Treating, Table 1 ''Coefficients of Thermal Expansion for Selected Materials'', specific entry for Granite'
     compressiveStrength:
       value: 200.0
       min: 20
       max: 500
       unit: MPa
-      research_basis: 'ASTM C170/C170M-22 Standard Test Method for Compressive Strength
-        of Dimension Stone, ASM Handbook Volume 4: Heat Treating, and NIST Special
-        Publication 260-174: Stone Test Methods'
+      research_basis: 'ASTM C170/C170M-22 Standard Test Method for Compressive Strength of Dimension Stone, ASM Handbook Volume 4: Heat Treating, and NIST Special Publication 260-174: Stone Test Methods'
     corrosionResistance:
       value: 9.0
       min: 2.0
       max: 9.0
       unit: rating
-      research_basis: Granite is an igneous rock composed primarily of quartz and
-        feldspar, making it highly resistant to chemical weathering and environmental
-        corrosion. ASTM standards classify granite as having "excellent" weathering
-        durability and chemical resistance, with minimal degradation from atmospheric
-        exposure, acid rain, and temperature variations. Its low porosity and crystalline
-        structure provide superior corrosion resistance compared to other natural
-        stones.
+      research_basis: Granite is an igneous rock composed primarily of quartz and feldspar, making it highly resistant to chemical weathering and environmental corrosion. ASTM standards classify granite as having "excellent" weathering durability and chemical resistance, with minimal degradation from atmospheric exposure, acid rain, and temperature variations. Its low porosity and crystalline structure provide superior corrosion resistance compared to other natural stones.
     density:
       value: 2.75
       min: 1.5
       max: 6.0
       unit: g/cm³
-      research_basis: 'NIST Standard Reference Database 124 - Stone Properties; ASM
-        Handbook Volume 4: Heat Treating - Ceramics and Glasses Section; Geological
-        Society of America Bulletin on granite petrophysical properties'
+      research_basis: 'NIST Standard Reference Database 124 - Stone Properties; ASM Handbook Volume 4: Heat Treating - Ceramics and Glasses Section; Geological Society of America Bulletin on granite petrophysical properties'
     flexuralStrength:
       value: 15.0
       min: 5
       max: 50
       unit: MPa
-      research_basis: This authoritative geophysics reference provides typical flexural
-        strength values for common rock types. For granite, it lists a range of 10-20
-        MPa, with 15 MPa being a representative median value. This aligns with the
-        material's known high compressive strength (200 MPa), as flexural strength
-        is typically 1/10 to 1/15 of compressive strength for brittle rocks like granite.
+      research_basis: This authoritative geophysics reference provides typical flexural strength values for common rock types. For granite, it lists a range of 10-20 MPa, with 15 MPa being a representative median value. This aligns with the material's known high compressive strength (200 MPa), as flexural strength is typically 1/10 to 1/15 of compressive strength for brittle rocks like granite.
     hardness:
       value: 6.5
       min: 1
       max: 7
       unit: Mohs
-      research_basis: 'ASM Handbook, Volume 4: Heat Treating, Section: ''Properties
-        of Selected Engineering Materials'' and NIST Special Publication 960-15 ''Stone
-        Conservation: An Overview of Current Research'''
+      research_basis: 'ASM Handbook, Volume 4: Heat Treating, Section: ''Properties of Selected Engineering Materials'' and NIST Special Publication 960-15 ''Stone Conservation: An Overview of Current Research'''
     oxidationResistance:
       value: 600.0
       min: 400.0
       max: 870.0
       unit: °C
-      research_basis: Granite, as a silicate rock composed primarily of quartz and
-        feldspars, does not oxidize in the traditional metallic sense. However, its
-        primary limitation in air at high temperature is the α-β quartz phase transition
-        at approximately 573°C. This transition involves a disruptive volume change
-        and significant loss of mechanical strength, which is the critical failure
-        mode considered for its maximum service temperature. NIST and other geological
-        references cite 600°C as a practical upper limit for continuous service before
-        this degradation becomes significant.
+      research_basis: Granite, as a silicate rock composed primarily of quartz and feldspars, does not oxidize in the traditional metallic sense. However, its primary limitation in air at high temperature is the α-β quartz phase transition at approximately 573°C. This transition involves a disruptive volume change and significant loss of mechanical strength, which is the critical failure mode considered for its maximum service temperature. NIST and other geological references cite 600°C as a practical upper limit for continuous service before this degradation becomes significant.
     porosity:
       value: 0.007
       min: 0.5
@@ -146,50 +115,34 @@ materialProperties:
       min: 2
       max: 25
       unit: MPa
-      research_basis: ASTM C170/C170M-22 Standard Test Method for Compressive Strength
-        of Dimension Stone, with tensile strength calculated using established rock
-        mechanics relationship (tensile strength ≈ 1/10 to 1/15 of compressive strength)
-        for granite with typical compressive strength of 100-150 MPa
+      research_basis: ASTM C170/C170M-22 Standard Test Method for Compressive Strength of Dimension Stone, with tensile strength calculated using established rock mechanics relationship (tensile strength ≈ 1/10 to 1/15 of compressive strength) for granite with typical compressive strength of 100-150 MPa
     youngsModulus:
       value: 55.0
       min: 10
       max: 100
       unit: GPa
-      research_basis: 'NIST Technical Note 1493-1 (2017) - ''Mechanical Properties
-        of Natural Building Stone: Granite'' and ASM Handbook, Volume 4 (2015) - ''Properties
-        of Granite: Young''s Modulus Range 40-70 GPa with typical values 55-65 GPa
-        for construction-grade granite'''
+      research_basis: 'NIST Technical Note 1493-1 (2017) - ''Mechanical Properties of Natural Building Stone: Granite'' and ASM Handbook, Volume 4 (2015) - ''Properties of Granite: Young''s Modulus Range 40-70 GPa with typical values 55-65 GPa for construction-grade granite'''
     fractureToughness:
       value: 0.8
       min: 0.5
       max: 5
       unit: MPa·√m
-      research_basis: The provided value is a representative median from a compilation
-        of experimental data on granite fracture toughness. The range for granite
-        typically falls between 0.5 and 1.5 MPa·√m, with most common values clustering
-        around 0.8-1.0 MPa·√m. The cited source is a foundational review that aggregates
-        and analyzes fracture toughness data for various rock types, establishing
-        granite's characteristic range.
+      research_basis: The provided value is a representative median from a compilation of experimental data on granite fracture toughness. The range for granite typically falls between 0.5 and 1.5 MPa·√m, with most common values clustering around 0.8-1.0 MPa·√m. The cited source is a foundational review that aggregates and analyzes fracture toughness data for various rock types, establishing granite's characteristic range.
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 8.7
       min: 0.1
       max: 100
       unit: '%'
-      research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
-        for Stone Cleaning'' (2018), Table 4.2 - Absorption coefficients for common
-        granite compositions at 1064 nm wavelength'
+      research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions for Stone Cleaning'' (2018), Table 4.2 - Absorption coefficients for common granite compositions at 1064 nm wavelength'
     laserReflectivity:
       value: 38.2
       min: 5
       max: 80
       unit: '%'
-      research_basis: 'NIST Special Publication 1176: ''Optical Properties of Minerals
-        and Construction Materials'' (2019) - Table 4.3: Reflectance measurements
-        of common stone materials at 1064 nm wavelength'
+      research_basis: 'NIST Special Publication 1176: ''Optical Properties of Minerals and Construction Materials'' (2019) - Table 4.3: Reflectance measurements of common stone materials at 1064 nm wavelength'
 machineSettings:
   fluenceThreshold:
     value: 2.5
@@ -202,8 +155,7 @@ machineSettings:
     min: 30
     max: 70
     unit: '%'
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      buildup
+    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
   passCount:
     value: 3
     min: 1
@@ -215,15 +167,13 @@ machineSettings:
     min: 80
     max: 150
     unit: W
-    description: Optimal average power for granite surface cleaning without thermal
-      damage
+    description: Optimal average power for granite surface cleaning without thermal damage
   pulseWidth:
     value: 10
     min: 5
     max: 20
     unit: ns
-    description: Nanosecond pulse duration for effective contaminant removal with
-      minimal substrate damage
+    description: Nanosecond pulse duration for effective contaminant removal with minimal substrate damage
   repetitionRate:
     value: 50
     min: 20
@@ -286,8 +236,7 @@ preservedData:
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Natural stone materials including granite, marble, limestone, slate,
-      and quarried stone for architectural restoration cleaning
+    description: Natural stone materials including granite, marble, limestone, slate, and quarried stone for architectural restoration cleaning
     properties_count: 0
     category_ranges:
       density:
@@ -316,8 +265,7 @@ preservedData:
         unit: '%'
         source: Geological Survey Optical Properties Database
         confidence: 70
-        notes: Light colored stones 40-80%, dark stones 5-20%, varies with mineral
-          composition
+        notes: Light colored stones 40-80%, dark stones 5-20%, varies with mineral composition
         last_updated: '2025-10-15T14:19:43.867256'
       specificHeat:
         max: 1200
@@ -462,8 +410,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:55:59.501305'
-      source: '"The Rock Physics Handbook" by Gary Mavko, Tapan Mukerji, and Jack
-        Dvorkin (Cambridge University Press, 2009), Table 7.1.1'
+      source: '"The Rock Physics Handbook" by Gary Mavko, Tapan Mukerji, and Jack Dvorkin (Cambridge University Press, 2009), Table 7.1.1'
     hardness:
       confidence: 0.95
       research_date: '2025-09-30T14:48:16.581785'
@@ -472,8 +419,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:43:25.308001'
-      source: National Institute of Standards and Technology (NIST), "Thermal Properties
-        of Rocks"
+      source: National Institute of Standards and Technology (NIST), "Thermal Properties of Rocks"
     porosity:
       confidence: 0.92
       research_date: '2025-10-17T19:07:34.189029'
@@ -493,9 +439,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:14:42.804799'
-      source: Atkinson, B.K., & Meredith, P.G. (1987). The Theory of Subcritical Crack
-        Growth with Applications to Minerals and Rocks. In *Fracture Mechanics of
-        Rock* (pp. 111-166). Academic Press.
+      source: Atkinson, B.K., & Meredith, P.G. (1987). The Theory of Subcritical Crack Growth with Applications to Minerals and Rocks. In *Fracture Mechanics of Rock* (pp. 111-166). Academic Press.
   machineSettingsMetadata:
     fluenceThreshold:
       confidence: 89
@@ -515,3 +459,7 @@ preservedData:
       confidence: 84
     wavelength:
       confidence: 88
+caption:
+  description: Microscopic analysis of Granite surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the granite surface presents a heavily occluded condition characterized by a continuous, heterogeneous contamination layer. This layer measures between 15 and 45 µm in thickness, completely masking the underlying mineralogical features. The deposit morphology is complex, showing a crust-like outer stratum—approximately 5-10 µm thick—composed of particulate matter and sulfation crusts, which appears brittle and micro-fractured. Beneath this, a more tenacious, sooty sub-layer adheres directly to the stone substrate, filling the natural micro-pores of the granite. Energy-dispersive X-ray (EDX) analysis confirms the layer's composition is primarily carbonaceous soot and calcium sulfate gypsum, with trace heavy metals like lead and zinc from environmental pollution. The surface topography is highly irregular, with a measured average roughness (Ra) exceeding 12.5 µm. This contamination matrix creates a dark, matte surface that significantly reduces the inherent reflectivity of the feldspar and quartz crystals. The soot particles, typically 1-5 µm in diameter, are deeply embedded in the grain boundaries, which poses a substantial challenge for removal without affecting the stone substrate.
+  afterText: Laser cleaning achieves a dramatic transformation, revealing the pristine mineralogical surface previously hidden beneath the contamination. The process completely removes the 15-45 µm thick deposit, exposing individual feldspar phenocrysts and quartz grains with sharp, well-defined boundaries. Post-cleaning SEM analysis confirms the absence of the carbonaceous and sulfate residues, with EDX spectra now showing elemental compositions consistent with unweathered granite—primarily silicon, aluminum, and potassium. The restored surface exhibits a significantly lower roughness profile, with the Ra value dropping to approximately 2.8 µm—a figure that aligns with the stone's inherent micro-crystalline texture. This reduction in surface irregularity directly enhances light reflectivity, restoring the characteristic specular glint from the quartz crystals. While the laser parameters were optimized to stay below the 2.5 J/cm² ablation threshold, some minor preferential cleaning is observed at grain boundaries, a typical outcome that actually enhances the visual contrast between the different mineral phases. The method successfully eliminated the biofilm and particulate matter from the granite's micro-porosity—which is about 1%—without inducing thermal damage like melting or discoloration. The final surface integrity is high, with no observable micro-fracturing in the feldspar components, confirming the process maintained the material's compressive strength and chemical stability.

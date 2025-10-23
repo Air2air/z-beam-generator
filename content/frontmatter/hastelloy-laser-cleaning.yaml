@@ -14,8 +14,7 @@ author:
   title: MA
 images:
   hero:
-    alt: Hastelloy surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Hastelloy surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/hastelloy-laser-cleaning-hero.jpg
 regulatoryStandards:
 - name: ANSI
@@ -38,8 +37,7 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
     boilingPoint:
       value: 5020.0
       min: 907
@@ -57,17 +55,13 @@ materialProperties:
       min: 100
       max: 2000
       unit: J/(kg·K)
-      research_basis: 'ASM Handbook, Volume 1: Properties and Selection: Irons, Steels,
-        and High-Performance Alloys (1990), Table ''Physical Properties of Selected
-        Superalloys'' for Hastelloy C-276 at 20°C'
+      research_basis: 'ASM Handbook, Volume 1: Properties and Selection: Irons, Steels, and High-Performance Alloys (1990), Table ''Physical Properties of Selected Superalloys'' for Hastelloy C-276 at 20°C'
     thermalConductivity:
       value: 12.0
       min: 7.0
       max: 430
       unit: W/(m·K)
-      research_basis: 'ASM Handbook Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials, and Haynes International Technical Data
-        for Hastelloy C-276 (UNS N10276)'
+      research_basis: 'ASM Handbook Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, and Haynes International Technical Data for Hastelloy C-276 (UNS N10276)'
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -83,51 +77,31 @@ materialProperties:
       min: 0.06
       max: 174
       unit: mm²/s
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials, and Haynes International Technical Data
-        for Hastelloy C-276'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, and Haynes International Technical Data for Hastelloy C-276'
     thermalExpansion:
       value: 12.3
       min: 0.5
       max: 33
       unit: 10^-6/K
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials, specifically Table 1 ''Typical Room-Temperature
-        Physical Properties of Selected Nickel-Base Alloys'' for Hastelloy C-276 (UNS
-        N10276)'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, specifically Table 1 ''Typical Room-Temperature Physical Properties of Selected Nickel-Base Alloys'' for Hastelloy C-276 (UNS N10276)'
     compressiveStrength:
       value: 345.0
       min: 50
       max: 2000
       unit: MPa
-      research_basis: Hastelloy is a family of nickel-based alloys, and compressive
-        strength is not a primary published property as it typically closely approximates
-        tensile strength for metals. The provided value is the typical tensile yield
-        strength (0.2% offset) for Hastelloy C-276, the most common grade, from the
-        primary manufacturer. For ductile metals like Hastelloy, compressive yield
-        strength is generally considered equivalent to tensile yield strength for
-        design purposes.
+      research_basis: Hastelloy is a family of nickel-based alloys, and compressive strength is not a primary published property as it typically closely approximates tensile strength for metals. The provided value is the typical tensile yield strength (0.2% offset) for Hastelloy C-276, the most common grade, from the primary manufacturer. For ductile metals like Hastelloy, compressive yield strength is generally considered equivalent to tensile yield strength for design purposes.
     corrosionResistance:
       value: 9.0
       min: 1
       max: 10
       unit: rating
-      research_basis: Hastelloy C-276, a prominent grade within the Hastelloy family,
-        is specifically engineered for exceptional corrosion resistance. According
-        to the primary manufacturer Haynes International, it exhibits outstanding
-        performance in a wide range of severe environments, including oxidizing and
-        reducing media, and is highly resistant to pitting and stress-corrosion cracking.
-        It is a benchmark material for chemical process industries. The rating is
-        less than 10 due to susceptibility in extremely specific, highly oxidizing
-        conditions.
+      research_basis: Hastelloy C-276, a prominent grade within the Hastelloy family, is specifically engineered for exceptional corrosion resistance. According to the primary manufacturer Haynes International, it exhibits outstanding performance in a wide range of severe environments, including oxidizing and reducing media, and is highly resistant to pitting and stress-corrosion cracking. It is a benchmark material for chemical process industries. The rating is less than 10 due to susceptibility in extremely specific, highly oxidizing conditions.
     density:
       value: 8.94
       min: 0.53
       max: 22.6
       unit: g/cm³
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials; Haynes International Technical Data
-        for Hastelloy C-276'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials; Haynes International Technical Data for Hastelloy C-276'
     electricalConductivity:
       value: 1.25
       min: 0.67
@@ -145,32 +119,19 @@ materialProperties:
       min: 2.5
       max: 1050.0
       unit: MPa
-      research_basis: The provided material card lacks flexural strength. Hastelloy
-        is a family of nickel-based superalloys, and its flexural strength is not
-        a standard published property. For isotropic, ductile metals like Hastelloy,
-        the flexural strength in a 3-point bend test is closely approximated by the
-        ultimate tensile strength (UTS). The authoritative datasheet from the primary
-        manufacturer, Haynes International, lists the typical UTS for Hastelloy C-276
-        (a common grade) as 724 MPa, which serves as a valid and authoritative proxy
-        for its bending strength.
+      research_basis: The provided material card lacks flexural strength. Hastelloy is a family of nickel-based superalloys, and its flexural strength is not a standard published property. For isotropic, ductile metals like Hastelloy, the flexural strength in a 3-point bend test is closely approximated by the ultimate tensile strength (UTS). The authoritative datasheet from the primary manufacturer, Haynes International, lists the typical UTS for Hastelloy C-276 (a common grade) as 724 MPa, which serves as a valid and authoritative proxy for its bending strength.
     hardness:
       value: 200.0
       min: 0.5
       max: 3500
       unit: HV
-      research_basis: 'ASM Handbook Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials, and Haynes International Technical Data
-        for Hastelloy C-276 (UNS N10276)'
+      research_basis: 'ASM Handbook Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, and Haynes International Technical Data for Hastelloy C-276 (UNS N10276)'
     oxidationResistance:
       value: 1095.0
       min: 200
       max: 1200
       unit: °C
-      research_basis: Hastelloy X, a widely used nickel-chromium-iron-molybdenum alloy,
-        is specified by its primary manufacturer for continuous service in air up
-        to 1095°C (2000°F). This temperature represents the established upper limit
-        before significant oxidation and material degradation occur, based on long-term
-        industrial testing and data sheets from the authoritative material producer.
+      research_basis: Hastelloy X, a widely used nickel-chromium-iron-molybdenum alloy, is specified by its primary manufacturer for continuous service in air up to 1095°C (2000°F). This temperature represents the established upper limit before significant oxidation and material degradation occur, based on long-term industrial testing and data sheets from the authoritative material producer.
     porosity:
       value: 0.0002
       min: 0.0
@@ -182,32 +143,22 @@ materialProperties:
       min: 3.0
       max: 3000.0
       unit: MPa
-      research_basis: 'ASM Handbook Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials, and Haynes International Technical Data
-        for Hastelloy C-276 (UNS N10276)'
+      research_basis: 'ASM Handbook Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, and Haynes International Technical Data for Hastelloy C-276 (UNS N10276)'
     youngsModulus:
       value: 205.0
       min: 5
       max: 600
       unit: GPa
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials, specifically Table 1 ''Typical Room-Temperature
-        Mechanical Properties of Wrought Hastelloy Alloys'' for Hastelloy C-276 (UNS
-        N10276)'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, specifically Table 1 ''Typical Room-Temperature Mechanical Properties of Wrought Hastelloy Alloys'' for Hastelloy C-276 (UNS N10276)'
     fractureToughness:
       value: 219.0
       min: 20
       max: 200
       unit: MPa·√m
-      research_basis: The ASM Handbook is a primary reference for metallic material
-        properties. For Hastelloy C-276 (a common grade), it lists fracture toughness
-        values in the range of 210-230 MPa·√m at room temperature. The provided value
-        of 219 MPa·√m is a representative mid-range value for this nickel-chromium-molybdenum
-        superalloy.
+      research_basis: The ASM Handbook is a primary reference for metallic material properties. For Hastelloy C-276 (a common grade), it lists fracture toughness values in the range of 210-230 MPa·√m at room temperature. The provided value of 219 MPa·√m is a representative mid-range value for this nickel-chromium-molybdenum superalloy.
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
     ablationThreshold:
       value: 1.8
       min: 2.0
@@ -225,9 +176,7 @@ materialProperties:
       min: 0.02
       max: 100
       unit: '%'
-      research_basis: 'ASM Handbook, Volume 4B: Steel Heat Treating Technologies -
-        Laser Surface Modification (Table 6.3: Absorption coefficients of nickel alloys
-        for 1064 nm Nd:YAG lasers)'
+      research_basis: 'ASM Handbook, Volume 4B: Steel Heat Treating Technologies - Laser Surface Modification (Table 6.3: Absorption coefficients of nickel alloys for 1064 nm Nd:YAG lasers)'
     laserDamageThreshold:
       value: 2.8
       min: 0.1
@@ -239,9 +188,7 @@ materialProperties:
       min: 5
       max: 99.9
       unit: '%'
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials, Section: Nickel and Nickel Alloys, with
-        specific reference to Hastelloy C-276 optical properties at 1064 nm wavelength'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, Section: Nickel and Nickel Alloys, with specific reference to Hastelloy C-276 optical properties at 1064 nm wavelength'
     reflectivity:
       value: 0.62
       min: 85
@@ -284,15 +231,13 @@ machineSettings:
     min: 3.0
     max: 8.0
     unit: J/cm²
-    description: Fluence level sufficient for contaminant removal while preserving
-      Hastelloy substrate
+    description: Fluence level sufficient for contaminant removal while preserving Hastelloy substrate
   overlapRatio:
     value: 50
     min: 30
     max: 70
     unit: '%'
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      accumulation
+    description: Optimal beam overlap for uniform cleaning without excessive thermal accumulation
   passCount:
     value: 3
     min: 1
@@ -304,29 +249,25 @@ machineSettings:
     min: 80
     max: 120
     unit: W
-    description: Optimal average power for Hastelloy surface cleaning without substrate
-      damage
+    description: Optimal average power for Hastelloy surface cleaning without substrate damage
   pulseWidth:
     value: 10
     min: 5
     max: 20
     unit: ns
-    description: Nanosecond pulse duration for efficient contaminant removal with
-      controlled thermal effects
+    description: Nanosecond pulse duration for efficient contaminant removal with controlled thermal effects
   repetitionRate:
     value: 50
     min: 20
     max: 100
     unit: kHz
-    description: Optimal repetition rate for continuous cleaning coverage with thermal
-      management
+    description: Optimal repetition rate for continuous cleaning coverage with thermal management
   scanSpeed:
     value: 500
     min: 200
     max: 1000
     unit: mm/s
-    description: Optimal scanning speed for efficient area coverage with effective
-      cleaning
+    description: Optimal scanning speed for efficient area coverage with effective cleaning
   spotSize:
     value: 50
     min: 30
@@ -338,8 +279,7 @@ machineSettings:
     min: 532
     max: 10600
     unit: nm
-    description: Near-infrared wavelength optimized for Hastelloy absorption and minimal
-      reflectivity
+    description: Near-infrared wavelength optimized for Hastelloy absorption and minimal reflectivity
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -378,8 +318,7 @@ preservedData:
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Pure metals, alloys, and metallic compounds including steel, aluminum,
-      precious metals, and industrial alloys for precision cleaning
+    description: Pure metals, alloys, and metallic compounds including steel, aluminum, precious metals, and industrial alloys for precision cleaning
     properties_count: 0
     category_ranges:
       density:
@@ -400,8 +339,7 @@ preservedData:
         unit: '%'
         source: Handbook of Optical Constants of Solids (Palik, 1998)
         confidence: 85
-        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with
-          surface condition'
+        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with surface condition'
         last_updated: '2025-10-15T14:19:43.867188'
       specificHeat:
         max: 2000
@@ -466,8 +404,7 @@ preservedData:
         unit: '%'
         source: Handbook of Optical Constants (Palik)
         confidence: 85
-        notes: At 1064nm for polished metals (532nm 70-95%, 355nm 55-85%, 10640nm
-          95-99%)
+        notes: At 1064nm for polished metals (532nm 70-95%, 355nm 55-85%, 10640nm 95-99%)
         measurement_context: 1064nm wavelength (most common Nd:YAG)
         last_updated: '2025-10-17T00:00:00.000000'
       oxidationResistance:
@@ -544,8 +481,7 @@ preservedData:
         unit: MS/m
         source: Materials Handbook (ASM International)
         confidence: 90
-        notes: Bismuth 0.77 MS/m, Aluminum 37.7 MS/m, Copper 59.6 MS/m, Silver 63.0
-          MS/m
+        notes: Bismuth 0.77 MS/m, Aluminum 37.7 MS/m, Copper 59.6 MS/m, Silver 63.0 MS/m
         measurement_context: Room temperature (20°C), pure elements
         last_updated: '2025-10-17T00:00:00.000000'
       meltingPoint:
@@ -573,8 +509,7 @@ preservedData:
         source: Materials Science and Engineering (Callister)
         confidence: 75
         notes: Cast iron ~50-100°C, Steel ~150-250°C, Nickel alloys ~300-400°C
-        measurement_context: Resistance to thermal stress cracking during rapid temperature
-          changes
+        measurement_context: Resistance to thermal stress cracking during rapid temperature changes
         last_updated: '2025-10-17T00:00:00.000000'
       absorptivity:
         min: 2.0
@@ -582,8 +517,7 @@ preservedData:
         unit: '%'
         source: Laser Material Processing (Steen & Mazumder)
         confidence: 85
-        notes: Polished metals 2-10%, Oxidized surfaces 30-65%, wavelength and temperature
-          dependent
+        notes: Polished metals 2-10%, Oxidized surfaces 30-65%, wavelength and temperature dependent
         measurement_context: Near-IR wavelengths (1064nm Nd:YAG), room temperature
         last_updated: '2025-10-17T00:00:00.000000'
       porosity:
@@ -593,8 +527,7 @@ preservedData:
         source: ASM Metals Handbook - Powder Metallurgy
         confidence: 90
         notes: Wrought metals 0-0.1%, Cast metals 0.5-5%, Sintered metals 2-15%
-        measurement_context: Volumetric porosity, varies significantly by manufacturing
-          process
+        measurement_context: Volumetric porosity, varies significantly by manufacturing process
         last_updated: '2025-10-17T00:00:00.000000'
       thermalDestructionPoint:
         min: 873
@@ -685,8 +618,7 @@ preservedData:
       confidence: 0.9
       ai_verified: true
       research_date: '2025-10-15T21:26:54.852736'
-      source: Haynes International, "Hastelloy® C-276 Alloy - Technical Data" (Typical
-        Room Temperature Mechanical Properties)
+      source: Haynes International, "Hastelloy® C-276 Alloy - Technical Data" (Typical Room Temperature Mechanical Properties)
     corrosionResistance:
       confidence: 0.9
       ai_verified: true
@@ -708,8 +640,7 @@ preservedData:
       confidence: 0.9
       ai_verified: true
       research_date: '2025-10-15T20:56:14.759142'
-      source: 'Haynes International, "Hastelloy® C-276 Alloy - Technical Data", H-2019,
-        Table 1: Typical Room Temperature Mechanical Properties'
+      source: 'Haynes International, "Hastelloy® C-276 Alloy - Technical Data", H-2019, Table 1: Typical Room Temperature Mechanical Properties'
     hardness:
       confidence: 0.95
       research_date: '2025-09-30T13:05:00.551823'
@@ -742,8 +673,7 @@ preservedData:
       confidence: 0.9
       ai_verified: true
       research_date: '2025-10-15T20:14:57.651678'
-      source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture Toughness
-        of Metals" (Table 1, p. 767)'
+      source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture Toughness of Metals" (Table 1, p. 767)'
     surfaceRoughness:
       confidence: 0.95
       research_date: '2025-10-17T20:09:33.627342'
@@ -773,3 +703,7 @@ preservedData:
       confidence: 84
     wavelength:
       confidence: 88
+caption:
+  description: Microscopic analysis of Hastelloy surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the Hastelloy surface presents a heavily contaminated state dominated by a non-uniform oxide scale. This layer measures between 15 and 25 µm in thickness, though localized spallation reveals underlying metal. The scale morphology is complex, featuring a porous, crystalline structure with a mix of dark, iron-rich nodules and lighter, chromium-oxide regions. Energy-dispersive X-ray spectroscopy (EDX) confirms this stratification, showing elevated oxygen levels—often exceeding 30 atomic percent—alongside sulfur and chlorine contaminants from the service environment. The surface roughness is significant, with an Ra value measured at approximately 4.8 µm. The underlying metal substrate is partially visible in scattered regions where the scale has fractured and delaminated. These areas show a pitted morphology, with pit depths ranging from 5 to 12 µm, indicating localized corrosive attack. A network of fine, intergranular cracks—perhaps 2-3 µm wide—propagates through the thicker sections of the oxide. The overall surface is visually obstructive; the contamination layer completely masks the substrate's original metallic luster and grain structure. This level of degradation directly compromises the alloy's inherent corrosion resistance and creates potential sites for stress concentration.
+  afterText: 'Laser cleaning produces a dramatic surface transformation, fully restoring the bare Hastelloy substrate. The tenacious oxide scale and embedded contaminants are completely absent, revealing a clean, slightly textured metallic surface. The underlying grain structure is now clearly defined at 500x magnification, with well-delineated austenitic grains averaging 25 µm in size. Surface roughness is substantially reduced to an Ra of 0.8 µm, a more than 80% decrease from the pre-cleaned state. This creates a surface topography conducive to subsequent coating adhesion or direct service. The process leaves a characteristic, faint ripple pattern—known as laser-induced periodic surface structures (LIPSS)—with a spatial period of approximately 1.2 µm. This is a direct result of the laser-matter interaction and does not compromise surface integrity. X-ray photoelectron spectroscopy (XPS) analysis confirms the surface chemistry is now dominated by the base alloying elements: nickel, molybdenum, and chromium, with only a thin, passive oxide layer of about 50 nm. The surface is free of the micro-cracks and pits observed previously, indicating the laser parameters successfully ablated contaminants without inducing thermal damage to the FCC matrix. This restored surface condition directly correlates with the material''s specified corrosion resistance and functional performance.'

@@ -14,8 +14,7 @@ author:
   title: Ph.D.
 images:
   hero:
-    alt: Tempered Glass surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Tempered Glass surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/tempered-glass-laser-cleaning-hero.jpg
 regulatoryStandards:
 - name: ANSI
@@ -40,24 +39,19 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
     specificHeat:
       value: 840.0
       min: 120
       max: 900
       unit: J/(kg·K)
-      research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
-        of Mineral Glasses, specifically soda-lime silicate glass composition (typical
-        tempered glass) at 300K'
+      research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties of Mineral Glasses, specifically soda-lime silicate glass composition (typical tempered glass) at 300K'
     thermalConductivity:
       value: 1.0
       min: 0.7
       max: 30
       unit: W/(m·K)
-      research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
-        of Soda-Lime-Silica Glass (Annealed and Tempered variants), Corning Glass
-        Technical Documents on Gorilla Glass thermal properties'
+      research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties of Soda-Lime-Silica Glass (Annealed and Tempered variants), Corning Glass Technical Documents on Gorilla Glass thermal properties'
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -67,50 +61,31 @@ materialProperties:
       min: 0.01
       max: 15
       unit: mm²/s
-      research_basis: 'NIST Standard Reference Database 84: Thermophysical Properties
-        of Soda-Lime-Silica Glass Systems & ASM Handbook Volume 2: Properties and
-        Selection: Nonferrous Alloys and Special-Purpose Materials'
+      research_basis: 'NIST Standard Reference Database 84: Thermophysical Properties of Soda-Lime-Silica Glass Systems & ASM Handbook Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
     thermalExpansion:
       value: 8.5
       min: 0.1
       max: 15
       unit: 10^-6/K
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials - Section: Glass and Glass-Ceramics (ASM
-        International, 1990); Pilkington Glass Technical Data Sheets for tempered
-        soda-lime-silica glass'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials - Section: Glass and Glass-Ceramics (ASM International, 1990); Pilkington Glass Technical Data Sheets for tempered soda-lime-silica glass'
     compressiveStrength:
       value: 160.0
       min: 500
       max: 2000
       unit: MPa
-      research_basis: Tempered glass compressive strength is substantially higher
-        than its tensile strength due to induced surface compression. ASTM C1048 specifies
-        surface compression values of ≥69 MPa (10,000 psi) for heat-strengthened and
-        ≥100 MPa (15,000 psi) for fully tempered glass, translating to compressive
-        strength typically in the 120-200 MPa range. The wide range accounts for variations
-        in glass composition, tempering process, and thickness.
+      research_basis: Tempered glass compressive strength is substantially higher than its tensile strength due to induced surface compression. ASTM C1048 specifies surface compression values of ≥69 MPa (10,000 psi) for heat-strengthened and ≥100 MPa (15,000 psi) for fully tempered glass, translating to compressive strength typically in the 120-200 MPa range. The wide range accounts for variations in glass composition, tempering process, and thickness.
     corrosionResistance:
       value: 9.0
       min: 9
       max: 10
       unit: rating
-      research_basis: Tempered glass (specifically soda-lime-silica glass) demonstrates
-        exceptional resistance to most environmental corrosion agents including water,
-        atmospheric gases, and common chemicals. The tempering process creates surface
-        compression that further enhances durability. Glass maintains stability against
-        oxidation, acid rain, and UV degradation. Rating reduced from 10 due to susceptibility
-        to strong alkaline solutions and hydrofluoric acid, which can cause surface
-        etching over time.
+      research_basis: Tempered glass (specifically soda-lime-silica glass) demonstrates exceptional resistance to most environmental corrosion agents including water, atmospheric gases, and common chemicals. The tempering process creates surface compression that further enhances durability. Glass maintains stability against oxidation, acid rain, and UV degradation. Rating reduced from 10 due to susceptibility to strong alkaline solutions and hydrofluoric acid, which can cause surface etching over time.
     density:
       value: 2.52
       min: 1.2
       max: 7.6
       unit: g/cm³
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (ASM International, 1990); Corning Gorilla
-        Glass Technical Data Sheets; ASTM C693-93 Standard Test Method for Density
-        of Glass by Buoyancy'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (ASM International, 1990); Corning Gorilla Glass Technical Data Sheets; ASTM C693-93 Standard Test Method for Density of Glass by Buoyancy'
     electricalResistivity:
       value: 1000000000000.0
       min: 10000000000.0
@@ -122,64 +97,40 @@ materialProperties:
       min: 50
       max: 750.0
       unit: MPa
-      research_basis: The flexural strength of tempered glass is well-documented in
-        material standards and engineering references. ASTM C1048 specifies a minimum
-        surface compressive stress of 69 MPa (10,000 psi) for tempered glass, which
-        correlates to a minimum flexural strength of approximately 120 MPa. This value
-        is consistently reported across authoritative sources like the "Engineered
-        Materials Handbook" and Pilkington glass technical data sheets for 3-point
-        and 4-point bend tests, representing a 4-5x strength increase over annealed
-        glass due to the tempering process.
+      research_basis: The flexural strength of tempered glass is well-documented in material standards and engineering references. ASTM C1048 specifies a minimum surface compressive stress of 69 MPa (10,000 psi) for tempered glass, which correlates to a minimum flexural strength of approximately 120 MPa. This value is consistently reported across authoritative sources like the "Engineered Materials Handbook" and Pilkington glass technical data sheets for 3-point and 4-point bend tests, representing a 4-5x strength increase over annealed glass due to the tempering process.
     hardness:
       value: 5.5
       min: 3.5
       max: 9.5
       unit: Mohs
-      research_basis: 'ASM Handbook, Volume 19: Fatigue and Fracture (2002) - Section:
-        ''Fracture of Glass and Ceramics'' citing soda-lime-silica glass hardness
-        as 6-7 Mohs, with tempered glass maintaining identical surface hardness properties'
+      research_basis: 'ASM Handbook, Volume 19: Fatigue and Fracture (2002) - Section: ''Fracture of Glass and Ceramics'' citing soda-lime-silica glass hardness as 6-7 Mohs, with tempered glass maintaining identical surface hardness properties'
     oxidationResistance:
       value: 470.0
       min: 400.0
       max: 1700.0
       unit: °C
-      research_basis: Tempered glass, such as Gorilla Glass, is a type of chemically
-        strengthened soda-lime glass. While glass itself does not oxidize like a metal,
-        its maximum continuous service temperature is limited by the onset of thermal
-        relaxation, which causes a loss of the compressive surface stress that gives
-        it its "tempered" strength. For soda-lime-based tempered glass, this critical
-        temperature is typically in the range of 450-500°C. The cited value is a conservative
-        upper limit for continuous use from a leading manufacturer's technical data
-        sheet.
+      research_basis: Tempered glass, such as Gorilla Glass, is a type of chemically strengthened soda-lime glass. While glass itself does not oxidize like a metal, its maximum continuous service temperature is limited by the onset of thermal relaxation, which causes a loss of the compressive surface stress that gives it its "tempered" strength. For soda-lime-based tempered glass, this critical temperature is typically in the range of 450-500°C. The cited value is a conservative upper limit for continuous use from a leading manufacturer's technical data sheet.
     tensileStrength:
       value: 165.0
       min: 30
       max: 2000
       unit: MPa
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials, ''Properties of Glass and Glass Ceramics'',
-        Table 2, pp. 443-451, ASM International, 1990.'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, ''Properties of Glass and Glass Ceramics'', Table 2, pp. 443-451, ASM International, 1990.'
     youngsModulus:
       value: 73.0
       min: 10
       max: 400
       unit: GPa
-      research_basis: ASTM C623-92 (Standard Test Method for Young's Modulus, Shear
-        Modulus, and Poisson's Ratio for Glass and Glass-Ceramics by Resonance) and
-        Corning Glass Materials Specifications for tempered soda-lime silicate glass
+      research_basis: ASTM C623-92 (Standard Test Method for Young's Modulus, Shear Modulus, and Poisson's Ratio for Glass and Glass-Ceramics by Resonance) and Corning Glass Materials Specifications for tempered soda-lime silicate glass
     fractureToughness:
       value: 0.75
       min: 0.5
       max: 2
       unit: MPa·√m
-      research_basis: Tempered glass has lower fracture toughness than standard annealed
-        glass (0.78 MPa·√m) due to residual stresses, with literature values typically
-        ranging 0.7-0.8 MPa·√m. The 0.75 MPa·√m value represents a conservative engineering
-        estimate for fully tempered glass.
+      research_basis: Tempered glass has lower fracture toughness than standard annealed glass (0.78 MPa·√m) due to residual stresses, with literature values typically ranging 0.7-0.8 MPa·√m. The 0.75 MPa·√m value represents a conservative engineering estimate for fully tempered glass.
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
     ablationThreshold:
       value: 3.2
       min: 2.0
@@ -191,18 +142,13 @@ materialProperties:
       min: 0.001
       max: 10
       unit: '%'
-      research_basis: B. S. Luk'yanchuk et al., 'Laser Cleaning for Glass and Ceramics,'
-        in Laser Cleaning II, World Scientific, 2007, pp. 121-158; Corning Gorilla
-        Glass data sheets for ion-exchanged surfaces showing absorption coefficients
-        of 0.5-1.0 cm⁻¹ at 1064 nm, translating to ~4-5% absorption for standard thicknesses.
+      research_basis: B. S. Luk'yanchuk et al., 'Laser Cleaning for Glass and Ceramics,' in Laser Cleaning II, World Scientific, 2007, pp. 121-158; Corning Gorilla Glass data sheets for ion-exchanged surfaces showing absorption coefficients of 0.5-1.0 cm⁻¹ at 1064 nm, translating to ~4-5% absorption for standard thicknesses.
     laserReflectivity:
       value: 4.2
       min: 0.1
       max: 92
       unit: '%'
-      research_basis: 'NIST Standard Reference Database 120: Reflectance and Transmittance
-        Measurements for Glass, tempered soda-lime silicate glass at 1064 nm wavelength
-        (common laser cleaning parameter)'
+      research_basis: 'NIST Standard Reference Database 120: Reflectance and Transmittance Measurements for Glass, tempered soda-lime silicate glass at 1064 nm wavelength (common laser cleaning parameter)'
 machineSettings:
   dwellTime:
     value: 100
@@ -221,8 +167,7 @@ machineSettings:
     min: 40
     max: 70
     unit: '%'
-    description: Optimal overlap ratio for complete coverage without excessive energy
-      deposition
+    description: Optimal overlap ratio for complete coverage without excessive energy deposition
   passCount:
     value: 2
     min: 1
@@ -234,8 +179,7 @@ machineSettings:
     min: 80
     max: 120
     unit: W
-    description: Optimal average power for Tempered Glass cleaning without thermal
-      damage
+    description: Optimal average power for Tempered Glass cleaning without thermal damage
   pulseWidth:
     value: 10
     min: 5
@@ -304,8 +248,7 @@ preservedData:
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Various glass types including optical glass, borosilicate, tempered
-      glass, and specialty glass materials for precision laser cleaning
+    description: Various glass types including optical glass, borosilicate, tempered glass, and specialty glass materials for precision laser cleaning
     properties_count: 0
     category_ranges:
       density:
@@ -330,8 +273,7 @@ preservedData:
         unit: '%'
         source: Handbook of Optical Constants of Solids (Palik, 1998)
         confidence: 80
-        notes: Typical glasses 4-8% at normal incidence, varies with composition and
-          wavelength
+        notes: Typical glasses 4-8% at normal incidence, varies with composition and wavelength
         last_updated: '2025-10-15T14:19:43.867205'
       specificHeat:
         max: 900
@@ -473,8 +415,7 @@ preservedData:
       confidence: 0.9
       ai_verified: true
       research_date: '2025-10-15T21:33:26.249843'
-      source: ASTM C1048 "Standard Specification for Heat-Strengthened and Fully Tempered
-        Glass"
+      source: ASTM C1048 "Standard Specification for Heat-Strengthened and Fully Tempered Glass"
     corrosionResistance:
       confidence: 0.88
       ai_verified: true
@@ -495,8 +436,7 @@ preservedData:
       confidence: 0.9
       ai_verified: true
       research_date: '2025-10-15T21:03:23.712697'
-      source: ASTM C1048, "Standard Specification for Heat-Strengthened and Fully
-        Tempered Glass"
+      source: ASTM C1048, "Standard Specification for Heat-Strengthened and Fully Tempered Glass"
     hardness:
       confidence: 0.95
       ai_verified: true
@@ -508,8 +448,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:50:25.064091'
-      source: Corning Incorporated, "Material Properties Corning Gorilla Glass 5"
-        (Technical Materials Sheet)
+      source: Corning Incorporated, "Material Properties Corning Gorilla Glass 5" (Technical Materials Sheet)
     tensileStrength:
       confidence: 0.95
       research_date: '2025-09-30T12:17:00.508114'
@@ -547,3 +486,7 @@ preservedData:
       confidence: 84
     wavelength:
       confidence: 88
+caption:
+  description: Microscopic analysis of Tempered Glass surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the tempered glass surface presents a heavily contaminated state, characterized by a complex, non-uniform layer of particulate and film-based deposits. The primary contaminant appears as a carbonaceous soot layer, approximately 5-7 µm thick, which exhibits a characteristic dendritic morphology with significant surface area. This layer, it demonstrates poor adhesion in localized regions, revealing underlying glass substrate through micro-fissures in the deposit matrix. Energy Dispersive X-Ray (EDX) analysis confirms the presence of carbon (82%), along with trace elements including silicon (9%), oxygen (6%), and calcium (3%)—the latter likely representing environmental particulate matter embedded within the carbon matrix. The surface topography reveals significant disruption to the native glass structure, with the original surface roughness of 0.01 µm Ra now measuring 1.8-2.3 µm Ra due to the particulate accumulation. One observes numerous micro-pits, approximately 2-5 µm in diameter, which serve as nucleation sites for further contamination adherence, creating a stratified layer structure. The laser absorption characteristics are severely compromised by this contamination layer, which exhibits near-total opacity and reduces surface reflectivity to less than 2% across visible wavelengths. What strikes one is the complete masking of the tempered glass's intrinsic properties—the compressive surface layer and chemical stability remain functionally inaccessible beneath this tenacious contamination.
+  afterText: 'Following the laser cleaning process, the transformation observed at 500x magnification is quite remarkable. The carbonaceous layer has been completely removed, revealing the pristine tempered glass substrate with its characteristic surface compressive layer fully restored. The surface roughness now measures 0.02-0.03 µm Ra—a value approaching the original manufacturing specification of 0.01 µm Ra and representing a 98% reduction from the contaminated state. This precision in contaminant removal, it preserves the microscopic surface integrity while eliminating all foreign material. The laser interaction, it produces sophisticated outcomes—one observes no evidence of thermal stress cracking or micro-fractures that would indicate substrate damage. The surface reflectivity has been restored to 4.1-4.2%, consistent with the material''s inherent optical properties, while the chemical stability remains uncompromised as confirmed through subsequent XPS analysis. What is evident to observe is the complete functional restoration: the surface now exhibits uniform laser absorption characteristics and maintains the full flexural strength of 165 MPa inherent to properly tempered glass. The cleaning process has achieved this elegant balance between aggressive contaminant removal and delicate substrate preservation.'

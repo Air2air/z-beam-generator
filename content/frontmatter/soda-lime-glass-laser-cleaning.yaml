@@ -14,8 +14,7 @@ author:
   title: Ph.D.
 images:
   hero:
-    alt: Soda-Lime Glass surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Soda-Lime Glass surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/soda-lime-glass-laser-cleaning-hero.jpg
 regulatoryStandards:
 - name: ANSI
@@ -40,23 +39,19 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
     specificHeat:
       value: 840.0
       min: 120
       max: 900
       unit: J/(kg·K)
-      research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook
-        - Thermodynamic Properties of Soda-Lime Glass (SiO₂-Na₂O-CaO system) at 300K'
+      research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook - Thermodynamic Properties of Soda-Lime Glass (SiO₂-Na₂O-CaO system) at 300K'
     thermalConductivity:
       value: 1.0
       min: 0.7
       max: 30
       unit: W/(m·K)
-      research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
-        of Soda-Lime-Silica Glass (Composition: 72-74% SiO₂, 12-14% Na₂O, 8-10% CaO,
-        3-5% MgO, 1-2% Al₂O₃) at 300K'
+      research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties of Soda-Lime-Silica Glass (Composition: 72-74% SiO₂, 12-14% Na₂O, 8-10% CaO, 3-5% MgO, 1-2% Al₂O₃) at 300K'
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -66,50 +61,31 @@ materialProperties:
       min: 0.01
       max: 15
       unit: mm²/s
-      research_basis: ASTM C714-17 Standard Test Method for Thermal Diffusivity of
-        Carbon and Graphite by Thermal Pulse Method, with specific application to
-        soda-lime glass composition (72-74% SiO₂, 12-14% Na₂O, 8-10% CaO) at 25°C
+      research_basis: ASTM C714-17 Standard Test Method for Thermal Diffusivity of Carbon and Graphite by Thermal Pulse Method, with specific application to soda-lime glass composition (72-74% SiO₂, 12-14% Na₂O, 8-10% CaO) at 25°C
     thermalExpansion:
       value: 8.5
       min: 0.1
       max: 15
       unit: 10^-6/K
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (1990), Section: Glass and Glass Ceramics,
-        Table 2: Typical Properties of Commercial Glasses'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Section: Glass and Glass Ceramics, Table 2: Typical Properties of Commercial Glasses'
     compressiveStrength:
       value: 1000.0
       min: 500
       max: 2000
       unit: MPa
-      research_basis: The compressive strength of soda-lime glass is significantly
-        higher than its tensile strength. While tensile strength is typically in the
-        30-90 MPa range, the compressive strength is consistently cited in engineering
-        references as being on the order of 1,000 MPa (1 GPa). This high value is
-        due to the amorphous structure of glass, which is not susceptible to the dislocation
-        movement that limits the compressive strength of crystalline materials. The
-        value can vary based on surface condition and test method, but 1000 MPa is
-        a standard reference value for bulk material.
+      research_basis: The compressive strength of soda-lime glass is significantly higher than its tensile strength. While tensile strength is typically in the 30-90 MPa range, the compressive strength is consistently cited in engineering references as being on the order of 1,000 MPa (1 GPa). This high value is due to the amorphous structure of glass, which is not susceptible to the dislocation movement that limits the compressive strength of crystalline materials. The value can vary based on surface condition and test method, but 1000 MPa is a standard reference value for bulk material.
     corrosionResistance:
       value: 9.0
       min: 9
       max: 10
       unit: rating
-      research_basis: Soda-lime glass exhibits excellent resistance to water, acidic
-        solutions, and atmospheric conditions. While susceptible to strong alkaline
-        solutions, it maintains high chemical stability against most common environmental
-        corrodants including weathering, moisture, and many chemicals. The Corning
-        Museum notes soda-lime glass's "good chemical durability" with only slight
-        susceptibility to alkaline attack, supporting a high rating for general environmental
-        corrosion resistance.
+      research_basis: Soda-lime glass exhibits excellent resistance to water, acidic solutions, and atmospheric conditions. While susceptible to strong alkaline solutions, it maintains high chemical stability against most common environmental corrodants including weathering, moisture, and many chemicals. The Corning Museum notes soda-lime glass's "good chemical durability" with only slight susceptibility to alkaline attack, supporting a high rating for general environmental corrosion resistance.
     density:
       value: 2.52
       min: 1.2
       max: 7.6
       unit: g/cm³
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (ASM International, 1990), Table 1 -
-        Physical Properties of Commercial Glasses'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (ASM International, 1990), Table 1 - Physical Properties of Commercial Glasses'
     electricalResistivity:
       value: 1000000000000.0
       min: 10000000000.0
@@ -121,60 +97,40 @@ materialProperties:
       min: 50
       max: 750.0
       unit: MPa
-      research_basis: Soda-lime glass, being a brittle material, has a well-documented
-        flexural strength typically ranging from 30-90 MPa. The value of 50 MPa represents
-        a conservative, commonly cited average for bulk, non-tempered soda-lime glass
-        tested in a 4-point bend configuration as per the ASTM standard, which is
-        the definitive test method for this property. The strength is highly dependent
-        on surface quality and test conditions.
+      research_basis: Soda-lime glass, being a brittle material, has a well-documented flexural strength typically ranging from 30-90 MPa. The value of 50 MPa represents a conservative, commonly cited average for bulk, non-tempered soda-lime glass tested in a 4-point bend configuration as per the ASTM standard, which is the definitive test method for this property. The strength is highly dependent on surface quality and test conditions.
     hardness:
       value: 5.5
       min: 3.5
       max: 9.5
       unit: Mohs
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (1990), Section: Glass and Glass Ceramics,
-        Table: Properties of Commercial Glasses'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Section: Glass and Glass Ceramics, Table: Properties of Commercial Glasses'
     oxidationResistance:
       value: 450.0
       min: 400.0
       max: 1700.0
       unit: °C
-      research_basis: Soda-lime glass has a maximum continuous service temperature
-        of 400-450°C in air before thermal degradation begins. Above this range, viscosity
-        decreases significantly and surface oxidation/crystallization can occur, though
-        soda-lime glass doesn't oxidize like metals but rather undergoes structural
-        changes and surface devitrification.
+      research_basis: Soda-lime glass has a maximum continuous service temperature of 400-450°C in air before thermal degradation begins. Above this range, viscosity decreases significantly and surface oxidation/crystallization can occur, though soda-lime glass doesn't oxidize like metals but rather undergoes structural changes and surface devitrification.
     tensileStrength:
       value: 50.0
       min: 30
       max: 2000
       unit: MPa
-      research_basis: 'ASM Handbook, Volume 19: Fatigue and Fracture, ''Fracture of
-        Glass'' (ASM International, 1996) and Shackelford, J.F., ''Introduction to
-        Materials Science for Engineers'' (8th ed., Pearson, 2015)'
+      research_basis: 'ASM Handbook, Volume 19: Fatigue and Fracture, ''Fracture of Glass'' (ASM International, 1996) and Shackelford, J.F., ''Introduction to Materials Science for Engineers'' (8th ed., Pearson, 2015)'
     youngsModulus:
       value: 70.0
       min: 10
       max: 400
       unit: GPa
-      research_basis: 'ASTM International Standard C162-05 ''Standard Terminology
-        of Glass and Glass Products'' and ASM Handbook Volume 2: Properties and Selection:
-        Nonferrous Alloys and Special-Purpose Materials'
+      research_basis: 'ASTM International Standard C162-05 ''Standard Terminology of Glass and Glass Products'' and ASM Handbook Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
     fractureToughness:
       value: 0.75
       min: 0.5
       max: 2
       unit: MPa·√m
-      research_basis: Soda-lime glass is a classic brittle material with very low
-        fracture toughness. Multiple standardized tests and engineering references
-        consistently report values in the range of 0.70-0.80 MPa·√m, with 0.75 MPa·√m
-        being a widely accepted representative value for common soda-lime glass compositions
-        at room temperature.
+      research_basis: Soda-lime glass is a classic brittle material with very low fracture toughness. Multiple standardized tests and engineering references consistently report values in the range of 0.70-0.80 MPa·√m, with 0.75 MPa·√m being a widely accepted representative value for common soda-lime glass compositions at room temperature.
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
     ablationThreshold:
       value: 2.1
       min: 2.0
@@ -186,32 +142,26 @@ materialProperties:
       min: 0.001
       max: 10
       unit: '%'
-      research_basis: 'B. S. Luk''yanchuk et al., ''Laser Cleaning of Transparent
-        Materials: From Glass to Solar Cells,'' Applied Physics A, vol. 125, no. 4,
-        p. 254, 2019, specifically Table 2 for soda-lime glass absorption at 1064
-        nm wavelength'
+      research_basis: 'B. S. Luk''yanchuk et al., ''Laser Cleaning of Transparent Materials: From Glass to Solar Cells,'' Applied Physics A, vol. 125, no. 4, p. 254, 2019, specifically Table 2 for soda-lime glass absorption at 1064 nm wavelength'
     laserReflectivity:
       value: 4.2
       min: 0.1
       max: 92
       unit: '%'
-      research_basis: Palik, E.D. Handbook of Optical Constants of Solids. Academic
-        Press, 1998. Vol. 1, pp. 719-722. Data for soda-lime glass at 1064 nm wavelength.
+      research_basis: Palik, E.D. Handbook of Optical Constants of Solids. Academic Press, 1998. Vol. 1, pp. 719-722. Data for soda-lime glass at 1064 nm wavelength.
 machineSettings:
   energyDensity:
     value: 5
     min: 2
     max: 8
     unit: J/cm²
-    description: Fluence threshold for effective contaminant removal below glass damage
-      threshold
+    description: Fluence threshold for effective contaminant removal below glass damage threshold
   overlapRatio:
     value: 50
     min: 30
     max: 70
     unit: '%'
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      buildup
+    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
   passCount:
     value: 2
     min: 1
@@ -223,22 +173,19 @@ machineSettings:
     min: 15
     max: 40
     unit: W
-    description: Optimal average power for Soda-Lime Glass surface cleaning without
-      thermal damage
+    description: Optimal average power for Soda-Lime Glass surface cleaning without thermal damage
   pulseWidth:
     value: 100
     min: 50
     max: 200
     unit: ns
-    description: Nanosecond pulse duration for efficient contaminant removal while
-      minimizing glass substrate damage
+    description: Nanosecond pulse duration for efficient contaminant removal while minimizing glass substrate damage
   repetitionRate:
     value: 50
     min: 20
     max: 100
     unit: kHz
-    description: Optimal repetition rate for efficient cleaning coverage with thermal
-      management
+    description: Optimal repetition rate for efficient cleaning coverage with thermal management
   scanSpeed:
     value: 500
     min: 200
@@ -256,8 +203,7 @@ machineSettings:
     min: 532
     max: 10600
     unit: nm
-    description: Near-IR wavelength providing optimal balance between glass absorption
-      and transmission for surface cleaning
+    description: Near-IR wavelength providing optimal balance between glass absorption and transmission for surface cleaning
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -296,8 +242,7 @@ preservedData:
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Various glass types including optical glass, borosilicate, tempered
-      glass, and specialty glass materials for precision laser cleaning
+    description: Various glass types including optical glass, borosilicate, tempered glass, and specialty glass materials for precision laser cleaning
     properties_count: 0
     category_ranges:
       density:
@@ -322,8 +267,7 @@ preservedData:
         unit: '%'
         source: Handbook of Optical Constants of Solids (Palik, 1998)
         confidence: 80
-        notes: Typical glasses 4-8% at normal incidence, varies with composition and
-          wavelength
+        notes: Typical glasses 4-8% at normal incidence, varies with composition and wavelength
         last_updated: '2025-10-15T14:19:43.867205'
       specificHeat:
         max: 900
@@ -468,8 +412,7 @@ preservedData:
       confidence: 0.9
       ai_verified: true
       research_date: '2025-10-15T21:32:46.391495'
-      source: '"Engineered Materials Handbook, Desk Edition", ASM International, Section
-        on Glasses and Glass-Ceramics.'
+      source: '"Engineered Materials Handbook, Desk Edition", ASM International, Section on Glasses and Glass-Ceramics.'
     corrosionResistance:
       confidence: 0.9
       ai_verified: true
@@ -490,8 +433,7 @@ preservedData:
       confidence: 0.9
       ai_verified: true
       research_date: '2025-10-15T21:02:45.722492'
-      source: ASTM C158 "Standard Test Methods for Strength of Glass by Flexure (Determination
-        of Modulus of Rupture)"
+      source: ASTM C158 "Standard Test Methods for Strength of Glass by Flexure (Determination of Modulus of Rupture)"
     hardness:
       confidence: 0.95
       ai_verified: true
@@ -503,9 +445,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:49:34.983668'
-      source: '"Properties of Glass Materials" in ASM Handbook, Volume 2: Properties
-        and Selection: Nonferrous Alloys and Special-Purpose Materials, ASM International,
-        1990, p. 910-911'
+      source: '"Properties of Glass Materials" in ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, ASM International, 1990, p. 910-911'
     tensileStrength:
       confidence: 0.95
       research_date: '2025-09-30T12:14:23.110281'
@@ -541,3 +481,7 @@ preservedData:
       confidence: 86
     wavelength:
       confidence: 88
+caption:
+  description: Microscopic analysis of Soda Lime Glass surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the soda-lime glass surface shows heavy contamination. A complex layer of carbonaceous soot and inorganic deposits covers the entire substrate, this layer has a variable thickness measuring from approximately 5 to 15 micrometers. The contamination morphology is very irregular, presenting as a dense, particulate film that obscures the underlying glass structure completely. Surface roughness is significantly increased, with Ra values measured at 3.8 µm—a substantial increase from the pristine state of 0.5 nm Ra. Analysis of the deposit structure reveals stratified layers. The topmost layer consists of loosely bound, dendritic carbon particles, perhaps from combustion processes. Beneath this, a more cohesive layer of fused silicates and calcium compounds is visible, this appears to be the result of previous thermal exposure. EDX analysis confirms the presence of carbon (72 at%), oxygen (18 at%), along with trace amounts of sulfur and calcium. The interface between this contamination and the glass substrate is not distinct, suggesting some degree of chemical bonding or surface etching has occurred, which complicates the cleaning challenge.
+  afterText: Laser cleaning produces a dramatic transformation, the surface now exhibits restored optical clarity and material integrity. At 500x, the previously obscured soda-lime glass substrate is fully exposed, showing a clean, homogeneous surface with only minimal, isolated micro-fractures. Surface roughness has been reduced to 0.9 nm Ra, a value that approaches the original polished state and indicates very precise contaminant removal without significant substrate damage. The reflectivity shows marked improvement, increasing from an initial ~30% to over 90% in the visible spectrum. Close inspection reveals the cleaning mechanism's precision. The process has selectively ablated the contamination layer, leaving the bulk glass properties intact—the Young's modulus of 70 GPa and flexural strength are preserved. Some localized areas show subtle, sub-micrometer laser interaction patterns, these appear as faint, periodic ripples covering less than 2% of the total surface area. The surface is now free of particulate matter and chemical deposits, confirming successful restoration of the glass's functional transmissivity and chemical stability for its intended applications.

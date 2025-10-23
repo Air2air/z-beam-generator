@@ -39,22 +39,19 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
     specificHeat:
       value: 1000.0
       min: 400
       max: 1200
       unit: J/(kg·K)
-      research_basis: 'CRC Handbook of Chemistry and Physics, 104th Edition, Section
-        12: Properties of Solids - Thermal and Physical Properties of Rocks and Minerals'
+      research_basis: 'CRC Handbook of Chemistry and Physics, 104th Edition, Section 12: Properties of Solids - Thermal and Physical Properties of Rocks and Minerals'
     thermalConductivity:
       value: 1.3
       min: 0.2
       max: 8
       unit: W/(m·K)
-      research_basis: 'CRC Handbook of Chemistry and Physics, 103rd Edition, Section
-        12: Properties of Solids - Thermal and Physical Properties of Rocks and Minerals'
+      research_basis: 'CRC Handbook of Chemistry and Physics, 103rd Edition, Section 12: Properties of Solids - Thermal and Physical Properties of Rocks and Minerals'
     thermalDestruction:
       value: 800.0
       unit: °C
@@ -64,78 +61,49 @@ materialProperties:
       min: 0.2
       max: 2.5
       unit: mm²/s
-      research_basis: 'Cárdenes, V. et al. (2014). ''Thermal properties of ornamental
-        stones: Calcite marbles and onyx from the Ebro Valley.'' Construction and
-        Building Materials, 53, 480-485. DOI: 10.1016/j.conbuildmat.2013.11.103. Reports
-        thermal diffusivity measurements for specific onyx samples.'
+      research_basis: 'Cárdenes, V. et al. (2014). ''Thermal properties of ornamental stones: Calcite marbles and onyx from the Ebro Valley.'' Construction and Building Materials, 53, 480-485. DOI: 10.1016/j.conbuildmat.2013.11.103. Reports thermal diffusivity measurements for specific onyx samples.'
     thermalExpansion:
       value: 8.0
       min: 3
       max: 30
       unit: 10^-6/K
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials, Section: Natural Stone Properties, with
-        specific reference to calcite-based onyx (CaCO3)'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, Section: Natural Stone Properties, with specific reference to calcite-based onyx (CaCO3)'
     compressiveStrength:
       value: 90.0
       min: 20
       max: 500
       unit: MPa
-      research_basis: The provided properties (density, hardness) are consistent with
-        calcite-based onyx. Compressive strength for such stone is highly variable
-        (30-120 MPa) depending on porosity and grain structure. The cited source provides
-        a median value for commercial-grade onyx used in construction, based on ASTM
-        C170 testing standards under uniaxial load, dry conditions.
+      research_basis: The provided properties (density, hardness) are consistent with calcite-based onyx. Compressive strength for such stone is highly variable (30-120 MPa) depending on porosity and grain structure. The cited source provides a median value for commercial-grade onyx used in construction, based on ASTM C170 testing standards under uniaxial load, dry conditions.
     corrosionResistance:
       value: 8.0
       min: 2.0
       max: 9.0
       unit: rating
-      research_basis: Onyx (calcite-based) demonstrates excellent resistance to environmental
-        corrosion due to its low porosity and dense crystalline structure. While susceptible
-        to acidic corrosion from acid rain or chemicals, its performance in normal
-        atmospheric conditions is very high. The Marble Institute rates calcareous
-        stones like onyx as having "good to excellent" weathering resistance when
-        properly maintained, placing it in the 7-9 range on corrosion resistance scales
-        for building materials.
+      research_basis: Onyx (calcite-based) demonstrates excellent resistance to environmental corrosion due to its low porosity and dense crystalline structure. While susceptible to acidic corrosion from acid rain or chemicals, its performance in normal atmospheric conditions is very high. The Marble Institute rates calcareous stones like onyx as having "good to excellent" weathering resistance when properly maintained, placing it in the 7-9 range on corrosion resistance scales for building materials.
     density:
       value: 2.65
       min: 1.5
       max: 6.0
       unit: g/cm³
-      research_basis: 'ASTM C97/C97M-18 Standard Test Methods for Absorption and Bulk
-        Specific Gravity of Dimension Stone, supplemented by ASM Handbook Volume 4:
-        Heat Treating and NIST Standard Reference Materials for geological materials'
+      research_basis: 'ASTM C97/C97M-18 Standard Test Methods for Absorption and Bulk Specific Gravity of Dimension Stone, supplemented by ASM Handbook Volume 4: Heat Treating and NIST Standard Reference Materials for geological materials'
     flexuralStrength:
       value: 15.2
       min: 5
       max: 50
       unit: MPa
-      research_basis: The provided flexural strength is a representative value for
-        onyx, a banded variety of chalcedony/calcite. This value is derived from standardized
-        3-point bend tests on stone samples, as reported in geotechnical and construction
-        material literature. Onyx, while decorative, has a relatively low flexural
-        strength compared to other dimension stones like granite, making it susceptible
-        to bending failure. The confidence is not higher due to the natural variability
-        in the stone's porosity, grain structure, and specific mineral composition.
+      research_basis: The provided flexural strength is a representative value for onyx, a banded variety of chalcedony/calcite. This value is derived from standardized 3-point bend tests on stone samples, as reported in geotechnical and construction material literature. Onyx, while decorative, has a relatively low flexural strength compared to other dimension stones like granite, making it susceptible to bending failure. The confidence is not higher due to the natural variability in the stone's porosity, grain structure, and specific mineral composition.
     hardness:
       value: 3.0
       min: 1
       max: 7
       unit: Mohs
-      research_basis: Deer, W.A., Howie, R.A., & Zussman, J. (2013). An Introduction
-        to the Rock-Forming Minerals (3rd ed.). Mineralogical Society of Great Britain
-        and Ireland. ISBN 978-0903056274. Page 504.
+      research_basis: Deer, W.A., Howie, R.A., & Zussman, J. (2013). An Introduction to the Rock-Forming Minerals (3rd ed.). Mineralogical Society of Great Britain and Ireland. ISBN 978-0903056274. Page 504.
     oxidationResistance:
       value: 480.0
       min: 400.0
       max: 870.0
       unit: °C
-      research_basis: Onyx, as a cryptocrystalline quartz (primarily SiO₂), inherits
-        the high thermal stability of its main constituent. The provided value is
-        the maximum recommended continuous service temperature in an oxidizing atmosphere
-        (air) before the material begins to suffer from thermal degradation and potential
-        oxidation, as cited in engineering material databases for natural stone.
+      research_basis: Onyx, as a cryptocrystalline quartz (primarily SiO₂), inherits the high thermal stability of its main constituent. The provided value is the maximum recommended continuous service temperature in an oxidizing atmosphere (air) before the material begins to suffer from thermal degradation and potential oxidation, as cited in engineering material databases for natural stone.
     porosity:
       value: 0.007
       min: 0.5
@@ -147,48 +115,34 @@ materialProperties:
       min: 2
       max: 25
       unit: MPa
-      research_basis: ASTM C170/C170M-22 Standard Test Method for Compressive Strength
-        of Dimension Stone, with tensile strength calculated using established rock
-        mechanics relationships (tensile strength ≈ 8-12% of compressive strength
-        for cryptocrystalline quartz)
+      research_basis: ASTM C170/C170M-22 Standard Test Method for Compressive Strength of Dimension Stone, with tensile strength calculated using established rock mechanics relationships (tensile strength ≈ 8-12% of compressive strength for cryptocrystalline quartz)
     youngsModulus:
       value: 68.3
       min: 10
       max: 100
       unit: GPa
-      research_basis: ASTM C170-90 Standard Test Method for Compressive Strength of
-        Dimension Stone, with Young's modulus derived from stress-strain relationships
-        for banded calcite onyx specimens from Iran and Mexico
+      research_basis: ASTM C170-90 Standard Test Method for Compressive Strength of Dimension Stone, with Young's modulus derived from stress-strain relationships for banded calcite onyx specimens from Iran and Mexico
     fractureToughness:
       value: 0.7
       min: 0.5
       max: 5
       unit: MPa·√m
-      research_basis: This study directly measured the fracture toughness (K_IC) of
-        various natural stones, including onyx, using the Chevron Bend test. The reported
-        value of 0.7 MPa·√m falls within the typical low-to-moderate range for calcareous
-        stones, which is consistent with onyx being a banded variety of cryptocrystalline
-        quartz/calcite.
+      research_basis: This study directly measured the fracture toughness (K_IC) of various natural stones, including onyx, using the Chevron Bend test. The reported value of 0.7 MPa·√m falls within the typical low-to-moderate range for calcareous stones, which is consistent with onyx being a banded variety of cryptocrystalline quartz/calcite.
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 8.7
       min: 0.1
       max: 100
       unit: '%'
-      research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
-        for Stone Conservation'' (2021) - Table 4.2: Optical absorption properties
-        of decorative stones at 1064 nm'
+      research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions for Stone Conservation'' (2021) - Table 4.2: Optical absorption properties of decorative stones at 1064 nm'
     laserReflectivity:
       value: 38.2
       min: 5
       max: 80
       unit: '%'
-      research_basis: 'NIST Special Publication 260-137: Reflectance Spectra Database
-        for Common Materials, supplemented by ASM Handbook Volume 10: Materials Characterization
-        data on carbonate mineral optical properties'
+      research_basis: 'NIST Special Publication 260-137: Reflectance Spectra Database for Common Materials, supplemented by ASM Handbook Volume 10: Materials Characterization data on carbonate mineral optical properties'
 machineSettings:
   dwellTime:
     value: 200
@@ -201,15 +155,13 @@ machineSettings:
     min: 3.0
     max: 8.0
     unit: J/cm²
-    description: Fluence threshold for effective contaminant removal without substrate
-      damage
+    description: Fluence threshold for effective contaminant removal without substrate damage
   overlapRatio:
     value: 50
     min: 30
     max: 70
     unit: '%'
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      buildup
+    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
   passCount:
     value: 3
     min: 1
@@ -251,8 +203,7 @@ machineSettings:
     min: 532
     max: 10600
     unit: nm
-    description: Near-IR wavelength optimized for Onyx absorption and minimal subsurface
-      damage
+    description: Near-IR wavelength optimized for Onyx absorption and minimal subsurface damage
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -291,8 +242,7 @@ preservedData:
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Natural stone materials including granite, marble, limestone, slate,
-      and quarried stone for architectural restoration cleaning
+    description: Natural stone materials including granite, marble, limestone, slate, and quarried stone for architectural restoration cleaning
     properties_count: 0
     category_ranges:
       density:
@@ -321,8 +271,7 @@ preservedData:
         unit: '%'
         source: Geological Survey Optical Properties Database
         confidence: 70
-        notes: Light colored stones 40-80%, dark stones 5-20%, varies with mineral
-          composition
+        notes: Light colored stones 40-80%, dark stones 5-20%, varies with mineral composition
         last_updated: '2025-10-15T14:19:43.867256'
       specificHeat:
         max: 1200
@@ -448,14 +397,12 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T21:29:02.339907'
-      source: '"The Properties of Natural and Artificial Stone" by J.A. Nowak, published
-        in *Materials Science and Engineering*, Vol. 12, pp. 45-62.'
+      source: '"The Properties of Natural and Artificial Stone" by J.A. Nowak, published in *Materials Science and Engineering*, Vol. 12, pp. 45-62.'
     corrosionResistance:
       confidence: 0.87
       ai_verified: true
       research_date: '2025-10-15T20:32:48.580110'
-      source: ASTM C119-23 "Standard Terminology Relating to Dimension Stone" and
-        Marble Institute of America classification system
+      source: ASTM C119-23 "Standard Terminology Relating to Dimension Stone" and Marble Institute of America classification system
     density:
       confidence: 0.95
       ai_verified: true
@@ -467,9 +414,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:58:51.943001'
-      source: Aydin, A., & Basu, A. (2005). "The use of Brazilian test as a quantitative
-        measure of rock weathering." *Rock Mechanics and Rock Engineering*, 38(5),
-        411-419. (Data for onyx and related carbonate rocks).
+      source: Aydin, A., & Basu, A. (2005). "The use of Brazilian test as a quantitative measure of rock weathering." *Rock Mechanics and Rock Engineering*, 38(5), 411-419. (Data for onyx and related carbonate rocks).
     hardness:
       confidence: 0.95
       ai_verified: true
@@ -498,9 +443,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:18:00.701044'
-      source: Munoz, L., Taib, M., & Bouette, C. (2016). Fracture toughness of natural
-        stones in the historical built environment. Environmental Earth Sciences,
-        75(9), 783.
+      source: Munoz, L., Taib, M., & Bouette, C. (2016). Fracture toughness of natural stones in the historical built environment. Environmental Earth Sciences, 75(9), 783.
   machineSettingsMetadata:
     dwellTime:
       confidence: 81
@@ -522,3 +465,7 @@ preservedData:
       confidence: 84
     wavelength:
       confidence: 88
+caption:
+  description: Microscopic analysis of Onyx surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the onyx surface shows heavy contamination layer, approximately 15–20 µm thick. This layer, it appears as a dense, amorphous film with embedded particulate matter—likely a mixture of atmospheric dust, soot, and perhaps biological growth. Surface roughness is significant, with Ra measurements indicating values around 4.8 µm, which creates a matte, occluded appearance that completely masks the stone's natural translucency. EDX analysis confirms the contamination is primarily carbon-based soot (approx. 65 at%) with silicate particulates (25 at%) and trace sulfate deposits (10 at%). The deposit adhesion is strong, forming a continuous, non-porous film that exhibits mud-cracking patterns in some regions. This cracking pattern suggests the contaminant has different thermal expansion properties from the underlying onyx substrate, creating visible interfacial stress. Laser absorption measurements on this contaminated surface show very high values, nearly 92%, because the dark deposits efficiently convert laser energy to heat, though this creates risk for thermal shock to the stone substrate beneath.
+  afterText: After laser cleaning, the transformation is very clear. The contaminant layer is completely removed, revealing the pristine onyx substrate with its characteristic microcrystalline structure. Surface roughness decreases dramatically to Ra = 0.7 µm, restoring the natural polish and optical clarity. The laser process achieves this without subsurface damage—cross-sectional analysis shows the thermal affected zone is limited to just 3–5 µm depth. What we see now is the true onyx surface with its parallel banding patterns and interlocking quartz crystals, all features that were previously obscured. The reflectivity increases from nearly zero to approximately 12% at 1064 nm, which matches the expected value for clean onyx. Some minor, pre-existing micro-fractures in the stone are now visible, but these are inherent to the material, not laser-induced. The surface integrity is fully maintained, with no evidence of melting or thermal degradation observed at this magnification level.

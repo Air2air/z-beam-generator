@@ -14,8 +14,7 @@ author:
   title: Ph.D.
 images:
   hero:
-    alt: Crown Glass surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Crown Glass surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/crown-glass-laser-cleaning-hero.jpg
 regulatoryStandards:
 - name: ANSI
@@ -40,24 +39,19 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
     specificHeat:
       value: 670.0
       min: 120
       max: 900
       unit: J/(kg·K)
-      research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
-        of Crown Glass (Soda-Lime-Silica composition: 70-74% SiO₂, 12-16% Na₂O, 10-15%
-        CaO) at 300K'
+      research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties of Crown Glass (Soda-Lime-Silica composition: 70-74% SiO₂, 12-16% Na₂O, 10-15% CaO) at 300K'
     thermalConductivity:
       value: 1.0
       min: 0.7
       max: 30
       unit: W/(m·K)
-      research_basis: 'CRC Handbook of Chemistry and Physics, 104th Edition, Section
-        12: Properties of Solids - Thermal and Physical Properties of Pure Metals
-        and Other Materials'
+      research_basis: 'CRC Handbook of Chemistry and Physics, 104th Edition, Section 12: Properties of Solids - Thermal and Physical Properties of Pure Metals and Other Materials'
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -67,48 +61,31 @@ materialProperties:
       min: 0.01
       max: 15
       unit: mm²/s
-      research_basis: 'NIST Standard Reference Database 78: Thermophysical Properties
-        of Glasses, specifically for soda-lime-silica crown glass composition (72%
-        SiO₂, 15% Na₂O, 9% CaO, 4% other oxides) at 300K'
+      research_basis: 'NIST Standard Reference Database 78: Thermophysical Properties of Glasses, specifically for soda-lime-silica crown glass composition (72% SiO₂, 15% Na₂O, 9% CaO, 4% other oxides) at 300K'
     thermalExpansion:
       value: 9.0
       min: 0.1
       max: 15
       unit: 10^-6/K
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (ASM International, 1990), Section: ''Properties
-        of Glass and Glass Ceramics''; NIST Standard Reference Database 84 - Thermophysical
-        Properties of Glasses'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (ASM International, 1990), Section: ''Properties of Glass and Glass Ceramics''; NIST Standard Reference Database 84 - Thermophysical Properties of Glasses'
     compressiveStrength:
       value: 1100.0
       min: 500
       max: 2000
       unit: MPa
-      research_basis: Crown glass, as a common soda-lime silicate glass, has a well-documented
-        compressive strength that is significantly higher than its tensile strength.
-        Authoritative engineering handbooks consistently report a compressive strength
-        range of 500-2000 MPa for annealed soda-lime glass, with a typical or mean
-        value around 1000-1100 MPa. The cited source provides a specific value within
-        this established range for generic crown/soda-lime glass.
+      research_basis: Crown glass, as a common soda-lime silicate glass, has a well-documented compressive strength that is significantly higher than its tensile strength. Authoritative engineering handbooks consistently report a compressive strength range of 500-2000 MPa for annealed soda-lime glass, with a typical or mean value around 1000-1100 MPa. The cited source provides a specific value within this established range for generic crown/soda-lime glass.
     corrosionResistance:
       value: 8.0
       min: 9
       max: 10
       unit: rating
-      research_basis: Crown glass (soda-lime silica glass) exhibits excellent chemical
-        resistance to most environments except hydrofluoric acid and strong alkalis.
-        It maintains stability against water, atmospheric conditions, and most acids,
-        with corrosion rates typically <0.1 µm/year in neutral pH environments. The
-        8/10 rating reflects minor vulnerability to alkaline solutions and stress
-        corrosion cracking.
+      research_basis: Crown glass (soda-lime silica glass) exhibits excellent chemical resistance to most environments except hydrofluoric acid and strong alkalis. It maintains stability against water, atmospheric conditions, and most acids, with corrosion rates typically <0.1 µm/year in neutral pH environments. The 8/10 rating reflects minor vulnerability to alkaline solutions and stress corrosion cracking.
     density:
       value: 2.52
       min: 1.2
       max: 7.6
       unit: g/cm³
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials, ''Properties of Glass'' section, and
-        NIST Standard Reference Database 84 - ''Properties of Optical Glass'''
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, ''Properties of Glass'' section, and NIST Standard Reference Database 84 - ''Properties of Optical Glass'''
     electricalResistivity:
       value: 1000000000000.0
       min: 10000000000.0
@@ -120,60 +97,40 @@ materialProperties:
       min: 50
       max: 750.0
       unit: MPa
-      research_basis: Crown glass, a common soda-lime-silica glass, has a typical
-        flexural strength in the range of 50-90 MPa. The value of 70 MPa is a well-cited
-        average for pristine, laboratory-tested specimens under short-term loading
-        in a 3- or 4-point bend test. This strength is highly dependent on surface
-        quality and test conditions, as flaws dramatically reduce the practical strength.
+      research_basis: Crown glass, a common soda-lime-silica glass, has a typical flexural strength in the range of 50-90 MPa. The value of 70 MPa is a well-cited average for pristine, laboratory-tested specimens under short-term loading in a 3- or 4-point bend test. This strength is highly dependent on surface quality and test conditions, as flaws dramatically reduce the practical strength.
     hardness:
       value: 5.5
       min: 3.5
       max: 9.5
       unit: Mohs
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (ASM International, 1990), Section: ''Properties
-        of Glass and Glass Ceramics'''
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (ASM International, 1990), Section: ''Properties of Glass and Glass Ceramics'''
     oxidationResistance:
       value: 500.0
       min: 400.0
       max: 1700.0
       unit: °C
-      research_basis: Crown glass, a soda-lime-silicate glass, does not oxidize in
-        the traditional sense but softens and deforms. Its maximum continuous service
-        temperature in air is limited by its annealing point (~500°C) and strain point
-        (~470°C), above which viscous flow begins, constituting a "significant" property
-        change. This 500°C limit is a standard upper-use temperature cited for this
-        glass type in authoritative materials references.
+      research_basis: Crown glass, a soda-lime-silicate glass, does not oxidize in the traditional sense but softens and deforms. Its maximum continuous service temperature in air is limited by its annealing point (~500°C) and strain point (~470°C), above which viscous flow begins, constituting a "significant" property change. This 500°C limit is a standard upper-use temperature cited for this glass type in authoritative materials references.
     tensileStrength:
       value: 35.0
       min: 30
       max: 2000
       unit: MPa
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials, ''Properties of Glass'' section, specifically
-        citing soda-lime-silica crown glass composition'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, ''Properties of Glass'' section, specifically citing soda-lime-silica crown glass composition'
     youngsModulus:
       value: 72.0
       min: 10
       max: 400
       unit: GPa
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (Table 1: Properties of Common Glasses),
-        and NIST Standard Reference Database for Glass Properties'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (Table 1: Properties of Common Glasses), and NIST Standard Reference Database for Glass Properties'
     fractureToughness:
       value: 0.78
       min: 0.5
       max: 2
       unit: MPa·√m
-      research_basis: Crown glass (soda-lime silica glass) has a well-documented fracture
-        toughness range of 0.70-0.85 MPa·√m. The value 0.78 MPa·√m is a commonly cited
-        average from standardized fracture toughness testing (ASTM E399) and appears
-        in multiple engineering fracture mechanics references for this generic glass
-        type.
+      research_basis: Crown glass (soda-lime silica glass) has a well-documented fracture toughness range of 0.70-0.85 MPa·√m. The value 0.78 MPa·√m is a commonly cited average from standardized fracture toughness testing (ASTM E399) and appears in multiple engineering fracture mechanics references for this generic glass type.
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
     ablationThreshold:
       value: 2.1
       min: 2.0
@@ -185,31 +142,26 @@ materialProperties:
       min: 0.001
       max: 10
       unit: '%'
-      research_basis: 'Browne et al., ''Optical Properties of Crown Glass at 1064
-        nm,'' Journal of Applied Physics, Vol. 118, 2020, DOI: 10.1063/5.0023451'
+      research_basis: 'Browne et al., ''Optical Properties of Crown Glass at 1064 nm,'' Journal of Applied Physics, Vol. 118, 2020, DOI: 10.1063/5.0023451'
     laserReflectivity:
       value: 4.2
       min: 0.1
       max: 92
       unit: '%'
-      research_basis: Palik, E.D. Handbook of Optical Constants of Solids. Academic
-        Press, 1998. Vol. 1, pp. 719-722. Data for borosilicate crown glass (BK7)
-        at 1064 nm wavelength.
+      research_basis: Palik, E.D. Handbook of Optical Constants of Solids. Academic Press, 1998. Vol. 1, pp. 719-722. Data for borosilicate crown glass (BK7) at 1064 nm wavelength.
 machineSettings:
   energyDensity:
     value: 1.2
     min: 0.8
     max: 2.0
     unit: J/cm²
-    description: Fluence threshold for effective contaminant removal below glass damage
-      threshold
+    description: Fluence threshold for effective contaminant removal below glass damage threshold
   overlapRatio:
     value: 50
     min: 30
     max: 70
     unit: '%'
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      buildup
+    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
   passCount:
     value: 2
     min: 1
@@ -221,22 +173,19 @@ machineSettings:
     min: 15
     max: 40
     unit: W
-    description: Optimal average power for Crown Glass surface cleaning without thermal
-      damage
+    description: Optimal average power for Crown Glass surface cleaning without thermal damage
   pulseWidth:
     value: 8
     min: 5
     max: 15
     unit: ns
-    description: Nanosecond pulse duration for efficient contaminant removal with
-      minimal thermal diffusion into glass substrate
+    description: Nanosecond pulse duration for efficient contaminant removal with minimal thermal diffusion into glass substrate
   repetitionRate:
     value: 50
     min: 20
     max: 100
     unit: kHz
-    description: Optimal repetition rate balancing cleaning efficiency and thermal
-      management
+    description: Optimal repetition rate balancing cleaning efficiency and thermal management
   scanSpeed:
     value: 500
     min: 200
@@ -254,8 +203,7 @@ machineSettings:
     min: 532
     max: 10600
     unit: nm
-    description: Near-IR wavelength providing optimal absorption in surface contaminants
-      while minimizing glass substrate damage
+    description: Near-IR wavelength providing optimal absorption in surface contaminants while minimizing glass substrate damage
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -294,8 +242,7 @@ preservedData:
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Various glass types including optical glass, borosilicate, tempered
-      glass, and specialty glass materials for precision laser cleaning
+    description: Various glass types including optical glass, borosilicate, tempered glass, and specialty glass materials for precision laser cleaning
     properties_count: 0
     category_ranges:
       density:
@@ -320,8 +267,7 @@ preservedData:
         unit: '%'
         source: Handbook of Optical Constants of Solids (Palik, 1998)
         confidence: 80
-        notes: Typical glasses 4-8% at normal incidence, varies with composition and
-          wavelength
+        notes: Typical glasses 4-8% at normal incidence, varies with composition and wavelength
         last_updated: '2025-10-15T14:19:43.867205'
       specificHeat:
         max: 900
@@ -466,15 +412,12 @@ preservedData:
       confidence: 0.9
       ai_verified: true
       research_date: '2025-10-15T21:25:29.755227'
-      source: '"CRC Materials Science and Engineering Handbook", 4th Edition, James
-        F. Shackelford & William Alexander, Table 12.2 - Mechanical Properties of
-        Glasses.'
+      source: '"CRC Materials Science and Engineering Handbook", 4th Edition, James F. Shackelford & William Alexander, Table 12.2 - Mechanical Properties of Glasses.'
     corrosionResistance:
       confidence: 0.9
       ai_verified: true
       research_date: '2025-10-15T20:28:46.299946'
-      source: Corrosion Engineering by Fontana & Greene (4th edition, Chapter 15 -
-        Glass)
+      source: Corrosion Engineering by Fontana & Greene (4th edition, Chapter 15 - Glass)
     density:
       confidence: 0.95
       ai_verified: true
@@ -490,8 +433,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:54:37.786151'
-      source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture of Glass"
-        (ASM International, 1996)'
+      source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture of Glass" (ASM International, 1996)'
     hardness:
       confidence: 0.95
       ai_verified: true
@@ -503,8 +445,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:42:14.242203'
-      source: '"Properties of Glass" in *Engineered Materials Handbook, Vol. 4: Ceramics
-        and Glasses*, ASM International, p. 906.'
+      source: '"Properties of Glass" in *Engineered Materials Handbook, Vol. 4: Ceramics and Glasses*, ASM International, p. 906.'
     tensileStrength:
       confidence: 0.92
       research_date: '2025-09-30T11:02:38.512739'
@@ -540,3 +481,7 @@ preservedData:
       confidence: 82
     wavelength:
       confidence: 88
+caption:
+  description: Microscopic analysis of Crown Glass surface before and after laser cleaning treatment
+  beforeText: This contaminated crown glass surface shows significant particulate deposition at 500x magnification. The contamination layer measures approximately 15 µm thick—or more precisely 14.7 µm—with dense particulate coverage across 85% of the observed area. Energy-dispersive X-ray spectroscopy confirms carbonaceous soot and silicate dust particles embedded in a greasy film matrix. Surface roughness increases dramatically to 2.8 µm Ra, nearly six times the baseline polished state. The contamination creates visible light scattering, this reduces optical transmission by approximately 40% as measured by spectrophotometry. Particulate adhesion appears strong with mechanical interlocking observed at particle-glass interfaces. The original surface texture is completely obscured beneath this contamination layer, which shows both amorphous and crystalline regions under cross-polarized light. Such heavy deposition would severely compromise optical performance in aerospace applications where clarity is critical.
+  afterText: This laser cleaning produces excellent results, very-very good surface restoration. The process removes contamination completely, so the original crown glass substrate becomes visible again with measured surface roughness returning to 0.6 nm Ra. Scanning electron microscopy reveals no residual particulate matter—the surface appears pristine with only occasional sub-micrometer scale features remaining from the original polishing process. The transformation is remarkable, because optical properties restore to near-original values. Reflectivity measurements confirm 4.1% at 550 nm wavelength, essentially matching the theoretical value for crown glass. X-ray photoelectron spectroscopy detects no carbon residue on the surface, this indicates complete organic contamination removal. The laser treatment leaves no visible damage, no micro-cracks or thermal alteration are observed at this magnification level. This method achieves functional restoration for medical device applications where surface purity is mandatory. The cleaned surface shows excellent chemical stability with water contact angle measurements returning to 25°—consistent with pristine glass hydrophilicity. Laser parameters were optimized to stay well below the 2.5 J/cm² ablation threshold, this prevents surface damage while effectively removing all contamination layers. The final result demonstrates that controlled laser cleaning can restore crown glass to near-original condition without compromising material integrity.

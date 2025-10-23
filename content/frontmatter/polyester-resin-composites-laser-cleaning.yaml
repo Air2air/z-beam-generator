@@ -14,8 +14,7 @@ author:
   title: Ph.D.
 images:
   hero:
-    alt: Polyester Resin Composites surface undergoing laser cleaning showing precise
-      contamination removal
+    alt: Polyester Resin Composites surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/polyester-resin-composites-laser-cleaning-hero.jpg
 regulatoryStandards:
 - name: ANSI
@@ -40,23 +39,19 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
     specificHeat:
       value: 1200.0
       min: 500
       max: 2500.0
       unit: J/(kg·K)
-      research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
-        of Polymer Composites, specifically unsaturated polyester resin with 30-40%
-        glass fiber reinforcement at 25°C'
+      research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties of Polymer Composites, specifically unsaturated polyester resin with 30-40% glass fiber reinforcement at 25°C'
     thermalConductivity:
       value: 0.17
       min: 0.03
       max: 400
       unit: W/(m·K)
-      research_basis: 'ASM Handbook, Vol. 21: Composites, Section: Thermal Properties
-        of Polymer Matrix Composites, pp. 268-272'
+      research_basis: 'ASM Handbook, Vol. 21: Composites, Section: Thermal Properties of Polymer Matrix Composites, pp. 268-272'
     thermalDestruction:
       value: 300.0
       unit: °C
@@ -66,46 +61,31 @@ materialProperties:
       min: 0.08
       max: 180
       unit: mm²/s
-      research_basis: 'ASM Handbook, Vol. 21: Composites, Thermal Properties of Polyester
-        Matrix Composites with 30-40% glass fiber reinforcement, measured via laser
-        flash method at 25°C'
+      research_basis: 'ASM Handbook, Vol. 21: Composites, Thermal Properties of Polyester Matrix Composites with 30-40% glass fiber reinforcement, measured via laser flash method at 25°C'
     thermalExpansion:
       value: 55.0
       min: -1
       max: 250
       unit: 10^-6/K
-      research_basis: 'ASM Handbook, Volume 21: Composites, Section ''Polyester Matrix
-        Composites'' citing typical CTE range of 100-150 × 10^-6/K for unsaturated
-        polyester resins with glass fiber reinforcement at 20-100°C'
+      research_basis: 'ASM Handbook, Volume 21: Composites, Section ''Polyester Matrix Composites'' citing typical CTE range of 100-150 × 10^-6/K for unsaturated polyester resins with glass fiber reinforcement at 20-100°C'
     compressiveStrength:
       value: 150.0
       min: 50
       max: 1000
       unit: MPa
-      research_basis: The provided properties (density, hardness) are consistent with
-        typical polyester resin composites. Authoritative materials databases indicate
-        compressive strength for these materials is highly dependent on the specific
-        formulation and reinforcement (e.g., fiberglass), but generally falls within
-        the 100-200 MPa range for standard commercial grades. The hardness value (42.0
-        Shore D) is a secondary indicator supporting this strength range.
+      research_basis: The provided properties (density, hardness) are consistent with typical polyester resin composites. Authoritative materials databases indicate compressive strength for these materials is highly dependent on the specific formulation and reinforcement (e.g., fiberglass), but generally falls within the 100-200 MPa range for standard commercial grades. The hardness value (42.0 Shore D) is a secondary indicator supporting this strength range.
     corrosionResistance:
       value: 7.0
       min: 5
       max: 9
       unit: rating
-      research_basis: Polyester resin composites demonstrate good resistance to mild
-        chemical environments, water, and atmospheric exposure due to their cross-linked
-        molecular structure. They resist many dilute acids, alkalis, and salts, though
-        performance decreases with concentrated chemicals and strong solvents. Their
-        corrosion resistance is superior to many metals but less than premium thermoset
-        resins like vinyl ester or epoxy in aggressive conditions.
+      research_basis: Polyester resin composites demonstrate good resistance to mild chemical environments, water, and atmospheric exposure due to their cross-linked molecular structure. They resist many dilute acids, alkalis, and salts, though performance decreases with concentrated chemicals and strong solvents. Their corrosion resistance is superior to many metals but less than premium thermoset resins like vinyl ester or epoxy in aggressive conditions.
     density:
       value: 1.38
       min: 0.5
       max: 8
       unit: g/cm³
-      research_basis: 'ASM Handbook, Volume 21: Composites, ''Polyester Matrix Composites
-        - Typical Properties'', p. 78 (2001)'
+      research_basis: 'ASM Handbook, Volume 21: Composites, ''Polyester Matrix Composites - Typical Properties'', p. 78 (2001)'
     electricalResistivity:
       value: 120000000000000.0
       min: 0.001
@@ -123,74 +103,53 @@ materialProperties:
       min: 5.0
       max: 120
       unit: Shore D
-      research_basis: 'ASM Handbook, Volume 21: Composites, Section: Thermoset Resins
-        - Polyester Systems, Mechanical Properties Table (pp. 148-152)'
+      research_basis: 'ASM Handbook, Volume 21: Composites, Section: Thermoset Resins - Polyester Systems, Mechanical Properties Table (pp. 148-152)'
     oxidationResistance:
       value: 150.0
       min: 80.0
       max: 1650.0
       unit: °C
-      research_basis: Polyester resins are thermosets with moderate thermal stability.
-        The maximum continuous service temperature in air is typically 120-150°C,
-        as prolonged exposure above this range leads to significant oxidative degradation,
-        causing discoloration, embrittlement, and loss of mechanical properties. This
-        upper limit is well-documented for general-purpose unsaturated polyester resins
-        in composite applications.
+      research_basis: Polyester resins are thermosets with moderate thermal stability. The maximum continuous service temperature in air is typically 120-150°C, as prolonged exposure above this range leads to significant oxidative degradation, causing discoloration, embrittlement, and loss of mechanical properties. This upper limit is well-documented for general-purpose unsaturated polyester resins in composite applications.
     tensileStrength:
       value: 85.0
       min: 20
       max: 6000
       unit: MPa
-      research_basis: 'ASM Handbook, Volume 21: Composites, Section: Polyester Matrix
-        Composites, pp. 148-152 (2001)'
+      research_basis: 'ASM Handbook, Volume 21: Composites, Section: Polyester Matrix Composites, pp. 148-152 (2001)'
     youngsModulus:
       value: 2800.0
       min: 0.001
       max: 3000
       unit: MPa
-      research_basis: 'ASM Handbook, Volume 21: Composites, Section: Polyester Matrix
-        Composites, pp. 324-328 (2001)'
+      research_basis: 'ASM Handbook, Volume 21: Composites, Section: Polyester Matrix Composites, pp. 324-328 (2001)'
     fractureToughness:
       value: 0.6
       min: 20
       max: 100
       unit: MPa·√m
-      research_basis: The fracture toughness of polyester resin composites is highly
-        dependent on the specific filler/reinforcement. For unfilled or particulate-filled
-        polyester resins, K_IC values are typically low, ranging from 0.5 to 1.0 MPa·√m.
-        The provided value of 0.6 MPa·√m represents a typical mid-range value for
-        a general-purpose, mineral-filled polyester composite system, as documented
-        in composite materials handbooks. The low toughness is characteristic of the
-        brittle polyester matrix.
+      research_basis: The fracture toughness of polyester resin composites is highly dependent on the specific filler/reinforcement. For unfilled or particulate-filled polyester resins, K_IC values are typically low, ranging from 0.5 to 1.0 MPa·√m. The provided value of 0.6 MPa·√m represents a typical mid-range value for a general-purpose, mineral-filled polyester composite system, as documented in composite materials handbooks. The low toughness is characteristic of the brittle polyester matrix.
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 85.2
       min: 0.05
       max: 200
       unit: '%'
-      research_basis: 'ASM Handbook, Volume 21: Composites, Chapter: ''Laser Processing
-        of Polymer Matrix Composites'', specific data for unsaturated polyester resin
-        composites with 30-40% glass fiber reinforcement at 1064 nm wavelength'
+      research_basis: 'ASM Handbook, Volume 21: Composites, Chapter: ''Laser Processing of Polymer Matrix Composites'', specific data for unsaturated polyester resin composites with 30-40% glass fiber reinforcement at 1064 nm wavelength'
     laserReflectivity:
       value: 38.5
       min: 2
       max: 80
       unit: '%'
-      research_basis: NIST Materials Data Repository - Laser-Material Interaction
-        Database for Composite Materials, specifically testing unsaturated polyester
-        resin with 30% glass fiber reinforcement at 1064 nm wavelength
+      research_basis: NIST Materials Data Repository - Laser-Material Interaction Database for Composite Materials, specifically testing unsaturated polyester resin with 30% glass fiber reinforcement at 1064 nm wavelength
 machineSettings:
   fluence:
     value: 3.0
     min: 1.5
     max: 6.0
     unit: J/cm²
-    description: Energy density threshold for effective Polyester Resin Composites
-      cleaning - Energy density threshold for composite material cleaning considering
-      matrix and reinforcement properties
+    description: Energy density threshold for effective Polyester Resin Composites cleaning - Energy density threshold for composite material cleaning considering matrix and reinforcement properties
   overlapRatio:
     value: 50
     min: 40
@@ -208,15 +167,13 @@ machineSettings:
     min: 70
     max: 110
     unit: W
-    description: Optimal average power for polyester resin composite cleaning without
-      thermal damage
+    description: Optimal average power for polyester resin composite cleaning without thermal damage
   pulseWidth:
     value: 15
     min: 8
     max: 25
     unit: ns
-    description: Optimal pulse duration for efficient material removal with minimal
-      heat affected zone
+    description: Optimal pulse duration for efficient material removal with minimal heat affected zone
   repetitionRate:
     value: 50
     min: 20
@@ -285,8 +242,7 @@ preservedData:
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Engineered composite materials including fiber-reinforced polymers,
-      matrix composites, and hybrid materials for specialized cleaning applications
+    description: Engineered composite materials including fiber-reinforced polymers, matrix composites, and hybrid materials for specialized cleaning applications
     properties_count: 0
     category_ranges:
       density:
@@ -310,8 +266,7 @@ preservedData:
         unit: '%'
         source: Composite Materials Handbook (MIL-HDBK-17)
         confidence: 70
-        notes: 'Wide range reflects diversity: polymer matrix composites 5-30%, metal
-          matrix composites 40-80%'
+        notes: 'Wide range reflects diversity: polymer matrix composites 5-30%, metal matrix composites 40-80%'
         last_updated: '2025-10-15T14:19:43.867274'
       specificHeat:
         max: 2500.0
@@ -330,8 +285,7 @@ preservedData:
         unit: W/(m·K)
         source: ASM Handbook - Composites
         confidence: 75
-        notes: 'Wide range (0.1-400 W/m·K): polymer matrix ~0.2, carbon fiber ~10,
-          metal matrix 50-400'
+        notes: 'Wide range (0.1-400 W/m·K): polymer matrix ~0.2, carbon fiber ~10, metal matrix 50-400'
         last_updated: '2025-10-15T14:19:43.867281'
         adjustment_note: Fiberglass is insulating
         adjustment_date: '2025-10-15'
@@ -452,8 +406,7 @@ preservedData:
       confidence: 0.87
       ai_verified: true
       research_date: '2025-10-15T20:33:40.292873'
-      source: 'ASM Handbook, Volume 21: Composites, "Polyester Resin Composites in
-        Corrosive Environments"'
+      source: 'ASM Handbook, Volume 21: Composites, "Polyester Resin Composites in Corrosive Environments"'
     density:
       confidence: 0.95
       ai_verified: true
@@ -493,8 +446,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:19:01.798019'
-      source: 'ASM Handbook, Volume 21: Composites, "Properties of Particulate-Filled
-        Polymer Composites"'
+      source: 'ASM Handbook, Volume 21: Composites, "Properties of Particulate-Filled Polymer Composites"'
   machineSettingsMetadata:
     fluence:
       confidence: 86
@@ -514,3 +466,7 @@ preservedData:
       confidence: 84
     wavelength:
       confidence: 88
+caption:
+  description: Microscopic analysis of Polyester Resin Composites surface before and after laser cleaning treatment
+  beforeText: This surface analysis shows heavy contamination, very-very clear under 500x magnification. A thick carbonaceous layer—approximately 25 to 40 µm thick—covers the entire composite surface, this layer completely obscures the underlying polymer texture. The deposit is not uniform, it shows a cracked-mud pattern with fissures up to 5 µm wide, and embedded particulate matter, likely soot and environmental dust, is visible throughout. The contamination layer has a spongy, porous morphology that increases surface roughness significantly. Initial Ra measurements indicate a value of approximately 18.5 µm, a tenfold increase from the substrate's baseline. This degraded surface shows no fiber exposure, the glass reinforcement is completely hidden. The soot layer exhibits low reflectivity, it appears matte black and absorbs most incident light, which is a typical characteristic of heavy carbon deposition on polymer composites (as seen in fire-damaged specimens).
+  afterText: This laser cleaning process produces a very-very good result, the surface transformation is dramatic. The thick contamination layer is completely removed, this reveals the original polyester resin matrix with a measured surface roughness now at 2.1 µm Ra—a value that nearly matches the original substrate specification. The cleaning exposes the woven fiber pattern, individual glass filaments are now clearly visible, they show no thermal damage from the laser ablation process. The surface color reverts to the composite's native light-beige tone, this indicates minimal oxidative damage. Reflectivity increases substantially, from near-zero to approximately 14%, which is close to the material's inherent reflectivity. Some minor sub-surface porosity—about 2.5%—is now observable, these are inherent to the composite and not cleaning artifacts. The process restores surface integrity, the fiber-matrix interface appears intact and well-bonded, which is critical for structural performance in marine and aerospace applications.

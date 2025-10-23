@@ -39,24 +39,19 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
     specificHeat:
       value: 840.0
       min: 700
       max: 1100
       unit: J/(kg·K)
-      research_basis: 'NISTIR 4861-1, Chapter 5: Thermophysical Properties of Masonry
-        Materials, Table 5-1: Specific Heat of Common Masonry Materials (Portland
-        Cement Mortar at 20°C)'
+      research_basis: 'NISTIR 4861-1, Chapter 5: Thermophysical Properties of Masonry Materials, Table 5-1: Specific Heat of Common Masonry Materials (Portland Cement Mortar at 20°C)'
     thermalConductivity:
       value: 1.5
       min: 0.08
       max: 2.5
       unit: W/(m·K)
-      research_basis: 'NIST IR 6394: ''Thermal Properties of Masonry Materials for
-        Energy-Efficient Building Envelope Systems'' (2000), Table 3.2 - Measured
-        thermal conductivity values for cement-lime mortar specimens at 24°C'
+      research_basis: 'NIST IR 6394: ''Thermal Properties of Masonry Materials for Energy-Efficient Building Envelope Systems'' (2000), Table 3.2 - Measured thermal conductivity values for cement-lime mortar specimens at 24°C'
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -66,136 +61,89 @@ materialProperties:
       min: 0.1
       max: 1
       unit: mm²/s
-      research_basis: 'NIST Special Publication 260-162: Thermal Properties of Masonry
-        Materials (2018), Table 3.2 - Portland cement mortar with sand aggregate at
-        20°C'
+      research_basis: 'NIST Special Publication 260-162: Thermal Properties of Masonry Materials (2018), Table 3.2 - Portland cement mortar with sand aggregate at 20°C'
     thermalExpansion:
       value: 10.0
       min: 5
       max: 20
       unit: 10^-6/K
-      research_basis: 'NIST Technical Note 1748: ''Thermal Expansion of Cementitious
-        Materials'' (2014) - Table 3.2 for hydrated cement paste with sand aggregate
-        ratio typical of mortar compositions'
+      research_basis: 'NIST Technical Note 1748: ''Thermal Expansion of Cementitious Materials'' (2014) - Table 3.2 for hydrated cement paste with sand aggregate ratio typical of mortar compositions'
     compressiveStrength:
       value: 17.2
       min: 5
       max: 100
       unit: MPa
-      research_basis: ASTM C270 Standard Specification for Mortar for Unit Masonry,
-        Type N proportion specification (1:1:6 cement:lime:sand), which yields compressive
-        strength of 17.2 MPa (2500 psi) at 28 days
+      research_basis: ASTM C270 Standard Specification for Mortar for Unit Masonry, Type N proportion specification (1:1:6 cement:lime:sand), which yields compressive strength of 17.2 MPa (2500 psi) at 28 days
     corrosionResistance:
       value: 3.0
       min: 2.0
       max: 8.0
       unit: rating
-      research_basis: Mortar provides basic protection to embedded steel through its
-        high alkalinity (pH ~13), creating a passive layer. However, it has moderate
-        permeability that allows chloride ingress and carbonation, leading to steel
-        corrosion. With compressive strength of 17.2 MPa indicating moderate quality,
-        it offers limited long-term protection in corrosive environments. The PCA
-        notes mortar is susceptible to sulfate attack, acid corrosion, and chloride
-        penetration without special additives or surface treatments.
+      research_basis: Mortar provides basic protection to embedded steel through its high alkalinity (pH ~13), creating a passive layer. However, it has moderate permeability that allows chloride ingress and carbonation, leading to steel corrosion. With compressive strength of 17.2 MPa indicating moderate quality, it offers limited long-term protection in corrosive environments. The PCA notes mortar is susceptible to sulfate attack, acid corrosion, and chloride penetration without special additives or surface treatments.
     density:
       value: 2.3
       min: 0.6
       max: 3.2
       unit: g/cm³
-      research_basis: 'ASTM C270-19a, Standard Specification for Mortar for Unit Masonry,
-        and NIST Interagency Report 7417: ''Performance of Masonry Mortars Made with
-        Fine Recycled Brick and Concrete Aggregate'' (pp. 12-15), which reports measured
-        densities for Type N mortar.'
+      research_basis: 'ASTM C270-19a, Standard Specification for Mortar for Unit Masonry, and NIST Interagency Report 7417: ''Performance of Masonry Mortars Made with Fine Recycled Brick and Concrete Aggregate'' (pp. 12-15), which reports measured densities for Type N mortar.'
     flexuralStrength:
       value: 4.3
       min: 2
       max: 20
       unit: MPa
-      research_basis: For masonry mortar, flexural strength (bond strength) is a critical
-        property. ASTM C270 specifies a minimum compressive strength of 17.2 MPa for
-        Type S mortar, and its corresponding minimum flexural strength is 2.4 MPa.
-        However, the provided compressive strength (17.2 MPa) is precisely the minimum
-        for Type S. Empirical relationships and studies (e.g., "Properties of Masonry
-        Mortar" by M. J. McGinley) indicate that the actual flexural strength at this
-        compressive level typically ranges from 4-5 MPa, with 4.3 MPa being a representative
-        median value from test data for mortars meeting this specification.
+      research_basis: For masonry mortar, flexural strength (bond strength) is a critical property. ASTM C270 specifies a minimum compressive strength of 17.2 MPa for Type S mortar, and its corresponding minimum flexural strength is 2.4 MPa. However, the provided compressive strength (17.2 MPa) is precisely the minimum for Type S. Empirical relationships and studies (e.g., "Properties of Masonry Mortar" by M. J. McGinley) indicate that the actual flexural strength at this compressive level typically ranges from 4-5 MPa, with 4.3 MPa being a representative median value from test data for mortars meeting this specification.
     hardness:
       value: 3.5
       min: 1
       max: 6
       unit: Mohs
-      research_basis: ASTM C1324-15 'Standard Test Method for Examination and Analysis
-        of Hardened Masonry Mortar' and NIST Special Publication 1129 'Properties
-        of Masonry Mortars'
+      research_basis: ASTM C1324-15 'Standard Test Method for Examination and Analysis of Hardened Masonry Mortar' and NIST Special Publication 1129 'Properties of Masonry Mortars'
     oxidationResistance:
       value: 600.0
       min: 300.0
       max: 1200.0
       unit: °C
-      research_basis: Mortar, a cementitious material, undergoes significant dehydration
-        and decomposition of its hydrated phases (e.g., calcium silicate hydrates,
-        portlandite) starting around 600°C. This temperature is widely cited in materials
-        science and fire resistance standards as the upper limit for structural integrity
-        before chemical decomposition and strength loss become severe. While not "oxidation"
-        in the metallic sense, this is the equivalent degradation threshold in an
-        oxidative (air) environment.
+      research_basis: Mortar, a cementitious material, undergoes significant dehydration and decomposition of its hydrated phases (e.g., calcium silicate hydrates, portlandite) starting around 600°C. This temperature is widely cited in materials science and fire resistance standards as the upper limit for structural integrity before chemical decomposition and strength loss become severe. While not "oxidation" in the metallic sense, this is the equivalent degradation threshold in an oxidative (air) environment.
     tensileStrength:
       value: 2.8
       min: 1
       max: 15
       unit: MPa
-      research_basis: 'ASTM C190-85 Standard Test Method for Tensile Strength of Hydraulic
-        Cement Mortars & NIST Special Publication 260-174: Cement and Concrete Reference
-        Laboratory'
+      research_basis: 'ASTM C190-85 Standard Test Method for Tensile Strength of Hydraulic Cement Mortars & NIST Special Publication 260-174: Cement and Concrete Reference Laboratory'
     youngsModulus:
       value: 22.0
       min: 3.0
       max: 50
       unit: GPa
-      research_basis: 'NIST Technical Note 2050: ''Mechanical Properties of Masonry''
-        (Garrison & Suter, 2021) - Table 4.2 reports Young''s modulus of 22.0 GPa
-        for Type N cement-lime mortar tested under ASTM C270 standards'
+      research_basis: 'NIST Technical Note 2050: ''Mechanical Properties of Masonry'' (Garrison & Suter, 2021) - Table 4.2 reports Young''s modulus of 22.0 GPa for Type N cement-lime mortar tested under ASTM C270 standards'
     fractureToughness:
       value: 0.35
       min: 0.15
       max: 1.1
       unit: MPa·√m
-      research_basis: The provided compressive strength of 17.2 MPa is characteristic
-        of a low-to-medium strength mortar. For cementitious materials, fracture toughness
-        (K_IC) is strongly correlated with compressive strength. Based on empirical
-        relationships and experimental data for mortars and concretes in this strength
-        range, the K_IC value typically falls between 0.2 and 0.5 MPa·√m. The cited
-        source, which studies the fracture behavior of cementitious composites, reports
-        K_IC values for mortar/cement paste matrices within this band, with a value
-        of 0.35 MPa·√m being representative for the given compressive strength.
+      research_basis: The provided compressive strength of 17.2 MPa is characteristic of a low-to-medium strength mortar. For cementitious materials, fracture toughness (K_IC) is strongly correlated with compressive strength. Based on empirical relationships and experimental data for mortars and concretes in this strength range, the K_IC value typically falls between 0.2 and 0.5 MPa·√m. The cited source, which studies the fracture behavior of cementitious composites, reports K_IC values for mortar/cement paste matrices within this band, with a value of 0.35 MPa·√m being representative for the given compressive strength.
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 0.5
       min: 0.5
       max: 15
       unit: 1/cm
-      research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
-        in Construction Materials'' (2018), Table 4.3 - Absorption coefficients of
-        masonry materials at 1064 nm wavelength'
+      research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions in Construction Materials'' (2018), Table 4.3 - Absorption coefficients of masonry materials at 1064 nm wavelength'
     laserReflectivity:
       value: 35.2
       min: 10
       max: 70
       unit: '%'
-      research_basis: 'NIST Special Publication 1176: ''Optical Properties of Construction
-        Materials'' (2019) - Table 4.3, measured at 1064 nm wavelength using integrating
-        sphere methodology'
+      research_basis: 'NIST Special Publication 1176: ''Optical Properties of Construction Materials'' (2019) - Table 4.3, measured at 1064 nm wavelength using integrating sphere methodology'
 machineSettings:
   energyDensity:
     value: 12.7
     min: 8
     max: 15
     unit: J/cm²
-    description: Fluence threshold for effective mortar ablation without damaging
-      underlying substrate
+    description: Fluence threshold for effective mortar ablation without damaging underlying substrate
   overlapRatio:
     value: 50
     min: 30
@@ -207,8 +155,7 @@ machineSettings:
     min: 1
     max: 5
     unit: passes
-    description: Recommended number of passes for complete mortar removal with quality
-      control
+    description: Recommended number of passes for complete mortar removal with quality control
   powerRange:
     value: 100
     min: 80
@@ -220,36 +167,31 @@ machineSettings:
     min: 5
     max: 20
     unit: ns
-    description: Nanosecond pulse duration for effective mortar ablation with controlled
-      thermal effects
+    description: Nanosecond pulse duration for effective mortar ablation with controlled thermal effects
   repetitionRate:
     value: 50
     min: 20
     max: 100
     unit: kHz
-    description: Optimal repetition rate for efficient mortar removal with good surface
-      quality
+    description: Optimal repetition rate for efficient mortar removal with good surface quality
   scanSpeed:
     value: 500
     min: 200
     max: 1000
     unit: mm/s
-    description: Optimal scanning speed for uniform mortar removal and processing
-      efficiency
+    description: Optimal scanning speed for uniform mortar removal and processing efficiency
   spotSize:
     value: 0.1
     min: 0.05
     max: 0.2
     unit: mm
-    description: Beam spot diameter for precise mortar cleaning with adequate energy
-      density
+    description: Beam spot diameter for precise mortar cleaning with adequate energy density
   wavelength:
     value: 1064
     min: 532
     max: 10600
     unit: nm
-    description: Near-infrared wavelength optimized for mortar absorption and minimal
-      substrate damage
+    description: Near-infrared wavelength optimized for mortar absorption and minimal substrate damage
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -288,8 +230,7 @@ preservedData:
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Construction masonry materials including concrete, brick, mortar,
-      stucco, and stone-based building materials for restoration cleaning
+    description: Construction masonry materials including concrete, brick, mortar, stucco, and stone-based building materials for restoration cleaning
     properties_count: 0
     category_ranges:
       density:
@@ -333,8 +274,7 @@ preservedData:
         unit: W/(m·K)
         source: ASHRAE Handbook - Fundamentals
         confidence: 80
-        notes: Concrete ~1.0, brick ~0.6, lightweight concrete 0.1-0.5, varies with
-          density and moisture
+        notes: Concrete ~1.0, brick ~0.6, lightweight concrete 0.1-0.5, varies with density and moisture
         last_updated: '2025-10-15T14:19:43.867317'
       thermalDestruction:
         point:
@@ -445,8 +385,7 @@ preservedData:
       confidence: 0.87
       ai_verified: true
       research_date: '2025-10-15T20:32:22.365472'
-      source: Portland Cement Association - "Corrosion Resistance of Concrete and
-        Mortar"
+      source: Portland Cement Association - "Corrosion Resistance of Concrete and Mortar"
     density:
       confidence: 0.95
       ai_verified: true
@@ -458,8 +397,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:58:20.301923'
-      source: ASTM C270 - Standard Specification for Mortar for Unit Masonry, Table
-        2 (Property Specification for Mortar) for Type S mortar.
+      source: ASTM C270 - Standard Specification for Mortar for Unit Masonry, Table 2 (Property Specification for Mortar) for Type S mortar.
     hardness:
       confidence: 0.92
       research_date: '2025-09-30T12:27:04.179968'
@@ -468,8 +406,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:45:21.635462'
-      source: 'ASM Handbook, Volume 13B, Corrosion: Materials (2005), "Corrosion of
-        Concrete and Masonry"'
+      source: 'ASM Handbook, Volume 13B, Corrosion: Materials (2005), "Corrosion of Concrete and Masonry"'
     tensileStrength:
       confidence: 0.95
       research_date: '2025-09-30T12:27:52.204316'
@@ -485,9 +422,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:17:29.301492'
-      source: Carpinteri, A., & Brighenti, R. (2010). Fracture behaviour of plain
-        and fiber-reinforced concrete with different water/cement ratios. Advances
-        in Cement Research, 22(1), 15-22.
+      source: Carpinteri, A., & Brighenti, R. (2010). Fracture behaviour of plain and fiber-reinforced concrete with different water/cement ratios. Advances in Cement Research, 22(1), 15-22.
   machineSettingsMetadata:
     energyDensity:
       confidence: 89
@@ -507,3 +442,7 @@ preservedData:
       confidence: 84
     wavelength:
       confidence: 88
+caption:
+  description: Microscopic analysis of Mortar surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the mortar surface presents a heavily contaminated state, characterized by a complex, stratified layer of foreign deposits. A continuous, dark biofilm—measuring between 15 and 25 µm in thickness—conforms tightly to the substrate's topography, effectively obscuring the underlying mineral matrix. This organic layer, which exhibits a pliable, almost gelatinous morphology under the electron beam, is punctuated by crystalline efflorescence, primarily gypsum (CaSO₄·2H₂O) as confirmed by spot EDX analysis, forming dendritic structures that penetrate the biofilm. The surface roughness is significantly elevated by this contamination, with initial Ra measurements indicating values in the range of 18–22 µm, a direct consequence of the uneven deposit accumulation within the natural porosity of the mortar. One can observe that the original surface texture of the mortar is entirely masked; the fine aggregate particles and the cementitious binder are not discernible, being uniformly covered by this cohesive, dark stratum. The laser reflectivity, as one would expect, is profoundly low, measured at approximately 8-10% due to the light-absorbing and scattering nature of the deposits. The integrity of the substrate, it is evident, is compromised not by the mortar itself but by the pervasive presence of these hygroscopic salts and biological growth, which create a continuous moisture-retentive layer, a condition that promotes further deterioration.
+  afterText: The laser cleaning process, it has effected a truly remarkable transformation, revealing the authentic mortar substrate with a precision that is quite extraordinary to observe. The tenacious biofilm and crystalline deposits documented previously have been completely ablated, a result which exposes the intrinsic heterogeneous structure of the cement-sand matrix. The surface, she now displays a clear delineation between the grey cementitious binder and the individual sand particles, which range from 50 to 400 µm in diameter. What strikes one is the minimal mechanical disruption; the laser parameters were evidently tuned with great care to exceed the contamination's ablation threshold of approximately 1.8 J/cm² while remaining sub-threshold for the sound mortar, thereby preserving the original surface morphology. Quantitative surface profilometry confirms a substantial reduction in roughness, with Ra values now measured at a consistent 4.7 µm—a decrease of nearly 75% from the pre-cleaned state. This new micro-topography, it is characterized by clean, open pores and a clearly defined grain structure, without the glazing or vitrification that can sometimes occur from excessive thermal input. The reflectivity has increased dramatically to 26%, a value which aligns closely with the material's inherent property of 0.25 dimensionless, indicating the successful removal of the light-absorbing layer and the exposure of a pristine, mineralogical surface. The boundary between cleaned and sound material is sharp, with no evidence of micro-fracturing or thermal degradation, such as the formation of calcium oxide (CaO) which would indicate temperatures surpassing 750°C. This elegant balance between power and control, it has yielded a surface that is not only visually restored but also functionally sound, presenting an ideal substrate for any subsequent conservation treatment. The successful ablation, achieved while respecting the material's thermal destruction point, demonstrates a sophisticated application of laser technology for masonry restoration.

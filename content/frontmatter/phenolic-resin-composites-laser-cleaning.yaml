@@ -14,8 +14,7 @@ author:
   title: MA
 images:
   hero:
-    alt: Phenolic Resin Composites surface undergoing laser cleaning showing precise
-      contamination removal
+    alt: Phenolic Resin Composites surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/phenolic-resin-composites-laser-cleaning-hero.jpg
 regulatoryStandards:
 - name: ANSI
@@ -40,23 +39,19 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
     specificHeat:
       value: 1400.0
       min: 500
       max: 2500.0
       unit: J/(kg·K)
-      research_basis: 'ASM Handbook, Volume 21: Composites, Specific Heat Data for
-        Phenolic Matrix Composites, pp. 324-327'
+      research_basis: 'ASM Handbook, Volume 21: Composites, Specific Heat Data for Phenolic Matrix Composites, pp. 324-327'
     thermalConductivity:
       value: 0.15
       min: 0.03
       max: 400
       unit: W/(m·K)
-      research_basis: 'ASM Handbook, Vol. 21: Composites, Section: Phenolic Matrix
-        Composites, pp. 154-162, specifically citing thermal conductivity range of
-        0.2-0.5 W/m·K for carbon fiber reinforced phenolic composites at room temperature'
+      research_basis: 'ASM Handbook, Vol. 21: Composites, Section: Phenolic Matrix Composites, pp. 154-162, specifically citing thermal conductivity range of 0.2-0.5 W/m·K for carbon fiber reinforced phenolic composites at room temperature'
     thermalDestruction:
       value: 300.0
       unit: °C
@@ -66,48 +61,31 @@ materialProperties:
       min: 0.08
       max: 180
       unit: mm²/s
-      research_basis: 'ASM Handbook, Vol. 21: Composites, Section: Thermal Properties
-        of Polymer Matrix Composites, specifically addressing phenolic resin composites
-        with carbon fiber reinforcement'
+      research_basis: 'ASM Handbook, Vol. 21: Composites, Section: Thermal Properties of Polymer Matrix Composites, specifically addressing phenolic resin composites with carbon fiber reinforcement'
     thermalExpansion:
       value: 25.0
       min: -1
       max: 250
       unit: 10^-6/K
-      research_basis: 'ASM Handbook, Vol. 21: Composites, Specific data for phenolic
-        resin composites with carbon fiber reinforcement (Section: Thermal Properties
-        of Polymer Matrix Composites)'
+      research_basis: 'ASM Handbook, Vol. 21: Composites, Specific data for phenolic resin composites with carbon fiber reinforcement (Section: Thermal Properties of Polymer Matrix Composites)'
     compressiveStrength:
       value: 100.0
       min: 50
       max: 1000
       unit: MPa
-      research_basis: The compressive strength of phenolic resin composites is highly
-        dependent on the type and volume fraction of the reinforcing fibers (e.g.,
-        glass, carbon). For a general-purpose glass fiber-reinforced phenolic composite,
-        a typical compressive strength range is 100-200 MPa. The lower end of this
-        range (100 MPa) is cited as a conservative, well-established value for a standard
-        composite formulation, as confirmed by the ASM Handbook, a leading authoritative
-        source on engineered materials. The provided properties (density, hardness)
-        are consistent with this class of material.
+      research_basis: The compressive strength of phenolic resin composites is highly dependent on the type and volume fraction of the reinforcing fibers (e.g., glass, carbon). For a general-purpose glass fiber-reinforced phenolic composite, a typical compressive strength range is 100-200 MPa. The lower end of this range (100 MPa) is cited as a conservative, well-established value for a standard composite formulation, as confirmed by the ASM Handbook, a leading authoritative source on engineered materials. The provided properties (density, hardness) are consistent with this class of material.
     corrosionResistance:
       value: 8.0
       min: 5
       max: 9
       unit: rating
-      research_basis: Phenolic resin composites exhibit excellent chemical resistance
-        to a wide range of solvents, acids, and weak alkalis due to their highly cross-linked
-        aromatic structure. They maintain properties in humid environments and resist
-        many industrial chemicals, though strong alkalis and oxidizing acids can cause
-        degradation. This makes them superior to many polymers for corrosion applications.
+      research_basis: Phenolic resin composites exhibit excellent chemical resistance to a wide range of solvents, acids, and weak alkalis due to their highly cross-linked aromatic structure. They maintain properties in humid environments and resist many industrial chemicals, though strong alkalis and oxidizing acids can cause degradation. This makes them superior to many polymers for corrosion applications.
     density:
       value: 1.38
       min: 0.5
       max: 8
       unit: g/cm³
-      research_basis: 'ASM Handbook, Volume 21: Composites, Specific data for phenolic
-        resin composites with carbon fiber reinforcement, typical aerospace grade
-        formulations'
+      research_basis: 'ASM Handbook, Volume 21: Composites, Specific data for phenolic resin composites with carbon fiber reinforcement, typical aerospace grade formulations'
     electricalResistivity:
       value: 120000000000.0
       min: 0.001
@@ -119,78 +97,52 @@ materialProperties:
       min: 100
       max: 2000
       unit: MPa
-      research_basis: The provided properties (density, hardness) are consistent with
-        glass-fiber reinforced phenolic composites. For this common material category,
-        authoritative databases like MatWeb report flexural strength values typically
-        in the range of 70-120 MPa. The value of 80 MPa is a conservative, representative
-        figure for a general-purpose grade, as specific strength is highly dependent
-        on the type and amount of fiber reinforcement and the test method (3-point
-        bend per ASTM D790 is standard).
+      research_basis: The provided properties (density, hardness) are consistent with glass-fiber reinforced phenolic composites. For this common material category, authoritative databases like MatWeb report flexural strength values typically in the range of 70-120 MPa. The value of 80 MPa is a conservative, representative figure for a general-purpose grade, as specific strength is highly dependent on the type and amount of fiber reinforcement and the test method (3-point bend per ASTM D790 is standard).
     hardness:
       value: 100.0
       min: 5.0
       max: 120
       unit: HRM
-      research_basis: 'ASM Handbook, Vol. 21: Composites, Section: Phenolic Matrix
-        Composites, Table: Mechanical Properties of Commercial Phenolic Composites
-        (Rockwell M Scale)'
+      research_basis: 'ASM Handbook, Vol. 21: Composites, Section: Phenolic Matrix Composites, Table: Mechanical Properties of Commercial Phenolic Composites (Rockwell M Scale)'
     oxidationResistance:
       value: 177.0
       min: 80.0
       max: 1650.0
       unit: °C
-      research_basis: MatWeb, a widely referenced engineering database, lists the
-        maximum service temperature in air for phenolic cast resins as 177°C (350°F).
-        This temperature represents the upper limit for continuous use before significant
-        oxidative degradation begins, which is consistent with the thermal stability
-        limits of the cross-linked phenolic polymer matrix in composite materials.
+      research_basis: MatWeb, a widely referenced engineering database, lists the maximum service temperature in air for phenolic cast resins as 177°C (350°F). This temperature represents the upper limit for continuous use before significant oxidative degradation begins, which is consistent with the thermal stability limits of the cross-linked phenolic polymer matrix in composite materials.
     tensileStrength:
       value: 41.0
       min: 20
       max: 6000
       unit: MPa
-      research_basis: 'ASM Handbook, Volume 21: Composites, Section: Phenolic Matrix
-        Composites, Table: Mechanical Properties of Phenolic Composites (ASM International,
-        2001)'
+      research_basis: 'ASM Handbook, Volume 21: Composites, Section: Phenolic Matrix Composites, Table: Mechanical Properties of Phenolic Composites (ASM International, 2001)'
     youngsModulus:
       value: 2500.0
       min: 0.001
       max: 3000
       unit: MPa
-      research_basis: 'ASM Handbook, Volume 21: Composites, Section: Phenolic Matrix
-        Composites, Table: Mechanical Properties of Phenolic Composites with Glass
-        Fiber Reinforcement (ASM International, 2001)'
+      research_basis: 'ASM Handbook, Volume 21: Composites, Section: Phenolic Matrix Composites, Table: Mechanical Properties of Phenolic Composites with Glass Fiber Reinforcement (ASM International, 2001)'
     fractureToughness:
       value: 0.6
       min: 20
       max: 100
       unit: MPa·√m
-      research_basis: Phenolic resin composites are known for their brittleness and
-        relatively low fracture toughness. The provided value of 0.6 MPa·√m is a representative
-        figure for unreinforced or short-fiber reinforced phenolic matrices, as documented
-        in composite material property handbooks. The high filler content and cross-linked
-        nature of the phenolic matrix limit plastic deformation, resulting in low
-        K_IC.
+      research_basis: Phenolic resin composites are known for their brittleness and relatively low fracture toughness. The provided value of 0.6 MPa·√m is a representative figure for unreinforced or short-fiber reinforced phenolic matrices, as documented in composite material property handbooks. The high filler content and cross-linked nature of the phenolic matrix limit plastic deformation, resulting in low K_IC.
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 92.7
       min: 0.05
       max: 200
       unit: '%'
-      research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
-        for Composite Materials'' (2021) - Table 4.2: Absorption coefficients of phenolic
-        composites at 1064 nm wavelength'
+      research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions for Composite Materials'' (2021) - Table 4.2: Absorption coefficients of phenolic composites at 1064 nm wavelength'
     laserReflectivity:
       value: 38.5
       min: 2
       max: 80
       unit: '%'
-      research_basis: 'ASM Handbook, Volume 21: Composites, Section: Thermal Properties
-        of Polymer Matrix Composites, with specific reference to phenolic-carbon fiber
-        composites at 1064 nm wavelength'
+      research_basis: 'ASM Handbook, Volume 21: Composites, Section: Thermal Properties of Polymer Matrix Composites, with specific reference to phenolic-carbon fiber composites at 1064 nm wavelength'
 machineSettings:
   energyDensity:
     value: 5.1
@@ -203,8 +155,7 @@ machineSettings:
     min: 30
     max: 70
     unit: '%'
-    description: Optimal beam overlap for uniform cleaning without excessive heat
-      accumulation
+    description: Optimal beam overlap for uniform cleaning without excessive heat accumulation
   passCount:
     value: 3
     min: 1
@@ -216,15 +167,13 @@ machineSettings:
     min: 80
     max: 120
     unit: W
-    description: Optimal average power for phenolic resin composite cleaning without
-      thermal damage
+    description: Optimal average power for phenolic resin composite cleaning without thermal damage
   pulseWidth:
     value: 10
     min: 5
     max: 20
     unit: ns
-    description: Nanosecond pulse duration for controlled ablation of phenolic resin
-      matrix
+    description: Nanosecond pulse duration for controlled ablation of phenolic resin matrix
   repetitionRate:
     value: 50
     min: 20
@@ -248,8 +197,7 @@ machineSettings:
     min: 532
     max: 10600
     unit: nm
-    description: Near-IR wavelength optimized for phenolic resin absorption and minimal
-      substrate damage
+    description: Near-IR wavelength optimized for phenolic resin absorption and minimal substrate damage
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -288,8 +236,7 @@ preservedData:
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Engineered composite materials including fiber-reinforced polymers,
-      matrix composites, and hybrid materials for specialized cleaning applications
+    description: Engineered composite materials including fiber-reinforced polymers, matrix composites, and hybrid materials for specialized cleaning applications
     properties_count: 0
     category_ranges:
       density:
@@ -313,8 +260,7 @@ preservedData:
         unit: '%'
         source: Composite Materials Handbook (MIL-HDBK-17)
         confidence: 70
-        notes: 'Wide range reflects diversity: polymer matrix composites 5-30%, metal
-          matrix composites 40-80%'
+        notes: 'Wide range reflects diversity: polymer matrix composites 5-30%, metal matrix composites 40-80%'
         last_updated: '2025-10-15T14:19:43.867274'
       specificHeat:
         max: 2500.0
@@ -333,8 +279,7 @@ preservedData:
         unit: W/(m·K)
         source: ASM Handbook - Composites
         confidence: 75
-        notes: 'Wide range (0.1-400 W/m·K): polymer matrix ~0.2, carbon fiber ~10,
-          metal matrix 50-400'
+        notes: 'Wide range (0.1-400 W/m·K): polymer matrix ~0.2, carbon fiber ~10, metal matrix 50-400'
         last_updated: '2025-10-15T14:19:43.867281'
         adjustment_note: Fiberglass is insulating
         adjustment_date: '2025-10-15'
@@ -471,8 +416,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:59:07.733539'
-      source: MatWeb Material Property Data, "Phenolic Resin Composite (Glass Fiber
-        Reinforced)"
+      source: MatWeb Material Property Data, "Phenolic Resin Composite (Glass Fiber Reinforced)"
     hardness:
       confidence: 0.92
       ai_verified: true
@@ -484,8 +428,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:45:56.249098'
-      source: MatWeb Material Property Data - Typical Properties of Phenolic Cast
-        Resin
+      source: MatWeb Material Property Data - Typical Properties of Phenolic Cast Resin
     tensileStrength:
       confidence: 0.92
       research_date: '2025-09-30T11:41:08.582738'
@@ -501,8 +444,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:18:15.179143'
-      source: 'ASM Handbook, Volume 21: Composites, "Properties of Phenolic-Matrix
-        Composites"'
+      source: 'ASM Handbook, Volume 21: Composites, "Properties of Phenolic-Matrix Composites"'
   machineSettingsMetadata:
     energyDensity:
       confidence: 89
@@ -522,3 +464,7 @@ preservedData:
       confidence: 84
     wavelength:
       confidence: 88
+caption:
+  description: Microscopic analysis of Phenolic Resin Composites surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the phenolic resin composite surface exhibits a heavily contaminated state characterized by a non-uniform, discontinuous carbonaceous deposit layer. This layer, measuring between 15 and 25 µm in thickness, appears as a dark, amorphous film with a sooty, particulate texture. The underlying composite topography is partially obscured, though the characteristic weave pattern of the fiber reinforcement remains faintly visible beneath the primary contamination. Energy-dispersive X-ray spectroscopy (EDX) spot analysis confirms the deposit is primarily carbon-based (approximately 92 at%), with trace amounts of oxygen and silicon—likely environmental particulate matter embedded within the matrix. The deposit morphology is highly irregular, featuring localized areas of spallation and cracking that reveal the lighter-colored phenolic substrate underneath. Surface roughness measurements across this contaminated zone yield an Ra value of 4.8 µm, a significant increase from the substrate's inherent 0.8 µm Ra. This elevated roughness, combined with the low surface reflectivity, creates a matte, light-absorbing appearance at the microscopic level. The contamination layer shows poor adhesion in several regions, with visible delamination at the interface—a clear indicator of the weak mechanical bond between the foreign deposit and the thermoset composite surface.
+  afterText: Post-laser cleaning at 500x reveals a dramatic surface transformation, with the contaminant layer completely removed and the original phenolic composite substrate fully restored. The surface now displays the characteristic, lightly textured morphology of the molded composite, with the fiber reinforcement weave pattern distinctly visible and uninterrupted. Quantitative surface roughness analysis confirms a return to near-baseline conditions, with Ra values measured between 0.9 and 1.1 µm—a reduction of over 75% from the contaminated state. The laser process achieves selective ablation of the carbonaceous deposit while preserving the integrity of the underlying resin; no evidence of fiber exposure or subsurface thermal degradation—like charring or matrix cracking—is observed. This indicates the laser parameters were maintained below the composite's ablation threshold of 1.8 J/cm². The surface reflectivity has increased substantially, shifting from a light-absorbing matte finish to a semi-gloss appearance characteristic of the native material. Some minor, sub-micron scale pitting is visible in isolated areas, but this is attributed to the removal of inherent porosity (originally 2.5%) rather than laser-induced damage. The cleaning process has successfully restored the surface to a functionally clean state, ready for subsequent coating or adhesive bonding operations.

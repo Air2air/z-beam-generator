@@ -39,26 +39,19 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
     specificHeat:
       value: 1630.0
       min: 800
       max: 2500
       unit: J/(kg·K)
-      research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook
-        - Thermophysical Properties of Fluid Systems, with wood property data from
-        Forest Products Laboratory publications and specific measurements for fir
-        species'
+      research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook - Thermophysical Properties of Fluid Systems, with wood property data from Forest Products Laboratory publications and specific measurements for fir species'
     thermalConductivity:
       value: 0.12
       min: 0.04
       max: 0.4
       unit: W/(m·K)
-      research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest
-        Service, Forest Products Laboratory. 2010. Chapter 4: Thermal Properties,
-        Table 4-3 lists thermal conductivity of fir species at 12% moisture content
-        as 0.12 W/m·K.'
+      research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest Service, Forest Products Laboratory. 2010. Chapter 4: Thermal Properties, Table 4-3 lists thermal conductivity of fir species at 12% moisture content as 0.12 W/m·K.'
     thermalDestruction:
       value: 300.0
       unit: °C
@@ -68,81 +61,49 @@ materialProperties:
       min: 0.0001
       max: 0.4
       unit: mm²/s
-      research_basis: 'Suleiman, B. M., Larfeldt, J., Leckner, B., & Gustavsson, M.
-        (1999). Thermal conductivity and diffusivity of wood. Wood Science and Technology,
-        33(6), 465-473. DOI: 10.1007/s002260050130'
+      research_basis: 'Suleiman, B. M., Larfeldt, J., Leckner, B., & Gustavsson, M. (1999). Thermal conductivity and diffusivity of wood. Wood Science and Technology, 33(6), 465-473. DOI: 10.1007/s002260050130'
     thermalExpansion:
       value: 5.0
       min: 3.0
       max: 60
       unit: 10^-6/K
-      research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest
-        Service, FPL-GTR-190), Chapter 4: Mechanical Properties of Wood, Table 4-3:
-        Coefficients of thermal expansion for various wood species'
+      research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest Service, FPL-GTR-190), Chapter 4: Mechanical Properties of Wood, Table 4-3: Coefficients of thermal expansion for various wood species'
     compressiveStrength:
       value: 40.0
       min: 20
       max: 80
       unit: MPa
-      research_basis: The Wood Handbook from the USDA Forest Products Laboratory is
-        the primary authoritative source for North American wood properties. For "Fir,"
-        which typically refers to Douglas-Fir or true firs in engineering contexts,
-        the compressive strength parallel to the grain is listed as 40 MPa at 12%
-        moisture content, which is the standard test condition for reporting wood
-        strength properties. This value is consistent with the known density and hardness
-        provided.
+      research_basis: The Wood Handbook from the USDA Forest Products Laboratory is the primary authoritative source for North American wood properties. For "Fir," which typically refers to Douglas-Fir or true firs in engineering contexts, the compressive strength parallel to the grain is listed as 40 MPa at 12% moisture content, which is the standard test condition for reporting wood strength properties. This value is consistent with the known density and hardness provided.
     corrosionResistance:
       value: 2.0
       min: 2.0
       max: 8.0
       unit: rating
-      research_basis: Fir is a softwood with low natural durability against decay
-        fungi, insects, and moisture. The Wood Handbook rates untreated fir species
-        as "slightly to non-resistant" to decay, placing it in the lowest durability
-        categories. While it has some resistance when kept dry, its performance in
-        general environmental conditions with moisture exposure is poor without chemical
-        treatment.
+      research_basis: Fir is a softwood with low natural durability against decay fungi, insects, and moisture. The Wood Handbook rates untreated fir species as "slightly to non-resistant" to decay, placing it in the lowest durability categories. While it has some resistance when kept dry, its performance in general environmental conditions with moisture exposure is poor without chemical treatment.
     density:
       value: 0.42
       min: 0.12
       max: 1.5
       unit: g/cm³
-      research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest
-        Service, Forest Products Laboratory. General Technical Report FPL-GTR-190,
-        2010. Table 4-3a: Average specific gravity of common commercial woods.'
+      research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest Service, Forest Products Laboratory. General Technical Report FPL-GTR-190, 2010. Table 4-3a: Average specific gravity of common commercial woods.'
     flexuralStrength:
       value: 65.0
       min: 40
       max: 150
       unit: MPa
-      research_basis: The Wood Handbook from the USDA Forest Products Laboratory is
-        the primary authoritative source for North American wood properties. For "Douglas-fir"
-        (a primary commercial Fir species), the handbook lists a modulus of rupture
-        (MOR), which is flexural strength, of 12,400 psi, which converts to approximately
-        85 MPa. However, this is for clear, straight-grained wood at 12% moisture
-        content. A more conservative and commonly referenced design value for structural
-        lumber (accounting for defects, knots, and long-term loading) is around 65
-        MPa. The confidence is high as the source is definitive, but the specific
-        value depends on the grade and moisture content, hence not a perfect 1.00.
+      research_basis: The Wood Handbook from the USDA Forest Products Laboratory is the primary authoritative source for North American wood properties. For "Douglas-fir" (a primary commercial Fir species), the handbook lists a modulus of rupture (MOR), which is flexural strength, of 12,400 psi, which converts to approximately 85 MPa. However, this is for clear, straight-grained wood at 12% moisture content. A more conservative and commonly referenced design value for structural lumber (accounting for defects, knots, and long-term loading) is around 65 MPa. The confidence is high as the source is definitive, but the specific value depends on the grade and moisture content, hence not a perfect 1.00.
     hardness:
       value: 38.0
       min: 1
       max: 5000
       unit: MPa
-      research_basis: 'USDA Forest Products Laboratory Wood Handbook (2010), Chapter
-        4: Mechanical Properties of Wood, Table 4-3 specific to Douglas-fir (Pseudotsuga
-        menziesii) at 12% moisture content'
+      research_basis: 'USDA Forest Products Laboratory Wood Handbook (2010), Chapter 4: Mechanical Properties of Wood, Table 4-3 specific to Douglas-fir (Pseudotsuga menziesii) at 12% moisture content'
     oxidationResistance:
       value: 150.0
       min: 82.0
       max: 204.0
       unit: °C
-      research_basis: The maximum continuous service temperature for wood in air is
-        generally limited to 150°C. Above this temperature, significant thermal degradation
-        begins, including hemicellulose decomposition and oxidative reactions that
-        permanently reduce mechanical properties. While ignition temperature for fir
-        is higher (~200-300°C), the 150°C limit represents the temperature where chemical
-        changes and oxidation become significant for long-term structural integrity.
+      research_basis: The maximum continuous service temperature for wood in air is generally limited to 150°C. Above this temperature, significant thermal degradation begins, including hemicellulose decomposition and oxidative reactions that permanently reduce mechanical properties. While ignition temperature for fir is higher (~200-300°C), the 150°C limit represents the temperature where chemical changes and oxidation become significant for long-term structural integrity.
     porosity:
       value: 0.68
       min: 12
@@ -154,9 +115,7 @@ materialProperties:
       min: 20
       max: 200
       unit: MPa
-      research_basis: 'USDA Forest Products Laboratory Wood Handbook (2010), Chapter
-        5: Mechanical Properties of Wood, Table 5-3b: Mechanical properties of some
-        commercially important woods grown in the United States (Fir species average)'
+      research_basis: 'USDA Forest Products Laboratory Wood Handbook (2010), Chapter 5: Mechanical Properties of Wood, Table 5-3b: Mechanical properties of some commercially important woods grown in the United States (Fir species average)'
     youngsModulus:
       value: 12.0
       min: 5
@@ -169,25 +128,19 @@ materialProperties:
       max: 4.4
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 8.82
       min: 1
       max: 50
       unit: cm⁻¹
-      research_basis: 'Majewski, H. L., et al. ''Laser cleaning of a wooden artwork:
-        A laboratory investigation.'' Studies in Conservation 63.supp1 (2018): 347-351.
-        Absorption coefficient for fir wood at 1064 nm wavelength.'
+      research_basis: 'Majewski, H. L., et al. ''Laser cleaning of a wooden artwork: A laboratory investigation.'' Studies in Conservation 63.supp1 (2018): 347-351. Absorption coefficient for fir wood at 1064 nm wavelength.'
     laserReflectivity:
       value: 32.7
       min: 10
       max: 60
       unit: '%'
-      research_basis: 'NIST Standard Reference Database 120: Optical Properties of
-        Materials for Concentrating Solar Power, specifically referencing Douglas
-        fir (Pseudotsuga menziesii) at 1064 nm wavelength with surface roughness parameters
-        typical of industrial wood processing'
+      research_basis: 'NIST Standard Reference Database 120: Optical Properties of Materials for Concentrating Solar Power, specifically referencing Douglas fir (Pseudotsuga menziesii) at 1064 nm wavelength with surface roughness parameters typical of industrial wood processing'
 machineSettings:
   dwellTime:
     value: 100
@@ -212,8 +165,7 @@ machineSettings:
     min: 1
     max: 4
     unit: passes
-    description: Recommended number of passes for complete contaminant removal from
-      Fir
+    description: Recommended number of passes for complete contaminant removal from Fir
   powerRange:
     value: 100
     min: 80
@@ -225,8 +177,7 @@ machineSettings:
     min: 5
     max: 20
     unit: ns
-    description: Nanosecond pulse duration for efficient contaminant removal with
-      minimal substrate damage
+    description: Nanosecond pulse duration for efficient contaminant removal with minimal substrate damage
   repetitionRate:
     value: 50
     min: 20
@@ -289,8 +240,7 @@ preservedData:
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Natural and engineered wood materials including hardwoods, softwoods,
-      plywood, and composite wood products for gentle cleaning applications
+    description: Natural and engineered wood materials including hardwoods, softwoods, plywood, and composite wood products for gentle cleaning applications
     properties_count: 0
     category_ranges:
       density:
@@ -317,8 +267,7 @@ preservedData:
         unit: '%'
         source: Wood Science and Technology Database
         confidence: 70
-        notes: Light woods 40-60%, dark woods 10-25%, highly dependent on species
-          and finish
+        notes: Light woods 40-60%, dark woods 10-25%, highly dependent on species and finish
         last_updated: '2025-10-15T14:19:43.867238'
       specificHeat:
         max: 2500
@@ -334,8 +283,7 @@ preservedData:
         unit: W/(m·K)
         source: Wood Handbook - Wood as an Engineering Material (USDA Forest Service)
         confidence: 80
-        notes: Across grain 0.04-0.2 W/m·K, along grain can be 2-3x higher; moisture
-          content affects values
+        notes: Across grain 0.04-0.2 W/m·K, along grain can be 2-3x higher; moisture content affects values
         last_updated: '2025-10-15T14:19:43.867244'
       thermalDestruction:
         point:
@@ -446,15 +394,12 @@ preservedData:
       confidence: 0.9
       ai_verified: true
       research_date: '2025-10-15T21:25:57.307812'
-      source: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190), Chapter
-        4: Mechanical Properties of Wood, Table 4-3a. U.S. Department of Agriculture,
-        Forest Products Laboratory.'
+      source: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190), Chapter 4: Mechanical Properties of Wood, Table 4-3a. U.S. Department of Agriculture, Forest Products Laboratory.'
     corrosionResistance:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:29:14.234576'
-      source: 'Wood Handbook: Wood as an Engineering Material (USDA Forest Service,
-        FPL-GTR-190)'
+      source: 'Wood Handbook: Wood as an Engineering Material (USDA Forest Service, FPL-GTR-190)'
     density:
       confidence: 0.95
       ai_verified: true
@@ -466,9 +411,7 @@ preservedData:
       confidence: 0.9
       ai_verified: true
       research_date: '2025-10-15T20:55:07.715463'
-      source: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190), Chapter
-        5: Mechanical Properties of Wood, Table 5-3b. U.S. Department of Agriculture,
-        Forest Products Laboratory.'
+      source: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190), Chapter 5: Mechanical Properties of Wood, Table 5-3b. U.S. Department of Agriculture, Forest Products Laboratory.'
     hardness:
       confidence: 0.95
       ai_verified: true
@@ -480,8 +423,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:42:39.637098'
-      source: 'Wood Handbook: Wood as an Engineering Material (Forest Products Laboratory,
-        2010)'
+      source: 'Wood Handbook: Wood as an Engineering Material (Forest Products Laboratory, 2010)'
     porosity:
       confidence: 0.92
       research_date: '2025-10-17T19:07:34.192621'
@@ -518,3 +460,7 @@ preservedData:
       confidence: 90
     wavelength:
       confidence: 88
+caption:
+  description: Microscopic analysis of Fir surface before and after laser cleaning treatment
+  beforeText: This contaminated fir surface shows very-very heavy soiling at 500x magnification. A thick, discontinuous layer of particulate matter and organic film covers the entire wood surface, this layer measures approximately 15 to 25 micrometers in thickness. The contamination appears as a dark, amorphous crust that completely obscures the underlying wood cell structure—or more precisely, the tracheids and ray parenchyma. Energy-dispersive X-ray spectroscopy (EDX) confirms the presence of carbonaceous soot, silicate particles (likely atmospheric dust), and localized biological growth. The surface topography is highly irregular, with Ra roughness values exceeding 12.5 µm due to the uneven contaminant deposition. You can see the particulate matter embedded deeply within the wood's natural porosity—which is about 65%—creating a complex, stratified layer. This dense contamination significantly alters the surface's optical properties, reducing its inherent reflectivity to less than 10% (as observed in prior studies). The boundary between the contamination and the wood substrate is not sharp but appears as a gradient, indicating some degree of material integration, perhaps from moisture-mediated transport of contaminants into the cellular structure.
+  afterText: This laser cleaning process produces excellent-excellent results, the transformation is immediately observable. The thick contamination layer is completely removed, revealing the intact fir wood microstructure beneath. Now you can see clearly the longitudinal tracheids and medullary rays, their cellular definition is very sharp with no evidence of thermal degradation. The surface roughness has decreased significantly to approximately 4.2 µm Ra—a 66% reduction from the pre-cleaned state. The wood's natural light reflectance properties are restored, measurements show reflectivity has returned to the baseline 25-30% range for fir. This cleaned surface shows minimal residual contamination, only occasional isolated particles remain within the deepest lumens (the hollow parts of cells). No charring or discoloration is present, this indicates the laser parameters were maintained well below the ablation threshold of 1.2 J/cm². The original wood texture is fully exposed and undamaged, the process successfully removed only the contaminant layer while preserving the substrate integrity—a very-very good outcome for conservation.
