@@ -14,28 +14,15 @@ author:
   title: Ph.D.
 images:
   hero:
-    alt: Vanadium surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Vanadium surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/vanadium-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Vanadium surface after laser cleaning showing detailed surface structure
+    url: /images/material/vanadium-laser-cleaning-micro.jpg
 caption:
-  description: Microscopic analysis of Vanadium surface before and after laser cleaning
-    treatment
-  beforeText: Surface analysis reveals that the contaminated Vanadium alloy exhibits
-    a complex layer of oxide and organic residues, visible at 500x magnification as
-    irregular patches with an average thickness of 12. 5 micrometers. These contaminants,
-    predominantly concentrated in micro-crevices, pose a significant challenge for
-    achieving uniform laser cleaning efficacy. Furthermore, 85% of the surface area
-    shows discoloration, indicating potential thermal degradation, which complicates
-    the restoration of the metal’s inherent reflective properties critical for industrial
-    applications.
-  afterText: Microscopic examination shows a remarkable transformation of the Vanadium
-    surface post-laser cleaning, with 98% of the oxide and organic residues removed,
-    as observed at 500x magnification. Compared to the initial 12. 5-micrometer-thick
-    contamination layer, the residual debris now measures less than 0. 3 micrometers,
-    a reduction that, I must note—um—significantly enhances surface integrity. Additionally,
-    the restored reflectivity, improved by approximately 92% compared to the contaminated
-    state, directly correlates with enhanced performance in general cleaning applications
-    where optical clarity is vital.
+  description: Microscopic analysis of Vanadium surface before and after laser cleaning treatment
+  beforeText: Surface analysis reveals that the contaminated Vanadium alloy exhibits a complex layer of oxide and organic residues, visible at 500x magnification as irregular patches with an average thickness of 12. 5 micrometers. These contaminants, predominantly concentrated in micro-crevices, pose a significant challenge for achieving uniform laser cleaning efficacy. Furthermore, 85% of the surface area shows discoloration, indicating potential thermal degradation, which complicates the restoration of the metal’s inherent reflective properties critical for industrial applications.
+  afterText: Microscopic examination shows a remarkable transformation of the Vanadium surface post-laser cleaning, with 98% of the oxide and organic residues removed, as observed at 500x magnification. Compared to the initial 12. 5-micrometer-thick contamination layer, the residual debris now measures less than 0. 3 micrometers, a reduction that, I must note—um—significantly enhances surface integrity. Additionally, the restored reflectivity, improved by approximately 92% compared to the contaminated state, directly correlates with enhanced performance in general cleaning applications where optical clarity is vital.
 regulatoryStandards:
 - name: ANSI
   description: ANSI Z136.1 - Safe Use of Lasers
@@ -59,8 +46,7 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
     boilingPoint:
       value: 3407.0
       min: 907
@@ -78,17 +64,13 @@ materialProperties:
       min: 100
       max: 2000
       unit: J/(kg·K)
-      research_basis: 'NIST Standard Reference Database 144: Thermophysical Properties
-        of Pure Vanadium at 300 K'
+      research_basis: 'NIST Standard Reference Database 144: Thermophysical Properties of Pure Vanadium at 300 K'
     thermalConductivity:
       value: 30.7
       min: 7.0
       max: 430
       unit: W/(m·K)
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (1990), Table ''Thermal and Electrical
-        Properties of Pure Metals'' lists vanadium thermal conductivity as 30.7 W/(m·K)
-        at 300K'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Table ''Thermal and Electrical Properties of Pure Metals'' lists vanadium thermal conductivity as 30.7 W/(m·K) at 300K'
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -104,47 +86,31 @@ materialProperties:
       min: 0.06
       max: 174
       unit: mm²/s
-      research_basis: 'Touloukian, Y.S., et al. Thermophysical Properties of Matter
-        - Volume 10: Thermal Diffusivity. IFI/Plenum, New York, 1973. Page 176, for
-        high-purity vanadium (99.9%) at 300K.'
+      research_basis: 'Touloukian, Y.S., et al. Thermophysical Properties of Matter - Volume 10: Thermal Diffusivity. IFI/Plenum, New York, 1973. Page 176, for high-purity vanadium (99.9%) at 300K.'
     thermalExpansion:
       value: 8.3
       min: 0.5
       max: 33
       unit: 10^-6/K
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (1990), Table ''Physical Properties of
-        Pure Metals'' lists vanadium coefficient of thermal expansion as 8.3 × 10^-6/°C
-        at 20°C'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Table ''Physical Properties of Pure Metals'' lists vanadium coefficient of thermal expansion as 8.3 × 10^-6/°C at 20°C'
     compressiveStrength:
       value: 485.0
       min: 50
       max: 2000
       unit: MPa
-      research_basis: The compressive strength of pure, annealed vanadium is approximately
-        485 MPa. This value is for high-purity (99.8%) material at room temperature.
-        The compressive strength is significantly lower than its tensile strength
-        due to the body-centered cubic structure of the metal, which is prone to yielding
-        under compression.
+      research_basis: The compressive strength of pure, annealed vanadium is approximately 485 MPa. This value is for high-purity (99.8%) material at room temperature. The compressive strength is significantly lower than its tensile strength due to the body-centered cubic structure of the metal, which is prone to yielding under compression.
     corrosionResistance:
       value: 4.0
       min: 1
       max: 10
       unit: rating
-      research_basis: Vanadium has moderate corrosion resistance due to a protective
-        oxide film that forms in air, but it is susceptible to attack in oxidizing
-        acids, halogens, and alkaline solutions. It shows good resistance to neutral
-        chloride solutions and some organic acids, but overall performance is limited
-        compared to more corrosion-resistant metals like titanium or zirconium, placing
-        it in the lower-mid range of the scale.
+      research_basis: Vanadium has moderate corrosion resistance due to a protective oxide film that forms in air, but it is susceptible to attack in oxidizing acids, halogens, and alkaline solutions. It shows good resistance to neutral chloride solutions and some organic acids, but overall performance is limited compared to more corrosion-resistant metals like titanium or zirconium, placing it in the lower-mid range of the scale.
     density:
       value: 6.11
       min: 0.53
       max: 22.6
       unit: g/cm³
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (1990), Table 1, p. 883; NIST Standard
-        Reference Database 144, ''Crystal Data'' for vanadium structure parameters'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Table 1, p. 883; NIST Standard Reference Database 144, ''Crystal Data'' for vanadium structure parameters'
     electricalConductivity:
       value: 4890000.0
       min: 0.67
@@ -162,32 +128,19 @@ materialProperties:
       min: 2.5
       max: 1050.0
       unit: MPa
-      research_basis: Flexural strength for pure vanadium is not a commonly reported
-        property, as its mechanical behavior is typically characterized by tensile
-        or yield strength. The provided value is an engineering estimate derived from
-        the relationship between tensile strength and flexural strength for body-centered
-        cubic metals, using a typical tensile strength range of 345-485 MPa for annealed,
-        high-purity vanadium. The lower end of this range is cited as a conservative
-        estimate for flexural strength, as bending failure typically initiates at
-        the tensile surface.
+      research_basis: Flexural strength for pure vanadium is not a commonly reported property, as its mechanical behavior is typically characterized by tensile or yield strength. The provided value is an engineering estimate derived from the relationship between tensile strength and flexural strength for body-centered cubic metals, using a typical tensile strength range of 345-485 MPa for annealed, high-purity vanadium. The lower end of this range is cited as a conservative estimate for flexural strength, as bending failure typically initiates at the tensile surface.
     hardness:
       value: 628.0
       min: 0.5
       max: 3500
       unit: MPa
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
-        Properties of Pure Metals'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical Properties of Pure Metals'
     oxidationResistance:
       value: 660.0
       min: 200
       max: 1200
       unit: °C
-      research_basis: ASM International states that unalloyed vanadium has poor oxidation
-        resistance above about 660°C (1200°F) in air, with the rate of oxidation becoming
-        rapid and catastrophic. This temperature represents the upper limit for significant
-        oxidation initiation, not a safe service temperature. For continuous service,
-        a much lower temperature would be required.
+      research_basis: ASM International states that unalloyed vanadium has poor oxidation resistance above about 660°C (1200°F) in air, with the rate of oxidation becoming rapid and catastrophic. This temperature represents the upper limit for significant oxidation initiation, not a safe service temperature. For continuous service, a much lower temperature would be required.
     porosity:
       value: 0.0001
       min: 0.0
@@ -199,30 +152,22 @@ materialProperties:
       min: 3.0
       max: 3000.0
       unit: MPa
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials, Vanadium and Vanadium Alloys, page 563,
-        Table 1: Typical room-temperature mechanical properties of unalloyed vanadium'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, Vanadium and Vanadium Alloys, page 563, Table 1: Typical room-temperature mechanical properties of unalloyed vanadium'
     youngsModulus:
       value: 127.6
       min: 5
       max: 600
       unit: GPa
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials, Table ''Elastic Constants of Pure Metals''
-        for polycrystalline vanadium at room temperature'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, Table ''Elastic Constants of Pure Metals'' for polycrystalline vanadium at room temperature'
     fractureToughness:
       value: 60.0
       min: 20
       max: 200
       unit: MPa·√m
-      research_basis: The provided value of 60 MPa·√m is a well-established reference
-        for commercially pure vanadium at room temperature, as documented in the authoritative
-        ASM Handbook. This value is consistent with the material's body-centered cubic
-        structure and its known mechanical behavior.
+      research_basis: The provided value of 60 MPa·√m is a well-established reference for commercially pure vanadium at room temperature, as documented in the authoritative ASM Handbook. This value is consistent with the material's body-centered cubic structure and its known mechanical behavior.
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
     ablationThreshold:
       value: 0.45
       min: 2.0
@@ -240,9 +185,7 @@ materialProperties:
       min: 0.02
       max: 100
       unit: '%'
-      research_basis: NIST Atomic Spectra Database - Reflectance measurements for
-        pure vanadium at 1064 nm wavelength, Room temperature (298 K), Polycrystalline
-        surface with native oxide layer
+      research_basis: NIST Atomic Spectra Database - Reflectance measurements for pure vanadium at 1064 nm wavelength, Room temperature (298 K), Polycrystalline surface with native oxide layer
     laserDamageThreshold:
       value: 0.45
       min: 0.1
@@ -254,8 +197,7 @@ materialProperties:
       min: 5
       max: 99.9
       unit: '%'
-      research_basis: Palik, E.D. (1998). Handbook of Optical Constants of Solids,
-        Vol. 2. Academic Press, pp. 467-478. Data for vanadium at 1064 nm wavelength.
+      research_basis: Palik, E.D. (1998). Handbook of Optical Constants of Solids, Vol. 2. Academic Press, pp. 467-478. Data for vanadium at 1064 nm wavelength.
     reflectivity:
       value: 0.58
       min: 85
@@ -310,8 +252,7 @@ machineSettings:
     min: 80
     max: 120
     unit: W
-    description: Optimal average power for Vanadium oxide removal without substrate
-      damage
+    description: Optimal average power for Vanadium oxide removal without substrate damage
   pulseWidth:
     value: 10
     min: 5
@@ -380,8 +321,7 @@ preservedData:
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Pure metals, alloys, and metallic compounds including steel, aluminum,
-      precious metals, and industrial alloys for precision cleaning
+    description: Pure metals, alloys, and metallic compounds including steel, aluminum, precious metals, and industrial alloys for precision cleaning
     properties_count: 0
     category_ranges:
       density:
@@ -402,8 +342,7 @@ preservedData:
         unit: '%'
         source: Handbook of Optical Constants of Solids (Palik, 1998)
         confidence: 85
-        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with
-          surface condition'
+        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with surface condition'
         last_updated: '2025-10-15T14:19:43.867188'
       specificHeat:
         max: 2000
@@ -468,8 +407,7 @@ preservedData:
         unit: '%'
         source: Handbook of Optical Constants (Palik)
         confidence: 85
-        notes: At 1064nm for polished metals (532nm 70-95%, 355nm 55-85%, 10640nm
-          95-99%)
+        notes: At 1064nm for polished metals (532nm 70-95%, 355nm 55-85%, 10640nm 95-99%)
         measurement_context: 1064nm wavelength (most common Nd:YAG)
         last_updated: '2025-10-17T00:00:00.000000'
       oxidationResistance:
@@ -546,8 +484,7 @@ preservedData:
         unit: MS/m
         source: Materials Handbook (ASM International)
         confidence: 90
-        notes: Bismuth 0.77 MS/m, Aluminum 37.7 MS/m, Copper 59.6 MS/m, Silver 63.0
-          MS/m
+        notes: Bismuth 0.77 MS/m, Aluminum 37.7 MS/m, Copper 59.6 MS/m, Silver 63.0 MS/m
         measurement_context: Room temperature (20°C), pure elements
         last_updated: '2025-10-17T00:00:00.000000'
       meltingPoint:
@@ -575,8 +512,7 @@ preservedData:
         source: Materials Science and Engineering (Callister)
         confidence: 75
         notes: Cast iron ~50-100°C, Steel ~150-250°C, Nickel alloys ~300-400°C
-        measurement_context: Resistance to thermal stress cracking during rapid temperature
-          changes
+        measurement_context: Resistance to thermal stress cracking during rapid temperature changes
         last_updated: '2025-10-17T00:00:00.000000'
       absorptivity:
         min: 2.0
@@ -584,8 +520,7 @@ preservedData:
         unit: '%'
         source: Laser Material Processing (Steen & Mazumder)
         confidence: 85
-        notes: Polished metals 2-10%, Oxidized surfaces 30-65%, wavelength and temperature
-          dependent
+        notes: Polished metals 2-10%, Oxidized surfaces 30-65%, wavelength and temperature dependent
         measurement_context: Near-IR wavelengths (1064nm Nd:YAG), room temperature
         last_updated: '2025-10-17T00:00:00.000000'
       porosity:
@@ -595,8 +530,7 @@ preservedData:
         source: ASM Metals Handbook - Powder Metallurgy
         confidence: 90
         notes: Wrought metals 0-0.1%, Cast metals 0.5-5%, Sintered metals 2-15%
-        measurement_context: Volumetric porosity, varies significantly by manufacturing
-          process
+        measurement_context: Volumetric porosity, varies significantly by manufacturing process
         last_updated: '2025-10-17T00:00:00.000000'
       thermalDestructionPoint:
         min: 873
@@ -693,14 +627,12 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T21:34:13.739102'
-      source: 'ASM International, "Properties and Selection: Nonferrous Alloys and
-        Special-Purpose Materials", Vol. 2, ASM Handbook (1990), p. 883.'
+      source: 'ASM International, "Properties and Selection: Nonferrous Alloys and Special-Purpose Materials", Vol. 2, ASM Handbook (1990), p. 883.'
     corrosionResistance:
       confidence: 0.87
       ai_verified: true
       research_date: '2025-10-15T20:38:51.978041'
-      source: 'ASM Handbook, Volume 13B: Corrosion: Materials (2010), "Corrosion of
-        Vanadium and Vanadium Alloys"'
+      source: 'ASM Handbook, Volume 13B: Corrosion: Materials (2010), "Corrosion of Vanadium and Vanadium Alloys"'
     density:
       confidence: 0.98
       ai_verified: true
@@ -720,8 +652,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T21:04:22.901374'
-      source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys
-        and Special-Purpose Materials, "Vanadium and Vanadium Alloys"'
+      source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, "Vanadium and Vanadium Alloys"'
     hardness:
       confidence: 0.95
       ai_verified: true
@@ -733,8 +664,7 @@ preservedData:
       confidence: 0.9
       ai_verified: true
       research_date: '2025-10-15T20:51:27.732462'
-      source: Davis, J.R. (Ed.). (1998). Metals Handbook Desk Edition (2nd ed.). ASM
-        International. pp. 392-395.
+      source: Davis, J.R. (Ed.). (1998). Metals Handbook Desk Edition (2nd ed.). ASM International. pp. 392-395.
     porosity:
       confidence: 0.95
       research_date: '2025-10-17T19:07:34.187494'
@@ -755,8 +685,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:25:24.878505'
-      source: 'ASM International, "Properties and Selection: Nonferrous Alloys and
-        Special-Purpose Materials," Vol. 2, ASM Handbook (1990), p. 857.'
+      source: 'ASM International, "Properties and Selection: Nonferrous Alloys and Special-Purpose Materials," Vol. 2, ASM Handbook (1990), p. 857.'
     surfaceRoughness:
       confidence: 0.92
       research_date: '2025-10-17T20:12:40.457024'

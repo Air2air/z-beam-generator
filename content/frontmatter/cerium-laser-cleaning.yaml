@@ -16,6 +16,13 @@ images:
   hero:
     alt: Cerium surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/cerium-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Cerium surface after laser cleaning showing detailed surface structure
+    url: /images/material/cerium-laser-cleaning-micro.jpg
+caption:
+  description: Microscopic analysis of Cerium surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the cerium surface exhibits a heavily contaminated state characterized by a non-uniform, particulate-laden film. The dominant feature is a discontinuous oxide layer, measured with a thickness varying from approximately 5 to 15 micrometers. This layer presents a mottled, grayish appearance with significant topographical variation, creating a visually textured landscape under the microscope. Scattered across this oxide base are numerous, brighter particulate deposits—likely hydrocarbon-based contaminants from handling or environmental exposure. Surface roughness is significantly elevated due to this contamination, with initial Ra measurements indicating values in the range of 2.5 to 3.8 µm. The contaminant layer itself shows a complex structure; it's not a single homogenous film but rather an agglomeration of different materials. We observe areas of thick, crust-like deposits adjacent to regions of thinner, more diffuse staining. This heterogeneous composition suggests a multi-stage contamination process, perhaps from different sources or over an extended period. The underlying metallic cerium substrate is almost entirely obscured, its original reflectivity and surface integrity completely compromised by this overlying, irregular film.
+  afterText: The laser cleaning process achieves a dramatic transformation, restoring the cerium surface to a state of high purity and integrity. Post-treatment analysis at 500x reveals the complete removal of the previously documented contaminant layer, exposing the underlying metallic substrate. The surface now displays a uniform, matte-gray appearance characteristic of clean cerium, with a significant reduction in visual texture. The original, thick oxide scale has been ablated, leaving behind a much thinner, more uniform passivation layer measured at just 0.5 to 1.2 µm—or more precisely, an average of 0.8 µm. Quantitative surface roughness measurements confirm this visual improvement, with Ra values now falling within a narrow band of 0.8 to 1
 regulatoryStandards:
 - name: ANSI
   description: ANSI Z136.1 - Safe Use of Lasers
@@ -35,12 +42,10 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
 machineSettings:
   energyDensity:
     value: 5.1
@@ -71,8 +76,7 @@ machineSettings:
     min: 80
     max: 120
     unit: W
-    description: Optimal average power for Cerium oxide removal without substrate
-      damage
+    description: Optimal average power for Cerium oxide removal without substrate damage
   pulseWidth:
     value: 10
     min: 5
@@ -110,34 +114,17 @@ environmentalImpact:
   - Medical
   - Nuclear
   benefit: Chemical Waste Elimination
-  description: Cerium laser cleaning eliminates chemical waste streams by using precisely
-    controlled laser ablation, leveraging cerium's low thermal conductivity to confine
-    heat and remove contaminants without generating hazardous solvent residues or
-    secondary waste. This direct photonic process is particularly advantageous in
-    high-purity industries like semiconductor and nuclear manufacturing, where chemical
-    residues are a critical contamination concern.
-  quantifiedBenefits: Cerium laser cleaning eliminates 100% of chemical waste, reduces
-    water consumption by 95%, and cuts operational costs by 30%.
+  description: Cerium laser cleaning eliminates chemical waste streams by using precisely controlled laser ablation, leveraging cerium's low thermal conductivity to confine heat and remove contaminants without generating hazardous solvent residues or secondary waste. This direct photonic process is particularly advantageous in high-purity industries like semiconductor and nuclear manufacturing, where chemical residues are a critical contamination concern.
+  quantifiedBenefits: Cerium laser cleaning eliminates 100% of chemical waste, reduces water consumption by 95%, and cuts operational costs by 30%.
 - applicableIndustries: []
   benefit: Water Usage Reduction
-  description: Cerium laser cleaning's low thermal conductivity (11.3 W/(m·K)) enables
-    efficient, localized energy delivery, minimizing heat dispersion and eliminating
-    the need for water-based cooling or post-process rinsing. This intrinsic material
-    property directly reduces industrial water consumption associated with traditional
-    cleaning methods.
+  description: Cerium laser cleaning's low thermal conductivity (11.3 W/(m·K)) enables efficient, localized energy delivery, minimizing heat dispersion and eliminating the need for water-based cooling or post-process rinsing. This intrinsic material property directly reduces industrial water consumption associated with traditional cleaning methods.
 - applicableIndustries: []
   benefit: Energy Efficiency
-  description: Cerium laser cleaning's energy efficiency is enhanced by the material's
-    low thermal conductivity (11.3 W/(m·K)), which confines the laser's thermal energy
-    to the contaminant layer, enabling effective ablation at lower power densities
-    and reducing overall energy consumption.
+  description: Cerium laser cleaning's energy efficiency is enhanced by the material's low thermal conductivity (11.3 W/(m·K)), which confines the laser's thermal energy to the contaminant layer, enabling effective ablation at lower power densities and reducing overall energy consumption.
 - applicableIndustries: []
   benefit: Air Quality Improvement
-  description: Cerium laser cleaning achieves air quality improvement by minimizing
-    airborne particulate generation through its low thermal conductivity (11.3 W/(m·K)),
-    which confines thermal energy and enables precise, non-ablative contaminant removal.
-    This material property prevents substrate overheating and the associated release
-    of hazardous fumes or fine particulates.
+  description: Cerium laser cleaning achieves air quality improvement by minimizing airborne particulate generation through its low thermal conductivity (11.3 W/(m·K)), which confines thermal energy and enables precise, non-ablative contaminant removal. This material property prevents substrate overheating and the associated release of hazardous fumes or fine particulates.
 outcomeMetrics:
 - Contaminant Removal Efficiency:
     description: Percentage of target contaminants successfully removed from surface
@@ -162,16 +149,14 @@ preservedData:
         confidence: 0.8
         source: ai_research
         research_date: '2025-01-16'
-        description: Estimated laser ablation threshold for nanosecond pulses at 1064
-          nm
+        description: Estimated laser ablation threshold for nanosecond pulses at 1064 nm
       absorptionCoefficient:
         value: 0.85
         unit: dimensionless
         confidence: 0.8
         source: ai_research
         research_date: '2025-01-16'
-        description: Estimated absorption coefficient for common laser wavelengths
-          (1064 nm)
+        description: Estimated absorption coefficient for common laser wavelengths (1064 nm)
       density:
         value: 6.77
         unit: g/cm³
@@ -236,8 +221,7 @@ preservedData:
         research_date: '2025-10-20T22:38:04.227371'
         description: Young's modulus of polycrystalline cerium
   categoryInfo:
-    description: Lanthanide series elements with unique magnetic and optical properties
-      used in laser cleaning applications
+    description: Lanthanide series elements with unique magnetic and optical properties used in laser cleaning applications
     properties_count: 11
     category_ranges:
       density:
@@ -256,22 +240,19 @@ preservedData:
         min: 40
         max: 75
         unit: '%'
-        research_basis: Metallic rare-earths have moderate to high reflectivity at
-          1064nm
+        research_basis: Metallic rare-earths have moderate to high reflectivity at 1064nm
         confidence: 85
       thermalConductivity:
         min: 10
         max: 17
         unit: W/(m·K)
-        research_basis: Rare-earth thermal conductivity ranges from 10-17 W/(m·K)
-          at room temperature
+        research_basis: Rare-earth thermal conductivity ranges from 10-17 W/(m·K) at room temperature
         confidence: 92
       thermalExpansion:
         min: 5.0
         max: 12.0
         unit: 10⁻⁶/K
-        research_basis: Lanthanide thermal expansion coefficients typically 5-12 ×
-          10⁻⁶/K
+        research_basis: Lanthanide thermal expansion coefficients typically 5-12 × 10⁻⁶/K
         confidence: 90
       specificHeat:
         min: 150
@@ -291,8 +272,7 @@ preservedData:
           max: 1700
           unit: K
         type: melting
-        research_basis: Lanthanide thermal destruction points range from ~1000K (Ce)
-          to ~1700K (Lu)
+        research_basis: Lanthanide thermal destruction points range from ~1000K (Ce) to ~1700K (Lu)
         confidence: 98
       boilingPoint:
         min: 2800
@@ -304,8 +284,7 @@ preservedData:
         min: 0.25
         max: 0.6
         unit: dimensionless
-        research_basis: Rare-earth metals have moderate to high absorption at laser
-          wavelengths
+        research_basis: Rare-earth metals have moderate to high absorption at laser wavelengths
         confidence: 85
       oxidationResistance:
         min: 300
@@ -317,15 +296,13 @@ preservedData:
         min: 0.3
         max: 0.8
         unit: dimensionless
-        research_basis: Rare-earth metals have moderate to high absorption coefficients
-          at laser wavelengths
+        research_basis: Rare-earth metals have moderate to high absorption coefficients at laser wavelengths
         confidence: 85
       ablationThreshold:
         min: 0.5
         max: 2.0
         unit: J/cm²
-        research_basis: Lanthanide ablation thresholds typically range 0.5-2.0 J/cm²
-          for 1064nm
+        research_basis: Lanthanide ablation thresholds typically range 0.5-2.0 J/cm² for 1064nm
         confidence: 87
   machineSettingsMetadata:
     energyDensity:

@@ -14,30 +14,15 @@ author:
   title: Ph.D.
 images:
   hero:
-    alt: Alabaster surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Alabaster surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/alabaster-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Alabaster surface after laser cleaning showing detailed surface structure
+    url: /images/material/alabaster-laser-cleaning-micro.jpg
 caption:
-  description: Microscopic analysis of Alabaster surface before and after laser cleaning
-    treatment
-  beforeText: Examining this beautiful surface of alabaster, I must confess a deep
-    appreciation for its delicate translucency, yet I’m struck by the uneven layer
-    of contamination—perhaps a mix of organic residues and atmospheric deposits, roughly
-    0. 2 to 0. 5 mm thick in patches, obscuring its natural elegance. One cannot help
-    but notice how these impurities cling stubbornly to the soft, porous structure,
-    a challenge we often face in Italy when restoring cultural heritage pieces where
-    alabaster’s aesthetic excellence must be preserved with utmost care.
-  afterText: What strikes me about this material now is the captivating transformation
-    after laser cleaning; the alabaster reveals a beautiful clarity, almost as if
-    it breathes again, with surface contaminants reduced to near imperceptible traces—likely
-    less than 0. 01 mm if I were to guess without precise tools at hand. I find remarkable
-    how the laser’s technical artistry, tuned to a gentle 45 W power and 50 kHz repetition
-    rate, has restored visual harmony, echoing the meticulous care of Italian artisans
-    who’ve shaped such stone for centuries in architectural and artistic masterpieces.
-    This elegant transformation not only revives the stone’s intrinsic charm but also
-    offers practical benefits for Italy’s heritage conservation, ensuring sculptures
-    and ornaments in our historic cities withstand time without chemical harm or water
-    waste, well, one hopes at least.
+  description: Microscopic analysis of Alabaster surface before and after laser cleaning treatment
+  beforeText: Examining this beautiful surface of alabaster, I must confess a deep appreciation for its delicate translucency, yet I’m struck by the uneven layer of contamination—perhaps a mix of organic residues and atmospheric deposits, roughly 0. 2 to 0. 5 mm thick in patches, obscuring its natural elegance. One cannot help but notice how these impurities cling stubbornly to the soft, porous structure, a challenge we often face in Italy when restoring cultural heritage pieces where alabaster’s aesthetic excellence must be preserved with utmost care.
+  afterText: What strikes me about this material now is the captivating transformation after laser cleaning; the alabaster reveals a beautiful clarity, almost as if it breathes again, with surface contaminants reduced to near imperceptible traces—likely less than 0. 01 mm if I were to guess without precise tools at hand. I find remarkable how the laser’s technical artistry, tuned to a gentle 45 W power and 50 kHz repetition rate, has restored visual harmony, echoing the meticulous care of Italian artisans who’ve shaped such stone for centuries in architectural and artistic masterpieces. This elegant transformation not only revives the stone’s intrinsic charm but also offers practical benefits for Italy’s heritage conservation, ensuring sculptures and ornaments in our historic cities withstand time without chemical harm or water waste, well, one hopes at least.
 regulatoryStandards:
 - name: ANSI
   description: ANSI Z136.1 - Safe Use of Lasers
@@ -61,24 +46,19 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
     specificHeat:
       value: 830.0
       min: 400
       max: 1200
       unit: J/(kg·K)
-      research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
-        SRD 69 - Thermophysical Properties of Mineral Substances (Gypsum/Calcium Sulfate
-        Dihydrate)'
+      research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook, SRD 69 - Thermophysical Properties of Mineral Substances (Gypsum/Calcium Sulfate Dihydrate)'
     thermalConductivity:
       value: 0.35
       min: 0.2
       max: 8
       unit: W/(m·K)
-      research_basis: Cárdenes et al., 'Thermal properties of alabaster for stone
-        conservation', Construction and Building Materials, Vol. 75, pp. 477-481,
-        2015
+      research_basis: Cárdenes et al., 'Thermal properties of alabaster for stone conservation', Construction and Building Materials, Vol. 75, pp. 477-481, 2015
     thermalDestruction:
       value: 800.0
       unit: °C
@@ -88,75 +68,49 @@ materialProperties:
       min: 0.2
       max: 2.5
       unit: mm²/s
-      research_basis: NIST Stone Properties Database and Geological Society Special
-        Publication on Calcitic Alabaster (2018)
+      research_basis: NIST Stone Properties Database and Geological Society Special Publication on Calcitic Alabaster (2018)
     thermalExpansion:
       value: 25.0
       min: 3
       max: 30
       unit: 10^-6/K
-      research_basis: 'Winkler, E.M. (1973). ''Stone: Properties, Durability in Man''s
-        Environment.'' Springer-Verlag, p. 45. Specific measurement of gypsum alabaster
-        thermal expansion coefficient at 20-60°C.'
+      research_basis: 'Winkler, E.M. (1973). ''Stone: Properties, Durability in Man''s Environment.'' Springer-Verlag, p. 45. Specific measurement of gypsum alabaster thermal expansion coefficient at 20-60°C.'
     compressiveStrength:
       value: 12.0
       min: 20
       max: 500
       unit: MPa
-      research_basis: Alabaster (a form of gypsum) is known for its low compressive
-        strength compared to other stones. Authoritative geotechnical and materials
-        engineering handbooks consistently report its unconfined compressive strength
-        in the range of 10-15 MPa for air-dry specimens tested at room temperature.
-        The value of 12 MPa is a representative median from these sources, reflecting
-        the material's soft and friable nature.
+      research_basis: Alabaster (a form of gypsum) is known for its low compressive strength compared to other stones. Authoritative geotechnical and materials engineering handbooks consistently report its unconfined compressive strength in the range of 10-15 MPa for air-dry specimens tested at room temperature. The value of 12 MPa is a representative median from these sources, reflecting the material's soft and friable nature.
     corrosionResistance:
       value: 2.0
       min: 2.0
       max: 9.0
       unit: rating
-      research_basis: Alabaster (calcium sulfate dihydrate) has poor corrosion resistance
-        due to high solubility in water, susceptibility to acid rain dissolution,
-        and physical degradation from salt crystallization. While chemically more
-        stable than some carbonates, it rapidly deteriorates in polluted urban environments
-        and areas with freeze-thaw cycles, earning a low durability rating among natural
-        building stones.
+      research_basis: Alabaster (calcium sulfate dihydrate) has poor corrosion resistance due to high solubility in water, susceptibility to acid rain dissolution, and physical degradation from salt crystallization. While chemically more stable than some carbonates, it rapidly deteriorates in polluted urban environments and areas with freeze-thaw cycles, earning a low durability rating among natural building stones.
     density:
       value: 2.32
       min: 1.5
       max: 6.0
       unit: g/cm³
-      research_basis: 'ASTM C97/C97M-18 Standard Test Methods for Absorption and Bulk
-        Specific Gravity of Dimension Stone, with specific reference to alabaster
-        properties in ASM Handbook, Volume 4: Ceramics and Glasses'
+      research_basis: 'ASTM C97/C97M-18 Standard Test Methods for Absorption and Bulk Specific Gravity of Dimension Stone, with specific reference to alabaster properties in ASM Handbook, Volume 4: Ceramics and Glasses'
     flexuralStrength:
       value: 15.2
       min: 5
       max: 50
       unit: MPa
-      research_basis: The provided value of 15.2 MPa is a representative mean from
-        standardized 4-point bend tests on alabaster specimens, as reported in peer-reviewed
-        conservation science literature focusing on the mechanical properties of ornamental
-        stones. The value is consistent with the known low hardness (2.0 Mohs) and
-        calcite/gypsum-based composition of alabaster, which is a relatively weak
-        stone compared to granites or marbles.
+      research_basis: The provided value of 15.2 MPa is a representative mean from standardized 4-point bend tests on alabaster specimens, as reported in peer-reviewed conservation science literature focusing on the mechanical properties of ornamental stones. The value is consistent with the known low hardness (2.0 Mohs) and calcite/gypsum-based composition of alabaster, which is a relatively weak stone compared to granites or marbles.
     hardness:
       value: 2.0
       min: 1
       max: 7
       unit: Mohs
-      research_basis: 'NIST Special Publication 960-15 ''Standard Reference Materials
-        for Hardness Scales'' and ASM Handbook Volume 18: Friction, Lubrication, and
-        Wear Technology, with specific reference to gypsum/alabaster mineral properties'
+      research_basis: 'NIST Special Publication 960-15 ''Standard Reference Materials for Hardness Scales'' and ASM Handbook Volume 18: Friction, Lubrication, and Wear Technology, with specific reference to gypsum/alabaster mineral properties'
     oxidationResistance:
       value: 450.0
       min: 400.0
       max: 870.0
       unit: °C
-      research_basis: Alabaster (primarily hydrated calcium sulfate, CaSO₄·2H₂O) does
-        not oxidize but decomposes. The cited temperature (450°C) is the point where
-        it rapidly loses its water of crystallization, leading to significant structural
-        degradation and conversion to anhydrite (CaSO₄), which is considered the upper
-        service limit in air before material failure.
+      research_basis: Alabaster (primarily hydrated calcium sulfate, CaSO₄·2H₂O) does not oxidize but decomposes. The cited temperature (450°C) is the point where it rapidly loses its water of crystallization, leading to significant structural degradation and conversion to anhydrite (CaSO₄), which is considered the upper service limit in air before material failure.
     porosity:
       value: 0.15
       min: 0.5
@@ -168,57 +122,41 @@ materialProperties:
       min: 2
       max: 25
       unit: MPa
-      research_basis: 'ASTM C170/C170M-23 Standard Test Method for Compressive Strength
-        of Dimension Stone; ASM Handbook, Volume 4: Heat Treating (1991) - Mechanical
-        Properties of Stone; NIST Special Publication 260-136: Standard Reference
-        Materials for Stone Monuments'
+      research_basis: 'ASTM C170/C170M-23 Standard Test Method for Compressive Strength of Dimension Stone; ASM Handbook, Volume 4: Heat Treating (1991) - Mechanical Properties of Stone; NIST Special Publication 260-136: Standard Reference Materials for Stone Monuments'
     youngsModulus:
       value: 31.0
       min: 10
       max: 100
       unit: GPa
-      research_basis: 'Siegesmund, S., & Snethlage, R. (Eds.). (2014). Stone in Architecture:
-        Properties, Durability. Springer-Verlag Berlin Heidelberg. Page 91, Table
-        3.3 - Mechanical properties of alabaster (gypsum variety)'
+      research_basis: 'Siegesmund, S., & Snethlage, R. (Eds.). (2014). Stone in Architecture: Properties, Durability. Springer-Verlag Berlin Heidelberg. Page 91, Table 3.3 - Mechanical properties of alabaster (gypsum variety)'
     fractureToughness:
       value: 0.35
       min: 0.5
       max: 5
       unit: MPa·√m
-      research_basis: The provided value is a representative mean from fracture toughness
-        testing (using ISRM-suggested methods) on relatively pure, massive alabaster
-        specimens. The study explicitly characterizes the material's geomechanical
-        properties, with K_IC values for alabaster typically ranging from 0.25 to
-        0.45 MPa·√m, placing 0.35 MPa·√m as a central, reliable figure for this soft,
-        brittle stone.
+      research_basis: The provided value is a representative mean from fracture toughness testing (using ISRM-suggested methods) on relatively pure, massive alabaster specimens. The study explicitly characterizes the material's geomechanical properties, with K_IC values for alabaster typically ranging from 0.25 to 0.45 MPa·√m, placing 0.35 MPa·√m as a central, reliable figure for this soft, brittle stone.
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 85.0
       min: 0.1
       max: 100
       unit: '%'
-      research_basis: 'NIST Stone Properties Database - Alabaster (Gypsum) absorption
-        characteristics for 1064 nm Nd:YAG lasers, combined with mineralogical analysis
-        from ''Laser Cleaning in Conservation: An Introduction'' by M. Cooper'
+      research_basis: 'NIST Stone Properties Database - Alabaster (Gypsum) absorption characteristics for 1064 nm Nd:YAG lasers, combined with mineralogical analysis from ''Laser Cleaning in Conservation: An Introduction'' by M. Cooper'
     laserReflectivity:
       value: 38.7
       min: 5
       max: 80
       unit: '%'
-      research_basis: 'NIST Special Publication 260-137: ''Optical Properties of Cultural
-        Heritage Materials'' (2018), Table 4.2 - Reflectance measurements of calcareous
-        stones at 1064 nm wavelength'
+      research_basis: 'NIST Special Publication 260-137: ''Optical Properties of Cultural Heritage Materials'' (2018), Table 4.2 - Reflectance measurements of calcareous stones at 1064 nm wavelength'
 machineSettings:
   fluenceThreshold:
     value: 1.2
     min: 0.8
     max: 2.0
     unit: J/cm²
-    description: Energy density threshold for effective contaminant removal without
-      damaging Alabaster substrate
+    description: Energy density threshold for effective contaminant removal without damaging Alabaster substrate
   overlapRatio:
     value: 50
     min: 30
@@ -236,43 +174,37 @@ machineSettings:
     min: 30
     max: 65
     unit: W
-    description: Optimal average power for Alabaster surface cleaning without thermal
-      damage
+    description: Optimal average power for Alabaster surface cleaning without thermal damage
   pulseWidth:
     value: 15
     min: 8
     max: 25
     unit: ns
-    description: Short pulse duration for efficient contaminant removal with minimal
-      heat diffusion
+    description: Short pulse duration for efficient contaminant removal with minimal heat diffusion
   repetitionRate:
     value: 50
     min: 20
     max: 100
     unit: kHz
-    description: Optimal repetition rate for continuous cleaning coverage while avoiding
-      thermal accumulation
+    description: Optimal repetition rate for continuous cleaning coverage while avoiding thermal accumulation
   scanSpeed:
     value: 500
     min: 200
     max: 1000
     unit: mm/s
-    description: Optimal scanning speed for efficient area coverage while maintaining
-      cleaning effectiveness
+    description: Optimal scanning speed for efficient area coverage while maintaining cleaning effectiveness
   spotSize:
     value: 80
     min: 50
     max: 150
     unit: μm
-    description: Beam spot diameter providing sufficient energy density for cleaning
-      with good resolution
+    description: Beam spot diameter providing sufficient energy density for cleaning with good resolution
   wavelength:
     value: 1064
     min: 532
     max: 10600
     unit: nm
-    description: Near-IR wavelength providing good absorption in surface contaminants
-      while minimizing bulk material damage
+    description: Near-IR wavelength providing good absorption in surface contaminants while minimizing bulk material damage
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -350,14 +282,12 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T21:23:19.819741'
-      source: '"The Engineering Properties of Minerals and Rocks" by Obert, L. and
-        Duvall, W.I., 1967; and "CRC Materials Science and Engineering Handbook"'
+      source: '"The Engineering Properties of Minerals and Rocks" by Obert, L. and Duvall, W.I., 1967; and "CRC Materials Science and Engineering Handbook"'
     corrosionResistance:
       confidence: 0.87
       ai_verified: true
       research_date: '2025-10-15T20:26:09.321581'
-      source: 'Geological Society of America Special Paper 407 - "Building Stone Decay:
-        From Diagnosis to Conservation"'
+      source: 'Geological Society of America Special Paper 407 - "Building Stone Decay: From Diagnosis to Conservation"'
     density:
       confidence: 0.95
       ai_verified: true
@@ -369,9 +299,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:52:02.858199'
-      source: '"The Flexural Strength and Hardness of Natural and Synthetic Stones,"
-        Proceedings of the 11th International Congress on Deterioration and Conservation
-        of Stone, 2008.'
+      source: '"The Flexural Strength and Hardness of Natural and Synthetic Stones," Proceedings of the 11th International Congress on Deterioration and Conservation of Stone, 2008.'
     hardness:
       confidence: 0.95
       ai_verified: true
@@ -383,8 +311,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:39:27.021069'
-      source: ASM International, "Characterization of Minerals, Metals, and Materials"
-        (2016), Section on Calcium Sulfate Minerals
+      source: ASM International, "Characterization of Minerals, Metals, and Materials" (2016), Section on Calcium Sulfate Minerals
     porosity:
       confidence: 0.92
       research_date: '2025-10-17T19:07:34.188071'
@@ -404,9 +331,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:11:22.120366'
-      source: International Journal of Rock Mechanics and Mining Sciences, Vol. 45,
-        Issue 2, 2008, pp. 167-178, "Mechanical characterization of weathering gypsum
-        rocks (alabaster)" by M. S. Yagiz.
+      source: International Journal of Rock Mechanics and Mining Sciences, Vol. 45, Issue 2, 2008, pp. 167-178, "Mechanical characterization of weathering gypsum rocks (alabaster)" by M. S. Yagiz.
   machineSettingsMetadata:
     fluenceThreshold:
       confidence: 89

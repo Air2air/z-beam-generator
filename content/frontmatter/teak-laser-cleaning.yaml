@@ -16,6 +16,9 @@ images:
   hero:
     alt: Teak surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/teak-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Teak surface after laser cleaning showing detailed surface structure
+    url: /images/material/teak-laser-cleaning-micro.jpg
 regulatoryStandards:
 - name: ANSI
   description: ANSI Z136.1 - Safe Use of Lasers
@@ -39,24 +42,19 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
     specificHeat:
       value: 1600.0
       min: 800
       max: 2500
       unit: J/(kg·K)
-      research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest
-        Service, Forest Products Laboratory. 2010. Chapter 4: Moisture Relations and
-        Physical Properties, Table 4-5.'
+      research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest Service, Forest Products Laboratory. 2010. Chapter 4: Moisture Relations and Physical Properties, Table 4-5.'
     thermalConductivity:
       value: 0.17
       min: 0.04
       max: 0.4
       unit: W/(m·K)
-      research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest
-        Service, Forest Products Laboratory. 2010. Chapter 4: Moisture and Thermal
-        Properties of Wood, Table 4-5.'
+      research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest Service, Forest Products Laboratory. 2010. Chapter 4: Moisture and Thermal Properties of Wood, Table 4-5.'
     thermalDestruction:
       value: 300.0
       unit: °C
@@ -66,79 +64,49 @@ materialProperties:
       min: 0.0001
       max: 0.4
       unit: mm²/s
-      research_basis: 'Forest Products Laboratory. (2010). Wood Handbook: Wood as
-        an Engineering Material. USDA Forest Service, Chapter 4: Thermal Properties
-        of Wood, Table 4-3. Specific values for Tectona grandis (teak) at 12% moisture
-        content.'
+      research_basis: 'Forest Products Laboratory. (2010). Wood Handbook: Wood as an Engineering Material. USDA Forest Service, Chapter 4: Thermal Properties of Wood, Table 4-3. Specific values for Tectona grandis (teak) at 12% moisture content.'
     thermalExpansion:
       value: 3.8
       min: 3.0
       max: 60
       unit: 10^-6/K
-      research_basis: 'Forest Products Laboratory. (2010). Wood Handbook: Wood as
-        an Engineering Material. USDA Forest Service, Chapter 4: Mechanical Properties
-        of Wood, Table 4-3. Specific data for Tectona grandis (teak) along grain.'
+      research_basis: 'Forest Products Laboratory. (2010). Wood Handbook: Wood as an Engineering Material. USDA Forest Service, Chapter 4: Mechanical Properties of Wood, Table 4-3. Specific data for Tectona grandis (teak) along grain.'
     compressiveStrength:
       value: 53.0
       min: 20
       max: 80
       unit: MPa
-      research_basis: The Wood Database, a widely cited technical reference for wood
-        properties, reports the compressive strength of Teak (Tectona grandis) parallel
-        to the grain as 53 MPa at 12% moisture content. This value is consistent with
-        teak's classification as a high-density hardwood, and the source provides
-        comprehensive mechanical property data derived from standardized testing (typically
-        ASTM D143).
+      research_basis: The Wood Database, a widely cited technical reference for wood properties, reports the compressive strength of Teak (Tectona grandis) parallel to the grain as 53 MPa at 12% moisture content. This value is consistent with teak's classification as a high-density hardwood, and the source provides comprehensive mechanical property data derived from standardized testing (typically ASTM D143).
     corrosionResistance:
       value: 8.0
       min: 2.0
       max: 8.0
       unit: rating
-      research_basis: Teak is renowned for exceptional natural durability and resistance
-        to moisture, decay, fungi, and insects due to high natural oil content and
-        silica. It's classified as very durable and commonly used in marine applications,
-        outdoor furniture, and high-moisture environments where corrosion resistance
-        is critical.
+      research_basis: Teak is renowned for exceptional natural durability and resistance to moisture, decay, fungi, and insects due to high natural oil content and silica. It's classified as very durable and commonly used in marine applications, outdoor furniture, and high-moisture environments where corrosion resistance is critical.
     density:
       value: 0.63
       min: 0.12
       max: 1.5
       unit: g/cm³
-      research_basis: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190),
-        USDA Forest Service, Forest Products Laboratory, Chapter 4: Physical Properties
-        of Wood, Table 4-5: Specific gravity of selected domestic and tropical woods'
+      research_basis: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190), USDA Forest Service, Forest Products Laboratory, Chapter 4: Physical Properties of Wood, Table 4-5: Specific gravity of selected domestic and tropical woods'
     flexuralStrength:
       value: 97.0
       min: 40
       max: 150
       unit: MPa
-      research_basis: The Wood Database, a recognized authority on wood properties,
-        reports the modulus of rupture (MOR) for Teak as 97 MPa. This value represents
-        the flexural strength measured via standard 3-point bend testing, consistent
-        with ASTM D143 standards for small clear specimens of wood. The reported value
-        aligns with the known high density and durability characteristics of Teak
-        wood.
+      research_basis: The Wood Database, a recognized authority on wood properties, reports the modulus of rupture (MOR) for Teak as 97 MPa. This value represents the flexural strength measured via standard 3-point bend testing, consistent with ASTM D143 standards for small clear specimens of wood. The reported value aligns with the known high density and durability characteristics of Teak wood.
     hardness:
       value: 41.0
       min: 1
       max: 5000
       unit: MPa
-      research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest
-        Service, FPL-GTR-190), Chapter 4: Mechanical Properties of Wood, Table 4-3a:
-        Hardness of commercial woods'
+      research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest Service, FPL-GTR-190), Chapter 4: Mechanical Properties of Wood, Table 4-3a: Hardness of commercial woods'
     oxidationResistance:
       value: 204.0
       min: 82.0
       max: 204.0
       unit: °C
-      research_basis: The FPL, a globally recognized authority on wood science, states
-        that the maximum safe long-term service temperature for most wood species,
-        including hardwoods like teak, is 200-220°F (93-104°C) to prevent slow, permanent
-        degradation. For intermittent service, a common upper limit is 300°F (149°C).
-        However, for significant oxidative degradation (charring and chemical decomposition)
-        in air, the established threshold is 400°F (204°C). This is the temperature
-        at which a measurable, self-sustaining loss of mass begins for wood in an
-        oxidative environment.
+      research_basis: The FPL, a globally recognized authority on wood science, states that the maximum safe long-term service temperature for most wood species, including hardwoods like teak, is 200-220°F (93-104°C) to prevent slow, permanent degradation. For intermittent service, a common upper limit is 300°F (149°C). However, for significant oxidative degradation (charring and chemical decomposition) in air, the established threshold is 400°F (204°C). This is the temperature at which a measurable, self-sustaining loss of mass begins for wood in an oxidative environment.
     porosity:
       value: 0.55
       min: 12
@@ -150,8 +118,7 @@ materialProperties:
       min: 20
       max: 200
       unit: MPa
-      research_basis: 'USDA Forest Products Laboratory Wood Handbook (2010), Chapter
-        4: Mechanical Properties of Wood, Table 4-3 specific to Tectona grandis'
+      research_basis: 'USDA Forest Products Laboratory Wood Handbook (2010), Chapter 4: Mechanical Properties of Wood, Table 4-3 specific to Tectona grandis'
     youngsModulus:
       value: 2.5025
       min: 5
@@ -163,31 +130,22 @@ materialProperties:
       min: 0.33
       max: 4.4
       unit: MPa·√m
-      research_basis: The value is derived from the established correlation between
-        wood density and fracture toughness (K_IC ∝ ρ^1.5) for hardwoods. With teak's
-        density of 0.63 g/cm³, this places its fracture toughness in the 3.0-3.2 MPa·√m
-        range, consistent with medium-density hardwoods. Experimental data for various
-        hardwoods of similar density support this range.
+      research_basis: The value is derived from the established correlation between wood density and fracture toughness (K_IC ∝ ρ^1.5) for hardwoods. With teak's density of 0.63 g/cm³, this places its fracture toughness in the 3.0-3.2 MPa·√m range, consistent with medium-density hardwoods. Experimental data for various hardwoods of similar density support this range.
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 32.7
       min: 1
       max: 50
       unit: '%'
-      research_basis: 'NIST Standard Reference Database 69: Optical Properties of
-        Wood Species at 1064 nm Laser Wavelength, supplemented by academic studies
-        on Tectona grandis spectral absorption characteristics'
+      research_basis: 'NIST Standard Reference Database 69: Optical Properties of Wood Species at 1064 nm Laser Wavelength, supplemented by academic studies on Tectona grandis spectral absorption characteristics'
     laserReflectivity:
       value: 42.7
       min: 10
       max: 60
       unit: '%'
-      research_basis: 'NIST Standard Reference Database 120: ''Optical Properties
-        of Wood Species'' (2019), Section 4.3.2 - Teak (Tectona grandis) reflectance
-        measurements at 1064 nm wavelength'
+      research_basis: 'NIST Standard Reference Database 120: ''Optical Properties of Wood Species'' (2019), Section 4.3.2 - Teak (Tectona grandis) reflectance measurements at 1064 nm wavelength'
 machineSettings:
   dwellTime:
     value: 120
@@ -200,8 +158,7 @@ machineSettings:
     min: 1.5
     max: 4.5
     unit: J/cm²
-    description: Fluence threshold for effective contaminant removal without wood
-      damage
+    description: Fluence threshold for effective contaminant removal without wood damage
   overlapRatio:
     value: 40
     min: 30
@@ -288,8 +245,7 @@ preservedData:
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Natural and engineered wood materials including hardwoods, softwoods,
-      plywood, and composite wood products for gentle cleaning applications
+    description: Natural and engineered wood materials including hardwoods, softwoods, plywood, and composite wood products for gentle cleaning applications
     properties_count: 0
     category_ranges:
       density:
@@ -316,8 +272,7 @@ preservedData:
         unit: '%'
         source: Wood Science and Technology Database
         confidence: 70
-        notes: Light woods 40-60%, dark woods 10-25%, highly dependent on species
-          and finish
+        notes: Light woods 40-60%, dark woods 10-25%, highly dependent on species and finish
         last_updated: '2025-10-15T14:19:43.867238'
       specificHeat:
         max: 2500
@@ -333,8 +288,7 @@ preservedData:
         unit: W/(m·K)
         source: Wood Handbook - Wood as an Engineering Material (USDA Forest Service)
         confidence: 80
-        notes: Across grain 0.04-0.2 W/m·K, along grain can be 2-3x higher; moisture
-          content affects values
+        notes: Across grain 0.04-0.2 W/m·K, along grain can be 2-3x higher; moisture content affects values
         last_updated: '2025-10-15T14:19:43.867244'
       thermalDestruction:
         point:
@@ -465,8 +419,7 @@ preservedData:
       confidence: 0.9
       ai_verified: true
       research_date: '2025-10-15T21:03:16.647026'
-      source: Wood Database (www.wood-database.com) - Mechanical Properties table
-        for Teak (Tectona grandis)
+      source: Wood Database (www.wood-database.com) - Mechanical Properties table for Teak (Tectona grandis)
     hardness:
       confidence: 0.95
       ai_verified: true
@@ -478,9 +431,7 @@ preservedData:
       confidence: 0.9
       ai_verified: true
       research_date: '2025-10-15T20:50:18.201884'
-      source: 'Forest Products Laboratory (FPL). Wood Handbook - Wood as an Engineering
-        Material. General Technical Report FPL-GTR-190. Madison, WI: U.S. Department
-        of Agriculture, Forest Service, Forest Products Laboratory. 2010.'
+      source: 'Forest Products Laboratory (FPL). Wood Handbook - Wood as an Engineering Material. General Technical Report FPL-GTR-190. Madison, WI: U.S. Department of Agriculture, Forest Service, Forest Products Laboratory. 2010.'
     porosity:
       confidence: 0.92
       research_date: '2025-10-17T19:08:26.246169'
@@ -497,9 +448,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:23:56.609007'
-      source: 'Gibson, L.J.; Ashby, M.F. "Cellular Solids: Structure and Properties";
-        2nd Ed., Cambridge University Press (1997), with data compiled from various
-        wood species including teak.'
+      source: 'Gibson, L.J.; Ashby, M.F. "Cellular Solids: Structure and Properties"; 2nd Ed., Cambridge University Press (1997), with data compiled from various wood species including teak.'
   machineSettingsMetadata:
     dwellTime:
       confidence: 82

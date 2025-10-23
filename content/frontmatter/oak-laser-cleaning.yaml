@@ -16,6 +16,9 @@ images:
   hero:
     alt: Oak surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/oak-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Oak surface after laser cleaning showing detailed surface structure
+    url: /images/material/oak-laser-cleaning-micro.jpg
 regulatoryStandards:
 - name: ANSI
   description: ANSI Z136.1 - Safe Use of Lasers
@@ -39,23 +42,19 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
     specificHeat:
       value: 2400.0
       min: 800
       max: 2500
       unit: J/(kg·K)
-      research_basis: NIST Wood Database - Specific Heat of Various Hardwoods at 27°C
-        (300K), with Oak (Quercus spp.) measured at 12% moisture content
+      research_basis: NIST Wood Database - Specific Heat of Various Hardwoods at 27°C (300K), with Oak (Quercus spp.) measured at 12% moisture content
     thermalConductivity:
       value: 0.17
       min: 0.04
       max: 0.4
       unit: W/(m·K)
-      research_basis: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190),
-        Chapter 4: Thermal Properties, Table 4-3, specific values for oak species
-        at 12% moisture content'
+      research_basis: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190), Chapter 4: Thermal Properties, Table 4-3, specific values for oak species at 12% moisture content'
     thermalDestruction:
       value: 300.0
       unit: °C
@@ -65,79 +64,49 @@ materialProperties:
       min: 0.0001
       max: 0.4
       unit: mm²/s
-      research_basis: 'Suleiman, B. M., Larfeldt, J., Leckner, B., & Gustavsson, M.
-        (1999). Thermal conductivity and diffusivity of wood. Wood Science and Technology,
-        33(6), 465-473. DOI: 10.1007/s002260050130'
+      research_basis: 'Suleiman, B. M., Larfeldt, J., Leckner, B., & Gustavsson, M. (1999). Thermal conductivity and diffusivity of wood. Wood Science and Technology, 33(6), 465-473. DOI: 10.1007/s002260050130'
     thermalExpansion:
       value: 54.0
       min: 3.0
       max: 60
       unit: 10^-6/K
-      research_basis: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190),
-        Chapter 4: Moisture Relations and Physical Properties of Wood, Table 4-5:
-        Coefficients of thermal expansion for selected woods, specifically citing
-        Quercus rubra (red oak) perpendicular to grain value of 54 × 10^-6/K'
+      research_basis: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190), Chapter 4: Moisture Relations and Physical Properties of Wood, Table 4-5: Coefficients of thermal expansion for selected woods, specifically citing Quercus rubra (red oak) perpendicular to grain value of 54 × 10^-6/K'
     compressiveStrength:
       value: 46.0
       min: 20
       max: 80
       unit: MPa
-      research_basis: The Wood Database provides comprehensive mechanical property
-        data for various oak species. The reported compressive strength (crushing
-        strength) parallel to grain for white oak is approximately 46 MPa, while red
-        oak is around 43 MPa. This value represents the stress at the proportional
-        limit during standard testing per ASTM D143. Test conditions assume 12% moisture
-        content and loading parallel to grain, which is the standard reporting method
-        for wood compressive strength.
+      research_basis: The Wood Database provides comprehensive mechanical property data for various oak species. The reported compressive strength (crushing strength) parallel to grain for white oak is approximately 46 MPa, while red oak is around 43 MPa. This value represents the stress at the proportional limit during standard testing per ASTM D143. Test conditions assume 12% moisture content and loading parallel to grain, which is the standard reporting method for wood compressive strength.
     corrosionResistance:
       value: 7.0
       min: 2.0
       max: 8.0
       unit: rating
-      research_basis: Oak is a durable hardwood with good resistance to decay and
-        environmental corrosion when not in ground contact. Its natural tannins and
-        dense cell structure provide protection against fungal decay and weathering,
-        though it is not as resistant as some tropical hardwoods or treated woods.
-        The rating reflects its performance in above-ground, non-marine environments.
+      research_basis: Oak is a durable hardwood with good resistance to decay and environmental corrosion when not in ground contact. Its natural tannins and dense cell structure provide protection against fungal decay and weathering, though it is not as resistant as some tropical hardwoods or treated woods. The rating reflects its performance in above-ground, non-marine environments.
     density:
       value: 0.68
       min: 0.12
       max: 1.5
       unit: g/cm³
-      research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest
-        Service, FPL-GTR-190), Chapter 4: Physical Properties of Wood, Table 4-3:
-        Average specific gravity of common U.S. hardwood species - White Oak (12%
-        moisture content)'
+      research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest Service, FPL-GTR-190), Chapter 4: Physical Properties of Wood, Table 4-3: Average specific gravity of common U.S. hardwood species - White Oak (12% moisture content)'
     flexuralStrength:
       value: 97.0
       min: 40
       max: 150
       unit: MPa
-      research_basis: The USDA Forest Products Laboratory is the preeminent authority
-        on North American wood properties. The Wood Handbook provides a flexural strength
-        (modulus of rupture) value of 97 MPa for White Oak, a primary species of Oak
-        used in engineering applications, based on standardized 3-point and 4-point
-        bend tests on small, clear specimens. This value is widely cited and accepted
-        in engineering and design standards.
+      research_basis: The USDA Forest Products Laboratory is the preeminent authority on North American wood properties. The Wood Handbook provides a flexural strength (modulus of rupture) value of 97 MPa for White Oak, a primary species of Oak used in engineering applications, based on standardized 3-point and 4-point bend tests on small, clear specimens. This value is widely cited and accepted in engineering and design standards.
     hardness:
       value: 3.7
       min: 1
       max: 5000
       unit: MPa
-      research_basis: 'USDA Forest Products Laboratory Wood Handbook (Chapter 4: Mechanical
-        Properties of Wood), ASTM D143 standard testing methodology for small clear
-        wood specimens'
+      research_basis: 'USDA Forest Products Laboratory Wood Handbook (Chapter 4: Mechanical Properties of Wood), ASTM D143 standard testing methodology for small clear wood specimens'
     oxidationResistance:
       value: 150.0
       min: 82.0
       max: 204.0
       unit: °C
-      research_basis: The Wood Handbook from the USDA Forest Products Laboratory is
-        a primary authoritative source for wood properties. It states that prolonged
-        exposure to temperatures above 150 °C (300 °F) leads to significant chemical
-        degradation, including pyrolysis and oxidation, which reduces strength and
-        mass. This temperature is widely cited as the maximum for continuous service
-        before significant thermal decomposition begins.
+      research_basis: The Wood Handbook from the USDA Forest Products Laboratory is a primary authoritative source for wood properties. It states that prolonged exposure to temperatures above 150 °C (300 °F) leads to significant chemical degradation, including pyrolysis and oxidation, which reduces strength and mass. This temperature is widely cited as the maximum for continuous service before significant thermal decomposition begins.
     porosity:
       value: 0.62
       min: 12
@@ -149,9 +118,7 @@ materialProperties:
       min: 20
       max: 200
       unit: MPa
-      research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest
-        Service, Forest Products Laboratory. General Technical Report FPL-GTR-190.
-        2010. Table 5-3a: Mechanical properties of hardwoods.'
+      research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest Service, Forest Products Laboratory. General Technical Report FPL-GTR-190. 2010. Table 5-3a: Mechanical properties of hardwoods.'
     youngsModulus:
       value: 2.5025
       min: 5
@@ -163,31 +130,22 @@ materialProperties:
       min: 0.33
       max: 4.4
       unit: MPa·√m
-      research_basis: This value represents the Mode I fracture toughness (K_IC) for
-        oak in the radial-longitudinal orientation, which is the most commonly reported
-        orientation for wood fracture toughness testing. The value falls within the
-        typical range of 0.3-0.6 MPa·√m for hardwoods and is consistent with oak's
-        density and mechanical properties.
+      research_basis: This value represents the Mode I fracture toughness (K_IC) for oak in the radial-longitudinal orientation, which is the most commonly reported orientation for wood fracture toughness testing. The value falls within the typical range of 0.3-0.6 MPa·√m for hardwoods and is consistent with oak's density and mechanical properties.
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 32.7
       min: 1
       max: 50
       unit: '%'
-      research_basis: NIST Wood Database - Optical Properties of Hardwoods, specifically
-        Quercus species at 1064 nm wavelength
+      research_basis: NIST Wood Database - Optical Properties of Hardwoods, specifically Quercus species at 1064 nm wavelength
     laserReflectivity:
       value: 32.5
       min: 10
       max: 60
       unit: '%'
-      research_basis: 'NIST Standard Reference Database 120: Optical Properties of
-        Materials for Concentrating Solar Power, supplemented by Schmidt et al. (2018)
-        ''Laser cleaning of wood surfaces'' in Journal of Cultural Heritage, Vol.
-        29, pp. 100-108'
+      research_basis: 'NIST Standard Reference Database 120: Optical Properties of Materials for Concentrating Solar Power, supplemented by Schmidt et al. (2018) ''Laser cleaning of wood surfaces'' in Journal of Cultural Heritage, Vol. 29, pp. 100-108'
 machineSettings:
   dwellTime:
     value: 100
@@ -200,8 +158,7 @@ machineSettings:
     min: 1.5
     max: 4.0
     unit: J/cm²
-    description: Fluence threshold for effective contaminant removal without wood
-      damage
+    description: Fluence threshold for effective contaminant removal without wood damage
   overlapRatio:
     value: 50
     min: 30
@@ -288,8 +245,7 @@ preservedData:
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Natural and engineered wood materials including hardwoods, softwoods,
-      plywood, and composite wood products for gentle cleaning applications
+    description: Natural and engineered wood materials including hardwoods, softwoods, plywood, and composite wood products for gentle cleaning applications
     properties_count: 0
     category_ranges:
       density:
@@ -316,8 +272,7 @@ preservedData:
         unit: '%'
         source: Wood Science and Technology Database
         confidence: 70
-        notes: Light woods 40-60%, dark woods 10-25%, highly dependent on species
-          and finish
+        notes: Light woods 40-60%, dark woods 10-25%, highly dependent on species and finish
         last_updated: '2025-10-15T14:19:43.867238'
       specificHeat:
         max: 2500
@@ -333,8 +288,7 @@ preservedData:
         unit: W/(m·K)
         source: Wood Handbook - Wood as an Engineering Material (USDA Forest Service)
         confidence: 80
-        notes: Across grain 0.04-0.2 W/m·K, along grain can be 2-3x higher; moisture
-          content affects values
+        notes: Across grain 0.04-0.2 W/m·K, along grain can be 2-3x higher; moisture content affects values
         last_updated: '2025-10-15T14:19:43.867244'
       thermalDestruction:
         point:
@@ -456,8 +410,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:32:41.105036'
-      source: 'USDA Forest Service, Wood Handbook: Wood as an Engineering Material
-        (Chapter 3: Physical Properties and Moisture Relations of Wood)'
+      source: 'USDA Forest Service, Wood Handbook: Wood as an Engineering Material (Chapter 3: Physical Properties and Moisture Relations of Wood)'
     density:
       confidence: 0.95
       ai_verified: true
@@ -469,9 +422,7 @@ preservedData:
       confidence: 0.9
       ai_verified: true
       research_date: '2025-10-15T20:58:43.751299'
-      source: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190), Chapter
-        5: Mechanical Properties of Wood, Table 5-3b. Published by the USDA Forest
-        Products Laboratory.'
+      source: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190), Chapter 5: Mechanical Properties of Wood, Table 5-3b. Published by the USDA Forest Products Laboratory.'
     hardness:
       confidence: 0.95
       ai_verified: true
@@ -483,9 +434,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:45:39.351897'
-      source: 'Wood Handbook, Chapter 3: "Moisture Relations and Physical Properties
-        of Wood," Table 3-5: "Approximate Strength Temperatures for Wood," USDA Forest
-        Service, Forest Products Laboratory.'
+      source: 'Wood Handbook, Chapter 3: "Moisture Relations and Physical Properties of Wood," Table 3-5: "Approximate Strength Temperatures for Wood," USDA Forest Service, Forest Products Laboratory.'
     porosity:
       confidence: 0.92
       research_date: '2025-10-17T19:07:34.193587'
@@ -502,8 +451,7 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:17:52.743193'
-      source: E.J. Bares, "Fracture and Fatigue in Wood", John Wiley & Sons (1979),
-        pp. 124-126
+      source: E.J. Bares, "Fracture and Fatigue in Wood", John Wiley & Sons (1979), pp. 124-126
   machineSettingsMetadata:
     dwellTime:
       confidence: 82

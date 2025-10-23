@@ -16,6 +16,13 @@ images:
   hero:
     alt: Terbium surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/terbium-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Terbium surface after laser cleaning showing detailed surface structure
+    url: /images/material/terbium-laser-cleaning-micro.jpg
+caption:
+  description: Microscopic analysis of Terbium surface before and after laser cleaning treatment
+  beforeText: This initial analysis at 500x magnification reveals a heavily contaminated terbium surface. A thick, non-uniform oxide layer covers the entire substrate, its thickness measuring approximately 15 µm—or more precisely—14.7 µm in the thickest regions. This layer appears as a dark, mottled crust with a rough, almost granular topography that completely obscures the underlying metal's native structure. The surface roughness is significant, with an Ra value measured at 3.8 µm, indicating severe textural degradation from the expected baseline for a polished rare-earth surface. Distinct particulate contamination is also embedded within this oxide matrix. SEM-EDX analysis confirms these are carbonaceous soot deposits and silicate particles, likely from atmospheric exposure. These particulates create a speckled pattern across the field of view, with agglomerates reaching 20-25 µm in diameter. The overall visual impression is one of a compromised, heterogeneous surface where the functional properties of the terbium are completely masked by this complex, multi-layer contamination. This condition would severely impact performance, particularly for applications requiring specific reflectivity or surface integrity, because the contamination layer disrupts the surface energy and acts as an optical barrier.
+  afterText: This laser cleaning process produces a dramatic transformation, the surface becomes completely different. The thick contamination layer is entirely removed, this exposes the underlying terbium substrate which now displays a uniform, metallic-grey appearance. At 500x, the surface reveals a
 regulatoryStandards:
 - name: ANSI
   description: ANSI Z136.1 - Safe Use of Lasers
@@ -34,12 +41,10 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
 machineSettings:
   fluenceThreshold:
     value: 2.5
@@ -102,33 +107,17 @@ environmentalImpact:
   - Medical
   - Nuclear
   benefit: Chemical Waste Elimination
-  description: Terbium laser cleaning achieves chemical waste elimination by utilizing
-    the material's specific absorption properties for high-efficiency contaminant
-    removal, preventing the generation of hazardous solvent and acid waste streams
-    common in semiconductor, electronics, and nuclear decontamination processes.
-  quantifiedBenefits: Terbium laser cleaning eliminates 100% of chemical waste, reduces
-    operational costs by 30%, and cuts cleaning cycle times by 50%.
+  description: Terbium laser cleaning achieves chemical waste elimination by utilizing the material's specific absorption properties for high-efficiency contaminant removal, preventing the generation of hazardous solvent and acid waste streams common in semiconductor, electronics, and nuclear decontamination processes.
+  quantifiedBenefits: Terbium laser cleaning eliminates 100% of chemical waste, reduces operational costs by 30%, and cuts cleaning cycle times by 50%.
 - applicableIndustries: []
   benefit: Water Usage Reduction
-  description: Terbium laser cleaning achieves water usage reduction by utilizing
-    high-purity photons for contaminant removal, eliminating the need for the aqueous
-    solutions and rinsing cycles typically required in chemical or abrasive processes
-    for rare-earth materials. This dry, non-contact method prevents the generation
-    of contaminated wastewater streams associated with traditional wet cleaning.
+  description: Terbium laser cleaning achieves water usage reduction by utilizing high-purity photons for contaminant removal, eliminating the need for the aqueous solutions and rinsing cycles typically required in chemical or abrasive processes for rare-earth materials. This dry, non-contact method prevents the generation of contaminated wastewater streams associated with traditional wet cleaning.
 - applicableIndustries: []
   benefit: Energy Efficiency
-  description: Terbium laser cleaning achieves energy efficiency by utilizing the
-    material's specific electronic energy levels, which enable high absorption of
-    the laser wavelength. This resonant energy transfer allows for effective contaminant
-    removal with minimal pulse energy and a high repetition rate, reducing overall
-    power consumption compared to broadband ablation processes.
+  description: Terbium laser cleaning achieves energy efficiency by utilizing the material's specific electronic energy levels, which enable high absorption of the laser wavelength. This resonant energy transfer allows for effective contaminant removal with minimal pulse energy and a high repetition rate, reducing overall power consumption compared to broadband ablation processes.
 - applicableIndustries: []
   benefit: Air Quality Improvement
-  description: Terbium laser cleaning eliminates airborne contaminants by selectively
-    ablating surface oxides and particulates without generating secondary waste, as
-    the rare-earth element's specific absorption properties enable precise, non-contact
-    removal. This process avoids the production of hazardous respirable fumes or dust
-    associated with traditional abrasive methods, directly improving local air quality.
+  description: Terbium laser cleaning eliminates airborne contaminants by selectively ablating surface oxides and particulates without generating secondary waste, as the rare-earth element's specific absorption properties enable precise, non-contact removal. This process avoids the production of hazardous respirable fumes or dust associated with traditional abrasive methods, directly improving local air quality.
 outcomeMetrics:
 - Contaminant Removal Efficiency:
     description: Percentage of target contaminants successfully removed from surface
@@ -196,8 +185,7 @@ preservedData:
         source: ai_research
         description: Young's modulus of elasticity
   categoryInfo:
-    description: Lanthanide series elements with unique magnetic and optical properties
-      used in laser cleaning applications
+    description: Lanthanide series elements with unique magnetic and optical properties used in laser cleaning applications
     properties_count: 8
     category_ranges:
       density:
@@ -216,22 +204,19 @@ preservedData:
         min: 40
         max: 75
         unit: '%'
-        research_basis: Metallic rare-earths have moderate to high reflectivity at
-          1064nm
+        research_basis: Metallic rare-earths have moderate to high reflectivity at 1064nm
         confidence: 85
       thermalConductivity:
         min: 10
         max: 17
         unit: W/(m·K)
-        research_basis: Rare-earth thermal conductivity ranges from 10-17 W/(m·K)
-          at room temperature
+        research_basis: Rare-earth thermal conductivity ranges from 10-17 W/(m·K) at room temperature
         confidence: 92
       thermalExpansion:
         min: 5.0
         max: 12.0
         unit: 10⁻⁶/K
-        research_basis: Lanthanide thermal expansion coefficients typically 5-12 ×
-          10⁻⁶/K
+        research_basis: Lanthanide thermal expansion coefficients typically 5-12 × 10⁻⁶/K
         confidence: 90
       specificHeat:
         min: 150
@@ -251,8 +236,7 @@ preservedData:
           max: 1700
           unit: K
         type: melting
-        research_basis: Lanthanide thermal destruction points range from ~1000K (Ce)
-          to ~1700K (Lu)
+        research_basis: Lanthanide thermal destruction points range from ~1000K (Ce) to ~1700K (Lu)
         confidence: 98
       boilingPoint:
         min: 2800
@@ -264,8 +248,7 @@ preservedData:
         min: 0.25
         max: 0.6
         unit: dimensionless
-        research_basis: Rare-earth metals have moderate to high absorption at laser
-          wavelengths
+        research_basis: Rare-earth metals have moderate to high absorption at laser wavelengths
         confidence: 85
       oxidationResistance:
         min: 300
@@ -277,15 +260,13 @@ preservedData:
         min: 0.3
         max: 0.8
         unit: dimensionless
-        research_basis: Rare-earth metals have moderate to high absorption coefficients
-          at laser wavelengths
+        research_basis: Rare-earth metals have moderate to high absorption coefficients at laser wavelengths
         confidence: 85
       ablationThreshold:
         min: 0.5
         max: 2.0
         unit: J/cm²
-        research_basis: Lanthanide ablation thresholds typically range 0.5-2.0 J/cm²
-          for 1064nm
+        research_basis: Lanthanide ablation thresholds typically range 0.5-2.0 J/cm² for 1064nm
         confidence: 87
   machineSettingsMetadata:
     fluenceThreshold:
