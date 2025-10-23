@@ -1,0 +1,127 @@
+# Frontmatter formatting Example
+# Ensure that you understand that all values provided here are fictional and for illustrative purposes only.
+# Ensure full updating of relevant schemas, docs, tests, and generators to achieve this frontmatter format.
+# Ensure NO DATA is lost.  If you have data that is not represented in this example, please add it under a section labeled as such.
+# To clarify, retain ALL your data and do not remove any. 
+name: Alabaster
+category: Stone
+subcategory: mineral
+title: Alabaster Laser Cleaning.  # The title should vary based on special characteristics or requirements the material has.
+subtitle: Laser cleaning parameters and specifications for Alabaster # The subtitle should vary based on special characteristics or requirements the material has and should shed additional light on unique aspects.
+description: Laser cleaning parameters for Alabaster # The description should vary based on special characteristics or requirements the material has.
+
+author: # this is the author information.  It also determines the Author Voice from the requirements.
+  id: 2
+  name: Alessandro Moretti
+  sex: m
+  title: Ph.D.
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  image: /images/author/alessandro-moretti.jpg
+
+images: # this is a list of images related to laser cleaning of this specific material
+  hero:
+    alt: Alabaster surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/alabaster-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of bamboo surface showing laser cleaning effects
+    url: /images/material/alabaster-laser-cleaning-micro.jpg
+
+caption: # this is a caption for the micro image above, describing the visual content and context.  It should always highlight special characteristics of the material that set it apart from other materials in the category and subcategory.
+  description: Microscopic analysis of bamboo surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the bamboo surface is obscured by a dense, amorphous contamination layer approximately 15-25 µm thick. 
+  afterText: Laser cleaning removes the contamination layer entirely, revealing the intricate, ordered microstructure of the bamboo culm. 
+
+regulatoryStandards: # this is a list of relevant regulatory standards and guidelines for laser cleaning of this specific material.  Include links and logos.
+  - name: FDA
+    description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+    url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+    image: /images/logo/logo_org_fda.png
+
+  - name: ANSI
+    description: ANSI Z136.1 - Safe Use of Lasers
+    url: https://webstore.ansi.org/standards/lia/ansiz1362022
+    image: /images/logo/logo_org_ansi.png
+
+  - name: IEC
+    description: IEC 60825 - Safety of Laser Products
+    url: https://webstore.iec.ch/en/publication/3587
+    image: /images/logo/logo_org_iec.png
+
+  - name: OSHA
+    description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
+    image: /images/logo/logo_org_osha.png
+
+applications: # this is a list of typical application areas for laser cleaning of this specific material.  Again, be as specific to the material as possible.
+  - Cultural Heritage
+  - Aerospace
+  - Medical
+  - Electronics
+  - Automotive
+  - Marine
+
+materialProperties:
+  material_characteristics: # this is a list of properties related to the material's physical characteristics
+    label: Material Characteristics
+    description:
+      Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+
+    example-property: # this is a placeholder list item for the material_characteristics properties.  Many properties wil be listed here under the material characteristics section.
+      value: 2.32
+      min: 1.5
+      max: 6.0
+      unit: g/cm³
+      research_basis: "ASTM C97/C97M-18 Standard Test Methods for Absorption and
+        Bulk Specific Gravity of Dimension Stone, with specific reference to alabaster
+        properties in ASM Handbook, Volume 4: Ceramics and Glasses"
+
+  laser_material_interaction: # this is a list of properties re;ated to laser-material interaction
+    label: Laser-Material Interaction
+    description:
+      Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+
+    example-property: # this is a placeholder list item for the laser_material_interaction properties.  Many properties wil be listed here under the laser_material_interaction section.
+      value: 85.0
+      min: 0.1
+      max: 100.0
+      unit: "%"
+      research_basis:
+        "NIST Stone Properties Database - Alabaster (Gypsum) absorption
+        characteristics for 1064 nm Nd:YAG lasers, combined with mineralogical analysis
+        from 'Laser Cleaning in Conservation: An Introduction' by M. Cooper"
+
+machineSettings: # this is a list of the machine settings relevant to laser cleaning of this specific material.  These settings shoud be highly researched and specific to the material.
+
+  example-setting: # this is a placeholder list item for the machine settings.  Many settings will be listed here.
+    value: 45
+    min: 30
+    max: 65
+    unit: W
+    description: Optimal average power for Alabaster surface cleaning without thermal damage
+
+environmentalImpact: # this is a list of environmental impact benefits for laser cleaning of this specific material.
+  - example-benefit: Chemical Waste Elimination # this is a placeholder list item for the environmental impact benefits.  Many benefits will be listed here.
+    applicableIndustries:
+      - Semiconductor
+      - Electronics
+      - Medical
+      - Nuclear
+    description: Eliminates hazardous chemical waste streams
+    quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+
+outcomeMetrics: # this is a list of outcome metrics for laser cleaning of this specific material.
+
+  - example-metric: Contaminant Removal Efficiency # this is a placeholder list item for the outcome metrics.  Many metrics will be listed here.
+    description: Percentage of target contaminants successfully removed from surface
+    typicalRanges: 95-99.9% depending on application and material
+    measurementMethods:
+      - Before/after microscopy
+      - Chemical analysis
+      - Mass spectrometry
+    factorsAffecting:
+      - Contamination type
+      - Adhesion strength
+      - Surface geometry

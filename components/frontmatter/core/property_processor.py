@@ -27,7 +27,7 @@ from components.frontmatter.qualitative_properties import (
 )
 
 # Validation utilities for confidence normalization
-from components.frontmatter.services.validation_service import ValidationService
+from services.validation import ValidationOrchestrator
 
 logger = logging.getLogger(__name__)
 

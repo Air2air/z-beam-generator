@@ -668,8 +668,8 @@ def deploy_to_production():
     import os
     
     # Define source and target paths - ONLY FRONTMATTER
-    source_dir = "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/content/components/frontmatter"
-    target_dir = "/Users/todddunning/Desktop/Z-Beam/z-beam-test-push/content/components/frontmatter"
+    source_dir = "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/content/frontmatter"
+    target_dir = "/Users/todddunning/Desktop/Z-Beam/z-beam-test-push/content/frontmatter"
     
     try:
         # Verify source directory exists

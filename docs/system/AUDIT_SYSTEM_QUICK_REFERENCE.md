@@ -88,6 +88,8 @@ python3 scripts/tools/material_audit_cli.py --test-integration
 ## 🛠️ Automatic Fixes
 
 The auditing system can automatically fix:
+- ✅ **Architectural violations** (remove min/max fields from Materials.yaml)
+- ✅ **Frontmatter regeneration** (sync frontmatter with fixed Materials.yaml)
 - ✅ Missing property structures
 - ✅ Invalid confidence scores
 - ✅ Schema compliance issues
@@ -106,7 +108,11 @@ The auditing system can automatically fix:
    - 1 HIGH: Missing melting_point property
    - 2 MEDIUM: Confidence scores need validation
 
-✅ Auto-fixes Applied: 2
+✅ Auto-fixes Applied: 32
+   - 30 architectural violations (min/max fields removed)
+   - 1 frontmatter regenerated
+   - 1 confidence score added
+
 🔧 Manual Fixes Needed: 1
 ```
 
@@ -186,5 +192,6 @@ python3 run.py --audit-all --audit-quick
 - **CLI Tool**: `scripts/tools/material_audit_cli.py`
 - **Main Interface**: `run.py` (audit commands)
 - **System Requirements**: `.github/copilot-instructions.md`
+- **🆕 Frontmatter Regeneration**: `docs/AUDIT_FRONTMATTER_REGENERATION.md`
 
-**Status**: ✅ **OPERATIONAL** - Full auditing system implemented and integrated
+**Status**: ✅ **OPERATIONAL** - Full auditing system with frontmatter sync implemented

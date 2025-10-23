@@ -128,7 +128,7 @@ def deploy_to_production():
     
     # Define source and target paths - ONLY FRONTMATTER
     source_dir = "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/content/frontmatter"
-    target_dir = "/Users/todddunning/Desktop/Z-Beam/z-beam-test-push/content/frontmatter"
+    target_dir = "/Users/todddunning/Desktop/Z-Beam/z-beam/content/frontmatter"
     
     try:
         # Verify source directory exists
@@ -1475,6 +1475,7 @@ def main():
     parser.add_argument("--audit-auto-fix", action="store_true", help="Apply automatic fixes during audit")
     parser.add_argument("--audit-report", action="store_true", help="Generate detailed audit reports")
     parser.add_argument("--audit-quick", action="store_true", help="Quick audit (skip frontmatter validation)")
+    parser.add_argument("--data-only", action="store_true", help="Generate frontmatter using only Materials.yaml data (no API calls)")
 
     
     args = parser.parse_args()
@@ -1556,11 +1557,15 @@ def main():
                 print(f"⚠️ Material validation issues detected: {', '.join(validation_result['issues_detected'])}")
                 print("🔧 Proceeding with generation, pipeline will attempt corrections...")
 
-            # Check if any components require API clients
-            requires_api = any(
-                COMPONENT_CONFIG.get(comp, {}).get('api_provider', 'none') != 'none' 
-                for comp in component_types
-            )
+            # Check if any components require API clients (unless --data-only flag is used)
+            if args.data_only:
+                requires_api = False
+                print("🚫 Data-only mode: Skipping API client initialization")
+            else:
+                requires_api = any(
+                    COMPONENT_CONFIG.get(comp, {}).get('api_provider', 'none') != 'none' 
+                    for comp in component_types
+                )
             
             # Create API client only if needed
             api_client = None
@@ -1695,11 +1700,15 @@ def main():
             except Exception as e:
                 print(f"⚠️ Batch validation failed: {e}")
             
-            # Check if any components require API clients
-            requires_api = any(
-                COMPONENT_CONFIG.get(comp, {}).get('api_provider', 'none') != 'none' 
-                for comp in component_types
-            )
+            # Check if any components require API clients (unless --data-only flag is used)
+            if args.data_only:
+                requires_api = False
+                print("🚫 Data-only mode: Skipping API client initialization")
+            else:
+                requires_api = any(
+                    COMPONENT_CONFIG.get(comp, {}).get('api_provider', 'none') != 'none' 
+                    for comp in component_types
+                )
             
             # Initialize API client if needed
             api_client = None

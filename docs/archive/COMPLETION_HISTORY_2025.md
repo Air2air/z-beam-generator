@@ -4278,7 +4278,7 @@ Deleted backup files:
 **Total backups directory**: 21 direct files + 507 files in subdirectories
 
 ### 2. Caption Regeneration Backups
-**Location**: `/content/components/frontmatter/`
+**Location**: `/content/frontmatter/`
 
 Deleted 12 backup files from September 30, 2025 caption regeneration:
 - `aluminum-laser-cleaning.backup.20250930_215943.yaml`

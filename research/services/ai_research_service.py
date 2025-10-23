@@ -120,6 +120,15 @@ class AIResearchEnrichmentService:
         self.verification_cache: Dict[str, VerificationResult] = {}
         self.audit_trail_enabled = True
         
+        # Property terminology mappings for AI research
+        self.property_terminology = {
+            'thermalDestruction': {
+                'research_terms': ['melting point', 'fusion temperature', 'liquidus temperature'],
+                'description': 'Temperature at which material transitions from solid to liquid',
+                'units': '°C'
+            }
+        }
+        
         # FAIL-FAST: Validate required files exist
         self._validate_required_files()
         
@@ -339,7 +348,9 @@ CRITICAL: Confidence must be >= 0.9 or the research will be rejected."""
         if not result.validation_method:
             validations.append("Missing validation_method")
         
-        if result.researched_value <= 0:
+        # Allow negative values for properties like thermal expansion (composites can have negative coefficients)
+        # Only reject truly invalid values (None, NaN, extreme outliers)
+        if result.researched_value is None or (isinstance(result.researched_value, float) and result.researched_value != result.researched_value):  # NaN check
             validations.append(f"Invalid value {result.researched_value}")
         
         if validations:

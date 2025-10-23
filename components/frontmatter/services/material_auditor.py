@@ -246,6 +246,44 @@ class MaterialAuditor:
             # === AUTO-REMEDIATION ===
             if auto_fix and result.issues:
                 self._apply_auto_fixes(material_name, result)
+                
+                # Re-run data architecture audit after fixes to update results
+                if result.auto_fixes_applied > 0:
+                    # Remove old architecture issues that were fixed
+                    original_issues = result.issues[:]
+                    result.issues = [issue for issue in result.issues 
+                                   if not (issue.category == "data_architecture" and 
+                                          ("'min' field" in issue.description or "'max' field" in issue.description))]
+                    
+                    # Re-audit data architecture to check if fixes worked
+                    temp_result = MaterialAuditResult(
+                        material_name=material_name,
+                        audit_timestamp=start_time.isoformat(),
+                        overall_status="PASS",
+                        total_issues=0,
+                        critical_issues=0,
+                        high_issues=0
+                    )
+                    self._audit_data_architecture(material_name, temp_result)
+                    
+                    # Add any remaining architecture issues
+                    result.issues.extend(temp_result.issues)
+                    
+                    # === FRONTMATTER REGENERATION ===
+                    # Regenerate frontmatter to sync with fixed Materials.yaml
+                    try:
+                        self._regenerate_frontmatter_after_fixes(material_name, result)
+                    except Exception as e:
+                        self.logger.warning(f"Frontmatter regeneration failed for {material_name}: {e}")
+                        # Add warning but don't fail the audit
+                        result.issues.append(AuditIssue(
+                            severity=AuditSeverity.MEDIUM,
+                            category="frontmatter_sync",
+                            field_path=f"frontmatter.{material_name}",
+                            description=f"Failed to regenerate frontmatter after fixes: {e}",
+                            remediation="Manually regenerate frontmatter or run dedicated frontmatter generation",
+                            requirement_source="Data Storage Policy - Frontmatter sync"
+                        ))
             
             # === FINALIZE RESULT ===
             self._finalize_audit_result(result, start_time)
@@ -1216,13 +1254,13 @@ class MaterialAuditor:
         """
         Apply automatic fixes for issues that can be safely resolved.
         
-        ONLY applies fixes for:
+        APPLIES fixes for:
         - Category capitalization (lowercase)
+        - Min/max architectural violations (remove min/max fields)
         - Missing confidence scores (add default based on source)
         - Basic field formatting issues
         
         NEVER fixes:
-        - Min/max architectural violations (requires manual review)
         - Missing properties (requires research)
         - Schema violations (requires regeneration)
         """
@@ -1246,8 +1284,38 @@ class MaterialAuditor:
                         issue.description += " [AUTO-FIXED]"
                         issue.severity = AuditSeverity.INFO
             
-            # Fix 2: Add basic confidence scores where missing
+            # Fix 2: Remove min/max architectural violations
             properties = material_data.get('properties', {})
+            for prop_name, prop_data in properties.items():
+                if isinstance(prop_data, dict):
+                    # Remove min/max fields (architectural violations)
+                    if 'min' in prop_data:
+                        self.logger.info(f"🔧 Auto-fix: Removing 'min' field from {material_name}.{prop_name}")
+                        del prop_data['min']
+                        fixes_applied += 1
+                        
+                        # Mark related issues as auto-fixed
+                        for issue in result.issues:
+                            if (f"{material_name}.{prop_name}.min" in issue.field_path and 
+                                "ARCHITECTURAL VIOLATION" in issue.description and 
+                                "'min' field" in issue.description):
+                                issue.description += " [AUTO-FIXED]"
+                                issue.severity = AuditSeverity.INFO
+                    
+                    if 'max' in prop_data:
+                        self.logger.info(f"🔧 Auto-fix: Removing 'max' field from {material_name}.{prop_name}")
+                        del prop_data['max']
+                        fixes_applied += 1
+                        
+                        # Mark related issues as auto-fixed
+                        for issue in result.issues:
+                            if (f"{material_name}.{prop_name}.max" in issue.field_path and 
+                                "ARCHITECTURAL VIOLATION" in issue.description and 
+                                "'max' field" in issue.description):
+                                issue.description += " [AUTO-FIXED]"
+                                issue.severity = AuditSeverity.INFO
+            
+            # Fix 3: Add basic confidence scores where missing
             for prop_name, prop_data in properties.items():
                 if isinstance(prop_data, dict) and 'confidence' not in prop_data:
                     source = prop_data.get('source', '').lower()
@@ -1299,6 +1367,62 @@ class MaterialAuditor:
             
         except Exception as e:
             self.logger.error(f"❌ Failed to save Materials.yaml: {e}")
+            raise
+    
+    def _regenerate_frontmatter_after_fixes(self, material_name: str, result: MaterialAuditResult) -> None:
+        """Regenerate frontmatter after Materials.yaml fixes to keep them in sync"""
+        try:
+            self.logger.info(f"🔄 Regenerating frontmatter for {material_name} after Materials.yaml fixes")
+            
+            # Import frontmatter generator
+            from components.frontmatter.core.streamlined_generator import StreamlinedFrontmatterGenerator
+            
+            # Create frontmatter generator
+            generator = StreamlinedFrontmatterGenerator()
+            
+            # Generate new frontmatter from updated Materials.yaml
+            generation_result = generator.generate(material_name, skip_subtitle=True)
+            
+            if generation_result.success:
+                # Determine frontmatter file path
+                frontmatter_filename = f"{material_name.lower().replace(' ', '-')}-laser-cleaning.yaml"
+                frontmatter_path = Path("content/frontmatter") / frontmatter_filename
+                
+                # Create backup of existing frontmatter if it exists
+                if frontmatter_path.exists():
+                    import shutil
+                    backup_path = frontmatter_path.with_suffix(
+                        f'.backup_audit_{datetime.now().strftime("%Y%m%d_%H%M%S")}.yaml'
+                    )
+                    shutil.copy2(frontmatter_path, backup_path)
+                    self.logger.debug(f"Created frontmatter backup: {backup_path.name}")
+                
+                # Ensure directory exists
+                frontmatter_path.parent.mkdir(parents=True, exist_ok=True)
+                
+                # Write new frontmatter
+                with open(frontmatter_path, 'w', encoding='utf-8') as f:
+                    f.write(generation_result.content)
+                
+                # Track successful regeneration
+                result.auto_fixes_applied += 1
+                self.logger.info(f"✅ Frontmatter regenerated: {frontmatter_path}")
+                
+                # Add success note to result
+                result.issues.append(AuditIssue(
+                    severity=AuditSeverity.INFO,
+                    category="frontmatter_sync",
+                    field_path=f"frontmatter.{material_name}",
+                    description="Frontmatter regenerated to sync with Materials.yaml fixes [AUTO-REGENERATED]",
+                    remediation="No action needed - frontmatter is now synchronized",
+                    requirement_source="Data Storage Policy - Frontmatter sync"
+                ))
+                
+            else:
+                raise Exception(f"Frontmatter generation failed: {generation_result.error_message}")
+                
+        except Exception as e:
+            self.logger.error(f"❌ Frontmatter regeneration failed for {material_name}: {e}")
             raise
     
     def _finalize_audit_result(self, result: MaterialAuditResult, start_time: datetime) -> None:

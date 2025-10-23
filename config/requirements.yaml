@@ -987,9 +987,17 @@ testing_requirements:
       garbage_collection: "Efficient"
     
     api_performance:
-      response_time: "<10 seconds" # API response time
+      response_time: "<10 seconds" # API response time (uncached)
+      cached_response_time: "<1 second" # Cached response time
       retry_logic: "3 attempts"   # Retry attempts
       timeout_handling: "60 seconds" # Request timeout
+      cache_hit_rate: ">70%"      # Target cache hit rate
+    
+    caching_performance:
+      disk_io_speed: "Fast SSD recommended for cache storage"
+      cache_lookup_time: "<100ms" # Cache key lookup time
+      cache_write_time: "<500ms"  # Cache write time
+      storage_efficiency: "Compressed storage for large responses"
 
 # =============================================================================
 # 11. SYSTEM INTEGRATION REQUIREMENTS
@@ -1063,6 +1071,31 @@ system_integration:
       deepseek: "Respect API rate limits"
       winston: "Batch processing optimization"
       error_handling: "Queue management + retry"
+    
+    response_caching:
+      purpose: "Reduce API costs and improve performance"
+      implementation: "File-based caching with TTL"
+      configuration:
+        enabled: true                    # Enable caching in production
+        storage_location: "/tmp/z-beam-response-cache"
+        ttl_seconds: 86400              # 24 hours cache lifetime
+        max_size_mb: 1000               # Maximum cache size
+        key_strategy: "prompt_hash_with_model" # Cache key generation
+      
+      cache_key_strategies:
+        prompt_hash: "Cache by prompt only (highest hit rate)"
+        prompt_hash_with_model: "Cache by prompt + model + temperature (recommended)"
+        full_request_hash: "Cache by entire request (lowest hit rate)"
+      
+      performance_targets:
+        cache_hit_rate: ">70%"          # Target cache hit rate
+        response_improvement: "10x faster" # Cached vs uncached response
+        cost_reduction: ">50%"          # API cost reduction target
+      
+      maintenance:
+        cleanup_strategy: "LRU eviction when max size reached"
+        monitoring: "Cache hit rate + storage usage"
+        invalidation: "Manual cache clearing available"
   
   # File system integration
   file_system:

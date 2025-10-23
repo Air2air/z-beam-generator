@@ -585,7 +585,7 @@ The Python Generator produces YAML data that the Next.js app consumes. Key diffe
 ## 📚 Reference Files
 
 - **Template:** `content/components/frontmatter/brass-laser-cleaning.yaml`
-- **Other examples:** Check `/content/components/frontmatter/` directory
+- **Other examples:** Check `/content/frontmatter/` directory
 - **Type definitions:** `types/centralized.ts` in Next.js app
 
 ---

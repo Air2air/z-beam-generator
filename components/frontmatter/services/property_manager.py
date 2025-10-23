@@ -107,11 +107,9 @@ class PropertyManager:
         Raises:
             PropertyDiscoveryError: If property_researcher is None
         """
+        # PropertyValueResearcher can be None in data-only mode (100% complete YAML data)
         if not property_researcher:
-            raise PropertyDiscoveryError(
-                "PropertyValueResearcher required for property management. "
-                "Cannot operate without AI research capability."
-            )
+            logger.info("PropertyValueResearcher not provided - operating in data-only mode")
         
         self.property_researcher = property_researcher
         self.get_category_ranges = get_category_ranges_func

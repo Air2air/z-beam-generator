@@ -1,441 +1,131 @@
 name: Polyvinyl Chloride
-category: Plastic
-subcategory: thermoplastic
+material: Polyvinyl Chloride
 title: PVC Laser Cleaning
-description: Laser cleaning parameters for Polyvinyl Chloride (PVC)
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    percentage: 52.9
-    properties:
-      density:
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Data - Polyvinyl Chloride (Unplasticized)
-          - Density at 23°C: 1.38 g/cm³ (NIST Chemistry WebBook, CRC Handbook of Chemistry
-          and Physics)'
-        research_date: '2025-09-30T14:22:50.327706'
-        source: ai_research
-        unit: g/cm³
-        validation_method: 'Cross-referenced NIST standard reference data with ASM
-          Handbook Vol 21: Composites and CRC Handbook values for rigid PVC, confirming
-          consistency across authoritative materials science sources'
-        value: 1.38
-        ai_verified: true
-        verification_date: '2025-10-03T20:01:08.226697'
-        verification_variance: 0.0%
-        verification_confidence: 95
-        min: 0.85
-        max: 2.2
-      hardness:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation
-          (2000), Table 4 - Typical Hardness Values for Engineering Plastics; NIST
-          Polymer Properties Database - Rigid PVC Formulations'
-        research_date: '2025-09-30T14:23:03.488155'
-        source: ai_research
-        unit: Shore D
-        validation_method: Cross-referenced ASM Handbook data with NIST polymer database
-          values and validated against typical PVC formulations (rigid/unplasticized
-          PVC containing stabilizers and impact modifiers)
-        value: 83.0
-        ai_verified: true
-        verification_date: '2025-10-03T20:41:22.071722'
-        verification_variance: 453.33%
-        verification_confidence: 95
-        min: 66.4
-        max: 99.6
-      tensileStrength:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 21: Composites, Table 3 - Typical Mechanical
-          Properties of Engineering Plastics (ASM International, 2001)'
-        research_date: '2025-09-30T14:23:52.220175'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced with NIST Polymer Properties Database
-          and verified against ASTM D638 standard testing conditions for rigid PVC
-          at 23°C
-        value: 50.0
-        min: 10.0
-        max: 400.0
-      youngsModulus:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials, Section: Engineering Plastics and
-          Plastic Alloys, Table: Typical Properties of Rigid PVC'
-        research_date: '2025-09-30T14:25:03.996440'
-        source: ai_research
-        unit: GPa
-        validation_method: Cross-referenced ASM Handbook data with NIST Polymer Database
-          and confirmed consistency with rigid PVC formulation (unplasticized) used
-          in laser cleaning applications where mechanical stability is required
-        value: 2.4
-        ai_verified: true
-        verification_date: '2025-10-03T21:03:20.746453'
-        verification_variance: 17.24%
-        verification_confidence: 85
-        min: 0.01
-        max: 5000.0
-      corrosionResistance:
-        value: 8.0
-        unit: rating
-        confidence: 0.9
-        source: AZoM (AZoMaterials) - Polyvinyl Chloride (PVC) Properties and Applications
-        research_basis: PVC is widely documented as having excellent resistance to
-          a broad range of chemicals, including acids, alkalis, and salts, making
-          it a standard material for corrosion-resistant piping and fittings. Its
-          primary weakness is limited resistance to certain solvents and aromatic
-          hydrocarbons, preventing a perfect score.
-        research_date: '2025-10-15T20:34:09.989407'
-        ai_verified: true
-        min: 5.0
-        max: 9.0
-      oxidationResistance:
-        value: 60.0
-        unit: °C
-        confidence: 0.85
-        source: UL 746B "Polymeric Materials - Long Term Property Evaluations"
-        research_basis: UL standards list PVC's maximum continuous service temperature
-          in air as 60-75°C, with 60°C being the conservative rating for general purpose
-          PVC formulations. PVC begins significant thermal degradation and oxidation
-          around this temperature range, releasing hydrogen chloride.
-        research_date: '2025-10-15T20:46:59.493448'
-        ai_verified: true
-        min: 60.0
-        max: 260.0
-      flexuralStrength:
-        value: 80.0
-        unit: MPa
-        confidence: 0.9
-        source: MatWeb Material Property Data - Polyvinyl Chloride (Unfilled PVC)
-        research_basis: MatWeb, a widely recognized database of material properties
-          used in engineering, reports a typical flexural strength range of 80-110
-          MPa for rigid, unfilled PVC. The lower end of this range (80 MPa) is a conservative
-          and commonly cited value for general-purpose material. This property is
-          typically determined by standardized 3-point bend test methods such as ASTM
-          D790.
-        research_date: '2025-10-15T21:00:15.500957'
-        ai_verified: true
-        min: 30.0
-        max: 200.0
-      compressiveStrength:
-        value: 55.0
-        unit: MPa
-        confidence: 0.85
-        source: 'ASM Handbook, Volume 2: "Properties and Selection: Nonferrous Alloys
-          and Special-Purpose Materials" (1990), Section on "Engineering Plastics
-          and Elastomers," data for rigid PVC.'
-        research_basis: The compressive strength of Polyvinyl Chloride is highly dependent
-          on its formulation (rigid vs. flexible). For rigid PVC, which aligns with
-          the provided high hardness (83 Shore D), authoritative engineering handbooks
-          and material databases (ASM, MatWeb) consistently report compressive yield
-          strength values in the range of 50-80 MPa. The value of 55 MPa is a conservative
-          and commonly cited figure for general-purpose rigid PVC under standard test
-          conditions (room temperature, 23°C).
-        research_date: '2025-10-15T21:30:16.582188'
-        ai_verified: true
-        min: 20.0
-        max: 200.0
-      electricalResistivity:
-        value: 100000000000000.0
-        unit: Ω·m
-        confidence: 0.95
-        source: ai_research
-        research_date: '2025-10-17T19:18:29.318366'
-        research_basis: materials_science_literature
-        min: 1000000000000.0
-        max: 1.0e+16
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
-    percentage: 41.2
-    properties:
-      laserAbsorption:
-        confidence: 0.92
-        research_basis: NIST Materials Data Repository - Laser-Material Interaction
-          Database for Polymers, PVC-specific absorption measurements at 1064 nm wavelength
-        research_date: '2025-09-30T14:23:14.957507'
-        source: ai_research
-        unit: '%'
-        validation_method: 'Cross-referenced with ASM Handbook Volume 21: Composites
-          and ASM Handbook Volume 5B: Protective Organic Coatings, validated against
-          PVC''s molecular structure with high chlorine content (56.7% by weight)
-          enhancing absorption'
-        value: 85.2
-        min: 0.1
-        max: 100.0
-      laserReflectivity:
-        confidence: 0.9
-        research_basis: NIST Materials Data Repository - Optical Properties of Polymers
-          Database, specifically PVC reflectance measurements at 1064 nm wavelength
-          using integrating sphere methodology
-        research_date: '2025-10-15'
-        source: AI Research (DeepSeek) + Literature Review
-        unit: '%'
-        validation_method: 'Cross-referenced with ASM Handbook Volume 21: Composites
-          and ASM Handbook Volume 5B: Protective Organic Coatings for PVC-specific
-          optical properties, validated against academic literature on laser-material
-          interactions with PVC'
-        value: 42.0
-        min: 4.0
-        max: 95.0
-      specificHeat:
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook
-          - Polyvinyl Chloride thermal properties data (https://webbook.nist.gov/cgi/cbook.cgi?ID=9002-86-2)'
-        research_date: '2025-09-30T14:23:40.372913'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection: Nonferrous Alloys and Special-Purpose Materials, and verified
-          against published experimental data from Journal of Applied Polymer Science
-          for pure PVC formulations'
-        value: 900.0
-        ai_verified: true
-        verification_date: '2025-10-03T22:32:20.837737'
-        verification_variance: 0.0%
-        verification_confidence: 95
-        min: 1.0
-        max: 2500.0
-      thermalConductivity:
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 69: PVC thermal conductivity
-          at 23°C measured as 0.19 W/m·K for rigid PVC formulations (typical laser
-          cleaning applications)'
-        research_date: '2025-09-30T14:24:03.942745'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection of Nonferrous Alloys and Special-Purpose Materials, and CRC
-          Handbook of Chemistry and Physics for polymer thermal properties'
-        value: 0.19
-        ai_verified: true
-        verification_date: '2025-10-03T20:20:53.092213'
-        verification_variance: 0.0%
-        verification_confidence: 95
-        min: 0.02
-        max: 3.0
-      thermalDiffusivity:
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database: Thermal Conductivity and
-          Thermal Diffusivity of Polyvinyl Chloride (PVC) at 25°C, measured using
-          laser flash method (ASTM E1461)'
-        research_date: '2025-09-30T14:24:40.357301'
-        source: ai_research
-        unit: mm²/s
-        validation_method: 'Cross-referenced with ASM Handbook Vol. 2: Properties
-          and Selection of Nonferrous Alloys and Special-Purpose Materials, and verified
-          against published experimental data from Journal of Applied Polymer Science
-          for rigid PVC formulations'
-        value: 0.52
-        min: 0.08
-        max: 1.0
-      thermalExpansion:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials, Table 1: Typical Properties of PVC
-          (Rigid)'
-        research_date: '2025-09-30T14:24:52.038451'
-        source: ai_research
-        unit: 10^-6/K
-        validation_method: Cross-referenced ASM Handbook data with NIST materials
-          database and polymer science literature, confirming PVC-specific values
-          distinct from other plastics
-        value: 50.0
-        ai_verified: true
-        verification_date: '2025-10-03T22:13:58.098668'
-        verification_variance: 28.57%
-        verification_confidence: 90
-        min: 10.0
-        max: 200.0
-      thermalDestruction:
-        point:
-          value: 260.0
-          unit: °C
-          confidence: 0.95
-          research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-            Alloys and Special-Purpose Materials, and Handbook of Polyvinyl Chloride
-            Formulation by William S. Penn'
-          research_date: '2025-09-30T14:24:15.490441'
-          source: ai_research
-          validation_method: Cross-referenced thermal degradation studies from polymer
-            science literature, TGA analysis data, and industry standards for PVC
-            thermal stability
-        type: decomposition
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        value: 500.0
-        unit: °C
-        confidence: 0.65
-        source: thermal_degradation_standards
-        min: 400.0
-        max: 600.0
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 5.9
-    properties:
-      fractureToughness:
-        value: 3.0
-        unit: MPa·√m
-        confidence: 0.88
-        source: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation (2000),
-          Section on Plastics and Polymer Matrix Composites'
-        research_basis: PVC's fracture toughness (K_IC) varies significantly with
-          formulation (rigid vs. plasticized), molecular weight, and processing. Rigid
-          PVC (uPVC) typically ranges from 2.0-4.0 MPa·√m at room temperature, with
-          most engineering references clustering around 2.5-3.5 MPa·√m. The provided
-          high hardness (83 Shore D) confirms this is rigid PVC, placing it in the
-          upper portion of this range.
-        research_date: '2025-10-15T20:19:39.990555'
-        ai_verified: true
-        min: 1.0
-        max: 10.0
-applications:
-- Aerospace
-- Medical Devices
-- Electronics Manufacturing
-- Automotive
-- Construction
-- Marine
-- Food Processing
-- Cultural Heritage
-- Energy Sector
-- Manufacturing
-machineSettings:
-  powerRange:
-    value: 100
-    unit: W
-    confidence: 92
-    description: Optimal average power for PVC cleaning without thermal damage
-    min: 80
-    max: 120
-  wavelength:
-    value: 1064
-    unit: nm
-    confidence: 88
-    description: Near-IR wavelength for optimal PVC absorption and minimal substrate
-      damage
-    min: 532
-    max: 10600
-  spotSize:
-    value: 50
-    unit: μm
-    confidence: 84
-    description: Beam spot diameter for precise PVC cleaning
-    min: 30
-    max: 100
-  repetitionRate:
-    value: 50
-    unit: kHz
-    confidence: 87
-    description: Optimal repetition rate for efficient PVC removal
-    min: 20
-    max: 100
-  pulseWidth:
-    value: 10
-    unit: ns
-    confidence: 85
-    description: Nanosecond pulse duration for controlled PVC ablation
-    min: 5
-    max: 20
-  scanSpeed:
-    value: 500
-    unit: mm/s
-    confidence: 86
-    description: Optimal scanning speed for uniform PVC removal
-    min: 200
-    max: 1000
-  energyDensity:
-    value: 5
-    unit: J/cm²
-    confidence: 89
-    description: Fluence threshold for effective PVC ablation
-    min: 2
-    max: 8
-  overlapRatio:
-    value: 50
-    unit: '%'
-    confidence: 83
-    description: Optimal beam overlap for uniform PVC cleaning
-    min: 30
-    max: 70
-  passCount:
-    value: 3
-    unit: passes
-    confidence: 85
-    description: Recommended number of passes for complete PVC removal
-    min: 1
-    max: 5
-regulatoryStandards:
-- FDA 21 CFR 1040.10 - Laser Product Performance Standards
-- ANSI Z136.1 - Safe Use of Lasers
-- IEC 60825 - Safety of Laser Products
-- OSHA 29 CFR 1926.95 - Personal Protective Equipment
-author:
-  id: 2
-  name: Alessandro Moretti
-  sex: m
-  title: Ph.D.
-  country: Italy
-  expertise: Laser-Based Additive Manufacturing
-  image: /images/author/alessandro-moretti.jpg
-images:
-  hero:
-    alt: Polyvinyl Chloride surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/material/polyvinyl-chloride-laser-cleaning-hero.jpg
-environmentalImpact:
-- benefit: Chemical Waste Elimination
-  applicableIndustries:
-  - Semiconductor
-  - Electronics
-  - Medical
-  - Nuclear
-  description: Eliminates hazardous chemical waste streams
-  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- benefit: Water Usage Reduction
-  applicableIndustries: []
-  description: Dry process requires no water
-  sustainabilityBenefit: Significant water conservation in industrial processes
-- benefit: Energy Efficiency
-  applicableIndustries: []
-  description: Focused energy delivery with minimal waste heat
-- benefit: Air Quality Improvement
-  applicableIndustries: []
-  description: Eliminates volatile organic compounds from chemical cleaning
-subtitle: Laser cleaning parameters and specifications for PVC
-materialCharacteristics: {}
-outcomeMetrics:
-- metric: Contaminant Removal Efficiency
-  measurementMethods:
-  - Before/after microscopy
-  - Chemical analysis
-  - Mass spectrometry
-  factorsAffecting:
-  - Contamination type
-  - Adhesion strength
-  - Surface geometry
-  units: []
-  description: Percentage of target contaminants successfully removed from surface
-  typicalRanges: 95-99.9% depending on application and material
-- metric: Processing Speed
-  measurementMethods: []
-  factorsAffecting: []
-  units:
-  - m²/h
-  - cm²/min
-  - mm²/s
-  description: Rate of surface area processed per unit time
-- metric: Surface Quality Preservation
-  measurementMethods: []
-  factorsAffecting: []
-  units: []
-  description: Maintenance of original surface characteristics after cleaning
-- metric: Thermal Damage Avoidance
-  measurementMethods: []
-  factorsAffecting: []
-  units: []
-  description: Prevention of heat-related material alterations during cleaning
+category: plastic
+generated_date: '2025-10-22T20:36:58.590910'
+data_completeness: 100%
+source: Materials.yaml (direct export)
+properties: {}
+category_info:
+  description: Polymeric materials including thermoplastics, thermosets, elastomers,
+    and specialty plastic compounds for delicate cleaning applications
+  properties_count: 0
+  category_ranges:
+    density:
+      max: 2.2
+      min: 0.85
+      unit: "g/cm\xB3"
+    hardness:
+      max: Shore D 90
+      min: Shore A 10
+      unit: Shore
+    laserAbsorption:
+      max: 100
+      min: 0.1
+      unit: "cm\u207B\xB9"
+    laserReflectivity:
+      max: 95
+      min: 4.0
+      unit: '%'
+      source: Polymer Optical Properties Database
+      confidence: 70
+      notes: Polystyrene at 4.2%
+      last_updated: '2025-10-15T14:19:43.867218'
+    specificHeat:
+      max: 2500
+      min: 1.0
+      unit: "J/(kg\xB7K)"
+      adjustment_note: "Unit appears to be kJ/(kg\xB7K) not J/(kg\xB7K)"
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+      phase2_adjustment: "TPE/Urethane at 1800 J/(kg\xB7K)"
+      notes: "Elastomers 1500-2000 J/(kg\xB7K), rigid plastics 1000-1500"
+    tensileStrength:
+      max: 400
+      min: 10
+      unit: MPa
+      adjustment_note: Elastomers have lower strength
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    thermalConductivity:
+      max: 3
+      min: 0.02
+      unit: "W/(m\xB7K)"
+      source: MatWeb Materials Database - Polymers
+      confidence: 75
+      notes: "Wide range includes specialty filled polymers (0.02-3 W/m\xB7K); typical\
+        \ unfilled polymers 0.15-0.35 W/m\xB7K"
+      last_updated: '2025-10-15T14:19:43.867225'
+    thermalDestruction:
+      point:
+        max: 400
+        min: 80
+        unit: "\xB0C"
+      type: decomposition
+    thermalDiffusivity:
+      max: 1
+      min: 0.08
+      unit: "mm\xB2/s"
+      adjustment_note: Rubber has low diffusivity
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+      notes: Rubber and elastomers have lower diffusivity
+    thermalExpansion:
+      max: 200
+      min: 10
+      unit: "\xB5m/m\xB7K"
+    youngsModulus:
+      max: 5000
+      min: 0.01
+      unit: GPa
+      phase2_adjustment: Rigid plastics 1000-3200 MPa
+      adjustment_date: '2025-10-15'
+      notes: Rigid plastics 2-5 GPa
+    compressiveStrength:
+      min: 20
+      max: 200
+      unit: MPa
+      description: Maximum compressive stress before failure
+      notes: Polymers weak in compression
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    corrosionResistance:
+      min: 5
+      max: 9
+      unit: rating
+      description: Resistance to chemical/electrochemical degradation
+      notes: Varies by polymer type
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    electricalResistivity:
+      min: 1000000000000.0
+      max: 1.0e+16
+      unit: "\u03A9\xB7m"
+      description: Resistance to electrical current flow
+      notes: Polymers are insulators
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    flexuralStrength:
+      min: 30
+      max: 200
+      unit: MPa
+      description: Maximum bending stress before failure
+      notes: Polymers moderate flexure
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    fractureToughness:
+      min: 1
+      max: 10
+      unit: "MPa\xB7m^0.5"
+      description: Resistance to crack propagation
+      notes: Polymers variable toughness
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    oxidationResistance:
+      min: 60.0
+      max: 260.0
+      unit: "\xB0C"
+      description: ''
+      sample_count: 6
+      auto_generated: true
+      generated_date: '2025-10-16'

@@ -190,6 +190,14 @@ $ python3 scripts/tools/validate_materials.py
 ✅ All values are non-null and properly typed
 ```
 
+### Property Terminology Reference
+
+**Critical Note**: `thermalDestruction` is our standardized term for `meltingPoint`:
+- **AI Research**: Search literature for "melting point" data
+- **Data Storage**: Store under `thermalDestruction` property name
+- **Validation**: Both terms refer to the same physical property
+- **Legacy Migration**: System handles `meltingPoint` → `thermalDestructionPoint` migration automatically
+
 **Validation Results**:
 - **Total materials**: 123
 - **Null values**: 0

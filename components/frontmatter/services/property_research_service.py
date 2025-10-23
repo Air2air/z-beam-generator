@@ -23,8 +23,8 @@ from typing import Dict, Optional, Callable
 from components.frontmatter.research.property_value_researcher import PropertyValueResearcher
 from validation.errors import PropertyDiscoveryError
 
-# Import validation utilities (Step 4 refactored)
-from components.frontmatter.services.validation_service import ValidationService
+# Import unified validation system (Step 4 refactored)
+from services.validation import ValidationOrchestrator
 
 # Phase 4: Import qualitative property definitions
 from components.frontmatter.qualitative_properties import (
@@ -71,7 +71,8 @@ class PropertyResearchService:
         self.property_researcher = property_researcher
         self.get_category_ranges = get_category_ranges_func
         self.enhance_descriptions = enhance_descriptions_func
-        self.logger = logger
+        self.logger = logging.getLogger(__name__)
+        self.validation_orchestrator = ValidationOrchestrator()
     
     def research_material_properties(
         self,
@@ -430,7 +431,7 @@ class PropertyResearchService:
             properties[category_field] = {
                 'value': thermal_value,
                 'unit': thermal_unit or '°C',
-                'confidence': ValidationService.normalize_confidence(thermal_confidence),
+                'confidence': self.validation_orchestrator.normalize_confidence(thermal_confidence),
                 'description': thermal_description or thermal_info['description'],
                 'min': None,
                 'max': None

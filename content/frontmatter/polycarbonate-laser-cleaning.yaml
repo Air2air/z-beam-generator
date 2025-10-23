@@ -1,452 +1,131 @@
 name: Polycarbonate
-category: Plastic
-subcategory: thermoplastic
+material: Polycarbonate
 title: Polycarbonate Laser Cleaning
-description: Laser cleaning parameters for Polycarbonate
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    percentage: 52.9
-    properties:
-      density:
-        confidence: 0.98
-        research_basis: 'ASM Handbook, Volume 21: Composites, ''Properties of Polycarbonate'';
-          NIST Standard Reference Data; Bayer MaterialScience AG, Makrolon® Polycarbonate
-          Technical Data Sheet'
-        research_date: '2025-09-30T14:03:22.406915'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced manufacturer technical data sheets for
-          commercial polycarbonate grades (e.g., Makrolon, Lexan) with established
-          materials databases and polymer science handbooks, confirming consistency
-          across sources for amorphous, unfilled material.
-        value: 1.2
-        ai_verified: true
-        verification_date: '2025-10-03T20:01:08.226680'
-        verification_variance: 0.0%
-        verification_confidence: 98
-        min: 0.85
-        max: 2.2
-      hardness:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation
-          (2000), Section: Plastics and Polymeric Composites, with specific reference
-          to Polycarbonate Rockwell M hardness values of 70-90, converted to equivalent
-          MPa using established conversion relationships'
-        research_date: '2025-09-30T14:03:35.515162'
-        source: ai_research
-        unit: GPa
-        validation_method: Cross-referenced multiple authoritative sources including
-          NIST polymer database, ASM Handbook mechanical properties data, and peer-reviewed
-          studies on polycarbonate mechanical properties. Verified against known amorphous
-          structure and bisphenol-A composition of standard polycarbonate.
-        value: 0.085
-        ai_verified: true
-        verification_date: '2025-10-03T20:41:22.071709'
-        verification_variance: 0.0%
-        verification_confidence: 95
-        min: 0.068
-        max: 0.10200000000000001
-      tensileStrength:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 21: Composites, Table 3 - Typical Mechanical
-          Properties of Engineering Plastics (ASM International, 2001) and NIST Polymer
-          Properties Database - Polycarbonate Reference Data'
-        research_date: '2025-09-30T14:04:23.436753'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced ASM Handbook data with NIST polymer database
-          values and verified against manufacturer technical datasheets for commercial
-          polycarbonate grades (Makrolon, Lexan)
-        value: 65.0
-        min: 10.0
-        max: 400.0
-      youngsModulus:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 21: Composites, Table 2 - Typical Properties
-          of Engineering Thermoplastics (Polycarbonate: 2.0-2.4 GPa); NIST Polymer
-          Properties Database - Bisphenol-A Polycarbonate (2.38 GPa); Bayer MaterialScience
-          Makrolon® Technical Data Sheet (2.1-2.4 GPa)'
-        research_date: '2025-09-30T14:05:35.205208'
-        source: ai_research
-        unit: GPa
-        validation_method: Cross-referenced multiple authoritative sources including
-          ASM Handbook, NIST polymer database, and manufacturer technical data sheets
-          for commercial polycarbonate grades. Verified consistency across sources
-          and against known molecular structure of bisphenol-A polycarbonate.
-        value: 2.35
-        ai_verified: true
-        verification_date: '2025-10-03T21:55:35.214132'
-        verification_variance: 2.17%
-        verification_confidence: 95
-        min: 0.01
-        max: 5000.0
-      corrosionResistance:
-        value: 8.0
-        unit: rating
-        confidence: 0.9
-        source: MatWeb Material Property Data - Polycarbonate (PC) - General Purpose
-          Grade
-        research_basis: Polycarbonate exhibits excellent resistance to a wide range
-          of chemicals, including dilute acids, alcohols, and oils, contributing to
-          a high corrosion resistance rating for a plastic. Its primary vulnerabilities
-          are to strong bases, certain hydrocarbons, and UV radiation, which slightly
-          reduce its score from a perfect 10. This assessment is based on standardized
-          chemical resistance data for engineering plastics.
-        research_date: '2025-10-15T20:33:33.329277'
-        ai_verified: true
-        min: 5.0
-        max: 9.0
-      oxidationResistance:
-        value: 125.0
-        unit: °C
-        confidence: 0.9
-        source: MatWeb Material Property Data - Polycarbonate
-        research_basis: According to MatWeb, a widely recognized database of material
-          properties, the continuous service temperature for polycarbonate in air
-          is typically 115-130°C. The value of 125°C represents a conservative midpoint
-          of this range, as polycarbonate begins to undergo significant thermal degradation
-          and oxidation above this temperature, leading to loss of mechanical properties
-          and discoloration.
-        research_date: '2025-10-15T20:46:26.250251'
-        ai_verified: true
-        min: 60.0
-        max: 260.0
-      flexuralStrength:
-        value: 93.0
-        unit: MPa
-        confidence: 0.9
-        source: MatWeb Material Property Data for Makrolon 2405 Polycarbonate (Bayer
-          MaterialScience)
-        research_basis: The provided properties (density, hardness) are consistent
-          with standard Polycarbonate. Authoritative material databases (MatWeb, CES
-          EduPack) report flexural strength values for Polycarbonate in the range
-          of 90-100 MPa for a 3-point bend test. The cited value of 93 MPa is a typical
-          median value from manufacturer data sheets for unreinforced, general-purpose
-          grades.
-        research_date: '2025-10-15T20:59:40.070900'
-        ai_verified: true
-        min: 30.0
-        max: 200.0
-      compressiveStrength:
-        value: 80.0
-        unit: MPa
-        confidence: 0.9
-        source: MatWeb Material Property Data for Makrolon Polycarbonate
-        research_basis: Polycarbonate's compressive strength is consistently reported
-          in the 75-85 MPa range by material data sheets from manufacturers like Covestro
-          (Makrolon) and SABIC (LEXAN). The value of 80 MPa is a standard reference
-          point for general-purpose polycarbonate under standard test conditions (room
-          temperature, 23°C). The provided hardness (85.0 MPa) is a related mechanical
-          property that supports this compressive strength value, as they often correlate
-          for rigid plastics.
-        research_date: '2025-10-15T21:29:41.048314'
-        ai_verified: true
-        min: 20.0
-        max: 200.0
-      electricalResistivity:
-        value: 2.1e+17
-        unit: Ω·m
-        confidence: 0.95
-        source: ai_research
-        research_date: '2025-10-17T19:17:48.967246'
-        research_basis: materials_science_literature
-        min: 1000000000000.0
-        max: 1.0e+16
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
-    percentage: 41.2
-    properties:
-      laserAbsorption:
-        confidence: 0.92
-        research_basis: NIST Materials Data Repository - Polycarbonate Optical Properties
-          Database, specifically for 1064 nm Nd:YAG laser wavelength commonly used
-          in laser cleaning applications
-        research_date: '2025-09-30T14:03:46.982254'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced with peer-reviewed studies in Applied
-          Surface Science (Vol. 258, pp. 10278-10282) and Materials & Design (Vol.
-          32, pp. 4685-4691) confirming polycarbonate absorption characteristics at
-          industrial laser cleaning wavelengths
-        value: 65.2
-        min: 0.1
-        max: 100.0
-      laserReflectivity:
-        confidence: 0.9
-        research_basis: 'NIST Materials Data Repository - Optical Properties of Engineering
-          Plastics (2021), Table 3: Reflectance measurements for polycarbonate at
-          1064 nm wavelength'
-        research_date: '2025-10-15'
-        source: AI Research (DeepSeek) + Literature Review
-        unit: '%'
-        validation_method: 'Cross-referenced with ASM Handbook Volume 21: Composites
-          and academic literature on laser-material interactions for polycarbonate,
-          confirming typical range of 3.8-4.6% at near-IR wavelengths'
-        value: 42.0
-        corrected: true
-        correction_date: '2025-10-15T16:55:59.202418'
-        correction_source: Priority 2 AI Research
-        correction_confidence: 0.9
-        min: 4.0
-        max: 95.0
-      specificHeat:
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook
-          - Polycarbonate (CAS 25037-45-0) specific heat capacity at 25°C'
-        research_date: '2025-09-30T14:04:11.684131'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection: Nonferrous Alloys and Special-Purpose Materials, and peer-reviewed
-          literature on thermal properties of engineering thermoplastics'
-        value: 1200.0
-        ai_verified: true
-        verification_date: '2025-10-03T22:32:20.837718'
-        verification_variance: 4.0%
-        verification_confidence: 95
-        min: 1.0
-        max: 2500.0
-      thermalConductivity:
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
-          of Polymer Systems; ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials'
-        research_date: '2025-09-30T14:04:34.257675'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: Cross-referenced multiple authoritative sources including
-          NIST polymer database, ASM Handbook values for engineering plastics, and
-          peer-reviewed literature on polycarbonate thermal properties
-        value: 0.2
-        ai_verified: true
-        verification_date: '2025-10-03T20:20:53.092198'
-        verification_variance: 0.0%
-        verification_confidence: 95
-        min: 0.02
-        max: 3.0
-      thermalDiffusivity:
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database: Thermal diffusivity of
-          polycarbonate measured at 25°C using laser flash method (ASTM E1461)'
-        research_date: '2025-09-30T14:05:09.792249'
-        source: ai_research
-        unit: mm²/s
-        validation_method: Cross-referenced with ASM Handbook Vol. 2 and peer-reviewed
-          literature on thermal properties of engineering plastics, confirming consistency
-          with polycarbonate's amorphous structure and typical thermal properties
-        value: 0.52
-        min: 0.08
-        max: 1.0
-      thermalExpansion:
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
-          of Polycarbonate (PC) reports 68 × 10^-6 K^-1 at 23°C; ASM Handbook Vol.
-          2: Engineering Thermoplastics confirms range 65-70 × 10^-6 K^-1 for amorphous
-          polycarbonate'
-        research_date: '2025-09-30T14:05:21.394935'
-        source: ai_research
-        unit: 10^-6/K
-        validation_method: Cross-referenced NIST polymer database with ASM Handbook
-          values and verified against published studies on polycarbonate thermophysical
-          properties, confirming consistency across authoritative sources
-        value: 68.0
-        ai_verified: true
-        verification_date: '2025-10-03T22:13:58.098651'
-        verification_variance: 0.58%
-        verification_confidence: 95
-        min: 10.0
-        max: 200.0
-      thermalDestruction:
-        point:
-          value: 270.0
-          unit: °C
-          confidence: 0.95
-          research_basis: 'NIST Polymer Database - Polycarbonate Thermal Degradation
-            Studies (PC Material ID: 9011-62-3), ASM Handbook Vol. 2: Properties and
-            Selection: Nonferrous Alloys and Special-Purpose Materials'
-          research_date: '2025-09-30T14:04:47.387487'
-          source: ai_research
-          validation_method: Cross-referenced thermal degradation onset temperature
-            from thermogravimetric analysis (TGA) studies under nitrogen atmosphere
-            at 10°C/min heating rate, validated against glass transition temperature
-            (Tg ≈ 147°C) and Vicat softening point (≈ 154°C) to ensure thermal destruction
-            occurs well above these thresholds
-        type: decomposition
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        value: 500.0
-        unit: °C
-        confidence: 0.65
-        source: thermal_degradation_standards
-        min: 400.0
-        max: 600.0
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 5.9
-    properties:
-      fractureToughness:
-        value: 2.2
-        unit: MPa·m¹/²
-        confidence: 0.95
-        source: ai_research
-        research_date: '2025-10-17T20:22:49.160611'
-        research_basis: materials_science_literature
-        min: 1.0
-        max: 10.0
-applications:
-- Aerospace
-- Automotive
-- Medical Devices
-- Electronics Manufacturing
-- Marine
-- Cultural Heritage
-- Optical Manufacturing
-- Energy Sector
-- Food Processing
-- Construction
-machineSettings:
-  powerRange:
-    value: 15
-    unit: W
-    confidence: 92
-    description: Optimal average power for Polycarbonate surface cleaning without
-      thermal damage
-    min: 5
-    max: 30
-  wavelength:
-    value: 1064
-    unit: nm
-    confidence: 88
-    description: Near-IR wavelength providing good absorption in contaminants while
-      minimizing Polycarbonate substrate damage
-    min: 532
-    max: 10600
-  spotSize:
-    value: 50
-    unit: μm
-    confidence: 84
-    description: Beam spot diameter for precise cleaning with sufficient energy density
-    min: 20
-    max: 100
-  repetitionRate:
-    value: 20
-    unit: kHz
-    confidence: 87
-    description: Optimal repetition rate for efficient cleaning with adequate cooling
-      between pulses
-    min: 1
-    max: 100
-  pulseWidth:
-    value: 100
-    unit: ns
-    confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with
-      controlled thermal penetration
-    min: 10
-    max: 200
-  scanSpeed:
-    value: 500
-    unit: mm/s
-    confidence: 86
-    description: Optimal scanning speed for uniform cleaning coverage
-    min: 100
-    max: 1000
-  fluenceThreshold:
-    value: 0.8
-    unit: J/cm²
-    confidence: 90
-    description: Fluence threshold for contaminant removal while preserving Polycarbonate
-      substrate
-    min: 0.3
-    max: 1.5
-  overlapRatio:
-    value: 50
-    unit: '%'
-    confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      buildup
-    min: 30
-    max: 70
-  passCount:
-    value: 2
-    unit: passes
-    confidence: 88
-    description: Recommended number of passes for complete contaminant removal
-    min: 1
-    max: 5
-regulatoryStandards:
-- FDA 21 CFR 1040.10 - Laser Product Performance Standards
-- ANSI Z136.1 - Safe Use of Lasers
-- IEC 60825 - Safety of Laser Products
-- OSHA 29 CFR 1926.95 - Personal Protective Equipment
-author:
-  id: 1
-  name: Yi-Chun Lin
-  sex: f
-  title: Ph.D.
-  country: Taiwan
-  expertise: Laser Materials Processing
-  image: /images/author/yi-chun-lin.jpg
-images:
-  hero:
-    alt: Polycarbonate surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/material/polycarbonate-laser-cleaning-hero.jpg
-environmentalImpact:
-- benefit: Chemical Waste Elimination
-  applicableIndustries:
-  - Semiconductor
-  - Electronics
-  - Medical
-  - Nuclear
-  description: Eliminates hazardous chemical waste streams
-  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- benefit: Water Usage Reduction
-  applicableIndustries: []
-  description: Dry process requires no water
-  sustainabilityBenefit: Significant water conservation in industrial processes
-- benefit: Energy Efficiency
-  applicableIndustries: []
-  description: Focused energy delivery with minimal waste heat
-- benefit: Air Quality Improvement
-  applicableIndustries: []
-  description: Eliminates volatile organic compounds from chemical cleaning
-subtitle: Laser cleaning parameters and specifications for Polycarbonate
-materialCharacteristics: {}
-outcomeMetrics:
-- metric: Contaminant Removal Efficiency
-  measurementMethods:
-  - Before/after microscopy
-  - Chemical analysis
-  - Mass spectrometry
-  factorsAffecting:
-  - Contamination type
-  - Adhesion strength
-  - Surface geometry
-  units: []
-  description: Percentage of target contaminants successfully removed from surface
-  typicalRanges: 95-99.9% depending on application and material
-- metric: Processing Speed
-  measurementMethods: []
-  factorsAffecting: []
-  units:
-  - m²/h
-  - cm²/min
-  - mm²/s
-  description: Rate of surface area processed per unit time
-- metric: Surface Quality Preservation
-  measurementMethods: []
-  factorsAffecting: []
-  units: []
-  description: Maintenance of original surface characteristics after cleaning
-- metric: Thermal Damage Avoidance
-  measurementMethods: []
-  factorsAffecting: []
-  units: []
-  description: Prevention of heat-related material alterations during cleaning
+category: plastic
+generated_date: '2025-10-22T20:36:58.548938'
+data_completeness: 100%
+source: Materials.yaml (direct export)
+properties: {}
+category_info:
+  description: Polymeric materials including thermoplastics, thermosets, elastomers,
+    and specialty plastic compounds for delicate cleaning applications
+  properties_count: 0
+  category_ranges:
+    density:
+      max: 2.2
+      min: 0.85
+      unit: "g/cm\xB3"
+    hardness:
+      max: Shore D 90
+      min: Shore A 10
+      unit: Shore
+    laserAbsorption:
+      max: 100
+      min: 0.1
+      unit: "cm\u207B\xB9"
+    laserReflectivity:
+      max: 95
+      min: 4.0
+      unit: '%'
+      source: Polymer Optical Properties Database
+      confidence: 70
+      notes: Polystyrene at 4.2%
+      last_updated: '2025-10-15T14:19:43.867218'
+    specificHeat:
+      max: 2500
+      min: 1.0
+      unit: "J/(kg\xB7K)"
+      adjustment_note: "Unit appears to be kJ/(kg\xB7K) not J/(kg\xB7K)"
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+      phase2_adjustment: "TPE/Urethane at 1800 J/(kg\xB7K)"
+      notes: "Elastomers 1500-2000 J/(kg\xB7K), rigid plastics 1000-1500"
+    tensileStrength:
+      max: 400
+      min: 10
+      unit: MPa
+      adjustment_note: Elastomers have lower strength
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    thermalConductivity:
+      max: 3
+      min: 0.02
+      unit: "W/(m\xB7K)"
+      source: MatWeb Materials Database - Polymers
+      confidence: 75
+      notes: "Wide range includes specialty filled polymers (0.02-3 W/m\xB7K); typical\
+        \ unfilled polymers 0.15-0.35 W/m\xB7K"
+      last_updated: '2025-10-15T14:19:43.867225'
+    thermalDestruction:
+      point:
+        max: 400
+        min: 80
+        unit: "\xB0C"
+      type: decomposition
+    thermalDiffusivity:
+      max: 1
+      min: 0.08
+      unit: "mm\xB2/s"
+      adjustment_note: Rubber has low diffusivity
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+      notes: Rubber and elastomers have lower diffusivity
+    thermalExpansion:
+      max: 200
+      min: 10
+      unit: "\xB5m/m\xB7K"
+    youngsModulus:
+      max: 5000
+      min: 0.01
+      unit: GPa
+      phase2_adjustment: Rigid plastics 1000-3200 MPa
+      adjustment_date: '2025-10-15'
+      notes: Rigid plastics 2-5 GPa
+    compressiveStrength:
+      min: 20
+      max: 200
+      unit: MPa
+      description: Maximum compressive stress before failure
+      notes: Polymers weak in compression
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    corrosionResistance:
+      min: 5
+      max: 9
+      unit: rating
+      description: Resistance to chemical/electrochemical degradation
+      notes: Varies by polymer type
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    electricalResistivity:
+      min: 1000000000000.0
+      max: 1.0e+16
+      unit: "\u03A9\xB7m"
+      description: Resistance to electrical current flow
+      notes: Polymers are insulators
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    flexuralStrength:
+      min: 30
+      max: 200
+      unit: MPa
+      description: Maximum bending stress before failure
+      notes: Polymers moderate flexure
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    fractureToughness:
+      min: 1
+      max: 10
+      unit: "MPa\xB7m^0.5"
+      description: Resistance to crack propagation
+      notes: Polymers variable toughness
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    oxidationResistance:
+      min: 60.0
+      max: 260.0
+      unit: "\xB0C"
+      description: ''
+      sample_count: 6
+      auto_generated: true
+      generated_date: '2025-10-16'

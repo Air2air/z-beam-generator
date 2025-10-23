@@ -1,272 +1,156 @@
 name: Neodymium
-category: Rare-Earth
-subcategory: lanthanide
+material: Neodymium
 title: Neodymium Laser Cleaning
-description: Laser cleaning parameters for Neodymium
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    percentage: 44.4
-    properties:
-      density:
-        value: 7.01
-        unit: g/cm³
-        confidence: 95
-        description: Density of pure neodymium at room temperature
-        min: 6.1
-        max: 9.8
-      youngsModulus:
-        value: 41.0
-        unit: GPa
-        confidence: 82
-        description: Young's modulus of elasticity
-        min: 25
-        max: 65
-      hardness:
-        value: 0.265
-        unit: GPa
-        confidence: 85
-        description: Vickers hardness of pure neodymium
-        min: 25
-        max: 60
-      oxidationResistance:
-        value: 0.15
-        unit: mg/cm²·h
-        confidence: 90
-        description: Oxidation rate in air at room temperature
-        min: 300
-        max: 600
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
-    percentage: 55.6
-    properties:
-      thermalConductivity:
-        value: 16.5
-        unit: W/(m·K)
-        confidence: 88
-        description: Thermal conductivity at room temperature
-        min: 10
-        max: 17
-      thermalExpansion:
-        value: 9.6
-        unit: 10⁻⁶/K
-        confidence: 85
-        description: Coefficient of linear thermal expansion at 25°C
-        min: 5.0
-        max: 12.0
-      specificHeat:
-        value: 190.0
-        unit: J/(kg·K)
-        confidence: 90
-        description: Specific heat capacity at room temperature
-        min: 150
-        max: 200
-      thermalDestruction:
-        value: 1024
-        unit: °C
-        confidence: 92
-        description: Melting point of pure neodymium
+category: rare-earth
+generated_date: '2025-10-22T20:36:58.449185'
+data_completeness: 100%
+source: Materials.yaml (direct export)
+properties:
+  density:
+    value: 7.01
+    unit: "g/cm\xB3"
+    confidence: 95
+    source: ai_research
+    description: Density of pure neodymium at room temperature
+  hardness:
+    value: 0.265
+    unit: GPa
+    confidence: 85
+    source: ai_research
+    description: Vickers hardness of pure neodymium
+  laserReflectivity:
+    value: 0.65
+    unit: dimensionless
+    confidence: 85
+    source: ai_research
+    description: Surface reflectivity at 1064 nm wavelength
+  oxidationResistance:
+    value: 0.15
+    unit: "mg/cm\xB2\xB7h"
+    confidence: 90
+    source: ai_research
+    description: Oxidation rate in air at room temperature
+  specificHeat:
+    value: 190.0
+    unit: "J/(kg\xB7K)"
+    confidence: 90
+    source: ai_research
+    description: Specific heat capacity at room temperature
+  thermalConductivity:
+    value: 16.5
+    unit: "W/(m\xB7K)"
+    confidence: 88
+    source: ai_research
+    description: Thermal conductivity at room temperature
+  thermalDestruction:
+    value: 1024
+    unit: "\xB0C"
+    confidence: 92
+    source: ai_research
+    description: Melting point of pure neodymium
+  thermalExpansion:
+    value: 9.6
+    unit: "10\u207B\u2076/K"
+    confidence: 85
+    source: ai_research
+    description: "Coefficient of linear thermal expansion at 25\xB0C"
+  youngsModulus:
+    value: 41.0
+    unit: GPa
+    confidence: 82
+    source: ai_research
+    description: Young's modulus of elasticity
+category_info:
+  description: Lanthanide series elements with unique magnetic and optical properties
+    used in laser cleaning applications
+  properties_count: 9
+  category_ranges:
+    density:
+      min: 6.1
+      max: 9.8
+      unit: "g/cm\xB3"
+      research_basis: "Lanthanides range from La (6.15 g/cm\xB3) to Lu (9.84 g/cm\xB3\
+        )"
+      confidence: 98
+    hardness:
+      min: 25
+      max: 60
+      unit: HV
+      research_basis: Vickers hardness for rare-earth elements typically 25-60 HV
+      confidence: 90
+    laserReflectivity:
+      min: 40
+      max: 75
+      unit: '%'
+      research_basis: Metallic rare-earths have moderate to high reflectivity at 1064nm
+      confidence: 85
+    thermalConductivity:
+      min: 10
+      max: 17
+      unit: "W/(m\xB7K)"
+      research_basis: "Rare-earth thermal conductivity ranges from 10-17 W/(m\xB7\
+        K) at room temperature"
+      confidence: 92
+    thermalExpansion:
+      min: 5.0
+      max: 12.0
+      unit: "10\u207B\u2076/K"
+      research_basis: "Lanthanide thermal expansion coefficients typically 5-12 \xD7\
+        \ 10\u207B\u2076/K"
+      confidence: 90
+    specificHeat:
+      min: 150
+      max: 200
+      unit: "J/(kg\xB7K)"
+      research_basis: "Rare-earth specific heat capacities range 150-200 J/(kg\xB7\
+        K)"
+      confidence: 88
+    youngsModulus:
+      min: 25
+      max: 65
+      unit: GPa
+      research_basis: Elastic modulus for lanthanides typically 25-65 GPa
+      confidence: 85
+    thermalDestruction:
+      point:
         min: 1000
         max: 1700
-      laserReflectivity:
-        value: 0.65
-        unit: dimensionless
-        confidence: 85
-        description: Surface reflectivity at 1064 nm wavelength
-        min: 40
-        max: 75
-applications: []
-machineSettings:
-  powerRange:
-    value: 100
-    unit: W
-    confidence: 92
-    description: Optimal average power for Neodymium oxide removal without substrate
-      damage
-    min: 80
-    max: 120
-  wavelength:
-    value: 1064
-    unit: nm
-    confidence: 88
-    description: Fundamental Nd:YAG wavelength with good Neodymium absorption
-    min: 532
-    max: 10600
-  spotSize:
-    value: 50
-    unit: μm
-    confidence: 84
-    description: Beam spot diameter for precise cleaning control
-    min: 30
-    max: 100
-  repetitionRate:
-    value: 50
-    unit: kHz
-    confidence: 87
-    description: Optimal repetition rate for efficient cleaning with thermal management
-    min: 20
-    max: 100
-  pulseWidth:
-    value: 10
-    unit: ns
-    confidence: 85
-    description: Nanosecond pulse duration for controlled ablation of surface contaminants
-    min: 5
-    max: 20
-  scanSpeed:
-    value: 500
-    unit: mm/s
-    confidence: 86
-    description: Optimal scanning speed for uniform cleaning coverage
-    min: 200
-    max: 1000
-  energyDensity:
-    value: 5.1
-    unit: J/cm²
-    confidence: 89
-    description: Fluence threshold for effective contaminant removal
-    min: 3.0
-    max: 8.0
-  overlapRatio:
-    value: 50
-    unit: '%'
-    confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive heat
-      accumulation
-    min: 30
-    max: 70
-  passCount:
-    value: 3
-    unit: passes
-    confidence: 82
-    description: Recommended number of passes for complete surface cleaning
-    min: 1
-    max: 5
-regulatoryStandards:
-- FDA 21 CFR 1040.10 - Laser Product Performance Standards
-- ANSI Z136.1 - Safe Use of Lasers
-- IEC 60825 - Safety of Laser Products
-- OSHA 29 CFR 1926.95 - Personal Protective Equipment
-author:
-  id: 1
-  name: Yi-Chun Lin
-  sex: f
-  title: Ph.D.
-  country: Taiwan
-  expertise: Laser Materials Processing
-  image: /images/author/yi-chun-lin.jpg
-images:
-  hero:
-    alt: Neodymium surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/material/neodymium-laser-cleaning-hero.jpg
-environmentalImpact:
-- benefit: Chemical Waste Elimination
-  applicableIndustries:
-  - Semiconductor
-  - Electronics
-  - Medical
-  - Nuclear
-  description: Neodymium laser cleaning eliminates chemical waste by using high-peak-power
-    pulses to ablate contaminants through photomechanical and photothermal processes,
-    a method enabled by the material's high thermal conductivity which efficiently
-    dissipates heat to prevent damage to the underlying rare-earth substrate. This
-    non-contact, solvent-free process is critical in high-purity industries like semiconductor
-    and medical manufacturing, preventing the generation of hazardous solvent waste
-    streams.
-  quantifiedBenefits: Neodymium laser cleaning eliminates 100% of chemical waste,
-    reduces operational costs by 40%, and increases processing speed by 25%.
-- benefit: Water Usage Reduction
-  applicableIndustries: []
-  description: Neodymium laser cleaning achieves water usage reduction by utilizing
-    high-intensity, pulsed laser light to ablate contaminants, a process governed
-    by the material's high thermal conductivity (16.5 W/(m·K)) which enables efficient
-    energy transfer and rapid heat dissipation without requiring liquid coolants or
-    chemical rinses.
-- benefit: Energy Efficiency
-  applicableIndustries: []
-  description: Neodymium laser cleaning achieves high energy efficiency by leveraging
-    the material's high thermal conductivity (16.5 W/(m·K)), enabling rapid heat dissipation
-    from the irradiated surface. This minimizes energy loss to the substrate, concentrating
-    the laser's energy for effective contaminant removal with reduced power requirements.
-- benefit: Air Quality Improvement
-  applicableIndustries: []
-  description: Neodymium laser cleaning achieves air quality improvement by utilizing
-    high-intensity, pulsed laser light to ablate contaminants without generating secondary
-    pollutants, as the process operates below the material's thermal damage threshold,
-    preventing the release of rare-earth particulates. This non-abrasive, dry technique
-    eliminates the need for chemical solvents or abrasive media, thereby removing
-    the source of VOC emissions and hazardous dust associated with conventional cleaning
-    methods.
-subtitle: Laser cleaning parameters and specifications for Neodymium
-materialCharacteristics:
-  crystallineStructure:
-    value: Double hexagonal close-packed
-    unit: crystal system
-    confidence: 95
-    description: Crystalline structure at room temperature
-    allowedValues:
-    - FCC
-    - BCC
-    - HCP
-    - amorphous
-    - cubic
-    - hexagonal
-    - tetragonal
-    - orthorhombic
-    - monoclinic
-    - triclinic
-outcomeMetrics:
-- metric: Contaminant Removal Efficiency
-  description: Contaminant Removal Efficiency is quantified by mass spectrometry to
-    measure the reduction of surface-absorbed rare-earth oxides, as the low Vickers
-    hardness (0.265 GPa) of the neodymium substrate necessitates a non-contact analysis
-    to prevent surface deformation. The primary measurement challenge is differentiating
-    the mass signal of the removed contaminant from the potential minor ablation of
-    the soft neodymium base material.
-  measurementMethods:
-  - Before/after microscopy
-  - Chemical analysis
-  - Mass spectrometry
-  factorsAffecting:
-  - Contamination type
-  - Adhesion strength
-  - Surface geometry
-  units: []
-  typicalRanges: 95-99.9% depending on application and material
-- metric: Processing Speed
-  description: Processing Speed quantifies the area cleaned per unit time (cm²/s),
-    measured by tracking the ablation rate of the neodymium surface, which is highly
-    dependent on laser fluence due to the material's low Vickers hardness (0.265 GPa)
-    and susceptibility to thermal damage.
-  measurementMethods: []
-  factorsAffecting: []
-  units:
-  - m²/h
-  - cm²/min
-  - mm²/s
-- metric: Surface Quality Preservation
-  description: Surface Quality Preservation quantifies the absence of laser-induced
-    surface modification, specifically measuring the post-process Vickers hardness
-    deviation from the base material's 0.265 GPa to ensure no annealing or micro-fracturing
-    has occurred. This is critically assessed by comparing pre- and post-cleaning
-    microhardness indentation profiles, as the low hardness of neodymium makes it
-    highly susceptible to thermal alteration from process parameters.
-  measurementMethods: []
-  factorsAffecting: []
-  units: []
-- metric: Thermal Damage Avoidance
-  description: Thermal Damage Avoidance quantifies the prevention of microstructural
-    alterations, such as recrystallization or phase changes, in the neodymium substrate
-    by maintaining the laser fluence below the material's melting threshold, which
-    is critically dependent on its low Vickers hardness (0.265 GPa) and high thermal
-    sensitivity. This is achieved through precise control of process parameters like
-    pulse duration and repetition rate to minimize heat accumulation and prevent localized
-    softening or deformation.
-  measurementMethods: []
-  factorsAffecting: []
-  units: []
+        unit: K
+      type: melting
+      research_basis: Lanthanide thermal destruction points range from ~1000K (Ce)
+        to ~1700K (Lu)
+      confidence: 98
+    boilingPoint:
+      min: 2800
+      max: 3700
+      unit: K
+      research_basis: Lanthanide boiling points range from ~2800K to ~3700K
+      confidence: 95
+    absorptivity:
+      min: 0.25
+      max: 0.6
+      unit: dimensionless
+      research_basis: Rare-earth metals have moderate to high absorption at laser
+        wavelengths
+      confidence: 85
+    oxidationResistance:
+      min: 300
+      max: 600
+      unit: "\xB0C"
+      research_basis: "Lanthanides oxidize readily above 300-600\xB0C depending on\
+        \ element"
+      confidence: 88
+    absorptionCoefficient:
+      min: 0.3
+      max: 0.8
+      unit: dimensionless
+      research_basis: Rare-earth metals have moderate to high absorption coefficients
+        at laser wavelengths
+      confidence: 85
+    ablationThreshold:
+      min: 0.5
+      max: 2.0
+      unit: "J/cm\xB2"
+      research_basis: "Lanthanide ablation thresholds typically range 0.5-2.0 J/cm\xB2\
+        \ for 1064nm"
+      confidence: 87

@@ -172,13 +172,13 @@ machineSettingsDescriptions:
   ablationThreshold:
     description: Minimum energy density required to initiate material removal from
       the surface
-    unit: J/cm²
+    unit: "J/cm\xB2"
     selection_criteria: Based on material thermal properties and bond strength
     typical_range_guidance: Lower for organic materials, higher for metals and ceramics
   fluenceThreshold:
     description: Energy density threshold for effective contaminant removal without
       substrate damage
-    unit: J/cm²
+    unit: "J/cm\xB2"
     selection_criteria: Material damage threshold and contamination type
     optimization_note: Critical for selective cleaning applications
   powerRange:
@@ -211,12 +211,12 @@ machineSettingsDescriptions:
     pattern_optimization: Affects overlap and uniformity of cleaning
   spotSize:
     description: Diameter of focused laser beam on the material surface
-    unit: mm, μm
+    unit: "mm, \u03BCm"
     selection_criteria: Feature size, precision requirements, and power density
     resolution_impact: Smaller spots enable higher precision but slower processing
   thermalDamageThreshold:
     description: Maximum energy density before irreversible thermal damage occurs
-    unit: J/cm²
+    unit: "J/cm\xB2"
     safety_margin: Typically operate at 70-80% of this threshold
     material_dependency: Varies significantly with thermal properties
   wavelength:
@@ -299,7 +299,7 @@ materialPropertyDescriptions:
     selection_guidance: Higher scores require more precise parameter control
   density:
     description: Mass per unit volume of the material
-    unit: g/cm³
+    unit: "g/cm\xB3"
     relevance: Affects thermal mass and energy distribution during cleaning
     laser_cleaning_impact: Influences heat diffusion rates and required energy density
     typical_ranges:
@@ -319,7 +319,7 @@ materialPropertyDescriptions:
       point:
         description: Temperature at which thermal damage begins (replaces melting
           point for accuracy)
-        unit: °C or K
+        unit: "\xB0C or K"
         relevance: Critical threshold for thermal damage assessment across all material
           types
       type:
@@ -344,7 +344,7 @@ materialPropertyDescriptions:
       simple melting
   thermalConductivity:
     description: Rate of heat transfer through the material
-    unit: W/m·K
+    unit: "W/m\xB7K"
     relevance: Affects heat dissipation and thermal stress development
     laser_cleaning_impact: High conductivity materials require adjusted parameters
     optimization_factor: Critical for pulse duration and repetition rate selection
@@ -365,12 +365,12 @@ materialPropertyDescriptions:
     laser_cleaning_impact: Influences crack propagation and damage thresholds
   thermalExpansion:
     description: Rate of dimensional change with temperature variation
-    unit: μm/m·°C
+    unit: "\u03BCm/m\xB7\xB0C"
     relevance: Critical for thermal stress calculation
     laser_cleaning_impact: High expansion materials need careful thermal management
   absorptionCoefficient:
     description: Rate of optical energy absorption at specific wavelengths
-    unit: cm⁻¹
+    unit: "cm\u207B\xB9"
     relevance: Determines energy coupling efficiency
     laser_cleaning_impact: Directly affects cleaning effectiveness and penetration
       depth
@@ -381,7 +381,7 @@ materialPropertyDescriptions:
     laser_cleaning_impact: High reflectivity requires adjusted power settings
   thermalDiffusivity:
     description: Rate of thermal energy transfer through material
-    unit: mm²/s
+    unit: "mm\xB2/s"
     relevance: Affects heat spread and cooling rates
     laser_cleaning_impact: Influences pulse timing and thermal damage prevention
 environmentalImpactTemplates:
@@ -498,9 +498,9 @@ standardOutcomeMetrics:
   processing_speed:
     description: Rate of surface area processed per unit time
     units:
-    - m²/h
-    - cm²/min
-    - mm²/s
+    - "m\xB2/h"
+    - "cm\xB2/min"
+    - "mm\xB2/s"
   surface_quality_preservation:
     description: Maintenance of original surface characteristics after cleaning
   thermal_damage_avoidance:
@@ -520,7 +520,7 @@ industryGuidance:
     - Non-destructive surface treatment
     - Compliance with aerospace specifications
     - Prevention of hydrogen embrittlement
-    - Surface roughness control (Ra < 1.6 μm)
+    - "Surface roughness control (Ra < 1.6 \u03BCm)"
     standards_required:
     - AS9100 - Quality Management Systems for Aviation, Space and Defense
     - NADCAP - Special Process Certification
@@ -533,9 +533,9 @@ industryGuidance:
     - Landing gear maintenance
     - Engine component restoration
     quality_metrics:
-    - Particle count < 100/m³ (ISO 14644-1 Class 5)
+    - "Particle count < 100/m\xB3 (ISO 14644-1 Class 5)"
     - Surface cleanliness level SA 3 (ISO 8501-1)
-    - No material removal > 5 μm
+    - "No material removal > 5 \u03BCm"
   automotive:
     typical_materials:
     - Steel
@@ -563,9 +563,9 @@ industryGuidance:
     - Transmission housing cleaning
     - Weld seam cleaning
     quality_metrics:
-    - Cleanliness class CCC (< 50 mg/m² residual contamination)
+    - "Cleanliness class CCC (< 50 mg/m\xB2 residual contamination)"
     - Surface energy > 38 dynes/cm for coating adhesion
-    - Processing speed > 5 m²/h
+    - "Processing speed > 5 m\xB2/h"
   medical_devices:
     typical_materials:
     - Titanium
@@ -593,8 +593,8 @@ industryGuidance:
     - Prosthetic component preparation
     quality_metrics:
     - Bioburden < 10 CFU per device
-    - Particle count < 3520/m³ (ISO 14644-1 Class 7)
-    - Surface roughness Ra < 0.8 μm
+    - "Particle count < 3520/m\xB3 (ISO 14644-1 Class 7)"
+    - "Surface roughness Ra < 0.8 \u03BCm"
     - Endotoxin level < 0.5 EU/mL
   marine:
     typical_materials:
@@ -623,8 +623,8 @@ industryGuidance:
     - Ballast tank preparation
     quality_metrics:
     - Cleanliness level SA 2.5 (ISO 8501-1)
-    - Salt removal > 99% (< 7 mg/m² soluble salts)
-    - Surface profile 25-75 μm
+    - "Salt removal > 99% (< 7 mg/m\xB2 soluble salts)"
+    - "Surface profile 25-75 \u03BCm"
   construction:
     typical_materials:
     - Steel
@@ -652,8 +652,8 @@ industryGuidance:
     - Concrete surface preparation
     quality_metrics:
     - Cleanliness level SA 3 (ISO 8501-1)
-    - Material removal < 50 μm
-    - Processing speed > 10 m²/h
+    - "Material removal < 50 \u03BCm"
+    - "Processing speed > 10 m\xB2/h"
   manufacturing:
     typical_materials:
     - Steel
@@ -709,8 +709,8 @@ industryGuidance:
     - Wire bond pad cleaning
     - Solder mask removal
     quality_metrics:
-    - Particle count < 352/m³ (ISO 14644-1 Class 5)
-    - Ionic contamination < 1.56 μg/cm² NaCl equivalent
+    - "Particle count < 352/m\xB3 (ISO 14644-1 Class 5)"
+    - "Ionic contamination < 1.56 \u03BCg/cm\xB2 NaCl equivalent"
     - Surface resistivity unchanged (< 5% variation)
   defense:
     typical_materials:
@@ -811,7 +811,7 @@ safetyTemplates:
     - Dedicated work shoes (do not wear home)
     environmental_controls:
     - Fully enclosed processing chamber
-    - HEPA filtration (99.97% efficiency at 0.3 μm)
+    - "HEPA filtration (99.97% efficiency at 0.3 \u03BCm)"
     - Negative pressure work area
     - Contaminated waste disposal as hazardous material
     - Decontamination station at exit
@@ -850,8 +850,8 @@ safetyTemplates:
     - Safety shoes with chemical resistance
     environmental_controls:
     - Inert gas atmosphere (argon or nitrogen)
-    - Oxygen monitoring (maintain < 2% O₂)
-    - Moisture monitoring (maintain < 10 ppm H₂O)
+    - "Oxygen monitoring (maintain < 2% O\u2082)"
+    - "Moisture monitoring (maintain < 10 ppm H\u2082O)"
     - Emergency inert gas flooding system
     - Sand or dry powder extinguisher ready
     - No water sources in processing area
@@ -1003,11 +1003,11 @@ regulatoryTemplates:
     - Bioburden testing (< 10 CFU per device)
     - Endotoxin testing (< 0.5 EU/mL)
     - Particle count analysis (ISO 14644-1)
-    - Surface roughness measurement (Ra < 0.8 μm)
-    - Residual contamination analysis (< 10 μg/cm²)
+    - "Surface roughness measurement (Ra < 0.8 \u03BCm)"
+    - "Residual contamination analysis (< 10 \u03BCg/cm\xB2)"
     - Corrosion resistance testing
     environmental_requirements:
-    - ISO Class 7 cleanroom (≤ 352,000 particles/m³ at ≥0.5μm)
+    - "ISO Class 7 cleanroom (\u2264 352,000 particles/m\xB3 at \u22650.5\u03BCm)"
     - Environmental monitoring program
     - Personnel gowning and hygiene protocols
     - Facility qualification and monitoring
@@ -1037,13 +1037,13 @@ regulatoryTemplates:
     quality_requirements:
     - Advanced product quality planning (APQP)
     - First article inspection (FAI)
-    - Capability studies (Cpk ≥ 1.33)
+    - "Capability studies (Cpk \u2265 1.33)"
     - Layered process audits (LPA)
     - 8D problem solving for non-conformances
     cleanliness_standards:
     - Technical cleanliness per VDA 19 or ISO 16232
     - Particulate contamination limits by size class
-    - Residual oil and grease limits (< 50 mg/m²)
+    - "Residual oil and grease limits (< 50 mg/m\xB2)"
     - Surface energy requirements for coating adhesion (> 38 dynes/cm)
     supplier_requirements:
     - IATF 16949 certification required
@@ -1070,7 +1070,7 @@ regulatoryTemplates:
     - Personnel hygiene and training records
     validation_requirements:
     - Cleaning validation (3 consecutive successful runs)
-    - Microbial swab testing (< 10 CFU/cm²)
+    - "Microbial swab testing (< 10 CFU/cm\xB2)"
     - ATP bioluminescence testing (< 100 RLU)
     - Allergen residue testing (if applicable)
     - Annual revalidation
@@ -1079,7 +1079,7 @@ regulatoryTemplates:
     - NSF-certified equipment components
     - No toxic metal contamination
     - Corrosion-resistant materials only
-    - Non-porous, smooth surfaces (Ra < 0.8 μm)
+    - "Non-porous, smooth surfaces (Ra < 0.8 \u03BCm)"
   nuclear_applications:
     applicable_industries:
     - Nuclear Power
@@ -1124,8 +1124,8 @@ categories:
       density:
         max: 16.0
         min: 2.3
-        unit: g/cm³
-        adjustment_note: Tungsten carbide is 15.63 g/cm³
+        unit: "g/cm\xB3"
+        adjustment_note: "Tungsten carbide is 15.63 g/cm\xB3"
         adjustment_date: '2025-10-15'
         adjustment_source: materials_science_research
       hardness:
@@ -1140,7 +1140,7 @@ categories:
       laserAbsorption:
         max: 50
         min: 0.1
-        unit: cm⁻¹
+        unit: "cm\u207B\xB9"
       laserReflectivity:
         max: 90
         min: 5
@@ -1153,7 +1153,7 @@ categories:
       specificHeat:
         max: 2500.0
         min: 250
-        unit: J/kg·K
+        unit: "J/kg\xB7K"
         adjustment_note: Carbides have lower specific heat
         adjustment_date: '2025-10-15'
         adjustment_source: materials_science_research
@@ -1167,7 +1167,7 @@ categories:
       thermalConductivity:
         min: 0.8
         max: 120
-        unit: W/(m·K)
+        unit: "W/(m\xB7K)"
         source: MatWeb Materials Database
         confidence: 80
         notes: Typical range for ceramic materials at room temperature
@@ -1179,19 +1179,19 @@ categories:
         point:
           max: 3827
           min: 1000
-          unit: °C
+          unit: "\xB0C"
         type: thermal_shock
       thermalDiffusivity:
         max: 120
         min: 0.005
-        unit: mm²/s
+        unit: "mm\xB2/s"
         adjustment_note: Zirconia has low diffusivity
         adjustment_date: '2025-10-15'
         adjustment_source: materials_science_research
       thermalExpansion:
         max: 14
         min: 0.1
-        unit: µm/m·K
+        unit: "\xB5m/m\xB7K"
       youngsModulus:
         max: 600.0
         min: 5.0
@@ -1199,7 +1199,7 @@ categories:
       ablationThreshold:
         min: 1.5
         max: 5.0
-        unit: J/cm²
+        unit: "J/cm\xB2"
         source: RP Photonics Encyclopedia, Oxide Ceramics
         confidence: 75
         notes: Alumina, zirconia, silicon carbide - nanosecond pulses
@@ -1234,7 +1234,7 @@ categories:
       electricalResistivity:
         min: 10000000000.0
         max: 1.0e+16
-        unit: Ω·m
+        unit: "\u03A9\xB7m"
         description: Resistance to electrical current flow
         notes: Ceramics are insulators
         source: materials_science_literature
@@ -1253,7 +1253,7 @@ categories:
       fractureToughness:
         min: 2
         max: 10
-        unit: MPa·m^0.5
+        unit: "MPa\xB7m^0.5"
         description: Resistance to crack propagation
         notes: Ceramics brittle, low toughness
         source: materials_science_literature
@@ -1261,7 +1261,7 @@ categories:
       oxidationResistance:
         min: 600.0
         max: 2400.0
-        unit: °C
+        unit: "\xB0C"
         description: ''
         sample_count: 7
         auto_generated: true
@@ -1281,14 +1281,14 @@ categories:
       electricalResistivity:
         min: 1.0
         max: 1.0
-        unit: ×10¹⁴ Ω·cm
+        unit: "\xD710\xB9\u2074 \u03A9\xB7cm"
         confidence: 65
         typical: 1.0
     processingParameters:
       melting_point:
         min: 1900.0
         max: 2715.0
-        unit: °C
+        unit: "\xB0C"
         confidence: 75
         typical: 2229.0
     chemicalProperties:
@@ -1316,7 +1316,7 @@ categories:
       fracture_toughness:
         min: 0.5
         max: 10.0
-        unit: MPa·m^0.5
+        unit: "MPa\xB7m^0.5"
         description: Fracture toughness range for ceramic materials
         confidence: 75
         source: materials_analysis
@@ -1414,7 +1414,7 @@ categories:
       density:
         max: 8
         min: 0.5
-        unit: g/cm³
+        unit: "g/cm\xB3"
       hardness:
         max: 120
         min: 5.0
@@ -1425,7 +1425,7 @@ categories:
       laserAbsorption:
         max: 200
         min: 0.05
-        unit: cm⁻¹
+        unit: "cm\u207B\xB9"
       laserReflectivity:
         max: 80
         min: 2
@@ -1438,7 +1438,7 @@ categories:
       specificHeat:
         max: 2500.0
         min: 500
-        unit: J/kg·K
+        unit: "J/kg\xB7K"
       tensileStrength:
         max: 6000
         min: 20
@@ -1449,11 +1449,11 @@ categories:
       thermalConductivity:
         max: 400
         min: 0.03
-        unit: W/(m·K)
+        unit: "W/(m\xB7K)"
         source: ASM Handbook - Composites
         confidence: 75
-        notes: 'Wide range (0.1-400 W/m·K): polymer matrix ~0.2, carbon fiber ~10,
-          metal matrix 50-400'
+        notes: "Wide range (0.1-400 W/m\xB7K): polymer matrix ~0.2, carbon fiber ~10,\
+          \ metal matrix 50-400"
         last_updated: '2025-10-15T14:19:43.867281'
         adjustment_note: Fiberglass is insulating
         adjustment_date: '2025-10-15'
@@ -1462,16 +1462,16 @@ categories:
         point:
           max: 2000
           min: 150
-          unit: °C
+          unit: "\xB0C"
         type: decomposition
       thermalDiffusivity:
         max: 180
         min: 0.08
-        unit: mm²/s
+        unit: "mm\xB2/s"
       thermalExpansion:
         max: 250
         min: -1
-        unit: µm/m·K
+        unit: "\xB5m/m\xB7K"
       youngsModulus:
         max: 3000
         min: 0.001
@@ -1498,7 +1498,7 @@ categories:
       electricalResistivity:
         min: 0.001
         max: 100000000000000.0
-        unit: Ω·m
+        unit: "\u03A9\xB7m"
         description: Resistance to electrical current flow
         notes: Highly variable
         source: materials_science_literature
@@ -1514,7 +1514,7 @@ categories:
       fractureToughness:
         min: 20
         max: 100
-        unit: MPa·m^0.5
+        unit: "MPa\xB7m^0.5"
         description: Resistance to crack propagation
         notes: Fiber reinforcement increases toughness
         source: materials_science_literature
@@ -1522,7 +1522,7 @@ categories:
       oxidationResistance:
         min: 80.0
         max: 1650.0
-        unit: °C
+        unit: "\xB0C"
         description: ''
         sample_count: 13
         auto_generated: true
@@ -1602,7 +1602,7 @@ categories:
       density:
         max: 7.6
         min: 1.2
-        unit: g/cm³
+        unit: "g/cm\xB3"
       hardness:
         max: 9.5
         min: 3.5
@@ -1614,7 +1614,7 @@ categories:
       laserAbsorption:
         max: 10
         min: 0.001
-        unit: cm⁻¹
+        unit: "cm\u207B\xB9"
       laserReflectivity:
         max: 92
         min: 0.1
@@ -1627,8 +1627,8 @@ categories:
       specificHeat:
         max: 900
         min: 120
-        unit: J/kg·K
-        phase2_adjustment: Lead crystal at 130 J/(kg·K)
+        unit: "J/kg\xB7K"
+        phase2_adjustment: "Lead crystal at 130 J/(kg\xB7K)"
         adjustment_date: '2025-10-15'
       tensileStrength:
         max: 2000
@@ -1637,27 +1637,27 @@ categories:
       thermalConductivity:
         min: 0.7
         max: 30
-        unit: W/(m·K)
+        unit: "W/(m\xB7K)"
         source: MatWeb Materials Database
         confidence: 85
         notes: Typical range for glass materials at room temperature
         last_updated: '2025-10-14T23:58:54.459404'
-        phase2_adjustment: Lead crystal at 0.78 W/(m·K)
+        phase2_adjustment: "Lead crystal at 0.78 W/(m\xB7K)"
         adjustment_date: '2025-10-15'
       thermalDestruction:
         point:
           max: 1723
           min: 500
-          unit: °C
+          unit: "\xB0C"
         type: melting
       thermalDiffusivity:
         max: 15
         min: 0.01
-        unit: mm²/s
+        unit: "mm\xB2/s"
       thermalExpansion:
         max: 15
         min: 0.1
-        unit: µm/m·K
+        unit: "\xB5m/m\xB7K"
       youngsModulus:
         max: 400
         min: 10
@@ -1665,7 +1665,7 @@ categories:
       ablationThreshold:
         min: 2.0
         max: 6.0
-        unit: J/cm²
+        unit: "J/cm\xB2"
         source: Laser-Induced Damage in Optical Materials (NIST)
         confidence: 80
         notes: Silica, borosilicate - nanosecond pulses at 1064nm
@@ -1689,7 +1689,7 @@ categories:
       electricalResistivity:
         min: 10000000000.0
         max: 1000000000000000.0
-        unit: Ω·m
+        unit: "\u03A9\xB7m"
         description: Resistance to electrical current flow
         notes: Glass is insulator
         source: materials_science_literature
@@ -1705,7 +1705,7 @@ categories:
       fractureToughness:
         min: 0.5
         max: 2
-        unit: MPa·m^0.5
+        unit: "MPa\xB7m^0.5"
         description: Resistance to crack propagation
         notes: Glass very brittle
         source: materials_science_literature
@@ -1713,7 +1713,7 @@ categories:
       oxidationResistance:
         min: 400.0
         max: 1700.0
-        unit: °C
+        unit: "\xB0C"
         description: ''
         sample_count: 11
         auto_generated: true
@@ -1801,11 +1801,11 @@ categories:
       density:
         max: 3.2
         min: 0.6
-        unit: g/cm³
-        adjustment_note: Most masonry < 2.5 g/cm³
+        unit: "g/cm\xB3"
+        adjustment_note: "Most masonry < 2.5 g/cm\xB3"
         adjustment_date: '2025-10-15'
         adjustment_source: materials_science_research
-        phase2_adjustment: Cement at 3.15 g/cm³
+        phase2_adjustment: "Cement at 3.15 g/cm\xB3"
       hardness:
         max: 6
         min: 1
@@ -1816,7 +1816,7 @@ categories:
       laserAbsorption:
         max: 15
         min: 0.5
-        unit: cm⁻¹
+        unit: "cm\u207B\xB9"
       laserReflectivity:
         max: 70
         min: 10
@@ -1828,7 +1828,7 @@ categories:
       specificHeat:
         max: 1100
         min: 700
-        unit: J/kg·K
+        unit: "J/kg\xB7K"
       tensileStrength:
         max: 15
         min: 1
@@ -1836,7 +1836,7 @@ categories:
       thermalConductivity:
         max: 2.5
         min: 0.08
-        unit: W/(m·K)
+        unit: "W/(m\xB7K)"
         source: ASHRAE Handbook - Fundamentals
         confidence: 80
         notes: Concrete ~1.0, brick ~0.6, lightweight concrete 0.1-0.5, varies with
@@ -1846,16 +1846,16 @@ categories:
         point:
           max: 1200
           min: 500
-          unit: °C
+          unit: "\xB0C"
         type: spalling
       thermalDiffusivity:
         max: 1
         min: 0.1
-        unit: mm²/s
+        unit: "mm\xB2/s"
       thermalExpansion:
         max: 20
         min: 5
-        unit: µm/m·K
+        unit: "\xB5m/m\xB7K"
       youngsModulus:
         max: 50
         min: 3.0
@@ -1881,7 +1881,7 @@ categories:
       fractureToughness:
         min: 0.15
         max: 1.1
-        unit: MPa·√m
+        unit: "MPa\xB7\u221Am"
         description: ''
         sample_count: 7
         auto_generated: true
@@ -1897,7 +1897,7 @@ categories:
       oxidationResistance:
         min: 300.0
         max: 1200.0
-        unit: °C
+        unit: "\xB0C"
         description: ''
         sample_count: 7
         auto_generated: true
@@ -1990,7 +1990,7 @@ categories:
       density:
         max: 22.6
         min: 0.53
-        unit: g/cm³
+        unit: "g/cm\xB3"
       hardness:
         max: 3500
         min: 0.5
@@ -1998,7 +1998,7 @@ categories:
       laserAbsorption:
         max: 100
         min: 0.02
-        unit: cm⁻¹
+        unit: "cm\u207B\xB9"
       laserReflectivity:
         max: 99.9
         min: 5
@@ -2011,11 +2011,11 @@ categories:
       specificHeat:
         max: 2000
         min: 100
-        unit: J/kg·K
+        unit: "J/kg\xB7K"
       surfaceRoughness:
         min: 0.4
         max: 150
-        unit: μm Ra
+        unit: "\u03BCm Ra"
         source: Engineering ToolBox
         confidence: 85
         notes: Industrial metal finishing processes
@@ -2027,30 +2027,32 @@ categories:
       thermalConductivity:
         min: 7.0
         max: 430
-        unit: W/(m·K)
+        unit: "W/(m\xB7K)"
         source: MatWeb Materials Database
         confidence: 85
         notes: Typical range for metal materials at room temperature
         last_updated: '2025-10-14T23:58:54.459362'
-        phase2_adjustment: Manganese at 7.81 W/(m·K)
+        phase2_adjustment: "Manganese at 7.81 W/(m\xB7K)"
         adjustment_date: '2025-10-15'
       thermalDestruction:
-        min: -38.8
-        max: 3422
-        unit: °C
+        point:
+          min: -38.8
+          max: 3422
+          unit: "\xB0C"
         type: melting
-        research_basis: Metal melting points from Mercury (-38.8°C) to Tungsten (3422°C)
+        research_basis: "Metal melting points from Mercury (-38.8\xB0C) to Tungsten\
+          \ (3422\xB0C)"
         confidence: 98
       thermalDiffusivity:
         max: 174
         min: 0.06
-        unit: mm²/s
-        phase2_adjustment: Beryllium at 0.07 m²/s
+        unit: "mm\xB2/s"
+        phase2_adjustment: "Beryllium at 0.07 m\xB2/s"
         adjustment_date: '2025-10-15'
       thermalExpansion:
         max: 33
         min: 0.5
-        unit: µm/m·K
+        unit: "\xB5m/m\xB7K"
       youngsModulus:
         max: 600
         min: 5
@@ -2058,7 +2060,7 @@ categories:
       ablationThreshold:
         min: 2.0
         max: 8.0
-        unit: J/cm²
+        unit: "J/cm\xB2"
         source: Marks et al. 2022, Precision Engineering
         confidence: 90
         notes: Nanosecond pulse range for metals (most common industrial laser cleaning)
@@ -2077,10 +2079,11 @@ categories:
       oxidationResistance:
         min: 200
         max: 1200
-        unit: °C
+        unit: "\xB0C"
         source: ASM Metals Handbook - Corrosion
         confidence: 80
-        notes: 'Oxidation onset: Steel 200-400°C, Stainless 400-800°C, Ni alloys 800-1200°C'
+        notes: "Oxidation onset: Steel 200-400\xB0C, Stainless 400-800\xB0C, Ni alloys\
+          \ 800-1200\xB0C"
         last_updated: '2025-10-14T23:58:54.459355'
       compressiveStrength:
         min: 50
@@ -2101,17 +2104,17 @@ categories:
       electricalResistivity:
         min: 1.0e-08
         max: 1.5e-06
-        unit: Ω·m
+        unit: "\u03A9\xB7m"
         description: Resistance to electrical current flow
-        notes: Titanium at 48 μΩ·cm = 4.8e-5 Ω·m
+        notes: "Titanium at 48 \u03BC\u03A9\xB7cm = 4.8e-5 \u03A9\xB7m"
         source: materials_science_literature
         research_date: '2025-10-15'
-        phase2_adjustment: Titanium at 48 μΩ·cm
+        phase2_adjustment: "Titanium at 48 \u03BC\u03A9\xB7cm"
         adjustment_date: '2025-10-15'
       fractureToughness:
         min: 20
         max: 200
-        unit: MPa·m^0.5
+        unit: "MPa\xB7m^0.5"
         description: Resistance to crack propagation
         notes: Metals ductile, high toughness
         source: materials_science_literature
@@ -2127,7 +2130,7 @@ categories:
       laserDamageThreshold:
         min: 0.1
         max: 20.0
-        unit: J/cm²
+        unit: "J/cm\xB2"
         source: Laser-Induced Damage in Optical Materials (NIST)
         confidence: 85
         notes: Millisecond to nanosecond pulses for metal surfaces (polished vs. rough)
@@ -2136,10 +2139,11 @@ categories:
       boilingPoint:
         min: 907
         max: 5870
-        unit: °C
+        unit: "\xB0C"
         source: CRC Handbook of Chemistry and Physics
         confidence: 95
-        notes: Mercury 357°C, Zinc 907°C, Tungsten 5555°C, Rhenium 5870°C
+        notes: "Mercury 357\xB0C, Zinc 907\xB0C, Tungsten 5555\xB0C, Rhenium 5870\xB0\
+          C"
         measurement_context: Standard atmospheric pressure (1 atm)
         last_updated: '2025-10-17T00:00:00.000000'
       electricalConductivity:
@@ -2150,21 +2154,22 @@ categories:
         confidence: 90
         notes: Bismuth 0.77 MS/m, Aluminum 37.7 MS/m, Copper 59.6 MS/m, Silver 63.0
           MS/m
-        measurement_context: Room temperature (20°C), pure elements
+        measurement_context: "Room temperature (20\xB0C), pure elements"
         last_updated: '2025-10-17T00:00:00.000000'
       meltingPoint:
         min: -39
         max: 3422
-        unit: °C
+        unit: "\xB0C"
         source: CRC Handbook of Chemistry and Physics
         confidence: 95
-        notes: Mercury -38.8°C, Aluminum 660°C, Steel 1370-1540°C, Tungsten 3422°C
+        notes: "Mercury -38.8\xB0C, Aluminum 660\xB0C, Steel 1370-1540\xB0C, Tungsten\
+          \ 3422\xB0C"
         measurement_context: Standard atmospheric pressure (1 atm)
         last_updated: '2025-10-17T00:00:00.000000'
       absorptionCoefficient:
         min: 100000
         max: 50000000
-        unit: m⁻¹
+        unit: "m\u207B\xB9"
         source: Optical Properties of Metals (Palik)
         confidence: 80
         notes: At 1064nm wavelength - varies with surface oxide, roughness, temperature
@@ -2173,10 +2178,11 @@ categories:
       thermalShockResistance:
         min: 50
         max: 400
-        unit: ΔT °C
+        unit: "\u0394T \xB0C"
         source: Materials Science and Engineering (Callister)
         confidence: 75
-        notes: Cast iron ~50-100°C, Steel ~150-250°C, Nickel alloys ~300-400°C
+        notes: "Cast iron ~50-100\xB0C, Steel ~150-250\xB0C, Nickel alloys ~300-400\xB0\
+          C"
         measurement_context: Resistance to thermal stress cracking during rapid temperature
           changes
         last_updated: '2025-10-17T00:00:00.000000'
@@ -2216,7 +2222,7 @@ categories:
         source: NIST Thermophysical Properties Database
         confidence: 80
         notes: Room temperature vapor pressure, exponentially increases with temperature
-        measurement_context: 20°C ambient conditions, critical for vacuum applications
+        measurement_context: "20\xB0C ambient conditions, critical for vacuum applications"
         last_updated: '2025-10-17T00:00:00.000000'
     subcategories:
       ferrous:
@@ -2232,16 +2238,16 @@ categories:
           density:
             min: 7.2
             max: 8.0
-            unit: g/cm³
+            unit: "g/cm\xB3"
           thermalConductivity:
             min: 15.0
             max: 80.0
-            unit: W/m·K
+            unit: "W/m\xB7K"
           thermalDestruction:
             point:
               min: 1370
               max: 1538
-              unit: °C
+              unit: "\xB0C"
           hardness:
             min: 120
             max: 700
@@ -2266,16 +2272,16 @@ categories:
           density:
             min: 2.7
             max: 11.34
-            unit: g/cm³
+            unit: "g/cm\xB3"
           thermalConductivity:
             min: 60.0
             max: 429.0
-            unit: W/m·K
+            unit: "W/m\xB7K"
           thermalDestruction:
             point:
               min: 232
               max: 1085
-              unit: °C
+              unit: "\xB0C"
           laserReflectivity:
             min: 60
             max: 98
@@ -2300,16 +2306,16 @@ categories:
           density:
             min: 10.5
             max: 22.6
-            unit: g/cm³
+            unit: "g/cm\xB3"
           thermalConductivity:
             min: 70.0
             max: 429.0
-            unit: W/m·K
+            unit: "W/m\xB7K"
           thermalDestruction:
             point:
               min: 962
               max: 3422
-              unit: °C
+              unit: "\xB0C"
           laserReflectivity:
             min: 80
             max: 98
@@ -2334,16 +2340,16 @@ categories:
           density:
             min: 6.0
             max: 19.3
-            unit: g/cm³
+            unit: "g/cm\xB3"
           thermalConductivity:
             min: 22.0
             max: 174.0
-            unit: W/m·K
+            unit: "W/m\xB7K"
           thermalDestruction:
             point:
               min: 1855
               max: 3422
-              unit: °C
+              unit: "\xB0C"
           hardness:
             min: 150
             max: 3500
@@ -2371,16 +2377,16 @@ categories:
           density:
             min: 0.53
             max: 8.9
-            unit: g/cm³
+            unit: "g/cm\xB3"
           thermalConductivity:
             min: 6.0
             max: 100.0
-            unit: W/m·K
+            unit: "W/m\xB7K"
           thermalDestruction:
             point:
               min: 30
               max: 1907
-              unit: °C
+              unit: "\xB0C"
           hardness:
             min: 0.5
             max: 1200
@@ -2400,7 +2406,7 @@ categories:
       electricalResistivity:
         min: 1.0
         max: 100.0
-        unit: nΩ·m
+        unit: "n\u03A9\xB7m"
         confidence: 95
         typical: 55.36666666666667
     chemicalProperties:
@@ -2418,13 +2424,13 @@ categories:
       melting_point:
         min: 900.0
         max: 3422.0
-        unit: °C
+        unit: "\xB0C"
         confidence: 90
         typical: 1624.0833333333333
       curie_temperature:
         min: 355.0
         max: 1115.0
-        unit: °C
+        unit: "\xB0C"
         confidence: 70
         typical: 735.0
     structuralProperties:
@@ -2529,7 +2535,7 @@ categories:
       ablationThreshold:
         min: 0.1
         max: 50.0
-        unit: J/cm²
+        unit: "J/cm\xB2"
   plastic:
     name: Plastic Materials
     description: Polymeric materials including thermoplastics, thermosets, elastomers,
@@ -2538,7 +2544,7 @@ categories:
       density:
         max: 2.2
         min: 0.85
-        unit: g/cm³
+        unit: "g/cm\xB3"
       hardness:
         max: Shore D 90
         min: Shore A 10
@@ -2546,7 +2552,7 @@ categories:
       laserAbsorption:
         max: 100
         min: 0.1
-        unit: cm⁻¹
+        unit: "cm\u207B\xB9"
       laserReflectivity:
         max: 95
         min: 4.0
@@ -2558,12 +2564,12 @@ categories:
       specificHeat:
         max: 2500
         min: 1.0
-        unit: J/(kg·K)
-        adjustment_note: Unit appears to be kJ/(kg·K) not J/(kg·K)
+        unit: "J/(kg\xB7K)"
+        adjustment_note: "Unit appears to be kJ/(kg\xB7K) not J/(kg\xB7K)"
         adjustment_date: '2025-10-15'
         adjustment_source: materials_science_research
-        phase2_adjustment: TPE/Urethane at 1800 J/(kg·K)
-        notes: Elastomers 1500-2000 J/(kg·K), rigid plastics 1000-1500
+        phase2_adjustment: "TPE/Urethane at 1800 J/(kg\xB7K)"
+        notes: "Elastomers 1500-2000 J/(kg\xB7K), rigid plastics 1000-1500"
       tensileStrength:
         max: 400
         min: 10
@@ -2574,22 +2580,22 @@ categories:
       thermalConductivity:
         max: 3
         min: 0.02
-        unit: W/(m·K)
+        unit: "W/(m\xB7K)"
         source: MatWeb Materials Database - Polymers
         confidence: 75
-        notes: Wide range includes specialty filled polymers (0.02-3 W/m·K); typical
-          unfilled polymers 0.15-0.35 W/m·K
+        notes: "Wide range includes specialty filled polymers (0.02-3 W/m\xB7K); typical\
+          \ unfilled polymers 0.15-0.35 W/m\xB7K"
         last_updated: '2025-10-15T14:19:43.867225'
       thermalDestruction:
         point:
           max: 400
           min: 80
-          unit: °C
+          unit: "\xB0C"
         type: decomposition
       thermalDiffusivity:
         max: 1
         min: 0.08
-        unit: mm²/s
+        unit: "mm\xB2/s"
         adjustment_note: Rubber has low diffusivity
         adjustment_date: '2025-10-15'
         adjustment_source: materials_science_research
@@ -2597,7 +2603,7 @@ categories:
       thermalExpansion:
         max: 200
         min: 10
-        unit: µm/m·K
+        unit: "\xB5m/m\xB7K"
       youngsModulus:
         max: 5000
         min: 0.01
@@ -2624,7 +2630,7 @@ categories:
       electricalResistivity:
         min: 1000000000000.0
         max: 1.0e+16
-        unit: Ω·m
+        unit: "\u03A9\xB7m"
         description: Resistance to electrical current flow
         notes: Polymers are insulators
         source: materials_science_literature
@@ -2640,7 +2646,7 @@ categories:
       fractureToughness:
         min: 1
         max: 10
-        unit: MPa·m^0.5
+        unit: "MPa\xB7m^0.5"
         description: Resistance to crack propagation
         notes: Polymers variable toughness
         source: materials_science_literature
@@ -2648,7 +2654,7 @@ categories:
       oxidationResistance:
         min: 60.0
         max: 260.0
-        unit: °C
+        unit: "\xB0C"
         description: ''
         sample_count: 6
         auto_generated: true
@@ -2728,8 +2734,8 @@ categories:
       density:
         max: 7.13
         min: 2.3
-        unit: g/cm³
-        phase2_adjustment: Silicon at 2.329 g/cm³
+        unit: "g/cm\xB3"
+        phase2_adjustment: "Silicon at 2.329 g/cm\xB3"
         adjustment_date: '2025-10-15'
       hardness:
         max: 2600
@@ -2741,7 +2747,7 @@ categories:
       laserAbsorption:
         max: 100
         min: 0.01
-        unit: cm⁻¹
+        unit: "cm\u207B\xB9"
       laserReflectivity:
         max: 70
         min: 10
@@ -2754,7 +2760,7 @@ categories:
       specificHeat:
         max: 900
         min: 300
-        unit: J/kg·K
+        unit: "J/kg\xB7K"
       tensileStrength:
         max: 7000
         min: 50
@@ -2762,25 +2768,25 @@ categories:
       thermalConductivity:
         max: 156
         min: 0.2
-        unit: W/(m·K)
+        unit: "W/(m\xB7K)"
         source: Semiconductor Material and Device Characterization (Schroder)
         confidence: 85
-        notes: Si ~156 W/m·K, GaAs ~55, GaN ~130, temperature and doping dependent
+        notes: "Si ~156 W/m\xB7K, GaAs ~55, GaN ~130, temperature and doping dependent"
         last_updated: '2025-10-15T14:19:43.867299'
       thermalDestruction:
         point:
           max: 1414
           min: 100
-          unit: °C
+          unit: "\xB0C"
         type: melting
       thermalDiffusivity:
         max: 90
         min: 0.1
-        unit: mm²/s
+        unit: "mm\xB2/s"
       thermalExpansion:
         max: 10
         min: 2.6
-        unit: µm/m·K
+        unit: "\xB5m/m\xB7K"
       youngsModulus:
         max: 450
         min: 5
@@ -2790,7 +2796,7 @@ categories:
       electricalResistivity:
         min: 0.001
         max: 1000.0
-        unit: Ω·m
+        unit: "\u03A9\xB7m"
         description: Resistance to electrical current flow
         notes: Silicon, germanium
         source: materials_science_literature
@@ -2798,7 +2804,7 @@ categories:
       fractureToughness:
         min: 0.75
         max: 3.0
-        unit: MPa·√m
+        unit: "MPa\xB7\u221Am"
         description: ''
         sample_count: 3
         auto_generated: true
@@ -2814,7 +2820,7 @@ categories:
       oxidationResistance:
         min: 600.0
         max: 1600.0
-        unit: °C
+        unit: "\xB0C"
         description: ''
         sample_count: 4
         auto_generated: true
@@ -2843,14 +2849,14 @@ categories:
       electricalResistivity:
         min: 1.0
         max: 100.0
-        unit: ×10⁸ Ω·cm
+        unit: "\xD710\u2078 \u03A9\xB7cm"
         confidence: 80
         typical: 25.75
     processingParameters:
       melting_point:
         min: 1238.0
         max: 2830.0
-        unit: °C
+        unit: "\xB0C"
         confidence: 80
         typical: 1708.0
     structuralProperties:
@@ -2945,7 +2951,7 @@ categories:
       density:
         max: 6.0
         min: 1.5
-        unit: g/cm³
+        unit: "g/cm\xB3"
         adjustment_note: Some stones denser (basalt 2.8-3.0)
         adjustment_date: '2025-10-15'
         adjustment_source: materials_science_research
@@ -2959,8 +2965,8 @@ categories:
       laserAbsorption:
         max: 100
         min: 0.1
-        unit: cm⁻¹
-        phase2_adjustment: Alabaster at 85 cm⁻¹
+        unit: "cm\u207B\xB9"
+        phase2_adjustment: "Alabaster at 85 cm\u207B\xB9"
         adjustment_date: '2025-10-15'
       laserReflectivity:
         max: 80
@@ -2974,7 +2980,7 @@ categories:
       specificHeat:
         max: 1200
         min: 400
-        unit: J/kg·K
+        unit: "J/kg\xB7K"
         adjustment_note: Some stones have lower specific heat
         adjustment_date: '2025-10-15'
         adjustment_source: materials_science_research
@@ -2985,25 +2991,25 @@ categories:
       thermalConductivity:
         max: 8
         min: 0.2
-        unit: W/(m·K)
+        unit: "W/(m\xB7K)"
         source: Engineering ToolBox - Building Materials
         confidence: 75
-        notes: Most stones 1-4 W/m·K, granite ~2.8, limestone ~1.3, marble ~2.5
+        notes: "Most stones 1-4 W/m\xB7K, granite ~2.8, limestone ~1.3, marble ~2.5"
         last_updated: '2025-10-15T14:19:43.867263'
       thermalDestruction:
         point:
           max: 1700
           min: 600
-          unit: °C
+          unit: "\xB0C"
         type: thermal_shock
       thermalDiffusivity:
         max: 2.5
         min: 0.2
-        unit: mm²/s
+        unit: "mm\xB2/s"
       thermalExpansion:
         max: 30
         min: 3
-        unit: µm/m·K
+        unit: "\xB5m/m\xB7K"
       youngsModulus:
         max: 100
         min: 10
@@ -3035,7 +3041,7 @@ categories:
       fractureToughness:
         min: 0.5
         max: 5
-        unit: MPa·m^0.5
+        unit: "MPa\xB7m^0.5"
         description: Resistance to crack propagation
         notes: Stone brittle like ceramics
         source: materials_science_literature
@@ -3051,7 +3057,7 @@ categories:
       oxidationResistance:
         min: 400.0
         max: 870.0
-        unit: °C
+        unit: "\xB0C"
         description: ''
         sample_count: 18
         auto_generated: true
@@ -3068,7 +3074,7 @@ categories:
           density:
             min: 2.4
             max: 3.0
-            unit: g/cm³
+            unit: "g/cm\xB3"
           hardness:
             min: 5
             max: 7
@@ -3076,7 +3082,7 @@ categories:
           thermalConductivity:
             min: 1.7
             max: 3.5
-            unit: W/m·K
+            unit: "W/m\xB7K"
           compressiveStrength:
             min: 1000
             max: 3500
@@ -3098,7 +3104,7 @@ categories:
           density:
             min: 1.5
             max: 2.7
-            unit: g/cm³
+            unit: "g/cm\xB3"
           hardness:
             min: 1
             max: 4
@@ -3110,7 +3116,7 @@ categories:
           thermalConductivity:
             min: 0.2
             max: 2.5
-            unit: W/m·K
+            unit: "W/m\xB7K"
         special_considerations:
         - High porosity absorbs moisture and contaminants
         - Layered structure prone to delamination
@@ -3129,7 +3135,7 @@ categories:
           density:
             min: 2.3
             max: 3.1
-            unit: g/cm³
+            unit: "g/cm\xB3"
           hardness:
             min: 3
             max: 7
@@ -3137,7 +3143,7 @@ categories:
           thermalConductivity:
             min: 1.5
             max: 5.0
-            unit: W/m·K
+            unit: "W/m\xB7K"
           compressiveStrength:
             min: 500
             max: 2500
@@ -3161,7 +3167,7 @@ categories:
           density:
             min: 1.8
             max: 3.2
-            unit: g/cm³
+            unit: "g/cm\xB3"
           hardness:
             min: 1
             max: 4
@@ -3169,7 +3175,7 @@ categories:
           thermalConductivity:
             min: 0.5
             max: 3.0
-            unit: W/m·K
+            unit: "W/m\xB7K"
           porosity:
             min: 0.1
             max: 15.0
@@ -3304,8 +3310,8 @@ categories:
       density:
         max: 1.5
         min: 0.12
-        unit: g/cm³
-        adjustment_note: Some hardwoods exceed 1.0 g/cm³
+        unit: "g/cm\xB3"
+        adjustment_note: "Some hardwoods exceed 1.0 g/cm\xB3"
         adjustment_date: '2025-10-15'
         adjustment_source: materials_science_research
       hardness:
@@ -3318,7 +3324,7 @@ categories:
       laserAbsorption:
         max: 50
         min: 1
-        unit: cm⁻¹
+        unit: "cm\u207B\xB9"
       laserReflectivity:
         max: 60
         min: 10
@@ -3331,7 +3337,7 @@ categories:
       specificHeat:
         max: 2500
         min: 800
-        unit: J/kg·K
+        unit: "J/kg\xB7K"
       tensileStrength:
         max: 200
         min: 20
@@ -3339,22 +3345,22 @@ categories:
       thermalConductivity:
         max: 0.4
         min: 0.04
-        unit: W/(m·K)
+        unit: "W/(m\xB7K)"
         source: Wood Handbook - Wood as an Engineering Material (USDA Forest Service)
         confidence: 80
-        notes: Across grain 0.04-0.2 W/m·K, along grain can be 2-3x higher; moisture
-          content affects values
+        notes: "Across grain 0.04-0.2 W/m\xB7K, along grain can be 2-3x higher; moisture\
+          \ content affects values"
         last_updated: '2025-10-15T14:19:43.867244'
       thermalDestruction:
         point:
           max: 500
           min: 200
-          unit: °C
+          unit: "\xB0C"
         type: carbonization
       thermalDiffusivity:
         max: 0.4
         min: 0.0001
-        unit: mm²/s
+        unit: "mm\xB2/s"
         adjustment_note: Some woods have lower diffusivity
         adjustment_date: '2025-10-15'
         adjustment_source: materials_science_research
@@ -3362,7 +3368,7 @@ categories:
       thermalExpansion:
         max: 60
         min: 3.0
-        unit: µm/m·K
+        unit: "\xB5m/m\xB7K"
       youngsModulus:
         max: 20000
         min: 5
@@ -3397,7 +3403,7 @@ categories:
       fractureToughness:
         min: 0.33
         max: 4.4
-        unit: MPa·√m
+        unit: "MPa\xB7\u221Am"
         description: ''
         sample_count: 19
         auto_generated: true
@@ -3413,7 +3419,7 @@ categories:
       oxidationResistance:
         min: 82.0
         max: 204.0
-        unit: °C
+        unit: "\xB0C"
         description: ''
         sample_count: 20
         auto_generated: true
@@ -3438,7 +3444,7 @@ categories:
           density:
             min: 0.5
             max: 1.25
-            unit: g/cm³
+            unit: "g/cm\xB3"
           hardness:
             min: 900
             max: 5000
@@ -3451,7 +3457,7 @@ categories:
             point:
               min: 300
               max: 450
-              unit: °C
+              unit: "\xB0C"
         special_considerations:
         - Dense grain structure requires precise cleaning
         - Higher value than softwoods - minimize surface damage
@@ -3471,7 +3477,7 @@ categories:
           density:
             min: 0.3
             max: 0.6
-            unit: g/cm³
+            unit: "g/cm\xB3"
           hardness:
             min: 20
             max: 900
@@ -3484,7 +3490,7 @@ categories:
             point:
               min: 250
               max: 380
-              unit: °C
+              unit: "\xB0C"
         special_considerations:
         - Softer structure - gentler cleaning required
         - Resin content in pine requires special attention
@@ -3501,7 +3507,7 @@ categories:
           density:
             min: 0.5
             max: 0.85
-            unit: g/cm³
+            unit: "g/cm\xB3"
           hardness:
             min: 500
             max: 1500
@@ -3514,7 +3520,7 @@ categories:
             point:
               min: 200
               max: 350
-              unit: °C
+              unit: "\xB0C"
         special_considerations:
         - Adhesives require careful temperature control
         - Layered structure (plywood) needs even heating
@@ -3531,7 +3537,7 @@ categories:
           density:
             min: 0.6
             max: 1.2
-            unit: g/cm³
+            unit: "g/cm\xB3"
           hardness:
             min: 1000
             max: 4500
@@ -3544,7 +3550,7 @@ categories:
             point:
               min: 300
               max: 450
-              unit: °C
+              unit: "\xB0C"
         special_considerations:
         - Bamboo technically grass - very hard, fast-growing
         - Rosewood endangered - CITES regulations apply
@@ -3664,8 +3670,9 @@ categories:
       density:
         min: 6.1
         max: 9.8
-        unit: g/cm³
-        research_basis: Lanthanides range from La (6.15 g/cm³) to Lu (9.84 g/cm³)
+        unit: "g/cm\xB3"
+        research_basis: "Lanthanides range from La (6.15 g/cm\xB3) to Lu (9.84 g/cm\xB3\
+          )"
         confidence: 98
       hardness:
         min: 25
@@ -3683,22 +3690,23 @@ categories:
       thermalConductivity:
         min: 10
         max: 17
-        unit: W/(m·K)
-        research_basis: Rare-earth thermal conductivity ranges from 10-17 W/(m·K)
-          at room temperature
+        unit: "W/(m\xB7K)"
+        research_basis: "Rare-earth thermal conductivity ranges from 10-17 W/(m\xB7\
+          K) at room temperature"
         confidence: 92
       thermalExpansion:
         min: 5.0
         max: 12.0
-        unit: 10⁻⁶/K
-        research_basis: Lanthanide thermal expansion coefficients typically 5-12 ×
-          10⁻⁶/K
+        unit: "10\u207B\u2076/K"
+        research_basis: "Lanthanide thermal expansion coefficients typically 5-12\
+          \ \xD7 10\u207B\u2076/K"
         confidence: 90
       specificHeat:
         min: 150
         max: 200
-        unit: J/(kg·K)
-        research_basis: Rare-earth specific heat capacities range 150-200 J/(kg·K)
+        unit: "J/(kg\xB7K)"
+        research_basis: "Rare-earth specific heat capacities range 150-200 J/(kg\xB7\
+          K)"
         confidence: 88
       youngsModulus:
         min: 25
@@ -3707,9 +3715,11 @@ categories:
         research_basis: Elastic modulus for lanthanides typically 25-65 GPa
         confidence: 85
       thermalDestruction:
-        min: 1000
-        max: 1700
-        unit: K
+        point:
+          min: 1000
+          max: 1700
+          unit: K
+        type: melting
         research_basis: Lanthanide thermal destruction points range from ~1000K (Ce)
           to ~1700K (Lu)
         confidence: 98
@@ -3729,20 +3739,23 @@ categories:
       oxidationResistance:
         min: 300
         max: 600
-        unit: °C
-        research_basis: Lanthanides oxidize readily above 300-600°C depending on element
+        unit: "\xB0C"
+        research_basis: "Lanthanides oxidize readily above 300-600\xB0C depending\
+          \ on element"
         confidence: 88
       absorptionCoefficient:
         min: 0.3
         max: 0.8
         unit: dimensionless
-        research_basis: Rare-earth metals have moderate to high absorption coefficients at laser wavelengths
+        research_basis: Rare-earth metals have moderate to high absorption coefficients
+          at laser wavelengths
         confidence: 85
       ablationThreshold:
         min: 0.5
         max: 2.0
-        unit: J/cm²
-        research_basis: Lanthanide ablation thresholds typically range 0.5-2.0 J/cm² for 1064nm
+        unit: "J/cm\xB2"
+        research_basis: "Lanthanide ablation thresholds typically range 0.5-2.0 J/cm\xB2\
+          \ for 1064nm"
         confidence: 87
     subcategories:
       lanthanide:
@@ -3761,7 +3774,7 @@ categories:
           density:
             min: 6.1
             max: 9.8
-            unit: g/cm³
+            unit: "g/cm\xB3"
           hardness:
             min: 25
             max: 60
@@ -3805,7 +3818,7 @@ categories:
       electrical_resistivity:
         min: 50
         max: 150
-        unit: μΩ·cm
+        unit: "\u03BC\u03A9\xB7cm"
         confidence: 90
         typical: 75
         description: Electrical resistivity for lanthanide elements
@@ -3820,7 +3833,7 @@ categories:
       chemical_stability:
         min: 20
         max: 45
-        unit: 'relative scale'
+        unit: relative scale
         confidence: 85
         typical: 30
         description: Generally poor chemical stability due to reactivity
@@ -3847,7 +3860,7 @@ categories:
       lattice_parameters:
         min: 3.5
         max: 4.0
-        unit: Å
+        unit: "\xC5"
         confidence: 90
         description: Typical lattice parameter range for lanthanide crystal structures
     properties:
@@ -3890,19 +3903,19 @@ materialPropertiesDefinitions:
     common_properties:
       thermalConductivity:
         description: Rate of heat transfer through material
-        unit: W/(m·K)
+        unit: "W/(m\xB7K)"
         measurement_method: ASTM C177 - Steady-State Heat Flux
       thermalExpansion:
         description: Change in dimensions with temperature
-        unit: /K or /°C
+        unit: "/K or /\xB0C"
         measurement_method: ASTM E228 - Linear Thermal Expansion
       specificHeat:
         description: Heat capacity per unit mass
-        unit: J/(kg·K)
+        unit: "J/(kg\xB7K)"
         measurement_method: ASTM C351 - Mean Specific Heat
       operatingTemperature:
         description: Safe operational temperature range
-        unit: °C
+        unit: "\xB0C"
         measurement_method: Material-specific testing protocols
   mechanicalProperties:
     description: Material response to applied forces and deformation
@@ -3929,14 +3942,14 @@ materialPropertiesDefinitions:
         measurement_method: ASTM D790 - Flexural Properties
       fractureToughness:
         description: Resistance to crack propagation
-        unit: MPa·m^0.5
+        unit: "MPa\xB7m^0.5"
         measurement_method: ASTM E399 - Plane-Strain Fracture Toughness
   electricalProperties:
     description: Electrical behavior and conductivity characteristics
     common_properties:
       electricalResistivity:
         description: Resistance to electrical current flow
-        unit: Ω·m, Ω·cm, nΩ·m
+        unit: "\u03A9\xB7m, \u03A9\xB7cm, n\u03A9\xB7m"
         measurement_method: ASTM B193 - Resistivity of Electrical Conductor Materials
       dielectricConstant:
         description: Relative permittivity for insulating materials
@@ -3951,7 +3964,7 @@ materialPropertiesDefinitions:
         measurement_method: ASTM C373 - Water Absorption
       firingTemperature:
         description: Temperature for ceramic processing
-        unit: °C
+        unit: "\xB0C"
         measurement_method: Material-specific processing protocols
       moistureContent:
         description: Water content in material

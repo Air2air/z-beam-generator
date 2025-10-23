@@ -98,7 +98,14 @@ def analyze_completeness():
         cat = mat_data.get('category', 'unknown')
         materials_by_category[cat].append(mat_name)
         
-        props = mat_data.get('properties', {})
+        # Extract properties from the nested materialProperties structure
+        props = {}
+        mat_props = mat_data.get('materialProperties', {})
+        if isinstance(mat_props, dict):
+            # Flatten the nested structure to get all properties
+            for section in mat_props.values():
+                if isinstance(section, dict) and 'properties' in section:
+                    props.update(section['properties'])
         
         # Track all properties this material should have
         expected_props = properties_by_category.get(cat, set())

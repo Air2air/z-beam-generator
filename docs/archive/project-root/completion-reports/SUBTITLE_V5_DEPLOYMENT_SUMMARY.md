@@ -156,7 +156,7 @@ All subtitles maintain:
 
 All 122 frontmatter YAML files deployed to:
 ```
-/Users/todddunning/Desktop/Z-Beam/z-beam-test-push/content/components/frontmatter/
+/Users/todddunning/Desktop/Z-Beam/z-beam-test-push/content/frontmatter/
 ```
 
 ### Categories Covered

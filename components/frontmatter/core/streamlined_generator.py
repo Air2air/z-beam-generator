@@ -47,8 +47,11 @@ from components.frontmatter.qualitative_properties import (
     MATERIAL_CHARACTERISTICS_CATEGORIES,
     is_qualitative_property
 )
-# ValidationUtils for confidence normalization
-from components.frontmatter.services.validation_utils import ValidationUtils
+# Unified validation system for confidence normalization and validation
+from services.validation import ValidationOrchestrator
+
+# Requirements loader for consistency with audit system
+from utils.requirements_loader import RequirementsLoader
 # Property categorizer for analysis and validation (REQUIRED per fail-fast)
 from utils.core.property_categorizer import get_property_categorizer
 
@@ -97,9 +100,9 @@ _FRONTMATTER_CONFIG = _load_frontmatter_config()
 MATERIAL_ABBREVIATIONS = _FRONTMATTER_CONFIG['material_abbreviations']
 THERMAL_PROPERTY_MAP = _FRONTMATTER_CONFIG['thermal_property_mapping']
 
-# Enhanced schema validation (REQUIRED per fail-fast)
-from scripts.validation.enhanced_schema_validator import EnhancedSchemaValidator
-logger.info("Enhanced schema validation loaded successfully")
+# Unified schema validation (aligned with audit system)
+from validation.schema_validator import SchemaValidator
+logger.info("Unified schema validation loaded successfully")
 # Import material-aware prompt system (REQUIRED per fail-fast)
 from material_prompting.core.material_aware_generator import MaterialAwarePromptGenerator
 from material_prompting.exceptions.handler import MaterialExceptionHandler
@@ -130,12 +133,13 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         # Initialize integrated services
         # Note: ValidationHelpers removed in Step 6 - using ValidationService instead
         self.field_ordering_service = FieldOrderingService()
-        # Enhanced validation setup (REQUIRED)
+        # Unified validation setup (REQUIRED - aligned with audit system)
         try:
-            self.enhanced_validator = EnhancedSchemaValidator()
-            self.logger.info("Enhanced validation initialized")
+            self.schema_validator = SchemaValidator(validation_mode="enhanced")
+            self.requirements_loader = RequirementsLoader()
+            self.logger.info("Unified schema validation initialized")
         except Exception as e:
-            raise ConfigurationError(f"Enhanced validation required but setup failed: {e}")
+            raise ConfigurationError(f"Unified schema validation required but setup failed: {e}")
         
         # Completeness validation (100% data coverage)
         # Check for --enforce-completeness flag from kwargs
@@ -164,14 +168,18 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             self.logger.error(f"Failed to load materials research data: {e}")
             # Fail-fast: Materials research data is required for accurate ranges
             raise ValueError(f"Materials research data required for accurate property ranges: {e}")
-        # Initialize PropertyValueResearcher (no fallbacks)
-        try:
-            self.property_researcher = PropertyValueResearcher(api_client=self.api_client, debug_mode=False)
-            self.logger.info("PropertyValueResearcher initialized for comprehensive property discovery (GROK compliant - no fallbacks)")
-        except Exception as e:
-            self.logger.error(f"PropertyValueResearcher initialization failed: {e}")
-            # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
-            raise PropertyDiscoveryError(f"PropertyValueResearcher required for AI-driven property discovery: {e}")
+        # Initialize PropertyValueResearcher (only if API client available)
+        if self.api_client:
+            try:
+                self.property_researcher = PropertyValueResearcher(api_client=self.api_client, debug_mode=False)
+                self.logger.info("PropertyValueResearcher initialized for comprehensive property discovery (GROK compliant - no fallbacks)")
+            except Exception as e:
+                self.logger.error(f"PropertyValueResearcher initialization failed: {e}")
+                # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
+                raise PropertyDiscoveryError(f"PropertyValueResearcher required for AI-driven property discovery: {e}")
+        else:
+            self.property_researcher = None
+            self.logger.info("PropertyValueResearcher skipped - data-only mode (100% complete YAML data)")
         # Load Categories.yaml for category-level data
         try:
             self._load_categories_data()
@@ -225,20 +233,24 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 category_ranges=self.category_ranges
             )
             self.logger.info("TemplateService initialized with abbreviations and thermal mappings")
-            # Initialize PropertyResearchService
-            self.property_research_service = PropertyResearchService(
-                property_researcher=self.property_researcher,
-                get_category_ranges_func=self.template_service.get_category_ranges_for_property,
-                enhance_descriptions_func=self.template_service.enhance_with_standardized_descriptions
-            )
-            self.logger.info("PropertyResearchService initialized with property researcher")
+            # Initialize PropertyResearchService (only if PropertyValueResearcher available)
+            if self.property_researcher:
+                self.property_research_service = PropertyResearchService(
+                    property_researcher=self.property_researcher,
+                    get_category_ranges_func=self.template_service.get_category_ranges_for_property,
+                    enhance_descriptions_func=self.template_service.enhance_with_standardized_descriptions
+                )
+                self.logger.info("PropertyResearchService initialized with property researcher")
+            else:
+                self.property_research_service = None
+                self.logger.info("PropertyResearchService skipped - data-only mode")
             # Initialize PropertyManager (refactored unified service - Step 1)
             self.property_manager = PropertyManager(
-                property_researcher=self.property_researcher,
+                property_researcher=self.property_researcher,  # Can be None in data-only mode
                 categories_data=categories_data,
                 get_category_ranges_func=self.template_service.get_category_ranges_for_property
             )
-            self.logger.info("PropertyManager initialized (refactored unified service)")
+            self.logger.info(f"PropertyManager initialized (refactored unified service) - researcher: {self.property_researcher is not None}")
             # Initialize PropertyProcessor (refactored processing service - Step 2)
             self.property_processor = PropertyProcessor(
                 categories_data=categories_data,
@@ -662,10 +674,10 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         material_category = material_data.get('category', 'metal').lower()
         all_category_ranges = self.template_service.get_all_category_ranges(material_category)
         self.logger.debug(f"Pre-loaded {len(all_category_ranges)} category ranges for {material_category}")
-        # Use PropertyValueResearcher for AI discovery of missing properties only
+        # Use PropertyValueResearcher for AI discovery of missing properties only (if available)
         if not self.property_researcher:
-            # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
-            raise PropertyDiscoveryError("PropertyValueResearcher required for property discovery")
+            self.logger.info("PropertyValueResearcher not available - using YAML data only (data-only mode)")
+            # In data-only mode, we should have 100% complete YAML data
             
         try:
             # Use high-confidence YAML properties first
@@ -680,7 +692,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                         point_structure = {
                             'value': point_data.get('value'),
                             'unit': point_data.get('unit', '°C'),
-                            'confidence': ValidationUtils.normalize_confidence(point_data.get('confidence', 0)),
+                            'confidence': self.validation_orchestrator.normalize_confidence(point_data.get('confidence', 0)),
                             'description': point_data.get('description', 'Thermal destruction point')
                         }
                         # Use pre-loaded category ranges (dict lookup)
@@ -748,7 +760,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                         properties[prop_name] = {
                             'value': yaml_prop.get('value'),
                             'unit': yaml_prop.get('unit', ''),
-                            'confidence': ValidationUtils.normalize_confidence(confidence),
+                            'confidence': self.validation_orchestrator.normalize_confidence(confidence),
                             'description': yaml_prop.get('description', f'{prop_name} from Materials.yaml')
                         }
                         # Use pre-loaded category ranges

@@ -12,6 +12,7 @@
 | **Fix API connection issues** | [api/ERROR_HANDLING.md](api/ERROR_HANDLING.md) |
 | **Generate content for materials** | [operations/CONTENT_GENERATION.md](operations/CONTENT_GENERATION.md) |
 | **Understand data architecture** | [DATA_ARCHITECTURE.md](DATA_ARCHITECTURE.md) |
+| **Property terminology reference** | [PROPERTY_TERMINOLOGY_REFERENCE.md](PROPERTY_TERMINOLOGY_REFERENCE.md) ✨ NEW |
 | **Understand voice system** | [../voice/VOICE_SYSTEM_COMPLETE.md](../voice/VOICE_SYSTEM_COMPLETE.md) |
 | **Set up API keys** | [setup/API_CONFIGURATION.md](setup/API_CONFIGURATION.md) |
 | **Understand Winston.ai system** | [WINSTON_AI_COMPLETE_GUIDE.md](WINSTON_AI_COMPLETE_GUIDE.md) |

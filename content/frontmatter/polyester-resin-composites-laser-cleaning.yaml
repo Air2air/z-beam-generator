@@ -1,340 +1,129 @@
 name: Polyester Resin Composites
-category: Composite
-subcategory: fiber-reinforced
+material: Polyester Resin Composites
 title: Polyester Resin Composites Laser Cleaning
-description: Laser cleaning parameters for Polyester Resin Composites
-materialProperties:
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    properties:
-      laserAbsorption:
-        value: 85.2
-        unit: '%'
-        confidence: 92
-        description: laserAbsorption from Materials.yaml
-        min: 0.05
-        max: 200
-      laserReflectivity:
-        value: 14.8
-        unit: '%'
-        confidence: 92
-        description: laserReflectivity from Materials.yaml
-        min: 2
-        max: 80
-        source: Composite Materials Handbook (MIL-HDBK-17)
-        notes: 'Wide range reflects diversity: polymer matrix composites 5-30%, metal
-          matrix composites 40-80%'
-        metadata:
-          last_verified: '2025-10-16T13:39:14.340599'
-          verification_source: automatic_fix
-          fix_reason: 'Recalculated: 100 - 85.2 = 14.8'
-          previous_value: 38.5
-      laserDamageThreshold:
-        value: 2.5
-        unit: J/cm²
-        confidence: 82
-        description: Fluence level causing permanent damage to composite structure
-        min: 0.8
-        max: 15.5
-      specificHeat:
-        value: 1200.0
-        unit: J/(kg·K)
-        confidence: 84
-        description: Specific heat capacity at room temperature
-        min: 500
-        max: 2500.0
-      thermalConductivity:
-        value: 0.17
-        unit: W/(m·K)
-        confidence: 88
-        description: Low thermal conductivity typical of polymer composites with glass
-          fiber reinforcement
-        min: 0.03
-        max: 400
-        source: ASM Handbook - Composites
-        notes: 'Wide range (0.1-400 W/m·K): polymer matrix ~0.2, carbon fiber ~10,
-          metal matrix 50-400'
-      thermalDiffusivity:
-        value: 0.12
-        unit: mm²/s
-        confidence: 85
-        description: Thermal diffusivity calculated from thermal properties
-        min: 0.08
-        max: 180
-      thermalExpansion:
-        value: 55.0
-        unit: 10⁻⁶/K
-        confidence: 86
-        description: Coefficient of linear thermal expansion for polyester-glass composites
-        min: -1
-        max: 250
-      degradationPoint:
-        value: 623.0
-        unit: K
-        confidence: 92
-        description: Temperature where polymer matrix decomposes
-        min: 473.15
-        max: 1073.15
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
-    percentage: 47.3
-  material_characteristics:
-    label: Material Characteristics
-    properties:
-      density:
-        value: 1.38
-        unit: g/cm³
-        confidence: 92
-        description: Typical density range for unsaturated polyester resin composites
-          with glass fiber reinforcement
-        min: 0.5
-        max: 8
-      hardness:
-        value: 42.0
-        unit: Shore D
-        confidence: 87
-        description: Barcol hardness scale typical for cured polyester composites
-        min: 5.0
-        max: 120
-      tensileStrength:
-        value: 85
-        unit: MPa
-        confidence: 90
-        description: Typical tensile strength for glass fiber reinforced polyester
-          composites
-        min: 20
-        max: 6000
-      youngsModulus:
-        value: 2.8
-        unit: GPa
-        confidence: 89
-        description: Elastic modulus in tension for standard polyester composites
-        min: 0.001
-        max: 3000
-      flexuralStrength:
-        value: 120.0
-        unit: MPa
-        confidence: 88
-        description: Bending strength for glass fiber reinforced polyester composites
-        min: 100
+category: composite
+generated_date: '2025-10-22T20:36:58.554920'
+data_completeness: 100%
+source: Materials.yaml (direct export)
+properties: {}
+category_info:
+  description: Engineered composite materials including fiber-reinforced polymers,
+    matrix composites, and hybrid materials for specialized cleaning applications
+  properties_count: 0
+  category_ranges:
+    density:
+      max: 8
+      min: 0.5
+      unit: "g/cm\xB3"
+    hardness:
+      max: 120
+      min: 5.0
+      unit: HRC
+      adjustment_note: Phenolic resin composites harder
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    laserAbsorption:
+      max: 200
+      min: 0.05
+      unit: "cm\u207B\xB9"
+    laserReflectivity:
+      max: 80
+      min: 2
+      unit: '%'
+      source: Composite Materials Handbook (MIL-HDBK-17)
+      confidence: 70
+      notes: 'Wide range reflects diversity: polymer matrix composites 5-30%, metal
+        matrix composites 40-80%'
+      last_updated: '2025-10-15T14:19:43.867274'
+    specificHeat:
+      max: 2500.0
+      min: 500
+      unit: "J/kg\xB7K"
+    tensileStrength:
+      max: 6000
+      min: 20
+      unit: MPa
+      adjustment_note: Some composites weaker
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    thermalConductivity:
+      max: 400
+      min: 0.03
+      unit: "W/(m\xB7K)"
+      source: ASM Handbook - Composites
+      confidence: 75
+      notes: "Wide range (0.1-400 W/m\xB7K): polymer matrix ~0.2, carbon fiber ~10,\
+        \ metal matrix 50-400"
+      last_updated: '2025-10-15T14:19:43.867281'
+      adjustment_note: Fiberglass is insulating
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    thermalDestruction:
+      point:
         max: 2000
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    percentage: 52.7
-applications:
-- Aerospace
-- Automotive
-- Marine
-- Wind Energy
-- Construction
-- Electronics Manufacturing
-- Medical Equipment
-- Cultural Heritage
-- Rail Transportation
-- Sports Equipment
-machineSettings:
-  powerRange:
-    value: 90
-    unit: W
-    confidence: 92
-    description: Optimal average power for polyester resin composite cleaning without
-      thermal damage
-    min: 70
-    max: 110
-  wavelength:
-    value: 1064
-    unit: nm
-    confidence: 88
-    description: Near-infrared wavelength optimal for polyester resin composite processing
-    min: 532
-    max: 1064
-  spotSize:
-    value: 80
-    unit: μm
-    confidence: 84
-    description: Optimal beam spot diameter for precision cleaning
-    min: 50
-    max: 120
-  repetitionRate:
-    value: 50
-    unit: kHz
-    confidence: 87
-    description: Optimal repetition rate for continuous cleaning process
-    min: 20
-    max: 100
-  pulseWidth:
-    value: 15
-    unit: ns
-    confidence: 85
-    description: Optimal pulse duration for efficient material removal with minimal
-      heat affected zone
-    min: 8
-    max: 25
-  scanSpeed:
-    value: 800
-    unit: mm/s
-    confidence: 86
-    description: Optimal scanning speed for efficient coverage and material removal
-    min: 500
-    max: 1200
-  fluence:
-    value: 3.0
-    unit: J/cm²
-    confidence: 86
-    description: Energy density threshold for effective Polyester Resin Composites
-      cleaning - Energy density threshold for composite material cleaning considering
-      matrix and reinforcement properties
-    min: 1.5
-    max: 6.0
-  overlapRatio:
-    value: 50
-    unit: '%'
-    confidence: 83
-    description: Optimal beam overlap percentage for uniform cleaning
-    min: 40
-    max: 70
-  passCount:
-    value: 3
-    unit: passes
-    confidence: 85
-    description: Recommended number of passes for complete contaminant removal
-    min: 1
-    max: 5
-regulatoryStandards:
-- FDA 21 CFR 1040.10 - Laser Product Performance Standards
-- ANSI Z136.1 - Safe Use of Lasers
-- IEC 60825 - Safety of Laser Products
-- OSHA 29 CFR 1926.95 - Personal Protective Equipment
-author:
-  id: 3
-  name: Ikmanda Roswati
-  sex: m
-  title: Ph.D.
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  image: /images/author/ikmanda-roswati.jpg
-images:
-  hero:
-    alt: Polyester Resin Composites surface undergoing laser cleaning showing precise
-      contamination removal
-    url: /images/material/polyester-resin-composites-laser-cleaning-hero.jpg
-environmentalImpact:
-- benefit: Chemical Waste Elimination
-  description: Eliminates hazardous chemical waste streams
-  applicableIndustries:
-  - Semiconductor
-  - Electronics
-  - Medical
-  - Nuclear
-  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-  sustainabilityBenefit: ''
-- benefit: Water Usage Reduction
-  description: Dry process requires no water
-  applicableIndustries: []
-  quantifiedBenefits: ''
-  sustainabilityBenefit: Significant water conservation in industrial processes
-- benefit: Energy Efficiency
-  description: Focused energy delivery with minimal waste heat
-  applicableIndustries: []
-  quantifiedBenefits: ''
-  sustainabilityBenefit: ''
-- benefit: Air Quality Improvement
-  description: Eliminates volatile organic compounds from chemical cleaning
-  applicableIndustries: []
-  quantifiedBenefits: ''
-  sustainabilityBenefit: ''
-subtitle: Pay attention to Polyester Resin Composites during laser treatment—their
-  varying properties can throw off results if you’re not careful. Adjust your power
-  levels with a focused approach, and you’ll get a very-very clean finish every time.
-outcomeMetrics:
-- metric: Contaminant Removal Efficiency
-  description: Percentage of target contaminants successfully removed from surface
-  measurementMethods:
-  - Before/after microscopy
-  - Chemical analysis
-  - Mass spectrometry
-  typicalRanges: 95-99.9% depending on application and material
-  factorsAffecting:
-  - Contamination type
-  - Adhesion strength
-  - Surface geometry
-  units: []
-- metric: Processing Speed
-  description: Rate of surface area processed per unit time
-  measurementMethods: []
-  typicalRanges: ''
-  factorsAffecting: []
-  units:
-  - m²/h
-  - cm²/min
-  - mm²/s
-- metric: Surface Quality Preservation
-  description: Maintenance of original surface characteristics after cleaning
-  measurementMethods: []
-  typicalRanges: ''
-  factorsAffecting: []
-  units: []
-- metric: Thermal Damage Avoidance
-  description: Prevention of heat-related material alterations during cleaning
-  measurementMethods: []
-  typicalRanges: ''
-  factorsAffecting: []
-  units: []
-caption:
-  beforeText: At 500x magnification, the polyester composite surface is obscured by
-    a discontinuous contaminant layer, measuring 5-15 µm thick. This layer exhibits
-    a complex topography of particulate agglomerates and amorphous deposits, which
-    penetrate the surface's inherent micro-porosity (~2.5%). The original 1.8 µm Ra
-    surface texture is entirely masked. Contaminants bridge across the glass fiber
-    reinforcements, creating a non-uniform film that alters the material's surface
-    energy and optical properties, including its native 15% reflectivity at 1064 nm.
-  afterText: Laser cleaning effectively restores the substrate, revealing the original
-    composite morphology at 500x. The contaminant layer is completely removed, exposing
-    the distinct 1.8 µm Ra texture of the polyester matrix and the underlying glass
-    fibers. No residual film or thermal degradation is observed, confirming the process
-    operated below the material's 1.2 J/cm² ablation threshold. The surface now displays
-    its intrinsic, uniform reflectivity, with the fiber-matrix interface clearly defined
-    and free of embedded particulates.
-  description: Microscopic analysis of polyester resin composites surface before and
-    after laser cleaning treatment
-  alt: Microscopic view of polyester resin composites surface showing laser cleaning
-    effects
-  technicalAnalysis:
-    focus: surface_analysis
-    uniqueCharacteristics:
-    - polyester resin composites_specific
-    contaminationProfile: polyester resin composites surface contamination
-  microscopy:
-    parameters: Microscopic analysis of Polyester Resin Composites
-    qualityMetrics: Surface improvement analysis
-  generation:
-    method: frontmatter_integrated_generation
-    timestamp: '2025-10-02T00:00:00.000000Z'
-    generator: FrontmatterCaptionGenerator
-    componentType: template_caption
-  author: Ikmanda Roswati
-  materialProperties:
-    materialType: Composite
-    analysisMethod: template_microscopy
-  imageUrl:
-    alt: Microscopic view of Polyester Resin Composites surface after laser cleaning
-      showing detailed surface structure
-    url: /images/material/polyester-resin-composites-laser-cleaning-micro.jpg
-tags:
-- composite
-- manufacturing
-- industrial
-- processing
-- surface-preparation
-- contamination-removal
-- maintenance
-- thermal-sensitive
-- industrial-grade
-- ikmanda-roswati
-metadata:
-  source_enhancement_applied: true
-  source_enhancement_date: '2025-10-15T14:27:19.659764'
-  sources_added: 2
-processing:
-  last_sync: '2025-10-15T19:39:35.557484Z'
-  sync_source: Materials.yaml
+        min: 150
+        unit: "\xB0C"
+      type: decomposition
+    thermalDiffusivity:
+      max: 180
+      min: 0.08
+      unit: "mm\xB2/s"
+    thermalExpansion:
+      max: 250
+      min: -1
+      unit: "\xB5m/m\xB7K"
+    youngsModulus:
+      max: 3000
+      min: 0.001
+      unit: GPa
+      adjustment_note: Carbon fiber composites very stiff
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    compressiveStrength:
+      min: 50
+      max: 1000
+      unit: MPa
+      description: Maximum compressive stress before failure
+      notes: Fiber-reinforced composites
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    corrosionResistance:
+      min: 5
+      max: 9
+      unit: rating
+      description: Resistance to chemical/electrochemical degradation
+      notes: Depends on matrix material
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    electricalResistivity:
+      min: 0.001
+      max: 100000000000000.0
+      unit: "\u03A9\xB7m"
+      description: Resistance to electrical current flow
+      notes: Highly variable
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    flexuralStrength:
+      min: 100
+      max: 2000
+      unit: MPa
+      description: Maximum bending stress before failure
+      notes: Composites excel in bending
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    fractureToughness:
+      min: 20
+      max: 100
+      unit: "MPa\xB7m^0.5"
+      description: Resistance to crack propagation
+      notes: Fiber reinforcement increases toughness
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    oxidationResistance:
+      min: 80.0
+      max: 1650.0
+      unit: "\xB0C"
+      description: ''
+      sample_count: 13
+      auto_generated: true
+      generated_date: '2025-10-16'

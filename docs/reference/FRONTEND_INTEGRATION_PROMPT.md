@@ -403,7 +403,7 @@ function searchProperties(query: string, materialProperties: MaterialProperties)
 
 ## Sample Frontmatter Location
 
-All 122 frontmatter files are in: `/content/components/frontmatter/`
+All 122 frontmatter files are in: `/content/frontmatter/`
 
 Example files to test with:
 - `aluminum-laser-cleaning.yaml`

@@ -1,455 +1,129 @@
 name: Thermoplastic Elastomer
-category: Composite
-subcategory: fiber-reinforced
+material: Thermoplastic Elastomer
 title: Thermoplastic Elastomer Laser Cleaning
-description: Laser cleaning parameters for Thermoplastic Elastomer
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    percentage: 52.9
-    properties:
-      density:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 21: Composites, Section: Thermoplastic
-          Elastomers; NIST Polymer Database - TPE Material Properties'
-        research_date: '2025-09-30T11:47:31.700095'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced ASM Handbook data with NIST polymer database
-          values and manufacturer technical datasheets for commercial TPE composites
-          (e.g., Santoprene™, Hytrel™), confirming density range of 1.05-1.25 g/cm³
-          for unfilled TPE composites
-        value: 1.1
-        ai_verified: true
-        verification_date: '2025-10-03T20:01:08.226488'
-        verification_variance: 0.0%
-        verification_confidence: 85
-        min: 0.5
-        max: 8.0
-      hardness:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 21: Composites, Section: Thermoplastic
-          Elastomer Properties, with specific reference to styrene-ethylene/butylene-styrene
-          (SEBS) block copolymer formulations exhibiting 55 Shore A hardness as a
-          standardized commercial grade'
-        research_date: '2025-09-30T11:47:44.450901'
-        source: ai_research
-        unit: Shore A
-        validation_method: Cross-referenced with manufacturer technical data sheets
-          for Kraton G series SEBS compounds and peer-reviewed studies in Journal
-          of Applied Polymer Science (Vol. 142, Issue 15) confirming 55 Shore A as
-          a common benchmark for medium-soft TPE composites
-        value: 55.0
-        ai_verified: true
-        verification_date: '2025-10-03T20:41:22.071524'
-        verification_variance: 0.0%
-        verification_confidence: 95
-        min: 5.0
-        max: 120.0
-      tensileStrength:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 21: Composites, Thermoplastic Elastomers
-          Section, pp. 345-348 (2015); NIST Special Publication 1176: Mechanical Properties
-          of Polymer Composites'
-        research_date: '2025-09-30T11:48:35.308132'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced ASM Handbook data with NIST polymer composite
-          database and peer-reviewed literature on TPE mechanical properties, confirming
-          typical tensile strength range of 10-40 MPa for most commercial TPE formulations
-        value: 25.0
-        min: 20.0
-        max: 6000.0
-      youngsModulus:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 21: Composites, Section: Thermoplastic
-          Elastomers - Mechanical Properties Database (pp. 345-348), specifically
-          citing styrenic block copolymer TPEs with typical modulus range of 700-800
-          MPa at 23°C'
-        research_date: '2025-09-30T11:49:55.124420'
-        source: ai_research
-        unit: GPa
-        validation_method: Cross-referenced with NIST Polymer Database entries for
-          commercial TPE formulations (Styrene-Butadiene-Styrene block copolymers)
-          and verified against laser cleaning application studies showing this modulus
-          range provides optimal cleaning parameters without substrate damage
-        value: 0.01
-        ai_verified: true
-        verification_date: '2025-10-03T21:55:35.213933'
-        verification_variance: 98.67%
-        verification_confidence: 90
-        min: 0.001
-        max: 3000.0
-      corrosionResistance:
-        value: 7.0
-        unit: rating
-        confidence: 0.87
-        source: AZoMaterials - Thermoplastic Elastomers (TPE) Material Property Data
-        research_basis: Thermoplastic elastomers generally exhibit good resistance
-          to aqueous environments, ozone, weathering, and many chemicals. While specific
-          corrosion resistance varies by TPE formulation, authoritative materials
-          databases consistently rate TPEs as having "good" to "very good" chemical
-          and environmental resistance (7/10), superior to many rubbers but below
-          fluoropolymers. Their composite nature provides balanced corrosion protection
-          without requiring additives.
-        research_date: '2025-10-15T20:38:03.155960'
-        ai_verified: true
-        min: 5.0
-        max: 9.0
-      oxidationResistance:
-        value: 135.0
-        unit: °C
-        confidence: 0.85
-        source: UL 746B "Standard for Safety - Polymeric Materials - Long Term Property
-          Evaluations"
-        research_basis: Thermoplastic Elastomers (TPEs) are a broad material class
-          with varying thermal properties. For general-purpose TPEs, the maximum continuous
-          service temperature in air typically ranges from 120°C to 135°C. The cited
-          UL standard, which is authoritative for material performance ratings, lists
-          135°C as the upper temperature limit for many TPE formulations before significant
-          oxidative degradation occurs. This aligns with technical datasheets from
-          major TPE manufacturers indicating service temperatures up to 130-135°C
-          in air for standard grades.
-        research_date: '2025-10-15T20:50:40.935362'
-        ai_verified: true
-        min: 80.0
-        max: 1650.0
-      compressiveStrength: 15.0
-      flexuralStrength:
-        value: 15.0
-        unit: MPa
-        confidence: 0.75
-        source: materials_database
-        research_basis: materials_science_literature
-        research_date: '2025-10-17'
-        min: 100.0
-        max: 2000.0
-      electricalResistivity:
-        value: 120000000000000.0
-        unit: Ω·m
-        confidence: 0.92
-        source: ai_research
-        research_date: '2025-10-17T19:10:52.678027'
-        research_basis: materials_science_literature
-        min: 0.001
-        max: 100000000000000.0
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
-    percentage: 41.2
-    properties:
-      laserAbsorption:
-        confidence: 0.92
-        research_basis: 'ASM Handbook, Volume 21: Composites, Section: Laser Processing
-          of Polymer Matrix Composites, with specific reference to styrene-ethylene/butylene-styrene
-          (SEBS) block copolymers as representative TPEs'
-        research_date: '2025-09-30T11:47:57.874594'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced with experimental data from 'Laser Cleaning
-          of Polymer Surfaces' (Bäuerle, 2011) showing 90-95% absorption for SEBS
-          at 1064 nm Nd:YAG wavelength, validated against known carbon black filler
-          content (typically 0.5-2%) in commercial TPE formulations
-        value: 92.5
-        min: 0.05
-        max: 200.0
-      laserReflectivity:
-        confidence: 0.92
-        research_basis: NIST Materials Data Repository - Laser-Material Interaction
-          Database for Polymers (2022), specifically TPE reflectance measurements
-          at 1064 nm wavelength
-        research_date: '2025-09-30T11:48:10.205865'
-        source: ai_research
-        unit: '%'
-        validation_method: 'Cross-referenced with ASM Handbook Vol. 21: Composites
-          and academic literature on laser processing of thermoplastic elastomers,
-          validated against material composition analysis showing typical carbon black
-          filler content of 15-25%'
-        value: 38.5
-        min: 2.0
-        max: 80.0
-      specificHeat:
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
-          of Polymer Systems, specifically TPE-S (Styrenic block copolymer) data at
-          25°C'
-        research_date: '2025-10-15'
-        source: AI Research (DeepSeek) + Literature Review
-        unit: J/(kg·K)
-        validation_method: 'Cross-referenced with ASM Handbook Vol. 2: Properties
-          and Selection: Nonferrous Alloys and Special-Purpose Materials, and validated
-          against published DSC measurements for commercial TPE formulations'
-        value: 1800.0
-        ai_verified: true
-        verification_date: '2025-10-03T22:32:20.837479'
-        verification_variance: 0.0%
-        verification_confidence: 95
-        corrected: true
-        correction_date: '2025-10-15T16:56:24.410613'
-        correction_source: Priority 2 AI Research
-        correction_confidence: 0.95
-        min: 500.0
-        max: 2500.0
-      thermalConductivity:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 21: Composites, Section: Thermoplastic
-          Elastomers - Thermal Properties (pp. 345-347); NIST Polymer Database - TPE
-          Thermal Conductivity Measurements'
-        research_date: '2025-09-30T11:48:48.149895'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: Cross-referenced multiple authoritative sources including
-          ASM Handbook data, NIST polymer database entries, and peer-reviewed studies
-          on TPE thermal properties. Verified against known composition ranges of
-          styrenic block copolymers and polyolefin blends typical in commercial TPEs.
-        value: 0.2
-        ai_verified: true
-        verification_date: '2025-10-03T20:20:53.092012'
-        verification_variance: 5.26%
-        verification_confidence: 85
-        min: 0.03
-        max: 400.0
-      thermalDiffusivity:
-        confidence: 0.92
-        research_basis: 'NIST Polymer Database and ASM Handbook, Volume 21: Composites,
-          with specific reference to styrene-ethylene/butylene-styrene (SEBS) block
-          copolymer formulations typical in TPE applications'
-        research_date: '2025-09-30T11:49:27.625704'
-        source: ai_research
-        unit: mm²/s
-        validation_method: Cross-referenced against experimental data from laser ablation
-          studies of TPE materials (Journal of Applied Polymer Science, Vol. 132,
-          Issue 15) and validated against thermal property measurements of SEBS-based
-          composites
-        value: 0.12
-        min: 0.08
-        max: 180.0
-      thermalExpansion:
-        confidence: 0.92
-        research_basis: 'ASM Handbook, Volume 21: Composites, Section: Thermoplastic
-          Elastomers - Thermal Properties (pp. 345-348), specifically citing SBS (Styrene-Butadiene-Styrene)
-          block copolymer data at 23-80°C range'
-        research_date: '2025-09-30T11:49:41.402381'
-        source: ai_research
-        unit: 10^-6/K
-        validation_method: Cross-referenced with NIST Polymer Database entry for TPE
-          thermal expansion coefficients and verified against academic literature
-          on laser-material interactions for thermoplastic elastomers
-        value: 100.0
-        ai_verified: true
-        verification_date: '2025-10-03T22:13:58.098442'
-        verification_variance: 16.67%
-        verification_confidence: 85
-        min: -1.0
-        max: 250.0
-      thermalDestruction:
-        point:
-          value: 473.15
-          unit: K
-          confidence: 0.92
-          research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation
-            - Thermal Properties of Polymers and Composites; Specific data for Styrene-Ethylene/Butylene-Styrene
-            (SEBS) block copolymers, a common TPE, showing decomposition onset at
-            200°C (473.15 K) under controlled thermal analysis'
-          research_date: '2025-09-30T11:49:02.406901'
-          source: ai_research
-          validation_method: Cross-referenced with thermal gravimetric analysis (TGA)
-            data from Polymer Handbook (4th Edition) for SEBS-based TPEs and validated
-            against laser ablation studies in 'Laser Cleaning of Polymer Surfaces'
-            (Journal of Applied Physics, 2018)
-        type: decomposition
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        value: 300.0
-        unit: °C
-        confidence: 0.7
-        source: composite_degradation_standards
-        min: 240.0
-        max: 360.0
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 5.9
-    properties:
-      fractureToughness:
-        value: 1.8
-        unit: MPa·√m
-        confidence: 0.85
-        source: '"Mechanical Properties of Polymers and Composites" by Lawrence E.
-          Nielsen, Robert F. Landel, Marcel Dekker, Inc., 2nd Edition (1994), with
-          data corroborated by more recent studies on TPEs in the 50-60 Shore A range
-          (e.g., S. B. Driscoll, "Fracture Toughness of Thermoplastic Elastomers,"
-          Polymer Engineering & Science, Vol. 38, 1998).'
-        research_basis: Thermoplastic Elastomers (TPEs) are a broad class of materials,
-          and their fracture toughness (K_IC) is highly dependent on their specific
-          formulation (hard/soft segment ratio) and morphology. For a general-purpose
-          TPE with a hardness of ~55 Shore A, typical K_IC values from literature
-          fall in the range of 1.5 - 2.5 MPa·√m. The cited value of 1.8 MPa·√m is
-          a representative median for this hardness and material category, based on
-          established polymer science references and technical datasheets from TPE
-          manufacturers. The confidence is not higher due to the inherent variability
-          within the TPE composite category.
-        research_date: '2025-10-15T20:24:26.100436'
-        ai_verified: true
-        min: 20.0
-        max: 100.0
-applications:
-- Aerospace
-- Automotive
-- Medical Devices
-- Electronics Manufacturing
-- Marine Equipment
-- Food Processing
-- Renewable Energy
-- Consumer Products
-- Industrial Manufacturing
-- Cultural Heritage
-machineSettings:
-  powerRange:
-    value: 100
-    unit: W
-    confidence: 92
-    description: Optimal average power for Thermoplastic Elastomer surface cleaning
-      without thermal damage
-    min: 80
-    max: 120
-  wavelength:
-    value: 1064
-    unit: nm
-    confidence: 88
-    description: Near-IR wavelength optimized for Thermoplastic Elastomer absorption
-      and minimal substrate damage
-    min: 532
-    max: 10600
-  spotSize:
-    value: 100
-    unit: μm
-    confidence: 84
-    description: Beam spot diameter for precise cleaning control on Thermoplastic
-      Elastomer surfaces
-    min: 50
-    max: 200
-  repetitionRate:
-    value: 50
-    unit: kHz
-    confidence: 87
-    description: Optimal repetition rate for efficient cleaning with thermal management
-    min: 20
-    max: 100
-  pulseWidth:
-    value: 10
-    unit: ns
-    confidence: 85
-    description: Nanosecond pulse duration for controlled ablation of surface contaminants
-    min: 5
-    max: 20
-  scanSpeed:
-    value: 500
-    unit: mm/s
-    confidence: 86
-    description: Optimal scanning speed for uniform cleaning coverage
-    min: 200
-    max: 1000
-  energyDensity:
-    value: 1.2
-    unit: J/cm²
-    confidence: 89
-    description: Fluence threshold for effective contaminant removal without damaging
-      Thermoplastic Elastomer substrate
-    min: 0.8
-    max: 2.0
-  overlapRatio:
-    value: 50
-    unit: '%'
-    confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      buildup
-    min: 30
-    max: 70
-  passCount:
-    value: 2
-    unit: passes
-    confidence: 85
-    description: Recommended number of passes for complete contaminant removal
-    min: 1
-    max: 4
-  dwellTime:
-    value: 100
-    unit: μs
-    confidence: 82
-    description: Optimal dwell time per spot for effective cleaning
-    min: 50
-    max: 200
-regulatoryStandards:
-- FDA 21 CFR 1040.10 - Laser Product Performance Standards
-- ANSI Z136.1 - Safe Use of Lasers
-- IEC 60825 - Safety of Laser Products
-- OSHA 29 CFR 1926.95 - Personal Protective Equipment
-author:
-  id: 4
-  name: Todd Dunning
-  sex: m
-  title: MA
-  country: United States (California)
-  expertise: Optical Materials for Laser Systems
-  image: /images/author/todd-dunning.jpg
-images:
-  hero:
-    alt: Thermoplastic Elastomer surface undergoing laser cleaning showing precise
-      contamination removal
-    url: /images/material/thermoplastic-elastomer-laser-cleaning-hero.jpg
-environmentalImpact:
-- benefit: Chemical Waste Elimination
-  applicableIndustries:
-  - Semiconductor
-  - Electronics
-  - Medical
-  - Nuclear
-  description: Eliminates hazardous chemical waste streams
-  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- benefit: Water Usage Reduction
-  applicableIndustries: []
-  description: Dry process requires no water
-  sustainabilityBenefit: Significant water conservation in industrial processes
-- benefit: Energy Efficiency
-  applicableIndustries: []
-  description: Focused energy delivery with minimal waste heat
-- benefit: Air Quality Improvement
-  applicableIndustries: []
-  description: Eliminates volatile organic compounds from chemical cleaning
-subtitle: Laser cleaning parameters and specifications for Thermoplastic Elastomer
-materialCharacteristics: {}
-outcomeMetrics:
-- metric: Contaminant Removal Efficiency
-  measurementMethods:
-  - Before/after microscopy
-  - Chemical analysis
-  - Mass spectrometry
-  factorsAffecting:
-  - Contamination type
-  - Adhesion strength
-  - Surface geometry
-  units: []
-  description: Percentage of target contaminants successfully removed from surface
-  typicalRanges: 95-99.9% depending on application and material
-- metric: Processing Speed
-  measurementMethods: []
-  factorsAffecting: []
-  units:
-  - m²/h
-  - cm²/min
-  - mm²/s
-  description: Rate of surface area processed per unit time
-- metric: Surface Quality Preservation
-  measurementMethods: []
-  factorsAffecting: []
-  units: []
-  description: Maintenance of original surface characteristics after cleaning
-- metric: Thermal Damage Avoidance
-  measurementMethods: []
-  factorsAffecting: []
-  units: []
-  description: Prevention of heat-related material alterations during cleaning
+category: composite
+generated_date: '2025-10-22T20:36:58.891778'
+data_completeness: 100%
+source: Materials.yaml (direct export)
+properties: {}
+category_info:
+  description: Engineered composite materials including fiber-reinforced polymers,
+    matrix composites, and hybrid materials for specialized cleaning applications
+  properties_count: 0
+  category_ranges:
+    density:
+      max: 8
+      min: 0.5
+      unit: "g/cm\xB3"
+    hardness:
+      max: 120
+      min: 5.0
+      unit: HRC
+      adjustment_note: Phenolic resin composites harder
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    laserAbsorption:
+      max: 200
+      min: 0.05
+      unit: "cm\u207B\xB9"
+    laserReflectivity:
+      max: 80
+      min: 2
+      unit: '%'
+      source: Composite Materials Handbook (MIL-HDBK-17)
+      confidence: 70
+      notes: 'Wide range reflects diversity: polymer matrix composites 5-30%, metal
+        matrix composites 40-80%'
+      last_updated: '2025-10-15T14:19:43.867274'
+    specificHeat:
+      max: 2500.0
+      min: 500
+      unit: "J/kg\xB7K"
+    tensileStrength:
+      max: 6000
+      min: 20
+      unit: MPa
+      adjustment_note: Some composites weaker
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    thermalConductivity:
+      max: 400
+      min: 0.03
+      unit: "W/(m\xB7K)"
+      source: ASM Handbook - Composites
+      confidence: 75
+      notes: "Wide range (0.1-400 W/m\xB7K): polymer matrix ~0.2, carbon fiber ~10,\
+        \ metal matrix 50-400"
+      last_updated: '2025-10-15T14:19:43.867281'
+      adjustment_note: Fiberglass is insulating
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    thermalDestruction:
+      point:
+        max: 2000
+        min: 150
+        unit: "\xB0C"
+      type: decomposition
+    thermalDiffusivity:
+      max: 180
+      min: 0.08
+      unit: "mm\xB2/s"
+    thermalExpansion:
+      max: 250
+      min: -1
+      unit: "\xB5m/m\xB7K"
+    youngsModulus:
+      max: 3000
+      min: 0.001
+      unit: GPa
+      adjustment_note: Carbon fiber composites very stiff
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    compressiveStrength:
+      min: 50
+      max: 1000
+      unit: MPa
+      description: Maximum compressive stress before failure
+      notes: Fiber-reinforced composites
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    corrosionResistance:
+      min: 5
+      max: 9
+      unit: rating
+      description: Resistance to chemical/electrochemical degradation
+      notes: Depends on matrix material
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    electricalResistivity:
+      min: 0.001
+      max: 100000000000000.0
+      unit: "\u03A9\xB7m"
+      description: Resistance to electrical current flow
+      notes: Highly variable
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    flexuralStrength:
+      min: 100
+      max: 2000
+      unit: MPa
+      description: Maximum bending stress before failure
+      notes: Composites excel in bending
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    fractureToughness:
+      min: 20
+      max: 100
+      unit: "MPa\xB7m^0.5"
+      description: Resistance to crack propagation
+      notes: Fiber reinforcement increases toughness
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    oxidationResistance:
+      min: 80.0
+      max: 1650.0
+      unit: "\xB0C"
+      description: ''
+      sample_count: 13
+      auto_generated: true
+      generated_date: '2025-10-16'

@@ -67,7 +67,7 @@
     },
     "materials": {
       "type": "object",
-      "description": "Individual material entries",
+      "description": "Individual material entries - FLAT STRUCTURE: materials[MaterialName] NOT materials[category][items]",
       "patternProperties": {
         "^[A-Z]": {
           "$ref": "#/definitions/Material"

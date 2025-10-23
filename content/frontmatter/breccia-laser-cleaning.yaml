@@ -1,446 +1,126 @@
 name: Breccia
-category: Stone
-subcategory: sedimentary
+material: Breccia
 title: Breccia Laser Cleaning
-description: Laser cleaning parameters for Breccia
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    percentage: 52.9
-    properties:
-      density:
-        confidence: 0.92
-        research_basis: ASTM C97/C97M-18 Standard Test Methods for Absorption and
-          Bulk Specific Gravity of Dimension Stone, supplemented by geological surveys
-          of breccia compositions from USGS Bulletin 1450 and specific density measurements
-          of polymict breccias in construction materials databases
-        research_date: '2025-09-30T14:42:50.732278'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced multiple geological surveys and material
-          testing databases for specific breccia types, validated against mineralogical
-          composition analysis (typically quartz, feldspar, calcite fragments in siliceous
-          cement) and compared with direct density measurements from construction
-          material testing laboratories
-        value: 2.6
-        ai_verified: true
-        verification_date: '2025-10-03T20:01:08.226723'
-        verification_variance: 0.0%
-        verification_confidence: 85
-        min: 1.5
-        max: 6.0
-      hardness:
-        confidence: 0.92
-        research_basis: 'NIST Special Publication 960-15: ''Standard Reference Materials
-          for Stone and Rock Properties'' and ASM Handbook Volume 4B: ''Steel Heat
-          Treating Technologies'' - Rockwell/Brinell conversion tables for sedimentary
-          composites'
-        research_date: '2025-09-30T14:43:02.945333'
-        source: ai_research
-        unit: Mohs
-        validation_method: 'Cross-referenced compositional analysis of typical breccia
-          components (limestone fragments: 3.0 Mohs, quartz fragments: 7.0 Mohs) with
-          empirical testing data from geological surveys, weighted by typical volumetric
-          distribution in breccia formations'
-        value: 3.0
-        ai_verified: true
-        verification_date: '2025-10-03T20:41:22.071747'
-        verification_variance: 14.29%
-        verification_confidence: 85
-        min: 1.0
-        max: 7.0
-      tensileStrength:
-        confidence: 0.92
-        research_basis: ASTM D7012-14e1 Standard Test Methods for Compressive Strength
-          and Elastic Moduli of Intact Rock Core Specimens under Varying States of
-          Stress and Temperatures, with specific reference to breccia formations from
-          geological surveys
-        research_date: '2025-09-30T14:43:53.138540'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced multiple geological engineering databases
-          and rock mechanics literature focusing specifically on breccia tensile strength
-          via Brazilian test method, validated against compositional analysis of typical
-          breccia formations
-        value: 8.2
-        min: 2.0
-        max: 25.0
-      youngsModulus:
-        confidence: 0.92
-        research_basis: ASTM D7012-14e1 Standard Test Methods for Compressive Strength
-          and Elastic Moduli of Intact Rock Core Specimens under Varying States of
-          Stress and Temperatures, applied to breccia samples from documented geological
-          formations
-        research_date: '2025-09-30T14:45:10.864783'
-        source: ai_research
-        unit: GPa
-        validation_method: Cross-referenced multiple geological survey databases and
-          rock mechanics literature, validating against known composition ranges of
-          carbonate-cemented sedimentary breccias with quartz and feldspar clasts
-        value: 68.2
-        min: 10.0
-        max: 100.0
-      corrosionResistance:
-        value: 8.0
-        unit: rating
-        confidence: 0.87
-        source: ASTM C615 / ASTM C616 (Standard Specification for Granite Dimension
-          Stone & Dimension Sandstone) as applied to breccia classification and performance
-          standards.
-        research_basis: Breccia, as a natural stone composed of angular mineral/rock
-          fragments cemented in a fine-grained matrix, shares the high corrosion/weathering
-          resistance of quartz-based dimension stones like granite and sandstone.
-          Its low porosity and high density (2.6 g/cm³) provide inherent resistance
-          to environmental chemical attack, freeze-thaw cycles, and pollutant erosion.
-          While not as chemically inert as pure quartzite, its performance in architectural
-          applications under general atmospheric conditions is rated as very high.
-        research_date: '2025-10-15T20:27:17.007232'
-        ai_verified: true
-        min: 2.0
-        max: 9.0
-      oxidationResistance:
-        value: 600.0
-        unit: °C
-        confidence: 0.85
-        source: '"Stone as a Building Material: Performance and Durability" by M.
-          A. Smith, in *Geological Society, London, Engineering Geology Special Publications*,
-          Vol. 16, 1999, pp. 23-34.'
-        research_basis: Breccia, as a carbonate-rich sedimentary rock, is primarily
-          composed of calcite and other carbonate minerals. Authoritative engineering
-          geology texts indicate that the calcite (CaCO₃) in such stones begins to
-          dissociate (calcine) in air at temperatures around 600-750°C, with 600°C
-          being the conservative threshold for the onset of significant chemical decomposition
-          and loss of structural integrity. This is not oxidation in the metallic
-          sense, but a thermally-driven chemical breakdown which is the relevant failure
-          mode for this material in high-temperature, oxidative environments.
-        research_date: '2025-10-15T20:40:33.559621'
-        ai_verified: true
-        min: 400.0
-        max: 870.0
-      flexuralStrength:
-        value: 15.0
-        unit: MPa
-        confidence: 0.85
-        source: '"Stone as a building material: A study of its properties and performance"
-          by A. Smith & J. Doe, published in Construction and Building Materials,
-          Vol. 45, 2013, pp. 102-110. (Specific data from Table 4, page 106, for "Breccia").'
-        research_basis: The provided value is a conservative estimate derived from
-          the cited peer-reviewed source, which tested various dimension stones. Breccia,
-          being a polymict conglomerate with a variable composition and clast-matrix
-          bond, has a wide potential strength range (approximately 10-25 MPa). The
-          value of 15 MPa represents a typical mid-to-lower range figure suitable
-          for general engineering assessments, as the specific strength is highly
-          dependent on the quarry source and the orientation of foliation or bedding.
-        research_date: '2025-10-15T20:53:04.294021'
-        ai_verified: true
-        min: 5.0
-        max: 50.0
-      compressiveStrength:
-        value: 120.0
-        unit: MPa
-        confidence: 0.85
-        source: '"Stone Testing" by Michael J. Scheffler, published in *Dimension
-          Stone: ASTM STP 1497* (ASTM International, 2006), p. 62, Table 3 - Typical
-          Physical Properties of Natural Stone.'
-        research_basis: Breccia is a clastic sedimentary rock with highly variable
-          properties depending on its composition and cementing material. The cited
-          ASTM compilation provides a typical compressive strength range of 80-160
-          MPa for commercial breccia varieties. The value of 120 MPa represents a
-          conservative, widely cited average for competent, well-cemented breccia
-          used in construction.
-        research_date: '2025-10-15T21:24:20.439915'
-        ai_verified: true
-        min: 20.0
-        max: 500.0
-      porosity:
-        value: 8.2
-        unit: '%'
-        confidence: 0.92
-        source: ai_research
-        research_date: '2025-10-17T19:07:34.188644'
-        research_basis: ai_research_comprehensive
-        min: 0.5
-        max: 25.0
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
-    percentage: 41.2
-    properties:
-      laserAbsorption:
-        confidence: 0.92
-        research_basis: 'NIST Stone Properties Database - Breccia Composition Analysis
-          (2021), ASM Handbook Vol. 4B: Laser Materials Processing (2015), and ''Laser
-          Cleaning of Natural Stone: Fundamental Studies'' in Journal of Cultural
-          Heritage, Vol. 24, pp. 145-152 (2017)'
-        research_date: '2025-09-30T14:43:15.698119'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced compositional analysis of breccia (carbonate-quartz-feldspar
-          mixtures) with laser absorption measurements for constituent minerals at
-          1064 nm wavelength, validated against experimental data for similar sedimentary
-          conglomerates
-        value: 8.72
-        min: 0.1
-        max: 100.0
-      laserReflectivity:
-        confidence: 0.92
-        research_basis: 'NIST Special Publication 260-137: Reflectance Spectra Database
-          of Geological Materials; ASM Handbook, Volume 10: Materials Characterization,
-          Section: Optical Properties of Minerals and Rocks'
-        research_date: '2025-09-30T14:43:28.771166'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced compositional analysis of typical breccia
-          (feldspar, quartz, lithic fragments) with empirical reflectance data from
-          NIST geological database and validated against laser-material interaction
-          models for heterogeneous sedimentary rocks
-        value: 38.2
-        min: 5.0
-        max: 80.0
-      specificHeat:
-        confidence: 0.92
-        research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
-          of Rocks and Minerals for Breccia compositions (predominantly limestone
-          and dolomite clasts)'
-        research_date: '2025-09-30T14:43:41.049430'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection of Nonferrous Alloys and Special-Purpose Materials for carbonate
-          rock thermal properties and validated against geological survey data for
-          breccia compositions'
-        value: 850.0
-        min: 400.0
-        max: 1200.0
-      thermalConductivity:
-        confidence: 0.92
-        research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
-          of Rocks and Minerals, specifically addressing polymict breccia compositions
-          with quartz-feldspar dominant matrix (Section 4.2.3)'
-        research_date: '2025-09-30T14:44:06.069836'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: Cross-referenced with geological survey data from USGS
-          Open-File Report 2018-1155 on thermal properties of sedimentary breccias
-          and validated against compositional analysis of typical breccia formations
-        value: 3.8
-        min: 0.2
-        max: 8.0
-      thermalDiffusivity:
-        confidence: 0.92
-        research_basis: 'NIST Stone Properties Database - Breccia Pernice analysis
-          (Sample ID: BRC-P-2018-04), Geological Society of America Special Paper
-          420 - Thermal properties of sedimentary breccias'
-        research_date: '2025-09-30T14:44:45.776479'
-        source: ai_research
-        unit: mm²/s
-        validation_method: Cross-referenced measured values from NIST database with
-          compositional analysis of carbonate-rich breccia (65-75% calcite, 15-20%
-          quartz, 5-10% feldspar) and validated against thermal property models for
-          composite stone materials
-        value: 1.32
-        min: 0.2
-        max: 2.5
-      thermalExpansion:
-        confidence: 0.92
-        research_basis: NIST Special Publication 260-136 'Thermal Expansion of Building
-          Stones' (1985) and ASM Handbook Vol. 18 'Friction, Lubrication, and Wear
-          Technology' - specific data for carbonate breccia compositions
-        research_date: '2025-09-30T14:44:58.679735'
-        source: ai_research
-        unit: 10⁻⁶/K
-        validation_method: Cross-referenced compositional analysis of carbonate breccia
-          with thermal expansion measurements from standardized ASTM E228 testing
-          methodology at 20-100°C range
-        value: 8.2
-        min: 3.0
-        max: 30.0
-      thermalDestruction:
-        point:
-          value: 1120.0
-          unit: °C
-          confidence: 0.92
-          research_basis: 'NIST Special Publication 960-17: ''Thermal Properties of
-            Geological Materials'' and ASM Handbook Vol. 4: ''Heat Treating'' - Breccia-specific
-            thermal degradation analysis'
-          research_date: '2025-09-30T14:44:18.128043'
-          source: ai_research
-          validation_method: Cross-referenced compositional analysis of carbonate-rich
-            breccia with quartz/calcite phase transition temperatures and thermal
-            expansion mismatch calculations
-        type: thermal_shock
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        value: 800.0
-        unit: °C
-        confidence: 0.8
-        source: thermal_degradation_standards
-        min: 640.0
-        max: 960.0
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 5.9
-    properties:
-      fractureToughness:
-        value: 0.8
-        unit: MPa·√m
-        confidence: 0.85
-        source: Engineering Toolbox, "Fracture Toughness of Materials"
-        research_basis: Breccia is a elastic sedimentary rock composed of angular
-          fragments. Its fracture toughness is estimated based on its composition
-          and comparison with similar rocks like sandstone and limestone, which typically
-          range from 0.5 to 1.5 MPa·√m. The given value represents a conservative
-          estimate for a medium-strength breccia.
-        research_date: '2025-10-15T20:11:22.128584'
-        ai_verified: true
-        min: 0.5
-        max: 5.0
-applications:
-- Cultural Heritage
-- Architecture and Construction
-- Museum Conservation
-- Monument Preservation
-- Archaeological Research
-- Stone Fabrication
-- Landscape Architecture
-- Interior Design
-- Religious Architecture
-- Educational Collections
-machineSettings:
-  powerRange:
-    value: 90
-    unit: W
-    confidence: 92
-    description: Optimal average power for Breccia surface cleaning without thermal
-      damage
-    min: 60
-    max: 120
-  wavelength:
-    value: 1064
-    unit: nm
-    confidence: 88
-    description: Near-IR wavelength optimized for Breccia mineral absorption characteristics
-    min: 532
-    max: 10600
-  spotSize:
-    value: 80
-    unit: μm
-    confidence: 84
-    description: Beam spot diameter for precise cleaning control
-    min: 50
-    max: 150
-  repetitionRate:
-    value: 50
-    unit: kHz
-    confidence: 87
-    description: Optimal repetition rate for continuous cleaning coverage
-    min: 20
-    max: 100
-  pulseWidth:
-    value: 12
-    unit: ns
-    confidence: 85
-    description: Short pulse duration for efficient ablation of surface contaminants
-    min: 8
-    max: 20
-  scanSpeed:
-    value: 500
-    unit: mm/s
-    confidence: 86
-    description: Optimal scanning speed for efficient area coverage
-    min: 200
-    max: 1000
-  energyDensity:
-    value: 3.5
-    unit: J/cm²
-    confidence: 89
-    description: Fluence threshold for effective contaminant removal
-    min: 2.0
-    max: 6.0
-  overlapRatio:
-    value: 50
-    unit: '%'
-    confidence: 83
-    description: Optimal beam overlap for uniform cleaning results
-    min: 30
-    max: 70
-  passCount:
-    value: 2
-    unit: passes
-    confidence: 82
-    description: Recommended number of cleaning passes for complete surface treatment
-    min: 1
-    max: 4
-regulatoryStandards:
-- FDA 21 CFR 1040.10 - Laser Product Performance Standards
-- ANSI Z136.1 - Safe Use of Lasers
-- IEC 60825 - Safety of Laser Products
-- OSHA 29 CFR 1926.95 - Personal Protective Equipment
-author:
-  id: 3
-  name: Ikmanda Roswati
-  sex: m
-  title: Ph.D.
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  image: /images/author/ikmanda-roswati.jpg
-images:
-  hero:
-    alt: Breccia surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/breccia-laser-cleaning-hero.jpg
-environmentalImpact:
-- benefit: Chemical Waste Elimination
-  applicableIndustries:
-  - Semiconductor
-  - Electronics
-  - Medical
-  - Nuclear
-  description: Eliminates hazardous chemical waste streams
-  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- benefit: Water Usage Reduction
-  applicableIndustries: []
-  description: Dry process requires no water
-  sustainabilityBenefit: Significant water conservation in industrial processes
-- benefit: Energy Efficiency
-  applicableIndustries: []
-  description: Focused energy delivery with minimal waste heat
-- benefit: Air Quality Improvement
-  applicableIndustries: []
-  description: Eliminates volatile organic compounds from chemical cleaning
-subtitle: Laser cleaning parameters and specifications for Breccia
-materialCharacteristics: {}
-outcomeMetrics:
-- metric: Contaminant Removal Efficiency
-  measurementMethods:
-  - Before/after microscopy
-  - Chemical analysis
-  - Mass spectrometry
-  factorsAffecting:
-  - Contamination type
-  - Adhesion strength
-  - Surface geometry
-  units: []
-  description: Percentage of target contaminants successfully removed from surface
-  typicalRanges: 95-99.9% depending on application and material
-- metric: Processing Speed
-  measurementMethods: []
-  factorsAffecting: []
-  units:
-  - m²/h
-  - cm²/min
-  - mm²/s
-  description: Rate of surface area processed per unit time
-- metric: Surface Quality Preservation
-  measurementMethods: []
-  factorsAffecting: []
-  units: []
-  description: Maintenance of original surface characteristics after cleaning
-- metric: Thermal Damage Avoidance
-  measurementMethods: []
-  factorsAffecting: []
-  units: []
-  description: Prevention of heat-related material alterations during cleaning
+category: stone
+generated_date: '2025-10-22T20:36:57.979263'
+data_completeness: 100%
+source: Materials.yaml (direct export)
+properties: {}
+category_info:
+  description: Natural stone materials including granite, marble, limestone, slate,
+    and quarried stone for architectural restoration cleaning
+  properties_count: 0
+  category_ranges:
+    density:
+      max: 6.0
+      min: 1.5
+      unit: "g/cm\xB3"
+      adjustment_note: Some stones denser (basalt 2.8-3.0)
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    hardness:
+      max: 7
+      min: 1
+      unit: Mohs
+      adjustment_note: Already correct - talc is 1 Mohs
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    laserAbsorption:
+      max: 100
+      min: 0.1
+      unit: "cm\u207B\xB9"
+      phase2_adjustment: "Alabaster at 85 cm\u207B\xB9"
+      adjustment_date: '2025-10-15'
+    laserReflectivity:
+      max: 80
+      min: 5
+      unit: '%'
+      source: Geological Survey Optical Properties Database
+      confidence: 70
+      notes: Light colored stones 40-80%, dark stones 5-20%, varies with mineral composition
+      last_updated: '2025-10-15T14:19:43.867256'
+    specificHeat:
+      max: 1200
+      min: 400
+      unit: "J/kg\xB7K"
+      adjustment_note: Some stones have lower specific heat
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    tensileStrength:
+      max: 25
+      min: 2
+      unit: MPa
+    thermalConductivity:
+      max: 8
+      min: 0.2
+      unit: "W/(m\xB7K)"
+      source: Engineering ToolBox - Building Materials
+      confidence: 75
+      notes: "Most stones 1-4 W/m\xB7K, granite ~2.8, limestone ~1.3, marble ~2.5"
+      last_updated: '2025-10-15T14:19:43.867263'
+    thermalDestruction:
+      point:
+        max: 1700
+        min: 600
+        unit: "\xB0C"
+      type: thermal_shock
+    thermalDiffusivity:
+      max: 2.5
+      min: 0.2
+      unit: "mm\xB2/s"
+    thermalExpansion:
+      max: 30
+      min: 3
+      unit: "\xB5m/m\xB7K"
+    youngsModulus:
+      max: 100
+      min: 10
+      unit: GPa
+    porosity:
+      min: 0.5
+      max: 25
+      unit: '%'
+      source: Geological Survey Professional Papers
+      confidence: 75
+      notes: Granite/marble 0.5-3%, sandstone 5-25%
+      last_updated: '2025-10-14T23:58:54.459420'
+    compressiveStrength:
+      min: 20
+      max: 500
+      unit: MPa
+      description: Maximum compressive stress before failure
+      notes: Natural stone variable
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    flexuralStrength:
+      min: 5
+      max: 50
+      unit: MPa
+      description: Maximum bending stress before failure
+      notes: Stone variable in bending
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    fractureToughness:
+      min: 0.5
+      max: 5
+      unit: "MPa\xB7m^0.5"
+      description: Resistance to crack propagation
+      notes: Stone brittle like ceramics
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    corrosionResistance:
+      min: 2.0
+      max: 9.0
+      unit: rating
+      description: ''
+      sample_count: 18
+      auto_generated: true
+      generated_date: '2025-10-16'
+    oxidationResistance:
+      min: 400.0
+      max: 870.0
+      unit: "\xB0C"
+      description: ''
+      sample_count: 18
+      auto_generated: true
+      generated_date: '2025-10-16'

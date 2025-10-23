@@ -1,476 +1,132 @@
 name: Tempered Glass
-category: Glass
-subcategory: soda-lime
+material: Tempered Glass
 title: Tempered Glass Laser Cleaning
-description: Laser cleaning parameters for Tempered Glass
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    percentage: 50.0
-    properties:
-      density:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials (ASM International, 1990); Corning
-          Gorilla Glass Technical Data Sheets; ASTM C693-93 Standard Test Method for
-          Density of Glass by Buoyancy'
-        research_date: '2025-09-30T12:15:56.734787'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced manufacturer technical data for tempered
-          soda-lime silicate glass with ASM materials databases and ASTM standard
-          testing methodologies, confirming consistency across multiple authoritative
-          sources
-        value: 2.52
-        ai_verified: true
-        verification_date: '2025-10-03T20:01:08.226538'
-        verification_variance: 0.0%
-        verification_confidence: 95
-        min: 1.2
-        max: 7.6
-      hardness:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 19: Fatigue and Fracture (2002) - Section:
-          ''Fracture of Glass and Ceramics'' citing soda-lime-silica glass hardness
-          as 6-7 Mohs, with tempered glass maintaining identical surface hardness
-          properties'
-        research_date: '2025-09-30T12:16:09.840975'
-        source: ai_research
-        unit: Mohs
-        validation_method: Cross-referenced with NIST Standard Reference Database
-          84 - 'Properties of Soda-Lime-Silica Glasses' and academic literature confirming
-          tempering process does not alter fundamental surface hardness of soda-lime-silica
-          glass composition
-        value: 5.5
-        ai_verified: true
-        verification_date: '2025-10-03T20:41:22.071572'
-        verification_variance: 15.38%
-        verification_confidence: 95
-        min: 3.5
-        max: 9.5
-      tensileStrength:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials, ''Properties of Glass and Glass Ceramics'',
-          Table 2, pp. 443-451, ASM International, 1990.'
-        research_date: '2025-09-30T12:17:00.508114'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced with ASTM C158-02 standard test methods
-          for glass strength and verified against tempered glass manufacturing specifications
-          for surface compression levels (typically 69-138 MPa) correlating to tensile
-          strength via fracture mechanics principles.
-        value: 165.0
-        min: 30.0
-        max: 2000.0
-      youngsModulus:
-        confidence: 0.95
-        research_basis: ASTM C623-92 (Standard Test Method for Young's Modulus, Shear
-          Modulus, and Poisson's Ratio for Glass and Glass-Ceramics by Resonance)
-          and Corning Glass Materials Specifications for tempered soda-lime silicate
-          glass
-        research_date: '2025-09-30T12:18:15.897967'
-        source: ai_research
-        unit: GPa
-        validation_method: Cross-referenced ASTM standards with manufacturer specifications
-          for tempered soda-lime glass composition (72-74% SiO₂, 12-14% Na₂O, 8-12%
-          CaO) and verified against independent academic studies on mechanical properties
-          of tempered glass
-        value: 73.0
-        ai_verified: true
-        verification_date: '2025-10-03T21:55:35.213978'
-        verification_variance: 0.0%
-        verification_confidence: 95
-        min: 10.0
-        max: 400.0
-      corrosionResistance:
-        value: 9.0
-        unit: rating
-        confidence: 0.88
-        source: ASTM C162-05 "Standard Terminology of Glass and Glass Products"
-        research_basis: Tempered glass (specifically soda-lime-silica glass) demonstrates
-          exceptional resistance to most environmental corrosion agents including
-          water, atmospheric gases, and common chemicals. The tempering process creates
-          surface compression that further enhances durability. Glass maintains stability
-          against oxidation, acid rain, and UV degradation. Rating reduced from 10
-          due to susceptibility to strong alkaline solutions and hydrofluoric acid,
-          which can cause surface etching over time.
-        research_date: '2025-10-15T20:37:48.820102'
-        ai_verified: true
-        min: 9.0
-        max: 10.0
-      oxidationResistance:
-        value: 470.0
-        unit: °C
-        confidence: 0.85
-        source: Corning Incorporated, "Material Properties Corning Gorilla Glass 5"
-          (Technical Materials Sheet)
-        research_basis: Tempered glass, such as Gorilla Glass, is a type of chemically
-          strengthened soda-lime glass. While glass itself does not oxidize like a
-          metal, its maximum continuous service temperature is limited by the onset
-          of thermal relaxation, which causes a loss of the compressive surface stress
-          that gives it its "tempered" strength. For soda-lime-based tempered glass,
-          this critical temperature is typically in the range of 450-500°C. The cited
-          value is a conservative upper limit for continuous use from a leading manufacturer's
-          technical data sheet.
-        research_date: '2025-10-15T20:50:25.064091'
-        ai_verified: true
-        min: 400.0
-        max: 1700.0
-      flexuralStrength:
-        value: 120.0
-        unit: MPa
-        confidence: 0.9
-        source: ASTM C1048, "Standard Specification for Heat-Strengthened and Fully
-          Tempered Glass"
-        research_basis: The flexural strength of tempered glass is well-documented
-          in material standards and engineering references. ASTM C1048 specifies a
-          minimum surface compressive stress of 69 MPa (10,000 psi) for tempered glass,
-          which correlates to a minimum flexural strength of approximately 120 MPa.
-          This value is consistently reported across authoritative sources like the
-          "Engineered Materials Handbook" and Pilkington glass technical data sheets
-          for 3-point and 4-point bend tests, representing a 4-5x strength increase
-          over annealed glass due to the tempering process.
-        research_date: '2025-10-15T21:03:23.712697'
-        ai_verified: true
-        min: 50.0
-        max: 750.0
-      compressiveStrength:
-        value: 160.0
-        unit: MPa
-        confidence: 0.9
-        source: ASTM C1048 "Standard Specification for Heat-Strengthened and Fully
-          Tempered Glass"
-        research_basis: Tempered glass compressive strength is substantially higher
-          than its tensile strength due to induced surface compression. ASTM C1048
-          specifies surface compression values of ≥69 MPa (10,000 psi) for heat-strengthened
-          and ≥100 MPa (15,000 psi) for fully tempered glass, translating to compressive
-          strength typically in the 120-200 MPa range. The wide range accounts for
-          variations in glass composition, tempering process, and thickness.
-        research_date: '2025-10-15T21:33:26.249843'
-        ai_verified: true
-        min: 500.0
-        max: 2000.0
-      electricalResistivity:
-        value: 1000000000000.0
-        unit: Ω·m
-        confidence: 0.95
-        source: ai_research
-        research_date: '2025-10-17T19:13:11.437708'
-        research_basis: materials_science_literature
-        min: 10000000000.0
-        max: 1000000000000000.0
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
-    percentage: 44.4
-    properties:
-      laserAbsorption:
-        confidence: 0.92
-        research_basis: B. S. Luk'yanchuk et al., 'Laser Cleaning for Glass and Ceramics,'
-          in Laser Cleaning II, World Scientific, 2007, pp. 121-158; Corning Gorilla
-          Glass data sheets for ion-exchanged surfaces showing absorption coefficients
-          of 0.5-1.0 cm⁻¹ at 1064 nm, translating to ~4-5% absorption for standard
-          thicknesses.
-        research_date: '2025-09-30T12:16:23.050521'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced absorption coefficient data from laser
-          processing literature with manufacturer technical data for tempered soda-lime
-          glass, validated against known composition effects of surface compression
-          layer on optical properties.
-        value: 4.2
-        min: 0.001
-        max: 10.0
-      laserReflectivity:
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 120: Reflectance and Transmittance
-          Measurements for Glass, tempered soda-lime silicate glass at 1064 nm wavelength
-          (common laser cleaning parameter)'
-        research_date: '2025-09-30T12:16:35.850700'
-        source: ai_research
-        unit: '%'
-        validation_method: 'Cross-referenced with ASM Handbook Volume 4: Heat Treating
-          and ASM Handbook Volume 5: Surface Engineering for laser processing applications,
-          validated against material composition of tempered soda-lime glass (70-74%
-          SiO₂, 12-16% Na₂O, 10-15% CaO)'
-        value: 4.2
-        min: 0.1
-        max: 92.0
-      specificHeat:
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
-          of Mineral Glasses, specifically soda-lime silicate glass composition (typical
-          tempered glass) at 300K'
-        research_date: '2025-09-30T12:16:47.521945'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection of Nonferrous Alloys and Special-Purpose Materials, and validated
-          against composition-specific data for soda-lime glass (primary material
-          for tempered glass)'
-        value: 840.0
-        ai_verified: true
-        verification_date: '2025-10-03T22:32:20.837538'
-        verification_variance: 0.0%
-        verification_confidence: 95
-        min: 120.0
-        max: 900.0
-      thermalConductivity:
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
-          of Soda-Lime-Silica Glass (Annealed and Tempered variants), Corning Glass
-          Technical Documents on Gorilla Glass thermal properties'
-        research_date: '2025-09-30T12:17:12.764187'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: Cross-referenced manufacturer specifications for tempered
-          soda-lime-silica glass with NIST reference data and thermal conductivity
-          measurements using guarded hot plate method per ASTM C177
-        value: 1.0
-        ai_verified: true
-        verification_date: '2025-10-03T20:20:53.092055'
-        verification_variance: 4.76%
-        verification_confidence: 95
-        min: 0.7
-        max: 30.0
-      thermalDiffusivity:
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 84: Thermophysical Properties
-          of Soda-Lime-Silica Glass Systems & ASM Handbook Volume 2: Properties and
-          Selection: Nonferrous Alloys and Special-Purpose Materials'
-        research_date: '2025-09-30T12:17:50.812682'
-        source: ai_research
-        unit: mm²/s
-        validation_method: Cross-referenced manufacturer specifications for tempered
-          soda-lime glass with NIST thermophysical data and ASM handbook values, accounting
-          for thermal processing effects on diffusivity
-        value: 0.84
-        min: 0.01
-        max: 15.0
-      thermalExpansion:
-        confidence: 0.92
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials - Section: Glass and Glass-Ceramics
-          (ASM International, 1990); Pilkington Glass Technical Data Sheets for tempered
-          soda-lime-silica glass'
-        research_date: '2025-09-30T12:18:03.607530'
-        source: ai_research
-        unit: 10^-6/K
-        validation_method: Cross-referenced manufacturer technical data for tempered
-          soda-lime glass against ASM handbook values and verified composition-specific
-          thermal expansion coefficients for tempered glass applications
-        value: 8.5
-        ai_verified: true
-        verification_date: '2025-10-03T22:13:58.098489'
-        verification_variance: 0.0%
-        verification_confidence: 95
-        min: 0.1
-        max: 15.0
-      thermalDestruction:
-        point:
-          value: 1150.0
-          unit: K
-          confidence: 0.92
-          research_basis: ASTM C1048-18 Standard Specification for Heat-Strengthened
-            and Fully Tempered Glass, supplemented by Scholze (1991) Glass - Nature,
-            Structure, and Properties and Haldimann et al. (2008) Structural Use of
-            Glass
-          research_date: '2025-09-30T12:17:23.979316'
-          source: ai_research
-          validation_method: Cross-referenced ASTM standards for tempered glass thermal
-            limits with material-specific decomposition studies and laser damage threshold
-            research in applied optics literature
-        type: melting
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        value: 500.0
-        unit: °C
-        confidence: 0.65
-        source: thermal_degradation_standards
-        min: 400.0
-        max: 600.0
-      ablationThreshold:
-        value: 3.2
-        unit: J/cm²
-        confidence: 0.92
-        source: ai_research
-        research_date: '2025-10-17T19:21:46.313865'
-        research_basis: materials_science_literature
-        min: 2.0
-        max: 6.0
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 5.6
-    properties:
-      fractureToughness:
-        value: 0.75
-        unit: MPa·√m
-        confidence: 0.85
-        source: ASTM E399 / Brock, D. "Elementary Engineering Fracture Mechanics"
-        research_basis: Tempered glass has lower fracture toughness than standard
-          annealed glass (0.78 MPa·√m) due to residual stresses, with literature values
-          typically ranging 0.7-0.8 MPa·√m. The 0.75 MPa·√m value represents a conservative
-          engineering estimate for fully tempered glass.
-        research_date: '2025-10-15T20:24:02.544244'
-        ai_verified: true
-        min: 0.5
-        max: 2.0
-applications:
-- Aerospace
-- Automotive
-- Electronics Manufacturing
-- Medical Devices
-- Marine
-- Cultural Heritage
-- Solar Energy
-- Architectural Glass
-- Food Processing
-- Laboratory Equipment
-machineSettings:
-  powerRange:
-    value: 100
-    unit: W
-    confidence: 92
-    description: Optimal average power for Tempered Glass cleaning without thermal
-      damage
-    min: 80
-    max: 120
-  wavelength:
-    value: 1064
-    unit: nm
-    confidence: 88
-    description: Optimal wavelength for Tempered Glass processing with good absorption
-    min: 532
-    max: 10600
-  spotSize:
-    value: 50
-    unit: μm
-    confidence: 84
-    description: Optimal spot size for precision cleaning on Tempered Glass surface
-    min: 30
-    max: 100
-  repetitionRate:
-    value: 100
-    unit: kHz
-    confidence: 87
-    description: Optimal repetition rate for efficient cleaning with thermal management
-    min: 50
-    max: 200
-  pulseWidth:
-    value: 10
-    unit: ns
-    confidence: 85
-    description: Optimal pulse width for controlled ablation of contaminants
-    min: 5
-    max: 20
-  scanSpeed:
-    value: 500
-    unit: mm/s
-    confidence: 86
-    description: Optimal scanning speed for uniform cleaning coverage
-    min: 300
-    max: 1000
-  fluenceThreshold:
-    value: 2.5
-    unit: J/cm²
-    confidence: 90
-    description: Optimal fluence threshold for contaminant removal without glass damage
-    min: 1.5
-    max: 4.0
-  overlapRatio:
-    value: 50
-    unit: '%'
-    confidence: 83
-    description: Optimal overlap ratio for complete coverage without excessive energy
-      deposition
-    min: 40
-    max: 70
-  passCount:
-    value: 2
-    unit: passes
-    confidence: 85
-    description: Optimal number of passes for thorough cleaning
-    min: 1
-    max: 4
-  dwellTime:
-    value: 100
-    unit: μs
-    confidence: 82
-    description: Optimal dwell time per cleaning spot
-    min: 50
-    max: 200
-regulatoryStandards:
-- FDA 21 CFR 1040.10 - Laser Product Performance Standards
-- ANSI Z136.1 - Safe Use of Lasers
-- IEC 60825 - Safety of Laser Products
-- OSHA 29 CFR 1926.95 - Personal Protective Equipment
-author:
-  id: 2
-  name: Alessandro Moretti
-  sex: m
-  title: Ph.D.
-  country: Italy
-  expertise: Laser-Based Additive Manufacturing
-  image: /images/author/alessandro-moretti.jpg
-images:
-  hero:
-    alt: Tempered Glass surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/material/tempered-glass-laser-cleaning-hero.jpg
-environmentalImpact:
-- benefit: Chemical Waste Elimination
-  applicableIndustries:
-  - Semiconductor
-  - Electronics
-  - Medical
-  - Nuclear
-  description: Eliminates hazardous chemical waste streams
-  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- benefit: Water Usage Reduction
-  applicableIndustries: []
-  description: Dry process requires no water
-  sustainabilityBenefit: Significant water conservation in industrial processes
-- benefit: Energy Efficiency
-  applicableIndustries: []
-  description: Focused energy delivery with minimal waste heat
-- benefit: Air Quality Improvement
-  applicableIndustries: []
-  description: Eliminates volatile organic compounds from chemical cleaning
-subtitle: Laser cleaning parameters and specifications for Tempered Glass
-materialCharacteristics: {}
-outcomeMetrics:
-- metric: Contaminant Removal Efficiency
-  measurementMethods:
-  - Before/after microscopy
-  - Chemical analysis
-  - Mass spectrometry
-  factorsAffecting:
-  - Contamination type
-  - Adhesion strength
-  - Surface geometry
-  units: []
-  description: Percentage of target contaminants successfully removed from surface
-  typicalRanges: 95-99.9% depending on application and material
-- metric: Processing Speed
-  measurementMethods: []
-  factorsAffecting: []
-  units:
-  - m²/h
-  - cm²/min
-  - mm²/s
-  description: Rate of surface area processed per unit time
-- metric: Surface Quality Preservation
-  measurementMethods: []
-  factorsAffecting: []
-  units: []
-  description: Maintenance of original surface characteristics after cleaning
-- metric: Thermal Damage Avoidance
-  measurementMethods: []
-  factorsAffecting: []
-  units: []
-  description: Prevention of heat-related material alterations during cleaning
+category: glass
+generated_date: '2025-10-22T20:36:58.873297'
+data_completeness: 100%
+source: Materials.yaml (direct export)
+properties: {}
+category_info:
+  description: Various glass types including optical glass, borosilicate, tempered
+    glass, and specialty glass materials for precision laser cleaning
+  properties_count: 0
+  category_ranges:
+    density:
+      max: 7.6
+      min: 1.2
+      unit: "g/cm\xB3"
+    hardness:
+      max: 9.5
+      min: 3.5
+      unit: Mohs
+      adjustment_note: Lead crystal is 3.8 Mohs
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+      phase2_adjustment: Fused silica at 9.1 Mohs
+    laserAbsorption:
+      max: 10
+      min: 0.001
+      unit: "cm\u207B\xB9"
+    laserReflectivity:
+      max: 92
+      min: 0.1
+      unit: '%'
+      source: Handbook of Optical Constants of Solids (Palik, 1998)
+      confidence: 80
+      notes: Typical glasses 4-8% at normal incidence, varies with composition and
+        wavelength
+      last_updated: '2025-10-15T14:19:43.867205'
+    specificHeat:
+      max: 900
+      min: 120
+      unit: "J/kg\xB7K"
+      phase2_adjustment: "Lead crystal at 130 J/(kg\xB7K)"
+      adjustment_date: '2025-10-15'
+    tensileStrength:
+      max: 2000
+      min: 30
+      unit: MPa
+    thermalConductivity:
+      min: 0.7
+      max: 30
+      unit: "W/(m\xB7K)"
+      source: MatWeb Materials Database
+      confidence: 85
+      notes: Typical range for glass materials at room temperature
+      last_updated: '2025-10-14T23:58:54.459404'
+      phase2_adjustment: "Lead crystal at 0.78 W/(m\xB7K)"
+      adjustment_date: '2025-10-15'
+    thermalDestruction:
+      point:
+        max: 1723
+        min: 500
+        unit: "\xB0C"
+      type: melting
+    thermalDiffusivity:
+      max: 15
+      min: 0.01
+      unit: "mm\xB2/s"
+    thermalExpansion:
+      max: 15
+      min: 0.1
+      unit: "\xB5m/m\xB7K"
+    youngsModulus:
+      max: 400
+      min: 10
+      unit: GPa
+    ablationThreshold:
+      min: 2.0
+      max: 6.0
+      unit: "J/cm\xB2"
+      source: Laser-Induced Damage in Optical Materials (NIST)
+      confidence: 80
+      notes: Silica, borosilicate - nanosecond pulses at 1064nm
+      last_updated: '2025-10-14T23:58:54.459396'
+    compressiveStrength:
+      min: 500
+      max: 2000
+      unit: MPa
+      description: Maximum compressive stress before failure
+      notes: Glass strong in compression
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    corrosionResistance:
+      min: 9
+      max: 10
+      unit: rating
+      description: Resistance to chemical/electrochemical degradation
+      notes: Glass inert to most chemicals
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    electricalResistivity:
+      min: 10000000000.0
+      max: 1000000000000000.0
+      unit: "\u03A9\xB7m"
+      description: Resistance to electrical current flow
+      notes: Glass is insulator
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    flexuralStrength:
+      min: 50
+      max: 750.0
+      unit: MPa
+      description: Maximum bending stress before failure
+      notes: Glass weak in bending
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    fractureToughness:
+      min: 0.5
+      max: 2
+      unit: "MPa\xB7m^0.5"
+      description: Resistance to crack propagation
+      notes: Glass very brittle
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    oxidationResistance:
+      min: 400.0
+      max: 1700.0
+      unit: "\xB0C"
+      description: ''
+      sample_count: 11
+      auto_generated: true
+      generated_date: '2025-10-16'

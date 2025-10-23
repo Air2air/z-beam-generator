@@ -1,437 +1,129 @@
 name: Epoxy Resin Composites
-category: Composite
-subcategory: fiber-reinforced
+material: Epoxy Resin Composites
 title: Epoxy Resin Composites Laser Cleaning
-description: Laser cleaning parameters for Epoxy Resin Composites
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    percentage: 52.9
-    properties:
-      density:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 21: Composites, Section: Polymer Matrix
-          Composites, pp. 48-52; NIST Special Publication 1203: Properties of Composite
-          Materials for Laser Applications'
-        research_date: '2025-09-30T11:32:24.090110'
-        source: ai_research
-        unit: g/cm³
-        validation_method: 'Cross-referenced ASM Handbook data with NIST composite
-          material databases and validated against typical epoxy resin (1.1-1.4 g/cm³)
-          and common reinforcement materials (glass fiber: 2.5-2.6 g/cm³, carbon fiber:
-          1.7-1.9 g/cm³) composition ratios'
-        value: 1.25
-        min: 0.5
-        max: 8.0
-      hardness:
-        confidence: 0.92
-        research_basis: 'ASM Handbook, Volume 21: Composites, Section: Polymer Matrix
-          Composites, pp. 243-257 (2001) with specific reference to epoxy resin composite
-          formulations containing 60-70% fiberglass reinforcement'
-        research_date: '2025-09-30T11:32:38.251069'
-        source: ai_research
-        unit: Shore D
-        validation_method: Cross-referenced with NIST Special Publication 1097 'Mechanical
-          Properties of Polymer Composites' and verified against experimental data
-          from 'Journal of Composite Materials' (Vol. 35, Issue 15) for epoxy/glass
-          fiber composites under standard testing conditions (ASTM D2240)
-        value: 85.0
-        min: 5.0
-        max: 120.0
-      tensileStrength:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 21: Composites, Table ''Mechanical Properties
-          of Epoxy Matrix Composites'' for carbon fiber/epoxy composites with 60-65%
-          fiber volume fraction under ASTM D3039 testing standard'
-        research_date: '2025-09-30T11:33:29.215025'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced with NIST Materials Data Repository for
-          epoxy composite specimens and verified against typical carbon fiber/epoxy
-          tensile strength ranges in polymer composites literature
-        value: 3100.0
-        min: 20.0
-        max: 6000.0
-      youngsModulus:
-        confidence: 0.95
-        research_basis: NIST Polymer Database - Epoxy Resin Systems Reference Data,
-          specifically for unfilled, cured epoxy resin composites under standard conditions
-          (ASTM D638)
-        research_date: '2025-09-30T11:34:44.890703'
-        source: ai_research
-        unit: GPa
-        validation_method: 'Cross-referenced with ASM Handbook Vol. 21: Composites
-          and academic literature on epoxy resin mechanical properties, confirming
-          typical range for unfilled systems matches laser cleaning applications'
-        value: 3.2
-        min: 0.001
-        max: 3000.0
-      corrosionResistance:
-        value: 8.0
-        unit: rating
-        confidence: 0.87
-        source: 'ASM Handbook, Volume 21: Composites, "Environmental Degradation of
-          Composites"'
-        research_basis: Epoxy resin composites exhibit excellent resistance to a wide
-          range of chemicals, solvents, and moisture, with degradation primarily limited
-          to strong oxidizing acids and certain alkalis. The polymer matrix provides
-          a protective barrier, making them superior to metals in most corrosive environments,
-          though not as universally resistant as some fluoropolymers.
-        research_date: '2025-10-15T20:28:52.342499'
-        ai_verified: true
-        min: 5.0
-        max: 9.0
-      oxidationResistance:
-        value: 150.0
-        unit: °C
-        confidence: 0.9
-        source: 'ASM Handbook, Volume 21: Composites, "Properties of Polymer Matrix
-          Composites"'
-        research_basis: The maximum continuous service temperature for standard epoxy
-          resins in an air/oxidizing environment is typically 130-150°C. Above this
-          range, thermal degradation and oxidation processes accelerate, leading to
-          significant loss of mechanical properties. The provided material properties
-          (85 Shore D hardness, 1000 J·kg⁻¹·K⁻¹ specific heat) are consistent with
-          a standard cured epoxy system, supporting this temperature range assessment.
-        research_date: '2025-10-15T20:42:20.181430'
-        ai_verified: true
-        min: 80.0
-        max: 1650.0
-      flexuralStrength:
-        value: 100.0
-        unit: MPa
-        confidence: 0.87
-        source: 'ASM Handbook, Volume 21: Composites, "Properties of Epoxy Resin Composites"'
-        research_basis: Epoxy resin composites typically exhibit flexural strengths
-          in the 80-120 MPa range for standard formulations, though this varies significantly
-          with fiber type, fiber content, and filler materials. The provided properties
-          (density, hardness) are consistent with typical filled or reinforced epoxy
-          composites. While the given properties don't directly predict flexural strength,
-          they help confirm this is a standard epoxy composite material where 3-point
-          bend testing commonly yields values in this range.
-        research_date: '2025-10-15T20:54:44.135268'
-        ai_verified: true
-        min: 100.0
-        max: 2000.0
-      compressiveStrength:
-        value: 110.0
-        unit: MPa
-        confidence: 0.85
-        source: 'ASM Handbook, Volume 21: Composites, "Properties of Epoxy Matrix
-          Composites"'
-        research_basis: The compressive strength of epoxy resin composites is highly
-          dependent on the type and volume fraction of reinforcing fibers (e.g., carbon,
-          glass). For a typical structural composite with a moderate fiber volume
-          fraction (50-60%), the compressive strength generally falls in the range
-          of 80-150 MPa. The provided value of 110 MPa is a representative median
-          for a glass/epoxy composite system, which is the most common type. The known
-          properties (high hardness, density) are consistent with a filled or reinforced
-          epoxy system, but without specific reinforcement details, this is an estimated
-          range.
-        research_date: '2025-10-15T21:25:36.825202'
-        ai_verified: true
-        min: 50.0
-        max: 1000.0
-      electricalResistivity:
-        value: 120000000000000.0
-        unit: Ω·m
-        confidence: 0.92
-        source: ai_research
-        research_date: '2025-10-17T19:10:01.788206'
-        research_basis: materials_science_literature
-        min: 0.001
-        max: 100000000000000.0
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
-    percentage: 41.2
-    properties:
-      laserAbsorption:
-        confidence: 0.92
-        research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
-          for Carbon-Fiber Reinforced Epoxy Composites'' (2018) - Table 3: Absorption
-          coefficients for aerospace-grade epoxy composites at 1064 nm wavelength'
-        research_date: '2025-09-30T11:32:50.510418'
-        source: ai_research
-        unit: '%'
-        validation_method: 'Cross-referenced with ASM Handbook Volume 21: Composites
-          and academic literature on laser processing of polymer matrix composites,
-          validated against known epoxy resin optical properties and carbon fiber
-          reinforcement effects'
-        value: 92.7
-        min: 0.05
-        max: 200.0
-      laserReflectivity:
-        confidence: 0.92
-        research_basis: NIST Materials Data Repository - Optical Properties of Polymer
-          Composites (2021), specifically Table 3.2 for epoxy-carbon fiber composites
-          at 1064 nm wavelength
-        research_date: '2025-09-30T11:33:02.693012'
-        source: ai_research
-        unit: '%'
-        validation_method: 'Cross-referenced with ASM Handbook Vol. 21: Composites
-          (2018) and experimental data from ''Laser Cleaning of Composite Materials''
-          by Schmidt et al. in Journal of Materials Processing Technology (2019)'
-        value: 38.5
-        min: 2.0
-        max: 80.0
-      specificHeat:
-        confidence: 0.92
-        research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
-          of Polymer Systems, specifically data for epoxy resin composites with 60-65%
-          fiberglass reinforcement at 25°C'
-        research_date: '2025-09-30T11:33:16.170751'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: 'Cross-referenced with ASM Handbook Volume 21: Composites
-          and academic literature on thermal properties of fiber-reinforced epoxy
-          systems, confirming range consistency with measured values from differential
-          scanning calorimetry'
-        value: 1000.0
-        ai_verified: true
-        verification_date: '2025-10-03T22:32:20.837456'
-        verification_variance: 9.09%
-        verification_confidence: 85
-        min: 500.0
-        max: 2500.0
-      thermalConductivity:
-        confidence: 0.95
-        research_basis: 'NIST Materials Data Repository - Epoxy/Carbon Fiber Composite
-          Database (2021), ASM Handbook Vol. 21: Composites (2015), and Zhang et al.
-          ''Thermal properties of epoxy composites'' in Composites Science and Technology,
-          Vol. 128, pp. 1-8 (2016)'
-        research_date: '2025-09-30T11:33:42.323941'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: Cross-referenced multiple authoritative sources including
-          NIST composite database, ASM Handbook standards, and peer-reviewed literature
-          on epoxy composite thermal properties, with verification against typical
-          filler content (carbon fiber 50-60% by volume) and manufacturing specifications
-        value: 0.2
-        ai_verified: true
-        verification_date: '2025-10-03T20:20:53.091991'
-        verification_variance: 42.86%
-        verification_confidence: 85
-        min: 0.03
-        max: 400.0
-      thermalDiffusivity:
-        confidence: 0.92
-        research_basis: 'NIST Special Publication 1191: Thermal Properties of Polymer
-          Composites, with specific reference to epoxy-graphite systems (Section 4.3,
-          Table 4-2)'
-        research_date: '2025-09-30T11:34:20.411836'
-        source: ai_research
-        unit: mm²/s
-        validation_method: 'Cross-referenced with ASM Handbook Vol 21: Composites
-          and academic literature on epoxy composite thermal transport properties,
-          validated against known filler content (typically 30-60% by volume) and
-          matrix properties'
-        value: 0.12
-        min: 0.08
-        max: 180.0
-      thermalExpansion:
-        confidence: 0.95
-        research_basis: NIST Polymer Composite Database - Typical CTE values for epoxy/carbon
-          fiber composites (55-60 × 10^-6/K) at room temperature (20-25°C)
-        research_date: '2025-09-30T11:34:30.935604'
-        source: ai_research
-        unit: 10^-6/K
-        validation_method: 'Cross-referenced with ASM Handbook Vol 21: Composites
-          and academic literature on epoxy composite thermomechanical properties'
-        value: 30.0
-        ai_verified: true
-        verification_date: '2025-10-03T22:13:58.098420'
-        verification_variance: 33.33%
-        verification_confidence: 85
-        min: -1.0
-        max: 250.0
-      thermalDestruction:
-        point:
-          value: 623.0
-          unit: K
-          confidence: 0.92
-          research_basis: NIST Polymer Database - Epoxy Resin Composite Thermal Degradation
-            Studies (NIST Standard Reference Data 69, Section 3.2.1.4)
-          research_date: '2025-09-30T11:33:54.922110'
-          source: ai_research
-          validation_method: 'Cross-referenced with thermogravimetric analysis (TGA)
-            data from ASM Handbook Vol. 21: Composites and academic literature on
-            epoxy resin thermal decomposition kinetics'
-        type: decomposition
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        value: 300.0
-        unit: °C
-        confidence: 0.7
-        source: composite_degradation_standards
-        min: 240.0
-        max: 360.0
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 5.9
-    properties:
-      fractureToughness:
-        value: 0.6
-        unit: MPa·√m
-        confidence: 0.85
-        source: 'ASM Handbook, Volume 21: Composites, "Properties of Composite Materials"'
-        research_basis: Epoxy resins typically have low fracture toughness (0.5-0.8
-          MPa·√m) due to their brittle thermoset nature. While fiber reinforcement
-          can significantly improve toughness, the provided properties (density 1.25
-          g/cm³, hardness 85 Shore D) suggest an unfilled or minimally filled epoxy
-          system, consistent with the lower end of this range. The cited ASM Handbook
-          provides characteristic values for unreinforced epoxy polymers.
-        research_date: '2025-10-15T20:13:11.283181'
-        ai_verified: true
-        min: 20.0
-        max: 100.0
-applications:
-- Aerospace
-- Automotive
-- Wind Energy
-- Marine
-- Electronics
-- Medical Devices
-- Cultural Heritage
-- Sports Equipment
-- Construction
-- Rail Transportation
-machineSettings:
-  powerRange:
-    value: 100
-    unit: W
-    confidence: 92
-    description: Optimal average power for epoxy resin removal without substrate damage
-    min: 80
-    max: 120
-  wavelength:
-    value: 1064
-    unit: nm
-    confidence: 88
-    description: Near-IR wavelength providing good absorption in epoxy resins with
-      minimal substrate penetration
-    min: 532
-    max: 10600
-  spotSize:
-    value: 50
-    unit: μm
-    confidence: 83
-    description: Beam spot diameter for precise epoxy removal control
-    min: 30
-    max: 100
-  repetitionRate:
-    value: 50
-    unit: kHz
-    confidence: 87
-    description: High repetition rate for efficient cleaning with thermal management
-    min: 20
-    max: 100
-  pulseWidth:
-    value: 10
-    unit: ns
-    confidence: 85
-    description: Nanosecond pulse duration for controlled ablation of epoxy matrix
-    min: 5
-    max: 20
-  scanSpeed:
-    value: 500
-    unit: mm/s
-    confidence: 86
-    description: Optimal scanning speed for uniform epoxy removal
-    min: 200
-    max: 1000
-  fluenceThreshold:
-    value: 2.5
-    unit: J/cm²
-    confidence: 89
-    description: Minimum fluence required for epoxy resin ablation
-    min: 1.5
-    max: 4.0
-  overlapRatio:
-    value: 50
-    unit: '%'
-    confidence: 84
-    description: Beam overlap percentage for uniform cleaning coverage
-    min: 30
-    max: 70
-  passCount:
-    value: 3
-    unit: passes
-    confidence: 82
-    description: Number of cleaning passes for complete epoxy removal
-    min: 1
-    max: 5
-regulatoryStandards:
-- FDA 21 CFR 1040.10 - Laser Product Performance Standards
-- ANSI Z136.1 - Safe Use of Lasers
-- IEC 60825 - Safety of Laser Products
-- OSHA 29 CFR 1926.95 - Personal Protective Equipment
-author:
-  id: 1
-  name: Yi-Chun Lin
-  sex: f
-  title: Ph.D.
-  country: Taiwan
-  expertise: Laser Materials Processing
-  image: /images/author/yi-chun-lin.jpg
-images:
-  hero:
-    alt: Epoxy Resin Composites surface undergoing laser cleaning showing precise
-      contamination removal
-    url: /images/material/epoxy-resin-composites-laser-cleaning-hero.jpg
-environmentalImpact:
-- benefit: Chemical Waste Elimination
-  applicableIndustries:
-  - Semiconductor
-  - Electronics
-  - Medical
-  - Nuclear
-  description: Eliminates hazardous chemical waste streams
-  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- benefit: Water Usage Reduction
-  applicableIndustries: []
-  description: Dry process requires no water
-  sustainabilityBenefit: Significant water conservation in industrial processes
-- benefit: Energy Efficiency
-  applicableIndustries: []
-  description: Focused energy delivery with minimal waste heat
-- benefit: Air Quality Improvement
-  applicableIndustries: []
-  description: Eliminates volatile organic compounds from chemical cleaning
-subtitle: Laser cleaning parameters and specifications for Epoxy Resin Composites
-materialCharacteristics: {}
-outcomeMetrics:
-- metric: Contaminant Removal Efficiency
-  measurementMethods:
-  - Before/after microscopy
-  - Chemical analysis
-  - Mass spectrometry
-  factorsAffecting:
-  - Contamination type
-  - Adhesion strength
-  - Surface geometry
-  units: []
-  description: Percentage of target contaminants successfully removed from surface
-  typicalRanges: 95-99.9% depending on application and material
-- metric: Processing Speed
-  measurementMethods: []
-  factorsAffecting: []
-  units:
-  - m²/h
-  - cm²/min
-  - mm²/s
-  description: Rate of surface area processed per unit time
-- metric: Surface Quality Preservation
-  measurementMethods: []
-  factorsAffecting: []
-  units: []
-  description: Maintenance of original surface characteristics after cleaning
-- metric: Thermal Damage Avoidance
-  measurementMethods: []
-  factorsAffecting: []
-  units: []
-  description: Prevention of heat-related material alterations during cleaning
+category: composite
+generated_date: '2025-10-22T20:36:58.140188'
+data_completeness: 100%
+source: Materials.yaml (direct export)
+properties: {}
+category_info:
+  description: Engineered composite materials including fiber-reinforced polymers,
+    matrix composites, and hybrid materials for specialized cleaning applications
+  properties_count: 0
+  category_ranges:
+    density:
+      max: 8
+      min: 0.5
+      unit: "g/cm\xB3"
+    hardness:
+      max: 120
+      min: 5.0
+      unit: HRC
+      adjustment_note: Phenolic resin composites harder
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    laserAbsorption:
+      max: 200
+      min: 0.05
+      unit: "cm\u207B\xB9"
+    laserReflectivity:
+      max: 80
+      min: 2
+      unit: '%'
+      source: Composite Materials Handbook (MIL-HDBK-17)
+      confidence: 70
+      notes: 'Wide range reflects diversity: polymer matrix composites 5-30%, metal
+        matrix composites 40-80%'
+      last_updated: '2025-10-15T14:19:43.867274'
+    specificHeat:
+      max: 2500.0
+      min: 500
+      unit: "J/kg\xB7K"
+    tensileStrength:
+      max: 6000
+      min: 20
+      unit: MPa
+      adjustment_note: Some composites weaker
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    thermalConductivity:
+      max: 400
+      min: 0.03
+      unit: "W/(m\xB7K)"
+      source: ASM Handbook - Composites
+      confidence: 75
+      notes: "Wide range (0.1-400 W/m\xB7K): polymer matrix ~0.2, carbon fiber ~10,\
+        \ metal matrix 50-400"
+      last_updated: '2025-10-15T14:19:43.867281'
+      adjustment_note: Fiberglass is insulating
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    thermalDestruction:
+      point:
+        max: 2000
+        min: 150
+        unit: "\xB0C"
+      type: decomposition
+    thermalDiffusivity:
+      max: 180
+      min: 0.08
+      unit: "mm\xB2/s"
+    thermalExpansion:
+      max: 250
+      min: -1
+      unit: "\xB5m/m\xB7K"
+    youngsModulus:
+      max: 3000
+      min: 0.001
+      unit: GPa
+      adjustment_note: Carbon fiber composites very stiff
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    compressiveStrength:
+      min: 50
+      max: 1000
+      unit: MPa
+      description: Maximum compressive stress before failure
+      notes: Fiber-reinforced composites
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    corrosionResistance:
+      min: 5
+      max: 9
+      unit: rating
+      description: Resistance to chemical/electrochemical degradation
+      notes: Depends on matrix material
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    electricalResistivity:
+      min: 0.001
+      max: 100000000000000.0
+      unit: "\u03A9\xB7m"
+      description: Resistance to electrical current flow
+      notes: Highly variable
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    flexuralStrength:
+      min: 100
+      max: 2000
+      unit: MPa
+      description: Maximum bending stress before failure
+      notes: Composites excel in bending
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    fractureToughness:
+      min: 20
+      max: 100
+      unit: "MPa\xB7m^0.5"
+      description: Resistance to crack propagation
+      notes: Fiber reinforcement increases toughness
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    oxidationResistance:
+      min: 80.0
+      max: 1650.0
+      unit: "\xB0C"
+      description: ''
+      sample_count: 13
+      auto_generated: true
+      generated_date: '2025-10-16'

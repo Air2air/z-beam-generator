@@ -1,443 +1,130 @@
 name: Rosewood
-category: Wood
-subcategory: hardwood
+material: Rosewood
 title: Rosewood Laser Cleaning
-description: Laser cleaning parameters for Rosewood
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    percentage: 52.9
-    properties:
-      density:
-        confidence: 0.92
-        research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest
-          Service, FPL-GTR-190), Chapter 4: Physical Properties of Wood, Table 4-5:
-          Specific gravity of selected domestic and imported woods'
-        research_date: '2025-09-30T16:11:22.095456'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced USDA Forest Products Laboratory data with
-          peer-reviewed studies on Dalbergia genus properties and verified against
-          materials science databases for tropical hardwoods
-        value: 0.85
-        min: 0.12
-        max: 1.5
-      hardness:
-        confidence: 0.95
-        research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook:
-          Wood as an Engineering Material. Chapter 4: Mechanical Properties of Wood.
-          Table 4-3: Janka hardness of selected domestic and tropical woods. Specific
-          data for Brazilian Rosewood (Dalbergia nigra).'
-        research_date: '2025-09-30T16:11:34.759636'
-        source: ai_research
-        unit: GPa
-        validation_method: Cross-referenced with ASTM D143 standard testing methodology
-          for Janka hardness test using 11.28mm (0.444 in) steel ball to half-diameter
-          penetration, validated against multiple botanical specimens of Dalbergia
-          genus from wood science literature
-        value: 2.72
-        min: 1.0
-        max: 5000.0
-      tensileStrength:
-        confidence: 0.92
-        research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook:
-          Wood as an Engineering Material. Chapter 4: Mechanical Properties of Wood,
-          Table 4-3a. Specific data for Dalbergia genus (Brazilian Rosewood) parallel
-          to grain.'
-        research_date: '2025-09-30T16:12:25.331387'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced with peer-reviewed studies in Wood Science
-          and Technology journal and verified against USDA Wood Handbook species-specific
-          mechanical property tables for tropical hardwoods
-        value: 157.0
-        min: 20.0
-        max: 200.0
-      youngsModulus:
-        value: 2.5025
-        unit: GPa
-        confidence: 0.9
-        source: ai_research
-        research_basis: standard_material_database
-        research_date: '2024-01-01'
-        min: 5.0
-        max: 20000.0
-      corrosionResistance:
-        value: 8.0
-        unit: rating
-        confidence: 0.87
-        source: Wood Database (www.wood-database.com) - Rosewood
-        research_basis: Rosewood contains natural oils and dense grain structure that
-          provide excellent resistance to moisture, decay, and insect attack. While
-          not completely immune to environmental degradation, its natural durability
-          is considered very high among wood species, particularly in ground contact
-          and wet conditions.
-        research_date: '2025-10-15T20:35:15.112950'
-        ai_verified: true
-        min: 2.0
-        max: 8.0
-      oxidationResistance:
-        value: 200.0
-        unit: °C
-        confidence: 0.85
-        source: 'Forest Products Laboratory, USDA Forest Service. Wood Handbook: Wood
-          as an Engineering Material. Chapter 3: Physical Properties and Moisture
-          Relations of Wood, Table 3-5: Approximate Maximum Safe Service Temperatures
-          for Wood.'
-        research_basis: The Wood Handbook, a primary reference for wood science, states
-          that prolonged exposure to temperatures above 150°C (300°F) causes significant
-          degradation in most wood species. For safe continuous service in air, a
-          maximum temperature of 200°C is cited for dry wood before the onset of rapid
-          pyrolysis and oxidative decomposition, which aligns with the thermal degradation
-          point of lignin and hemicellulose.
-        research_date: '2025-10-15T20:48:05.682454'
-        ai_verified: true
-        min: 82.0
-        max: 204.0
-      flexuralStrength:
-        value: 125.0
-        unit: MPa
-        confidence: 0.85
-        source: Wood Database (www.wood-database.com) - Mechanical Properties section
-          for Brazilian Rosewood
-        research_basis: The Wood Database, a widely cited authority on wood properties,
-          reports the modulus of rupture (MOR) for Brazilian Rosewood (Dalbergia nigra)
-          as 18,200 psi, which converts to approximately 125 MPa. This value represents
-          the flexural strength measured via standard 3-point or 4-point bend tests.
-          While rosewood species vary, this value is consistent with the high density
-          and hardness properties provided.
-        research_date: '2025-10-15T21:01:17.557270'
-        ai_verified: true
-        min: 40.0
-        max: 150.0
-      compressiveStrength:
-        value: 59.3
-        unit: MPa
-        confidence: 0.87
-        source: Wood Database (www.wood-database.com) - "Brazilian Rosewood" mechanical
-          properties
-        research_basis: The Wood Database provides comprehensive mechanical property
-          data for various wood species. For Brazilian Rosewood (Dalbergia nigra),
-          the reported compressive strength parallel to grain is 59.3 MPa at 12% moisture
-          content, which represents a standard testing condition for wood materials.
-          This value aligns with the known high density (0.85 g/cm³) and hardness
-          (2720 N) properties provided, as these mechanical characteristics typically
-          correlate in wood species.
-        research_date: '2025-10-15T21:31:17.203194'
-        ai_verified: true
-        min: 20.0
-        max: 80.0
-      porosity:
-        value: 0.52
-        unit: dimensionless (volume fraction)
-        confidence: 0.92
-        source: ai_research
-        research_date: '2025-10-17T19:08:17.131960'
-        research_basis: ai_research_comprehensive
-        min: 12.0
-        max: 65.0
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
-    percentage: 41.2
-    properties:
-      laserAbsorption:
-        confidence: 0.92
-        research_basis: 'NIST Special Publication 1176: ''Optical Properties of Wood
-          Species for Laser Processing Applications'' (2018), Table 4.2 - Rosewood
-          (Dalbergia spp.) absorption at 1064 nm wavelength'
-        research_date: '2025-09-30T16:11:48.103978'
-        source: ai_research
-        unit: '%'
-        validation_method: 'Cross-referenced with ASM Handbook Vol. 4B: Materials
-          Characterization and academic literature on Dalbergia genus wood composition,
-          specifically accounting for density (0.85-0.95 g/cm³) and extractive content
-          (15-25%) affecting absorption'
-        value: 32.7
-        min: 1.0
-        max: 50.0
-      laserReflectivity:
-        confidence: 0.92
-        research_basis: 'NIST Standard Reference Database 120: Optical Properties
-          of Materials for Laser Applications, Section 8.3 - Wood Species Database
-          (2022), with specific measurements for Dalbergia genus woods at 1064 nm
-          wavelength'
-        research_date: '2025-09-30T16:12:01.171384'
-        source: ai_research
-        unit: '%'
-        validation_method: 'Cross-referenced with ASM Handbook Volume 5: Surface Engineering,
-          Section 3.4 - Laser Processing of Natural Materials, and validated against
-          spectral reflectance measurements of Rosewood specimens in laser cleaning
-          optimization studies'
-        value: 28.5
-        min: 10.0
-        max: 60.0
-      specificHeat:
-        confidence: 0.92
-        research_basis: 'NIST Wood Database - Specific Heat of Wood Species at 12%
-          Moisture Content, 20°C. Rosewood (Dalbergia genus) measured value: 1260
-          J·kg⁻¹·K⁻¹'
-        research_date: '2025-09-30T16:12:14.413017'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: 'Cross-referenced with ASM Handbook Vol. 4: Heat Treating
-          and ASHRAE Fundamentals for wood thermal properties, validated against Rosewood''s
-          density (750-1000 kg/m³) and composition (high extractive content reducing
-          specific heat)'
-        value: 1760.0
-        ai_verified: true
-        verification_date: '2025-10-03T22:32:20.837864'
-        verification_variance: 39.68%
-        verification_confidence: 85
-        min: 800.0
-        max: 2500.0
-      thermalConductivity:
-        confidence: 0.92
-        research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest
-          Service, FPL-GTR-190) - Table 4-3a, specific values for Dalbergia genus
-          species at 12% moisture content'
-        research_date: '2025-09-30T16:12:39.098564'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: Cross-referenced USDA Forest Products Laboratory data with
-          species-specific measurements from Journal of Materials Science research
-          on tropical hardwoods, confirming Rosewood (Dalbergia spp.) values fall
-          within 0.15-0.19 W/m·K range at room temperature
-        value: 0.17
-        min: 0.04
-        max: 0.4
-      thermalDiffusivity:
-        confidence: 0.92
-        research_basis: 'Forest Products Laboratory. (1999). Wood Handbook—Wood as
-          an Engineering Material. USDA Forest Service, Forest Products Laboratory.
-          General Technical Report FPL-GTR-113, Chapter 3: Physical Properties of
-          Wood, Table 3-5: Thermal properties of various wood species.'
-        research_date: '2025-09-30T16:13:20.675347'
-        source: ai_research
-        unit: mm²/s
-        validation_method: 'Value validated against species-specific data for dense
-          tropical hardwoods in the Wood Handbook, cross-referenced with measured
-          density ranges for Dalbergia genus (true rosewoods: 800-1000 kg/m³) and
-          the established inverse correlation between wood density and thermal diffusivity.'
-        value: 0.17
-        min: 0.0001
-        max: 0.4
-      thermalExpansion:
-        confidence: 0.92
-        research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest
-          Service, FPL-GTR-190) - Table 4-3a: Coefficients of thermal expansion for
-          various hardwoods, with specific data for Dalbergia genus species including
-          Brazilian rosewood (Dalbergia nigra)'
-        research_date: '2025-09-30T16:13:34.514199'
-        source: ai_research
-        unit: 10⁻⁶/K
-        validation_method: 'Cross-referenced with ASM Handbook Volume 4: Heat Treating
-          and NIST wood properties database, validated against anisotropic wood structure
-          and density correlations (rosewood density ~0.8-0.9 g/cm³)'
-        value: 27.0
-        ai_verified: true
-        verification_date: '2025-10-03T22:13:58.098820'
-        verification_variance: 0.0%
-        verification_confidence: 85
-        min: 3.0
-        max: 60.0
-      thermalDestruction:
-        point:
-          value: 380.0
-          unit: °C
-          confidence: 0.92
-          research_basis: 'NIST Wood Products Laboratory Data Sheet: ''Thermal Degradation
-            of Tropical Hardwoods'' (2021) - Specific analysis of Dalbergia genus
-            species showing char initiation at 380°C under controlled heating conditions'
-          research_date: '2025-09-30T16:12:53.024938'
-          source: ai_research
-          validation_method: Cross-referenced with thermogravimetric analysis (TGA)
-            data from 'Journal of Analytical and Applied Pyrolysis' (Vol. 128, 2017)
-            for Dalbergia nigra, showing major decomposition onset at 375-385°C due
-            to high extractive content and dense cellular structure
-        type: carbonization
-        value: 300.0
-        unit: °C
-        confidence: 0.8
-        source: wood_combustion_standards
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        min: 240.0
-        max: 360.0
-  other:
-    label: Other Properties
-    description: Additional material-specific properties
-    percentage: 5.9
-    properties:
-      fractureToughness:
-        value: 2.1
-        unit: MPa·√m
-        confidence: 0.85
-        source: E.J. Bodig, B.A. Jayne, "Mechanics of Wood and Wood Composites" (Van
-          Nostrand Reinhold, 1982), pp. 140-142
-        research_basis: This value represents the Mode I fracture toughness (K_IC)
-          for rosewood in the longitudinal-radial (LR) crack propagation system, which
-          is the most commonly reported orientation for wood fracture toughness testing.
-          The value falls within the typical range for dense hardwoods (1.5-3.5 MPa·√m)
-          and accounts for rosewood's high density and anisotropic structure.
-        research_date: '2025-10-15T20:21:01.299266'
-        ai_verified: true
-        min: 0.33
-        max: 4.4
-applications:
-- Aerospace
-- Automotive
-- Marine
-- Cultural Heritage
-- Musical Instruments
-- Medical Equipment
-- Luxury Manufacturing
-- Energy Sector
-- Electronics Manufacturing
-- Architectural Restoration
-machineSettings:
-  powerRange:
-    value: 45
-    unit: W
-    confidence: 90
-    description: Optimal average power for Rosewood surface cleaning without charring
-    min: 30
-    max: 60
-  wavelength:
-    value: 1064
-    unit: nm
-    confidence: 88
-    description: Near-infrared wavelength for optimal absorption in Rosewood lignin
-      and cellulose
-    min: 532
-    max: 10600
-  spotSize:
-    value: 80
-    unit: μm
-    confidence: 86
-    description: Beam spot diameter for precise cleaning control
-    min: 50
-    max: 150
-  repetitionRate:
-    value: 20
-    unit: kHz
-    confidence: 87
-    description: Optimal repetition rate for efficient cleaning with thermal management
-    min: 10
-    max: 50
-  pulseWidth:
-    value: 100
-    unit: ns
-    confidence: 85
-    description: Nanosecond pulse duration for controlled material removal
-    min: 50
-    max: 200
-  scanSpeed:
-    value: 500
-    unit: mm/s
-    confidence: 84
-    description: Optimal scanning speed for uniform surface treatment
-    min: 200
-    max: 1000
-  energyDensity:
-    value: 4.5
-    unit: J/cm²
-    confidence: 89
-    description: Fluence threshold for effective contaminant removal without substrate
-      damage
-    min: 2.5
-    max: 7.0
-  overlapRatio:
-    value: 50
-    unit: '%'
-    confidence: 85
-    description: Optimal beam overlap for uniform cleaning coverage
-    min: 30
-    max: 70
-  passCount:
-    value: 2
-    unit: passes
-    confidence: 88
-    description: Recommended number of passes for complete surface cleaning
-    min: 1
-    max: 4
-  dwellTime:
-    value: 0.2
-    unit: ms
-    confidence: 83
-    description: Optimal dwell time per spot for effective material interaction
-    min: 0.1
-    max: 0.5
-regulatoryStandards:
-- FDA 21 CFR 1040.10 - Laser Product Performance Standards
-- ANSI Z136.1 - Safe Use of Lasers
-- IEC 60825 - Safety of Laser Products
-- OSHA 29 CFR 1926.95 - Personal Protective Equipment
-author:
-  id: 1
-  name: Yi-Chun Lin
-  sex: f
-  title: Ph.D.
-  country: Taiwan
-  expertise: Laser Materials Processing
-  image: /images/author/yi-chun-lin.jpg
-images:
-  hero:
-    alt: Rosewood surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/material/rosewood-laser-cleaning-hero.jpg
-environmentalImpact:
-- benefit: Chemical Waste Elimination
-  applicableIndustries:
-  - Semiconductor
-  - Electronics
-  - Medical
-  - Nuclear
-  description: Eliminates hazardous chemical waste streams
-  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- benefit: Water Usage Reduction
-  applicableIndustries: []
-  description: Dry process requires no water
-  sustainabilityBenefit: Significant water conservation in industrial processes
-- benefit: Energy Efficiency
-  applicableIndustries: []
-  description: Focused energy delivery with minimal waste heat
-- benefit: Air Quality Improvement
-  applicableIndustries: []
-  description: Eliminates volatile organic compounds from chemical cleaning
-subtitle: Laser cleaning parameters and specifications for Rosewood
-materialCharacteristics: {}
-outcomeMetrics:
-- metric: Contaminant Removal Efficiency
-  measurementMethods:
-  - Before/after microscopy
-  - Chemical analysis
-  - Mass spectrometry
-  factorsAffecting:
-  - Contamination type
-  - Adhesion strength
-  - Surface geometry
-  units: []
-  description: Percentage of target contaminants successfully removed from surface
-  typicalRanges: 95-99.9% depending on application and material
-- metric: Processing Speed
-  measurementMethods: []
-  factorsAffecting: []
-  units:
-  - m²/h
-  - cm²/min
-  - mm²/s
-  description: Rate of surface area processed per unit time
-- metric: Surface Quality Preservation
-  measurementMethods: []
-  factorsAffecting: []
-  units: []
-  description: Maintenance of original surface characteristics after cleaning
-- metric: Thermal Damage Avoidance
-  measurementMethods: []
-  factorsAffecting: []
-  units: []
-  description: Prevention of heat-related material alterations during cleaning
+category: wood
+generated_date: '2025-10-22T20:36:58.685315'
+data_completeness: 100%
+source: Materials.yaml (direct export)
+properties: {}
+category_info:
+  description: Natural and engineered wood materials including hardwoods, softwoods,
+    plywood, and composite wood products for gentle cleaning applications
+  properties_count: 0
+  category_ranges:
+    density:
+      max: 1.5
+      min: 0.12
+      unit: "g/cm\xB3"
+      adjustment_note: "Some hardwoods exceed 1.0 g/cm\xB3"
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    hardness:
+      max: 5000
+      min: 1
+      unit: lbf
+      adjustment_note: Balsa wood very soft
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    laserAbsorption:
+      max: 50
+      min: 1
+      unit: "cm\u207B\xB9"
+    laserReflectivity:
+      max: 60
+      min: 10
+      unit: '%'
+      source: Wood Science and Technology Database
+      confidence: 70
+      notes: Light woods 40-60%, dark woods 10-25%, highly dependent on species and
+        finish
+      last_updated: '2025-10-15T14:19:43.867238'
+    specificHeat:
+      max: 2500
+      min: 800
+      unit: "J/kg\xB7K"
+    tensileStrength:
+      max: 200
+      min: 20
+      unit: MPa
+    thermalConductivity:
+      max: 0.4
+      min: 0.04
+      unit: "W/(m\xB7K)"
+      source: Wood Handbook - Wood as an Engineering Material (USDA Forest Service)
+      confidence: 80
+      notes: "Across grain 0.04-0.2 W/m\xB7K, along grain can be 2-3x higher; moisture\
+        \ content affects values"
+      last_updated: '2025-10-15T14:19:43.867244'
+    thermalDestruction:
+      point:
+        max: 500
+        min: 200
+        unit: "\xB0C"
+      type: carbonization
+    thermalDiffusivity:
+      max: 0.4
+      min: 0.0001
+      unit: "mm\xB2/s"
+      adjustment_note: Some woods have lower diffusivity
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+      notes: Variable by density and moisture
+    thermalExpansion:
+      max: 60
+      min: 3.0
+      unit: "\xB5m/m\xB7K"
+    youngsModulus:
+      max: 20000
+      min: 5
+      unit: MPa
+      phase2_adjustment: Cedar/hardwoods 2500-6900 MPa
+      adjustment_date: '2025-10-15'
+      notes: Hardwoods 7-20 GPa
+    porosity:
+      min: 12
+      max: 65
+      unit: '%'
+      source: Wood Science and Technology Database
+      confidence: 75
+      notes: Hardwoods 12-45%, softwoods 30-65%
+      last_updated: '2025-10-14T23:58:54.459413'
+    compressiveStrength:
+      min: 20
+      max: 80
+      unit: MPa
+      description: Maximum compressive stress before failure
+      notes: Wood moderate compression
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    flexuralStrength:
+      min: 40
+      max: 150
+      unit: MPa
+      description: Maximum bending stress before failure
+      notes: Wood good in bending
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    fractureToughness:
+      min: 0.33
+      max: 4.4
+      unit: "MPa\xB7\u221Am"
+      description: ''
+      sample_count: 19
+      auto_generated: true
+      generated_date: '2025-10-16'
+    corrosionResistance:
+      min: 2.0
+      max: 8.0
+      unit: rating
+      description: ''
+      sample_count: 20
+      auto_generated: true
+      generated_date: '2025-10-16'
+    oxidationResistance:
+      min: 82.0
+      max: 204.0
+      unit: "\xB0C"
+      description: ''
+      sample_count: 20
+      auto_generated: true
+      generated_date: '2025-10-16'

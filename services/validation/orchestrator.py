@@ -27,14 +27,10 @@ from typing import Dict, List, Optional, Any, Union
 from dataclasses import dataclass, field
 from datetime import datetime
 
-# Import existing validation services (during transition)
-from validation.services.pre_generation_service import PreGenerationValidationService
-from validation.services.post_generation_service import PostGenerationQualityService
-from components.frontmatter.services.material_auditor import MaterialAuditor
-from components.frontmatter.services.validation_service import ValidationService
-
 # Import validation results and errors
 from validation.errors import ValidationError, ValidationResult, ErrorSeverity
+
+# Lazy imports to avoid circular dependencies - services imported at runtime
 
 logger = logging.getLogger(__name__)
 
@@ -107,9 +103,24 @@ class ValidationOrchestrator:
         
         self.logger.info("✅ ValidationOrchestrator initialized with all validation services")
     
+    @property
+    def property_rules(self):
+        """Expose property_rules from pre_generation_service for pipeline compatibility"""
+        return self.pre_generation_service.property_rules
+    
+    def validate_hierarchical(self, verbose: bool = False):
+        """Delegate to pre_generation_service for pipeline compatibility"""
+        return self.pre_generation_service.validate_hierarchical(verbose)
+    
     def _initialize_services(self) -> None:
-        """Initialize all validation services"""
+        """Initialize all validation services with lazy imports to avoid circular dependencies"""
         try:
+            # Lazy imports to avoid circular dependencies
+            from validation.services.pre_generation_service import PreGenerationValidationService
+            from validation.services.post_generation_service import PostGenerationQualityService
+            from components.frontmatter.services.material_auditor import MaterialAuditor
+            from components.frontmatter.services.validation_service import ValidationService
+            
             # Core validation services
             self.pre_generation_service = PreGenerationValidationService()
             self.post_generation_service = PostGenerationQualityService()

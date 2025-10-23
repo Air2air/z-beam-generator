@@ -39,17 +39,17 @@ class PropertyDiscoveryService:
         'reflectivity'
     }
     
-    # Category-specific essential properties (UPDATED: thermalDestruction for metal/wood/semiconductor)
+    # Category-specific essential properties (UPDATED: thermalDestruction for ALL categories)
     CATEGORY_ESSENTIALS = {
         'metal': {'thermalDestruction', 'thermalConductivity', 'density', 'hardness'},
-        'ceramic': {'sinteringPoint', 'thermalConductivity', 'density', 'hardness'},
-        'plastic': {'degradationPoint', 'thermalConductivity', 'density'},
-        'composite': {'degradationPoint', 'thermalConductivity', 'density'},
+        'ceramic': {'thermalDestruction', 'sinteringPoint', 'thermalConductivity', 'density', 'hardness'},
+        'plastic': {'thermalDestruction', 'degradationPoint', 'thermalConductivity', 'density'},
+        'composite': {'thermalDestruction', 'degradationPoint', 'thermalConductivity', 'density'},
         'wood': {'thermalDestruction', 'density'},
-        'stone': {'thermalDegradationPoint', 'density', 'hardness'},
-        'glass': {'softeningPoint', 'thermalConductivity', 'density'},
+        'stone': {'thermalDestruction', 'thermalDegradationPoint', 'density', 'hardness'},
+        'glass': {'thermalDestruction', 'softeningPoint', 'thermalConductivity', 'density'},
         'semiconductor': {'thermalDestruction', 'thermalConductivity', 'density'},
-        'masonry': {'thermalDegradationPoint', 'density', 'hardness'},
+        'masonry': {'thermalDestruction', 'thermalDegradationPoint', 'density', 'hardness'},
         'rare-earth': {'thermalDestruction', 'thermalConductivity', 'density', 'hardness', 'laserReflectivity'}
     }
     

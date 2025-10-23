@@ -112,7 +112,7 @@ Successfully completed comprehensive data quality remediation including removal 
 ❌ Errors: 0 files
 ```
 
-**Target**: `/Users/todddunning/Desktop/Z-Beam/z-beam-test-push/content/components/frontmatter`
+**Target**: `/Users/todddunning/Desktop/Z-Beam/z-beam-test-push/content/frontmatter`
 
 **Result**: 🎉 Deployment successful! Next.js production site updated.
 
