@@ -331,7 +331,7 @@ category_metadata:
    - Categories must match `material_index`
 
 2. **Property Requirements**
-   - Minimum 5 properties per material
+   - Flexible property count based on material complexity
    - All property values must be explicit (no defaults)
    - All values must have sources (ai_research)
 

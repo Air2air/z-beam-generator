@@ -1125,7 +1125,7 @@ CRITICAL REQUIREMENTS:
        contaminantTypes: [...]
 
    **Application Requirements:**
-   - Minimum: 8 applications (target: 8-10)
+   - Comprehensive applications (target: 8-10)
    - Each application MUST be a structured object (NOT a string)
    - Required fields for EVERY application: industry, description, cleaningTypes, contaminantTypes
    - Industries must be diverse: Aerospace, Automotive, Medical, Marine, Electronics, Cultural Heritage, Manufacturing, Energy, etc.

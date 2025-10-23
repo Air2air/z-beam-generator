@@ -1,6 +1,6 @@
 name: Yttrium
-category: Rare-Earth
-subcategory: element
+category: rare-earth
+subcategory: lanthanide
 title: Yttrium Laser Cleaning
 subtitle: Laser cleaning parameters and specifications for Yttrium
 description: Laser cleaning parameters for Yttrium
@@ -17,12 +17,32 @@ images:
     alt: Yttrium surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/yttrium-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Yttrium surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Yttrium surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/yttrium-laser-cleaning-micro.jpg
 caption:
-  description: Microscopic analysis of Yttrium surface before and after laser cleaning treatment
-  beforeText: This surface analysis at 500x magnification reveals significant contamination layers on the yttrium substrate. The primary contaminant appears as a non-uniform oxide layer—perhaps Y₂O₃—with measured thickness varying between 8 and 15 micrometers. This layer shows a cracked, mudflat morphology, with visible spallation at the interface regions. Surface roughness measurements confirm substantial texture degradation, with Ra values reaching approximately 12.4 µm. Multiple particulate deposits are embedded within the oxide matrix. EDX analysis identifies carbonaceous soot (65 at% C) and silicate particles (Si, O, Al) concentrated in surface valleys. These contaminants create a mottled, dark-gray appearance that obscures the underlying metallic luster. The interface between contamination and substrate shows poor adhesion, with delamination cracks measuring 3-7 µm in width. This compromised surface integrity would negatively impact functional performance, particularly for applications requiring precise reflectivity or thermal conductivity. The contamination creates a barrier, so the true surface characteristics cannot be properly evaluated.
-  afterText: This laser cleaning process produces dramatic surface transformation, very-very good result for material restoration. At 500x magnification, the contaminated layer is completely removed, revealing the underlying yttrium substrate with characteristic metallic gray appearance. Surface roughness shows remarkable improvement—Ra measurements now register 0.8 µm, compared to the initial 12.4 µm. This represents approximately 94% reduction in surface
+  description: Microscopic analysis of Yttrium surface before and after laser cleaning
+    treatment
+  beforeText: This surface analysis at 500x magnification reveals significant contamination
+    layers on the yttrium substrate. The primary contaminant appears as a non-uniform
+    oxide layer—perhaps Y₂O₃—with measured thickness varying between 8 and 15 micrometers.
+    This layer shows a cracked, mudflat morphology, with visible spallation at the
+    interface regions. Surface roughness measurements confirm substantial texture
+    degradation, with Ra values reaching approximately 12.4 µm. Multiple particulate
+    deposits are embedded within the oxide matrix. EDX analysis identifies carbonaceous
+    soot (65 at% C) and silicate particles (Si, O, Al) concentrated in surface valleys.
+    These contaminants create a mottled, dark-gray appearance that obscures the underlying
+    metallic luster. The interface between contamination and substrate shows poor
+    adhesion, with delamination cracks measuring 3-7 µm in width. This compromised
+    surface integrity would negatively impact functional performance, particularly
+    for applications requiring precise reflectivity or thermal conductivity. The contamination
+    creates a barrier, so the true surface characteristics cannot be properly evaluated.
+  afterText: This laser cleaning process produces dramatic surface transformation,
+    very-very good result for material restoration. At 500x magnification, the contaminated
+    layer is completely removed, revealing the underlying yttrium substrate with characteristic
+    metallic gray appearance. Surface roughness shows remarkable improvement—Ra measurements
+    now register 0.8 µm, compared to the initial 12.4 µm. This represents approximately
+    94% reduction in surface
 regulatoryStandards:
 - name: ANSI
   description: ANSI Z136.1 - Safe Use of Lasers
@@ -42,17 +62,112 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    density:
+      min: 6.1
+      max: 9.8
+      unit: g/cm³
+      value: 4.47
+      research_basis: Lanthanides range from La (6.15 g/cm³) to Lu (9.84 g/cm³)
+      confidence: 98
+      description: Density of pure yttrium at room temperature
+    hardness:
+      min: 25
+      max: 60
+      unit: HV
+      value: 0.5684
+      research_basis: Vickers hardness for rare-earth elements typically 25-60 HV
+      confidence: 90
+      description: Vickers hardness of pure yttrium
+    thermalConductivity:
+      min: 10
+      max: 17
+      unit: W/(m·K)
+      value: 17.2
+      research_basis: Rare-earth thermal conductivity ranges from 10-17 W/(m·K) at
+        room temperature
+      confidence: 92
+      description: Thermal conductivity at room temperature
+    thermalExpansion:
+      min: 5.0
+      max: 12.0
+      unit: 10⁻⁶/K
+      value: 10.6
+      research_basis: Lanthanide thermal expansion coefficients typically 5-12 × 10⁻⁶/K
+      confidence: 90
+      description: Coefficient of linear thermal expansion (25°C)
+    specificHeat:
+      min: 150
+      max: 200
+      unit: J/(kg·K)
+      value: 298.0
+      research_basis: Rare-earth specific heat capacities range 150-200 J/(kg·K)
+      confidence: 88
+      description: Specific heat capacity at room temperature
+    youngsModulus:
+      min: 25
+      max: 65
+      unit: GPa
+      value: 63.5
+      research_basis: Elastic modulus for lanthanides typically 25-65 GPa
+      confidence: 85
+      description: Young's modulus of elasticity
+    boilingPoint:
+      min: 2800
+      max: 3700
+      unit: K
+      research_basis: Lanthanide boiling points range from ~2800K to ~3700K
+      confidence: 95
+    oxidationResistance:
+      min: 300
+      max: 600
+      unit: °C
+      value: 250
+      research_basis: Lanthanides oxidize readily above 300-600°C depending on element
+      confidence: 88
+      description: Relative oxidation resistance in air at elevated temperatures
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    laserReflectivity:
+      min: 40
+      max: 75
+      unit: '%'
+      value: 0.45
+      research_basis: Metallic rare-earths have moderate to high reflectivity at 1064nm
+      confidence: 85
+      description: Reflectivity at common laser wavelengths (500-1100 nm)
+    absorptivity:
+      min: 0.25
+      max: 0.6
+      unit: dimensionless
+      research_basis: Rare-earth metals have moderate to high absorption at laser
+        wavelengths
+      confidence: 85
+    absorptionCoefficient:
+      min: 0.3
+      max: 0.8
+      unit: dimensionless
+      research_basis: Rare-earth metals have moderate to high absorption coefficients
+        at laser wavelengths
+      confidence: 85
+    ablationThreshold:
+      min: 0.5
+      max: 2.0
+      unit: J/cm²
+      research_basis: Lanthanide ablation thresholds typically range 0.5-2.0 J/cm²
+        for 1064nm
+      confidence: 87
 machineSettings:
   energyDensity:
     value: 5.1
     min: 3.0
     max: 8.0
     unit: J/cm²
-    description: Fluence threshold for effective Yttrium contaminant removal without substrate damage
+    description: Fluence threshold for effective Yttrium contaminant removal without
+      substrate damage
   fluenceThreshold:
     value: 5.1
     min: 3.0
@@ -70,37 +185,43 @@ machineSettings:
     min: 1
     max: 5
     unit: passes
-    description: Recommended number of cleaning passes for complete Yttrium surface treatment
+    description: Recommended number of cleaning passes for complete Yttrium surface
+      treatment
   powerRange:
     value: 100
     min: 80
     max: 120
     unit: W
-    description: Optimal average power for Yttrium surface cleaning without thermal damage
+    description: Optimal average power for Yttrium surface cleaning without thermal
+      damage
   pulseWidth:
     value: 10
     min: 5
     max: 20
     unit: ns
-    description: Nanosecond pulse duration for efficient Yttrium ablation with controlled thermal effects
+    description: Nanosecond pulse duration for efficient Yttrium ablation with controlled
+      thermal effects
   repetitionRate:
     value: 50
     min: 20
     max: 100
     unit: kHz
-    description: Optimal repetition rate for continuous cleaning coverage on Yttrium surfaces
+    description: Optimal repetition rate for continuous cleaning coverage on Yttrium
+      surfaces
   scanSpeed:
     value: 500
     min: 200
     max: 1000
     unit: mm/s
-    description: Optimal scanning speed for efficient Yttrium surface coverage without excessive overlap
+    description: Optimal scanning speed for efficient Yttrium surface coverage without
+      excessive overlap
   spotSize:
     value: 50
     min: 30
     max: 100
     unit: μm
-    description: Beam spot diameter for precise Yttrium surface cleaning with adequate energy density
+    description: Beam spot diameter for precise Yttrium surface cleaning with adequate
+      energy density
   wavelength:
     value: 1064
     min: 532
@@ -114,17 +235,30 @@ environmentalImpact:
   - Medical
   - Nuclear
   benefit: Chemical Waste Elimination
-  description: Yttrium laser cleaning eliminates chemical waste streams by using high-purity laser energy, enabled by its 17.2 W/(m·K) thermal conductivity, to selectively ablate contaminants without the solvents, acids, or abrasive media required by traditional methods.
-  quantifiedBenefits: Yttrium laser cleaning eliminates 100% of chemical waste, reduces operational costs by 30%, and cuts cleaning cycle times by 50%.
+  description: Yttrium laser cleaning eliminates chemical waste streams by using high-purity
+    laser energy, enabled by its 17.2 W/(m·K) thermal conductivity, to selectively
+    ablate contaminants without the solvents, acids, or abrasive media required by
+    traditional methods.
+  quantifiedBenefits: Yttrium laser cleaning eliminates 100% of chemical waste, reduces
+    operational costs by 30%, and cuts cleaning cycle times by 50%.
 - applicableIndustries: []
   benefit: Water Usage Reduction
-  description: Yttrium's low thermal conductivity (10-17 W/(m·K)) enables highly efficient laser-material interaction, minimizing the energy required for ablation and eliminating the need for water-based cooling or cleaning agents.
+  description: Yttrium's low thermal conductivity (10-17 W/(m·K)) enables highly efficient
+    laser-material interaction, minimizing the energy required for ablation and eliminating
+    the need for water-based cooling or cleaning agents.
 - applicableIndustries: []
   benefit: Energy Efficiency
-  description: Yttrium's low thermal conductivity (10-17 W/(m·K)) minimizes parasitic heat transfer during laser ablation, concentrating photon energy for contaminant removal and reducing the total power required for effective cleaning.
+  description: Yttrium's low thermal conductivity (10-17 W/(m·K)) minimizes parasitic
+    heat transfer during laser ablation, concentrating photon energy for contaminant
+    removal and reducing the total power required for effective cleaning.
 - applicableIndustries: []
   benefit: Air Quality Improvement
-  description: Yttrium's low thermal conductivity (10-17 W/(m·K)) enables precise laser ablation with minimal heat dispersion, preventing the vaporization of substrates and reducing the generation of hazardous airborne particulates. This targeted material removal eliminates the need for chemical solvents or abrasive media, directly improving air quality by suppressing fugitive dust and volatile organic compound (VOC) emissions.
+  description: Yttrium's low thermal conductivity (10-17 W/(m·K)) enables precise
+    laser ablation with minimal heat dispersion, preventing the vaporization of substrates
+    and reducing the generation of hazardous airborne particulates. This targeted
+    material removal eliminates the need for chemical solvents or abrasive media,
+    directly improving air quality by suppressing fugitive dust and volatile organic
+    compound (VOC) emissions.
 outcomeMetrics:
 - Contaminant Removal Efficiency:
     description: Percentage of target contaminants successfully removed from surface
@@ -207,7 +341,8 @@ preservedData:
         research_date: '2025-10-20T22:38:04.227521'
         description: Young's modulus of elasticity
   categoryInfo:
-    description: Lanthanide series elements with unique magnetic and optical properties used in laser cleaning applications
+    description: Lanthanide series elements with unique magnetic and optical properties
+      used in laser cleaning applications
     properties_count: 9
     category_ranges:
       density:
@@ -226,19 +361,22 @@ preservedData:
         min: 40
         max: 75
         unit: '%'
-        research_basis: Metallic rare-earths have moderate to high reflectivity at 1064nm
+        research_basis: Metallic rare-earths have moderate to high reflectivity at
+          1064nm
         confidence: 85
       thermalConductivity:
         min: 10
         max: 17
         unit: W/(m·K)
-        research_basis: Rare-earth thermal conductivity ranges from 10-17 W/(m·K) at room temperature
+        research_basis: Rare-earth thermal conductivity ranges from 10-17 W/(m·K)
+          at room temperature
         confidence: 92
       thermalExpansion:
         min: 5.0
         max: 12.0
         unit: 10⁻⁶/K
-        research_basis: Lanthanide thermal expansion coefficients typically 5-12 × 10⁻⁶/K
+        research_basis: Lanthanide thermal expansion coefficients typically 5-12 ×
+          10⁻⁶/K
         confidence: 90
       specificHeat:
         min: 150
@@ -258,7 +396,8 @@ preservedData:
           max: 1700
           unit: K
         type: melting
-        research_basis: Lanthanide thermal destruction points range from ~1000K (Ce) to ~1700K (Lu)
+        research_basis: Lanthanide thermal destruction points range from ~1000K (Ce)
+          to ~1700K (Lu)
         confidence: 98
       boilingPoint:
         min: 2800
@@ -270,7 +409,8 @@ preservedData:
         min: 0.25
         max: 0.6
         unit: dimensionless
-        research_basis: Rare-earth metals have moderate to high absorption at laser wavelengths
+        research_basis: Rare-earth metals have moderate to high absorption at laser
+          wavelengths
         confidence: 85
       oxidationResistance:
         min: 300
@@ -282,13 +422,15 @@ preservedData:
         min: 0.3
         max: 0.8
         unit: dimensionless
-        research_basis: Rare-earth metals have moderate to high absorption coefficients at laser wavelengths
+        research_basis: Rare-earth metals have moderate to high absorption coefficients
+          at laser wavelengths
         confidence: 85
       ablationThreshold:
         min: 0.5
         max: 2.0
         unit: J/cm²
-        research_basis: Lanthanide ablation thresholds typically range 0.5-2.0 J/cm² for 1064nm
+        research_basis: Lanthanide ablation thresholds typically range 0.5-2.0 J/cm²
+          for 1064nm
         confidence: 87
   machineSettingsMetadata:
     energyDensity:

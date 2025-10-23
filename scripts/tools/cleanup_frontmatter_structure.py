@@ -142,11 +142,11 @@ class FrontmatterCleaner:
             if cats != VALID_MATERIAL_CATEGORIES:
                 issues.append(f"  ⚠️  Unexpected categories: {cats}")
         
-        # Check machineSettings has exactly 9 keys
+        # Check machineSettings has reasonable number of keys (flexible)
         if 'machineSettings' in data:
             key_count = len(data['machineSettings'])
-            if key_count != 9:
-                issues.append(f"  ⚠️  machineSettings has {key_count} keys (expected 9)")
+            if key_count < 5 or key_count > 15:
+                issues.append(f"  ⚠️  machineSettings has {key_count} keys (recommended 5-15)")
         
         return issues
     

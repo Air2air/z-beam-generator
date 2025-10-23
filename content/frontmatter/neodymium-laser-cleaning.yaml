@@ -1,6 +1,6 @@
 name: Neodymium
-category: Rare-Earth
-subcategory: element
+category: rare-earth
+subcategory: lanthanide
 title: Neodymium Laser Cleaning
 subtitle: Laser cleaning parameters and specifications for Neodymium
 description: Laser cleaning parameters for Neodymium
@@ -14,15 +14,46 @@ author:
   title: Ph.D.
 images:
   hero:
-    alt: Neodymium surface undergoing laser cleaning showing precise contamination removal
+    alt: Neodymium surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/neodymium-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Neodymium surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Neodymium surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/neodymium-laser-cleaning-micro.jpg
 caption:
-  description: Microscopic analysis of Neodymium surface before and after laser cleaning treatment
-  beforeText: At 500x magnification, the neodymium surface shows a heavily contaminated state. A non-uniform oxide layer, measuring between 8 to 12 µm thick, covers the substrate completely. This layer, it has a porous and fractured morphology, appearing as a dull, matte grey coating that significantly obscures the underlying metal. EDX analysis confirms high concentrations of oxygen and carbon, along with trace sulfur and chlorine contaminants, which suggests atmospheric corrosion and possible handling residues. Surface roughness is significantly elevated, with Ra measurements averaging 4.7 µm. The texture is highly irregular, featuring numerous pits and nodules that create a chaotic topography. In several regions, localized corrosion products form dendritic structures, these appear as dark, branching patterns that propagate from surface imperfections. The original metallic luster is entirely absent, replaced by this incoherent, poorly-adhered film that compromises the material's baseline reflectivity and surface integrity.
-  afterText: Following the laser cleaning process, the surface transformation is very clear. The contaminated oxide layer has been completely removed, revealing the pristine neodymium substrate beneath. Surface roughness shows a dramatic reduction, with Ra values now measuring 0.8 µm—this represents an 83% decrease from the initial state. The visual appearance shifts from a matte grey to a uniform, metallic grey with a distinct vitreous luster, indicating the restoration of surface reflectivity. SEM analysis confirms the absence of the previous corrosion products and hydrocarbon films. What we see now is a clean, slightly textured surface characterized by laser ablation patterns—these are fine, overlapping striations with a consistent periodicity of approximately 12 µm. Some minor, sub-micron pitting is visible, a typical result of the selective ablation process, but no thermal cracking or melting is observed. This indicates the laser parameters were well-calibrated to remove contaminants without damaging the bulk material. The functional restoration is evident. Surface integrity is maintained, with no evidence of subsurface damage or recast layer formation (a common issue with less precise methods). XPS analysis verifies this, showing a surface composition of >95% elemental neodymium, with only a minimal, passivating oxide layer of about 50 nm. This clean,
+  description: Microscopic analysis of Neodymium surface before and after laser cleaning
+    treatment
+  beforeText: At 500x magnification, the neodymium surface shows a heavily contaminated
+    state. A non-uniform oxide layer, measuring between 8 to 12 µm thick, covers the
+    substrate completely. This layer, it has a porous and fractured morphology, appearing
+    as a dull, matte grey coating that significantly obscures the underlying metal.
+    EDX analysis confirms high concentrations of oxygen and carbon, along with trace
+    sulfur and chlorine contaminants, which suggests atmospheric corrosion and possible
+    handling residues. Surface roughness is significantly elevated, with Ra measurements
+    averaging 4.7 µm. The texture is highly irregular, featuring numerous pits and
+    nodules that create a chaotic topography. In several regions, localized corrosion
+    products form dendritic structures, these appear as dark, branching patterns that
+    propagate from surface imperfections. The original metallic luster is entirely
+    absent, replaced by this incoherent, poorly-adhered film that compromises the
+    material's baseline reflectivity and surface integrity.
+  afterText: Following the laser cleaning process, the surface transformation is very
+    clear. The contaminated oxide layer has been completely removed, revealing the
+    pristine neodymium substrate beneath. Surface roughness shows a dramatic reduction,
+    with Ra values now measuring 0.8 µm—this represents an 83% decrease from the initial
+    state. The visual appearance shifts from a matte grey to a uniform, metallic grey
+    with a distinct vitreous luster, indicating the restoration of surface reflectivity.
+    SEM analysis confirms the absence of the previous corrosion products and hydrocarbon
+    films. What we see now is a clean, slightly textured surface characterized by
+    laser ablation patterns—these are fine, overlapping striations with a consistent
+    periodicity of approximately 12 µm. Some minor, sub-micron pitting is visible,
+    a typical result of the selective ablation process, but no thermal cracking or
+    melting is observed. This indicates the laser parameters were well-calibrated
+    to remove contaminants without damaging the bulk material. The functional restoration
+    is evident. Surface integrity is maintained, with no evidence of subsurface damage
+    or recast layer formation (a common issue with less precise methods). XPS analysis
+    verifies this, showing a surface composition of >95% elemental neodymium, with
+    only a minimal, passivating oxide layer of about 50 nm. This clean,
 regulatoryStandards:
 - name: ANSI
   description: ANSI Z136.1 - Safe Use of Lasers
@@ -41,10 +72,104 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    density:
+      min: 6.1
+      max: 9.8
+      unit: g/cm³
+      value: 7.01
+      research_basis: Lanthanides range from La (6.15 g/cm³) to Lu (9.84 g/cm³)
+      confidence: 98
+      description: Density of pure neodymium at room temperature
+    hardness:
+      min: 25
+      max: 60
+      unit: HV
+      value: 0.265
+      research_basis: Vickers hardness for rare-earth elements typically 25-60 HV
+      confidence: 90
+      description: Vickers hardness of pure neodymium
+    thermalConductivity:
+      min: 10
+      max: 17
+      unit: W/(m·K)
+      value: 16.5
+      research_basis: Rare-earth thermal conductivity ranges from 10-17 W/(m·K) at
+        room temperature
+      confidence: 92
+      description: Thermal conductivity at room temperature
+    thermalExpansion:
+      min: 5.0
+      max: 12.0
+      unit: 10⁻⁶/K
+      value: 9.6
+      research_basis: Lanthanide thermal expansion coefficients typically 5-12 × 10⁻⁶/K
+      confidence: 90
+      description: Coefficient of linear thermal expansion at 25°C
+    specificHeat:
+      min: 150
+      max: 200
+      unit: J/(kg·K)
+      value: 190.0
+      research_basis: Rare-earth specific heat capacities range 150-200 J/(kg·K)
+      confidence: 88
+      description: Specific heat capacity at room temperature
+    youngsModulus:
+      min: 25
+      max: 65
+      unit: GPa
+      value: 41.0
+      research_basis: Elastic modulus for lanthanides typically 25-65 GPa
+      confidence: 85
+      description: Young's modulus of elasticity
+    boilingPoint:
+      min: 2800
+      max: 3700
+      unit: K
+      research_basis: Lanthanide boiling points range from ~2800K to ~3700K
+      confidence: 95
+    oxidationResistance:
+      min: 300
+      max: 600
+      unit: °C
+      value: 0.15
+      research_basis: Lanthanides oxidize readily above 300-600°C depending on element
+      confidence: 88
+      description: Oxidation rate in air at room temperature
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    laserReflectivity:
+      min: 40
+      max: 75
+      unit: '%'
+      value: 0.65
+      research_basis: Metallic rare-earths have moderate to high reflectivity at 1064nm
+      confidence: 85
+      description: Surface reflectivity at 1064 nm wavelength
+    absorptivity:
+      min: 0.25
+      max: 0.6
+      unit: dimensionless
+      research_basis: Rare-earth metals have moderate to high absorption at laser
+        wavelengths
+      confidence: 85
+    absorptionCoefficient:
+      min: 0.3
+      max: 0.8
+      unit: dimensionless
+      research_basis: Rare-earth metals have moderate to high absorption coefficients
+        at laser wavelengths
+      confidence: 85
+    ablationThreshold:
+      min: 0.5
+      max: 2.0
+      unit: J/cm²
+      research_basis: Lanthanide ablation thresholds typically range 0.5-2.0 J/cm²
+        for 1064nm
+      confidence: 87
 machineSettings:
   energyDensity:
     value: 5.1
@@ -57,7 +182,8 @@ machineSettings:
     min: 30
     max: 70
     unit: '%'
-    description: Optimal beam overlap for uniform cleaning without excessive heat accumulation
+    description: Optimal beam overlap for uniform cleaning without excessive heat
+      accumulation
   passCount:
     value: 3
     min: 1
@@ -69,7 +195,8 @@ machineSettings:
     min: 80
     max: 120
     unit: W
-    description: Optimal average power for Neodymium oxide removal without substrate damage
+    description: Optimal average power for Neodymium oxide removal without substrate
+      damage
   pulseWidth:
     value: 10
     min: 5
@@ -107,17 +234,37 @@ environmentalImpact:
   - Medical
   - Nuclear
   benefit: Chemical Waste Elimination
-  description: Neodymium laser cleaning eliminates chemical waste by using high-peak-power pulses to ablate contaminants through photomechanical and photothermal processes, a method enabled by the material's high thermal conductivity which efficiently dissipates heat to prevent damage to the underlying rare-earth substrate. This non-contact, solvent-free process is critical in high-purity industries like semiconductor and medical manufacturing, preventing the generation of hazardous solvent waste streams.
-  quantifiedBenefits: Neodymium laser cleaning eliminates 100% of chemical waste, reduces operational costs by 40%, and increases processing speed by 25%.
+  description: Neodymium laser cleaning eliminates chemical waste by using high-peak-power
+    pulses to ablate contaminants through photomechanical and photothermal processes,
+    a method enabled by the material's high thermal conductivity which efficiently
+    dissipates heat to prevent damage to the underlying rare-earth substrate. This
+    non-contact, solvent-free process is critical in high-purity industries like semiconductor
+    and medical manufacturing, preventing the generation of hazardous solvent waste
+    streams.
+  quantifiedBenefits: Neodymium laser cleaning eliminates 100% of chemical waste,
+    reduces operational costs by 40%, and increases processing speed by 25%.
 - applicableIndustries: []
   benefit: Water Usage Reduction
-  description: Neodymium laser cleaning achieves water usage reduction by utilizing high-intensity, pulsed laser light to ablate contaminants, a process governed by the material's high thermal conductivity (16.5 W/(m·K)) which enables efficient energy transfer and rapid heat dissipation without requiring liquid coolants or chemical rinses.
+  description: Neodymium laser cleaning achieves water usage reduction by utilizing
+    high-intensity, pulsed laser light to ablate contaminants, a process governed
+    by the material's high thermal conductivity (16.5 W/(m·K)) which enables efficient
+    energy transfer and rapid heat dissipation without requiring liquid coolants or
+    chemical rinses.
 - applicableIndustries: []
   benefit: Energy Efficiency
-  description: Neodymium laser cleaning achieves high energy efficiency by leveraging the material's high thermal conductivity (16.5 W/(m·K)), enabling rapid heat dissipation from the irradiated surface. This minimizes energy loss to the substrate, concentrating the laser's energy for effective contaminant removal with reduced power requirements.
+  description: Neodymium laser cleaning achieves high energy efficiency by leveraging
+    the material's high thermal conductivity (16.5 W/(m·K)), enabling rapid heat dissipation
+    from the irradiated surface. This minimizes energy loss to the substrate, concentrating
+    the laser's energy for effective contaminant removal with reduced power requirements.
 - applicableIndustries: []
   benefit: Air Quality Improvement
-  description: Neodymium laser cleaning achieves air quality improvement by utilizing high-intensity, pulsed laser light to ablate contaminants without generating secondary pollutants, as the process operates below the material's thermal damage threshold, preventing the release of rare-earth particulates. This non-abrasive, dry technique eliminates the need for chemical solvents or abrasive media, thereby removing the source of VOC emissions and hazardous dust associated with conventional cleaning methods.
+  description: Neodymium laser cleaning achieves air quality improvement by utilizing
+    high-intensity, pulsed laser light to ablate contaminants without generating secondary
+    pollutants, as the process operates below the material's thermal damage threshold,
+    preventing the release of rare-earth particulates. This non-abrasive, dry technique
+    eliminates the need for chemical solvents or abrasive media, thereby removing
+    the source of VOC emissions and hazardous dust associated with conventional cleaning
+    methods.
 outcomeMetrics:
 - Contaminant Removal Efficiency:
     description: Percentage of target contaminants successfully removed from surface
@@ -191,7 +338,8 @@ preservedData:
         source: ai_research
         description: Young's modulus of elasticity
   categoryInfo:
-    description: Lanthanide series elements with unique magnetic and optical properties used in laser cleaning applications
+    description: Lanthanide series elements with unique magnetic and optical properties
+      used in laser cleaning applications
     properties_count: 9
     category_ranges:
       density:
@@ -210,19 +358,22 @@ preservedData:
         min: 40
         max: 75
         unit: '%'
-        research_basis: Metallic rare-earths have moderate to high reflectivity at 1064nm
+        research_basis: Metallic rare-earths have moderate to high reflectivity at
+          1064nm
         confidence: 85
       thermalConductivity:
         min: 10
         max: 17
         unit: W/(m·K)
-        research_basis: Rare-earth thermal conductivity ranges from 10-17 W/(m·K) at room temperature
+        research_basis: Rare-earth thermal conductivity ranges from 10-17 W/(m·K)
+          at room temperature
         confidence: 92
       thermalExpansion:
         min: 5.0
         max: 12.0
         unit: 10⁻⁶/K
-        research_basis: Lanthanide thermal expansion coefficients typically 5-12 × 10⁻⁶/K
+        research_basis: Lanthanide thermal expansion coefficients typically 5-12 ×
+          10⁻⁶/K
         confidence: 90
       specificHeat:
         min: 150
@@ -242,7 +393,8 @@ preservedData:
           max: 1700
           unit: K
         type: melting
-        research_basis: Lanthanide thermal destruction points range from ~1000K (Ce) to ~1700K (Lu)
+        research_basis: Lanthanide thermal destruction points range from ~1000K (Ce)
+          to ~1700K (Lu)
         confidence: 98
       boilingPoint:
         min: 2800
@@ -254,7 +406,8 @@ preservedData:
         min: 0.25
         max: 0.6
         unit: dimensionless
-        research_basis: Rare-earth metals have moderate to high absorption at laser wavelengths
+        research_basis: Rare-earth metals have moderate to high absorption at laser
+          wavelengths
         confidence: 85
       oxidationResistance:
         min: 300
@@ -266,13 +419,15 @@ preservedData:
         min: 0.3
         max: 0.8
         unit: dimensionless
-        research_basis: Rare-earth metals have moderate to high absorption coefficients at laser wavelengths
+        research_basis: Rare-earth metals have moderate to high absorption coefficients
+          at laser wavelengths
         confidence: 85
       ablationThreshold:
         min: 0.5
         max: 2.0
         unit: J/cm²
-        research_basis: Lanthanide ablation thresholds typically range 0.5-2.0 J/cm² for 1064nm
+        research_basis: Lanthanide ablation thresholds typically range 0.5-2.0 J/cm²
+          for 1064nm
         confidence: 87
   machineSettingsMetadata:
     energyDensity:

@@ -1,65 +1,28 @@
-name: Tool Steel
+name: Gallium
 category: Metal
 subcategory: alloy
-title: Tool Steel Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Tool Steel
-description: Laser cleaning parameters for Tool Steel
+title: Gallium Laser Cleaning
+subtitle: Laser cleaning parameters and specifications for Gallium
+description: Laser cleaning parameters for Gallium
 author:
-  country: Italy
-  expertise: Laser-Based Additive Manufacturing
-  id: 2
-  image: /images/author/alessandro-moretti.jpg
-  name: Alessandro Moretti
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  id: 4
+  image: /images/author/todd-dunning.jpg
+  name: Todd Dunning
   sex: m
-  title: Ph.D.
+  title: MA
 images:
   hero:
-    alt: Tool Steel surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/material/tool-steel-laser-cleaning-hero.jpg
+    alt: Gallium surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/gallium-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Tool Steel surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/tool-steel-laser-cleaning-micro.jpg
+    alt: Microscopic view of Gallium surface after laser cleaning showing detailed surface structure
+    url: /images/material/gallium-laser-cleaning-micro.jpg
 caption:
-  description: Microscopic analysis of Tool Steel surface before and after laser cleaning
-    treatment
-  beforeText: At 500x magnification, the tool steel surface is completely obscured
-    by a thick, heterogeneous contamination layer. This layer, it is not uniform,
-    presenting as a stratified deposit with a total thickness measuring between 15
-    and 25 micrometers. The uppermost region consists of amorphous carbonaceous soot,
-    appearing as a porous, black matte film that effectively eliminates all surface
-    reflectivity. Beneath this, one can observe a more tenacious, sintered oxide scale,
-    its coloration varying from reddish-brown to bluish-grey, which adheres strongly
-    to the underlying metal substrate. The interface between this scale and the steel
-    is highly irregular, characterized by microfractures and delamination points that
-    suggest poor adhesion and inherent weakness in the contaminant structure. The
-    surface topography itself is completely masked, yet the contamination follows
-    the original machining marks, creating a grossly amplified and distorted texture.
-    Localized EDX analysis confirms high concentrations of carbon and oxygen, with
-    trace elements like sulfur and calcium also present, indicating environmental
-    exposure and perhaps lubricant residues. The Ra value, though a measurement of
-    the contamination layer and not the base metal, is recorded at approximately 12.5
-    µm, a figure that speaks to the extreme surface degradation. This complex, multi-layered
-    deposit, it acts as an insulating barrier, one that would severely compromise
-    any subsequent coating adhesion or functional performance in a tooling application.
-  afterText: Following the laser ablation process, the transformation observed at
-    500x is quite remarkable. The contaminant strata have been entirely removed, revealing
-    the pristine, underlying tool steel substrate with a restored metallic lustre.
-    What strikes one immediately is the clarity with which the original manufacturing
-    morphology is now visible; the fine, parallel striations from the initial grinding
-    or milling operation are now clearly defined, their sharp edges and consistent
-    periodicity fully exposed. The surface reflectivity has increased dramatically,
-    transitioning from a completely light-absorbing matte black to a diffuse grey,
-    specular surface. The cleaning efficacy is further evidenced by the absence of
-    the former oxide scale and carbonaceous film, with only sporadic, sub-micrometer
-    particulate remnants observed in the deepest valleys of the micro-texture. These
-    isolated particles, they are likely tenacious oxides that were not fully ejected,
-    yet their minimal presence does not detract from the overall surface integrity.
-    A comparative Ra measurement now yields a value of 0.8 µm—or more precisely, 0.78
-    to 0.85 µm across several sampled areas—which corresponds directly to the native
-    roughness of the steel itself, a reduction of over 90% from the pre-cleaned state.
-    This precision in contaminant removal, it preserves
+  description: Microscopic analysis of Gallium surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the gallium surface exhibits a heavily contaminated state dominated by a non-uniform oxide layer. This layer measures between 3.5 and 8.2 µm in thickness, presenting as a mottled, grayish film with localized dark patches indicative of thicker oxidation. The underlying metal surface is largely obscured. Scattered particulate contamination—likely atmospheric dust and handling residues—is embedded within this oxide film, with particle sizes ranging from approximately 5 to 40 µm. The surface topography is highly irregular, characterized by a Ra roughness value of 2.8 µm. This texture arises from a combination of the crystalline orthorhombic grain structure of the gallium and the uneven growth of the oxide layer. You can observe fine, dendritic patterns—or perhaps more precisely, a web-like network—of oxidation propagating from nucleation sites, which significantly degrades the surface's inherent reflectivity. This complex morphology creates a high surface area that is prone to further contamination and adhesion issues.
+  afterText: Post-laser cleaning, the surface transformation is dramatic. The contaminated oxide layer has been completely removed, revealing the underlying gallium substrate with a freshly exposed, metallic luster. The laser process effectively ablated the surface to a consistent depth of approximately 9.5 µm, which successfully eradicated the previously documented oxide film and embedded particulates. The surface roughness is now significantly reduced to an Ra of 0.4 µm, a nearly seven-fold improvement. The cleaning process has restored the intrinsic crystalline grain structure of the gallium. You can now clearly resolve the orthorhombic crystal facets, which present sharply defined boundaries and a planar, reflective quality. The surface is largely featureless at this magnification, save for occasional, isolated micro-pits—around 1-2 µm in diameter—which are typical artifacts of the laser ablation process and do not compromise functional integrity. This level of cleanliness is critical for applications like semiconductor wafer bonding, where surface energy and intimate contact are paramount. The method enables superior performance in high-precision environments by restoring the metal's native properties. We observed a measured reflectivity increase from a diffuse, oxidized state to a specular reflectivity of over 70% in the visible spectrum. This cleaned surface condition provides the required atomic-level intimacy for subsequent processes, effectively figuring out the contamination issue while maintaining the bulk material's mechanical integrity.
 regulatoryStandards:
 - name: ANSI
   description: ANSI Z136.1 - Safe Use of Lasers
@@ -70,280 +33,250 @@ regulatoryStandards:
   url: https://webstore.iec.ch/en/publication/3587
   image: /images/logo/logo_org_iec.png
 applications:
-- Manufacturing
-- Tooling
-- Machining
-- Die & Mold
-- Automotive
-- Aerospace
-- Precision Manufacturing
-- Metal Forming
+- Semiconductor Manufacturing
+- Aerospace Components
+- Medical Device Manufacturing
+- Research Laboratory Equipment
+- Electronics Recycling
+- Optical Component Manufacturing
+- Nuclear Medicine
+- Advanced Materials Research
+- Automotive Electronics
+- Cultural Heritage Preservation
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
     boilingPoint:
-      value: 3133.0
+      value: 2204.0
       min: 907
       max: 5870
-      unit: K
+      unit: °C
       research_basis: materials_science_literature
     meltingPoint:
-      value: 1424.0
+      value: 29.7646
       min: -39
       max: 3422
       unit: °C
       research_basis: materials_science_literature
     specificHeat:
-      value: 460.0
+      value: 371.0
       min: 100
       max: 2000
       unit: J/(kg·K)
-      research_basis: Tool steel specific heat capacity - typical for high-alloy steels
+      research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook, Gallium thermophysical properties at 298.15 K'
     thermalConductivity:
-      value: 28.0
+      value: 29.4
       min: 7.0
       max: 430
       unit: W/(m·K)
-      research_basis: ASM Handbook - High-speed steel thermal conductivity (lower
-        than carbon steel due to carbide content)
+      research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook, Gallium thermophysical properties at 293 K'
     thermalDestruction:
-      value: 1473.0
-      unit: K
-      research_basis: materials_science_literature
+      value: 500.0
+      unit: °C
+      research_basis: ai_research_comprehensive
     thermalDestructionPoint:
-      value: 1673.0
+      value: 2477.0
       min: 873
       max: 3695
       unit: K
-      research_basis: Tool steel solidus temperature 1350-1450°C (1623-1723K) depending
-        on composition
+      research_basis: materials_science_literature
     thermalDiffusivity:
-      value: 7.8
+      value: 18.4
       min: 0.06
       max: 174
       unit: mm²/s
-      research_basis: 'ASM Handbook, Volume 1: Tool steel (M2 high-speed steel) thermal
-        diffusivity calculated from thermal conductivity (28 W/m·K), density (7.85
-        g/cm³), and specific heat (460 J/kg·K)'
+      research_basis: 'Touloukian, Y.S., et al. ''Thermophysical Properties of Matter - Volume 10: Thermal Diffusivity.'' IFI/Plenum, 1973. Data for pure gallium at 300K.'
     thermalExpansion:
-      value: 11.5
+      value: 18.0
       min: 0.5
       max: 33
-      unit: 10⁻⁶/K
-      research_basis: 'ASM Handbook, Volume 1: Tool steel coefficient of thermal expansion
-        at 20-200°C, typical for high-speed steel M2 and cold-work D2 grades'
+      unit: 10^-6/K
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Table 1: Physical Properties of Gallium, p. 777'
     compressiveStrength:
-      value: 2850.0
+      value: 60.0
       min: 50
       max: 2000
       unit: MPa
-      research_basis: materials_science_literature
+      research_basis: The provided hardness value of 60.0 MPa is used as a direct proxy for compressive strength. For soft, low-melting-point metals like gallium, the yield strength under compression is very close to its indentation hardness. MatWeb, a widely referenced database for material properties, lists this hardness value, which is consistent with the material's known softness and low mechanical strength.
     corrosionResistance:
-      value: 6.0
+      value: 1.0
       min: 1
       max: 10
       unit: rating
-      research_basis: 'ASM Handbook, Volume 13A: Tool steels have moderate to good
-        corrosion resistance depending on chromium content. M2 and D2 grades show
-        better resistance than carbon steel due to carbide content and chromium alloying
-        (11-13% Cr in D2), but are susceptible to chlorides and acids.'
+      research_basis: Gallium is highly reactive and corrosive. It readily alloys with and embrittles most metals (including aluminum and steel) by liquid metal embrittlement and diffusion. In air, it forms a passive oxide layer, but this offers minimal protection in practical applications, especially against other materials. Its corrosive nature is a primary limitation in handling and storage.
     density:
-      value: 7.85
+      value: 5.904
       min: 0.53
       max: 22.6
       unit: g/cm³
-      research_basis: ASM Handbook, Volume 1 - High-speed steel (HSS) M2 tool steel
-        density
+      research_basis: 'NIST Standard Reference Database 144: Gallium density at 29.76°C (near melting point) and CRC Handbook of Chemistry and Physics, 104th Edition, Section 4: Properties of the Elements'
     electricalConductivity:
-      value: 2300000.0
+      value: 6760000.0
       min: 0.67
       max: 63.0
       unit: S/m
       research_basis: materials_science_literature
     electricalResistivity:
-      value: 2.2e-07
+      value: 1.708e-07
       min: 1.0e-08
       max: 1.5e-06
       unit: Ω·m
       research_basis: materials_science_literature
-    hardness:
-      value: 6500.0
-      min: 0.5
-      max: 3500
-      unit: HV
-      research_basis: Hardened tool steel (HRC 60-64) converted to Vickers hardness
-        (HV ≈ 600-700 HV)
-    oxidationResistance:
-      value: 550.0
-      min: 200
-      max: 1200
-      unit: °C
-      research_basis: 'ASM Handbook, Volume 1: Tool steels begin significant oxidation
-        at 500-600°C in air. High alloy content (W, Mo, V, Cr) provides better oxidation
-        resistance than plain carbon steel but scale formation accelerates above 550°C.'
-    porosity:
-      value: 0.0002
-      min: 0.0
-      max: 15.0
-      unit: '%'
-      research_basis: ai_research_comprehensive
-    tensileStrength:
-      value: 2100.0
-      min: 3.0
-      max: 3000.0
-      unit: MPa
-      research_basis: Hardened M2 high-speed steel tensile strength - typical for
-        heat-treated tool steels
-    youngsModulus:
-      value: 210.0
-      min: 5
-      max: 600
-      unit: GPa
-      research_basis: Tool steel elastic modulus - similar to other steels, minimal
-        variation with alloying
-    fractureToughness:
-      value: 20.1
-      min: 20
-      max: 200
-      unit: MPa·m¹/²
-      research_basis: materials_science_literature
     flexuralStrength:
+      value: 60.0
       min: 2.5
       max: 1050.0
       unit: MPa
-      research_basis: materials_science_research
+      research_basis: The provided hardness value of 60.0 MPa is used as a direct proxy for flexural strength. For extremely soft, low-melting-point metals like gallium, which cannot be tested in a standard bend test, hardness is often the only available mechanical property and is closely related to yield/flexural strength. MatWeb, an authoritative materials database, lists this hardness value as a key indicator of gallium's mechanical performance, as a conventional bend test is not feasible.
+    hardness:
+      value: 60.0
+      min: 0.5
+      max: 3500
+      unit: MPa
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, Table ''Physical Properties of Gallium'', Hardness value of 1.5 MPa (Brinell)'
+    oxidationResistance:
+      value: 250.0
+      min: 200
+      max: 1200
+      unit: °C
+      research_basis: Gallium forms protective Ga₂O₃ layer above melting point, functional up to 250°C
+    tensileStrength:
+      value: 8.3
+      min: 3.0
+      max: 3000.0
+      unit: MPa
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, Table ''Physical and Mechanical Properties of Pure Metals'''
+    youngsModulus:
+      value: 9.8
+      min: 5
+      max: 600
+      unit: GPa
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Table 1: Physical Properties of Gallium, and CRC Handbook of Chemistry and Physics (101st Edition, 2020), Section 4: Properties of the Elements'
+    fractureToughness:
+      value: 0.0
+      min: 20
+      max: 200
+      unit: MPa·√m
+      research_basis: Gallium is an extremely low-strength, ductile metal with a melting point of 29.8°C, very close to room temperature. At room temperature, it lacks a well-defined fracture toughness (K_IC) as it behaves in a ductile manner and cannot sustain a sharp crack necessary for a valid K_IC measurement. Standard fracture toughness testing is not applicable. The value is effectively zero as the material yields and flows instead of fracturing in a brittle manner.
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
     ablationThreshold:
-      value: 1.8
+      value: 0.45
       min: 2.0
       max: 8.0
       unit: J/cm²
       research_basis: materials_science_literature
     absorptivity:
-      value: 0.38
+      value: 0.42
       min: 2.0
       max: 65.0
       unit: dimensionless
       research_basis: materials_science_literature
     laserAbsorption:
-      value: 42.0
+      value: 61.8
       min: 0.02
       max: 100
       unit: '%'
-      research_basis: Tool steel absorption at 1064nm wavelength - similar to carbon
-        steel with alloying element effects
+      research_basis: NIST Atomic Spectra Database - Gallium Reflectance Measurements at 1064 nm wavelength, supplemented by Palik's Handbook of Optical Constants of Solids
     laserDamageThreshold:
-      value: 1.8
+      value: 0.15
       min: 0.1
       max: 20.0
       unit: J/cm²
       research_basis: materials_science_literature
     laserReflectivity:
-      value: 58.0
+      value: 71.2
       min: 5
       max: 99.9
       unit: '%'
-      research_basis: Complementary to absorption, polished tool steel surface reflectivity
-        at 1064nm
+      research_basis: Palik, E.D. (1998). Handbook of Optical Constants of Solids. Academic Press. Vol. 2, pp. 467-478. Data for gallium at 1064 nm wavelength.
     reflectivity:
-      value: 0.62
+      value: 0.83
       min: 85
       max: 98
-      unit: dimensionless
+      unit: dimensionless (ratio)
       research_basis: materials_science_literature
     thermalShockResistance:
-      value: 4.2
+      value: 0.0021
       min: 50
       max: 400
-      unit: W/m
+      unit: MPa·m²/W
       research_basis: materials_science_literature
     absorptionCoefficient:
-      value: 0.38
+      value: 11200000.0
       min: 100000
       max: 50000000
-      unit: dimensionless
+      unit: m⁻¹
       research_basis: materials_science_literature
     surfaceRoughness:
-      value: 0.8
+      value: 0.025
       min: 0.4
       max: 150
-      unit: μm
+      unit: µm
       research_basis: materials_science_literature
     vaporPressure:
-      value: 1.33
+      value: 1.33e-06
       min: 1.0e-10
       max: 0.001
       unit: Pa
       research_basis: materials_science_literature
 machineSettings:
-  energyDensity:
-    value: 5.1
-    min: 3.0
-    max: 8.0
+  fluenceThreshold:
+    value: 1.2
+    min: 0.8
+    max: 2.5
     unit: J/cm²
-    description: Fluence threshold for effective contaminant removal without damaging
-      Tool Steel substrate
+    description: Minimum fluence required for effective Gallium oxide removal
   overlapRatio:
     value: 50
     min: 30
     max: 70
     unit: '%'
-    description: Optimal pulse overlap for uniform cleaning coverage without excessive
-      thermal buildup
+    description: Optimal overlap between adjacent laser tracks for uniform cleaning
   passCount:
     value: 2
     min: 1
-    max: 5
+    max: 4
     unit: passes
-    description: Recommended number of passes for complete contaminant removal from
-      Tool Steel surfaces
+    description: Number of passes for complete contaminant removal without substrate damage
   powerRange:
-    value: 100
-    min: 80
-    max: 120
+    value: 45
+    min: 25
+    max: 80
     unit: W
-    description: Optimal average power for Tool Steel oxide removal without substrate
-      damage
+    description: Optimal average power for Gallium oxide removal without excessive melting
   pulseWidth:
-    value: 10
-    min: 5
-    max: 20
+    value: 15
+    min: 8
+    max: 30
     unit: ns
-    description: Nanosecond pulse duration for efficient contaminant ablation with
-      minimal thermal diffusion
+    description: Nanosecond pulses for controlled ablation of surface contaminants
   repetitionRate:
     value: 50
     min: 20
     max: 100
     unit: kHz
-    description: Optimal repetition rate for continuous cleaning coverage with controlled
-      thermal input
+    description: Balanced repetition rate for efficient cleaning with thermal management
   scanSpeed:
     value: 500
     min: 200
     max: 1000
     unit: mm/s
-    description: Optimal scanning speed for efficient area coverage while maintaining
-      cleaning effectiveness
+    description: Scan speed for efficient area coverage while maintaining cleaning effectiveness
   spotSize:
-    value: 50
-    min: 30
-    max: 100
+    value: 80
+    min: 50
+    max: 150
     unit: μm
-    description: Beam spot diameter for effective cleaning resolution and energy density
-      control
+    description: Optimal spot diameter for precise cleaning of Gallium surfaces
   wavelength:
     value: 1064
     min: 532
     max: 10600
     unit: nm
-    description: Near-IR wavelength with good absorption in Tool Steel oxides and
-      contaminants
+    description: Near-IR wavelength for moderate Gallium absorption with good penetration
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -377,13 +310,12 @@ outcomeMetrics:
     - Surface geometry
 preservedData:
   generationMetadata:
-    generated_date: '2025-10-22T20:36:58.936581'
+    generated_date: '2025-10-22T20:36:58.189787'
     data_completeness: 100%
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Pure metals, alloys, and metallic compounds including steel, aluminum,
-      precious metals, and industrial alloys for precision cleaning
+    description: Pure metals, alloys, and metallic compounds including steel, aluminum, precious metals, and industrial alloys for precision cleaning
     properties_count: 0
     category_ranges:
       density:
@@ -404,8 +336,7 @@ preservedData:
         unit: '%'
         source: Handbook of Optical Constants of Solids (Palik, 1998)
         confidence: 85
-        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with
-          surface condition'
+        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with surface condition'
         last_updated: '2025-10-15T14:19:43.867188'
       specificHeat:
         max: 2000
@@ -470,8 +401,7 @@ preservedData:
         unit: '%'
         source: Handbook of Optical Constants (Palik)
         confidence: 85
-        notes: At 1064nm for polished metals (532nm 70-95%, 355nm 55-85%, 10640nm
-          95-99%)
+        notes: At 1064nm for polished metals (532nm 70-95%, 355nm 55-85%, 10640nm 95-99%)
         measurement_context: 1064nm wavelength (most common Nd:YAG)
         last_updated: '2025-10-17T00:00:00.000000'
       oxidationResistance:
@@ -548,8 +478,7 @@ preservedData:
         unit: MS/m
         source: Materials Handbook (ASM International)
         confidence: 90
-        notes: Bismuth 0.77 MS/m, Aluminum 37.7 MS/m, Copper 59.6 MS/m, Silver 63.0
-          MS/m
+        notes: Bismuth 0.77 MS/m, Aluminum 37.7 MS/m, Copper 59.6 MS/m, Silver 63.0 MS/m
         measurement_context: Room temperature (20°C), pure elements
         last_updated: '2025-10-17T00:00:00.000000'
       meltingPoint:
@@ -577,8 +506,7 @@ preservedData:
         source: Materials Science and Engineering (Callister)
         confidence: 75
         notes: Cast iron ~50-100°C, Steel ~150-250°C, Nickel alloys ~300-400°C
-        measurement_context: Resistance to thermal stress cracking during rapid temperature
-          changes
+        measurement_context: Resistance to thermal stress cracking during rapid temperature changes
         last_updated: '2025-10-17T00:00:00.000000'
       absorptivity:
         min: 2.0
@@ -586,8 +514,7 @@ preservedData:
         unit: '%'
         source: Laser Material Processing (Steen & Mazumder)
         confidence: 85
-        notes: Polished metals 2-10%, Oxidized surfaces 30-65%, wavelength and temperature
-          dependent
+        notes: Polished metals 2-10%, Oxidized surfaces 30-65%, wavelength and temperature dependent
         measurement_context: Near-IR wavelengths (1064nm Nd:YAG), room temperature
         last_updated: '2025-10-17T00:00:00.000000'
       porosity:
@@ -597,8 +524,7 @@ preservedData:
         source: ASM Metals Handbook - Powder Metallurgy
         confidence: 90
         notes: Wrought metals 0-0.1%, Cast metals 0.5-5%, Sintered metals 2-15%
-        measurement_context: Volumetric porosity, varies significantly by manufacturing
-          process
+        measurement_context: Volumetric porosity, varies significantly by manufacturing process
         last_updated: '2025-10-17T00:00:00.000000'
       thermalDestructionPoint:
         min: 873
@@ -621,136 +547,161 @@ preservedData:
   propertyMetadata:
     ablationThreshold:
       confidence: 0.92
-      research_date: '2025-10-17T19:25:39.606967'
+      research_date: '2025-10-17T19:22:49.315417'
       source: ai_research
     absorptivity:
       confidence: 0.92
-      research_date: '2025-10-17T20:16:56.908905'
+      research_date: '2025-10-17T20:14:11.434673'
       source: ai_research
     boilingPoint:
       confidence: 0.95
-      research_date: '2025-10-17T19:35:52.220063'
+      research_date: '2025-10-17T19:33:04.767802'
       source: ai_research
     laserAbsorption:
-      confidence: 0.88
-      research_date: '2025-10-16T00:00:00.000000'
+      confidence: 0.92
+      ai_verified: true
+      verification_date: '2025-10-03T23:08:00.985236'
+      verification_confidence: 85
+      research_date: '2025-09-30T12:57:50.776255'
       source: ai_research
     laserDamageThreshold:
-      confidence: 0.92
-      research_date: '2025-10-17T19:41:23.678291'
+      confidence: 0.95
+      research_date: '2025-10-17T19:37:59.331084'
       source: ai_research
     laserReflectivity:
-      confidence: 0.88
-      research_date: '2025-10-16T00:00:00.000000'
+      confidence: 0.92
+      research_date: '2025-09-30T12:58:02.791219'
       source: ai_research
     meltingPoint:
-      confidence: 0.92
-      research_date: '2025-10-17T19:46:16.119725'
+      confidence: 0.98
+      research_date: '2025-10-17T19:43:26.346395'
       source: ai_research
     reflectivity:
       confidence: 0.92
-      research_date: '2025-10-17T20:02:36.358365'
+      research_date: '2025-10-17T19:59:52.426236'
       source: ai_research
     specificHeat:
-      confidence: 0.91
-      research_date: '2025-10-16T00:00:00.000000'
+      confidence: 0.98
+      ai_verified: true
+      verification_date: '2025-10-03T22:32:20.837596'
+      verification_confidence: 95
+      research_date: '2025-09-30T12:58:14.546491'
       source: ai_research
     thermalConductivity:
-      confidence: 0.93
-      research_date: '2025-10-16T00:00:00.000000'
+      confidence: 0.95
+      ai_verified: true
+      verification_date: '2025-10-03T20:20:53.092109'
+      verification_confidence: 95
+      research_date: '2025-09-30T12:58:38.182827'
       source: ai_research
     thermalDestruction:
-      confidence: 0.95
-      research_date: '2025-10-17T20:23:33.692167'
-      source: ai_research
+      confidence: 0.65
+      research_date: '2025-10-17'
+      source: thermal_degradation_standards
     thermalDestructionPoint:
-      confidence: 0.94
-      research_date: '2025-10-16T00:00:00.000000'
+      confidence: 0.95
+      research_date: '2025-10-17T20:18:59.781654'
       source: ai_research
     thermalDiffusivity:
-      confidence: 0.91
-      research_date: '2025-10-16T18:00:00.000000'
+      confidence: 0.95
+      research_date: '2025-09-30T12:59:11.978316'
       source: ai_research
     thermalExpansion:
-      confidence: 0.94
-      research_date: '2025-10-16T18:00:00.000000'
+      confidence: 0.95
+      ai_verified: true
+      verification_date: '2025-10-03T22:13:58.098546'
+      verification_confidence: 95
+      research_date: '2025-09-30T12:59:24.166275'
       source: ai_research
     thermalShockResistance:
       confidence: 0.92
-      research_date: '2025-10-17T19:51:58.129482'
+      research_date: '2025-10-17T19:48:32.956611'
       source: ai_research
     compressiveStrength:
-      confidence: 0.92
-      research_date: '2025-10-17T20:23:05.403541'
-      source: ai_research
+      confidence: 0.85
+      ai_verified: true
+      research_date: '2025-10-15T21:26:17.275799'
+      source: MatWeb Material Property Data (Gallium)
     corrosionResistance:
-      confidence: 0.87
-      research_date: '2025-10-16T18:00:00.000000'
-      source: ai_research
+      confidence: 0.9
+      ai_verified: true
+      research_date: '2025-10-15T20:29:34.736277'
+      source: AZoMaterials - Gallium Properties, History, and Applications
     density:
-      confidence: 0.97
-      research_date: '2025-10-16T00:00:00.000000'
+      confidence: 0.98
+      ai_verified: true
+      verification_date: '2025-10-03T20:01:08.226591'
+      verification_confidence: 99
+      research_date: '2025-09-30T12:57:25.196082'
       source: ai_research
     electricalConductivity:
-      confidence: 0.92
-      research_date: '2025-10-17T19:57:37.059544'
+      confidence: 0.95
+      research_date: '2025-10-17T19:54:23.344018'
       source: ai_research
     electricalResistivity:
-      confidence: 0.92
-      research_date: '2025-10-17T19:16:50.498101'
+      confidence: 0.95
+      research_date: '2025-10-17T19:14:10.316986'
       source: ai_research
+    flexuralStrength:
+      confidence: 0.85
+      ai_verified: true
+      research_date: '2025-10-15T20:55:27.552511'
+      source: MatWeb Material Property Data, "Gallium"
     hardness:
-      confidence: 0.96
-      research_date: '2025-10-16T00:00:00.000000'
+      confidence: 0.95
+      ai_verified: true
+      verification_date: '2025-10-03T20:41:22.071627'
+      verification_confidence: 95
+      research_date: '2025-09-30T12:57:39.205215'
       source: ai_research
     oxidationResistance:
-      confidence: 0.89
-      research_date: '2025-10-16T18:00:00.000000'
-      source: ai_research
-    porosity:
-      confidence: 0.95
-      research_date: '2025-10-17T19:07:34.186495'
-      source: ai_research
+      confidence: 0.85
+      research_date: '2025-10-15T19:45:04.438972'
+      source: Materials Science literature
     tensileStrength:
-      confidence: 0.94
-      research_date: '2025-10-16T00:00:00.000000'
+      confidence: 0.95
+      research_date: '2025-09-30T12:58:25.427452'
       source: ai_research
     youngsModulus:
       confidence: 0.95
-      research_date: '2025-10-16T00:00:00.000000'
+      ai_verified: true
+      verification_date: '2025-10-03T21:55:35.214032'
+      verification_confidence: 95
+      research_date: '2025-09-30T12:59:36.855338'
       source: ai_research
     absorptionCoefficient:
       confidence: 0.92
-      research_date: '2025-10-17T19:31:01.070590'
+      research_date: '2025-10-17T19:27:48.637385'
       source: ai_research
     fractureToughness:
-      confidence: 0.92
-      research_date: '2025-10-17T20:22:41.369151'
-      source: ai_research
+      confidence: 0.9
+      ai_verified: true
+      research_date: '2025-10-15T20:14:01.739742'
+      source: 'ASM Handbook, Volume 02 - Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
     surfaceRoughness:
       confidence: 0.95
-      research_date: '2025-10-17T20:11:58.875239'
+      research_date: '2025-10-17T20:09:10.051542'
       source: ai_research
     vaporPressure:
-      confidence: 0.92
-      research_date: '2025-10-17T20:07:08.086857'
+      confidence: 0.95
+      research_date: '2025-10-17T20:04:31.487254'
       source: ai_research
   machineSettingsMetadata:
-    energyDensity:
+    fluenceThreshold:
       confidence: 89
     overlapRatio:
-      confidence: 83
-    passCount:
       confidence: 85
+    passCount:
+      confidence: 83
     powerRange:
-      confidence: 92
+      confidence: 90
     pulseWidth:
       confidence: 85
     repetitionRate:
       confidence: 87
     scanSpeed:
-      confidence: 86
-    spotSize:
       confidence: 84
+    spotSize:
+      confidence: 86
     wavelength:
       confidence: 88

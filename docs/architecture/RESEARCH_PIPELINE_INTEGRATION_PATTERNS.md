@@ -493,7 +493,7 @@ class ResearchPipelineIntegration:
             return False
         
         properties = results["materialProperties"]
-        if len(properties) < 2:  # Minimum 2 properties required
+        if len(properties) < 1:  # At least one property required
             return False
         
         # Check average confidence

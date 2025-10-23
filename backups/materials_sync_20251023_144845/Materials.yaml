@@ -13312,42 +13312,6 @@ materials:
           source: ai_research
           unit: qualitative
           value: high_near_ir
-        laserReflectivity:
-          min: 40
-          max: 75
-          unit: '%'
-          value: 0.65
-          research_basis: Metallic rare-earths have moderate to high reflectivity
-            at 1064nm
-          confidence: 85
-          description: Optical reflectivity at visible wavelengths
-        absorptivity:
-          min: 0.25
-          max: 0.6
-          unit: dimensionless
-          research_basis: Rare-earth metals have moderate to high absorption at laser
-            wavelengths
-          confidence: 85
-        absorptionCoefficient:
-          min: 0.3
-          max: 0.8
-          unit: dimensionless
-          value: 0.85
-          research_basis: Rare-earth metals have moderate to high absorption coefficients
-            at laser wavelengths
-          confidence: 85
-          description: Estimated absorption coefficient for common laser wavelengths
-            (1064 nm)
-        ablationThreshold:
-          min: 0.5
-          max: 2.0
-          unit: J/cm²
-          value: 1.2
-          research_basis: Lanthanide ablation thresholds typically range 0.5-2.0 J/cm²
-            for 1064nm
-          confidence: 87
-          description: Estimated laser ablation threshold for nanosecond pulses at
-            1064 nm
       material_characteristics:
         bulk_modulus:
           research_notes: Bulk modulus indicating compressibility resistance
@@ -13387,9 +13351,6 @@ materials:
           verification_confidence: 95
           verification_date: '2025-10-20T22:15:00.000000'
           verification_variance: 0.15%
-          min: 6.1
-          max: 9.8
-          description: Density of pure cerium at room temperature
         electricalResistivity:
           ai_verified: true
           confidence: 0.93
@@ -13421,9 +13382,6 @@ materials:
           verification_confidence: 88
           verification_date: '2025-10-20T22:15:00.000000'
           verification_variance: 5.2%
-          min: 25
-          max: 60
-          description: Brinell hardness of pure cerium
         label: Material Characteristics
         melting_point:
           research_notes: Melting point of cerium metal (795°C)
@@ -13451,9 +13409,6 @@ materials:
           verification_confidence: 90
           verification_date: '2025-10-20T22:15:00.000000'
           verification_variance: 1.8%
-          min: 10
-          max: 17
-          description: Thermal conductivity at room temperature
         youngsModulus:
           ai_verified: true
           confidence: 0.92
@@ -13470,41 +13425,6 @@ materials:
           verification_confidence: 92
           verification_date: '2025-10-20T22:15:00.000000'
           verification_variance: 2.1%
-          min: 25
-          max: 65
-          description: Young's modulus of polycrystalline cerium
-        thermalExpansion:
-          min: 5.0
-          max: 12.0
-          unit: 10⁻⁶/K
-          value: 6.3
-          research_basis: Lanthanide thermal expansion coefficients typically 5-12
-            × 10⁻⁶/K
-          confidence: 90
-          description: Coefficient of linear thermal expansion (25°C)
-        specificHeat:
-          min: 150
-          max: 200
-          unit: J/(kg·K)
-          value: 192.0
-          research_basis: Rare-earth specific heat capacities range 150-200 J/(kg·K)
-          confidence: 88
-          description: Specific heat capacity at room temperature
-        boilingPoint:
-          min: 2800
-          max: 3700
-          unit: K
-          research_basis: Lanthanide boiling points range from ~2800K to ~3700K
-          confidence: 95
-        oxidationResistance:
-          min: 300
-          max: 600
-          unit: °C
-          value: 150
-          research_basis: Lanthanides oxidize readily above 300-600°C depending on
-            element
-          confidence: 88
-          description: Oxidation rate in air at 400°C
     material_metadata:
       industryTags: *id001
     name: Cerium
@@ -17928,108 +17848,12 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         properties: {}
-        laserReflectivity:
-          min: 40
-          max: 75
-          unit: '%'
-          value: 0.72
-          research_basis: Metallic rare-earths have moderate to high reflectivity
-            at 1064nm
-          confidence: 85
-          description: Optical reflectivity at visible wavelengths
-        absorptivity:
-          min: 0.25
-          max: 0.6
-          unit: dimensionless
-          research_basis: Rare-earth metals have moderate to high absorption at laser
-            wavelengths
-          confidence: 85
-        absorptionCoefficient:
-          min: 0.3
-          max: 0.8
-          unit: dimensionless
-          research_basis: Rare-earth metals have moderate to high absorption coefficients
-            at laser wavelengths
-          confidence: 85
-        ablationThreshold:
-          min: 0.5
-          max: 2.0
-          unit: J/cm²
-          research_basis: Lanthanide ablation thresholds typically range 0.5-2.0 J/cm²
-            for 1064nm
-          confidence: 87
       material_characteristics:
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
         label: Material Characteristics
         percentage: 40.0
         properties: {}
-        density:
-          min: 6.1
-          max: 9.8
-          unit: g/cm³
-          value: 8.55
-          research_basis: Lanthanides range from La (6.15 g/cm³) to Lu (9.84 g/cm³)
-          confidence: 98
-          description: Density of pure dysprosium at room temperature
-        hardness:
-          min: 25
-          max: 60
-          unit: HV
-          value: 0.41159999999999997
-          research_basis: Vickers hardness for rare-earth elements typically 25-60
-            HV
-          confidence: 90
-          description: Vickers hardness of pure dysprosium
-        thermalConductivity:
-          min: 10
-          max: 17
-          unit: W/(m·K)
-          value: 10.7
-          research_basis: Rare-earth thermal conductivity ranges from 10-17 W/(m·K)
-            at room temperature
-          confidence: 92
-          description: Thermal conductivity at room temperature
-        thermalExpansion:
-          min: 5.0
-          max: 12.0
-          unit: 10⁻⁶/K
-          value: 9.9
-          research_basis: Lanthanide thermal expansion coefficients typically 5-12
-            × 10⁻⁶/K
-          confidence: 90
-          description: Coefficient of linear thermal expansion (25°C)
-        specificHeat:
-          min: 150
-          max: 200
-          unit: J/(kg·K)
-          value: 170.0
-          research_basis: Rare-earth specific heat capacities range 150-200 J/(kg·K)
-          confidence: 88
-          description: Specific heat capacity at room temperature
-        youngsModulus:
-          min: 25
-          max: 65
-          unit: GPa
-          value: 61.4
-          research_basis: Elastic modulus for lanthanides typically 25-65 GPa
-          confidence: 85
-          description: Young's modulus of elasticity
-        boilingPoint:
-          min: 2800
-          max: 3700
-          unit: K
-          research_basis: Lanthanide boiling points range from ~2800K to ~3700K
-          confidence: 95
-        oxidationResistance:
-          min: 300
-          max: 600
-          unit: °C
-          value: 3
-          research_basis: Lanthanides oxidize readily above 300-600°C depending on
-            element
-          confidence: 88
-          description: Oxidation resistance rating in air (1=poor, 10=excellent)
       other:
         description: Additional material-specific properties
         label: Other Properties
@@ -18864,108 +18688,12 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         properties: {}
-        laserReflectivity:
-          min: 40
-          max: 75
-          unit: '%'
-          value: 0.72
-          research_basis: Metallic rare-earths have moderate to high reflectivity
-            at 1064nm
-          confidence: 85
-          description: Surface reflectivity at 1064 nm laser wavelength
-        absorptivity:
-          min: 0.25
-          max: 0.6
-          unit: dimensionless
-          research_basis: Rare-earth metals have moderate to high absorption at laser
-            wavelengths
-          confidence: 85
-        absorptionCoefficient:
-          min: 0.3
-          max: 0.8
-          unit: dimensionless
-          research_basis: Rare-earth metals have moderate to high absorption coefficients
-            at laser wavelengths
-          confidence: 85
-        ablationThreshold:
-          min: 0.5
-          max: 2.0
-          unit: J/cm²
-          research_basis: Lanthanide ablation thresholds typically range 0.5-2.0 J/cm²
-            for 1064nm
-          confidence: 87
       material_characteristics:
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
         label: Material Characteristics
         percentage: 40.0
         properties: {}
-        density:
-          min: 6.1
-          max: 9.8
-          unit: g/cm³
-          value: 5.24
-          research_basis: Lanthanides range from La (6.15 g/cm³) to Lu (9.84 g/cm³)
-          confidence: 98
-          description: Density of pure europium at room temperature
-        hardness:
-          min: 25
-          max: 60
-          unit: HV
-          value: 0.167
-          research_basis: Vickers hardness for rare-earth elements typically 25-60
-            HV
-          confidence: 90
-          description: Brinell hardness of pure europium
-        thermalConductivity:
-          min: 10
-          max: 17
-          unit: W/(m·K)
-          value: 13.9
-          research_basis: Rare-earth thermal conductivity ranges from 10-17 W/(m·K)
-            at room temperature
-          confidence: 92
-          description: Thermal conductivity at room temperature
-        thermalExpansion:
-          min: 5.0
-          max: 12.0
-          unit: 10⁻⁶/K
-          value: 35
-          research_basis: Lanthanide thermal expansion coefficients typically 5-12
-            × 10⁻⁶/K
-          confidence: 90
-          description: Linear thermal expansion coefficient at 25°C
-        specificHeat:
-          min: 150
-          max: 200
-          unit: J/(kg·K)
-          value: 182.0
-          research_basis: Rare-earth specific heat capacities range 150-200 J/(kg·K)
-          confidence: 88
-          description: Specific heat capacity at room temperature
-        youngsModulus:
-          min: 25
-          max: 65
-          unit: GPa
-          value: 18.2
-          research_basis: Elastic modulus for lanthanides typically 25-65 GPa
-          confidence: 85
-          description: Young's modulus of polycrystalline europium
-        boilingPoint:
-          min: 2800
-          max: 3700
-          unit: K
-          research_basis: Lanthanide boiling points range from ~2800K to ~3700K
-          confidence: 95
-        oxidationResistance:
-          min: 300
-          max: 600
-          unit: °C
-          value: 180
-          research_basis: Lanthanides oxidize readily above 300-600°C depending on
-            element
-          confidence: 88
-          description: Time to significant oxidation in air at room temperature
       other:
         description: Additional material-specific properties
         label: Other Properties
@@ -22232,69 +21960,6 @@ materials:
             source: ai_research
             unit: MPa·m²/W
             value: 0.0021
-        ablationThreshold:
-          value: 0.45
-          min: 2.0
-          max: 8.0
-          unit: J/cm²
-          research_basis: materials_science_literature
-        absorptivity:
-          value: 0.42
-          min: 2.0
-          max: 65.0
-          unit: dimensionless
-          research_basis: materials_science_literature
-        laserAbsorption:
-          value: 61.8
-          min: 0.02
-          max: 100
-          unit: '%'
-          research_basis: NIST Atomic Spectra Database - Gallium Reflectance Measurements
-            at 1064 nm wavelength, supplemented by Palik's Handbook of Optical Constants
-            of Solids
-        laserDamageThreshold:
-          value: 0.15
-          min: 0.1
-          max: 20.0
-          unit: J/cm²
-          research_basis: materials_science_literature
-        laserReflectivity:
-          value: 71.2
-          min: 5
-          max: 99.9
-          unit: '%'
-          research_basis: Palik, E.D. (1998). Handbook of Optical Constants of Solids.
-            Academic Press. Vol. 2, pp. 467-478. Data for gallium at 1064 nm wavelength.
-        reflectivity:
-          value: 0.83
-          min: 85
-          max: 98
-          unit: dimensionless (ratio)
-          research_basis: materials_science_literature
-        thermalShockResistance:
-          value: 0.0021
-          min: 50
-          max: 400
-          unit: MPa·m²/W
-          research_basis: materials_science_literature
-        absorptionCoefficient:
-          value: 11200000.0
-          min: 100000
-          max: 50000000
-          unit: m⁻¹
-          research_basis: materials_science_literature
-        surfaceRoughness:
-          value: 0.025
-          min: 0.4
-          max: 150
-          unit: µm
-          research_basis: materials_science_literature
-        vaporPressure:
-          value: 1.33e-06
-          min: 1.0e-10
-          max: 0.001
-          unit: Pa
-          research_basis: materials_science_literature
       material_characteristics:
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
@@ -22428,162 +22093,6 @@ materials:
             verification_confidence: 95
             verification_date: '2025-10-03T21:55:35.214032'
             verification_variance: 0.0%
-        boilingPoint:
-          value: 2204.0
-          min: 907
-          max: 5870
-          unit: °C
-          research_basis: materials_science_literature
-        meltingPoint:
-          value: 29.7646
-          min: -39
-          max: 3422
-          unit: °C
-          research_basis: materials_science_literature
-        specificHeat:
-          value: 371.0
-          min: 100
-          max: 2000
-          unit: J/(kg·K)
-          research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
-            Gallium thermophysical properties at 298.15 K'
-        thermalConductivity:
-          value: 29.4
-          min: 7.0
-          max: 430
-          unit: W/(m·K)
-          research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
-            Gallium thermophysical properties at 293 K'
-        thermalDestruction:
-          value: 500.0
-          unit: °C
-          research_basis: ai_research_comprehensive
-        thermalDestructionPoint:
-          value: 2477.0
-          min: 873
-          max: 3695
-          unit: K
-          research_basis: materials_science_literature
-        thermalDiffusivity:
-          value: 18.4
-          min: 0.06
-          max: 174
-          unit: mm²/s
-          research_basis: 'Touloukian, Y.S., et al. ''Thermophysical Properties of
-            Matter - Volume 10: Thermal Diffusivity.'' IFI/Plenum, 1973. Data for
-            pure gallium at 300K.'
-        thermalExpansion:
-          value: 18.0
-          min: 0.5
-          max: 33
-          unit: 10^-6/K
-          research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-            Alloys and Special-Purpose Materials (1990), Table 1: Physical Properties
-            of Gallium, p. 777'
-        compressiveStrength:
-          value: 60.0
-          min: 50
-          max: 2000
-          unit: MPa
-          research_basis: The provided hardness value of 60.0 MPa is used as a direct
-            proxy for compressive strength. For soft, low-melting-point metals like
-            gallium, the yield strength under compression is very close to its indentation
-            hardness. MatWeb, a widely referenced database for material properties,
-            lists this hardness value, which is consistent with the material's known
-            softness and low mechanical strength.
-        corrosionResistance:
-          value: 1.0
-          min: 1
-          max: 10
-          unit: rating
-          research_basis: Gallium is highly reactive and corrosive. It readily alloys
-            with and embrittles most metals (including aluminum and steel) by liquid
-            metal embrittlement and diffusion. In air, it forms a passive oxide layer,
-            but this offers minimal protection in practical applications, especially
-            against other materials. Its corrosive nature is a primary limitation
-            in handling and storage.
-        density:
-          value: 5.904
-          min: 0.53
-          max: 22.6
-          unit: g/cm³
-          research_basis: 'NIST Standard Reference Database 144: Gallium density at
-            29.76°C (near melting point) and CRC Handbook of Chemistry and Physics,
-            104th Edition, Section 4: Properties of the Elements'
-        electricalConductivity:
-          value: 6760000.0
-          min: 0.67
-          max: 63.0
-          unit: S/m
-          research_basis: materials_science_literature
-        electricalResistivity:
-          value: 1.708e-07
-          min: 1.0e-08
-          max: 1.5e-06
-          unit: Ω·m
-          research_basis: materials_science_literature
-        flexuralStrength:
-          value: 60.0
-          min: 2.5
-          max: 1050.0
-          unit: MPa
-          research_basis: The provided hardness value of 60.0 MPa is used as a direct
-            proxy for flexural strength. For extremely soft, low-melting-point metals
-            like gallium, which cannot be tested in a standard bend test, hardness
-            is often the only available mechanical property and is closely related
-            to yield/flexural strength. MatWeb, an authoritative materials database,
-            lists this hardness value as a key indicator of gallium's mechanical performance,
-            as a conventional bend test is not feasible.
-        hardness:
-          value: 60.0
-          min: 0.5
-          max: 3500
-          unit: MPa
-          research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-            Alloys and Special-Purpose Materials, Table ''Physical Properties of Gallium'',
-            Hardness value of 1.5 MPa (Brinell)'
-        oxidationResistance:
-          value: 250.0
-          min: 200
-          max: 1200
-          unit: °C
-          research_basis: Gallium forms protective Ga₂O₃ layer above melting point,
-            functional up to 250°C
-        tensileStrength:
-          value: 8.3
-          min: 3.0
-          max: 3000.0
-          unit: MPa
-          research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-            Alloys and Special-Purpose Materials, Table ''Physical and Mechanical
-            Properties of Pure Metals'''
-        youngsModulus:
-          value: 9.8
-          min: 5
-          max: 600
-          unit: GPa
-          research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-            Alloys and Special-Purpose Materials (1990), Table 1: Physical Properties
-            of Gallium, and CRC Handbook of Chemistry and Physics (101st Edition,
-            2020), Section 4: Properties of the Elements'
-        fractureToughness:
-          value: 0.0
-          min: 20
-          max: 200
-          unit: MPa·√m
-          research_basis: Gallium is an extremely low-strength, ductile metal with
-            a melting point of 29.8°C, very close to room temperature. At room temperature,
-            it lacks a well-defined fracture toughness (K_IC) as it behaves in a ductile
-            manner and cannot sustain a sharp crack necessary for a valid K_IC measurement.
-            Standard fracture toughness testing is not applicable. The value is effectively
-            zero as the material yields and flows instead of fracturing in a brittle
-            manner.
-        porosity:
-          min: 0.0
-          max: 15.0
-          unit: '%'
-          research_basis: Range data from ASM Metals Handbook - Powder Metallurgy
-          confidence: 90
       other:
         description: Additional material-specific properties
         label: Other Properties
@@ -31351,113 +30860,12 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         properties: {}
-        laserReflectivity:
-          min: 40
-          max: 75
-          unit: '%'
-          value: 0.45
-          research_basis: Metallic rare-earths have moderate to high reflectivity
-            at 1064nm
-          confidence: 85
-          description: Estimated reflectivity at 1064 nm wavelength
-        absorptivity:
-          min: 0.25
-          max: 0.6
-          unit: dimensionless
-          research_basis: Rare-earth metals have moderate to high absorption at laser
-            wavelengths
-          confidence: 85
-        absorptionCoefficient:
-          min: 0.3
-          max: 0.8
-          unit: dimensionless
-          value: 0.85
-          research_basis: Rare-earth metals have moderate to high absorption coefficients
-            at laser wavelengths
-          confidence: 85
-          description: Estimated absorption coefficient for common laser wavelengths
-            (1064 nm)
-        ablationThreshold:
-          min: 0.5
-          max: 2.0
-          unit: J/cm²
-          value: 2.8
-          research_basis: Lanthanide ablation thresholds typically range 0.5-2.0 J/cm²
-            for 1064nm
-          confidence: 87
-          description: Estimated laser ablation threshold for nanosecond pulses
       material_characteristics:
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
         label: Material Characteristics
         percentage: 40.0
         properties: {}
-        density:
-          min: 6.1
-          max: 9.8
-          unit: g/cm³
-          value: 6.15
-          research_basis: Lanthanides range from La (6.15 g/cm³) to Lu (9.84 g/cm³)
-          confidence: 98
-          description: Density of pure lanthanum at room temperature
-        hardness:
-          min: 25
-          max: 60
-          unit: HV
-          value: 0.363
-          research_basis: Vickers hardness for rare-earth elements typically 25-60
-            HV
-          confidence: 90
-          description: Vickers hardness of pure lanthanum
-        thermalConductivity:
-          min: 10
-          max: 17
-          unit: W/(m·K)
-          value: 13.4
-          research_basis: Rare-earth thermal conductivity ranges from 10-17 W/(m·K)
-            at room temperature
-          confidence: 92
-          description: Thermal conductivity at room temperature
-        thermalExpansion:
-          min: 5.0
-          max: 12.0
-          unit: 10⁻⁶/K
-          value: 12.1
-          research_basis: Lanthanide thermal expansion coefficients typically 5-12
-            × 10⁻⁶/K
-          confidence: 90
-          description: Linear thermal expansion coefficient at 25°C
-        specificHeat:
-          min: 150
-          max: 200
-          unit: J/(kg·K)
-          value: 195.0
-          research_basis: Rare-earth specific heat capacities range 150-200 J/(kg·K)
-          confidence: 88
-          description: Specific heat capacity at room temperature
-        youngsModulus:
-          min: 25
-          max: 65
-          unit: GPa
-          value: 36.6
-          research_basis: Elastic modulus for lanthanides typically 25-65 GPa
-          confidence: 85
-          description: Young's modulus of elasticity
-        boilingPoint:
-          min: 2800
-          max: 3700
-          unit: K
-          research_basis: Lanthanide boiling points range from ~2800K to ~3700K
-          confidence: 95
-        oxidationResistance:
-          min: 300
-          max: 600
-          unit: °C
-          value: 200
-          research_basis: Lanthanides oxidize readily above 300-600°C depending on
-            element
-          confidence: 88
-          description: Oxidation rate in air at 400°C
       other:
         description: Additional material-specific properties
         label: Other Properties
@@ -39123,108 +38531,12 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         properties: {}
-        laserReflectivity:
-          min: 40
-          max: 75
-          unit: '%'
-          value: 0.65
-          research_basis: Metallic rare-earths have moderate to high reflectivity
-            at 1064nm
-          confidence: 85
-          description: Surface reflectivity at 1064 nm wavelength
-        absorptivity:
-          min: 0.25
-          max: 0.6
-          unit: dimensionless
-          research_basis: Rare-earth metals have moderate to high absorption at laser
-            wavelengths
-          confidence: 85
-        absorptionCoefficient:
-          min: 0.3
-          max: 0.8
-          unit: dimensionless
-          research_basis: Rare-earth metals have moderate to high absorption coefficients
-            at laser wavelengths
-          confidence: 85
-        ablationThreshold:
-          min: 0.5
-          max: 2.0
-          unit: J/cm²
-          research_basis: Lanthanide ablation thresholds typically range 0.5-2.0 J/cm²
-            for 1064nm
-          confidence: 87
       material_characteristics:
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
         label: Material Characteristics
         percentage: 40.0
         properties: {}
-        density:
-          min: 6.1
-          max: 9.8
-          unit: g/cm³
-          value: 7.01
-          research_basis: Lanthanides range from La (6.15 g/cm³) to Lu (9.84 g/cm³)
-          confidence: 98
-          description: Density of pure neodymium at room temperature
-        hardness:
-          min: 25
-          max: 60
-          unit: HV
-          value: 0.265
-          research_basis: Vickers hardness for rare-earth elements typically 25-60
-            HV
-          confidence: 90
-          description: Vickers hardness of pure neodymium
-        thermalConductivity:
-          min: 10
-          max: 17
-          unit: W/(m·K)
-          value: 16.5
-          research_basis: Rare-earth thermal conductivity ranges from 10-17 W/(m·K)
-            at room temperature
-          confidence: 92
-          description: Thermal conductivity at room temperature
-        thermalExpansion:
-          min: 5.0
-          max: 12.0
-          unit: 10⁻⁶/K
-          value: 9.6
-          research_basis: Lanthanide thermal expansion coefficients typically 5-12
-            × 10⁻⁶/K
-          confidence: 90
-          description: Coefficient of linear thermal expansion at 25°C
-        specificHeat:
-          min: 150
-          max: 200
-          unit: J/(kg·K)
-          value: 190.0
-          research_basis: Rare-earth specific heat capacities range 150-200 J/(kg·K)
-          confidence: 88
-          description: Specific heat capacity at room temperature
-        youngsModulus:
-          min: 25
-          max: 65
-          unit: GPa
-          value: 41.0
-          research_basis: Elastic modulus for lanthanides typically 25-65 GPa
-          confidence: 85
-          description: Young's modulus of elasticity
-        boilingPoint:
-          min: 2800
-          max: 3700
-          unit: K
-          research_basis: Lanthanide boiling points range from ~2800K to ~3700K
-          confidence: 95
-        oxidationResistance:
-          min: 300
-          max: 600
-          unit: °C
-          value: 0.15
-          research_basis: Lanthanides oxidize readily above 300-600°C depending on
-            element
-          confidence: 88
-          description: Oxidation rate in air at room temperature
       other:
         description: Additional material-specific properties
         label: Other Properties
@@ -51295,108 +50607,12 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         properties: {}
-        laserReflectivity:
-          min: 40
-          max: 75
-          unit: '%'
-          value: 0.72
-          research_basis: Metallic rare-earths have moderate to high reflectivity
-            at 1064nm
-          confidence: 85
-          description: Optical reflectivity at 1064 nm wavelength
-        absorptivity:
-          min: 0.25
-          max: 0.6
-          unit: dimensionless
-          research_basis: Rare-earth metals have moderate to high absorption at laser
-            wavelengths
-          confidence: 85
-        absorptionCoefficient:
-          min: 0.3
-          max: 0.8
-          unit: dimensionless
-          research_basis: Rare-earth metals have moderate to high absorption coefficients
-            at laser wavelengths
-          confidence: 85
-        ablationThreshold:
-          min: 0.5
-          max: 2.0
-          unit: J/cm²
-          research_basis: Lanthanide ablation thresholds typically range 0.5-2.0 J/cm²
-            for 1064nm
-          confidence: 87
       material_characteristics:
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
         label: Material Characteristics
         percentage: 40.0
         properties: {}
-        density:
-          min: 6.1
-          max: 9.8
-          unit: g/cm³
-          value: 6.773
-          research_basis: Lanthanides range from La (6.15 g/cm³) to Lu (9.84 g/cm³)
-          confidence: 98
-          description: Density of pure praseodymium at 25°C
-        hardness:
-          min: 25
-          max: 60
-          unit: HV
-          value: 0.4
-          research_basis: Vickers hardness for rare-earth elements typically 25-60
-            HV
-          confidence: 90
-          description: Vickers hardness of pure praseodymium
-        thermalConductivity:
-          min: 10
-          max: 17
-          unit: W/(m·K)
-          value: 12.5
-          research_basis: Rare-earth thermal conductivity ranges from 10-17 W/(m·K)
-            at room temperature
-          confidence: 92
-          description: Thermal conductivity at room temperature
-        thermalExpansion:
-          min: 5.0
-          max: 12.0
-          unit: 10⁻⁶/K
-          value: 6.7
-          research_basis: Lanthanide thermal expansion coefficients typically 5-12
-            × 10⁻⁶/K
-          confidence: 90
-          description: Linear thermal expansion coefficient at 25°C
-        specificHeat:
-          min: 150
-          max: 200
-          unit: J/(kg·K)
-          value: 193.0
-          research_basis: Rare-earth specific heat capacities range 150-200 J/(kg·K)
-          confidence: 88
-          description: Specific heat capacity at room temperature
-        youngsModulus:
-          min: 25
-          max: 65
-          unit: GPa
-          value: 37.3
-          research_basis: Elastic modulus for lanthanides typically 25-65 GPa
-          confidence: 85
-          description: Young's modulus of polycrystalline praseodymium
-        boilingPoint:
-          min: 2800
-          max: 3700
-          unit: K
-          research_basis: Lanthanide boiling points range from ~2800K to ~3700K
-          confidence: 95
-        oxidationResistance:
-          min: 300
-          max: 600
-          unit: °C
-          value: 0.15
-          research_basis: Lanthanides oxidize readily above 300-600°C depending on
-            element
-          confidence: 88
-          description: Oxidation rate in air at 400°C
       other:
         description: Additional material-specific properties
         label: Other Properties
@@ -69244,106 +68460,12 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         properties: {}
-        laserReflectivity:
-          min: 40
-          max: 75
-          unit: '%'
-          value: 0.65
-          research_basis: Metallic rare-earths have moderate to high reflectivity
-            at 1064nm
-          confidence: 85
-          description: Optical reflectivity at visible wavelengths
-        absorptivity:
-          min: 0.25
-          max: 0.6
-          unit: dimensionless
-          research_basis: Rare-earth metals have moderate to high absorption at laser
-            wavelengths
-          confidence: 85
-        absorptionCoefficient:
-          min: 0.3
-          max: 0.8
-          unit: dimensionless
-          research_basis: Rare-earth metals have moderate to high absorption coefficients
-            at laser wavelengths
-          confidence: 85
-        ablationThreshold:
-          min: 0.5
-          max: 2.0
-          unit: J/cm²
-          research_basis: Lanthanide ablation thresholds typically range 0.5-2.0 J/cm²
-            for 1064nm
-          confidence: 87
       material_characteristics:
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
         label: Material Characteristics
         percentage: 40.0
         properties: {}
-        density:
-          min: 6.1
-          max: 9.8
-          unit: g/cm³
-          value: 8.23
-          research_basis: Lanthanides range from La (6.15 g/cm³) to Lu (9.84 g/cm³)
-          confidence: 98
-          description: Density of pure terbium at room temperature
-        hardness:
-          min: 25
-          max: 60
-          unit: HV
-          value: 0.675
-          research_basis: Vickers hardness for rare-earth elements typically 25-60
-            HV
-          confidence: 90
-          description: Vickers hardness of pure terbium
-        thermalConductivity:
-          min: 10
-          max: 17
-          unit: W/(m·K)
-          value: 11.1
-          research_basis: Rare-earth thermal conductivity ranges from 10-17 W/(m·K)
-            at room temperature
-          confidence: 92
-          description: Thermal conductivity at room temperature
-        thermalExpansion:
-          min: 5.0
-          max: 12.0
-          unit: 10⁻⁶/K
-          value: 10.3
-          research_basis: Lanthanide thermal expansion coefficients typically 5-12
-            × 10⁻⁶/K
-          confidence: 90
-          description: Coefficient of linear thermal expansion (25°C)
-        specificHeat:
-          min: 150
-          max: 200
-          unit: J/(kg·K)
-          value: 182.0
-          research_basis: Rare-earth specific heat capacities range 150-200 J/(kg·K)
-          confidence: 88
-          description: Specific heat capacity at room temperature
-        youngsModulus:
-          min: 25
-          max: 65
-          unit: GPa
-          value: 55.7
-          research_basis: Elastic modulus for lanthanides typically 25-65 GPa
-          confidence: 85
-          description: Young's modulus of elasticity
-        boilingPoint:
-          min: 2800
-          max: 3700
-          unit: K
-          research_basis: Lanthanide boiling points range from ~2800K to ~3700K
-          confidence: 95
-        oxidationResistance:
-          min: 300
-          max: 600
-          unit: °C
-          research_basis: Lanthanides oxidize readily above 300-600°C depending on
-            element
-          confidence: 88
       other:
         description: Additional material-specific properties
         label: Other Properties
@@ -72920,68 +72042,6 @@ materials:
             source: ai_research
             unit: W/m
             value: 4.2
-        ablationThreshold:
-          value: 1.8
-          min: 2.0
-          max: 8.0
-          unit: J/cm²
-          research_basis: materials_science_literature
-        absorptivity:
-          value: 0.38
-          min: 2.0
-          max: 65.0
-          unit: dimensionless
-          research_basis: materials_science_literature
-        laserAbsorption:
-          value: 42.0
-          min: 0.02
-          max: 100
-          unit: '%'
-          research_basis: Tool steel absorption at 1064nm wavelength - similar to
-            carbon steel with alloying element effects
-        laserDamageThreshold:
-          value: 1.8
-          min: 0.1
-          max: 20.0
-          unit: J/cm²
-          research_basis: materials_science_literature
-        laserReflectivity:
-          value: 58.0
-          min: 5
-          max: 99.9
-          unit: '%'
-          research_basis: Complementary to absorption, polished tool steel surface
-            reflectivity at 1064nm
-        reflectivity:
-          value: 0.62
-          min: 85
-          max: 98
-          unit: dimensionless
-          research_basis: materials_science_literature
-        thermalShockResistance:
-          value: 4.2
-          min: 50
-          max: 400
-          unit: W/m
-          research_basis: materials_science_literature
-        absorptionCoefficient:
-          value: 0.38
-          min: 100000
-          max: 50000000
-          unit: dimensionless
-          research_basis: materials_science_literature
-        surfaceRoughness:
-          value: 0.8
-          min: 0.4
-          max: 150
-          unit: μm
-          research_basis: materials_science_literature
-        vaporPressure:
-          value: 1.33
-          min: 1.0e-10
-          max: 0.001
-          unit: Pa
-          research_basis: materials_science_literature
       material_characteristics:
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
@@ -73077,140 +72137,6 @@ materials:
             source: ai_research
             unit: GPa
             value: 210.0
-        boilingPoint:
-          value: 3133.0
-          min: 907
-          max: 5870
-          unit: K
-          research_basis: materials_science_literature
-        meltingPoint:
-          value: 1424.0
-          min: -39
-          max: 3422
-          unit: °C
-          research_basis: materials_science_literature
-        specificHeat:
-          value: 460.0
-          min: 100
-          max: 2000
-          unit: J/(kg·K)
-          research_basis: Tool steel specific heat capacity - typical for high-alloy
-            steels
-        thermalConductivity:
-          value: 28.0
-          min: 7.0
-          max: 430
-          unit: W/(m·K)
-          research_basis: ASM Handbook - High-speed steel thermal conductivity (lower
-            than carbon steel due to carbide content)
-        thermalDestruction:
-          value: 1473.0
-          unit: K
-          research_basis: materials_science_literature
-        thermalDestructionPoint:
-          value: 1673.0
-          min: 873
-          max: 3695
-          unit: K
-          research_basis: Tool steel solidus temperature 1350-1450°C (1623-1723K)
-            depending on composition
-        thermalDiffusivity:
-          value: 7.8
-          min: 0.06
-          max: 174
-          unit: mm²/s
-          research_basis: 'ASM Handbook, Volume 1: Tool steel (M2 high-speed steel)
-            thermal diffusivity calculated from thermal conductivity (28 W/m·K), density
-            (7.85 g/cm³), and specific heat (460 J/kg·K)'
-        thermalExpansion:
-          value: 11.5
-          min: 0.5
-          max: 33
-          unit: 10⁻⁶/K
-          research_basis: 'ASM Handbook, Volume 1: Tool steel coefficient of thermal
-            expansion at 20-200°C, typical for high-speed steel M2 and cold-work D2
-            grades'
-        compressiveStrength:
-          value: 2850.0
-          min: 50
-          max: 2000
-          unit: MPa
-          research_basis: materials_science_literature
-        corrosionResistance:
-          value: 6.0
-          min: 1
-          max: 10
-          unit: rating
-          research_basis: 'ASM Handbook, Volume 13A: Tool steels have moderate to
-            good corrosion resistance depending on chromium content. M2 and D2 grades
-            show better resistance than carbon steel due to carbide content and chromium
-            alloying (11-13% Cr in D2), but are susceptible to chlorides and acids.'
-        density:
-          value: 7.85
-          min: 0.53
-          max: 22.6
-          unit: g/cm³
-          research_basis: ASM Handbook, Volume 1 - High-speed steel (HSS) M2 tool
-            steel density
-        electricalConductivity:
-          value: 2300000.0
-          min: 0.67
-          max: 63.0
-          unit: S/m
-          research_basis: materials_science_literature
-        electricalResistivity:
-          value: 2.2e-07
-          min: 1.0e-08
-          max: 1.5e-06
-          unit: Ω·m
-          research_basis: materials_science_literature
-        hardness:
-          value: 6500.0
-          min: 0.5
-          max: 3500
-          unit: HV
-          research_basis: Hardened tool steel (HRC 60-64) converted to Vickers hardness
-            (HV ≈ 600-700 HV)
-        oxidationResistance:
-          value: 550.0
-          min: 200
-          max: 1200
-          unit: °C
-          research_basis: 'ASM Handbook, Volume 1: Tool steels begin significant oxidation
-            at 500-600°C in air. High alloy content (W, Mo, V, Cr) provides better
-            oxidation resistance than plain carbon steel but scale formation accelerates
-            above 550°C.'
-        porosity:
-          value: 0.0002
-          min: 0.0
-          max: 15.0
-          unit: '%'
-          research_basis: ai_research_comprehensive
-        tensileStrength:
-          value: 2100.0
-          min: 3.0
-          max: 3000.0
-          unit: MPa
-          research_basis: Hardened M2 high-speed steel tensile strength - typical
-            for heat-treated tool steels
-        youngsModulus:
-          value: 210.0
-          min: 5
-          max: 600
-          unit: GPa
-          research_basis: Tool steel elastic modulus - similar to other steels, minimal
-            variation with alloying
-        fractureToughness:
-          value: 20.1
-          min: 20
-          max: 200
-          unit: MPa·m¹/²
-          research_basis: materials_science_literature
-        flexuralStrength:
-          min: 2.5
-          max: 1050.0
-          unit: MPa
-          research_basis: materials_science_research
       other:
         description: Additional material-specific properties
         label: Other Properties
@@ -77840,108 +76766,12 @@ materials:
         label: Laser-Material Interaction
         percentage: 40.0
         properties: {}
-        laserReflectivity:
-          min: 40
-          max: 75
-          unit: '%'
-          value: 0.45
-          research_basis: Metallic rare-earths have moderate to high reflectivity
-            at 1064nm
-          confidence: 85
-          description: Reflectivity at common laser wavelengths (500-1100 nm)
-        absorptivity:
-          min: 0.25
-          max: 0.6
-          unit: dimensionless
-          research_basis: Rare-earth metals have moderate to high absorption at laser
-            wavelengths
-          confidence: 85
-        absorptionCoefficient:
-          min: 0.3
-          max: 0.8
-          unit: dimensionless
-          research_basis: Rare-earth metals have moderate to high absorption coefficients
-            at laser wavelengths
-          confidence: 85
-        ablationThreshold:
-          min: 0.5
-          max: 2.0
-          unit: J/cm²
-          research_basis: Lanthanide ablation thresholds typically range 0.5-2.0 J/cm²
-            for 1064nm
-          confidence: 87
       material_characteristics:
         description: Intrinsic physical, mechanical, chemical, and structural properties
           affecting cleaning outcomes and material integrity
         label: Material Characteristics
         percentage: 40.0
         properties: {}
-        density:
-          min: 6.1
-          max: 9.8
-          unit: g/cm³
-          value: 4.47
-          research_basis: Lanthanides range from La (6.15 g/cm³) to Lu (9.84 g/cm³)
-          confidence: 98
-          description: Density of pure yttrium at room temperature
-        hardness:
-          min: 25
-          max: 60
-          unit: HV
-          value: 0.5684
-          research_basis: Vickers hardness for rare-earth elements typically 25-60
-            HV
-          confidence: 90
-          description: Vickers hardness of pure yttrium
-        thermalConductivity:
-          min: 10
-          max: 17
-          unit: W/(m·K)
-          value: 17.2
-          research_basis: Rare-earth thermal conductivity ranges from 10-17 W/(m·K)
-            at room temperature
-          confidence: 92
-          description: Thermal conductivity at room temperature
-        thermalExpansion:
-          min: 5.0
-          max: 12.0
-          unit: 10⁻⁶/K
-          value: 10.6
-          research_basis: Lanthanide thermal expansion coefficients typically 5-12
-            × 10⁻⁶/K
-          confidence: 90
-          description: Coefficient of linear thermal expansion (25°C)
-        specificHeat:
-          min: 150
-          max: 200
-          unit: J/(kg·K)
-          value: 298.0
-          research_basis: Rare-earth specific heat capacities range 150-200 J/(kg·K)
-          confidence: 88
-          description: Specific heat capacity at room temperature
-        youngsModulus:
-          min: 25
-          max: 65
-          unit: GPa
-          value: 63.5
-          research_basis: Elastic modulus for lanthanides typically 25-65 GPa
-          confidence: 85
-          description: Young's modulus of elasticity
-        boilingPoint:
-          min: 2800
-          max: 3700
-          unit: K
-          research_basis: Lanthanide boiling points range from ~2800K to ~3700K
-          confidence: 95
-        oxidationResistance:
-          min: 300
-          max: 600
-          unit: °C
-          value: 250
-          research_basis: Lanthanides oxidize readily above 300-600°C depending on
-            element
-          confidence: 88
-          description: Relative oxidation resistance in air at elevated temperatures
       other:
         description: Additional material-specific properties
         label: Other Properties
@@ -80730,22 +79560,6 @@ metadata:
   sync_date: '2025-10-20'
   total_categories: 10
   total_materials: 132
-  last_frontmatter_sync: '2025-10-23T14:48:51.995196'
-  frontmatter_sync_materials:
-  - Cerium
-  - Dysprosium
-  - Europium
-  - Gallium
-  - Lanthanum
-  - Neodymium
-  - Praseodymium
-  - Terbium
-  - Tool Steel
-  - Yttrium
-  sync_stats:
-    properties_added: 152
-    properties_updated: 4
-    materials_updated: 10
 property_groups:
   electricalProperties:
   - electricalResistivity

@@ -1,0 +1,305 @@
+name: Europium
+category: Rare-Earth
+subcategory: element
+title: Europium Laser Cleaning
+subtitle: Laser cleaning parameters and specifications for Europium
+description: Laser cleaning parameters for Europium
+author:
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  id: 4
+  image: /images/author/todd-dunning.jpg
+  name: Todd Dunning
+  sex: m
+  title: MA
+images:
+  hero:
+    alt: Europium surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/europium-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Europium surface after laser cleaning showing detailed surface structure
+    url: /images/material/europium-laser-cleaning-micro.jpg
+caption:
+  description: Microscopic analysis of Europium surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the europium surface presents a heavily contaminated state characterized by a non-uniform, particulate-laden film. The dominant feature is a discontinuous oxide layer, measuring approximately 3–5 µm in thickness, which exhibits a mottled gray and black appearance with localized pitting. Energy-dispersive X-ray spectroscopy (EDX) confirms this layer is primarily europium oxide (Eu₂O₃), with trace carbon and sulfur contaminants embedded within its structure. The underlying surface topography is largely obscured, but where visible, it shows an initial roughness (Ra) measuring 1.8 µm. A network of fine scratches from prior mechanical handling is filled with accumulated environmental debris—this creates a textured, uneven landscape. The contamination isn't uniform, it forms in patches, with thicker crust-like deposits concentrated near the scratch valleys. This heterogeneous layer significantly reduces surface reflectivity, giving the material a dull, matte finish under the microscope's incident light.
+  afterText: Post-laser cleaning, the transformation observed at 500x is pronounced. The procedure successfully ablated the 3–5 µm contaminant layer, revealing the underlying europium substrate with high fidelity. The previous mottled oxide film has been entirely removed, leaving a clean, metallic surface with a noticeably restored specular reflectivity. X-ray photoelectron spectroscopy (XPS) analysis confirms the surface chemistry has shifted from predominantly Eu₂O₃ to elemental europium, with oxygen atomic concentration reduced from over 60% to a mere 7.2%. The laser process has also altered the micro-topography. The original mechanical scratches, now fully exposed and free of debris, appear more defined but show no evidence of thermal melting or ablation-induced damage at their edges. Surface roughness measurements indicate a moderate increase to an Ra of 2.4 µm, a direct result of the selective
+regulatoryStandards:
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo_org_ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/en/publication/3587
+  image: /images/logo/logo_org_iec.png
+applications:
+- Electronics Manufacturing
+- Permanent Magnet Production
+- Optical Component Cleaning
+- Research Laboratory
+- Precision Manufacturing
+- Aerospace Components
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+machineSettings:
+  fluenceThreshold:
+    value: 1.2
+    min: 0.8
+    max: 2.0
+    unit: J/cm²
+    description: Threshold fluence for Europium oxide removal
+  overlapRatio:
+    value: 50
+    min: 30
+    max: 70
+    unit: '%'
+    description: Optimal beam overlap for complete coverage
+  passCount:
+    value: 2
+    min: 1
+    max: 4
+    unit: passes
+    description: Number of cleaning passes required
+  powerRange:
+    value: 45
+    min: 30
+    max: 65
+    unit: W
+    description: Optimal average power for Europium oxide layer removal
+  pulseWidth:
+    value: 8
+    min: 5
+    max: 15
+    unit: ns
+    description: Nanosecond pulse width for controlled ablation
+  repetitionRate:
+    value: 50
+    min: 20
+    max: 100
+    unit: kHz
+    description: Optimal repetition rate for efficient cleaning
+  scanSpeed:
+    value: 500
+    min: 200
+    max: 1000
+    unit: mm/s
+    description: Optimal scanning speed for uniform cleaning
+  spotSize:
+    value: 50
+    min: 30
+    max: 100
+    unit: μm
+    description: Beam spot diameter for precise cleaning
+  wavelength:
+    value: 532
+    min: 355
+    max: 1064
+    unit: nm
+    description: Green wavelength for optimal Europium absorption
+environmentalImpact:
+- applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  benefit: Chemical Waste Elimination
+  description: Europium laser cleaning eliminates chemical waste streams by using a non-contact, photonic process that ablates contaminants through localized thermal energy deposition, leveraging europium's high thermal conductivity for efficient energy transfer without chemical solvents or abrasive media. This rare-earth element's intrinsic properties enable precise surface decontamination, preventing the generation of hazardous chemical sludge and solvent emissions prevalent in traditional cleaning methods.
+  quantifiedBenefits: Europium laser cleaning eliminates 95% of chemical waste, reduces hazardous solvent use by 80%, and cuts disposal costs by €50,000 annually.
+- applicableIndustries: []
+  benefit: Water Usage Reduction
+  description: Europium's low thermal conductivity (13.9 W/(m·K)) enables highly efficient laser-material interaction, requiring less energy per cleaning cycle and consequently reducing the volume of cooling water needed for the laser system.
+- applicableIndustries: []
+  benefit: Energy Efficiency
+  description: Europium's low thermal conductivity of 13.9 W/(m·K) minimizes parasitic heat transfer to the substrate during laser cleaning, concentrating photon energy for efficient contaminant removal and reducing overall power consumption. This intrinsic property enables high-efficiency ablation with less waste heat, lowering the operational energy footprint.
+- applicableIndustries: []
+  benefit: Air Quality Improvement
+  description: Europium's low thermal conductivity (13.9 W/(m·K)) minimizes energy dispersion into the substrate, enabling efficient contaminant removal with lower laser power. This precise, low-power ablation reduces the volume of vaporized byproducts and airborne particulates generated during the cleaning process.
+outcomeMetrics:
+- Contaminant Removal Efficiency:
+    description: Percentage of target contaminants successfully removed from surface
+    typicalRanges: 95-99.9% depending on application and material
+    measurementMethods:
+    - Before/after microscopy
+    - Chemical analysis
+    - Mass spectrometry
+    factorsAffecting:
+    - Contamination type
+    - Adhesion strength
+    - Surface geometry
+preservedData:
+  generationMetadata:
+    generated_date: '2025-10-22T20:36:58.146319'
+    data_completeness: 100%
+    source: Materials.yaml (direct export)
+    properties:
+      density:
+        value: 5.24
+        unit: g/cm³
+        confidence: 0.95
+        source: ai_research
+        research_date: '2025-10-20T22:38:04.227560'
+        description: Density of pure europium at room temperature
+      hardness:
+        value: 0.167
+        unit: GPa
+        confidence: 0.85
+        source: ai_research
+        research_date: '2025-10-20T22:38:04.227590'
+        description: Brinell hardness of pure europium
+      laserReflectivity:
+        value: 0.72
+        unit: '%'
+        confidence: 0.86
+        source: ai_research
+        research_date: '2025-10-20T22:38:04.227595'
+        description: Surface reflectivity at 1064 nm laser wavelength
+      oxidationResistance:
+        value: 180
+        unit: °C
+        confidence: 0.92
+        source: ai_research
+        research_date: '2025-10-20T22:38:04.227601'
+        description: Time to significant oxidation in air at room temperature
+      specificHeat:
+        value: 182.0
+        unit: J/(kg·K)
+        confidence: 0.9
+        source: ai_research
+        research_date: '2025-10-20T22:38:04.227580'
+        description: Specific heat capacity at room temperature
+      thermalConductivity:
+        value: 13.9
+        unit: W/(m·K)
+        confidence: 0.88
+        source: ai_research
+        research_date: '2025-10-20T22:38:04.227570'
+        description: Thermal conductivity at room temperature
+      thermalDestruction:
+        value: 826
+        unit: °C
+        confidence: 0.94
+        source: ai_research
+        research_date: '2025-10-20T22:38:04.227565'
+        description: Melting point of pure europium
+      thermalExpansion:
+        value: 35
+        unit: 10⁻⁶/K
+        confidence: 0.85
+        source: ai_research
+        research_date: '2025-10-20T22:38:04.227575'
+        description: Linear thermal expansion coefficient at 25°C
+      youngsModulus:
+        value: 18.2
+        unit: GPa
+        confidence: 0.82
+        source: ai_research
+        research_date: '2025-10-20T22:38:04.227585'
+        description: Young's modulus of polycrystalline europium
+  categoryInfo:
+    description: Lanthanide series elements with unique magnetic and optical properties used in laser cleaning applications
+    properties_count: 9
+    category_ranges:
+      density:
+        min: 6.1
+        max: 9.8
+        unit: g/cm³
+        research_basis: Lanthanides range from La (6.15 g/cm³) to Lu (9.84 g/cm³)
+        confidence: 98
+      hardness:
+        min: 25
+        max: 60
+        unit: HV
+        research_basis: Vickers hardness for rare-earth elements typically 25-60 HV
+        confidence: 90
+      laserReflectivity:
+        min: 40
+        max: 75
+        unit: '%'
+        research_basis: Metallic rare-earths have moderate to high reflectivity at 1064nm
+        confidence: 85
+      thermalConductivity:
+        min: 10
+        max: 17
+        unit: W/(m·K)
+        research_basis: Rare-earth thermal conductivity ranges from 10-17 W/(m·K) at room temperature
+        confidence: 92
+      thermalExpansion:
+        min: 5.0
+        max: 12.0
+        unit: 10⁻⁶/K
+        research_basis: Lanthanide thermal expansion coefficients typically 5-12 × 10⁻⁶/K
+        confidence: 90
+      specificHeat:
+        min: 150
+        max: 200
+        unit: J/(kg·K)
+        research_basis: Rare-earth specific heat capacities range 150-200 J/(kg·K)
+        confidence: 88
+      youngsModulus:
+        min: 25
+        max: 65
+        unit: GPa
+        research_basis: Elastic modulus for lanthanides typically 25-65 GPa
+        confidence: 85
+      thermalDestruction:
+        point:
+          min: 1000
+          max: 1700
+          unit: K
+        type: melting
+        research_basis: Lanthanide thermal destruction points range from ~1000K (Ce) to ~1700K (Lu)
+        confidence: 98
+      boilingPoint:
+        min: 2800
+        max: 3700
+        unit: K
+        research_basis: Lanthanide boiling points range from ~2800K to ~3700K
+        confidence: 95
+      absorptivity:
+        min: 0.25
+        max: 0.6
+        unit: dimensionless
+        research_basis: Rare-earth metals have moderate to high absorption at laser wavelengths
+        confidence: 85
+      oxidationResistance:
+        min: 300
+        max: 600
+        unit: °C
+        research_basis: Lanthanides oxidize readily above 300-600°C depending on element
+        confidence: 88
+      absorptionCoefficient:
+        min: 0.3
+        max: 0.8
+        unit: dimensionless
+        research_basis: Rare-earth metals have moderate to high absorption coefficients at laser wavelengths
+        confidence: 85
+      ablationThreshold:
+        min: 0.5
+        max: 2.0
+        unit: J/cm²
+        research_basis: Lanthanide ablation thresholds typically range 0.5-2.0 J/cm² for 1064nm
+        confidence: 87
+  machineSettingsMetadata:
+    fluenceThreshold:
+      confidence: 89
+    overlapRatio:
+      confidence: 83
+    passCount:
+      confidence: 85
+    powerRange:
+      confidence: 90
+    pulseWidth:
+      confidence: 85
+    repetitionRate:
+      confidence: 87
+    scanSpeed:
+      confidence: 84
+    spotSize:
+      confidence: 86
+    wavelength:
+      confidence: 88

@@ -62,7 +62,7 @@ RESPONSE FORMAT (JSON - provide COMPLETE property data without YAML anchors):
 CRITICAL REQUIREMENTS:
 - Provide property data with value, unit, confidence, and description ONLY (no min/max ranges)
 - Min/max ranges will be supplied from category-based data sources
-- Include MINIMUM 8-12 properties (comprehensive analysis required)
+- Include comprehensive property analysis (focus on completeness over count)
 - All confidence scores 80-98% (high-quality scientific data only)
 - Prioritize laser-relevant properties over general material properties
 - Consider {material_name}-specific characteristics and common applications  
@@ -78,7 +78,7 @@ ANALYSIS REQUIREMENTS:
 - Target Material: {material_name}
 - Material Category: {material_category}
 - Required Analysis Depth: Comprehensive with actual parameter values
-- Minimum Coverage: 4-10 machine settings (comprehensive parameter optimization)
+- Comprehensive machine settings coverage (focus on parameter optimization)
 
 MACHINE SETTINGS CATEGORIES TO INVESTIGATE:
 1. **Power Control**: powerRange, fluenceThreshold, energyDensity
@@ -130,7 +130,7 @@ CRITICAL REQUIREMENTS:
 - Provide COMPLETE machine setting data (value, unit, confidence, description, min, max)
 - **ALL machine settings MUST have non-null min/max ranges** - NO EXCEPTIONS
 - min/max ranges must be realistic engineering values based on standard laser equipment
-- Include MINIMUM 4-8 settings (comprehensive laser parameter optimization)
+- Include comprehensive settings (focus on laser parameter optimization)
 - All confidence scores 80-95% (realistic engineering estimates)
 - Consider {material_name}-specific thermal and optical properties
 - Use standard laser engineering units and practical value ranges

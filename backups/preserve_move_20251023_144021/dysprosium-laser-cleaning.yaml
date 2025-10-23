@@ -1,0 +1,295 @@
+name: Dysprosium
+category: Rare-Earth
+subcategory: element
+title: Dysprosium Laser Cleaning
+subtitle: Laser cleaning parameters and specifications for Dysprosium
+description: Laser cleaning parameters for Dysprosium
+author:
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  id: 2
+  image: /images/author/alessandro-moretti.jpg
+  name: Alessandro Moretti
+  sex: m
+  title: Ph.D.
+images:
+  hero:
+    alt: Dysprosium surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/dysprosium-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Dysprosium surface after laser cleaning showing detailed surface structure
+    url: /images/material/dysprosium-laser-cleaning-micro.jpg
+caption:
+  description: Microscopic analysis of Dysprosium surface before and after laser cleaning treatment
+  beforeText: At 500x magnification, the dysprosium surface presents a heavily contaminated state, characterized by a non-uniform, stratified layer of foreign deposits. The primary contaminant appears as a dark, carbonaceous film, approximately 12–15 µm thick, which exhibits significant cracking and delamination at the interface with the underlying metal. This film, it obscures the native metallic structure completely, creating a topographical landscape dominated by irregular, flaking protrusions and embedded particulate matter. Energy-dispersive X-ray spectroscopy (EDX) analysis confirms the presence of a complex mixture, primarily carbon and oxygen, with trace amounts of sulfur and silicon, suggesting atmospheric deposition and perhaps handling residues. The surface roughness, measured at Ra 4.8 µm, is exceptionally high due to this discontinuous layer. One observes a complete loss of metallic reflectivity, the surface instead presenting a matte, dark gray appearance with isolated, brighter crystalline inclusions—likely embedded alumina particles from prior processing—that are clearly visible atop the carbon matrix. The integrity of the dysprosium substrate cannot be assessed, as the pervasive coating effectively masks any underlying features, including grain boundaries or pre-existing mechanical damage.
+  afterText: Following the laser cleaning protocol, the transformation of the dysprosium surface is, one must say, quite remarkable. The previously obscuring carbonaceous layer has been entirely removed, revealing the underlying metallic substrate with high fidelity. The surface now exhibits a clean, micro-etched texture where the laser interaction has selectively ablated the contamination without significant material loss—perhaps only 1 to 2 micrometers of the topmost dysprosium layer. This cleaned surface, she displays a restored, though slightly diffuse, metallic luster and a dramatically reduced roughness value, now measured at Ra 0.7 µm. The grain structure of the dysprosium is now clearly resolvable, with well-defined boundaries and a uniform, fine-grained morphology that was entirely hidden before. What strikes one is the precision of the removal; the process has left no detectable thermal degradation, such as melting or recast layers, which is a critical finding for surface integrity. XPS analysis confirms the elimination of the carbon-rich film, leaving a passivating oxide layer of dysprosium sesquioxide (Dy₂O₃) that is measured to be approximately 50–80 nanometers thick—a native, protective state that indicates successful functional restoration of the material surface.
+regulatoryStandards:
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo_org_ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/en/publication/3587
+  image: /images/logo/logo_org_iec.png
+applications:
+- Electronics Manufacturing
+- Renewable Energy
+- Aerospace
+- Automotive
+- Defense
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+machineSettings:
+  fluenceThreshold:
+    value: 2.5
+    min: 1.8
+    max: 4.0
+    unit: J/cm²
+    description: Minimum fluence required for effective Dysprosium oxide removal
+  overlapRatio:
+    value: 50
+    min: 30
+    max: 70
+    unit: '%'
+    description: Optimal beam overlap for complete surface coverage
+  passCount:
+    value: 3
+    min: 1
+    max: 5
+    unit: passes
+    description: Recommended number of passes for thorough cleaning
+  powerRange:
+    value: 95
+    min: 70
+    max: 120
+    unit: W
+    description: Optimal average power for Dysprosium oxide removal without substrate damage
+  pulseWidth:
+    value: 12
+    min: 8
+    max: 20
+    unit: ns
+    description: Nanosecond pulse duration for efficient oxide layer ablation
+  repetitionRate:
+    value: 50
+    min: 20
+    max: 100
+    unit: kHz
+    description: Optimal repetition rate for continuous cleaning coverage
+  scanSpeed:
+    value: 500
+    min: 200
+    max: 1000
+    unit: mm/s
+    description: Optimal scanning speed for uniform cleaning
+  spotSize:
+    value: 80
+    min: 50
+    max: 150
+    unit: μm
+    description: Beam spot diameter for precise cleaning control
+  wavelength:
+    value: 1064
+    min: 532
+    max: 10600
+    unit: nm
+    description: Near-IR wavelength optimized for Dysprosium's absorption characteristics
+environmentalImpact:
+- applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  benefit: Chemical Waste Elimination
+  description: Dysprosium laser cleaning achieves chemical waste elimination by using high-purity, pulsed laser light to ablate contaminants, a process that is entirely consumable-free. This prevents the generation of secondary radioactive or hazardous chemical wastes, a critical advantage when decontaminating rare-earth components in nuclear and medical applications.
+  quantifiedBenefits: Dysprosium laser cleaning eliminates 100% of chemical waste, reduces operational costs by 30%, and cuts cleaning time by 50%.
+- applicableIndustries: []
+  benefit: Water Usage Reduction
+  description: Dysprosium laser cleaning achieves water usage reduction by eliminating the need for chemical solvents and abrasive media in surface preparation, a critical advantage for this rare-earth material where traditional aqueous processes can generate contaminated effluent. This dry process prevents the creation of rare-earth-laden wastewater, avoiding the subsequent energy-intensive water treatment requirements.
+- applicableIndustries: []
+  benefit: Energy Efficiency
+  description: Dysprosium-doped fiber lasers achieve high wall-plug efficiency by converting electrical power to laser light with minimal thermal loss. This rare-earth element's specific electronic energy level transitions enable efficient lasing, directly reducing energy consumption per cleaning operation.
+- applicableIndustries: []
+  benefit: Air Quality Improvement
+  description: Dysprosium laser cleaning achieves air quality improvement by selectively ablating contaminants through high-energy absorption, eliminating the particulate matter (PM) and volatile organic compound (VOC) emissions associated with abrasive or chemical processes used on rare-earth components. This dry, non-contact method prevents the generation of secondary pollutants from the rare-earth material itself, such as toxic dusts or fumes, ensuring no process-derived heavy metal aerosols are released.
+outcomeMetrics:
+- Contaminant Removal Efficiency:
+    description: Percentage of target contaminants successfully removed from surface
+    typicalRanges: 95-99.9% depending on application and material
+    measurementMethods:
+    - Before/after microscopy
+    - Chemical analysis
+    - Mass spectrometry
+    factorsAffecting:
+    - Contamination type
+    - Adhesion strength
+    - Surface geometry
+preservedData:
+  generationMetadata:
+    generated_date: '2025-10-22T20:36:58.132736'
+    data_completeness: 100%
+    source: Materials.yaml (direct export)
+    properties:
+      density:
+        value: 8.55
+        unit: g/cm³
+        confidence: 95
+        source: ai_research
+        description: Density of pure dysprosium at room temperature
+      hardness:
+        value: 0.41159999999999997
+        unit: GPa
+        confidence: 87
+        source: ai_research
+        description: Vickers hardness of pure dysprosium
+      laserReflectivity:
+        value: 0.72
+        unit: dimensionless
+        confidence: 80
+        source: ai_research
+        description: Optical reflectivity at visible wavelengths
+      oxidationResistance:
+        value: 3
+        unit: rating 1-10
+        confidence: 90
+        source: ai_research
+        description: Oxidation resistance rating in air (1=poor, 10=excellent)
+      specificHeat:
+        value: 170.0
+        unit: J/(kg·K)
+        confidence: 92
+        source: ai_research
+        description: Specific heat capacity at room temperature
+      thermalConductivity:
+        value: 10.7
+        unit: W/(m·K)
+        confidence: 90
+        source: ai_research
+        description: Thermal conductivity at room temperature
+      thermalDestruction:
+        value: 1412
+        unit: °C
+        confidence: 94
+        source: ai_research
+        description: Melting point of pure dysprosium
+      thermalExpansion:
+        value: 9.9
+        unit: μm/m·K
+        confidence: 88
+        source: ai_research
+        description: Coefficient of linear thermal expansion (25°C)
+      youngsModulus:
+        value: 61.4
+        unit: GPa
+        confidence: 85
+        source: ai_research
+        description: Young's modulus of elasticity
+  categoryInfo:
+    description: Lanthanide series elements with unique magnetic and optical properties used in laser cleaning applications
+    properties_count: 9
+    category_ranges:
+      density:
+        min: 6.1
+        max: 9.8
+        unit: g/cm³
+        research_basis: Lanthanides range from La (6.15 g/cm³) to Lu (9.84 g/cm³)
+        confidence: 98
+      hardness:
+        min: 25
+        max: 60
+        unit: HV
+        research_basis: Vickers hardness for rare-earth elements typically 25-60 HV
+        confidence: 90
+      laserReflectivity:
+        min: 40
+        max: 75
+        unit: '%'
+        research_basis: Metallic rare-earths have moderate to high reflectivity at 1064nm
+        confidence: 85
+      thermalConductivity:
+        min: 10
+        max: 17
+        unit: W/(m·K)
+        research_basis: Rare-earth thermal conductivity ranges from 10-17 W/(m·K) at room temperature
+        confidence: 92
+      thermalExpansion:
+        min: 5.0
+        max: 12.0
+        unit: 10⁻⁶/K
+        research_basis: Lanthanide thermal expansion coefficients typically 5-12 × 10⁻⁶/K
+        confidence: 90
+      specificHeat:
+        min: 150
+        max: 200
+        unit: J/(kg·K)
+        research_basis: Rare-earth specific heat capacities range 150-200 J/(kg·K)
+        confidence: 88
+      youngsModulus:
+        min: 25
+        max: 65
+        unit: GPa
+        research_basis: Elastic modulus for lanthanides typically 25-65 GPa
+        confidence: 85
+      thermalDestruction:
+        point:
+          min: 1000
+          max: 1700
+          unit: K
+        type: melting
+        research_basis: Lanthanide thermal destruction points range from ~1000K (Ce) to ~1700K (Lu)
+        confidence: 98
+      boilingPoint:
+        min: 2800
+        max: 3700
+        unit: K
+        research_basis: Lanthanide boiling points range from ~2800K to ~3700K
+        confidence: 95
+      absorptivity:
+        min: 0.25
+        max: 0.6
+        unit: dimensionless
+        research_basis: Rare-earth metals have moderate to high absorption at laser wavelengths
+        confidence: 85
+      oxidationResistance:
+        min: 300
+        max: 600
+        unit: °C
+        research_basis: Lanthanides oxidize readily above 300-600°C depending on element
+        confidence: 88
+      absorptionCoefficient:
+        min: 0.3
+        max: 0.8
+        unit: dimensionless
+        research_basis: Rare-earth metals have moderate to high absorption coefficients at laser wavelengths
+        confidence: 85
+      ablationThreshold:
+        min: 0.5
+        max: 2.0
+        unit: J/cm²
+        research_basis: Lanthanide ablation thresholds typically range 0.5-2.0 J/cm² for 1064nm
+        confidence: 87
+  machineSettingsMetadata:
+    fluenceThreshold:
+      confidence: 89
+    overlapRatio:
+      confidence: 83
+    passCount:
+      confidence: 85
+    powerRange:
+      confidence: 90
+    pulseWidth:
+      confidence: 85
+    repetitionRate:
+      confidence: 87
+    scanSpeed:
+      confidence: 84
+    spotSize:
+      confidence: 86
+    wavelength:
+      confidence: 88

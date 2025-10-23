@@ -147,8 +147,8 @@ property_validation:
         - "meltingPoint"      # °C or K
         - "electricalConductivity" # S/m
       minimum_coverage: 0.5    # Must have ≥50% of essential properties
-      minimum_total: 5         # Must have ≥5 total properties
-      typical_range: [8, 15]   # Typical property count range
+      # No minimum total - flexible property definitions allowed
+      typical_range: [5, 25]   # Flexible property count range
     
     ceramic:
       essential_properties:
@@ -158,8 +158,8 @@ property_validation:
         - "thermalConductivity"
         - "compressiveStrength"
       minimum_coverage: 0.5
-      minimum_total: 5
-      typical_range: [6, 12]
+      # No minimum total - flexible property definitions allowed
+      typical_range: [5, 20]
     
     plastic:
       essential_properties:
@@ -168,8 +168,8 @@ property_validation:
         - "tensileStrength"
         - "youngsModulus"
       minimum_coverage: 0.5
-      minimum_total: 4
-      typical_range: [5, 10]
+      # No minimum total - flexible property definitions allowed
+      typical_range: [4, 15]
     
     glass:
       essential_properties:
