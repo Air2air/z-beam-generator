@@ -63,20 +63,28 @@ materialProperties:
       value: 3134.0
       unit: K
       research_basis: materials_science_literature
+      min: 907
+      max: 5870
     meltingPoint:
       value: 1538.0
       unit: °C
       research_basis: materials_science_literature
+      min: -39
+      max: 3422
     specificHeat:
       value: 449.0
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 144: Thermophysical Properties
         of Pure Iron at 300 K (25°C)'
+      min: 100
+      max: 2000
     thermalConductivity:
       value: 80.2
       unit: W/(m·K)
       research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
         of Fluid Systems - Pure iron at 300K'
+      min: 7.0
+      max: 430
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -85,18 +93,24 @@ materialProperties:
       value: 1811.0
       unit: K
       research_basis: materials_science_literature
+      min: 873
+      max: 3695
     thermalDiffusivity:
       value: 23.1
       unit: mm²/s
       research_basis: 'NIST Standard Reference Database 78, ASM Handbook Volume 1:
         Properties and Selection: Irons, Steels, and High-Performance Alloys, and
         CRC Handbook of Chemistry and Physics (99th Edition) for pure iron at 300K'
+      min: 0.06
+      max: 174
     thermalExpansion:
       value: 11.8
       unit: 10^-6/K
       research_basis: 'NIST Standard Reference Database 144, Chapter 4: Thermal Expansion
         of Pure Metals; ASM Handbook Volume 1: Properties and Selection: Irons, Steels,
         and High-Performance Alloys'
+      min: 0.5
+      max: 33
     compressiveStrength:
       value: 200.0
       unit: MPa
@@ -106,6 +120,8 @@ materialProperties:
         strength is typically in the range of 150-250 MPa. The value of 200 MPa is
         a representative mid-range figure for general reference. It is significantly
         lower than its tensile strength due to the ductile nature of the metal.
+      min: 50
+      max: 2000
     corrosionResistance:
       value: 2.0
       unit: rating
@@ -115,19 +131,27 @@ materialProperties:
         very low ratings in corrosion resistance scales used by materials engineering
         authorities. NACE guidelines consistently rank iron and mild steels among
         the lowest tier materials for general corrosion resistance.
+      min: 1
+      max: 10
     density:
       value: 7.874
       unit: g/cm³
       research_basis: NIST Standard Reference Database 124 - Pure Iron at 20°C (293.15
         K)
+      min: 0.53
+      max: 22.6
     electricalConductivity:
       value: 10400000.0
       unit: S/m
       research_basis: materials_science_literature
+      min: 0.67
+      max: 63.0
     electricalResistivity:
       value: 9.71e-08
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 1.0e-08
+      max: 1.5e-06
     flexuralStrength:
       value: 150.0
       unit: MPa
@@ -140,20 +164,28 @@ materialProperties:
         strength range for pure iron, as found in authoritative materials handbooks.
         The confidence is not 1.00 because the value can vary significantly with the
         specific grade and processing of the iron.
+      min: 2.5
+      max: 1050.0
     hardness:
       value: 80.0
       unit: HV
       research_basis: 'ASM Handbook, Volume 1: Properties and Selection: Irons, Steels,
         and High-Performance Alloys, which specifies pure iron (99.94% Fe) hardness
         of 80 HV in annealed condition'
+      min: 0.5
+      max: 3500
     oxidationResistance:
       value: 700.0
       unit: °C
       research_basis: materials_science_literature
+      min: 200
+      max: 1200
     porosity:
       value: 0.0001
       unit: fraction
       research_basis: ai_research_comprehensive
+      min: 0.0
+      max: 15.0
     tensileStrength:
       value: 210.0
       unit: MPa
@@ -161,11 +193,15 @@ materialProperties:
         and High-Performance Alloys, ''Pure Iron'' section, pp. 665-671, which specifies
         high-purity iron (99.99% Fe) tensile strength range of 180-300 MPa with typical
         annealed condition value of 210 MPa'
+      min: 3.0
+      max: 3000.0
     youngsModulus:
       value: 211.5
       unit: GPa
       research_basis: 'ASM Handbook, Volume 1: Properties and Selection: Irons, Steels,
         and High-Performance Alloys (1990), Table 1 - Elastic Properties of Pure Metals'
+      min: 5
+      max: 600
     fractureToughness:
       value: 50.0
       unit: MPa·√m
@@ -176,6 +212,8 @@ materialProperties:
         has lower toughness than ultra-high-purity material due to impurity segregation
         and carbide formation. This value aligns with data from standardized materials
         handbooks for general iron.
+      min: 20
+      max: 200
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -184,45 +222,65 @@ materialProperties:
       value: 0.45
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 2.0
+      max: 8.0
     absorptivity:
       value: 0.35
       unit: dimensionless
       research_basis: materials_science_literature
+      min: 2.0
+      max: 65.0
     laserAbsorption:
       value: 64.2
       unit: '%'
       research_basis: 'NIST Standard Reference Database 78: Laser Absorption Properties
         of Pure Metals at 1064 nm wavelength, room temperature, polished surface condition'
+      min: 0.02
+      max: 100
     laserDamageThreshold:
       value: 0.45
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 0.1
+      max: 20.0
     laserReflectivity:
       value: 64.2
       unit: '%'
       research_basis: 'NIST Standard Reference Database 120: ''Optical Properties
         of Metallic Materials'' - Pure iron (99.95%) at 1064 nm wavelength, room temperature,
         normal incidence'
+      min: 5
+      max: 99.9
     reflectivity:
       value: 0.65
       unit: dimensionless
       research_basis: materials_science_literature
+      min: 85
+      max: 98
     thermalShockResistance:
       value: 1.2
       unit: MPa√m
       research_basis: materials_science_literature
+      min: 50
+      max: 400
     absorptionCoefficient:
       value: 630000.0
       unit: m⁻¹
       research_basis: materials_science_literature
+      min: 100000
+      max: 50000000
     surfaceRoughness:
       value: 0.32
       unit: μm
       research_basis: materials_science_literature
+      min: 0.4
+      max: 150
     vaporPressure:
       value: 0.000142
       unit: Pa
       research_basis: materials_science_literature
+      min: 1.0e-10
+      max: 0.001
 machineSettings:
   energyDensity:
     value: 5.1

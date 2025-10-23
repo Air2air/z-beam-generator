@@ -48,12 +48,16 @@ materialProperties:
         SRD 69 - Butadiene rubber (polybutadiene) at 25°C, with validation from ASM
         Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose
         Materials - Polymer Composites section'
+      min: 500
+      max: 2500.0
     thermalConductivity:
       value: 0.13
       unit: W/(m·K)
       research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
         of Polymers - Natural Rubber (cis-1,4-polyisoprene) at 25°C, and ASM Handbook
         Vol. 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
+      min: 0.03
+      max: 400
     thermalDestruction:
       value: 300.0
       unit: °C
@@ -64,12 +68,16 @@ materialProperties:
       research_basis: NIST Materials Data Repository - Specific measurements for vulcanized
         rubber composites with carbon black filler (25-30% loading), ASTM E1461 standard
         testing at 25°C
+      min: 0.08
+      max: 180
     thermalExpansion:
       value: 81.0
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Rubber-Based
         Composites, Table: Thermal Expansion Coefficients of Elastomeric Composites
         (pp. 345-347)'
+      min: -1
+      max: 250
     compressiveStrength:
       value: 20.0
       unit: MPa
@@ -78,6 +86,8 @@ materialProperties:
         Shore A elastomer, typical compressive strength ranges from 15-25 MPa. The
         value of 20 MPa represents a standard mid-range value for this hardness under
         standard test conditions (ASTM D575, room temperature).
+      min: 50
+      max: 1000
     corrosionResistance:
       value: 8.0
       unit: rating
@@ -88,16 +98,22 @@ materialProperties:
         rubber type and can be degraded by oils, strong oxidizers, and prolonged UV
         exposure. The high rating reflects its general superior performance against
         atmospheric and aqueous corrosion compared to metals.
+      min: 5
+      max: 9
     density:
       value: 1.15
       unit: g/cm³
       research_basis: 'ASM Handbook, Volume 21: Composites - Section: Elastomeric
         Composites; NIST Standard Reference Data for Polymer Composites; Rubber Manufacturers
         Association Technical Data Sheets'
+      min: 0.5
+      max: 8
     electricalResistivity:
       value: 10000000000000.0
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 0.001
+      max: 100000000000000.0
     flexuralStrength:
       value: 5.0
       unit: MPa
@@ -106,6 +122,8 @@ materialProperties:
         60 Shore A, a typical flexural strength value is in the range of 3-7 MPa.
         The provided value of 5.0 MPa is a representative median for this hardness
         level, as cited by materials science databases and engineering handbooks.
+      min: 100
+      max: 2000
     hardness:
       value: 60.0
       unit: Shore A
@@ -113,6 +131,8 @@ materialProperties:
         - Typical hardness values for carbon black-filled natural rubber compounds
         used in industrial applications range from 55-65 Shore A, with 60 Shore A
         being the most common specification for laser-cleaning applications'
+      min: 5.0
+      max: 120
     oxidationResistance:
       value: 100.0
       unit: °C
@@ -121,17 +141,23 @@ materialProperties:
         of 80-100°C before significant oxidative degradation begins. The provided
         hardness (60 Shore A) is consistent with these common, non-specialty elastomers,
         which have limited heat resistance.
+      min: 80.0
+      max: 1650.0
     tensileStrength:
       value: 25.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 21: Composites, Chapter 6: Elastomeric
         Composites, Table 6-2: Typical Mechanical Properties of Rubber Composites'
+      min: 20
+      max: 6000
     youngsModulus:
       value: 5.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Elastomeric Composites,
         Table: Mechanical Properties of Engineering Elastomers (ASM International,
         2001)'
+      min: 0.001
+      max: 3000
     fractureToughness:
       value: 0.05
       unit: MPa·√m
@@ -140,6 +166,8 @@ materialProperties:
         large deformations without crack propagation. The cited reference provides
         typical values for unfilled and filled rubber compounds in this range, with
         0.05 MPa·√m being representative for many rubber formulations.
+      min: 20
+      max: 100
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -150,12 +178,16 @@ materialProperties:
       research_basis: 'NIST Materials Data Repository - Laser-Material Interaction
         Database for Industrial Applications, specifically Table 4.3: ''Optical Absorption
         Properties of Elastomeric Composites at 1064 nm'''
+      min: 0.05
+      max: 200
     laserReflectivity:
       value: 38.5
       unit: '%'
       research_basis: 'NIST Materials Data Repository - Laser-Material Interaction
         Database for Composite Polymers (2021), ASM Handbook Volume 5: Surface Engineering,
         Section on Laser Processing'
+      min: 2
+      max: 80
 machineSettings:
   energyDensity:
     value: 5.1

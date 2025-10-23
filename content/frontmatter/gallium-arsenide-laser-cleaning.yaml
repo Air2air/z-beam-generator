@@ -47,12 +47,16 @@ materialProperties:
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 144: Thermophysical Properties
         of Gallium Arsenide, Section 3.1.1 - Specific Heat Capacity at 300K'
+      min: 300
+      max: 900
     thermalConductivity:
       value: 55.0
       unit: W/(m·K)
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table ''Thermal Properties of
         Semiconductors'' specifically listing GaAs at 300K'
+      min: 0.2
+      max: 156
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -63,12 +67,16 @@ materialProperties:
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table ''Thermal Properties of
         Selected Semiconductor Materials'' citing GaAs thermal diffusivity at 300K'
+      min: 0.1
+      max: 90
     thermalExpansion:
       value: 5.73
       unit: 10⁻⁶/K
       research_basis: 'Adachi, S. (2004). Properties of Semiconductor Alloys: Group-IV,
         III-V and II-VI Semiconductors. Wiley, Table 1.9 - Thermal expansion coefficient
         of GaAs at 300K: 5.73 × 10⁻⁶ K⁻¹'
+      min: 2.6
+      max: 10
     compressiveStrength:
       value: 370.0
       unit: MPa
@@ -78,6 +86,8 @@ materialProperties:
         semiconductor behavior where compressive strength is significantly lower than
         hardness. The value represents standard room temperature testing conditions
         for bulk single crystal material.
+      min: 370.0
+      max: 6000.0
     corrosionResistance:
       value: 8.0
       unit: rating
@@ -85,16 +95,22 @@ materialProperties:
         and many chemicals due to its stable oxide layer, performing well in ambient
         environments. However, it can be attacked by strong acids and alkalis, preventing
         a perfect rating.
+      min: 8.0
+      max: 9.0
     density:
       value: 5.3176
       unit: g/cm³
       research_basis: NIST Standard Reference Database 124 - III-V Semiconductor Materials
         Data, specifically citing the zincblende crystal structure density of GaAs
         at 300K
+      min: 2.3
+      max: 7.13
     electricalResistivity:
       value: 37000000.0
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 0.001
+      max: 1000.0
     flexuralStrength:
       value: 130.0
       unit: MPa
@@ -103,11 +119,15 @@ materialProperties:
         of 130-150 MPa, with 130 MPa being the commonly cited value for standard material
         quality. This aligns with typical semiconductor mechanical properties where
         GaAs has moderate strength compared to other semiconductors.
+      min: 120.0
+      max: 410.0
     hardness:
       value: 7.0
       unit: GPa
       research_basis: 'ASM Handbook, Volume 18: Friction, Lubrication, and Wear Technology
         & CRC Materials Science and Engineering Handbook'
+      min: 2
+      max: 2600
     oxidationResistance:
       value: 600.0
       unit: °C
@@ -117,19 +137,27 @@ materialProperties:
         processing literature as the upper limit for avoiding rapid, destructive oxidation,
         as this is the temperature where arsenic starts to volatilize aggressively,
         leaving a non-protective, gallium-rich oxide layer.
+      min: 600.0
+      max: 1600.0
     tensileStrength:
       value: 55.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation (2000),
         Table 1: Mechanical Properties of Selected Semiconductor Materials, p. 789'
+      min: 50
+      max: 7000
     youngsModulus:
       value: 85.3
       unit: GPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Section: Gallium Arsenide, Table:
         Physical and Mechanical Properties of Gallium Arsenide'
+      min: 5
+      max: 450
     fractureToughness:
       value: 0.44
+      min: 0.75
+      max: 3.0
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -139,11 +167,15 @@ materialProperties:
       unit: '%'
       research_basis: Palik, E.D. (1998). Handbook of Optical Constants of Solids
         II, Academic Press, pp. 507-561. Data for GaAs at 1064 nm wavelength.
+      min: 0.01
+      max: 100
     laserReflectivity:
       value: 37.2
       unit: '%'
       research_basis: 'Palik, E.D. (1998). Handbook of Optical Constants of Solids
         II. Academic Press. Table: GaAs optical constants at 1064 nm wavelength.'
+      min: 10
+      max: 70
 machineSettings:
   fluenceThreshold:
     value: 0.8

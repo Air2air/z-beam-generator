@@ -48,6 +48,8 @@ materialProperties:
       research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
         of Polymer Systems, specifically data for epoxy resin composites with 60-65%
         fiberglass reinforcement at 25°C'
+      min: 500
+      max: 2500.0
     thermalConductivity:
       value: 0.2
       unit: W/(m·K)
@@ -55,6 +57,8 @@ materialProperties:
         Database (2021), ASM Handbook Vol. 21: Composites (2015), and Zhang et al.
         ''Thermal properties of epoxy composites'' in Composites Science and Technology,
         Vol. 128, pp. 1-8 (2016)'
+      min: 0.03
+      max: 400
     thermalDestruction:
       value: 300.0
       unit: °C
@@ -65,11 +69,15 @@ materialProperties:
       research_basis: 'NIST Special Publication 1191: Thermal Properties of Polymer
         Composites, with specific reference to epoxy-graphite systems (Section 4.3,
         Table 4-2)'
+      min: 0.08
+      max: 180
     thermalExpansion:
       value: 30.0
       unit: 10^-6/K
       research_basis: NIST Polymer Composite Database - Typical CTE values for epoxy/carbon
         fiber composites (55-60 × 10^-6/K) at room temperature (20-25°C)
+      min: -1
+      max: 250
     compressiveStrength:
       value: 110.0
       unit: MPa
@@ -81,6 +89,8 @@ materialProperties:
         composite system, which is the most common type. The known properties (high
         hardness, density) are consistent with a filled or reinforced epoxy system,
         but without specific reinforcement details, this is an estimated range.
+      min: 50
+      max: 1000
     corrosionResistance:
       value: 8.0
       unit: rating
@@ -89,16 +99,22 @@ materialProperties:
         to strong oxidizing acids and certain alkalis. The polymer matrix provides
         a protective barrier, making them superior to metals in most corrosive environments,
         though not as universally resistant as some fluoropolymers.
+      min: 5
+      max: 9
     density:
       value: 1.25
       unit: g/cm³
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Polymer Matrix
         Composites, pp. 48-52; NIST Special Publication 1203: Properties of Composite
         Materials for Laser Applications'
+      min: 0.5
+      max: 8
     electricalResistivity:
       value: 120000000000000.0
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 0.001
+      max: 100000000000000.0
     flexuralStrength:
       value: 100.0
       unit: MPa
@@ -109,12 +125,16 @@ materialProperties:
         composites. While the given properties don't directly predict flexural strength,
         they help confirm this is a standard epoxy composite material where 3-point
         bend testing commonly yields values in this range.
+      min: 100
+      max: 2000
     hardness:
       value: 85.0
       unit: Shore D
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Polymer Matrix
         Composites, pp. 243-257 (2001) with specific reference to epoxy resin composite
         formulations containing 60-70% fiberglass reinforcement'
+      min: 5.0
+      max: 120
     oxidationResistance:
       value: 150.0
       unit: °C
@@ -124,18 +144,24 @@ materialProperties:
         significant loss of mechanical properties. The provided material properties
         (85 Shore D hardness, 1000 J·kg⁻¹·K⁻¹ specific heat) are consistent with a
         standard cured epoxy system, supporting this temperature range assessment.
+      min: 80.0
+      max: 1650.0
     tensileStrength:
       value: 3100.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 21: Composites, Table ''Mechanical Properties
         of Epoxy Matrix Composites'' for carbon fiber/epoxy composites with 60-65%
         fiber volume fraction under ASTM D3039 testing standard'
+      min: 20
+      max: 6000
     youngsModulus:
       value: 3.2
       unit: GPa
       research_basis: NIST Polymer Database - Epoxy Resin Systems Reference Data,
         specifically for unfilled, cured epoxy resin composites under standard conditions
         (ASTM D638)
+      min: 0.001
+      max: 3000
     fractureToughness:
       value: 0.6
       unit: MPa·√m
@@ -145,6 +171,8 @@ materialProperties:
         hardness 85 Shore D) suggest an unfilled or minimally filled epoxy system,
         consistent with the lower end of this range. The cited ASM Handbook provides
         characteristic values for unreinforced epoxy polymers.
+      min: 20
+      max: 100
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -155,12 +183,16 @@ materialProperties:
       research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
         for Carbon-Fiber Reinforced Epoxy Composites'' (2018) - Table 3: Absorption
         coefficients for aerospace-grade epoxy composites at 1064 nm wavelength'
+      min: 0.05
+      max: 200
     laserReflectivity:
       value: 38.5
       unit: '%'
       research_basis: NIST Materials Data Repository - Optical Properties of Polymer
         Composites (2021), specifically Table 3.2 for epoxy-carbon fiber composites
         at 1064 nm wavelength
+      min: 2
+      max: 80
 machineSettings:
   fluenceThreshold:
     value: 2.5

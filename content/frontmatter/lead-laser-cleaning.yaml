@@ -45,21 +45,29 @@ materialProperties:
       value: 2022.0
       unit: K
       research_basis: materials_science_literature
+      min: 907
+      max: 5870
     meltingPoint:
       value: 600.61
       unit: K
       research_basis: materials_science_literature
+      min: -39
+      max: 3422
     specificHeat:
       value: 129.7
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
         Lead thermochemical data at 298.15 K'
+      min: 100
+      max: 2000
     thermalConductivity:
       value: 35.3
       unit: W/(m·K)
       research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
         Lead thermophysical properties at 300K; ASM Handbook Volume 2: Properties
         and Selection: Nonferrous Alloys and Special-Purpose Materials'
+      min: 7.0
+      max: 430
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -68,6 +76,8 @@ materialProperties:
       value: 601.0
       unit: K
       research_basis: materials_science_literature
+      min: 873
+      max: 3695
     thermalDiffusivity:
       value: 24.8
       unit: mm²/s
@@ -75,11 +85,15 @@ materialProperties:
         Alloys and Special-Purpose Materials (1990), Table 1: Physical Properties
         of Lead and Lead Alloys, and NIST Standard Reference Data for pure lead (99.99+%)
         at 300K'
+      min: 0.06
+      max: 174
     thermalExpansion:
       value: 28.9
       unit: 10^-6/K
       research_basis: 'NIST Standard Reference Database 144 - Lead (Pb) thermal expansion
         coefficient at 20°C: 29.1 × 10^-6 K^-1'
+      min: 0.5
+      max: 33
     compressiveStrength:
       value: 15.0
       unit: MPa
@@ -90,6 +104,8 @@ materialProperties:
         range of 12-18 MPa under standard laboratory conditions (room temperature,
         quasi-static loading). The value overlaps significantly with its tensile strength
         due to its low capacity for work hardening.
+      min: 50
+      max: 2000
     corrosionResistance:
       value: 2.0
       unit: rating
@@ -100,19 +116,27 @@ materialProperties:
         in common environmental conditions like drinking water distribution systems
         and soil burial, with corrosion rates typically 0.0005-0.002 inches per year
         in various environments.
+      min: 1
+      max: 10
     density:
       value: 11.34
       unit: g/cm³
       research_basis: 'NIST Standard Reference Database 144 (Lead), ASM Handbook Volume
         2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
+      min: 0.53
+      max: 22.6
     electricalConductivity:
       value: 4810000.0
       unit: S/m
       research_basis: materials_science_literature
+      min: 0.67
+      max: 63.0
     electricalResistivity:
       value: 2.065e-07
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 1.0e-08
+      max: 1.5e-06
     flexuralStrength:
       value: 12.0
       unit: MPa
@@ -123,12 +147,16 @@ materialProperties:
         (e.g., ASM) as being in the 12-18 MPa range for pure lead. Since bending failure
         is governed by tensile stress, this value serves as a conservative and representative
         estimate of its flexural strength.
+      min: 2.5
+      max: 1050.0
     hardness:
       value: 38.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Lead and Lead Alloys Chapter, Table
         1: Physical and Mechanical Properties of High-Purity Lead'
+      min: 0.5
+      max: 3500
     oxidationResistance:
       value: 400.0
       unit: °C
@@ -138,24 +166,34 @@ materialProperties:
         meaning molten lead oxidizes readily. The 400°C threshold is widely cited
         in materials science references for the onset of substantial oxidation in
         air.
+      min: 200
+      max: 1200
     porosity:
       value: 0.0001
       unit: '%'
       research_basis: ai_research_comprehensive
+      min: 0.0
+      max: 15.0
     tensileStrength:
       value: 12.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1: Typical Mechanical Properties
         of Wrought Lead'
+      min: 3.0
+      max: 3000.0
     youngsModulus:
       value: 14.0
       unit: GPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
         Properties of Lead and Lead Alloys'
+      min: 5
+      max: 600
     fractureToughness:
       value: 15.0
+      min: 20
+      max: 200
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -164,45 +202,65 @@ materialProperties:
       value: 0.15
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 2.0
+      max: 8.0
     absorptivity:
       value: 0.35
       unit: dimensionless
       research_basis: materials_science_literature
+      min: 2.0
+      max: 65.0
     laserAbsorption:
       value: 38.5
       unit: '%'
       research_basis: 'NIST Atomic Spectra Database - Lead reflectance data at 1064
         nm wavelength, combined with ASM Handbook Volume 2: Properties and Selection:
         Nonferrous Alloys and Special-Purpose Materials'
+      min: 0.02
+      max: 100
     laserDamageThreshold:
       value: 0.15
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 0.1
+      max: 20.0
     laserReflectivity:
       value: 48.7
       unit: '%'
       research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
         of Materials - Reflectance measurements for lead at 1064 nm wavelength'
+      min: 5
+      max: 99.9
     reflectivity:
       value: 0.65
       unit: dimensionless
       research_basis: materials_science_literature
+      min: 85
+      max: 98
     thermalShockResistance:
       value: 180.0
       unit: W/m
       research_basis: materials_science_literature
+      min: 50
+      max: 400
     absorptionCoefficient:
       value: 12400000.0
       unit: m⁻¹
       research_basis: materials_science_literature
+      min: 100000
+      max: 50000000
     surfaceRoughness:
       value: 0.8
       unit: µm
       research_basis: materials_science_literature
+      min: 0.4
+      max: 150
     vaporPressure:
       value: 2.13e-07
       unit: Pa
       research_basis: materials_science_literature
+      min: 1.0e-10
+      max: 0.001
 machineSettings:
   fluenceThreshold:
     value: 2.5

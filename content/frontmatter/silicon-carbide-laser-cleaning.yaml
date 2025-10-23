@@ -66,12 +66,16 @@ materialProperties:
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 144: Thermophysical Properties
         of Solids - Silicon Carbide (6H-SiC) at 300K'
+      min: 300
+      max: 900
     thermalConductivity:
       value: 120.0
       unit: W/(m·K)
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (2015), Table ''Thermal Properties of
         Semiconductor Materials'' lists 120 W/m·K for 4H-SiC at 300K'
+      min: 0.2
+      max: 156
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -82,12 +86,16 @@ materialProperties:
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Table ''Thermal Properties of Selected
         Semiconductor Materials'' specifies 90 mm²/s for 4H-SiC at 300K'
+      min: 0.1
+      max: 90
     thermalExpansion:
       value: 4.0
       unit: 10⁻⁶/K
       research_basis: 'ASM Handbook, Volume 21: Composites, Table ''Properties of
         Silicon Carbide'' citing thermal expansion coefficient for CVD silicon carbide
         at 20-1000°C range'
+      min: 2.6
+      max: 10
     compressiveStrength:
       value: 3900.0
       unit: MPa
@@ -98,6 +106,8 @@ materialProperties:
         MPa). The provided value of 3900 MPa is a typical, well-cited average for
         high-purity, dense sintered SiC under standard test conditions (room temperature,
         uniaxial loading).
+      min: 370.0
+      max: 6000.0
     corrosionResistance:
       value: 9.0
       unit: rating
@@ -107,16 +117,22 @@ materialProperties:
         hydrofluoric acid, phosphoric acid, and strong alkalis at high temperatures
         causing significant attack. This places it among the most corrosion-resistant
         engineering ceramics.
+      min: 8.0
+      max: 9.0
     density:
       value: 3.21
       unit: g/cm³
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Section: Ceramics and Glasses,
         Table: Properties of Silicon Carbide'
+      min: 2.3
+      max: 7.13
     electricalResistivity:
       value: 1.0
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 0.001
+      max: 1000.0
     flexuralStrength:
       value: 410.0
       unit: MPa
@@ -125,10 +141,14 @@ materialProperties:
         a typical flexural strength range of 350 to 490 MPa. The value of 410 MPa
         is a representative median from this authoritative range, derived from standardized
         4-point bend tests.
+      min: 120.0
+      max: 410.0
     hardness:
       value: 2500.0
       unit: kgf/mm²
       research_basis: materials_science_literature
+      min: 2
+      max: 2600
     oxidationResistance:
       value: 1600.0
       unit: °C
@@ -138,16 +158,22 @@ materialProperties:
         oxidation or significant material degradation begins. This value is widely
         cited in ceramic and composite materials literature as the maximum continuous
         service temperature in air.
+      min: 600.0
+      max: 1600.0
     tensileStrength:
       value: 350.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation (2000),
         Table ''Mechanical Properties of Advanced Ceramics'' citing room temperature
         tensile strength of sintered alpha silicon carbide as 350 MPa'
+      min: 50
+      max: 7000
     youngsModulus:
       value: 410.0
       unit: GPa
       research_basis: materials_science_literature
+      min: 5
+      max: 450
     fractureToughness:
       value: 3.0
       unit: MPa·√m
@@ -156,6 +182,8 @@ materialProperties:
         in the literature for dense, polycrystalline forms, typically ranging from
         2.5 to 4.0 MPa·√m, with 3.0 MPa·√m being a commonly cited and authoritative
         median value for room temperature.
+      min: 0.75
+      max: 3.0
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -166,11 +194,15 @@ materialProperties:
       research_basis: NIST Materials Data Repository - Silicon Carbide Optical Properties
         Database, specifically referencing 4H-SiC absorption measurements at 1064
         nm wavelength
+      min: 0.01
+      max: 100
     laserReflectivity:
       value: 21.5
       unit: '%'
       research_basis: NIST Materials Data Repository - Reflectance measurements of
         4H-SiC at 1064 nm wavelength, typical for Nd:YAG laser cleaning systems
+      min: 10
+      max: 70
 machineSettings:
   fluenceThreshold:
     value: 2.5

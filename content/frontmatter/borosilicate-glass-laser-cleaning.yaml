@@ -47,12 +47,16 @@ materialProperties:
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
         of Borosilicate Glass (Pyrex 7740) at 300 K'
+      min: 120
+      max: 900
     thermalConductivity:
       value: 1.2
       unit: W/(m·K)
       research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
         of Borosilicate Glass (Pyrex 7740) at 300K, Corning Incorporated Material
         Specifications'
+      min: 0.7
+      max: 30
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -62,12 +66,16 @@ materialProperties:
       unit: mm²/s
       research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
         of Borosilicate Glass (Pyrex 7740) at 300K, measured using laser flash method'
+      min: 0.01
+      max: 15
     thermalExpansion:
       value: 3.25
       unit: 10⁻⁶/K
       research_basis: ASTM E228-17 Standard Test Method for Linear Thermal Expansion
         of Solid Materials & Corning Incorporated technical datasheets for borosilicate
         glass (Pyrex 7740 composition)
+      min: 0.1
+      max: 15
     compressiveStrength:
       value: 280.0
       unit: MPa
@@ -77,6 +85,8 @@ materialProperties:
         borosilicate glass (e.g., Pyrex, Duran) from manufacturer technical data sheets.
         Higher values up to 650 MPa apply to pristine, flaw-free specimens under ideal
         laboratory conditions.
+      min: 500
+      max: 2000
     corrosionResistance:
       value: 9.0
       unit: rating
@@ -87,16 +97,22 @@ materialProperties:
         but still significantly lower than ordinary soda-lime glass. This high chemical
         inertness qualifies it for laboratory and industrial applications where corrosion
         resistance is critical.
+      min: 9
+      max: 10
     density:
       value: 2.23
       unit: g/cm³
       research_basis: 'ASTM E438-92 Standard Specification for Glasses in Laboratory
         Apparatus, Corning Glass Works Material Specifications for Pyrex 7740, and
         Scholze, H. ''Glass: Nature, Structure, and Properties'' (1991)'
+      min: 1.2
+      max: 7.6
     electricalResistivity:
       value: 150000000.0
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 10000000000.0
+      max: 1000000000000000.0
     flexuralStrength:
       value: 60.0
       unit: MPa
@@ -108,12 +124,16 @@ materialProperties:
         specimens. The value of 60 MPa is a representative median for a 3-point bend
         test, though real-world strength is often lower due to microscopic surface
         flaws.
+      min: 50
+      max: 750.0
     hardness:
       value: 5.5
       unit: Mohs
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (ASM International, 1990), Section: ''Glass
         and Glass Ceramics'''
+      min: 3.5
+      max: 9.5
     oxidationResistance:
       value: 500.0
       unit: °C
@@ -122,18 +142,24 @@ materialProperties:
         and technical data sheets. This is the temperature limit for long-term use
         before thermal creep or structural degradation begins, which serves as a practical
         upper limit for oxidation resistance in an air atmosphere.
+      min: 400.0
+      max: 1700.0
     tensileStrength:
       value: 35.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 19: Fatigue and Fracture, ''Fracture of
         Glass'' (ASM International, 1996) and Corning Incorporated technical data
         sheets for borosilicate glass compositions'
+      min: 30
+      max: 2000
     youngsModulus:
       value: 63.0
       unit: GPa
       research_basis: ASTM International Standard E494-95, Corning Glass Works technical
         documentation for borosilicate glasses (Pyrex-type), and Materials Science
         & Engineering literature (Bansal & Doremus, 'Handbook of Glass Properties')
+      min: 10
+      max: 400
     fractureToughness:
       value: 0.77
       unit: MPa·√m
@@ -141,6 +167,8 @@ materialProperties:
         typical of oxide glasses. The value 0.77 MPa·√m is widely cited in materials
         databases and fracture mechanics literature for annealed borosilicate glass,
         consistent with its brittle behavior and lack of plastic deformation.
+      min: 0.5
+      max: 2
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -149,18 +177,24 @@ materialProperties:
       value: 2.1
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 2.0
+      max: 6.0
     laserAbsorption:
       value: 0.5
       unit: '%'
       research_basis: 'NIST Standard Reference Database 78 (2019) - Optical Constants
         of Inorganic Glasses, Section 3.2.4: Borosilicate Glass Composition BSC-7
         (82% SiO₂, 13% B₂O₃, 4% Na₂O, 1% Al₂O₃) at 1064 nm wavelength'
+      min: 0.001
+      max: 10
     laserReflectivity:
       value: 4.2
       unit: '%'
       research_basis: 'NIST Standard Reference Database 120: Optical Constants of
         Materials, specifically for borosilicate glass (Pyrex 7740 composition) at
         1064 nm wavelength, which is standard for industrial laser cleaning applications'
+      min: 0.1
+      max: 92
 machineSettings:
   fluenceThreshold:
     value: 2.5

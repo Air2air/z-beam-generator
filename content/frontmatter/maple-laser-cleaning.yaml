@@ -47,6 +47,8 @@ materialProperties:
       research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest
         Service, FPL-GTR-190), Chapter 4: Moisture Relations and Physical Properties,
         Table 4-3: Specific heat of wood at various moisture contents and temperatures'
+      min: 800
+      max: 2500
     thermalConductivity:
       value: 0.166
       unit: W/(m·K)
@@ -54,6 +56,8 @@ materialProperties:
         an Engineering Material. USDA Forest Service, General Technical Report FPL-GTR-190,
         Chapter 4: Thermal Properties, Table 4-3, specifically for hard maple (Acer
         spp.) at 12% moisture content and room temperature.'
+      min: 0.04
+      max: 0.4
     thermalDestruction:
       value: 300.0
       unit: °C
@@ -65,12 +69,16 @@ materialProperties:
         (1999). Thermal conductivity and diffusivity of wood. Wood Science and Technology,
         33(6), 465-473. Specific data for hard maple (Acer saccharum) at 12% moisture
         content and room temperature.
+      min: 0.0001
+      max: 0.4
     thermalExpansion:
       value: 5.0
       unit: 10^-6/K
       research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest
         Service, Forest Products Laboratory. General Technical Report FPL-GTR-190.
         Chapter 4: Moisture and Thermal Properties of Wood.'
+      min: 3.0
+      max: 60
     compressiveStrength:
       value: 25.0
       unit: MPa
@@ -82,6 +90,8 @@ materialProperties:
         common and critical design parameter for many applications and is the value
         typically associated with the general term "compressive strength" for wood
         when a specific grain direction is not stated.
+      min: 20
+      max: 80
     corrosionResistance:
       value: 3.0
       unit: rating
@@ -90,6 +100,8 @@ materialProperties:
         well in indoor applications, it has limited corrosion resistance in outdoor
         environments without preservative treatment. The rating reflects its susceptibility
         to environmental degradation compared to more durable woods like teak or cedar.
+      min: 2.0
+      max: 8.0
     density:
       value: 0.675
       unit: g/cm³
@@ -97,6 +109,8 @@ materialProperties:
         Wood as an Engineering Material. Chapter 4: Mechanical Properties of Wood,
         Table 4-3: Specific gravity of some common wood species. Specifically references
         Hard Maple (Acer saccharum) at 12% moisture content.'
+      min: 0.12
+      max: 1.5
     flexuralStrength:
       value: 109.0
       unit: MPa
@@ -107,6 +121,8 @@ materialProperties:
         Maple's flexural strength typically ranges from 100-120 MPa depending on moisture
         content and specific growing conditions, with 109 MPa being a well-established
         average for commercially available lumber at 12% moisture content.
+      min: 40
+      max: 150
     hardness:
       value: 6.5
       unit: MPa
@@ -114,6 +130,8 @@ materialProperties:
         Wood as an Engineering Material. General Technical Report FPL-GTR-190. Table
         5-3a: Mechanical properties of some commercially important woods grown in
         the United States (Hard Maple, Acer saccharum).'
+      min: 1
+      max: 5000
     oxidationResistance:
       value: 150.0
       unit: °C
@@ -127,10 +145,14 @@ materialProperties:
         to 300°F). The upper limit of 150°C is cited as the point where significant
         chemical decomposition begins over time, making it a suitable proxy for the
         temperature at which significant oxidation occurs.
+      min: 82.0
+      max: 204.0
     porosity:
       value: 0.56
       unit: dimensionless
       research_basis: ai_research_comprehensive
+      min: 12
+      max: 65
     tensileStrength:
       value: 108.9
       unit: MPa
@@ -138,10 +160,14 @@ materialProperties:
         Wood as an Engineering Material. Chapter 4: Mechanical Properties of Wood.
         Table 4-3a: Mechanical properties of some commercially important woods grown
         in the United States (Maple, sugar).'
+      min: 20
+      max: 200
     youngsModulus:
       value: 2.5025
       unit: GPa
       research_basis: standard_material_database
+      min: 5
+      max: 20000
     fractureToughness:
       value: 0.54
       unit: MPa·√m
@@ -151,6 +177,8 @@ materialProperties:
         compact tension or three-point bend tests on clear wood specimens. This property
         is strongly dependent on grain orientation and density, and the cited value
         corresponds to the material properties provided.
+      min: 0.33
+      max: 4.4
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -161,12 +189,16 @@ materialProperties:
       research_basis: 'NIST Standard Reference Database 69: Laser-Material Interaction
         Data for Hardwood Species, specifically Table 4.2 for Acer species at 1064
         nm wavelength'
+      min: 1
+      max: 50
     laserReflectivity:
       value: 32.5
       unit: '%'
       research_basis: NIST Materials Data Repository - Wood Optical Properties Database,
         specifically referencing Acer species (Maple) at 1064 nm wavelength with surface
         roughness parameters typical of finished wood surfaces
+      min: 10
+      max: 60
 machineSettings:
   energyDensity:
     value: 2.8

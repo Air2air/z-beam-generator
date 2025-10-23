@@ -64,21 +64,29 @@ materialProperties:
       value: 2562.0
       unit: °C
       research_basis: materials_science_literature
+      min: 907
+      max: 5870
     meltingPoint:
       value: 1084.62
       unit: °C
       research_basis: materials_science_literature
+      min: -39
+      max: 3422
     specificHeat:
       value: 385.0
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
         Copper thermophysical properties at 300K; ASM Handbook Volume 2: Properties
         and Selection: Nonferrous Alloys and Special-Purpose Materials'
+      min: 100
+      max: 2000
     thermalConductivity:
       value: 401.0
       unit: W/(m·K)
       research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
         of Fluid Systems - Pure Copper at 300K'
+      min: 7.0
+      max: 430
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -87,18 +95,24 @@ materialProperties:
       value: 1084.62
       unit: °C
       research_basis: materials_science_literature
+      min: 873
+      max: 3695
     thermalDiffusivity:
       value: 112.3
       unit: mm²/s
       research_basis: 'NIST Standard Reference Database 78: Thermophysical Properties
         of Pure Copper at 300K, ASM Handbook Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials'
+      min: 0.06
+      max: 174
     thermalExpansion:
       value: 16.5
       unit: 10^-6/K
       research_basis: 'NIST Standard Reference Database 144, CRC Handbook of Chemistry
         and Physics (104th Edition), and ASM Handbook Volume 2: Properties and Selection:
         Nonferrous Alloys and Special-Purpose Materials'
+      min: 0.5
+      max: 33
     compressiveStrength:
       value: 210.0
       unit: MPa
@@ -111,6 +125,8 @@ materialProperties:
         which is approximately equal to its tensile yield strength for ductile metals
         like copper. The ASM Handbook is a globally recognized authoritative source
         for material properties.
+      min: 50
+      max: 2000
     corrosionResistance:
       value: 8.0
       unit: rating
@@ -119,20 +135,28 @@ materialProperties:
         atmospheric corrosion, fresh water, and seawater. It maintains this high rating
         despite being susceptible to specific corrosive environments like ammonia
         compounds and sulfur gases.
+      min: 1
+      max: 10
     density:
       value: 8.96
       unit: g/cm³
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Table ''Physical Properties of Pure
         Metals'', Copper density at 20°C'
+      min: 0.53
+      max: 22.6
     electricalConductivity:
       value: 59600000.0
       unit: S/m
       research_basis: materials_science_literature
+      min: 0.67
+      max: 63.0
     electricalResistivity:
       value: 1.724e-08
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 1.0e-08
+      max: 1.5e-06
     flexuralStrength:
       value: 210.0
       unit: MPa
@@ -142,12 +166,16 @@ materialProperties:
         strength for ductile materials, using a typical tensile strength range of
         210-220 MPa for annealed copper as a basis. Direct citations for a standardized
         3-point bend test on pure copper are less common than for tensile properties.
+      min: 2.5
+      max: 1050.0
     hardness:
       value: 369.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Table: Mechanical Properties of Copper
         and Copper Alloys, Annealed Copper (UNS C11000)'
+      min: 0.5
+      max: 3500
     oxidationResistance:
       value: 300.0
       unit: °C
@@ -156,22 +184,30 @@ materialProperties:
         begins in the range of 300-400°C in air. The lower end of this range (300°C)
         is cited as the maximum temperature for continuous service in oxidizing environments
         before oxide scaling becomes a serious issue.
+      min: 200
+      max: 1200
     porosity:
       value: 0.0001
       unit: '%'
       research_basis: ai_research_comprehensive
+      min: 0.0
+      max: 15.0
     tensileStrength:
       value: 210.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, ''Copper and Copper Alloys'' chapter,
         Table 1: Typical Mechanical Properties of Wrought Copper'
+      min: 3.0
+      max: 3000.0
     youngsModulus:
       value: 110.0
       unit: GPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
         Properties of Wrought Copper and Copper Alloys'
+      min: 5
+      max: 600
     fractureToughness:
       value: 60.0
       unit: MPa·√m
@@ -181,6 +217,8 @@ materialProperties:
         being most representative of commercially pure copper at room temperature.
         The value of 60 MPa·√m is a conservative estimate for pure copper's fracture
         toughness based on multiple handbook references and materials databases.
+      min: 20
+      max: 200
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -189,45 +227,65 @@ materialProperties:
       value: 0.45
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 2.0
+      max: 8.0
     absorptivity:
       value: 0.017
       unit: dimensionless
       research_basis: materials_science_literature
+      min: 2.0
+      max: 65.0
     laserAbsorption:
       value: 3.5
       unit: '%'
       research_basis: 'NIST Standard Reference Database 120: ''Thermophysical Properties
         of Matter'' - Pure copper (99.9+%) at 1064 nm wavelength, room temperature,
         clean polished surface'
+      min: 0.02
+      max: 100
     laserDamageThreshold:
       value: 0.15
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 0.1
+      max: 20.0
     laserReflectivity:
       value: 98.6
       unit: '%'
       research_basis: 'NIST Standard Reference Database 120: ''Reflectance and Emittance
         of Spectrally Selective Materials'' - Copper reflectance data at 1064 nm wavelength'
+      min: 5
+      max: 99.9
     reflectivity:
       value: 0.985
       unit: dimensionless (ratio)
       research_basis: materials_science_literature
+      min: 85
+      max: 98
     thermalShockResistance:
       value: 1.8
       unit: W/m
       research_basis: materials_science_literature
+      min: 50
+      max: 400
     absorptionCoefficient:
       value: 12300000.0
       unit: m⁻¹
       research_basis: materials_science_literature
+      min: 100000
+      max: 50000000
     surfaceRoughness:
       value: 0.15
       unit: µm
       research_basis: materials_science_literature
+      min: 0.4
+      max: 150
     vaporPressure:
       value: 0.00347
       unit: Pa
       research_basis: materials_science_literature
+      min: 1.0e-10
+      max: 0.001
 machineSettings:
   fluenceThreshold:
     value: 2.5

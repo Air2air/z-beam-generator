@@ -45,21 +45,29 @@ materialProperties:
       value: 2072.0
       unit: °C
       research_basis: materials_science_literature
+      min: 907
+      max: 5870
     meltingPoint:
       value: 156.5985
       unit: °C
       research_basis: materials_science_literature
+      min: -39
+      max: 3422
     specificHeat:
       value: 233.0
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
         CRC Handbook of Chemistry and Physics 104th Edition, and ASM Handbook Volume
         2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
+      min: 100
+      max: 2000
     thermalConductivity:
       value: 81.8
       unit: W/(m·K)
       research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
         of Fluid Systems - Indium thermal conductivity at 300K'
+      min: 7.0
+      max: 430
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -68,18 +76,24 @@ materialProperties:
       value: 429.75
       unit: K
       research_basis: materials_science_literature
+      min: 873
+      max: 3695
     thermalDiffusivity:
       value: 86.7
       unit: mm²/s
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table ''Thermal Properties of
         Pure Metals'' for 99.97% pure Indium at 300K'
+      min: 0.06
+      max: 174
     thermalExpansion:
       value: 32.1
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table ''Thermal Expansion of
         Pure Metals'' specifically lists Indium as 32.1 × 10^-6/K at 20°C'
+      min: 0.5
+      max: 33
     compressiveStrength:
       value: 4.2
       unit: MPa
@@ -88,6 +102,8 @@ materialProperties:
         is consistent with Indium's extreme softness and low hardness (0.9 MPa), as
         it is one of the softest metals. The value represents a standard test at room
         temperature.
+      min: 50
+      max: 2000
     corrosionResistance:
       value: 8.0
       unit: rating
@@ -95,20 +111,28 @@ materialProperties:
         conditions and by many alkalis. It does not oxidize easily in air and is stable
         in water, contributing to its use in protective coatings and solders. Its
         primary vulnerability is to certain strong acids and halogens.
+      min: 1
+      max: 10
     density:
       value: 7.31
       unit: g/cm³
       research_basis: 'NIST Standard Reference Database 144, CRC Handbook of Chemistry
         and Physics 104th Edition, and ASM Handbook Volume 2: Properties and Selection
         of Nonferrous Alloys'
+      min: 0.53
+      max: 22.6
     electricalConductivity:
       value: 11600000.0
       unit: S/m
       research_basis: materials_science_literature
+      min: 0.67
+      max: 63.0
     electricalResistivity:
       value: 8.37e-08
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 1.0e-08
+      max: 1.5e-06
     flexuralStrength:
       value: 2.5
       unit: MPa
@@ -119,12 +143,16 @@ materialProperties:
         strength (2.5 - 3 MPa) and yield strength (1 - 11 MPa), as reported by MatWeb.
         For such a soft material, flexural strength in a 3-point bend test would be
         expected to be very low and comparable to its tensile strength.
+      min: 2.5
+      max: 1050.0
     hardness:
       value: 0.9
       unit: MPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Table ''Physical and Mechanical Properties
         of Pure Metals'''
+      min: 0.5
+      max: 3500
     oxidationResistance:
       value: 150.0
       unit: °C
@@ -134,22 +162,30 @@ materialProperties:
         and usability begins at temperatures approaching its melting point, around
         150 °C in air. This temperature is widely cited in materials science references
         as the practical upper limit for continuous service.
+      min: 200
+      max: 1200
     porosity:
       value: 0.0001
       unit: '%'
       research_basis: ai_research_comprehensive
+      min: 0.0
+      max: 15.0
     tensileStrength:
       value: 4.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, ''Indium and Indium Alloys'', Table
         1: Physical and mechanical properties of high-purity indium'
+      min: 3.0
+      max: 3000.0
     youngsModulus:
       value: 11.0
       unit: GPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
         Properties of Pure Metals, p. 1098'
+      min: 5
+      max: 600
     fractureToughness:
       value: 0.01
       unit: MPa·√m
@@ -162,6 +198,8 @@ materialProperties:
         metals, indicating it has virtually no resistance to crack propagation in
         the LEFM sense. Direct, standardized K_IC measurements for indium are not
         commonly reported in the literature due to its dominant ductility.
+      min: 20
+      max: 200
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -170,46 +208,66 @@ materialProperties:
       value: 0.12
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 2.0
+      max: 8.0
     absorptivity:
       value: 0.35
       unit: dimensionless
       research_basis: materials_science_literature
+      min: 2.0
+      max: 65.0
     laserAbsorption:
       value: 58.7
       unit: '%'
       research_basis: 'NIST Atomic Spectra Database - Reflectance Data for Indium
         at 1064 nm wavelength, supplemented by ASM Handbook Volume 2: Properties and
         Selection: Nonferrous Alloys and Special-Purpose Materials'
+      min: 0.02
+      max: 100
     laserDamageThreshold:
       value: 0.15
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 0.1
+      max: 20.0
     laserReflectivity:
       value: 51.5
       unit: '%'
       research_basis: 'Palik, E.D. (1998). Handbook of Optical Constants of Solids
         II. Academic Press. Page 523, Table 1: Optical constants of indium at 632.8
         nm (He-Ne laser wavelength).'
+      min: 5
+      max: 99.9
     reflectivity:
       value: 0.935
       unit: dimensionless (reflectance ratio)
       research_basis: materials_science_literature
+      min: 85
+      max: 98
     thermalShockResistance:
       value: 0.0025
       unit: MPa·m²/W
       research_basis: materials_science_literature
+      min: 50
+      max: 400
     absorptionCoefficient:
       value: 12400000.0
       unit: m⁻¹
       research_basis: materials_science_literature
+      min: 100000
+      max: 50000000
     surfaceRoughness:
       value: 0.025
       unit: µm
       research_basis: materials_science_literature
+      min: 0.4
+      max: 150
     vaporPressure:
       value: 0.00133
       unit: Pa
       research_basis: materials_science_literature
+      min: 1.0e-10
+      max: 0.001
 machineSettings:
   fluenceThreshold:
     value: 2.8

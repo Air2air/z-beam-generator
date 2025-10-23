@@ -47,11 +47,15 @@ materialProperties:
       research_basis: 'NIST Wood Database - Specific Heat of Hardwoods (Willow: Salix
         spp.) at 20°C, 12% moisture content. ASM Handbook, Volume 4: Heat Capacity
         of Wood Species.'
+      min: 800
+      max: 2500
     thermalConductivity:
       value: 0.12
       unit: W/(m·K)
       research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest
         Service, FPL-GTR-190) and specific studies on Salix species thermal properties'
+      min: 0.04
+      max: 0.4
     thermalDestruction:
       value: 300.0
       unit: °C
@@ -63,12 +67,16 @@ materialProperties:
         (1999). Thermal conductivity and diffusivity of wood. Wood Science and Technology,
         33(6), 465-473. Specific data for Salix (Willow genus) at 12% moisture content,
         room temperature.
+      min: 0.0001
+      max: 0.4
     thermalExpansion:
       value: 15.0
       unit: 10^-6/K
       research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest
         Service, Forest Products Laboratory. General Technical Report FPL-GTR-190.
         2010. Table 4-3: Coefficients of thermal expansion for various wood species.'
+      min: 3.0
+      max: 60
     compressiveStrength:
       value: 4.0
       unit: MPa
@@ -77,6 +85,8 @@ materialProperties:
         as 4.0 MPa. This value is consistent with willow being a low-density wood,
         and the provided density of 0.45 g/cm³ falls within the typical range for
         willow, supporting the plausibility of this strength figure.
+      min: 20
+      max: 80
     corrosionResistance:
       value: 2.0
       unit: rating
@@ -85,12 +95,16 @@ materialProperties:
         contact), placing it in the lowest durability category. Its low density (0.45
         g/cm³) and porous structure make it highly susceptible to moisture, fungal
         decay, and environmental degradation without preservative treatment.
+      min: 2.0
+      max: 8.0
     density:
       value: 0.45
       unit: g/cm³
       research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook:
         Wood as an Engineering Material. General Technical Report FPL-GTR-190. Table
         4-3a: Average specific gravity of some commercially important woods.'
+      min: 0.12
+      max: 1.5
     flexuralStrength:
       value: 60.0
       unit: MPa
@@ -100,6 +114,8 @@ materialProperties:
         of rupture of 60 MPa for Willow, which aligns with the expected range for
         a low-density hardwood and is derived from standardized 3-point or 4-point
         bend tests (ASTM D143).
+      min: 40
+      max: 150
     hardness:
       value: 1700.0
       unit: MPa
@@ -107,6 +123,8 @@ materialProperties:
         Wood as an Engineering Material. Chapter 4: Mechanical Properties of Wood,
         Table 4-3. Specific values for Salix spp. (Willow) Janka hardness of 380 lbf
         converted to MPa using standard conversion factor.'
+      min: 1
+      max: 5000
     oxidationResistance:
       value: 200.0
       unit: °C
@@ -118,16 +136,22 @@ materialProperties:
         of variation is moisture content and heating duration, not wood species, as
         the main chemical components (cellulose, hemicellulose, lignin) degrade in
         a similar temperature range across all species.
+      min: 82.0
+      max: 204.0
     porosity:
       value: 0.72
       unit: dimensionless
       research_basis: ai_research_comprehensive
+      min: 12
+      max: 65
     tensileStrength:
       value: 85.0
       unit: MPa
       research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook:
         Wood as an Engineering Material. Chapter 4: Mechanical Properties of Wood,
         Table 4-3a (Willow, Salix spp.). 2010 Edition.'
+      min: 20
+      max: 200
     youngsModulus:
       value: 9.0
       unit: GPa
@@ -135,6 +159,8 @@ materialProperties:
         Engineering Material. General Technical Report FPL-GTR-190. Table 5-3a: Mechanical
         properties of some commercially important woods grown in the United States
         (Willow, black).'
+      min: 5
+      max: 20000
     fractureToughness:
       value: 0.35
       unit: MPa·√m
@@ -143,6 +169,8 @@ materialProperties:
         Willow, being a low-density hardwood, falls at the lower end of this spectrum.
         The value of 0.35 MPa·√m is consistent with its low density (0.45 g/cm³) and
         typical properties for non-brittle woods.
+      min: 0.33
+      max: 4.4
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -153,12 +181,16 @@ materialProperties:
       research_basis: 'NIST Standard Reference Database 69: Laser Material Interaction
         Database for Wood Species, specifically Salix alba (White Willow) at 1064
         nm wavelength'
+      min: 1
+      max: 50
     laserReflectivity:
       value: 32.7
       unit: '%'
       research_basis: 'NIST Standard Reference Database 120: Optical Properties of
         Materials for Laser Applications, Section 8.3 - Wood Species Database (2022),
         specifically Salix alba (White Willow) measurements at 1064 nm Nd:YAG wavelength'
+      min: 10
+      max: 60
 machineSettings:
   dwellTime:
     value: 100

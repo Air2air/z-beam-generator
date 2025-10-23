@@ -48,10 +48,14 @@ materialProperties:
       research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
         of E-Glass Fiber Reinforced Polymer Composites, measured at 25°C using differential
         scanning calorimetry'
+      min: 500
+      max: 2500.0
     thermalConductivity:
       value: 0.036
       unit: W/(m·K)
       research_basis: materials_science_literature
+      min: 0.03
+      max: 400
     thermalDestruction:
       value: 300.0
       unit: °C
@@ -62,12 +66,16 @@ materialProperties:
       research_basis: 'NIST Materials Data Repository - Composite Materials Database,
         specifically fiberglass (E-glass/epoxy) thermal properties at 25°C, with validation
         from ASM Handbook Vol. 21: Composites'
+      min: 0.08
+      max: 180
     thermalExpansion:
       value: 8.0
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Volume 21: Composites, Table ''Properties of
         Common Fiberglass Composites'' specifying E-glass/epoxy composites at 20-100°C
         range'
+      min: -1
+      max: 250
     compressiveStrength:
       value: 1034.0
       unit: MPa
@@ -79,6 +87,8 @@ materialProperties:
         is a typical mid-range value for a unidirectional E-glass/epoxy composite,
         which is significantly lower than its tensile strength due to different failure
         mechanisms (fiber buckling/kinking under compression).
+      min: 50
+      max: 1000
     corrosionResistance:
       value: 8.0
       unit: rating
@@ -87,15 +97,21 @@ materialProperties:
         water, and many chemicals due to the protective polymer matrix and inert glass
         fibers. It does not rust or corrode like metals, though it can experience
         some degradation from UV exposure and strong alkalis over very long periods.
+      min: 5
+      max: 9
     density:
       value: 2.55
       unit: g/cm³
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Fiberglass Reinforced
         Polymer Properties, Table: Typical Physical Properties of E-Glass Fiber Composites'
+      min: 0.5
+      max: 8
     electricalResistivity:
       value: 100000000000000.0
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 0.001
+      max: 100000000000000.0
     flexuralStrength:
       value: 689.0
       unit: MPa
@@ -107,10 +123,14 @@ materialProperties:
         or high-fiber-volume E-glass/epoxy composite, which aligns with the expected
         relationship where flexural strength is significantly lower than the ultimate
         fiber tensile strength but higher than the matrix-dominated compressive strength.
+      min: 100
+      max: 2000
     hardness:
       value: 150.0
       unit: HV
       research_basis: materials_science_literature
+      min: 5.0
+      max: 120
     oxidationResistance:
       value: 340.0
       unit: °C
@@ -121,19 +141,27 @@ materialProperties:
         composites in air to be in the range of 140-350°C, with 340°C being a common
         upper limit for high-temperature epoxy systems before the resin begins to
         thermally degrade and oxidize.
+      min: 80.0
+      max: 1650.0
     tensileStrength:
       value: 3447.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 21: Composites, Table 2: Typical Mechanical
         Properties of E-Glass Fiber/Epoxy Composites (unidirectional, 60% fiber volume
         fraction)'
+      min: 20
+      max: 6000
     youngsModulus:
       value: 17.0
       unit: GPa
       research_basis: 'ASM Handbook, Volume 21: Composites, Specific data for E-glass
         fiber reinforced polymer composites with typical 30-40% fiber volume fraction'
+      min: 0.001
+      max: 3000
     fractureToughness:
       value: 15.0
+      min: 20
+      max: 100
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -144,12 +172,16 @@ materialProperties:
       research_basis: 'ASM Handbook, Volume 5: Surface Engineering, Section: Laser
         Cleaning of Composite Materials; NIST Special Publication 1176: Laser-Material
         Interactions for Manufacturing'
+      min: 0.05
+      max: 200
     laserReflectivity:
       value: 38.5
       unit: '%'
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Laser Processing
         of Composite Materials, pp. 543-550, with specific reference to E-glass fiber/epoxy
         matrix systems under 1064 nm wavelength'
+      min: 2
+      max: 80
 machineSettings:
   dwellTime:
     value: 100

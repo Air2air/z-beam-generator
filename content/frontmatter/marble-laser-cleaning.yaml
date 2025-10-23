@@ -47,11 +47,15 @@ materialProperties:
       research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
         CRC Handbook of Chemistry and Physics (104th Edition), and ASM Handbook Volume
         2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
+      min: 400
+      max: 1200
     thermalConductivity:
       value: 2.8
       unit: W/(m·K)
       research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
         of Minerals and Rocks, specifically for Carrara marble at 300K (27°C)'
+      min: 0.2
+      max: 8
     thermalDestruction:
       value: 800.0
       unit: °C
@@ -62,18 +66,24 @@ materialProperties:
       research_basis: Carrara marble thermal properties study by Yavuz (2001) in Building
         and Environment, Vol. 36, pp. 1117-1125, showing thermal diffusivity range
         of 1.25-1.29 mm²/s for pure white Carrara marble at 20°C
+      min: 0.2
+      max: 2.5
     thermalExpansion:
       value: 12.0
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Section: Marble and Limestone,
         Table: Thermal Expansion of Building Stones'
+      min: 3
+      max: 30
     compressiveStrength:
       value: 115.0
       unit: MPa
       research_basis: ASTM C170/C170M-23 Standard Test Method for Compressive Strength
         of Dimension Stone, with specific reference to marble classification and typical
         values
+      min: 20
+      max: 500
     corrosionResistance:
       value: 8.0
       unit: rating
@@ -83,6 +93,8 @@ materialProperties:
         from acid rain or pollutants, which prevents a perfect rating. ASTM standards
         recognize marble's high durability in normal environmental conditions while
         noting its chemical sensitivity.
+      min: 2.0
+      max: 9.0
     density:
       value: 2.71
       unit: g/cm³
@@ -90,6 +102,8 @@ materialProperties:
         Alloys and Special-Purpose Materials (ASM International, 1990), Table 1 -
         Physical Properties of Common Stones; NIST Standard Reference Database 84
         - Properties of Solids'
+      min: 1.5
+      max: 6.0
     flexuralStrength:
       value: 15.0
       unit: MPa
@@ -97,12 +111,16 @@ materialProperties:
         value of 15 MPa is a well-established average for commercial marble (like
         Carrara) based on standardized 4-point bend tests (ASTM C880), representing
         a typical value for this relatively brittle, high-compressive-strength stone.
+      min: 5
+      max: 50
     hardness:
       value: 3.0
       unit: Mohs
       research_basis: 'ASM Handbook, Volume 18: Friction, Lubrication, and Wear Technology
         (1992), Table 1: Hardness of Common Minerals; NIST Special Publication 960-15:
         Stone Conservation - An Overview of Current Research (2011)'
+      min: 1
+      max: 7
     oxidationResistance:
       value: 400.0
       unit: °C
@@ -111,10 +129,14 @@ materialProperties:
         into calcium oxide (quicklime) and carbon dioxide. This is not oxidation in
         the metallic sense but is the temperature at which significant degradation
         in an oxidative (air) atmosphere begins, defining its maximum service temperature.
+      min: 400.0
+      max: 870.0
     porosity:
       value: 0.7
       unit: '%'
       research_basis: ai_research_comprehensive
+      min: 0.5
+      max: 25
     tensileStrength:
       value: 8.5
       unit: MPa
@@ -122,11 +144,15 @@ materialProperties:
         of Dimension Stone, with tensile strength calculated using established rock
         mechanics relationships (tensile strength ≈ 8-12% of compressive strength
         for marble)
+      min: 2
+      max: 25
     youngsModulus:
       value: 55.0
       unit: GPa
       research_basis: ASTM C503/C503M-21 'Standard Specification for Marble Dimension
         Stone' and NIST Special Publication 260-162 'Physical Properties of Marble'
+      min: 10
+      max: 100
     fractureToughness:
       value: 1.08
       unit: MPa·√m
@@ -135,6 +161,8 @@ materialProperties:
         range for marble between 0.7 and 1.5 MPa·√m. The value of 1.08 MPa·√m is a
         representative median value from these experimental data sets, which is consistent
         with its known low hardness and moderate compressive strength.
+      min: 0.5
+      max: 5
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -145,11 +173,15 @@ materialProperties:
       research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
         in Stone Conservation'' (2013), Table 4.2 - Absorption coefficients for common
         stone materials at 1064 nm wavelength'
+      min: 0.1
+      max: 100
     laserReflectivity:
       value: 38.2
       unit: '%'
       research_basis: 'NIST Special Publication 1176: ''Optical Properties of Construction
         Materials'' (2019) - Table 4.3 for Carrara marble at 1064 nm wavelength'
+      min: 5
+      max: 80
 machineSettings:
   energyDensity:
     value: 2.5

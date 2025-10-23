@@ -64,21 +64,29 @@ materialProperties:
       value: 3090.0
       unit: K
       research_basis: materials_science_literature
+      min: 907
+      max: 5870
     meltingPoint:
       value: 1400.0
       unit: °C
       research_basis: materials_science_literature
+      min: -39
+      max: 3422
     specificHeat:
       value: 500.0
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
         SRD 69 - Specific heat capacity of AISI 304 stainless steel at 300K'
+      min: 100
+      max: 2000
     thermalConductivity:
       value: 15.0
       unit: W/(m·K)
       research_basis: 'ASM Handbook Volume 1: Properties and Selection: Irons, Steels,
         and High-Performance Alloys (1990), Table 1 for AISI 304 stainless steel at
         20°C'
+      min: 7.0
+      max: 430
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -87,18 +95,24 @@ materialProperties:
       value: 1673.0
       unit: K
       research_basis: materials_science_literature
+      min: 873
+      max: 3695
     thermalDiffusivity:
       value: 4.2
       unit: mm²/s
       research_basis: 'ASM Handbook, Volume 1: Properties and Selection: Irons, Steels,
         and High-Performance Alloys, specific data for AISI 304 stainless steel at
         20°C'
+      min: 0.06
+      max: 174
     thermalExpansion:
       value: 17.3
       unit: μm/m·°C
       research_basis: 'ASM Handbook, Volume 1: Properties and Selection: Irons, Steels,
         and High-Performance Alloys - Table ''Thermal Expansion of Austenitic Stainless
         Steels'' for Type 304 stainless steel at 20-100°C'
+      min: 0.5
+      max: 33
     compressiveStrength:
       value: 210.0
       unit: MPa
@@ -110,6 +124,8 @@ materialProperties:
         across materials databases for this specific, widely-used condition. The provided
         material properties in the query are generic and do not specify an alloy,
         making this the most authoritative and probable value.
+      min: 50
+      max: 2000
     corrosionResistance:
       value: 8.0
       unit: rating
@@ -119,20 +135,28 @@ materialProperties:
         (304, 316, etc.), stainless steel consistently ranks high in corrosion resistance
         compared to other metals, though not perfect in all environments (e.g., chloride
         exposure).
+      min: 1
+      max: 10
     density:
       value: 7.93
       unit: g/cm³
       research_basis: 'ASM Handbook, Volume 1: Properties and Selection: Irons, Steels,
         and High-Performance Alloys - Specific reference to AISI 304 stainless steel
         density at 20°C'
+      min: 0.53
+      max: 22.6
     electricalConductivity:
       value: 1450000.0
       unit: S/m
       research_basis: materials_science_literature
+      min: 0.67
+      max: 63.0
     electricalResistivity:
       value: 7.2e-07
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 1.0e-08
+      max: 1.5e-06
     flexuralStrength:
       value: 290.0
       unit: MPa
@@ -144,12 +168,16 @@ materialProperties:
         of 215-290 MPa. The provided value of 290 MPa is a representative upper value
         for the yield strength of annealed 304 stainless steel, which is a standard
         reference point for bending strength in the absence of a specific alloy designation.
+      min: 2.5
+      max: 1050.0
     hardness:
       value: 1750.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 1: Properties and Selection: Irons, Steels,
         and High-Performance Alloys - Austenitic Stainless Steel 304 typical hardness
         range 1500-2000 MPa (Brinell HB 150-200)'
+      min: 0.5
+      max: 3500
     oxidationResistance:
       value: 925.0
       unit: °C
@@ -160,22 +188,30 @@ materialProperties:
         while continuous service is often limited to 815-870°C. The chromium content
         (typically 17-20% in austenitic steels) forms a protective oxide scale, but
         breakdown occurs rapidly above this range, leading to significant oxidation.
+      min: 200
+      max: 1200
     porosity:
       value: 0.0001
       unit: '%'
       research_basis: ai_research_comprehensive
+      min: 0.0
+      max: 15.0
     tensileStrength:
       value: 515.0
       unit: MPa
       research_basis: 'ASM Handbook Volume 1: Properties and Selection: Irons, Steels,
         and High-Performance Alloys - AISI 304 stainless steel tensile strength range
         515-620 MPa (typical annealed condition)'
+      min: 3.0
+      max: 3000.0
     youngsModulus:
       value: 200.0
       unit: GPa
       research_basis: 'ASM Handbook, Volume 1: Properties and Selection: Irons, Steels,
         and High-Performance Alloys, Section: Stainless Steels, Table: Typical Room-Temperature
         Mechanical Properties of Austenitic Stainless Steels'
+      min: 5
+      max: 600
     fractureToughness:
       value: 137.5
       unit: MPa·√m
@@ -184,6 +220,8 @@ materialProperties:
         75-200 MPa·√m, while martensitic grades are lower (25-75 MPa·√m). The provided
         material properties don't specify the stainless steel type, requiring a broad
         range covering common structural stainless steels.
+      min: 20
+      max: 200
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -192,46 +230,66 @@ materialProperties:
       value: 0.45
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 2.0
+      max: 8.0
     absorptivity:
       value: 0.35
       unit: dimensionless
       research_basis: materials_science_literature
+      min: 2.0
+      max: 65.0
     laserAbsorption:
       value: 35.2
       unit: '%'
       research_basis: 'NIST Standard Reference Database 73: Thermophysical Properties
         of Stainless Steel 304L at 1064 nm wavelength, combined with ASM Handbook
         Volume 4: Heat Treating - Laser Processing Data'
+      min: 0.02
+      max: 100
     laserDamageThreshold:
       value: 1.8
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 0.1
+      max: 20.0
     laserReflectivity:
       value: 65.2
       unit: '%'
       research_basis: 'NIST Standard Reference Database 120: ''Optical Properties
         of Metallic Materials for Laser Applications'' (2021), specifically Table
         4.3 for AISI 304 stainless steel at 1064 nm wavelength'
+      min: 5
+      max: 99.9
     reflectivity:
       value: 0.65
       unit: dimensionless
       research_basis: materials_science_literature
+      min: 85
+      max: 98
     thermalShockResistance:
       value: 0.75
       unit: MPa·m^0.5
       research_basis: materials_science_literature
+      min: 50
+      max: 400
     absorptionCoefficient:
       value: 0.35
       unit: dimensionless
       research_basis: materials_science_literature
+      min: 100000
+      max: 50000000
     surfaceRoughness:
       value: 0.8
       unit: µm
       research_basis: materials_science_literature
+      min: 0.4
+      max: 150
     vaporPressure:
       value: 0.00133
       unit: Pa
       research_basis: materials_science_literature
+      min: 1.0e-10
+      max: 0.001
 machineSettings:
   dwellTime:
     value: 100

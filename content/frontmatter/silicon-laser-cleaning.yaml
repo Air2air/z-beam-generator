@@ -46,12 +46,16 @@ materialProperties:
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 144: Thermophysical Properties
         of Pure Silicon at 300 K (25°C)'
+      min: 300
+      max: 900
     thermalConductivity:
       value: 149.0
       unit: W/(m·K)
       research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
         of Fluid Systems - Silicon thermal conductivity at 300K; ASM Handbook Volume
         2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
+      min: 0.2
+      max: 156
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -62,11 +66,15 @@ materialProperties:
       research_basis: 'NIST Standard Reference Database 78: Thermal Conductivity of
         Silicon at 300K = 148 W/(m·K), combined with specific heat capacity of 700
         J/(kg·K) and density of 2329 kg/m³'
+      min: 0.1
+      max: 90
     thermalExpansion:
       value: 2.616
       unit: 10^-6/K
       research_basis: 'NIST Standard Reference Database 60: Thermal Expansion of Solids,
         Volume 19 - Silicon single crystal at 300K (27°C)'
+      min: 2.6
+      max: 10
     compressiveStrength:
       value: 1100.0
       unit: MPa
@@ -79,6 +87,8 @@ materialProperties:
         MPa (1.1 GPa) is a well-established and frequently referenced engineering
         value for the compressive strength of monocrystalline silicon under standard
         conditions.
+      min: 370.0
+      max: 6000.0
     corrosionResistance:
       value: 8.0
       unit: rating
@@ -87,16 +97,22 @@ materialProperties:
         excellent resistance to most aqueous environments, acids (except HF and hot
         alkalis), and atmospheric corrosion. Its primary vulnerability is to strong
         alkalis and hydrofluoric acid-based etchants.
+      min: 8.0
+      max: 9.0
     density:
       value: 2.329
       unit: g/cm³
       research_basis: 'NIST Standard Reference Database 124: ''Silicon (Si) - Basic
         Parameters at 300 K'' and ASM Handbook, Volume 2: ''Properties and Selection:
         Nonferrous Alloys and Special-Purpose Materials'''
+      min: 2.3
+      max: 7.13
     electricalResistivity:
       value: 2300.0
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 0.001
+      max: 1000.0
     flexuralStrength:
       value: 185.0
       unit: MPa
@@ -105,12 +121,16 @@ materialProperties:
         a representative average for a <100> orientation from standardized 4-point
         bend tests on polished wafers, as compiled in authoritative materials handbooks
         for semiconductor properties.
+      min: 120.0
+      max: 410.0
     hardness:
       value: 11.5
       unit: GPa
       research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation (2000),
         Table ''Hardness of Selected Electronic Materials'' citing single-crystal
         silicon (100) orientation at 25°C using nanoindentation'
+      min: 2
+      max: 2600
     oxidationResistance:
       value: 900.0
       unit: °C
@@ -120,17 +140,23 @@ materialProperties:
         The 900°C value is widely cited in materials handbooks as the temperature
         where oxidation becomes a critical limiting factor for continuous service
         in air, marking the upper limit for long-term structural stability.
+      min: 600.0
+      max: 1600.0
     tensileStrength:
       value: 7000.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation,
         ''Mechanical Properties of Silicon'' (2000), Table 1: Mechanical properties
         of single-crystal silicon at room temperature'
+      min: 50
+      max: 7000
     youngsModulus:
       value: 162.4
       unit: GPa
       research_basis: NIST Materials Data Repository - Silicon single crystal [100]
         orientation at room temperature (25°C)
+      min: 5
+      max: 450
     fractureToughness:
       value: 0.75
       unit: MPa·√m
@@ -138,6 +164,8 @@ materialProperties:
         mechanics. For single-crystal silicon in the (111) cleavage plane, the fracture
         toughness is well-established in the range of 0.7-0.8 MPa·√m, with 0.75 MPa·√m
         being a commonly cited representative value.
+      min: 0.75
+      max: 3.0
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -148,12 +176,16 @@ materialProperties:
       research_basis: NIST Materials Data Repository - Silicon Optical Properties
         Database (2021), combined with Palik's Handbook of Optical Constants of Solids
         (3rd ed., Academic Press, 1998) for 1064 nm wavelength
+      min: 0.01
+      max: 100
     laserReflectivity:
       value: 32.7
       unit: '%'
       research_basis: 'Palik, E.D. (1998). Handbook of Optical Constants of Solids.
         Academic Press, Table: ''Crystalline silicon refractive index and extinction
         coefficient at 1064 nm'' with calculated reflectivity using Fresnel equations.'
+      min: 10
+      max: 70
 machineSettings:
   fluenceThreshold:
     value: 2.5

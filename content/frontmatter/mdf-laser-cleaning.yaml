@@ -47,12 +47,16 @@ materialProperties:
       research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
         SRD 69; ASM Handbook Volume 4: Heat Treating; Specific heat measurements for
         wood composites at 25°C'
+      min: 800
+      max: 2500
     thermalConductivity:
       value: 0.14
       unit: W/(m·K)
       research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
         of Wood and Wood-Based Materials, specifically MDF at 12% moisture content
         and 24°C'
+      min: 0.04
+      max: 0.4
     thermalDestruction:
       value: 300.0
       unit: °C
@@ -63,6 +67,8 @@ materialProperties:
       research_basis: 'International Journal of Thermal Sciences, Vol. 49, Issue 10,
         pp. 1931-1941 (2010) - ''Thermal properties of wood-based panels: Experimental
         analysis and predictive modeling'''
+      min: 0.0001
+      max: 0.4
     thermalExpansion:
       value: 35.0
       unit: 10⁻⁶/K
@@ -70,6 +76,8 @@ materialProperties:
         an Engineering Material. USDA Forest Service, Chapter 4: Mechanical Properties
         of Wood, Table 4-3. Specific reference to reconstituted wood products including
         MDF.'
+      min: 3.0
+      max: 60
     compressiveStrength:
       value: 15.2
       unit: MPa
@@ -79,6 +87,8 @@ materialProperties:
         for standard MDF to be in the range of 14-17 MPa. The provided value of 15.2
         MPa is a median value from this established range for general-purpose MDF
         under standard test conditions (ambient temperature, ~65% relative humidity).
+      min: 20
+      max: 80
     corrosionResistance:
       value: 2.0
       unit: rating
@@ -88,12 +98,16 @@ materialProperties:
         and has increased susceptibility to fungal growth and material degradation
         in damp conditions. While it resists some chemical corrosion better than metals,
         its overall environmental corrosion resistance is very low.
+      min: 2.0
+      max: 8.0
     density:
       value: 0.75
       unit: g/cm³
       research_basis: 'ASTM D2395-17 Standard Test Methods for Density and Specific
         Gravity of Wood and Wood-Based Materials, and ASM Handbook Volume 4: Heat
         Treating (specifically wood composite materials section)'
+      min: 0.12
+      max: 1.5
     flexuralStrength:
       value: 35.0
       unit: MPa
@@ -103,6 +117,8 @@ materialProperties:
         for commercial MDF panels. This aligns with general industry standards where
         MDF flexural strength falls between particleboard (15-20 MPa) and hardwood
         plywood (50-60 MPa).
+      min: 40
+      max: 150
     hardness:
       value: 65.2
       unit: MPa
@@ -110,6 +126,8 @@ materialProperties:
         of Wood-Base Fiber and Particle Panel Materials, supplemented by research
         from Forest Products Laboratory (USDA) on medium-density fiberboard mechanical
         properties
+      min: 1
+      max: 5000
     oxidationResistance:
       value: 82.0
       unit: °C
@@ -118,21 +136,29 @@ materialProperties:
         represents the temperature where mechanical properties start deteriorating
         rapidly under continuous exposure, based on thermal aging studies of wood
         composites with similar resin content to standard MDF formulations.
+      min: 82.0
+      max: 204.0
     porosity:
       value: 0.65
       unit: m³/m³
       research_basis: ai_research_comprehensive
+      min: 12
+      max: 65
     tensileStrength:
       value: 40.0
       unit: MPa
       research_basis: 'ASTM D1037-12 Standard Test Methods for Evaluating Properties
         of Wood-Base Fiber and Particle Panel Materials; ASM Handbook, Volume 10:
         Materials Characterization, Section: Mechanical Properties of Wood Composites'
+      min: 20
+      max: 200
     youngsModulus:
       value: 4.0
       unit: GPa
       research_basis: ASTM D1037 & Cai et al. (2006) 'Young's modulus of MDF panels'
         in Wood Science and Technology, 40(5):383-398
+      min: 5
+      max: 20000
     fractureToughness:
       value: 0.38
       unit: MPa·√m
@@ -140,6 +166,8 @@ materialProperties:
         (K_IC) of MDF using a tensile test method, reporting values in the range of
         0.35-0.41 MPa·√m, with 0.38 MPa·√m as a representative value for standard
         MDF at room temperature.
+      min: 0.33
+      max: 4.4
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -150,12 +178,16 @@ materialProperties:
       research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
         for Wood Products'' (2021) - Table 4.2 reports MDF absorption at 1064 nm wavelength
         as 32.7±2.1% for standard density (700-800 kg/m³) material'
+      min: 1
+      max: 50
     laserReflectivity:
       value: 28.5
       unit: '%'
       research_basis: 'NIST Materials Data Repository - Laser-Material Interaction
         Database for Wood Composites (2021), supplemented by ASM Handbook Volume 5:
         Surface Engineering, Section on Laser Processing of Wood Materials'
+      min: 10
+      max: 60
 machineSettings:
   dwellTime:
     value: 100

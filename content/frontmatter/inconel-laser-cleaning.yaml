@@ -43,22 +43,30 @@ materialProperties:
       value: 3180.0
       unit: K
       research_basis: materials_science_literature
+      min: 907
+      max: 5870
     meltingPoint:
       value: 1399.0
       unit: °C
       research_basis: materials_science_literature
+      min: -39
+      max: 3422
     specificHeat:
       value: 444.0
       unit: J/(kg·K)
       research_basis: 'ASM Handbook, Volume 1: Properties and Selection: Irons, Steels,
         and High-Performance Alloys (1990), Table ''Thermal Properties of Nickel and
         Nickel Alloys'' for Inconel 600 at 20°C'
+      min: 100
+      max: 2000
     thermalConductivity:
       value: 11.2
       unit: W/(m·K)
       research_basis: 'ASM Handbook, Volume 1: Properties and Selection: Irons, Steels,
         and High-Performance Alloys (1990), Specific data for Inconel 718 at room
         temperature (25°C)'
+      min: 7.0
+      max: 430
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -67,18 +75,24 @@ materialProperties:
       value: 1623.0
       unit: K
       research_basis: materials_science_literature
+      min: 873
+      max: 3695
     thermalDiffusivity:
       value: 3.5
       unit: mm²/s
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Specific data for Inconel 718 at room
         temperature (25°C)'
+      min: 0.06
+      max: 174
     thermalExpansion:
       value: 13.3
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Specific data for Inconel 600 (UNS N06600)
         at 20-100°C'
+      min: 0.5
+      max: 33
     compressiveStrength:
       value: 1034.0
       unit: MPa
@@ -87,6 +101,8 @@ materialProperties:
         yield strength for Inconel 718 at room temperature is authoritatively reported
         as 1034 MPa (150 ksi). This value is a standard reference in material data
         sheets for the alloy in the annealed condition.
+      min: 50
+      max: 2000
     corrosionResistance:
       value: 9.0
       unit: rating
@@ -98,30 +114,42 @@ materialProperties:
         oxidation resistance, placing it in the superior category for corrosion-resistant
         metals, though not quite at the perfect 10 level of some more specialized
         corrosion alloys.
+      min: 1
+      max: 10
     density:
       value: 8.19
       unit: g/cm³
       research_basis: 'ASM Handbook, Volume 1: Properties and Selection: Irons, Steels,
         and High-Performance Alloys (1990), and Special Metals Corporation datasheet
         for Inconel 600'
+      min: 0.53
+      max: 22.6
     electricalConductivity:
       value: 0.93
       unit: MS/m
       research_basis: materials_science_literature
+      min: 0.67
+      max: 63.0
     electricalResistivity:
       value: 1.29e-06
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 1.0e-08
+      max: 1.5e-06
     flexuralStrength:
       value: 1240.0
       unit: MPa
       research_basis: materials_science_literature
+      min: 2.5
+      max: 1050.0
     hardness:
       value: 1750.25
       unit: MPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Inconel 718 typical room temperature
         hardness range 35-45 HRC (equivalent to 1520-1980 MPa Vickers hardness)'
+      min: 0.5
+      max: 3500
     oxidationResistance:
       value: 1093.0
       unit: °C
@@ -131,22 +159,30 @@ materialProperties:
         617, 625) maintain good oxidation resistance up to 1093-1150°C, with 1093°C
         being the conservative baseline for continuous service before significant
         oxidation scaling occurs.
+      min: 200
+      max: 1200
     porosity:
       value: 0.0002
       unit: '%'
       research_basis: ai_research_comprehensive
+      min: 0.0
+      max: 15.0
     tensileStrength:
       value: 827.0
       unit: MPa
       research_basis: 'ASM Handbook Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, specifically for Inconel 600 (UNS N06600)
         in annealed condition at room temperature'
+      min: 3.0
+      max: 3000.0
     youngsModulus:
       value: 214.0
       unit: GPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, specifically Table 1 ''Typical Room-Temperature
         Mechanical Properties of Wrought Nickel and Nickel Alloys'' for Inconel 718'
+      min: 5
+      max: 600
     fractureToughness:
       value: 70.0
       unit: MPa·√m
@@ -156,6 +192,8 @@ materialProperties:
         typically falls in the range of 60-90 MPa·√m, with 70 MPa·√m being a representative
         mid-range value cited in multiple engineering references. Other Inconel grades
         (e.g., 625, 600) have different but generally comparable toughness values.
+      min: 20
+      max: 200
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -164,20 +202,28 @@ materialProperties:
       value: 2.8
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 2.0
+      max: 8.0
     absorptivity:
       value: 0.37
       unit: dimensionless
       research_basis: materials_science_literature
+      min: 2.0
+      max: 65.0
     laserAbsorption:
       value: 38.7
       unit: '%'
       research_basis: 'ASM Handbook, Volume 4B: Steel Heat Treating Technologies,
         Chapter: Laser Surface Engineering, Table 4: Absorption coefficients of common
         engineering alloys for 1.06 μm wavelength laser radiation'
+      min: 0.02
+      max: 100
     laserDamageThreshold:
       value: 2.1
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 0.1
+      max: 20.0
     laserReflectivity:
       value: 62.3
       unit: '%'
@@ -185,26 +231,38 @@ materialProperties:
         Alloys and Special-Purpose Materials, Section: ''Optical Properties of Nickel
         Alloys'' and NIST Special Publication 960-19 ''Laser Material Processing Database''
         for Inconel 718'
+      min: 5
+      max: 99.9
     reflectivity:
       value: 0.62
       unit: dimensionless
       research_basis: materials_science_literature
+      min: 85
+      max: 98
     thermalShockResistance:
       value: 275.0
       unit: MPa
       research_basis: materials_science_literature
+      min: 50
+      max: 400
     absorptionCoefficient:
       value: 3800000.0
       unit: m⁻¹
       research_basis: materials_science_literature
+      min: 100000
+      max: 50000000
     surfaceRoughness:
       value: 0.8
       unit: μm
       research_basis: materials_science_literature
+      min: 0.4
+      max: 150
     vaporPressure:
       value: 1.33e-07
       unit: Pa
       research_basis: materials_science_literature
+      min: 1.0e-10
+      max: 0.001
 machineSettings:
   fluenceThreshold:
     value: 2.5

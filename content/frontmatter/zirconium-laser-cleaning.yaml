@@ -46,15 +46,21 @@ materialProperties:
       value: 4409.0
       unit: K
       research_basis: materials_science_literature
+      min: 907
+      max: 5870
     meltingPoint:
       value: 1855.0
       unit: °C
       research_basis: materials_science_literature
+      min: -39
+      max: 3422
     specificHeat:
       value: 278.0
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 144: Thermophysical Properties
         of Zirconium at 300K (25°C)'
+      min: 100
+      max: 2000
     thermalConductivity:
       value: 22.7
       unit: W/(m·K)
@@ -62,6 +68,8 @@ materialProperties:
         Alloys and Special-Purpose Materials (1990), Table ''Physical Properties of
         Zirconium and Hafnium'', p. 661, reporting thermal conductivity of 22.7 W/m·K
         for pure zirconium at 300K'
+      min: 7.0
+      max: 430
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -70,6 +78,8 @@ materialProperties:
       value: 2125.0
       unit: K
       research_basis: materials_science_literature
+      min: 873
+      max: 3695
     thermalDiffusivity:
       value: 12.2
       unit: mm²/s
@@ -77,12 +87,16 @@ materialProperties:
         Alloys and Special-Purpose Materials (1990), Table ''Thermal Properties of
         Zirconium and Hafnium'', specifically reporting thermal diffusivity of commercially
         pure zirconium (99.8%) at 20°C'
+      min: 0.06
+      max: 174
     thermalExpansion:
       value: 5.7
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table ''Physical Properties of
         Zirconium and Hafnium'' specifying α-Zr thermal expansion coefficient at 20-100°C'
+      min: 0.5
+      max: 33
     compressiveStrength:
       value: 828.0
       unit: MPa
@@ -91,6 +105,8 @@ materialProperties:
         room temperature. This value is derived from standard mechanical testing procedures
         for metals and is well-documented in materials handbooks for zirconium's condition
         as an annealed, wrought product.
+      min: 50
+      max: 2000
     corrosionResistance:
       value: 9.0
       unit: rating
@@ -101,6 +117,8 @@ materialProperties:
         corrosion in hydrofluoric acid and certain oxidizing chlorides, but its general
         environmental corrosion resistance is considered outstanding, justifying a
         near-top rating.
+      min: 1
+      max: 10
     density:
       value: 6.52
       unit: g/cm³
@@ -108,14 +126,20 @@ materialProperties:
         Alloys and Special-Purpose Materials (1990), Table ''Physical Properties of
         Zirconium and Hafnium'', and NIST Standard Reference Database 69: NIST Chemistry
         WebBook'
+      min: 0.53
+      max: 22.6
     electricalConductivity:
       value: 2360000.0
       unit: S/m
       research_basis: materials_science_literature
+      min: 0.67
+      max: 63.0
     electricalResistivity:
       value: 4.21e-07
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 1.0e-08
+      max: 1.5e-06
     flexuralStrength:
       value: 345.0
       unit: MPa
@@ -125,6 +149,8 @@ materialProperties:
         MPa. The cited value of 345 MPa is a representative mid-range value from standardized
         3-point and 4-point bend test data for pure zirconium in the annealed condition,
         which is the most common state for reporting baseline mechanical properties.
+      min: 2.5
+      max: 1050.0
     hardness:
       value: 125.0
       unit: HV
@@ -132,6 +158,8 @@ materialProperties:
         Alloys and Special-Purpose Materials. ''Zirconium and Hafnium'' (1990). For
         commercially pure zirconium (R60001, unalloyed, annealed condition), typical
         hardness is 200 HV.'
+      min: 0.5
+      max: 3500
     oxidationResistance:
       value: 540.0
       unit: °C
@@ -142,22 +170,30 @@ materialProperties:
         in the range of 500-600°C, with 540°C often cited as a conservative maximum
         for continuous service in air. Above this temperature, the oxide layer cracks
         and spalls, leading to rapid metal degradation.
+      min: 200
+      max: 1200
     porosity:
       value: 0.0005
       unit: fraction
       research_basis: ai_research_comprehensive
+      min: 0.0
+      max: 15.0
     tensileStrength:
       value: 379.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1: Typical room-temperature
         mechanical properties of commercially pure zirconium'
+      min: 3.0
+      max: 3000.0
     youngsModulus:
       value: 97.9
       unit: GPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table ''Elastic Constants of
         Zirconium and Hafnium'' for high-purity zirconium at room temperature'
+      min: 5
+      max: 600
     fractureToughness:
       value: 47.5
       unit: MPa·√m
@@ -167,6 +203,8 @@ materialProperties:
         for wrought material. The wide range reflects sensitivity to interstitial
         content (especially oxygen), grain orientation, and testing direction relative
         to rolling/texture.
+      min: 20
+      max: 200
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -175,45 +213,65 @@ materialProperties:
       value: 0.45
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 2.0
+      max: 8.0
     absorptivity:
       value: 0.42
       unit: dimensionless
       research_basis: materials_science_literature
+      min: 2.0
+      max: 65.0
     laserAbsorption:
       value: 38.0
       unit: '%'
       research_basis: 'Bauerle, D. (2011). Laser Processing and Chemistry (4th ed.).
         Springer-Verlag. pp. 128-129. Table 4.2: Absorption of metals at 10.6 μm wavelength.'
+      min: 0.02
+      max: 100
     laserDamageThreshold:
       value: 0.45
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 0.1
+      max: 20.0
     laserReflectivity:
       value: 52.3
       unit: '%'
       research_basis: NIST Database of Laser Reflectance Values for Metals at 1064
         nm wavelength, specifically for high-purity zirconium (99.95%) with native
         oxide layer
+      min: 5
+      max: 99.9
     reflectivity:
       value: 0.58
       unit: dimensionless (reflectance)
       research_basis: materials_science_literature
+      min: 85
+      max: 98
     thermalShockResistance:
       value: 3.2
       unit: MPa·m^0.5
       research_basis: materials_science_literature
+      min: 50
+      max: 400
     absorptionCoefficient:
       value: 3820000.0
       unit: m⁻¹
       research_basis: materials_science_literature
+      min: 100000
+      max: 50000000
     surfaceRoughness:
       value: 0.8
       unit: μm
       research_basis: materials_science_literature
+      min: 0.4
+      max: 150
     vaporPressure:
       value: 0.00133
       unit: Pa
       research_basis: materials_science_literature
+      min: 1.0e-10
+      max: 0.001
 machineSettings:
   dwellTime:
     value: 100

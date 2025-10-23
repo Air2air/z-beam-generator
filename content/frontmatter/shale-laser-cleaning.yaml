@@ -46,12 +46,16 @@ materialProperties:
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
         of Rocks, specifically for Devonian shale at 300K (27°C)'
+      min: 400
+      max: 1200
     thermalConductivity:
       value: 1.5
       unit: W/(m·K)
       research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
         of Rocks, with specific reference to shale formations from Appalachian Basin
         measurements (Clauser & Huenges, 1995)'
+      min: 0.2
+      max: 8
     thermalDestruction:
       value: 800.0
       unit: °C
@@ -62,12 +66,16 @@ materialProperties:
       research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
         of Sedimentary Rocks, specifically shale formations from Appalachian Basin
         (Page & Heard, 1981; Robertson, 1988)'
+      min: 0.2
+      max: 2.5
     thermalExpansion:
       value: 11.0
       unit: 10^-6/K
       research_basis: NIST Recommended Values for Thermal Expansion of Geological
         Materials (2019), specifically Table 3 for fine-grained sedimentary rocks
         with shale composition
+      min: 3
+      max: 30
     compressiveStrength:
       value: 50.0
       unit: MPa
@@ -77,6 +85,8 @@ materialProperties:
         content. The cited FHWA source provides a typical range of 5-100 MPa for intact
         shale, with a common representative value of 50 MPa for design purposes, which
         aligns with the given material properties.
+      min: 20
+      max: 500
     corrosionResistance:
       value: 2.0
       unit: rating
@@ -87,11 +97,15 @@ materialProperties:
         exposed to freeze-thaw cycles, rain, and atmospheric acids. While resistant
         to compression, its environmental durability is poor, leading to rapid deterioration
         compared to other stones like granite or limestone.
+      min: 2.0
+      max: 9.0
     density:
       value: 2.65
       unit: g/cm³
       research_basis: American Geological Institute (AGI) Data Sheets, 2017 Edition;
         NIST Standard Reference Database 114 - Physical Properties of Rocks and Minerals
+      min: 1.5
+      max: 6.0
     flexuralStrength:
       value: 10.3
       unit: MPa
@@ -101,12 +115,16 @@ materialProperties:
         in authoritative geotechnical and dimension stone references. This value reflects
         the material's inherent weakness parallel to bedding, which is the typical
         failure mode.
+      min: 5
+      max: 50
     hardness:
       value: 3.0
       unit: Mohs
       research_basis: 'NIST Special Publication 960-15 ''Physical Properties of Minerals
         and Rocks'', ASM Handbook Volume 4: Heat Treating, and Klein & Hurlbut''s
         Manual of Mineralogy (21st Edition)'
+      min: 1
+      max: 7
     oxidationResistance:
       value: 550.0
       unit: °C
@@ -115,10 +133,14 @@ materialProperties:
         and organic carbon) around 500-600°C. The 550°C threshold is cited as the
         maximum continuous service temperature in oxidizing atmospheres before structural
         degradation and chemical changes become significant.
+      min: 400.0
+      max: 870.0
     porosity:
       value: 0.065
       unit: dimensionless
       research_basis: ai_research_comprehensive
+      min: 0.5
+      max: 25
     tensileStrength:
       value: 8.2
       unit: MPa
@@ -126,12 +148,16 @@ materialProperties:
         and Elastic Moduli of Intact Rock Core Specimens under Varying States of Stress
         and Temperatures, with Brazilian tensile strength test methodology for shale
         specimens
+      min: 2
+      max: 25
     youngsModulus:
       value: 25.0
       unit: GPa
       research_basis: 'Ultrasonic and mechanical testing of shale specimens from multiple
         geological formations, Journal of Geophysical Research: Solid Earth, 2015,
         with validation against ASM Handbook data for sedimentary rocks'
+      min: 10
+      max: 100
     fractureToughness:
       value: 0.8
       unit: MPa·√m
@@ -140,6 +166,8 @@ materialProperties:
         from 0.5 to 1.2 MPa·√m depending on bedding orientation and specific composition.
         The provided value is a well-cited average for generic shale under room temperature,
         dry conditions.
+      min: 0.5
+      max: 5
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -150,6 +178,8 @@ materialProperties:
       research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
         for Stone Conservation'' (2021) - Table 4.2: Optical absorption coefficients
         of sedimentary rocks at 1064 nm wavelength'
+      min: 0.1
+      max: 100
     laserReflectivity:
       value: 38.2
       unit: '%'
@@ -157,6 +187,8 @@ materialProperties:
         Rock-Forming Minerals and Application to Laser-Induced Breakdown Spectroscopy
         (LIBS) Analysis, combined with ASM Handbook Volume 10: Materials Characterization
         data on sedimentary rock optical properties'
+      min: 5
+      max: 80
 machineSettings:
   energyDensity:
     value: 2.5

@@ -56,22 +56,30 @@ materialProperties:
       value: 2360.0
       unit: °C
       research_basis: materials_science_literature
+      min: 907
+      max: 5870
     meltingPoint:
       value: 930.0
       unit: °C
       research_basis: materials_science_literature
+      min: -39
+      max: 3422
     specificHeat:
       value: 375.0
       unit: J/(kg·K)
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, ''Copper and Copper Alloys'' chapter,
         specific heat values for brass alloys at 20°C'
+      min: 100
+      max: 2000
     thermalConductivity:
       value: 109.0
       unit: W/(m·K)
       research_basis: 'ASM Handbook Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Table ''Thermal Properties of Wrought
         Copper and Copper Alloys'' for C26000 cartridge brass (70Cu-30Zn)'
+      min: 7.0
+      max: 430
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -80,17 +88,23 @@ materialProperties:
       value: 920.0
       unit: °C
       research_basis: materials_science_literature
+      min: 873
+      max: 3695
     thermalDiffusivity:
       value: 34.2
       unit: mm²/s
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, ''Thermal Properties of Metals'' section,
         specific data for cartridge brass (Cu-30Zn)'
+      min: 0.06
+      max: 174
     thermalExpansion:
       value: 18.7
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials. ASM International, 1990, pp. 265-268.'
+      min: 0.5
+      max: 33
     compressiveStrength:
       value: 435.0
       unit: MPa
@@ -102,11 +116,15 @@ materialProperties:
         standardized mechanical testing (ASTM E9) at room temperature. The confidence
         is high but not maximum (1.00) because the specific brass alloy was not defined
         in the query.
+      min: 50
+      max: 2000
     corrosionResistance:
       value: 7.8
       unit: rating
       research_basis: Brass corrosion resistance in marine environments, scaled to
         1-10
+      min: 1
+      max: 10
     density:
       value: 8.47
       unit: g/cm³
@@ -115,14 +133,20 @@ materialProperties:
         of Wrought Copper Alloys, specifically brass alloys C26000 (cartridge brass)
         at 8.53 g/cm³ and C28000 (Muntz metal) at 8.39 g/cm³, with typical commercial
         brass ranging 8.4-8.7 g/cm³'
+      min: 0.53
+      max: 22.6
     electricalConductivity:
       value: 15000000.0
       unit: S/m
       research_basis: materials_science_literature
+      min: 0.67
+      max: 63.0
     electricalResistivity:
       value: 6.5e-08
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 1.0e-08
+      max: 1.5e-06
     flexuralStrength:
       value: 338.0
       unit: MPa
@@ -134,31 +158,43 @@ materialProperties:
         equivalent to the ultimate tensile strength. The cited value of 338 MPa is
         a conservative, well-documented figure for a standard brass alloy under bending
         loads, as confirmed by engineering material property compilations.
+      min: 2.5
+      max: 1050.0
     hardness:
       value: 155.0
       unit: HV
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, ''Copper and Copper Alloys'' chapter,
         Table 4: Typical Mechanical Properties of Wrought Copper Alloys'
+      min: 0.5
+      max: 3500
     oxidationResistance:
       value: 300.0
       unit: °C
       research_basis: materials_science_literature
+      min: 200
+      max: 1200
     porosity:
       value: 0.015
       unit: '%'
       research_basis: ai_research_comprehensive
+      min: 0.0
+      max: 15.0
     tensileStrength:
       value: 338.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Table ''Typical Room-Temperature Mechanical
         Properties of Wrought Copper Alloys'' for cartridge brass (C26000, 70Cu-30Zn)'
+      min: 3.0
+      max: 3000.0
     youngsModulus:
       value: 110.0
       unit: GPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1 for cartridge brass (70Cu-30Zn)'
+      min: 5
+      max: 600
     fractureToughness:
       value: 100.0
       unit: MPa·√m
@@ -168,6 +204,8 @@ materialProperties:
         provided value of 100 MPa·√m represents a reasonable, well-cited average for
         general-purpose brass alloys at room temperature, as confirmed by standardized
         mechanical testing data in authoritative materials handbooks.
+      min: 20
+      max: 200
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -176,46 +214,66 @@ materialProperties:
       value: 0.45
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 2.0
+      max: 8.0
     absorptivity:
       value: 0.35
       unit: dimensionless
       research_basis: materials_science_literature
+      min: 2.0
+      max: 65.0
     laserAbsorption:
       value: 38.5
       unit: '%'
       research_basis: 'ASM Handbook, Volume 4: Heat Treating, Section: ''Laser Processing
         of Materials'' and NIST Special Publication 1176: ''Laser-Material Interactions
         for Micro- and Nanoscale Applications'''
+      min: 0.02
+      max: 100
     laserDamageThreshold:
       value: 0.45
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 0.1
+      max: 20.0
     laserReflectivity:
       value: 62.0
       unit: '%'
       research_basis: 'NIST Standard Reference Database 120: ''Optical Properties
         of Metallic Materials for Laser Applications'' - Specific data for brass (CuZn37
         alloy) at 1064 nm wavelength'
+      min: 5
+      max: 99.9
     reflectivity:
       value: 0.62
       unit: dimensionless (reflectance ratio)
       research_basis: materials_science_literature
+      min: 85
+      max: 98
     thermalShockResistance:
       value: 180.0
       unit: °C
       research_basis: materials_science_literature
+      min: 50
+      max: 400
     absorptionCoefficient:
       value: 6700000.0
       unit: m⁻¹
       research_basis: materials_science_literature
+      min: 100000
+      max: 50000000
     surfaceRoughness:
       value: 0.32
       unit: μm
       research_basis: materials_science_literature
+      min: 0.4
+      max: 150
     vaporPressure:
       value: 1.33
       unit: Pa
       research_basis: materials_science_literature
+      min: 1.0e-10
+      max: 0.001
 machineSettings:
   energyDensity:
     value: 5.1

@@ -48,6 +48,8 @@ materialProperties:
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1: Physical Properties
         of Cemented Carbides, p. 950'
+      min: 250
+      max: 2500.0
     thermalConductivity:
       value: 110.0
       unit: W/(m·K)
@@ -55,6 +57,8 @@ materialProperties:
         Alloys and Special-Purpose Materials (1990), Table ''Physical Properties of
         Carbides'' specifying thermal conductivity of tungsten carbide (WC) at room
         temperature'
+      min: 0.8
+      max: 120
     thermalDestruction:
       value: 1200.0
       unit: °C
@@ -65,18 +69,24 @@ materialProperties:
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Table ''Thermal Properties of Cemented
         Carbides and Cermets'' for WC-6%Co composition at 20°C'
+      min: 0.005
+      max: 120
     thermalExpansion:
       value: 5.4
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Section: Cemented Carbides and
         Cermets, Table: Physical Properties of Cemented Carbides'
+      min: 0.1
+      max: 14
     compressiveStrength:
       value: 6700.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 19: Fatigue and Fracture (1996), Table
         1: Mechanical Properties of Cemented Carbides, specifically reporting compressive
         strength range of 6000-7400 MPa for WC-Co grades with 6-16% binder content'
+      min: 100
+      max: 7000
     corrosionResistance:
       value: 8.0
       unit: rating
@@ -86,16 +96,22 @@ materialProperties:
         It is highly resistant to atmospheric corrosion, seawater, and many industrial
         chemicals, placing it well above most metals but below some monolithic ceramics
         and noble metals.
+      min: 8
+      max: 10
     density:
       value: 15.63
       unit: g/cm³
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Section: Cemented Carbides and
         Cermets, Table 1: Typical Properties of Cemented Carbides'
+      min: 2.3
+      max: 16.0
     electricalResistivity:
       value: 2.0e-05
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 10000000000.0
+      max: 1.0e+16
     flexuralStrength:
       value: 2300.0
       unit: MPa
@@ -103,10 +119,14 @@ materialProperties:
         Table ''Mechanical Properties of Cemented Carbides'' citing typical flexural
         strength range of 1800-2800 MPa for commercial tungsten carbide grades with
         6-16% cobalt binder'
+      min: 50
+      max: 2500
     hardness:
       value: 1600.0
       unit: Mohs
       research_basis: materials_science_literature
+      min: 6.0
+      max: 2500
     oxidationResistance:
       value: 600.0
       unit: °C
@@ -115,28 +135,38 @@ materialProperties:
         trioxide (WO₃). The value of 600°C is consistently cited in materials handbooks
         as the upper limit for continuous service in an oxidizing environment before
         rapid, destructive oxidation occurs.
+      min: 600.0
+      max: 2400.0
     porosity:
       value: 0.0005
       unit: fraction
       research_basis: ai_research_comprehensive
+      min: 0
+      max: 30
     tensileStrength:
       value: 344.7
       unit: MPa
       research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation (2000),
         Table: Mechanical Properties of Cemented Carbides, specifically reporting
         tensile strength for WC-6%Co composition'
+      min: 5.0
+      max: 600
     youngsModulus:
       value: 600.0
       unit: GPa
       research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation (2000),
         Table ''Elastic Properties of Selected Ceramics and Hard Metals'' lists Young''s
         modulus for tungsten carbide (WC) as 650 GPa'
+      min: 5.0
+      max: 600.0
     fractureToughness:
       value: 9.5
       unit: MPa·m¹/²
       research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation (2000),
         Table 13 - Fracture toughness values for cemented carbides; Materials Science
         and Engineering: A, Vol. 209, Issues 1-2, pp. 1-9 (1996)'
+      min: 2
+      max: 10
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -145,18 +175,24 @@ materialProperties:
       value: 1.8
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 1.5
+      max: 5.0
     laserAbsorption:
       value: 32.7
       unit: '%'
       research_basis: 'ASM Handbook, Volume 4B: Steel Heat Treating Technologies,
         Chapter: Laser Surface Engineering, Table 4: Absorption coefficients of common
         engineering materials for 1064 nm Nd:YAG laser'
+      min: 0.1
+      max: 50
     laserReflectivity:
       value: 52.3
       unit: '%'
       research_basis: 'ASM Handbook, Volume 4: Heat Treating, Section: Laser Processing
         of Materials, Table: Reflectivity of Engineering Materials for Nd:YAG Lasers
         (1064 nm)'
+      min: 5
+      max: 90
 machineSettings:
   energyDensity:
     value: 5.1

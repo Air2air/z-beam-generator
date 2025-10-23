@@ -43,20 +43,28 @@ materialProperties:
       value: 3135.0
       unit: K
       research_basis: materials_science_literature
+      min: 907
+      max: 5870
     meltingPoint:
       value: 1426.0
       unit: K
       research_basis: materials_science_literature
+      min: -39
+      max: 3422
     specificHeat:
       value: 540.0
       unit: J/(kg·K)
       research_basis: Cast iron specific heat capacity - slightly higher than pure
         iron due to carbon content
+      min: 100
+      max: 2000
     thermalConductivity:
       value: 50.0
       unit: W/(m·K)
       research_basis: ASM Handbook - Gray cast iron thermal conductivity at room temperature
         (46-54 W/m·K depending on graphite content)
+      min: 7.0
+      max: 430
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -65,21 +73,29 @@ materialProperties:
       value: 1473.0
       unit: K
       research_basis: Gray cast iron melting point range 1150-1250°C (1423-1523K)
+      min: 873
+      max: 3695
     thermalDiffusivity:
       value: 12.5
       unit: mm²/s
       research_basis: 'ASM Handbook, Volume 1: Gray cast iron thermal diffusivity
         calculated from thermal conductivity (50 W/m·K), density (7.2 g/cm³), and
         specific heat (540 J/kg·K)'
+      min: 0.06
+      max: 174
     thermalExpansion:
       value: 11.0
       unit: 10⁻⁶/K
       research_basis: 'ASM Handbook, Volume 1: Gray cast iron coefficient of thermal
         expansion at 20-100°C, typical for flake graphite cast iron'
+      min: 0.5
+      max: 33
     compressiveStrength:
       value: 827.0
       unit: MPa
       research_basis: materials_science_literature
+      min: 50
+      max: 2000
     corrosionResistance:
       value: 5.0
       unit: rating
@@ -87,53 +103,75 @@ materialProperties:
         resistance. Forms protective rust layer in atmospheric conditions but susceptible
         to acids and chlorides. Better than carbon steel due to graphite flakes providing
         cathodic protection.'
+      min: 1
+      max: 10
     density:
       value: 7.2
       unit: g/cm³
       research_basis: 'ASM Handbook, Volume 1: Properties and Selection: Irons, Steels,
         and High-Performance Alloys - Gray Cast Iron ASTM A48 Class 30'
+      min: 0.53
+      max: 22.6
     electricalConductivity:
       value: 1000000.0
       unit: S/m
       research_basis: materials_science_literature
+      min: 0.67
+      max: 63.0
     electricalResistivity:
       value: 60.0
       unit: µΩ·cm
       research_basis: ASM Handbook - Gray cast iron electrical resistivity range
+      min: 1.0e-08
+      max: 1.5e-06
     flexuralStrength:
       value: 448.0
       unit: MPa
       research_basis: materials_science_literature
+      min: 2.5
+      max: 1050.0
     hardness:
       value: 2200.0
       unit: HV
       research_basis: ASM Handbook, Volume 1 - Gray cast iron hardness range 190-250
         HB, converted to Vickers (HV ≈ HB × 9.5 for this range)
+      min: 0.5
+      max: 3500
     oxidationResistance:
       value: 750.0
       unit: °C
       research_basis: 'ASM Handbook, Volume 1: Gray cast iron begins significant oxidation
         at 700-800°C in air. Forms protective oxide scale below this temperature but
         experiences accelerated oxidation above.'
+      min: 200
+      max: 1200
     porosity:
       value: 2.5
       unit: '%'
       research_basis: Typical porosity for gray cast iron (Class 30), graphite flake
         structure
+      min: 0.0
+      max: 15.0
     tensileStrength:
       value: 250.0
       unit: MPa
       research_basis: ASTM A48 Class 30 gray cast iron - tensile strength 207-276
         MPa (30-40 ksi)
+      min: 3.0
+      max: 3000.0
     youngsModulus:
       value: 110.0
       unit: GPa
       research_basis: Gray cast iron elastic modulus - lower than steel due to graphite
         flakes
+      min: 5
+      max: 600
     fractureToughness:
       value: 22.1
       unit: MPa·m¹/²
       research_basis: materials_science_literature
+      min: 20
+      max: 200
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -143,46 +181,66 @@ materialProperties:
       unit: J/cm²
       research_basis: Laser ablation threshold for cast iron at 1064nm, typical gray
         iron surface
+      min: 2.0
+      max: 8.0
     absorptivity:
       value: 55.0
       unit: '%'
       research_basis: Complementary to reflectivity at 1064nm wavelength for cast
         iron
+      min: 2.0
+      max: 65.0
     laserAbsorption:
       value: 55.0
       unit: '%'
       research_basis: Cast iron absorption at 1064nm wavelength - higher carbon content
         increases absorption compared to steel
+      min: 0.02
+      max: 100
     laserDamageThreshold:
       value: 1.8
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 0.1
+      max: 20.0
     laserReflectivity:
       value: 45.0
       unit: '%'
       research_basis: Complementary to absorption at 1064nm, accounting for surface
         oxidation typical in cast iron
+      min: 5
+      max: 99.9
     reflectivity:
       value: 45.0
       unit: '%'
       research_basis: ASM Metals Handbook - Cast iron reflectivity at 1064nm, typical
         oxidized surface
+      min: 85
+      max: 98
     thermalShockResistance:
       value: 4.2
       unit: MPa·m^0.5
       research_basis: materials_science_literature
+      min: 50
+      max: 400
     absorptionCoefficient:
       value: 620000.0
       unit: m⁻¹
       research_basis: materials_science_literature
+      min: 100000
+      max: 50000000
     surfaceRoughness:
       value: 3.2
       unit: µm
       research_basis: Typical as-cast surface roughness for gray iron, Ra value
+      min: 0.4
+      max: 150
     vaporPressure:
       value: 1.0e-07
       unit: Pa
       research_basis: Typical vapor pressure for iron alloys at room temperature
+      min: 1.0e-10
+      max: 0.001
 machineSettings:
   energyDensity:
     value: 5

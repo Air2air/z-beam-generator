@@ -47,12 +47,16 @@ materialProperties:
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook
         - Polycarbonate (CAS 25037-45-0) specific heat capacity at 25°C'
+      min: 1.0
+      max: 2500
     thermalConductivity:
       value: 0.2
       unit: W/(m·K)
       research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
         of Polymer Systems; ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials'
+      min: 0.02
+      max: 3
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -62,6 +66,8 @@ materialProperties:
       unit: mm²/s
       research_basis: 'NIST Standard Reference Database: Thermal diffusivity of polycarbonate
         measured at 25°C using laser flash method (ASTM E1461)'
+      min: 0.08
+      max: 1
     thermalExpansion:
       value: 68.0
       unit: 10^-6/K
@@ -69,6 +75,8 @@ materialProperties:
         of Polycarbonate (PC) reports 68 × 10^-6 K^-1 at 23°C; ASM Handbook Vol. 2:
         Engineering Thermoplastics confirms range 65-70 × 10^-6 K^-1 for amorphous
         polycarbonate'
+      min: 10
+      max: 200
     compressiveStrength:
       value: 80.0
       unit: MPa
@@ -79,6 +87,8 @@ materialProperties:
         temperature, 23°C). The provided hardness (85.0 MPa) is a related mechanical
         property that supports this compressive strength value, as they often correlate
         for rigid plastics.
+      min: 20
+      max: 200
     corrosionResistance:
       value: 8.0
       unit: rating
@@ -88,16 +98,22 @@ materialProperties:
         are to strong bases, certain hydrocarbons, and UV radiation, which slightly
         reduce its score from a perfect 10. This assessment is based on standardized
         chemical resistance data for engineering plastics.
+      min: 5
+      max: 9
     density:
       value: 1.2
       unit: g/cm³
       research_basis: 'ASM Handbook, Volume 21: Composites, ''Properties of Polycarbonate'';
         NIST Standard Reference Data; Bayer MaterialScience AG, Makrolon® Polycarbonate
         Technical Data Sheet'
+      min: 0.85
+      max: 2.2
     electricalResistivity:
       value: 2.1e+17
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 1000000000000.0
+      max: 1.0e+16
     flexuralStrength:
       value: 93.0
       unit: MPa
@@ -106,6 +122,8 @@ materialProperties:
         report flexural strength values for Polycarbonate in the range of 90-100 MPa
         for a 3-point bend test. The cited value of 93 MPa is a typical median value
         from manufacturer data sheets for unreinforced, general-purpose grades.
+      min: 30
+      max: 200
     hardness:
       value: 85.0
       unit: MPa
@@ -113,6 +131,8 @@ materialProperties:
         Section: Plastics and Polymeric Composites, with specific reference to Polycarbonate
         Rockwell M hardness values of 70-90, converted to equivalent MPa using established
         conversion relationships'
+      min: Shore A 10
+      max: Shore D 90
     oxidationResistance:
       value: 125.0
       unit: °C
@@ -122,12 +142,16 @@ materialProperties:
         of this range, as polycarbonate begins to undergo significant thermal degradation
         and oxidation above this temperature, leading to loss of mechanical properties
         and discoloration.
+      min: 60.0
+      max: 260.0
     tensileStrength:
       value: 65.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 21: Composites, Table 3 - Typical Mechanical
         Properties of Engineering Plastics (ASM International, 2001) and NIST Polymer
         Properties Database - Polycarbonate Reference Data'
+      min: 10
+      max: 400
     youngsModulus:
       value: 2350.0
       unit: MPa
@@ -135,10 +159,14 @@ materialProperties:
         of Engineering Thermoplastics (Polycarbonate: 2.0-2.4 GPa); NIST Polymer Properties
         Database - Bisphenol-A Polycarbonate (2.38 GPa); Bayer MaterialScience Makrolon®
         Technical Data Sheet (2.1-2.4 GPa)'
+      min: 0.01
+      max: 5000
     fractureToughness:
       value: 2.2
       unit: MPa·m¹/²
       research_basis: materials_science_literature
+      min: 1
+      max: 10
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -149,12 +177,16 @@ materialProperties:
       research_basis: NIST Materials Data Repository - Polycarbonate Optical Properties
         Database, specifically for 1064 nm Nd:YAG laser wavelength commonly used in
         laser cleaning applications
+      min: 0.1
+      max: 100
     laserReflectivity:
       value: 42.0
       unit: '%'
       research_basis: 'NIST Materials Data Repository - Optical Properties of Engineering
         Plastics (2021), Table 3: Reflectance measurements for polycarbonate at 1064
         nm wavelength'
+      min: 4.0
+      max: 95
 machineSettings:
   fluenceThreshold:
     value: 0.8

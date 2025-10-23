@@ -48,12 +48,16 @@ materialProperties:
         Service, Forest Products Laboratory. General Technical Report FPL-GTR-190.
         2010. Table 4-15 provides specific heat values for various wood species at
         12% moisture content, with birch specifically listed.'
+      min: 800
+      max: 2500
     thermalConductivity:
       value: 0.17
       unit: W/(m·K)
       research_basis: 'Forest Products Laboratory. (2010). Wood Handbook: Wood as
         an Engineering Material. USDA Forest Service, Chapter 4: Thermal Properties,
         Table 4-3, specifically listing Birch (Yellow) at 12% moisture content.'
+      min: 0.04
+      max: 0.4
     thermalDestruction:
       value: 300.0
       unit: °C
@@ -65,6 +69,8 @@ materialProperties:
         (1999). Thermal conductivity and diffusivity of wood. Wood Science and Technology,
         33(6), 465-473. Specific data for Birch wood at 12% moisture content, room
         temperature conditions.
+      min: 0.0001
+      max: 0.4
     thermalExpansion:
       value: 33.8
       unit: 10^-6/K
@@ -72,6 +78,8 @@ materialProperties:
         an Engineering Material. USDA Forest Service, General Technical Report FPL-GTR-190,
         Chapter 4: Mechanical Properties of Wood, Table 4-3: Coefficients of thermal
         expansion for various wood species.'
+      min: 3.0
+      max: 60
     compressiveStrength:
       value: 46.0
       unit: MPa
@@ -81,6 +89,8 @@ materialProperties:
         content, which is the standard test condition for wood mechanical properties
         according to ASTM D143. This value is consistent with published data from
         the USDA Forest Products Laboratory for birch species.
+      min: 20
+      max: 80
     corrosionResistance:
       value: 3.0
       unit: rating
@@ -91,6 +101,8 @@ materialProperties:
         While it has moderate resistance to chemical corrosion compared to metals,
         its organic composition makes it susceptible to biological degradation, moisture
         damage, and environmental weathering.
+      min: 2.0
+      max: 8.0
     density:
       value: 0.67
       unit: g/cm³
@@ -98,6 +110,8 @@ materialProperties:
         Wood as an Engineering Material. Chapter 4: Mechanical Properties of Wood,
         Table 4-3: Specific gravity of some commercially important woods. Specifically
         cites Yellow Birch (Betula alleghaniensis) at 12% moisture content.'
+      min: 0.12
+      max: 1.5
     flexuralStrength:
       value: 97.0
       unit: MPa
@@ -107,12 +121,16 @@ materialProperties:
         measured via standard 3-point or 4-point bend tests. While birch species vary,
         this falls within the typical 70-120 MPa range cited in wood mechanics literature
         for quality birch lumber.
+      min: 40
+      max: 150
     hardness:
       value: 1260.0
       unit: MPa
       research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook:
         Wood as an Engineering Material. Chapter 4: Mechanical Properties of Wood.
         Table 4-3: Mechanical properties of some common temperate-zone woods.'
+      min: 1
+      max: 5000
     oxidationResistance:
       value: 200.0
       unit: °C
@@ -121,10 +139,14 @@ materialProperties:
         the onset of pyrolysis and oxidative reactions that permanently reduce strength.
         While ignition temperature is higher (~250°C), 200°C is the established maximum
         for sustained service before significant chemical decomposition begins.
+      min: 82.0
+      max: 204.0
     porosity:
       value: 0.65
       unit: dimensionless (volume fraction)
       research_basis: ai_research_comprehensive
+      min: 12
+      max: 65
     tensileStrength:
       value: 121.0
       unit: MPa
@@ -132,10 +154,14 @@ materialProperties:
         4: Mechanical Properties of Wood, Table 4-3a: Mechanical properties of some
         common temperate zone woods, specifically Yellow Birch (Betula alleghaniensis)
         parallel to grain tensile strength'
+      min: 20
+      max: 200
     youngsModulus:
       value: 11.9
       unit: GPa
       research_basis: standard_material_database
+      min: 5
+      max: 20000
     fractureToughness:
       value: 2.1
       unit: MPa·√m
@@ -145,6 +171,8 @@ materialProperties:
         fracture toughness in the range of 1.5 to 3.5 MPa·√m, with 2.1 MPa·√m being
         a representative median value for clear, defect-free wood tested in the radial-longitudinal
         (RL) or tangential-longitudinal (TL) crack propagation systems at room temperature.
+      min: 0.33
+      max: 4.4
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -155,12 +183,16 @@ materialProperties:
       research_basis: 'NIST Standard Reference Database 69: Laser Material Interaction
         Database for Wood Species, specifically Betula papyrifera (Paper Birch) at
         1064 nm wavelength'
+      min: 1
+      max: 50
     laserReflectivity:
       value: 42.7
       unit: '%'
       research_basis: 'NIST Standard Reference Database 120: Optical Properties of
         Materials for Laser Applications, Section 8.3 - Wood Species Reflectivity
         at 1064 nm'
+      min: 10
+      max: 60
 machineSettings:
   energyDensity:
     value: 4.5

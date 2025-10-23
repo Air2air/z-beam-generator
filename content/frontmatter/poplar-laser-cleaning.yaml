@@ -47,6 +47,8 @@ materialProperties:
       research_basis: 'NIST Wood Database - Specific Heat of Poplar (Populus tremuloides)
         at 12% moisture content, 20°C. Wood Handbook: Wood as an Engineering Material,
         Chapter 4: Moisture Relations and Physical Properties, Table 4-5.'
+      min: 800
+      max: 2500
     thermalConductivity:
       value: 0.12
       unit: W/(m·K)
@@ -55,6 +57,8 @@ materialProperties:
         Chapter 4: Thermal Properties, Table 4-3, specifically listing Populus tremuloides
         (quaking aspen) at 12% moisture content with radial thermal conductivity of
         0.12 W/(m·K)'
+      min: 0.04
+      max: 0.4
     thermalDestruction:
       value: 300.0
       unit: °C
@@ -65,6 +69,8 @@ materialProperties:
       research_basis: 'Suleiman, B. M., Larfeldt, J., Leckner, B., & Gustavsson, M.
         (1999). Thermal conductivity and diffusivity of wood. Wood Science and Technology,
         33(6), 465-473. DOI: 10.1007/s002260050130'
+      min: 0.0001
+      max: 0.4
     thermalExpansion:
       value: 4.5
       unit: 10⁻⁶/K
@@ -72,6 +78,8 @@ materialProperties:
         Service, Forest Products Laboratory, Chapter 4: Moisture Relations and Physical
         Properties, Table 4-5: Thermal expansion coefficients of selected woods at
         12% moisture content'
+      min: 3.0
+      max: 60
     compressiveStrength:
       value: 38.0
       unit: MPa
@@ -80,6 +88,8 @@ materialProperties:
         tulipifera) as 5,540 psi parallel to grain, which converts to 38.2 MPa. This
         value represents the crushing strength measured in accordance with ASTM D143
         standard test methods for small clear specimens at 12% moisture content.
+      min: 20
+      max: 80
     corrosionResistance:
       value: 2.0
       unit: rating
@@ -89,12 +99,16 @@ materialProperties:
         for North American hardwoods. It lacks protective extractives and is highly
         susceptible to fungal decay, insects, and moisture damage without preservative
         treatment.
+      min: 2.0
+      max: 8.0
     density:
       value: 0.43
       unit: g/cm³
       research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest
         Service, Forest Products Laboratory. General Technical Report FPL-GTR-190.
         2010. Table 5-3a: Average specific gravity of selected domestic hardwoods.'
+      min: 0.12
+      max: 1.5
     flexuralStrength:
       value: 59.0
       unit: MPa
@@ -104,12 +118,16 @@ materialProperties:
         is listed as 59.0 MPa at 12% moisture content, based on standardized 3-point
         bend testing of small, clear specimens. This value is consistent with the
         known low density and hardness of poplar.
+      min: 40
+      max: 150
     hardness:
       value: 2.4
       unit: MPa
       research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook:
         Wood as an Engineering Material. Chapter 4: Mechanical Properties of Wood.
         Table 4-3: Hardness of commercial woods.'
+      min: 1
+      max: 5000
     oxidationResistance:
       value: 200.0
       unit: °C
@@ -122,20 +140,28 @@ materialProperties:
         long-term service temperature in air to avoid significant loss of mechanical
         properties and mass due to oxidation. Poplar, being a hardwood with typical
         lignocellulosic composition, fits within this general behavior.
+      min: 82.0
+      max: 204.0
     porosity:
       value: 0.72
       unit: dimensionless
       research_basis: ai_research_comprehensive
+      min: 12
+      max: 65
     tensileStrength:
       value: 101.0
       unit: MPa
       research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook:
         Wood as an Engineering Material. Chapter 4: Mechanical Properties of Wood,
         Table 4-3a. 2010 Edition.'
+      min: 20
+      max: 200
     youngsModulus:
       value: 10.8
       unit: GPa
       research_basis: standard_material_database
+      min: 5
+      max: 20000
     fractureToughness:
       value: 0.35
       unit: MPa·√m
@@ -144,6 +170,8 @@ materialProperties:
         The value of 0.35 MPa·√m is characteristic for poplar wood in the transverse
         (perpendicular to grain) direction, which is the typical mode of failure and
         reporting for this property in wood science.
+      min: 0.33
+      max: 4.4
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -154,12 +182,16 @@ materialProperties:
       research_basis: 'NIST Standard Reference Database 69: Laser-Material Interaction
         Data for Poplar Wood at 1064 nm wavelength, combined with ASM Handbook Volume
         5: Surface Engineering - Laser Processing Data'
+      min: 1
+      max: 50
     laserReflectivity:
       value: 42.7
       unit: '%'
       research_basis: 'NIST Standard Reference Database 120: Optical Properties of
         Materials for Concentrating Solar Power, with specific reference to hardwood
         species including Populus tremuloides (aspen poplar) at 1064 nm wavelength'
+      min: 10
+      max: 60
 machineSettings:
   dwellTime:
     value: 100

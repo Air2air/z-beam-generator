@@ -45,21 +45,29 @@ materialProperties:
       value: 4701.0
       unit: K
       research_basis: materials_science_literature
+      min: 907
+      max: 5870
     meltingPoint:
       value: 2719.0
       unit: K
       research_basis: materials_science_literature
+      min: -39
+      max: 3422
     specificHeat:
       value: 131.0
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 144: Thermophysical Properties
         of Iridium, values at 300 K (27°C)'
+      min: 100
+      max: 2000
     thermalConductivity:
       value: 147.0
       unit: W/(m·K)
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Table ''Physical Properties of Pure
         Metals'' lists thermal conductivity of iridium as 147 W/(m·K) at 300K'
+      min: 7.0
+      max: 430
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -68,18 +76,24 @@ materialProperties:
       value: 2716.0
       unit: K
       research_basis: materials_science_literature
+      min: 873
+      max: 3695
     thermalDiffusivity:
       value: 31.5
       unit: mm²/s
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table ''Thermal Properties of
         Pure Metals'' for Iridium at 300K'
+      min: 0.06
+      max: 174
     thermalExpansion:
       value: 6.4
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1, p. 718 - Iridium thermal
         expansion coefficient at 20-100°C range'
+      min: 0.5
+      max: 33
     compressiveStrength:
       value: 2000.0
       unit: MPa
@@ -91,6 +105,8 @@ materialProperties:
         materials handbooks. However, the exact value is highly dependent on purity,
         grain size, and thermomechanical processing history, which is not specified
         in the query.
+      min: 50
+      max: 2000
     corrosionResistance:
       value: 9.0
       unit: rating
@@ -100,20 +116,28 @@ materialProperties:
         oxidation at high temperatures (above 600°C), but it maintains excellent stability
         in general environmental conditions, ranking among the most corrosion-resistant
         metals.
+      min: 1
+      max: 10
     density:
       value: 22.56
       unit: g/cm³
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), NIST Standard Reference Database
         124, and CRC Handbook of Chemistry and Physics (97th Edition)'
+      min: 0.53
+      max: 22.6
     electricalConductivity:
       value: 19700000.0
       unit: S/m
       research_basis: materials_science_literature
+      min: 0.67
+      max: 63.0
     electricalResistivity:
       value: 4.71e-08
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 1.0e-08
+      max: 1.5e-06
     flexuralStrength:
       value: 690.0
       unit: MPa
@@ -123,6 +147,8 @@ materialProperties:
         purity and thermomechanical processing (e.g., grain size, work hardening).
         For high-purity, annealed iridium, values are generally in this range, while
         strength can be significantly higher for fine-grained or worked material.
+      min: 2.5
+      max: 1050.0
     hardness:
       value: 1760.0
       unit: HV
@@ -130,6 +156,8 @@ materialProperties:
         Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
         Properties of Pure Metals, p. 1118, specifically lists Iridium hardness as
         1760 HV in annealed condition'
+      min: 0.5
+      max: 3500
     oxidationResistance:
       value: 1100.0
       unit: °C
@@ -138,22 +166,30 @@ materialProperties:
         the oxide layer becomes volatile (forming IrO₃), leading to significant and
         catastrophic oxidative erosion, which is a well-documented limitation for
         its high-temperature use in air.
+      min: 200
+      max: 1200
     porosity:
       value: 0.0005
       unit: '%'
       research_basis: ai_research_comprehensive
+      min: 0.0
+      max: 15.0
     tensileStrength:
       value: 490.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
         Properties of Pure Metals, p. 1118'
+      min: 3.0
+      max: 3000.0
     youngsModulus:
       value: 528.0
       unit: GPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
         Properties of Pure Metals, p. 1118'
+      min: 5
+      max: 600
     fractureToughness:
       value: 103.0
       unit: MPa·√m
@@ -162,6 +198,8 @@ materialProperties:
         for polycrystalline iridium at room temperature, reflecting its relatively
         low toughness despite high strength and hardness. This property is significant
         for its use in extreme environments.
+      min: 20
+      max: 200
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -170,43 +208,63 @@ materialProperties:
       value: 0.45
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 2.0
+      max: 8.0
     absorptivity:
       value: 0.42
       unit: dimensionless
       research_basis: materials_science_literature
+      min: 2.0
+      max: 65.0
     laserAbsorption:
       value: 38.7
       unit: '%'
       research_basis: NIST Atomic Spectra Database - Iridium Reflectance Measurements
         at 1064 nm wavelength
+      min: 0.02
+      max: 100
     laserDamageThreshold:
       value: 0.45
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 0.1
+      max: 20.0
     laserReflectivity:
       value: 51.5
       unit: '%'
       research_basis: materials_science_literature
+      min: 5
+      max: 99.9
     reflectivity:
       value: 0.965
       unit: dimensionless (reflectance)
       research_basis: materials_science_literature
+      min: 85
+      max: 98
     thermalShockResistance:
       value: 1.2
       unit: MW/m
       research_basis: materials_science_literature
+      min: 50
+      max: 400
     absorptionCoefficient:
       value: 47200000.0
       unit: m⁻¹
       research_basis: materials_science_literature
+      min: 100000
+      max: 50000000
     surfaceRoughness:
       value: 0.15
       unit: μm
       research_basis: materials_science_literature
+      min: 0.4
+      max: 150
     vaporPressure:
       value: 0.0001333
       unit: Pa
       research_basis: materials_science_literature
+      min: 1.0e-10
+      max: 0.001
 machineSettings:
   fluenceThreshold:
     value: 2.5

@@ -48,11 +48,15 @@ materialProperties:
       research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
         of Polymer Composites, specifically unsaturated polyester resin with 30-40%
         glass fiber reinforcement at 25°C'
+      min: 500
+      max: 2500.0
     thermalConductivity:
       value: 0.17
       unit: W/(m·K)
       research_basis: 'ASM Handbook, Vol. 21: Composites, Section: Thermal Properties
         of Polymer Matrix Composites, pp. 268-272'
+      min: 0.03
+      max: 400
     thermalDestruction:
       value: 300.0
       unit: °C
@@ -63,12 +67,16 @@ materialProperties:
       research_basis: 'ASM Handbook, Vol. 21: Composites, Thermal Properties of Polyester
         Matrix Composites with 30-40% glass fiber reinforcement, measured via laser
         flash method at 25°C'
+      min: 0.08
+      max: 180
     thermalExpansion:
       value: 55.0
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Volume 21: Composites, Section ''Polyester Matrix
         Composites'' citing typical CTE range of 100-150 × 10^-6/K for unsaturated
         polyester resins with glass fiber reinforcement at 20-100°C'
+      min: -1
+      max: 250
     compressiveStrength:
       value: 150.0
       unit: MPa
@@ -78,6 +86,8 @@ materialProperties:
         formulation and reinforcement (e.g., fiberglass), but generally falls within
         the 100-200 MPa range for standard commercial grades. The hardness value (42.0
         Shore D) is a secondary indicator supporting this strength range.
+      min: 50
+      max: 1000
     corrosionResistance:
       value: 7.0
       unit: rating
@@ -87,24 +97,34 @@ materialProperties:
         performance decreases with concentrated chemicals and strong solvents. Their
         corrosion resistance is superior to many metals but less than premium thermoset
         resins like vinyl ester or epoxy in aggressive conditions.
+      min: 5
+      max: 9
     density:
       value: 1.38
       unit: g/cm³
       research_basis: 'ASM Handbook, Volume 21: Composites, ''Polyester Matrix Composites
         - Typical Properties'', p. 78 (2001)'
+      min: 0.5
+      max: 8
     electricalResistivity:
       value: 120000000000000.0
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 0.001
+      max: 100000000000000.0
     flexuralStrength:
       value: 120.0
       unit: MPa
       research_basis: materials_science_literature
+      min: 100
+      max: 2000
     hardness:
       value: 42.0
       unit: Shore D
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Thermoset Resins
         - Polyester Systems, Mechanical Properties Table (pp. 148-152)'
+      min: 5.0
+      max: 120
     oxidationResistance:
       value: 150.0
       unit: °C
@@ -114,16 +134,22 @@ materialProperties:
         causing discoloration, embrittlement, and loss of mechanical properties. This
         upper limit is well-documented for general-purpose unsaturated polyester resins
         in composite applications.
+      min: 80.0
+      max: 1650.0
     tensileStrength:
       value: 85.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Polyester Matrix
         Composites, pp. 148-152 (2001)'
+      min: 20
+      max: 6000
     youngsModulus:
       value: 2800.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Polyester Matrix
         Composites, pp. 324-328 (2001)'
+      min: 0.001
+      max: 3000
     fractureToughness:
       value: 0.6
       unit: MPa·√m
@@ -134,6 +160,8 @@ materialProperties:
         a general-purpose, mineral-filled polyester composite system, as documented
         in composite materials handbooks. The low toughness is characteristic of the
         brittle polyester matrix.
+      min: 20
+      max: 100
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -144,12 +172,16 @@ materialProperties:
       research_basis: 'ASM Handbook, Volume 21: Composites, Chapter: ''Laser Processing
         of Polymer Matrix Composites'', specific data for unsaturated polyester resin
         composites with 30-40% glass fiber reinforcement at 1064 nm wavelength'
+      min: 0.05
+      max: 200
     laserReflectivity:
       value: 38.5
       unit: '%'
       research_basis: NIST Materials Data Repository - Laser-Material Interaction
         Database for Composite Materials, specifically testing unsaturated polyester
         resin with 30% glass fiber reinforcement at 1064 nm wavelength
+      min: 2
+      max: 80
 machineSettings:
   fluence:
     value: 3.0

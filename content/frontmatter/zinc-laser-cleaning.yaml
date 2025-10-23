@@ -40,21 +40,29 @@ materialProperties:
       value: 1180.0
       unit: K
       research_basis: materials_science_literature
+      min: 907
+      max: 5870
     meltingPoint:
       value: 419.527
       unit: °C
       research_basis: materials_science_literature
+      min: -39
+      max: 3422
     specificHeat:
       value: 388.3
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
         Zinc thermochemical data at 298.15 K'
+      min: 100
+      max: 2000
     thermalConductivity:
       value: 116.0
       unit: W/(m·K)
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Table ''Physical Properties of Pure
         Metals'' for Zinc at 300K'
+      min: 7.0
+      max: 430
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -63,20 +71,28 @@ materialProperties:
       value: 692.68
       unit: K
       research_basis: materials_science_literature
+      min: 873
+      max: 3695
     thermalDiffusivity:
       value: 41.8
       unit: mm²/s
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table ''Thermal Properties of
         Metals'' for high-purity zinc (99.99+%) at 300K'
+      min: 0.06
+      max: 174
     thermalExpansion:
       value: 30.2
       unit: 10⁻⁶/K
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table ''Thermal Expansion of
         Metals and Alloys'' for pure zinc (99.99+%) at 20°C'
+      min: 0.5
+      max: 33
     compressiveStrength:
       value: 110.0
+      min: 50
+      max: 2000
     corrosionResistance:
       value: 8.0
       unit: rating
@@ -86,20 +102,28 @@ materialProperties:
         in some environments, zinc's sacrificial protection and patina formation provide
         excellent corrosion resistance for a common structural metal, particularly
         in neutral pH environments.
+      min: 1
+      max: 10
     density:
       value: 7.14
       unit: g/cm³
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table ''Physical Properties of
         Pure Metals'' lists zinc density as 7.14 g/cm³ at 20°C'
+      min: 0.53
+      max: 22.6
     electricalConductivity:
       value: 16700000.0
       unit: S/m
       research_basis: materials_science_literature
+      min: 0.67
+      max: 63.0
     electricalResistivity:
       value: 5.96e-08
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 1.0e-08
+      max: 1.5e-06
     flexuralStrength:
       value: 120.0
       unit: MPa
@@ -111,12 +135,16 @@ materialProperties:
         a value of 120 MPa is a reasonable and conservative estimate for a 3-point
         bend test. This value is corroborated by engineering material databases and
         handbooks that list mechanical properties for design purposes.
+      min: 2.5
+      max: 1050.0
     hardness:
       value: 37.5
       unit: HB
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, ''Zinc and Zinc Alloys'' chapter, Table
         1: Typical mechanical properties of high-grade zinc (99.99+%) at 20°C'
+      min: 0.5
+      max: 3500
     oxidationResistance:
       value: 200.0
       unit: °C
@@ -126,22 +154,30 @@ materialProperties:
         at room temperature, this layer breaks down and oxidation accelerates significantly
         in the 200-250°C range, making 200°C a conservative maximum for continuous
         service in air.
+      min: 200
+      max: 1200
     porosity:
       value: 0.0001
       unit: fraction
       research_basis: ai_research_comprehensive
+      min: 0.0
+      max: 15.0
     tensileStrength:
       value: 37.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1: Typical Mechanical Properties
         of Zinc and Zinc Alloys'
+      min: 3.0
+      max: 3000.0
     youngsModulus:
       value: 108.0
       unit: GPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
         Properties of Zinc and Zinc Alloys'
+      min: 5
+      max: 600
     fractureToughness:
       value: 15.0
       unit: MPa·√m
@@ -150,6 +186,8 @@ materialProperties:
         report values in the range of 13-16 MPa·√m for high-purity zinc at room temperature
         due to its HCP structure and limited slip systems. The value of 15 MPa·√m
         is a representative, conservative estimate from this range.
+      min: 20
+      max: 200
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -158,44 +196,64 @@ materialProperties:
       value: 0.15
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 2.0
+      max: 8.0
     absorptivity:
       value: 0.042
       unit: dimensionless
       research_basis: materials_science_literature
+      min: 2.0
+      max: 65.0
     laserAbsorption:
       value: 38.0
       unit: '%'
       research_basis: NIST Materials Data Repository - Zinc optical properties dataset
         for 1064 nm wavelength laser processing
+      min: 0.02
+      max: 100
     laserDamageThreshold:
       value: 0.15
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 0.1
+      max: 20.0
     laserReflectivity:
       value: 51.2
       unit: '%'
       research_basis: Palik, E.D. (1998). Handbook of Optical Constants of Solids.
         Academic Press. Vol. 2, pp. 435-436. Data for zinc at 1.06 μm wavelength.
+      min: 5
+      max: 99.9
     reflectivity:
       value: 0.81
       unit: dimensionless
       research_basis: materials_science_literature
+      min: 85
+      max: 98
     thermalShockResistance:
       value: 0.21
       unit: MPa·m^0.5
       research_basis: materials_science_literature
+      min: 50
+      max: 400
     absorptionCoefficient:
       value: 12500000.0
       unit: m⁻¹
       research_basis: materials_science_literature
+      min: 100000
+      max: 50000000
     surfaceRoughness:
       value: 0.45
       unit: μm
       research_basis: materials_science_literature
+      min: 0.4
+      max: 150
     vaporPressure:
       value: 1.33
       unit: Pa
       research_basis: materials_science_literature
+      min: 1.0e-10
+      max: 0.001
 machineSettings:
   energyDensity:
     value: 5.1

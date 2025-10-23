@@ -48,11 +48,15 @@ materialProperties:
       unit: J/(kg·K)
       research_basis: 'ASM Handbook, Volume 21: Composites, Specific Heat Data for
         SiC/SiC Ceramic Matrix Composites at 300K (pp. 324-327)'
+      min: 500
+      max: 2500.0
     thermalConductivity:
       value: 18.5
       unit: W/(m·K)
       research_basis: 'ASM Handbook, Volume 21: Composites, Specific data for SiC/SiC
         CMCs at room temperature (25°C) from standardized testing'
+      min: 0.03
+      max: 400
     thermalDestruction:
       value: 300.0
       unit: °C
@@ -63,11 +67,15 @@ materialProperties:
       research_basis: 'ASM Handbook, Volume 21: Composites, Specific data for SiC/SiC
         CMCs at room temperature (25°C) from Table ''Thermal Properties of Advanced
         Ceramics and CMCs'''
+      min: 0.08
+      max: 180
     thermalExpansion:
       value: 3.5
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Vol. 21: Composites, Specific data for SiC/SiC
         CMCs at room temperature to 1000°C range'
+      min: -1
+      max: 250
     compressiveStrength:
       value: 350.0
       unit: MPa
@@ -81,6 +89,8 @@ materialProperties:
         for aerospace applications. The confidence is not higher because the exact
         fiber type, weave, and interfacial coating of the specific CMC in question
         are unknown, which can cause the value to vary by ±150 MPa.
+      min: 50
+      max: 1000
     corrosionResistance:
       value: 8.0
       unit: rating
@@ -92,6 +102,8 @@ materialProperties:
         non-oxide fibers/interphases) can be susceptible to oxidation or hot corrosion
         in extreme conditions, and performance is highly dependent on the specific
         matrix/fiber combination.
+      min: 5
+      max: 9
     density:
       value: 2.7
       unit: g/cm³
@@ -99,10 +111,14 @@ materialProperties:
         Composites, which specifies typical densities for SiC/SiC CMCs ranging from
         2.6-2.8 g/cm³ with 2.7 g/cm³ as the median value for standard architectural
         configurations'
+      min: 0.5
+      max: 8
     electricalResistivity:
       value: 0.0015
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 0.001
+      max: 100000000000000.0
     flexuralStrength:
       value: 350.0
       unit: MPa
@@ -113,12 +129,16 @@ materialProperties:
         strength values in the range of 300-400 MPa when measured via a standard 4-point
         bend test at room temperature. The value of 350 MPa is a representative median
         from this authoritative source.
+      min: 100
+      max: 2000
     hardness:
       value: 22.5
       unit: GPa
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Ceramic Matrix
         Composites, specifically reporting Vickers hardness for SiC/SiC CMCs at 22.5
         GPa under standard indentation testing conditions (HV0.5, 4.9N load)'
+      min: 5.0
+      max: 120
     oxidationResistance:
       value: 1650.0
       unit: °C
@@ -130,6 +150,8 @@ materialProperties:
         and provides oxidation resistance. Above this threshold, the silica scale
         becomes volatile and active oxidation occurs, leading to significant material
         recession.
+      min: 80.0
+      max: 1650.0
     tensileStrength:
       value: 325.0
       unit: MPa
@@ -137,12 +159,16 @@ materialProperties:
         CMCs from Table ''Typical Room-Temperature Tensile Properties of Ceramic-Matrix
         Composites'' showing tensile strength range of 250-400 MPa for continuous
         fiber-reinforced CMCs'
+      min: 20
+      max: 6000
     youngsModulus:
       value: 150.0
       unit: GPa
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Ceramic Matrix
         Composites, specifically referencing SiC/SiC composites with continuous fiber
         reinforcement under standard ASTM testing conditions'
+      min: 0.001
+      max: 3000
     fractureToughness:
       value: 8.0
       unit: MPa·√m
@@ -153,6 +179,8 @@ materialProperties:
         from NASA and ASM Handbooks report typical values for aerospace-grade SiC/SiC
         CMCs in the range of 8-30 MPa·√m, with 8 MPa·√m representing a robust, conservative
         lower bound for a well-engineered composite at room temperature.
+      min: 20
+      max: 100
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -163,12 +191,16 @@ materialProperties:
       research_basis: 'ASM Handbook, Volume 24: Composite Materials, Section: Laser
         Processing of Ceramic Matrix Composites, with specific reference to SiC/SiC
         composites at 1064 nm wavelength'
+      min: 0.05
+      max: 200
     laserReflectivity:
       value: 38.5
       unit: '%'
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Laser Processing
         of Ceramic Matrix Composites, with specific reflectivity measurements for
         SiC/SiC CMCs at 1064 nm wavelength'
+      min: 2
+      max: 80
 machineSettings:
   energyDensity:
     value: 5

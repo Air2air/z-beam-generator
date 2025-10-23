@@ -48,12 +48,16 @@ materialProperties:
       research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
         Polyurethane composite thermal properties data (2023); ASM Handbook, Volume
         21: Composites, Section 2.4.3 Polymer Matrix Composites'
+      min: 500
+      max: 2500.0
     thermalConductivity:
       value: 0.21
       unit: W/(m·K)
       research_basis: 'ASM Handbook, Vol. 21: Composites, Section: Polymer Matrix
         Composites - Polyurethane Composites Thermal Properties (pp. 345-348), and
         NIST Polymer Composite Database - Polyurethane-based composite materials'
+      min: 0.03
+      max: 400
     thermalDestruction:
       value: 300.0
       unit: °C
@@ -65,12 +69,16 @@ materialProperties:
         of Polymer Matrix Composites, with specific reference to cast polyurethane
         elastomers and polyurethane composites filled with mineral particulates (e.g.,
         silica, alumina) common in industrial applications.'
+      min: 0.08
+      max: 180
     thermalExpansion:
       value: 115.2
       unit: μm/m·°C
       research_basis: 'ASM Handbook, Vol. 21: Composites, Section: Polymer Matrix
         Composites with Polyurethane Matrices, pp. 345-348 (2021); NIST Special Publication
         1234: Thermal Properties of Polyurethane Composites for Industrial Applications'
+      min: -1
+      max: 250
     compressiveStrength:
       value: 80.0
       unit: MPa
@@ -80,6 +88,8 @@ materialProperties:
         consistently report compressive strength values for rigid urethanes in the
         range of 70-110 MPa, with 80 MPa being a typical mid-range value for this
         material category and hardness level.
+      min: 50
+      max: 1000
     corrosionResistance:
       value: 8.0
       unit: rating
@@ -93,16 +103,22 @@ materialProperties:
         The rating reflects high performance against water, humidity, and salt air,
         with minor points deducted for potential long-term UV degradation if not specially
         formulated.
+      min: 5
+      max: 9
     density:
       value: 1.25
       unit: g/cm³
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Polyurethane
         Matrix Composites; NIST Polymer Composite Database - Polyurethane Composite
         Material Properties'
+      min: 0.5
+      max: 8
     electricalResistivity:
       value: 120000000000000.0
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 0.001
+      max: 100000000000000.0
     flexuralStrength:
       value: 55.0
       unit: MPa
@@ -115,12 +131,16 @@ materialProperties:
         confidence is not higher due to the broad nature of the "Urethane Composites"
         category, where the specific formulation (e.g., fiber reinforcement, filler
         type) can significantly influence the final mechanical property.
+      min: 100
+      max: 2000
     hardness:
       value: 62.5
       unit: Shore D
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Polyurethane
         Matrix Composites, pp. 345-352 (2001) with specific reference to glass fiber-reinforced
         urethane composites under standard ASTM D2240 testing conditions'
+      min: 5.0
+      max: 120
     oxidationResistance:
       value: 80.0
       unit: °C
@@ -131,6 +151,8 @@ materialProperties:
         causing deterioration of mechanical properties. While urethane composites
         can withstand short-term exposure to higher temperatures, continuous operation
         above 80°C leads to accelerated oxidative degradation.
+      min: 80.0
+      max: 1650.0
     tensileStrength:
       value: 450.0
       unit: MPa
@@ -138,12 +160,16 @@ materialProperties:
         matrix composites with carbon fiber reinforcement (Section: Polymer Matrix
         Composites), with cross-reference to NIST Polymer Composite Database entries
         for urethane-based systems'
+      min: 20
+      max: 6000
     youngsModulus:
       value: 700.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Polyurethane
         Matrix Composites, pp. 345-348 (2001) and NIST Special Publication 1041: Mechanical
         Properties of Polyurethane Composites with Various Fillers'
+      min: 0.001
+      max: 3000
     fractureToughness:
       value: 2.5
       unit: MPa·√m
@@ -152,6 +178,8 @@ materialProperties:
         fracture toughness (K_IC) is typically in the range of 1-4 MPa·√m. The cited
         study on a polyurethane with a similar hardness reports a K_IC value of 2.5
         MPa·√m, which is a representative mid-range value for this material category.
+      min: 20
+      max: 100
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -163,12 +191,16 @@ materialProperties:
         for Manufacturing'' (2021) - Section 4.3.2 on polymer composite absorption
         characteristics, specifically referencing polyurethane composites with 30-40%
         glass fiber reinforcement at 1064 nm wavelength'
+      min: 0.05
+      max: 200
     laserReflectivity:
       value: 38.5
       unit: '%'
       research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
         for Manufacturing'' (2021), Table 4.2 - Reflectivity measurements of polymer
         composites at 1064 nm wavelength'
+      min: 2
+      max: 80
 machineSettings:
   fluenceThreshold:
     value: 2.5

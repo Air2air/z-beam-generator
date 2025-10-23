@@ -48,12 +48,16 @@ materialProperties:
       research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook
         - Thermophysical properties of ceramic materials; ASM Handbook Volume 4: Ceramics
         and Glasses, Section ''Thermal Properties of Structural Clay Products'''
+      min: 700
+      max: 1100
     thermalConductivity:
       value: 1.28
       unit: W/(m·K)
       research_basis: NIST Interagency/Internal Report (IR) 7563 - Section 5.2.2,
         'Measured Thermal Properties of Common Masonry Materials' (2019), which provides
         direct laboratory measurements for terracotta specimens.
+      min: 0.08
+      max: 2.5
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -64,12 +68,16 @@ materialProperties:
       research_basis: 'NIST Special Publication 260-138: Thermophysical Properties
         of Masonry Materials, Table 4.3 - Measured thermal diffusivity values for
         terracotta specimens at 20°C'
+      min: 0.1
+      max: 1
     thermalExpansion:
       value: 5.5
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Volume 4: Ceramics and Glasses, Table ''Thermal
         Expansion of Clay-Based Ceramics'' specifying terracotta (earthenware clay
         bodies) at 5.5-6.2 × 10^-6/K'
+      min: 5
+      max: 20
     compressiveStrength:
       value: 45.0
       unit: MPa
@@ -77,6 +85,8 @@ materialProperties:
         Brick and Structural Clay Tile, combined with analysis of terracotta composition
         (15-25% porosity, iron oxide content 5-12%) from ASM Handbook, Volume 4: Ceramics
         and Glasses'
+      min: 5
+      max: 100
     corrosionResistance:
       value: 8.0
       unit: rating
@@ -88,12 +98,16 @@ materialProperties:
         action, indicating superior durability in corrosive environments. The material
         maintains structural integrity when exposed to common environmental corrosives
         that would degrade metals or other masonry materials.
+      min: 2.0
+      max: 8.0
     density:
       value: 1.8
       unit: g/cm³
       research_basis: ASTM C67-23 'Standard Test Methods for Sampling and Testing
         Brick and Structural Clay Tile' & NIST Special Publication 395 'Thermal and
         Mechanical Properties of Masonry Materials'
+      min: 0.6
+      max: 3.2
     flexuralStrength:
       value: 8.0
       unit: MPa
@@ -105,11 +119,15 @@ materialProperties:
         range from the known compressive strength (45.0 MPa * 0.2 = ~9.0 MPa). The
         value of 8.0 MPa is a conservative, well-attested estimate for a typical terracotta
         body.
+      min: 2
+      max: 20
     hardness:
       value: 3.0
       unit: Mohs
       research_basis: NIST Special Publication 960-17 'Ceramic Tile and Related Products'
         & ASTM C242 Standard Terminology for Ceramic Whitewares and Related Products
+      min: 1
+      max: 6
     oxidationResistance:
       value: 800.0
       unit: °C
@@ -123,6 +141,8 @@ materialProperties:
         oxidation but by the onset of vitrification and loss of mechanical strength,
         beginning around 800°C for typical clay compositions. This is well below its
         original firing temperature, ensuring no further oxidation occurs.
+      min: 300.0
+      max: 1200.0
     tensileStrength:
       value: 3.2
       unit: MPa
@@ -130,6 +150,8 @@ materialProperties:
         and Structural Clay Tile, combined with data from NIST Special Publication
         984-1 'Properties of Masonry Materials' and academic studies on terracotta
         mechanical properties
+      min: 1
+      max: 15
     youngsModulus:
       value: 22.0
       unit: GPa
@@ -137,6 +159,8 @@ materialProperties:
         and Structural Clay Tile, combined with Charola (2004) 'Scanning electron
         microscopy in the assessment of brick properties' in Materials and Structures,
         Vol. 37, pp. 360-366
+      min: 3.0
+      max: 50
     fractureToughness:
       value: 1.1
       unit: MPa·√m
@@ -145,6 +169,8 @@ materialProperties:
         mineralogical composition (clay-based), porosity, and brittle failure mechanism.
         The cited study provides a K_IC range of 1.0-1.2 MPa·√m for such materials,
         consistent with the low compressive strength and hardness of terracotta.
+      min: 0.15
+      max: 1.1
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -156,12 +182,16 @@ materialProperties:
         for Cultural Heritage'' (2021) - Table 4.3: Optical absorption coefficients
         of traditional masonry materials, specifically citing terracotta samples with
         iron oxide content 6-8%'
+      min: 0.5
+      max: 15
     laserReflectivity:
       value: 36.2
       unit: '%'
       research_basis: 'NIST Special Publication 1176: ''Laser-Material Interaction
         Database for Cultural Heritage Materials'' (2018), Table 4.3 - Reflectivity
         measurements of terracotta at 1064 nm wavelength'
+      min: 10
+      max: 70
 machineSettings:
   dwellTime:
     value: 100

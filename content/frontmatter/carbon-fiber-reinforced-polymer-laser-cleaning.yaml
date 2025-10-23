@@ -49,6 +49,8 @@ materialProperties:
       research_basis: NIST Polymer Database - Specific Heat of Carbon Fiber Reinforced
         Epoxy Composites (CF/EP) at 25°C, measured using differential scanning calorimetry
         (DSC) per ASTM E1269
+      min: 500
+      max: 2500.0
     thermalConductivity:
       value: 5.0
       unit: W/(m·K)
@@ -56,6 +58,8 @@ materialProperties:
         ASM Handbook Vol. 21: Composites, and Zhang et al. ''Thermal properties of
         carbon fiber reinforced polymers'' in Composites Science and Technology, Vol.
         167, 2018'
+      min: 0.03
+      max: 400
     thermalDestruction:
       value: 300.0
       unit: °C
@@ -66,12 +70,16 @@ materialProperties:
       research_basis: 'NIST Polymer Composite Database - Carbon Fiber/Epoxy (T300/5208)
         at 25°C, with validation from ASM Handbook Vol. 21: Composites and CRC Materials
         Science & Engineering Handbook'
+      min: 0.08
+      max: 180
     thermalExpansion:
       value: 3.0
       unit: 10⁻⁶/K
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Thermal Properties
         of Polymer Matrix Composites, with specific reference to unidirectional carbon
         fiber/epoxy composites (typical 60% fiber volume fraction)'
+      min: -1
+      max: 250
     compressiveStrength:
       value: 570.0
       unit: MPa
@@ -81,6 +89,8 @@ materialProperties:
         The value of 570 MPa is a representative median for this common composite
         class under standard ambient test conditions (room temperature, quasi-static
         loading).
+      min: 50
+      max: 1000
     corrosionResistance:
       value: 8.0
       unit: rating
@@ -91,6 +101,8 @@ materialProperties:
         from galvanic corrosion when in contact with metals, and the polymer matrix
         can be susceptible to degradation from UV exposure and certain solvents over
         very long periods.
+      min: 5
+      max: 9
     density:
       value: 1.55
       unit: g/cm³
@@ -98,10 +110,14 @@ materialProperties:
         Composites, Carbon Fiber Reinforced Polymer properties table, with cross-verification
         from NIST Polymer Composite Database and Gibson''s ''Principles of Composite
         Material Mechanics'''
+      min: 0.5
+      max: 8
     electricalResistivity:
       value: 0.0015
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 0.001
+      max: 100000000000000.0
     flexuralStrength:
       value: 600.0
       unit: MPa
@@ -113,12 +129,16 @@ materialProperties:
         the range of 500-700 MPa. The value of 600 MPa is a representative median
         from these sources for a 3-point bend test, though the exact value can vary
         significantly with the specific composite formulation and manufacturing process.
+      min: 100
+      max: 2000
     hardness:
       value: 62.3
       unit: HRM
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Mechanical Properties
         of Carbon Fiber Reinforced Polymers, specifically citing Rockwell M scale
         testing of T300/934 epoxy composite (60% fiber volume fraction)'
+      min: 5.0
+      max: 120
     oxidationResistance:
       value: 177.0
       unit: °C
@@ -128,17 +148,23 @@ materialProperties:
         around 177°C (350°F). While carbon fibers are stable to much higher temperatures
         in inert atmospheres, this matrix-dominated property defines the material's
         upper use limit in an oxidative environment.
+      min: 80.0
+      max: 1650.0
     tensileStrength:
       value: 3025.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 21: Composites, Table 3 - Typical Mechanical
         Properties of Carbon Fiber Reinforced Polymer (CFRP) with High-Strength PAN-based
         Carbon Fibers in Epoxy Matrix (60% fiber volume fraction)'
+      min: 20
+      max: 6000
     youngsModulus:
       value: 130.0
       unit: GPa
       research_basis: 'NIST Polymer Composites Database - Carbon Fiber/Epoxy Unidirectional
         Composite (AS4/3501-6), Longitudinal Modulus: 150 GPa at 23°C per ASTM D3039'
+      min: 0.001
+      max: 3000
     fractureToughness:
       value: 38.5
       unit: MPa·√m
@@ -148,6 +174,8 @@ materialProperties:
         for variations in epoxy vs. thermoplastic matrices and testing methodologies.
         Lower values (32-38 MPa·√m) are typical for brittle epoxy systems, while toughened
         matrices can reach 45 MPa·√m.
+      min: 20
+      max: 100
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -158,12 +186,16 @@ materialProperties:
       research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
         for Carbon Fiber Composites'' (2021) and ASM Handbook Vol. 21: Composites,
         Section on ''Laser Processing of CFRP'''
+      min: 0.05
+      max: 200
     laserReflectivity:
       value: 4.2
       unit: '%'
       research_basis: NIST Materials Data Repository - Laser Interaction with Composite
         Materials Database, specifically CFRP with epoxy matrix and high-strength
         carbon fibers, measured at 1064 nm wavelength
+      min: 2
+      max: 80
 machineSettings:
   energyDensity:
     value: 5

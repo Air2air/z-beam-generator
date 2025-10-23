@@ -45,10 +45,14 @@ materialProperties:
       value: 3968.0
       unit: K
       research_basis: materials_science_literature
+      min: 907
+      max: 5870
     meltingPoint:
       value: 1964.0
       unit: °C
       research_basis: materials_science_literature
+      min: -39
+      max: 3422
     specificHeat:
       value: 243.0
       unit: J/(kg·K)
@@ -56,12 +60,16 @@ materialProperties:
         of Pure Metals, CRC Handbook of Chemistry and Physics 104th Edition, and ASM
         Handbook Volume 2: Properties and Selection of Nonferrous Alloys and Special-Purpose
         Materials'
+      min: 100
+      max: 2000
     thermalConductivity:
       value: 150.0
       unit: W/(m·K)
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1, p. 714; NIST Standard
         Reference Database 144, ''Thermophysical Properties of Pure Metals'''
+      min: 7.0
+      max: 430
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -70,18 +78,24 @@ materialProperties:
       value: 2237.0
       unit: K
       research_basis: materials_science_literature
+      min: 873
+      max: 3695
     thermalDiffusivity:
       value: 24.9
       unit: mm²/s
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table ''Thermal Properties of
         Pure Metals'' specifically lists rhodium thermal diffusivity at 298K'
+      min: 0.06
+      max: 174
     thermalExpansion:
       value: 8.3
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1, p. 700; NIST Materials
         Data Repository - Rhodium Thermal Expansion Coefficients'
+      min: 0.5
+      max: 33
     compressiveStrength:
       value: 950.0
       unit: MPa
@@ -92,6 +106,8 @@ materialProperties:
         materials handbooks. Test conditions are assumed to be at room temperature
         (20-25°C). It is important to note that compressive strength can vary significantly
         with purity, grain size, and work-hardening state.
+      min: 50
+      max: 2000
     corrosionResistance:
       value: 8.0
       unit: rating
@@ -101,20 +117,28 @@ materialProperties:
         by sulfur compounds. Its rating is slightly lower than platinum (typically
         9-10) due to potential susceptibility in certain strongly oxidizing environments
         at high temperatures.
+      min: 1
+      max: 10
     density:
       value: 12.41
       unit: g/cm³
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1, p. 691; CRC Handbook
         of Chemistry and Physics, 103rd Edition (2022), Section 4, p. 4-124'
+      min: 0.53
+      max: 22.6
     electricalConductivity:
       value: 21100000.0
       unit: S/m
       research_basis: materials_science_literature
+      min: 0.67
+      max: 63.0
     electricalResistivity:
       value: 4.3e-08
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 1.0e-08
+      max: 1.5e-06
     flexuralStrength:
       value: 758.0
       unit: MPa
@@ -126,12 +150,16 @@ materialProperties:
         using a standard conversion factor for brittle materials where flexural strength
         is typically 65-70% of the ultimate tensile strength. The ASM Handbook is
         the authoritative source for this mechanical property data.
+      min: 2.5
+      max: 1050.0
     hardness:
       value: 1100.0
       unit: HV
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
         Properties of Pure Metals, Rhodium section'
+      min: 0.5
+      max: 3500
     oxidationResistance:
       value: 600.0
       unit: °C
@@ -141,21 +169,29 @@ materialProperties:
         to significant and continuous mass loss, making it unsuitable for prolonged
         service. This behavior is well-documented in metallurgical references for
         platinum-group metals.
+      min: 200
+      max: 1200
     porosity:
       value: 0.0001
       unit: '%'
       research_basis: ai_research_comprehensive
+      min: 0.0
+      max: 15.0
     tensileStrength:
       value: 951.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Rhodium properties table, pp. 701-702'
+      min: 3.0
+      max: 3000.0
     youngsModulus:
       value: 380.0
       unit: GPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
         Properties of Precious Metals and Alloys, p. 702'
+      min: 5
+      max: 600
     fractureToughness:
       value: 125.0
       unit: MPa·√m
@@ -163,6 +199,8 @@ materialProperties:
         high-purity, wrought rhodium metal at room temperature, as reported in a major
         materials reference. The value is consistent with rhodium's high hardness
         and moderate ductility for a precious metal.
+      min: 20
+      max: 200
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -171,46 +209,66 @@ materialProperties:
       value: 0.45
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 2.0
+      max: 8.0
     absorptivity:
       value: 0.21
       unit: dimensionless
       research_basis: materials_science_literature
+      min: 2.0
+      max: 65.0
     laserAbsorption:
       value: 38.0
       unit: '%'
       research_basis: NIST Materials Data Repository - Optical Properties of Noble
         Metals at 1064 nm wavelength, supplemented by Palik's Handbook of Optical
         Constants of Solids (1998) for Rhodium-specific measurements
+      min: 0.02
+      max: 100
     laserDamageThreshold:
       value: 0.85
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 0.1
+      max: 20.0
     laserReflectivity:
       value: 78.2
       unit: '%'
       research_basis: Palik, E.D. Handbook of Optical Constants of Solids, Academic
         Press (1998), Volume 2, pp. 421-428; and Johnson, P.B. & Christy, R.W. Physical
         Review B 9, 5056 (1974) for rhodium optical constants at 1064 nm
+      min: 5
+      max: 99.9
     reflectivity:
       value: 0.82
       unit: dimensionless
       research_basis: materials_science_literature
+      min: 85
+      max: 98
     thermalShockResistance:
       value: 450.0
       unit: °C
       research_basis: materials_science_literature
+      min: 50
+      max: 400
     absorptionCoefficient:
       value: 10700000.0
       unit: m⁻¹
       research_basis: materials_science_literature
+      min: 100000
+      max: 50000000
     surfaceRoughness:
       value: 0.025
       unit: µm
       research_basis: materials_science_literature
+      min: 0.4
+      max: 150
     vaporPressure:
       value: 0.00133
       unit: Pa
       research_basis: materials_science_literature
+      min: 1.0e-10
+      max: 0.001
 machineSettings:
   fluenceThreshold:
     value: 2.5

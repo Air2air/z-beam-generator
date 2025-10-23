@@ -45,20 +45,28 @@ materialProperties:
       value: 2970.0
       unit: °C
       research_basis: materials_science_literature
+      min: 907
+      max: 5870
     meltingPoint:
       value: 1064.18
       unit: °C
       research_basis: materials_science_literature
+      min: -39
+      max: 3422
     specificHeat:
       value: 129.1
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
         Gold Thermophysical Properties (CRC Handbook, 84th Edition)'
+      min: 100
+      max: 2000
     thermalConductivity:
       value: 318.0
       unit: W/(m·K)
       research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
         of Fluid Systems - Gold thermal conductivity at 300K (27°C)'
+      min: 7.0
+      max: 430
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -67,17 +75,23 @@ materialProperties:
       value: 1337.33
       unit: K
       research_basis: materials_science_literature
+      min: 873
+      max: 3695
     thermalDiffusivity:
       value: 127.0
       unit: mm²/s
       research_basis: 'NIST Standard Reference Database: Thermophysical Properties
         of Matter, specifically for pure gold (99.99%) at 300K'
+      min: 0.06
+      max: 174
     thermalExpansion:
       value: 14.2
       unit: 10^-6/K
       research_basis: 'NIST Standard Reference Database 74 (2019) - Thermophysical
         Properties of Matter, ASM Handbook Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials'
+      min: 0.5
+      max: 33
     compressiveStrength:
       value: 120.0
       unit: MPa
@@ -90,10 +104,14 @@ materialProperties:
         confidence reflects the fact that compressive strength is rarely a critical
         design parameter for gold due to its primary use in applications where extreme
         ductility is paramount.
+      min: 50
+      max: 2000
     corrosionResistance:
       value: 10.0
       unit: rating
       research_basis: Gold is a noble metal,位列最耐腐蚀的金属之一。它不与氧气、水或常见环境污染物反应，在正常大气和水中条件下完全不受腐蚀。其极高的稳定性源于其电化学特性，使其在电化学序中位于最正的位置，几乎不形成氧化物或其他化合物。
+      min: 1
+      max: 10
     density:
       value: 19.32
       unit: g/cm³
@@ -101,14 +119,20 @@ materialProperties:
         Alloys and Special-Purpose Materials, ''Gold and Gold Alloys'', p. 688, Table
         1 (1990); NIST Standard Reference Database 124, ''Gold (Au) - Crystal Structure:
         Face-centered cubic'''
+      min: 0.53
+      max: 22.6
     electricalConductivity:
       value: 45200000.0
       unit: S/m
       research_basis: materials_science_literature
+      min: 0.67
+      max: 63.0
     electricalResistivity:
       value: 2.214e-08
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 1.0e-08
+      max: 1.5e-06
     flexuralStrength:
       value: 120.0
       unit: MPa
@@ -118,12 +142,16 @@ materialProperties:
         relationship between its ultimate tensile strength (UTS ~100-140 MPa) and
         the mechanics of a 3-point bend test for a perfectly plastic material. This
         value is highly dependent on purity, temper (cold work), and grain size.
+      min: 2.5
+      max: 1050.0
     hardness:
       value: 25.0
       unit: HV
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
         Properties of Gold'
+      min: 0.5
+      max: 3500
     oxidationResistance:
       value: 1064.0
       unit: °C
@@ -132,16 +160,22 @@ materialProperties:
         is its melting point (1064°C), which represents the maximum temperature for
         continuous service in air, as it remains unoxidized up to its liquid state.
         No significant oxidation occurs below this temperature.
+      min: 200
+      max: 1200
     porosity:
       value: 0.0001
       unit: '%'
       research_basis: ai_research_comprehensive
+      min: 0.0
+      max: 15.0
     tensileStrength:
       value: 220.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1: Typical Mechanical Properties
         of Wrought Gold and Gold Alloys - Pure Gold (99.99% Au) annealed condition'
+      min: 3.0
+      max: 3000.0
     youngsModulus:
       value: 79.0
       unit: GPa
@@ -149,6 +183,8 @@ materialProperties:
         Alloys and Special-Purpose Materials, Table 1: Physical Properties of Gold,
         pp. 700-701 (1990); NIST Materials Data Repository - Gold (Au) Crystal Structure:
         Face-Centered Cubic'
+      min: 5
+      max: 600
     fractureToughness:
       value: 0.8
       unit: MPa·√m
@@ -161,6 +197,8 @@ materialProperties:
         mechanics (LEFM) conditions can be met. The ASM Handbook and other materials
         science references confirm that pure gold's fracture toughness is not a standard
         property due to its exceptional malleability.
+      min: 20
+      max: 200
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -169,45 +207,65 @@ materialProperties:
       value: 0.45
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 2.0
+      max: 8.0
     absorptivity:
       value: 0.017
       unit: dimensionless
       research_basis: materials_science_literature
+      min: 2.0
+      max: 65.0
     laserAbsorption:
       value: 2.5
       unit: '%'
       research_basis: Johnson, P. B., & Christy, R. W. (1972). Optical Constants of
         the Noble Metals. Physical Review B, 6(12), 4370-4379. doi:10.1103/PhysRevB.6.4370
+      min: 0.02
+      max: 100
     laserDamageThreshold:
       value: 0.45
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 0.1
+      max: 20.0
     laserReflectivity:
       value: 97.8
       unit: '%'
       research_basis: 'NIST Standard Reference Database 120: ''Reflectance and Emittance
         of Spectrally Selective Materials'' - Gold (Au) at 1064 nm wavelength, room
         temperature, polished surface'
+      min: 5
+      max: 99.9
     reflectivity:
       value: 0.985
       unit: dimensionless (reflectance ratio)
       research_basis: materials_science_literature
+      min: 85
+      max: 98
     thermalShockResistance:
       value: 1.8
       unit: MW/m
       research_basis: materials_science_literature
+      min: 50
+      max: 400
     absorptionCoefficient:
       value: 69000000.0
       unit: m⁻¹
       research_basis: materials_science_literature
+      min: 100000
+      max: 50000000
     surfaceRoughness:
       value: 0.025
       unit: μm
       research_basis: materials_science_literature
+      min: 0.4
+      max: 150
     vaporPressure:
       value: 0.000172
       unit: Pa
       research_basis: materials_science_literature
+      min: 1.0e-10
+      max: 0.001
 machineSettings:
   fluenceThreshold:
     value: 0.8

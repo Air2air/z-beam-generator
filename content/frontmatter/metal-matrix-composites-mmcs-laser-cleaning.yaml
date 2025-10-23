@@ -48,12 +48,16 @@ materialProperties:
       unit: J/(kg·K)
       research_basis: 'ASM Handbook, Volume 21: Composites, Specific Heat data for
         Aluminum Matrix Composites (SiC particulate reinforcement) at 300K'
+      min: 500
+      max: 2500.0
     thermalConductivity:
       value: 180.25
       unit: W/(m·K)
       research_basis: 'ASM Handbook, Vol. 21: Composites, Chapter: Thermal Properties
         of Metal Matrix Composites, with specific reference to Al/SiC MMC systems
         (60-65% Al, 35-40% SiC) commonly used in laser cleaning applications'
+      min: 0.03
+      max: 400
     thermalDestruction:
       value: 300.0
       unit: °C
@@ -64,12 +68,16 @@ materialProperties:
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Thermal Properties
         of Metal Matrix Composites, with specific reference to Al/SiC particulate
         composites (20-30 vol% SiC) at room temperature'
+      min: 0.08
+      max: 180
     thermalExpansion:
       value: 17.2
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Aluminum Matrix
         Composites, Table: Properties of Selected Aluminum Matrix Composites (6061-Al/SiC/25p)
         at 20-100°C'
+      min: -1
+      max: 250
     compressiveStrength:
       value: 350.0
       unit: MPa
@@ -79,6 +87,8 @@ materialProperties:
         strength is often in the range of 300-400 MPa, with 350 MPa being a representative
         mid-range value. The hardness of 55 HRB further supports this strength range
         for a discontinuously reinforced MMC.
+      min: 50
+      max: 1000
     corrosionResistance:
       value: 3.0
       unit: rating
@@ -88,25 +98,35 @@ materialProperties:
         specific ratings vary by matrix/reinforcement combination, general environmental
         corrosion resistance is significantly compromised compared to the monolithic
         base metal.
+      min: 5
+      max: 9
     density:
       value: 2.6
       unit: g/cm³
       research_basis: 'ASM Handbook, Volume 21: Composites, Specific data for Al 6061/SiC/20p
         composite system (most common MMC for laser cleaning applications)'
+      min: 0.5
+      max: 8
     electricalResistivity:
       value: 4.2e-08
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 0.001
+      max: 100000000000000.0
     flexuralStrength:
       value: 450.0
       unit: MPa
       research_basis: materials_science_literature
+      min: 100
+      max: 2000
     hardness:
       value: 55.0
       unit: HRB
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Aluminum Matrix
         Composites - Typical mechanical properties of 6061-Al/SiC/10p composite show
         Rockwell B hardness of 55 HRB (ASM International, 2001)'
+      min: 5.0
+      max: 120
     oxidationResistance:
       value: 450.0
       unit: °C
@@ -119,20 +139,28 @@ materialProperties:
         accelerated oxidation at reinforcement/matrix interfaces. The cited ASM Handbook
         provides this range for high-performance AMCs, with 450°C representing a practical
         upper bound before significant oxidation and property loss occur.
+      min: 80.0
+      max: 1650.0
     tensileStrength:
       value: 580.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 21: Composites, Specific data for 6061-Al/SiC/25p
         composite showing tensile strength of 580 MPa under standard testing conditions
         (ASTM E8/E8M)'
+      min: 20
+      max: 6000
     youngsModulus:
       value: 70.0
       unit: GPa
       research_basis: 'ASM Handbook, Volume 21: Composites, Specific data for Al/SiC
         MMCs with 30-40% reinforcement fraction, validated against NIST MMCDB and
         T.W. Clyne''s ''Comprehensive Composite Materials'''
+      min: 0.001
+      max: 3000
     fractureToughness:
       value: 25.0
+      min: 20
+      max: 100
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -143,12 +171,16 @@ materialProperties:
       research_basis: 'ASM Handbook, Volume 21: Composites, Chapter: Laser Processing
         of Metal Matrix Composites, with specific reference to aluminum-silicon carbide
         (Al-SiC) systems under Nd:YAG laser irradiation at 1064 nm wavelength'
+      min: 0.05
+      max: 200
     laserReflectivity:
       value: 38.5
       unit: '%'
       research_basis: 'ASM Handbook, Volume 21: Composites, Chapter: Laser Processing
         of Metal Matrix Composites, with specific reference to Al-SiC MMC systems
         (20-30% SiC reinforcement) under Nd:YAG laser irradiation at 1064 nm'
+      min: 2
+      max: 80
 machineSettings:
   dwellTime:
     value: 100

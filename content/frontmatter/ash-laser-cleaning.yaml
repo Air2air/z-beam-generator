@@ -47,11 +47,15 @@ materialProperties:
       research_basis: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190),
         Chapter 4: Moisture Relations and Physical Properties of Wood, Table 4-3:
         Specific heat of various wood species at 12% moisture content'
+      min: 800
+      max: 2500
     thermalConductivity:
       value: 0.11
       unit: W/(m·K)
       research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest
         Service, 2010) and NIST Standard Reference Data for North American Hardwoods'
+      min: 0.04
+      max: 0.4
     thermalDestruction:
       value: 300.0
       unit: °C
@@ -63,6 +67,8 @@ materialProperties:
         an Engineering Material. USDA Forest Service, Chapter 4: Thermal Properties
         of Wood, Table 4-3, specifically citing White Ash (Fraxinus americana) at
         12% moisture content.'
+      min: 0.0001
+      max: 0.4
     thermalExpansion:
       value: 8.5
       unit: 10^-6/K
@@ -70,6 +76,8 @@ materialProperties:
         an Engineering Material. USDA Forest Service, General Technical Report FPL-GTR-190,
         Chapter 4: Mechanical Properties of Wood, Table 4-3: Thermal expansion coefficients
         for various wood species.'
+      min: 3.0
+      max: 60
     compressiveStrength:
       value: 51.0
       unit: MPa
@@ -79,6 +87,8 @@ materialProperties:
         is consistently reported as 51 MPa at 12% moisture content, which is the standard
         condition for wood mechanical testing. This value aligns with the known high
         strength-to-weight ratio of ash among hardwoods.
+      min: 20
+      max: 80
     corrosionResistance:
       value: 3.0
       unit: rating
@@ -87,12 +97,16 @@ materialProperties:
         without preservative treatment. While it has good mechanical properties, its
         heartwood is perishable and has limited resistance to wood-destroying organisms,
         placing it in the low durability category for corrosion/decay resistance.
+      min: 2.0
+      max: 8.0
     density:
       value: 0.68
       unit: g/cm³
       research_basis: 'Wood Handbook: Wood as an Engineering Material, USDA Forest
         Service, Forest Products Laboratory, Chapter 4: Mechanical Properties of Wood,
         Table 4-3a (Specific gravity of common hardwoods at 12% moisture content)'
+      min: 0.12
+      max: 1.5
     flexuralStrength:
       value: 103.0
       unit: MPa
@@ -101,6 +115,8 @@ materialProperties:
         a modulus of rupture (MOR) of 14,900 lbf/in², which converts to 103 MPa. This
         value is derived from standardized 3-point and 4-point bend tests on small,
         clear, straight-grained specimens.
+      min: 40
+      max: 150
     hardness:
       value: 1320.0
       unit: MPa
@@ -109,6 +125,8 @@ materialProperties:
         Table 4-3: Hardness of commercially important woods grown in the United States.
         Specific data for White Ash (Fraxinus americana) - 1320 lbf (5870 N) converted
         to MPa using standard methodology.'
+      min: 1
+      max: 5000
     oxidationResistance:
       value: 150.0
       unit: °C
@@ -119,10 +137,14 @@ materialProperties:
         150°C leads to significant pyrolysis, charring, and oxidative degradation
         for most wood species, including hardwoods like Ash. This temperature represents
         the maximum for continuous service before chemical decomposition accelerates.
+      min: 82.0
+      max: 204.0
     porosity:
       value: 0.59
       unit: m³/m³
       research_basis: ai_research_comprehensive
+      min: 12
+      max: 65
     tensileStrength:
       value: 125.0
       unit: MPa
@@ -130,11 +152,15 @@ materialProperties:
         Engineering Material. General Technical Report FPL-GTR-190. Table 5-3a: Mechanical
         properties of some commercially important woods grown in the United States
         (White Ash, 12% moisture content).'
+      min: 20
+      max: 200
     youngsModulus:
       value: 12.0
       unit: GPa
       research_basis: 'USDA Forest Products Laboratory Wood Handbook Chapter 4: Mechanical
         Properties - Table 4-3 White Ash modulus of elasticity'
+      min: 5
+      max: 20000
     fractureToughness:
       value: 3.5
       unit: MPa·√m
@@ -143,6 +169,8 @@ materialProperties:
         for Ash fall within a range, with 3.5 MPa·√m being a representative mean value
         for clear, straight-grained material tested in the radial-longitudinal orientation
         at room temperature.
+      min: 0.33
+      max: 4.4
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -153,12 +181,16 @@ materialProperties:
       research_basis: 'NIST Standard Reference Database 69: Laser Interaction with
         Wood Materials, specifically Table 4.2 for Fraxinus species (Ash) at 1064
         nm wavelength'
+      min: 1
+      max: 50
     laserReflectivity:
       value: 32.7
       unit: '%'
       research_basis: 'NIST Standard Reference Database 120: Optical Properties of
         Materials for Laser Applications, Section 8.3 - Wood Species Optical Characteristics
         (2021)'
+      min: 10
+      max: 60
 machineSettings:
   energyDensity:
     value: 5.1

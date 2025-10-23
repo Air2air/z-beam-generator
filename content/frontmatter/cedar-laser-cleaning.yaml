@@ -46,12 +46,16 @@ materialProperties:
       unit: J/(kg·K)
       research_basis: NIST Wood Database - Specific Heat of Eastern Red Cedar (Juniperus
         virginiana) at 12% moisture content, 20°C
+      min: 800
+      max: 2500
     thermalConductivity:
       value: 0.12
       unit: W/(m·K)
       research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest
         Service, FPL-GTR-190), Chapter 4: Thermal Properties of Wood, Table 4-3: Thermal
         conductivity of selected woods at 12% moisture content'
+      min: 0.04
+      max: 0.4
     thermalDestruction:
       value: 300.0
       unit: °C
@@ -63,12 +67,16 @@ materialProperties:
         Material. USDA Forest Service, 2010. Chapter 4: Thermal Properties, Table
         4-3 provides species-specific thermal diffusivity values for various woods
         including cedar.'
+      min: 0.0001
+      max: 0.4
     thermalExpansion:
       value: 3.7
       unit: 10^-6/K
       research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest
         Service, Forest Products Laboratory. General Technical Report FPL-GTR-190.
         2010. Table 4-3: Coefficients of thermal expansion for selected woods.'
+      min: 3.0
+      max: 60
     compressiveStrength:
       value: 31.0
       unit: MPa
@@ -77,6 +85,8 @@ materialProperties:
         31.0 MPa. This aligns with typical values for softwoods in this density range
         (0.37 g/cm³). Test conditions are standard ASTM D143 for small clear specimens
         at 12% moisture content.
+      min: 20
+      max: 80
     corrosionResistance:
       value: 4.0
       unit: rating
@@ -87,6 +97,8 @@ materialProperties:
         typically receives a "moderate" durability rating with a service life of 15-25
         years for above-ground applications, placing it in the lower-middle range
         of wood durability scales.
+      min: 2.0
+      max: 8.0
     density:
       value: 0.37
       unit: g/cm³
@@ -94,6 +106,8 @@ materialProperties:
         Service, Forest Products Laboratory. 2010. General Technical Report FPL-GTR-190.
         Table 4-3, specific gravity values for Western Red Cedar (Thuja plicata) at
         12% moisture content.'
+      min: 0.12
+      max: 1.5
     flexuralStrength:
       value: 59.0
       unit: MPa
@@ -102,6 +116,8 @@ materialProperties:
         converts to approximately 59.0 MPa. This value represents the flexural strength
         measured via standard 3-point bend testing per ASTM D143 standards for small
         clear wood specimens.
+      min: 40
+      max: 150
     hardness:
       value: 4.0
       unit: MPa
@@ -109,6 +125,8 @@ materialProperties:
         4: Mechanical Properties of Wood, Table 4-3: Hardness of commercially important
         woods grown in the United States, specifically Eastern Red Cedar (Juniperus
         virginiana) Janka hardness of 900 lb_f converted to MPa'
+      min: 1
+      max: 5000
     oxidationResistance:
       value: 177.0
       unit: °C
@@ -118,10 +136,14 @@ materialProperties:
         begin, but 177°C is a commonly cited maximum safe continuous service temperature
         for wood in engineering applications before charring and significant loss
         of mechanical properties occur.
+      min: 82.0
+      max: 204.0
     porosity:
       value: 0.72
       unit: m³/m³
       research_basis: ai_research_comprehensive
+      min: 12
+      max: 65
     tensileStrength:
       value: 85.0
       unit: MPa
@@ -129,6 +151,8 @@ materialProperties:
         Engineering Material. General Technical Report FPL-GTR-190. 2010. Table 5-3a:
         Mechanical properties of commercially important woods grown in the United
         States.'
+      min: 20
+      max: 200
     youngsModulus:
       value: 6.9
       unit: GPa
@@ -136,6 +160,8 @@ materialProperties:
         Engineering Material. General Technical Report FPL-GTR-190. Table 5-3a: Mechanical
         properties of some commercially important woods grown in the United States
         (Western Red Cedar, 12% moisture content).'
+      min: 5
+      max: 20000
     fractureToughness:
       value: 0.37
       unit: MPa·√m
@@ -145,6 +171,8 @@ materialProperties:
         0.37 MPa·√m is a representative mid-range figure for such species, consistent
         with data published by authoritative sources like the USDA Forest Products
         Laboratory.
+      min: 0.33
+      max: 4.4
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -155,6 +183,8 @@ materialProperties:
       research_basis: 'NIST Special Publication 1034: ''Optical Properties of Wood
         Species for Laser Processing Applications'' (2018), Table 4.2 - Western Red
         Cedar absorption at 1064 nm wavelength'
+      min: 1
+      max: 50
     laserReflectivity:
       value: 42.7
       unit: '%'
@@ -162,6 +192,8 @@ materialProperties:
         Materials for Concentrating Solar Power, supplemented by Miller et al. (2004)
         ''Laser cleaning of wooden artifacts: precise control and effect on wood surfaces''
         in Applied Physics A'
+      min: 10
+      max: 60
 machineSettings:
   energyDensity:
     value: 2.5

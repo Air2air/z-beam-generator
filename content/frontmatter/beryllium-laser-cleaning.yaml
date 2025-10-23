@@ -46,20 +46,28 @@ materialProperties:
       value: 2742.0
       unit: K
       research_basis: materials_science_literature
+      min: 907
+      max: 5870
     meltingPoint:
       value: 1287.0
       unit: °C
       research_basis: materials_science_literature
+      min: -39
+      max: 3422
     specificHeat:
       value: 1925.0
       unit: J/(kg·K)
       research_basis: materials_science_literature
+      min: 100
+      max: 2000
     thermalConductivity:
       value: 201.0
       unit: W/(m·K)
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1: Physical Properties
         of Beryllium at 20°C'
+      min: 7.0
+      max: 430
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -68,6 +76,8 @@ materialProperties:
       value: 1287.0
       unit: °C
       research_basis: materials_science_literature
+      min: 873
+      max: 3695
     thermalDiffusivity:
       value: 0.07
       unit: m²/s
@@ -75,12 +85,16 @@ materialProperties:
         Alloys and Special-Purpose Materials (1990), Table ''Thermal Properties of
         Beryllium'' reporting thermal diffusivity of 0.683 cm²/s at 20°C for high-purity
         beryllium (converted to 70 mm²/s)'
+      min: 0.06
+      max: 174
     thermalExpansion:
       value: 11.3
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Table ''Physical Properties of Beryllium''
         (20°C to 100°C range)'
+      min: 0.5
+      max: 33
     compressiveStrength:
       value: 600.0
       unit: MPa
@@ -90,6 +104,8 @@ materialProperties:
         beryllium block, a common industrial form. The high stiffness-to-weight ratio
         and hexagonal crystal structure of beryllium contribute to its anisotropic
         mechanical properties, where compressive strength is a key design parameter.
+      min: 50
+      max: 2000
     corrosionResistance:
       value: 8.0
       unit: rating
@@ -99,20 +115,28 @@ materialProperties:
         its corrosion resistance is highly dependent on purity and specific environments;
         it can be attacked by acids, halogens, and strong alkalis, but performs very
         well in general atmospheric conditions.
+      min: 1
+      max: 10
     density:
       value: 1.848
       unit: g/cm³
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Chapter: Beryllium and Beryllium
         Alloys, Table: Physical Properties of Beryllium'
+      min: 0.53
+      max: 22.6
     electricalConductivity:
       value: 30800000.0
       unit: S/m
       research_basis: materials_science_literature
+      min: 0.67
+      max: 63.0
     electricalResistivity:
       value: 3.6e-08
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 1.0e-08
+      max: 1.5e-06
     flexuralStrength:
       value: 345.0
       unit: MPa
@@ -122,12 +146,16 @@ materialProperties:
         by 4-point bend testing. The value falls within the 250-450 MPa range commonly
         reported for high-purity, hot-pressed block material in authoritative materials
         databases.
+      min: 2.5
+      max: 1050.0
     hardness:
       value: 150.0
       unit: HB
       research_basis: 'ASM Handbook Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1: Typical Room-Temperature
         Mechanical Properties of Commercial-Purity Beryllium'
+      min: 0.5
+      max: 3500
     oxidationResistance:
       value: 600.0
       unit: °C
@@ -137,22 +165,30 @@ materialProperties:
         temperatures are limited to approximately 600°C (1112°F) due to rapid oxidation
         above this point. Significant oxidation begins at lower temperatures (~500°C),
         but 600°C is the established maximum service limit for sustained exposure.
+      min: 200
+      max: 1200
     porosity:
       value: 0.003
       unit: '%'
       research_basis: ai_research_comprehensive
+      min: 0.0
+      max: 15.0
     tensileStrength:
       value: 448.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1: Typical Room-Temperature
         Mechanical Properties of Wrought Beryllium'
+      min: 3.0
+      max: 3000.0
     youngsModulus:
       value: 287.0
       unit: GPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
         Properties of Beryllium'
+      min: 5
+      max: 600
     fractureToughness:
       value: 4.0
       unit: MPa·√m
@@ -161,6 +197,8 @@ materialProperties:
         systems. The ASM Handbook provides a typical K_IC range of 3-5 MPa·√m for
         high-purity, fine-grained beryllium at room temperature, with 4.0 MPa·√m being
         a commonly cited representative value for well-processed material.
+      min: 20
+      max: 200
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -169,46 +207,66 @@ materialProperties:
       value: 0.8
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 2.0
+      max: 8.0
     absorptivity:
       value: 0.38
       unit: dimensionless
       research_basis: materials_science_literature
+      min: 2.0
+      max: 65.0
     laserAbsorption:
       value: 38.7
       unit: '%'
       research_basis: 'NIST Standard Reference Database 120: ''Optical Properties
         of Metallic Elements'' - Beryllium absorption data at 1064 nm wavelength,
         room temperature (298K)'
+      min: 0.02
+      max: 100
     laserDamageThreshold:
       value: 1.8
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 0.1
+      max: 20.0
     laserReflectivity:
       value: 54.2
       unit: '%'
       research_basis: 'NIST Standard Reference Database 120: ''Reflectance and Emittance
         of Spectrally Selective Materials'' - Beryllium optical properties at 1064
         nm wavelength (common laser cleaning parameter)'
+      min: 5
+      max: 99.9
     reflectivity:
       value: 0.55
       unit: dimensionless (ratio)
       research_basis: materials_science_literature
+      min: 85
+      max: 98
     thermalShockResistance:
       value: 1.8
       unit: MW/m
       research_basis: materials_science_literature
+      min: 50
+      max: 400
     absorptionCoefficient:
       value: 0.42
       unit: dimensionless (fraction of incident radiation)
       research_basis: materials_science_literature
+      min: 100000
+      max: 50000000
     surfaceRoughness:
       value: 0.8
       unit: µm
       research_basis: materials_science_literature
+      min: 0.4
+      max: 150
     vaporPressure:
       value: 133.0
       unit: Pa
       research_basis: materials_science_literature
+      min: 1.0e-10
+      max: 0.001
 machineSettings:
   fluenceThreshold:
     value: 2.5

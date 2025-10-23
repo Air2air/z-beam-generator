@@ -47,6 +47,8 @@ materialProperties:
       research_basis: 'Wood Handbook: Wood as an Engineering Material (Forest Products
         Laboratory, 2010) - Table 4-3 provides specific heat values for various wood
         species including cherry at 12% moisture content'
+      min: 800
+      max: 2500
     thermalConductivity:
       value: 0.15
       unit: W/(m·K)
@@ -54,6 +56,8 @@ materialProperties:
         Service, Forest Products Laboratory. General Technical Report FPL-GTR-190.
         2010. Table 4-3 provides thermal conductivity values for various wood species
         at 12% moisture content.'
+      min: 0.04
+      max: 0.4
     thermalDestruction:
       value: 300.0
       unit: °C
@@ -64,6 +68,8 @@ materialProperties:
       research_basis: 'Forest Products Laboratory. Wood Handbook: Wood as an Engineering
         Material. USDA Forest Service, 2010. Chapter 4: Thermal Properties, Table
         4-3.'
+      min: 0.0001
+      max: 0.4
     thermalExpansion:
       value: 3.7
       unit: 10^-6/K
@@ -71,6 +77,8 @@ materialProperties:
         Service, Forest Products Laboratory, Chapter 4: Moisture and Thermal Properties
         of Wood, Table 4-5: Thermal expansion coefficients of selected woods at 8-12%
         moisture content'
+      min: 3.0
+      max: 60
     compressiveStrength:
       value: 46.0
       unit: MPa
@@ -79,6 +87,8 @@ materialProperties:
         to the grain at 12% moisture content as 6,670 psi, which converts to 46.0
         MPa. This value is consistent with the provided hardness and density data,
         indicating a medium-strength hardwood.
+      min: 20
+      max: 80
     corrosionResistance:
       value: 2.0
       unit: rating
@@ -88,12 +98,16 @@ materialProperties:
         Wood Database specifically notes its susceptibility to rot when exposed to
         moisture and outdoor conditions, classifying it below most commonly used outdoor
         woods.
+      min: 2.0
+      max: 8.0
     density:
       value: 0.62
       unit: g/cm³
       research_basis: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190),
         Chapter 4: Mechanical Properties of Wood, Table 4-3a, USDA Forest Products
         Laboratory, 2010'
+      min: 0.12
+      max: 1.5
     flexuralStrength:
       value: 85.0
       unit: MPa
@@ -102,6 +116,8 @@ materialProperties:
         to approximately 85 MPa. This value is derived from standardized 3-point and
         4-point bend tests and is consistent with the known density and hardness properties
         provided.
+      min: 40
+      max: 150
     hardness:
       value: 84.3
       unit: MPa
@@ -110,6 +126,8 @@ materialProperties:
         Table 4-3: Hardness of commercially important woods grown in the United States.
         Specifically cites Black Cherry (Prunus serotina) Janka hardness of 950 lbf
         (4220 N) converted to N/mm² using standard methodology.'
+      min: 1
+      max: 5000
     oxidationResistance:
       value: 150.0
       unit: °C
@@ -121,10 +139,14 @@ materialProperties:
         for kiln drying and heat treatment) with a maximum safe continuous service
         temperature of 150°C to avoid charring, weight loss, and significant loss
         of mechanical strength.
+      min: 82.0
+      max: 204.0
     porosity:
       value: 0.56
       unit: m³/m³
       research_basis: ai_research_comprehensive
+      min: 12
+      max: 65
     tensileStrength:
       value: 95.0
       unit: MPa
@@ -132,10 +154,14 @@ materialProperties:
         4: Mechanical Properties of Wood, Table 4-3a: Mechanical properties of some
         commercially important woods grown in the United States - Black Cherry (Prunus
         serotina)'
+      min: 20
+      max: 200
     youngsModulus:
       value: 10.0
       unit: GPa
       research_basis: standard_material_database
+      min: 5
+      max: 20000
     fractureToughness:
       value: 0.39
       unit: MPa·√m
@@ -145,6 +171,8 @@ materialProperties:
         to the grain. The provided value is a conservative estimate for cherry based
         on its density and hardness relative to other hardwoods documented in this
         authoritative source.
+      min: 0.33
+      max: 4.4
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -155,12 +183,16 @@ materialProperties:
       research_basis: 'NIST Standard Reference Database 120: Optical Properties of
         Wood Species at 1064 nm Laser Wavelength, specifically Table 4.2 for Prunus
         serotina (Black Cherry)'
+      min: 1
+      max: 50
     laserReflectivity:
       value: 32.7
       unit: '%'
       research_basis: 'NIST Standard Reference Database 120: Optical Properties of
         Materials for Laser Applications, Section 8.3 - Wood Species Database (2021),
         with specific measurements for Prunus avium (European cherry) at 1064 nm wavelength'
+      min: 10
+      max: 60
 machineSettings:
   dwellTime:
     value: 100

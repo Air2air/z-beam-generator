@@ -46,12 +46,16 @@ materialProperties:
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
         Pyrex borosilicate glass at 20°C (https://webbook.nist.gov/cgi/inchi?ID=C977051785&Mask=2)'
+      min: 120
+      max: 900
     thermalConductivity:
       value: 1.13
       unit: W/(m·K)
       research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
         of Miscellaneous Materials, specifically borosilicate glass (Pyrex 7740) at
         300K'
+      min: 0.7
+      max: 30
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -61,12 +65,16 @@ materialProperties:
       unit: mm²/s
       research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
         of Borosilicate Glass (Pyrex 7740) at 300K'
+      min: 0.01
+      max: 15
     thermalExpansion:
       value: 3.25
       unit: 10^-6/K
       research_basis: 'Corning Incorporated Material Specification - Pyrex 7740 Borosilicate
         Glass (20-300°C range), ASM Handbook Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials'
+      min: 0.1
+      max: 15
     compressiveStrength:
       value: 1000.0
       unit: MPa
@@ -75,6 +83,8 @@ materialProperties:
         data from Corning specifies a typical compressive strength of 1 GPa (1000
         MPa). This value is a standard reference for the material's failure point
         under a crushing load.
+      min: 500
+      max: 2000
     corrosionResistance:
       value: 8.0
       unit: rating
@@ -83,16 +93,22 @@ materialProperties:
         in most environments except strong alkalis and hydrofluoric acid, where it
         shows moderate corrosion. The borosilicate composition provides superior chemical
         resistance compared to ordinary soda-lime glass.
+      min: 9
+      max: 10
     density:
       value: 2.23
       unit: g/cm³
       research_basis: 'Corning Incorporated Material Specifications for Pyrex 7740
         borosilicate glass, ASM Handbook Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials'
+      min: 1.2
+      max: 7.6
     electricalResistivity:
       value: 120000000000000.0
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 10000000000.0
+      max: 1000000000000000.0
     flexuralStrength:
       value: 69.0
       unit: MPa
@@ -102,12 +118,16 @@ materialProperties:
         4-point bend test method (ASTM C158). This value is consistent across multiple
         authoritative engineering and materials science references for borosilicate
         glass.
+      min: 50
+      max: 750.0
     hardness:
       value: 6.0
       unit: Mohs
       research_basis: 'Corning Incorporated Material Property Sheets for Pyrex 7740
         borosilicate glass, ASM Handbook Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials'
+      min: 3.5
+      max: 9.5
     oxidationResistance:
       value: 500.0
       unit: °C
@@ -116,18 +136,24 @@ materialProperties:
         This is not an oxidation temperature in the metallic sense, but the temperature
         at which the glass begins to undergo significant thermal deformation and chemical
         degradation, which is the relevant failure mode for this material class.
+      min: 400.0
+      max: 1700.0
     tensileStrength:
       value: 70.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Section ''Properties of Glass''
         and Corning Incorporated Pyrex® 7740 technical data sheets'
+      min: 30
+      max: 2000
     youngsModulus:
       value: 62.0
       unit: GPa
       research_basis: 'Corning Incorporated Material Property Sheets for Pyrex 7740
         borosilicate glass, ASM Handbook Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials'
+      min: 10
+      max: 400
     fractureToughness:
       value: 0.77
       unit: MPa·√m
@@ -136,6 +162,8 @@ materialProperties:
         from 0.70 to 0.85 MPa·√m, with 0.77 MPa·√m being a commonly reported median
         value in materials science literature and standards compilations for this
         material class.
+      min: 0.5
+      max: 2
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -144,18 +172,24 @@ materialProperties:
       value: 2.1
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 2.0
+      max: 6.0
     laserAbsorption:
       value: 3.2
       unit: '%'
       research_basis: 'NIST Standard Reference Database 78 (2019) - Optical Constants
         of Inorganic Glasses; Corning Incorporated Pyrex 7740 Technical Data Sheet
         - Composition: 80.6% SiO₂, 12.6% B₂O₃, 4.2% Na₂O, 2.2% Al₂O₃'
+      min: 0.001
+      max: 10
     laserReflectivity:
       value: 4.0
       unit: '%'
       research_basis: Palik, E.D. (1998). Handbook of Optical Constants of Solids.
         Academic Press. Vol. 2, pp. 761-763. Data for borosilicate glass (Pyrex 7740)
         at 1064 nm wavelength.
+      min: 0.1
+      max: 92
 machineSettings:
   fluenceThreshold:
     value: 2.5

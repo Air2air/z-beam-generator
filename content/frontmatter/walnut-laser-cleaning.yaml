@@ -48,12 +48,16 @@ materialProperties:
         Service, Forest Products Laboratory. 2010. Chapter 4: Moisture Relations and
         Physical Properties, Table 4-5 provides specific heat values for various wood
         species at 12% moisture content, with walnut specifically listed at 1.40 kJ·kg⁻¹·K⁻¹.'
+      min: 800
+      max: 2500
     thermalConductivity:
       value: 0.14
       unit: W/(m·K)
       research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest
         Service, FPL-GTR-190), Table 4-7: Thermal properties of selected woods at
         12% moisture content'
+      min: 0.04
+      max: 0.4
     thermalDestruction:
       value: 300.0
       unit: °C
@@ -65,12 +69,16 @@ materialProperties:
         an Engineering Material. USDA Forest Service, General Technical Report FPL-GTR-190,
         Chapter 4: Thermal Properties, Table 4-3, specific walnut data at 12% moisture
         content.'
+      min: 0.0001
+      max: 0.4
     thermalExpansion:
       value: 5.0
       unit: 10⁻⁶/K
       research_basis: 'NIST Wood Handbook: Wood as an Engineering Material, Chapter
         4: Physical Properties and Moisture Relations of Wood, Table 4-3: Coefficients
         of thermal expansion for various wood species at 12% moisture content'
+      min: 3.0
+      max: 60
     compressiveStrength:
       value: 52.0
       unit: MPa
@@ -79,6 +87,8 @@ materialProperties:
         strength) parallel to grain for Black Walnut as 52.1 MPa. This value is consistent
         with published wood engineering references and represents the standard test
         condition of compression parallel to grain at 12% moisture content.
+      min: 20
+      max: 80
     corrosionResistance:
       value: 3.0
       unit: rating
@@ -88,12 +98,16 @@ materialProperties:
         treatment. The Wood Database rates black walnut's decay resistance as "durable"
         but notes it's not suitable for ground contact without preservative treatment,
         placing it in the lower-middle range of wood durability scales.
+      min: 2.0
+      max: 8.0
     density:
       value: 0.64
       unit: g/cm³
       research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook:
         Wood as an Engineering Material. General Technical Report FPL-GTR-190. Table
         4-3: Specific gravity of some commercially important woods.'
+      min: 0.12
+      max: 1.5
     flexuralStrength:
       value: 101.0
       unit: MPa
@@ -101,12 +115,16 @@ materialProperties:
         reports the modulus of rupture (MOR) for Black Walnut (Juglans nigra) as 101
         MPa, derived from standardized 3-point and 4-point bend tests (ASTM D143).
         This value is consistent with published data for this hardwood species.
+      min: 40
+      max: 150
     hardness:
       value: 4.9
       unit: MPa
       research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest
         Service, FPL-GTR-190) and ASTM D143-14 Standard Test Methods for Small Clear
         Specimens of Timber'
+      min: 1
+      max: 5000
     oxidationResistance:
       value: 150.0
       unit: °C
@@ -118,10 +136,14 @@ materialProperties:
         of mechanical strength. Walnut, as a hardwood, falls within this general range.
         The value is a conservative estimate for the onset of significant oxidative
         degradation in an air environment.
+      min: 82.0
+      max: 204.0
     porosity:
       value: 0.56
       unit: dimensionless (volume fraction)
       research_basis: ai_research_comprehensive
+      min: 12
+      max: 65
     tensileStrength:
       value: 101.0
       unit: MPa
@@ -129,10 +151,14 @@ materialProperties:
         Wood as an Engineering Material. Chapter 4: Mechanical Properties of Wood.
         Table 4-3a: Mechanical properties of some commercially important woods grown
         in the United States (Walnut, Black).'
+      min: 20
+      max: 200
     youngsModulus:
       value: 2.5025
       unit: GPa
       research_basis: standard_material_database
+      min: 5
+      max: 20000
     fractureToughness:
       value: 0.67
       unit: MPa·√m
@@ -141,6 +167,8 @@ materialProperties:
         orientation at room temperature. The study provides a range of 0.60-0.74 MPa·√m
         for walnut, with 0.67 MPa·√m representing a typical mean value for this hardwood
         species.
+      min: 0.33
+      max: 4.4
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -151,12 +179,16 @@ materialProperties:
       research_basis: 'NIST Special Publication 1155: ''Optical Properties of Wood
         Species for Laser Processing Applications'' (2019), Table 4.2 - Absorption
         coefficients for domestic hardwoods at 1064 nm wavelength'
+      min: 1
+      max: 50
     laserReflectivity:
       value: 32.7
       unit: '%'
       research_basis: 'NIST Materials Data Repository - Laser-Material Interaction
         Database for Wood Species (2021), specifically Table 4: Reflectance properties
         of domestic hardwoods at 1064 nm wavelength'
+      min: 10
+      max: 60
 machineSettings:
   fluenceThreshold:
     value: 2.5

@@ -47,12 +47,16 @@ materialProperties:
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
         of Stone Materials, specifically for travertine marble at 300K (27°C)'
+      min: 400
+      max: 1200
     thermalConductivity:
       value: 2.3
       unit: W/(m·K)
       research_basis: NIST IR 6925, 'Thermal Properties of Natural Stone' (2003),
         Table 4.2 - Specific thermal conductivity measurements for travertine specimens
         at 300K
+      min: 0.2
+      max: 8
     thermalDestruction:
       value: 800.0
       unit: °C
@@ -62,6 +66,8 @@ materialProperties:
       unit: mm²/s
       research_basis: 'NIST Stone Properties Database and ASM Handbook Vol. 4: Heat
         Treating (specific travertine measurements from Italian quarries)'
+      min: 0.2
+      max: 2.5
     thermalExpansion:
       value: 8.0
       unit: 10^-6/K
@@ -69,6 +75,8 @@ materialProperties:
         Coefficient of Thermal Expansion of Chemical-Resistant Mortars, Grouts, Monolithic
         Surfacings, and Polymer Concretes' applied to travertine specimens, with validation
         from NIST Special Publication 260-175 'Thermal Expansion of Natural Stone'
+      min: 3
+      max: 30
     compressiveStrength:
       value: 80.0
       unit: MPa
@@ -79,6 +87,8 @@ materialProperties:
         100 MPa, with 80 MPa being a representative, commonly cited average for sound,
         structural-grade stone. The provided physical properties (density, hardness)
         are consistent with this strength range.
+      min: 20
+      max: 500
     corrosionResistance:
       value: 2.0
       unit: rating
@@ -87,12 +97,16 @@ materialProperties:
         While durable in dry conditions, it has poor resistance to environmental corrosion
         compared to granite or quartzite. ASTM classifications place travertine among
         the least durable natural stones for exterior applications in corrosive environments.
+      min: 2.0
+      max: 9.0
     density:
       value: 2.68
       unit: g/cm³
       research_basis: 'ASTM C97/C97M-18 Standard Test Methods for Absorption and Bulk
         Specific Gravity of Dimension Stone, with specific travertine data from ASM
         Handbook Volume 4: Ceramics and Glasses'
+      min: 1.5
+      max: 6.0
     flexuralStrength:
       value: 9.5
       unit: MPa
@@ -101,6 +115,8 @@ materialProperties:
         values for travertine ranged from approximately 6.5 MPa to 12.5 MPa, with
         a central, representative value of 9.5 MPa. This is a peer-reviewed, authoritative
         source that provides a direct measurement for the requested property.
+      min: 5
+      max: 50
     hardness:
       value: 3.0
       unit: Mohs
@@ -108,6 +124,8 @@ materialProperties:
         Hardness by Rebound Hammer Method & ASM Handbook Volume 18: Friction, Lubrication,
         and Wear Technology, with specific travertine data from NIST Special Publication
         960-15'
+      min: 1
+      max: 7
     oxidationResistance:
       value: 480.0
       unit: °C
@@ -117,15 +135,21 @@ materialProperties:
         in air. NIST studies on carbonate stone decomposition identify 480°C as the
         temperature where significant, rapid mass loss begins under standard atmospheric
         conditions, marking the practical upper service limit.
+      min: 400.0
+      max: 870.0
     porosity:
       value: 13.7
       unit: '%'
       research_basis: ai_research_comprehensive
+      min: 0.5
+      max: 25
     tensileStrength:
       value: 8.2
       unit: MPa
       research_basis: ASTM C170 & C99 standards for dimension stone testing; ASM Handbook
         Vol. 4 - Travertine mechanical properties database (2021)
+      min: 2
+      max: 25
     youngsModulus:
       value: 48.0
       unit: GPa
@@ -133,6 +157,8 @@ materialProperties:
         in Architecture (2014): 1-551. Springer, Berlin, Heidelberg. Specific travertine
         testing data from Table 4.3 showing Young''s modulus range 35-62 GPa with
         mean 48.2 GPa for Italian travertine.'
+      min: 10
+      max: 100
     fractureToughness:
       value: 0.75
       unit: MPa·√m
@@ -141,6 +167,8 @@ materialProperties:
         reported values fall within a range of approximately 0.7 to 0.9 MPa·√m. The
         provided value of 0.75 MPa·√m is a representative median from this established
         range for this specific stone category.
+      min: 0.5
+      max: 5
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -150,12 +178,16 @@ materialProperties:
       unit: '%'
       research_basis: NIST Stone Properties Database - Travertine Absorption Coefficients
         for Nd:YAG (1064 nm) Laser Applications, 2021
+      min: 0.1
+      max: 100
     laserReflectivity:
       value: 38.2
       unit: '%'
       research_basis: 'NIST Special Publication 260-137: ''Optical Properties of Building
         and Monumental Stone'' (1995) with specific reflectance measurements for travertine
         at 1064 nm wavelength'
+      min: 5
+      max: 80
 machineSettings:
   energyDensity:
     value: 1.5

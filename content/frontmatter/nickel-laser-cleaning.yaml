@@ -63,20 +63,28 @@ materialProperties:
       value: 2913.0
       unit: °C
       research_basis: materials_science_literature
+      min: 907
+      max: 5870
     meltingPoint:
       value: 1728.0
       unit: K
       research_basis: materials_science_literature
+      min: -39
+      max: 3422
     specificHeat:
       value: 444.0
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
         Nickel thermophysical properties at 298.15 K'
+      min: 100
+      max: 2000
     thermalConductivity:
       value: 90.7
       unit: W/(m·K)
       research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
         of Fluid Systems - Pure Nickel at 300K'
+      min: 7.0
+      max: 430
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -85,17 +93,23 @@ materialProperties:
       value: 1726.0
       unit: K
       research_basis: materials_science_literature
+      min: 873
+      max: 3695
     thermalDiffusivity:
       value: 23.0
       unit: mm²/s
       research_basis: 'NIST Standard Reference Database 78, ASM Handbook Volume 2:
         Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
+      min: 0.06
+      max: 174
     thermalExpansion:
       value: 13.3
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table ''Thermal Expansion of
         Metals and Alloys'' for pure nickel (99.9+%) at 20-100°C'
+      min: 0.5
+      max: 33
     compressiveStrength:
       value: 535.0
       unit: MPa
@@ -106,6 +120,8 @@ materialProperties:
         value can increase significantly with cold working, reaching up to 1000 MPa
         for severely cold-worked material. The provided value range reflects this
         wide variation based on material condition.
+      min: 50
+      max: 2000
     corrosionResistance:
       value: 8.0
       unit: rating
@@ -114,6 +130,8 @@ materialProperties:
         It maintains good resistance to atmospheric corrosion, fresh water, and seawater.
         However, it has poor resistance to oxidizing acids and sulfur-containing environments,
         which prevents a perfect 10 rating.
+      min: 1
+      max: 10
     density:
       value: 8.9
       unit: g/cm³
@@ -121,24 +139,34 @@ materialProperties:
         Alloys and Special-Purpose Materials (1990), Table ''Physical Properties of
         Pure Metals'' lists density of nickel as 8.902 g/cm³ at 25°C. NIST Chemistry
         WebBook (SRD 69) reports 8.908 g/cm³ at 20°C for pure nickel.'
+      min: 0.53
+      max: 22.6
     electricalConductivity:
       value: 14300000.0
       unit: S/m
       research_basis: materials_science_literature
+      min: 0.67
+      max: 63.0
     electricalResistivity:
       value: 6.99e-08
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 1.0e-08
+      max: 1.5e-06
     flexuralStrength:
       value: 345.0
       unit: MPa
       research_basis: materials_science_literature
+      min: 2.5
+      max: 1050.0
     hardness:
       value: 638.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table ''Typical Room-Temperature
         Mechanical Properties of Annealed Wrought Nickel'''
+      min: 0.5
+      max: 3500
     oxidationResistance:
       value: 316.0
       unit: °C
@@ -147,22 +175,30 @@ materialProperties:
         (316°C) in oxidizing atmospheres before significant oxidation occurs. Above
         this temperature, oxidation rates increase substantially, requiring nickel-chromium
         alloys for improved oxidation resistance.
+      min: 200
+      max: 1200
     porosity:
       value: 0.0001
       unit: '%'
       research_basis: ai_research_comprehensive
+      min: 0.0
+      max: 15.0
     tensileStrength:
       value: 345.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1: Typical Room-Temperature
         Mechanical Properties of Wrought Nickel'
+      min: 3.0
+      max: 3000.0
     youngsModulus:
       value: 200.0
       unit: GPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Table ''Elastic Constants of Pure Metals''
         lists Young''s modulus for Nickel as 200 GPa at room temperature'
+      min: 5
+      max: 600
     fractureToughness:
       value: 125.0
       unit: MPa·√m
@@ -172,6 +208,8 @@ materialProperties:
         can extend to higher values. The variation depends on purity, grain size,
         and processing history, but 100-150 MPa·√m represents the well-established
         range for nickel materials in standard references.
+      min: 20
+      max: 200
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -180,45 +218,65 @@ materialProperties:
       value: 0.25
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 2.0
+      max: 8.0
     absorptivity:
       value: 0.36
       unit: dimensionless
       research_basis: materials_science_literature
+      min: 2.0
+      max: 65.0
     laserAbsorption:
       value: 38.7
       unit: '%'
       research_basis: NIST Materials Data Repository - Laser-Material Interaction
         Database for Pure Nickel (99.9% purity) at 1064 nm wavelength, room temperature,
         polished surface condition
+      min: 0.02
+      max: 100
     laserDamageThreshold:
       value: 0.45
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 0.1
+      max: 20.0
     laserReflectivity:
       value: 62.8
       unit: '%'
       research_basis: NIST Materials Data Repository - Optical Properties of Pure
         Metals at 1064 nm wavelength (Nd:YAG laser standard for cleaning applications)
+      min: 5
+      max: 99.9
     reflectivity:
       value: 0.67
       unit: dimensionless (ratio)
       research_basis: materials_science_literature
+      min: 85
+      max: 98
     thermalShockResistance:
       value: 450.0
       unit: °C
       research_basis: materials_science_literature
+      min: 50
+      max: 400
     absorptionCoefficient:
       value: 680000.0
       unit: m⁻¹
       research_basis: materials_science_literature
+      min: 100000
+      max: 50000000
     surfaceRoughness:
       value: 0.15
       unit: μm
       research_basis: materials_science_literature
+      min: 0.4
+      max: 150
     vaporPressure:
       value: 1.33
       unit: Pa
       research_basis: materials_science_literature
+      min: 1.0e-10
+      max: 0.001
 machineSettings:
   fluenceThreshold:
     value: 2.5

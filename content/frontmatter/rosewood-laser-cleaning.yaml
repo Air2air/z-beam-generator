@@ -47,12 +47,16 @@ materialProperties:
       unit: J/(kg·K)
       research_basis: 'NIST Wood Database - Specific Heat of Wood Species at 12% Moisture
         Content, 20°C. Rosewood (Dalbergia genus) measured value: 1260 J·kg⁻¹·K⁻¹'
+      min: 800
+      max: 2500
     thermalConductivity:
       value: 0.17
       unit: W/(m·K)
       research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest
         Service, FPL-GTR-190) - Table 4-3a, specific values for Dalbergia genus species
         at 12% moisture content'
+      min: 0.04
+      max: 0.4
     thermalDestruction:
       value: 300.0
       unit: °C
@@ -64,6 +68,8 @@ materialProperties:
         Engineering Material. USDA Forest Service, Forest Products Laboratory. General
         Technical Report FPL-GTR-113, Chapter 3: Physical Properties of Wood, Table
         3-5: Thermal properties of various wood species.'
+      min: 0.0001
+      max: 0.4
     thermalExpansion:
       value: 27.0
       unit: 10⁻⁶/K
@@ -71,6 +77,8 @@ materialProperties:
         Service, FPL-GTR-190) - Table 4-3a: Coefficients of thermal expansion for
         various hardwoods, with specific data for Dalbergia genus species including
         Brazilian rosewood (Dalbergia nigra)'
+      min: 3.0
+      max: 60
     compressiveStrength:
       value: 59.3
       unit: MPa
@@ -81,6 +89,8 @@ materialProperties:
         This value aligns with the known high density (0.85 g/cm³) and hardness (2720
         N) properties provided, as these mechanical characteristics typically correlate
         in wood species.
+      min: 20
+      max: 80
     corrosionResistance:
       value: 8.0
       unit: rating
@@ -89,12 +99,16 @@ materialProperties:
         not completely immune to environmental degradation, its natural durability
         is considered very high among wood species, particularly in ground contact
         and wet conditions.
+      min: 2.0
+      max: 8.0
     density:
       value: 0.85
       unit: g/cm³
       research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest
         Service, FPL-GTR-190), Chapter 4: Physical Properties of Wood, Table 4-5:
         Specific gravity of selected domestic and imported woods'
+      min: 0.12
+      max: 1.5
     flexuralStrength:
       value: 125.0
       unit: MPa
@@ -104,6 +118,8 @@ materialProperties:
         the flexural strength measured via standard 3-point or 4-point bend tests.
         While rosewood species vary, this value is consistent with the high density
         and hardness properties provided.
+      min: 40
+      max: 150
     hardness:
       value: 2720.0
       unit: MPa
@@ -111,6 +127,8 @@ materialProperties:
         Wood as an Engineering Material. Chapter 4: Mechanical Properties of Wood.
         Table 4-3: Janka hardness of selected domestic and tropical woods. Specific
         data for Brazilian Rosewood (Dalbergia nigra).'
+      min: 1
+      max: 5000
     oxidationResistance:
       value: 200.0
       unit: °C
@@ -120,10 +138,14 @@ materialProperties:
         temperature of 200°C is cited for dry wood before the onset of rapid pyrolysis
         and oxidative decomposition, which aligns with the thermal degradation point
         of lignin and hemicellulose.
+      min: 82.0
+      max: 204.0
     porosity:
       value: 0.52
       unit: dimensionless (volume fraction)
       research_basis: ai_research_comprehensive
+      min: 12
+      max: 65
     tensileStrength:
       value: 157.0
       unit: MPa
@@ -131,10 +153,14 @@ materialProperties:
         Wood as an Engineering Material. Chapter 4: Mechanical Properties of Wood,
         Table 4-3a. Specific data for Dalbergia genus (Brazilian Rosewood) parallel
         to grain.'
+      min: 20
+      max: 200
     youngsModulus:
       value: 2.5025
       unit: GPa
       research_basis: standard_material_database
+      min: 5
+      max: 20000
     fractureToughness:
       value: 2.1
       unit: MPa·√m
@@ -143,6 +169,8 @@ materialProperties:
         the most commonly reported orientation for wood fracture toughness testing.
         The value falls within the typical range for dense hardwoods (1.5-3.5 MPa·√m)
         and accounts for rosewood's high density and anisotropic structure.
+      min: 0.33
+      max: 4.4
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -153,12 +181,16 @@ materialProperties:
       research_basis: 'NIST Special Publication 1176: ''Optical Properties of Wood
         Species for Laser Processing Applications'' (2018), Table 4.2 - Rosewood (Dalbergia
         spp.) absorption at 1064 nm wavelength'
+      min: 1
+      max: 50
     laserReflectivity:
       value: 28.5
       unit: '%'
       research_basis: 'NIST Standard Reference Database 120: Optical Properties of
         Materials for Laser Applications, Section 8.3 - Wood Species Database (2022),
         with specific measurements for Dalbergia genus woods at 1064 nm wavelength'
+      min: 10
+      max: 60
 machineSettings:
   dwellTime:
     value: 0.2

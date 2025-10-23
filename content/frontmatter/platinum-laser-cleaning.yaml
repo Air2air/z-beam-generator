@@ -46,20 +46,28 @@ materialProperties:
       value: 3827.0
       unit: °C
       research_basis: materials_science_literature
+      min: 907
+      max: 5870
     meltingPoint:
       value: 1768.3
       unit: °C
       research_basis: materials_science_literature
+      min: -39
+      max: 3422
     specificHeat:
       value: 133.0
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
         Platinum thermophysical properties at 298.15 K'
+      min: 100
+      max: 2000
     thermalConductivity:
       value: 71.6
       unit: W/(m·K)
       research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
         of Fluid Systems - Pure Platinum at 300K'
+      min: 7.0
+      max: 430
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -68,18 +76,24 @@ materialProperties:
       value: 2041.15
       unit: K
       research_basis: materials_science_literature
+      min: 873
+      max: 3695
     thermalDiffusivity:
       value: 25.9
       unit: mm²/s
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Thermal Properties of Pure Metals, Table:
         Thermal Diffusivity Values for Platinum at 300K'
+      min: 0.06
+      max: 174
     thermalExpansion:
       value: 8.8
       unit: 10^-6/K
       research_basis: 'NIST Standard Reference Database 74, ''Thermophysical Properties
         of Materials for Nuclear Engineering: Platinum'', and ASM Handbook Volume
         2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
+      min: 0.5
+      max: 33
     compressiveStrength:
       value: 325.0
       unit: MPa
@@ -91,6 +105,8 @@ materialProperties:
         size, and prior work hardening. The value is derived from the material's known
         tensile behavior and hardness correlation, as compressive strength for such
         ductile metals is generally similar to tensile strength.
+      min: 50
+      max: 2000
     corrosionResistance:
       value: 10.0
       unit: rating
@@ -99,20 +115,28 @@ materialProperties:
         exhibits exceptional resistance to oxidation, even at high temperatures, and
         is unaffected by most common corrosive environments, including those that
         attack noble metals like gold.
+      min: 1
+      max: 10
     density:
       value: 21.45
       unit: g/cm³
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1; NIST Standard Reference
         Data; CRC Handbook of Chemistry and Physics (97th Edition)'
+      min: 0.53
+      max: 22.6
     electricalConductivity:
       value: 9430000.0
       unit: S/m
       research_basis: materials_science_literature
+      min: 0.67
+      max: 63.0
     electricalResistivity:
       value: 1.06e-07
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 1.0e-08
+      max: 1.5e-06
     flexuralStrength:
       value: 125.0
       unit: MPa
@@ -122,12 +146,16 @@ materialProperties:
         high-purity platinum based on standardized bend tests. The value is consistent
         with its low hardness (41 HV) and known mechanical behavior, where yield strength
         is typically in the range of 110-165 MPa.
+      min: 2.5
+      max: 1050.0
     hardness:
       value: 41.0
       unit: HV
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Section: Platinum Group Metals,
         Table: Mechanical Properties of Platinum'
+      min: 0.5
+      max: 3500
     oxidationResistance:
       value: 1000.0
       unit: °C
@@ -137,22 +165,30 @@ materialProperties:
         continuous loss of material through the formation of volatile PtO₂, which
         becomes significant at this temperature. Below this, it is considered highly
         stable.
+      min: 200
+      max: 1200
     porosity:
       value: 0.0001
       unit: '%'
       research_basis: ai_research_comprehensive
+      min: 0.0
+      max: 15.0
     tensileStrength:
       value: 125.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, ''Platinum Group Metals'', pp. 693-694,
         indicating annealed platinum tensile strength range 125-165 MPa'
+      min: 3.0
+      max: 3000.0
     youngsModulus:
       value: 168.0
       unit: GPa
       research_basis: 'ASM Handbook Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
         Properties of Platinum and Platinum Alloys'
+      min: 5
+      max: 600
     fractureToughness:
       value: 38.0
       unit: MPa·√m
@@ -161,6 +197,8 @@ materialProperties:
         platinum falls within the range of approximately 35-40 MPa·√m at room temperature.
         The value of 38.0 MPa·√m is a representative mid-range value cited in authoritative
         materials handbooks for general design purposes.
+      min: 20
+      max: 200
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -169,45 +207,65 @@ materialProperties:
       value: 0.45
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 2.0
+      max: 8.0
     absorptivity:
       value: 0.065
       unit: dimensionless
       research_basis: materials_science_literature
+      min: 2.0
+      max: 65.0
     laserAbsorption:
       value: 36.5
       unit: '%'
       research_basis: NIST Database of Optical Constants of Metals - Platinum (Johnson
         & Christy, 1972, Physical Review B, 6:4370-4379) for 1064 nm wavelength
+      min: 0.02
+      max: 100
     laserDamageThreshold:
       value: 0.45
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 0.1
+      max: 20.0
     laserReflectivity:
       value: 73.2
       unit: '%'
       research_basis: Palik, E.D. Handbook of Optical Constants of Solids, Academic
         Press, 1998; Johnson, P.B. & Christy, R.W. Physical Review B, 1972, for platinum
         optical constants at 1064 nm wavelength
+      min: 5
+      max: 99.9
     reflectivity:
       value: 0.73
       unit: dimensionless (ratio)
       research_basis: materials_science_literature
+      min: 85
+      max: 98
     thermalShockResistance:
       value: 1.8
       unit: MW/m
       research_basis: materials_science_literature
+      min: 50
+      max: 400
     absorptionCoefficient:
       value: 42000000.0
       unit: m⁻¹
       research_basis: materials_science_literature
+      min: 100000
+      max: 50000000
     surfaceRoughness:
       value: 0.025
       unit: μm
       research_basis: materials_science_literature
+      min: 0.4
+      max: 150
     vaporPressure:
       value: 2.51e-07
       unit: Pa
       research_basis: materials_science_literature
+      min: 1.0e-10
+      max: 0.001
 machineSettings:
   fluence:
     value: 5

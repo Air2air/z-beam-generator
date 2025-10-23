@@ -46,12 +46,16 @@ materialProperties:
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
         SRD 69 - Wood (Pinus spp.) thermal properties data at 25°C'
+      min: 800
+      max: 2500
     thermalConductivity:
       value: 0.12
       unit: W/(m·K)
       research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest
         Service, 2010) - Table 4-3 provides specific thermal conductivity values for
         pine species at 12% moisture content'
+      min: 0.04
+      max: 0.4
     thermalDestruction:
       value: 300.0
       unit: °C
@@ -63,6 +67,8 @@ materialProperties:
         (1999). Thermal conductivity and diffusivity of wood. Wood Science and Technology,
         33(6), 465-473. Specific data for Pinus sylvestris (Scots pine) at 12% moisture
         content, room temperature.
+      min: 0.0001
+      max: 0.4
     thermalExpansion:
       value: 27.0
       unit: 10^-6/K
@@ -70,6 +76,8 @@ materialProperties:
         an Engineering Material. USDA Forest Service, General Technical Report FPL-GTR-190,
         Chapter 4: Mechanical Properties of Wood, Table 4-3: Coefficients of thermal
         expansion for selected woods.'
+      min: 3.0
+      max: 60
     compressiveStrength:
       value: 40.0
       unit: MPa
@@ -79,6 +87,8 @@ materialProperties:
         in MPa) and compressive strength. The Wood Database lists the compressive
         strength of Eastern White Pine as 40 MPa, which aligns precisely with the
         given data point.
+      min: 20
+      max: 80
     corrosionResistance:
       value: 2.0
       unit: rating
@@ -87,12 +97,16 @@ materialProperties:
         species as "slightly resistant" to "non-resistant" to decay, placing it in
         the lowest durability categories. While not metallic corrosion, wood decay
         is the equivalent corrosion mechanism for this material.
+      min: 2.0
+      max: 8.0
     density:
       value: 0.37
       unit: g/cm³
       research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest
         Service, FPL-GTR-190), Chapter 4: Mechanical Properties of Wood, Table 4-3
         specific gravity values for common wood species'
+      min: 0.12
+      max: 1.5
     flexuralStrength:
       value: 59.0
       unit: MPa
@@ -101,6 +115,8 @@ materialProperties:
         (MOR), which is the standard measure of flexural/bending strength, for pine
         species at 12% moisture content. The value of 59.0 MPa is a representative
         average for common structural pine species.
+      min: 40
+      max: 150
     hardness:
       value: 40.0
       unit: MPa
@@ -108,6 +124,8 @@ materialProperties:
         Properties of Wood), ASTM D143-14 Standard Test Methods for Small Clear Specimens
         of Timber, with specific data for Eastern White Pine (Pinus strobus) under
         standardized moisture content conditions'
+      min: 1
+      max: 5000
     oxidationResistance:
       value: 150.0
       unit: °C
@@ -118,10 +136,14 @@ materialProperties:
         properties. While wood can char at higher temperatures in short-term fire
         events, 150°C is the established maximum for continuous service in air before
         significant chemical degradation begins.
+      min: 82.0
+      max: 204.0
     porosity:
       value: 0.72
       unit: dimensionless
       research_basis: ai_research_comprehensive
+      min: 12
+      max: 65
     tensileStrength:
       value: 97.0
       unit: MPa
@@ -129,16 +151,22 @@ materialProperties:
         Engineering Material. General Technical Report FPL-GTR-190. Table 5-3a: ''Mechanical
         properties of some commercially important woods grown in the United States''
         for Eastern White Pine (Pinus strobus) parallel to grain at 12% moisture content.'
+      min: 20
+      max: 200
     youngsModulus:
       value: 9.0
       unit: GPa
       research_basis: standard_material_database
+      min: 5
+      max: 20000
     fractureToughness:
       value: 0.37
       unit: MPa·√m
       research_basis: This value represents the average Mode I fracture toughness
         (K_IC) for clear pine wood in the radial-longitudinal orientation at room
         temperature, based on standardized testing of small, defect-free specimens.
+      min: 0.33
+      max: 4.4
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -149,11 +177,15 @@ materialProperties:
       research_basis: 'NIST Standard Reference Database 69: Laser-Material Interaction
         Data for Pine Wood at 1064 nm wavelength, combined with ASM Handbook Volume
         5: Surface Engineering - Laser Processing Data'
+      min: 1
+      max: 50
     laserReflectivity:
       value: 42.7
       unit: '%'
       research_basis: 'NIST Standard Reference Database 78: Laser-Induced Damage in
         Optical Materials, Section 8.3.2 - Wood Species Reflectivity at 1064 nm'
+      min: 10
+      max: 60
 machineSettings:
   dwellTime:
     value: 120

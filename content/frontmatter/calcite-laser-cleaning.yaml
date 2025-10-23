@@ -46,11 +46,15 @@ materialProperties:
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
         Calcite thermodynamic properties at 25°C'
+      min: 400
+      max: 1200
     thermalConductivity:
       value: 3.61
       unit: W/(m·K)
       research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
         of Minerals - Calcite (CaCO₃) at 300K, crystal orientation [001]'
+      min: 0.2
+      max: 8
     thermalDestruction:
       value: 800.0
       unit: °C
@@ -60,12 +64,16 @@ materialProperties:
       unit: mm²/s
       research_basis: 'Horai, K. (1971). Thermal conductivity of rock-forming minerals.
         Journal of Geophysical Research, 76(5), 1278-1308. DOI: 10.1029/JB076i005p01278'
+      min: 0.2
+      max: 2.5
     thermalExpansion:
       value: 25.0
       unit: 10^-6/K
       research_basis: NIST Crystal Data, ASM Handbook Volume 2, and academic studies
         (Graf, D.L., 1961; Skinner, B.J., 1966) confirming calcite's anisotropic thermal
         expansion with maximum coefficient along c-axis
+      min: 3
+      max: 30
     compressiveStrength:
       value: 150.0
       unit: MPa
@@ -76,6 +84,8 @@ materialProperties:
         conditions at room temperature. However, literature values show significant
         variation, ranging from below 50 MPa for porous or weak samples to over 200
         MPa for very dense, crystalline calcite.
+      min: 20
+      max: 500
     corrosionResistance:
       value: 2.0
       unit: rating
@@ -85,12 +95,16 @@ materialProperties:
         While stable in alkaline conditions, its poor performance in common corrosive
         environments (urban, industrial, marine) results in a low overall corrosion
         resistance rating.
+      min: 2.0
+      max: 9.0
     density:
       value: 2.71
       unit: g/cm³
       research_basis: 'NIST Standard Reference Database 124 - Mineralogy Database;
         ASM Handbook Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose
         Materials'
+      min: 1.5
+      max: 6.0
     flexuralStrength:
       value: 10.0
       unit: MPa
@@ -103,12 +117,16 @@ materialProperties:
         The confidence is high because the source is a foundational rock mechanics
         reference, but it is not 1.00 because the value is for a specific calcite
         marble rather than a universal property of all calcite crystals.
+      min: 5
+      max: 50
     hardness:
       value: 3.0
       unit: Mohs
       research_basis: 'Klein, C., & Dutrow, B. (2007). Manual of Mineral Science (23rd
         ed.). Wiley. p. 342. ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990). ASM International. p. 1098.'
+      min: 1
+      max: 7
     oxidationResistance:
       value: 525.0
       unit: °C
@@ -119,22 +137,30 @@ materialProperties:
         defines its maximum useful service temperature in an oxidative environment.
         This temperature is well-documented in geological and materials science literature
         for calcium carbonate.'
+      min: 400.0
+      max: 870.0
     porosity:
       value: 0.7
       unit: '%'
       research_basis: ai_research_comprehensive
+      min: 0.5
+      max: 25
     tensileStrength:
       value: 6.0
       unit: MPa
       research_basis: 'Attewell, P. B., & Farmer, I. W. (1976). Principles of Engineering
         Geology. Springer Science & Business Media. Chapter 4: Rock and mineral properties,
         Table 4.2: Mechanical properties of common minerals.'
+      min: 2
+      max: 25
     youngsModulus:
       value: 70.0
       unit: GPa
       research_basis: Mavko, G., Mukerji, T., & Dvorkin, J. (2009). The Rock Physics
         Handbook. Cambridge University Press, 2nd edition, Table 7.1.1 - Elastic properties
         of minerals
+      min: 10
+      max: 100
     fractureToughness:
       value: 0.3
       unit: MPa·√m
@@ -144,6 +170,8 @@ materialProperties:
         value of 0.30 MPa·√m is a commonly cited median value from compilations of
         experimental data on geological materials, reflecting its perfect rhombohedral
         cleavage which makes it prone to brittle fracture.
+      min: 0.5
+      max: 5
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -154,12 +182,16 @@ materialProperties:
       research_basis: NIST Standard Reference Database 78 & Applied Optics, Vol. 42,
         No. 7, 'Optical properties of calcite and gypsum in crystalline and powdered
         form'
+      min: 0.1
+      max: 100
     laserReflectivity:
       value: 38.2
       unit: '%'
       research_basis: NIST Standard Reference Database 78 & Applied Optics, Vol. 37,
         Issue 16, pp. 3558-3568 (1998) - 'Optical properties of calcite and gypsum
         in crystalline and powdered form'
+      min: 5
+      max: 80
 machineSettings:
   fluenceThreshold:
     value: 2.5

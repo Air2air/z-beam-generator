@@ -47,12 +47,16 @@ materialProperties:
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 144: Thermophysical Properties
         of Solids - Single Crystal Alumina (Sapphire) at 300K'
+      min: 120
+      max: 900
     thermalConductivity:
       value: 27.0
       unit: W/(m·K)
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (2015), Section: Properties of Single-Crystal
         Sapphire at 300K'
+      min: 0.7
+      max: 30
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -64,12 +68,16 @@ materialProperties:
         Alloys and Special-Purpose Materials, Table ''Thermal Properties of Single
         Crystal Sapphire'' and NIST Standard Reference Database for Thermophysical
         Properties of Solids'
+      min: 0.01
+      max: 15
     thermalExpansion:
       value: 5.3
       unit: 10⁻⁶/K
       research_basis: NIST Standard Reference Database 84 - Single-Crystal Sapphire
         (α-Al₂O₃) thermal expansion coefficients along c-axis (parallel to optical
         axis) at 20°C
+      min: 0.1
+      max: 15
     compressiveStrength:
       value: 2000.0
       unit: MPa
@@ -81,6 +89,8 @@ materialProperties:
         widely cited minimum for high-grade sapphire glass in an engineered state,
         tested under standard conditions (room temperature, polished surfaces to minimize
         stress concentrations).
+      min: 500
+      max: 2000
     corrosionResistance:
       value: 9.0
       unit: rating
@@ -90,6 +100,8 @@ materialProperties:
         factors, with a Mohs hardness of 9 providing excellent resistance to abrasion,
         a form of mechanical "corrosion." Its primary vulnerability is to hydrofluoric
         acid and strong alkalis at high temperatures, preventing a perfect 10/10 score.
+      min: 9
+      max: 10
     density:
       value: 3.98
       unit: g/cm³
@@ -97,20 +109,28 @@ materialProperties:
         Alloys and Special-Purpose Materials, Table ''Properties of Single Crystal
         Sapphire''; NIST Standard Reference Database 84 - Properties of Single Crystal
         Sapphire'
+      min: 1.2
+      max: 7.6
     electricalResistivity:
       value: 1.0e+16
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 10000000000.0
+      max: 1000000000000000.0
     flexuralStrength:
       value: 690.0
       unit: MPa
       research_basis: materials_science_literature
+      min: 50
+      max: 750.0
     hardness:
       value: 9.0
       unit: Mohs
       research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation (2000),
         Section: Hardness Testing of Ceramics; NIST Special Publication 960-15: Properties
         of Sapphire'
+      min: 3.5
+      max: 9.5
     oxidationResistance:
       value: 1700.0
       unit: °C
@@ -119,17 +139,23 @@ materialProperties:
         in air, this temperature is widely cited in technical datasheets from optics
         and materials manufacturers as its maximum continuous service temperature
         in an oxidizing atmosphere before significant degradation.
+      min: 400.0
+      max: 1700.0
     tensileStrength:
       value: 400.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 29: Materials for Specialty Applications
         - Mechanical Properties of Synthetic Single-Crystal Sapphire (Al2O3)'
+      min: 30
+      max: 2000
     youngsModulus:
       value: 345.0
       unit: GPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (ASM International, 1990) and NIST Crystal
         Data - Single-crystal sapphire (α-Al2O3)'
+      min: 10
+      max: 400
     fractureToughness:
       value: 2.0
       unit: MPa·√m
@@ -138,6 +164,8 @@ materialProperties:
         values for sapphire in the range of 2.0-2.4 MPa·√m for the most common crystallographic
         orientations at room temperature, with 2.0 MPa·√m being a widely cited and
         conservative benchmark.
+      min: 0.5
+      max: 2
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -146,6 +174,8 @@ materialProperties:
       value: 3.2
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 2.0
+      max: 6.0
     laserAbsorption:
       value: 8.2
       unit: '%'
@@ -153,12 +183,16 @@ materialProperties:
         optical properties database, combined with ASM Handbook Volume 4: Ceramics
         and Glasses, specifically addressing laser-material interactions for synthetic
         sapphire'
+      min: 0.001
+      max: 10
     laserReflectivity:
       value: 7.2
       unit: '%'
       research_basis: NIST Materials Data Repository - Single-crystal sapphire (α-Al₂O₃)
         reflectance measurements at 1064 nm wavelength, room temperature, with surface
         roughness < 10 nm
+      min: 0.1
+      max: 92
 machineSettings:
   dwellTime:
     value: 100

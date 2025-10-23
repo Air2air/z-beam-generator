@@ -79,10 +79,14 @@ materialProperties:
       value: 2300.0
       unit: °C
       research_basis: materials_science_literature
+      min: 907
+      max: 5870
     meltingPoint:
       value: 950.0
       unit: °C
       research_basis: materials_science_literature
+      min: -39
+      max: 3422
     specificHeat:
       value: 380.0
       unit: J/(kg·K)
@@ -90,12 +94,16 @@ materialProperties:
         Alloys and Special-Purpose Materials, Table ''Thermal Properties of Copper
         and Copper Alloys'' for C83600 (ounce metal) bronze composition (Cu-85%, Sn-5%,
         Pb-5%, Zn-5%) at 20°C'
+      min: 100
+      max: 2000
     thermalConductivity:
       value: 42.0
       unit: W/(m·K)
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials. ''Thermal Conductivity of Wrought Copper
         Alloys'' for C22000 Commercial Bronze (90% Cu, 10% Zn) at 20°C.'
+      min: 7.0
+      max: 430
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -104,18 +112,24 @@ materialProperties:
       value: 1040.0
       unit: °C
       research_basis: materials_science_literature
+      min: 873
+      max: 3695
     thermalDiffusivity:
       value: 42.7
       unit: mm²/s
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, for C83600 (85-5-5-5) leaded red bronze
         at 20°C'
+      min: 0.06
+      max: 174
     thermalExpansion:
       value: 18.0
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Table ''Physical Properties of Wrought
         Copper Alloys'' for C51000 phosphor bronze (5% Sn)'
+      min: 0.5
+      max: 33
     compressiveStrength:
       value: 250.0
       unit: MPa
@@ -128,6 +142,8 @@ materialProperties:
         for a medium-strength, commonly used bronze alloy in an "as-cast" or annealed
         condition. The provided material properties (density, hardness) are consistent
         with this class of alloys.
+      min: 50
+      max: 2000
     corrosionResistance:
       value: 7.0
       unit: rating
@@ -136,20 +152,28 @@ materialProperties:
         and many other metals. However, it is susceptible to specific corrosive agents
         like ammonia and some acids, placing it below more specialized alloys like
         stainless steels in comprehensive corrosion resistance.
+      min: 1
+      max: 10
     density:
       value: 8.8
       unit: g/cm³
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1 - Typical Properties
         of Copper and Copper Alloys'
+      min: 0.53
+      max: 22.6
     electricalConductivity:
       value: 7140000.0
       unit: S/m
       research_basis: materials_science_literature
+      min: 0.67
+      max: 63.0
     electricalResistivity:
       value: 1.8e-07
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 1.0e-08
+      max: 1.5e-06
     flexuralStrength:
       value: 310.0
       unit: MPa
@@ -161,12 +185,16 @@ materialProperties:
         bronze alloy like C83600 (leaded red brass) or C90500 (tin bronze) in a sand-cast
         or extruded condition, based on standardized 3-point bend test data from the
         authoritative ASM Handbook.
+      min: 2.5
+      max: 1050.0
     hardness:
       value: 70.0
       unit: HB
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials. ASM International, 1990. Table 1: Typical
         Mechanical Properties of Cast Bronzes.'
+      min: 0.5
+      max: 3500
     oxidationResistance:
       value: 260.0
       unit: °C
@@ -178,24 +206,34 @@ materialProperties:
         CuO and SnO2). This value is a general guideline for common bronze alloys;
         specific compositions (e.g., aluminum bronzes) can have significantly higher
         resistance.
+      min: 200
+      max: 1200
     porosity:
       value: 0.015
       unit: fraction
       research_basis: ai_research_comprehensive
+      min: 0.0
+      max: 15.0
     tensileStrength:
       value: 379.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, specifically Table 1 ''Typical Mechanical
         Properties of Wrought Copper Alloys'' for UNS C51000 phosphor bronze (5% Sn)'
+      min: 3.0
+      max: 3000.0
     youngsModulus:
       value: 110.0
       unit: GPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Table ''Typical Room-Temperature Mechanical
         Properties of Wrought Copper Alloys'' for C51000 phosphor bronze (5% Sn)'
+      min: 5
+      max: 600
     fractureToughness:
       value: 25.0
+      min: 20
+      max: 200
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -204,10 +242,14 @@ materialProperties:
       value: 0.45
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 2.0
+      max: 8.0
     absorptivity:
       value: 0.38
       unit: dimensionless
       research_basis: materials_science_literature
+      min: 2.0
+      max: 65.0
     laserAbsorption:
       value: 38.5
       unit: '%'
@@ -215,36 +257,52 @@ materialProperties:
         Alloys and Special-Purpose Materials, Section: Copper and Copper Alloys, with
         specific reference to absorption characteristics of tin bronze (C90300-C90800
         compositions) at 1064 nm wavelength'
+      min: 0.02
+      max: 100
     laserDamageThreshold:
       value: 0.45
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 0.1
+      max: 20.0
     laserReflectivity:
       value: 58.2
       unit: '%'
       research_basis: 'NIST Standard Reference Database 120: Reflectance and Emittance
         of Spectrally Selective Materials, with specific data for bronze alloys (85Cu-5Sn-5Zn-5Pb
         composition) at 1064 nm wavelength'
+      min: 5
+      max: 99.9
     reflectivity:
       value: 0.65
       unit: dimensionless (ratio)
       research_basis: materials_science_literature
+      min: 85
+      max: 98
     thermalShockResistance:
       value: 4.2
       unit: MPa·m¹/²
       research_basis: materials_science_literature
+      min: 50
+      max: 400
     absorptionCoefficient:
       value: 6200000.0
       unit: m^-1
       research_basis: materials_science_literature
+      min: 100000
+      max: 50000000
     surfaceRoughness:
       value: 0.85
       unit: μm
       research_basis: materials_science_literature
+      min: 0.4
+      max: 150
     vaporPressure:
       value: 1.33
       unit: Pa
       research_basis: materials_science_literature
+      min: 1.0e-10
+      max: 0.001
 machineSettings:
   energyDensity:
     value: 5.1

@@ -47,12 +47,16 @@ materialProperties:
       research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
         Thermophysical Properties of Fluid Systems - Calcium Sulfate Hemihydrate (Plaster
         of Paris) at standard conditions (25°C)'
+      min: 700
+      max: 1100
     thermalConductivity:
       value: 0.43
       unit: W/(m·K)
       research_basis: 'NIST IR 7563 - Thermophysical Properties of Masonry and Its
         Constituents, Table 2.1: Thermal Properties of Masonry Materials (Plaster:
         0.43 W/m·K at 24°C)'
+      min: 0.08
+      max: 2.5
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -63,18 +67,24 @@ materialProperties:
       research_basis: 'NIST Special Publication 260-137: Thermophysical Properties
         of Masonry Materials, Table 4.3 - Plaster thermal properties (calcium sulfate
         hemihydrate based)'
+      min: 0.1
+      max: 1
     thermalExpansion:
       value: 18.0
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Section: Building Materials and Components,
         Table: Thermal Expansion of Common Building Materials'
+      min: 5
+      max: 20
     compressiveStrength:
       value: 12.4
       unit: MPa
       research_basis: 'ASTM C472-99 (Standard Test Methods for Physical Testing of
         Gypsum Plasters) and NIST Special Publication 1129: Properties of Building
         Materials for Advanced Analysis'
+      min: 5
+      max: 100
     corrosionResistance:
       value: 2.0
       unit: rating
@@ -84,12 +94,16 @@ materialProperties:
         or wet service conditions due to their susceptibility to water damage and
         lack of chemical stability when exposed to moisture, which is the primary
         driver of general environmental corrosion.
+      min: 2.0
+      max: 8.0
     density:
       value: 1.5
       unit: g/cm³
       research_basis: 'NIST Special Publication 260-165: Standard Reference Materials
         for Building Materials, Table 4-3: Physical Properties of Common Masonry Materials
         (plaster specimens)'
+      min: 0.6
+      max: 3.2
     flexuralStrength:
       value: 3.1
       unit: MPa
@@ -100,6 +114,8 @@ materialProperties:
         data sheets for gypsum plaster consistently report 3-point bend test results
         in the range of 2.8 to 3.4 MPa, with 3.1 MPa being a representative median
         value for a plaster of this density and compressive strength.
+      min: 2
+      max: 20
     hardness:
       value: 2.0
       unit: Mohs
@@ -107,6 +123,8 @@ materialProperties:
         Common Building Materials'' (Table 3: Gypsum Plaster Hardness = 1.5-2.0 Mohs);
         ASM Handbook Vol. 18 ''Friction, Lubrication, and Wear Technology'' (Section:
         Abrasiveness of Minerals)'
+      min: 1
+      max: 6
     oxidationResistance:
       value: 1200.0
       unit: °C
@@ -115,17 +133,23 @@ materialProperties:
         breakdown occurs. NIST data confirms this as the maximum service temperature
         before rapid degradation, though practical limits are lower (~600°C) due to
         dehydration phases.
+      min: 300.0
+      max: 1200.0
     tensileStrength:
       value: 2.0
       unit: MPa
       research_basis: 'ASTM C472-99: Standard Test Methods for Physical Testing of
         Gypsum Plasters and Gypsum Concrete; NIST Special Publication 1129: Properties
         of Materials for Historic Masonry Structures'
+      min: 1
+      max: 15
     youngsModulus:
       value: 3.0
       unit: GPa
       research_basis: NIST Technical Note 1493 - 'Mechanical Properties of Masonry
         Materials' and ASM Handbook Vol. 4 - 'Heat Treating' for gypsum plaster properties
+      min: 3.0
+      max: 50
     fractureToughness:
       value: 0.15
       unit: MPa·√m
@@ -136,6 +160,8 @@ materialProperties:
         a range of approximately 0.1 to 0.2 MPa·√m. The cited value of 0.15 MPa·√m
         is a representative median for this class of material, aligning with its low
         mechanical properties.
+      min: 0.15
+      max: 1.1
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -146,12 +172,16 @@ materialProperties:
       research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
         in Conservation'' - Table 4.3: Absorption coefficients of common masonry materials
         at 1064 nm'
+      min: 0.5
+      max: 15
     laserReflectivity:
       value: 35.2
       unit: '%'
       research_basis: 'NIST Standard Reference Database 120: Reflectance and Emittance
         of Building Materials at 1064 nm, specifically for gypsum plaster (CaSO₄·2H₂O)
         with typical mineral filler composition'
+      min: 10
+      max: 70
 machineSettings:
   energyDensity:
     value: 2.5

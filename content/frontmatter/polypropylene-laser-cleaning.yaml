@@ -48,11 +48,15 @@ materialProperties:
       research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
         Polypropylene thermophysical properties at 25°C; ASM Handbook, Volume 2: Properties
         and Selection: Nonferrous Alloys and Special-Purpose Materials'
+      min: 1.0
+      max: 2500
     thermalConductivity:
       value: 0.22
       unit: W/(m·K)
       research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
         of Polymer Systems, Polypropylene (isotactic) at 23°C'
+      min: 0.02
+      max: 3
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -63,11 +67,15 @@ materialProperties:
       research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook;
         Polypropylene thermal diffusivity measurements at 23°C from multiple experimental
         studies'
+      min: 0.08
+      max: 1
     thermalExpansion:
       value: 100.0
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Table 1 - Thermal Expansion of Plastics'
+      min: 10
+      max: 200
     compressiveStrength:
       value: 35.0
       unit: MPa
@@ -77,6 +85,8 @@ materialProperties:
         is important to note that this property is highly dependent on the specific
         grade (e.g., homopolymer vs. copolymer), fillers, strain rate, and test temperature,
         which are often not specified in generalized data sheets.
+      min: 20
+      max: 200
     corrosionResistance:
       value: 8.0
       unit: rating
@@ -86,16 +96,22 @@ materialProperties:
         oxidizing agents and some organic solvents, which prevents a perfect score,
         but its overall chemical resistance in common environments is considered very
         high.
+      min: 5
+      max: 9
     density:
       value: 0.905
       unit: g/cm³
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Section: Engineering Plastics;
         NIST Standard Reference Data; Polymer Handbook, 4th Edition (1999)'
+      min: 0.85
+      max: 2.2
     electricalResistivity:
       value: 1.0e+16
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 1000000000000.0
+      max: 1.0e+16
     flexuralStrength:
       value: 35.0
       unit: MPa
@@ -104,12 +120,16 @@ materialProperties:
         and the flexural strength is reported as 25-45 MPa. The value of 35 MPa represents
         a standard mid-range value for general-purpose polypropylene, consistent with
         data from 3-point bend tests commonly used for polymer characterization.
+      min: 30
+      max: 200
     hardness:
       value: 75.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation (2000),
         Table 3 - Typical Mechanical Properties of Polypropylene; NIST Polymer Properties
         Database - Polypropylene Rockwell R scale data'
+      min: Shore A 10
+      max: Shore D 90
     oxidationResistance:
       value: 100.0
       unit: °C
@@ -121,17 +141,23 @@ materialProperties:
         can withstand short-term exposures to higher temperatures, 100°C represents
         the conservative upper limit for continuous use where oxidative degradation
         is controlled.
+      min: 60.0
+      max: 260.0
     tensileStrength:
       value: 35.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 21: Composites, Table 2 - Typical Properties
         of Polypropylene (Homopolymer), and NIST Polymer Properties Database for Polypropylene'
+      min: 10
+      max: 400
     youngsModulus:
       value: 1300.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Polypropylene data sheets and NIST Polymer
         Database entries for isotactic polypropylene at 23°C'
+      min: 0.01
+      max: 5000
     fractureToughness:
       value: 3.0
       unit: MPa·√m
@@ -140,6 +166,8 @@ materialProperties:
         to 4.5 MPa·√m. The value of 3.0 MPa·√m represents a typical, conservative
         lower bound for general-purpose polypropylene at room temperature, as cited
         in Ashby & Jones, a primary academic source for material property data.
+      min: 1
+      max: 10
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -151,12 +179,16 @@ materialProperties:
         database (NIST Standard Reference Data 69), combined with laser absorption
         studies in ''Laser Processing of Polypropylene: Optical Properties and Thermal
         Response'' (Journal of Applied Polymer Science, Vol. 138, Issue 25, 2021)'
+      min: 0.1
+      max: 100
     laserReflectivity:
       value: 94.5
       unit: '%'
       research_basis: Bäuerle, D. (2011). Laser Processing and Chemistry (4th ed.).
         Springer-Verlag. pp. 156-158, specifically Table 5.2 for polypropylene reflectivity
         at 1064 nm.
+      min: 4.0
+      max: 95
 machineSettings:
   dwellTime:
     value: 100

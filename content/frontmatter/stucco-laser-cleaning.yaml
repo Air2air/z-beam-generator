@@ -46,12 +46,16 @@ materialProperties:
       unit: J/(kg·K)
       research_basis: 'NIST IR 6990 - Specific Heat Capacity of Common Building Materials,
         Table 4-1: Portland cement plaster (stucco) at 20°C'
+      min: 700
+      max: 1100
     thermalConductivity:
       value: 0.72
       unit: W/(m·K)
       research_basis: 'ASHRAE Fundamentals Handbook (2021), Chapter 26 - Table 3:
         Thermal Properties of Building and Insulating Materials, specifically listing
         ''Stucco'' as 0.72 W/m·K at 24°C'
+      min: 0.08
+      max: 2.5
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -62,18 +66,24 @@ materialProperties:
       research_basis: 'NIST Special Publication 1196: ''Thermal Properties of Masonry
         Materials'' (Table 4.2) and ASM Handbook Vol. 4: ''Thermal Properties of Building
         Materials'' (Section 3.4)'
+      min: 0.1
+      max: 1
     thermalExpansion:
       value: 10.0
       unit: µm/m·°C
       research_basis: 'ASM International, ''Engineered Materials Handbook, Vol. 4:
         Ceramics and Glasses'', Table 2: Thermal Properties of Cementitious Materials,
         p. 606 (1991).'
+      min: 5
+      max: 20
     compressiveStrength:
       value: 24.1
       unit: MPa
       research_basis: ASTM C926-22a Standard Specification for Application of Portland
         Cement-Based Plaster, Table 1 - Physical Requirements for Portland Cement
         Plaster
+      min: 5
+      max: 100
     corrosionResistance:
       value: 8.0
       unit: rating
@@ -83,12 +93,16 @@ materialProperties:
         matrix provides superior performance against environmental corrosion compared
         to other masonry materials, with documented long-term durability in various
         climates.
+      min: 2.0
+      max: 8.0
     density:
       value: 1.5
       unit: g/cm³
       research_basis: ASTM C926-22 Standard Specification for Application of Portland
         Cement-Based Plaster, which governs stucco composition and properties; NIST
         IR 8612 - Performance of Traditional and Polymer-Modified Stucco Systems
+      min: 0.6
+      max: 3.2
     flexuralStrength:
       value: 3.0
       unit: MPa
@@ -100,12 +114,16 @@ materialProperties:
         range for general design and specification purposes. This property is distinct
         from the provided compressive strength and is directly relevant for evaluating
         the material's resistance to bending.
+      min: 2
+      max: 20
     hardness:
       value: 2.0
       unit: Mohs
       research_basis: 'NIST Special Publication 984-2: ''Standard Guide for Characterization
         of Masonry Materials'' and ASTM C1324-05: ''Standard Test Method for Examination
         and Analysis of Hardened Masonry Mortar'''
+      min: 1
+      max: 6
     oxidationResistance:
       value: 1200.0
       unit: °C
@@ -115,12 +133,16 @@ materialProperties:
         but thermal degradation) in air starting around 1200°C, where it decomposes
         to calcium oxide and sulfur oxides. This temperature represents the maximum
         service limit before material failure.
+      min: 300.0
+      max: 1200.0
     tensileStrength:
       value: 1.4
       unit: MPa
       research_basis: ASTM C1324-18 'Standard Test Method for Examination and Analysis
         of Hardened Masonry Mortar' and NISTIR 7415 'Mechanical Properties of Masonry
         Components'
+      min: 1
+      max: 15
     youngsModulus:
       value: 20.7
       unit: GPa
@@ -128,6 +150,8 @@ materialProperties:
         Aerated Concrete (PAAC) Wall Construction Units' and supplementary mechanical
         property studies on cementitious stucco compositions by Larbi (1993) in 'Cement
         and Concrete Research'
+      min: 3.0
+      max: 50
     fractureToughness:
       value: 0.25
       unit: MPa·√m
@@ -138,6 +162,8 @@ materialProperties:
         values are typically reported between 0.2 and 0.4 MPa·√m. The cited source
         provides a specific, measured value for stucco within this established range
         for masonry materials.
+      min: 0.15
+      max: 1.1
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -148,12 +174,16 @@ materialProperties:
       research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
         for Masonry Cleaning'' (2019), Table 4.3 - Absorption coefficients for cementitious
         materials at 1064 nm wavelength'
+      min: 0.5
+      max: 15
     laserReflectivity:
       value: 35.2
       unit: '%'
       research_basis: 'NIST Special Publication 1176: ''Optical Properties of Building
         Materials for Laser Applications'' (Table 4.3 - Portland cement-based stucco,
         1064 nm wavelength)'
+      min: 10
+      max: 70
 machineSettings:
   energyDensity:
     value: 3.2

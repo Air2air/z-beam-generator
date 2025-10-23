@@ -87,20 +87,28 @@ materialProperties:
       value: 2435.0
       unit: K
       research_basis: materials_science_literature
+      min: 907
+      max: 5870
     meltingPoint:
       value: 1234.93
       unit: K
       research_basis: materials_science_literature
+      min: -39
+      max: 3422
     specificHeat:
       value: 235.0
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
         SRD 69 - Silver thermophysical properties at 298.15 K'
+      min: 100
+      max: 2000
     thermalConductivity:
       value: 429.0
       unit: W/(m·K)
       research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
         of Fluid Systems - Pure Silver at 300K'
+      min: 7.0
+      max: 430
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -109,16 +117,22 @@ materialProperties:
       value: 1234.93
       unit: K
       research_basis: materials_science_literature
+      min: 873
+      max: 3695
     thermalDiffusivity:
       value: 165.63
       unit: mm²/s
       research_basis: NIST Standard Reference Database 78, 2019 Edition - Thermophysical
         Properties of Matter, specifically for pure silver (99.99%) at 300K
+      min: 0.06
+      max: 174
     thermalExpansion:
       value: 18.9
       unit: 10^-6/K
       research_basis: NIST Standard Reference Database 144, Section 4.2.3 - Silver
         Thermal Expansion Coefficients (20-100°C)
+      min: 0.5
+      max: 33
     compressiveStrength:
       value: 140.0
       unit: MPa
@@ -128,6 +142,8 @@ materialProperties:
         compressive strength range. The value of 140 MPa is a representative figure
         for annealed, high-purity silver, which is the most commonly referenced condition
         for its base mechanical properties.
+      min: 50
+      max: 2000
     corrosionResistance:
       value: 9.0
       unit: rating
@@ -138,19 +154,27 @@ materialProperties:
         potential of +0.799 V) contributes to its exceptional corrosion resistance
         in most environments, though it can be attacked by strong oxidizing agents
         and certain sulfur-containing atmospheres.
+      min: 1
+      max: 10
     density:
       value: 10.49
       unit: g/cm³
       research_basis: 'NIST Standard Reference Database 124: ''The density of silver
         at 20°C is 10.49 g/cm³'' (https://trc.nist.gov/cryogenics/materials/PureMaterials.html)'
+      min: 0.53
+      max: 22.6
     electricalConductivity:
       value: 63000000.0
       unit: S/m
       research_basis: materials_science_literature
+      min: 0.67
+      max: 63.0
     electricalResistivity:
       value: 1.59e-08
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 1.0e-08
+      max: 1.5e-06
     flexuralStrength:
       value: 125.0
       unit: MPa
@@ -162,12 +186,16 @@ materialProperties:
         between tensile and flexural strength for ductile materials. For high-purity
         silver in the cold-worked condition, this value can be significantly higher
         (>200 MPa).
+      min: 2.5
+      max: 1050.0
     hardness:
       value: 25.0
       unit: HV
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Table 1: Physical Properties of Pure
         Metals, Silver hardness range 24-26 HV (annealed pure silver, 99.9+%)'
+      min: 0.5
+      max: 3500
     oxidationResistance:
       value: 200.0
       unit: °C
@@ -178,10 +206,14 @@ materialProperties:
         above approximately 200°C, and the oxide layer decomposes rapidly above 400°C.
         The 200°C value is consistently cited as the threshold for the onset of significant
         oxidation under continuous service.
+      min: 200
+      max: 1200
     porosity:
       value: 0.0001
       unit: '%'
       research_basis: ai_research_comprehensive
+      min: 0.0
+      max: 15.0
     tensileStrength:
       value: 170.0
       unit: MPa
@@ -189,12 +221,16 @@ materialProperties:
         Alloys and Special-Purpose Materials, ''Silver and Silver Alloys'', pp. 689-710,
         indicating pure annealed silver tensile strength range 125-180 MPa with 170
         MPa as representative for high-purity material'
+      min: 3.0
+      max: 3000.0
     youngsModulus:
       value: 83.0
       unit: GPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1, p. 802; NIST Materials
         Data Repository for pure silver polycrystalline samples'
+      min: 5
+      max: 600
     fractureToughness:
       value: 22.0
       unit: MPa·√m
@@ -203,6 +239,8 @@ materialProperties:
         materials science references for high-purity silver at room temperature, reflecting
         its behavior as a very ductile FCC metal where plastic deformation precedes
         fracture.
+      min: 20
+      max: 200
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -211,46 +249,66 @@ materialProperties:
       value: 0.18
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 2.0
+      max: 8.0
     absorptivity:
       value: 0.039
       unit: dimensionless
       research_basis: materials_science_literature
+      min: 2.0
+      max: 65.0
     laserAbsorption:
       value: 4.0
       unit: '%'
       research_basis: 'NIST Materials Data Repository - Optical Constants of Silver
         (Johnson & Christy, 1972) and ASM Handbook Volume 2: Properties and Selection:
         Nonferrous Alloys and Special-Purpose Materials'
+      min: 0.02
+      max: 100
     laserDamageThreshold:
       value: 0.45
       unit: J/cm²
       research_basis: materials_science_literature
+      min: 0.1
+      max: 20.0
     laserReflectivity:
       value: 97.0
       unit: '%'
       research_basis: 'NIST Standard Reference Database 120: ''Reflectance and Emittance
         of Spectrally Selective Materials'' - Silver exhibits 97-99% reflectivity
         in visible to near-infrared spectrum (400-1200 nm)'
+      min: 5
+      max: 99.9
     reflectivity:
       value: 0.985
       unit: dimensionless (reflectance ratio)
       research_basis: materials_science_literature
+      min: 85
+      max: 98
     thermalShockResistance:
       value: 1.2
       unit: MW/m
       research_basis: materials_science_literature
+      min: 50
+      max: 400
     absorptionCoefficient:
       value: 12300000.0
       unit: m⁻¹
       research_basis: materials_science_literature
+      min: 100000
+      max: 50000000
     surfaceRoughness:
       value: 0.12
       unit: μm
       research_basis: materials_science_literature
+      min: 0.4
+      max: 150
     vaporPressure:
       value: 0.34
       unit: Pa
       research_basis: materials_science_literature
+      min: 1.0e-10
+      max: 0.001
 machineSettings:
   energyDensity:
     value: 5.1

@@ -47,12 +47,16 @@ materialProperties:
       unit: J/(kg·K)
       research_basis: 'ASM Handbook, Volume 21: Composites, Specific Heat Data for
         Aramid Fiber Reinforced Polymers, Table 3-12, pp. 145-147 (2001)'
+      min: 500
+      max: 2500.0
     thermalConductivity:
       value: 0.52
       unit: W/(m·K)
       research_basis: NIST Polymer Composite Database - Aramid Fiber Reinforced Epoxy
         (Kevlar/Epoxy) at 40% fiber volume fraction, measured using guarded heat flow
         meter method per ASTM E1530
+      min: 0.03
+      max: 400
     thermalDestruction:
       value: 300.0
       unit: °C
@@ -63,12 +67,16 @@ materialProperties:
       research_basis: 'ASM Handbook, Vol. 21: Composites, Section: Thermal Properties
         of Polymer Matrix Composites, with specific reference to aramid fiber (Kevlar
         49) reinforced epoxy systems'
+      min: 0.08
+      max: 180
     thermalExpansion:
       value: 2.0
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Vol. 21: Composites, Section ''Thermal Properties
         of Polymer Matrix Composites'', pp. 228-235, specifically citing Kevlar 49/epoxy
         unidirectional laminates with 60% fiber volume fraction at 23°C'
+      min: -1
+      max: 250
     compressiveStrength:
       value: 517.0
       unit: MPa
@@ -81,6 +89,8 @@ materialProperties:
         is achieved with optimized sizings and processing for improved compressive
         performance, which is the most relevant for a high-performance composite as
         suggested by the provided properties.
+      min: 50
+      max: 1000
     corrosionResistance:
       value: 8.0
       unit: rating
@@ -90,16 +100,22 @@ materialProperties:
         and Kevlar fibers themselves are inherently resistant to chemical degradation
         and do not rust like metals. However, some susceptibility exists to UV degradation
         and hydrolysis in extreme conditions, preventing a perfect rating.
+      min: 5
+      max: 9
     density:
       value: 1.44
       unit: g/cm³
       research_basis: 'ASM Handbook, Vol. 21: Composites, Section: Aramid Fiber Composites,
         pp. 78-82, with specific reference to Kevlar 49/epoxy composites at 60% fiber
         volume fraction'
+      min: 0.5
+      max: 8
     electricalResistivity:
       value: 120000000000000.0
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 0.001
+      max: 100000000000000.0
     flexuralStrength:
       value: 570.0
       unit: MPa
@@ -109,12 +125,16 @@ materialProperties:
         standardized 3-point bend tests falls in the range of 500-700 MPa. The cited
         value of 570 MPa is a well-established median from authoritative composites
         engineering handbooks for this material class and configuration.
+      min: 100
+      max: 2000
     hardness:
       value: 62.5
       unit: Shore D
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Aramid Fiber
         Reinforced Polymers, pp. 324-328, with specific reference to Kevlar-49/epoxy
         systems tested under ASTM D2240'
+      min: 5.0
+      max: 120
     oxidationResistance:
       value: 177.0
       unit: °C
@@ -124,18 +144,24 @@ materialProperties:
         leading to loss of mechanical properties. The polymer matrix (typically epoxy
         or similar) generally has a lower thermal tolerance than the Kevlar fibers,
         making the fiber properties the limiting factor for long-term oxidative stability.
+      min: 80.0
+      max: 1650.0
     tensileStrength:
       value: 3100.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Aramid Fiber
         Composites, pp. 98-104, specifically citing Kevlar 49/epoxy unidirectional
         composites at 60% fiber volume fraction'
+      min: 20
+      max: 6000
     youngsModulus:
       value: 830.0
       unit: GPa
       research_basis: 'ASM Handbook, Vol. 21: Composites, Section: Aramid Fiber Composites,
         pp. 98-104, specifically citing Kevlar 49/epoxy unidirectional composites
         at 60% fiber volume fraction'
+      min: 0.001
+      max: 3000
     fractureToughness:
       value: 44.0
       unit: MPa·√m
@@ -147,6 +173,8 @@ materialProperties:
         D5045) of Kevlar/epoxy laminates with approximately 60% fiber volume fraction,
         where the Kevlar fibers provide substantial crack bridging and pull-out mechanisms
         that enhance toughness compared to the polymer matrix alone.
+      min: 20
+      max: 100
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -157,12 +185,16 @@ materialProperties:
       research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
         in Composite Materials'' (2021), Table 4.2 - Absorption coefficients for aramid-reinforced
         polymers at 1064 nm wavelength'
+      min: 0.05
+      max: 200
     laserReflectivity:
       value: 38.5
       unit: '%'
       research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
         for Composite Materials'' (2021) Table 4.2 - Reflectivity measurements for
         aramid fiber reinforced polymers at 1064 nm wavelength'
+      min: 2
+      max: 80
 machineSettings:
   energyDensity:
     value: 4.5

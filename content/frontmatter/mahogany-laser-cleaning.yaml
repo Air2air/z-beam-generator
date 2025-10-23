@@ -47,6 +47,8 @@ materialProperties:
       unit: J/(kg·K)
       research_basis: 'NIST Wood Database - Specific Heat of Tropical Hardwoods (Mahogany
         species: Swietenia macrophylla), measured at 12% moisture content, 20°C'
+      min: 800
+      max: 2500
     thermalConductivity:
       value: 0.16
       unit: W/(m·K)
@@ -54,6 +56,8 @@ materialProperties:
         Service, Forest Products Laboratory. General Technical Report FPL-GTR-190.
         2010. Table 4-3a provides thermal conductivity values for various wood species
         at 12% moisture content.'
+      min: 0.04
+      max: 0.4
     thermalDestruction:
       value: 300.0
       unit: °C
@@ -65,12 +69,16 @@ materialProperties:
         an Engineering Material. USDA Forest Service, Chapter 4: Thermal Properties
         of Wood, Table 4-3, specifically citing measurements for genuine mahogany
         (Swietenia spp.) at 12% moisture content.'
+      min: 0.0001
+      max: 0.4
     thermalExpansion:
       value: 45.0
       unit: 10^-6/K
       research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest
         Service, Forest Products Laboratory. General Technical Report FPL-GTR-190.
         Chapter 4: Thermal Properties, Table 4-3.'
+      min: 3.0
+      max: 60
     compressiveStrength:
       value: 46.0
       unit: MPa
@@ -79,6 +87,8 @@ materialProperties:
         species like Swietenia macrophylla) parallel to the grain as 46 MPa at 12%
         moisture content. This value is consistent with published wood engineering
         data for medium-density hardwoods.
+      min: 20
+      max: 80
     corrosionResistance:
       value: 7.0
       unit: rating
@@ -88,12 +98,16 @@ materialProperties:
         and insect infestation. The wood contains natural oils and extractives that
         provide moderate protection against biological degradation, though it's not
         as resistant as pressure-treated woods or tropical hardwoods like teak.
+      min: 2.0
+      max: 8.0
     density:
       value: 0.59
       unit: g/cm³
       research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest
         Service, FPL-GTR-190), Table 5-3a: Density of various hardwoods at 12% moisture
         content'
+      min: 0.12
+      max: 1.5
     flexuralStrength:
       value: 85.0
       unit: MPa
@@ -103,12 +117,16 @@ materialProperties:
         is consistent with the known high strength-to-weight ratio of this tropical
         hardwood. The provided density of 0.59 g/cm³ aligns with the typical range
         for Mahogany, supporting the validity of the cited flexural strength.
+      min: 40
+      max: 150
     hardness:
       value: 2510.0
       unit: MPa
       research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest
         Service, FPL-GTR-190) and ASTM D143-14 Standard Test Methods for Small Clear
         Specimens of Timber'
+      min: 1
+      max: 5000
     oxidationResistance:
       value: 150.0
       unit: °C
@@ -118,16 +136,22 @@ materialProperties:
         stable and charring/weight loss from oxidation becomes measurable over time.
         This is consistent with thermal decomposition data for lignocellulosic materials
         where hemicellulose degradation begins around 150°C.
+      min: 82.0
+      max: 204.0
     porosity:
       value: 0.58
       unit: m³/m³
       research_basis: ai_research_comprehensive
+      min: 12
+      max: 65
     tensileStrength:
       value: 95.0
       unit: MPa
       research_basis: 'USDA Forest Products Laboratory Wood Handbook (2010), Chapter
         4: Mechanical Properties of Wood, Table 4-3 specific to Mahogany (Swietenia
         macrophylla) at 12% moisture content'
+      min: 20
+      max: 200
     youngsModulus:
       value: 9.8
       unit: GPa
@@ -135,6 +159,8 @@ materialProperties:
         5: Mechanical Properties of Wood, Table 5-3: Mechanical properties of some
         commercially important woods grown in the United States, specifically referencing
         African Mahogany (Khaya spp.) at 12% moisture content'
+      min: 5
+      max: 20000
     fractureToughness:
       value: 2.8
       unit: MPa·√m
@@ -144,6 +170,8 @@ materialProperties:
         to grain), which is the typical mode of failure measured for fracture toughness
         in anisotropic materials like wood. Mahogany, as a medium-density hardwood,
         falls within this typical range for wood species.
+      min: 0.33
+      max: 4.4
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -154,12 +182,16 @@ materialProperties:
       research_basis: 'NIST Wood Database - Specific Absorption Properties of Tropical
         Hardwoods (Mahogany genus: Swietenia), measured at 1064 nm Nd:YAG laser wavelength
         using integrating sphere methodology'
+      min: 1
+      max: 50
     laserReflectivity:
       value: 32.5
       unit: '%'
       research_basis: 'NIST Standard Reference Database 120: Optical Properties of
         Materials for Laser Applications, Section 8.3 - Wood Species Optical Characteristics
         (2021 Edition)'
+      min: 10
+      max: 60
 machineSettings:
   dwellTime:
     value: 50

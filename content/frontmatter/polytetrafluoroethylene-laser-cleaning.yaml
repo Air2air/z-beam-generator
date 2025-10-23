@@ -47,6 +47,8 @@ materialProperties:
       unit: J/(kg·K)
       research_basis: 'NIST Chemistry WebBook, Standard Reference Database 69: Polytetrafluoroethylene
         thermophysical properties at 25°C'
+      min: 1.0
+      max: 2500
     thermalConductivity:
       value: 0.25
       unit: W/(m·K)
@@ -54,6 +56,8 @@ materialProperties:
         Alloys and Special-Purpose Materials, Thermal Properties of Polymers (Table
         7, p. 87), and NIST Standard Reference Data for PTFE thermal conductivity
         at 25°C'
+      min: 0.02
+      max: 3
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -63,12 +67,16 @@ materialProperties:
       unit: mm²/s
       research_basis: 'NIST Standard Reference Database: Thermal diffusivity of PTFE
         measured at 25°C using laser flash method (ASTM E1461)'
+      min: 0.08
+      max: 1
     thermalExpansion:
       value: 99.0
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Section: Plastics and Polymeric
         Composites, Table: Thermal Expansion of Engineering Plastics'
+      min: 10
+      max: 200
     compressiveStrength:
       value: 12.5
       unit: MPa
@@ -78,6 +86,8 @@ materialProperties:
         ASTM D695, the standard test method for compressive properties of rigid plastics.
         This value is consistent with PTFE's known soft, ductile nature compared to
         other engineering plastics.
+      min: 20
+      max: 200
     corrosionResistance:
       value: 10.0
       unit: rating
@@ -85,15 +95,21 @@ materialProperties:
         and solvents, maintaining properties even after prolonged exposure. It is
         resistant to strong acids, bases, and oxidizing agents that corrode most metals
         and degrade other plastics, earning the highest corrosion resistance rating.
+      min: 5
+      max: 9
     density:
       value: 2.2
       unit: g/cm³
       research_basis: 'ASM Handbook, Volume 21: Composites; NIST Standard Reference
         Data; CRC Handbook of Chemistry and Physics (97th Edition)'
+      min: 0.85
+      max: 2.2
     electricalResistivity:
       value: 1.0e+18
       unit: Ω·m
       research_basis: materials_science_literature
+      min: 1000000000000.0
+      max: 1.0e+16
     flexuralStrength:
       value: 25.0
       unit: MPa
@@ -102,12 +118,16 @@ materialProperties:
         is consistent with the known mechanical behavior of PTFE, which is a relatively
         soft and ductile plastic with moderate strength. The property is typically
         determined by a 3-point bend test.
+      min: 30
+      max: 200
     hardness:
       value: 55.0
       unit: Shore D
       research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation (2000),
         Section: Plastics and Polymer Matrix Composites, Table: Typical Properties
         of Engineering Plastics'
+      min: Shore A 10
+      max: Shore D 90
     oxidationResistance:
       value: 260.0
       unit: °C
@@ -116,11 +136,15 @@ materialProperties:
         and major manufacturer technical data sheets. While PTFE begins to show minor
         decomposition above ~200 °C, significant thermal degradation and oxidation
         that rapidly compromise mechanical properties occur at or above 260 °C.
+      min: 60.0
+      max: 260.0
     tensileStrength:
       value: 27.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 21: Composites, Table 4 - Typical Properties
         of PTFE; NIST Materials Data Repository for PTFE mechanical properties'
+      min: 10
+      max: 400
     youngsModulus:
       value: 0.5
       unit: GPa
@@ -128,6 +152,8 @@ materialProperties:
         Alloys and Special-Purpose Materials (ASM International, 1990), Section: Fluoropolymers;
         NIST Polymer Properties Database; Brandrup, J., Immergut, E.H., & Grulke,
         E.A. (1999). Polymer Handbook (4th ed.), Wiley-Interscience'
+      min: 0.01
+      max: 5000
     fractureToughness:
       value: 0.7
       unit: MPa·√m
@@ -136,6 +162,8 @@ materialProperties:
         consistent across multiple engineering references for unreinforced PTFE at
         room temperature, reflecting its relatively poor resistance to crack propagation
         compared to engineering plastics.
+      min: 1
+      max: 10
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
@@ -145,11 +173,15 @@ materialProperties:
       unit: '%'
       research_basis: NIST Materials Data Repository - Reflectance Spectroscopy of
         PTFE in Near-IR (1064 nm) showing 95.8% reflectance, implying 4.2% absorption
+      min: 0.1
+      max: 100
     laserReflectivity:
       value: 94.5
       unit: '%'
       research_basis: NIST Materials Data Repository - Optical Properties of Polymers
         Database, specifically PTFE reflectance measurements at 1064 nm wavelength
+      min: 4.0
+      max: 95
 machineSettings:
   energyDensity:
     value: 5.1
