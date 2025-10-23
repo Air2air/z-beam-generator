@@ -5,7 +5,7 @@
   "type": "object",
   "required": [
     "applications",
-    "author_id",
+    "author",
     "category",
     "description",
     "images",
@@ -13,7 +13,7 @@
     "subcategory",
     "title"
   ],
-  "additionalProperties": false,
+  "additionalProperties": true,
   "properties": {
     "name": {
       "type": "string",
@@ -23,8 +23,11 @@
       "type": "string",
       "enum": [
         "metal",
+        "Metal",
         "ceramic",
+        "Ceramic",
         "composite",
+        "Composite",
         "semiconductor",
         "glass",
         "stone",
@@ -44,7 +47,7 @@
     "subcategory": {
       "type": "string",
       "enum": [
-        "precious", "ferrous", "non-ferrous", "refractory", "reactive", "specialty",
+        "precious", "ferrous", "non-ferrous", "alloy", "refractory", "reactive", "specialty",
         "aerospace", "automotive", "medical",
         "oxide", "nitride", "carbide", "silicate", "traditional", "advanced",
         "structural", "functional", "fiber-reinforced", "matrix", "resin", "elastomeric",
@@ -71,6 +74,10 @@
     "title": {
       "type": "string",
       "description": "SEO-optimized title"
+    },
+    "subtitle": {
+      "type": "string",
+      "description": "Secondary title or tagline"
     },
     "headline": {
       "type": "string",
@@ -151,9 +158,9 @@
       ],
       "description": "Legacy compatibility field - use laserProcessing.compatibility for new implementations"
     },
-    "properties": {
-      "$ref": "#/definitions/Properties",
-      "description": "Consolidated material properties including density, thermal, and chemical characteristics"
+    "materialProperties": {
+      "$ref": "#/definitions/MaterialProperties",
+      "description": "Categorized material properties organized by laser cleaning process stages"
     },
     "machineSettings": {
       "$ref": "#/definitions/MachineSettings",
@@ -171,7 +178,20 @@
         {
           "type": "array",
           "items": {
-            "type": "string"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "name": {"type": "string"},
+                  "description": {"type": "string"},
+                  "url": {"type": "string"},
+                  "image": {"type": "string"}
+                }
+              }
+            ]
           }
         }
       ],
@@ -179,6 +199,10 @@
     },
     "images": {
       "$ref": "#/definitions/Images"
+    },
+    "caption": {
+      "type": "object",
+      "description": "Caption information for material images"
     },
     "environmentalImpact": {
       "type": "array",
@@ -193,6 +217,13 @@
         "$ref": "#/definitions/Outcome"
       },
       "description": "Measurable outcomes"
+    },
+    "outcomeMetrics": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Detailed outcome metrics"
     },
     "surface_roughness_before": {
       "type": "number",
@@ -238,7 +269,7 @@
     "componentOutputs": {
       "type": "object",
       "description": "Embedded specialized component outputs",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "caption": {
           "$ref": "#/definitions/CaptionOutput"
@@ -250,6 +281,10 @@
           "$ref": "#/definitions/MetatagsOutput"
         }
       }
+    },
+    "preservedData": {
+      "type": "object",
+      "description": "Preserved metadata from migration process"
     }
   },
   "definitions": {
@@ -264,7 +299,7 @@
         "expertise",
         "image"
       ],
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "id": {
           "type": "integer",
@@ -298,7 +333,7 @@
     "ChemicalProperties": {
       "type": "object",
       "description": "Chemical composition and behavior",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "chemicalFormula": {
           "type": "string",
@@ -333,7 +368,7 @@
     "PhysicalProperties": {
       "type": "object",
       "description": "Physical characteristics and measurements",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "density": {
           "type": "number",
@@ -366,7 +401,7 @@
     "MechanicalProperties": {
       "type": "object",
       "description": "Mechanical strength and behavior",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "tensileStrength": {
           "type": "number"
@@ -451,7 +486,7 @@
     "ThermalProperties": {
       "type": "object",
       "description": "Heat-related properties and behavior",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "thermalConductivity": {
           "type": "number"
@@ -519,13 +554,13 @@
       "type": "object",
       "description": "Nested thermal destruction property with point and type",
       "required": ["point", "type"],
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "point": {
           "type": "object",
           "description": "Thermal destruction temperature data",
           "required": ["value", "unit"],
-          "additionalProperties": false,
+          "additionalProperties": true,
           "properties": {
             "value": {
               "type": "number",
@@ -565,7 +600,7 @@
     "RecommendedSettings": {
       "type": "object",
       "description": "Optimal laser settings for this material",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "powerRange": {
           "type": "number"
@@ -656,7 +691,7 @@
     "ThresholdSettings": {
       "type": "object",
       "description": "Critical thresholds and safety limits",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "spotSize": {
           "type": "number"
@@ -726,7 +761,7 @@
     "LaserCompatibility": {
       "type": "object",
       "description": "Laser type compatibility and interaction properties",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "laserTypes": {
           "type": "array",
@@ -779,7 +814,7 @@
     "Processing": {
       "type": "object",
       "description": "Processing guidelines and surface considerations",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "surfaceCompatibility": {
           "$ref": "#/definitions/SurfaceCompatibility"
@@ -792,7 +827,7 @@
     "SurfaceCompatibility": {
       "type": "object",
       "description": "Surface treatment and preparation requirements",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "surfaceTreatments": {
           "type": "array",
@@ -821,7 +856,7 @@
     "ProcessingGuidelines": {
       "type": "object",
       "description": "Step-by-step processing recommendations",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "preparation": {
           "type": "array",
@@ -849,7 +884,7 @@
     "Safety": {
       "type": "object",
       "description": "Safety considerations and regulatory compliance",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "hazards": {
           "$ref": "#/definitions/SafetyHazards"
@@ -862,7 +897,7 @@
     "SafetyHazards": {
       "type": "object",
       "description": "Safety risks and precautions",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "laserClass": {
           "type": "string",
@@ -894,7 +929,7 @@
     "RegulatoryCompliance": {
       "type": "object",
       "description": "Standards and certifications",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "standards": {
           "type": "array",
@@ -922,7 +957,7 @@
     "Sustainability": {
       "type": "object",
       "description": "Environmental impact and sustainability metrics",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "environmental": {
           "$ref": "#/definitions/EnvironmentalMetrics"
@@ -938,7 +973,7 @@
     "EnvironmentalMetrics": {
       "type": "object",
       "description": "Environmental impact measurements",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "carbonFootprint": {
           "type": "number",
@@ -964,7 +999,7 @@
     "LifecycleMetrics": {
       "type": "object",
       "description": "Material lifecycle considerations",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "durabilityIndex": {
           "type": "number",
@@ -986,7 +1021,7 @@
     "RecyclingMetrics": {
       "type": "object",
       "description": "End-of-life recycling potential",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "recyclabilityIndex": {
           "type": "number",
@@ -1011,7 +1046,7 @@
     "Content": {
       "type": "object",
       "description": "Content authoring and generation metadata",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "authoring": {
           "$ref": "#/definitions/ContentAuthoring"
@@ -1024,7 +1059,7 @@
     "ContentAuthoring": {
       "type": "object",
       "description": "Content creation and authoring details",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "wordCountTarget": {
           "type": "integer",
@@ -1052,7 +1087,7 @@
     "ContentQuality": {
       "type": "object",
       "description": "Quality metrics and validation",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "technicalAccuracy": {
           "type": "number",
@@ -1083,7 +1118,7 @@
     "Metadata": {
       "type": "object",
       "description": "Technical validation and system metadata",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "validation": {
           "$ref": "#/definitions/ValidationMetadata"
@@ -1096,7 +1131,7 @@
     "ValidationMetadata": {
       "type": "object",
       "description": "Data validation and verification tracking",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "dataCompleteness": {
           "type": "number",
@@ -1125,7 +1160,7 @@
     "GenerationMetadata": {
       "type": "object",
       "description": "Content generation system metadata",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "schemaVersion": {
           "type": "string",
@@ -1152,7 +1187,7 @@
         "industry",
         "detail"
       ],
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "industry": {
           "type": "string",
@@ -1195,7 +1230,7 @@
         "hero",
         "micro"
       ],
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "hero": {
           "$ref": "#/definitions/Image"
@@ -1211,7 +1246,7 @@
         "alt",
         "url"
       ],
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "alt": {
           "type": "string"
@@ -1227,7 +1262,7 @@
         "benefit",
         "description"
       ],
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "benefit": {
           "type": "string"
@@ -1243,7 +1278,7 @@
         "result",
         "metric"
       ],
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "result": {
           "type": "string"
@@ -1320,8 +1355,9 @@
     },
     "PropertyCategory": {
       "type": "object",
-      "description": "Property category with metadata and nested properties",
-      "required": ["label", "properties"],
+      "description": "Property category with metadata and direct property values",
+      "required": ["label"],
+      "additionalProperties": true,
       "properties": {
         "label": {
           "type": "string",
@@ -1334,15 +1370,11 @@
         "percentage": {
           "type": "number",
           "description": "Percentage of total properties in this category"
-        },
-        "properties": {
-          "type": "object",
-          "description": "Properties within this category",
-          "patternProperties": {
-            "^[a-zA-Z]+$": {
-              "$ref": "#/definitions/PropertyValue"
-            }
-          }
+        }
+      },
+      "patternProperties": {
+        "^(?!label$|description$|percentage$)[a-zA-Z]+$": {
+          "$ref": "#/definitions/PropertyValue"
         }
       }
     },
@@ -1354,12 +1386,22 @@
           "$ref": "#/definitions/PropertyCategory"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": true
     },
     "MachineSettings": {
       "type": "object",
-      "description": "Legacy flat machine settings - use LaserProcessing for new implementations",
-      "additionalProperties": false,
+      "description": "Laser machine settings with structured property values",
+      "additionalProperties": true,
+      "patternProperties": {
+        "^[a-zA-Z]+$": {
+          "$ref": "#/definitions/PropertyValue"
+        }
+      }
+    },
+    "LegacyMachineSettings": {
+      "type": "object", 
+      "description": "Legacy flat machine settings - deprecated",
+      "additionalProperties": true,
       "properties": {
         "powerRange": {
           "type": "number"
@@ -1559,7 +1601,7 @@
         "formula",
         "symbol"
       ],
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "chemicalFormula": {
           "type": "string"
@@ -1578,7 +1620,7 @@
     "CaptionOutput": {
       "type": "object",
       "description": "Caption component output with before/after descriptions and technical analysis",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "beforeText": {
           "type": "string",
@@ -1590,7 +1632,7 @@
         },
         "technicalAnalysis": {
           "type": "object",
-          "additionalProperties": false,
+          "additionalProperties": true,
           "properties": {
             "focus": {
               "type": "string",
@@ -1609,7 +1651,7 @@
         },
         "microscopy": {
           "type": "object",
-          "additionalProperties": false,
+          "additionalProperties": true,
           "properties": {
             "parameters": {
               "type": "string",
@@ -1623,7 +1665,7 @@
         },
         "seo": {
           "type": "object",
-          "additionalProperties": false,
+          "additionalProperties": true,
           "properties": {
             "title": {
               "type": "string",
@@ -1637,7 +1679,7 @@
         },
         "processing": {
           "type": "object",
-          "additionalProperties": false,
+          "additionalProperties": true,
           "properties": {
             "frontmatterAvailable": {
               "type": "boolean",
@@ -1655,7 +1697,7 @@
         },
         "generation": {
           "type": "object",
-          "additionalProperties": false,
+          "additionalProperties": true,
           "properties": {
             "generated": {
               "type": "string",
@@ -1678,7 +1720,7 @@
         },
         "materialProperties": {
           "type": "object",
-          "additionalProperties": false,
+          "additionalProperties": true,
           "properties": {
             "materialType": {
               "type": "string",
@@ -1695,7 +1737,7 @@
     "JsonldOutput": {
       "type": "object",
       "description": "JSON-LD structured data output with schema.org compliance",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "structuredData": {
           "type": "object",
@@ -1708,7 +1750,7 @@
         },
         "generation": {
           "type": "object",
-          "additionalProperties": false,
+          "additionalProperties": true,
           "properties": {
             "generated": {
               "type": "string",
@@ -1730,11 +1772,11 @@
     "MetatagsOutput": {
       "type": "object",
       "description": "HTML metatags output for web integration",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "htmlMeta": {
           "type": "object",
-          "additionalProperties": false,
+          "additionalProperties": true,
           "properties": {
             "title": {
               "type": "string",
@@ -1764,7 +1806,7 @@
         },
         "openGraph": {
           "type": "object",
-          "additionalProperties": false,
+          "additionalProperties": true,
           "properties": {
             "title": {
               "type": "string",
@@ -1790,7 +1832,7 @@
         },
         "twitterCard": {
           "type": "object",
-          "additionalProperties": false,
+          "additionalProperties": true,
           "properties": {
             "card": {
               "type": "string",
@@ -1812,7 +1854,7 @@
         },
         "generation": {
           "type": "object",
-          "additionalProperties": false,
+          "additionalProperties": true,
           "properties": {
             "generated": {
               "type": "string",
