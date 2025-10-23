@@ -44,50 +44,52 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     specificHeat:
       value: 880.0
+      min: 700
+      max: 1100
       unit: J/(kg·K)
       research_basis: 'NISTIR 7563 - Specific Heat Capacity of Common Building Materials
         (Table 4-1), validated against ASM Handbook Volume 2: Properties and Selection:
         Nonferrous Alloys and Special-Purpose Materials'
-      min: 700
-      max: 1100
     thermalConductivity:
       value: 1.4
+      min: 0.08
+      max: 2.5
       unit: W/(m·K)
       research_basis: 'NIST IR 7563 - Thermophysical Properties of Masonry and Its
         Constituents, Table 4.1: Thermal conductivity of concrete at 24°C = 1.28 W/m·K
         for standard concrete mixtures'
-      min: 0.08
-      max: 2.5
     thermalDestruction:
       value: 500.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDiffusivity:
       value: 0.47
+      min: 0.1
+      max: 1
       unit: mm²/s
       research_basis: 'NIST Special Publication 260-174: Thermophysical Properties
         of Masonry Materials, Table 3.1 - Thermal Diffusivity Values for Standard
         Concrete Mixes (20°C, dry conditions)'
-      min: 0.1
-      max: 1
     thermalExpansion:
       value: 10.0
+      min: 5
+      max: 20
       unit: μm/m·°C
       research_basis: 'NIST Technical Note 1742: ''Thermal Expansion of Concrete:
         Experimental Investigation and Benchmarking'' (2020), Table 3: Average CTE
         values for standard concrete mixtures under controlled laboratory conditions'
-      min: 5
-      max: 20
     compressiveStrength:
       value: 41.4
+      min: 5
+      max: 100
       unit: MPa
       research_basis: ASTM C39/C39M-21 Standard Test Method for Compressive Strength
         of Cylindrical Concrete Specimens, with typical normal-weight concrete mixtures
         (20-25 MPa cement paste + aggregate composite)
-      min: 5
-      max: 100
     corrosionResistance:
       value: 8.0
+      min: 2.0
+      max: 8.0
       unit: rating
       research_basis: Concrete provides excellent corrosion protection to embedded
         steel through its high alkalinity (pH ~13), creating a passive layer. While
@@ -96,18 +98,18 @@ materialProperties:
         (sulfates, chlorides) or carbonation that can compromise the protective environment
         over decades in harsh conditions. The 8/10 rating reflects concrete's superior
         performance in most atmospheric exposures compared to other masonry materials.
-      min: 2.0
-      max: 8.0
     density:
       value: 2.4
+      min: 0.6
+      max: 3.2
       unit: g/cm³
       research_basis: 'NIST Technical Note 2165: ''Properties of Concrete for Use
         in Evaluating Prestressed Concrete Structural Components'' (2020) and ASTM
         C138/C138M-23: Standard Test Method for Density of Concrete'
-      min: 0.6
-      max: 3.2
     flexuralStrength:
       value: 4.1
+      min: 2
+      max: 20
       unit: MPa
       research_basis: The ACI 318 code provides a direct empirical relationship for
         the modulus of rupture (flexural strength) of normal-weight concrete. For
@@ -118,18 +120,18 @@ materialProperties:
         strength for normal-strength concrete, placing the expected value for 41.4
         MPa concrete between 3.3 and 5.0 MPa. The cited 4.1 MPa is a well-established
         median value for this compressive strength range.
-      min: 2
-      max: 20
     hardness:
       value: 5.0
+      min: 1
+      max: 6
       unit: Mohs
       research_basis: 'NIST Special Publication 260-175: Hardness Measurements on
         Cement and Concrete (2012) & ASM Handbook Volume 8: Mechanical Testing and
         Evaluation (2000)'
-      min: 1
-      max: 6
     oxidationResistance:
       value: 300.0
+      min: 300.0
+      max: 1200.0
       unit: °C
       research_basis: Concrete is a masonry/composite material whose high-temperature
         performance is governed by the degradation of its cement paste and the properties
@@ -141,25 +143,25 @@ materialProperties:
         "significant oxidation" for this non-metallic material. The provided compressive
         strength of 41.4 MPa confirms this is normal-strength concrete, aligning with
         the code's scope.
-      min: 300.0
-      max: 1200.0
     tensileStrength:
       value: 3.5
+      min: 1
+      max: 15
       unit: MPa
       research_basis: ACI 318-19 Building Code Requirements for Structural Concrete
         and Commentary, Table 19.2.1.1 - Normalweight concrete tensile strength values
-      min: 1
-      max: 15
     youngsModulus:
       value: 30.0
+      min: 3.0
+      max: 50
       unit: GPa
       research_basis: 'ACI 318-19: Building Code Requirements for Structural Concrete,
         Section 19.2.2.1, which specifies Ec = wc^1.5 * 0.043√f''c for normal-weight
         concrete with wc = 2320-2560 kg/m³'
-      min: 3.0
-      max: 50
     fractureToughness:
       value: 0.8
+      min: 0.15
+      max: 1.1
       unit: MPa·√m
       research_basis: The provided compressive strength of 41.4 MPa is characteristic
         of high-strength concrete. For normal-strength concrete (20-40 MPa), K_IC
@@ -168,28 +170,26 @@ materialProperties:
         that fracture toughness for concrete with a compressive strength of ~40 MPa
         is approximately 0.8 MPa·√m, correlating strongly with compressive strength
         and aggregate properties.
-      min: 0.15
-      max: 1.1
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 8.2
+      min: 0.5
+      max: 15
       unit: '%'
       research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
         in Infrastructure Applications'' (2021), Table 4.3 - Laser absorption coefficients
         for construction materials at 1064 nm wavelength'
-      min: 0.5
-      max: 15
     laserReflectivity:
       value: 32.5
+      min: 10
+      max: 70
       unit: '%'
       research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
         for Construction Materials'' (2021), Table 4.2 - Reflectivity measurements
         for standard concrete (w/c=0.45) at 1064 nm'
-      min: 10
-      max: 70
 machineSettings:
   energyDensity:
     value: 2.5

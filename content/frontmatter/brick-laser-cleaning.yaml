@@ -43,49 +43,51 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     specificHeat:
       value: 800.0
+      min: 700
+      max: 1100
       unit: J/(kg·K)
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Table ''Thermal Properties of Common
         Building Materials'' (2015)'
-      min: 700
-      max: 1100
     thermalConductivity:
       value: 0.72
+      min: 0.08
+      max: 2.5
       unit: W/(m·K)
       research_basis: 'NIST IR 6990 - Thermal Properties of Masonry Materials (2015),
         Table 4.1: Measured thermal conductivity of standard fired clay brick at 24°C,
         dry condition'
-      min: 0.08
-      max: 2.5
     thermalDestruction:
       value: 500.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDiffusivity:
       value: 0.52
+      min: 0.1
+      max: 1
       unit: mm²/s
       research_basis: 'NIST Special Publication 1066: ''Thermal Properties of Masonry
         Materials'' (2019) - Table 4.2 for fired clay brick at 20°C, and ASM Handbook
         Volume 4: ''Heat Treating'' - Section on ceramic materials thermal properties'
-      min: 0.1
-      max: 1
     thermalExpansion:
       value: 5.5
+      min: 5
+      max: 20
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Volume 4: Heat Treating, Table 1 ''Coefficient
         of Thermal Expansion for Selected Materials'' - Common brick (fired clay)
         at 20-100°C'
-      min: 5
-      max: 20
     compressiveStrength:
       value: 41.4
+      min: 5
+      max: 100
       unit: MPa
       research_basis: ASTM C67-23 Standard Test Methods for Sampling and Testing Brick
         and Structural Clay Tile, Section 16 Compressive Strength
-      min: 5
-      max: 100
     corrosionResistance:
       value: 8.0
+      min: 2.0
+      max: 8.0
       unit: rating
       research_basis: Brick is highly resistant to environmental corrosion due to
         its ceramic composition and firing process. ASTM standards note brick's exceptional
@@ -93,17 +95,17 @@ materialProperties:
         in normal environments. The material's high compressive strength (41.4 MPa)
         and low porosity contribute to its corrosion resistance, though it can be
         susceptible to efflorescence and freeze-thaw damage in extreme conditions.
-      min: 2.0
-      max: 8.0
     density:
       value: 1.75
+      min: 0.6
+      max: 3.2
       unit: g/cm³
       research_basis: ASTM C67-23 Standard Test Methods for Sampling and Testing Brick
         and Structural Clay Tile, Section 12 - Bulk Density Determination
-      min: 0.6
-      max: 3.2
     flexuralStrength:
       value: 6.9
+      min: 2
+      max: 20
       unit: MPa
       research_basis: For fired clay brick, a well-established empirical relationship
         exists where the flexural strength (modulus of rupture) is typically 1/6th
@@ -114,19 +116,19 @@ materialProperties:
         with 6.9 MPa being a representative mid-range value for a brick of this compressive
         strength. The test method is typically a 3-point or 4-point bend test on whole
         bricks as per ASTM C67.
-      min: 2
-      max: 20
     hardness:
       value: 2.0
+      min: 1
+      max: 6
       unit: Mohs
       research_basis: 'ASTM C67-23 Standard Test Methods for Sampling and Testing
         Brick and Structural Clay Tile; NIST Special Publication 260-175: Certified
         Reference Materials for Vickers Hardness of Ceramics; Journal of Materials
         in Civil Engineering, Vol. 34, Issue 5 (2022)'
-      min: 1
-      max: 6
     oxidationResistance:
       value: 800.0
+      min: 300.0
+      max: 1200.0
       unit: °C
       research_basis: Brick is a fired clay ceramic. Its maximum service temperature
         is governed by the softening point of its silicate matrix and the oxidation
@@ -137,26 +139,26 @@ materialProperties:
         thermal expansion occur. The provided compressive strength and density are
         consistent with a high-quality fired clay product supporting this temperature
         range.
-      min: 300.0
-      max: 1200.0
     tensileStrength:
       value: 3.4
+      min: 1
+      max: 15
       unit: MPa
       research_basis: 'ASTM C67-20 Standard Test Methods for Sampling and Testing
         Brick and Structural Clay Tile, and ASM Handbook Vol. 4: Heat Treating (1991)
         - Table 1: Typical Properties of Common Brick'
-      min: 1
-      max: 15
     youngsModulus:
       value: 16.7
+      min: 3.0
+      max: 50
       unit: GPa
       research_basis: 'NIST Technical Note 1493 - ''Mechanical Properties of Masonry''
         (1999), Table 4.1: Young''s modulus of fired clay brick specimens measured
         under standard compression testing conditions'
-      min: 3.0
-      max: 50
     fractureToughness:
       value: 0.8
+      min: 0.15
+      max: 1.1
       unit: MPa·√m
       research_basis: Brick, as a quasibrittle masonry material, has fracture toughness
         values typically ranging from 0.5 to 1.0 MPa·√m. Based on compilations of
@@ -164,28 +166,26 @@ materialProperties:
         lower end of this range, with 0.8 MPa·√m being a representative median value
         cited for standard fired clay brick. This value is consistent with the material's
         known compressive strength of 41.4 MPa and brittle ceramic-like behavior.
-      min: 0.15
-      max: 1.1
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 8.2
+      min: 0.5
+      max: 15
       unit: '%'
       research_basis: 'NIST Technical Note 2282: ''Laser Ablation of Construction
         Materials'' (2022), Table 4 - Laser absorption coefficients for common masonry
         materials at 1064 nm wavelength'
-      min: 0.5
-      max: 15
     laserReflectivity:
       value: 36.2
+      min: 10
+      max: 70
       unit: '%'
       research_basis: 'NIST Special Publication 1176: ''Optical Properties of Construction
         Materials'' (2021), Table 4.3 - Reflectance measurements for common brick
         compositions at 1064 nm wavelength'
-      min: 10
-      max: 70
 machineSettings:
   energyDensity:
     value: 12

@@ -56,59 +56,61 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     boilingPoint:
       value: 2743.0
-      unit: K
-      research_basis: materials_science_literature
       min: 907
       max: 5870
-    meltingPoint:
-      value: 933.47
       unit: K
       research_basis: materials_science_literature
+    meltingPoint:
+      value: 933.47
       min: -39
       max: 3422
+      unit: K
+      research_basis: materials_science_literature
     specificHeat:
       value: 897.0
+      min: 100
+      max: 2000
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
         Aluminum thermophysical properties at 300K; ASM Handbook Volume 2: Properties
         and Selection: Nonferrous Alloys and Special-Purpose Materials'
-      min: 100
-      max: 2000
     thermalConductivity:
       value: 237.0
+      min: 7.0
+      max: 430
       unit: W/(m·K)
       research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
         of Fluid Systems - Pure Aluminum at 300K'
-      min: 7.0
-      max: 430
     thermalDestruction:
       value: 500.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDestructionPoint:
       value: 933.47
-      unit: K
-      research_basis: materials_science_literature
       min: 873
       max: 3695
+      unit: K
+      research_basis: materials_science_literature
     thermalDiffusivity:
       value: 97.1
+      min: 0.06
+      max: 174
       unit: mm²/s
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Table ''Thermal Properties of Aluminum
         and Aluminum Alloys'' for pure aluminum (99.99%) at 25°C'
-      min: 0.06
-      max: 174
     thermalExpansion:
       value: 23.1
+      min: 0.5
+      max: 33
       unit: 10⁻⁶/K
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Table ''Thermal Expansion of Metals
         and Alloys'' for pure aluminum (99.996%) at 20°C'
-      min: 0.5
-      max: 33
     compressiveStrength:
       value: 280.0
+      min: 50
+      max: 2000
       unit: MPa
       research_basis: The provided properties (density, hardness) are consistent with
         aluminum alloys like 6061. For the common 6061-T6 temper, the compressive
@@ -117,10 +119,10 @@ materialProperties:
         handbooks for this specific, high-strength alloy. The provided generic properties
         do not specify a particular alloy, but 6061 is a standard engineering reference
         point.
-      min: 50
-      max: 2000
     corrosionResistance:
       value: 8.0
+      min: 1
+      max: 10
       unit: rating
       research_basis: Aluminum forms a protective oxide layer that provides excellent
         resistance to atmospheric corrosion. It performs well in most environments
@@ -128,30 +130,30 @@ materialProperties:
         salts. The 8/10 rating reflects its superior performance compared to most
         metals, though not as resistant as some stainless steels or nickel alloys
         in aggressive environments.
-      min: 1
-      max: 10
     density:
       value: 2.7
+      min: 0.53
+      max: 22.6
       unit: g/cm³
       research_basis: 'NIST Standard Reference Database 124 - Aluminum (Al) - Density
         at 20°C: 2.70 g/cm³; ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials'
-      min: 0.53
-      max: 22.6
     electricalConductivity:
       value: 37700000.0
-      unit: S/m
-      research_basis: materials_science_literature
       min: 0.67
       max: 63.0
+      unit: S/m
+      research_basis: materials_science_literature
     electricalResistivity:
       value: 2.65e-08
-      unit: Ω·m
-      research_basis: materials_science_literature
       min: 1.0e-08
       max: 1.5e-06
+      unit: Ω·m
+      research_basis: materials_science_literature
     flexuralStrength:
       value: 45.0
+      min: 2.5
+      max: 1050.0
       unit: MPa
       research_basis: Flexural strength (bending strength) is not a standard reported
         property for basic aluminum material specifications, as it is highly dependent
@@ -162,18 +164,18 @@ materialProperties:
         in bending. The provided material properties (density, hardness) are generic
         for aluminum and do not define a specific alloy, making a precise flexural
         strength value impossible without that specification.
-      min: 2.5
-      max: 1050.0
     hardness:
       value: 245.0
+      min: 0.5
+      max: 3500
       unit: MPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1: Typical Mechanical Properties
         of Wrought Aluminum'
-      min: 0.5
-      max: 3500
     oxidationResistance:
       value: 400.0
+      min: 200
+      max: 1200
       unit: °C
       research_basis: For aluminum, a protective oxide layer (Al₂O₃) forms at room
         temperature, but significant oxidation and loss of protective properties begin
@@ -181,108 +183,106 @@ materialProperties:
         as the maximum for continuous service where oxidation resistance is a concern,
         as the oxide layer can become unstable and non-protective, leading to accelerated
         degradation.
-      min: 200
-      max: 1200
     porosity:
       value: 0.001
-      unit: '%'
-      research_basis: ai_research_comprehensive
       min: 0.0
       max: 15.0
+      unit: '%'
+      research_basis: ai_research_comprehensive
     tensileStrength:
       value: 310.0
+      min: 3.0
+      max: 3000.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (2015), Table 1: Typical Mechanical Properties
         of Wrought Aluminum Alloys - Pure Aluminum (1100-O)'
-      min: 3.0
-      max: 3000.0
     youngsModulus:
       value: 70.0
+      min: 5
+      max: 600
       unit: GPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1, pp. 16-17; NIST Materials
         Data Repository for pure aluminum (99.99%)'
-      min: 5
-      max: 600
     fractureToughness:
       value: 30.0
+      min: 20
+      max: 200
       unit: MPa·√m
       research_basis: The fracture toughness of aluminum alloys varies significantly
         depending on temper and specific alloy composition. Pure aluminum has lower
         toughness (≈20 MPa·√m), while high-strength aluminum alloys (like 7000-series)
         can reach 30-40 MPa·√m. The provided range represents typical values for common
         structural aluminum alloys at room temperature.
-      min: 20
-      max: 200
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     ablationThreshold:
       value: 0.15
-      unit: J/cm²
-      research_basis: materials_science_literature
       min: 2.0
       max: 8.0
+      unit: J/cm²
+      research_basis: materials_science_literature
     absorptivity:
       value: 0.089
-      unit: dimensionless
-      research_basis: materials_science_literature
       min: 2.0
       max: 65.0
+      unit: dimensionless
+      research_basis: materials_science_literature
     laserAbsorption:
       value: 4.0
+      min: 0.02
+      max: 100
       unit: '%'
       research_basis: 'NIST Standard Reference Database 120: ''Thermophysical Properties
         of Materials for Nuclear Engineering'' - Room temperature (300K) absorption
         for pure aluminum (99.9%) at 1064 nm wavelength'
-      min: 0.02
-      max: 100
     laserDamageThreshold:
       value: 0.15
-      unit: J/cm²
-      research_basis: materials_science_literature
       min: 0.1
       max: 20.0
+      unit: J/cm²
+      research_basis: materials_science_literature
     laserReflectivity:
       value: 91.2
+      min: 5
+      max: 99.9
       unit: '%'
       research_basis: 'NIST Standard Reference Database 120: ''Optical Properties
         of Metallic Surfaces for Solar Energy Applications'' - Pure aluminum (99.9%)
         at 1064 nm wavelength, room temperature, with standard surface finish'
-      min: 5
-      max: 99.9
     reflectivity:
       value: 0.91
-      unit: dimensionless
-      research_basis: materials_science_literature
       min: 85
       max: 98
+      unit: dimensionless
+      research_basis: materials_science_literature
     thermalShockResistance:
       value: 1.8
-      unit: MPa·m^0.5
-      research_basis: materials_science_literature
       min: 50
       max: 400
+      unit: MPa·m^0.5
+      research_basis: materials_science_literature
     absorptionCoefficient:
       value: 10700000.0
-      unit: m⁻¹
-      research_basis: materials_science_literature
       min: 100000
       max: 50000000
+      unit: m⁻¹
+      research_basis: materials_science_literature
     surfaceRoughness:
       value: 0.4
-      unit: μm
-      research_basis: materials_science_literature
       min: 0.4
       max: 150
+      unit: μm
+      research_basis: materials_science_literature
     vaporPressure:
       value: 2.42e-06
-      unit: Pa
-      research_basis: materials_science_literature
       min: 1.0e-10
       max: 0.001
+      unit: Pa
+      research_basis: materials_science_literature
 machineSettings:
   energyDensity:
     value: 5.1

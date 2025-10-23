@@ -43,44 +43,46 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     specificHeat:
       value: 840.0
+      min: 400
+      max: 1200
       unit: J/(kg·K)
       research_basis: Robertson, E. C. (1988). Thermal Properties of Rocks. U.S. Geological
         Survey Open-File Report 88-441. Table 6, Page 22, specific heat of basalt
         at 20°C.
-      min: 400
-      max: 1200
     thermalConductivity:
       value: 1.7
+      min: 0.2
+      max: 8
       unit: W/(m·K)
       research_basis: 'Robertson, E.C. (1988). ''Thermal Properties of Rocks.'' US
         Geological Survey Open-File Report 88-441, Table 2.1 - Basalt thermal conductivity
         range: 1.3-2.1 W/m·K at 300K, with median value of 1.7 W/m·K for fine-grained
         basalt specimens.'
-      min: 0.2
-      max: 8
     thermalDestruction:
       value: 800.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDiffusivity:
       value: 0.83
+      min: 0.2
+      max: 2.5
       unit: mm²/s
       research_basis: Robertson, E.C. (1988). Thermal Properties of Rocks. US Geological
         Survey Open-File Report 88-441, Table 2. Specific measurement of Columbia
         Plateau basalt at 25°C showing 0.83 mm²/s thermal diffusivity.
-      min: 0.2
-      max: 2.5
     thermalExpansion:
       value: 8.0
+      min: 3
+      max: 30
       unit: 10^-6/K
       research_basis: 'Fei, Y. (1995). Thermal Expansion. In T. J. Ahrens (Ed.), Mineral
         Physics & Crystallography: A Handbook of Physical Constants (pp. 29-44). American
         Geophysical Union. Specific data for basalt from Table 4, showing range of
         7-9 × 10^-6/K for typical basaltic compositions.'
-      min: 3
-      max: 30
     compressiveStrength:
       value: 200.0
+      min: 20
+      max: 500
       unit: MPa
       research_basis: Compressive strength is a highly variable property for natural
         stone like basalt, dependent on mineralogy, porosity, and fracturing. The
@@ -90,10 +92,10 @@ materialProperties:
         100 MPa for lower-quality or vesicular basalt to over 300 MPa for very dense,
         massive flows. The provided source (ASTM) defines the standard test method
         used to determine this property.
-      min: 20
-      max: 500
     corrosionResistance:
       value: 8.0
+      min: 2.0
+      max: 9.0
       unit: rating
       research_basis: Basalt is an extrusive igneous rock with a fine-grained, dense
         microstructure that makes it highly resistant to environmental weathering
@@ -102,38 +104,38 @@ materialProperties:
         and corrosion resistance as "high" to "very high," placing it in the upper
         tier of natural building stones, though not completely inert like some silica-rich
         stones (e.g., quartzite).
-      min: 2.0
-      max: 9.0
     density:
       value: 2.8
+      min: 1.5
+      max: 6.0
       unit: g/cm³
       research_basis: 'Klein, C., & Dutrow, B. (2007). Manual of Mineral Science (23rd
         ed.). John Wiley & Sons. p. 532. ASM Handbook, Volume 2: Properties and Selection:
         Nonferrous Alloys and Special-Purpose Materials (1990). ASM International.
         p. 1093.'
-      min: 1.5
-      max: 6.0
     flexuralStrength:
       value: 45.0
+      min: 5
+      max: 50
       unit: MPa
       research_basis: The provided value is a median figure from authoritative engineering
         literature for basalt's flexural strength, which typically ranges from 20
         MPa to 70 MPa depending on mineralogy and test conditions (4-point bend).
         This range is consistent with basalt's known properties as a dense, fine-grained,
         and hard stone.
-      min: 5
-      max: 50
     hardness:
       value: 6.0
+      min: 1
+      max: 7
       unit: Mohs
       research_basis: NIST Standard Reference Database 84 - Properties of Rocks and
         Minerals; Deer, Howie & Zussman (2013) 'An Introduction to the Rock-Forming
         Minerals'; ASTM D5873 Standard Test Method for Determination of Rock Hardness
         by Rebound Hammer Method
-      min: 1
-      max: 7
     oxidationResistance:
       value: 850.0
+      min: 400.0
+      max: 870.0
       unit: °C
       research_basis: The cited NASA report details the performance of basalt fibers
         in high-temperature oxidizing environments. It identifies that basalt materials
@@ -141,34 +143,34 @@ materialProperties:
         in mechanical strength starting at approximately 850°C in air. This temperature
         is consistent with the oxidation of iron compounds within the basalt's mineral
         structure.
-      min: 400.0
-      max: 870.0
     porosity:
       value: 0.012
-      unit: m³/m³
-      research_basis: ai_research_comprehensive
       min: 0.5
       max: 25
+      unit: m³/m³
+      research_basis: ai_research_comprehensive
     tensileStrength:
       value: 10.0
+      min: 2
+      max: 25
       unit: MPa
       research_basis: 'ASTM C1701-17 Standard Test Method for Tensile Strength of
         Dimension Stone, with specific basalt data from NIST Materials Data Repository
         and corroboration in ''Mechanical Properties of Basalt: Experimental Studies''
         (Journal of Rock Mechanics and Geotechnical Engineering, Vol. 10, pp. 1173-1184)'
-      min: 2
-      max: 25
     youngsModulus:
       value: 70.0
+      min: 10
+      max: 100
       unit: GPa
       research_basis: 'NIST Standard Reference Database 69: Materials Properties of
         Basalt Rock (2021), Section 3.2.1 - Elastic Properties, with specific reference
         to fine-grained tholeiitic basalt samples tested under ASTM C469 standard
         conditions'
-      min: 10
-      max: 100
     fractureToughness:
       value: 1.5
+      min: 0.5
+      max: 5
       unit: MPa·√m
       research_basis: The fracture toughness of basalt is not a single, universally
         fixed value and shows variation depending on factors like mineralogy, porosity,
@@ -177,28 +179,26 @@ materialProperties:
         report typical Mode I fracture toughness (K_IC) values in the range of 1.0
         to 2.0 MPa·√m. The provided value of 1.5 MPa·√m is a representative median
         from such authoritative rock mechanics literature.
-      min: 0.5
-      max: 5
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 8.7
+      min: 0.1
+      max: 100
       unit: '%'
       research_basis: 'NIST Standard Reference Database 78: Optical Properties of
         Minerals and Technical Materials, specifically for basalt composition with
         45-52% SiO2, 10-15% FeO+Fe2O3 at 1064 nm wavelength'
-      min: 0.1
-      max: 100
     laserReflectivity:
       value: 38.2
+      min: 5
+      max: 80
       unit: '%'
       research_basis: 'NIST Standard Reference Database 120: Reflectance and Emittance
         of Spectrally Selective Materials, specifically for fine-grained basalt with
         45-50% silica content at 1064 nm wavelength'
-      min: 5
-      max: 80
 machineSettings:
   energyDensity:
     value: 12

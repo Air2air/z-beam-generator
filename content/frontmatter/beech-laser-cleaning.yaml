@@ -43,53 +43,55 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     specificHeat:
       value: 1630.0
+      min: 800
+      max: 2500
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook
         - Thermophysical Properties of Fluid Systems, supplemented by Wood Handbook:
         Wood as an Engineering Material (Forest Products Laboratory, 2010)'
-      min: 800
-      max: 2500
     thermalConductivity:
       value: 0.18
+      min: 0.04
+      max: 0.4
       unit: W/(m·K)
       research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest
         Service, FPL-GTR-190), Table 4-3: Thermal properties of common wood species
         at 12% moisture content'
-      min: 0.04
-      max: 0.4
     thermalDestruction:
       value: 300.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDiffusivity:
       value: 0.165
+      min: 0.0001
+      max: 0.4
       unit: mm²/s
       research_basis: 'Suleiman, B. M., Larfeldt, J., Leckner, B., & Gustavsson, M.
         (1999). Thermal conductivity and diffusivity of wood. Wood Science and Technology,
         33(6), 465-473. Table 2: Beech wood thermal diffusivity measurements at 12%
         moisture content.'
-      min: 0.0001
-      max: 0.4
     thermalExpansion:
       value: 33.0
+      min: 3.0
+      max: 60
       unit: 10^-6/K
       research_basis: 'Forest Products Laboratory. Wood Handbook: Wood as an Engineering
         Material. USDA Forest Service, 2010. Chapter 4: Mechanical Properties of Wood,
         Table 4-3: Thermal expansion coefficients for various wood species.'
-      min: 3.0
-      max: 60
     compressiveStrength:
       value: 46.0
+      min: 20
+      max: 80
       unit: MPa
       research_basis: The Forest Products Laboratory's Wood Handbook is a globally
         recognized authority on wood properties. For beech (Fagus spp.), it lists
         the compressive strength parallel to the grain as 46 MPa at 12% moisture content,
         which is the standard test condition for comparing wood species. This value
         is consistent with other engineering databases for this hardwood.
-      min: 20
-      max: 80
     corrosionResistance:
       value: 2.0
+      min: 2.0
+      max: 8.0
       unit: rating
       research_basis: Beech wood has poor natural durability against decay fungi and
         insects, with very low resistance to moisture and environmental degradation.
@@ -98,36 +100,36 @@ materialProperties:
         Its high permeability and lack of natural extractives make it susceptible
         to rot, fungal attack, and environmental corrosion when exposed to moisture
         or outdoor conditions without protective treatment.
-      min: 2.0
-      max: 8.0
     density:
       value: 0.68
+      min: 0.12
+      max: 1.5
       unit: g/cm³
       research_basis: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190).
         USDA Forest Service, Forest Products Laboratory. Chapter 4: Mechanical Properties
         of Wood, Table 4-3, beech (Fagus grandifolia) at 12% moisture content.'
-      min: 0.12
-      max: 1.5
     flexuralStrength:
       value: 103.0
+      min: 40
+      max: 150
       unit: MPa
       research_basis: The Wood Handbook from the USDA FPL is a preeminent authority
         on wood science. For beech (Fagus spp.), it lists a modulus of rupture (MOR)
         of 103 MPa at 12% moisture content, derived from standardized 3-point and
         4-point bend tests on small, clear specimens. This value is consistent with
         the material's known high hardness and density.
-      min: 40
-      max: 150
     hardness:
       value: 1300.0
+      min: 1
+      max: 5000
       unit: MPa
       research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest
         Service, FPL-GTR-190), Table 5-3a: Hardness of domestic hardwoods - American
         beech (Fagus grandifolia)'
-      min: 1
-      max: 5000
     oxidationResistance:
       value: 200.0
+      min: 82.0
+      max: 204.0
       unit: °C
       research_basis: The maximum continuous service temperature for wood is not a
         fixed point like a metal's melting point but is based on the onset of significant
@@ -136,57 +138,55 @@ materialProperties:
         of mechanical strength, which is a form of oxidative degradation in an air
         environment. This value is consistently cited in wood technology literature
         as the upper limit for safe, long-term service.
-      min: 82.0
-      max: 204.0
     porosity:
       value: 0.68
-      unit: dimensionless
-      research_basis: ai_research_comprehensive
       min: 12
       max: 65
+      unit: dimensionless
+      research_basis: ai_research_comprehensive
     tensileStrength:
       value: 120.0
+      min: 20
+      max: 200
       unit: MPa
       research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook:
         Wood as an Engineering Material. Chapter 4: Mechanical Properties of Wood.
         Specifically Table 4-3a for American beech (Fagus grandifolia) at 12% moisture
         content.'
-      min: 20
-      max: 200
     youngsModulus:
       value: 2.5025
-      unit: GPa
-      research_basis: standard_material_database
       min: 5
       max: 20000
+      unit: GPa
+      research_basis: standard_material_database
     fractureToughness:
       value: 0.35
+      min: 0.33
+      max: 4.4
       unit: MPa·√m
       research_basis: This study provides Mode I fracture toughness (K_IC) values
         for beech wood perpendicular to the grain. The value of 0.35 MPa·√m is representative
         of the lower end of the reported range for clear, defect-free beech, which
         can vary with moisture content, density, and crack orientation.
-      min: 0.33
-      max: 4.4
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 32.7
+      min: 1
+      max: 50
       unit: '%'
       research_basis: 'NIST Special Publication 1033 - Laser-Material Interactions
         for Wood Surfaces (2018), Table 4.2: Optical properties of common wood species
         at 1064 nm wavelength'
-      min: 1
-      max: 50
     laserReflectivity:
       value: 42.7
+      min: 10
+      max: 60
       unit: '%'
       research_basis: 'NIST Standard Reference Database 78: Laser-Induced Damage in
         Optical Materials, Section 8.3.2 - Wood Species Reflectivity at 1064 nm'
-      min: 10
-      max: 60
 machineSettings:
   fluenceThreshold:
     value: 2.5

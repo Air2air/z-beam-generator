@@ -44,41 +44,43 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     specificHeat:
       value: 320.0
+      min: 300
+      max: 900
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 144: Thermophysical Properties
         of Solids - Silicon-Germanium Alloys (Si₁₋ₓGeₓ) at 300K, with x = 0.2-0.3
         representing common semiconductor compositions'
-      min: 300
-      max: 900
     thermalConductivity:
       value: 8.7
+      min: 0.2
+      max: 156
       unit: W/(m·K)
       research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
         of Silicon Germanium Alloys, specifically for Si₀.₈Ge₀.₂ at 300K'
-      min: 0.2
-      max: 156
     thermalDestruction:
       value: 500.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDiffusivity:
       value: 34.2
+      min: 0.1
+      max: 90
       unit: mm²/s
       research_basis: 'NIST Standard Reference Database 154: Thermophysical Properties
         of Semiconductor Systems - Si1-xGex Alloys, with specific data for Si0.8Ge0.2
         composition at 300K'
-      min: 0.1
-      max: 90
     thermalExpansion:
       value: 3.9
+      min: 2.6
+      max: 10
       unit: 10^-6/K
       research_basis: 'NIST Standard Reference Database 154: ''Thermal Expansion of
         Solid Materials'' and ASM Handbook Volume 22B: ''Metals Process Simulation''
         - Silicon Germanium (SiGe) with 20-30% Ge content'
-      min: 2.6
-      max: 10
     compressiveStrength:
       value: 6000.0
+      min: 370.0
+      max: 6000.0
       unit: MPa
       research_basis: The compressive strength of SiGe is highly dependent on its
         germanium content and microstructure. For a polycrystalline Si₀.₅Ge₀.₅ alloy,
@@ -88,10 +90,10 @@ materialProperties:
         roughly 0.5 to 0.7 times the hardness for brittle semiconductors, placing
         it in the 5-7 GPa range. The cited source provides experimental data on the
         mechanical properties of SiGe alloys under compression.
-      min: 370.0
-      max: 6000.0
     corrosionResistance:
       value: 8.0
+      min: 8.0
+      max: 9.0
       unit: rating
       research_basis: Silicon-Germanium (SiGe) exhibits excellent corrosion resistance
         due to the formation of a stable, passive silicon dioxide (SiO₂) layer in
@@ -100,40 +102,40 @@ materialProperties:
         most acids (except hydrofluoric acid and hot alkaline solutions) and oxidizing
         environments. The primary factor preventing a "9" or "10" rating is its susceptibility
         to degradation in strong bases and certain halogens.
-      min: 8.0
-      max: 9.0
     density:
       value: 4.19
+      min: 2.3
+      max: 7.13
       unit: g/cm³
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Section: Semiconductor Silicon-Germanium
         Alloys, Table: Physical Properties of Si1-xGex Alloys'
-      min: 2.3
-      max: 7.13
     electricalResistivity:
       value: 0.005
-      unit: Ω·m
-      research_basis: materials_science_literature
       min: 0.001
       max: 1000.0
+      unit: Ω·m
+      research_basis: materials_science_literature
     flexuralStrength:
       value: 120.0
+      min: 120.0
+      max: 410.0
       unit: MPa
       research_basis: The value is derived from 4-point bend tests on polycrystalline
         SiGe with ~20–30% Ge content, showing flexural strength in the range 110–130
         MPa depending on microstructure and Ge concentration.
-      min: 120.0
-      max: 410.0
     hardness:
       value: 10.5
+      min: 2
+      max: 2600
       unit: GPa
       research_basis: 'ASM Handbook Volume 18: Friction, Lubrication, and Wear Technology;
         Nanoindentation studies of SiGe alloys by Li et al. in Journal of Materials
         Research (2003)'
-      min: 2
-      max: 2600
     oxidationResistance:
       value: 700.0
+      min: 600.0
+      max: 1600.0
       unit: °C
       research_basis: The provided reference is a key study on SiGe oxidation. It
         demonstrates that while a protective oxide layer forms, significant oxidation
@@ -141,53 +143,51 @@ materialProperties:
         practical upper limit for continuous service. This temperature is consistent
         with the general high-temperature performance window for silicon-germanium
         alloys used in thermoelectrics and electronics.
-      min: 600.0
-      max: 1600.0
     tensileStrength:
       value: 1200.0
+      min: 50
+      max: 7000
       unit: MPa
       research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation,
         specifically Table ''Mechanical Properties of Selected Semiconductor Materials''
         for SiGe alloys with 20-30% Germanium content'
-      min: 50
-      max: 7000
     youngsModulus:
       value: 156.7
+      min: 5
+      max: 450
       unit: GPa
       research_basis: Hopcroft et al., 'What is the Young's Modulus of Silicon?',
         Journal of Microelectromechanical Systems, 2010, with composition-dependent
         interpolation for Si0.9Ge0.1
-      min: 5
-      max: 450
     fractureToughness:
       value: 0.8
+      min: 0.75
+      max: 3.0
       unit: MPa·√m
       research_basis: The provided value of 0.8 MPa·√m is the reported fracture toughness
         (K_IC) for polycrystalline n-type Si₈₀Ge₂₀ alloy at room temperature, measured
         using the Vickers indentation method. This low value is characteristic of
         brittle semiconductor materials like SiGe.
-      min: 0.75
-      max: 3.0
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 67.4
+      min: 0.01
+      max: 100
       unit: '%'
       research_basis: NIST Semiconductor Material Properties Database and Applied
         Physics Letters, Vol. 82, Issue 12, pp. 1866-1868 (2003) for Si0.8Ge0.2 composition
         at 1064 nm wavelength
-      min: 0.01
-      max: 100
     laserReflectivity:
       value: 36.2
+      min: 10
+      max: 70
       unit: '%'
       research_basis: Palik, E.D. (1998). Handbook of Optical Constants of Solids.
         Academic Press. Chapter on Si1-xGex alloys, with specific data for x=0.3 composition
         at 1064 nm wavelength.
-      min: 10
-      max: 70
 machineSettings:
   fluenceThreshold:
     value: 1.2

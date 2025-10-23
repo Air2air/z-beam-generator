@@ -43,44 +43,46 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     specificHeat:
       value: 1630.0
+      min: 800
+      max: 2500
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook
         - Thermophysical Properties of Fluid Systems, with wood property data from
         Forest Products Laboratory publications and specific measurements for fir
         species'
-      min: 800
-      max: 2500
     thermalConductivity:
       value: 0.12
+      min: 0.04
+      max: 0.4
       unit: W/(m·K)
       research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest
         Service, Forest Products Laboratory. 2010. Chapter 4: Thermal Properties,
         Table 4-3 lists thermal conductivity of fir species at 12% moisture content
         as 0.12 W/m·K.'
-      min: 0.04
-      max: 0.4
     thermalDestruction:
       value: 300.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDiffusivity:
       value: 0.16
+      min: 0.0001
+      max: 0.4
       unit: mm²/s
       research_basis: 'Suleiman, B. M., Larfeldt, J., Leckner, B., & Gustavsson, M.
         (1999). Thermal conductivity and diffusivity of wood. Wood Science and Technology,
         33(6), 465-473. DOI: 10.1007/s002260050130'
-      min: 0.0001
-      max: 0.4
     thermalExpansion:
       value: 5.0
+      min: 3.0
+      max: 60
       unit: 10^-6/K
       research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest
         Service, FPL-GTR-190), Chapter 4: Mechanical Properties of Wood, Table 4-3:
         Coefficients of thermal expansion for various wood species'
-      min: 3.0
-      max: 60
     compressiveStrength:
       value: 40.0
+      min: 20
+      max: 80
       unit: MPa
       research_basis: The Wood Handbook from the USDA Forest Products Laboratory is
         the primary authoritative source for North American wood properties. For "Fir,"
@@ -89,10 +91,10 @@ materialProperties:
         moisture content, which is the standard test condition for reporting wood
         strength properties. This value is consistent with the known density and hardness
         provided.
-      min: 20
-      max: 80
     corrosionResistance:
       value: 2.0
+      min: 2.0
+      max: 8.0
       unit: rating
       research_basis: Fir is a softwood with low natural durability against decay
         fungi, insects, and moisture. The Wood Handbook rates untreated fir species
@@ -100,18 +102,18 @@ materialProperties:
         categories. While it has some resistance when kept dry, its performance in
         general environmental conditions with moisture exposure is poor without chemical
         treatment.
-      min: 2.0
-      max: 8.0
     density:
       value: 0.42
+      min: 0.12
+      max: 1.5
       unit: g/cm³
       research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest
         Service, Forest Products Laboratory. General Technical Report FPL-GTR-190,
         2010. Table 4-3a: Average specific gravity of common commercial woods.'
-      min: 0.12
-      max: 1.5
     flexuralStrength:
       value: 65.0
+      min: 40
+      max: 150
       unit: MPa
       research_basis: The Wood Handbook from the USDA Forest Products Laboratory is
         the primary authoritative source for North American wood properties. For "Douglas-fir"
@@ -122,18 +124,18 @@ materialProperties:
         lumber (accounting for defects, knots, and long-term loading) is around 65
         MPa. The confidence is high as the source is definitive, but the specific
         value depends on the grade and moisture content, hence not a perfect 1.00.
-      min: 40
-      max: 150
     hardness:
       value: 38.0
+      min: 1
+      max: 5000
       unit: MPa
       research_basis: 'USDA Forest Products Laboratory Wood Handbook (2010), Chapter
         4: Mechanical Properties of Wood, Table 4-3 specific to Douglas-fir (Pseudotsuga
         menziesii) at 12% moisture content'
-      min: 1
-      max: 5000
     oxidationResistance:
       value: 150.0
+      min: 82.0
+      max: 204.0
       unit: °C
       research_basis: The maximum continuous service temperature for wood in air is
         generally limited to 150°C. Above this temperature, significant thermal degradation
@@ -141,28 +143,26 @@ materialProperties:
         permanently reduce mechanical properties. While ignition temperature for fir
         is higher (~200-300°C), the 150°C limit represents the temperature where chemical
         changes and oxidation become significant for long-term structural integrity.
-      min: 82.0
-      max: 204.0
     porosity:
       value: 0.68
-      unit: m³/m³
-      research_basis: ai_research_comprehensive
       min: 12
       max: 65
+      unit: m³/m³
+      research_basis: ai_research_comprehensive
     tensileStrength:
       value: 85.0
+      min: 20
+      max: 200
       unit: MPa
       research_basis: 'USDA Forest Products Laboratory Wood Handbook (2010), Chapter
         5: Mechanical Properties of Wood, Table 5-3b: Mechanical properties of some
         commercially important woods grown in the United States (Fir species average)'
-      min: 20
-      max: 200
     youngsModulus:
       value: 12.0
-      unit: GPa
-      research_basis: standard_material_database
       min: 5
       max: 20000
+      unit: GPa
+      research_basis: standard_material_database
     fractureToughness:
       value: 3.2
       min: 0.33
@@ -173,21 +173,21 @@ materialProperties:
       reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 8.82
+      min: 1
+      max: 50
       unit: cm⁻¹
       research_basis: 'Majewski, H. L., et al. ''Laser cleaning of a wooden artwork:
         A laboratory investigation.'' Studies in Conservation 63.supp1 (2018): 347-351.
         Absorption coefficient for fir wood at 1064 nm wavelength.'
-      min: 1
-      max: 50
     laserReflectivity:
       value: 32.7
+      min: 10
+      max: 60
       unit: '%'
       research_basis: 'NIST Standard Reference Database 120: Optical Properties of
         Materials for Concentrating Solar Power, specifically referencing Douglas
         fir (Pseudotsuga menziesii) at 1064 nm wavelength with surface roughness parameters
         typical of industrial wood processing'
-      min: 10
-      max: 60
 machineSettings:
   dwellTime:
     value: 100

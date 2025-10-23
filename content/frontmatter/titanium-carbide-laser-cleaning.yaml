@@ -44,52 +44,54 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     specificHeat:
       value: 568.0
+      min: 250
+      max: 2500.0
       unit: J/(kg·K)
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Table ''Thermal Properties of Selected
         Ceramics and Cermets'' lists specific heat of TiC as 568 J/(kg·K) at 293K
         (20°C)'
-      min: 250
-      max: 2500.0
     thermalConductivity:
       value: 21.0
+      min: 0.8
+      max: 120
       unit: W/(m·K)
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table ''Thermal Properties of
         Selected Carbides and Nitrides'' specifically lists TiC thermal conductivity
         at 21.0 W/m·K at room temperature'
-      min: 0.8
-      max: 120
     thermalDestruction:
       value: 1200.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDiffusivity:
       value: 7.2
+      min: 0.005
+      max: 120
       unit: mm²/s
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Table ''Thermal Properties of Carbides
         and Nitrides'''
-      min: 0.005
-      max: 120
     thermalExpansion:
       value: 7.4
+      min: 0.1
+      max: 14
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
         Properties of Carbides, p. 950'
-      min: 0.1
-      max: 14
     compressiveStrength:
       value: 410.0
+      min: 100
+      max: 7000
       unit: MPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Section: Cemented Carbides and
         Cermets, Table: Properties of Selected Cemented Carbides and Cermets'
-      min: 100
-      max: 7000
     corrosionResistance:
       value: 9.0
+      min: 8
+      max: 10
       unit: rating
       research_basis: Titanium Carbide is a highly stable, refractory ceramic with
         exceptional resistance to oxidation and acidic environments. Authoritative
@@ -97,69 +99,69 @@ materialProperties:
         due to its strong covalent bonds and high chemical inertness, placing it in
         the top tier of engineering ceramics, though slightly below materials like
         zirconia in some specific alkaline conditions.
-      min: 8
-      max: 10
     density:
       value: 4.93
+      min: 2.3
+      max: 16.0
       unit: g/cm³
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Section: Cemented Carbides and
         Cermets, Table: Properties of selected carbides'
-      min: 2.3
-      max: 16.0
     electricalResistivity:
       value: 6.8e-07
-      unit: Ω·m
-      research_basis: materials_science_literature
       min: 10000000000.0
       max: 1.0e+16
+      unit: Ω·m
+      research_basis: materials_science_literature
     flexuralStrength:
       value: 480.0
+      min: 50
+      max: 2500
       unit: MPa
       research_basis: 'ASM Handbook, Volume 29: Materials for Specialty Applications
         - Mechanical Properties of Engineering Ceramics (Table 2, p. 312) and Journal
         of the European Ceramic Society, Vol. 42, Issue 3, 2022, pp. 789-801'
-      min: 50
-      max: 2500
     hardness:
       value: 9.0
-      unit: Mohs
-      research_basis: materials_science_literature
       min: 6.0
       max: 2500
+      unit: Mohs
+      research_basis: materials_science_literature
     oxidationResistance:
       value: 1100.0
+      min: 600.0
+      max: 2400.0
       unit: °C
       research_basis: Titanium Carbide (TiC) is known to have good oxidation resistance
         up to approximately 1100°C in air, after which a non-protective titanium oxide
         scale forms, leading to significant and rapid oxidation. This value is consistent
         with data from materials engineering handbooks for non-oxide ceramics.
-      min: 600.0
-      max: 2400.0
     porosity:
       value: 0.02
-      unit: '%'
-      research_basis: ai_research_comprehensive
       min: 0
       max: 30
+      unit: '%'
+      research_basis: ai_research_comprehensive
     tensileStrength:
       value: 345.0
+      min: 5.0
+      max: 600
       unit: MPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (ASM International, 1990), Table ''Mechanical
         Properties of Carbides'' citing TiC with 1-3% porosity'
-      min: 5.0
-      max: 600
     youngsModulus:
       value: 450.0
+      min: 5.0
+      max: 600.0
       unit: GPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Section: Cemented Carbides and
         Cermets, Table: Properties of selected carbides'
-      min: 5.0
-      max: 600.0
     fractureToughness:
       value: 4.0
+      min: 2
+      max: 10
       unit: MPa·√m
       research_basis: The provided value is a median figure from a compilation of
         fracture toughness data for TiC in authoritative ceramic handbooks. The range
@@ -167,34 +169,32 @@ materialProperties:
         with 4.0 MPa·√m being a commonly cited reference value. The confidence is
         not higher due to the inherent variability in this property, which is sensitive
         to factors like porosity, grain size, and stoichiometry.
-      min: 2
-      max: 10
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     ablationThreshold:
       value: 0.45
-      unit: J/cm²
-      research_basis: materials_science_literature
       min: 1.5
       max: 5.0
+      unit: J/cm²
+      research_basis: materials_science_literature
     laserAbsorption:
       value: 32.7
+      min: 0.1
+      max: 50
       unit: '%'
       research_basis: 'ASM Handbook, Volume 4: Ceramics and Glasses, Section: ''Optical
         Properties of Technical Ceramics'', with specific reference to TiC absorption
         characteristics at 1064 nm wavelength'
-      min: 0.1
-      max: 50
     laserReflectivity:
       value: 52.3
+      min: 5
+      max: 90
       unit: '%'
       research_basis: 'ASM Handbook, Volume 4: Ceramics and Glasses, Section ''Optical
         Properties of Technical Ceramics'' citing experimental reflectivity measurements
         for stoichiometric TiC at 1064 nm wavelength'
-      min: 5
-      max: 90
 machineSettings:
   fluenceThreshold:
     value: 2.5

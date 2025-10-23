@@ -63,71 +63,73 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     boilingPoint:
       value: 3407.0
-      unit: °C
-      research_basis: materials_science_literature
       min: 907
       max: 5870
-    meltingPoint:
-      value: 1910.0
       unit: °C
       research_basis: materials_science_literature
+    meltingPoint:
+      value: 1910.0
       min: -39
       max: 3422
+      unit: °C
+      research_basis: materials_science_literature
     specificHeat:
       value: 489.0
+      min: 100
+      max: 2000
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 144: Thermophysical Properties
         of Pure Vanadium at 300 K'
-      min: 100
-      max: 2000
     thermalConductivity:
       value: 30.7
+      min: 7.0
+      max: 430
       unit: W/(m·K)
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table ''Thermal and Electrical
         Properties of Pure Metals'' lists vanadium thermal conductivity as 30.7 W/(m·K)
         at 300K'
-      min: 7.0
-      max: 430
     thermalDestruction:
       value: 500.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDestructionPoint:
       value: 2183.0
-      unit: K
-      research_basis: materials_science_literature
       min: 873
       max: 3695
+      unit: K
+      research_basis: materials_science_literature
     thermalDiffusivity:
       value: 8.3
+      min: 0.06
+      max: 174
       unit: mm²/s
       research_basis: 'Touloukian, Y.S., et al. Thermophysical Properties of Matter
         - Volume 10: Thermal Diffusivity. IFI/Plenum, New York, 1973. Page 176, for
         high-purity vanadium (99.9%) at 300K.'
-      min: 0.06
-      max: 174
     thermalExpansion:
       value: 8.3
+      min: 0.5
+      max: 33
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table ''Physical Properties of
         Pure Metals'' lists vanadium coefficient of thermal expansion as 8.3 × 10^-6/°C
         at 20°C'
-      min: 0.5
-      max: 33
     compressiveStrength:
       value: 485.0
+      min: 50
+      max: 2000
       unit: MPa
       research_basis: The compressive strength of pure, annealed vanadium is approximately
         485 MPa. This value is for high-purity (99.8%) material at room temperature.
         The compressive strength is significantly lower than its tensile strength
         due to the body-centered cubic structure of the metal, which is prone to yielding
         under compression.
-      min: 50
-      max: 2000
     corrosionResistance:
       value: 4.0
+      min: 1
+      max: 10
       unit: rating
       research_basis: Vanadium has moderate corrosion resistance due to a protective
         oxide film that forms in air, but it is susceptible to attack in oxidizing
@@ -135,30 +137,30 @@ materialProperties:
         chloride solutions and some organic acids, but overall performance is limited
         compared to more corrosion-resistant metals like titanium or zirconium, placing
         it in the lower-mid range of the scale.
-      min: 1
-      max: 10
     density:
       value: 6.11
+      min: 0.53
+      max: 22.6
       unit: g/cm³
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1, p. 883; NIST Standard
         Reference Database 144, ''Crystal Data'' for vanadium structure parameters'
-      min: 0.53
-      max: 22.6
     electricalConductivity:
       value: 4890000.0
-      unit: S/m
-      research_basis: materials_science_literature
       min: 0.67
       max: 63.0
+      unit: S/m
+      research_basis: materials_science_literature
     electricalResistivity:
       value: 0.197
-      unit: µΩ·m
-      research_basis: materials_science_literature
       min: 1.0e-08
       max: 1.5e-06
+      unit: µΩ·m
+      research_basis: materials_science_literature
     flexuralStrength:
       value: 345.0
+      min: 2.5
+      max: 1050.0
       unit: MPa
       research_basis: Flexural strength for pure vanadium is not a commonly reported
         property, as its mechanical behavior is typically characterized by tensile
@@ -168,124 +170,122 @@ materialProperties:
         high-purity vanadium. The lower end of this range is cited as a conservative
         estimate for flexural strength, as bending failure typically initiates at
         the tensile surface.
-      min: 2.5
-      max: 1050.0
     hardness:
       value: 628.0
+      min: 0.5
+      max: 3500
       unit: MPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
         Properties of Pure Metals'
-      min: 0.5
-      max: 3500
     oxidationResistance:
       value: 660.0
+      min: 200
+      max: 1200
       unit: °C
       research_basis: ASM International states that unalloyed vanadium has poor oxidation
         resistance above about 660°C (1200°F) in air, with the rate of oxidation becoming
         rapid and catastrophic. This temperature represents the upper limit for significant
         oxidation initiation, not a safe service temperature. For continuous service,
         a much lower temperature would be required.
-      min: 200
-      max: 1200
     porosity:
       value: 0.0001
-      unit: '%'
-      research_basis: ai_research_comprehensive
       min: 0.0
       max: 15.0
+      unit: '%'
+      research_basis: ai_research_comprehensive
     tensileStrength:
       value: 462.0
+      min: 3.0
+      max: 3000.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Vanadium and Vanadium Alloys, page 563,
         Table 1: Typical room-temperature mechanical properties of unalloyed vanadium'
-      min: 3.0
-      max: 3000.0
     youngsModulus:
       value: 127.6
+      min: 5
+      max: 600
       unit: GPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Table ''Elastic Constants of Pure Metals''
         for polycrystalline vanadium at room temperature'
-      min: 5
-      max: 600
     fractureToughness:
       value: 60.0
+      min: 20
+      max: 200
       unit: MPa·√m
       research_basis: The provided value of 60 MPa·√m is a well-established reference
         for commercially pure vanadium at room temperature, as documented in the authoritative
         ASM Handbook. This value is consistent with the material's body-centered cubic
         structure and its known mechanical behavior.
-      min: 20
-      max: 200
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     ablationThreshold:
       value: 0.45
-      unit: J/cm²
-      research_basis: materials_science_literature
       min: 2.0
       max: 8.0
+      unit: J/cm²
+      research_basis: materials_science_literature
     absorptivity:
       value: 0.42
-      unit: dimensionless
-      research_basis: materials_science_literature
       min: 2.0
       max: 65.0
+      unit: dimensionless
+      research_basis: materials_science_literature
     laserAbsorption:
       value: 42.7
+      min: 0.02
+      max: 100
       unit: '%'
       research_basis: NIST Atomic Spectra Database - Reflectance measurements for
         pure vanadium at 1064 nm wavelength, Room temperature (298 K), Polycrystalline
         surface with native oxide layer
-      min: 0.02
-      max: 100
     laserDamageThreshold:
       value: 0.45
-      unit: J/cm²
-      research_basis: materials_science_literature
       min: 0.1
       max: 20.0
+      unit: J/cm²
+      research_basis: materials_science_literature
     laserReflectivity:
       value: 48.2
+      min: 5
+      max: 99.9
       unit: '%'
       research_basis: Palik, E.D. (1998). Handbook of Optical Constants of Solids,
         Vol. 2. Academic Press, pp. 467-478. Data for vanadium at 1064 nm wavelength.
-      min: 5
-      max: 99.9
     reflectivity:
       value: 0.58
-      unit: dimensionless (reflectance)
-      research_basis: materials_science_literature
       min: 85
       max: 98
+      unit: dimensionless (reflectance)
+      research_basis: materials_science_literature
     thermalShockResistance:
       value: 1.2
-      unit: MW/m
-      research_basis: materials_science_literature
       min: 50
       max: 400
+      unit: MW/m
+      research_basis: materials_science_literature
     absorptionCoefficient:
       value: 47200000.0
-      unit: m⁻¹
-      research_basis: materials_science_literature
       min: 100000
       max: 50000000
+      unit: m⁻¹
+      research_basis: materials_science_literature
     surfaceRoughness:
       value: 0.12
-      unit: μm
-      research_basis: materials_science_literature
       min: 0.4
       max: 150
+      unit: μm
+      research_basis: materials_science_literature
     vaporPressure:
       value: 1.33
-      unit: Pa
-      research_basis: materials_science_literature
       min: 1.0e-10
       max: 0.001
+      unit: Pa
+      research_basis: materials_science_literature
 machineSettings:
   energyDensity:
     value: 5.1

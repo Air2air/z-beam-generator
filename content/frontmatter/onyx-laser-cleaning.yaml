@@ -43,51 +43,53 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     specificHeat:
       value: 1000.0
+      min: 400
+      max: 1200
       unit: J/(kg·K)
       research_basis: 'CRC Handbook of Chemistry and Physics, 104th Edition, Section
         12: Properties of Solids - Thermal and Physical Properties of Rocks and Minerals'
-      min: 400
-      max: 1200
     thermalConductivity:
       value: 1.3
+      min: 0.2
+      max: 8
       unit: W/(m·K)
       research_basis: 'CRC Handbook of Chemistry and Physics, 103rd Edition, Section
         12: Properties of Solids - Thermal and Physical Properties of Rocks and Minerals'
-      min: 0.2
-      max: 8
     thermalDestruction:
       value: 800.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDiffusivity:
       value: 1.32
+      min: 0.2
+      max: 2.5
       unit: mm²/s
       research_basis: 'Cárdenes, V. et al. (2014). ''Thermal properties of ornamental
         stones: Calcite marbles and onyx from the Ebro Valley.'' Construction and
         Building Materials, 53, 480-485. DOI: 10.1016/j.conbuildmat.2013.11.103. Reports
         thermal diffusivity measurements for specific onyx samples.'
-      min: 0.2
-      max: 2.5
     thermalExpansion:
       value: 8.0
+      min: 3
+      max: 30
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Section: Natural Stone Properties, with
         specific reference to calcite-based onyx (CaCO3)'
-      min: 3
-      max: 30
     compressiveStrength:
       value: 90.0
+      min: 20
+      max: 500
       unit: MPa
       research_basis: The provided properties (density, hardness) are consistent with
         calcite-based onyx. Compressive strength for such stone is highly variable
         (30-120 MPa) depending on porosity and grain structure. The cited source provides
         a median value for commercial-grade onyx used in construction, based on ASTM
         C170 testing standards under uniaxial load, dry conditions.
-      min: 20
-      max: 500
     corrosionResistance:
       value: 8.0
+      min: 2.0
+      max: 9.0
       unit: rating
       research_basis: Onyx (calcite-based) demonstrates excellent resistance to environmental
         corrosion due to its low porosity and dense crystalline structure. While susceptible
@@ -96,18 +98,18 @@ materialProperties:
         stones like onyx as having "good to excellent" weathering resistance when
         properly maintained, placing it in the 7-9 range on corrosion resistance scales
         for building materials.
-      min: 2.0
-      max: 9.0
     density:
       value: 2.65
+      min: 1.5
+      max: 6.0
       unit: g/cm³
       research_basis: 'ASTM C97/C97M-18 Standard Test Methods for Absorption and Bulk
         Specific Gravity of Dimension Stone, supplemented by ASM Handbook Volume 4:
         Heat Treating and NIST Standard Reference Materials for geological materials'
-      min: 1.5
-      max: 6.0
     flexuralStrength:
       value: 15.2
+      min: 5
+      max: 50
       unit: MPa
       research_basis: The provided flexural strength is a representative value for
         onyx, a banded variety of chalcedony/calcite. This value is derived from standardized
@@ -116,79 +118,77 @@ materialProperties:
         strength compared to other dimension stones like granite, making it susceptible
         to bending failure. The confidence is not higher due to the natural variability
         in the stone's porosity, grain structure, and specific mineral composition.
-      min: 5
-      max: 50
     hardness:
       value: 3.0
+      min: 1
+      max: 7
       unit: Mohs
       research_basis: Deer, W.A., Howie, R.A., & Zussman, J. (2013). An Introduction
         to the Rock-Forming Minerals (3rd ed.). Mineralogical Society of Great Britain
         and Ireland. ISBN 978-0903056274. Page 504.
-      min: 1
-      max: 7
     oxidationResistance:
       value: 480.0
+      min: 400.0
+      max: 870.0
       unit: °C
       research_basis: Onyx, as a cryptocrystalline quartz (primarily SiO₂), inherits
         the high thermal stability of its main constituent. The provided value is
         the maximum recommended continuous service temperature in an oxidizing atmosphere
         (air) before the material begins to suffer from thermal degradation and potential
         oxidation, as cited in engineering material databases for natural stone.
-      min: 400.0
-      max: 870.0
     porosity:
       value: 0.007
-      unit: fraction
-      research_basis: ai_research_comprehensive
       min: 0.5
       max: 25
+      unit: fraction
+      research_basis: ai_research_comprehensive
     tensileStrength:
       value: 15.2
+      min: 2
+      max: 25
       unit: MPa
       research_basis: ASTM C170/C170M-22 Standard Test Method for Compressive Strength
         of Dimension Stone, with tensile strength calculated using established rock
         mechanics relationships (tensile strength ≈ 8-12% of compressive strength
         for cryptocrystalline quartz)
-      min: 2
-      max: 25
     youngsModulus:
       value: 68.3
+      min: 10
+      max: 100
       unit: GPa
       research_basis: ASTM C170-90 Standard Test Method for Compressive Strength of
         Dimension Stone, with Young's modulus derived from stress-strain relationships
         for banded calcite onyx specimens from Iran and Mexico
-      min: 10
-      max: 100
     fractureToughness:
       value: 0.7
+      min: 0.5
+      max: 5
       unit: MPa·√m
       research_basis: This study directly measured the fracture toughness (K_IC) of
         various natural stones, including onyx, using the Chevron Bend test. The reported
         value of 0.7 MPa·√m falls within the typical low-to-moderate range for calcareous
         stones, which is consistent with onyx being a banded variety of cryptocrystalline
         quartz/calcite.
-      min: 0.5
-      max: 5
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 8.7
+      min: 0.1
+      max: 100
       unit: '%'
       research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
         for Stone Conservation'' (2021) - Table 4.2: Optical absorption properties
         of decorative stones at 1064 nm'
-      min: 0.1
-      max: 100
     laserReflectivity:
       value: 38.2
+      min: 5
+      max: 80
       unit: '%'
       research_basis: 'NIST Special Publication 260-137: Reflectance Spectra Database
         for Common Materials, supplemented by ASM Handbook Volume 10: Materials Characterization
         data on carbonate mineral optical properties'
-      min: 5
-      max: 80
 machineSettings:
   dwellTime:
     value: 200

@@ -42,59 +42,61 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     boilingPoint:
       value: 2672.0
-      unit: °C
-      research_basis: materials_science_literature
       min: 907
       max: 5870
+      unit: °C
+      research_basis: materials_science_literature
     meltingPoint:
       value: 2180.0
-      unit: K
-      research_basis: materials_science_literature
       min: -39
       max: 3422
+      unit: K
+      research_basis: materials_science_literature
     specificHeat:
       value: 449.0
+      min: 100
+      max: 2000
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 144: Chromium (Cr) - Thermophysical
         Properties, Section 2.1.1, Specific Heat Capacity at 298.15 K'
-      min: 100
-      max: 2000
     thermalConductivity:
       value: 93.9
+      min: 7.0
+      max: 430
       unit: W/(m·K)
       research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
         Chromium thermophysical properties at 300K; ASM Handbook Volume 2: Properties
         and Selection: Nonferrous Alloys and Special-Purpose Materials'
-      min: 7.0
-      max: 430
     thermalDestruction:
       value: 500.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDestructionPoint:
       value: 1907.0
-      unit: °C
-      research_basis: materials_science_literature
       min: 873
       max: 3695
+      unit: °C
+      research_basis: materials_science_literature
     thermalDiffusivity:
       value: 23.1
+      min: 0.06
+      max: 174
       unit: mm²/s
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1: Physical Properties
         of Pure Metals, p. 1119'
-      min: 0.06
-      max: 174
     thermalExpansion:
       value: 4.9
+      min: 0.5
+      max: 33
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1, p. 841 - ''Linear coefficient
         of thermal expansion for chromium: 6.2 × 10^-6/°C (20-100°C)'''
-      min: 0.5
-      max: 33
     compressiveStrength:
       value: 686.0
+      min: 50
+      max: 2000
       unit: MPa
       research_basis: The compressive strength of pure, annealed chromium is significantly
         lower than its tensile strength due to its brittle nature. The cited value
@@ -103,90 +105,90 @@ materialProperties:
         The hardness value provided (1060 MPa) is a pressure-based measurement and
         is not a direct substitute for compressive strength, which is a distinct mechanical
         property.
-      min: 50
-      max: 2000
     corrosionResistance:
       value: 8.0
+      min: 1
+      max: 10
       unit: rating
       research_basis: Chromium forms a highly adherent, self-healing chromium oxide
         (Cr₂O₃) passive layer that provides excellent resistance to atmospheric corrosion,
         water, and many oxidizing chemicals. Its primary limitation is susceptibility
         to reducing acids, which prevents a perfect 9-10 rating reserved for metals
         like titanium or tantalum in broader environments.
-      min: 1
-      max: 10
     density:
       value: 7.19
+      min: 0.53
+      max: 22.6
       unit: g/cm³
       research_basis: 'NIST Standard Reference Database 144, CRC Handbook of Chemistry
         and Physics (104th Edition), and ASM Handbook Volume 2: Properties and Selection:
         Nonferrous Alloys and Special-Purpose Materials'
-      min: 0.53
-      max: 22.6
     electricalConductivity:
       value: 7740000.0
-      unit: S/m
-      research_basis: materials_science_literature
       min: 0.67
       max: 63.0
+      unit: S/m
+      research_basis: materials_science_literature
     electricalResistivity:
       value: 1.25e-07
-      unit: Ω·m
-      research_basis: materials_science_literature
       min: 1.0e-08
       max: 1.5e-06
+      unit: Ω·m
+      research_basis: materials_science_literature
     flexuralStrength:
       value: 289.0
+      min: 2.5
+      max: 1050.0
       unit: MPa
       research_basis: The provided flexural strength is for high-purity, annealed
         chromium. The value is derived from standard bend tests and is consistent
         with the brittle nature of chromium metal at room temperature, which results
         in a flexural strength significantly lower than its compressive strength but
         higher than its tensile strength in some conditions.
-      min: 2.5
-      max: 1050.0
     hardness:
       value: 1060.0
+      min: 0.5
+      max: 3500
       unit: MPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
         Properties of Chromium'
-      min: 0.5
-      max: 3500
     oxidationResistance:
       value: 980.0
+      min: 200
+      max: 1200
       unit: °C
       research_basis: Chromium forms a protective Cr₂O₃ scale, but above approximately
         980°C, this scale begins to volatilize as CrO₃, leading to a breakdown in
         oxidation resistance and accelerated attack. This temperature is widely cited
         in materials science literature as the upper limit for protective behavior
         in air.
-      min: 200
-      max: 1200
     porosity:
       value: 0.0002
-      unit: '%'
-      research_basis: ai_research_comprehensive
       min: 0.0
       max: 15.0
+      unit: '%'
+      research_basis: ai_research_comprehensive
     tensileStrength:
       value: 415.0
+      min: 3.0
+      max: 3000.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Table ''Typical Room-Temperature Mechanical
         Properties of Chromium'''
-      min: 3.0
-      max: 3000.0
     youngsModulus:
       value: 279.0
+      min: 5
+      max: 600
       unit: GPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
         Properties of Chromium'
-      min: 5
-      max: 600
     fractureToughness:
       value: 15.0
+      min: 20
+      max: 200
       unit: MPa·√m
       research_basis: Chromium has relatively low fracture toughness due to its body-centered
         cubic structure and susceptibility to brittle fracture at room temperature.
@@ -194,75 +196,73 @@ materialProperties:
         with 15 MPa·√m being a representative value for polycrystalline material at
         room temperature. This aligns with chromium's known brittle behavior in metallic
         systems.
-      min: 20
-      max: 200
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     ablationThreshold:
       value: 0.45
-      unit: J/cm²
-      research_basis: materials_science_literature
       min: 2.0
       max: 8.0
+      unit: J/cm²
+      research_basis: materials_science_literature
     absorptivity:
       value: 0.415
-      unit: dimensionless
-      research_basis: materials_science_literature
       min: 2.0
       max: 65.0
+      unit: dimensionless
+      research_basis: materials_science_literature
     laserAbsorption:
       value: 60.5
+      min: 0.02
+      max: 100
       unit: '%'
       research_basis: NIST Atomic Spectra Database - Cr I (Chromium) transition probabilities
         and optical constants at 1064 nm wavelength
-      min: 0.02
-      max: 100
     laserDamageThreshold:
       value: 0.85
-      unit: J/cm²
-      research_basis: materials_science_literature
       min: 0.1
       max: 20.0
+      unit: J/cm²
+      research_basis: materials_science_literature
     laserReflectivity:
       value: 64.2
+      min: 5
+      max: 99.9
       unit: '%'
       research_basis: Palik, E.D. Handbook of Optical Constants of Solids, Academic
         Press (1998), Volume 2, pp. 853-865 - Reflectivity measurements for chromium
         at 1064 nm wavelength
-      min: 5
-      max: 99.9
     reflectivity:
       value: 0.64
-      unit: dimensionless
-      research_basis: materials_science_literature
       min: 85
       max: 98
+      unit: dimensionless
+      research_basis: materials_science_literature
     thermalShockResistance:
       value: 1.2
-      unit: MW/m
-      research_basis: materials_science_literature
       min: 50
       max: 400
+      unit: MW/m
+      research_basis: materials_science_literature
     absorptionCoefficient:
       value: 41200000.0
-      unit: m⁻¹
-      research_basis: materials_science_literature
       min: 100000
       max: 50000000
+      unit: m⁻¹
+      research_basis: materials_science_literature
     surfaceRoughness:
       value: 0.05
-      unit: μm
-      research_basis: materials_science_literature
       min: 0.4
       max: 150
+      unit: μm
+      research_basis: materials_science_literature
     vaporPressure:
       value: 1.33
-      unit: Pa
-      research_basis: materials_science_literature
       min: 1.0e-10
       max: 0.001
+      unit: Pa
+      research_basis: materials_science_literature
 machineSettings:
   fluenceThreshold:
     value: 2.5

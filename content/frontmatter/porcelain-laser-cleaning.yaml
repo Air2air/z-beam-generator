@@ -43,43 +43,45 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     specificHeat:
       value: 1085.0
+      min: 250
+      max: 2500.0
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
         of Matter - Specific Heat of Porcelain (Traditional Triaxial Composition:
         50% Kaolin, 25% Feldspar, 25% Quartz) at 300K'
-      min: 250
-      max: 2500.0
     thermalConductivity:
       value: 1.5
+      min: 0.8
+      max: 120
       unit: W/(m·K)
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Table ''Thermal Properties of Ceramics
         and Electrical Insulators'' lists porcelain thermal conductivity as 1.5 W/m·K
         at room temperature'
-      min: 0.8
-      max: 120
     thermalDestruction:
       value: 1200.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDiffusivity:
       value: 0.85
+      min: 0.005
+      max: 120
       unit: mm²/s
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Table ''Thermal Properties of Ceramics
         and Glasses'' for porcelain compositions'
-      min: 0.005
-      max: 120
     thermalExpansion:
       value: 6.0
+      min: 0.1
+      max: 14
       unit: 10^-6 /K
       research_basis: 'ASM Handbook, Volume 4: Ceramics and Glasses, ''Properties
         of Porcelain'' (Section: Thermal Properties), p. 512. Values for triaxial
         whiteware porcelain (quartz-feldspar-clay system) measured at 20-700°C.'
-      min: 0.1
-      max: 14
     compressiveStrength:
       value: 50.0
+      min: 100
+      max: 7000
       unit: MPa
       research_basis: Porcelain is a vitrified ceramic, and its compressive strength
         is significantly higher than its tensile strength. While values can vary based
@@ -88,50 +90,50 @@ materialProperties:
         consistently report a typical compressive strength range for porcelain between
         50 MPa and 70 MPa. The lower end of this range (50 MPa) is cited as a conservative,
         widely accepted value for general-purpose porcelain.
-      min: 100
-      max: 7000
     corrosionResistance:
       value: 9.0
+      min: 8
+      max: 10
       unit: rating
       research_basis: Porcelain, as a vitrified ceramic, exhibits exceptional chemical
         inertness due to its glassy phase and high firing temperature. It demonstrates
         excellent resistance to most chemicals, solvents, and atmospheric weathering,
         with degradation primarily occurring only from prolonged exposure to strong
         hydrofluoric acid or concentrated alkaline solutions at high temperatures.
-      min: 8
-      max: 10
     density:
       value: 2.4
+      min: 2.3
+      max: 16.0
       unit: g/cm³
       research_basis: 'ASM Handbook, Volume 4: Ceramics and Glasses, Section: Whitewares
         and Porcelain, pp. 533-540'
-      min: 2.3
-      max: 16.0
     electricalResistivity:
       value: 10000000000000.0
-      unit: Ω·m
-      research_basis: materials_science_literature
       min: 10000000000.0
       max: 1.0e+16
+      unit: Ω·m
+      research_basis: materials_science_literature
     flexuralStrength:
       value: 50.0
+      min: 50
+      max: 2500
       unit: MPa
       research_basis: Porcelain, a vitrified ceramic, typically exhibits flexural
         strengths in the range of 40-70 MPa when measured by standard 3-point or 4-point
         bend tests. The value of 50 MPa is a well-established average for traditional
         porcelain bodies, as confirmed by materials databases and standards for whiteware
         ceramics.
-      min: 50
-      max: 2500
     hardness:
       value: 7.0
+      min: 6.0
+      max: 2500
       unit: Mohs
       research_basis: 'ASM Handbook, Volume 4: Ceramics and Glasses, Section: Whitewares
         and Porcelain, Table: Mechanical Properties of Commercial Porcelains'
-      min: 6.0
-      max: 2500
     oxidationResistance:
       value: 1000.0
+      min: 600.0
+      max: 2400.0
       unit: °C
       research_basis: Porcelain is a vitrified ceramic with a glassy phase that softens
         and begins to degrade above 1000°C. While it has excellent chemical stability
@@ -140,33 +142,33 @@ materialProperties:
         a classical oxidation mechanism like in metals. Authoritative materials handbooks
         consistently place this practical upper temperature limit at 1000-1200°C,
         with 1000°C being the conservative value for continuous service.
-      min: 600.0
-      max: 2400.0
     porosity:
       value: 0.02
-      unit: fraction
-      research_basis: ai_research_comprehensive
       min: 0
       max: 30
+      unit: fraction
+      research_basis: ai_research_comprehensive
     tensileStrength:
       value: 50.0
+      min: 5.0
+      max: 600
       unit: MPa
       research_basis: 'ASM Handbook, Volume 29: Materials for Specialty Applications
         - Mechanical Properties of Ceramics and Glasses, Table 1: Typical Mechanical
         Properties of Technical Ceramics, specifying porcelain tensile strength range
         25-70 MPa with typical value ~50 MPa'
-      min: 5.0
-      max: 600
     youngsModulus:
       value: 70.3
+      min: 5.0
+      max: 600.0
       unit: GPa
       research_basis: 'ASM Handbook, Volume 4: Ceramics and Glasses, Table ''Typical
         Properties of Porcelain'' citing Young''s Modulus range 69-72 GPa for traditional
         triaxial porcelain compositions'
-      min: 5.0
-      max: 600.0
     fractureToughness:
       value: 1.0
+      min: 2
+      max: 10
       unit: MPa·√m
       research_basis: Porcelain, as a traditional triaxial ceramic (clay, quartz,
         feldspar), has a relatively low fracture toughness typical of polycrystalline
@@ -175,34 +177,32 @@ materialProperties:
         with data from other compilations of ceramic mechanical properties which consistently
         place porcelain's K_IC below that of advanced technical ceramics like alumina
         or zirconia.
-      min: 2
-      max: 10
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     ablationThreshold:
       value: 2.8
-      unit: J/cm²
-      research_basis: materials_science_literature
       min: 1.5
       max: 5.0
+      unit: J/cm²
+      research_basis: materials_science_literature
     laserAbsorption:
       value: 32.7
+      min: 0.1
+      max: 50
       unit: '%'
       research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
         for Ceramic Systems'' (2021), Table 4.2 - Porcelain absorption coefficients
         for 1064 nm Nd:YAG lasers'
-      min: 0.1
-      max: 50
     laserReflectivity:
       value: 42.3
+      min: 5
+      max: 90
       unit: '%'
       research_basis: 'NIST Special Publication 1066 - ''Optical Properties of Ceramic
         Materials'' (2019), Table 4.2: Reflectivity measurements for dental porcelain
         at 1064 nm Nd:YAG wavelength'
-      min: 5
-      max: 90
 machineSettings:
   dwellTime:
     value: 100

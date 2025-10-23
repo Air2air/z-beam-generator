@@ -44,141 +44,141 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     specificHeat:
       value: 1300.0
+      min: 1.0
+      max: 2500
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 69: Polystyrene specific heat
         capacity at 25°C = 1.3 kJ/(kg·K) [https://webbook.nist.gov/cgi/inchi?ID=C9003536&Mask=2#Thermo-Phase]'
-      min: 1.0
-      max: 2500
     thermalConductivity:
       value: 0.142
+      min: 0.02
+      max: 3
       unit: W/(m·K)
       research_basis: 'NIST Standard Reference Database 69: Polystyrene thermal conductivity
         at 300K measured as 0.142 W/m·K (https://doi.org/10.18434/T4D303)'
-      min: 0.02
-      max: 3
     thermalDestruction:
       value: 500.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDiffusivity:
       value: 0.53
+      min: 0.08
+      max: 1
       unit: mm²/s
       research_basis: 'NIST Standard Reference Database: Thermal diffusivity of polystyrene
         at 25°C measured using laser flash method (ASTM E1461)'
-      min: 0.08
-      max: 1
     thermalExpansion:
       value: 70.0
+      min: 10
+      max: 200
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Table: Thermal Expansion of Plastics
         and Elastomers'
-      min: 10
-      max: 200
     compressiveStrength:
       value: 95.0
+      min: 20
+      max: 200
       unit: MPa
       research_basis: The reported compressive strength for general-purpose polystyrene
         typically ranges from 80 MPa to 110 MPa. The value of 95 MPa is a median figure
         from this established range, cited by materials databases and engineering
         references. The provided hardness of 80.0 MPa is consistent with this range,
         as compressive strength for rigid plastics is often higher than hardness.
-      min: 20
-      max: 200
     corrosionResistance:
       value: 8.0
+      min: 5
+      max: 9
       unit: rating
       research_basis: Polystyrene exhibits excellent resistance to water, dilute acids,
         alkalis, and alcohols, which covers most general environmental corrosion factors.
         However, it is attacked by many hydrocarbons, chlorinated solvents, and strong
         oxidizing acids, preventing a perfect rating.
-      min: 5
-      max: 9
     density:
       value: 1.05
+      min: 0.85
+      max: 2.2
       unit: g/cm³
       research_basis: 'NIST Standard Reference Data - Polystyrene (CAS 9003-53-6)
         - Density at 23°C: 1.04-1.065 g/cm³; ASM Handbook, Vol. 2: Properties and
         Selection: Nonferrous Alloys and Special-Purpose Materials'
-      min: 0.85
-      max: 2.2
     electricalResistivity:
       value: 1.0e+21
-      unit: Ω·m
-      research_basis: materials_science_literature
       min: 1000000000000.0
       max: 1.0e+16
+      unit: Ω·m
+      research_basis: materials_science_literature
     flexuralStrength:
       value: 50.0
+      min: 30
+      max: 200
       unit: MPa
       research_basis: The reported flexural strength for general-purpose polystyrene
         from authoritative material databases like MatWeb and CES EduPack typically
         falls in the range of 50-80 MPa. The value of 50 MPa is a conservative and
         commonly cited figure for the lower end of this range, representing a typical
         minimum for the material property.
-      min: 30
-      max: 200
     hardness:
       value: 80.0
+      min: Shore A 10
+      max: Shore D 90
       unit: MPa
       research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation (2000),
         Table 3 - Typical Mechanical Properties of Thermoplastics, and NIST PS-L Standard
         Reference Material documentation'
-      min: Shore A 10
-      max: Shore D 90
     oxidationResistance:
       value: 80.0
+      min: 60.0
+      max: 260.0
       unit: °C
       research_basis: Authoritative materials databases consistently report the maximum
         continuous service temperature in air for General Purpose Polystyrene (GPPS)
         in the range of 70-85°C, with 80°C being a commonly cited upper limit before
         thermal degradation and oxidation become significant.
-      min: 60.0
-      max: 260.0
     tensileStrength:
       value: 45.0
+      min: 10
+      max: 400
       unit: MPa
       research_basis: 'ASM Handbook, Volume 21: Composites; MatWeb Material Property
         Data; NIST PS-L Polymer Database - General Purpose Polystyrene (GPPS)'
-      min: 10
-      max: 400
     youngsModulus:
       value: 3200.0
+      min: 0.01
+      max: 5000
       unit: MPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, Table 1: Typical Properties of Polystyrene'
-      min: 0.01
-      max: 5000
     fractureToughness:
       value: 1.0
+      min: 1
+      max: 10
       unit: MPa·√m
       research_basis: Polystyrene is a brittle, amorphous thermoplastic with low fracture
         toughness. Reported values for general-purpose polystyrene (GPPS) typically
         range from 0.7 to 1.1 MPa·√m. The value of 1.0 MPa·√m is a commonly cited
         representative value from materials handbooks and engineering databases for
         this property at room temperature.
-      min: 1
-      max: 10
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 65.2
+      min: 0.1
+      max: 100
       unit: '%'
       research_basis: 'NIST Materials Data Repository - Polystyrene Optical Properties
         Database (PS-OPD), Reference: NIST Standard Reference Data 69, ''Optical Constants
         of Polystyrene for Laser Applications'''
-      min: 0.1
-      max: 100
     laserReflectivity:
       value: 4.2
+      min: 4.0
+      max: 95
       unit: '%'
       research_basis: NIST Materials Data Repository - Laser-Material Interaction
         Database for Polymers, specifically polystyrene reflectance measurements at
         1064 nm wavelength
-      min: 4.0
-      max: 95
 machineSettings:
   energyDensity:
     value: 2.5

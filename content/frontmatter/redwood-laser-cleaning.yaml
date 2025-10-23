@@ -43,43 +43,45 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     specificHeat:
       value: 1630.0
+      min: 800
+      max: 2500
       unit: J/(kg·K)
       research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest
         Service, FPL-GTR-190), Chapter 4: Moisture Relations and Physical Properties,
         Table 4-3: Specific heat of wood at various moisture contents'
-      min: 800
-      max: 2500
     thermalConductivity:
       value: 0.12
+      min: 0.04
+      max: 0.4
       unit: W/(m·K)
       research_basis: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190),
         Chapter 4: Thermal Properties of Wood, USDA Forest Service, Forest Products
         Laboratory, 2010'
-      min: 0.04
-      max: 0.4
     thermalDestruction:
       value: 300.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDiffusivity:
       value: 0.17
+      min: 0.0001
+      max: 0.4
       unit: mm²/s
       research_basis: 'Forest Products Laboratory. (2010). Wood Handbook: Wood as
         an Engineering Material. USDA Forest Service, Chapter 4: Thermal Properties,
         Table 4-3, specifically listing Sequoia sempervirens (coast redwood) at 12%
         moisture content.'
-      min: 0.0001
-      max: 0.4
     thermalExpansion:
       value: 27.8
+      min: 3.0
+      max: 60
       unit: 10^-6/K
       research_basis: 'USDA Forest Products Laboratory. Wood Handbook: Wood as an
         Engineering Material. General Technical Report FPL-GTR-190. Table 4-3: Coefficients
         of thermal expansion for various wood species.'
-      min: 3.0
-      max: 60
     compressiveStrength:
       value: 31.2
+      min: 20
+      max: 80
       unit: MPa
       research_basis: The Wood Handbook, published by the USDA Forest Products Laboratory,
         is the principal authoritative source for wood properties in the United States.
@@ -87,10 +89,10 @@ materialProperties:
         sempervirens) at 12% moisture content as 31.2 MPa. This value is consistent
         with the provided hardness property, as compressive strength and hardness
         are often correlated for wood species.
-      min: 20
-      max: 80
     corrosionResistance:
       value: 4.0
+      min: 2.0
+      max: 8.0
       unit: rating
       research_basis: Redwood has moderate natural decay resistance due to extractives
         like tannins and thujaplicins, but this is primarily against biological decay
@@ -98,19 +100,19 @@ materialProperties:
         is not as durable as treated woods or naturally resistant tropical hardwoods.
         The rating reflects good performance in above-ground applications but poor
         resistance in ground contact or marine environments without preservative treatment.
-      min: 2.0
-      max: 8.0
     density:
       value: 0.42
+      min: 0.12
+      max: 1.5
       unit: g/cm³
       research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook:
         Wood as an Engineering Material. General Technical Report FPL-GTR-190. Table
         5-3a: ''Density of some common woods'' specifies Coast Redwood (Sequoia sempervirens)
         at 12% moisture content.'
-      min: 0.12
-      max: 1.5
     flexuralStrength:
       value: 65.0
+      min: 40
+      max: 150
       unit: MPa
       research_basis: The Forest Products Laboratory's Wood Handbook is a globally
         recognized authority on wood properties. For "Redwood, old-growth," it lists
@@ -118,50 +120,50 @@ materialProperties:
         standard measure of flexural/bending strength from a 3-point bend test. This
         value is consistent with the known low density of Redwood, placing it in the
         low-to-medium strength category for commercial softwoods.
-      min: 40
-      max: 150
     hardness:
       value: 28.3
+      min: 1
+      max: 5000
       unit: MPa
       research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook:
         Wood as an Engineering Material. Chapter 4: Mechanical Properties of Wood.
         Table 4-3: Hardness of domestic woods.'
-      min: 1
-      max: 5000
     oxidationResistance:
       value: 200.0
+      min: 82.0
+      max: 204.0
       unit: °C
       research_basis: The Wood Handbook from the USDA Forest Products Laboratory is
         a primary authority. It states that prolonged exposure to temperatures above
         200 °C leads to significant thermal degradation (pyrolysis) and charring of
         wood, even in the absence of flame. This temperature is considered the practical
         upper limit before significant oxidative mass loss begins.
-      min: 82.0
-      max: 204.0
     porosity:
       value: 0.72
-      unit: dimensionless (volume fraction)
-      research_basis: ai_research_comprehensive
       min: 12
       max: 65
+      unit: dimensionless (volume fraction)
+      research_basis: ai_research_comprehensive
     tensileStrength:
       value: 85.0
+      min: 20
+      max: 200
       unit: MPa
       research_basis: 'USDA Forest Products Laboratory Wood Handbook (2010), Chapter
         4: Mechanical Properties of Wood, Table 4-3 specific to Coast Redwood (Sequoia
         sempervirens) at 12% moisture content'
-      min: 20
-      max: 200
     youngsModulus:
       value: 9.0
+      min: 5
+      max: 20000
       unit: GPa
       research_basis: USDA Forest Products Laboratory Wood Handbook (Chapter 4, Table
         4-3) - Specific mechanical properties for coast redwood (Sequoia sempervirens)
         at 12% moisture content
-      min: 5
-      max: 20000
     fractureToughness:
       value: 0.33
+      min: 0.33
+      max: 4.4
       unit: MPa·√m
       research_basis: The fracture toughness (K_IC) of wood is highly dependent on
         grain orientation. For redwood and other softwoods, typical Mode I (crack
@@ -169,28 +171,26 @@ materialProperties:
         range of 0.30-0.40 MPa·√m. The provided value of 0.33 MPa·√m is a representative
         median for clear, straight-grained redwood based on standardized testing methods
         for wood.
-      min: 0.33
-      max: 4.4
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 32.7
+      min: 1
+      max: 50
       unit: '%'
       research_basis: 'NIST Special Publication 260-137: Optical Properties of Wood
         Species for Laser Processing Applications, with specific data for Sequoia
         sempervirens (redwood) at 1064 nm wavelength'
-      min: 1
-      max: 50
     laserReflectivity:
       value: 42.7
+      min: 10
+      max: 60
       unit: '%'
       research_basis: 'NIST Standard Reference Database 120: Optical Properties of
         Materials for Wavelength 1064 nm, with specific reference to Sequoia sempervirens
         (redwood) spectral reflectance measurements at 1064 nm laser wavelength'
-      min: 10
-      max: 60
 machineSettings:
   dwellTime:
     value: 100

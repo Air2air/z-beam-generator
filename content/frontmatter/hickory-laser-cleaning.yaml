@@ -43,45 +43,47 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     specificHeat:
       value: 1630.0
+      min: 800
+      max: 2500
       unit: J/(kg·K)
       research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest
         Service, Forest Products Laboratory. General Technical Report FPL-GTR-190.
         2010. Chapter 4: Moisture Relations and Physical Properties of Wood, Table
         4-5 provides specific heat values for various wood species at 12% moisture
         content.'
-      min: 800
-      max: 2500
     thermalConductivity:
       value: 0.155
+      min: 0.04
+      max: 0.4
       unit: W/(m·K)
       research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest
         Service, FPL-GTR-190), Table 4-3: Thermal properties of common wood species
         at 12% moisture content'
-      min: 0.04
-      max: 0.4
     thermalDestruction:
       value: 300.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDiffusivity:
       value: 0.00165
+      min: 0.0001
+      max: 0.4
       unit: m²/s
       research_basis: 'Forest Products Laboratory. (2010). Wood Handbook: Wood as
         an Engineering Material. USDA Forest Service, Chapter 4: Moisture and Thermal
         Properties, Table 4-5, specifically citing hickory species (Carya spp.) at
         12% moisture content.'
-      min: 0.0001
-      max: 0.4
     thermalExpansion:
       value: 3.7
+      min: 3.0
+      max: 60
       unit: 10⁻⁶/K
       research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest
         Service, Forest Products Laboratory. General Technical Report FPL-GTR-190.
         2010. Table 4-3: Coefficients of thermal expansion for various wood species.'
-      min: 3.0
-      max: 60
     compressiveStrength:
       value: 51.3
+      min: 20
+      max: 80
       unit: MPa
       research_basis: The Wood Handbook from the USDA Forest Products Laboratory is
         the primary authoritative source for North American wood properties. For hickory
@@ -89,10 +91,10 @@ materialProperties:
         51.3 MPa at 12% moisture content, which is the standard test condition for
         reporting wood strength properties. This value is consistent with the known
         high density and hardness provided for the material.
-      min: 20
-      max: 80
     corrosionResistance:
       value: 2.0
+      min: 2.0
+      max: 8.0
       unit: rating
       research_basis: Hickory, as a hardwood, has moderate natural durability but
         poor corrosion resistance in moist environments. According to wood science
@@ -101,19 +103,19 @@ materialProperties:
         decay and insect attack. While it has good mechanical properties, its natural
         corrosion resistance ranks low among woods, with most sources classifying
         it as non-durable to perishable in outdoor conditions.
-      min: 2.0
-      max: 8.0
     density:
       value: 0.72
+      min: 0.12
+      max: 1.5
       unit: g/cm³
       research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook:
         Wood as an Engineering Material. General Technical Report FPL-GTR-190. Table
         4-3: Mechanical properties of some commercially important woods grown in the
         United States.'
-      min: 0.12
-      max: 1.5
     flexuralStrength:
       value: 139.0
+      min: 40
+      max: 150
       unit: MPa
       research_basis: The Wood Database, a recognized authority on wood properties,
         reports the modulus of rupture (MOR) for hickory species as 20,200 psi, which
@@ -121,18 +123,18 @@ materialProperties:
         measured via standard 3-point bend testing according to ASTM D143. Hickory
         is consistently documented across multiple wood technology references as having
         exceptionally high bending strength among domestic hardwoods.
-      min: 40
-      max: 150
     hardness:
       value: 7.08
+      min: 1
+      max: 5000
       unit: MPa
       research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook:
         Wood as an Engineering Material. Chapter 4: Mechanical Properties of Wood.
         Table 4-3: Hardness of domestic hardwoods (Janka hardness test).'
-      min: 1
-      max: 5000
     oxidationResistance:
       value: 150.0
+      min: 82.0
+      max: 204.0
       unit: °C
       research_basis: Hickory, like most hardwoods, begins significant thermal degradation
         (pyrolysis) and oxidative changes well below its ignition point. The FPL and
@@ -142,58 +144,56 @@ materialProperties:
         hemicellulose) start to decompose rapidly, leading to charring, loss of mechanical
         strength, and significant mass loss due to oxidation, even in the absence
         of flame.
-      min: 82.0
-      max: 204.0
     porosity:
       value: 0.56
-      unit: dimensionless
-      research_basis: ai_research_comprehensive
       min: 12
       max: 65
+      unit: dimensionless
+      research_basis: ai_research_comprehensive
     tensileStrength:
       value: 139.0
+      min: 20
+      max: 200
       unit: MPa
       research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook:
         Wood as an Engineering Material. Chapter 4: Mechanical Properties of Wood,
         Table 4-3a. 2010 Edition.'
-      min: 20
-      max: 200
     youngsModulus:
       value: 11.9
-      unit: GPa
-      research_basis: standard_material_database
       min: 5
       max: 20000
+      unit: GPa
+      research_basis: standard_material_database
     fractureToughness:
       value: 4.4
+      min: 0.33
+      max: 4.4
       unit: MPa·√m
       research_basis: This value represents the Mode I fracture toughness (K_IC) for
         hickory in the radial-longitudinal orientation at room temperature, determined
         using compact tension specimens. Hickory's high density among hardwoods contributes
         to its relatively good fracture toughness compared to other domestic species.
-      min: 0.33
-      max: 4.4
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 32.7
+      min: 1
+      max: 50
       unit: '%'
       research_basis: 'NIST Standard Reference Database 69: Laser Material Interaction
         Database for Wood Species; ASM Handbook Volume 5: Surface Engineering - Laser
         Processing Section; Miller, R.B. (1999) ''Structure of Wood'' in Wood Handbook:
         Wood as an Engineering Material'
-      min: 1
-      max: 50
     laserReflectivity:
       value: 28.5
+      min: 10
+      max: 60
       unit: '%'
       research_basis: NIST Materials Data Repository - Wood Optical Properties Database
         (2021), supplemented by Miller & Wooten (2019) 'Laser-Wood Interactions in
         Cleaning Applications' in Journal of Materials Processing Technology
-      min: 10
-      max: 60
 machineSettings:
   energyDensity:
     value: 1.2

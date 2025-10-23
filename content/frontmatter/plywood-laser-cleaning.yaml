@@ -43,43 +43,45 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     specificHeat:
       value: 1210.0
+      min: 800
+      max: 2500
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook
         - Thermophysical properties of wood and wood products measured at 25°C, specifically
         plywood composites with phenolic resin binders'
-      min: 800
-      max: 2500
     thermalConductivity:
       value: 0.12
+      min: 0.04
+      max: 0.4
       unit: W/(m·K)
       research_basis: 'Wood Handbook: Wood as an Engineering Material, USDA Forest
         Service, Forest Products Laboratory, Chapter 4: Thermal Properties, Table
         4-3 for plywood at 12% moisture content and 27°C'
-      min: 0.04
-      max: 0.4
     thermalDestruction:
       value: 300.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDiffusivity:
       value: 0.00145
+      min: 0.0001
+      max: 0.4
       unit: m²/s
       research_basis: 'NIST Wood Database - Specific measurements for plywood (Douglas
         fir construction grade) at 12% moisture content, 20°C. Reference: NIST Standard
         Reference Database 69: Thermophysical Properties of Wood Products'
-      min: 0.0001
-      max: 0.4
     thermalExpansion:
       value: 30.0
+      min: 3.0
+      max: 60
       unit: 10⁻⁶/K
       research_basis: 'Wood Handbook: Wood as an Engineering Material, USDA Forest
         Service, Forest Products Laboratory, Chapter 4: Physical Properties and Moisture
         Relations of Wood, Table 4-3: Coefficients of thermal expansion for various
         wood species and wood-based composites'
-      min: 3.0
-      max: 60
     compressiveStrength:
       value: 5.5
+      min: 20
+      max: 80
       unit: MPa
       research_basis: The compressive strength of plywood is highly dependent on the
         species of the face veneers, the adhesive type, and the direction of loading
@@ -88,10 +90,10 @@ materialProperties:
         the face grain for common softwood plywood, with 5.5 MPa being a representative
         median value. This value is consistent with data from other engineering handbooks
         for construction-grade plywood.
-      min: 20
-      max: 80
     corrosionResistance:
       value: 2.0
+      min: 2.0
+      max: 8.0
       unit: rating
       research_basis: Plywood, typically made from wood veneers, has poor inherent
         corrosion resistance as it is highly susceptible to moisture, fungal decay,
@@ -101,18 +103,18 @@ materialProperties:
         context of material degradation, plywood's organic composition makes it highly
         vulnerable to environmental degradation. A rating of 2 reflects that it offers
         minimal resistance without chemical preservatives.
-      min: 2.0
-      max: 8.0
     density:
       value: 0.54
+      min: 0.12
+      max: 1.5
       unit: g/cm³
       research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest
         Service, FPL-GTR-190), Chapter 12: Plywood and Structural Wood Panels, Table
         12-1: Typical properties of commercial plywood'
-      min: 0.12
-      max: 1.5
     flexuralStrength:
       value: 30.0
+      min: 40
+      max: 150
       unit: MPa
       research_basis: The flexural strength of plywood varies significantly based
         on species, veneer grade, adhesive type, and construction. The cited USDA
@@ -120,18 +122,18 @@ materialProperties:
         plywood in the range of 20-40 MPa. The value of 30 MPa represents a reasonable
         median for structural softwood plywood, consistent with values reported in
         engineering material databases for general-purpose construction plywood.
-      min: 40
-      max: 150
     hardness:
       value: 1813.0
+      min: 1
+      max: 5000
       unit: MPa
       research_basis: 'ASTM D143-14 Standard Test Methods for Small Clear Specimens
         of Timber, supplemented by Wood Handbook: Wood as an Engineering Material
         (USDA Forest Service, 2010) and specific plywood mechanical property studies'
-      min: 1
-      max: 5000
     oxidationResistance:
       value: 200.0
+      min: 82.0
+      max: 204.0
       unit: °C
       research_basis: Plywood, as an engineered wood product, has thermal degradation
         properties similar to solid wood. The Wood Handbook states that wood in air
@@ -139,59 +141,57 @@ materialProperties:
         where chemical bonds break and mass loss occurs. This represents the maximum
         temperature before rapid oxidation and charring begins, making it unsuitable
         for continuous service above this threshold.
-      min: 82.0
-      max: 204.0
     porosity:
       value: 0.65
-      unit: dimensionless
-      research_basis: ai_research_comprehensive
       min: 12
       max: 65
+      unit: dimensionless
+      research_basis: ai_research_comprehensive
     tensileStrength:
       value: 31.0
+      min: 20
+      max: 200
       unit: MPa
       research_basis: 'ASTM D3500-90 & Wood Handbook: Wood as an Engineering Material
         (USDA Forest Service, FPL-GTR-190), Table 5-3a: Mechanical Properties of Commercial
         Plywood'
-      min: 20
-      max: 200
     youngsModulus:
       value: 9.0
+      min: 5
+      max: 20000
       unit: GPa
       research_basis: 'ASTM D3043-17 ''Standard Test Methods for Structural Panels
         in Flexure'' and USDA Forest Products Laboratory Wood Handbook: Wood as an
         Engineering Material, Chapter 12: Structural Panels'
-      min: 5
-      max: 20000
     fractureToughness:
       value: 0.5
+      min: 0.33
+      max: 4.4
       unit: MPa·√m
       research_basis: Plywood, as a wood-based composite, has low fracture toughness
         perpendicular to the grain. Authoritative composite materials references provide
         K_IC values for wood in the range of 0.3-0.7 MPa·√m, with 0.5 MPa·√m being
         a representative mid-range value for structural plywood in the crack-arrester
         orientation.
-      min: 0.33
-      max: 4.4
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 32.7
+      min: 1
+      max: 50
       unit: '%'
       research_basis: 'NIST Special Publication 1176: ''Optical Properties of Wood
         and Wood Products'' (2019) - Table 4.2 for plywood substrates at 1064 nm wavelength'
-      min: 1
-      max: 50
     laserReflectivity:
       value: 32.5
+      min: 10
+      max: 60
       unit: '%'
       research_basis: 'NIST Standard Reference Database 120: Optical Properties of
         Materials, Section 8.2.3 - Wood Products, specifically plywood composition
         analysis at 1064 nm wavelength'
-      min: 10
-      max: 60
 machineSettings:
   dwellTime:
     value: 100

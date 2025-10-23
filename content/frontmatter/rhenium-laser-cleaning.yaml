@@ -43,69 +43,71 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     boilingPoint:
       value: 5869.0
-      unit: K
-      research_basis: materials_science_literature
       min: 907
       max: 5870
+      unit: K
+      research_basis: materials_science_literature
     meltingPoint:
       value: 3186.0
-      unit: °C
-      research_basis: materials_science_literature
       min: -39
       max: 3422
+      unit: °C
+      research_basis: materials_science_literature
     specificHeat:
       value: 137.0
+      min: 100
+      max: 2000
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 144: Thermophysical Properties
         of Pure Rhenium at 300 K'
-      min: 100
-      max: 2000
     thermalConductivity:
       value: 71.0
+      min: 7.0
+      max: 430
       unit: W/(m·K)
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1, p. 561, and NIST Standard
         Reference Database 69: NIST Chemistry WebBook (Thermophysical Properties of
         Pure Substances)'
-      min: 7.0
-      max: 430
     thermalDestruction:
       value: 500.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDestructionPoint:
       value: 3453.0
-      unit: K
-      research_basis: materials_science_literature
       min: 873
       max: 3695
+      unit: K
+      research_basis: materials_science_literature
     thermalDiffusivity:
       value: 63.2
+      min: 0.06
+      max: 174
       unit: mm²/s
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table ''Thermal Properties of
         Pure Metals'' for Rhenium at 300K'
-      min: 0.06
-      max: 174
     thermalExpansion:
       value: 6.6
+      min: 0.5
+      max: 33
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1, p. 562 - Rhenium thermal
         expansion coefficient at 20°C'
-      min: 0.5
-      max: 33
     compressiveStrength:
       value: 1034.0
+      min: 50
+      max: 2000
       unit: MPa
       research_basis: The ASM Handbook is a primary reference for material properties.
         The cited table provides a compressive yield strength (0.2% offset) of 150
         ksi, which converts to approximately 1034 MPa. This value is representative
         of annealed, wrought material at room temperature.
-      min: 50
-      max: 2000
     corrosionResistance:
       value: 8.0
+      min: 1
+      max: 10
       unit: rating
       research_basis: Rhenium exhibits excellent corrosion resistance to many environments.
         It resists oxidation in air up to 1000°C, shows good resistance to seawater
@@ -113,31 +115,31 @@ materialProperties:
         and sulfuric acid at various concentrations and temperatures. However, it
         can be attacked by oxidizing agents under certain conditions and has susceptibility
         to oxidation at very high temperatures, preventing a perfect 9-10 rating.
-      min: 1
-      max: 10
     density:
       value: 21.02
+      min: 0.53
+      max: 22.6
       unit: g/cm³
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1: Physical Properties
         of Rhenium; NIST Standard Reference Database 124 - Thermophysical Properties
         of Pure Metals'
-      min: 0.53
-      max: 22.6
     electricalConductivity:
       value: 5420000.0
-      unit: S/m
-      research_basis: materials_science_literature
       min: 0.67
       max: 63.0
+      unit: S/m
+      research_basis: materials_science_literature
     electricalResistivity:
       value: 1.93e-07
-      unit: Ω·m
-      research_basis: materials_science_literature
       min: 1.0e-08
       max: 1.5e-06
+      unit: Ω·m
+      research_basis: materials_science_literature
     flexuralStrength:
       value: 1050.0
+      min: 2.5
+      max: 1050.0
       unit: MPa
       research_basis: The provided flexural strength value for commercially pure,
         powder-metallurgy rhenium is based on 4-point bend test data. Rhenium, while
@@ -146,51 +148,51 @@ materialProperties:
         at room temperature, especially in its unalloyed, sintered form. This value
         represents a typical range for the material in a wrought and recrystallized
         condition.
-      min: 2.5
-      max: 1050.0
     hardness:
       value: 1700.0
+      min: 0.5
+      max: 3500
       unit: HV
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
         Properties of Rhenium - Hardness: 1700 HV (annealed condition)'
-      min: 0.5
-      max: 3500
     oxidationResistance:
       value: 600.0
+      min: 200
+      max: 1200
       unit: °C
       research_basis: Rhenium begins to undergo significant oxidation in air at temperatures
         above 600°C, forming volatile rhenium heptoxide (Re2O7). While it can withstand
         brief exposures to higher temperatures, 600°C is consistently cited in authoritative
         materials handbooks as the maximum temperature for continuous service in an
         oxidizing atmosphere before catastrophic oxidation occurs.
-      min: 200
-      max: 1200
     porosity:
       value: 0.0005
-      unit: '%'
-      research_basis: ai_research_comprehensive
       min: 0.0
       max: 15.0
+      unit: '%'
+      research_basis: ai_research_comprehensive
     tensileStrength:
       value: 1170.0
+      min: 3.0
+      max: 3000.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, ''Rhenium and Rhenium Alloys'' section,
         Table 1: Typical room-temperature mechanical properties of annealed rhenium'
-      min: 3.0
-      max: 3000.0
     youngsModulus:
       value: 463.0
+      min: 5
+      max: 600
       unit: GPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
         Properties of Rhenium, with additional validation from NIST Materials Data
         Repository and CRC Handbook of Chemistry and Physics'
-      min: 5
-      max: 600
     fractureToughness:
       value: 200.0
+      min: 20
+      max: 200
       unit: MPa·√m
       research_basis: The provided value is a well-cited reference for the plane-strain
         fracture toughness (K_IC) of polycrystalline rhenium at room temperature.
@@ -198,76 +200,74 @@ materialProperties:
         fracture toughness for its class, though specific values can vary with processing,
         purity, and microstructure. This authoritative handbook value is the most
         commonly referenced figure for general engineering purposes.
-      min: 20
-      max: 200
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     ablationThreshold:
       value: 2.1
-      unit: J/cm²
-      research_basis: materials_science_literature
       min: 2.0
       max: 8.0
+      unit: J/cm²
+      research_basis: materials_science_literature
     absorptivity:
       value: 0.42
-      unit: dimensionless
-      research_basis: materials_science_literature
       min: 2.0
       max: 65.0
+      unit: dimensionless
+      research_basis: materials_science_literature
     laserAbsorption:
       value: 42.7
+      min: 0.02
+      max: 100
       unit: '%'
       research_basis: 'NIST Atomic Spectra Database - Reflectance Data for Rhenium
         at 1064 nm wavelength, supplemented by ASM Handbook Volume 2: Properties and
         Selection: Nonferrous Alloys and Special-Purpose Materials'
-      min: 0.02
-      max: 100
     laserDamageThreshold:
       value: 2.1
-      unit: J/cm²
-      research_basis: materials_science_literature
       min: 0.1
       max: 20.0
+      unit: J/cm²
+      research_basis: materials_science_literature
     laserReflectivity:
       value: 51.5
+      min: 5
+      max: 99.9
       unit: '%'
       research_basis: 'CRC Handbook of Laser Science and Technology, Section 4: Optical
         Properties of Metals, Rhenium data for 1.06 μm wavelength (common Nd:YAG laser
         wavelength)'
-      min: 5
-      max: 99.9
     reflectivity:
       value: 0.85
-      unit: dimensionless (reflectance)
-      research_basis: materials_science_literature
       min: 85
       max: 98
+      unit: dimensionless (reflectance)
+      research_basis: materials_science_literature
     thermalShockResistance:
       value: 1.8
-      unit: MW/m
-      research_basis: materials_science_literature
       min: 50
       max: 400
+      unit: MW/m
+      research_basis: materials_science_literature
     absorptionCoefficient:
       value: 0.42
-      unit: '1'
-      research_basis: materials_science_literature
       min: 100000
       max: 50000000
+      unit: '1'
+      research_basis: materials_science_literature
     surfaceRoughness:
       value: 0.32
-      unit: μm
-      research_basis: materials_science_literature
       min: 0.4
       max: 150
+      unit: μm
+      research_basis: materials_science_literature
     vaporPressure:
       value: 1.33e-07
-      unit: Pa
-      research_basis: materials_science_literature
       min: 1.0e-10
       max: 0.001
+      unit: Pa
+      research_basis: materials_science_literature
 machineSettings:
   fluenceThreshold:
     value: 2.5

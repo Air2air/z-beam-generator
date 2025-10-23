@@ -43,53 +43,55 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     specificHeat:
       value: 710.0
+      min: 400
+      max: 1200
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
         Thermophysical Properties of Mineral Substances; ASM Handbook Volume 2: Properties
         and Selection: Nonferrous Alloys and Special-Purpose Materials, ''Thermal
         Properties of Rocks and Minerals'''
-      min: 400
-      max: 1200
     thermalConductivity:
       value: 2.0
+      min: 0.2
+      max: 8
       unit: W/(m·K)
       research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
         of Rocks, specifically slate samples from Vermont and Pennsylvania quarries
         with measured thermal conductivity range of 2.1-2.3 W/m·K at 300K'
-      min: 0.2
-      max: 8
     thermalDestruction:
       value: 800.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDiffusivity:
       value: 1.32
+      min: 0.2
+      max: 2.5
       unit: mm²/s
       research_basis: 'Cárdenes, V. et al. (2014). ''Thermal properties of roofing
         slates.'' Construction and Building Materials, 52, 432-439. DOI: 10.1016/j.conbuildmat.2013.11.049.
         Measured slate samples from Spanish quarries using laser flash method at 20°C.'
-      min: 0.2
-      max: 2.5
     thermalExpansion:
       value: 10.0
+      min: 3
+      max: 30
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Volume 4: Heat Treating, Table 1: Thermal Expansion
         of Selected Nonmetallic Solids; NIST Monograph 143: Thermal Expansion of Technical
         Solids at Low Temperatures'
-      min: 3
-      max: 30
     compressiveStrength:
       value: 175.0
+      min: 20
+      max: 500
       unit: MPa
       research_basis: 'ASTM C170/C170M-23 Standard Test Method for Compressive Strength
         of Dimension Stone, with slate-specific data from ASM Handbook, Volume 4:
         Ceramics and Glasses, and corroboration in ''The Engineering Properties and
         Durability of Slate as a Dimension Stone'' (P. Navarro et al., Construction
         and Building Materials, 2013)'
-      min: 20
-      max: 500
     corrosionResistance:
       value: 8.0
+      min: 2.0
+      max: 9.0
       unit: rating
       research_basis: Slate is a metamorphic rock composed primarily of quartz, mica,
         and chlorite minerals, which are chemically inert and highly resistant to
@@ -99,18 +101,18 @@ materialProperties:
         long-term corrosion/weathering resistance is critical. Its low porosity and
         dense foliated structure prevent water and corrosive agents from penetrating
         the material.
-      min: 2.0
-      max: 9.0
     density:
       value: 2.74
+      min: 1.5
+      max: 6.0
       unit: g/cm³
       research_basis: 'ASTM C119-23 Standard Terminology Relating to Dimension Stone,
         ASM Handbook Volume 4: Heat Treating (1991), and NIST Special Publication
         260-175: Stone Test Specimens'
-      min: 1.5
-      max: 6.0
     flexuralStrength:
       value: 95.0
+      min: 5
+      max: 50
       unit: MPa
       research_basis: The provided value is a typical average derived from standardized
         3-point bend tests on slate specimens as per ASTM C880. Slate's flexural strength
@@ -119,18 +121,18 @@ materialProperties:
         of 95 MPa represents a reasonable, conservative estimate for load-bearing
         calculations, supported by data from the Natural Stone Institute and technical
         stone literature.
-      min: 5
-      max: 50
     hardness:
       value: 5.5
+      min: 1
+      max: 7
       unit: Mohs
       research_basis: 'NIST Special Publication 960-15 ''Hardness Measurements on
         Common Construction Stones'' and ASM Handbook Volume 18: Friction, Lubrication,
         and Wear Technology, Table 2 ''Mohs hardness of common minerals'''
-      min: 1
-      max: 7
     oxidationResistance:
       value: 600.0
+      min: 400.0
+      max: 870.0
       unit: °C
       research_basis: Slate is a metamorphic rock composed primarily of quartz and
         muscovite/illite. Authoritative materials databases indicate its maximum service
@@ -138,33 +140,33 @@ materialProperties:
         bound water in the clay minerals begins to decompose, and the iron-containing
         minerals start to oxidize, leading to significant degradation in strength
         and potential spalling.
-      min: 400.0
-      max: 870.0
     porosity:
       value: 1.2
-      unit: '%'
-      research_basis: ai_research_comprehensive
       min: 0.5
       max: 25
+      unit: '%'
+      research_basis: ai_research_comprehensive
     tensileStrength:
       value: 14.2
+      min: 2
+      max: 25
       unit: MPa
       research_basis: 'ASTM C1701-17 Standard Test Method for Direct Tensile Strength
         of Dimension Stone, supplemented by NIST Special Publication 1252 ''Stone
         Testing'' and ASM Handbook Volume 4: Heat Treating'
-      min: 2
-      max: 25
     youngsModulus:
       value: 70.0
+      min: 10
+      max: 100
       unit: GPa
       research_basis: ASTM C1527-18 Standard Specification for Travertine Dimension
         Stone, with slate-specific data from NIST Materials Data Repository and corroboration
         from 'Physical and mechanical properties of natural slate' by Chen et al.,
         Construction and Building Materials, 2017
-      min: 10
-      max: 100
     fractureToughness:
       value: 1.1
+      min: 0.5
+      max: 5
       unit: MPa·√m
       research_basis: Fracture toughness in slate is highly anisotropic due to its
         strong foliation. Values are typically low and vary with crack orientation
@@ -173,30 +175,28 @@ materialProperties:
         which is the most common and critical mode of failure for this material. Data
         from standardized rock mechanics testing confirms slate's K_IC generally falls
         within the range of 0.8 to 1.5 MPa·√m.
-      min: 0.5
-      max: 5
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 8.7
+      min: 0.1
+      max: 100
       unit: '%'
       research_basis: 'NIST Standard Reference Database 78 (2022) - Laser Absorption
         Properties of Geological Materials, Section 4.3.2: ''Low-grade metamorphic
         rocks including slate exhibit absorption coefficients of 85-110 cm⁻¹ at 1064
         nm, corresponding to 8.3-9.1% absorption for typical 1mm surface interaction
         depth'''
-      min: 0.1
-      max: 100
     laserReflectivity:
       value: 38.2
+      min: 5
+      max: 80
       unit: '%'
       research_basis: 'NIST Standard Reference Database 120: Optical Properties of
         Minerals and Technical Materials, specifically referencing fine-grained metamorphic
         slate with predominant quartz and mica composition at 1064 nm wavelength'
-      min: 5
-      max: 80
 machineSettings:
   energyDensity:
     value: 12.7

@@ -44,90 +44,92 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     specificHeat:
       value: 741.0
+      min: 120
+      max: 900
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
         of Fluid Systems - Fused Quartz (SiO₂) at 300K'
-      min: 120
-      max: 900
     thermalConductivity:
       value: 1.38
+      min: 0.7
+      max: 30
       unit: W/(m·K)
       research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
         of Fused Quartz, measured at 300K using guarded hot plate method (ASTM C177)'
-      min: 0.7
-      max: 30
     thermalDestruction:
       value: 500.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDiffusivity:
       value: 8.5
+      min: 0.01
+      max: 15
       unit: mm²/s
       research_basis: 'NIST Standard Reference Database 78, Section 4.2.3: ''Fused
         quartz at 300K exhibits thermal diffusivity of 8.5 ± 0.3 mm²/s'''
-      min: 0.01
-      max: 15
     thermalExpansion:
       value: 0.55
+      min: 0.1
+      max: 15
       unit: 10⁻⁶/K
       research_basis: 'NIST Standard Reference Database 84: Fused Silica (Quartz Glass)
         - Thermal Expansion Coefficient at 20°C = 0.55 × 10⁻⁶/K'
-      min: 0.1
-      max: 15
     compressiveStrength:
       value: 1100.0
+      min: 500
+      max: 2000
       unit: MPa
       research_basis: The compressive strength of fused quartz (quartz glass) is exceptionally
         high compared to its tensile strength. The cited authoritative handbook provides
         a typical value of 1.1 GPa (1100 MPa) for the compressive strength of this
         material, which is consistent with the known brittle nature of glass where
         compressive strength is significantly higher than tensile strength.
-      min: 500
-      max: 2000
     corrosionResistance:
       value: 9.0
+      min: 9
+      max: 10
       unit: rating
       research_basis: Quartz glass (fused silica) is documented by manufacturers like
         Corning and Heraeus as having "exceptional chemical purity and resistance,"
         being nearly inert to most acids, salts, and water. It is attacked only by
         hydrofluoric acid and strong alkalis at high temperatures, giving it superior
         but not perfect resistance across general environmental conditions.
-      min: 9
-      max: 10
     density:
       value: 2.2
+      min: 1.2
+      max: 7.6
       unit: g/cm³
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (ASM International, 1990), Section ''Fused
         Silica and Other Glasses'''
-      min: 1.2
-      max: 7.6
     electricalResistivity:
       value: 1.5e+18
-      unit: Ω·m
-      research_basis: materials_science_literature
       min: 10000000000.0
       max: 1000000000000000.0
+      unit: Ω·m
+      research_basis: materials_science_literature
     flexuralStrength:
       value: 50.0
+      min: 50
+      max: 750.0
       unit: MPa
       research_basis: Quartz glass (fused silica) is a brittle ceramic material with
         typical flexural strength ranging from 30-70 MPa. The value of 50 MPa represents
         a conservative average from materials engineering references for 3-point bend
         testing of pristine, annealed specimens. The low strength is characteristic
         of glass's brittle nature and sensitivity to surface flaws.
-      min: 50
-      max: 750.0
     hardness:
       value: 7.0
+      min: 3.5
+      max: 9.5
       unit: Mohs
       research_basis: 'ASM Handbook, Volume 19: Fatigue and Fracture (1996), Section:
         ''Properties of Glass and Glass Ceramics''; NIST Special Publication 960-15:
         ''Properties of Optical Materials'''
-      min: 3.5
-      max: 9.5
     oxidationResistance:
       value: 1100.0
+      min: 400.0
+      max: 1700.0
       unit: °C
       research_basis: According to the leading manufacturer Heraeus, the maximum continuous
         service temperature for fused quartz in air is 1100°C. While quartz glass
@@ -135,61 +137,59 @@ materialProperties:
         in an oxidizing atmosphere can lead to surface devitrification (crystallization),
         which is the primary oxidation-related degradation mechanism, rather than
         the formation of a gaseous oxide.
-      min: 400.0
-      max: 1700.0
     tensileStrength:
       value: 48.0
+      min: 30
+      max: 2000
       unit: MPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (ASM International, 1990), Section: ''Fused
         Silica and Other Glasses'''
-      min: 30
-      max: 2000
     youngsModulus:
       value: 72.0
+      min: 10
+      max: 400
       unit: GPa
       research_basis: 'NIST Standard Reference Database 84 - Fused Silica (Quartz
         Glass) Material Properties, ASM Handbook Volume 2: Properties and Selection:
         Nonferrous Alloys and Special-Purpose Materials'
-      min: 10
-      max: 400
     fractureToughness:
       value: 0.75
+      min: 0.5
+      max: 2
       unit: MPa·√m
       research_basis: Quartz glass (fused silica) is a brittle ceramic material with
         typical fracture toughness values ranging from 0.7-0.8 MPa·√m. The value of
         0.75 MPa·√m represents the well-established median for this material class,
         consistent with its amorphous structure and lack of toughening mechanisms
         found in crystalline ceramics.
-      min: 0.5
-      max: 2
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     ablationThreshold:
       value: 2.1
-      unit: J/cm²
-      research_basis: materials_science_literature
       min: 2.0
       max: 6.0
+      unit: J/cm²
+      research_basis: materials_science_literature
     laserAbsorption:
       value: 0.999
+      min: 0.001
+      max: 10
       unit: 1/m
       research_basis: NIST Standard Reference Database 78 (2019) - Spectroscopic Properties
         of Fused Silica; Handbook of Laser Wavelengths (1998) - Absorption coefficient
         for high-purity fused quartz at 1064 nm is typically 0.95-0.98 m⁻¹
-      min: 0.001
-      max: 10
     laserReflectivity:
       value: 3.6
+      min: 0.1
+      max: 92
       unit: '%'
       research_basis: NIST Materials Data Repository - Fused Silica Optical Properties
         Database (SRM 2036) and Palik's Handbook of Optical Constants of Solids, Vol.
         II, showing 3.4-3.8% reflectivity at near-infrared wavelengths (1064 nm) for
         high-purity fused quartz
-      min: 0.1
-      max: 92
 machineSettings:
   fluenceThreshold:
     value: 2.5

@@ -65,41 +65,43 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     specificHeat:
       value: 830.0
+      min: 400
+      max: 1200
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
         SRD 69 - Thermophysical Properties of Mineral Substances (Gypsum/Calcium Sulfate
         Dihydrate)'
-      min: 400
-      max: 1200
     thermalConductivity:
       value: 0.35
+      min: 0.2
+      max: 8
       unit: W/(m·K)
       research_basis: Cárdenes et al., 'Thermal properties of alabaster for stone
         conservation', Construction and Building Materials, Vol. 75, pp. 477-481,
         2015
-      min: 0.2
-      max: 8
     thermalDestruction:
       value: 800.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDiffusivity:
       value: 0.52
+      min: 0.2
+      max: 2.5
       unit: mm²/s
       research_basis: NIST Stone Properties Database and Geological Society Special
         Publication on Calcitic Alabaster (2018)
-      min: 0.2
-      max: 2.5
     thermalExpansion:
       value: 25.0
+      min: 3
+      max: 30
       unit: 10^-6/K
       research_basis: 'Winkler, E.M. (1973). ''Stone: Properties, Durability in Man''s
         Environment.'' Springer-Verlag, p. 45. Specific measurement of gypsum alabaster
         thermal expansion coefficient at 20-60°C.'
-      min: 3
-      max: 30
     compressiveStrength:
       value: 12.0
+      min: 20
+      max: 500
       unit: MPa
       research_basis: Alabaster (a form of gypsum) is known for its low compressive
         strength compared to other stones. Authoritative geotechnical and materials
@@ -107,10 +109,10 @@ materialProperties:
         in the range of 10-15 MPa for air-dry specimens tested at room temperature.
         The value of 12 MPa is a representative median from these sources, reflecting
         the material's soft and friable nature.
-      min: 20
-      max: 500
     corrosionResistance:
       value: 2.0
+      min: 2.0
+      max: 9.0
       unit: rating
       research_basis: Alabaster (calcium sulfate dihydrate) has poor corrosion resistance
         due to high solubility in water, susceptibility to acid rain dissolution,
@@ -118,18 +120,18 @@ materialProperties:
         stable than some carbonates, it rapidly deteriorates in polluted urban environments
         and areas with freeze-thaw cycles, earning a low durability rating among natural
         building stones.
-      min: 2.0
-      max: 9.0
     density:
       value: 2.32
+      min: 1.5
+      max: 6.0
       unit: g/cm³
       research_basis: 'ASTM C97/C97M-18 Standard Test Methods for Absorption and Bulk
         Specific Gravity of Dimension Stone, with specific reference to alabaster
         properties in ASM Handbook, Volume 4: Ceramics and Glasses'
-      min: 1.5
-      max: 6.0
     flexuralStrength:
       value: 15.2
+      min: 5
+      max: 50
       unit: MPa
       research_basis: The provided value of 15.2 MPa is a representative mean from
         standardized 4-point bend tests on alabaster specimens, as reported in peer-reviewed
@@ -137,51 +139,51 @@ materialProperties:
         stones. The value is consistent with the known low hardness (2.0 Mohs) and
         calcite/gypsum-based composition of alabaster, which is a relatively weak
         stone compared to granites or marbles.
-      min: 5
-      max: 50
     hardness:
       value: 2.0
+      min: 1
+      max: 7
       unit: Mohs
       research_basis: 'NIST Special Publication 960-15 ''Standard Reference Materials
         for Hardness Scales'' and ASM Handbook Volume 18: Friction, Lubrication, and
         Wear Technology, with specific reference to gypsum/alabaster mineral properties'
-      min: 1
-      max: 7
     oxidationResistance:
       value: 450.0
+      min: 400.0
+      max: 870.0
       unit: °C
       research_basis: Alabaster (primarily hydrated calcium sulfate, CaSO₄·2H₂O) does
         not oxidize but decomposes. The cited temperature (450°C) is the point where
         it rapidly loses its water of crystallization, leading to significant structural
         degradation and conversion to anhydrite (CaSO₄), which is considered the upper
         service limit in air before material failure.
-      min: 400.0
-      max: 870.0
     porosity:
       value: 0.15
-      unit: dimensionless (volume fraction)
-      research_basis: ai_research_comprehensive
       min: 0.5
       max: 25
+      unit: dimensionless (volume fraction)
+      research_basis: ai_research_comprehensive
     tensileStrength:
       value: 3.5
+      min: 2
+      max: 25
       unit: MPa
       research_basis: 'ASTM C170/C170M-23 Standard Test Method for Compressive Strength
         of Dimension Stone; ASM Handbook, Volume 4: Heat Treating (1991) - Mechanical
         Properties of Stone; NIST Special Publication 260-136: Standard Reference
         Materials for Stone Monuments'
-      min: 2
-      max: 25
     youngsModulus:
       value: 31.0
+      min: 10
+      max: 100
       unit: GPa
       research_basis: 'Siegesmund, S., & Snethlage, R. (Eds.). (2014). Stone in Architecture:
         Properties, Durability. Springer-Verlag Berlin Heidelberg. Page 91, Table
         3.3 - Mechanical properties of alabaster (gypsum variety)'
-      min: 10
-      max: 100
     fractureToughness:
       value: 0.35
+      min: 0.5
+      max: 5
       unit: MPa·√m
       research_basis: The provided value is a representative mean from fracture toughness
         testing (using ISRM-suggested methods) on relatively pure, massive alabaster
@@ -189,28 +191,26 @@ materialProperties:
         properties, with K_IC values for alabaster typically ranging from 0.25 to
         0.45 MPa·√m, placing 0.35 MPa·√m as a central, reliable figure for this soft,
         brittle stone.
-      min: 0.5
-      max: 5
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 85.0
+      min: 0.1
+      max: 100
       unit: '%'
       research_basis: 'NIST Stone Properties Database - Alabaster (Gypsum) absorption
         characteristics for 1064 nm Nd:YAG lasers, combined with mineralogical analysis
         from ''Laser Cleaning in Conservation: An Introduction'' by M. Cooper'
-      min: 0.1
-      max: 100
     laserReflectivity:
       value: 38.7
+      min: 5
+      max: 80
       unit: '%'
       research_basis: 'NIST Special Publication 260-137: ''Optical Properties of Cultural
         Heritage Materials'' (2018), Table 4.2 - Reflectance measurements of calcareous
         stones at 1064 nm wavelength'
-      min: 5
-      max: 80
 machineSettings:
   fluenceThreshold:
     value: 1.2

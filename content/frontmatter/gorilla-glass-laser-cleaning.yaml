@@ -44,76 +44,78 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     specificHeat:
       value: 790.0
+      min: 120
+      max: 900
       unit: J/(kg·K)
       research_basis: Corning Incorporated technical documentation for Gorilla Glass
         composition and thermal properties, validated against aluminosilicate glass
         data from NIST Standard Reference Database 78 (2019)
-      min: 120
-      max: 900
     thermalConductivity:
       value: 1.1
+      min: 0.7
+      max: 30
       unit: W/(m·K)
       research_basis: 'Corning Incorporated Technical Materials Specifications for
         Gorilla Glass 5-7 series, ASM Handbook Volume 2: Properties and Selection:
         Nonferrous Alloys and Special-Purpose Materials'
-      min: 0.7
-      max: 30
     thermalDestruction:
       value: 500.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDiffusivity:
       value: 0.67
+      min: 0.01
+      max: 15
       unit: mm²/s
       research_basis: Corning Incorporated Material Properties Sheet for Gorilla Glass,
         reporting thermal diffusivity values of 0.65-0.69 mm²/s for standard compositions
         at room temperature
-      min: 0.01
-      max: 15
     thermalExpansion:
       value: 7.8
+      min: 0.1
+      max: 15
       unit: 10⁻⁶/K
       research_basis: 'Corning Incorporated Material Datasheet for Gorilla Glass 3-6
         series (20-300°C range), ASM Handbook Volume 2: Properties and Selection:
         Nonferrous Alloys and Special-Purpose Materials'
-      min: 0.1
-      max: 15
     compressiveStrength:
       value: 1000.0
+      min: 500
+      max: 2000
       unit: MPa
       research_basis: Corning, the manufacturer, publishes a "typical compressive
         strength" value of 1.0 GPa (1000 MPa) for its Gorilla Glass product family
         in technical data sheets. This value is consistent with the high strength
         achieved through an ion-exchange process that creates a compressive stress
         layer on the surface.
-      min: 500
-      max: 2000
     corrosionResistance:
       value: 9.0
+      min: 9
+      max: 10
       unit: rating
       research_basis: Corning specifically engineers Gorilla Glass with high chemical
         durability, demonstrating exceptional resistance to acids, alkalis, and solvents
         in standardized tests (e.g., 24-hour exposure to 5% HCl results in minimal
         surface weight loss). This performance far exceeds standard soda-lime glass
         and is a key marketed feature for its use in harsh environments.
-      min: 9
-      max: 10
     density:
       value: 2.42
+      min: 1.2
+      max: 7.6
       unit: g/cm³
       research_basis: 'Corning Incorporated Material Datasheet for Gorilla Glass 3
         (Publication No. CGD-03-050, Rev. 3) and ASM Handbook, Volume 2: Properties
         and Selection: Nonferrous Alloys and Special-Purpose Materials'
-      min: 1.2
-      max: 7.6
     electricalResistivity:
       value: 1200000000000.0
-      unit: Ω·m
-      research_basis: materials_science_literature
       min: 10000000000.0
       max: 1000000000000000.0
+      unit: Ω·m
+      research_basis: materials_science_literature
     flexuralStrength:
       value: 900.0
+      min: 50
+      max: 750.0
       unit: MPa
       research_basis: Corning's technical documentation for Gorilla Glass 5, which
         is chemically strengthened through an ion-exchange process, specifies a flexural
@@ -122,17 +124,17 @@ materialProperties:
         representative of the glass's bending strength. While the most common industrial
         test is ring-on-ring, the value is consistent with and comparable to results
         from standardized 4-point bend tests used for advanced ceramics and glasses.
-      min: 50
-      max: 750.0
     hardness:
       value: 6.75
+      min: 3.5
+      max: 9.5
       unit: GPa
       research_basis: 'Corning Incorporated Technical Materials Sheets and ASM Handbook
         Volume 4B: Glass Science'
-      min: 3.5
-      max: 9.5
     oxidationResistance:
       value: 600.0
+      min: 400.0
+      max: 1700.0
       unit: °C
       research_basis: Corning does not explicitly list an "oxidation resistance temperature"
         for Gorilla Glass. However, the technical data sheet provides a "Maximum Continuous
@@ -140,59 +142,57 @@ materialProperties:
         limit for long-term use in air before significant property degradation, including
         oxidation-related effects on the glass surface and structure, would be expected
         to begin.
-      min: 400.0
-      max: 1700.0
     tensileStrength:
       value: 900.0
+      min: 30
+      max: 2000
       unit: MPa
       research_basis: 'Corning Incorporated Material Datasheet for Gorilla Glass 3
         (Publication CZ-01-433), ASM Handbook Volume 19: Fatigue and Fracture'
-      min: 30
-      max: 2000
     youngsModulus:
       value: 75.8
+      min: 10
+      max: 400
       unit: GPa
       research_basis: 'Corning Incorporated Material Datasheet for Gorilla Glass 5
         (2023) and ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys
         and Special-Purpose Materials'
-      min: 10
-      max: 400
     fractureToughness:
       value: 0.71
+      min: 0.5
+      max: 2
       unit: MPa·√m
       research_basis: The fracture toughness of Gorilla Glass is a well-documented
         material property provided by the manufacturer. Corning's technical documentation
         for Gorilla Glass 3 lists the K1C value as 0.71 MPa·√m. This value is consistent
         across multiple product generations and is cited in independent technical
         analyses of the material's mechanical performance.
-      min: 0.5
-      max: 2
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     ablationThreshold:
       value: 2.1
-      unit: J/cm²
-      research_basis: materials_science_literature
       min: 2.0
       max: 6.0
+      unit: J/cm²
+      research_basis: materials_science_literature
     laserAbsorption:
       value: 3.8
+      min: 0.001
+      max: 10
       unit: '%'
       research_basis: Corning Incorporated Technical Documentation - 'Gorilla Glass
         Composition and Optical Properties' (2021) and NIST Special Publication 260-176
         'Standard Reference Materials for Optical Properties'
-      min: 0.001
-      max: 10
     laserReflectivity:
       value: 42.5
+      min: 0.1
+      max: 92
       unit: '%'
       research_basis: Corning Incorporated Technical Data Sheets for Gorilla Glass
         5/6 composition and optical properties, combined with NIST Standard Reference
         Database for Optical Constants of Inorganic Glasses
-      min: 0.1
-      max: 92
 machineSettings:
   fluenceThreshold:
     value: 2.5

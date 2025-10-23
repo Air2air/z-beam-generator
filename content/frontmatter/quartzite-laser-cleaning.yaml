@@ -44,44 +44,46 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     specificHeat:
       value: 1100.0
+      min: 400
+      max: 1200
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook
         - Quartz (SiO₂) thermodynamic properties at 298.15K, supplemented by Geological
         Survey Professional Paper 520-D on quartzite thermal properties'
-      min: 400
-      max: 1200
     thermalConductivity:
       value: 5.38
+      min: 0.2
+      max: 8
       unit: W/(m·K)
       research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
         of Minerals and Rocks at 300K, specifically for high-purity quartzite (95-98%
         quartz content)'
-      min: 0.2
-      max: 8
     thermalDestruction:
       value: 800.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDiffusivity:
       value: 1.32
+      min: 0.2
+      max: 2.5
       unit: mm²/s
       research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
         of Mineral Substances, supplemented by ASM Handbook Volume 2: Properties and
         Selection: Nonferrous Alloys and Special-Purpose Materials (quartzite-specific
         data)'
-      min: 0.2
-      max: 2.5
     thermalExpansion:
       value: 12.3
+      min: 3
+      max: 30
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Volume 4: Heat Treating, Section ''Thermal Properties
         of Ceramics and Ceramic-Matrix Composites''; NIST Standard Reference Database
         144: ''Thermophysical Properties of Minerals''; Clark, S.P. (1966) ''Handbook
         of Physical Constants'' - Geological Society of America Memoir 97'
-      min: 3
-      max: 30
     compressiveStrength:
       value: 200.0
+      min: 20
+      max: 500
       unit: MPa
       research_basis: Quartzite is a metamorphic rock known for high compressive strength,
         typically ranging from 150 MPa to over 300 MPa. The value of 200 MPa represents
@@ -89,10 +91,10 @@ materialProperties:
         as reported in materials testing standards and industry publications. However,
         the exact strength can vary significantly based on mineral composition, grain
         size, and foliation.
-      min: 20
-      max: 500
     corrosionResistance:
       value: 9.0
+      min: 2.0
+      max: 9.0
       unit: rating
       research_basis: Quartzite is a metamorphic rock composed primarily of quartz,
         one of the most chemically stable and durable minerals. It is highly resistant
@@ -100,33 +102,33 @@ materialProperties:
         performing similarly to granite. The ASTM standard rates quartzite's durability
         and weather resistance as "generally acceptable" for exterior applications,
         placing it in the highest tier of natural stone for corrosion/weathering resistance.
-      min: 2.0
-      max: 9.0
     density:
       value: 2.65
+      min: 1.5
+      max: 6.0
       unit: g/cm³
       research_basis: 'NIST Standard Reference Data - Physical Properties of Minerals
         (2018), ASM Handbook Volume 2: Properties and Selection: Nonferrous Alloys
         and Special-Purpose Materials, and Klein & Hurlbut''s Manual of Mineralogy
         (21st Edition)'
-      min: 1.5
-      max: 6.0
     flexuralStrength:
       value: 15.2
-      unit: MPa
-      research_basis: materials_science_literature
       min: 5
       max: 50
+      unit: MPa
+      research_basis: materials_science_literature
     hardness:
       value: 7.0
+      min: 1
+      max: 7
       unit: Mohs
       research_basis: 'ASM Handbook, Volume 18: Friction, Lubrication, and Wear Technology;
         NIST Special Publication 960-15; Deer, Howie & Zussman ''Rock-Forming Minerals''
         Vol. 4F'
-      min: 1
-      max: 7
     oxidationResistance:
       value: 870.0
+      min: 400.0
+      max: 870.0
       unit: °C
       research_basis: Quartzite is a metamorphic rock composed primarily of quartz
         (SiO2). Its high-temperature limit in air is governed by the phase transition
@@ -135,34 +137,34 @@ materialProperties:
         degradation and loss of structural integrity, which is the primary failure
         mode in an oxidizing (air) atmosphere. This temperature is consistently cited
         in industrial and refractory material guides for quartz and quartzite.
-      min: 400.0
-      max: 870.0
     porosity:
       value: 0.0085
-      unit: dimensionless (volume fraction)
-      research_basis: ai_research_comprehensive
       min: 0.5
       max: 25
+      unit: dimensionless (volume fraction)
+      research_basis: ai_research_comprehensive
     tensileStrength:
       value: 8.3
+      min: 2
+      max: 25
       unit: MPa
       research_basis: ASTM C170/C170M-22 Standard Test Method for Compressive Strength
         of Dimension Stone, with tensile strength calculated using established rock
         mechanics relationships (tensile strength ≈ 8-12% of compressive strength
         for quartzite)
-      min: 2
-      max: 25
     youngsModulus:
       value: 69.0
+      min: 10
+      max: 100
       unit: GPa
       research_basis: 'ASTM D7012-14e1 Standard Test Methods for Compressive Strength
         and Elastic Moduli of Intact Rock Core Specimens under Varying States of Stress
         and Temperatures, with quartzite-specific data from NIST Materials Data Repository
         and ASM Handbook Volume 18: Friction, Lubrication, and Wear Technology'
-      min: 10
-      max: 100
     fractureToughness:
       value: 1.4
+      min: 0.5
+      max: 5
       unit: MPa·√m
       research_basis: This cited study directly measured the Mode I fracture toughness
         (K_IC) of multiple quartzite samples, reporting a range of values. The provided
@@ -171,29 +173,27 @@ materialProperties:
         and can vary based on grain size, microcrack density, and specific mineral
         composition, but it typically falls within a range of approximately 1.0 to
         2.0 MPa·√m.
-      min: 0.5
-      max: 5
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 8.2
+      min: 0.1
+      max: 100
       unit: '%'
       research_basis: NIST Standard Reference Database 78 (2022) - Laser Absorption
         Properties of Geological Materials; ASM Handbook, Volume 4B (2022) - Laser
         Materials Processing; Applied Optics, Vol. 61, Issue 7 (2022) - 'Optical properties
         of quartz and quartzite at common laser cleaning wavelengths'
-      min: 0.1
-      max: 100
     laserReflectivity:
       value: 38.2
+      min: 5
+      max: 80
       unit: '%'
       research_basis: 'NIST Standard Reference Database 78 (2019) - Laser Interaction
         with Minerals and Stone Materials, Section 4.3.2: ''Reflectance properties
         of quartz-rich metamorphic rocks at 1064 nm'''
-      min: 5
-      max: 80
 machineSettings:
   dwellTime:
     value: 100

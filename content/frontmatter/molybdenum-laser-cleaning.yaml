@@ -42,59 +42,61 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     boilingPoint:
       value: 4912.0
-      unit: K
-      research_basis: materials_science_literature
       min: 907
       max: 5870
+      unit: K
+      research_basis: materials_science_literature
     meltingPoint:
       value: 2623.0
-      unit: °C
-      research_basis: materials_science_literature
       min: -39
       max: 3422
+      unit: °C
+      research_basis: materials_science_literature
     specificHeat:
       value: 251.0
+      min: 100
+      max: 2000
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 144: Molybdenum specific heat
         at 300K (25°C) - 0.060 cal/(g·°C) converted to SI units'
-      min: 100
-      max: 2000
     thermalConductivity:
       value: 138.0
+      min: 7.0
+      max: 430
       unit: W/(m·K)
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1, p. 1119 - Pure molybdenum
         at 300K'
-      min: 7.0
-      max: 430
     thermalDestruction:
       value: 500.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDestructionPoint:
       value: 2896.0
-      unit: K
-      research_basis: materials_science_literature
       min: 873
       max: 3695
+      unit: K
+      research_basis: materials_science_literature
     thermalDiffusivity:
       value: 54.3
+      min: 0.06
+      max: 174
       unit: mm²/s
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table ''Thermal Properties of
         Pure Metals'' lists thermal diffusivity of molybdenum as 54.3 mm²/s at 300K'
-      min: 0.06
-      max: 174
     thermalExpansion:
       value: 4.8
+      min: 0.5
+      max: 33
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1, p. 1099 - Molybdenum
         thermal expansion coefficient at 20°C'
-      min: 0.5
-      max: 33
     compressiveStrength:
       value: 550.0
+      min: 50
+      max: 2000
       unit: MPa
       research_basis: The compressive strength of pure, recrystallized molybdenum
         is significantly lower than its tensile strength at room temperature. The
@@ -103,40 +105,40 @@ materialProperties:
         is the standard measure for compressive strength. This value is for annealed
         material at room temperature. The hardness (1500 MPa) is not a direct indicator
         of compressive strength, as it measures a different type of surface deformation.
-      min: 50
-      max: 2000
     corrosionResistance:
       value: 6.0
+      min: 1
+      max: 10
       unit: rating
       research_basis: Molybdenum has good resistance to many acids (HCl, sulfuric)
         and molten metals, but poor oxidation resistance above ~500°C in air and is
         susceptible to pitting in oxidizing environments like nitric acid. This mixed
         performance in general environments places it in the mid-range of the corrosion
         resistance scale.
-      min: 1
-      max: 10
     density:
       value: 10.22
+      min: 0.53
+      max: 22.6
       unit: g/cm³
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Section: Molybdenum and Molybdenum
         Alloys, Table: Physical Properties of Molybdenum'
-      min: 0.53
-      max: 22.6
     electricalConductivity:
       value: 18700000.0
-      unit: S/m
-      research_basis: materials_science_literature
       min: 0.67
       max: 63.0
+      unit: S/m
+      research_basis: materials_science_literature
     electricalResistivity:
       value: 5.34e-08
-      unit: Ω·m
-      research_basis: materials_science_literature
       min: 1.0e-08
       max: 1.5e-06
+      unit: Ω·m
+      research_basis: materials_science_literature
     flexuralStrength:
       value: 345.0
+      min: 2.5
+      max: 1050.0
       unit: MPa
       research_basis: The provided flexural strength is a typical minimum value for
         recrystallized molybdenum. The ASM Handbook is a premier reference for material
@@ -146,126 +148,124 @@ materialProperties:
         can range from approximately 345 MPa for recrystallized material to over 700
         MPa for stress-relieved, worked material. This variability, while common for
         metals, is the primary reason the confidence is not higher.
-      min: 2.5
-      max: 1050.0
     hardness:
       value: 1500.0
+      min: 0.5
+      max: 3500
       unit: MPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
         Properties of Molybdenum'
-      min: 0.5
-      max: 3500
     oxidationResistance:
       value: 400.0
+      min: 200
+      max: 1200
       unit: °C
       research_basis: Molybdenum begins to undergo significant oxidation ("pesting")
         in air at temperatures as low as 300-400°C. Above 400°C, the oxide (MoO₃)
         is volatile and does not form a protective scale, leading to rapid, catastrophic
         oxidation. The 400°C value is widely cited in materials handbooks as the maximum
         continuous service temperature in an oxidizing environment.
-      min: 200
-      max: 1200
     porosity:
       value: 0.002
-      unit: '%'
-      research_basis: ai_research_comprehensive
       min: 0.0
       max: 15.0
+      unit: '%'
+      research_basis: ai_research_comprehensive
     tensileStrength:
       value: 550.0
+      min: 3.0
+      max: 3000.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1: Typical Room-Temperature
         Mechanical Properties of Molybdenum'
-      min: 3.0
-      max: 3000.0
     youngsModulus:
       value: 329.0
+      min: 5
+      max: 600
       unit: GPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
         Properties of Molybdenum and Molybdenum-Base Alloys'
-      min: 5
-      max: 600
     fractureToughness:
       value: 13.0
+      min: 20
+      max: 200
       unit: MPa·√m
       research_basis: The fracture toughness of pure, recrystallized molybdenum at
         room temperature is well-documented in materials reference handbooks. The
         value typically falls in the range of 12-15 MPa·√m, with 13 MPa·√m being a
         representative median value. This relatively low toughness is characteristic
         of body-centered cubic refractory metals at room temperature.
-      min: 20
-      max: 200
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     ablationThreshold:
       value: 0.45
-      unit: J/cm²
-      research_basis: materials_science_literature
       min: 2.0
       max: 8.0
+      unit: J/cm²
+      research_basis: materials_science_literature
     absorptivity:
       value: 0.41
-      unit: dimensionless
-      research_basis: materials_science_literature
       min: 2.0
       max: 65.0
+      unit: dimensionless
+      research_basis: materials_science_literature
     laserAbsorption:
       value: 39.5
+      min: 0.02
+      max: 100
       unit: '%'
       research_basis: 'NIST Materials Data Repository - Laser-Material Interaction
         Database for Refractory Metals (2021), specifically Table 3: ''Optical properties
         of molybdenum at 1064 nm wavelength'''
-      min: 0.02
-      max: 100
     laserDamageThreshold:
       value: 0.45
-      unit: J/cm²
-      research_basis: materials_science_literature
       min: 0.1
       max: 20.0
+      unit: J/cm²
+      research_basis: materials_science_literature
     laserReflectivity:
       value: 57.2
+      min: 5
+      max: 99.9
       unit: '%'
       research_basis: Palik, E.D. (1998). Handbook of Optical Constants of Solids.
         Academic Press, Vol. 2, pp. 421-428. Data for molybdenum at 1064 nm wavelength,
         room temperature, polycrystalline form.
-      min: 5
-      max: 99.9
     reflectivity:
       value: 0.57
-      unit: dimensionless
-      research_basis: materials_science_literature
       min: 85
       max: 98
+      unit: dimensionless
+      research_basis: materials_science_literature
     thermalShockResistance:
       value: 515.0
-      unit: W/m
-      research_basis: materials_science_literature
       min: 50
       max: 400
+      unit: W/m
+      research_basis: materials_science_literature
     absorptionCoefficient:
       value: 42000000.0
-      unit: m^-1
-      research_basis: materials_science_literature
       min: 100000
       max: 50000000
+      unit: m^-1
+      research_basis: materials_science_literature
     surfaceRoughness:
       value: 0.8
-      unit: μm
-      research_basis: materials_science_literature
       min: 0.4
       max: 150
+      unit: μm
+      research_basis: materials_science_literature
     vaporPressure:
       value: 1.33e-07
-      unit: Pa
-      research_basis: materials_science_literature
       min: 1.0e-10
       max: 0.001
+      unit: Pa
+      research_basis: materials_science_literature
 machineSettings:
   energyDensity:
     value: 5.1

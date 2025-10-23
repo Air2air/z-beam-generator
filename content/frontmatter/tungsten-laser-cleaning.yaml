@@ -43,60 +43,62 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     boilingPoint:
       value: 5930.0
-      unit: K
-      research_basis: materials_science_literature
       min: 907
       max: 5870
-    meltingPoint:
-      value: 3695.0
       unit: K
       research_basis: materials_science_literature
+    meltingPoint:
+      value: 3695.0
       min: -39
       max: 3422
+      unit: K
+      research_basis: materials_science_literature
     specificHeat:
       value: 132.0
+      min: 100
+      max: 2000
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 144: Thermophysical Properties
         of Pure Tungsten at 300K, ASM Handbook Volume 2: Properties and Selection:
         Nonferrous Alloys and Special-Purpose Materials'
-      min: 100
-      max: 2000
     thermalConductivity:
       value: 173.0
+      min: 7.0
+      max: 430
       unit: W/(m·K)
       research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
         of Fluid Systems - Tungsten at 300K, complemented by ASM Handbook Volume 2:
         Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
-      min: 7.0
-      max: 430
     thermalDestruction:
       value: 500.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDestructionPoint:
       value: 3695.0
-      unit: K
-      research_basis: materials_science_literature
       min: 873
       max: 3695
+      unit: K
+      research_basis: materials_science_literature
     thermalDiffusivity:
       value: 67.8
+      min: 0.06
+      max: 174
       unit: mm²/s
       research_basis: 'NIST Standard Reference Database 78, ASM Handbook Volume 2:
         Properties and Selection: Nonferrous Alloys and Special-Purpose Materials,
         and Touloukian et al. Thermophysical Properties of Matter (1970)'
-      min: 0.06
-      max: 174
     thermalExpansion:
       value: 4.5
+      min: 0.5
+      max: 33
       unit: 10⁻⁶/K
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1, pp. 762-763; NIST Standard
         Reference Database 144, ''Thermophysical Properties of Pure Tungsten'''
-      min: 0.5
-      max: 33
     compressiveStrength:
       value: 1510.0
+      min: 50
+      max: 2000
       unit: MPa
       research_basis: The compressive strength of pure, recrystallized tungsten is
         significantly lower than its hardness and highly dependent on its form (e.g.,
@@ -105,10 +107,10 @@ materialProperties:
         of pure tungsten at room temperature, as established in authoritative materials
         handbooks. This value is consistent with its known behavior of being strong
         but brittle under compression at room temperature.
-      min: 50
-      max: 2000
     corrosionResistance:
       value: 8.0
+      min: 1
+      max: 10
       unit: rating
       research_basis: Tungsten exhibits excellent resistance to general atmospheric
         corrosion, freshwater, and seawater due to its protective oxide layer. It
@@ -116,30 +118,30 @@ materialProperties:
         temperature. The rating is reduced from "excellent" (9-10) due to its susceptibility
         to oxidation in air at elevated temperatures (>400°C) and vulnerability to
         certain specific corrosive agents like fluorine and hot concentrated acids.
-      min: 1
-      max: 10
     density:
       value: 19.25
+      min: 0.53
+      max: 22.6
       unit: g/cm³
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1, p. 446; NIST Standard
         Reference Database 144, ''Physical Constants of Tungsten'''
-      min: 0.53
-      max: 22.6
     electricalConductivity:
       value: 18200000.0
-      unit: S/m
-      research_basis: materials_science_literature
       min: 0.67
       max: 63.0
+      unit: S/m
+      research_basis: materials_science_literature
     electricalResistivity:
       value: 5.28e-08
-      unit: Ω·m
-      research_basis: materials_science_literature
       min: 1.0e-08
       max: 1.5e-06
+      unit: Ω·m
+      research_basis: materials_science_literature
     flexuralStrength:
       value: 750.0
+      min: 2.5
+      max: 1050.0
       unit: MPa
       research_basis: The provided flexural strength is a typical value for sintered,
         unalloyed tungsten. The ASM Handbook is a definitive reference for material
@@ -148,50 +150,50 @@ materialProperties:
         recrystallized tungsten, flexural strength can be significantly lower (around
         550 MPa), while heavily worked or alloyed forms can exceed 1000 MPa. The value
         of 750 MPa represents a common baseline for sintered and forged material.
-      min: 2.5
-      max: 1050.0
     hardness:
       value: 3430.0
+      min: 0.5
+      max: 3500
       unit: MPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
         Properties of Tungsten'
-      min: 0.5
-      max: 3500
     oxidationResistance:
       value: 400.0
+      min: 200
+      max: 1200
       unit: °C
       research_basis: Authoritative texts on tungsten consistently report that significant
         oxidation begins in air around 400-500°C, forming volatile WO₃. The lower
         end of this range (400°C) is cited as the maximum for continuous service where
         oxidation is minimal and predictable. At higher temperatures, the oxidation
         rate becomes rapid and catastrophic.
-      min: 200
-      max: 1200
     porosity:
       value: 0.02
-      unit: '%'
-      research_basis: ai_research_comprehensive
       min: 0.0
       max: 15.0
+      unit: '%'
+      research_basis: ai_research_comprehensive
     tensileStrength:
       value: 1510.0
+      min: 3.0
+      max: 3000.0
       unit: MPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials, ''Tungsten and Tungsten Alloys'' chapter,
         Table 1: Typical room-temperature mechanical properties of unalloyed tungsten'
-      min: 3.0
-      max: 3000.0
     youngsModulus:
       value: 411.0
+      min: 5
+      max: 600
       unit: GPa
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Table 1, p. 446; NIST Materials
         Data Repository - Tungsten Single Crystal Elastic Constants'
-      min: 5
-      max: 600
     fractureToughness:
       value: 400.0
+      min: 20
+      max: 200
       unit: MPa·√m
       research_basis: The fracture toughness of tungsten is highly dependent on factors
         like purity, grain size, and processing. For sintered and forged tungsten
@@ -199,76 +201,74 @@ materialProperties:
         K_IC values in the range of 350-450 MPa·√m. The value of 400 MPa·√m is a representative,
         conservative estimate for high-purity polycrystalline material. Single crystals
         can exhibit significantly higher toughness.
-      min: 20
-      max: 200
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     ablationThreshold:
       value: 0.65
-      unit: J/cm²
-      research_basis: materials_science_literature
       min: 2.0
       max: 8.0
+      unit: J/cm²
+      research_basis: materials_science_literature
     absorptivity:
       value: 0.41
-      unit: dimensionless
-      research_basis: materials_science_literature
       min: 2.0
       max: 65.0
+      unit: dimensionless
+      research_basis: materials_science_literature
     laserAbsorption:
       value: 42.7
+      min: 0.02
+      max: 100
       unit: '%'
       research_basis: 'NIST Materials Data Repository - Tungsten Optical Properties
         Database (2021), supplemented by ASM Handbook Volume 2: Properties and Selection:
         Nonferrous Alloys and Special-Purpose Materials'
-      min: 0.02
-      max: 100
     laserDamageThreshold:
       value: 0.45
-      unit: J/cm²
-      research_basis: materials_science_literature
       min: 0.1
       max: 20.0
+      unit: J/cm²
+      research_basis: materials_science_literature
     laserReflectivity:
       value: 52.3
+      min: 5
+      max: 99.9
       unit: '%'
       research_basis: 'NIST Standard Reference Database 120: ''Optical Properties
         of Metallic Elements'' - Tungsten reflectivity at 1064 nm wavelength (common
         Nd:YAG laser wavelength)'
-      min: 5
-      max: 99.9
     reflectivity:
       value: 0.52
-      unit: dimensionless
-      research_basis: materials_science_literature
       min: 85
       max: 98
+      unit: dimensionless
+      research_basis: materials_science_literature
     thermalShockResistance:
       value: 450.0
-      unit: W/m
-      research_basis: materials_science_literature
       min: 50
       max: 400
+      unit: W/m
+      research_basis: materials_science_literature
     absorptionCoefficient:
       value: 42000000.0
-      unit: m⁻¹
-      research_basis: materials_science_literature
       min: 100000
       max: 50000000
+      unit: m⁻¹
+      research_basis: materials_science_literature
     surfaceRoughness:
       value: 0.32
-      unit: μm
-      research_basis: materials_science_literature
       min: 0.4
       max: 150
+      unit: μm
+      research_basis: materials_science_literature
     vaporPressure:
       value: 1.3e-07
-      unit: Pa
-      research_basis: materials_science_literature
       min: 1.0e-10
       max: 0.001
+      unit: Pa
+      research_basis: materials_science_literature
 machineSettings:
   fluenceThreshold:
     value: 2.5

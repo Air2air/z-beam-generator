@@ -43,55 +43,57 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     specificHeat:
       value: 800.0
+      min: 400
+      max: 1200
       unit: J/(kg·K)
       research_basis: 'Robertson, E.C. (1988). Thermal Properties of Rocks. US Geological
         Survey Open-File Report 88-441. Table 2: Specific heat of common rock types
         - Schist (multiple samples) at 20°C.'
-      min: 400
-      max: 1200
     thermalConductivity:
       value: 2.5
+      min: 0.2
+      max: 8
       unit: W/(m·K)
       research_basis: 'Clauser & Huenges (1995) - Thermal conductivity of rocks and
         minerals, Rock Physics & Phase Relations: A Handbook of Physical Constants,
         American Geophysical Union, Table 4: Metamorphic rocks thermal conductivity
         values'
-      min: 0.2
-      max: 8
     thermalDestruction:
       value: 800.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDiffusivity:
       value: 1.42
+      min: 0.2
+      max: 2.5
       unit: mm²/s
       research_basis: 'Clauser, C., & Huenges, E. (1995). Thermal conductivity of
         rocks and minerals. In T. J. Ahrens (Ed.), Rock Physics & Phase Relations:
         A Handbook of Physical Constants (pp. 105-126). American Geophysical Union.
         DOI: 10.1029/RF003p0105'
-      min: 0.2
-      max: 2.5
     thermalExpansion:
       value: 11.2
+      min: 3
+      max: 30
       unit: 10^-6/K
       research_basis: 'NIST Monograph 143 - Properties of Building Stones; ASM Handbook
         Volume 4: Heat Treating (specific schist measurements); International Journal
         of Rock Mechanics and Mining Sciences, Vol. 45, pp. 1264-1275 (2008) - Thermal
         properties of metamorphic rocks'
-      min: 3
-      max: 30
     compressiveStrength:
       value: 150.0
+      min: 20
+      max: 500
       unit: MPa
       research_basis: The compressive strength of schist is highly variable (range
         ~50-300 MPa) due to its foliated nature, anisotropy, and mineral composition.
         The provided value of 150 MPa is a representative mid-range estimate for uniaxial
         compressive strength tested perpendicular to the foliation. Strength can be
         significantly lower when loaded parallel to the foliation planes.
-      min: 20
-      max: 500
     corrosionResistance:
       value: 6.0
+      min: 2.0
+      max: 9.0
       unit: rating
       research_basis: Schist demonstrates moderate corrosion resistance due to its
         metamorphic crystalline structure and mineral composition. While more resistant
@@ -99,19 +101,19 @@ materialProperties:
         stones like granite. Schist's foliation can create planes of weakness where
         environmental degradation may occur over time. Performance varies significantly
         based on specific mineral composition and exposure conditions.
-      min: 2.0
-      max: 9.0
     density:
       value: 2.72
+      min: 1.5
+      max: 6.0
       unit: g/cm³
       research_basis: 'ASTM D7012-14e1 Standard Test Methods for Compressive Strength
         and Elastic Moduli of Intact Rock Core Specimens under Varying States of Stress
         and Temperatures; NIST Recommended Practice Guide: Stone Testing; Goodman,
         R.E. (1989). Introduction to Rock Mechanics. John Wiley & Sons.'
-      min: 1.5
-      max: 6.0
     flexuralStrength:
       value: 30.0
+      min: 5
+      max: 50
       unit: MPa
       research_basis: Schist is a metamorphic rock with highly variable properties
         due to foliation. Flexural strength is highly anisotropic and depends on the
@@ -119,19 +121,19 @@ materialProperties:
         is a representative mid-range figure for tests perpendicular to the foliation,
         as cited in authoritative rock mechanics handbooks. Values can range from
         10 MPa to over 50 MPa depending on mineralogy and anisotropy.
-      min: 5
-      max: 50
     hardness:
       value: 3.5
+      min: 1
+      max: 7
       unit: Mohs
       research_basis: 'NIST Special Publication 960-15: ''Hardness of Minerals and
         Rocks'' (2007) and ASM Handbook Volume 18: ''Friction, Lubrication, and Wear
         Technology'' (1992), supplemented by Klein & Hurlbut''s ''Manual of Mineralogy''
         (1993) for schist mineral composition analysis'
-      min: 1
-      max: 7
     oxidationResistance:
       value: 400.0
+      min: 400.0
+      max: 870.0
       unit: °C
       research_basis: Schist, a metamorphic rock containing sheet silicate minerals
         like mica and chlorite, begins significant dehydration and oxidation (of iron-bearing
@@ -139,34 +141,34 @@ materialProperties:
         degradation and mass loss, defining the upper limit for continuous service
         before material properties are compromised. The provided value is a conservative
         estimate from authoritative industry sources for general schist types.
-      min: 400.0
-      max: 870.0
     porosity:
       value: 1.2
-      unit: '%'
-      research_basis: ai_research_comprehensive
       min: 0.5
       max: 25
+      unit: '%'
+      research_basis: ai_research_comprehensive
     tensileStrength:
       value: 8.2
+      min: 2
+      max: 25
       unit: MPa
       research_basis: ASTM D7012-14e1 Standard Test Methods for Compressive Strength
         and Elastic Moduli of Intact Rock Core Specimens under Different States of
         Stress and Temperatures; ISRM Suggested Methods for Rock Characterization;
         Goodman, R.E. (1989). Introduction to Rock Mechanics. John Wiley & Sons.
-      min: 2
-      max: 25
     youngsModulus:
       value: 70.0
+      min: 10
+      max: 100
       unit: GPa
       research_basis: 'Nova University of Lisbon, Faculty of Sciences and Technology,
         Department of Earth Sciences: ''Physical and Mechanical Properties of Metamorphic
         Rocks'' (2018) - Direct ultrasonic testing of schist specimens showing Young''s
         modulus range of 65-72 GPa for medium-grade metamorphic schists'
-      min: 10
-      max: 100
     fractureToughness:
       value: 1.2
+      min: 0.5
+      max: 5
       unit: MPa·√m
       research_basis: Fracture toughness in schist is highly anisotropic and strongly
         dependent on foliation orientation. Values for schist and similar foliated
@@ -174,28 +176,26 @@ materialProperties:
         when measured perpendicular to foliation. The provided value represents a
         reasonable average from rock mechanics literature for this material class,
         accounting for its pronounced planar fabric.
-      min: 0.5
-      max: 5
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 8.72
+      min: 0.1
+      max: 100
       unit: '%'
       research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
         in Stone Conservation'' (2019), Table 4.3 - Absorption coefficients for metamorphic
         rocks at 1064 nm wavelength'
-      min: 0.1
-      max: 100
     laserReflectivity:
       value: 38.2
+      min: 5
+      max: 80
       unit: '%'
       research_basis: 'NIST Standard Reference Database 120: Optical Properties of
         Minerals and Materials, specifically analyzing muscovite-rich schist compositions
         under 1064 nm laser wavelength'
-      min: 5
-      max: 80
 machineSettings:
   energyDensity:
     value: 4.5

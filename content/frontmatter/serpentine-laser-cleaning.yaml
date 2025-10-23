@@ -44,54 +44,56 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     specificHeat:
       value: 780.0
+      min: 400
+      max: 1200
       unit: J/(kg·K)
       research_basis: 'Robie, R. A., Hemingway, B. S., & Fisher, J. R. (1978). Thermodynamic
         properties of minerals and related substances at 298.15 K and 1 bar pressure
         and at higher temperatures. US Geological Survey Bulletin, 1452, 456. NIST
         Standard Reference Database 203: Heat Capacity and Entropy of Minerals'
-      min: 400
-      max: 1200
     thermalConductivity:
       value: 2.0
+      min: 0.2
+      max: 8
       unit: W/(m·K)
       research_basis: Robertson, E.C. (1988). Thermal Properties of Rocks. US Geological
         Survey Open-File Report 88-441, Table 2. Specific measurement for serpentinite
         at 300K.
-      min: 0.2
-      max: 8
     thermalDestruction:
       value: 800.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDiffusivity:
       value: 1.32
+      min: 0.2
+      max: 2.5
       unit: mm²/s
       research_basis: 'Horai, K. I., & Baldridge, W. S. (1972). Thermal conductivity
         of nineteen igneous rocks, II: Estimation of the thermal conductivity of rock
         from the mineral and chemical compositions. Physics of the Earth and Planetary
         Interiors, 5, 157-166. doi:10.1016/0031-9201(72)90082-4'
-      min: 0.2
-      max: 2.5
     thermalExpansion:
       value: 11.5
+      min: 3
+      max: 30
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials - Section: Natural Stone and Mineral
         Aggregates (Table: Thermal expansion coefficients of common building stones)'
-      min: 3
-      max: 30
     compressiveStrength:
       value: 170.0
+      min: 20
+      max: 500
       unit: MPa
       research_basis: The compressive strength of serpentine is highly variable (50-300
         MPa) depending on mineralogical composition (antigorite vs. chrysotile) and
         anisotropy. The provided value of 170 MPa is a median value for massive, blocky
         serpentinite rock used in construction/dimension stone applications, as cited
         in authoritative geotechnical and stone industry references.
-      min: 20
-      max: 500
     corrosionResistance:
       value: 8.0
+      min: 2.0
+      max: 9.0
       unit: rating
       research_basis: Serpentine stones (commercially known as "verde antique" or
         serpentinite marble) are recognized in dimension stone standards for good
@@ -100,18 +102,18 @@ materialProperties:
         to atmospheric corrosion, salt spray, and environmental pollutants compared
         to other natural stones. Its main vulnerability is acid attack, which is less
         common in general environmental exposure.
-      min: 2.0
-      max: 9.0
     density:
       value: 2.55
+      min: 1.5
+      max: 6.0
       unit: g/cm³
       research_basis: 'NIST Standard Reference Database 124 - Physical Properties
         of Minerals; Deer, Howie & Zussman (2013) ''Rock-Forming Minerals, Volume
         3A: Sheet Silicates'''
-      min: 1.5
-      max: 6.0
     flexuralStrength:
       value: 31.0
+      min: 5
+      max: 50
       unit: MPa
       research_basis: The provided value is based on a 4-point bend test of massive
         serpentinite rock (antigorite-rich) as reported in USGS geological and engineering
@@ -120,50 +122,48 @@ materialProperties:
         texture, and porosity, leading to a typical range of 15-50 MPa. The cited
         value represents a reliable average for competent, non-fibrous serpentinite
         used as a dimension stone.
-      min: 5
-      max: 50
     hardness:
       value: 2.5
+      min: 1
+      max: 7
       unit: Mohs
       research_basis: Deer, W.A., Howie, R.A., & Zussman, J. (2013). An Introduction
         to the Rock-Forming Minerals (3rd ed.). Mineralogical Society of Great Britain
         and Ireland, pp. 412-428.
-      min: 1
-      max: 7
     oxidationResistance:
       value: 500.0
+      min: 400.0
+      max: 870.0
       unit: °C
       research_basis: Serpentine minerals (e.g., chrysotile) are hydrous silicates
         that begin to dehydroxylate (lose structural water) around 500-600°C in air,
         which is the primary oxidation/decomposition mechanism rather than reaction
         with oxygen. The 500°C threshold represents the maximum continuous service
         temperature before significant structural breakdown and mass loss begins.
-      min: 400.0
-      max: 870.0
     porosity:
       value: 0.005
-      unit: m³/m³
-      research_basis: ai_research_comprehensive
       min: 0.5
       max: 25
+      unit: m³/m³
+      research_basis: ai_research_comprehensive
     tensileStrength:
       value: 15.2
+      min: 2
+      max: 25
       unit: MPa
       research_basis: ASTM C170/C170M-22 Standard Test Method for Compressive Strength
         of Dimension Stone, with conversion to tensile strength using established
         rock mechanics relationships for serpentinite (tensile strength ≈ 8-12% of
         compressive strength)
-      min: 2
-      max: 25
     youngsModulus:
       value: 70.0
+      min: 10
+      max: 100
       unit: GPa
       research_basis: Ultrasonic pulse velocity measurements of serpentinite rocks
         from the Franciscan Complex, California, showing Young's modulus values ranging
         from 60-70 GPa for intact serpentine specimens (Christensen, 1966, Journal
         of Geophysical Research)
-      min: 10
-      max: 100
     fractureToughness:
       value: 1.2
       min: 0.5
@@ -174,21 +174,21 @@ materialProperties:
       reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 8.7
+      min: 0.1
+      max: 100
       unit: '%'
       research_basis: 'NIST Standard Reference Database 78 & Applied Spectroscopy,
         Vol. 72, Issue 8, ''Laser Cleaning of Stone Materials: Absorption Characteristics
         of Common Minerals'' (2018)'
-      min: 0.1
-      max: 100
     laserReflectivity:
       value: 38.2
+      min: 5
+      max: 80
       unit: '%'
       research_basis: NIST Standard Reference Database 78, Section 4.3.2 - Reflectance
         Properties of Phyllosilicate Minerals; Applied Optics, Vol. 47, Issue 11,
         pp. 1787-1798 (2008) - 'Optical properties of serpentine minerals in the visible
         and near-infrared spectrum'
-      min: 5
-      max: 80
 machineSettings:
   fluenceThreshold:
     value: 2.5

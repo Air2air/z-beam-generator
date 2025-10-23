@@ -43,50 +43,52 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     specificHeat:
       value: 840.0
+      min: 700
+      max: 1100
       unit: J/(kg·K)
       research_basis: 'NISTIR 4861-1, Chapter 5: Thermophysical Properties of Masonry
         Materials, Table 5-1: Specific Heat of Common Masonry Materials (Portland
         Cement Mortar at 20°C)'
-      min: 700
-      max: 1100
     thermalConductivity:
       value: 1.5
+      min: 0.08
+      max: 2.5
       unit: W/(m·K)
       research_basis: 'NIST IR 6394: ''Thermal Properties of Masonry Materials for
         Energy-Efficient Building Envelope Systems'' (2000), Table 3.2 - Measured
         thermal conductivity values for cement-lime mortar specimens at 24°C'
-      min: 0.08
-      max: 2.5
     thermalDestruction:
       value: 500.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDiffusivity:
       value: 0.52
+      min: 0.1
+      max: 1
       unit: mm²/s
       research_basis: 'NIST Special Publication 260-162: Thermal Properties of Masonry
         Materials (2018), Table 3.2 - Portland cement mortar with sand aggregate at
         20°C'
-      min: 0.1
-      max: 1
     thermalExpansion:
       value: 10.0
+      min: 5
+      max: 20
       unit: 10^-6/K
       research_basis: 'NIST Technical Note 1748: ''Thermal Expansion of Cementitious
         Materials'' (2014) - Table 3.2 for hydrated cement paste with sand aggregate
         ratio typical of mortar compositions'
-      min: 5
-      max: 20
     compressiveStrength:
       value: 17.2
+      min: 5
+      max: 100
       unit: MPa
       research_basis: ASTM C270 Standard Specification for Mortar for Unit Masonry,
         Type N proportion specification (1:1:6 cement:lime:sand), which yields compressive
         strength of 17.2 MPa (2500 psi) at 28 days
-      min: 5
-      max: 100
     corrosionResistance:
       value: 3.0
+      min: 2.0
+      max: 8.0
       unit: rating
       research_basis: Mortar provides basic protection to embedded steel through its
         high alkalinity (pH ~13), creating a passive layer. However, it has moderate
@@ -95,19 +97,19 @@ materialProperties:
         it offers limited long-term protection in corrosive environments. The PCA
         notes mortar is susceptible to sulfate attack, acid corrosion, and chloride
         penetration without special additives or surface treatments.
-      min: 2.0
-      max: 8.0
     density:
       value: 2.3
+      min: 0.6
+      max: 3.2
       unit: g/cm³
       research_basis: 'ASTM C270-19a, Standard Specification for Mortar for Unit Masonry,
         and NIST Interagency Report 7417: ''Performance of Masonry Mortars Made with
         Fine Recycled Brick and Concrete Aggregate'' (pp. 12-15), which reports measured
         densities for Type N mortar.'
-      min: 0.6
-      max: 3.2
     flexuralStrength:
       value: 4.3
+      min: 2
+      max: 20
       unit: MPa
       research_basis: For masonry mortar, flexural strength (bond strength) is a critical
         property. ASTM C270 specifies a minimum compressive strength of 17.2 MPa for
@@ -117,18 +119,18 @@ materialProperties:
         Mortar" by M. J. McGinley) indicate that the actual flexural strength at this
         compressive level typically ranges from 4-5 MPa, with 4.3 MPa being a representative
         median value from test data for mortars meeting this specification.
-      min: 2
-      max: 20
     hardness:
       value: 3.5
+      min: 1
+      max: 6
       unit: Mohs
       research_basis: ASTM C1324-15 'Standard Test Method for Examination and Analysis
         of Hardened Masonry Mortar' and NIST Special Publication 1129 'Properties
         of Masonry Mortars'
-      min: 1
-      max: 6
     oxidationResistance:
       value: 600.0
+      min: 300.0
+      max: 1200.0
       unit: °C
       research_basis: Mortar, a cementitious material, undergoes significant dehydration
         and decomposition of its hydrated phases (e.g., calcium silicate hydrates,
@@ -137,26 +139,26 @@ materialProperties:
         before chemical decomposition and strength loss become severe. While not "oxidation"
         in the metallic sense, this is the equivalent degradation threshold in an
         oxidative (air) environment.
-      min: 300.0
-      max: 1200.0
     tensileStrength:
       value: 2.8
+      min: 1
+      max: 15
       unit: MPa
       research_basis: 'ASTM C190-85 Standard Test Method for Tensile Strength of Hydraulic
         Cement Mortars & NIST Special Publication 260-174: Cement and Concrete Reference
         Laboratory'
-      min: 1
-      max: 15
     youngsModulus:
       value: 22.0
+      min: 3.0
+      max: 50
       unit: GPa
       research_basis: 'NIST Technical Note 2050: ''Mechanical Properties of Masonry''
         (Garrison & Suter, 2021) - Table 4.2 reports Young''s modulus of 22.0 GPa
         for Type N cement-lime mortar tested under ASTM C270 standards'
-      min: 3.0
-      max: 50
     fractureToughness:
       value: 0.35
+      min: 0.15
+      max: 1.1
       unit: MPa·√m
       research_basis: The provided compressive strength of 17.2 MPa is characteristic
         of a low-to-medium strength mortar. For cementitious materials, fracture toughness
@@ -166,28 +168,26 @@ materialProperties:
         source, which studies the fracture behavior of cementitious composites, reports
         K_IC values for mortar/cement paste matrices within this band, with a value
         of 0.35 MPa·√m being representative for the given compressive strength.
-      min: 0.15
-      max: 1.1
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 0.5
+      min: 0.5
+      max: 15
       unit: 1/cm
       research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
         in Construction Materials'' (2018), Table 4.3 - Absorption coefficients of
         masonry materials at 1064 nm wavelength'
-      min: 0.5
-      max: 15
     laserReflectivity:
       value: 35.2
+      min: 10
+      max: 70
       unit: '%'
       research_basis: 'NIST Special Publication 1176: ''Optical Properties of Construction
         Materials'' (2019) - Table 4.3, measured at 1064 nm wavelength using integrating
         sphere methodology'
-      min: 10
-      max: 70
 machineSettings:
   energyDensity:
     value: 12.7

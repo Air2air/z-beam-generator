@@ -44,41 +44,43 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     specificHeat:
       value: 1400.0
+      min: 500
+      max: 2500.0
       unit: J/(kg·K)
       research_basis: 'ASM Handbook, Volume 21: Composites, Specific Heat Data for
         Phenolic Matrix Composites, pp. 324-327'
-      min: 500
-      max: 2500.0
     thermalConductivity:
       value: 0.15
+      min: 0.03
+      max: 400
       unit: W/(m·K)
       research_basis: 'ASM Handbook, Vol. 21: Composites, Section: Phenolic Matrix
         Composites, pp. 154-162, specifically citing thermal conductivity range of
         0.2-0.5 W/m·K for carbon fiber reinforced phenolic composites at room temperature'
-      min: 0.03
-      max: 400
     thermalDestruction:
       value: 300.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDiffusivity:
       value: 0.18
+      min: 0.08
+      max: 180
       unit: mm²/s
       research_basis: 'ASM Handbook, Vol. 21: Composites, Section: Thermal Properties
         of Polymer Matrix Composites, specifically addressing phenolic resin composites
         with carbon fiber reinforcement'
-      min: 0.08
-      max: 180
     thermalExpansion:
       value: 25.0
+      min: -1
+      max: 250
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Vol. 21: Composites, Specific data for phenolic
         resin composites with carbon fiber reinforcement (Section: Thermal Properties
         of Polymer Matrix Composites)'
-      min: -1
-      max: 250
     compressiveStrength:
       value: 100.0
+      min: 50
+      max: 1000
       unit: MPa
       research_basis: The compressive strength of phenolic resin composites is highly
         dependent on the type and volume fraction of the reinforcing fibers (e.g.,
@@ -88,34 +90,34 @@ materialProperties:
         composite formulation, as confirmed by the ASM Handbook, a leading authoritative
         source on engineered materials. The provided properties (density, hardness)
         are consistent with this class of material.
-      min: 50
-      max: 1000
     corrosionResistance:
       value: 8.0
+      min: 5
+      max: 9
       unit: rating
       research_basis: Phenolic resin composites exhibit excellent chemical resistance
         to a wide range of solvents, acids, and weak alkalis due to their highly cross-linked
         aromatic structure. They maintain properties in humid environments and resist
         many industrial chemicals, though strong alkalis and oxidizing acids can cause
         degradation. This makes them superior to many polymers for corrosion applications.
-      min: 5
-      max: 9
     density:
       value: 1.38
+      min: 0.5
+      max: 8
       unit: g/cm³
       research_basis: 'ASM Handbook, Volume 21: Composites, Specific data for phenolic
         resin composites with carbon fiber reinforcement, typical aerospace grade
         formulations'
-      min: 0.5
-      max: 8
     electricalResistivity:
       value: 120000000000.0
-      unit: Ω·m
-      research_basis: materials_science_literature
       min: 0.001
       max: 100000000000000.0
+      unit: Ω·m
+      research_basis: materials_science_literature
     flexuralStrength:
       value: 80.0
+      min: 100
+      max: 2000
       unit: MPa
       research_basis: The provided properties (density, hardness) are consistent with
         glass-fiber reinforced phenolic composites. For this common material category,
@@ -124,44 +126,44 @@ materialProperties:
         figure for a general-purpose grade, as specific strength is highly dependent
         on the type and amount of fiber reinforcement and the test method (3-point
         bend per ASTM D790 is standard).
-      min: 100
-      max: 2000
     hardness:
       value: 100.0
+      min: 5.0
+      max: 120
       unit: HRM
       research_basis: 'ASM Handbook, Vol. 21: Composites, Section: Phenolic Matrix
         Composites, Table: Mechanical Properties of Commercial Phenolic Composites
         (Rockwell M Scale)'
-      min: 5.0
-      max: 120
     oxidationResistance:
       value: 177.0
+      min: 80.0
+      max: 1650.0
       unit: °C
       research_basis: MatWeb, a widely referenced engineering database, lists the
         maximum service temperature in air for phenolic cast resins as 177°C (350°F).
         This temperature represents the upper limit for continuous use before significant
         oxidative degradation begins, which is consistent with the thermal stability
         limits of the cross-linked phenolic polymer matrix in composite materials.
-      min: 80.0
-      max: 1650.0
     tensileStrength:
       value: 41.0
+      min: 20
+      max: 6000
       unit: MPa
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Phenolic Matrix
         Composites, Table: Mechanical Properties of Phenolic Composites (ASM International,
         2001)'
-      min: 20
-      max: 6000
     youngsModulus:
       value: 2500.0
+      min: 0.001
+      max: 3000
       unit: MPa
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Phenolic Matrix
         Composites, Table: Mechanical Properties of Phenolic Composites with Glass
         Fiber Reinforcement (ASM International, 2001)'
-      min: 0.001
-      max: 3000
     fractureToughness:
       value: 0.6
+      min: 20
+      max: 100
       unit: MPa·√m
       research_basis: Phenolic resin composites are known for their brittleness and
         relatively low fracture toughness. The provided value of 0.6 MPa·√m is a representative
@@ -169,28 +171,26 @@ materialProperties:
         in composite material property handbooks. The high filler content and cross-linked
         nature of the phenolic matrix limit plastic deformation, resulting in low
         K_IC.
-      min: 20
-      max: 100
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 92.7
+      min: 0.05
+      max: 200
       unit: '%'
       research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
         for Composite Materials'' (2021) - Table 4.2: Absorption coefficients of phenolic
         composites at 1064 nm wavelength'
-      min: 0.05
-      max: 200
     laserReflectivity:
       value: 38.5
+      min: 2
+      max: 80
       unit: '%'
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Thermal Properties
         of Polymer Matrix Composites, with specific reference to phenolic-carbon fiber
         composites at 1064 nm wavelength'
-      min: 2
-      max: 80
 machineSettings:
   energyDensity:
     value: 5.1

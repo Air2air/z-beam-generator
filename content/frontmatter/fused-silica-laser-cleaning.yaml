@@ -44,39 +44,41 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     specificHeat:
       value: 741.0
+      min: 120
+      max: 900
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
         of Pure Silica Glass, measured at 300K using precision adiabatic calorimetry'
-      min: 120
-      max: 900
     thermalConductivity:
       value: 1.38
+      min: 0.7
+      max: 30
       unit: W/(m·K)
       research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
         of Fused Silica at 300K, confirmed by ASM Handbook Volume 2: Properties and
         Selection: Nonferrous Alloys and Special-Purpose Materials'
-      min: 0.7
-      max: 30
     thermalDestruction:
       value: 500.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDiffusivity:
       value: 8.6
+      min: 0.01
+      max: 15
       unit: mm²/s
       research_basis: 'NIST Standard Reference Database 78: Thermophysical Properties
         of Fused Silica, Corning 7980, measured at 300K using laser flash method'
-      min: 0.01
-      max: 15
     thermalExpansion:
       value: 0.55
+      min: 0.1
+      max: 15
       unit: 10⁻⁶/K
       research_basis: 'NIST Standard Reference Database 84: Fused Silica Thermal Expansion
         Coefficient at 20°C = 0.55 × 10⁻⁶/K (Section 5.2.1.3)'
-      min: 0.1
-      max: 15
     compressiveStrength:
       value: 1100.0
+      min: 500
+      max: 2000
       unit: MPa
       research_basis: The compressive strength of fused silica is highly dependent
         on surface quality and test conditions (specimen geometry, loading rate).
@@ -84,34 +86,34 @@ materialProperties:
         the compressive strength typically ranges from 1.1 GPa to 1.2 GPa. The cited
         value of 1100 MPa is a conservative, well-documented figure from a primary
         manufacturer for material in a pristine state.
-      min: 500
-      max: 2000
     corrosionResistance:
       value: 9.0
+      min: 9
+      max: 10
       unit: rating
       research_basis: Fused silica is a high-purity, non-crystalline form of SiO₂.
         Corning's authoritative datasheet states it has "excellent chemical purity
         and resistance," being "virtually inert to all acids except hydrofluoric and
         phosphoric," and highly resistant to water and aggressive chemicals, leading
         to a near-perfect rating for general environmental corrosion.
-      min: 9
-      max: 10
     density:
       value: 2.202
+      min: 1.2
+      max: 7.6
       unit: g/cm³
       research_basis: 'NIST Standard Reference Database 84: Fused Silica (SiO₂) -
         Density at 20°C = 2.202 g/cm³; Corning 7980 Fused Silica Technical Data Sheet
         specifies density range 2.201-2.203 g/cm³'
-      min: 1.2
-      max: 7.6
     electricalResistivity:
       value: 1.0e+18
-      unit: Ω·m
-      research_basis: materials_science_literature
       min: 10000000000.0
       max: 1000000000000000.0
+      unit: Ω·m
+      research_basis: materials_science_literature
     flexuralStrength:
       value: 67.0
+      min: 50
+      max: 750.0
       unit: MPa
       research_basis: Corning, a primary manufacturer of fused silica, provides flexural
         strength data for their HPFS 7980 material. Their technical documentation
@@ -121,18 +123,18 @@ materialProperties:
         from Heraeus Quarzglas, which cites flexural strength values in the range
         of 50-70 MPa. The high confidence stems from the direct manufacturer specification
         for the specific material in question.
-      min: 50
-      max: 750.0
     hardness:
       value: 9.1
+      min: 3.5
+      max: 9.5
       unit: GPa
       research_basis: 'NIST Standard Reference Database 84 - Fused Silica Properties:
         ''Fused silica has a Knoop hardness of 6.75 GPa at 100 g load'' (NIST SRD
         84, Section 5.3.2)'
-      min: 3.5
-      max: 9.5
     oxidationResistance:
       value: 1100.0
+      min: 400.0
+      max: 1700.0
       unit: °C
       research_basis: Fused silica is an amorphous form of silicon dioxide (SiO₂),
         which is already in its fully oxidized state. Its service temperature limit
@@ -140,24 +142,22 @@ materialProperties:
         maximum continuous service temperature in air for high-purity fused silica
         like Corning 7980 is typically cited as 1100°C, above which significant devitrification
         (crystallization to cristobalite) begins, leading to mechanical failure.
-      min: 400.0
-      max: 1700.0
     tensileStrength:
       value: 50.0
+      min: 30
+      max: 2000
       unit: MPa
       research_basis: 'ASM Handbook, Volume 19: Fatigue and Fracture, ''Fracture Toughness
         of Ceramics and Glasses'' section, specifically citing fused silica with tensile
         strength of 50 MPa under standard testing conditions'
-      min: 30
-      max: 2000
     youngsModulus:
       value: 73.0
+      min: 10
+      max: 400
       unit: GPa
       research_basis: 'NIST Standard Reference Database 84 (Fused Silica Elastic Constants),
         ASM Handbook Volume 19: Fatigue and Fracture (Table ''Elastic Constants of
         Selected Glasses'')'
-      min: 10
-      max: 400
     fractureToughness:
       value: 0.75
       min: 0.5
@@ -168,26 +168,26 @@ materialProperties:
       reflection, propagation, and ablation thresholds
     ablationThreshold:
       value: 2.2
-      unit: J/cm²
-      research_basis: materials_science_literature
       min: 2.0
       max: 6.0
+      unit: J/cm²
+      research_basis: materials_science_literature
     laserAbsorption:
       value: 0.91
+      min: 0.001
+      max: 10
       unit: cm⁻¹
       research_basis: 'NIST Special Publication 960-19: ''Optical Properties of Fused
         Silica'' and Applied Optics, Vol. 37, Issue 4, pp. 779-783 (1998) - ''Absorption
         in high-purity fused silica'''
-      min: 0.001
-      max: 10
     laserReflectivity:
       value: 3.6
+      min: 0.1
+      max: 92
       unit: '%'
       research_basis: 'Palik, E.D. Handbook of Optical Constants of Solids. Academic
         Press, 1998. Vol. 1, pp. 749-763. Fused silica refractive index n=1.46 at
         1064 nm wavelength, reflectivity calculated using Fresnel equations: R=[(n-1)/(n+1)]²'
-      min: 0.1
-      max: 92
 machineSettings:
   fluenceThreshold:
     value: 2.5

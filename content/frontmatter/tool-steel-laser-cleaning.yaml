@@ -42,196 +42,196 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     boilingPoint:
       value: 3133.0
-      unit: K
-      research_basis: materials_science_literature
       min: 907
       max: 5870
+      unit: K
+      research_basis: materials_science_literature
     meltingPoint:
       value: 1424.0
-      unit: °C
-      research_basis: materials_science_literature
       min: -39
       max: 3422
+      unit: °C
+      research_basis: materials_science_literature
     specificHeat:
       value: 460.0
-      unit: J/(kg·K)
-      research_basis: Tool steel specific heat capacity - typical for high-alloy steels
       min: 100
       max: 2000
+      unit: J/(kg·K)
+      research_basis: Tool steel specific heat capacity - typical for high-alloy steels
     thermalConductivity:
       value: 28.0
+      min: 7.0
+      max: 430
       unit: W/(m·K)
       research_basis: ASM Handbook - High-speed steel thermal conductivity (lower
         than carbon steel due to carbide content)
-      min: 7.0
-      max: 430
     thermalDestruction:
       value: 1473.0
       unit: K
       research_basis: materials_science_literature
     thermalDestructionPoint:
       value: 1673.0
+      min: 873
+      max: 3695
       unit: K
       research_basis: Tool steel solidus temperature 1350-1450°C (1623-1723K) depending
         on composition
-      min: 873
-      max: 3695
     thermalDiffusivity:
       value: 7.8
+      min: 0.06
+      max: 174
       unit: mm²/s
       research_basis: 'ASM Handbook, Volume 1: Tool steel (M2 high-speed steel) thermal
         diffusivity calculated from thermal conductivity (28 W/m·K), density (7.85
         g/cm³), and specific heat (460 J/kg·K)'
-      min: 0.06
-      max: 174
     thermalExpansion:
       value: 11.5
+      min: 0.5
+      max: 33
       unit: 10⁻⁶/K
       research_basis: 'ASM Handbook, Volume 1: Tool steel coefficient of thermal expansion
         at 20-200°C, typical for high-speed steel M2 and cold-work D2 grades'
-      min: 0.5
-      max: 33
     compressiveStrength:
       value: 2850.0
-      unit: MPa
-      research_basis: materials_science_literature
       min: 50
       max: 2000
+      unit: MPa
+      research_basis: materials_science_literature
     corrosionResistance:
       value: 6.0
+      min: 1
+      max: 10
       unit: rating
       research_basis: 'ASM Handbook, Volume 13A: Tool steels have moderate to good
         corrosion resistance depending on chromium content. M2 and D2 grades show
         better resistance than carbon steel due to carbide content and chromium alloying
         (11-13% Cr in D2), but are susceptible to chlorides and acids.'
-      min: 1
-      max: 10
     density:
       value: 7.85
+      min: 0.53
+      max: 22.6
       unit: g/cm³
       research_basis: ASM Handbook, Volume 1 - High-speed steel (HSS) M2 tool steel
         density
-      min: 0.53
-      max: 22.6
     electricalConductivity:
       value: 2300000.0
-      unit: S/m
-      research_basis: materials_science_literature
       min: 0.67
       max: 63.0
+      unit: S/m
+      research_basis: materials_science_literature
     electricalResistivity:
       value: 2.2e-07
-      unit: Ω·m
-      research_basis: materials_science_literature
       min: 1.0e-08
       max: 1.5e-06
+      unit: Ω·m
+      research_basis: materials_science_literature
     hardness:
       value: 6500.0
+      min: 0.5
+      max: 3500
       unit: HV
       research_basis: Hardened tool steel (HRC 60-64) converted to Vickers hardness
         (HV ≈ 600-700 HV)
-      min: 0.5
-      max: 3500
     oxidationResistance:
       value: 550.0
+      min: 200
+      max: 1200
       unit: °C
       research_basis: 'ASM Handbook, Volume 1: Tool steels begin significant oxidation
         at 500-600°C in air. High alloy content (W, Mo, V, Cr) provides better oxidation
         resistance than plain carbon steel but scale formation accelerates above 550°C.'
-      min: 200
-      max: 1200
     porosity:
       value: 0.0002
-      unit: '%'
-      research_basis: ai_research_comprehensive
       min: 0.0
       max: 15.0
+      unit: '%'
+      research_basis: ai_research_comprehensive
     tensileStrength:
       value: 2100.0
+      min: 3.0
+      max: 3000.0
       unit: MPa
       research_basis: Hardened M2 high-speed steel tensile strength - typical for
         heat-treated tool steels
-      min: 3.0
-      max: 3000.0
     youngsModulus:
       value: 210.0
+      min: 5
+      max: 600
       unit: GPa
       research_basis: Tool steel elastic modulus - similar to other steels, minimal
         variation with alloying
-      min: 5
-      max: 600
     fractureToughness:
       value: 20.1
-      unit: MPa·m¹/²
-      research_basis: materials_science_literature
       min: 20
       max: 200
+      unit: MPa·m¹/²
+      research_basis: materials_science_literature
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     ablationThreshold:
       value: 1.8
-      unit: J/cm²
-      research_basis: materials_science_literature
       min: 2.0
       max: 8.0
+      unit: J/cm²
+      research_basis: materials_science_literature
     absorptivity:
       value: 0.38
-      unit: dimensionless
-      research_basis: materials_science_literature
       min: 2.0
       max: 65.0
+      unit: dimensionless
+      research_basis: materials_science_literature
     laserAbsorption:
       value: 42.0
+      min: 0.02
+      max: 100
       unit: '%'
       research_basis: Tool steel absorption at 1064nm wavelength - similar to carbon
         steel with alloying element effects
-      min: 0.02
-      max: 100
     laserDamageThreshold:
       value: 1.8
-      unit: J/cm²
-      research_basis: materials_science_literature
       min: 0.1
       max: 20.0
+      unit: J/cm²
+      research_basis: materials_science_literature
     laserReflectivity:
       value: 58.0
+      min: 5
+      max: 99.9
       unit: '%'
       research_basis: Complementary to absorption, polished tool steel surface reflectivity
         at 1064nm
-      min: 5
-      max: 99.9
     reflectivity:
       value: 0.62
-      unit: dimensionless
-      research_basis: materials_science_literature
       min: 85
       max: 98
-    thermalShockResistance:
-      value: 4.2
-      unit: W/m
-      research_basis: materials_science_literature
-      min: 50
-      max: 400
-    absorptionCoefficient:
-      value: 0.38
       unit: dimensionless
       research_basis: materials_science_literature
+    thermalShockResistance:
+      value: 4.2
+      min: 50
+      max: 400
+      unit: W/m
+      research_basis: materials_science_literature
+    absorptionCoefficient:
+      value: 0.38
       min: 100000
       max: 50000000
+      unit: dimensionless
+      research_basis: materials_science_literature
     surfaceRoughness:
       value: 0.8
-      unit: μm
-      research_basis: materials_science_literature
       min: 0.4
       max: 150
+      unit: μm
+      research_basis: materials_science_literature
     vaporPressure:
       value: 1.33
-      unit: Pa
-      research_basis: materials_science_literature
       min: 1.0e-10
       max: 0.001
+      unit: Pa
+      research_basis: materials_science_literature
 machineSettings:
   energyDensity:
     value: 5.1

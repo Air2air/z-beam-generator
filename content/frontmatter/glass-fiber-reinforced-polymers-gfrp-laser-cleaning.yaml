@@ -45,40 +45,42 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     specificHeat:
       value: 1000.0
+      min: 500
+      max: 2500.0
       unit: J/(kg·K)
       research_basis: NIST Polymer Composite Database - Specific heat capacity measurements
         for E-glass fiber reinforced epoxy composites at 25°C, with fiber content
         50-60% by weight (typical GFRP composition)
-      min: 500
-      max: 2500.0
     thermalConductivity:
       value: 0.35
+      min: 0.03
+      max: 400
       unit: W/(m·K)
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Thermal Properties
         of Polymer Matrix Composites, pp. 324-328, specifically citing GFRP with 30-40%
         glass fiber content in epoxy matrix'
-      min: 0.03
-      max: 400
     thermalDestruction:
       value: 300.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDiffusivity:
       value: 90.05
-      unit: mm²/s
-      research_basis: materials_science_literature
       min: 0.08
       max: 180
+      unit: mm²/s
+      research_basis: materials_science_literature
     thermalExpansion:
       value: 18.5
+      min: -1
+      max: 250
       unit: μm/m·°C
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Properties of
         Glass Fiber Reinforced Polymers, Table: Thermal Expansion Coefficients for
         GFRP with 60-70% E-glass fiber content in epoxy matrix'
-      min: -1
-      max: 250
     compressiveStrength:
       value: 150.0
+      min: 50
+      max: 1000
       unit: MPa
       research_basis: The compressive strength of GFRP is highly dependent on the
         fiber architecture (e.g., unidirectional, fabric) and resin system. The cited
@@ -86,10 +88,10 @@ materialProperties:
         a typical range of 140-200 MPa for quasi-isotropic laminates under standard
         test conditions (ASTM D6641). The value of 150 MPa is a conservative, representative
         figure from the lower end of this range for general-purpose GFRP.
-      min: 50
-      max: 1000
     corrosionResistance:
       value: 8.0
+      min: 5
+      max: 9
       unit: rating
       research_basis: GFRP exhibits excellent corrosion resistance to a wide range
         of chemicals and environments, including water, salt solutions, acids, and
@@ -99,24 +101,24 @@ materialProperties:
         not a perfect 10 because it can suffer from degradation in strong acids/bases
         at elevated temperatures and potential issues like fiber etching or blistering
         in specific long-term exposures.
-      min: 5
-      max: 9
     density:
       value: 1.9
+      min: 0.5
+      max: 8
       unit: g/cm³
       research_basis: 'ASM Handbook, Volume 21: Composites, Specific data for E-glass
         fiber reinforced epoxy with ~60% fiber volume fraction, a common industrial
         GFRP formulation.'
-      min: 0.5
-      max: 8
     electricalResistivity:
       value: 120000000000000.0
-      unit: Ω·m
-      research_basis: materials_science_literature
       min: 0.001
       max: 100000000000000.0
+      unit: Ω·m
+      research_basis: materials_science_literature
     flexuralStrength:
       value: 483.0
+      min: 100
+      max: 2000
       unit: MPa
       research_basis: The provided properties (density, hardness) are consistent with
         a standard E-glass/epoxy composite. Authoritative engineering databases (ASM,
@@ -124,17 +126,17 @@ materialProperties:
         of 350-600 MPa, with a typical value for a high-performance, unidirectional
         laminate being approximately 483 MPa. This value is determined via a standard
         3-point bend test (ASTM D790).
-      min: 100
-      max: 2000
     hardness:
       value: 85.0
+      min: 5.0
+      max: 120
       unit: HRR
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Mechanical Properties
         of Glass Fiber Reinforced Polymers, Rockwell R scale testing per ASTM D785'
-      min: 5.0
-      max: 120
     oxidationResistance:
       value: 150.0
+      min: 80.0
+      max: 1650.0
       unit: °C
       research_basis: GFRP's maximum service temperature is primarily limited by the
         polymer matrix (typically polyester or epoxy). The MIL-HDBK-17 states that
@@ -142,27 +144,27 @@ materialProperties:
         of the resin and loss of interfacial bond strength, begins around 150°C. This
         temperature is well below the glass transition temperature (Tg) of high-temperature
         epoxies, as oxidative aging is the dominant failure mechanism in air.
-      min: 80.0
-      max: 1650.0
     tensileStrength:
       value: 3100.0
+      min: 20
+      max: 6000
       unit: MPa
       research_basis: 'ASM Handbook, Volume 21: Composites, Table ''Typical Mechanical
         Properties of Unidirectional Glass Fiber/Epoxy Composites'' specifying tensile
         strength range of 1000-3100 MPa for continuous fiber composites with 60-70%
         fiber volume fraction'
-      min: 20
-      max: 6000
     youngsModulus:
       value: 40.0
+      min: 0.001
+      max: 3000
       unit: GPa
       research_basis: 'ASM Handbook, Volume 21: Composites, Table ''Mechanical Properties
         of Glass Fiber Reinforced Polymers'' citing specific E-glass/epoxy composites
         with 60-70% fiber volume fraction'
-      min: 0.001
-      max: 3000
     fractureToughness:
       value: 30.0
+      min: 20
+      max: 100
       unit: MPa·√m
       research_basis: GFRP fracture toughness is highly dependent on fiber orientation,
         volume fraction, and matrix properties. For continuous glass fiber/epoxy composites
@@ -170,28 +172,26 @@ materialProperties:
         value represents a conservative mid-range estimate for structural GFRP laminates,
         consistent with handbook values for epoxy-based composites with 50-60% fiber
         volume fraction.
-      min: 20
-      max: 100
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 0.9
+      min: 0.05
+      max: 200
       unit: unitless
       research_basis: 'NIST Special Publication 1176: ''Laser Interaction with Composite
         Materials'' (2021) & ASM Handbook, Volume 21: Composites, Section: ''Laser
         Processing of Fiber-Reinforced Polymers'''
-      min: 0.05
-      max: 200
     laserReflectivity:
       value: 38.5
+      min: 2
+      max: 80
       unit: '%'
       research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
         in Composite Materials'' (2018), Table 4.2 - Reflectivity measurements for
         GFRP (60% E-glass/40% epoxy) at 1064 nm wavelength'
-      min: 2
-      max: 80
 machineSettings:
   dwellTime:
     value: 0.2

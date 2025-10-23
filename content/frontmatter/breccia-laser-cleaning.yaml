@@ -43,52 +43,54 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     specificHeat:
       value: 850.0
+      min: 400
+      max: 1200
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
         of Rocks and Minerals for Breccia compositions (predominantly limestone and
         dolomite clasts)'
-      min: 400
-      max: 1200
     thermalConductivity:
       value: 3.8
+      min: 0.2
+      max: 8
       unit: W/(m·K)
       research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
         of Rocks and Minerals, specifically addressing polymict breccia compositions
         with quartz-feldspar dominant matrix (Section 4.2.3)'
-      min: 0.2
-      max: 8
     thermalDestruction:
       value: 800.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDiffusivity:
       value: 1.32
+      min: 0.2
+      max: 2.5
       unit: mm²/s
       research_basis: 'NIST Stone Properties Database - Breccia Pernice analysis (Sample
         ID: BRC-P-2018-04), Geological Society of America Special Paper 420 - Thermal
         properties of sedimentary breccias'
-      min: 0.2
-      max: 2.5
     thermalExpansion:
       value: 8.2
+      min: 3
+      max: 30
       unit: 10⁻⁶/K
       research_basis: NIST Special Publication 260-136 'Thermal Expansion of Building
         Stones' (1985) and ASM Handbook Vol. 18 'Friction, Lubrication, and Wear Technology'
         - specific data for carbonate breccia compositions
-      min: 3
-      max: 30
     compressiveStrength:
       value: 120.0
+      min: 20
+      max: 500
       unit: MPa
       research_basis: Breccia is a clastic sedimentary rock with highly variable properties
         depending on its composition and cementing material. The cited ASTM compilation
         provides a typical compressive strength range of 80-160 MPa for commercial
         breccia varieties. The value of 120 MPa represents a conservative, widely
         cited average for competent, well-cemented breccia used in construction.
-      min: 20
-      max: 500
     corrosionResistance:
       value: 8.0
+      min: 2.0
+      max: 9.0
       unit: rating
       research_basis: Breccia, as a natural stone composed of angular mineral/rock
         fragments cemented in a fine-grained matrix, shares the high corrosion/weathering
@@ -97,19 +99,19 @@ materialProperties:
         chemical attack, freeze-thaw cycles, and pollutant erosion. While not as chemically
         inert as pure quartzite, its performance in architectural applications under
         general atmospheric conditions is rated as very high.
-      min: 2.0
-      max: 9.0
     density:
       value: 2.6
+      min: 1.5
+      max: 6.0
       unit: g/cm³
       research_basis: ASTM C97/C97M-18 Standard Test Methods for Absorption and Bulk
         Specific Gravity of Dimension Stone, supplemented by geological surveys of
         breccia compositions from USGS Bulletin 1450 and specific density measurements
         of polymict breccias in construction materials databases
-      min: 1.5
-      max: 6.0
     flexuralStrength:
       value: 15.0
+      min: 5
+      max: 50
       unit: MPa
       research_basis: The provided value is a conservative estimate derived from the
         cited peer-reviewed source, which tested various dimension stones. Breccia,
@@ -118,18 +120,18 @@ materialProperties:
         of 15 MPa represents a typical mid-to-lower range figure suitable for general
         engineering assessments, as the specific strength is highly dependent on the
         quarry source and the orientation of foliation or bedding.
-      min: 5
-      max: 50
     hardness:
       value: 3.0
+      min: 1
+      max: 7
       unit: Mohs
       research_basis: 'NIST Special Publication 960-15: ''Standard Reference Materials
         for Stone and Rock Properties'' and ASM Handbook Volume 4B: ''Steel Heat Treating
         Technologies'' - Rockwell/Brinell conversion tables for sedimentary composites'
-      min: 1
-      max: 7
     oxidationResistance:
       value: 600.0
+      min: 400.0
+      max: 870.0
       unit: °C
       research_basis: Breccia, as a carbonate-rich sedimentary rock, is primarily
         composed of calcite and other carbonate minerals. Authoritative engineering
@@ -139,62 +141,60 @@ materialProperties:
         structural integrity. This is not oxidation in the metallic sense, but a thermally-driven
         chemical breakdown which is the relevant failure mode for this material in
         high-temperature, oxidative environments.
-      min: 400.0
-      max: 870.0
     porosity:
       value: 8.2
-      unit: '%'
-      research_basis: ai_research_comprehensive
       min: 0.5
       max: 25
+      unit: '%'
+      research_basis: ai_research_comprehensive
     tensileStrength:
       value: 8.2
+      min: 2
+      max: 25
       unit: MPa
       research_basis: ASTM D7012-14e1 Standard Test Methods for Compressive Strength
         and Elastic Moduli of Intact Rock Core Specimens under Varying States of Stress
         and Temperatures, with specific reference to breccia formations from geological
         surveys
-      min: 2
-      max: 25
     youngsModulus:
       value: 68.2
+      min: 10
+      max: 100
       unit: GPa
       research_basis: ASTM D7012-14e1 Standard Test Methods for Compressive Strength
         and Elastic Moduli of Intact Rock Core Specimens under Varying States of Stress
         and Temperatures, applied to breccia samples from documented geological formations
-      min: 10
-      max: 100
     fractureToughness:
       value: 0.8
+      min: 0.5
+      max: 5
       unit: MPa·√m
       research_basis: Breccia is a elastic sedimentary rock composed of angular fragments.
         Its fracture toughness is estimated based on its composition and comparison
         with similar rocks like sandstone and limestone, which typically range from
         0.5 to 1.5 MPa·√m. The given value represents a conservative estimate for
         a medium-strength breccia.
-      min: 0.5
-      max: 5
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 8.72
+      min: 0.1
+      max: 100
       unit: '%'
       research_basis: 'NIST Stone Properties Database - Breccia Composition Analysis
         (2021), ASM Handbook Vol. 4B: Laser Materials Processing (2015), and ''Laser
         Cleaning of Natural Stone: Fundamental Studies'' in Journal of Cultural Heritage,
         Vol. 24, pp. 145-152 (2017)'
-      min: 0.1
-      max: 100
     laserReflectivity:
       value: 38.2
+      min: 5
+      max: 80
       unit: '%'
       research_basis: 'NIST Special Publication 260-137: Reflectance Spectra Database
         of Geological Materials; ASM Handbook, Volume 10: Materials Characterization,
         Section: Optical Properties of Minerals and Rocks'
-      min: 5
-      max: 80
 machineSettings:
   energyDensity:
     value: 3.5

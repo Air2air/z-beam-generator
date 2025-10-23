@@ -43,49 +43,51 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     specificHeat:
       value: 790.0
+      min: 400
+      max: 1200
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
         CRC Handbook of Chemistry and Physics (104th Edition), and ASM Handbook Volume
         2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
-      min: 400
-      max: 1200
     thermalConductivity:
       value: 3.0
+      min: 0.2
+      max: 8
       unit: W/(m·K)
       research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
         of Rocks, with specific granite composition analysis (quartz: 35%, feldspar:
         55%, mica: 10%) at 300K'
-      min: 0.2
-      max: 8
     thermalDestruction:
       value: 800.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDiffusivity:
       value: 1.32
+      min: 0.2
+      max: 2.5
       unit: mm²/s
       research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
         of Rocks with specific granite composition analysis (quartz: 35%, feldspar:
         55%, mica: 10%) at 20°C'
-      min: 0.2
-      max: 2.5
     thermalExpansion:
       value: 8.0
+      min: 3
+      max: 30
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Volume 4: Heat Treating, Table 1 ''Coefficients
         of Thermal Expansion for Selected Materials'', specific entry for Granite'
-      min: 3
-      max: 30
     compressiveStrength:
       value: 200.0
+      min: 20
+      max: 500
       unit: MPa
       research_basis: 'ASTM C170/C170M-22 Standard Test Method for Compressive Strength
         of Dimension Stone, ASM Handbook Volume 4: Heat Treating, and NIST Special
         Publication 260-174: Stone Test Methods'
-      min: 20
-      max: 500
     corrosionResistance:
       value: 9.0
+      min: 2.0
+      max: 9.0
       unit: rating
       research_basis: Granite is an igneous rock composed primarily of quartz and
         feldspar, making it highly resistant to chemical weathering and environmental
@@ -94,36 +96,36 @@ materialProperties:
         exposure, acid rain, and temperature variations. Its low porosity and crystalline
         structure provide superior corrosion resistance compared to other natural
         stones.
-      min: 2.0
-      max: 9.0
     density:
       value: 2.75
+      min: 1.5
+      max: 6.0
       unit: g/cm³
       research_basis: 'NIST Standard Reference Database 124 - Stone Properties; ASM
         Handbook Volume 4: Heat Treating - Ceramics and Glasses Section; Geological
         Society of America Bulletin on granite petrophysical properties'
-      min: 1.5
-      max: 6.0
     flexuralStrength:
       value: 15.0
+      min: 5
+      max: 50
       unit: MPa
       research_basis: This authoritative geophysics reference provides typical flexural
         strength values for common rock types. For granite, it lists a range of 10-20
         MPa, with 15 MPa being a representative median value. This aligns with the
         material's known high compressive strength (200 MPa), as flexural strength
         is typically 1/10 to 1/15 of compressive strength for brittle rocks like granite.
-      min: 5
-      max: 50
     hardness:
       value: 6.5
+      min: 1
+      max: 7
       unit: Mohs
       research_basis: 'ASM Handbook, Volume 4: Heat Treating, Section: ''Properties
         of Selected Engineering Materials'' and NIST Special Publication 960-15 ''Stone
         Conservation: An Overview of Current Research'''
-      min: 1
-      max: 7
     oxidationResistance:
       value: 600.0
+      min: 400.0
+      max: 870.0
       unit: °C
       research_basis: Granite, as a silicate rock composed primarily of quartz and
         feldspars, does not oxidize in the traditional metallic sense. However, its
@@ -133,34 +135,34 @@ materialProperties:
         mode considered for its maximum service temperature. NIST and other geological
         references cite 600°C as a practical upper limit for continuous service before
         this degradation becomes significant.
-      min: 400.0
-      max: 870.0
     porosity:
       value: 0.007
-      unit: dimensionless (fraction)
-      research_basis: ai_research_comprehensive
       min: 0.5
       max: 25
+      unit: dimensionless (fraction)
+      research_basis: ai_research_comprehensive
     tensileStrength:
       value: 7.5
+      min: 2
+      max: 25
       unit: MPa
       research_basis: ASTM C170/C170M-22 Standard Test Method for Compressive Strength
         of Dimension Stone, with tensile strength calculated using established rock
         mechanics relationship (tensile strength ≈ 1/10 to 1/15 of compressive strength)
         for granite with typical compressive strength of 100-150 MPa
-      min: 2
-      max: 25
     youngsModulus:
       value: 55.0
+      min: 10
+      max: 100
       unit: GPa
       research_basis: 'NIST Technical Note 1493-1 (2017) - ''Mechanical Properties
         of Natural Building Stone: Granite'' and ASM Handbook, Volume 4 (2015) - ''Properties
         of Granite: Young''s Modulus Range 40-70 GPa with typical values 55-65 GPa
         for construction-grade granite'''
-      min: 10
-      max: 100
     fractureToughness:
       value: 0.8
+      min: 0.5
+      max: 5
       unit: MPa·√m
       research_basis: The provided value is a representative median from a compilation
         of experimental data on granite fracture toughness. The range for granite
@@ -168,28 +170,26 @@ materialProperties:
         around 0.8-1.0 MPa·√m. The cited source is a foundational review that aggregates
         and analyzes fracture toughness data for various rock types, establishing
         granite's characteristic range.
-      min: 0.5
-      max: 5
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 8.7
+      min: 0.1
+      max: 100
       unit: '%'
       research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
         for Stone Cleaning'' (2018), Table 4.2 - Absorption coefficients for common
         granite compositions at 1064 nm wavelength'
-      min: 0.1
-      max: 100
     laserReflectivity:
       value: 38.2
+      min: 5
+      max: 80
       unit: '%'
       research_basis: 'NIST Special Publication 1176: ''Optical Properties of Minerals
         and Construction Materials'' (2019) - Table 4.3: Reflectance measurements
         of common stone materials at 1064 nm wavelength'
-      min: 5
-      max: 80
 machineSettings:
   fluenceThreshold:
     value: 2.5

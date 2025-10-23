@@ -44,43 +44,45 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     specificHeat:
       value: 980.0
+      min: 400
+      max: 1200
       unit: J/(kg·K)
       research_basis: 'CRC Handbook of Chemistry and Physics, 104th Edition, Section
         5: Thermochemistry, Electrochemistry, and Kinetics - Specific Heat Capacity
         of Common Solids (Soapstone entry)'
-      min: 400
-      max: 1200
     thermalConductivity:
       value: 6.4
+      min: 0.2
+      max: 8
       unit: W/(m·K)
       research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
         of Mineral Substances, with specific reference to high-talc content soapstone
         (typically 40-60% talc, 40-50% magnesite, 5-10% chlorite)'
-      min: 0.2
-      max: 8
     thermalDestruction:
       value: 800.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDiffusivity:
       value: 1.32
+      min: 0.2
+      max: 2.5
       unit: mm²/s
       research_basis: 'Cárdenes, V., et al. (2014). ''Thermal behaviour of schists
         from northwestern Spain containing high contents of talc.'' Journal of Building
         Physics, 38(3), 231-245. DOI: 10.1177/1744259113498081. This study provides
         direct thermal property measurements on talc-schist (soapstone) samples, reporting
         a thermal diffusivity range of 1.30-1.34 mm²/s for high-talc varieties.'
-      min: 0.2
-      max: 2.5
     thermalExpansion:
       value: 8.0
+      min: 3
+      max: 30
       unit: 10^-6/K
       research_basis: 'NIST Standard Reference Database 81 & ASM Handbook Volume 4:
         Heat Treating (specific measurements for high-talc soapstone compositions)'
-      min: 3
-      max: 30
     compressiveStrength:
       value: 89.0
+      min: 20
+      max: 500
       unit: MPa
       research_basis: The compressive strength of soapstone is highly variable and
         depends on its specific mineral composition and quarry location. Published
@@ -88,10 +90,10 @@ materialProperties:
         stone typically range from approximately 70 MPa to over 110 MPa. The provided
         value of 89 MPa is a representative average from this range, based on standardized
         testing of dimension stone specimens as per the cited ASTM standard.
-      min: 20
-      max: 500
     corrosionResistance:
       value: 8.0
+      min: 2.0
+      max: 9.0
       unit: rating
       research_basis: Soapstone (primarily talc-chlorite rock) is recognized for exceptional
         chemical inertness and acid resistance. ASTM standards classify serpentine/soapstone
@@ -99,70 +101,70 @@ materialProperties:
         deterioration from acid rain, industrial pollutants, and salt exposure compared
         to carbonates like marble or limestone. Its non-porous, dense nature prevents
         moisture penetration that drives corrosive processes in other dimension stones.
-      min: 2.0
-      max: 9.0
     density:
       value: 2.75
+      min: 1.5
+      max: 6.0
       unit: g/cm³
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Section: Natural Stone and Mineral
         Products; NIST Standard Reference Database 84 - Stone Properties'
-      min: 1.5
-      max: 6.0
     flexuralStrength:
       value: 20.0
+      min: 5
+      max: 50
       unit: MPa
       research_basis: The flexural strength of soapstone is highly variable (typically
         10-30 MPa) depending on mineral composition and grain structure. The cited
         value represents a median result from standardized 4-point bend tests on commercial-grade
         architectural soapstone, accounting for its talc-rich composition which limits
         strength compared to other dimension stones.
-      min: 5
-      max: 50
     hardness:
       value: 1.0
+      min: 1
+      max: 7
       unit: Mohs
       research_basis: 'NIST Special Publication 960-15 ''Standard Reference Materials:
         Stone Test Specimens'' and ASM Handbook Volume 4: Heat Treating, which specifically
         documents soapstone hardness ranging from 1.0-2.0 Mohs with typical commercial
         grades averaging 1.5 Mohs'
-      min: 1
-      max: 7
     oxidationResistance:
       value: 600.0
+      min: 400.0
+      max: 870.0
       unit: °C
       research_basis: Soapstone is a metamorphic rock composed primarily of talc,
         which begins to dehydrate and lose its structural integrity at temperatures
         above 600°C. This temperature is consistently cited in materials databases
         as the maximum safe service temperature in air before significant decomposition
         occurs, rather than classical oxidation.
-      min: 400.0
-      max: 870.0
     porosity:
       value: 0.7
-      unit: '%'
-      research_basis: ai_research_comprehensive
       min: 0.5
       max: 25
+      unit: '%'
+      research_basis: ai_research_comprehensive
     tensileStrength:
       value: 8.3
+      min: 2
+      max: 25
       unit: MPa
       research_basis: ASTM C170/C170M-23 Standard Test Method for Compressive Strength
         of Dimension Stone, with tensile strength calculated using established rock
         mechanics relationships (tensile strength ≈ 8-12% of compressive strength
         for soapstone)
-      min: 2
-      max: 25
     youngsModulus:
       value: 69.0
+      min: 10
+      max: 100
       unit: GPa
       research_basis: 'ASTM International - ''Mechanical Properties of Natural Building
         Stones: Soapstone Characterization'' (ASTM C170) and NIST Standard Reference
         Database for Stone Properties'
-      min: 10
-      max: 100
     fractureToughness:
       value: 1.2
+      min: 0.5
+      max: 5
       unit: MPa·√m
       research_basis: Soapstone is a very soft, talc-rich metamorphic rock with a
         low fracture toughness. Reported values for K_IC in rock mechanics literature
@@ -170,30 +172,28 @@ materialProperties:
         ranging from 1.0 to 1.5 MPa·√m. This aligns with its extremely low hardness
         (1.0 Mohs) and its known machinability and tendency to fracture easily. The
         value of 1.2 MPa·√m is a representative median from this narrow range.
-      min: 0.5
-      max: 5
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 8.7
+      min: 0.1
+      max: 100
       unit: '%'
       research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
         for Stone Conservation'' (Table 4.2 - Absorption coefficients for metamorphic
         rocks at 1064 nm), supplemented by mineralogical analysis of talc-serpentine
         composition in Applied Spectroscopy, Vol. 72, Issue 5'
-      min: 0.1
-      max: 100
     laserReflectivity:
       value: 38.2
+      min: 5
+      max: 80
       unit: '%'
       research_basis: 'NIST Special Publication 260-142: Reflectance Spectra Database
         of Common Rock-Forming Minerals (2018), with specific analysis of talc-rich
         metamorphic rocks and validation through ASM Handbook, Volume 10: Materials
         Characterization (2019)'
-      min: 5
-      max: 80
 machineSettings:
   energyDensity:
     value: 2.5

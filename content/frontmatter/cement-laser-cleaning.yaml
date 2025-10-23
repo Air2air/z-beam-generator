@@ -43,48 +43,50 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     specificHeat:
       value: 900.0
+      min: 700
+      max: 1100
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
         of Cementitious Materials, specifically Portland cement paste values at 20°C
         (293.15 K)'
-      min: 700
-      max: 1100
     thermalConductivity:
       value: 1.28
+      min: 0.08
+      max: 2.5
       unit: W/(m·K)
       research_basis: 'NIST IR 7563 - Thermal Properties of Masonry Materials, Table
         3.1: Thermal Properties of Cement Paste (w/c = 0.5, cured 28 days) at 24°C'
-      min: 0.08
-      max: 2.5
     thermalDestruction:
       value: 500.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDiffusivity:
       value: 0.47
+      min: 0.1
+      max: 1
       unit: mm²/s
       research_basis: 'NIST Special Publication 260-162: Thermophysical Properties
         of Masonry Materials, Table 3.1 - Thermal Diffusivity of Portland Cement Paste
         at 20°C (w/c ratio 0.5, cured 28 days)'
-      min: 0.1
-      max: 1
     thermalExpansion:
       value: 10.0
+      min: 5
+      max: 20
       unit: 10^-6/°C
       research_basis: NIST IR 6925 - 'Thermal Expansion of Portland Cement Paste and
         Concrete' (2003) and ASM Handbook Vol. 4 - 'Thermal Properties of Cementitious
         Materials'
-      min: 5
-      max: 20
     compressiveStrength:
       value: 42.5
+      min: 5
+      max: 100
       unit: MPa
       research_basis: ASTM C150/C150M-22 Standard Specification for Portland Cement,
         Type I/II ordinary portland cement compressive strength at 28 days
-      min: 5
-      max: 100
     corrosionResistance:
       value: 7.0
+      min: 2.0
+      max: 8.0
       unit: rating
       research_basis: Cement provides excellent protection against general environmental
         corrosion when properly formulated into concrete, creating a highly alkaline
@@ -94,17 +96,17 @@ materialProperties:
         cement paste itself can deteriorate in aggressive chemical environments, its
         general corrosion resistance in typical atmospheric conditions is rated as
         good to very good.
-      min: 2.0
-      max: 8.0
     density:
       value: 3.15
+      min: 0.6
+      max: 3.2
       unit: g/cm³
       research_basis: NISTIR 7413 - Cement Clinker Characteristics, and Taylor, H.F.W.
         (1997) Cement Chemistry, 2nd Edition, Thomas Telford Publishing
-      min: 0.6
-      max: 3.2
     flexuralStrength:
       value: 6.5
+      min: 2
+      max: 20
       unit: MPa
       research_basis: For cement-based materials like concrete, flexural strength
         (modulus of rupture) is typically 10-15% of compressive strength. For a 42.5
@@ -113,19 +115,19 @@ materialProperties:
         for this compressive strength class, derived from the well-established empirical
         relationship in concrete technology. The 4-point bend test (third-point loading)
         per ASTM C78 is the standard method for this measurement.
-      min: 2
-      max: 20
     hardness:
       value: 3.0
+      min: 1
+      max: 6
       unit: Mohs
       research_basis: 'NIST Special Publication 260-175: Cement and Concrete Reference
         Laboratory, ASTM C1327 - Standard Test Method for Vickers Indentation Hardness
         of Advanced Ceramics, and academic studies from Cement and Concrete Research
         Journal (vol. 124, pp. 105-112)'
-      min: 1
-      max: 6
     oxidationResistance:
       value: 300.0
+      min: 300.0
+      max: 1200.0
       unit: °C
       research_basis: Cement (Portland cement) is a hydraulic binder, not a metal,
         so "oxidation resistance" is not a standard property. The provided value is
@@ -134,27 +136,27 @@ materialProperties:
         the calcium silicate hydrates (C-S-H) dehydrate, portlandite (Ca(OH)₂) decomposes,
         and the material's integrity is compromised, analogous to "failure" for this
         context.
-      min: 300.0
-      max: 1200.0
     tensileStrength:
       value: 3.5
+      min: 1
+      max: 15
       unit: MPa
       research_basis: 'NIST Special Publication 1176: ''Mechanical Properties of Hydraulic
         Cement Pastes'' (2013) & ASTM C190-85 Standard Test Method for Tensile Strength
         of Hydraulic Cement Mortars'
-      min: 1
-      max: 15
     youngsModulus:
       value: 30.0
+      min: 3.0
+      max: 50
       unit: GPa
       research_basis: 'NIST Technical Note 2165: ''Mechanical Properties of Cementitious
         Materials at the Microscale'' (2021) and ASTM C469/C469M-22 Standard Test
         Method for Static Modulus of Elasticity and Poisson''s Ratio of Concrete in
         Compression'
-      min: 3.0
-      max: 50
     fractureToughness:
       value: 0.3
+      min: 0.15
+      max: 1.1
       unit: MPa·√m
       research_basis: The fracture toughness of cement paste (as opposed to concrete)
         is well-documented in cement science literature. For ordinary Portland cement
@@ -163,28 +165,26 @@ materialProperties:
         experimental data and theoretical models showing values clustering around
         0.3 MPa·√m for this material class, which aligns with the known compressive
         strength provided.
-      min: 0.15
-      max: 1.1
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 8.2
+      min: 0.5
+      max: 15
       unit: '%'
       research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
         in Construction Materials'' (2019) Table 4.3 - Absorption coefficients for
         common construction materials at 1064 nm wavelength'
-      min: 0.5
-      max: 15
     laserReflectivity:
       value: 32.5
+      min: 10
+      max: 70
       unit: '%'
       research_basis: 'NIST Special Publication 1176: ''Optical Properties of Construction
         Materials'' (Table 4-2) - Reflectance measurements for Portland cement at
         1064 nm wavelength'
-      min: 10
-      max: 70
 machineSettings:
   energyDensity:
     value: 3.2

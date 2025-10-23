@@ -44,42 +44,44 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     specificHeat:
       value: 850.0
+      min: 400
+      max: 1200
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
         of Minerals and Rocks, with specific analysis of porphyritic rocks including
         quartz-feldspar porphyry compositions'
-      min: 400
-      max: 1200
     thermalConductivity:
       value: 2.9
+      min: 0.2
+      max: 8
       unit: W/(m·K)
       research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
         of Minerals and Rocks, supplemented by Geological Society of London Special
         Publication 240 on Porphyry Properties'
-      min: 0.2
-      max: 8
     thermalDestruction:
       value: 800.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDiffusivity:
       value: 1.32
+      min: 0.2
+      max: 2.5
       unit: mm²/s
       research_basis: ASTM E1461-13 Standard Test Method for Thermal Diffusivity by
         the Flash Method, with specific application to porphyritic igneous rocks from
         geological surveys and materials characterization studies
-      min: 0.2
-      max: 2.5
     thermalExpansion:
       value: 6.5
+      min: 3
+      max: 30
       unit: 10^-6/K
       research_basis: 'Winkler, E.M. (1997). ''Stone in Architecture: Properties,
         Durability'' (3rd ed.), Springer-Verlag, Berlin, pp. 36-42. Specific data
         for porphyry from Italian quarries.'
-      min: 3
-      max: 30
     compressiveStrength:
       value: 200.0
+      min: 20
+      max: 500
       unit: MPa
       research_basis: The compressive strength of Porphyry is highly variable, ranging
         from approximately 150 MPa to over 250 MPa depending on its specific mineral
@@ -88,10 +90,10 @@ materialProperties:
         reported by authoritative stone industry guides. The listed material properties
         (high density and hardness) are consistent with a rock possessing high compressive
         strength.
-      min: 20
-      max: 500
     corrosionResistance:
       value: 8.0
+      min: 2.0
+      max: 9.0
       unit: rating
       research_basis: Porphyry is an igneous rock with high quartz content (SiO₂ >65%)
         and a dense, interlocking crystalline structure, making it highly resistant
@@ -100,36 +102,36 @@ materialProperties:
         in harsh environmental conditions and historical use in paving and monuments
         supports this high corrosion resistance rating, though it is slightly less
         resistant than some denser granites or quartzites.
-      min: 2.0
-      max: 9.0
     density:
       value: 2.66
+      min: 1.5
+      max: 6.0
       unit: g/cm³
       research_basis: ASTM C97/C97M-18 Standard Test Methods for Absorption and Bulk
         Specific Gravity of Dimension Stone, supplemented by geological studies of
         porphyry composition from the Geological Society of America Bulletin (Vol.
         95, pp. 523-539) on porphyry petrology and density characteristics
-      min: 1.5
-      max: 6.0
     flexuralStrength:
       value: 15.0
+      min: 5
+      max: 50
       unit: MPa
       research_basis: The provided source compiles technical data from multiple international
         testing laboratories and standards (ASTM, EN). It reports a typical flexural
         strength range for porphyry of 10-20 MPa, with 15 MPa being a commonly cited
         average value for design purposes, typically determined via a 4-point bend
         test.
-      min: 5
-      max: 50
     hardness:
       value: 6.0
+      min: 1
+      max: 7
       unit: Mohs
       research_basis: 'NIST Special Publication 960-15: ''Hardness of Building Stones''
         & ASTM C170: Standard Test Method for Compressive Strength of Dimension Stone'
-      min: 1
-      max: 7
     oxidationResistance:
       value: 600.0
+      min: 400.0
+      max: 870.0
       unit: °C
       research_basis: Porphyry is a textural term for igneous rocks, typically with
         a feldspar or quartz-feldspar groundmass. Authoritative geological guides
@@ -138,33 +140,33 @@ materialProperties:
         significant mineral decomposition and oxidation begin, primarily due to the
         oxidation of iron minerals and thermal breakdown of feldspars. This is a conservative
         estimate for the porphyry category.
-      min: 400.0
-      max: 870.0
     porosity:
       value: 1.2
-      unit: '%'
-      research_basis: ai_research_comprehensive
       min: 0.5
       max: 25
+      unit: '%'
+      research_basis: ai_research_comprehensive
     tensileStrength:
       value: 8.2
+      min: 2
+      max: 25
       unit: MPa
       research_basis: 'ASTM C99 & C170: Standard Test Methods for Modulus of Rupture
         and Compressive Strength of Dimension Stone; NIST Special Publication 260-162:
         Stone Reference Samples for Calibration of Mechanical Property Measurements'
-      min: 2
-      max: 25
     youngsModulus:
       value: 68.2
+      min: 10
+      max: 100
       unit: GPa
       research_basis: ASTM D7012-14e1 Standard Test Methods for Compressive Strength
         and Elastic Moduli of Intact Rock Core Specimens under Varying States of Stress
         and Temperatures, with specific data from porphyry samples in geological studies
         by Tugrul & Zarif (1999) in Engineering Geology
-      min: 10
-      max: 100
     fractureToughness:
       value: 1.21
+      min: 0.5
+      max: 5
       unit: MPa·√m
       research_basis: Fracture toughness (K_IC) for porphyry falls within a typical
         range for fine-grained igneous rocks. The cited value of 1.21 MPa·√m is derived
@@ -172,28 +174,26 @@ materialProperties:
         ISRM compilation, where porphyritic rocks consistently show values between
         1.0 and 1.5 MPa·√m. This range is characteristic of its mineralogy and interlocking
         crystalline texture.
-      min: 0.5
-      max: 5
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 8.72
+      min: 0.1
+      max: 100
       unit: '%'
       research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
         for Stone Conservation'' (2018) Table 4.3 - Absorption coefficients for igneous
         rocks at 1064 nm wavelength'
-      min: 0.1
-      max: 100
     laserReflectivity:
       value: 38.2
+      min: 5
+      max: 80
       unit: '%'
       research_basis: 'NIST Special Publication 260-137: ''Optical Properties of Building
         and Sculpture Stones'' & Applied Optics, Vol. 45, Issue 28, pp. 7306-7313
         (2006) ''Laser cleaning of stone: fundamental research and conservation applications'''
-      min: 5
-      max: 80
 machineSettings:
   energyDensity:
     value: 12.7

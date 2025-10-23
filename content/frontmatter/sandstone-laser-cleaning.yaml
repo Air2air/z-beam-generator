@@ -44,46 +44,48 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     specificHeat:
       value: 920.0
+      min: 400
+      max: 1200
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
         SRD 69 - Specific heat capacity of sandstone measured at 25°C (298.15 K)'
-      min: 400
-      max: 1200
     thermalConductivity:
       value: 2.0
+      min: 0.2
+      max: 8
       unit: W/(m·K)
       research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
         of Rocks, specifically Table 4.2.1 for Berea Sandstone at 300K (27°C)'
-      min: 0.2
-      max: 8
     thermalDestruction:
       value: 800.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDiffusivity:
       value: 1.32
+      min: 0.2
+      max: 2.5
       unit: mm²/s
       research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
         of Rock Specimens, specifically for Berea Sandstone at 300K (27°C)'
-      min: 0.2
-      max: 2.5
     thermalExpansion:
       value: 12.0
+      min: 3
+      max: 30
       unit: 10^-6/K
       research_basis: 'NIST Recommended Values for Sandstone Thermal Expansion (25-300°C
         range), ASM Handbook Volume 4: Thermal Properties of Geological Materials'
-      min: 3
-      max: 30
     compressiveStrength:
       value: 55.0
+      min: 20
+      max: 500
       unit: MPa
       research_basis: 'ASTM C170/C170M-22 Standard Test Method for Compressive Strength
         of Dimension Stone & NIST Special Publication 260-174: Stone Test Methods
         and Specifications'
-      min: 20
-      max: 500
     corrosionResistance:
       value: 3.0
+      min: 2.0
+      max: 9.0
       unit: rating
       research_basis: Sandstone's corrosion resistance is moderate to poor due to
         its porous nature and mineral composition. While quartz grains (high hardness)
@@ -92,18 +94,18 @@ materialProperties:
         cycles. ASTM standards classify sandstone as having lower durability than
         granite or quartzite in corrosive environments, with significant variation
         based on cement type and porosity.
-      min: 2.0
-      max: 9.0
     density:
       value: 2.65
+      min: 1.5
+      max: 6.0
       unit: g/cm³
       research_basis: 'ASTM C97/C97M-18: Standard Test Methods for Absorption and
         Bulk Specific Gravity of Dimension Stone. NIST Standard Reference Data for
         Building Materials: Sandstone (2023).'
-      min: 1.5
-      max: 6.0
     flexuralStrength:
       value: 15.2
+      min: 5
+      max: 50
       unit: MPa
       research_basis: The flexural strength of sandstone is significantly lower than
         its compressive strength, typically ranging from 1/3 to 1/5 of the compressive
@@ -112,18 +114,18 @@ materialProperties:
         for medium-strength sandstone. The ASTM C880 standard governs the 3-point
         or 4-point bend test for stone, and reported values for sandstone commonly
         fall within the 10-20 MPa range.
-      min: 5
-      max: 50
     hardness:
       value: 6.5
+      min: 1
+      max: 7
       unit: Mohs
       research_basis: 'ASM Handbook, Volume 18: Friction, Lubrication, and Wear Technology
         (1992), Table 1: Mohs hardness of common minerals; NIST Special Publication
         960-15: Stone Conservation - An Overview of Current Research (2011)'
-      min: 1
-      max: 7
     oxidationResistance:
       value: 600.0
+      min: 400.0
+      max: 870.0
       unit: °C
       research_basis: Sandstone, primarily composed of quartz (SiO₂) grains, does
         not oxidize in the traditional metallic sense. However, its service temperature
@@ -131,32 +133,32 @@ materialProperties:
         causes a disruptive volume change and significant loss of structural integrity.
         NIST and other geological surveys cite 600°C as the maximum safe continuous
         service temperature in air before this degradation becomes critical.
-      min: 400.0
-      max: 870.0
     porosity:
       value: 15.2
-      unit: '%'
-      research_basis: ai_research_comprehensive
       min: 0.5
       max: 25
+      unit: '%'
+      research_basis: ai_research_comprehensive
     tensileStrength:
       value: 4.8
+      min: 2
+      max: 25
       unit: MPa
       research_basis: ASTM D7012-14e1 Standard Test Methods for Compressive Strength
         and Elastic Moduli of Intact Rock Core Specimens under Varying States of Stress
         and Temperatures, and ISRM Suggested Methods for Rock Characterization
-      min: 2
-      max: 25
     youngsModulus:
       value: 20.0
+      min: 10
+      max: 100
       unit: GPa
       research_basis: 'NIST Technical Note 1493 - ''Mechanical Properties of Natural
         Building Stone: Sandstone and Limestone'' (2008) and ASM Handbook Volume 4
         - ''Heat Treating of Stone Materials'''
-      min: 10
-      max: 100
     fractureToughness:
       value: 0.7
+      min: 0.5
+      max: 5
       unit: MPa·√m
       research_basis: The fracture toughness (K_IC) of sandstone is highly dependent
         on its porosity, grain size, and cementation. The cited review, a foundational
@@ -164,29 +166,27 @@ materialProperties:
         studies, reporting typical K_IC values for sandstone in the range of 0.5 to
         1.0 MPa·√m. The value of 0.7 MPa·√m is a representative median for a medium-grained,
         moderately porous sandstone, consistent with the provided density and strength.
-      min: 0.5
-      max: 5
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 8.7
+      min: 0.1
+      max: 100
       unit: '%'
       research_basis: 'Cooper, M. I., Emmony, D. C., & Larson, J. (1995). ''A characterisation
         of laser cleaning of limestone.'' Optics & Laser Technology, 27(1), 69-73.
         DOI: 10.1016/0030-3992(95)93947-H. Specific data for sandstone composition
         extrapolated from quartz absorption studies at 1064 nm.'
-      min: 0.1
-      max: 100
     laserReflectivity:
       value: 38.2
+      min: 5
+      max: 80
       unit: '%'
       research_basis: 'NIST Special Publication 260-137: ''Optical Properties of Construction
         Materials'' and Applied Optics, Vol. 42, No. 13, ''Laser-matter interaction
         in stone cleaning'' (2003)'
-      min: 5
-      max: 80
 machineSettings:
   fluenceThreshold:
     value: 2.5

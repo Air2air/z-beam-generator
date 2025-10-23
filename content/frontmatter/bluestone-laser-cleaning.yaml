@@ -44,42 +44,44 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     specificHeat:
       value: 1000.0
+      min: 400
+      max: 1200
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
         of Minerals and Rocks, specifically for feldspathic sandstones with composition
         matching Pennsylvania Bluestone (arkose sandstone)'
-      min: 400
-      max: 1200
     thermalConductivity:
       value: 3.8
+      min: 0.2
+      max: 8
       unit: W/(m·K)
       research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
         of Natural Building Stones, specifically Pennsylvania Bluestone (feldspathic
         sandstone) measured at 300K using guarded heat flow meter method'
-      min: 0.2
-      max: 8
     thermalDestruction:
       value: 800.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDiffusivity:
       value: 1.32
+      min: 0.2
+      max: 2.5
       unit: mm²/s
       research_basis: 'NIST Special Publication 260-162: Thermophysical Properties
         of Natural Building Stones & ASM Handbook Vol. 2: Properties and Selection:
         Nonferrous Alloys and Special-Purpose Materials (Bluestone specific measurements)'
-      min: 0.2
-      max: 2.5
     thermalExpansion:
       value: 7.5
+      min: 3
+      max: 30
       unit: 10^-6/K
       research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
         of Minerals and Rocks, specifically for Pennsylvania Bluestone (feldspathic
         sandstone) at 20-100°C range'
-      min: 3
-      max: 30
     compressiveStrength:
       value: 180.0
+      min: 20
+      max: 500
       unit: MPa
       research_basis: The provided properties (density, hardness) are consistent with
         a dense, fine-grained sandstone or basalt, both of which are sometimes marketed
@@ -88,10 +90,10 @@ materialProperties:
         in construction, as per industry design manuals. However, "Bluestone" is a
         commercial name, and its compressive strength can vary significantly (typically
         100-300 MPa) based on its specific geological formation and quarry location.
-      min: 20
-      max: 500
     corrosionResistance:
       value: 8.0
+      min: 2.0
+      max: 9.0
       unit: rating
       research_basis: Bluestone (a dense quartzitic sandstone/graywacke) exhibits
         excellent corrosion resistance due to its high quartz content (hardness 3.8
@@ -100,35 +102,35 @@ materialProperties:
         very high resistance to environmental weathering, acid rain, and chemical
         degradation. The material properties align with granite/sandstone classifications
         known for superior durability in architectural applications.
-      min: 2.0
-      max: 9.0
     density:
       value: 2.65
+      min: 1.5
+      max: 6.0
       unit: g/cm³
       research_basis: 'ASTM C97/C97M-18: Standard Test Methods for Absorption and
         Bulk Specific Gravity of Dimension Stone, supplemented by New York State Geological
         Survey analysis of Hudson Valley bluestone formations'
-      min: 1.5
-      max: 6.0
     flexuralStrength:
       value: 15.2
+      min: 5
+      max: 50
       unit: MPa
       research_basis: The cited government construction material guide provides a
         flexural strength range of 10-20 MPa for commercial bluestone, with 15.2 MPa
         listed as the typical mean value for structural applications, derived from
         standardized 4-point bend testing of Victorian bluestone specimens.
-      min: 5
-      max: 50
     hardness:
       value: 3.8
+      min: 1
+      max: 7
       unit: Mohs
       research_basis: 'NIST Special Publication 260-175: Standard Reference Materials
         for Stone Monument Conservation & ASTM C170/C170M Standard Test Method for
         Compressive Strength of Dimension Stone'
-      min: 1
-      max: 7
     oxidationResistance:
       value: 600.0
+      min: 400.0
+      max: 870.0
       unit: °C
       research_basis: Bluestone is a feldspar-rich sandstone or basalt. While not
         a pure chemical compound, its primary mineral components (e.g., quartz, feldspars)
@@ -136,62 +138,60 @@ materialProperties:
         around 600°C in air. This temperature is cited in standards for natural building
         stones like granite and basalt as a safe upper limit for continuous service
         before mineralogical changes and loss of structural integrity occur.
-      min: 400.0
-      max: 870.0
     porosity:
       value: 2.1
-      unit: '%'
-      research_basis: ai_research_comprehensive
       min: 0.5
       max: 25
+      unit: '%'
+      research_basis: ai_research_comprehensive
     tensileStrength:
       value: 12.4
+      min: 2
+      max: 25
       unit: MPa
       research_basis: ASTM C170/C170M-22 Standard Test Method for Compressive Strength
         of Dimension Stone, with conversion to tensile strength using established
         rock mechanics relationships (tensile strength ≈ 8-12% of compressive strength
         for sedimentary rocks)
-      min: 2
-      max: 25
     youngsModulus:
       value: 68.0
+      min: 10
+      max: 100
       unit: GPa
       research_basis: ASTM C615-03 Standard Specification for Granite Dimension Stone,
         with specific reference to Pennsylvania Bluestone (commercially classified
         as granite) showing Young's modulus range of 65-71 GPa in compression testing
         under standard conditions (ASTM C170)
-      min: 10
-      max: 100
     fractureToughness:
       value: 1.2
+      min: 0.5
+      max: 5
       unit: MPa·√m
       research_basis: Bluestone is typically a fine-grained sandstone or basalt. Published
         data for sandstone fracture toughness (K_IC) ranges from 0.8 to 1.5 MPa·√m.
         The value of 1.2 MPa·√m is a conservative estimate for a compact, fine-grained
         sandstone, which aligns with the provided density and hardness. Basalt can
         have higher toughness, but sandstone is the more common commercial "Bluestone."
-      min: 0.5
-      max: 5
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 8.7
+      min: 0.1
+      max: 100
       unit: '%'
       research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
         for Stone Conservation'' (2019) - Table 4.2: Optical properties of common
         building stones at 1064 nm wavelength'
-      min: 0.1
-      max: 100
     laserReflectivity:
       value: 38.2
+      min: 5
+      max: 80
       unit: '%'
       research_basis: 'NIST Special Publication 260-137: ''Optical Properties of Building
         and Monument Stone'' (2018) - Table 4.3: Reflectance measurements of sedimentary
         stones including Pennsylvania Bluestone at 1064 nm wavelength'
-      min: 5
-      max: 80
 machineSettings:
   energyDensity:
     value: 5

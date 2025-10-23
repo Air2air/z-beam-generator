@@ -44,41 +44,43 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     specificHeat:
       value: 840.0
+      min: 120
+      max: 900
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook
         - Thermodynamic Properties of Soda-Lime Glass (SiO₂-Na₂O-CaO system) at 300K'
-      min: 120
-      max: 900
     thermalConductivity:
       value: 1.0
+      min: 0.7
+      max: 30
       unit: W/(m·K)
       research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
         of Soda-Lime-Silica Glass (Composition: 72-74% SiO₂, 12-14% Na₂O, 8-10% CaO,
         3-5% MgO, 1-2% Al₂O₃) at 300K'
-      min: 0.7
-      max: 30
     thermalDestruction:
       value: 500.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDiffusivity:
       value: 0.84
+      min: 0.01
+      max: 15
       unit: mm²/s
       research_basis: ASTM C714-17 Standard Test Method for Thermal Diffusivity of
         Carbon and Graphite by Thermal Pulse Method, with specific application to
         soda-lime glass composition (72-74% SiO₂, 12-14% Na₂O, 8-10% CaO) at 25°C
-      min: 0.01
-      max: 15
     thermalExpansion:
       value: 8.5
+      min: 0.1
+      max: 15
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Section: Glass and Glass Ceramics,
         Table 2: Typical Properties of Commercial Glasses'
-      min: 0.1
-      max: 15
     compressiveStrength:
       value: 1000.0
+      min: 500
+      max: 2000
       unit: MPa
       research_basis: The compressive strength of soda-lime glass is significantly
         higher than its tensile strength. While tensile strength is typically in the
@@ -88,10 +90,10 @@ materialProperties:
         movement that limits the compressive strength of crystalline materials. The
         value can vary based on surface condition and test method, but 1000 MPa is
         a standard reference value for bulk material.
-      min: 500
-      max: 2000
     corrosionResistance:
       value: 9.0
+      min: 9
+      max: 10
       unit: rating
       research_basis: Soda-lime glass exhibits excellent resistance to water, acidic
         solutions, and atmospheric conditions. While susceptible to strong alkaline
@@ -100,24 +102,24 @@ materialProperties:
         Museum notes soda-lime glass's "good chemical durability" with only slight
         susceptibility to alkaline attack, supporting a high rating for general environmental
         corrosion resistance.
-      min: 9
-      max: 10
     density:
       value: 2.52
+      min: 1.2
+      max: 7.6
       unit: g/cm³
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (ASM International, 1990), Table 1 -
         Physical Properties of Commercial Glasses'
-      min: 1.2
-      max: 7.6
     electricalResistivity:
       value: 1000000000000.0
-      unit: Ω·m
-      research_basis: materials_science_literature
       min: 10000000000.0
       max: 1000000000000000.0
+      unit: Ω·m
+      research_basis: materials_science_literature
     flexuralStrength:
       value: 50.0
+      min: 50
+      max: 750.0
       unit: MPa
       research_basis: Soda-lime glass, being a brittle material, has a well-documented
         flexural strength typically ranging from 30-90 MPa. The value of 50 MPa represents
@@ -125,78 +127,76 @@ materialProperties:
         tested in a 4-point bend configuration as per the ASTM standard, which is
         the definitive test method for this property. The strength is highly dependent
         on surface quality and test conditions.
-      min: 50
-      max: 750.0
     hardness:
       value: 5.5
+      min: 3.5
+      max: 9.5
       unit: Mohs
       research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
         Alloys and Special-Purpose Materials (1990), Section: Glass and Glass Ceramics,
         Table: Properties of Commercial Glasses'
-      min: 3.5
-      max: 9.5
     oxidationResistance:
       value: 450.0
+      min: 400.0
+      max: 1700.0
       unit: °C
       research_basis: Soda-lime glass has a maximum continuous service temperature
         of 400-450°C in air before thermal degradation begins. Above this range, viscosity
         decreases significantly and surface oxidation/crystallization can occur, though
         soda-lime glass doesn't oxidize like metals but rather undergoes structural
         changes and surface devitrification.
-      min: 400.0
-      max: 1700.0
     tensileStrength:
       value: 50.0
+      min: 30
+      max: 2000
       unit: MPa
       research_basis: 'ASM Handbook, Volume 19: Fatigue and Fracture, ''Fracture of
         Glass'' (ASM International, 1996) and Shackelford, J.F., ''Introduction to
         Materials Science for Engineers'' (8th ed., Pearson, 2015)'
-      min: 30
-      max: 2000
     youngsModulus:
       value: 70.0
+      min: 10
+      max: 400
       unit: GPa
       research_basis: 'ASTM International Standard C162-05 ''Standard Terminology
         of Glass and Glass Products'' and ASM Handbook Volume 2: Properties and Selection:
         Nonferrous Alloys and Special-Purpose Materials'
-      min: 10
-      max: 400
     fractureToughness:
       value: 0.75
+      min: 0.5
+      max: 2
       unit: MPa·√m
       research_basis: Soda-lime glass is a classic brittle material with very low
         fracture toughness. Multiple standardized tests and engineering references
         consistently report values in the range of 0.70-0.80 MPa·√m, with 0.75 MPa·√m
         being a widely accepted representative value for common soda-lime glass compositions
         at room temperature.
-      min: 0.5
-      max: 2
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     ablationThreshold:
       value: 2.1
-      unit: J/cm²
-      research_basis: materials_science_literature
       min: 2.0
       max: 6.0
+      unit: J/cm²
+      research_basis: materials_science_literature
     laserAbsorption:
       value: 4.0
+      min: 0.001
+      max: 10
       unit: '%'
       research_basis: 'B. S. Luk''yanchuk et al., ''Laser Cleaning of Transparent
         Materials: From Glass to Solar Cells,'' Applied Physics A, vol. 125, no. 4,
         p. 254, 2019, specifically Table 2 for soda-lime glass absorption at 1064
         nm wavelength'
-      min: 0.001
-      max: 10
     laserReflectivity:
       value: 4.2
+      min: 0.1
+      max: 92
       unit: '%'
       research_basis: Palik, E.D. Handbook of Optical Constants of Solids. Academic
         Press, 1998. Vol. 1, pp. 719-722. Data for soda-lime glass at 1064 nm wavelength.
-      min: 0.1
-      max: 92
 machineSettings:
   energyDensity:
     value: 5

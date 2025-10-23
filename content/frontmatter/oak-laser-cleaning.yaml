@@ -43,42 +43,44 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     specificHeat:
       value: 2400.0
+      min: 800
+      max: 2500
       unit: J/(kg·K)
       research_basis: NIST Wood Database - Specific Heat of Various Hardwoods at 27°C
         (300K), with Oak (Quercus spp.) measured at 12% moisture content
-      min: 800
-      max: 2500
     thermalConductivity:
       value: 0.17
+      min: 0.04
+      max: 0.4
       unit: W/(m·K)
       research_basis: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190),
         Chapter 4: Thermal Properties, Table 4-3, specific values for oak species
         at 12% moisture content'
-      min: 0.04
-      max: 0.4
     thermalDestruction:
       value: 300.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDiffusivity:
       value: 0.16
+      min: 0.0001
+      max: 0.4
       unit: mm²/s
       research_basis: 'Suleiman, B. M., Larfeldt, J., Leckner, B., & Gustavsson, M.
         (1999). Thermal conductivity and diffusivity of wood. Wood Science and Technology,
         33(6), 465-473. DOI: 10.1007/s002260050130'
-      min: 0.0001
-      max: 0.4
     thermalExpansion:
       value: 54.0
+      min: 3.0
+      max: 60
       unit: 10^-6/K
       research_basis: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190),
         Chapter 4: Moisture Relations and Physical Properties of Wood, Table 4-5:
         Coefficients of thermal expansion for selected woods, specifically citing
         Quercus rubra (red oak) perpendicular to grain value of 54 × 10^-6/K'
-      min: 3.0
-      max: 60
     compressiveStrength:
       value: 46.0
+      min: 20
+      max: 80
       unit: MPa
       research_basis: The Wood Database provides comprehensive mechanical property
         data for various oak species. The reported compressive strength (crushing
@@ -87,29 +89,29 @@ materialProperties:
         limit during standard testing per ASTM D143. Test conditions assume 12% moisture
         content and loading parallel to grain, which is the standard reporting method
         for wood compressive strength.
-      min: 20
-      max: 80
     corrosionResistance:
       value: 7.0
+      min: 2.0
+      max: 8.0
       unit: rating
       research_basis: Oak is a durable hardwood with good resistance to decay and
         environmental corrosion when not in ground contact. Its natural tannins and
         dense cell structure provide protection against fungal decay and weathering,
         though it is not as resistant as some tropical hardwoods or treated woods.
         The rating reflects its performance in above-ground, non-marine environments.
-      min: 2.0
-      max: 8.0
     density:
       value: 0.68
+      min: 0.12
+      max: 1.5
       unit: g/cm³
       research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest
         Service, FPL-GTR-190), Chapter 4: Physical Properties of Wood, Table 4-3:
         Average specific gravity of common U.S. hardwood species - White Oak (12%
         moisture content)'
-      min: 0.12
-      max: 1.5
     flexuralStrength:
       value: 97.0
+      min: 40
+      max: 150
       unit: MPa
       research_basis: The USDA Forest Products Laboratory is the preeminent authority
         on North American wood properties. The Wood Handbook provides a flexural strength
@@ -117,18 +119,18 @@ materialProperties:
         used in engineering applications, based on standardized 3-point and 4-point
         bend tests on small, clear specimens. This value is widely cited and accepted
         in engineering and design standards.
-      min: 40
-      max: 150
     hardness:
       value: 3.7
+      min: 1
+      max: 5000
       unit: MPa
       research_basis: 'USDA Forest Products Laboratory Wood Handbook (Chapter 4: Mechanical
         Properties of Wood), ASTM D143 standard testing methodology for small clear
         wood specimens'
-      min: 1
-      max: 5000
     oxidationResistance:
       value: 150.0
+      min: 82.0
+      max: 204.0
       unit: °C
       research_basis: The Wood Handbook from the USDA Forest Products Laboratory is
         a primary authoritative source for wood properties. It states that prolonged
@@ -136,58 +138,56 @@ materialProperties:
         degradation, including pyrolysis and oxidation, which reduces strength and
         mass. This temperature is widely cited as the maximum for continuous service
         before significant thermal decomposition begins.
-      min: 82.0
-      max: 204.0
     porosity:
       value: 0.62
-      unit: dimensionless
-      research_basis: ai_research_comprehensive
       min: 12
       max: 65
+      unit: dimensionless
+      research_basis: ai_research_comprehensive
     tensileStrength:
       value: 95.0
+      min: 20
+      max: 200
       unit: MPa
       research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest
         Service, Forest Products Laboratory. General Technical Report FPL-GTR-190.
         2010. Table 5-3a: Mechanical properties of hardwoods.'
-      min: 20
-      max: 200
     youngsModulus:
       value: 2.5025
-      unit: GPa
-      research_basis: standard_material_database
       min: 5
       max: 20000
+      unit: GPa
+      research_basis: standard_material_database
     fractureToughness:
       value: 0.39
+      min: 0.33
+      max: 4.4
       unit: MPa·√m
       research_basis: This value represents the Mode I fracture toughness (K_IC) for
         oak in the radial-longitudinal orientation, which is the most commonly reported
         orientation for wood fracture toughness testing. The value falls within the
         typical range of 0.3-0.6 MPa·√m for hardwoods and is consistent with oak's
         density and mechanical properties.
-      min: 0.33
-      max: 4.4
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 32.7
+      min: 1
+      max: 50
       unit: '%'
       research_basis: NIST Wood Database - Optical Properties of Hardwoods, specifically
         Quercus species at 1064 nm wavelength
-      min: 1
-      max: 50
     laserReflectivity:
       value: 32.5
+      min: 10
+      max: 60
       unit: '%'
       research_basis: 'NIST Standard Reference Database 120: Optical Properties of
         Materials for Concentrating Solar Power, supplemented by Schmidt et al. (2018)
         ''Laser cleaning of wood surfaces'' in Journal of Cultural Heritage, Vol.
         29, pp. 100-108'
-      min: 10
-      max: 60
 machineSettings:
   dwellTime:
     value: 100

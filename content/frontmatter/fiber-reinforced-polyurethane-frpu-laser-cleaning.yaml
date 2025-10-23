@@ -45,41 +45,43 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     specificHeat:
       value: 1250.0
+      min: 500
+      max: 2500.0
       unit: J/(kg·K)
       research_basis: NIST Polymer Database - Polyurethane composites with fiber reinforcement
         (glass/carbon), measured using differential scanning calorimetry at 25°C
-      min: 500
-      max: 2500.0
     thermalConductivity:
       value: 0.25
+      min: 0.03
+      max: 400
       unit: W/(m·K)
       research_basis: NIST Polymer Composite Database - Specific measurement for glass
         fiber reinforced polyurethane (40% fiber volume fraction) at 25°C, Journal
         of Composite Materials Vol. 52, Issue 15, pp. 2023-2034 (2018)
-      min: 0.03
-      max: 400
     thermalDestruction:
       value: 300.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDiffusivity:
       value: 0.12
+      min: 0.08
+      max: 180
       unit: mm²/s
       research_basis: NIST Polymer Composite Database - Specific measurements for
         glass fiber reinforced polyurethane composites (40-50% fiber content) at 25°C,
         Journal of Composite Materials, Vol. 52(15), pp. 2023-2034 (2018)
-      min: 0.08
-      max: 180
     thermalExpansion:
       value: 85.3
+      min: -1
+      max: 250
       unit: μm/m·°C
       research_basis: 'ASM Handbook, Vol. 21: Composites, Section: Polymer Matrix
         Composites with Fiber Reinforcement, pp. 245-263, specifically Table 4: Thermal
         Expansion Properties of Fiber-Reinforced Polyurethane Systems'
-      min: -1
-      max: 250
     compressiveStrength:
       value: 120.0
+      min: 50
+      max: 1000
       unit: MPa
       research_basis: While the provided properties do not directly determine compressive
         strength, Fiber Reinforced Polyurethane (FRPU) is a composite material whose
@@ -90,10 +92,10 @@ materialProperties:
         figure for a glass fiber-reinforced polyurethane system, consistent with the
         high hardness (58.2 Shore D) provided, which indicates a rigid, high-strength
         material.
-      min: 50
-      max: 1000
     corrosionResistance:
       value: 8.0
+      min: 5
+      max: 9
       unit: rating
       research_basis: Fiber Reinforced Polyurethane (FRPU) inherits the high chemical
         and corrosion resistance of the base polyurethane matrix. Authoritative materials
@@ -104,24 +106,24 @@ materialProperties:
         degrade the inherent corrosion resistance of the polymer, placing it in the
         high tier (8-9) for polymeric composites, though not the absolute maximum
         reserved for materials like PTFE.
-      min: 5
-      max: 9
     density:
       value: 1.4
+      min: 0.5
+      max: 8
       unit: g/cm³
       research_basis: 'ASM Handbook, Volume 21: Composites, Chapter 4: Polymer Matrix
         Composites, Section 4.3: Polyurethane Composites with Fiber Reinforcement
         (2015)'
-      min: 0.5
-      max: 8
     electricalResistivity:
       value: 120000000000000.0
-      unit: Ω·m
-      research_basis: materials_science_literature
       min: 0.001
       max: 100000000000000.0
+      unit: Ω·m
+      research_basis: materials_science_literature
     flexuralStrength:
       value: 85.0
+      min: 100
+      max: 2000
       unit: MPa
       research_basis: The provided properties (58.2 Shore D hardness, 1.4 g/cm³ density)
         are consistent with rigid, mineral-filled, and fiber-reinforced polyurethane
@@ -130,17 +132,17 @@ materialProperties:
         in the range of 70-100 MPa. The value of 85 MPa is a representative median
         from this established range for short-fiber reinforced, high-durometer polyurethane
         systems tested via the standard 3-point bend method (ASTM D790).
-      min: 100
-      max: 2000
     hardness:
       value: 58.2
+      min: 5.0
+      max: 120
       unit: Shore D
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Polyurethane
         Matrix Composites with Fiber Reinforcement, pp. 412-415 (2020 edition)'
-      min: 5.0
-      max: 120
     oxidationResistance:
       value: 80.0
+      min: 80.0
+      max: 1650.0
       unit: °C
       research_basis: For fiber-reinforced polyurethane composites in continuous air
         service, the maximum temperature is typically limited by the polyurethane
@@ -150,25 +152,25 @@ materialProperties:
         degradation begins, with 80°C being the conservative limit for continuous
         operation. The high laser absorption (92.7%) also suggests limited thermal
         stability as it indicates susceptibility to thermal energy input.
-      min: 80.0
-      max: 1650.0
     tensileStrength:
       value: 3150.0
+      min: 20
+      max: 6000
       unit: MPa
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Fiber-Reinforced
         Polyurethane Systems, pp. 412-418 (2020 edition); NIST Special Publication
         1252: Mechanical Properties of Advanced Composite Materials'
-      min: 20
-      max: 6000
     youngsModulus:
       value: 850.0
+      min: 0.001
+      max: 3000
       unit: MPa
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Polyurethane
         Matrix Composites with Fiber Reinforcement, pp. 345-348 (2015)'
-      min: 0.001
-      max: 3000
     fractureToughness:
       value: 3.5
+      min: 20
+      max: 100
       unit: MPa·√m
       research_basis: The provided mechanical properties (density 1.4 g/cm³, Shore
         D 58.2) are consistent with rigid polyurethane composites. For fiber-reinforced
@@ -176,29 +178,27 @@ materialProperties:
         falls between 2.5-4.5 MPa·√m. The cited study specifically measured K_IC for
         aramid fiber-reinforced polyurethane composites showing values of 3.2-3.8
         MPa·√m for formulations with similar density and hardness characteristics.
-      min: 20
-      max: 100
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 92.7
+      min: 0.05
+      max: 200
       unit: '%'
       research_basis: 'ASM Handbook, Volume 21: Composites, Chapter: Laser Processing
         of Polymer Matrix Composites, supplemented by Journal of Materials Processing
         Technology, Vol. 299, 2022: ''Laser cleaning parameters for fiber-reinforced
         polyurethane composites'''
-      min: 0.05
-      max: 200
     laserReflectivity:
       value: 38.5
+      min: 2
+      max: 80
       unit: '%'
       research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
         for Composite Materials'' (2021) - Table 4.2: Reflectivity measurements of
         fiber-reinforced polyurethane composites at 1064 nm wavelength'
-      min: 2
-      max: 80
 machineSettings:
   energyDensity:
     value: 2.5

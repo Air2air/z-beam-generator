@@ -44,46 +44,48 @@ materialProperties:
       affecting cleaning outcomes and material integrity
     specificHeat:
       value: 1800.0
+      min: 500
+      max: 2500.0
       unit: J/(kg·K)
       research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
         of Polymer Systems, specifically TPE-S (Styrenic block copolymer) data at
         25°C'
-      min: 500
-      max: 2500.0
     thermalConductivity:
       value: 0.2
+      min: 0.03
+      max: 400
       unit: W/(m·K)
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Thermoplastic
         Elastomers - Thermal Properties (pp. 345-347); NIST Polymer Database - TPE
         Thermal Conductivity Measurements'
-      min: 0.03
-      max: 400
     thermalDestruction:
       value: 300.0
       unit: °C
       research_basis: ai_research_comprehensive
     thermalDiffusivity:
       value: 0.12
+      min: 0.08
+      max: 180
       unit: mm²/s
       research_basis: 'NIST Polymer Database and ASM Handbook, Volume 21: Composites,
         with specific reference to styrene-ethylene/butylene-styrene (SEBS) block
         copolymer formulations typical in TPE applications'
-      min: 0.08
-      max: 180
     thermalExpansion:
       value: 100.0
+      min: -1
+      max: 250
       unit: 10^-6/K
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Thermoplastic
         Elastomers - Thermal Properties (pp. 345-348), specifically citing SBS (Styrene-Butadiene-Styrene)
         block copolymer data at 23-80°C range'
-      min: -1
-      max: 250
     compressiveStrength:
       value: 15.0
       min: 50
       max: 1000
     corrosionResistance:
       value: 7.0
+      min: 5
+      max: 9
       unit: rating
       research_basis: Thermoplastic elastomers generally exhibit good resistance to
         aqueous environments, ozone, weathering, and many chemicals. While specific
@@ -92,38 +94,38 @@ materialProperties:
         resistance (7/10), superior to many rubbers but below fluoropolymers. Their
         composite nature provides balanced corrosion protection without requiring
         additives.
-      min: 5
-      max: 9
     density:
       value: 1.1
+      min: 0.5
+      max: 8
       unit: g/cm³
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Thermoplastic
         Elastomers; NIST Polymer Database - TPE Material Properties'
-      min: 0.5
-      max: 8
     electricalResistivity:
       value: 120000000000000.0
-      unit: Ω·m
-      research_basis: materials_science_literature
       min: 0.001
       max: 100000000000000.0
+      unit: Ω·m
+      research_basis: materials_science_literature
     flexuralStrength:
       value: 15.0
-      unit: MPa
-      research_basis: materials_science_literature
       min: 100
       max: 2000
+      unit: MPa
+      research_basis: materials_science_literature
     hardness:
       value: 55.0
+      min: 5.0
+      max: 120
       unit: Shore A
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Thermoplastic
         Elastomer Properties, with specific reference to styrene-ethylene/butylene-styrene
         (SEBS) block copolymer formulations exhibiting 55 Shore A hardness as a standardized
         commercial grade'
-      min: 5.0
-      max: 120
     oxidationResistance:
       value: 135.0
+      min: 80.0
+      max: 1650.0
       unit: °C
       research_basis: Thermoplastic Elastomers (TPEs) are a broad material class with
         varying thermal properties. For general-purpose TPEs, the maximum continuous
@@ -133,27 +135,27 @@ materialProperties:
         oxidative degradation occurs. This aligns with technical datasheets from major
         TPE manufacturers indicating service temperatures up to 130-135°C in air for
         standard grades.
-      min: 80.0
-      max: 1650.0
     tensileStrength:
       value: 25.0
+      min: 20
+      max: 6000
       unit: MPa
       research_basis: 'ASM Handbook, Volume 21: Composites, Thermoplastic Elastomers
         Section, pp. 345-348 (2015); NIST Special Publication 1176: Mechanical Properties
         of Polymer Composites'
-      min: 20
-      max: 6000
     youngsModulus:
       value: 10.0
+      min: 0.001
+      max: 3000
       unit: MPa
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Thermoplastic
         Elastomers - Mechanical Properties Database (pp. 345-348), specifically citing
         styrenic block copolymer TPEs with typical modulus range of 700-800 MPa at
         23°C'
-      min: 0.001
-      max: 3000
     fractureToughness:
       value: 1.8
+      min: 20
+      max: 100
       unit: MPa·√m
       research_basis: Thermoplastic Elastomers (TPEs) are a broad class of materials,
         and their fracture toughness (K_IC) is highly dependent on their specific
@@ -163,28 +165,26 @@ materialProperties:
         median for this hardness and material category, based on established polymer
         science references and technical datasheets from TPE manufacturers. The confidence
         is not higher due to the inherent variability within the TPE composite category.
-      min: 20
-      max: 100
   laser_material_interaction:
     label: Laser-Material Interaction
     description: Optical and thermal properties governing laser energy absorption,
       reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 92.5
+      min: 0.05
+      max: 200
       unit: '%'
       research_basis: 'ASM Handbook, Volume 21: Composites, Section: Laser Processing
         of Polymer Matrix Composites, with specific reference to styrene-ethylene/butylene-styrene
         (SEBS) block copolymers as representative TPEs'
-      min: 0.05
-      max: 200
     laserReflectivity:
       value: 38.5
+      min: 2
+      max: 80
       unit: '%'
       research_basis: NIST Materials Data Repository - Laser-Material Interaction
         Database for Polymers (2022), specifically TPE reflectance measurements at
         1064 nm wavelength
-      min: 2
-      max: 80
 machineSettings:
   dwellTime:
     value: 100
