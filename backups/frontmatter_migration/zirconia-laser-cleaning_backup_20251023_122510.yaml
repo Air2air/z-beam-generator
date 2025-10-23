@@ -1,0 +1,158 @@
+name: Zirconia
+material: Zirconia
+title: Zirconia Laser Cleaning
+category: ceramic
+generated_date: '2025-10-22T20:36:59.027457'
+data_completeness: 100%
+source: Materials.yaml (direct export)
+properties: {}
+category_info:
+  description: Advanced ceramic materials including technical ceramics, porcelain,
+    and ceramic composites used in laser cleaning applications
+  properties_count: 0
+  category_ranges:
+    density:
+      max: 16.0
+      min: 2.3
+      unit: "g/cm\xB3"
+      adjustment_note: "Tungsten carbide is 15.63 g/cm\xB3"
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    hardness:
+      max: 2500
+      min: 6.0
+      unit: Mohs
+      adjustment_note: Change from Mohs to HV for advanced ceramics
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+      phase2_adjustment: Porcelain/Stoneware at 7.0 Mohs
+      notes: Porcelain/stoneware 7 Mohs, advanced ceramics use HV scale
+    laserAbsorption:
+      max: 50
+      min: 0.1
+      unit: "cm\u207B\xB9"
+    laserReflectivity:
+      max: 90
+      min: 5
+      unit: '%'
+      source: Handbook of Optical Constants of Solids (Palik, 1998)
+      confidence: 75
+      notes: Typical ceramics 10-30% at 1064nm, varies with composition and surface
+        finish
+      last_updated: '2025-10-15T14:19:43.867144'
+    specificHeat:
+      max: 2500.0
+      min: 250
+      unit: "J/kg\xB7K"
+      adjustment_note: Carbides have lower specific heat
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    tensileStrength:
+      max: 600
+      min: 5.0
+      unit: MPa
+      adjustment_note: Advanced ceramics much stronger
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    thermalConductivity:
+      min: 0.8
+      max: 120
+      unit: "W/(m\xB7K)"
+      source: MatWeb Materials Database
+      confidence: 80
+      notes: Typical range for ceramic materials at room temperature
+      last_updated: '2025-10-14T23:58:54.459388'
+      adjustment_note: SiC, WC have high conductivity
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    thermalDestruction:
+      point:
+        max: 3827
+        min: 1000
+        unit: "\xB0C"
+      type: thermal_shock
+    thermalDiffusivity:
+      max: 120
+      min: 0.005
+      unit: "mm\xB2/s"
+      adjustment_note: Zirconia has low diffusivity
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    thermalExpansion:
+      max: 14
+      min: 0.1
+      unit: "\xB5m/m\xB7K"
+    youngsModulus:
+      max: 600.0
+      min: 5.0
+      unit: GPa
+    ablationThreshold:
+      min: 1.5
+      max: 5.0
+      unit: "J/cm\xB2"
+      source: RP Photonics Encyclopedia, Oxide Ceramics
+      confidence: 75
+      notes: Alumina, zirconia, silicon carbide - nanosecond pulses
+      last_updated: '2025-10-14T23:58:54.459371'
+    porosity:
+      min: 0
+      max: 30
+      unit: '%'
+      source: ASM Handbook - Ceramics and Glasses
+      confidence: 80
+      notes: Dense ceramics 0-5%, porous ceramics 10-30%
+      last_updated: '2025-10-14T23:58:54.459381'
+    compressiveStrength:
+      min: 100
+      max: 7000
+      unit: MPa
+      description: Maximum compressive stress before failure
+      notes: Ceramics excellent in compression
+      source: materials_science_literature
+      research_date: '2025-10-15'
+      adjustment_note: WC exceptional in compression
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    corrosionResistance:
+      min: 8
+      max: 10
+      unit: rating
+      description: Resistance to chemical/electrochemical degradation
+      notes: Ceramics highly corrosion resistant
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    electricalResistivity:
+      min: 10000000000.0
+      max: 1.0e+16
+      unit: "\u03A9\xB7m"
+      description: Resistance to electrical current flow
+      notes: Ceramics are insulators
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    flexuralStrength:
+      min: 50
+      max: 2500
+      unit: MPa
+      description: Maximum bending stress before failure
+      notes: Ceramics brittle in bending
+      source: materials_science_literature
+      research_date: '2025-10-15'
+      adjustment_note: WC has exceptional flexural strength
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    fractureToughness:
+      min: 2
+      max: 10
+      unit: "MPa\xB7m^0.5"
+      description: Resistance to crack propagation
+      notes: Ceramics brittle, low toughness
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    oxidationResistance:
+      min: 600.0
+      max: 2400.0
+      unit: "\xB0C"
+      description: ''
+      sample_count: 7
+      auto_generated: true
+      generated_date: '2025-10-16'

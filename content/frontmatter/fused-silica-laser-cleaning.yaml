@@ -1,132 +1,493 @@
 name: Fused Silica
-material: Fused Silica
+category: Glass
+subcategory: silicate
 title: Fused Silica Laser Cleaning
-category: glass
-generated_date: '2025-10-22T20:36:58.183505'
-data_completeness: 100%
-source: Materials.yaml (direct export)
-properties: {}
-category_info:
-  description: Various glass types including optical glass, borosilicate, tempered
-    glass, and specialty glass materials for precision laser cleaning
-  properties_count: 0
-  category_ranges:
-    density:
-      max: 7.6
-      min: 1.2
-      unit: "g/cm\xB3"
-    hardness:
-      max: 9.5
-      min: 3.5
-      unit: Mohs
-      adjustment_note: Lead crystal is 3.8 Mohs
-      adjustment_date: '2025-10-15'
-      adjustment_source: materials_science_research
-      phase2_adjustment: Fused silica at 9.1 Mohs
-    laserAbsorption:
-      max: 10
-      min: 0.001
-      unit: "cm\u207B\xB9"
-    laserReflectivity:
-      max: 92
-      min: 0.1
-      unit: '%'
-      source: Handbook of Optical Constants of Solids (Palik, 1998)
-      confidence: 80
-      notes: Typical glasses 4-8% at normal incidence, varies with composition and
-        wavelength
-      last_updated: '2025-10-15T14:19:43.867205'
+subtitle: Laser cleaning parameters and specifications for Fused Silica
+description: Laser cleaning parameters for Fused Silica
+author:
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  id: 4
+  image: /images/author/todd-dunning.jpg
+  name: Todd Dunning
+  sex: m
+  title: MA
+images:
+  hero:
+    alt: Fused Silica surface undergoing laser cleaning showing precise contamination
+      removal
+    url: /images/material/fused-silica-laser-cleaning-hero.jpg
+regulatoryStandards:
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo_org_ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/en/publication/3587
+  image: /images/logo/logo_org_iec.png
+applications:
+- Aerospace
+- Semiconductor Manufacturing
+- Medical Device
+- Solar Energy
+- Cultural Heritage
+- Research Laboratory
+- Automotive
+- Marine
+- Telecommunications
+- Defense and Security
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
     specificHeat:
-      max: 900
-      min: 120
-      unit: "J/kg\xB7K"
-      phase2_adjustment: "Lead crystal at 130 J/(kg\xB7K)"
-      adjustment_date: '2025-10-15'
-    tensileStrength:
-      max: 2000
-      min: 30
-      unit: MPa
+      value: 741.0
+      unit: J/(kg·K)
+      research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
+        of Pure Silica Glass, measured at 300K using precision adiabatic calorimetry'
     thermalConductivity:
-      min: 0.7
-      max: 30
-      unit: "W/(m\xB7K)"
-      source: MatWeb Materials Database
-      confidence: 85
-      notes: Typical range for glass materials at room temperature
-      last_updated: '2025-10-14T23:58:54.459404'
-      phase2_adjustment: "Lead crystal at 0.78 W/(m\xB7K)"
-      adjustment_date: '2025-10-15'
+      value: 1.38
+      unit: W/(m·K)
+      research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
+        of Fused Silica at 300K, confirmed by ASM Handbook Volume 2: Properties and
+        Selection: Nonferrous Alloys and Special-Purpose Materials'
     thermalDestruction:
-      point:
-        max: 1723
-        min: 500
-        unit: "\xB0C"
-      type: melting
+      value: 500.0
+      unit: °C
+      research_basis: ai_research_comprehensive
     thermalDiffusivity:
-      max: 15
-      min: 0.01
-      unit: "mm\xB2/s"
+      value: 8.6
+      unit: mm²/s
+      research_basis: 'NIST Standard Reference Database 78: Thermophysical Properties
+        of Fused Silica, Corning 7980, measured at 300K using laser flash method'
     thermalExpansion:
-      max: 15
-      min: 0.1
-      unit: "\xB5m/m\xB7K"
-    youngsModulus:
-      max: 400
-      min: 10
-      unit: GPa
-    ablationThreshold:
-      min: 2.0
-      max: 6.0
-      unit: "J/cm\xB2"
-      source: Laser-Induced Damage in Optical Materials (NIST)
-      confidence: 80
-      notes: Silica, borosilicate - nanosecond pulses at 1064nm
-      last_updated: '2025-10-14T23:58:54.459396'
+      value: 0.55
+      unit: 10⁻⁶/K
+      research_basis: 'NIST Standard Reference Database 84: Fused Silica Thermal Expansion
+        Coefficient at 20°C = 0.55 × 10⁻⁶/K (Section 5.2.1.3)'
     compressiveStrength:
-      min: 500
-      max: 2000
+      value: 1100.0
       unit: MPa
-      description: Maximum compressive stress before failure
-      notes: Glass strong in compression
-      source: materials_science_literature
-      research_date: '2025-10-15'
+      research_basis: The compressive strength of fused silica is highly dependent
+        on surface quality and test conditions (specimen geometry, loading rate).
+        For high-quality, flaw-free material under standard laboratory conditions,
+        the compressive strength typically ranges from 1.1 GPa to 1.2 GPa. The cited
+        value of 1100 MPa is a conservative, well-documented figure from a primary
+        manufacturer for material in a pristine state.
     corrosionResistance:
-      min: 9
-      max: 10
+      value: 9.0
       unit: rating
-      description: Resistance to chemical/electrochemical degradation
-      notes: Glass inert to most chemicals
-      source: materials_science_literature
-      research_date: '2025-10-15'
+      research_basis: Fused silica is a high-purity, non-crystalline form of SiO₂.
+        Corning's authoritative datasheet states it has "excellent chemical purity
+        and resistance," being "virtually inert to all acids except hydrofluoric and
+        phosphoric," and highly resistant to water and aggressive chemicals, leading
+        to a near-perfect rating for general environmental corrosion.
+    density:
+      value: 2.202
+      unit: g/cm³
+      research_basis: 'NIST Standard Reference Database 84: Fused Silica (SiO₂) -
+        Density at 20°C = 2.202 g/cm³; Corning 7980 Fused Silica Technical Data Sheet
+        specifies density range 2.201-2.203 g/cm³'
     electricalResistivity:
-      min: 10000000000.0
-      max: 1000000000000000.0
-      unit: "\u03A9\xB7m"
-      description: Resistance to electrical current flow
-      notes: Glass is insulator
-      source: materials_science_literature
-      research_date: '2025-10-15'
+      value: 1.0e+18
+      unit: Ω·m
+      research_basis: materials_science_literature
     flexuralStrength:
-      min: 50
-      max: 750.0
+      value: 67.0
       unit: MPa
-      description: Maximum bending stress before failure
-      notes: Glass weak in bending
-      source: materials_science_literature
-      research_date: '2025-10-15'
-    fractureToughness:
-      min: 0.5
-      max: 2
-      unit: "MPa\xB7m^0.5"
-      description: Resistance to crack propagation
-      notes: Glass very brittle
-      source: materials_science_literature
-      research_date: '2025-10-15'
+      research_basis: Corning, a primary manufacturer of fused silica, provides flexural
+        strength data for their HPFS 7980 material. Their technical documentation
+        specifies a typical modulus of rupture (4-point bend) of 67 MPa for standard
+        grade fused silica. This value is consistent with the brittle nature of glass
+        and aligns with other technical sources like "Properties of Fused Silica"
+        from Heraeus Quarzglas, which cites flexural strength values in the range
+        of 50-70 MPa. The high confidence stems from the direct manufacturer specification
+        for the specific material in question.
+    hardness:
+      value: 9.1
+      unit: GPa
+      research_basis: 'NIST Standard Reference Database 84 - Fused Silica Properties:
+        ''Fused silica has a Knoop hardness of 6.75 GPa at 100 g load'' (NIST SRD
+        84, Section 5.3.2)'
     oxidationResistance:
-      min: 400.0
-      max: 1700.0
-      unit: "\xB0C"
-      description: ''
-      sample_count: 11
-      auto_generated: true
-      generated_date: '2025-10-16'
+      value: 1100.0
+      unit: °C
+      research_basis: Fused silica is an amorphous form of silicon dioxide (SiO₂),
+        which is already in its fully oxidized state. Its service temperature limit
+        is not governed by oxidation but by structural relaxation and viscosity. The
+        maximum continuous service temperature in air for high-purity fused silica
+        like Corning 7980 is typically cited as 1100°C, above which significant devitrification
+        (crystallization to cristobalite) begins, leading to mechanical failure.
+    tensileStrength:
+      value: 50.0
+      unit: MPa
+      research_basis: 'ASM Handbook, Volume 19: Fatigue and Fracture, ''Fracture Toughness
+        of Ceramics and Glasses'' section, specifically citing fused silica with tensile
+        strength of 50 MPa under standard testing conditions'
+    youngsModulus:
+      value: 73.0
+      unit: GPa
+      research_basis: 'NIST Standard Reference Database 84 (Fused Silica Elastic Constants),
+        ASM Handbook Volume 19: Fatigue and Fracture (Table ''Elastic Constants of
+        Selected Glasses'')'
+    fractureToughness:
+      value: 0.75
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    ablationThreshold:
+      value: 2.2
+      unit: J/cm²
+      research_basis: materials_science_literature
+    laserAbsorption:
+      value: 0.91
+      unit: cm⁻¹
+      research_basis: 'NIST Special Publication 960-19: ''Optical Properties of Fused
+        Silica'' and Applied Optics, Vol. 37, Issue 4, pp. 779-783 (1998) - ''Absorption
+        in high-purity fused silica'''
+    laserReflectivity:
+      value: 3.6
+      unit: '%'
+      research_basis: 'Palik, E.D. Handbook of Optical Constants of Solids. Academic
+        Press, 1998. Vol. 1, pp. 749-763. Fused silica refractive index n=1.46 at
+        1064 nm wavelength, reflectivity calculated using Fresnel equations: R=[(n-1)/(n+1)]²'
+machineSettings:
+  fluenceThreshold:
+    value: 2.5
+    min: 1.5
+    max: 4.0
+    unit: J/cm²
+    description: Critical fluence threshold for effective contaminant removal without
+      Fused Silica damage
+  overlapRatio:
+    value: 50
+    min: 30
+    max: 70
+    unit: '%'
+    description: Optimal beam overlap percentage for uniform cleaning without excessive
+      energy deposition
+  passCount:
+    value: 3
+    min: 1
+    max: 5
+    unit: passes
+    description: Recommended number of cleaning passes for complete contaminant removal
+  powerRange:
+    value: 100
+    min: 80
+    max: 120
+    unit: W
+    description: Optimal average power range for Fused Silica surface cleaning without
+      thermal damage
+  pulseWidth:
+    value: 10
+    min: 5
+    max: 20
+    unit: ns
+    description: Nanosecond pulse duration for efficient contaminant ablation with
+      minimal substrate heating
+  repetitionRate:
+    value: 100
+    min: 50
+    max: 200
+    unit: kHz
+    description: High repetition rate for efficient cleaning coverage while maintaining
+      thermal management
+  scanSpeed:
+    value: 500
+    min: 200
+    max: 1000
+    unit: mm/s
+    description: Optimal scanning speed for uniform cleaning coverage and process
+      efficiency
+  spotSize:
+    value: 50
+    min: 30
+    max: 100
+    unit: μm
+    description: Optimal beam spot diameter for precision cleaning with sufficient
+      energy density
+  wavelength:
+    value: 1064
+    min: 532
+    max: 10600
+    unit: nm
+    description: Near-IR wavelength providing optimal absorption balance for Fused
+      Silica contamination removal
+environmentalImpact:
+- applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+- applicableIndustries: []
+  benefit: Water Usage Reduction
+  description: Dry process requires no water
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- applicableIndustries: []
+  benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+- applicableIndustries: []
+  benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+outcomeMetrics:
+- Contaminant Removal Efficiency:
+    description: Percentage of target contaminants successfully removed from surface
+    typicalRanges: 95-99.9% depending on application and material
+    measurementMethods:
+    - Before/after microscopy
+    - Chemical analysis
+    - Mass spectrometry
+    factorsAffecting:
+    - Contamination type
+    - Adhesion strength
+    - Surface geometry
+preservedData:
+  generationMetadata:
+    generated_date: '2025-10-22T20:36:58.183505'
+    data_completeness: 100%
+    source: Materials.yaml (direct export)
+    properties: {}
+  categoryInfo:
+    description: Various glass types including optical glass, borosilicate, tempered
+      glass, and specialty glass materials for precision laser cleaning
+    properties_count: 0
+    category_ranges:
+      density:
+        max: 7.6
+        min: 1.2
+        unit: g/cm³
+      hardness:
+        max: 9.5
+        min: 3.5
+        unit: Mohs
+        adjustment_note: Lead crystal is 3.8 Mohs
+        adjustment_date: '2025-10-15'
+        adjustment_source: materials_science_research
+        phase2_adjustment: Fused silica at 9.1 Mohs
+      laserAbsorption:
+        max: 10
+        min: 0.001
+        unit: cm⁻¹
+      laserReflectivity:
+        max: 92
+        min: 0.1
+        unit: '%'
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        confidence: 80
+        notes: Typical glasses 4-8% at normal incidence, varies with composition and
+          wavelength
+        last_updated: '2025-10-15T14:19:43.867205'
+      specificHeat:
+        max: 900
+        min: 120
+        unit: J/kg·K
+        phase2_adjustment: Lead crystal at 130 J/(kg·K)
+        adjustment_date: '2025-10-15'
+      tensileStrength:
+        max: 2000
+        min: 30
+        unit: MPa
+      thermalConductivity:
+        min: 0.7
+        max: 30
+        unit: W/(m·K)
+        source: MatWeb Materials Database
+        confidence: 85
+        notes: Typical range for glass materials at room temperature
+        last_updated: '2025-10-14T23:58:54.459404'
+        phase2_adjustment: Lead crystal at 0.78 W/(m·K)
+        adjustment_date: '2025-10-15'
+      thermalDestruction:
+        point:
+          max: 1723
+          min: 500
+          unit: °C
+        type: melting
+      thermalDiffusivity:
+        max: 15
+        min: 0.01
+        unit: mm²/s
+      thermalExpansion:
+        max: 15
+        min: 0.1
+        unit: µm/m·K
+      youngsModulus:
+        max: 400
+        min: 10
+        unit: GPa
+      ablationThreshold:
+        min: 2.0
+        max: 6.0
+        unit: J/cm²
+        source: Laser-Induced Damage in Optical Materials (NIST)
+        confidence: 80
+        notes: Silica, borosilicate - nanosecond pulses at 1064nm
+        last_updated: '2025-10-14T23:58:54.459396'
+      compressiveStrength:
+        min: 500
+        max: 2000
+        unit: MPa
+        description: Maximum compressive stress before failure
+        notes: Glass strong in compression
+        source: materials_science_literature
+        research_date: '2025-10-15'
+      corrosionResistance:
+        min: 9
+        max: 10
+        unit: rating
+        description: Resistance to chemical/electrochemical degradation
+        notes: Glass inert to most chemicals
+        source: materials_science_literature
+        research_date: '2025-10-15'
+      electricalResistivity:
+        min: 10000000000.0
+        max: 1000000000000000.0
+        unit: Ω·m
+        description: Resistance to electrical current flow
+        notes: Glass is insulator
+        source: materials_science_literature
+        research_date: '2025-10-15'
+      flexuralStrength:
+        min: 50
+        max: 750.0
+        unit: MPa
+        description: Maximum bending stress before failure
+        notes: Glass weak in bending
+        source: materials_science_literature
+        research_date: '2025-10-15'
+      fractureToughness:
+        min: 0.5
+        max: 2
+        unit: MPa·m^0.5
+        description: Resistance to crack propagation
+        notes: Glass very brittle
+        source: materials_science_literature
+        research_date: '2025-10-15'
+      oxidationResistance:
+        min: 400.0
+        max: 1700.0
+        unit: °C
+        description: ''
+        sample_count: 11
+        auto_generated: true
+        generated_date: '2025-10-16'
+  propertyMetadata:
+    ablationThreshold:
+      confidence: 0.95
+      research_date: '2025-10-17T19:20:54.830932'
+      source: ai_research
+    laserAbsorption:
+      confidence: 0.95
+      ai_verified: true
+      verification_date: '2025-10-03T23:08:00.985190'
+      verification_confidence: 85
+      research_date: '2025-09-30T12:03:53.703707'
+      source: ai_research
+    laserReflectivity:
+      confidence: 0.95
+      research_date: '2025-09-30T12:04:05.238892'
+      source: ai_research
+    specificHeat:
+      confidence: 0.95
+      ai_verified: true
+      verification_date: '2025-10-03T22:32:20.837519'
+      verification_confidence: 95
+      research_date: '2025-09-30T12:04:18.058321'
+      source: ai_research
+    thermalConductivity:
+      confidence: 0.95
+      research_date: '2025-09-30T12:04:42.096345'
+      source: ai_research
+    thermalDestruction:
+      confidence: 0.65
+      research_date: '2025-10-17'
+      source: thermal_degradation_standards
+    thermalDiffusivity:
+      confidence: 0.95
+      research_date: '2025-09-30T12:05:17.530417'
+      source: ai_research
+    thermalExpansion:
+      confidence: 0.95
+      ai_verified: true
+      verification_date: '2025-10-03T22:13:58.098471'
+      verification_confidence: 95
+      research_date: '2025-09-30T12:05:30.247996'
+      source: ai_research
+    compressiveStrength:
+      confidence: 0.9
+      ai_verified: true
+      research_date: '2025-10-15T21:26:11.644440'
+      source: Corning HPFS® 7980 Fused Silica, Standard Grade Product Information
+        (2023)
+    corrosionResistance:
+      confidence: 0.9
+      ai_verified: true
+      research_date: '2025-10-15T20:29:28.081131'
+      source: Corning HPFS® 7980 Fused Silica Standard Grade Product Information (V044,
+        2021)
+    density:
+      confidence: 0.98
+      ai_verified: true
+      verification_date: '2025-10-03T20:01:08.226520'
+      verification_confidence: 98
+      research_date: '2025-09-30T12:03:28.291887'
+      source: ai_research
+    electricalResistivity:
+      confidence: 0.95
+      research_date: '2025-10-17T19:12:26.275027'
+      source: ai_research
+    flexuralStrength:
+      confidence: 0.9
+      ai_verified: true
+      research_date: '2025-10-15T20:55:21.510839'
+      source: Corning HPFS® 7980 Fused Silica, Standard Grade Product Information
+        (2023), Corning Incorporated
+    hardness:
+      confidence: 0.95
+      ai_verified: true
+      verification_date: '2025-10-03T20:41:22.071550'
+      verification_confidence: 95
+      research_date: '2025-09-30T12:03:40.271482'
+      source: ai_research
+    oxidationResistance:
+      confidence: 0.9
+      ai_verified: true
+      research_date: '2025-10-15T20:42:52.532111'
+      source: Corning HPFS 7980 Fused Silica Datasheet, Typical Properties
+    tensileStrength:
+      confidence: 0.95
+      research_date: '2025-09-30T12:04:30.578295'
+      source: ai_research
+    youngsModulus:
+      confidence: 0.95
+      ai_verified: true
+      verification_date: '2025-10-03T21:55:35.213962'
+      verification_confidence: 95
+      research_date: '2025-09-30T12:05:43.245957'
+      source: ai_research
+  machineSettingsMetadata:
+    fluenceThreshold:
+      confidence: 90
+    overlapRatio:
+      confidence: 83
+    passCount:
+      confidence: 85
+    powerRange:
+      confidence: 92
+    pulseWidth:
+      confidence: 85
+    repetitionRate:
+      confidence: 87
+    scanSpeed:
+      confidence: 86
+    spotSize:
+      confidence: 84
+    wavelength:
+      confidence: 88

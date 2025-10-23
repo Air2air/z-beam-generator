@@ -1,0 +1,165 @@
+name: Europium
+material: Europium
+title: Europium Laser Cleaning
+category: rare-earth
+generated_date: '2025-10-22T20:36:58.146319'
+data_completeness: 100%
+source: Materials.yaml (direct export)
+properties:
+  density:
+    value: 5.24
+    unit: "g/cm\xB3"
+    confidence: 0.95
+    source: ai_research
+    research_date: '2025-10-20T22:38:04.227560'
+    description: Density of pure europium at room temperature
+  hardness:
+    value: 0.167
+    unit: GPa
+    confidence: 0.85
+    source: ai_research
+    research_date: '2025-10-20T22:38:04.227590'
+    description: Brinell hardness of pure europium
+  laserReflectivity:
+    value: 0.72
+    unit: '%'
+    confidence: 0.86
+    source: ai_research
+    research_date: '2025-10-20T22:38:04.227595'
+    description: Surface reflectivity at 1064 nm laser wavelength
+  oxidationResistance:
+    value: 180
+    unit: "\xB0C"
+    confidence: 0.92
+    source: ai_research
+    research_date: '2025-10-20T22:38:04.227601'
+    description: Time to significant oxidation in air at room temperature
+  specificHeat:
+    value: 182.0
+    unit: "J/(kg\xB7K)"
+    confidence: 0.9
+    source: ai_research
+    research_date: '2025-10-20T22:38:04.227580'
+    description: Specific heat capacity at room temperature
+  thermalConductivity:
+    value: 13.9
+    unit: "W/(m\xB7K)"
+    confidence: 0.88
+    source: ai_research
+    research_date: '2025-10-20T22:38:04.227570'
+    description: Thermal conductivity at room temperature
+  thermalDestruction:
+    value: 826
+    unit: "\xB0C"
+    confidence: 0.94
+    source: ai_research
+    research_date: '2025-10-20T22:38:04.227565'
+    description: Melting point of pure europium
+  thermalExpansion:
+    value: 35
+    unit: "10\u207B\u2076/K"
+    confidence: 0.85
+    source: ai_research
+    research_date: '2025-10-20T22:38:04.227575'
+    description: "Linear thermal expansion coefficient at 25\xB0C"
+  youngsModulus:
+    value: 18.2
+    unit: GPa
+    confidence: 0.82
+    source: ai_research
+    research_date: '2025-10-20T22:38:04.227585'
+    description: Young's modulus of polycrystalline europium
+category_info:
+  description: Lanthanide series elements with unique magnetic and optical properties
+    used in laser cleaning applications
+  properties_count: 9
+  category_ranges:
+    density:
+      min: 6.1
+      max: 9.8
+      unit: "g/cm\xB3"
+      research_basis: "Lanthanides range from La (6.15 g/cm\xB3) to Lu (9.84 g/cm\xB3\
+        )"
+      confidence: 98
+    hardness:
+      min: 25
+      max: 60
+      unit: HV
+      research_basis: Vickers hardness for rare-earth elements typically 25-60 HV
+      confidence: 90
+    laserReflectivity:
+      min: 40
+      max: 75
+      unit: '%'
+      research_basis: Metallic rare-earths have moderate to high reflectivity at 1064nm
+      confidence: 85
+    thermalConductivity:
+      min: 10
+      max: 17
+      unit: "W/(m\xB7K)"
+      research_basis: "Rare-earth thermal conductivity ranges from 10-17 W/(m\xB7\
+        K) at room temperature"
+      confidence: 92
+    thermalExpansion:
+      min: 5.0
+      max: 12.0
+      unit: "10\u207B\u2076/K"
+      research_basis: "Lanthanide thermal expansion coefficients typically 5-12 \xD7\
+        \ 10\u207B\u2076/K"
+      confidence: 90
+    specificHeat:
+      min: 150
+      max: 200
+      unit: "J/(kg\xB7K)"
+      research_basis: "Rare-earth specific heat capacities range 150-200 J/(kg\xB7\
+        K)"
+      confidence: 88
+    youngsModulus:
+      min: 25
+      max: 65
+      unit: GPa
+      research_basis: Elastic modulus for lanthanides typically 25-65 GPa
+      confidence: 85
+    thermalDestruction:
+      point:
+        min: 1000
+        max: 1700
+        unit: K
+      type: melting
+      research_basis: Lanthanide thermal destruction points range from ~1000K (Ce)
+        to ~1700K (Lu)
+      confidence: 98
+    boilingPoint:
+      min: 2800
+      max: 3700
+      unit: K
+      research_basis: Lanthanide boiling points range from ~2800K to ~3700K
+      confidence: 95
+    absorptivity:
+      min: 0.25
+      max: 0.6
+      unit: dimensionless
+      research_basis: Rare-earth metals have moderate to high absorption at laser
+        wavelengths
+      confidence: 85
+    oxidationResistance:
+      min: 300
+      max: 600
+      unit: "\xB0C"
+      research_basis: "Lanthanides oxidize readily above 300-600\xB0C depending on\
+        \ element"
+      confidence: 88
+    absorptionCoefficient:
+      min: 0.3
+      max: 0.8
+      unit: dimensionless
+      research_basis: Rare-earth metals have moderate to high absorption coefficients
+        at laser wavelengths
+      confidence: 85
+    ablationThreshold:
+      min: 0.5
+      max: 2.0
+      unit: "J/cm\xB2"
+      research_basis: "Lanthanide ablation thresholds typically range 0.5-2.0 J/cm\xB2\
+        \ for 1064nm"
+      confidence: 87

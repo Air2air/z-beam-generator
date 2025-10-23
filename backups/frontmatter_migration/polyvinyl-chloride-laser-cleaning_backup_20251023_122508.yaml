@@ -1,0 +1,131 @@
+name: Polyvinyl Chloride
+material: Polyvinyl Chloride
+title: PVC Laser Cleaning
+category: plastic
+generated_date: '2025-10-22T20:36:58.590910'
+data_completeness: 100%
+source: Materials.yaml (direct export)
+properties: {}
+category_info:
+  description: Polymeric materials including thermoplastics, thermosets, elastomers,
+    and specialty plastic compounds for delicate cleaning applications
+  properties_count: 0
+  category_ranges:
+    density:
+      max: 2.2
+      min: 0.85
+      unit: "g/cm\xB3"
+    hardness:
+      max: Shore D 90
+      min: Shore A 10
+      unit: Shore
+    laserAbsorption:
+      max: 100
+      min: 0.1
+      unit: "cm\u207B\xB9"
+    laserReflectivity:
+      max: 95
+      min: 4.0
+      unit: '%'
+      source: Polymer Optical Properties Database
+      confidence: 70
+      notes: Polystyrene at 4.2%
+      last_updated: '2025-10-15T14:19:43.867218'
+    specificHeat:
+      max: 2500
+      min: 1.0
+      unit: "J/(kg\xB7K)"
+      adjustment_note: "Unit appears to be kJ/(kg\xB7K) not J/(kg\xB7K)"
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+      phase2_adjustment: "TPE/Urethane at 1800 J/(kg\xB7K)"
+      notes: "Elastomers 1500-2000 J/(kg\xB7K), rigid plastics 1000-1500"
+    tensileStrength:
+      max: 400
+      min: 10
+      unit: MPa
+      adjustment_note: Elastomers have lower strength
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    thermalConductivity:
+      max: 3
+      min: 0.02
+      unit: "W/(m\xB7K)"
+      source: MatWeb Materials Database - Polymers
+      confidence: 75
+      notes: "Wide range includes specialty filled polymers (0.02-3 W/m\xB7K); typical\
+        \ unfilled polymers 0.15-0.35 W/m\xB7K"
+      last_updated: '2025-10-15T14:19:43.867225'
+    thermalDestruction:
+      point:
+        max: 400
+        min: 80
+        unit: "\xB0C"
+      type: decomposition
+    thermalDiffusivity:
+      max: 1
+      min: 0.08
+      unit: "mm\xB2/s"
+      adjustment_note: Rubber has low diffusivity
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+      notes: Rubber and elastomers have lower diffusivity
+    thermalExpansion:
+      max: 200
+      min: 10
+      unit: "\xB5m/m\xB7K"
+    youngsModulus:
+      max: 5000
+      min: 0.01
+      unit: GPa
+      phase2_adjustment: Rigid plastics 1000-3200 MPa
+      adjustment_date: '2025-10-15'
+      notes: Rigid plastics 2-5 GPa
+    compressiveStrength:
+      min: 20
+      max: 200
+      unit: MPa
+      description: Maximum compressive stress before failure
+      notes: Polymers weak in compression
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    corrosionResistance:
+      min: 5
+      max: 9
+      unit: rating
+      description: Resistance to chemical/electrochemical degradation
+      notes: Varies by polymer type
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    electricalResistivity:
+      min: 1000000000000.0
+      max: 1.0e+16
+      unit: "\u03A9\xB7m"
+      description: Resistance to electrical current flow
+      notes: Polymers are insulators
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    flexuralStrength:
+      min: 30
+      max: 200
+      unit: MPa
+      description: Maximum bending stress before failure
+      notes: Polymers moderate flexure
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    fractureToughness:
+      min: 1
+      max: 10
+      unit: "MPa\xB7m^0.5"
+      description: Resistance to crack propagation
+      notes: Polymers variable toughness
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    oxidationResistance:
+      min: 60.0
+      max: 260.0
+      unit: "\xB0C"
+      description: ''
+      sample_count: 6
+      auto_generated: true
+      generated_date: '2025-10-16'

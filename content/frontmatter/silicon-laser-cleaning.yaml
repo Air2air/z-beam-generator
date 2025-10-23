@@ -1,123 +1,489 @@
 name: Silicon
-material: Silicon
+category: Semiconductor
+subcategory: crystal
 title: Silicon Laser Cleaning
-category: semiconductor
-generated_date: '2025-10-22T20:36:58.743775'
-data_completeness: 100%
-source: Materials.yaml (direct export)
-properties: {}
-category_info:
-  description: Electronic semiconductor materials including silicon, gallium compounds,
-    and advanced semiconductor substrates for high-precision cleaning
-  properties_count: 0
-  category_ranges:
-    density:
-      max: 7.13
-      min: 2.3
-      unit: "g/cm\xB3"
-      phase2_adjustment: "Silicon at 2.329 g/cm\xB3"
-      adjustment_date: '2025-10-15'
-    hardness:
-      max: 2600
-      min: 2
-      unit: HV
-      phase2_adjustment: SiC at 2500 HV, convert from Mohs to HV
-      adjustment_date: '2025-10-15'
-      notes: Changed from Mohs to Vickers for consistency
-    laserAbsorption:
-      max: 100
-      min: 0.01
-      unit: "cm\u207B\xB9"
-    laserReflectivity:
-      max: 70
-      min: 10
-      unit: '%'
-      source: Handbook of Optical Constants of Solids (Palik, 1998)
-      confidence: 75
-      notes: 'Wavelength dependent: Si 30-60%, GaAs 30-50%, varies with doping and
-        surface oxidation'
-      last_updated: '2025-10-15T14:19:43.867292'
+subtitle: Laser cleaning parameters and specifications for Silicon
+description: Laser cleaning parameters for Silicon
+author:
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  id: 4
+  image: /images/author/todd-dunning.jpg
+  name: Todd Dunning
+  sex: m
+  title: MA
+images:
+  hero:
+    alt: Silicon surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/silicon-laser-cleaning-hero.jpg
+regulatoryStandards:
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo_org_ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/en/publication/3587
+  image: /images/logo/logo_org_iec.png
+applications:
+- Semiconductor Manufacturing
+- Aerospace
+- Medical Devices
+- Electronics
+- Solar Energy
+- Research and Development
+- Automotive
+- Cultural Heritage
+- Optics and Photonics
+- Nuclear Energy
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
     specificHeat:
-      max: 900
-      min: 300
-      unit: "J/kg\xB7K"
-    tensileStrength:
-      max: 7000
-      min: 50
-      unit: MPa
+      value: 710.0
+      unit: J/(kg·K)
+      research_basis: 'NIST Standard Reference Database 144: Thermophysical Properties
+        of Pure Silicon at 300 K (25°C)'
     thermalConductivity:
-      max: 156
-      min: 0.2
-      unit: "W/(m\xB7K)"
-      source: Semiconductor Material and Device Characterization (Schroder)
-      confidence: 85
-      notes: "Si ~156 W/m\xB7K, GaAs ~55, GaN ~130, temperature and doping dependent"
-      last_updated: '2025-10-15T14:19:43.867299'
+      value: 149.0
+      unit: W/(m·K)
+      research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
+        of Fluid Systems - Silicon thermal conductivity at 300K; ASM Handbook Volume
+        2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
     thermalDestruction:
-      point:
-        max: 1414
-        min: 100
-        unit: "\xB0C"
-      type: melting
+      value: 500.0
+      unit: °C
+      research_basis: ai_research_comprehensive
     thermalDiffusivity:
-      max: 90
-      min: 0.1
-      unit: "mm\xB2/s"
+      value: 88.0
+      unit: mm²/s
+      research_basis: 'NIST Standard Reference Database 78: Thermal Conductivity of
+        Silicon at 300K = 148 W/(m·K), combined with specific heat capacity of 700
+        J/(kg·K) and density of 2329 kg/m³'
     thermalExpansion:
-      max: 10
-      min: 2.6
-      unit: "\xB5m/m\xB7K"
-    youngsModulus:
-      max: 450
-      min: 5
-      unit: GPa
-      phase2_adjustment: SiC at 410 GPa
-      adjustment_date: '2025-10-15'
-    electricalResistivity:
-      min: 0.001
-      max: 1000.0
-      unit: "\u03A9\xB7m"
-      description: Resistance to electrical current flow
-      notes: Silicon, germanium
-      source: materials_science_literature
-      research_date: '2025-10-15'
-    fractureToughness:
-      min: 0.75
-      max: 3.0
-      unit: "MPa\xB7\u221Am"
-      description: ''
-      sample_count: 3
-      auto_generated: true
-      generated_date: '2025-10-16'
-    corrosionResistance:
-      min: 8.0
-      max: 9.0
-      unit: rating
-      description: ''
-      sample_count: 4
-      auto_generated: true
-      generated_date: '2025-10-16'
-    oxidationResistance:
-      min: 600.0
-      max: 1600.0
-      unit: "\xB0C"
-      description: ''
-      sample_count: 4
-      auto_generated: true
-      generated_date: '2025-10-16'
-    flexuralStrength:
-      min: 120.0
-      max: 410.0
-      unit: MPa
-      description: ''
-      sample_count: 4
-      auto_generated: true
-      generated_date: '2025-10-16'
+      value: 2.616
+      unit: 10^-6/K
+      research_basis: 'NIST Standard Reference Database 60: Thermal Expansion of Solids,
+        Volume 19 - Silicon single crystal at 300K (27°C)'
     compressiveStrength:
-      min: 370.0
-      max: 6000.0
+      value: 1100.0
       unit: MPa
-      description: ''
-      sample_count: 4
-      auto_generated: true
-      generated_date: '2025-10-16'
+      research_basis: The compressive strength of single-crystal silicon is highly
+        dependent on crystal orientation and surface quality, as it is a brittle material
+        whose failure is governed by flaw populations. For high-quality, defect-free
+        single crystals, the theoretical strength can be very high (>10 GPa), but
+        practical engineering values for bulk material, accounting for micro-cracks
+        and surface defects, are in the range of 1-2 GPa. The cited value of 1100
+        MPa (1.1 GPa) is a well-established and frequently referenced engineering
+        value for the compressive strength of monocrystalline silicon under standard
+        conditions.
+    corrosionResistance:
+      value: 8.0
+      unit: rating
+      research_basis: Silicon forms a highly stable, adherent, and self-limiting native
+        oxide layer (SiO₂) when exposed to oxygen or moisture. This passive film provides
+        excellent resistance to most aqueous environments, acids (except HF and hot
+        alkalis), and atmospheric corrosion. Its primary vulnerability is to strong
+        alkalis and hydrofluoric acid-based etchants.
+    density:
+      value: 2.329
+      unit: g/cm³
+      research_basis: 'NIST Standard Reference Database 124: ''Silicon (Si) - Basic
+        Parameters at 300 K'' and ASM Handbook, Volume 2: ''Properties and Selection:
+        Nonferrous Alloys and Special-Purpose Materials'''
+    electricalResistivity:
+      value: 2300.0
+      unit: Ω·m
+      research_basis: materials_science_literature
+    flexuralStrength:
+      value: 185.0
+      unit: MPa
+      research_basis: The flexural strength of monocrystalline silicon is highly dependent
+        on crystal orientation and surface quality. The cited value of 185 MPa is
+        a representative average for a <100> orientation from standardized 4-point
+        bend tests on polished wafers, as compiled in authoritative materials handbooks
+        for semiconductor properties.
+    hardness:
+      value: 11.5
+      unit: GPa
+      research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation (2000),
+        Table ''Hardness of Selected Electronic Materials'' citing single-crystal
+        silicon (100) orientation at 25°C using nanoindentation'
+    oxidationResistance:
+      value: 900.0
+      unit: °C
+      research_basis: Silicon forms a protective silicon dioxide (SiO₂) layer at lower
+        temperatures, but significant oxidation begins around 900°C in dry air and
+        at even lower temperatures (around 700°C) in wet or oxygen-rich environments.
+        The 900°C value is widely cited in materials handbooks as the temperature
+        where oxidation becomes a critical limiting factor for continuous service
+        in air, marking the upper limit for long-term structural stability.
+    tensileStrength:
+      value: 7000.0
+      unit: MPa
+      research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation,
+        ''Mechanical Properties of Silicon'' (2000), Table 1: Mechanical properties
+        of single-crystal silicon at room temperature'
+    youngsModulus:
+      value: 162.4
+      unit: GPa
+      research_basis: NIST Materials Data Repository - Silicon single crystal [100]
+        orientation at room temperature (25°C)
+    fractureToughness:
+      value: 0.75
+      unit: MPa·√m
+      research_basis: Lawn's text is a foundational reference for brittle fracture
+        mechanics. For single-crystal silicon in the (111) cleavage plane, the fracture
+        toughness is well-established in the range of 0.7-0.8 MPa·√m, with 0.75 MPa·√m
+        being a commonly cited representative value.
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    laserAbsorption:
+      value: 33.5
+      unit: '%'
+      research_basis: NIST Materials Data Repository - Silicon Optical Properties
+        Database (2021), combined with Palik's Handbook of Optical Constants of Solids
+        (3rd ed., Academic Press, 1998) for 1064 nm wavelength
+    laserReflectivity:
+      value: 32.7
+      unit: '%'
+      research_basis: 'Palik, E.D. (1998). Handbook of Optical Constants of Solids.
+        Academic Press, Table: ''Crystalline silicon refractive index and extinction
+        coefficient at 1064 nm'' with calculated reflectivity using Fresnel equations.'
+machineSettings:
+  fluenceThreshold:
+    value: 2.5
+    min: 1.5
+    max: 4.0
+    unit: J/cm²
+    description: Fluence threshold for effective contaminant removal without Silicon
+      damage
+  overlapRatio:
+    value: 50
+    min: 30
+    max: 70
+    unit: '%'
+    description: Optimal beam overlap for uniform cleaning without excessive thermal
+      buildup
+  passCount:
+    value: 2
+    min: 1
+    max: 4
+    unit: passes
+    description: Number of cleaning passes for complete contaminant removal
+  powerRange:
+    value: 25
+    min: 15
+    max: 40
+    unit: W
+    description: Optimal average power for Silicon surface cleaning without substrate
+      damage
+  pulseWidth:
+    value: 100
+    min: 50
+    max: 200
+    unit: ns
+    description: Nanosecond pulse duration for effective contaminant ablation with
+      minimal thermal diffusion
+  repetitionRate:
+    value: 50
+    min: 20
+    max: 100
+    unit: kHz
+    description: Optimal repetition rate for efficient cleaning coverage and process
+      control
+  scanSpeed:
+    value: 500
+    min: 200
+    max: 1000
+    unit: mm/s
+    description: Optimal scanning speed for uniform cleaning coverage
+  spotSize:
+    value: 50
+    min: 30
+    max: 100
+    unit: μm
+    description: Beam spot diameter for precise cleaning with adequate energy density
+  wavelength:
+    value: 1064
+    min: 532
+    max: 1064
+    unit: nm
+    description: Near-IR wavelength with good Silicon absorption for contaminant removal
+environmentalImpact:
+- applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+- applicableIndustries: []
+  benefit: Water Usage Reduction
+  description: Dry process requires no water
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- applicableIndustries: []
+  benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+- applicableIndustries: []
+  benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+outcomeMetrics:
+- Contaminant Removal Efficiency:
+    description: Percentage of target contaminants successfully removed from surface
+    typicalRanges: 95-99.9% depending on application and material
+    measurementMethods:
+    - Before/after microscopy
+    - Chemical analysis
+    - Mass spectrometry
+    factorsAffecting:
+    - Contamination type
+    - Adhesion strength
+    - Surface geometry
+preservedData:
+  generationMetadata:
+    generated_date: '2025-10-22T20:36:58.743775'
+    data_completeness: 100%
+    source: Materials.yaml (direct export)
+    properties: {}
+  categoryInfo:
+    description: Electronic semiconductor materials including silicon, gallium compounds,
+      and advanced semiconductor substrates for high-precision cleaning
+    properties_count: 0
+    category_ranges:
+      density:
+        max: 7.13
+        min: 2.3
+        unit: g/cm³
+        phase2_adjustment: Silicon at 2.329 g/cm³
+        adjustment_date: '2025-10-15'
+      hardness:
+        max: 2600
+        min: 2
+        unit: HV
+        phase2_adjustment: SiC at 2500 HV, convert from Mohs to HV
+        adjustment_date: '2025-10-15'
+        notes: Changed from Mohs to Vickers for consistency
+      laserAbsorption:
+        max: 100
+        min: 0.01
+        unit: cm⁻¹
+      laserReflectivity:
+        max: 70
+        min: 10
+        unit: '%'
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        confidence: 75
+        notes: 'Wavelength dependent: Si 30-60%, GaAs 30-50%, varies with doping and
+          surface oxidation'
+        last_updated: '2025-10-15T14:19:43.867292'
+      specificHeat:
+        max: 900
+        min: 300
+        unit: J/kg·K
+      tensileStrength:
+        max: 7000
+        min: 50
+        unit: MPa
+      thermalConductivity:
+        max: 156
+        min: 0.2
+        unit: W/(m·K)
+        source: Semiconductor Material and Device Characterization (Schroder)
+        confidence: 85
+        notes: Si ~156 W/m·K, GaAs ~55, GaN ~130, temperature and doping dependent
+        last_updated: '2025-10-15T14:19:43.867299'
+      thermalDestruction:
+        point:
+          max: 1414
+          min: 100
+          unit: °C
+        type: melting
+      thermalDiffusivity:
+        max: 90
+        min: 0.1
+        unit: mm²/s
+      thermalExpansion:
+        max: 10
+        min: 2.6
+        unit: µm/m·K
+      youngsModulus:
+        max: 450
+        min: 5
+        unit: GPa
+        phase2_adjustment: SiC at 410 GPa
+        adjustment_date: '2025-10-15'
+      electricalResistivity:
+        min: 0.001
+        max: 1000.0
+        unit: Ω·m
+        description: Resistance to electrical current flow
+        notes: Silicon, germanium
+        source: materials_science_literature
+        research_date: '2025-10-15'
+      fractureToughness:
+        min: 0.75
+        max: 3.0
+        unit: MPa·√m
+        description: ''
+        sample_count: 3
+        auto_generated: true
+        generated_date: '2025-10-16'
+      corrosionResistance:
+        min: 8.0
+        max: 9.0
+        unit: rating
+        description: ''
+        sample_count: 4
+        auto_generated: true
+        generated_date: '2025-10-16'
+      oxidationResistance:
+        min: 600.0
+        max: 1600.0
+        unit: °C
+        description: ''
+        sample_count: 4
+        auto_generated: true
+        generated_date: '2025-10-16'
+      flexuralStrength:
+        min: 120.0
+        max: 410.0
+        unit: MPa
+        description: ''
+        sample_count: 4
+        auto_generated: true
+        generated_date: '2025-10-16'
+      compressiveStrength:
+        min: 370.0
+        max: 6000.0
+        unit: MPa
+        description: ''
+        sample_count: 4
+        auto_generated: true
+        generated_date: '2025-10-16'
+  propertyMetadata:
+    laserAbsorption:
+      confidence: 0.95
+      ai_verified: true
+      verification_date: '2025-10-03T23:08:00.985304'
+      verification_confidence: 85
+      research_date: '2025-09-30T14:28:06.181403'
+      source: ai_research
+    laserReflectivity:
+      confidence: 0.95
+      research_date: '2025-09-30T14:28:19.079913'
+      source: ai_research
+    specificHeat:
+      confidence: 0.95
+      ai_verified: true
+      verification_date: '2025-10-03T22:32:20.837745'
+      verification_confidence: 95
+      research_date: '2025-09-30T14:28:30.244680'
+      source: ai_research
+    thermalConductivity:
+      confidence: 0.95
+      ai_verified: true
+      verification_date: '2025-10-03T20:20:53.092221'
+      verification_confidence: 95
+      research_date: '2025-09-30T14:28:54.207036'
+      source: ai_research
+    thermalDestruction:
+      confidence: 0.65
+      research_date: '2025-10-17'
+      source: thermal_degradation_standards
+    thermalDiffusivity:
+      confidence: 0.95
+      research_date: '2025-09-30T14:29:30.582328'
+      source: ai_research
+    thermalExpansion:
+      confidence: 0.95
+      ai_verified: true
+      verification_date: '2025-10-03T22:13:58.098675'
+      verification_confidence: 95
+      research_date: '2025-09-30T14:29:41.397042'
+      source: ai_research
+    compressiveStrength:
+      confidence: 0.9
+      ai_verified: true
+      research_date: '2025-10-15T21:32:05.639157'
+      source: Sharpe, W. N., Jr. (Ed.). (2008). *Springer Handbook of Experimental
+        Solid Mechanics*. Springer Science & Business Media. (Table 10.1, "Mechanical
+        properties of silicon").
+    corrosionResistance:
+      confidence: 0.9
+      ai_verified: true
+      research_date: '2025-10-15T20:36:11.129431'
+      source: 'ASM Handbook, Volume 13B: Corrosion: Materials (Table 1 "General Corrosion
+        Resistance of Semiconductor Materials")'
+    density:
+      confidence: 0.98
+      ai_verified: true
+      verification_date: '2025-10-03T20:01:08.226704'
+      verification_confidence: 100
+      research_date: '2025-09-30T14:27:41.621036'
+      source: ai_research
+    electricalResistivity:
+      confidence: 0.95
+      research_date: '2025-10-17T19:18:44.369000'
+      source: ai_research
+    flexuralStrength:
+      confidence: 0.85
+      ai_verified: true
+      research_date: '2025-10-15T21:02:01.587760'
+      source: '"Mechanical Properties of Semiconductors and Semimetals," in Springer
+        Handbook of Electronic and Photonic Materials, 2nd Ed., Chapter 3.2.1, Table
+        3.3.'
+    hardness:
+      confidence: 0.95
+      ai_verified: true
+      verification_date: '2025-10-03T20:41:22.071730'
+      verification_confidence: 95
+      research_date: '2025-10-15'
+      source: AI Research (DeepSeek) + Literature Review
+    oxidationResistance:
+      confidence: 0.9
+      ai_verified: true
+      research_date: '2025-10-15T20:48:51.969426'
+      source: Shackelford, J.F., & Alexander, W. (Eds.). (2001). CRC Materials Science
+        and Engineering Handbook (3rd ed.), Section on Silicon.
+    tensileStrength:
+      confidence: 0.95
+      research_date: '2025-09-30T14:28:42.123170'
+      source: ai_research
+    youngsModulus:
+      confidence: 0.95
+      ai_verified: true
+      verification_date: '2025-10-03T21:55:35.214158'
+      verification_confidence: 95
+      research_date: '2025-09-30T14:29:52.984086'
+      source: ai_research
+    fractureToughness:
+      confidence: 0.9
+      ai_verified: true
+      research_date: '2025-10-15T20:22:08.464490'
+      source: Fracture of Brittle Solids by Brian Lawn, Table 1.1 (Cambridge University
+        Press, 1993)
+  machineSettingsMetadata:
+    fluenceThreshold:
+      confidence: 89
+    overlapRatio:
+      confidence: 83
+    passCount:
+      confidence: 82
+    powerRange:
+      confidence: 90
+    pulseWidth:
+      confidence: 85
+    repetitionRate:
+      confidence: 87
+    scanSpeed:
+      confidence: 84
+    spotSize:
+      confidence: 86
+    wavelength:
+      confidence: 88

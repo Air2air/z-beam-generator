@@ -1,156 +1,331 @@
 name: Praseodymium
-material: Praseodymium
+category: Rare-Earth
+subcategory: element
 title: Praseodymium Laser Cleaning
-category: rare-earth
-generated_date: '2025-10-22T20:36:58.624010'
-data_completeness: 100%
-source: Materials.yaml (direct export)
-properties:
-  density:
-    value: 6.773
-    unit: "g/cm\xB3"
-    confidence: 95
-    source: ai_research
-    description: "Density of pure praseodymium at 25\xB0C"
-  hardness:
-    value: 0.4
-    unit: GPa
-    confidence: 85
-    source: ai_research
-    description: Vickers hardness of pure praseodymium
-  laserReflectivity:
-    value: 0.72
-    unit: dimensionless
-    confidence: 82
-    source: ai_research
-    description: Optical reflectivity at 1064 nm wavelength
-  oxidationResistance:
-    value: 0.15
-    unit: "mg/cm\xB2\xB7h"
-    confidence: 90
-    source: ai_research
-    description: "Oxidation rate in air at 400\xB0C"
-  specificHeat:
-    value: 193.0
-    unit: "J/(kg\xB7K)"
-    confidence: 90
-    source: ai_research
-    description: Specific heat capacity at room temperature
-  thermalConductivity:
-    value: 12.5
-    unit: "W/(m\xB7K)"
-    confidence: 85
-    source: ai_research
-    description: Thermal conductivity at room temperature
-  thermalDestruction:
-    value: 935
-    unit: "\xB0C"
-    confidence: 92
-    source: ai_research
-    description: Melting point of pure praseodymium
-  thermalExpansion:
-    value: 6.7
-    unit: "\u03BCm/m\xB7K"
-    confidence: 88
-    source: ai_research
-    description: "Linear thermal expansion coefficient at 25\xB0C"
-  youngsModulus:
-    value: 37.3
-    unit: GPa
-    confidence: 82
-    source: ai_research
-    description: Young's modulus of polycrystalline praseodymium
-category_info:
-  description: Lanthanide series elements with unique magnetic and optical properties
-    used in laser cleaning applications
-  properties_count: 9
-  category_ranges:
-    density:
-      min: 6.1
-      max: 9.8
-      unit: "g/cm\xB3"
-      research_basis: "Lanthanides range from La (6.15 g/cm\xB3) to Lu (9.84 g/cm\xB3\
-        )"
-      confidence: 98
-    hardness:
-      min: 25
-      max: 60
-      unit: HV
-      research_basis: Vickers hardness for rare-earth elements typically 25-60 HV
-      confidence: 90
-    laserReflectivity:
-      min: 40
-      max: 75
-      unit: '%'
-      research_basis: Metallic rare-earths have moderate to high reflectivity at 1064nm
-      confidence: 85
-    thermalConductivity:
-      min: 10
-      max: 17
-      unit: "W/(m\xB7K)"
-      research_basis: "Rare-earth thermal conductivity ranges from 10-17 W/(m\xB7\
-        K) at room temperature"
-      confidence: 92
-    thermalExpansion:
-      min: 5.0
-      max: 12.0
-      unit: "10\u207B\u2076/K"
-      research_basis: "Lanthanide thermal expansion coefficients typically 5-12 \xD7\
-        \ 10\u207B\u2076/K"
-      confidence: 90
-    specificHeat:
-      min: 150
-      max: 200
-      unit: "J/(kg\xB7K)"
-      research_basis: "Rare-earth specific heat capacities range 150-200 J/(kg\xB7\
-        K)"
-      confidence: 88
-    youngsModulus:
-      min: 25
-      max: 65
-      unit: GPa
-      research_basis: Elastic modulus for lanthanides typically 25-65 GPa
-      confidence: 85
-    thermalDestruction:
-      point:
-        min: 1000
-        max: 1700
+subtitle: Laser cleaning parameters and specifications for Praseodymium
+description: Laser cleaning parameters for Praseodymium
+author:
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  id: 4
+  image: /images/author/todd-dunning.jpg
+  name: Todd Dunning
+  sex: m
+  title: MA
+images:
+  hero:
+    alt: Praseodymium surface undergoing laser cleaning showing precise contamination
+      removal
+    url: /images/material/praseodymium-laser-cleaning-hero.jpg
+regulatoryStandards:
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo_org_ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/en/publication/3587
+  image: /images/logo/logo_org_iec.png
+applications:
+- Electronics Manufacturing
+- Aerospace
+- Automotive
+- Renewable Energy
+- Industrial
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+machineSettings:
+  dwellTime:
+    value: 120
+    min: 50
+    max: 300
+    unit: μs
+    description: Optimal dwell time per spot for Praseodymium material interaction
+  energyDensity:
+    value: 3.2
+    min: 2.0
+    max: 5.0
+    unit: J/cm²
+    description: Optimal energy density for controlled Praseodymium ablation
+  fluenceThreshold:
+    value: 2.5
+    min: 1.8
+    max: 4.0
+    unit: J/cm²
+    description: Minimum fluence required for effective Praseodymium surface cleaning
+  overlapRatio:
+    value: 40
+    min: 30
+    max: 60
+    unit: '%'
+    description: Optimal beam overlap for uniform Praseodymium processing
+  passCount:
+    value: 3
+    min: 1
+    max: 6
+    unit: passes
+    description: Optimal number of passes for complete Praseodymium surface cleaning
+  powerRange:
+    value: 90
+    min: 70
+    max: 120
+    unit: W
+    description: Optimal average power for Praseodymium oxide removal
+  pulseWidth:
+    value: 12
+    min: 8
+    max: 20
+    unit: ns
+    description: Optimal pulse duration for Praseodymium thermal management
+  repetitionRate:
+    value: 50
+    min: 20
+    max: 100
+    unit: kHz
+    description: Optimal repetition rate for efficient Praseodymium cleaning
+  scanSpeed:
+    value: 500
+    min: 200
+    max: 1000
+    unit: mm/s
+    description: Optimal scanning speed for uniform Praseodymium cleaning
+  spotSize:
+    value: 80
+    min: 50
+    max: 150
+    unit: μm
+    description: Optimal beam spot diameter for Praseodymium surface processing
+  wavelength:
+    value: 1064
+    min: 532
+    max: 1064
+    unit: nm
+    description: Optimal wavelength for Praseodymium absorption characteristics
+environmentalImpact:
+- applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  benefit: Chemical Waste Elimination
+  description: Praseodymium laser cleaning achieves chemical waste elimination by
+    using a non-ablative process that selectively excites contaminants through photochemical
+    and photothermal interactions, avoiding the hazardous solvent strippers and acid
+    etchants traditionally required for cleaning rare-earth components and optics.
+    This prevents the generation of toxic spent chemical solutions and sludge containing
+    leached rare-earth ions.
+  quantifiedBenefits: Praseodymium laser cleaning eliminates 100% of chemical waste,
+    reduces operational costs by 30%, and increases processing speed by 50%.
+- applicableIndustries: []
+  benefit: Water Usage Reduction
+  description: Praseodymium-doped laser cleaning achieves water usage reduction by
+    utilizing high-purity, rare-earth-generated laser light for precise ablation,
+    eliminating the need for the water-intensive slurry and rinse cycles required
+    by traditional wet cleaning methods.
+- applicableIndustries: []
+  benefit: Energy Efficiency
+  description: Praseodymium-doped lasers operate with high slope efficiency, converting
+    a greater proportion of pump energy into usable laser output. This reduces the
+    total electrical energy required for ablation and surface cleaning processes compared
+    to conventional methods.
+- applicableIndustries: []
+  benefit: Air Quality Improvement
+  description: Praseodymium laser cleaning achieves air quality improvement by utilizing
+    a high-purity, rare-earth-doped gain medium that enables precise material ablation,
+    eliminating the generation of secondary airborne pollutants like abrasive dust
+    or chemical vapors associated with conventional methods. This non-contact, dry
+    process ensures that no consumable byproducts are released into the atmosphere.
+outcomeMetrics:
+- Contaminant Removal Efficiency:
+    description: Percentage of target contaminants successfully removed from surface
+    typicalRanges: 95-99.9% depending on application and material
+    measurementMethods:
+    - Before/after microscopy
+    - Chemical analysis
+    - Mass spectrometry
+    factorsAffecting:
+    - Contamination type
+    - Adhesion strength
+    - Surface geometry
+preservedData:
+  generationMetadata:
+    generated_date: '2025-10-22T20:36:58.624010'
+    data_completeness: 100%
+    source: Materials.yaml (direct export)
+    properties:
+      density:
+        value: 6.773
+        unit: g/cm³
+        confidence: 95
+        source: ai_research
+        description: Density of pure praseodymium at 25°C
+      hardness:
+        value: 0.4
+        unit: GPa
+        confidence: 85
+        source: ai_research
+        description: Vickers hardness of pure praseodymium
+      laserReflectivity:
+        value: 0.72
+        unit: dimensionless
+        confidence: 82
+        source: ai_research
+        description: Optical reflectivity at 1064 nm wavelength
+      oxidationResistance:
+        value: 0.15
+        unit: mg/cm²·h
+        confidence: 90
+        source: ai_research
+        description: Oxidation rate in air at 400°C
+      specificHeat:
+        value: 193.0
+        unit: J/(kg·K)
+        confidence: 90
+        source: ai_research
+        description: Specific heat capacity at room temperature
+      thermalConductivity:
+        value: 12.5
+        unit: W/(m·K)
+        confidence: 85
+        source: ai_research
+        description: Thermal conductivity at room temperature
+      thermalDestruction:
+        value: 935
+        unit: °C
+        confidence: 92
+        source: ai_research
+        description: Melting point of pure praseodymium
+      thermalExpansion:
+        value: 6.7
+        unit: μm/m·K
+        confidence: 88
+        source: ai_research
+        description: Linear thermal expansion coefficient at 25°C
+      youngsModulus:
+        value: 37.3
+        unit: GPa
+        confidence: 82
+        source: ai_research
+        description: Young's modulus of polycrystalline praseodymium
+  categoryInfo:
+    description: Lanthanide series elements with unique magnetic and optical properties
+      used in laser cleaning applications
+    properties_count: 9
+    category_ranges:
+      density:
+        min: 6.1
+        max: 9.8
+        unit: g/cm³
+        research_basis: Lanthanides range from La (6.15 g/cm³) to Lu (9.84 g/cm³)
+        confidence: 98
+      hardness:
+        min: 25
+        max: 60
+        unit: HV
+        research_basis: Vickers hardness for rare-earth elements typically 25-60 HV
+        confidence: 90
+      laserReflectivity:
+        min: 40
+        max: 75
+        unit: '%'
+        research_basis: Metallic rare-earths have moderate to high reflectivity at
+          1064nm
+        confidence: 85
+      thermalConductivity:
+        min: 10
+        max: 17
+        unit: W/(m·K)
+        research_basis: Rare-earth thermal conductivity ranges from 10-17 W/(m·K)
+          at room temperature
+        confidence: 92
+      thermalExpansion:
+        min: 5.0
+        max: 12.0
+        unit: 10⁻⁶/K
+        research_basis: Lanthanide thermal expansion coefficients typically 5-12 ×
+          10⁻⁶/K
+        confidence: 90
+      specificHeat:
+        min: 150
+        max: 200
+        unit: J/(kg·K)
+        research_basis: Rare-earth specific heat capacities range 150-200 J/(kg·K)
+        confidence: 88
+      youngsModulus:
+        min: 25
+        max: 65
+        unit: GPa
+        research_basis: Elastic modulus for lanthanides typically 25-65 GPa
+        confidence: 85
+      thermalDestruction:
+        point:
+          min: 1000
+          max: 1700
+          unit: K
+        type: melting
+        research_basis: Lanthanide thermal destruction points range from ~1000K (Ce)
+          to ~1700K (Lu)
+        confidence: 98
+      boilingPoint:
+        min: 2800
+        max: 3700
         unit: K
-      type: melting
-      research_basis: Lanthanide thermal destruction points range from ~1000K (Ce)
-        to ~1700K (Lu)
-      confidence: 98
-    boilingPoint:
-      min: 2800
-      max: 3700
-      unit: K
-      research_basis: Lanthanide boiling points range from ~2800K to ~3700K
-      confidence: 95
-    absorptivity:
-      min: 0.25
-      max: 0.6
-      unit: dimensionless
-      research_basis: Rare-earth metals have moderate to high absorption at laser
-        wavelengths
+        research_basis: Lanthanide boiling points range from ~2800K to ~3700K
+        confidence: 95
+      absorptivity:
+        min: 0.25
+        max: 0.6
+        unit: dimensionless
+        research_basis: Rare-earth metals have moderate to high absorption at laser
+          wavelengths
+        confidence: 85
+      oxidationResistance:
+        min: 300
+        max: 600
+        unit: °C
+        research_basis: Lanthanides oxidize readily above 300-600°C depending on element
+        confidence: 88
+      absorptionCoefficient:
+        min: 0.3
+        max: 0.8
+        unit: dimensionless
+        research_basis: Rare-earth metals have moderate to high absorption coefficients
+          at laser wavelengths
+        confidence: 85
+      ablationThreshold:
+        min: 0.5
+        max: 2.0
+        unit: J/cm²
+        research_basis: Lanthanide ablation thresholds typically range 0.5-2.0 J/cm²
+          for 1064nm
+        confidence: 87
+  machineSettingsMetadata:
+    dwellTime:
+      confidence: 81
+    energyDensity:
       confidence: 85
-    oxidationResistance:
-      min: 300
-      max: 600
-      unit: "\xB0C"
-      research_basis: "Lanthanides oxidize readily above 300-600\xB0C depending on\
-        \ element"
+    fluenceThreshold:
       confidence: 88
-    absorptionCoefficient:
-      min: 0.3
-      max: 0.8
-      unit: dimensionless
-      research_basis: Rare-earth metals have moderate to high absorption coefficients
-        at laser wavelengths
+    overlapRatio:
       confidence: 85
-    ablationThreshold:
-      min: 0.5
-      max: 2.0
-      unit: "J/cm\xB2"
-      research_basis: "Lanthanide ablation thresholds typically range 0.5-2.0 J/cm\xB2\
-        \ for 1064nm"
+    passCount:
+      confidence: 82
+    powerRange:
+      confidence: 92
+    pulseWidth:
       confidence: 87
+    repetitionRate:
+      confidence: 84
+    scanSpeed:
+      confidence: 83
+    spotSize:
+      confidence: 86
+    wavelength:
+      confidence: 90

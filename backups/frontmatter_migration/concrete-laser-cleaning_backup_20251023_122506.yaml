@@ -1,0 +1,117 @@
+name: Concrete
+material: Concrete
+title: Concrete Laser Cleaning
+category: masonry
+generated_date: '2025-10-22T20:36:58.102358'
+data_completeness: 100%
+source: Materials.yaml (direct export)
+properties: {}
+category_info:
+  description: Construction masonry materials including concrete, brick, mortar, stucco,
+    and stone-based building materials for restoration cleaning
+  properties_count: 0
+  category_ranges:
+    density:
+      max: 3.2
+      min: 0.6
+      unit: "g/cm\xB3"
+      adjustment_note: "Most masonry < 2.5 g/cm\xB3"
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+      phase2_adjustment: "Cement at 3.15 g/cm\xB3"
+    hardness:
+      max: 6
+      min: 1
+      unit: Mohs
+      adjustment_note: Plaster can be softer
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    laserAbsorption:
+      max: 15
+      min: 0.5
+      unit: "cm\u207B\xB9"
+    laserReflectivity:
+      max: 70
+      min: 10
+      unit: '%'
+      source: Building Materials Optical Properties Database
+      confidence: 70
+      notes: Concrete 20-40%, brick 20-50%, varies with color and surface texture
+      last_updated: '2025-10-15T14:19:43.867310'
+    specificHeat:
+      max: 1100
+      min: 700
+      unit: "J/kg\xB7K"
+    tensileStrength:
+      max: 15
+      min: 1
+      unit: MPa
+    thermalConductivity:
+      max: 2.5
+      min: 0.08
+      unit: "W/(m\xB7K)"
+      source: ASHRAE Handbook - Fundamentals
+      confidence: 80
+      notes: Concrete ~1.0, brick ~0.6, lightweight concrete 0.1-0.5, varies with
+        density and moisture
+      last_updated: '2025-10-15T14:19:43.867317'
+    thermalDestruction:
+      point:
+        max: 1200
+        min: 500
+        unit: "\xB0C"
+      type: spalling
+    thermalDiffusivity:
+      max: 1
+      min: 0.1
+      unit: "mm\xB2/s"
+    thermalExpansion:
+      max: 20
+      min: 5
+      unit: "\xB5m/m\xB7K"
+    youngsModulus:
+      max: 50
+      min: 3.0
+      unit: GPa
+      phase2_adjustment: Plaster at 3.0 GPa
+      adjustment_date: '2025-10-15'
+    compressiveStrength:
+      min: 5
+      max: 100
+      unit: MPa
+      description: Maximum compressive stress before failure
+      notes: Brick, concrete, stone
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    flexuralStrength:
+      min: 2
+      max: 20
+      unit: MPa
+      description: Maximum bending stress before failure
+      notes: Masonry weak in bending
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    fractureToughness:
+      min: 0.15
+      max: 1.1
+      unit: "MPa\xB7\u221Am"
+      description: ''
+      sample_count: 7
+      auto_generated: true
+      generated_date: '2025-10-16'
+    corrosionResistance:
+      min: 2.0
+      max: 8.0
+      unit: rating
+      description: ''
+      sample_count: 7
+      auto_generated: true
+      generated_date: '2025-10-16'
+    oxidationResistance:
+      min: 300.0
+      max: 1200.0
+      unit: "\xB0C"
+      description: ''
+      sample_count: 7
+      auto_generated: true
+      generated_date: '2025-10-16'

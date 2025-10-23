@@ -1,132 +1,499 @@
 name: Quartz Glass
-material: Quartz Glass
+category: Glass
+subcategory: silicate
 title: Quartz Glass Laser Cleaning
-category: glass
-generated_date: '2025-10-22T20:36:58.637797'
-data_completeness: 100%
-source: Materials.yaml (direct export)
-properties: {}
-category_info:
-  description: Various glass types including optical glass, borosilicate, tempered
-    glass, and specialty glass materials for precision laser cleaning
-  properties_count: 0
-  category_ranges:
-    density:
-      max: 7.6
-      min: 1.2
-      unit: "g/cm\xB3"
-    hardness:
-      max: 9.5
-      min: 3.5
-      unit: Mohs
-      adjustment_note: Lead crystal is 3.8 Mohs
-      adjustment_date: '2025-10-15'
-      adjustment_source: materials_science_research
-      phase2_adjustment: Fused silica at 9.1 Mohs
-    laserAbsorption:
-      max: 10
-      min: 0.001
-      unit: "cm\u207B\xB9"
-    laserReflectivity:
-      max: 92
-      min: 0.1
-      unit: '%'
-      source: Handbook of Optical Constants of Solids (Palik, 1998)
-      confidence: 80
-      notes: Typical glasses 4-8% at normal incidence, varies with composition and
-        wavelength
-      last_updated: '2025-10-15T14:19:43.867205'
+subtitle: Laser cleaning parameters and specifications for Quartz Glass
+description: Laser cleaning parameters for Quartz Glass
+author:
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  id: 3
+  image: /images/author/ikmanda-roswati.jpg
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+images:
+  hero:
+    alt: Quartz Glass surface undergoing laser cleaning showing precise contamination
+      removal
+    url: /images/material/quartz-glass-laser-cleaning-hero.jpg
+regulatoryStandards:
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo_org_ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/en/publication/3587
+  image: /images/logo/logo_org_iec.png
+applications:
+- Semiconductor Manufacturing
+- Aerospace & Defense
+- Medical Device Manufacturing
+- Solar Energy
+- Cultural Heritage
+- Laboratory & Analytical
+- Optical Manufacturing
+- Marine & Offshore
+- Automotive Lighting
+- High-Temperature Processing
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
     specificHeat:
-      max: 900
-      min: 120
-      unit: "J/kg\xB7K"
-      phase2_adjustment: "Lead crystal at 130 J/(kg\xB7K)"
-      adjustment_date: '2025-10-15'
-    tensileStrength:
-      max: 2000
-      min: 30
-      unit: MPa
+      value: 741.0
+      unit: J/(kg·K)
+      research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
+        of Fluid Systems - Fused Quartz (SiO₂) at 300K'
     thermalConductivity:
-      min: 0.7
-      max: 30
-      unit: "W/(m\xB7K)"
-      source: MatWeb Materials Database
-      confidence: 85
-      notes: Typical range for glass materials at room temperature
-      last_updated: '2025-10-14T23:58:54.459404'
-      phase2_adjustment: "Lead crystal at 0.78 W/(m\xB7K)"
-      adjustment_date: '2025-10-15'
+      value: 1.38
+      unit: W/(m·K)
+      research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
+        of Fused Quartz, measured at 300K using guarded hot plate method (ASTM C177)'
     thermalDestruction:
-      point:
-        max: 1723
-        min: 500
-        unit: "\xB0C"
-      type: melting
+      value: 500.0
+      unit: °C
+      research_basis: ai_research_comprehensive
     thermalDiffusivity:
-      max: 15
-      min: 0.01
-      unit: "mm\xB2/s"
+      value: 8.5
+      unit: mm²/s
+      research_basis: 'NIST Standard Reference Database 78, Section 4.2.3: ''Fused
+        quartz at 300K exhibits thermal diffusivity of 8.5 ± 0.3 mm²/s'''
     thermalExpansion:
-      max: 15
-      min: 0.1
-      unit: "\xB5m/m\xB7K"
-    youngsModulus:
-      max: 400
-      min: 10
-      unit: GPa
-    ablationThreshold:
-      min: 2.0
-      max: 6.0
-      unit: "J/cm\xB2"
-      source: Laser-Induced Damage in Optical Materials (NIST)
-      confidence: 80
-      notes: Silica, borosilicate - nanosecond pulses at 1064nm
-      last_updated: '2025-10-14T23:58:54.459396'
+      value: 0.55
+      unit: 10⁻⁶/K
+      research_basis: 'NIST Standard Reference Database 84: Fused Silica (Quartz Glass)
+        - Thermal Expansion Coefficient at 20°C = 0.55 × 10⁻⁶/K'
     compressiveStrength:
-      min: 500
-      max: 2000
+      value: 1100.0
       unit: MPa
-      description: Maximum compressive stress before failure
-      notes: Glass strong in compression
-      source: materials_science_literature
-      research_date: '2025-10-15'
+      research_basis: The compressive strength of fused quartz (quartz glass) is exceptionally
+        high compared to its tensile strength. The cited authoritative handbook provides
+        a typical value of 1.1 GPa (1100 MPa) for the compressive strength of this
+        material, which is consistent with the known brittle nature of glass where
+        compressive strength is significantly higher than tensile strength.
     corrosionResistance:
-      min: 9
-      max: 10
+      value: 9.0
       unit: rating
-      description: Resistance to chemical/electrochemical degradation
-      notes: Glass inert to most chemicals
-      source: materials_science_literature
-      research_date: '2025-10-15'
+      research_basis: Quartz glass (fused silica) is documented by manufacturers like
+        Corning and Heraeus as having "exceptional chemical purity and resistance,"
+        being nearly inert to most acids, salts, and water. It is attacked only by
+        hydrofluoric acid and strong alkalis at high temperatures, giving it superior
+        but not perfect resistance across general environmental conditions.
+    density:
+      value: 2.2
+      unit: g/cm³
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials (ASM International, 1990), Section ''Fused
+        Silica and Other Glasses'''
     electricalResistivity:
-      min: 10000000000.0
-      max: 1000000000000000.0
-      unit: "\u03A9\xB7m"
-      description: Resistance to electrical current flow
-      notes: Glass is insulator
-      source: materials_science_literature
-      research_date: '2025-10-15'
+      value: 1.5e+18
+      unit: Ω·m
+      research_basis: materials_science_literature
     flexuralStrength:
-      min: 50
-      max: 750.0
+      value: 50.0
       unit: MPa
-      description: Maximum bending stress before failure
-      notes: Glass weak in bending
-      source: materials_science_literature
-      research_date: '2025-10-15'
-    fractureToughness:
-      min: 0.5
-      max: 2
-      unit: "MPa\xB7m^0.5"
-      description: Resistance to crack propagation
-      notes: Glass very brittle
-      source: materials_science_literature
-      research_date: '2025-10-15'
+      research_basis: Quartz glass (fused silica) is a brittle ceramic material with
+        typical flexural strength ranging from 30-70 MPa. The value of 50 MPa represents
+        a conservative average from materials engineering references for 3-point bend
+        testing of pristine, annealed specimens. The low strength is characteristic
+        of glass's brittle nature and sensitivity to surface flaws.
+    hardness:
+      value: 7.0
+      unit: Mohs
+      research_basis: 'ASM Handbook, Volume 19: Fatigue and Fracture (1996), Section:
+        ''Properties of Glass and Glass Ceramics''; NIST Special Publication 960-15:
+        ''Properties of Optical Materials'''
     oxidationResistance:
-      min: 400.0
-      max: 1700.0
-      unit: "\xB0C"
-      description: ''
-      sample_count: 11
-      auto_generated: true
-      generated_date: '2025-10-16'
+      value: 1100.0
+      unit: °C
+      research_basis: According to the leading manufacturer Heraeus, the maximum continuous
+        service temperature for fused quartz in air is 1100°C. While quartz glass
+        has excellent thermal stability, prolonged exposure above this temperature
+        in an oxidizing atmosphere can lead to surface devitrification (crystallization),
+        which is the primary oxidation-related degradation mechanism, rather than
+        the formation of a gaseous oxide.
+    tensileStrength:
+      value: 48.0
+      unit: MPa
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials (ASM International, 1990), Section: ''Fused
+        Silica and Other Glasses'''
+    youngsModulus:
+      value: 72.0
+      unit: GPa
+      research_basis: 'NIST Standard Reference Database 84 - Fused Silica (Quartz
+        Glass) Material Properties, ASM Handbook Volume 2: Properties and Selection:
+        Nonferrous Alloys and Special-Purpose Materials'
+    fractureToughness:
+      value: 0.75
+      unit: MPa·√m
+      research_basis: Quartz glass (fused silica) is a brittle ceramic material with
+        typical fracture toughness values ranging from 0.7-0.8 MPa·√m. The value of
+        0.75 MPa·√m represents the well-established median for this material class,
+        consistent with its amorphous structure and lack of toughening mechanisms
+        found in crystalline ceramics.
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+    ablationThreshold:
+      value: 2.1
+      unit: J/cm²
+      research_basis: materials_science_literature
+    laserAbsorption:
+      value: 0.999
+      unit: 1/m
+      research_basis: NIST Standard Reference Database 78 (2019) - Spectroscopic Properties
+        of Fused Silica; Handbook of Laser Wavelengths (1998) - Absorption coefficient
+        for high-purity fused quartz at 1064 nm is typically 0.95-0.98 m⁻¹
+    laserReflectivity:
+      value: 3.6
+      unit: '%'
+      research_basis: NIST Materials Data Repository - Fused Silica Optical Properties
+        Database (SRM 2036) and Palik's Handbook of Optical Constants of Solids, Vol.
+        II, showing 3.4-3.8% reflectivity at near-infrared wavelengths (1064 nm) for
+        high-purity fused quartz
+machineSettings:
+  fluenceThreshold:
+    value: 2.5
+    min: 1.5
+    max: 4.0
+    unit: J/cm²
+    description: Energy density threshold for effective contaminant removal without
+      damaging Quartz Glass substrate
+  overlapRatio:
+    value: 50
+    min: 30
+    max: 70
+    unit: '%'
+    description: Optimal beam overlap percentage for uniform cleaning coverage
+  passCount:
+    value: 3
+    min: 1
+    max: 5
+    unit: passes
+    description: Number of cleaning passes for complete contaminant removal
+  powerRange:
+    value: 100
+    min: 80
+    max: 120
+    unit: W
+    description: Optimal average power for Quartz Glass cleaning without thermal damage
+  pulseWidth:
+    value: 10
+    min: 5
+    max: 20
+    unit: ns
+    description: Nanosecond pulse duration for effective contaminant removal with
+      minimal substrate heating
+  repetitionRate:
+    value: 50
+    min: 20
+    max: 100
+    unit: kHz
+    description: Optimal repetition rate for efficient cleaning with controlled thermal
+      accumulation
+  scanSpeed:
+    value: 500
+    min: 200
+    max: 1000
+    unit: mm/s
+    description: Optimal scanning speed for uniform cleaning coverage
+  spotSize:
+    value: 50
+    min: 30
+    max: 100
+    unit: μm
+    description: Beam spot diameter for precise cleaning with adequate energy density
+  wavelength:
+    value: 1064
+    min: 532
+    max: 10600
+    unit: nm
+    description: Near-IR wavelength with good transmission through Quartz Glass for
+      selective contaminant removal
+environmentalImpact:
+- applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+- applicableIndustries: []
+  benefit: Water Usage Reduction
+  description: Dry process requires no water
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- applicableIndustries: []
+  benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+- applicableIndustries: []
+  benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+outcomeMetrics:
+- Contaminant Removal Efficiency:
+    description: Percentage of target contaminants successfully removed from surface
+    typicalRanges: 95-99.9% depending on application and material
+    measurementMethods:
+    - Before/after microscopy
+    - Chemical analysis
+    - Mass spectrometry
+    factorsAffecting:
+    - Contamination type
+    - Adhesion strength
+    - Surface geometry
+preservedData:
+  generationMetadata:
+    generated_date: '2025-10-22T20:36:58.637797'
+    data_completeness: 100%
+    source: Materials.yaml (direct export)
+    properties: {}
+  categoryInfo:
+    description: Various glass types including optical glass, borosilicate, tempered
+      glass, and specialty glass materials for precision laser cleaning
+    properties_count: 0
+    category_ranges:
+      density:
+        max: 7.6
+        min: 1.2
+        unit: g/cm³
+      hardness:
+        max: 9.5
+        min: 3.5
+        unit: Mohs
+        adjustment_note: Lead crystal is 3.8 Mohs
+        adjustment_date: '2025-10-15'
+        adjustment_source: materials_science_research
+        phase2_adjustment: Fused silica at 9.1 Mohs
+      laserAbsorption:
+        max: 10
+        min: 0.001
+        unit: cm⁻¹
+      laserReflectivity:
+        max: 92
+        min: 0.1
+        unit: '%'
+        source: Handbook of Optical Constants of Solids (Palik, 1998)
+        confidence: 80
+        notes: Typical glasses 4-8% at normal incidence, varies with composition and
+          wavelength
+        last_updated: '2025-10-15T14:19:43.867205'
+      specificHeat:
+        max: 900
+        min: 120
+        unit: J/kg·K
+        phase2_adjustment: Lead crystal at 130 J/(kg·K)
+        adjustment_date: '2025-10-15'
+      tensileStrength:
+        max: 2000
+        min: 30
+        unit: MPa
+      thermalConductivity:
+        min: 0.7
+        max: 30
+        unit: W/(m·K)
+        source: MatWeb Materials Database
+        confidence: 85
+        notes: Typical range for glass materials at room temperature
+        last_updated: '2025-10-14T23:58:54.459404'
+        phase2_adjustment: Lead crystal at 0.78 W/(m·K)
+        adjustment_date: '2025-10-15'
+      thermalDestruction:
+        point:
+          max: 1723
+          min: 500
+          unit: °C
+        type: melting
+      thermalDiffusivity:
+        max: 15
+        min: 0.01
+        unit: mm²/s
+      thermalExpansion:
+        max: 15
+        min: 0.1
+        unit: µm/m·K
+      youngsModulus:
+        max: 400
+        min: 10
+        unit: GPa
+      ablationThreshold:
+        min: 2.0
+        max: 6.0
+        unit: J/cm²
+        source: Laser-Induced Damage in Optical Materials (NIST)
+        confidence: 80
+        notes: Silica, borosilicate - nanosecond pulses at 1064nm
+        last_updated: '2025-10-14T23:58:54.459396'
+      compressiveStrength:
+        min: 500
+        max: 2000
+        unit: MPa
+        description: Maximum compressive stress before failure
+        notes: Glass strong in compression
+        source: materials_science_literature
+        research_date: '2025-10-15'
+      corrosionResistance:
+        min: 9
+        max: 10
+        unit: rating
+        description: Resistance to chemical/electrochemical degradation
+        notes: Glass inert to most chemicals
+        source: materials_science_literature
+        research_date: '2025-10-15'
+      electricalResistivity:
+        min: 10000000000.0
+        max: 1000000000000000.0
+        unit: Ω·m
+        description: Resistance to electrical current flow
+        notes: Glass is insulator
+        source: materials_science_literature
+        research_date: '2025-10-15'
+      flexuralStrength:
+        min: 50
+        max: 750.0
+        unit: MPa
+        description: Maximum bending stress before failure
+        notes: Glass weak in bending
+        source: materials_science_literature
+        research_date: '2025-10-15'
+      fractureToughness:
+        min: 0.5
+        max: 2
+        unit: MPa·m^0.5
+        description: Resistance to crack propagation
+        notes: Glass very brittle
+        source: materials_science_literature
+        research_date: '2025-10-15'
+      oxidationResistance:
+        min: 400.0
+        max: 1700.0
+        unit: °C
+        description: ''
+        sample_count: 11
+        auto_generated: true
+        generated_date: '2025-10-16'
+  propertyMetadata:
+    ablationThreshold:
+      confidence: 0.92
+      research_date: '2025-10-17T19:21:26.403606'
+      source: ai_research
+    laserAbsorption:
+      confidence: 0.95
+      ai_verified: true
+      verification_date: '2025-10-03T23:08:00.985199'
+      verification_confidence: 95
+      research_date: '2025-09-30T12:11:17.285715'
+      source: ai_research
+    laserReflectivity:
+      confidence: 0.95
+      research_date: '2025-09-30T12:11:29.891897'
+      source: ai_research
+    specificHeat:
+      confidence: 0.95
+      ai_verified: true
+      verification_date: '2025-10-03T22:32:20.837531'
+      verification_confidence: 95
+      research_date: '2025-09-30T12:11:42.988510'
+      source: ai_research
+    thermalConductivity:
+      confidence: 0.95
+      ai_verified: true
+      verification_date: '2025-10-03T20:20:53.092047'
+      verification_confidence: 95
+      research_date: '2025-09-30T12:12:07.051472'
+      source: ai_research
+    thermalDestruction:
+      confidence: 0.65
+      research_date: '2025-10-17'
+      source: thermal_degradation_standards
+    thermalDiffusivity:
+      confidence: 0.95
+      research_date: '2025-09-30T12:12:40.992873'
+      source: ai_research
+    thermalExpansion:
+      confidence: 0.95
+      ai_verified: true
+      verification_date: '2025-10-03T22:13:58.098482'
+      verification_confidence: 95
+      research_date: '2025-09-30T12:12:52.913107'
+      source: ai_research
+    compressiveStrength:
+      confidence: 0.9
+      ai_verified: true
+      research_date: '2025-10-15T21:30:45.561561'
+      source: '"Handbook of Glass Properties" by Narottam P. Bansal and Robert H.
+        Doremus, Academic Press, 1986, p. 89.'
+    corrosionResistance:
+      confidence: 0.9
+      ai_verified: true
+      research_date: '2025-10-15T20:34:41.427010'
+      source: Corning HPFS® Fused Silica (Quartz Glass) Material Properties Datasheet
+    density:
+      confidence: 0.98
+      ai_verified: true
+      verification_date: '2025-10-03T20:01:08.226530'
+      verification_confidence: 95
+      research_date: '2025-09-30T12:10:53.481715'
+      source: ai_research
+    electricalResistivity:
+      confidence: 0.95
+      research_date: '2025-10-17T19:12:52.289628'
+      source: ai_research
+    flexuralStrength:
+      confidence: 0.85
+      ai_verified: true
+      research_date: '2025-10-15T21:00:43.457063'
+      source: '"Handbook of Materials Selection" by Myer Kutz, Chapter 11 - "Ceramics
+        and Glasses", Table 11.2 - Mechanical Properties of Commercial Glasses'
+    hardness:
+      confidence: 0.95
+      ai_verified: true
+      verification_date: '2025-10-03T20:41:22.071563'
+      verification_confidence: 95
+      research_date: '2025-09-30T12:11:05.711919'
+      source: ai_research
+    oxidationResistance:
+      confidence: 0.9
+      ai_verified: true
+      research_date: '2025-10-15T20:47:33.119416'
+      source: Heraeus Quarzglas, "Properties and Characteristics of Quartz Glass"
+    tensileStrength:
+      confidence: 0.95
+      research_date: '2025-09-30T12:11:55.497941'
+      source: ai_research
+    youngsModulus:
+      confidence: 0.95
+      ai_verified: true
+      verification_date: '2025-10-03T21:55:35.213970'
+      verification_confidence: 95
+      research_date: '2025-09-30T12:13:05.325491'
+      source: ai_research
+    fractureToughness:
+      confidence: 0.85
+      ai_verified: true
+      research_date: '2025-10-15T20:20:20.339137'
+      source: ASTM E1820 / "Fracture Toughness of Ceramics and Ceramic Matrix Composites"
+        in ASM Handbook, Volume 8
+  machineSettingsMetadata:
+    fluenceThreshold:
+      confidence: 89
+    overlapRatio:
+      confidence: 83
+    passCount:
+      confidence: 82
+    powerRange:
+      confidence: 92
+    pulseWidth:
+      confidence: 85
+    repetitionRate:
+      confidence: 87
+    scanSpeed:
+      confidence: 86
+    spotSize:
+      confidence: 84
+    wavelength:
+      confidence: 88
