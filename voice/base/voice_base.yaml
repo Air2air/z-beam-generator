@@ -35,6 +35,29 @@ core_principles:
 
 technical_writing_standards:
   
+  sentence_count_requirement:
+    rule: "Write EXACTLY 6-9 sentences total across BOTH sections combined (BEFORE + AFTER)"
+    enforcement: "If you write more than 9 sentences, your response will be trimmed"
+    strictness: "STRICT - responses with 2-5 sentences will be rejected"
+  
+  jargon_reduction:
+    rule: "Limit specialized terminology to 1-2 instances maximum per section"
+    example_before: "backscattered electron imaging reveals dendritic morphologies"
+    example_after: "irregular patterns visible under microscopy"
+  
+  direct_observations:
+    rule: "JUST STATE WHAT YOU SEE - Start directly with observations"
+    examples:
+      forbidden: "Technical analysis indicates..."
+      required: "Black CuO layer 8-12 µm thick covers 85% of surface"
+  
+  material_context_research:
+    required_research:
+      - "Look up typical contaminants for material: oxide types (e.g., Al₂O₃, Cu₂O, ZnO), thickness ranges (5-20 µm)"
+      - "Research surface characteristics: grain structure, thermal properties, material-specific defects"
+      - "Find actual laser parameters: fluence ranges (J/cm²), wavelength sensitivity, heat-affected zone depths"
+      - "Identify material-specific challenges: zinc loss in brass, copper oxide colors (Cu₂O red vs CuO black), aluminum work-hardening"
+  
   measurement_reporting:
     - "Always include units with numerical values"
     - "Use scientific notation appropriately"
@@ -57,6 +80,8 @@ technical_writing_standards:
     - "Use logical paragraph progression"
 
 forbidden_patterns:
+  
+  # STRICT ENFORCEMENT - aligned with unified_voice_system.yaml
   
   marketing_language:
     avoid:
@@ -97,6 +122,9 @@ forbidden_patterns:
       - "Enhances adhesion (without measurements)"
       - "Improves performance (without measurements)"
     reason: "Replace with quantitative measurements or specific observations"
+    examples:
+      forbidden: "enhances adhesion for subsequent processes"
+      required: "surface roughness reduced to Ra 0.8 µm from 3.5 µm"
   
   qualifying_phrases:
     avoid:
@@ -113,6 +141,9 @@ forbidden_patterns:
       - "Following protocols"
     reason: "Just state what you see - start directly with observations"
     correct_approach: "Black CuO layer 8-12 µm thick covers 85% of surface"
+    examples:
+      forbidden: "Technical analysis indicates..."
+      required: "Nickel oxide (NiO) layer measures 12-15 µm thick..."
     
   capability_statements:
     avoid:
@@ -131,10 +162,33 @@ forbidden_patterns:
       - "Throughput increase"
       - "Turin labs"
     reason: "Industry jargon, not microscopy observations"
+    examples:
+      forbidden: "our Hsinchu fab runs confirm"
+      required: "microscopy shows grain boundaries visible at 1000x"
+  
+  application_benefits_without_data:
+    avoid:
+      - "Critical metric"
+      - "Improves performance (without measurements)"
+      - "Enhances adhesion (without measurements)"
+    reason: "Every benefit claim must have supporting measurements"
+    examples:
+      forbidden: "enhances adhesion for subsequent processes"
+      required: "surface roughness reduced to Ra 0.8 µm from 3.5 µm"
+  
+  methodology_hedges:
+    avoid:
+      - "Adhering to systematic imaging"
+      - "Per CNS standards methodology"
+      - "Following protocols"
+    reason: "State observations directly, not methodology"
   
   generic_statements:
     test: "Substitute 'steel' for your material - if still true, rewrite"
     requirement: "Every technical claim requires measurements (µm, %, J/cm²), standards (ASTM, SNI), or material-specific properties"
+    examples:
+      forbidden: "Data demonstrates this range..."
+      required: "Oxide layer 12-15 µm thick covers 90% of surface..."
 
 required_elements:
   
@@ -198,17 +252,40 @@ microscopy_observation_guidelines:
 
 laser_cleaning_context:
   
+  caption_content_restriction:
+    rule: "Write ONLY about microscopy observations and measurements"
+    forbidden: "Generic engineering statements, process comparisons without data, protocol/standards claims without measurements"
+  
   before_state_focus:
-    - "Contamination characteristics and severity"
-    - "Impact on material performance"
-    - "Challenge complexity"
-    - "Surface condition baseline"
+    title: "BEFORE_TEXT - CONTAMINATION ONLY"
+    primary_focus: "Describe the contaminated surface BEFORE cleaning"
+    required_content:
+      - "Contamination characteristics and severity"
+      - "Specific oxide type and color"
+      - "Thickness, distribution, pitting"
+      - "Impact on material performance"
+    category_comparison: "Compare contamination behavior to other materials in category with specific differences (e.g., 'nickel oxide (NiO) forms thicker 12-15 µm layer than copper's 8-10 µm')"
+    strictly_forbidden:
+      - "Do NOT discuss cleaning process"
+      - "Do NOT mention laser parameters"
+      - "Do NOT discuss post-cleaning results"
+      - "NO generic openings like 'technical analysis indicates' or 'data demonstrates'"
   
   after_state_focus:
-    - "Cleaning effectiveness"
-    - "Surface integrity preservation"
-    - "Performance restoration"
-    - "Quality of restoration"
+    title: "AFTER_TEXT - CLEANED SURFACE ONLY"
+    primary_focus: "Describe what the surface looks like AFTER contamination removal"
+    required_content:
+      - "Cleaning effectiveness"
+      - "Surface appearance: grain structure visible, surface texture, color/reflectivity"
+      - "Before→after measurements with actual numbers (e.g., 'oxide reduced from 12 µm to <0.5 µm')"
+      - "Surface integrity preservation"
+    category_comparison: "Compare post-cleaning characteristics to other materials in category with measurements (e.g., 'nickel requires 12-15 µm ablation vs copper's 8-10 µm')"
+    required_measurements: "1-2 COMPARATIVE MEASUREMENTS - Must include actual numbers comparing this material to others in category"
+    strictly_forbidden:
+      - "NO protocol statements"
+      - "NO vague contrasts"
+      - "NO generic precision claims"
+      - "NO CLOSING SUMMARIES: End with specific material comparison or measurement, not application benefits"
   
   process_implications:
     - "Parameter optimization requirements"
