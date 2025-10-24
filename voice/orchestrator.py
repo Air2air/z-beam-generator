@@ -507,18 +507,84 @@ Consider incorporating these natural expressions when appropriate:
         return f"{universal_detection}\n\n{country_detection}".strip()
     
     def _get_country_voice_markers(self, unified_system: Dict[str, Any]) -> str:
-        """Get country-specific voice markers and standards from unified system"""
-        country_markers = unified_system.get('country_voice_markers', {})
-        country_data = country_markers.get(self.country, {})
-        
-        if not country_data:
-            logger.warning(f"No country voice markers found for {self.country}")
+        """Get country-specific voice markers from profile data (detailed linguistic patterns)"""
+        if not self.profile:
+            logger.warning(f"No profile loaded for {self.country}")
+            # Fallback to unified system if profile not available
+            country_markers = unified_system.get('country_voice_markers', {})
+            country_data = country_markers.get(self.country, {})
+            if country_data:
+                standards = country_data.get('standards', '')
+                voice_chars = country_data.get('voice_characteristics', '')
+                return f"{voice_chars}\n\nSTANDARDS TO REFERENCE: {standards}"
             return ""
         
-        standards = country_data.get('standards', '')
-        voice_chars = country_data.get('voice_characteristics', '')
+        # Extract detailed linguistic characteristics from profile
+        writing_chars = self.profile.get('writing_characteristics', {})
+        linguistic_chars = self.profile.get('linguistic_characteristics', {})
         
-        return f"{voice_chars}\n\nSTANDARDS TO REFERENCE: {standards}"
+        # Build comprehensive voice instructions from profile data
+        voice_instructions = []
+        
+        # Add author and country context
+        author = self.profile.get('author', 'Unknown')
+        country = self.profile.get('country', 'Unknown')
+        voice_instructions.append(f"{country.upper()} VOICE ({author}):")
+        
+        # Sentence length requirements (critical for voice distinctiveness)
+        sentence_length = writing_chars.get('sentence_length', '')
+        if sentence_length:
+            voice_instructions.append(f"- SENTENCE LENGTH: {sentence_length}")
+        
+        # Paragraph structure
+        paragraph_structure = writing_chars.get('paragraph_structure', '')
+        if paragraph_structure:
+            voice_instructions.append(f"- PARAGRAPH STRUCTURE: {paragraph_structure}")
+        
+        # Transition style
+        transition_style = writing_chars.get('transition_style', '')
+        if transition_style:
+            voice_instructions.append(f"- TRANSITIONS: {transition_style}")
+        
+        # Technical balance
+        technical_balance = writing_chars.get('technical_balance', '')
+        if technical_balance:
+            voice_instructions.append(f"- TECHNICAL BALANCE: {technical_balance}")
+        
+        # Voice preference
+        voice_preference = writing_chars.get('voice_preference', '')
+        if voice_preference:
+            voice_instructions.append(f"- VOICE PREFERENCE: {voice_preference}")
+        
+        # Structural markers (country-specific linguistic patterns)
+        structural_markers = writing_chars.get('structural_markers', [])
+        if structural_markers:
+            voice_instructions.append("- STRUCTURAL MARKERS:")
+            for marker in structural_markers[:5]:  # Top 5 markers
+                voice_instructions.append(f"  • {marker}")
+        
+        # Add standards based on country (from unified_voice_system.yaml mapping)
+        standards_map = {
+            'taiwan': 'CNS (Chinese National Standards), BSMI certification',
+            'italy': 'UNI EN ISO standards, ENEA protocols',
+            'indonesia': 'SNI (Indonesian National Standard)',
+            'united_states': 'ASTM, ASME standards'
+        }
+        
+        country_key = self.country.lower().replace(' ', '_')
+        standards = standards_map.get(country_key, '')
+        if standards:
+            voice_instructions.append(f"- STANDARDS TO REFERENCE: {standards}")
+        
+        # Add key sentence structure patterns
+        sentence_structure = linguistic_chars.get('sentence_structure', {})
+        patterns = sentence_structure.get('patterns', [])
+        if patterns:
+            voice_instructions.append("- SENTENCE PATTERNS (use naturally):")
+            for pattern in patterns[:3]:  # Top 3 patterns
+                voice_instructions.append(f"  • {pattern}")
+        
+        return "\n".join(voice_instructions)
 
 # Convenience function for quick access
 def get_voice_instructions(country: str, component_type: str, context: Optional[Dict] = None) -> str:
