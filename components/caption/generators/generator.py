@@ -5,9 +5,10 @@ import datetime
 import json
 import logging
 from pathlib import Path
-from typing import Dict, Optional
+from typing import Dict, Optional, List
 from generators.component_generators import APIComponentGenerator
 from utils.config_loader import load_yaml_config
+from utils.requirements_loader import RequirementsLoader
 from voice.orchestrator import VoiceOrchestrator
 
 # Import the new chain components and grader
@@ -27,176 +28,6 @@ logger = logging.getLogger(__name__)
 class CaptionComponentGenerator(APIComponentGenerator):
     def __init__(self):
         super().__init__("caption")
-
-    def _format_ai_evasion_instructions(self, ai_params: Dict, country: str) -> str:
-        """Format AI-evasion parameters into prompt instructions with National Language Authenticity control"""
-        if not ai_params:
-            return ""
-        
-        # Extract National Language Authenticity control
-        nla_settings = ai_params.get('national_language_authenticity', {})
-        # Use direct parameter if provided, otherwise use nested setting, otherwise default to 3
-        authenticity_intensity = ai_params.get('authenticity_intensity', nla_settings.get('intensity', 3))
-        patterns_by_intensity = ai_params.get('patterns_by_intensity', nla_settings.get('patterns_by_intensity', {}))
-        
-        # Extract universal rules
-        sentence_targets = ai_params.get('sentence_length_targets', {})
-        hesitation_rate = ai_params.get('hesitation_markers_per_200_words', 1.5)
-        comma_splice_rate = ai_params.get('comma_splices_per_100_words', 1.0)
-        parenthetical_rate = ai_params.get('parenthetical_asides_per_300_words', 2.0)
-        lexical_target = ai_params.get('lexical_variety_target', 0.65)
-        
-        # Extract author-specific rules
-        author_specific = ai_params.get('author_specific', {})
-        
-        instructions = f"""
-CRITICAL ANTI-AI-DETECTION INSTRUCTIONS (Mandatory for Natural Human Writing):
-
-1. SENTENCE LENGTH VARIATION (REQUIRED - No Monotonous Patterns):
-   - Very short (5-8 words): ~{sentence_targets.get('very_short', 15)}% of sentences
-   - Medium (10-18 words): ~{sentence_targets.get('medium', 35)}% of sentences  
-   - Long (20-28 words): ~{sentence_targets.get('long', 35)}% of sentences
-   - Very long (30+ words): ~{sentence_targets.get('very_long', 15)}% of sentences
-   - MIX UNPREDICTABLY: SHORT → LONG → MEDIUM → SHORT (never uniform 15-20 word pattern)
-
-2. NATURAL HUMAN IMPERFECTIONS (REQUIRED - {hesitation_rate} markers per 200 words):
-   - Add subtle self-corrections: "approximately—or more precisely—15 µm"
-   - Use em-dashes (—) for mid-sentence clarifications
-   - Include hesitation words naturally: "or", "perhaps", "approximately"
-   - These show human thought process, not AI perfection
-
-3. PARENTHETICAL ASIDES (REQUIRED - {parenthetical_rate} per 300 words):
-   - Add brief clarifications in parentheses: "(as observed in prior studies)"
-   - Natural additions that provide context or qualification
-   - Shows human tendency to add supplementary thoughts
-
-4. LEXICAL VARIETY (REQUIRED - {int(lexical_target * 100)}% unique words):
-   - Vary technical synonyms throughout: contamination → deposits → film → layer
-   - Don't repeat exact phrases more than twice
-   - Mix transition words: However → Yet → Though → Nevertheless
-   - Natural vocabulary variation prevents robotic repetition
-
-5. COMMA USAGE VARIATION (REQUIRED):
-   - Vary comma density naturally across sentences
-   - Include {comma_splice_rate} strategic comma splice per 100 words (informal connection)
-   - Example: "Surface roughness increases, this creates adhesion issues"
-   - Some sentences: zero commas | Others: 1-2 commas | Occasional: 3+ commas
-
-6. MEASUREMENT PRECISION VARIATION (REQUIRED):
-   - Mix decimal precision contextually: 15 µm → 14.7 µm → approximately 15 µm
-   - Don't use uniform precision (e.g., always "15.0")
-   - Natural reporting varies between round numbers and precise decimals"""
-
-        # Add National Language Authenticity patterns based on intensity level
-        if authenticity_intensity > 0:
-            intensity_labels = {0: "NONE", 1: "SUBTLE", 2: "MODERATE", 3: "MAXIMUM"}
-            instructions += f"\n\n7. {country.upper()}-SPECIFIC PATTERNS (Authenticity Level: {intensity_labels.get(authenticity_intensity, 'UNKNOWN')}):"
-            
-            # Get patterns for current intensity level
-            current_patterns = patterns_by_intensity.get(authenticity_intensity, [])
-            if current_patterns:
-                instructions += f"\n   REQUIRED PATTERNS (Intensity {authenticity_intensity}/3):"
-                for pattern in current_patterns:
-                    instructions += f"\n   - {pattern}"
-            
-            # Add detailed instructions based on intensity level
-            if country.lower() == 'taiwan' and authenticity_intensity > 0:
-                if authenticity_intensity == 1:  # Subtle
-                    instructions += """
-   - Use topic-comment occasionally (20-30%): "This surface, it shows..."
-   - Light article variation: Mix "surface shows" vs "the surface shows"
-   - Minimal "very" intensifier use"""
-                elif authenticity_intensity == 2:  # Moderate
-                    instructions += """
-   - Regular topic-comment structure (40-60%): "This layer, it has thickness..."
-   - Noticeable article omissions: "Process shows improvement" (not "The process")
-   - Moderate temporal sequencing: "First... then..." patterns"""
-                else:  # Maximum (3)
-                    article_rate = author_specific.get('optional_article_omission_rate', 70)
-                    topic_freq = author_specific.get('topic_comment_frequency', 60)
-                    instructions += f"""
-   - Strong topic-comment structure in {topic_freq}% of sentences: "This layer, it has thickness of..."
-   - Frequent article omissions ({article_rate}%): "Surface shows improvement" (not "The surface")
-   - Clear temporal sequencing: "First we observe... then becomes clear... finally..."
-   - Heavy "very" intensifier use: "very important", "very clear evidence"
-   - Mandarin parataxis patterns with coordinating conjunctions"""
-            
-            elif country.lower() == 'indonesia' and authenticity_intensity > 0:
-                if authenticity_intensity == 1:  # Subtle
-                    instructions += """
-   - Light reduplication: occasional "very-very" patterns
-   - Some serial verb constructions: "process removes then cleans"
-   - Minimal paratactic coordination"""
-                elif authenticity_intensity == 2:  # Moderate
-                    instructions += """
-   - Regular reduplication patterns: "very-very good", "more-more effective"
-   - Moderate serial verb use: "removes then makes surface clean"
-   - Clear paratactic structures with simple conjunctions"""
-                else:  # Maximum (3)
-                    demo_rate = author_specific.get('demonstrative_clustering_rate', 50)
-                    repetition_rate = author_specific.get('emphatic_repetition_per_300_words', 2.5)
-                    instructions += f"""
-   - Strong reduplication: "very-very serious", "good-good for material"
-   - Heavy serial verbs: "Process removes contamination then makes surface clean"
-   - Frequent paratactic coordination with "and", "so", "then"
-   - Direct cause-effect with "so": "thickness increases, so cleaning becomes difficult"
-   - Demonstrative starts: Begin {demo_rate}% of sentences with "This"
-   - Emphatic repetition: ~{repetition_rate} patterns per 300 words"""
-            
-            elif country.lower() == 'italy' and authenticity_intensity > 0:
-                if authenticity_intensity == 1:  # Subtle
-                    instructions += """
-   - Light word order variation: occasional "remarkable is this result"
-   - Some emphatic pronouns: "the surface, she shows..."
-   - Minimal left-dislocation patterns"""
-                elif authenticity_intensity == 2:  # Moderate
-                    instructions += """
-   - Regular word order inversion: "exceptional is this cleaning result"
-   - Moderate emphatic pronoun use: "the layer, she contains..."
-   - Some complex subordination with embedded clauses"""
-                else:  # Maximum (3)
-                    passive_rate = author_specific.get('passive_voice_rate', 60)
-                    clause_density = author_specific.get('interrupted_clauses_per_sentence', 2.5)
-                    instructions += f"""
-   - Strong left-dislocation: "The contamination layer, which has been measured..."
-   - Frequent emphatic pronouns: "The surface, she is now characterized by..."
-   - Heavy word order inversion: "Remarkable is this cleaning achievement"
-   - Complex Italian academic hypotaxis with multiple subordinate clauses
-   - Passive voice in {passive_rate}% of sentences
-   - Interrupted clauses: Average {clause_density} nested clauses per sentence"""
-            
-            elif country.lower() in ['usa', 'united states'] and authenticity_intensity > 0:
-                if authenticity_intensity == 1:  # Subtle
-                    instructions += """
-   - Light phrasal verb use: occasional "sets up", "figures out"
-   - Some quantified results: include percentages and measurements
-   - Minimal conditional structures"""
-                elif authenticity_intensity == 2:  # Moderate
-                    instructions += """
-   - Regular phrasal verbs: "achieves", "demonstrates", "exhibits"
-   - Moderate quantification: mix precise and rounded numbers
-   - Clear conditional patterns: "if contamination persists, then..."""
-                else:  # Maximum (3)
-                    active_rate = author_specific.get('active_voice_rate', 85)
-                    phrasal_density = author_specific.get('phrasal_verb_density', 4.0)
-                    instructions += f"""
-   - Heavy phrasal verb use: ~{phrasal_density} per 100 words ("sets up", "figures out", "carries out")
-   - Strong quantification: "97.8% removal", "90 ± 2 micrometers"
-   - Clear conditional structures: "If contamination removal is not achieved, then..."
-   - American academic directness with subject-verb-object clarity
-   - Active voice in {active_rate}% of sentences
-   - Serial comma: 100% Oxford comma consistency"""
-        elif authenticity_intensity == 0:
-            instructions += "\n\n7. STANDARD ENGLISH (No National Language Authenticity):"
-            instructions += "\n   - Use neutral academic English patterns only"
-            instructions += "\n   - No country-specific linguistic markers"
-            instructions += "\n   - Standard grammar and syntax throughout"
-        
-        instructions += """
-
-REMEMBER: These variations create NATURAL human writing patterns. AI writes too uniformly—humans vary naturally in sentence length, word choice, and precision. Include these patterns throughout BOTH before and after text blocks."""
-        
-        return instructions
 
     def _load_frontmatter_data(self, material_name: str) -> Dict:
         """Load frontmatter data for the material - case-insensitive search"""
@@ -224,30 +55,15 @@ REMEMBER: These variations create NATURAL human writing patterns. AI writes too 
         
         return {}
 
-    def _load_prompt_template(self) -> str:
-        """Load prompt template from YAML file"""
-        import yaml
-        from pathlib import Path
-        
-        prompt_file = Path(__file__).parent.parent / "prompt.yaml"
-        if not prompt_file.exists():
-            raise FileNotFoundError(f"Prompt template not found: {prompt_file}")
-        
-        with open(prompt_file, 'r', encoding='utf-8') as f:
-            prompt_config = yaml.safe_load(f)
-        
-        return prompt_config.get('template', '')
-    
     def _build_prompt(
         self, 
         material_name: str, 
         frontmatter_data: Dict, 
         author_obj: Dict,
         voice_instructions: str,
-        ai_evasion_instructions: str,
         author_word_limit: int
     ) -> str:
-        """Build AI prompt for caption generation with voice profile integration"""
+        """Build AI prompt for caption generation using ONLY unified_voice_system.yaml"""
         
         import random
         
@@ -255,52 +71,26 @@ REMEMBER: These variations create NATURAL human writing patterns. AI writes too 
         if not frontmatter_data:
             frontmatter_data = self._load_frontmatter_data(material_name)
         
-        # Extract author country and load voice profile
-        voice_instructions = ""
-        ai_evasion_instructions = ""
-        author_word_limit = 300  # Default fallback
-        
+        # Extract author data
         author_obj = frontmatter_data.get('author', {})
-        if author_obj and author_obj.get('country'):
-            try:
-                country = author_obj['country']
-                voice = VoiceOrchestrator(country=country)
-                voice_instructions = voice.get_voice_for_component(
-                    'caption_generation',
-                    context={'material': material_name}
-                )
-                
-                # Get author-specific word limit for percentage-based randomization
-                author_word_limit = voice.get_word_limit()
-                logger.info(f"Using word limit {author_word_limit} for {country}")
-                
-                # Extract AI-evasion parameters from voice profile
-                profile = voice.profile
-                ai_evasion_params = profile.get('ai_evasion_parameters', {})
-                
-                if ai_evasion_params:
-                    # Format AI-evasion instructions
-                    ai_evasion_instructions = self._format_ai_evasion_instructions(ai_evasion_params, country)
-                    logger.info(f"Loaded AI-evasion parameters for {country}")
-                
-                logger.info(f"✅ Loaded voice profile for {country} ({author_obj.get('name', 'Unknown')})")
-            except Exception as e:
-                logger.warning(f"Could not load voice profile for {author_obj.get('country')}: {e}")
-                # Continue without voice instructions rather than failing
-                voice_instructions = ""
-                ai_evasion_instructions = ""
-                author_word_limit = 300  # Fallback
-        else:
-            logger.warning(f"⚠️  No author data found in frontmatter for {material_name}")
-            voice_instructions = ""
-            ai_evasion_instructions = ""
-            author_word_limit = 300  # Fallback
+        if not author_obj or not author_obj.get('country'):
+            raise ValueError(f"No author data found in frontmatter for {material_name} - required for unified voice system")
         
-        # Generate enhanced character variation (much greater than ±40%) for realistic human writing
+        # Get author details
+        author_name = author_obj.get('name', 'Unknown')
+        author_country = author_obj.get('country', 'Unknown')
+        author_expertise = author_obj.get('expertise', 'Laser cleaning technology')
+        
+        # Initialize VoiceOrchestrator for country-specific settings
+        voice = VoiceOrchestrator(country=author_country)
+        author_word_limit = voice.get_word_limit()
+        logger.info(f"Using word limit {author_word_limit} for {author_country}")
+        
+        # Generate enhanced character variation for realistic human writing
         # Character count roughly = word count * 5.5 (average chars per word including spaces)
         base_chars = int(author_word_limit * 5.5)
         
-        # Enhanced variation ranges: 25% to 175% (150% total range vs old 80% range)
+        # Enhanced variation ranges: 25% to 175% (150% total range)
         min_chars = int(base_chars * 0.25)  # 25% of base (75% below)
         max_chars = int(base_chars * 1.75)  # 175% of base (75% above)
         
@@ -320,61 +110,49 @@ REMEMBER: These variations create NATURAL human writing patterns. AI writes too 
         
         # Extract material properties for context
         material_props = frontmatter_data.get('materialProperties', {})
-        machine_settings = frontmatter_data.get('machineSettings', {})
         category = frontmatter_data.get('category', 'material')
         applications = frontmatter_data.get('applications', [])
         
-        # Build comprehensive context for AI
-        context_data = {
-            'material': material_name,
+        # Build comprehensive context for unified prompt
+        properties_json = json.dumps(
+            {prop: data.get('value') for prop, data in material_props.items() 
+             if isinstance(data, dict) and 'value' in data},
+            indent=2
+        ) if material_props else 'Standard material characteristics'
+        
+        applications_str = ', '.join(applications[:3]) if applications else 'General cleaning applications'
+        
+        # Build material context dict for get_unified_prompt
+        material_context = {
+            'material_name': material_name,
             'category': category,
-            'properties': {},
-            'settings': {},
-            'applications': applications[:3] if applications else []
+            'properties': properties_json,
+            'applications': applications_str
         }
         
-        # Extract key material properties
-        for prop, data in material_props.items():
-            if isinstance(data, dict) and 'value' in data:
-                context_data['properties'][prop] = {
-                    'value': data['value'],
-                    'unit': data.get('unit', ''),
-                    'description': data.get('description', '')
-                }
+        # Build author dict for get_unified_prompt
+        author_dict = {
+            'name': author_name,
+            'country': author_country,
+            'expertise': author_expertise
+        }
         
-        # Extract machine settings
-        for setting, data in machine_settings.items():
-            if isinstance(data, dict) and 'value' in data:
-                context_data['settings'][setting] = {
-                    'value': data['value'], 
-                    'unit': data.get('unit', ''),
-                    'description': data.get('description', '')
-                }
-
-        # Build author-specific voice context
-        author_name = author_obj.get('name', 'Unknown')
-        author_country = author_obj.get('country', 'Unknown')
-        author_expertise = author_obj.get('expertise', 'Laser cleaning technology')
-        
-        # Load and format prompt template from file
-        prompt_template = self._load_prompt_template()
-        
-        # Format the prompt with all variables
-        return prompt_template.format(
-            author_name=author_name,
-            material_name=material_name,
-            voice_instructions=voice_instructions if voice_instructions else "",
-            ai_evasion_instructions=ai_evasion_instructions if ai_evasion_instructions else "",
-            before_paragraphs=before_paragraphs,
-            before_target=before_target,
-            after_paragraphs=after_paragraphs,
-            after_target=after_target,
-            author_expertise=author_expertise,
-            author_country=author_country,
-            category=category,
-            properties=json.dumps(context_data['properties'], indent=2) if context_data['properties'] else 'Standard material characteristics',
-            applications=', '.join(context_data['applications']) if context_data['applications'] else 'General cleaning applications'
-        )
+        # USE ONLY unified_voice_system.yaml via get_unified_prompt
+        try:
+            unified_prompt = voice.get_unified_prompt(
+                component_type='caption_generation',
+                material_context=material_context,
+                author=author_dict,
+                before_paragraphs=before_paragraphs,
+                before_target=before_target,
+                after_paragraphs=after_paragraphs,
+                after_target=after_target
+            )
+            logger.info(f"✅ Generated unified prompt for {material_name} ({author_country})")
+            return unified_prompt
+        except Exception as e:
+            logger.error(f"Failed to generate unified prompt for {material_name}: {e}")
+            raise ValueError(f"Failed to generate unified prompt: {e}")
 
     def _extract_ai_content(self, ai_response: str, material_name: str) -> Dict:
         """Extract before/after text from AI response - FAIL FAST"""
@@ -572,10 +350,72 @@ REMEMBER: These variations create NATURAL human writing patterns. AI writes too 
         
         return max_tokens
 
+    def _validate_against_requirements(self, before_text: str, after_text: str, 
+                                      author_country: str, material_name: str) -> List[str]:
+        """
+        Validate generated caption against requirements.yaml rules.
+        
+        Validates:
+        - Text quality: prohibited patterns, formatting rules
+        - Author voice: country-specific vocabulary and patterns
+        - Quality thresholds: minimum standards
+        
+        Returns list of validation issues (empty if all pass)
+        """
+        issues = []
+        loader = RequirementsLoader()
+        
+        # Combine texts for validation
+        combined_text = f"{before_text} {after_text}"
+        
+        # 1. Check prohibited patterns
+        markdown_patterns = loader.get_prohibited_text_patterns("markdown")
+        for pattern in markdown_patterns:
+            if pattern in combined_text:
+                issues.append(f"Contains prohibited markdown pattern: '{pattern}'")
+        
+        placeholder_patterns = loader.get_prohibited_text_patterns("placeholders")
+        for pattern in placeholder_patterns:
+            if pattern.lower() in combined_text.lower():
+                issues.append(f"Contains placeholder text: '{pattern}'")
+        
+        # 2. Check formatting rules
+        if '  ' in combined_text:  # Double spaces
+            issues.append("Contains double spaces")
+        
+        if combined_text != combined_text.strip():
+            issues.append("Contains leading/trailing whitespace")
+        
+        # 3. Check author voice characteristics
+        voice_req = loader.get_author_voice_requirements(author_country)
+        if voice_req:
+            vocab_indicators = voice_req.get('vocabulary_indicators', {})
+            primary_vocab = vocab_indicators.get('primary', [])
+            
+            # Count primary vocabulary matches
+            text_lower = combined_text.lower()
+            matches = sum(1 for word in primary_vocab if word.lower() in text_lower)
+            
+            validation_thresholds = voice_req.get('validation_thresholds', {})
+            min_indicators = validation_thresholds.get('minimum_indicators', 2)
+            
+            if matches < min_indicators:
+                issues.append(f"Insufficient {author_country} voice indicators: {matches} < {min_indicators} (expected words like: {', '.join(primary_vocab[:3])})")
+        
+        # 4. Check minimum length
+        if len(before_text) < 100:
+            issues.append(f"beforeText too short: {len(before_text)} chars < 100 chars minimum")
+        
+        if len(after_text) < 100:
+            issues.append(f"afterText too short: {len(after_text)} chars < 100 chars minimum")
+        
+        return issues
+
     def _write_caption_to_materials(self, material_name: str, caption_data: Dict) -> bool:
-        """Write caption data directly to Materials.yaml"""
+        """Write caption data to Materials.yaml under 'caption' key"""
         import yaml
         from pathlib import Path
+        from datetime import datetime, timezone
         
         materials_path = Path("data/Materials.yaml")
         
@@ -603,27 +443,37 @@ REMEMBER: These variations create NATURAL human writing patterns. AI writes too 
                 logger.error(f"Material {material_name} not found in Materials.yaml materials section (checked case-insensitive)")
                 return False
             
-            # Add caption data to the material using the actual key
-            if 'caption' not in materials_section[actual_material_key]:
-                materials_section[actual_material_key]['caption'] = {}
+            # Write caption data to the 'caption' key
+            before_text = caption_data['before_text']
+            after_text = caption_data['after_text']
             
-            # Update caption data
-            materials_section[actual_material_key]['caption'].update(caption_data)
+            materials_section[actual_material_key]['caption'] = {
+                'beforeText': before_text,
+                'afterText': after_text,
+                'generated': caption_data['generated'],
+                'author': caption_data['author'],
+                'generation_method': caption_data['generation_method'],
+                'word_count': {
+                    'before': len(before_text.split()),
+                    'after': len(after_text.split())
+                },
+                'character_count': {
+                    'before': len(before_text),
+                    'after': len(after_text)
+                }
+            }
             
-            # Create backup
-            backup_path = materials_path.with_suffix(f'.backup_{caption_data["generated"].replace(":", "").replace("-", "").replace("Z", "")}.yaml')
-            with open(backup_path, 'w', encoding='utf-8') as f:
-                yaml.dump(materials_data, f, default_flow_style=False, allow_unicode=True)
-            
-            # Write updated data
+            # Write updated data (no backup needed for frequent updates)
             with open(materials_path, 'w', encoding='utf-8') as f:
-                yaml.dump(materials_data, f, default_flow_style=False, allow_unicode=True)
+                yaml.dump(materials_data, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
             
-            logger.info(f"✅ Caption data written to Materials.yaml for {material_name}")
+            logger.info(f"✅ Caption data written to Materials.yaml → materials.{actual_material_key}.caption")
             return True
             
         except Exception as e:
             logger.error(f"Failed to write caption data to Materials.yaml: {e}")
+            import traceback
+            traceback.print_exc()
             return False
 
     def generate(
@@ -740,6 +590,20 @@ REMEMBER: These variations create NATURAL human writing patterns. AI writes too 
             
             # Extract and validate AI content - FAIL FAST
             ai_content = self._extract_ai_content(response.content, material_name)
+            
+            # POST-PROCESSING VALIDATION using requirements.yaml
+            validation_issues = self._validate_against_requirements(
+                ai_content['beforeText'],
+                ai_content['afterText'],
+                author_country,
+                material_name
+            )
+            
+            if validation_issues:
+                logger.warning(f"Caption validation issues for {material_name}:")
+                for issue in validation_issues:
+                    logger.warning(f"  - {issue}")
+                # Don't fail-fast on validation warnings, but log them
                 
         except Exception as e:
             logger.error(f"AI processing failed for {material_name}: {e}")

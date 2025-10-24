@@ -14,15 +14,18 @@ author:
   title: Ph.D.
 images:
   hero:
-    alt: Polytetrafluoroethylene surface undergoing laser cleaning showing precise contamination removal
+    alt: Polytetrafluoroethylene surface undergoing laser cleaning showing precise
+      contamination removal
     url: /images/material/polytetrafluoroethylene-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Polytetrafluoroethylene surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Polytetrafluoroethylene surface after laser cleaning
+      showing detailed surface structure
     url: /images/material/polytetrafluoroethylene-laser-cleaning-micro.jpg
 caption:
-  description: Microscopic analysis of Polytetrafluoroethylene surface before and after laser cleaning treatment
-  beforeText: 'This contaminated PTFE surface shows heavy particulate deposition at 500x magnification. The contamination layer measures approximately 15 µm thick—or more precisely 14.7 µm in cross-section—with embedded carbonaceous particles and crystalline salt deposits clearly visible. Surface roughness measurements indicate Ra values of 3.8 µm, this creates significant light scattering that obscures the underlying polymer morphology. The deposit structure appears stratified with distinct layers: a dense lower film (approximately 5 µm) bonded directly to the PTFE substrate, and a porous upper layer (about 10 µm) containing loose agglomerates. SEM-EDX analysis confirms the composition: 62% carbonaceous material, 28% silica particulates, and 10% metallic oxides (primarily iron and aluminum). This contamination completely masks the native PTFE microstructure, the original surface texture is no longer discernible beneath the covering layer.'
-  afterText: This laser cleaning produces dramatic surface restoration, very-very good result. The process removes all contamination layers, so the underlying PTFE microstructure becomes fully visible with characteristic node-and-fibril morphology. Surface roughness decreases significantly to Ra 0.8 µm—approximately 79% reduction from the contaminated state. The cleaned surface shows minimal thermal damage with only isolated micro-pitting (less than 2% surface area affected). XPS analysis confirms chemical integrity maintained with 98.7% fluorine content retention (compared to virgin PTFE). This technique achieves complete contaminant removal while preserving substrate functionality, the surface now exhibits uniform topography with restored hydrophobicity and chemical resistance properties.
+  description: Microscopic analysis of Polytetrafluoroethylene surface before and
+    after laser cleaning treatment
+  beforeText: ''
+  afterText: ''
 regulatoryStandards:
 - name: ANSI
   description: ANSI Z136.1 - Safe Use of Lasers
@@ -46,19 +49,24 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
     specificHeat:
       value: 1050.0
       min: 1.0
       max: 2500
       unit: J/(kg·K)
-      research_basis: 'NIST Chemistry WebBook, Standard Reference Database 69: Polytetrafluoroethylene thermophysical properties at 25°C'
+      research_basis: 'NIST Chemistry WebBook, Standard Reference Database 69: Polytetrafluoroethylene
+        thermophysical properties at 25°C'
     thermalConductivity:
       value: 0.25
       min: 0.02
       max: 3
       unit: W/(m·K)
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, Thermal Properties of Polymers (Table 7, p. 87), and NIST Standard Reference Data for PTFE thermal conductivity at 25°C'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials, Thermal Properties of Polymers (Table
+        7, p. 87), and NIST Standard Reference Data for PTFE thermal conductivity
+        at 25°C'
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -68,31 +76,43 @@ materialProperties:
       min: 0.08
       max: 1
       unit: mm²/s
-      research_basis: 'NIST Standard Reference Database: Thermal diffusivity of PTFE measured at 25°C using laser flash method (ASTM E1461)'
+      research_basis: 'NIST Standard Reference Database: Thermal diffusivity of PTFE
+        measured at 25°C using laser flash method (ASTM E1461)'
     thermalExpansion:
       value: 99.0
       min: 10
       max: 200
       unit: 10^-6/K
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Section: Plastics and Polymeric Composites, Table: Thermal Expansion of Engineering Plastics'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials (1990), Section: Plastics and Polymeric
+        Composites, Table: Thermal Expansion of Engineering Plastics'
     compressiveStrength:
       value: 12.5
       min: 20
       max: 200
       unit: MPa
-      research_basis: The compressive strength of PTFE is well-documented in material databases and standards. MatWeb, a widely recognized database, lists a typical compressive strength of 12.5 MPa for unfilled PTFE when tested according to ASTM D695, the standard test method for compressive properties of rigid plastics. This value is consistent with PTFE's known soft, ductile nature compared to other engineering plastics.
+      research_basis: The compressive strength of PTFE is well-documented in material
+        databases and standards. MatWeb, a widely recognized database, lists a typical
+        compressive strength of 12.5 MPa for unfilled PTFE when tested according to
+        ASTM D695, the standard test method for compressive properties of rigid plastics.
+        This value is consistent with PTFE's known soft, ductile nature compared to
+        other engineering plastics.
     corrosionResistance:
       value: 10.0
       min: 5
       max: 9
       unit: rating
-      research_basis: PTFE is chemically inert to virtually all industrial chemicals and solvents, maintaining properties even after prolonged exposure. It is resistant to strong acids, bases, and oxidizing agents that corrode most metals and degrade other plastics, earning the highest corrosion resistance rating.
+      research_basis: PTFE is chemically inert to virtually all industrial chemicals
+        and solvents, maintaining properties even after prolonged exposure. It is
+        resistant to strong acids, bases, and oxidizing agents that corrode most metals
+        and degrade other plastics, earning the highest corrosion resistance rating.
     density:
       value: 2.2
       min: 0.85
       max: 2.2
       unit: g/cm³
-      research_basis: 'ASM Handbook, Volume 21: Composites; NIST Standard Reference Data; CRC Handbook of Chemistry and Physics (97th Edition)'
+      research_basis: 'ASM Handbook, Volume 21: Composites; NIST Standard Reference
+        Data; CRC Handbook of Chemistry and Physics (97th Edition)'
     electricalResistivity:
       value: 1.0e+18
       min: 1000000000000.0
@@ -104,107 +124,137 @@ materialProperties:
       min: 30
       max: 200
       unit: MPa
-      research_basis: MatWeb, a widely referenced database for material properties, lists the typical flexural strength for unfilled PTFE as 25 MPa. This value is consistent with the known mechanical behavior of PTFE, which is a relatively soft and ductile plastic with moderate strength. The property is typically determined by a 3-point bend test.
+      research_basis: MatWeb, a widely referenced database for material properties,
+        lists the typical flexural strength for unfilled PTFE as 25 MPa. This value
+        is consistent with the known mechanical behavior of PTFE, which is a relatively
+        soft and ductile plastic with moderate strength. The property is typically
+        determined by a 3-point bend test.
     hardness:
       value: 55.0
       min: Shore A 10
       max: Shore D 90
       unit: Shore D
-      research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation (2000), Section: Plastics and Polymer Matrix Composites, Table: Typical Properties of Engineering Plastics'
+      research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation (2000),
+        Section: Plastics and Polymer Matrix Composites, Table: Typical Properties
+        of Engineering Plastics'
     oxidationResistance:
       value: 260.0
       min: 60.0
       max: 260.0
       unit: °C
-      research_basis: The maximum continuous service temperature in air for PTFE is consistently cited as 260 °C (500 °F) across authoritative materials handbooks and major manufacturer technical data sheets. While PTFE begins to show minor decomposition above ~200 °C, significant thermal degradation and oxidation that rapidly compromise mechanical properties occur at or above 260 °C.
+      research_basis: The maximum continuous service temperature in air for PTFE is
+        consistently cited as 260 °C (500 °F) across authoritative materials handbooks
+        and major manufacturer technical data sheets. While PTFE begins to show minor
+        decomposition above ~200 °C, significant thermal degradation and oxidation
+        that rapidly compromise mechanical properties occur at or above 260 °C.
     tensileStrength:
       value: 27.0
       min: 10
       max: 400
       unit: MPa
-      research_basis: 'ASM Handbook, Volume 21: Composites, Table 4 - Typical Properties of PTFE; NIST Materials Data Repository for PTFE mechanical properties'
+      research_basis: 'ASM Handbook, Volume 21: Composites, Table 4 - Typical Properties
+        of PTFE; NIST Materials Data Repository for PTFE mechanical properties'
     youngsModulus:
       value: 0.5
       min: 0.01
       max: 5000
       unit: GPa
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (ASM International, 1990), Section: Fluoropolymers; NIST Polymer Properties Database; Brandrup, J., Immergut, E.H., & Grulke, E.A. (1999). Polymer Handbook (4th ed.), Wiley-Interscience'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials (ASM International, 1990), Section: Fluoropolymers;
+        NIST Polymer Properties Database; Brandrup, J., Immergut, E.H., & Grulke,
+        E.A. (1999). Polymer Handbook (4th ed.), Wiley-Interscience'
     fractureToughness:
       value: 0.7
       min: 1
       max: 10
       unit: MPa·√m
-      research_basis: Polytetrafluoroethylene (PTFE) is a semi-crystalline polymer known for low fracture toughness. The reported K_IC value of 0.7 MPa·√m is consistent across multiple engineering references for unreinforced PTFE at room temperature, reflecting its relatively poor resistance to crack propagation compared to engineering plastics.
+      research_basis: Polytetrafluoroethylene (PTFE) is a semi-crystalline polymer
+        known for low fracture toughness. The reported K_IC value of 0.7 MPa·√m is
+        consistent across multiple engineering references for unreinforced PTFE at
+        room temperature, reflecting its relatively poor resistance to crack propagation
+        compared to engineering plastics.
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 4.2
       min: 0.1
       max: 100
       unit: '%'
-      research_basis: NIST Materials Data Repository - Reflectance Spectroscopy of PTFE in Near-IR (1064 nm) showing 95.8% reflectance, implying 4.2% absorption
+      research_basis: NIST Materials Data Repository - Reflectance Spectroscopy of
+        PTFE in Near-IR (1064 nm) showing 95.8% reflectance, implying 4.2% absorption
     laserReflectivity:
       value: 94.5
       min: 4.0
       max: 95
       unit: '%'
-      research_basis: NIST Materials Data Repository - Optical Properties of Polymers Database, specifically PTFE reflectance measurements at 1064 nm wavelength
+      research_basis: NIST Materials Data Repository - Optical Properties of Polymers
+        Database, specifically PTFE reflectance measurements at 1064 nm wavelength
 machineSettings:
   energyDensity:
     value: 5.1
     min: 3.0
     max: 8.0
     unit: J/cm²
-    description: Fluence threshold for effective Polytetrafluoroethylene contaminant removal without substrate damage
+    description: Fluence threshold for effective Polytetrafluoroethylene contaminant
+      removal without substrate damage
   overlapRatio:
     value: 50
     min: 30
     max: 70
     unit: '%'
-    description: Optimal beam overlap for uniform Polytetrafluoroethylene surface coverage
+    description: Optimal beam overlap for uniform Polytetrafluoroethylene surface
+      coverage
   passCount:
     value: 3
     min: 1
     max: 5
     unit: passes
-    description: Recommended number of passes for complete Polytetrafluoroethylene surface cleaning
+    description: Recommended number of passes for complete Polytetrafluoroethylene
+      surface cleaning
   powerRange:
     value: 100
     min: 80
     max: 120
     unit: W
-    description: Optimal average power range for Polytetrafluoroethylene surface cleaning without thermal degradation
+    description: Optimal average power range for Polytetrafluoroethylene surface cleaning
+      without thermal degradation
   pulseWidth:
     value: 10
     min: 5
     max: 20
     unit: ns
-    description: Nanosecond pulse duration for controlled ablation of Polytetrafluoroethylene surface contaminants
+    description: Nanosecond pulse duration for controlled ablation of Polytetrafluoroethylene
+      surface contaminants
   repetitionRate:
     value: 50
     min: 20
     max: 100
     unit: kHz
-    description: Optimal repetition rate for efficient Polytetrafluoroethylene cleaning with thermal management
+    description: Optimal repetition rate for efficient Polytetrafluoroethylene cleaning
+      with thermal management
   scanSpeed:
     value: 500
     min: 200
     max: 1000
     unit: mm/s
-    description: Optimal scanning speed for uniform Polytetrafluoroethylene surface treatment
+    description: Optimal scanning speed for uniform Polytetrafluoroethylene surface
+      treatment
   spotSize:
     value: 50
     min: 30
     max: 100
     unit: μm
-    description: Beam spot diameter for precise Polytetrafluoroethylene surface cleaning resolution
+    description: Beam spot diameter for precise Polytetrafluoroethylene surface cleaning
+      resolution
   wavelength:
     value: 1064
     min: 532
     max: 10600
     unit: nm
-    description: Near-infrared wavelength optimized for Polytetrafluoroethylene absorption characteristics and minimal subsurface damage
+    description: Near-infrared wavelength optimized for Polytetrafluoroethylene absorption
+      characteristics and minimal subsurface damage
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -243,7 +293,8 @@ preservedData:
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Polymeric materials including thermoplastics, thermosets, elastomers, and specialty plastic compounds for delicate cleaning applications
+    description: Polymeric materials including thermoplastics, thermosets, elastomers,
+      and specialty plastic compounds for delicate cleaning applications
     properties_count: 0
     category_ranges:
       density:
@@ -288,7 +339,8 @@ preservedData:
         unit: W/(m·K)
         source: MatWeb Materials Database - Polymers
         confidence: 75
-        notes: Wide range includes specialty filled polymers (0.02-3 W/m·K); typical unfilled polymers 0.15-0.35 W/m·K
+        notes: Wide range includes specialty filled polymers (0.02-3 W/m·K); typical
+          unfilled polymers 0.15-0.35 W/m·K
         last_updated: '2025-10-15T14:19:43.867225'
       thermalDestruction:
         point:
@@ -405,12 +457,14 @@ preservedData:
       confidence: 0.9
       ai_verified: true
       research_date: '2025-10-15T21:30:09.253882'
-      source: MatWeb Material Property Data for PTFE (Polytetrafluoroethylene), ASTM D695
+      source: MatWeb Material Property Data for PTFE (Polytetrafluoroethylene), ASTM
+        D695
     corrosionResistance:
       confidence: 0.95
       ai_verified: true
       research_date: '2025-10-15T20:34:04.050239'
-      source: 'ASM Handbook, Volume 13B: Corrosion: Materials (2010), "Polytetrafluoroethylene" section'
+      source: 'ASM Handbook, Volume 13B: Corrosion: Materials (2010), "Polytetrafluoroethylene"
+        section'
     density:
       confidence: 0.98
       ai_verified: true
@@ -435,7 +489,8 @@ preservedData:
       confidence: 0.95
       ai_verified: true
       research_date: '2025-10-15T20:46:55.025373'
-      source: 'The Plastics Handbook (Hanser Publishers), ASM Handbook, Volume 21: Composites, and manufacturer datasheets (e.g., DuPont Teflon PTFE)'
+      source: 'The Plastics Handbook (Hanser Publishers), ASM Handbook, Volume 21:
+        Composites, and manufacturer datasheets (e.g., DuPont Teflon PTFE)'
     tensileStrength:
       confidence: 0.95
       research_date: '2025-09-30T14:21:22.619616'

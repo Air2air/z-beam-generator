@@ -12,6 +12,7 @@ For advanced operations, use run_unified.py with the unified pipeline.
 🎯 GENERATE CONTENT:
   python3 run.py --material "Aluminum"     # Specific material (frontmatter-only)
   python3 run.py --all                     # All materials (frontmatter-only)
+  python3 run.py --caption "Aluminum"      # Generate AI caption (saves to Materials.yaml)
 
 🚀 DEPLOYMENT:
   python3 run.py --deploy                  # Deploy to Next.js production site
@@ -601,6 +602,142 @@ def run_frontmatter_sanitization(specific_file=None):
     
     except Exception as e:
         print(f"❌ Sanitization error: {e}")
+        import traceback
+        traceback.print_exc()
+        return False
+
+
+# =================================================================================
+# CAPTION GENERATION
+# =================================================================================
+
+def handle_caption_generation(material_name: str):
+    """Generate AI-powered caption for a material and save to Materials.yaml"""
+    print("="*80)
+    print(f"📝 CAPTION GENERATION: {material_name}")
+    print("="*80)
+    print()
+    
+    try:
+        # Import required modules
+        from components.caption.generators.generator import CaptionComponentGenerator
+        from data.materials import load_materials, get_material_by_name
+        from pathlib import Path
+        import yaml
+        from datetime import datetime, timezone
+        
+        # Load materials data
+        print("📂 Loading Materials.yaml...")
+        materials_data = load_materials()
+        material_data = get_material_by_name(material_name, materials_data)
+        
+        if not material_data:
+            print(f"❌ Material '{material_name}' not found in Materials.yaml")
+            return False
+        
+        print(f"✅ Found material: {material_name}")
+        print()
+        
+        # Initialize Grok API client for captions
+        from api.client_factory import create_api_client
+        print("🔧 Initializing Grok API client...")
+        grok_client = create_api_client('grok')
+        print("✅ Grok client ready")
+        print()
+        
+        # Initialize caption generator
+        print("🔧 Initializing CaptionComponentGenerator...")
+        generator = CaptionComponentGenerator()
+        print("✅ Generator ready")
+        print()
+        
+        # Generate caption
+        print("🤖 Generating AI-powered caption with author voice...")
+        print("   • beforeText: Contaminated surface analysis")
+        print("   • afterText: Cleaned surface analysis")
+        print("   • Voice: Country-specific authenticity")
+        print("   • Quality: Production-grade validation")
+        print()
+        
+        result = generator.generate(
+            material_name=material_name,
+            material_data=material_data,
+            api_client=grok_client
+        )
+        
+        if not result.success:
+            print(f"❌ Caption generation failed: {result.error_message}")
+            return False
+        
+        # Caption was already written to Materials.yaml by the generator
+        # Reload to display statistics
+        print("✅ Caption generated and saved successfully!")
+        print()
+        
+        # Reload materials to show what was written
+        materials_data = load_materials()
+        material_data = get_material_by_name(material_name, materials_data)
+        
+        caption = material_data.get('caption', {})
+        if 'beforeText' in caption and 'afterText' in caption:
+            before_text = caption['beforeText']
+            after_text = caption['afterText']
+            
+            print("📊 Statistics:")
+            print(f"   • beforeText: {len(before_text)} characters, {len(before_text.split())} words")
+            print(f"   • afterText: {len(after_text)} characters, {len(after_text.split())} words")
+            print()
+            print("📝 Preview:")
+            print(f"   • Before: {before_text[:100]}...")
+            print(f"   • After: {after_text[:100]}...")
+            print()
+        
+        print("💾 Saved to: data/Materials.yaml → caption")
+        print("✨ Caption generation complete!")
+        
+        return True
+        
+        # Save to Materials.yaml
+        print("💾 Saving to Materials.yaml...")
+        materials_file = Path("data/Materials.yaml")
+        
+        with open(materials_file, 'r') as f:
+            materials_yaml = yaml.safe_load(f)
+        
+        # Update ai_text_fields with caption data
+        if 'ai_text_fields' not in materials_yaml['materials'][material_name]:
+            materials_yaml['materials'][material_name]['ai_text_fields'] = {}
+        
+        materials_yaml['materials'][material_name]['ai_text_fields']['caption_beforeText'] = {
+            'content': before_text,
+            'source': 'ai_research',
+            'research_date': datetime.now(timezone.utc).isoformat(),
+            'word_count': len(before_text.split()),
+            'character_count': len(before_text)
+        }
+        
+        materials_yaml['materials'][material_name]['ai_text_fields']['caption_afterText'] = {
+            'content': after_text,
+            'source': 'ai_research',
+            'research_date': datetime.now(timezone.utc).isoformat(),
+            'word_count': len(after_text.split()),
+            'character_count': len(after_text)
+        }
+        
+        # Write back to file
+        with open(materials_file, 'w') as f:
+            yaml.dump(materials_yaml, f, default_flow_style=False, sort_keys=False, allow_unicode=True)
+        
+        print(f"✅ Saved to Materials.yaml → materials.{material_name}.ai_text_fields")
+        print()
+        print("="*80)
+        print("✅ CAPTION GENERATION COMPLETE")
+        print("="*80)
+        
+        return True
+        
+    except Exception as e:
+        print(f"❌ Caption generation failed: {e}")
         import traceback
         traceback.print_exc()
         return False
@@ -1476,9 +1613,15 @@ def main():
     parser.add_argument("--audit-report", action="store_true", help="Generate detailed audit reports")
     parser.add_argument("--audit-quick", action="store_true", help="Quick audit (skip frontmatter validation)")
     parser.add_argument("--data-only", action="store_true", help="Generate frontmatter using only Materials.yaml data (no API calls)")
-
+    
+    # Caption Generation
+    parser.add_argument("--caption", help="Generate AI-powered caption for specific material (saves to Materials.yaml)")
     
     args = parser.parse_args()
+    
+    # Handle caption generation
+    if args.caption:
+        return handle_caption_generation(args.caption)
     
     # Handle material auditing system
     if args.audit or args.audit_batch or args.audit_all:

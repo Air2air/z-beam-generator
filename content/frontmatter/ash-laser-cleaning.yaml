@@ -17,12 +17,14 @@ images:
     alt: Ash surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/ash-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Ash surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Ash surface after laser cleaning showing detailed surface
+      structure
     url: /images/material/ash-laser-cleaning-micro.jpg
 caption:
-  description: Microscopic analysis of Ash surface before and after laser cleaning treatment
-  beforeText: At 500x magnification, the pre-cleaned ash surface presents a heavily contaminated, heterogeneous morphology. A dense, particulate-laden layer—approximately 40 to 60 µm thick—obscures the underlying substrate. This layer is composed of agglomerated carbonaceous soot and inorganic mineral deposits, which appear as dark, amorphous patches intermixed with crystalline structures. The surface roughness is significantly elevated, with Ra measurements averaging 18.5 µm due to the irregular deposition of contaminants that create a highly textured, porous topography. Energy-dispersive X-ray (EDX) analysis confirms the presence of external elements, including sulfur and heavy metals, embedded within the porous ash matrix. These contaminants form a coherent, yet fragile, film that fills the natural voids of the ash. The overall surface is optically dense, exhibiting low reflectivity; this is a direct result of the light-scattering properties of the porous, irregular contamination layer that effectively traps incident light. The integrity of this deposited film is poor, showing micro-fractures and delamination at the interface with the native ash surface, which suggests weak adhesion and a propensity for spalling under thermal or mechanical stress.
-  afterText: Post-laser ablation reveals a dramatic transformation in surface morphology. The contaminant layer has been completely removed, exposing the underlying ash substrate with minimal thermal alteration. The surface roughness is now measured at 12.8 µm Ra—a reduction of over 30%—which aligns with the intrinsic porosity of the base material. The cleaning process has effectively vaporized the foreign deposits, leaving a clean, open-pore structure that is clearly visible at this magnification. The previously obscured surface features are now distinct. You can observe the natural grain and micro-texture of the ash, free from obscuring films. The reflectivity has increased substantially due to the elimination of the light-absorbing contamination, and the surface color is uniform and consistent with the native material. Crucially, the laser parameters were tuned to stay well below the ash's ablation threshold of 0.8 J/cm², thereby preserving the structural integrity of the substrate. This leaves a chemically stable surface, ready for subsequent coating or bonding operations in demanding environments.
+  description: Microscopic analysis of Ash surface before and after laser cleaning
+    treatment
+  beforeText: ''
+  afterText: ''
 regulatoryStandards:
 - name: ANSI
   description: ANSI Z136.1 - Safe Use of Lasers
@@ -46,19 +48,23 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
     specificHeat:
       value: 800.0
       min: 800
       max: 2500
       unit: J/(kg·K)
-      research_basis: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190), Chapter 4: Moisture Relations and Physical Properties of Wood, Table 4-3: Specific heat of various wood species at 12% moisture content'
+      research_basis: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190),
+        Chapter 4: Moisture Relations and Physical Properties of Wood, Table 4-3:
+        Specific heat of various wood species at 12% moisture content'
     thermalConductivity:
       value: 0.11
       min: 0.04
       max: 0.4
       unit: W/(m·K)
-      research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest Service, 2010) and NIST Standard Reference Data for North American Hardwoods'
+      research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest
+        Service, 2010) and NIST Standard Reference Data for North American Hardwoods'
     thermalDestruction:
       value: 300.0
       unit: °C
@@ -68,49 +74,80 @@ materialProperties:
       min: 0.0001
       max: 0.4
       unit: mm²/s
-      research_basis: 'Forest Products Laboratory. (2010). Wood Handbook: Wood as an Engineering Material. USDA Forest Service, Chapter 4: Thermal Properties of Wood, Table 4-3, specifically citing White Ash (Fraxinus americana) at 12% moisture content.'
+      research_basis: 'Forest Products Laboratory. (2010). Wood Handbook: Wood as
+        an Engineering Material. USDA Forest Service, Chapter 4: Thermal Properties
+        of Wood, Table 4-3, specifically citing White Ash (Fraxinus americana) at
+        12% moisture content.'
     thermalExpansion:
       value: 8.5
       min: 3.0
       max: 60
       unit: 10^-6/K
-      research_basis: 'Forest Products Laboratory. (2010). Wood Handbook: Wood as an Engineering Material. USDA Forest Service, General Technical Report FPL-GTR-190, Chapter 4: Mechanical Properties of Wood, Table 4-3: Thermal expansion coefficients for various wood species.'
+      research_basis: 'Forest Products Laboratory. (2010). Wood Handbook: Wood as
+        an Engineering Material. USDA Forest Service, General Technical Report FPL-GTR-190,
+        Chapter 4: Mechanical Properties of Wood, Table 4-3: Thermal expansion coefficients
+        for various wood species.'
     compressiveStrength:
       value: 51.0
       min: 20
       max: 80
       unit: MPa
-      research_basis: The Wood Database compiles standardized test data from the USDA Forest Service Forest Products Laboratory and other authoritative sources. For white ash (Fraxinus americana), the compressive strength parallel to grain is consistently reported as 51 MPa at 12% moisture content, which is the standard condition for wood mechanical testing. This value aligns with the known high strength-to-weight ratio of ash among hardwoods.
+      research_basis: The Wood Database compiles standardized test data from the USDA
+        Forest Service Forest Products Laboratory and other authoritative sources.
+        For white ash (Fraxinus americana), the compressive strength parallel to grain
+        is consistently reported as 51 MPa at 12% moisture content, which is the standard
+        condition for wood mechanical testing. This value aligns with the known high
+        strength-to-weight ratio of ash among hardwoods.
     corrosionResistance:
       value: 3.0
       min: 2.0
       max: 8.0
       unit: rating
-      research_basis: Ash wood has moderate to low natural durability against decay fungi and insects. It's not resistant to moisture, rot, or environmental degradation without preservative treatment. While it has good mechanical properties, its heartwood is perishable and has limited resistance to wood-destroying organisms, placing it in the low durability category for corrosion/decay resistance.
+      research_basis: Ash wood has moderate to low natural durability against decay
+        fungi and insects. It's not resistant to moisture, rot, or environmental degradation
+        without preservative treatment. While it has good mechanical properties, its
+        heartwood is perishable and has limited resistance to wood-destroying organisms,
+        placing it in the low durability category for corrosion/decay resistance.
     density:
       value: 0.68
       min: 0.12
       max: 1.5
       unit: g/cm³
-      research_basis: 'Wood Handbook: Wood as an Engineering Material, USDA Forest Service, Forest Products Laboratory, Chapter 4: Mechanical Properties of Wood, Table 4-3a (Specific gravity of common hardwoods at 12% moisture content)'
+      research_basis: 'Wood Handbook: Wood as an Engineering Material, USDA Forest
+        Service, Forest Products Laboratory, Chapter 4: Mechanical Properties of Wood,
+        Table 4-3a (Specific gravity of common hardwoods at 12% moisture content)'
     flexuralStrength:
       value: 103.0
       min: 40
       max: 150
       unit: MPa
-      research_basis: The Forest Products Laboratory's Wood Handbook is a globally recognized authority on wood properties. For the "White Ash" group, it lists a modulus of rupture (MOR) of 14,900 lbf/in², which converts to 103 MPa. This value is derived from standardized 3-point and 4-point bend tests on small, clear, straight-grained specimens.
+      research_basis: The Forest Products Laboratory's Wood Handbook is a globally
+        recognized authority on wood properties. For the "White Ash" group, it lists
+        a modulus of rupture (MOR) of 14,900 lbf/in², which converts to 103 MPa. This
+        value is derived from standardized 3-point and 4-point bend tests on small,
+        clear, straight-grained specimens.
     hardness:
       value: 1320.0
       min: 1
       max: 5000
       unit: MPa
-      research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook: Wood as an Engineering Material. Chapter 4: Mechanical Properties of Wood. Table 4-3: Hardness of commercially important woods grown in the United States. Specific data for White Ash (Fraxinus americana) - 1320 lbf (5870 N) converted to MPa using standard methodology.'
+      research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook:
+        Wood as an Engineering Material. Chapter 4: Mechanical Properties of Wood.
+        Table 4-3: Hardness of commercially important woods grown in the United States.
+        Specific data for White Ash (Fraxinus americana) - 1320 lbf (5870 N) converted
+        to MPa using standard methodology.'
     oxidationResistance:
       value: 150.0
       min: 82.0
       max: 204.0
       unit: °C
-      research_basis: The oxidation resistance temperature for wood is not a standard metric as it is for metals. For wood, the relevant property is the temperature at which significant thermal degradation begins. Authoritative sources like the USDA Wood Handbook indicate that prolonged exposure to temperatures above 150°C leads to significant pyrolysis, charring, and oxidative degradation for most wood species, including hardwoods like Ash. This temperature represents the maximum for continuous service before chemical decomposition accelerates.
+      research_basis: The oxidation resistance temperature for wood is not a standard
+        metric as it is for metals. For wood, the relevant property is the temperature
+        at which significant thermal degradation begins. Authoritative sources like
+        the USDA Wood Handbook indicate that prolonged exposure to temperatures above
+        150°C leads to significant pyrolysis, charring, and oxidative degradation
+        for most wood species, including hardwoods like Ash. This temperature represents
+        the maximum for continuous service before chemical decomposition accelerates.
     porosity:
       value: 0.59
       min: 12
@@ -122,71 +159,90 @@ materialProperties:
       min: 20
       max: 200
       unit: MPa
-      research_basis: 'USDA Forest Products Laboratory. Wood Handbook: Wood as an Engineering Material. General Technical Report FPL-GTR-190. Table 5-3a: Mechanical properties of some commercially important woods grown in the United States (White Ash, 12% moisture content).'
+      research_basis: 'USDA Forest Products Laboratory. Wood Handbook: Wood as an
+        Engineering Material. General Technical Report FPL-GTR-190. Table 5-3a: Mechanical
+        properties of some commercially important woods grown in the United States
+        (White Ash, 12% moisture content).'
     youngsModulus:
       value: 12.0
       min: 5
       max: 20000
       unit: GPa
-      research_basis: 'USDA Forest Products Laboratory Wood Handbook Chapter 4: Mechanical Properties - Table 4-3 White Ash modulus of elasticity'
+      research_basis: 'USDA Forest Products Laboratory Wood Handbook Chapter 4: Mechanical
+        Properties - Table 4-3 White Ash modulus of elasticity'
     fractureToughness:
       value: 3.5
       min: 0.33
       max: 4.4
       unit: MPa·√m
-      research_basis: This study directly measured the fracture toughness (Mode I, K_IC) of various hardwood species, including White Ash. The reported values for Ash fall within a range, with 3.5 MPa·√m being a representative mean value for clear, straight-grained material tested in the radial-longitudinal orientation at room temperature.
+      research_basis: This study directly measured the fracture toughness (Mode I,
+        K_IC) of various hardwood species, including White Ash. The reported values
+        for Ash fall within a range, with 3.5 MPa·√m being a representative mean value
+        for clear, straight-grained material tested in the radial-longitudinal orientation
+        at room temperature.
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 32.7
       min: 1
       max: 50
       unit: '%'
-      research_basis: 'NIST Standard Reference Database 69: Laser Interaction with Wood Materials, specifically Table 4.2 for Fraxinus species (Ash) at 1064 nm wavelength'
+      research_basis: 'NIST Standard Reference Database 69: Laser Interaction with
+        Wood Materials, specifically Table 4.2 for Fraxinus species (Ash) at 1064
+        nm wavelength'
     laserReflectivity:
       value: 32.7
       min: 10
       max: 60
       unit: '%'
-      research_basis: 'NIST Standard Reference Database 120: Optical Properties of Materials for Laser Applications, Section 8.3 - Wood Species Optical Characteristics (2021)'
+      research_basis: 'NIST Standard Reference Database 120: Optical Properties of
+        Materials for Laser Applications, Section 8.3 - Wood Species Optical Characteristics
+        (2021)'
 machineSettings:
   energyDensity:
     value: 5.1
     min: 3.0
     max: 8.0
     unit: J/cm²
-    description: Fluence level sufficient for Ash ablation while preserving underlying substrate
+    description: Fluence level sufficient for Ash ablation while preserving underlying
+      substrate
   overlapRatio:
     value: 50
     min: 30
     max: 70
     unit: '%'
-    description: Optimal beam overlap for uniform cleaning coverage without excessive thermal buildup
+    description: Optimal beam overlap for uniform cleaning coverage without excessive
+      thermal buildup
   passCount:
     value: 2
     min: 1
     max: 4
     unit: passes
-    description: Recommended number of passes for complete Ash removal with process control
+    description: Recommended number of passes for complete Ash removal with process
+      control
   powerRange:
     value: 100
     min: 80
     max: 120
     unit: W
-    description: Optimal average power for efficient Ash removal without substrate damage
+    description: Optimal average power for efficient Ash removal without substrate
+      damage
   pulseWidth:
     value: 10
     min: 5
     max: 20
     unit: ns
-    description: Nanosecond pulse duration for controlled Ash ablation and thermal management
+    description: Nanosecond pulse duration for controlled Ash ablation and thermal
+      management
   repetitionRate:
     value: 50
     min: 20
     max: 100
     unit: kHz
-    description: Optimal repetition rate for continuous cleaning coverage with thermal recovery
+    description: Optimal repetition rate for continuous cleaning coverage with thermal
+      recovery
   scanSpeed:
     value: 500
     min: 200
@@ -198,13 +254,15 @@ machineSettings:
     min: 30
     max: 100
     unit: μm
-    description: Beam spot diameter for effective Ash removal resolution and processing efficiency
+    description: Beam spot diameter for effective Ash removal resolution and processing
+      efficiency
   wavelength:
     value: 1064
     min: 532
     max: 10600
     unit: nm
-    description: Near-infrared wavelength optimized for Ash absorption and minimal substrate interaction
+    description: Near-infrared wavelength optimized for Ash absorption and minimal
+      substrate interaction
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -243,7 +301,8 @@ preservedData:
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Natural and engineered wood materials including hardwoods, softwoods, plywood, and composite wood products for gentle cleaning applications
+    description: Natural and engineered wood materials including hardwoods, softwoods,
+      plywood, and composite wood products for gentle cleaning applications
     properties_count: 0
     category_ranges:
       density:
@@ -270,7 +329,8 @@ preservedData:
         unit: '%'
         source: Wood Science and Technology Database
         confidence: 70
-        notes: Light woods 40-60%, dark woods 10-25%, highly dependent on species and finish
+        notes: Light woods 40-60%, dark woods 10-25%, highly dependent on species
+          and finish
         last_updated: '2025-10-15T14:19:43.867238'
       specificHeat:
         max: 2500
@@ -286,7 +346,8 @@ preservedData:
         unit: W/(m·K)
         source: Wood Handbook - Wood as an Engineering Material (USDA Forest Service)
         confidence: 80
-        notes: Across grain 0.04-0.2 W/m·K, along grain can be 2-3x higher; moisture content affects values
+        notes: Across grain 0.04-0.2 W/m·K, along grain can be 2-3x higher; moisture
+          content affects values
         last_updated: '2025-10-15T14:19:43.867244'
       thermalDestruction:
         point:
@@ -408,7 +469,8 @@ preservedData:
       confidence: 0.87
       ai_verified: true
       research_date: '2025-10-15T20:26:16.281463'
-      source: Wood Database (www.wood-database.com) - Ash wood properties and durability ratings
+      source: Wood Database (www.wood-database.com) - Ash wood properties and durability
+        ratings
     density:
       confidence: 0.95
       research_date: '2025-09-30T15:22:32.324377'
@@ -417,7 +479,9 @@ preservedData:
       confidence: 0.9
       ai_verified: true
       research_date: '2025-10-15T20:52:02.860943'
-      source: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190), Chapter 4: Mechanical Properties of Wood, Table 4-3a. U.S. Department of Agriculture, Forest Products Laboratory.'
+      source: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190), Chapter
+        4: Mechanical Properties of Wood, Table 4-3a. U.S. Department of Agriculture,
+        Forest Products Laboratory.'
     hardness:
       confidence: 0.95
       ai_verified: true
@@ -429,7 +493,9 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:39:35.006033'
-      source: 'Wood Handbook, Chapter 3: Physical Properties and Moisture Relations of Wood, Table 3-5: Thermal Degradation Temperatures of Wood. USDA Forest Service, Forest Products Laboratory. General Technical Report FPL-GTR-282.'
+      source: 'Wood Handbook, Chapter 3: Physical Properties and Moisture Relations
+        of Wood, Table 3-5: Thermal Degradation Temperatures of Wood. USDA Forest
+        Service, Forest Products Laboratory. General Technical Report FPL-GTR-282.'
     porosity:
       confidence: 0.92
       research_date: '2025-10-17T19:07:34.191481'
@@ -449,7 +515,8 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:11:22.121106'
-      source: E.J. Bodner, A. H. Mayer, and C. D. Mote. "Fracture Characteristics of Hardwoods" in Wood and Fiber Science, Vol. 12, No. 1, 1980.
+      source: E.J. Bodner, A. H. Mayer, and C. D. Mote. "Fracture Characteristics
+        of Hardwoods" in Wood and Fiber Science, Vol. 12, No. 1, 1980.
   machineSettingsMetadata:
     energyDensity:
       confidence: 89

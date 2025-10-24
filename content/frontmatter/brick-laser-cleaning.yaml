@@ -17,12 +17,14 @@ images:
     alt: Brick surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/brick-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Brick surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Brick surface after laser cleaning showing detailed surface
+      structure
     url: /images/material/brick-laser-cleaning-micro.jpg
 caption:
-  description: Microscopic analysis of Brick surface before and after laser cleaning treatment
-  beforeText: At 500x magnification, the brick surface presents a heavily contaminated state characterized by a complex, stratified deposit layer. The primary contaminant appears as a continuous, dark biofilm—approximately 15 to 20 µm thick—that completely obscures the underlying brick substrate. This organic matrix embeds significant particulate matter, identified via spot EDX analysis as silicon-rich soot and calcium sulfate crystals, which creates a highly irregular surface topography. The Ra value, measured across a 1 mm profile, registers at 18.7 µm, indicating severe surface degradation from the accumulated deposits. The contamination layer exhibits poor adhesion in localized areas, showing micro-fissures and delamination at the brick-contaminant interface. These features suggest the deposits are brittle and susceptible to spallation under thermal or mechanical stress. The surface morphology is dominated by a porous, sponge-like structure that has likely increased the brick's water absorption capacity significantly beyond its inherent 25% porosity. This compromised state would negatively impact the material's chemical stability and overall durability, providing pathways for further subsurface degradation.
-  afterText: Post-cleaning analysis at 500x reveals a dramatic transformation, with the laser process successfully removing the contaminant layer to expose the original brick substrate. The surface roughness (Ra) has been reduced to 4.2 µm—a 78% improvement—restoring a profile consistent with undamaged, historic brick. The cleaning process has exposed the intrinsic granular structure of the fired clay body, revealing individual mineral grains and the characteristic micro-porosity (now measured at approximately 26%) without inducing surface vitrification. The laser parameters achieved selective ablation of the contamination while preserving the brick's structural integrity. SEM imaging confirms the absence of thermal damage, with no evidence of melting or micro-fracturing that would indicate exposure beyond the material's thermal destruction threshold. The surface now exhibits a uniform, matte texture with restored reflectivity properties—measured at 14.8%, closely matching the brick's inherent 15% reflectivity. This careful removal of the biofilm has re-established the surface's original chemical stability, a critical factor for long-term preservation in cultural heritage applications. The process effectively restored functional surface characteristics while maintaining the material's historic fabric.
+  description: Microscopic analysis of Brick surface before and after laser cleaning
+    treatment
+  beforeText: ''
+  afterText: ''
 regulatoryStandards:
 - name: ANSI
   description: ANSI Z136.1 - Safe Use of Lasers
@@ -46,19 +48,24 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
     specificHeat:
       value: 800.0
       min: 700
       max: 1100
       unit: J/(kg·K)
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, Table ''Thermal Properties of Common Building Materials'' (2015)'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials, Table ''Thermal Properties of Common
+        Building Materials'' (2015)'
     thermalConductivity:
       value: 0.72
       min: 0.08
       max: 2.5
       unit: W/(m·K)
-      research_basis: 'NIST IR 6990 - Thermal Properties of Masonry Materials (2015), Table 4.1: Measured thermal conductivity of standard fired clay brick at 24°C, dry condition'
+      research_basis: 'NIST IR 6990 - Thermal Properties of Masonry Materials (2015),
+        Table 4.1: Measured thermal conductivity of standard fired clay brick at 24°C,
+        dry condition'
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -68,137 +75,190 @@ materialProperties:
       min: 0.1
       max: 1
       unit: mm²/s
-      research_basis: 'NIST Special Publication 1066: ''Thermal Properties of Masonry Materials'' (2019) - Table 4.2 for fired clay brick at 20°C, and ASM Handbook Volume 4: ''Heat Treating'' - Section on ceramic materials thermal properties'
+      research_basis: 'NIST Special Publication 1066: ''Thermal Properties of Masonry
+        Materials'' (2019) - Table 4.2 for fired clay brick at 20°C, and ASM Handbook
+        Volume 4: ''Heat Treating'' - Section on ceramic materials thermal properties'
     thermalExpansion:
       value: 5.5
       min: 5
       max: 20
       unit: 10^-6/K
-      research_basis: 'ASM Handbook, Volume 4: Heat Treating, Table 1 ''Coefficient of Thermal Expansion for Selected Materials'' - Common brick (fired clay) at 20-100°C'
+      research_basis: 'ASM Handbook, Volume 4: Heat Treating, Table 1 ''Coefficient
+        of Thermal Expansion for Selected Materials'' - Common brick (fired clay)
+        at 20-100°C'
     compressiveStrength:
       value: 41.4
       min: 5
       max: 100
       unit: MPa
-      research_basis: ASTM C67-23 Standard Test Methods for Sampling and Testing Brick and Structural Clay Tile, Section 16 Compressive Strength
+      research_basis: ASTM C67-23 Standard Test Methods for Sampling and Testing Brick
+        and Structural Clay Tile, Section 16 Compressive Strength
     corrosionResistance:
       value: 8.0
       min: 2.0
       max: 8.0
       unit: rating
-      research_basis: Brick is highly resistant to environmental corrosion due to its ceramic composition and firing process. ASTM standards note brick's exceptional durability against atmospheric degradation, moisture, and chemical attack in normal environments. The material's high compressive strength (41.4 MPa) and low porosity contribute to its corrosion resistance, though it can be susceptible to efflorescence and freeze-thaw damage in extreme conditions.
+      research_basis: Brick is highly resistant to environmental corrosion due to
+        its ceramic composition and firing process. ASTM standards note brick's exceptional
+        durability against atmospheric degradation, moisture, and chemical attack
+        in normal environments. The material's high compressive strength (41.4 MPa)
+        and low porosity contribute to its corrosion resistance, though it can be
+        susceptible to efflorescence and freeze-thaw damage in extreme conditions.
     density:
       value: 1.75
       min: 0.6
       max: 3.2
       unit: g/cm³
-      research_basis: ASTM C67-23 Standard Test Methods for Sampling and Testing Brick and Structural Clay Tile, Section 12 - Bulk Density Determination
+      research_basis: ASTM C67-23 Standard Test Methods for Sampling and Testing Brick
+        and Structural Clay Tile, Section 12 - Bulk Density Determination
     flexuralStrength:
       value: 6.9
       min: 2
       max: 20
       unit: MPa
-      research_basis: For fired clay brick, a well-established empirical relationship exists where the flexural strength (modulus of rupture) is typically 1/6th of the compressive strength. Given the provided compressive strength of 41.4 MPa, this ratio yields a value of 6.9 MPa. This correlation is supported by industry standards and material property data sheets for masonry design, which typically report flexural strengths for brick in the range of 4.8 to 8.3 MPa, with 6.9 MPa being a representative mid-range value for a brick of this compressive strength. The test method is typically a 3-point or 4-point bend test on whole bricks as per ASTM C67.
+      research_basis: For fired clay brick, a well-established empirical relationship
+        exists where the flexural strength (modulus of rupture) is typically 1/6th
+        of the compressive strength. Given the provided compressive strength of 41.4
+        MPa, this ratio yields a value of 6.9 MPa. This correlation is supported by
+        industry standards and material property data sheets for masonry design, which
+        typically report flexural strengths for brick in the range of 4.8 to 8.3 MPa,
+        with 6.9 MPa being a representative mid-range value for a brick of this compressive
+        strength. The test method is typically a 3-point or 4-point bend test on whole
+        bricks as per ASTM C67.
     hardness:
       value: 2.0
       min: 1
       max: 6
       unit: Mohs
-      research_basis: 'ASTM C67-23 Standard Test Methods for Sampling and Testing Brick and Structural Clay Tile; NIST Special Publication 260-175: Certified Reference Materials for Vickers Hardness of Ceramics; Journal of Materials in Civil Engineering, Vol. 34, Issue 5 (2022)'
+      research_basis: 'ASTM C67-23 Standard Test Methods for Sampling and Testing
+        Brick and Structural Clay Tile; NIST Special Publication 260-175: Certified
+        Reference Materials for Vickers Hardness of Ceramics; Journal of Materials
+        in Civil Engineering, Vol. 34, Issue 5 (2022)'
     oxidationResistance:
       value: 800.0
       min: 300.0
       max: 1200.0
       unit: °C
-      research_basis: Brick is a fired clay ceramic. Its maximum service temperature is governed by the softening point of its silicate matrix and the oxidation of any residual carbon or metallic impurities. While not a pure oxide, standard fired clay bricks are rated for continuous service up to 800°C in oxidizing atmospheres. Above this temperature, significant softening and potential for spalling or structural weakening due to continued vitrification and differential thermal expansion occur. The provided compressive strength and density are consistent with a high-quality fired clay product supporting this temperature range.
+      research_basis: Brick is a fired clay ceramic. Its maximum service temperature
+        is governed by the softening point of its silicate matrix and the oxidation
+        of any residual carbon or metallic impurities. While not a pure oxide, standard
+        fired clay bricks are rated for continuous service up to 800°C in oxidizing
+        atmospheres. Above this temperature, significant softening and potential for
+        spalling or structural weakening due to continued vitrification and differential
+        thermal expansion occur. The provided compressive strength and density are
+        consistent with a high-quality fired clay product supporting this temperature
+        range.
     tensileStrength:
       value: 3.4
       min: 1
       max: 15
       unit: MPa
-      research_basis: 'ASTM C67-20 Standard Test Methods for Sampling and Testing Brick and Structural Clay Tile, and ASM Handbook Vol. 4: Heat Treating (1991) - Table 1: Typical Properties of Common Brick'
+      research_basis: 'ASTM C67-20 Standard Test Methods for Sampling and Testing
+        Brick and Structural Clay Tile, and ASM Handbook Vol. 4: Heat Treating (1991)
+        - Table 1: Typical Properties of Common Brick'
     youngsModulus:
       value: 16.7
       min: 3.0
       max: 50
       unit: GPa
-      research_basis: 'NIST Technical Note 1493 - ''Mechanical Properties of Masonry'' (1999), Table 4.1: Young''s modulus of fired clay brick specimens measured under standard compression testing conditions'
+      research_basis: 'NIST Technical Note 1493 - ''Mechanical Properties of Masonry''
+        (1999), Table 4.1: Young''s modulus of fired clay brick specimens measured
+        under standard compression testing conditions'
     fractureToughness:
       value: 0.8
       min: 0.15
       max: 1.1
       unit: MPa·√m
-      research_basis: Brick, as a quasibrittle masonry material, has fracture toughness values typically ranging from 0.5 to 1.0 MPa·√m. Based on compilations of fracture properties for construction materials, common brick falls in the lower end of this range, with 0.8 MPa·√m being a representative median value cited for standard fired clay brick. This value is consistent with the material's known compressive strength of 41.4 MPa and brittle ceramic-like behavior.
+      research_basis: Brick, as a quasibrittle masonry material, has fracture toughness
+        values typically ranging from 0.5 to 1.0 MPa·√m. Based on compilations of
+        fracture properties for construction materials, common brick falls in the
+        lower end of this range, with 0.8 MPa·√m being a representative median value
+        cited for standard fired clay brick. This value is consistent with the material's
+        known compressive strength of 41.4 MPa and brittle ceramic-like behavior.
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 8.2
       min: 0.5
       max: 15
       unit: '%'
-      research_basis: 'NIST Technical Note 2282: ''Laser Ablation of Construction Materials'' (2022), Table 4 - Laser absorption coefficients for common masonry materials at 1064 nm wavelength'
+      research_basis: 'NIST Technical Note 2282: ''Laser Ablation of Construction
+        Materials'' (2022), Table 4 - Laser absorption coefficients for common masonry
+        materials at 1064 nm wavelength'
     laserReflectivity:
       value: 36.2
       min: 10
       max: 70
       unit: '%'
-      research_basis: 'NIST Special Publication 1176: ''Optical Properties of Construction Materials'' (2021), Table 4.3 - Reflectance measurements for common brick compositions at 1064 nm wavelength'
+      research_basis: 'NIST Special Publication 1176: ''Optical Properties of Construction
+        Materials'' (2021), Table 4.3 - Reflectance measurements for common brick
+        compositions at 1064 nm wavelength'
 machineSettings:
   energyDensity:
     value: 12
     min: 8
     max: 15
     unit: J/cm²
-    description: Fluence threshold for effective contaminant removal while preserving brick substrate
+    description: Fluence threshold for effective contaminant removal while preserving
+      brick substrate
   overlapRatio:
     value: 50
     min: 30
     max: 70
     unit: '%'
-    description: Optimal beam overlap percentage for uniform cleaning without excessive thermal accumulation
+    description: Optimal beam overlap percentage for uniform cleaning without excessive
+      thermal accumulation
   passCount:
     value: 3
     min: 1
     max: 5
     unit: passes
-    description: Recommended number of passes for complete contaminant removal from porous brick surface
+    description: Recommended number of passes for complete contaminant removal from
+      porous brick surface
   powerRange:
     value: 100
     min: 80
     max: 120
     unit: W
-    description: Optimal average power for brick surface cleaning without thermal damage
+    description: Optimal average power for brick surface cleaning without thermal
+      damage
   pulseWidth:
     value: 10
     min: 5
     max: 20
     unit: ns
-    description: Nanosecond pulse duration for effective contaminant removal with controlled thermal penetration
+    description: Nanosecond pulse duration for effective contaminant removal with
+      controlled thermal penetration
   repetitionRate:
     value: 50
     min: 20
     max: 100
     unit: kHz
-    description: Optimal repetition rate for efficient cleaning coverage and thermal management
+    description: Optimal repetition rate for efficient cleaning coverage and thermal
+      management
   scanSpeed:
     value: 500
     min: 200
     max: 1000
     unit: mm/s
-    description: Optimal scanning speed for uniform cleaning coverage and process efficiency
+    description: Optimal scanning speed for uniform cleaning coverage and process
+      efficiency
   spotSize:
     value: 100
     min: 50
     max: 200
     unit: μm
-    description: Beam spot diameter for effective cleaning resolution on brick surface texture
+    description: Beam spot diameter for effective cleaning resolution on brick surface
+      texture
   wavelength:
     value: 1064
     min: 532
     max: 10600
     unit: nm
-    description: Near-infrared wavelength for optimal brick absorption and minimal substrate damage
+    description: Near-infrared wavelength for optimal brick absorption and minimal
+      substrate damage
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -237,7 +297,8 @@ preservedData:
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Construction masonry materials including concrete, brick, mortar, stucco, and stone-based building materials for restoration cleaning
+    description: Construction masonry materials including concrete, brick, mortar,
+      stucco, and stone-based building materials for restoration cleaning
     properties_count: 0
     category_ranges:
       density:
@@ -281,7 +342,8 @@ preservedData:
         unit: W/(m·K)
         source: ASHRAE Handbook - Fundamentals
         confidence: 80
-        notes: Concrete ~1.0, brick ~0.6, lightweight concrete 0.1-0.5, varies with density and moisture
+        notes: Concrete ~1.0, brick ~0.6, lightweight concrete 0.1-0.5, varies with
+          density and moisture
         last_updated: '2025-10-15T14:19:43.867317'
       thermalDestruction:
         point:
@@ -401,7 +463,9 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:53:13.108931'
-      source: ASTM C67-20, "Standard Test Methods for Sampling and Testing Brick and Structural Clay Tile," and the Brick Industry Association (BIA) Technical Notes 9B - Brick Masonry Material Properties.
+      source: ASTM C67-20, "Standard Test Methods for Sampling and Testing Brick and
+        Structural Clay Tile," and the Brick Industry Association (BIA) Technical
+        Notes 9B - Brick Masonry Material Properties.
     hardness:
       confidence: 0.92
       ai_verified: true
@@ -413,7 +477,8 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:40:42.390113'
-      source: 'ASM Handbook, Volume 4: Heat Treating, "Properties of Ceramics and Ceramic-Matrix Composites"'
+      source: 'ASM Handbook, Volume 4: Heat Treating, "Properties of Ceramics and
+        Ceramic-Matrix Composites"'
     tensileStrength:
       confidence: 0.95
       research_date: '2025-09-30T12:19:43.351642'
@@ -426,7 +491,10 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:11:22.129393'
-      source: '"Fracture and Size Effect in Concrete and Other Quasibrittle Materials" by Zdeněk P. Bažant and Jaime Planas, CRC Press (1998), and "Fracture Toughness of Rocks and Other Solids" in the *RILEM Report*, Fracture Mechanics of Concrete Structures (1994).'
+      source: '"Fracture and Size Effect in Concrete and Other Quasibrittle Materials"
+        by Zdeněk P. Bažant and Jaime Planas, CRC Press (1998), and "Fracture Toughness
+        of Rocks and Other Solids" in the *RILEM Report*, Fracture Mechanics of Concrete
+        Structures (1994).'
   machineSettingsMetadata:
     energyDensity:
       confidence: 89

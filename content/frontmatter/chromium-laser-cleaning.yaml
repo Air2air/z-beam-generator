@@ -14,15 +14,18 @@ author:
   title: MA
 images:
   hero:
-    alt: Chromium surface undergoing laser cleaning showing precise contamination removal
+    alt: Chromium surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/chromium-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Chromium surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Chromium surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/chromium-laser-cleaning-micro.jpg
 caption:
-  description: Microscopic analysis of Chromium surface before and after laser cleaning treatment
-  beforeText: At 500x magnification, the chromium surface exhibits a non-uniform contamination layer, primarily composed of carbonaceous deposits and embedded particulate. This layer measures between 5 and 15 µm in thickness, with localized agglomerations reaching up to 25 µm. The surface topography is heavily obscured, displaying a matte, dark gray appearance with significant light scattering. Energy-dispersive X-ray (EDX) analysis confirms the presence of sulfur and oxygen, indicating sulfate-based compounds within the sooty film. The underlying substrate texture is completely masked. You can see a network of fine micro-cracks—perhaps from thermal cycling—running through the thicker contamination zones. The particulate matter, likely alumina from prior processing, appears as bright, angular features embedded within the amorphous carbon matrix. This complex layer structure significantly degrades the surface's innate reflectivity, which we measured at less than 20% in contaminated areas. The deposits show poor adhesion in spots, a sign of weak interfacial bonding.
-  afterText: Laser cleaning produces a dramatic surface restoration, revealing the native metallic substrate with high clarity. The process completely removed the contamination layer, eliminating the previously observed carbonaceous film and embedded particulates. The surface now displays a uniform, light gray, metallic luster with a fine, laser-induced texture. We measured the post-cleaning surface roughness (Ra) at 0.8 µm, a significant reduction from the pre-cleaning value of approximately 4.5 µm. The laser parameters were optimized to ablate contaminants while minimizing substrate modification. This approach achieves a clean surface while maintaining the original grain structure, as confirmed by SEM analysis. The micro-cracks observed in the contamination layer are absent from the substrate itself. The restored surface reflectivity now measures 58-61% at 1064 nm, closely matching the theoretical value for pure chromium. Some minor, sub-micron rippling is visible—a characteristic laser-induced periodic surface structure (LIPSS) that does not compromise functional integrity. The surface is now free of measurable oxide thickening.
+  description: Microscopic analysis of Chromium surface before and after laser cleaning
+    treatment
+  beforeText: ''
+  afterText: ''
 regulatoryStandards:
 - name: ANSI
   description: ANSI Z136.1 - Safe Use of Lasers
@@ -44,7 +47,8 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
     boilingPoint:
       value: 2672.0
       min: 907
@@ -62,13 +66,16 @@ materialProperties:
       min: 100
       max: 2000
       unit: J/(kg·K)
-      research_basis: 'NIST Standard Reference Database 144: Chromium (Cr) - Thermophysical Properties, Section 2.1.1, Specific Heat Capacity at 298.15 K'
+      research_basis: 'NIST Standard Reference Database 144: Chromium (Cr) - Thermophysical
+        Properties, Section 2.1.1, Specific Heat Capacity at 298.15 K'
     thermalConductivity:
       value: 93.9
       min: 7.0
       max: 430
       unit: W/(m·K)
-      research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook, Chromium thermophysical properties at 300K; ASM Handbook Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
+      research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
+        Chromium thermophysical properties at 300K; ASM Handbook Volume 2: Properties
+        and Selection: Nonferrous Alloys and Special-Purpose Materials'
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -84,31 +91,47 @@ materialProperties:
       min: 0.06
       max: 174
       unit: mm²/s
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Table 1: Physical Properties of Pure Metals, p. 1119'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials (1990), Table 1: Physical Properties
+        of Pure Metals, p. 1119'
     thermalExpansion:
       value: 4.9
       min: 0.5
       max: 33
       unit: 10^-6/K
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Table 1, p. 841 - ''Linear coefficient of thermal expansion for chromium: 6.2 × 10^-6/°C (20-100°C)'''
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials (1990), Table 1, p. 841 - ''Linear coefficient
+        of thermal expansion for chromium: 6.2 × 10^-6/°C (20-100°C)'''
     compressiveStrength:
       value: 686.0
       min: 50
       max: 2000
       unit: MPa
-      research_basis: The compressive strength of pure, annealed chromium is significantly lower than its tensile strength due to its brittle nature. The cited value is a typical room-temperature compressive yield strength (0.2% offset) for high-purity chromium, as reported in a leading materials science reference. The hardness value provided (1060 MPa) is a pressure-based measurement and is not a direct substitute for compressive strength, which is a distinct mechanical property.
+      research_basis: The compressive strength of pure, annealed chromium is significantly
+        lower than its tensile strength due to its brittle nature. The cited value
+        is a typical room-temperature compressive yield strength (0.2% offset) for
+        high-purity chromium, as reported in a leading materials science reference.
+        The hardness value provided (1060 MPa) is a pressure-based measurement and
+        is not a direct substitute for compressive strength, which is a distinct mechanical
+        property.
     corrosionResistance:
       value: 8.0
       min: 1
       max: 10
       unit: rating
-      research_basis: Chromium forms a highly adherent, self-healing chromium oxide (Cr₂O₃) passive layer that provides excellent resistance to atmospheric corrosion, water, and many oxidizing chemicals. Its primary limitation is susceptibility to reducing acids, which prevents a perfect 9-10 rating reserved for metals like titanium or tantalum in broader environments.
+      research_basis: Chromium forms a highly adherent, self-healing chromium oxide
+        (Cr₂O₃) passive layer that provides excellent resistance to atmospheric corrosion,
+        water, and many oxidizing chemicals. Its primary limitation is susceptibility
+        to reducing acids, which prevents a perfect 9-10 rating reserved for metals
+        like titanium or tantalum in broader environments.
     density:
       value: 7.19
       min: 0.53
       max: 22.6
       unit: g/cm³
-      research_basis: 'NIST Standard Reference Database 144, CRC Handbook of Chemistry and Physics (104th Edition), and ASM Handbook Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
+      research_basis: 'NIST Standard Reference Database 144, CRC Handbook of Chemistry
+        and Physics (104th Edition), and ASM Handbook Volume 2: Properties and Selection:
+        Nonferrous Alloys and Special-Purpose Materials'
     electricalConductivity:
       value: 7740000.0
       min: 0.67
@@ -126,19 +149,29 @@ materialProperties:
       min: 2.5
       max: 1050.0
       unit: MPa
-      research_basis: The provided flexural strength is for high-purity, annealed chromium. The value is derived from standard bend tests and is consistent with the brittle nature of chromium metal at room temperature, which results in a flexural strength significantly lower than its compressive strength but higher than its tensile strength in some conditions.
+      research_basis: The provided flexural strength is for high-purity, annealed
+        chromium. The value is derived from standard bend tests and is consistent
+        with the brittle nature of chromium metal at room temperature, which results
+        in a flexural strength significantly lower than its compressive strength but
+        higher than its tensile strength in some conditions.
     hardness:
       value: 1060.0
       min: 0.5
       max: 3500
       unit: MPa
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical Properties of Chromium'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
+        Properties of Chromium'
     oxidationResistance:
       value: 980.0
       min: 200
       max: 1200
       unit: °C
-      research_basis: Chromium forms a protective Cr₂O₃ scale, but above approximately 980°C, this scale begins to volatilize as CrO₃, leading to a breakdown in oxidation resistance and accelerated attack. This temperature is widely cited in materials science literature as the upper limit for protective behavior in air.
+      research_basis: Chromium forms a protective Cr₂O₃ scale, but above approximately
+        980°C, this scale begins to volatilize as CrO₃, leading to a breakdown in
+        oxidation resistance and accelerated attack. This temperature is widely cited
+        in materials science literature as the upper limit for protective behavior
+        in air.
     porosity:
       value: 0.0002
       min: 0.0
@@ -150,22 +183,32 @@ materialProperties:
       min: 3.0
       max: 3000.0
       unit: MPa
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, Table ''Typical Room-Temperature Mechanical Properties of Chromium'''
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials, Table ''Typical Room-Temperature Mechanical
+        Properties of Chromium'''
     youngsModulus:
       value: 279.0
       min: 5
       max: 600
       unit: GPa
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical Properties of Chromium'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
+        Properties of Chromium'
     fractureToughness:
       value: 15.0
       min: 20
       max: 200
       unit: MPa·√m
-      research_basis: Chromium has relatively low fracture toughness due to its body-centered cubic structure and susceptibility to brittle fracture at room temperature. The ASM Handbook provides a range of 10-20 MPa·√m for high-purity chromium, with 15 MPa·√m being a representative value for polycrystalline material at room temperature. This aligns with chromium's known brittle behavior in metallic systems.
+      research_basis: Chromium has relatively low fracture toughness due to its body-centered
+        cubic structure and susceptibility to brittle fracture at room temperature.
+        The ASM Handbook provides a range of 10-20 MPa·√m for high-purity chromium,
+        with 15 MPa·√m being a representative value for polycrystalline material at
+        room temperature. This aligns with chromium's known brittle behavior in metallic
+        systems.
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
     ablationThreshold:
       value: 0.45
       min: 2.0
@@ -183,7 +226,8 @@ materialProperties:
       min: 0.02
       max: 100
       unit: '%'
-      research_basis: NIST Atomic Spectra Database - Cr I (Chromium) transition probabilities and optical constants at 1064 nm wavelength
+      research_basis: NIST Atomic Spectra Database - Cr I (Chromium) transition probabilities
+        and optical constants at 1064 nm wavelength
     laserDamageThreshold:
       value: 0.85
       min: 0.1
@@ -195,7 +239,9 @@ materialProperties:
       min: 5
       max: 99.9
       unit: '%'
-      research_basis: Palik, E.D. Handbook of Optical Constants of Solids, Academic Press (1998), Volume 2, pp. 853-865 - Reflectivity measurements for chromium at 1064 nm wavelength
+      research_basis: Palik, E.D. Handbook of Optical Constants of Solids, Academic
+        Press (1998), Volume 2, pp. 853-865 - Reflectivity measurements for chromium
+        at 1064 nm wavelength
     reflectivity:
       value: 0.64
       min: 85
@@ -250,7 +296,8 @@ machineSettings:
     min: 80
     max: 150
     unit: W
-    description: Optimal average power for Chromium oxide removal without substrate damage
+    description: Optimal average power for Chromium oxide removal without substrate
+      damage
   pulseWidth:
     value: 10
     min: 5
@@ -319,7 +366,8 @@ preservedData:
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Pure metals, alloys, and metallic compounds including steel, aluminum, precious metals, and industrial alloys for precision cleaning
+    description: Pure metals, alloys, and metallic compounds including steel, aluminum,
+      precious metals, and industrial alloys for precision cleaning
     properties_count: 0
     category_ranges:
       density:
@@ -340,7 +388,8 @@ preservedData:
         unit: '%'
         source: Handbook of Optical Constants of Solids (Palik, 1998)
         confidence: 85
-        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with surface condition'
+        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with
+          surface condition'
         last_updated: '2025-10-15T14:19:43.867188'
       specificHeat:
         max: 2000
@@ -405,7 +454,8 @@ preservedData:
         unit: '%'
         source: Handbook of Optical Constants (Palik)
         confidence: 85
-        notes: At 1064nm for polished metals (532nm 70-95%, 355nm 55-85%, 10640nm 95-99%)
+        notes: At 1064nm for polished metals (532nm 70-95%, 355nm 55-85%, 10640nm
+          95-99%)
         measurement_context: 1064nm wavelength (most common Nd:YAG)
         last_updated: '2025-10-17T00:00:00.000000'
       oxidationResistance:
@@ -482,7 +532,8 @@ preservedData:
         unit: MS/m
         source: Materials Handbook (ASM International)
         confidence: 90
-        notes: Bismuth 0.77 MS/m, Aluminum 37.7 MS/m, Copper 59.6 MS/m, Silver 63.0 MS/m
+        notes: Bismuth 0.77 MS/m, Aluminum 37.7 MS/m, Copper 59.6 MS/m, Silver 63.0
+          MS/m
         measurement_context: Room temperature (20°C), pure elements
         last_updated: '2025-10-17T00:00:00.000000'
       meltingPoint:
@@ -510,7 +561,8 @@ preservedData:
         source: Materials Science and Engineering (Callister)
         confidence: 75
         notes: Cast iron ~50-100°C, Steel ~150-250°C, Nickel alloys ~300-400°C
-        measurement_context: Resistance to thermal stress cracking during rapid temperature changes
+        measurement_context: Resistance to thermal stress cracking during rapid temperature
+          changes
         last_updated: '2025-10-17T00:00:00.000000'
       absorptivity:
         min: 2.0
@@ -518,7 +570,8 @@ preservedData:
         unit: '%'
         source: Laser Material Processing (Steen & Mazumder)
         confidence: 85
-        notes: Polished metals 2-10%, Oxidized surfaces 30-65%, wavelength and temperature dependent
+        notes: Polished metals 2-10%, Oxidized surfaces 30-65%, wavelength and temperature
+          dependent
         measurement_context: Near-IR wavelengths (1064nm Nd:YAG), room temperature
         last_updated: '2025-10-17T00:00:00.000000'
       porosity:
@@ -528,7 +581,8 @@ preservedData:
         source: ASM Metals Handbook - Powder Metallurgy
         confidence: 90
         notes: Wrought metals 0-0.1%, Cast metals 0.5-5%, Sintered metals 2-15%
-        measurement_context: Volumetric porosity, varies significantly by manufacturing process
+        measurement_context: Volumetric porosity, varies significantly by manufacturing
+          process
         last_updated: '2025-10-17T00:00:00.000000'
       thermalDestructionPoint:
         min: 873
@@ -625,7 +679,9 @@ preservedData:
       confidence: 0.9
       ai_verified: true
       research_date: '2025-10-15T21:25:08.157113'
-      source: 'ASM Handbook, Volume 2: "Properties and Selection: Nonferrous Alloys and Special-Purpose Materials," Table 1, "Typical Room-Temperature Mechanical Properties of Chromium."'
+      source: 'ASM Handbook, Volume 2: "Properties and Selection: Nonferrous Alloys
+        and Special-Purpose Materials," Table 1, "Typical Room-Temperature Mechanical
+        Properties of Chromium."'
     corrosionResistance:
       confidence: 0.88
       ai_verified: true
@@ -650,7 +706,8 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:54:07.324128'
-      source: 'ASM Handbook, Volume 2: "Properties and Selection: Nonferrous Alloys and Special-Purpose Materials," ASM International, 1990, p. 851, Table 7.'
+      source: 'ASM Handbook, Volume 2: "Properties and Selection: Nonferrous Alloys
+        and Special-Purpose Materials," ASM International, 1990, p. 851, Table 7.'
     hardness:
       confidence: 0.95
       ai_verified: true
@@ -662,7 +719,8 @@ preservedData:
       confidence: 0.9
       ai_verified: true
       research_date: '2025-10-15T20:41:45.775347'
-      source: 'ASM Handbook, Volume 13B: Corrosion: Materials (2010), "Corrosion of Chromium and Chromium Alloys," Section "High-Temperature Corrosion."'
+      source: 'ASM Handbook, Volume 13B: Corrosion: Materials (2010), "Corrosion of
+        Chromium and Chromium Alloys," Section "High-Temperature Corrosion."'
     porosity:
       confidence: 0.95
       research_date: '2025-10-17T19:07:34.181174'
@@ -686,7 +744,8 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:12:32.686154'
-      source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture Toughness of Metals" (Table 1)'
+      source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture Toughness
+        of Metals" (Table 1)'
     surfaceRoughness:
       confidence: 0.92
       research_date: '2025-10-17T20:08:11.241932'

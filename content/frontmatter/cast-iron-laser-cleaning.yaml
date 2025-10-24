@@ -14,15 +14,18 @@ author:
   title: Ph.D.
 images:
   hero:
-    alt: Cast Iron surface undergoing laser cleaning showing precise contamination removal
+    alt: Cast Iron surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/cast-iron-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Cast Iron surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Cast Iron surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/cast-iron-laser-cleaning-micro.jpg
 caption:
-  description: Microscopic analysis of Cast Iron surface before and after laser cleaning treatment
-  beforeText: This surface shows heavy contamination, very-very thick layer. At 500x magnification, we observe a non-uniform oxide scale with thickness approximately—or more precisely—15 to 20 µm. This layer appears dark and stratified, with visible micro-cracks propagating through the brittle top surface. The underlying cast iron microstructure is completely obscured by this contamination. Energy-dispersive X-ray spectroscopy (EDX) confirms the primary composition is iron oxide (Fe₂O₃), but we also detect carbonaceous deposits and embedded silica particles (SiO₂) from environmental exposure. Surface roughness measurements are high, with an initial Ra value exceeding 12 µm, this creates a very irregular topography full of peaks and valleys that trap more contaminants. The visual appearance is dark and matte, with no metallic reflectivity present.
-  afterText: This laser cleaning process removes the contamination, so the surface becomes completely transformed. The previous oxide layer is eliminated, this reveals the underlying cast iron microstructure—the characteristic graphite flakes and pearlite matrix are now clearly visible at 500x magnification. This is a very-very good result. We measure the surface roughness after cleaning, the Ra value is now reduced to approximately 2.5 µm. This represents a dramatic improvement, the surface is much smoother. Some minor micro-pores from the original casting remain, but they are clean and free of oxides. The visual appearance changes from matte black to a light gray, metallic
+  description: Microscopic analysis of Cast Iron surface before and after laser cleaning
+    treatment
+  beforeText: ''
+  afterText: ''
 regulatoryStandards:
 - name: ANSI
   description: ANSI Z136.1 - Safe Use of Lasers
@@ -43,7 +46,8 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
     boilingPoint:
       value: 3135.0
       min: 907
@@ -61,13 +65,15 @@ materialProperties:
       min: 100
       max: 2000
       unit: J/(kg·K)
-      research_basis: Cast iron specific heat capacity - slightly higher than pure iron due to carbon content
+      research_basis: Cast iron specific heat capacity - slightly higher than pure
+        iron due to carbon content
     thermalConductivity:
       value: 50.0
       min: 7.0
       max: 430
       unit: W/(m·K)
-      research_basis: ASM Handbook - Gray cast iron thermal conductivity at room temperature (46-54 W/m·K depending on graphite content)
+      research_basis: ASM Handbook - Gray cast iron thermal conductivity at room temperature
+        (46-54 W/m·K depending on graphite content)
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -83,13 +89,16 @@ materialProperties:
       min: 0.06
       max: 174
       unit: mm²/s
-      research_basis: 'ASM Handbook, Volume 1: Gray cast iron thermal diffusivity calculated from thermal conductivity (50 W/m·K), density (7.2 g/cm³), and specific heat (540 J/kg·K)'
+      research_basis: 'ASM Handbook, Volume 1: Gray cast iron thermal diffusivity
+        calculated from thermal conductivity (50 W/m·K), density (7.2 g/cm³), and
+        specific heat (540 J/kg·K)'
     thermalExpansion:
       value: 11.0
       min: 0.5
       max: 33
       unit: 10⁻⁶/K
-      research_basis: 'ASM Handbook, Volume 1: Gray cast iron coefficient of thermal expansion at 20-100°C, typical for flake graphite cast iron'
+      research_basis: 'ASM Handbook, Volume 1: Gray cast iron coefficient of thermal
+        expansion at 20-100°C, typical for flake graphite cast iron'
     compressiveStrength:
       value: 827.0
       min: 50
@@ -101,13 +110,17 @@ materialProperties:
       min: 1
       max: 10
       unit: rating
-      research_basis: 'ASM Handbook, Volume 13A: Gray cast iron has moderate corrosion resistance. Forms protective rust layer in atmospheric conditions but susceptible to acids and chlorides. Better than carbon steel due to graphite flakes providing cathodic protection.'
+      research_basis: 'ASM Handbook, Volume 13A: Gray cast iron has moderate corrosion
+        resistance. Forms protective rust layer in atmospheric conditions but susceptible
+        to acids and chlorides. Better than carbon steel due to graphite flakes providing
+        cathodic protection.'
     density:
       value: 7.2
       min: 0.53
       max: 22.6
       unit: g/cm³
-      research_basis: 'ASM Handbook, Volume 1: Properties and Selection: Irons, Steels, and High-Performance Alloys - Gray Cast Iron ASTM A48 Class 30'
+      research_basis: 'ASM Handbook, Volume 1: Properties and Selection: Irons, Steels,
+        and High-Performance Alloys - Gray Cast Iron ASTM A48 Class 30'
     electricalConductivity:
       value: 1000000.0
       min: 0.67
@@ -131,31 +144,37 @@ materialProperties:
       min: 0.5
       max: 3500
       unit: HV
-      research_basis: ASM Handbook, Volume 1 - Gray cast iron hardness range 190-250 HB, converted to Vickers (HV ≈ HB × 9.5 for this range)
+      research_basis: ASM Handbook, Volume 1 - Gray cast iron hardness range 190-250
+        HB, converted to Vickers (HV ≈ HB × 9.5 for this range)
     oxidationResistance:
       value: 750.0
       min: 200
       max: 1200
       unit: °C
-      research_basis: 'ASM Handbook, Volume 1: Gray cast iron begins significant oxidation at 700-800°C in air. Forms protective oxide scale below this temperature but experiences accelerated oxidation above.'
+      research_basis: 'ASM Handbook, Volume 1: Gray cast iron begins significant oxidation
+        at 700-800°C in air. Forms protective oxide scale below this temperature but
+        experiences accelerated oxidation above.'
     porosity:
       value: 2.5
       min: 0.0
       max: 15.0
       unit: '%'
-      research_basis: Typical porosity for gray cast iron (Class 30), graphite flake structure
+      research_basis: Typical porosity for gray cast iron (Class 30), graphite flake
+        structure
     tensileStrength:
       value: 250.0
       min: 3.0
       max: 3000.0
       unit: MPa
-      research_basis: ASTM A48 Class 30 gray cast iron - tensile strength 207-276 MPa (30-40 ksi)
+      research_basis: ASTM A48 Class 30 gray cast iron - tensile strength 207-276
+        MPa (30-40 ksi)
     youngsModulus:
       value: 110.0
       min: 5
       max: 600
       unit: GPa
-      research_basis: Gray cast iron elastic modulus - lower than steel due to graphite flakes
+      research_basis: Gray cast iron elastic modulus - lower than steel due to graphite
+        flakes
     fractureToughness:
       value: 22.1
       min: 20
@@ -164,25 +183,29 @@ materialProperties:
       research_basis: materials_science_literature
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
     ablationThreshold:
       value: 8.5
       min: 2.0
       max: 8.0
       unit: J/cm²
-      research_basis: Laser ablation threshold for cast iron at 1064nm, typical gray iron surface
+      research_basis: Laser ablation threshold for cast iron at 1064nm, typical gray
+        iron surface
     absorptivity:
       value: 55.0
       min: 2.0
       max: 65.0
       unit: '%'
-      research_basis: Complementary to reflectivity at 1064nm wavelength for cast iron
+      research_basis: Complementary to reflectivity at 1064nm wavelength for cast
+        iron
     laserAbsorption:
       value: 55.0
       min: 0.02
       max: 100
       unit: '%'
-      research_basis: Cast iron absorption at 1064nm wavelength - higher carbon content increases absorption compared to steel
+      research_basis: Cast iron absorption at 1064nm wavelength - higher carbon content
+        increases absorption compared to steel
     laserDamageThreshold:
       value: 1.8
       min: 0.1
@@ -194,13 +217,15 @@ materialProperties:
       min: 5
       max: 99.9
       unit: '%'
-      research_basis: Complementary to absorption at 1064nm, accounting for surface oxidation typical in cast iron
+      research_basis: Complementary to absorption at 1064nm, accounting for surface
+        oxidation typical in cast iron
     reflectivity:
       value: 45.0
       min: 85
       max: 98
       unit: '%'
-      research_basis: ASM Metals Handbook - Cast iron reflectivity at 1064nm, typical oxidized surface
+      research_basis: ASM Metals Handbook - Cast iron reflectivity at 1064nm, typical
+        oxidized surface
     thermalShockResistance:
       value: 4.2
       min: 50
@@ -249,7 +274,8 @@ machineSettings:
     min: 80
     max: 120
     unit: W
-    description: Optimal average power for Cast Iron oxide removal without substrate damage
+    description: Optimal average power for Cast Iron oxide removal without substrate
+      damage
   pulseWidth:
     value: 10
     min: 5
@@ -279,7 +305,8 @@ machineSettings:
     min: 532
     max: 10600
     unit: nm
-    description: Near-infrared wavelength optimized for Cast Iron absorption and rust removal
+    description: Near-infrared wavelength optimized for Cast Iron absorption and rust
+      removal
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -318,7 +345,8 @@ preservedData:
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Pure metals, alloys, and metallic compounds including steel, aluminum, precious metals, and industrial alloys for precision cleaning
+    description: Pure metals, alloys, and metallic compounds including steel, aluminum,
+      precious metals, and industrial alloys for precision cleaning
     properties_count: 0
     category_ranges:
       density:
@@ -339,7 +367,8 @@ preservedData:
         unit: '%'
         source: Handbook of Optical Constants of Solids (Palik, 1998)
         confidence: 85
-        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with surface condition'
+        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with
+          surface condition'
         last_updated: '2025-10-15T14:19:43.867188'
       specificHeat:
         max: 2000
@@ -404,7 +433,8 @@ preservedData:
         unit: '%'
         source: Handbook of Optical Constants (Palik)
         confidence: 85
-        notes: At 1064nm for polished metals (532nm 70-95%, 355nm 55-85%, 10640nm 95-99%)
+        notes: At 1064nm for polished metals (532nm 70-95%, 355nm 55-85%, 10640nm
+          95-99%)
         measurement_context: 1064nm wavelength (most common Nd:YAG)
         last_updated: '2025-10-17T00:00:00.000000'
       oxidationResistance:
@@ -481,7 +511,8 @@ preservedData:
         unit: MS/m
         source: Materials Handbook (ASM International)
         confidence: 90
-        notes: Bismuth 0.77 MS/m, Aluminum 37.7 MS/m, Copper 59.6 MS/m, Silver 63.0 MS/m
+        notes: Bismuth 0.77 MS/m, Aluminum 37.7 MS/m, Copper 59.6 MS/m, Silver 63.0
+          MS/m
         measurement_context: Room temperature (20°C), pure elements
         last_updated: '2025-10-17T00:00:00.000000'
       meltingPoint:
@@ -509,7 +540,8 @@ preservedData:
         source: Materials Science and Engineering (Callister)
         confidence: 75
         notes: Cast iron ~50-100°C, Steel ~150-250°C, Nickel alloys ~300-400°C
-        measurement_context: Resistance to thermal stress cracking during rapid temperature changes
+        measurement_context: Resistance to thermal stress cracking during rapid temperature
+          changes
         last_updated: '2025-10-17T00:00:00.000000'
       absorptivity:
         min: 2.0
@@ -517,7 +549,8 @@ preservedData:
         unit: '%'
         source: Laser Material Processing (Steen & Mazumder)
         confidence: 85
-        notes: Polished metals 2-10%, Oxidized surfaces 30-65%, wavelength and temperature dependent
+        notes: Polished metals 2-10%, Oxidized surfaces 30-65%, wavelength and temperature
+          dependent
         measurement_context: Near-IR wavelengths (1064nm Nd:YAG), room temperature
         last_updated: '2025-10-17T00:00:00.000000'
       porosity:
@@ -527,7 +560,8 @@ preservedData:
         source: ASM Metals Handbook - Powder Metallurgy
         confidence: 90
         notes: Wrought metals 0-0.1%, Cast metals 0.5-5%, Sintered metals 2-15%
-        measurement_context: Volumetric porosity, varies significantly by manufacturing process
+        measurement_context: Volumetric porosity, varies significantly by manufacturing
+          process
         last_updated: '2025-10-17T00:00:00.000000'
       thermalDestructionPoint:
         min: 873

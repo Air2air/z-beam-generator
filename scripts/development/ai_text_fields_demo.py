@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """
-Demo script to display AI-generated text fields for Materials.yaml entries
+Demo script to display AI-generated caption fields for Materials.yaml entries
+
+NOTE: ai_text_fields is now LIMITED to caption fields only per system policy.
+Other text fields are handled through the frontmatter generation pipeline.
 """
 
 import yaml
@@ -15,7 +18,7 @@ def load_materials():
         return data.get('materials', {})
 
 def display_ai_text_fields(material_name):
-    """Display all AI text fields for a material"""
+    """Display caption fields for a material - ai_text_fields is CAPTION-ONLY"""
     materials = load_materials()
     
     if material_name not in materials:
@@ -27,72 +30,47 @@ def display_ai_text_fields(material_name):
     
     if not ai_fields:
         print(f"❌ No ai_text_fields found for {material_name}")
+        print(f"ℹ️  ai_text_fields is now LIMITED to caption fields only")
         return
     
-    print(f"\n🎯 AI Text Fields for {material_name}")
+    print(f"\n🎯 Caption Fields for {material_name}")
+    print("=" * 60)
+    print(f"ℹ️  ai_text_fields contains ONLY caption data")
+    print(f"ℹ️  Other text fields use frontmatter generation pipeline")
     print("=" * 60)
     
-    # Group fields by category
-    standard_fields = [
-        'applicationDescription', 'benefitsIntroduction', 'benefitsOutline',
-        'compatibilityDescription', 'processOverview', 'qualityStandards',
-        'safetyInformation', 'technicalSpecifications', 'usageGuidelines'
+    # Caption fields ONLY - ai_text_fields is LIMITED per system policy
+    caption_fields = [
+        'caption_beforeText', 'caption_afterText'
     ]
     
-    environmental_fields = [
-        'environmentalImpact_benefit', 'environmentalImpact_description',
-        'environmentalImpact_quantifiedBenefits', 'environmentalImpact_sustainabilityBenefit'
-    ]
-    
-    outcome_fields = [
-        'outcomeMetrics_metric', 'outcomeMetrics_description', 'outcomeMetrics_typicalRanges'
-    ]
-    
-    # Display Standard AI Text Fields
-    print("\n📋 Standard AI Text Fields:")
+    # Display Caption Fields
+    print("\n📋 Caption Fields (ai_text_fields):")
     print("-" * 40)
-    for field in standard_fields:
+    for field in caption_fields:
         if field in ai_fields:
             data = ai_fields[field]
             content = data.get('content', 'N/A')
             word_count = data.get('word_count', 0)
             char_count = data.get('character_count', 0)
+            
+            # Truncate content for display
+            if len(content) > 100:
+                content_preview = content[:100] + "..."
+            else:
+                content_preview = content
+            
             print(f"\n✅ {field}:")
-            print(f"   Content: {content}")
+            print(f"   Content: {content_preview}")
             print(f"   Stats: {word_count} words, {char_count} chars")
-    
-    # Display Environmental Impact Fields
-    print("\n🌱 Environmental Impact AI Text Fields:")
-    print("-" * 40)
-    for field in environmental_fields:
-        if field in ai_fields:
-            data = ai_fields[field]
-            content = data.get('content', 'N/A')
-            word_count = data.get('word_count', 0)
-            char_count = data.get('character_count', 0)
-            print(f"\n✅ {field}:")
-            print(f"   Content: {content}")
-            print(f"   Stats: {word_count} words, {char_count} chars")
-    
-    # Display Outcome Metrics Fields
-    print("\n📊 Outcome Metrics AI Text Fields:")
-    print("-" * 40)
-    for field in outcome_fields:
-        if field in ai_fields:
-            data = ai_fields[field]
-            content = data.get('content', 'N/A')
-            word_count = data.get('word_count', 0)
-            char_count = data.get('character_count', 0)
-            print(f"\n✅ {field}:")
-            print(f"   Content: {content}")
-            print(f"   Stats: {word_count} words, {char_count} chars")
+        else:
+            print(f"\n❌ {field}: Not found")
     
     # Summary
-    total_fields = len([f for f in ai_fields if f in standard_fields + environmental_fields + outcome_fields])
-    print(f"\n📈 Summary: {total_fields} AI text fields generated")
-    print(f"🔧 Configuration: Normalized word counts (15-35 words)")
-    print(f"👥 Author Voice: Multi-author rotation for variety")
-    print(f"⚡ Generation: AI-researched content, no legacy extraction")
+    total_fields = len([f for f in ai_fields if f in caption_fields])
+    print(f"\n📈 Summary: {total_fields} caption fields in ai_text_fields")
+    print("ℹ️  Configuration: Caption-only ai_text_fields per system policy")
+    print("ℹ️  Other text fields: Generated via frontmatter pipeline")
 
 if __name__ == "__main__":
     display_ai_text_fields("Aluminum")

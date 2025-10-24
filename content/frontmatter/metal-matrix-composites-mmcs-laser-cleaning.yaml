@@ -2,7 +2,8 @@ name: Metal Matrix Composites MMCs
 category: Composite
 subcategory: reinforced
 title: Metal Matrix Composites MMCs Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Metal Matrix Composites MMCs
+subtitle: Laser cleaning parameters and specifications for Metal Matrix Composites
+  MMCs
 description: Laser cleaning parameters for Metal Matrix Composites MMCs (MMCs)
 author:
   country: Indonesia
@@ -14,15 +15,18 @@ author:
   title: Ph.D.
 images:
   hero:
-    alt: Metal Matrix Composites Mmcs surface undergoing laser cleaning showing precise contamination removal
+    alt: Metal Matrix Composites Mmcs surface undergoing laser cleaning showing precise
+      contamination removal
     url: /images/material/metal-matrix-composites-mmcs-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Metal Matrix Composites Mmcs surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Metal Matrix Composites Mmcs surface after laser cleaning
+      showing detailed surface structure
     url: /images/material/metal-matrix-composites-mmcs-laser-cleaning-micro.jpg
 caption:
-  description: Microscopic analysis of Metal Matrix Composites Mmcs surface before and after laser cleaning treatment
-  beforeText: This surface analysis at 500x magnification reveals a heavily contaminated MMC surface. A thick, amorphous oxide layer—approximately 12 to 15 micrometers—completely obscures the underlying composite structure. This dark, tenacious film exhibits extensive micro-cracking and shows clear signs of localized spallation, which indicates poor adhesion and significant internal stress. The contamination layer itself is not uniform; it displays a complex topography with embedded particulate matter, likely from service exposure. Surface roughness measurements confirm this visual heterogeneity, with Ra values increasing dramatically to 4.8–5.2 µm. Energy Dispersive X-ray (EDX) analysis identifies high concentrations of oxygen and carbon, this confirms the presence of both oxide scale and carbonaceous deposits that have fused to the surface. The original SiC reinforcement particles are not visible, they are fully encapsulated by this contaminated over-layer, which severely compromises the surface's functional properties and its reflectivity.
-  afterText: Laser cleaning produces a very-very good transformation, the surface now appears completely different. The contaminated over-layer is entirely removed, this process reveals the distinct two-phase microstructure of the aluminum matrix and the silicon carbide reinforcements. The SiC particles—typically 20 to 45 µm in size—are now clearly visible and show clean, sharp interfaces with the metal matrix, a sign of minimal thermal damage. Surface roughness is significantly reduced, post-cleaning Ra measurements are now 1.5 to 1.8 µm. This is close to the original substrate specification. The laser process leaves a characteristic micro-textured pattern, a fine rippled morphology with a periodicity of approximately 8–10 µm that enhances surface area. No evidence of melting or ablation pits is observed on the aluminum phase, this indicates precise energy control. The surface reflectivity is restored, and the substrate integrity is fully maintained for subsequent operations.
+  description: Microscopic analysis of Metal Matrix Composites Mmcs surface before
+    and after laser cleaning treatment
+  beforeText: ''
+  afterText: ''
 regulatoryStandards:
 - name: ANSI
   description: ANSI Z136.1 - Safe Use of Lasers
@@ -46,19 +50,23 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
     specificHeat:
       value: 800.0
       min: 500
       max: 2500.0
       unit: J/(kg·K)
-      research_basis: 'ASM Handbook, Volume 21: Composites, Specific Heat data for Aluminum Matrix Composites (SiC particulate reinforcement) at 300K'
+      research_basis: 'ASM Handbook, Volume 21: Composites, Specific Heat data for
+        Aluminum Matrix Composites (SiC particulate reinforcement) at 300K'
     thermalConductivity:
       value: 180.25
       min: 0.03
       max: 400
       unit: W/(m·K)
-      research_basis: 'ASM Handbook, Vol. 21: Composites, Chapter: Thermal Properties of Metal Matrix Composites, with specific reference to Al/SiC MMC systems (60-65% Al, 35-40% SiC) commonly used in laser cleaning applications'
+      research_basis: 'ASM Handbook, Vol. 21: Composites, Chapter: Thermal Properties
+        of Metal Matrix Composites, with specific reference to Al/SiC MMC systems
+        (60-65% Al, 35-40% SiC) commonly used in laser cleaning applications'
     thermalDestruction:
       value: 300.0
       unit: °C
@@ -68,31 +76,46 @@ materialProperties:
       min: 0.08
       max: 180
       unit: mm²/s
-      research_basis: 'ASM Handbook, Volume 21: Composites, Section: Thermal Properties of Metal Matrix Composites, with specific reference to Al/SiC particulate composites (20-30 vol% SiC) at room temperature'
+      research_basis: 'ASM Handbook, Volume 21: Composites, Section: Thermal Properties
+        of Metal Matrix Composites, with specific reference to Al/SiC particulate
+        composites (20-30 vol% SiC) at room temperature'
     thermalExpansion:
       value: 17.2
       min: -1
       max: 250
       unit: 10^-6/K
-      research_basis: 'ASM Handbook, Volume 21: Composites, Section: Aluminum Matrix Composites, Table: Properties of Selected Aluminum Matrix Composites (6061-Al/SiC/25p) at 20-100°C'
+      research_basis: 'ASM Handbook, Volume 21: Composites, Section: Aluminum Matrix
+        Composites, Table: Properties of Selected Aluminum Matrix Composites (6061-Al/SiC/25p)
+        at 20-100°C'
     compressiveStrength:
       value: 350.0
       min: 50
       max: 1000
       unit: MPa
-      research_basis: The provided properties (density, hardness) are consistent with a common class of MMCs like aluminum matrix composites reinforced with silicon carbide (SiC). For a typical Al/SiC MMC with ~20-30% reinforcement, the compressive strength is often in the range of 300-400 MPa, with 350 MPa being a representative mid-range value. The hardness of 55 HRB further supports this strength range for a discontinuously reinforced MMC.
+      research_basis: The provided properties (density, hardness) are consistent with
+        a common class of MMCs like aluminum matrix composites reinforced with silicon
+        carbide (SiC). For a typical Al/SiC MMC with ~20-30% reinforcement, the compressive
+        strength is often in the range of 300-400 MPa, with 350 MPa being a representative
+        mid-range value. The hardness of 55 HRB further supports this strength range
+        for a discontinuously reinforced MMC.
     corrosionResistance:
       value: 3.0
       min: 5
       max: 9
       unit: rating
-      research_basis: MMCs typically have poor to fair corrosion resistance (2-4/10) due to galvanic coupling between the conductive reinforcement (e.g., ceramics like SiC) and the metal matrix, creating preferential corrosion sites. While specific ratings vary by matrix/reinforcement combination, general environmental corrosion resistance is significantly compromised compared to the monolithic base metal.
+      research_basis: MMCs typically have poor to fair corrosion resistance (2-4/10)
+        due to galvanic coupling between the conductive reinforcement (e.g., ceramics
+        like SiC) and the metal matrix, creating preferential corrosion sites. While
+        specific ratings vary by matrix/reinforcement combination, general environmental
+        corrosion resistance is significantly compromised compared to the monolithic
+        base metal.
     density:
       value: 2.6
       min: 0.5
       max: 8
       unit: g/cm³
-      research_basis: 'ASM Handbook, Volume 21: Composites, Specific data for Al 6061/SiC/20p composite system (most common MMC for laser cleaning applications)'
+      research_basis: 'ASM Handbook, Volume 21: Composites, Specific data for Al 6061/SiC/20p
+        composite system (most common MMC for laser cleaning applications)'
     electricalResistivity:
       value: 4.2e-08
       min: 0.001
@@ -110,44 +133,63 @@ materialProperties:
       min: 5.0
       max: 120
       unit: HRB
-      research_basis: 'ASM Handbook, Volume 21: Composites, Section: Aluminum Matrix Composites - Typical mechanical properties of 6061-Al/SiC/10p composite show Rockwell B hardness of 55 HRB (ASM International, 2001)'
+      research_basis: 'ASM Handbook, Volume 21: Composites, Section: Aluminum Matrix
+        Composites - Typical mechanical properties of 6061-Al/SiC/10p composite show
+        Rockwell B hardness of 55 HRB (ASM International, 2001)'
     oxidationResistance:
       value: 450.0
       min: 80.0
       max: 1650.0
       unit: °C
-      research_basis: The oxidation resistance of MMCs is not a single value but is highly dependent on the specific matrix alloy (e.g., aluminum, titanium, magnesium) and the reinforcement. For the most common class, Aluminum Matrix Composites (AMCs), which align with the provided density, the maximum continuous service temperature in air is typically limited to 300-450°C. This upper limit is due to the rapid degradation of the aluminum matrix and the potential for accelerated oxidation at reinforcement/matrix interfaces. The cited ASM Handbook provides this range for high-performance AMCs, with 450°C representing a practical upper bound before significant oxidation and property loss occur.
+      research_basis: The oxidation resistance of MMCs is not a single value but is
+        highly dependent on the specific matrix alloy (e.g., aluminum, titanium, magnesium)
+        and the reinforcement. For the most common class, Aluminum Matrix Composites
+        (AMCs), which align with the provided density, the maximum continuous service
+        temperature in air is typically limited to 300-450°C. This upper limit is
+        due to the rapid degradation of the aluminum matrix and the potential for
+        accelerated oxidation at reinforcement/matrix interfaces. The cited ASM Handbook
+        provides this range for high-performance AMCs, with 450°C representing a practical
+        upper bound before significant oxidation and property loss occur.
     tensileStrength:
       value: 580.0
       min: 20
       max: 6000
       unit: MPa
-      research_basis: 'ASM Handbook, Volume 21: Composites, Specific data for 6061-Al/SiC/25p composite showing tensile strength of 580 MPa under standard testing conditions (ASTM E8/E8M)'
+      research_basis: 'ASM Handbook, Volume 21: Composites, Specific data for 6061-Al/SiC/25p
+        composite showing tensile strength of 580 MPa under standard testing conditions
+        (ASTM E8/E8M)'
     youngsModulus:
       value: 70.0
       min: 0.001
       max: 3000
       unit: GPa
-      research_basis: 'ASM Handbook, Volume 21: Composites, Specific data for Al/SiC MMCs with 30-40% reinforcement fraction, validated against NIST MMCDB and T.W. Clyne''s ''Comprehensive Composite Materials'''
+      research_basis: 'ASM Handbook, Volume 21: Composites, Specific data for Al/SiC
+        MMCs with 30-40% reinforcement fraction, validated against NIST MMCDB and
+        T.W. Clyne''s ''Comprehensive Composite Materials'''
     fractureToughness:
       value: 25.0
       min: 20
       max: 100
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 85.7
       min: 0.05
       max: 200
       unit: '%'
-      research_basis: 'ASM Handbook, Volume 21: Composites, Chapter: Laser Processing of Metal Matrix Composites, with specific reference to aluminum-silicon carbide (Al-SiC) systems under Nd:YAG laser irradiation at 1064 nm wavelength'
+      research_basis: 'ASM Handbook, Volume 21: Composites, Chapter: Laser Processing
+        of Metal Matrix Composites, with specific reference to aluminum-silicon carbide
+        (Al-SiC) systems under Nd:YAG laser irradiation at 1064 nm wavelength'
     laserReflectivity:
       value: 38.5
       min: 2
       max: 80
       unit: '%'
-      research_basis: 'ASM Handbook, Volume 21: Composites, Chapter: Laser Processing of Metal Matrix Composites, with specific reference to Al-SiC MMC systems (20-30% SiC reinforcement) under Nd:YAG laser irradiation at 1064 nm'
+      research_basis: 'ASM Handbook, Volume 21: Composites, Chapter: Laser Processing
+        of Metal Matrix Composites, with specific reference to Al-SiC MMC systems
+        (20-30% SiC reinforcement) under Nd:YAG laser irradiation at 1064 nm'
 machineSettings:
   dwellTime:
     value: 100
@@ -160,13 +202,15 @@ machineSettings:
     min: 2
     max: 8
     unit: J/cm²
-    description: Fluence level sufficient for contaminant removal without damaging MMC substrate
+    description: Fluence level sufficient for contaminant removal without damaging
+      MMC substrate
   overlapRatio:
     value: 50
     min: 30
     max: 70
     unit: '%'
-    description: Beam overlap percentage ensuring complete coverage without excessive energy deposition
+    description: Beam overlap percentage ensuring complete coverage without excessive
+      energy deposition
   passCount:
     value: 3
     min: 1
@@ -178,19 +222,22 @@ machineSettings:
     min: 80
     max: 120
     unit: W
-    description: Optimal average power for MMCs cleaning considering thermal conductivity and matrix integrity
+    description: Optimal average power for MMCs cleaning considering thermal conductivity
+      and matrix integrity
   pulseWidth:
     value: 10
     min: 5
     max: 20
     unit: ns
-    description: Nanosecond pulse duration for controlled ablation without excessive thermal diffusion
+    description: Nanosecond pulse duration for controlled ablation without excessive
+      thermal diffusion
   repetitionRate:
     value: 50
     min: 20
     max: 100
     unit: kHz
-    description: High repetition rate for efficient cleaning while maintaining thermal management
+    description: High repetition rate for efficient cleaning while maintaining thermal
+      management
   scanSpeed:
     value: 500
     min: 200
@@ -208,7 +255,8 @@ machineSettings:
     min: 532
     max: 10600
     unit: nm
-    description: Near-IR wavelength providing good absorption in metallic matrix while minimizing damage to ceramic reinforcements
+    description: Near-IR wavelength providing good absorption in metallic matrix while
+      minimizing damage to ceramic reinforcements
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -247,7 +295,8 @@ preservedData:
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Engineered composite materials including fiber-reinforced polymers, matrix composites, and hybrid materials for specialized cleaning applications
+    description: Engineered composite materials including fiber-reinforced polymers,
+      matrix composites, and hybrid materials for specialized cleaning applications
     properties_count: 0
     category_ranges:
       density:
@@ -271,7 +320,8 @@ preservedData:
         unit: '%'
         source: Composite Materials Handbook (MIL-HDBK-17)
         confidence: 70
-        notes: 'Wide range reflects diversity: polymer matrix composites 5-30%, metal matrix composites 40-80%'
+        notes: 'Wide range reflects diversity: polymer matrix composites 5-30%, metal
+          matrix composites 40-80%'
         last_updated: '2025-10-15T14:19:43.867274'
       specificHeat:
         max: 2500.0
@@ -290,7 +340,8 @@ preservedData:
         unit: W/(m·K)
         source: ASM Handbook - Composites
         confidence: 75
-        notes: 'Wide range (0.1-400 W/m·K): polymer matrix ~0.2, carbon fiber ~10, metal matrix 50-400'
+        notes: 'Wide range (0.1-400 W/m·K): polymer matrix ~0.2, carbon fiber ~10,
+          metal matrix 50-400'
         last_updated: '2025-10-15T14:19:43.867281'
         adjustment_note: Fiberglass is insulating
         adjustment_date: '2025-10-15'

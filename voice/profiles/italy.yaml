@@ -204,9 +204,9 @@ ai_evasion_parameters:
     long: 40        # 40% of sentences 20-28 words
     very_long: 20   # 20% of sentences 30+ words
   
-  hesitation_markers_per_200_words: 2.0  # More hesitation for academic style
-  comma_splices_per_100_words: 0.5  # Less comma splices (more formal)
-  parenthetical_asides_per_300_words: 3.0  # More asides for qualification
+  hesitation_markers_per_200_words: 0.4  # Minimal hesitation (confident academic)
+  comma_splices_per_100_words: 0.2  # Minimal comma splices (formal precision)
+  parenthetical_asides_per_300_words: 1.5  # Moderate asides (professional qualification)
   lexical_variety_target: 0.70  # 70% unique words (sophisticated vocabulary)
   
   # Italy-specific rules

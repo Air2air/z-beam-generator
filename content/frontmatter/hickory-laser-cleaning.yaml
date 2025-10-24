@@ -17,12 +17,14 @@ images:
     alt: Hickory surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/hickory-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Hickory surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Hickory surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/hickory-laser-cleaning-micro.jpg
 caption:
-  description: Microscopic analysis of Hickory surface before and after laser cleaning treatment
-  beforeText: At 500x magnification, the hickory surface presents a heavily occluded morphology characterized by a discontinuous, particulate-laden film. This contamination layer, measuring between 15 and 25 µm in thickness, completely masks the underlying wood anatomy. The deposit consists primarily of carbonaceous soot particles—ranging from 2 to 8 µm in diameter—embedded within a tenacious, amorphous matrix likely composed of oxidized organic residues. This composite layer exhibits significant cracking, with fissure widths up to 5 µm, indicating brittle failure of the film due to thermal cycling or desiccation. The surface topography is highly irregular, with a measured arithmetic mean roughness (Ra) exceeding 12 µm due to the particulate agglomerates. Energy-dispersive X-ray (EDX) spectroscopy confirms the presence of foreign elements, including sulfur and silicon, which suggests environmental deposition. The inherent porosity of the hickory—approximately 55%—is entirely filled, with contaminant material visibly packed into vessel elements and lumens. This occlusion fundamentally alters the surface's thermal and optical properties, increasing laser absorption potential beyond the substrate's inherent 32.7% while compromising any functional coating adhesion.
-  afterText: Laser cleaning achieves a pronounced restoration of the native hickory surface, as confirmed by comparative microscopy at 500x. The procedure successfully ablated the entire 15-25 µm contamination layer, exposing the intact wood microstructure beneath. The characteristic cellular arrangement—including large vessels and dense fiber cells—is now fully visible, with no residual film obscuring the cell walls. The surface roughness has been substantially reduced to an Ra value of approximately 3.5 µm, a figure that aligns with the inherent texture of undamaged hickory. The cleaning process removed all particulate matter from the wood's porosity, effectively reopening the 55% void volume for potential subsequent
+  description: Microscopic analysis of Hickory surface before and after laser cleaning
+    treatment
+  beforeText: ''
+  afterText: ''
 regulatoryStandards:
 - name: ANSI
   description: ANSI Z136.1 - Safe Use of Lasers
@@ -46,19 +48,26 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
     specificHeat:
       value: 1630.0
       min: 800
       max: 2500
       unit: J/(kg·K)
-      research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest Service, Forest Products Laboratory. General Technical Report FPL-GTR-190. 2010. Chapter 4: Moisture Relations and Physical Properties of Wood, Table 4-5 provides specific heat values for various wood species at 12% moisture content.'
+      research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest
+        Service, Forest Products Laboratory. General Technical Report FPL-GTR-190.
+        2010. Chapter 4: Moisture Relations and Physical Properties of Wood, Table
+        4-5 provides specific heat values for various wood species at 12% moisture
+        content.'
     thermalConductivity:
       value: 0.155
       min: 0.04
       max: 0.4
       unit: W/(m·K)
-      research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest Service, FPL-GTR-190), Table 4-3: Thermal properties of common wood species at 12% moisture content'
+      research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest
+        Service, FPL-GTR-190), Table 4-3: Thermal properties of common wood species
+        at 12% moisture content'
     thermalDestruction:
       value: 300.0
       unit: °C
@@ -68,49 +77,82 @@ materialProperties:
       min: 0.0001
       max: 0.4
       unit: m²/s
-      research_basis: 'Forest Products Laboratory. (2010). Wood Handbook: Wood as an Engineering Material. USDA Forest Service, Chapter 4: Moisture and Thermal Properties, Table 4-5, specifically citing hickory species (Carya spp.) at 12% moisture content.'
+      research_basis: 'Forest Products Laboratory. (2010). Wood Handbook: Wood as
+        an Engineering Material. USDA Forest Service, Chapter 4: Moisture and Thermal
+        Properties, Table 4-5, specifically citing hickory species (Carya spp.) at
+        12% moisture content.'
     thermalExpansion:
       value: 3.7
       min: 3.0
       max: 60
       unit: 10⁻⁶/K
-      research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest Service, Forest Products Laboratory. General Technical Report FPL-GTR-190. 2010. Table 4-3: Coefficients of thermal expansion for various wood species.'
+      research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest
+        Service, Forest Products Laboratory. General Technical Report FPL-GTR-190.
+        2010. Table 4-3: Coefficients of thermal expansion for various wood species.'
     compressiveStrength:
       value: 51.3
       min: 20
       max: 80
       unit: MPa
-      research_basis: The Wood Handbook from the USDA Forest Products Laboratory is the primary authoritative source for North American wood properties. For hickory (genus Carya), the compressive strength parallel to the grain is listed as 51.3 MPa at 12% moisture content, which is the standard test condition for reporting wood strength properties. This value is consistent with the known high density and hardness provided for the material.
+      research_basis: The Wood Handbook from the USDA Forest Products Laboratory is
+        the primary authoritative source for North American wood properties. For hickory
+        (genus Carya), the compressive strength parallel to the grain is listed as
+        51.3 MPa at 12% moisture content, which is the standard test condition for
+        reporting wood strength properties. This value is consistent with the known
+        high density and hardness provided for the material.
     corrosionResistance:
       value: 2.0
       min: 2.0
       max: 8.0
       unit: rating
-      research_basis: Hickory, as a hardwood, has moderate natural durability but poor corrosion resistance in moist environments. According to wood science references, hickory is not recommended for ground contact or high-moisture applications without preservative treatment due to its susceptibility to fungal decay and insect attack. While it has good mechanical properties, its natural corrosion resistance ranks low among woods, with most sources classifying it as non-durable to perishable in outdoor conditions.
+      research_basis: Hickory, as a hardwood, has moderate natural durability but
+        poor corrosion resistance in moist environments. According to wood science
+        references, hickory is not recommended for ground contact or high-moisture
+        applications without preservative treatment due to its susceptibility to fungal
+        decay and insect attack. While it has good mechanical properties, its natural
+        corrosion resistance ranks low among woods, with most sources classifying
+        it as non-durable to perishable in outdoor conditions.
     density:
       value: 0.72
       min: 0.12
       max: 1.5
       unit: g/cm³
-      research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook: Wood as an Engineering Material. General Technical Report FPL-GTR-190. Table 4-3: Mechanical properties of some commercially important woods grown in the United States.'
+      research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook:
+        Wood as an Engineering Material. General Technical Report FPL-GTR-190. Table
+        4-3: Mechanical properties of some commercially important woods grown in the
+        United States.'
     flexuralStrength:
       value: 139.0
       min: 40
       max: 150
       unit: MPa
-      research_basis: The Wood Database, a recognized authority on wood properties, reports the modulus of rupture (MOR) for hickory species as 20,200 psi, which converts to approximately 139 MPa. This value represents the flexural strength measured via standard 3-point bend testing according to ASTM D143. Hickory is consistently documented across multiple wood technology references as having exceptionally high bending strength among domestic hardwoods.
+      research_basis: The Wood Database, a recognized authority on wood properties,
+        reports the modulus of rupture (MOR) for hickory species as 20,200 psi, which
+        converts to approximately 139 MPa. This value represents the flexural strength
+        measured via standard 3-point bend testing according to ASTM D143. Hickory
+        is consistently documented across multiple wood technology references as having
+        exceptionally high bending strength among domestic hardwoods.
     hardness:
       value: 7.08
       min: 1
       max: 5000
       unit: MPa
-      research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook: Wood as an Engineering Material. Chapter 4: Mechanical Properties of Wood. Table 4-3: Hardness of domestic hardwoods (Janka hardness test).'
+      research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook:
+        Wood as an Engineering Material. Chapter 4: Mechanical Properties of Wood.
+        Table 4-3: Hardness of domestic hardwoods (Janka hardness test).'
     oxidationResistance:
       value: 150.0
       min: 82.0
       max: 204.0
       unit: °C
-      research_basis: Hickory, like most hardwoods, begins significant thermal degradation (pyrolysis) and oxidative changes well below its ignition point. The FPL and other wood science authorities (e.g., Wood as an Engineering Material) consistently report that the maximum safe, long-term service temperature for wood in air is 150°C. Above this temperature, the chemical components (lignin, cellulose, hemicellulose) start to decompose rapidly, leading to charring, loss of mechanical strength, and significant mass loss due to oxidation, even in the absence of flame.
+      research_basis: Hickory, like most hardwoods, begins significant thermal degradation
+        (pyrolysis) and oxidative changes well below its ignition point. The FPL and
+        other wood science authorities (e.g., Wood as an Engineering Material) consistently
+        report that the maximum safe, long-term service temperature for wood in air
+        is 150°C. Above this temperature, the chemical components (lignin, cellulose,
+        hemicellulose) start to decompose rapidly, leading to charring, loss of mechanical
+        strength, and significant mass loss due to oxidation, even in the absence
+        of flame.
     porosity:
       value: 0.56
       min: 12
@@ -122,7 +164,9 @@ materialProperties:
       min: 20
       max: 200
       unit: MPa
-      research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook: Wood as an Engineering Material. Chapter 4: Mechanical Properties of Wood, Table 4-3a. 2010 Edition.'
+      research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook:
+        Wood as an Engineering Material. Chapter 4: Mechanical Properties of Wood,
+        Table 4-3a. 2010 Edition.'
     youngsModulus:
       value: 11.9
       min: 5
@@ -134,22 +178,31 @@ materialProperties:
       min: 0.33
       max: 4.4
       unit: MPa·√m
-      research_basis: This value represents the Mode I fracture toughness (K_IC) for hickory in the radial-longitudinal orientation at room temperature, determined using compact tension specimens. Hickory's high density among hardwoods contributes to its relatively good fracture toughness compared to other domestic species.
+      research_basis: This value represents the Mode I fracture toughness (K_IC) for
+        hickory in the radial-longitudinal orientation at room temperature, determined
+        using compact tension specimens. Hickory's high density among hardwoods contributes
+        to its relatively good fracture toughness compared to other domestic species.
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 32.7
       min: 1
       max: 50
       unit: '%'
-      research_basis: 'NIST Standard Reference Database 69: Laser Material Interaction Database for Wood Species; ASM Handbook Volume 5: Surface Engineering - Laser Processing Section; Miller, R.B. (1999) ''Structure of Wood'' in Wood Handbook: Wood as an Engineering Material'
+      research_basis: 'NIST Standard Reference Database 69: Laser Material Interaction
+        Database for Wood Species; ASM Handbook Volume 5: Surface Engineering - Laser
+        Processing Section; Miller, R.B. (1999) ''Structure of Wood'' in Wood Handbook:
+        Wood as an Engineering Material'
     laserReflectivity:
       value: 28.5
       min: 10
       max: 60
       unit: '%'
-      research_basis: NIST Materials Data Repository - Wood Optical Properties Database (2021), supplemented by Miller & Wooten (2019) 'Laser-Wood Interactions in Cleaning Applications' in Journal of Materials Processing Technology
+      research_basis: NIST Materials Data Repository - Wood Optical Properties Database
+        (2021), supplemented by Miller & Wooten (2019) 'Laser-Wood Interactions in
+        Cleaning Applications' in Journal of Materials Processing Technology
 machineSettings:
   energyDensity:
     value: 1.2
@@ -243,7 +296,8 @@ preservedData:
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Natural and engineered wood materials including hardwoods, softwoods, plywood, and composite wood products for gentle cleaning applications
+    description: Natural and engineered wood materials including hardwoods, softwoods,
+      plywood, and composite wood products for gentle cleaning applications
     properties_count: 0
     category_ranges:
       density:
@@ -270,7 +324,8 @@ preservedData:
         unit: '%'
         source: Wood Science and Technology Database
         confidence: 70
-        notes: Light woods 40-60%, dark woods 10-25%, highly dependent on species and finish
+        notes: Light woods 40-60%, dark woods 10-25%, highly dependent on species
+          and finish
         last_updated: '2025-10-15T14:19:43.867238'
       specificHeat:
         max: 2500
@@ -286,7 +341,8 @@ preservedData:
         unit: W/(m·K)
         source: Wood Handbook - Wood as an Engineering Material (USDA Forest Service)
         confidence: 80
-        notes: Across grain 0.04-0.2 W/m·K, along grain can be 2-3x higher; moisture content affects values
+        notes: Across grain 0.04-0.2 W/m·K, along grain can be 2-3x higher; moisture
+          content affects values
         last_updated: '2025-10-15T14:19:43.867244'
       thermalDestruction:
         point:
@@ -400,7 +456,9 @@ preservedData:
       confidence: 0.9
       ai_verified: true
       research_date: '2025-10-15T21:27:01.614005'
-      source: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190), Chapter 4: Mechanical Properties of Wood, Table 4-3a. USDA Forest Service, Forest Products Laboratory. 2010.'
+      source: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190), Chapter
+        4: Mechanical Properties of Wood, Table 4-3a. USDA Forest Service, Forest
+        Products Laboratory. 2010.'
     corrosionResistance:
       confidence: 0.87
       ai_verified: true
@@ -426,7 +484,8 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:43:43.698960'
-      source: 'Wood Handbook, Chapter 3: Physical Properties and Moisture Relations of Wood, Forest Products Laboratory (FPL), USDA.'
+      source: 'Wood Handbook, Chapter 3: Physical Properties and Moisture Relations
+        of Wood, Forest Products Laboratory (FPL), USDA.'
     porosity:
       confidence: 0.92
       research_date: '2025-10-17T19:07:34.192813'
@@ -446,7 +505,8 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:15:05.332360'
-      source: E.J. Bares, "Fracture Toughness of Wood", Wood Science and Technology, Vol. 12, pp. 217-226 (1978)
+      source: E.J. Bares, "Fracture Toughness of Wood", Wood Science and Technology,
+        Vol. 12, pp. 217-226 (1978)
   machineSettingsMetadata:
     energyDensity:
       confidence: 89

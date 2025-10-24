@@ -17,12 +17,14 @@ images:
     alt: Cedar surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/cedar-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Cedar surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Cedar surface after laser cleaning showing detailed surface
+      structure
     url: /images/material/cedar-laser-cleaning-micro.jpg
 caption:
-  description: Microscopic analysis of Cedar surface before and after laser cleaning treatment
-  beforeText: At 500x magnification, the cedar surface exhibits a complex, multi-layered contamination profile. A continuous, amorphous biofilm—measuring between 15 and 25 µm in thickness—obscures the underlying wood anatomy. This layer appears as a dark, particulate-laden matrix, likely a composite of fungal hyphae, atmospheric soot, and degraded organic matter. Energy-dispersive X-ray (EDX) analysis confirms elevated levels of sulfur and carbon, pointing to sulfate deposits and carbonaceous particulate entrapment within the wood's porous structure. The wood's cellular features are largely hidden. The earlywood tracheids, which should display open lumens, are occluded by this infiltrated grime. The surface topography is highly irregular, with a measured average roughness (Ra) exceeding 35 µm due to the uneven deposition and the swelling of degraded surface fibers. This contamination layer significantly alters the surface's intrinsic properties, increasing laser absorption locally while masking the wood's natural reflectivity. The boundary between the contaminant and the cedar substrate is diffuse, indicating deep penetration into the 65% porosity structure, a condition that complicates superficial cleaning methods.
-  afterText: Post-cleaning analysis reveals a pronounced transformation. The contaminant layer has been completely ablated, exposing the pristine wood substrate. The surface roughness (Ra) is now measured at 8.2 µm, a 76% reduction that reflects the restoration of the natural grain texture. Individual tracheid cells are now fully visible, with their distinct lumens and pitted walls clearly defined under 500x magnification. The laser process achieved selective removal with minimal thermal alteration. SEM inspection shows the ablation threshold was precisely met, vaporizing the contamination while the underlying cedar—with its 380°C thermal destruction point—remained structurally sound. Some slight micro-charring is present on latewood bands, a typical result of their higher density and resin content. Crucially, the process restored the wood's original optical characteristics; its natural reflectivity has returned, and the cleaned surface exhibits no measurable loss of structural integrity in the superficial cell layers.
+  description: Microscopic analysis of Cedar surface before and after laser cleaning
+    treatment
+  beforeText: ''
+  afterText: ''
 regulatoryStandards:
 - name: ANSI
   description: ANSI Z136.1 - Safe Use of Lasers
@@ -46,19 +48,23 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
     specificHeat:
       value: 1650.0
       min: 800
       max: 2500
       unit: J/(kg·K)
-      research_basis: NIST Wood Database - Specific Heat of Eastern Red Cedar (Juniperus virginiana) at 12% moisture content, 20°C
+      research_basis: NIST Wood Database - Specific Heat of Eastern Red Cedar (Juniperus
+        virginiana) at 12% moisture content, 20°C
     thermalConductivity:
       value: 0.12
       min: 0.04
       max: 0.4
       unit: W/(m·K)
-      research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest Service, FPL-GTR-190), Chapter 4: Thermal Properties of Wood, Table 4-3: Thermal conductivity of selected woods at 12% moisture content'
+      research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest
+        Service, FPL-GTR-190), Chapter 4: Thermal Properties of Wood, Table 4-3: Thermal
+        conductivity of selected woods at 12% moisture content'
     thermalDestruction:
       value: 300.0
       unit: °C
@@ -68,49 +74,79 @@ materialProperties:
       min: 0.0001
       max: 0.4
       unit: mm²/s
-      research_basis: 'Forest Products Laboratory. Wood Handbook: Wood as an Engineering Material. USDA Forest Service, 2010. Chapter 4: Thermal Properties, Table 4-3 provides species-specific thermal diffusivity values for various woods including cedar.'
+      research_basis: 'Forest Products Laboratory. Wood Handbook: Wood as an Engineering
+        Material. USDA Forest Service, 2010. Chapter 4: Thermal Properties, Table
+        4-3 provides species-specific thermal diffusivity values for various woods
+        including cedar.'
     thermalExpansion:
       value: 3.7
       min: 3.0
       max: 60
       unit: 10^-6/K
-      research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest Service, Forest Products Laboratory. General Technical Report FPL-GTR-190. 2010. Table 4-3: Coefficients of thermal expansion for selected woods.'
+      research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest
+        Service, Forest Products Laboratory. General Technical Report FPL-GTR-190.
+        2010. Table 4-3: Coefficients of thermal expansion for selected woods.'
     compressiveStrength:
       value: 31.0
       min: 20
       max: 80
       unit: MPa
-      research_basis: The Wood Database reports compressive strength (crushing strength) parallel to grain for Eastern White Cedar as 3,170 psi, which converts to 31.0 MPa. This aligns with typical values for softwoods in this density range (0.37 g/cm³). Test conditions are standard ASTM D143 for small clear specimens at 12% moisture content.
+      research_basis: The Wood Database reports compressive strength (crushing strength)
+        parallel to grain for Eastern White Cedar as 3,170 psi, which converts to
+        31.0 MPa. This aligns with typical values for softwoods in this density range
+        (0.37 g/cm³). Test conditions are standard ASTM D143 for small clear specimens
+        at 12% moisture content.
     corrosionResistance:
       value: 4.0
       min: 2.0
       max: 8.0
       unit: rating
-      research_basis: Cedar wood demonstrates moderate natural decay resistance due to extractives and oils that provide some protection against fungi and insects. However, it has limited resistance to moisture, weathering, and ground contact compared to more durable woods like teak or ipe. Western Red Cedar, for example, typically receives a "moderate" durability rating with a service life of 15-25 years for above-ground applications, placing it in the lower-middle range of wood durability scales.
+      research_basis: Cedar wood demonstrates moderate natural decay resistance due
+        to extractives and oils that provide some protection against fungi and insects.
+        However, it has limited resistance to moisture, weathering, and ground contact
+        compared to more durable woods like teak or ipe. Western Red Cedar, for example,
+        typically receives a "moderate" durability rating with a service life of 15-25
+        years for above-ground applications, placing it in the lower-middle range
+        of wood durability scales.
     density:
       value: 0.37
       min: 0.12
       max: 1.5
       unit: g/cm³
-      research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest Service, Forest Products Laboratory. 2010. General Technical Report FPL-GTR-190. Table 4-3, specific gravity values for Western Red Cedar (Thuja plicata) at 12% moisture content.'
+      research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest
+        Service, Forest Products Laboratory. 2010. General Technical Report FPL-GTR-190.
+        Table 4-3, specific gravity values for Western Red Cedar (Thuja plicata) at
+        12% moisture content.'
     flexuralStrength:
       value: 59.0
       min: 40
       max: 150
       unit: MPa
-      research_basis: The Wood Database, a widely cited authority on wood properties, reports the modulus of rupture (MOR) for Western Red Cedar as 7,500 psi, which converts to approximately 59.0 MPa. This value represents the flexural strength measured via standard 3-point bend testing per ASTM D143 standards for small clear wood specimens.
+      research_basis: The Wood Database, a widely cited authority on wood properties,
+        reports the modulus of rupture (MOR) for Western Red Cedar as 7,500 psi, which
+        converts to approximately 59.0 MPa. This value represents the flexural strength
+        measured via standard 3-point bend testing per ASTM D143 standards for small
+        clear wood specimens.
     hardness:
       value: 4.0
       min: 1
       max: 5000
       unit: MPa
-      research_basis: 'USDA Forest Products Laboratory Wood Handbook (2010), Chapter 4: Mechanical Properties of Wood, Table 4-3: Hardness of commercially important woods grown in the United States, specifically Eastern Red Cedar (Juniperus virginiana) Janka hardness of 900 lb_f converted to MPa'
+      research_basis: 'USDA Forest Products Laboratory Wood Handbook (2010), Chapter
+        4: Mechanical Properties of Wood, Table 4-3: Hardness of commercially important
+        woods grown in the United States, specifically Eastern Red Cedar (Juniperus
+        virginiana) Janka hardness of 900 lb_f converted to MPa'
     oxidationResistance:
       value: 177.0
       min: 82.0
       max: 204.0
       unit: °C
-      research_basis: The source provides an ignition temperature range of 170-190°C for various wood species in long-term exposure. The lower end of this range (170°C) is the temperature at which significant thermal degradation and oxidation begin, but 177°C is a commonly cited maximum safe continuous service temperature for wood in engineering applications before charring and significant loss of mechanical properties occur.
+      research_basis: The source provides an ignition temperature range of 170-190°C
+        for various wood species in long-term exposure. The lower end of this range
+        (170°C) is the temperature at which significant thermal degradation and oxidation
+        begin, but 177°C is a commonly cited maximum safe continuous service temperature
+        for wood in engineering applications before charring and significant loss
+        of mechanical properties occur.
     porosity:
       value: 0.72
       min: 12
@@ -122,53 +158,73 @@ materialProperties:
       min: 20
       max: 200
       unit: MPa
-      research_basis: 'USDA Forest Products Laboratory. Wood Handbook: Wood as an Engineering Material. General Technical Report FPL-GTR-190. 2010. Table 5-3a: Mechanical properties of commercially important woods grown in the United States.'
+      research_basis: 'USDA Forest Products Laboratory. Wood Handbook: Wood as an
+        Engineering Material. General Technical Report FPL-GTR-190. 2010. Table 5-3a:
+        Mechanical properties of commercially important woods grown in the United
+        States.'
     youngsModulus:
       value: 6.9
       min: 5
       max: 20000
       unit: GPa
-      research_basis: 'USDA Forest Products Laboratory. Wood Handbook: Wood as an Engineering Material. General Technical Report FPL-GTR-190. Table 5-3a: Mechanical properties of some commercially important woods grown in the United States (Western Red Cedar, 12% moisture content).'
+      research_basis: 'USDA Forest Products Laboratory. Wood Handbook: Wood as an
+        Engineering Material. General Technical Report FPL-GTR-190. Table 5-3a: Mechanical
+        properties of some commercially important woods grown in the United States
+        (Western Red Cedar, 12% moisture content).'
     fractureToughness:
       value: 0.37
       min: 0.33
       max: 4.4
       unit: MPa·√m
-      research_basis: The provided value is a typical range for clear wood in the radial-longitudinal (RL) crack propagation system. Cedar, being a softwood, generally has a fracture toughness between 0.3 and 0.5 MPa·√m. The value of 0.37 MPa·√m is a representative mid-range figure for such species, consistent with data published by authoritative sources like the USDA Forest Products Laboratory.
+      research_basis: The provided value is a typical range for clear wood in the
+        radial-longitudinal (RL) crack propagation system. Cedar, being a softwood,
+        generally has a fracture toughness between 0.3 and 0.5 MPa·√m. The value of
+        0.37 MPa·√m is a representative mid-range figure for such species, consistent
+        with data published by authoritative sources like the USDA Forest Products
+        Laboratory.
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 32.7
       min: 1
       max: 50
       unit: '%'
-      research_basis: 'NIST Special Publication 1034: ''Optical Properties of Wood Species for Laser Processing Applications'' (2018), Table 4.2 - Western Red Cedar absorption at 1064 nm wavelength'
+      research_basis: 'NIST Special Publication 1034: ''Optical Properties of Wood
+        Species for Laser Processing Applications'' (2018), Table 4.2 - Western Red
+        Cedar absorption at 1064 nm wavelength'
     laserReflectivity:
       value: 42.7
       min: 10
       max: 60
       unit: '%'
-      research_basis: 'NIST Standard Reference Database 120: Optical Properties of Materials for Concentrating Solar Power, supplemented by Miller et al. (2004) ''Laser cleaning of wooden artifacts: precise control and effect on wood surfaces'' in Applied Physics A'
+      research_basis: 'NIST Standard Reference Database 120: Optical Properties of
+        Materials for Concentrating Solar Power, supplemented by Miller et al. (2004)
+        ''Laser cleaning of wooden artifacts: precise control and effect on wood surfaces''
+        in Applied Physics A'
 machineSettings:
   energyDensity:
     value: 2.5
     min: 1.5
     max: 4.0
     unit: J/cm²
-    description: Fluence threshold for effective contaminant removal without damaging Cedar substrate
+    description: Fluence threshold for effective contaminant removal without damaging
+      Cedar substrate
   overlapRatio:
     value: 50
     min: 40
     max: 70
     unit: '%'
-    description: Optimal beam overlap for uniform cleaning without excessive energy deposition
+    description: Optimal beam overlap for uniform cleaning without excessive energy
+      deposition
   passCount:
     value: 2
     min: 1
     max: 4
     unit: passes
-    description: Number of cleaning passes for complete contaminant removal from Cedar surface
+    description: Number of cleaning passes for complete contaminant removal from Cedar
+      surface
   powerRange:
     value: 100
     min: 80
@@ -180,7 +236,8 @@ machineSettings:
     min: 8
     max: 20
     unit: ns
-    description: Short pulse duration for efficient ablation of contaminants without excessive heat diffusion
+    description: Short pulse duration for efficient ablation of contaminants without
+      excessive heat diffusion
   repetitionRate:
     value: 50
     min: 20
@@ -192,7 +249,8 @@ machineSettings:
     min: 300
     max: 800
     unit: mm/s
-    description: Scanning speed for efficient area coverage while maintaining cleaning effectiveness
+    description: Scanning speed for efficient area coverage while maintaining cleaning
+      effectiveness
   spotSize:
     value: 80
     min: 50
@@ -204,7 +262,8 @@ machineSettings:
     min: 532
     max: 10600
     unit: nm
-    description: Near-infrared wavelength for optimal Cedar absorption and minimal penetration
+    description: Near-infrared wavelength for optimal Cedar absorption and minimal
+      penetration
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -243,7 +302,8 @@ preservedData:
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Natural and engineered wood materials including hardwoods, softwoods, plywood, and composite wood products for gentle cleaning applications
+    description: Natural and engineered wood materials including hardwoods, softwoods,
+      plywood, and composite wood products for gentle cleaning applications
     properties_count: 0
     category_ranges:
       density:
@@ -270,7 +330,8 @@ preservedData:
         unit: '%'
         source: Wood Science and Technology Database
         confidence: 70
-        notes: Light woods 40-60%, dark woods 10-25%, highly dependent on species and finish
+        notes: Light woods 40-60%, dark woods 10-25%, highly dependent on species
+          and finish
         last_updated: '2025-10-15T14:19:43.867238'
       specificHeat:
         max: 2500
@@ -286,7 +347,8 @@ preservedData:
         unit: W/(m·K)
         source: Wood Handbook - Wood as an Engineering Material (USDA Forest Service)
         confidence: 80
-        notes: Across grain 0.04-0.2 W/m·K, along grain can be 2-3x higher; moisture content affects values
+        notes: Across grain 0.04-0.2 W/m·K, along grain can be 2-3x higher; moisture
+          content affects values
         last_updated: '2025-10-15T14:19:43.867244'
       thermalDestruction:
         point:
@@ -403,12 +465,14 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T21:24:47.170005'
-      source: Wood Database (www.wood-database.com) - Eastern White Cedar mechanical properties
+      source: Wood Database (www.wood-database.com) - Eastern White Cedar mechanical
+        properties
     corrosionResistance:
       confidence: 0.87
       ai_verified: true
       research_date: '2025-10-15T20:27:52.333871'
-      source: Wood Database (www.wood-database.com) - Cedar wood properties and durability ratings
+      source: Wood Database (www.wood-database.com) - Cedar wood properties and durability
+        ratings
     density:
       confidence: 0.95
       ai_verified: true
@@ -420,7 +484,8 @@ preservedData:
       confidence: 0.9
       ai_verified: true
       research_date: '2025-10-15T20:53:41.774638'
-      source: Wood Database (www.wood-database.com) - "Mechanical Properties of Western Red Cedar"
+      source: Wood Database (www.wood-database.com) - "Mechanical Properties of Western
+        Red Cedar"
     hardness:
       confidence: 0.95
       ai_verified: true
@@ -432,7 +497,9 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:41:14.100380'
-      source: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190), Chapter 3: Physical Properties and Moisture Relations of Wood, Table 3-5: Approximate Ignition Temperatures of Wood.'
+      source: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190), Chapter
+        3: Physical Properties and Moisture Relations of Wood, Table 3-5: Approximate
+        Ignition Temperatures of Wood.'
     porosity:
       confidence: 0.92
       research_date: '2025-10-17T19:07:34.192244'
@@ -452,7 +519,9 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:11:57.232504'
-      source: 'USDA Forest Service, Forest Products Laboratory. "Wood Handbook—Wood as an Engineering Material." General Technical Report FPL-GTR-190, 2010. Chapter 4: Mechanical Properties of Wood.'
+      source: 'USDA Forest Service, Forest Products Laboratory. "Wood Handbook—Wood
+        as an Engineering Material." General Technical Report FPL-GTR-190, 2010. Chapter
+        4: Mechanical Properties of Wood.'
   machineSettingsMetadata:
     energyDensity:
       confidence: 89

@@ -204,9 +204,9 @@ ai_evasion_parameters:
     long: 30        # 30% of sentences 20-28 words
     very_long: 10   # 10% of sentences 30+ words
   
-  hesitation_markers_per_200_words: 1.0  # Less hesitation (more direct)
-  comma_splices_per_100_words: 1.5  # More comma splices (informal)
-  parenthetical_asides_per_300_words: 2.5
+  hesitation_markers_per_200_words: 0.3  # Minimal hesitation (business-formal)
+  comma_splices_per_100_words: 0.5  # Reduced comma splices (more formal)
+  parenthetical_asides_per_300_words: 1.0  # Reduced asides (professional tone)
   lexical_variety_target: 0.60  # 60% unique words (practical vocabulary)
   
   # USA-specific rules

@@ -17,12 +17,14 @@ images:
     alt: Zinc surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/zinc-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Zinc surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Zinc surface after laser cleaning showing detailed surface
+      structure
     url: /images/material/zinc-laser-cleaning-micro.jpg
 caption:
-  description: Microscopic analysis of Zinc surface before and after laser cleaning treatment
-  beforeText: The Zinc surface, characterized by its HCP crystalline structure, exhibits contamination with oxide layers and organic residues, often measuring up to 10-15 µm in thickness prior to laser cleaning.
-  afterText: Post-laser cleaning, the Zinc surface (HCP structure) reveals enhanced purity with oxide removal, achieving a surface roughness reduction to approximately 0.5 micrometers using a power density of 10^6 W/cm².
+  description: Microscopic analysis of Zinc surface before and after laser cleaning
+    treatment
+  beforeText: ''
+  afterText: ''
 regulatoryStandards:
 - name: ANSI
   description: ANSI Z136.1 - Safe Use of Lasers
@@ -41,7 +43,8 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
     boilingPoint:
       value: 1180.0
       min: 907
@@ -59,13 +62,16 @@ materialProperties:
       min: 100
       max: 2000
       unit: J/(kg·K)
-      research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook, Zinc thermochemical data at 298.15 K'
+      research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
+        Zinc thermochemical data at 298.15 K'
     thermalConductivity:
       value: 116.0
       min: 7.0
       max: 430
       unit: W/(m·K)
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, Table ''Physical Properties of Pure Metals'' for Zinc at 300K'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials, Table ''Physical Properties of Pure
+        Metals'' for Zinc at 300K'
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -81,13 +87,17 @@ materialProperties:
       min: 0.06
       max: 174
       unit: mm²/s
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Table ''Thermal Properties of Metals'' for high-purity zinc (99.99+%) at 300K'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials (1990), Table ''Thermal Properties of
+        Metals'' for high-purity zinc (99.99+%) at 300K'
     thermalExpansion:
       value: 30.2
       min: 0.5
       max: 33
       unit: 10⁻⁶/K
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Table ''Thermal Expansion of Metals and Alloys'' for pure zinc (99.99+%) at 20°C'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials (1990), Table ''Thermal Expansion of
+        Metals and Alloys'' for pure zinc (99.99+%) at 20°C'
     compressiveStrength:
       value: 110.0
       min: 50
@@ -97,13 +107,20 @@ materialProperties:
       min: 1
       max: 10
       unit: rating
-      research_basis: Zinc develops a protective patina (zinc carbonate) that significantly slows further corrosion. In atmospheric conditions, it corrodes 10-100 times slower than steel. While not as resistant as stainless steels or copper alloys in some environments, zinc's sacrificial protection and patina formation provide excellent corrosion resistance for a common structural metal, particularly in neutral pH environments.
+      research_basis: Zinc develops a protective patina (zinc carbonate) that significantly
+        slows further corrosion. In atmospheric conditions, it corrodes 10-100 times
+        slower than steel. While not as resistant as stainless steels or copper alloys
+        in some environments, zinc's sacrificial protection and patina formation provide
+        excellent corrosion resistance for a common structural metal, particularly
+        in neutral pH environments.
     density:
       value: 7.14
       min: 0.53
       max: 22.6
       unit: g/cm³
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Table ''Physical Properties of Pure Metals'' lists zinc density as 7.14 g/cm³ at 20°C'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials (1990), Table ''Physical Properties of
+        Pure Metals'' lists zinc density as 7.14 g/cm³ at 20°C'
     electricalConductivity:
       value: 16700000.0
       min: 0.67
@@ -121,19 +138,33 @@ materialProperties:
       min: 2.5
       max: 1050.0
       unit: MPa
-      research_basis: The flexural strength of pure zinc is not a commonly reported property, as it is a relatively soft and ductile metal. Its mechanical behavior is typically characterized by tensile strength and yield strength. However, based on its tensile strength range (110-140 MPa for high-purity zinc) and the relationship between tensile and flexural strength for ductile metals, a value of 120 MPa is a reasonable and conservative estimate for a 3-point bend test. This value is corroborated by engineering material databases and handbooks that list mechanical properties for design purposes.
+      research_basis: The flexural strength of pure zinc is not a commonly reported
+        property, as it is a relatively soft and ductile metal. Its mechanical behavior
+        is typically characterized by tensile strength and yield strength. However,
+        based on its tensile strength range (110-140 MPa for high-purity zinc) and
+        the relationship between tensile and flexural strength for ductile metals,
+        a value of 120 MPa is a reasonable and conservative estimate for a 3-point
+        bend test. This value is corroborated by engineering material databases and
+        handbooks that list mechanical properties for design purposes.
     hardness:
       value: 37.5
       min: 0.5
       max: 3500
       unit: HB
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, ''Zinc and Zinc Alloys'' chapter, Table 1: Typical mechanical properties of high-grade zinc (99.99+%) at 20°C'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials, ''Zinc and Zinc Alloys'' chapter, Table
+        1: Typical mechanical properties of high-grade zinc (99.99+%) at 20°C'
     oxidationResistance:
       value: 200.0
       min: 200
       max: 1200
       unit: °C
-      research_basis: Zinc has a relatively low melting point (419.5°C) and begins to exhibit significant oxidation and "burning" (rapid oxidation with visible fumes of zinc oxide) well below this point. While it forms a protective layer at room temperature, this layer breaks down and oxidation accelerates significantly in the 200-250°C range, making 200°C a conservative maximum for continuous service in air.
+      research_basis: Zinc has a relatively low melting point (419.5°C) and begins
+        to exhibit significant oxidation and "burning" (rapid oxidation with visible
+        fumes of zinc oxide) well below this point. While it forms a protective layer
+        at room temperature, this layer breaks down and oxidation accelerates significantly
+        in the 200-250°C range, making 200°C a conservative maximum for continuous
+        service in air.
     porosity:
       value: 0.0001
       min: 0.0
@@ -145,22 +176,31 @@ materialProperties:
       min: 3.0
       max: 3000.0
       unit: MPa
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Table 1: Typical Mechanical Properties of Zinc and Zinc Alloys'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials (1990), Table 1: Typical Mechanical Properties
+        of Zinc and Zinc Alloys'
     youngsModulus:
       value: 108.0
       min: 5
       max: 600
       unit: GPa
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical Properties of Zinc and Zinc Alloys'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
+        Properties of Zinc and Zinc Alloys'
     fractureToughness:
       value: 15.0
       min: 20
       max: 200
       unit: MPa·√m
-      research_basis: The fracture toughness of pure zinc is not as extensively documented as for structural metals, but authoritative sources like the ASM Handbook report values in the range of 13-16 MPa·√m for high-purity zinc at room temperature due to its HCP structure and limited slip systems. The value of 15 MPa·√m is a representative, conservative estimate from this range.
+      research_basis: The fracture toughness of pure zinc is not as extensively documented
+        as for structural metals, but authoritative sources like the ASM Handbook
+        report values in the range of 13-16 MPa·√m for high-purity zinc at room temperature
+        due to its HCP structure and limited slip systems. The value of 15 MPa·√m
+        is a representative, conservative estimate from this range.
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
     ablationThreshold:
       value: 0.15
       min: 2.0
@@ -178,7 +218,8 @@ materialProperties:
       min: 0.02
       max: 100
       unit: '%'
-      research_basis: NIST Materials Data Repository - Zinc optical properties dataset for 1064 nm wavelength laser processing
+      research_basis: NIST Materials Data Repository - Zinc optical properties dataset
+        for 1064 nm wavelength laser processing
     laserDamageThreshold:
       value: 0.15
       min: 0.1
@@ -190,7 +231,8 @@ materialProperties:
       min: 5
       max: 99.9
       unit: '%'
-      research_basis: Palik, E.D. (1998). Handbook of Optical Constants of Solids. Academic Press. Vol. 2, pp. 435-436. Data for zinc at 1.06 μm wavelength.
+      research_basis: Palik, E.D. (1998). Handbook of Optical Constants of Solids.
+        Academic Press. Vol. 2, pp. 435-436. Data for zinc at 1.06 μm wavelength.
     reflectivity:
       value: 0.81
       min: 85
@@ -251,7 +293,8 @@ machineSettings:
     min: 5
     max: 20
     unit: ns
-    description: Nanosecond pulse duration for efficient Zinc ablation with thermal control
+    description: Nanosecond pulse duration for efficient Zinc ablation with thermal
+      control
   repetitionRate:
     value: 50
     min: 20
@@ -314,7 +357,8 @@ preservedData:
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Pure metals, alloys, and metallic compounds including steel, aluminum, precious metals, and industrial alloys for precision cleaning
+    description: Pure metals, alloys, and metallic compounds including steel, aluminum,
+      precious metals, and industrial alloys for precision cleaning
     properties_count: 0
     category_ranges:
       density:
@@ -335,7 +379,8 @@ preservedData:
         unit: '%'
         source: Handbook of Optical Constants of Solids (Palik, 1998)
         confidence: 85
-        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with surface condition'
+        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with
+          surface condition'
         last_updated: '2025-10-15T14:19:43.867188'
       specificHeat:
         max: 2000
@@ -400,7 +445,8 @@ preservedData:
         unit: '%'
         source: Handbook of Optical Constants (Palik)
         confidence: 85
-        notes: At 1064nm for polished metals (532nm 70-95%, 355nm 55-85%, 10640nm 95-99%)
+        notes: At 1064nm for polished metals (532nm 70-95%, 355nm 55-85%, 10640nm
+          95-99%)
         measurement_context: 1064nm wavelength (most common Nd:YAG)
         last_updated: '2025-10-17T00:00:00.000000'
       oxidationResistance:
@@ -477,7 +523,8 @@ preservedData:
         unit: MS/m
         source: Materials Handbook (ASM International)
         confidence: 90
-        notes: Bismuth 0.77 MS/m, Aluminum 37.7 MS/m, Copper 59.6 MS/m, Silver 63.0 MS/m
+        notes: Bismuth 0.77 MS/m, Aluminum 37.7 MS/m, Copper 59.6 MS/m, Silver 63.0
+          MS/m
         measurement_context: Room temperature (20°C), pure elements
         last_updated: '2025-10-17T00:00:00.000000'
       meltingPoint:
@@ -505,7 +552,8 @@ preservedData:
         source: Materials Science and Engineering (Callister)
         confidence: 75
         notes: Cast iron ~50-100°C, Steel ~150-250°C, Nickel alloys ~300-400°C
-        measurement_context: Resistance to thermal stress cracking during rapid temperature changes
+        measurement_context: Resistance to thermal stress cracking during rapid temperature
+          changes
         last_updated: '2025-10-17T00:00:00.000000'
       absorptivity:
         min: 2.0
@@ -513,7 +561,8 @@ preservedData:
         unit: '%'
         source: Laser Material Processing (Steen & Mazumder)
         confidence: 85
-        notes: Polished metals 2-10%, Oxidized surfaces 30-65%, wavelength and temperature dependent
+        notes: Polished metals 2-10%, Oxidized surfaces 30-65%, wavelength and temperature
+          dependent
         measurement_context: Near-IR wavelengths (1064nm Nd:YAG), room temperature
         last_updated: '2025-10-17T00:00:00.000000'
       porosity:
@@ -523,7 +572,8 @@ preservedData:
         source: ASM Metals Handbook - Powder Metallurgy
         confidence: 90
         notes: Wrought metals 0-0.1%, Cast metals 0.5-5%, Sintered metals 2-15%
-        measurement_context: Volumetric porosity, varies significantly by manufacturing process
+        measurement_context: Volumetric porosity, varies significantly by manufacturing
+          process
         last_updated: '2025-10-17T00:00:00.000000'
       thermalDestructionPoint:
         min: 873
@@ -620,7 +670,8 @@ preservedData:
       confidence: 0.87
       ai_verified: true
       research_date: '2025-10-15T20:39:12.850821'
-      source: NACE International (National Association of Corrosion Engineers) Corrosion Resistance Reference
+      source: NACE International (National Association of Corrosion Engineers) Corrosion
+        Resistance Reference
     density:
       confidence: 0.98
       ai_verified: true
@@ -640,7 +691,9 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T21:04:41.434302'
-      source: 'ASM Handbook, Volume 2: "Properties and Selection: Nonferrous Alloys and Special-Purpose Materials," Table 1, "Typical Room-Temperature Mechanical Properties of Wrought Zinc and Zinc Alloys" (for high-purity zinc).'
+      source: 'ASM Handbook, Volume 2: "Properties and Selection: Nonferrous Alloys
+        and Special-Purpose Materials," Table 1, "Typical Room-Temperature Mechanical
+        Properties of Wrought Zinc and Zinc Alloys" (for high-purity zinc).'
     hardness:
       confidence: 0.95
       research_date: '2025-09-30T13:58:37.284656'
@@ -649,7 +702,8 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:51:49.441532'
-      source: 'ASM Handbook, Volume 13B: Corrosion: Materials (Table 1, "Approximate Maximum Service Temperatures for Metals and Alloys in Air")'
+      source: 'ASM Handbook, Volume 13B: Corrosion: Materials (Table 1, "Approximate
+        Maximum Service Temperatures for Metals and Alloys in Air")'
     porosity:
       confidence: 0.95
       research_date: '2025-10-17T19:07:34.187685'
@@ -673,7 +727,10 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:25:50.621981'
-      source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, "Properties of Wrought Aluminum and Aluminum Alloys" and "Properties and Selection of Nonferrous Alloys and Special-Purpose Materials" sections on zinc.'
+      source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys
+        and Special-Purpose Materials, "Properties of Wrought Aluminum and Aluminum
+        Alloys" and "Properties and Selection of Nonferrous Alloys and Special-Purpose
+        Materials" sections on zinc.'
     surfaceRoughness:
       confidence: 0.92
       research_date: '2025-10-17T20:12:47.977979'

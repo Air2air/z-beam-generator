@@ -14,15 +14,18 @@ author:
   title: Ph.D.
 images:
   hero:
-    alt: Limestone surface undergoing laser cleaning showing precise contamination removal
+    alt: Limestone surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/limestone-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Limestone surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Limestone surface after laser cleaning showing detailed
+      surface structure
     url: /images/material/limestone-laser-cleaning-micro.jpg
 caption:
-  description: Microscopic analysis of Limestone surface before and after laser cleaning treatment
-  beforeText: At 500x magnification, surface shows heavy contamination layer. This layer, it has thickness of approximately 15 µm—or more precisely—14.7 µm, composed primarily of carbonaceous particulate matter and gypsum crust (CaSO₄·2H₂O). SEM-EDX analysis confirms the composition, showing strong sulfur and carbon peaks alongside the calcium substrate. Surface texture appears heavily occluded, with Ra roughness measurements of 8.2 µm due to particulate embedding. The contamination forms discontinuous crusts, these crusts show micro-fracturing patterns across the surface. Porous structure of limestone, it acts like sponge for pollutants, creating this complex stratified layer. Original stone features remain mostly obscured beneath this dark, granular deposit.
-  afterText: Laser cleaning produces dramatic surface transformation, this is very clear at 500x. Contamination layer is completely removed, revealing the original calcite crystalline structure beneath. Surface roughness decreases significantly to Ra 2.1 µm, creating much smoother profile compared to previous 8.2 µm measurement. The process exposes micro-topography with excellent precision, ablation depth measures between 12-18 µm across treated area. Some areas show slight color variation—perhaps due to differential cleaning—but overall surface integrity remains excellent. Thermal effects appear minimal, with only occasional localized discoloration at grain boundaries (likely from calcium oxide formation). EDX analysis now shows clean calcium carbonate signature, sulfur and carbon contaminants reduced to trace levels below 0.5%. Surface reflectivity increases from initial 15% to approximately 32%, this improvement indicates successful contaminant removal without substrate damage. The crystalline structure, it appears well-preserved with sharp grain boundaries and minimal micro-fracturing. Laser parameters were well-controlled, achieving conservation-grade cleaning where original surface features remain fully legible.
+  description: Microscopic analysis of Limestone surface before and after laser cleaning
+    treatment
+  beforeText: ''
+  afterText: ''
 regulatoryStandards:
 - name: ANSI
   description: ANSI Z136.1 - Safe Use of Lasers
@@ -46,19 +49,23 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
     specificHeat:
       value: 908.0
       min: 400
       max: 1200
       unit: J/(kg·K)
-      research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook, SRD 69 - Limestone thermochemical data at 25°C'
+      research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
+        SRD 69 - Limestone thermochemical data at 25°C'
     thermalConductivity:
       value: 1.26
       min: 0.2
       max: 8
       unit: W/(m·K)
-      research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties of Mineral Substances, specifically for high-calcium limestone (95% CaCO3) at 300K'
+      research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
+        of Mineral Substances, specifically for high-calcium limestone (95% CaCO3)
+        at 300K'
     thermalDestruction:
       value: 800.0
       unit: °C
@@ -68,49 +75,78 @@ materialProperties:
       min: 0.2
       max: 2.5
       unit: mm²/s
-      research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties of Fluid Systems, with specific limestone measurements from Clark, S.P. (1966) ''Handbook of Physical Constants'' and experimental data from Sass, J.H. (1965) ''Journal of Geophysical Research'''
+      research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
+        of Fluid Systems, with specific limestone measurements from Clark, S.P. (1966)
+        ''Handbook of Physical Constants'' and experimental data from Sass, J.H. (1965)
+        ''Journal of Geophysical Research'''
     thermalExpansion:
       value: 8.0
       min: 3
       max: 30
       unit: 10^-6/K
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, Table 1: Average coefficients of thermal expansion for selected nonmetallic substances (Limestone: 8.0 × 10^-6/°C)'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials, Table 1: Average coefficients of thermal
+        expansion for selected nonmetallic substances (Limestone: 8.0 × 10^-6/°C)'
     compressiveStrength:
       value: 55.0
       min: 20
       max: 500
       unit: MPa
-      research_basis: 'ASTM C170/C170M-22 Standard Test Method for Compressive Strength of Dimension Stone, ASM Handbook Volume 4: Heat Treating, and NIST Special Publication 260-174: Stone Test Specimens'
+      research_basis: 'ASTM C170/C170M-22 Standard Test Method for Compressive Strength
+        of Dimension Stone, ASM Handbook Volume 4: Heat Treating, and NIST Special
+        Publication 260-174: Stone Test Specimens'
     corrosionResistance:
       value: 2.0
       min: 2.0
       max: 9.0
       unit: rating
-      research_basis: Limestone is a calcium carbonate-based rock highly susceptible to chemical weathering from acidic environments (acid rain, urban pollution). It offers poor resistance to corrosion from sulfation, dissolution, and salt crystallization, leading to surface erosion, loss of detail, and spalling. While durable in dry, stable conditions, its performance is rated as poor for general environmental exposure where moisture and airborne acids are present.
+      research_basis: Limestone is a calcium carbonate-based rock highly susceptible
+        to chemical weathering from acidic environments (acid rain, urban pollution).
+        It offers poor resistance to corrosion from sulfation, dissolution, and salt
+        crystallization, leading to surface erosion, loss of detail, and spalling.
+        While durable in dry, stable conditions, its performance is rated as poor
+        for general environmental exposure where moisture and airborne acids are present.
     density:
       value: 2.71
       min: 1.5
       max: 6.0
       unit: g/cm³
-      research_basis: 'NIST Standard Reference Database 203: Web Mineralogy - Calcite (primary constituent of limestone) density = 2.71 g/cm³; ASM Handbook Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, Section: Natural Building Stones'
+      research_basis: 'NIST Standard Reference Database 203: Web Mineralogy - Calcite
+        (primary constituent of limestone) density = 2.71 g/cm³; ASM Handbook Volume
+        2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials,
+        Section: Natural Building Stones'
     flexuralStrength:
       value: 10.0
       min: 5
       max: 50
       unit: MPa
-      research_basis: The flexural strength of limestone is not a fixed material constant like compressive strength but falls within a typical range. ASTM C880 provides the standard testing method for dimension stone. Data from the Natural Stone Institute and other technical sources (e.g., Indiana Limestone Institute) consistently report flexural strengths for various limestones between 7 MPa and 15 MPa. The value of 10.0 MPa is a representative, conservative estimate for a medium-strength limestone, aligning with its known compressive strength of 55 MPa and typical stone property correlations.
+      research_basis: The flexural strength of limestone is not a fixed material constant
+        like compressive strength but falls within a typical range. ASTM C880 provides
+        the standard testing method for dimension stone. Data from the Natural Stone
+        Institute and other technical sources (e.g., Indiana Limestone Institute)
+        consistently report flexural strengths for various limestones between 7 MPa
+        and 15 MPa. The value of 10.0 MPa is a representative, conservative estimate
+        for a medium-strength limestone, aligning with its known compressive strength
+        of 55 MPa and typical stone property correlations.
     hardness:
       value: 3.0
       min: 1
       max: 7
       unit: Mohs
-      research_basis: 'NIST Special Publication 960-15 ''Standard Reference Materials: Calibration of Rockwell Diamond Indenters'' and ASM Handbook Volume 18: Friction, Lubrication, and Wear Technology, which specify calcite (primary constituent of limestone) hardness as 3.0 on Mohs scale'
+      research_basis: 'NIST Special Publication 960-15 ''Standard Reference Materials:
+        Calibration of Rockwell Diamond Indenters'' and ASM Handbook Volume 18: Friction,
+        Lubrication, and Wear Technology, which specify calcite (primary constituent
+        of limestone) hardness as 3.0 on Mohs scale'
     oxidationResistance:
       value: 600.0
       min: 400.0
       max: 870.0
       unit: °C
-      research_basis: Limestone (CaCO₃) does not oxidize; it undergoes thermal decomposition (calcination) in air. Authoritative sources place the onset of significant decomposition between 600°C and 900°C, with 600°C being a conservative threshold for the beginning of this irreversible chemical breakdown in a continuous service context.
+      research_basis: Limestone (CaCO₃) does not oxidize; it undergoes thermal decomposition
+        (calcination) in air. Authoritative sources place the onset of significant
+        decomposition between 600°C and 900°C, with 600°C being a conservative threshold
+        for the beginning of this irreversible chemical breakdown in a continuous
+        service context.
     porosity:
       value: 15.2
       min: 0.5
@@ -122,41 +158,56 @@ materialProperties:
       min: 2
       max: 25
       unit: MPa
-      research_basis: ASTM C170-90 Standard Test Method for Compressive Strength of Dimension Stone, with tensile strength typically 8-15% of compressive strength based on ASM Handbook Vol. 4 and NIST Special Publication 260-166
+      research_basis: ASTM C170-90 Standard Test Method for Compressive Strength of
+        Dimension Stone, with tensile strength typically 8-15% of compressive strength
+        based on ASM Handbook Vol. 4 and NIST Special Publication 260-166
     youngsModulus:
       value: 68.0
       min: 10
       max: 100
       unit: GPa
-      research_basis: ASTM D7012-14e1 Standard Test Methods for Compressive Strength and Elastic Moduli of Intact Rock Core Specimens under Varying States of Stress and Temperatures, with specific data from Indiana Limestone reference material
+      research_basis: ASTM D7012-14e1 Standard Test Methods for Compressive Strength
+        and Elastic Moduli of Intact Rock Core Specimens under Varying States of Stress
+        and Temperatures, with specific data from Indiana Limestone reference material
     fractureToughness:
       value: 0.8
       min: 0.5
       max: 5
       unit: MPa·√m
-      research_basis: The provided compressive strength of 55.0 MPa is characteristic of a relatively low-strength limestone. Fracture toughness (K_IC) for limestone is strongly correlated with its compressive strength and porosity. For limestones in this strength range, the widely cited compilation by Atkinson & Meredith reports K_IC values typically falling between 0.6 and 1.0 MPa·√m, with 0.8 MPa·√m being a representative median value for this material class.
+      research_basis: The provided compressive strength of 55.0 MPa is characteristic
+        of a relatively low-strength limestone. Fracture toughness (K_IC) for limestone
+        is strongly correlated with its compressive strength and porosity. For limestones
+        in this strength range, the widely cited compilation by Atkinson & Meredith
+        reports K_IC values typically falling between 0.6 and 1.0 MPa·√m, with 0.8
+        MPa·√m being a representative median value for this material class.
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 8.7
       min: 0.1
       max: 100
       unit: '%'
-      research_basis: 'NIST Special Publication 1176: ''Laser Cleaning of Stone and Masonry'' (2013) - Table 4.2: Optical properties of common building stones at 1064 nm wavelength'
+      research_basis: 'NIST Special Publication 1176: ''Laser Cleaning of Stone and
+        Masonry'' (2013) - Table 4.2: Optical properties of common building stones
+        at 1064 nm wavelength'
     laserReflectivity:
       value: 38.2
       min: 5
       max: 80
       unit: '%'
-      research_basis: 'NIST Standard Reference Database 120: Reflectance Spectra of Common Construction Materials, limestone spectral reflectance data at 1064 nm wavelength (typical Nd:YAG laser cleaning application)'
+      research_basis: 'NIST Standard Reference Database 120: Reflectance Spectra of
+        Common Construction Materials, limestone spectral reflectance data at 1064
+        nm wavelength (typical Nd:YAG laser cleaning application)'
 machineSettings:
   energyDensity:
     value: 12
     min: 8
     max: 18
     unit: J/cm²
-    description: Fluence threshold for effective contaminant removal while preserving limestone surface
+    description: Fluence threshold for effective contaminant removal while preserving
+      limestone surface
   overlapRatio:
     value: 50
     min: 30
@@ -180,13 +231,15 @@ machineSettings:
     min: 5
     max: 20
     unit: ns
-    description: Nanosecond pulse duration for effective contaminant removal with minimal substrate damage
+    description: Nanosecond pulse duration for effective contaminant removal with
+      minimal substrate damage
   repetitionRate:
     value: 50
     min: 20
     max: 100
     unit: kHz
-    description: Optimal repetition rate for efficient cleaning coverage and thermal management
+    description: Optimal repetition rate for efficient cleaning coverage and thermal
+      management
   scanSpeed:
     value: 500
     min: 200
@@ -204,7 +257,8 @@ machineSettings:
     min: 532
     max: 10600
     unit: nm
-    description: Near-IR wavelength optimized for limestone absorption and minimal scattering
+    description: Near-IR wavelength optimized for limestone absorption and minimal
+      scattering
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -243,7 +297,8 @@ preservedData:
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Natural stone materials including granite, marble, limestone, slate, and quarried stone for architectural restoration cleaning
+    description: Natural stone materials including granite, marble, limestone, slate,
+      and quarried stone for architectural restoration cleaning
     properties_count: 0
     category_ranges:
       density:
@@ -272,7 +327,8 @@ preservedData:
         unit: '%'
         source: Geological Survey Optical Properties Database
         confidence: 70
-        notes: Light colored stones 40-80%, dark stones 5-20%, varies with mineral composition
+        notes: Light colored stones 40-80%, dark stones 5-20%, varies with mineral
+          composition
         last_updated: '2025-10-15T14:19:43.867256'
       specificHeat:
         max: 1200
@@ -405,7 +461,9 @@ preservedData:
       confidence: 0.9
       ai_verified: true
       research_date: '2025-10-15T20:31:23.690514'
-      source: ASTM C615 / ASTM C568 (Standard Specification for Granite Dimension Stone & Standard Specification for Limestone Dimension Stone) - General Durability Classifications
+      source: ASTM C615 / ASTM C568 (Standard Specification for Granite Dimension
+        Stone & Standard Specification for Limestone Dimension Stone) - General Durability
+        Classifications
     density:
       confidence: 0.95
       ai_verified: true
@@ -417,7 +475,8 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:57:19.167384'
-      source: ASTM C880 / C880M - Standard Test Method for Flexural Strength of Dimension Stone (4-point bend test)
+      source: ASTM C880 / C880M - Standard Test Method for Flexural Strength of Dimension
+        Stone (4-point bend test)
     hardness:
       confidence: 0.95
       ai_verified: true
@@ -429,7 +488,8 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:44:28.182744'
-      source: 'National Lime Association, "Lime: An Introduction," and Boynton, R.S., "Chemistry and Technology of Lime and Limestone."'
+      source: 'National Lime Association, "Lime: An Introduction," and Boynton, R.S.,
+        "Chemistry and Technology of Lime and Limestone."'
     porosity:
       confidence: 0.92
       research_date: '2025-10-17T19:07:34.189218'
@@ -449,7 +509,8 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:16:14.552749'
-      source: Atkinson, B.K., & Meredith, P.G. (1987). The fracture toughness of rocks. In *Fracture Mechanics of Rock* (pp. 111-156). Academic Press.
+      source: Atkinson, B.K., & Meredith, P.G. (1987). The fracture toughness of rocks.
+        In *Fracture Mechanics of Rock* (pp. 111-156). Academic Press.
   machineSettingsMetadata:
     energyDensity:
       confidence: 89

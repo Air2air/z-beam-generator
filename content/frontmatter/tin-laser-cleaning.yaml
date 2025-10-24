@@ -17,12 +17,14 @@ images:
     alt: Tin surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/tin-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Tin surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Tin surface after laser cleaning showing detailed surface
+      structure
     url: /images/material/tin-laser-cleaning-micro.jpg
 caption:
-  description: Microscopic analysis of Tin surface before and after laser cleaning treatment
-  beforeText: At 500x magnification, the tin surface shows a heavily contaminated state. A complex, non-uniform layer of oxidation and carbonaceous deposits completely obscures the underlying metal substrate. This contamination layer, it has a variable thickness ranging from approximately 15 to over 40 µm, measured at multiple cross-sectional points using SEM imaging. The topography is dominated by dark, nodular oxide growths—likely SnO and SnO₂—interspersed with lighter, flaky regions of organic residue. Surface roughness is significantly elevated, with initial Ra measurements indicating values between 3.5 and 4.2 µm. The original metallic luster is entirely absent, replaced by a matte, dark gray appearance that suggests a high degree of surface degradation and very low reflectivity. Energy-dispersive X-ray (EDX) spectroscopy confirms this, showing strong oxygen and carbon peaks which account for the compromised surface integrity. Further analysis reveals the contamination is not merely superficial. The oxide layer appears to be porous and stratified, with visible micro-cracks propagating down to the tin interface—this creates potential sites for further corrosive attack. In some areas, the deposits form a nearly continuous film, while in others, they aggregate into isolated islands measuring 50-100 µm across. The surface texture is highly irregular, featuring pits and protrusions that would negatively impact any functional application requiring a smooth, clean contact surface. This level of contamination, it would severely impair solderability in electronics manufacturing and increase the risk of microbial adhesion in food processing contexts, a critical performance failure.
-  afterText: Post-laser cleaning, the transformation at 500x is very clear. The contaminated layer is completely absent, revealing the pristine, metallic substrate beneath. Surface roughness has been dramatically reduced to an Ra of 0.8 µm—a nearly 80% improvement from the initial state. The characteristic tetragonal crystalline structure of the β-tin phase is now visibly apparent in the form of fine, interlocking grains. The surface exhibits a uniform, light gray hue with a restored specular reflectivity, measured to be above 70% at 1064 nm, which aligns with the material's intrinsic property. Close inspection shows a clean ablation boundary with no evidence of heat-affected zone (HAZ) damage, such as resolidified splatter or micro-fissures. The laser process has effectively vaporized the contamination without melting the underlying tin, which is crucial given its low 232°C melting point. Some minor, sub-micron laser patterning is observable, but this actually enhances surface area for potential adhesion in subsequent processes. The surface integrity is fully restored, showing no residual oxygen or carbon signatures in post-cleaning EDX analysis. This result confirms the process successfully removed the obstructive layers while preserving the base metal, thereby reinstating its functional performance for soldering or forming hygienic surfaces.
+  description: Microscopic analysis of Tin surface before and after laser cleaning
+    treatment
+  beforeText: ''
+  afterText: ''
 regulatoryStandards:
 - name: ANSI
   description: ANSI Z136.1 - Safe Use of Lasers
@@ -46,7 +48,8 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
     boilingPoint:
       value: 2875.0
       min: 907
@@ -64,13 +67,16 @@ materialProperties:
       min: 100
       max: 2000
       unit: J/(kg·K)
-      research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties of Fluid Systems - Tin (Sn) at 298.15 K'
+      research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
+        of Fluid Systems - Tin (Sn) at 298.15 K'
     thermalConductivity:
       value: 66.8
       min: 7.0
       max: 430
       unit: W/(m·K)
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Table ''Thermal Properties of Metals'' for pure tin (99.9+%) at 300K'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials (1990), Table ''Thermal Properties of
+        Metals'' for pure tin (99.9+%) at 300K'
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -86,31 +92,47 @@ materialProperties:
       min: 0.06
       max: 174
       unit: mm²/s
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Table ''Thermal Properties of Metals'' for pure tin (99.9+%) at 300K'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials (1990), Table ''Thermal Properties of
+        Metals'' for pure tin (99.9+%) at 300K'
     thermalExpansion:
       value: 23.1
       min: 0.5
       max: 33
       unit: 10^-6/K
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, Table ''Thermal Expansion of Metals and Alloys'' for pure tin (99.9+%) at 20°C'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials, Table ''Thermal Expansion of Metals
+        and Alloys'' for pure tin (99.9+%) at 20°C'
     compressiveStrength:
       value: 17.5
       min: 50
       max: 2000
       unit: MPa
-      research_basis: The compressive strength of pure tin is significantly lower than its tensile strength and is highly dependent on purity, grain structure, and strain rate. For high-purity tin, the compressive strength is typically in the range of 15-20 MPa. The provided hardness (5.0 MPa) is exceptionally low and may refer to a different scale or an extremely pure/annealed state, but it is consistent with tin being an extremely soft metal with low compressive resistance.
+      research_basis: The compressive strength of pure tin is significantly lower
+        than its tensile strength and is highly dependent on purity, grain structure,
+        and strain rate. For high-purity tin, the compressive strength is typically
+        in the range of 15-20 MPa. The provided hardness (5.0 MPa) is exceptionally
+        low and may refer to a different scale or an extremely pure/annealed state,
+        but it is consistent with tin being an extremely soft metal with low compressive
+        resistance.
     corrosionResistance:
       value: 8.0
       min: 1
       max: 10
       unit: rating
-      research_basis: Tin exhibits excellent corrosion resistance in neutral and mild environments due to its protective oxide film. It resists corrosion from distilled water, seawater (under low oxygen), and many organic acids. However, it is vulnerable to strong acids, alkalis, and some specific chemical agents, preventing a perfect 10 rating.
+      research_basis: Tin exhibits excellent corrosion resistance in neutral and mild
+        environments due to its protective oxide film. It resists corrosion from distilled
+        water, seawater (under low oxygen), and many organic acids. However, it is
+        vulnerable to strong acids, alkalis, and some specific chemical agents, preventing
+        a perfect 10 rating.
     density:
       value: 7.265
       min: 0.53
       max: 22.6
       unit: g/cm³
-      research_basis: 'NIST Standard Reference Database 124 - Tin (Sn) elemental properties at 20°C; ASM Handbook Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
+      research_basis: 'NIST Standard Reference Database 124 - Tin (Sn) elemental properties
+        at 20°C; ASM Handbook Volume 2: Properties and Selection: Nonferrous Alloys
+        and Special-Purpose Materials'
     electricalConductivity:
       value: 8700000.0
       min: 0.67
@@ -128,19 +150,34 @@ materialProperties:
       min: 2.5
       max: 1050.0
       unit: MPa
-      research_basis: The provided flexural strength value is derived from the relationship between a metal's tensile strength and its flexural strength, as they are often closely correlated for ductile materials. For pure tin, typical tensile strength values range from 11-20 MPa. The cited source, MatWeb, is a recognized database for material properties and lists a representative value for the ultimate tensile strength of commercially pure tin. The flexural strength (modulus of rupture) for a ductile metal like tin is generally similar to its ultimate tensile strength. The confidence is not 1.00 due to the inherent variability of mechanical properties based on purity, grain structure, and processing history.
+      research_basis: The provided flexural strength value is derived from the relationship
+        between a metal's tensile strength and its flexural strength, as they are
+        often closely correlated for ductile materials. For pure tin, typical tensile
+        strength values range from 11-20 MPa. The cited source, MatWeb, is a recognized
+        database for material properties and lists a representative value for the
+        ultimate tensile strength of commercially pure tin. The flexural strength
+        (modulus of rupture) for a ductile metal like tin is generally similar to
+        its ultimate tensile strength. The confidence is not 1.00 due to the inherent
+        variability of mechanical properties based on purity, grain structure, and
+        processing history.
     hardness:
       value: 5.0
       min: 0.5
       max: 3500
       unit: MPa
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, Table 1: Physical Properties of Pure Metals'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials, Table 1: Physical Properties of Pure
+        Metals'
     oxidationResistance:
       value: 150.0
       min: 200
       max: 1200
       unit: °C
-      research_basis: The ASM Handbook states that the maximum useful temperature for tin in air is generally considered to be 150°C. Above this temperature, the rate of oxidation increases significantly, forming SnO and SnO₂, which can lead to progressive degradation and "tin pest" transformation at lower temperatures after oxidation.
+      research_basis: The ASM Handbook states that the maximum useful temperature
+        for tin in air is generally considered to be 150°C. Above this temperature,
+        the rate of oxidation increases significantly, forming SnO and SnO₂, which
+        can lead to progressive degradation and "tin pest" transformation at lower
+        temperatures after oxidation.
     porosity:
       value: 0.0001
       min: 0.0
@@ -152,22 +189,32 @@ materialProperties:
       min: 3.0
       max: 3000.0
       unit: MPa
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, Table 1: Physical and Mechanical Properties of Pure Metals'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials, Table 1: Physical and Mechanical Properties
+        of Pure Metals'
     youngsModulus:
       value: 49.9
       min: 5
       max: 600
       unit: GPa
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (Table 1, Page 4) and NIST Materials Data Repository for pure tin (99.9+%)'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials (Table 1, Page 4) and NIST Materials
+        Data Repository for pure tin (99.9+%)'
     fractureToughness:
       value: 30.0
       min: 20
       max: 200
       unit: MPa·√m
-      research_basis: The fracture toughness (K_IC) of pure tin is not as extensively documented as for structural metals like steel or aluminum. The cited ASM Handbook, a primary authoritative source for metallurgical data, provides a value of 30 MPa·√m for high-purity tin. This value is consistent with the known soft and ductile nature of the metal, which generally leads to moderate fracture toughness despite its low strength.
+      research_basis: The fracture toughness (K_IC) of pure tin is not as extensively
+        documented as for structural metals like steel or aluminum. The cited ASM
+        Handbook, a primary authoritative source for metallurgical data, provides
+        a value of 30 MPa·√m for high-purity tin. This value is consistent with the
+        known soft and ductile nature of the metal, which generally leads to moderate
+        fracture toughness despite its low strength.
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
     ablationThreshold:
       value: 0.45
       min: 2.0
@@ -185,7 +232,8 @@ materialProperties:
       min: 0.02
       max: 100
       unit: '%'
-      research_basis: NIST Materials Data Repository - Reflectance measurements of pure tin (99.9%) at 1064 nm wavelength, room temperature conditions
+      research_basis: NIST Materials Data Repository - Reflectance measurements of
+        pure tin (99.9%) at 1064 nm wavelength, room temperature conditions
     laserDamageThreshold:
       value: 0.15
       min: 0.1
@@ -197,7 +245,9 @@ materialProperties:
       min: 5
       max: 99.9
       unit: '%'
-      research_basis: 'NIST Standard Reference Database 120: ''Optical Properties of Metallic Elements'' - Reflectance measurements for tin at 1064 nm wavelength, room temperature (298K)'
+      research_basis: 'NIST Standard Reference Database 120: ''Optical Properties
+        of Metallic Elements'' - Reflectance measurements for tin at 1064 nm wavelength,
+        room temperature (298K)'
     reflectivity:
       value: 0.73
       min: 85
@@ -282,7 +332,8 @@ machineSettings:
     min: 532
     max: 1064
     unit: nm
-    description: Near-IR wavelength for efficient Tin oxide absorption with minimal substrate heating
+    description: Near-IR wavelength for efficient Tin oxide absorption with minimal
+      substrate heating
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -321,7 +372,8 @@ preservedData:
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Pure metals, alloys, and metallic compounds including steel, aluminum, precious metals, and industrial alloys for precision cleaning
+    description: Pure metals, alloys, and metallic compounds including steel, aluminum,
+      precious metals, and industrial alloys for precision cleaning
     properties_count: 0
     category_ranges:
       density:
@@ -342,7 +394,8 @@ preservedData:
         unit: '%'
         source: Handbook of Optical Constants of Solids (Palik, 1998)
         confidence: 85
-        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with surface condition'
+        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with
+          surface condition'
         last_updated: '2025-10-15T14:19:43.867188'
       specificHeat:
         max: 2000
@@ -407,7 +460,8 @@ preservedData:
         unit: '%'
         source: Handbook of Optical Constants (Palik)
         confidence: 85
-        notes: At 1064nm for polished metals (532nm 70-95%, 355nm 55-85%, 10640nm 95-99%)
+        notes: At 1064nm for polished metals (532nm 70-95%, 355nm 55-85%, 10640nm
+          95-99%)
         measurement_context: 1064nm wavelength (most common Nd:YAG)
         last_updated: '2025-10-17T00:00:00.000000'
       oxidationResistance:
@@ -484,7 +538,8 @@ preservedData:
         unit: MS/m
         source: Materials Handbook (ASM International)
         confidence: 90
-        notes: Bismuth 0.77 MS/m, Aluminum 37.7 MS/m, Copper 59.6 MS/m, Silver 63.0 MS/m
+        notes: Bismuth 0.77 MS/m, Aluminum 37.7 MS/m, Copper 59.6 MS/m, Silver 63.0
+          MS/m
         measurement_context: Room temperature (20°C), pure elements
         last_updated: '2025-10-17T00:00:00.000000'
       meltingPoint:
@@ -512,7 +567,8 @@ preservedData:
         source: Materials Science and Engineering (Callister)
         confidence: 75
         notes: Cast iron ~50-100°C, Steel ~150-250°C, Nickel alloys ~300-400°C
-        measurement_context: Resistance to thermal stress cracking during rapid temperature changes
+        measurement_context: Resistance to thermal stress cracking during rapid temperature
+          changes
         last_updated: '2025-10-17T00:00:00.000000'
       absorptivity:
         min: 2.0
@@ -520,7 +576,8 @@ preservedData:
         unit: '%'
         source: Laser Material Processing (Steen & Mazumder)
         confidence: 85
-        notes: Polished metals 2-10%, Oxidized surfaces 30-65%, wavelength and temperature dependent
+        notes: Polished metals 2-10%, Oxidized surfaces 30-65%, wavelength and temperature
+          dependent
         measurement_context: Near-IR wavelengths (1064nm Nd:YAG), room temperature
         last_updated: '2025-10-17T00:00:00.000000'
       porosity:
@@ -530,7 +587,8 @@ preservedData:
         source: ASM Metals Handbook - Powder Metallurgy
         confidence: 90
         notes: Wrought metals 0-0.1%, Cast metals 0.5-5%, Sintered metals 2-15%
-        measurement_context: Volumetric porosity, varies significantly by manufacturing process
+        measurement_context: Volumetric porosity, varies significantly by manufacturing
+          process
         last_updated: '2025-10-17T00:00:00.000000'
       thermalDestructionPoint:
         min: 873
@@ -629,7 +687,8 @@ preservedData:
       confidence: 0.9
       ai_verified: true
       research_date: '2025-10-15T20:38:09.298972'
-      source: 'ASM Handbook, Volume 13B: Corrosion: Materials (2010), "Tin and Tin Alloys" chapter'
+      source: 'ASM Handbook, Volume 13B: Corrosion: Materials (2010), "Tin and Tin
+        Alloys" chapter'
     density:
       confidence: 0.98
       ai_verified: true
@@ -658,7 +717,9 @@ preservedData:
       confidence: 0.9
       ai_verified: true
       research_date: '2025-10-15T20:50:46.469264'
-      source: 'ASM Handbook, Volume 2: "Properties and Selection: Nonferrous Alloys and Special-Purpose Materials" (ASM International, 1990), section on Tin and Tin Alloys.'
+      source: 'ASM Handbook, Volume 2: "Properties and Selection: Nonferrous Alloys
+        and Special-Purpose Materials" (ASM International, 1990), section on Tin and
+        Tin Alloys.'
     porosity:
       confidence: 0.95
       research_date: '2025-10-17T19:07:34.186909'
@@ -682,7 +743,9 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:24:35.111964'
-      source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), specifically Table 1 "Typical Room-Temperature Mechanical Properties of Wrought Nonferrous Metals" for Tin.'
+      source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys
+        and Special-Purpose Materials (1990), specifically Table 1 "Typical Room-Temperature
+        Mechanical Properties of Wrought Nonferrous Metals" for Tin.'
     surfaceRoughness:
       confidence: 0.92
       research_date: '2025-10-17T20:12:15.637672'

@@ -17,12 +17,14 @@ images:
     alt: Lead surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/lead-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Lead surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Lead surface after laser cleaning showing detailed surface
+      structure
     url: /images/material/lead-laser-cleaning-micro.jpg
 caption:
-  description: Microscopic analysis of Lead surface before and after laser cleaning treatment
-  beforeText: At 500x magnification, the lead surface presents a heavily contaminated state, characterized by a non-uniform, stratified corrosion layer. The primary contaminant is a continuous lead carbonate (cerussite, PbCO₃) film, exhibiting a crystalline, acicular morphology with a measured thickness varying between 15 and 25 µm. This stratified deposit, it effectively masks the underlying metallic substrate, creating a topographical profile with a high degree of micro-roughness. The surface roughness, quantified using white light interferometry, yields an average arithmetic roughness (Ra) of 4.8 µm, with isolated peaks—likely lead oxide (PbO) nodules—reaching heights of up to 30 µm. Energy Dispersive X-ray (EDX) analysis confirms the widespread presence of oxygen and carbon, which is consistent with the formation of a complex patina comprising both oxides and carbonates. One can observe localized pitting beneath this crust, with pit diameters averaging 8–12 µm, indicating active corrosion sites that compromise the material's integrity. The visual texture is matte and highly irregular, a direct consequence of the porous, friable nature of the corrosion products that exhibit poor adhesion to the substrate. This degraded surface condition, with its high reflectivity loss and compromised topography, is entirely unsuitable for any subsequent industrial processing or coating adhesion.
-  afterText: Following the laser cleaning process, the microscopic analysis reveals a profound surface transformation. The stratified contamination layer has been completely ablated, exposing the pristine, underlying lead substrate. The surface roughness, it is now significantly reduced to an Ra value of approximately 0.7 µm—or more precisely, 0.68 µm—which indicates the restoration of a remarkably smooth and planar surface finish. One can observe the re-emergence of the metal's characteristic metallic luster and a refined grain structure, which was entirely obscured previously. The cleaning efficacy is nearly total, as confirmed by post-process EDX spectroscopy showing a reduction in oxygen atomic concentration from over 40% to a mere 2.3%. The previously noted pitting is still faintly visible—these are the remnants of the pre-existing corrosion damage—but their edges are now clean and well-defined, free of any loosely adherent oxides. This precision in contaminant removal, it creates a surface with restored reflectivity and, crucially, a topographical integrity that is optimal for functional applications such as soldering or protective coating. The surface, she is now perfectly prepared.
+  description: Microscopic analysis of Lead surface before and after laser cleaning
+    treatment
+  beforeText: ''
+  afterText: ''
 regulatoryStandards:
 - name: ANSI
   description: ANSI Z136.1 - Safe Use of Lasers
@@ -46,7 +48,8 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
     boilingPoint:
       value: 2022.0
       min: 907
@@ -64,13 +67,16 @@ materialProperties:
       min: 100
       max: 2000
       unit: J/(kg·K)
-      research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook, Lead thermochemical data at 298.15 K'
+      research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
+        Lead thermochemical data at 298.15 K'
     thermalConductivity:
       value: 35.3
       min: 7.0
       max: 430
       unit: W/(m·K)
-      research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook, Lead thermophysical properties at 300K; ASM Handbook Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
+      research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
+        Lead thermophysical properties at 300K; ASM Handbook Volume 2: Properties
+        and Selection: Nonferrous Alloys and Special-Purpose Materials'
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -86,31 +92,48 @@ materialProperties:
       min: 0.06
       max: 174
       unit: mm²/s
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Table 1: Physical Properties of Lead and Lead Alloys, and NIST Standard Reference Data for pure lead (99.99+%) at 300K'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials (1990), Table 1: Physical Properties
+        of Lead and Lead Alloys, and NIST Standard Reference Data for pure lead (99.99+%)
+        at 300K'
     thermalExpansion:
       value: 28.9
       min: 0.5
       max: 33
       unit: 10^-6/K
-      research_basis: 'NIST Standard Reference Database 144 - Lead (Pb) thermal expansion coefficient at 20°C: 29.1 × 10^-6 K^-1'
+      research_basis: 'NIST Standard Reference Database 144 - Lead (Pb) thermal expansion
+        coefficient at 20°C: 29.1 × 10^-6 K^-1'
     compressiveStrength:
       value: 15.0
       min: 50
       max: 2000
       unit: MPa
-      research_basis: Lead is an exceptionally soft, malleable metal with no distinct yield point. Its compressive strength is highly dependent on purity, strain rate, and temperature. For commercially pure lead, authoritative materials handbooks report compressive yield strength (0.2% offset) typically in the range of 12-18 MPa under standard laboratory conditions (room temperature, quasi-static loading). The value overlaps significantly with its tensile strength due to its low capacity for work hardening.
+      research_basis: Lead is an exceptionally soft, malleable metal with no distinct
+        yield point. Its compressive strength is highly dependent on purity, strain
+        rate, and temperature. For commercially pure lead, authoritative materials
+        handbooks report compressive yield strength (0.2% offset) typically in the
+        range of 12-18 MPa under standard laboratory conditions (room temperature,
+        quasi-static loading). The value overlaps significantly with its tensile strength
+        due to its low capacity for work hardening.
     corrosionResistance:
       value: 2.0
       min: 1
       max: 10
       unit: rating
-      research_basis: Lead exhibits excellent resistance to atmospheric corrosion and many chemicals (especially sulfuric acid) due to its protective oxide layer, but has very poor resistance to corrosion in soft/acidic waters, soils, and many organic acids. Its overall rating is low because it corrodes significantly in common environmental conditions like drinking water distribution systems and soil burial, with corrosion rates typically 0.0005-0.002 inches per year in various environments.
+      research_basis: Lead exhibits excellent resistance to atmospheric corrosion
+        and many chemicals (especially sulfuric acid) due to its protective oxide
+        layer, but has very poor resistance to corrosion in soft/acidic waters, soils,
+        and many organic acids. Its overall rating is low because it corrodes significantly
+        in common environmental conditions like drinking water distribution systems
+        and soil burial, with corrosion rates typically 0.0005-0.002 inches per year
+        in various environments.
     density:
       value: 11.34
       min: 0.53
       max: 22.6
       unit: g/cm³
-      research_basis: 'NIST Standard Reference Database 144 (Lead), ASM Handbook Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
+      research_basis: 'NIST Standard Reference Database 144 (Lead), ASM Handbook Volume
+        2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
     electricalConductivity:
       value: 4810000.0
       min: 0.67
@@ -128,19 +151,32 @@ materialProperties:
       min: 2.5
       max: 1050.0
       unit: MPa
-      research_basis: Lead is an extremely soft, malleable metal with negligible capacity for elastic deformation. Its flexural strength is not a primary design property and is rarely tested directly. The value of ~12 MPa is derived from its ultimate tensile strength, which is well-documented in authoritative materials handbooks (e.g., ASM) as being in the 12-18 MPa range for pure lead. Since bending failure is governed by tensile stress, this value serves as a conservative and representative estimate of its flexural strength.
+      research_basis: Lead is an extremely soft, malleable metal with negligible capacity
+        for elastic deformation. Its flexural strength is not a primary design property
+        and is rarely tested directly. The value of ~12 MPa is derived from its ultimate
+        tensile strength, which is well-documented in authoritative materials handbooks
+        (e.g., ASM) as being in the 12-18 MPa range for pure lead. Since bending failure
+        is governed by tensile stress, this value serves as a conservative and representative
+        estimate of its flexural strength.
     hardness:
       value: 38.0
       min: 0.5
       max: 3500
       unit: MPa
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, Lead and Lead Alloys Chapter, Table 1: Physical and Mechanical Properties of High-Purity Lead'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials, Lead and Lead Alloys Chapter, Table
+        1: Physical and Mechanical Properties of High-Purity Lead'
     oxidationResistance:
       value: 400.0
       min: 200
       max: 1200
       unit: °C
-      research_basis: The ASM Handbook states that while lead forms a protective oxide film at room temperature, significant oxidation begins above approximately 400°C (750°F). This temperature is well below lead's melting point of 327.5°C, meaning molten lead oxidizes readily. The 400°C threshold is widely cited in materials science references for the onset of substantial oxidation in air.
+      research_basis: The ASM Handbook states that while lead forms a protective oxide
+        film at room temperature, significant oxidation begins above approximately
+        400°C (750°F). This temperature is well below lead's melting point of 327.5°C,
+        meaning molten lead oxidizes readily. The 400°C threshold is widely cited
+        in materials science references for the onset of substantial oxidation in
+        air.
     porosity:
       value: 0.0001
       min: 0.0
@@ -152,20 +188,25 @@ materialProperties:
       min: 3.0
       max: 3000.0
       unit: MPa
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Table 1: Typical Mechanical Properties of Wrought Lead'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials (1990), Table 1: Typical Mechanical Properties
+        of Wrought Lead'
     youngsModulus:
       value: 14.0
       min: 5
       max: 600
       unit: GPa
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical Properties of Lead and Lead Alloys'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
+        Properties of Lead and Lead Alloys'
     fractureToughness:
       value: 15.0
       min: 20
       max: 200
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
     ablationThreshold:
       value: 0.15
       min: 2.0
@@ -183,7 +224,9 @@ materialProperties:
       min: 0.02
       max: 100
       unit: '%'
-      research_basis: 'NIST Atomic Spectra Database - Lead reflectance data at 1064 nm wavelength, combined with ASM Handbook Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
+      research_basis: 'NIST Atomic Spectra Database - Lead reflectance data at 1064
+        nm wavelength, combined with ASM Handbook Volume 2: Properties and Selection:
+        Nonferrous Alloys and Special-Purpose Materials'
     laserDamageThreshold:
       value: 0.15
       min: 0.1
@@ -195,7 +238,8 @@ materialProperties:
       min: 5
       max: 99.9
       unit: '%'
-      research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties of Materials - Reflectance measurements for lead at 1064 nm wavelength'
+      research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
+        of Materials - Reflectance measurements for lead at 1064 nm wavelength'
     reflectivity:
       value: 0.65
       min: 85
@@ -319,7 +363,8 @@ preservedData:
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Pure metals, alloys, and metallic compounds including steel, aluminum, precious metals, and industrial alloys for precision cleaning
+    description: Pure metals, alloys, and metallic compounds including steel, aluminum,
+      precious metals, and industrial alloys for precision cleaning
     properties_count: 0
     category_ranges:
       density:
@@ -340,7 +385,8 @@ preservedData:
         unit: '%'
         source: Handbook of Optical Constants of Solids (Palik, 1998)
         confidence: 85
-        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with surface condition'
+        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with
+          surface condition'
         last_updated: '2025-10-15T14:19:43.867188'
       specificHeat:
         max: 2000
@@ -405,7 +451,8 @@ preservedData:
         unit: '%'
         source: Handbook of Optical Constants (Palik)
         confidence: 85
-        notes: At 1064nm for polished metals (532nm 70-95%, 355nm 55-85%, 10640nm 95-99%)
+        notes: At 1064nm for polished metals (532nm 70-95%, 355nm 55-85%, 10640nm
+          95-99%)
         measurement_context: 1064nm wavelength (most common Nd:YAG)
         last_updated: '2025-10-17T00:00:00.000000'
       oxidationResistance:
@@ -482,7 +529,8 @@ preservedData:
         unit: MS/m
         source: Materials Handbook (ASM International)
         confidence: 90
-        notes: Bismuth 0.77 MS/m, Aluminum 37.7 MS/m, Copper 59.6 MS/m, Silver 63.0 MS/m
+        notes: Bismuth 0.77 MS/m, Aluminum 37.7 MS/m, Copper 59.6 MS/m, Silver 63.0
+          MS/m
         measurement_context: Room temperature (20°C), pure elements
         last_updated: '2025-10-17T00:00:00.000000'
       meltingPoint:
@@ -510,7 +558,8 @@ preservedData:
         source: Materials Science and Engineering (Callister)
         confidence: 75
         notes: Cast iron ~50-100°C, Steel ~150-250°C, Nickel alloys ~300-400°C
-        measurement_context: Resistance to thermal stress cracking during rapid temperature changes
+        measurement_context: Resistance to thermal stress cracking during rapid temperature
+          changes
         last_updated: '2025-10-17T00:00:00.000000'
       absorptivity:
         min: 2.0
@@ -518,7 +567,8 @@ preservedData:
         unit: '%'
         source: Laser Material Processing (Steen & Mazumder)
         confidence: 85
-        notes: Polished metals 2-10%, Oxidized surfaces 30-65%, wavelength and temperature dependent
+        notes: Polished metals 2-10%, Oxidized surfaces 30-65%, wavelength and temperature
+          dependent
         measurement_context: Near-IR wavelengths (1064nm Nd:YAG), room temperature
         last_updated: '2025-10-17T00:00:00.000000'
       porosity:
@@ -528,7 +578,8 @@ preservedData:
         source: ASM Metals Handbook - Powder Metallurgy
         confidence: 90
         notes: Wrought metals 0-0.1%, Cast metals 0.5-5%, Sintered metals 2-15%
-        measurement_context: Volumetric porosity, varies significantly by manufacturing process
+        measurement_context: Volumetric porosity, varies significantly by manufacturing
+          process
         last_updated: '2025-10-17T00:00:00.000000'
       thermalDestructionPoint:
         min: 873
@@ -622,7 +673,8 @@ preservedData:
       confidence: 0.9
       ai_verified: true
       research_date: '2025-10-15T21:27:41.306073'
-      source: 'ASM Handbook, Volume 2: "Properties and Selection: Nonferrous Alloys and Special-Purpose Materials" (lead and lead alloys section)'
+      source: 'ASM Handbook, Volume 2: "Properties and Selection: Nonferrous Alloys
+        and Special-Purpose Materials" (lead and lead alloys section)'
     corrosionResistance:
       confidence: 0.9
       ai_verified: true
@@ -647,7 +699,9 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:57:05.344052'
-      source: 'ASM Handbook, Volume 2: "Properties and Selection: Nonferrous Alloys and Special-Purpose Materials," Table "Typical Mechanical Properties of Wrought Lead and Lead Alloys" for 99.9% Pure Lead.'
+      source: 'ASM Handbook, Volume 2: "Properties and Selection: Nonferrous Alloys
+        and Special-Purpose Materials," Table "Typical Mechanical Properties of Wrought
+        Lead and Lead Alloys" for 99.9% Pure Lead.'
     hardness:
       confidence: 0.95
       ai_verified: true
@@ -659,7 +713,9 @@ preservedData:
       confidence: 0.9
       ai_verified: true
       research_date: '2025-10-15T20:44:15.482877'
-      source: 'ASM Handbook, Volume 2: "Properties and Selection: Nonferrous Alloys and Special-Purpose Materials" (ASM International, 1990), Section on Lead and Lead Alloys.'
+      source: 'ASM Handbook, Volume 2: "Properties and Selection: Nonferrous Alloys
+        and Special-Purpose Materials" (ASM International, 1990), Section on Lead
+        and Lead Alloys.'
     porosity:
       confidence: 0.95
       research_date: '2025-10-17T19:07:34.183974'

@@ -14,15 +14,18 @@ author:
   title: Ph.D.
 images:
   hero:
-    alt: Tungsten Carbide surface undergoing laser cleaning showing precise contamination removal
+    alt: Tungsten Carbide surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/tungsten-carbide-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Tungsten Carbide surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Tungsten Carbide surface after laser cleaning showing
+      detailed surface structure
     url: /images/material/tungsten-carbide-laser-cleaning-micro.jpg
 caption:
-  description: Microscopic analysis of Tungsten Carbide surface before and after laser cleaning treatment
-  beforeText: This surface shows heavy contamination at 500x magnification. A carbonaceous deposit layer—approximately 15 to 20 µm thick—covers the substrate completely. This layer appears as a dark, amorphous film with embedded particulate matter, likely silica and metallic oxides from prior service. The surface texture is highly irregular, with Ra roughness measurements exceeding 3.5 µm due to this non-uniform coating. The underlying Tungsten Carbide microstructure is entirely obscured. You see no evidence of the typical sintered grain structure, only this continuous, splotchy deposit. Some areas show localized pitting beneath the contamination, perhaps from corrosive attack. This condition severely compromises the material's functional properties, the reflectivity and thermal performance are very-very poor.
-  afterText: This laser cleaning process produces a dramatic transformation. The contaminated layer is completely removed, revealing the pristine WC-Co composite substrate. Now you can observe the characteristic hexagonal crystalline structure of the tungsten carbide grains, which appear as fine, light-gray facets. The cobalt binder phase is also visible as a darker, intergranular network. Surface roughness is significantly reduced, the Ra value now measures 0.8 µm—a substantial improvement from the initial >3.5 µm. This creates an excellent surface for subsequent coating adhesion. Some minor, sub-micron laser ablation features are present, these appear as subtle ripple patterns, but they do not compromise surface integrity. The restoration of surface functionality is complete. Reflectivity increases substantially, this is directly observable under the microscope as enhanced light reflection from the cleaned metallic surface. The process removes contamination effectively, so the true material properties are fully restored for demanding applications in aerospace and medical devices. This is a very-very good result.
+  description: Microscopic analysis of Tungsten Carbide surface before and after laser
+    cleaning treatment
+  beforeText: ''
+  afterText: ''
 regulatoryStandards:
 - name: ANSI
   description: ANSI Z136.1 - Safe Use of Lasers
@@ -46,19 +49,25 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
     specificHeat:
       value: 292.0
       min: 250
       max: 2500.0
       unit: J/(kg·K)
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Table 1: Physical Properties of Cemented Carbides, p. 950'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials (1990), Table 1: Physical Properties
+        of Cemented Carbides, p. 950'
     thermalConductivity:
       value: 110.0
       min: 0.8
       max: 120
       unit: W/(m·K)
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Table ''Physical Properties of Carbides'' specifying thermal conductivity of tungsten carbide (WC) at room temperature'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials (1990), Table ''Physical Properties of
+        Carbides'' specifying thermal conductivity of tungsten carbide (WC) at room
+        temperature'
     thermalDestruction:
       value: 1200.0
       unit: °C
@@ -68,31 +77,44 @@ materialProperties:
       min: 0.005
       max: 120
       unit: mm²/s
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, Table ''Thermal Properties of Cemented Carbides and Cermets'' for WC-6%Co composition at 20°C'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials, Table ''Thermal Properties of Cemented
+        Carbides and Cermets'' for WC-6%Co composition at 20°C'
     thermalExpansion:
       value: 5.4
       min: 0.1
       max: 14
       unit: 10^-6/K
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Section: Cemented Carbides and Cermets, Table: Physical Properties of Cemented Carbides'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials (1990), Section: Cemented Carbides and
+        Cermets, Table: Physical Properties of Cemented Carbides'
     compressiveStrength:
       value: 6700.0
       min: 100
       max: 7000
       unit: MPa
-      research_basis: 'ASM Handbook, Volume 19: Fatigue and Fracture (1996), Table 1: Mechanical Properties of Cemented Carbides, specifically reporting compressive strength range of 6000-7400 MPa for WC-Co grades with 6-16% binder content'
+      research_basis: 'ASM Handbook, Volume 19: Fatigue and Fracture (1996), Table
+        1: Mechanical Properties of Cemented Carbides, specifically reporting compressive
+        strength range of 6000-7400 MPa for WC-Co grades with 6-16% binder content'
     corrosionResistance:
       value: 8.0
       min: 8
       max: 10
       unit: rating
-      research_basis: Tungsten carbide (WC-Co) has excellent corrosion resistance in neutral and alkaline environments and good resistance to many acids, though it is susceptible to corrosion in oxidizing acids due to the cobalt binder. It is highly resistant to atmospheric corrosion, seawater, and many industrial chemicals, placing it well above most metals but below some monolithic ceramics and noble metals.
+      research_basis: Tungsten carbide (WC-Co) has excellent corrosion resistance
+        in neutral and alkaline environments and good resistance to many acids, though
+        it is susceptible to corrosion in oxidizing acids due to the cobalt binder.
+        It is highly resistant to atmospheric corrosion, seawater, and many industrial
+        chemicals, placing it well above most metals but below some monolithic ceramics
+        and noble metals.
     density:
       value: 15.63
       min: 2.3
       max: 16.0
       unit: g/cm³
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Section: Cemented Carbides and Cermets, Table 1: Typical Properties of Cemented Carbides'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials (1990), Section: Cemented Carbides and
+        Cermets, Table 1: Typical Properties of Cemented Carbides'
     electricalResistivity:
       value: 2.0e-05
       min: 10000000000.0
@@ -104,7 +126,10 @@ materialProperties:
       min: 50
       max: 2500
       unit: MPa
-      research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation (2000), Table ''Mechanical Properties of Cemented Carbides'' citing typical flexural strength range of 1800-2800 MPa for commercial tungsten carbide grades with 6-16% cobalt binder'
+      research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation (2000),
+        Table ''Mechanical Properties of Cemented Carbides'' citing typical flexural
+        strength range of 1800-2800 MPa for commercial tungsten carbide grades with
+        6-16% cobalt binder'
     hardness:
       value: 1600.0
       min: 6.0
@@ -116,7 +141,11 @@ materialProperties:
       min: 600.0
       max: 2400.0
       unit: °C
-      research_basis: Tungsten carbide (WC) has poor oxidation resistance in air and begins to oxidize significantly at temperatures of 500-600°C, forming tungsten trioxide (WO₃). The value of 600°C is consistently cited in materials handbooks as the upper limit for continuous service in an oxidizing environment before rapid, destructive oxidation occurs.
+      research_basis: Tungsten carbide (WC) has poor oxidation resistance in air and
+        begins to oxidize significantly at temperatures of 500-600°C, forming tungsten
+        trioxide (WO₃). The value of 600°C is consistently cited in materials handbooks
+        as the upper limit for continuous service in an oxidizing environment before
+        rapid, destructive oxidation occurs.
     porosity:
       value: 0.0005
       min: 0
@@ -128,22 +157,29 @@ materialProperties:
       min: 5.0
       max: 600
       unit: MPa
-      research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation (2000), Table: Mechanical Properties of Cemented Carbides, specifically reporting tensile strength for WC-6%Co composition'
+      research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation (2000),
+        Table: Mechanical Properties of Cemented Carbides, specifically reporting
+        tensile strength for WC-6%Co composition'
     youngsModulus:
       value: 600.0
       min: 5.0
       max: 600.0
       unit: GPa
-      research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation (2000), Table ''Elastic Properties of Selected Ceramics and Hard Metals'' lists Young''s modulus for tungsten carbide (WC) as 650 GPa'
+      research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation (2000),
+        Table ''Elastic Properties of Selected Ceramics and Hard Metals'' lists Young''s
+        modulus for tungsten carbide (WC) as 650 GPa'
     fractureToughness:
       value: 9.5
       min: 2
       max: 10
       unit: MPa·m¹/²
-      research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation (2000), Table 13 - Fracture toughness values for cemented carbides; Materials Science and Engineering: A, Vol. 209, Issues 1-2, pp. 1-9 (1996)'
+      research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation (2000),
+        Table 13 - Fracture toughness values for cemented carbides; Materials Science
+        and Engineering: A, Vol. 209, Issues 1-2, pp. 1-9 (1996)'
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
     ablationThreshold:
       value: 1.8
       min: 1.5
@@ -155,20 +191,25 @@ materialProperties:
       min: 0.1
       max: 50
       unit: '%'
-      research_basis: 'ASM Handbook, Volume 4B: Steel Heat Treating Technologies, Chapter: Laser Surface Engineering, Table 4: Absorption coefficients of common engineering materials for 1064 nm Nd:YAG laser'
+      research_basis: 'ASM Handbook, Volume 4B: Steel Heat Treating Technologies,
+        Chapter: Laser Surface Engineering, Table 4: Absorption coefficients of common
+        engineering materials for 1064 nm Nd:YAG laser'
     laserReflectivity:
       value: 52.3
       min: 5
       max: 90
       unit: '%'
-      research_basis: 'ASM Handbook, Volume 4: Heat Treating, Section: Laser Processing of Materials, Table: Reflectivity of Engineering Materials for Nd:YAG Lasers (1064 nm)'
+      research_basis: 'ASM Handbook, Volume 4: Heat Treating, Section: Laser Processing
+        of Materials, Table: Reflectivity of Engineering Materials for Nd:YAG Lasers
+        (1064 nm)'
 machineSettings:
   energyDensity:
     value: 5.1
     min: 3.0
     max: 8.0
     unit: J/cm²
-    description: Fluence threshold for effective contaminant removal without substrate damage
+    description: Fluence threshold for effective contaminant removal without substrate
+      damage
   overlapRatio:
     value: 50
     min: 30
@@ -255,7 +296,8 @@ preservedData:
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Advanced ceramic materials including technical ceramics, porcelain, and ceramic composites used in laser cleaning applications
+    description: Advanced ceramic materials including technical ceramics, porcelain,
+      and ceramic composites used in laser cleaning applications
     properties_count: 0
     category_ranges:
       density:
@@ -284,7 +326,8 @@ preservedData:
         unit: '%'
         source: Handbook of Optical Constants of Solids (Palik, 1998)
         confidence: 75
-        notes: Typical ceramics 10-30% at 1064nm, varies with composition and surface finish
+        notes: Typical ceramics 10-30% at 1064nm, varies with composition and surface
+          finish
         last_updated: '2025-10-15T14:19:43.867144'
       specificHeat:
         max: 2500.0
@@ -449,7 +492,8 @@ preservedData:
       confidence: 0.9
       ai_verified: true
       research_date: '2025-10-15T20:38:36.322031'
-      source: 'ASM Handbook, Volume 13C: Corrosion: Environments and Industries, "Corrosion of Cemented Carbides"'
+      source: 'ASM Handbook, Volume 13C: Corrosion: Environments and Industries, "Corrosion
+        of Cemented Carbides"'
     density:
       confidence: 0.95
       ai_verified: true
@@ -476,7 +520,9 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:51:16.468094'
-      source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (ASM International, 1990), Section "Cemented Carbides and Cermets".'
+      source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys
+        and Special-Purpose Materials (ASM International, 1990), Section "Cemented
+        Carbides and Cermets".'
     porosity:
       confidence: 0.95
       research_date: '2025-10-17T19:07:34.180193'

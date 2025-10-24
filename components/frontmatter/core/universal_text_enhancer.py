@@ -417,18 +417,18 @@ GENERATE CONTENT NOW:
         material_data: Dict[str, Any],
         force_refresh: bool
     ) -> list:
-        """Identify text fields that need AI research"""
+        """Identify caption fields that need AI research - ai_text_fields LIMITED to captions only"""
         
-        # Standard text fields to research
-        standard_text_fields = [
-            'subtitle', 'description', 'technical_notes', 
-            'safety_considerations', 'application_notes', 'caption_beforeText', 'caption_afterText'
+        # CAPTION FIELDS ONLY - ai_text_fields is LIMITED to captions per system policy
+        # Other text fields (subtitle, description, etc.) are handled via frontmatter generation
+        caption_fields_only = [
+            'caption_beforeText', 'caption_afterText'
         ]
         
         missing_fields = []
         existing_text_fields = material_data.get('ai_text_fields', {})
         
-        for field_name in standard_text_fields:
+        for field_name in caption_fields_only:
             if force_refresh or field_name not in existing_text_fields:
                 missing_fields.append(field_name)
                 

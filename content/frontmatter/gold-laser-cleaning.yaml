@@ -17,12 +17,14 @@ images:
     alt: Gold surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/gold-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Gold surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Gold surface after laser cleaning showing detailed surface
+      structure
     url: /images/material/gold-laser-cleaning-micro.jpg
 caption:
-  description: Microscopic analysis of Gold surface before and after laser cleaning treatment
-  beforeText: 'Gold: 1.5μm organic residue, conductivity impaired'
-  afterText: 'Gold: clean surface, 95% conductivity restored'
+  description: Microscopic analysis of Gold surface before and after laser cleaning
+    treatment
+  beforeText: ''
+  afterText: ''
 regulatoryStandards:
 - name: ANSI
   description: ANSI Z136.1 - Safe Use of Lasers
@@ -46,7 +48,8 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
     boilingPoint:
       value: 2970.0
       min: 907
@@ -64,13 +67,15 @@ materialProperties:
       min: 100
       max: 2000
       unit: J/(kg·K)
-      research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook, Gold Thermophysical Properties (CRC Handbook, 84th Edition)'
+      research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
+        Gold Thermophysical Properties (CRC Handbook, 84th Edition)'
     thermalConductivity:
       value: 318.0
       min: 7.0
       max: 430
       unit: W/(m·K)
-      research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties of Fluid Systems - Gold thermal conductivity at 300K (27°C)'
+      research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
+        of Fluid Systems - Gold thermal conductivity at 300K (27°C)'
     thermalDestruction:
       value: 500.0
       unit: °C
@@ -86,19 +91,30 @@ materialProperties:
       min: 0.06
       max: 174
       unit: mm²/s
-      research_basis: 'NIST Standard Reference Database: Thermophysical Properties of Matter, specifically for pure gold (99.99%) at 300K'
+      research_basis: 'NIST Standard Reference Database: Thermophysical Properties
+        of Matter, specifically for pure gold (99.99%) at 300K'
     thermalExpansion:
       value: 14.2
       min: 0.5
       max: 33
       unit: 10^-6/K
-      research_basis: 'NIST Standard Reference Database 74 (2019) - Thermophysical Properties of Matter, ASM Handbook Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
+      research_basis: 'NIST Standard Reference Database 74 (2019) - Thermophysical
+        Properties of Matter, ASM Handbook Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials'
     compressiveStrength:
       value: 120.0
       min: 50
       max: 2000
       unit: MPa
-      research_basis: Gold is an FCC metal with no allotropic transformations, making it exceptionally ductile and malleable. It has no true yield point and work hardens slowly. The compressive strength is not a fixed value but depends on the material's condition (e.g., annealed vs. cold-worked). The cited value of ~120 MPa is a representative ultimate compressive strength for annealed, high-purity gold, as reported in authoritative materials handbooks. The low confidence reflects the fact that compressive strength is rarely a critical design parameter for gold due to its primary use in applications where extreme ductility is paramount.
+      research_basis: Gold is an FCC metal with no allotropic transformations, making
+        it exceptionally ductile and malleable. It has no true yield point and work
+        hardens slowly. The compressive strength is not a fixed value but depends
+        on the material's condition (e.g., annealed vs. cold-worked). The cited value
+        of ~120 MPa is a representative ultimate compressive strength for annealed,
+        high-purity gold, as reported in authoritative materials handbooks. The low
+        confidence reflects the fact that compressive strength is rarely a critical
+        design parameter for gold due to its primary use in applications where extreme
+        ductility is paramount.
     corrosionResistance:
       value: 10.0
       min: 1
@@ -110,7 +126,10 @@ materialProperties:
       min: 0.53
       max: 22.6
       unit: g/cm³
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, ''Gold and Gold Alloys'', p. 688, Table 1 (1990); NIST Standard Reference Database 124, ''Gold (Au) - Crystal Structure: Face-centered cubic'''
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials, ''Gold and Gold Alloys'', p. 688, Table
+        1 (1990); NIST Standard Reference Database 124, ''Gold (Au) - Crystal Structure:
+        Face-centered cubic'''
     electricalConductivity:
       value: 45200000.0
       min: 0.67
@@ -128,19 +147,30 @@ materialProperties:
       min: 2.5
       max: 1050.0
       unit: MPa
-      research_basis: Pure gold is an extremely ductile metal with no yield point and very low strength in its annealed state. The provided value is a typical flexural strength for high-purity (99.99%) annealed gold, derived from the relationship between its ultimate tensile strength (UTS ~100-140 MPa) and the mechanics of a 3-point bend test for a perfectly plastic material. This value is highly dependent on purity, temper (cold work), and grain size.
+      research_basis: Pure gold is an extremely ductile metal with no yield point
+        and very low strength in its annealed state. The provided value is a typical
+        flexural strength for high-purity (99.99%) annealed gold, derived from the
+        relationship between its ultimate tensile strength (UTS ~100-140 MPa) and
+        the mechanics of a 3-point bend test for a perfectly plastic material. This
+        value is highly dependent on purity, temper (cold work), and grain size.
     hardness:
       value: 25.0
       min: 0.5
       max: 3500
       unit: HV
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical Properties of Gold'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
+        Properties of Gold'
     oxidationResistance:
       value: 1064.0
       min: 200
       max: 1200
       unit: °C
-      research_basis: Gold is a noble metal with exceptional oxidation resistance. It does not form surface oxides at any temperature in air. The value provided is its melting point (1064°C), which represents the maximum temperature for continuous service in air, as it remains unoxidized up to its liquid state. No significant oxidation occurs below this temperature.
+      research_basis: Gold is a noble metal with exceptional oxidation resistance.
+        It does not form surface oxides at any temperature in air. The value provided
+        is its melting point (1064°C), which represents the maximum temperature for
+        continuous service in air, as it remains unoxidized up to its liquid state.
+        No significant oxidation occurs below this temperature.
     porosity:
       value: 0.0001
       min: 0.0
@@ -152,22 +182,36 @@ materialProperties:
       min: 3.0
       max: 3000.0
       unit: MPa
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Table 1: Typical Mechanical Properties of Wrought Gold and Gold Alloys - Pure Gold (99.99% Au) annealed condition'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials (1990), Table 1: Typical Mechanical Properties
+        of Wrought Gold and Gold Alloys - Pure Gold (99.99% Au) annealed condition'
     youngsModulus:
       value: 79.0
       min: 5
       max: 600
       unit: GPa
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, Table 1: Physical Properties of Gold, pp. 700-701 (1990); NIST Materials Data Repository - Gold (Au) Crystal Structure: Face-Centered Cubic'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials, Table 1: Physical Properties of Gold,
+        pp. 700-701 (1990); NIST Materials Data Repository - Gold (Au) Crystal Structure:
+        Face-Centered Cubic'
     fractureToughness:
       value: 0.8
       min: 20
       max: 200
       unit: MPa·√m
-      research_basis: Gold is an extremely ductile face-centered cubic (FCC) metal with no discernible brittle-to-ductile transition. It does not fail in a brittle manner under standard conditions, making the concept of fracture toughness (K_IC) less meaningful. The reported value is an extremely low, effectively negligible, estimate based on its high ductility and the understanding that it yields and deforms plastically long before any linear-elastic fracture mechanics (LEFM) conditions can be met. The ASM Handbook and other materials science references confirm that pure gold's fracture toughness is not a standard property due to its exceptional malleability.
+      research_basis: Gold is an extremely ductile face-centered cubic (FCC) metal
+        with no discernible brittle-to-ductile transition. It does not fail in a brittle
+        manner under standard conditions, making the concept of fracture toughness
+        (K_IC) less meaningful. The reported value is an extremely low, effectively
+        negligible, estimate based on its high ductility and the understanding that
+        it yields and deforms plastically long before any linear-elastic fracture
+        mechanics (LEFM) conditions can be met. The ASM Handbook and other materials
+        science references confirm that pure gold's fracture toughness is not a standard
+        property due to its exceptional malleability.
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
     ablationThreshold:
       value: 0.45
       min: 2.0
@@ -185,7 +229,8 @@ materialProperties:
       min: 0.02
       max: 100
       unit: '%'
-      research_basis: Johnson, P. B., & Christy, R. W. (1972). Optical Constants of the Noble Metals. Physical Review B, 6(12), 4370-4379. doi:10.1103/PhysRevB.6.4370
+      research_basis: Johnson, P. B., & Christy, R. W. (1972). Optical Constants of
+        the Noble Metals. Physical Review B, 6(12), 4370-4379. doi:10.1103/PhysRevB.6.4370
     laserDamageThreshold:
       value: 0.45
       min: 0.1
@@ -197,7 +242,9 @@ materialProperties:
       min: 5
       max: 99.9
       unit: '%'
-      research_basis: 'NIST Standard Reference Database 120: ''Reflectance and Emittance of Spectrally Selective Materials'' - Gold (Au) at 1064 nm wavelength, room temperature, polished surface'
+      research_basis: 'NIST Standard Reference Database 120: ''Reflectance and Emittance
+        of Spectrally Selective Materials'' - Gold (Au) at 1064 nm wavelength, room
+        temperature, polished surface'
     reflectivity:
       value: 0.985
       min: 85
@@ -321,7 +368,8 @@ preservedData:
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Pure metals, alloys, and metallic compounds including steel, aluminum, precious metals, and industrial alloys for precision cleaning
+    description: Pure metals, alloys, and metallic compounds including steel, aluminum,
+      precious metals, and industrial alloys for precision cleaning
     properties_count: 0
     category_ranges:
       density:
@@ -342,7 +390,8 @@ preservedData:
         unit: '%'
         source: Handbook of Optical Constants of Solids (Palik, 1998)
         confidence: 85
-        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with surface condition'
+        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with
+          surface condition'
         last_updated: '2025-10-15T14:19:43.867188'
       specificHeat:
         max: 2000
@@ -407,7 +456,8 @@ preservedData:
         unit: '%'
         source: Handbook of Optical Constants (Palik)
         confidence: 85
-        notes: At 1064nm for polished metals (532nm 70-95%, 355nm 55-85%, 10640nm 95-99%)
+        notes: At 1064nm for polished metals (532nm 70-95%, 355nm 55-85%, 10640nm
+          95-99%)
         measurement_context: 1064nm wavelength (most common Nd:YAG)
         last_updated: '2025-10-17T00:00:00.000000'
       oxidationResistance:
@@ -484,7 +534,8 @@ preservedData:
         unit: MS/m
         source: Materials Handbook (ASM International)
         confidence: 90
-        notes: Bismuth 0.77 MS/m, Aluminum 37.7 MS/m, Copper 59.6 MS/m, Silver 63.0 MS/m
+        notes: Bismuth 0.77 MS/m, Aluminum 37.7 MS/m, Copper 59.6 MS/m, Silver 63.0
+          MS/m
         measurement_context: Room temperature (20°C), pure elements
         last_updated: '2025-10-17T00:00:00.000000'
       meltingPoint:
@@ -512,7 +563,8 @@ preservedData:
         source: Materials Science and Engineering (Callister)
         confidence: 75
         notes: Cast iron ~50-100°C, Steel ~150-250°C, Nickel alloys ~300-400°C
-        measurement_context: Resistance to thermal stress cracking during rapid temperature changes
+        measurement_context: Resistance to thermal stress cracking during rapid temperature
+          changes
         last_updated: '2025-10-17T00:00:00.000000'
       absorptivity:
         min: 2.0
@@ -520,7 +572,8 @@ preservedData:
         unit: '%'
         source: Laser Material Processing (Steen & Mazumder)
         confidence: 85
-        notes: Polished metals 2-10%, Oxidized surfaces 30-65%, wavelength and temperature dependent
+        notes: Polished metals 2-10%, Oxidized surfaces 30-65%, wavelength and temperature
+          dependent
         measurement_context: Near-IR wavelengths (1064nm Nd:YAG), room temperature
         last_updated: '2025-10-17T00:00:00.000000'
       porosity:
@@ -530,7 +583,8 @@ preservedData:
         source: ASM Metals Handbook - Powder Metallurgy
         confidence: 90
         notes: Wrought metals 0-0.1%, Cast metals 0.5-5%, Sintered metals 2-15%
-        measurement_context: Volumetric porosity, varies significantly by manufacturing process
+        measurement_context: Volumetric porosity, varies significantly by manufacturing
+          process
         last_updated: '2025-10-17T00:00:00.000000'
       thermalDestructionPoint:
         min: 873
@@ -627,12 +681,14 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T21:26:37.858335'
-      source: 'ASM Handbook, Volume 2: "Properties and Selection: Nonferrous Alloys and Special-Purpose Materials" (1990), Table 1, Page 712.'
+      source: 'ASM Handbook, Volume 2: "Properties and Selection: Nonferrous Alloys
+        and Special-Purpose Materials" (1990), Table 1, Page 712.'
     corrosionResistance:
       confidence: 0.95
       ai_verified: true
       research_date: '2025-10-15T20:29:54.601151'
-      source: ISO 10289:1999 (Method for corrosion testing of metallic coatings) and general metallurgical consensus
+      source: ISO 10289:1999 (Method for corrosion testing of metallic coatings) and
+        general metallurgical consensus
     density:
       confidence: 0.99
       ai_verified: true
@@ -652,7 +708,8 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:55:45.880319'
-      source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, "Gold and Gold Alloys"'
+      source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys
+        and Special-Purpose Materials, "Gold and Gold Alloys"'
     hardness:
       confidence: 0.95
       ai_verified: true
@@ -664,7 +721,8 @@ preservedData:
       confidence: 0.9
       ai_verified: true
       research_date: '2025-10-15T20:43:12.812557'
-      source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Section "Gold and Gold Alloys"'
+      source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys
+        and Special-Purpose Materials (1990), Section "Gold and Gold Alloys"'
     porosity:
       confidence: 0.95
       research_date: '2025-10-17T19:07:34.182632'

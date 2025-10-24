@@ -17,12 +17,14 @@ images:
     alt: Shale surface undergoing laser cleaning showing precise contamination removal
     url: /images/material/shale-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Shale surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Shale surface after laser cleaning showing detailed surface
+      structure
     url: /images/material/shale-laser-cleaning-micro.jpg
 caption:
-  description: Microscopic analysis of Shale surface before and after laser cleaning treatment
-  beforeText: At 500x magnification, the shale surface shows heavy, stratified contamination. A dark, carbonaceous crust—approximately 15 to 20 µm thick—dominates the field of view, completely obscuring the underlying mineral matrix. This layer appears dense and coherent, with a measured surface roughness (Ra) exceeding 12.5 µm. The contamination, it has a cracked, mud-cake morphology, which suggests a complex mixture of soot, organic particulates, and perhaps gypsum efflorescence from environmental exposure. Further analysis reveals the crust is not uniform. In some areas, the deposit is thinner, around 8 to 10 µm, revealing a speckled pattern of embedded particulate matter. These inclusions, likely silicate or aluminosilicate in composition based on prior EDX scans, create a very rough, irregular topography. The original shale surface texture, it is completely undetectable beneath this continuous film. The low initial reflectivity, measured at below 10%, is a direct consequence of this thick, light-absorbing layer. The high porosity of the shale substrate, it seems to have facilitated deep penetration of contaminants into the first 30-40 µm, which complicates the cleaning process.
-  afterText: Post-cleaning analysis at 500x reveals a dramatic transformation. The thick contamination crust is entirely absent, having been cleanly ablated without significant substrate damage. The original shale lithology is now fully exposed, showing a complex interlocking of clay minerals and fine silt grains. Surface roughness has been substantially reduced to an Ra value of approximately 2.8 µm—a clear indicator of precise contaminant removal. The laser process has effectively restored the material's intrinsic characteristics. The surface reflectivity has increased significantly, now measuring 32%, which is much closer to the base material's inherent property. Very minor thermal alteration is visible—some isolated, re-fused mineral grains appear under SEM—but these features are limited to a depth of less than 5 µm. The cleaning is highly selective, the precision is evident. The functional surface integrity is fully maintained, with the distinct cleavage planes and bedding structures of the shale now clearly observable for the first time.
+  description: Microscopic analysis of Shale surface before and after laser cleaning
+    treatment
+  beforeText: ''
+  afterText: ''
 regulatoryStandards:
 - name: ANSI
   description: ANSI Z136.1 - Safe Use of Lasers
@@ -46,19 +48,23 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
     specificHeat:
       value: 790.0
       min: 400
       max: 1200
       unit: J/(kg·K)
-      research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties of Rocks, specifically for Devonian shale at 300K (27°C)'
+      research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
+        of Rocks, specifically for Devonian shale at 300K (27°C)'
     thermalConductivity:
       value: 1.5
       min: 0.2
       max: 8
       unit: W/(m·K)
-      research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties of Rocks, with specific reference to shale formations from Appalachian Basin measurements (Clauser & Huenges, 1995)'
+      research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
+        of Rocks, with specific reference to shale formations from Appalachian Basin
+        measurements (Clauser & Huenges, 1995)'
     thermalDestruction:
       value: 800.0
       unit: °C
@@ -68,49 +74,76 @@ materialProperties:
       min: 0.2
       max: 2.5
       unit: mm²/s
-      research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties of Sedimentary Rocks, specifically shale formations from Appalachian Basin (Page & Heard, 1981; Robertson, 1988)'
+      research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
+        of Sedimentary Rocks, specifically shale formations from Appalachian Basin
+        (Page & Heard, 1981; Robertson, 1988)'
     thermalExpansion:
       value: 11.0
       min: 3
       max: 30
       unit: 10^-6/K
-      research_basis: NIST Recommended Values for Thermal Expansion of Geological Materials (2019), specifically Table 3 for fine-grained sedimentary rocks with shale composition
+      research_basis: NIST Recommended Values for Thermal Expansion of Geological
+        Materials (2019), specifically Table 3 for fine-grained sedimentary rocks
+        with shale composition
     compressiveStrength:
       value: 50.0
       min: 20
       max: 500
       unit: MPa
-      research_basis: The provided properties (density, hardness) are consistent with shale. However, shale's compressive strength is highly variable, ranging from 10 MPa to over 200 MPa, depending on composition, anisotropy, and moisture content. The cited FHWA source provides a typical range of 5-100 MPa for intact shale, with a common representative value of 50 MPa for design purposes, which aligns with the given material properties.
+      research_basis: The provided properties (density, hardness) are consistent with
+        shale. However, shale's compressive strength is highly variable, ranging from
+        10 MPa to over 200 MPa, depending on composition, anisotropy, and moisture
+        content. The cited FHWA source provides a typical range of 5-100 MPa for intact
+        shale, with a common representative value of 50 MPa for design purposes, which
+        aligns with the given material properties.
     corrosionResistance:
       value: 2.0
       min: 2.0
       max: 9.0
       unit: rating
-      research_basis: Shale is a fine-grained sedimentary rock composed of clay minerals. It is highly susceptible to weathering and corrosion in general environmental conditions. Its clay mineral composition makes it prone to absorption of water, leading to swelling, disintegration (slaking), and chemical breakdown when exposed to freeze-thaw cycles, rain, and atmospheric acids. While resistant to compression, its environmental durability is poor, leading to rapid deterioration compared to other stones like granite or limestone.
+      research_basis: Shale is a fine-grained sedimentary rock composed of clay minerals.
+        It is highly susceptible to weathering and corrosion in general environmental
+        conditions. Its clay mineral composition makes it prone to absorption of water,
+        leading to swelling, disintegration (slaking), and chemical breakdown when
+        exposed to freeze-thaw cycles, rain, and atmospheric acids. While resistant
+        to compression, its environmental durability is poor, leading to rapid deterioration
+        compared to other stones like granite or limestone.
     density:
       value: 2.65
       min: 1.5
       max: 6.0
       unit: g/cm³
-      research_basis: American Geological Institute (AGI) Data Sheets, 2017 Edition; NIST Standard Reference Database 114 - Physical Properties of Rocks and Minerals
+      research_basis: American Geological Institute (AGI) Data Sheets, 2017 Edition;
+        NIST Standard Reference Database 114 - Physical Properties of Rocks and Minerals
     flexuralStrength:
       value: 10.3
       min: 5
       max: 50
       unit: MPa
-      research_basis: Shale's flexural strength is highly variable (5-20 MPa) due to bedding planes and fissility. The provided value of 10.3 MPa is a representative median from standardized 3-point bend tests on intact, dry specimens, as reported in authoritative geotechnical and dimension stone references. This value reflects the material's inherent weakness parallel to bedding, which is the typical failure mode.
+      research_basis: Shale's flexural strength is highly variable (5-20 MPa) due
+        to bedding planes and fissility. The provided value of 10.3 MPa is a representative
+        median from standardized 3-point bend tests on intact, dry specimens, as reported
+        in authoritative geotechnical and dimension stone references. This value reflects
+        the material's inherent weakness parallel to bedding, which is the typical
+        failure mode.
     hardness:
       value: 3.0
       min: 1
       max: 7
       unit: Mohs
-      research_basis: 'NIST Special Publication 960-15 ''Physical Properties of Minerals and Rocks'', ASM Handbook Volume 4: Heat Treating, and Klein & Hurlbut''s Manual of Mineralogy (21st Edition)'
+      research_basis: 'NIST Special Publication 960-15 ''Physical Properties of Minerals
+        and Rocks'', ASM Handbook Volume 4: Heat Treating, and Klein & Hurlbut''s
+        Manual of Mineralogy (21st Edition)'
     oxidationResistance:
       value: 550.0
       min: 400.0
       max: 870.0
       unit: °C
-      research_basis: Shale, as a sedimentary rock composed of clay minerals, begins significant dehydration and oxidation of its constituent minerals (like pyrite and organic carbon) around 500-600°C. The 550°C threshold is cited as the maximum continuous service temperature in oxidizing atmospheres before structural degradation and chemical changes become significant.
+      research_basis: Shale, as a sedimentary rock composed of clay minerals, begins
+        significant dehydration and oxidation of its constituent minerals (like pyrite
+        and organic carbon) around 500-600°C. The 550°C threshold is cited as the
+        maximum continuous service temperature in oxidizing atmospheres before structural
+        degradation and chemical changes become significant.
     porosity:
       value: 0.065
       min: 0.5
@@ -122,34 +155,49 @@ materialProperties:
       min: 2
       max: 25
       unit: MPa
-      research_basis: ASTM D7012-14e1 Standard Test Methods for Compressive Strength and Elastic Moduli of Intact Rock Core Specimens under Varying States of Stress and Temperatures, with Brazilian tensile strength test methodology for shale specimens
+      research_basis: ASTM D7012-14e1 Standard Test Methods for Compressive Strength
+        and Elastic Moduli of Intact Rock Core Specimens under Varying States of Stress
+        and Temperatures, with Brazilian tensile strength test methodology for shale
+        specimens
     youngsModulus:
       value: 25.0
       min: 10
       max: 100
       unit: GPa
-      research_basis: 'Ultrasonic and mechanical testing of shale specimens from multiple geological formations, Journal of Geophysical Research: Solid Earth, 2015, with validation against ASM Handbook data for sedimentary rocks'
+      research_basis: 'Ultrasonic and mechanical testing of shale specimens from multiple
+        geological formations, Journal of Geophysical Research: Solid Earth, 2015,
+        with validation against ASM Handbook data for sedimentary rocks'
     fractureToughness:
       value: 0.8
       min: 0.5
       max: 5
       unit: MPa·√m
-      research_basis: This value is a representative median from a comprehensive compilation of experimental data for shale, which shows fracture toughness typically ranges from 0.5 to 1.2 MPa·√m depending on bedding orientation and specific composition. The provided value is a well-cited average for generic shale under room temperature, dry conditions.
+      research_basis: This value is a representative median from a comprehensive compilation
+        of experimental data for shale, which shows fracture toughness typically ranges
+        from 0.5 to 1.2 MPa·√m depending on bedding orientation and specific composition.
+        The provided value is a well-cited average for generic shale under room temperature,
+        dry conditions.
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
     laserAbsorption:
       value: 8.7
       min: 0.1
       max: 100
       unit: '%'
-      research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions for Stone Conservation'' (2021) - Table 4.2: Optical absorption coefficients of sedimentary rocks at 1064 nm wavelength'
+      research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
+        for Stone Conservation'' (2021) - Table 4.2: Optical absorption coefficients
+        of sedimentary rocks at 1064 nm wavelength'
     laserReflectivity:
       value: 38.2
       min: 5
       max: 80
       unit: '%'
-      research_basis: 'NIST Special Publication 260-137: Reflectance Spectra of Common Rock-Forming Minerals and Application to Laser-Induced Breakdown Spectroscopy (LIBS) Analysis, combined with ASM Handbook Volume 10: Materials Characterization data on sedimentary rock optical properties'
+      research_basis: 'NIST Special Publication 260-137: Reflectance Spectra of Common
+        Rock-Forming Minerals and Application to Laser-Induced Breakdown Spectroscopy
+        (LIBS) Analysis, combined with ASM Handbook Volume 10: Materials Characterization
+        data on sedimentary rock optical properties'
 machineSettings:
   energyDensity:
     value: 2.5
@@ -174,13 +222,15 @@ machineSettings:
     min: 80
     max: 150
     unit: W
-    description: Optimal average power for Shale surface cleaning without thermal damage
+    description: Optimal average power for Shale surface cleaning without thermal
+      damage
   pulseWidth:
     value: 12
     min: 8
     max: 20
     unit: ns
-    description: Nanosecond pulse duration for efficient Shale ablation with minimal heat diffusion
+    description: Nanosecond pulse duration for efficient Shale ablation with minimal
+      heat diffusion
   repetitionRate:
     value: 50
     min: 20
@@ -243,7 +293,8 @@ preservedData:
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Natural stone materials including granite, marble, limestone, slate, and quarried stone for architectural restoration cleaning
+    description: Natural stone materials including granite, marble, limestone, slate,
+      and quarried stone for architectural restoration cleaning
     properties_count: 0
     category_ranges:
       density:
@@ -272,7 +323,8 @@ preservedData:
         unit: '%'
         source: Geological Survey Optical Properties Database
         confidence: 70
-        notes: Light colored stones 40-80%, dark stones 5-20%, varies with mineral composition
+        notes: Light colored stones 40-80%, dark stones 5-20%, varies with mineral
+          composition
         last_updated: '2025-10-15T14:19:43.867256'
       specificHeat:
         max: 1200
@@ -398,7 +450,10 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T21:31:57.137972'
-      source: 'U.S. Department of Transportation, Federal Highway Administration, "Technical Manual for Design and Construction of Road Tunnels - Civil Elements" (Publication No. FHWA-NHI-09-010), Chapter 8 - Geotechnical Investigations, Table 8-1: Typical Properties of Intact Rock.'
+      source: 'U.S. Department of Transportation, Federal Highway Administration,
+        "Technical Manual for Design and Construction of Road Tunnels - Civil Elements"
+        (Publication No. FHWA-NHI-09-010), Chapter 8 - Geotechnical Investigations,
+        Table 8-1: Typical Properties of Intact Rock.'
     corrosionResistance:
       confidence: 0.85
       ai_verified: true
@@ -415,7 +470,9 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T21:01:55.750443'
-      source: ASTM International, "Standard Test Method for Flexural Strength of Dimension Stone" (ASTM C880), as cited in data compilations by the Natural Stone Institute and the University of Texas at Austin, Bureau of Economic Geology.
+      source: ASTM International, "Standard Test Method for Flexural Strength of Dimension
+        Stone" (ASTM C880), as cited in data compilations by the Natural Stone Institute
+        and the University of Texas at Austin, Bureau of Economic Geology.
     hardness:
       confidence: 0.95
       ai_verified: true
@@ -427,7 +484,9 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:48:45.718748'
-      source: 'American Ceramic Society, "Engineered Materials Handbook, Vol. 4: Ceramics and Glasses" (ASM International, 1991), Section on "Natural Stone and Mineral Properties"'
+      source: 'American Ceramic Society, "Engineered Materials Handbook, Vol. 4: Ceramics
+        and Glasses" (ASM International, 1991), Section on "Natural Stone and Mineral
+        Properties"'
     porosity:
       confidence: 0.92
       research_date: '2025-10-17T19:07:34.190725'
@@ -447,7 +506,9 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:22:02.227669'
-      source: Atkinson, B.K., and Meredith, P.G. (1987). "Experimental Fracture Mechanics Data for Rocks and Minerals." In *Fracture Mechanics of Rock*, Academic Press, Table 1.1.
+      source: Atkinson, B.K., and Meredith, P.G. (1987). "Experimental Fracture Mechanics
+        Data for Rocks and Minerals." In *Fracture Mechanics of Rock*, Academic Press,
+        Table 1.1.
   machineSettingsMetadata:
     energyDensity:
       confidence: 89

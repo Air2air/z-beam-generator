@@ -1,18 +1,31 @@
 #!/usr/bin/env python3
 """
-AI Text Fields Repopulation Script
+AI Text Fields Repopulation Script - DEPRECATED
 
-Repopulates ALL ai_text_fields in Materials.yaml with enhanced content including:
-- All existing fields (subtitle, description, technical_notes, etc.)
-- New fields: environmental_impact, outcome_metrics
+⚠️  DEPRECATED: This script is no longer the recommended way to generate caption data.
+⚠️  Use CaptionComponentGenerator instead for all caption generation.
 
-Extracts content from existing nested structures and converts to ai_text_fields format
-with proper word counts, character counts, author voice, and timestamps.
+DEPRECATION REASON:
+  CaptionComponentGenerator provides all features from requirements.yaml:
+  - ✅ Text quality rules (prohibited patterns, formatting, quality thresholds)
+  - ✅ Author voice integration (4 countries, voice profiles, authenticity scoring)
+  - ✅ AI-evasion parameters (sentence variation, hesitation markers, NLA control)
+  - ✅ Quality grading system (CopilotQualityGrader with production gates)
+  - ✅ Fail-fast validation and comprehensive error handling
+  - ✅ Materials.yaml persistence with proper data flow
 
-Usage:
+RECOMMENDED APPROACH:
+  Use the caption generator directly:
+    from components.caption.generators.generator import CaptionComponentGenerator
+    generator = CaptionComponentGenerator()
+    result = generator.generate(material_name, material_data)
+
+LEGACY USAGE (for backward compatibility only):
     python3 scripts/repopulate_ai_text_fields.py [material_name]
     python3 scripts/repopulate_ai_text_fields.py --all
     python3 scripts/repopulate_ai_text_fields.py --help
+
+This script remains for backward compatibility but will be removed in a future version.
 """
 
 import argparse
@@ -29,124 +42,38 @@ from components.frontmatter.core.universal_text_enhancer import UniversalTextFie
 
 
 class AITextFieldsRepopulator:
-    """Repopulates all ai_text_fields with enhanced content including environmentalImpact and outcomeMetrics"""
+    """
+    DEPRECATED: Repopulates CAPTION ai_text_fields ONLY
+    
+    ⚠️  This class is deprecated. Use CaptionComponentGenerator instead.
+    
+    CaptionComponentGenerator provides superior caption generation with:
+    - Full requirements.yaml compliance (text_quality + author_voice)
+    - Quality grading and production readiness gates
+    - VoiceOrchestrator integration for authentic country-specific voices
+    - AI-evasion parameters with National Language Authenticity control
+    - Fail-fast architecture with comprehensive validation
+    
+    This class remains for backward compatibility only.
+    """
     
     def __init__(self):
         self.logger = logging.getLogger(__name__)
+        self.logger.warning("⚠️  AITextFieldsRepopulator is DEPRECATED - use CaptionComponentGenerator instead")
+        self.logger.warning("   See: components/caption/generators/generator.py")
+        
         self.materials_path = Path("data/materials.yaml")
         self.enhancer = UniversalTextFieldEnhancer()
         
-        # All text fields that should be in ai_text_fields
-        # Define target fields for AI text generation
+        # CAPTION FIELDS ONLY - ai_text_fields is LIMITED to captions per system policy
+        # All other text fields are generated through the standard frontmatter pipeline
         self.target_fields = [
-            'applicationDescription',
-            'benefitsIntroduction', 
-            'benefitsOutline',
-            'compatibilityDescription',
-            'processOverview',
-            'qualityStandards',
-            'safetyInformation',
-            'technicalSpecifications',
-            'usageGuidelines',
-            # Caption fields with proper author voice
             'caption_beforeText',
             'caption_afterText',
-            # New environmentalImpact text fields
-            'environmentalImpact_benefit',
-            'environmentalImpact_description', 
-            'environmentalImpact_quantifiedBenefits',
-            'environmentalImpact_sustainabilityBenefit',
-            # New outcomeMetrics text fields
-            'outcomeMetrics_metric',
-            'outcomeMetrics_description',
-            'outcomeMetrics_typicalRanges'
         ]
         
-        self.logger.info(f"✅ AITextFieldsRepopulator initialized with {len(self.target_fields)} target fields")
-
-    def extract_environmental_impact_content(self, environmental_impact_data: List[Dict]) -> str:
-        """
-        Extract text content from nested environmentalImpact structure.
-        
-        Args:
-            environmental_impact_data: List of environmental impact objects
-            
-        Returns:
-            Formatted text content suitable for ai_text_fields
-            
-        Example input:
-        - benefit: Chemical Waste Elimination
-          description: Eliminates hazardous chemical waste streams
-          quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-          applicableIndustries: [Semiconductor, Electronics, Medical, Nuclear]
-        """
-        if not environmental_impact_data or not isinstance(environmental_impact_data, list):
-            return ""
-        
-        content_parts = []
-        for item in environmental_impact_data:
-            if not isinstance(item, dict):
-                continue
-                
-            benefit = item.get('benefit', 'Environmental Benefit')
-            description = item.get('description', '')
-            quantified = item.get('quantifiedBenefits', '')
-            industries = item.get('applicableIndustries', [])
-            
-            # Format into readable text
-            part = f"{benefit}: {description}"
-            if quantified:
-                part += f" {quantified}"
-            if industries and len(industries) > 0:
-                part += f" (Industries: {', '.join(industries[:3])})"  # Limit to first 3
-            
-            content_parts.append(part)
-        
-        return '. '.join(content_parts) + '.' if content_parts else ""
-
-    def extract_outcome_metrics_content(self, outcome_metrics_data: List[Dict]) -> str:
-        """
-        Extract text content from nested outcomeMetrics structure.
-        
-        Args:
-            outcome_metrics_data: List of outcome metrics objects
-            
-        Returns:
-            Formatted text content suitable for ai_text_fields
-            
-        Example input:
-        - metric: Contaminant Removal Efficiency
-          description: Percentage of target contaminants successfully removed from surface
-          measurementMethods: [Before/after microscopy, Chemical analysis]
-          factorsAffecting: [Contamination type, Adhesion strength]
-          typicalRanges: 95-99.9% depending on application and material
-        """
-        if not outcome_metrics_data or not isinstance(outcome_metrics_data, list):
-            return ""
-        
-        content_parts = []
-        for item in outcome_metrics_data:
-            if not isinstance(item, dict):
-                continue
-                
-            metric = item.get('metric', 'Performance Metric')
-            description = item.get('description', '')
-            methods = item.get('measurementMethods', [])
-            ranges = item.get('typicalRanges', '')
-            units = item.get('units', [])
-            
-            # Format into readable text
-            part = f"{metric}: {description}"
-            if ranges:
-                part += f" Typical ranges: {ranges}"
-            if methods and len(methods) > 0:
-                part += f" (Measured via: {', '.join(methods[:2])})"  # Limit to first 2
-            if units and len(units) > 0:
-                part += f" Units: {', '.join(units[:2])}"
-            
-            content_parts.append(part)
-        
-        return '. '.join(content_parts) + '.' if content_parts else ""
+        self.logger.info(f"✅ AITextFieldsRepopulator initialized - CAPTION FIELDS ONLY ({len(self.target_fields)} fields)")
+        self.logger.info("   ℹ️  Other text fields are handled via frontmatter generation pipeline")
 
     def generate_ai_text_field_content(
         self, 
@@ -363,12 +290,37 @@ class AITextFieldsRepopulator:
 
 
 def main():
-    """CLI interface"""
+    """
+    CLI interface - DEPRECATED
+    
+    ⚠️  This script is deprecated. Use CaptionComponentGenerator for caption generation.
+    """
+    
+    # Show deprecation warning
+    print("=" * 80)
+    print("⚠️  WARNING: This script is DEPRECATED")
+    print("=" * 80)
+    print("\nPlease use CaptionComponentGenerator for caption generation:")
+    print("  from components.caption.generators.generator import CaptionComponentGenerator")
+    print("  generator = CaptionComponentGenerator()")
+    print("  result = generator.generate(material_name, material_data)")
+    print("\nCaptionComponentGenerator provides:")
+    print("  ✅ Full requirements.yaml compliance")
+    print("  ✅ Quality grading and production gates")
+    print("  ✅ Author voice integration")
+    print("  ✅ AI-evasion parameters")
+    print("  ✅ Fail-fast validation")
+    print("\nContinuing with legacy script (backward compatibility only)...")
+    print("=" * 80)
+    print()
+    
     parser = argparse.ArgumentParser(
-        description="Repopulate AI text fields in Materials.yaml",
+        description="[DEPRECATED] Repopulate AI text fields in Materials.yaml - Use CaptionComponentGenerator instead",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
-Examples:
+⚠️  DEPRECATED: Use CaptionComponentGenerator for caption generation
+
+Legacy Examples (backward compatibility only):
   python3 scripts/repopulate_ai_text_fields.py Aluminum
   python3 scripts/repopulate_ai_text_fields.py --all --force
   python3 scripts/repopulate_ai_text_fields.py Copper --no-force

@@ -14,15 +14,18 @@ author:
   title: Ph.D.
 images:
   hero:
-    alt: Titanium Carbide surface undergoing laser cleaning showing precise contamination removal
+    alt: Titanium Carbide surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/material/titanium-carbide-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Titanium Carbide surface after laser cleaning showing detailed surface structure
+    alt: Microscopic view of Titanium Carbide surface after laser cleaning showing
+      detailed surface structure
     url: /images/material/titanium-carbide-laser-cleaning-micro.jpg
 caption:
-  description: Microscopic analysis of Titanium Carbide surface before and after laser cleaning treatment
-  beforeText: At 500x magnification, the titanium carbide surface presents a heavily contaminated state, characterized by a non-uniform, stratified deposit layer. This layer, which measures between 15 and 25 µm in thickness, exhibits a complex morphology of carbonaceous soot and embedded metallic oxides, the latter appearing as distinct, reflective spherules approximately 2-5 µm in diameter. The underlying substrate topography is entirely obscured by this adherent, dark grey film, which displays a network of fine, mud-crack-like patterns—a typical feature of a thermally cycled, condensed contaminant. One can observe that the surface roughness is significantly elevated by this layer, with preliminary stylus profilometer traverses indicating an Ra value in the range of 4.5 to 6.0 µm, a direct consequence of the particulate agglomeration and the crack network. Energy Dispersive X-ray (EDX) analysis confirms the primary contaminant composition is carbon-based, with significant peaks for oxygen and trace amounts of iron and silicon, suggesting environmental deposition and perhaps prior processing residue. The adhesion of this layer to the TiC substrate appears tenacious, particularly within the natural micro-porosity of the ceramic, which is inherent to its sintered fabrication and typically measures around 2.5%. This infiltration, it creates a significant challenge for removal, as the contaminants are not merely superficial but mechanically anchored within the substrate's own microstructure, a condition that is plainly visible at this magnification where the deposit fills the pore cavities completely.
-  afterText: Following the laser cleaning process, the transformation of the surface is, quite frankly, remarkable. The previously opaque contaminant layer has been completely ablated, revealing the intrinsic, light-grey sintered grain structure of the titanium carbide substrate. At 500x, one can now clearly resolve the individual ceramic grains and the intergranular boundaries, with the original porosity—now clean and free of deposits—appearing as distinct, dark voids between them. The surface reflectivity has increased substantially, a direct and measurable outcome of the removal of the light-absorbing carbon film, which is consistent with the material's inherent reflectivity of 0.45 at 1064 nm. The laser interaction, it has produced a surface with a markedly refined texture. Quantitative surface metrology confirms a dramatic reduction in arithmetic mean roughness (Ra) to a value of approximately 0.8 µm—or more precisely, between 0.75 and 0.85 µm—which represents nearly an 85% improvement from the pre-cleaned state. This new topography is characterized by a uniform, matte finish with a subtle, sub-micron scale ripple pattern, a phenomenon known as Laser-Induced Periodic Surface Structures (LIPSS), which is indicative of a well-controlled ablation process operating near the material's threshold of 2.8 J/cm². What strikes one is the absence of thermal degradation; there is no evidence of melting, cracking, or oxide formation, which speaks to the precision of the energy delivery. The surface integrity, she is fully preserved. No micro-fracturing is observed along the grain boundaries, and the original hardness of the TiC, which is a considerable 28 GPa, is expected to be maintained at the surface. This level of cleanliness, achieved without mechanical contact or chemical residues, restores the surface to a state that is functionally optimal for subsequent applications, such as coating adhesion in medical devices or for wear-resistant components in the aerospace sector, where such pristine surface conditions are absolutely mandatory.
+  description: Microscopic analysis of Titanium Carbide surface before and after laser
+    cleaning treatment
+  beforeText: ''
+  afterText: ''
 regulatoryStandards:
 - name: ANSI
   description: ANSI Z136.1 - Safe Use of Lasers
@@ -46,19 +49,26 @@ applications:
 materialProperties:
   material_characteristics:
     label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
     specificHeat:
       value: 568.0
       min: 250
       max: 2500.0
       unit: J/(kg·K)
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, Table ''Thermal Properties of Selected Ceramics and Cermets'' lists specific heat of TiC as 568 J/(kg·K) at 293K (20°C)'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials, Table ''Thermal Properties of Selected
+        Ceramics and Cermets'' lists specific heat of TiC as 568 J/(kg·K) at 293K
+        (20°C)'
     thermalConductivity:
       value: 21.0
       min: 0.8
       max: 120
       unit: W/(m·K)
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Table ''Thermal Properties of Selected Carbides and Nitrides'' specifically lists TiC thermal conductivity at 21.0 W/m·K at room temperature'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials (1990), Table ''Thermal Properties of
+        Selected Carbides and Nitrides'' specifically lists TiC thermal conductivity
+        at 21.0 W/m·K at room temperature'
     thermalDestruction:
       value: 1200.0
       unit: °C
@@ -68,31 +78,44 @@ materialProperties:
       min: 0.005
       max: 120
       unit: mm²/s
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials, Table ''Thermal Properties of Carbides and Nitrides'''
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials, Table ''Thermal Properties of Carbides
+        and Nitrides'''
     thermalExpansion:
       value: 7.4
       min: 0.1
       max: 14
       unit: 10^-6/K
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical Properties of Carbides, p. 950'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
+        Properties of Carbides, p. 950'
     compressiveStrength:
       value: 410.0
       min: 100
       max: 7000
       unit: MPa
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Section: Cemented Carbides and Cermets, Table: Properties of Selected Cemented Carbides and Cermets'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials (1990), Section: Cemented Carbides and
+        Cermets, Table: Properties of Selected Cemented Carbides and Cermets'
     corrosionResistance:
       value: 9.0
       min: 8
       max: 10
       unit: rating
-      research_basis: Titanium Carbide is a highly stable, refractory ceramic with exceptional resistance to oxidation and acidic environments. Authoritative materials databases consistently rate its corrosion resistance as "Excellent" due to its strong covalent bonds and high chemical inertness, placing it in the top tier of engineering ceramics, though slightly below materials like zirconia in some specific alkaline conditions.
+      research_basis: Titanium Carbide is a highly stable, refractory ceramic with
+        exceptional resistance to oxidation and acidic environments. Authoritative
+        materials databases consistently rate its corrosion resistance as "Excellent"
+        due to its strong covalent bonds and high chemical inertness, placing it in
+        the top tier of engineering ceramics, though slightly below materials like
+        zirconia in some specific alkaline conditions.
     density:
       value: 4.93
       min: 2.3
       max: 16.0
       unit: g/cm³
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Section: Cemented Carbides and Cermets, Table: Properties of selected carbides'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials (1990), Section: Cemented Carbides and
+        Cermets, Table: Properties of selected carbides'
     electricalResistivity:
       value: 6.8e-07
       min: 10000000000.0
@@ -104,7 +127,9 @@ materialProperties:
       min: 50
       max: 2500
       unit: MPa
-      research_basis: 'ASM Handbook, Volume 29: Materials for Specialty Applications - Mechanical Properties of Engineering Ceramics (Table 2, p. 312) and Journal of the European Ceramic Society, Vol. 42, Issue 3, 2022, pp. 789-801'
+      research_basis: 'ASM Handbook, Volume 29: Materials for Specialty Applications
+        - Mechanical Properties of Engineering Ceramics (Table 2, p. 312) and Journal
+        of the European Ceramic Society, Vol. 42, Issue 3, 2022, pp. 789-801'
     hardness:
       value: 9.0
       min: 6.0
@@ -116,7 +141,10 @@ materialProperties:
       min: 600.0
       max: 2400.0
       unit: °C
-      research_basis: Titanium Carbide (TiC) is known to have good oxidation resistance up to approximately 1100°C in air, after which a non-protective titanium oxide scale forms, leading to significant and rapid oxidation. This value is consistent with data from materials engineering handbooks for non-oxide ceramics.
+      research_basis: Titanium Carbide (TiC) is known to have good oxidation resistance
+        up to approximately 1100°C in air, after which a non-protective titanium oxide
+        scale forms, leading to significant and rapid oxidation. This value is consistent
+        with data from materials engineering handbooks for non-oxide ceramics.
     porosity:
       value: 0.02
       min: 0
@@ -128,22 +156,32 @@ materialProperties:
       min: 5.0
       max: 600
       unit: MPa
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (ASM International, 1990), Table ''Mechanical Properties of Carbides'' citing TiC with 1-3% porosity'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials (ASM International, 1990), Table ''Mechanical
+        Properties of Carbides'' citing TiC with 1-3% porosity'
     youngsModulus:
       value: 450.0
       min: 5.0
       max: 600.0
       unit: GPa
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials (1990), Section: Cemented Carbides and Cermets, Table: Properties of selected carbides'
+      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+        Alloys and Special-Purpose Materials (1990), Section: Cemented Carbides and
+        Cermets, Table: Properties of selected carbides'
     fractureToughness:
       value: 4.0
       min: 2
       max: 10
       unit: MPa·√m
-      research_basis: The provided value is a median figure from a compilation of fracture toughness data for TiC in authoritative ceramic handbooks. The range for polycrystalline TiC is typically reported between 3.5 and 4.5 MPa·√m, with 4.0 MPa·√m being a commonly cited reference value. The confidence is not higher due to the inherent variability in this property, which is sensitive to factors like porosity, grain size, and stoichiometry.
+      research_basis: The provided value is a median figure from a compilation of
+        fracture toughness data for TiC in authoritative ceramic handbooks. The range
+        for polycrystalline TiC is typically reported between 3.5 and 4.5 MPa·√m,
+        with 4.0 MPa·√m being a commonly cited reference value. The confidence is
+        not higher due to the inherent variability in this property, which is sensitive
+        to factors like porosity, grain size, and stoichiometry.
   laser_material_interaction:
     label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
     ablationThreshold:
       value: 0.45
       min: 1.5
@@ -155,26 +193,32 @@ materialProperties:
       min: 0.1
       max: 50
       unit: '%'
-      research_basis: 'ASM Handbook, Volume 4: Ceramics and Glasses, Section: ''Optical Properties of Technical Ceramics'', with specific reference to TiC absorption characteristics at 1064 nm wavelength'
+      research_basis: 'ASM Handbook, Volume 4: Ceramics and Glasses, Section: ''Optical
+        Properties of Technical Ceramics'', with specific reference to TiC absorption
+        characteristics at 1064 nm wavelength'
     laserReflectivity:
       value: 52.3
       min: 5
       max: 90
       unit: '%'
-      research_basis: 'ASM Handbook, Volume 4: Ceramics and Glasses, Section ''Optical Properties of Technical Ceramics'' citing experimental reflectivity measurements for stoichiometric TiC at 1064 nm wavelength'
+      research_basis: 'ASM Handbook, Volume 4: Ceramics and Glasses, Section ''Optical
+        Properties of Technical Ceramics'' citing experimental reflectivity measurements
+        for stoichiometric TiC at 1064 nm wavelength'
 machineSettings:
   fluenceThreshold:
     value: 2.5
     min: 1.5
     max: 4.0
     unit: J/cm²
-    description: Minimum fluence required for effective Titanium Carbide contaminant removal
+    description: Minimum fluence required for effective Titanium Carbide contaminant
+      removal
   overlapRatio:
     value: 50
     min: 40
     max: 70
     unit: '%'
-    description: Optimal beam overlap for uniform cleaning without excessive thermal buildup
+    description: Optimal beam overlap for uniform cleaning without excessive thermal
+      buildup
   passCount:
     value: 3
     min: 1
@@ -186,19 +230,22 @@ machineSettings:
     min: 100
     max: 200
     unit: W
-    description: Optimal average power for Titanium Carbide surface cleaning without substrate damage
+    description: Optimal average power for Titanium Carbide surface cleaning without
+      substrate damage
   pulseWidth:
     value: 15
     min: 8
     max: 25
     unit: ns
-    description: Nanosecond pulse duration for efficient ablation of Titanium Carbide contaminants
+    description: Nanosecond pulse duration for efficient ablation of Titanium Carbide
+      contaminants
   repetitionRate:
     value: 50
     min: 20
     max: 100
     unit: kHz
-    description: Optimal repetition rate for continuous cleaning coverage with thermal management
+    description: Optimal repetition rate for continuous cleaning coverage with thermal
+      management
   scanSpeed:
     value: 500
     min: 300
@@ -216,7 +263,8 @@ machineSettings:
     min: 532
     max: 1064
     unit: nm
-    description: Near-IR wavelength optimized for Titanium Carbide absorption and minimal substrate interaction
+    description: Near-IR wavelength optimized for Titanium Carbide absorption and
+      minimal substrate interaction
 environmentalImpact:
 - applicableIndustries:
   - Semiconductor
@@ -255,7 +303,8 @@ preservedData:
     source: Materials.yaml (direct export)
     properties: {}
   categoryInfo:
-    description: Advanced ceramic materials including technical ceramics, porcelain, and ceramic composites used in laser cleaning applications
+    description: Advanced ceramic materials including technical ceramics, porcelain,
+      and ceramic composites used in laser cleaning applications
     properties_count: 0
     category_ranges:
       density:
@@ -284,7 +333,8 @@ preservedData:
         unit: '%'
         source: Handbook of Optical Constants of Solids (Palik, 1998)
         confidence: 75
-        notes: Typical ceramics 10-30% at 1064nm, varies with composition and surface finish
+        notes: Typical ceramics 10-30% at 1064nm, varies with composition and surface
+          finish
         last_updated: '2025-10-15T14:19:43.867144'
       specificHeat:
         max: 2500.0
@@ -452,7 +502,8 @@ preservedData:
       confidence: 0.9
       ai_verified: true
       research_date: '2025-10-15T20:38:16.365030'
-      source: 'Haynes International, "Engineering Properties and Applications of Titanium Carbide" (2018), Table 4: Corrosion Performance of Technical Ceramics'
+      source: 'Haynes International, "Engineering Properties and Applications of Titanium
+        Carbide" (2018), Table 4: Corrosion Performance of Technical Ceramics'
     density:
       confidence: 0.95
       ai_verified: true
@@ -479,7 +530,8 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:50:57.729975'
-      source: Haynes International, "High-Temperature Oxidation," in *Handbook of Comparative World Steel Standards*
+      source: Haynes International, "High-Temperature Oxidation," in *Handbook of
+        Comparative World Steel Standards*
     porosity:
       confidence: 0.95
       research_date: '2025-10-17T19:07:34.179984'
@@ -499,7 +551,8 @@ preservedData:
       confidence: 0.85
       ai_verified: true
       research_date: '2025-10-15T20:24:51.596748'
-      source: '"Handbook of Ceramic Hard Materials" by R. Riedel (Editor), Wiley-VCH, 2000, Vol. 1, p. 202.'
+      source: '"Handbook of Ceramic Hard Materials" by R. Riedel (Editor), Wiley-VCH,
+        2000, Vol. 1, p. 202.'
   machineSettingsMetadata:
     fluenceThreshold:
       confidence: 89
