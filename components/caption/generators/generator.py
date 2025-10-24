@@ -160,37 +160,43 @@ class CaptionComponentGenerator(APIComponentGenerator):
         if not ai_response or not ai_response.strip():
             raise ValueError(f"Empty AI response for {material_name} - fail-fast architecture requires valid content")
         
-        # Extract BEFORE_TEXT - support both formats:
-        # - DeepSeek format: **BEFORE_TEXT:** (double colon)
-        # - Grok format: **BEFORE_TEXT: Title** (single colon with title)
+        # Try marker-based extraction first (Grok format)
         before_start = ai_response.find('**BEFORE_TEXT:')
         after_marker_search = ai_response.find('**AFTER_TEXT:')
         
-        if before_start == -1 or after_marker_search == -1:
-            raise ValueError(f"Missing BEFORE_TEXT or AFTER_TEXT markers in AI response for {material_name}")
-        
-        # Find the end of the BEFORE_TEXT marker line (could be single or double colon)
-        # Look for the end of the first line after the marker
-        marker_line_end = ai_response.find('\n', before_start)
-        if marker_line_end == -1:
-            marker_line_end = before_start + len('**BEFORE_TEXT:**')
+        if before_start != -1 and after_marker_search != -1:
+            # Grok format with markers
+            marker_line_end = ai_response.find('\n', before_start)
+            if marker_line_end == -1:
+                marker_line_end = before_start + len('**BEFORE_TEXT:**')
+            else:
+                marker_line_end += 1
+            
+            before_text = ai_response[marker_line_end:after_marker_search].strip()
+            before_text = before_text.strip('[]').strip()
+            
+            after_marker_line_end = ai_response.find('\n', after_marker_search)
+            if after_marker_line_end == -1:
+                after_start = after_marker_search + len('**AFTER_TEXT:**')
+            else:
+                after_start = after_marker_line_end + 1
+            
+            after_text = ai_response[after_start:].strip()
+            after_text = after_text.strip('[]').strip()
         else:
-            # Skip past the newline to start extracting content
-            marker_line_end += 1
-        
-        # Extract content between BEFORE_TEXT and AFTER_TEXT
-        before_text = ai_response[marker_line_end:after_marker_search].strip()
-        before_text = before_text.strip('[]').strip()
-        
-        # Extract AFTER_TEXT - similar flexible approach
-        after_marker_line_end = ai_response.find('\n', after_marker_search)
-        if after_marker_line_end == -1:
-            after_start = after_marker_search + len('**AFTER_TEXT:**')
-        else:
-            after_start = after_marker_line_end + 1
-        
-        after_text = ai_response[after_start:].strip()
-        after_text = after_text.strip('[]').strip()
+            # DeepSeek format - splits on double newline (paragraph break)
+            paragraphs = [p.strip() for p in ai_response.split('\n\n') if p.strip()]
+            
+            if len(paragraphs) < 2:
+                # Try single newline split if no double newlines
+                paragraphs = [p.strip() for p in ai_response.split('\n') if p.strip() and len(p.strip()) > 100]
+            
+            if len(paragraphs) < 2:
+                raise ValueError(f"DeepSeek format: Expected 2 paragraphs for {material_name}, got {len(paragraphs)}")
+            
+            # First paragraph is BEFORE, second is AFTER
+            before_text = paragraphs[0]
+            after_text = paragraphs[1]
         
         # Validate content - FAIL FAST (100 character minimum to allow short random targets)
         min_length = 100  # Flexible minimum to accommodate random variation

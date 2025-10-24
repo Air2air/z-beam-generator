@@ -183,14 +183,14 @@ class VoiceOrchestrator:
         
         base_template = templates[component_type]['base_template']
         
-        # Build voice characteristics
-        voice_characteristics = self._build_voice_characteristics(unified_system)
+        # Get base_guidance section with all the rules (FORBIDDEN EMPTY RHETORIC, etc.)
+        # It's at the top level of unified_system, not nested
+        base_guidance = unified_system.get('base_guidance', '')
+        if not base_guidance:
+            logger.warning("base_guidance not found in unified voice system")
         
-        # Build AI evasion instructions
-        ai_evasion_instructions = self._build_ai_evasion_instructions(unified_system)
-        
-        # Build AI detectability avoidance instructions
-        ai_detectability_avoidance = self._build_ai_detectability_avoidance(unified_system)
+        # Get country-specific voice markers
+        country_voice = self._get_country_voice_markers(unified_system)
         
         # Format the complete prompt with all required variables
         # Note: before_paragraphs, after_paragraphs, before_target, after_target come from kwargs
@@ -202,9 +202,8 @@ class VoiceOrchestrator:
             'category': material_context.get('category', 'material'),
             'properties': material_context.get('properties', 'Standard material characteristics'),
             'applications': material_context.get('applications', 'General cleaning applications'),
-            'voice_characteristics': voice_characteristics,
-            'ai_evasion_instructions': ai_evasion_instructions,
-            'ai_detectability_avoidance': ai_detectability_avoidance,
+            'base_guidance': base_guidance,
+            'country_voice': country_voice,
             'technical_focus': material_context.get('technical_focus', 'laser cleaning analysis'),
             **kwargs  # This includes before_paragraphs, after_paragraphs, before_target, after_target
         }
@@ -506,6 +505,20 @@ Consider incorporating these natural expressions when appropriate:
         country_detection = detectability_templates.get('country_detection_avoidance', {}).get(self.country, {}).get('template', '')
         
         return f"{universal_detection}\n\n{country_detection}".strip()
+    
+    def _get_country_voice_markers(self, unified_system: Dict[str, Any]) -> str:
+        """Get country-specific voice markers and standards from unified system"""
+        country_markers = unified_system.get('country_voice_markers', {})
+        country_data = country_markers.get(self.country, {})
+        
+        if not country_data:
+            logger.warning(f"No country voice markers found for {self.country}")
+            return ""
+        
+        standards = country_data.get('standards', '')
+        voice_chars = country_data.get('voice_characteristics', '')
+        
+        return f"{voice_chars}\n\nSTANDARDS TO REFERENCE: {standards}"
 
 # Convenience function for quick access
 def get_voice_instructions(country: str, component_type: str, context: Optional[Dict] = None) -> str:
