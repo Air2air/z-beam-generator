@@ -65,10 +65,16 @@ forbidden_patterns:
       - "Unprecedented results"
       - "Miraculous cleaning"
       - "Ultimate solution"
-      - "Superior," "excellent," "optimal"
-      - "Significant advantages," "significant improvement"
-      - "Results-oriented," "high-performance" (without specific applications)
-      - "Best in class," "Industry-leading," "Unmatched performance"
+      - "Superior"
+      - "Excellent"
+      - "Optimal"
+      - "Significant advantages"
+      - "Significant improvement"
+      - "Results-oriented"
+      - "High-performance (without specific applications)"
+      - "Best in class"
+      - "Industry-leading"
+      - "Unmatched performance"
     reason: "Undermines technical credibility with promotional tone"
   
   emotional_descriptors:
@@ -83,10 +89,13 @@ forbidden_patterns:
   vague_results:
     avoid:
       - "Demonstrated effectiveness"
-      - "Quantified improvements" (requires actual numbers like "15% improvement")
-      - "Very clean," "Pretty good," "Kind of effective"
+      - "Quantified improvements (requires actual numbers like 15% improvement)"
+      - "Very clean"
+      - "Pretty good"
+      - "Kind of effective"
       - "Somewhat contaminated"
-      - "Enhances adhesion," "Improves performance" (without measurements)
+      - "Enhances adhesion (without measurements)"
+      - "Improves performance (without measurements)"
     reason: "Replace with quantitative measurements or specific observations"
   
   qualifying_phrases:
@@ -96,7 +105,9 @@ forbidden_patterns:
       - "Systematic observation at"
       - "Measurements confirm"
       - "Examination reveals"
-      - "Our methodology," "Our protocols," "Systematic approach"
+      - "Our methodology"
+      - "Our protocols"
+      - "Systematic approach"
       - "Adhering to systematic imaging"
       - "Per CNS standards methodology"
       - "Following protocols"
@@ -105,8 +116,8 @@ forbidden_patterns:
     
   capability_statements:
     avoid:
-      - "Achieves X" (without measurement)
-      - "Provides X" (without evidence)
+      - "Achieves X (without measurement)"
+      - "Provides X (without evidence)"
       - "Critical metric"
       - "Requires refinement"
       - "Precision is paramount"
