@@ -12,8 +12,8 @@ Last Updated: October 22, 2025
 from .validation.orchestrator import ValidationOrchestrator
 from .validation.unified_schema_validator import UnifiedSchemaValidator
 
-# Research Services
-from .research.ai_research_service import AIResearchEnrichmentService
+# Research Services (canonical location: research/services/)
+from research.services.ai_research_service import AIResearchEnrichmentService
 
 # Property Services
 from .property.property_manager import PropertyManager

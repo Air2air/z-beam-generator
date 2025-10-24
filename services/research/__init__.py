@@ -1,17 +1,16 @@
 #!/usr/bin/env python3
 """
-Research Services Module
+Research Services Module - Import Redirect
 
-AI-powered research and enrichment services.
-Part of system consolidation to organize research functionality.
+The canonical research service is now located at:
+research/services/ai_research_service.py
 
-Services:
-- AIResearchEnrichmentService: AI-powered research coordination
+This __init__.py provides backward compatibility.
 
-Last Updated: October 22, 2025
+Last Updated: October 24, 2025
 """
 
-from .ai_research_service import AIResearchEnrichmentService
+from research.services.ai_research_service import AIResearchEnrichmentService
 
 __all__ = [
     'AIResearchEnrichmentService',
