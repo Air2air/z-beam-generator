@@ -15,7 +15,7 @@ from typing import Dict, Any, Optional
 
 # Import consolidated services
 from services.validation import ValidationOrchestrator
-from services.research import AIResearchEnrichmentService
+from research.services.ai_research_service import AIResearchEnrichmentService
 from services.property import MaterialAuditor
 
 logger = logging.getLogger(__name__)

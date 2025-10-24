@@ -19,6 +19,7 @@ import logging
 from pathlib import Path
 from typing import Dict, Any, List
 from collections import defaultdict
+from validation.errors import ConfigurationError
 
 # Add project root to path
 project_root = Path(__file__).parent.parent.parent
@@ -31,16 +32,8 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-
 class ValidationError(Exception):
     """Raised when uniqueness validation fails"""
-    pass
-
-
-class ConfigurationError(Exception):
-    """Raised when required configuration is missing"""
-    pass
-
 
 class UniquenessValidator:
     """
@@ -346,7 +339,6 @@ class UniquenessValidator:
                 }
             }
 
-
 def main():
     """Main function for command-line usage"""
     import argparse
@@ -393,7 +385,6 @@ def main():
     except Exception as e:
         logger.error(f"💥 CRITICAL ERROR: {e}")
         sys.exit(1)
-
 
 if __name__ == "__main__":
     main()

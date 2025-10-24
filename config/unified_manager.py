@@ -19,11 +19,7 @@ from pathlib import Path
 from typing import Any, Dict, Optional
 from dataclasses import dataclass
 from dotenv import load_dotenv
-
-
-class ConfigurationError(Exception):
-    """Raised when configuration is missing or invalid"""
-    pass
+from validation.errors import ConfigurationError
 
 
 @dataclass

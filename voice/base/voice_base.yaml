@@ -65,6 +65,10 @@ forbidden_patterns:
       - "Unprecedented results"
       - "Miraculous cleaning"
       - "Ultimate solution"
+      - "Superior," "excellent," "optimal"
+      - "Significant advantages," "significant improvement"
+      - "Results-oriented," "high-performance" (without specific applications)
+      - "Best in class," "Industry-leading," "Unmatched performance"
     reason: "Undermines technical credibility with promotional tone"
   
   emotional_descriptors:
@@ -76,21 +80,50 @@ forbidden_patterns:
     reason: "Conflicts with objective analytical reporting"
     exception: "Italian voice may use 'remarkable', 'extraordinary' within technical context"
   
-  unsupported_claims:
+  vague_results:
     avoid:
-      - "Best in class"
-      - "Industry-leading"
-      - "Unmatched performance"
-      - "Superior to all alternatives"
-    reason: "Requires comparative evidence to support"
-  
-  vague_descriptors:
-    avoid:
-      - "Very clean"
-      - "Pretty good"
-      - "Kind of effective"
+      - "Demonstrated effectiveness"
+      - "Quantified improvements" (requires actual numbers like "15% improvement")
+      - "Very clean," "Pretty good," "Kind of effective"
       - "Somewhat contaminated"
-    reason: "Replace with quantitative or specific observations"
+      - "Enhances adhesion," "Improves performance" (without measurements)
+    reason: "Replace with quantitative measurements or specific observations"
+  
+  qualifying_phrases:
+    avoid:
+      - "Technical analysis indicates"
+      - "Data demonstrates"
+      - "Systematic observation at"
+      - "Measurements confirm"
+      - "Examination reveals"
+      - "Our methodology," "Our protocols," "Systematic approach"
+      - "Adhering to systematic imaging"
+      - "Per CNS standards methodology"
+      - "Following protocols"
+    reason: "Just state what you see - start directly with observations"
+    correct_approach: "Black CuO layer 8-12 µm thick covers 85% of surface"
+    
+  capability_statements:
+    avoid:
+      - "Achieves X" (without measurement)
+      - "Provides X" (without evidence)
+      - "Critical metric"
+      - "Requires refinement"
+      - "Precision is paramount"
+      - "Engineering discipline"
+    reason: "State facts only, no process judgments"
+  
+  facility_references:
+    avoid:
+      - "Our Hsinchu fab runs"
+      - "Jakarta facility"
+      - "Throughput increase"
+      - "Turin labs"
+    reason: "Industry jargon, not microscopy observations"
+  
+  generic_statements:
+    test: "Substitute 'steel' for your material - if still true, rewrite"
+    requirement: "Every technical claim requires measurements (µm, %, J/cm²), standards (ASTM, SNI), or material-specific properties"
 
 required_elements:
   

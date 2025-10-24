@@ -24,6 +24,7 @@ project_root = Path(__file__).parent.parent.parent
 sys.path.append(str(project_root))
 
 from api.client_factory import create_api_client
+from validation.errors import ConfigurationError
 
 logger = logging.getLogger(__name__)
 
@@ -74,11 +75,6 @@ class BatchResearchResult:
     research_stats: Dict[str, int]
     researched_materials: List[Dict[str, Any]]
     timestamp: str = field(default_factory=lambda: datetime.now().isoformat())
-
-
-class ConfigurationError(Exception):
-    """Raised when required configuration is missing or invalid"""
-    pass
 
 
 class ResearchError(Exception):

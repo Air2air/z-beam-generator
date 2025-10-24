@@ -18,13 +18,9 @@ import time
 import yaml
 from pathlib import Path
 from typing import Any, Dict, Optional
+from validation.errors import ConfigurationError
 
 logger = logging.getLogger(__name__)
-
-
-class ConfigurationError(Exception):
-    """Raised when configuration loading fails"""
-    pass
 
 
 class ConfigLoader:

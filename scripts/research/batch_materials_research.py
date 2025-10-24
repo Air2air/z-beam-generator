@@ -20,6 +20,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Dict, Any, List, Optional
 import time
+from validation.errors import ConfigurationError
 
 # Add project root to path
 project_root = Path(__file__).parent.parent.parent
@@ -35,16 +36,8 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-
 class BatchResearchError(Exception):
     """Raised when batch research fails critically"""
-    pass
-
-
-class ConfigurationError(Exception):
-    """Raised when configuration is invalid"""
-    pass
-
 
 class BatchMaterialsResearcher:
     """
@@ -396,7 +389,6 @@ class BatchMaterialsResearcher:
             'backup_directory': str(self.backup_dir)
         }
 
-
 def main():
     """Main function for command-line usage"""
     import argparse
@@ -445,7 +437,6 @@ def main():
     except Exception as e:
         logger.error(f"💥 CRITICAL ERROR: {e}")
         sys.exit(1)
-
 
 if __name__ == "__main__":
     main()

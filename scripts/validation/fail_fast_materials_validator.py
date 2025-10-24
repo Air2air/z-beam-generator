@@ -14,17 +14,10 @@ import sys
 import yaml
 from pathlib import Path
 from typing import Dict, List
-
-
-class ConfigurationError(Exception):
-    """Critical configuration error - system cannot operate"""
-    pass
-
+from validation.errors import ConfigurationError
 
 class MaterialsValidationError(Exception):
     """Materials database validation failure - system cannot operate"""
-    pass
-
 
 def load_materials_yaml() -> Dict:
     """Load materials YAML with strict validation"""
@@ -38,7 +31,6 @@ def load_materials_yaml() -> Dict:
             return yaml.safe_load(f)
     except Exception as e:
         raise ConfigurationError(f"CRITICAL: Failed to load Materials.yaml: {e}")
-
 
 def validate_no_default_values(materials_data: Dict) -> List[str]:
     """
@@ -77,7 +69,6 @@ def validate_no_default_values(materials_data: Dict) -> List[str]:
                         )
     
     return violations
-
 
 def validate_ai_research_requirement(materials_data: Dict) -> List[str]:
     """
@@ -121,7 +112,6 @@ def validate_ai_research_requirement(materials_data: Dict) -> List[str]:
             )
     
     return violations
-
 
 def validate_forbidden_defaults_only(materials_data: Dict) -> List[str]:
     """
@@ -181,7 +171,6 @@ def validate_forbidden_defaults_only(materials_data: Dict) -> List[str]:
     
     return violations
 
-
 def validate_value_uniqueness_legacy(materials_data: Dict) -> List[str]:
     """
     LEGACY VALIDATION: Check for suspicious duplicate values (DISABLED)
@@ -191,7 +180,6 @@ def validate_value_uniqueness_legacy(materials_data: Dict) -> List[str]:
     """
     # Return empty list - duplicates are now allowed as they may be scientifically accurate
     return []
-
 
 def fail_fast_validate_materials() -> None:
     """
@@ -285,7 +273,6 @@ def fail_fast_validate_materials() -> None:
     except Exception as e:
         print(f"\n💥 UNEXPECTED VALIDATION ERROR: {e}")
         sys.exit(1)
-
 
 if __name__ == "__main__":
     fail_fast_validate_materials()
