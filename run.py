@@ -638,11 +638,11 @@ def handle_caption_generation(material_name: str):
         print(f"✅ Found material: {material_name}")
         print()
         
-        # Initialize Grok API client for captions
+        # Initialize DeepSeek API client for captions
         from api.client_factory import create_api_client
-        print("🔧 Initializing Grok API client...")
-        grok_client = create_api_client('grok')
-        print("✅ Grok client ready")
+        print("🔧 Initializing DeepSeek API client...")
+        deepseek_client = create_api_client('deepseek')
+        print("✅ DeepSeek client ready")
         print()
         
         # Initialize caption generator
@@ -662,7 +662,7 @@ def handle_caption_generation(material_name: str):
         result = generator.generate(
             material_name=material_name,
             material_data=material_data,
-            api_client=grok_client
+            api_client=deepseek_client
         )
         
         if not result.success:
