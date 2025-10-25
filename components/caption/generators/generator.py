@@ -163,11 +163,25 @@ class CaptionComponentGenerator(APIComponentGenerator):
         # Clean the response - remove any formatting artifacts
         content = ai_response.strip()
         
-        # Remove common AI response wrappers if present
-        if content.startswith('**BEFORE_TEXT:**') or content.startswith('**AFTER_TEXT:**'):
-            first_newline = content.find('\n')
-            if first_newline != -1:
-                content = content[first_newline+1:].strip()
+        # Remove section markers that AI sometimes adds (both with and without asterisks)
+        import re
+        
+        # Remove **BEFORE_TEXT:** or **AFTER_TEXT:** markers
+        content = re.sub(r'^\*\*(?:BEFORE_TEXT|AFTER_TEXT):\*\*\s*', '', content, flags=re.MULTILINE)
+        
+        # Remove BEFORE: or AFTER: markers (without asterisks)
+        content = re.sub(r'^(?:BEFORE|AFTER):\s*', '', content, flags=re.MULTILINE)
+        
+        # If AI generated both sections despite single-section prompt, split and take only the requested one
+        if 'BEFORE:' in content and 'AFTER:' in content:
+            parts = re.split(r'\n\s*(?:BEFORE|AFTER):\s*', content)
+            # First part is before BEFORE: marker, second is after it, third is after AFTER: marker
+            if len(parts) >= 3:
+                if section_type == "before":
+                    content = parts[1].strip()  # Content after BEFORE: marker
+                else:
+                    content = parts[2].strip()  # Content after AFTER: marker
+            logger.warning(f"AI generated dual sections despite single-section prompt for {material_name} {section_type}")
         
         # Remove common wrapper patterns
         content = content.strip('[]').strip()

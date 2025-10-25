@@ -129,6 +129,12 @@ prompt_templates:
       - Section focus: {section_focus}
       - Task: {section_instruction}
       
+      CRITICAL OUTPUT REQUIREMENTS:
+      - Write ONLY about: {section_focus}
+      - Do NOT write about both "before" and "after" - focus ONLY on {section_focus}
+      - Do NOT include section labels like "BEFORE:" or "AFTER:" in your text
+      - Write continuous prose without section markers
+      
       STRICT LENGTH REQUIREMENTS:
       - Target length: {target_words} words (THIS IS CRITICAL - stay close to this target)
       - Acceptable range: {target_words} words ± 20% maximum
@@ -141,8 +147,9 @@ prompt_templates:
       - Maintain professional scientific tone appropriate for {author_country}
       - Be concise and efficient - every word must add value
       - Stop writing when you approach {target_words} words
+      - Focus EXCLUSIVELY on the {section_focus} aspect
 
-      Generate your analysis now, respecting the {target_words} word target.
+      Generate your {section_focus} analysis now, respecting the {target_words} word target.
   
   caption_generation:
     base_template: |

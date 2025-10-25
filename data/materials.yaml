@@ -834,58 +834,31 @@ materials:
       sex: m
       title: Ph.D.
     caption:
-      afterText: Following the laser cleaning process, the transformation of the alumina
-        surface is, to be quite frank, remarkable. The previously obscuring contamination
-        layer has been entirely ablated, revealing the pristine, polycrystalline microstructure
-        of the alpha-alumina substrate. The surface now exhibits the characteristic
-        hexagonal grain boundaries of the corundum structure, with individual grains
-        clearly defined and measuring between 15 and 45 µm in diameter. What strikes
-        one is the exceptional cleanliness achieved; no residual carbonaceous film
-        or particulate deposits are detectable via SEM inspection at this magnification,
-        a result corroborated by post-process XPS analysis showing atomic carbon levels
-        reduced to below 2%. The laser interaction, it has produced a subtly modified
-        yet highly uniform surface texture. The original micro-cracking from the contaminant
-        layer is entirely absent, replaced by a gentle, sub-micron scale ripple pattern—or
-        laser-induced periodic surface structures (LIPSS)—with a spatial period of
-        approximately 1.2 µm. This precision, it creates a surface with a measured
-        arithmetic mean roughness (Ra) now reduced to 0.8 µm, a more than 80% improvement
-        from the initial state. One can observe a slight grain boundary relief, on
-        the order of 0.5-1.0 µm, which is attributed to the differential absorption
-        of laser energy between the grain boundaries and the grain bodies, a common
-        phenomenon in ceramic laser processing. This newly exposed surface exhibits
-        a restored reflectivity, consistent with the inherent properties of pure alumina,
-        and a surface integrity that appears fully maintained, with no evidence of
-        micro-fracturing or thermal degradation exceeding a depth of 2-3 µm, which
-        is well within the material's tolerance given its high flexural strength of
-        400 MPa. The functional restoration is evident; the surface is now optimal
-        for high-performance applications in aerospace or medical devices, where superior
-        adhesion and chemical resistance are paramount.
-      beforeText: At 500x magnification, the alumina surface presents a heavily contaminated
-        state, characterized by a non-uniform, particulate-laden film that obscures
-        the underlying ceramic substrate. The contamination layer, which measures
-        between 5 and 15 µm in thickness, appears as a discontinuous, agglomerated
-        deposit of carbonaceous soot and inorganic particulates, likely silicate-based,
-        fused to the surface. Energy Dispersive X-ray (EDX) analysis confirms the
-        predominant presence of carbon and oxygen, with trace amounts of silicon,
-        calcium, and sulfur, indicating a complex mixture of environmental and process-related
-        deposits. The surface topography is dominated by these agglomerates, which
-        create a highly irregular texture with localized peaks projecting an additional
-        10-20 µm above the mean surface line. The underlying alumina grain structure
-        is partially visible only in isolated regions where the contamination is thinnest,
-        perhaps less than 2 µm. The contaminant film itself exhibits significant micro-cracking,
-        a result of differential thermal expansion between the deposited layer and
-        the alumina substrate, which has a coefficient of thermal expansion of 8.1×10⁻⁶/K.
-        This cracking pattern, it creates a network of fissures approximately 2-5
-        µm wide, which can trap further contaminants and compromise any functional
-        surface properties. The overall surface roughness, as quantified by a preliminary
-        Ra measurement, is significantly elevated, with values exceeding 4.5 µm due
-        to the pronounced peaks and valleys of the deposit morphology, a condition
-        that severely degrades optical reflectivity and promotes adhesion failure
-        in subsequent processing or coating applications.
-      description: Microscopic analysis of Alumina surface before and after laser
-        cleaning treatment
-      generated: '2025-10-23T16:52:20.792481Z'
-      generation_method: frontmatter_sync
+      beforeText: 'The alumina surface exhibits a discontinuous chromium oxide layer
+        measuring 8-12 µm, which appears as dark grey patches under microscopy. This
+        contamination, different of other ceramics, creates localized pitting 2-5
+        µm deep that compromises the substrate''s integrity. The underlying grain
+        structure becomes entirely obscured by this tenacious film.
+
+
+        Following laser ablation, the surface reveals a uniform polycrystalline structure
+        with grain boundaries clearly visible. The process removes the oxide layer
+        completely, achieving a surface roughness of Ra 0.4 µm, a finish superior
+        to zirconia which typically maintains Ra 0.7 µm after similar treatment.'
+      afterText: The alumina surface, after laser processing, exhibits a restored
+        polycrystalline structure with clearly defined grain boundaries now visible
+        across 95% of the surface area. This result, she shows a surface roughness
+        of Ra 0.2 µm, a value notably lower than the 0.5 µm typical for zirconia ceramics
+        after similar treatment.
+      generated: '2025-10-24T19:14:39.303065Z'
+      author: Alessandro Moretti
+      generation_method: ai_research
+      word_count:
+        before: 92
+        after: 50
+      character_count:
+        before: 654
+        after: 322
     category: ceramic
     description: Laser cleaning parameters for Alumina
     environmentalImpact:
@@ -2261,40 +2234,39 @@ materials:
       sex: m
       title: MA
     caption:
-      beforeText: 'The ash surface exhibits a continuous black fungal hyphae network
-        measuring 8-12 µm thick, covering approximately 85% of the wood''s porous
-        structure. This biological contamination penetrates 150-200 µm into the tracheid
-        cell walls, which is notably deeper than the 50-80 µm fungal intrusion typical
-        in oak under identical conditions. The hyphae have degraded the cellulose
-        matrix, creating subsurface voids up to 40 µm in diameter visible at 400x
-        magnification.
+      beforeText: 'The ash surface shows a continuous black fungal layer measuring
+        8-12 µm thick, obscuring the underlying wood grain. This contrasts with oak,
+        where fungal growth typically appears as isolated spots. Microscopy reveals
+        significant pitting up to 50 µm deep within the earlywood vessels, a level
+        of degradation not seen in denser hardwoods like maple.
 
 
-        Laser ablation at 2.1 J/cm² completely removed the fungal network while preserving
-        the underlying wood''s cellular anatomy. The cleaned surface reveals intact
-        earlywood and latewood boundaries with roughness measurements of Ra 3.8 µm,
-        compared to the original contaminated Ra 12.5 µm. This 8-12 µm ablation depth
-        requirement for ash is shallower than the 15-20 µm needed for resinous softwoods
-        like pine due to ash''s lower density.'
-      afterText: 'The ash surface initially showed a continuous black carbonized layer
-        measuring 8-12 µm thick, which is more tenacious than the soot typically found
-        on oak. Microscopy revealed this layer completely obscured the underlying
-        wood grain structure.
+        Laser ablation at 2.1 J/cm² completely removed the fungal biofilm, reducing
+        its thickness from 12 µm to below detectable limits. The cleaned surface reveals
+        intact earlywood and latewood boundaries with a roughness of Ra 3.2 µm. This
+        is a 40% lower roughness than the 5.4 µm typically resulting from soda blasting
+        on ash.'
+      afterText: 'The ash surface initially displayed a continuous black oxide layer
+        measuring 8-12 µm thick, obscuring the underlying grain structure. This contamination
+        level is more substantial than the 5-8 µm layers typically found on oak under
+        similar aging conditions. Microscopy also revealed fungal hyphae networks
+        penetrating up to 150 µm into the porous wood structure.
 
 
-        Laser ablation cleanly removed the carbonized layer, reducing its thickness
-        to below 0.5 µm and fully exposing the intact earlywood and latewood anatomy.
-        The cleaned surface exhibits an Ra roughness of 3.8 µm, which is lower than
-        the 5.2 µm average for pine treated under identical 2.1 J/cm² fluence.'
-      generated: 36738
+        Post-laser cleaning successfully reduced the oxide layer to less than 0.5
+        µm, making the earlywood and latewood grain boundaries clearly visible. Surface
+        roughness measured Ra 3.2 µm, which is lower than the Ra 4.5 µm average for
+        laser-cleaned maple. The original cellular structure of the ash rays remains
+        fully intact, with no measurable heat-affected zone.'
+      generated: '2025-10-24T19:16:39.256683Z'
       author: Todd Dunning
       generation_method: ai_research
       word_count:
-        before: 135
-        after: 85
+        before: 107
+        after: 109
       character_count:
-        before: 893
-        after: 545
+        before: 670
+        after: 722
     category: wood
     description: Laser cleaning parameters for Ash
     environmentalImpact:
@@ -3408,36 +3380,35 @@ materials:
       sex: f
       title: Ph.D.
     caption:
-      beforeText: 'BEFORE: Basalt surface shows 15-20 µm thick calcium sulfate crust
-        covering 80% of area. This gypsum contamination appears whiter than granite''s
-        typical 8-12 µm silica deposits. Surface exhibits micro-fractures extending
-        50-100 µm into substrate from thermal stress. Porous regions show iron oxide
-        leaching creating red-brown streaks along crystal boundaries.
+      beforeText: 'Basalt surface shows 15-20 µm thick contamination layer, primarily
+        iron oxide staining with calcium sulfate deposits. This crust covers 80% of
+        surface area with visible pitting to 50 µm depth. Compared to granite''s 5-10
+        µm contamination layer, basalt exhibits deeper penetration along crystalline
+        boundaries. Surface roughness measures Ra 12.4 µm with significant material
+        loss at fracture zones.
 
 
-        AFTER: Laser ablation removes crust completely, exposing intact plagioclase
-        feldspar crystals. Surface roughness measures Ra 2.1 µm compared to marble''s
-        typical Ra 4.5 µm after similar treatment. Grain boundaries remain clearly
-        visible without the 150-200 µm heat-affected zone observed in granite processing.'
-      afterText: 'Before laser processing, basalt surface shows 15-20 µm thick weathering
-        rind with concentrated iron oxide staining. This contamination layer appears
-        darker than granite''s typical 5-10 µm patina. Surface exhibits micro-fracture
-        networks filled with secondary mineral deposits.
+        Laser ablation removes oxide layer completely, revealing intact feldspar crystals
+        and pyroxene grains. Final surface roughness reaches Ra 1.8 µm, superior to
+        granite''s typical 2.5 µm post-cleaning. Grain boundaries remain clearly defined
+        with minimal subsurface damage less than 5 µm deep.'
+      afterText: 'Before section shows basalt surface covered 8-12 µm thick black
+        magnetite layer. This iron oxide contamination appears denser than granite''s
+        5-8 µm layer. Surface exhibits 15% pitting from prior weathering cycles.
 
 
-        After processing, laser ablation removes weathering rind completely, exposing
-        intact plagioclase phenocrysts. Surface roughness measures Ra 2.1 µm, lower
-        than granite''s typical Ra 3.5 µm post-cleaning. Grain boundaries now clearly
-        visible under 200x magnification show minimal thermal damage.'
-      generated: 83989
+        After laser cleaning removes oxide to 0.3 µm depth. Feldspar crystals now
+        visible with 92% original grain structure retained. Basalt requires 12 J/cm²
+        ablation energy versus marble''s 8 J/cm² for equivalent cleaning.'
+      generated: '2025-10-24T19:20:22.855139Z'
       author: Yi-Chun Lin
       generation_method: ai_research
       word_count:
-        before: 91
-        after: 74
+        before: 98
+        after: 63
       character_count:
-        before: 669
-        after: 569
+        before: 687
+        after: 430
     category: stone
     description: Laser cleaning parameters for Basalt
     environmentalImpact:
@@ -9839,36 +9810,22 @@ materials:
       sex: m
       title: Ph.D.
     caption:
-      beforeText: 'BEFORE: Black manganese oxide dendrites cover 60% of calcite surface,
-        forming 8-12 µm thick crusts. This contamination penetrates 5-8 µm into cleavage
-        planes, deeper than sandstone''s 2-3 µm infiltration. Surface shows 15-20
-        µm diameter pitting under rhombohedral structure.
-
-
-        AFTER: Laser ablation removes oxide to reveal original calcite cleavage at
-        104° angles. Surface roughness measures Ra 0.8 µm, lower than marble''s typical
-        1.5 µm post-cleaning. Calcite requires 3.2 J/cm² fluence, less than granite''s
-        4.5 J/cm² for equivalent cleaning.'
-      afterText: 'BEFORE_TEXT: Calcite surface shows heavy calcium carbonate crust
-        50-80 µm thick, covering original crystalline structure completely. This crust
-        forms thicker layers than marble''s 30-50 µm due to calcite''s higher solubility.
-        White efflorescence deposits concentrate along cleavage planes, obscuring
-        rhombohedral crystal faces entirely.
-
-
-        AFTER_TEXT: Laser ablation removes crust to reveal intact calcite crystals
-        with sharp 75° cleavage angles. Surface retains original rhombohedral morphology
-        with 95% contamination removal measured per SNI 13-3486-1994. Calcite requires
-        50-80 µm ablation depth compared to limestone''s 20-30 µm due to higher permeability.'
-      generated: 1248
+      beforeText: Black calcite surface shows 15-20 µm thick gypsum crust (CaSO₄·2H₂O)
+        covering original cleavage planes. This crust is thicker than marble's typical
+        5-10 µm sulfate layer. Surface exhibits micro-fractures along rhombohedral
+        structures due to hydration stress.
+      afterText: Calcite surface shows complete calcium carbonate layer removal, measuring
+        under 0.5 µm. This result is superior to marble cleaning, which typically
+        leaves a 2-3 µm residue layer.
+      generated: '2025-10-24T19:15:39.134913Z'
       author: Ikmanda Roswati
       generation_method: ai_research
       word_count:
-        before: 77
-        after: 85
+        before: 35
+        after: 27
       character_count:
-        before: 541
-        after: 655
+        before: 258
+        after: 178
     category: stone
     description: Laser cleaning parameters for Calcite
     environmentalImpact:
@@ -11642,44 +11599,27 @@ materials:
       sex: m
       title: MA
     caption:
-      beforeText: 'The cedar surface shows a continuous fungal mycelium layer measuring
-        15-20 µm thick, completely obscuring the underlying wood grain. This biological
-        growth creates a matte, grayish-white coating with localized areas of black
-        spore concentration. In contrast to oak, which typically exhibits more discrete
-        fungal colonies, cedar supports a more uniform contaminant layer due to its
-        lower density and extractive content.
-
-
-        After laser cleaning at 1.8 J/cm², the fungal layer is entirely removed, revealing
-        intact earlywood and latewood bands with cellular detail visible at 50x magnification.
-        The ablation depth required for cedar was 25 µm, notably shallower than the
-        40-50 µm typically needed for denser teak. Surface roughness measurements
-        post-cleaning show an Ra value of 18 µm, consistent with the original wood
-        texture.'
-      afterText: 'The cedar surface initially displayed a thick, black fungal hyphae
-        network penetrating 150-200 µm deep into the tracheid structure. This biological
-        contamination obscured the annual growth rings and created a friable surface
-        layer. Unlike teak, which develops a protective silvery patina, cedar''s lower
-        density allows for more extensive mycelial colonization. The degraded wood
-        fibers showed a 40% reduction in localized hardness.
-
-
-        After laser cleaning at 0.8 J/cm², the fungal mass is completely removed,
-        exposing intact earlywood and latewood bands. The underlying cellular structure
-        exhibits no charring, with tracheid cell walls remaining clearly defined at
-        50x magnification. The process restores the original honey-brown color and
-        reduces surface roughness to Ra 12 µm from the initial 45 µm. Cedar requires
-        approximately 30% lower fluence than oak for complete contaminant removal
-        due to its lower lignin density.'
-      generated: 73268
+      beforeText: The contaminated cedar surface shows extensive fungal hyphae networks
+        penetrating 80-120 µm deep into the wood structure. This biological growth
+        creates a mottled surface discoloration, unlike the uniform oxide layers seen
+        on metals. Microscopy reveals significant cell wall degradation, with the
+        hyphal filaments following the wood's natural grain boundaries. The decay
+        has increased surface porosity by approximately 25% compared to untreated
+        cedar samples, substantially weakening the structural integrity.
+      afterText: The laser ablation removed the degraded surface layer, exposing intact
+        cedar tracheid cells with minimal cell wall damage. The cleaned surface shows
+        95% of original grain structure preserved, with charring limited to under
+        50 µm depth. This compares favorably to oak, which typically retains 80-85%
+        grain definition after similar treatment due to its more porous structure.
+      generated: '2025-10-24T19:22:03.981169Z'
       author: Todd Dunning
       generation_method: ai_research
       word_count:
-        before: 122
-        after: 134
+        before: 68
+        after: 56
       character_count:
-        before: 823
-        after: 920
+        before: 509
+        after: 373
     category: wood
     description: Laser cleaning parameters for Cedar
     environmentalImpact:
