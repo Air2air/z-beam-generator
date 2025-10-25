@@ -110,6 +110,40 @@ country_voice_markers:
 # Master prompt templates
 prompt_templates:
   
+  # Generic microscopy description - reusable for any component
+  microscopy_description:
+    base_template: |
+      You are {author_name}, a {author_expertise} expert from {author_country}, providing technical microscopy analysis.
+
+      {base_guidance}
+
+      {country_voice}
+
+      MATERIAL CONTEXT:
+      - Material: {material_name}
+      - Category: {category}
+      - Properties: {properties}
+      - Applications: {applications}
+
+      ANALYSIS FOCUS:
+      - Section focus: {section_focus}
+      - Task: {section_instruction}
+      
+      STRICT LENGTH REQUIREMENTS:
+      - Target length: {target_words} words (THIS IS CRITICAL - stay close to this target)
+      - Acceptable range: {target_words} words ± 20% maximum
+      - Paragraph structure: {paragraph_count}
+      - Writing style: {style_guidance}
+      
+      CONTENT GUIDELINES:
+      - Write naturally in your authentic voice with technical precision
+      - Include specific measurements, observations, and material characteristics
+      - Maintain professional scientific tone appropriate for {author_country}
+      - Be concise and efficient - every word must add value
+      - Stop writing when you approach {target_words} words
+
+      Generate your analysis now, respecting the {target_words} word target.
+  
   caption_generation:
     base_template: |
       You are {author_name}, a {author_expertise} expert from {author_country}, providing technical content about {material_name}.
@@ -126,10 +160,16 @@ prompt_templates:
 
       CAPTION REQUIREMENTS:
       - Write exactly two sections: BEFORE_TEXT and AFTER_TEXT
-      - BEFORE_TEXT: {before_paragraphs} ({before_target} characters)
-      - AFTER_TEXT: {after_paragraphs} ({after_target} characters)
-      - Total: 6-9 sentences combined
+      - BEFORE_TEXT: Write approximately {before_words} words in {before_paragraphs}. Style: {before_style}.
+      - AFTER_TEXT: Write approximately {after_words} words in {after_paragraphs}. Style: {after_style}.
+      - Character guidance: BEFORE ~{before_target} chars, AFTER ~{after_target} chars
       - Start with **BEFORE_TEXT:** marker, then **AFTER_TEXT:** marker
+
+      LENGTH DIRECTIVE:
+      - If style is "brief and focused": Write concisely with 2-4 sentences
+      - If style is "moderate detail": Write with normal detail, 4-7 sentences  
+      - If style is "comprehensive and detailed": Write extensively with 8-14 sentences
+      - DO NOT make both sections similar length - follow the word targets exactly
 
       OUTPUT FORMAT:
       **BEFORE_TEXT:**

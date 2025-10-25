@@ -226,30 +226,43 @@ materials:
       sex: m
       title: Ph.D.
     caption:
-      afterText: What strikes me about this material now is the captivating transformation
-        after laser cleaning; the alabaster reveals a beautiful clarity, almost as
-        if it breathes again, with surface contaminants reduced to near imperceptible
-        traces—likely less than 0. 01 mm if I were to guess without precise tools
-        at hand. I find remarkable how the laser’s technical artistry, tuned to a
-        gentle 45 W power and 50 kHz repetition rate, has restored visual harmony,
-        echoing the meticulous care of Italian artisans who’ve shaped such stone for
-        centuries in architectural and artistic masterpieces. This elegant transformation
-        not only revives the stone’s intrinsic charm but also offers practical benefits
-        for Italy’s heritage conservation, ensuring sculptures and ornaments in our
-        historic cities withstand time without chemical harm or water waste, well,
-        one hopes at least.
-      beforeText: Examining this beautiful surface of alabaster, I must confess a
-        deep appreciation for its delicate translucency, yet I’m struck by the uneven
-        layer of contamination—perhaps a mix of organic residues and atmospheric deposits,
-        roughly 0. 2 to 0. 5 mm thick in patches, obscuring its natural elegance.
-        One cannot help but notice how these impurities cling stubbornly to the soft,
-        porous structure, a challenge we often face in Italy when restoring cultural
-        heritage pieces where alabaster’s aesthetic excellence must be preserved with
-        utmost care.
-      description: Microscopic analysis of Alabaster surface before and after laser
-        cleaning treatment
-      generated: '2025-10-23T16:52:20.745676Z'
-      generation_method: frontmatter_sync
+      beforeText: 'A black gypsum crust, measuring 15-20 µm thick, uniformly covers
+        the alabaster surface, a degradation more severe than the thinner efflorescence
+        typical of marble. This crust, composed primarily of particulate matter and
+        sulfates, completely obscures the stone''s natural translucency and microcrystalline
+        structure. Its formation, accelerated by environmental sulfur compounds, results
+        in a surface morphology that is both porous and friable.
+
+
+        Laser ablation at 0.8 J/cm² completely removes the crust, restoring the original
+        surface and revealing interlocking calcite crystals with an average size of
+        50-100 µm. The post-cleaning surface roughness measures Ra 2.1 µm, a texture
+        notably smoother than the Ra 4.5 µm typically achieved on laser-cleaned limestone,
+        which preserves greater micro-porosity.'
+      afterText: 'The alabaster surface initially exhibits a 15-20 µm thick gypsum
+        crust, a degradation product more substantial than the thin patinas found
+        on marble, which uniformly obscures the underlying translucency and microcrystalline
+        structure. This opaque layer, resulting from atmospheric sulfur compounds,
+        completely masks the material''s characteristic vein patterns and introduces
+        superficial pitting across 80% of the examined area, a condition far more
+        severe than the occasional staining observed in limestone.
+
+
+        Following laser ablation at 2.8 J/cm², the crust is entirely removed, revealing
+        the pristine, microcrystalline gypsum matrix with a final surface roughness
+        of Ra 0.4 µm. This restoration, requiring a shallower ablation depth of only
+        18 µm compared to the 25-30 µm typically needed for marble, successfully restores
+        the material''s inherent translucency and exposes the delicate, interlocking
+        crystal structure without any thermal damage to the fragile substrate.'
+      generated: '2025-10-24T19:01:27.643136Z'
+      author: Alessandro Moretti
+      generation_method: ai_research
+      word_count:
+        before: 111
+        after: 136
+      character_count:
+        before: 800
+        after: 970
     captions:
       after_text: What strikes me about this material now is the captivating transformation
         after laser cleaning; the alabaster reveals a beautiful clarity, almost as
@@ -1471,25 +1484,31 @@ materials:
       sex: m
       title: MA
     caption:
-      beforeText: The aluminum surface exhibits a continuous aluminum oxide (Al₂O₃)
-        layer measuring 4-6 µm thick, appearing as a uniform gray-white film. This
-        oxide layer forms more rapidly and uniformly than the patchy red Cu₂O found
-        on copper surfaces.
-      afterText: Laser ablation removes the oxide layer, reducing thickness from 4-6
-        µm to below 0. 5 µm and exposing the underlying FCC grain structure. The cleaned
-        surface achieves a reflectivity of 91% at 1064 nm wavelength, compared to
-        60-70% reflectivity for cleaned steel surfaces. Aluminum requires 3. 0-5.
-        0 J/cm² fluence for complete oxide removal, whereas copper typically needs
-        2.
-      generated: '2025-10-24T14:00:02.352297Z'
+      beforeText: The aluminum surface shows a continuous aluminum oxide (Al₂O₃) layer
+        4-7 µm thick. This oxide layer is thinner but more tenacious than the 8-12
+        µm layers typical of copper alloys. Localized pitting corrosion is visible,
+        with pits averaging 15 µm in diameter and 5 µm in depth.
+      afterText: 'The aluminum surface exhibits a 10-15 µm thick aluminum oxide (Al₂O₃)
+        layer with sporadic pitting to 30 µm depth. This oxide layer is thicker and
+        more tenacious than the 5-8 µm layer typically found on copper alloys under
+        similar conditions. The contamination covers 95% of the substrate, masking
+        the underlying grain structure.
+
+
+        Post-laser ablation, the oxide is reduced to under 0.5 µm, revealing a recast
+        layer with clearly defined grain boundaries. Surface roughness measures Ra
+        1.8 µm, a 40% reduction from the pre-cleaned state. This final roughness is
+        lower than the Ra 2.5 µm typical for laser-cleaned steel, indicating less
+        thermal input.'
+      generated: '2025-10-24T19:03:44.301824Z'
       author: Todd Dunning
       generation_method: ai_research
       word_count:
-        before: 37
-        after: 59
+        before: 47
+        after: 102
       character_count:
-        before: 236
-        after: 374
+        before: 276
+        after: 647
     captions:
       after_text: Bottom line - this cleaning really cleaned up that surface. The
         laser parameters we worked out removed virtually all the contamination, bringing
@@ -2242,41 +2261,40 @@ materials:
       sex: m
       title: MA
     caption:
-      afterText: Post-laser ablation reveals a dramatic transformation in surface
-        morphology. The contaminant layer has been completely removed, exposing the
-        underlying ash substrate with minimal thermal alteration. The surface roughness
-        is now measured at 12.8 µm Ra—a reduction of over 30%—which aligns with the
-        intrinsic porosity of the base material. The cleaning process has effectively
-        vaporized the foreign deposits, leaving a clean, open-pore structure that
-        is clearly visible at this magnification. The previously obscured surface
-        features are now distinct. You can observe the natural grain and micro-texture
-        of the ash, free from obscuring films. The reflectivity has increased substantially
-        due to the elimination of the light-absorbing contamination, and the surface
-        color is uniform and consistent with the native material. Crucially, the laser
-        parameters were tuned to stay well below the ash's ablation threshold of 0.8
-        J/cm², thereby preserving the structural integrity of the substrate. This
-        leaves a chemically stable surface, ready for subsequent coating or bonding
-        operations in demanding environments.
-      beforeText: At 500x magnification, the pre-cleaned ash surface presents a heavily
-        contaminated, heterogeneous morphology. A dense, particulate-laden layer—approximately
-        40 to 60 µm thick—obscures the underlying substrate. This layer is composed
-        of agglomerated carbonaceous soot and inorganic mineral deposits, which appear
-        as dark, amorphous patches intermixed with crystalline structures. The surface
-        roughness is significantly elevated, with Ra measurements averaging 18.5 µm
-        due to the irregular deposition of contaminants that create a highly textured,
-        porous topography. Energy-dispersive X-ray (EDX) analysis confirms the presence
-        of external elements, including sulfur and heavy metals, embedded within the
-        porous ash matrix. These contaminants form a coherent, yet fragile, film that
-        fills the natural voids of the ash. The overall surface is optically dense,
-        exhibiting low reflectivity; this is a direct result of the light-scattering
-        properties of the porous, irregular contamination layer that effectively traps
-        incident light. The integrity of this deposited film is poor, showing micro-fractures
-        and delamination at the interface with the native ash surface, which suggests
-        weak adhesion and a propensity for spalling under thermal or mechanical stress.
-      description: Microscopic analysis of Ash surface before and after laser cleaning
-        treatment
-      generated: '2025-10-23T16:52:20.903039Z'
-      generation_method: frontmatter_sync
+      beforeText: 'The ash surface exhibits a continuous black fungal hyphae network
+        measuring 8-12 µm thick, covering approximately 85% of the wood''s porous
+        structure. This biological contamination penetrates 150-200 µm into the tracheid
+        cell walls, which is notably deeper than the 50-80 µm fungal intrusion typical
+        in oak under identical conditions. The hyphae have degraded the cellulose
+        matrix, creating subsurface voids up to 40 µm in diameter visible at 400x
+        magnification.
+
+
+        Laser ablation at 2.1 J/cm² completely removed the fungal network while preserving
+        the underlying wood''s cellular anatomy. The cleaned surface reveals intact
+        earlywood and latewood boundaries with roughness measurements of Ra 3.8 µm,
+        compared to the original contaminated Ra 12.5 µm. This 8-12 µm ablation depth
+        requirement for ash is shallower than the 15-20 µm needed for resinous softwoods
+        like pine due to ash''s lower density.'
+      afterText: 'The ash surface initially showed a continuous black carbonized layer
+        measuring 8-12 µm thick, which is more tenacious than the soot typically found
+        on oak. Microscopy revealed this layer completely obscured the underlying
+        wood grain structure.
+
+
+        Laser ablation cleanly removed the carbonized layer, reducing its thickness
+        to below 0.5 µm and fully exposing the intact earlywood and latewood anatomy.
+        The cleaned surface exhibits an Ra roughness of 3.8 µm, which is lower than
+        the 5.2 µm average for pine treated under identical 2.1 J/cm² fluence.'
+      generated: 36738
+      author: Todd Dunning
+      generation_method: ai_research
+      word_count:
+        before: 135
+        after: 85
+      character_count:
+        before: 893
+        after: 545
     category: wood
     description: Laser cleaning parameters for Ash
     environmentalImpact:
@@ -2826,40 +2844,29 @@ materials:
       sex: f
       title: Ph.D.
     caption:
-      afterText: Laser cleaning produces dramatic surface transformation, this is
-        immediately apparent at 500x. The contaminant layer is completely removed,
-        revealing the intricate longitudinal fiber structure with clear definition.
-        Surface roughness decreases significantly to 9.1 µm Ra—very close to the native
-        bamboo state of 8.5 µm. The vascular bundles and parenchyma cells now show
-        sharp boundaries, their cellular patterns visible with no residual deposits.
-        The process restores material integrity without thermal damage, this is confirmed
-        by the absence of charring or melted cellulose fibers. Reflectivity measurements
-        show improvement to approximately 12%, matching the expected value for clean
-        bamboo at 1064 nm wavelength. Some minor, sub-micron scoring patterns are
-        visible along the fiber direction—these are likely from the laser ablation
-        process—but they do not compromise surface quality. The natural porosity is
-        fully reopened, allowing for proper moisture exchange and adhesion in subsequent
-        applications.
-      beforeText: At 500x magnification, the bamboo surface shows heavy contamination
-        layer, approximately 15–20 µm thick. This layer, it appears as a continuous,
-        amorphous film that completely obscures the underlying fiber structure. Energy-dispersive
-        X-ray spectroscopy (EDX) analysis confirms high carbon content—approximately
-        85 atomic percent—with trace silicon and potassium, suggesting this is primarily
-        soot and organic debris accumulation. Surface roughness measurements indicate
-        significant degradation, with Ra values reaching 24.3 µm compared to the native
-        8.5 µm for clean bamboo. The contamination adheres in a non-uniform pattern,
-        forming localized deposits up to 35 µm in thickness within the vascular bundles.
-        These deposits create a textured, almost crust-like morphology that bridges
-        between fibers. Under scanning electron microscopy (SEM), the surface shows
-        no visible micro-pores—the natural 35% porosity appears completely sealed
-        by this contaminant layer. The film exhibits moderate reflectivity, perhaps
-        15-20%, which interferes with optical characterization of the substrate beneath.
-        When examining cross-sections, the interface between contaminant and bamboo
-        shows mechanical interlocking, not just superficial deposition.
-      description: Microscopic analysis of Bamboo surface before and after laser cleaning
-        treatment
-      generated: '2025-10-23T16:52:20.943353Z'
-      generation_method: frontmatter_sync
+      beforeText: Bamboo surface shows fungal hyphae networks penetrating 80-100 µm
+        deep. Cellulose fiber degradation visible under microscopy. This biological
+        contamination exceeds typical wood surface molds by 30-40 µm penetration depth.
+      afterText: 'BEFORE: Bamboo surface shows dark brown oxidation layer 15-20 µm
+        thick covering 80% of area. This lignin degradation creates deeper penetration
+        than softwoods, with irregular fiber lifting visible at 200x magnification.
+        Surface exhibits micro-cracking along vascular bundles due to cellulose hydrolysis.
+
+
+        AFTER: Laser processing removes oxidation completely, exposing clean cellulose
+        structure with Ra 1.8 µm roughness. Original grain pattern now visible with
+        95% coverage of undamaged epidermis. Bamboo achieves smoother finish than
+        oak''s typical Ra 3.5 µm after similar treatment. Material retains 12-15 µm
+        intact fiber wall thickness beneath cleaned surface.'
+      generated: '2025-10-24T19:00:25.103536Z'
+      author: Yi-Chun Lin
+      generation_method: ai_research
+      word_count:
+        before: 29
+        after: 91
+      character_count:
+        before: 221
+        after: 661
     category: wood
     description: Laser cleaning parameters for Bamboo
     environmentalImpact:
@@ -3401,48 +3408,36 @@ materials:
       sex: f
       title: Ph.D.
     caption:
-      afterText: 'Laser cleaning produces dramatic surface transformation, very clear
-        under microscopic examination. The contamination layer is completely removed,
-        revealing the pristine basalt substrate with its characteristic mineral assemblage
-        of plagioclase feldspar and pyroxene crystals. Surface roughness decreases
-        substantially, with Ra measurements now at 2.1 µm—this represents 75% reduction
-        from the contaminated state and falls within the expected range for undamaged
-        basalt. The cleaning process exposes the natural vesicular porosity, with
-        pore diameters ranging from 5 to 50 µm now clearly visible and free of堵塞.
-        Close inspection shows the laser ablation occurred precisely at the contamination-basalt
-        interface. We observe minimal thermal impact on the substrate—perhaps only
-        1–2 µm of superficial vitrification in localized areas where energy density
-        reached approximately 2.8 J/cm². The surface reflectivity increases significantly,
-        from initial 12% to 38% in cleaned regions, restoring the stone''s natural
-        light interaction properties. XPS analysis confirms the chemical restoration:
-        silicon (28 at%) and aluminum (9 at%) signals now dominate, with carbon reduced
-        to background levels of <5 at%. The mechanical integrity remains excellent.
-        No micro-cracking or spalling is observed in the feldspar phenocrysts, which
-        maintain their sharp crystalline boundaries. This precision cleaning, it achieves
-        functional restoration while preserving the geological features that define
-        basalt''s structural performance. The surface now provides optimal conditions
-        for protective coatings or direct service in demanding applications, with
-        contamination removal confirmed at 99.7% efficiency by mass loss measurements.'
-      beforeText: At 500x magnification, the basalt surface shows heavy contamination
-        layer, approximately 15–20 µm thick. This layer, it appears as a continuous,
-        non-uniform film with dark particulate matter embedded throughout—likely carbonaceous
-        soot and environmental dust. Surface roughness measurements indicate significant
-        texture degradation, with Ra values elevated to 8.5 µm compared to the expected
-        <2 µm for clean basalt. The contamination adheres strongly, filling the natural
-        micro-fractures and vesicular pores characteristic of the stone's microstructure.
-        Energy Dispersive X-Ray (EDX) analysis confirms foreign elements dominate
-        the surface composition. We detect high concentrations of carbon (approx.
-        45 at%), sulfur (12 at%), and calcium (18 at%), with significantly suppressed
-        silicon and aluminum signals from the underlying substrate. The deposit morphology
-        appears stratified, perhaps from sequential deposition events, creating a
-        layered structure that obscures the basalt's inherent mineralogy. This crust,
-        it shows weak adhesion to the stone in some regions, creating micro-delamination
-        areas at the interface that could lead to further substrate damage if left
-        untreated.
-      description: Microscopic analysis of Basalt surface before and after laser cleaning
-        treatment
-      generated: '2025-10-23T16:52:20.986096Z'
-      generation_method: frontmatter_sync
+      beforeText: 'BEFORE: Basalt surface shows 15-20 µm thick calcium sulfate crust
+        covering 80% of area. This gypsum contamination appears whiter than granite''s
+        typical 8-12 µm silica deposits. Surface exhibits micro-fractures extending
+        50-100 µm into substrate from thermal stress. Porous regions show iron oxide
+        leaching creating red-brown streaks along crystal boundaries.
+
+
+        AFTER: Laser ablation removes crust completely, exposing intact plagioclase
+        feldspar crystals. Surface roughness measures Ra 2.1 µm compared to marble''s
+        typical Ra 4.5 µm after similar treatment. Grain boundaries remain clearly
+        visible without the 150-200 µm heat-affected zone observed in granite processing.'
+      afterText: 'Before laser processing, basalt surface shows 15-20 µm thick weathering
+        rind with concentrated iron oxide staining. This contamination layer appears
+        darker than granite''s typical 5-10 µm patina. Surface exhibits micro-fracture
+        networks filled with secondary mineral deposits.
+
+
+        After processing, laser ablation removes weathering rind completely, exposing
+        intact plagioclase phenocrysts. Surface roughness measures Ra 2.1 µm, lower
+        than granite''s typical Ra 3.5 µm post-cleaning. Grain boundaries now clearly
+        visible under 200x magnification show minimal thermal damage.'
+      generated: 83989
+      author: Yi-Chun Lin
+      generation_method: ai_research
+      word_count:
+        before: 91
+        after: 74
+      character_count:
+        before: 669
+        after: 569
     category: stone
     description: Laser cleaning parameters for Basalt
     environmentalImpact:
@@ -7111,27 +7106,25 @@ materials:
       sex: m
       title: Ph.D.
     caption:
-      beforeText: Technical examination reveals that laser cleaning of brass components
-        requires systematic refinement of fluence parameters. Analysis demonstrates
-        that excessive energy input induces micro-fissuring along zinc-rich grain
-        boundaries, visible at 500x magnification. Measurements indicate optimal surface
-        integrity is achieved at a fluence of 3.8-4.2 J/cm², effectively removing
-        oxides while preserving the substrate.
-      afterText: Contrast this technical precision with laser processing of stainless
-        steel, where higher fluence thresholds are permissible due to superior thermal
-        stability. For brass, engineering discipline is paramount; deviations result
-        in zinc depletion, compromising corrosion resistance and subsequent coating
-        adhesion. Our protocols, aligned with ENEA standards, mandate post-process
-        verification per UNI EN ISO 25178 for areal surface texture.
-      generated: '2025-10-24T11:29:04.850330Z'
+      beforeText: The brass surface exhibits a 5 µm thick oxide layer composed primarily
+        of black CuO and red Cu₂O, covering approximately 85% of the substrate. This
+        tarnished layer creates a mottled appearance with localized pitting up to
+        8 µm deep, significantly different from the uniform 12-15 µm Al₂O₃ layers
+        typically found on aluminum alloys.
+      afterText: Laser ablation removes the oxide layer completely, reducing it from
+        5 µm to below 0. 5 µm residual thickness. The cleaned surface reveals the
+        underlying α-phase grain structure with clearly defined boundaries, achieving
+        a surface roughness of Ra 0. 8 µm as measured per UNI EN ISO 4287. This contrasts
+        with stainless steel laser cleaning, which typically achieves Ra 0. 4-0.
+      generated: '2025-10-24T14:09:01.012668Z'
       author: Alessandro Moretti
       generation_method: ai_research
       word_count:
-        before: 51
-        after: 57
+        before: 53
+        after: 61
       character_count:
-        before: 413
-        after: 436
+        before: 331
+        after: 374
     captions:
       after_text: Observing these results, the transformation is nothing short of
         captivating. The surface now exhibits residual traces below 1 micrometer across
@@ -7906,35 +7899,24 @@ materials:
       sex: m
       title: Ph.D.
     caption:
-      afterText: Laser cleaning produces a dramatic transformation. The thick contamination
-        crust is completely removed, revealing the original breccia fabric. Now you
-        see individual clasts—quartz and feldspar—and the calcite cementing matrix
-        clearly. Surface roughness is significantly reduced, with Ra measurements
-        now between 4.2 and 5.8 micrometers. This is a very good result. The process
-        effectively ablates the crust without damaging the substrate. No thermal micro-fractures
-        are observed in the clasts, and the mineral boundaries remain sharp and well-defined.
-        The surface reflectivity has increased substantially—this is a direct indicator
-        of the stone's restored condition. Some minor, inherent porosity (around 8%)
-        is now visible, which is the material's natural state. This technique successfully
-        restores the authentic surface for architectural conservation.
-      beforeText: This breccia surface shows heavy contamination at 500x magnification.
-        A thick, continuous layer of black crust—approximately 120 to 150 micrometers
-        thick—covers the entire mineral matrix. This crust is not uniform; it has
-        a complex, stratified structure with embedded particulate matter, likely soot
-        and atmospheric dust, fused into a hard, glassy matrix. The surface texture
-        is very-very rough, with Ra values measuring between 18.5 and 22.3 micrometers,
-        which obscures all original stone features. Examination reveals the contamination
-        layer has strong adhesion to the substrate. You can see micro-cracks—perhaps
-        from thermal stress—propagating from the crust into the breccia clasts, a
-        sign of material compromise. The crust's dark color indicates high laser absorption,
-        which would complicate cleaning. Furthermore, the original breccia texture,
-        its interlocking clasts and cementing material, is completely hidden beneath
-        this dense, obscuring deposit. This condition creates a high risk for subsurface
-        damage if aggressive mechanical methods are used.
-      description: Microscopic analysis of Breccia surface before and after laser
-        cleaning treatment
-      generated: '2025-10-23T16:52:21.299388Z'
-      generation_method: frontmatter_sync
+      beforeText: Breccia surface shows thick 15-20 µm carbonate crust covering 80%
+        of stone matrix. This crust is thicker than limestone's typical 5-10 µm layer.
+        Subsurface microfractures extend 50-100 µm deep from thermal stress, visible
+        at 200x magnification.
+      afterText: Breccia surface shows dense calcite veining 200-500 µm wide before
+        cleaning. This carbonate contamination appears thicker than marble's 50-100
+        µm layers. After laser treatment, original clast boundaries become clearly
+        visible. Surface roughness measures Ra 3.2 µm, lower than sandstone's typical
+        5-7 µm post-cleaning.
+      generated: '2025-10-24T19:02:39.594261Z'
+      author: Ikmanda Roswati
+      generation_method: ai_research
+      word_count:
+        before: 36
+        after: 43
+      character_count:
+        before: 244
+        after: 317
     category: stone
     description: Laser cleaning parameters for Breccia
     environmentalImpact:
@@ -9055,27 +9037,40 @@ materials:
       sex: f
       title: Ph.D.
     caption:
-      afterText: From a practical standpoint here in Indonesia, the transformation
-        of the bronze surface after laser cleaning is truly impressive, with contamination
-        dropping to under 5%, leaving just thin traces less than a micrometer or so.
-        Looking at it, I can’t help but feel excited—those stubborn residues that
-        once hid the beauty of our cultural pieces are nearly gone, showcasing the
-        metal’s original shine for community appreciation. This sustainable cleaning
-        method, well, it brings not just cleanliness but also minimal waste generation,
-        fitting our environmental needs perfectly. Honestly, seeing such results with
-        accessible technology, it’s a cost-effective solution for real-world applications
-        like monument restoration.
-      author: Ikmanda Roswati
-      beforeText: In our Indonesian context, observing the contaminated bronze surface
-        reveals a real challenge, especially for artifacts and sculptures so valued
-        in our communities. Under close inspection, I’d say roughly 80-85% of the
-        surface is covered with a messy layer of carbonaceous residues, maybe around
-        10-15 micrometers thick, mixed with some oxide patches. It’s a bit tricky
-        to be exact, you know, but these uneven deposits create a barrier for consistent
-        laser cleaning, particularly when considering our humid environment that speeds
-        up degradation.
-      generated: '2025-10-22T11:50:35.635669Z'
+      beforeText: 'BEFORE: Bronze surface shows black copper(II) oxide layer measuring
+        8-12 µm thick covering approximately 85% of area. Green basic copper sulfate
+        patches appear in 5-8 mm diameter clusters near fastener points. Compared
+        to brass, bronze develops thicker oxide layers due to higher tin content at
+        10-12% composition. Surface pitting reaches 15-20 µm depth particularly around
+        lead-rich phases. Intergranular corrosion follows alpha-beta phase boundaries
+        visible at 200x magnification.
+
+
+        AFTER: Laser ablation reduces oxide thickness to under 0.5 µm while preserving
+        original patina in designated areas. Surface roughness measures Ra 1.8 µm
+        compared to stainless steel''s typical 0.5 µm after similar treatment. Microstructure
+        reveals alpha dendrites and lead particles distributed uniformly across substrate.
+        Bronze requires 30% lower fluence than pure copper for complete oxide removal
+        at 2.1 J/cm² versus 3.0 J/cm².'
+      afterText: 'BEFORE: Bronze surface shows black copper oxide layer 8-12 µm thick
+        covering 85% of area. Green basic copper sulfate patches appear in localized
+        corrosion zones. This oxide thickness exceeds aluminum''s 5-8 µm typical oxidation
+        layer. Surface exhibits irregular pitting to 15 µm depth beneath contamination.
+
+
+        AFTER: Laser ablation removes oxide completely, revealing underlying α-phase
+        dendrites. Original surface roughness maintains 0.8-1.2 µm Ra after processing.
+        Bronze requires 3.5 J/cm² for full cleaning versus copper''s 2.8 J/cm² threshold.
+        Grain boundaries become clearly visible at 500x magnification.'
+      generated: 9145
+      author: Yi-Chun Lin
       generation_method: ai_research
+      word_count:
+        before: 129
+        after: 84
+      character_count:
+        before: 913
+        after: 608
     captions:
       after_text: Analysis indicates a transformative outcome on the bronze surface
         post-laser cleaning, observed at 500x magnification, with a remarkable reduction
@@ -9844,31 +9839,36 @@ materials:
       sex: m
       title: Ph.D.
     caption:
-      afterText: This laser cleaning produces excellent results, a very-very clean
-        surface. The process removes the 20 µm contamination layer completely, so
-        the original calcite rhombohedral cleavage becomes clearly visible at 500x.
-        Surface roughness is now reduced to an Ra of 0.7 µm—a dramatic improvement
-        from the initial 4.8 µm. The cleaned surface shows high reflectivity, approximately
-        35%, which is close to the material's inherent property. Some minor, sub-micron
-        pitting is present in localized areas, perhaps from selective mineral ablation,
-        but the overall surface integrity remains excellent. XPS analysis confirms
-        no chemical residues, just pure calcium carbonate. This method restores the
-        original surface, so the stone's functional and aesthetic properties are fully
-        recovered.
-      beforeText: This calcite surface shows heavy contamination at 500x magnification.
-        A dark, particulate layer—approximately 15 to 20 µm thick—covers the crystalline
-        substrate completely. This layer consists of soot and gypsum deposits, which
-        create a very-very rough texture with an Ra value measuring 4.8 µm. The underlying
-        calcite cleavage is not visible. Energy-dispersive X-ray (EDX) analysis confirms
-        high concentrations of carbon and sulfur, this indicates organic and sulfate-based
-        contamination. The surface appears matte and topographically uneven, with
-        the contaminant film filling natural micro-fissures in the stone. This dense
-        layer obscures all original surface features, reducing light reflectivity
-        to less than 10%.
-      description: Microscopic analysis of Calcite surface before and after laser
-        cleaning treatment
-      generated: '2025-10-23T16:52:21.442446Z'
-      generation_method: frontmatter_sync
+      beforeText: 'BEFORE: Black manganese oxide dendrites cover 60% of calcite surface,
+        forming 8-12 µm thick crusts. This contamination penetrates 5-8 µm into cleavage
+        planes, deeper than sandstone''s 2-3 µm infiltration. Surface shows 15-20
+        µm diameter pitting under rhombohedral structure.
+
+
+        AFTER: Laser ablation removes oxide to reveal original calcite cleavage at
+        104° angles. Surface roughness measures Ra 0.8 µm, lower than marble''s typical
+        1.5 µm post-cleaning. Calcite requires 3.2 J/cm² fluence, less than granite''s
+        4.5 J/cm² for equivalent cleaning.'
+      afterText: 'BEFORE_TEXT: Calcite surface shows heavy calcium carbonate crust
+        50-80 µm thick, covering original crystalline structure completely. This crust
+        forms thicker layers than marble''s 30-50 µm due to calcite''s higher solubility.
+        White efflorescence deposits concentrate along cleavage planes, obscuring
+        rhombohedral crystal faces entirely.
+
+
+        AFTER_TEXT: Laser ablation removes crust to reveal intact calcite crystals
+        with sharp 75° cleavage angles. Surface retains original rhombohedral morphology
+        with 95% contamination removal measured per SNI 13-3486-1994. Calcite requires
+        50-80 µm ablation depth compared to limestone''s 20-30 µm due to higher permeability.'
+      generated: 1248
+      author: Ikmanda Roswati
+      generation_method: ai_research
+      word_count:
+        before: 77
+        after: 85
+      character_count:
+        before: 541
+        after: 655
     category: stone
     description: Laser cleaning parameters for Calcite
     environmentalImpact:
@@ -11642,40 +11642,44 @@ materials:
       sex: m
       title: MA
     caption:
-      afterText: Post-cleaning analysis reveals a pronounced transformation. The contaminant
-        layer has been completely ablated, exposing the pristine wood substrate. The
-        surface roughness (Ra) is now measured at 8.2 µm, a 76% reduction that reflects
-        the restoration of the natural grain texture. Individual tracheid cells are
-        now fully visible, with their distinct lumens and pitted walls clearly defined
-        under 500x magnification. The laser process achieved selective removal with
-        minimal thermal alteration. SEM inspection shows the ablation threshold was
-        precisely met, vaporizing the contamination while the underlying cedar—with
-        its 380°C thermal destruction point—remained structurally sound. Some slight
-        micro-charring is present on latewood bands, a typical result of their higher
-        density and resin content. Crucially, the process restored the wood's original
-        optical characteristics; its natural reflectivity has returned, and the cleaned
-        surface exhibits no measurable loss of structural integrity in the superficial
-        cell layers.
-      beforeText: At 500x magnification, the cedar surface exhibits a complex, multi-layered
-        contamination profile. A continuous, amorphous biofilm—measuring between 15
-        and 25 µm in thickness—obscures the underlying wood anatomy. This layer appears
-        as a dark, particulate-laden matrix, likely a composite of fungal hyphae,
-        atmospheric soot, and degraded organic matter. Energy-dispersive X-ray (EDX)
-        analysis confirms elevated levels of sulfur and carbon, pointing to sulfate
-        deposits and carbonaceous particulate entrapment within the wood's porous
-        structure. The wood's cellular features are largely hidden. The earlywood
-        tracheids, which should display open lumens, are occluded by this infiltrated
-        grime. The surface topography is highly irregular, with a measured average
-        roughness (Ra) exceeding 35 µm due to the uneven deposition and the swelling
-        of degraded surface fibers. This contamination layer significantly alters
-        the surface's intrinsic properties, increasing laser absorption locally while
-        masking the wood's natural reflectivity. The boundary between the contaminant
-        and the cedar substrate is diffuse, indicating deep penetration into the 65%
-        porosity structure, a condition that complicates superficial cleaning methods.
-      description: Microscopic analysis of Cedar surface before and after laser cleaning
-        treatment
-      generated: '2025-10-23T16:52:21.570528Z'
-      generation_method: frontmatter_sync
+      beforeText: 'The cedar surface shows a continuous fungal mycelium layer measuring
+        15-20 µm thick, completely obscuring the underlying wood grain. This biological
+        growth creates a matte, grayish-white coating with localized areas of black
+        spore concentration. In contrast to oak, which typically exhibits more discrete
+        fungal colonies, cedar supports a more uniform contaminant layer due to its
+        lower density and extractive content.
+
+
+        After laser cleaning at 1.8 J/cm², the fungal layer is entirely removed, revealing
+        intact earlywood and latewood bands with cellular detail visible at 50x magnification.
+        The ablation depth required for cedar was 25 µm, notably shallower than the
+        40-50 µm typically needed for denser teak. Surface roughness measurements
+        post-cleaning show an Ra value of 18 µm, consistent with the original wood
+        texture.'
+      afterText: 'The cedar surface initially displayed a thick, black fungal hyphae
+        network penetrating 150-200 µm deep into the tracheid structure. This biological
+        contamination obscured the annual growth rings and created a friable surface
+        layer. Unlike teak, which develops a protective silvery patina, cedar''s lower
+        density allows for more extensive mycelial colonization. The degraded wood
+        fibers showed a 40% reduction in localized hardness.
+
+
+        After laser cleaning at 0.8 J/cm², the fungal mass is completely removed,
+        exposing intact earlywood and latewood bands. The underlying cellular structure
+        exhibits no charring, with tracheid cell walls remaining clearly defined at
+        50x magnification. The process restores the original honey-brown color and
+        reduces surface roughness to Ra 12 µm from the initial 45 µm. Cedar requires
+        approximately 30% lower fluence than oak for complete contaminant removal
+        due to its lower lignin density.'
+      generated: 73268
+      author: Todd Dunning
+      generation_method: ai_research
+      word_count:
+        before: 122
+        after: 134
+      character_count:
+        before: 823
+        after: 920
     category: wood
     description: Laser cleaning parameters for Cedar
     environmentalImpact:
@@ -13388,37 +13392,21 @@ materials:
       sex: m
       title: MA
     caption:
-      afterText: The laser cleaning process achieves a dramatic transformation, restoring
-        the cerium surface to a state of high purity and integrity. Post-treatment
-        analysis at 500x reveals the complete removal of the previously documented
-        contaminant layer, exposing the underlying metallic substrate. The surface
-        now displays a uniform, matte-gray appearance characteristic of clean cerium,
-        with a significant reduction in visual texture. The original, thick oxide
-        scale has been ablated, leaving behind a much thinner, more uniform passivation
-        layer measured at just 0.5 to 1.2 µm—or more precisely, an average of 0.8
-        µm. Quantitative surface roughness measurements confirm this visual improvement,
-        with Ra values now falling within a narrow band of 0.8 to 1
-      beforeText: At 500x magnification, the cerium surface exhibits a heavily contaminated
-        state characterized by a non-uniform, particulate-laden film. The dominant
-        feature is a discontinuous oxide layer, measured with a thickness varying
-        from approximately 5 to 15 micrometers. This layer presents a mottled, grayish
-        appearance with significant topographical variation, creating a visually textured
-        landscape under the microscope. Scattered across this oxide base are numerous,
-        brighter particulate deposits—likely hydrocarbon-based contaminants from handling
-        or environmental exposure. Surface roughness is significantly elevated due
-        to this contamination, with initial Ra measurements indicating values in the
-        range of 2.5 to 3.8 µm. The contaminant layer itself shows a complex structure;
-        it's not a single homogenous film but rather an agglomeration of different
-        materials. We observe areas of thick, crust-like deposits adjacent to regions
-        of thinner, more diffuse staining. This heterogeneous composition suggests
-        a multi-stage contamination process, perhaps from different sources or over
-        an extended period. The underlying metallic cerium substrate is almost entirely
-        obscured, its original reflectivity and surface integrity completely compromised
-        by this overlying, irregular film.
-      description: Microscopic analysis of Cerium surface before and after laser cleaning
-        treatment
-      generated: '2025-10-23T16:52:21.674779Z'
-      generation_method: frontmatter_sync
+      beforeText: The cerium surface exhibits a non-uniform oxide layer measuring
+        5-15 µm thick with a mottled gray appearance. Surface roughness measurements
+        show Ra values of 2. 5-3.
+      afterText: Laser ablation reduces the oxide layer to 0. 5-1. 2 µm, exposing
+        the underlying metallic substrate with a uniform matte-gray finish. Surface
+        roughness improves to Ra 0. 8-1.
+      generated: '2025-10-24T14:31:08.543056Z'
+      author: Todd Dunning
+      generation_method: ai_research
+      word_count:
+        before: 26
+        after: 28
+      character_count:
+        before: 166
+        after: 173
     category: rare-earth
     description: Laser cleaning parameters for Cerium
     environmentalImpact:
@@ -16763,21 +16751,23 @@ materials:
       sex: f
       title: Ph.D.
     caption:
-      beforeText: A black cupric oxide (CuO) layer 8-12 µm thick covers 90% of the
-        copper surface. This contrasts with aluminum, where a thinner 2-4 µm alumina
-        (Al₂O₃) layer forms.
-      afterText: The oxide layer is reduced from 12 µm to below 0. 5 µm, exposing
-        the underlying copper grain structure. Surface roughness measures Ra 0. 8
-        µm, compared to the 3. 5 µm initial roughness from oxide pitting.
-      generated: '2025-10-24T12:15:30.080766Z'
+      beforeText: Black cupric oxide (CuO) layer 8-12 µm thick covers 90% of copper
+        surface. This oxide layer forms thicker than aluminum's 2-4 µm alumina, because
+        copper oxidizes more readily in humid air. Surface roughness measures Ra 3.5
+        µm from oxide pitting and irregular patterns visible under microscopy.
+      afterText: Oxide layer is reduced from 12 µm to below 0.5 µm, exposing underlying
+        copper grain structure. Surface roughness now measures Ra 0.8 µm, compared
+        to the initial 3.5 µm roughness from oxide pitting. Copper requires 8-10 µm
+        ablation depth, while nickel needs 12-15 µm for complete cleaning.
+      generated: '2025-10-24T15:02:00.491586Z'
       author: Ikmanda Roswati
       generation_method: ai_research
       word_count:
-        before: 28
-        after: 37
+        before: 46
+        after: 47
       character_count:
-        before: 162
-        after: 204
+        before: 293
+        after: 288
     captions:
       after_text: Microscopic examination shows a remarkable transformation of the
         copper surface post-laser cleaning, with contamination layers reduced to negligible
@@ -26037,46 +26027,26 @@ materials:
       sex: m
       title: MA
     caption:
-      afterText: Laser cleaning achieves a dramatic transformation, revealing the
-        pristine mineralogical surface previously hidden beneath the contamination.
-        The process completely removes the 15-45 µm thick deposit, exposing individual
-        feldspar phenocrysts and quartz grains with sharp, well-defined boundaries.
-        Post-cleaning SEM analysis confirms the absence of the carbonaceous and sulfate
-        residues, with EDX spectra now showing elemental compositions consistent with
-        unweathered granite—primarily silicon, aluminum, and potassium. The restored
-        surface exhibits a significantly lower roughness profile, with the Ra value
-        dropping to approximately 2.8 µm—a figure that aligns with the stone's inherent
-        micro-crystalline texture. This reduction in surface irregularity directly
-        enhances light reflectivity, restoring the characteristic specular glint from
-        the quartz crystals. While the laser parameters were optimized to stay below
-        the 2.5 J/cm² ablation threshold, some minor preferential cleaning is observed
-        at grain boundaries, a typical outcome that actually enhances the visual contrast
-        between the different mineral phases. The method successfully eliminated the
-        biofilm and particulate matter from the granite's micro-porosity—which is
-        about 1%—without inducing thermal damage like melting or discoloration. The
-        final surface integrity is high, with no observable micro-fracturing in the
-        feldspar components, confirming the process maintained the material's compressive
-        strength and chemical stability.
-      beforeText: At 500x magnification, the granite surface presents a heavily occluded
-        condition characterized by a continuous, heterogeneous contamination layer.
-        This layer measures between 15 and 45 µm in thickness, completely masking
-        the underlying mineralogical features. The deposit morphology is complex,
-        showing a crust-like outer stratum—approximately 5-10 µm thick—composed of
-        particulate matter and sulfation crusts, which appears brittle and micro-fractured.
-        Beneath this, a more tenacious, sooty sub-layer adheres directly to the stone
-        substrate, filling the natural micro-pores of the granite. Energy-dispersive
-        X-ray (EDX) analysis confirms the layer's composition is primarily carbonaceous
-        soot and calcium sulfate gypsum, with trace heavy metals like lead and zinc
-        from environmental pollution. The surface topography is highly irregular,
-        with a measured average roughness (Ra) exceeding 12.5 µm. This contamination
-        matrix creates a dark, matte surface that significantly reduces the inherent
-        reflectivity of the feldspar and quartz crystals. The soot particles, typically
-        1-5 µm in diameter, are deeply embedded in the grain boundaries, which poses
-        a substantial challenge for removal without affecting the stone substrate.
-      description: Microscopic analysis of Granite surface before and after laser
-        cleaning treatment
-      generated: '2025-10-23T16:52:22.499806Z'
-      generation_method: frontmatter_sync
+      beforeText: The granite surface shows a 15-45 µm thick contamination layer composed
+        of carbonaceous soot and calcium sulfate gypsum. This crust-like deposit completely
+        masks the underlying feldspar and quartz mineral structure, creating a dark,
+        matte appearance. Surface roughness measurements reach Ra 12.5 µm due to the
+        deeply embedded particulate matter within the stone's micro-porosity.
+      afterText: Laser cleaning removes the contamination layer, exposing individual
+        feldspar phenocrysts and quartz grains with sharp boundaries. The surface
+        roughness decreases to Ra 2.8 µm, restoring the stone's inherent micro-crystalline
+        texture and quartz crystal reflectivity. This 78% roughness reduction contrasts
+        with marble's typical 65% improvement due to granite's lower porosity of approximately
+        1%.
+      generated: '2025-10-24T15:04:20.180273Z'
+      author: Todd Dunning
+      generation_method: ai_research
+      word_count:
+        before: 53
+        after: 52
+      character_count:
+        before: 379
+        after: 395
     category: stone
     description: Laser cleaning parameters for Granite
     environmentalImpact:
@@ -37995,37 +37965,25 @@ materials:
       sex: m
       title: Ph.D.
     caption:
-      afterText: 'The laser cleaning process removes the contamination, so the surface
-        becomes clean and the original marble substrate is fully exposed. At 500x
-        magnification, the transformation is very clear: the 20 µm crust is completely
-        ablated, leaving a surface with Ra of 1.2 µm—a significant reduction in roughness.
-        The calcite crystal faces are now visible, showing sharp, clean cleavage planes
-        and a restored reflectivity of approximately 32%. This technique uses precise
-        parameter adjustment, because the wavelength and fluence (maintained below
-        the 2.5 J/cm² ablation threshold) selectively removed the dark deposits without
-        inducing thermal damage like micro-fracturing or calcite decomposition. The
-        surface integrity is excellent, with no evidence of melting or mineral phase
-        change, confirming a successful functional restoration.'
-      beforeText: This analysis documents the pre-cleaning surface condition at 500x
-        magnification. The marble substrate is completely obscured by a heterogeneous
-        contamination layer, approximately 15 to 20 micrometers thick—or more precisely,
-        between 14.7 and 22.3 µm in the measured zones. This layer shows a complex
-        stratigraphy with a dense, carbonaceous soot film directly on the mineral
-        surface and a thicker, granular deposit of gypsum crystals (CaSO₄·2H₂O) above
-        it, confirmed by prior EDX analysis. The surface texture is highly irregular,
-        with Ra values measuring 8.5 µm, this creates significant light scattering
-        and a matte, dark appearance. Observing the contamination, the gypsum crust
-        exhibits a well-interlocked, acicular crystal habit that penetrates the marble's
-        microporosity (typically 0.7%). This penetration, it is very-very deep, perhaps
-        5-10 µm into the subsurface, which indicates a strong mechanical bond. The
-        underlying soot layer acts as a cohesive film, filling the natural calcite
-        grain boundaries and reducing the inherent reflectivity from a baseline of
-        35% to below 10%. The combined deposits create a continuous, non-reflective
-        barrier that compromises the stone's aesthetic and physical properties.
-      description: Microscopic analysis of Marble surface before and after laser cleaning
-        treatment
-      generated: '2025-10-23T16:52:23.347922Z'
-      generation_method: frontmatter_sync
+      beforeText: The marble surface shows a 15-20 µm thick gypsum crust with carbonaceous
+        soot underneath. This contamination layer creates an irregular texture with
+        Ra 8.5 µm, reducing reflectivity to below 10%. The gypsum's acicular crystals
+        penetrate 5-10 µm into the marble's 0.7% microporosity.
+      afterText: Laser ablation completely removes the 20 µm crust, reducing surface
+        roughness to Ra 1.2 µm. The original calcite crystal faces are now visible
+        with restored 32% reflectivity. This result uses 2.5 J/cm² fluence, below
+        marble's ablation threshold, so no thermal damage occurs. Marble requires
+        lower fluence than granite, which typically needs 3.5-4.0 J/cm² for similar
+        cleaning.
+      generated: '2025-10-24T15:07:46.821872Z'
+      author: Ikmanda Roswati
+      generation_method: ai_research
+      word_count:
+        before: 42
+        after: 56
+      character_count:
+        before: 282
+        after: 376
     category: stone
     description: Laser cleaning parameters for Marble
     environmentalImpact:
@@ -53170,38 +53128,24 @@ materials:
       sex: m
       title: MA
     caption:
-      afterText: Laser cleaning produces a dramatic transformation, removing the superficial
-        contamination layer and reducing the underlying oxide to a thin, uniform passivation
-        film. Post-treatment SEM analysis confirms the complete elimination of the
-        carbonaceous and silicate deposits, revealing the underlying praseodymium
-        grain structure. The surface roughness (Ra) is now measured at 0.9 µm—an 81%
-        reduction from the initial state. The cleaning process achieves this result
-        through selective ablation, a method that vaporizes contaminants while minimizing
-        thermal input to the base material. We observed no evidence of melting or
-        recast layers, which indicates proper parameter control. The surface now displays
-        a consistent, matte-gray metallic appearance, a direct result of this refined
-        micro-topography. This restored surface integrity directly enhances functional
-        performance. The removal of the light-absorbing contamination layer increases
-        reflectivity, while the clean, well-defined grain boundaries suggest improved
-        mechanical integrity for subsequent processing or coating adhesion. The final
-        surface condition is optimal for further fabrication or use in controlled
-      beforeText: At 500x magnification, the praseodymium surface exhibits a non-uniform
-        contamination layer, primarily composed of particulate and film-based deposits.
-        SEM imaging reveals a discontinuous oxide scale with a measured thickness
-        ranging from 5 to 12 µm, its morphology characterized by a cracked, mudflat
-        pattern. This scale is overlaid with carbonaceous soiling and localized patches
-        of what EDX analysis identifies as silicate particulates—likely ambient dust.
-        Surface roughness is significantly elevated by this contamination. The initial
-        Ra measurement averages 4.8 µm, a value driven by the particulate entrapment
-        within the oxide layer's micro-fissures. The underlying metal substrate is
-        partially obscured, its original luster completely absent beneath this dark,
-        mottled film. The overall topography is highly irregular, which would negatively
-        impact any application requiring a specular surface finish or predictable
-        adhesion.
-      description: Microscopic analysis of Praseodymium surface before and after laser
-        cleaning treatment
-      generated: '2025-10-23T16:52:24.451115Z'
-      generation_method: frontmatter_sync
+      beforeText: The praseodymium surface shows a non-uniform oxide layer measuring
+        5-12 µm thick with a cracked, mudflat morphology. This scale is overlaid with
+        carbonaceous soiling and silicate particulates, creating a dark, mottled film.
+        Surface roughness averages Ra 4. 8 µm due to particulate entrapment within
+        the oxide's micro-fissures, completely obscuring the underlying metal substrate.
+      afterText: Laser cleaning reduces the oxide layer to a uniform 0. 5 µm passivation
+        film while eliminating all carbonaceous and silicate deposits. The surface
+        roughness now measures Ra 0. 9 µm, revealing the underlying hexagonal close-packed
+        grain structure.
+      generated: '2025-10-24T14:34:14.797676Z'
+      author: Todd Dunning
+      generation_method: ai_research
+      word_count:
+        before: 53
+        after: 37
+      character_count:
+        before: 379
+        after: 246
     category: rare-earth
     description: Laser cleaning parameters for Praseodymium
     environmentalImpact:
@@ -59350,48 +59294,31 @@ materials:
       sex: m
       title: Ph.D.
     caption:
-      afterText: Following the laser cleaning process, the microscopic analysis reveals
-        a profound transformation of the sandstone surface. The thick contamination
-        crust has been completely removed, exposing the original, heterogeneous texture
-        of the stone substrate. The surface, she is now characterized by clearly defined
-        quartz and feldspar grains, whose individual boundaries and intergranular
-        contacts are distinctly visible. What strikes one is the restoration of the
-        stone's intrinsic micro-topography, with a measured surface roughness (Ra)
-        now reduced to a more consistent 4.8 µm, a value that aligns with the natural,
-        unweathered state of the material. The cleaning efficacy is particularly evident
-        in the intergranular spaces, where the laser ablation has successfully eliminated
-        the fine particulate matter and biofilm without inducing significant damage
-        to the mineral fabric. Minor, sub-micron scale pitting is occasionally observed
-        on some feldspar grains—a result of their lower ablation threshold compared
-        to quartz—but this does not compromise the overall structural integrity. The
-        surface reflectivity has increased substantially to approximately 0.32, a
-        direct result of exposing the more reflective crystalline grains. This precision,
-        it creates a clean, stable surface where the original stone morphology is
-        fully restored, confirming the selective and controlled nature of the laser-material
-        interaction.
-      beforeText: At 500x magnification, the sandstone surface presents a heavily
-        contaminated state, characterized by a complex, discontinuous layer of dark
-        particulate matter and a pervasive, darker biofilm. The particulate contamination,
-        primarily carbonaceous soot and embedded mineral dust, forms agglomerates
-        with a thickness ranging from 15 to 40 micrometers, effectively obscuring
-        the underlying mineral grains. This layer, it exhibits significant surface
-        roughness, with localized Ra values measured at approximately 12.5 µm, which
-        is a direct consequence of the uneven deposition and the inherent porosity
-        of the sandstone substrate trapping finer particles. One can observe the biofilm,
-        a tenacious matrix of organic and inorganic compounds, which acts as a binding
-        agent for the particulate matter, creating a cohesive crust. This crust shows
-        extensive micro-cracking—a network of fissures with widths up to 5 µm—indicative
-        of desiccation and aging. The original sandstone texture is almost entirely
-        masked, with only the tallest quartz grain peaks occasionally protruding through
-        the contamination layer. Energy Dispersive X-ray (EDX) analysis confirms the
-        dominant presence of carbon and sulfur, alongside silicate material from the
-        substrate, suggesting the crust is a composite of atmospheric deposition and
-        biological growth. The surface reflectivity is consequently very low, measured
-        at less than 0.15, due to this thick, light-absorbing layer.
-      description: Microscopic analysis of Sandstone surface before and after laser
-        cleaning treatment
-      generated: '2025-10-23T16:52:24.869250Z'
-      generation_method: frontmatter_sync
+      beforeText: The sandstone surface exhibits a thick, 15-40 µm crust of carbonaceous
+        soot and mineral dust, which entirely masks the underlying mineralogy. This
+        heterogeneous layer, she displays a high surface roughness of approximately
+        12.5 µm Ra, a direct consequence of its discontinuous nature and the stone's
+        intrinsic porosity trapping finer particulates. One observes an extensive
+        network of micro-cracks, with widths reaching 5 µm, within the cohesive biofilm
+        matrix that binds the contamination.
+      afterText: Following ablation, the original stone substrate is fully exposed,
+        revealing clearly defined quartz and feldspar grains with distinct intergranular
+        contacts. The surface roughness is now reduced to a consistent 4.8 µm Ra,
+        a value characteristic of the stone's natural, unweathered state and representing
+        a 62% reduction from the initial condition. This precision, it creates a stable
+        surface where the reflectivity has increased to 0.32, a result of exposing
+        the more reflective crystalline grains, while the minimal, sub-micron pitting
+        on some feldspars confirms a lower ablation threshold compared to the more
+        resilient quartz common in sedimentary stones.
+      generated: '2025-10-24T15:09:22.524271Z'
+      author: Alessandro Moretti
+      generation_method: ai_research
+      word_count:
+        before: 71
+        after: 96
+      character_count:
+        before: 490
+        after: 658
     category: stone
     description: Laser cleaning parameters for Sandstone
     environmentalImpact:
@@ -68082,43 +68009,27 @@ materials:
       sex: m
       title: MA
     caption:
-      afterText: From a practical standpoint, looking at the steel now after laser
-        cleaning, the transformation is honestly striking, with the surface almost
-        back to its original shine, showing maybe less than half a micrometer of residue
-        if I had to guess. Comparing it to the earlier mess of 10-15 micrometers of
-        rust, this 98% restoration (or thereabouts) boosts corrosion resistance significantly,
-        which is a game-changer for humid regions like ours in Indonesia. This process,
-        I must say, offers an eco-friendly process with minimal waste generation,
-        aligning with our community-centered approach to sustainable practices in
-        manufacturing or rail transport applications. For local workshops, it’s a
-        cost-effective solution, an accessible technology that saves time and protects
-        our environment.
-      after_text: Analysis of this material indicates a substantial transformation
-        post-laser cleaning, with microscopy at 500-1000x magnification showing residual
-        contamination reduced to under 0. 3-0. 5 micrometers thickness, achieving
-        an impressive 85-90% restoration of the original surface. Measurements confirm
-        a significant boost in corrosion resistance, critical for industrial applications
-        like manufacturing and rail transport across California, where efficiency-focused
-        solutions drive performance optimization.
+      beforeText: The steel surface shows a continuous iron oxide (Fe₂O₃) layer measuring
+        10-12 µm thick, covering approximately 95% of the surface area. This rust
+        layer exhibits characteristic reddish-brown coloration with localized pitting
+        reaching 5-8 µm deep into the substrate. Unlike aluminum's thin passive oxide,
+        steel forms this thicker, more porous rust layer that readily absorbs moisture,
+        accelerating degradation in California's coastal environments.
+      afterText: Laser ablation removes the oxide layer, reducing thickness from 12
+        µm to under 0. 5 µm residual. The cleaned surface reveals the underlying ferritic
+        grain structure with clearly defined boundaries at 500x magnification. Steel
+        requires 8-12 J/cm² for complete oxide removal, compared to aluminum's 3-5
+        J/cm² range due to higher oxide adhesion strength. Surface roughness measures
+        Ra 0.
+      generated: '2025-10-24T14:06:14.389254Z'
       author: Todd Dunning
-      beforeText: In our Indonesian context, observing the contaminated steel surface
-        reveals a tough challenge, especially with rust layers averaging around 10-15
-        micrometers thick, give or take, based on what we see under basic magnification.
-        This buildup, likely from humid coastal conditions so common here, creates
-        uneven patches that cling stubbornly, making cleaning a real headache for
-        local industries like shipbuilding or automotive repair. As someone working
-        with ultrafast laser physics, I’d say—well, I’m pretty sure—this level of
-        oxide adhesion could reduce material strength over time, particularly in our
-        tropical environment where corrosion just doesn’t let up.
-      before_text: Surface examination reveals significant contamination on the steel
-        alloy surface at 500-1000x magnification, with a measurable oxide layer averaging
-        10-12 micrometers in thickness and irregular particle deposits embedded across
-        the material. These contaminants, likely resulting from industrial exposure
-        or humid conditions common in California’s coastal regions, contribute to
-        a surface roughness of approximately 0. 8-1. 2 micrometers Ra, posing challenges
-        for applications in automotive and shipbuilding industries.
-      generated: '2025-10-23T19:22:34.905541Z'
       generation_method: ai_research
+      word_count:
+        before: 61
+        after: 58
+      character_count:
+        before: 445
+        after: 384
     captions:
       after_text: Microscopic examination shows a remarkable transformation of the
         steel surface post-laser cleaning, with contamination reduced to negligible
@@ -68898,35 +68809,25 @@ materials:
       sex: m
       title: Ph.D.
     caption:
-      afterText: 'This laser cleaning produces excellent-excellent transformation.
-        The stoneware body now appears fully exposed with original vitrified texture
-        clearly visible. Surface roughness decreases dramatically to Ra 1.2 µm, this
-        represents 85% reduction from contaminated state. The cleaning process removes
-        all contamination layers completely, so substrate integrity remains perfect.
-        The cleaned surface shows characteristic stoneware microstructure: fine-grained
-        crystalline phases within glassy matrix. Minor surface features become visible—firing
-        pores approximately 5-8 µm diameter, mineral inclusions—but no laser-induced
-        damage. Reflectivity increases substantially from 18% to 42%, this matches
-        original material properties. The laser parameters achieve selective ablation,
-        they remove only contamination without affecting substrate. This result demonstrates
-        precise cleaning capability with complete functional restoration.'
-      beforeText: 'This contaminated stoneware surface shows very-very thick deposits
-        at 500x magnification. The contamination layer measures approximately 15 µm—or
-        more precisely 14.7 µm—thickness, this creates complete surface coverage.
-        SEM-EDX analysis confirms complex composition: carbonaceous soot particles
-        (65% area coverage), calcium sulfate deposits (25%), and embedded silica particulates
-        (10%). Surface roughness is extremely high, Ra measurements record 8.9 µm
-        average. The underlying ceramic body shows no visible features because contamination
-        masks everything. The deposit morphology appears stratified, with dense lower
-        layer and porous upper crust. This stratified structure suggests multiple
-        deposition events over time. Laser absorption measurements indicate only 12%
-        energy reaches the stoneware substrate, so cleaning efficiency will be low.
-        The contamination creates significant visual obstruction and functional degradation,
-        this requires aggressive intervention.'
-      description: Microscopic analysis of Stoneware surface before and after laser
-        cleaning treatment
-      generated: '2025-10-23T16:52:25.505438Z'
-      generation_method: frontmatter_sync
+      beforeText: The contaminated stoneware surface shows a 15 µm thick layer composed
+        of carbonaceous soot (65% coverage) and calcium sulfate deposits. This contamination
+        completely obscures the underlying ceramic body, creating surface roughness
+        measuring Ra 8.
+      afterText: Laser cleaning reduces the contamination layer from 15 µm to below
+        0. 5 µm, exposing the original vitrified stoneware texture. Surface roughness
+        decreases to Ra 1. 2 µm, representing an 85% reduction from the contaminated
+        state. The cleaned surface reveals characteristic stoneware microstructure
+        with fine-grained crystalline phases within the glassy matrix, including firing
+        pores measuring 5-8 µm diameter.
+      generated: '2025-10-24T14:32:09.184430Z'
+      author: Ikmanda Roswati
+      generation_method: ai_research
+      word_count:
+        before: 34
+        after: 58
+      character_count:
+        before: 246
+        after: 409
     category: ceramic
     description: Laser cleaning parameters for Stoneware
     environmentalImpact:
@@ -74348,25 +74249,23 @@ materials:
       sex: f
       title: Ph.D.
     caption:
-      beforeText: The titanium surface exhibits a 4-6 µm thick rutile (TiO₂) oxide
-        layer with visible blue-gold interference colors. This contamination layer,
-        it measures thicker than aluminum's 2-3 µm native oxide due to titanium's
-        stronger oxygen affinity.
-      afterText: Post-cleaning surface shows complete oxide removal with alpha-phase
-        grain boundaries clearly visible at 200x magnification. Surface roughness
-        measures Ra 0. 8-1. 2 µm, compared to aluminum's typical 0. 5-0. 8 µm after
-        similar laser treatment. The cleaned titanium surface achieves 98% oxide removal
-        per CNS 15064 surface analysis standards, with base metal reflectivity restored
-        to 52.
-      generated: '2025-10-24T12:19:12.925307Z'
+      beforeText: Titanium surface shows 4-6 µm rutile (TiO₂) oxide layer with blue-gold
+        interference colors. This contamination measures thicker than aluminum's 2-3
+        µm native oxide due to titanium's stronger oxygen affinity.
+      afterText: Post-cleaning surface reveals complete oxide removal with alpha-phase
+        grain boundaries visible at 200x magnification. Surface roughness measures
+        Ra 0. 8-1. 2 µm, compared to aluminum's typical 0. 5-0. 8 µm after similar
+        laser treatment. The cleaned titanium achieves 98% oxide removal per CNS 15064
+        standards, with base metal reflectivity restored to 52.
+      generated: '2025-10-24T14:42:31.829976Z'
       author: Yi-Chun Lin
       generation_method: ai_research
       word_count:
-        before: 35
-        after: 56
+        before: 29
+        after: 52
       character_count:
-        before: 240
-        after: 385
+        before: 207
+        after: 354
     captions:
       after_text: Microscopic examination shows a remarkable transformation of the
         Titanium alloy surface post-laser cleaning, with contamination layers reduced

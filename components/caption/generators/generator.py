@@ -4,6 +4,7 @@
 import datetime
 import json
 import logging
+import time
 from pathlib import Path
 from typing import Dict, Optional, List
 from generators.component_generators import APIComponentGenerator
@@ -55,65 +56,47 @@ class CaptionComponentGenerator(APIComponentGenerator):
         
         return {}
 
-    def _build_prompt(
+    def _build_single_section_prompt(
         self, 
         material_name: str, 
-        frontmatter_data: Dict, 
-        author_obj: Dict,
-        voice_instructions: str,
-        author_word_limit: int
+        frontmatter_data: Dict,
+        section_type: str,  # "before" or "after"
+        target_words: int,
+        style_guidance: str,
+        paragraph_count: str
     ) -> str:
-        """Build AI prompt for caption generation using ONLY unified_voice_system.yaml"""
+        """Build AI prompt for a single caption section (before OR after) using Voice service
         
-        import random
-        
-        # Load frontmatter if not provided to get author info first
-        if not frontmatter_data:
-            frontmatter_data = self._load_frontmatter_data(material_name)
-        
+        Args:
+            material_name: Name of the material
+            frontmatter_data: Frontmatter data dictionary
+            section_type: "before" (contaminated) or "after" (cleaned)
+            target_words: Target word count for this section
+            style_guidance: Style hint ("brief and focused", "moderate detail", "comprehensive")
+            paragraph_count: Paragraph guidance ("1 concise paragraph", "1-2 paragraphs", etc.)
+            
+        Returns:
+            Complete prompt string for single section generation
+        """
         # Extract author data
         author_obj = frontmatter_data.get('author', {})
         if not author_obj or not author_obj.get('country'):
-            raise ValueError(f"No author data found in frontmatter for {material_name} - required for unified voice system")
+            raise ValueError(f"No author data found in frontmatter for {material_name} - required for voice system")
         
         # Get author details
         author_name = author_obj.get('name', 'Unknown')
         author_country = author_obj.get('country', 'Unknown')
         author_expertise = author_obj.get('expertise', 'Laser cleaning technology')
         
-        # Initialize VoiceOrchestrator for country-specific settings
+        # Initialize VoiceOrchestrator for country-specific voice
         voice = VoiceOrchestrator(country=author_country)
-        author_word_limit = voice.get_word_limit()
-        logger.info(f"Using word limit {author_word_limit} for {author_country}")
-        
-        # Generate enhanced character variation for realistic human writing
-        # Character count roughly = word count * 5.5 (average chars per word including spaces)
-        base_chars = int(author_word_limit * 5.5)
-        
-        # Enhanced variation ranges: 25% to 175% (150% total range)
-        min_chars = int(base_chars * 0.25)  # 25% of base (75% below)
-        max_chars = int(base_chars * 1.75)  # 175% of base (75% above)
-        
-        # Generate significantly different lengths for before/after sections
-        before_target = random.randint(min_chars, max_chars)
-        after_target = random.randint(min_chars, max_chars)
-        
-        # Ensure sections are meaningfully different (at least 30% difference)
-        while abs(before_target - after_target) < (base_chars * 0.3):
-            after_target = random.randint(min_chars, max_chars)
-        
-        # Determine paragraph count based on target length
-        before_paragraphs = "1-2 paragraphs" if before_target < 900 else "2-3 paragraphs"
-        after_paragraphs = "1-2 paragraphs" if after_target < 900 else "2-3 paragraphs"
-        
-        logger.info(f"Caption targets: before={before_target} chars, after={after_target} chars (base: {base_chars}, range: {min_chars}-{max_chars})")
         
         # Extract material properties for context
         material_props = frontmatter_data.get('materialProperties', {})
         category = frontmatter_data.get('category', 'material')
         applications = frontmatter_data.get('applications', [])
         
-        # Build comprehensive context for unified prompt
+        # Build comprehensive context
         properties_json = json.dumps(
             {prop: data.get('value') for prop, data in material_props.items() 
              if isinstance(data, dict) and 'value' in data},
@@ -122,7 +105,7 @@ class CaptionComponentGenerator(APIComponentGenerator):
         
         applications_str = ', '.join(applications[:3]) if applications else 'General cleaning applications'
         
-        # Build material context dict for get_unified_prompt
+        # Build material context dict
         material_context = {
             'material_name': material_name,
             'category': category,
@@ -130,99 +113,73 @@ class CaptionComponentGenerator(APIComponentGenerator):
             'applications': applications_str
         }
         
-        # Build author dict for get_unified_prompt
+        # Build author dict
         author_dict = {
             'name': author_name,
             'country': author_country,
             'expertise': author_expertise
         }
         
-        # USE ONLY unified_voice_system.yaml via get_unified_prompt
+        # Determine section-specific context
+        if section_type == "before":
+            section_focus = "contaminated surface microscopy"
+            section_instruction = "Describe the contaminated surface condition, contaminant characteristics, and surface degradation"
+        else:  # after
+            section_focus = "cleaned surface restoration"
+            section_instruction = "Describe the cleaned surface condition, restoration quality, and material integrity"
+        
+        # Call Voice service to generate prompt
         try:
-            unified_prompt = voice.get_unified_prompt(
-                component_type='caption_generation',
+            prompt = voice.get_unified_prompt(
+                component_type='microscopy_description',
                 material_context=material_context,
                 author=author_dict,
-                before_paragraphs=before_paragraphs,
-                before_target=before_target,
-                after_paragraphs=after_paragraphs,
-                after_target=after_target
+                section_focus=section_focus,
+                section_instruction=section_instruction,
+                target_words=target_words,
+                style_guidance=style_guidance,
+                paragraph_count=paragraph_count
             )
-            logger.info(f"✅ Generated unified prompt for {material_name} ({author_country})")
-            return unified_prompt
+            logger.info(f"✅ Generated {section_type} prompt for {material_name} ({author_country}): {target_words}w, {style_guidance}")
+            return prompt
         except Exception as e:
-            logger.error(f"Failed to generate unified prompt for {material_name}: {e}")
-            raise ValueError(f"Failed to generate unified prompt: {e}")
+            logger.error(f"Failed to generate {section_type} prompt for {material_name}: {e}")
+            raise ValueError(f"Failed to generate {section_type} prompt: {e}")
 
-    def _extract_ai_content(self, ai_response: str, material_name: str) -> Dict:
-        """Extract before/after text from AI response - FAIL FAST"""
+    def _extract_single_section_content(self, ai_response: str, material_name: str, section_type: str) -> str:
+        """Extract single section text from AI response - FAIL FAST
         
+        Args:
+            ai_response: Raw AI response text
+            material_name: Material being processed
+            section_type: "before" or "after" for logging
+            
+        Returns:
+            Cleaned section text
+        """
         if not ai_response or not ai_response.strip():
-            raise ValueError(f"Empty AI response for {material_name} - fail-fast architecture requires valid content")
+            raise ValueError(f"Empty AI response for {material_name} {section_type} - fail-fast architecture requires valid content")
         
-        # Try marker-based extraction first (Grok format)
-        before_start = ai_response.find('**BEFORE_TEXT:')
-        after_marker_search = ai_response.find('**AFTER_TEXT:')
+        # Clean the response - remove any formatting artifacts
+        content = ai_response.strip()
         
-        if before_start != -1 and after_marker_search != -1:
-            # Grok format with markers
-            marker_line_end = ai_response.find('\n', before_start)
-            if marker_line_end == -1:
-                marker_line_end = before_start + len('**BEFORE_TEXT:**')
-            else:
-                marker_line_end += 1
-            
-            before_text = ai_response[marker_line_end:after_marker_search].strip()
-            before_text = before_text.strip('[]').strip()
-            
-            after_marker_line_end = ai_response.find('\n', after_marker_search)
-            if after_marker_line_end == -1:
-                after_start = after_marker_search + len('**AFTER_TEXT:**')
-            else:
-                after_start = after_marker_line_end + 1
-            
-            after_text = ai_response[after_start:].strip()
-            after_text = after_text.strip('[]').strip()
-        else:
-            # DeepSeek format - splits on double newline (paragraph break)
-            paragraphs = [p.strip() for p in ai_response.split('\n\n') if p.strip()]
-            
-            if len(paragraphs) < 2:
-                # Try single newline split if no double newlines
-                paragraphs = [p.strip() for p in ai_response.split('\n') if p.strip() and len(p.strip()) > 100]
-            
-            if len(paragraphs) < 2:
-                raise ValueError(f"DeepSeek format: Expected 2 paragraphs for {material_name}, got {len(paragraphs)}")
-            
-            # First paragraph is BEFORE, second is AFTER
-            before_text = paragraphs[0]
-            after_text = paragraphs[1]
+        # Remove common AI response wrappers if present
+        if content.startswith('**BEFORE_TEXT:**') or content.startswith('**AFTER_TEXT:**'):
+            first_newline = content.find('\n')
+            if first_newline != -1:
+                content = content[first_newline+1:].strip()
+        
+        # Remove common wrapper patterns
+        content = content.strip('[]').strip()
         
         # Validate content - FAIL FAST (100 character minimum to allow short random targets)
         min_length = 100  # Flexible minimum to accommodate random variation
         
-        if not before_text or len(before_text) < min_length:
-            raise ValueError(f"BEFORE_TEXT too short for {material_name} - minimum {min_length} characters for basic content")
+        if not content or len(content) < min_length:
+            raise ValueError(f"{section_type.upper()}_TEXT too short for {material_name} - minimum {min_length} characters for basic content")
         
-        if not after_text or len(after_text) < min_length:
-            raise ValueError(f"AFTER_TEXT too short for {material_name} - minimum {min_length} characters for basic content")
-        
-        # Apply sentence count enforcement based on voice profile requirements
-        author_country = getattr(self, '_current_author_country', None)
-        if author_country:
-            before_text, after_text = self._enforce_sentence_count_limits(
-                before_text, after_text, author_country, material_name
-            )
-        
-        return {
-            'beforeText': before_text,
-            'afterText': after_text,
-            'technicalFocus': 'surface_analysis',
-            'uniqueCharacteristics': [f'{material_name.lower()}_specific'],
-            'contaminationProfile': f'{material_name.lower()} surface contamination',
-            'microscopyParameters': f'Microscopic analysis of {material_name.lower()}',
-            'qualityMetrics': 'Surface improvement analysis'
-        }
+        logger.info(f"Extracted {section_type} section: {len(content)} chars, {len(content.split())} words")
+        return content
 
     def _enforce_sentence_count_limits(self, before_text: str, after_text: str, 
                                      author_country: str, material_name: str) -> tuple[str, str]:
@@ -249,15 +206,37 @@ class CaptionComponentGenerator(APIComponentGenerator):
             validation_req = caption_adaptation.get('validation_requirements', {})
             min_sentences = validation_req.get('minimum_sentences', 5)
             
-            # Sentence count targets by country (from voice profiles)
-            country_limits = {
-                'taiwan': (6, 9),
-                'italy': (5, 8), 
-                'indonesia': (4, 7),
-                'united_states': (5, 8)
-            }
+            # PERCENTAGE-BASED sentence count enforcement
+            # Allows sentence counts to scale with character targets (25%-175% variation)
+            # This enables true word count variation while maintaining voice authenticity
             
-            min_total, max_total = country_limits.get(author_country.lower(), (min_sentences, min_sentences + 3))
+            # Calculate expected sentence count from COMBINED before+after character targets
+            # Stored in instance during prompt generation for consistency
+            total_target_chars = getattr(self, '_current_char_target', None)
+            
+            if total_target_chars:
+                # Average sentence length: 60-80 chars (including spaces/punctuation)
+                # Use 70 chars as baseline for calculation
+                baseline_sentence_count = total_target_chars / 70
+                
+                # Allow 50% below to 150% above baseline (wide variation range)
+                min_total = max(3, int(baseline_sentence_count * 0.5))   # At least 3 sentences
+                max_total = int(baseline_sentence_count * 2.5)           # Up to 250% of baseline
+                
+                logger.info(f"Percentage-based limits for {material_name}: "
+                          f"target_chars={total_target_chars}, "
+                          f"baseline_sentences={baseline_sentence_count:.1f}, "
+                          f"range={min_total}-{max_total}")
+            else:
+                # Fallback to country-based limits if character targets not available
+                country_limits = {
+                    'taiwan': (12, 30),
+                    'italy': (8, 22),
+                    'indonesia': (8, 20),
+                    'united_states': (10, 25)
+                }
+                min_total, max_total = country_limits.get(author_country.lower(), (min_sentences, min_sentences + 10))
+                logger.warning(f"Using fallback country limits for {material_name}: {min_total}-{max_total}")
             
             # Split into sentences
             def split_sentences(text: str) -> list[str]:
@@ -525,77 +504,127 @@ class CaptionComponentGenerator(APIComponentGenerator):
         
         # Build AI prompt and generate content using unified voice system
         try:
-            from voice.orchestrator import VoiceOrchestrator
             import random
-            import json
             
             # Use unified voice prompting system
             if author_obj and author_obj.get('country'):
-                try:
-                    voice = VoiceOrchestrator(country=author_obj['country'])
-                    
-                    # Calculate target lengths with maximum range variation for content diversity (reduced by 30%)
-                    author_word_limit = voice.get_word_limit()
-                    base_chars = int(author_word_limit * 3.85)  # Reduced from 5.5 to 3.85 (30% reduction)
-                    
-                    # Maximum range variation: ±70% for significant length differences
-                    min_chars = int(base_chars * 0.3)  # 30% of base (much shorter)
-                    max_chars = int(base_chars * 1.7)  # 170% of base (much longer)
-                    
-                    # Ensure before and after have different lengths by using separate ranges
-                    before_min = min_chars
-                    before_max = int(base_chars * 1.2)  # Shorter range for before
-                    after_min = int(base_chars * 0.8)   # Longer range for after
-                    after_max = max_chars
-                    
-                    before_target = random.randint(before_min, before_max)
-                    after_target = random.randint(after_min, after_max)
-                    before_paragraphs = "1-2 paragraphs" if before_target < 900 else "2-3 paragraphs"
-                    after_paragraphs = "1-2 paragraphs" if after_target < 900 else "2-3 paragraphs"
-                    
-                    # Prepare material context
-                    material_context = {
-                        'material_name': material_name,
-                        'category': category,
-                        'properties': json.dumps(material_data, indent=2) if material_data else 'Standard material characteristics',
-                        'applications': 'General cleaning applications'
-                    }
-                    
-                    # Generate unified prompt
-                    prompt = voice.get_unified_prompt(
-                        component_type='caption_generation',
-                        material_context=material_context,
-                        author=author_obj,
-                        before_paragraphs=before_paragraphs,
-                        before_target=before_target,
-                        after_paragraphs=after_paragraphs,
-                        after_target=after_target
-                    )
-                    
-                except Exception as e:
-                    logger.warning(f"Could not use unified voice system for {author_obj.get('country')}: {e}")
-                    # Fallback to old system
-                    prompt = f"Generate technical caption for {material_name} with professional analysis."
+                # Word range: 20-80 words per section (110-440 chars @ 5.5 chars/word)
+                # Total caption range: 40-160 words
+                min_section_chars = 110   # 20 words minimum per section
+                max_section_chars = 440   # 80 words maximum per section
+                
+                # Each section gets independent range
+                before_target = random.randint(min_section_chars, max_section_chars)
+                after_target = random.randint(min_section_chars, max_section_chars)
+                
+                # Calculate word targets and style guidance
+                before_words = int(before_target / 5.5)
+                after_words = int(after_target / 5.5)
+                
+                # Before section guidance
+                if before_target < 220:  # 20-40 words
+                    before_paragraphs = "1 concise paragraph"
+                    before_style = "brief and focused"
+                elif before_target < 330:  # 40-60 words
+                    before_paragraphs = "1-2 paragraphs"
+                    before_style = "moderate detail"
+                else:  # 60-80 words
+                    before_paragraphs = "2 paragraphs"
+                    before_style = "comprehensive and detailed"
+                
+                # After section guidance
+                if after_target < 220:
+                    after_paragraphs = "1 concise paragraph"
+                    after_style = "brief and focused"
+                elif after_target < 330:
+                    after_paragraphs = "1-2 paragraphs"
+                    after_style = "moderate detail"
+                else:
+                    after_paragraphs = "2 paragraphs"
+                    after_style = "comprehensive and detailed"
+                
+                # Store combined character target for percentage-based sentence enforcement
+                self._current_char_target = before_target + after_target
+                logger.info(f"Caption targets: before={before_target} chars ({before_words}w, {before_style}), after={after_target} chars ({after_words}w, {after_style})")
+                
+                # ========================================
+                # CAPTION-SPECIFIC DUAL GENERATION LOGIC
+                # Voice is called TWICE independently via _build_single_section_prompt()
+                # ========================================
+                
+                logger.info(f"🎭 Generating dual-section caption for {material_name}")
+                logger.info(f"   Before: {before_words}w ({before_style}), After: {after_words}w ({after_style})")
+                
+                # CALL 1: Generate BEFORE section (contaminated surface)
+                before_prompt = self._build_single_section_prompt(
+                    material_name=material_name,
+                    frontmatter_data=frontmatter_data,
+                    section_type="before",
+                    target_words=before_words,
+                    style_guidance=before_style,
+                    paragraph_count=before_paragraphs
+                )
+                
+                # Add cache-busting for before section
+                random_seed_before = random.randint(10000, 99999)
+                timestamp_before = int(time.time() * 1000) % 100000
+                before_prompt = before_prompt + f"\n\n[Generation ID: {random_seed_before}-{timestamp_before}]"
+                
+                before_response = api_client.generate_simple(
+                    prompt=before_prompt,
+                    max_tokens=dynamic_max_tokens // 2,  # Half for each section
+                    temperature=0.7   # Natural variation
+                )
+                
+                if not before_response.success:
+                    raise ValueError(f"BEFORE generation failed for {material_name}: {before_response.error}")
+                
+                # Extract BEFORE content
+                before_text = self._extract_single_section_content(before_response.content, material_name, "before")
+                logger.info(f"✅ BEFORE section: {len(before_text.split())} words")
+                
+                # CALL 2: Generate AFTER section (cleaned surface)
+                after_prompt = self._build_single_section_prompt(
+                    material_name=material_name,
+                    frontmatter_data=frontmatter_data,
+                    section_type="after",
+                    target_words=after_words,
+                    style_guidance=after_style,
+                    paragraph_count=after_paragraphs
+                )
+                
+                # Add cache-busting for after section
+                random_seed_after = random.randint(10000, 99999)
+                timestamp_after = int(time.time() * 1000) % 100000
+                after_prompt = after_prompt + f"\n\n[Generation ID: {random_seed_after}-{timestamp_after}]"
+                
+                after_response = api_client.generate_simple(
+                    prompt=after_prompt,
+                    max_tokens=dynamic_max_tokens // 2,  # Half for each section
+                    temperature=0.7   # Natural variation
+                )
+                
+                if not after_response.success:
+                    raise ValueError(f"AFTER generation failed for {material_name}: {after_response.error}")
+                
+                # Extract AFTER content
+                after_text = self._extract_single_section_content(after_response.content, material_name, "after")
+                logger.info(f"✅ AFTER section: {len(after_text.split())} words")
+                
+                # Combine into caption content structure
+                ai_content = {
+                    'beforeText': before_text,
+                    'afterText': after_text,
+                    'technicalFocus': 'surface_analysis',
+                    'uniqueCharacteristics': [f'{material_name.lower()}_specific'],
+                    'contaminationProfile': f'{material_name.lower()} surface contamination',
+                    'microscopyParameters': f'Microscopic analysis of {material_name.lower()}',
+                    'qualityMetrics': 'Surface improvement analysis'
+                }
+                
+                logger.info(f"📊 Caption complete: {len(before_text.split())} before + {len(after_text.split())} after = {len(before_text.split()) + len(after_text.split())} total words")
             else:
-                prompt = f"Generate technical caption for {material_name} with standard analysis."
-            
-            response = api_client.generate_simple(
-                prompt=prompt,
-                max_tokens=dynamic_max_tokens,  # Dynamic limit based on author's word limit
-                temperature=0.4   # Increased for more natural voice variation
-            )
-            
-            logger.info(f"Caption generation for {material_name} by {author} ({author_country}): max_tokens={dynamic_max_tokens}")
-            
-            # FAIL FAST: API response must be successful
-            if not response.success:
-                raise ValueError(f"AI generation failed for {material_name}: {response.error} - fail-fast requires successful API responses")
-            
-            if not response.content or not response.content.strip():
-                raise ValueError(f"Empty AI response for {material_name} - fail-fast requires meaningful content")
-            
-            # Extract and validate AI content - FAIL FAST
-            ai_content = self._extract_ai_content(response.content, material_name)
+                raise ValueError(f"No author data available for {material_name} - fail-fast requires author information")
             
             # POST-PROCESSING VALIDATION using requirements.yaml
             validation_issues = self._validate_against_requirements(
