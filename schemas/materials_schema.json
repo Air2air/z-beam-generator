@@ -251,9 +251,29 @@
         "regulatoryStandards": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "object",
+            "required": ["name", "description"],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Standard organization name (e.g., FDA, ANSI, IEC)"
+              },
+              "description": {
+                "type": "string",
+                "description": "Full standard description and identifier"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri",
+                "description": "URL to the standard documentation"
+              },
+              "image": {
+                "type": "string",
+                "description": "Path to organization logo image"
+              }
+            }
           },
-          "description": "Applicable regulatory standards"
+          "description": "Applicable regulatory standards with structured metadata"
         }
       },
       "additionalProperties": true

@@ -20,6 +20,36 @@
 - **Data Flow**: Materials.yaml → Frontmatter (one-way only)
 - **See**: `docs/DATA_STORAGE_POLICY.md` for complete policy
 
+### 🆕 Data Structure Update (October 25, 2025)
+
+**Regulatory Standards**: Now structured objects instead of strings
+**Images**: 100% coverage with both hero AND micro images (132/132)
+
+**Old Structure**:
+```yaml
+regulatoryStandards:
+  - "FDA 21 CFR 1040.10"
+images:
+  hero: {...}  # micro missing for 107 materials
+```
+
+**New Structure**:
+```yaml
+regulatoryStandards:
+  - name: FDA
+    description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+    url: https://www.ecfr.gov/...
+    image: /images/logo/logo_org_fda.png
+images:
+  hero: {alt: "...", url: "..."}
+  micro: {alt: "...", url: "..."}  # Now all 132 materials
+```
+
+**Documentation**: `docs/DATA_STRUCTURE_UPDATE_OCT2025.md`
+**Script**: `scripts/fix_materials_structure.py`
+**Testing**: `tests/test_data_structure_oct2025.py` - 10/10 tests passing ✅
+**Coverage**: Hero 132/132 (100%), Micro 132/132 (100%), RegulatoryStandards 106/132 (80.3%)
+
 ---
 
 ## 🎯 Most Common User Questions → Direct Solutions

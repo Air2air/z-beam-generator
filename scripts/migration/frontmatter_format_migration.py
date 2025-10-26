@@ -267,13 +267,13 @@ class FrontmatterMigrator:
                 'name': 'ANSI',
                 'description': 'ANSI Z136.1 - Safe Use of Lasers',
                 'url': 'https://webstore.ansi.org/standards/lia/ansiz1362022',
-                'image': '/images/logo/logo_org_ansi.png'
+                'image': '/images/logo/logo-org-ansi.png'
             },
             {
                 'name': 'IEC',
                 'description': 'IEC 60825 - Safety of Laser Products', 
                 'url': 'https://webstore.iec.ch/en/publication/3587',
-                'image': '/images/logo/logo_org_iec.png'
+                'image': '/images/logo/logo-org-iec.png'
             }
         ]
         

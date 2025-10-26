@@ -171,31 +171,31 @@
       "description": "Chemical composition and formula information (legacy - consolidated into properties)"
     },
     "regulatoryStandards": {
-      "oneOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "array",
-          "items": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "object",
-                "properties": {
-                  "name": {"type": "string"},
-                  "description": {"type": "string"},
-                  "url": {"type": "string"},
-                  "image": {"type": "string"}
-                }
-              }
-            ]
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "description"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Standard organization name (e.g., FDA, ANSI, IEC, OSHA, ISO)"
+          },
+          "description": {
+            "type": "string",
+            "description": "Full standard description and identifier"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the standard documentation"
+          },
+          "image": {
+            "type": "string",
+            "description": "Path to organization logo image (e.g., /images/logo/logo_org_fda.png)"
           }
         }
-      ],
-      "description": "Regulatory standards"
+      },
+      "description": "Regulatory standards and compliance requirements with structured metadata"
     },
     "images": {
       "$ref": "#/definitions/Images"

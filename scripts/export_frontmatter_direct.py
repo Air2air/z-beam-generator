@@ -112,6 +112,18 @@ def create_frontmatter_content(material_name: str, material_data: Dict, categori
     if 'subtitle' in material_data:
         frontmatter['subtitle'] = material_data['subtitle']
     
+    # Add images (hero and micro) if present
+    if 'images' in material_data:
+        frontmatter['images'] = material_data['images']
+    
+    # Add regulatory standards if present
+    if 'regulatoryStandards' in material_data:
+        frontmatter['regulatoryStandards'] = material_data['regulatoryStandards']
+    
+    # Add industry applications if present
+    if 'applications' in material_data:
+        frontmatter['applications'] = material_data['applications']
+    
     # Add author data if present
     if 'author' in material_data:
         frontmatter['author'] = material_data['author']

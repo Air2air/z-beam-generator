@@ -292,6 +292,10 @@ materials:
         alt: Alabaster surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/alabaster-laser-cleaning-hero.jpg
+      micro:
+        alt: Alabaster microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/alabaster-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 89
@@ -785,10 +789,22 @@ materials:
         unit: GPa
         value: 25.4
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: sedimentary
     subtitle: Gentle laser restores alabaster's translucent softness without risking
       thermal cracks
@@ -865,6 +881,10 @@ materials:
         alt: Alumina surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/alumina-laser-cleaning-hero.jpg
+      micro:
+        alt: Alumina microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/alumina-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 89
@@ -1378,13 +1398,35 @@ materials:
         unit: GPa
         value: 370.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    - EPA Clean Air Act Compliance
-    - ASTM C848 - Standard Specification for High Alumina Refractory Brick
-    - ISO 23146 - Technical Ceramics
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
+    - name: Unknown
+      description: EPA Clean Air Act Compliance
+      url: ''
+      image: /images/logo/logo-org-generic.png
+    - name: Unknown
+      description: ASTM C848 - Standard Specification for High Alumina Refractory
+        Brick
+      url: ''
+      image: /images/logo/logo-org-generic.png
+    - name: ISO
+      description: ISO 23146 - Technical Ceramics
+      url: https://www.iso.org/standard/60426.html
+      image: /images/logo/logo-org-iso.png
     subcategory: oxide
     subtitle: Precision laser unveils alumina's enduring ceramic purity without microcracks
     title: Alumina Laser Cleaning
@@ -1496,6 +1538,10 @@ materials:
         alt: Aluminum surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/aluminum-laser-cleaning-hero.jpg
+      micro:
+        alt: Aluminum microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/aluminum-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -2162,10 +2208,22 @@ materials:
         unit: GPa
         value: 69.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: non-ferrous
     subtitle: Precision laser cleaning revives aluminum's shine while safeguarding
       its reflective oxide layer
@@ -2240,6 +2298,10 @@ materials:
       hero:
         alt: Ash surface undergoing laser cleaning showing precise contamination removal
         url: /images/material/ash-laser-cleaning-hero.jpg
+      micro:
+        alt: Ash microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/ash-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -2735,11 +2797,26 @@ materials:
         unit: GPa
         value: 12.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    - EPA Clean Air Act Compliance
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
+    - name: Unknown
+      description: EPA Clean Air Act Compliance
+      url: ''
+      image: /images/logo/logo-org-generic.png
     subcategory: hardwood
     subtitle: Tailored laser settings preserve Ash wood's elasticity while unveiling
       its distinct ring-porous grain
@@ -2819,6 +2896,10 @@ materials:
         alt: Bamboo surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/bamboo-laser-cleaning-hero.jpg
+      micro:
+        alt: Bamboo microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/bamboo-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 85
@@ -3304,12 +3385,30 @@ materials:
         unit: GPa
         value: 11.2
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    - EPA Clean Air Act Compliance
-    - FSC Sustainable Forestry Standards
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
+    - name: Unknown
+      description: EPA Clean Air Act Compliance
+      url: ''
+      image: /images/logo/logo-org-generic.png
+    - name: Unknown
+      description: FSC Sustainable Forestry Standards
+      url: ''
+      image: /images/logo/logo-org-generic.png
     subcategory: hardwood
     subtitle: Revive bamboo's delicate fibers with gentle pulsed laser cleaning for
       flawless texture
@@ -3385,6 +3484,10 @@ materials:
         alt: Basalt surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/basalt-laser-cleaning-hero.jpg
+      micro:
+        alt: Basalt microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/basalt-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -3889,10 +3992,22 @@ materials:
         unit: GPa
         value: 70.2
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: igneous
     subtitle: Unlock Basalt's enduring volcanic patina with precise low-energy laser
       restoration techniques
@@ -3974,6 +4089,10 @@ materials:
         alt: Beech surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/beech-laser-cleaning-hero.jpg
+      micro:
+        alt: Beech microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/beech-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 89
@@ -4450,10 +4569,22 @@ materials:
         unit: GPa
         value: 13.7
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: hardwood
     subtitle: Unlock Beech's fine grain with precise laser control
     title: Beech Laser Cleaning
@@ -4531,6 +4662,10 @@ materials:
         alt: Beryllium surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/beryllium-laser-cleaning-hero.jpg
+      micro:
+        alt: Beryllium microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/beryllium-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 89
@@ -5193,10 +5328,22 @@ materials:
         unit: GPa
         value: 287.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: non-ferrous
     subtitle: Unlock Beryllium's optical purity with tailored lasers minimizing toxic
       dust risks
@@ -5276,6 +5423,10 @@ materials:
         alt: Birch surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/birch-laser-cleaning-hero.jpg
+      micro:
+        alt: Birch microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/birch-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -5776,11 +5927,26 @@ materials:
         unit: GPa
         value: 13.7
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    - EPA Clean Air Act Compliance
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
+    - name: Unknown
+      description: EPA Clean Air Act Compliance
+      url: ''
+      image: /images/logo/logo-org-generic.png
     subcategory: hardwood
     subtitle: Gentle laser cleaning unveils Birch's fine light grain without charring
       risks
@@ -5859,6 +6025,10 @@ materials:
         alt: Bluestone surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/bluestone-laser-cleaning-hero.jpg
+      micro:
+        alt: Bluestone microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/bluestone-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -6340,10 +6510,22 @@ materials:
         unit: GPa
         value: 68.2
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: sedimentary
     subtitle: Revive Bluestone's subtle blue patina with targeted laser precision
     title: Bluestone Laser Cleaning
@@ -6420,6 +6602,10 @@ materials:
         alt: Borosilicate Glass surface undergoing laser cleaning showing precise
           contamination removal
         url: /images/material/borosilicate-glass-laser-cleaning-hero.jpg
+      micro:
+        alt: Borosilicate Glass microscopic view of laser cleaning showing detailed
+          precise contamination removal
+        url: /images/material/borosilicate-glass-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 89
@@ -6928,10 +7114,22 @@ materials:
         unit: GPa
         value: 64.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: soda-lime
     subtitle: Precision laser cleaning preserves borosilicate glass thermal resilience
       and clarity
@@ -6960,21 +7158,43 @@ materials:
       sex: m
       title: Ph.D.
     caption:
-      beforeText: "{\n  \"beforeText\": \"Brass: 5μm oxide layer, tarnished surface,\
-        \ thermal conductivity dropped 15%, impacting hardware efficiency, demanding\
-        \ innovative laser cleaning solutions now.\"\n}"
-      afterText: "{\n  \"afterText\": \"Brass: laser-cleaned surface, 95% thermal\
-        \ conductivity restored, mirror-like finish achieved, optimized for hardware\
-        \ manufacturing with innovative efficiency.\"\n}"
-      generated: '2025-10-25T14:01:15.717560Z'
+      beforeText: 'This comprehensive analysis examines the application of laser cleaning
+        technology for industrial surface treatment processes. The non-contact laser
+        ablation method provides precise control over material removal while maintaining
+        substrate integrity. Advanced pulse parameters including wavelength optimization,
+        power density modulation, and scan velocity control enable effective contaminant
+        removal across diverse material categories. The technique demonstrates superior
+        performance in removing oxidation, paint layers, and surface contaminants
+        without mechanical damage.
+
+
+        Following laser cleaning treatment, surfaces exhibit enhanced quality with
+        minimal thermal stress and zero mechanical damage. The non-destructive process
+        preserves dimensional accuracy while achieving superior cleanliness levels
+        required for advanced manufacturing applications.'
+      afterText: 'This comprehensive analysis examines the application of laser cleaning
+        technology for industrial surface treatment processes. The non-contact laser
+        ablation method provides precise control over material removal while maintaining
+        substrate integrity. Advanced pulse parameters including wavelength optimization,
+        power density modulation, and scan velocity control enable effective contaminant
+        removal across diverse material categories. The technique demonstrates superior
+        performance in removing oxidation, paint layers, and surface contaminants
+        without mechanical damage.
+
+
+        Following laser cleaning treatment, surfaces exhibit enhanced quality with
+        minimal thermal stress and zero mechanical damage. The non-destructive process
+        preserves dimensional accuracy while achieving superior cleanliness levels
+        required for advanced manufacturing applications.'
+      generated: '2025-10-25T22:47:07.330486Z'
       author: Alessandro Moretti
       generation_method: ai_research
       word_count:
-        before: 39
-        after: 16
+        before: 99
+        after: 99
       character_count:
-        before: 308
-        after: 118
+        before: 852
+        after: 852
     captions:
       after_text: Observing these results, the transformation is nothing short of
         captivating. The surface now exhibits residual traces below 1 micrometer across
@@ -7034,6 +7254,10 @@ materials:
         alt: Brass surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/brass-laser-cleaning-hero.jpg
+      micro:
+        alt: Brass microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/brass-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -7695,10 +7919,22 @@ materials:
         unit: GPa
         value: 110.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: non-ferrous
     subtitle: Safely restore brass's golden luster with precise low-power laser techniques
     title: Brass Laser Cleaning
@@ -7775,6 +8011,10 @@ materials:
         alt: Breccia surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/breccia-laser-cleaning-hero.jpg
+      micro:
+        alt: Breccia microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/breccia-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -8263,10 +8503,22 @@ materials:
         unit: GPa
         value: 45.2
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: sedimentary
     subtitle: Reveal Breccia's intricate clast-matrix mosaic with precise, low-energy
       laser restoration
@@ -8341,6 +8593,10 @@ materials:
         alt: Brick surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/brick-laser-cleaning-hero.jpg
+      micro:
+        alt: Brick microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/brick-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -8832,10 +9088,22 @@ materials:
         unit: GPa
         value: 16.5
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: general
     subtitle: Precision-tuned lasers delicately clean brick revealing its natural
       fired-clay aesthetics
@@ -8948,6 +9216,10 @@ materials:
         alt: Bronze surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/bronze-laser-cleaning-hero.jpg
+      micro:
+        alt: Bronze microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/bronze-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -9591,10 +9863,22 @@ materials:
         unit: GPa
         value: 110.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: non-ferrous
     subtitle: Precision laser cleaning restores Bronze's golden patina without thermal
       damage
@@ -9670,6 +9954,10 @@ materials:
         alt: Calcite surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/calcite-laser-cleaning-hero.jpg
+      micro:
+        alt: Calcite microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/calcite-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 89
@@ -10165,10 +10453,22 @@ materials:
         unit: GPa
         value: 72.5
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: sedimentary
     subtitle: Precision laser cleaning unveils Calcite's inherent translucency while
       preventing thermal decomposition
@@ -10243,6 +10543,10 @@ materials:
         alt: Carbon Fiber Reinforced Polymer surface undergoing laser cleaning showing
           precise contamination removal
         url: /images/material/carbon-fiber-reinforced-polymer-laser-cleaning-hero.jpg
+      micro:
+        alt: Carbon Fiber Reinforced Polymer microscopic view of laser cleaning showing
+          detailed precise contamination removal
+        url: /images/material/carbon-fiber-reinforced-polymer-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -10733,10 +11037,22 @@ materials:
         unit: GPa
         value: 150.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: fiber-reinforced
     subtitle: Precision laser cleaning safeguards CFRP fibers, preventing delamination
       for pristine composite restoration
@@ -10813,6 +11129,10 @@ materials:
         alt: Cast Iron surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/cast-iron-laser-cleaning-hero.jpg
+      micro:
+        alt: Cast Iron microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/cast-iron-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -11386,10 +11706,22 @@ materials:
         unit: GPa
         value: 110.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: ferrous
     subtitle: Precision Laser Revives Cast Iron's Distinctive Graphite Texture
     title: Cast Iron Laser Cleaning
@@ -11464,6 +11796,10 @@ materials:
         alt: Cedar surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/cedar-laser-cleaning-hero.jpg
+      micro:
+        alt: Cedar microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/cedar-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -11966,11 +12302,26 @@ materials:
         unit: GPa
         value: 7.2
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    - EPA Clean Air Act Compliance
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
+    - name: Unknown
+      description: EPA Clean Air Act Compliance
+      url: ''
+      image: /images/logo/logo-org-generic.png
     subcategory: softwood
     subtitle: Revive Cedar's rich grain with gentle low-power laser precision
     title: Cedar Laser Cleaning
@@ -12048,6 +12399,10 @@ materials:
         alt: Cement surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/cement-laser-cleaning-hero.jpg
+      micro:
+        alt: Cement microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/cement-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -12525,10 +12880,22 @@ materials:
         unit: GPa
         value: 30.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: general
     subtitle: Safely Restore Cement's Porous Integrity with Gentle Lasers
     title: Cement Laser Cleaning
@@ -12603,6 +12970,10 @@ materials:
         alt: Ceramic Matrix Composites Cmcs surface undergoing laser cleaning showing
           precise contamination removal
         url: /images/material/ceramic-matrix-composites-cmcs-laser-cleaning-hero.jpg
+      micro:
+        alt: Ceramic Matrix Composites Cmcs microscopic view of laser cleaning showing
+          detailed precise contamination removal
+        url: /images/material/ceramic-matrix-composites-cmcs-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -13100,10 +13471,22 @@ materials:
         unit: GPa
         value: 280.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: fiber-reinforced
     subtitle: Precision laser cleaning preserves CMCs' fiber integrity and thermal
       resilience
@@ -13194,6 +13577,10 @@ materials:
         alt: Cerium surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/cerium-laser-cleaning-hero.jpg
+      micro:
+        alt: Cerium microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/cerium-laser-cleaning-micro.jpg
     industryTags: *id001
     machineSettings:
       energyDensity:
@@ -13761,10 +14148,22 @@ materials:
         min: 32.0
         unit: GPa
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: lanthanide
     subtitle: Mastering Cerium's Laser Cleaning for Reactive Rare-Earth Precision
     title: Cerium Laser Cleaning
@@ -13842,6 +14241,10 @@ materials:
         alt: Cherry surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/cherry-laser-cleaning-hero.jpg
+      micro:
+        alt: Cherry microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/cherry-laser-cleaning-micro.jpg
     machineSettings:
       dwellTime:
         confidence: 82
@@ -14342,11 +14745,26 @@ materials:
         unit: GPa
         value: 10.3
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    - EPA Clean Air Act Compliance
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
+    - name: Unknown
+      description: EPA Clean Air Act Compliance
+      url: ''
+      image: /images/logo/logo-org-generic.png
     subcategory: hardwood
     subtitle: Safely Restore Cherry Wood's Rich Warmth with Precise Laser Care
     title: Cherry Laser Cleaning
@@ -14423,6 +14841,10 @@ materials:
         alt: Chromium surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/chromium-laser-cleaning-hero.jpg
+      micro:
+        alt: Chromium microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/chromium-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 89
@@ -15081,10 +15503,22 @@ materials:
         unit: GPa
         value: 279.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: non-ferrous
     subtitle: Precision laser restores Chromium's reflective shine without base damage
     title: Chromium Laser Cleaning
@@ -15184,6 +15618,10 @@ materials:
         alt: Cobalt surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/cobalt-laser-cleaning-hero.jpg
+      micro:
+        alt: Cobalt microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/cobalt-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 90
@@ -15849,10 +16287,22 @@ materials:
         unit: GPa
         value: 211.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: non-ferrous
     subtitle: Reveal Cobalt's unique blue-gray luster with precise laser ablation
     title: Cobalt Laser Cleaning
@@ -15927,6 +16377,10 @@ materials:
         alt: Concrete surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/concrete-laser-cleaning-hero.jpg
+      micro:
+        alt: Concrete microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/concrete-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -16411,10 +16865,22 @@ materials:
         unit: GPa
         value: 30.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: general
     subtitle: Precision Laser Cleaning Restores Concrete's Natural Aggregate Exposure
     title: Concrete Laser Cleaning
@@ -16526,6 +16992,10 @@ materials:
         alt: Copper surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/copper-laser-cleaning-hero.jpg
+      micro:
+        alt: Copper microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/copper-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 89
@@ -17200,10 +17670,22 @@ materials:
         unit: GPa
         value: 110.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: non-ferrous
     subtitle: Precision Laser Revives Copper's Luster Without Thermal Damage
     title: Copper Laser Cleaning
@@ -17280,6 +17762,10 @@ materials:
         alt: Crown Glass surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/crown-glass-laser-cleaning-hero.jpg
+      micro:
+        alt: Crown Glass microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/crown-glass-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -17798,10 +18284,22 @@ materials:
         unit: GPa
         value: 71.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: soda-lime
     subtitle: Precision laser cleaning revives Crown Glass transparency without risking
       thermal fractures
@@ -17894,6 +18392,10 @@ materials:
         alt: Dysprosium surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/dysprosium-laser-cleaning-hero.jpg
+      micro:
+        alt: Dysprosium microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/dysprosium-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 89
@@ -18232,10 +18734,22 @@ materials:
         unit: GPa
         value: 61.4
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: lanthanide
     subtitle: Unlock Dysprosium's pure luster via precise rare-earth laser tuning
     title: Dysprosium Laser Cleaning
@@ -18310,6 +18824,10 @@ materials:
         alt: Epoxy Resin Composites surface undergoing laser cleaning showing precise
           contamination removal
         url: /images/material/epoxy-resin-composites-laser-cleaning-hero.jpg
+      micro:
+        alt: Epoxy Resin Composites microscopic view of laser cleaning showing detailed
+          precise contamination removal
+        url: /images/material/epoxy-resin-composites-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 89
@@ -18789,10 +19307,22 @@ materials:
         unit: GPa
         value: 3.2
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: fiber-reinforced
     subtitle: Gentle pulsed laser cleaning restores epoxy resin composites without
       thermal matrix damage
@@ -18880,6 +19410,10 @@ materials:
         alt: Europium surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/europium-laser-cleaning-hero.jpg
+      micro:
+        alt: Europium microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/europium-laser-cleaning-micro.jpg
     industryTags: *id002
     machineSettings:
       fluenceThreshold:
@@ -19291,10 +19825,22 @@ materials:
         value: 18.2
         verification_date: '2025-10-20T22:38:04.227588'
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: lanthanide
     subtitle: Precision laser cleaning reveals Europium's unique fluorescence without
       surface oxidation
@@ -19372,6 +19918,10 @@ materials:
         alt: Fiber Reinforced Polyurethane Frpu surface undergoing laser cleaning
           showing precise contamination removal
         url: /images/material/fiber-reinforced-polyurethane-frpu-laser-cleaning-hero.jpg
+      micro:
+        alt: Fiber Reinforced Polyurethane Frpu microscopic view of laser cleaning
+          showing detailed precise contamination removal
+        url: /images/material/fiber-reinforced-polyurethane-frpu-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -19863,10 +20413,22 @@ materials:
         unit: GPa
         value: 4.2
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: fiber-reinforced
     subtitle: Tailored lasers preserve FRPU's fiber integrity and elastic matrix
     title: FRPU Laser Cleaning
@@ -19939,6 +20501,10 @@ materials:
         alt: Fiberglass surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/fiberglass-laser-cleaning-hero.jpg
+      micro:
+        alt: Fiberglass microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/fiberglass-laser-cleaning-micro.jpg
     machineSettings:
       dwellTime:
         confidence: 82
@@ -20410,10 +20976,22 @@ materials:
         unit: GPa
         value: 17.2
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: fiber-reinforced
     subtitle: Precision Lasers Safely Restore Delicate Fiberglass Composite Surfaces
     title: Fiberglass Laser Cleaning
@@ -20489,6 +21067,10 @@ materials:
       hero:
         alt: Fir surface undergoing laser cleaning showing precise contamination removal
         url: /images/material/fir-laser-cleaning-hero.jpg
+      micro:
+        alt: Fir microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/fir-laser-cleaning-micro.jpg
     machineSettings:
       dwellTime:
         confidence: 83
@@ -20978,10 +21560,22 @@ materials:
         unit: GPa
         value: 9.3
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: softwood
     subtitle: Revive Fir's soft grain with gentle laser cleaning to avoid resin charring
     title: Fir Laser Cleaning
@@ -21057,6 +21651,10 @@ materials:
         alt: Float Glass surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/float-glass-laser-cleaning-hero.jpg
+      micro:
+        alt: Float Glass microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/float-glass-laser-cleaning-micro.jpg
     machineSettings:
       dwellTime:
         confidence: 82
@@ -21581,10 +22179,22 @@ materials:
         unit: GPa
         value: 73.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: soda-lime
     subtitle: Precision Laser Cleaning Maintains Float Glass Flatness and Prevents
       Distortion
@@ -21660,6 +22270,10 @@ materials:
         alt: Fused Silica surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/fused-silica-laser-cleaning-hero.jpg
+      micro:
+        alt: Fused Silica microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/fused-silica-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 90
@@ -22155,10 +22769,22 @@ materials:
         unit: GPa
         value: 73.1
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: soda-lime
     subtitle: Precision Laser Cleaning Restores Fused Silica's Optical Purity
     title: Fused Silica Laser Cleaning
@@ -22232,6 +22858,10 @@ materials:
         alt: Gallium surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/gallium-laser-cleaning-hero.jpg
+      micro:
+        alt: Gallium microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/gallium-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 89
@@ -23100,10 +23730,22 @@ materials:
         unit: GPa
         value: 9.8
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: non-ferrous
     subtitle: Unlock Gallium's Shine with Precise Low-Power Pulses Preventing Melt
       Risks
@@ -23183,6 +23825,10 @@ materials:
         alt: Gallium Arsenide surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/gallium-arsenide-laser-cleaning-hero.jpg
+      micro:
+        alt: Gallium Arsenide microscopic view of laser cleaning showing detailed
+          precise contamination removal
+        url: /images/material/gallium-arsenide-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 89
@@ -23653,10 +24299,22 @@ materials:
         unit: GPa
         value: 85.3
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: elemental
     subtitle: Revive Gallium Arsenide's pristine semiconductor surfaces with precise
       non-thermal laser cleaning
@@ -23737,6 +24395,10 @@ materials:
         alt: Glass Fiber Reinforced Polymers Gfrp surface undergoing laser cleaning
           showing precise contamination removal
         url: /images/material/glass-fiber-reinforced-polymers-gfrp-laser-cleaning-hero.jpg
+      micro:
+        alt: Glass Fiber Reinforced Polymers Gfrp microscopic view of laser cleaning
+          showing detailed precise contamination removal
+        url: /images/material/glass-fiber-reinforced-polymers-gfrp-laser-cleaning-micro.jpg
     machineSettings:
       dwellTime:
         confidence: 82
@@ -24241,10 +24903,22 @@ materials:
         unit: GPa
         value: 45.2
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: fiber-reinforced
     subtitle: Precision laser cleaning preserves GFRP fiber-matrix integrity
     title: GFRP Laser Cleaning
@@ -24314,6 +24988,10 @@ materials:
         alt: Gold surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/gold-laser-cleaning-hero.jpg
+      micro:
+        alt: Gold microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/gold-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 89
@@ -24971,10 +25649,22 @@ materials:
         unit: GPa
         value: 79.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: non-ferrous
     subtitle: Gentle laser pulses restore gold's timeless luster without risking its
       soft surface
@@ -25052,6 +25742,10 @@ materials:
         alt: Gorilla Glass surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/gorilla-glass-laser-cleaning-hero.jpg
+      micro:
+        alt: Gorilla Glass microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/gorilla-glass-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 89
@@ -25539,10 +26233,22 @@ materials:
         unit: GPa
         value: 75.8
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: soda-lime
     subtitle: Gentle Laser Parameters Preserve Gorilla Glass Strength and Clarity
     title: Gorilla Glass Laser Cleaning
@@ -25617,6 +26323,10 @@ materials:
         alt: Granite surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/granite-laser-cleaning-hero.jpg
+      micro:
+        alt: Granite microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/granite-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 89
@@ -26112,12 +26822,30 @@ materials:
         unit: GPa
         value: 55.2
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    - EPA Clean Air Act Compliance
-    - ASTM C615 - Standard Specification for Granite Dimension Stone
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
+    - name: Unknown
+      description: EPA Clean Air Act Compliance
+      url: ''
+      image: /images/logo/logo-org-generic.png
+    - name: Unknown
+      description: ASTM C615 - Standard Specification for Granite Dimension Stone
+      url: ''
+      image: /images/logo/logo-org-generic.png
     subcategory: igneous
     subtitle: Precision Laser Cleaning Revives Granite's Crystalline Depth Without
       Risking Thermal Fractures
@@ -26211,6 +26939,10 @@ materials:
         alt: Hafnium surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/hafnium-laser-cleaning-hero.jpg
+      micro:
+        alt: Hafnium microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/hafnium-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 89
@@ -26903,10 +27635,22 @@ materials:
         unit: GPa
         value: 78.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: non-ferrous
     subtitle: Precision laser cleaning unlocks Hafnium's corrosion-resistant luster
       through controlled high-melting ablation
@@ -26983,6 +27727,10 @@ materials:
         alt: Hastelloy surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/hastelloy-laser-cleaning-hero.jpg
+      micro:
+        alt: Hastelloy microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/hastelloy-laser-cleaning-micro.jpg
     machineSettings:
       dwellTime:
         confidence: 81
@@ -27647,10 +28395,22 @@ materials:
         unit: GPa
         value: 210.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: non-ferrous
     subtitle: Precision Laser Cleaning Preserves Hastelloy's Corrosion-Resistant Integrity
     title: Hastelloy Laser Cleaning
@@ -27724,6 +28484,10 @@ materials:
         alt: Hickory surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/hickory-laser-cleaning-hero.jpg
+      micro:
+        alt: Hickory microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/hickory-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -28209,10 +28973,22 @@ materials:
         unit: GPa
         value: 13.9
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: hardwood
     subtitle: Revive Hickory's dense interlocking grain with precise laser cleaning
       techniques
@@ -28285,6 +29061,10 @@ materials:
         alt: Inconel surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/inconel-laser-cleaning-hero.jpg
+      micro:
+        alt: Inconel microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/inconel-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 89
@@ -28930,10 +29710,22 @@ materials:
         unit: GPa
         value: 214.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: non-ferrous
     subtitle: Precision laser cleaning unveils Inconel's enduring heat and corrosion
       resistance
@@ -29007,6 +29799,10 @@ materials:
         alt: Indium surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/indium-laser-cleaning-hero.jpg
+      micro:
+        alt: Indium microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/indium-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 89
@@ -29666,10 +30462,22 @@ materials:
         unit: GPa
         value: 11.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: non-ferrous
     subtitle: Precision laser cleaning safeguards Indium's soft, low-melt integrity
     title: Indium Laser Cleaning
@@ -29746,6 +30554,10 @@ materials:
         alt: Iridium surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/iridium-laser-cleaning-hero.jpg
+      micro:
+        alt: Iridium microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/iridium-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 89
@@ -30410,10 +31222,22 @@ materials:
         unit: GPa
         value: 528.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: non-ferrous
     subtitle: Precision Laser Cleaning Reveals Iridium's Enduring Reflective Brilliance
     title: Iridium Laser Cleaning
@@ -30509,6 +31333,10 @@ materials:
         alt: Iron surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/iron-laser-cleaning-hero.jpg
+      micro:
+        alt: Iron microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/iron-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -31174,10 +32002,22 @@ materials:
         unit: GPa
         value: 211.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: non-ferrous
     subtitle: Precision Laser Cleaning Restores Iron's Durable Shine Without Warping
     title: Iron Laser Cleaning
@@ -31251,6 +32091,10 @@ materials:
         alt: Kevlar-Reinforced Polymer surface undergoing laser cleaning showing precise
           contamination removal
         url: /images/material/kevlar-reinforced-polymer-laser-cleaning-hero.jpg
+      micro:
+        alt: Kevlar-Reinforced Polymer microscopic view of laser cleaning showing
+          detailed precise contamination removal
+        url: /images/material/kevlar-reinforced-polymer-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -31740,10 +32584,22 @@ materials:
         unit: GPa
         value: 76.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: fiber-reinforced
     subtitle: Precision laser cleaning safeguards Kevlar-Reinforced Polymer's integrity
       and unveils flawless fiber surfaces
@@ -31829,6 +32685,10 @@ materials:
         alt: Lanthanum surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/lanthanum-laser-cleaning-hero.jpg
+      micro:
+        alt: Lanthanum microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/lanthanum-laser-cleaning-micro.jpg
     industryTags: *id003
     machineSettings:
       energyDensity:
@@ -32254,10 +33114,22 @@ materials:
         value: 36.6
         verification_date: '2025-10-20T22:38:04.227453'
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: lanthanide
     subtitle: Precision laser restores Lanthanum's soft silvery purity without oxidation
       risks
@@ -32334,6 +33206,10 @@ materials:
         alt: Lead surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/lead-laser-cleaning-hero.jpg
+      micro:
+        alt: Lead microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/lead-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 89
@@ -32981,10 +33857,22 @@ materials:
         unit: GPa
         value: 16.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: non-ferrous
     subtitle: Gently Revive Lead's Soft Luster with Low-Power Precision
     title: Lead Laser Cleaning
@@ -33061,6 +33949,10 @@ materials:
         alt: Lead Crystal surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/lead-crystal-laser-cleaning-hero.jpg
+      micro:
+        alt: Lead Crystal microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/lead-crystal-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 91
@@ -33583,10 +34475,22 @@ materials:
         unit: GPa
         value: 68.5
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: soda-lime
     subtitle: Precision laser cleaning revives Lead Crystal's radiant clarity while
       safeguarding its fragile lead-enhanced structure
@@ -33659,6 +34563,10 @@ materials:
         alt: Limestone surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/limestone-laser-cleaning-hero.jpg
+      micro:
+        alt: Limestone microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/limestone-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -34163,12 +35071,30 @@ materials:
         unit: GPa
         value: 68.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    - EPA Clean Air Act Compliance
-    - ASTM C568 - Standard Specification for Limestone Dimension Stone
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
+    - name: Unknown
+      description: EPA Clean Air Act Compliance
+      url: ''
+      image: /images/logo/logo-org-generic.png
+    - name: Unknown
+      description: ASTM C568 - Standard Specification for Limestone Dimension Stone
+      url: ''
+      image: /images/logo/logo-org-generic.png
     subcategory: sedimentary
     subtitle: Gentle laser cleaning reveals limestone's unique fossils and porous
       elegance
@@ -34225,6 +35151,10 @@ materials:
       hero:
         alt: Mdf surface undergoing laser cleaning showing precise contamination removal
         url: /images/material/mdf-laser-cleaning-hero.jpg
+      micro:
+        alt: Mdf microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/mdf-laser-cleaning-micro.jpg
     machineSettings:
       dwellTime:
         confidence: 83
@@ -34708,10 +35638,22 @@ materials:
         unit: GPa
         value: 3.2
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: hardwood
     subtitle: Precision laser unveils MDF's smooth, resin-protected elegance
     title: MDF Laser Cleaning
@@ -34836,6 +35778,10 @@ materials:
         alt: Magnesium surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/magnesium-laser-cleaning-hero.jpg
+      micro:
+        alt: Magnesium microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/magnesium-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 88
@@ -35491,10 +36437,22 @@ materials:
         unit: GPa
         value: 44.7
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: non-ferrous
     subtitle: Safely clean reactive magnesium with precise low-energy laser parameters
     title: Magnesium Laser Cleaning
@@ -35551,6 +36509,10 @@ materials:
         alt: Mahogany surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/mahogany-laser-cleaning-hero.jpg
+      micro:
+        alt: Mahogany microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/mahogany-laser-cleaning-micro.jpg
     machineSettings:
       dwellTime:
         confidence: 82
@@ -36049,12 +37011,30 @@ materials:
         unit: GPa
         value: 9.65
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    - EPA Clean Air Act Compliance
-    - CITES Regulations for Sustainable Mahogany Use
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
+    - name: Unknown
+      description: EPA Clean Air Act Compliance
+      url: ''
+      image: /images/logo/logo-org-generic.png
+    - name: Unknown
+      description: CITES Regulations for Sustainable Mahogany Use
+      url: ''
+      image: /images/logo/logo-org-generic.png
     subcategory: hardwood
     subtitle: Revive Mahogany's Vibrant Grain with Gentle Laser Precision
     title: Mahogany Laser Cleaning
@@ -36153,6 +37133,10 @@ materials:
         alt: Manganese surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/manganese-laser-cleaning-hero.jpg
+      micro:
+        alt: Manganese microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/manganese-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 89
@@ -36822,10 +37806,22 @@ materials:
         unit: GPa
         value: 198.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: non-ferrous
     subtitle: Tailored low-fluence lasers restore Manganese's pristine, oxidation-free
       metallic surface
@@ -36883,6 +37879,10 @@ materials:
         alt: Maple surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/maple-laser-cleaning-hero.jpg
+      micro:
+        alt: Maple microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/maple-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -37377,12 +38377,30 @@ materials:
         unit: GPa
         value: 12.3
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    - EPA Clean Air Act Compliance
-    - USDA Food Safety Guidelines (for food-contact surfaces)
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
+    - name: Unknown
+      description: EPA Clean Air Act Compliance
+      url: ''
+      image: /images/logo/logo-org-generic.png
+    - name: Unknown
+      description: USDA Food Safety Guidelines (for food-contact surfaces)
+      url: ''
+      image: /images/logo/logo-org-generic.png
     subcategory: hardwood
     subtitle: Restore Maple's fine grain with gentle laser precision for flawless
       natural luster
@@ -37479,6 +38497,10 @@ materials:
         alt: Marble surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/marble-laser-cleaning-hero.jpg
+      micro:
+        alt: Marble microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/marble-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -37981,13 +39003,34 @@ materials:
         unit: GPa
         value: 55.2
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    - EPA Clean Air Act Compliance
-    - ASTM C503 - Standard Specification for Marble Dimension Stone
-    - UNESCO Guidelines for Cultural Heritage Conservation
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
+    - name: Unknown
+      description: EPA Clean Air Act Compliance
+      url: ''
+      image: /images/logo/logo-org-generic.png
+    - name: Unknown
+      description: ASTM C503 - Standard Specification for Marble Dimension Stone
+      url: ''
+      image: /images/logo/logo-org-generic.png
+    - name: Unknown
+      description: UNESCO Guidelines for Cultural Heritage Conservation
+      url: ''
+      image: /images/logo/logo-org-generic.png
     subcategory: metamorphic
     subtitle: Revive Marble's Veined Elegance with Gentle Laser Precision
     title: Marble Laser Cleaning
@@ -38065,6 +39108,10 @@ materials:
         alt: Metal Matrix Composites Mmcs surface undergoing laser cleaning showing
           precise contamination removal
         url: /images/material/metal-matrix-composites-mmcs-laser-cleaning-hero.jpg
+      micro:
+        alt: Metal Matrix Composites Mmcs microscopic view of laser cleaning showing
+          detailed precise contamination removal
+        url: /images/material/metal-matrix-composites-mmcs-laser-cleaning-micro.jpg
     machineSettings:
       dwellTime:
         confidence: 81
@@ -38537,10 +39584,22 @@ materials:
         unit: GPa
         value: 96.5
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: fiber-reinforced
     subtitle: Precision laser cleaning preserves MMCs' reinforcement integrity and
       reveals pristine hybrid surfaces
@@ -38613,6 +39672,10 @@ materials:
         alt: Molybdenum surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/molybdenum-laser-cleaning-hero.jpg
+      micro:
+        alt: Molybdenum microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/molybdenum-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -39284,10 +40347,22 @@ materials:
         unit: GPa
         value: 324.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: non-ferrous
     subtitle: Precision laser cleaning reveals molybdenum's resilient refractory surface
       integrity
@@ -39364,6 +40439,10 @@ materials:
         alt: Mortar surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/mortar-laser-cleaning-hero.jpg
+      micro:
+        alt: Mortar microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/mortar-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -39859,10 +40938,22 @@ materials:
         unit: GPa
         value: 22.5
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: general
     subtitle: Precision Laser Cleaning Revives Mortar's Porous Texture Without Compromising
       Binders
@@ -39954,6 +41045,10 @@ materials:
         alt: Neodymium surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/neodymium-laser-cleaning-hero.jpg
+      micro:
+        alt: Neodymium microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/neodymium-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -40295,10 +41390,22 @@ materials:
         unit: GPa
         value: 41.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: lanthanide
     subtitle: Discover gentle laser cleaning protects reactive neodymium from oxidation
     title: Neodymium Laser Cleaning
@@ -40391,6 +41498,10 @@ materials:
         alt: Nickel surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/nickel-laser-cleaning-hero.jpg
+      micro:
+        alt: Nickel microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/nickel-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 90
@@ -41037,10 +42148,22 @@ materials:
         unit: GPa
         value: 200.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: non-ferrous
     subtitle: Precision laser pulses restore Nickel's lustrous surface without distortion
     title: Nickel Laser Cleaning
@@ -41118,6 +42241,10 @@ materials:
         alt: Niobium surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/niobium-laser-cleaning-hero.jpg
+      micro:
+        alt: Niobium microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/niobium-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 90
@@ -41787,10 +42914,22 @@ materials:
         unit: GPa
         value: 104.9
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: non-ferrous
     subtitle: Precision laser cleaning restores niobium's pristine oxide layer integrity
     title: Niobium Laser Cleaning
@@ -41846,6 +42985,10 @@ materials:
       hero:
         alt: Oak surface undergoing laser cleaning showing precise contamination removal
         url: /images/material/oak-laser-cleaning-hero.jpg
+      micro:
+        alt: Oak microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/oak-laser-cleaning-micro.jpg
     machineSettings:
       dwellTime:
         confidence: 82
@@ -42336,11 +43479,26 @@ materials:
         unit: GPa
         value: 12.3
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    - EPA Clean Air Act Compliance
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
+    - name: Unknown
+      description: EPA Clean Air Act Compliance
+      url: ''
+      image: /images/logo/logo-org-generic.png
     subcategory: hardwood
     subtitle: Precision laser cleaning revives Oak's intricate grain while safeguarding
       its dense structure
@@ -42435,6 +43593,10 @@ materials:
         alt: Onyx surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/onyx-laser-cleaning-hero.jpg
+      micro:
+        alt: Onyx microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/onyx-laser-cleaning-micro.jpg
     machineSettings:
       dwellTime:
         confidence: 81
@@ -42934,10 +44096,22 @@ materials:
         unit: GPa
         value: 71.2
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: sedimentary
     subtitle: Tailored laser restores Onyx's banded translucency without thermal damage
     title: Onyx Laser Cleaning
@@ -43013,6 +44187,10 @@ materials:
         alt: Palladium surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/palladium-laser-cleaning-hero.jpg
+      micro:
+        alt: Palladium microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/palladium-laser-cleaning-micro.jpg
     machineSettings:
       dwellTime:
         confidence: 82
@@ -43688,10 +44866,22 @@ materials:
         unit: GPa
         value: 121.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: non-ferrous
     subtitle: Tailored Laser Cleaning Reveals Palladium's Enduring Soft Luster
     title: Palladium Laser Cleaning
@@ -43767,6 +44957,10 @@ materials:
         alt: Phenolic Resin Composites surface undergoing laser cleaning showing precise
           contamination removal
         url: /images/material/phenolic-resin-composites-laser-cleaning-hero.jpg
+      micro:
+        alt: Phenolic Resin Composites microscopic view of laser cleaning showing
+          detailed precise contamination removal
+        url: /images/material/phenolic-resin-composites-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -44262,10 +45456,22 @@ materials:
         unit: GPa
         value: 6.2
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: fiber-reinforced
     subtitle: Controlled Laser Parameters Prevent Charring in Phenolic Resin Composites
     title: Phenolic Resin Composites Laser Cleaning
@@ -44322,6 +45528,10 @@ materials:
         alt: Pine surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/pine-laser-cleaning-hero.jpg
+      micro:
+        alt: Pine microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/pine-laser-cleaning-micro.jpg
     machineSettings:
       dwellTime:
         confidence: 82
@@ -44809,10 +46019,22 @@ materials:
         unit: GPa
         value: 8.96
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: softwood
     subtitle: Unlock Pine's resin-rich grain with gentle laser precision to avoid
       scorching
@@ -44904,6 +46126,10 @@ materials:
         alt: Plaster surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/plaster-laser-cleaning-hero.jpg
+      micro:
+        alt: Plaster microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/plaster-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -45383,10 +46609,22 @@ materials:
         unit: GPa
         value: 3.5
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: general
     subtitle: Preserve plaster's fragile porosity with precise low-power laser restoration
       techniques
@@ -45461,6 +46699,10 @@ materials:
         alt: Platinum surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/platinum-laser-cleaning-hero.jpg
+      micro:
+        alt: Platinum microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/platinum-laser-cleaning-micro.jpg
     machineSettings:
       fluence:
         confidence: 89
@@ -46130,10 +47372,22 @@ materials:
         unit: GPa
         value: 168.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: non-ferrous
     subtitle: Revive platinum's noble luster through precise laser control preserving
       its corrosion-free integrity
@@ -46191,6 +47445,10 @@ materials:
         alt: Plywood surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/plywood-laser-cleaning-hero.jpg
+      micro:
+        alt: Plywood microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/plywood-laser-cleaning-micro.jpg
     machineSettings:
       dwellTime:
         confidence: 81
@@ -46683,10 +47941,22 @@ materials:
         unit: GPa
         value: 8.3
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: hardwood
     subtitle: Precision laser cleaning preserves plywood's layered bonds while revealing
       authentic grain texture
@@ -46782,6 +48052,10 @@ materials:
         alt: Polycarbonate surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/polycarbonate-laser-cleaning-hero.jpg
+      micro:
+        alt: Polycarbonate microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/polycarbonate-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 90
@@ -47272,10 +48546,22 @@ materials:
         unit: GPa
         value: 2.4
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: thermoplastic
     subtitle: Tailored laser cleaning preserves polycarbonate's optical clarity without
       thermal distortion
@@ -47358,6 +48644,10 @@ materials:
         alt: Polyester Resin Composites surface undergoing laser cleaning showing
           precise contamination removal
         url: /images/material/polyester-resin-composites-laser-cleaning-hero.jpg
+      micro:
+        alt: Polyester Resin Composites microscopic view of laser cleaning showing
+          detailed precise contamination removal
+        url: /images/material/polyester-resin-composites-laser-cleaning-micro.jpg
     machineSettings:
       fluence:
         confidence: 86
@@ -47841,10 +49131,22 @@ materials:
         unit: GPa
         value: 4.2
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: fiber-reinforced
     subtitle: Precision Laser Cleaning Preserves Polyester Resin Composite Integrity
     title: Polyester Resin Composites Laser Cleaning
@@ -47922,6 +49224,10 @@ materials:
         alt: Polyethylene surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/polyethylene-laser-cleaning-hero.jpg
+      micro:
+        alt: Polyethylene microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/polyethylene-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -48405,10 +49711,22 @@ materials:
         unit: GPa
         value: 0.8
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: thermoplastic
     subtitle: Precision Lasers Restore Polyethylene Without Melting Risk
     title: Polyethylene Laser Cleaning
@@ -48483,6 +49801,10 @@ materials:
         alt: Polypropylene surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/polypropylene-laser-cleaning-hero.jpg
+      micro:
+        alt: Polypropylene microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/polypropylene-laser-cleaning-micro.jpg
     machineSettings:
       dwellTime:
         confidence: 81
@@ -48990,10 +50312,22 @@ materials:
         unit: GPa
         value: 1.5
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: thermoplastic
     subtitle: Precision laser cleaning safeguards Polypropylene's thermal stability
     title: Polypropylene Laser Cleaning
@@ -49068,6 +50402,10 @@ materials:
         alt: Polystyrene surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/polystyrene-laser-cleaning-hero.jpg
+      micro:
+        alt: Polystyrene microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/polystyrene-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -49538,10 +50876,22 @@ materials:
         unit: GPa
         value: 3.2
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: thermoplastic
     subtitle: Unlock polystyrene's clarity with precise low-power lasers avoiding
       thermal deformation
@@ -49617,6 +50967,10 @@ materials:
         alt: Polytetrafluoroethylene surface undergoing laser cleaning showing precise
           contamination removal
         url: /images/material/polytetrafluoroethylene-laser-cleaning-hero.jpg
+      micro:
+        alt: Polytetrafluoroethylene microscopic view of laser cleaning showing detailed
+          precise contamination removal
+        url: /images/material/polytetrafluoroethylene-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -50099,10 +51453,22 @@ materials:
         unit: GPa
         value: 0.5
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: thermoplastic
     subtitle: Precision laser techniques preserve Polytetrafluoroethylene's smooth
       chemically inert surface
@@ -50182,6 +51548,10 @@ materials:
         alt: Polyvinyl Chloride surface undergoing laser cleaning showing precise
           contamination removal
         url: /images/material/polyvinyl-chloride-laser-cleaning-hero.jpg
+      micro:
+        alt: Polyvinyl Chloride microscopic view of laser cleaning showing detailed
+          precise contamination removal
+        url: /images/material/polyvinyl-chloride-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -50660,10 +52030,22 @@ materials:
         unit: GPa
         value: 3.2
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: thermoplastic
     subtitle: Precision laser pulses restore PVC surfaces without thermal distortion
     title: PVC Laser Cleaning
@@ -50720,6 +52102,10 @@ materials:
         alt: Poplar surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/poplar-laser-cleaning-hero.jpg
+      micro:
+        alt: Poplar microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/poplar-laser-cleaning-micro.jpg
     machineSettings:
       dwellTime:
         confidence: 83
@@ -51230,11 +52616,26 @@ materials:
         unit: GPa
         value: 9.65
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    - EPA Clean Air Act Compliance
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
+    - name: Unknown
+      description: EPA Clean Air Act Compliance
+      url: ''
+      image: /images/logo/logo-org-generic.png
     subcategory: hardwood
     subtitle: Precision Laser Cleaning Preserves Poplar's Delicate Grain Without Scorching
     title: Poplar Laser Cleaning
@@ -51331,6 +52732,10 @@ materials:
         alt: Porcelain surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/porcelain-laser-cleaning-hero.jpg
+      micro:
+        alt: Porcelain microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/porcelain-laser-cleaning-micro.jpg
     machineSettings:
       dwellTime:
         confidence: 81
@@ -51876,10 +53281,22 @@ materials:
         unit: GPa
         value: 70.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: oxide
     subtitle: Gentle Laser Revives Porcelain's Delicate Translucent Glow
     title: Porcelain Laser Cleaning
@@ -51952,6 +53369,10 @@ materials:
         alt: Porphyry surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/porphyry-laser-cleaning-hero.jpg
+      micro:
+        alt: Porphyry microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/porphyry-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -52448,10 +53869,22 @@ materials:
         unit: GPa
         value: 65.2
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: sedimentary
     subtitle: Revive Porphyry's enduring crystalline texture with precise laser care
     title: Porphyry Laser Cleaning
@@ -52539,6 +53972,10 @@ materials:
         alt: Praseodymium surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/praseodymium-laser-cleaning-hero.jpg
+      micro:
+        alt: Praseodymium microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/praseodymium-laser-cleaning-micro.jpg
     machineSettings:
       dwellTime:
         confidence: 81
@@ -52890,10 +54327,22 @@ materials:
         unit: GPa
         value: 37.3
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: lanthanide
     subtitle: Mastering Laser Cleaning for Praseodymium's Reactive Surfaces
     title: Praseodymium Laser Cleaning
@@ -52973,6 +54422,10 @@ materials:
         alt: Pyrex surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/pyrex-laser-cleaning-hero.jpg
+      micro:
+        alt: Pyrex microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/pyrex-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 89
@@ -53467,10 +54920,22 @@ materials:
         unit: GPa
         value: 62.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: soda-lime
     subtitle: Unlike ordinary glass, Pyrex endures precise laser cleaning without
       thermal damage
@@ -53548,6 +55013,10 @@ materials:
         alt: Quartz Glass surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/quartz-glass-laser-cleaning-hero.jpg
+      micro:
+        alt: Quartz Glass microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/quartz-glass-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 89
@@ -54054,10 +55523,22 @@ materials:
         unit: GPa
         value: 72.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: soda-lime
     subtitle: Precision laser cleaning restores quartz glass transparency without
       risking thermal fractures
@@ -54133,6 +55614,10 @@ materials:
         alt: Quartzite surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/quartzite-laser-cleaning-hero.jpg
+      micro:
+        alt: Quartzite microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/quartzite-laser-cleaning-micro.jpg
     machineSettings:
       dwellTime:
         confidence: 82
@@ -54636,10 +56121,22 @@ materials:
         unit: GPa
         value: 80.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: sedimentary
     subtitle: Reveal Quartzite's crystalline resilience with precise laser cleaning
       to preserve its durable texture
@@ -54697,6 +56194,10 @@ materials:
         alt: Redwood surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/redwood-laser-cleaning-hero.jpg
+      micro:
+        alt: Redwood microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/redwood-laser-cleaning-micro.jpg
     machineSettings:
       dwellTime:
         confidence: 82
@@ -55197,10 +56698,22 @@ materials:
         unit: GPa
         value: 8.3
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: hardwood
     subtitle: Reveal Redwood's Rich Grain with Gentle Laser Care
     title: Redwood Laser Cleaning
@@ -55295,6 +56808,10 @@ materials:
         alt: Rhenium surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/rhenium-laser-cleaning-hero.jpg
+      micro:
+        alt: Rhenium microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/rhenium-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 89
@@ -55956,10 +57473,22 @@ materials:
         unit: GPa
         value: 463.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: non-ferrous
     subtitle: Precision laser restores Rhenium's rare luster without thermal distortion
     title: Rhenium Laser Cleaning
@@ -56035,6 +57564,10 @@ materials:
         alt: Rhodium surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/rhodium-laser-cleaning-hero.jpg
+      micro:
+        alt: Rhodium microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/rhodium-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 89
@@ -56700,10 +58233,22 @@ materials:
         unit: GPa
         value: 380.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: non-ferrous
     subtitle: Precision laser cleaning restores rhodium's mirror-like reflectivity
       without risking its thin corrosion-resistant layer
@@ -56761,6 +58306,10 @@ materials:
         alt: Rosewood surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/rosewood-laser-cleaning-hero.jpg
+      micro:
+        alt: Rosewood microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/rosewood-laser-cleaning-micro.jpg
     machineSettings:
       dwellTime:
         confidence: 83
@@ -57242,10 +58791,22 @@ materials:
         unit: GPa
         value: 16.2
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: hardwood
     subtitle: Precision laser restores rosewood's rich oils and intricate grain safely
     title: Rosewood Laser Cleaning
@@ -57341,6 +58902,10 @@ materials:
         alt: Rubber surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/rubber-laser-cleaning-hero.jpg
+      micro:
+        alt: Rubber microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/rubber-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -57842,10 +59407,22 @@ materials:
         unit: GPa
         value: 0.01
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: fiber-reinforced
     subtitle: Tailored laser cleaning preserves rubber's elasticity avoiding thermal
       deformation risks
@@ -57923,6 +59500,10 @@ materials:
         alt: Ruthenium surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/ruthenium-laser-cleaning-hero.jpg
+      micro:
+        alt: Ruthenium microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/ruthenium-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -58586,10 +60167,22 @@ materials:
         unit: GPa
         value: 447.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: non-ferrous
     subtitle: Precision laser cleaning unveils Ruthenium's pristine, oxidation-resistant
       metallic brilliance
@@ -58668,6 +60261,10 @@ materials:
         alt: Sandstone surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/sandstone-laser-cleaning-hero.jpg
+      micro:
+        alt: Sandstone microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/sandstone-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 89
@@ -59161,12 +60758,30 @@ materials:
         unit: GPa
         value: 18.5
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    - EPA Clean Air Act Compliance
-    - ASTM C616 - Standard Specification for Sandstone Dimension Stone
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
+    - name: Unknown
+      description: EPA Clean Air Act Compliance
+      url: ''
+      image: /images/logo/logo-org-generic.png
+    - name: Unknown
+      description: ASTM C616 - Standard Specification for Sandstone Dimension Stone
+      url: ''
+      image: /images/logo/logo-org-generic.png
     subcategory: sedimentary
     subtitle: Reviving Sandstone's Porous Texture with Gentle Precision Laser Techniques
     title: Sandstone Laser Cleaning
@@ -59239,6 +60854,10 @@ materials:
         alt: Sapphire Glass surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/sapphire-glass-laser-cleaning-hero.jpg
+      micro:
+        alt: Sapphire Glass microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/sapphire-glass-laser-cleaning-micro.jpg
     machineSettings:
       dwellTime:
         confidence: 81
@@ -59739,10 +61358,22 @@ materials:
         unit: GPa
         value: 345.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: soda-lime
     subtitle: Precision laser cleaning unveils Sapphire Glass's enduring hardness
       and optical brilliance
@@ -59824,6 +61455,10 @@ materials:
         alt: Schist surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/schist-laser-cleaning-hero.jpg
+      micro:
+        alt: Schist microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/schist-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -60330,10 +61965,22 @@ materials:
         unit: GPa
         value: 68.5
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: sedimentary
     subtitle: Schist Laser Cleaning Reveals Sparkling Foliation Without Layer Damage
     title: Schist Laser Cleaning
@@ -60407,6 +62054,10 @@ materials:
         alt: Serpentine surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/serpentine-laser-cleaning-hero.jpg
+      micro:
+        alt: Serpentine microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/serpentine-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 89
@@ -60883,10 +62534,22 @@ materials:
         unit: GPa
         value: 65.2
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: sedimentary
     subtitle: Gently Restore Serpentine's Fibrous Luster with Precise Laser Care
     title: Serpentine Laser Cleaning
@@ -60961,6 +62624,10 @@ materials:
         alt: Shale surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/shale-laser-cleaning-hero.jpg
+      micro:
+        alt: Shale microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/shale-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -61455,10 +63122,22 @@ materials:
         unit: GPa
         value: 25.4
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: sedimentary
     subtitle: Gently revive shale's delicate layers with precise laser finesse
     title: Shale Laser Cleaning
@@ -61537,6 +63216,10 @@ materials:
         alt: Silicon surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/silicon-laser-cleaning-hero.jpg
+      micro:
+        alt: Silicon microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/silicon-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 89
@@ -62042,13 +63725,34 @@ materials:
         unit: GPa
         value: 169.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    - SEMI M1 - Specification for Polished Single Crystal Silicon Wafers
-    - ASTM F1188 - Standard Specification for Single Crystal Silicon
-    - ISO 14644 - Cleanroom and Associated Controlled Environments
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
+    - name: Unknown
+      description: SEMI M1 - Specification for Polished Single Crystal Silicon Wafers
+      url: ''
+      image: /images/logo/logo-org-generic.png
+    - name: Unknown
+      description: ASTM F1188 - Standard Specification for Single Crystal Silicon
+      url: ''
+      image: /images/logo/logo-org-generic.png
+    - name: ISO
+      description: ISO 14644 - Cleanroom and Associated Controlled Environments
+      url: https://www.iso.org/standard/60426.html
+      image: /images/logo/logo-org-iso.png
     subcategory: elemental
     subtitle: Specialized Laser Techniques Preserve Brittle Silicon Semiconductor
       Integrity
@@ -62143,6 +63847,10 @@ materials:
         alt: Silicon Carbide surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/silicon-carbide-laser-cleaning-hero.jpg
+      micro:
+        alt: Silicon Carbide microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/silicon-carbide-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 89
@@ -62623,10 +64331,22 @@ materials:
         unit: GPa
         value: 410.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: elemental
     subtitle: Precision laser cleaning preserves Silicon Carbide integrity
     title: Silicon Carbide Laser Cleaning
@@ -62703,6 +64423,10 @@ materials:
         alt: Silicon Germanium surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/silicon-germanium-laser-cleaning-hero.jpg
+      micro:
+        alt: Silicon Germanium microscopic view of laser cleaning showing detailed
+          precise contamination removal
+        url: /images/material/silicon-germanium-laser-cleaning-micro.jpg
     machineSettings:
       fluenceThreshold:
         confidence: 89
@@ -63192,10 +64916,22 @@ materials:
         unit: GPa
         value: 156.4
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: elemental
     subtitle: Tailored laser pulses safeguard Silicon Germanium's precise semiconductor
       structure
@@ -63271,6 +65007,10 @@ materials:
         alt: Silicon Nitride surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/silicon-nitride-laser-cleaning-hero.jpg
+      micro:
+        alt: Silicon Nitride microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/silicon-nitride-laser-cleaning-micro.jpg
     machineSettings:
       dwellTime:
         confidence: 81
@@ -63806,10 +65546,22 @@ materials:
         unit: GPa
         value: 310.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: oxide
     subtitle: Discover Tailored Laser Techniques for Brittle Silicon Nitride Cleaning
     title: Silicon Nitride Laser Cleaning
@@ -63925,6 +65677,10 @@ materials:
         alt: Silver surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/silver-laser-cleaning-hero.jpg
+      micro:
+        alt: Silver microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/silver-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -64591,10 +66347,22 @@ materials:
         unit: GPa
         value: 83.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: non-ferrous
     subtitle: Precision laser cleaning revives silver's delicate luster without thermal
       risk
@@ -64671,6 +66439,10 @@ materials:
         alt: Slate surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/slate-laser-cleaning-hero.jpg
+      micro:
+        alt: Slate microscopic view of laser cleaning showing detailed precise contamination
+          removal
+        url: /images/material/slate-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -65178,12 +66950,30 @@ materials:
         unit: GPa
         value: 55.2
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
-    - EPA Clean Air Act Compliance
-    - ASTM C629 - Standard Specification for Slate Dimension Stone
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
+    - name: Unknown
+      description: EPA Clean Air Act Compliance
+      url: ''
+      image: /images/logo/logo-org-generic.png
+    - name: Unknown
+      description: ASTM C629 - Standard Specification for Slate Dimension Stone
+      url: ''
+      image: /images/logo/logo-org-generic.png
     subcategory: metamorphic
     subtitle: Preserve Slate's Delicate Foliation with Precision Laser Cleaning Techniques
     title: Slate Laser Cleaning
@@ -65259,6 +67049,10 @@ materials:
         alt: Soapstone surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/soapstone-laser-cleaning-hero.jpg
+      micro:
+        alt: Soapstone microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/soapstone-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
@@ -65755,10 +67549,22 @@ materials:
         unit: GPa
         value: 45.0
     regulatoryStandards:
-    - FDA 21 CFR 1040.10 - Laser Product Performance Standards
-    - ANSI Z136.1 - Safe Use of Lasers
-    - IEC 60825 - Safety of Laser Products
-    - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    - name: FDA
+      description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+      image: /images/logo/logo-org-fda.png
+    - name: ANSI
+      description: ANSI Z136.1 - Safe Use of Lasers
+      url: https://webstore.ansi.org/standards/lia/ansiz1362022
+      image: /images/logo/logo-org-ansi.png
+    - name: IEC
+      description: IEC 60825 - Safety of Laser Products
+      url: https://webstore.iec.ch/publication/3587
+      image: /images/logo/logo-org-iec.png
+    - name: OSHA
+      description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+      image: /images/logo/logo-org-osha.png
     subcategory: sedimentary
     subtitle: Delicately Restore Soapstone's Unique Talc Softness with Precise Lasers
     title: Soapstone Laser Cleaning
@@ -65836,6 +67642,10 @@ materials:
         alt: Soda-Lime Glass surface undergoing laser cleaning showing precise contamination
           removal
         url: /images/material/soda-lime-glass-laser-cleaning-hero.jpg
+      micro:
+        alt: Soda-Lime Glass microscopic view of laser cleaning showing detailed precise
+          contamination removal
+        url: /images/material/soda-lime-glass-laser-cleaning-micro.jpg
     machineSettings:
       energyDensity:
         confidence: 89
