@@ -1,0 +1,105 @@
+# ============================================================================
+# COMPONENT VOICE CONFIGURATION
+# ============================================================================
+# 
+# Maps each component type to its Author Voice parameters.
+# Generators pass component_type to VoiceOrchestrator, which reads this config
+# to determine intensity, formality, and other voice characteristics.
+#
+# VERSION: 1.0.0
+# CREATED: 2025-10-25
+# ============================================================================
+
+# Default fallback (if component not specified)
+default:
+  intensity_level: "level_3_moderate"  # Balanced for general content
+  formality: "professional"
+  target_audience: "educated non-specialists"
+  word_count_range: [30, 140]
+
+# ============================================================================
+# COMPONENT-SPECIFIC CONFIGURATIONS
+# ============================================================================
+
+# Caption: Before/After microscopy descriptions
+caption:
+  # Captions describe surface analysis - technical audience
+  intensity_level: "level_4_plus_enhanced"  # Enhanced technical (2-4 measurements, formulas)
+  formality: "professional-technical"
+  target_audience: "engineers and materials specialists"
+  word_count_range: [30, 140]  # 15-70 per section
+  
+  # Section-specific overrides
+  sections:
+    before:
+      focus: "contaminated surface microscopy"
+      required_elements:
+        - "Surface condition description"
+        - "Contaminant characteristics"
+        - "Material degradation patterns"
+    after:
+      focus: "cleaned surface restoration"
+      required_elements:
+        - "Cleaned surface condition"
+        - "Restoration quality"
+        - "Material integrity verification"
+
+# Subtitle: Short marketing tagline
+subtitle:
+  # Subtitles are marketing-focused - broader audience
+  intensity_level: "level_2_light"  # Light technical (max 1 simple measurement)
+  formality: "professional-engaging"
+  target_audience: "technical professionals and decision-makers"
+  word_count_range: [8, 12]
+  
+  style_notes:
+    - "Concise and engaging"
+    - "Capture material essence"
+    - "Professional but accessible"
+    - "No period at end"
+
+# Description: Main content paragraph (future)
+description:
+  intensity_level: "level_3_moderate"  # Balanced technical
+  formality: "professional"
+  target_audience: "educated professionals"
+  word_count_range: [100, 200]
+  
+  required_elements:
+    - "Material overview"
+    - "Laser cleaning benefits"
+    - "Application contexts"
+
+# Environmental Impact descriptions (future)
+environmental_impact:
+  intensity_level: "level_2_light"  # Accessible to general audience
+  formality: "professional-friendly"
+  target_audience: "general technical audience"
+  word_count_range: [50, 100]
+
+# Health & Safety descriptions (future)
+health_safety:
+  intensity_level: "level_3_moderate"  # Regulatory clarity needed
+  formality: "professional-authoritative"
+  target_audience: "safety officers and engineers"
+  word_count_range: [75, 150]
+
+# Quality Control descriptions (future)
+quality_control:
+  intensity_level: "level_4_technical"  # Process specifications
+  formality: "professional-technical"
+  target_audience: "quality engineers"
+  word_count_range: [80, 160]
+
+# ============================================================================
+# INTENSITY LEVEL REFERENCE
+# ============================================================================
+# 
+# level_1_minimal:        Zero measurements, everyday language
+# level_2_light:          Max 1 simple measurement, basic technical terms
+# level_3_moderate:       Max 1 measurement (thickness OR roughness)
+# level_4_technical:      2-3 measurements, formulas, analytical methods
+# level_4_plus_enhanced:  2-4 measurements, formulas, research awareness
+# level_5_expert:         Comprehensive measurements, full technical density
+#
+# ============================================================================

@@ -49,6 +49,7 @@ class VoiceOrchestrator:
         self.country = self._normalize_country(country)
         self.profile = self._load_profile()
         self.base_voice = self._load_base_voice()
+        self.component_config = self._load_component_config()
     
     def _normalize_country(self, country: str) -> str:
         """Normalize country name to profile filename"""
@@ -121,6 +122,49 @@ class VoiceOrchestrator:
         
         with open(unified_path, 'r', encoding='utf-8') as f:
             return yaml.safe_load(f)
+    
+    @lru_cache(maxsize=1)
+    def _load_component_config(self) -> Dict[str, Any]:
+        """
+        Load component voice configuration.
+        
+        Returns:
+            Component config dictionary mapping component types to voice parameters
+        
+        Raises:
+            FileNotFoundError: If component_config.yaml not found
+        """
+        config_path = Path(__file__).parent / "component_config.yaml"
+        
+        if not config_path.exists():
+            logger.warning(f"Component config not found: {config_path}, using defaults")
+            return {"default": {"intensity_level": "level_3_moderate"}}
+        
+        with open(config_path, 'r', encoding='utf-8') as f:
+            return yaml.safe_load(f)
+    
+    def get_component_config(self, component_type: str) -> Dict[str, Any]:
+        """
+        Get voice configuration for specific component type.
+        
+        Args:
+            component_type: Component type (caption, subtitle, description, etc.)
+        
+        Returns:
+            Component-specific voice config with intensity, formality, etc.
+        """
+        config = self.component_config.get(component_type)
+        
+        if not config:
+            logger.warning(f"No config found for component '{component_type}', using default")
+            config = self.component_config.get('default', {
+                'intensity_level': 'level_3_moderate',
+                'formality': 'professional',
+                'target_audience': 'educated non-specialists'
+            })
+        
+        logger.info(f"Component config for '{component_type}': intensity={config.get('intensity_level')}, audience={config.get('target_audience')}")
+        return config
     
     def get_voice_for_component(
         self, 
@@ -293,10 +337,18 @@ Generate {section_focus} description now."""
         """
         Build subtitle/tagline prompt with country-specific voice.
         
-        Simpler than microscopy - just a concise professional phrase.
+        Uses component_config.yaml to determine intensity and formality.
         """
-        # Extract parameters
-        target_words = kwargs.get('target_words', 10)
+        # Get component-specific configuration
+        config = self.get_component_config('subtitle')
+        
+        # Extract parameters (kwargs override config)
+        target_words = kwargs.get('target_words', config.get('word_count_range', [8, 12])[0])
+        
+        # Get intensity level from config
+        intensity_level = config.get('intensity_level', 'level_2_light')
+        formality = config.get('formality', 'professional-engaging')
+        target_audience = config.get('target_audience', 'technical professionals')
         
         # Author context
         author_name = author.get('name', 'Expert')
@@ -308,17 +360,22 @@ Generate {section_focus} description now."""
         # Get country-specific style
         linguistic = country_profile.get('linguistic_characteristics', {})
         vocab = linguistic.get('vocabulary_patterns', {})
-        formality = vocab.get('formality_level', 'professional')
+        country_formality = vocab.get('formality_level', 'professional')
         
-        # Build minimal prompt focused on voice authenticity
+        # Get intensity instructions from voice_base.yaml
+        intensity_rules = base_voice.get('technical_authority_intensity', {}).get(intensity_level, {})
+        intensity_desc = intensity_rules.get('description', 'Balanced technical communication')
+        
+        # Build prompt with component-specific intensity
         prompt = f"""You are {author_name} from {author_country}, writing a subtitle for {material_name} laser cleaning content.
 
 TASK: Write a {target_words}-word professional subtitle/tagline.
 
 VOICE GUIDANCE ({author_country.upper()}):
-- Formality: {formality}
-- Target: Technical professionals and decision-makers
-- Style: Concise, engaging, technically accurate
+- Formality: {formality} (country style: {country_formality})
+- Target Audience: {target_audience}
+- Technical Intensity: {intensity_level}
+  {intensity_desc}
 
 REQUIREMENTS:
 - Exactly {target_words} words (±2 tolerance)
