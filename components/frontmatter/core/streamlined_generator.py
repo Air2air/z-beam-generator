@@ -281,13 +281,18 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             self.universal_regulatory_standards = categories_data['universal_regulatory_standards']
             
             # Initialize PipelineProcessService with API client for AI generation
-            self.pipeline_process_service = PipelineProcessService(
-                api_client=self.api_client,
-                environmental_impact_templates=self.environmental_impact_templates,
-                standard_outcome_metrics=self.standard_outcome_metrics,
-                universal_regulatory_standards=self.universal_regulatory_standards
-            )
-            self.logger.info("PipelineProcessService initialized with AI client (NO TEMPLATES)")
+            # In data-only mode (no API client), skip this service - sections come directly from Materials.yaml
+            if self.api_client:
+                self.pipeline_process_service = PipelineProcessService(
+                    api_client=self.api_client,
+                    environmental_impact_templates=self.environmental_impact_templates,
+                    standard_outcome_metrics=self.standard_outcome_metrics,
+                    universal_regulatory_standards=self.universal_regulatory_standards
+                )
+                self.logger.info("PipelineProcessService initialized with API client (NO TEMPLATES)")
+            else:
+                self.pipeline_process_service = None
+                self.logger.info("PipelineProcessService skipped - data-only mode (sections from Materials.yaml)")
             
             if 'categories' in categories_data:
                 for category_name, category_info in categories_data['categories'].items():
@@ -633,7 +638,20 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             frontmatter['environmentalImpact'] = self._get_environmental_impact_from_ai_fields(material_data, material_name)
             frontmatter['outcomeMetrics'] = self._get_outcome_metrics_from_ai_fields(material_data, material_name)
             # Add regulatory standards (universal + material-specific)
-            frontmatter = self.pipeline_process_service.add_regulatory_standards_section(frontmatter, material_data)
+            if self.pipeline_process_service:
+                # AI mode: Generate using PipelineProcessService
+                frontmatter = self.pipeline_process_service.add_regulatory_standards_section(frontmatter, material_data)
+            elif 'regulatoryStandards' in material_data:
+                # Data-only mode: Copy directly from Materials.yaml
+                frontmatter['regulatoryStandards'] = material_data['regulatoryStandards']
+                self.logger.info(f"✅ Copied {len(material_data['regulatoryStandards'])} regulatory standards from Materials.yaml")
+            else:
+                self.logger.warning(f"⚠️  No regulatoryStandards in Materials.yaml for {material_name}")
+            # Add applications list
+            if 'applications' in material_data:
+                frontmatter['applications'] = material_data['applications']
+                self.logger.info(f"✅ Added {len(material_data['applications'])} applications")
+            
             # Generate author
             author_info = self._generate_author(material_data)
             frontmatter.update(author_info)
@@ -2030,15 +2048,25 @@ Return YAML format with materialProperties, machineSettings, and structured appl
             material_slug = material_slug.strip('-')  # Remove leading/trailing hyphens
             
             # Generate descriptive alt text with proper capitalization
+            # Best practices: 125 chars ideal, 155 max for SEO
+            # Include material, process, scale, and specific visual details
             material_title = material_name.title()
-            hero_alt = f'{material_title} surface undergoing laser cleaning showing precise contamination removal'
             
-            # ONLY hero image in images section per PYTHON_GENERATOR_PROMPT_CORRECTED.md
-            # Micro image is in caption.imageUrl (see _add_caption_section)
+            # Hero image: Focus on active cleaning process with visible laser interaction
+            hero_alt = f'{material_title} surface during precision laser cleaning process removing contamination layer at microscopic scale'
+            
+            # Micro image: Focus on before/after comparison at 500x magnification showing surface transformation
+            micro_alt = f'{material_title} surface at 500x magnification comparing contaminated state with cleaned substrate showing complete restoration'
+            
+            # Include both hero and micro images per frontmatter schema requirements
             return {
                 'hero': {
                     'alt': hero_alt,
                     'url': f'/images/material/{material_slug}-laser-cleaning-hero.jpg'
+                },
+                'micro': {
+                    'alt': micro_alt,
+                    'url': f'/images/material/{material_slug}-microscopic-before-after.jpg'
                 }
             }
         except Exception as e:

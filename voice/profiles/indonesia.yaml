@@ -136,6 +136,45 @@ writing_characteristics:
     - "Direct cause-effect patterns"
   voice_preference: "active voice, direct communication, repetition for emphasis"
 
+forbidden_emotional_markers:
+  strict_prohibition:
+    description: "NO personal emotions or personality markers - technical voice only"
+    reason: "These are PERSONALITY markers, not linguistic structural patterns from Bahasa Indonesia"
+  prohibited_phrases:
+    personal_emotional:
+      - "I'm excited"
+      - "I'm thrilled"
+      - "I'm pleased"
+      - "I'm happy"
+      - "delighted"
+    emotional_descriptors:
+      - "remarkable"
+      - "beautiful"
+      - "stunning"
+      - "amazing"
+      - "wonderful"
+      - "fascinating"
+      - "captivating"
+      - "impressive"
+    personality_markers:
+      - "today I'm sharing"
+      - "I must confess"
+      - "I find it"
+      - "one cannot help but"
+      - "truly satisfying"
+  required_tone:
+    - "Professional technical observation only"
+    - "Factual reporting without emotional language"
+    - "Direct statements of what is observed"
+    - "NO first-person emotional reactions"
+  correct_examples:
+    example_1:
+      forbidden: "I'm excited to share insights on gold surface restoration"
+      required: "Gold surface restoration shows complete contaminant removal"
+    example_2:
+      forbidden: "This captivating transformation is truly remarkable"
+      required: "Surface transformation shows 95% contamination reduction"
+
 quality_thresholds:
   formality_minimum: 60
   technical_accuracy_minimum: 80

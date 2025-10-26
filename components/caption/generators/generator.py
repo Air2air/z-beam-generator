@@ -130,6 +130,7 @@ class CaptionComponentGenerator(APIComponentGenerator):
         
         # Call Voice service to generate prompt
         try:
+            # Generate base prompt from voice system
             prompt = voice.get_unified_prompt(
                 component_type='microscopy_description',
                 material_context=material_context,
@@ -140,7 +141,14 @@ class CaptionComponentGenerator(APIComponentGenerator):
                 style_guidance=style_guidance,
                 paragraph_count=paragraph_count
             )
-            logger.info(f"✅ Generated {section_type} prompt for {material_name} ({author_country}): {target_words}w, {style_guidance}")
+            
+            # Add explicit word limit enforcement to prompt
+            max_tolerance = 10  # Increased from 5 to support 30-140 word range
+            prompt += f"\n\nSTRICT WORD LIMIT: Write EXACTLY {target_words} words (±{max_tolerance} words tolerance).\n"
+            prompt += f"CRITICAL: DO NOT exceed {target_words + max_tolerance} words under any circumstances.\n"
+            prompt += f"MINIMUM: Write at least {max(15, target_words - max_tolerance)} words for substantive content.\n"
+            
+            logger.info(f"✅ Generated {section_type} prompt for {material_name} ({author_country}): {target_words}w (±{max_tolerance}), {style_guidance}")
             return prompt
         except Exception as e:
             logger.error(f"Failed to generate {section_type} prompt for {material_name}: {e}")
@@ -186,11 +194,12 @@ class CaptionComponentGenerator(APIComponentGenerator):
         # Remove common wrapper patterns
         content = content.strip('[]').strip()
         
-        # Validate content - FAIL FAST (100 character minimum to allow short random targets)
-        min_length = 100  # Flexible minimum to accommodate random variation
+        # Validate content - FAIL FAST with word count minimum
+        min_words = 15  # Minimum 15 words per section for 30-140 word range
+        word_count = len(content.split())
         
-        if not content or len(content) < min_length:
-            raise ValueError(f"{section_type.upper()}_TEXT too short for {material_name} - minimum {min_length} characters for basic content")
+        if not content or word_count < min_words:
+            raise ValueError(f"{section_type.upper()}_TEXT too short for {material_name} - {word_count} words < {min_words} minimum (supports 30-140 word total range)")
         
         logger.info(f"Extracted {section_type} section: {len(content)} chars, {len(content.split())} words")
         return content
@@ -315,37 +324,25 @@ class CaptionComponentGenerator(APIComponentGenerator):
 
     def _calculate_author_token_limit(self, author_country: str) -> int:
         """
-        Calculate max_tokens based on author's word limit.
+        Calculate max_tokens based on 15-70 word target per section.
         
-        Author word limits (per persona config):
-        - Taiwan: 380 words → 456 tokens
-        - Italy: 450 words → 540 tokens  
-        - Indonesia: 250 words → 300 tokens
-        - USA: 196 words → 350 tokens
+        For 15-70 word sections (30-140 total caption):
+        - Max per section: 70 words
+        - Tokens: 70 words * 4.0 (maximum generous for Grok) = ~280 tokens per section
+        - Ensures ZERO truncation under all circumstances
         
         Using rough conversion: 1 token ≈ 0.75 words for technical content
-        Formula: (word_limit / 0.75) * 0.9 safety margin
+        Inverse: 1 word ≈ 1.33 tokens
         """
-        # Author word limits from OPTIMIZER_CONFIG personas (reduced by 30%)
-        word_limits = {
-            "taiwan": 266,    # 380 * 0.7
-            "italy": 315,     # 450 * 0.7
-            "indonesia": 175, # 250 * 0.7
-            "usa": 196        # 280 * 0.7
-        }
+        # Target: 70 words max per section (increased from 60)
+        # Maximum generosity to guarantee complete sentences
+        max_words_per_section = 70
+        tokens_per_word = 4.0   # Maximum - ensures completion always
+        safety_margin = 1.0     # No margin needed with 4x
         
-        country_key = author_country.lower()
-        word_limit = word_limits.get(country_key, 320)  # Default to USA if unknown
+        max_tokens = int(max_words_per_section * tokens_per_word * safety_margin)
         
-        # Convert words to tokens with generous margin for BEFORE + AFTER sections
-        # token_to_word_ratio ≈ 0.75 for technical content
-        # Reduced token limits by 30%
-        if country_key == "usa":
-            max_tokens = 800  # Maximum tokens for complete voice generation
-        else:
-            max_tokens = int((word_limit / 0.75) * 1.5)  # 1.5x multiplier for full voice preservation
-        
-        logger.info(f"Author {country_key}: word_limit={word_limit} → max_tokens={max_tokens}")
+        logger.info(f"Author {author_country}: max_tokens={max_tokens} (70 words × 4.0 - zero truncation guarantee)")
         
         return max_tokens
 
@@ -522,10 +519,10 @@ class CaptionComponentGenerator(APIComponentGenerator):
             
             # Use unified voice prompting system
             if author_obj and author_obj.get('country'):
-                # Word range: 20-80 words per section (110-440 chars @ 5.5 chars/word)
-                # Total caption range: 40-160 words
-                min_section_chars = 110   # 20 words minimum per section
-                max_section_chars = 440   # 80 words maximum per section
+                # Word range: 15-70 words per section (83-385 chars @ 5.5 chars/word)
+                # Total caption range: 30-140 words
+                min_section_chars = 83    # 15 words minimum per section
+                max_section_chars = 385   # 70 words maximum per section
                 
                 # Each section gets independent range
                 before_target = random.randint(min_section_chars, max_section_chars)
@@ -536,26 +533,32 @@ class CaptionComponentGenerator(APIComponentGenerator):
                 after_words = int(after_target / 5.5)
                 
                 # Before section guidance
-                if before_target < 220:  # 20-40 words
-                    before_paragraphs = "1 concise paragraph"
-                    before_style = "brief and focused"
-                elif before_target < 330:  # 40-60 words
-                    before_paragraphs = "1-2 paragraphs"
+                if before_target < 138:  # 15-25 words
+                    before_paragraphs = "2-3 sentences"
+                    before_style = "concise and clear"
+                elif before_target < 220:  # 25-40 words
+                    before_paragraphs = "1 short paragraph"
+                    before_style = "focused description"
+                elif before_target < 303:  # 40-55 words
+                    before_paragraphs = "1 paragraph"
                     before_style = "moderate detail"
-                else:  # 60-80 words
-                    before_paragraphs = "2 paragraphs"
-                    before_style = "comprehensive and detailed"
+                else:  # 55-70 words
+                    before_paragraphs = "1-2 paragraphs"
+                    before_style = "comprehensive detail"
                 
                 # After section guidance
-                if after_target < 220:
-                    after_paragraphs = "1 concise paragraph"
-                    after_style = "brief and focused"
-                elif after_target < 330:
-                    after_paragraphs = "1-2 paragraphs"
+                if after_target < 138:  # 15-25 words
+                    after_paragraphs = "2-3 sentences"
+                    after_style = "concise and clear"
+                elif after_target < 220:  # 25-40 words
+                    after_paragraphs = "1 short paragraph"
+                    after_style = "focused description"
+                elif after_target < 303:  # 40-55 words
+                    after_paragraphs = "1 paragraph"
                     after_style = "moderate detail"
-                else:
-                    after_paragraphs = "2 paragraphs"
-                    after_style = "comprehensive and detailed"
+                else:  # 55-70 words
+                    after_paragraphs = "1-2 paragraphs"
+                    after_style = "comprehensive detail"
                 
                 # Store combined character target for percentage-based sentence enforcement
                 self._current_char_target = before_target + after_target
@@ -586,8 +589,8 @@ class CaptionComponentGenerator(APIComponentGenerator):
                 
                 before_response = api_client.generate_simple(
                     prompt=before_prompt,
-                    max_tokens=dynamic_max_tokens // 2,  # Half for each section
-                    temperature=0.7   # Natural variation
+                    max_tokens=dynamic_max_tokens,  # Full allocation - this is a single section call
+                    temperature=0.5   # Reduced from 0.7 for more consistent word counts
                 )
                 
                 if not before_response.success:
@@ -614,8 +617,8 @@ class CaptionComponentGenerator(APIComponentGenerator):
                 
                 after_response = api_client.generate_simple(
                     prompt=after_prompt,
-                    max_tokens=dynamic_max_tokens // 2,  # Half for each section
-                    temperature=0.7   # Natural variation
+                    max_tokens=dynamic_max_tokens,  # Full allocation - this is a single section call
+                    temperature=0.5   # Reduced from 0.7 for more consistent word counts
                 )
                 
                 if not after_response.success:

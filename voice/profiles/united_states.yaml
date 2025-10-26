@@ -5,28 +5,33 @@ native_language: "English (American)"
 
 linguistic_characteristics:
   
+  # ============================================================================
+  # ACTIVE INTENSITY: LEVEL 2 (LIGHT)
+  # To change intensity: Copy content from desired level below into these sections
+  # ============================================================================
+  
   sentence_structure:
+    # CURRENT: LEVEL 2 (LIGHT) - 1 pattern maximum per caption
     patterns:
-      - "The approach achieves result in applications"
-      - "Systems use parameter control while maintaining characteristics"
-      - "Method enables performance in environments"
-      - "Process modifies surface, improving measurement by 40%"
+      - "Use efficient language naturally"
+      - "Include 1 business/application reference per caption"
+      - "Light action-oriented phrasing (0-1 phrasal verb)"
+      - "Mostly standard technical with hint of American directness"
     
     tendencies:
       - "Concise action-oriented sentences with clear subjects"
-      - "Active voice with direct cause-effect relationships"
-      - "Measurement-focused framing with quantifiable outcomes"
-      - "Technical context integration (parameters, measurements)"
-      - "Phrasal verb use (set up, figure out, come up with)"
+      - "Active voice preferred but not exclusive"
+      - "Minimal phrasal verbs (1 maximum)"
+      - "Standard sentence structures with minor variation"
     
-    natural_variations:
-      - "Minimal non-native patterns (baseline English speaker)"
-      - "Idiomatic structures (phrasal verbs, idioms without emotion)"
-      - "Sentence variety with simple and complex structures"
-      - "American spelling preferences (analyze, optimize)"
-      - "Contractions in less formal contexts (it's, we're, that's)"
+    limits:
+      patterns_per_caption: "1 maximum"
+      phrasal_verbs_max: 1
+      business_references_max: 1
+      action_phrases_max: 1
   
   vocabulary_patterns:
+    # CURRENT: LEVEL 2 (LIGHT)
     preferred_terms:
       technical:
         - "parameter"
@@ -37,14 +42,6 @@ linguistic_characteristics:
         - "process"
         - "method"
       
-      phrasal_verbs:
-        - "set up"
-        - "figure out"
-        - "come up with"
-        - "carry out"
-        - "work out"
-        - "pick up"
-      
       connectors:
         - "while"
         - "as"
@@ -52,79 +49,143 @@ linguistic_characteristics:
         - "by"
         - "through"
         - "enabling"
-      
-      qualifiers:
-        - "measured"
-        - "observed"
-        - "specified"
-        - "required"
-        - "indicated"
-        - "determined"
     
     formality_level: "technical-neutral"
     technical_density: "medium"
     register: "standard technical"
   
   grammar_characteristics:
+    # CURRENT: LEVEL 2 (LIGHT)
     natural_patterns:
       - "Standard American English grammar conventions"
-      - "Varied sentence structures for engagement"
-      - "Idiomatic expressions naturally integrated"
-      - "Contractions acceptable in less formal contexts"
-      - "Progressive tenses common for ongoing processes"
+      - "Active voice preferred but not exclusive"
+      - "American spelling (analyze, optimize)"
+      - "Sentence variety with simple and complex structures"
     
     subtle_markers:
-      - "None (native speaker baseline)"
       - "American spelling: optimize vs optimise, analyze vs analyse"
-      - "Collective noun singular agreement (the team is vs the team are)"
+      - "Collective noun singular agreement (the team is)"
+      - "One phrasal verb maximum per caption"
+  
+  # ============================================================================
+  # INTENSITY LEVEL REFERENCE GUIDE
+  # Copy-paste from sections below to change active intensity
+  # ============================================================================
+  
+  reference_levels:
+    
+    level_1_minimal:
+      description: "0-1 cultural markers - nearly neutral international English"
+      sentence_structure_patterns:
+        - "Use neutral descriptive language"
+        - "Avoid business jargon and action verbs"
+        - "Standard technical reporting style"
+        - "No efficiency/results-focused language"
+      sentence_structure_tendencies:
+        - "Standard technical terms without business context"
+        - "Minimal phrasal verbs"
+        - "Formal technical register"
+      limits:
+        patterns_per_caption: "0-1 total"
+        phrasal_verbs_max: 0
+        business_references_max: 0
+        action_phrases_max: 0
+    
+    level_2_light:
+      description: "1 pattern maximum - occasional authentic markers"
+      sentence_structure_patterns:
+        - "Use efficient language naturally"
+        - "Include 1 business/application reference per caption"
+        - "Light action-oriented phrasing (0-1 phrasal verb)"
+        - "Mostly standard technical with hint of American directness"
+      sentence_structure_tendencies:
+        - "Active voice preferred but not exclusive"
+        - "Standard sentence structures with minor variation"
+        - "American spelling (analyze, optimize)"
+        - "Balance brevity with completeness"
+      limits:
+        patterns_per_caption: "1 maximum"
+        phrasal_verbs_max: 1
+        business_references_max: 1
+        action_phrases_max: 1
+    
+    level_3_moderate:
+      description: "1-2 patterns - noticeable but balanced"
+      sentence_structure_patterns:
+        - "Maintain efficient, direct communication without being abrupt"
+        - "Use business-focused language naturally (applications, performance, results)"
+        - "Include 1-2 action-oriented phrases per caption"
+        - "Some phrasal verb use (set up, work out)"
+      sentence_structure_tendencies:
+        - "Active voice dominant with clear cause-effect"
+        - "Concise action-oriented sentences with clear subjects"
+        - "Include 1-2 phrasal verbs (carry out, figure out)"
+        - "Direct connectors (while, as, when, by, through)"
+      limits:
+        patterns_per_caption: "1-2"
+        phrasal_verbs_max: 2
+        business_references_max: 2
+        action_phrases_max: 2
+    
+    level_4_strong:
+      description: "3-4 patterns - clearly recognizable"
+      sentence_structure_patterns:
+        - "Use highly efficient, action-packed language"
+        - "Emphasize business applications and ROI prominently"
+        - "Include 3-4 action-oriented phrases per caption"
+        - "Heavy phrasal verb use (set up, figure out, come up with, carry out)"
+      sentence_structure_tendencies:
+        - "Active voice exclusive with direct cause-effect"
+        - "Include 3-4 phrasal verbs throughout"
+        - "Quantifiable outcomes emphasized (improved by 40%, reduced 60%)"
+        - "Idiomatic structures naturally integrated"
+      limits:
+        patterns_per_caption: "3-4"
+        phrasal_verbs_max: "3-4"
+        business_references_max: "3-4"
+        action_phrases_max: "3-4"
+    
+    level_5_maximum:
+      description: "5+ patterns - highly distinctive"
+      sentence_structure_patterns:
+        - "Ultra-efficient, headline-style communication"
+        - "Emphasize business value and practical applications throughout"
+        - "Pack with action verbs and results-oriented language (5+ instances)"
+        - "Extensive phrasal verb use (set up, figure out, work out, pick up, carry out, come up with)"
+      sentence_structure_tendencies:
+        - "Active voice exclusive, maximum directness"
+        - "5+ phrasal verbs per caption"
+        - "ROI and performance metrics emphasized throughout"
+        - "Contractions used freely for brevity"
+      limits:
+        patterns_per_caption: "5+"
+        phrasal_verbs_max: "5+"
+        business_references_max: "5+"
+        action_phrases_max: "5+"
+  
+  # SHARED CHARACTERISTICS (all levels)
+  core_patterns:
+    sentence_structure_base:
+      - "Concise action-oriented sentences with clear subjects"
+      - "Active voice with direct cause-effect relationships"
+      - "Measurement-focused framing with quantifiable outcomes"
+      - "Technical context integration (parameters, measurements)"
+      - "Phrasal verb use (intensity-dependent)"
+    
+    vocabulary_neutral:
+      - "Technical: parameter, measurement, wavelength, thickness, surface, process, method"
+      - "Connectors: while, as, when, by, through, enabling"
+      - "Qualifiers: measured, observed, specified, required, indicated, determined"
+    
+    grammar_tendencies:
+      - "Standard American English grammar conventions"
+      - "Varied sentence structures for engagement"
+      - "American spelling: optimize vs optimise, analyze vs analyse"
+      - "Collective noun singular agreement (the team is)"
       - "Will future more common than going to future in formal writing"
-  
 
 
-voice_adaptation:
-  
-  caption_generation:
-    focus: "Observable characteristics with measurements"
-    style: "Technical factual"
-    word_limit: 196
-    validation_requirements:
-      minimum_sentences: 5
-      minimum_ai_evasion_markers: 2
-      require_sentence_length_variation: true
-      lexical_variety_minimum: 0.75
-    guidelines:
-      - "Use authoritative, professional tone - avoid casual greetings or familiar language"
-      - "Begin with direct observations, not personal introductions"
-      - "Use phrasal verbs naturally (set up, figure out) but maintain formal register"
-      - "Include measurements with units"
-      - "Use active voice with clear subjects"
-      - "Apply technical language without colloquialisms"
-      - "Maintain standard American English patterns"
-      - "REQUIRED: Maintain 75%+ lexical variety - avoid word repetition, use synonyms"
-      - "REQUIRED: Mix sentence lengths - 20% short (5-8 words), 40% medium (10-18), 30% long (20-28), 10% very long (30+)"
-      - "Include minimum 2-3 AI-evasion markers for natural flow"
-      - "Focus on technical observations rather than personal commentary"
-  
-  text_generation:
-    focus: "Process description with measurements"
-    style: "Technical neutral"
-    word_limit: 196
-    guidelines:
-      - "Present processes with phrasal verbs"
-      - "Include technical measurements"
-      - "Use active voice preference"
-      - "Apply idiomatic structures naturally"
-      - "Maintain standard American grammatical patterns"
-  
-  technical_description:
-    focus: "Parameter specifications with measurements"
-    style: "Technical documentation"
-    guidelines:
-      - "Specify parameters with units"
-      - "Use phrasal verb constructions"
-      - "Apply active voice"
-      - "Maintain American spelling conventions"
-
+# voice_adaptation section removed - component-specific adaptations belong in component config
 
 
 signature_phrases: []
@@ -143,21 +204,7 @@ quality_thresholds:
   phrasal_verb_usage_minimum: 50
   idiomatic_structure_minimum: 40
 
-example_patterns:
-  before_caption:
-    - "Surface shows contamination buildup. Imaging reveals multi-layer structure measuring 25-40 μm thickness"
-    - "Components show contamination affecting surface characteristics. Surface degradation measures Ra 2.3 μm"
-    - "System reflectivity reduced by contamination. Reflectivity decreased 35%, measuring 0.45 at 1064 nm"
-  
-  after_caption:
-    - "Process removes contaminant with substrate preserved. Measurements show 95% reflectivity, meeting specifications"
-    - "Cleaning achieves surface preparation. Results show Ra < 0.5 μm, meeting requirements"
-    - "Process restores substrate with zero thermal damage. Surface shows measurements within tolerance"
-  
-  technical_explanation:
-    - "The wavelength absorption works out well while minimizing thermal stress - this approach enables cleaning"
-    - "Parameter control sets up performance in applications. The system carries out processing with cycle time reduced 60%"
-    - "Pulse adjustment figures out cleaning across materials. Method removes contamination through parameter variation"
+# example_patterns removed - caption-specific examples belong in component config
 
 linguistic_authenticity_notes:
   - "Phrasal verb use reflects American English pragmatic preference"

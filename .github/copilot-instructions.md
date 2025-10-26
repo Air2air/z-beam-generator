@@ -37,6 +37,8 @@ System must fail immediately if dependencies are missing. **ZERO TOLERANCE** for
 - Skip logic that bypasses checks (`if not exists: return True`)
 - Placeholder return values (`return {}`)
 - Silent failures (`except: pass`)
+- **Category fallback ranges** (`if prop missing: use category_range`)
+- **Template fallbacks** (`if data missing: use template`)
 
 **✅ EXCEPTION**: Mocks and fallbacks **ARE ALLOWED in test code** for proper testing infrastructure.
 
@@ -46,16 +48,24 @@ System must fail immediately if dependencies are missing. **ZERO TOLERANCE** for
 All required components must be explicitly provided - no silent degradation.
 
 ### 3. **Data Storage Policy** 🔥 **CRITICAL**
-**ALL data updates MUST be saved to Materials.yaml or Categories.yaml.**
+**ALL generation and validation happens on Materials.yaml ONLY.**
 
-- ✅ **Materials.yaml** - Single source of truth for all material data
-- ✅ **Categories.yaml** - Single source of truth for all category data
-- ❌ **Frontmatter files** - OUTPUT ONLY, never data storage
-- ✅ **Data Flow**: Materials.yaml → Frontmatter (one-way only)
+- ✅ **Materials.yaml** - Single source of truth + all generation/validation happens here
+  - ALL AI text generation (captions, descriptions, etc.)
+  - ALL property research and discovery
+  - ALL completeness validation
+  - ALL quality scoring and thresholds
+  - ALL schema validation
+- ✅ **Categories.yaml** - Single source of truth for category ranges
+- ❌ **Frontmatter files** - Trivial export copies (NO API, NO validation)
+  - Simple YAML-to-YAML field mapping
+  - Should take seconds for 132 materials, not minutes
+  - No complex operations during export
+- ✅ **Data Flow**: Generate → Materials.yaml → Export to Frontmatter
 - ✅ **Persistence**: All AI research saves to Materials.yaml immediately
 - ❌ **Never read frontmatter** for data persistence (only for output verification)
 
-See `docs/DATA_STORAGE_POLICY.md` for complete policy.
+See `docs/data/DATA_STORAGE_POLICY.md` for complete policy.
 
 ### 4. **Component Architecture**
 Use ComponentGeneratorFactory pattern for all generators.

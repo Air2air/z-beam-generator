@@ -1,40 +1,414 @@
 name: Sapphire Glass
-category: Glass
-subcategory: silicate
 title: Sapphire Glass Laser Cleaning
 subtitle: Laser cleaning parameters and specifications for Sapphire Glass
 description: Laser cleaning parameters for Sapphire Glass
-author:
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  id: 3
-  image: /images/author/ikmanda-roswati.jpg
-  name: Ikmanda Roswati
-  sex: m
-  title: Ph.D.
-images:
-  hero:
-    alt: Sapphire Glass surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/material/sapphire-glass-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Sapphire Glass surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/sapphire-glass-laser-cleaning-micro.jpg
+category: glass
+subcategory: soda-lime
 caption:
-  description: Microscopic analysis of Sapphire Glass surface before and after laser
+  beforeText: Under microscopy, sapphire glass surface appears very-very contaminated
+    with fine sticky particles and oily residues that cling and cover it tightly.
+    This causes micro-scratches, pits, and dull degradation, reducing smoothness and
+    clarity.
+  afterText: Sapphire glass surface is cleaned thoroughly and appears very-very smooth.
+    Restoration quality is high, preserving material integrity perfectly.
+  generated: '2025-10-25T15:14:11.030011Z'
+  author: Ikmanda Roswati
+  generation_method: ai_research
+  word_count:
+    before: 32
+    after: 18
+  character_count:
+    before: 239
+    after: 144
+  description: Microscopic analysis of sapphire glass surface before and after laser
     cleaning treatment
-  beforeText: ''
-  afterText: ''
-regulatoryStandards:
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo_org_ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/en/publication/3587
-  image: /images/logo/logo_org_iec.png
+materialProperties:
+  laser_material_interaction:
+    description: Optical, thermal, and surface properties governing laser processing
+      behavior
+    label: Laser-Material Interaction
+    percentage: 40.0
+    properties:
+      ablationThreshold:
+        confidence: 0.92
+        research_basis: materials_science_literature
+        research_date: '2025-10-17T19:20:38.241711'
+        source: ai_research
+        unit: J/cm²
+        value: 3.2
+      laserAbsorption:
+        confidence: 0.92
+        research_basis: 'NIST Materials Data Repository - Single-crystal sapphire
+          (α-Al₂O₃) optical properties database, combined with ASM Handbook Volume
+          4: Ceramics and Glasses, specifically addressing laser-material interactions
+          for synthetic sapphire'
+        research_date: '2025-09-30T11:07:08.502260'
+        source: ai_research
+        unit: '%'
+        validation_method: Cross-referenced with experimental data from laser cleaning
+          studies on sapphire substrates (Harris et al., 2018) and verified against
+          the fundamental absorption characteristics of α-Al₂O₃ crystal structure
+          with chromium and titanium trace impurities typical of synthetic sapphire
+          glass
+        value: 8.2
+        min: 0.1
+        max: 8.2
+      laserReflectivity:
+        confidence: 0.95
+        research_basis: NIST Materials Data Repository - Single-crystal sapphire (α-Al₂O₃)
+          reflectance measurements at 1064 nm wavelength, room temperature, with surface
+          roughness < 10 nm
+        research_date: '2025-09-30T11:07:20.699702'
+        source: ai_research
+        unit: '%'
+        validation_method: Cross-referenced with ASM Handbook on Ceramics and Glasses,
+          and validated against sapphire's known refractive index (n = 1.76 at 1064
+          nm) using Fresnel equations for normal incidence
+        value: 7.2
+        min: 3.6
+        max: 52.3
+      specificHeat:
+        ai_verified: true
+        confidence: 0.95
+        research_basis: 'NIST Standard Reference Database 144: Thermophysical Properties
+          of Solids - Single Crystal Alumina (Sapphire) at 300K'
+        research_date: '2025-09-30T11:07:31.554388'
+        source: ai_research
+        unit: J/(kg·K)
+        validation_method: Cross-referenced NIST database values with ASM Handbook
+          Vol. 2 and academic literature on single-crystal α-Al₂O₃ thermophysical
+          properties
+        value: 761.0
+        verification_confidence: 95
+        verification_date: '2025-10-03T22:32:20.837511'
+        verification_variance: 0.0%
+        min: 130.0
+        max: 840.0
+      thermalConductivity:
+        ai_verified: true
+        confidence: 0.95
+        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+          Alloys and Special-Purpose Materials (2015), Section: Properties of Single-Crystal
+          Sapphire at 300K'
+        research_date: '2025-09-30T11:07:56.641536'
+        source: ai_research
+        unit: W/(m·K)
+        validation_method: Cross-referenced with NIST Standard Reference Database
+          and academic literature on single-crystal α-Al₂O₃ properties, confirming
+          anisotropic thermal conductivity values along c-axis (27-30 W/m·K) and a-axis
+          (23-26 W/m·K) at room temperature
+        value: 27.0
+        verification_confidence: 95
+        verification_date: '2025-10-03T20:20:53.092033'
+        verification_variance: 0.77%
+        min: 0.78
+        max: 27.0
+      thermalDestruction:
+        confidence: 0.65
+        point:
+          confidence: 0.95
+          research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+            Alloys and Special-Purpose Materials (ASM International, 1990), Section:
+            Properties of Single Crystal Sapphire; Harris, D.C. ''Materials for Infrared
+            Windows and Domes'' (1999)'
+          research_date: '2025-09-30T11:08:09.236561'
+          source: ai_research
+          unit: K
+          validation_method: Cross-referenced ASM Handbook data with academic literature
+            on sapphire thermal properties, validated against single-crystal α-Al2O3
+            decomposition temperature and melting point consistency
+          value: 2040.0
+        research_basis: ai_research_comprehensive
+        research_date: '2025-10-17'
+        source: thermal_degradation_standards
+        type: melting
+        unit: °C
+        value: 500.0
+      thermalDiffusivity:
+        confidence: 0.95
+        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+          Alloys and Special-Purpose Materials, Table ''Thermal Properties of Single
+          Crystal Sapphire'' and NIST Standard Reference Database for Thermophysical
+          Properties of Solids'
+        research_date: '2025-09-30T11:08:34.367693'
+        source: ai_research
+        unit: mm²/s
+        validation_method: Cross-referenced multiple authoritative sources including
+          ASM Handbook, NIST database, and peer-reviewed studies on single crystal
+          α-Al₂O₃ properties at room temperature (25°C)
+        value: 13.0
+        min: 0.45
+        max: 13.0
+      thermalExpansion:
+        ai_verified: true
+        confidence: 0.95
+        research_basis: NIST Standard Reference Database 84 - Single-Crystal Sapphire
+          (α-Al₂O₃) thermal expansion coefficients along c-axis (parallel to optical
+          axis) at 20°C
+        research_date: '2025-09-30T11:08:45.918492'
+        source: ai_research
+        unit: 10⁻⁶/K
+        validation_method: Cross-referenced with ASM Handbook Volume 2 and CRC Materials
+          Science & Engineering Handbook for single-crystal α-Al₂O₃ properties, confirming
+          anisotropic thermal expansion behavior
+        value: 5.3
+        verification_confidence: 95
+        verification_date: '2025-10-03T22:13:58.098464'
+        verification_variance: 6.0%
+        min: 0.55
+        max: 9.0
+  material_characteristics:
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    label: Material Characteristics
+    percentage: 40.0
+    properties:
+      compressiveStrength:
+        ai_verified: true
+        confidence: 0.85
+        research_basis: The compressive strength of sapphire (single-crystal Al₂O₃)
+          is highly dependent on crystal orientation, surface finish, and test method.
+          The cited study and other technical reviews (e.g., from GT Advanced Technologies)
+          report typical compressive strength values ranging from 1900 MPa to over
+          2900 MPa for high-quality, flaw-free specimens. The value of 2000 MPa is
+          a conservative, widely cited minimum for high-grade sapphire glass in an
+          engineered state, tested under standard conditions (room temperature, polished
+          surfaces to minimize stress concentrations).
+        research_date: '2025-10-15T21:31:37.836937'
+        source: M. Rubat du Merac et al., "Effect of Surface Quality on the Strength
+          of Sapphire," *Journal of the American Ceramic Society*, Vol. 96, Issue
+          1, 2013, pp. 287-294.
+        unit: MPa
+        value: 2000.0
+        min: 50.0
+        max: 2000.0
+      corrosionResistance:
+        ai_verified: true
+        confidence: 0.9
+        research_basis: Sapphire glass (single crystal Al2O3) is chemically inert
+          and highly resistant to environmental corrosion. It is insoluble in common
+          acids and alkalis, and is unaffected by water, salt spray, and other environmental
+          factors, with a Mohs hardness of 9 providing excellent resistance to abrasion,
+          a form of mechanical "corrosion." Its primary vulnerability is to hydrofluoric
+          acid and strong alkalis at high temperatures, preventing a perfect 10/10
+          score.
+        research_date: '2025-10-15T20:35:43.994527'
+        source: Meller Optics, "Sapphire Properties and Applications"
+        unit: rating
+        value: 9.0
+        min: 2.0
+        max: 9.0
+      density:
+        ai_verified: true
+        confidence: 0.98
+        research_basis: 'ASM Handbook Volume 2: Properties and Selection: Nonferrous
+          Alloys and Special-Purpose Materials, Table ''Properties of Single Crystal
+          Sapphire''; NIST Standard Reference Database 84 - Properties of Single Crystal
+          Sapphire'
+        research_date: '2025-09-30T11:06:41.175524'
+        source: ai_research
+        unit: g/cm³
+        validation_method: Cross-referenced multiple authoritative materials databases
+          and crystallographic data confirming α-Al₂O₃ (sapphire) single crystal density
+          at standard conditions
+        value: 3.98
+        verification_confidence: 95
+        verification_date: '2025-10-03T20:01:08.226513'
+        verification_variance: 0.0%
+        min: 2.2
+        max: 3.98
+      electricalResistivity:
+        confidence: 0.95
+        research_basis: materials_science_literature
+        research_date: '2025-10-17T19:12:09.173518'
+        source: ai_research
+        unit: Ω·m
+        value: 1.0e+16
+      flexuralStrength:
+        confidence: 0.95
+        research_basis: materials_science_literature
+        research_date: '2025-10-15T19:46:39.977285'
+        source: Materials science literature
+        unit: MPa
+        value: 690.0
+        min: 35.0
+        max: 900.0
+      hardness:
+        ai_verified: true
+        confidence: 0.95
+        research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation
+          (2000), Section: Hardness Testing of Ceramics; NIST Special Publication
+          960-15: Properties of Sapphire'
+        research_date: '2025-09-30T11:06:54.755552'
+        source: ai_research
+        unit: Mohs
+        validation_method: Cross-referenced multiple authoritative sources including
+          ASM Handbook, NIST publications, and peer-reviewed journal articles on alumina
+          ceramics, with validation against single-crystal sapphire's known chemical
+          composition (Al₂O₃) and hexagonal crystal structure
+        value: 9.0
+        verification_confidence: 100
+        verification_date: '2025-10-03T20:41:22.071542'
+        verification_variance: 0.0%
+        min: 3.8
+        max: 9.1
+      oxidationResistance:
+        ai_verified: true
+        confidence: 0.85
+        research_basis: Sapphire (single-crystal Al2O3) has exceptional thermal stability.
+          While it begins to show some surface decomposition/volatilization above
+          ~1700°C in air, this temperature is widely cited in technical datasheets
+          from optics and materials manufacturers as its maximum continuous service
+          temperature in an oxidizing atmosphere before significant degradation.
+        research_date: '2025-10-15T20:48:26.879753'
+        source: Meller Optics, "Sapphire Properties & Datasheet"
+        unit: °C
+        value: 1700.0
+        min: 400.0
+        max: 1700.0
+      tensileStrength:
+        confidence: 0.95
+        research_basis: 'ASM Handbook, Volume 29: Materials for Specialty Applications
+          - Mechanical Properties of Synthetic Single-Crystal Sapphire (Al2O3)'
+        research_date: '2025-09-30T11:07:42.715229'
+        source: ai_research
+        unit: MPa
+        validation_method: Cross-referenced ASM Handbook data with NIST Materials
+          Data Repository entries for synthetic sapphire and verified against peer-reviewed
+          studies in Journal of the American Ceramic Society on single-crystal alumina
+          mechanical properties
+        value: 400.0
+        min: 35.0
+        max: 900.0
+      youngsModulus:
+        ai_verified: true
+        confidence: 0.95
+        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+          Alloys and Special-Purpose Materials (ASM International, 1990) and NIST
+          Crystal Data - Single-crystal sapphire (α-Al2O3)'
+        research_date: '2025-09-30T11:08:59.514645'
+        source: ai_research
+        unit: GPa
+        validation_method: Cross-referenced multiple authoritative materials databases
+          and crystallographic literature confirming single-crystal aluminum oxide
+          properties, validated against known sapphire glass composition and crystal
+          structure (rhombohedral, space group R3c)
+        value: 345.0
+        verification_confidence: 95
+        verification_date: '2025-10-03T21:55:35.213954'
+        verification_variance: 0.0%
+        min: 62.0
+        max: 345.0
+  other:
+    description: Additional material-specific properties
+    label: Other Properties
+    percentage: 20.0
+    properties:
+      fractureToughness:
+        ai_verified: true
+        confidence: 0.85
+        research_basis: Sapphire (single-crystal Al2O3) is an exceptionally strong
+          glass-ceramic. Authoritative compilations of ceramic fracture toughness
+          consistently report values for sapphire in the range of 2.0-2.4 MPa·√m for
+          the most common crystallographic orientations at room temperature, with
+          2.0 MPa·√m being a widely cited and conservative benchmark.
+        research_date: '2025-10-15T20:21:34.986087'
+        source: Bradt, R.C. (2011) "The Fracture Toughness of Materials," in *Fracture
+          Mechanics of Ceramics*, pp. 3-19.
+        unit: MPa·√m
+        value: 2.0
+        min: 0.71
+        max: 2.0
+materialCharacteristics:
+  crystallineStructure:
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+    confidence: 0.95
+    description: amorphous crystal structure
+    research_date: '2025-10-20T22:49:43.625917+00:00'
+    source: ai_research
+    unit: crystal system
+    value: amorphous
+machineSettings:
+  dwellTime:
+    confidence: 81
+    description: Optimal dwell time per cleaning spot location
+    max: 200
+    min: 50
+    unit: μs
+    value: 100
+  energyDensity:
+    confidence: 89
+    description: Optimal energy density for effective contaminant removal
+    max: 8
+    min: 2
+    unit: J/cm²
+    value: 5
+  overlapRatio:
+    confidence: 83
+    description: Optimal overlap ratio between adjacent laser tracks
+    max: 70
+    min: 30
+    unit: '%'
+    value: 50
+  passCount:
+    confidence: 82
+    description: Optimal number of passes for complete contaminant removal
+    max: 5
+    min: 1
+    unit: passes
+    value: 3
+  powerRange:
+    confidence: 92
+    description: Optimal power range for Sapphire Glass cleaning without thermal damage
+    max: 120
+    min: 80
+    unit: W
+    value: 100
+  pulseWidth:
+    confidence: 85
+    description: Optimal pulse width for controlled ablation of contaminants
+    max: 20
+    min: 5
+    unit: ns
+    value: 10
+  repetitionRate:
+    confidence: 87
+    description: Optimal repetition rate for efficient cleaning with thermal management
+    max: 200
+    min: 50
+    unit: kHz
+    value: 100
+  scanSpeed:
+    confidence: 86
+    description: Optimal scanning speed for uniform cleaning coverage
+    max: 1000
+    min: 200
+    unit: mm/s
+    value: 500
+  spotSize:
+    confidence: 84
+    description: Optimal spot size for precision cleaning of Sapphire Glass surfaces
+    max: 100
+    min: 20
+    unit: μm
+    value: 50
+  wavelength:
+    confidence: 88
+    description: Optimal wavelength for Sapphire Glass processing with good absorption
+    max: 10600
+    min: 532
+    unit: nm
+    value: 1064
 applications:
 - Aerospace
 - Medical Devices
@@ -46,500 +420,89 @@ applications:
 - Automotive
 - Cultural Heritage
 - Marine and Offshore
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    specificHeat:
-      value: 761.0
-      min: 120
-      max: 900
-      unit: J/(kg·K)
-      research_basis: 'NIST Standard Reference Database 144: Thermophysical Properties
-        of Solids - Single Crystal Alumina (Sapphire) at 300K'
-    thermalConductivity:
-      value: 27.0
-      min: 0.7
-      max: 30
-      unit: W/(m·K)
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (2015), Section: Properties of Single-Crystal
-        Sapphire at 300K'
-    thermalDestruction:
-      value: 500.0
-      unit: °C
-      research_basis: ai_research_comprehensive
-    thermalDiffusivity:
-      value: 13.0
-      min: 0.01
-      max: 15
-      unit: mm²/s
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials, Table ''Thermal Properties of Single
-        Crystal Sapphire'' and NIST Standard Reference Database for Thermophysical
-        Properties of Solids'
-    thermalExpansion:
-      value: 5.3
-      min: 0.1
-      max: 15
-      unit: 10⁻⁶/K
-      research_basis: NIST Standard Reference Database 84 - Single-Crystal Sapphire
-        (α-Al₂O₃) thermal expansion coefficients along c-axis (parallel to optical
-        axis) at 20°C
-    compressiveStrength:
-      value: 2000.0
-      min: 500
-      max: 2000
-      unit: MPa
-      research_basis: The compressive strength of sapphire (single-crystal Al₂O₃)
-        is highly dependent on crystal orientation, surface finish, and test method.
-        The cited study and other technical reviews (e.g., from GT Advanced Technologies)
-        report typical compressive strength values ranging from 1900 MPa to over 2900
-        MPa for high-quality, flaw-free specimens. The value of 2000 MPa is a conservative,
-        widely cited minimum for high-grade sapphire glass in an engineered state,
-        tested under standard conditions (room temperature, polished surfaces to minimize
-        stress concentrations).
-    corrosionResistance:
-      value: 9.0
-      min: 9
-      max: 10
-      unit: rating
-      research_basis: Sapphire glass (single crystal Al2O3) is chemically inert and
-        highly resistant to environmental corrosion. It is insoluble in common acids
-        and alkalis, and is unaffected by water, salt spray, and other environmental
-        factors, with a Mohs hardness of 9 providing excellent resistance to abrasion,
-        a form of mechanical "corrosion." Its primary vulnerability is to hydrofluoric
-        acid and strong alkalis at high temperatures, preventing a perfect 10/10 score.
-    density:
-      value: 3.98
-      min: 1.2
-      max: 7.6
-      unit: g/cm³
-      research_basis: 'ASM Handbook Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials, Table ''Properties of Single Crystal
-        Sapphire''; NIST Standard Reference Database 84 - Properties of Single Crystal
-        Sapphire'
-    electricalResistivity:
-      value: 1.0e+16
-      min: 10000000000.0
-      max: 1000000000000000.0
-      unit: Ω·m
-      research_basis: materials_science_literature
-    flexuralStrength:
-      value: 690.0
-      min: 50
-      max: 750.0
-      unit: MPa
-      research_basis: materials_science_literature
-    hardness:
-      value: 9.0
-      min: 3.5
-      max: 9.5
-      unit: Mohs
-      research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation (2000),
-        Section: Hardness Testing of Ceramics; NIST Special Publication 960-15: Properties
-        of Sapphire'
-    oxidationResistance:
-      value: 1700.0
-      min: 400.0
-      max: 1700.0
-      unit: °C
-      research_basis: Sapphire (single-crystal Al2O3) has exceptional thermal stability.
-        While it begins to show some surface decomposition/volatilization above ~1700°C
-        in air, this temperature is widely cited in technical datasheets from optics
-        and materials manufacturers as its maximum continuous service temperature
-        in an oxidizing atmosphere before significant degradation.
-    tensileStrength:
-      value: 400.0
-      min: 30
-      max: 2000
-      unit: MPa
-      research_basis: 'ASM Handbook, Volume 29: Materials for Specialty Applications
-        - Mechanical Properties of Synthetic Single-Crystal Sapphire (Al2O3)'
-    youngsModulus:
-      value: 345.0
-      min: 10
-      max: 400
-      unit: GPa
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (ASM International, 1990) and NIST Crystal
-        Data - Single-crystal sapphire (α-Al2O3)'
-    fractureToughness:
-      value: 2.0
-      min: 0.5
-      max: 2
-      unit: MPa·√m
-      research_basis: Sapphire (single-crystal Al2O3) is an exceptionally strong glass-ceramic.
-        Authoritative compilations of ceramic fracture toughness consistently report
-        values for sapphire in the range of 2.0-2.4 MPa·√m for the most common crystallographic
-        orientations at room temperature, with 2.0 MPa·√m being a widely cited and
-        conservative benchmark.
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
-    ablationThreshold:
-      value: 3.2
-      min: 2.0
-      max: 6.0
-      unit: J/cm²
-      research_basis: materials_science_literature
-    laserAbsorption:
-      value: 8.2
-      min: 0.001
-      max: 10
-      unit: '%'
-      research_basis: 'NIST Materials Data Repository - Single-crystal sapphire (α-Al₂O₃)
-        optical properties database, combined with ASM Handbook Volume 4: Ceramics
-        and Glasses, specifically addressing laser-material interactions for synthetic
-        sapphire'
-    laserReflectivity:
-      value: 7.2
-      min: 0.1
-      max: 92
-      unit: '%'
-      research_basis: NIST Materials Data Repository - Single-crystal sapphire (α-Al₂O₃)
-        reflectance measurements at 1064 nm wavelength, room temperature, with surface
-        roughness < 10 nm
-machineSettings:
-  dwellTime:
-    value: 100
-    min: 50
-    max: 200
-    unit: μs
-    description: Optimal dwell time per cleaning spot location
-  energyDensity:
-    value: 5
-    min: 2
-    max: 8
-    unit: J/cm²
-    description: Optimal energy density for effective contaminant removal
-  overlapRatio:
-    value: 50
-    min: 30
-    max: 70
-    unit: '%'
-    description: Optimal overlap ratio between adjacent laser tracks
-  passCount:
-    value: 3
-    min: 1
-    max: 5
-    unit: passes
-    description: Optimal number of passes for complete contaminant removal
-  powerRange:
-    value: 100
-    min: 80
-    max: 120
-    unit: W
-    description: Optimal power range for Sapphire Glass cleaning without thermal damage
-  pulseWidth:
-    value: 10
-    min: 5
-    max: 20
-    unit: ns
-    description: Optimal pulse width for controlled ablation of contaminants
-  repetitionRate:
-    value: 100
-    min: 50
-    max: 200
-    unit: kHz
-    description: Optimal repetition rate for efficient cleaning with thermal management
-  scanSpeed:
-    value: 500
-    min: 200
-    max: 1000
-    unit: mm/s
-    description: Optimal scanning speed for uniform cleaning coverage
-  spotSize:
-    value: 50
-    min: 20
-    max: 100
-    unit: μm
-    description: Optimal spot size for precision cleaning of Sapphire Glass surfaces
-  wavelength:
-    value: 1064
-    min: 532
-    max: 10600
-    unit: nm
-    description: Optimal wavelength for Sapphire Glass processing with good absorption
 environmentalImpact:
-- applicableIndustries:
-  - Semiconductor
-  - Electronics
-  - Medical
-  - Nuclear
-  benefit: Chemical Waste Elimination
-  description: Eliminates hazardous chemical waste streams
-  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- applicableIndustries: []
-  benefit: Water Usage Reduction
-  description: Dry process requires no water
-  sustainabilityBenefit: Significant water conservation in industrial processes
-- applicableIndustries: []
-  benefit: Energy Efficiency
-  description: Focused energy delivery with minimal waste heat
-- applicableIndustries: []
-  benefit: Air Quality Improvement
-  description: Eliminates volatile organic compounds from chemical cleaning
+- Chemical Waste Elimination:
+    applicableIndustries:
+    - Semiconductor
+    - Electronics
+    - Medical
+    - Nuclear
+    description: Eliminates hazardous chemical waste streams
+    quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+- Water Usage Reduction:
+    applicableIndustries: []
+    description: Dry process requires no water
+    sustainabilityBenefit: Significant water conservation in industrial processes
+- Energy Efficiency:
+    applicableIndustries: []
+    description: Focused energy delivery with minimal waste heat
+- Air Quality Improvement:
+    applicableIndustries: []
+    description: Eliminates volatile organic compounds from chemical cleaning
 outcomeMetrics:
 - Contaminant Removal Efficiency:
     description: Percentage of target contaminants successfully removed from surface
-    typicalRanges: 95-99.9% depending on application and material
-    measurementMethods:
-    - Before/after microscopy
-    - Chemical analysis
-    - Mass spectrometry
     factorsAffecting:
     - Contamination type
     - Adhesion strength
     - Surface geometry
-preservedData:
-  generationMetadata:
-    generated_date: '2025-10-22T20:36:58.719460'
-    data_completeness: 100%
-    source: Materials.yaml (direct export)
-    properties: {}
-  categoryInfo:
-    description: Various glass types including optical glass, borosilicate, tempered
-      glass, and specialty glass materials for precision laser cleaning
-    properties_count: 0
-    category_ranges:
-      density:
-        max: 7.6
-        min: 1.2
-        unit: g/cm³
-      hardness:
-        max: 9.5
-        min: 3.5
-        unit: Mohs
-        adjustment_note: Lead crystal is 3.8 Mohs
-        adjustment_date: '2025-10-15'
-        adjustment_source: materials_science_research
-        phase2_adjustment: Fused silica at 9.1 Mohs
-      laserAbsorption:
-        max: 10
-        min: 0.001
-        unit: cm⁻¹
-      laserReflectivity:
-        max: 92
-        min: 0.1
-        unit: '%'
-        source: Handbook of Optical Constants of Solids (Palik, 1998)
-        confidence: 80
-        notes: Typical glasses 4-8% at normal incidence, varies with composition and
-          wavelength
-        last_updated: '2025-10-15T14:19:43.867205'
-      specificHeat:
-        max: 900
-        min: 120
-        unit: J/kg·K
-        phase2_adjustment: Lead crystal at 130 J/(kg·K)
-        adjustment_date: '2025-10-15'
-      tensileStrength:
-        max: 2000
-        min: 30
-        unit: MPa
-      thermalConductivity:
-        min: 0.7
-        max: 30
-        unit: W/(m·K)
-        source: MatWeb Materials Database
-        confidence: 85
-        notes: Typical range for glass materials at room temperature
-        last_updated: '2025-10-14T23:58:54.459404'
-        phase2_adjustment: Lead crystal at 0.78 W/(m·K)
-        adjustment_date: '2025-10-15'
-      thermalDestruction:
-        point:
-          max: 1723
-          min: 500
-          unit: °C
-        type: melting
-      thermalDiffusivity:
-        max: 15
-        min: 0.01
-        unit: mm²/s
-      thermalExpansion:
-        max: 15
-        min: 0.1
-        unit: µm/m·K
-      youngsModulus:
-        max: 400
-        min: 10
-        unit: GPa
-      ablationThreshold:
-        min: 2.0
-        max: 6.0
-        unit: J/cm²
-        source: Laser-Induced Damage in Optical Materials (NIST)
-        confidence: 80
-        notes: Silica, borosilicate - nanosecond pulses at 1064nm
-        last_updated: '2025-10-14T23:58:54.459396'
-      compressiveStrength:
-        min: 500
-        max: 2000
-        unit: MPa
-        description: Maximum compressive stress before failure
-        notes: Glass strong in compression
-        source: materials_science_literature
-        research_date: '2025-10-15'
-      corrosionResistance:
-        min: 9
-        max: 10
-        unit: rating
-        description: Resistance to chemical/electrochemical degradation
-        notes: Glass inert to most chemicals
-        source: materials_science_literature
-        research_date: '2025-10-15'
-      electricalResistivity:
-        min: 10000000000.0
-        max: 1000000000000000.0
-        unit: Ω·m
-        description: Resistance to electrical current flow
-        notes: Glass is insulator
-        source: materials_science_literature
-        research_date: '2025-10-15'
-      flexuralStrength:
-        min: 50
-        max: 750.0
-        unit: MPa
-        description: Maximum bending stress before failure
-        notes: Glass weak in bending
-        source: materials_science_literature
-        research_date: '2025-10-15'
-      fractureToughness:
-        min: 0.5
-        max: 2
-        unit: MPa·m^0.5
-        description: Resistance to crack propagation
-        notes: Glass very brittle
-        source: materials_science_literature
-        research_date: '2025-10-15'
-      oxidationResistance:
-        min: 400.0
-        max: 1700.0
-        unit: °C
-        description: ''
-        sample_count: 11
-        auto_generated: true
-        generated_date: '2025-10-16'
-  propertyMetadata:
-    ablationThreshold:
-      confidence: 0.92
-      research_date: '2025-10-17T19:20:38.241711'
-      source: ai_research
-    laserAbsorption:
-      confidence: 0.92
-      research_date: '2025-09-30T11:07:08.502260'
-      source: ai_research
-    laserReflectivity:
-      confidence: 0.95
-      research_date: '2025-09-30T11:07:20.699702'
-      source: ai_research
-    specificHeat:
-      confidence: 0.95
-      ai_verified: true
-      verification_date: '2025-10-03T22:32:20.837511'
-      verification_confidence: 95
-      research_date: '2025-09-30T11:07:31.554388'
-      source: ai_research
-    thermalConductivity:
-      confidence: 0.95
-      ai_verified: true
-      verification_date: '2025-10-03T20:20:53.092033'
-      verification_confidence: 95
-      research_date: '2025-09-30T11:07:56.641536'
-      source: ai_research
-    thermalDestruction:
-      confidence: 0.65
-      research_date: '2025-10-17'
-      source: thermal_degradation_standards
-    thermalDiffusivity:
-      confidence: 0.95
-      research_date: '2025-09-30T11:08:34.367693'
-      source: ai_research
-    thermalExpansion:
-      confidence: 0.95
-      ai_verified: true
-      verification_date: '2025-10-03T22:13:58.098464'
-      verification_confidence: 95
-      research_date: '2025-09-30T11:08:45.918492'
-      source: ai_research
-    compressiveStrength:
-      confidence: 0.85
-      ai_verified: true
-      research_date: '2025-10-15T21:31:37.836937'
-      source: M. Rubat du Merac et al., "Effect of Surface Quality on the Strength
-        of Sapphire," *Journal of the American Ceramic Society*, Vol. 96, Issue 1,
-        2013, pp. 287-294.
-    corrosionResistance:
-      confidence: 0.9
-      ai_verified: true
-      research_date: '2025-10-15T20:35:43.994527'
-      source: Meller Optics, "Sapphire Properties and Applications"
-    density:
-      confidence: 0.98
-      ai_verified: true
-      verification_date: '2025-10-03T20:01:08.226513'
-      verification_confidence: 95
-      research_date: '2025-09-30T11:06:41.175524'
-      source: ai_research
-    electricalResistivity:
-      confidence: 0.95
-      research_date: '2025-10-17T19:12:09.173518'
-      source: ai_research
-    flexuralStrength:
-      confidence: 0.95
-      research_date: '2025-10-15T19:46:39.977285'
-      source: Materials science literature
-    hardness:
-      confidence: 0.95
-      ai_verified: true
-      verification_date: '2025-10-03T20:41:22.071542'
-      verification_confidence: 100
-      research_date: '2025-09-30T11:06:54.755552'
-      source: ai_research
-    oxidationResistance:
-      confidence: 0.85
-      ai_verified: true
-      research_date: '2025-10-15T20:48:26.879753'
-      source: Meller Optics, "Sapphire Properties & Datasheet"
-    tensileStrength:
-      confidence: 0.95
-      research_date: '2025-09-30T11:07:42.715229'
-      source: ai_research
-    youngsModulus:
-      confidence: 0.95
-      ai_verified: true
-      verification_date: '2025-10-03T21:55:35.213954'
-      verification_confidence: 95
-      research_date: '2025-09-30T11:08:59.514645'
-      source: ai_research
-    fractureToughness:
-      confidence: 0.85
-      ai_verified: true
-      research_date: '2025-10-15T20:21:34.986087'
-      source: Bradt, R.C. (2011) "The Fracture Toughness of Materials," in *Fracture
-        Mechanics of Ceramics*, pp. 3-19.
-  machineSettingsMetadata:
-    dwellTime:
-      confidence: 81
-    energyDensity:
-      confidence: 89
-    overlapRatio:
-      confidence: 83
-    passCount:
-      confidence: 82
-    powerRange:
-      confidence: 92
-    pulseWidth:
-      confidence: 85
-    repetitionRate:
-      confidence: 87
-    scanSpeed:
-      confidence: 86
-    spotSize:
-      confidence: 84
-    wavelength:
-      confidence: 88
+    measurementMethods:
+    - Before/after microscopy
+    - Chemical analysis
+    - Mass spectrometry
+    typicalRanges: 95-99.9% depending on application and material
+    units: []
+- Processing Speed:
+    description: Rate of surface area processed per unit time
+    factorsAffecting: []
+    measurementMethods: []
+    units:
+    - m²/h
+    - cm²/min
+    - mm²/s
+- Surface Quality Preservation:
+    description: Maintenance of original surface characteristics after cleaning
+    factorsAffecting: []
+    measurementMethods: []
+    units: []
+- Thermal Damage Avoidance:
+    description: Prevention of heat-related material alterations during cleaning
+    factorsAffecting: []
+    measurementMethods: []
+    units: []
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/en/publication/3587
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
+  image: /images/logo/logo-org-osha.png
+images:
+  hero:
+    alt: Sapphire Glass surface undergoing laser cleaning showing precise contamination
+      removal
+    url: /images/material/sapphire-glass-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of sapphire glass surface showing laser cleaning effects
+    url: /images/material/sapphire-glass-laser-cleaning-micro.jpg
+author:
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  id: 3
+  image: /images/author/ikmanda-roswati.jpg
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+categoryMetadata:
+  description: Various glass types including optical glass, borosilicate, tempered
+    glass, and specialty glass materials for precision laser cleaning

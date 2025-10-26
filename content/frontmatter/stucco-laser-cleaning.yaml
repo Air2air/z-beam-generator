@@ -1,198 +1,33 @@
 name: Stucco
-category: Masonry
-subcategory: construction
-title: Stucco Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Stucco
+title: Stucco
+subtitle: ''
 description: Laser cleaning parameters for Stucco
-author:
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  id: 3
-  image: /images/author/ikmanda-roswati.jpg
-  name: Ikmanda Roswati
-  sex: m
-  title: Ph.D.
-images:
-  hero:
-    alt: Stucco surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/stucco-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Stucco surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/stucco-laser-cleaning-micro.jpg
+category: masonry
+subcategory: ''
 caption:
-  description: Microscopic analysis of Stucco surface before and after laser cleaning
+  beforeText: Under microscopy, the stucco surface appears contaminated heavily-heavily
+    with fine dust particles and organic films that adhere tightly and obscure pores
+    completely. Contaminants show irregular shapes, dark-dark colors, and clumped
+    clusters of silica and salts embedded deeply. Surface degradation is evident in
+    cracked binders and eroded grains, so the material looks weakened and discolored
+    step by step.
+  afterText: The stucco surface appears very-very clean and smooth after laser cleaning,
+    with fine details restored beautifully. Integrity remains intact, no cracks or
+    damage seen, so material stays strong for cultural heritage use. Restoration quality
+    is excellent, preserving original texture.
+  generated: '2025-10-25T15:25:58.809436Z'
+  author: Ikmanda Roswati
+  generation_method: ai_research
+  word_count:
+    before: 57
+    after: 39
+  character_count:
+    before: 407
+    after: 282
+  description: Microscopic analysis of stucco surface before and after laser cleaning
     treatment
-  beforeText: ''
-  afterText: ''
-regulatoryStandards:
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo_org_ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/en/publication/3587
-  image: /images/logo/logo_org_iec.png
-applications:
-- Cultural Heritage
-- Aerospace
-- Marine
-- Construction Restoration
-- Manufacturing
-- Energy Sector
-- Automotive
-- Electronics Manufacturing
-- Food Processing
-- Historical Monument Preservation
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    specificHeat:
-      value: 840.0
-      min: 700
-      max: 1100
-      unit: J/(kg·K)
-      research_basis: 'NIST IR 6990 - Specific Heat Capacity of Common Building Materials,
-        Table 4-1: Portland cement plaster (stucco) at 20°C'
-    thermalConductivity:
-      value: 0.72
-      min: 0.08
-      max: 2.5
-      unit: W/(m·K)
-      research_basis: 'ASHRAE Fundamentals Handbook (2021), Chapter 26 - Table 3:
-        Thermal Properties of Building and Insulating Materials, specifically listing
-        ''Stucco'' as 0.72 W/m·K at 24°C'
-    thermalDestruction:
-      value: 500.0
-      unit: °C
-      research_basis: ai_research_comprehensive
-    thermalDiffusivity:
-      value: 0.48
-      min: 0.1
-      max: 1
-      unit: mm²/s
-      research_basis: 'NIST Special Publication 1196: ''Thermal Properties of Masonry
-        Materials'' (Table 4.2) and ASM Handbook Vol. 4: ''Thermal Properties of Building
-        Materials'' (Section 3.4)'
-    thermalExpansion:
-      value: 10.0
-      min: 5
-      max: 20
-      unit: µm/m·°C
-      research_basis: 'ASM International, ''Engineered Materials Handbook, Vol. 4:
-        Ceramics and Glasses'', Table 2: Thermal Properties of Cementitious Materials,
-        p. 606 (1991).'
-    compressiveStrength:
-      value: 24.1
-      min: 5
-      max: 100
-      unit: MPa
-      research_basis: ASTM C926-22a Standard Specification for Application of Portland
-        Cement-Based Plaster, Table 1 - Physical Requirements for Portland Cement
-        Plaster
-    corrosionResistance:
-      value: 8.0
-      min: 2.0
-      max: 8.0
-      unit: rating
-      research_basis: Stucco (portland cement-based) exhibits excellent corrosion
-        resistance due to its high alkalinity (pH ~12-13) which passivates embedded
-        materials and resists chemical attack from atmospheric exposure. The cementitious
-        matrix provides superior performance against environmental corrosion compared
-        to other masonry materials, with documented long-term durability in various
-        climates.
-    density:
-      value: 1.5
-      min: 0.6
-      max: 3.2
-      unit: g/cm³
-      research_basis: ASTM C926-22 Standard Specification for Application of Portland
-        Cement-Based Plaster, which governs stucco composition and properties; NIST
-        IR 8612 - Performance of Traditional and Polymer-Modified Stucco Systems
-    flexuralStrength:
-      value: 3.0
-      min: 2
-      max: 20
-      unit: MPa
-      research_basis: The PCA, a leading authority on cement-based materials, provides
-        a typical flexural strength range for portland cement plaster (stucco) of
-        2.8 to 3.5 MPa when tested in accordance with ASTM C78 (standard test method
-        for flexural strength of concrete using a simple beam with third-point loading).
-        The value of 3.0 MPa is a conservative, commonly cited average within this
-        range for general design and specification purposes. This property is distinct
-        from the provided compressive strength and is directly relevant for evaluating
-        the material's resistance to bending.
-    hardness:
-      value: 2.0
-      min: 1
-      max: 6
-      unit: Mohs
-      research_basis: 'NIST Special Publication 984-2: ''Standard Guide for Characterization
-        of Masonry Materials'' and ASTM C1324-05: ''Standard Test Method for Examination
-        and Analysis of Hardened Masonry Mortar'''
-    oxidationResistance:
-      value: 1200.0
-      min: 300.0
-      max: 1200.0
-      unit: °C
-      research_basis: Stucco is primarily composed of calcium sulfate hemihydrate
-        (CaSO₄·0.5H₂O). Authoritative materials handbooks indicate that calcium sulfate-based
-        materials begin significant decomposition (not oxidation in the metallic sense,
-        but thermal degradation) in air starting around 1200°C, where it decomposes
-        to calcium oxide and sulfur oxides. This temperature represents the maximum
-        service limit before material failure.
-    tensileStrength:
-      value: 1.4
-      min: 1
-      max: 15
-      unit: MPa
-      research_basis: ASTM C1324-18 'Standard Test Method for Examination and Analysis
-        of Hardened Masonry Mortar' and NISTIR 7415 'Mechanical Properties of Masonry
-        Components'
-    youngsModulus:
-      value: 20.7
-      min: 3.0
-      max: 50
-      unit: GPa
-      research_basis: ASTM C1386-07 'Standard Specification for Precast Autoclaved
-        Aerated Concrete (PAAC) Wall Construction Units' and supplementary mechanical
-        property studies on cementitious stucco compositions by Larbi (1993) in 'Cement
-        and Concrete Research'
-    fractureToughness:
-      value: 0.25
-      min: 0.15
-      max: 1.1
-      unit: MPa·√m
-      research_basis: The provided value is a conservative estimate based on stucco's
-        classification as a cementitious, quasi-brittle masonry material. Its compressive
-        strength (24.1 MPa) and low Mohs hardness (2.0) place it in a similar performance
-        range to low-strength cement plasters and mortars, for which fracture toughness
-        values are typically reported between 0.2 and 0.4 MPa·√m. The cited source
-        provides a specific, measured value for stucco within this established range
-        for masonry materials.
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
-    laserAbsorption:
-      value: 8.2
-      min: 0.5
-      max: 15
-      unit: cm⁻¹
-      research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
-        for Masonry Cleaning'' (2019), Table 4.3 - Absorption coefficients for cementitious
-        materials at 1064 nm wavelength'
-    laserReflectivity:
-      value: 35.2
-      min: 10
-      max: 70
-      unit: '%'
-      research_basis: 'NIST Special Publication 1176: ''Optical Properties of Building
-        Materials for Laser Applications'' (Table 4.3 - Portland cement-based stucco,
-        1064 nm wavelength)'
+materialProperties: {}
+materialCharacteristics: {}
 machineSettings:
   energyDensity:
     value: 3.2
@@ -252,259 +87,54 @@ machineSettings:
     unit: nm
     description: Near-infrared wavelength optimized for Stucco absorption and minimal
       substrate interaction
+applications:
+- Cultural Heritage
+- Aerospace
+- Marine
+- Construction Restoration
+- Manufacturing
+- Energy Sector
+- Automotive
+- Electronics Manufacturing
+- Food Processing
+- Historical Monument Preservation
 environmentalImpact:
-- applicableIndustries:
-  - Semiconductor
-  - Electronics
-  - Medical
-  - Nuclear
-  benefit: Chemical Waste Elimination
-  description: Eliminates hazardous chemical waste streams
-  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- applicableIndustries: []
-  benefit: Water Usage Reduction
-  description: Dry process requires no water
-  sustainabilityBenefit: Significant water conservation in industrial processes
-- applicableIndustries: []
-  benefit: Energy Efficiency
-  description: Focused energy delivery with minimal waste heat
-- applicableIndustries: []
-  benefit: Air Quality Improvement
-  description: Eliminates volatile organic compounds from chemical cleaning
-outcomeMetrics:
-- Contaminant Removal Efficiency:
-    description: Percentage of target contaminants successfully removed from surface
-    typicalRanges: 95-99.9% depending on application and material
-    measurementMethods:
-    - Before/after microscopy
-    - Chemical analysis
-    - Mass spectrometry
-    factorsAffecting:
-    - Contamination type
-    - Adhesion strength
-    - Surface geometry
-preservedData:
-  generationMetadata:
-    generated_date: '2025-10-22T20:36:58.847392'
-    data_completeness: 100%
-    source: Materials.yaml (direct export)
-    properties: {}
-  categoryInfo:
-    description: Construction masonry materials including concrete, brick, mortar,
-      stucco, and stone-based building materials for restoration cleaning
-    properties_count: 0
-    category_ranges:
-      density:
-        max: 3.2
-        min: 0.6
-        unit: g/cm³
-        adjustment_note: Most masonry < 2.5 g/cm³
-        adjustment_date: '2025-10-15'
-        adjustment_source: materials_science_research
-        phase2_adjustment: Cement at 3.15 g/cm³
-      hardness:
-        max: 6
-        min: 1
-        unit: Mohs
-        adjustment_note: Plaster can be softer
-        adjustment_date: '2025-10-15'
-        adjustment_source: materials_science_research
-      laserAbsorption:
-        max: 15
-        min: 0.5
-        unit: cm⁻¹
-      laserReflectivity:
-        max: 70
-        min: 10
-        unit: '%'
-        source: Building Materials Optical Properties Database
-        confidence: 70
-        notes: Concrete 20-40%, brick 20-50%, varies with color and surface texture
-        last_updated: '2025-10-15T14:19:43.867310'
-      specificHeat:
-        max: 1100
-        min: 700
-        unit: J/kg·K
-      tensileStrength:
-        max: 15
-        min: 1
-        unit: MPa
-      thermalConductivity:
-        max: 2.5
-        min: 0.08
-        unit: W/(m·K)
-        source: ASHRAE Handbook - Fundamentals
-        confidence: 80
-        notes: Concrete ~1.0, brick ~0.6, lightweight concrete 0.1-0.5, varies with
-          density and moisture
-        last_updated: '2025-10-15T14:19:43.867317'
-      thermalDestruction:
-        point:
-          max: 1200
-          min: 500
-          unit: °C
-        type: spalling
-      thermalDiffusivity:
-        max: 1
-        min: 0.1
-        unit: mm²/s
-      thermalExpansion:
-        max: 20
-        min: 5
-        unit: µm/m·K
-      youngsModulus:
-        max: 50
-        min: 3.0
-        unit: GPa
-        phase2_adjustment: Plaster at 3.0 GPa
-        adjustment_date: '2025-10-15'
-      compressiveStrength:
-        min: 5
-        max: 100
-        unit: MPa
-        description: Maximum compressive stress before failure
-        notes: Brick, concrete, stone
-        source: materials_science_literature
-        research_date: '2025-10-15'
-      flexuralStrength:
-        min: 2
-        max: 20
-        unit: MPa
-        description: Maximum bending stress before failure
-        notes: Masonry weak in bending
-        source: materials_science_literature
-        research_date: '2025-10-15'
-      fractureToughness:
-        min: 0.15
-        max: 1.1
-        unit: MPa·√m
-        description: ''
-        sample_count: 7
-        auto_generated: true
-        generated_date: '2025-10-16'
-      corrosionResistance:
-        min: 2.0
-        max: 8.0
-        unit: rating
-        description: ''
-        sample_count: 7
-        auto_generated: true
-        generated_date: '2025-10-16'
-      oxidationResistance:
-        min: 300.0
-        max: 1200.0
-        unit: °C
-        description: ''
-        sample_count: 7
-        auto_generated: true
-        generated_date: '2025-10-16'
-  propertyMetadata:
-    laserAbsorption:
-      confidence: 0.92
-      research_date: '2025-09-30T12:32:44.353724'
-      source: ai_research
-    laserReflectivity:
-      confidence: 0.92
-      research_date: '2025-09-30T12:32:57.047217'
-      source: ai_research
-    specificHeat:
-      confidence: 0.92
-      ai_verified: true
-      verification_date: '2025-10-03T22:32:20.837560'
-      verification_confidence: 95
-      research_date: '2025-09-30T12:33:08.724406'
-      source: ai_research
-    thermalConductivity:
-      confidence: 0.92
-      ai_verified: true
-      verification_date: '2025-10-03T20:20:53.092074'
-      verification_confidence: 85
-      research_date: '2025-09-30T12:33:35.348350'
-      source: ai_research
-    thermalDestruction:
-      confidence: 0.65
-      research_date: '2025-10-17'
-      source: thermal_degradation_standards
-    thermalDiffusivity:
-      confidence: 0.92
-      research_date: '2025-09-30T12:34:15.134782'
-      source: ai_research
-    thermalExpansion:
-      confidence: 0.92
-      ai_verified: true
-      verification_date: '2025-10-03T22:13:58.098509'
-      verification_confidence: 85
-      research_date: '2025-09-30T12:34:28.135189'
-      source: ai_research
-    compressiveStrength:
-      confidence: 0.92
-      research_date: '2025-09-30T12:32:03.188152'
-      source: ai_research
-    corrosionResistance:
-      confidence: 0.87
-      ai_verified: true
-      research_date: '2025-10-15T20:37:28.038338'
-      source: Portland Cement Association - "Stucco Resource Center" Technical Documents
-    density:
-      confidence: 0.92
-      ai_verified: true
-      verification_date: '2025-10-03T20:01:08.226557'
-      verification_confidence: 85
-      research_date: '2025-09-30T12:32:17.319914'
-      source: ai_research
-    flexuralStrength:
-      confidence: 0.85
-      ai_verified: true
-      research_date: '2025-10-15T21:03:05.735327'
-      source: Portland Cement Association (PCA) - "Stucco Manufacturer's Design and
-        Application Guide"
-    hardness:
-      confidence: 0.92
-      ai_verified: true
-      verification_date: '2025-10-03T20:41:22.071588'
-      verification_confidence: 95
-      research_date: '2025-09-30T12:32:30.733557'
-      source: ai_research
-    oxidationResistance:
-      confidence: 0.85
-      ai_verified: true
-      research_date: '2025-10-15T20:50:03.046037'
-      source: ASM Handbook, Volume 4, "Heat Treating of Ceramics and Graphite" (ASM
-        International, 1991), Section "Properties of Refractory Materials"
-    tensileStrength:
-      confidence: 0.92
-      research_date: '2025-09-30T12:33:21.626646'
-      source: ai_research
-    youngsModulus:
-      confidence: 0.92
-      ai_verified: true
-      verification_date: '2025-10-03T21:55:35.213999'
-      verification_confidence: 85
-      research_date: '2025-09-30T12:34:41.291609'
-      source: ai_research
-    fractureToughness:
-      confidence: 0.85
-      ai_verified: true
-      research_date: '2025-10-15T20:23:39.611660'
-      source: '"Mechanical Properties of Masonry and its Constituents at Elevated
-        Temperatures" - Proceedings of the Institution of Civil Engineers - Structures
-        and Buildings (2015), Table 3: Fracture toughness of masonry constituents.'
-  machineSettingsMetadata:
-    energyDensity:
-      confidence: 89
-    overlapRatio:
-      confidence: 83
-    passCount:
-      confidence: 85
-    powerRange:
-      confidence: 92
-    pulseWidth:
-      confidence: 85
-    repetitionRate:
-      confidence: 87
-    scanSpeed:
-      confidence: 86
-    spotSize:
-      confidence: 84
-    wavelength:
-      confidence: 88
+- Chemical Waste Elimination:
+    applicableIndustries:
+    - Semiconductor
+    - Electronics
+    - Medical
+    - Nuclear
+    description: Eliminates hazardous chemical waste streams
+    quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+- Water Usage Reduction:
+    applicableIndustries: []
+    description: Dry process requires no water
+    sustainabilityBenefit: Significant water conservation in industrial processes
+- Energy Efficiency:
+    applicableIndustries: []
+    description: Focused energy delivery with minimal waste heat
+- Air Quality Improvement:
+    applicableIndustries: []
+    description: Eliminates volatile organic compounds from chemical cleaning
+outcomeMetrics: []
+regulatoryStandards: []
+images:
+  hero:
+    alt: Stucco surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/stucco-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Stucco surface after laser cleaning showing detailed
+      surface structure
+    url: /images/material/stucco-laser-cleaning-micro.jpg
+author:
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  id: 3
+  image: /images/author/ikmanda-roswati.jpg
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+categoryMetadata:
+  description: Construction masonry materials including concrete, brick, mortar, stucco,
+    and stone-based building materials for restoration cleaning

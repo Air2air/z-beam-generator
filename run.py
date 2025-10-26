@@ -638,11 +638,11 @@ def handle_caption_generation(material_name: str):
         print(f"✅ Found material: {material_name}")
         print()
         
-        # Initialize DeepSeek API client for captions
+        # Initialize Grok API client for captions
         from api.client_factory import create_api_client
-        print("🔧 Initializing DeepSeek API client...")
-        deepseek_client = create_api_client('deepseek')
-        print("✅ DeepSeek client ready")
+        print("🔧 Initializing Grok API client...")
+        grok_client = create_api_client('grok')
+        print("✅ Grok client ready")
         print()
         
         # Initialize caption generator
@@ -662,7 +662,7 @@ def handle_caption_generation(material_name: str):
         result = generator.generate(
             material_name=material_name,
             material_data=material_data,
-            api_client=deepseek_client
+            api_client=grok_client
         )
         
         if not result.success:
@@ -1506,6 +1506,17 @@ def generate_safe_filename(material_name: str) -> str:
 def main():
     """Main application entry point with basic command line interface."""
     
+    # Parse arguments early to check for deploy flag (no validation needed for deploy)
+    import argparse
+    parser = argparse.ArgumentParser(description="Z-Beam Content Generator")
+    parser.add_argument("--deploy", action="store_true", help="Deploy generated content to Next.js production site")
+    # Add minimal args needed for early parsing
+    args, _ = parser.parse_known_args()
+    
+    # Handle deployment immediately - no validation needed (just file copy)
+    if args.deploy:
+        return deploy_to_production()
+    
     # ═══════════════════════════════════════════════════════════════════════════
     # 🚨 CONSOLIDATED SERVICE INITIALIZATION
     # ═══════════════════════════════════════════════════════════════════════════
@@ -1612,7 +1623,7 @@ def main():
     parser.add_argument("--audit-auto-fix", action="store_true", help="Apply automatic fixes during audit")
     parser.add_argument("--audit-report", action="store_true", help="Generate detailed audit reports")
     parser.add_argument("--audit-quick", action="store_true", help="Quick audit (skip frontmatter validation)")
-    parser.add_argument("--data-only", action="store_true", help="Generate frontmatter using only Materials.yaml data (no API calls)")
+    parser.add_argument("--data-only", action="store_true", help="Export frontmatter from Materials.yaml (trivial copy, no API/validation needed)")
     
     # Caption Generation
     parser.add_argument("--caption", help="Generate AI-powered caption for specific material (saves to Materials.yaml)")
@@ -1790,6 +1801,44 @@ def main():
         component_types = ['frontmatter']
         print(f"🚀 Generating frontmatter for all materials")
         
+        # 🎯 DATA-ONLY MODE: Use trivial exporter (instant, no API)
+        if args.data_only:
+            print("\n📋 DATA-ONLY MODE: Using trivial frontmatter exporter")
+            print("   → Simple YAML-to-YAML copy from Materials.yaml")
+            print("   → No API calls, no validation (already done in Materials.yaml)")
+            print("   → Should take seconds for all 132 materials")
+            print()
+            
+            try:
+                from components.frontmatter.core.trivial_exporter import export_all_frontmatter
+                import time
+                
+                start_time = time.time()
+                results = export_all_frontmatter()
+                elapsed = time.time() - start_time
+                
+                success_count = sum(1 for v in results.values() if v)
+                failure_count = len(results) - success_count
+                
+                print()
+                print("=" * 80)
+                print(f"✅ DATA-ONLY EXPORT COMPLETE")
+                print(f"   Success: {success_count}/{len(results)} materials")
+                if failure_count > 0:
+                    print(f"   Failures: {failure_count}")
+                    print(f"   Failed materials: {[k for k, v in results.items() if not v]}")
+                print(f"   Time: {elapsed:.1f} seconds")
+                print("=" * 80)
+                
+                return success_count > 0
+                
+            except Exception as e:
+                print(f"❌ Trivial export failed: {e}")
+                import traceback
+                traceback.print_exc()
+                return False
+        
+        # 🔥 NORMAL MODE: Full generation with API (legacy)
         try:
             # Load materials data
             materials_data_dict = load_materials()

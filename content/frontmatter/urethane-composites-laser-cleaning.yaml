@@ -1,215 +1,29 @@
 name: Urethane Composites
-category: Composite
-subcategory: reinforced
-title: Urethane Composites Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Urethane Composites
+title: Urethane Composites
+subtitle: ''
 description: Laser cleaning parameters for Urethane Composites
-author:
-  country: United States (California)
-  expertise: Optical Materials for Laser Systems
-  id: 4
-  image: /images/author/todd-dunning.jpg
-  name: Todd Dunning
-  sex: m
-  title: MA
-images:
-  hero:
-    alt: Urethane Composites surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/material/urethane-composites-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Urethane Composites surface after laser cleaning showing
-      detailed surface structure
-    url: /images/material/urethane-composites-laser-cleaning-micro.jpg
+category: composite
+subcategory: ''
 caption:
-  description: Microscopic analysis of Urethane Composites surface before and after
+  beforeText: Under microscopy, urethane composite surfaces reveal patchy contamination
+    from fine particulates and oily films, causing pitting and micro-cracking that
+    degrade aerospace structural integrity.
+  afterText: The cleaned urethane composite surface restores to a smooth, contaminant-free
+    finish, preserving full material integrity and original properties. This quality
+    supports precise aerospace component fabrication.
+  generated: '2025-10-25T15:37:13.119678Z'
+  author: Todd Dunning
+  generation_method: ai_research
+  word_count:
+    before: 23
+    after: 25
+  character_count:
+    before: 192
+    after: 208
+  description: Microscopic analysis of urethane composites surface before and after
     laser cleaning treatment
-  beforeText: ''
-  afterText: ''
-regulatoryStandards:
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo_org_ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/en/publication/3587
-  image: /images/logo/logo_org_iec.png
-applications:
-- Aerospace
-- Automotive
-- Medical Devices
-- Marine
-- Electronics Manufacturing
-- Cultural Heritage
-- Industrial Manufacturing
-- Renewable Energy
-- Sports Equipment
-- Transportation Infrastructure
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    specificHeat:
-      value: 1600.0
-      min: 500
-      max: 2500.0
-      unit: J/(kg·K)
-      research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
-        Polyurethane composite thermal properties data (2023); ASM Handbook, Volume
-        21: Composites, Section 2.4.3 Polymer Matrix Composites'
-    thermalConductivity:
-      value: 0.21
-      min: 0.03
-      max: 400
-      unit: W/(m·K)
-      research_basis: 'ASM Handbook, Vol. 21: Composites, Section: Polymer Matrix
-        Composites - Polyurethane Composites Thermal Properties (pp. 345-348), and
-        NIST Polymer Composite Database - Polyurethane-based composite materials'
-    thermalDestruction:
-      value: 300.0
-      unit: °C
-      research_basis: ai_research_comprehensive
-    thermalDiffusivity:
-      value: 0.12
-      min: 0.08
-      max: 180
-      unit: mm²/s
-      research_basis: 'ASM Handbook, Volume 21: Composites, Section: Thermal Properties
-        of Polymer Matrix Composites, with specific reference to cast polyurethane
-        elastomers and polyurethane composites filled with mineral particulates (e.g.,
-        silica, alumina) common in industrial applications.'
-    thermalExpansion:
-      value: 115.2
-      min: -1
-      max: 250
-      unit: μm/m·°C
-      research_basis: 'ASM Handbook, Vol. 21: Composites, Section: Polymer Matrix
-        Composites with Polyurethane Matrices, pp. 345-348 (2021); NIST Special Publication
-        1234: Thermal Properties of Polyurethane Composites for Industrial Applications'
-    compressiveStrength:
-      value: 80.0
-      min: 50
-      max: 1000
-      unit: MPa
-      research_basis: The provided properties (high hardness of 62.5 Shore D and high
-        density) are characteristic of rigid, highly cross-linked polyurethane composites,
-        which are known for high compressive strength. Authoritative materials databases
-        consistently report compressive strength values for rigid urethanes in the
-        range of 70-110 MPa, with 80 MPa being a typical mid-range value for this
-        material category and hardness level.
-    corrosionResistance:
-      value: 8.0
-      min: 5
-      max: 9
-      unit: rating
-      research_basis: Urethane composites are not metals and therefore do not corrode
-        via electrochemical oxidation. Their primary degradation in general environments
-        is through hydrolysis, UV exposure, or chemical attack. Authoritative materials
-        sources consistently rate polyurethanes as having "excellent" resistance to
-        water, aqueous salts, and oxidation, which are the primary drivers of general
-        environmental corrosion. Their main weakness is susceptibility to strong acids/bases
-        and certain solvents, but this falls outside "general environmental" conditions.
-        The rating reflects high performance against water, humidity, and salt air,
-        with minor points deducted for potential long-term UV degradation if not specially
-        formulated.
-    density:
-      value: 1.25
-      min: 0.5
-      max: 8
-      unit: g/cm³
-      research_basis: 'ASM Handbook, Volume 21: Composites, Section: Polyurethane
-        Matrix Composites; NIST Polymer Composite Database - Polyurethane Composite
-        Material Properties'
-    electricalResistivity:
-      value: 120000000000000.0
-      min: 0.001
-      max: 100000000000000.0
-      unit: Ω·m
-      research_basis: materials_science_literature
-    flexuralStrength:
-      value: 55.0
-      min: 100
-      max: 2000
-      unit: MPa
-      research_basis: The provided properties (density 1.25 g/cm³, hardness 62.5 Shore
-        D) are characteristic of rigid, glassy polyurethanes. For this category of
-        high-performance urethane composites, authoritative materials databases (AZoM,
-        MatWeb) report flexural strength values typically ranging from 50 MPa to 70
-        MPa. The cited value of 55 MPa is a representative median for rigid urethane
-        composites tested under standard 3-point bend conditions (ASTM D790). The
-        confidence is not higher due to the broad nature of the "Urethane Composites"
-        category, where the specific formulation (e.g., fiber reinforcement, filler
-        type) can significantly influence the final mechanical property.
-    hardness:
-      value: 62.5
-      min: 5.0
-      max: 120
-      unit: Shore D
-      research_basis: 'ASM Handbook, Volume 21: Composites, Section: Polyurethane
-        Matrix Composites, pp. 345-352 (2001) with specific reference to glass fiber-reinforced
-        urethane composites under standard ASTM D2240 testing conditions'
-    oxidationResistance:
-      value: 80.0
-      min: 80.0
-      max: 1650.0
-      unit: °C
-      research_basis: The maximum continuous service temperature for polyurethane
-        materials in air is consistently reported in the range of 80-90°C by material
-        databases and technical datasheets. This temperature represents the upper
-        limit before significant thermal degradation and oxidation processes begin,
-        causing deterioration of mechanical properties. While urethane composites
-        can withstand short-term exposure to higher temperatures, continuous operation
-        above 80°C leads to accelerated oxidative degradation.
-    tensileStrength:
-      value: 450.0
-      min: 20
-      max: 6000
-      unit: MPa
-      research_basis: 'ASM Handbook, Volume 21: Composites, Specific data on polyurethane
-        matrix composites with carbon fiber reinforcement (Section: Polymer Matrix
-        Composites), with cross-reference to NIST Polymer Composite Database entries
-        for urethane-based systems'
-    youngsModulus:
-      value: 700.0
-      min: 0.001
-      max: 3000
-      unit: MPa
-      research_basis: 'ASM Handbook, Volume 21: Composites, Section: Polyurethane
-        Matrix Composites, pp. 345-348 (2001) and NIST Special Publication 1041: Mechanical
-        Properties of Polyurethane Composites with Various Fillers'
-    fractureToughness:
-      value: 2.5
-      min: 20
-      max: 100
-      unit: MPa·√m
-      research_basis: The provided properties (Shore D 62.5, density) are consistent
-        with rigid or semi-rigid polyurethanes and composites. For this class of materials,
-        fracture toughness (K_IC) is typically in the range of 1-4 MPa·√m. The cited
-        study on a polyurethane with a similar hardness reports a K_IC value of 2.5
-        MPa·√m, which is a representative mid-range value for this material category.
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
-    laserAbsorption:
-      value: 92.7
-      min: 0.05
-      max: 200
-      unit: '%'
-      research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
-        for Manufacturing'' (2021) - Section 4.3.2 on polymer composite absorption
-        characteristics, specifically referencing polyurethane composites with 30-40%
-        glass fiber reinforcement at 1064 nm wavelength'
-    laserReflectivity:
-      value: 38.5
-      min: 2
-      max: 80
-      unit: '%'
-      research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
-        for Manufacturing'' (2021), Table 4.2 - Reflectivity measurements of polymer
-        composites at 1064 nm wavelength'
+materialProperties: {}
+materialCharacteristics: {}
 machineSettings:
   fluenceThreshold:
     value: 2.5
@@ -266,267 +80,55 @@ machineSettings:
     max: 10600
     unit: nm
     description: Near-IR wavelength optimized for Urethane absorption characteristics
+applications:
+- Aerospace
+- Automotive
+- Medical Devices
+- Marine
+- Electronics Manufacturing
+- Cultural Heritage
+- Industrial Manufacturing
+- Renewable Energy
+- Sports Equipment
+- Transportation Infrastructure
 environmentalImpact:
-- applicableIndustries:
-  - Semiconductor
-  - Electronics
-  - Medical
-  - Nuclear
-  benefit: Chemical Waste Elimination
-  description: Eliminates hazardous chemical waste streams
-  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- applicableIndustries: []
-  benefit: Water Usage Reduction
-  description: Dry process requires no water
-  sustainabilityBenefit: Significant water conservation in industrial processes
-- applicableIndustries: []
-  benefit: Energy Efficiency
-  description: Focused energy delivery with minimal waste heat
-- applicableIndustries: []
-  benefit: Air Quality Improvement
-  description: Eliminates volatile organic compounds from chemical cleaning
-outcomeMetrics:
-- Contaminant Removal Efficiency:
-    description: Percentage of target contaminants successfully removed from surface
-    typicalRanges: 95-99.9% depending on application and material
-    measurementMethods:
-    - Before/after microscopy
-    - Chemical analysis
-    - Mass spectrometry
-    factorsAffecting:
-    - Contamination type
-    - Adhesion strength
-    - Surface geometry
-preservedData:
-  generationMetadata:
-    generated_date: '2025-10-22T20:36:58.975167'
-    data_completeness: 100%
-    source: Materials.yaml (direct export)
-    properties: {}
-  categoryInfo:
-    description: Engineered composite materials including fiber-reinforced polymers,
-      matrix composites, and hybrid materials for specialized cleaning applications
-    properties_count: 0
-    category_ranges:
-      density:
-        max: 8
-        min: 0.5
-        unit: g/cm³
-      hardness:
-        max: 120
-        min: 5.0
-        unit: HRC
-        adjustment_note: Phenolic resin composites harder
-        adjustment_date: '2025-10-15'
-        adjustment_source: materials_science_research
-      laserAbsorption:
-        max: 200
-        min: 0.05
-        unit: cm⁻¹
-      laserReflectivity:
-        max: 80
-        min: 2
-        unit: '%'
-        source: Composite Materials Handbook (MIL-HDBK-17)
-        confidence: 70
-        notes: 'Wide range reflects diversity: polymer matrix composites 5-30%, metal
-          matrix composites 40-80%'
-        last_updated: '2025-10-15T14:19:43.867274'
-      specificHeat:
-        max: 2500.0
-        min: 500
-        unit: J/kg·K
-      tensileStrength:
-        max: 6000
-        min: 20
-        unit: MPa
-        adjustment_note: Some composites weaker
-        adjustment_date: '2025-10-15'
-        adjustment_source: materials_science_research
-      thermalConductivity:
-        max: 400
-        min: 0.03
-        unit: W/(m·K)
-        source: ASM Handbook - Composites
-        confidence: 75
-        notes: 'Wide range (0.1-400 W/m·K): polymer matrix ~0.2, carbon fiber ~10,
-          metal matrix 50-400'
-        last_updated: '2025-10-15T14:19:43.867281'
-        adjustment_note: Fiberglass is insulating
-        adjustment_date: '2025-10-15'
-        adjustment_source: materials_science_research
-      thermalDestruction:
-        point:
-          max: 2000
-          min: 150
-          unit: °C
-        type: decomposition
-      thermalDiffusivity:
-        max: 180
-        min: 0.08
-        unit: mm²/s
-      thermalExpansion:
-        max: 250
-        min: -1
-        unit: µm/m·K
-      youngsModulus:
-        max: 3000
-        min: 0.001
-        unit: GPa
-        adjustment_note: Carbon fiber composites very stiff
-        adjustment_date: '2025-10-15'
-        adjustment_source: materials_science_research
-      compressiveStrength:
-        min: 50
-        max: 1000
-        unit: MPa
-        description: Maximum compressive stress before failure
-        notes: Fiber-reinforced composites
-        source: materials_science_literature
-        research_date: '2025-10-15'
-      corrosionResistance:
-        min: 5
-        max: 9
-        unit: rating
-        description: Resistance to chemical/electrochemical degradation
-        notes: Depends on matrix material
-        source: materials_science_literature
-        research_date: '2025-10-15'
-      electricalResistivity:
-        min: 0.001
-        max: 100000000000000.0
-        unit: Ω·m
-        description: Resistance to electrical current flow
-        notes: Highly variable
-        source: materials_science_literature
-        research_date: '2025-10-15'
-      flexuralStrength:
-        min: 100
-        max: 2000
-        unit: MPa
-        description: Maximum bending stress before failure
-        notes: Composites excel in bending
-        source: materials_science_literature
-        research_date: '2025-10-15'
-      fractureToughness:
-        min: 20
-        max: 100
-        unit: MPa·m^0.5
-        description: Resistance to crack propagation
-        notes: Fiber reinforcement increases toughness
-        source: materials_science_literature
-        research_date: '2025-10-15'
-      oxidationResistance:
-        min: 80.0
-        max: 1650.0
-        unit: °C
-        description: ''
-        sample_count: 13
-        auto_generated: true
-        generated_date: '2025-10-16'
-  propertyMetadata:
-    laserAbsorption:
-      confidence: 0.92
-      research_date: '2025-09-30T11:50:37.622349'
-      source: ai_research
-    laserReflectivity:
-      confidence: 0.92
-      research_date: '2025-09-30T11:50:49.009039'
-      source: ai_research
-    specificHeat:
-      confidence: 0.9
-      ai_verified: true
-      verification_date: '2025-10-03T22:32:20.837483'
-      verification_confidence: 85
-      research_date: '2025-10-15'
-      source: AI Research (DeepSeek) + Literature Review
-    thermalConductivity:
-      confidence: 0.92
-      ai_verified: true
-      verification_date: '2025-10-03T20:20:53.092015'
-      verification_confidence: 85
-      research_date: '2025-09-30T11:51:26.873147'
-      source: ai_research
-    thermalDestruction:
-      confidence: 0.7
-      research_date: '2025-10-17'
-      source: composite_degradation_standards
-    thermalDiffusivity:
-      confidence: 0.92
-      research_date: '2025-09-30T11:52:05.787649'
-      source: ai_research
-    thermalExpansion:
-      confidence: 0.92
-      research_date: '2025-09-30T11:52:19.017900'
-      source: ai_research
-    compressiveStrength:
-      confidence: 0.85
-      ai_verified: true
-      research_date: '2025-10-15T21:34:08.101819'
-      source: AZoM, "Polyurethane Properties"
-    corrosionResistance:
-      confidence: 0.87
-      ai_verified: true
-      research_date: '2025-10-15T20:38:44.833654'
-      source: AZoM, "Polyurethane - An Overview"
-    density:
-      confidence: 0.95
-      ai_verified: true
-      verification_date: '2025-10-03T20:01:08.226492'
-      verification_confidence: 85
-      research_date: '2025-09-30T11:50:08.987780'
-      source: ai_research
-    electricalResistivity:
-      confidence: 0.92
-      research_date: '2025-10-17T19:11:00.168523'
-      source: ai_research
-    flexuralStrength:
-      confidence: 0.85
-      ai_verified: true
-      research_date: '2025-10-15T21:04:16.447377'
-      source: AZoM (AZoMaterials.com) - "Polyurethane Properties and Applications"
-    hardness:
-      confidence: 0.92
-      research_date: '2025-09-30T11:50:23.429963'
-      source: ai_research
-    oxidationResistance:
-      confidence: 0.85
-      ai_verified: true
-      research_date: '2025-10-15T20:51:21.996459'
-      source: MatWeb Material Property Data - Typical Properties of Polyurethane
-    tensileStrength:
-      confidence: 0.9
-      research_date: '2025-10-15'
-      source: AI Research (DeepSeek) + Literature Review
-    youngsModulus:
-      confidence: 0.92
-      ai_verified: true
-      verification_date: '2025-10-03T21:03:20.746220'
-      verification_confidence: 85
-      research_date: '2025-09-30T11:52:31.285544'
-      source: ai_research
-    fractureToughness:
-      confidence: 0.85
-      ai_verified: true
-      research_date: '2025-10-15T20:25:17.813514'
-      source: '"Fracture and Fatigue of a Polyurethane Elastomer" by J. A. Hinkley,
-        Polymer Engineering & Science, Vol 23, Issue 2, 1983.'
-  machineSettingsMetadata:
-    fluenceThreshold:
-      confidence: 89
-    overlapRatio:
-      confidence: 83
-    passCount:
-      confidence: 82
-    powerRange:
-      confidence: 92
-    pulseWidth:
-      confidence: 85
-    repetitionRate:
-      confidence: 87
-    scanSpeed:
-      confidence: 86
-    spotSize:
-      confidence: 84
-    wavelength:
-      confidence: 88
+- Chemical Waste Elimination:
+    applicableIndustries:
+    - Semiconductor
+    - Electronics
+    - Medical
+    - Nuclear
+    description: Eliminates hazardous chemical waste streams
+    quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+- Water Usage Reduction:
+    applicableIndustries: []
+    description: Dry process requires no water
+    sustainabilityBenefit: Significant water conservation in industrial processes
+- Energy Efficiency:
+    applicableIndustries: []
+    description: Focused energy delivery with minimal waste heat
+- Air Quality Improvement:
+    applicableIndustries: []
+    description: Eliminates volatile organic compounds from chemical cleaning
+outcomeMetrics: []
+regulatoryStandards: []
+images:
+  hero:
+    alt: Urethane Composites surface undergoing laser cleaning showing precise contamination
+      removal
+    url: /images/material/urethane-composites-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Urethane Composites surface after laser cleaning showing
+      detailed surface structure
+    url: /images/material/urethane-composites-laser-cleaning-micro.jpg
+author:
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  id: 4
+  image: /images/author/todd-dunning.jpg
+  name: Todd Dunning
+  sex: m
+  title: MA
+categoryMetadata:
+  description: Engineered composite materials including fiber-reinforced polymers,
+    matrix composites, and hybrid materials for specialized cleaning applications

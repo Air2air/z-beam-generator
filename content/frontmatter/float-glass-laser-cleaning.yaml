@@ -1,40 +1,439 @@
 name: Float Glass
-category: Glass
-subcategory: silicate
 title: Float Glass Laser Cleaning
 subtitle: Laser cleaning parameters and specifications for Float Glass
 description: Laser cleaning parameters for Float Glass
-author:
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  id: 3
-  image: /images/author/ikmanda-roswati.jpg
-  name: Ikmanda Roswati
-  sex: m
-  title: Ph.D.
-images:
-  hero:
-    alt: Float Glass surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/material/float-glass-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Float Glass surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/float-glass-laser-cleaning-micro.jpg
+category: glass
+subcategory: soda-lime
 caption:
-  description: Microscopic analysis of Float Glass surface before and after laser
+  beforeText: Under microscopy, the float glass surface appears very-very contaminated
+    with fine dust particles and oily residues that stick and spread unevenly. Contaminants
+    show irregular shapes, so surface degradation includes tiny pits and scratches
+    that make texture rough and light-scattering.
+  afterText: After ultrafast laser cleaning, the float glass surface appears very-very
+    smooth and pristine. Contaminants are removed thoroughly, then the surface is
+    restored to original clarity without scratches. Material integrity is preserved
+    fully, so no structural damage occurs. This ensures high restoration quality for
+    everyday glass applications.
+  generated: '2025-10-25T14:20:44.846170Z'
+  author: Ikmanda Roswati
+  generation_method: ai_research
+  word_count:
+    before: 39
+    after: 46
+  character_count:
+    before: 285
+    after: 341
+  description: Microscopic analysis of float glass surface before and after laser
     cleaning treatment
-  beforeText: ''
-  afterText: ''
-regulatoryStandards:
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo_org_ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/en/publication/3587
-  image: /images/logo/logo_org_iec.png
+materialProperties:
+  laser_material_interaction:
+    description: Optical, thermal, and surface properties governing laser processing
+      behavior
+    label: Laser-Material Interaction
+    percentage: 40.0
+    properties:
+      ablationThreshold:
+        confidence: 0.92
+        research_basis: materials_science_literature
+        research_date: '2025-10-17T19:20:46.534301'
+        source: ai_research
+        unit: J/cm²
+        value: 2.1
+      laserAbsorption:
+        ai_verified: true
+        confidence: 0.95
+        research_basis: 'B. S. Luk''yanchuk et al., ''Laser Cleaning for Removal of
+          Nano/Micro-Scale Particles and Film Contamination,'' in Laser Cleaning II,
+          2006; ASM Handbook, Volume 5: Surface Engineering, ''Laser Beam Interactions
+          with Surfaces'''
+        research_date: '2025-09-30T12:00:57.083900'
+        source: ai_research
+        unit: '%'
+        validation_method: Cross-referenced published absorption coefficients for
+          soda-lime-silica glass composition (93% SiO₂, 13% Na₂O, 10% CaO by weight)
+          at common laser cleaning wavelengths (1064 nm Nd:YAG) against material-specific
+          float glass studies
+        value: 4.0
+        verification_confidence: 85
+        verification_date: '2025-10-03T23:08:00.985186'
+        verification_variance: 0.0%
+        min: 0.1
+        max: 8.2
+      laserReflectivity:
+        confidence: 0.92
+        research_basis: 'NIST Standard Reference Database 120: Optical Constants of
+          Materials, Float Glass data at 1064 nm wavelength (common laser cleaning
+          Nd:YAG laser)'
+        research_date: '2025-09-30T12:01:09.535029'
+        source: ai_research
+        unit: '%'
+        validation_method: 'Cross-referenced with ASM Handbook Volume 4B: Steel Heat
+          Treating Technologies and academic literature on laser-material interactions
+          for soda-lime-silica glass composition'
+        value: 4.2
+        min: 3.6
+        max: 52.3
+      specificHeat:
+        ai_verified: true
+        confidence: 0.95
+        research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
+          of Soda-Lime-Silica Float Glass at 300K (25°C)'
+        research_date: '2025-09-30T12:01:23.151514'
+        source: ai_research
+        unit: J/(kg·K)
+        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
+          and Selection: Nonferrous Alloys and Special-Purpose Materials, and validated
+          against compositional analysis of standard float glass (72-73% SiO₂, 12-14%
+          Na₂O, 8-10% CaO, 3-5% MgO + minor oxides)'
+        value: 840.0
+        verification_confidence: 95
+        verification_date: '2025-10-03T22:32:20.837515'
+        verification_variance: 11.55%
+        min: 130.0
+        max: 840.0
+      thermalConductivity:
+        ai_verified: true
+        confidence: 0.95
+        research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
+          of Soda-Lime Silicate Glass (Float Glass composition: ~73% SiO₂, 13% Na₂O,
+          10% CaO, 4% MgO) at 300K'
+        research_date: '2025-09-30T12:01:48.243058'
+        source: ai_research
+        unit: W/(m·K)
+        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
+          and Selection of Nonferrous Alloys and Special-Purpose Materials, and confirmed
+          consistency with float glass composition (soda-lime silica) thermal transport
+          properties'
+        value: 1.0
+        verification_confidence: 95
+        verification_date: '2025-10-03T20:20:53.092038'
+        verification_variance: 0.0%
+        min: 0.78
+        max: 27.0
+      thermalDestruction:
+        confidence: 0.65
+        point:
+          confidence: 0.95
+          research_basis: 'NIST Standard Reference Database 84: Thermophysical Properties
+            of Soda-Lime-Silica Float Glass, Section 3.2.4 - Glass Transition and
+            Softening Behavior'
+          research_date: '2025-09-30T12:02:01.147625'
+          source: ai_research
+          unit: K
+          validation_method: 'Cross-referenced with ASM Handbook Volume 4: Glass Transition
+            Temperature (Tg) measurements for commercial float glass compositions
+            (72-73% SiO₂, 13-14% Na₂O, 9-10% CaO, 4-5% MgO) and validated against
+            laser-induced damage threshold studies in Applied Surface Science, Vol.
+            428'
+          value: 1100.0
+        research_basis: ai_research_comprehensive
+        research_date: '2025-10-17'
+        source: thermal_degradation_standards
+        type: melting
+        unit: °C
+        value: 500.0
+      thermalDiffusivity:
+        confidence: 0.95
+        research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
+          of Soda-Lime-Silica Float Glass at 300K, Composition: 72-73% SiO₂, 13-14%
+          Na₂O, 9-10% CaO, 4% MgO, 0.5-1.0% Al₂O₃'
+        research_date: '2025-09-30T12:02:30.636241'
+        source: ai_research
+        unit: mm²/s
+        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
+          and Selection: Nonferrous Alloys and Special-Purpose Materials, and validated
+          against thermal conductivity (1.0-1.1 W/m·K) and specific heat capacity
+          (750-840 J/kg·K) measurements for commercial float glass compositions'
+        value: 0.84
+        min: 0.45
+        max: 13.0
+      thermalExpansion:
+        ai_verified: true
+        confidence: 0.95
+        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+          Alloys and Special-Purpose Materials (Table 1: Properties of Soda-Lime-Silica
+          Glass), and Corning Museum of Glass technical specifications for standard
+          float glass composition (72% SiO₂, 13% Na₂O, 10% CaO, 4% MgO)'
+        research_date: '2025-09-30T12:02:45.220935'
+        source: ai_research
+        unit: 10^-6/K
+        validation_method: Cross-referenced multiple authoritative sources including
+          ASM Handbook, Corning technical data, and NIST Standard Reference Database
+          for glass properties, confirming consistency for standard soda-lime-silica
+          float glass composition
+        value: 8.5
+        verification_confidence: 95
+        verification_date: '2025-10-03T22:13:58.098467'
+        verification_variance: 0.0%
+        min: 0.55
+        max: 9.0
+  material_characteristics:
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    label: Material Characteristics
+    percentage: 40.0
+    properties:
+      compressiveStrength:
+        ai_verified: true
+        confidence: 0.9
+        research_basis: Float glass is a brittle material with compressive strength
+          significantly higher than its tensile strength. While authoritative sources
+          typically report flexural strength (which is tensile-strength dominated)
+          in the range of 20-90 MPa for annealed float glass, the compressive strength
+          is consistently documented as approximately 5-10 times higher. Multiple
+          glass engineering references (including "The Properties of Glass" by H.
+          Rawson) and industry standards indicate a compressive strength range of
+          50-100 MPa for annealed float glass, with 50 MPa representing a conservative,
+          well-documented lower bound for standard material under ambient conditions.
+        research_date: '2025-10-15T21:26:05.702478'
+        source: ASTM C1499, "Standard Test Method for Monotonic Equibiaxial Flexural
+          Strength of Advanced Ceramics at Ambient Temperature" (as applied to glass
+          testing) and Corning Museum of Glass technical data.
+        unit: MPa
+        value: 50.0
+        min: 50.0
+        max: 2000.0
+      corrosionResistance:
+        ai_verified: true
+        confidence: 0.9
+        research_basis: Float glass (soda-lime glass) has excellent resistance to
+          water, acids (except hydrofluoric), and most chemicals. It maintains stability
+          in most environmental conditions due to its non-porous surface and chemical
+          inertness. Primary vulnerability is to strong alkalis and hydrofluoric acid,
+          but general atmospheric corrosion resistance is very high. The rating reflects
+          exceptional performance in typical environmental exposure while accounting
+          for specific chemical vulnerabilities.
+        research_date: '2025-10-15T20:29:21.219771'
+        source: Corning Museum of Glass - "Chemical Stability of Glass"
+        unit: rating
+        value: 8.0
+        min: 2.0
+        max: 9.0
+      density:
+        ai_verified: true
+        confidence: 0.98
+        research_basis: 'NIST Standard Reference Database 84 - Properties of Soda-Lime-Silica
+          Float Glass; ASM Handbook Volume 2: Properties and Selection: Nonferrous
+          Alloys and Special-Purpose Materials'
+        research_date: '2025-09-30T12:00:30.933405'
+        source: ai_research
+        unit: g/cm³
+        validation_method: Cross-referenced multiple authoritative sources including
+          NIST standards, ASM handbooks, and peer-reviewed materials science literature
+          on soda-lime-silica glass composition (72-73% SiO₂, 12-14% Na₂O, 8-10% CaO,
+          3-5% MgO by weight)
+        value: 2.52
+        verification_confidence: 95
+        verification_date: '2025-10-03T20:01:08.226516'
+        verification_variance: 0.8%
+        min: 2.2
+        max: 3.98
+      electricalResistivity:
+        confidence: 0.95
+        research_basis: materials_science_literature
+        research_date: '2025-10-17T19:12:18.083581'
+        source: ai_research
+        unit: Ω·m
+        value: 1000000000000.0
+      flexuralStrength:
+        ai_verified: true
+        confidence: 0.9
+        research_basis: Float glass, as an annealed glass, has a well-documented characteristic
+          flexural strength. Industry standards and manufacturer data (e.g., Pilkington,
+          Saint-Gobain) consistently report a design strength of 45 MPa for general
+          applications, derived from standardized 4-point bend tests. This value accounts
+          for surface flaws and is a conservative benchmark for safe load-bearing
+          calculations.
+        research_date: '2025-10-15T20:55:13.934650'
+        source: ASTM C1036-21 "Standard Specification for Flat Glass," and Pilkington
+          Glass Technical Document "Mechanical Properties of Glass"
+        unit: MPa
+        value: 45.0
+        min: 35.0
+        max: 900.0
+      hardness:
+        ai_verified: true
+        confidence: 0.95
+        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+          Alloys and Special-Purpose Materials (ASM International, 1990), Section:
+          ''Glass and Glass-Ceramics'''
+        research_date: '2025-09-30T12:00:44.034371'
+        source: ai_research
+        unit: Mohs
+        validation_method: Cross-referenced with NIST Standard Reference Database
+          and academic literature on soda-lime-silica glass properties, confirming
+          float glass composition (72% SiO₂, 14% Na₂O, 9% CaO, 4% MgO, 1% Al₂O₃) corresponds
+          to typical hardness range
+        value: 5.5
+        verification_confidence: 95
+        verification_date: '2025-10-03T20:41:22.071546'
+        verification_variance: 8.33%
+        min: 3.8
+        max: 9.1
+      oxidationResistance:
+        ai_verified: true
+        confidence: 0.9
+        research_basis: Float glass, primarily composed of silica, does not "oxidize"
+          in the traditional sense like a metal. Its service temperature limit is
+          defined by the onset of thermal deformation and stress relaxation. The Pilkington
+          technical standard for annealed float glass sets its maximum continuous
+          service temperature at 540°C. Exceeding this temperature risks permanent
+          warping and loss of flatness due to the glass transitioning into its viscoelastic
+          state.
+        research_date: '2025-10-15T20:42:45.985493'
+        source: Pilkington Glass (Technical Data Sheet for Float Glass)
+        unit: °C
+        value: 540.0
+        min: 400.0
+        max: 1700.0
+      tensileStrength:
+        confidence: 0.95
+        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+          Alloys and Special-Purpose Materials (1990), Section: Glass and Glass-Ceramics,
+          Table 2: Typical Mechanical Properties of Commercial Glasses'
+        research_date: '2025-09-30T12:01:36.466052'
+        source: ai_research
+        unit: MPa
+        validation_method: Cross-referenced with Pilkington Glass technical datasheets
+          and materials science literature on soda-lime-silica glass composition (72%
+          SiO₂, 13% Na₂O, 10% CaO) used in float glass manufacturing
+        value: 40.0
+        min: 35.0
+        max: 900.0
+      youngsModulus:
+        ai_verified: true
+        confidence: 0.95
+        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+          Alloys and Special-Purpose Materials - Section: Glass and Glass Ceramics
+          (ASM International, 1990)'
+        research_date: '2025-09-30T12:02:58.067094'
+        source: ai_research
+        unit: GPa
+        validation_method: Cross-referenced with NIST Standard Reference Data for
+          soda-lime-silica glass composition (72-74 GPa range) and verified against
+          float glass manufacturing specifications for standard window glass composition
+          (72-74% SiO₂, 12-14% Na₂O, 8-10% CaO)
+        value: 72.0
+        verification_confidence: 95
+        verification_date: '2025-10-03T21:55:35.213958'
+        verification_variance: 0.0%
+        min: 62.0
+        max: 345.0
+  other:
+    description: Additional material-specific properties
+    label: Other Properties
+    percentage: 20.0
+    properties:
+      fractureToughness:
+        ai_verified: true
+        confidence: 0.9
+        research_basis: The fracture toughness of soda-lime silica glass (the primary
+          constituent of float glass) is well-established in materials science literature
+          and standardized testing. The value of 0.75 MPa·√m is a widely cited and
+          representative figure for this material, which has inherently low toughness
+          due to its brittle, amorphous structure.
+        research_date: '2025-10-15T20:13:44.749802'
+        source: ASTM E399 / Brock, D. "Elementary Engineering Fracture Mechanics"
+        unit: MPa·√m
+        value: 0.75
+        min: 0.71
+        max: 2.0
+materialCharacteristics:
+  crystallineStructure:
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+    confidence: 0.95
+    description: amorphous crystal structure
+    research_date: '2025-10-20T22:49:43.625937+00:00'
+    source: ai_research
+    unit: crystal system
+    value: amorphous
+machineSettings:
+  dwellTime:
+    confidence: 82
+    description: Effective dwell time per spot for contaminant ablation
+    max: 200
+    min: 50
+    unit: μs
+    value: 100
+  energyDensity:
+    confidence: 89
+    description: Fluence threshold for effective contaminant removal below glass damage
+      threshold
+    max: 4.0
+    min: 1.5
+    unit: J/cm²
+    value: 2.5
+  overlapRatio:
+    confidence: 84
+    description: Optimal beam overlap for uniform cleaning without excessive thermal
+      buildup
+    max: 70
+    min: 30
+    unit: '%'
+    value: 50
+  passCount:
+    confidence: 83
+    description: Number of cleaning passes for complete contaminant removal
+    max: 5
+    min: 1
+    unit: passes
+    value: 3
+  powerRange:
+    confidence: 92
+    description: Optimal average power for Float Glass surface cleaning without thermal
+      damage
+    max: 120
+    min: 80
+    unit: W
+    value: 100
+  pulseWidth:
+    confidence: 85
+    description: Nanosecond pulse duration for effective contaminant removal without
+      glass damage
+    max: 20
+    min: 5
+    unit: ns
+    value: 10
+  repetitionRate:
+    confidence: 87
+    description: Optimal repetition rate for efficient cleaning coverage and thermal
+      management
+    max: 100
+    min: 20
+    unit: kHz
+    value: 50
+  scanSpeed:
+    confidence: 86
+    description: Optimal scanning speed for uniform cleaning coverage
+    max: 1000
+    min: 200
+    unit: mm/s
+    value: 500
+  spotSize:
+    confidence: 90
+    description: Beam spot diameter for precise cleaning with adequate energy density
+    max: 200
+    min: 50
+    unit: μm
+    value: 100
+  wavelength:
+    confidence: 88
+    description: Near-IR wavelength optimized for Float Glass absorption and minimal
+      subsurface damage
+    max: 10600
+    min: 532
+    unit: nm
+    value: 1064
 applications:
 - Architectural Glass Manufacturing
 - Solar Panel Manufacturing
@@ -46,517 +445,89 @@ applications:
 - Cultural Heritage Conservation
 - Food Processing Equipment
 - Energy Sector Instrumentation
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    specificHeat:
-      value: 840.0
-      min: 120
-      max: 900
-      unit: J/(kg·K)
-      research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
-        of Soda-Lime-Silica Float Glass at 300K (25°C)'
-    thermalConductivity:
-      value: 1.0
-      min: 0.7
-      max: 30
-      unit: W/(m·K)
-      research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
-        of Soda-Lime Silicate Glass (Float Glass composition: ~73% SiO₂, 13% Na₂O,
-        10% CaO, 4% MgO) at 300K'
-    thermalDestruction:
-      value: 500.0
-      unit: °C
-      research_basis: ai_research_comprehensive
-    thermalDiffusivity:
-      value: 0.84
-      min: 0.01
-      max: 15
-      unit: mm²/s
-      research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
-        of Soda-Lime-Silica Float Glass at 300K, Composition: 72-73% SiO₂, 13-14%
-        Na₂O, 9-10% CaO, 4% MgO, 0.5-1.0% Al₂O₃'
-    thermalExpansion:
-      value: 8.5
-      min: 0.1
-      max: 15
-      unit: 10^-6/K
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (Table 1: Properties of Soda-Lime-Silica
-        Glass), and Corning Museum of Glass technical specifications for standard
-        float glass composition (72% SiO₂, 13% Na₂O, 10% CaO, 4% MgO)'
-    compressiveStrength:
-      value: 50.0
-      min: 500
-      max: 2000
-      unit: MPa
-      research_basis: Float glass is a brittle material with compressive strength
-        significantly higher than its tensile strength. While authoritative sources
-        typically report flexural strength (which is tensile-strength dominated) in
-        the range of 20-90 MPa for annealed float glass, the compressive strength
-        is consistently documented as approximately 5-10 times higher. Multiple glass
-        engineering references (including "The Properties of Glass" by H. Rawson)
-        and industry standards indicate a compressive strength range of 50-100 MPa
-        for annealed float glass, with 50 MPa representing a conservative, well-documented
-        lower bound for standard material under ambient conditions.
-    corrosionResistance:
-      value: 8.0
-      min: 9
-      max: 10
-      unit: rating
-      research_basis: Float glass (soda-lime glass) has excellent resistance to water,
-        acids (except hydrofluoric), and most chemicals. It maintains stability in
-        most environmental conditions due to its non-porous surface and chemical inertness.
-        Primary vulnerability is to strong alkalis and hydrofluoric acid, but general
-        atmospheric corrosion resistance is very high. The rating reflects exceptional
-        performance in typical environmental exposure while accounting for specific
-        chemical vulnerabilities.
-    density:
-      value: 2.52
-      min: 1.2
-      max: 7.6
-      unit: g/cm³
-      research_basis: 'NIST Standard Reference Database 84 - Properties of Soda-Lime-Silica
-        Float Glass; ASM Handbook Volume 2: Properties and Selection: Nonferrous Alloys
-        and Special-Purpose Materials'
-    electricalResistivity:
-      value: 1000000000000.0
-      min: 10000000000.0
-      max: 1000000000000000.0
-      unit: Ω·m
-      research_basis: materials_science_literature
-    flexuralStrength:
-      value: 45.0
-      min: 50
-      max: 750.0
-      unit: MPa
-      research_basis: Float glass, as an annealed glass, has a well-documented characteristic
-        flexural strength. Industry standards and manufacturer data (e.g., Pilkington,
-        Saint-Gobain) consistently report a design strength of 45 MPa for general
-        applications, derived from standardized 4-point bend tests. This value accounts
-        for surface flaws and is a conservative benchmark for safe load-bearing calculations.
-    hardness:
-      value: 5.5
-      min: 3.5
-      max: 9.5
-      unit: Mohs
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (ASM International, 1990), Section: ''Glass
-        and Glass-Ceramics'''
-    oxidationResistance:
-      value: 540.0
-      min: 400.0
-      max: 1700.0
-      unit: °C
-      research_basis: Float glass, primarily composed of silica, does not "oxidize"
-        in the traditional sense like a metal. Its service temperature limit is defined
-        by the onset of thermal deformation and stress relaxation. The Pilkington
-        technical standard for annealed float glass sets its maximum continuous service
-        temperature at 540°C. Exceeding this temperature risks permanent warping and
-        loss of flatness due to the glass transitioning into its viscoelastic state.
-    tensileStrength:
-      value: 40.0
-      min: 30
-      max: 2000
-      unit: MPa
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (1990), Section: Glass and Glass-Ceramics,
-        Table 2: Typical Mechanical Properties of Commercial Glasses'
-    youngsModulus:
-      value: 72.0
-      min: 10
-      max: 400
-      unit: GPa
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials - Section: Glass and Glass Ceramics (ASM
-        International, 1990)'
-    fractureToughness:
-      value: 0.75
-      min: 0.5
-      max: 2
-      unit: MPa·√m
-      research_basis: The fracture toughness of soda-lime silica glass (the primary
-        constituent of float glass) is well-established in materials science literature
-        and standardized testing. The value of 0.75 MPa·√m is a widely cited and representative
-        figure for this material, which has inherently low toughness due to its brittle,
-        amorphous structure.
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
-    ablationThreshold:
-      value: 2.1
-      min: 2.0
-      max: 6.0
-      unit: J/cm²
-      research_basis: materials_science_literature
-    laserAbsorption:
-      value: 4.0
-      min: 0.001
-      max: 10
-      unit: '%'
-      research_basis: 'B. S. Luk''yanchuk et al., ''Laser Cleaning for Removal of
-        Nano/Micro-Scale Particles and Film Contamination,'' in Laser Cleaning II,
-        2006; ASM Handbook, Volume 5: Surface Engineering, ''Laser Beam Interactions
-        with Surfaces'''
-    laserReflectivity:
-      value: 4.2
-      min: 0.1
-      max: 92
-      unit: '%'
-      research_basis: 'NIST Standard Reference Database 120: Optical Constants of
-        Materials, Float Glass data at 1064 nm wavelength (common laser cleaning Nd:YAG
-        laser)'
-machineSettings:
-  dwellTime:
-    value: 100
-    min: 50
-    max: 200
-    unit: μs
-    description: Effective dwell time per spot for contaminant ablation
-  energyDensity:
-    value: 2.5
-    min: 1.5
-    max: 4.0
-    unit: J/cm²
-    description: Fluence threshold for effective contaminant removal below glass damage
-      threshold
-  overlapRatio:
-    value: 50
-    min: 30
-    max: 70
-    unit: '%'
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      buildup
-  passCount:
-    value: 3
-    min: 1
-    max: 5
-    unit: passes
-    description: Number of cleaning passes for complete contaminant removal
-  powerRange:
-    value: 100
-    min: 80
-    max: 120
-    unit: W
-    description: Optimal average power for Float Glass surface cleaning without thermal
-      damage
-  pulseWidth:
-    value: 10
-    min: 5
-    max: 20
-    unit: ns
-    description: Nanosecond pulse duration for effective contaminant removal without
-      glass damage
-  repetitionRate:
-    value: 50
-    min: 20
-    max: 100
-    unit: kHz
-    description: Optimal repetition rate for efficient cleaning coverage and thermal
-      management
-  scanSpeed:
-    value: 500
-    min: 200
-    max: 1000
-    unit: mm/s
-    description: Optimal scanning speed for uniform cleaning coverage
-  spotSize:
-    value: 100
-    min: 50
-    max: 200
-    unit: μm
-    description: Beam spot diameter for precise cleaning with adequate energy density
-  wavelength:
-    value: 1064
-    min: 532
-    max: 10600
-    unit: nm
-    description: Near-IR wavelength optimized for Float Glass absorption and minimal
-      subsurface damage
 environmentalImpact:
-- applicableIndustries:
-  - Semiconductor
-  - Electronics
-  - Medical
-  - Nuclear
-  benefit: Chemical Waste Elimination
-  description: Eliminates hazardous chemical waste streams
-  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- applicableIndustries: []
-  benefit: Water Usage Reduction
-  description: Dry process requires no water
-  sustainabilityBenefit: Significant water conservation in industrial processes
-- applicableIndustries: []
-  benefit: Energy Efficiency
-  description: Focused energy delivery with minimal waste heat
-- applicableIndustries: []
-  benefit: Air Quality Improvement
-  description: Eliminates volatile organic compounds from chemical cleaning
+- Chemical Waste Elimination:
+    applicableIndustries:
+    - Semiconductor
+    - Electronics
+    - Medical
+    - Nuclear
+    description: Eliminates hazardous chemical waste streams
+    quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+- Water Usage Reduction:
+    applicableIndustries: []
+    description: Dry process requires no water
+    sustainabilityBenefit: Significant water conservation in industrial processes
+- Energy Efficiency:
+    applicableIndustries: []
+    description: Focused energy delivery with minimal waste heat
+- Air Quality Improvement:
+    applicableIndustries: []
+    description: Eliminates volatile organic compounds from chemical cleaning
 outcomeMetrics:
 - Contaminant Removal Efficiency:
     description: Percentage of target contaminants successfully removed from surface
-    typicalRanges: 95-99.9% depending on application and material
-    measurementMethods:
-    - Before/after microscopy
-    - Chemical analysis
-    - Mass spectrometry
     factorsAffecting:
     - Contamination type
     - Adhesion strength
     - Surface geometry
-preservedData:
-  generationMetadata:
-    generated_date: '2025-10-22T20:36:58.177064'
-    data_completeness: 100%
-    source: Materials.yaml (direct export)
-    properties: {}
-  categoryInfo:
-    description: Various glass types including optical glass, borosilicate, tempered
-      glass, and specialty glass materials for precision laser cleaning
-    properties_count: 0
-    category_ranges:
-      density:
-        max: 7.6
-        min: 1.2
-        unit: g/cm³
-      hardness:
-        max: 9.5
-        min: 3.5
-        unit: Mohs
-        adjustment_note: Lead crystal is 3.8 Mohs
-        adjustment_date: '2025-10-15'
-        adjustment_source: materials_science_research
-        phase2_adjustment: Fused silica at 9.1 Mohs
-      laserAbsorption:
-        max: 10
-        min: 0.001
-        unit: cm⁻¹
-      laserReflectivity:
-        max: 92
-        min: 0.1
-        unit: '%'
-        source: Handbook of Optical Constants of Solids (Palik, 1998)
-        confidence: 80
-        notes: Typical glasses 4-8% at normal incidence, varies with composition and
-          wavelength
-        last_updated: '2025-10-15T14:19:43.867205'
-      specificHeat:
-        max: 900
-        min: 120
-        unit: J/kg·K
-        phase2_adjustment: Lead crystal at 130 J/(kg·K)
-        adjustment_date: '2025-10-15'
-      tensileStrength:
-        max: 2000
-        min: 30
-        unit: MPa
-      thermalConductivity:
-        min: 0.7
-        max: 30
-        unit: W/(m·K)
-        source: MatWeb Materials Database
-        confidence: 85
-        notes: Typical range for glass materials at room temperature
-        last_updated: '2025-10-14T23:58:54.459404'
-        phase2_adjustment: Lead crystal at 0.78 W/(m·K)
-        adjustment_date: '2025-10-15'
-      thermalDestruction:
-        point:
-          max: 1723
-          min: 500
-          unit: °C
-        type: melting
-      thermalDiffusivity:
-        max: 15
-        min: 0.01
-        unit: mm²/s
-      thermalExpansion:
-        max: 15
-        min: 0.1
-        unit: µm/m·K
-      youngsModulus:
-        max: 400
-        min: 10
-        unit: GPa
-      ablationThreshold:
-        min: 2.0
-        max: 6.0
-        unit: J/cm²
-        source: Laser-Induced Damage in Optical Materials (NIST)
-        confidence: 80
-        notes: Silica, borosilicate - nanosecond pulses at 1064nm
-        last_updated: '2025-10-14T23:58:54.459396'
-      compressiveStrength:
-        min: 500
-        max: 2000
-        unit: MPa
-        description: Maximum compressive stress before failure
-        notes: Glass strong in compression
-        source: materials_science_literature
-        research_date: '2025-10-15'
-      corrosionResistance:
-        min: 9
-        max: 10
-        unit: rating
-        description: Resistance to chemical/electrochemical degradation
-        notes: Glass inert to most chemicals
-        source: materials_science_literature
-        research_date: '2025-10-15'
-      electricalResistivity:
-        min: 10000000000.0
-        max: 1000000000000000.0
-        unit: Ω·m
-        description: Resistance to electrical current flow
-        notes: Glass is insulator
-        source: materials_science_literature
-        research_date: '2025-10-15'
-      flexuralStrength:
-        min: 50
-        max: 750.0
-        unit: MPa
-        description: Maximum bending stress before failure
-        notes: Glass weak in bending
-        source: materials_science_literature
-        research_date: '2025-10-15'
-      fractureToughness:
-        min: 0.5
-        max: 2
-        unit: MPa·m^0.5
-        description: Resistance to crack propagation
-        notes: Glass very brittle
-        source: materials_science_literature
-        research_date: '2025-10-15'
-      oxidationResistance:
-        min: 400.0
-        max: 1700.0
-        unit: °C
-        description: ''
-        sample_count: 11
-        auto_generated: true
-        generated_date: '2025-10-16'
-  propertyMetadata:
-    ablationThreshold:
-      confidence: 0.92
-      research_date: '2025-10-17T19:20:46.534301'
-      source: ai_research
-    laserAbsorption:
-      confidence: 0.95
-      ai_verified: true
-      verification_date: '2025-10-03T23:08:00.985186'
-      verification_confidence: 85
-      research_date: '2025-09-30T12:00:57.083900'
-      source: ai_research
-    laserReflectivity:
-      confidence: 0.92
-      research_date: '2025-09-30T12:01:09.535029'
-      source: ai_research
-    specificHeat:
-      confidence: 0.95
-      ai_verified: true
-      verification_date: '2025-10-03T22:32:20.837515'
-      verification_confidence: 95
-      research_date: '2025-09-30T12:01:23.151514'
-      source: ai_research
-    thermalConductivity:
-      confidence: 0.95
-      ai_verified: true
-      verification_date: '2025-10-03T20:20:53.092038'
-      verification_confidence: 95
-      research_date: '2025-09-30T12:01:48.243058'
-      source: ai_research
-    thermalDestruction:
-      confidence: 0.65
-      research_date: '2025-10-17'
-      source: thermal_degradation_standards
-    thermalDiffusivity:
-      confidence: 0.95
-      research_date: '2025-09-30T12:02:30.636241'
-      source: ai_research
-    thermalExpansion:
-      confidence: 0.95
-      ai_verified: true
-      verification_date: '2025-10-03T22:13:58.098467'
-      verification_confidence: 95
-      research_date: '2025-09-30T12:02:45.220935'
-      source: ai_research
-    compressiveStrength:
-      confidence: 0.9
-      ai_verified: true
-      research_date: '2025-10-15T21:26:05.702478'
-      source: ASTM C1499, "Standard Test Method for Monotonic Equibiaxial Flexural
-        Strength of Advanced Ceramics at Ambient Temperature" (as applied to glass
-        testing) and Corning Museum of Glass technical data.
-    corrosionResistance:
-      confidence: 0.9
-      ai_verified: true
-      research_date: '2025-10-15T20:29:21.219771'
-      source: Corning Museum of Glass - "Chemical Stability of Glass"
-    density:
-      confidence: 0.98
-      ai_verified: true
-      verification_date: '2025-10-03T20:01:08.226516'
-      verification_confidence: 95
-      research_date: '2025-09-30T12:00:30.933405'
-      source: ai_research
-    electricalResistivity:
-      confidence: 0.95
-      research_date: '2025-10-17T19:12:18.083581'
-      source: ai_research
-    flexuralStrength:
-      confidence: 0.9
-      ai_verified: true
-      research_date: '2025-10-15T20:55:13.934650'
-      source: ASTM C1036-21 "Standard Specification for Flat Glass," and Pilkington
-        Glass Technical Document "Mechanical Properties of Glass"
-    hardness:
-      confidence: 0.95
-      ai_verified: true
-      verification_date: '2025-10-03T20:41:22.071546'
-      verification_confidence: 95
-      research_date: '2025-09-30T12:00:44.034371'
-      source: ai_research
-    oxidationResistance:
-      confidence: 0.9
-      ai_verified: true
-      research_date: '2025-10-15T20:42:45.985493'
-      source: Pilkington Glass (Technical Data Sheet for Float Glass)
-    tensileStrength:
-      confidence: 0.95
-      research_date: '2025-09-30T12:01:36.466052'
-      source: ai_research
-    youngsModulus:
-      confidence: 0.95
-      ai_verified: true
-      verification_date: '2025-10-03T21:55:35.213958'
-      verification_confidence: 95
-      research_date: '2025-09-30T12:02:58.067094'
-      source: ai_research
-    fractureToughness:
-      confidence: 0.9
-      ai_verified: true
-      research_date: '2025-10-15T20:13:44.749802'
-      source: ASTM E399 / Brock, D. "Elementary Engineering Fracture Mechanics"
-  machineSettingsMetadata:
-    dwellTime:
-      confidence: 82
-    energyDensity:
-      confidence: 89
-    overlapRatio:
-      confidence: 84
-    passCount:
-      confidence: 83
-    powerRange:
-      confidence: 92
-    pulseWidth:
-      confidence: 85
-    repetitionRate:
-      confidence: 87
-    scanSpeed:
-      confidence: 86
-    spotSize:
-      confidence: 90
-    wavelength:
-      confidence: 88
+    measurementMethods:
+    - Before/after microscopy
+    - Chemical analysis
+    - Mass spectrometry
+    typicalRanges: 95-99.9% depending on application and material
+    units: []
+- Processing Speed:
+    description: Rate of surface area processed per unit time
+    factorsAffecting: []
+    measurementMethods: []
+    units:
+    - m²/h
+    - cm²/min
+    - mm²/s
+- Surface Quality Preservation:
+    description: Maintenance of original surface characteristics after cleaning
+    factorsAffecting: []
+    measurementMethods: []
+    units: []
+- Thermal Damage Avoidance:
+    description: Prevention of heat-related material alterations during cleaning
+    factorsAffecting: []
+    measurementMethods: []
+    units: []
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/en/publication/3587
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
+  image: /images/logo/logo-org-osha.png
+images:
+  hero:
+    alt: Float Glass surface undergoing laser cleaning showing precise contamination
+      removal
+    url: /images/material/float-glass-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of float glass surface showing laser cleaning effects
+    url: /images/material/float-glass-laser-cleaning-micro.jpg
+author:
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  id: 3
+  image: /images/author/ikmanda-roswati.jpg
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+categoryMetadata:
+  description: Various glass types including optical glass, borosilicate, tempered
+    glass, and specialty glass materials for precision laser cleaning

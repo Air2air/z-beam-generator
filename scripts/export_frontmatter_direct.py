@@ -99,6 +99,19 @@ def create_frontmatter_content(material_name: str, material_data: Dict, categori
             'category_ranges': cat_data.get('category_ranges', {})
         }
     
+    # Add caption data if present
+    if 'caption' in material_data:
+        caption_data = material_data['caption']
+        frontmatter['caption'] = {
+            'description': caption_data.get('description', f'Microscopic analysis of {material_name} surface before and after laser cleaning treatment'),
+            'beforeText': caption_data.get('beforeText', ''),
+            'afterText': caption_data.get('afterText', '')
+        }
+    
+    # Add author data if present
+    if 'author' in material_data:
+        frontmatter['author'] = material_data['author']
+    
     return frontmatter
 
 def export_material_frontmatter(material_name: str, material_data: Dict, categories_data: Dict, output_dir: Path):

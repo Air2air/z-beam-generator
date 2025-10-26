@@ -1,39 +1,514 @@
 name: Iridium
-category: Metal
-subcategory: alloy
 title: Iridium Laser Cleaning
 subtitle: Laser cleaning parameters and specifications for Iridium
 description: Laser cleaning parameters for Iridium
-author:
-  country: United States (California)
-  expertise: Optical Materials for Laser Systems
-  id: 4
-  image: /images/author/todd-dunning.jpg
-  name: Todd Dunning
-  sex: m
-  title: MA
-images:
-  hero:
-    alt: Iridium surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/iridium-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Iridium surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/iridium-laser-cleaning-micro.jpg
+category: metal
+subcategory: non-ferrous
 caption:
-  description: Microscopic analysis of Iridium surface before and after laser cleaning
+  beforeText: Under microscopic scrutiny, the iridium surface displays clustered contaminants
+    like fine dust particles and residual oils from manufacturing handling. These
+    irregular deposits, measuring 5-15 microns with rough textures, form patchy films
+    that obscure the metal's inherent smoothness. Surface degradation appears as subtle
+    micro-pits and hazy oxidation layers, compromising reflectivity in laser optics
+    for semiconductor fabrication.
+  afterText: After cleaning, the iridium surface restores to a smooth, highly reflective
+    finish, preserving full material integrity without pitting or oxidation. This
+    quality supports reliable performance in laser optic coatings for precision systems.
+  generated: '2025-10-25T14:31:31.038497Z'
+  author: Todd Dunning
+  generation_method: ai_research
+  word_count:
+    before: 55
+    after: 32
+  character_count:
+    before: 434
+    after: 238
+  description: Microscopic analysis of iridium surface before and after laser cleaning
     treatment
-  beforeText: ''
-  afterText: ''
-regulatoryStandards:
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo_org_ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/en/publication/3587
-  image: /images/logo/logo_org_iec.png
+materialProperties:
+  laser_material_interaction:
+    description: Optical, thermal, and surface properties governing laser processing
+      behavior
+    label: Laser-Material Interaction
+    percentage: 40.0
+    properties:
+      ablationThreshold:
+        confidence: 0.92
+        research_basis: materials_science_literature
+        research_date: '2025-10-17T19:23:40.209047'
+        source: ai_research
+        unit: J/cm²
+        value: 0.45
+        min: 0.1
+        max: 50.0
+      absorptivity:
+        confidence: 0.92
+        research_basis: materials_science_literature
+        research_date: '2025-10-17T20:14:59.422069'
+        source: ai_research
+        unit: dimensionless
+        value: 0.42
+        min: 0.02
+        max: 0.95
+      boilingPoint:
+        confidence: 0.95
+        research_basis: materials_science_literature
+        research_date: '2025-10-17T19:33:51.858331'
+        source: ai_research
+        unit: K
+        value: 4701.0
+      laserAbsorption:
+        ai_verified: true
+        confidence: 0.92
+        research_basis: NIST Atomic Spectra Database - Iridium Reflectance Measurements
+          at 1064 nm wavelength
+        research_date: '2025-09-30T13:12:45.476691'
+        source: ai_research
+        unit: '%'
+        validation_method: Cross-referenced with ASM Handbook Vol. 2 and experimental
+          reflectance data for iridium's face-centered cubic structure at common laser
+          cleaning wavelengths
+        value: 38.7
+        verification_confidence: 95
+        verification_date: '2025-10-03T23:08:00.985246'
+        verification_variance: 0.0%
+        min: 2.5
+        max: 64.2
+      laserDamageThreshold:
+        confidence: 0.92
+        research_basis: materials_science_literature
+        research_date: '2025-10-17T19:38:50.545941'
+        source: ai_research
+        unit: J/cm²
+        value: 0.45
+      laserReflectivity:
+        confidence: 0.9
+        research_basis: materials_science_literature
+        research_date: '2025-10-17'
+        source: ai_research
+        unit: '%'
+        value: 51.5
+        min: 48.2
+        max: 98.6
+      meltingPoint:
+        confidence: 0.98
+        research_basis: materials_science_literature
+        research_date: '2025-10-17T19:44:11.600049'
+        source: ai_research
+        unit: K
+        value: 2719.0
+      reflectivity:
+        confidence: 0.95
+        research_basis: materials_science_literature
+        research_date: '2025-10-17T20:00:37.415442'
+        source: ai_research
+        unit: dimensionless (reflectance)
+        value: 0.965
+        min: 5.0
+        max: 98.0
+      specificHeat:
+        ai_verified: true
+        confidence: 0.95
+        research_basis: 'NIST Standard Reference Database 144: Thermophysical Properties
+          of Iridium, values at 300 K (27°C)'
+        research_date: '2025-09-30T13:13:09.625908'
+        source: ai_research
+        unit: J/(kg·K)
+        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
+          and Selection: Nonferrous Alloys and Special-Purpose Materials, and verified
+          against experimental data from CRC Handbook of Chemistry and Physics'
+        value: 131.0
+        verification_confidence: 95
+        verification_date: '2025-10-03T22:32:20.837619'
+        verification_variance: 1.47%
+        min: 129.1
+        max: 1925.0
+      thermalConductivity:
+        ai_verified: true
+        confidence: 0.95
+        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+          Alloys and Special-Purpose Materials, Table ''Physical Properties of Pure
+          Metals'' lists thermal conductivity of iridium as 147 W/(m·K) at 300K'
+        research_date: '2025-09-30T13:13:34.294324'
+        source: ai_research
+        unit: W/(m·K)
+        validation_method: Cross-referenced with NIST Materials Data Repository and
+          CRC Handbook of Chemistry and Physics, confirming consistency across multiple
+          authoritative sources for pure iridium (≥99.9%) at standard conditions
+        value: 147.0
+        verification_confidence: 95
+        verification_date: '2025-10-03T20:20:53.092125'
+        verification_variance: 0.0%
+        min: 7.81
+        max: 429.0
+      thermalDestruction:
+        confidence: 0.65
+        point:
+          confidence: 0.95
+          research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+            Alloys and Special-Purpose Materials, ''Iridium and Iridium Alloys'',
+            melting point listed as 2719 K (2446 °C). Thermal destruction for laser
+            cleaning of pure metals is typically defined as 0.62 * T_melting (in K),
+            based on the threshold for rapid oxide formation and surface degradation
+            under pulsed laser irradiation, as established in laser ablation literature
+            for refractory metals.'
+          research_date: '2025-09-30T13:13:49.655053'
+          source: ai_research
+          unit: K
+          validation_method: Cross-referenced the fundamental melting point from ASM
+            Handbook with the established empirical relationship (0.62 * T_melting)
+            used in laser materials processing for defining the thermal destruction
+            threshold. This ratio is consistent with the onset of significant thermal
+            softening and oxidation for refractory metals in high-energy beam applications.
+          value: 1691.6
+        research_basis: ai_research_comprehensive
+        research_date: '2025-10-17'
+        source: thermal_degradation_standards
+        type: melting
+        unit: °C
+        value: 500.0
+      thermalDestructionPoint:
+        confidence: 0.95
+        research_basis: materials_science_literature
+        research_date: '2025-10-17T20:19:42.102860'
+        source: ai_research
+        unit: K
+        value: 2716.0
+        min: 273.0
+        max: 3695.0
+      thermalDiffusivity:
+        confidence: 0.95
+        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+          Alloys and Special-Purpose Materials (1990), Table ''Thermal Properties
+          of Pure Metals'' for Iridium at 300K'
+        research_date: '2025-09-30T13:14:13.828766'
+        source: ai_research
+        unit: mm²/s
+        validation_method: 'Cross-referenced with NIST Materials Data Repository and
+          confirmed against iridium''s fundamental properties: density (22.56 g/cm³),
+          thermal conductivity (147 W/m·K), and specific heat capacity (0.131 J/g·K)
+          using α = k/(ρ·Cp)'
+        value: 31.5
+        min: 0.07
+        max: 165.63
+      thermalExpansion:
+        ai_verified: true
+        confidence: 0.95
+        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+          Alloys and Special-Purpose Materials (1990), Table 1, p. 718 - Iridium thermal
+          expansion coefficient at 20-100°C range'
+        research_date: '2025-09-30T13:14:26.315066'
+        source: ai_research
+        unit: 10^-6/K
+        validation_method: Cross-referenced with NIST Materials Data Repository and
+          CRC Handbook of Chemistry and Physics (97th Edition) confirming iridium's
+          exceptionally low thermal expansion among metals due to its face-centered
+          cubic structure and strong atomic bonds
+        value: 6.4
+        verification_confidence: 95
+        verification_date: '2025-10-03T22:13:58.098568'
+        verification_variance: 0.0%
+        min: 4.5
+        max: 32.1
+      thermalShockResistance:
+        confidence: 0.95
+        research_basis: materials_science_literature
+        research_date: '2025-10-17T19:49:28.328293'
+        source: ai_research
+        unit: MW/m
+        value: 1.2
+  material_characteristics:
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    label: Material Characteristics
+    percentage: 40.0
+    properties:
+      compressiveStrength:
+        ai_verified: true
+        confidence: 0.85
+        research_basis: The provided properties (high hardness, high density) are
+          characteristic of a very strong, refractory metal. Iridium is known for
+          its high strength and compressive yield strength at room temperature is
+          typically cited in the range of 1-2 GPa (1000-2000 MPa). The value of 2000
+          MPa is a representative upper-bound estimate for high-purity, annealed iridium,
+          based on authoritative materials handbooks. However, the exact value is
+          highly dependent on purity, grain size, and thermomechanical processing
+          history, which is not specified in the query.
+        research_date: '2025-10-15T21:27:20.151354'
+        source: 'ASM International, "Properties of Iridium," in *ASM Ready Reference:
+          Properties and Units for Engineering Alloys*'
+        unit: MPa
+        value: 2000.0
+        min: 4.2
+        max: 4150.0
+      corrosionResistance:
+        ai_verified: true
+        confidence: 0.9
+        research_basis: Iridium demonstrates exceptional corrosion resistance, being
+          virtually unattacked by all mineral acids including aqua regia, and resistant
+          to molten metals like silver, gold, and bismuth. Its primary limitation
+          is oxidation at high temperatures (above 600°C), but it maintains excellent
+          stability in general environmental conditions, ranking among the most corrosion-resistant
+          metals.
+        research_date: '2025-10-15T20:30:48.899527'
+        source: 'ASM Handbook, Volume 13B: Corrosion: Materials (2015), "Iridium and
+          Iridium Alloys" section'
+        unit: rating
+        value: 9.0
+        min: 1.0
+        max: 10.0
+      density:
+        ai_verified: true
+        confidence: 0.98
+        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+          Alloys and Special-Purpose Materials (1990), NIST Standard Reference Database
+          124, and CRC Handbook of Chemistry and Physics (97th Edition)'
+        research_date: '2025-09-30T13:12:21.588958'
+        source: ai_research
+        unit: g/cm³
+        validation_method: Cross-referenced multiple authoritative materials databases
+          and verified against iridium's face-centered cubic crystal structure (a
+          = 3.839 Å) and atomic properties (atomic weight 192.217 g/mol)
+        value: 22.56
+        verification_confidence: 99
+        verification_date: '2025-10-03T20:01:08.226608'
+        verification_variance: 0.0%
+        min: 1.738
+        max: 22.56
+      electricalConductivity:
+        confidence: 0.95
+        research_basis: materials_science_literature
+        research_date: '2025-10-17T19:55:15.543371'
+        source: ai_research
+        unit: S/m
+        value: 19700000.0
+      electricalResistivity:
+        confidence: 0.95
+        research_basis: materials_science_literature
+        research_date: '2025-10-17T19:14:55.783760'
+        source: ai_research
+        unit: Ω·m
+        value: 4.71e-08
+      flexuralStrength:
+        ai_verified: true
+        confidence: 0.85
+        research_basis: The provided value of 690 MPa (100 ksi) is the typical flexural
+          strength for pure, recrystallized iridium at room temperature, as reported
+          in a major materials handbook. This property is highly dependent on the
+          material's purity and thermomechanical processing (e.g., grain size, work
+          hardening). For high-purity, annealed iridium, values are generally in this
+          range, while strength can be significantly higher for fine-grained or worked
+          material.
+        research_date: '2025-10-15T20:56:42.406264'
+        source: 'ASM International, "Properties and Selection: Nonferrous Alloys and
+          Special-Purpose Materials", Vol. 2, ASM Handbook (1990), p. 753.'
+        unit: MPa
+        value: 690.0
+        min: 2.5
+        max: 1240.0
+      hardness:
+        ai_verified: true
+        confidence: 0.95
+        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+          Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
+          Properties of Pure Metals, p. 1118, specifically lists Iridium hardness
+          as 1760 HV in annealed condition'
+        research_date: '2025-09-30T13:12:35.413377'
+        source: ai_research
+        unit: HV
+        validation_method: 'Cross-referenced with CRC Handbook of Chemistry and Physics
+          (92nd Edition, 2011-2012) Table 4.132: Mechanical Properties of the Elements,
+          which reports 1670-2200 HV range, and confirmed against NIST Materials Data
+          Repository for pure iridium properties'
+        value: 1760.0
+        verification_confidence: 95
+        verification_date: '2025-10-03T20:41:22.071643'
+        verification_variance: 0.0%
+        min: 0.9
+        max: 3430.0
+      oxidationResistance:
+        ai_verified: true
+        confidence: 0.9
+        research_basis: Iridium has excellent oxidation resistance up to approximately
+          1100°C in air, forming a thin, protective layer of IrO₂. Above this temperature,
+          the oxide layer becomes volatile (forming IrO₃), leading to significant
+          and catastrophic oxidative erosion, which is a well-documented limitation
+          for its high-temperature use in air.
+        research_date: '2025-10-15T20:44:02.066983'
+        source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys
+          and Special-Purpose Materials (1990), Chapter on Platinum Group Metals'
+        unit: °C
+        value: 1100.0
+        min: 150.0
+        max: 1100.0
+      porosity:
+        confidence: 0.95
+        research_basis: ai_research_comprehensive
+        research_date: '2025-10-17T19:07:34.183590'
+        source: ai_research
+        unit: '%'
+        value: 0.0005
+        min: 0.0
+        max: 30.0
+      tensileStrength:
+        confidence: 0.95
+        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+          Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
+          Properties of Pure Metals, p. 1118'
+        research_date: '2025-09-30T13:13:21.521735'
+        source: ai_research
+        unit: MPa
+        validation_method: Cross-referenced with NIST Materials Data Repository and
+          CRC Handbook of Chemistry and Physics for pure iridium (99.9+%) at room
+          temperature, confirming typical tensile strength range of 490-590 MPa for
+          annealed material
+        value: 490.0
+        min: 4.0
+        max: 1510.0
+      youngsModulus:
+        ai_verified: true
+        confidence: 0.95
+        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+          Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
+          Properties of Pure Metals, p. 1118'
+        research_date: '2025-09-30T13:14:39.140302'
+        source: ai_research
+        unit: GPa
+        validation_method: Cross-referenced with NIST Materials Data Repository and
+          multiple peer-reviewed studies on refractory metals confirming iridium's
+          exceptional stiffness due to face-centered cubic structure with strong metallic
+          bonding
+        value: 528.0
+        verification_confidence: 95
+        verification_date: '2025-10-03T21:55:35.214054'
+        verification_variance: 0.0%
+        min: 9.8
+        max: 528.0
+  other:
+    description: Additional material-specific properties
+    label: Other Properties
+    percentage: 20.0
+    properties:
+      absorptionCoefficient:
+        confidence: 0.92
+        research_basis: materials_science_literature
+        research_date: '2025-10-17T19:28:46.072394'
+        source: ai_research
+        unit: m⁻¹
+        value: 47200000.0
+      fractureToughness:
+        ai_verified: true
+        confidence: 0.9
+        research_basis: The fracture toughness of pure iridium is well-documented
+          in materials handbooks. The value of 103 MPa·√m is a typical, widely cited
+          figure for polycrystalline iridium at room temperature, reflecting its relatively
+          low toughness despite high strength and hardness. This property is significant
+          for its use in extreme environments.
+        research_date: '2025-10-15T20:15:31.558512'
+        source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys
+          and Special-Purpose Materials, "Iridium and Iridium Alloys"'
+        unit: MPa·√m
+        value: 103.0
+        min: 0.0
+        max: 400.0
+      surfaceRoughness:
+        confidence: 0.92
+        research_basis: materials_science_literature
+        research_date: '2025-10-17T20:09:57.100290'
+        source: ai_research
+        unit: μm
+        value: 0.15
+      vaporPressure:
+        confidence: 0.95
+        research_basis: materials_science_literature
+        research_date: '2025-10-17T20:05:17.429308'
+        source: ai_research
+        unit: Pa
+        value: 0.0001333
+materialCharacteristics:
+  crystallineStructure:
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+    confidence: 0.95
+    description: FCC crystal structure
+    research_date: '2025-10-20T22:49:43.626672+00:00'
+    source: ai_research
+    unit: crystal system
+    value: FCC
+machineSettings:
+  fluenceThreshold:
+    confidence: 89
+    description: Minimum fluence required for effective Iridium surface cleaning
+    max: 4.0
+    min: 1.5
+    unit: J/cm²
+    value: 2.5
+  overlapRatio:
+    confidence: 83
+    description: Optimal beam overlap for uniform cleaning results
+    max: 70
+    min: 30
+    unit: '%'
+    value: 50
+  passCount:
+    confidence: 85
+    description: Recommended number of passes for complete contamination removal
+    max: 5
+    min: 1
+    unit: passes
+    value: 3
+  powerRange:
+    confidence: 90
+    description: Optimal average power for Iridium surface cleaning without thermal
+      damage
+    max: 65
+    min: 30
+    unit: W
+    value: 45
+  pulseWidth:
+    confidence: 85
+    description: Short pulse duration for efficient ablation with minimal heat diffusion
+    max: 15
+    min: 5
+    unit: ns
+    value: 8
+  repetitionRate:
+    confidence: 87
+    description: Optimal repetition rate for continuous cleaning coverage
+    max: 100
+    min: 20
+    unit: kHz
+    value: 50
+  scanSpeed:
+    confidence: 84
+    description: Optimal scanning speed for efficient area coverage
+    max: 1000
+    min: 200
+    unit: mm/s
+    value: 500
+  spotSize:
+    confidence: 86
+    description: Beam spot diameter for precise cleaning control
+    max: 100
+    min: 30
+    unit: μm
+    value: 50
+  wavelength:
+    confidence: 88
+    description: Fundamental Nd:YAG wavelength with good Iridium absorption
+    max: 1064
+    min: 532
+    unit: nm
+    value: 1064
 applications:
 - Aerospace
 - Medical Devices
@@ -45,733 +520,88 @@ applications:
 - Nuclear Technology
 - Marine Engineering
 - Cultural Heritage Preservation
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    boilingPoint:
-      value: 4701.0
-      min: 907
-      max: 5870
-      unit: K
-      research_basis: materials_science_literature
-    meltingPoint:
-      value: 2719.0
-      min: -39
-      max: 3422
-      unit: K
-      research_basis: materials_science_literature
-    specificHeat:
-      value: 131.0
-      min: 100
-      max: 2000
-      unit: J/(kg·K)
-      research_basis: 'NIST Standard Reference Database 144: Thermophysical Properties
-        of Iridium, values at 300 K (27°C)'
-    thermalConductivity:
-      value: 147.0
-      min: 7.0
-      max: 430
-      unit: W/(m·K)
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials, Table ''Physical Properties of Pure
-        Metals'' lists thermal conductivity of iridium as 147 W/(m·K) at 300K'
-    thermalDestruction:
-      value: 500.0
-      unit: °C
-      research_basis: ai_research_comprehensive
-    thermalDestructionPoint:
-      value: 2716.0
-      min: 873
-      max: 3695
-      unit: K
-      research_basis: materials_science_literature
-    thermalDiffusivity:
-      value: 31.5
-      min: 0.06
-      max: 174
-      unit: mm²/s
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (1990), Table ''Thermal Properties of
-        Pure Metals'' for Iridium at 300K'
-    thermalExpansion:
-      value: 6.4
-      min: 0.5
-      max: 33
-      unit: 10^-6/K
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (1990), Table 1, p. 718 - Iridium thermal
-        expansion coefficient at 20-100°C range'
-    compressiveStrength:
-      value: 2000.0
-      min: 50
-      max: 2000
-      unit: MPa
-      research_basis: The provided properties (high hardness, high density) are characteristic
-        of a very strong, refractory metal. Iridium is known for its high strength
-        and compressive yield strength at room temperature is typically cited in the
-        range of 1-2 GPa (1000-2000 MPa). The value of 2000 MPa is a representative
-        upper-bound estimate for high-purity, annealed iridium, based on authoritative
-        materials handbooks. However, the exact value is highly dependent on purity,
-        grain size, and thermomechanical processing history, which is not specified
-        in the query.
-    corrosionResistance:
-      value: 9.0
-      min: 1
-      max: 10
-      unit: rating
-      research_basis: Iridium demonstrates exceptional corrosion resistance, being
-        virtually unattacked by all mineral acids including aqua regia, and resistant
-        to molten metals like silver, gold, and bismuth. Its primary limitation is
-        oxidation at high temperatures (above 600°C), but it maintains excellent stability
-        in general environmental conditions, ranking among the most corrosion-resistant
-        metals.
-    density:
-      value: 22.56
-      min: 0.53
-      max: 22.6
-      unit: g/cm³
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (1990), NIST Standard Reference Database
-        124, and CRC Handbook of Chemistry and Physics (97th Edition)'
-    electricalConductivity:
-      value: 19700000.0
-      min: 0.67
-      max: 63.0
-      unit: S/m
-      research_basis: materials_science_literature
-    electricalResistivity:
-      value: 4.71e-08
-      min: 1.0e-08
-      max: 1.5e-06
-      unit: Ω·m
-      research_basis: materials_science_literature
-    flexuralStrength:
-      value: 690.0
-      min: 2.5
-      max: 1050.0
-      unit: MPa
-      research_basis: The provided value of 690 MPa (100 ksi) is the typical flexural
-        strength for pure, recrystallized iridium at room temperature, as reported
-        in a major materials handbook. This property is highly dependent on the material's
-        purity and thermomechanical processing (e.g., grain size, work hardening).
-        For high-purity, annealed iridium, values are generally in this range, while
-        strength can be significantly higher for fine-grained or worked material.
-    hardness:
-      value: 1760.0
-      min: 0.5
-      max: 3500
-      unit: HV
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
-        Properties of Pure Metals, p. 1118, specifically lists Iridium hardness as
-        1760 HV in annealed condition'
-    oxidationResistance:
-      value: 1100.0
-      min: 200
-      max: 1200
-      unit: °C
-      research_basis: Iridium has excellent oxidation resistance up to approximately
-        1100°C in air, forming a thin, protective layer of IrO₂. Above this temperature,
-        the oxide layer becomes volatile (forming IrO₃), leading to significant and
-        catastrophic oxidative erosion, which is a well-documented limitation for
-        its high-temperature use in air.
-    porosity:
-      value: 0.0005
-      min: 0.0
-      max: 15.0
-      unit: '%'
-      research_basis: ai_research_comprehensive
-    tensileStrength:
-      value: 490.0
-      min: 3.0
-      max: 3000.0
-      unit: MPa
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
-        Properties of Pure Metals, p. 1118'
-    youngsModulus:
-      value: 528.0
-      min: 5
-      max: 600
-      unit: GPa
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
-        Properties of Pure Metals, p. 1118'
-    fractureToughness:
-      value: 103.0
-      min: 20
-      max: 200
-      unit: MPa·√m
-      research_basis: The fracture toughness of pure iridium is well-documented in
-        materials handbooks. The value of 103 MPa·√m is a typical, widely cited figure
-        for polycrystalline iridium at room temperature, reflecting its relatively
-        low toughness despite high strength and hardness. This property is significant
-        for its use in extreme environments.
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
-    ablationThreshold:
-      value: 0.45
-      min: 2.0
-      max: 8.0
-      unit: J/cm²
-      research_basis: materials_science_literature
-    absorptivity:
-      value: 0.42
-      min: 2.0
-      max: 65.0
-      unit: dimensionless
-      research_basis: materials_science_literature
-    laserAbsorption:
-      value: 38.7
-      min: 0.02
-      max: 100
-      unit: '%'
-      research_basis: NIST Atomic Spectra Database - Iridium Reflectance Measurements
-        at 1064 nm wavelength
-    laserDamageThreshold:
-      value: 0.45
-      min: 0.1
-      max: 20.0
-      unit: J/cm²
-      research_basis: materials_science_literature
-    laserReflectivity:
-      value: 51.5
-      min: 5
-      max: 99.9
-      unit: '%'
-      research_basis: materials_science_literature
-    reflectivity:
-      value: 0.965
-      min: 85
-      max: 98
-      unit: dimensionless (reflectance)
-      research_basis: materials_science_literature
-    thermalShockResistance:
-      value: 1.2
-      min: 50
-      max: 400
-      unit: MW/m
-      research_basis: materials_science_literature
-    absorptionCoefficient:
-      value: 47200000.0
-      min: 100000
-      max: 50000000
-      unit: m⁻¹
-      research_basis: materials_science_literature
-    surfaceRoughness:
-      value: 0.15
-      min: 0.4
-      max: 150
-      unit: μm
-      research_basis: materials_science_literature
-    vaporPressure:
-      value: 0.0001333
-      min: 1.0e-10
-      max: 0.001
-      unit: Pa
-      research_basis: materials_science_literature
-machineSettings:
-  fluenceThreshold:
-    value: 2.5
-    min: 1.5
-    max: 4.0
-    unit: J/cm²
-    description: Minimum fluence required for effective Iridium surface cleaning
-  overlapRatio:
-    value: 50
-    min: 30
-    max: 70
-    unit: '%'
-    description: Optimal beam overlap for uniform cleaning results
-  passCount:
-    value: 3
-    min: 1
-    max: 5
-    unit: passes
-    description: Recommended number of passes for complete contamination removal
-  powerRange:
-    value: 45
-    min: 30
-    max: 65
-    unit: W
-    description: Optimal average power for Iridium surface cleaning without thermal
-      damage
-  pulseWidth:
-    value: 8
-    min: 5
-    max: 15
-    unit: ns
-    description: Short pulse duration for efficient ablation with minimal heat diffusion
-  repetitionRate:
-    value: 50
-    min: 20
-    max: 100
-    unit: kHz
-    description: Optimal repetition rate for continuous cleaning coverage
-  scanSpeed:
-    value: 500
-    min: 200
-    max: 1000
-    unit: mm/s
-    description: Optimal scanning speed for efficient area coverage
-  spotSize:
-    value: 50
-    min: 30
-    max: 100
-    unit: μm
-    description: Beam spot diameter for precise cleaning control
-  wavelength:
-    value: 1064
-    min: 532
-    max: 1064
-    unit: nm
-    description: Fundamental Nd:YAG wavelength with good Iridium absorption
 environmentalImpact:
-- applicableIndustries:
-  - Semiconductor
-  - Electronics
-  - Medical
-  - Nuclear
-  benefit: Chemical Waste Elimination
-  description: Eliminates hazardous chemical waste streams
-  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- applicableIndustries: []
-  benefit: Water Usage Reduction
-  description: Dry process requires no water
-  sustainabilityBenefit: Significant water conservation in industrial processes
-- applicableIndustries: []
-  benefit: Energy Efficiency
-  description: Focused energy delivery with minimal waste heat
-- applicableIndustries: []
-  benefit: Air Quality Improvement
-  description: Eliminates volatile organic compounds from chemical cleaning
+- Chemical Waste Elimination:
+    applicableIndustries:
+    - Semiconductor
+    - Electronics
+    - Medical
+    - Nuclear
+    description: Eliminates hazardous chemical waste streams
+    quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+- Water Usage Reduction:
+    applicableIndustries: []
+    description: Dry process requires no water
+    sustainabilityBenefit: Significant water conservation in industrial processes
+- Energy Efficiency:
+    applicableIndustries: []
+    description: Focused energy delivery with minimal waste heat
+- Air Quality Improvement:
+    applicableIndustries: []
+    description: Eliminates volatile organic compounds from chemical cleaning
 outcomeMetrics:
 - Contaminant Removal Efficiency:
     description: Percentage of target contaminants successfully removed from surface
-    typicalRanges: 95-99.9% depending on application and material
-    measurementMethods:
-    - Before/after microscopy
-    - Chemical analysis
-    - Mass spectrometry
     factorsAffecting:
     - Contamination type
     - Adhesion strength
     - Surface geometry
-preservedData:
-  generationMetadata:
-    generated_date: '2025-10-22T20:36:58.301331'
-    data_completeness: 100%
-    source: Materials.yaml (direct export)
-    properties: {}
-  categoryInfo:
-    description: Pure metals, alloys, and metallic compounds including steel, aluminum,
-      precious metals, and industrial alloys for precision cleaning
-    properties_count: 0
-    category_ranges:
-      density:
-        max: 22.6
-        min: 0.53
-        unit: g/cm³
-      hardness:
-        max: 3500
-        min: 0.5
-        unit: HV
-      laserAbsorption:
-        max: 100
-        min: 0.02
-        unit: cm⁻¹
-      laserReflectivity:
-        max: 99.9
-        min: 5
-        unit: '%'
-        source: Handbook of Optical Constants of Solids (Palik, 1998)
-        confidence: 85
-        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with
-          surface condition'
-        last_updated: '2025-10-15T14:19:43.867188'
-      specificHeat:
-        max: 2000
-        min: 100
-        unit: J/kg·K
-      surfaceRoughness:
-        min: 0.4
-        max: 150
-        unit: μm Ra
-        source: Engineering ToolBox
-        confidence: 85
-        notes: Industrial metal finishing processes
-        last_updated: '2025-10-14T23:58:54.459299'
-      tensileStrength:
-        max: 3000.0
-        min: 3.0
-        unit: MPa
-      thermalConductivity:
-        min: 7.0
-        max: 430
-        unit: W/(m·K)
-        source: MatWeb Materials Database
-        confidence: 85
-        notes: Typical range for metal materials at room temperature
-        last_updated: '2025-10-14T23:58:54.459362'
-        phase2_adjustment: Manganese at 7.81 W/(m·K)
-        adjustment_date: '2025-10-15'
-      thermalDestruction:
-        point:
-          min: -38.8
-          max: 3422
-          unit: °C
-        type: melting
-        research_basis: Metal melting points from Mercury (-38.8°C) to Tungsten (3422°C)
-        confidence: 98
-      thermalDiffusivity:
-        max: 174
-        min: 0.06
-        unit: mm²/s
-        phase2_adjustment: Beryllium at 0.07 m²/s
-        adjustment_date: '2025-10-15'
-      thermalExpansion:
-        max: 33
-        min: 0.5
-        unit: µm/m·K
-      youngsModulus:
-        max: 600
-        min: 5
-        unit: GPa
-      ablationThreshold:
-        min: 2.0
-        max: 8.0
-        unit: J/cm²
-        source: Marks et al. 2022, Precision Engineering
-        confidence: 90
-        notes: Nanosecond pulse range for metals (most common industrial laser cleaning)
-        measurement_context: Nanosecond pulses (picosecond 0.1-2.0, femtosecond 0.14-1.7)
-        last_updated: '2025-10-17T00:00:00.000000'
-      reflectivity:
-        min: 85
-        max: 98
-        unit: '%'
-        source: Handbook of Optical Constants (Palik)
-        confidence: 85
-        notes: At 1064nm for polished metals (532nm 70-95%, 355nm 55-85%, 10640nm
-          95-99%)
-        measurement_context: 1064nm wavelength (most common Nd:YAG)
-        last_updated: '2025-10-17T00:00:00.000000'
-      oxidationResistance:
-        min: 200
-        max: 1200
-        unit: °C
-        source: ASM Metals Handbook - Corrosion
-        confidence: 80
-        notes: 'Oxidation onset: Steel 200-400°C, Stainless 400-800°C, Ni alloys 800-1200°C'
-        last_updated: '2025-10-14T23:58:54.459355'
-      compressiveStrength:
-        min: 50
-        max: 2000
-        unit: MPa
-        description: Maximum compressive stress before failure
-        notes: Metals moderate compression
-        source: materials_science_literature
-        research_date: '2025-10-15'
-      corrosionResistance:
-        min: 1
-        max: 10
-        unit: rating
-        description: Resistance to chemical/electrochemical degradation
-        notes: 1=poor (steel), 10=excellent (gold, titanium)
-        source: materials_science_literature
-        research_date: '2025-10-15'
-      electricalResistivity:
-        min: 1.0e-08
-        max: 1.5e-06
-        unit: Ω·m
-        description: Resistance to electrical current flow
-        notes: Titanium at 48 μΩ·cm = 4.8e-5 Ω·m
-        source: materials_science_literature
-        research_date: '2025-10-15'
-        phase2_adjustment: Titanium at 48 μΩ·cm
-        adjustment_date: '2025-10-15'
-      fractureToughness:
-        min: 20
-        max: 200
-        unit: MPa·m^0.5
-        description: Resistance to crack propagation
-        notes: Metals ductile, high toughness
-        source: materials_science_literature
-        research_date: '2025-10-15'
-      flexuralStrength:
-        min: 2.5
-        max: 1050.0
-        unit: MPa
-        description: ''
-        sample_count: 34
-        auto_generated: true
-        generated_date: '2025-10-16'
-      laserDamageThreshold:
-        min: 0.1
-        max: 20.0
-        unit: J/cm²
-        source: Laser-Induced Damage in Optical Materials (NIST)
-        confidence: 85
-        notes: Millisecond to nanosecond pulses for metal surfaces (polished vs. rough)
-        measurement_context: Surface finish dependent (polished surfaces higher threshold)
-        last_updated: '2025-10-17T00:00:00.000000'
-      boilingPoint:
-        min: 907
-        max: 5870
-        unit: °C
-        source: CRC Handbook of Chemistry and Physics
-        confidence: 95
-        notes: Mercury 357°C, Zinc 907°C, Tungsten 5555°C, Rhenium 5870°C
-        measurement_context: Standard atmospheric pressure (1 atm)
-        last_updated: '2025-10-17T00:00:00.000000'
-      electricalConductivity:
-        min: 0.67
-        max: 63.0
-        unit: MS/m
-        source: Materials Handbook (ASM International)
-        confidence: 90
-        notes: Bismuth 0.77 MS/m, Aluminum 37.7 MS/m, Copper 59.6 MS/m, Silver 63.0
-          MS/m
-        measurement_context: Room temperature (20°C), pure elements
-        last_updated: '2025-10-17T00:00:00.000000'
-      meltingPoint:
-        min: -39
-        max: 3422
-        unit: °C
-        source: CRC Handbook of Chemistry and Physics
-        confidence: 95
-        notes: Mercury -38.8°C, Aluminum 660°C, Steel 1370-1540°C, Tungsten 3422°C
-        measurement_context: Standard atmospheric pressure (1 atm)
-        last_updated: '2025-10-17T00:00:00.000000'
-      absorptionCoefficient:
-        min: 100000
-        max: 50000000
-        unit: m⁻¹
-        source: Optical Properties of Metals (Palik)
-        confidence: 80
-        notes: At 1064nm wavelength - varies with surface oxide, roughness, temperature
-        measurement_context: Near-IR wavelength (1064nm Nd:YAG laser)
-        last_updated: '2025-10-17T00:00:00.000000'
-      thermalShockResistance:
-        min: 50
-        max: 400
-        unit: ΔT °C
-        source: Materials Science and Engineering (Callister)
-        confidence: 75
-        notes: Cast iron ~50-100°C, Steel ~150-250°C, Nickel alloys ~300-400°C
-        measurement_context: Resistance to thermal stress cracking during rapid temperature
-          changes
-        last_updated: '2025-10-17T00:00:00.000000'
-      absorptivity:
-        min: 2.0
-        max: 65.0
-        unit: '%'
-        source: Laser Material Processing (Steen & Mazumder)
-        confidence: 85
-        notes: Polished metals 2-10%, Oxidized surfaces 30-65%, wavelength and temperature
-          dependent
-        measurement_context: Near-IR wavelengths (1064nm Nd:YAG), room temperature
-        last_updated: '2025-10-17T00:00:00.000000'
-      porosity:
-        min: 0.0
-        max: 15.0
-        unit: '%'
-        source: ASM Metals Handbook - Powder Metallurgy
-        confidence: 90
-        notes: Wrought metals 0-0.1%, Cast metals 0.5-5%, Sintered metals 2-15%
-        measurement_context: Volumetric porosity, varies significantly by manufacturing
-          process
-        last_updated: '2025-10-17T00:00:00.000000'
-      thermalDestructionPoint:
-        min: 873
-        max: 3695
-        unit: K
-        source: CRC Handbook - Boiling Points of Elements
-        confidence: 95
-        notes: Zinc 1180K, Iron 3134K, Steel 1473-1673K, Tungsten 3695K (boiling point)
-        measurement_context: Temperature at which material structurally fails or vaporizes
-        last_updated: '2025-10-17T00:00:00.000000'
-      vaporPressure:
-        min: 1.0e-10
-        max: 0.001
-        unit: Pa
-        source: NIST Thermophysical Properties Database
-        confidence: 80
-        notes: Room temperature vapor pressure, exponentially increases with temperature
-        measurement_context: 20°C ambient conditions, critical for vacuum applications
-        last_updated: '2025-10-17T00:00:00.000000'
-  propertyMetadata:
-    ablationThreshold:
-      confidence: 0.92
-      research_date: '2025-10-17T19:23:40.209047'
-      source: ai_research
-    absorptivity:
-      confidence: 0.92
-      research_date: '2025-10-17T20:14:59.422069'
-      source: ai_research
-    boilingPoint:
-      confidence: 0.95
-      research_date: '2025-10-17T19:33:51.858331'
-      source: ai_research
-    laserAbsorption:
-      confidence: 0.92
-      ai_verified: true
-      verification_date: '2025-10-03T23:08:00.985246'
-      verification_confidence: 95
-      research_date: '2025-09-30T13:12:45.476691'
-      source: ai_research
-    laserDamageThreshold:
-      confidence: 0.92
-      research_date: '2025-10-17T19:38:50.545941'
-      source: ai_research
-    laserReflectivity:
-      confidence: 0.9
-      research_date: '2025-10-17'
-      source: ai_research
-    meltingPoint:
-      confidence: 0.98
-      research_date: '2025-10-17T19:44:11.600049'
-      source: ai_research
-    reflectivity:
-      confidence: 0.95
-      research_date: '2025-10-17T20:00:37.415442'
-      source: ai_research
-    specificHeat:
-      confidence: 0.95
-      ai_verified: true
-      verification_date: '2025-10-03T22:32:20.837619'
-      verification_confidence: 95
-      research_date: '2025-09-30T13:13:09.625908'
-      source: ai_research
-    thermalConductivity:
-      confidence: 0.95
-      ai_verified: true
-      verification_date: '2025-10-03T20:20:53.092125'
-      verification_confidence: 95
-      research_date: '2025-09-30T13:13:34.294324'
-      source: ai_research
-    thermalDestruction:
-      confidence: 0.65
-      research_date: '2025-10-17'
-      source: thermal_degradation_standards
-    thermalDestructionPoint:
-      confidence: 0.95
-      research_date: '2025-10-17T20:19:42.102860'
-      source: ai_research
-    thermalDiffusivity:
-      confidence: 0.95
-      research_date: '2025-09-30T13:14:13.828766'
-      source: ai_research
-    thermalExpansion:
-      confidence: 0.95
-      ai_verified: true
-      verification_date: '2025-10-03T22:13:58.098568'
-      verification_confidence: 95
-      research_date: '2025-09-30T13:14:26.315066'
-      source: ai_research
-    thermalShockResistance:
-      confidence: 0.95
-      research_date: '2025-10-17T19:49:28.328293'
-      source: ai_research
-    compressiveStrength:
-      confidence: 0.85
-      ai_verified: true
-      research_date: '2025-10-15T21:27:20.151354'
-      source: 'ASM International, "Properties of Iridium," in *ASM Ready Reference:
-        Properties and Units for Engineering Alloys*'
-    corrosionResistance:
-      confidence: 0.9
-      ai_verified: true
-      research_date: '2025-10-15T20:30:48.899527'
-      source: 'ASM Handbook, Volume 13B: Corrosion: Materials (2015), "Iridium and
-        Iridium Alloys" section'
-    density:
-      confidence: 0.98
-      ai_verified: true
-      verification_date: '2025-10-03T20:01:08.226608'
-      verification_confidence: 99
-      research_date: '2025-09-30T13:12:21.588958'
-      source: ai_research
-    electricalConductivity:
-      confidence: 0.95
-      research_date: '2025-10-17T19:55:15.543371'
-      source: ai_research
-    electricalResistivity:
-      confidence: 0.95
-      research_date: '2025-10-17T19:14:55.783760'
-      source: ai_research
-    flexuralStrength:
-      confidence: 0.85
-      ai_verified: true
-      research_date: '2025-10-15T20:56:42.406264'
-      source: 'ASM International, "Properties and Selection: Nonferrous Alloys and
-        Special-Purpose Materials", Vol. 2, ASM Handbook (1990), p. 753.'
-    hardness:
-      confidence: 0.95
-      ai_verified: true
-      verification_date: '2025-10-03T20:41:22.071643'
-      verification_confidence: 95
-      research_date: '2025-09-30T13:12:35.413377'
-      source: ai_research
-    oxidationResistance:
-      confidence: 0.9
-      ai_verified: true
-      research_date: '2025-10-15T20:44:02.066983'
-      source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys
-        and Special-Purpose Materials (1990), Chapter on Platinum Group Metals'
-    porosity:
-      confidence: 0.95
-      research_date: '2025-10-17T19:07:34.183590'
-      source: ai_research
-    tensileStrength:
-      confidence: 0.95
-      research_date: '2025-09-30T13:13:21.521735'
-      source: ai_research
-    youngsModulus:
-      confidence: 0.95
-      ai_verified: true
-      verification_date: '2025-10-03T21:55:35.214054'
-      verification_confidence: 95
-      research_date: '2025-09-30T13:14:39.140302'
-      source: ai_research
-    absorptionCoefficient:
-      confidence: 0.92
-      research_date: '2025-10-17T19:28:46.072394'
-      source: ai_research
-    fractureToughness:
-      confidence: 0.9
-      ai_verified: true
-      research_date: '2025-10-15T20:15:31.558512'
-      source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys
-        and Special-Purpose Materials, "Iridium and Iridium Alloys"'
-    surfaceRoughness:
-      confidence: 0.92
-      research_date: '2025-10-17T20:09:57.100290'
-      source: ai_research
-    vaporPressure:
-      confidence: 0.95
-      research_date: '2025-10-17T20:05:17.429308'
-      source: ai_research
-  machineSettingsMetadata:
-    fluenceThreshold:
-      confidence: 89
-    overlapRatio:
-      confidence: 83
-    passCount:
-      confidence: 85
-    powerRange:
-      confidence: 90
-    pulseWidth:
-      confidence: 85
-    repetitionRate:
-      confidence: 87
-    scanSpeed:
-      confidence: 84
-    spotSize:
-      confidence: 86
-    wavelength:
-      confidence: 88
+    measurementMethods:
+    - Before/after microscopy
+    - Chemical analysis
+    - Mass spectrometry
+    typicalRanges: 95-99.9% depending on application and material
+    units: []
+- Processing Speed:
+    description: Rate of surface area processed per unit time
+    factorsAffecting: []
+    measurementMethods: []
+    units:
+    - m²/h
+    - cm²/min
+    - mm²/s
+- Surface Quality Preservation:
+    description: Maintenance of original surface characteristics after cleaning
+    factorsAffecting: []
+    measurementMethods: []
+    units: []
+- Thermal Damage Avoidance:
+    description: Prevention of heat-related material alterations during cleaning
+    factorsAffecting: []
+    measurementMethods: []
+    units: []
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/en/publication/3587
+  image: /images/logo/logo-org-iec.png
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
+  image: /images/logo/logo-org-osha.png
+images:
+  hero:
+    alt: Iridium surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/iridium-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of iridium surface showing laser cleaning effects
+    url: /images/material/iridium-laser-cleaning-micro.jpg
+author:
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  id: 4
+  image: /images/author/todd-dunning.jpg
+  name: Todd Dunning
+  sex: m
+  title: MA
+categoryMetadata:
+  description: Pure metals, alloys, and metallic compounds including steel, aluminum,
+    precious metals, and industrial alloys for precision cleaning

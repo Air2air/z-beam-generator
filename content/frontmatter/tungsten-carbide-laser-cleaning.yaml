@@ -1,207 +1,35 @@
 name: Tungsten Carbide
-category: Ceramic
-subcategory: oxide
-title: Tungsten Carbide Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Tungsten Carbide
+title: Tungsten Carbide
+subtitle: ''
 description: Laser cleaning parameters for Tungsten Carbide
-author:
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  id: 3
-  image: /images/author/ikmanda-roswati.jpg
-  name: Ikmanda Roswati
-  sex: m
-  title: Ph.D.
-images:
-  hero:
-    alt: Tungsten Carbide surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/material/tungsten-carbide-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Tungsten Carbide surface after laser cleaning showing
-      detailed surface structure
-    url: /images/material/tungsten-carbide-laser-cleaning-micro.jpg
+category: ceramic
+subcategory: ''
 caption:
-  description: Microscopic analysis of Tungsten Carbide surface before and after laser
+  beforeText: Under microscopy, the tungsten carbide surface appears very-very rough
+    and contaminated heavily. Contaminants, like oily residues and metal particles
+    from machining, cover and obscure the ceramic structure densely. These particles
+    cluster in pits, size from 1-10 micrometers, and distribute unevenly across the
+    surface. Degradation shows as micro-cracks and pitting, weakened by contaminants,
+    so the material looks brittle and less durable for aerospace or medical uses.
+  afterText: After ultrafast laser cleaning, the tungsten carbide surface appears
+    very-very smooth and clean, with contaminants removed then polished effectively.
+    This process restores the ceramic material's original shine and texture, so it
+    looks like new without scratches or residues. Material integrity remains strong
+    and intact, preserving hardness for aerospace, automotive, and medical applications.
+    Quality is high-high, ensuring durability and performance.
+  generated: '2025-10-25T15:36:26.369620Z'
+  author: Ikmanda Roswati
+  generation_method: ai_research
+  word_count:
+    before: 65
+    after: 59
+  character_count:
+    before: 470
+    after: 452
+  description: Microscopic analysis of tungsten carbide surface before and after laser
     cleaning treatment
-  beforeText: ''
-  afterText: ''
-regulatoryStandards:
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo_org_ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/en/publication/3587
-  image: /images/logo/logo_org_iec.png
-applications:
-- Aerospace
-- Automotive
-- Medical
-- Oil and Gas
-- Mining
-- Electronics Manufacturing
-- Marine
-- Tool and Die Manufacturing
-- Energy Generation
-- Cultural Heritage
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    specificHeat:
-      value: 292.0
-      min: 250
-      max: 2500.0
-      unit: J/(kg·K)
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (1990), Table 1: Physical Properties
-        of Cemented Carbides, p. 950'
-    thermalConductivity:
-      value: 110.0
-      min: 0.8
-      max: 120
-      unit: W/(m·K)
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (1990), Table ''Physical Properties of
-        Carbides'' specifying thermal conductivity of tungsten carbide (WC) at room
-        temperature'
-    thermalDestruction:
-      value: 1200.0
-      unit: °C
-      research_basis: ai_research_comprehensive
-    thermalDiffusivity:
-      value: 22.5
-      min: 0.005
-      max: 120
-      unit: mm²/s
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials, Table ''Thermal Properties of Cemented
-        Carbides and Cermets'' for WC-6%Co composition at 20°C'
-    thermalExpansion:
-      value: 5.4
-      min: 0.1
-      max: 14
-      unit: 10^-6/K
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (1990), Section: Cemented Carbides and
-        Cermets, Table: Physical Properties of Cemented Carbides'
-    compressiveStrength:
-      value: 6700.0
-      min: 100
-      max: 7000
-      unit: MPa
-      research_basis: 'ASM Handbook, Volume 19: Fatigue and Fracture (1996), Table
-        1: Mechanical Properties of Cemented Carbides, specifically reporting compressive
-        strength range of 6000-7400 MPa for WC-Co grades with 6-16% binder content'
-    corrosionResistance:
-      value: 8.0
-      min: 8
-      max: 10
-      unit: rating
-      research_basis: Tungsten carbide (WC-Co) has excellent corrosion resistance
-        in neutral and alkaline environments and good resistance to many acids, though
-        it is susceptible to corrosion in oxidizing acids due to the cobalt binder.
-        It is highly resistant to atmospheric corrosion, seawater, and many industrial
-        chemicals, placing it well above most metals but below some monolithic ceramics
-        and noble metals.
-    density:
-      value: 15.63
-      min: 2.3
-      max: 16.0
-      unit: g/cm³
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (1990), Section: Cemented Carbides and
-        Cermets, Table 1: Typical Properties of Cemented Carbides'
-    electricalResistivity:
-      value: 2.0e-05
-      min: 10000000000.0
-      max: 1.0e+16
-      unit: Ω·m
-      research_basis: materials_science_literature
-    flexuralStrength:
-      value: 2300.0
-      min: 50
-      max: 2500
-      unit: MPa
-      research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation (2000),
-        Table ''Mechanical Properties of Cemented Carbides'' citing typical flexural
-        strength range of 1800-2800 MPa for commercial tungsten carbide grades with
-        6-16% cobalt binder'
-    hardness:
-      value: 1600.0
-      min: 6.0
-      max: 2500
-      unit: Mohs
-      research_basis: materials_science_literature
-    oxidationResistance:
-      value: 600.0
-      min: 600.0
-      max: 2400.0
-      unit: °C
-      research_basis: Tungsten carbide (WC) has poor oxidation resistance in air and
-        begins to oxidize significantly at temperatures of 500-600°C, forming tungsten
-        trioxide (WO₃). The value of 600°C is consistently cited in materials handbooks
-        as the upper limit for continuous service in an oxidizing environment before
-        rapid, destructive oxidation occurs.
-    porosity:
-      value: 0.0005
-      min: 0
-      max: 30
-      unit: fraction
-      research_basis: ai_research_comprehensive
-    tensileStrength:
-      value: 344.7
-      min: 5.0
-      max: 600
-      unit: MPa
-      research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation (2000),
-        Table: Mechanical Properties of Cemented Carbides, specifically reporting
-        tensile strength for WC-6%Co composition'
-    youngsModulus:
-      value: 600.0
-      min: 5.0
-      max: 600.0
-      unit: GPa
-      research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation (2000),
-        Table ''Elastic Properties of Selected Ceramics and Hard Metals'' lists Young''s
-        modulus for tungsten carbide (WC) as 650 GPa'
-    fractureToughness:
-      value: 9.5
-      min: 2
-      max: 10
-      unit: MPa·m¹/²
-      research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation (2000),
-        Table 13 - Fracture toughness values for cemented carbides; Materials Science
-        and Engineering: A, Vol. 209, Issues 1-2, pp. 1-9 (1996)'
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
-    ablationThreshold:
-      value: 1.8
-      min: 1.5
-      max: 5.0
-      unit: J/cm²
-      research_basis: materials_science_literature
-    laserAbsorption:
-      value: 32.7
-      min: 0.1
-      max: 50
-      unit: '%'
-      research_basis: 'ASM Handbook, Volume 4B: Steel Heat Treating Technologies,
-        Chapter: Laser Surface Engineering, Table 4: Absorption coefficients of common
-        engineering materials for 1064 nm Nd:YAG laser'
-    laserReflectivity:
-      value: 52.3
-      min: 5
-      max: 90
-      unit: '%'
-      research_basis: 'ASM Handbook, Volume 4: Heat Treating, Section: Laser Processing
-        of Materials, Table: Reflectivity of Engineering Materials for Nd:YAG Lasers
-        (1064 nm)'
+materialProperties: {}
+materialCharacteristics: {}
 machineSettings:
   energyDensity:
     value: 5.1
@@ -258,306 +86,55 @@ machineSettings:
     max: 1064
     unit: nm
     description: Near-infrared wavelength for optimal Tungsten Carbide absorption
+applications:
+- Aerospace
+- Automotive
+- Medical
+- Oil and Gas
+- Mining
+- Electronics Manufacturing
+- Marine
+- Tool and Die Manufacturing
+- Energy Generation
+- Cultural Heritage
 environmentalImpact:
-- applicableIndustries:
-  - Semiconductor
-  - Electronics
-  - Medical
-  - Nuclear
-  benefit: Chemical Waste Elimination
-  description: Eliminates hazardous chemical waste streams
-  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- applicableIndustries: []
-  benefit: Water Usage Reduction
-  description: Dry process requires no water
-  sustainabilityBenefit: Significant water conservation in industrial processes
-- applicableIndustries: []
-  benefit: Energy Efficiency
-  description: Focused energy delivery with minimal waste heat
-- applicableIndustries: []
-  benefit: Air Quality Improvement
-  description: Eliminates volatile organic compounds from chemical cleaning
-outcomeMetrics:
-- Contaminant Removal Efficiency:
-    description: Percentage of target contaminants successfully removed from surface
-    typicalRanges: 95-99.9% depending on application and material
-    measurementMethods:
-    - Before/after microscopy
-    - Chemical analysis
-    - Mass spectrometry
-    factorsAffecting:
-    - Contamination type
-    - Adhesion strength
-    - Surface geometry
-preservedData:
-  generationMetadata:
-    generated_date: '2025-10-22T20:36:58.967482'
-    data_completeness: 100%
-    source: Materials.yaml (direct export)
-    properties: {}
-  categoryInfo:
-    description: Advanced ceramic materials including technical ceramics, porcelain,
-      and ceramic composites used in laser cleaning applications
-    properties_count: 0
-    category_ranges:
-      density:
-        max: 16.0
-        min: 2.3
-        unit: g/cm³
-        adjustment_note: Tungsten carbide is 15.63 g/cm³
-        adjustment_date: '2025-10-15'
-        adjustment_source: materials_science_research
-      hardness:
-        max: 2500
-        min: 6.0
-        unit: Mohs
-        adjustment_note: Change from Mohs to HV for advanced ceramics
-        adjustment_date: '2025-10-15'
-        adjustment_source: materials_science_research
-        phase2_adjustment: Porcelain/Stoneware at 7.0 Mohs
-        notes: Porcelain/stoneware 7 Mohs, advanced ceramics use HV scale
-      laserAbsorption:
-        max: 50
-        min: 0.1
-        unit: cm⁻¹
-      laserReflectivity:
-        max: 90
-        min: 5
-        unit: '%'
-        source: Handbook of Optical Constants of Solids (Palik, 1998)
-        confidence: 75
-        notes: Typical ceramics 10-30% at 1064nm, varies with composition and surface
-          finish
-        last_updated: '2025-10-15T14:19:43.867144'
-      specificHeat:
-        max: 2500.0
-        min: 250
-        unit: J/kg·K
-        adjustment_note: Carbides have lower specific heat
-        adjustment_date: '2025-10-15'
-        adjustment_source: materials_science_research
-      tensileStrength:
-        max: 600
-        min: 5.0
-        unit: MPa
-        adjustment_note: Advanced ceramics much stronger
-        adjustment_date: '2025-10-15'
-        adjustment_source: materials_science_research
-      thermalConductivity:
-        min: 0.8
-        max: 120
-        unit: W/(m·K)
-        source: MatWeb Materials Database
-        confidence: 80
-        notes: Typical range for ceramic materials at room temperature
-        last_updated: '2025-10-14T23:58:54.459388'
-        adjustment_note: SiC, WC have high conductivity
-        adjustment_date: '2025-10-15'
-        adjustment_source: materials_science_research
-      thermalDestruction:
-        point:
-          max: 3827
-          min: 1000
-          unit: °C
-        type: thermal_shock
-      thermalDiffusivity:
-        max: 120
-        min: 0.005
-        unit: mm²/s
-        adjustment_note: Zirconia has low diffusivity
-        adjustment_date: '2025-10-15'
-        adjustment_source: materials_science_research
-      thermalExpansion:
-        max: 14
-        min: 0.1
-        unit: µm/m·K
-      youngsModulus:
-        max: 600.0
-        min: 5.0
-        unit: GPa
-      ablationThreshold:
-        min: 1.5
-        max: 5.0
-        unit: J/cm²
-        source: RP Photonics Encyclopedia, Oxide Ceramics
-        confidence: 75
-        notes: Alumina, zirconia, silicon carbide - nanosecond pulses
-        last_updated: '2025-10-14T23:58:54.459371'
-      porosity:
-        min: 0
-        max: 30
-        unit: '%'
-        source: ASM Handbook - Ceramics and Glasses
-        confidence: 80
-        notes: Dense ceramics 0-5%, porous ceramics 10-30%
-        last_updated: '2025-10-14T23:58:54.459381'
-      compressiveStrength:
-        min: 100
-        max: 7000
-        unit: MPa
-        description: Maximum compressive stress before failure
-        notes: Ceramics excellent in compression
-        source: materials_science_literature
-        research_date: '2025-10-15'
-        adjustment_note: WC exceptional in compression
-        adjustment_date: '2025-10-15'
-        adjustment_source: materials_science_research
-      corrosionResistance:
-        min: 8
-        max: 10
-        unit: rating
-        description: Resistance to chemical/electrochemical degradation
-        notes: Ceramics highly corrosion resistant
-        source: materials_science_literature
-        research_date: '2025-10-15'
-      electricalResistivity:
-        min: 10000000000.0
-        max: 1.0e+16
-        unit: Ω·m
-        description: Resistance to electrical current flow
-        notes: Ceramics are insulators
-        source: materials_science_literature
-        research_date: '2025-10-15'
-      flexuralStrength:
-        min: 50
-        max: 2500
-        unit: MPa
-        description: Maximum bending stress before failure
-        notes: Ceramics brittle in bending
-        source: materials_science_literature
-        research_date: '2025-10-15'
-        adjustment_note: WC has exceptional flexural strength
-        adjustment_date: '2025-10-15'
-        adjustment_source: materials_science_research
-      fractureToughness:
-        min: 2
-        max: 10
-        unit: MPa·m^0.5
-        description: Resistance to crack propagation
-        notes: Ceramics brittle, low toughness
-        source: materials_science_literature
-        research_date: '2025-10-15'
-      oxidationResistance:
-        min: 600.0
-        max: 2400.0
-        unit: °C
-        description: ''
-        sample_count: 7
-        auto_generated: true
-        generated_date: '2025-10-16'
-  propertyMetadata:
-    ablationThreshold:
-      confidence: 0.92
-      research_date: '2025-10-17T19:19:24.437276'
-      source: ai_research
-    laserAbsorption:
-      confidence: 0.92
-      research_date: '2025-09-30T11:17:24.338772'
-      source: ai_research
-    laserReflectivity:
-      confidence: 0.92
-      research_date: '2025-09-30T11:17:37.445338'
-      source: ai_research
-    specificHeat:
-      confidence: 0.95
-      research_date: '2025-09-30T11:17:49.214652'
-      source: ai_research
-    thermalConductivity:
-      confidence: 0.95
-      ai_verified: true
-      verification_date: '2025-10-03T20:20:53.091955'
-      verification_confidence: 95
-      research_date: '2025-09-30T11:18:12.876693'
-      source: ai_research
-    thermalDestruction:
-      confidence: 0.75
-      research_date: '2025-10-17'
-      source: ceramic_degradation_standards
-    thermalDiffusivity:
-      confidence: 0.95
-      research_date: '2025-09-30T11:18:53.018919'
-      source: ai_research
-    thermalExpansion:
-      confidence: 0.95
-      ai_verified: true
-      verification_date: '2025-10-03T22:13:58.098397'
-      verification_confidence: 95
-      research_date: '2025-09-30T11:19:04.993241'
-      source: ai_research
-    compressiveStrength:
-      confidence: 0.95
-      research_date: '2025-09-30T11:16:19.623444'
-      source: ai_research
-    corrosionResistance:
-      confidence: 0.9
-      ai_verified: true
-      research_date: '2025-10-15T20:38:36.322031'
-      source: 'ASM Handbook, Volume 13C: Corrosion: Environments and Industries, "Corrosion
-        of Cemented Carbides"'
-    density:
-      confidence: 0.95
-      ai_verified: true
-      verification_date: '2025-10-03T20:01:08.226448'
-      verification_confidence: 95
-      research_date: '2025-09-30T11:16:31.808137'
-      source: ai_research
-    electricalResistivity:
-      confidence: 0.95
-      research_date: '2025-10-17T19:09:12.324949'
-      source: ai_research
-    flexuralStrength:
-      confidence: 0.95
-      research_date: '2025-09-30T11:16:46.349059'
-      source: ai_research
-    hardness:
-      confidence: 1.0
-      ai_verified: true
-      verification_date: '2025-10-03T20:41:22.071490'
-      verification_confidence: 98
-      research_date: '2025-10-15'
-      source: AI Research (DeepSeek) + Literature Review
-    oxidationResistance:
-      confidence: 0.85
-      ai_verified: true
-      research_date: '2025-10-15T20:51:16.468094'
-      source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys
-        and Special-Purpose Materials (ASM International, 1990), Section "Cemented
-        Carbides and Cermets".'
-    porosity:
-      confidence: 0.95
-      research_date: '2025-10-17T19:07:34.180193'
-      source: ai_research
-    tensileStrength:
-      confidence: 0.92
-      research_date: '2025-09-30T11:18:01.614048'
-      source: ai_research
-    youngsModulus:
-      confidence: 0.95
-      ai_verified: true
-      verification_date: '2025-10-03T21:55:35.213893'
-      verification_confidence: 95
-      research_date: '2025-09-30T11:19:16.874465'
-      source: ai_research
-    fractureToughness:
-      confidence: 0.95
-      research_date: '2025-09-30T11:16:59.043027'
-      source: ai_research
-  machineSettingsMetadata:
-    energyDensity:
-      confidence: 89
-    overlapRatio:
-      confidence: 83
-    passCount:
-      confidence: 82
-    powerRange:
-      confidence: 92
-    pulseWidth:
-      confidence: 85
-    repetitionRate:
-      confidence: 87
-    scanSpeed:
-      confidence: 86
-    spotSize:
-      confidence: 84
-    wavelength:
-      confidence: 88
+- Chemical Waste Elimination:
+    applicableIndustries:
+    - Semiconductor
+    - Electronics
+    - Medical
+    - Nuclear
+    description: Eliminates hazardous chemical waste streams
+    quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+- Water Usage Reduction:
+    applicableIndustries: []
+    description: Dry process requires no water
+    sustainabilityBenefit: Significant water conservation in industrial processes
+- Energy Efficiency:
+    applicableIndustries: []
+    description: Focused energy delivery with minimal waste heat
+- Air Quality Improvement:
+    applicableIndustries: []
+    description: Eliminates volatile organic compounds from chemical cleaning
+outcomeMetrics: []
+regulatoryStandards: []
+images:
+  hero:
+    alt: Tungsten Carbide surface undergoing laser cleaning showing precise contamination
+      removal
+    url: /images/material/tungsten-carbide-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Tungsten Carbide surface after laser cleaning showing
+      detailed surface structure
+    url: /images/material/tungsten-carbide-laser-cleaning-micro.jpg
+author:
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  id: 3
+  image: /images/author/ikmanda-roswati.jpg
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+categoryMetadata:
+  description: Advanced ceramic materials including technical ceramics, porcelain,
+    and ceramic composites used in laser cleaning applications

@@ -1,16 +1,47 @@
-# Frontmatter Component v8.0.0 - Materials.yaml Only
+# Frontmatter Component v9.0.0 - Trivial Export Architecture
 
-The frontmatter component generates YAML frontmatter for laser cleaning materials using **100% Materials.yaml data** with zero AI dependencies. Fast, deterministic, and cost-free generation.
+The frontmatter component exports Materials.yaml data to frontmatter YAML files using **trivial YAML-to-YAML copy operation**. No API calls, no validation, no generation - just instant export.
 
-## � CRITICAL - Data Storage Policy
+## 🎯 CRITICAL - New Architecture (October 25, 2025)
+
+### **ALL Generation/Validation Happens on Materials.yaml**
+
+- ✅ **AI Text Generation** → Materials.yaml (captions, descriptions, etc.)
+- ✅ **Property Research** → Materials.yaml (AI discovery, ranges, values)
+- ✅ **Completeness Validation** → Materials.yaml (100% data coverage)
+- ✅ **Quality Scoring** → Materials.yaml (thresholds, human believability)
+- ✅ **Schema Validation** → Materials.yaml (structure, types, required fields)
+
+### **Frontmatter Export is Trivial (Seconds, Not Minutes)**
+
+- ✅ **Simple Field Mapping**: Copy Materials.yaml → frontmatter structure
+- ✅ **Categories.yaml Metadata**: Add category metadata for reference only
+- ✅ **NO API Calls**: All content already generated in Materials.yaml
+- ✅ **NO Validation**: Already validated in Materials.yaml
+- ✅ **NO Fallback Ranges**: Zero tolerance - Materials.yaml must have 100% data
+- ✅ **Performance**: 132 materials in ~10 seconds (was minutes/hours)
+
+### **Zero Fallback Ranges Policy**
+
+**CRITICAL**: System has ZERO fallback ranges anywhere.
+
+- ❌ NO category-level fallback ranges
+- ❌ NO default property values
+- ❌ NO template fallbacks
+- ❌ NO "use category range if material missing"
+- ✅ Materials.yaml MUST have 100% complete data
+- ✅ Export fails if data incomplete (fail-fast)
+- ✅ Categories.yaml provides metadata only, NOT fallback values
+
+## 🔄 Data Storage Policy
 
 **ALL frontmatter files are OUTPUT ONLY - never data storage.**
 
-- ✅ **Materials.yaml** - Single source of truth for material data (READ/WRITE)
-- ✅ **Categories.yaml** - Single source of truth for category ranges (READ/WRITE)
-- ❌ **Frontmatter files** - OUTPUT ONLY, never read for data persistence (WRITE ONLY)
-- **Data Flow**: Materials.yaml → Frontmatter (one-way only)
-- **See**: `docs/DATA_STORAGE_POLICY.md` for complete policy
+- ✅ **Materials.yaml** - Single source of truth (ALL operations happen here)
+- ✅ **Categories.yaml** - Category metadata (reference only, NO fallbacks)
+- ❌ **Frontmatter files** - OUTPUT ONLY (trivial export, no persistence)
+- **Data Flow**: Materials.yaml (100% complete) → Frontmatter (simple copy)
+- **See**: `docs/data/DATA_STORAGE_POLICY.md` for complete policy
 
 ## �🚀 Production Status (September 26, 2025)
 

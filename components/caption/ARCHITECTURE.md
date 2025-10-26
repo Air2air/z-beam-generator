@@ -375,3 +375,61 @@ Voice service maintains country-specific patterns **independent of caption struc
 **Architecture Status**: ✅ Implemented and Tested  
 **Voice Reusability**: ✅ Ready for other components  
 **Separation of Concerns**: ✅ Complete
+
+---
+
+## 🔄 Manual Override Behavior
+
+### Always Overwrite Policy
+
+**Critical Principle**: Manual caption generation requests **ALWAYS overwrite** existing captions without checking for existence.
+
+```python
+# ✅ CORRECT: Manual requests always overwrite
+def generate(self, material_name: str, material_data: Dict, **kwargs):
+    # No existence check - always generate and save
+    before_text = self._generate_section("before", ...)
+    after_text = self._generate_section("after", ...)
+    
+    # Always write to Materials.yaml
+    self._write_caption_to_materials(material_name, before_text, after_text)
+```
+
+```python
+# ❌ WRONG: Never skip generation based on existence
+def generate(self, material_name: str, material_data: Dict, **kwargs):
+    # ❌ NEVER DO THIS
+    if material_data.get('caption'):
+        return existing_caption  # WRONG - violates manual override
+```
+
+### Use Cases
+
+1. **Quality Improvement**: User wants to regenerate with updated voice profiles (e.g., Indonesian emotional marker prohibition)
+
+2. **Testing Variations**: User wants to test different authors or see alternative generations
+
+3. **Image Path Updates**: User wants to ensure all materials have updated frontmatter with micro images
+
+4. **Consistency**: User wants to regenerate all captions after system improvements
+
+### Verification
+
+Manual override behavior verified through testing:
+- Material: Copper
+- Original: 69 words (generated 2025-10-24)
+- Regenerated: 84 words (generated 2025-10-25)
+- Timestamp: Updated automatically
+- Conclusion: ✅ Manual override working correctly
+
+### Implementation Details
+
+The `_write_caption_to_materials()` method:
+- **Never checks** if caption exists
+- **Always overwrites** caption data
+- **Always updates** timestamp
+- **Always recalculates** word/character counts
+
+This ensures users have full control over content regeneration.
+
+````

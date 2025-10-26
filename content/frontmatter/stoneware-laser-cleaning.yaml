@@ -1,214 +1,34 @@
 name: Stoneware
-category: Ceramic
-subcategory: oxide
-title: Stoneware Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Stoneware
+title: Stoneware
+subtitle: ''
 description: Laser cleaning parameters for Stoneware
-author:
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  id: 3
-  image: /images/author/ikmanda-roswati.jpg
-  name: Ikmanda Roswati
-  sex: m
-  title: Ph.D.
-images:
-  hero:
-    alt: Stoneware surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/material/stoneware-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Stoneware surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/stoneware-laser-cleaning-micro.jpg
+category: ceramic
+subcategory: ''
 caption:
-  description: Microscopic analysis of Stoneware surface before and after laser cleaning
+  beforeText: Under microscopy, the stoneware surface appears very-very contaminated
+    with clustered particles and oily residues from food processing, sticking tightly
+    and embedding into pores. Degradation shows as micro-cracks, pitting, and discoloration,
+    so the texture becomes rough-rough and uneven, compromising its cultural heritage
+    integrity.
+  afterText: The stoneware surface is cleaned very-very effectively by ultrafast laser
+    process, removing contaminants then revealing original texture smooth-smooth.
+    It appears pristine and clean, with restoration quality high-high, preserving
+    material integrity without cracks or weakening. So, the ceramic maintains durability
+    for cultural heritage preservation and food processing applications, ensuring
+    safe and authentic use.
+  generated: '2025-10-25T15:25:10.933691Z'
+  author: Ikmanda Roswati
+  generation_method: ai_research
+  word_count:
+    before: 42
+    after: 52
+  character_count:
+    before: 334
+    after: 416
+  description: Microscopic analysis of stoneware surface before and after laser cleaning
     treatment
-  beforeText: ''
-  afterText: ''
-regulatoryStandards:
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo_org_ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/en/publication/3587
-  image: /images/logo/logo_org_iec.png
-applications:
-- Cultural Heritage
-- Food Processing
-- Chemical Processing
-- Electronics Manufacturing
-- Aerospace
-- Medical Device Manufacturing
-- Energy Production
-- Automotive Manufacturing
-- Marine Engineering
-- Semiconductor Fabrication
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    specificHeat:
-      value: 1000.0
-      min: 250
-      max: 2500.0
-      unit: J/(kg·K)
-      research_basis: 'ASM Handbook, Volume 4: Ceramics and Glasses, Table ''Thermal
-        Properties of Structural Clay Products'' specifying stoneware composition
-        (20-30% clay minerals, 15-25% feldspar, 40-60% quartz) with specific heat
-        range 750-850 J·kg⁻¹·K⁻¹ at 20°C'
-    thermalConductivity:
-      value: 1.0
-      min: 0.8
-      max: 120
-      unit: W/(m·K)
-      research_basis: 'ASM Handbook, Volume 4: Ceramics and Glasses, Table ''Thermal
-        Properties of Ceramics'' - Stoneware specific data'
-    thermalDestruction:
-      value: 1200.0
-      unit: °C
-      research_basis: ai_research_comprehensive
-    thermalDiffusivity:
-      value: 0.85
-      min: 0.005
-      max: 120
-      unit: mm²/s
-      research_basis: 'ASM Handbook, Volume 4: Ceramics and Glasses, Thermal Properties
-        of Structural Clay Products Section; Kingery, W.D., et al. ''Introduction
-        to Ceramics'' - Stoneware thermal property analysis'
-    thermalExpansion:
-      value: 5.5
-      min: 0.1
-      max: 14
-      unit: 10^-6/K
-      research_basis: 'ASM Handbook, Volume 4: Ceramics and Glasses, Section ''Properties
-        of Traditional Ceramics'' (ASM International, 1991); Kingery, W.D., ''Introduction
-        to Ceramics'' (Wiley, 1976) - Stoneware thermal expansion range 6.8-7.3 ×
-        10^-6/K'
-    compressiveStrength:
-      value: 55.0
-      min: 100
-      max: 7000
-      unit: MPa
-      research_basis: Stoneware is a dense, vitrified ceramic. Its compressive strength
-        is significantly higher than its tensile strength. The provided value of 55
-        MPa is a typical lower bound for vitrified stoneware bodies, with high-quality
-        industrial stoneware often reaching 80-150 MPa. The ASTM standard specifies
-        testing on right circular cylinders or cubes, with results highly dependent
-        on specimen geometry, loading rate, and the absence of macroscopic flaws.
-    corrosionResistance:
-      value: 8.0
-      min: 8
-      max: 10
-      unit: rating
-      research_basis: Stoneware is a vitrified ceramic with very low porosity (<3%),
-        making it highly resistant to water, chemicals, and environmental weathering.
-        Its corrosion resistance is superior to earthenware and comparable to porcelain,
-        though slightly less chemically inert than some technical ceramics. It demonstrates
-        excellent stability against atmospheric corrosion, moisture, and most common
-        chemicals except strong acids and alkalis.
-    density:
-      value: 2.4
-      min: 2.3
-      max: 16.0
-      unit: g/cm³
-      research_basis: 'ASM Handbook, Volume 4: Ceramics and Glasses, ''Whitewares:
-        Properties and Processing'', pp. 463-472, which specifies stoneware density
-        range of 2.3-2.5 g/cm³ with typical value of 2.4 g/cm³'
-    electricalResistivity:
-      value: 100000000000.0
-      min: 10000000000.0
-      max: 1.0e+16
-      unit: Ω·m
-      research_basis: materials_science_literature
-    flexuralStrength:
-      value: 52.0
-      min: 50
-      max: 2500
-      unit: MPa
-      research_basis: materials_science_literature
-    hardness:
-      value: 7.0
-      min: 6.0
-      max: 2500
-      unit: Mohs
-      research_basis: 'ASM Handbook, Volume 4: Ceramics and Glasses, Section: Traditional
-        Ceramics - Stoneware Properties (ASM International, 1991); NIST Special Publication
-        996: Ceramic Materials for Laser Applications'
-    oxidationResistance:
-      value: 1200.0
-      min: 600.0
-      max: 2400.0
-      unit: °C
-      research_basis: Stoneware is a dense, vitrified ceramic fired at high temperatures
-        (typically 1200-1300°C). Its maximum service temperature in oxidizing environments
-        is generally considered to be its original firing temperature, as it has already
-        undergone mineralogical changes and possesses a stable, glassy phase that
-        resists further oxidation. Authoritative sources from ceramic societies and
-        material databases consistently place this upper limit at approximately 1200°C
-        for continuous use.
-    porosity:
-      value: 2.8
-      min: 0
-      max: 30
-      unit: '%'
-      research_basis: ai_research_comprehensive
-    tensileStrength:
-      value: 40.0
-      min: 5.0
-      max: 600
-      unit: MPa
-      research_basis: 'ASM Handbook, Volume 4: Ceramics and Glasses, ''Mechanical
-        Properties of Whitewares and Stoneware'', specific data for vitrified stoneware
-        with typical quartz-feldspar-clay composition'
-    youngsModulus:
-      value: 65.0
-      min: 5.0
-      max: 600.0
-      unit: GPa
-      research_basis: 'ASM Handbook, Volume 4: Ceramics and Glasses, ''Mechanical
-        Properties of Whitewares and Stoneware'', Table: Typical elastic properties
-        of ceramic whitewares'
-    fractureToughness:
-      value: 2.5
-      min: 2
-      max: 10
-      unit: MPa·√m
-      research_basis: The provided properties (density, hardness) are consistent with
-        a dense, high-quality stoneware. Authoritative materials science handbooks
-        and fracture toughness databases for ceramics report typical K_IC values for
-        stoneware in the range of 2.0 to 3.0 MPa·√m. The cited source provides a representative
-        value of 2.5 MPa·√m for this class of material, which aligns with its known
-        microstructure and mechanical behavior.
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
-    ablationThreshold:
-      value: 2.8
-      min: 1.5
-      max: 5.0
-      unit: J/cm²
-      research_basis: materials_science_literature
-    laserAbsorption:
-      value: 32.7
-      min: 0.1
-      max: 50
-      unit: '%'
-      research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
-        for Cultural Heritage'' - Table 4.2: Absorption coefficients of traditional
-        ceramics at 1064 nm'
-    laserReflectivity:
-      value: 42.3
-      min: 5
-      max: 90
-      unit: '%'
-      research_basis: 'NIST Special Publication 260-137: Reflectance Spectra Database
-        for Ceramic Materials, with specific data for stoneware compositions (55-65%
-        SiO₂, 25-35% Al₂O₃, 5-10% fluxing oxides) at 1064 nm wavelength'
+materialProperties: {}
+materialCharacteristics: {}
 machineSettings:
   energyDensity:
     value: 5
@@ -266,311 +86,55 @@ machineSettings:
     max: 10600
     unit: nm
     description: Near-infrared wavelength optimized for Stoneware mineral absorption
+applications:
+- Cultural Heritage
+- Food Processing
+- Chemical Processing
+- Electronics Manufacturing
+- Aerospace
+- Medical Device Manufacturing
+- Energy Production
+- Automotive Manufacturing
+- Marine Engineering
+- Semiconductor Fabrication
 environmentalImpact:
-- applicableIndustries:
-  - Semiconductor
-  - Electronics
-  - Medical
-  - Nuclear
-  benefit: Chemical Waste Elimination
-  description: Eliminates hazardous chemical waste streams
-  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- applicableIndustries: []
-  benefit: Water Usage Reduction
-  description: Dry process requires no water
-  sustainabilityBenefit: Significant water conservation in industrial processes
-- applicableIndustries: []
-  benefit: Energy Efficiency
-  description: Focused energy delivery with minimal waste heat
-- applicableIndustries: []
-  benefit: Air Quality Improvement
-  description: Eliminates volatile organic compounds from chemical cleaning
-outcomeMetrics:
-- Contaminant Removal Efficiency:
-    description: Percentage of target contaminants successfully removed from surface
-    typicalRanges: 95-99.9% depending on application and material
-    measurementMethods:
-    - Before/after microscopy
-    - Chemical analysis
-    - Mass spectrometry
-    factorsAffecting:
-    - Contamination type
-    - Adhesion strength
-    - Surface geometry
-preservedData:
-  generationMetadata:
-    generated_date: '2025-10-22T20:36:58.839106'
-    data_completeness: 100%
-    source: Materials.yaml (direct export)
-    properties: {}
-  categoryInfo:
-    description: Advanced ceramic materials including technical ceramics, porcelain,
-      and ceramic composites used in laser cleaning applications
-    properties_count: 0
-    category_ranges:
-      density:
-        max: 16.0
-        min: 2.3
-        unit: g/cm³
-        adjustment_note: Tungsten carbide is 15.63 g/cm³
-        adjustment_date: '2025-10-15'
-        adjustment_source: materials_science_research
-      hardness:
-        max: 2500
-        min: 6.0
-        unit: Mohs
-        adjustment_note: Change from Mohs to HV for advanced ceramics
-        adjustment_date: '2025-10-15'
-        adjustment_source: materials_science_research
-        phase2_adjustment: Porcelain/Stoneware at 7.0 Mohs
-        notes: Porcelain/stoneware 7 Mohs, advanced ceramics use HV scale
-      laserAbsorption:
-        max: 50
-        min: 0.1
-        unit: cm⁻¹
-      laserReflectivity:
-        max: 90
-        min: 5
-        unit: '%'
-        source: Handbook of Optical Constants of Solids (Palik, 1998)
-        confidence: 75
-        notes: Typical ceramics 10-30% at 1064nm, varies with composition and surface
-          finish
-        last_updated: '2025-10-15T14:19:43.867144'
-      specificHeat:
-        max: 2500.0
-        min: 250
-        unit: J/kg·K
-        adjustment_note: Carbides have lower specific heat
-        adjustment_date: '2025-10-15'
-        adjustment_source: materials_science_research
-      tensileStrength:
-        max: 600
-        min: 5.0
-        unit: MPa
-        adjustment_note: Advanced ceramics much stronger
-        adjustment_date: '2025-10-15'
-        adjustment_source: materials_science_research
-      thermalConductivity:
-        min: 0.8
-        max: 120
-        unit: W/(m·K)
-        source: MatWeb Materials Database
-        confidence: 80
-        notes: Typical range for ceramic materials at room temperature
-        last_updated: '2025-10-14T23:58:54.459388'
-        adjustment_note: SiC, WC have high conductivity
-        adjustment_date: '2025-10-15'
-        adjustment_source: materials_science_research
-      thermalDestruction:
-        point:
-          max: 3827
-          min: 1000
-          unit: °C
-        type: thermal_shock
-      thermalDiffusivity:
-        max: 120
-        min: 0.005
-        unit: mm²/s
-        adjustment_note: Zirconia has low diffusivity
-        adjustment_date: '2025-10-15'
-        adjustment_source: materials_science_research
-      thermalExpansion:
-        max: 14
-        min: 0.1
-        unit: µm/m·K
-      youngsModulus:
-        max: 600.0
-        min: 5.0
-        unit: GPa
-      ablationThreshold:
-        min: 1.5
-        max: 5.0
-        unit: J/cm²
-        source: RP Photonics Encyclopedia, Oxide Ceramics
-        confidence: 75
-        notes: Alumina, zirconia, silicon carbide - nanosecond pulses
-        last_updated: '2025-10-14T23:58:54.459371'
-      porosity:
-        min: 0
-        max: 30
-        unit: '%'
-        source: ASM Handbook - Ceramics and Glasses
-        confidence: 80
-        notes: Dense ceramics 0-5%, porous ceramics 10-30%
-        last_updated: '2025-10-14T23:58:54.459381'
-      compressiveStrength:
-        min: 100
-        max: 7000
-        unit: MPa
-        description: Maximum compressive stress before failure
-        notes: Ceramics excellent in compression
-        source: materials_science_literature
-        research_date: '2025-10-15'
-        adjustment_note: WC exceptional in compression
-        adjustment_date: '2025-10-15'
-        adjustment_source: materials_science_research
-      corrosionResistance:
-        min: 8
-        max: 10
-        unit: rating
-        description: Resistance to chemical/electrochemical degradation
-        notes: Ceramics highly corrosion resistant
-        source: materials_science_literature
-        research_date: '2025-10-15'
-      electricalResistivity:
-        min: 10000000000.0
-        max: 1.0e+16
-        unit: Ω·m
-        description: Resistance to electrical current flow
-        notes: Ceramics are insulators
-        source: materials_science_literature
-        research_date: '2025-10-15'
-      flexuralStrength:
-        min: 50
-        max: 2500
-        unit: MPa
-        description: Maximum bending stress before failure
-        notes: Ceramics brittle in bending
-        source: materials_science_literature
-        research_date: '2025-10-15'
-        adjustment_note: WC has exceptional flexural strength
-        adjustment_date: '2025-10-15'
-        adjustment_source: materials_science_research
-      fractureToughness:
-        min: 2
-        max: 10
-        unit: MPa·m^0.5
-        description: Resistance to crack propagation
-        notes: Ceramics brittle, low toughness
-        source: materials_science_literature
-        research_date: '2025-10-15'
-      oxidationResistance:
-        min: 600.0
-        max: 2400.0
-        unit: °C
-        description: ''
-        sample_count: 7
-        auto_generated: true
-        generated_date: '2025-10-16'
-  propertyMetadata:
-    ablationThreshold:
-      confidence: 0.92
-      research_date: '2025-10-17T19:19:52.978343'
-      source: ai_research
-    laserAbsorption:
-      confidence: 0.92
-      research_date: '2025-09-30T11:25:02.572791'
-      source: ai_research
-    laserReflectivity:
-      confidence: 0.92
-      research_date: '2025-09-30T11:25:15.080511'
-      source: ai_research
-    specificHeat:
-      confidence: 0.92
-      ai_verified: true
-      verification_date: '2025-10-03T22:32:20.837443'
-      verification_confidence: 85
-      research_date: '2025-09-30T11:25:28.443643'
-      source: ai_research
-    thermalConductivity:
-      confidence: 0.92
-      ai_verified: true
-      verification_date: '2025-10-03T20:20:53.091967'
-      verification_confidence: 85
-      research_date: '2025-09-30T11:25:53.569827'
-      source: ai_research
-    thermalDestruction:
-      confidence: 0.75
-      research_date: '2025-10-17'
-      source: ceramic_degradation_standards
-    thermalDiffusivity:
-      confidence: 0.92
-      research_date: '2025-09-30T11:26:33.261189'
-      source: ai_research
-    thermalExpansion:
-      confidence: 0.95
-      ai_verified: true
-      verification_date: '2025-10-03T22:13:58.098408'
-      verification_confidence: 85
-      research_date: '2025-09-30T11:26:46.162057'
-      source: ai_research
-    compressiveStrength:
-      confidence: 0.9
-      ai_verified: true
-      research_date: '2025-10-15T21:33:07.818602'
-      source: ASTM C773 "Standard Test Method for Compressive (Crushing) Strength
-        of Fired Whiteware Materials"
-    corrosionResistance:
-      confidence: 0.87
-      ai_verified: true
-      research_date: '2025-10-15T20:37:22.601346'
-      source: American Society for Testing and Materials (ASTM) C242-21 "Standard
-        Terminology of Ceramic Whitewares and Related Products"
-    density:
-      confidence: 0.95
-      ai_verified: true
-      verification_date: '2025-10-03T20:01:08.226461'
-      verification_confidence: 90
-      research_date: '2025-09-30T11:24:38.304252'
-      source: ai_research
-    electricalResistivity:
-      confidence: 0.95
-      research_date: '2025-10-17T19:09:37.005460'
-      source: ai_research
-    flexuralStrength:
-      confidence: 0.85
-      research_date: '2025-10-15T19:46:39.977288'
-      source: Ceramic materials handbook
-    hardness:
-      confidence: 0.92
-      ai_verified: true
-      verification_date: '2025-10-03T20:41:22.071503'
-      verification_confidence: 90
-      research_date: '2025-09-30T11:24:51.614602'
-      source: ai_research
-    oxidationResistance:
-      confidence: 0.85
-      ai_verified: true
-      research_date: '2025-10-15T20:49:55.887743'
-      source: American Ceramic Society, "Properties of Stoneware"
-    porosity:
-      confidence: 0.92
-      research_date: '2025-10-17T19:07:34.180785'
-      source: ai_research
-    tensileStrength:
-      confidence: 0.95
-      research_date: '2025-09-30T11:25:40.938868'
-      source: ai_research
-    youngsModulus:
-      confidence: 0.92
-      ai_verified: true
-      verification_date: '2025-10-03T21:55:35.213905'
-      verification_confidence: 85
-      research_date: '2025-09-30T11:26:58.760965'
-      source: ai_research
-    fractureToughness:
-      confidence: 0.85
-      ai_verified: true
-      research_date: '2025-10-15T20:23:29.678510'
-      source: 'Munz, D., & Fett, T. (1999). Ceramics: Mechanical Properties, Failure
-        Behaviour, Materials Selection. Springer-Verlag.'
-  machineSettingsMetadata:
-    energyDensity:
-      confidence: 89
-    overlapRatio:
-      confidence: 83
-    passCount:
-      confidence: 82
-    powerRange:
-      confidence: 92
-    pulseWidth:
-      confidence: 85
-    repetitionRate:
-      confidence: 87
-    scanSpeed:
-      confidence: 86
-    spotSize:
-      confidence: 84
-    wavelength:
-      confidence: 88
+- Chemical Waste Elimination:
+    applicableIndustries:
+    - Semiconductor
+    - Electronics
+    - Medical
+    - Nuclear
+    description: Eliminates hazardous chemical waste streams
+    quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+- Water Usage Reduction:
+    applicableIndustries: []
+    description: Dry process requires no water
+    sustainabilityBenefit: Significant water conservation in industrial processes
+- Energy Efficiency:
+    applicableIndustries: []
+    description: Focused energy delivery with minimal waste heat
+- Air Quality Improvement:
+    applicableIndustries: []
+    description: Eliminates volatile organic compounds from chemical cleaning
+outcomeMetrics: []
+regulatoryStandards: []
+images:
+  hero:
+    alt: Stoneware surface undergoing laser cleaning showing precise contamination
+      removal
+    url: /images/material/stoneware-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Stoneware surface after laser cleaning showing detailed
+      surface structure
+    url: /images/material/stoneware-laser-cleaning-micro.jpg
+author:
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  id: 3
+  image: /images/author/ikmanda-roswati.jpg
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+categoryMetadata:
+  description: Advanced ceramic materials including technical ceramics, porcelain,
+    and ceramic composites used in laser cleaning applications

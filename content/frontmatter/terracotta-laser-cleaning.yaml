@@ -1,206 +1,32 @@
 name: Terracotta
-category: Masonry
-subcategory: construction
-title: Terracotta Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Terracotta
+title: Terracotta
+subtitle: ''
 description: Laser cleaning parameters for Terracotta
-author:
-  country: Taiwan
-  expertise: Laser Materials Processing
-  id: 1
-  image: /images/author/yi-chun-lin.jpg
-  name: Yi-Chun Lin
-  sex: f
-  title: Ph.D.
-images:
-  hero:
-    alt: Terracotta surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/material/terracotta-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Terracotta surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/terracotta-laser-cleaning-micro.jpg
+category: masonry
+subcategory: ''
 caption:
-  description: Microscopic analysis of Terracotta surface before and after laser cleaning
+  beforeText: The microscopy reveals a contaminated terracotta surface, rough and
+    porous with fine dust particles and organic residues clinging to the clay. This
+    buildup clogs pores, causes discoloration, and promotes minor cracking. Such degradation
+    weakens its role in architecture and cultural heritage.
+  afterText: The cleaned terracotta surface looks smooth and fresh, with its warm
+    reddish tone fully restored. Laser treatment removes dirt and old stains gently,
+    and it preserves the material's porous texture without any cracks. This restoration
+    quality is reliable for cultural heritage sites and buildings. It demonstrates
+    careful integrity in processing.
+  generated: '2025-10-25T15:29:36.844496Z'
+  author: Yi-Chun Lin
+  generation_method: ai_research
+  word_count:
+    before: 41
+    after: 50
+  character_count:
+    before: 292
+    after: 345
+  description: Microscopic analysis of terracotta surface before and after laser cleaning
     treatment
-  beforeText: ''
-  afterText: ''
-regulatoryStandards:
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo_org_ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/en/publication/3587
-  image: /images/logo/logo_org_iec.png
-applications:
-- Cultural Heritage
-- Architecture and Construction
-- Manufacturing
-- Archaeology
-- Museum Conservation
-- Art Restoration
-- Industrial Maintenance
-- Historic Preservation
-- Ceramics Production
-- Research and Analysis
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    specificHeat:
-      value: 880.0
-      min: 700
-      max: 1100
-      unit: J/(kg·K)
-      research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook
-        - Thermophysical properties of ceramic materials; ASM Handbook Volume 4: Ceramics
-        and Glasses, Section ''Thermal Properties of Structural Clay Products'''
-    thermalConductivity:
-      value: 1.28
-      min: 0.08
-      max: 2.5
-      unit: W/(m·K)
-      research_basis: NIST Interagency/Internal Report (IR) 7563 - Section 5.2.2,
-        'Measured Thermal Properties of Common Masonry Materials' (2019), which provides
-        direct laboratory measurements for terracotta specimens.
-    thermalDestruction:
-      value: 500.0
-      unit: °C
-      research_basis: ai_research_comprehensive
-    thermalDiffusivity:
-      value: 0.52
-      min: 0.1
-      max: 1
-      unit: mm²/s
-      research_basis: 'NIST Special Publication 260-138: Thermophysical Properties
-        of Masonry Materials, Table 4.3 - Measured thermal diffusivity values for
-        terracotta specimens at 20°C'
-    thermalExpansion:
-      value: 5.5
-      min: 5
-      max: 20
-      unit: 10^-6/K
-      research_basis: 'ASM Handbook, Volume 4: Ceramics and Glasses, Table ''Thermal
-        Expansion of Clay-Based Ceramics'' specifying terracotta (earthenware clay
-        bodies) at 5.5-6.2 × 10^-6/K'
-    compressiveStrength:
-      value: 45.0
-      min: 5
-      max: 100
-      unit: MPa
-      research_basis: 'ASTM C67-23 Standard Test Methods for Sampling and Testing
-        Brick and Structural Clay Tile, combined with analysis of terracotta composition
-        (15-25% porosity, iron oxide content 5-12%) from ASM Handbook, Volume 4: Ceramics
-        and Glasses'
-    corrosionResistance:
-      value: 8.0
-      min: 2.0
-      max: 8.0
-      unit: rating
-      research_basis: Terracotta demonstrates excellent corrosion resistance to atmospheric
-        and environmental degradation due to its vitrified ceramic nature. As a fired
-        clay product, it is chemically inert and highly resistant to acid rain, pollution,
-        and weathering. ASTM standards classify brick and terracotta as having "severe
-        weather" (SW) grade for maximum resistance to moisture penetration and frost
-        action, indicating superior durability in corrosive environments. The material
-        maintains structural integrity when exposed to common environmental corrosives
-        that would degrade metals or other masonry materials.
-    density:
-      value: 1.8
-      min: 0.6
-      max: 3.2
-      unit: g/cm³
-      research_basis: ASTM C67-23 'Standard Test Methods for Sampling and Testing
-        Brick and Structural Clay Tile' & NIST Special Publication 395 'Thermal and
-        Mechanical Properties of Masonry Materials'
-    flexuralStrength:
-      value: 8.0
-      min: 2
-      max: 20
-      unit: MPa
-      research_basis: Flexural strength (modulus of rupture) is a standard property
-        for masonry materials. For fired clay products like terracotta, the flexural
-        strength is typically 15-25% of its compressive strength. The cited ASTM standard,
-        a primary authority for clay-based masonry, lists a minimum modulus of rupture
-        of 8.3 MPa (1200 psi) for severe weathering brick, which aligns with the derived
-        range from the known compressive strength (45.0 MPa * 0.2 = ~9.0 MPa). The
-        value of 8.0 MPa is a conservative, well-attested estimate for a typical terracotta
-        body.
-    hardness:
-      value: 3.0
-      min: 1
-      max: 6
-      unit: Mohs
-      research_basis: NIST Special Publication 960-17 'Ceramic Tile and Related Products'
-        & ASTM C242 Standard Terminology for Ceramic Whitewares and Related Products
-    oxidationResistance:
-      value: 800.0
-      min: 300.0
-      max: 1200.0
-      unit: °C
-      research_basis: While terracotta itself is not a standardized high-temperature
-        ceramic, it is a fired clay product. ASTM C62 classifies brick (clay masonry)
-        for severe weathering (SW) grade, which must withstand freeze-thaw cycles,
-        implying high structural integrity after firing. Industrial and historical
-        sources (e.g., National Terracotta Society, 1920s) specify that architectural
-        terracotta is fired between 1000-1200°C, creating a stable, oxidized ceramic
-        body. Its maximum continuous service temperature in air is limited not by
-        oxidation but by the onset of vitrification and loss of mechanical strength,
-        beginning around 800°C for typical clay compositions. This is well below its
-        original firing temperature, ensuring no further oxidation occurs.
-    tensileStrength:
-      value: 3.2
-      min: 1
-      max: 15
-      unit: MPa
-      research_basis: ASTM C67-20 Standard Test Methods for Sampling and Testing Brick
-        and Structural Clay Tile, combined with data from NIST Special Publication
-        984-1 'Properties of Masonry Materials' and academic studies on terracotta
-        mechanical properties
-    youngsModulus:
-      value: 22.0
-      min: 3.0
-      max: 50
-      unit: GPa
-      research_basis: ASTM C67-20 Standard Test Methods for Sampling and Testing Brick
-        and Structural Clay Tile, combined with Charola (2004) 'Scanning electron
-        microscopy in the assessment of brick properties' in Materials and Structures,
-        Vol. 37, pp. 360-366
-    fractureToughness:
-      value: 1.1
-      min: 0.15
-      max: 1.1
-      unit: MPa·√m
-      research_basis: Direct fracture toughness (K_IC) data for terracotta is scarce.
-        This value is derived from testing of mudstone, a material with a similar
-        mineralogical composition (clay-based), porosity, and brittle failure mechanism.
-        The cited study provides a K_IC range of 1.0-1.2 MPa·√m for such materials,
-        consistent with the low compressive strength and hardness of terracotta.
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
-    laserAbsorption:
-      value: 8.2
-      min: 0.5
-      max: 15
-      unit: 1/cm
-      research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
-        for Cultural Heritage'' (2021) - Table 4.3: Optical absorption coefficients
-        of traditional masonry materials, specifically citing terracotta samples with
-        iron oxide content 6-8%'
-    laserReflectivity:
-      value: 36.2
-      min: 10
-      max: 70
-      unit: '%'
-      research_basis: 'NIST Special Publication 1176: ''Laser-Material Interaction
-        Database for Cultural Heritage Materials'' (2018), Table 4.3 - Reflectivity
-        measurements of terracotta at 1064 nm wavelength'
+materialProperties: {}
+materialCharacteristics: {}
 machineSettings:
   dwellTime:
     value: 100
@@ -270,256 +96,55 @@ machineSettings:
     unit: nm
     description: Near-infrared wavelength optimized for Terracotta absorption and
       minimal substrate damage
+applications:
+- Cultural Heritage
+- Architecture and Construction
+- Manufacturing
+- Archaeology
+- Museum Conservation
+- Art Restoration
+- Industrial Maintenance
+- Historic Preservation
+- Ceramics Production
+- Research and Analysis
 environmentalImpact:
-- applicableIndustries:
-  - Semiconductor
-  - Electronics
-  - Medical
-  - Nuclear
-  benefit: Chemical Waste Elimination
-  description: Eliminates hazardous chemical waste streams
-  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- applicableIndustries: []
-  benefit: Water Usage Reduction
-  description: Dry process requires no water
-  sustainabilityBenefit: Significant water conservation in industrial processes
-- applicableIndustries: []
-  benefit: Energy Efficiency
-  description: Focused energy delivery with minimal waste heat
-- applicableIndustries: []
-  benefit: Air Quality Improvement
-  description: Eliminates volatile organic compounds from chemical cleaning
-outcomeMetrics:
-- Contaminant Removal Efficiency:
-    description: Percentage of target contaminants successfully removed from surface
-    typicalRanges: 95-99.9% depending on application and material
-    measurementMethods:
-    - Before/after microscopy
-    - Chemical analysis
-    - Mass spectrometry
-    factorsAffecting:
-    - Contamination type
-    - Adhesion strength
-    - Surface geometry
-preservedData:
-  generationMetadata:
-    generated_date: '2025-10-22T20:36:58.886238'
-    data_completeness: 100%
-    source: Materials.yaml (direct export)
-    properties: {}
-  categoryInfo:
-    description: Construction masonry materials including concrete, brick, mortar,
-      stucco, and stone-based building materials for restoration cleaning
-    properties_count: 0
-    category_ranges:
-      density:
-        max: 3.2
-        min: 0.6
-        unit: g/cm³
-        adjustment_note: Most masonry < 2.5 g/cm³
-        adjustment_date: '2025-10-15'
-        adjustment_source: materials_science_research
-        phase2_adjustment: Cement at 3.15 g/cm³
-      hardness:
-        max: 6
-        min: 1
-        unit: Mohs
-        adjustment_note: Plaster can be softer
-        adjustment_date: '2025-10-15'
-        adjustment_source: materials_science_research
-      laserAbsorption:
-        max: 15
-        min: 0.5
-        unit: cm⁻¹
-      laserReflectivity:
-        max: 70
-        min: 10
-        unit: '%'
-        source: Building Materials Optical Properties Database
-        confidence: 70
-        notes: Concrete 20-40%, brick 20-50%, varies with color and surface texture
-        last_updated: '2025-10-15T14:19:43.867310'
-      specificHeat:
-        max: 1100
-        min: 700
-        unit: J/kg·K
-      tensileStrength:
-        max: 15
-        min: 1
-        unit: MPa
-      thermalConductivity:
-        max: 2.5
-        min: 0.08
-        unit: W/(m·K)
-        source: ASHRAE Handbook - Fundamentals
-        confidence: 80
-        notes: Concrete ~1.0, brick ~0.6, lightweight concrete 0.1-0.5, varies with
-          density and moisture
-        last_updated: '2025-10-15T14:19:43.867317'
-      thermalDestruction:
-        point:
-          max: 1200
-          min: 500
-          unit: °C
-        type: spalling
-      thermalDiffusivity:
-        max: 1
-        min: 0.1
-        unit: mm²/s
-      thermalExpansion:
-        max: 20
-        min: 5
-        unit: µm/m·K
-      youngsModulus:
-        max: 50
-        min: 3.0
-        unit: GPa
-        phase2_adjustment: Plaster at 3.0 GPa
-        adjustment_date: '2025-10-15'
-      compressiveStrength:
-        min: 5
-        max: 100
-        unit: MPa
-        description: Maximum compressive stress before failure
-        notes: Brick, concrete, stone
-        source: materials_science_literature
-        research_date: '2025-10-15'
-      flexuralStrength:
-        min: 2
-        max: 20
-        unit: MPa
-        description: Maximum bending stress before failure
-        notes: Masonry weak in bending
-        source: materials_science_literature
-        research_date: '2025-10-15'
-      fractureToughness:
-        min: 0.15
-        max: 1.1
-        unit: MPa·√m
-        description: ''
-        sample_count: 7
-        auto_generated: true
-        generated_date: '2025-10-16'
-      corrosionResistance:
-        min: 2.0
-        max: 8.0
-        unit: rating
-        description: ''
-        sample_count: 7
-        auto_generated: true
-        generated_date: '2025-10-16'
-      oxidationResistance:
-        min: 300.0
-        max: 1200.0
-        unit: °C
-        description: ''
-        sample_count: 7
-        auto_generated: true
-        generated_date: '2025-10-16'
-  propertyMetadata:
-    laserAbsorption:
-      confidence: 0.92
-      research_date: '2025-09-30T12:35:32.289358'
-      source: ai_research
-    laserReflectivity:
-      confidence: 0.92
-      research_date: '2025-09-30T12:35:44.885729'
-      source: ai_research
-    specificHeat:
-      confidence: 0.92
-      ai_verified: true
-      verification_date: '2025-10-03T22:32:20.837564'
-      verification_confidence: 95
-      research_date: '2025-09-30T12:36:00.552727'
-      source: ai_research
-    thermalConductivity:
-      confidence: 0.95
-      research_date: '2025-09-30T12:36:27.523108'
-      source: ai_research
-    thermalDestruction:
-      confidence: 0.65
-      research_date: '2025-10-17'
-      source: thermal_degradation_standards
-    thermalDiffusivity:
-      confidence: 0.92
-      research_date: '2025-09-30T12:37:05.795057'
-      source: ai_research
-    thermalExpansion:
-      confidence: 0.92
-      ai_verified: true
-      verification_date: '2025-10-03T22:13:58.098512'
-      verification_confidence: 85
-      research_date: '2025-09-30T12:37:17.016077'
-      source: ai_research
-    compressiveStrength:
-      confidence: 0.92
-      research_date: '2025-09-30T12:34:53.202043'
-      source: ai_research
-    corrosionResistance:
-      confidence: 0.87
-      ai_verified: true
-      research_date: '2025-10-15T20:37:56.314604'
-      source: ASTM C62-17 "Standard Specification for Building Brick"
-    density:
-      confidence: 0.95
-      ai_verified: true
-      verification_date: '2025-10-03T20:01:08.226561'
-      verification_confidence: 85
-      research_date: '2025-09-30T12:35:05.359785'
-      source: ai_research
-    flexuralStrength:
-      confidence: 0.85
-      ai_verified: true
-      research_date: '2025-10-15T21:03:31.801812'
-      source: ASTM C67-20 "Standard Test Methods for Sampling and Testing Brick and
-        Structural Clay Tile," Table 4 - Physical Requirements, Grade SW (Severe Weathering)
-    hardness:
-      confidence: 0.92
-      ai_verified: true
-      verification_date: '2025-10-03T20:41:22.071591'
-      verification_confidence: 95
-      research_date: '2025-09-30T12:35:17.734097'
-      source: ai_research
-    oxidationResistance:
-      confidence: 0.85
-      ai_verified: true
-      research_date: '2025-10-15T20:50:33.682786'
-      source: ASTM C62-17 "Standard Specification for Building Brick (Solid Masonry
-        Units Made from Clay or Shale)"
-    tensileStrength:
-      confidence: 0.92
-      research_date: '2025-09-30T12:36:12.635377'
-      source: ai_research
-    youngsModulus:
-      confidence: 0.92
-      research_date: '2025-09-30T12:37:30.767536'
-      source: ai_research
-    fractureToughness:
-      confidence: 0.85
-      ai_verified: true
-      research_date: '2025-10-15T20:24:12.788493'
-      source: Munoz, H., Taheri, A., & Chanda, E. K. (2016). Pre-peak and post-peak
-        rock strain imaging during uniaxial compression using 3D-digital image correlation.
-        *Rock Mechanics and Rock Engineering*, 49(7), 2541-2557. (Data for "Mudstone"
-        as a proxy for fine-grained, low-fired clay ceramic).
-  machineSettingsMetadata:
-    dwellTime:
-      confidence: 82
-    energyDensity:
-      confidence: 89
-    overlapRatio:
-      confidence: 83
-    passCount:
-      confidence: 85
-    powerRange:
-      confidence: 92
-    pulseWidth:
-      confidence: 85
-    repetitionRate:
-      confidence: 87
-    scanSpeed:
-      confidence: 86
-    spotSize:
-      confidence: 84
-    wavelength:
-      confidence: 88
+- Chemical Waste Elimination:
+    applicableIndustries:
+    - Semiconductor
+    - Electronics
+    - Medical
+    - Nuclear
+    description: Eliminates hazardous chemical waste streams
+    quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+- Water Usage Reduction:
+    applicableIndustries: []
+    description: Dry process requires no water
+    sustainabilityBenefit: Significant water conservation in industrial processes
+- Energy Efficiency:
+    applicableIndustries: []
+    description: Focused energy delivery with minimal waste heat
+- Air Quality Improvement:
+    applicableIndustries: []
+    description: Eliminates volatile organic compounds from chemical cleaning
+outcomeMetrics: []
+regulatoryStandards: []
+images:
+  hero:
+    alt: Terracotta surface undergoing laser cleaning showing precise contamination
+      removal
+    url: /images/material/terracotta-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Terracotta surface after laser cleaning showing detailed
+      surface structure
+    url: /images/material/terracotta-laser-cleaning-micro.jpg
+author:
+  country: Taiwan
+  expertise: Laser Materials Processing
+  id: 1
+  image: /images/author/yi-chun-lin.jpg
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+categoryMetadata:
+  description: Construction masonry materials including concrete, brick, mortar, stucco,
+    and stone-based building materials for restoration cleaning

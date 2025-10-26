@@ -86,10 +86,10 @@ class VoiceOrchestrator:
         with open(profile_path, 'r', encoding='utf-8') as f:
             profile = yaml.safe_load(f)
         
-        # Validate profile structure
+        # Validate profile structure - voice_adaptation removed (component-specific)
         required_keys = [
             "name", "author", "country", "linguistic_characteristics",
-            "voice_adaptation", "signature_phrases"
+            "signature_phrases"
         ]
         
         for key in required_keys:
@@ -139,10 +139,11 @@ class VoiceOrchestrator:
         """
         context = context or {}
         
-        # Get component-specific adaptations
-        adaptation = self.profile.get("voice_adaptation", {}).get(component_type, {})
+        # NOTE: voice_adaptation removed - component-specific adaptations
+        # belong in component config files, not voice profiles
+        adaptation = {}
         
-        # Build voice instructions
+        # Build voice instructions (linguistic patterns only)
         instructions = self._build_voice_instructions(
             adaptation=adaptation,
             context=context
@@ -158,57 +159,196 @@ class VoiceOrchestrator:
         **kwargs
     ) -> str:
         """
-        Generate complete prompt using unified voice system.
+        Generate complete prompt using voice_base.yaml + country profile layering.
         
         Args:
-            component_type: Type of component (caption_generation, text_generation, etc.)
+            component_type: Type of component (microscopy_description for captions)
             material_context: Material name, category, properties, etc.
             author: Author name, country, expertise, etc.
-            **kwargs: Additional template variables
+            **kwargs: Additional template variables (section_focus, target_words, etc.)
         
         Returns:
             Complete formatted prompt string
         """
-        # Load unified voice system
-        unified_system = self._load_unified_voice_system()
+        # Load base voice foundations
+        base_voice = self._load_base_voice()
+        if not base_voice:
+            raise ValueError("voice/base/voice_base.yaml not found - fail-fast requires base voice")
         
-        if not unified_system:
-            # Fallback to old system
-            return self.get_voice_for_component(component_type, material_context)
+        # Get country profile (already loaded in __init__)
+        country_profile = self.profile
         
-        # Get base template for component type
-        templates = unified_system.get('prompt_templates', {})
-        if component_type not in templates:
-            raise ValueError(f"Component type '{component_type}' not found in unified voice system")
+        # Build layered prompt for microscopy description
+        if component_type == 'microscopy_description':
+            return self._build_microscopy_prompt(
+                base_voice=base_voice,
+                country_profile=country_profile,
+                material_context=material_context,
+                author=author,
+                **kwargs
+            )
+        else:
+            raise ValueError(f"Component type '{component_type}' not supported with voice_base.yaml system")
+    
+    def _build_microscopy_prompt(
+        self,
+        base_voice: Dict,
+        country_profile: Dict,
+        material_context: Dict,
+        author: Dict,
+        **kwargs
+    ) -> str:
+        """
+        Build microscopy description prompt by layering base + country voice.
         
-        base_template = templates[component_type]['base_template']
+        Template structure:
+        1. Role definition (from country profile)
+        2. Base voice principles (from voice_base.yaml)
+        3. Country-specific linguistic patterns (from profile)
+        4. Material context
+        5. Section-specific focus
+        6. Output requirements
+        """
+        # Extract parameters
+        section_focus = kwargs.get('section_focus', 'surface analysis')
+        section_instruction = kwargs.get('section_instruction', '')
+        target_words = kwargs.get('target_words', 30)
+        style_guidance = kwargs.get('style_guidance', 'focused description')
+        paragraph_count = kwargs.get('paragraph_count', '1 paragraph')
         
-        # Get base_guidance section with all the rules (FORBIDDEN EMPTY RHETORIC, etc.)
-        # It's at the top level of unified_system, not nested
-        base_guidance = unified_system.get('base_guidance', '')
-        if not base_guidance:
-            logger.warning("base_guidance not found in unified voice system")
+        # 1. ROLE DEFINITION
+        author_name = author.get('name', 'Technical Expert')
+        author_country = author.get('country', 'usa')
+        author_expertise = author.get('expertise', 'laser cleaning technology')
         
-        # Get country-specific voice markers
-        country_voice = self._get_country_voice_markers(unified_system)
+        role_section = f"""You are {author_name}, a {author_expertise} expert from {author_country}, writing for a general audience."""
         
-        # Format the complete prompt with all required variables
-        # Note: before_paragraphs, after_paragraphs, before_target, after_target come from kwargs
-        format_vars = {
-            'author_name': author.get('name', 'Technical Expert'),
-            'author_country': author.get('country', 'usa'),
-            'author_expertise': author.get('expertise', 'laser cleaning technology'),
-            'material_name': material_context.get('material_name', 'material'),
-            'category': material_context.get('category', 'material'),
-            'properties': material_context.get('properties', 'Standard material characteristics'),
-            'applications': material_context.get('applications', 'General cleaning applications'),
-            'base_guidance': base_guidance,
-            'country_voice': country_voice,
-            'technical_focus': material_context.get('technical_focus', 'laser cleaning analysis'),
-            **kwargs  # This includes before_paragraphs, after_paragraphs, before_target, after_target
-        }
+        # 2. BASE VOICE PRINCIPLES (from voice_base.yaml)
+        core_principles = base_voice.get('core_principles', {})
+        forbidden_patterns = base_voice.get('forbidden_patterns', {})
+        laser_context = base_voice.get('laser_cleaning_context', {})
         
-        return base_template.format(**format_vars)
+        # Extract section-specific guidance
+        if 'before' in section_focus.lower() or 'contaminated' in section_focus.lower():
+            section_rules = laser_context.get('before_state_focus', {})
+        else:
+            section_rules = laser_context.get('after_state_focus', {})
+        
+        # Build base guidance text
+        base_guidance = self._format_base_guidance(core_principles, forbidden_patterns, section_rules, base_voice)
+        
+        # 3. COUNTRY-SPECIFIC LINGUISTIC PATTERNS
+        linguistic = country_profile.get('linguistic_characteristics', {})
+        country_voice = self._format_country_voice(linguistic, author_country)
+        
+        # 4. MATERIAL CONTEXT
+        material_name = material_context.get('material_name', 'material')
+        category = material_context.get('category', 'material')
+        properties = material_context.get('properties', 'Standard material characteristics')
+        applications = material_context.get('applications', 'General cleaning applications')
+        
+        # 5. BUILD COMPLETE PROMPT FROM YAML ONLY
+        prompt = f"""{role_section}
+
+{base_guidance}
+
+{country_voice}
+
+MATERIAL CONTEXT:
+- Material: {material_name}
+- Category: {category}
+- Properties: {properties}
+- Applications: {applications}
+
+ANALYSIS FOCUS:
+- Section focus: {section_focus}
+- Task: {section_instruction}
+
+LENGTH TARGET:
+- Target: {target_words} words
+- Style: {style_guidance}
+- Structure: {paragraph_count}
+
+Generate {section_focus} description now."""
+        
+        return prompt
+    
+    def _format_base_guidance(self, core_principles: Dict, forbidden_patterns: Dict, section_rules: Dict, base_voice: Dict = None) -> str:
+        """Format base voice guidance from voice_base.yaml"""
+        lines = []
+        
+        # Extract intensity rules from technical_writing_standards and include in prompt
+        if base_voice:
+            tech_standards = base_voice.get('technical_writing_standards', {})
+            intensity_system = tech_standards.get('technical_authority_intensity', {})
+            
+            if intensity_system:
+                lines.append("TECHNICAL INTENSITY SELECTION:")
+                if 'instruction' in intensity_system:
+                    lines.append(intensity_system['instruction'])
+                if 'selection_rules' in intensity_system:
+                    lines.append(intensity_system['selection_rules'])
+                lines.append("")  # Blank line
+        
+        # Extract all rules from section_rules (before_state_focus or after_state_focus)
+        if section_rules:
+            # Title and focus
+            if 'title' in section_rules:
+                lines.append(f"{section_rules['title']}")
+            if 'primary_focus' in section_rules:
+                lines.append(f"Focus: {section_rules['primary_focus']}")
+            
+            lines.append("")  # Blank line
+            
+            # Required content
+            if 'required_content' in section_rules:
+                lines.append("Required content:")
+                for item in section_rules['required_content']:
+                    lines.append(f"- {item}")
+                lines.append("")
+            
+            # Technical authority
+            if 'technical_authority' in section_rules:
+                lines.append("Technical authority:")
+                for item in section_rules['technical_authority']:
+                    lines.append(f"- {item}")
+                lines.append("")
+            
+            # Strictly forbidden
+            if 'strictly_forbidden' in section_rules:
+                lines.append("Strictly forbidden:")
+                for item in section_rules['strictly_forbidden']:
+                    lines.append(f"- {item}")
+        
+        return '\n'.join(lines)
+    
+    def _format_country_voice(self, linguistic: Dict, country: str) -> str:
+        """Format country-specific voice characteristics from profile YAML"""
+        lines = [f"VOICE ({country.upper()}):"]
+        
+        # Sentence structure patterns
+        if 'sentence_structure' in linguistic:
+            sent_struct = linguistic['sentence_structure']
+            if 'patterns' in sent_struct:
+                patterns = sent_struct['patterns']
+                lines.append("Linguistic patterns:")
+                for pattern in patterns[:3]:  # Include top 3 patterns
+                    lines.append(f"- {pattern}")
+            
+            if 'tendencies' in sent_struct:
+                tendencies = sent_struct['tendencies']
+                if tendencies:
+                    lines.append("Tendencies:")
+                    for tendency in tendencies[:2]:  # Top 2 tendencies
+                        lines.append(f"- {tendency}")
+        
+        # Vocabulary patterns
+        if 'vocabulary_patterns' in linguistic:
+            vocab = linguistic['vocabulary_patterns']
+            if 'formality_level' in vocab:
+                lines.append(f"Formality: {vocab['formality_level']}")
+        
+        return '\n'.join(lines)
     
     def _build_voice_instructions(
         self,
@@ -352,27 +492,27 @@ Consider incorporating these natural expressions when appropriate:
         """
         Get word limit for this country's voice.
         
+        NOTE: This method is deprecated - word limits should be managed by
+        component-specific configuration, not voice profiles.
+        Kept for backward compatibility only.
+        
         Returns:
-            Word limit as integer
+            Word limit as integer (defaults by country for legacy support)
         """
-        # Try to get from any component adaptation
-        adaptations = self.profile.get("voice_adaptation", {})
+        logger.warning(
+            "get_word_limit() is deprecated - word limits belong in component config, "
+            "not voice profiles. See components/{component}/config/ for word limits."
+        )
         
-        for component in ["caption", "text", "description"]:
-            if component in adaptations:
-                limit = adaptations[component].get("word_limit")
-                if limit:
-                    return int(limit)
-        
-        # Default limits by country
+        # Default limits by country (for backward compatibility)
         defaults = {
-            "taiwan": 380,
-            "italy": 450,
-            "indonesia": 250,
-            "united_states": 320
+            "taiwan": 266,
+            "italy": 266,
+            "indonesia": 175,
+            "united_states": 196
         }
         
-        return defaults.get(self.country, 300)
+        return defaults.get(self.country, 240)
     
     def get_quality_thresholds(self) -> Dict[str, float]:
         """
@@ -404,11 +544,9 @@ Consider incorporating these natural expressions when appropriate:
         return {
             "country": self.profile.get("country"),
             "author": self.profile.get("author"),
-            "word_limit": self.get_word_limit(),
             "tone": cultural.get("tone", "professional"),
-            "formality": self.profile.get("vocabulary_patterns", {}).get("formality_level", "professional"),
-            "signature_phrases_count": len(self.profile.get("signature_phrases", [])),
-            "supported_components": list(self.profile.get("voice_adaptation", {}).keys())
+            "formality": linguistic.get("vocabulary_patterns", {}).get("formality_level", "professional"),
+            "signature_phrases_count": len(self.profile.get("signature_phrases", []))
         }
 
 

@@ -1,286 +1,31 @@
 name: Zirconium
-category: Metal
-subcategory: alloy
-title: Zirconium Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Zirconium
+title: Zirconium
+subtitle: ''
 description: Laser cleaning parameters for Zirconium
-author:
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  id: 3
-  image: /images/author/ikmanda-roswati.jpg
-  name: Ikmanda Roswati
-  sex: m
-  title: Ph.D.
-images:
-  hero:
-    alt: Zirconium surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/material/zirconium-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Zirconium surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/zirconium-laser-cleaning-micro.jpg
+category: metal
+subcategory: ''
 caption:
-  description: Microscopic analysis of Zirconium surface before and after laser cleaning
+  beforeText: Microscopy shows zirconium surface heavily-heavily contaminated with
+    clustered oxide particles and dark residues, so surface appears pitted, cracked,
+    and rough-rough, degrading its evenness very-very much.
+  afterText: After ultrafast laser cleaning, zirconium surface appears very-very smooth
+    and clean, with contaminants removed completely. Restoration quality is excellent,
+    as process polishes then restores original shine without heat damage. Material
+    integrity stays strong, preserving corrosion resistance for nuclear power and
+    aerospace uses. Surface is ready-ready for high-performance applications.
+  generated: '2025-10-25T15:43:11.091267Z'
+  author: Ikmanda Roswati
+  generation_method: ai_research
+  word_count:
+    before: 25
+    after: 48
+  character_count:
+    before: 205
+    after: 388
+  description: Microscopic analysis of zirconium surface before and after laser cleaning
     treatment
-  beforeText: ''
-  afterText: ''
-regulatoryStandards:
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo_org_ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/en/publication/3587
-  image: /images/logo/logo_org_iec.png
-applications:
-- Nuclear Power
-- Chemical Processing
-- Aerospace
-- Medical Devices
-- Marine Engineering
-- Electronics Manufacturing
-- Automotive
-- Cultural Heritage
-- Additive Manufacturing
-- Energy Storage
-materialProperties:
-  material_characteristics:
-    label: Material Characteristics
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    boilingPoint:
-      value: 4409.0
-      min: 907
-      max: 5870
-      unit: K
-      research_basis: materials_science_literature
-    meltingPoint:
-      value: 1855.0
-      min: -39
-      max: 3422
-      unit: °C
-      research_basis: materials_science_literature
-    specificHeat:
-      value: 278.0
-      min: 100
-      max: 2000
-      unit: J/(kg·K)
-      research_basis: 'NIST Standard Reference Database 144: Thermophysical Properties
-        of Zirconium at 300K (25°C)'
-    thermalConductivity:
-      value: 22.7
-      min: 7.0
-      max: 430
-      unit: W/(m·K)
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (1990), Table ''Physical Properties of
-        Zirconium and Hafnium'', p. 661, reporting thermal conductivity of 22.7 W/m·K
-        for pure zirconium at 300K'
-    thermalDestruction:
-      value: 500.0
-      unit: °C
-      research_basis: ai_research_comprehensive
-    thermalDestructionPoint:
-      value: 2125.0
-      min: 873
-      max: 3695
-      unit: K
-      research_basis: materials_science_literature
-    thermalDiffusivity:
-      value: 12.2
-      min: 0.06
-      max: 174
-      unit: mm²/s
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (1990), Table ''Thermal Properties of
-        Zirconium and Hafnium'', specifically reporting thermal diffusivity of commercially
-        pure zirconium (99.8%) at 20°C'
-    thermalExpansion:
-      value: 5.7
-      min: 0.5
-      max: 33
-      unit: 10^-6/K
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (1990), Table ''Physical Properties of
-        Zirconium and Hafnium'' specifying α-Zr thermal expansion coefficient at 20-100°C'
-    compressiveStrength:
-      value: 828.0
-      min: 50
-      max: 2000
-      unit: MPa
-      research_basis: The compressive strength of commercially pure zirconium (e.g.,
-        Grade 702) is typically reported in the range of 827-828 MPa (120 ksi) at
-        room temperature. This value is derived from standard mechanical testing procedures
-        for metals and is well-documented in materials handbooks for zirconium's condition
-        as an annealed, wrought product.
-    corrosionResistance:
-      value: 9.0
-      min: 1
-      max: 10
-      unit: rating
-      research_basis: Zirconium exhibits excellent corrosion resistance due to a tenacious,
-        protective oxide film. It performs exceptionally well in a wide range of aggressive
-        environments, including strong mineral and organic acids, alkaline solutions,
-        and saline environments. Its primary limitation is susceptibility to localized
-        corrosion in hydrofluoric acid and certain oxidizing chlorides, but its general
-        environmental corrosion resistance is considered outstanding, justifying a
-        near-top rating.
-    density:
-      value: 6.52
-      min: 0.53
-      max: 22.6
-      unit: g/cm³
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (1990), Table ''Physical Properties of
-        Zirconium and Hafnium'', and NIST Standard Reference Database 69: NIST Chemistry
-        WebBook'
-    electricalConductivity:
-      value: 2360000.0
-      min: 0.67
-      max: 63.0
-      unit: S/m
-      research_basis: materials_science_literature
-    electricalResistivity:
-      value: 4.21e-07
-      min: 1.0e-08
-      max: 1.5e-06
-      unit: Ω·m
-      research_basis: materials_science_literature
-    flexuralStrength:
-      value: 345.0
-      min: 2.5
-      max: 1050.0
-      unit: MPa
-      research_basis: The provided properties (density, hardness) are consistent with
-        commercially pure zirconium. Authoritative materials databases (ASM, AZoMaterials)
-        report flexural/yield strength for annealed Zr typically in the range of 270-415
-        MPa. The cited value of 345 MPa is a representative mid-range value from standardized
-        3-point and 4-point bend test data for pure zirconium in the annealed condition,
-        which is the most common state for reporting baseline mechanical properties.
-    hardness:
-      value: 125.0
-      min: 0.5
-      max: 3500
-      unit: HV
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials. ''Zirconium and Hafnium'' (1990). For
-        commercially pure zirconium (R60001, unalloyed, annealed condition), typical
-        hardness is 200 HV.'
-    oxidationResistance:
-      value: 540.0
-      min: 200
-      max: 1200
-      unit: °C
-      research_basis: Zirconium forms a protective oxide layer, but this protection
-        is lost at elevated temperatures in air. The ASM Handbook and other authoritative
-        sources (e.g., "Corrosion of Zirconium and Its Alloys" in Uhlig's Corrosion
-        Handbook) consistently report that significant, breakaway oxidation begins
-        in the range of 500-600°C, with 540°C often cited as a conservative maximum
-        for continuous service in air. Above this temperature, the oxide layer cracks
-        and spalls, leading to rapid metal degradation.
-    porosity:
-      value: 0.0005
-      min: 0.0
-      max: 15.0
-      unit: fraction
-      research_basis: ai_research_comprehensive
-    tensileStrength:
-      value: 379.0
-      min: 3.0
-      max: 3000.0
-      unit: MPa
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (1990), Table 1: Typical room-temperature
-        mechanical properties of commercially pure zirconium'
-    youngsModulus:
-      value: 97.9
-      min: 5
-      max: 600
-      unit: GPa
-      research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-        Alloys and Special-Purpose Materials (1990), Table ''Elastic Constants of
-        Zirconium and Hafnium'' for high-purity zirconium at room temperature'
-    fractureToughness:
-      value: 47.5
-      min: 20
-      max: 200
-      unit: MPa·√m
-      research_basis: Zirconium's fracture toughness varies significantly with processing,
-        purity, and texture. Commercially pure zirconium typically ranges from 25-70
-        MPa·√m at room temperature, with most values clustering around 40-50 MPa·√m
-        for wrought material. The wide range reflects sensitivity to interstitial
-        content (especially oxygen), grain orientation, and testing direction relative
-        to rolling/texture.
-  laser_material_interaction:
-    label: Laser-Material Interaction
-    description: Optical and thermal properties governing laser energy absorption,
-      reflection, propagation, and ablation thresholds
-    ablationThreshold:
-      value: 0.45
-      min: 2.0
-      max: 8.0
-      unit: J/cm²
-      research_basis: materials_science_literature
-    absorptivity:
-      value: 0.42
-      min: 2.0
-      max: 65.0
-      unit: dimensionless
-      research_basis: materials_science_literature
-    laserAbsorption:
-      value: 38.0
-      min: 0.02
-      max: 100
-      unit: '%'
-      research_basis: 'Bauerle, D. (2011). Laser Processing and Chemistry (4th ed.).
-        Springer-Verlag. pp. 128-129. Table 4.2: Absorption of metals at 10.6 μm wavelength.'
-    laserDamageThreshold:
-      value: 0.45
-      min: 0.1
-      max: 20.0
-      unit: J/cm²
-      research_basis: materials_science_literature
-    laserReflectivity:
-      value: 52.3
-      min: 5
-      max: 99.9
-      unit: '%'
-      research_basis: NIST Database of Laser Reflectance Values for Metals at 1064
-        nm wavelength, specifically for high-purity zirconium (99.95%) with native
-        oxide layer
-    reflectivity:
-      value: 0.58
-      min: 85
-      max: 98
-      unit: dimensionless (reflectance)
-      research_basis: materials_science_literature
-    thermalShockResistance:
-      value: 3.2
-      min: 50
-      max: 400
-      unit: MPa·m^0.5
-      research_basis: materials_science_literature
-    absorptionCoefficient:
-      value: 3820000.0
-      min: 100000
-      max: 50000000
-      unit: m⁻¹
-      research_basis: materials_science_literature
-    surfaceRoughness:
-      value: 0.8
-      min: 0.4
-      max: 150
-      unit: μm
-      research_basis: materials_science_literature
-    vaporPressure:
-      value: 0.00133
-      min: 1.0e-10
-      max: 0.001
-      unit: Pa
-      research_basis: materials_science_literature
+materialProperties: {}
+materialCharacteristics: {}
 machineSettings:
   dwellTime:
     value: 100
@@ -351,448 +96,55 @@ machineSettings:
     unit: nm
     description: Near-IR wavelength optimized for Zirconium's moderate absorption
       and thermal processing
+applications:
+- Nuclear Power
+- Chemical Processing
+- Aerospace
+- Medical Devices
+- Marine Engineering
+- Electronics Manufacturing
+- Automotive
+- Cultural Heritage
+- Additive Manufacturing
+- Energy Storage
 environmentalImpact:
-- applicableIndustries:
-  - Semiconductor
-  - Electronics
-  - Medical
-  - Nuclear
-  benefit: Chemical Waste Elimination
-  description: Eliminates hazardous chemical waste streams
-  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- applicableIndustries: []
-  benefit: Water Usage Reduction
-  description: Dry process requires no water
-  sustainabilityBenefit: Significant water conservation in industrial processes
-- applicableIndustries: []
-  benefit: Energy Efficiency
-  description: Focused energy delivery with minimal waste heat
-- applicableIndustries: []
-  benefit: Air Quality Improvement
-  description: Eliminates volatile organic compounds from chemical cleaning
-outcomeMetrics:
-- Contaminant Removal Efficiency:
-    description: Percentage of target contaminants successfully removed from surface
-    typicalRanges: 95-99.9% depending on application and material
-    measurementMethods:
-    - Before/after microscopy
-    - Chemical analysis
-    - Mass spectrometry
-    factorsAffecting:
-    - Contamination type
-    - Adhesion strength
-    - Surface geometry
-preservedData:
-  generationMetadata:
-    generated_date: '2025-10-22T20:36:59.034615'
-    data_completeness: 100%
-    source: Materials.yaml (direct export)
-    properties: {}
-  categoryInfo:
-    description: Pure metals, alloys, and metallic compounds including steel, aluminum,
-      precious metals, and industrial alloys for precision cleaning
-    properties_count: 0
-    category_ranges:
-      density:
-        max: 22.6
-        min: 0.53
-        unit: g/cm³
-      hardness:
-        max: 3500
-        min: 0.5
-        unit: HV
-      laserAbsorption:
-        max: 100
-        min: 0.02
-        unit: cm⁻¹
-      laserReflectivity:
-        max: 99.9
-        min: 5
-        unit: '%'
-        source: Handbook of Optical Constants of Solids (Palik, 1998)
-        confidence: 85
-        notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with
-          surface condition'
-        last_updated: '2025-10-15T14:19:43.867188'
-      specificHeat:
-        max: 2000
-        min: 100
-        unit: J/kg·K
-      surfaceRoughness:
-        min: 0.4
-        max: 150
-        unit: μm Ra
-        source: Engineering ToolBox
-        confidence: 85
-        notes: Industrial metal finishing processes
-        last_updated: '2025-10-14T23:58:54.459299'
-      tensileStrength:
-        max: 3000.0
-        min: 3.0
-        unit: MPa
-      thermalConductivity:
-        min: 7.0
-        max: 430
-        unit: W/(m·K)
-        source: MatWeb Materials Database
-        confidence: 85
-        notes: Typical range for metal materials at room temperature
-        last_updated: '2025-10-14T23:58:54.459362'
-        phase2_adjustment: Manganese at 7.81 W/(m·K)
-        adjustment_date: '2025-10-15'
-      thermalDestruction:
-        point:
-          min: -38.8
-          max: 3422
-          unit: °C
-        type: melting
-        research_basis: Metal melting points from Mercury (-38.8°C) to Tungsten (3422°C)
-        confidence: 98
-      thermalDiffusivity:
-        max: 174
-        min: 0.06
-        unit: mm²/s
-        phase2_adjustment: Beryllium at 0.07 m²/s
-        adjustment_date: '2025-10-15'
-      thermalExpansion:
-        max: 33
-        min: 0.5
-        unit: µm/m·K
-      youngsModulus:
-        max: 600
-        min: 5
-        unit: GPa
-      ablationThreshold:
-        min: 2.0
-        max: 8.0
-        unit: J/cm²
-        source: Marks et al. 2022, Precision Engineering
-        confidence: 90
-        notes: Nanosecond pulse range for metals (most common industrial laser cleaning)
-        measurement_context: Nanosecond pulses (picosecond 0.1-2.0, femtosecond 0.14-1.7)
-        last_updated: '2025-10-17T00:00:00.000000'
-      reflectivity:
-        min: 85
-        max: 98
-        unit: '%'
-        source: Handbook of Optical Constants (Palik)
-        confidence: 85
-        notes: At 1064nm for polished metals (532nm 70-95%, 355nm 55-85%, 10640nm
-          95-99%)
-        measurement_context: 1064nm wavelength (most common Nd:YAG)
-        last_updated: '2025-10-17T00:00:00.000000'
-      oxidationResistance:
-        min: 200
-        max: 1200
-        unit: °C
-        source: ASM Metals Handbook - Corrosion
-        confidence: 80
-        notes: 'Oxidation onset: Steel 200-400°C, Stainless 400-800°C, Ni alloys 800-1200°C'
-        last_updated: '2025-10-14T23:58:54.459355'
-      compressiveStrength:
-        min: 50
-        max: 2000
-        unit: MPa
-        description: Maximum compressive stress before failure
-        notes: Metals moderate compression
-        source: materials_science_literature
-        research_date: '2025-10-15'
-      corrosionResistance:
-        min: 1
-        max: 10
-        unit: rating
-        description: Resistance to chemical/electrochemical degradation
-        notes: 1=poor (steel), 10=excellent (gold, titanium)
-        source: materials_science_literature
-        research_date: '2025-10-15'
-      electricalResistivity:
-        min: 1.0e-08
-        max: 1.5e-06
-        unit: Ω·m
-        description: Resistance to electrical current flow
-        notes: Titanium at 48 μΩ·cm = 4.8e-5 Ω·m
-        source: materials_science_literature
-        research_date: '2025-10-15'
-        phase2_adjustment: Titanium at 48 μΩ·cm
-        adjustment_date: '2025-10-15'
-      fractureToughness:
-        min: 20
-        max: 200
-        unit: MPa·m^0.5
-        description: Resistance to crack propagation
-        notes: Metals ductile, high toughness
-        source: materials_science_literature
-        research_date: '2025-10-15'
-      flexuralStrength:
-        min: 2.5
-        max: 1050.0
-        unit: MPa
-        description: ''
-        sample_count: 34
-        auto_generated: true
-        generated_date: '2025-10-16'
-      laserDamageThreshold:
-        min: 0.1
-        max: 20.0
-        unit: J/cm²
-        source: Laser-Induced Damage in Optical Materials (NIST)
-        confidence: 85
-        notes: Millisecond to nanosecond pulses for metal surfaces (polished vs. rough)
-        measurement_context: Surface finish dependent (polished surfaces higher threshold)
-        last_updated: '2025-10-17T00:00:00.000000'
-      boilingPoint:
-        min: 907
-        max: 5870
-        unit: °C
-        source: CRC Handbook of Chemistry and Physics
-        confidence: 95
-        notes: Mercury 357°C, Zinc 907°C, Tungsten 5555°C, Rhenium 5870°C
-        measurement_context: Standard atmospheric pressure (1 atm)
-        last_updated: '2025-10-17T00:00:00.000000'
-      electricalConductivity:
-        min: 0.67
-        max: 63.0
-        unit: MS/m
-        source: Materials Handbook (ASM International)
-        confidence: 90
-        notes: Bismuth 0.77 MS/m, Aluminum 37.7 MS/m, Copper 59.6 MS/m, Silver 63.0
-          MS/m
-        measurement_context: Room temperature (20°C), pure elements
-        last_updated: '2025-10-17T00:00:00.000000'
-      meltingPoint:
-        min: -39
-        max: 3422
-        unit: °C
-        source: CRC Handbook of Chemistry and Physics
-        confidence: 95
-        notes: Mercury -38.8°C, Aluminum 660°C, Steel 1370-1540°C, Tungsten 3422°C
-        measurement_context: Standard atmospheric pressure (1 atm)
-        last_updated: '2025-10-17T00:00:00.000000'
-      absorptionCoefficient:
-        min: 100000
-        max: 50000000
-        unit: m⁻¹
-        source: Optical Properties of Metals (Palik)
-        confidence: 80
-        notes: At 1064nm wavelength - varies with surface oxide, roughness, temperature
-        measurement_context: Near-IR wavelength (1064nm Nd:YAG laser)
-        last_updated: '2025-10-17T00:00:00.000000'
-      thermalShockResistance:
-        min: 50
-        max: 400
-        unit: ΔT °C
-        source: Materials Science and Engineering (Callister)
-        confidence: 75
-        notes: Cast iron ~50-100°C, Steel ~150-250°C, Nickel alloys ~300-400°C
-        measurement_context: Resistance to thermal stress cracking during rapid temperature
-          changes
-        last_updated: '2025-10-17T00:00:00.000000'
-      absorptivity:
-        min: 2.0
-        max: 65.0
-        unit: '%'
-        source: Laser Material Processing (Steen & Mazumder)
-        confidence: 85
-        notes: Polished metals 2-10%, Oxidized surfaces 30-65%, wavelength and temperature
-          dependent
-        measurement_context: Near-IR wavelengths (1064nm Nd:YAG), room temperature
-        last_updated: '2025-10-17T00:00:00.000000'
-      porosity:
-        min: 0.0
-        max: 15.0
-        unit: '%'
-        source: ASM Metals Handbook - Powder Metallurgy
-        confidence: 90
-        notes: Wrought metals 0-0.1%, Cast metals 0.5-5%, Sintered metals 2-15%
-        measurement_context: Volumetric porosity, varies significantly by manufacturing
-          process
-        last_updated: '2025-10-17T00:00:00.000000'
-      thermalDestructionPoint:
-        min: 873
-        max: 3695
-        unit: K
-        source: CRC Handbook - Boiling Points of Elements
-        confidence: 95
-        notes: Zinc 1180K, Iron 3134K, Steel 1473-1673K, Tungsten 3695K (boiling point)
-        measurement_context: Temperature at which material structurally fails or vaporizes
-        last_updated: '2025-10-17T00:00:00.000000'
-      vaporPressure:
-        min: 1.0e-10
-        max: 0.001
-        unit: Pa
-        source: NIST Thermophysical Properties Database
-        confidence: 80
-        notes: Room temperature vapor pressure, exponentially increases with temperature
-        measurement_context: 20°C ambient conditions, critical for vacuum applications
-        last_updated: '2025-10-17T00:00:00.000000'
-  propertyMetadata:
-    ablationThreshold:
-      confidence: 0.92
-      research_date: '2025-10-17T19:26:32.958436'
-      source: ai_research
-    absorptivity:
-      confidence: 0.92
-      research_date: '2025-10-17T20:17:49.918843'
-      source: ai_research
-    boilingPoint:
-      confidence: 0.95
-      research_date: '2025-10-17T19:36:41.216913'
-      source: ai_research
-    laserAbsorption:
-      confidence: 0.92
-      ai_verified: true
-      verification_date: '2025-10-03T23:08:00.985298'
-      verification_confidence: 85
-      research_date: '2025-09-30T14:01:16.349676'
-      source: ai_research
-    laserDamageThreshold:
-      confidence: 0.92
-      research_date: '2025-10-17T19:42:19.479182'
-      source: ai_research
-    laserReflectivity:
-      confidence: 0.92
-      research_date: '2025-09-30T14:01:27.820392'
-      source: ai_research
-    meltingPoint:
-      confidence: 0.98
-      research_date: '2025-10-17T19:47:06.783227'
-      source: ai_research
-    reflectivity:
-      confidence: 0.92
-      research_date: '2025-10-17T20:03:27.970781'
-      source: ai_research
-    specificHeat:
-      confidence: 0.95
-      ai_verified: true
-      verification_date: '2025-10-03T22:32:20.837714'
-      verification_confidence: 95
-      research_date: '2025-09-30T14:01:40.327717'
-      source: ai_research
-    thermalConductivity:
-      confidence: 0.95
-      research_date: '2025-09-30T14:02:05.781172'
-      source: ai_research
-    thermalDestruction:
-      confidence: 0.65
-      research_date: '2025-10-17'
-      source: thermal_degradation_standards
-    thermalDestructionPoint:
-      confidence: 0.95
-      research_date: '2025-10-17T20:22:26.145413'
-      source: ai_research
-    thermalDiffusivity:
-      confidence: 0.95
-      research_date: '2025-09-30T14:02:46.053881'
-      source: ai_research
-    thermalExpansion:
-      confidence: 0.95
-      ai_verified: true
-      verification_date: '2025-10-03T22:13:58.098647'
-      verification_confidence: 95
-      research_date: '2025-09-30T14:02:59.365861'
-      source: ai_research
-    thermalShockResistance:
-      confidence: 0.95
-      research_date: '2025-10-17T19:53:07.383962'
-      source: ai_research
-    compressiveStrength:
-      confidence: 0.9
-      ai_verified: true
-      research_date: '2025-10-15T21:34:45.995588'
-      source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys
-        and Special-Purpose Materials, "Zirconium and Hafnium" chapter.'
-    corrosionResistance:
-      confidence: 0.9
-      ai_verified: true
-      research_date: '2025-10-15T20:39:27.019864'
-      source: 'ASM International, "Corrosion of Zirconium and Zirconium Alloys" in
-        *ASM Handbook, Volume 13B: Corrosion: Materials*'
-    density:
-      confidence: 0.98
-      ai_verified: true
-      verification_date: '2025-10-03T20:01:08.226677'
-      verification_confidence: 95
-      research_date: '2025-09-30T14:00:50.168831'
-      source: ai_research
-    electricalConductivity:
-      confidence: 0.95
-      research_date: '2025-10-17T19:58:40.544703'
-      source: ai_research
-    electricalResistivity:
-      confidence: 0.95
-      research_date: '2025-10-17T19:17:41.491804'
-      source: ai_research
-    flexuralStrength:
-      confidence: 0.85
-      ai_verified: true
-      research_date: '2025-10-15T21:04:54.740744'
-      source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys
-        and Special-Purpose Materials, "Zirconium and Hafnium" chapter, typical annealed
-        commercially pure zirconium.'
-    hardness:
-      confidence: 0.95
-      ai_verified: true
-      verification_date: '2025-10-03T20:41:22.071704'
-      verification_confidence: 90
-      research_date: '2025-09-30T14:01:03.571782'
-      source: ai_research
-    oxidationResistance:
-      confidence: 0.9
-      ai_verified: true
-      research_date: '2025-10-15T20:52:02.856574'
-      source: 'ASM Handbook, Volume 13B: Corrosion: Materials, "Corrosion of Zirconium
-        and Zirconium Alloys"'
-    porosity:
-      confidence: 0.92
-      research_date: '2025-10-17T19:07:34.187880'
-      source: ai_research
-    tensileStrength:
-      confidence: 0.95
-      research_date: '2025-09-30T14:01:52.464609'
-      source: ai_research
-    youngsModulus:
-      confidence: 0.95
-      ai_verified: true
-      verification_date: '2025-10-03T21:55:35.214128'
-      verification_confidence: 95
-      research_date: '2025-09-30T14:03:11.039365'
-      source: ai_research
-    absorptionCoefficient:
-      confidence: 0.92
-      research_date: '2025-10-17T19:31:59.933154'
-      source: ai_research
-    fractureToughness:
-      confidence: 0.85
-      ai_verified: true
-      research_date: '2025-10-15T20:26:09.320294'
-      source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture Toughness
-        of Zirconium and Zirconium Alloys"'
-    surfaceRoughness:
-      confidence: 0.92
-      research_date: '2025-10-17T20:12:55.864869'
-      source: ai_research
-    vaporPressure:
-      confidence: 0.95
-      research_date: '2025-10-17T20:07:56.410867'
-      source: ai_research
-  machineSettingsMetadata:
-    dwellTime:
-      confidence: 82
-    energyDensity:
-      confidence: 89
-    overlapRatio:
-      confidence: 83
-    passCount:
-      confidence: 85
-    powerRange:
-      confidence: 92
-    pulseWidth:
-      confidence: 85
-    repetitionRate:
-      confidence: 87
-    scanSpeed:
-      confidence: 86
-    spotSize:
-      confidence: 84
-    wavelength:
-      confidence: 88
+- Chemical Waste Elimination:
+    applicableIndustries:
+    - Semiconductor
+    - Electronics
+    - Medical
+    - Nuclear
+    description: Eliminates hazardous chemical waste streams
+    quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+- Water Usage Reduction:
+    applicableIndustries: []
+    description: Dry process requires no water
+    sustainabilityBenefit: Significant water conservation in industrial processes
+- Energy Efficiency:
+    applicableIndustries: []
+    description: Focused energy delivery with minimal waste heat
+- Air Quality Improvement:
+    applicableIndustries: []
+    description: Eliminates volatile organic compounds from chemical cleaning
+outcomeMetrics: []
+regulatoryStandards: []
+images:
+  hero:
+    alt: Zirconium surface undergoing laser cleaning showing precise contamination
+      removal
+    url: /images/material/zirconium-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Zirconium surface after laser cleaning showing detailed
+      surface structure
+    url: /images/material/zirconium-laser-cleaning-micro.jpg
+author:
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  id: 3
+  image: /images/author/ikmanda-roswati.jpg
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+categoryMetadata:
+  description: Pure metals, alloys, and metallic compounds including steel, aluminum,
+    precious metals, and industrial alloys for precision cleaning

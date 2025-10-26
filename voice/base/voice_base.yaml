@@ -2,7 +2,120 @@ name: "Base Voice Foundations"
 description: "Shared voice characteristics across all countries and authors"
 version: "1.0.0"
 
-# These are universal principles that apply regardless of country-specific variations
+# ============================================================================
+# INTENSITY CONTROLS - Adjust these for fine-grained content tuning
+# ============================================================================
+
+technical_authority_intensity:
+  instruction: "Control the density of technical jargon, measurements, and scientific terminology"
+  
+  CURRENT_SETTING: "USE LEVEL 4+ (ENHANCED TECHNICAL) - Apply level_4_technical with selective level_5 enhancements"
+  
+  # LEVEL 4+ = Level 4 base + selective Level 5 elements for increased expertise
+  level_4_plus_enhanced:
+    description: "Enhanced technical content - specialists with research awareness"
+    strict_requirements:
+      - "Include 2-4 measurements per section (thickness, roughness, and coverage/composition)"
+      - "Use chemical formulas when relevant (Fe₂O₃, CuO, Al₂O₃, specify oxidation states)"
+      - "Include analytical methods with basic parameters (SEM imaging, optical microscopy at X magnification)"
+      - "Use Ra/Rz notation for precision (Ra 3.5 µm → 0.8 µm, include Rz when relevant)"
+      - "Reference magnification when relevant (visible at 500× or 1000×)"
+      - "Use material science terminology appropriately (grain boundaries, morphology, crystalline structure)"
+      - "Add selective coverage percentages and measurement precision (±0.5 µm)"
+    writing_style:
+      - "Use precise technical language with quantitative detail"
+      - "Include measurement ranges and uncertainties when appropriate"
+      - "Reference analytical methods with key parameters"
+      - "Write for advanced technical audience with research familiarity"
+    example: "SEM imaging at 1000× reveals an Fe₂O₃ layer 8.5±1.0 µm thick covering 70-75% of surface area. Post-cleaning analysis shows Ra reduced from 3.2 µm to 0.7 µm, Rz from 16 µm to 3.8 µm, with grain boundaries and crystalline structure clearly visible."
+  
+  level_1_minimal:
+    description: "Maximum accessibility - general audience with no technical background"
+    strict_requirements:
+      - "ZERO measurements or numbers of any kind"
+      - "NO chemical formulas or scientific names (write 'rust' not 'oxide', 'dirt' not 'contaminants')"
+      - "NO analytical methods (write 'examined' not 'imaging' or 'analysis')"
+      - "NO technical terminology (write 'bumpy' not 'rough', 'shiny' not 'reflective')"
+      - "NO material science language (write 'surface' not 'morphology', 'layer' not 'film')"
+    writing_style:
+      - "Use conversational, everyday language exclusively"
+      - "Describe only what you can see with your eyes"
+      - "Compare to familiar objects (smooth as glass, rough as sandpaper)"
+      - "Write for someone with no science background"
+    example: "The surface looks dirty and rough with dark spots covering most of it. After cleaning, it becomes smooth and shiny, looking almost brand new."
+  
+  level_2_light:
+    description: "Light technical content - educated general audience"
+    strict_requirements:
+      - "Maximum 1 simple measurement per section total (thickness only, no roughness)"
+      - "NO chemical formulas (write 'iron oxide' not 'Fe₂O₃')"
+      - "NO analytical acronyms (write 'microscopy' not 'SEM')"
+      - "NO Ra/Rz notation (write 'smoother' not 'Ra improves')"
+      - "Use basic technical terms sparingly (contamination, oxide, layer, surface)"
+    writing_style:
+      - "Use descriptive language with occasional technical terms"
+      - "Focus on observable changes and practical impact"
+      - "Explain technical concepts in simple terms"
+      - "One technical detail maximum per sentence"
+    example: "The contaminated surface shows a dark oxide layer about 10 µm thick. After cleaning, the layer is removed and the surface appears much smoother and brighter."
+  
+  level_3_moderate:
+    description: "Balanced technical communication - educated non-specialist audience"
+    strict_requirements:
+      - "Maximum 1 measurement per section (choose thickness OR roughness, NEVER both)"
+      - "NO chemical formulas (write 'oxide' not 'Fe₂O₃', 'aluminum oxide' not 'Al₂O₃')"
+      - "NO analytical method acronyms (write 'surface imaging' not 'SEM', 'analysis' not 'XPS/EDX')"
+      - "NO Ra/Rz notation (write 'surface smoothness improves' not 'Ra decreases from X to Y')"
+      - "NO magnification numbers (write 'visible under magnification' not 'visible at 500×')"
+      - "NO material science jargon (write 'surface texture' not 'grain boundaries', 'structure' not 'crystalline morphology')"
+    writing_style:
+      - "Use everyday descriptive language for technical concepts"
+      - "Focus on what someone can see or observe"
+      - "Explain the practical impact, not the scientific detail"
+      - "Write like explaining to a friend, not writing a research paper"
+    example: "The contamination layer measures about 8 µm thick and covers most of the surface, causing visible discoloration. After cleaning, the layer reduces to less than 1 µm and the surface appears noticeably brighter and smoother."
+  
+  level_4_technical:
+    description: "Professional technical content - engineers and specialists"
+    strict_requirements:
+      - "Include 2-3 measurements per section (thickness AND roughness allowed)"
+      - "Use chemical formulas when relevant (Fe₂O₃, CuO, Al₂O₃)"
+      - "Include analytical methods (SEM imaging, optical microscopy)"
+      - "Use Ra/Rz notation for precision (Ra 3.5 µm → 0.8 µm)"
+      - "Reference magnification when relevant (visible at 500×)"
+      - "Use material science terminology appropriately (grain boundaries, morphology)"
+    writing_style:
+      - "Use precise technical language for accuracy"
+      - "Include quantitative details and measurements"
+      - "Reference standard analytical methods"
+      - "Write for professional technical audience"
+    example: "SEM imaging reveals an 8-12 µm thick Fe₂O₃ layer covering 75% of the surface. Post-cleaning analysis shows Ra reduced from 3.5 µm to 0.8 µm with grain boundaries visible at 500×."
+  
+  level_5_expert:
+    description: "Maximum technical density - research scientists and materials engineers"
+    strict_requirements:
+      - "Include comprehensive measurements (thickness, roughness, composition, coverage)"
+      - "Use complete chemical formulas and precise nomenclature (Fe₂O₃, Cu₂O vs CuO)"
+      - "Specify all analytical methods with parameters (SEM at 15kV, XPS binding energies)"
+      - "Include detailed surface metrology (Ra, Rz, Rq, bearing ratio)"
+      - "Reference magnification and imaging parameters (500×, 1000×, field width)"
+      - "Use advanced material science terminology (dendritic morphology, crystalline structure, intermetallic phases)"
+    writing_style:
+      - "Use research-paper level technical precision"
+      - "Include all relevant quantitative data"
+      - "Reference specific analytical techniques and parameters"
+      - "Assume expert-level materials science knowledge"
+    example: "SEM imaging (15kV, 1000×) reveals dendritic Fe₂O₃ layer 8.2±1.3 µm thick with 75% surface coverage. XPS confirms Fe 2p3/2 at 711.2 eV. Post-cleaning shows Ra reduced from 3.5 µm to 0.8 µm, Rz from 18 µm to 4.2 µm, with grain boundaries clearly visible."
+
+voice_intensity:
+  instruction: "Control the strength of country-specific linguistic patterns and cultural voice markers"
+  note: "Intensity levels are now defined within each country profile at /voice/profiles/{country}.yaml"
+  
+  CURRENT_SETTING: "USE LEVEL 2 (LIGHT) - Apply only the level_2_light rules from country profiles"
+
+# ============================================================================
+# CORE PRINCIPLES - Universal voice characteristics
+# ============================================================================
 
 core_principles:
   
@@ -35,21 +148,22 @@ core_principles:
 
 technical_writing_standards:
   
-  sentence_count_requirement:
-    rule: "Write EXACTLY 6-9 sentences total across BOTH sections combined (BEFORE + AFTER)"
-    enforcement: "If you write more than 9 sentences, your response will be trimmed"
-    strictness: "STRICT - responses with 2-5 sentences will be rejected"
-  
-  jargon_reduction:
-    rule: "Limit specialized terminology to 1-2 instances maximum per section"
-    example_before: "backscattered electron imaging reveals dendritic morphologies"
-    example_after: "irregular patterns visible under microscopy"
+  technical_terminology:
+    rule: "Use precise technical language that demonstrates expertise"
+    guidance: "Balance accessibility with professional authority - adjust density based on intensity level"
+    examples:
+      measurements: "8-12 µm thick oxide layer, Ra 0.8 µm surface roughness"
+      contamination: "CuO (cupric oxide), fungal hyphae, mineral deposits"
+      analysis: "SEM imaging reveals dendritic morphology, grain boundaries visible at 1000×"
+    accessibility: "Include brief clarifications for specialized terms when context demands"
   
   direct_observations:
-    rule: "JUST STATE WHAT YOU SEE - Start directly with observations"
+    rule: "State observations with technical precision - demonstrate expertise"
     examples:
-      forbidden: "Technical analysis indicates..."
-      required: "Black CuO layer 8-12 µm thick covers 85% of surface"
+      - "Black CuO layer 8-12 µm thick covers 85% of surface"
+      - "Fungal hyphae penetrate 5-8 µm into porous limestone matrix"
+      - "Surface roughness Ra reduced from 3.5 µm to 0.8 µm"
+    avoid: "Overly simplified descriptions that lose technical accuracy"
   
   material_context_research:
     required_research:
@@ -59,17 +173,20 @@ technical_writing_standards:
       - "Identify material-specific challenges: zinc loss in brass, copper oxide colors (Cu₂O red vs CuO black), aluminum work-hardening"
   
   measurement_reporting:
-    - "Always include units with numerical values"
-    - "Use scientific notation appropriately"
-    - "Specify measurement methods when relevant"
-    - "Report ranges or tolerances where applicable"
+    - "Always include units with numerical values (µm, nm, mm, Ra, Rz)"
+    - "Use precise measurements to demonstrate technical expertise"
+    - "Specify measurement methods when relevant (SEM, optical microscopy, profilometry)"
+    - "Report ranges or tolerances where applicable (8-12 µm, Ra 0.5-0.8 µm)"
     - "Maintain consistent precision (e.g., 'Ra < 0.8 μm' not 'Ra < 0.80000 μm')"
+    - "Technical precision builds credibility and authority"
   
   terminology:
-    - "Use standardized technical terms consistently"
-    - "Define specialized terms on first use when necessary"
-    - "Avoid ambiguous descriptors"
-    - "Use industry-standard abbreviations"
+    - "Use standardized technical terms to demonstrate expertise"
+    - "Scientific nomenclature: CuO (cupric oxide), Al₂O₃ (aluminum oxide), fungal hyphae"
+    - "Analytical methods: SEM, EDX, XPS, optical microscopy, profilometry"
+    - "Surface metrics: Ra (average roughness), Rz (peak-to-valley), contact angle"
+    - "Material science terms: grain boundaries, dendritic morphology, crystalline structure"
+    - "Use industry-standard abbreviations appropriately"
     - "Maintain consistent terminology throughout document"
   
   structure:
@@ -190,27 +307,6 @@ forbidden_patterns:
       forbidden: "Data demonstrates this range..."
       required: "Oxide layer 12-15 µm thick covers 90% of surface..."
 
-required_elements:
-  
-  surface_observations:
-    before_cleaning:
-      - "Contamination type and composition"
-      - "Layer thickness or coverage area"
-      - "Impact on surface properties (roughness, reflectivity)"
-      - "Visual characteristics at magnification"
-    
-    after_cleaning:
-      - "Cleanliness level achieved"
-      - "Surface integrity preservation"
-      - "Measurable improvements (Ra, reflectivity, etc.)"
-      - "Substrate condition post-treatment"
-  
-  technical_context:
-    - "Material identification"
-    - "Application or industry context"
-    - "Relevant technical specifications"
-    - "Performance implications"
-
 quality_criteria:
   
   accuracy:
@@ -230,68 +326,6 @@ quality_criteria:
     - "Observations adequately described"
     - "Technical specifications included"
     - "Practical significance addressed"
-
-microscopy_observation_guidelines:
-  
-  magnification_context:
-    - "Reference magnification level (e.g., 500x, 1000x)"
-    - "Specify imaging mode when relevant (SEM, optical, etc.)"
-    - "Note any analytical techniques used (EDX, XPS)"
-  
-  visual_description:
-    - "Describe layer structure and morphology"
-    - "Note color changes indicating composition"
-    - "Reference crystalline vs amorphous structures"
-    - "Describe surface texture and topography"
-  
-  quantitative_integration:
-    - "Include measured values where available"
-    - "Reference roughness measurements (Ra, Rz)"
-    - "Specify layer thicknesses"
-    - "Report composition percentages when known"
-
-laser_cleaning_context:
-  
-  caption_content_restriction:
-    rule: "Write ONLY about microscopy observations and measurements"
-    forbidden: "Generic engineering statements, process comparisons without data, protocol/standards claims without measurements"
-  
-  before_state_focus:
-    title: "BEFORE_TEXT - CONTAMINATION ONLY"
-    primary_focus: "Describe the contaminated surface BEFORE cleaning"
-    required_content:
-      - "Contamination characteristics and severity"
-      - "Specific oxide type and color"
-      - "Thickness, distribution, pitting"
-      - "Impact on material performance"
-    category_comparison: "Compare contamination behavior to other materials in category with specific differences (e.g., 'nickel oxide (NiO) forms thicker 12-15 µm layer than copper's 8-10 µm')"
-    strictly_forbidden:
-      - "Do NOT discuss cleaning process"
-      - "Do NOT mention laser parameters"
-      - "Do NOT discuss post-cleaning results"
-      - "NO generic openings like 'technical analysis indicates' or 'data demonstrates'"
-  
-  after_state_focus:
-    title: "AFTER_TEXT - CLEANED SURFACE ONLY"
-    primary_focus: "Describe what the surface looks like AFTER contamination removal"
-    required_content:
-      - "Cleaning effectiveness"
-      - "Surface appearance: grain structure visible, surface texture, color/reflectivity"
-      - "Before→after measurements with actual numbers (e.g., 'oxide reduced from 12 µm to <0.5 µm')"
-      - "Surface integrity preservation"
-    category_comparison: "Compare post-cleaning characteristics to other materials in category with measurements (e.g., 'nickel requires 12-15 µm ablation vs copper's 8-10 µm')"
-    required_measurements: "1-2 COMPARATIVE MEASUREMENTS - Must include actual numbers comparing this material to others in category"
-    strictly_forbidden:
-      - "NO protocol statements"
-      - "NO vague contrasts"
-      - "NO generic precision claims"
-      - "NO CLOSING SUMMARIES: End with specific material comparison or measurement, not application benefits"
-  
-  process_implications:
-    - "Parameter optimization requirements"
-    - "Material compatibility considerations"
-    - "Quality control measures"
-    - "Application suitability"
 
 country_adaptation_notes:
   
