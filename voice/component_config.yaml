@@ -10,6 +10,27 @@
 # CREATED: 2025-10-25
 # ============================================================================
 
+# ============================================================================
+# GLOBAL CONTENT INSTRUCTION (All Components)
+# ============================================================================
+
+material_specificity_requirement: |
+  Write ONLY about THIS specific material's unique characteristics and the special techniques required.
+  Keep language clear and accessible - focus on observable qualities and individual traits.
+  Emphasize what makes THIS material distinctive and how to bring out its best qualities:
+  - Special laser parameters or techniques needed for this specific material
+  - How this material responds uniquely to laser cleaning
+  - Particular care required due to its individual properties
+  - Specific cleaning challenges and the best approaches for this material
+  - Surface characteristics that emerge when cleaned properly
+  Note any particular risks or cautions specific to this material's traits.
+  Avoid generic descriptions that fit any material.
+  Avoid excessive comparisons with other materials - focus on THIS material's individual needs.
+
+# ============================================================================
+# DEFAULT COMPONENT FALLBACK
+# ============================================================================
+
 # Default fallback (if component not specified)
 default:
   intensity_level: "level_3_moderate"  # Balanced for general content
@@ -46,17 +67,19 @@ caption:
 
 # Subtitle: Short marketing tagline
 subtitle:
-  # Subtitles are marketing-focused - broader audience
-  intensity_level: "level_2_light"  # Light technical (max 1 simple measurement)
+  # Subtitles are marketing-focused - maximum accessibility
+  intensity_level: "level_1_minimal"  # Zero measurements, everyday language
   formality: "professional-engaging"
   target_audience: "technical professionals and decision-makers"
-  word_count_range: [8, 12]
+  word_count_range: [8, 20]  # Random length like captions for variety
   
   style_notes:
     - "Concise and engaging"
     - "Capture material essence"
-    - "Professional but accessible"
+    - "Professional with technical authority"
     - "No period at end"
+    - "Use sentence case, not title case (avoid capitalizing every word)"
+    - "Academic style: capitalize only first word and proper nouns"
 
 # Description: Main content paragraph (future)
 description:

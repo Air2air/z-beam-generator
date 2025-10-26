@@ -1,10 +1,435 @@
 name: Cobalt
+material: Cobalt
 title: Cobalt Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Cobalt
-description: Laser cleaning parameters for Cobalt
 category: metal
-subcategory: non-ferrous
+generated_date: '2025-10-25T22:14:18.550084'
+data_completeness: 100%
+source: Materials.yaml (direct export)
+properties:
+  ablationThreshold:
+    value: 0.45
+    unit: "J/cm\xB2"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T11:18:40.301940'
+  absorptionCoefficient:
+    value: 11200000.0
+    unit: "m\u207B\xB9"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T11:53:07.611803'
+  absorptivity:
+    value: 0.35
+    unit: dimensionless
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T11:24:10.576048'
+  boilingPoint:
+    value: 3200.0
+    unit: K
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T11:28:12.561769'
+  compressiveStrength:
+    value: 760.0
+    unit: MPa
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.407811'
+  corrosionResistance:
+    value: 0.0025
+    unit: mm/year
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.514365'
+  density:
+    value: 8.86
+    unit: "g/cm\xB3"
+    confidence: 98
+    source: ai_research
+    research_date: '2025-10-23T10:23:01.067773'
+  electricalConductivity:
+    value: 16000000.0
+    unit: S/m
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T11:49:22.945592'
+  electricalResistivity:
+    value: 6.24e-08
+    unit: "\u03A9\xB7m"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T11:10:56.462199'
+  flexuralStrength:
+    value: 1450.0
+    unit: MPa
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.462594'
+  fractureToughness:
+    value: 94.0
+    unit: "MPa\xB7m\xB9/\xB2"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.346804'
+  hardness:
+    value: 3.5
+    unit: GPa
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.747591'
+  laserAbsorption:
+    value: 0.42
+    unit: dimensionless
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.258168'
+  laserDamageThreshold:
+    value: 0.45
+    unit: "J/cm\xB2"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T11:56:46.136679'
+  laserReflectivity:
+    value: 0.65
+    unit: dimensionless
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:51:37.815053'
+  meltingPoint:
+    value: 1495.0
+    unit: "\xB0C"
+    confidence: 98
+    source: ai_research
+    research_date: '2025-10-23T11:36:04.074391'
+  oxidationResistance:
+    value: 0.85
+    unit: dimensionless_index
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.569683'
+  porosity:
+    value: 0.0002
+    unit: '%'
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T11:03:25.758449'
+  reflectivity:
+    value: 0.66
+    unit: dimensionless (reflectance)
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T11:39:17.846895'
+  specificHeat:
+    value: 421.0
+    unit: "J\xB7kg\u207B\xB9\xB7K\u207B\xB9"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T10:32:51.750562'
+  surfaceRoughness:
+    value: 0.32
+    unit: "\xB5m"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T12:00:05.811769'
+  tensileStrength:
+    value: 760.0
+    unit: MPa
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.691258'
+  thermalConductivity:
+    value: 100.0
+    unit: "W/(m\xB7K)"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T10:43:05.328630'
+  thermalDestruction:
+    value: 1768.0
+    unit: K
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.631260'
+  thermalDestructionPoint:
+    value: 1768.0
+    unit: K
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T11:46:02.545210'
+  thermalDiffusivity:
+    value: 1.73e-05
+    unit: "m\xB2/s"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T10:02:13.473635'
+  thermalExpansion:
+    value: 13.0
+    unit: 10^-6/K
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T10:53:06.376314'
+  thermalShockResistance:
+    value: 4.2
+    unit: "MPa\xB7m^0.5"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T11:31:51.246623'
+  vaporPressure:
+    value: 1.33
+    unit: Pa
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T11:42:46.754668'
+  youngsModulus:
+    value: 211.0
+    unit: GPa
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T10:13:11.953551'
+category_info:
+  description: Pure metals, alloys, and metallic compounds including steel, aluminum,
+    precious metals, and industrial alloys for precision cleaning
+  properties_count: 30
+  category_ranges:
+    density:
+      max: 22.6
+      min: 0.53
+      unit: "g/cm\xB3"
+    hardness:
+      max: 3500
+      min: 0.5
+      unit: HV
+    laserAbsorption:
+      max: 100
+      min: 0.02
+      unit: "cm\u207B\xB9"
+    laserReflectivity:
+      max: 99.9
+      min: 5
+      unit: '%'
+      source: Handbook of Optical Constants of Solids (Palik, 1998)
+      confidence: 85
+      notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with surface
+        condition'
+      last_updated: '2025-10-15T14:19:43.867188'
+    specificHeat:
+      max: 2000
+      min: 100
+      unit: "J/kg\xB7K"
+    surfaceRoughness:
+      min: 0.4
+      max: 150
+      unit: "\u03BCm Ra"
+      source: Engineering ToolBox
+      confidence: 85
+      notes: Industrial metal finishing processes
+      last_updated: '2025-10-14T23:58:54.459299'
+    tensileStrength:
+      max: 3000.0
+      min: 3.0
+      unit: MPa
+    thermalConductivity:
+      min: 7.0
+      max: 430
+      unit: "W/(m\xB7K)"
+      source: MatWeb Materials Database
+      confidence: 85
+      notes: Typical range for metal materials at room temperature
+      last_updated: '2025-10-14T23:58:54.459362'
+      phase2_adjustment: "Manganese at 7.81 W/(m\xB7K)"
+      adjustment_date: '2025-10-15'
+    thermalDestruction:
+      point:
+        min: -38.8
+        max: 3422
+        unit: "\xB0C"
+      type: melting
+      research_basis: "Metal melting points from Mercury (-38.8\xB0C) to Tungsten\
+        \ (3422\xB0C)"
+      confidence: 98
+    thermalDiffusivity:
+      max: 174
+      min: 0.06
+      unit: "mm\xB2/s"
+      phase2_adjustment: "Beryllium at 0.07 m\xB2/s"
+      adjustment_date: '2025-10-15'
+    thermalExpansion:
+      max: 33
+      min: 0.5
+      unit: "\xB5m/m\xB7K"
+    youngsModulus:
+      max: 600
+      min: 5
+      unit: GPa
+    ablationThreshold:
+      min: 2.0
+      max: 8.0
+      unit: "J/cm\xB2"
+      source: Marks et al. 2022, Precision Engineering
+      confidence: 90
+      notes: Nanosecond pulse range for metals (most common industrial laser cleaning)
+      measurement_context: Nanosecond pulses (picosecond 0.1-2.0, femtosecond 0.14-1.7)
+      last_updated: '2025-10-17T00:00:00.000000'
+    reflectivity:
+      min: 85
+      max: 98
+      unit: '%'
+      source: Handbook of Optical Constants (Palik)
+      confidence: 85
+      notes: At 1064nm for polished metals (532nm 70-95%, 355nm 55-85%, 10640nm 95-99%)
+      measurement_context: 1064nm wavelength (most common Nd:YAG)
+      last_updated: '2025-10-17T00:00:00.000000'
+    oxidationResistance:
+      min: 200
+      max: 1200
+      unit: "\xB0C"
+      source: ASM Metals Handbook - Corrosion
+      confidence: 80
+      notes: "Oxidation onset: Steel 200-400\xB0C, Stainless 400-800\xB0C, Ni alloys\
+        \ 800-1200\xB0C"
+      last_updated: '2025-10-14T23:58:54.459355'
+    compressiveStrength:
+      min: 50
+      max: 2000
+      unit: MPa
+      description: Maximum compressive stress before failure
+      notes: Metals moderate compression
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    corrosionResistance:
+      min: 1
+      max: 10
+      unit: rating
+      description: Resistance to chemical/electrochemical degradation
+      notes: 1=poor (steel), 10=excellent (gold, titanium)
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    electricalResistivity:
+      min: 1.0e-08
+      max: 1.5e-06
+      unit: "\u03A9\xB7m"
+      description: Resistance to electrical current flow
+      notes: "Titanium at 48 \u03BC\u03A9\xB7cm = 4.8e-5 \u03A9\xB7m"
+      source: materials_science_literature
+      research_date: '2025-10-15'
+      phase2_adjustment: "Titanium at 48 \u03BC\u03A9\xB7cm"
+      adjustment_date: '2025-10-15'
+    fractureToughness:
+      min: 20
+      max: 200
+      unit: "MPa\xB7m^0.5"
+      description: Resistance to crack propagation
+      notes: Metals ductile, high toughness
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    flexuralStrength:
+      min: 2.5
+      max: 1050.0
+      unit: MPa
+      description: ''
+      sample_count: 34
+      auto_generated: true
+      generated_date: '2025-10-16'
+    laserDamageThreshold:
+      min: 0.1
+      max: 20.0
+      unit: "J/cm\xB2"
+      source: Laser-Induced Damage in Optical Materials (NIST)
+      confidence: 85
+      notes: Millisecond to nanosecond pulses for metal surfaces (polished vs. rough)
+      measurement_context: Surface finish dependent (polished surfaces higher threshold)
+      last_updated: '2025-10-17T00:00:00.000000'
+    boilingPoint:
+      min: 907
+      max: 5870
+      unit: "\xB0C"
+      source: CRC Handbook of Chemistry and Physics
+      confidence: 95
+      notes: "Mercury 357\xB0C, Zinc 907\xB0C, Tungsten 5555\xB0C, Rhenium 5870\xB0\
+        C"
+      measurement_context: Standard atmospheric pressure (1 atm)
+      last_updated: '2025-10-17T00:00:00.000000'
+    electricalConductivity:
+      min: 0.67
+      max: 63.0
+      unit: MS/m
+      source: Materials Handbook (ASM International)
+      confidence: 90
+      notes: Bismuth 0.77 MS/m, Aluminum 37.7 MS/m, Copper 59.6 MS/m, Silver 63.0
+        MS/m
+      measurement_context: "Room temperature (20\xB0C), pure elements"
+      last_updated: '2025-10-17T00:00:00.000000'
+    meltingPoint:
+      min: -39
+      max: 3422
+      unit: "\xB0C"
+      source: CRC Handbook of Chemistry and Physics
+      confidence: 95
+      notes: "Mercury -38.8\xB0C, Aluminum 660\xB0C, Steel 1370-1540\xB0C, Tungsten\
+        \ 3422\xB0C"
+      measurement_context: Standard atmospheric pressure (1 atm)
+      last_updated: '2025-10-17T00:00:00.000000'
+    absorptionCoefficient:
+      min: 100000
+      max: 50000000
+      unit: "m\u207B\xB9"
+      source: Optical Properties of Metals (Palik)
+      confidence: 80
+      notes: At 1064nm wavelength - varies with surface oxide, roughness, temperature
+      measurement_context: Near-IR wavelength (1064nm Nd:YAG laser)
+      last_updated: '2025-10-17T00:00:00.000000'
+    thermalShockResistance:
+      min: 50
+      max: 400
+      unit: "\u0394T \xB0C"
+      source: Materials Science and Engineering (Callister)
+      confidence: 75
+      notes: "Cast iron ~50-100\xB0C, Steel ~150-250\xB0C, Nickel alloys ~300-400\xB0\
+        C"
+      measurement_context: Resistance to thermal stress cracking during rapid temperature
+        changes
+      last_updated: '2025-10-17T00:00:00.000000'
+    absorptivity:
+      min: 2.0
+      max: 65.0
+      unit: '%'
+      source: Laser Material Processing (Steen & Mazumder)
+      confidence: 85
+      notes: Polished metals 2-10%, Oxidized surfaces 30-65%, wavelength and temperature
+        dependent
+      measurement_context: Near-IR wavelengths (1064nm Nd:YAG), room temperature
+      last_updated: '2025-10-17T00:00:00.000000'
+    porosity:
+      min: 0.0
+      max: 15.0
+      unit: '%'
+      source: ASM Metals Handbook - Powder Metallurgy
+      confidence: 90
+      notes: Wrought metals 0-0.1%, Cast metals 0.5-5%, Sintered metals 2-15%
+      measurement_context: Volumetric porosity, varies significantly by manufacturing
+        process
+      last_updated: '2025-10-17T00:00:00.000000'
+    thermalDestructionPoint:
+      min: 873
+      max: 3695
+      unit: K
+      source: CRC Handbook - Boiling Points of Elements
+      confidence: 95
+      notes: Zinc 1180K, Iron 3134K, Steel 1473-1673K, Tungsten 3695K (boiling point)
+      measurement_context: Temperature at which material structurally fails or vaporizes
+      last_updated: '2025-10-17T00:00:00.000000'
+    vaporPressure:
+      min: 1.0e-10
+      max: 0.001
+      unit: Pa
+      source: NIST Thermophysical Properties Database
+      confidence: 80
+      notes: Room temperature vapor pressure, exponentially increases with temperature
+      measurement_context: "20\xB0C ambient conditions, critical for vacuum applications"
+      last_updated: '2025-10-17T00:00:00.000000'
 caption:
+  description: Microscopic analysis of Cobalt surface before and after laser cleaning
+    treatment
   beforeText: The microscopy of the contaminated cobalt surface reveals a textured
     landscape marred by clustered contaminants, including fine particulates and thin
     oxide scales. This surface shows evident degradation, with shallow pits and faded
@@ -13,583 +438,7 @@ caption:
     This restoration demonstrates strong material integrity, with no signs of thermal
     alteration or weakening. The metal retains its original properties, supporting
     effective use in general applications.
-  generated: '2025-10-25T14:12:38.274700Z'
-  author: Yi-Chun Lin
-  generation_method: ai_research
-  word_count:
-    before: 33
-    after: 36
-  character_count:
-    before: 239
-    after: 275
-  description: Microscopic analysis of cobalt surface before and after laser cleaning
-    treatment
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    properties:
-      ablationThreshold:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:22:41.017812'
-        source: ai_research
-        unit: J/cm²
-        value: 0.45
-        min: 0.1
-        max: 50.0
-      absorptivity:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:13:51.365432'
-        source: ai_research
-        unit: dimensionless
-        value: 0.36
-        min: 0.02
-        max: 0.95
-      boilingPoint:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:32:49.019268'
-        source: ai_research
-        unit: K
-        value: 3200.0
-      laserAbsorption:
-        confidence: 0.92
-        research_basis: NIST Materials Data Repository - Reflectance measurements
-          for pure cobalt (99.95%) at 1064 nm wavelength, room temperature, polished
-          surface condition
-        research_date: '2025-09-30T12:53:01.189748'
-        source: ai_research
-        unit: '%'
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection of Nonferrous Alloys and Special-Purpose Materials, and validated
-          against known optical constants for cobalt from Palik''s Handbook of Optical
-          Constants of Solids'
-        value: 35.2
-        min: 2.5
-        max: 64.2
-      laserDamageThreshold:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:37:41.681357'
-        source: ai_research
-        unit: J/cm²
-        value: 0.85
-      laserReflectivity:
-        confidence: 0.92
-        research_basis: Palik, E.D. (1998). Handbook of Optical Constants of Solids
-          II, Academic Press, pp. 421-429. Data for pure cobalt at 1064 nm wavelength.
-        research_date: '2025-09-30T12:53:12.042601'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced with NIST reflectance databases and verified
-          against cobalt's known electronic structure (3d74s2 configuration) and typical
-          metallic reflectance behavior in near-IR spectrum
-        value: 67.2
-        min: 48.2
-        max: 98.6
-      meltingPoint:
-        confidence: 0.98
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:43:11.060720'
-        source: ai_research
-        unit: °C
-        value: 1495.0
-      reflectivity:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:59:37.268763'
-        source: ai_research
-        unit: dimensionless (reflectance)
-        value: 0.66
-        min: 5.0
-        max: 98.0
-      specificHeat:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 144: Thermophysical Properties
-          of Pure Cobalt, measured at 300K (27°C) using adiabatic calorimetry'
-        research_date: '2025-09-30T12:53:24.125870'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection: Nonferrous Alloys and Special-Purpose Materials, and validated
-          against published crystallographic data for hexagonal close-packed (HCP)
-          cobalt structure at room temperature'
-        value: 421.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:32:20.837588'
-        verification_variance: 0.0%
-        min: 129.1
-        max: 1925.0
-      thermalConductivity:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials (1990), Table 1, Page 446; NIST Materials
-          Data Repository for pure cobalt at 300K'
-        research_date: '2025-09-30T12:53:48.620925'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: Cross-referenced multiple authoritative sources including
-          ASM Handbook, NIST data, and CRC Handbook of Chemistry and Physics, confirming
-          consistency across materials science literature for pure cobalt metal
-        value: 100.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:20:53.092102'
-        verification_variance: 0.0%
-        min: 7.81
-        max: 429.0
-      thermalDestruction:
-        confidence: 0.65
-        point:
-          confidence: 0.95
-          research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-            Alloys and Special-Purpose Materials (1990), Section: Cobalt and Cobalt
-            Alloys, with cross-reference to NIST Materials Data Repository for pure
-            cobalt thermal properties'
-          research_date: '2025-09-30T12:54:00.552328'
-          source: ai_research
-          unit: K
-          validation_method: Cross-referenced melting point data from ASM Handbook
-            with NIST standard reference data and verified against pure cobalt (99.9+%)
-            phase diagram showing solidus temperature at standard atmospheric pressure
-          value: 1768.0
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        source: thermal_degradation_standards
-        type: melting
-        unit: °C
-        value: 500.0
-      thermalDestructionPoint:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:18:46.162031'
-        source: ai_research
-        unit: K
-        value: 1768.0
-        min: 273.0
-        max: 3695.0
-      thermalDiffusivity:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials (1990), Table 1: Physical Properties
-          of Cobalt, with cross-verification from NIST Materials Data Repository for
-          pure cobalt (99.95%) at 300K'
-        research_date: '2025-09-30T12:54:27.511672'
-        source: ai_research
-        unit: mm²/s
-        validation_method: Cross-referenced multiple authoritative sources including
-          ASM Handbook and NIST data, verified against known physical properties of
-          hexagonal close-packed (HCP) cobalt structure at room temperature, confirmed
-          consistency with thermal conductivity (100 W/m·K) and specific heat capacity
-          (0.42 J/g·K) relationships
-        value: 18.7
-        min: 0.07
-        max: 165.63
-      thermalExpansion:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials (1990), Table ''Thermal Expansion of
-          Pure Metals'' lists cobalt CTE as 13.0 × 10^-6/°C at 20°C'
-        research_date: '2025-09-30T12:54:39.594070'
-        source: ai_research
-        unit: 10^-6/K
-        validation_method: Cross-referenced with NIST Materials Data Repository and
-          CRC Handbook of Chemistry and Physics, confirming pure cobalt (hexagonal
-          close-packed structure) values ranging from 12.5-13.5 × 10^-6/K near room
-          temperature
-        value: 13.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:13:58.098539'
-        verification_variance: 0.0%
-        min: 4.5
-        max: 32.1
-      thermalShockResistance:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:48:14.434512'
-        source: ai_research
-        unit: MW/m
-        value: 1.2
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        confidence: 0.87
-        research_basis: The compressive strength of pure cobalt is highly dependent
-          on its purity, grain size, and temper (annealed vs. work-hardened). The
-          provided value is a representative figure for annealed, high-purity cobalt
-          from a major materials science reference. The value can vary significantly,
-          with work-hardened cobalt reaching strengths over 1500 MPa.
-        research_date: '2025-10-15T21:25:14.196628'
-        source: 'ASM Handbook, Volume 2, "Properties and Selection: Nonferrous Alloys
-          and Special-Purpose Materials" (data for high-purity, annealed cobalt)'
-        unit: MPa
-        value: 760.0
-        min: 4.2
-        max: 4150.0
-      corrosionResistance:
-        ai_verified: true
-        confidence: 0.87
-        research_basis: Cobalt has moderate corrosion resistance, superior to plain
-          carbon steel but inferior to nickel and chromium alloys. It resists atmospheric
-          corrosion and many mild chemical environments but is attacked by strong
-          acids and halogens. The rating reflects its adequate performance in general
-          environments but susceptibility to specific corrosive media.
-        research_date: '2025-10-15T20:28:27.254858'
-        source: 'ASM Handbook, Volume 13B: Corrosion: Materials (2010), "Cobalt and
-          Cobalt Alloys" chapter'
-        unit: rating
-        value: 5.0
-        min: 1.0
-        max: 10.0
-      density:
-        ai_verified: true
-        confidence: 0.98
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials (1990), Table 1, p. 446; NIST Standard
-          Reference Database 144, Cobalt Physical Properties; CRC Handbook of Chemistry
-          and Physics, 103rd Edition'
-        research_date: '2025-09-30T12:52:38.659697'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced multiple authoritative materials science
-          references confirming consistent density value for pure cobalt at 20°C,
-          verified against known crystal structure (HCP at room temperature) and atomic
-          properties
-        value: 8.86
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:01:08.226585'
-        verification_variance: 0.0%
-        min: 1.738
-        max: 22.56
-      electricalConductivity:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:54:05.915096'
-        source: ai_research
-        unit: S/m
-        value: 16000000.0
-      electricalResistivity:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:14:00.794383'
-        source: ai_research
-        unit: Ω·m
-        value: 6.24e-08
-      flexuralStrength:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: The provided properties are insufficient to determine flexural
-          strength, which must be measured mechanically. For pure, annealed cobalt,
-          authoritative materials databases and handbooks (like the ASM Handbook)
-          report an ultimate tensile strength of 240-500 MPa and a yield strength
-          of 175-450 MPa. Flexural strength for a ductile metal like cobalt is typically
-          similar to or slightly higher than its ultimate tensile strength. A value
-          of 800 MPa is a reasonable, conservative estimate for the maximum bending
-          strength it could exhibit before failure, particularly for a high-purity,
-          well-consolidated form, and aligns with data for cobalt in its strengthened
-          states.
-        research_date: '2025-10-15T20:54:15.770743'
-        source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys
-          and Special-Purpose Materials, "Cobalt and Cobalt Alloys"'
-        unit: MPa
-        value: 800.0
-        min: 2.5
-        max: 1240.0
-      hardness:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
-          Properties of Cobalt'
-        research_date: '2025-09-30T12:52:49.615771'
-        source: ai_research
-        unit: HV
-        validation_method: Cross-referenced ASM Handbook data with NIST Materials
-          Data Repository and confirmed consistency with pure cobalt (99.9+%) at room
-          temperature using Vickers hardness testing methodology
-        value: 104.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:41:22.071619'
-        verification_variance: 16.8%
-        min: 0.9
-        max: 3430.0
-      oxidationResistance:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: While pure cobalt has moderate oxidation resistance, significant
-          oxidation begins around 700-800°C. At 700°C, a continuous, protective oxide
-          scale forms, but above this temperature, oxidation accelerates rapidly,
-          forming non-protective CoO scales. This temperature is cited in multiple
-          high-temperature alloy references as the practical upper limit for unalloyed
-          cobalt in oxidizing environments.
-        research_date: '2025-10-15T20:41:52.322794'
-        source: Haynes International, "High-Temperature Oxidation Resistance of Cobalt-Base
-          Alloys"
-        unit: °C
-        value: 700.0
-        min: 150.0
-        max: 1100.0
-      porosity:
-        confidence: 0.92
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17T19:07:34.182132'
-        source: ai_research
-        unit: '%'
-        value: 0.0002
-        min: 0.0
-        max: 30.0
-      tensileStrength:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials, ''Cobalt and Cobalt Alloys'' chapter,
-          Table 1: Typical room-temperature mechanical properties of high-purity cobalt'
-        research_date: '2025-09-30T12:53:35.799634'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced with multiple authoritative sources including
-          NIST Materials Data Repository and academic literature on pure cobalt mechanical
-          properties, confirming consistency with high-purity (99.9+%) cobalt in annealed
-          condition
-        value: 760.0
-        min: 4.0
-        max: 1510.0
-      youngsModulus:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
-          Properties of Cobalt and Cobalt Alloys'
-        research_date: '2025-09-30T12:54:50.654225'
-        source: ai_research
-        unit: GPa
-        validation_method: Cross-referenced with NIST Materials Data Repository and
-          verified against pure cobalt (99.9+%) properties from multiple authoritative
-          sources including CRC Handbook of Chemistry and Physics
-        value: 211.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T21:55:35.214025'
-        verification_variance: 0.96%
-        min: 9.8
-        max: 528.0
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    properties:
-      absorptionCoefficient:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:27:30.924497'
-        source: ai_research
-        unit: m⁻¹
-        value: 11200000.0
-      fractureToughness:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: Pure cobalt's fracture toughness typically ranges from about
-          90 to 110 MPa·√m at room temperature, depending on purity, grain size, and
-          processing. The value of 100 MPa·√m is a representative mid-range figure
-          for high-purity polycrystalline cobalt, consistent with data in ASM and
-          other materials databases.
-        research_date: '2025-10-15T20:12:39.827160'
-        source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture Toughness
-          of Metals and Alloys" (Table 1.1 for pure cobalt and cobalt alloys)'
-        unit: MPa·√m
-        value: 100.0
-        min: 0.0
-        max: 400.0
-      surfaceRoughness:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:08:55.023600'
-        source: ai_research
-        unit: µm
-        value: 0.32
-      vaporPressure:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:04:16.911555'
-        source: ai_research
-        unit: Pa
-        value: 1.33
-materialCharacteristics:
-  crystallineStructure:
-    allowedValues:
-    - FCC
-    - BCC
-    - HCP
-    - amorphous
-    - cubic
-    - hexagonal
-    - tetragonal
-    - orthorhombic
-    - monoclinic
-    - triclinic
-    confidence: 0.95
-    description: FCC crystal structure
-    research_date: '2025-10-20T22:49:43.626417+00:00'
-    source: ai_research
-    unit: crystal system
-    value: FCC
-machineSettings:
-  fluenceThreshold:
-    confidence: 90
-    description: Fluence threshold for Cobalt oxide removal without substrate damage
-    max: 4.0
-    min: 1.5
-    unit: J/cm²
-    value: 2.5
-  overlapRatio:
-    confidence: 83
-    description: Optimal beam overlap for uniform Cobalt surface cleaning
-    max: 70
-    min: 40
-    unit: '%'
-    value: 50
-  passCount:
-    confidence: 85
-    description: Number of cleaning passes for complete Cobalt oxide removal
-    max: 5
-    min: 1
-    unit: passes
-    value: 3
-  powerRange:
-    confidence: 92
-    description: Optimal average power for Cobalt oxide removal without substrate
-      damage
-    max: 120
-    min: 80
-    unit: W
-    value: 100
-  pulseWidth:
-    confidence: 85
-    description: Nanosecond pulse duration for efficient Cobalt oxide ablation
-    max: 20
-    min: 5
-    unit: ns
-    value: 10
-  repetitionRate:
-    confidence: 87
-    description: High repetition rate for efficient cleaning coverage on Cobalt surfaces
-    max: 200
-    min: 50
-    unit: kHz
-    value: 100
-  scanSpeed:
-    confidence: 86
-    description: Scanning speed for efficient Cobalt surface cleaning
-    max: 1000
-    min: 200
-    unit: mm/s
-    value: 500
-  spotSize:
-    confidence: 84
-    description: Optimal beam diameter for precision cleaning of Cobalt components
-    max: 100
-    min: 30
-    unit: μm
-    value: 50
-  wavelength:
-    confidence: 88
-    description: Near-IR wavelength for optimal Cobalt absorption and thermal processing
-    max: 10600
-    min: 532
-    unit: nm
-    value: 1064
-applications:
-- Aerospace
-- Chemical Processing
-- Medical Devices
-- Oil & Gas
-- Power Generation
-- Superalloys
-- Tooling and Dies
-- Wear-Resistant Coatings
-environmentalImpact:
-- Chemical Waste Elimination:
-    applicableIndustries:
-    - Semiconductor
-    - Electronics
-    - Medical
-    - Nuclear
-    description: Eliminates hazardous chemical waste streams
-    quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- Water Usage Reduction:
-    applicableIndustries: []
-    description: Dry process requires no water
-    sustainabilityBenefit: Significant water conservation in industrial processes
-- Energy Efficiency:
-    applicableIndustries: []
-    description: Focused energy delivery with minimal waste heat
-- Air Quality Improvement:
-    applicableIndustries: []
-    description: Eliminates volatile organic compounds from chemical cleaning
-outcomeMetrics:
-- Contaminant Removal Efficiency:
-    description: Percentage of target contaminants successfully removed from surface
-    factorsAffecting:
-    - Contamination type
-    - Adhesion strength
-    - Surface geometry
-    measurementMethods:
-    - Before/after microscopy
-    - Chemical analysis
-    - Mass spectrometry
-    typicalRanges: 95-99.9% depending on application and material
-    units: []
-- Processing Speed:
-    description: Rate of surface area processed per unit time
-    factorsAffecting: []
-    measurementMethods: []
-    units:
-    - m²/h
-    - cm²/min
-    - mm²/s
-- Surface Quality Preservation:
-    description: Maintenance of original surface characteristics after cleaning
-    factorsAffecting: []
-    measurementMethods: []
-    units: []
-- Thermal Damage Avoidance:
-    description: Prevention of heat-related material alterations during cleaning
-    factorsAffecting: []
-    measurementMethods: []
-    units: []
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/en/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
-  image: /images/logo/logo-org-osha.png
-images:
-  hero:
-    alt: Cobalt surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/cobalt-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of cobalt surface showing laser cleaning effects
-    url: /images/material/cobalt-laser-cleaning-micro.jpg
+subtitle: Reveal Cobalt's unique blue-gray luster with precise laser ablation
 author:
   country: Taiwan
   expertise: Laser Materials Processing
@@ -598,6 +447,3 @@ author:
   name: Yi-Chun Lin
   sex: f
   title: Ph.D.
-categoryMetadata:
-  description: Pure metals, alloys, and metallic compounds including steel, aluminum,
-    precious metals, and industrial alloys for precision cleaning

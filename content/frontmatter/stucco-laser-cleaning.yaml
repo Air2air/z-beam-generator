@@ -1,10 +1,123 @@
 name: Stucco
-title: Stucco
-subtitle: ''
-description: Laser cleaning parameters for Stucco
+material: Stucco
+title: Stucco Laser Cleaning
 category: masonry
-subcategory: ''
+generated_date: '2025-10-25T22:14:19.824503'
+data_completeness: 100%
+source: Materials.yaml (direct export)
+properties: {}
+category_info:
+  description: Construction masonry materials including concrete, brick, mortar, stucco,
+    and stone-based building materials for restoration cleaning
+  properties_count: 0
+  category_ranges:
+    density:
+      max: 3.2
+      min: 0.6
+      unit: "g/cm\xB3"
+      adjustment_note: "Most masonry < 2.5 g/cm\xB3"
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+      phase2_adjustment: "Cement at 3.15 g/cm\xB3"
+    hardness:
+      max: 6
+      min: 1
+      unit: Mohs
+      adjustment_note: Plaster can be softer
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    laserAbsorption:
+      max: 15
+      min: 0.5
+      unit: "cm\u207B\xB9"
+    laserReflectivity:
+      max: 70
+      min: 10
+      unit: '%'
+      source: Building Materials Optical Properties Database
+      confidence: 70
+      notes: Concrete 20-40%, brick 20-50%, varies with color and surface texture
+      last_updated: '2025-10-15T14:19:43.867310'
+    specificHeat:
+      max: 1100
+      min: 700
+      unit: "J/kg\xB7K"
+    tensileStrength:
+      max: 15
+      min: 1
+      unit: MPa
+    thermalConductivity:
+      max: 2.5
+      min: 0.08
+      unit: "W/(m\xB7K)"
+      source: ASHRAE Handbook - Fundamentals
+      confidence: 80
+      notes: Concrete ~1.0, brick ~0.6, lightweight concrete 0.1-0.5, varies with
+        density and moisture
+      last_updated: '2025-10-15T14:19:43.867317'
+    thermalDestruction:
+      point:
+        max: 1200
+        min: 500
+        unit: "\xB0C"
+      type: spalling
+    thermalDiffusivity:
+      max: 1
+      min: 0.1
+      unit: "mm\xB2/s"
+    thermalExpansion:
+      max: 20
+      min: 5
+      unit: "\xB5m/m\xB7K"
+    youngsModulus:
+      max: 50
+      min: 3.0
+      unit: GPa
+      phase2_adjustment: Plaster at 3.0 GPa
+      adjustment_date: '2025-10-15'
+    compressiveStrength:
+      min: 5
+      max: 100
+      unit: MPa
+      description: Maximum compressive stress before failure
+      notes: Brick, concrete, stone
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    flexuralStrength:
+      min: 2
+      max: 20
+      unit: MPa
+      description: Maximum bending stress before failure
+      notes: Masonry weak in bending
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    fractureToughness:
+      min: 0.15
+      max: 1.1
+      unit: "MPa\xB7\u221Am"
+      description: ''
+      sample_count: 7
+      auto_generated: true
+      generated_date: '2025-10-16'
+    corrosionResistance:
+      min: 2.0
+      max: 8.0
+      unit: rating
+      description: ''
+      sample_count: 7
+      auto_generated: true
+      generated_date: '2025-10-16'
+    oxidationResistance:
+      min: 300.0
+      max: 1200.0
+      unit: "\xB0C"
+      description: ''
+      sample_count: 7
+      auto_generated: true
+      generated_date: '2025-10-16'
 caption:
+  description: Microscopic analysis of Stucco surface before and after laser cleaning
+    treatment
   beforeText: Under microscopy, the stucco surface appears contaminated heavily-heavily
     with fine dust particles and organic films that adhere tightly and obscure pores
     completely. Contaminants show irregular shapes, dark-dark colors, and clumped
@@ -15,118 +128,8 @@ caption:
     with fine details restored beautifully. Integrity remains intact, no cracks or
     damage seen, so material stays strong for cultural heritage use. Restoration quality
     is excellent, preserving original texture.
-  generated: '2025-10-25T15:25:58.809436Z'
-  author: Ikmanda Roswati
-  generation_method: ai_research
-  word_count:
-    before: 57
-    after: 39
-  character_count:
-    before: 407
-    after: 282
-  description: Microscopic analysis of stucco surface before and after laser cleaning
-    treatment
-materialProperties: {}
-materialCharacteristics: {}
-machineSettings:
-  energyDensity:
-    value: 3.2
-    min: 2.0
-    max: 5.0
-    unit: J/cm²
-    description: Fluence threshold for effective Stucco surface cleaning
-  overlapRatio:
-    value: 50
-    min: 30
-    max: 70
-    unit: '%'
-    description: Optimal beam overlap for uniform cleaning coverage
-  passCount:
-    value: 2
-    min: 1
-    max: 4
-    unit: passes
-    description: Recommended number of passes for complete contaminant removal
-  powerRange:
-    value: 100
-    min: 80
-    max: 120
-    unit: W
-    description: Optimal average power for Stucco surface cleaning without substrate
-      damage
-  pulseWidth:
-    value: 10
-    min: 5
-    max: 20
-    unit: ns
-    description: Nanosecond pulse duration for effective contaminant removal with
-      controlled thermal effects
-  repetitionRate:
-    value: 50
-    min: 20
-    max: 100
-    unit: kHz
-    description: Optimal repetition rate for efficient cleaning coverage and process
-      speed
-  scanSpeed:
-    value: 500
-    min: 200
-    max: 1000
-    unit: mm/s
-    description: Optimal scanning speed for uniform cleaning without thermal accumulation
-  spotSize:
-    value: 0.2
-    min: 0.1
-    max: 0.5
-    unit: mm
-    description: Beam spot diameter for balanced cleaning efficiency and resolution
-  wavelength:
-    value: 1064
-    min: 532
-    max: 10600
-    unit: nm
-    description: Near-infrared wavelength optimized for Stucco absorption and minimal
-      substrate interaction
-applications:
-- Cultural Heritage
-- Aerospace
-- Marine
-- Construction Restoration
-- Manufacturing
-- Energy Sector
-- Automotive
-- Electronics Manufacturing
-- Food Processing
-- Historical Monument Preservation
-environmentalImpact:
-- Chemical Waste Elimination:
-    applicableIndustries:
-    - Semiconductor
-    - Electronics
-    - Medical
-    - Nuclear
-    description: Eliminates hazardous chemical waste streams
-    quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- Water Usage Reduction:
-    applicableIndustries: []
-    description: Dry process requires no water
-    sustainabilityBenefit: Significant water conservation in industrial processes
-- Energy Efficiency:
-    applicableIndustries: []
-    description: Focused energy delivery with minimal waste heat
-- Air Quality Improvement:
-    applicableIndustries: []
-    description: Eliminates volatile organic compounds from chemical cleaning
-outcomeMetrics: []
-regulatoryStandards: []
-images:
-  hero:
-    alt: Stucco surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/stucco-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Stucco surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/stucco-laser-cleaning-micro.jpg
+subtitle: Specialized laser revives stucco's porous elegance, preserving delicate
+  masonry textures intact
 author:
   country: Indonesia
   expertise: Ultrafast Laser Physics and Material Interactions
@@ -135,6 +138,3 @@ author:
   name: Ikmanda Roswati
   sex: m
   title: Ph.D.
-categoryMetadata:
-  description: Construction masonry materials including concrete, brick, mortar, stucco,
-    and stone-based building materials for restoration cleaning

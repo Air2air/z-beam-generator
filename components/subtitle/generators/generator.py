@@ -170,8 +170,8 @@ class SubtitleComponentGenerator(APIComponentGenerator):
         logger.info(f"Extracted subtitle: {len(content)} chars, {len(content.split())} words")
         return content
     
-    def _write_subtitle_to_materials(self, material_name: str, subtitle: str, timestamp: str, author: str) -> bool:
-        """Write subtitle to Materials.yaml"""
+    def _write_subtitle_to_materials(self, material_name: str, subtitle: str, timestamp: str, author: str, author_country: str = None) -> bool:
+        """Write subtitle to Materials.yaml with full author metadata"""
         import yaml
         from pathlib import Path
         
@@ -210,7 +210,8 @@ class SubtitleComponentGenerator(APIComponentGenerator):
             
             materials_section[actual_material_key]['subtitle_metadata'] = {
                 'generated': timestamp,
-                'author': author,
+                'author_name': author,
+                'author_country': author_country or 'unknown',
                 'generation_method': 'ai_research_voice',
                 'word_count': len(subtitle.split()),
                 'character_count': len(subtitle)
@@ -239,26 +240,45 @@ class SubtitleComponentGenerator(APIComponentGenerator):
         schema_fields: Optional[Dict] = None,
         **kwargs
     ):
-        """Generate AI-powered subtitle content - FAIL FAST ARCHITECTURE"""
+        """Generate AI-powered subtitle content - FAIL FAST ARCHITECTURE with retry logic"""
         
         # FAIL FAST: API client is required - no fallbacks allowed
         if not api_client:
             raise ValueError("API client required for subtitle generation - fail-fast architecture does not allow fallbacks")
         
-        # Load frontmatter if not provided
-        if not frontmatter_data:
-            frontmatter_data = self._load_frontmatter_data(material_name)
+        # Load frontmatter if not provided - with retry logic
+        max_retries = 3
+        retry_count = 0
+        
+        while retry_count < max_retries:
+            if not frontmatter_data:
+                frontmatter_data = self._load_frontmatter_data(material_name)
+            
+            # Extract required data - retry if missing
+            author_obj = frontmatter_data.get('author', {}) if frontmatter_data else {}
+            
+            if author_obj and author_obj.get('name'):
+                # Success - author data found
+                break
+            else:
+                retry_count += 1
+                if retry_count < max_retries:
+                    logger.warning(f"Author data missing for {material_name}, retry {retry_count}/{max_retries}")
+                    frontmatter_data = None  # Force reload on next iteration
+                    import time
+                    time.sleep(0.5)  # Brief delay before retry
+                else:
+                    # Final retry failed - FAIL FAST
+                    raise ValueError(
+                        f"Author information required in frontmatter for {material_name} - "
+                        f"failed after {max_retries} retries. Fail-fast requires complete metadata."
+                    )
         
         # FAIL FAST: Frontmatter is required
         if not frontmatter_data:
             raise ValueError(f"Frontmatter data required for {material_name} - fail-fast architecture requires complete material data")
         
         timestamp = datetime.datetime.now().isoformat() + "Z"
-        
-        # Extract required data - FAIL FAST if missing
-        author_obj = frontmatter_data.get('author', {})
-        if not author_obj or not author_obj.get('name'):
-            raise ValueError(f"Author information required in frontmatter for {material_name} - fail-fast requires complete metadata")
         
         author_name = author_obj.get('name')
         author_country = author_obj.get('country', 'usa')
@@ -304,12 +324,13 @@ class SubtitleComponentGenerator(APIComponentGenerator):
             logger.error(f"AI processing failed for {material_name}: {e}")
             raise ValueError(f"Subtitle generation failed for {material_name}: {e}") from e
         
-        # Write subtitle to Materials.yaml
+        # Write subtitle to Materials.yaml with full author metadata
         success = self._write_subtitle_to_materials(
             material_name=material_name,
             subtitle=subtitle,
             timestamp=timestamp,
-            author=author_name
+            author=author_name,
+            author_country=author_country
         )
         
         if not success:

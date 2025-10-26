@@ -1,10 +1,108 @@
 name: Yttrium
-title: Yttrium
-subtitle: ''
-description: Laser cleaning parameters for Yttrium
+material: Yttrium
+title: Yttrium Laser Cleaning
 category: rare-earth
-subcategory: ''
+generated_date: '2025-10-25T22:14:19.997069'
+data_completeness: 100%
+source: Materials.yaml (direct export)
+properties: {}
+category_info:
+  description: Lanthanide series elements with unique magnetic and optical properties
+    used in laser cleaning applications
+  properties_count: 0
+  category_ranges:
+    density:
+      min: 6.1
+      max: 9.8
+      unit: "g/cm\xB3"
+      research_basis: "Lanthanides range from La (6.15 g/cm\xB3) to Lu (9.84 g/cm\xB3\
+        )"
+      confidence: 98
+    hardness:
+      min: 25
+      max: 60
+      unit: HV
+      research_basis: Vickers hardness for rare-earth elements typically 25-60 HV
+      confidence: 90
+    laserReflectivity:
+      min: 40
+      max: 75
+      unit: '%'
+      research_basis: Metallic rare-earths have moderate to high reflectivity at 1064nm
+      confidence: 85
+    thermalConductivity:
+      min: 10
+      max: 17
+      unit: "W/(m\xB7K)"
+      research_basis: "Rare-earth thermal conductivity ranges from 10-17 W/(m\xB7\
+        K) at room temperature"
+      confidence: 92
+    thermalExpansion:
+      min: 5.0
+      max: 12.0
+      unit: "10\u207B\u2076/K"
+      research_basis: "Lanthanide thermal expansion coefficients typically 5-12 \xD7\
+        \ 10\u207B\u2076/K"
+      confidence: 90
+    specificHeat:
+      min: 150
+      max: 200
+      unit: "J/(kg\xB7K)"
+      research_basis: "Rare-earth specific heat capacities range 150-200 J/(kg\xB7\
+        K)"
+      confidence: 88
+    youngsModulus:
+      min: 25
+      max: 65
+      unit: GPa
+      research_basis: Elastic modulus for lanthanides typically 25-65 GPa
+      confidence: 85
+    thermalDestruction:
+      point:
+        min: 1000
+        max: 1700
+        unit: K
+      type: melting
+      research_basis: Lanthanide thermal destruction points range from ~1000K (Ce)
+        to ~1700K (Lu)
+      confidence: 98
+    boilingPoint:
+      min: 2800
+      max: 3700
+      unit: K
+      research_basis: Lanthanide boiling points range from ~2800K to ~3700K
+      confidence: 95
+    absorptivity:
+      min: 0.25
+      max: 0.6
+      unit: dimensionless
+      research_basis: Rare-earth metals have moderate to high absorption at laser
+        wavelengths
+      confidence: 85
+    oxidationResistance:
+      min: 300
+      max: 600
+      unit: "\xB0C"
+      research_basis: "Lanthanides oxidize readily above 300-600\xB0C depending on\
+        \ element"
+      confidence: 88
+    absorptionCoefficient:
+      min: 0.3
+      max: 0.8
+      unit: dimensionless
+      research_basis: Rare-earth metals have moderate to high absorption coefficients
+        at laser wavelengths
+      confidence: 85
+    ablationThreshold:
+      min: 0.5
+      max: 2.0
+      unit: "J/cm\xB2"
+      research_basis: "Lanthanide ablation thresholds typically range 0.5-2.0 J/cm\xB2\
+        \ for 1064nm"
+      confidence: 87
 caption:
+  description: Microscopic analysis of Yttrium surface before and after laser cleaning
+    treatment
   beforeText: Under microscope, yttrium surface shows contamination very-very severe,
     with fine particles clinging tightly and forming uneven layers. Contaminants appear
     as dark specks and oily films, likely from manufacturing residues in electronics
@@ -16,135 +114,7 @@ caption:
     luster, so material integrity stays intact without thermal damage or cracks. Restoration
     quality is high-high, preserving rare-earth properties for electronics and optics
     use. Surface condition supports reliable performance in manufacturing.
-  generated: '2025-10-25T15:40:55.120869Z'
-  author: Ikmanda Roswati
-  generation_method: ai_research
-  word_count:
-    before: 58
-    after: 50
-  character_count:
-    before: 432
-    after: 397
-  description: Microscopic analysis of yttrium surface before and after laser cleaning
-    treatment
-materialProperties: {}
-materialCharacteristics: {}
-machineSettings:
-  energyDensity:
-    value: 5.1
-    min: 3.0
-    max: 8.0
-    unit: J/cm²
-    description: Fluence threshold for effective Yttrium contaminant removal without
-      substrate damage
-  fluenceThreshold:
-    value: 5.1
-    min: 3.0
-    max: 8.0
-    unit: J/cm²
-    description: Fluence threshold for effective Yttrium cleaning
-  overlapRatio:
-    value: 30
-    min: 20
-    max: 50
-    unit: '%'
-    description: Optimal beam overlap percentage for uniform Yttrium surface cleaning
-  passCount:
-    value: 2
-    min: 1
-    max: 5
-    unit: passes
-    description: Recommended number of cleaning passes for complete Yttrium surface
-      treatment
-  powerRange:
-    value: 100
-    min: 80
-    max: 120
-    unit: W
-    description: Optimal average power for Yttrium surface cleaning without thermal
-      damage
-  pulseWidth:
-    value: 10
-    min: 5
-    max: 20
-    unit: ns
-    description: Nanosecond pulse duration for efficient Yttrium ablation with controlled
-      thermal effects
-  repetitionRate:
-    value: 50
-    min: 20
-    max: 100
-    unit: kHz
-    description: Optimal repetition rate for continuous cleaning coverage on Yttrium
-      surfaces
-  scanSpeed:
-    value: 500
-    min: 200
-    max: 1000
-    unit: mm/s
-    description: Optimal scanning speed for efficient Yttrium surface coverage without
-      excessive overlap
-  spotSize:
-    value: 50
-    min: 30
-    max: 100
-    unit: μm
-    description: Beam spot diameter for precise Yttrium surface cleaning with adequate
-      energy density
-  wavelength:
-    value: 1064
-    min: 532
-    max: 10600
-    unit: nm
-    description: Near-IR wavelength optimized for Yttrium absorption and minimal reflectivity
-applications:
-- Electronics Manufacturing
-- Permanent Magnet Production
-- Optical Component Cleaning
-- Research Laboratory
-- Precision Manufacturing
-- Aerospace Components
-environmentalImpact:
-- Chemical Waste Elimination:
-    applicableIndustries:
-    - Semiconductor
-    - Electronics
-    - Medical
-    - Nuclear
-    description: Yttrium laser cleaning eliminates chemical waste streams by using
-      high-purity laser energy, enabled by its 17.2 W/(m·K) thermal conductivity,
-      to selectively ablate contaminants without the solvents, acids, or abrasive
-      media required by traditional methods.
-    quantifiedBenefits: Yttrium laser cleaning eliminates 100% of chemical waste,
-      reduces operational costs by 30%, and cuts cleaning cycle times by 50%.
-- Water Usage Reduction:
-    applicableIndustries: []
-    description: Yttrium's low thermal conductivity (10-17 W/(m·K)) enables highly
-      efficient laser-material interaction, minimizing the energy required for ablation
-      and eliminating the need for water-based cooling or cleaning agents.
-- Energy Efficiency:
-    applicableIndustries: []
-    description: Yttrium's low thermal conductivity (10-17 W/(m·K)) minimizes parasitic
-      heat transfer during laser ablation, concentrating photon energy for contaminant
-      removal and reducing the total power required for effective cleaning.
-- Air Quality Improvement:
-    applicableIndustries: []
-    description: Yttrium's low thermal conductivity (10-17 W/(m·K)) enables precise
-      laser ablation with minimal heat dispersion, preventing the vaporization of
-      substrates and reducing the generation of hazardous airborne particulates. This
-      targeted material removal eliminates the need for chemical solvents or abrasive
-      media, directly improving air quality by suppressing fugitive dust and volatile
-      organic compound (VOC) emissions.
-outcomeMetrics: []
-regulatoryStandards: []
-images:
-  hero:
-    alt: Yttrium surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/yttrium-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Yttrium surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/yttrium-laser-cleaning-micro.jpg
+subtitle: Precision laser cleaning restores Yttrium's pure rare-earth luster
 author:
   country: Indonesia
   expertise: Ultrafast Laser Physics and Material Interactions
@@ -153,6 +123,3 @@ author:
   name: Ikmanda Roswati
   sex: m
   title: Ph.D.
-categoryMetadata:
-  description: Lanthanide series elements with unique magnetic and optical properties
-    used in laser cleaning applications

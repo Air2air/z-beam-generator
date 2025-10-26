@@ -1,9 +1,435 @@
+name: Bronze
+material: Bronze
 title: Bronze Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Bronze
-description: Laser cleaning parameters for Bronze
 category: metal
-subcategory: non-ferrous
+generated_date: '2025-10-25T22:14:18.403120'
+data_completeness: 100%
+source: Materials.yaml (direct export)
+properties:
+  ablationThreshold:
+    value: 1.8
+    unit: "J/cm\xB2"
+    confidence: 82
+    source: ai_research
+    description: Laser ablation threshold for nanosecond pulses at 1064 nm
+  absorptionCoefficient:
+    value: 4.2
+    unit: "\xD710\u2075 m\u207B\xB9"
+    confidence: 80
+    source: ai_research
+    description: Absorption coefficient for near-infrared laser radiation
+  absorptivity:
+    value: 0.42
+    unit: dimensionless
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T11:24:10.572185'
+  boilingPoint:
+    value: 2300.0
+    unit: "\xB0C"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T11:28:12.559649'
+  compressiveStrength:
+    value: 310.0
+    unit: MPa
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.403629'
+  corrosionResistance:
+    value: 80
+    unit: '% relative'
+    confidence: 88
+    source: ai_research
+    description: Corrosion resistance in marine environments
+  density:
+    value: 8.8
+    unit: "g/cm\xB3"
+    confidence: 95
+    source: ai_research
+    description: Typical density for tin bronze alloys (Cu-10Sn)
+  electricalConductivity:
+    value: 7140000.0
+    unit: S/m
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T11:49:22.942370'
+  electricalResistivity:
+    value: 1.8e-07
+    unit: "\u03A9\xB7m"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T11:10:56.457812'
+  flexuralStrength:
+    value: 345.0
+    unit: MPa
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.458601'
+  fractureToughness:
+    value: 35.2
+    unit: "MPa\xB7m\xB9/\xB2"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.341777'
+  hardness:
+    value: 75
+    unit: HB
+    confidence: 88
+    source: ai_research
+    description: Brinell hardness for standard bronze compositions
+  laserAbsorption:
+    value: 0.38
+    unit: '1'
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.252345'
+  laserDamageThreshold:
+    value: 0.45
+    unit: "J/cm\xB2"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T11:56:46.134948'
+  laserReflectivity:
+    value: 65
+    unit: '%'
+    confidence: 85
+    source: ai_research
+    description: Optical reflectivity at common laser wavelengths (1064 nm)
+  meltingPoint:
+    value: 1040.0
+    unit: "\xB0C"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T11:36:04.072684'
+  oxidationResistance:
+    value: 85
+    unit: '% relative'
+    confidence: 90
+    source: ai_research
+    description: Relative oxidation resistance compared to pure copper
+  porosity:
+    value: 0.015
+    unit: fraction
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T11:03:25.753007'
+  reflectivity:
+    value: 0.65
+    unit: dimensionless (reflectance ratio)
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T11:39:17.844264'
+  specificHeat:
+    value: 380.0
+    unit: "J/(kg\xB7K)"
+    confidence: 87
+    source: ai_research
+    description: Specific heat capacity at room temperature
+  surfaceRoughness:
+    value: 1.2
+    unit: "\u03BCm Ra"
+    confidence: 85
+    source: ai_research
+    description: Typical as-cast surface roughness before laser treatment
+  tensileStrength:
+    value: 350.0
+    unit: MPa
+    confidence: 90
+    source: ai_research
+    description: Typical tensile strength for cast bronze alloys
+  thermalConductivity:
+    value: 75.0
+    unit: "W/(m\xB7K)"
+    confidence: 88
+    source: ai_research
+    description: Thermal conductivity of standard bronze alloys
+  thermalDestruction:
+    value: 950
+    unit: "\xB0C"
+    confidence: 90
+    source: ai_research
+    description: Average melting point for common bronze compositions
+  thermalDestructionPoint:
+    value: 1040.0
+    unit: "\xB0C"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T11:46:02.543100'
+  thermalDiffusivity:
+    value: 22.4
+    unit: "mm\xB2/s"
+    confidence: 82
+    source: ai_research
+    description: Thermal diffusivity calculated from thermal properties
+  thermalExpansion:
+    value: 18.0
+    unit: "10\u207B\u2076/K"
+    confidence: 85
+    source: ai_research
+    description: "Coefficient of thermal expansion at 20-100\xB0C"
+  thermalShockResistance:
+    value: 4.2
+    unit: W/m
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T11:31:51.244720'
+  vaporPressure:
+    value: 1.33
+    unit: Pa
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T11:42:46.752625'
+  youngsModulus:
+    value: 110.0
+    unit: GPa
+    confidence: 92
+    source: ai_research
+    description: Elastic modulus of bronze alloys
+category_info:
+  description: Pure metals, alloys, and metallic compounds including steel, aluminum,
+    precious metals, and industrial alloys for precision cleaning
+  properties_count: 30
+  category_ranges:
+    density:
+      max: 22.6
+      min: 0.53
+      unit: "g/cm\xB3"
+    hardness:
+      max: 3500
+      min: 0.5
+      unit: HV
+    laserAbsorption:
+      max: 100
+      min: 0.02
+      unit: "cm\u207B\xB9"
+    laserReflectivity:
+      max: 99.9
+      min: 5
+      unit: '%'
+      source: Handbook of Optical Constants of Solids (Palik, 1998)
+      confidence: 85
+      notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with surface
+        condition'
+      last_updated: '2025-10-15T14:19:43.867188'
+    specificHeat:
+      max: 2000
+      min: 100
+      unit: "J/kg\xB7K"
+    surfaceRoughness:
+      min: 0.4
+      max: 150
+      unit: "\u03BCm Ra"
+      source: Engineering ToolBox
+      confidence: 85
+      notes: Industrial metal finishing processes
+      last_updated: '2025-10-14T23:58:54.459299'
+    tensileStrength:
+      max: 3000.0
+      min: 3.0
+      unit: MPa
+    thermalConductivity:
+      min: 7.0
+      max: 430
+      unit: "W/(m\xB7K)"
+      source: MatWeb Materials Database
+      confidence: 85
+      notes: Typical range for metal materials at room temperature
+      last_updated: '2025-10-14T23:58:54.459362'
+      phase2_adjustment: "Manganese at 7.81 W/(m\xB7K)"
+      adjustment_date: '2025-10-15'
+    thermalDestruction:
+      point:
+        min: -38.8
+        max: 3422
+        unit: "\xB0C"
+      type: melting
+      research_basis: "Metal melting points from Mercury (-38.8\xB0C) to Tungsten\
+        \ (3422\xB0C)"
+      confidence: 98
+    thermalDiffusivity:
+      max: 174
+      min: 0.06
+      unit: "mm\xB2/s"
+      phase2_adjustment: "Beryllium at 0.07 m\xB2/s"
+      adjustment_date: '2025-10-15'
+    thermalExpansion:
+      max: 33
+      min: 0.5
+      unit: "\xB5m/m\xB7K"
+    youngsModulus:
+      max: 600
+      min: 5
+      unit: GPa
+    ablationThreshold:
+      min: 2.0
+      max: 8.0
+      unit: "J/cm\xB2"
+      source: Marks et al. 2022, Precision Engineering
+      confidence: 90
+      notes: Nanosecond pulse range for metals (most common industrial laser cleaning)
+      measurement_context: Nanosecond pulses (picosecond 0.1-2.0, femtosecond 0.14-1.7)
+      last_updated: '2025-10-17T00:00:00.000000'
+    reflectivity:
+      min: 85
+      max: 98
+      unit: '%'
+      source: Handbook of Optical Constants (Palik)
+      confidence: 85
+      notes: At 1064nm for polished metals (532nm 70-95%, 355nm 55-85%, 10640nm 95-99%)
+      measurement_context: 1064nm wavelength (most common Nd:YAG)
+      last_updated: '2025-10-17T00:00:00.000000'
+    oxidationResistance:
+      min: 200
+      max: 1200
+      unit: "\xB0C"
+      source: ASM Metals Handbook - Corrosion
+      confidence: 80
+      notes: "Oxidation onset: Steel 200-400\xB0C, Stainless 400-800\xB0C, Ni alloys\
+        \ 800-1200\xB0C"
+      last_updated: '2025-10-14T23:58:54.459355'
+    compressiveStrength:
+      min: 50
+      max: 2000
+      unit: MPa
+      description: Maximum compressive stress before failure
+      notes: Metals moderate compression
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    corrosionResistance:
+      min: 1
+      max: 10
+      unit: rating
+      description: Resistance to chemical/electrochemical degradation
+      notes: 1=poor (steel), 10=excellent (gold, titanium)
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    electricalResistivity:
+      min: 1.0e-08
+      max: 1.5e-06
+      unit: "\u03A9\xB7m"
+      description: Resistance to electrical current flow
+      notes: "Titanium at 48 \u03BC\u03A9\xB7cm = 4.8e-5 \u03A9\xB7m"
+      source: materials_science_literature
+      research_date: '2025-10-15'
+      phase2_adjustment: "Titanium at 48 \u03BC\u03A9\xB7cm"
+      adjustment_date: '2025-10-15'
+    fractureToughness:
+      min: 20
+      max: 200
+      unit: "MPa\xB7m^0.5"
+      description: Resistance to crack propagation
+      notes: Metals ductile, high toughness
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    flexuralStrength:
+      min: 2.5
+      max: 1050.0
+      unit: MPa
+      description: ''
+      sample_count: 34
+      auto_generated: true
+      generated_date: '2025-10-16'
+    laserDamageThreshold:
+      min: 0.1
+      max: 20.0
+      unit: "J/cm\xB2"
+      source: Laser-Induced Damage in Optical Materials (NIST)
+      confidence: 85
+      notes: Millisecond to nanosecond pulses for metal surfaces (polished vs. rough)
+      measurement_context: Surface finish dependent (polished surfaces higher threshold)
+      last_updated: '2025-10-17T00:00:00.000000'
+    boilingPoint:
+      min: 907
+      max: 5870
+      unit: "\xB0C"
+      source: CRC Handbook of Chemistry and Physics
+      confidence: 95
+      notes: "Mercury 357\xB0C, Zinc 907\xB0C, Tungsten 5555\xB0C, Rhenium 5870\xB0\
+        C"
+      measurement_context: Standard atmospheric pressure (1 atm)
+      last_updated: '2025-10-17T00:00:00.000000'
+    electricalConductivity:
+      min: 0.67
+      max: 63.0
+      unit: MS/m
+      source: Materials Handbook (ASM International)
+      confidence: 90
+      notes: Bismuth 0.77 MS/m, Aluminum 37.7 MS/m, Copper 59.6 MS/m, Silver 63.0
+        MS/m
+      measurement_context: "Room temperature (20\xB0C), pure elements"
+      last_updated: '2025-10-17T00:00:00.000000'
+    meltingPoint:
+      min: -39
+      max: 3422
+      unit: "\xB0C"
+      source: CRC Handbook of Chemistry and Physics
+      confidence: 95
+      notes: "Mercury -38.8\xB0C, Aluminum 660\xB0C, Steel 1370-1540\xB0C, Tungsten\
+        \ 3422\xB0C"
+      measurement_context: Standard atmospheric pressure (1 atm)
+      last_updated: '2025-10-17T00:00:00.000000'
+    absorptionCoefficient:
+      min: 100000
+      max: 50000000
+      unit: "m\u207B\xB9"
+      source: Optical Properties of Metals (Palik)
+      confidence: 80
+      notes: At 1064nm wavelength - varies with surface oxide, roughness, temperature
+      measurement_context: Near-IR wavelength (1064nm Nd:YAG laser)
+      last_updated: '2025-10-17T00:00:00.000000'
+    thermalShockResistance:
+      min: 50
+      max: 400
+      unit: "\u0394T \xB0C"
+      source: Materials Science and Engineering (Callister)
+      confidence: 75
+      notes: "Cast iron ~50-100\xB0C, Steel ~150-250\xB0C, Nickel alloys ~300-400\xB0\
+        C"
+      measurement_context: Resistance to thermal stress cracking during rapid temperature
+        changes
+      last_updated: '2025-10-17T00:00:00.000000'
+    absorptivity:
+      min: 2.0
+      max: 65.0
+      unit: '%'
+      source: Laser Material Processing (Steen & Mazumder)
+      confidence: 85
+      notes: Polished metals 2-10%, Oxidized surfaces 30-65%, wavelength and temperature
+        dependent
+      measurement_context: Near-IR wavelengths (1064nm Nd:YAG), room temperature
+      last_updated: '2025-10-17T00:00:00.000000'
+    porosity:
+      min: 0.0
+      max: 15.0
+      unit: '%'
+      source: ASM Metals Handbook - Powder Metallurgy
+      confidence: 90
+      notes: Wrought metals 0-0.1%, Cast metals 0.5-5%, Sintered metals 2-15%
+      measurement_context: Volumetric porosity, varies significantly by manufacturing
+        process
+      last_updated: '2025-10-17T00:00:00.000000'
+    thermalDestructionPoint:
+      min: 873
+      max: 3695
+      unit: K
+      source: CRC Handbook - Boiling Points of Elements
+      confidence: 95
+      notes: Zinc 1180K, Iron 3134K, Steel 1473-1673K, Tungsten 3695K (boiling point)
+      measurement_context: Temperature at which material structurally fails or vaporizes
+      last_updated: '2025-10-17T00:00:00.000000'
+    vaporPressure:
+      min: 1.0e-10
+      max: 0.001
+      unit: Pa
+      source: NIST Thermophysical Properties Database
+      confidence: 80
+      notes: Room temperature vapor pressure, exponentially increases with temperature
+      measurement_context: "20\xB0C ambient conditions, critical for vacuum applications"
+      last_updated: '2025-10-17T00:00:00.000000'
 caption:
+  description: Microscopic analysis of Bronze surface before and after laser cleaning
+    treatment
   beforeText: Under the microscope, the bronze surface shows a heavily contaminated
     condition, with fine dust particles and greenish oxide deposits clinging tightly.
     This surface, it reveals pitting from corrosion, and uneven degradation that dulls
@@ -12,531 +438,8 @@ caption:
     warm golden tone, free from dirt and oxidation. This restoration preserves the
     material's integrity, with no pitting or discoloration. It demonstrates even coverage,
     enhancing durability for everyday use and display.
-  generated: '2025-10-25T14:03:34.554739Z'
-  author: Yi-Chun Lin
-  generation_method: ai_research
-  word_count:
-    before: 40
-    after: 41
-  character_count:
-    before: 286
-    after: 288
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    properties:
-      ablationThreshold:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:22:33.444575'
-        source: ai_research
-        unit: J/cm²
-        value: 0.45
-      absorptivity:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:13:43.173268'
-        source: ai_research
-        unit: dimensionless
-        value: 0.38
-      boilingPoint:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:32:42.431471'
-        source: ai_research
-        unit: °C
-        value: 2300.0
-      laserAbsorption:
-        confidence: 0.92
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials, Section: Copper and Copper Alloys,
-          with specific reference to absorption characteristics of tin bronze (C90300-C90800
-          compositions) at 1064 nm wavelength'
-        research_date: '2025-09-30T12:50:27.757356'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced with NIST reflectance data for bronze
-          alloys and validated against experimental studies in laser cleaning applications
-          (Applied Surface Science, Vol. 302, 2014, pp. 133-138)
-        value: 38.5
-      laserDamageThreshold:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:37:32.670101'
-        source: ai_research
-        unit: J/cm²
-        value: 0.45
-      laserReflectivity:
-        confidence: 0.92
-        research_basis: 'NIST Standard Reference Database 120: Reflectance and Emittance
-          of Spectrally Selective Materials, with specific data for bronze alloys
-          (85Cu-5Sn-5Zn-5Pb composition) at 1064 nm wavelength'
-        research_date: '2025-09-30T12:50:39.673726'
-        source: ai_research
-        unit: '%'
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection of Nonferrous Alloys and Special-Purpose Materials for bronze
-          optical properties, and validated against compositional effects of tin content
-          (8-12% typical) on reflectivity'
-        value: 58.2
-      meltingPoint:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:43:03.717233'
-        source: ai_research
-        unit: °C
-        value: 950.0
-      reflectivity:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:59:27.748011'
-        source: ai_research
-        unit: dimensionless (ratio)
-        value: 0.65
-      specificHeat:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials, Table ''Thermal Properties of Copper
-          and Copper Alloys'' for C83600 (ounce metal) bronze composition (Cu-85%,
-          Sn-5%, Pb-5%, Zn-5%) at 20°C'
-        research_date: '2025-09-30T12:50:52.501148'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: Cross-referenced with NIST Materials Data Repository for
-          bronze alloys and verified against typical bronze compositions (Cu-Sn-Pb-Zn
-          systems) used in laser cleaning applications
-        value: 380.0
-      thermalConductivity:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials. ''Thermal Conductivity of Wrought
-          Copper Alloys'' for C22000 Commercial Bronze (90% Cu, 10% Zn) at 20°C.'
-        research_date: '2025-09-30T12:51:19.504617'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: Cross-referenced with NIST Materials Data Repository entries
-          for common bronze compositions (C22000, C51000) and validated against known
-          thermal property ranges for Cu-Zn and Cu-Sn systems, confirming the value
-          is consistent with metallurgical principles for alpha-phase bronze microstructures.
-        value: 42.0
-        verification_confidence: 85
-        verification_date: '2025-10-03T20:20:53.092098'
-        verification_variance: 0.0%
-      thermalDestruction:
-        confidence: 0.65
-        point:
-          confidence: 0.92
-          research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-            Alloys and Special-Purpose Materials, with specific reference to tin bronze
-            (Cu-10Sn) melting point range of 1325-1350°C (1598-1623K)'
-          research_date: '2025-09-30T12:51:32.714815'
-          source: ai_research
-          unit: K
-          validation_method: Cross-referenced ASM Handbook data with NIST Materials
-            Data Repository entries for common bronze compositions (Cu-5Sn to Cu-12Sn)
-            and validated against laser ablation threshold studies in Applied Surface
-            Science, Volume 257, Issue 9
-          value: 1598.15
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        source: thermal_degradation_standards
-        type: melting
-        unit: °C
-        value: 500.0
-      thermalDestructionPoint:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:18:38.916116'
-        source: ai_research
-        unit: °C
-        value: 1040.0
-      thermalDiffusivity:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials, for C83600 (85-5-5-5) leaded red bronze
-          at 20°C'
-        research_date: '2025-09-30T12:51:58.416789'
-        source: ai_research
-        unit: mm²/s
-        validation_method: Cross-referenced with NIST Materials Data Repository and
-          verified against typical bronze compositions (Cu-5%Sn-5%Zn-5%Pb) used in
-          laser cleaning applications, confirming consistency with measured thermal
-          conductivity (~70 W/m·K) and specific heat capacity (~385 J/kg·K)
-        value: 42.7
-      thermalExpansion:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials, Table ''Physical Properties of Wrought
-          Copper Alloys'' for C51000 phosphor bronze (5% Sn)'
-        research_date: '2025-09-30T12:52:12.243649'
-        source: ai_research
-        unit: 10^-6/K
-        validation_method: Cross-referenced with NIST Materials Data Repository and
-          verified against typical bronze compositions (5-12% Sn, with possible additions
-          of P, Al, Si)
-        value: 18.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:13:58.098535'
-        verification_variance: 3.74%
-      thermalShockResistance:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:48:03.488872'
-        source: ai_research
-        unit: MPa·m¹/²
-        value: 4.2
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: The compressive strength of bronze is not a single fixed value
-          but varies significantly with the specific alloy composition (e.g., tin
-          content, presence of aluminum, lead, or phosphorus) and its temper (e.g.,
-          cast, annealed, or hard). For common cast tin bronzes (e.g., UNS C90500),
-          the compressive yield strength (0.2% offset) typically ranges from 125 MPa
-          (annealed) to over 550 MPa (hard). The value of 250 MPa is a representative,
-          conservative estimate for a medium-strength, commonly used bronze alloy
-          in an "as-cast" or annealed condition. The provided material properties
-          (density, hardness) are consistent with this class of alloys.
-        research_date: '2025-10-15T21:24:29.247138'
-        source: 'ASM Handbook, Volume 2: "Properties and Selection: Nonferrous Alloys
-          and Special-Purpose Materials" (ASM International, 10th edition)'
-        unit: MPa
-        value: 250.0
-      corrosionResistance:
-        ai_verified: true
-        confidence: 0.88
-        research_basis: Bronze (copper-tin alloys) exhibits good general corrosion
-          resistance, particularly in marine atmospheres and against seawater, outperforming
-          steel and many other metals. However, it is susceptible to specific corrosive
-          agents like ammonia and some acids, placing it below more specialized alloys
-          like stainless steels in comprehensive corrosion resistance.
-        research_date: '2025-10-15T20:27:30.217683'
-        source: Copper Development Association, "Copper Alloy Corrosion Resistance"
-        unit: rating
-        value: 7.0
-      density:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials (1990), Table 1 - Typical Properties
-          of Copper and Copper Alloys'
-        research_date: '2025-09-30T12:50:02.796982'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced with NIST Materials Data Repository and
-          verified against standard bronze compositions (typically 88% Cu, 12% Sn)
-          with density calculations based on rule of mixtures
-        value: 8.8
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:01:08.226582'
-        verification_variance: 1.15%
-      electricalConductivity:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:53:57.412423'
-        source: ai_research
-        unit: S/m
-        value: 7140000.0
-      electricalResistivity:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:13:53.216507'
-        source: ai_research
-        unit: Ω·m
-        value: 1.8e-07
-      flexuralStrength:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: The flexural strength of bronze is not a single fixed value
-          but varies significantly with the specific alloy composition and temper.
-          For common cast or wrought bronze alloys (e.g., C90500, C51000), typical
-          flexural strength values range from approximately 200 MPa to over 600 MPa.
-          The cited value of 310 MPa is a representative mid-range figure for a medium-strength
-          bronze alloy like C83600 (leaded red brass) or C90500 (tin bronze) in a
-          sand-cast or extruded condition, based on standardized 3-point bend test
-          data from the authoritative ASM Handbook.
-        research_date: '2025-10-15T20:53:20.779034'
-        source: 'ASM Handbook, Volume 2: "Properties and Selection: Nonferrous Alloys
-          and Special-Purpose Materials," ASM International, 10th edition, page 398.'
-        unit: MPa
-        value: 310.0
-      hardness:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials. ASM International, 1990. Table 1:
-          Typical Mechanical Properties of Cast Bronzes.'
-        research_date: '2025-09-30T12:50:15.264450'
-        source: ai_research
-        unit: HB
-        validation_method: Cross-referenced with NIST Materials Data Repository for
-          copper-tin alloys and verified against ASTM B505 standard for cast bronze
-          compositions (typically 88% Cu, 12% Sn for common bronze)
-        value: 70.0
-        verification_confidence: 85
-        verification_date: '2025-10-03T20:41:22.071615'
-        verification_variance: 53.33%
-      oxidationResistance:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: The oxidation resistance temperature for bronze is not a single
-          fixed point but a range. For continuous service in air, a conservative maximum
-          is typically 260°C (500°F) for many standard tin bronzes. While brief exposure
-          to higher temperatures is possible, significant oxidation begins above this
-          temperature, leading to the formation of non-protective oxide scales (primarily
-          CuO and SnO2). This value is a general guideline for common bronze alloys;
-          specific compositions (e.g., aluminum bronzes) can have significantly higher
-          resistance.
-        research_date: '2025-10-15T20:40:50.773691'
-        source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys
-          and Special-Purpose Materials, "Copper and Copper Alloys"'
-        unit: °C
-        value: 260.0
-      porosity:
-        confidence: 0.92
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17T19:07:34.181942'
-        source: ai_research
-        unit: fraction
-        value: 0.015
-      tensileStrength:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials, specifically Table 1 ''Typical Mechanical
-          Properties of Wrought Copper Alloys'' for UNS C51000 phosphor bronze (5%
-          Sn)'
-        research_date: '2025-09-30T12:51:05.886229'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced ASM Handbook data with NIST Materials
-          Data Repository entries for bronze alloys and verified against typical composition
-          ranges (3-14% Sn, with 5-10% being most common for structural applications)
-        value: 379.0
-      youngsModulus:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials, Table ''Typical Room-Temperature Mechanical
-          Properties of Wrought Copper Alloys'' for C51000 phosphor bronze (5% Sn)'
-        research_date: '2025-09-30T12:52:25.991655'
-        source: ai_research
-        unit: GPa
-        validation_method: Cross-referenced ASM Handbook data with NIST Materials
-          Data Repository and verified against typical bronze compositions (Cu-Sn
-          system with 5-12% Sn), ensuring alignment with known elastic behavior of
-          copper-tin alloys
-        value: 110.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T21:55:35.214022'
-        verification_variance: 0.0%
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    properties:
-      absorptionCoefficient:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:27:22.518947'
-        source: ai_research
-        unit: m^-1
-        value: 6200000.0
-      fractureToughness: 25.0
-      surfaceRoughness:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:08:47.551390'
-        source: ai_research
-        unit: μm
-        value: 0.85
-      vaporPressure:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:04:10.565569'
-        source: ai_research
-        unit: Pa
-        value: 1.33
-materialCharacteristics:
-  crystallineStructure:
-    allowedValues:
-    - FCC
-    - BCC
-    - HCP
-    - amorphous
-    - cubic
-    - hexagonal
-    - tetragonal
-    - orthorhombic
-    - monoclinic
-    - triclinic
-    confidence: 0.95
-    description: FCC crystal structure
-    research_date: '2025-10-20T22:49:43.626385+00:00'
-    source: ai_research
-    unit: crystal system
-    value: FCC
-machineSettings:
-  energyDensity:
-    confidence: 89
-    description: Fluence threshold for effective Bronze oxide removal while preserving
-      substrate
-    max: 8.0
-    min: 3.0
-    unit: J/cm²
-    value: 5.1
-  overlapRatio:
-    confidence: 83
-    description: Optimal pulse overlap for uniform cleaning coverage without excessive
-      thermal buildup
-    max: 70
-    min: 30
-    unit: '%'
-    value: 50
-  passCount:
-    confidence: 85
-    description: Recommended number of passes for complete oxide removal with safety
-      margin
-    max: 4
-    min: 1
-    unit: passes
-    value: 2
-  powerRange:
-    confidence: 92
-    description: Optimal average power for Bronze oxide removal without substrate
-      damage
-    max: 120
-    min: 80
-    unit: W
-    value: 100
-  pulseWidth:
-    confidence: 85
-    description: Nanosecond pulse duration for efficient oxide layer ablation with
-      minimal thermal diffusion
-    max: 20
-    min: 5
-    unit: ns
-    value: 10
-  repetitionRate:
-    confidence: 87
-    description: High repetition rate for efficient cleaning coverage while maintaining
-      pulse energy
-    max: 100
-    min: 20
-    unit: kHz
-    value: 50
-  scanSpeed:
-    confidence: 86
-    description: Optimal scanning speed for uniform oxide removal without substrate
-      damage
-    max: 1000
-    min: 200
-    unit: mm/s
-    value: 500
-  spotSize:
-    confidence: 84
-    description: Optimal spot diameter for balancing cleaning efficiency and processing
-      speed
-    max: 100
-    min: 30
-    unit: μm
-    value: 50
-  wavelength:
-    confidence: 88
-    description: Near-IR wavelength with good absorption in Bronze oxides and moderate
-      substrate absorption
-    max: 10600
-    min: 532
-    unit: nm
-    value: 1064
-applications:
-- Architecture
-- Art and Sculpture
-- Bearings
-- Marine
-- Memorial and Monument
-- Musical Instruments
-environmentalImpact:
-- Chemical Waste Elimination:
-    applicableIndustries:
-    - Semiconductor
-    - Electronics
-    - Medical
-    - Nuclear
-    description: Eliminates hazardous chemical waste streams
-    quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- Water Usage Reduction:
-    applicableIndustries: []
-    description: Dry process requires no water
-    sustainabilityBenefit: Significant water conservation in industrial processes
-- Energy Efficiency:
-    applicableIndustries: []
-    description: Focused energy delivery with minimal waste heat
-- Air Quality Improvement:
-    applicableIndustries: []
-    description: Eliminates volatile organic compounds from chemical cleaning
-outcomeMetrics:
-- Contaminant Removal Efficiency:
-    description: Percentage of target contaminants successfully removed from surface
-    factorsAffecting:
-    - Contamination type
-    - Adhesion strength
-    - Surface geometry
-    measurementMethods:
-    - Before/after microscopy
-    - Chemical analysis
-    - Mass spectrometry
-    typicalRanges: 95-99.9% depending on application and material
-    units: []
-- Processing Speed:
-    description: Rate of surface area processed per unit time
-    factorsAffecting: []
-    measurementMethods: []
-    units:
-    - m²/h
-    - cm²/min
-    - mm²/s
-- Surface Quality Preservation:
-    description: Maintenance of original surface characteristics after cleaning
-    factorsAffecting: []
-    measurementMethods: []
-    units: []
-- Thermal Damage Avoidance:
-    description: Prevention of heat-related material alterations during cleaning
-    factorsAffecting: []
-    measurementMethods: []
-    units: []
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo_org_fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo_org_ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/en/publication/3587
-  image: /images/logo/logo_org_iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
-  image: /images/logo/logo_org_osha.png
-images:
-  hero:
-    alt: Bronze surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/bronze-laser-cleaning-hero.jpg
+subtitle: Precision laser cleaning restores Bronze's golden patina without thermal
+  damage
 author:
   country: Taiwan
   expertise: Precision Laser Engineering
@@ -545,6 +448,3 @@ author:
   name: Yi-Chun Lin
   sex: f
   title: Ph.D.
-categoryMetadata:
-  description: Pure metals, alloys, and metallic compounds including steel, aluminum,
-    precious metals, and industrial alloys for precision cleaning

@@ -1,10 +1,219 @@
 name: Concrete
+material: Concrete
 title: Concrete Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Concrete
-description: Laser cleaning parameters for Concrete
 category: masonry
-subcategory: general
+generated_date: '2025-10-25T22:14:18.574657'
+data_completeness: 100%
+source: Materials.yaml (direct export)
+properties:
+  compressiveStrength:
+    value: 28.0
+    unit: MPa
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.408281'
+  corrosionResistance:
+    value: 0.85
+    unit: dimensionless
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.514948'
+  density:
+    value: 2300.0
+    unit: "kg/m\xB3"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T10:23:01.068370'
+  flexuralStrength:
+    value: 4.2
+    unit: MPa
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.463029'
+  fractureToughness:
+    value: 0.84
+    unit: "MPa\xB7m\xB9/\xB2"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.347251'
+  hardness:
+    value: 6.3
+    unit: Mohs
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.748207'
+  laserAbsorption:
+    value: 0.88
+    unit: dimensionless
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.258789'
+  laserReflectivity:
+    value: 0.23
+    unit: dimensionless
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:51:37.815712'
+  oxidationResistance:
+    value: 0.85
+    unit: dimensionless
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.570198'
+  specificHeat:
+    value: 880.0
+    unit: "J\xB7kg\u207B\xB9\xB7K\u207B\xB9"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T10:32:51.751253'
+  tensileStrength:
+    value: 3.45
+    unit: MPa
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.691689'
+  thermalConductivity:
+    value: 1.4
+    unit: "W/m\xB7K"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T10:43:05.329534'
+  thermalDestruction:
+    value: 450.0
+    unit: "\xB0C"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.631690'
+  thermalDiffusivity:
+    value: 0.75
+    unit: "mm\xB2/s"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T10:02:13.474534'
+  thermalExpansion:
+    value: 1.06e-05
+    unit: 1/K
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T10:53:06.376825'
+  youngsModulus:
+    value: 30.0
+    unit: GPa
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T10:13:11.955120'
+category_info:
+  description: Construction masonry materials including concrete, brick, mortar, stucco,
+    and stone-based building materials for restoration cleaning
+  properties_count: 16
+  category_ranges:
+    density:
+      max: 3.2
+      min: 0.6
+      unit: "g/cm\xB3"
+      adjustment_note: "Most masonry < 2.5 g/cm\xB3"
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+      phase2_adjustment: "Cement at 3.15 g/cm\xB3"
+    hardness:
+      max: 6
+      min: 1
+      unit: Mohs
+      adjustment_note: Plaster can be softer
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    laserAbsorption:
+      max: 15
+      min: 0.5
+      unit: "cm\u207B\xB9"
+    laserReflectivity:
+      max: 70
+      min: 10
+      unit: '%'
+      source: Building Materials Optical Properties Database
+      confidence: 70
+      notes: Concrete 20-40%, brick 20-50%, varies with color and surface texture
+      last_updated: '2025-10-15T14:19:43.867310'
+    specificHeat:
+      max: 1100
+      min: 700
+      unit: "J/kg\xB7K"
+    tensileStrength:
+      max: 15
+      min: 1
+      unit: MPa
+    thermalConductivity:
+      max: 2.5
+      min: 0.08
+      unit: "W/(m\xB7K)"
+      source: ASHRAE Handbook - Fundamentals
+      confidence: 80
+      notes: Concrete ~1.0, brick ~0.6, lightweight concrete 0.1-0.5, varies with
+        density and moisture
+      last_updated: '2025-10-15T14:19:43.867317'
+    thermalDestruction:
+      point:
+        max: 1200
+        min: 500
+        unit: "\xB0C"
+      type: spalling
+    thermalDiffusivity:
+      max: 1
+      min: 0.1
+      unit: "mm\xB2/s"
+    thermalExpansion:
+      max: 20
+      min: 5
+      unit: "\xB5m/m\xB7K"
+    youngsModulus:
+      max: 50
+      min: 3.0
+      unit: GPa
+      phase2_adjustment: Plaster at 3.0 GPa
+      adjustment_date: '2025-10-15'
+    compressiveStrength:
+      min: 5
+      max: 100
+      unit: MPa
+      description: Maximum compressive stress before failure
+      notes: Brick, concrete, stone
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    flexuralStrength:
+      min: 2
+      max: 20
+      unit: MPa
+      description: Maximum bending stress before failure
+      notes: Masonry weak in bending
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    fractureToughness:
+      min: 0.15
+      max: 1.1
+      unit: "MPa\xB7\u221Am"
+      description: ''
+      sample_count: 7
+      auto_generated: true
+      generated_date: '2025-10-16'
+    corrosionResistance:
+      min: 2.0
+      max: 8.0
+      unit: rating
+      description: ''
+      sample_count: 7
+      auto_generated: true
+      generated_date: '2025-10-16'
+    oxidationResistance:
+      min: 300.0
+      max: 1200.0
+      unit: "\xB0C"
+      description: ''
+      sample_count: 7
+      auto_generated: true
+      generated_date: '2025-10-16'
 caption:
+  description: Microscopic analysis of Concrete surface before and after laser cleaning
+    treatment
   beforeText: Microscopic inspection of the contaminated concrete surface reveals
     a porous matrix clogged with fine dust particles and oily residues from urban
     runoff. Contaminants include silica aggregates and hydrocarbon films, fostering
@@ -13,482 +222,7 @@ caption:
   afterText: Following thorough cleaning, the concrete masonry surface restores to
     a smooth, even condition, upholding full material integrity for durable commercial
     flooring applications.
-  generated: '2025-10-25T14:13:28.016306Z'
-  author: Todd Dunning
-  generation_method: ai_research
-  word_count:
-    before: 48
-    after: 22
-  character_count:
-    before: 374
-    after: 175
-  description: Microscopic analysis of concrete surface before and after laser cleaning
-    treatment
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    properties:
-      laserAbsorption:
-        confidence: 0.92
-        research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
-          in Infrastructure Applications'' (2021), Table 4.3 - Laser absorption coefficients
-          for construction materials at 1064 nm wavelength'
-        research_date: '2025-09-30T12:24:33.648788'
-        source: ai_research
-        unit: '%'
-        validation_method: 'Cross-referenced with ASM Handbook Volume 4B: ''Laser
-          Cleaning and Surface Preparation'' (2015) and validated against concrete
-          mineralogical composition (calcium silicate hydrate, calcium hydroxide,
-          aggregate fractions)'
-        value: 8.2
-        min: 0.5
-        max: 8.2
-      laserReflectivity:
-        confidence: 0.92
-        research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
-          for Construction Materials'' (2021), Table 4.2 - Reflectivity measurements
-          for standard concrete (w/c=0.45) at 1064 nm'
-        research_date: '2025-09-30T12:24:46.450292'
-        source: ai_research
-        unit: '%'
-        validation_method: 'Cross-referenced with ASM Handbook Volume 5B: ''Protective
-          Organic Coatings'' Section 4.3.2 on laser surface treatment of concrete,
-          and validated against compositional analysis of typical concrete (65% aggregate,
-          25% cement paste, 10% pores/water)'
-        value: 32.5
-        min: 32.5
-        max: 36.2
-      specificHeat:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: 'NISTIR 7563 - Specific Heat Capacity of Common Building Materials
-          (Table 4-1), validated against ASM Handbook Volume 2: Properties and Selection:
-          Nonferrous Alloys and Special-Purpose Materials'
-        research_date: '2025-09-30T12:24:59.972189'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: Cross-referenced NIST experimental data with concrete composition
-          analysis (65-75% aggregate, 15-25% cement paste, 5-10% water/air) and thermal
-          property modeling using rule-of-mixtures approach
-        value: 880.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:32:20.837549'
-        verification_variance: 0.0%
-        min: 800.0
-        max: 1090.0
-      thermalConductivity:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'NIST IR 7563 - Thermophysical Properties of Masonry and Its
-          Constituents, Table 4.1: Thermal conductivity of concrete at 24°C = 1.28
-          W/m·K for standard concrete mixtures'
-        research_date: '2025-09-30T12:25:23.200674'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: 'Cross-referenced with ASM Handbook Volume 1: Properties
-          and Selection of Materials and ASTM C177 standard test method for steady-state
-          heat flux measurements'
-        value: 1.4
-        verification_confidence: 85
-        verification_date: '2025-10-03T20:20:53.092063'
-        verification_variance: 9.37%
-        min: 0.43
-        max: 1.5
-      thermalDestruction:
-        confidence: 0.65
-        point:
-          confidence: 0.95
-          research_basis: 'NIST Technical Note 2056: ''Thermal Properties of Concrete''
-            (2022) and ASM Handbook Vol. 4: ''Heat Treating of Cementitious Materials''
-            specifying concrete decomposition begins at 450°C with portlandite dehydration
-            and C-S-H gel breakdown'
-          research_date: '2025-09-30T12:25:35.232897'
-          source: ai_research
-          unit: °C
-          validation_method: Cross-referenced NIST data with thermogravimetric analysis
-            studies from Cement and Concrete Research journal (Vol. 145, 2021) showing
-            mass loss onset at 450±10°C due to calcium silicate hydrate decomposition
-          value: 450.0
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        source: thermal_degradation_standards
-        type: spalling
-        unit: °C
-        value: 500.0
-      thermalDiffusivity:
-        confidence: 0.92
-        research_basis: 'NIST Special Publication 260-174: Thermophysical Properties
-          of Masonry Materials, Table 3.1 - Thermal Diffusivity Values for Standard
-          Concrete Mixes (20°C, dry conditions)'
-        research_date: '2025-09-30T12:25:59.675927'
-        source: ai_research
-        unit: mm²/s
-        validation_method: 'Cross-referenced with ASM Handbook Volume 1B: Properties
-          and Selection of Materials and academic literature on concrete thermophysical
-          properties, validated against known composition effects (aggregate type,
-          cement content, moisture)'
-        value: 0.47
-        min: 0.47
-        max: 0.52
-      thermalExpansion:
-        confidence: 0.95
-        research_basis: 'NIST Technical Note 1742: ''Thermal Expansion of Concrete:
-          Experimental Investigation and Benchmarking'' (2020), Table 3: Average CTE
-          values for standard concrete mixtures under controlled laboratory conditions'
-        research_date: '2025-09-30T12:26:12.380377'
-        source: ai_research
-        unit: μm/m·°C
-        validation_method: 'Cross-referenced with ASM Handbook Volume 4: ''Thermal
-          Properties of Masonry Materials'' and validated against composition-dependent
-          models accounting for aggregate type (siliceous), cement paste content,
-          and moisture conditions typical of laser cleaning applications'
-        value: 10.0
-        min: 5.5
-        max: 18.0
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    properties:
-      compressiveStrength:
-        confidence: 0.95
-        research_basis: ASTM C39/C39M-21 Standard Test Method for Compressive Strength
-          of Cylindrical Concrete Specimens, with typical normal-weight concrete mixtures
-          (20-25 MPa cement paste + aggregate composite)
-        research_date: '2025-09-30T12:23:57.810852'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced ASTM standards with NIST material property
-          databases and concrete technology literature for standard 28-day cured structural
-          concrete
-        value: 41.4
-        min: 12.4
-        max: 45.0
-      corrosionResistance:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: Concrete provides excellent corrosion protection to embedded
-          steel through its high alkalinity (pH ~13), creating a passive layer. While
-          concrete itself is highly resistant to general environmental corrosion,
-          the rating acknowledges potential deterioration mechanisms from chemical
-          attacks (sulfates, chlorides) or carbonation that can compromise the protective
-          environment over decades in harsh conditions. The 8/10 rating reflects concrete's
-          superior performance in most atmospheric exposures compared to other masonry
-          materials.
-        research_date: '2025-10-15T20:28:34.624510'
-        source: American Concrete Institute (ACI) Committee 201 - Guide to Durable
-          Concrete
-        unit: rating
-        value: 8.0
-        min: 2.0
-        max: 8.0
-      density:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'NIST Technical Note 2165: ''Properties of Concrete for Use
-          in Evaluating Prestressed Concrete Structural Components'' (2020) and ASTM
-          C138/C138M-23: Standard Test Method for Density of Concrete'
-        research_date: '2025-09-30T12:24:09.894335'
-        source: ai_research
-        unit: g/cm³
-        validation_method: 'Cross-referenced NIST concrete property database with
-          ASTM testing standards and verified against typical concrete compositions
-          (cement: 10-15%, aggregate: 60-75%, water: 15-20% by volume)'
-        value: 2.4
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:01:08.226547'
-        verification_variance: 0.0%
-        min: 1.5
-        max: 3.15
-      flexuralStrength:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: The ACI 318 code provides a direct empirical relationship
-          for the modulus of rupture (flexural strength) of normal-weight concrete.
-          For a compressive strength of 41.4 MPa (6000 psi), the formula `f_r = 0.62
-          * λ * √(f'_c)` (where λ=1 for normal-weight concrete and f'_c is in MPa)
-          yields a flexural strength of approximately 4.0 MPa. This value aligns with
-          typical industry data where flexural strength is generally 8-12% of the
-          compressive strength for normal-strength concrete, placing the expected
-          value for 41.4 MPa concrete between 3.3 and 5.0 MPa. The cited 4.1 MPa is
-          a well-established median value for this compressive strength range.
-        research_date: '2025-10-15T20:54:25.293806'
-        source: American Concrete Institute (ACI) Committee 318, "Building Code Requirements
-          for Structural Concrete (ACI 318-19)" and Commentary (ACI 318R-19), Section
-          19.2.3.
-        unit: MPa
-        value: 4.1
-        min: 3.0
-        max: 8.0
-      hardness:
-        confidence: 0.95
-        research_basis: 'NIST Special Publication 260-175: Hardness Measurements on
-          Cement and Concrete (2012) & ASM Handbook Volume 8: Mechanical Testing and
-          Evaluation (2000)'
-        research_date: '2025-09-30T12:24:22.149340'
-        source: ai_research
-        unit: Mohs
-        validation_method: Cross-referenced NIST cement testing data with ASM masonry
-          material properties and validated against concrete mineral composition (calcium
-          silicate hydrates, calcium hydroxide, aggregates)
-        value: 5.0
-        min: 2.0
-        max: 5.0
-      oxidationResistance:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: Concrete is a masonry/composite material whose high-temperature
-          performance is governed by the degradation of its cement paste and the properties
-          of its aggregate. Authoritative structural design codes like Eurocode 2
-          specify that for most normal-strength concrete, the maximum service temperature
-          for sustained loading is approximately 300°C. Beyond this temperature, significant
-          loss of compressive strength and chemical decomposition (e.g., dehydration
-          of calcium silicate hydrates) begins, which is the functional equivalent
-          of "significant oxidation" for this non-metallic material. The provided
-          compressive strength of 41.4 MPa confirms this is normal-strength concrete,
-          aligning with the code's scope.
-        research_date: '2025-10-15T20:42:01.234121'
-        source: 'Eurocode 2: Design of concrete structures - Part 1-2: General rules
-          - Structural fire design (EN 1992-1-2:2004), Table 3.1'
-        unit: °C
-        value: 300.0
-        min: 300.0
-        max: 1200.0
-      tensileStrength:
-        confidence: 0.95
-        research_basis: ACI 318-19 Building Code Requirements for Structural Concrete
-          and Commentary, Table 19.2.1.1 - Normalweight concrete tensile strength
-          values
-        research_date: '2025-09-30T12:25:11.231355'
-        source: ai_research
-        unit: MPa
-        validation_method: 'Cross-referenced with ASTM C496/C496M-17 Standard Test
-          Method for Splitting Tensile Strength of Cylindrical Concrete Specimens
-          and NIST Special Publication 260-174: Properties of Concrete'
-        value: 3.5
-        min: 1.4
-        max: 3.5
-      youngsModulus:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ACI 318-19: Building Code Requirements for Structural Concrete,
-          Section 19.2.2.1, which specifies Ec = wc^1.5 * 0.043√f''c for normal-weight
-          concrete with wc = 2320-2560 kg/m³'
-        research_date: '2025-09-30T12:26:25.164425'
-        source: ai_research
-        unit: GPa
-        validation_method: Cross-referenced with NIST Special Publication 260-174
-          and ASTM C469/C469M standard test method for static modulus of elasticity
-          of concrete, validated against typical compressive strength ranges (25-40
-          MPa) for structural concrete
-        value: 30.0
-        verification_confidence: 85
-        verification_date: '2025-10-03T21:55:35.213986'
-        verification_variance: 20.0%
-        min: 3.0
-        max: 30.0
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    properties:
-      fractureToughness:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: The provided compressive strength of 41.4 MPa is characteristic
-          of high-strength concrete. For normal-strength concrete (20-40 MPa), K_IC
-          typically ranges from 0.5 to 1.0 MPa·√m. For high-strength mixes like this,
-          values are at the upper end of this range. Bažant's seminal work establishes
-          that fracture toughness for concrete with a compressive strength of ~40
-          MPa is approximately 0.8 MPa·√m, correlating strongly with compressive strength
-          and aggregate properties.
-        research_date: '2025-10-15T20:12:49.247575'
-        source: '"Fracture and Size Effect in Concrete and Other Quasibrittle Materials"
-          by Zdeněk P. Bažant and Jaime Planas (1998), CRC Press, Chapter 2.'
-        unit: MPa·√m
-        value: 0.8
-        min: 0.15
-        max: 1.1
-materialCharacteristics:
-  crystallineStructure:
-    allowedValues:
-    - FCC
-    - BCC
-    - HCP
-    - amorphous
-    - cubic
-    - hexagonal
-    - tetragonal
-    - orthorhombic
-    - monoclinic
-    - triclinic
-    confidence: 0.95
-    description: amorphous crystal structure
-    research_date: '2025-10-20T22:49:43.626110+00:00'
-    source: ai_research
-    unit: crystal system
-    value: amorphous
-machineSettings:
-  energyDensity:
-    confidence: 89
-    description: Fluence threshold for effective contaminant removal while preserving
-      concrete integrity
-    max: 5.0
-    min: 1.0
-    unit: J/cm²
-    value: 2.5
-  overlapRatio:
-    confidence: 83
-    description: Optimal beam overlap percentage for uniform cleaning coverage
-    max: 70
-    min: 30
-    unit: '%'
-    value: 50
-  passCount:
-    confidence: 82
-    description: Recommended number of passes for complete contaminant removal
-    max: 5
-    min: 1
-    unit: passes
-    value: 2
-  powerRange:
-    confidence: 92
-    description: Optimal average power for concrete surface cleaning and contaminant
-      removal
-    max: 200
-    min: 50
-    unit: W
-    value: 100
-  pulseWidth:
-    confidence: 85
-    description: Pulse duration balancing efficient contaminant removal with concrete
-      substrate preservation
-    max: 20
-    min: 8
-    unit: ns
-    value: 12
-  repetitionRate:
-    confidence: 87
-    description: Optimal repetition rate for continuous cleaning coverage without
-      thermal buildup
-    max: 100
-    min: 20
-    unit: kHz
-    value: 50
-  scanSpeed:
-    confidence: 86
-    description: Optimal scanning speed for uniform cleaning with sufficient energy
-      deposition
-    max: 1000
-    min: 200
-    unit: mm/s
-    value: 500
-  spotSize:
-    confidence: 84
-    description: Beam spot diameter for effective cleaning coverage and energy density
-      control
-    max: 2.0
-    min: 0.3
-    unit: mm
-    value: 0.8
-  wavelength:
-    confidence: 88
-    description: Near-infrared wavelength optimized for concrete absorption and minimal
-      substrate damage
-    max: 10600
-    min: 532
-    unit: nm
-    value: 1064
-applications:
-- Civil Infrastructure
-- Nuclear Decommissioning
-- Marine Structures
-- Historical Preservation
-- Industrial Flooring
-- Parking Structures
-- Food Processing
-- Transportation Infrastructure
-- Water Treatment Facilities
-- Power Generation
-environmentalImpact:
-- Chemical Waste Elimination:
-    applicableIndustries:
-    - Semiconductor
-    - Electronics
-    - Medical
-    - Nuclear
-    description: Eliminates hazardous chemical waste streams
-    quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- Water Usage Reduction:
-    applicableIndustries: []
-    description: Dry process requires no water
-    sustainabilityBenefit: Significant water conservation in industrial processes
-- Energy Efficiency:
-    applicableIndustries: []
-    description: Focused energy delivery with minimal waste heat
-- Air Quality Improvement:
-    applicableIndustries: []
-    description: Eliminates volatile organic compounds from chemical cleaning
-outcomeMetrics:
-- Contaminant Removal Efficiency:
-    description: Percentage of target contaminants successfully removed from surface
-    factorsAffecting:
-    - Contamination type
-    - Adhesion strength
-    - Surface geometry
-    measurementMethods:
-    - Before/after microscopy
-    - Chemical analysis
-    - Mass spectrometry
-    typicalRanges: 95-99.9% depending on application and material
-    units: []
-- Processing Speed:
-    description: Rate of surface area processed per unit time
-    factorsAffecting: []
-    measurementMethods: []
-    units:
-    - m²/h
-    - cm²/min
-    - mm²/s
-- Surface Quality Preservation:
-    description: Maintenance of original surface characteristics after cleaning
-    factorsAffecting: []
-    measurementMethods: []
-    units: []
-- Thermal Damage Avoidance:
-    description: Prevention of heat-related material alterations during cleaning
-    factorsAffecting: []
-    measurementMethods: []
-    units: []
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/en/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
-  image: /images/logo/logo-org-osha.png
-images:
-  hero:
-    alt: Concrete surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/material/concrete-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of concrete surface showing laser cleaning effects
-    url: /images/material/concrete-laser-cleaning-micro.jpg
+subtitle: Precision Laser Cleaning Restores Concrete's Natural Aggregate Exposure
 author:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
@@ -497,6 +231,3 @@ author:
   name: Todd Dunning
   sex: m
   title: MA
-categoryMetadata:
-  description: Construction masonry materials including concrete, brick, mortar, stucco,
-    and stone-based building materials for restoration cleaning

@@ -1,134 +1,146 @@
 name: Teak
-title: Teak
-subtitle: ''
-description: Laser cleaning parameters for Teak
+material: Teak
+title: Teak Laser Cleaning
 category: wood
-subcategory: ''
+generated_date: '2025-10-25T22:14:19.843942'
+data_completeness: 100%
+source: Materials.yaml (direct export)
+properties: {}
+category_info:
+  description: Natural and engineered wood materials including hardwoods, softwoods,
+    plywood, and composite wood products for gentle cleaning applications
+  properties_count: 0
+  category_ranges:
+    density:
+      max: 1.5
+      min: 0.12
+      unit: "g/cm\xB3"
+      adjustment_note: "Some hardwoods exceed 1.0 g/cm\xB3"
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    hardness:
+      max: 5000
+      min: 1
+      unit: lbf
+      adjustment_note: Balsa wood very soft
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    laserAbsorption:
+      max: 50
+      min: 1
+      unit: "cm\u207B\xB9"
+    laserReflectivity:
+      max: 60
+      min: 10
+      unit: '%'
+      source: Wood Science and Technology Database
+      confidence: 70
+      notes: Light woods 40-60%, dark woods 10-25%, highly dependent on species and
+        finish
+      last_updated: '2025-10-15T14:19:43.867238'
+    specificHeat:
+      max: 2500
+      min: 800
+      unit: "J/kg\xB7K"
+    tensileStrength:
+      max: 200
+      min: 20
+      unit: MPa
+    thermalConductivity:
+      max: 0.4
+      min: 0.04
+      unit: "W/(m\xB7K)"
+      source: Wood Handbook - Wood as an Engineering Material (USDA Forest Service)
+      confidence: 80
+      notes: "Across grain 0.04-0.2 W/m\xB7K, along grain can be 2-3x higher; moisture\
+        \ content affects values"
+      last_updated: '2025-10-15T14:19:43.867244'
+    thermalDestruction:
+      point:
+        max: 500
+        min: 200
+        unit: "\xB0C"
+      type: carbonization
+    thermalDiffusivity:
+      max: 0.4
+      min: 0.0001
+      unit: "mm\xB2/s"
+      adjustment_note: Some woods have lower diffusivity
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+      notes: Variable by density and moisture
+    thermalExpansion:
+      max: 60
+      min: 3.0
+      unit: "\xB5m/m\xB7K"
+    youngsModulus:
+      max: 20000
+      min: 5
+      unit: MPa
+      phase2_adjustment: Cedar/hardwoods 2500-6900 MPa
+      adjustment_date: '2025-10-15'
+      notes: Hardwoods 7-20 GPa
+    porosity:
+      min: 12
+      max: 65
+      unit: '%'
+      source: Wood Science and Technology Database
+      confidence: 75
+      notes: Hardwoods 12-45%, softwoods 30-65%
+      last_updated: '2025-10-14T23:58:54.459413'
+    compressiveStrength:
+      min: 20
+      max: 80
+      unit: MPa
+      description: Maximum compressive stress before failure
+      notes: Wood moderate compression
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    flexuralStrength:
+      min: 40
+      max: 150
+      unit: MPa
+      description: Maximum bending stress before failure
+      notes: Wood good in bending
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    fractureToughness:
+      min: 0.33
+      max: 4.4
+      unit: "MPa\xB7\u221Am"
+      description: ''
+      sample_count: 19
+      auto_generated: true
+      generated_date: '2025-10-16'
+    corrosionResistance:
+      min: 2.0
+      max: 8.0
+      unit: rating
+      description: ''
+      sample_count: 20
+      auto_generated: true
+      generated_date: '2025-10-16'
+    oxidationResistance:
+      min: 82.0
+      max: 204.0
+      unit: "\xB0C"
+      description: ''
+      sample_count: 20
+      auto_generated: true
+      generated_date: '2025-10-16'
 caption:
-  beforeText: Under microscopic examination, teak wood's contaminated surface reveals
-    irregular pitting and micro-cracks from prolonged marine exposure, such as saltwater
-    corrosion in yacht decking. Fine particulate contaminants—salt crystals and organic
-    residues—cling to fiber bundles, accelerating degradation by weakening lignin
-    bonds and promoting fungal hyphae growth. This leads to surface erosion, reducing
-    structural integrity in aerospace paneling applications.
+  description: Microscopic analysis of Teak surface before and after laser cleaning
+    treatment
+  beforeText: "Under microscopic examination, teak wood's contaminated surface reveals\
+    \ irregular pitting and micro-cracks from prolonged marine exposure, such as saltwater\
+    \ corrosion in yacht decking. Fine particulate contaminants\u2014salt crystals\
+    \ and organic residues\u2014cling to fiber bundles, accelerating degradation by\
+    \ weakening lignin bonds and promoting fungal hyphae growth. This leads to surface\
+    \ erosion, reducing structural integrity in aerospace paneling applications."
   afterText: The laser-cleaned teak surface exhibits a smooth, even finish with restored
     natural grain, free of contaminants. Restoration quality is high, preserving material
     integrity for marine decking applications without fiber damage.
-  generated: '2025-10-25T15:27:30.659562Z'
-  author: Todd Dunning
-  generation_method: ai_research
-  word_count:
-    before: 56
-    after: 30
-  character_count:
-    before: 457
-    after: 225
-  description: Microscopic analysis of teak surface before and after laser cleaning
-    treatment
-materialProperties: {}
-materialCharacteristics: {}
-machineSettings:
-  dwellTime:
-    value: 120
-    min: 50
-    max: 300
-    unit: μs
-    description: Effective dwell time per cleaning spot
-  energyDensity:
-    value: 2.8
-    min: 1.5
-    max: 4.5
-    unit: J/cm²
-    description: Fluence threshold for effective contaminant removal without wood
-      damage
-  overlapRatio:
-    value: 40
-    min: 30
-    max: 60
-    unit: '%'
-    description: Optimal beam overlap for uniform cleaning pattern
-  passCount:
-    value: 2
-    min: 1
-    max: 4
-    unit: passes
-    description: Recommended number of passes for complete surface cleaning
-  powerRange:
-    value: 45
-    min: 30
-    max: 65
-    unit: W
-    description: Optimal average power for Teak surface cleaning without charring
-  pulseWidth:
-    value: 12
-    min: 8
-    max: 20
-    unit: ns
-    description: Nanosecond pulse duration for controlled ablation of surface contaminants
-  repetitionRate:
-    value: 50
-    min: 20
-    max: 100
-    unit: kHz
-    description: Optimal repetition rate for efficient cleaning with thermal management
-  scanSpeed:
-    value: 500
-    min: 200
-    max: 1000
-    unit: mm/s
-    description: Optimal scanning speed for uniform cleaning coverage
-  spotSize:
-    value: 80
-    min: 50
-    max: 150
-    unit: μm
-    description: Beam spot diameter for precise cleaning resolution
-  wavelength:
-    value: 1064
-    min: 532
-    max: 10600
-    unit: nm
-    description: Near-IR wavelength for optimal absorption in Teak lignin and contaminants
-applications:
-- Marine
-- Aerospace
-- Cultural Heritage
-- Medical
-- Automotive
-- Manufacturing
-- Energy
-- Electronics
-- Rail Transportation
-- Hospitality
-environmentalImpact:
-- Chemical Waste Elimination:
-    applicableIndustries:
-    - Semiconductor
-    - Electronics
-    - Medical
-    - Nuclear
-    description: Eliminates hazardous chemical waste streams
-    quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- Water Usage Reduction:
-    applicableIndustries: []
-    description: Dry process requires no water
-    sustainabilityBenefit: Significant water conservation in industrial processes
-- Energy Efficiency:
-    applicableIndustries: []
-    description: Focused energy delivery with minimal waste heat
-- Air Quality Improvement:
-    applicableIndustries: []
-    description: Eliminates volatile organic compounds from chemical cleaning
-outcomeMetrics: []
-regulatoryStandards: []
-images:
-  hero:
-    alt: Teak surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/teak-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Teak surface after laser cleaning showing detailed surface
-      structure
-    url: /images/material/teak-laser-cleaning-micro.jpg
+subtitle: Restore Teak's Oily Grain with Precise Gentle Laser Control
 author:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
@@ -137,6 +149,3 @@ author:
   name: Todd Dunning
   sex: m
   title: MA
-categoryMetadata:
-  description: Natural and engineered wood materials including hardwoods, softwoods,
-    plywood, and composite wood products for gentle cleaning applications

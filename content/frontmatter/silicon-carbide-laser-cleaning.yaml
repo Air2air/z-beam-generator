@@ -1,10 +1,231 @@
 name: Silicon Carbide
+material: Silicon Carbide
 title: Silicon Carbide Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Silicon Carbide
-description: Laser cleaning parameters for Silicon Carbide
 category: semiconductor
-subcategory: elemental
+generated_date: '2025-10-25T22:14:19.698211'
+data_completeness: 100%
+source: Materials.yaml (direct export)
+properties:
+  compressiveStrength:
+    value: 3900.0
+    unit: MPa
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.439802'
+  corrosionResistance:
+    value: 0.92
+    unit: dimensionless_rating_0_to_1
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.547095'
+  density:
+    value: 3210.0
+    unit: "kg/m\xB3"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T10:29:49.438692'
+  electricalResistivity:
+    value: 1.0
+    unit: "\u03A9\xB7m"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T11:15:59.404031'
+  flexuralStrength:
+    value: 450.0
+    unit: MPa
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.490481'
+  fractureToughness:
+    value: 3.5
+    unit: "MPa\xB7m\xB9/\xB2"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.382319'
+  hardness:
+    value: 28.0
+    unit: GPa
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.779214'
+  laserAbsorption:
+    value: 0.72
+    unit: dimensionless
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.309573'
+  laserReflectivity:
+    value: 0.21
+    unit: dimensionless
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:59:02.847054'
+  oxidationResistance:
+    value: 1.2
+    unit: "mg/cm\xB2\xB7h"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.606336'
+  specificHeat:
+    value: 0.67
+    unit: "J/g\xB7K"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T10:40:00.538616'
+  tensileStrength:
+    value: 400.0
+    unit: MPa
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.725539'
+  thermalConductivity:
+    value: 490.0
+    unit: "W/m\xB7K"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T10:50:06.685440'
+  thermalDestruction:
+    value: 3100.0
+    unit: K
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.668256'
+  thermalDiffusivity:
+    value: 85.0
+    unit: "mm\xB2/s"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T10:09:48.778088'
+  thermalExpansion:
+    value: 4.3
+    unit: "10\u207B\u2076/K"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T11:00:21.600108'
+  youngsModulus:
+    value: 410.0
+    unit: GPa
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T10:20:04.412794'
+category_info:
+  description: Electronic semiconductor materials including silicon, gallium compounds,
+    and advanced semiconductor substrates for high-precision cleaning
+  properties_count: 17
+  category_ranges:
+    density:
+      max: 7.13
+      min: 2.3
+      unit: "g/cm\xB3"
+      phase2_adjustment: "Silicon at 2.329 g/cm\xB3"
+      adjustment_date: '2025-10-15'
+    hardness:
+      max: 2600
+      min: 2
+      unit: HV
+      phase2_adjustment: SiC at 2500 HV, convert from Mohs to HV
+      adjustment_date: '2025-10-15'
+      notes: Changed from Mohs to Vickers for consistency
+    laserAbsorption:
+      max: 100
+      min: 0.01
+      unit: "cm\u207B\xB9"
+    laserReflectivity:
+      max: 70
+      min: 10
+      unit: '%'
+      source: Handbook of Optical Constants of Solids (Palik, 1998)
+      confidence: 75
+      notes: 'Wavelength dependent: Si 30-60%, GaAs 30-50%, varies with doping and
+        surface oxidation'
+      last_updated: '2025-10-15T14:19:43.867292'
+    specificHeat:
+      max: 900
+      min: 300
+      unit: "J/kg\xB7K"
+    tensileStrength:
+      max: 7000
+      min: 50
+      unit: MPa
+    thermalConductivity:
+      max: 156
+      min: 0.2
+      unit: "W/(m\xB7K)"
+      source: Semiconductor Material and Device Characterization (Schroder)
+      confidence: 85
+      notes: "Si ~156 W/m\xB7K, GaAs ~55, GaN ~130, temperature and doping dependent"
+      last_updated: '2025-10-15T14:19:43.867299'
+    thermalDestruction:
+      point:
+        max: 1414
+        min: 100
+        unit: "\xB0C"
+      type: melting
+    thermalDiffusivity:
+      max: 90
+      min: 0.1
+      unit: "mm\xB2/s"
+    thermalExpansion:
+      max: 10
+      min: 2.6
+      unit: "\xB5m/m\xB7K"
+    youngsModulus:
+      max: 450
+      min: 5
+      unit: GPa
+      phase2_adjustment: SiC at 410 GPa
+      adjustment_date: '2025-10-15'
+    electricalResistivity:
+      min: 0.001
+      max: 1000.0
+      unit: "\u03A9\xB7m"
+      description: Resistance to electrical current flow
+      notes: Silicon, germanium
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    fractureToughness:
+      min: 0.75
+      max: 3.0
+      unit: "MPa\xB7\u221Am"
+      description: ''
+      sample_count: 3
+      auto_generated: true
+      generated_date: '2025-10-16'
+    corrosionResistance:
+      min: 8.0
+      max: 9.0
+      unit: rating
+      description: ''
+      sample_count: 4
+      auto_generated: true
+      generated_date: '2025-10-16'
+    oxidationResistance:
+      min: 600.0
+      max: 1600.0
+      unit: "\xB0C"
+      description: ''
+      sample_count: 4
+      auto_generated: true
+      generated_date: '2025-10-16'
+    flexuralStrength:
+      min: 120.0
+      max: 410.0
+      unit: MPa
+      description: ''
+      sample_count: 4
+      auto_generated: true
+      generated_date: '2025-10-16'
+    compressiveStrength:
+      min: 370.0
+      max: 6000.0
+      unit: MPa
+      description: ''
+      sample_count: 4
+      auto_generated: true
+      generated_date: '2025-10-16'
 caption:
+  description: Microscopic analysis of Silicon Carbide surface before and after laser
+    cleaning treatment
   beforeText: Under microscopy, the Silicon Carbide surface shows heavy contamination
     with dark particles and oily residues scattered across it, and this leads to pitting
     and uneven degradation. The semiconductor material appears rougher, impacting
@@ -12,470 +233,7 @@ caption:
   afterText: After laser cleaning, the Silicon Carbide surface looks smooth and restored.
     It maintains strong material integrity, and shows no damage for reliable semiconductor
     use.
-  generated: '2025-10-25T15:18:07.199316Z'
-  author: Yi-Chun Lin
-  generation_method: ai_research
-  word_count:
-    before: 36
-    after: 24
-  character_count:
-    before: 261
-    after: 168
-  description: Microscopic analysis of silicon carbide surface before and after laser
-    cleaning treatment
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    properties:
-      laserAbsorption:
-        confidence: 0.92
-        research_basis: NIST Materials Data Repository - Silicon Carbide Optical Properties
-          Database, specifically referencing 4H-SiC absorption measurements at 1064
-          nm wavelength
-        research_date: '2025-09-30T14:30:30.103351'
-        source: ai_research
-        unit: '%'
-        validation_method: 'Cross-referenced with ASM Handbook Volume 10: Materials
-          Characterization and academic literature on laser-material interactions
-          for semiconductor processing'
-        value: 68.5
-        min: 33.5
-        max: 68.5
-      laserReflectivity:
-        confidence: 0.92
-        research_basis: NIST Materials Data Repository - Reflectance measurements
-          of 4H-SiC at 1064 nm wavelength, typical for Nd:YAG laser cleaning systems
-        research_date: '2025-09-30T14:30:42.033440'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced with ASM Handbook on Ceramics and Semiconductor
-          Materials, and validated against published reflectivity studies for 4H-SiC
-          and 6H-SiC polytypes at industrial laser wavelengths
-        value: 21.5
-        min: 21.5
-        max: 37.2
-      specificHeat:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 144: Thermophysical Properties
-          of Solids - Silicon Carbide (6H-SiC) at 300K'
-        research_date: '2025-09-30T14:30:54.732217'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection: Nonferrous Alloys and Special-Purpose Materials, and verified
-          against experimental data from Shimazaki & Hirosaki (2003) J. Applied Physics'
-        value: 750.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:32:20.837749'
-        verification_variance: 11.11%
-        min: 320.0
-        max: 750.0
-      thermalConductivity:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials (2015), Table ''Thermal Properties
-          of Semiconductor Materials'' lists 120 W/m·K for 4H-SiC at 300K'
-        research_date: '2025-09-30T14:31:19.204497'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: Cross-referenced with NIST Materials Data Repository (SiC
-          thermal properties dataset) and confirmed against peer-reviewed literature
-          in Journal of Applied Physics (Vol. 93, Issue 5, 2003) for 4H-SiC polytype
-        value: 120.0
-        verification_confidence: 85
-        verification_date: '2025-10-03T20:20:53.092225'
-        verification_variance: 0.0%
-        min: 8.7
-        max: 149.0
-      thermalDestruction:
-        confidence: 0.65
-        point:
-          confidence: 0.95
-          research_basis: 'ASM Handbook, Volume 4: Heat Treating, ''Properties of
-            Silicon Carbide''; NIST Standard Reference Database 84: ''Thermophysical
-            Properties of Semiconductor SiC''; Journal of Applied Physics, Vol. 87,
-            ''Thermal stability of silicon carbide'''
-          research_date: '2025-09-30T14:31:30.613196'
-          source: ai_research
-          unit: K
-          validation_method: Cross-referenced decomposition temperature from ASM Handbook
-            with thermal stability limits from NIST database and academic literature
-            on SiC semiconductor applications, confirming consistency with material's
-            high-temperature semiconductor properties
-          value: 1800.0
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        source: thermal_degradation_standards
-        type: melting
-        unit: °C
-        value: 500.0
-      thermalDiffusivity:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials, Table ''Thermal Properties of Selected
-          Semiconductor Materials'' specifies 90 mm²/s for 4H-SiC at 300K'
-        research_date: '2025-09-30T14:31:53.770924'
-        source: ai_research
-        unit: mm²/s
-        validation_method: Cross-referenced with NIST Materials Data Repository and
-          peer-reviewed studies on 4H-SiC thermal properties, confirming consistency
-          with high-purity single-crystal semiconductor-grade material
-        value: 90.0
-        min: 31.0
-        max: 90.0
-      thermalExpansion:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 21: Composites, Table ''Properties of
-          Silicon Carbide'' citing thermal expansion coefficient for CVD silicon carbide
-          at 20-1000°C range'
-        research_date: '2025-09-30T14:32:05.983342'
-        source: ai_research
-        unit: 10⁻⁶/K
-        validation_method: Cross-referenced with NIST Ceramics WebBook and Harris
-          (1995) 'Properties of Silicon Carbide' confirming 4.0-4.5 ×10⁻⁶/K range
-          for high-purity SiC semiconductors
-        value: 4.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:13:58.098679'
-        verification_variance: 0.0%
-        min: 2.616
-        max: 5.73
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: The compressive strength of sintered silicon carbide is significantly
-          higher than its tensile or flexural strength. Authoritative materials databases
-          like MatWeb and supplier technical data sheets for sintered alpha SiC consistently
-          report compressive strength values in the range of 3.8-4.1 GPa (3800-4100
-          MPa). The provided value of 3900 MPa is a typical, well-cited average for
-          high-purity, dense sintered SiC under standard test conditions (room temperature,
-          uniaxial loading).
-        research_date: '2025-10-15T21:32:12.191819'
-        source: MatWeb Material Property Data, "Silicon Carbide, Sintered (SiC)"
-        unit: MPa
-        value: 3900.0
-        min: 370.0
-        max: 6000.0
-      corrosionResistance:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: Silicon Carbide exhibits excellent corrosion resistance across
-          a wide range of environments. It has outstanding resistance to mineral acids,
-          alkalis, and saline solutions at elevated temperatures, with only concentrated
-          hydrofluoric acid, phosphoric acid, and strong alkalis at high temperatures
-          causing significant attack. This places it among the most corrosion-resistant
-          engineering ceramics.
-        research_date: '2025-10-15T20:36:17.376200'
-        source: 'ASM International, "Corrosion: Materials" handbook, section on nonmetallic
-          materials'
-        unit: rating
-        value: 9.0
-        min: 8.0
-        max: 9.0
-      density:
-        ai_verified: true
-        confidence: 0.98
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials (1990), Section: Ceramics and Glasses,
-          Table: Properties of Silicon Carbide'
-        research_date: '2025-09-30T14:30:06.296143'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced with NIST Materials Data Repository and
-          academic literature on semiconductor-grade SiC crystal properties, confirming
-          density range of 3.20-3.22 g/cm³ for high-purity single crystal SiC
-        value: 3.21
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:01:08.226707'
-        verification_variance: 0.0%
-        min: 2.329
-        max: 5.3176
-      electricalResistivity:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:18:51.739224'
-        source: ai_research
-        unit: Ω·m
-        value: 1.0
-      flexuralStrength:
-        ai_verified: true
-        confidence: 0.87
-        research_basis: The ASM Handbook is a premier reference for engineered materials.
-          For sintered silicon carbide, a common structural form, the handbook lists
-          a typical flexural strength range of 350 to 490 MPa. The value of 410 MPa
-          is a representative median from this authoritative range, derived from standardized
-          4-point bend tests.
-        research_date: '2025-10-15T21:02:07.681236'
-        source: '"ASM Handbook, Volume 29: Materials for Specialty Applications -
-          Silicon Carbide Properties" (ASM International, 2012), Table 1: Typical
-          properties of sintered alpha silicon carbide.'
-        unit: MPa
-        value: 410.0
-        min: 120.0
-        max: 410.0
-      hardness:
-        confidence: 0.95
-        corrected: true
-        correction_confidence: 0.95
-        correction_date: '2025-10-15T16:56:16.005567'
-        correction_source: Priority 2 AI Research
-        research_basis: materials_science_literature
-        research_date: '2025-10-15'
-        source: AI Research (DeepSeek) + Literature Review
-        unit: kgf/mm²
-        value: 2500.0
-        min: 7.0
-        max: 2500.0
-      oxidationResistance:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: Silicon Carbide forms a protective silica (SiO₂) layer in
-          oxidizing environments, which provides excellent oxidation resistance up
-          to approximately 1600°C. Above this temperature, the protective layer can
-          break down, and active oxidation or significant material degradation begins.
-          This value is widely cited in ceramic and composite materials literature
-          as the maximum continuous service temperature in air.
-        research_date: '2025-10-15T20:48:58.722746'
-        source: Singh, M. (1997). "Elevated Temperature Corrosion Behavior of Silicon
-          Carbide and Silicon Nitride," in *Handbook of Ceramic Composites*, Springer,
-          pp. 465-483.
-        unit: °C
-        value: 1600.0
-        min: 600.0
-        max: 1600.0
-      tensileStrength:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 8: Mechanical Testing and Evaluation
-          (2000), Table ''Mechanical Properties of Advanced Ceramics'' citing room
-          temperature tensile strength of sintered alpha silicon carbide as 350 MPa'
-        research_date: '2025-09-30T14:31:06.507037'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced with NIST Ceramics WebBook and academic
-          literature on semiconductor-grade SiC mechanical properties, confirming
-          typical range for polycrystalline SiC used in semiconductor applications
-        value: 350.0
-        min: 55.0
-        max: 7000.0
-      youngsModulus:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: materials_science_literature
-        research_date: '2025-10-17'
-        source: ai_research
-        unit: GPa
-        value: 410.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T21:55:35.214161'
-        verification_variance: 0.0%
-        min: 85.3
-        max: 410.0
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    properties:
-      fractureToughness:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: This value is for a high-purity, pressureless sintered alpha-SiC,
-          which is a standard reference material. The fracture toughness of SiC is
-          well-established in the literature for dense, polycrystalline forms, typically
-          ranging from 2.5 to 4.0 MPa·√m, with 3.0 MPa·√m being a commonly cited and
-          authoritative median value for room temperature.
-        research_date: '2025-10-15T20:22:17.074616'
-        source: Munro, R. G. (1997). Material Properties of a Sintered α-SiC. *Journal
-          of Physical and Chemical Reference Data*, 26(5), 1195-1203.
-        unit: MPa·√m
-        value: 3.0
-        min: 0.44
-        max: 3.0
-materialCharacteristics:
-  crystallineStructure:
-    allowedValues:
-    - FCC
-    - BCC
-    - HCP
-    - amorphous
-    - cubic
-    - hexagonal
-    - tetragonal
-    - orthorhombic
-    - monoclinic
-    - triclinic
-    confidence: 0.95
-    description: cubic crystal structure
-    research_date: '2025-10-20T22:49:43.627786+00:00'
-    source: ai_research
-    unit: crystal system
-    value: cubic
-machineSettings:
-  fluenceThreshold:
-    confidence: 89
-    description: Minimum fluence required for effective contaminant removal from SiC
-      surface
-    max: 4.0
-    min: 1.5
-    unit: J/cm²
-    value: 2.5
-  overlapRatio:
-    confidence: 83
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      buildup
-    max: 70
-    min: 30
-    unit: '%'
-    value: 50
-  passCount:
-    confidence: 82
-    description: Recommended number of passes for complete contaminant removal
-    max: 5
-    min: 1
-    unit: passes
-    value: 3
-  powerRange:
-    confidence: 92
-    description: Optimal average power for SiC surface cleaning without thermal damage
-    max: 120
-    min: 80
-    unit: W
-    value: 100
-  pulseWidth:
-    confidence: 85
-    description: Nanosecond pulse duration for efficient contaminant removal with
-      controlled thermal effects
-    max: 20
-    min: 5
-    unit: ns
-    value: 10
-  repetitionRate:
-    confidence: 87
-    description: Optimal repetition rate for efficient cleaning coverage and thermal
-      management
-    max: 100
-    min: 20
-    unit: kHz
-    value: 50
-  scanSpeed:
-    confidence: 86
-    description: Optimal scanning speed for uniform cleaning coverage
-    max: 1000
-    min: 200
-    unit: mm/s
-    value: 500
-  spotSize:
-    confidence: 84
-    description: Beam spot diameter for precise cleaning with adequate energy density
-    max: 100
-    min: 30
-    unit: μm
-    value: 50
-  wavelength:
-    confidence: 88
-    description: Near-IR wavelength for optimal SiC absorption and minimal substrate
-      damage
-    max: 10600
-    min: 532
-    unit: nm
-    value: 1064
-applications:
-- Semiconductor Manufacturing
-- Aerospace
-- Automotive
-- Power Electronics
-- Medical Devices
-- Research and Development
-- Renewable Energy
-- Defense Systems
-- Industrial Manufacturing
-- Optics and Photonics
-environmentalImpact:
-- Chemical Waste Elimination:
-    applicableIndustries:
-    - Semiconductor
-    - Electronics
-    - Medical
-    - Nuclear
-    description: Eliminates hazardous chemical waste streams
-    quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- Water Usage Reduction:
-    applicableIndustries: []
-    description: Dry process requires no water
-    sustainabilityBenefit: Significant water conservation in industrial processes
-- Energy Efficiency:
-    applicableIndustries: []
-    description: Focused energy delivery with minimal waste heat
-- Air Quality Improvement:
-    applicableIndustries: []
-    description: Eliminates volatile organic compounds from chemical cleaning
-outcomeMetrics:
-- Contaminant Removal Efficiency:
-    description: Percentage of target contaminants successfully removed from surface
-    factorsAffecting:
-    - Contamination type
-    - Adhesion strength
-    - Surface geometry
-    measurementMethods:
-    - Before/after microscopy
-    - Chemical analysis
-    - Mass spectrometry
-    typicalRanges: 95-99.9% depending on application and material
-    units: []
-- Processing Speed:
-    description: Rate of surface area processed per unit time
-    factorsAffecting: []
-    measurementMethods: []
-    units:
-    - m²/h
-    - cm²/min
-    - mm²/s
-- Surface Quality Preservation:
-    description: Maintenance of original surface characteristics after cleaning
-    factorsAffecting: []
-    measurementMethods: []
-    units: []
-- Thermal Damage Avoidance:
-    description: Prevention of heat-related material alterations during cleaning
-    factorsAffecting: []
-    measurementMethods: []
-    units: []
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/en/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
-  image: /images/logo/logo-org-osha.png
-images:
-  hero:
-    alt: Silicon Carbide surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/material/silicon-carbide-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of silicon carbide surface showing laser cleaning effects
-    url: /images/material/silicon-carbide-laser-cleaning-micro.jpg
+subtitle: Precision laser cleaning preserves Silicon Carbide integrity
 author:
   country: Taiwan
   expertise: Laser Materials Processing
@@ -484,6 +242,3 @@ author:
   name: Yi-Chun Lin
   sex: f
   title: Ph.D.
-categoryMetadata:
-  description: Electronic semiconductor materials including silicon, gallium compounds,
-    and advanced semiconductor substrates for high-precision cleaning

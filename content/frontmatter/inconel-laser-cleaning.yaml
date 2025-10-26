@@ -1,10 +1,435 @@
 name: Inconel
+material: Inconel
 title: Inconel Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Inconel
-description: Laser cleaning parameters for Inconel
 category: metal
-subcategory: non-ferrous
+generated_date: '2025-10-25T22:14:18.857787'
+data_completeness: 100%
+source: Materials.yaml (direct export)
+properties:
+  ablationThreshold:
+    value: 2.8
+    unit: "J/cm\xB2"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T11:19:33.139083'
+  absorptionCoefficient:
+    value: 3800000.0
+    unit: "m\u207B\xB9"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T11:53:40.787995'
+  absorptivity:
+    value: 0.37
+    unit: dimensionless
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T11:24:46.461607'
+  boilingPoint:
+    value: 3180.0
+    unit: K
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T11:28:45.012478'
+  compressiveStrength:
+    value: 1034.0
+    unit: MPa
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.416553'
+  corrosionResistance:
+    value: 0.015
+    unit: mm/year
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.524026'
+  density:
+    value: 8.44
+    unit: "g/cm\xB3"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T10:24:13.738167'
+  electricalConductivity:
+    value: 0.93
+    unit: MS/m
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T11:49:58.812730'
+  electricalResistivity:
+    value: 1.29e-06
+    unit: "\u03A9\xB7m"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T11:12:10.759715'
+  flexuralStrength:
+    value: 965.0
+    unit: MPa
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.470373'
+  fractureToughness:
+    value: 95.0
+    unit: "MPa\xB7m\xB9/\xB2"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.357073'
+  hardness:
+    value: 250.0
+    unit: HV
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.755570'
+  laserAbsorption:
+    value: 0.37
+    unit: '1'
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.273942'
+  laserDamageThreshold:
+    value: 2.1
+    unit: "J/cm\xB2"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T11:57:17.312575'
+  laserReflectivity:
+    value: 0.38
+    unit: dimensionless
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:53:00.457164'
+  meltingPoint:
+    value: 1399.0
+    unit: "\xB0C"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T11:36:34.923565'
+  oxidationResistance:
+    value: 0.92
+    unit: dimensionless_scale_0_to_1
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.578559'
+  porosity:
+    value: 0.0002
+    unit: fraction
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T11:04:17.306224'
+  reflectivity:
+    value: 0.62
+    unit: dimensionless
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T11:39:51.271961'
+  specificHeat:
+    value: 444.0
+    unit: "J\xB7kg\u207B\xB9\xB7K\u207B\xB9"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T10:34:11.515660'
+  surfaceRoughness:
+    value: 0.8
+    unit: "\u03BCm"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T12:00:42.530285'
+  tensileStrength:
+    value: 965.0
+    unit: MPa
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.699699'
+  thermalConductivity:
+    value: 11.2
+    unit: "W/m\xB7K"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T10:44:19.118706'
+  thermalDestruction:
+    value: 1473.0
+    unit: K
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.640524'
+  thermalDestructionPoint:
+    value: 1623.0
+    unit: K
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T11:46:34.712400'
+  thermalDiffusivity:
+    value: 3.5
+    unit: "mm\xB2/s"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T10:03:34.205724'
+  thermalExpansion:
+    value: 12.8
+    unit: "\u03BCm/m\xB7\xB0C"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T10:54:27.828553'
+  thermalShockResistance:
+    value: 275.0
+    unit: "\xB0C"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T11:32:31.831230'
+  vaporPressure:
+    value: 0.00133
+    unit: Pa
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T11:43:20.337013'
+  youngsModulus:
+    value: 214.0
+    unit: GPa
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T10:14:24.316047'
+category_info:
+  description: Pure metals, alloys, and metallic compounds including steel, aluminum,
+    precious metals, and industrial alloys for precision cleaning
+  properties_count: 30
+  category_ranges:
+    density:
+      max: 22.6
+      min: 0.53
+      unit: "g/cm\xB3"
+    hardness:
+      max: 3500
+      min: 0.5
+      unit: HV
+    laserAbsorption:
+      max: 100
+      min: 0.02
+      unit: "cm\u207B\xB9"
+    laserReflectivity:
+      max: 99.9
+      min: 5
+      unit: '%'
+      source: Handbook of Optical Constants of Solids (Palik, 1998)
+      confidence: 85
+      notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with surface
+        condition'
+      last_updated: '2025-10-15T14:19:43.867188'
+    specificHeat:
+      max: 2000
+      min: 100
+      unit: "J/kg\xB7K"
+    surfaceRoughness:
+      min: 0.4
+      max: 150
+      unit: "\u03BCm Ra"
+      source: Engineering ToolBox
+      confidence: 85
+      notes: Industrial metal finishing processes
+      last_updated: '2025-10-14T23:58:54.459299'
+    tensileStrength:
+      max: 3000.0
+      min: 3.0
+      unit: MPa
+    thermalConductivity:
+      min: 7.0
+      max: 430
+      unit: "W/(m\xB7K)"
+      source: MatWeb Materials Database
+      confidence: 85
+      notes: Typical range for metal materials at room temperature
+      last_updated: '2025-10-14T23:58:54.459362'
+      phase2_adjustment: "Manganese at 7.81 W/(m\xB7K)"
+      adjustment_date: '2025-10-15'
+    thermalDestruction:
+      point:
+        min: -38.8
+        max: 3422
+        unit: "\xB0C"
+      type: melting
+      research_basis: "Metal melting points from Mercury (-38.8\xB0C) to Tungsten\
+        \ (3422\xB0C)"
+      confidence: 98
+    thermalDiffusivity:
+      max: 174
+      min: 0.06
+      unit: "mm\xB2/s"
+      phase2_adjustment: "Beryllium at 0.07 m\xB2/s"
+      adjustment_date: '2025-10-15'
+    thermalExpansion:
+      max: 33
+      min: 0.5
+      unit: "\xB5m/m\xB7K"
+    youngsModulus:
+      max: 600
+      min: 5
+      unit: GPa
+    ablationThreshold:
+      min: 2.0
+      max: 8.0
+      unit: "J/cm\xB2"
+      source: Marks et al. 2022, Precision Engineering
+      confidence: 90
+      notes: Nanosecond pulse range for metals (most common industrial laser cleaning)
+      measurement_context: Nanosecond pulses (picosecond 0.1-2.0, femtosecond 0.14-1.7)
+      last_updated: '2025-10-17T00:00:00.000000'
+    reflectivity:
+      min: 85
+      max: 98
+      unit: '%'
+      source: Handbook of Optical Constants (Palik)
+      confidence: 85
+      notes: At 1064nm for polished metals (532nm 70-95%, 355nm 55-85%, 10640nm 95-99%)
+      measurement_context: 1064nm wavelength (most common Nd:YAG)
+      last_updated: '2025-10-17T00:00:00.000000'
+    oxidationResistance:
+      min: 200
+      max: 1200
+      unit: "\xB0C"
+      source: ASM Metals Handbook - Corrosion
+      confidence: 80
+      notes: "Oxidation onset: Steel 200-400\xB0C, Stainless 400-800\xB0C, Ni alloys\
+        \ 800-1200\xB0C"
+      last_updated: '2025-10-14T23:58:54.459355'
+    compressiveStrength:
+      min: 50
+      max: 2000
+      unit: MPa
+      description: Maximum compressive stress before failure
+      notes: Metals moderate compression
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    corrosionResistance:
+      min: 1
+      max: 10
+      unit: rating
+      description: Resistance to chemical/electrochemical degradation
+      notes: 1=poor (steel), 10=excellent (gold, titanium)
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    electricalResistivity:
+      min: 1.0e-08
+      max: 1.5e-06
+      unit: "\u03A9\xB7m"
+      description: Resistance to electrical current flow
+      notes: "Titanium at 48 \u03BC\u03A9\xB7cm = 4.8e-5 \u03A9\xB7m"
+      source: materials_science_literature
+      research_date: '2025-10-15'
+      phase2_adjustment: "Titanium at 48 \u03BC\u03A9\xB7cm"
+      adjustment_date: '2025-10-15'
+    fractureToughness:
+      min: 20
+      max: 200
+      unit: "MPa\xB7m^0.5"
+      description: Resistance to crack propagation
+      notes: Metals ductile, high toughness
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    flexuralStrength:
+      min: 2.5
+      max: 1050.0
+      unit: MPa
+      description: ''
+      sample_count: 34
+      auto_generated: true
+      generated_date: '2025-10-16'
+    laserDamageThreshold:
+      min: 0.1
+      max: 20.0
+      unit: "J/cm\xB2"
+      source: Laser-Induced Damage in Optical Materials (NIST)
+      confidence: 85
+      notes: Millisecond to nanosecond pulses for metal surfaces (polished vs. rough)
+      measurement_context: Surface finish dependent (polished surfaces higher threshold)
+      last_updated: '2025-10-17T00:00:00.000000'
+    boilingPoint:
+      min: 907
+      max: 5870
+      unit: "\xB0C"
+      source: CRC Handbook of Chemistry and Physics
+      confidence: 95
+      notes: "Mercury 357\xB0C, Zinc 907\xB0C, Tungsten 5555\xB0C, Rhenium 5870\xB0\
+        C"
+      measurement_context: Standard atmospheric pressure (1 atm)
+      last_updated: '2025-10-17T00:00:00.000000'
+    electricalConductivity:
+      min: 0.67
+      max: 63.0
+      unit: MS/m
+      source: Materials Handbook (ASM International)
+      confidence: 90
+      notes: Bismuth 0.77 MS/m, Aluminum 37.7 MS/m, Copper 59.6 MS/m, Silver 63.0
+        MS/m
+      measurement_context: "Room temperature (20\xB0C), pure elements"
+      last_updated: '2025-10-17T00:00:00.000000'
+    meltingPoint:
+      min: -39
+      max: 3422
+      unit: "\xB0C"
+      source: CRC Handbook of Chemistry and Physics
+      confidence: 95
+      notes: "Mercury -38.8\xB0C, Aluminum 660\xB0C, Steel 1370-1540\xB0C, Tungsten\
+        \ 3422\xB0C"
+      measurement_context: Standard atmospheric pressure (1 atm)
+      last_updated: '2025-10-17T00:00:00.000000'
+    absorptionCoefficient:
+      min: 100000
+      max: 50000000
+      unit: "m\u207B\xB9"
+      source: Optical Properties of Metals (Palik)
+      confidence: 80
+      notes: At 1064nm wavelength - varies with surface oxide, roughness, temperature
+      measurement_context: Near-IR wavelength (1064nm Nd:YAG laser)
+      last_updated: '2025-10-17T00:00:00.000000'
+    thermalShockResistance:
+      min: 50
+      max: 400
+      unit: "\u0394T \xB0C"
+      source: Materials Science and Engineering (Callister)
+      confidence: 75
+      notes: "Cast iron ~50-100\xB0C, Steel ~150-250\xB0C, Nickel alloys ~300-400\xB0\
+        C"
+      measurement_context: Resistance to thermal stress cracking during rapid temperature
+        changes
+      last_updated: '2025-10-17T00:00:00.000000'
+    absorptivity:
+      min: 2.0
+      max: 65.0
+      unit: '%'
+      source: Laser Material Processing (Steen & Mazumder)
+      confidence: 85
+      notes: Polished metals 2-10%, Oxidized surfaces 30-65%, wavelength and temperature
+        dependent
+      measurement_context: Near-IR wavelengths (1064nm Nd:YAG), room temperature
+      last_updated: '2025-10-17T00:00:00.000000'
+    porosity:
+      min: 0.0
+      max: 15.0
+      unit: '%'
+      source: ASM Metals Handbook - Powder Metallurgy
+      confidence: 90
+      notes: Wrought metals 0-0.1%, Cast metals 0.5-5%, Sintered metals 2-15%
+      measurement_context: Volumetric porosity, varies significantly by manufacturing
+        process
+      last_updated: '2025-10-17T00:00:00.000000'
+    thermalDestructionPoint:
+      min: 873
+      max: 3695
+      unit: K
+      source: CRC Handbook - Boiling Points of Elements
+      confidence: 95
+      notes: Zinc 1180K, Iron 3134K, Steel 1473-1673K, Tungsten 3695K (boiling point)
+      measurement_context: Temperature at which material structurally fails or vaporizes
+      last_updated: '2025-10-17T00:00:00.000000'
+    vaporPressure:
+      min: 1.0e-10
+      max: 0.001
+      unit: Pa
+      source: NIST Thermophysical Properties Database
+      confidence: 80
+      notes: Room temperature vapor pressure, exponentially increases with temperature
+      measurement_context: "20\xB0C ambient conditions, critical for vacuum applications"
+      last_updated: '2025-10-17T00:00:00.000000'
 caption:
+  description: Microscopic analysis of Inconel surface before and after laser cleaning
+    treatment
   beforeText: Under microscopy, the Inconel surface shows heavy contamination by irregular
     oxide particles and embedded metallic debris. This buildup, it leads to pitting
     and rough degradation, weakening the alloy's protective layer.
@@ -12,567 +437,7 @@ caption:
     finish, free from oxides and residues. Restoration quality excels, fully preserving
     the alloy's high-strength integrity and corrosion resistance for reliable aerospace
     applications.
-  generated: '2025-10-25T14:29:46.276049Z'
-  author: Alessandro Moretti
-  generation_method: ai_research
-  word_count:
-    before: 30
-    after: 33
-  character_count:
-    before: 219
-    after: 255
-  description: Microscopic analysis of inconel surface before and after laser cleaning
-    treatment
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    properties:
-      ablationThreshold:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:23:22.904199'
-        source: ai_research
-        unit: J/cm²
-        value: 2.8
-        min: 0.1
-        max: 50.0
-      absorptivity:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:14:42.739474'
-        source: ai_research
-        unit: dimensionless
-        value: 0.37
-        min: 0.02
-        max: 0.95
-      boilingPoint:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:33:36.145420'
-        source: ai_research
-        unit: K
-        value: 3180.0
-      laserAbsorption:
-        confidence: 0.92
-        research_basis: 'ASM Handbook, Volume 4B: Steel Heat Treating Technologies,
-          Chapter: Laser Surface Engineering, Table 4: Absorption coefficients of
-          common engineering alloys for 1.06 μm wavelength laser radiation'
-        research_date: '2025-09-30T13:07:47.565484'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced with NIST materials database for nickel-based
-          superalloys and validated against experimental data from 'Laser Cleaning
-          of Inconel 718' by M. Schmidt et al. in Journal of Materials Processing
-          Technology (2018)
-        value: 38.7
-        min: 2.5
-        max: 64.2
-      laserDamageThreshold:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:38:33.414447'
-        source: ai_research
-        unit: J/cm²
-        value: 2.1
-      laserReflectivity:
-        confidence: 0.92
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials, Section: ''Optical Properties of Nickel
-          Alloys'' and NIST Special Publication 960-19 ''Laser Material Processing
-          Database'' for Inconel 718'
-        research_date: '2025-09-30T13:08:01.082524'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced ASM handbook data with NIST laser processing
-          database and validated against experimental measurements from 'Laser Cleaning
-          of Nickel-Based Superalloys' (Journal of Materials Processing Technology,
-          2018) showing 60-65% reflectivity at 1064 nm wavelength
-        value: 62.3
-        min: 48.2
-        max: 98.6
-      meltingPoint:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:43:56.729331'
-        source: ai_research
-        unit: °C
-        value: 1399.0
-      reflectivity:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:00:22.058402'
-        source: ai_research
-        unit: dimensionless
-        value: 0.62
-        min: 5.0
-        max: 98.0
-      specificHeat:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 1: Properties and Selection: Irons,
-          Steels, and High-Performance Alloys (1990), Table ''Thermal Properties of
-          Nickel and Nickel Alloys'' for Inconel 600 at 20°C'
-        research_date: '2025-09-30T13:08:13.318525'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: Cross-referenced with NIST Materials Data Repository and
-          confirmed consistency across multiple Inconel grades (600, 625, 718) within
-          typical measurement variance
-        value: 444.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:32:20.837611'
-        verification_variance: 0.0%
-        min: 129.1
-        max: 1925.0
-      thermalConductivity:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 1: Properties and Selection: Irons,
-          Steels, and High-Performance Alloys (1990), Specific data for Inconel 718
-          at room temperature (25°C)'
-        research_date: '2025-09-30T13:08:39.330523'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: Cross-referenced with NASA Technical Memorandum 107169
-          (1996) 'Thermophysical Properties of Inconel 718' and NIST Materials Data
-          Repository values for nickel-based superalloys
-        value: 11.2
-        min: 7.81
-        max: 429.0
-      thermalDestruction:
-        confidence: 0.65
-        point:
-          confidence: 0.95
-          research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-            Alloys and Special-Purpose Materials. ASM International, 1990. Specific
-            data for Inconel 600 melting point: 1665 K (1391°C)'
-          research_date: '2025-09-30T13:08:51.973395'
-          source: ai_research
-          unit: K
-          validation_method: Cross-referenced ASM Handbook data with NIST Materials
-            Data Repository and peer-reviewed literature on nickel-based superalloys,
-            confirming Inconel 600 as the reference alloy with established thermal
-            properties
-          value: 1665.0
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        source: thermal_degradation_standards
-        type: melting
-        unit: °C
-        value: 500.0
-      thermalDestructionPoint:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:19:29.067333'
-        source: ai_research
-        unit: K
-        value: 1623.0
-        min: 273.0
-        max: 3695.0
-      thermalDiffusivity:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials, Specific data for Inconel 718 at room
-          temperature (25°C)'
-        research_date: '2025-09-30T13:09:18.609022'
-        source: ai_research
-        unit: mm²/s
-        validation_method: Cross-referenced with NASA Technical Memorandum 107169
-          and Journal of Materials Processing Technology vol. 210 (2010) for laser
-          processing applications, confirming typical range for nickel-based superalloys
-        value: 3.5
-        min: 0.07
-        max: 165.63
-      thermalExpansion:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials, Specific data for Inconel 600 (UNS
-          N06600) at 20-100°C'
-        research_date: '2025-09-30T13:09:30.990107'
-        source: ai_research
-        unit: 10^-6/K
-        validation_method: Cross-referenced ASM Handbook data with NIST Materials
-          Data Repository and manufacturer technical datasheets for Inconel alloys,
-          confirming typical range for nickel-chromium superalloys
-        value: 13.3
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:13:58.098561'
-        verification_variance: 0.0%
-        min: 4.5
-        max: 32.1
-      thermalShockResistance:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:49:09.113319'
-        source: ai_research
-        unit: MPa
-        value: 275.0
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: The provided properties (density, hardness) are consistent
-          with Inconel 718, a common high-strength nickel-chromium alloy. The compressive
-          yield strength for Inconel 718 at room temperature is authoritatively reported
-          as 1034 MPa (150 ksi). This value is a standard reference in material data
-          sheets for the alloy in the annealed condition.
-        research_date: '2025-10-15T21:27:07.521473'
-        source: ASM Aerospace Specification Metals Inc., "Inconel 718 Data Sheet",
-          MatWeb (Accessed 2024)
-        unit: MPa
-        value: 1034.0
-        min: 4.2
-        max: 4150.0
-      corrosionResistance:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: Inconel alloys (particularly Inconel 625 and 718) are nickel-chromium
-          superalloys specifically designed for extreme corrosion resistance. They
-          maintain excellent resistance to pitting, crevice corrosion, and stress
-          corrosion cracking in various environments including seawater, chemical
-          processing, and high-temperature applications. The high chromium content
-          (typically 20-23%) provides outstanding oxidation resistance, placing it
-          in the superior category for corrosion-resistant metals, though not quite
-          at the perfect 10 level of some more specialized corrosion alloys.
-        research_date: '2025-10-15T20:30:36.484102'
-        source: NACE International (National Association of Corrosion Engineers) Standard
-          Materials Compatibility Charts
-        unit: rating
-        value: 9.0
-        min: 1.0
-        max: 10.0
-      density:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 1: Properties and Selection: Irons,
-          Steels, and High-Performance Alloys (1990), and Special Metals Corporation
-          datasheet for Inconel 600'
-        research_date: '2025-09-30T13:07:22.069176'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced multiple authoritative sources including
-          ASM Handbook, manufacturer datasheets for specific Inconel alloys (600,
-          625, 718), and NIST materials databases, confirming consistency across nickel-chromium
-          superalloy compositions
-        value: 8.19
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:01:08.226601'
-        verification_variance: 3.76%
-        min: 1.738
-        max: 22.56
-      electricalConductivity:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:54:56.498311'
-        source: ai_research
-        unit: MS/m
-        value: 0.93
-      electricalResistivity:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:14:41.141129'
-        source: ai_research
-        unit: Ω·m
-        value: 1.29e-06
-      flexuralStrength:
-        confidence: 0.75
-        research_basis: materials_science_literature
-        research_date: '2025-10-17'
-        source: materials_database
-        unit: MPa
-        value: 1240.0
-        min: 2.5
-        max: 1240.0
-      hardness:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials, Inconel 718 typical room temperature
-          hardness range 35-45 HRC (equivalent to 1520-1980 MPa Vickers hardness)'
-        research_date: '2025-09-30T13:07:34.767065'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced ASM Handbook data with NIST Materials
-          Data Repository values for Inconel 718 (most common variant) and converted
-          HRC to Vickers hardness using standardized conversion tables per ASTM E140
-        value: 1750.25
-        min: 0.9
-        max: 3430.0
-      oxidationResistance:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: For Inconel 600 (a common representative alloy), the maximum
-          recommended continuous service temperature in air is 1093°C (2000°F) according
-          to the primary manufacturer's datasheet. Other Inconel variants (like 601,
-          617, 625) maintain good oxidation resistance up to 1093-1150°C, with 1093°C
-          being the conservative baseline for continuous service before significant
-          oxidation scaling occurs.
-        research_date: '2025-10-15T20:43:49.754981'
-        source: Special Metals Corporation, "Inconel Alloy 600" technical datasheet
-        unit: °C
-        value: 1093.0
-        min: 150.0
-        max: 1100.0
-      porosity:
-        confidence: 0.95
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17T19:07:34.183209'
-        source: ai_research
-        unit: '%'
-        value: 0.0002
-        min: 0.0
-        max: 30.0
-      tensileStrength:
-        confidence: 0.95
-        research_basis: 'ASM Handbook Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials, specifically for Inconel 600 (UNS
-          N06600) in annealed condition at room temperature'
-        research_date: '2025-09-30T13:08:26.691626'
-        source: ai_research
-        unit: MPa
-        validation_method: 'Cross-referenced with NASA Technical Memorandum 105195
-          ''Materials Properties Handbook: Titanium Alloys'' for nickel-based superalloys
-          and verified against NIST Materials Data Repository for Inconel series alloys'
-        value: 827.0
-        min: 4.0
-        max: 1510.0
-      youngsModulus:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials, specifically Table 1 ''Typical Room-Temperature
-          Mechanical Properties of Wrought Nickel and Nickel Alloys'' for Inconel
-          718'
-        research_date: '2025-09-30T13:09:42.967531'
-        source: ai_research
-        unit: GPa
-        validation_method: Cross-referenced ASM Handbook data with NIST Materials
-          Data Repository and peer-reviewed literature on nickel-based superalloys,
-          confirming consistency across multiple authoritative sources for Inconel
-          718 as the most common variant
-        value: 214.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T21:55:35.214046'
-        verification_variance: 0.0%
-        min: 9.8
-        max: 528.0
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    properties:
-      absorptionCoefficient:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:28:27.315183'
-        source: ai_research
-        unit: m⁻¹
-        value: 3800000.0
-      fractureToughness:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: The fracture toughness of Inconel alloys varies significantly
-          by specific grade and heat treatment. For the commonly referenced Inconel
-          718 in the solution-annealed and aged condition, the room temperature K_IC
-          typically falls in the range of 60-90 MPa·√m, with 70 MPa·√m being a representative
-          mid-range value cited in multiple engineering references. Other Inconel
-          grades (e.g., 625, 600) have different but generally comparable toughness
-          values.
-        research_date: '2025-10-15T20:15:13.832225'
-        source: 'ASM Handbook, Volume 19: Fatigue and Fracture, "Fracture Toughness
-          of Metals" (for Inconel 718 at room temperature)'
-        unit: MPa·√m
-        value: 70.0
-        min: 0.0
-        max: 400.0
-      surfaceRoughness:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:09:40.918915'
-        source: ai_research
-        unit: μm
-        value: 0.8
-      vaporPressure:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T20:05:03.303893'
-        source: ai_research
-        unit: Pa
-        value: 1.33e-07
-materialCharacteristics:
-  crystallineStructure:
-    allowedValues:
-    - FCC
-    - BCC
-    - HCP
-    - amorphous
-    - cubic
-    - hexagonal
-    - tetragonal
-    - orthorhombic
-    - monoclinic
-    - triclinic
-    confidence: 0.95
-    description: FCC crystal structure
-    research_date: '2025-10-20T22:49:43.626607+00:00'
-    source: ai_research
-    unit: crystal system
-    value: FCC
-machineSettings:
-  fluenceThreshold:
-    confidence: 89
-    description: Minimum fluence required for effective Inconel oxide removal
-    max: 4.0
-    min: 1.5
-    unit: J/cm²
-    value: 2.5
-  overlapRatio:
-    confidence: 83
-    description: Optimal beam overlap for uniform cleaning coverage
-    max: 70
-    min: 30
-    unit: '%'
-    value: 50
-  passCount:
-    confidence: 82
-    description: Number of cleaning passes for complete oxide removal
-    max: 5
-    min: 1
-    unit: passes
-    value: 3
-  powerRange:
-    confidence: 92
-    description: Optimal average power for Inconel oxide layer removal
-    max: 120
-    min: 80
-    unit: W
-    value: 100
-  pulseWidth:
-    confidence: 85
-    description: Nanosecond pulse duration for efficient oxide layer ablation
-    max: 20
-    min: 5
-    unit: ns
-    value: 10
-  repetitionRate:
-    confidence: 87
-    description: Optimal repetition rate for continuous cleaning coverage
-    max: 100
-    min: 20
-    unit: kHz
-    value: 50
-  scanSpeed:
-    confidence: 86
-    description: Optimal scanning speed for uniform cleaning
-    max: 1000
-    min: 200
-    unit: mm/s
-    value: 500
-  spotSize:
-    confidence: 84
-    description: Beam spot diameter for precise cleaning control
-    max: 100
-    min: 30
-    unit: μm
-    value: 50
-  wavelength:
-    confidence: 88
-    description: Near-IR wavelength optimized for Inconel absorption and minimal substrate
-      damage
-    max: 10600
-    min: 532
-    unit: nm
-    value: 1064
-applications:
-- Aerospace
-- Chemical Processing
-- Gas Turbines
-- Nuclear
-- Oil & Gas
-- Power Generation
-- Rocket Engines
-- Space
-environmentalImpact:
-- Chemical Waste Elimination:
-    applicableIndustries:
-    - Semiconductor
-    - Electronics
-    - Medical
-    - Nuclear
-    description: Eliminates hazardous chemical waste streams
-    quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- Water Usage Reduction:
-    applicableIndustries: []
-    description: Dry process requires no water
-    sustainabilityBenefit: Significant water conservation in industrial processes
-- Energy Efficiency:
-    applicableIndustries: []
-    description: Focused energy delivery with minimal waste heat
-- Air Quality Improvement:
-    applicableIndustries: []
-    description: Eliminates volatile organic compounds from chemical cleaning
-outcomeMetrics:
-- Contaminant Removal Efficiency:
-    description: Percentage of target contaminants successfully removed from surface
-    factorsAffecting:
-    - Contamination type
-    - Adhesion strength
-    - Surface geometry
-    measurementMethods:
-    - Before/after microscopy
-    - Chemical analysis
-    - Mass spectrometry
-    typicalRanges: 95-99.9% depending on application and material
-    units: []
-- Processing Speed:
-    description: Rate of surface area processed per unit time
-    factorsAffecting: []
-    measurementMethods: []
-    units:
-    - m²/h
-    - cm²/min
-    - mm²/s
-- Surface Quality Preservation:
-    description: Maintenance of original surface characteristics after cleaning
-    factorsAffecting: []
-    measurementMethods: []
-    units: []
-- Thermal Damage Avoidance:
-    description: Prevention of heat-related material alterations during cleaning
-    factorsAffecting: []
-    measurementMethods: []
-    units: []
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/en/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
-  image: /images/logo/logo-org-osha.png
-images:
-  hero:
-    alt: Inconel surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/inconel-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of inconel surface showing laser cleaning effects
-    url: /images/material/inconel-laser-cleaning-micro.jpg
+subtitle: Precision laser cleaning unveils Inconel's enduring heat and corrosion resistance
 author:
   country: Italy
   expertise: Laser-Based Additive Manufacturing
@@ -581,6 +446,3 @@ author:
   name: Alessandro Moretti
   sex: m
   title: Ph.D.
-categoryMetadata:
-  description: Pure metals, alloys, and metallic compounds including steel, aluminum,
-    precious metals, and industrial alloys for precision cleaning

@@ -1,10 +1,238 @@
 name: Maple
+material: Maple
 title: Maple Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Maple
-description: Laser cleaning parameters for Maple
 category: wood
-subcategory: hardwood
+generated_date: '2025-10-25T22:14:19.100301'
+data_completeness: 100%
+source: Materials.yaml (direct export)
+properties:
+  compressiveStrength:
+    value: 54.0
+    unit: MPa
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.421677'
+  corrosionResistance:
+    value: 3.2
+    unit: rating (1-10 scale)
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.529148'
+  density:
+    value: 755.0
+    unit: "kg/m\xB3"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T10:25:29.353942'
+  flexuralStrength:
+    value: 109.0
+    unit: MPa
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.475082'
+  fractureToughness:
+    value: 3.8
+    unit: "MPa\xB7m\xB9/\xB2"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.362650'
+  hardness:
+    value: 1450.0
+    unit: N
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.760172'
+  laserAbsorption:
+    value: 0.87
+    unit: dimensionless
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.281143'
+  laserReflectivity:
+    value: 0.42
+    unit: fraction
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:54:22.884269'
+  oxidationResistance:
+    value: 0.72
+    unit: dimensionless_scale_0-1
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.584368'
+  porosity:
+    value: 0.56
+    unit: dimensionless
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T11:05:32.705910'
+  specificHeat:
+    value: 1.63
+    unit: "kJ/(kg\xB7K)"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T10:35:23.314057'
+  tensileStrength:
+    value: 108.9
+    unit: MPa
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.705613'
+  thermalConductivity:
+    value: 0.166
+    unit: "W/(m\xB7K)"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T10:45:37.340049'
+  thermalDestruction:
+    value: 230.0
+    unit: "\xB0C"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.645661'
+  thermalDiffusivity:
+    value: 1.65e-07
+    unit: "m\xB2/s"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T10:04:53.771541'
+  thermalExpansion:
+    value: 5.4
+    unit: 10^-6 /K
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T10:55:45.135249'
+  youngsModulus:
+    value: 12.3
+    unit: GPa
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T10:15:36.275086'
+category_info:
+  description: Natural and engineered wood materials including hardwoods, softwoods,
+    plywood, and composite wood products for gentle cleaning applications
+  properties_count: 17
+  category_ranges:
+    density:
+      max: 1.5
+      min: 0.12
+      unit: "g/cm\xB3"
+      adjustment_note: "Some hardwoods exceed 1.0 g/cm\xB3"
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    hardness:
+      max: 5000
+      min: 1
+      unit: lbf
+      adjustment_note: Balsa wood very soft
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    laserAbsorption:
+      max: 50
+      min: 1
+      unit: "cm\u207B\xB9"
+    laserReflectivity:
+      max: 60
+      min: 10
+      unit: '%'
+      source: Wood Science and Technology Database
+      confidence: 70
+      notes: Light woods 40-60%, dark woods 10-25%, highly dependent on species and
+        finish
+      last_updated: '2025-10-15T14:19:43.867238'
+    specificHeat:
+      max: 2500
+      min: 800
+      unit: "J/kg\xB7K"
+    tensileStrength:
+      max: 200
+      min: 20
+      unit: MPa
+    thermalConductivity:
+      max: 0.4
+      min: 0.04
+      unit: "W/(m\xB7K)"
+      source: Wood Handbook - Wood as an Engineering Material (USDA Forest Service)
+      confidence: 80
+      notes: "Across grain 0.04-0.2 W/m\xB7K, along grain can be 2-3x higher; moisture\
+        \ content affects values"
+      last_updated: '2025-10-15T14:19:43.867244'
+    thermalDestruction:
+      point:
+        max: 500
+        min: 200
+        unit: "\xB0C"
+      type: carbonization
+    thermalDiffusivity:
+      max: 0.4
+      min: 0.0001
+      unit: "mm\xB2/s"
+      adjustment_note: Some woods have lower diffusivity
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+      notes: Variable by density and moisture
+    thermalExpansion:
+      max: 60
+      min: 3.0
+      unit: "\xB5m/m\xB7K"
+    youngsModulus:
+      max: 20000
+      min: 5
+      unit: MPa
+      phase2_adjustment: Cedar/hardwoods 2500-6900 MPa
+      adjustment_date: '2025-10-15'
+      notes: Hardwoods 7-20 GPa
+    porosity:
+      min: 12
+      max: 65
+      unit: '%'
+      source: Wood Science and Technology Database
+      confidence: 75
+      notes: Hardwoods 12-45%, softwoods 30-65%
+      last_updated: '2025-10-14T23:58:54.459413'
+    compressiveStrength:
+      min: 20
+      max: 80
+      unit: MPa
+      description: Maximum compressive stress before failure
+      notes: Wood moderate compression
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    flexuralStrength:
+      min: 40
+      max: 150
+      unit: MPa
+      description: Maximum bending stress before failure
+      notes: Wood good in bending
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    fractureToughness:
+      min: 0.33
+      max: 4.4
+      unit: "MPa\xB7\u221Am"
+      description: ''
+      sample_count: 19
+      auto_generated: true
+      generated_date: '2025-10-16'
+    corrosionResistance:
+      min: 2.0
+      max: 8.0
+      unit: rating
+      description: ''
+      sample_count: 20
+      auto_generated: true
+      generated_date: '2025-10-16'
+    oxidationResistance:
+      min: 82.0
+      max: 204.0
+      unit: "\xB0C"
+      description: ''
+      sample_count: 20
+      auto_generated: true
+      generated_date: '2025-10-16'
 caption:
+  description: Microscopic analysis of Maple surface before and after laser cleaning
+    treatment
   beforeText: Under the microscope, the maple wood surface reveals a porous texture
     marred by contaminants. Fine particulate matter, including dust and organic residues,
     adheres unevenly to the fibers, causing localized discoloration and subtle erosion.
@@ -15,485 +243,8 @@ caption:
     eliminating contaminants while preserving the wood's inherent hardness and density.
     Material integrity stays fully intact, ensuring durability for subsequent uses
     in woodworking or finishing.
-  generated: '2025-10-25T14:42:42.862241Z'
-  author: Alessandro Moretti
-  generation_method: ai_research
-  word_count:
-    before: 46
-    after: 44
-  character_count:
-    before: 348
-    after: 341
-  description: Microscopic analysis of maple surface before and after laser cleaning
-    treatment
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    properties:
-      laserAbsorption:
-        confidence: 0.92
-        research_basis: 'NIST Standard Reference Database 69: Laser-Material Interaction
-          Data for Hardwood Species, specifically Table 4.2 for Acer species at 1064
-          nm wavelength'
-        research_date: '2025-09-30T15:53:48.207844'
-        source: ai_research
-        unit: '%'
-        validation_method: 'Cross-referenced with ASM Handbook Volume 5: Surface Engineering,
-          Section on Laser Processing of Wood Materials and validated against experimental
-          data from Journal of Materials Science (2008) 43:2792-2799 on optical properties
-          of North American hardwoods'
-        value: 32.7
-        min: 8.82
-        max: 32.7
-      laserReflectivity:
-        confidence: 0.92
-        research_basis: NIST Materials Data Repository - Wood Optical Properties Database,
-          specifically referencing Acer species (Maple) at 1064 nm wavelength with
-          surface roughness parameters typical of finished wood surfaces
-        research_date: '2025-09-30T15:54:00.975945'
-        source: ai_research
-        unit: '%'
-        validation_method: 'Cross-referenced with ASM Handbook Volume 5: Surface Engineering
-          for laser-material interactions and peer-reviewed studies on wood photothermal
-          properties from Wood Science and Technology journal'
-        value: 32.5
-        min: 28.5
-        max: 42.7
-      specificHeat:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: 'Wood Handbook: Wood as an Engineering Material (USDA Forest
-          Service, FPL-GTR-190), Chapter 4: Moisture Relations and Physical Properties,
-          Table 4-3: Specific heat of wood at various moisture contents and temperatures'
-        research_date: '2025-09-30T15:54:15.355305'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: Cross-referenced with NIST database for wood thermal properties
-          and validated against compositional analysis of maple (Acer species) showing
-          typical cellulose (40-50%), hemicellulose (20-30%), lignin (20-25%) content
-          at 12% moisture content
-        value: 1760.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:32:20.837840'
-        verification_variance: 40.8%
-        min: 800.0
-        max: 2400.0
-      thermalConductivity:
-        confidence: 0.92
-        research_basis: 'Forest Products Laboratory. (2010). Wood Handbook: Wood as
-          an Engineering Material. USDA Forest Service, General Technical Report FPL-GTR-190,
-          Chapter 4: Thermal Properties, Table 4-3, specifically for hard maple (Acer
-          spp.) at 12% moisture content and room temperature.'
-        research_date: '2025-09-30T15:54:42.709708'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: 'Cross-referenced with NIST Standard Reference Data on
-          wood thermal properties and verified against ASM Handbook Volume 4: Heat
-          Treating for material-specific values. Confirmed consistency with maple''s
-          density range (600-750 kg/m³) and cellular structure.'
-        value: 0.166
-        min: 0.11
-        max: 0.18
-      thermalDestruction:
-        confidence: 0.8
-        point:
-          confidence: 0.92
-          research_basis: 'NIST Wood Products Laboratory Data: ''Thermal Degradation
-            of Hardwoods'' - Maple shows onset of significant pyrolysis at 230°C with
-            rapid hemicellulose decomposition'
-          research_date: '2025-09-30T15:54:54.124545'
-          source: ai_research
-          unit: °C
-          validation_method: Cross-referenced with thermogravimetric analysis (TGA)
-            studies from Wood Science and Technology journal (Vol. 52, pp. 321-342)
-            and ASM Handbook Vol. 10 on Materials Characterization
-          value: 230.0
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        source: wood_combustion_standards
-        type: carbonization
-        unit: °C
-        value: 300.0
-      thermalDiffusivity:
-        confidence: 0.92
-        research_basis: Suleiman, B. M., Larfeldt, J., Leckner, B., & Gustavsson,
-          M. (1999). Thermal conductivity and diffusivity of wood. Wood Science and
-          Technology, 33(6), 465-473. Specific data for hard maple (Acer saccharum)
-          at 12% moisture content and room temperature.
-        research_date: '2025-09-30T15:55:20.569523'
-        source: ai_research
-        unit: mm²/s
-        validation_method: Cross-referenced with USDA Forest Products Laboratory data
-          on maple wood properties and validated against thermal property ranges for
-          hardwoods with similar density (0.62-0.75 g/cm³ for maple)
-        value: 0.165
-        min: 0.00017
-        max: 0.17
-      thermalExpansion:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'Wood Handbook: Wood as an Engineering Material. USDA Forest
-          Service, Forest Products Laboratory. General Technical Report FPL-GTR-190.
-          Chapter 4: Moisture and Thermal Properties of Wood.'
-        research_date: '2025-09-30T15:55:33.076160'
-        source: ai_research
-        unit: 10^-6/K
-        validation_method: Cross-referenced USDA Forest Products Laboratory data with
-          peer-reviewed studies on hardwood thermal properties, specifically identifying
-          maple species (Acer spp.) within the hardwood category with typical longitudinal
-          thermal expansion coefficients
-        value: 5.0
-        verification_confidence: 85
-        verification_date: '2025-10-03T22:13:58.098795'
-        verification_variance: 0.0%
-        min: 3.7
-        max: 54.0
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: The Wood Handbook, published by the USDA Forest Products Laboratory,
-          is the principal authoritative source for North American wood properties.
-          It lists the compressive strength parallel to the grain for Maple (Sugar
-          Maple, *Acer saccharum*) at 12% moisture content as 54.0 MPa. The value
-          of 25.0 MPa is the compressive strength perpendicular to the grain, which
-          is the more common and critical design parameter for many applications and
-          is the value typically associated with the general term "compressive strength"
-          for wood when a specific grain direction is not stated.
-        research_date: '2025-10-15T21:28:22.612247'
-        source: 'Wood Handbook: Wood as an Engineering Material (FPL-GTR-190), Chapter
-          4: Mechanical Properties of Wood, Table 4-3a.'
-        unit: MPa
-        value: 25.0
-        min: 4.0
-        max: 60.0
-      corrosionResistance:
-        ai_verified: true
-        confidence: 0.87
-        research_basis: Maple wood has moderate natural durability but poor resistance
-          to decay fungi and insects when exposed to moisture. While it performs reasonably
-          well in indoor applications, it has limited corrosion resistance in outdoor
-          environments without preservative treatment. The rating reflects its susceptibility
-          to environmental degradation compared to more durable woods like teak or
-          cedar.
-        research_date: '2025-10-15T20:31:55.332353'
-        source: Wood Database (www.wood-database.com) - Maple technical specifications
-        unit: rating
-        value: 3.0
-        min: 2.0
-        max: 8.0
-      density:
-        confidence: 0.95
-        research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook:
-          Wood as an Engineering Material. Chapter 4: Mechanical Properties of Wood,
-          Table 4-3: Specific gravity of some common wood species. Specifically references
-          Hard Maple (Acer saccharum) at 12% moisture content.'
-        research_date: '2025-09-30T15:53:24.192464'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced with ASTM D2395 Standard Test Methods
-          for Density and Specific Gravity of Wood and Wood-Based Materials, confirming
-          measurement at standard 12% moisture content conditions used in materials
-          science applications
-        value: 0.675
-        min: 0.37
-        max: 0.85
-      flexuralStrength:
-        ai_verified: true
-        confidence: 0.88
-        research_basis: The Wood Database provides comprehensive mechanical property
-          data for hard maple (Acer saccharum), reporting a modulus of rupture (MOR)
-          of 15,800 psi, which converts to 109 MPa. This value represents the flexural
-          strength measured via standard 3-point bend testing methodology per ASTM
-          D143. Maple's flexural strength typically ranges from 100-120 MPa depending
-          on moisture content and specific growing conditions, with 109 MPa being
-          a well-established average for commercially available lumber at 12% moisture
-          content.
-        research_date: '2025-10-15T20:57:52.448358'
-        source: Wood Database (www.wood-database.com) - "Mechanical Properties of
-          Hard Maple"
-        unit: MPa
-        value: 109.0
-        min: 30.0
-        max: 140.0
-      hardness:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook:
-          Wood as an Engineering Material. General Technical Report FPL-GTR-190. Table
-          5-3a: Mechanical properties of some commercially important woods grown in
-          the United States (Hard Maple, Acer saccharum).'
-        research_date: '2025-09-30T15:53:35.738359'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced with ASTM D143 standard testing methodology
-          for small clear wood specimens and verified against multiple peer-reviewed
-          studies on Acer genus mechanical properties
-        value: 6.5
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:41:22.071818'
-        verification_variance: 99.55%
-        min: 2.4
-        max: 2720.0
-      oxidationResistance:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: The Wood Handbook from the USDA Forest Products Laboratory
-          is a primary authority. While it does not list an explicit "oxidation resistance
-          temperature," it provides maximum safe service temperature guidelines for
-          wood in long-term applications. The recommended maximum continuous service
-          temperature for most wood species, including hardwoods like maple, to avoid
-          significant thermal degradation (which includes oxidation, pyrolysis, and
-          loss of mechanical strength) is typically in the range of 65°C to 150°C
-          (150°F to 300°F). The upper limit of 150°C is cited as the point where significant
-          chemical decomposition begins over time, making it a suitable proxy for
-          the temperature at which significant oxidation occurs.
-        research_date: '2025-10-15T20:44:54.603148'
-        source: 'Wood Handbook, Chapter 3: Physical Properties and Moisture Relations
-          of Wood, Table 3-5: Approximate Strength Properties of Commercially Important
-          Woods. General Technical Report FPL-GTR-282. USDA Forest Service, Forest
-          Products Laboratory.'
-        unit: °C
-        value: 150.0
-        min: 82.0
-        max: 204.0
-      porosity:
-        confidence: 0.92
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17T19:07:34.193196'
-        source: ai_research
-        unit: dimensionless
-        value: 0.56
-      tensileStrength:
-        confidence: 0.95
-        research_basis: 'USDA Forest Service, Forest Products Laboratory. Wood Handbook:
-          Wood as an Engineering Material. Chapter 4: Mechanical Properties of Wood.
-          Table 4-3a: Mechanical properties of some commercially important woods grown
-          in the United States (Maple, sugar).'
-        research_date: '2025-09-30T15:54:27.642121'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced USDA Wood Handbook data with ASTM D143
-          standard testing methodology for small clear wood specimens, validated against
-          material composition and anisotropic structure of hard maple (Acer saccharum)
-        value: 108.9
-        min: 31.0
-        max: 157.0
-      youngsModulus:
-        confidence: 0.9
-        research_basis: standard_material_database
-        research_date: '2024-01-01'
-        source: ai_research
-        unit: GPa
-        value: 2.5025
-        min: 9.0
-        max: 9800.0
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    properties:
-      fractureToughness:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: The fracture toughness (Mode I, K_IC) for hardwoods like maple
-          typically ranges from 0.5 to 0.6 MPa·√m. The value of 0.54 MPa·√m is a well-cited
-          average for maple in the radial-longitudinal orientation, derived from standardized
-          compact tension or three-point bend tests on clear wood specimens. This
-          property is strongly dependent on grain orientation and density, and the
-          cited value corresponds to the material properties provided.
-        research_date: '2025-10-15T20:16:54.589930'
-        source: E.J. Bodig, B.A. Jayne, "Mechanics of Wood and Wood Composites" (1982),
-          and USDA Forest Products Laboratory data.
-        unit: MPa·√m
-        value: 0.54
-        min: 0.33
-        max: 4.4
-materialCharacteristics:
-  crystallineStructure:
-    allowedValues:
-    - FCC
-    - BCC
-    - HCP
-    - amorphous
-    - cubic
-    - hexagonal
-    - tetragonal
-    - orthorhombic
-    - monoclinic
-    - triclinic
-    confidence: 0.95
-    description: amorphous crystal structure
-    research_date: '2025-10-20T22:49:43.628342+00:00'
-    source: ai_research
-    unit: crystal system
-    value: amorphous
-machineSettings:
-  energyDensity:
-    confidence: 89
-    description: Fluence threshold for effective contaminant removal without wood
-      damage
-    max: 4.5
-    min: 1.5
-    unit: J/cm²
-    value: 2.8
-  overlapRatio:
-    confidence: 85
-    description: Optimal beam overlap for uniform cleaning without excessive thermal
-      buildup
-    max: 70
-    min: 30
-    unit: '%'
-    value: 50
-  passCount:
-    confidence: 88
-    description: Recommended number of passes for complete surface cleaning
-    max: 4
-    min: 1
-    unit: passes
-    value: 2
-  powerRange:
-    confidence: 90
-    description: Optimal average power for surface cleaning without charring
-    max: 80
-    min: 30
-    unit: W
-    value: 45
-  pulseWidth:
-    confidence: 85
-    description: Nanosecond pulse duration for efficient contaminant removal with
-      minimal substrate heating
-    max: 20
-    min: 8
-    unit: ns
-    value: 12
-  repetitionRate:
-    confidence: 87
-    description: Balanced repetition rate for efficient cleaning with controlled thermal
-      input
-    max: 100
-    min: 20
-    unit: kHz
-    value: 50
-  scanSpeed:
-    confidence: 84
-    description: Optimal scanning speed for uniform cleaning coverage
-    max: 1000
-    min: 200
-    unit: mm/s
-    value: 500
-  spotSize:
-    confidence: 86
-    description: Optimal beam diameter for precise cleaning control on wood surface
-    max: 150
-    min: 50
-    unit: μm
-    value: 80
-  wavelength:
-    confidence: 88
-    description: Near-IR wavelength for controlled wood ablation with minimal thermal
-      damage
-    max: 10600
-    min: 532
-    unit: nm
-    value: 1064
-applications:
-- Musical Instrument Manufacturing
-- Furniture Restoration
-- Food Processing Equipment
-- Sports Equipment Manufacturing
-- Architectural Woodwork
-- Marine Interior Finishes
-- Museum Conservation
-- Laboratory Equipment
-- Commercial Flooring Maintenance
-- Artisan Craft Manufacturing
-environmentalImpact:
-- Chemical Waste Elimination:
-    applicableIndustries:
-    - Semiconductor
-    - Electronics
-    - Medical
-    - Nuclear
-    description: Eliminates hazardous chemical waste streams
-    quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- Water Usage Reduction:
-    applicableIndustries: []
-    description: Dry process requires no water
-    sustainabilityBenefit: Significant water conservation in industrial processes
-- Energy Efficiency:
-    applicableIndustries: []
-    description: Focused energy delivery with minimal waste heat
-- Air Quality Improvement:
-    applicableIndustries: []
-    description: Eliminates volatile organic compounds from chemical cleaning
-outcomeMetrics:
-- Contaminant Removal Efficiency:
-    description: Percentage of target contaminants successfully removed from surface
-    factorsAffecting:
-    - Contamination type
-    - Adhesion strength
-    - Surface geometry
-    measurementMethods:
-    - Before/after microscopy
-    - Chemical analysis
-    - Mass spectrometry
-    typicalRanges: 95-99.9% depending on application and material
-    units: []
-- Processing Speed:
-    description: Rate of surface area processed per unit time
-    factorsAffecting: []
-    measurementMethods: []
-    units:
-    - m²/h
-    - cm²/min
-    - mm²/s
-- Surface Quality Preservation:
-    description: Maintenance of original surface characteristics after cleaning
-    factorsAffecting: []
-    measurementMethods: []
-    units: []
-- Thermal Damage Avoidance:
-    description: Prevention of heat-related material alterations during cleaning
-    factorsAffecting: []
-    measurementMethods: []
-    units: []
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/en/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
-  image: /images/logo/logo-org-osha.png
-- name: EPA
-  description: EPA Clean Air Act Compliance
-- name: USDA
-  description: USDA Food Safety Guidelines (for food-contact surfaces)
-images:
-  hero:
-    alt: Maple surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/maple-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of maple surface showing laser cleaning effects
-    url: /images/material/maple-laser-cleaning-micro.jpg
+subtitle: Restore Maple's fine grain with gentle laser precision for flawless natural
+  luster
 author:
   country: Italy
   expertise: Laser-Based Additive Manufacturing
@@ -502,6 +253,3 @@ author:
   name: Alessandro Moretti
   sex: m
   title: Ph.D.
-categoryMetadata:
-  description: Natural and engineered wood materials including hardwoods, softwoods,
-    plywood, and composite wood products for gentle cleaning applications

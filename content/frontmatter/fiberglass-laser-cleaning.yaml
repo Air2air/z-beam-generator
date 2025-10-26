@@ -1,438 +1,244 @@
+name: Fiberglass
+material: Fiberglass
 title: Fiberglass Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Fiberglass
-description: Laser cleaning parameters for Fiberglass
 category: composite
-subcategory: fiber-reinforced
+generated_date: '2025-10-25T22:14:18.663654'
+data_completeness: 100%
+source: Materials.yaml (direct export)
+properties:
+  compressiveStrength:
+    value: 310.0
+    unit: MPa
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.410437'
+  corrosionResistance:
+    value: 0.95
+    unit: dimensionless
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.517554'
+  density:
+    value: 1.95
+    unit: "g/cm\xB3"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T10:23:01.071147'
+  electricalResistivity:
+    value: 100000000000000.0
+    unit: "\u03A9\xB7m"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T11:10:56.466796'
+  flexuralStrength:
+    value: 550.0
+    unit: MPa
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.465157'
+  fractureToughness:
+    value: 25.3
+    unit: "MPa\xB7m\xB9/\xB2"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.350486'
+  hardness:
+    value: 4.5
+    unit: GPa
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.749690'
+  laserAbsorption:
+    value: 0.72
+    unit: dimensionless
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.261698'
+  laserReflectivity:
+    value: 0.42
+    unit: dimensionless
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:51:37.819179'
+  oxidationResistance:
+    value: 0.92
+    unit: dimensionless
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.572607'
+  specificHeat:
+    value: 840.0
+    unit: "J/(kg\xB7K)"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T10:32:51.753223'
+  tensileStrength:
+    value: 345.0
+    unit: MPa
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.693728'
+  thermalConductivity:
+    value: 0.04
+    unit: "W/m\xB7K"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T10:43:05.331845'
+  thermalDestruction:
+    value: 623.0
+    unit: "\xB0C"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.633477'
+  thermalDiffusivity:
+    value: 1.15e-07
+    unit: "m\xB2/s"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T10:02:13.477039'
+  thermalExpansion:
+    value: 8.0
+    unit: 10^-6/K
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T10:53:06.379361'
+  youngsModulus:
+    value: 17.2
+    unit: GPa
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T10:13:11.958215'
+category_info:
+  description: Engineered composite materials including fiber-reinforced polymers,
+    matrix composites, and hybrid materials for specialized cleaning applications
+  properties_count: 17
+  category_ranges:
+    density:
+      max: 8
+      min: 0.5
+      unit: "g/cm\xB3"
+    hardness:
+      max: 120
+      min: 5.0
+      unit: HRC
+      adjustment_note: Phenolic resin composites harder
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    laserAbsorption:
+      max: 200
+      min: 0.05
+      unit: "cm\u207B\xB9"
+    laserReflectivity:
+      max: 80
+      min: 2
+      unit: '%'
+      source: Composite Materials Handbook (MIL-HDBK-17)
+      confidence: 70
+      notes: 'Wide range reflects diversity: polymer matrix composites 5-30%, metal
+        matrix composites 40-80%'
+      last_updated: '2025-10-15T14:19:43.867274'
+    specificHeat:
+      max: 2500.0
+      min: 500
+      unit: "J/kg\xB7K"
+    tensileStrength:
+      max: 6000
+      min: 20
+      unit: MPa
+      adjustment_note: Some composites weaker
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    thermalConductivity:
+      max: 400
+      min: 0.03
+      unit: "W/(m\xB7K)"
+      source: ASM Handbook - Composites
+      confidence: 75
+      notes: "Wide range (0.1-400 W/m\xB7K): polymer matrix ~0.2, carbon fiber ~10,\
+        \ metal matrix 50-400"
+      last_updated: '2025-10-15T14:19:43.867281'
+      adjustment_note: Fiberglass is insulating
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    thermalDestruction:
+      point:
+        max: 2000
+        min: 150
+        unit: "\xB0C"
+      type: decomposition
+    thermalDiffusivity:
+      max: 180
+      min: 0.08
+      unit: "mm\xB2/s"
+    thermalExpansion:
+      max: 250
+      min: -1
+      unit: "\xB5m/m\xB7K"
+    youngsModulus:
+      max: 3000
+      min: 0.001
+      unit: GPa
+      adjustment_note: Carbon fiber composites very stiff
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    compressiveStrength:
+      min: 50
+      max: 1000
+      unit: MPa
+      description: Maximum compressive stress before failure
+      notes: Fiber-reinforced composites
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    corrosionResistance:
+      min: 5
+      max: 9
+      unit: rating
+      description: Resistance to chemical/electrochemical degradation
+      notes: Depends on matrix material
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    electricalResistivity:
+      min: 0.001
+      max: 100000000000000.0
+      unit: "\u03A9\xB7m"
+      description: Resistance to electrical current flow
+      notes: Highly variable
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    flexuralStrength:
+      min: 100
+      max: 2000
+      unit: MPa
+      description: Maximum bending stress before failure
+      notes: Composites excel in bending
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    fractureToughness:
+      min: 20
+      max: 100
+      unit: "MPa\xB7m^0.5"
+      description: Resistance to crack propagation
+      notes: Fiber reinforcement increases toughness
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    oxidationResistance:
+      min: 80.0
+      max: 1650.0
+      unit: "\xB0C"
+      description: ''
+      sample_count: 13
+      auto_generated: true
+      generated_date: '2025-10-16'
 caption:
+  description: Microscopic analysis of Fiberglass surface before and after laser cleaning
+    treatment
   beforeText: Under microscopy, the fiberglass surface shows contaminants like fine
     dust particles and oily residues embedded among the fibers. This buildup leads
     to surface degradation, with visible pitting and slight fiber fraying.
   afterText: After laser cleaning, the fiberglass surface appears smooth and evenly
     restored to its original luster. No fiber damage or delamination shows, preserving
     the composite's integrity well, and it retains full strength for ongoing applications.
-  generated: '2025-10-25T14:19:14.036078Z'
-  author: Yi-Chun Lin
-  generation_method: ai_research
-  word_count:
-    before: 31
-    after: 34
-  character_count:
-    before: 219
-    after: 240
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    properties:
-      laserAbsorption:
-        confidence: 0.92
-        research_basis: 'ASM Handbook, Volume 5: Surface Engineering, Section: Laser
-          Cleaning of Composite Materials; NIST Special Publication 1176: Laser-Material
-          Interactions for Manufacturing'
-        research_date: '2025-09-30T11:35:22.246124'
-        source: ai_research
-        unit: unitless
-        validation_method: Cross-referenced with compositional analysis of E-glass
-          fiber and epoxy resin matrix absorption properties at 1064 nm wavelength,
-          validated against experimental data from laser cleaning studies on fiberglass
-          composites
-        value: 0.92
-      laserReflectivity:
-        confidence: 0.92
-        research_basis: 'ASM Handbook, Volume 21: Composites, Section: Laser Processing
-          of Composite Materials, pp. 543-550, with specific reference to E-glass
-          fiber/epoxy matrix systems under 1064 nm wavelength'
-        research_date: '2025-09-30T11:35:36.173217'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced with experimental data from 'Laser Cleaning
-          of Composite Materials' (Journal of Materials Processing Technology, Vol.
-          234, 2016) showing 37-40% reflectivity for standard fiberglass composites
-          at common laser cleaning wavelengths (1064 nm)
-        value: 38.5
-      specificHeat:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
-          of E-Glass Fiber Reinforced Polymer Composites, measured at 25°C using differential
-          scanning calorimetry'
-        research_date: '2025-09-30T11:35:47.972985'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: 'Cross-referenced with ASM Handbook Vol. 21: Composites
-          and academic literature on E-glass/epoxy composite thermal properties, confirming
-          consistency with typical 60-70% glass fiber content by weight'
-        value: 840.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:32:20.837459'
-        verification_variance: 0.0%
-      thermalConductivity:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: materials_science_literature
-        research_date: '2025-10-17'
-        source: ai_research
-        unit: W/(m·K)
-        value: 0.036
-        verification_confidence: 98
-        verification_date: '2025-10-03T20:20:53.091996'
-        verification_variance: 99.98%
-      thermalDestruction:
-        confidence: 0.7
-        point:
-          confidence: 0.92
-          research_basis: 'NIST Special Publication 1089: ''Thermal Decomposition
-            of Polymer Composites'' and ASM Handbook Vol. 21: Composites, specifically
-            Section 4.3 on Glass Fiber Reinforced Polymers'
-          research_date: '2025-09-30T11:36:25.839466'
-          source: ai_research
-          unit: K
-          validation_method: Cross-referenced DSC/TGA experimental data from NIST
-            with manufacturer technical datasheets for E-glass fiber composites, validated
-            against laser ablation threshold studies in 'Laser Cleaning of Composite
-            Materials' (Journal of Materials Processing Technology, 2021)
-          value: 823.0
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        source: composite_degradation_standards
-        type: decomposition
-        unit: °C
-        value: 300.0
-      thermalDiffusivity:
-        confidence: 0.92
-        research_basis: 'NIST Materials Data Repository - Composite Materials Database,
-          specifically fiberglass (E-glass/epoxy) thermal properties at 25°C, with
-          validation from ASM Handbook Vol. 21: Composites'
-        research_date: '2025-09-30T11:36:50.124887'
-        source: ai_research
-        unit: mm²/s
-        validation_method: Cross-referenced multiple authoritative sources including
-          NIST composite materials database, ASM Handbook values for E-glass/epoxy
-          systems, and peer-reviewed studies on thermal properties of fiber-reinforced
-          composites. Verified against typical fiberglass composition (60-70% E-glass
-          fibers in epoxy matrix) and known thermal behavior.
-        value: 0.45
-      thermalExpansion:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: 'ASM Handbook, Volume 21: Composites, Table ''Properties of
-          Common Fiberglass Composites'' specifying E-glass/epoxy composites at 20-100°C
-          range'
-        research_date: '2025-09-30T11:37:03.638861'
-        source: ai_research
-        unit: 10^-6/K
-        validation_method: Cross-referenced with NIST Composite Materials Database
-          entry for E-glass fiber reinforced polymer composites and verified against
-          typical fiberglass composition (60-70% E-glass, 30-40% epoxy matrix)
-        value: 8.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:13:58.098423'
-        verification_variance: 60.0%
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: The compressive strength of fiberglass is highly dependent
-          on the specific resin system, fiber type (e.g., E-glass, S-glass), and fiber
-          orientation. For a general-purpose E-glass fiber-reinforced polymer composite,
-          authoritative materials databases (AZoM, MatWeb) consistently report compressive
-          strength values in the range of 480-1600 MPa. The provided value of 1034
-          MPa is a typical mid-range value for a unidirectional E-glass/epoxy composite,
-          which is significantly lower than its tensile strength due to different
-          failure mechanisms (fiber buckling/kinking under compression).
-        research_date: '2025-10-15T21:25:50.633387'
-        source: AZoM (AZoMaterials.com) - "Fibreglass - An Overview"
-        unit: MPa
-        value: 1034.0
-      corrosionResistance:
-        ai_verified: true
-        confidence: 0.88
-        research_basis: Fiberglass (glass fiber reinforced polymer) exhibits excellent
-          resistance to most environmental corrosion including atmospheric exposure,
-          water, and many chemicals due to the protective polymer matrix and inert
-          glass fibers. It does not rust or corrode like metals, though it can experience
-          some degradation from UV exposure and strong alkalis over very long periods.
-        research_date: '2025-10-15T20:29:07.903818'
-        source: 'ASM International, "Corrosion: Materials" handbook, fiberglass composites
-          section'
-        unit: rating
-        value: 8.0
-      density:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 21: Composites, Section: Fiberglass
-          Reinforced Polymer Properties, Table: Typical Physical Properties of E-Glass
-          Fiber Composites'
-        research_date: '2025-09-30T11:34:57.210199'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced with NIST Structural Composites Database
-          and verified against manufacturer technical data sheets for standard E-glass/epoxy
-          composites with 60-70% fiber volume fraction
-        value: 2.55
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:01:08.226471'
-        verification_variance: 1.19%
-      electricalResistivity:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:10:09.992412'
-        source: ai_research
-        unit: Ω·m
-        value: 100000000000000.0
-      flexuralStrength:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: The provided tensile strength (3447 MPa) is exceptionally
-          high for a bulk fiberglass composite, more typical of individual glass fibers.
-          For a standard fiberglass-reinforced polymer (GRP/FRP), authoritative engineering
-          databases (AZoM, MatWeb) list flexural strength values in the range of 200-800
-          MPa. The cited value of 689 MPa is a representative high-end value for a
-          unidirectional or high-fiber-volume E-glass/epoxy composite, which aligns
-          with the expected relationship where flexural strength is significantly
-          lower than the ultimate fiber tensile strength but higher than the matrix-dominated
-          compressive strength.
-        research_date: '2025-10-15T20:54:58.880504'
-        source: AZoM (AZoMaterials) - "Fibreglass - Glass Fibre Reinforced Plastics
-          (GRP)" Materials Database
-        unit: MPa
-        value: 689.0
-      hardness:
-        confidence: 0.75
-        research_basis: materials_science_literature
-        research_date: '2025-10-17'
-        source: materials_database
-        unit: HV
-        value: 150.0
-      oxidationResistance:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: Fiberglass is a composite material, and its maximum service
-          temperature is dictated by the polymer matrix (typically epoxy or polyester),
-          not the glass fibers. Authoritative materials databases (AZoM, MatWeb) consistently
-          report the maximum continuous service temperature for standard fiberglass
-          composites in air to be in the range of 140-350°C, with 340°C being a common
-          upper limit for high-temperature epoxy systems before the resin begins to
-          thermally degrade and oxidize.
-        research_date: '2025-10-15T20:42:33.979669'
-        source: AZoM, "Fibreglass - An Overview"
-        unit: °C
-        value: 340.0
-      tensileStrength:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 21: Composites, Table 2: Typical Mechanical
-          Properties of E-Glass Fiber/Epoxy Composites (unidirectional, 60% fiber
-          volume fraction)'
-        research_date: '2025-09-30T11:35:59.847832'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced with MIL-HDBK-17F data for E-glass/epoxy
-          composites and verified against ASTM D3039 tensile testing standards for
-          fiber-reinforced polymers
-        value: 3447.0
-      youngsModulus:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 21: Composites, Specific data for E-glass
-          fiber reinforced polymer composites with typical 30-40% fiber volume fraction'
-        research_date: '2025-09-30T11:37:14.426151'
-        source: ai_research
-        unit: GPa
-        validation_method: Cross-referenced with NIST Polymer Composite Database and
-          academic literature on fiberglass mechanical properties, confirming typical
-          range for E-glass/vinyl ester composites
-        value: 17.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T21:55:35.213917'
-        verification_variance: 0.0%
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    properties:
-      fractureToughness: 15.0
-materialCharacteristics:
-  crystallineStructure:
-    allowedValues:
-    - FCC
-    - BCC
-    - HCP
-    - amorphous
-    - cubic
-    - hexagonal
-    - tetragonal
-    - orthorhombic
-    - monoclinic
-    - triclinic
-    confidence: 0.95
-    description: mixed crystal structure
-    research_date: '2025-10-20T22:49:43.625649+00:00'
-    source: ai_research
-    unit: crystal system
-    value: mixed
-machineSettings:
-  dwellTime:
-    confidence: 82
-    description: Effective dwell time per spot for contaminant ablation
-    max: 200
-    min: 50
-    unit: μs
-    value: 100
-  energyDensity:
-    confidence: 89
-    description: Fluence threshold for effective contaminant removal
-    max: 8
-    min: 2
-    unit: J/cm²
-    value: 5
-  overlapRatio:
-    confidence: 85
-    description: Optimal beam overlap for uniform cleaning coverage
-    max: 70
-    min: 30
-    unit: '%'
-    value: 50
-  passCount:
-    confidence: 83
-    description: Number of cleaning passes for complete contaminant removal
-    max: 5
-    min: 1
-    unit: passes
-    value: 3
-  powerRange:
-    confidence: 92
-    description: Optimal average power for Fiberglass surface cleaning without thermal
-      damage
-    max: 120
-    min: 80
-    unit: W
-    value: 100
-  pulseWidth:
-    confidence: 85
-    description: Nanosecond pulse duration for controlled ablation of contaminants
-    max: 20
-    min: 5
-    unit: ns
-    value: 10
-  repetitionRate:
-    confidence: 87
-    description: High repetition rate for efficient cleaning coverage
-    max: 100
-    min: 20
-    unit: kHz
-    value: 50
-  scanSpeed:
-    confidence: 86
-    description: Scanning speed for efficient area coverage without thermal buildup
-    max: 1000
-    min: 200
-    unit: mm/s
-    value: 500
-  spotSize:
-    confidence: 84
-    description: Optimal spot diameter for precision cleaning resolution
-    max: 100
-    min: 30
-    unit: μm
-    value: 50
-  wavelength:
-    confidence: 88
-    description: Near-infrared wavelength for optimal Fiberglass absorption and minimal
-      transmission
-    max: 10600
-    min: 532
-    unit: nm
-    value: 1064
-applications:
-- Aerospace
-- Marine
-- Automotive
-- Wind Energy
-- Electronics
-- Construction
-- Medical Equipment
-- Cultural Heritage
-- Chemical Processing
-- Transportation
-environmentalImpact:
-- Chemical Waste Elimination:
-    applicableIndustries:
-    - Semiconductor
-    - Electronics
-    - Medical
-    - Nuclear
-    description: Eliminates hazardous chemical waste streams
-    quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- Water Usage Reduction:
-    applicableIndustries: []
-    description: Dry process requires no water
-    sustainabilityBenefit: Significant water conservation in industrial processes
-- Energy Efficiency:
-    applicableIndustries: []
-    description: Focused energy delivery with minimal waste heat
-- Air Quality Improvement:
-    applicableIndustries: []
-    description: Eliminates volatile organic compounds from chemical cleaning
-outcomeMetrics:
-- Contaminant Removal Efficiency:
-    description: Percentage of target contaminants successfully removed from surface
-    factorsAffecting:
-    - Contamination type
-    - Adhesion strength
-    - Surface geometry
-    measurementMethods:
-    - Before/after microscopy
-    - Chemical analysis
-    - Mass spectrometry
-    typicalRanges: 95-99.9% depending on application and material
-    units: []
-- Processing Speed:
-    description: Rate of surface area processed per unit time
-    factorsAffecting: []
-    measurementMethods: []
-    units:
-    - m²/h
-    - cm²/min
-    - mm²/s
-- Surface Quality Preservation:
-    description: Maintenance of original surface characteristics after cleaning
-    factorsAffecting: []
-    measurementMethods: []
-    units: []
-- Thermal Damage Avoidance:
-    description: Prevention of heat-related material alterations during cleaning
-    factorsAffecting: []
-    measurementMethods: []
-    units: []
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo_org_fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo_org_ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/en/publication/3587
-  image: /images/logo/logo_org_iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
-  image: /images/logo/logo_org_osha.png
-images:
-  hero:
-    alt: Fiberglass surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/material/fiberglass-laser-cleaning-hero.jpg
+subtitle: Precision Lasers Safely Restore Delicate Fiberglass Composite Surfaces
 author:
   country: Taiwan
   expertise: Laser Materials Processing
@@ -441,6 +247,3 @@ author:
   name: Yi-Chun Lin
   sex: f
   title: Ph.D.
-categoryMetadata:
-  description: Engineered composite materials including fiber-reinforced polymers,
-    matrix composites, and hybrid materials for specialized cleaning applications

@@ -1,139 +1,152 @@
 name: Tempered Glass
-title: Tempered Glass
-subtitle: ''
-description: Laser cleaning parameters for Tempered Glass
+material: Tempered Glass
+title: Tempered Glass Laser Cleaning
 category: glass
-subcategory: ''
+generated_date: '2025-10-25T22:14:19.850863'
+data_completeness: 100%
+source: Materials.yaml (direct export)
+properties: {}
+category_info:
+  description: Various glass types including optical glass, borosilicate, tempered
+    glass, and specialty glass materials for precision laser cleaning
+  properties_count: 0
+  category_ranges:
+    density:
+      max: 7.6
+      min: 1.2
+      unit: "g/cm\xB3"
+    hardness:
+      max: 9.5
+      min: 3.5
+      unit: Mohs
+      adjustment_note: Lead crystal is 3.8 Mohs
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+      phase2_adjustment: Fused silica at 9.1 Mohs
+    laserAbsorption:
+      max: 10
+      min: 0.001
+      unit: "cm\u207B\xB9"
+    laserReflectivity:
+      max: 92
+      min: 0.1
+      unit: '%'
+      source: Handbook of Optical Constants of Solids (Palik, 1998)
+      confidence: 80
+      notes: Typical glasses 4-8% at normal incidence, varies with composition and
+        wavelength
+      last_updated: '2025-10-15T14:19:43.867205'
+    specificHeat:
+      max: 900
+      min: 120
+      unit: "J/kg\xB7K"
+      phase2_adjustment: "Lead crystal at 130 J/(kg\xB7K)"
+      adjustment_date: '2025-10-15'
+    tensileStrength:
+      max: 2000
+      min: 30
+      unit: MPa
+    thermalConductivity:
+      min: 0.7
+      max: 30
+      unit: "W/(m\xB7K)"
+      source: MatWeb Materials Database
+      confidence: 85
+      notes: Typical range for glass materials at room temperature
+      last_updated: '2025-10-14T23:58:54.459404'
+      phase2_adjustment: "Lead crystal at 0.78 W/(m\xB7K)"
+      adjustment_date: '2025-10-15'
+    thermalDestruction:
+      point:
+        max: 1723
+        min: 500
+        unit: "\xB0C"
+      type: melting
+    thermalDiffusivity:
+      max: 15
+      min: 0.01
+      unit: "mm\xB2/s"
+    thermalExpansion:
+      max: 15
+      min: 0.1
+      unit: "\xB5m/m\xB7K"
+    youngsModulus:
+      max: 400
+      min: 10
+      unit: GPa
+    ablationThreshold:
+      min: 2.0
+      max: 6.0
+      unit: "J/cm\xB2"
+      source: Laser-Induced Damage in Optical Materials (NIST)
+      confidence: 80
+      notes: Silica, borosilicate - nanosecond pulses at 1064nm
+      last_updated: '2025-10-14T23:58:54.459396'
+    compressiveStrength:
+      min: 500
+      max: 2000
+      unit: MPa
+      description: Maximum compressive stress before failure
+      notes: Glass strong in compression
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    corrosionResistance:
+      min: 9
+      max: 10
+      unit: rating
+      description: Resistance to chemical/electrochemical degradation
+      notes: Glass inert to most chemicals
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    electricalResistivity:
+      min: 10000000000.0
+      max: 1000000000000000.0
+      unit: "\u03A9\xB7m"
+      description: Resistance to electrical current flow
+      notes: Glass is insulator
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    flexuralStrength:
+      min: 50
+      max: 750.0
+      unit: MPa
+      description: Maximum bending stress before failure
+      notes: Glass weak in bending
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    fractureToughness:
+      min: 0.5
+      max: 2
+      unit: "MPa\xB7m^0.5"
+      description: Resistance to crack propagation
+      notes: Glass very brittle
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    oxidationResistance:
+      min: 400.0
+      max: 1700.0
+      unit: "\xB0C"
+      description: ''
+      sample_count: 11
+      auto_generated: true
+      generated_date: '2025-10-16'
 caption:
-  beforeText: Under microscopic scrutiny, the tempered glass surface displays a heavily
-    contaminated condition, with adherent particulates of irregular morphology. These
-    contaminants—fine silica dust and hydrocarbon residues, ranging 2-15 microns—feature
-    porous textures and clustered formations. Degradation manifests as etched pits
-    and incipient microcracks, undermining durability in aerospace and electronics
-    uses.
+  description: Microscopic analysis of Tempered Glass surface before and after laser
+    cleaning treatment
+  beforeText: "Under microscopic scrutiny, the tempered glass surface displays a heavily\
+    \ contaminated condition, with adherent particulates of irregular morphology.\
+    \ These contaminants\u2014fine silica dust and hydrocarbon residues, ranging 2-15\
+    \ microns\u2014feature porous textures and clustered formations. Degradation manifests\
+    \ as etched pits and incipient microcracks, undermining durability in aerospace\
+    \ and electronics uses."
   afterText: The cleaned surface of this tempered glass exhibits a pristine, uniform
     finish, free from residues or micro-defects that could compromise its optical
     clarity. Restoration via laser-based additive manufacturing achieves exceptional
     quality, seamlessly reintegrating material layers without altering the inherent
     compressive stresses. Integrity remains fully intact, ensuring reliability for
     aerospace, automotive, and electronics applications.
-  generated: '2025-10-25T15:28:12.280662Z'
-  author: Alessandro Moretti
-  generation_method: ai_research
-  word_count:
-    before: 48
-    after: 53
-  character_count:
-    before: 404
-    after: 442
-  description: Microscopic analysis of tempered glass surface before and after laser
-    cleaning treatment
-materialProperties: {}
-materialCharacteristics: {}
-machineSettings:
-  dwellTime:
-    value: 100
-    min: 50
-    max: 200
-    unit: μs
-    description: Optimal dwell time per cleaning spot
-  fluenceThreshold:
-    value: 2.5
-    min: 1.5
-    max: 4.0
-    unit: J/cm²
-    description: Optimal fluence threshold for contaminant removal without glass damage
-  overlapRatio:
-    value: 50
-    min: 40
-    max: 70
-    unit: '%'
-    description: Optimal overlap ratio for complete coverage without excessive energy
-      deposition
-  passCount:
-    value: 2
-    min: 1
-    max: 4
-    unit: passes
-    description: Optimal number of passes for thorough cleaning
-  powerRange:
-    value: 100
-    min: 80
-    max: 120
-    unit: W
-    description: Optimal average power for Tempered Glass cleaning without thermal
-      damage
-  pulseWidth:
-    value: 10
-    min: 5
-    max: 20
-    unit: ns
-    description: Optimal pulse width for controlled ablation of contaminants
-  repetitionRate:
-    value: 100
-    min: 50
-    max: 200
-    unit: kHz
-    description: Optimal repetition rate for efficient cleaning with thermal management
-  scanSpeed:
-    value: 500
-    min: 300
-    max: 1000
-    unit: mm/s
-    description: Optimal scanning speed for uniform cleaning coverage
-  spotSize:
-    value: 50
-    min: 30
-    max: 100
-    unit: μm
-    description: Optimal spot size for precision cleaning on Tempered Glass surface
-  wavelength:
-    value: 1064
-    min: 532
-    max: 10600
-    unit: nm
-    description: Optimal wavelength for Tempered Glass processing with good absorption
-applications:
-- Aerospace
-- Automotive
-- Electronics Manufacturing
-- Medical Devices
-- Marine
-- Cultural Heritage
-- Solar Energy
-- Architectural Glass
-- Food Processing
-- Laboratory Equipment
-environmentalImpact:
-- Chemical Waste Elimination:
-    applicableIndustries:
-    - Semiconductor
-    - Electronics
-    - Medical
-    - Nuclear
-    description: Eliminates hazardous chemical waste streams
-    quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- Water Usage Reduction:
-    applicableIndustries: []
-    description: Dry process requires no water
-    sustainabilityBenefit: Significant water conservation in industrial processes
-- Energy Efficiency:
-    applicableIndustries: []
-    description: Focused energy delivery with minimal waste heat
-- Air Quality Improvement:
-    applicableIndustries: []
-    description: Eliminates volatile organic compounds from chemical cleaning
-outcomeMetrics: []
-regulatoryStandards: []
-images:
-  hero:
-    alt: Tempered Glass surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/material/tempered-glass-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Tempered Glass surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/tempered-glass-laser-cleaning-micro.jpg
+subtitle: Precision laser restores tempered glass strength without inducing thermal
+  fractures
 author:
   country: Italy
   expertise: Laser-Based Additive Manufacturing
@@ -142,6 +155,3 @@ author:
   name: Alessandro Moretti
   sex: m
   title: Ph.D.
-categoryMetadata:
-  description: Various glass types including optical glass, borosilicate, tempered
-    glass, and specialty glass materials for precision laser cleaning

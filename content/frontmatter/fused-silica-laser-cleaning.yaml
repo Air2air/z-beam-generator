@@ -1,9 +1,246 @@
+name: Fused Silica
+material: Fused Silica
 title: Fused Silica Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Fused Silica
-description: Laser cleaning parameters for Fused Silica
 category: glass
-subcategory: soda-lime
+generated_date: '2025-10-25T22:14:18.699356'
+data_completeness: 100%
+source: Materials.yaml (direct export)
+properties:
+  ablationThreshold:
+    value: 2.2
+    unit: "J/cm\xB2"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T11:18:55.954338'
+  compressiveStrength:
+    value: 1150.0
+    unit: MPa
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.411675'
+  corrosionResistance:
+    value: 0.0001
+    unit: mm/year
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.519222'
+  density:
+    value: 2203.0
+    unit: "kg/m\xB3"
+    confidence: 98
+    source: ai_research
+    research_date: '2025-10-23T10:23:15.288037'
+  electricalResistivity:
+    value: 1.0e+18
+    unit: "\u03A9\xB7m"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T11:11:10.633079'
+  flexuralStrength:
+    value: 50.0
+    unit: MPa
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.466366'
+  fractureToughness:
+    value: 0.79
+    unit: "MPa\xB7m\xB9/\xB2"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.352215'
+  hardness:
+    value: 6.5
+    unit: GPa
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.750858'
+  laserAbsorption:
+    value: 0.0005
+    unit: "cm\u207B\xB9"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.264305'
+  laserReflectivity:
+    value: 0.035
+    unit: dimensionless
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:51:52.916890'
+  oxidationResistance:
+    value: 1.0
+    unit: dimensionless
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.574247'
+  specificHeat:
+    value: 741.0
+    unit: "J\xB7kg\u207B\xB9\xB7K\u207B\xB9"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T10:33:06.542343'
+  tensileStrength:
+    value: 50.0
+    unit: MPa
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.695063'
+  thermalConductivity:
+    value: 1.38
+    unit: "W/(m\xB7K)"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T10:43:19.336845'
+  thermalDestruction:
+    value: 1973.0
+    unit: K
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.635617'
+  thermalDiffusivity:
+    value: 8.6e-07
+    unit: "m\xB2/s"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T10:02:29.983574'
+  thermalExpansion:
+    value: 0.55
+    unit: 10^-6/K
+    confidence: 98
+    source: ai_research
+    research_date: '2025-10-23T10:53:20.275600'
+  youngsModulus:
+    value: 73.1
+    unit: GPa
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T10:13:24.533647'
+category_info:
+  description: Various glass types including optical glass, borosilicate, tempered
+    glass, and specialty glass materials for precision laser cleaning
+  properties_count: 18
+  category_ranges:
+    density:
+      max: 7.6
+      min: 1.2
+      unit: "g/cm\xB3"
+    hardness:
+      max: 9.5
+      min: 3.5
+      unit: Mohs
+      adjustment_note: Lead crystal is 3.8 Mohs
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+      phase2_adjustment: Fused silica at 9.1 Mohs
+    laserAbsorption:
+      max: 10
+      min: 0.001
+      unit: "cm\u207B\xB9"
+    laserReflectivity:
+      max: 92
+      min: 0.1
+      unit: '%'
+      source: Handbook of Optical Constants of Solids (Palik, 1998)
+      confidence: 80
+      notes: Typical glasses 4-8% at normal incidence, varies with composition and
+        wavelength
+      last_updated: '2025-10-15T14:19:43.867205'
+    specificHeat:
+      max: 900
+      min: 120
+      unit: "J/kg\xB7K"
+      phase2_adjustment: "Lead crystal at 130 J/(kg\xB7K)"
+      adjustment_date: '2025-10-15'
+    tensileStrength:
+      max: 2000
+      min: 30
+      unit: MPa
+    thermalConductivity:
+      min: 0.7
+      max: 30
+      unit: "W/(m\xB7K)"
+      source: MatWeb Materials Database
+      confidence: 85
+      notes: Typical range for glass materials at room temperature
+      last_updated: '2025-10-14T23:58:54.459404'
+      phase2_adjustment: "Lead crystal at 0.78 W/(m\xB7K)"
+      adjustment_date: '2025-10-15'
+    thermalDestruction:
+      point:
+        max: 1723
+        min: 500
+        unit: "\xB0C"
+      type: melting
+    thermalDiffusivity:
+      max: 15
+      min: 0.01
+      unit: "mm\xB2/s"
+    thermalExpansion:
+      max: 15
+      min: 0.1
+      unit: "\xB5m/m\xB7K"
+    youngsModulus:
+      max: 400
+      min: 10
+      unit: GPa
+    ablationThreshold:
+      min: 2.0
+      max: 6.0
+      unit: "J/cm\xB2"
+      source: Laser-Induced Damage in Optical Materials (NIST)
+      confidence: 80
+      notes: Silica, borosilicate - nanosecond pulses at 1064nm
+      last_updated: '2025-10-14T23:58:54.459396'
+    compressiveStrength:
+      min: 500
+      max: 2000
+      unit: MPa
+      description: Maximum compressive stress before failure
+      notes: Glass strong in compression
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    corrosionResistance:
+      min: 9
+      max: 10
+      unit: rating
+      description: Resistance to chemical/electrochemical degradation
+      notes: Glass inert to most chemicals
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    electricalResistivity:
+      min: 10000000000.0
+      max: 1000000000000000.0
+      unit: "\u03A9\xB7m"
+      description: Resistance to electrical current flow
+      notes: Glass is insulator
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    flexuralStrength:
+      min: 50
+      max: 750.0
+      unit: MPa
+      description: Maximum bending stress before failure
+      notes: Glass weak in bending
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    fractureToughness:
+      min: 0.5
+      max: 2
+      unit: "MPa\xB7m^0.5"
+      description: Resistance to crack propagation
+      notes: Glass very brittle
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    oxidationResistance:
+      min: 400.0
+      max: 1700.0
+      unit: "\xB0C"
+      description: ''
+      sample_count: 11
+      auto_generated: true
+      generated_date: '2025-10-16'
 caption:
+  description: Microscopic analysis of Fused Silica surface before and after laser
+    cleaning treatment
   beforeText: Under microscopy, fused silica's contaminated surface reveals clustered
     particulates and oily residues, forming hazy films. Contaminants manifest as submicron
     to 5-micron irregular specks, likely airborne dust or handling oils. Surface degradation
@@ -12,446 +249,7 @@ caption:
   afterText: After cleaning, fused silica surfaces restore to pristine optical clarity,
     preserving full material integrity and smoothness. This supports reliable performance
     in laser system optics for precision manufacturing.
-  generated: '2025-10-25T14:21:32.685835Z'
-  author: Todd Dunning
-  generation_method: ai_research
-  word_count:
-    before: 43
-    after: 27
-  character_count:
-    before: 337
-    after: 212
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    properties:
-      ablationThreshold:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:20:54.830932'
-        source: ai_research
-        unit: J/cm²
-        value: 2.2
-      laserAbsorption:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'NIST Special Publication 960-19: ''Optical Properties of
-          Fused Silica'' and Applied Optics, Vol. 37, Issue 4, pp. 779-783 (1998)
-          - ''Absorption in high-purity fused silica'''
-        research_date: '2025-09-30T12:03:53.703707'
-        source: ai_research
-        unit: cm⁻¹
-        validation_method: Cross-referenced with material composition analysis of
-          high-purity fused silica (99.99% SiO₂) and verification against known OH⁻
-          content (<10 ppm) affecting absorption characteristics at common laser cleaning
-          wavelengths (1064 nm)
-        value: 0.91
-        verification_confidence: 85
-        verification_date: '2025-10-03T23:08:00.985190'
-        verification_variance: 5.21%
-      laserReflectivity:
-        confidence: 0.95
-        research_basis: 'Palik, E.D. Handbook of Optical Constants of Solids. Academic
-          Press, 1998. Vol. 1, pp. 749-763. Fused silica refractive index n=1.46 at
-          1064 nm wavelength, reflectivity calculated using Fresnel equations: R=[(n-1)/(n+1)]²'
-        research_date: '2025-09-30T12:04:05.238892'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced with NIST Materials Data Repository for
-          fused silica optical properties and verified against laser cleaning literature
-          for 1064 nm Nd:YAG lasers (typical industrial cleaning wavelength)
-        value: 3.6
-      specificHeat:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
-          of Pure Silica Glass, measured at 300K using precision adiabatic calorimetry'
-        research_date: '2025-09-30T12:04:18.058321'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection: Nonferrous Alloys and Special-Purpose Materials, and validated
-          against known SiO₂ composition (99.9+% purity) and amorphous structure characteristics'
-        value: 741.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:32:20.837519'
-        verification_variance: 0.0%
-      thermalConductivity:
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
-          of Fused Silica at 300K, confirmed by ASM Handbook Volume 2: Properties
-          and Selection: Nonferrous Alloys and Special-Purpose Materials'
-        research_date: '2025-09-30T12:04:42.096345'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: Cross-referenced multiple authoritative sources including
-          NIST database, ASM handbook, and peer-reviewed literature on fused silica
-          properties for laser applications
-        value: 1.38
-      thermalDestruction:
-        confidence: 0.65
-        point:
-          confidence: 0.95
-          research_basis: 'NIST Standard Reference Database 84: Fused Silica Properties
-            Database - Softening Point Definition; Corning HPFS 7980 Data Sheet -
-            Annealing Point Specification'
-          research_date: '2025-09-30T12:04:53.621819'
-          source: ai_research
-          unit: K
-          validation_method: Cross-referenced manufacturer specifications for high-purity
-            fused silica with NIST definitions of thermal failure points, specifically
-            the annealing point where viscous flow begins and structural integrity
-            degrades
-          value: 1683.0
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        source: thermal_degradation_standards
-        type: melting
-        unit: °C
-        value: 500.0
-      thermalDiffusivity:
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 78: Thermophysical Properties
-          of Fused Silica, Corning 7980, measured at 300K using laser flash method'
-        research_date: '2025-09-30T12:05:17.530417'
-        source: ai_research
-        unit: mm²/s
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection: Nonferrous Alloys and Special-Purpose Materials, and validated
-          against known composition of high-purity amorphous SiO₂ (>99.9%) with typical
-          OH content <10 ppm'
-        value: 8.6
-      thermalExpansion:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 84: Fused Silica Thermal
-          Expansion Coefficient at 20°C = 0.55 × 10⁻⁶/K (Section 5.2.1.3)'
-        research_date: '2025-09-30T12:05:30.247996'
-        source: ai_research
-        unit: 10⁻⁶/K
-        validation_method: Cross-referenced with Corning HPFS 7980 datasheet (0.52
-          × 10⁻⁶/K) and Heraeus Spectrosil data (0.56 × 10⁻⁶/K), confirming ultra-low
-          expansion characteristic of high-purity fused silica
-        value: 0.55
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:13:58.098471'
-        verification_variance: 0.0%
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: The compressive strength of fused silica is highly dependent
-          on surface quality and test conditions (specimen geometry, loading rate).
-          For high-quality, flaw-free material under standard laboratory conditions,
-          the compressive strength typically ranges from 1.1 GPa to 1.2 GPa. The cited
-          value of 1100 MPa is a conservative, well-documented figure from a primary
-          manufacturer for material in a pristine state.
-        research_date: '2025-10-15T21:26:11.644440'
-        source: Corning HPFS® 7980 Fused Silica, Standard Grade Product Information
-          (2023)
-        unit: MPa
-        value: 1100.0
-      corrosionResistance:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: Fused silica is a high-purity, non-crystalline form of SiO₂.
-          Corning's authoritative datasheet states it has "excellent chemical purity
-          and resistance," being "virtually inert to all acids except hydrofluoric
-          and phosphoric," and highly resistant to water and aggressive chemicals,
-          leading to a near-perfect rating for general environmental corrosion.
-        research_date: '2025-10-15T20:29:28.081131'
-        source: Corning HPFS® 7980 Fused Silica Standard Grade Product Information
-          (V044, 2021)
-        unit: rating
-        value: 9.0
-      density:
-        ai_verified: true
-        confidence: 0.98
-        research_basis: 'NIST Standard Reference Database 84: Fused Silica (SiO₂)
-          - Density at 20°C = 2.202 g/cm³; Corning 7980 Fused Silica Technical Data
-          Sheet specifies density range 2.201-2.203 g/cm³'
-        research_date: '2025-09-30T12:03:28.291887'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced multiple authoritative sources including
-          NIST standards, Corning technical specifications, and ASM Handbook data
-          for high-purity fused silica, confirming consistency across industrial and
-          scientific references
-        value: 2.202
-        verification_confidence: 98
-        verification_date: '2025-10-03T20:01:08.226520'
-        verification_variance: 0.0%
-      electricalResistivity:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:12:26.275027'
-        source: ai_research
-        unit: Ω·m
-        value: 1.0e+18
-      flexuralStrength:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: Corning, a primary manufacturer of fused silica, provides
-          flexural strength data for their HPFS 7980 material. Their technical documentation
-          specifies a typical modulus of rupture (4-point bend) of 67 MPa for standard
-          grade fused silica. This value is consistent with the brittle nature of
-          glass and aligns with other technical sources like "Properties of Fused
-          Silica" from Heraeus Quarzglas, which cites flexural strength values in
-          the range of 50-70 MPa. The high confidence stems from the direct manufacturer
-          specification for the specific material in question.
-        research_date: '2025-10-15T20:55:21.510839'
-        source: Corning HPFS® 7980 Fused Silica, Standard Grade Product Information
-          (2023), Corning Incorporated
-        unit: MPa
-        value: 67.0
-      hardness:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 84 - Fused Silica Properties:
-          ''Fused silica has a Knoop hardness of 6.75 GPa at 100 g load'' (NIST SRD
-          84, Section 5.3.2)'
-        research_date: '2025-09-30T12:03:40.271482'
-        source: ai_research
-        unit: GPa
-        validation_method: Cross-referenced with ASM Handbook Volume 19 (Fatigue and
-          Fracture) and academic literature on brittle material properties, confirming
-          fused silica's hardness range of 6.5-7.0 GPa under standard testing conditions
-        value: 9.1
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:41:22.071550'
-        verification_variance: 34.81%
-      oxidationResistance:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: Fused silica is an amorphous form of silicon dioxide (SiO₂),
-          which is already in its fully oxidized state. Its service temperature limit
-          is not governed by oxidation but by structural relaxation and viscosity.
-          The maximum continuous service temperature in air for high-purity fused
-          silica like Corning 7980 is typically cited as 1100°C, above which significant
-          devitrification (crystallization to cristobalite) begins, leading to mechanical
-          failure.
-        research_date: '2025-10-15T20:42:52.532111'
-        source: Corning HPFS 7980 Fused Silica Datasheet, Typical Properties
-        unit: °C
-        value: 1100.0
-      tensileStrength:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 19: Fatigue and Fracture, ''Fracture
-          Toughness of Ceramics and Glasses'' section, specifically citing fused silica
-          with tensile strength of 50 MPa under standard testing conditions'
-        research_date: '2025-09-30T12:04:30.578295'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced with NIST Standard Reference Database
-          31 (Ceramics WebBook) and academic literature from Journal of the American
-          Ceramic Society confirming fused silica's tensile strength range of 40-60
-          MPa depending on surface condition and testing methodology
-        value: 50.0
-      youngsModulus:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 84 (Fused Silica Elastic
-          Constants), ASM Handbook Volume 19: Fatigue and Fracture (Table ''Elastic
-          Constants of Selected Glasses'')'
-        research_date: '2025-09-30T12:05:43.245957'
-        source: ai_research
-        unit: GPa
-        validation_method: Cross-referenced NIST reference data with ASM Handbook
-          values and confirmed consistency with fused silica's amorphous SiO2 structure
-          (99.9+% purity) and known low dispersion in elastic properties due to high
-          chemical stability
-        value: 73.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T21:55:35.213962'
-        verification_variance: 1.39%
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    properties:
-      fractureToughness: 0.75
-materialCharacteristics:
-  crystallineStructure:
-    allowedValues:
-    - FCC
-    - BCC
-    - HCP
-    - amorphous
-    - cubic
-    - hexagonal
-    - tetragonal
-    - orthorhombic
-    - monoclinic
-    - triclinic
-    confidence: 0.95
-    description: amorphous crystal structure
-    research_date: '2025-10-20T22:49:43.625956+00:00'
-    source: ai_research
-    unit: crystal system
-    value: amorphous
-machineSettings:
-  fluenceThreshold:
-    confidence: 90
-    description: Critical fluence threshold for effective contaminant removal without
-      Fused Silica damage
-    max: 4.0
-    min: 1.5
-    unit: J/cm²
-    value: 2.5
-  overlapRatio:
-    confidence: 83
-    description: Optimal beam overlap percentage for uniform cleaning without excessive
-      energy deposition
-    max: 70
-    min: 30
-    unit: '%'
-    value: 50
-  passCount:
-    confidence: 85
-    description: Recommended number of cleaning passes for complete contaminant removal
-    max: 5
-    min: 1
-    unit: passes
-    value: 3
-  powerRange:
-    confidence: 92
-    description: Optimal average power range for Fused Silica surface cleaning without
-      thermal damage
-    max: 120
-    min: 80
-    unit: W
-    value: 100
-  pulseWidth:
-    confidence: 85
-    description: Nanosecond pulse duration for efficient contaminant ablation with
-      minimal substrate heating
-    max: 20
-    min: 5
-    unit: ns
-    value: 10
-  repetitionRate:
-    confidence: 87
-    description: High repetition rate for efficient cleaning coverage while maintaining
-      thermal management
-    max: 200
-    min: 50
-    unit: kHz
-    value: 100
-  scanSpeed:
-    confidence: 86
-    description: Optimal scanning speed for uniform cleaning coverage and process
-      efficiency
-    max: 1000
-    min: 200
-    unit: mm/s
-    value: 500
-  spotSize:
-    confidence: 84
-    description: Optimal beam spot diameter for precision cleaning with sufficient
-      energy density
-    max: 100
-    min: 30
-    unit: μm
-    value: 50
-  wavelength:
-    confidence: 88
-    description: Near-IR wavelength providing optimal absorption balance for Fused
-      Silica contamination removal
-    max: 10600
-    min: 532
-    unit: nm
-    value: 1064
-applications:
-- Aerospace
-- Semiconductor Manufacturing
-- Medical Device
-- Solar Energy
-- Cultural Heritage
-- Research Laboratory
-- Automotive
-- Marine
-- Telecommunications
-- Defense and Security
-environmentalImpact:
-- Chemical Waste Elimination:
-    applicableIndustries:
-    - Semiconductor
-    - Electronics
-    - Medical
-    - Nuclear
-    description: Eliminates hazardous chemical waste streams
-    quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- Water Usage Reduction:
-    applicableIndustries: []
-    description: Dry process requires no water
-    sustainabilityBenefit: Significant water conservation in industrial processes
-- Energy Efficiency:
-    applicableIndustries: []
-    description: Focused energy delivery with minimal waste heat
-- Air Quality Improvement:
-    applicableIndustries: []
-    description: Eliminates volatile organic compounds from chemical cleaning
-outcomeMetrics:
-- Contaminant Removal Efficiency:
-    description: Percentage of target contaminants successfully removed from surface
-    factorsAffecting:
-    - Contamination type
-    - Adhesion strength
-    - Surface geometry
-    measurementMethods:
-    - Before/after microscopy
-    - Chemical analysis
-    - Mass spectrometry
-    typicalRanges: 95-99.9% depending on application and material
-    units: []
-- Processing Speed:
-    description: Rate of surface area processed per unit time
-    factorsAffecting: []
-    measurementMethods: []
-    units:
-    - m²/h
-    - cm²/min
-    - mm²/s
-- Surface Quality Preservation:
-    description: Maintenance of original surface characteristics after cleaning
-    factorsAffecting: []
-    measurementMethods: []
-    units: []
-- Thermal Damage Avoidance:
-    description: Prevention of heat-related material alterations during cleaning
-    factorsAffecting: []
-    measurementMethods: []
-    units: []
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo_org_fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo_org_ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/en/publication/3587
-  image: /images/logo/logo_org_iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
-  image: /images/logo/logo_org_osha.png
-images:
-  hero:
-    alt: Fused Silica surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/material/fused-silica-laser-cleaning-hero.jpg
+subtitle: Precision Laser Cleaning Restores Fused Silica's Optical Purity
 author:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
@@ -460,6 +258,3 @@ author:
   name: Todd Dunning
   sex: m
   title: MA
-categoryMetadata:
-  description: Various glass types including optical glass, borosilicate, tempered
-    glass, and specialty glass materials for precision laser cleaning

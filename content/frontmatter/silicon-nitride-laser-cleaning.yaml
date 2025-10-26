@@ -1,10 +1,278 @@
 name: Silicon Nitride
+material: Silicon Nitride
 title: Silicon Nitride Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Silicon Nitride
-description: Laser cleaning parameters for Silicon Nitride
 category: ceramic
-subcategory: oxide
+generated_date: '2025-10-25T22:14:19.722583'
+data_completeness: 100%
+source: Materials.yaml (direct export)
+properties:
+  ablationThreshold:
+    value: 2.1
+    unit: "J/cm\xB2"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T11:22:06.481134'
+  compressiveStrength:
+    value: 3500.0
+    unit: MPa
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.440999'
+  corrosionResistance:
+    value: 0.002
+    unit: mm/year
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.548214'
+  density:
+    value: 3.2
+    unit: "g/cm\xB3"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T10:30:05.143547'
+  electricalResistivity:
+    value: 100000000000000.0
+    unit: "\u03A9\xB7m"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T11:16:13.570344'
+  flexuralStrength:
+    value: 850.0
+    unit: MPa
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.491426'
+  fractureToughness:
+    value: 6.5
+    unit: "MPa\xB7m\xB9/\xB2"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.383402'
+  hardness:
+    value: 17.5
+    unit: GPa
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.780005'
+  laserAbsorption:
+    value: 0.82
+    unit: dimensionless
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.311620'
+  laserReflectivity:
+    value: 0.42
+    unit: dimensionless
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:59:16.153856'
+  oxidationResistance:
+    value: 0.85
+    unit: "mg/cm\xB2"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.607029'
+  porosity:
+    value: 0.02
+    unit: '%'
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T11:08:17.261171'
+  specificHeat:
+    value: 0.71
+    unit: "J/g\xB7K"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T10:40:14.309764'
+  tensileStrength:
+    value: 650.0
+    unit: MPa
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.726502'
+  thermalConductivity:
+    value: 30.0
+    unit: "W/m\xB7K"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T10:50:22.071062'
+  thermalDestruction:
+    value: 1873.0
+    unit: K
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.669257'
+  thermalDiffusivity:
+    value: 0.15
+    unit: "cm\xB2/s"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T10:10:05.773165'
+  thermalExpansion:
+    value: 3.2
+    unit: "10\u207B\u2076/K"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T11:00:36.360686'
+  youngsModulus:
+    value: 310.0
+    unit: GPa
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T10:20:16.174794'
+category_info:
+  description: Advanced ceramic materials including technical ceramics, porcelain,
+    and ceramic composites used in laser cleaning applications
+  properties_count: 19
+  category_ranges:
+    density:
+      max: 16.0
+      min: 2.3
+      unit: "g/cm\xB3"
+      adjustment_note: "Tungsten carbide is 15.63 g/cm\xB3"
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    hardness:
+      max: 2500
+      min: 6.0
+      unit: Mohs
+      adjustment_note: Change from Mohs to HV for advanced ceramics
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+      phase2_adjustment: Porcelain/Stoneware at 7.0 Mohs
+      notes: Porcelain/stoneware 7 Mohs, advanced ceramics use HV scale
+    laserAbsorption:
+      max: 50
+      min: 0.1
+      unit: "cm\u207B\xB9"
+    laserReflectivity:
+      max: 90
+      min: 5
+      unit: '%'
+      source: Handbook of Optical Constants of Solids (Palik, 1998)
+      confidence: 75
+      notes: Typical ceramics 10-30% at 1064nm, varies with composition and surface
+        finish
+      last_updated: '2025-10-15T14:19:43.867144'
+    specificHeat:
+      max: 2500.0
+      min: 250
+      unit: "J/kg\xB7K"
+      adjustment_note: Carbides have lower specific heat
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    tensileStrength:
+      max: 600
+      min: 5.0
+      unit: MPa
+      adjustment_note: Advanced ceramics much stronger
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    thermalConductivity:
+      min: 0.8
+      max: 120
+      unit: "W/(m\xB7K)"
+      source: MatWeb Materials Database
+      confidence: 80
+      notes: Typical range for ceramic materials at room temperature
+      last_updated: '2025-10-14T23:58:54.459388'
+      adjustment_note: SiC, WC have high conductivity
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    thermalDestruction:
+      point:
+        max: 3827
+        min: 1000
+        unit: "\xB0C"
+      type: thermal_shock
+    thermalDiffusivity:
+      max: 120
+      min: 0.005
+      unit: "mm\xB2/s"
+      adjustment_note: Zirconia has low diffusivity
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    thermalExpansion:
+      max: 14
+      min: 0.1
+      unit: "\xB5m/m\xB7K"
+    youngsModulus:
+      max: 600.0
+      min: 5.0
+      unit: GPa
+    ablationThreshold:
+      min: 1.5
+      max: 5.0
+      unit: "J/cm\xB2"
+      source: RP Photonics Encyclopedia, Oxide Ceramics
+      confidence: 75
+      notes: Alumina, zirconia, silicon carbide - nanosecond pulses
+      last_updated: '2025-10-14T23:58:54.459371'
+    porosity:
+      min: 0
+      max: 30
+      unit: '%'
+      source: ASM Handbook - Ceramics and Glasses
+      confidence: 80
+      notes: Dense ceramics 0-5%, porous ceramics 10-30%
+      last_updated: '2025-10-14T23:58:54.459381'
+    compressiveStrength:
+      min: 100
+      max: 7000
+      unit: MPa
+      description: Maximum compressive stress before failure
+      notes: Ceramics excellent in compression
+      source: materials_science_literature
+      research_date: '2025-10-15'
+      adjustment_note: WC exceptional in compression
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    corrosionResistance:
+      min: 8
+      max: 10
+      unit: rating
+      description: Resistance to chemical/electrochemical degradation
+      notes: Ceramics highly corrosion resistant
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    electricalResistivity:
+      min: 10000000000.0
+      max: 1.0e+16
+      unit: "\u03A9\xB7m"
+      description: Resistance to electrical current flow
+      notes: Ceramics are insulators
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    flexuralStrength:
+      min: 50
+      max: 2500
+      unit: MPa
+      description: Maximum bending stress before failure
+      notes: Ceramics brittle in bending
+      source: materials_science_literature
+      research_date: '2025-10-15'
+      adjustment_note: WC has exceptional flexural strength
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    fractureToughness:
+      min: 2
+      max: 10
+      unit: "MPa\xB7m^0.5"
+      description: Resistance to crack propagation
+      notes: Ceramics brittle, low toughness
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    oxidationResistance:
+      min: 600.0
+      max: 2400.0
+      unit: "\xB0C"
+      description: ''
+      sample_count: 7
+      auto_generated: true
+      generated_date: '2025-10-16'
 caption:
+  description: Microscopic analysis of Silicon Nitride surface before and after laser
+    cleaning treatment
   beforeText: Under microscopy, the Silicon Nitride surface shows contamination with
     fine particles and oily residues scattered across it. These contaminants, mainly
     dust and machining debris, lead to surface degradation like small pits and cracks.
@@ -13,515 +281,7 @@ caption:
     after laser processing. It reveals high quality, with no cracks or degradation,
     preserving the ceramic's integrity and key properties like hardness and thermal
     stability.
-  generated: '2025-10-25T15:19:43.734729Z'
-  author: Yi-Chun Lin
-  generation_method: ai_research
-  word_count:
-    before: 42
-    after: 34
-  character_count:
-    before: 295
-    after: 239
-  description: Microscopic analysis of silicon nitride surface before and after laser
-    cleaning treatment
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    properties:
-      ablationThreshold:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:19:42.431485'
-        source: ai_research
-        unit: J/cm²
-        value: 2.1
-      laserAbsorption:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: NIST Materials Data Repository - Laser-Material Interaction
-          Database for Ceramics, specifically Si3N4 absorption measurements at 1064
-          nm wavelength under standard laser cleaning conditions
-        research_date: '2025-09-30T11:22:28.976711'
-        source: ai_research
-        unit: '%'
-        validation_method: 'Cross-referenced with ASM Handbook Volume 4: Ceramics
-          and Glasses, and validated against known optical properties of silicon nitride
-          including its bandgap (~5 eV) and typical impurity content affecting absorption'
-        value: 0.5
-        verification_confidence: 90
-        verification_date: '2025-10-03T23:08:00.985147'
-        verification_variance: 98.47%
-        min: 0.5
-        max: 32.7
-      laserReflectivity:
-        confidence: 0.92
-        research_basis: 'NIST Materials Data Repository - Ceramic Materials Database,
-          Section 4.2.3: Optical Properties of Advanced Structural Ceramics (2021),
-          specifically Table 4.7 for silicon nitride reflectivity at 1064 nm wavelength'
-        research_date: '2025-09-30T11:22:42.695497'
-        source: ai_research
-        unit: '%'
-        validation_method: 'Cross-referenced with ASM Handbook Volume 4: Ceramics
-          and Glasses, and validated against experimental data from Zhang et al. (2019)
-          in ''Applied Surface Science'' showing 41.8-43.1% reflectivity for high-purity
-          Si3N4 at common laser cleaning wavelengths'
-        value: 42.3
-        min: 42.3
-        max: 52.3
-      specificHeat:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 144: Thermophysical Properties
-          of Solids - Silicon Nitride (Si3N4) at 300K, and ASM Handbook Volume 2:
-          Properties and Selection: Nonferrous Alloys and Special-Purpose Materials'
-        research_date: '2025-09-30T11:22:54.983963'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: Cross-referenced multiple authoritative sources including
-          NIST database, ASM Handbook, and peer-reviewed literature on silicon nitride
-          thermal properties for laser processing applications
-        value: 750.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:32:20.837440'
-        verification_variance: 5.63%
-        min: 292.0
-        max: 1085.0
-      thermalConductivity:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials (ASM International, 1990), Chapter:
-          ''Ceramics and Glasses'''
-        research_date: '2025-09-30T11:23:18.943708'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: Cross-referenced with NIST Ceramics WebBook and peer-reviewed
-          literature on silicon nitride thermal properties, confirming typical range
-          for dense, sintered Si3N4 at room temperature
-        value: 30.0
-        verification_confidence: 85
-        verification_date: '2025-10-03T20:20:53.091963'
-        verification_variance: 0.0%
-        min: 1.0
-        max: 110.0
-      thermalDestruction:
-        confidence: 0.75
-        point:
-          confidence: 0.95
-          research_basis: 'ASM Handbook, Volume 29: Materials for Specialty Applications
-            - Silicon Nitride Properties Table (p. 298) citing decomposition temperature
-            range of 1900-2150°C in inert atmosphere for high-purity Si3N4'
-          research_date: '2025-09-30T11:23:31.229031'
-          source: ai_research
-          unit: K
-          validation_method: Cross-referenced with NIST Ceramics WebBook (Silicon
-            Nitride Thermal Properties) and academic literature (Journal of the American
-            Ceramic Society, Vol. 85, Issue 5) confirming decomposition initiates
-            at ~1900°C for stoichiometric Si3N4
-          value: 2173.15
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        source: ceramic_degradation_standards
-        type: thermal_shock
-        unit: °C
-        value: 1200.0
-      thermalDiffusivity:
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 147: Ceramics WebBook -
-          Silicon Nitride (Si3N4) hot-pressed, room temperature measurement (25°C)'
-        research_date: '2025-09-30T11:23:57.957684'
-        source: ai_research
-        unit: mm²/s
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection of Nonferrous Alloys and Special-Purpose Materials and Journal
-          of the American Ceramic Society data for dense Si3N4 ceramics'
-        value: 15.8
-        min: 0.008
-        max: 22.5
-      thermalExpansion:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 4: Ceramics and Glasses, Section: Silicon
-          Nitride Properties; NIST Ceramics Database; Riley, F.L. (2004) ''Silicon
-          Nitride and Related Materials'''
-        research_date: '2025-09-30T11:24:11.373713'
-        source: ai_research
-        unit: 10⁻⁶/K
-        validation_method: Cross-referenced multiple authoritative sources including
-          ASM Handbook, NIST ceramics database, and peer-reviewed literature on silicon
-          nitride thermal properties. Verified against known crystal structure (predominantly
-          β-Si₃N₄) and typical processing conditions.
-        value: 3.3
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:13:58.098405'
-        verification_variance: 0.0%
-        min: 3.3
-        max: 10.5
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: The compressive strength of silicon nitride is significantly
-          higher than its tensile or flexural strength, a characteristic of brittle
-          ceramics. While flexural strength is typically in the range of 600-1200
-          MPa, authoritative materials handbooks and manufacturer data (e.g., from
-          Kyocera, CeramTec) consistently report compressive strength values between
-          3000-4000 MPa for dense, high-purity sintered silicon nitride. The value
-          of 3500 MPa represents a well-established, conservative average for high-quality
-          structural grades under standard room-temperature testing conditions.
-        research_date: '2025-10-15T21:32:27.756564'
-        source: 'ASM Handbook, Volume 29, "Engineered Materials Handbook: Ceramics
-          and Glasses" (Section: Silicon Nitride Properties)'
-        unit: MPa
-        value: 3500.0
-        min: 50.0
-        max: 6700.0
-      corrosionResistance:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: Silicon nitride exhibits excellent corrosion resistance to
-          most acids (except hydrofluoric acid), alkalis, and molten metals due to
-          its strong covalent bonds and stable silicon oxide surface layer that forms
-          in air/water. It maintains structural integrity in harsh chemical environments
-          where metals typically fail, though it can be attacked by strong bases at
-          elevated temperatures and molten salts.
-        research_date: '2025-10-15T20:36:32.426939'
-        source: 'ASM Handbook, Volume 13A: Corrosion: Fundamentals, Testing, and Protection
-          (2003), "Corrosion of Ceramics and Ceramic Composites"'
-        unit: rating
-        value: 9.0
-        min: 8.0
-        max: 9.0
-      density:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 28: Ceramic and Glass Materials: Structure,
-          Properties and Processing, ASM International (2016), Table 1.1 ''Properties
-          of Selected Engineering Ceramics'''
-        research_date: '2025-09-30T11:22:04.705321'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced with NIST Ceramics WebBook data and academic
-          literature on silicon nitride microstructure, confirming density range for
-          fully dense reaction-bonded and hot-pressed silicon nitride
-        value: 3.2
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:01:08.226457'
-        verification_variance: 0.0%
-        min: 2.4
-        max: 15.63
-      electricalResistivity:
-        confidence: 0.95
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:09:28.096752'
-        source: ai_research
-        unit: Ω·m
-        value: 100000000000000.0
-      flexuralStrength:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: The flexural strength of silicon nitride is highly dependent
-          on its manufacturing process and microstructure. For commercially available,
-          sintered silicon nitride used in engineering applications, typical 3-point
-          and 4-point bend test values range from 600 MPa to 1000 MPa. The value of
-          800 MPa is a well-established, representative average for high-grade, dense
-          reaction-bonded or sintered silicon nitride, as confirmed by materials handbooks
-          and engineering databases.
-        research_date: '2025-10-15T21:02:19.815255'
-        source: 'ASM Handbook, Volume 29: "Engineered Materials Handbook - Ceramics
-          and Glasses", ASM International, 2001, p. 619.'
-        unit: MPa
-        value: 800.0
-        min: 50.0
-        max: 2300.0
-      hardness:
-        ai_verified: true
-        confidence: 0.95
-        corrected: true
-        correction_confidence: 0.95
-        correction_date: '2025-10-15T16:56:21.660513'
-        correction_source: Priority 2 AI Research
-        research_basis: 'ASM Handbook, Volume 18: Friction, Lubrication, and Wear
-          Technology, Table 1: Properties of selected structural ceramics; NIST Ceramics
-          WebBook - Silicon Nitride (Si3N4) properties database'
-        research_date: '2025-10-15'
-        source: AI Research (DeepSeek) + Literature Review
-        unit: GPa
-        validation_method: Cross-referenced multiple authoritative sources including
-          ASM Handbook, NIST ceramics database, and peer-reviewed literature on structural
-          ceramics. Verified against known crystal structure (α-Si3N4 and β-Si3N4)
-          and typical manufacturing methods (hot-pressed and sintered Si3N4)
-        value: 17.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:41:22.071499'
-        verification_variance: 2.86%
-        min: 7.0
-        max: 1600.0
-      oxidationResistance:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: Silicon nitride exhibits excellent oxidation resistance up
-          to approximately 1200°C in air due to the formation of a protective silicon
-          dioxide (SiO₂) layer. Above this temperature, the protective layer can degrade,
-          and significant oxidation begins, leading to material recession and strength
-          degradation. This 1200°C threshold is consistently cited across multiple
-          ceramic engineering references as the maximum continuous service temperature
-          in oxidizing environments.
-        research_date: '2025-10-15T20:49:11.936881'
-        source: 'ASM Handbook, Volume 29: Materials for Specialty Applications - "Engineered
-          Materials Handbook Desk Edition" (ASM International, 1995), section on Silicon
-          Nitride Ceramics.'
-        unit: °C
-        value: 1200.0
-        min: 600.0
-        max: 2400.0
-      porosity:
-        confidence: 0.95
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17T19:07:34.180590'
-        source: ai_research
-        unit: '%'
-        value: 0.02
-      tensileStrength:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 29: Materials for Specialty Applications
-          - Silicon Nitride Properties Database (Table 2: Mechanical Properties of
-          Commercial Silicon Nitride Ceramics)'
-        research_date: '2025-09-30T11:23:06.863597'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced with NIST Ceramics WebBook and peer-reviewed
-          studies on hot-pressed silicon nitride (Si3N4) with 3-8% Y2O3 sintering
-          aids, confirming typical tensile strength range for high-purity engineering
-          grades
-        value: 550.0
-        min: 40.0
-        max: 550.0
-      youngsModulus:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: NIST Ceramic Materials Database - Silicon Nitride (Si3N4)
-          reference values for dense, sintered material at room temperature
-        research_date: '2025-09-30T11:24:23.127902'
-        source: ai_research
-        unit: GPa
-        validation_method: 'Cross-referenced with ASM Engineered Materials Handbook
-          Vol. 4: Ceramics and Glasses, and verified against multiple peer-reviewed
-          studies on mechanical properties of structural ceramics'
-        value: 310.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T21:55:35.213902'
-        verification_variance: 0.0%
-        min: 65.0
-        max: 600.0
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    properties:
-      fractureToughness:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: Silicon Nitride is a high-performance ceramic known for its
-          good fracture toughness relative to other ceramics. The reported value of
-          6.0 MPa·√m is a well-established median for dense, high-quality sintered
-          or hot-pressed silicon nitride at room temperature, as documented in authoritative
-          materials handbooks and review articles on structural ceramics. This value
-          can vary slightly (typically 5.0-7.0 MPa·√m) depending on specific microstructure
-          and processing route.
-        research_date: '2025-10-15T20:22:33.270329'
-        source: 'ASM Handbook, Volume 29: Materials for Specialty Applications - "Engineering
-          Properties of Silicon Nitrides"'
-        unit: MPa·√m
-        value: 6.0
-        min: 1.0
-        max: 9.5
-materialCharacteristics:
-  crystallineStructure:
-    allowedValues:
-    - FCC
-    - BCC
-    - HCP
-    - amorphous
-    - cubic
-    - hexagonal
-    - tetragonal
-    - orthorhombic
-    - monoclinic
-    - triclinic
-    confidence: 0.95
-    description: cubic crystal structure
-    research_date: '2025-10-20T22:49:43.625409+00:00'
-    source: ai_research
-    unit: crystal system
-    value: cubic
-machineSettings:
-  dwellTime:
-    confidence: 81
-    description: Effective dwell time per cleaning spot
-    max: 200
-    min: 50
-    unit: μs
-    value: 100
-  energyDensity:
-    confidence: 89
-    description: Fluence threshold for effective contaminant removal without substrate
-      damage
-    max: 8.0
-    min: 3.0
-    unit: J/cm²
-    value: 5.1
-  overlapRatio:
-    confidence: 83
-    description: Optimal beam overlap for uniform cleaning pattern
-    max: 70
-    min: 30
-    unit: '%'
-    value: 50
-  passCount:
-    confidence: 82
-    description: Recommended number of passes for complete contaminant removal
-    max: 5
-    min: 1
-    unit: passes
-    value: 3
-  powerRange:
-    confidence: 92
-    description: Optimal average power for Silicon Nitride surface cleaning without
-      thermal damage
-    max: 120
-    min: 80
-    unit: W
-    value: 100
-  pulseWidth:
-    confidence: 85
-    description: Nanosecond pulse duration for controlled ablation of contaminants
-    max: 20
-    min: 5
-    unit: ns
-    value: 10
-  repetitionRate:
-    confidence: 87
-    description: Optimal repetition rate for efficient cleaning with thermal management
-    max: 100
-    min: 20
-    unit: kHz
-    value: 50
-  scanSpeed:
-    confidence: 86
-    description: Optimal scanning speed for uniform cleaning coverage
-    max: 1000
-    min: 200
-    unit: mm/s
-    value: 500
-  spotSize:
-    confidence: 84
-    description: Beam spot diameter for precise cleaning resolution
-    max: 100
-    min: 30
-    unit: μm
-    value: 50
-  wavelength:
-    confidence: 88
-    description: Near-IR wavelength optimized for Silicon Nitride absorption characteristics
-    max: 10600
-    min: 532
-    unit: nm
-    value: 1064
-applications:
-- Aerospace
-- Medical Devices
-- Electronics Manufacturing
-- Automotive
-- Energy Sector
-- Cutting Tools Manufacturing
-- Research and Development
-- Marine Engineering
-- Chemical Processing
-- Optics and Photonics
-environmentalImpact:
-- Chemical Waste Elimination:
-    applicableIndustries:
-    - Semiconductor
-    - Electronics
-    - Medical
-    - Nuclear
-    description: Eliminates hazardous chemical waste streams
-    quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- Water Usage Reduction:
-    applicableIndustries: []
-    description: Dry process requires no water
-    sustainabilityBenefit: Significant water conservation in industrial processes
-- Energy Efficiency:
-    applicableIndustries: []
-    description: Focused energy delivery with minimal waste heat
-- Air Quality Improvement:
-    applicableIndustries: []
-    description: Eliminates volatile organic compounds from chemical cleaning
-outcomeMetrics:
-- Contaminant Removal Efficiency:
-    description: Percentage of target contaminants successfully removed from surface
-    factorsAffecting:
-    - Contamination type
-    - Adhesion strength
-    - Surface geometry
-    measurementMethods:
-    - Before/after microscopy
-    - Chemical analysis
-    - Mass spectrometry
-    typicalRanges: 95-99.9% depending on application and material
-    units: []
-- Processing Speed:
-    description: Rate of surface area processed per unit time
-    factorsAffecting: []
-    measurementMethods: []
-    units:
-    - m²/h
-    - cm²/min
-    - mm²/s
-- Surface Quality Preservation:
-    description: Maintenance of original surface characteristics after cleaning
-    factorsAffecting: []
-    measurementMethods: []
-    units: []
-- Thermal Damage Avoidance:
-    description: Prevention of heat-related material alterations during cleaning
-    factorsAffecting: []
-    measurementMethods: []
-    units: []
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/en/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
-  image: /images/logo/logo-org-osha.png
-images:
-  hero:
-    alt: Silicon Nitride surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/material/silicon-nitride-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of silicon nitride surface showing laser cleaning effects
-    url: /images/material/silicon-nitride-laser-cleaning-micro.jpg
+subtitle: Discover Tailored Laser Techniques for Brittle Silicon Nitride Cleaning
 author:
   country: Taiwan
   expertise: Laser Materials Processing
@@ -530,6 +290,3 @@ author:
   name: Yi-Chun Lin
   sex: f
   title: Ph.D.
-categoryMetadata:
-  description: Advanced ceramic materials including technical ceramics, porcelain,
-    and ceramic composites used in laser cleaning applications

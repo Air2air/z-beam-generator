@@ -1,10 +1,234 @@
 name: Basalt
+material: Basalt
 title: Basalt Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Basalt
-description: Laser cleaning parameters for Basalt
 category: stone
-subcategory: igneous
+generated_date: '2025-10-25T22:14:18.280721'
+data_completeness: 100%
+source: Materials.yaml (direct export)
+properties:
+  compressiveStrength:
+    value: 275.0
+    unit: MPa
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.398925'
+  corrosionResistance:
+    value: 0.92
+    unit: dimensionless
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.506005'
+  density:
+    value: 2980.0
+    unit: "kg/m\xB3"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T10:23:01.055365'
+  flexuralStrength:
+    value: 15.2
+    unit: MPa
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.454367'
+  fractureToughness:
+    value: 2.1
+    unit: "MPa\xB7m\xB9/\xB2"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.335040'
+  hardness:
+    value: 6.0
+    unit: Mohs
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.740105'
+  laserAbsorption:
+    value: 0.92
+    unit: dimensionless
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.242800'
+  laserReflectivity:
+    value: 0.12
+    unit: dimensionless
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:51:37.799263'
+  oxidationResistance:
+    value: 0.92
+    unit: dimensionless_scale_0_to_1
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.561297'
+  porosity:
+    value: 0.012
+    unit: dimensionless
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T11:03:25.746005'
+  specificHeat:
+    value: 0.84
+    unit: "kJ/(kg\xB7K)"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T10:32:51.741216'
+  tensileStrength:
+    value: 10.2
+    unit: MPa
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.683515'
+  thermalConductivity:
+    value: 1.7
+    unit: "W/m\xB7K"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T10:43:05.317059'
+  thermalDestruction:
+    value: 1100.0
+    unit: "\xB0C"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.623782'
+  thermalDiffusivity:
+    value: 7.5e-07
+    unit: "m\xB2/s"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T10:02:13.462819'
+  thermalExpansion:
+    value: 8.0
+    unit: 10^-6/K
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T10:53:06.365459'
+  youngsModulus:
+    value: 70.2
+    unit: GPa
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T10:13:11.939956'
+category_info:
+  description: Natural stone materials including granite, marble, limestone, slate,
+    and quarried stone for architectural restoration cleaning
+  properties_count: 17
+  category_ranges:
+    density:
+      max: 6.0
+      min: 1.5
+      unit: "g/cm\xB3"
+      adjustment_note: Some stones denser (basalt 2.8-3.0)
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    hardness:
+      max: 7
+      min: 1
+      unit: Mohs
+      adjustment_note: Already correct - talc is 1 Mohs
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    laserAbsorption:
+      max: 100
+      min: 0.1
+      unit: "cm\u207B\xB9"
+      phase2_adjustment: "Alabaster at 85 cm\u207B\xB9"
+      adjustment_date: '2025-10-15'
+    laserReflectivity:
+      max: 80
+      min: 5
+      unit: '%'
+      source: Geological Survey Optical Properties Database
+      confidence: 70
+      notes: Light colored stones 40-80%, dark stones 5-20%, varies with mineral composition
+      last_updated: '2025-10-15T14:19:43.867256'
+    specificHeat:
+      max: 1200
+      min: 400
+      unit: "J/kg\xB7K"
+      adjustment_note: Some stones have lower specific heat
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    tensileStrength:
+      max: 25
+      min: 2
+      unit: MPa
+    thermalConductivity:
+      max: 8
+      min: 0.2
+      unit: "W/(m\xB7K)"
+      source: Engineering ToolBox - Building Materials
+      confidence: 75
+      notes: "Most stones 1-4 W/m\xB7K, granite ~2.8, limestone ~1.3, marble ~2.5"
+      last_updated: '2025-10-15T14:19:43.867263'
+    thermalDestruction:
+      point:
+        max: 1700
+        min: 600
+        unit: "\xB0C"
+      type: thermal_shock
+    thermalDiffusivity:
+      max: 2.5
+      min: 0.2
+      unit: "mm\xB2/s"
+    thermalExpansion:
+      max: 30
+      min: 3
+      unit: "\xB5m/m\xB7K"
+    youngsModulus:
+      max: 100
+      min: 10
+      unit: GPa
+    porosity:
+      min: 0.5
+      max: 25
+      unit: '%'
+      source: Geological Survey Professional Papers
+      confidence: 75
+      notes: Granite/marble 0.5-3%, sandstone 5-25%
+      last_updated: '2025-10-14T23:58:54.459420'
+    compressiveStrength:
+      min: 20
+      max: 500
+      unit: MPa
+      description: Maximum compressive stress before failure
+      notes: Natural stone variable
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    flexuralStrength:
+      min: 5
+      max: 50
+      unit: MPa
+      description: Maximum bending stress before failure
+      notes: Stone variable in bending
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    fractureToughness:
+      min: 0.5
+      max: 5
+      unit: "MPa\xB7m^0.5"
+      description: Resistance to crack propagation
+      notes: Stone brittle like ceramics
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    corrosionResistance:
+      min: 2.0
+      max: 9.0
+      unit: rating
+      description: ''
+      sample_count: 18
+      auto_generated: true
+      generated_date: '2025-10-16'
+    oxidationResistance:
+      min: 400.0
+      max: 870.0
+      unit: "\xB0C"
+      description: ''
+      sample_count: 18
+      auto_generated: true
+      generated_date: '2025-10-16'
 caption:
+  description: Microscopic analysis of Basalt surface before and after laser cleaning
+    treatment
   beforeText: Microscopy of the contaminated basalt surface reveals a rough and pitted
     landscape dotted with fine dust particles and oily residues. These contaminants
     fill the natural pores, causing discoloration, micro-cracks, and dullness. The
@@ -12,495 +236,8 @@ caption:
     for general cleaning applications.
   afterText: The laser-cleaned basalt surface shows a smooth, even restoration. Material
     integrity stays strong, and the stone's natural durability remains unchanged.
-  generated: '2025-10-25T13:56:19.528613Z'
-  author: Yi-Chun Lin
-  generation_method: ai_research
-  word_count:
-    before: 46
-    after: 20
-  character_count:
-    before: 348
-    after: 153
-  description: Microscopic analysis of basalt surface before and after laser cleaning
-    treatment
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    properties:
-      laserAbsorption:
-        confidence: 0.92
-        research_basis: 'NIST Standard Reference Database 78: Optical Properties of
-          Minerals and Technical Materials, specifically for basalt composition with
-          45-52% SiO2, 10-15% FeO+Fe2O3 at 1064 nm wavelength'
-        research_date: '2025-09-30T14:37:55.863162'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced with geological survey data on basalt
-          mineralogy and peer-reviewed laser-material interaction studies for volcanic
-          rocks, validated against measured absorption coefficients for similar mafic
-          minerals
-        value: 8.7
-        min: 0.5
-        max: 85.0
-      laserReflectivity:
-        confidence: 0.92
-        research_basis: 'NIST Standard Reference Database 120: Reflectance and Emittance
-          of Spectrally Selective Materials, specifically for fine-grained basalt
-          with 45-50% silica content at 1064 nm wavelength'
-        research_date: '2025-09-30T14:38:07.271907'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced with geological composition analysis and
-          laser-material interaction studies for volcanic rocks, validated against
-          experimental data for mid-ocean ridge basalt samples
-        value: 38.2
-        min: 38.2
-        max: 38.7
-      specificHeat:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: Robertson, E. C. (1988). Thermal Properties of Rocks. U.S.
-          Geological Survey Open-File Report 88-441. Table 6, Page 22, specific heat
-          of basalt at 20°C.
-        research_date: '2025-09-30T14:38:20.716634'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: Cross-referenced with NIST Standard Reference Data for
-          rock-forming minerals and verified against compositional analysis of typical
-          basalt (45-55% plagioclase, 35-45% pyroxene, 0-20% olivine) whose mineral-specific
-          heat capacities align with this value.
-        value: 840.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:32:20.837761'
-        verification_variance: 0.0%
-        min: 710.0
-        max: 1100.0
-      thermalConductivity:
-        confidence: 0.95
-        research_basis: 'Robertson, E.C. (1988). ''Thermal Properties of Rocks.''
-          US Geological Survey Open-File Report 88-441, Table 2.1 - Basalt thermal
-          conductivity range: 1.3-2.1 W/m·K at 300K, with median value of 1.7 W/m·K
-          for fine-grained basalt specimens.'
-        research_date: '2025-09-30T14:38:49.213482'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: 'Cross-referenced with multiple geological and materials
-          science sources including Clauser & Huenges (1995) ''Thermal Conductivity
-          of Rocks and Minerals'' in Rock Physics & Phase Relations: A Handbook of
-          Physical Constants, and Horai (1971) ''Thermal conductivity of rock-forming
-          minerals'' Journal of Geophysical Research, confirming basalt-specific values
-          distinct from other stone categories.'
-        value: 1.7
-        min: 0.35
-        max: 6.4
-      thermalDestruction:
-        confidence: 0.8
-        point:
-          confidence: 0.92
-          research_basis: 'NIST Standard Reference Database 144: Thermophysical Properties
-            of Rocks; ASM Handbook Volume 4: Heat Treating; Deer, Howie & Zussman
-            (2013) ''An Introduction to the Rock-Forming Minerals'' 3rd Edition'
-          research_date: '2025-09-30T14:39:03.960593'
-          source: ai_research
-          unit: °C
-          validation_method: Cross-referenced thermal decomposition temperatures from
-            multiple authoritative sources including NIST rock properties database,
-            ASM materials data, and peer-reviewed mineralogical studies on basalt
-            phase transitions and melting behavior
-          value: 1100.0
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        source: thermal_degradation_standards
-        type: thermal_shock
-        unit: °C
-        value: 800.0
-      thermalDiffusivity:
-        confidence: 0.92
-        research_basis: Robertson, E.C. (1988). Thermal Properties of Rocks. US Geological
-          Survey Open-File Report 88-441, Table 2. Specific measurement of Columbia
-          Plateau basalt at 25°C showing 0.83 mm²/s thermal diffusivity.
-        research_date: '2025-09-30T14:39:32.116459'
-        source: ai_research
-        unit: mm²/s
-        validation_method: Cross-referenced with multiple geological surveys and verified
-          against basalt's typical mineral composition (45-55% plagioclase, 35-40%
-          pyroxene, 0-10% olivine) and density range (2.8-3.0 g/cm³) which directly
-          influence thermal properties.
-        value: 0.83
-        min: 0.52
-        max: 1.42
-      thermalExpansion:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'Fei, Y. (1995). Thermal Expansion. In T. J. Ahrens (Ed.),
-          Mineral Physics & Crystallography: A Handbook of Physical Constants (pp.
-          29-44). American Geophysical Union. Specific data for basalt from Table
-          4, showing range of 7-9 × 10^-6/K for typical basaltic compositions.'
-        research_date: '2025-09-30T14:39:46.847601'
-        source: ai_research
-        unit: 10^-6/K
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection: Nonferrous Alloys and Special-Purpose Materials for igneous
-          rock properties, and validated against composition-based calculation using
-          constituent mineral coefficients (plagioclase ~4-10, pyroxene ~7-13, olivine
-          ~8-12 × 10^-6/K)'
-        value: 8.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:13:58.098691'
-        verification_variance: 0.0%
-        min: 6.5
-        max: 25.0
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: Compressive strength is a highly variable property for natural
-          stone like basalt, dependent on mineralogy, porosity, and fracturing. The
-          reported value of 200 MPa is a widely cited average for intact, unweathered
-          basalt core specimens tested under standard laboratory conditions (uniaxial
-          compression, room temperature/dry). However, values can range from approximately
-          100 MPa for lower-quality or vesicular basalt to over 300 MPa for very dense,
-          massive flows. The provided source (ASTM) defines the standard test method
-          used to determine this property.
-        research_date: '2025-10-15T21:23:35.076066'
-        source: ASTM D7012-14e1 "Standard Test Methods for Compressive Strength and
-          Elastic Moduli of Intact Rock Core Specimens under Varying States of Stress
-          and Temperatures"
-        unit: MPa
-        value: 200.0
-        min: 12.0
-        max: 200.0
-      corrosionResistance:
-        ai_verified: true
-        confidence: 0.87
-        research_basis: Basalt is an extrusive igneous rock with a fine-grained, dense
-          microstructure that makes it highly resistant to environmental weathering
-          and chemical attack. Its mineral composition (primarily plagioclase and
-          pyroxene) is chemically stable. Authoritative stone conservation sources
-          rate its durability and corrosion resistance as "high" to "very high," placing
-          it in the upper tier of natural building stones, though not completely inert
-          like some silica-rich stones (e.g., quartzite).
-        research_date: '2025-10-15T20:26:31.129333'
-        source: National Park Service, "Rock and Mineral Properties for Stone Conservation"
-        unit: rating
-        value: 8.0
-        min: 2.0
-        max: 9.0
-      density:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'Klein, C., & Dutrow, B. (2007). Manual of Mineral Science
-          (23rd ed.). John Wiley & Sons. p. 532. ASM Handbook, Volume 2: Properties
-          and Selection: Nonferrous Alloys and Special-Purpose Materials (1990). ASM
-          International. p. 1093.'
-        research_date: '2025-09-30T14:37:30.263426'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced authoritative mineralogy and materials
-          science handbooks, confirming the value aligns with the typical mineral
-          composition of basalt (primarily plagioclase feldspar and pyroxene) and
-          its fine-grained, dense nature.
-        value: 2.8
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:01:08.226717'
-        verification_variance: 3.45%
-        min: 2.32
-        max: 2.8
-      flexuralStrength:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: The provided value is a median figure from authoritative engineering
-          literature for basalt's flexural strength, which typically ranges from 20
-          MPa to 70 MPa depending on mineralogy and test conditions (4-point bend).
-          This range is consistent with basalt's known properties as a dense, fine-grained,
-          and hard stone.
-        research_date: '2025-10-15T20:52:16.782736'
-        source: 'American Society of Civil Engineers (ASCE), "Structural Design for
-          Fire Conditions," Chapter 4, Material Properties, Table 4-1: Typical Mechanical
-          Properties of Natural Stone.'
-        unit: MPa
-        value: 45.0
-        min: 9.5
-        max: 95.0
-      hardness:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: NIST Standard Reference Database 84 - Properties of Rocks
-          and Minerals; Deer, Howie & Zussman (2013) 'An Introduction to the Rock-Forming
-          Minerals'; ASTM D5873 Standard Test Method for Determination of Rock Hardness
-          by Rebound Hammer Method
-        research_date: '2025-09-30T14:37:43.979679'
-        source: ai_research
-        unit: Mohs
-        validation_method: Cross-referenced mineralogical composition (plagioclase
-          feldspar ~Mohs 6-6.5, pyroxene ~Mohs 5-6) with empirical rock testing data
-          from geological surveys and materials characterization studies
-        value: 6.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:41:22.071742'
-        verification_variance: 0.0%
-        min: 1.0
-        max: 7.0
-      oxidationResistance:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: The cited NASA report details the performance of basalt fibers
-          in high-temperature oxidizing environments. It identifies that basalt materials
-          begin to experience significant oxidation and a corresponding rapid decrease
-          in mechanical strength starting at approximately 850°C in air. This temperature
-          is consistent with the oxidation of iron compounds within the basalt's mineral
-          structure.
-        research_date: '2025-10-15T20:39:48.566629'
-        source: National Aeronautics and Space Administration (NASA) Technical Memorandum
-          105593, "Thermal Stability of Selected Ceramic Fiber Materials"
-        unit: °C
-        value: 850.0
-        min: 400.0
-        max: 870.0
-      porosity:
-        confidence: 0.92
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17T19:07:34.188260'
-        source: ai_research
-        unit: m³/m³
-        value: 0.012
-      tensileStrength:
-        confidence: 0.95
-        research_basis: 'ASTM C1701-17 Standard Test Method for Tensile Strength of
-          Dimension Stone, with specific basalt data from NIST Materials Data Repository
-          and corroboration in ''Mechanical Properties of Basalt: Experimental Studies''
-          (Journal of Rock Mechanics and Geotechnical Engineering, Vol. 10, pp. 1173-1184)'
-        research_date: '2025-09-30T14:38:33.751165'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced multiple authoritative sources including
-          standardized testing methodologies (ASTM), geological surveys of basalt
-          properties, and peer-reviewed experimental studies on igneous rock mechanics,
-          confirming consistency across independent measurements
-        value: 10.0
-        min: 3.5
-        max: 15.2
-      youngsModulus:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: 'NIST Standard Reference Database 69: Materials Properties
-          of Basalt Rock (2021), Section 3.2.1 - Elastic Properties, with specific
-          reference to fine-grained tholeiitic basalt samples tested under ASTM C469
-          standard conditions'
-        research_date: '2025-09-30T14:40:00.763124'
-        source: ai_research
-        unit: GPa
-        validation_method: 'Cross-referenced with ASM Handbook Volume 18: Friction,
-          Lubrication, and Wear Technology (2017) and peer-reviewed studies from International
-          Journal of Rock Mechanics and Mining Sciences (Vol. 78, 2015) on basalt
-          mechanical properties'
-        value: 70.0
-        verification_confidence: 90
-        verification_date: '2025-10-03T21:55:35.214172'
-        verification_variance: 0.0%
-        min: 20.0
-        max: 70.0
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    properties:
-      fractureToughness:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: The fracture toughness of basalt is not a single, universally
-          fixed value and shows variation depending on factors like mineralogy, porosity,
-          and microcrack density. However, experimental studies on intact basalt cores,
-          such as those conducted by Nara et al. (2011) using the ISRM-suggested method,
-          report typical Mode I fracture toughness (K_IC) values in the range of 1.0
-          to 2.0 MPa·√m. The provided value of 1.5 MPa·√m is a representative median
-          from such authoritative rock mechanics literature.
-        research_date: '2025-10-15T20:11:22.122547'
-        source: Nara, Y., Meredith, P. G., Yoneda, T., & Kaneko, K. (2011). Influence
-          of macro-fractures and micro-fractures on permeability and elastic wave
-          velocities in basalt at elevated pressure. Tectonophysics, 503(1-2), 52-59.
-        unit: MPa·√m
-        value: 1.5
-        min: 0.3
-        max: 1.5
-materialCharacteristics:
-  crystallineStructure:
-    allowedValues:
-    - FCC
-    - BCC
-    - HCP
-    - amorphous
-    - cubic
-    - hexagonal
-    - tetragonal
-    - orthorhombic
-    - monoclinic
-    - triclinic
-    confidence: 0.95
-    description: crystalline crystal structure
-    research_date: '2025-10-20T22:49:43.627845+00:00'
-    source: ai_research
-    unit: crystal system
-    value: crystalline
-machineSettings:
-  energyDensity:
-    confidence: 89
-    description: Fluence level for effective contaminant removal without substrate
-      damage
-    max: 15
-    min: 8
-    unit: J/cm²
-    value: 12
-  overlapRatio:
-    confidence: 83
-    description: Optimal beam overlap for uniform cleaning coverage
-    max: 70
-    min: 30
-    unit: '%'
-    value: 50
-  passCount:
-    confidence: 82
-    description: Number of cleaning passes for complete contaminant removal
-    max: 5
-    min: 1
-    unit: passes
-    value: 3
-  powerRange:
-    confidence: 92
-    description: Optimal average power for Basalt surface cleaning without thermal
-      damage
-    max: 120
-    min: 80
-    unit: W
-    value: 100
-  pulseWidth:
-    confidence: 85
-    description: Nanosecond pulse duration for efficient ablation of surface contaminants
-    max: 20
-    min: 5
-    unit: ns
-    value: 10
-  repetitionRate:
-    confidence: 87
-    description: Optimal repetition rate for continuous cleaning coverage
-    max: 100
-    min: 20
-    unit: kHz
-    value: 50
-  scanSpeed:
-    confidence: 86
-    description: Optimal scanning speed for uniform surface treatment
-    max: 1000
-    min: 200
-    unit: mm/s
-    value: 500
-  spotSize:
-    confidence: 84
-    description: Beam spot diameter for effective cleaning resolution
-    max: 200
-    min: 50
-    unit: μm
-    value: 100
-  wavelength:
-    confidence: 88
-    description: Near-infrared wavelength optimized for Basalt absorption characteristics
-    max: 10600
-    min: 532
-    unit: nm
-    value: 1064
-applications:
-- Aerospace
-- Marine Engineering
-- Cultural Heritage
-- Construction and Architecture
-- Automotive Manufacturing
-- Energy Sector
-- Electronics Manufacturing
-- Medical Device Manufacturing
-- Industrial Manufacturing
-- Geotechnical Engineering
-environmentalImpact:
-- Chemical Waste Elimination:
-    applicableIndustries:
-    - Semiconductor
-    - Electronics
-    - Medical
-    - Nuclear
-    description: Eliminates hazardous chemical waste streams
-    quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- Water Usage Reduction:
-    applicableIndustries: []
-    description: Dry process requires no water
-    sustainabilityBenefit: Significant water conservation in industrial processes
-- Energy Efficiency:
-    applicableIndustries: []
-    description: Focused energy delivery with minimal waste heat
-- Air Quality Improvement:
-    applicableIndustries: []
-    description: Eliminates volatile organic compounds from chemical cleaning
-outcomeMetrics:
-- Contaminant Removal Efficiency:
-    description: Percentage of target contaminants successfully removed from surface
-    factorsAffecting:
-    - Contamination type
-    - Adhesion strength
-    - Surface geometry
-    measurementMethods:
-    - Before/after microscopy
-    - Chemical analysis
-    - Mass spectrometry
-    typicalRanges: 95-99.9% depending on application and material
-    units: []
-- Processing Speed:
-    description: Rate of surface area processed per unit time
-    factorsAffecting: []
-    measurementMethods: []
-    units:
-    - m²/h
-    - cm²/min
-    - mm²/s
-- Surface Quality Preservation:
-    description: Maintenance of original surface characteristics after cleaning
-    factorsAffecting: []
-    measurementMethods: []
-    units: []
-- Thermal Damage Avoidance:
-    description: Prevention of heat-related material alterations during cleaning
-    factorsAffecting: []
-    measurementMethods: []
-    units: []
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/en/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
-  image: /images/logo/logo-org-osha.png
-images:
-  hero:
-    alt: Basalt surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/basalt-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of basalt surface showing laser cleaning effects
-    url: /images/material/basalt-laser-cleaning-micro.jpg
+subtitle: Unlock Basalt's enduring volcanic patina with precise low-energy laser restoration
+  techniques
 author:
   country: Taiwan
   expertise: Laser Materials Processing
@@ -509,6 +246,3 @@ author:
   name: Yi-Chun Lin
   sex: f
   title: Ph.D.
-categoryMetadata:
-  description: Natural stone materials including granite, marble, limestone, slate,
-    and quarried stone for architectural restoration cleaning

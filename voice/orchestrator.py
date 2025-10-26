@@ -350,12 +350,17 @@ Generate {section_focus} description now."""
         formality = config.get('formality', 'professional-engaging')
         target_audience = config.get('target_audience', 'technical professionals')
         
+        # Get material specificity requirement from component config
+        material_specificity = self.component_config.get('material_specificity_requirement', '')
+        
         # Author context
         author_name = author.get('name', 'Expert')
         author_country = author.get('country', 'usa')
         
         # Material context
         material_name = material_context.get('material_name', 'material')
+        material_category = material_context.get('category', '')
+        material_subcategory = material_context.get('subcategory', '')
         
         # Get country-specific style
         linguistic = country_profile.get('linguistic_characteristics', {})
@@ -366,8 +371,16 @@ Generate {section_focus} description now."""
         intensity_rules = base_voice.get('technical_authority_intensity', {}).get(intensity_level, {})
         intensity_desc = intensity_rules.get('description', 'Balanced technical communication')
         
-        # Build prompt with component-specific intensity
+        # Build prompt with material specificity requirement
         prompt = f"""You are {author_name} from {author_country}, writing a subtitle for {material_name} laser cleaning content.
+
+MATERIAL CONTEXT:
+- Material: {material_name}
+- Category: {material_category}
+- Subcategory: {material_subcategory}
+
+MATERIAL SPECIFICITY REQUIREMENT:
+{material_specificity}
 
 TASK: Write a {target_words}-word professional subtitle/tagline.
 
@@ -381,7 +394,8 @@ REQUIREMENTS:
 - Exactly {target_words} words (±2 tolerance)
 - Single phrase (no period at end)
 - Professional tone suitable for industrial audience
-- Capture material essence for laser cleaning context
+- Reveal something UNIQUE and SPECIFIC about {material_name}
+- Compare to related materials if relevant ({material_category}/{material_subcategory})
 
 Write the subtitle now:"""
         

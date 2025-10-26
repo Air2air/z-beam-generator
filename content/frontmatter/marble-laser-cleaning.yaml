@@ -1,10 +1,234 @@
 name: Marble
+material: Marble
 title: Marble Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for Marble
-description: Laser cleaning parameters for Marble
 category: stone
-subcategory: metamorphic
+generated_date: '2025-10-25T22:14:19.115962'
+data_completeness: 100%
+source: Materials.yaml (direct export)
+properties:
+  compressiveStrength:
+    value: 115.0
+    unit: MPa
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.422107'
+  corrosionResistance:
+    value: 0.15
+    unit: mm/year
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.529554'
+  density:
+    value: 2710.0
+    unit: "kg/m\xB3"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T10:25:36.621371'
+  flexuralStrength:
+    value: 15.2
+    unit: MPa
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.475345'
+  fractureToughness:
+    value: 1.2
+    unit: "MPa\xB7m\xB9/\xB2"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.363449'
+  hardness:
+    value: 3.5
+    unit: Mohs
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.760416'
+  laserAbsorption:
+    value: 0.72
+    unit: dimensionless
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.281654'
+  laserReflectivity:
+    value: 0.62
+    unit: '1'
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:54:30.924340'
+  oxidationResistance:
+    value: 0.92
+    unit: dimensionless
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.584744'
+  porosity:
+    value: 0.7
+    unit: '%'
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T11:05:39.023762'
+  specificHeat:
+    value: 0.88
+    unit: "kJ/(kg\xB7K)"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T10:35:30.925225'
+  tensileStrength:
+    value: 8.3
+    unit: MPa
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.706043'
+  thermalConductivity:
+    value: 2.8
+    unit: "W/m\xB7K"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T10:45:43.789830'
+  thermalDestruction:
+    value: 750.0
+    unit: "\xB0C"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.646493'
+  thermalDiffusivity:
+    value: 1.15e-06
+    unit: "m\xB2/s"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T10:05:01.695028'
+  thermalExpansion:
+    value: 1.2e-05
+    unit: "K\u207B\xB9"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T10:55:51.672831'
+  youngsModulus:
+    value: 55.2
+    unit: GPa
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T10:15:43.559505'
+category_info:
+  description: Natural stone materials including granite, marble, limestone, slate,
+    and quarried stone for architectural restoration cleaning
+  properties_count: 17
+  category_ranges:
+    density:
+      max: 6.0
+      min: 1.5
+      unit: "g/cm\xB3"
+      adjustment_note: Some stones denser (basalt 2.8-3.0)
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    hardness:
+      max: 7
+      min: 1
+      unit: Mohs
+      adjustment_note: Already correct - talc is 1 Mohs
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    laserAbsorption:
+      max: 100
+      min: 0.1
+      unit: "cm\u207B\xB9"
+      phase2_adjustment: "Alabaster at 85 cm\u207B\xB9"
+      adjustment_date: '2025-10-15'
+    laserReflectivity:
+      max: 80
+      min: 5
+      unit: '%'
+      source: Geological Survey Optical Properties Database
+      confidence: 70
+      notes: Light colored stones 40-80%, dark stones 5-20%, varies with mineral composition
+      last_updated: '2025-10-15T14:19:43.867256'
+    specificHeat:
+      max: 1200
+      min: 400
+      unit: "J/kg\xB7K"
+      adjustment_note: Some stones have lower specific heat
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    tensileStrength:
+      max: 25
+      min: 2
+      unit: MPa
+    thermalConductivity:
+      max: 8
+      min: 0.2
+      unit: "W/(m\xB7K)"
+      source: Engineering ToolBox - Building Materials
+      confidence: 75
+      notes: "Most stones 1-4 W/m\xB7K, granite ~2.8, limestone ~1.3, marble ~2.5"
+      last_updated: '2025-10-15T14:19:43.867263'
+    thermalDestruction:
+      point:
+        max: 1700
+        min: 600
+        unit: "\xB0C"
+      type: thermal_shock
+    thermalDiffusivity:
+      max: 2.5
+      min: 0.2
+      unit: "mm\xB2/s"
+    thermalExpansion:
+      max: 30
+      min: 3
+      unit: "\xB5m/m\xB7K"
+    youngsModulus:
+      max: 100
+      min: 10
+      unit: GPa
+    porosity:
+      min: 0.5
+      max: 25
+      unit: '%'
+      source: Geological Survey Professional Papers
+      confidence: 75
+      notes: Granite/marble 0.5-3%, sandstone 5-25%
+      last_updated: '2025-10-14T23:58:54.459420'
+    compressiveStrength:
+      min: 20
+      max: 500
+      unit: MPa
+      description: Maximum compressive stress before failure
+      notes: Natural stone variable
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    flexuralStrength:
+      min: 5
+      max: 50
+      unit: MPa
+      description: Maximum bending stress before failure
+      notes: Stone variable in bending
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    fractureToughness:
+      min: 0.5
+      max: 5
+      unit: "MPa\xB7m^0.5"
+      description: Resistance to crack propagation
+      notes: Stone brittle like ceramics
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    corrosionResistance:
+      min: 2.0
+      max: 9.0
+      unit: rating
+      description: ''
+      sample_count: 18
+      auto_generated: true
+      generated_date: '2025-10-16'
+    oxidationResistance:
+      min: 400.0
+      max: 870.0
+      unit: "\xB0C"
+      description: ''
+      sample_count: 18
+      auto_generated: true
+      generated_date: '2025-10-16'
 caption:
+  description: Microscopic analysis of Marble surface before and after laser cleaning
+    treatment
   beforeText: Under microscopy, the marble surface shows heavy-heavy contamination,
     with fine dust particles and organic residues clinging tightly. These contaminants
     form irregular clusters, blocking natural pores and causing discoloration that
@@ -14,493 +238,7 @@ caption:
   afterText: The marble surface is cleaned then restored very-very smoothly. It appears
     shiny and original color returns fully. Material integrity stays preserved, no
     cracks or damage. So, restoration quality is excellent for stone applications.
-  generated: '2025-10-25T14:43:40.471443Z'
-  author: Ikmanda Roswati
-  generation_method: ai_research
-  word_count:
-    before: 61
-    after: 33
-  character_count:
-    before: 446
-    after: 232
-  description: Microscopic analysis of marble surface before and after laser cleaning
-    treatment
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    properties:
-      laserAbsorption:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
-          in Stone Conservation'' (2013), Table 4.2 - Absorption coefficients for
-          common stone materials at 1064 nm wavelength'
-        research_date: '2025-09-30T14:56:26.508037'
-        source: ai_research
-        unit: '%'
-        validation_method: Cross-referenced with compositional analysis of calcite-based
-          marble (≥98% CaCO3) and experimental data from laser cleaning studies on
-          white Carrara marble specimens
-        value: 0.5
-        verification_confidence: 85
-        verification_date: '2025-10-03T23:08:00.985315'
-        verification_variance: 94.25%
-        min: 0.5
-        max: 85.0
-      laserReflectivity:
-        confidence: 0.92
-        research_basis: 'NIST Special Publication 1176: ''Optical Properties of Construction
-          Materials'' (2019) - Table 4.3 for Carrara marble at 1064 nm wavelength'
-        research_date: '2025-09-30T14:56:39.289139'
-        source: ai_research
-        unit: '%'
-        validation_method: 'Cross-referenced with ASM Handbook Volume 10: Materials
-          Characterization (2019) and verified against marble''s calcium carbonate
-          composition (85-99% CaCO3) with typical reflectivity range of 35-45% for
-          near-IR lasers'
-        value: 38.2
-        min: 38.2
-        max: 38.7
-      specificHeat:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
-          CRC Handbook of Chemistry and Physics (104th Edition), and ASM Handbook
-          Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose
-          Materials'
-        research_date: '2025-09-30T14:56:52.788364'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: Cross-referenced multiple authoritative sources including
-          NIST database, CRC Handbook, and ASM materials data, with verification against
-          marble's primary composition (calcium carbonate - CaCO₃) and crystal structure
-          (calcite)
-        value: 880.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T22:32:20.837784'
-        verification_variance: 0.0%
-        min: 710.0
-        max: 1100.0
-      thermalConductivity:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
-          of Minerals and Rocks, specifically for Carrara marble at 300K (27°C)'
-        research_date: '2025-09-30T14:57:15.148710'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
-          and Selection: Nonferrous Alloys and Special-Purpose Materials, and validated
-          against marble''s calcite composition (CaCO3) with typical density of 2700
-          kg/m³'
-        value: 2.8
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:20:53.092253'
-        verification_variance: 0.0%
-        min: 0.35
-        max: 6.4
-      thermalDestruction:
-        confidence: 0.8
-        point:
-          confidence: 0.92
-          research_basis: 'ASM Handbook, Volume 4: Heat Treating, ''Thermal Properties
-            of Stone and Ceramic Materials''; NIST Special Publication 960: ''Thermal
-            Decomposition of Carbonate Rocks'''
-          research_date: '2025-09-30T14:57:26.728060'
-          source: ai_research
-          unit: °C
-          validation_method: Cross-referenced calcium carbonate decomposition temperature
-            with marble-specific thermal analysis studies and laser cleaning parameter
-            validation experiments
-          value: 825.0
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        source: thermal_degradation_standards
-        type: thermal_shock
-        unit: °C
-        value: 800.0
-      thermalDiffusivity:
-        confidence: 0.92
-        research_basis: Carrara marble thermal properties study by Yavuz (2001) in
-          Building and Environment, Vol. 36, pp. 1117-1125, showing thermal diffusivity
-          range of 1.25-1.29 mm²/s for pure white Carrara marble at 20°C
-        research_date: '2025-09-30T14:57:53.937773'
-        source: ai_research
-        unit: mm²/s
-        validation_method: Cross-referenced with NIST Standard Reference Data for
-          calcite-based stones and verified against ASM Handbook values for metamorphic
-          carbonate rocks, confirming composition-dependent variation
-        value: 1.27
-        min: 0.52
-        max: 1.42
-      thermalExpansion:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials (1990), Section: Marble and Limestone,
-          Table: Thermal Expansion of Building Stones'
-        research_date: '2025-09-30T14:58:07.762182'
-        source: ai_research
-        unit: 10^-6/K
-        validation_method: 'Cross-referenced with NIST Monograph 143: ''Properties
-          of Marble for Building Applications'' and verified against calcite crystal
-          structure thermal expansion anisotropy (calcite α₁₁ = 25.0, α₃₃ = -5.6 ×10^-6/K)
-          with polycrystalline averaging'
-        value: 12.0
-        verification_confidence: 85
-        verification_date: '2025-10-03T22:13:58.098729'
-        verification_variance: 0.0%
-        min: 6.5
-        max: 25.0
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    properties:
-      compressiveStrength:
-        confidence: 0.95
-        research_basis: ASTM C170/C170M-23 Standard Test Method for Compressive Strength
-          of Dimension Stone, with specific reference to marble classification and
-          typical values
-        research_date: '2025-09-30T14:55:51.455400'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced ASTM standards with material-specific
-          data from ASM Handbook Volume 4 and NIST Special Publication 260-166 on
-          building stone properties, confirming marble's calcite/dolomite crystal
-          structure produces characteristic strength range
-        value: 115.0
-        min: 12.0
-        max: 200.0
-      corrosionResistance:
-        ai_verified: true
-        confidence: 0.9
-        research_basis: Marble (primarily calcite/dolomite) has excellent resistance
-          to atmospheric environmental corrosion and maintains structural integrity
-          in most outdoor applications. However, it is susceptible to acidic corrosion
-          from acid rain or pollutants, which prevents a perfect rating. ASTM standards
-          recognize marble's high durability in normal environmental conditions while
-          noting its chemical sensitivity.
-        research_date: '2025-10-15T20:32:01.988971'
-        source: ASTM C503/C503M-21 "Standard Specification for Marble Dimension Stone"
-        unit: rating
-        value: 8.0
-        min: 2.0
-        max: 9.0
-      density:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
-          Alloys and Special-Purpose Materials (ASM International, 1990), Table 1
-          - Physical Properties of Common Stones; NIST Standard Reference Database
-          84 - Properties of Solids'
-        research_date: '2025-09-30T14:56:03.812269'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced multiple authoritative materials databases
-          and geological references, confirming marble's composition as primarily
-          calcite (CaCO3) with density range of 2.65-2.85 g/cm³ depending on purity
-          and crystalline structure
-        value: 2.71
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:01:08.226737'
-        verification_variance: 0.0%
-        min: 2.32
-        max: 2.8
-      flexuralStrength:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: Flexural strength for marble is typically 10-20 MPa. The provided
-          value of 15 MPa is a well-established average for commercial marble (like
-          Carrara) based on standardized 4-point bend tests (ASTM C880), representing
-          a typical value for this relatively brittle, high-compressive-strength stone.
-        research_date: '2025-10-15T20:57:57.467750'
-        source: Carrara Marble Technical Data Sheet, Italian Marble Industry
-        unit: MPa
-        value: 15.0
-        min: 9.5
-        max: 95.0
-      hardness:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 18: Friction, Lubrication, and Wear
-          Technology (1992), Table 1: Hardness of Common Minerals; NIST Special Publication
-          960-15: Stone Conservation - An Overview of Current Research (2011)'
-        research_date: '2025-09-30T14:56:15.336139'
-        source: ai_research
-        unit: Mohs
-        validation_method: Cross-referenced mineralogical composition (calcite/dolomite)
-          with established mineral hardness scales and verified against marble-specific
-          technical literature for conservation science
-        value: 3.0
-        verification_confidence: 95
-        verification_date: '2025-10-03T20:41:22.071763'
-        verification_variance: 0.0%
-        min: 1.0
-        max: 7.0
-      oxidationResistance:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: Marble (calcium carbonate, CaCO₃) undergoes a chemical decomposition
-          process (calcination) beginning around 400-450°C in air, where it breaks
-          down into calcium oxide (quicklime) and carbon dioxide. This is not oxidation
-          in the metallic sense but is the temperature at which significant degradation
-          in an oxidative (air) atmosphere begins, defining its maximum service temperature.
-        research_date: '2025-10-15T20:45:00.646375'
-        source: AZoM (AZoMaterials) - Material Property Data for Marble
-        unit: °C
-        value: 400.0
-        min: 400.0
-        max: 870.0
-      porosity:
-        confidence: 0.92
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17T19:07:34.189593'
-        source: ai_research
-        unit: '%'
-        value: 0.7
-      tensileStrength:
-        confidence: 0.95
-        research_basis: ASTM C170/C170M-23 Standard Test Method for Compressive Strength
-          of Dimension Stone, with tensile strength calculated using established rock
-          mechanics relationships (tensile strength ≈ 8-12% of compressive strength
-          for marble)
-        research_date: '2025-09-30T14:57:03.578040'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced multiple authoritative sources including
-          NIST Stone Properties Database, ASM Handbook Volume 4, and peer-reviewed
-          studies on Carrara marble mechanical properties
-        value: 8.5
-        min: 3.5
-        max: 15.2
-      youngsModulus:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: ASTM C503/C503M-21 'Standard Specification for Marble Dimension
-          Stone' and NIST Special Publication 260-162 'Physical Properties of Marble'
-        research_date: '2025-09-30T14:58:20.275114'
-        source: ai_research
-        unit: GPa
-        validation_method: Cross-referenced ASTM standards with NIST material property
-          databases and peer-reviewed studies on marble mechanical properties, focusing
-          on Carrara marble as reference material
-        value: 55.0
-        verification_confidence: 85
-        verification_date: '2025-10-03T21:55:35.214188'
-        verification_variance: 21.43%
-        min: 20.0
-        max: 70.0
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    properties:
-      fractureToughness:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: Marble is a relatively soft rock with low fracture toughness.
-          Authoritative compilations of rock fracture toughness (K_IC) place the typical
-          range for marble between 0.7 and 1.5 MPa·√m. The value of 1.08 MPa·√m is
-          a representative median value from these experimental data sets, which is
-          consistent with its known low hardness and moderate compressive strength.
-        research_date: '2025-10-15T20:17:04.009464'
-        source: ISRM Suggested Methods for determining the fracture toughness of rock,
-          as cited in "Fracture toughness of a soft sandstone" (Ouchterlony, 1990)
-          and data compilations in "The Fracture Toughness of Rocks and Its Measurement"
-          (Atkinson, 1987).
-        unit: MPa·√m
-        value: 1.08
-        min: 0.3
-        max: 1.5
-materialCharacteristics:
-  crystallineStructure:
-    allowedValues:
-    - FCC
-    - BCC
-    - HCP
-    - amorphous
-    - cubic
-    - hexagonal
-    - tetragonal
-    - orthorhombic
-    - monoclinic
-    - triclinic
-    confidence: 0.95
-    description: crystalline crystal structure
-    research_date: '2025-10-20T22:49:43.627975+00:00'
-    source: ai_research
-    unit: crystal system
-    value: crystalline
-machineSettings:
-  energyDensity:
-    confidence: 89
-    description: Fluence threshold for effective contaminant removal while preserving
-      Marble substrate
-    max: 4.0
-    min: 1.5
-    unit: J/cm²
-    value: 2.5
-  overlapRatio:
-    confidence: 83
-    description: Optimal beam overlap for uniform cleaning coverage and processing
-      efficiency
-    max: 70
-    min: 30
-    unit: '%'
-    value: 50
-  passCount:
-    confidence: 85
-    description: Recommended number of passes for thorough cleaning with progressive
-      contaminant removal
-    max: 5
-    min: 1
-    unit: passes
-    value: 3
-  powerRange:
-    confidence: 92
-    description: Optimal average power for Marble surface cleaning without thermal
-      damage
-    max: 120
-    min: 80
-    unit: W
-    value: 100
-  pulseWidth:
-    confidence: 85
-    description: Nanosecond pulse duration for effective contaminant removal with
-      controlled thermal effects
-    max: 20
-    min: 5
-    unit: ns
-    value: 10
-  repetitionRate:
-    confidence: 87
-    description: Optimal repetition rate for efficient cleaning coverage and thermal
-      management
-    max: 100
-    min: 20
-    unit: kHz
-    value: 50
-  scanSpeed:
-    confidence: 86
-    description: Optimal scanning speed for uniform cleaning without excessive thermal
-      buildup
-    max: 1000
-    min: 200
-    unit: mm/s
-    value: 500
-  spotSize:
-    confidence: 84
-    description: Beam spot diameter for precise cleaning control on Marble surfaces
-    max: 200
-    min: 50
-    unit: μm
-    value: 100
-  wavelength:
-    confidence: 88
-    description: Near-infrared wavelength optimized for Marble absorption and minimal
-      subsurface damage
-    max: 10600
-    min: 532
-    unit: nm
-    value: 1064
-applications:
-- Cultural Heritage
-- Construction and Architecture
-- Monument Conservation
-- Museum and Art Conservation
-- Funerary Art Restoration
-- Interior Design and Luxury Goods
-- Archaeological Science
-- Industrial Manufacturing
-- Religious Architecture
-- Public Art Maintenance
-environmentalImpact:
-- Chemical Waste Elimination:
-    applicableIndustries:
-    - Semiconductor
-    - Electronics
-    - Medical
-    - Nuclear
-    description: Eliminates hazardous chemical waste streams
-    quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- Water Usage Reduction:
-    applicableIndustries: []
-    description: Dry process requires no water
-    sustainabilityBenefit: Significant water conservation in industrial processes
-- Energy Efficiency:
-    applicableIndustries: []
-    description: Focused energy delivery with minimal waste heat
-- Air Quality Improvement:
-    applicableIndustries: []
-    description: Eliminates volatile organic compounds from chemical cleaning
-outcomeMetrics:
-- Contaminant Removal Efficiency:
-    description: Percentage of target contaminants successfully removed from surface
-    factorsAffecting:
-    - Contamination type
-    - Adhesion strength
-    - Surface geometry
-    measurementMethods:
-    - Before/after microscopy
-    - Chemical analysis
-    - Mass spectrometry
-    typicalRanges: 95-99.9% depending on application and material
-    units: []
-- Processing Speed:
-    description: Rate of surface area processed per unit time
-    factorsAffecting: []
-    measurementMethods: []
-    units:
-    - m²/h
-    - cm²/min
-    - mm²/s
-- Surface Quality Preservation:
-    description: Maintenance of original surface characteristics after cleaning
-    factorsAffecting: []
-    measurementMethods: []
-    units: []
-- Thermal Damage Avoidance:
-    description: Prevention of heat-related material alterations during cleaning
-    factorsAffecting: []
-    measurementMethods: []
-    units: []
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/en/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
-  image: /images/logo/logo-org-osha.png
-- name: EPA
-  description: EPA Clean Air Act Compliance
-- name: ASTM
-  description: ASTM C503 - Standard Specification for Marble Dimension Stone
-  url: https://www.astm.org/
-  image: /images/logo/logo-org-astm.png
-- name: UNESCO
-  description: UNESCO Guidelines for Cultural Heritage Conservation
-images:
-  hero:
-    alt: Marble surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/marble-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of marble surface showing laser cleaning effects
-    url: /images/material/marble-laser-cleaning-micro.jpg
+subtitle: Revive Marble's Veined Elegance with Gentle Laser Precision
 author:
   country: Indonesia
   expertise: Ultrafast Laser Physics and Material Interactions
@@ -509,6 +247,3 @@ author:
   name: Ikmanda Roswati
   sex: m
   title: Ph.D.
-categoryMetadata:
-  description: Natural stone materials including granite, marble, limestone, slate,
-    and quarried stone for architectural restoration cleaning

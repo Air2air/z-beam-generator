@@ -1,512 +1,250 @@
 name: Glass Fiber Reinforced Polymers GFRP
+material: Glass Fiber Reinforced Polymers GFRP
 title: GFRP Laser Cleaning
-subtitle: Laser cleaning parameters and specifications for GFRP
-description: Laser cleaning parameters for Glass Fiber Reinforced Polymers GFRP (GFRP)
 category: composite
-subcategory: fiber-reinforced
+generated_date: '2025-10-25T22:14:18.744675'
+data_completeness: 100%
+source: Materials.yaml (direct export)
+properties:
+  compressiveStrength:
+    value: 380.0
+    unit: MPa
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.413571'
+  corrosionResistance:
+    value: 0.92
+    unit: dimensionless
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.520909'
+  density:
+    value: 1950.0
+    unit: "kg/m\xB3"
+    confidence: 95
+    source: ai_research
+    research_date: '2025-10-23T10:23:35.134899'
+  electricalResistivity:
+    value: 120000000000000.0
+    unit: "\u03A9\xB7m"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T11:11:34.743877'
+  flexuralStrength:
+    value: 450.0
+    unit: MPa
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.467545'
+  fractureToughness:
+    value: 25.3
+    unit: "MPa\xB7m\xB9/\xB2"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.353857'
+  hardness:
+    value: 85.0
+    unit: HRR
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.752329'
+  laserAbsorption:
+    value: 0.72
+    unit: dimensionless
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.266556'
+  laserReflectivity:
+    value: 0.42
+    unit: '1'
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:52:17.526550'
+  oxidationResistance:
+    value: 0.85
+    unit: dimensionless_rating_0_to_1
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.575475'
+  specificHeat:
+    value: 1100.0
+    unit: "J\xB7kg\u207B\xB9\xB7K\u207B\xB9"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T10:33:26.045777'
+  tensileStrength:
+    value: 350.0
+    unit: MPa
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.696644'
+  thermalConductivity:
+    value: 0.35
+    unit: "W/m\xB7K"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T10:43:41.098425'
+  thermalDestruction:
+    value: 573.0
+    unit: "\xB0C"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T09:49:31.637353'
+  thermalDiffusivity:
+    value: 1.15e-07
+    unit: "m\xB2/s"
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T10:02:52.802378'
+  thermalExpansion:
+    value: 12.5
+    unit: 10^-6/K
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T10:53:43.835197'
+  youngsModulus:
+    value: 45.2
+    unit: GPa
+    confidence: 92
+    source: ai_research
+    research_date: '2025-10-23T10:13:44.431346'
+category_info:
+  description: Engineered composite materials including fiber-reinforced polymers,
+    matrix composites, and hybrid materials for specialized cleaning applications
+  properties_count: 17
+  category_ranges:
+    density:
+      max: 8
+      min: 0.5
+      unit: "g/cm\xB3"
+    hardness:
+      max: 120
+      min: 5.0
+      unit: HRC
+      adjustment_note: Phenolic resin composites harder
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    laserAbsorption:
+      max: 200
+      min: 0.05
+      unit: "cm\u207B\xB9"
+    laserReflectivity:
+      max: 80
+      min: 2
+      unit: '%'
+      source: Composite Materials Handbook (MIL-HDBK-17)
+      confidence: 70
+      notes: 'Wide range reflects diversity: polymer matrix composites 5-30%, metal
+        matrix composites 40-80%'
+      last_updated: '2025-10-15T14:19:43.867274'
+    specificHeat:
+      max: 2500.0
+      min: 500
+      unit: "J/kg\xB7K"
+    tensileStrength:
+      max: 6000
+      min: 20
+      unit: MPa
+      adjustment_note: Some composites weaker
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    thermalConductivity:
+      max: 400
+      min: 0.03
+      unit: "W/(m\xB7K)"
+      source: ASM Handbook - Composites
+      confidence: 75
+      notes: "Wide range (0.1-400 W/m\xB7K): polymer matrix ~0.2, carbon fiber ~10,\
+        \ metal matrix 50-400"
+      last_updated: '2025-10-15T14:19:43.867281'
+      adjustment_note: Fiberglass is insulating
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    thermalDestruction:
+      point:
+        max: 2000
+        min: 150
+        unit: "\xB0C"
+      type: decomposition
+    thermalDiffusivity:
+      max: 180
+      min: 0.08
+      unit: "mm\xB2/s"
+    thermalExpansion:
+      max: 250
+      min: -1
+      unit: "\xB5m/m\xB7K"
+    youngsModulus:
+      max: 3000
+      min: 0.001
+      unit: GPa
+      adjustment_note: Carbon fiber composites very stiff
+      adjustment_date: '2025-10-15'
+      adjustment_source: materials_science_research
+    compressiveStrength:
+      min: 50
+      max: 1000
+      unit: MPa
+      description: Maximum compressive stress before failure
+      notes: Fiber-reinforced composites
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    corrosionResistance:
+      min: 5
+      max: 9
+      unit: rating
+      description: Resistance to chemical/electrochemical degradation
+      notes: Depends on matrix material
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    electricalResistivity:
+      min: 0.001
+      max: 100000000000000.0
+      unit: "\u03A9\xB7m"
+      description: Resistance to electrical current flow
+      notes: Highly variable
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    flexuralStrength:
+      min: 100
+      max: 2000
+      unit: MPa
+      description: Maximum bending stress before failure
+      notes: Composites excel in bending
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    fractureToughness:
+      min: 20
+      max: 100
+      unit: "MPa\xB7m^0.5"
+      description: Resistance to crack propagation
+      notes: Fiber reinforcement increases toughness
+      source: materials_science_literature
+      research_date: '2025-10-15'
+    oxidationResistance:
+      min: 80.0
+      max: 1650.0
+      unit: "\xB0C"
+      description: ''
+      sample_count: 13
+      auto_generated: true
+      generated_date: '2025-10-16'
 caption:
+  description: Microscopic analysis of Glass Fiber Reinforced Polymers GFRP surface
+    before and after laser cleaning treatment
   beforeText: Under microscopy, the GFRP surface appears very-very rough and uneven,
     with contaminants like fine dust particles and oily residues clinging tightly
     to the fibers. These contaminants form irregular clusters, blocking matrix interfaces
     and causing discoloration. Surface degradation shows as micro-cracks and fiber
     pull-outs, so the material looks weakened and porous, then invites further damage
     if not cleaned promptly.
-  afterText: The cleaned surface of Glass Fiber Reinforced Polymers (GFRP) appears
-    very-very smooth and glossy, with contaminants fully removed then original texture
-    restored. This process cleans effectively so material integrity remains intact—no
-    delamination or fiber damage occurs. Restoration quality is high, as surface looks
-    pristine and ready for applications, maintaining composite strength and durability.
-  generated: '2025-10-25T14:24:02.124100Z'
-  author: Ikmanda Roswati
-  generation_method: ai_research
-  word_count:
-    before: 58
-    after: 53
-  character_count:
-    before: 420
-    after: 401
-  description: Microscopic analysis of glass fiber reinforced polymers gfrp surface
-    before and after laser cleaning treatment
-materialProperties:
-  laser_material_interaction:
-    description: Optical, thermal, and surface properties governing laser processing
-      behavior
-    label: Laser-Material Interaction
-    percentage: 40.0
-    properties:
-      laserAbsorption:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: 'NIST Special Publication 1176: ''Laser Interaction with Composite
-          Materials'' (2021) & ASM Handbook, Volume 21: Composites, Section: ''Laser
-          Processing of Fiber-Reinforced Polymers'''
-        research_date: '2025-09-30T10:56:56.304239'
-        source: ai_research
-        unit: unitless
-        validation_method: Cross-referenced experimental absorption data from NIST
-          laser-material interaction studies with ASM Handbook composite properties,
-          validated against typical GFRP composition (60-70% glass fiber, 30-40% epoxy/polyester
-          matrix) and known absorption characteristics of constituent materials
-        value: 0.9
-        verification_confidence: 85
-        verification_date: '2025-10-03T23:08:00.985168'
-        verification_variance: 5.88%
-        min: 0.9
-        max: 95.2
-      laserReflectivity:
-        confidence: 0.92
-        research_basis: 'NIST Special Publication 1176: ''Laser-Material Interactions
-          in Composite Materials'' (2018), Table 4.2 - Reflectivity measurements for
-          GFRP (60% E-glass/40% epoxy) at 1064 nm wavelength'
-        research_date: '2025-09-30T10:57:08.186215'
-        source: ai_research
-        unit: '%'
-        validation_method: 'Cross-referenced with ASM Handbook Vol. 21: Composites
-          (2001) dielectric properties of constituent materials and experimental validation
-          through spectrophotometric measurements of typical GFRP compositions'
-        value: 38.5
-        min: 4.2
-        max: 38.5
-      specificHeat:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: NIST Polymer Composite Database - Specific heat capacity measurements
-          for E-glass fiber reinforced epoxy composites at 25°C, with fiber content
-          50-60% by weight (typical GFRP composition)
-        research_date: '2025-09-30T10:57:21.756792'
-        source: ai_research
-        unit: J/(kg·K)
-        validation_method: 'Cross-referenced with ASM Handbook Vol. 21: Composites
-          and academic literature (Materials Science and Engineering: A, Vol. 528,
-          2011) showing GFRP specific heat ranges from 1000-1400 J·kg⁻¹·K⁻¹ depending
-          on resin type and fiber content'
-        value: 1000.0
-        verification_confidence: 85
-        verification_date: '2025-10-03T22:32:20.837487'
-        verification_variance: 16.67%
-        min: 750.0
-        max: 1880.0
-      thermalConductivity:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 21: Composites, Section: Thermal Properties
-          of Polymer Matrix Composites, pp. 324-328, specifically citing GFRP with
-          30-40% glass fiber content in epoxy matrix'
-        research_date: '2025-09-30T10:57:48.758581'
-        source: ai_research
-        unit: W/(m·K)
-        validation_method: Cross-referenced with NIST Polymer Composite Database and
-          verified against experimental data from 'Thermal conductivity of glass fiber-reinforced
-          polymer composites' in Journal of Composite Materials (2018) showing range
-          0.3-0.4 W/m·K for typical GFRP formulations
-        value: 0.35
-        min: 0.036
-        max: 180.25
-      thermalDestruction:
-        confidence: 0.7
-        point:
-          confidence: 0.92
-          research_basis: 'ASM Handbook, Vol. 21: Composites, Section: Thermal Properties
-            of Polymer Matrix Composites. Specific reference to GFRP with epoxy matrix
-            showing glass transition temperature (Tg) degradation onset at 300°C (573.15K)
-            as critical thermal destruction threshold.'
-          research_date: '2025-09-30T10:58:00.409729'
-          source: ai_research
-          unit: K
-          validation_method: Cross-referenced with NIST Polymer Composite Database
-            entries for E-glass/epoxy composites and validated against laser cleaning
-            studies showing matrix degradation at temperatures exceeding Tg, where
-            mechanical properties begin irreversible deterioration.
-          value: 573.15
-        research_basis: ai_research_comprehensive
-        research_date: '2025-10-17'
-        source: composite_degradation_standards
-        type: decomposition
-        unit: °C
-        value: 300.0
-      thermalDiffusivity:
-        confidence: 0.9
-        research_basis: materials_science_literature
-        research_date: '2025-10-17'
-        source: ai_research
-        unit: mm²/s
-        value: 90.05
-        min: 0.089
-        max: 90.05
-      thermalExpansion:
-        confidence: 0.92
-        research_basis: 'ASM Handbook, Volume 21: Composites, Section: Properties
-          of Glass Fiber Reinforced Polymers, Table: Thermal Expansion Coefficients
-          for GFRP with 60-70% E-glass fiber content in epoxy matrix'
-        research_date: '2025-09-30T10:58:38.908459'
-        source: ai_research
-        unit: μm/m·°C
-        validation_method: Cross-referenced with NIST Special Publication 1252 'Thermal
-          Properties of Polymer Composites' and verified against experimental data
-          from Gibson (2016) 'Principles of Composite Material Mechanics' for typical
-          GFRP formulations
-        value: 18.5
-        min: 2.0
-        max: 115.2
-  material_characteristics:
-    description: Intrinsic physical, mechanical, chemical, and structural properties
-      affecting cleaning outcomes and material integrity
-    label: Material Characteristics
-    percentage: 40.0
-    properties:
-      compressiveStrength:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: The compressive strength of GFRP is highly dependent on the
-          fiber architecture (e.g., unidirectional, fabric) and resin system. The
-          cited military handbook, a key authority for composite material properties,
-          provides a typical range of 140-200 MPa for quasi-isotropic laminates under
-          standard test conditions (ASTM D6641). The value of 150 MPa is a conservative,
-          representative figure from the lower end of this range for general-purpose
-          GFRP.
-        research_date: '2025-10-15T21:26:29.973321'
-        source: 'MIL-HDBK-17-2F: Composite Materials Handbook, Volume 2 - Polymer
-          Matrix Composites, Chapter 3.7.1.1'
-        unit: MPa
-        value: 150.0
-        min: 15.0
-        max: 1034.0
-      corrosionResistance:
-        ai_verified: true
-        confidence: 0.87
-        research_basis: GFRP exhibits excellent corrosion resistance to a wide range
-          of chemicals and environments, including water, salt solutions, acids, and
-          alkalis, because the polymer matrix (typically epoxy or vinyl ester) is
-          non-metallic and does not corrode electrochemically. It is widely used in
-          corrosive industrial applications like chemical processing and marine structures.
-          The rating is not a perfect 10 because it can suffer from degradation in
-          strong acids/bases at elevated temperatures and potential issues like fiber
-          etching or blistering in specific long-term exposures.
-        research_date: '2025-10-15T20:29:48.150053'
-        source: NACE International (National Association of Corrosion Engineers) IMPACT
-          Publication, "Corrosion Resistance of Fiber-Reinforced Polymers (FRP)"
-        unit: rating
-        value: 8.0
-        min: 3.0
-        max: 8.0
-      density:
-        ai_verified: true
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 21: Composites, Specific data for E-glass
-          fiber reinforced epoxy with ~60% fiber volume fraction, a common industrial
-          GFRP formulation.'
-        research_date: '2025-09-30T10:56:29.997317'
-        source: ai_research
-        unit: g/cm³
-        validation_method: Cross-referenced with MIL-HDBK-17-1F data for polymer composites
-          and typical constituent densities (E-glass ~2.6 g/cm³, epoxy ~1.2 g/cm³),
-          confirming the calculated composite density for standard fiber volume fractions
-          (55-65%).
-        value: 1.9
-        verification_confidence: 85
-        verification_date: '2025-10-03T19:36:34.251131'
-        verification_variance: 2.56%
-        min: 1.1
-        max: 2.7
-      electricalResistivity:
-        confidence: 0.92
-        research_basis: materials_science_literature
-        research_date: '2025-10-17T19:11:07.120422'
-        source: ai_research
-        unit: Ω·m
-        value: 120000000000000.0
-      flexuralStrength:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: The provided properties (density, hardness) are consistent
-          with a standard E-glass/epoxy composite. Authoritative engineering databases
-          (ASM, CES EduPack) report flexural strengths for this material category
-          in the range of 350-600 MPa, with a typical value for a high-performance,
-          unidirectional laminate being approximately 483 MPa. This value is determined
-          via a standard 3-point bend test (ASTM D790).
-        research_date: '2025-10-15T20:55:39.328659'
-        source: ASM Aerospace Specification Metals Inc., Material Property Data for
-          GFRP (E-Glass Epoxy), Typical Flexural Strength
-        unit: MPa
-        value: 483.0
-        min: 5.0
-        max: 689.0
-      hardness:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: 'ASM Handbook, Volume 21: Composites, Section: Mechanical
-          Properties of Glass Fiber Reinforced Polymers, Rockwell R scale testing
-          per ASTM D785'
-        research_date: '2025-09-30T10:56:42.479946'
-        source: ai_research
-        unit: HRR
-        validation_method: Cross-referenced ASM Handbook data with experimental values
-          from 'Mechanical Characterization of GFRP Composites' (Journal of Composite
-          Materials, 2018) and validated against NIST SRM 2850 for polymer composite
-          hardness standards
-        value: 85.0
-        verification_confidence: 85
-        verification_date: '2025-10-03T20:41:22.071529'
-        verification_variance: 36.0%
-        min: 22.5
-        max: 150.0
-      oxidationResistance:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: GFRP's maximum service temperature is primarily limited by
-          the polymer matrix (typically polyester or epoxy). The MIL-HDBK-17 states
-          that for these matrices in air, significant property degradation, including
-          oxidation of the resin and loss of interfacial bond strength, begins around
-          150°C. This temperature is well below the glass transition temperature (Tg)
-          of high-temperature epoxies, as oxidative aging is the dominant failure
-          mechanism in air.
-        research_date: '2025-10-15T20:43:07.080800'
-        source: 'MIL-HDBK-17-3F: Department of Defense Handbook, Composite Materials
-          Handbook, Volume 3, Chapter 5.7.2'
-        unit: °C
-        value: 150.0
-        min: 80.0
-        max: 1650.0
-      tensileStrength:
-        confidence: 0.95
-        research_basis: 'ASM Handbook, Volume 21: Composites, Table ''Typical Mechanical
-          Properties of Unidirectional Glass Fiber/Epoxy Composites'' specifying tensile
-          strength range of 1000-3100 MPa for continuous fiber composites with 60-70%
-          fiber volume fraction'
-        research_date: '2025-09-30T10:57:35.016801'
-        source: ai_research
-        unit: MPa
-        validation_method: Cross-referenced ASM Handbook data with NIST Publication
-          NCSTAR 1-6D 'Composite Materials' and Gibson's 'Principles of Composite
-          Material Mechanics' for GFRP-specific tensile properties, confirming 3100
-          MPa represents upper bound for well-engineered unidirectional glass/epoxy
-          composites
-        value: 3100.0
-        min: 25.0
-        max: 3447.0
-      youngsModulus:
-        ai_verified: true
-        confidence: 0.92
-        research_basis: 'ASM Handbook, Volume 21: Composites, Table ''Mechanical Properties
-          of Glass Fiber Reinforced Polymers'' citing specific E-glass/epoxy composites
-          with 60-70% fiber volume fraction'
-        research_date: '2025-09-30T10:58:50.273222'
-        source: ai_research
-        unit: GPa
-        validation_method: Cross-referenced with NIST Polymer Composites Database
-          and peer-reviewed studies on GFRP mechanical properties under standard ASTM
-          D3039 testing conditions
-        value: 40.0
-        verification_confidence: 85
-        verification_date: '2025-10-03T21:55:35.213938'
-        verification_variance: 14.29%
-        min: 3.2
-        max: 2800.0
-  other:
-    description: Additional material-specific properties
-    label: Other Properties
-    percentage: 20.0
-    properties:
-      fractureToughness:
-        ai_verified: true
-        confidence: 0.85
-        research_basis: GFRP fracture toughness is highly dependent on fiber orientation,
-          volume fraction, and matrix properties. For continuous glass fiber/epoxy
-          composites in the fiber direction, K_IC typically ranges from 20-45 MPa·√m.
-          The cited value represents a conservative mid-range estimate for structural
-          GFRP laminates, consistent with handbook values for epoxy-based composites
-          with 50-60% fiber volume fraction.
-        research_date: '2025-10-15T20:14:16.987423'
-        source: '"Engineering Composite Materials" by Bryan Harris, 1999, p. 198'
-        unit: MPa·√m
-        value: 30.0
-        min: 0.05
-        max: 44.0
-materialCharacteristics:
-  crystallineStructure:
-    allowedValues:
-    - FCC
-    - BCC
-    - HCP
-    - amorphous
-    - cubic
-    - hexagonal
-    - tetragonal
-    - orthorhombic
-    - monoclinic
-    - triclinic
-    confidence: 0.95
-    description: mixed crystal structure
-    research_date: '2025-10-20T22:49:43.625779+00:00'
-    source: ai_research
-    unit: crystal system
-    value: mixed
-machineSettings:
-  dwellTime:
-    confidence: 82
-    description: Optimal dwell time per spot for effective cleaning
-    max: 0.5
-    min: 0.1
-    unit: ms
-    value: 0.2
-  energyDensity:
-    confidence: 85
-    description: Optimal energy density for GFRP surface processing
-    max: 3.8
-    min: 2.2
-    unit: J/cm²
-    value: 3.0
-  fluenceThreshold:
-    confidence: 88
-    description: Threshold fluence for effective contaminant removal without fiber
-      damage
-    max: 3.2
-    min: 1.8
-    unit: J/cm²
-    value: 2.5
-  overlapRatio:
-    confidence: 85
-    description: Beam overlap percentage for uniform cleaning coverage
-    max: 70
-    min: 40
-    unit: '%'
-    value: 50
-  passCount:
-    confidence: 83
-    description: Number of cleaning passes for complete contaminant removal
-    max: 4
-    min: 1
-    unit: passes
-    value: 2
-  powerRange:
-    confidence: 92
-    description: Optimal average power for GFRP surface cleaning without matrix damage
-    max: 120
-    min: 80
-    unit: W
-    value: 100
-  pulseWidth:
-    confidence: 87
-    description: Nanosecond pulse duration for controlled ablation of surface contaminants
-    max: 20
-    min: 5
-    unit: ns
-    value: 10
-  repetitionRate:
-    confidence: 84
-    description: Optimal repetition rate for efficient cleaning with thermal management
-    max: 100
-    min: 20
-    unit: kHz
-    value: 50
-  scanSpeed:
-    confidence: 86
-    description: Optimal scanning speed for uniform cleaning coverage
-    max: 800
-    min: 300
-    unit: mm/s
-    value: 500
-  spotSize:
-    confidence: 89
-    description: Beam spot diameter for precise surface cleaning control
-    max: 200
-    min: 50
-    unit: μm
-    value: 100
-  wavelength:
-    confidence: 88
-    description: Near-IR wavelength for optimal absorption in surface contaminants
-      with minimal GFRP damage
-    max: 10600
-    min: 532
-    unit: nm
-    value: 1064
-applications:
-- Aerospace
-- Marine
-- Wind Energy
-- Automotive
-- Electronics Manufacturing
-- Medical Equipment
-- Construction and Infrastructure
-- Rail Transportation
-- Sports Equipment
-- Cultural Heritage
-environmentalImpact:
-- Chemical Waste Elimination:
-    applicableIndustries:
-    - Semiconductor
-    - Electronics
-    - Medical
-    - Nuclear
-    description: Eliminates hazardous chemical waste streams
-    quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- Water Usage Reduction:
-    applicableIndustries: []
-    description: Dry process requires no water
-    sustainabilityBenefit: Significant water conservation in industrial processes
-- Energy Efficiency:
-    applicableIndustries: []
-    description: Focused energy delivery with minimal waste heat
-- Air Quality Improvement:
-    applicableIndustries: []
-    description: Eliminates volatile organic compounds from chemical cleaning
-outcomeMetrics:
-- Contaminant Removal Efficiency:
-    description: Percentage of target contaminants successfully removed from surface
-    factorsAffecting:
-    - Contamination type
-    - Adhesion strength
-    - Surface geometry
-    measurementMethods:
-    - Before/after microscopy
-    - Chemical analysis
-    - Mass spectrometry
-    typicalRanges: 95-99.9% depending on application and material
-    units: []
-- Processing Speed:
-    description: Rate of surface area processed per unit time
-    factorsAffecting: []
-    measurementMethods: []
-    units:
-    - m²/h
-    - cm²/min
-    - mm²/s
-- Surface Quality Preservation:
-    description: Maintenance of original surface characteristics after cleaning
-    factorsAffecting: []
-    measurementMethods: []
-    units: []
-- Thermal Damage Avoidance:
-    description: Prevention of heat-related material alterations during cleaning
-    factorsAffecting: []
-    measurementMethods: []
-    units: []
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/en/publication/3587
-  image: /images/logo/logo-org-iec.png
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.95
-  image: /images/logo/logo-org-osha.png
-images:
-  hero:
-    alt: Glass Fiber Reinforced Polymers Gfrp surface undergoing laser cleaning showing
-      precise contamination removal
-    url: /images/material/glass-fiber-reinforced-polymers-gfrp-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of glass fiber reinforced polymers gfrp surface showing
-      laser cleaning effects
-    url: /images/material/glass-fiber-reinforced-polymers-gfrp-laser-cleaning-micro.jpg
+  afterText: "The cleaned surface of Glass Fiber Reinforced Polymers (GFRP) appears\
+    \ very-very smooth and glossy, with contaminants fully removed then original texture\
+    \ restored. This process cleans effectively so material integrity remains intact\u2014\
+    no delamination or fiber damage occurs. Restoration quality is high, as surface\
+    \ looks pristine and ready for applications, maintaining composite strength and\
+    \ durability."
+subtitle: Precision laser cleaning preserves GFRP fiber-matrix integrity
 author:
   country: Indonesia
   expertise: Ultrafast Laser Physics and Material Interactions
@@ -515,6 +253,3 @@ author:
   name: Ikmanda Roswati
   sex: m
   title: Ph.D.
-categoryMetadata:
-  description: Engineered composite materials including fiber-reinforced polymers,
-    matrix composites, and hybrid materials for specialized cleaning applications

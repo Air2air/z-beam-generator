@@ -108,6 +108,10 @@ def create_frontmatter_content(material_name: str, material_data: Dict, categori
             'afterText': caption_data.get('afterText', '')
         }
     
+    # Add subtitle if present
+    if 'subtitle' in material_data:
+        frontmatter['subtitle'] = material_data['subtitle']
+    
     # Add author data if present
     if 'author' in material_data:
         frontmatter['author'] = material_data['author']
