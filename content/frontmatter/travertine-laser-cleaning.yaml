@@ -1,132 +1,28 @@
 name: Travertine
-material: Travertine
-title: Travertine Laser Cleaning
 category: stone
-generated_date: '2025-10-25T22:35:59.360317'
-data_completeness: 100%
-source: Materials.yaml (direct export)
-properties: {}
-category_info:
-  description: Natural stone materials including granite, marble, limestone, slate,
-    and quarried stone for architectural restoration cleaning
-  properties_count: 0
-  category_ranges:
-    density:
-      max: 6.0
-      min: 1.5
-      unit: "g/cm\xB3"
-      adjustment_note: Some stones denser (basalt 2.8-3.0)
-      adjustment_date: '2025-10-15'
-      adjustment_source: materials_science_research
-    hardness:
-      max: 7
-      min: 1
-      unit: Mohs
-      adjustment_note: Already correct - talc is 1 Mohs
-      adjustment_date: '2025-10-15'
-      adjustment_source: materials_science_research
-    laserAbsorption:
-      max: 100
-      min: 0.1
-      unit: "cm\u207B\xB9"
-      phase2_adjustment: "Alabaster at 85 cm\u207B\xB9"
-      adjustment_date: '2025-10-15'
-    laserReflectivity:
-      max: 80
-      min: 5
-      unit: '%'
-      source: Geological Survey Optical Properties Database
-      confidence: 70
-      notes: Light colored stones 40-80%, dark stones 5-20%, varies with mineral composition
-      last_updated: '2025-10-15T14:19:43.867256'
-    specificHeat:
-      max: 1200
-      min: 400
-      unit: "J/kg\xB7K"
-      adjustment_note: Some stones have lower specific heat
-      adjustment_date: '2025-10-15'
-      adjustment_source: materials_science_research
-    tensileStrength:
-      max: 25
-      min: 2
-      unit: MPa
-    thermalConductivity:
-      max: 8
-      min: 0.2
-      unit: "W/(m\xB7K)"
-      source: Engineering ToolBox - Building Materials
-      confidence: 75
-      notes: "Most stones 1-4 W/m\xB7K, granite ~2.8, limestone ~1.3, marble ~2.5"
-      last_updated: '2025-10-15T14:19:43.867263'
-    thermalDestruction:
-      point:
-        max: 1700
-        min: 600
-        unit: "\xB0C"
-      type: thermal_shock
-    thermalDiffusivity:
-      max: 2.5
-      min: 0.2
-      unit: "mm\xB2/s"
-    thermalExpansion:
-      max: 30
-      min: 3
-      unit: "\xB5m/m\xB7K"
-    youngsModulus:
-      max: 100
-      min: 10
-      unit: GPa
-    porosity:
-      min: 0.5
-      max: 25
-      unit: '%'
-      source: Geological Survey Professional Papers
-      confidence: 75
-      notes: Granite/marble 0.5-3%, sandstone 5-25%
-      last_updated: '2025-10-14T23:58:54.459420'
-    compressiveStrength:
-      min: 20
-      max: 500
-      unit: MPa
-      description: Maximum compressive stress before failure
-      notes: Natural stone variable
-      source: materials_science_literature
-      research_date: '2025-10-15'
-    flexuralStrength:
-      min: 5
-      max: 50
-      unit: MPa
-      description: Maximum bending stress before failure
-      notes: Stone variable in bending
-      source: materials_science_literature
-      research_date: '2025-10-15'
-    fractureToughness:
-      min: 0.5
-      max: 5
-      unit: "MPa\xB7m^0.5"
-      description: Resistance to crack propagation
-      notes: Stone brittle like ceramics
-      source: materials_science_literature
-      research_date: '2025-10-15'
-    corrosionResistance:
-      min: 2.0
-      max: 9.0
-      unit: rating
-      description: ''
-      sample_count: 18
-      auto_generated: true
-      generated_date: '2025-10-16'
-    oxidationResistance:
-      min: 400.0
-      max: 870.0
-      unit: "\xB0C"
-      description: ''
-      sample_count: 18
-      auto_generated: true
-      generated_date: '2025-10-16'
+subcategory: ''
+title: Travertine Laser Cleaning
+subtitle: Discover tailored laser techniques reviving Travertine's porous beauty without
+  surface damage
+description: Laser cleaning parameters for Travertine
+author:
+  country: Taiwan
+  expertise: Laser Materials Processing
+  id: 1
+  image: /images/author/yi-chun-lin.jpg
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+images:
+  hero:
+    alt: Travertine surface undergoing laser cleaning showing precise contamination
+      removal
+    url: /images/material/travertine-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Travertine surface after laser cleaning showing detailed
+      surface structure
+    url: /images/material/travertine-laser-cleaning-micro.jpg
 caption:
-  description: Microscopic analysis of Travertine surface before and after laser cleaning
-    treatment
   beforeText: Under microscopy, the Travertine surface appears heavily contaminated
     with fine particulate matter and oily residues, forming uneven layers across its
     porous texture. This surface, it reveals clustered deposits of siliceous dust
@@ -137,17 +33,18 @@ caption:
     dirt and discoloration. This restoration demonstrates high quality, preserving
     the stone's natural porosity and color. Material integrity remains intact, with
     no cracks or thermal damage, ideal for cultural heritage and architectural use.
-subtitle: Discover tailored laser techniques reviving Travertine's porous beauty without
-  surface damage
-images:
-  hero:
-    alt: Travertine surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/material/travertine-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Travertine surface after laser cleaning showing detailed
-      surface structure
-    url: /images/material/travertine-laser-cleaning-micro.jpg
+  generated: '2025-10-25T15:34:42.991392Z'
+  author: Yi-Chun Lin
+  generation_method: ai_research
+  word_count:
+    before: 58
+    after: 43
+  character_count:
+    before: 432
+    after: 311
+  description: Microscopic analysis of Travertine surface before and after laser cleaning
+    treatment
+regulatoryStandards: []
 applications:
 - Cultural Heritage
 - Aerospace
@@ -159,11 +56,93 @@ applications:
 - Energy Sector
 - Food Processing
 - Art and Sculpture
-author:
-  country: Taiwan
-  expertise: Laser Materials Processing
-  id: 1
-  image: /images/author/yi-chun-lin.jpg
-  name: Yi-Chun Lin
-  sex: f
-  title: Ph.D.
+materialProperties:
+  material_characteristics:
+    label: Material Characteristics
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+  laser_material_interaction:
+    label: Laser-Material Interaction
+    description: Optical and thermal properties governing laser energy absorption,
+      reflection, propagation, and ablation thresholds
+machineSettings:
+  energyDensity:
+    value: 1.5
+    min: 0.8
+    max: 2.5
+    unit: J/cm²
+    description: Fluence level sufficient for contaminant removal below Travertine
+      damage threshold
+  overlapRatio:
+    value: 30
+    min: 20
+    max: 50
+    unit: '%'
+    description: Optimal beam overlap for complete coverage without excessive energy
+      deposition
+  passCount:
+    value: 2
+    min: 1
+    max: 4
+    unit: passes
+    description: Number of cleaning passes for complete contaminant removal
+  powerRange:
+    value: 100
+    min: 80
+    max: 120
+    unit: W
+    description: Optimal average power for Travertine surface cleaning without thermal
+      damage
+  pulseWidth:
+    value: 10
+    min: 5
+    max: 20
+    unit: ns
+    description: Nanosecond pulse duration for effective contaminant removal with
+      controlled thermal penetration
+  repetitionRate:
+    value: 50
+    min: 20
+    max: 100
+    unit: kHz
+    description: Optimal repetition rate for efficient cleaning coverage and process
+      speed
+  scanSpeed:
+    value: 500
+    min: 200
+    max: 1000
+    unit: mm/s
+    description: Optimal scanning speed for uniform cleaning without overlapping damage
+  spotSize:
+    value: 100
+    min: 50
+    max: 200
+    unit: μm
+    description: Beam spot diameter for balanced cleaning efficiency and resolution
+  wavelength:
+    value: 1064
+    min: 532
+    max: 10600
+    unit: nm
+    description: Near-IR wavelength optimized for Travertine absorption and minimal
+      substrate damage
+environmentalImpact:
+- applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+- applicableIndustries: []
+  benefit: Water Usage Reduction
+  description: Dry process requires no water
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- applicableIndustries: []
+  benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+- applicableIndustries: []
+  benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+outcomeMetrics: []

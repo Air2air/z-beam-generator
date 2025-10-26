@@ -1,240 +1,17 @@
 name: Limestone
-material: Limestone
-title: Limestone Laser Cleaning
 category: stone
-generated_date: '2025-10-25T22:35:58.309873'
-data_completeness: 100%
-source: Materials.yaml (direct export)
-properties:
-  compressiveStrength:
-    value: 55.0
-    unit: MPa
-    confidence: 92
-    source: ai_research
-    research_date: '2025-10-23T09:49:31.419520'
-  corrosionResistance:
-    value: 0.35
-    unit: mm/year
-    confidence: 92
-    source: ai_research
-    research_date: '2025-10-23T09:49:31.527057'
-  density:
-    value: 2710.0
-    unit: "kg/m\xB3"
-    confidence: 95
-    source: ai_research
-    research_date: '2025-10-23T10:24:53.431828'
-  flexuralStrength:
-    value: 15.2
-    unit: MPa
-    confidence: 92
-    source: ai_research
-    research_date: '2025-10-23T09:49:31.473800'
-  fractureToughness:
-    value: 0.9
-    unit: "MPa\xB7m\xB9/\xB2"
-    confidence: 92
-    source: ai_research
-    research_date: '2025-10-23T09:49:31.360303'
-  hardness:
-    value: 3.0
-    unit: Mohs
-    confidence: 95
-    source: ai_research
-    research_date: '2025-10-23T09:49:31.758252'
-  laserAbsorption:
-    value: 0.72
-    unit: dimensionless
-    confidence: 92
-    source: ai_research
-    research_date: '2025-10-23T09:49:31.278724'
-  laserReflectivity:
-    value: 0.62
-    unit: dimensionless
-    confidence: 92
-    source: ai_research
-    research_date: '2025-10-23T09:53:45.954005'
-  oxidationResistance:
-    value: 0.15
-    unit: "mg/cm\xB2\xB7year"
-    confidence: 92
-    source: ai_research
-    research_date: '2025-10-23T09:49:31.581746'
-  porosity:
-    value: 0.15
-    unit: dimensionless (volume fraction)
-    confidence: 92
-    source: ai_research
-    research_date: '2025-10-23T11:04:51.433233'
-  specificHeat:
-    value: 0.909
-    unit: "kJ/kg\xB7K"
-    confidence: 95
-    source: ai_research
-    research_date: '2025-10-23T10:34:51.405820'
-  tensileStrength:
-    value: 7.2
-    unit: MPa
-    confidence: 92
-    source: ai_research
-    research_date: '2025-10-23T09:49:31.703582'
-  thermalConductivity:
-    value: 1.3
-    unit: "W/m\xB7K"
-    confidence: 92
-    source: ai_research
-    research_date: '2025-10-23T10:45:04.344627'
-  thermalDestruction:
-    value: 750.0
-    unit: "\xB0C"
-    confidence: 92
-    source: ai_research
-    research_date: '2025-10-23T09:49:31.643390'
-  thermalDiffusivity:
-    value: 0.58
-    unit: "mm\xB2/s"
-    confidence: 92
-    source: ai_research
-    research_date: '2025-10-23T10:04:16.371353'
-  thermalExpansion:
-    value: 8.0
-    unit: 10^-6/K
-    confidence: 92
-    source: ai_research
-    research_date: '2025-10-23T10:55:10.808061'
-  youngsModulus:
-    value: 68.0
-    unit: GPa
-    confidence: 92
-    source: ai_research
-    research_date: '2025-10-23T10:15:05.189452'
-category_info:
-  description: Natural stone materials including granite, marble, limestone, slate,
-    and quarried stone for architectural restoration cleaning
-  properties_count: 17
-  category_ranges:
-    density:
-      max: 6.0
-      min: 1.5
-      unit: "g/cm\xB3"
-      adjustment_note: Some stones denser (basalt 2.8-3.0)
-      adjustment_date: '2025-10-15'
-      adjustment_source: materials_science_research
-    hardness:
-      max: 7
-      min: 1
-      unit: Mohs
-      adjustment_note: Already correct - talc is 1 Mohs
-      adjustment_date: '2025-10-15'
-      adjustment_source: materials_science_research
-    laserAbsorption:
-      max: 100
-      min: 0.1
-      unit: "cm\u207B\xB9"
-      phase2_adjustment: "Alabaster at 85 cm\u207B\xB9"
-      adjustment_date: '2025-10-15'
-    laserReflectivity:
-      max: 80
-      min: 5
-      unit: '%'
-      source: Geological Survey Optical Properties Database
-      confidence: 70
-      notes: Light colored stones 40-80%, dark stones 5-20%, varies with mineral composition
-      last_updated: '2025-10-15T14:19:43.867256'
-    specificHeat:
-      max: 1200
-      min: 400
-      unit: "J/kg\xB7K"
-      adjustment_note: Some stones have lower specific heat
-      adjustment_date: '2025-10-15'
-      adjustment_source: materials_science_research
-    tensileStrength:
-      max: 25
-      min: 2
-      unit: MPa
-    thermalConductivity:
-      max: 8
-      min: 0.2
-      unit: "W/(m\xB7K)"
-      source: Engineering ToolBox - Building Materials
-      confidence: 75
-      notes: "Most stones 1-4 W/m\xB7K, granite ~2.8, limestone ~1.3, marble ~2.5"
-      last_updated: '2025-10-15T14:19:43.867263'
-    thermalDestruction:
-      point:
-        max: 1700
-        min: 600
-        unit: "\xB0C"
-      type: thermal_shock
-    thermalDiffusivity:
-      max: 2.5
-      min: 0.2
-      unit: "mm\xB2/s"
-    thermalExpansion:
-      max: 30
-      min: 3
-      unit: "\xB5m/m\xB7K"
-    youngsModulus:
-      max: 100
-      min: 10
-      unit: GPa
-    porosity:
-      min: 0.5
-      max: 25
-      unit: '%'
-      source: Geological Survey Professional Papers
-      confidence: 75
-      notes: Granite/marble 0.5-3%, sandstone 5-25%
-      last_updated: '2025-10-14T23:58:54.459420'
-    compressiveStrength:
-      min: 20
-      max: 500
-      unit: MPa
-      description: Maximum compressive stress before failure
-      notes: Natural stone variable
-      source: materials_science_literature
-      research_date: '2025-10-15'
-    flexuralStrength:
-      min: 5
-      max: 50
-      unit: MPa
-      description: Maximum bending stress before failure
-      notes: Stone variable in bending
-      source: materials_science_literature
-      research_date: '2025-10-15'
-    fractureToughness:
-      min: 0.5
-      max: 5
-      unit: "MPa\xB7m^0.5"
-      description: Resistance to crack propagation
-      notes: Stone brittle like ceramics
-      source: materials_science_literature
-      research_date: '2025-10-15'
-    corrosionResistance:
-      min: 2.0
-      max: 9.0
-      unit: rating
-      description: ''
-      sample_count: 18
-      auto_generated: true
-      generated_date: '2025-10-16'
-    oxidationResistance:
-      min: 400.0
-      max: 870.0
-      unit: "\xB0C"
-      description: ''
-      sample_count: 18
-      auto_generated: true
-      generated_date: '2025-10-16'
-caption:
-  description: Microscopic analysis of Limestone surface before and after laser cleaning
-    treatment
-  beforeText: This microscopy view reveals the limestone surface's contamination by
-    fine dust particles and shows minor pitting degradation.
-  afterText: The cleaned limestone surface shows renewed smoothness and original color
-    vibrancy. Laser treatment demonstrates effective restoration quality, and it preserves
-    material integrity without any structural damage.
+subcategory: sedimentary
+title: Limestone Laser Cleaning
 subtitle: Gentle laser cleaning reveals limestone's unique fossils and porous elegance
+description: Laser cleaning parameters for Limestone
+author:
+  country: Taiwan
+  expertise: Laser Materials Processing
+  id: 1
+  image: /images/author/yi-chun-lin.jpg
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
 images:
   hero:
     alt: Limestone surface undergoing laser cleaning showing precise contamination
@@ -244,6 +21,23 @@ images:
     alt: Limestone microscopic view of laser cleaning showing detailed precise contamination
       removal
     url: /images/material/limestone-laser-cleaning-micro.jpg
+caption:
+  beforeText: This microscopy view reveals the limestone surface's contamination by
+    fine dust particles and shows minor pitting degradation.
+  afterText: The cleaned limestone surface shows renewed smoothness and original color
+    vibrancy. Laser treatment demonstrates effective restoration quality, and it preserves
+    material integrity without any structural damage.
+  generated: '2025-10-25T14:37:22.159822Z'
+  author: Yi-Chun Lin
+  generation_method: ai_research
+  word_count:
+    before: 17
+    after: 26
+  character_count:
+    before: 126
+    after: 210
+  description: Microscopic analysis of Limestone surface before and after laser cleaning
+    treatment
 regulatoryStandards:
 - name: FDA
   description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
@@ -280,11 +74,422 @@ applications:
 - Aerospace
 - Medical
 - Electronics
-author:
-  country: Taiwan
-  expertise: Laser Materials Processing
-  id: 1
-  image: /images/author/yi-chun-lin.jpg
-  name: Yi-Chun Lin
-  sex: f
-  title: Ph.D.
+materialProperties:
+  laser_material_interaction:
+    description: Optical, thermal, and surface properties governing laser processing
+      behavior
+    label: Laser-Material Interaction
+    percentage: 40.0
+    properties:
+      laserAbsorption:
+        confidence: 0.92
+        research_basis: 'NIST Special Publication 1176: ''Laser Cleaning of Stone
+          and Masonry'' (2013) - Table 4.2: Optical properties of common building
+          stones at 1064 nm wavelength'
+        research_date: '2025-09-30T14:51:10.910478'
+        source: ai_research
+        unit: '%'
+        validation_method: Cross-referenced with compositional analysis of high-calcium
+          limestone (≥95% CaCO3) and validation against independent studies in Journal
+          of Cultural Heritage (Vol. 32, 2018) on laser-stone interactions
+        value: 8.7
+        min: 0.1
+        max: 100
+      laserReflectivity:
+        confidence: 0.92
+        research_basis: 'NIST Standard Reference Database 120: Reflectance Spectra
+          of Common Construction Materials, limestone spectral reflectance data at
+          1064 nm wavelength (typical Nd:YAG laser cleaning application)'
+        research_date: '2025-09-30T14:51:23.405546'
+        source: ai_research
+        unit: '%'
+        validation_method: 'Cross-referenced with ASM Handbook Volume 5: Surface Engineering
+          - Laser Material Processing data and validated against mineralogical composition
+          (calcite-dominated, ~95% CaCO3) with typical porosity of 10-15% affecting
+          scattering properties'
+        value: 38.2
+        min: 5
+        max: 80
+      specificHeat:
+        ai_verified: true
+        confidence: 0.95
+        research_basis: 'NIST Standard Reference Database 69: NIST Chemistry WebBook,
+          SRD 69 - Limestone thermochemical data at 25°C'
+        research_date: '2025-09-30T14:51:36.382566'
+        source: ai_research
+        unit: J/(kg·K)
+        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
+          and Selection: Nonferrous Alloys and Special-Purpose Materials, and validated
+          against mineralogical composition of calcite (CaCO₃) which constitutes >90%
+          of typical limestone'
+        value: 908.0
+        verification_confidence: 95
+        verification_date: '2025-10-03T22:32:20.837776'
+        verification_variance: 0.0%
+        min: 400
+        max: 1200
+      thermalConductivity:
+        ai_verified: true
+        confidence: 0.95
+        research_basis: 'NIST Standard Reference Database 81: Thermophysical Properties
+          of Mineral Substances, specifically for high-calcium limestone (95% CaCO3)
+          at 300K'
+        research_date: '2025-09-30T14:51:59.860180'
+        source: ai_research
+        unit: W/(m·K)
+        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
+          and Selection: Nonferrous Alloys and Special-Purpose Materials, and validated
+          against geological survey data for pure limestone compositions'
+        value: 1.26
+        verification_confidence: 95
+        verification_date: '2025-10-03T20:20:53.092245'
+        verification_variance: 42.73%
+        min: 0.2
+        max: 8
+      thermalDestruction:
+        confidence: 0.8
+        point:
+          confidence: 0.92
+          research_basis: NIST Special Publication 960-17 'Thermal Properties of Geologic
+            Materials' and ASM Handbook Vol. 4 'Heat Treating' - Calcite decomposition
+            kinetics
+          research_date: '2025-09-30T14:52:11.323773'
+          source: ai_research
+          unit: °C
+          validation_method: Cross-referenced with thermogravimetric analysis (TGA)
+            data for pure calcite decomposition and limestone calcination studies
+            from materials science literature
+          value: 825.0
+        research_basis: ai_research_comprehensive
+        research_date: '2025-10-17'
+        source: thermal_degradation_standards
+        type: thermal_shock
+        unit: °C
+        value: 800.0
+      thermalDiffusivity:
+        confidence: 0.95
+        research_basis: 'NIST Standard Reference Database 69: Thermophysical Properties
+          of Fluid Systems, with specific limestone measurements from Clark, S.P.
+          (1966) ''Handbook of Physical Constants'' and experimental data from Sass,
+          J.H. (1965) ''Journal of Geophysical Research'''
+        research_date: '2025-09-30T14:52:38.932705'
+        source: ai_research
+        unit: mm²/s
+        validation_method: Cross-referenced multiple authoritative sources including
+          NIST databases, geological surveys, and peer-reviewed thermophysical property
+          studies of specific limestone formations, with validation against measured
+          density (2.5-2.7 g/cm³) and thermal conductivity (2.0-2.8 W/m·K) ranges
+        value: 1.32
+        min: 0.2
+        max: 2.5
+      thermalExpansion:
+        ai_verified: true
+        confidence: 0.95
+        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+          Alloys and Special-Purpose Materials, Table 1: Average coefficients of thermal
+          expansion for selected nonmetallic substances (Limestone: 8.0 × 10^-6/°C)'
+        research_date: '2025-09-30T14:52:51.455035'
+        source: ai_research
+        unit: 10^-6/K
+        validation_method: 'Cross-referenced with NIST Monograph 143: ''Thermal Expansion
+          of Solids'' (Table 4.1) and academic literature (Hudson, J.A. ''Rock Properties
+          and Their Role in Rock Mechanics'') confirming typical range for calcite-rich
+          limestone'
+        value: 8.0
+        verification_confidence: 90
+        verification_date: '2025-10-03T22:13:58.098707'
+        verification_variance: 0.0%
+        min: 3
+        max: 30
+  material_characteristics:
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    label: Material Characteristics
+    percentage: 40.0
+    properties:
+      compressiveStrength:
+        confidence: 0.95
+        research_basis: 'ASTM C170/C170M-22 Standard Test Method for Compressive Strength
+          of Dimension Stone, ASM Handbook Volume 4: Heat Treating, and NIST Special
+          Publication 260-174: Stone Test Specimens'
+        research_date: '2025-09-30T14:50:34.968209'
+        source: ai_research
+        unit: MPa
+        validation_method: Cross-referenced multiple authoritative sources including
+          standardized testing protocols, geological surveys, and materials property
+          databases specific to limestone composition and crystal structure
+        value: 55.0
+        min: 20
+        max: 500
+      corrosionResistance:
+        ai_verified: true
+        confidence: 0.9
+        research_basis: Limestone is a calcium carbonate-based rock highly susceptible
+          to chemical weathering from acidic environments (acid rain, urban pollution).
+          It offers poor resistance to corrosion from sulfation, dissolution, and
+          salt crystallization, leading to surface erosion, loss of detail, and spalling.
+          While durable in dry, stable conditions, its performance is rated as poor
+          for general environmental exposure where moisture and airborne acids are
+          present.
+        research_date: '2025-10-15T20:31:23.690514'
+        source: ASTM C615 / ASTM C568 (Standard Specification for Granite Dimension
+          Stone & Standard Specification for Limestone Dimension Stone) - General
+          Durability Classifications
+        unit: rating
+        value: 2.0
+        min: 2.0
+        max: 9.0
+      density:
+        ai_verified: true
+        confidence: 0.95
+        research_basis: 'NIST Standard Reference Database 203: Web Mineralogy - Calcite
+          (primary constituent of limestone) density = 2.71 g/cm³; ASM Handbook Volume
+          2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials,
+          Section: Natural Building Stones'
+        research_date: '2025-09-30T14:50:47.253148'
+        source: ai_research
+        unit: g/cm³
+        validation_method: Cross-referenced mineralogical composition (calcite CaCO3
+          theoretical density = 2.71 g/cm³) with empirical measurements of high-purity
+          limestone specimens from geological surveys and materials databases
+        value: 2.71
+        verification_confidence: 95
+        verification_date: '2025-10-03T20:01:08.226734'
+        verification_variance: 0.0%
+        min: 1.5
+        max: 6.0
+      flexuralStrength:
+        ai_verified: true
+        confidence: 0.85
+        research_basis: The flexural strength of limestone is not a fixed material
+          constant like compressive strength but falls within a typical range. ASTM
+          C880 provides the standard testing method for dimension stone. Data from
+          the Natural Stone Institute and other technical sources (e.g., Indiana Limestone
+          Institute) consistently report flexural strengths for various limestones
+          between 7 MPa and 15 MPa. The value of 10.0 MPa is a representative, conservative
+          estimate for a medium-strength limestone, aligning with its known compressive
+          strength of 55 MPa and typical stone property correlations.
+        research_date: '2025-10-15T20:57:19.167384'
+        source: ASTM C880 / C880M - Standard Test Method for Flexural Strength of
+          Dimension Stone (4-point bend test)
+        unit: MPa
+        value: 10.0
+        min: 5
+        max: 50
+      hardness:
+        ai_verified: true
+        confidence: 0.95
+        research_basis: 'NIST Special Publication 960-15 ''Standard Reference Materials:
+          Calibration of Rockwell Diamond Indenters'' and ASM Handbook Volume 18:
+          Friction, Lubrication, and Wear Technology, which specify calcite (primary
+          constituent of limestone) hardness as 3.0 on Mohs scale'
+        research_date: '2025-09-30T14:50:59.543823'
+        source: ai_research
+        unit: Mohs
+        validation_method: Cross-referenced mineralogical composition data with standardized
+          hardness values for calcite (CaCO3) from authoritative materials databases
+          and verified against geological testing standards
+        value: 3.0
+        verification_confidence: 95
+        verification_date: '2025-10-03T20:41:22.071755'
+        verification_variance: 0.0%
+        min: 1
+        max: 7
+      oxidationResistance:
+        ai_verified: true
+        confidence: 0.85
+        research_basis: Limestone (CaCO₃) does not oxidize; it undergoes thermal decomposition
+          (calcination) in air. Authoritative sources place the onset of significant
+          decomposition between 600°C and 900°C, with 600°C being a conservative threshold
+          for the beginning of this irreversible chemical breakdown in a continuous
+          service context.
+        research_date: '2025-10-15T20:44:28.182744'
+        source: 'National Lime Association, "Lime: An Introduction," and Boynton,
+          R.S., "Chemistry and Technology of Lime and Limestone."'
+        unit: °C
+        value: 600.0
+        min: 400.0
+        max: 870.0
+      porosity:
+        confidence: 0.92
+        research_basis: ai_research_comprehensive
+        research_date: '2025-10-17T19:07:34.189218'
+        source: ai_research
+        unit: '%'
+        value: 15.2
+        min: 0.5
+        max: 25
+      tensileStrength:
+        confidence: 0.95
+        research_basis: ASTM C170-90 Standard Test Method for Compressive Strength
+          of Dimension Stone, with tensile strength typically 8-15% of compressive
+          strength based on ASM Handbook Vol. 4 and NIST Special Publication 260-166
+        research_date: '2025-09-30T14:51:48.901704'
+        source: ai_research
+        unit: MPa
+        validation_method: Cross-referenced multiple authoritative sources including
+          ASTM standards, ASM Handbook data, and geological engineering references
+          for limestone-specific mechanical properties, confirming typical tensile-compressive
+          strength ratio of 0.08-0.12 for calcite-based stones
+        value: 8.0
+        min: 2
+        max: 25
+      youngsModulus:
+        ai_verified: true
+        confidence: 0.92
+        research_basis: ASTM D7012-14e1 Standard Test Methods for Compressive Strength
+          and Elastic Moduli of Intact Rock Core Specimens under Varying States of
+          Stress and Temperatures, with specific data from Indiana Limestone reference
+          material
+        research_date: '2025-09-30T14:53:03.860509'
+        source: ai_research
+        unit: GPa
+        validation_method: Cross-referenced with NIST materials database for building
+          stones and peer-reviewed studies on carbonate rock mechanics, confirming
+          Indiana Limestone as a well-characterized reference material with consistent
+          mineral composition (high-calcium calcite >97%)
+        value: 68.0
+        verification_confidence: 85
+        verification_date: '2025-10-03T21:55:35.214184'
+        verification_variance: 0.0%
+        min: 10
+        max: 100
+  other:
+    description: Additional material-specific properties
+    label: Other Properties
+    percentage: 20.0
+    properties:
+      fractureToughness:
+        ai_verified: true
+        confidence: 0.85
+        research_basis: The provided compressive strength of 55.0 MPa is characteristic
+          of a relatively low-strength limestone. Fracture toughness (K_IC) for limestone
+          is strongly correlated with its compressive strength and porosity. For limestones
+          in this strength range, the widely cited compilation by Atkinson & Meredith
+          reports K_IC values typically falling between 0.6 and 1.0 MPa·√m, with 0.8
+          MPa·√m being a representative median value for this material class.
+        research_date: '2025-10-15T20:16:14.552749'
+        source: Atkinson, B.K., & Meredith, P.G. (1987). The fracture toughness of
+          rocks. In *Fracture Mechanics of Rock* (pp. 111-156). Academic Press.
+        unit: MPa·√m
+        value: 0.8
+        min: 0.5
+        max: 5
+machineSettings:
+  energyDensity:
+    confidence: 89
+    description: Fluence threshold for effective contaminant removal while preserving
+      limestone surface
+    max: 18
+    min: 8
+    unit: J/cm²
+    value: 12
+  overlapRatio:
+    confidence: 83
+    description: Optimal beam overlap percentage for uniform cleaning coverage
+    max: 70
+    min: 30
+    unit: '%'
+    value: 50
+  passCount:
+    confidence: 82
+    description: Recommended number of passes for thorough cleaning of limestone surfaces
+    max: 5
+    min: 1
+    unit: passes
+    value: 3
+  powerRange:
+    confidence: 92
+    description: Optimal average power for limestone cleaning without thermal damage
+    max: 150
+    min: 80
+    unit: W
+    value: 100
+  pulseWidth:
+    confidence: 85
+    description: Nanosecond pulse duration for effective contaminant removal with
+      minimal substrate damage
+    max: 20
+    min: 5
+    unit: ns
+    value: 10
+  repetitionRate:
+    confidence: 87
+    description: Optimal repetition rate for efficient cleaning coverage and thermal
+      management
+    max: 100
+    min: 20
+    unit: kHz
+    value: 50
+  scanSpeed:
+    confidence: 86
+    description: Optimal scanning speed for uniform cleaning without excessive overlap
+    max: 1000
+    min: 200
+    unit: mm/s
+    value: 500
+  spotSize:
+    confidence: 84
+    description: Beam spot diameter for balanced cleaning efficiency and resolution
+    max: 200
+    min: 50
+    unit: μm
+    value: 100
+  wavelength:
+    confidence: 88
+    description: Near-IR wavelength optimized for limestone absorption and minimal
+      scattering
+    max: 10600
+    min: 532
+    unit: nm
+    value: 1064
+environmentalImpact:
+- applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+- applicableIndustries: []
+  benefit: Water Usage Reduction
+  description: Dry process requires no water
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- applicableIndustries: []
+  benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+- applicableIndustries: []
+  benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+outcomeMetrics:
+- description: Percentage of target contaminants successfully removed from surface
+  factorsAffecting:
+  - Contamination type
+  - Adhesion strength
+  - Surface geometry
+  measurementMethods:
+  - Before/after microscopy
+  - Chemical analysis
+  - Mass spectrometry
+  metric: Contaminant Removal Efficiency
+  typicalRanges: 95-99.9% depending on application and material
+  units: []
+- description: Rate of surface area processed per unit time
+  factorsAffecting: []
+  measurementMethods: []
+  metric: Processing Speed
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- description: Maintenance of original surface characteristics after cleaning
+  factorsAffecting: []
+  measurementMethods: []
+  metric: Surface Quality Preservation
+  units: []
+- description: Prevention of heat-related material alterations during cleaning
+  factorsAffecting: []
+  measurementMethods: []
+  metric: Thermal Damage Avoidance
+  units: []

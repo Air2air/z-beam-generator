@@ -21,10 +21,26 @@ Performance: Should take SECONDS for all 132 materials, not minutes.
 import logging
 import yaml
 from pathlib import Path
-from typing import Dict
+from typing import Dict, Any
 from data.materials import load_materials_cached
 
 logger = logging.getLogger(__name__)
+
+# Property categorization for hierarchical structure
+MATERIAL_CHARACTERISTICS_PROPS = [
+    'density', 'hardness', 'tensileStrength', 'compressiveStrength',
+    'flexuralStrength', 'fractureToughness', 'youngsModulus',
+    'specificHeat', 'thermalConductivity', 'thermalExpansion',
+    'electricalConductivity', 'electricalResistivity', 'corrosionResistance',
+    'oxidationResistance', 'porosity', 'surfaceRoughness'
+]
+
+LASER_INTERACTION_PROPS = [
+    'laserAbsorption', 'laserReflectivity', 'absorptivity', 'reflectivity',
+    'absorptionCoefficient', 'ablationThreshold', 'laserDamageThreshold',
+    'thermalDestruction', 'thermalDestructionPoint', 'thermalDiffusivity',
+    'thermalShockResistance', 'meltingPoint', 'boilingPoint', 'vaporPressure'
+]
 
 
 class TrivialFrontmatterExporter:
@@ -84,7 +100,7 @@ class TrivialFrontmatterExporter:
     
     def export_single(self, material_name: str, material_data: Dict) -> None:
         """
-        Export single material to frontmatter YAML file.
+        Export single material to frontmatter YAML file matching example.yaml structure.
         Simple field mapping + Categories.yaml metadata (NO FALLBACK RANGES).
         
         Args:
@@ -94,115 +110,43 @@ class TrivialFrontmatterExporter:
         # Get category for this material
         category = material_data.get('category', '')
         
-        # Simple field mapping (Materials.yaml → frontmatter structure)
+        # Simple field mapping (Materials.yaml → frontmatter structure matching example.yaml)
         frontmatter = {
-            # Material name (required by example.yaml)
+            # Core identification (example.yaml order)
             'name': material_name,
-            
-            # Basic metadata (direct copy)
-            'title': material_data.get('title', material_name),
-            'subtitle': material_data.get('subtitle', ''),
-            'description': material_data.get('description', ''),
             'category': category,
             'subcategory': material_data.get('subcategory', ''),
+            'title': material_data.get('title', f"{material_name} Laser Cleaning"),
+            'subtitle': material_data.get('subtitle', ''),
+            'description': material_data.get('description', ''),
             
-            # Text content (already generated in Materials.yaml)
-            'caption': material_data.get('caption', {}),
+            # Author (direct copy)
+            'author': self._ensure_author(material_data),
             
-            # Properties (direct copy from Materials.yaml - already complete)
-            'materialProperties': material_data.get('materialProperties', {}),
-            'materialCharacteristics': material_data.get('materialCharacteristics', {}),
+            # Images (ensure micro image exists)
+            'images': self._ensure_images(material_name, material_data),
             
-            # Machine settings (already researched in Materials.yaml)
-            'machineSettings': material_data.get('machineSettings', {}),
+            # Caption (ensure description exists)
+            'caption': self._ensure_caption(material_name, material_data),
             
-            # Applications (already researched in Materials.yaml)
-            'applications': material_data.get('applications', []),
-            
-            # Environmental and outcomes (already generated in Materials.yaml)
-            'environmentalImpact': material_data.get('environmentalImpact', []),
-            'outcomeMetrics': material_data.get('outcomeMetrics', []),
+            # Regulatory standards (direct copy)
             'regulatoryStandards': material_data.get('regulatoryStandards', []),
             
-            # Images (already defined in Materials.yaml)
-            'images': material_data.get('images', {}),
+            # Applications (direct copy)
+            'applications': material_data.get('applications', []),
             
-            # Author info (already set in Materials.yaml)
-            'author': material_data.get('author', {}),
+            # *** HIERARCHICAL materialProperties (example.yaml format) ***
+            'materialProperties': self._build_material_properties(material_name, material_data, category),
+            
+            # Machine settings (direct copy - already correct format)
+            'machineSettings': material_data.get('machineSettings', {}),
+            
+            # Environmental impact (direct copy)
+            'environmentalImpact': material_data.get('environmentalImpact', []),
+            
+            # Outcome metrics (direct copy or empty list)
+            'outcomeMetrics': material_data.get('outcomeMetrics', []),
         }
-        
-        # Add caption.description if not present (combines beforeText and afterText context)
-        if 'caption' in frontmatter and 'description' not in frontmatter['caption']:
-            # Generate description from material context
-            frontmatter['caption']['description'] = f"Microscopic analysis of {material_name.lower()} surface before and after laser cleaning treatment"
-        
-        # Add images.micro if not present
-        if 'images' in frontmatter:
-            if 'micro' not in frontmatter['images']:
-                # Generate micro image entry
-                material_slug = material_name.lower().replace(' ', '-')
-                frontmatter['images']['micro'] = {
-                    'alt': f"Microscopic view of {material_name.lower()} surface showing laser cleaning effects",
-                    'url': f"/images/material/{material_slug}-laser-cleaning-micro.jpg"
-                }
-        
-        # Merge min/max ranges into materialProperties from Categories.yaml
-        if 'materialProperties' in frontmatter and category in self.categories_data.get('categories', {}):
-            category_info = self.categories_data['categories'][category]
-            category_ranges = category_info.get('properties', {})
-            
-            # Process material_characteristics properties
-            if 'material_characteristics' in frontmatter['materialProperties']:
-                mat_chars = frontmatter['materialProperties']['material_characteristics']
-                if 'properties' in mat_chars:
-                    for prop_name, prop_data in mat_chars['properties'].items():
-                        if prop_name in category_ranges:
-                            category_range = category_ranges[prop_name]
-                            # Add min/max if not already present
-                            if 'min' not in prop_data and 'min' in category_range:
-                                prop_data['min'] = category_range['min']
-                            if 'max' not in prop_data and 'max' in category_range:
-                                prop_data['max'] = category_range['max']
-            
-            # Process laser_material_interaction properties
-            if 'laser_material_interaction' in frontmatter['materialProperties']:
-                laser_interact = frontmatter['materialProperties']['laser_material_interaction']
-                if 'properties' in laser_interact:
-                    for prop_name, prop_data in laser_interact['properties'].items():
-                        if prop_name in category_ranges:
-                            category_range = category_ranges[prop_name]
-                            # Add min/max if not already present
-                            if 'min' not in prop_data and 'min' in category_range:
-                                prop_data['min'] = category_range['min']
-                            if 'max' not in prop_data and 'max' in category_range:
-                                prop_data['max'] = category_range['max']
-            
-            # Process other properties if present
-            if 'other' in frontmatter['materialProperties']:
-                other_props = frontmatter['materialProperties']['other']
-                if 'properties' in other_props:
-                    for prop_name, prop_data in other_props['properties'].items():
-                        if prop_name in category_ranges:
-                            category_range = category_ranges[prop_name]
-                            # Add min/max if not already present
-                            if 'min' not in prop_data and 'min' in category_range:
-                                prop_data['min'] = category_range['min']
-                            if 'max' not in prop_data and 'max' in category_range:
-                                prop_data['max'] = category_range['max']
-        
-        # Add category metadata for reference
-        if category and category in self.categories_data.get('categories', {}):
-            category_info = self.categories_data['categories'][category]
-            category_metadata = {}
-            
-            if 'industryApplications' in category_info:
-                category_metadata['industryApplications'] = category_info['industryApplications']
-            
-            if 'description' in category_info:
-                category_metadata['description'] = category_info['description']
-            
-            if category_metadata:
-                frontmatter['categoryMetadata'] = category_metadata
         
         # Write YAML file (simple, fast, no API calls)
         filename = f"{material_name.lower().replace(' ', '-')}-laser-cleaning.yaml"
@@ -212,6 +156,202 @@ class TrivialFrontmatterExporter:
             yaml.dump(frontmatter, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
         
         self.logger.info(f"✅ Exported {material_name} → {filename}")
+    
+    def _ensure_author(self, material_data: Dict) -> Dict:
+        """Ensure author section exists and is properly formatted."""
+        return material_data.get('author', {})
+    
+    def _ensure_images(self, material_name: str, material_data: Dict) -> Dict:
+        """Ensure images section has both hero and micro images."""
+        images = material_data.get('images', {})
+        material_slug = material_name.lower().replace(' ', '-')
+        
+        # Ensure hero image
+        if 'hero' not in images:
+            images['hero'] = {
+                'alt': f"{material_name} surface undergoing laser cleaning showing precise contamination removal",
+                'url': f"/images/material/{material_slug}-laser-cleaning-hero.jpg"
+            }
+        
+        # Ensure micro image
+        if 'micro' not in images:
+            images['micro'] = {
+                'alt': f"Microscopic view of {material_name} surface showing laser cleaning effects",
+                'url': f"/images/material/{material_slug}-laser-cleaning-micro.jpg"
+            }
+        
+        return images
+    
+    def _ensure_caption(self, material_name: str, material_data: Dict) -> Dict:
+        """Ensure caption has description, beforeText, and afterText."""
+        caption = material_data.get('caption', {})
+        
+        # Ensure description exists
+        if 'description' not in caption:
+            caption['description'] = (
+                f"Microscopic analysis of {material_name} surface before and "
+                f"after laser cleaning treatment"
+            )
+        
+        # Ensure beforeText and afterText exist (even if empty)
+        if 'beforeText' not in caption:
+            caption['beforeText'] = ''
+        if 'afterText' not in caption:
+            caption['afterText'] = ''
+        
+        return caption
+    
+    def _build_material_properties(self, material_name: str, material_data: Dict, category: str) -> Dict:
+        """
+        Build hierarchical materialProperties matching example.yaml structure.
+        
+        Structure:
+            materialProperties:
+                material_characteristics:
+                    label: ...
+                    description: ...
+                    property_name:
+                        value: ...
+                        min: ...
+                        max: ...
+                        unit: ...
+                        research_basis: ...
+                laser_material_interaction:
+                    label: ...
+                    description: ...
+                    property_name:
+                        value: ...
+                        min: ...
+                        max: ...
+                        unit: ...
+                        research_basis: ...
+        """
+        # Check if Materials.yaml already has hierarchical materialProperties
+        if 'materialProperties' in material_data:
+            mat_props = material_data['materialProperties']
+            
+            # If it's already hierarchical, merge ranges and return
+            if isinstance(mat_props, dict) and ('material_characteristics' in mat_props or 'laser_material_interaction' in mat_props):
+                return self._merge_category_ranges_hierarchical(mat_props, category)
+        
+        # Otherwise, build from flat 'properties' structure (for backward compatibility)
+        flat_props = material_data.get('properties', {})
+        
+        result = {
+            'material_characteristics': {
+                'label': 'Material Characteristics',
+                'description': 'Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity'
+            },
+            'laser_material_interaction': {
+                'label': 'Laser-Material Interaction',
+                'description': 'Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds'
+            }
+        }
+        
+        # Categorize and format properties
+        for prop_name, prop_data in flat_props.items():
+            formatted_prop = self._format_property(prop_name, prop_data, category)
+            
+            if prop_name in MATERIAL_CHARACTERISTICS_PROPS:
+                result['material_characteristics'][prop_name] = formatted_prop
+            elif prop_name in LASER_INTERACTION_PROPS:
+                result['laser_material_interaction'][prop_name] = formatted_prop
+            else:
+                # Unknown properties go to material_characteristics by default
+                result['material_characteristics'][prop_name] = formatted_prop
+        
+        return result
+    
+    def _merge_category_ranges_hierarchical(self, mat_props: Dict, category: str) -> Dict:
+        """Merge category ranges into existing hierarchical materialProperties."""
+        if category not in self.categories_data.get('categories', {}):
+            return mat_props
+        
+        category_ranges = self.categories_data['categories'][category].get('category_ranges', {})
+        
+        # Process each section (material_characteristics, laser_material_interaction, etc.)
+        for section_name, section_data in mat_props.items():
+            if not isinstance(section_data, dict):
+                continue
+            
+            # Process properties in this section
+            for key, value in section_data.items():
+                # Skip metadata fields (label, description, percentage)
+                if key in ['label', 'description', 'percentage']:
+                    continue
+                
+                # If it's a property dict with value/unit
+                if isinstance(value, dict) and 'value' in value:
+                    prop_name = key
+                    if prop_name in category_ranges:
+                        range_data = category_ranges[prop_name]
+                        # Add min/max from category ranges if not present
+                        if 'min' not in value and 'min' in range_data:
+                            value['min'] = range_data['min']
+                        if 'max' not in value and 'max' in range_data:
+                            value['max'] = range_data['max']
+                
+                # Handle nested 'properties' dict (alternative structure)
+                elif key == 'properties' and isinstance(value, dict):
+                    for prop_name, prop_data in value.items():
+                        if isinstance(prop_data, dict) and prop_name in category_ranges:
+                            range_data = category_ranges[prop_name]
+                            if 'min' not in prop_data and 'min' in range_data:
+                                prop_data['min'] = range_data['min']
+                            if 'max' not in prop_data and 'max' in range_data:
+                                prop_data['max'] = range_data['max']
+        
+        return mat_props
+    
+    def _format_property(self, prop_name: str, prop_data: dict, category: str) -> Dict:
+        """Format individual property with value, min, max, unit, research_basis."""
+        # Handle different input formats from Materials.yaml
+        if isinstance(prop_data, dict):
+            formatted = {
+                'value': prop_data.get('value'),
+                'unit': prop_data.get('unit', ''),
+                'research_basis': prop_data.get('research_basis', prop_data.get('description', ''))
+            }
+            
+            # Preserve existing min/max if present
+            if 'min' in prop_data:
+                formatted['min'] = prop_data['min']
+            if 'max' in prop_data:
+                formatted['max'] = prop_data['max']
+        else:
+            # Simple value (not a dict)
+            formatted = {
+                'value': prop_data,
+                'unit': '',
+                'research_basis': ''
+            }
+        
+        # Add category ranges if not already present
+        return self._add_category_ranges(formatted, prop_name, category)
+    
+    def _add_category_ranges(self, prop_dict: Dict, prop_name: str, category: str) -> Dict:
+        """Add min/max ranges from Categories.yaml to property if not already present."""
+        if category not in self.categories_data.get('categories', {}):
+            return prop_dict
+        
+        category_ranges = self.categories_data['categories'][category].get('category_ranges', {})
+        
+        if prop_name in category_ranges:
+            range_data = category_ranges[prop_name]
+            
+            # Add min if not present
+            if 'min' not in prop_dict and 'min' in range_data:
+                prop_dict['min'] = range_data['min']
+            
+            # Add max if not present
+            if 'max' not in prop_dict and 'max' in range_data:
+                prop_dict['max'] = range_data['max']
+            
+            # Use category unit if property doesn't have one
+            if not prop_dict.get('unit') and 'unit' in range_data:
+                prop_dict['unit'] = range_data['unit']
+        
+        return prop_dict
 
 
 def export_all_frontmatter() -> Dict[str, bool]:

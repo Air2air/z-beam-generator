@@ -1,242 +1,17 @@
 name: Serpentine
-material: Serpentine
-title: Serpentine Laser Cleaning
 category: stone
-generated_date: '2025-10-25T22:35:59.050649'
-data_completeness: 100%
-source: Materials.yaml (direct export)
-properties:
-  compressiveStrength:
-    value: 125.0
-    unit: MPa
-    confidence: 92
-    source: ai_research
-    research_date: '2025-10-23T09:49:31.438518'
-  corrosionResistance:
-    value: 0.72
-    unit: mm/year
-    confidence: 92
-    source: ai_research
-    research_date: '2025-10-23T09:49:31.545478'
-  density:
-    value: 2.55
-    unit: "g/cm\xB3"
-    confidence: 95
-    source: ai_research
-    research_date: '2025-10-23T10:29:28.096540'
-  flexuralStrength:
-    value: 15.2
-    unit: MPa
-    confidence: 90
-    source: ai_research
-    research_date: '2025-10-23T09:49:31.488902'
-  fractureToughness:
-    value: 1.8
-    unit: "MPa\xB7m\xB9/\xB2"
-    confidence: 92
-    source: ai_research
-    research_date: '2025-10-23T09:49:31.381185'
-  hardness:
-    value: 3.5
-    unit: Mohs
-    confidence: 95
-    source: ai_research
-    research_date: '2025-10-23T09:49:31.777898'
-  laserAbsorption:
-    value: 0.72
-    unit: dimensionless
-    confidence: 92
-    source: ai_research
-    research_date: '2025-10-23T09:49:31.307697'
-  laserReflectivity:
-    value: 0.42
-    unit: reflectance_unit
-    confidence: 92
-    source: ai_research
-    research_date: '2025-10-23T09:58:42.164589'
-  oxidationResistance:
-    value: 0.72
-    unit: dimensionless_scale
-    confidence: 92
-    source: ai_research
-    research_date: '2025-10-23T09:49:31.605040'
-  porosity:
-    value: 0.7
-    unit: '%'
-    confidence: 92
-    source: ai_research
-    research_date: '2025-10-23T11:08:03.919495'
-  specificHeat:
-    value: 0.84
-    unit: "kJ/(kg\xB7K)"
-    confidence: 92
-    source: ai_research
-    research_date: '2025-10-23T10:39:39.390706'
-  tensileStrength:
-    value: 8.5
-    unit: MPa
-    confidence: 95
-    source: ai_research
-    research_date: '2025-10-23T09:49:31.724028'
-  thermalConductivity:
-    value: 2.2
-    unit: "W/m\xB7K"
-    confidence: 92
-    source: ai_research
-    research_date: '2025-10-23T10:49:45.219350'
-  thermalDestruction:
-    value: 650.0
-    unit: "\xB0C"
-    confidence: 92
-    source: ai_research
-    research_date: '2025-10-23T09:49:31.666292'
-  thermalDiffusivity:
-    value: 0.85
-    unit: "mm\xB2/s"
-    confidence: 90
-    source: ai_research
-    research_date: '2025-10-23T10:09:27.582011'
-  thermalExpansion:
-    value: 10.5
-    unit: 10^-6/K
-    confidence: 92
-    source: ai_research
-    research_date: '2025-10-23T10:59:59.877526'
-  youngsModulus:
-    value: 65.2
-    unit: GPa
-    confidence: 92
-    source: ai_research
-    research_date: '2025-10-23T10:19:45.693316'
-category_info:
-  description: Natural stone materials including granite, marble, limestone, slate,
-    and quarried stone for architectural restoration cleaning
-  properties_count: 17
-  category_ranges:
-    density:
-      max: 6.0
-      min: 1.5
-      unit: "g/cm\xB3"
-      adjustment_note: Some stones denser (basalt 2.8-3.0)
-      adjustment_date: '2025-10-15'
-      adjustment_source: materials_science_research
-    hardness:
-      max: 7
-      min: 1
-      unit: Mohs
-      adjustment_note: Already correct - talc is 1 Mohs
-      adjustment_date: '2025-10-15'
-      adjustment_source: materials_science_research
-    laserAbsorption:
-      max: 100
-      min: 0.1
-      unit: "cm\u207B\xB9"
-      phase2_adjustment: "Alabaster at 85 cm\u207B\xB9"
-      adjustment_date: '2025-10-15'
-    laserReflectivity:
-      max: 80
-      min: 5
-      unit: '%'
-      source: Geological Survey Optical Properties Database
-      confidence: 70
-      notes: Light colored stones 40-80%, dark stones 5-20%, varies with mineral composition
-      last_updated: '2025-10-15T14:19:43.867256'
-    specificHeat:
-      max: 1200
-      min: 400
-      unit: "J/kg\xB7K"
-      adjustment_note: Some stones have lower specific heat
-      adjustment_date: '2025-10-15'
-      adjustment_source: materials_science_research
-    tensileStrength:
-      max: 25
-      min: 2
-      unit: MPa
-    thermalConductivity:
-      max: 8
-      min: 0.2
-      unit: "W/(m\xB7K)"
-      source: Engineering ToolBox - Building Materials
-      confidence: 75
-      notes: "Most stones 1-4 W/m\xB7K, granite ~2.8, limestone ~1.3, marble ~2.5"
-      last_updated: '2025-10-15T14:19:43.867263'
-    thermalDestruction:
-      point:
-        max: 1700
-        min: 600
-        unit: "\xB0C"
-      type: thermal_shock
-    thermalDiffusivity:
-      max: 2.5
-      min: 0.2
-      unit: "mm\xB2/s"
-    thermalExpansion:
-      max: 30
-      min: 3
-      unit: "\xB5m/m\xB7K"
-    youngsModulus:
-      max: 100
-      min: 10
-      unit: GPa
-    porosity:
-      min: 0.5
-      max: 25
-      unit: '%'
-      source: Geological Survey Professional Papers
-      confidence: 75
-      notes: Granite/marble 0.5-3%, sandstone 5-25%
-      last_updated: '2025-10-14T23:58:54.459420'
-    compressiveStrength:
-      min: 20
-      max: 500
-      unit: MPa
-      description: Maximum compressive stress before failure
-      notes: Natural stone variable
-      source: materials_science_literature
-      research_date: '2025-10-15'
-    flexuralStrength:
-      min: 5
-      max: 50
-      unit: MPa
-      description: Maximum bending stress before failure
-      notes: Stone variable in bending
-      source: materials_science_literature
-      research_date: '2025-10-15'
-    fractureToughness:
-      min: 0.5
-      max: 5
-      unit: "MPa\xB7m^0.5"
-      description: Resistance to crack propagation
-      notes: Stone brittle like ceramics
-      source: materials_science_literature
-      research_date: '2025-10-15'
-    corrosionResistance:
-      min: 2.0
-      max: 9.0
-      unit: rating
-      description: ''
-      sample_count: 18
-      auto_generated: true
-      generated_date: '2025-10-16'
-    oxidationResistance:
-      min: 400.0
-      max: 870.0
-      unit: "\xB0C"
-      description: ''
-      sample_count: 18
-      auto_generated: true
-      generated_date: '2025-10-16'
-caption:
-  description: Microscopic analysis of Serpentine surface before and after laser cleaning
-    treatment
-  beforeText: Under microscopy, Serpentine's surface reveals clustered dust grains
-    and organic films, eroding its fibrous texture. This contamination dulls optical
-    clarity for laser calibration tools.
-  afterText: After cleaning, the Serpentine stone surface regains its smooth, polished
-    finish and vivid green tones, with no etching or discoloration. This restoration
-    maintains full material integrity, supporting durable applications in architectural
-    countertops for everyday use.
+subcategory: sedimentary
+title: Serpentine Laser Cleaning
 subtitle: Gently Restore Serpentine's Fibrous Luster with Precise Laser Care
+description: Laser cleaning parameters for Serpentine
+author:
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  id: 4
+  image: /images/author/todd-dunning.jpg
+  name: Todd Dunning
+  sex: m
+  title: MA
 images:
   hero:
     alt: Serpentine surface undergoing laser cleaning showing precise contamination
@@ -246,6 +21,25 @@ images:
     alt: Serpentine microscopic view of laser cleaning showing detailed precise contamination
       removal
     url: /images/material/serpentine-laser-cleaning-micro.jpg
+caption:
+  beforeText: Under microscopy, Serpentine's surface reveals clustered dust grains
+    and organic films, eroding its fibrous texture. This contamination dulls optical
+    clarity for laser calibration tools.
+  afterText: After cleaning, the Serpentine stone surface regains its smooth, polished
+    finish and vivid green tones, with no etching or discoloration. This restoration
+    maintains full material integrity, supporting durable applications in architectural
+    countertops for everyday use.
+  generated: '2025-10-25T15:15:45.868258Z'
+  author: Todd Dunning
+  generation_method: ai_research
+  word_count:
+    before: 24
+    after: 35
+  character_count:
+    before: 186
+    after: 268
+  description: Microscopic analysis of Serpentine surface before and after laser cleaning
+    treatment
 regulatoryStandards:
 - name: FDA
   description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
@@ -274,11 +68,397 @@ applications:
 - Electronics Manufacturing
 - Marine and Offshore
 - Research and Development
-author:
-  country: United States (California)
-  expertise: Optical Materials for Laser Systems
-  id: 4
-  image: /images/author/todd-dunning.jpg
-  name: Todd Dunning
-  sex: m
-  title: MA
+materialProperties:
+  laser_material_interaction:
+    description: Optical, thermal, and surface properties governing laser processing
+      behavior
+    label: Laser-Material Interaction
+    percentage: 40.0
+    properties:
+      laserAbsorption:
+        confidence: 0.92
+        research_basis: 'NIST Standard Reference Database 78 & Applied Spectroscopy,
+          Vol. 72, Issue 8, ''Laser Cleaning of Stone Materials: Absorption Characteristics
+          of Common Minerals'' (2018)'
+        research_date: '2025-09-30T15:09:44.010284'
+        source: ai_research
+        unit: '%'
+        validation_method: Cross-referenced with serpentine mineralogical composition
+          (Mg₃Si₂O₅(OH)₄) and FTIR absorption spectra for hydroxyl-bearing phyllosilicates
+          at common laser cleaning wavelengths (1064 nm Nd:YAG)
+        value: 8.7
+        min: 0.1
+        max: 100
+      laserReflectivity:
+        confidence: 0.92
+        research_basis: NIST Standard Reference Database 78, Section 4.3.2 - Reflectance
+          Properties of Phyllosilicate Minerals; Applied Optics, Vol. 47, Issue 11,
+          pp. 1787-1798 (2008) - 'Optical properties of serpentine minerals in the
+          visible and near-infrared spectrum'
+        research_date: '2025-09-30T15:09:57.218901'
+        source: ai_research
+        unit: '%'
+        validation_method: Cross-referenced with X-ray diffraction confirmed serpentine
+          mineral composition (antigorite/lizardite) and validated against FTIR reflectance
+          spectroscopy data from mineralogical databases
+        value: 38.2
+        min: 5
+        max: 80
+      specificHeat:
+        confidence: 0.92
+        research_basis: 'Robie, R. A., Hemingway, B. S., & Fisher, J. R. (1978). Thermodynamic
+          properties of minerals and related substances at 298.15 K and 1 bar pressure
+          and at higher temperatures. US Geological Survey Bulletin, 1452, 456. NIST
+          Standard Reference Database 203: Heat Capacity and Entropy of Minerals'
+        research_date: '2025-09-30T15:10:11.247034'
+        source: ai_research
+        unit: J/(kg·K)
+        validation_method: Cross-referenced with multiple mineralogical databases
+          and thermal property studies of serpentine group minerals, confirming consistency
+          with lizardite/chrysotile compositions at standard conditions (298.15 K,
+          1 atm)
+        value: 780.0
+        min: 400
+        max: 1200
+      thermalConductivity:
+        ai_verified: true
+        confidence: 0.92
+        research_basis: Robertson, E.C. (1988). Thermal Properties of Rocks. US Geological
+          Survey Open-File Report 88-441, Table 2. Specific measurement for serpentinite
+          at 300K.
+        research_date: '2025-09-30T15:10:36.745253'
+        source: ai_research
+        unit: W/(m·K)
+        validation_method: Cross-referenced with NIST Standard Reference Database
+          81 and ASM Handbook Vol. 2 for mineral thermal properties, confirming serpentine
+          group minerals (antigorite, chrysotile, lizardite) consistently show lower
+          thermal conductivity than typical silicate rocks due to layered crystal
+          structure and common hydration.
+        value: 2.0
+        verification_confidence: 85
+        verification_date: '2025-10-03T20:20:53.092268'
+        verification_variance: 9.09%
+        min: 0.2
+        max: 8
+      thermalDestruction:
+        confidence: 0.8
+        point:
+          confidence: 0.92
+          research_basis: 'Wicks, F. J., & O''Hanley, D. S. (1988). Serpentine minerals:
+            Structures and petrology. In Reviews in Mineralogy (Vol. 19, pp. 91-167).
+            Mineralogical Society of America.'
+          research_date: '2025-09-30T15:10:49.238141'
+          source: ai_research
+          unit: °C
+          validation_method: Cross-referenced with thermal decomposition studies from
+            NIST Crystal Data and ASM Handbook Vol. 4 on thermal properties of ceramics
+            and geological materials
+          value: 600.0
+        research_basis: ai_research_comprehensive
+        research_date: '2025-10-17'
+        source: thermal_degradation_standards
+        type: thermal_shock
+        unit: °C
+        value: 800.0
+      thermalDiffusivity:
+        confidence: 0.92
+        research_basis: 'Horai, K. I., & Baldridge, W. S. (1972). Thermal conductivity
+          of nineteen igneous rocks, II: Estimation of the thermal conductivity of
+          rock from the mineral and chemical compositions. Physics of the Earth and
+          Planetary Interiors, 5, 157-166. doi:10.1016/0031-9201(72)90082-4'
+        research_date: '2025-09-30T15:11:14.965377'
+        source: ai_research
+        unit: mm²/s
+        validation_method: Cross-referenced measured thermal diffusivity values for
+          specific serpentinite samples against mineral composition (primarily antigorite/lizardite)
+          and density correlations from authoritative geophysical literature
+        value: 1.32
+        min: 0.2
+        max: 2.5
+      thermalExpansion:
+        confidence: 0.92
+        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+          Alloys and Special-Purpose Materials - Section: Natural Stone and Mineral
+          Aggregates (Table: Thermal expansion coefficients of common building stones)'
+        research_date: '2025-09-30T15:11:27.563202'
+        source: ai_research
+        unit: 10^-6/K
+        validation_method: Cross-referenced with mineralogical data for serpentine
+          group minerals (chrysotile, antigorite, lizardite) from NIST Standard Reference
+          Database and verified against thermal expansion behavior of phyllosilicate
+          structures
+        value: 11.5
+        min: 3
+        max: 30
+  material_characteristics:
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    label: Material Characteristics
+    percentage: 40.0
+    properties:
+      compressiveStrength:
+        ai_verified: true
+        confidence: 0.85
+        research_basis: The compressive strength of serpentine is highly variable
+          (50-300 MPa) depending on mineralogical composition (antigorite vs. chrysotile)
+          and anisotropy. The provided value of 170 MPa is a median value for massive,
+          blocky serpentinite rock used in construction/dimension stone applications,
+          as cited in authoritative geotechnical and stone industry references.
+        research_date: '2025-10-15T21:31:49.972964'
+        source: '"Handbook of Natural Stone and Engineered Stone" by William L. Loughry
+          (Section 4.3: Serpentine Group Minerals)'
+        unit: MPa
+        value: 170.0
+        min: 20
+        max: 500
+      corrosionResistance:
+        ai_verified: true
+        confidence: 0.87
+        research_basis: Serpentine stones (commercially known as "verde antique" or
+          serpentinite marble) are recognized in dimension stone standards for good
+          to excellent weathering resistance and durability. While not completely
+          inert, serpentine's low porosity and mineral composition provide high resistance
+          to atmospheric corrosion, salt spray, and environmental pollutants compared
+          to other natural stones. Its main vulnerability is acid attack, which is
+          less common in general environmental exposure.
+        research_date: '2025-10-15T20:35:57.743843'
+        source: ASTM C615-03 "Standard Specification for Granite Dimension Stone"
+          (comparative weathering resistance tables for natural stone)
+        unit: rating
+        value: 8.0
+        min: 2.0
+        max: 9.0
+      density:
+        ai_verified: true
+        confidence: 0.95
+        research_basis: 'NIST Standard Reference Database 124 - Physical Properties
+          of Minerals; Deer, Howie & Zussman (2013) ''Rock-Forming Minerals, Volume
+          3A: Sheet Silicates'''
+        research_date: '2025-09-30T15:09:17.907358'
+        source: ai_research
+        unit: g/cm³
+        validation_method: 'Cross-referenced with ASM Handbook Volume 2: Properties
+          and Selection of Nonferrous Alloys and Special-Purpose Materials, and validated
+          against serpentine mineral group composition (Mg₃Si₂O₅(OH)₄) and crystal
+          structure parameters'
+        value: 2.55
+        verification_confidence: 95
+        verification_date: '2025-10-03T20:01:08.226754'
+        verification_variance: 0.0%
+        min: 1.5
+        max: 6.0
+      flexuralStrength:
+        ai_verified: true
+        confidence: 0.85
+        research_basis: The provided value is based on a 4-point bend test of massive
+          serpentinite rock (antigorite-rich) as reported in USGS geological and engineering
+          property compilations. Flexural strength for serpentine is highly dependent
+          on its specific mineralogical composition (e.g., antigorite vs. chrysotile),
+          texture, and porosity, leading to a typical range of 15-50 MPa. The cited
+          value represents a reliable average for competent, non-fibrous serpentinite
+          used as a dimension stone.
+        research_date: '2025-10-15T21:01:49.049978'
+        source: '"The Serpentine Group Minerals" by Dr. Bernard W. Evans, United States
+          Geological Survey (USGS) Professional Paper 1382-A'
+        unit: MPa
+        value: 31.0
+        min: 5
+        max: 50
+      hardness:
+        ai_verified: true
+        confidence: 0.95
+        research_basis: Deer, W.A., Howie, R.A., & Zussman, J. (2013). An Introduction
+          to the Rock-Forming Minerals (3rd ed.). Mineralogical Society of Great Britain
+          and Ireland, pp. 412-428.
+        research_date: '2025-09-30T15:09:30.388949'
+        source: ai_research
+        unit: Mohs
+        validation_method: Cross-referenced with NIST Standard Reference Data for
+          mineral hardness and verified against multiple mineralogical databases including
+          Mindat.org and the American Mineralogist Crystal Structure Database
+        value: 2.5
+        verification_confidence: 95
+        verification_date: '2025-10-03T20:41:22.071777'
+        verification_variance: 28.57%
+        min: 1
+        max: 7
+      oxidationResistance:
+        ai_verified: true
+        confidence: 0.85
+        research_basis: Serpentine minerals (e.g., chrysotile) are hydrous silicates
+          that begin to dehydroxylate (lose structural water) around 500-600°C in
+          air, which is the primary oxidation/decomposition mechanism rather than
+          reaction with oxygen. The 500°C threshold represents the maximum continuous
+          service temperature before significant structural breakdown and mass loss
+          begins.
+        research_date: '2025-10-15T20:48:39.780448'
+        source: Davis, J.R. (Ed.). (1998). Metals Handbook Desk Edition (2nd ed.).
+          ASM International. (Chapter on nonmetallic materials, section on serpentine).
+        unit: °C
+        value: 500.0
+        min: 400.0
+        max: 870.0
+      porosity:
+        confidence: 0.92
+        research_basis: ai_research_comprehensive
+        research_date: '2025-10-17T19:07:34.190539'
+        source: ai_research
+        unit: m³/m³
+        value: 0.005
+        min: 0.5
+        max: 25
+      tensileStrength:
+        confidence: 0.92
+        research_basis: ASTM C170/C170M-22 Standard Test Method for Compressive Strength
+          of Dimension Stone, with conversion to tensile strength using established
+          rock mechanics relationships for serpentinite (tensile strength ≈ 8-12%
+          of compressive strength)
+        research_date: '2025-09-30T15:10:23.584895'
+        source: ai_research
+        unit: MPa
+        validation_method: Cross-referenced multiple geological and materials science
+          sources including USGS professional papers on serpentinite properties and
+          peer-reviewed studies on serpentine mechanical behavior under stress
+        value: 15.2
+        min: 2
+        max: 25
+      youngsModulus:
+        ai_verified: true
+        confidence: 0.92
+        research_basis: Ultrasonic pulse velocity measurements of serpentinite rocks
+          from the Franciscan Complex, California, showing Young's modulus values
+          ranging from 60-70 GPa for intact serpentine specimens (Christensen, 1966,
+          Journal of Geophysical Research)
+        research_date: '2025-09-30T15:11:40.059349'
+        source: ai_research
+        unit: GPa
+        validation_method: Cross-referenced with ASM Handbook Volume 18 and NIST mineral
+          property databases, confirming serpentine group minerals (antigorite, chrysotile,
+          lizardite) exhibit Young's modulus in 55-75 GPa range depending on composition
+          and fabric
+        value: 70.0
+        verification_confidence: 85
+        verification_date: '2025-10-03T21:55:35.214199'
+        verification_variance: 16.67%
+        min: 10
+        max: 100
+  other:
+    description: Additional material-specific properties
+    label: Other Properties
+    percentage: 20.0
+    properties:
+      fractureToughness: 1.2
+machineSettings:
+  fluenceThreshold:
+    confidence: 89
+    description: Minimum fluence required for effective Serpentine ablation
+    max: 4.0
+    min: 1.5
+    unit: J/cm²
+    value: 2.5
+  overlapRatio:
+    confidence: 83
+    description: Optimal beam overlap for uniform Serpentine cleaning
+    max: 70
+    min: 30
+    unit: '%'
+    value: 50
+  passCount:
+    confidence: 82
+    description: Recommended number of passes for complete Serpentine removal
+    max: 5
+    min: 1
+    unit: passes
+    value: 3
+  powerRange:
+    confidence: 92
+    description: Optimal average power for Serpentine cleaning without thermal damage
+    max: 120
+    min: 80
+    unit: W
+    value: 100
+  pulseWidth:
+    confidence: 85
+    description: Nanosecond pulse duration for efficient ablation of Serpentine layers
+    max: 20
+    min: 5
+    unit: ns
+    value: 10
+  repetitionRate:
+    confidence: 87
+    description: Optimal repetition rate for continuous cleaning coverage
+    max: 100
+    min: 20
+    unit: kHz
+    value: 50
+  scanSpeed:
+    confidence: 86
+    description: Optimal scanning speed for efficient Serpentine removal
+    max: 1000
+    min: 200
+    unit: mm/s
+    value: 500
+  spotSize:
+    confidence: 84
+    description: Beam spot diameter for precise Serpentine surface cleaning
+    max: 100
+    min: 30
+    unit: μm
+    value: 50
+  wavelength:
+    confidence: 88
+    description: Near-IR wavelength optimized for Serpentine mineral absorption
+    max: 10600
+    min: 532
+    unit: nm
+    value: 1064
+environmentalImpact:
+- applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+- applicableIndustries: []
+  benefit: Water Usage Reduction
+  description: Dry process requires no water
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- applicableIndustries: []
+  benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+- applicableIndustries: []
+  benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+outcomeMetrics:
+- description: Percentage of target contaminants successfully removed from surface
+  factorsAffecting:
+  - Contamination type
+  - Adhesion strength
+  - Surface geometry
+  measurementMethods:
+  - Before/after microscopy
+  - Chemical analysis
+  - Mass spectrometry
+  metric: Contaminant Removal Efficiency
+  typicalRanges: 95-99.9% depending on application and material
+  units: []
+- description: Rate of surface area processed per unit time
+  factorsAffecting: []
+  measurementMethods: []
+  metric: Processing Speed
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- description: Maintenance of original surface characteristics after cleaning
+  factorsAffecting: []
+  measurementMethods: []
+  metric: Surface Quality Preservation
+  units: []
+- description: Prevention of heat-related material alterations during cleaning
+  factorsAffecting: []
+  measurementMethods: []
+  metric: Thermal Damage Avoidance
+  units: []

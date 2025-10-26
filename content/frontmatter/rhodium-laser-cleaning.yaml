@@ -1,435 +1,27 @@
 name: Rhodium
-material: Rhodium
-title: Rhodium Laser Cleaning
 category: metal
-generated_date: '2025-10-25T22:35:58.929312'
-data_completeness: 100%
-source: Materials.yaml (direct export)
-properties:
-  ablationThreshold:
-    value: 0.45
-    unit: "J/cm\xB2"
-    confidence: 92
-    source: ai_research
-    research_date: '2025-10-23T11:21:43.562311'
-  absorptionCoefficient:
-    value: 10700000.0
-    unit: "m\u207B\xB9"
-    confidence: 92
-    source: ai_research
-    research_date: '2025-10-23T11:55:25.986283'
-  absorptivity:
-    value: 0.21
-    unit: dimensionless
-    confidence: 92
-    source: ai_research
-    research_date: '2025-10-23T11:26:37.328574'
-  boilingPoint:
-    value: 3968.0
-    unit: K
-    confidence: 95
-    source: ai_research
-    research_date: '2025-10-23T11:30:25.735408'
-  compressiveStrength:
-    value: 950.0
-    unit: MPa
-    confidence: 95
-    source: ai_research
-    research_date: '2025-10-23T09:49:31.435553'
-  corrosionResistance:
-    value: 0.9997
-    unit: dimensionless_corrosion_resistance_factor
-    confidence: 95
-    source: ai_research
-    research_date: '2025-10-23T09:49:31.542263'
-  density:
-    value: 12450.0
-    unit: "kg/m\xB3"
-    confidence: 98
-    source: ai_research
-    research_date: '2025-10-23T10:28:43.255135'
-  electricalConductivity:
-    value: 21100000.0
-    unit: S/m
-    confidence: 95
-    source: ai_research
-    research_date: '2025-10-23T11:51:40.464973'
-  electricalResistivity:
-    value: 4.3e-08
-    unit: "\u03A9\xB7m"
-    confidence: 95
-    source: ai_research
-    research_date: '2025-10-23T11:15:21.728117'
-  flexuralStrength:
-    value: 690.0
-    unit: MPa
-    confidence: 95
-    source: ai_research
-    research_date: '2025-10-23T09:49:31.485886'
-  fractureToughness:
-    value: 15.0
-    unit: "MPa\xB7m\xB9/\xB2"
-    confidence: 95
-    source: ai_research
-    research_date: '2025-10-23T09:49:31.378523'
-  hardness:
-    value: 800.0
-    unit: HV
-    confidence: 95
-    source: ai_research
-    research_date: '2025-10-23T09:49:31.774836'
-  laserAbsorption:
-    value: 0.35
-    unit: dimensionless
-    confidence: 92
-    source: ai_research
-    research_date: '2025-10-23T09:49:31.303838'
-  laserDamageThreshold:
-    value: 0.85
-    unit: "J/cm\xB2"
-    confidence: 95
-    source: ai_research
-    research_date: '2025-10-23T11:58:46.381914'
-  laserReflectivity:
-    value: 0.85
-    unit: dimensionless
-    confidence: 92
-    source: ai_research
-    research_date: '2025-10-23T09:57:46.598941'
-  meltingPoint:
-    value: 1964.0
-    unit: "\xB0C"
-    confidence: 98
-    source: ai_research
-    research_date: '2025-10-23T11:37:57.090002'
-  oxidationResistance:
-    value: 0.95
-    unit: dimensionless_scale_0_to_1
-    confidence: 95
-    source: ai_research
-    research_date: '2025-10-23T09:49:31.599620'
-  porosity:
-    value: 0.0001
-    unit: '%'
-    confidence: 95
-    source: ai_research
-    research_date: '2025-10-23T11:07:29.332785'
-  reflectivity:
-    value: 0.82
-    unit: dimensionless
-    confidence: 95
-    source: ai_research
-    research_date: '2025-10-23T11:41:20.895332'
-  specificHeat:
-    value: 0.242
-    unit: "J\xB7g\u207B\xB9\xB7K\u207B\xB9"
-    confidence: 95
-    source: ai_research
-    research_date: '2025-10-23T10:38:47.075820'
-  surfaceRoughness:
-    value: 0.025
-    unit: "\xB5m"
-    confidence: 95
-    source: ai_research
-    research_date: '2025-10-23T12:02:10.785323'
-  tensileStrength:
-    value: 951.0
-    unit: MPa
-    confidence: 95
-    source: ai_research
-    research_date: '2025-10-23T09:49:31.720583'
-  thermalConductivity:
-    value: 150.0
-    unit: "W/(m\xB7K)"
-    confidence: 95
-    source: ai_research
-    research_date: '2025-10-23T10:48:52.663588'
-  thermalDestruction:
-    value: 2237.0
-    unit: "\xB0C"
-    confidence: 95
-    source: ai_research
-    research_date: '2025-10-23T09:49:31.662268'
-  thermalDestructionPoint:
-    value: 2237.0
-    unit: K
-    confidence: 95
-    source: ai_research
-    research_date: '2025-10-23T11:47:58.487191'
-  thermalDiffusivity:
-    value: 2.9
-    unit: "mm\xB2/s"
-    confidence: 95
-    source: ai_research
-    research_date: '2025-10-23T10:08:37.202748'
-  thermalExpansion:
-    value: 8.3e-06
-    unit: "K\u207B\xB9"
-    confidence: 95
-    source: ai_research
-    research_date: '2025-10-23T10:59:05.679950'
-  thermalShockResistance:
-    value: 380.0
-    unit: "\xB0C"
-    confidence: 92
-    source: ai_research
-    research_date: '2025-10-23T11:34:23.068140'
-  vaporPressure:
-    value: 0.00133
-    unit: Pa
-    confidence: 95
-    source: ai_research
-    research_date: '2025-10-23T11:44:45.523470'
-  youngsModulus:
-    value: 380.0
-    unit: GPa
-    confidence: 95
-    source: ai_research
-    research_date: '2025-10-23T10:18:57.289185'
-category_info:
-  description: Pure metals, alloys, and metallic compounds including steel, aluminum,
-    precious metals, and industrial alloys for precision cleaning
-  properties_count: 30
-  category_ranges:
-    density:
-      max: 22.6
-      min: 0.53
-      unit: "g/cm\xB3"
-    hardness:
-      max: 3500
-      min: 0.5
-      unit: HV
-    laserAbsorption:
-      max: 100
-      min: 0.02
-      unit: "cm\u207B\xB9"
-    laserReflectivity:
-      max: 99.9
-      min: 5
-      unit: '%'
-      source: Handbook of Optical Constants of Solids (Palik, 1998)
-      confidence: 85
-      notes: 'Highly polished metals: Cu/Ag/Au 90-98%, Steel 50-70%, varies with surface
-        condition'
-      last_updated: '2025-10-15T14:19:43.867188'
-    specificHeat:
-      max: 2000
-      min: 100
-      unit: "J/kg\xB7K"
-    surfaceRoughness:
-      min: 0.4
-      max: 150
-      unit: "\u03BCm Ra"
-      source: Engineering ToolBox
-      confidence: 85
-      notes: Industrial metal finishing processes
-      last_updated: '2025-10-14T23:58:54.459299'
-    tensileStrength:
-      max: 3000.0
-      min: 3.0
-      unit: MPa
-    thermalConductivity:
-      min: 7.0
-      max: 430
-      unit: "W/(m\xB7K)"
-      source: MatWeb Materials Database
-      confidence: 85
-      notes: Typical range for metal materials at room temperature
-      last_updated: '2025-10-14T23:58:54.459362'
-      phase2_adjustment: "Manganese at 7.81 W/(m\xB7K)"
-      adjustment_date: '2025-10-15'
-    thermalDestruction:
-      point:
-        min: -38.8
-        max: 3422
-        unit: "\xB0C"
-      type: melting
-      research_basis: "Metal melting points from Mercury (-38.8\xB0C) to Tungsten\
-        \ (3422\xB0C)"
-      confidence: 98
-    thermalDiffusivity:
-      max: 174
-      min: 0.06
-      unit: "mm\xB2/s"
-      phase2_adjustment: "Beryllium at 0.07 m\xB2/s"
-      adjustment_date: '2025-10-15'
-    thermalExpansion:
-      max: 33
-      min: 0.5
-      unit: "\xB5m/m\xB7K"
-    youngsModulus:
-      max: 600
-      min: 5
-      unit: GPa
-    ablationThreshold:
-      min: 2.0
-      max: 8.0
-      unit: "J/cm\xB2"
-      source: Marks et al. 2022, Precision Engineering
-      confidence: 90
-      notes: Nanosecond pulse range for metals (most common industrial laser cleaning)
-      measurement_context: Nanosecond pulses (picosecond 0.1-2.0, femtosecond 0.14-1.7)
-      last_updated: '2025-10-17T00:00:00.000000'
-    reflectivity:
-      min: 85
-      max: 98
-      unit: '%'
-      source: Handbook of Optical Constants (Palik)
-      confidence: 85
-      notes: At 1064nm for polished metals (532nm 70-95%, 355nm 55-85%, 10640nm 95-99%)
-      measurement_context: 1064nm wavelength (most common Nd:YAG)
-      last_updated: '2025-10-17T00:00:00.000000'
-    oxidationResistance:
-      min: 200
-      max: 1200
-      unit: "\xB0C"
-      source: ASM Metals Handbook - Corrosion
-      confidence: 80
-      notes: "Oxidation onset: Steel 200-400\xB0C, Stainless 400-800\xB0C, Ni alloys\
-        \ 800-1200\xB0C"
-      last_updated: '2025-10-14T23:58:54.459355'
-    compressiveStrength:
-      min: 50
-      max: 2000
-      unit: MPa
-      description: Maximum compressive stress before failure
-      notes: Metals moderate compression
-      source: materials_science_literature
-      research_date: '2025-10-15'
-    corrosionResistance:
-      min: 1
-      max: 10
-      unit: rating
-      description: Resistance to chemical/electrochemical degradation
-      notes: 1=poor (steel), 10=excellent (gold, titanium)
-      source: materials_science_literature
-      research_date: '2025-10-15'
-    electricalResistivity:
-      min: 1.0e-08
-      max: 1.5e-06
-      unit: "\u03A9\xB7m"
-      description: Resistance to electrical current flow
-      notes: "Titanium at 48 \u03BC\u03A9\xB7cm = 4.8e-5 \u03A9\xB7m"
-      source: materials_science_literature
-      research_date: '2025-10-15'
-      phase2_adjustment: "Titanium at 48 \u03BC\u03A9\xB7cm"
-      adjustment_date: '2025-10-15'
-    fractureToughness:
-      min: 20
-      max: 200
-      unit: "MPa\xB7m^0.5"
-      description: Resistance to crack propagation
-      notes: Metals ductile, high toughness
-      source: materials_science_literature
-      research_date: '2025-10-15'
-    flexuralStrength:
-      min: 2.5
-      max: 1050.0
-      unit: MPa
-      description: ''
-      sample_count: 34
-      auto_generated: true
-      generated_date: '2025-10-16'
-    laserDamageThreshold:
-      min: 0.1
-      max: 20.0
-      unit: "J/cm\xB2"
-      source: Laser-Induced Damage in Optical Materials (NIST)
-      confidence: 85
-      notes: Millisecond to nanosecond pulses for metal surfaces (polished vs. rough)
-      measurement_context: Surface finish dependent (polished surfaces higher threshold)
-      last_updated: '2025-10-17T00:00:00.000000'
-    boilingPoint:
-      min: 907
-      max: 5870
-      unit: "\xB0C"
-      source: CRC Handbook of Chemistry and Physics
-      confidence: 95
-      notes: "Mercury 357\xB0C, Zinc 907\xB0C, Tungsten 5555\xB0C, Rhenium 5870\xB0\
-        C"
-      measurement_context: Standard atmospheric pressure (1 atm)
-      last_updated: '2025-10-17T00:00:00.000000'
-    electricalConductivity:
-      min: 0.67
-      max: 63.0
-      unit: MS/m
-      source: Materials Handbook (ASM International)
-      confidence: 90
-      notes: Bismuth 0.77 MS/m, Aluminum 37.7 MS/m, Copper 59.6 MS/m, Silver 63.0
-        MS/m
-      measurement_context: "Room temperature (20\xB0C), pure elements"
-      last_updated: '2025-10-17T00:00:00.000000'
-    meltingPoint:
-      min: -39
-      max: 3422
-      unit: "\xB0C"
-      source: CRC Handbook of Chemistry and Physics
-      confidence: 95
-      notes: "Mercury -38.8\xB0C, Aluminum 660\xB0C, Steel 1370-1540\xB0C, Tungsten\
-        \ 3422\xB0C"
-      measurement_context: Standard atmospheric pressure (1 atm)
-      last_updated: '2025-10-17T00:00:00.000000'
-    absorptionCoefficient:
-      min: 100000
-      max: 50000000
-      unit: "m\u207B\xB9"
-      source: Optical Properties of Metals (Palik)
-      confidence: 80
-      notes: At 1064nm wavelength - varies with surface oxide, roughness, temperature
-      measurement_context: Near-IR wavelength (1064nm Nd:YAG laser)
-      last_updated: '2025-10-17T00:00:00.000000'
-    thermalShockResistance:
-      min: 50
-      max: 400
-      unit: "\u0394T \xB0C"
-      source: Materials Science and Engineering (Callister)
-      confidence: 75
-      notes: "Cast iron ~50-100\xB0C, Steel ~150-250\xB0C, Nickel alloys ~300-400\xB0\
-        C"
-      measurement_context: Resistance to thermal stress cracking during rapid temperature
-        changes
-      last_updated: '2025-10-17T00:00:00.000000'
-    absorptivity:
-      min: 2.0
-      max: 65.0
-      unit: '%'
-      source: Laser Material Processing (Steen & Mazumder)
-      confidence: 85
-      notes: Polished metals 2-10%, Oxidized surfaces 30-65%, wavelength and temperature
-        dependent
-      measurement_context: Near-IR wavelengths (1064nm Nd:YAG), room temperature
-      last_updated: '2025-10-17T00:00:00.000000'
-    porosity:
-      min: 0.0
-      max: 15.0
-      unit: '%'
-      source: ASM Metals Handbook - Powder Metallurgy
-      confidence: 90
-      notes: Wrought metals 0-0.1%, Cast metals 0.5-5%, Sintered metals 2-15%
-      measurement_context: Volumetric porosity, varies significantly by manufacturing
-        process
-      last_updated: '2025-10-17T00:00:00.000000'
-    thermalDestructionPoint:
-      min: 873
-      max: 3695
-      unit: K
-      source: CRC Handbook - Boiling Points of Elements
-      confidence: 95
-      notes: Zinc 1180K, Iron 3134K, Steel 1473-1673K, Tungsten 3695K (boiling point)
-      measurement_context: Temperature at which material structurally fails or vaporizes
-      last_updated: '2025-10-17T00:00:00.000000'
-    vaporPressure:
-      min: 1.0e-10
-      max: 0.001
-      unit: Pa
-      source: NIST Thermophysical Properties Database
-      confidence: 80
-      notes: Room temperature vapor pressure, exponentially increases with temperature
-      measurement_context: "20\xB0C ambient conditions, critical for vacuum applications"
-      last_updated: '2025-10-17T00:00:00.000000'
+subcategory: non-ferrous
+title: Rhodium Laser Cleaning
+subtitle: Precision laser cleaning restores rhodium's mirror-like reflectivity without
+  risking its thin corrosion-resistant layer
+description: Laser cleaning parameters for Rhodium
+author:
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  id: 4
+  image: /images/author/todd-dunning.jpg
+  name: Todd Dunning
+  sex: m
+  title: MA
+images:
+  hero:
+    alt: Rhodium surface undergoing laser cleaning showing precise contamination removal
+    url: /images/material/rhodium-laser-cleaning-hero.jpg
+  micro:
+    alt: Rhodium microscopic view of laser cleaning showing detailed precise contamination
+      removal
+    url: /images/material/rhodium-laser-cleaning-micro.jpg
 caption:
-  description: Microscopic analysis of Rhodium surface before and after laser cleaning
-    treatment
   beforeText: Under microscopy, the rhodium surface appears pitted due to contaminants.
     Dust particles and residues degrade its optical properties for laser cleaning
     applications.
@@ -439,16 +31,17 @@ caption:
     while maintaining the metal's corrosion resistance. In applications like precision
     coatings for semiconductor fabrication, this yields near-original performance,
     ensuring optimal light transmission without compromising durability.
-subtitle: Precision laser cleaning restores rhodium's mirror-like reflectivity without
-  risking its thin corrosion-resistant layer
-images:
-  hero:
-    alt: Rhodium surface undergoing laser cleaning showing precise contamination removal
-    url: /images/material/rhodium-laser-cleaning-hero.jpg
-  micro:
-    alt: Rhodium microscopic view of laser cleaning showing detailed precise contamination
-      removal
-    url: /images/material/rhodium-laser-cleaning-micro.jpg
+  generated: '2025-10-25T15:10:00.850317Z'
+  author: Todd Dunning
+  generation_method: ai_research
+  word_count:
+    before: 22
+    after: 56
+  character_count:
+    before: 165
+    after: 468
+  description: Microscopic analysis of Rhodium surface before and after laser cleaning
+    treatment
 regulatoryStandards:
 - name: FDA
   description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
@@ -477,11 +70,532 @@ applications:
 - Research and Laboratory
 - Marine and Offshore
 - Nuclear Industry
-author:
-  country: United States (California)
-  expertise: Optical Materials for Laser Systems
-  id: 4
-  image: /images/author/todd-dunning.jpg
-  name: Todd Dunning
-  sex: m
-  title: MA
+materialProperties:
+  laser_material_interaction:
+    description: Optical, thermal, and surface properties governing laser processing
+      behavior
+    label: Laser-Material Interaction
+    percentage: 40.0
+    properties:
+      ablationThreshold:
+        confidence: 0.92
+        research_basis: materials_science_literature
+        research_date: '2025-10-17T19:25:04.992303'
+        source: ai_research
+        unit: J/cm²
+        value: 0.45
+        min: 2.0
+        max: 8.0
+      absorptivity:
+        confidence: 0.92
+        research_basis: materials_science_literature
+        research_date: '2025-10-17T20:16:15.429150'
+        source: ai_research
+        unit: dimensionless
+        value: 0.21
+        min: 2.0
+        max: 65.0
+      boilingPoint:
+        confidence: 0.95
+        research_basis: materials_science_literature
+        research_date: '2025-10-17T19:35:05.834725'
+        source: ai_research
+        unit: K
+        value: 3968.0
+        min: 907
+        max: 5870
+      laserAbsorption:
+        ai_verified: true
+        confidence: 0.92
+        research_basis: NIST Materials Data Repository - Optical Properties of Noble
+          Metals at 1064 nm wavelength, supplemented by Palik's Handbook of Optical
+          Constants of Solids (1998) for Rhodium-specific measurements
+        research_date: '2025-09-30T13:37:07.169288'
+        source: ai_research
+        unit: '%'
+        validation_method: Cross-referenced experimental reflectance data from multiple
+          sources at standard laser cleaning wavelength (1064 nm), calculated absorption
+          as A = 100% - R, where R is measured reflectance for polished Rhodium surfaces
+        value: 38.0
+        verification_confidence: 85
+        verification_date: '2025-10-03T23:08:00.985275'
+        verification_variance: 1.81%
+        min: 0.02
+        max: 100
+      laserDamageThreshold:
+        confidence: 0.92
+        research_basis: materials_science_literature
+        research_date: '2025-10-17T19:40:30.532739'
+        source: ai_research
+        unit: J/cm²
+        value: 0.85
+        min: 0.1
+        max: 20.0
+      laserReflectivity:
+        confidence: 0.92
+        research_basis: Palik, E.D. Handbook of Optical Constants of Solids, Academic
+          Press (1998), Volume 2, pp. 421-428; and Johnson, P.B. & Christy, R.W. Physical
+          Review B 9, 5056 (1974) for rhodium optical constants at 1064 nm
+        research_date: '2025-09-30T13:37:20.397451'
+        source: ai_research
+        unit: '%'
+        validation_method: Cross-referenced multiple authoritative optical constant
+          databases and calculated reflectivity from complex refractive index data
+          (n = 4.68, k = 7.20 at 1064 nm) using Fresnel equations for normal incidence
+        value: 78.2
+        min: 5
+        max: 99.9
+      meltingPoint:
+        confidence: 0.98
+        research_basis: materials_science_literature
+        research_date: '2025-10-17T19:45:26.562902'
+        source: ai_research
+        unit: °C
+        value: 1964.0
+        min: -39
+        max: 3422
+      reflectivity:
+        confidence: 0.95
+        research_basis: materials_science_literature
+        research_date: '2025-10-17T20:01:55.710601'
+        source: ai_research
+        unit: dimensionless
+        value: 0.82
+        min: 85
+        max: 98
+      specificHeat:
+        ai_verified: true
+        confidence: 0.95
+        research_basis: 'NIST Standard Reference Database 144: Thermophysical Properties
+          of Pure Metals, CRC Handbook of Chemistry and Physics 104th Edition, and
+          ASM Handbook Volume 2: Properties and Selection of Nonferrous Alloys and
+          Special-Purpose Materials'
+        research_date: '2025-09-30T13:37:33.788114'
+        source: ai_research
+        unit: J/(kg·K)
+        validation_method: Cross-referenced multiple authoritative sources including
+          NIST standard reference data, CRC Handbook values at 25°C, and ASM metallurgical
+          references, all confirming consistent range of 242-245 J·kg⁻¹·K⁻¹ for pure
+          rhodium
+        value: 243.0
+        verification_confidence: 95
+        verification_date: '2025-10-03T22:32:20.837672'
+        verification_variance: 0.0%
+        min: 100
+        max: 2000
+      thermalConductivity:
+        confidence: 0.95
+        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+          Alloys and Special-Purpose Materials (1990), Table 1, p. 714; NIST Standard
+          Reference Database 144, ''Thermophysical Properties of Pure Metals'''
+        research_date: '2025-09-30T13:37:57.442945'
+        source: ai_research
+        unit: W/(m·K)
+        validation_method: Cross-referenced multiple authoritative sources including
+          ASM Handbook, NIST database, and CRC Handbook of Chemistry and Physics,
+          with verification against rhodium's face-centered cubic crystal structure
+          and known physical properties
+        value: 150.0
+        min: 7.0
+        max: 430
+      thermalDestruction:
+        confidence: 0.65
+        point:
+          confidence: 0.95
+          research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+            Alloys and Special-Purpose Materials (1990), Section: Platinum Group Metals;
+            NIST Materials Data Repository - Rhodium Thermal Properties'
+          research_date: '2025-09-30T13:38:09.217910'
+          source: ai_research
+          unit: °C
+          validation_method: Cross-referenced melting point data from ASM Handbook
+            with NIST standard reference data and verified against laser ablation
+            threshold studies for platinum group metals
+          value: 1966.0
+        research_basis: ai_research_comprehensive
+        research_date: '2025-10-17'
+        source: thermal_degradation_standards
+        type: melting
+        unit: °C
+        value: 500.0
+      thermalDestructionPoint:
+        confidence: 0.95
+        research_basis: materials_science_literature
+        research_date: '2025-10-17T20:20:57.209334'
+        source: ai_research
+        unit: K
+        value: 2237.0
+        min: 873
+        max: 3695
+      thermalDiffusivity:
+        confidence: 0.95
+        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+          Alloys and Special-Purpose Materials (1990), Table ''Thermal Properties
+          of Pure Metals'' specifically lists rhodium thermal diffusivity at 298K'
+        research_date: '2025-09-30T13:38:33.692487'
+        source: ai_research
+        unit: mm²/s
+        validation_method: Cross-referenced with NIST Materials Data Repository and
+          verified against known thermal conductivity (150 W/m·K), specific heat capacity
+          (0.243 J/g·K), and density (12.41 g/cm³) using the relationship α = k/(ρ·Cp)
+        value: 24.9
+        min: 0.06
+        max: 174
+      thermalExpansion:
+        ai_verified: true
+        confidence: 0.95
+        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+          Alloys and Special-Purpose Materials (1990), Table 1, p. 700; NIST Materials
+          Data Repository - Rhodium Thermal Expansion Coefficients'
+        research_date: '2025-09-30T13:38:46.211975'
+        source: ai_research
+        unit: 10^-6/K
+        validation_method: Cross-referenced multiple authoritative sources including
+          ASM Handbook, NIST data, and peer-reviewed literature on platinum group
+          metals, confirming consistency across sources for pure rhodium at room temperature
+        value: 8.3
+        verification_confidence: 95
+        verification_date: '2025-10-03T22:13:58.098606'
+        verification_variance: 0.0%
+        min: 0.5
+        max: 33
+      thermalShockResistance:
+        confidence: 0.92
+        research_basis: materials_science_literature
+        research_date: '2025-10-17T19:51:00.986178'
+        source: ai_research
+        unit: °C
+        value: 450.0
+        min: 50
+        max: 400
+  material_characteristics:
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    label: Material Characteristics
+    percentage: 40.0
+    properties:
+      compressiveStrength:
+        ai_verified: true
+        confidence: 0.85
+        research_basis: Rhodium, as a platinum-group metal, is known for its high
+          hardness but moderate compressive strength compared to its extreme hardness,
+          as it is a relatively brittle material. The value of ~950 MPa is a typical
+          compressive strength for annealed, high-purity rhodium, based on data compiled
+          in authoritative materials handbooks. Test conditions are assumed to be
+          at room temperature (20-25°C). It is important to note that compressive
+          strength can vary significantly with purity, grain size, and work-hardening
+          state.
+        research_date: '2025-10-15T21:31:11.160605'
+        source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys
+          and Special-Purpose Materials, "Platinum-Group Metals" (section on Rhodium)'
+        unit: MPa
+        value: 950.0
+        min: 50
+        max: 2000
+      corrosionResistance:
+        ai_verified: true
+        confidence: 0.9
+        research_basis: Rhodium is a platinum group metal with outstanding corrosion
+          resistance. It is highly inert and does not form oxides even at high temperatures.
+          It is resistant to attack by most acids, including aqua regia, and is unaffected
+          by sulfur compounds. Its rating is slightly lower than platinum (typically
+          9-10) due to potential susceptibility in certain strongly oxidizing environments
+          at high temperatures.
+        research_date: '2025-10-15T20:35:10.008287'
+        source: 'ASM Handbook, Volume 13B: Corrosion: Materials (Table 1 - Corrosion
+          Resistance of Precious Metals and Alloys)'
+        unit: rating
+        value: 8.0
+        min: 1
+        max: 10
+      density:
+        ai_verified: true
+        confidence: 0.98
+        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+          Alloys and Special-Purpose Materials (1990), Table 1, p. 691; CRC Handbook
+          of Chemistry and Physics, 103rd Edition (2022), Section 4, p. 4-124'
+        research_date: '2025-09-30T13:36:42.026605'
+        source: ai_research
+        unit: g/cm³
+        validation_method: Cross-referenced multiple authoritative materials science
+          references and validated against rhodium's face-centered cubic crystal structure
+          (a = 0.3803 nm) and atomic properties (atomic number 45, atomic weight 102.90550)
+        value: 12.41
+        verification_confidence: 99
+        verification_date: '2025-10-03T20:01:08.226641'
+        verification_variance: 0.0%
+        min: 0.53
+        max: 22.6
+      electricalConductivity:
+        confidence: 0.95
+        research_basis: materials_science_literature
+        research_date: '2025-10-17T19:56:45.318689'
+        source: ai_research
+        unit: S/m
+        value: 21100000.0
+        min: 0.67
+        max: 63.0
+      electricalResistivity:
+        confidence: 0.95
+        research_basis: materials_science_literature
+        research_date: '2025-10-17T19:16:18.958388'
+        source: ai_research
+        unit: Ω·m
+        value: 4.3e-08
+        min: 1.0e-08
+        max: 1.5e-06
+      flexuralStrength:
+        ai_verified: true
+        confidence: 0.85
+        research_basis: The provided flexural strength value is derived from mechanical
+          property data for wrought, high-purity rhodium. As a brittle precious metal,
+          rhodium's strength is typically reported as a compressive or tensile value.
+          The flexural strength for a 3-point bend test is calculated from the ultimate
+          tensile strength, which is approximately 950-1100 MPa for annealed material,
+          using a standard conversion factor for brittle materials where flexural
+          strength is typically 65-70% of the ultimate tensile strength. The ASM Handbook
+          is the authoritative source for this mechanical property data.
+        research_date: '2025-10-15T21:01:11.309473'
+        source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys
+          and Special-Purpose Materials, "Rhodium and Rhodium Alloys"'
+        unit: MPa
+        value: 758.0
+        min: 2.5
+        max: 1050.0
+      hardness:
+        ai_verified: true
+        confidence: 0.95
+        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+          Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
+          Properties of Pure Metals, Rhodium section'
+        research_date: '2025-09-30T13:36:53.671039'
+        source: ai_research
+        unit: HV
+        validation_method: Cross-referenced with multiple authoritative sources including
+          CRC Handbook of Chemistry and Physics (101st Edition) and NIST materials
+          database, confirming consistency across established materials science references
+        value: 1100.0
+        verification_confidence: 95
+        verification_date: '2025-10-03T20:41:22.071675'
+        verification_variance: 8.33%
+        min: 0.5
+        max: 3500
+      oxidationResistance:
+        ai_verified: true
+        confidence: 0.9
+        research_basis: Rhodium has excellent oxidation resistance up to about 600°C,
+          forming a thin, protective surface oxide. Above this temperature, particularly
+          in the range of 700-800°C, a volatile rhodium oxide (RhO₂) forms, leading
+          to significant and continuous mass loss, making it unsuitable for prolonged
+          service. This behavior is well-documented in metallurgical references for
+          platinum-group metals.
+        research_date: '2025-10-15T20:47:58.489597'
+        source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys
+          and Special-Purpose Materials (1990), Section on Platinum-Group Metals.'
+        unit: °C
+        value: 600.0
+        min: 200
+        max: 1200
+      porosity:
+        confidence: 0.95
+        research_basis: ai_research_comprehensive
+        research_date: '2025-10-17T19:07:34.185665'
+        source: ai_research
+        unit: '%'
+        value: 0.0001
+        min: 0.0
+        max: 15.0
+      tensileStrength:
+        confidence: 0.95
+        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+          Alloys and Special-Purpose Materials, Rhodium properties table, pp. 701-702'
+        research_date: '2025-09-30T13:37:44.801253'
+        source: ai_research
+        unit: MPa
+        validation_method: Cross-referenced ASM Handbook data with NIST Materials
+          Data Repository and confirmed consistency with FCC crystal structure behavior
+          and typical strengthening mechanisms for pure rhodium
+        value: 951.0
+        min: 3.0
+        max: 3000.0
+      youngsModulus:
+        ai_verified: true
+        confidence: 0.95
+        research_basis: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous
+          Alloys and Special-Purpose Materials (1990), Table 1: Physical and Mechanical
+          Properties of Precious Metals and Alloys, p. 702'
+        research_date: '2025-09-30T13:38:57.211341'
+        source: ai_research
+        unit: GPa
+        validation_method: Cross-referenced with multiple authoritative sources including
+          CRC Handbook of Chemistry and Physics (95th Edition) and NIST Materials
+          Data Repository for rhodium mechanical properties
+        value: 380.0
+        verification_confidence: 95
+        verification_date: '2025-10-03T21:55:35.214090'
+        verification_variance: 0.26%
+        min: 5
+        max: 600
+  other:
+    description: Additional material-specific properties
+    label: Other Properties
+    percentage: 20.0
+    properties:
+      absorptionCoefficient:
+        confidence: 0.92
+        research_basis: materials_science_literature
+        research_date: '2025-10-17T19:30:09.405593'
+        source: ai_research
+        unit: m⁻¹
+        value: 10700000.0
+        min: 100000
+        max: 50000000
+      fractureToughness:
+        ai_verified: true
+        confidence: 0.85
+        research_basis: The provided value is a typical fracture toughness (K_IC)
+          for high-purity, wrought rhodium metal at room temperature, as reported
+          in a major materials reference. The value is consistent with rhodium's high
+          hardness and moderate ductility for a precious metal.
+        research_date: '2025-10-15T20:20:53.311684'
+        source: 'ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys
+          and Special-Purpose Materials (1990), page 700, Table 1: Mechanical Properties
+          of Precious Metals and Alloys.'
+        unit: MPa·√m
+        value: 125.0
+        min: 20
+        max: 200
+      surfaceRoughness:
+        confidence: 0.95
+        research_basis: materials_science_literature
+        research_date: '2025-10-17T20:11:15.419996'
+        source: ai_research
+        unit: µm
+        value: 0.025
+        min: 0.4
+        max: 150
+      vaporPressure:
+        confidence: 0.95
+        research_basis: materials_science_literature
+        research_date: '2025-10-17T20:06:29.313418'
+        source: ai_research
+        unit: Pa
+        value: 0.00133
+        min: 1.0e-10
+        max: 0.001
+machineSettings:
+  fluenceThreshold:
+    confidence: 89
+    description: Minimum fluence required for effective contaminant removal
+    max: 4.0
+    min: 1.5
+    unit: J/cm²
+    value: 2.5
+  overlapRatio:
+    confidence: 83
+    description: Optimal beam overlap for uniform cleaning results
+    max: 70
+    min: 30
+    unit: '%'
+    value: 50
+  passCount:
+    confidence: 85
+    description: Number of cleaning passes for complete contaminant removal
+    max: 4
+    min: 1
+    unit: passes
+    value: 2
+  powerRange:
+    confidence: 90
+    description: Optimal average power for Rhodium surface cleaning without thermal
+      damage
+    max: 65
+    min: 30
+    unit: W
+    value: 45
+  pulseWidth:
+    confidence: 85
+    description: Nanosecond pulse duration for controlled ablation of contaminants
+    max: 25
+    min: 8
+    unit: ns
+    value: 15
+  repetitionRate:
+    confidence: 87
+    description: High repetition rate for efficient cleaning coverage
+    max: 100
+    min: 20
+    unit: kHz
+    value: 50
+  scanSpeed:
+    confidence: 84
+    description: Scanning speed for efficient area coverage
+    max: 800
+    min: 200
+    unit: mm/s
+    value: 500
+  spotSize:
+    confidence: 86
+    description: Optimal beam diameter for precision cleaning resolution
+    max: 120
+    min: 50
+    unit: μm
+    value: 80
+  wavelength:
+    confidence: 88
+    description: Near-IR wavelength optimized for Rhodium's moderate reflectivity
+      and thermal absorption
+    max: 1064
+    min: 532
+    unit: nm
+    value: 1064
+environmentalImpact:
+- applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+- applicableIndustries: []
+  benefit: Water Usage Reduction
+  description: Dry process requires no water
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- applicableIndustries: []
+  benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+- applicableIndustries: []
+  benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+outcomeMetrics:
+- description: Percentage of target contaminants successfully removed from surface
+  factorsAffecting:
+  - Contamination type
+  - Adhesion strength
+  - Surface geometry
+  measurementMethods:
+  - Before/after microscopy
+  - Chemical analysis
+  - Mass spectrometry
+  metric: Contaminant Removal Efficiency
+  typicalRanges: 95-99.9% depending on application and material
+  units: []
+- description: Rate of surface area processed per unit time
+  factorsAffecting: []
+  measurementMethods: []
+  metric: Processing Speed
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- description: Maintenance of original surface characteristics after cleaning
+  factorsAffecting: []
+  measurementMethods: []
+  metric: Surface Quality Preservation
+  units: []
+- description: Prevention of heat-related material alterations during cleaning
+  factorsAffecting: []
+  measurementMethods: []
+  metric: Thermal Damage Avoidance
+  units: []

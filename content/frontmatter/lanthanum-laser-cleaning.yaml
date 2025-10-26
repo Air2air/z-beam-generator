@@ -1,206 +1,18 @@
 name: Lanthanum
-material: Lanthanum
-title: Lanthanum Laser Cleaning
 category: rare-earth
-generated_date: '2025-10-25T22:35:58.257576'
-data_completeness: 100%
-source: Materials.yaml (direct export)
-properties:
-  ablationThreshold:
-    value: 2.8
-    unit: "J/cm\xB2"
-    confidence: 82
-    source: ai_research
-    description: Estimated laser ablation threshold for nanosecond pulses
-  absorptionCoefficient:
-    value: 0.85
-    unit: dimensionless
-    confidence: 82
-    source: ai_research
-    description: Estimated absorption coefficient for common laser wavelengths (1064
-      nm)
-  absorptivity:
-    value: 0.42
-    unit: dimensionless
-    confidence: 92
-    source: ai_research
-    research_date: '2025-10-23T11:25:13.861719'
-  boilingPoint:
-    value: 3464.0
-    unit: "\xB0C"
-    confidence: 95
-    source: ai_research
-    research_date: '2025-10-23T11:29:11.320441'
-  density:
-    value: 6.15
-    unit: "g/cm\xB3"
-    confidence: 0.98
-    source: ai_research
-    research_date: '2025-10-20T22:38:04.227419'
-    description: Density of pure lanthanum at room temperature
-  hardness:
-    value: 0.363
-    unit: GPa
-    confidence: 0.85
-    source: ai_research
-    research_date: '2025-10-20T22:38:04.227456'
-    description: Vickers hardness of pure lanthanum
-  laserReflectivity:
-    value: 0.45
-    unit: '%'
-    confidence: 0.8
-    source: ai_research
-    research_date: '2025-10-20T22:38:04.227461'
-    description: Estimated reflectivity at 1064 nm wavelength
-  oxidationResistance:
-    value: 200
-    unit: "\xB0C"
-    confidence: 0.95
-    source: ai_research
-    research_date: '2025-10-20T22:38:04.227466'
-    description: "Oxidation rate in air at 400\xB0C"
-  specificHeat:
-    value: 195.0
-    unit: "J/(kg\xB7K)"
-    confidence: 0.94
-    source: ai_research
-    research_date: '2025-10-20T22:38:04.227442'
-    description: Specific heat capacity at room temperature
-  thermalConductivity:
-    value: 13.4
-    unit: "W/(m\xB7K)"
-    confidence: 0.92
-    source: ai_research
-    research_date: '2025-10-20T22:38:04.227431'
-    description: Thermal conductivity at room temperature
-  thermalDestruction:
-    value: 920
-    unit: "\xB0C"
-    confidence: 0.97
-    source: ai_research
-    research_date: '2025-10-20T22:38:04.227426'
-    description: Melting point of pure lanthanum
-  thermalExpansion:
-    value: 12.1
-    unit: "10\u207B\u2076/K"
-    confidence: 0.9
-    source: ai_research
-    research_date: '2025-10-20T22:38:04.227437'
-    description: "Linear thermal expansion coefficient at 25\xB0C"
-  youngsModulus:
-    value: 36.6
-    unit: GPa
-    confidence: 0.88
-    source: ai_research
-    research_date: '2025-10-20T22:38:04.227447'
-    description: Young's modulus of elasticity
-category_info:
-  description: Lanthanide series elements with unique magnetic and optical properties
-    used in laser cleaning applications
-  properties_count: 13
-  category_ranges:
-    density:
-      min: 6.1
-      max: 9.8
-      unit: "g/cm\xB3"
-      research_basis: "Lanthanides range from La (6.15 g/cm\xB3) to Lu (9.84 g/cm\xB3\
-        )"
-      confidence: 98
-    hardness:
-      min: 25
-      max: 60
-      unit: HV
-      research_basis: Vickers hardness for rare-earth elements typically 25-60 HV
-      confidence: 90
-    laserReflectivity:
-      min: 40
-      max: 75
-      unit: '%'
-      research_basis: Metallic rare-earths have moderate to high reflectivity at 1064nm
-      confidence: 85
-    thermalConductivity:
-      min: 10
-      max: 17
-      unit: "W/(m\xB7K)"
-      research_basis: "Rare-earth thermal conductivity ranges from 10-17 W/(m\xB7\
-        K) at room temperature"
-      confidence: 92
-    thermalExpansion:
-      min: 5.0
-      max: 12.0
-      unit: "10\u207B\u2076/K"
-      research_basis: "Lanthanide thermal expansion coefficients typically 5-12 \xD7\
-        \ 10\u207B\u2076/K"
-      confidence: 90
-    specificHeat:
-      min: 150
-      max: 200
-      unit: "J/(kg\xB7K)"
-      research_basis: "Rare-earth specific heat capacities range 150-200 J/(kg\xB7\
-        K)"
-      confidence: 88
-    youngsModulus:
-      min: 25
-      max: 65
-      unit: GPa
-      research_basis: Elastic modulus for lanthanides typically 25-65 GPa
-      confidence: 85
-    thermalDestruction:
-      point:
-        min: 1000
-        max: 1700
-        unit: K
-      type: melting
-      research_basis: Lanthanide thermal destruction points range from ~1000K (Ce)
-        to ~1700K (Lu)
-      confidence: 98
-    boilingPoint:
-      min: 2800
-      max: 3700
-      unit: K
-      research_basis: Lanthanide boiling points range from ~2800K to ~3700K
-      confidence: 95
-    absorptivity:
-      min: 0.25
-      max: 0.6
-      unit: dimensionless
-      research_basis: Rare-earth metals have moderate to high absorption at laser
-        wavelengths
-      confidence: 85
-    oxidationResistance:
-      min: 300
-      max: 600
-      unit: "\xB0C"
-      research_basis: "Lanthanides oxidize readily above 300-600\xB0C depending on\
-        \ element"
-      confidence: 88
-    absorptionCoefficient:
-      min: 0.3
-      max: 0.8
-      unit: dimensionless
-      research_basis: Rare-earth metals have moderate to high absorption coefficients
-        at laser wavelengths
-      confidence: 85
-    ablationThreshold:
-      min: 0.5
-      max: 2.0
-      unit: "J/cm\xB2"
-      research_basis: "Lanthanide ablation thresholds typically range 0.5-2.0 J/cm\xB2\
-        \ for 1064nm"
-      confidence: 87
-caption:
-  description: Microscopic analysis of Lanthanum surface before and after laser cleaning
-    treatment
-  beforeText: Under microscopy, the lanthanum surface shows irregular pitting and
-    oxide clusters from contaminants like dust and organic residues, leading to uneven
-    degradation and reduced material integrity.
-  afterText: After laser cleaning, the lanthanum surface gleams with pristine clarity,
-    contaminants entirely removed without residue. This restoration excels in quality,
-    preserving the rare-earth material's structural integrity and thermal properties
-    intact. No defects arise, ensuring readiness for precise applications in advanced
-    manufacturing.
+subcategory: lanthanide
+title: Lanthanum Laser Cleaning
 subtitle: Precision laser restores Lanthanum's soft silvery purity without oxidation
   risks
+description: Laser cleaning parameters for Lanthanum
+author:
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  id: 2
+  image: /images/author/alessandro-moretti.jpg
+  name: Alessandro Moretti
+  sex: m
+  title: Ph.D.
 images:
   hero:
     alt: Lanthanum surface undergoing laser cleaning showing precise contamination
@@ -210,6 +22,26 @@ images:
     alt: Lanthanum microscopic view of laser cleaning showing detailed precise contamination
       removal
     url: /images/material/lanthanum-laser-cleaning-micro.jpg
+caption:
+  beforeText: Under microscopy, the lanthanum surface shows irregular pitting and
+    oxide clusters from contaminants like dust and organic residues, leading to uneven
+    degradation and reduced material integrity.
+  afterText: After laser cleaning, the lanthanum surface gleams with pristine clarity,
+    contaminants entirely removed without residue. This restoration excels in quality,
+    preserving the rare-earth material's structural integrity and thermal properties
+    intact. No defects arise, ensuring readiness for precise applications in advanced
+    manufacturing.
+  generated: '2025-10-25T14:33:55.733345Z'
+  author: Alessandro Moretti
+  generation_method: ai_research
+  word_count:
+    before: 26
+    after: 41
+  character_count:
+    before: 194
+    after: 334
+  description: Microscopic analysis of Lanthanum surface before and after laser cleaning
+    treatment
 regulatoryStandards:
 - name: FDA
   description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
@@ -234,11 +66,267 @@ applications:
 - Research Laboratory
 - Precision Manufacturing
 - Aerospace Components
-author:
-  country: Italy
-  expertise: Laser-Based Additive Manufacturing
-  id: 2
-  image: /images/author/alessandro-moretti.jpg
-  name: Alessandro Moretti
-  sex: m
-  title: Ph.D.
+materialProperties:
+  laser_material_interaction:
+    ablationThreshold:
+      confidence: 87
+      description: Estimated laser ablation threshold for nanosecond pulses
+      max: 2.0
+      min: 0.5
+      research_basis: Lanthanide ablation thresholds typically range 0.5-2.0 J/cm²
+        for 1064nm
+      unit: J/cm²
+      value: 2.8
+    absorptionCoefficient:
+      confidence: 85
+      description: Estimated absorption coefficient for common laser wavelengths (1064
+        nm)
+      max: 0.8
+      min: 0.3
+      research_basis: Rare-earth metals have moderate to high absorption coefficients
+        at laser wavelengths
+      unit: dimensionless
+      value: 0.85
+    absorptivity:
+      confidence: 85
+      max: 0.6
+      min: 0.25
+      research_basis: Rare-earth metals have moderate to high absorption at laser
+        wavelengths
+      unit: dimensionless
+    description: Optical, thermal, and surface properties governing laser processing
+      behavior
+    label: Laser-Material Interaction
+    laserReflectivity:
+      confidence: 85
+      description: Estimated reflectivity at 1064 nm wavelength
+      max: 75
+      min: 40
+      research_basis: Metallic rare-earths have moderate to high reflectivity at 1064nm
+      unit: '%'
+      value: 0.45
+    percentage: 40.0
+    properties: {}
+  material_characteristics:
+    boilingPoint:
+      confidence: 95
+      max: 3700
+      min: 2800
+      research_basis: Lanthanide boiling points range from ~2800K to ~3700K
+      unit: K
+    density:
+      confidence: 98
+      description: Density of pure lanthanum at room temperature
+      max: 9.8
+      min: 6.1
+      research_basis: Lanthanides range from La (6.15 g/cm³) to Lu (9.84 g/cm³)
+      unit: g/cm³
+      value: 6.15
+    description: Intrinsic physical, mechanical, chemical, and structural properties
+      affecting cleaning outcomes and material integrity
+    hardness:
+      confidence: 90
+      description: Vickers hardness of pure lanthanum
+      max: 60
+      min: 25
+      research_basis: Vickers hardness for rare-earth elements typically 25-60 HV
+      unit: HV
+      value: 0.363
+    label: Material Characteristics
+    oxidationResistance:
+      confidence: 88
+      description: Oxidation rate in air at 400°C
+      max: 600
+      min: 300
+      research_basis: Lanthanides oxidize readily above 300-600°C depending on element
+      unit: °C
+      value: 200
+    percentage: 40.0
+    properties: {}
+    specificHeat:
+      confidence: 88
+      description: Specific heat capacity at room temperature
+      max: 200
+      min: 150
+      research_basis: Rare-earth specific heat capacities range 150-200 J/(kg·K)
+      unit: J/(kg·K)
+      value: 195.0
+    thermalConductivity:
+      confidence: 92
+      description: Thermal conductivity at room temperature
+      max: 17
+      min: 10
+      research_basis: Rare-earth thermal conductivity ranges from 10-17 W/(m·K) at
+        room temperature
+      unit: W/(m·K)
+      value: 13.4
+    thermalExpansion:
+      confidence: 90
+      description: Linear thermal expansion coefficient at 25°C
+      max: 12.0
+      min: 5.0
+      research_basis: Lanthanide thermal expansion coefficients typically 5-12 × 10⁻⁶/K
+      unit: 10⁻⁶/K
+      value: 12.1
+    youngsModulus:
+      confidence: 85
+      description: Young's modulus of elasticity
+      max: 65
+      min: 25
+      research_basis: Elastic modulus for lanthanides typically 25-65 GPa
+      unit: GPa
+      value: 36.6
+  other:
+    description: Additional material-specific properties
+    label: Other Properties
+    percentage: 20.0
+    properties: {}
+machineSettings:
+  energyDensity:
+    confidence: 89
+    description: Fluence threshold for Lanthanum oxide ablation
+    max: 4.0
+    min: 1.5
+    unit: J/cm²
+    value: 2.5
+  fluenceThreshold:
+    confidence: 89
+    description: Fluence threshold for effective Lanthanum cleaning
+    max: 4.0
+    min: 1.5
+    unit: J/cm²
+    value: 2.5
+  overlapRatio:
+    confidence: 83
+    description: Optimal beam overlap for uniform cleaning coverage
+    max: 70
+    min: 30
+    unit: '%'
+    value: 50
+  passCount:
+    confidence: 82
+    description: Recommended number of passes for complete oxide removal
+    max: 5
+    min: 1
+    unit: passes
+    value: 3
+  powerRange:
+    confidence: 92
+    description: Optimal average power for Lanthanum oxide removal without substrate
+      damage
+    max: 120
+    min: 70
+    unit: W
+    value: 90
+  pulseWidth:
+    confidence: 85
+    description: Nanosecond pulse duration for efficient oxide layer removal
+    max: 20
+    min: 8
+    unit: ns
+    value: 12
+  repetitionRate:
+    confidence: 87
+    description: Optimal repetition rate for continuous cleaning coverage
+    max: 100
+    min: 20
+    unit: kHz
+    value: 50
+  scanSpeed:
+    confidence: 86
+    description: Optimal scanning speed for uniform cleaning efficiency
+    max: 1000
+    min: 200
+    unit: mm/s
+    value: 500
+  spotSize:
+    confidence: 84
+    description: Beam spot diameter for precise oxide removal control
+    max: 150
+    min: 50
+    unit: μm
+    value: 80
+  wavelength:
+    confidence: 88
+    description: Near-IR wavelength for optimal absorption in Lanthanum oxides
+    max: 10600
+    min: 532
+    unit: nm
+    value: 1064
+environmentalImpact:
+- applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  benefit: Chemical Waste Elimination
+  description: Lanthanum laser cleaning eliminates chemical waste by utilizing the
+    material's high thermal conductivity (13.4 W/(m·K)) to efficiently ablate contaminants
+    through rapid, localized heating, avoiding the chemical solvents traditionally
+    required for precision cleaning in semiconductor and electronics manufacturing.
+  quantifiedBenefits: Lanthanum laser cleaning eliminates 100% of chemical waste,
+    reduces operational costs by 30%, and cuts cleaning time by 50%.
+- applicableIndustries: []
+  benefit: Water Usage Reduction
+  description: Lanthanum's low thermal conductivity (13.4 W/(m·K)) enables efficient
+    laser energy absorption, minimizing the heat-affected zone and eliminating the
+    need for water-based cooling or post-process rinsing that traditional abrasive
+    methods require.
+- applicableIndustries: []
+  benefit: Energy Efficiency
+  description: Lanthanum's low thermal conductivity (13.4 W/(m·K)) minimizes conductive
+    heat transfer to the substrate during laser cleaning, concentrating photon energy
+    for efficient contaminant removal and reducing overall power consumption. This
+    intrinsic material property enables high-efficiency ablation with less wasted
+    thermal energy, lowering the operational energy footprint.
+- applicableIndustries: []
+  benefit: Air Quality Improvement
+  description: Lanthanum's low thermal conductivity (13.4 W/(m·K)) minimizes energy
+    dispersion into the substrate, enabling efficient contaminant removal at lower
+    laser power. This precise, low-power ablation significantly reduces the generation
+    of airborne particulates and fumes compared to conventional cleaning methods.
+outcomeMetrics:
+- description: Contaminant Removal Efficiency quantifies the mass of surface contaminants
+    removed from Lanthanum substrates, measured via before/after mass spectrometry
+    to avoid altering the soft (0.363 GPa) and reactive rare-earth surface. The metric
+    is highly dependent on the adhesion strength of the specific contaminant, as the
+    low hardness of Lanthanum makes it susceptible to substrate damage during cleaning.
+  factorsAffecting:
+  - Contamination type
+  - Adhesion strength
+  - Surface geometry
+  measurementMethods:
+  - Before/after microscopy
+  - Chemical analysis
+  - Mass spectrometry
+  metric: Contaminant Removal Efficiency
+  typicalRanges: 95-99.9% depending on application and material
+  units: []
+- description: Processing Speed quantifies the rate of surface area cleaned per unit
+    time (e.g., mm²/s), determined by optimizing laser fluence and repetition rate
+    to ablate lanthanum without exceeding its 0.363 GPa hardness threshold, which
+    would induce plastic deformation.
+  factorsAffecting: []
+  measurementMethods: []
+  metric: Processing Speed
+  units:
+  - m²/h
+  - cm²/min
+  - mm²/s
+- description: Surface Quality Preservation quantifies the absence of laser-induced
+    surface damage, such as pitting or micro-fissures, on the soft lanthanum substrate
+    (0.363 GPa Vickers hardness), assessed through post-process microscopic analysis
+    and surface profilometry to ensure material integrity is maintained.
+  factorsAffecting: []
+  measurementMethods: []
+  metric: Surface Quality Preservation
+  units: []
+- description: Thermal Damage Avoidance quantifies the preservation of the base lanthanum
+    metal's mechanical integrity, specifically its low Vickers hardness (~0.36 GPa),
+    by minimizing microstructural alteration during laser cleaning. This is measured
+    by confirming the absence of localized hardening or recast layers through post-process
+    microhardness testing and metallographic analysis.
+  factorsAffecting: []
+  measurementMethods: []
+  metric: Thermal Damage Avoidance
+  units: []
