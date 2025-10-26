@@ -697,50 +697,102 @@ def handle_caption_generation(material_name: str):
         
         return True
         
-        # Save to Materials.yaml
-        print("💾 Saving to Materials.yaml...")
-        materials_file = Path("data/Materials.yaml")
+    except Exception as e:
+        print(f"❌ Error during caption generation: {e}")
+        import traceback
+        traceback.print_exc()
+        return False
+
+
+def handle_subtitle_generation(material_name: str):
+    """Generate AI-powered subtitle for a material and save to Materials.yaml"""
+    print("="*80)
+    print(f"📝 SUBTITLE GENERATION: {material_name}")
+    print("="*80)
+    print()
+    
+    try:
+        # Import required modules
+        from components.subtitle.generators.generator import SubtitleComponentGenerator
+        from data.materials import load_materials, get_material_by_name
+        from pathlib import Path
+        import yaml
+        from datetime import datetime, timezone
         
-        with open(materials_file, 'r') as f:
-            materials_yaml = yaml.safe_load(f)
+        # Load materials data
+        print("📂 Loading Materials.yaml...")
+        materials_data = load_materials()
+        material_data = get_material_by_name(material_name, materials_data)
         
-        # Update ai_text_fields with caption data
-        if 'ai_text_fields' not in materials_yaml['materials'][material_name]:
-            materials_yaml['materials'][material_name]['ai_text_fields'] = {}
+        if not material_data:
+            print(f"❌ Material '{material_name}' not found in Materials.yaml")
+            return False
         
-        materials_yaml['materials'][material_name]['ai_text_fields']['caption_beforeText'] = {
-            'content': before_text,
-            'source': 'ai_research',
-            'research_date': datetime.now(timezone.utc).isoformat(),
-            'word_count': len(before_text.split()),
-            'character_count': len(before_text)
-        }
-        
-        materials_yaml['materials'][material_name]['ai_text_fields']['caption_afterText'] = {
-            'content': after_text,
-            'source': 'ai_research',
-            'research_date': datetime.now(timezone.utc).isoformat(),
-            'word_count': len(after_text.split()),
-            'character_count': len(after_text)
-        }
-        
-        # Write back to file
-        with open(materials_file, 'w') as f:
-            yaml.dump(materials_yaml, f, default_flow_style=False, sort_keys=False, allow_unicode=True)
-        
-        print(f"✅ Saved to Materials.yaml → materials.{material_name}.ai_text_fields")
+        print(f"✅ Found material: {material_name}")
         print()
-        print("="*80)
-        print("✅ CAPTION GENERATION COMPLETE")
-        print("="*80)
+        
+        # Initialize Grok API client for subtitles
+        from api.client_factory import create_api_client
+        print("🔧 Initializing Grok API client...")
+        grok_client = create_api_client('grok')
+        print("✅ Grok client ready")
+        print()
+        
+        # Initialize subtitle generator
+        print("🔧 Initializing SubtitleComponentGenerator...")
+        generator = SubtitleComponentGenerator()
+        print("✅ Generator ready")
+        print()
+        
+        # Generate subtitle
+        print("🤖 Generating AI-powered subtitle with author voice...")
+        print("   • Target: 8-12 word professional tagline")
+        print("   • Voice: Country-specific writing style")
+        print("   • Audience: Technical professionals and decision-makers")
+        print()
+        
+        result = generator.generate(
+            material_name=material_name,
+            material_data=material_data,
+            api_client=grok_client
+        )
+        
+        if not result.success:
+            print(f"❌ Subtitle generation failed: {result.error_message}")
+            return False
+        
+        # Subtitle was already written to Materials.yaml by the generator
+        # Reload to display statistics
+        print("✅ Subtitle generated and saved successfully!")
+        print()
+        
+        # Reload materials to show what was written
+        materials_data = load_materials()
+        material_data = get_material_by_name(material_name, materials_data)
+        
+        subtitle = material_data.get('subtitle', '')
+        subtitle_meta = material_data.get('subtitle_metadata', {})
+        
+        if subtitle:
+            print("📊 Statistics:")
+            print(f"   • Length: {len(subtitle)} characters")
+            print(f"   • Word count: {len(subtitle.split())} words")
+            if subtitle_meta.get('author'):
+                print(f"   • Author: {subtitle_meta['author']}")
+            print()
+            print("📝 Subtitle:")
+            print(f"   {subtitle}")
+            print()
+        
+        print("💾 Saved to: data/Materials.yaml → subtitle")
+        print("✨ Subtitle generation complete!")
         
         return True
         
     except Exception as e:
-        print(f"❌ Caption generation failed: {e}")
+        print(f"❌ Error during subtitle generation: {e}")
         import traceback
         traceback.print_exc()
-        return False
 
 
 # =================================================================================
@@ -1506,16 +1558,24 @@ def generate_safe_filename(material_name: str) -> str:
 def main():
     """Main application entry point with basic command line interface."""
     
-    # Parse arguments early to check for deploy flag (no validation needed for deploy)
+    # Parse arguments early to check for simple commands that don't need validation
     import argparse
     parser = argparse.ArgumentParser(description="Z-Beam Content Generator")
     parser.add_argument("--deploy", action="store_true", help="Deploy generated content to Next.js production site")
+    parser.add_argument("--caption", help="Generate AI-powered caption for specific material")
+    parser.add_argument("--subtitle", help="Generate AI-powered subtitle for specific material")
     # Add minimal args needed for early parsing
     args, _ = parser.parse_known_args()
     
-    # Handle deployment immediately - no validation needed (just file copy)
+    # Handle simple commands immediately - no validation needed
     if args.deploy:
         return deploy_to_production()
+    
+    if args.caption:
+        return handle_caption_generation(args.caption)
+    
+    if args.subtitle:
+        return handle_subtitle_generation(args.subtitle)
     
     # ═══════════════════════════════════════════════════════════════════════════
     # 🚨 CONSOLIDATED SERVICE INITIALIZATION
@@ -1628,11 +1688,18 @@ def main():
     # Caption Generation
     parser.add_argument("--caption", help="Generate AI-powered caption for specific material (saves to Materials.yaml)")
     
+    # Subtitle Generation (Author Voice Phase 1)
+    parser.add_argument("--subtitle", help="Generate AI-powered subtitle for specific material (saves to Materials.yaml)")
+    
     args = parser.parse_args()
     
     # Handle caption generation
     if args.caption:
         return handle_caption_generation(args.caption)
+    
+    # Handle subtitle generation
+    if args.subtitle:
+        return handle_subtitle_generation(args.subtitle)
     
     # Handle material auditing system
     if args.audit or args.audit_batch or args.audit_all:

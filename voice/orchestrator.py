@@ -187,6 +187,15 @@ class VoiceOrchestrator:
                 author=author,
                 **kwargs
             )
+        # Build layered prompt for subtitle/tagline
+        elif component_type == 'subtitle':
+            return self._build_subtitle_prompt(
+                base_voice=base_voice,
+                country_profile=country_profile,
+                material_context=material_context,
+                author=author,
+                **kwargs
+            )
         else:
             raise ValueError(f"Component type '{component_type}' not supported with voice_base.yaml system")
     
@@ -270,6 +279,54 @@ LENGTH TARGET:
 - Structure: {paragraph_count}
 
 Generate {section_focus} description now."""
+        
+        return prompt
+    
+    def _build_subtitle_prompt(
+        self,
+        base_voice: Dict,
+        country_profile: Dict,
+        material_context: Dict,
+        author: Dict,
+        **kwargs
+    ) -> str:
+        """
+        Build subtitle/tagline prompt with country-specific voice.
+        
+        Simpler than microscopy - just a concise professional phrase.
+        """
+        # Extract parameters
+        target_words = kwargs.get('target_words', 10)
+        
+        # Author context
+        author_name = author.get('name', 'Expert')
+        author_country = author.get('country', 'usa')
+        
+        # Material context
+        material_name = material_context.get('material_name', 'material')
+        
+        # Get country-specific style
+        linguistic = country_profile.get('linguistic_characteristics', {})
+        vocab = linguistic.get('vocabulary_patterns', {})
+        formality = vocab.get('formality_level', 'professional')
+        
+        # Build minimal prompt focused on voice authenticity
+        prompt = f"""You are {author_name} from {author_country}, writing a subtitle for {material_name} laser cleaning content.
+
+TASK: Write a {target_words}-word professional subtitle/tagline.
+
+VOICE GUIDANCE ({author_country.upper()}):
+- Formality: {formality}
+- Target: Technical professionals and decision-makers
+- Style: Concise, engaging, technically accurate
+
+REQUIREMENTS:
+- Exactly {target_words} words (±2 tolerance)
+- Single phrase (no period at end)
+- Professional tone suitable for industrial audience
+- Capture material essence for laser cleaning context
+
+Write the subtitle now:"""
         
         return prompt
     

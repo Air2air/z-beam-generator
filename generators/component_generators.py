@@ -356,6 +356,11 @@ class ComponentGeneratorFactory:
                 from components.caption.core.generator import RefactoredCaptionGenerator
 
                 return RefactoredCaptionGenerator()
+            elif component_type == "subtitle":
+                # Subtitle generator with Author Voice integration (Phase 1)
+                from components.subtitle.generators.generator import SubtitleComponentGenerator
+
+                return SubtitleComponentGenerator()
             # Try hybrid components first for known hybrid components
             elif component_type in ["metatags", "jsonld", "propertiestable", "badgesymbol"]:
                 # Use logging to show we're trying to use hybrid generators
