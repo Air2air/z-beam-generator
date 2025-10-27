@@ -126,6 +126,285 @@ class FAQComponentGenerator(APIComponentGenerator):
         else:
             return 7
     
+    def _get_property_value(self, props: Dict, property_name: str) -> Optional[float]:
+        """Extract numeric property value from nested structure"""
+        for category_key in ['material_characteristics', 'laser_material_interaction']:
+            if category_key in props:
+                category_data = props[category_key]
+                # Check if properties are nested under 'properties' key
+                if 'properties' in category_data and isinstance(category_data['properties'], dict):
+                    if property_name in category_data['properties']:
+                        prop_data = category_data['properties'][property_name]
+                        if isinstance(prop_data, dict) and 'value' in prop_data:
+                            return prop_data['value']
+                # Also check direct property access
+                elif property_name in category_data:
+                    prop_data = category_data[property_name]
+                    if isinstance(prop_data, dict) and 'value' in prop_data:
+                        return prop_data['value']
+        return None
+    
+    def _score_thermal_relevance(self, material_data: Dict) -> int:
+        """Score thermal category relevance (0-10) - only high for thermally sensitive or extreme conductivity materials"""
+        score = 2  # Low baseline - thermal is not relevant for most materials
+        props = material_data.get('materialProperties', {})
+        category = material_data.get('category', '').lower()
+        material_name = material_data.get('name', '').lower()
+        
+        # Check thermal conductivity for extreme cases
+        thermal_cond = self._get_property_value(props, 'thermalConductivity')
+        if thermal_cond:
+            if thermal_cond < 10:  # Very poor conductors (insulators)
+                score += 9  # Heat accumulation is critical
+            elif thermal_cond > 300:  # Excellent conductors (copper, aluminum)
+                score += 7  # Rapid heat dissipation matters
+            elif thermal_cond < 50 or thermal_cond > 150:
+                score += 4  # Moderately relevant
+        
+        # Check melting point for low-temperature materials
+        melting_point = self._get_property_value(props, 'meltingPoint')
+        if melting_point:
+            if melting_point < 500:  # Very low melting point
+                score += 10
+            elif melting_point < 1000:
+                score += 5
+        
+        # Category-based for known thermally sensitive materials
+        if category in ['polymer', 'plastic', 'wood']:
+            score += 10  # Highly thermally sensitive
+        elif category == 'composite':
+            score += 7  # Moderately sensitive
+        
+        # Known thermally sensitive materials by name
+        sensitive_materials = ['plastic', 'polymer', 'wood', 'rubber', 'carbon fiber']
+        if any(sens in material_name for sens in sensitive_materials):
+            score += 8
+        
+        return min(score, 10)
+    
+    def _score_reflectivity_relevance(self, material_data: Dict) -> int:
+        """Score reflectivity category relevance (0-10) - only high for highly reflective metals"""
+        score = 0
+        props = material_data.get('materialProperties', {})
+        category = material_data.get('category', '').lower()
+        material_name = material_data.get('name', '').lower()
+        
+        # Check actual reflectivity value
+        reflectivity = self._get_property_value(props, 'laserReflectivity')
+        if not reflectivity:
+            reflectivity = self._get_property_value(props, 'reflectivity')
+        
+        if reflectivity:
+            if reflectivity > 80:
+                score = 10  # Extreme challenge (silver, aluminum, polished metals)
+            elif reflectivity > 70:
+                score = 9  # Major challenge
+            elif reflectivity > 50:
+                score = 6  # Moderate concern
+            else:
+                score = 2  # Low reflectivity - not a concern
+        else:
+            # Known highly reflective metals
+            if category == 'metal':
+                highly_reflective = ['aluminum', 'aluminium', 'silver', 'copper', 'gold', 'chrome', 'stainless']
+                if any(metal in material_name for metal in highly_reflective):
+                    score = 9  # Assume high reflectivity
+                else:
+                    score = 4  # Other metals - moderate
+            else:
+                score = 0  # Non-metals generally not reflective
+        
+        return score
+    
+    def _score_fragility_relevance(self, material_data: Dict) -> int:
+        """Score fragility category relevance (0-10) - high only for genuinely fragile materials"""
+        score = 0
+        props = material_data.get('materialProperties', {})
+        category = material_data.get('category', '').lower()
+        applications = material_data.get('applications', [])
+        material_name = material_data.get('name', '').lower()
+        
+        # Check actual hardness (Mohs scale)
+        hardness = self._get_property_value(props, 'hardness')
+        if not hardness:
+            hardness = self._get_property_value(props, 'mohs_hardness')
+        
+        if hardness:
+            if hardness < 2.5:  # Very soft (gypsum, talc)
+                score = 10  # Extremely fragile
+            elif hardness < 4:  # Soft (calcite, fluorite)
+                score = 9  # Very fragile
+            elif hardness < 6:  # Medium (apatite, feldspar)
+                score = 5  # Moderately fragile
+            elif hardness > 8.5:  # Very hard (corundum, diamond)
+                score = 7  # Hard but can be brittle
+            else:
+                score = 2  # Medium hardness - not particularly fragile
+        else:
+            # Category-based estimates
+            if category in ['glass', 'ceramic']:
+                score = 8  # Brittle materials
+            elif category == 'stone':
+                # Soft stones
+                soft_stones = ['alabaster', 'limestone', 'marble', 'sandstone', 'soapstone']
+                if any(stone in material_name for stone in soft_stones):
+                    score = 9
+                else:
+                    score = 5  # Harder stones
+            elif category in ['metal']:
+                score = 0  # Metals generally not fragile
+        
+        # Heritage/conservation emphasis
+        heritage_keywords = ['heritage', 'conservation', 'restoration', 'cultural', 'art']
+        if any(any(kw in app.lower() for kw in heritage_keywords) for app in applications):
+            score = min(score + 3, 10)  # Increase score for heritage materials
+        
+        # Check fracture toughness (low = fragile)
+        fracture_toughness = self._get_property_value(props, 'fractureToughness')
+        if fracture_toughness and fracture_toughness < 1.0:
+            score = min(score + 5, 10)
+        
+        return score
+    
+    def _score_contaminant_relevance(self, material_data: Dict) -> int:
+        """Score contaminant category relevance (0-10) - high for porous materials and reactive metals"""
+        score = 1  # Low baseline
+        props = material_data.get('materialProperties', {})
+        category = material_data.get('category', '').lower()
+        applications = material_data.get('applications', [])
+        material_name = material_data.get('name', '').lower()
+        
+        # Check actual porosity (volume fraction)
+        porosity = self._get_property_value(props, 'porosity')
+        if porosity:
+            # Porosity is typically 0.0-1.0 (volume fraction)
+            if porosity > 0.3:  # >30% porous
+                score = 10  # Highly porous - contaminants penetrate deeply
+            elif porosity > 0.15:  # >15% porous
+                score = 8  # Moderately porous
+            elif porosity > 0.05:  # >5% porous
+                score = 5  # Slightly porous
+            else:
+                score = 2  # Dense material
+        else:
+            # Category-based estimates for porous materials
+            if category == 'stone':
+                porous_stones = ['sandstone', 'limestone', 'travertine', 'alabaster']
+                if any(stone in material_name for stone in porous_stones):
+                    score = 9
+                else:
+                    score = 5  # Denser stones like granite
+            elif category == 'wood':
+                score = 9  # Wood is porous
+            elif category == 'concrete':
+                score = 8  # Concrete is porous
+            elif category == 'ceramic':
+                score = 6  # Some ceramics are porous
+        
+        # Reactive/oxidizing metals (form surface contaminants)
+        if category == 'metal':
+            highly_reactive = ['copper', 'iron', 'steel', 'bronze', 'brass', 'aluminum', 'aluminium']
+            if any(reactive in material_name for reactive in highly_reactive):
+                score = max(score, 8)  # Oxidation and corrosion
+            else:
+                score = max(score, 3)  # Less reactive metals
+        
+        # Corrosion resistance (low = high contamination)
+        corrosion_resistance = self._get_property_value(props, 'corrosionResistance')
+        if corrosion_resistance and corrosion_resistance < 5:
+            score = min(score + 4, 10)
+        
+        # Application-based
+        harsh_apps = ['marine', 'outdoor', 'industrial', 'chemical', 'automotive']
+        if any(any(harsh in app.lower() for harsh in harsh_apps) for app in applications):
+            score = min(score + 2, 10)
+        
+        return score
+    
+    def _score_unusual_relevance(self, material_data: Dict) -> int:
+        """Score unusual behavior category relevance (0-10) - only high for truly rare/exotic materials"""
+        score = 0
+        category = material_data.get('category', '').lower()
+        material_name = material_data.get('name', '').lower()
+        applications = material_data.get('applications', [])
+        props = material_data.get('materialProperties', {})
+        
+        # Rare/exotic material categories
+        if category in ['rare-earth', 'semiconductor']:
+            score = 10
+        elif category == 'composite':
+            score = 7  # Multiple phases = unusual behavior
+        
+        # Rare materials by name
+        rare_materials = ['beryllium', 'tantalum', 'rhenium', 'iridium', 'osmium', 'rhodium']
+        exotic_materials = ['graphene', 'aerogel', 'metamaterial']
+        if any(rare in material_name for rare in rare_materials + exotic_materials):
+            score = 10
+        
+        # Common materials should score low
+        common_materials = ['steel', 'aluminum', 'aluminium', 'copper', 'iron', 'brass', 'bronze', 
+                           'concrete', 'wood', 'plastic', 'glass']
+        if any(common in material_name for common in common_materials):
+            score = max(score - 5, 0)
+        
+        # Heritage/archaeological (unusual historical context)
+        heritage_keywords = ['heritage', 'archaeological', 'conservation', 'restoration']
+        if any(any(kw in app.lower() for kw in heritage_keywords) for app in applications):
+            score = min(score + 6, 10)
+        
+        # Phase change materials or anisotropic materials
+        melting_point = self._get_property_value(props, 'meltingPoint')
+        if melting_point and melting_point < 200:  # Low melting point = unusual
+            score = min(score + 5, 10)
+        
+        return score
+    
+    def _score_application_relevance(self, material_data: Dict) -> int:
+        """Score application category relevance (0-10)"""
+        score = 4  # Baseline - applications somewhat relevant for all materials
+        applications = material_data.get('applications', [])
+        
+        # Critical/specialized applications
+        critical_apps = ['aerospace', 'medical', 'nuclear', 'defense']
+        if any(any(crit in app.lower() for crit in critical_apps) for app in applications):
+            score += 6  # High-stakes applications
+        
+        # Heritage/art (requires special care)
+        heritage_apps = ['heritage', 'art', 'conservation', 'cultural']
+        if any(any(her in app.lower() for her in heritage_apps) for app in applications):
+            score += 6  # Conservation focus
+        
+        # Versatility (many applications)
+        if len(applications) > 8:
+            score += 2  # Very versatile
+        elif len(applications) < 3:
+            score -= 2  # Limited use case
+        
+        return max(0, min(score, 10))
+    
+    def _score_safety_relevance(self, material_data: Dict) -> int:
+        """Score safety category relevance (0-10)"""
+        score = 5  # Baseline - safety always somewhat relevant
+        material_name = material_data.get('name', '').lower()
+        category = material_data.get('category', '').lower()
+        props = material_data.get('materialProperties', {})
+        
+        # Toxic materials
+        toxic_materials = ['beryllium', 'lead', 'cadmium', 'arsenic', 'chromium']
+        if any(toxic in material_name for toxic in toxic_materials):
+            score += 10
+        
+        # High reflectivity (eye hazard)
+        reflectivity = self._get_property_value(props, 'laserReflectivity')
+        if reflectivity and reflectivity > 70:
+            score += 8
+        
+        # Metal fumes
+        if category == 'metal':
+            score += 6
+        
+        return min(score, 10)
+    
     def _generate_material_questions(
         self,
         material_name: str,
@@ -134,224 +413,234 @@ class FAQComponentGenerator(APIComponentGenerator):
         categories_data: Dict,
         question_count: int
     ) -> List[Dict]:
-        """Generate material-specific questions with category tags
+        """Generate material-specific questions with intelligent category scoring
         
         Returns:
             List of question dictionaries with 'question', 'category', 'focus_points'
         """
-        questions = []
+        # Calculate category relevance scores
+        category_scores = {
+            'thermal': self._score_thermal_relevance(material_data),
+            'reflectivity': self._score_reflectivity_relevance(material_data),
+            'fragility': self._score_fragility_relevance(material_data),
+            'contaminant': self._score_contaminant_relevance(material_data),
+            'unusual': self._score_unusual_relevance(material_data),
+            'application': self._score_application_relevance(material_data),
+            'safety': self._score_safety_relevance(material_data)
+        }
         
-        # Extract material context
-        category = material_data.get('category', 'material')
-        applications = material_data.get('applications', [])
-        props = material_data.get('materialProperties', {})
-        
-        # Diverse question templates covering wide range of topics
-        base_templates = [
-            # Cost and practical
+        # All question templates with category group mappings
+        all_templates = [
+            # Cost and practical (baseline - moderate scores)
             {
                 'template': f"How much does it cost to laser clean {material_name}?",
                 'category': 'cost_economics',
-                'focus': 'Cost factors, pricing comparison, ROI vs traditional methods'
+                'focus': 'Cost factors, pricing comparison, ROI vs traditional methods',
+                'score': 7,  # Baseline - always relevant but not dominant
+                'group': 'practical'
             },
             {
                 'template': f"What laser power works best for {material_name}?",
                 'category': 'machine_settings',
-                'focus': 'Optimal power range, effects of too high/low power'
+                'focus': 'Optimal power range, effects of too high/low power',
+                'score': 6,  # Lower baseline to let material-specific categories dominate
+                'group': 'practical'
             },
             
             # Thermal characteristics
             {
                 'template': f"How does heat affect {material_name} during laser cleaning?",
                 'category': 'heat_effects',
-                'focus': 'Thermal sensitivity, heat dissipation, temperature limits'
+                'focus': 'Thermal sensitivity, heat dissipation, temperature limits',
+                'score': category_scores['thermal'],
+                'group': 'thermal'
             },
             {
                 'template': f"What temperature considerations exist for {material_name}?",
                 'category': 'thermal_management',
-                'focus': 'Thermal conductivity, cooling requirements, heat accumulation'
+                'focus': 'Thermal conductivity, cooling requirements, heat accumulation',
+                'score': category_scores['thermal'],
+                'group': 'thermal'
             },
             
             # Physical properties and optical behavior
             {
                 'template': f"Why does {material_name}'s reflectivity matter for laser cleaning?",
                 'category': 'reflectivity_challenges',
-                'focus': 'Reflectivity values, laser-material interaction, wavelength selection'
+                'focus': 'Reflectivity values, laser-material interaction, wavelength selection',
+                'score': category_scores['reflectivity'],
+                'group': 'optical'
             },
             {
                 'template': f"What physical properties make {material_name} unique for cleaning?",
                 'category': 'unique_properties',
-                'focus': 'Density, hardness, absorption, distinctive characteristics'
+                'focus': 'Density, hardness, absorption, distinctive characteristics',
+                'score': category_scores['unusual'],
+                'group': 'unusual'
             },
             
             # Material handling and strength
             {
                 'template': f"Is {material_name} fragile during laser cleaning?",
                 'category': 'fragility_risks',
-                'focus': 'Structural integrity, brittleness, handling precautions'
+                'focus': 'Structural integrity, brittleness, handling precautions',
+                'score': category_scores['fragility'],
+                'group': 'handling'
             },
             {
                 'template': f"What strength characteristics affect {material_name} cleaning?",
                 'category': 'strength_considerations',
-                'focus': 'Mechanical properties, damage resistance, durability'
+                'focus': 'Mechanical properties, damage resistance, durability',
+                'score': category_scores['fragility'] if category_scores['fragility'] >= 7 else max(category_scores['reflectivity'] // 2, 3),
+                'group': 'handling'
             },
             
             # Unusual/arcane characteristics
             {
                 'template': f"What unusual behaviors does {material_name} exhibit during cleaning?",
                 'category': 'rare_behavior',
-                'focus': 'Uncommon responses, unexpected reactions, special phenomena'
+                'focus': 'Uncommon responses, unexpected reactions, special phenomena',
+                'score': category_scores['unusual'],
+                'group': 'unusual'
             },
             {
                 'template': f"What makes {material_name} different from other materials?",
                 'category': 'special_requirements',
-                'focus': 'Distinctive features, unique challenges, rare characteristics'
+                'focus': 'Distinctive features, unique challenges, rare characteristics',
+                'score': category_scores['unusual'],
+                'group': 'unusual'
             },
             
             # Contaminant effects
             {
                 'template': f"Can contaminants damage {material_name}'s surface?",
                 'category': 'surface_damage_from_contaminants',
-                'focus': 'Contamination impact, surface degradation, physical damage'
+                'focus': 'Contamination impact, surface degradation, physical damage',
+                'score': category_scores['contaminant'] if category_scores['contaminant'] >= 7 else 3,
+                'group': 'contaminant'
             },
             {
                 'template': f"Which contaminants are hardest to remove from {material_name}?",
                 'category': 'contaminant_removal_difficulty',
-                'focus': 'Stubborn residues, adhesion challenges, removal complexity'
+                'focus': 'Stubborn residues, adhesion challenges, removal complexity',
+                'score': category_scores['contaminant'],
+                'group': 'contaminant'
             },
             {
                 'template': f"How does heating affect contaminants on {material_name}?",
                 'category': 'heat_induced_contamination',
-                'focus': 'Thermal effects on residues, oxidation, heat-related changes'
+                'focus': 'Thermal effects on residues, oxidation, heat-related changes',
+                'score': min(category_scores['contaminant'], category_scores['thermal']),
+                'group': 'contaminant'
             },
             
             # Application focus
             {
                 'template': f"Why is {material_name} chosen for its main applications?",
                 'category': 'application_advantages',
-                'focus': 'Performance benefits, material selection reasons, key strengths'
+                'focus': 'Performance benefits, material selection reasons, key strengths',
+                'score': category_scores['application'],
+                'group': 'application'
             },
             {
                 'template': f"What challenges does {material_name} present in use?",
                 'category': 'application_challenges',
-                'focus': 'Operational difficulties, limitations, problem areas'
+                'focus': 'Operational difficulties, limitations, problem areas',
+                'score': category_scores['application'],
+                'group': 'application'
             },
             
             # Safety and damage
             {
                 'template': f"Can laser cleaning damage {material_name}?",
                 'category': 'damage_risks',
-                'focus': 'Potential damage, warning signs, prevention methods'
+                'focus': 'Potential damage, warning signs, prevention methods',
+                'score': max(category_scores['safety'], category_scores['fragility']) if (category_scores['safety'] >= 7 or category_scores['fragility'] >= 7) else 5,
+                'group': 'safety'
             },
             {
                 'template': f"Is laser cleaning {material_name} safe?",
                 'category': 'safety',
-                'focus': 'Safety hazards, protective equipment, precautions'
+                'focus': 'Safety hazards, protective equipment, precautions',
+                'score': category_scores['safety'],
+                'group': 'safety'
             },
             
             # Efficiency and speed
             {
                 'template': f"What's the fastest approach for {material_name}?",
                 'category': 'speed_efficiency',
-                'focus': 'Scan speed, throughput, productivity optimization'
+                'focus': 'Scan speed, throughput, productivity optimization',
+                'score': 6,  # Moderate baseline
+                'group': 'practical'
             },
             {
                 'template': f"How long does cleaning {material_name} typically take?",
                 'category': 'time_duration',
-                'focus': 'Time estimates, factors affecting duration'
+                'focus': 'Time estimates, factors affecting duration',
+                'score': 5,  # Moderate baseline
+                'group': 'practical'
             },
             
             # Post-treatment and verification
             {
                 'template': f"What care does {material_name} need after cleaning?",
                 'category': 'post_treatment',
-                'focus': 'Post-cleaning care, protective coatings, storage'
+                'focus': 'Post-cleaning care, protective coatings, storage',
+                'score': category_scores['contaminant'] if category_scores['contaminant'] >= 8 else 4,
+                'group': 'maintenance'
             },
             {
                 'template': f"How can I verify {material_name} was cleaned properly?",
                 'category': 'quality_verification',
-                'focus': 'Inspection methods, success indicators, testing'
+                'focus': 'Inspection methods, success indicators, testing',
+                'score': max(category_scores['application'], category_scores['fragility'], 5),
+                'group': 'practical'
             },
         ]
         
-        # Add application-specific question if primary application exists
-        if applications:
-            primary_app = applications[0]
-            base_templates.append({
-                'template': f"Why is laser cleaning preferred for {material_name} in {primary_app} applications?",
-                'category': 'applications',
-                'focus': f'Application requirements, industry standards, why laser vs alternatives for {primary_app}'
-            })
+        # Filter by score threshold and sort by score (descending)
+        scored_templates = [t for t in all_templates if t['score'] >= 5]
+        scored_templates.sort(key=lambda x: x['score'], reverse=True)
         
-        # Add questions based on material category
-        if category == 'metal':
-            # Check for high reflectivity
-            laser_props = props.get('laser_material_interaction', {})
-            reflectivity = None
-            for prop_name in ['laserReflectivity', 'reflectivity']:
-                if prop_name in laser_props:
-                    reflectivity = laser_props[prop_name].get('value')
-                    if reflectivity and reflectivity > 70:
-                        questions.append({
-                            'template': f"Why does {material_name}'s high reflectivity create laser safety challenges?",
-                            'category': 'safety_hazards',
-                            'focus': 'Reflectivity values, safety protocols, beam containment, PPE requirements'
-                        })
+        # Select top-N, ensuring diversity (at least 5 different groups)
+        selected = []
+        groups_used = set()
+        
+        # First pass: select highest scoring from each group
+        for template in scored_templates:
+            if len(selected) >= question_count:
+                break
+            if template['group'] not in groups_used:
+                selected.append(template)
+                groups_used.add(template['group'])
+        
+        # Second pass: fill remaining slots with highest scores
+        for template in scored_templates:
+            if len(selected) >= question_count:
+                break
+            if template not in selected:
+                selected.append(template)
+        
+        # Ensure diversity constraint (at least 5 groups)
+        if len(groups_used) < 5 and len(scored_templates) > len(selected):
+            # Add more templates to increase diversity
+            for template in scored_templates:
+                if template not in selected and template['group'] not in groups_used:
+                    selected.append(template)
+                    groups_used.add(template['group'])
+                    if len(groups_used) >= 5:
                         break
-            
-            # Check for thermal conductivity
-            thermal_cond = laser_props.get('thermalConductivity', {}).get('value')
-            if thermal_cond and thermal_cond > 200:
-                questions.append({
-                    'template': f"How does {material_name}'s thermal conductivity affect laser cleaning strategy?",
-                    'category': 'thermal_behavior',
-                    'focus': 'Heat dissipation, parameter adjustments, thermal management'
-                })
         
-        elif category == 'ceramic' or category == 'stone':
-            # Heritage/conservation questions
-            if any('heritage' in app.lower() or 'conservation' in app.lower() for app in applications):
-                questions.append({
-                    'template': f"What conservation principles guide {material_name} laser cleaning?",
-                    'category': 'heritage_conservation',
-                    'focus': 'Reversibility, minimal intervention, authentication, patina preservation'
-                })
-        
-        elif category == 'composite':
-            questions.append({
-                'template': f"How do {material_name}'s multiple material phases affect laser cleaning?",
-                'category': 'composite_complexity',
-                'focus': 'Fiber/matrix interaction, delamination risks, differential thermal response'
-            })
-        
-        # Start with base templates
-        for template_dict in base_templates[:question_count]:
-            questions.append(template_dict)
-        
-        # Truncate or pad to exactly question_count
-        if len(questions) > question_count:
-            questions = questions[:question_count]
-        elif len(questions) < question_count:
-            # Add generic expansion questions
-            remaining = question_count - len(questions)
-            generic_questions = [
-                {
-                    'template': f"What are common troubleshooting issues when cleaning {material_name}?",
-                    'category': 'troubleshooting',
-                    'focus': 'Common problems, solutions, parameter adjustments'
-                },
-                {
-                    'template': f"How do you verify successful {material_name} laser cleaning?",
-                    'category': 'quality_verification',
-                    'focus': 'Inspection methods, quality metrics, testing protocols'
-                },
-                {
-                    'template': f"What safety precautions are critical for {material_name} laser cleaning?",
-                    'category': 'safety',
-                    'focus': 'Hazards, PPE, environmental controls, regulatory compliance'
-                },
-            ]
-            questions.extend(generic_questions[:remaining])
+        # Convert to final format
+        questions = [
+            {
+                'template': t['template'],
+                'category': t['category'],
+                'focus': t['focus']
+            }
+            for t in selected[:question_count]
+        ]
         
         return questions
     
