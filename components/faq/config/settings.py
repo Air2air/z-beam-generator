@@ -4,9 +4,9 @@
 MIN_QUESTIONS: 7
 MAX_QUESTIONS: 12
 
-# Word count limits per FAQ answer (75% reduction for conciseness)
-MIN_WORDS_PER_ANSWER = 38  # Was 150
-MAX_WORDS_PER_ANSWER = 75  # Was 300
+# Word count limits per FAQ answer (concise and accessible)
+MIN_WORDS_PER_ANSWER = 20
+MAX_WORDS_PER_ANSWER = 60
 
 # Quality thresholds
 MIN_UNIQUENESS_SCORE: 90  # Questions must be 90%+ material-specific

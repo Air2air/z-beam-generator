@@ -468,18 +468,18 @@ VOICE GUIDANCE ({author_country.upper()}):
 - Author Expertise: {author_expertise}
 
 STRICT LENGTH REQUIREMENTS:
-- Maximum: {target_words} words (HARD LIMIT - do not exceed)
-- Write 2-3 sentences maximum
-- Be direct and concise - eliminate all unnecessary words
-- Include only the most critical facts
+- Target: {target_words} words (20-60 word range - HARD LIMIT)
+- Write 1-3 sentences maximum
+- Be clear and accessible - avoid excessive jargon
+- Explain simply and directly
 
 CONTENT REQUIREMENTS:
-- Use 1-2 ACTUAL property values from the data
+- Reference 1 key property value when relevant
 - Make answer specific to {material_name}
-- Professional technical tone
-- Focus on key facts only
+- Balance technical accuracy with accessibility
+- Focus on practical information
 
-Write a BRIEF, DIRECT answer (2-3 sentences, under {target_words} words):"""
+Write a CLEAR, CONCISE answer (1-3 sentences, 20-60 words):"""
         
         return prompt
     

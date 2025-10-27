@@ -146,37 +146,67 @@ class FAQComponentGenerator(APIComponentGenerator):
         applications = material_data.get('applications', [])
         props = material_data.get('materialProperties', {})
         
-        # Base questions for all materials (adapt to specific material)
+        # Diverse question templates covering wide range of topics
         base_templates = [
             {
-                'template': f"What types of contaminants can be removed from {material_name}?",
-                'category': 'contaminants',
-                'focus': 'Common contaminants, removal difficulty, material-specific challenges'
+                'template': f"How much does it cost to laser clean {material_name}?",
+                'category': 'cost_economics',
+                'focus': 'Cost factors, pricing comparison, ROI vs traditional methods'
             },
             {
-                'template': f"What makes {material_name} challenging to laser clean?",
-                'category': 'material_handling',
-                'focus': 'Material properties affecting cleaning, damage risks, parameter sensitivity'
+                'template': f"What laser power works best for {material_name}?",
+                'category': 'machine_settings',
+                'focus': 'Optimal power range, effects of too high/low power'
             },
             {
-                'template': f"Why is [wavelength] recommended for {material_name}?",
-                'category': 'physical_properties',
-                'focus': 'Wavelength selection, absorption characteristics, optimal parameters'
+                'template': f"Can laser cleaning damage {material_name}?",
+                'category': 'damage_risks',
+                'focus': 'Potential damage, warning signs, prevention methods'
             },
             {
-                'template': f"How does {material_name} compare to similar materials for laser cleaning?",
-                'category': 'material_comparison',
-                'focus': 'Category comparisons, unique characteristics, relative difficulty'
+                'template': f"What's the fastest way to laser clean {material_name}?",
+                'category': 'speed_efficiency',
+                'focus': 'Scan speed, throughput, productivity optimization'
             },
             {
-                'template': f"What surface quality results can I expect from laser cleaning {material_name}?",
-                'category': 'outcome_quality',
-                'focus': 'Surface finish, roughness, contaminant removal efficiency, damage indicators'
+                'template': f"Is laser cleaning {material_name} safe?",
+                'category': 'safety',
+                'focus': 'Safety hazards, protective equipment, precautions'
             },
             {
-                'template': f"What are the environmental benefits of laser cleaning {material_name}?",
-                'category': 'environmental',
-                'focus': 'Chemical waste elimination, water reduction, energy efficiency, VOC reduction'
+                'template': f"How long does laser cleaning {material_name} take?",
+                'category': 'time_duration',
+                'focus': 'Time estimates, factors affecting duration'
+            },
+            {
+                'template': f"What maintenance does {material_name} need after laser cleaning?",
+                'category': 'post_treatment',
+                'focus': 'Post-cleaning care, protective coatings, storage'
+            },
+            {
+                'template': f"When should I avoid laser cleaning {material_name}?",
+                'category': 'limitations',
+                'focus': 'Contraindications, unsuitable conditions, better alternatives'
+            },
+            {
+                'template': f"What training is needed for laser cleaning {material_name}?",
+                'category': 'operator_skills',
+                'focus': 'Required expertise, training topics, certification'
+            },
+            {
+                'template': f"How do I know if laser cleaning worked on {material_name}?",
+                'category': 'quality_verification',
+                'focus': 'Visual inspection, testing methods, success indicators'
+            },
+            {
+                'template': f"Can I laser clean painted {material_name}?",
+                'category': 'coatings_removal',
+                'focus': 'Paint removal capability, selectivity, preparation needed'
+            },
+            {
+                'template': f"What size area can I laser clean on {material_name}?",
+                'category': 'coverage_area',
+                'focus': 'Area limitations, scalability, large surface handling'
             },
         ]
         
@@ -436,13 +466,13 @@ class FAQComponentGenerator(APIComponentGenerator):
                 category_tag = q_dict['category']
                 focus = q_dict['focus']
                 
-                # Vary word count (38-75 range - 75% reduction)
+                # Vary word count (20-60 range - concise and accessible)
                 if idx <= 2:
-                    target_words = 74  # Comprehensive for early questions
+                    target_words = 58  # Comprehensive for early questions
                 elif idx >= question_count - 1:
-                    target_words = 70  # Moderate for late questions
+                    target_words = 55  # Moderate for late questions
                 else:
-                    target_words = 63  # Standard middle questions
+                    target_words = 45  # Standard middle questions
                 
                 logger.info(f"  Question {idx}/{question_count}: {question[:60]}...")
                 
