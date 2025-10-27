@@ -238,13 +238,21 @@ all_materials = data['materials'].keys()  # dict_keys(['Aluminum', 'Copper', ...
 
 ### Case-Insensitive Lookup
 
+**ALL material lookups are case-insensitive throughout the system.**
+
 ```python
 from data.materials import get_material_by_name
 
-# Automatic case handling
-material = get_material_by_name('aluminum')  # Works with lowercase
-material = get_material_by_name('ALUMINUM')  # Works with uppercase
-material = get_material_by_name('Aluminum')  # Works with proper case
+# All case variations work identically
+material = get_material_by_name('aluminum')   # ✅ lowercase
+material = get_material_by_name('ALUMINUM')   # ✅ uppercase
+material = get_material_by_name('Aluminum')   # ✅ proper case
+material = get_material_by_name('AlUmInUm')   # ✅ mixed case
+
+# Command-line is also case-insensitive
+# python3 run.py --material "steel"     ✅
+# python3 run.py --material "Steel"     ✅
+# python3 run.py --material "STEEL"     ✅
 ```
 
 ### Find by Category

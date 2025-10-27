@@ -110,7 +110,7 @@
       "items": {
         "type": "string"
       },
-      "description": "Industry names for material applications (e.g., 'Aerospace', 'Manufacturing', 'Medical')"
+      "description": "Industry names for material applications (e.g., 'Aerospace', 'Manufacturing', 'Medical'). Enhanced via 2-phase prompting when prompt builders available (5-8 evidence-based industries with 70%+ confidence)"
     },
     "safety": {
       "$ref": "#/definitions/Safety"

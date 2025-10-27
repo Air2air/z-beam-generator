@@ -10,15 +10,13 @@
 
 ---
 
-## 🚨 Data Storage Policy - CRITICAL
+## � Critical Documentation for AI Assistants
 
-**ALL data updates MUST be saved to Materials.yaml or Categories.yaml.**
-
-- ✅ **Materials.yaml** = Source of truth (read/write)
-- ✅ **Categories.yaml** = Source of truth (read/write)
-- ❌ **Frontmatter files** = Output only (write only, never read for data)
-- **Data Flow**: Materials.yaml → Frontmatter (one-way only)
-- **See**: `docs/DATA_STORAGE_POLICY.md` for complete policy
+**BEFORE** any data-related work, review these files:
+1. **`docs/QUICK_REFERENCE.md`** - Fastest path to common solutions (⭐ START HERE)
+2. **`docs/CASE_INSENSITIVE_LOOKUPS.md`** - Material lookup behavior (ALWAYS case-insensitive)
+3. **`docs/DATA_COMPLETION_ACTION_PLAN.md`** - Complete plan to achieve 100% data coverage
+4. **`docs/ZERO_NULL_POLICY.md`** - Zero null policy & AI research methodology
 
 ### 🆕 Data Structure Update (October 25, 2025)
 
@@ -448,6 +446,7 @@ python3 run.py --all
 python3 run.py --material "Steel"
 
 # Generate specific components only
+# Generate specific components for a material (case-insensitive)
 python3 run.py --material "Copper" --components "frontmatter,text"
 
 # Test mode

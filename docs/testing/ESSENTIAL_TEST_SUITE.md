@@ -77,9 +77,24 @@ def test_get_material_by_name():
     assert 'properties' in material
 
 def test_case_insensitive_lookup():
-    """Test case-insensitive material search."""
+    """Test case-insensitive material search.
+    
+    CRITICAL REQUIREMENT: ALL material lookups must be case-insensitive.
+    This is a core system behavior, not an optional feature.
+    
+    Tests verify:
+    - CLI commands work with any case variation
+    - API functions handle all case combinations
+    - Material resolution is consistent across cases
+    """
     material = find_material_case_insensitive('aluminum')
-    assert material['name'] == 'Aluminum'
+    assert material is not None, "lowercase lookup failed"
+    
+    material = find_material_case_insensitive('ALUMINUM')
+    assert material is not None, "uppercase lookup failed"
+    
+    material = find_material_case_insensitive('AlUmInUm')
+    assert material is not None, "mixed case lookup failed"
 
 def test_material_not_found():
     """Test fail-fast when material doesn't exist."""

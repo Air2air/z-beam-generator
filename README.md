@@ -198,6 +198,12 @@ safetyClass: "Class 4 laser safety requirements with fume extraction"  # AI-rese
 **Verification Results:**
 - **Zirconia Test**: Accurate ZrO2 properties (density 5.68-6.10 g/cm³, melting point 2715°C)
 - **Machine Settings**: Material-specific values ("100-1000 mm/s depending on contamination level")
+
+## 🚀 Quick Start
+
+```bash
+# Generate content for a single material (case-insensitive)
+python3 run.py --material "Aluminum"  # or "aluminum", "ALUMINUM", etc.
 - **Applications**: Research-based uses (aerospace turbine blades, medical dental implants)
 - **Zero Fallbacks**: Complete audit confirmed no remaining hardcoded defaults
 

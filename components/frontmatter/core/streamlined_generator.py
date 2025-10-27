@@ -16,7 +16,7 @@ import logging
 import re
 import yaml
 from pathlib import Path
-from typing import Dict, Optional
+from typing import Dict, Optional, List
 
 from generators.component_generators import APIComponentGenerator, ComponentResult
 from components.frontmatter.ordering.field_ordering_service import FieldOrderingService
@@ -152,6 +152,24 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             self.logger.info("Material-aware prompt system initialized")
         except Exception as e:
             raise ConfigurationError(f"Material-aware prompt system required but setup failed: {e}")
+        
+        # Initialize specialized prompt builders for enhanced quality
+        # (NOT separate generators - just improved prompts within frontmatter)
+        try:
+            from components.frontmatter.prompts.industry_applications import IndustryApplicationsPromptBuilder
+            from components.frontmatter.prompts.regulatory_standards import RegulatoryStandardsPromptBuilder
+            from components.frontmatter.prompts.environmental_impact import EnvironmentalImpactPromptBuilder
+            
+            self.industry_prompts = IndustryApplicationsPromptBuilder()
+            self.regulatory_prompts = RegulatoryStandardsPromptBuilder()
+            self.environmental_prompts = EnvironmentalImpactPromptBuilder()
+            self.logger.info("Specialized prompt builders initialized for enhanced quality")
+        except Exception as e:
+            # Not critical - can fall back to existing prompts
+            self.logger.warning(f"Specialized prompt builders not available: {e}")
+            self.industry_prompts = None
+            self.regulatory_prompts = None
+            self.environmental_prompts = None
 
     def _load_materials_research_data(self):
         """Load materials science research data for accurate range calculations"""
@@ -594,6 +612,18 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                     f"(no industryTags in Materials.yaml and no existing frontmatter). Using empty list."
                 )
                 frontmatter['applications'] = []
+            
+            # OPTIONAL: Enhance industries with 2-phase prompting if available and needed
+            if frontmatter.get('applications'):
+                enhanced_industries = self._enhance_industry_applications_2phase(
+                    material_name=material_name,
+                    material_data=material_data,
+                    existing_industries=frontmatter['applications']
+                )
+                if len(enhanced_industries) > len(frontmatter['applications']):
+                    self.logger.info(f"✨ Enhanced applications: {len(frontmatter['applications'])} → {len(enhanced_industries)}")
+                    frontmatter['applications'] = enhanced_industries
+            
             # Generate properties with Min/Max ranges using unified inheritance
             unified_properties = self._get_unified_material_properties(material_name, material_data)
             # REFACTORED: Use PropertyManager for discovery + research (Step 1)
@@ -1625,6 +1655,68 @@ Return YAML format with materialProperties, machineSettings, and structured appl
             text = text.replace('This ', 'This great ', 1).replace('These ', 'These excellent ', 1)
         
         return text
+    
+    def _enhance_industry_applications_2phase(self, material_name: str, material_data: Dict, 
+                                                existing_industries: List[str]) -> List[str]:
+        """
+        Optionally enhance industry applications using 2-phase prompting.
+        
+        Only runs if:
+        - Prompt builders are available (self.industry_prompts)
+        - API client is available (self.api_client)
+        - Existing industries are insufficient (<5 industries)
+        
+        Returns enhanced or original list depending on availability.
+        """
+        # Skip if prompt builders or API not available
+        if not self.industry_prompts or not self.api_client:
+            return existing_industries
+        
+        # Skip if already have sufficient industries
+        if len(existing_industries) >= 5:
+            self.logger.info(f"✅ Already have {len(existing_industries)} industries, skipping enhancement")
+            return existing_industries
+        
+        try:
+            self.logger.info(f"🔬 Enhancing industry applications with 2-phase research for {material_name}")
+            
+            # Phase 1: Research
+            research_prompt = self.industry_prompts.build_research_prompt(
+                material_name=material_name,
+                category=material_data.get('category', 'material'),
+                material_properties=material_data.get('materialProperties', {})
+            )
+            research_response = self.api_client.generate_simple(research_prompt, max_tokens=1000)
+            
+            # Validate research quality
+            validation = self.industry_prompts.validate_research_quality(research_response)
+            if not validation['passed']:
+                self.logger.warning(f"⚠️  Research quality below threshold: {validation['issues']}")
+                return existing_industries  # Keep original
+            
+            # Phase 2: Generate detailed descriptions
+            generation_prompt = self.industry_prompts.build_generation_prompt(
+                material_name=material_name,
+                research_data=research_response,
+                target_count=7  # 5-8 range, aim for 7
+            )
+            industry_list_response = self.api_client.generate_simple(generation_prompt, max_tokens=800)
+            
+            # Parse response (expected format: list of industry names)
+            import re
+            industries = re.findall(r'[-•]\s*([^\n]+)', industry_list_response)
+            industries = [ind.strip() for ind in industries if ind.strip()]
+            
+            if len(industries) >= 5:
+                self.logger.info(f"✨ Enhanced to {len(industries)} industries via 2-phase prompting")
+                return industries
+            else:
+                self.logger.warning(f"⚠️  2-phase prompting returned insufficient industries ({len(industries)})")
+                return existing_industries
+                
+        except Exception as e:
+            self.logger.warning(f"⚠️  2-phase enhancement failed: {e}")
+            return existing_industries
 
     def _get_environmental_impact_from_ai_fields(self, material_data: Dict, material_name: str) -> list:
         """

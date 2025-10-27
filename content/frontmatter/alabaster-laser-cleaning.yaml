@@ -1,10 +1,15 @@
 name: Alabaster
-category: stone
-subcategory: sedimentary
-title: Alabaster Laser Cleaning
-subtitle: Gentle laser restores alabaster's translucent softness without risking thermal
-  cracks
-description: Laser cleaning parameters for Alabaster
+applications:
+- Cultural Heritage
+- Aerospace
+- Medical
+- Electronics
+- Automotive
+- Marine
+- Manufacturing
+- Energy
+- Architecture
+- Art Conservation
 author:
   country: Italy
   expertise: Laser-Based Additive Manufacturing
@@ -13,15 +18,6 @@ author:
   name: Alessandro Moretti
   sex: m
   title: Ph.D.
-images:
-  hero:
-    alt: Alabaster surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/material/alabaster-laser-cleaning-hero.jpg
-  micro:
-    alt: Alabaster microscopic view of laser cleaning showing detailed precise contamination
-      removal
-    url: /images/material/alabaster-laser-cleaning-micro.jpg
 caption:
   beforeText: Under microscopic examination, the alabaster surface reveals a network
     of fine cracks and pitting from prolonged exposure. Contaminants appear as clustered
@@ -39,40 +35,148 @@ caption:
   character_count:
     before: 375
     after: 146
-  description: Microscopic analysis of Alabaster surface before and after laser cleaning
-    treatment
-regulatoryStandards:
-- name: FDA
-  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
-  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
-  image: /images/logo/logo-org-fda.png
-  longName: Food and Drug Administration
-- name: ANSI
-  description: ANSI Z136.1 - Safe Use of Lasers
-  url: https://webstore.ansi.org/standards/lia/ansiz1362022
-  image: /images/logo/logo-org-ansi.png
-  longName: American National Standards Institute
-- name: IEC
-  description: IEC 60825 - Safety of Laser Products
-  url: https://webstore.iec.ch/publication/3587
-  image: /images/logo/logo-org-iec.png
-  longName: International Electrotechnical Commission
-- name: OSHA
-  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
-  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
-  image: /images/logo/logo-org-osha.png
-  longName: Occupational Safety and Health Administration
-applications:
-- Cultural Heritage
-- Aerospace
-- Medical
-- Electronics
-- Automotive
-- Marine
-- Manufacturing
-- Energy
-- Architecture
-- Art Conservation
+captions:
+  after_text: What strikes me about this material now is the captivating transformation
+    after laser cleaning; the alabaster reveals a beautiful clarity, almost as if
+    it breathes again, with surface contaminants reduced to near imperceptible traces—likely
+    less than 0. 01 mm if I were to guess without precise tools at hand. I find remarkable
+    how the laser’s technical artistry, tuned to a gentle 45 W power and 50 kHz repetition
+    rate, has restored visual harmony, echoing the meticulous care of Italian artisans
+    who’ve shaped such stone for centuries in architectural and artistic masterpieces.
+    This elegant transformation not only revives the stone’s intrinsic charm but also
+    offers practical benefits for Italy’s heritage conservation, ensuring sculptures
+    and ornaments in our historic cities withstand time without chemical harm or water
+    waste, well, one hopes at least.
+  author: Alessandro Moretti
+  before_text: Examining this beautiful surface of alabaster, I must confess a deep
+    appreciation for its delicate translucency, yet I’m struck by the uneven layer
+    of contamination—perhaps a mix of organic residues and atmospheric deposits, roughly
+    0. 2 to 0. 5 mm thick in patches, obscuring its natural elegance. One cannot help
+    but notice how these impurities cling stubbornly to the soft, porous structure,
+    a challenge we often face in Italy when restoring cultural heritage pieces where
+    alabaster’s aesthetic excellence must be preserved with utmost care.
+  generated: '2025-10-21T17:18:28.258922Z'
+  generation_method: ai_research
+category: stone
+description: Laser cleaning parameters for Alabaster
+environmentalImpact:
+- applicableIndustries:
+  - Semiconductor
+  - Electronics
+  - Medical
+  - Nuclear
+  benefit: Chemical Waste Elimination
+  description: Eliminates hazardous chemical waste streams
+  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
+- applicableIndustries: []
+  benefit: Water Usage Reduction
+  description: Dry process requires no water
+  sustainabilityBenefit: Significant water conservation in industrial processes
+- applicableIndustries: []
+  benefit: Energy Efficiency
+  description: Focused energy delivery with minimal waste heat
+- applicableIndustries: []
+  benefit: Air Quality Improvement
+  description: Eliminates volatile organic compounds from chemical cleaning
+images:
+  hero:
+    alt: Alabaster surface undergoing laser cleaning showing precise contamination
+      removal
+    url: /images/material/alabaster-laser-cleaning-hero.jpg
+  micro:
+    alt: Alabaster microscopic view of laser cleaning showing detailed precise contamination
+      removal
+    url: /images/material/alabaster-laser-cleaning-micro.jpg
+machineSettings:
+  fluenceThreshold:
+    confidence: 89
+    description: Energy density threshold for effective contaminant removal without
+      damaging Alabaster substrate
+    max: 2.0
+    min: 0.8
+    unit: J/cm²
+    value: 1.2
+  overlapRatio:
+    confidence: 83
+    description: Optimal beam overlap percentage for uniform cleaning coverage
+    max: 70
+    min: 30
+    unit: '%'
+    value: 50
+  passCount:
+    confidence: 85
+    description: Recommended number of passes for complete contaminant removal
+    max: 4
+    min: 1
+    unit: passes
+    value: 2
+  powerRange:
+    confidence: 90
+    description: Optimal average power for Alabaster surface cleaning without thermal
+      damage
+    max: 65
+    min: 30
+    unit: W
+    value: 45
+  pulseWidth:
+    confidence: 85
+    description: Short pulse duration for efficient contaminant removal with minimal
+      heat diffusion
+    max: 25
+    min: 8
+    unit: ns
+    value: 15
+  repetitionRate:
+    confidence: 87
+    description: Optimal repetition rate for continuous cleaning coverage while avoiding
+      thermal accumulation
+    max: 100
+    min: 20
+    unit: kHz
+    value: 50
+  scanSpeed:
+    confidence: 84
+    description: Optimal scanning speed for efficient area coverage while maintaining
+      cleaning effectiveness
+    max: 1000
+    min: 200
+    unit: mm/s
+    value: 500
+  spotSize:
+    confidence: 86
+    description: Beam spot diameter providing sufficient energy density for cleaning
+      with good resolution
+    max: 150
+    min: 50
+    unit: μm
+    value: 80
+  wavelength:
+    confidence: 88
+    description: Near-IR wavelength providing good absorption in surface contaminants
+      while minimizing bulk material damage
+    max: 10600
+    min: 532
+    unit: nm
+    value: 1064
+materialCharacteristics:
+  crystallineStructure:
+    allowedValues:
+    - FCC
+    - BCC
+    - HCP
+    - amorphous
+    - cubic
+    - hexagonal
+    - tetragonal
+    - orthorhombic
+    - monoclinic
+    - triclinic
+    confidence: 0.95
+    description: crystalline crystal structure
+    research_date: '2025-10-20T22:49:43.627826+00:00'
+    source: ai_research
+    unit: crystal system
+    value: crystalline
 materialProperties:
   laser_material_interaction:
     description: Optical, thermal, and surface properties governing laser processing
@@ -171,6 +275,8 @@ materialProperties:
         type: thermal_shock
         unit: °C
         value: 800.0
+        min: 600
+        max: 1700
       thermalDiffusivity:
         confidence: 0.92
         research_basis: NIST Stone Properties Database and Geological Society Special
@@ -354,6 +460,14 @@ materialProperties:
         verification_variance: 0.0%
         min: 10
         max: 100
+      fractureToughness:
+        confidence: 90
+        research_date: '2025-10-23T09:49:31.331591'
+        source: ai_research
+        unit: MPa·m¹/²
+        value: 0.35
+        min: 0.5
+        max: 5
   other:
     description: Additional material-specific properties
     label: Other Properties
@@ -374,98 +488,6 @@ materialProperties:
           gypsum rocks (alabaster)" by M. S. Yagiz.
         unit: MPa·√m
         value: 0.35
-        min: 0.5
-        max: 5
-machineSettings:
-  fluenceThreshold:
-    confidence: 89
-    description: Energy density threshold for effective contaminant removal without
-      damaging Alabaster substrate
-    max: 2.0
-    min: 0.8
-    unit: J/cm²
-    value: 1.2
-  overlapRatio:
-    confidence: 83
-    description: Optimal beam overlap percentage for uniform cleaning coverage
-    max: 70
-    min: 30
-    unit: '%'
-    value: 50
-  passCount:
-    confidence: 85
-    description: Recommended number of passes for complete contaminant removal
-    max: 4
-    min: 1
-    unit: passes
-    value: 2
-  powerRange:
-    confidence: 90
-    description: Optimal average power for Alabaster surface cleaning without thermal
-      damage
-    max: 65
-    min: 30
-    unit: W
-    value: 45
-  pulseWidth:
-    confidence: 85
-    description: Short pulse duration for efficient contaminant removal with minimal
-      heat diffusion
-    max: 25
-    min: 8
-    unit: ns
-    value: 15
-  repetitionRate:
-    confidence: 87
-    description: Optimal repetition rate for continuous cleaning coverage while avoiding
-      thermal accumulation
-    max: 100
-    min: 20
-    unit: kHz
-    value: 50
-  scanSpeed:
-    confidence: 84
-    description: Optimal scanning speed for efficient area coverage while maintaining
-      cleaning effectiveness
-    max: 1000
-    min: 200
-    unit: mm/s
-    value: 500
-  spotSize:
-    confidence: 86
-    description: Beam spot diameter providing sufficient energy density for cleaning
-      with good resolution
-    max: 150
-    min: 50
-    unit: μm
-    value: 80
-  wavelength:
-    confidence: 88
-    description: Near-IR wavelength providing good absorption in surface contaminants
-      while minimizing bulk material damage
-    max: 10600
-    min: 532
-    unit: nm
-    value: 1064
-environmentalImpact:
-- applicableIndustries:
-  - Semiconductor
-  - Electronics
-  - Medical
-  - Nuclear
-  benefit: Chemical Waste Elimination
-  description: Eliminates hazardous chemical waste streams
-  quantifiedBenefits: Up to 100% reduction in chemical cleaning agents
-- applicableIndustries: []
-  benefit: Water Usage Reduction
-  description: Dry process requires no water
-  sustainabilityBenefit: Significant water conservation in industrial processes
-- applicableIndustries: []
-  benefit: Energy Efficiency
-  description: Focused energy delivery with minimal waste heat
-- applicableIndustries: []
-  benefit: Air Quality Improvement
-  description: Eliminates volatile organic compounds from chemical cleaning
 outcomeMetrics:
 - description: Percentage of target contaminants successfully removed from surface
   factorsAffecting:
@@ -497,3 +519,35 @@ outcomeMetrics:
   measurementMethods: []
   metric: Thermal Damage Avoidance
   units: []
+regulatoryStandards:
+- name: FDA
+  description: FDA 21 CFR 1040.10 - Laser Product Performance Standards
+  url: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-J/part-1040/section-1040.10
+  image: /images/logo/logo-org-fda.png
+  longName: Food and Drug Administration
+- name: ANSI
+  description: ANSI Z136.1 - Safe Use of Lasers
+  url: https://webstore.ansi.org/standards/lia/ansiz1362022
+  image: /images/logo/logo-org-ansi.png
+  longName: American National Standards Institute
+- name: IEC
+  description: IEC 60825 - Safety of Laser Products
+  url: https://webstore.iec.ch/publication/3587
+  image: /images/logo/logo-org-iec.png
+  longName: International Electrotechnical Commission
+- name: OSHA
+  description: OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  url: https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.102
+  image: /images/logo/logo-org-osha.png
+  longName: Occupational Safety and Health Administration
+subcategory: sedimentary
+subtitle: Gentle laser restores alabaster's translucent softness without risking thermal
+  cracks
+title: Alabaster Laser Cleaning
+subtitle_metadata:
+  generated: '2025-10-25T20:53:49.333237Z'
+  author_name: Alessandro Moretti
+  author_country: Italy
+  generation_method: ai_research_voice
+  word_count: 10
+  character_count: 85

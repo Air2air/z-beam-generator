@@ -461,8 +461,23 @@ class FAQComponentGenerator(APIComponentGenerator):
                 if not api_client:
                     raise ValueError("API client required for FAQ answer generation")
                 
+                # Calculate max_tokens for target word count (fail-fast: explicit values required)
+                # FAQ answers: 150-300 words
+                # Token estimation: ~1.3 tokens per word (conservative)
+                # Safety margin: 1.5x to prevent truncation
+                max_tokens = int(target_words * 1.3 * 1.5)  # Explicit calculation
+                
                 try:
-                    answer = api_client.generate(prompt)
+                    response = api_client.generate_simple(
+                        prompt,
+                        max_tokens=max_tokens,  # Explicit - no defaults
+                        temperature=0.6  # Slightly creative for natural FAQ responses
+                    )
+                    
+                    if not response.success:
+                        raise ValueError(f"API generation failed: {response.error}")
+                    
+                    answer = response.content
                     word_count = len(answer.split())
                     total_words += word_count
                     

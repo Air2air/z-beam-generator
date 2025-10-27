@@ -168,28 +168,60 @@ class PropertyManager:
             
             material_entry = materials_data['materials'][material_name]
             
-            # Ensure properties dict exists
-            if 'properties' not in material_entry:
-                material_entry['properties'] = {}
+            # Ensure hierarchical materialProperties structure exists
+            if 'materialProperties' not in material_entry:
+                material_entry['materialProperties'] = {
+                    'material_characteristics': {
+                        'label': 'Material Characteristics',
+                        'description': 'Intrinsic physical, mechanical, chemical, and structural properties affecting cleaning outcomes and material integrity',
+                        'properties': {}
+                    },
+                    'laser_material_interaction': {
+                        'label': 'Laser-Material Interaction',
+                        'description': 'Optical and thermal properties governing laser energy absorption, reflection, propagation, and ablation thresholds',
+                        'properties': {}
+                    }
+                }
+            
+            # Ensure properties dicts exist in each section
+            for section in material_entry['materialProperties'].values():
+                if 'properties' not in section:
+                    section['properties'] = {}
             
             # Update with researched properties
             updates_count = 0
             for prop_name, prop_data in researched_properties.items():
+                # Determine which section this property belongs to
+                section_name = self._categorize_property(prop_name)
+                
+                # Add 'other' section if needed
+                if section_name == 'other' and section_name not in material_entry['materialProperties']:
+                    material_entry['materialProperties']['other'] = {
+                        'label': 'Other Properties',
+                        'description': 'Additional material-specific properties',
+                        'properties': {}
+                    }
+                
+                # Get the target section
+                section = material_entry['materialProperties'][section_name]
+                if 'properties' not in section:
+                    section['properties'] = {}
+                
                 # Only persist if not already in YAML or has higher confidence
-                existing = material_entry['properties'].get(prop_name)
+                existing = section['properties'].get(prop_name)
                 
                 if existing is None:
                     # New property - add it
-                    material_entry['properties'][prop_name] = prop_data
+                    section['properties'][prop_name] = prop_data
                     updates_count += 1
-                    self.logger.debug(f"  ✅ Added {prop_name}: {prop_data.get('value')} {prop_data.get('unit')}")
+                    self.logger.debug(f"  ✅ Added {prop_name} to {section_name}: {prop_data.get('value')} {prop_data.get('unit')}")
                 elif existing.get('source') != 'ai_research':
                     # Existing property but not from AI - upgrade it
-                    material_entry['properties'][prop_name] = prop_data
+                    section['properties'][prop_name] = prop_data
                     updates_count += 1
-                    self.logger.debug(f"  🔄 Updated {prop_name}: {prop_data.get('value')} {prop_data.get('unit')}")
+                    self.logger.debug(f"  🔄 Updated {prop_name} in {section_name}: {prop_data.get('value')} {prop_data.get('unit')}")
                 else:
-                    self.logger.debug(f"  ⏭️  Skipped {prop_name} (already has AI research)")
+                    self.logger.debug(f"  ⏭️  Skipped {prop_name} (already has AI research in {section_name})")
             
             if updates_count > 0:
                 # Write updated data back
@@ -659,6 +691,40 @@ class PropertyManager:
         self.logger.info(f"✅ All {len(essentials)} essential properties present for {material_name}")
     
     # ===== UTILITY METHODS =====
+    
+    def _categorize_property(self, prop_name: str) -> str:
+        """
+        Determine which materialProperties section a property belongs to.
+        
+        Args:
+            prop_name: Name of the property
+            
+        Returns:
+            Section name: 'material_characteristics', 'laser_material_interaction', or 'other'
+        """
+        # Material characteristics (physical, mechanical, chemical)
+        material_chars = {
+            'density', 'hardness', 'tensileStrength', 'compressiveStrength',
+            'flexuralStrength', 'youngsModulus', 'poissonsRatio', 'fractureToughness',
+            'porosity', 'grainSize', 'crystallineStructure', 'corrosionResistance',
+            'oxidationResistance', 'wearResistance', 'fatigueStrength'
+        }
+        
+        # Laser-material interaction (optical, thermal)
+        laser_interaction = {
+            'laserReflectivity', 'laserAbsorption', 'thermalConductivity',
+            'thermalDiffusivity', 'thermalExpansion', 'specificHeat',
+            'thermalDestruction', 'meltingPoint', 'boilingPoint', 'vaporization',
+            'ablationThreshold', 'damageThreshold', 'penetrationDepth',
+            'absorptionCoefficient', 'emissivity'
+        }
+        
+        if prop_name in material_chars:
+            return 'material_characteristics'
+        elif prop_name in laser_interaction:
+            return 'laser_material_interaction'
+        else:
+            return 'other'
     
     @staticmethod
     def _is_qualitative_value(value) -> bool:

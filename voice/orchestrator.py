@@ -240,6 +240,15 @@ class VoiceOrchestrator:
                 author=author,
                 **kwargs
             )
+        # Build layered prompt for FAQ answers
+        elif component_type == 'technical_faq_answer':
+            return self._build_faq_prompt(
+                base_voice=base_voice,
+                country_profile=country_profile,
+                material_context=material_context,
+                author=author,
+                **kwargs
+            )
         else:
             raise ValueError(f"Component type '{component_type}' not supported with voice_base.yaml system")
     
@@ -400,6 +409,99 @@ REQUIREMENTS:
 Write the subtitle now:"""
         
         return prompt
+    
+    def _build_faq_prompt(
+        self,
+        base_voice: Dict,
+        country_profile: Dict,
+        material_context: Dict[str, Any],
+        author: Dict[str, Any],
+        **kwargs
+    ) -> str:
+        """Build FAQ answer prompt with voice layering"""
+        # Extract context - support both 'name' and 'material_name' keys
+        material_name = material_context.get('material_name') or material_context.get('name', 'Unknown Material')
+        material_category = material_context.get('category', 'Unknown')
+        question = kwargs.get('question', '')
+        focus_points = kwargs.get('focus_points', '')
+        focus_points = kwargs.get('focus_points', '')
+        property_values = kwargs.get('property_values', {})
+        target_words = kwargs.get('target_words', 200)
+        
+        # Extract properties and settings from material_context if provided
+        properties_str = material_context.get('properties', '')
+        settings_str = material_context.get('machine_settings', '')
+        applications_str = material_context.get('applications', '')
+        
+        # Extract author info
+        author_name = author.get('name', 'Unknown')
+        author_country = author.get('country', 'USA')
+        author_expertise = author.get('expertise', 'Laser Technology')
+        
+        # Extract country profile characteristics
+        linguistic = country_profile.get('linguistic_characteristics', {})
+        formality = linguistic.get('formality_level', 'professional')
+        country_formality = linguistic.get('formality_indicators', {}).get('style', 'neutral')
+        
+        # Build prompt with material specificity and property values
+        prompt = f"""You are {author_name} from {author_country}, a {author_expertise} expert answering a technical FAQ about {material_name} laser cleaning.
+
+MATERIAL CONTEXT:
+- Material: {material_name}
+- Category: {material_category}
+- Applications: {applications_str}
+
+QUESTION TO ANSWER:
+{question}
+
+FOCUS POINTS:
+{focus_points}
+
+MATERIAL PROPERTIES:
+{properties_str if properties_str else self._format_property_values(property_values)}
+
+MACHINE SETTINGS:
+{settings_str if settings_str else 'Standard laser cleaning parameters'}
+
+VOICE GUIDANCE ({author_country.upper()}):
+- Formality: {formality} (style: {country_formality})
+- Author Expertise: {author_expertise}
+- Technical Authority: High (expert answering technical questions)
+
+REQUIREMENTS:
+- Target length: {target_words} words (±50 word flexibility)
+- Use ACTUAL property values from the data when relevant
+- Provide specific technical details about {material_name}
+- Professional tone for industrial/research audience
+- Make answer material-specific (not generic laser cleaning advice)
+- Include quantitative data when available
+- Connect answer to material's unique characteristics
+
+Write the FAQ answer now:"""
+        
+        return prompt
+    
+    def _format_property_values(self, property_values: Dict) -> str:
+        """Format property values for FAQ prompt"""
+        if not property_values:
+            return "(No specific property values provided)"
+        
+        lines = []
+        for prop_name, prop_data in property_values.items():
+            if isinstance(prop_data, dict):
+                value = prop_data.get('value', 'N/A')
+                unit = prop_data.get('unit', '')
+                min_val = prop_data.get('min', '')
+                max_val = prop_data.get('max', '')
+                
+                if min_val and max_val:
+                    lines.append(f"- {prop_name}: {value} {unit} (range: {min_val}-{max_val} {unit})")
+                else:
+                    lines.append(f"- {prop_name}: {value} {unit}")
+            else:
+                lines.append(f"- {prop_name}: {prop_data}")
+        
+        return '\n'.join(lines) if lines else "(No specific property values provided)"
     
     def _format_base_guidance(self, core_principles: Dict, forbidden_patterns: Dict, section_rules: Dict, base_voice: Dict = None) -> str:
         """Format base voice guidance from voice_base.yaml"""

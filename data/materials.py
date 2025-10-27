@@ -82,13 +82,16 @@ def get_material_by_name_cached(material_name: str) -> Optional[Dict]:
     """
     O(1) cached material lookup with LRU eviction.
     
+    IMPORTANT: Lookups are ALWAYS case-insensitive throughout the system.
+    "aluminum", "Aluminum", "ALUMINUM", and "AlUmInUm" all return the same material.
+    
     Performance:
     - First access: ~0.001s (dict lookup in cached data)
     - Subsequent: <0.0001s (LRU cache hit)
     - Case-insensitive: O(n) fallback (rare)
     
     Args:
-        material_name: Material name to look up (case-insensitive)
+        material_name: Material name to look up (ALWAYS case-insensitive)
     
     Returns:
         Dict: Material data or None if not found
@@ -180,12 +183,16 @@ def add_material_names_to_items(data):
 
 def find_material_case_insensitive(material_name: str, materials_data: dict = None) -> Tuple[Optional[Dict], Optional[str]]:
     """
-    Find a material by name (case-insensitive) and return its data and category.
+    Find a material by name and return its data and category.
+    
+    IMPORTANT: ALL material lookups are ALWAYS case-insensitive.
+    This function name includes 'case_insensitive' for clarity, but this behavior
+    is standard across the entire system - it's not an optional feature.
     
     PERFORMANCE NOTE: Uses cached data loader for better performance.
     
     Args:
-        material_name: Name to search for (case-insensitive)
+        material_name: Name to search for (ALWAYS case-insensitive)
         materials_data: Optional pre-loaded materials data
     
     Returns:
@@ -322,7 +329,10 @@ def expand_optimized_materials(data):
 
 def get_material_by_name(material_name, data=None):
     """
-    Fast O(1) material lookup with case-insensitive matching.
+    Fast O(1) material lookup with ALWAYS case-insensitive matching.
+    
+    IMPORTANT: ALL material lookups are case-insensitive by design.
+    This is a core system requirement - "steel", "Steel", and "STEEL" are identical.
     
     PERFORMANCE NOTE: Uses cached data loader for better performance.
     Consider using get_material_by_name_cached() for maximum performance.
