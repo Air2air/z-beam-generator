@@ -466,18 +466,20 @@ MACHINE SETTINGS:
 VOICE GUIDANCE ({author_country.upper()}):
 - Formality: {formality} (style: {country_formality})
 - Author Expertise: {author_expertise}
-- Technical Authority: High (expert answering technical questions)
 
-REQUIREMENTS:
-- Target length: {target_words} words (±50 word flexibility)
-- Use ACTUAL property values from the data when relevant
-- Provide specific technical details about {material_name}
-- Professional tone for industrial/research audience
-- Make answer material-specific (not generic laser cleaning advice)
-- Include quantitative data when available
-- Connect answer to material's unique characteristics
+STRICT LENGTH REQUIREMENTS:
+- Maximum: {target_words} words (HARD LIMIT - do not exceed)
+- Write 2-3 sentences maximum
+- Be direct and concise - eliminate all unnecessary words
+- Include only the most critical facts
 
-Write the FAQ answer now:"""
+CONTENT REQUIREMENTS:
+- Use 1-2 ACTUAL property values from the data
+- Make answer specific to {material_name}
+- Professional technical tone
+- Focus on key facts only
+
+Write a BRIEF, DIRECT answer (2-3 sentences, under {target_words} words):"""
         
         return prompt
     

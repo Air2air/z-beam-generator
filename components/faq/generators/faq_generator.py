@@ -436,13 +436,13 @@ class FAQComponentGenerator(APIComponentGenerator):
                 category_tag = q_dict['category']
                 focus = q_dict['focus']
                 
-                # Vary word count (150-300 range)
+                # Vary word count (38-75 range - 75% reduction)
                 if idx <= 2:
-                    target_words = 295  # Comprehensive for early questions
+                    target_words = 74  # Comprehensive for early questions
                 elif idx >= question_count - 1:
-                    target_words = 280  # Moderate for late questions
+                    target_words = 70  # Moderate for late questions
                 else:
-                    target_words = 250  # Standard middle questions
+                    target_words = 63  # Standard middle questions
                 
                 logger.info(f"  Question {idx}/{question_count}: {question[:60]}...")
                 
