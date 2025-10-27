@@ -470,14 +470,15 @@ VOICE GUIDANCE ({author_country.upper()}):
 STRICT LENGTH REQUIREMENTS:
 - Target: {target_words} words (20-60 word range - HARD LIMIT)
 - Write 1-3 sentences maximum
-- Be clear and accessible - avoid excessive jargon
-- Explain simply and directly
+- Use clear, varied language - avoid repeating phrases
+- Vary sentence structure and word choice throughout
 
 CONTENT REQUIREMENTS:
 - Reference 1 key property value when relevant
-- Make answer specific to {material_name}
-- Balance technical accuracy with accessibility
-- Focus on practical information
+- Ensure answer addresses {material_name} specifically
+- Balance technical accuracy with readability
+- Focus on practical, actionable information
+- Use synonyms and varied phrasing to maintain flow
 
 Write a CLEAR, CONCISE answer (1-3 sentences, 20-60 words):"""
         

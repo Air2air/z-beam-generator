@@ -14,23 +14,66 @@ MIN_UTILITY_SCORE: 85     # Answers must be 85%+ practically useful
 REQUIRED_ACCURACY: 100    # 100% technical accuracy (all values traceable)
 MIN_VOICE_AUTHENTICITY: 95  # 95%+ author voice match
 
-# FAQ categories (flexible tagging)
+# Category tags for FAQ organization (internal use)
 CATEGORY_TAGS = [
-    'contaminants',
-    'material_handling',
-    'physical_properties',
-    'applications',
-    'material_comparison',
-    'outcome_quality',
-    'environmental',
-    'safety_hazards',
-    'thermal_behavior',
-    'heritage_conservation',
-    'electronics_specific',
+    # Cost and practical considerations
+    'cost_economics',
+    'time_duration',
+    'speed_efficiency',
+    
+    # Machine operation
+    'machine_settings',
+    'operator_skills',
     'quality_verification',
-    'troubleshooting',
-    'regulatory_compliance',
-    'lifecycle_maintenance'
+    
+    # Safety and risks
+    'safety',
+    'damage_risks',
+    'limitations',
+    
+    # Maintenance and treatment
+    'post_treatment',
+    'coatings_removal',
+    'coverage_area',
+    
+    # Material thermal characteristics
+    'thermal_management',
+    'heat_effects',
+    'thermal_damage',
+    'temperature_sensitivity',
+    
+    # Physical and optical properties
+    'material_density',
+    'surface_hardness',
+    'reflectivity_challenges',
+    'laser_absorption',
+    'wavelength_interaction',
+    
+    # Material handling requirements
+    'strength_considerations',
+    'fragility_risks',
+    'damage_resistance',
+    'structural_integrity',
+    'delicate_handling',
+    
+    # Unusual material characteristics
+    'unique_properties',
+    'rare_behavior',
+    'special_requirements',
+    'unusual_challenges',
+    
+    # Contaminant-related
+    'surface_damage_from_contaminants',
+    'contaminant_removal_difficulty',
+    'heat_induced_contamination',
+    'oxide_formation',
+    'residue_effects',
+    
+    # Application-specific
+    'application_advantages',
+    'application_challenges',
+    'industry_requirements',
+    'performance_characteristics',
 ]
 
 # Complexity scoring factors

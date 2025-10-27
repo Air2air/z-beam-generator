@@ -148,6 +148,7 @@ class FAQComponentGenerator(APIComponentGenerator):
         
         # Diverse question templates covering wide range of topics
         base_templates = [
+            # Cost and practical
             {
                 'template': f"How much does it cost to laser clean {material_name}?",
                 'category': 'cost_economics',
@@ -158,55 +159,118 @@ class FAQComponentGenerator(APIComponentGenerator):
                 'category': 'machine_settings',
                 'focus': 'Optimal power range, effects of too high/low power'
             },
+            
+            # Thermal characteristics
+            {
+                'template': f"How does heat affect {material_name} during laser cleaning?",
+                'category': 'heat_effects',
+                'focus': 'Thermal sensitivity, heat dissipation, temperature limits'
+            },
+            {
+                'template': f"What temperature considerations exist for {material_name}?",
+                'category': 'thermal_management',
+                'focus': 'Thermal conductivity, cooling requirements, heat accumulation'
+            },
+            
+            # Physical properties and optical behavior
+            {
+                'template': f"Why does {material_name}'s reflectivity matter for laser cleaning?",
+                'category': 'reflectivity_challenges',
+                'focus': 'Reflectivity values, laser-material interaction, wavelength selection'
+            },
+            {
+                'template': f"What physical properties make {material_name} unique for cleaning?",
+                'category': 'unique_properties',
+                'focus': 'Density, hardness, absorption, distinctive characteristics'
+            },
+            
+            # Material handling and strength
+            {
+                'template': f"Is {material_name} fragile during laser cleaning?",
+                'category': 'fragility_risks',
+                'focus': 'Structural integrity, brittleness, handling precautions'
+            },
+            {
+                'template': f"What strength characteristics affect {material_name} cleaning?",
+                'category': 'strength_considerations',
+                'focus': 'Mechanical properties, damage resistance, durability'
+            },
+            
+            # Unusual/arcane characteristics
+            {
+                'template': f"What unusual behaviors does {material_name} exhibit during cleaning?",
+                'category': 'rare_behavior',
+                'focus': 'Uncommon responses, unexpected reactions, special phenomena'
+            },
+            {
+                'template': f"What makes {material_name} different from other materials?",
+                'category': 'special_requirements',
+                'focus': 'Distinctive features, unique challenges, rare characteristics'
+            },
+            
+            # Contaminant effects
+            {
+                'template': f"Can contaminants damage {material_name}'s surface?",
+                'category': 'surface_damage_from_contaminants',
+                'focus': 'Contamination impact, surface degradation, physical damage'
+            },
+            {
+                'template': f"Which contaminants are hardest to remove from {material_name}?",
+                'category': 'contaminant_removal_difficulty',
+                'focus': 'Stubborn residues, adhesion challenges, removal complexity'
+            },
+            {
+                'template': f"How does heating affect contaminants on {material_name}?",
+                'category': 'heat_induced_contamination',
+                'focus': 'Thermal effects on residues, oxidation, heat-related changes'
+            },
+            
+            # Application focus
+            {
+                'template': f"Why is {material_name} chosen for its main applications?",
+                'category': 'application_advantages',
+                'focus': 'Performance benefits, material selection reasons, key strengths'
+            },
+            {
+                'template': f"What challenges does {material_name} present in use?",
+                'category': 'application_challenges',
+                'focus': 'Operational difficulties, limitations, problem areas'
+            },
+            
+            # Safety and damage
             {
                 'template': f"Can laser cleaning damage {material_name}?",
                 'category': 'damage_risks',
                 'focus': 'Potential damage, warning signs, prevention methods'
             },
             {
-                'template': f"What's the fastest way to laser clean {material_name}?",
-                'category': 'speed_efficiency',
-                'focus': 'Scan speed, throughput, productivity optimization'
-            },
-            {
                 'template': f"Is laser cleaning {material_name} safe?",
                 'category': 'safety',
                 'focus': 'Safety hazards, protective equipment, precautions'
             },
+            
+            # Efficiency and speed
             {
-                'template': f"How long does laser cleaning {material_name} take?",
+                'template': f"What's the fastest approach for {material_name}?",
+                'category': 'speed_efficiency',
+                'focus': 'Scan speed, throughput, productivity optimization'
+            },
+            {
+                'template': f"How long does cleaning {material_name} typically take?",
                 'category': 'time_duration',
                 'focus': 'Time estimates, factors affecting duration'
             },
+            
+            # Post-treatment and verification
             {
-                'template': f"What maintenance does {material_name} need after laser cleaning?",
+                'template': f"What care does {material_name} need after cleaning?",
                 'category': 'post_treatment',
                 'focus': 'Post-cleaning care, protective coatings, storage'
             },
             {
-                'template': f"When should I avoid laser cleaning {material_name}?",
-                'category': 'limitations',
-                'focus': 'Contraindications, unsuitable conditions, better alternatives'
-            },
-            {
-                'template': f"What training is needed for laser cleaning {material_name}?",
-                'category': 'operator_skills',
-                'focus': 'Required expertise, training topics, certification'
-            },
-            {
-                'template': f"How do I know if laser cleaning worked on {material_name}?",
+                'template': f"How can I verify {material_name} was cleaned properly?",
                 'category': 'quality_verification',
-                'focus': 'Visual inspection, testing methods, success indicators'
-            },
-            {
-                'template': f"Can I laser clean painted {material_name}?",
-                'category': 'coatings_removal',
-                'focus': 'Paint removal capability, selectivity, preparation needed'
-            },
-            {
-                'template': f"What size area can I laser clean on {material_name}?",
-                'category': 'coverage_area',
-                'focus': 'Area limitations, scalability, large surface handling'
+                'focus': 'Inspection methods, success indicators, testing'
             },
         ]
         
