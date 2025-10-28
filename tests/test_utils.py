@@ -174,9 +174,9 @@ except ImportError:
 TEST_COMPONENTS = ["frontmatter", "text", "table", "bullets", "caption"]
 TEST_AUTHORS = [
     {"id": 1, "name": "Yi-Chun Lin", "country": "Taiwan"},
-    {"id": 2, "name": "Maria Garcia", "country": "Spain"},
-    {"id": 3, "name": "Hans Mueller", "country": "Germany"},
-    {"id": 4, "name": "Sarah Johnson", "country": "USA"}
+    {"id": 2, "name": "Alessandro Moretti", "country": "Italy"},
+    {"id": 3, "name": "Ikmanda Roswati", "country": "Indonesia"},
+    {"id": 4, "name": "Todd Dunning", "country": "United States"}
 ]
 
 # Export key functions
@@ -210,9 +210,9 @@ except ImportError:
 TEST_COMPONENTS = ["frontmatter", "text", "table", "bullets", "caption"]
 TEST_AUTHORS = [
     {"id": 1, "name": "Yi-Chun Lin", "country": "Taiwan"},
-    {"id": 2, "name": "Maria Garcia", "country": "Spain"},
-    {"id": 3, "name": "Hans Mueller", "country": "Germany"},
-    {"id": 4, "name": "Sarah Johnson", "country": "USA"},
+    {"id": 2, "name": "Alessandro Moretti", "country": "Italy"},
+    {"id": 3, "name": "Ikmanda Roswati", "country": "Indonesia"},
+    {"id": 4, "name": "Todd Dunning", "country": "United States"},
 ]
 
 # Export key functions

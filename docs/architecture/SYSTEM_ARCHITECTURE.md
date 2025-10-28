@@ -555,9 +555,9 @@ Output: YAML file
 Input: Material Name
   ↓
 1. Select Author Persona
-   - 4 personas: Todd Dunning (USA), Emma Clarke (UK), 
-                 Luca Moretti (Italy), Yuki Tanaka (Japan)
-   - Random selection for diversity
+   - 4 personas: Todd Dunning (USA), Yi-Chun Lin (Taiwan), 
+                 Alessandro Moretti (Italy), Ikmanda Roswati (Indonesia)
+   - Consistent assignment by material
    - Load author-specific prompts
   ↓
 2. Build Prompt (12-step Layered)

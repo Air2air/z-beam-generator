@@ -29,7 +29,7 @@ _OPTIMIZED_DATA = {
             "category": "alloy",
             "density": "7.85 g/cm³",
             "melting_point": "1370°C",
-            "author_id": "UK_AUTHOR"
+            "author_id": "ITALY_AUTHOR"
         }
     },
     "authors": {
@@ -38,15 +38,15 @@ _OPTIMIZED_DATA = {
             "country": "US",
             "expertise": "Industrial cleaning"
         },
-        "CA_AUTHOR": {
-            "name": "Marie Dubois",
-            "country": "CA", 
-            "expertise": "Material science"
+        "ITALY_AUTHOR": {
+            "name": "Alessandro Moretti",
+            "country": "Italy",
+            "expertise": "Laser materials engineering"
         },
-        "UK_AUTHOR": {
-            "name": "James Wilson",
-            "country": "UK",
-            "expertise": "Manufacturing"
+        "INDONESIA_AUTHOR": {
+            "name": "Ikmanda Roswati",
+            "country": "Indonesia",
+            "expertise": "Industrial laser applications"
         }
     },
     "test_configs": {

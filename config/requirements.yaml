@@ -371,43 +371,6 @@ author_voice:
         strength_threshold: 0.3
         cultural_authenticity_min: 75
     
-    germany:
-      writing_characteristics:
-        - "Engineering precision"
-        - "Technical thoroughness"
-        - "Systematic methodology"
-        - "Industrial efficiency focus"
-      
-      vocabulary_indicators:
-        primary:
-          - "engineering"
-          - "systematic"
-          - "efficiency"
-          - "precision"
-          - "industrial"
-        secondary:
-          - "optimization"
-          - "methodology"
-          - "specification"
-          - "standardization"
-          - "reliability"
-      
-      sentence_patterns:
-        - "Engineered for optimal..."
-        - "Systematic integration of..."
-        - "Industrial-grade precision..."
-        - "Reliable performance through..."
-      
-      technical_emphasis:
-        - "Engineering principles"
-        - "Industrial applications"
-        - "Process reliability"
-      
-      validation_thresholds:
-        minimum_indicators: 2
-        strength_threshold: 0.3
-        cultural_authenticity_min: 75
-    
     "united states":
       writing_characteristics:
         - "Innovation and advancement focus"
@@ -439,43 +402,6 @@ author_voice:
         - "Performance metrics"
         - "Innovation benefits"
         - "Competitive advantages"
-      
-      validation_thresholds:
-        minimum_indicators: 2
-        strength_threshold: 0.3
-        cultural_authenticity_min: 75
-    
-    japan:
-      writing_characteristics:
-        - "Precision manufacturing focus"
-        - "Quality-oriented language"
-        - "Meticulous attention to detail"
-        - "Continuous improvement mindset"
-      
-      vocabulary_indicators:
-        primary:
-          - "precision"
-          - "quality"
-          - "meticulous"
-          - "refinement"
-          - "perfection"
-        secondary:
-          - "excellence"
-          - "mastery"
-          - "craftsmanship"
-          - "dedication"
-          - "attention"
-      
-      sentence_patterns:
-        - "Precisely controlled..."
-        - "Meticulous attention to..."
-        - "Refined process for..."
-        - "Excellence in manufacturing..."
-      
-      technical_emphasis:
-        - "Manufacturing precision"
-        - "Quality assurance"
-        - "Process refinement"
       
       validation_thresholds:
         minimum_indicators: 2
@@ -578,7 +504,7 @@ frontmatter_structure:
     
     validation:
       id_range: [1, 4]           # Valid author IDs
-      countries: ["Taiwan", "Germany", "United States", "Japan"]
+      countries: ["Taiwan", "Italy", "Indonesia", "United States"]
   
   # Images structure
   images:

@@ -477,10 +477,9 @@ def create_dynamic_ai_detection_config(
         base_config["target_score"] = 70.0
 
     # Adjust based on author country
-    if author_country.lower() == "usa":
+    # Valid countries: Taiwan, Italy, Indonesia, United States
+    if author_country.lower() in ["usa", "united states", "united_states"]:
         base_config["language_patterns"] = "american_english"
-    elif author_country.lower() == "uk":
-        base_config["language_patterns"] = "british_english"
     else:
         base_config["language_patterns"] = "international_english"
 

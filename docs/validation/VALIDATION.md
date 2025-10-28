@@ -291,10 +291,10 @@ def validate_required_fields(frontmatter):
 
 ```python
 AUTHOR_WORD_LIMITS = {
-    'todd-dunning': (250, 450),    # USA author
-    'emma-clarke': (300, 500),      # UK author
-    'luca-moretti': (280, 480),     # Italy author
-    'yuki-tanaka': (260, 450),      # Japan author
+    'todd-dunning': (250, 450),        # USA author
+    'yi-chun-lin': (300, 500),         # Taiwan author
+    'alessandro-moretti': (280, 480),  # Italy author
+    'ikmanda-roswati': (200, 400),     # Indonesia author
 }
 
 def validate_word_count(text, author):
